@@ -62,7 +62,7 @@ else
 	}
 	#endregion /* Set the gravity END */
 	
-	if (flat = true)
+	if (flat == true)
 	{
 		speed = 0;
 		if (image_index > image_number - 1)
@@ -90,10 +90,10 @@ else
 mask_index = mask;
 
 #region /* Coil spring bouncing code */
-if (coil_spring = true)
+if (coil_spring == true)
 and (die = false)
 and (place_meeting(x, y + 1, obj_wall))
-or (coil_spring = true)
+or (coil_spring == true)
 and (die = false)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
@@ -112,7 +112,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
 			effect_create_above(ef_smoke, x - 16 - 8,bbox_bottom- 8, 0, c_white);
 			effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
-			effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
+			effect_create_above(ef_smoke, x + 16 + 8,bbox_bottom- 8, 0, c_white);
 		}
 		scr_audio_play(snd_spring, volume_source.sound, 0.1);
 	}

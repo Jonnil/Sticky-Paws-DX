@@ -12,10 +12,10 @@ function scr_modify_objects_in_level_editor()
 	and (!mouse_check_button(mb_right))
 	and (asset_get_type("obj_leveleditor") == asset_object)
 	and (instance_exists(obj_leveleditor))
-	and (obj_leveleditor.fill_mode = false)
-	and (obj_leveleditor.erase_mode = false)
+	and (obj_leveleditor.fill_mode == false)
+	and (obj_leveleditor.erase_mode == false)
 	and (obj_leveleditor.pause == false)
-	and (obj_leveleditor.menu_delay = 0)
+	and (obj_leveleditor.menu_delay == 0)
 	and (asset_get_type("obj_leveleditor_placed_object") == asset_object)
 	and (asset_get_type("obj_level_player_1_start") == asset_object)
 	and (!place_meeting(x, y, obj_level_player_1_start))
@@ -36,13 +36,13 @@ function scr_modify_objects_in_level_editor()
 	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height() / 2 - 32, window_get_width(), window_get_height() / 2 + 32)) /* Can't place objects when clicking the play button */
 	and (obj_leveleditor.placing_object <= 0)
 	{
-		if (obj_leveleditor.show_grid = true)
+		if (obj_leveleditor.show_grid == true)
 		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32 - 32, 80 + obj_leveleditor.icons_at_top_y + 16 - 32 - 32, display_get_gui_width() + 64 + 32, 80 + obj_leveleditor.icons_at_top_y + 16 + 32 + 32)) /* Up and down buttons when grid is on */
-		or (obj_leveleditor.show_grid = false)
+		or (obj_leveleditor.show_grid == false)
 		{
-			if (obj_leveleditor.set_difficulty_mode = true)
+			if (obj_leveleditor.set_difficulty_mode == true)
 			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
-			or (obj_leveleditor.set_difficulty_mode = false)
+			or (obj_leveleditor.set_difficulty_mode == false)
 			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 			{
 				if (keyboard_check_pressed(ord("A")))

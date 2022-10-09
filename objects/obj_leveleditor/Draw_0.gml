@@ -716,14 +716,14 @@ if (pause == false)
 		if (camera_get_view_width(view_camera[view_current]) < room_width)
 		and (camera_get_view_height(view_camera[view_current]) < room_height)
 		{
-			camera_set_view_size((view_camera[view_current]), camera_get_view_width(view_camera[view_current]) +8, camera_get_view_height(view_camera[view_current]) + 4.5);
-			camera_set_view_pos((view_camera[view_current]), camera_get_view_x(view_camera[view_current]) -4, camera_get_view_y(view_camera[view_current]) - 2.5);
+			camera_set_view_size((view_camera[view_current]), camera_get_view_width(view_camera[view_current]) + 8, camera_get_view_height(view_camera[view_current]) + 4.5);
+			camera_set_view_pos((view_camera[view_current]), camera_get_view_x(view_camera[view_current]) -4, camera_get_view_y(view_camera[view_current]) - 2.5); /* Move camera position when zooming out so it doesn't look too weird */
 		}
 		else
 		{
-			draw_rectangle_color(0, 0, camera_get_view_x(view_camera[view_current]) +8, room_height, c_red, c_red, c_red, c_red, false);
+			draw_rectangle_color(0, 0, camera_get_view_x(view_camera[view_current]) + 8, room_height, c_red, c_red, c_red, c_red, false);
 			draw_rectangle_color(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 8, 0, room_width, room_height, c_red, c_red, c_red, c_red, false);
-			draw_rectangle_color(0, 0, room_width, camera_get_view_y(view_camera[view_current]) +8, c_red, c_red, c_red, c_red, false);
+			draw_rectangle_color(0, 0, room_width, camera_get_view_y(view_camera[view_current]) + 8, c_red, c_red, c_red, c_red, false);
 			draw_rectangle_color(0, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 8, room_width, room_height, c_red, c_red, c_red, c_red, false);
 		}
 	}
@@ -796,7 +796,7 @@ if (pause == false)
 		and (camera_get_view_height(view_camera[view_current]) > 368)
 		{
 			camera_set_view_size((view_camera[view_current]), camera_get_view_width(view_camera[view_current]) - 8, camera_get_view_height(view_camera[view_current]) -4.5);
-			camera_set_view_pos((view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + 4, camera_get_view_y(view_camera[view_current]) + 2.5);
+			camera_set_view_pos((view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + 4, camera_get_view_y(view_camera[view_current]) + 2.5); /* Move camera position when zooming in so it doesn't look too weird */
 		}
 		else
 		{
@@ -839,13 +839,13 @@ if (quit_level_editor <= 0)
 	#region /* Draw an arrow pointing to currently selected object */
 	draw_set_color(c_black);
 	draw_set_alpha(selected_menu_alpha);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 - 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 +8, 40);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 - 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 + 8, 40);
 	draw_set_color(c_white);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 - 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 +8, 30);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 - 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 16 + 8, 30);
 	draw_set_color(c_black);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 128- 16 +8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 128- 16 - 8, 40);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 128 - 16 + 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 128 - 16 - 8, 40);
 	draw_set_color(c_white);
-	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 128- 16 +8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 128- 16 - 8, 30);
+	draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 128 - 16 + 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2, camera_get_view_y(view_camera[view_current]) + 128 - 16 - 8, 30);
 	draw_set_alpha(1);
 	#endregion /* Draw an arrow pointing to currently selected object END */
 	
@@ -933,12 +933,12 @@ and (pause == false)
 		else
 		if (erase_brush_size == 4)
 		{
-			draw_rectangle_color(x - 80, y - 80, x +80, y + 80, c_red, c_red, c_red, c_red, false);
+			draw_rectangle_color(x - 80, y - 80, x + 80, y + 80, c_red, c_red, c_red, c_red, false);
 		}
 		else
 		if (erase_brush_size == 3)
 		{
-			draw_rectangle_color(x - 48, y - 48, x +80, y + 80, c_red, c_red, c_red, c_red, false);
+			draw_rectangle_color(x - 48, y - 48, x + 80, y + 80, c_red, c_red, c_red, c_red, false);
 		}
 		else
 		if (erase_brush_size == 2)
@@ -1037,13 +1037,13 @@ and (pause == false)
 	if (place_brush_size == 4)
 	and (can_make_place_brush_size_bigger == true)
 	{
-		draw_rectangle_color(x - 80, y - 80, x +80, y + 80, c_black, c_black, c_black, c_black, true);
+		draw_rectangle_color(x - 80, y - 80, x + 80, y + 80, c_black, c_black, c_black, c_black, true);
 	}
 	else
 	if (place_brush_size == 3)
 	and (can_make_place_brush_size_bigger == true)
 	{
-		draw_rectangle_color(x - 48, y - 48, x +80, y + 80, c_black, c_black, c_black, c_black, true);
+		draw_rectangle_color(x - 48, y - 48, x + 80, y + 80, c_black, c_black, c_black, c_black, true);
 	}
 	else
 	if (place_brush_size == 2)
@@ -1087,15 +1087,15 @@ else
 #region /* Drag Cursor */
 if (asset_get_type("obj_leveleditor_placed_object") == asset_object)
 and (place_meeting(x, y, obj_leveleditor_placed_object))
-or(asset_get_type("obj_level_player_1_start") == asset_object)
+or (asset_get_type("obj_level_player_1_start") == asset_object)
 and (place_meeting(x, y, obj_level_player_1_start))
-or(asset_get_type("obj_level_player_2_start") == asset_object)
+or (asset_get_type("obj_level_player_2_start") == asset_object)
 and (place_meeting(x, y, obj_level_player_2_start))
-or(asset_get_type("obj_level_player_3_start") == asset_object)
+or (asset_get_type("obj_level_player_3_start") == asset_object)
 and (place_meeting(x, y, obj_level_player_3_start))
-or(asset_get_type("obj_level_player_4_start") == asset_object)
+or (asset_get_type("obj_level_player_4_start") == asset_object)
 and (place_meeting(x, y, obj_level_player_4_start))
-or(asset_get_type("obj_level_end") == asset_object)
+or (asset_get_type("obj_level_end") == asset_object)
 and (place_meeting(x, y, obj_level_end))
 {
 	if (drag_object == false)
@@ -1402,7 +1402,7 @@ if (global.controls_used_for_menu_navigation == "controller")
 	and (instance_exists(obj_level_player_4_start))
 	and (obj_level_player_4_start.drag_object == false)
 	and (pause == false)
-	or(asset_get_type("obj_level_end") == asset_object)
+	or (asset_get_type("obj_level_end") == asset_object)
 	and (instance_exists(obj_level_end))
 	and (obj_level_end.drag_object == true)
 	and (pause == false)

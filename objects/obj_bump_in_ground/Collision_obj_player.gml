@@ -1,6 +1,6 @@
 if (place_meeting(x, y - 8, other))
 {
-	if (other.ground_pound = true)
+	if (other.ground_pound == true)
 	{
 		
 		#region /* 1 Basic Collectible */
@@ -23,13 +23,13 @@ if (place_meeting(x, y - 8, other))
 		{
 			if (asset_get_type("obj_basic_collectible") == asset_object)
 			{
-				with(instance_create_depth(x - 32,bbox_top, 0, obj_basic_collectible))
+				with(instance_create_depth(x - 32, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
 					bounceup = true;
 				}
-				with(instance_create_depth(x - 24,bbox_top, 0, obj_basic_collectible))
+				with(instance_create_depth(x - 24, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -37,7 +37,7 @@ if (place_meeting(x, y - 8, other))
 					bounceup = true;
 					delay_time = 10;
 				}
-				with(instance_create_depth(x - 16,bbox_top, 0, obj_basic_collectible))
+				with(instance_create_depth(x - 16, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -45,7 +45,7 @@ if (place_meeting(x, y - 8, other))
 					bounceup = true;
 					delay_time = 20;
 				}
-				with(instance_create_depth(x - 8,bbox_top, 0, obj_basic_collectible))
+				with(instance_create_depth(x - 8, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -53,7 +53,7 @@ if (place_meeting(x, y - 8, other))
 					bounceup = true;
 					delay_time = 30;
 				}
-				with(instance_create_depth(x +8,bbox_top, 0, obj_basic_collectible))
+				with(instance_create_depth(x + 8, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -61,7 +61,7 @@ if (place_meeting(x, y - 8, other))
 					bounceup = true;
 					delay_time = 40;
 				}
-				with(instance_create_depth(x + 16,bbox_top, 0, obj_basic_collectible))
+				with(instance_create_depth(x + 16, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -69,7 +69,7 @@ if (place_meeting(x, y - 8, other))
 					bounceup = true;
 					delay_time = 50;
 				}
-				with(instance_create_depth(x + 24,bbox_top, 0, obj_basic_collectible))
+				with(instance_create_depth(x + 24, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
@@ -77,7 +77,7 @@ if (place_meeting(x, y - 8, other))
 					bounceup = true;
 					delay_time = 60;
 				}
-				with(instance_create_depth(x + 32,bbox_top, 0, obj_basic_collectible))
+				with(instance_create_depth(x + 32, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;

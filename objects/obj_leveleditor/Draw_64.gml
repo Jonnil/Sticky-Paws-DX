@@ -5,7 +5,7 @@ if (quit_level_editor == false)
 		var width = 10;
 		draw_set_alpha(0.5);
 		draw_rectangle_color(0, width + 1, width, window_get_height() - (width + 1), c_blue, c_blue, c_blue, c_blue, false); /* Left */
-		draw_rectangle_color (window_get_width() - width, 0, room_width * 2, window_get_height() - (width + 1), c_blue, c_blue, c_blue, c_blue, false); /* Right */
+		draw_rectangle_color(window_get_width() - width, 0, room_width * 2, window_get_height() - (width + 1), c_blue, c_blue, c_blue, c_blue, false); /* Right */
 		draw_rectangle_color(0, 0, window_get_width() - (width + 1), width, c_blue, c_blue, c_blue, c_blue, false); /* Top */
 		draw_rectangle_color(0, window_get_height() - width, room_width * 2, room_height* 2, c_blue, c_blue, c_blue, c_blue, false); /* Bottom */
 		draw_set_alpha(1);
@@ -737,7 +737,7 @@ if (quit_level_editor == false)
 	and (instance_exists(obj_level_end))
 	and (obj_level_end.drag_object == false)
 	{
-		if (point_in_rectangle(cursor_x, cursor_y, - 32, - 32, display_get_gui_width() + 32, +8))
+		if (point_in_rectangle(cursor_x, cursor_y, - 32, - 32, display_get_gui_width() + 32, + 8))
 		or (global.always_show_level_editor_buttons == true)
 		{
 			if (show_icons_at_top == false)
@@ -1782,7 +1782,7 @@ if (quit_level_editor == false)
 		and (instance_exists(obj_level_player_4_start))
 		and (obj_level_player_4_start.drag_object == false)
 		and (pause == false)
-		or(asset_get_type("obj_level_end") == asset_object)
+		or (asset_get_type("obj_level_end") == asset_object)
 		and (instance_exists(obj_level_end))
 		and (obj_level_end.drag_object == true)
 		and (pause == false)

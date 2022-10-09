@@ -24,7 +24,7 @@ instance_activate_object(self);
 
 #region /* Update Foreground above static objects */
 if (global.custom_foreground_above_static_objects > noone)
-and (global.enable_foreground_layer_above_static_objects = true)
+and (global.enable_foreground_layer_above_static_objects == true)
 and (global.full_level_map_screenshot == false)
 and (asset_get_type("room_leveleditor") == asset_room)
 and (room == room_leveleditor)

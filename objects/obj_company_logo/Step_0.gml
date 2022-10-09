@@ -131,7 +131,7 @@ if (can_navigate = false)
 	
 	#region /* Load Characters */
 	if (file_load_timer > 1)
-	and (load_ok = 0)
+	and (load_ok == 0)
 	{
 		if (initialized_characters = false)
 		{
@@ -305,7 +305,7 @@ if (can_navigate = false)
 	
 	#region /* Load Resource Packs */
 	if (file_load_timer > 1)
-	and (load_ok = 1)
+	and (load_ok == 1)
 	{
 		if (initialized_resource_pack = false)
 		{

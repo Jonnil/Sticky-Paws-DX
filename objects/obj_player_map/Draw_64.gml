@@ -86,7 +86,7 @@ if (global.demo == true)
 }
 #endregion /* Show if you are playing the demo version or not END */
 
-if (show_demo_over_message = true)
+if (show_demo_over_message == true)
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0, 0, window_get_width()* 3, window_get_height()* 3, c_black, c_black, c_black, c_black, false);

@@ -50,7 +50,7 @@ if (asset_get_type("spr_small_mask") == asset_sprite)
 
 sprite_used = "stand";
 
-if (blind = true)
+if (blind == true)
 {
 	if (global.resource_pack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_blind_walk;}else
 	if (global.resource_pack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_walk;}

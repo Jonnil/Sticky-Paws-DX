@@ -1,12 +1,12 @@
-///scr_gamepadremapping()
-function scr_gamepadremapping()
+///scr_remapping_gamepad()
+function scr_remapping_gamepad()
 {
 	
 	#region /* Check for player 1 button presses */
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_face1))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_face1))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -21,10 +21,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_face2))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_face2))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -39,10 +39,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_face3))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_face3))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -57,10 +57,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_face4))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_face4))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -75,10 +75,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_shoulderl))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_shoulderl))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -93,10 +93,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_shoulderlb))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_shoulderlb))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -110,10 +110,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_shoulderr))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_shoulderr))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -128,10 +128,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_shoulderrb))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_shoulderrb))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -145,10 +145,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_stickl))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_stickl))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -162,10 +162,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_stickr))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_stickr))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -179,10 +179,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_padu))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_padu))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -197,10 +197,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_padd))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_padd))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -215,10 +215,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_padl))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_padl))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -233,10 +233,10 @@ function scr_gamepadremapping()
 		can_remap_key = true;
 	}
 	else
-	if (remapping_player = 0)
+	if (remapping_player == 0)
 	and (gamepad_button_check_pressed(0, gp_padr))
 	and (!gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check_pressed(1, gp_padr))
 	and (!gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
@@ -255,9 +255,9 @@ function scr_gamepadremapping()
 	else
 	
 	if (keyboard_check_pressed(vk_escape))
-	or (remapping_player = 0)
+	or (remapping_player == 0)
 	and (gamepad_button_check(0, gp_start))
-	or (remapping_player = 1)
+	or (remapping_player == 1)
 	and (gamepad_button_check(1, gp_start))
 	or (remapping_player = 2)
 	and (gamepad_button_check(2, gp_start))
@@ -274,10 +274,10 @@ function scr_gamepadremapping()
 	}
 	
 	#region /* Remapping 1 */
-	if (remapping_player = 0)
-	and (can_remap_key = true)
+	if (remapping_player == 0)
+	and (can_remap_key == true)
 	{
-		if (menu_remap_key_number = 0)
+		if (menu_remap_key_number == 0)
 		{
 			if (menu == "remap_key_dive")
 			{
@@ -424,10 +424,10 @@ function scr_gamepadremapping()
 	else
 	
 	#region /* Remapping 2 */
-	if (remapping_player = 1)
-	and (can_remap_key = true)
+	if (remapping_player == 1)
+	and (can_remap_key == true)
 	{
-		if (menu_remap_key_number = 0)
+		if (menu_remap_key_number == 0)
 		{
 			if (menu == "remap_key_dive")
 			{
@@ -575,9 +575,9 @@ function scr_gamepadremapping()
 	
 	#region /* Remapping 3 */
 	if (remapping_player = 2)
-	and (can_remap_key = true)
+	and (can_remap_key == true)
 	{
-		if (menu_remap_key_number = 0)
+		if (menu_remap_key_number == 0)
 		{
 			if (menu == "remap_key_dive")
 			{
@@ -725,9 +725,9 @@ function scr_gamepadremapping()
 	
 	#region /* Remapping 4 */
 	if (remapping_player = 3)
-	and (can_remap_key = true)
+	and (can_remap_key == true)
 	{
-		if (menu_remap_key_number = 0)
+		if (menu_remap_key_number == 0)
 		{
 			if (menu == "remap_key_dive")
 			{

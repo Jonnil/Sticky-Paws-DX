@@ -74,7 +74,7 @@ else
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 {
-	if (allow_move = true)
+	if (allow_move == true)
 	{
 		if (dir = +1)
 		{
@@ -82,9 +82,9 @@ and (instance_exists(obj_player))
 			and (instance_nearest(x, y, obj_player).hspeed > + 2)
 			{
 				hspeed = instance_nearest(x, y, obj_player).hspeed;
-				if (hspeed > +8)
+				if (hspeed > + 8)
 				{
-					hspeed = +8;
+					hspeed = + 8;
 				}
 			}
 			else

@@ -1,6 +1,6 @@
 scr_zoom_camera_draw_gui(10);
 
-if (global.convention_mode = true)
+if (global.convention_mode == true)
 and (!instance_exists(obj_title))
 {
 	reset_game_if_no_interactivity += 1;
@@ -15,106 +15,7 @@ and (!instance_exists(obj_title))
 		game_restart();
 	}
 }
-var mouse_x_position = window_mouse_get_x(); /* Update x position of fake mouse */
-var mouse_y_position = window_mouse_get_y(); /* Update y position of fake mouse */
-var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y()); /* Get distance from fake mouse to real mouse */
-
-if (keyboard_check(vk_anykey))
-or (mouse_check_button(mb_any))
-or (mouse_wheel_down())
-or (mouse_wheel_up())
-or (instance_exists(obj_camera))
-and (mouse_moving)
-
-or (gamepad_button_check(0, gp_face1))
-or (gamepad_button_check(0, gp_face2))
-or (gamepad_button_check(0, gp_face3))
-or (gamepad_button_check(0, gp_face4))
-or (gamepad_button_check(0, gp_padd))
-or (gamepad_button_check(0, gp_padl))
-or (gamepad_button_check(0, gp_padr))
-or (gamepad_button_check(0, gp_padu))
-or (gamepad_button_check(0, gp_select))
-or (gamepad_button_check(0, gp_shoulderl))
-or (gamepad_button_check(0, gp_shoulderlb))
-or (gamepad_button_check(0, gp_shoulderr))
-or (gamepad_button_check(0, gp_shoulderrb))
-or (gamepad_button_check(0, gp_start))
-or (gamepad_button_check(0, gp_stickl))
-or (gamepad_button_check(0, gp_stickr))
-or (gamepad_axis_value(0, gp_axislh) <> 0)
-or (gamepad_axis_value(0, gp_axislv) <> 0)
-or (gamepad_axis_value(0, gp_axisrh) <> 0)
-or (gamepad_axis_value(0, gp_axisrv) <> 0)
-
-or (gamepad_button_check(1, gp_face1))
-or (gamepad_button_check(1, gp_face2))
-or (gamepad_button_check(1, gp_face3))
-or (gamepad_button_check(1, gp_face4))
-or (gamepad_button_check(1, gp_padd))
-or (gamepad_button_check(1, gp_padl))
-or (gamepad_button_check(1, gp_padr))
-or (gamepad_button_check(1, gp_padu))
-or (gamepad_button_check(1, gp_select))
-or (gamepad_button_check(1, gp_shoulderl))
-or (gamepad_button_check(1, gp_shoulderlb))
-or (gamepad_button_check(1, gp_shoulderr))
-or (gamepad_button_check(1, gp_shoulderrb))
-or (gamepad_button_check(1, gp_start))
-or (gamepad_button_check(1, gp_stickl))
-or (gamepad_button_check(1, gp_stickr))
-or (gamepad_axis_value(1, gp_axislh) <> 0)
-or (gamepad_axis_value(1, gp_axislv) <> 0)
-or (gamepad_axis_value(1, gp_axisrh) <> 0)
-or (gamepad_axis_value(1, gp_axisrv) <> 0)
-
-or (gamepad_button_check(2, gp_face1))
-or (gamepad_button_check(2, gp_face2))
-or (gamepad_button_check(2, gp_face3))
-or (gamepad_button_check(2, gp_face4))
-or (gamepad_button_check(2, gp_padd))
-or (gamepad_button_check(2, gp_padl))
-or (gamepad_button_check(2, gp_padr))
-or (gamepad_button_check(2, gp_padu))
-or (gamepad_button_check(2, gp_select))
-or (gamepad_button_check(2, gp_shoulderl))
-or (gamepad_button_check(2, gp_shoulderlb))
-or (gamepad_button_check(2, gp_shoulderr))
-or (gamepad_button_check(2, gp_shoulderrb))
-or (gamepad_button_check(2, gp_start))
-or (gamepad_button_check(2, gp_stickl))
-or (gamepad_button_check(2, gp_stickr))
-or (gamepad_axis_value(2, gp_axislh) <> 0)
-or (gamepad_axis_value(2, gp_axislv) <> 0)
-or (gamepad_axis_value(2, gp_axisrh) <> 0)
-or (gamepad_axis_value(2, gp_axisrv) <> 0)
-
-or (gamepad_button_check(3, gp_face1))
-or (gamepad_button_check(3, gp_face2))
-or (gamepad_button_check(3, gp_face3))
-or (gamepad_button_check(3, gp_face4))
-or (gamepad_button_check(3, gp_padd))
-or (gamepad_button_check(3, gp_padl))
-or (gamepad_button_check(3, gp_padr))
-or (gamepad_button_check(3, gp_padu))
-or (gamepad_button_check(3, gp_select))
-or (gamepad_button_check(3, gp_shoulderl))
-or (gamepad_button_check(3, gp_shoulderlb))
-or (gamepad_button_check(3, gp_shoulderr))
-or (gamepad_button_check(3, gp_shoulderrb))
-or (gamepad_button_check(3, gp_start))
-or (gamepad_button_check(3, gp_stickl))
-or (gamepad_button_check(3, gp_stickr))
-or (gamepad_axis_value(3, gp_axislh) <> 0)
-or (gamepad_axis_value(3, gp_axislv) <> 0)
-or (gamepad_axis_value(3, gp_axisrh) <> 0)
-or (gamepad_axis_value(3, gp_axisrv) <> 0)
-{
-	reset_game_if_no_interactivity = 0;
-	reset_game_if_no_interactivity_second_countdown_timer = 0;
-	reset_game_if_no_interactivity_second_countdown = 60;
-}
-if (global.convention_mode = true)
+if (global.convention_mode == true)
 and (!instance_exists(obj_title))
 and (reset_game_if_no_interactivity_second_countdown <= 30)
 {
@@ -182,7 +83,7 @@ and (!instance_exists(obj_title))
 	}
 	else
 	{
-		if (hud_show_lives_timer = 0)
+		if (hud_show_lives_timer == 0)
 		{
 			global.hud_show_lives = false;
 		}
@@ -190,7 +91,7 @@ and (!instance_exists(obj_title))
 		{
 			hud_show_lives_timer -= 1;
 		}
-		if (hud_show_deaths_timer = 0)
+		if (hud_show_deaths_timer == 0)
 		{
 			global.hud_show_deaths = false;
 		}
@@ -198,7 +99,7 @@ and (!instance_exists(obj_title))
 		{
 			hud_show_deaths_timer -= 1;
 		}
-		if (hud_show_basic_collectibles_timer = 0)
+		if (hud_show_basic_collectibles_timer == 0)
 		{
 			global.hud_show_basic_collectibles = false;
 		}
@@ -206,7 +107,7 @@ and (!instance_exists(obj_title))
 		{
 			hud_show_basic_collectibles_timer -= 1;
 		}
-		if (hud_show_big_collectibles_timer = 0)
+		if (hud_show_big_collectibles_timer == 0)
 		{
 			global.hud_show_big_collectibles = false;
 		}
@@ -214,7 +115,7 @@ and (!instance_exists(obj_title))
 		{
 			hud_show_big_collectibles_timer -= 1;
 		}
-		if (hud_show_score_timer = 0)
+		if (hud_show_score_timer == 0)
 		{
 			global.hud_show_score = false;
 		}
@@ -235,7 +136,7 @@ and (!instance_exists(obj_title))
 		}
 		else
 		{
-			if (global.hud_show_lives = true)
+			if (global.hud_show_lives == true)
 			{
 				hud_show_lives = lerp(hud_show_lives, 32, 0.1);
 			}
@@ -247,8 +148,8 @@ and (!instance_exists(obj_title))
 		#endregion /* Show Lives END */
 		
 		#region /* Show Deaths */
-		if (global.hud_show_deaths = true)
-		and (global.show_deaths_counter = true)
+		if (global.hud_show_deaths == true)
+		and (global.show_deaths_counter == true)
 		{
 			if (hud_show_lives > 0)
 			{
@@ -266,11 +167,11 @@ and (!instance_exists(obj_title))
 		#endregion /* Show Deaths END */
 		
 		#region /* Show Big Collectibles */
-		if (global.hud_show_big_collectibles = true)
+		if (global.hud_show_big_collectibles == true)
 		{
 			if (hud_show_lives > 0)
 			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter = true)
+			and (global.show_deaths_counter == true)
 			{
 				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 110, 0.1);
 			}
@@ -279,7 +180,7 @@ and (!instance_exists(obj_title))
 			and (hud_show_deaths < 0)
 			or(hud_show_lives < 0)
 			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter = true)
+			and (global.show_deaths_counter == true)
 			{
 				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 70, 0.1);
 			}
@@ -295,11 +196,11 @@ and (!instance_exists(obj_title))
 		#endregion /* Show Big Collectibles END */
 		
 		#region /* Show Basic Collectible */
-		if (global.hud_show_basic_collectibles = true)
+		if (global.hud_show_basic_collectibles == true)
 		{
 			if (hud_show_lives > 0)
 			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter = true)
+			and (global.show_deaths_counter == true)
 			and (hud_show_big_collectibles > 0)
 			{
 				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 150, 0.1);
@@ -307,14 +208,14 @@ and (!instance_exists(obj_title))
 			else
 			if (hud_show_lives < 0)
 			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter = true)
+			and (global.show_deaths_counter == true)
 			and (hud_show_big_collectibles > 0)
 			or(hud_show_lives > 0)
 			and (hud_show_deaths < 0)
 			and (hud_show_big_collectibles > 0)
 			or(hud_show_lives > 0)
 			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter = true)
+			and (global.show_deaths_counter == true)
 			and (hud_show_big_collectibles < 0)
 			{
 				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 110, 0.1);
@@ -325,7 +226,7 @@ and (!instance_exists(obj_title))
 			and (hud_show_big_collectibles < 0)
 			or(hud_show_lives < 0)
 			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter = true)
+			and (global.show_deaths_counter == true)
 			and (hud_show_big_collectibles < 0)
 			or(hud_show_lives < 0)
 			and (hud_show_deaths < 0)
@@ -345,7 +246,7 @@ and (!instance_exists(obj_title))
 		#endregion /* Show Basic Collectible END */
 		
 		#region /* Show Score */
-		if (global.hud_show_score = true)
+		if (global.hud_show_score == true)
 		{
 			hud_show_score = lerp(hud_show_score, 32, 0.1);
 		}
@@ -402,7 +303,7 @@ and (!instance_exists(obj_title))
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
-		if (global.big_collectible1 = true)
+		if (global.big_collectible1 == true)
 		and (big_collectible1_already_collected = false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
@@ -419,7 +320,7 @@ and (!instance_exists(obj_title))
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
-		if (global.big_collectible2 = true)
+		if (global.big_collectible2 == true)
 		and (big_collectible2_already_collected = false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
@@ -436,7 +337,7 @@ and (!instance_exists(obj_title))
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
-		if (global.big_collectible3 = true)
+		if (global.big_collectible3 == true)
 		and (big_collectible3_already_collected = false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
@@ -453,7 +354,7 @@ and (!instance_exists(obj_title))
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
-		if (global.big_collectible4 = true)
+		if (global.big_collectible4 == true)
 		and (big_collectible4_already_collected = false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
@@ -470,7 +371,7 @@ and (!instance_exists(obj_title))
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
-		if (global.big_collectible5 = true)
+		if (global.big_collectible5 == true)
 		and (big_collectible5_already_collected = false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
@@ -501,7 +402,7 @@ and (!instance_exists(obj_title))
 		if (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.enable_time_countdown == true)
-		or(asset_get_type("obj_player_die") == asset_object)
+		or (asset_get_type("obj_player_die") == asset_object)
 		and (instance_exists(obj_player_die))
 		and (global.enable_time_countdown == true)
 		{
@@ -548,12 +449,12 @@ and (!instance_exists(obj_title))
 						if (global.time_countdown >= 100)
 						{
 							scr_draw_text_outlined(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_yellow, 1);
-							draw_text_transformed_color (window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
+							draw_text_transformed_color(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
 						}
 						else
 						{
 							scr_draw_text_outlined(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_orange, 1);
-							draw_text_transformed_color (window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
+							draw_text_transformed_color(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 						}
 					}
 					if (global.timeattack_millisecond < room_speed / 2)
@@ -578,7 +479,7 @@ and (!instance_exists(obj_title))
 		#endregion /* Time Countdown END */
 		
 		#region /* Time countup in Minutes, Seconds and Milliseconds */
-		if (global.show_timer = true)
+		if (global.show_timer == true)
 		{
 			draw_set_halign(fa_right)
 			if (global.timeattack_minute > 0)
@@ -606,7 +507,7 @@ and (!instance_exists(obj_title))
 scr_show_fps();
 
 if (global.pause = false)
-and (global.show_instance_count = true)
+and (global.show_instance_count == true)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 {
@@ -621,12 +522,12 @@ and (global.play_attract_demo = false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	if (global.arcade_mode = true)
+	if (global.arcade_mode == true)
 	{
 		scr_draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + l10n_text("Demo") + " - " + l10n_text("Arcade mode"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
-	if (global.convention_mode = true)
+	if (global.convention_mode == true)
 	{
 		scr_draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + l10n_text("Demo") + " - " + l10n_text("Convention mode"), global.default_text_size, c_black, c_white, 1);
 	}
@@ -638,7 +539,7 @@ and (global.play_attract_demo = false)
 #endregion /* Show if you are playing the demo version or not END */
 
 #region /* Show if you are playing on convention mode or not */
-if (global.convention_mode = true)
+if (global.convention_mode == true)
 and (global.demo == false)
 and (global.play_attract_demo = false)
 and (room == room_title)
@@ -650,7 +551,7 @@ and (room == room_title)
 #endregion /* Show if you are playing on convention mode or not END */
 
 #region /* Show if you are playing on arcade mode or not */
-if (global.arcade_mode = true)
+if (global.arcade_mode == true)
 and (global.demo == false)
 and (global.play_attract_demo = false)
 and (room == room_title)
@@ -663,7 +564,7 @@ and (room == room_title)
 
 #region /* Show if you have Assist mode enabled or not */
 if (global.assist_enable == true)
-and (global.assist_show_assist_mode_text = true)
+and (global.assist_show_assist_mode_text == true)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 {
@@ -775,9 +676,9 @@ and (!instance_exists(obj_pause))
 	
 	#region /* Show Multiplayer Controls */
 	if (global.player1_can_play == true)
-	or (global.player2_can_play = true)
-	or (global.player3_can_play = true)
-	or (global.player4_can_play = true)
+	or (global.player2_can_play == true)
+	or (global.player3_can_play == true)
+	or (global.player4_can_play == true)
 	{
 		
 		#region /* Y position of show controls for each player */
@@ -1224,13 +1125,13 @@ and (!instance_exists(obj_pause))
 		if (player1 <= 0)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
-		and (global.player1_can_play = true)
+		and (global.player1_can_play == true)
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
 			#region /* Show Player 1 Join Game Key */
-			if (can_spawn_player1 = true)
+			if (can_spawn_player1 == true)
 			and (lives > 0)
 			and (global.player1_show_controls >= 1)
 			{
@@ -1595,13 +1496,13 @@ and (!instance_exists(obj_pause))
 		if (player2 <= 0)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
-		and (global.player2_can_play = true)
+		and (global.player2_can_play == true)
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
 			#region /* Show Player 2 Join Game Key */
-			if (can_spawn_player2 = true)
+			if (can_spawn_player2 == true)
 			and (lives > 0)
 			and (global.player2_show_controls >= 1)
 			{
@@ -1966,13 +1867,13 @@ and (!instance_exists(obj_pause))
 		if (player3 <= 0)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
-		and (global.player3_can_play = true)
+		and (global.player3_can_play == true)
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
 			#region /* Show Player 3 Join Game Key */
-			if (can_spawn_player3 = true)
+			if (can_spawn_player3 == true)
 			and (lives > 0)
 			and (global.player3_show_controls >= 1)
 			{
@@ -2337,13 +2238,13 @@ and (!instance_exists(obj_pause))
 		if (player4 <= 0)
 		and (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
-		and (global.player4_can_play = true)
+		and (global.player4_can_play == true)
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
 			#region /* Show Player 4 Join Game Key */
-			if (can_spawn_player4 = true)
+			if (can_spawn_player4 == true)
 			and (lives > 0)
 			and (global.player4_show_controls >= 1)
 			{
@@ -2418,11 +2319,11 @@ and (global.player2_can_play <= 0)
 and (global.player3_can_play <= 0)
 and (global.player4_can_play >= 1)
 {
-	if (global.show_prompt_when_changing_to_gamepad = true)
+	if (global.show_prompt_when_changing_to_gamepad == true)
 	{
 		draw_sprite_ext(spr_change_input_to_controller, 0, 110, window_get_height() + 300 + show_controller_input_change_prompt_y, 1, 1, 0, c_white, 1);
 	}
-	if (global.show_prompt_when_changing_to_keyboard_and_mouse = true)
+	if (global.show_prompt_when_changing_to_keyboard_and_mouse == true)
 	{
 		draw_sprite_ext(spr_change_input_to_keyboard, 0, 110, window_get_height() + 300 + show_keyboard_and_mouse_input_change_prompt_y, 1, 1, 0, c_white, 1);
 	}
@@ -2432,9 +2333,9 @@ and (global.player4_can_play >= 1)
 scr_virtual_keys();
 
 #region /* Display Rank */
-if (global.goal_active = true)
-and (global.show_ranks = true)
-and (global.enable_ranks = true)
+if (global.goal_active == true)
+and (global.show_ranks == true)
+and (global.enable_ranks == true)
 {
 	if (global.character_select_in_this_menu == "main_game")
 	and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
@@ -2565,7 +2466,7 @@ and (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
-or(asset_get_type("obj_player") == asset_object)
+or (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (obj_player.can_move = false)
 {

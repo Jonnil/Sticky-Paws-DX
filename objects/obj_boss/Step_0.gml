@@ -508,7 +508,7 @@ if (has_seen_player == true)
 
 if (place_meeting(x, y + 1, obj_wall))
 and (vspeed >= 0)
-and (flying_back = true)
+and (flying_back == true)
 {
 	hspeed = 0;
 	vspeed = 0;
@@ -530,7 +530,7 @@ and (image_index > image_number - 1)
 if (hp <= 0)
 {
 	if (time == room_speed * 3 - 1)
-	or (takendamage = 0)
+	or (takendamage == 0)
 	{
 		effect_create_above(ef_smoke, x - 32, y, 2, c_white);
 		effect_create_above(ef_smoke, x - 42, y + 32, 2, c_white);

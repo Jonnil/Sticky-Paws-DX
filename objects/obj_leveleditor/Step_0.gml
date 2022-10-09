@@ -321,11 +321,19 @@ or (global.full_level_map_screenshot == true)
 				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 				or (global.full_level_map_screenshot == true)
 				{
-					instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_camera);
+					if (asset_get_type("obj_camera") == asset_object)
+					and (!instance_exists(obj_camera))
+					{
+						instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_camera);
+					}
 				}
 				else
 				{
-					instance_create_depth(x, y, 0, obj_camera);
+					if (asset_get_type("obj_camera") == asset_object)
+					and (!instance_exists(obj_camera))
+					{
+						instance_create_depth(x, y, 0, obj_camera);
+					}
 				}
 			}
 			else
@@ -395,7 +403,7 @@ and (quit_level_editor <= 0)
 and (pause == false)
 and (!instance_exists(obj_leveleditor_fill))
 {
-	camera_set_view_pos(view_camera[view_current], drag_x -(mouse_x -camera_get_view_x(view_camera[view_current])), drag_y -(mouse_y -camera_get_view_y(view_camera[view_current])));
+	camera_set_view_pos(view_camera[view_current], drag_x -(mouse_x -camera_get_view_x(view_camera[view_current])), drag_y -(mouse_y -camera_get_view_y(view_camera[view_current]))); /* Scroll the camera position with the mouse */
 }
 if (mouse_check_button_released(mb_left))
 and (scroll_view == true)
@@ -553,28 +561,28 @@ if (quit_level_editor <= 0)
 			or (keyboard_check(vk_up))
 			and (!keyboard_check(vk_down))
 			{
-				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - controller_view_speed);
+				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - controller_view_speed); /* Move camera up */
 			}
 			if (keyboard_check(global.player1_key_down))
 			and (!keyboard_check(global.player1_key_up))
 			or (keyboard_check(vk_down))
 			and (!keyboard_check(vk_up))
 			{
-				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + controller_view_speed);
+				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + controller_view_speed); /* Move camera down */
 			}
 			if (keyboard_check(global.player1_key_left))
 			and (!keyboard_check(global.player1_key_right))
 			or (keyboard_check(vk_left))
 			and (!keyboard_check(vk_right))
 			{
-				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) - controller_view_speed, camera_get_view_y(view_camera[view_current]));
+				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) - controller_view_speed, camera_get_view_y(view_camera[view_current])); /* Move camera left */
 			}
 			if (keyboard_check(global.player1_key_right))
 			and (!keyboard_check(global.player1_key_left))
 			or (keyboard_check(vk_right))
 			and (!keyboard_check(vk_left))
 			{
-				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) + controller_view_speed, camera_get_view_y(view_camera[view_current]));
+				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) + controller_view_speed, camera_get_view_y(view_camera[view_current])); /* Move camera right */
 			}
 		}
 		#endregion /* Move view with gamepad END */
@@ -683,7 +691,7 @@ if (quit_level_editor <= 0)
 		or (key_up)
 		and (controller_y <= camera_get_view_y(view_camera[view_current]))
 		{
-			camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - controller_view_speed);
+			camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - controller_view_speed); /* Move camera up */
 			if (controller_y > camera_get_view_y(view_camera[view_current]))
 			{
 				controller_y -= controller_view_speed;
@@ -693,7 +701,7 @@ if (quit_level_editor <= 0)
 		or (key_down)
 		and (controller_y >= camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 		{
-			camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + controller_view_speed);
+			camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + controller_view_speed); /* Move camera down */
 			if (controller_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 			{
 				controller_y += controller_view_speed;
@@ -703,7 +711,7 @@ if (quit_level_editor <= 0)
 		or (key_left)
 		and (controller_x <= camera_get_view_x(view_camera[view_current]))
 		{
-			camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) - controller_view_speed, camera_get_view_y(view_camera[view_current]));
+			camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) - controller_view_speed, camera_get_view_y(view_camera[view_current])); /* Move camera left */
 			if (controller_x > camera_get_view_x(view_camera[view_current]))
 			{
 				controller_x -= controller_view_speed;
@@ -713,7 +721,7 @@ if (quit_level_editor <= 0)
 		or (key_right)
 		and (controller_x >= camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 		{
-			camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) + controller_view_speed, camera_get_view_y(view_camera[view_current]));
+			camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) + controller_view_speed, camera_get_view_y(view_camera[view_current])); /* Move camera right */
 			if (controller_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 			{
 				controller_x += controller_view_speed;
@@ -730,16 +738,16 @@ if (quit_level_editor <= 0)
 	if (can_make_place_brush_size_bigger == false)
 	and (mouse_check_button_pressed(mb_left))
 	and (scroll_view == false)
-	or(can_make_place_brush_size_bigger = true)
+	or (can_make_place_brush_size_bigger == true)
 	and (mouse_check_button(mb_left))
 	and (scroll_view == false)
 	or (can_make_place_brush_size_bigger = false)
 	and (key_a_released)
 	and (scroll_view == false)
-	or (can_make_place_brush_size_bigger = true)
+	or (can_make_place_brush_size_bigger == true)
 	and (gamepad_button_check(0, gp_face1))
 	and (scroll_view == false)
-	or (can_make_place_brush_size_bigger = true)
+	or (can_make_place_brush_size_bigger == true)
 	and (keyboard_check(ord("Z")))
 	and (scroll_view == false)
 	{

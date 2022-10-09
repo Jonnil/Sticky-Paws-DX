@@ -4,7 +4,7 @@ and (assist_invincible == false)
 	invincible = other.invincible;
 }
 
-if (global.players_can_collide = true)
+if (global.players_can_collide == true)
 {
 	if (hspeed < 0)
 	and (other.hspeed > 0)

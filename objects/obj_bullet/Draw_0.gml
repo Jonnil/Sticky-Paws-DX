@@ -36,7 +36,7 @@ else
 		sprite_index = global.resource_pack_sprite_bullet;
 	}
 	else
-	if (flat = true)
+	if (flat == true)
 	{
 		gravity_direction = 270; /* Direction of the gravity */
 		gravity = 0.5; /* The gravity */

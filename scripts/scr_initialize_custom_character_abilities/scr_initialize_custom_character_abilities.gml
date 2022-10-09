@@ -29,7 +29,7 @@ function scr_initialize_custom_character_abilities(what_player, ability_value, a
 	}
 	else
 	{
-		if (can_save_to_character_config = true)
+		if (can_save_to_character_config == true)
 		and (ds_list_find_value(global.all_loaded_characters, global.character_index[what_player]) != undefined)
 		{
 			ini_write_real("allow abilities", string(ability_string), default_value);

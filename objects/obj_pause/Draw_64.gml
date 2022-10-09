@@ -50,7 +50,7 @@ room_speed = global.max_fps;
 #region /* Keyboard Controls */
 
 #region /* Player 1 */
-if (global.pause_player = 0)
+if (global.pause_player == 0)
 {
 	key_up = (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down)) or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S"))) or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd)) or (gamepad_axis_value(0, gp_axislv) < 0);
 	key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right)) or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D"))) or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr)) or (gamepad_axis_value(0, gp_axislh) < 0);
@@ -62,7 +62,7 @@ if (global.pause_player = 0)
 #endregion /* Player 1 END */
 
 #region /* Player 2 */
-if (global.pause_player = 1)
+if (global.pause_player == 1)
 {
 	key_up = (keyboard_check_pressed(global.player2_key_up)) and (!keyboard_check_pressed(global.player2_key_down)) or (gamepad_button_check_pressed(1, gp_padu)) and (!gamepad_button_check_pressed(1, gp_padd)) or (gamepad_axis_value(1, gp_axislv) < 0);
 	key_left = (keyboard_check_pressed(global.player2_key_left)) and (!keyboard_check_pressed(global.player2_key_right)) or (gamepad_button_check_pressed(1, gp_padl)) and (!gamepad_button_check_pressed(1, gp_padr)) or (gamepad_axis_value(1, gp_axislh) < 0);
@@ -114,7 +114,7 @@ if (hide_menu_for_clean_screenshots_timer = 60 * 3)
 {
 	hide_menu_for_clean_screenshots_alpha = lerp(hide_menu_for_clean_screenshots_alpha, 1, 0.01);
 }
-if (in_settings = true)
+if (in_settings == true)
 or (menu == "quit_game_yes")
 or (menu == "quit_game_no")
 {
@@ -178,7 +178,7 @@ or (gamepad_button_check_pressed(3, gp_face2))
 or (gamepad_button_check_pressed(3, gp_face3))
 or (gamepad_button_check_pressed(3, gp_face4))
 {
-	if (hide_menu_for_clean_screenshots = true)
+	if (hide_menu_for_clean_screenshots == true)
 	and (menu_delay == 0)
 	{
 		hide_menu_for_clean_screenshots = false;
@@ -201,12 +201,12 @@ and (menu != "remap_reset")
 and (menu != "remap_save")
 {
 	if (global.playergame >= 1)
-	and (global.pause_player = 0)
+	and (global.pause_player == 0)
 	{
 		scr_draw_text_outlined(window_get_width() / 2, 100, "PLAYER 1 IS CONTROLING THE MENU", global.default_text_size * 2, c_black, c_aqua, 1);
 	}
 	else
-	if (global.pause_player = 1)
+	if (global.pause_player == 1)
 	{
 		scr_draw_text_outlined(window_get_width() / 2, 100, "PLAYER 2 IS CONTROLING THE MENU", global.default_text_size * 2, c_black, c_red, 1);
 	}
@@ -271,7 +271,7 @@ and (menu != "quit_game_yes")
 	}
 	else
 	{
-		draw_text_transformed_color (window_get_width() / 2, 200, "PAUSE", global.default_text_size * 2, global.default_text_size * 2, 0, c_white, c_white, c_white, c_white, pause_text_alpha);
+		draw_text_transformed_color(window_get_width() / 2, 200, "PAUSE", global.default_text_size * 2, global.default_text_size * 2, 0, c_white, c_white, c_white, c_white, pause_text_alpha);
 	}
 }
 #endregion /* Pause Text END */
@@ -280,13 +280,13 @@ and (menu != "quit_game_yes")
 if (asset_get_type("room_world_map") == asset_room)
 and (room == room_world_map)
 and (show_loading_icon = false)
-or(asset_get_type("room_leveleditor") == asset_room)
+or (asset_get_type("room_leveleditor") == asset_room)
 and (room == room_leveleditor)
 and (show_loading_icon = false)
-or(asset_get_type("room_world_map") == asset_room)
+or (asset_get_type("room_world_map") == asset_room)
 and (global.pause_room = room_world_map)
 and (show_loading_icon = false)
-or(asset_get_type("room_leveleditor") == asset_room)
+or (asset_get_type("room_leveleditor") == asset_room)
 and (global.pause_room = room_leveleditor)
 and (show_loading_icon = false)
 {
@@ -300,7 +300,7 @@ and (show_loading_icon = false)
 		
 		if(asset_get_type("room_leveleditor") == asset_room)
 		and (room == room_leveleditor)
-		or(asset_get_type("room_leveleditor") == asset_room)
+		or (asset_get_type("room_leveleditor") == asset_room)
 		and (global.pause_room = room_leveleditor)
 		{
 			if (global.convention_mode = false)
@@ -341,7 +341,7 @@ and (show_loading_icon = false)
 		draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 	}
 	else
-	if(global.pause_room = room_leveleditor)
+	if (global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu == "main_game")
 	and (menu == "quit_to_map")
 	or (global.pause_room = room_leveleditor)
@@ -369,7 +369,7 @@ and (show_loading_icon = false)
 		}
 	}
 	else
-	if(global.pause_room = room_leveleditor)
+	if (global.pause_room = room_leveleditor)
 	and (global.character_select_in_this_menu == "level_editor")
 	and (menu == "quit_to_title")
 	or (global.pause_room = room_leveleditor)
@@ -393,7 +393,7 @@ and (show_loading_icon = false)
 		}
 	}
 	else
-	if(global.pause_room = room_world_map)
+	if (global.pause_room = room_world_map)
 	and (menu == "quit_to_title")
 	or (global.pause_room = room_world_map)
 	and (menu == "quit_to_desktop")
@@ -549,13 +549,13 @@ and (show_loading_icon = false)
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay == 0)
 		or (global.pause_room = room_leveleditor)
-		and (global.convention_mode = true)
+		and (global.convention_mode == true)
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 2 + 42, window_get_width() / 2 + 185, window_get_height() / 2 + 41 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay == 0)
 		{
-			if (global.checkpoint_x = 0)
-			and (global.checkpoint_y = 0)
+			if (global.checkpoint_x == 0)
+			and (global.checkpoint_y == 0)
 			{
 				
 				#region /* Restart Level */
@@ -724,12 +724,12 @@ and (show_loading_icon = false)
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay == 0)
 		or (global.pause_room = room_world_map)
-		and (global.convention_mode = true)
+		and (global.convention_mode == true)
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 2 + 42, window_get_width() / 2 + 185, window_get_height() / 2 + 41 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay == 0)
 		or (global.pause_room = room_leveleditor)
-		and (global.convention_mode = true)
+		and (global.convention_mode == true)
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 2 + 42 + 42, window_get_width() / 2 + 185, window_get_height() / 2 + 41 + 42 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay == 0)
@@ -1006,17 +1006,17 @@ and (show_loading_icon = false)
 		and (menu_delay == 0)
 		
 		or (global.pause_room = room_leveleditor)
-		and (global.convention_mode = true)
+		and (global.convention_mode == true)
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 2 + 42 + 42, window_get_width() / 2 + 185, window_get_height() / 2 + 41 + 42 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay == 0)
 		or (global.pause_room = room_world_map)
-		and (global.convention_mode = true)
+		and (global.convention_mode == true)
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 2 + 42, window_get_width() / 2 + 185, window_get_height() / 2 + 41 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay == 0)
 		or (global.pause_room = room_leveleditor)
-		and (global.convention_mode = true)
+		and (global.convention_mode == true)
 		and (global.character_select_in_this_menu == "level_editor")
 		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 2 + 42, window_get_width() / 2 + 185, window_get_height() / 2 + 41 + 42))
 		and (mouse_check_button_pressed(mb_left))
@@ -1118,7 +1118,7 @@ and (show_loading_icon = false)
 /* PAUSE LEVEL EDITOR MENU */
 
 #region /* Show loading icon and reset level */
-if (show_loading_icon = true)
+if (show_loading_icon == true)
 {
 	loading_spinning_angle -= 10;
 	draw_set_halign(fa_center);

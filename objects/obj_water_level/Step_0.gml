@@ -1,6 +1,6 @@
 x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2;
 
-if (water_level_change_speed = 0)
+if (water_level_change_speed == 0)
 {
 	if (y < water_level_change_new_y)
 	{
@@ -13,7 +13,7 @@ if (water_level_change_speed = 0)
 	}
 }
 else
-if (water_level_change_speed = 1)
+if (water_level_change_speed == 1)
 {
 	if (y < water_level_change_new_y)
 	{

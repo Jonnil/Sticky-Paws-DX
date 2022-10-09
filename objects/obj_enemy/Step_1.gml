@@ -16,7 +16,7 @@ and (instance_exists(obj_camera))
 and (x - 42 < obj_camera.view_x_center - 950)
 and (!place_meeting(x, y + 1, obj_wall))
 and (!place_meeting(x, y + 1, obj_semisolid_platform))
-and (flat = true)
+and (flat == true)
 and (coil_spring = false)
 and (vspeed < 0)
 {
@@ -26,9 +26,9 @@ and (vspeed < 0)
 
 #region /* Enemy touching emerging spikes */
 if (instance_exists(obj_spikes_emerge))
-and (can_die_from_spikes = true)
+and (can_die_from_spikes == true)
 {
-	if (instance_nearest(x, y, obj_spikes_emerge).image_angle = 0)
+	if (instance_nearest(x, y, obj_spikes_emerge).image_angle == 0)
 	and (place_meeting(x, y + 2, instance_nearest(x, y, obj_spikes_emerge)))
 	and (!place_meeting(x - 1, y, instance_nearest(x, y, obj_spikes_emerge)))
 	and (!place_meeting(x + 1, y, instance_nearest(x, y, obj_spikes_emerge)))

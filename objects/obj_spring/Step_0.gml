@@ -14,7 +14,7 @@ if (can_bounce > 0)
 if (asset_get_type("obj_player") == asset_object)
 and (place_meeting(x, y, instance_nearest(x, y, obj_player)))
 and (instance_exists(obj_player))
-and (can_bounce = 0)
+and (can_bounce == 0)
 {
 	if (asset_get_type("snd_spring") == asset_sound)
 	{

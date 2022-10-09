@@ -1,3 +1,6 @@
+mouse_x_position = window_mouse_get_x();
+mouse_y_position = window_mouse_get_y();
+
 #region /* Loading selected level editing music */
 if (file_exists("config.ini"))
 {
@@ -559,6 +562,7 @@ and (!instance_exists(obj_water_level_height))
 audio_stop_all();
 if (global.actually_play_edited_level == true)
 {
+	global.play_edited_level = true;
 	instance_destroy();
 }
 room_speed = global.max_fps; /* Set correct fps */
@@ -671,6 +675,10 @@ allow_player1_tongue = false;
 allow_player2_tongue = false;
 allow_player3_tongue = false;
 allow_player4_tongue = false;
+allow_player1_dive = false;
+allow_player2_dive = false;
+allow_player3_dive = false;
+allow_player4_dive = false;
 #endregion /* Remapping options variables END */
 
 #region /* Character Name */
@@ -734,7 +742,7 @@ or (global.character_select_in_this_menu == "level_editor")
 and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu == "main_game")
-	or (global.create_level_from_template = true)
+	or (global.create_level_from_template == true)
 	{
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 		can_save_to_level_information = false;
@@ -766,7 +774,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
 		}
@@ -782,7 +790,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
 		}
@@ -800,7 +808,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
 		}
@@ -816,7 +824,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
 		}
@@ -834,7 +842,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
 		}
@@ -850,7 +858,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
 		}
@@ -868,7 +876,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
 		}
@@ -884,7 +892,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
 		}
@@ -902,7 +910,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_y_offset", 0);
 		}
@@ -918,7 +926,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_4_x_offset", 0);
 		}
@@ -936,7 +944,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_y_offset", 0);
 		}
@@ -952,7 +960,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_3_x_offset", 0);
 		}
@@ -970,7 +978,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_y_offset", 0);
 		}
@@ -986,7 +994,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_2_x_offset", 0);
 		}
@@ -1004,7 +1012,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_y_offset", 0);
 		}
@@ -1020,7 +1028,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", 0);
 		}
@@ -1038,7 +1046,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_string("info", "make_every_tileset_into_default_tileset", false);
 		}
@@ -1051,7 +1059,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_string("info", "enable_time_countdown", false);
 		}
@@ -1064,7 +1072,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_string("info", "time_countdown", 500);
 		}
@@ -1077,34 +1085,18 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information = true)
+		and (can_save_to_level_information == true)
 		{
 			ini_write_string("info", "rain", false);
 		}
 		global.rain = false;
 	}
-	if(global.play_edited_level = false)
+	if (global.play_edited_level = false)
 	and (global.actually_play_edited_level == false)
 	{
-		if (ini_key_exists("info", "view_xview"))
-		and (ini_key_exists("info", "view_yview"))
-		{
-			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), ini_read_real("info", "view_yview", 0));
-			x = ini_read_real("info", "view_xview", 0);
-			y = ini_read_real("info", "view_yview", 0);
-		}
-		else
-		if (ini_key_exists("info", "view_xview"))
-		{
-			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), 0);
-			x = ini_read_real("info", "view_xview", 0);
-		}
-		else
-		if (ini_key_exists("info", "view_yview"))
-		{
-			camera_set_view_pos(view_camera[view_current], 0, ini_read_real("info", "view_yview", 0));
-			y = ini_read_real("info", "view_yview", 0);
-		}
+		camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), ini_read_real("info", "view_yview", 0)); /* Set camera position on the last positions you had the camera when doing level editing */
+		x = ini_read_real("info", "view_xview", 0);
+		y = ini_read_real("info", "view_yview", 0);
 	}
 	
 	ini_close();
@@ -1138,7 +1130,7 @@ else
 #region /* View Size */
 view_wview = 1392;
 view_hview = 736;
-/* Default Views:   set_view_wview = 1024 + 400 - 32   set_view_hview = 768- 32  */
+/* Default Views:   set_view_wview = 1024 + 400 - 32   set_view_hview = 768 - 32  */
 #endregion /* View Size END */
 
 #region /* Initialize Background */
@@ -1167,7 +1159,7 @@ with(obj_leveleditor_placed_object)
 
 #region /* Load Main Game Level */
 if (global.character_select_in_this_menu == "main_game")
-or (global.create_level_from_template = true)
+or (global.create_level_from_template == true)
 {
 	
 	#region /* Object Placement */
@@ -1200,7 +1192,7 @@ or (global.create_level_from_template = true)
 			str_temp = "";
 			str_pos += 1;
 			num += 1;
-			if (num = 6) /* Number of variables to check for.
+			if (num == 6) /* Number of variables to check for.
 			val[0] = object,
 			val[1] = x position,
 			val[2] = y position,
@@ -1253,7 +1245,7 @@ or (global.create_level_from_template = true)
 			str_temp = "";
 			str_pos += 1;
 			num += 1;
-			if (num = 8) /* Number of variables to check for.
+			if (num == 8) /* Number of variables to check for.
 			val[0] = object,
 			val[1] = x position,
 			val[2] = y position,
@@ -1406,7 +1398,7 @@ if (global.character_select_in_this_menu == "level_editor")
 				str_temp = "";
 				str_pos += 1;
 				num += 1;
-				if (num = 6) /* Number of variables to check for.
+				if (num == 6) /* Number of variables to check for.
 				val[0] = object,
 				val[1] = x position,
 				val[2] = y position,
@@ -1467,7 +1459,7 @@ if (global.character_select_in_this_menu == "level_editor")
 				str_temp = "";
 				str_pos += 1;
 				num += 1;
-				if (num = 8) /* Number of variables to check for.
+				if (num == 8) /* Number of variables to check for.
 				val[0] = object,
 				val[1] = x position,
 				val[2] = y position,

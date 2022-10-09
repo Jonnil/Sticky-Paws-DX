@@ -1,3 +1,6 @@
+mouse_x_position = window_mouse_get_x();
+mouse_y_position = window_mouse_get_y();
+
 active_left = false;
 active_right = false;
 active_up = false;
@@ -232,7 +235,7 @@ if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)
 ini_close();
 
 #region /* Reset level zoom */
-if (global.reset_level_zoom_when_going_back_to_map = true)
+if (global.reset_level_zoom_when_going_back_to_map == true)
 {
 	global.zoom_level = global.default_zoom_level;
 	ini_open("config.ini");
@@ -242,7 +245,7 @@ if (global.reset_level_zoom_when_going_back_to_map = true)
 #endregion /* Reset level zoom END */
 
 #region /* Reset world map zoom */
-if (global.reset_world_map_zoom_when_going_back_to_map = true)
+if (global.reset_world_map_zoom_when_going_back_to_map == true)
 {
 	global.zoom_world_map = global.default_zoom_world_map;
 	zoom_lerp = global.default_zoom_world_map;

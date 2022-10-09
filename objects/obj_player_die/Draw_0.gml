@@ -1,7 +1,7 @@
 count += 1;
 
 #region /* Check if the last player just died */
-if (count = 1)
+if (count == 1)
 and (asset_get_type("obj_player") == asset_object)
 and (!instance_exists(obj_player))
 {
@@ -45,7 +45,7 @@ and (sprite_index = spr_player_burnt)
 #region /* Play death melody */
 if (!instance_exists(obj_player))
 and (count = 50)
-and (last_player = true)
+and (last_player == true)
 {
 	scr_audio_play(snd_die_melody, volume_source.sound);
 }
@@ -167,14 +167,14 @@ and (continue_falling = false)
 	sprite_index = noone;
 }
 else
-if (continue_falling = true)
+if (continue_falling == true)
 {
 	gravity = 0.5;
 }
 
 if (!instance_exists(obj_player))
 and (count >49)
-and (last_player = true)
+and (last_player == true)
 {
 	if (iris_zoom == 0)
 	{
@@ -194,7 +194,7 @@ and (last_player = true)
 	and (instance_exists(obj_player_die))
 	{
 		if (iris_xscale < 16)
-		and (global.enable_transitions = true)
+		and (global.enable_transitions == true)
 		{
 			if (asset_get_type("spr_iris_dead") == asset_sprite)
 			{
@@ -226,7 +226,7 @@ if (sprite_index > 0)
 }
 
 #region /* Bubble */
-if (bubble = true)
+if (bubble == true)
 {
 	
 	#region /* Don't go outside view boundary */
@@ -256,7 +256,7 @@ if (bubble = true)
 	}
 	if (key_left)
 	{
-		hspeed-= 0.4;
+		hspeed -= 0.4;
 		image_xscale = -1;
 	}
 	if (key_right)

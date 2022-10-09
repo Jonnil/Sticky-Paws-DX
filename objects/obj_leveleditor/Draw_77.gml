@@ -53,11 +53,13 @@ if (quit_level_editor >= true)
 			y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
 		}
 		#endregion /* Limit x and y inside room END */
+		
 		#region /* Limit view inside room */
 		camera_set_view_pos(view_camera[view_current],
 		max(0, min(camera_get_view_x(view_camera[view_current]), room_width - camera_get_view_width(view_camera[view_current]))),
 		max(0, min(camera_get_view_y(view_camera[view_current]), room_height - camera_get_view_height(view_camera[view_current]))));
 		#endregion /* Limit view inside room END */
+		
 		#endregion /* Limit so view and cursor can't go outside room END */
 		
 		global.checkpoint_x = 0;

@@ -1,6 +1,6 @@
 function scr_gamepad_vibration(which_player = 1, motor_speed = 0.5, duration = 10)
 {
-	if (which_player = 1)
+	if (which_player == 1)
 	and (instance_exists(obj_camera))
 	and (instance_exists(obj_player))
 	and (global.controls_used_for_menu_navigation == "controller")

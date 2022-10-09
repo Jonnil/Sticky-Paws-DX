@@ -244,6 +244,10 @@ allow_player1_tongue = false;
 allow_player2_tongue = false;
 allow_player3_tongue = false;
 allow_player4_tongue = false;
+allow_player1_dive = false;
+allow_player2_dive = false;
+allow_player3_dive = false;
+allow_player4_dive = false;
 #endregion /* Remapping options variables END */
 
 open_dropdown = false;
@@ -357,7 +361,7 @@ scr_audio_play(title_music, volume_source.music); /* Play title screen music */
 scr_audio_play(trailer_sound, volume_source.music); /* Play trailer sound */
 
 #region /* Reset level zoom */
-if (global.reset_level_zoom_when_going_back_to_map = true)
+if (global.reset_level_zoom_when_going_back_to_map == true)
 {
 	global.zoom_level = global.default_zoom_level;
 	ini_open("config.ini");
@@ -367,7 +371,7 @@ if (global.reset_level_zoom_when_going_back_to_map = true)
 #endregion /* Reset level zoom END */
 
 #region /* Reset world map zoom */
-if (global.reset_world_map_zoom_when_going_back_to_map = true)
+if (global.reset_world_map_zoom_when_going_back_to_map == true)
 {
 	global.zoom_world_map = global.default_zoom_world_map;
 	ini_open("config.ini");

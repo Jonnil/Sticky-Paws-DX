@@ -9,27 +9,31 @@ can_save_to_character_config = false; /* Only turn true when playing as custom c
 unused_x_origin_point = noone;
 unused_y_origin_point = noone;
 
-#region /* What custom character to use. Change the character sprites and voice */
+#region /* What custom character to use, change the character sprites and voice */
 player = 1;
 partner_character = false;
 if (instance_exists(obj_camera))
 {
-	if (instance_exists(obj_camera.player1))
+	if (variable_instance_exists(obj_camera, "player1"))
+	and (instance_exists(obj_camera.player1))
 	{
 		partner_follow_player = obj_camera.player1;
 	}
 	else
-	if (instance_exists(obj_camera.player2))
+	if (variable_instance_exists(obj_camera, "player2"))
+	and (instance_exists(obj_camera.player2))
 	{
 		partner_follow_player = obj_camera.player2;
 	}
 	else
-	if (instance_exists(obj_camera.player3))
+	if (variable_instance_exists(obj_camera, "player3"))
+	and (instance_exists(obj_camera.player3))
 	{
 		partner_follow_player = obj_camera.player3;
 	}
 	else
-	if (instance_exists(obj_camera.player4))
+	if (variable_instance_exists(obj_camera, "player4"))
+	and (instance_exists(obj_camera.player4))
 	{
 		partner_follow_player = obj_camera.player4;
 	}
@@ -46,7 +50,7 @@ custom_character = global.character_for_player_1;
 selected_voice_pack = global.voicepack_for_player_1;
 selected_skin = global.skin_for_player_1;
 alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
-#endregion /* What custom character to use. Change the character sprites and voice END */
+#endregion /* What custom character to use, change the character sprites and voice END */
 
 #region /* Initialize Custom character */
 
@@ -461,6 +465,7 @@ invincible_blinking = 0;
 joystick_can_ground_pound = true;
 ledge_grab = false;
 ledge_grab_jump = false;
+ledge_grab_delay = 0; /* Delay before you can grab another ledge */
 look_up_start_animation = true;
 on_ground = false;
 pause_hspeed = 0;
@@ -507,7 +512,7 @@ and (room != room_title)
 	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
-	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template == true)
 	{
@@ -517,7 +522,7 @@ and (room != room_title)
 	/* OGG big letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
-	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template == true)
 	{
@@ -686,7 +691,7 @@ and (global.character_select_in_this_menu == "main_game")
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
 	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 	var level_name = string(uppercase_level_name);
-				
+	
 	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
 	ini_close();
@@ -696,12 +701,12 @@ if (asset_get_type("room_leveleditor") == asset_room)
 and (room == room_leveleditor)
 and (global.character_select_in_this_menu == "level_editor")
 {
-				
+	
 	var uppercase_level_name;
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
 	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 	var level_name = string(uppercase_level_name);
-				
+	
 	ini_open(working_directory + "/save_files/custom_level_save.ini");
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
 	ini_close();

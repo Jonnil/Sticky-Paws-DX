@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_gamepadremapping",
+  "name": "scr_remapping_gamepad",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

@@ -184,7 +184,7 @@ and (!instance_exists(obj_title))
 	or (keyboard_check_pressed(global.player2_key2_jump))
 	{
 		if (player2 <= 0)
-		and (can_spawn_player2 = true)
+		and (can_spawn_player2 == true)
 		and (lives > 0)
 		{
 			if (global.player2_can_play == false)
@@ -215,7 +215,7 @@ and (!instance_exists(obj_title))
 	or (keyboard_check_pressed(global.player3_key2_jump))
 	{
 		if (player3 <= 0)
-		and (can_spawn_player3 = true)
+		and (can_spawn_player3 == true)
 		and (lives > 0)
 		{
 			if (global.player3_can_play == false)
@@ -246,7 +246,7 @@ and (!instance_exists(obj_title))
 	or (keyboard_check_pressed(global.player4_key2_jump))
 	{
 		if (player4 <= 0)
-		and (can_spawn_player4 = true)
+		and (can_spawn_player4 == true)
 		and (lives > 0)
 		{
 			if (global.player4_can_play == false)
@@ -497,7 +497,7 @@ if (save_level_as_png = false)
 			
 			#region /* Tries to be a bit ahead of player */
 			xx = player1.x + player1.hspeed * 15;
-			if (player1.on_ground = true)
+			if (player1.on_ground == true)
 			and (player1.vspeed >= 0)
 			{
 				yy = player1.y
@@ -507,8 +507,8 @@ if (save_level_as_png = false)
 			{
 				yy -= abs(player1.vspeed);
 			}
-			if (player1.wall_jump = true)
-			or (player1.climb = true)
+			if (player1.wall_jump == true)
+			or (player1.climb == true)
 			{
 				yy = player1.y
 			}
@@ -519,11 +519,11 @@ if (save_level_as_png = false)
 			#endregion /* Tries to be a bit ahead of player END */
 			
 			#region /* Follow Player in y position when doing specific things */
-			if (player1.in_water = true)
-			or (player1.stick_to_wall = true)
-			or (player1.spring = true)
-			or (player1.climb = true)
-			or (player1.horizontal_rope_climb = true)
+			if (player1.in_water == true)
+			or (player1.stick_to_wall == true)
+			or (player1.spring == true)
+			or (player1.climb == true)
+			or (player1.horizontal_rope_climb == true)
 			{
 				if (asset_get_type("obj_camera") == asset_object)
 				{
@@ -553,7 +553,7 @@ if (save_level_as_png = false)
 			
 			#region /* Tries to be a bit ahead of player */
 			xx = player2.x + player2.hspeed * 15;
-			if (player2.on_ground = true)
+			if (player2.on_ground == true)
 			and (player2.vspeed >= 0)
 			{
 				yy = player2.y
@@ -563,8 +563,8 @@ if (save_level_as_png = false)
 			{
 				yy -= abs(player2.vspeed);
 			}
-			if (player2.wall_jump = true)
-			or (player2.climb = true)
+			if (player2.wall_jump == true)
+			or (player2.climb == true)
 			{
 				yy = player2.y
 			}
@@ -575,11 +575,11 @@ if (save_level_as_png = false)
 			#endregion /* Tries to be a bit ahead of player END */
 			
 			#region /* Follow Player in y position when doing specific things */
-			if (player2.in_water = true)
-			or (player2.stick_to_wall = true)
-			or (player2.spring = true)
-			or (player2.climb = true)
-			or (player2.horizontal_rope_climb = true)
+			if (player2.in_water == true)
+			or (player2.stick_to_wall == true)
+			or (player2.spring == true)
+			or (player2.climb == true)
+			or (player2.horizontal_rope_climb == true)
 			{
 				if (asset_get_type("obj_camera") == asset_object)
 				{
@@ -609,7 +609,7 @@ if (save_level_as_png = false)
 			
 			#region /* Tries to be a bit ahead of player */
 			xx = player3.x + player3.hspeed * 15;
-			if (player3.on_ground = true)
+			if (player3.on_ground == true)
 			and (player3.vspeed >= 0)
 			{
 				yy = player3.y
@@ -619,8 +619,8 @@ if (save_level_as_png = false)
 			{
 				yy -= abs(player3.vspeed);
 			}
-			if (player3.wall_jump = true)
-			or (player3.climb = true)
+			if (player3.wall_jump == true)
+			or (player3.climb == true)
 			{
 				yy = player3.y
 			}
@@ -631,11 +631,11 @@ if (save_level_as_png = false)
 			#endregion /* Tries to be a bit ahead of player END */
 			
 			#region /* Follow Player in y position when doing specific things */
-			if (player3.in_water = true)
-			or (player3.stick_to_wall = true)
-			or (player3.spring = true)
-			or (player3.climb = true)
-			or (player3.horizontal_rope_climb = true)
+			if (player3.in_water == true)
+			or (player3.stick_to_wall == true)
+			or (player3.spring == true)
+			or (player3.climb == true)
+			or (player3.horizontal_rope_climb == true)
 			{
 				if (asset_get_type("obj_camera") == asset_object)
 				{
@@ -665,7 +665,7 @@ if (save_level_as_png = false)
 			
 			#region /* Tries to be a bit ahead of player */
 			xx = player4.x + player4.hspeed * 15;
-			if (player4.on_ground = true)
+			if (player4.on_ground == true)
 			and (player4.vspeed >= 0)
 			{
 				yy = player4.y
@@ -675,8 +675,8 @@ if (save_level_as_png = false)
 			{
 				yy -= abs(player4.vspeed);
 			}
-			if (player4.wall_jump = true)
-			or (player4.climb = true)
+			if (player4.wall_jump == true)
+			or (player4.climb == true)
 			{
 				yy = player4.y
 			}
@@ -687,11 +687,11 @@ if (save_level_as_png = false)
 			#endregion /* Tries to be a bit ahead of player END */
 			
 			#region /* Follow Player in y position when doing specific things */
-			if (player4.in_water = true)
-			or (player4.stick_to_wall = true)
-			or (player4.spring = true)
-			or (player4.climb = true)
-			or (player4.horizontal_rope_climb = true)
+			if (player4.in_water == true)
+			or (player4.stick_to_wall == true)
+			or (player4.spring == true)
+			or (player4.climb == true)
+			or (player4.horizontal_rope_climb == true)
 			{
 				if (asset_get_type("obj_camera") == asset_object)
 				{
@@ -719,16 +719,16 @@ if (save_level_as_png = false)
 		#endregion /* Follow one player. In case something goes wrong, camera will always follow one player END */
 		
 		#region /* Zoom out the view when players are going outside view */
-		/* if (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
-		and (fps_real >= global.max_fps)
+		if (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
+		and (fps >= global.max_fps)
 		or (instance_nearest(x, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
-		and (fps_real >= global.max_fps)
+		and (fps >= global.max_fps)
 		or (instance_nearest(0, room_height / 2, obj_player).x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 320)
 		and (instance_nearest(room_width, room_height / 2, obj_player).x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 320)
-		and (fps_real >= global.max_fps)
+		and (fps >= global.max_fps)
 		or (instance_nearest(room_width / 2, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 320)
 		and (instance_nearest(room_width / 2, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 320)
-		and (fps_real >= global.max_fps)
+		and (fps >= global.max_fps)
 		{
 			if (camera_get_view_height(view_camera[view_current]) < room_height)
 			and (camera_get_view_width(view_camera[view_current]) < room_width)
@@ -746,7 +746,7 @@ if (save_level_as_png = false)
 		{
 			view_wview_lerp = lerp(view_wview_lerp, 0, 0.005);
 			view_hview_lerp = lerp(view_hview_lerp, 0, 0.005);
-		} */
+		}
 		#endregion /* Zoom out the view when players are going outside view END */
 		
 	}
@@ -755,7 +755,7 @@ if (save_level_as_png = false)
 	else
 	
 	#region /* Camera when you win level */
-	if (global.player_has_entered_goal = true)
+	if (global.player_has_entered_goal == true)
 	and (asset_get_type("obj_goal") == asset_object)
 	and (instance_exists(obj_goal))
 	and (asset_get_type("obj_player") == asset_object)
@@ -767,7 +767,7 @@ if (save_level_as_png = false)
 	#endregion /* Camera when you win level END */
 	
 	#region /* Iris */
-	if (allow_iris = true)
+	if (allow_iris == true)
 	and (asset_get_type("obj_player_map") == asset_object)
 	and (!instance_exists(obj_player_map))
 	{
@@ -777,7 +777,7 @@ if (save_level_as_png = false)
 		and (asset_get_type("obj_goal") == asset_object)
 		and (instance_exists(obj_player))
 		and (instance_exists(obj_goal))
-		and (instance_nearest(room_width, y, obj_player).goal = true)
+		and (instance_nearest(room_width, y, obj_player).goal == true)
 		and (global.time_countdown_bonus <= 0)
 		{
 			if (iris_zoom == 1)
@@ -805,7 +805,7 @@ if (save_level_as_png = false)
 		else
 		if (asset_get_type("obj_player_map") == asset_object)
 		and (instance_exists(obj_player_map))
-		and (obj_player_map.entering_level = true)
+		and (obj_player_map.entering_level == true)
 		{
 			if (iris_zoom == 1)
 			{

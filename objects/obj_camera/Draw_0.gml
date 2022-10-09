@@ -13,7 +13,7 @@ if (room = room_leveleditor)
 if (room = room_leveleditor)
 {
 	if (global.custom_background1 > noone)
-	and (global.enable_background_layer1 = true)
+	and (global.enable_background_layer1 == true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background")), true)
 	}
@@ -23,7 +23,7 @@ if (room = room_leveleditor)
 	}
 
 	if (global.custom_background2 > noone)
-	and (global.enable_background_layer2 = true)
+	and (global.enable_background_layer2 == true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_2")), true)
 	}
@@ -33,7 +33,7 @@ if (room = room_leveleditor)
 	}
 
 	if (global.custom_background3 > noone)
-	and (global.enable_background_layer3 = true)
+	and (global.enable_background_layer3 == true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_3")), true)
 	}
@@ -43,7 +43,7 @@ if (room = room_leveleditor)
 	}
 
 	if (global.custom_background4 > noone)
-	and (global.enable_background_layer4 = true)
+	and (global.enable_background_layer4 == true)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_4")), true)
 	}
@@ -60,7 +60,7 @@ and (instance_exists(obj_goal))
 and (obj_goal.goal = false)
 and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
-and (obj_player.allow_timeattack = true)
+and (obj_player.allow_timeattack == true)
 and (global.pause == false)
 {
 	if (instance_exists(obj_player))
@@ -91,7 +91,7 @@ and (global.pause == false)
 	{
 		if (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
-		and (obj_player.allow_timeattack = true)
+		and (obj_player.allow_timeattack == true)
 		{
 			if (instance_exists(obj_player))
 			{
@@ -130,7 +130,7 @@ and (global.pause == false)
 			{
 				time_second = 0;
 				global.time_countdown_bonus -= 1;
-				if (obj_player.allow_timeup = true)
+				if (obj_player.allow_timeup == true)
 				and (global.enable_time_countdown == true)
 				{
 					global.time_countdown -= 1;
@@ -151,7 +151,7 @@ if (global.spikes_emerge_time >= room_speed * 4)
 /* Stop the screen from scrolling left if scrolling left isn't allowed */
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
-and (obj_player.stop_screen_from_scrolling_left = true)
+and (obj_player.stop_screen_from_scrolling_left == true)
 {
 	if (x > scrolling_left)
 	{
@@ -167,7 +167,7 @@ scr_toggle_fullscreen();
 
 #region /* Black screen when starting level */
 if (save_level_as_png = false)
-and (allow_iris = true)
+and (allow_iris == true)
 and (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 and (delay <= 1)
@@ -185,7 +185,7 @@ and (!instance_exists(obj_player_map))
 	if (global.enable_transitions == true)
 	and (global.play_edited_level == false)
 	and (global.actually_play_edited_level == false)
-	or (global.enable_transitions = true)
+	or (global.enable_transitions == true)
 	and (global.play_edited_level == true)
 	and (global.actually_play_edited_level == true)
 	{
@@ -221,13 +221,13 @@ and (!instance_exists(obj_player_map))
 #endregion /* Draw Iris Transitions END */
 
 #region /* Rain Effect */
-if (global.rain = true)
+if (global.rain == true)
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
 and (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 {
-	if (floor(random(10 - 1)) = 0)
+	if (floor(random(10 - 1)) == 0)
 	{
 		effect_create_above(ef_rain, x, y, 2, c_white);
 	}
@@ -244,8 +244,8 @@ and (instance_exists(obj_player))
 and (instance_exists(player1))
 and (iris_xscale >= 10)
 {
-	if (global.player1_show_controls = 0)
-	or(obj_player.can_move = false)
+	if (global.player1_show_controls == 0)
+	or (obj_player.can_move = false)
 	{
 		player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.2);
 	}
@@ -259,7 +259,7 @@ and (iris_xscale >= 10)
 			player1_show_controls_timer -= 1;
 		}
 		if (player1_show_controls_timer <= 0)
-		and (player1.speed = 0)
+		and (player1.speed == 0)
 		{
 			player1_show_controls_alpha = lerp(player1_show_controls_alpha, 1, 0.1);
 		}
@@ -323,8 +323,8 @@ and (instance_exists(obj_player))
 and (instance_exists(player2))
 and (iris_xscale >= 10)
 {
-	if (global.player2_show_controls = 0)
-	or(obj_player.can_move = false)
+	if (global.player2_show_controls == 0)
+	or (obj_player.can_move = false)
 	{
 		player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.2);
 	}
@@ -338,7 +338,7 @@ and (iris_xscale >= 10)
 			player2_show_controls_timer -= 1;
 		}
 		if (player2_show_controls_timer <= 0)
-		and (player2.speed = 0)
+		and (player2.speed == 0)
 		{
 			player2_show_controls_alpha = lerp(player2_show_controls_alpha, 1, 0.1);
 		}
@@ -402,8 +402,8 @@ and (instance_exists(obj_player))
 and (instance_exists(player3))
 and (iris_xscale >= 10)
 {
-	if (global.player3_show_controls = 0)
-	or(obj_player.can_move = false)
+	if (global.player3_show_controls == 0)
+	or (obj_player.can_move = false)
 	{
 		player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.2);
 	}
@@ -417,7 +417,7 @@ and (iris_xscale >= 10)
 			player3_show_controls_timer -= 1;
 		}
 		if (player3_show_controls_timer <= 0)
-		and (player3.speed = 0)
+		and (player3.speed == 0)
 		{
 			player3_show_controls_alpha = lerp(player3_show_controls_alpha, 1, 0.1);
 		}
@@ -481,8 +481,8 @@ and (instance_exists(obj_player))
 and (instance_exists(player4))
 and (iris_xscale >= 10)
 {
-	if (global.player4_show_controls = 0)
-	or(obj_player.can_move = false)
+	if (global.player4_show_controls == 0)
+	or (obj_player.can_move = false)
 	{
 		player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.2);
 	}
@@ -496,7 +496,7 @@ and (iris_xscale >= 10)
 			player4_show_controls_timer -= 1;
 		}
 		if (player4_show_controls_timer <= 0)
-		and (player4.speed = 0)
+		and (player4.speed == 0)
 		{
 			player4_show_controls_alpha = lerp(player4_show_controls_alpha, 1, 0.1);
 		}
@@ -652,7 +652,7 @@ and (!instance_exists(obj_pause))
 	and (global.player3_can_play = false)
 	and (global.player4_can_play = false)
 	{
-		if (global.player1_sprint_toggle = true)
+		if (global.player1_sprint_toggle == true)
 		{
 			scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 232, camera_get_view_y(view_camera[view_current]) + 32, l10n_text("Always run"), global.default_text_size, c_white, c_black, 1);
 			draw_sprite_ext(spr_checkbox, true, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
@@ -665,7 +665,7 @@ and (!instance_exists(obj_pause))
 	}
 	else
 	{
-		if (global.player1_sprint_toggle = true)
+		if (global.player1_sprint_toggle == true)
 		{
 			scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 232, camera_get_view_y(view_camera[view_current]) + 32, l10n_text("Player 1 always run"), global.default_text_size, c_white, c_black, 1);
 			draw_sprite_ext(spr_checkbox, true, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
@@ -687,7 +687,7 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player2 -= 1;
 	show_sprint_toggle_for_player3 = 0;
 	show_sprint_toggle_for_player4 = 0;
-	if (global.player2_sprint_toggle = true)
+	if (global.player2_sprint_toggle == true)
 	{
 		scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, l10n_text("Player 2 always run"), global.default_text_size, c_white, c_black, 1);
 		draw_sprite_ext(spr_checkbox, true, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
@@ -708,7 +708,7 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player2 = 0;
 	show_sprint_toggle_for_player3 -= 1;
 	show_sprint_toggle_for_player4 = 0;
-	if (global.player3_sprint_toggle = true)
+	if (global.player3_sprint_toggle == true)
 	{
 		scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, l10n_text("Player 3 always run"), global.default_text_size, c_white, c_black, 1);
 		draw_sprite_ext(spr_checkbox, true, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
@@ -729,7 +729,7 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player2 = 0;
 	show_sprint_toggle_for_player3 = 0;
 	show_sprint_toggle_for_player4 -= 1;
-	if (global.player4_sprint_toggle = true)
+	if (global.player4_sprint_toggle == true)
 	{
 		scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, l10n_text("Player 4 always run"), global.default_text_size, c_white, c_black, 1);
 		draw_sprite_ext(spr_checkbox, true, camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);

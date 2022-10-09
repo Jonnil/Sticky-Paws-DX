@@ -31,7 +31,7 @@ if (asset_get_type("obj_semisolid_platform") == asset_object)
 }
 #endregion /* Set the gravity END */
 
-if (cutscene = 0)
+if (cutscene == 0)
 {
 	time += 1;
 	if (time >= room_speed* 2.3)
@@ -52,12 +52,12 @@ if (cutscene = 0)
 	}
 }
 else
-if (cutscene = 1) /* When placed in level, use this cutscene value */
+if (cutscene == 1) /* When placed in level, use this cutscene value */
 {
 	if (global.character_select_in_this_menu == "main_game")
 	{
 		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-		if (ini_read_real("Player", "beat_last_level", false) = true)
+		if (ini_read_real("Player", "beat_last_level", false) == true)
 		{
 			instance_destroy();
 		}

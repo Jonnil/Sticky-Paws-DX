@@ -21,24 +21,24 @@ and (instance_exists(obj_player))
 		}
 	}
 }
-if (follow_player = true)
+if (follow_player == true)
 and (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 16, obj_wall))
-or (follow_player = true)
+or (follow_player == true)
 and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (place_meeting(x, y + 16, obj_semisolid_platform))
-or (follow_player = true)
+or (follow_player == true)
 and (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).horizontal_rope_climb = true)
-or (follow_player = true)
+and (instance_nearest(x, y, obj_player).horizontal_rope_climb == true)
+or (follow_player == true)
 and (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).climb = true)
-or (follow_player = true)
+and (instance_nearest(x, y, obj_player).climb == true)
+or (follow_player == true)
 and (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
-or(asset_get_type("obj_enemy_bowlingball") == asset_object)
+or (asset_get_type("obj_enemy_bowlingball") == asset_object)
 and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
-and (instance_nearest(x, y, obj_enemy_bowlingball).flat = true)
+and (instance_nearest(x, y, obj_enemy_bowlingball).flat == true)
 and (instance_nearest(x, y, obj_enemy_bowlingball).die = false)
 and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 {
@@ -82,7 +82,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 	#endregion /* 1000 Score END */
 	
 	#region /* What Big Collectible is this? */
-	if (big_collectible = 1)
+	if (big_collectible == 1)
 	{
 		global.big_collectible1 = true;
 		if (instance_exists(obj_camera))
@@ -218,7 +218,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			ini_close();
 		}
 	}
-	if (big_collectible = 5)
+	if (big_collectible == 5)
 	{
 		global.big_collectible5 = true;
 		if (instance_exists(obj_camera))
@@ -260,7 +260,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 }
 
 #region /* Follow Player */
-if (follow_player = true)
+if (follow_player == true)
 {
 	if (instance_exists(obj_player))
 	and (distance_to_object(obj_player) < sprite_height + sprite_width)
@@ -293,7 +293,7 @@ if (follow_player = true)
 }
 #endregion /* Follow Player END */
 
-if (bounceup = true)
+if (bounceup == true)
 {
 	
 	#region /* Show Big Collectible HUD */
@@ -359,7 +359,7 @@ if (bounceup = true)
 			#endregion /* 1000 Score END */
 			
 			#region /* What Big Collectible is this? */
-			if (big_collectible = 1)
+			if (big_collectible == 1)
 			{
 				global.big_collectible1 = true;
 				if (instance_exists(obj_camera))
@@ -495,7 +495,7 @@ if (bounceup = true)
 					}
 				}
 			}
-			if (big_collectible = 5)
+			if (big_collectible == 5)
 			{
 				global.big_collectible5 = true;
 				if (instance_exists(obj_camera))
@@ -557,7 +557,7 @@ if (bounceup = true)
 }
 
 #region /* If big collectible value is 0, destroy the big collectible */
-if (big_collectible = 0)
+if (big_collectible == 0)
 {
 	instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
 	instance_destroy();

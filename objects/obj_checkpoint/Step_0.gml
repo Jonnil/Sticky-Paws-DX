@@ -146,7 +146,7 @@ and (instance_exists(obj_player))
 							#region /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint */
 							if (asset_get_type("obj_scoreup") == asset_object)
 							{
-								if (last_checkpoint = true) /*Tell the player if the checkpoint they are activating is the last checkpoint in the level, the checkpoint cosest to the goal*/
+								if (last_checkpoint == true) /*Tell the player if the checkpoint they are activating is the last checkpoint in the level, the checkpoint cosest to the goal*/
 								{
 									with(instance_create_depth(x, y - 20, 0, obj_scoreup))
 									{
@@ -241,7 +241,7 @@ and (instance_exists(obj_player))
 						if (instance_exists(obj_camera))
 						and (instance_exists(obj_player))
 						{
-							if (checkpoint_which_player = 1)
+							if (checkpoint_which_player == 1)
 							and (obj_camera.player1 > 0)
 							and (instance_exists(obj_camera.player1))
 							and (obj_camera.player1.sprite_checkpoint_activated > 0)

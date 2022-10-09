@@ -1,6 +1,6 @@
 #region /* Play Attract Demo */
 if (global.play_attract_demo = false)
-and (global.enable_attract_demo = true)
+and (global.enable_attract_demo == true)
 {
 	if (file_exists("video/trailer.mp4"))
 	{
@@ -32,7 +32,7 @@ and (global.enable_attract_demo = true)
 	else
 	{
 		if (play_attract_demo_time >= 3600)
-		and (global.convention_mode = true)
+		and (global.convention_mode == true)
 		and (file_exists("video/trailer.mp4"))
 		{
 			in_settings = false;
@@ -42,109 +42,7 @@ and (global.enable_attract_demo = true)
 		}
 	}
 }
-var mouse_x_position = window_mouse_get_x(); /* Update x position of fake mouse */
-var mouse_y_position = window_mouse_get_y(); /* Update y position of fake mouse */
-var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y()); /* Get distance from fake mouse to real mouse */
-
-if (keyboard_check(vk_anykey))
-or (mouse_check_button(mb_any))
-or (mouse_wheel_down())
-or (mouse_wheel_up())
-or (instance_exists(obj_camera))
-and (mouse_moving)
-and (global.play_attract_demo = false)
-
-or (gamepad_button_check(0, gp_face1))
-or (gamepad_button_check(0, gp_face2))
-or (gamepad_button_check(0, gp_face3))
-or (gamepad_button_check(0, gp_face4))
-or (gamepad_button_check(0, gp_padd))
-or (gamepad_button_check(0, gp_padl))
-or (gamepad_button_check(0, gp_padr))
-or (gamepad_button_check(0, gp_padu))
-or (gamepad_button_check(0, gp_select))
-or (gamepad_button_check(0, gp_shoulderl))
-or (gamepad_button_check(0, gp_shoulderlb))
-or (gamepad_button_check(0, gp_shoulderr))
-or (gamepad_button_check(0, gp_shoulderrb))
-or (gamepad_button_check(0, gp_start))
-or (gamepad_button_check(0, gp_stickl))
-or (gamepad_button_check(0, gp_stickr))
-or (gamepad_axis_value(0, gp_axislh) <> 0)
-or (gamepad_axis_value(0, gp_axislv) <> 0)
-or (gamepad_axis_value(0, gp_axisrh) <> 0)
-or (gamepad_axis_value(0, gp_axisrv) <> 0)
-
-or (gamepad_button_check(1, gp_face1))
-or (gamepad_button_check(1, gp_face2))
-or (gamepad_button_check(1, gp_face3))
-or (gamepad_button_check(1, gp_face4))
-or (gamepad_button_check(1, gp_padd))
-or (gamepad_button_check(1, gp_padl))
-or (gamepad_button_check(1, gp_padr))
-or (gamepad_button_check(1, gp_padu))
-or (gamepad_button_check(1, gp_select))
-or (gamepad_button_check(1, gp_shoulderl))
-or (gamepad_button_check(1, gp_shoulderlb))
-or (gamepad_button_check(1, gp_shoulderr))
-or (gamepad_button_check(1, gp_shoulderrb))
-or (gamepad_button_check(1, gp_start))
-or (gamepad_button_check(1, gp_stickl))
-or (gamepad_button_check(1, gp_stickr))
-or (gamepad_axis_value(1, gp_axislh) <> 0)
-or (gamepad_axis_value(1, gp_axislv) <> 0)
-or (gamepad_axis_value(1, gp_axisrh) <> 0)
-or (gamepad_axis_value(1, gp_axisrv) <> 0)
-
-or (gamepad_button_check(2, gp_face1))
-or (gamepad_button_check(2, gp_face2))
-or (gamepad_button_check(2, gp_face3))
-or (gamepad_button_check(2, gp_face4))
-or (gamepad_button_check(2, gp_padd))
-or (gamepad_button_check(2, gp_padl))
-or (gamepad_button_check(2, gp_padr))
-or (gamepad_button_check(2, gp_padu))
-or (gamepad_button_check(2, gp_select))
-or (gamepad_button_check(2, gp_shoulderl))
-or (gamepad_button_check(2, gp_shoulderlb))
-or (gamepad_button_check(2, gp_shoulderr))
-or (gamepad_button_check(2, gp_shoulderrb))
-or (gamepad_button_check(2, gp_start))
-or (gamepad_button_check(2, gp_stickl))
-or (gamepad_button_check(2, gp_stickr))
-or (gamepad_axis_value(2, gp_axislh) <> 0)
-or (gamepad_axis_value(2, gp_axislv) <> 0)
-or (gamepad_axis_value(2, gp_axisrh) <> 0)
-or (gamepad_axis_value(2, gp_axisrv) <> 0)
-
-or (gamepad_button_check(3, gp_face1))
-or (gamepad_button_check(3, gp_face2))
-or (gamepad_button_check(3, gp_face3))
-or (gamepad_button_check(3, gp_face4))
-or (gamepad_button_check(3, gp_padd))
-or (gamepad_button_check(3, gp_padl))
-or (gamepad_button_check(3, gp_padr))
-or (gamepad_button_check(3, gp_padu))
-or (gamepad_button_check(3, gp_select))
-or (gamepad_button_check(3, gp_shoulderl))
-or (gamepad_button_check(3, gp_shoulderlb))
-or (gamepad_button_check(3, gp_shoulderr))
-or (gamepad_button_check(3, gp_shoulderrb))
-or (gamepad_button_check(3, gp_start))
-or (gamepad_button_check(3, gp_stickl))
-or (gamepad_button_check(3, gp_stickr))
-or (gamepad_axis_value(3, gp_axislh) <> 0)
-or (gamepad_axis_value(3, gp_axislv) <> 0)
-or (gamepad_axis_value(3, gp_axisrh) <> 0)
-or (gamepad_axis_value(3, gp_axisrv) <> 0)
-{
-	audio_stop_sound(trailer_sound);
-	video_pause();
-	play_attract_demo_time = 0;
-	global.play_attract_demo = false;
-}
-
-if (global.play_attract_demo = true)
+if (global.play_attract_demo == true)
 {
 	video_open("video/trailer.mp4");
 	video_resume()
@@ -218,7 +116,7 @@ or (menu == "link_wiki")
 				or (menu == "link_reddit")
 				or (menu == "link_twitter")
 				or (menu == "link_wiki")
-				or (in_settings = true)
+				or (in_settings == true)
 				{
 					menu = "main_game";
 					in_settings = false;
@@ -275,7 +173,7 @@ or (menu == "link_wiki")
 				or (menu == "link_reddit")
 				or (menu == "link_twitter")
 				or (menu == "link_wiki")
-				or (in_settings = true)
+				or (in_settings == true)
 				{
 					menu = "main_game";
 					in_settings = false;
@@ -301,7 +199,7 @@ or (menu == "link_wiki")
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
-if (global.convention_mode = true)
+if (global.convention_mode == true)
 and (show_convention_mode_enable_text > 0)
 {
 	show_convention_mode_enable_text -= 1;
@@ -319,7 +217,7 @@ and (show_convention_mode_enable_text > 0)
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
-if (global.arcade_mode = true)
+if (global.arcade_mode == true)
 and (show_arcade_mode_enable_text > 0)
 {
 	show_arcade_mode_enable_text -= 1;
@@ -338,103 +236,103 @@ and (show_arcade_mode_enable_text > 0)
 #region /* Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus */
 
 #region /* Player 1 reset keys to noone if they happen to be 0 */
-if (global.player1_key_dive = 0){global.player1_key_dive = noone;}
-if (global.player1_key_jump = 0){global.player1_key_jump = noone;}
-if (global.player1_key_crouch = 0){global.player1_key_crouch = noone;}
-if (global.player1_key_crouch_toggle = 0){global.player1_key_crouch_toggle = noone;}
-if (global.player1_key_sprint = 0){global.player1_key_sprint = noone;}
-if (global.player1_key_sprint_toggle = 0){global.player1_key_sprint_toggle = noone;}
-if (global.player1_key_left = 0){global.player1_key_left = noone;}
-if (global.player1_key_right = 0){global.player1_key_right = noone;}
-if (global.player1_key_down = 0){global.player1_key_down = noone;}
-if (global.player1_key_up = 0){global.player1_key_up = noone;}
-if (global.player1_key_tongue = 0){global.player1_key_tongue = noone;}
-if (global.player1_key2_dive = 0){global.player1_key2_dive = noone;}
-if (global.player1_key2_jump = 0){global.player1_key2_jump = noone;}
-if (global.player1_key2_crouch = 0){global.player1_key2_crouch = noone;}
-if (global.player1_key2_crouch_toggle = 0){global.player1_key2_crouch_toggle = noone;}
-if (global.player1_key2_sprint = 0){global.player1_key2_sprint = noone;}
-if (global.player1_key2_sprint_toggle = 0){global.player1_key2_sprint_toggle = noone;}
-if (global.player1_key2_left = 0){global.player1_key2_left = noone;}
-if (global.player1_key2_right = 0){global.player1_key2_right = noone;}
-if (global.player1_key2_down = 0){global.player1_key2_down = noone;}
-if (global.player1_key2_up = 0){global.player1_key2_up = noone;}
-if (global.player1_key2_tongue = 0){global.player1_key2_tongue = noone;}
+if (global.player1_key_dive == 0){global.player1_key_dive = noone;}
+if (global.player1_key_jump == 0){global.player1_key_jump = noone;}
+if (global.player1_key_crouch == 0){global.player1_key_crouch = noone;}
+if (global.player1_key_crouch_toggle == 0){global.player1_key_crouch_toggle = noone;}
+if (global.player1_key_sprint == 0){global.player1_key_sprint = noone;}
+if (global.player1_key_sprint_toggle == 0){global.player1_key_sprint_toggle = noone;}
+if (global.player1_key_left == 0){global.player1_key_left = noone;}
+if (global.player1_key_right == 0){global.player1_key_right = noone;}
+if (global.player1_key_down == 0){global.player1_key_down = noone;}
+if (global.player1_key_up == 0){global.player1_key_up = noone;}
+if (global.player1_key_tongue == 0){global.player1_key_tongue = noone;}
+if (global.player1_key2_dive == 0){global.player1_key2_dive = noone;}
+if (global.player1_key2_jump == 0){global.player1_key2_jump = noone;}
+if (global.player1_key2_crouch == 0){global.player1_key2_crouch = noone;}
+if (global.player1_key2_crouch_toggle == 0){global.player1_key2_crouch_toggle = noone;}
+if (global.player1_key2_sprint == 0){global.player1_key2_sprint = noone;}
+if (global.player1_key2_sprint_toggle == 0){global.player1_key2_sprint_toggle = noone;}
+if (global.player1_key2_left == 0){global.player1_key2_left = noone;}
+if (global.player1_key2_right == 0){global.player1_key2_right = noone;}
+if (global.player1_key2_down == 0){global.player1_key2_down = noone;}
+if (global.player1_key2_up == 0){global.player1_key2_up = noone;}
+if (global.player1_key2_tongue == 0){global.player1_key2_tongue = noone;}
 #endregion /* Player 1 reset keys to noone if they happen to be 0 END */
 
 #region /* Player 2 reset keys to noone if they happen to be 0 */
-if (global.player2_key_dive = 0){global.player2_key_dive = noone;}
-if (global.player2_key_jump = 0){global.player2_key_jump = noone;}
-if (global.player2_key_crouch = 0){global.player2_key_crouch = noone;}
-if (global.player2_key_crouch_toggle = 0){global.player2_key_crouch_toggle = noone;}
-if (global.player2_key_sprint = 0){global.player2_key_sprint = noone;}
-if (global.player2_key_sprint_toggle = 0){global.player2_key_sprint_toggle = noone;}
-if (global.player2_key_left = 0){global.player2_key_left = noone;}
-if (global.player2_key_right = 0){global.player2_key_right = noone;}
-if (global.player2_key_down = 0){global.player2_key_down = noone;}
-if (global.player2_key_up = 0){global.player2_key_up = noone;}
-if (global.player2_key_tongue = 0){global.player2_key_tongue = noone;}
-if (global.player2_key2_dive = 0){global.player2_key2_dive = noone;}
-if (global.player2_key2_jump = 0){global.player2_key2_jump = noone;}
-if (global.player2_key2_crouch = 0){global.player2_key2_crouch = noone;}
-if (global.player2_key2_crouch_toggle = 0){global.player2_key2_crouch_toggle = noone;}
-if (global.player2_key2_sprint = 0){global.player2_key2_sprint = noone;}
-if (global.player2_key2_sprint_toggle = 0){global.player2_key2_sprint_toggle = noone;}
-if (global.player2_key2_left = 0){global.player2_key2_left = noone;}
-if (global.player2_key2_right = 0){global.player2_key2_right = noone;}
-if (global.player2_key2_down = 0){global.player2_key2_down = noone;}
-if (global.player2_key2_up = 0){global.player2_key2_up = noone;}
-if (global.player2_key2_tongue = 0){global.player2_key2_tongue = noone;}
+if (global.player2_key_dive == 0){global.player2_key_dive = noone;}
+if (global.player2_key_jump == 0){global.player2_key_jump = noone;}
+if (global.player2_key_crouch == 0){global.player2_key_crouch = noone;}
+if (global.player2_key_crouch_toggle == 0){global.player2_key_crouch_toggle = noone;}
+if (global.player2_key_sprint == 0){global.player2_key_sprint = noone;}
+if (global.player2_key_sprint_toggle == 0){global.player2_key_sprint_toggle = noone;}
+if (global.player2_key_left == 0){global.player2_key_left = noone;}
+if (global.player2_key_right == 0){global.player2_key_right = noone;}
+if (global.player2_key_down == 0){global.player2_key_down = noone;}
+if (global.player2_key_up == 0){global.player2_key_up = noone;}
+if (global.player2_key_tongue == 0){global.player2_key_tongue = noone;}
+if (global.player2_key2_dive == 0){global.player2_key2_dive = noone;}
+if (global.player2_key2_jump == 0){global.player2_key2_jump = noone;}
+if (global.player2_key2_crouch == 0){global.player2_key2_crouch = noone;}
+if (global.player2_key2_crouch_toggle == 0){global.player2_key2_crouch_toggle = noone;}
+if (global.player2_key2_sprint == 0){global.player2_key2_sprint = noone;}
+if (global.player2_key2_sprint_toggle == 0){global.player2_key2_sprint_toggle = noone;}
+if (global.player2_key2_left == 0){global.player2_key2_left = noone;}
+if (global.player2_key2_right == 0){global.player2_key2_right = noone;}
+if (global.player2_key2_down == 0){global.player2_key2_down = noone;}
+if (global.player2_key2_up == 0){global.player2_key2_up = noone;}
+if (global.player2_key2_tongue == 0){global.player2_key2_tongue = noone;}
 #endregion /* Player 2 reset keys to noone if they happen to be 0 END */
 
 #region /* Player 3 reset keys to noone if they happen to be 0 */
-if (global.player3_key_dive = 0){global.player3_key_dive = noone;}
-if (global.player3_key_jump = 0){global.player3_key_jump = noone;}
-if (global.player3_key_crouch = 0){global.player3_key_crouch = noone;}
-if (global.player3_key_crouch_toggle = 0){global.player3_key_crouch_toggle = noone;}
-if (global.player3_key_sprint = 0){global.player3_key_sprint = noone;}
-if (global.player3_key_sprint_toggle = 0){global.player3_key_sprint_toggle = noone;}
-if (global.player3_key_left = 0){global.player3_key_left = noone;}
-if (global.player3_key_right = 0){global.player3_key_right = noone;}
-if (global.player3_key_down = 0){global.player3_key_down = noone;}
-if (global.player3_key_up = 0){global.player3_key_up = noone;}
-if (global.player3_key_tongue = 0){global.player3_key_tongue = noone;}
-if (global.player3_key2_dive = 0){global.player3_key2_dive = noone;}
-if (global.player3_key2_jump = 0){global.player3_key2_jump = noone;}
-if (global.player3_key2_crouch = 0){global.player3_key2_crouch = noone;}
-if (global.player3_key2_crouch_toggle = 0){global.player3_key2_crouch_toggle = noone;}
-if (global.player3_key2_sprint = 0){global.player3_key2_sprint = noone;}
-if (global.player3_key2_sprint_toggle = 0){global.player3_key2_sprint_toggle = noone;}
-if (global.player3_key2_left = 0){global.player3_key2_left = noone;}
-if (global.player3_key2_right = 0){global.player3_key2_right = noone;}
-if (global.player3_key2_down = 0){global.player3_key2_down = noone;}
-if (global.player3_key2_up = 0){global.player3_key2_up = noone;}
-if (global.player3_key2_tongue = 0){global.player3_key2_tongue = noone;}
+if (global.player3_key_dive == 0){global.player3_key_dive = noone;}
+if (global.player3_key_jump == 0){global.player3_key_jump = noone;}
+if (global.player3_key_crouch == 0){global.player3_key_crouch = noone;}
+if (global.player3_key_crouch_toggle == 0){global.player3_key_crouch_toggle = noone;}
+if (global.player3_key_sprint == 0){global.player3_key_sprint = noone;}
+if (global.player3_key_sprint_toggle == 0){global.player3_key_sprint_toggle = noone;}
+if (global.player3_key_left == 0){global.player3_key_left = noone;}
+if (global.player3_key_right == 0){global.player3_key_right = noone;}
+if (global.player3_key_down == 0){global.player3_key_down = noone;}
+if (global.player3_key_up == 0){global.player3_key_up = noone;}
+if (global.player3_key_tongue == 0){global.player3_key_tongue = noone;}
+if (global.player3_key2_dive == 0){global.player3_key2_dive = noone;}
+if (global.player3_key2_jump == 0){global.player3_key2_jump = noone;}
+if (global.player3_key2_crouch == 0){global.player3_key2_crouch = noone;}
+if (global.player3_key2_crouch_toggle == 0){global.player3_key2_crouch_toggle = noone;}
+if (global.player3_key2_sprint == 0){global.player3_key2_sprint = noone;}
+if (global.player3_key2_sprint_toggle == 0){global.player3_key2_sprint_toggle = noone;}
+if (global.player3_key2_left == 0){global.player3_key2_left = noone;}
+if (global.player3_key2_right == 0){global.player3_key2_right = noone;}
+if (global.player3_key2_down == 0){global.player3_key2_down = noone;}
+if (global.player3_key2_up == 0){global.player3_key2_up = noone;}
+if (global.player3_key2_tongue == 0){global.player3_key2_tongue = noone;}
 #endregion /* Player 3 reset keys to noone if they happen to be 0 END */
 
 #region /* Player 4 reset keys to noone if they happen to be 0 */
-if (global.player4_key_dive = 0){global.player4_key_dive = noone;}
-if (global.player4_key_jump = 0){global.player4_key_jump = noone;}
-if (global.player4_key_crouch = 0){global.player4_key_crouch = noone;}
-if (global.player4_key_crouch_toggle = 0){global.player4_key_crouch_toggle = noone;}
-if (global.player4_key_sprint = 0){global.player4_key_sprint = noone;}
-if (global.player4_key_sprint_toggle = 0){global.player4_key_sprint_toggle = noone;}
-if (global.player4_key_left = 0){global.player4_key_left = noone;}
-if (global.player4_key_right = 0){global.player4_key_right = noone;}
-if (global.player4_key_down = 0){global.player4_key_down = noone;}
-if (global.player4_key_up = 0){global.player4_key_up = noone;}
-if (global.player4_key_tongue = 0){global.player4_key_tongue = noone;}
-if (global.player4_key2_dive = 0){global.player4_key2_dive = noone;}
-if (global.player4_key2_jump = 0){global.player4_key2_jump = noone;}
-if (global.player4_key2_crouch = 0){global.player4_key2_crouch = noone;}
-if (global.player4_key2_crouch_toggle = 0){global.player4_key2_crouch_toggle = noone;}
-if (global.player4_key2_sprint = 0){global.player4_key2_sprint = noone;}
-if (global.player4_key2_sprint_toggle = 0){global.player4_key2_sprint_toggle = noone;}
-if (global.player4_key2_left = 0){global.player4_key2_left = noone;}
-if (global.player4_key2_right = 0){global.player4_key2_right = noone;}
-if (global.player4_key2_down = 0){global.player4_key2_down = noone;}
-if (global.player4_key2_up = 0){global.player4_key2_up = noone;}
-if (global.player4_key2_tongue = 0){global.player4_key2_tongue = noone;}
+if (global.player4_key_dive == 0){global.player4_key_dive = noone;}
+if (global.player4_key_jump == 0){global.player4_key_jump = noone;}
+if (global.player4_key_crouch == 0){global.player4_key_crouch = noone;}
+if (global.player4_key_crouch_toggle == 0){global.player4_key_crouch_toggle = noone;}
+if (global.player4_key_sprint == 0){global.player4_key_sprint = noone;}
+if (global.player4_key_sprint_toggle == 0){global.player4_key_sprint_toggle = noone;}
+if (global.player4_key_left == 0){global.player4_key_left = noone;}
+if (global.player4_key_right == 0){global.player4_key_right = noone;}
+if (global.player4_key_down == 0){global.player4_key_down = noone;}
+if (global.player4_key_up == 0){global.player4_key_up = noone;}
+if (global.player4_key_tongue == 0){global.player4_key_tongue = noone;}
+if (global.player4_key2_dive == 0){global.player4_key2_dive = noone;}
+if (global.player4_key2_jump == 0){global.player4_key2_jump = noone;}
+if (global.player4_key2_crouch == 0){global.player4_key2_crouch = noone;}
+if (global.player4_key2_crouch_toggle == 0){global.player4_key2_crouch_toggle = noone;}
+if (global.player4_key2_sprint == 0){global.player4_key2_sprint = noone;}
+if (global.player4_key2_sprint_toggle == 0){global.player4_key2_sprint_toggle = noone;}
+if (global.player4_key2_left == 0){global.player4_key2_left = noone;}
+if (global.player4_key2_right == 0){global.player4_key2_right = noone;}
+if (global.player4_key2_down == 0){global.player4_key2_down = noone;}
+if (global.player4_key2_up == 0){global.player4_key2_up = noone;}
+if (global.player4_key2_tongue == 0){global.player4_key2_tongue = noone;}
 #endregion /* Player 4 reset keys to noone if they happen to be 0 END */
 
 #endregion /* Reset keys to noone if they happen to be 0, having a key at 0 means it's pressed every frame, and glitches the menus END */
@@ -539,7 +437,7 @@ key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or (keyboard_check_p
 
 #region /* Quit Game trough pause menu */
 if (global.convention_mode = false)
-and (can_remap_key = false)
+and (can_remap_key == false)
 and (input_key == false)
 and (menu_delay == 0)
 {
@@ -643,7 +541,7 @@ var link_wiki_x = 216;
 
 #region /* Links */
 /* Put links underneath build date and version */
-if (global.enable_links = true)
+if (global.enable_links == true)
 {
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, link_discord_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_gamebanana, link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_gamebanana", "link_gamebanana", false);
@@ -755,7 +653,7 @@ or (menu == "link_wiki")
 		#endregion /* What player can enter a name END */
 	
 		show_title_logo = true;
-		if (global.enable_links = true)
+		if (global.enable_links == true)
 		{
 			version_y_pos = lerp(version_y_pos, -32 - 8, 0.1);
 		}
@@ -794,7 +692,7 @@ and (menu != "level_editor_play")
 and (menu != "level_editor_make")
 and (menu != "import_export_level")
 and (menu != "delete_level")
-and (show_title_logo = true)
+and (show_title_logo == true)
 {
 	title_x = lerp(title_x, 0, 0.1);
 	title_y = lerp(title_y, scr_wave(0, 40, 4.5, 0), 0.1);
@@ -828,6 +726,7 @@ if (asset_get_type("obj_camera") == asset_object)
 	{
 		instance_create_depth(x, y, 0, obj_camera);
 	}
+	else
 	if (instance_exists(obj_camera))
 	{
 		x = obj_camera.x;
@@ -837,7 +736,7 @@ if (asset_get_type("obj_camera") == asset_object)
 #endregion /* Create Camera END */
 
 #region /* Arcade Mode Menu */
-if (global.arcade_mode = true)
+if (global.arcade_mode == true)
 {
 	if (menu != "load_characters")
 	and (menu != "select_character")
@@ -952,7 +851,7 @@ and (global.arcade_mode = false)
 	else
 	
 	#region /* Click Level Editor */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 +80 + 1, display_get_gui_width() / 2 + 185, display_get_gui_height() / 2 + 100 + 100 + 19))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 + 80 + 1, display_get_gui_width() / 2 + 185, display_get_gui_height() / 2 + 100 + 100 + 19))
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	and (in_settings = false)
@@ -1036,12 +935,12 @@ and (global.arcade_mode = false)
 	and (menu == "language_shortcut")
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
-	and (global.show_language_shortcut = true)
+	and (global.show_language_shortcut == true)
 	and (in_settings = false)
 	or (menu == "language_shortcut")
 	and (key_a_pressed)
 	and (menu_delay == 0)
-	and (global.show_language_shortcut = true)
+	and (global.show_language_shortcut == true)
 	and (in_settings = false)
 	{
 		menu_delay = 3;
@@ -1061,7 +960,7 @@ and (global.arcade_mode = false)
 	display_get_gui_width() / 2 - 208,
 	display_get_gui_height() / 2 + 100 + 140 + 19))
 	and (mouse_check_button(mb_left))
-	and (global.show_language_shortcut = true)
+	and (global.show_language_shortcut == true)
 	{
 		menu = "language_shortcut";
 	}
@@ -1078,12 +977,12 @@ and (global.arcade_mode = false)
 	and (menu == "accessibility_shortcut")
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
-	and (global.show_accessibility_shortcut = true)
+	and (global.show_accessibility_shortcut == true)
 	
 	or (menu == "accessibility_shortcut")
 	and (key_a_pressed)
 	and (menu_delay == 0)
-	and (global.show_accessibility_shortcut = true)
+	and (global.show_accessibility_shortcut == true)
 	{
 		menu_delay = 3;
 		in_settings = true;
@@ -1102,7 +1001,7 @@ and (global.arcade_mode = false)
 	display_get_gui_width() / 2 + 250,
 	display_get_gui_height() / 2 + 100 + 140 + 19))
 	and (mouse_check_button(mb_left))
-	and (global.show_accessibility_shortcut = true)
+	and (global.show_accessibility_shortcut == true)
 	{
 		menu = "accessibility_shortcut";
 	}
@@ -1119,12 +1018,12 @@ and (global.arcade_mode = false)
 	and (menu == "profile_shortcut")
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
-	and (global.show_profile_shortcut = true)
+	and (global.show_profile_shortcut == true)
 	and (in_settings = false)
 	or (menu == "profile_shortcut")
 	and (key_a_pressed)
 	and (menu_delay == 0)
-	and (global.show_profile_shortcut = true)
+	and (global.show_profile_shortcut == true)
 	and (in_settings = false)
 	{
 		menu_delay = 3;
@@ -1144,7 +1043,7 @@ and (global.arcade_mode = false)
 	display_get_gui_width() / 2 + 250 + 50,
 	display_get_gui_height() / 2 + 100 + 140 + 19))
 	and (mouse_check_button(mb_left))
-	and (global.show_profile_shortcut = true)
+	and (global.show_profile_shortcut == true)
 	{
 		menu = "profile_shortcut";
 	}
@@ -1213,7 +1112,7 @@ and (global.arcade_mode = false)
 	if (global.demo == false)
 	{
 		draw_menu_button(display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 + 40, l10n_text("Main Game"), "main_game", "main_game");
-		draw_menu_button(display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 +80, l10n_text("Level Editor"), "leveleditor", "leveleditor");
+		draw_menu_button(display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 + 80, l10n_text("Level Editor"), "leveleditor", "leveleditor");
 		options_and_quit_y = display_get_gui_height() / 2 + 100 + 120 + 1;
 	}
 	else
@@ -1236,7 +1135,7 @@ and (global.arcade_mode = false)
 	
 	draw_menu_button_sprite(spr_noone, display_get_gui_width() - 370, display_get_gui_height() - 42, 0, 0, 1, 1, 370, 42, l10n_text("Made by") + " " + (global.company_name), "credits", "play_credits", true);
 	
-	if (global.show_language_shortcut = true)
+	if (global.show_language_shortcut == true)
 	and (global.convention_mode = false)
 	{
 		if (menu == "language_shortcut")
@@ -1247,7 +1146,7 @@ and (global.arcade_mode = false)
 		draw_sprite_ext(spr_settings_icons, 12, display_get_gui_width() / 2 - 230, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
 	}
 
-	if (global.show_accessibility_shortcut = true)
+	if (global.show_accessibility_shortcut == true)
 	and (global.convention_mode = false)
 	{
 		if (menu == "accessibility_shortcut")
@@ -1258,7 +1157,7 @@ and (global.arcade_mode = false)
 		draw_sprite_ext(spr_settings_icons, 1, display_get_gui_width() / 2 + 230, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
 	}
 
-	if (global.show_profile_shortcut = true)
+	if (global.show_profile_shortcut == true)
 	and (global.convention_mode = false)
 	{
 		if (menu == "profile_shortcut")
@@ -1276,7 +1175,7 @@ scr_options_menu(); /* Options */
 scr_quit_to_desktop_menu("quit");
 
 #region /* Select Custom Level Menu */
-if (level_editor_template_select = true)
+if (level_editor_template_select == true)
 and (global.play_attract_demo = false)
 {
 	select_custom_level_menu_open = false;
@@ -1325,7 +1224,7 @@ and (global.play_attract_demo = false)
 	}
 }
 else
-if (select_custom_level_menu_open = true)
+if (select_custom_level_menu_open == true)
 and (global.play_attract_demo = false)
 {
 	level_editor_template_select = false;
@@ -1373,7 +1272,7 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_down)
-		and (global.convention_mode = true)
+		and (global.convention_mode == true)
 		{
 			menu_delay = 3;
 			menu = "credits";
@@ -1396,7 +1295,7 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_down)
-		and (global.convention_mode = true)
+		and (global.convention_mode == true)
 		{
 			menu_delay = 3;
 			menu = "credits";
@@ -1406,7 +1305,7 @@ and (menu_delay == 0)
 	if (menu == "options")
 	{
 		if (key_left)
-		and (global.show_language_shortcut = true)
+		and (global.show_language_shortcut == true)
 		and (global.convention_mode = false)
 		{
 			menu_delay = 3;
@@ -1473,7 +1372,7 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_right)
-		and (global.show_profile_shortcut = true)
+		and (global.show_profile_shortcut == true)
 		and (global.convention_mode = false)
 		{
 			menu_delay = 3;
@@ -1503,7 +1402,7 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_right)
-		and (global.show_accessibility_shortcut = true)
+		and (global.show_accessibility_shortcut == true)
 		and (global.convention_mode = false)
 		{
 			menu_delay = 3;
@@ -1552,14 +1451,14 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_left)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_wiki";
 		}
 		else
 		if (key_right)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_discord";
@@ -1588,7 +1487,7 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_left)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_twitter";
@@ -1623,14 +1522,14 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_left)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_reddit";
 		}
 		else
 		if (key_right)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_wiki";
@@ -1659,14 +1558,14 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_left)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_instagram";
 		}
 		else
 		if (key_right)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_twitter";
@@ -1695,14 +1594,14 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_left)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_gamebanana";
 		}
 		else
 		if (key_right)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_reddit";
@@ -1731,14 +1630,14 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_left)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_discord";
 		}
 		else
 		if (key_right)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_instagram";
@@ -1773,7 +1672,7 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_right)
-		and (global.enable_links = true)
+		and (global.enable_links == true)
 		{
 			menu_delay = 3;
 			menu = "link_gamebanana";

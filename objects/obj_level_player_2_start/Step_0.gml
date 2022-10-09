@@ -115,7 +115,7 @@ or (global.actually_play_edited_level == true)
 			#region /* Load Custom Level Checkpoint */
 			if (file_exists(working_directory + "save_files\file" + string(global.file) + ".ini"))
 			and (global.character_select_in_this_menu == "main_game")
-			or(file_exists(working_directory + "\custom_level_save.ini"))
+			or (file_exists(working_directory + "\custom_level_save.ini"))
 			and (global.character_select_in_this_menu == "level_editor")
 			{
 				if (global.character_select_in_this_menu == "main_game")
@@ -181,8 +181,12 @@ or (global.actually_play_edited_level == true)
 				if (global.checkpoint_x > 0)
 				or (global.checkpoint_y > 0)
 				{
-					camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y);
-					instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_camera);
+					camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
+					if (asset_get_type("obj_camera") == asset_object)
+					and (!instance_exists(obj_camera))
+					{
+						instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_camera);
+					}
 				}
 			}
 			#endregion /* Load Checkpoint END */

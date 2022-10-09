@@ -12,8 +12,11 @@
 //scr_draw_text_outlined(x - 32, y - 128-64-64-64, "saved_file_exists: " + string(saved_file_exists), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x - 32, y - 128-64-64, "can_save_to_character_config: " + string(can_save_to_character_config), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x - 32, y - 128-64, "tongue_move_player_toward_wall: " + string(tongue_move_player_toward_wall), global.default_text_size, c_white, c_black, 1);
-//scr_draw_text_outlined(x - 64, y - 128 - 64, "actually_play_edited_level" + ": " + string(global.actually_play_edited_level), global.default_text_size, c_white, c_red, 1);
-//scr_draw_text_outlined(x - 32, y - 128, "play_edited_level" + ": " + string(global.play_edited_level), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 64, y - 128 - 64 - 64, "ledge_grab" + ": " + string(ledge_grab), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128 - 64, "ledge_grab_delay" + ": " + string(ledge_grab_delay), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128, "ledge_grab_jump" + ": " + string(ledge_grab_jump), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y + 128 - 64, "actually_play_edited_level" + ": " + string(global.actually_play_edited_level), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y + 128, "play_edited_level" + ": " + string(global.play_edited_level), global.default_text_size, c_white, c_red, 1);
 
 #region /* Draw Raycasts */
 if (hold_item_in_hands != "")
@@ -57,7 +60,7 @@ and (key_up)
 
 #region /* Heart above head */
 if (asset_get_type("spr_heart") == asset_sprite)
-and (have_heart_balloon = true)
+and (have_heart_balloon == true)
 {
 	if (asset_get_type("obj_horizontal_rope") == asset_object)
 	and (place_meeting(x, y - 1, obj_horizontal_rope))
@@ -293,7 +296,7 @@ if (redblinktimer > 30)
 {
 	redblinktimer = 0;
 }
-if (midair_jumps_left = 0)
+if (midair_jumps_left == 0)
 and (number_of_jumps > 1)
 {
 	double_jump_depleted_blink += 1;
@@ -316,7 +319,7 @@ and (sprite_index > 0)
 and (intro_animation = "")
 and (invincible <= false)
 {
-	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8, +8), yy+random_range(- 8, +8), draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8, + 8), yy+random_range(- 8, + 8), draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha);
 }
 else
 if (takendamage%2 == 0)
@@ -342,7 +345,7 @@ and (intro_animation = "")
 #endregion /* Draw Self END */
 
 #region /* Draw Collision Mask */
-if (global.show_collision_mask = true)
+if (global.show_collision_mask == true)
 {
 	if (crouch == true)
 	and (sprite_mask_crouch > 0)
@@ -419,7 +422,7 @@ if (assist_invincible = false)
 
 if (invincible >= true)
 {
-	if (floor(random(10 - 1))= 0)
+	if (floor(random(10 - 1)) == 0)
 	{
 		effect_create_above(ef_star, x +random_range(- 50, + 50), y+random_range(- 50, + 50), 0, c_white);
 	}
@@ -434,8 +437,8 @@ if (smooth_teleport < 1)
 	smooth_teleport += 0.1;
 }
 else
-if (stomp_spin = true)
-or(spring = true)
+if (stomp_spin == true)
+or (spring == true)
 {
 	xx = lerp(xx, x, 0.4);
 	yy = lerp(yy, y, 0.4);
@@ -476,7 +479,7 @@ if (allow_homing_attack == true)
 		}
 		else
 		{
-			draw_circle_color (instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 32, c_lime, c_lime, true);
+			draw_circle_color(instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 32, c_lime, c_lime, true);
 		}
 	}
 	#endregion /* Homing Enemy END */
@@ -507,7 +510,7 @@ if (allow_homing_attack == true)
 		}
 		else
 		{
-			draw_circle_color (instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 32, c_lime, c_lime, true);
+			draw_circle_color(instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 32, c_lime, c_lime, true);
 		}
 	}
 	#endregion /* Homing Spring END */
@@ -521,17 +524,17 @@ if (allow_homing_attack == true)
 
 #region /* Display Player Number and Name */
 if (global.player1_can_play == true)
-and (global.player2_can_play = true)
-or (global.player1_can_play = true)
-and (global.player3_can_play = true)
-or (global.player1_can_play = true)
-and (global.player4_can_play = true)
-or (global.player2_can_play = true)
-and (global.player3_can_play = true)
-or (global.player2_can_play = true)
-and (global.player4_can_play = true)
-or (global.player3_can_play = true)
-and (global.player4_can_play = true)
+and (global.player2_can_play == true)
+or (global.player1_can_play == true)
+and (global.player3_can_play == true)
+or (global.player1_can_play == true)
+and (global.player4_can_play == true)
+or (global.player2_can_play == true)
+and (global.player3_can_play == true)
+or (global.player2_can_play == true)
+and (global.player4_can_play == true)
+or (global.player3_can_play == true)
+and (global.player4_can_play == true)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
@@ -584,14 +587,14 @@ and (global.player4_can_play = true)
 
 #region /* If player has more hp, show that */
 if (hp > 0)
-and (global.assist_enable = true)
+and (global.assist_enable == true)
 and (global.assist_invincible = false)
-or(hp > 0)
-and (global.assist_enable = false)
+or (hp > 0)
+and (global.assist_enable == false)
 {
 	if (max_hp = 2) /* If there is only max 2 hp and there is no panting sprite, display HP */
 	and (sprite_panting == noone)
-	or(max_hp >= 3) /* If there is more than max 3 hp, always display HP */
+	or (max_hp >= 3) /* If there is more than max 3 hp, always display HP */
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
@@ -599,3 +602,28 @@ and (global.assist_enable = false)
 	}
 }
 #endregion /* If player has more hp, show that END */
+
+#region /* Tongue aim should always be above everything, it represents the mouse cursor */
+if (allow_tongue == true)
+{
+	if (can_tongue == true) /* If you're able to use the tongue */
+	and (climb == false)
+	and (horizontal_rope_climb == false)
+	{
+		draw_set_alpha(1); /* Don't make the cursor transparent */
+	}
+	else /* If you're not able to use the tongue */
+	{
+		draw_set_alpha(0.5); /* Make the cursor transparent when you can't use your tongue */
+	}
+	
+	#region /* Draw aim cursor with lines */
+	draw_line_width_color(mouse_x - 10, mouse_y, mouse_x - 2, mouse_y, 2, c_red, c_red);
+	draw_line_width_color(mouse_x + 2, mouse_y, mouse_x + 10, mouse_y, 2, c_red, c_red);
+	draw_line_width_color(mouse_x, mouse_y - 10, mouse_x, mouse_y - 2, 2, c_red, c_red);
+	draw_line_width_color(mouse_x, mouse_y + 2, mouse_x, mouse_y + 10, 2, c_red, c_red);
+	draw_set_alpha(1);
+	#endregion /* Draw aim cursor with lines END */
+	
+}
+#endregion /* Tongue aim should always be above everything, it represents the mouse cursor END */

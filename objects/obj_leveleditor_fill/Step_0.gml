@@ -19,8 +19,8 @@ if (delay > 1)
 	{
 		if (fill_mode_type == "fill")
 		{
-			if (free_down = true)
-			and (delay = 2)
+			if (free_down == true)
+			and (delay == 2)
 			{
 				with(instance_create_depth(x, y + 32, 0, obj_leveleditor_fill))
 				{
@@ -28,8 +28,8 @@ if (delay > 1)
 				}
 			}
 			else
-			if (free_left = true)
-			and (delay = 3)
+			if (free_left == true)
+			and (delay == 3)
 			{
 				with(instance_create_depth(x - 32, y, 0, obj_leveleditor_fill))
 				{
@@ -37,8 +37,8 @@ if (delay > 1)
 				}
 			}
 			else
-			if (free_right = true)
-			and (delay = 4)
+			if (free_right == true)
+			and (delay == 4)
 			{
 				with(instance_create_depth(x + 32, y, 0, obj_leveleditor_fill))
 				{
@@ -46,8 +46,8 @@ if (delay > 1)
 				}
 			}
 			else
-			if (free_up = true)
-			and (delay = 5)
+			if (free_up == true)
+			and (delay == 5)
 			{
 				with(instance_create_depth(x, y - 32, 0, obj_leveleditor_fill))
 				{
@@ -58,14 +58,14 @@ if (delay > 1)
 		else
 		if (fill_mode_type == "horizontal")
 		{
-			if (free_left = true)
+			if (free_left == true)
 			{
 				with(instance_create_depth(x - 32, y, 0, obj_leveleditor_fill))
 				{
 					fill_mode_type = "horizontal";
 				}
 			}
-			if (free_right = true)
+			if (free_right == true)
 			{
 				with(instance_create_depth(x + 32, y, 0, obj_leveleditor_fill))
 				{
@@ -76,14 +76,14 @@ if (delay > 1)
 		else
 		if (fill_mode_type == "vertical")
 		{
-			if (free_up = true)
+			if (free_up == true)
 			{
 				with(instance_create_depth(x, y - 32, 0, obj_leveleditor_fill))
 				{
 					fill_mode_type = "vertical";
 				}
 			}
-			if (free_down = true)
+			if (free_down == true)
 			{
 				with(instance_create_depth(x, y + 32, 0, obj_leveleditor_fill))
 				{

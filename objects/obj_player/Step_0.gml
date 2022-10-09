@@ -33,7 +33,7 @@ and (full_level_map_screenshot_timer <= 0)
 	#endregion /* Delete some objects so it doesn't show up in the screenshot END */
 	
 	camera_set_view_border(view_camera[view_current], room_width, room_height); /* View Border */
-	camera_set_view_pos(view_camera[view_current], 0, 0);
+	camera_set_view_pos(view_camera[view_current], 0, 0); /* Set camera position in top left corner when taking full level map screenshots */
 	camera_set_view_size(view_camera[view_current], room_width, room_height);
 	display_set_gui_size(room_width, room_height);
 	surface_resize(application_surface, room_width, room_height);
@@ -65,13 +65,17 @@ if (full_level_map_screenshot_timer == 15)
 if (full_level_map_screenshot_timer == 20)
 {
 	camera_set_view_border(view_camera[view_current], 1920, 1080); /* View Border */
-	camera_set_view_pos(view_camera[view_current], x, y);
+	camera_set_view_pos(view_camera[view_current], x, y); /* Set camera position to object's x and y positions again */
 	camera_set_view_size(view_camera[view_current], 1920, 1080);
 	display_set_gui_size(1920, 1080);
 	surface_resize(application_surface, 1920, 1080);
 	window_set_rectangle(0, 0, 1920, 1080);
 	scr_set_screen_size();
-	instance_create_depth(x, y, 0, obj_camera);
+	if (asset_get_type("obj_camera") == asset_object)
+	and (!instance_exists(obj_camera))
+	{
+		instance_create_depth(x, y, 0, obj_camera);
+	}
 	global.full_level_map_screenshot = false;
 	global.actually_play_edited_level = false;
 	global.play_edited_level = false;
@@ -306,7 +310,7 @@ and (asset_get_type("obj_camera") == asset_object)
 	and (place_meeting(x, y, obj_camera))
 	{
 		if (obj_camera.iris_xscale < 0.3)
-		or(obj_camera.iris_yscale < 0.3)
+		or (obj_camera.iris_yscale < 0.3)
 		{
 			
 			xx_heart = x;
@@ -551,7 +555,7 @@ if (goal == true)
 }
 #endregion /* Don't let the player outside the view too much when winning END */
 
-if (hspeed!= 0)
+if (hspeed != 0)
 {
 	hspeed_dir = sign(hspeed);
 }
@@ -717,7 +721,7 @@ if (player == 4)
 #endregion /* Set values from the Input Settings END */
 
 #region /* Assist Invincible */
-if (assist_invincible = true)
+if (assist_invincible == true)
 {
 	if (hp <= 0)
 	{
@@ -748,7 +752,7 @@ if (assist_invincible = true)
 
 #region /* If Assist delault hp is invincible, stay invincible */
 if (global.assist_enable == true)
-and (global.assist_invincible = true)
+and (global.assist_invincible == true)
 and (hp < max_hp)
 {
 	hp = max_hp;
@@ -1017,7 +1021,7 @@ key_left =
 (key_left_hold_temp)
 and (!key_right_hold_temp)
 or (gamepad_axis_value(player - 1, gp_axislh) < 0)
-or (active_left = true);
+or (active_left == true);
 #endregion /* Key Left Hold END */
 
 #region /* Key Right Hold */
@@ -1025,7 +1029,7 @@ key_right =
 (key_right_hold_temp)
 and (!key_left_hold_temp)
 or (gamepad_axis_value(player - 1, gp_axislh) > 0)
-or (active_right = true);
+or (active_right == true);
 #endregion /* Key Right Hold END */
 
 #region /* Key Down Hold */
@@ -1033,7 +1037,7 @@ key_down =
 (key_down_hold_temp)
 and (!key_up_hold_temp)
 or (gamepad_axis_value(player - 1, gp_axislv) > 0)
-or (active_down = true);
+or (active_down == true);
 #endregion /* Key Down Hold END */
 
 #region /* Key Up Hold */
@@ -1041,7 +1045,7 @@ key_up =
 (key_up_hold_temp)
 and (!key_down_hold_temp)
 or (gamepad_axis_value(player - 1, gp_axislv) < 0)
-or (active_up = true);
+or (active_up == true);
 #endregion /* Key Up Hold END */
 
 #region /* Key Up Pressed */
@@ -1057,7 +1061,7 @@ key_jump =
 (key_jump_pressed_temp)
 or (up_key_is_jump_key == true)
 and (key_up_pressed)
-or (active_jump = true);
+or (active_jump == true);
 #endregion /* Key Jump Pressed END */
 
 #region /* Key Jump Hold */
@@ -1067,7 +1071,7 @@ key_jump_hold =
 (key_jump_hold_temp)
 or (up_key_is_jump_key == true)
 and (key_up)
-or (active_jump = true);
+or (active_jump == true);
 #endregion /* Key Jump Hold END */
 
 #region /* Key Jump Released */
@@ -1086,13 +1090,13 @@ key_crouch_hold =
 (key_crouch_hold_temp)
 or (gamepad_axis_value(player - 1, gp_axislv) > 0)
 or (player <= 1)
-and (global.player1_crouch_toggle = true)
+and (global.player1_crouch_toggle == true)
 or (player = 2)
-and (global.player2_crouch_toggle = true)
+and (global.player2_crouch_toggle == true)
 or (player = 3)
-and (global.player3_crouch_toggle = true)
+and (global.player3_crouch_toggle == true)
 or (player >= 4)
-and (global.player4_crouch_toggle = true);
+and (global.player4_crouch_toggle == true);
 #endregion /* Key Crouch Hold END */
 
 #region /* Key Crouch Pressed */
@@ -1109,13 +1113,13 @@ key_sprint_hold_temp = scr_key_initialize(key_sprint_hold_temp, 0, player, this_
 key_sprint =
 (key_sprint_hold_temp)
 or (player <= 1)
-and (global.player1_sprint_toggle = true)
+and (global.player1_sprint_toggle == true)
 or (player = 2)
-and (global.player2_sprint_toggle = true)
+and (global.player2_sprint_toggle == true)
 or (player = 3)
-and (global.player3_sprint_toggle = true)
+and (global.player3_sprint_toggle == true)
 or (player >= 4)
-and (global.player4_sprint_toggle = true);
+and (global.player4_sprint_toggle == true);
 #endregion /* Key Sprint Hold END */
 
 key_sprint_pressed = scr_key_initialize(key_sprint_pressed, 1, player, this_player_key_sprint, this_player_key2_sprint, this_player_gamepad_button_sprint, this_player_gamepad_button2_sprint);
@@ -1170,7 +1174,7 @@ if (can_move == true)
 	or (gamepad_button_check_pressed(player - 1, gp_start))
 	or (gamepad_button_check_pressed(player - 1, gp_select))
 	or (!gamepad_is_connected(player - 1))
-	and (controller_connected = true)
+	and (controller_connected == true)
 	or (global.actually_play_edited_level == true)
 	and (!window_has_focus())
 	and (global.automatically_pause_when_window_is_unfocused == true)
@@ -1321,11 +1325,11 @@ if (can_move == true)
 #region /* Save to variable when on ground */
 if (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 1, obj_wall) /* If there is wall underneath */)
-or(asset_get_type("obj_semisolid_platform") == asset_object)
+or (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
-or(asset_get_type("obj_semisolid_platform") == asset_object)
+or (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
-or(asset_get_type("obj_semisolid_platform") == asset_object)
+or (asset_get_type("obj_semisolid_platform") == asset_object)
 and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
 {
 	on_ground = true;
@@ -1342,9 +1346,8 @@ and (!key_right)
 and (can_move == true)
 and (global.pause == false)
 {
-	if (wall_jump = 0)
+	if (wall_jump == 0)
 	and (stick_to_wall == false)
-	and (ledge_grab == false)
 	and (climb == false)
 	and (horizontal_rope_climb == false)
 	and (takendamage <= takendamage_freezetime)
@@ -1414,9 +1417,8 @@ and (!key_left)
 and (can_move == true)
 and (global.pause == false)
 {
-	if (wall_jump = 0)
+	if (wall_jump == 0)
 	and (stick_to_wall == false)
-	and (ledge_grab == false)
 	and (climb == false)
 	and (horizontal_rope_climb == false)
 	and (takendamage <= takendamage_freezetime)
@@ -1510,7 +1512,7 @@ else
 	if (crouch == true)
 	and (on_ground == true)
 	{
-		if (allow_crawl = true)
+		if (allow_crawl == true)
 		{
 			speed_max = lerp(speed_max, speed_max_walk / 2, 0.05);
 		}
@@ -1522,11 +1524,11 @@ else
 	}
 	else
 	if (key_sprint)
-	and (allow_run = true)
+	and (allow_run == true)
 	or (double_tap_left = 3)
-	and (allow_run = true)
+	and (allow_run == true)
 	or (double_tap_right == 3)
-	and (allow_run = true)
+	and (allow_run == true)
 	{
 		if (key_left)
 		and (ground_pound == false)
@@ -1566,7 +1568,7 @@ else
 #endregion /* Sprint END */
 
 #region /* Double-tap direction to run */
-if (double_tap_to_run = true)
+if (double_tap_to_run == true)
 {
 	if (!key_sprint)
 	{
@@ -1620,13 +1622,13 @@ if (double_tap_to_run = true)
 		if (!key_left)
 		and (!key_right)
 		{
-			if (double_tap_left = true)
+			if (double_tap_left == true)
 			and (double_tap_run_timer <= 28)
 			{
 				double_tap_left = 2;
 			}
 			else
-			if (double_tap_right = true)
+			if (double_tap_right == true)
 			and (double_tap_run_timer <= 28)
 			{
 				double_tap_right = 2;
@@ -1659,7 +1661,7 @@ if (on_ground == true)
 		{
 			if (key_left)
 			or (key_right)
-			or(goal = true)
+			or (goal == true)
 			{
 				friction = 0.01;
 			}
@@ -1672,7 +1674,7 @@ if (on_ground == true)
 		{
 			if (key_left)
 			or (key_right)
-			or(goal = true)
+			or (goal == true)
 			{
 				friction = 0.1;
 			}
@@ -1737,18 +1739,18 @@ and (key_jump_hold)
 		and (place_meeting(x, y + 1, obj_wall))
 		and (crouch == false)
 		
-		or(asset_get_type("obj_semisolid_platform") == asset_object)
+		or (asset_get_type("obj_semisolid_platform") == asset_object)
 		and (place_meeting(x, y + 1, obj_semisolid_platform))
 		and (crouch == false)
 		and (vspeed == 0)
 		
-		or(asset_get_type("obj_wall") == asset_object)
+		or (asset_get_type("obj_wall") == asset_object)
 		and (place_meeting(x, y + 1, obj_wall))
 		and!(place_meeting(x, y - 1, obj_wall))
 		and (crouch == true)
 		and (vspeed == 0)
 		
-		or(asset_get_type("obj_semisolid_platform") == asset_object)
+		or (asset_get_type("obj_semisolid_platform") == asset_object)
 		and (place_meeting(x, y + 1, obj_semisolid_platform))
 		and!(place_meeting(x, y - 1, obj_semisolid_platform))
 		and (crouch == true)
@@ -1822,19 +1824,19 @@ and (key_jump_hold)
 			
 			#region /* Smoke effect under player when jumping */
 			if (position_meeting(x - 16, bbox_bottom + 1, obj_wall))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
+			or (asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(x - 16, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
 			}
 			if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
+			or (asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 			}
 			if (position_meeting(x + 16, bbox_bottom + 1, obj_wall))
-			or(asset_get_type("obj_semisolid_platform") == asset_object)
+			or (asset_get_type("obj_semisolid_platform") == asset_object)
 			and (position_meeting(x + 16, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
@@ -1915,7 +1917,7 @@ if (can_mid_air_jump > 0)
 if (key_jump)
 and (can_move == true)
 and (global.pause == false)
-and (global.equipped_upgrade_double_jump = true)
+and (global.equipped_upgrade_double_jump == true)
 and (ground_pound == false)
 and (climb == false)
 and (horizontal_rope_climb == false)
@@ -1927,11 +1929,11 @@ and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 and (in_water == false)
-and (can_mid_air_jump = 0)
+and (can_mid_air_jump == 0)
 {
 	if (spring == true)
 	and (vspeed > - 20)
-	or(spring = false)
+	or (spring = false)
 	{
 		if (number_of_jumps >= 2)
 		and (midair_jumps_left > 0)
@@ -1990,7 +1992,7 @@ and (can_mid_air_jump = 0)
 		
 			#region /* Mid-air flip animation */
 			if (midair_jumps_left >= midair_jump_flip_animation)
-			or(number_of_jumps = 2)
+			or (number_of_jumps = 2)
 			and (midair_jump_flip_animation >= 2)
 			{
 				if (image_xscale > 0)
@@ -2072,7 +2074,7 @@ or (place_meeting(x, y + 1, obj_semisolid_platform))
 {
 	if (vspeed > 8)
 	{
-		vspeed = +8;
+		vspeed = + 8;
 	}
 }
 else
@@ -2145,9 +2147,9 @@ and (global.pause == false)
 			can_tongue = true;
 		}
 	}
-	if (allow_tongue = true)
+	if (allow_tongue == true)
 	{
-		if (can_tongue = true)
+		if (can_tongue == true)
 		and (climb == false)
 		and (horizontal_rope_climb == false)
 		{
@@ -2398,7 +2400,7 @@ and (global.pause == false)
 	}
 
 	#region /* Rope Swing */
-	if (rope_swing = true)
+	if (rope_swing == true)
 	{
 		can_ground_pound = false;
 		ground_pound = false;
@@ -2538,7 +2540,7 @@ and (global.pause == false)
 	#endregion /* Rope Swing END */
 	
 	#region /* Fly toward wall when clicking tongue button again */
-	if (rope_swing = true)
+	if (rope_swing == true)
 	and (mouse_check_button_pressed(mb_left))
 	or (rope_swing == true)
 	and (key_tongue_pressed)
@@ -2547,7 +2549,7 @@ and (global.pause == false)
 	}
 	
 	if (instance_exists(obj_tongue))
-	and (tongue_move_player_toward_wall = true)
+	and (tongue_move_player_toward_wall == true)
 	{
 		if (tongue_move_player_toward_wall_timer > 3)
 		{
@@ -2608,10 +2610,10 @@ else
 
 #region /* When the character has stopped moving and can't move closer to tongue, then retrieve the tongue */
 if (instance_exists(obj_tongue))
-and (tongue_move_player_toward_wall = true)
+and (tongue_move_player_toward_wall == true)
 and (speed < +15)
 or (instance_exists(obj_tongue))
-and (tongue_move_player_toward_wall = true)
+and (tongue_move_player_toward_wall == true)
 and (tongue_move_player_toward_wall_timer > 60) /* If it's been over 1 second, cancel the move towards tongue move, as backup if the player didn't stop correctly */
 {
 	
@@ -2638,11 +2640,11 @@ and (tongue_move_player_toward_wall_timer > 60) /* If it's been over 1 second, c
 if (allow_roll == true)
 {
 	if (place_meeting(x, y + 1, obj_wall))
-	or(asset_get_type("obj_semisolid_platform") == asset_object)
+	or (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or(asset_get_type("obj_semisolid_platform") == asset_object)
+	or (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or(asset_get_type("obj_semisolid_platform") == asset_object)
+	or (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (abs(hspeed) < 1)
@@ -2686,28 +2688,28 @@ if (on_ground == true)
 		chain_reaction = 0;
 	}
 }
-if (assist_invincible = true)
+if (assist_invincible == true)
 {
 	chain_reaction = 0;
 }
 #endregion /* Chain Reaction Reset END */
 
 #region /* Wall Jump and Wall Climb */
-if (allow_wall_jump = true)
-and (can_wall_jump = true)
+if (allow_wall_jump == true)
+and (can_wall_jump == true)
 and (can_move == true)
 and (global.pause == false)
 and (takendamage <= takendamage_freezetime)
 and (wall_jump_setting >= 1)
 and (hold_item_in_hands == "")
 
-or (can_move = true)
+or (can_move == true)
 and (global.pause == false)
 and (takendamage <= takendamage_freezetime)
 and (place_meeting(x, y, obj_wall_jump_panel))
 and (hold_item_in_hands == "")
 
-or (can_move = true)
+or (can_move == true)
 and (global.pause == false)
 and (takendamage <= takendamage_freezetime)
 and (place_meeting(x, y, obj_wall_climb_panel))
@@ -2734,7 +2736,7 @@ and (hold_item_in_hands == "")
 			and (wall_jump_setting == 1)
 			and (place_meeting(x - 1, y, obj_wall))
 			and (image_xscale < 0)
-			or(dive = true)
+			or (dive == true)
 			and (wall_jump_setting == 1)
 			and (place_meeting(x - 1, y, obj_wall))
 			and (image_xscale < 0)
@@ -2779,7 +2781,7 @@ and (hold_item_in_hands == "")
 			and (wall_jump_setting == 1)
 			and (place_meeting(x + 1, y, obj_wall))
 			and (image_xscale > 0)
-			or(dive = true)
+			or (dive == true)
 			and (wall_jump_setting == 1)
 			and (place_meeting(x + 1, y, obj_wall))
 			and (image_xscale > 0)
@@ -2888,7 +2890,7 @@ and (hold_item_in_hands == "")
 		}
 		
 		#region /* Wall Climb */
-		if (allow_wall_climb = true)
+		if (allow_wall_climb == true)
 		or (place_meeting(x, y, obj_wall_climb_panel))
 		{
 			dive = false;
@@ -2909,11 +2911,11 @@ and (hold_item_in_hands == "")
 			if (key_up)
 			and (!key_down)
 			
-			or(image_xscale < 0)
+			or (image_xscale < 0)
 			and (key_left)
 			and (!key_right)
 			
-			or(image_xscale > 0)
+			or (image_xscale > 0)
 			and (key_right)
 			and (!key_left)
 			{
@@ -2928,7 +2930,7 @@ and (hold_item_in_hands == "")
 						}
 						can_ground_pound = true;
 						can_dive = true;
-						ledge_grab_jump = true;
+						ledge_grab_jump = true; /* Make the player move forward when climbing up over edge of wall */
 						vspeed = -4;
 					}
 					else
@@ -2984,13 +2986,13 @@ and (hold_item_in_hands == "")
 		and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 		and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		
-		or(allow_dive = true)
+		or (allow_dive == true)
 		and (key_dive_pressed) /* Press dive to jump from wall using a dive */
 		and (key_left)
 		and (!key_right)
 		and (place_meeting(x + 1, y, obj_wall))
 		
-		or(allow_dive = true)
+		or (allow_dive == true)
 		and (key_dive_pressed) /* Press dive to jump from wall using a dive */
 		and (key_right)
 		and (!key_left)
@@ -3035,7 +3037,7 @@ and (hold_item_in_hands == "")
 				midair_jumps_left = number_of_jumps - 1;
 				image_index = 0;
 				effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
-				effect_create_above(ef_smoke, x, bbox_top +8, 0, c_white);
+				effect_create_above(ef_smoke, x, bbox_top + 8, 0, c_white);
 				if (asset_get_type("obj_wall_jumpspark") == asset_object)
 				{
 					instance_create_depth(x, y, 0, obj_wall_jumpspark);
@@ -3061,7 +3063,7 @@ and (hold_item_in_hands == "")
 		
 			#region /* Change direction when diving */
 			if (key_dive_pressed)
-			and (allow_dive = true)
+			and (allow_dive == true)
 			and (key_left)
 			and (!key_right)
 			{
@@ -3069,7 +3071,7 @@ and (hold_item_in_hands == "")
 			}
 			else
 			if (key_dive_pressed)
-			and (allow_dive = true)
+			and (allow_dive == true)
 			and (key_right)
 			and (!key_left)
 			{
@@ -3242,7 +3244,7 @@ and (hold_item_in_hands == "")
 			vspeed = -normal_jump_height;
 			image_index = 0;
 			effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
-			effect_create_above(ef_smoke, x, bbox_top +8, 0, c_white);
+			effect_create_above(ef_smoke, x, bbox_top + 8, 0, c_white);
 			if (asset_get_type("obj_wall_jumpspark") == asset_object)
 			{
 				instance_create_depth(x, y, 0, obj_wall_jumpspark);
@@ -3276,214 +3278,213 @@ and (can_move == true)
 and (global.pause == false)
 and (can_ground_pound == true)
 and (takendamage <= takendamage_freezetime)
+and (dive == false)
+and (burnt == false)
+and (crouch == false)
+and (climb == false)
+and (ledge_grab == false)
+and (horizontal_rope_climb == false)
 {
-	if (dive == false)
-	and (burnt == false)
-	and (crouch == false)
-	and (climb == false)
-	and (horizontal_rope_climb == false)
+	if (key_crouch_pressed)
+	and (joystick_can_ground_pound == true)
+	or (down_and_jump_to_groundpound == true)
+	and (key_down)
+	and (key_jump)
 	{
-		if (key_crouch_pressed)
-		and (joystick_can_ground_pound == true)
-		or (down_and_jump_to_groundpound == true)
-		and (key_down)
-		and (key_jump)
+		if (asset_get_type("obj_wall") == asset_object)
+		and (!place_meeting(x, y + 8, obj_wall))
+		and (asset_get_type("obj_semisolid_platform") == asset_object)
+		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+		and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		{
-			if (asset_get_type("obj_wall") == asset_object)
-			and (!place_meeting(x, y + 8, obj_wall))
-			and (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			if (ground_pound != true)
 			{
-				if (ground_pound != true)
+				ground_pound_cooldown = 1;
+				spring_twist_sprite = false;
+				can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 6;
+				ground_pound = true;
+				stick_to_wall = false;
+				move_towards_spring_endpoint = false;
+				wall_jump = 0;
+				if (image_xscale > 0)
 				{
-					ground_pound_cooldown = 1;
-					spring_twist_sprite = false;
-					can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 6;
-					ground_pound = true;
-					stick_to_wall = false;
-					move_towards_spring_endpoint = false;
-					wall_jump = 0;
-					if (image_xscale > 0)
-					{
-						angle = +360;
-					}
-					else
-					{
-						angle = -360;
-					}
-					image_index = 0;
-					scr_audio_play(snd_rolling, volume_source.sound);
-					hspeed = 0;
-					speed_max = 1;
-					if (image_index > image_number - 1)
-					{
-						image_speed = 0;
-						vspeed = +16;
-					}
-					else
-					{
-						image_speed = 0.5;
-						vspeed = -4;
-					}
+					angle = +360;
+				}
+				else
+				{
+					angle = -360;
+				}
+				image_index = 0;
+				scr_audio_play(snd_rolling, volume_source.sound);
+				hspeed = 0;
+				speed_max = 1;
+				if (image_index > image_number - 1)
+				{
+					image_speed = 0;
+					vspeed = +16;
+				}
+				else
+				{
+					image_speed = 0.5;
+					vspeed = -4;
 				}
 			}
 		}
-		if (ground_pound == true)
+	}
+	if (ground_pound == true)
+	{
+		if (ground_pound_cooldown > 0)
+		and (!key_crouch_hold)
 		{
-			if (ground_pound_cooldown > 0)
-			and (!key_crouch_hold)
-			{
-				ground_pound_cooldown -= 0.5;
-			}
-			if (key_crouch_pressed)
-			and (ground_pound_cooldown == 0)
-			{
-				image_index = image_number - 1;
-				image_speed = 0;
-				vspeed = +16;
-			}
-			if (vspeed > 8)
-			{
-				vspeed = +24;
-			}
+			ground_pound_cooldown -= 0.5;
+		}
+		if (key_crouch_pressed)
+		and (ground_pound_cooldown == 0)
+		{
+			image_index = image_number - 1;
+			image_speed = 0;
+			vspeed = +16;
+		}
+		if (vspeed > 8)
+		{
+			vspeed = +24;
+		}
 	
-			#region /* If hitting a corner of a wall, move the player either left or right */
-			if (on_ground == true)
+		#region /* If hitting a corner of a wall, move the player either left or right */
+		if (on_ground == true)
+		{
+		
+			#region /* Move left to avoid a left corner */
+			if (!position_meeting(bbox_left - 1,bbox_bottom + 1, obj_wall))
+			and (position_meeting(bbox_right + 1,bbox_bottom + 1, obj_wall))
 			{
-		
-				#region /* Move left to avoid a left corner */
-				if (!position_meeting(bbox_left - 1,bbox_bottom + 1, obj_wall))
-				and (position_meeting(bbox_right + 1,bbox_bottom + 1, obj_wall))
-				{
-					x -= 1;
-				}
-				#endregion /* Move left to avoid a left corner END */
-		
-				else
-		
-				#region /* Move right to avoid a right corner */
-				if (position_meeting(bbox_left - 1,bbox_bottom + 1, obj_wall))
-				and (!position_meeting(bbox_right + 1,bbox_bottom + 1, obj_wall))
-				{
-					y += 1;
-				}
-				#endregion /* Move right to avoid a right corner END */
-		
+				x -= 1;
 			}
-			#endregion /* If hitting a corner of a wall, move the player either left or right END */
-
-			#region /* If touching the ground when doing a ground pound */
-			if (position_meeting(bbox_left + 1,bbox_bottom + 1, obj_wall))
-			or (position_meeting(x, bbox_bottom + 1, obj_wall))
-			or (position_meeting(bbox_right - 1,bbox_bottom + 1, obj_wall))
-			or (position_meeting(bbox_left + 1,bbox_bottom + 1, obj_semisolid_platform))
-			or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or (position_meeting(bbox_right - 1,bbox_bottom + 1, obj_semisolid_platform))
-			{
-				with(instance_create_depth(x, bbox_bottom, 0, obj_blockbreak))
-				{
-					can_break_other_blocks = true;
-					image_xscale = 0.75; /* Make the blockbreak hitbox smaller than a block so you don't accidentally break unintended blocks around you */
-					image_yscale = 0.75; /* But not too small so you can't hit the blocks you intend to break */
-				}
-				scr_gamepad_vibration(player, 0.5, 10);
-				effect_create_above(ef_smoke, x, bbox_bottom, 2, c_white);
-				
-				#region /* Continuesly break blocks underneath you, if they are breakable */
-				if (key_crouch_hold)
-				and (place_meeting(x, y + 1, obj_question_block))
-				and (instance_nearest(x, y + 1, obj_question_block).item_inside == "none")
-				and (instance_nearest(x, y + 1, obj_question_block).block_type == "brick_block")
-				or (key_crouch_hold)
-				and (place_meeting(x, y + 1, obj_question_block))
-				and (instance_nearest(x, y + 1, obj_question_block).can_break_this_block == true)
-				{
-					ground_pound = 1;
-					speed_max = 0;
-				}
-				else
-				{
-					image_index = 0;
-					ground_pound = 2;
-					speed_max = 4;
-				}
-				#endregion /* Continuesly break blocks underneath you, if they are breakable END */
-				
-				if (asset_get_type("obj_camera") == asset_object)
-				{
-					with(instance_nearest(x, y, obj_camera))
-					{
-						shake = 10;
-					}
-				}
-				scr_audio_play(snd_hipattack, volume_source.sound);
-			}
-			#endregion /* If touching the ground when doing a ground pound END */
-	
+			#endregion /* Move left to avoid a left corner END */
+		
 			else
-			if (key_up)
-			and (vspeed >4)
-			or (key_dive_pressed)
-			and (vspeed >4)
-			or (vspeed <-4)
+		
+			#region /* Move right to avoid a right corner */
+			if (position_meeting(bbox_left - 1,bbox_bottom + 1, obj_wall))
+			and (!position_meeting(bbox_right + 1,bbox_bottom + 1, obj_wall))
+			{
+				y += 1;
+			}
+			#endregion /* Move right to avoid a right corner END */
+		
+		}
+		#endregion /* If hitting a corner of a wall, move the player either left or right END */
+
+		#region /* If touching the ground when doing a ground pound */
+		if (position_meeting(bbox_left + 1,bbox_bottom + 1, obj_wall))
+		or (position_meeting(x, bbox_bottom + 1, obj_wall))
+		or (position_meeting(bbox_right - 1,bbox_bottom + 1, obj_wall))
+		or (position_meeting(bbox_left + 1,bbox_bottom + 1, obj_semisolid_platform))
+		or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		or (position_meeting(bbox_right - 1,bbox_bottom + 1, obj_semisolid_platform))
+		{
+			with(instance_create_depth(x, bbox_bottom, 0, obj_blockbreak))
+			{
+				can_break_other_blocks = true;
+				image_xscale = 0.75; /* Make the blockbreak hitbox smaller than a block so you don't accidentally break unintended blocks around you */
+				image_yscale = 0.75; /* But not too small so you can't hit the blocks you intend to break */
+			}
+			scr_gamepad_vibration(player, 0.5, 10);
+			effect_create_above(ef_smoke, x, bbox_bottom, 2, c_white);
+				
+			#region /* Continuesly break blocks underneath you, if they are breakable */
+			if (key_crouch_hold)
+			and (place_meeting(x, y + 1, obj_question_block))
+			and (instance_nearest(x, y + 1, obj_question_block).item_inside == "none")
+			and (instance_nearest(x, y + 1, obj_question_block).block_type == "brick_block")
+			or (key_crouch_hold)
+			and (place_meeting(x, y + 1, obj_question_block))
+			and (instance_nearest(x, y + 1, obj_question_block).can_break_this_block == true)
+			{
+				ground_pound = 1;
+				speed_max = 0;
+			}
+			else
 			{
 				image_index = 0;
-				ground_pound = false;
+				ground_pound = 2;
 				speed_max = 4;
-				spring_animation = 2;
 			}
-		}
-		else
-		if (ground_pound == 2)
-		{
-			if (on_ground == true)
+			#endregion /* Continuesly break blocks underneath you, if they are breakable END */
+				
+			if (asset_get_type("obj_camera") == asset_object)
 			{
-				speed_max = 0;
-				hspeed = 0;
-				if (allow_ground_pound_jump == true)
-				and (key_jump_hold)
+				with(instance_nearest(x, y, obj_camera))
 				{
-					can_ground_pound = true;
-					effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
-					ground_pound = 3;
-					image_index = 0;
-					midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
-					speed_max = 4;
-					vspeed = -higher_jump_height;
-					if (image_xscale > 0)
-					{
-						angle = -360;
-					}
-					else
-					{
-						angle = +360;
-					}
+					shake = 10;
 				}
 			}
-			if (image_index > image_number - 1)
+			scr_audio_play(snd_hipattack, volume_source.sound);
+		}
+		#endregion /* If touching the ground when doing a ground pound END */
+	
+		else
+		if (key_up)
+		and (vspeed >4)
+		or (key_dive_pressed)
+		and (vspeed >4)
+		or (vspeed <-4)
+		{
+			image_index = 0;
+			ground_pound = false;
+			speed_max = 4;
+			spring_animation = 2;
+		}
+	}
+	else
+	if (ground_pound == 2)
+	{
+		if (on_ground == true)
+		{
+			speed_max = 0;
+			hspeed = 0;
+			if (allow_ground_pound_jump == true)
+			and (key_jump_hold)
 			{
+				can_ground_pound = true;
+				effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
+				ground_pound = 3;
+				image_index = 0;
+				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 				speed_max = 4;
-				ground_pound = false;
+				vspeed = -higher_jump_height;
+				if (image_xscale > 0)
+				{
+					angle = -360;
+				}
+				else
+				{
+					angle = +360;
+				}
 			}
 		}
-		else
-		if (ground_pound == 3)
+		if (image_index > image_number - 1)
 		{
-			if (key_sprint)
-			{
-				speed_max = 8;
-			}
-			else
-			{
-				speed_max = 4;
-			}
-			if (image_index > image_number - 1)
-			or (vspeed > 0)
-			{
-				ground_pound = false;
-			}
+			speed_max = 4;
+			ground_pound = false;
+		}
+	}
+	else
+	if (ground_pound == 3)
+	{
+		if (key_sprint)
+		{
+			speed_max = 8;
+		}
+		else
+		{
+			speed_max = 4;
+		}
+		if (image_index > image_number - 1)
+		or (vspeed > 0)
+		{
+			ground_pound = false;
 		}
 	}
 }
@@ -3536,209 +3537,206 @@ and (player <= 4)
 #endregion /* Ground Pound END */
 
 #region /* Dive */
-if (allow_dive = true)
+if (allow_dive == true)
 and (can_move == true)
 and (hold_item_in_hands == "")
 and (global.pause == false)
+and (can_dive == true)
+and (drop_off_wall_climb == 0)
+and (in_water == false)
 {
-	if (can_dive = true)
-	and (drop_off_wall_climb = 0)
-	and (in_water == false)
+	if (dive == false)
+	and (burnt == false)
+	and (stick_to_wall == false)
+	and (ledge_grab == false)
+	and (climb == false)
+	and (horizontal_rope_climb == false)
+	and (takendamage <= takendamage_freezetime)
+	and (key_dive_pressed)
 	{
-		if (dive == false)
-		and (burnt == false)
-		and (stick_to_wall == false)
-		and (climb == false)
-		and (horizontal_rope_climb == false)
-		and (takendamage <= takendamage_freezetime)
+		if (rope_swing == true)
 		{
-			if (key_dive_pressed)
+			if (instance_exists(obj_tongue))
 			{
-				if (rope_swing = true)
+				with(instance_nearest(x, y, obj_tongue))
 				{
-					if (instance_exists(obj_tongue))
-					{
-						with(instance_nearest(x, y, obj_tongue))
-						{
-							timer = 25;
-							move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
-						}
-					}
-					vspeed = -normal_jump_height + vspeed;
-					rope_angle_velocity = 0;
-					grapple_x = x;
-					grapple_y = y;
-					rope_angle = point_direction(grapple_x, grapple_y, x, y);
-					rope_length = point_distance(grapple_x, grapple_y, x, y);
-					rope_swing = false;
+					timer = 25;
+					move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
 				}
-				if (speed_max <8)
-				{
-					speed_max = 8;
-				}
-				if (!place_meeting(x, y - 8, obj_wall))
-				{
-					vspeed = -6;
-				}
-				else
-				{
-					vspeed = 0;
-				}
+			}
+			vspeed = -normal_jump_height + vspeed;
+			rope_angle_velocity = 0;
+			grapple_x = x;
+			grapple_y = y;
+			rope_angle = point_direction(grapple_x, grapple_y, x, y);
+			rope_length = point_distance(grapple_x, grapple_y, x, y);
+			rope_swing = false;
+		}
+		if (speed_max <8)
+		{
+			speed_max = 8;
+		}
+		if (!place_meeting(x, y - 8, obj_wall))
+		{
+			vspeed = -6;
+		}
+		else
+		{
+			vspeed = 0;
+		}
 					
-				#region /* Choose direction to dive */
-				if (key_left)
-				and (!key_right)
-				or(image_xscale < 0)
-				{
-					if (hspeed >- 10)
-					{
-						if (asset_get_type("obj_wall") == asset_object)
-						and (!place_meeting(x - 4, y, obj_wall))
-						{
-							hspeed = - 10;
-						}
-					}
-					image_xscale = -1;
-				}
-				else
-				if (key_right)
-				and (!key_left)
-				or(image_xscale > 0)
-				{
-					if (hspeed <+ 10)
-					{
-						if (asset_get_type("obj_wall") == asset_object)
-						and (!place_meeting(x + 4, y, obj_wall))
-						{
-							hspeed = +10;
-						}
-					}
-					image_xscale = +1;
-				}
-				#endregion /* Choose direction to dive */
-					
-				ground_pound = false;
-				can_ground_pound = false;
-				scr_audio_play(snd_dive, volume_source.sound);
-				scr_audio_play(voice_dive, volume_source.voice);
-				dive = true;
-				jump = 0;
-				spring = false;
-				move_towards_spring_endpoint = false;
+		#region /* Choose direction to dive */
+		if (key_left)
+		and (!key_right)
+		or (image_xscale < 0)
+		{
+			if (hspeed >- 10)
+			{
 				if (asset_get_type("obj_wall") == asset_object)
-				and (!place_meeting(x, y + 1, obj_wall))
-				and (asset_get_type("obj_semisolid_platform") == asset_object)
-				and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-				and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-				and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+				and (!place_meeting(x - 4, y, obj_wall))
 				{
-					crouch = false;
+					hspeed = - 10;
 				}
-				image_index = 0;
-				angle = 0;
-				wall_jump = 0;
-				glide = false;
-				can_glide = 20;
+			}
+			image_xscale = -1;
+		}
+		else
+		if (key_right)
+		and (!key_left)
+		or (image_xscale > 0)
+		{
+			if (hspeed <+ 10)
+			{
+				if (asset_get_type("obj_wall") == asset_object)
+				and (!place_meeting(x + 4, y, obj_wall))
+				{
+					hspeed = +10;
+				}
+			}
+			image_xscale = +1;
+		}
+		#endregion /* Choose direction to dive */
+					
+		ground_pound = false;
+		can_ground_pound = false;
+		scr_audio_play(snd_dive, volume_source.sound);
+		scr_audio_play(voice_dive, volume_source.voice);
+		dive = true;
+		jump = 0;
+		spring = false;
+		move_towards_spring_endpoint = false;
+		if (asset_get_type("obj_wall") == asset_object)
+		and (!place_meeting(x, y + 1, obj_wall))
+		and (asset_get_type("obj_semisolid_platform") == asset_object)
+		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+		and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		{
+			crouch = false;
+		}
+		image_index = 0;
+		angle = 0;
+		wall_jump = 0;
+		glide = false;
+		can_glide = 20;
+	}
+	else
+	if (dive == true)
+	{
+		if (key_left)
+		and (asset_get_type("obj_wall") == asset_object)
+		and (place_meeting(x + 1, y, obj_wall))
+		or (key_right)
+		and (asset_get_type("obj_wall") == asset_object)
+		and (place_meeting(x - 1, y, obj_wall))
+		{
+			hspeed = 0;
+		}
+			
+		#region /* Propel the player forward in the direction the player is facing */
+		if (image_xscale < 0)
+		{
+			if (hspeed >-4)
+			{
+				if (asset_get_type("obj_wall") == asset_object)
+				and (!place_meeting(x - 4, y, obj_wall))
+				{
+					hspeed = -4;
+				}
+				else
+				if (asset_get_type("obj_wall") == asset_object)
+				and (!place_meeting(x - 1, y, obj_wall))
+				{
+					hspeed = - 1;
+				}
 			}
 		}
 		else
-		if (dive == true)
+		if (image_xscale > 0)
 		{
-			if (key_left)
-			and (asset_get_type("obj_wall") == asset_object)
-			and (place_meeting(x + 1, y, obj_wall))
-			or (key_right)
-			and (asset_get_type("obj_wall") == asset_object)
-			and (place_meeting(x - 1, y, obj_wall))
+			if (hspeed <+ 4)
 			{
-				hspeed = 0;
+				if (asset_get_type("obj_wall") == asset_object)
+				and (!place_meeting(x + 4, y, obj_wall))
+				{
+					hspeed = +4;
+				}
+				else
+				if (asset_get_type("obj_wall") == asset_object)
+				and (!place_meeting(x + 1, y, obj_wall))
+				{
+					hspeed = +1;
+				}
 			}
+		}
+		#endregion /* Propel the player forward in the direction the player is facing END */
 			
-			#region /* Propel the player forward in the direction the player is facing */
-			if (image_xscale < 0)
-			{
-				if (hspeed >-4)
-				{
-					if (asset_get_type("obj_wall") == asset_object)
-					and (!place_meeting(x - 4, y, obj_wall))
-					{
-						hspeed = -4;
-					}
-					else
-					if (asset_get_type("obj_wall") == asset_object)
-					and (!place_meeting(x - 1, y, obj_wall))
-					{
-						hspeed = - 1;
-					}
-				}
-			}
-			else
-			if (image_xscale > 0)
-			{
-				if (hspeed <+ 4)
-				{
-					if (asset_get_type("obj_wall") == asset_object)
-					and (!place_meeting(x + 4, y, obj_wall))
-					{
-						hspeed = +4;
-					}
-					else
-					if (asset_get_type("obj_wall") == asset_object)
-					and (!place_meeting(x + 1, y, obj_wall))
-					{
-						hspeed = +1;
-					}
-				}
-			}
-			#endregion /* Propel the player forward in the direction the player is facing END */
-			
-			#region /* If player lands on ground when diving, stop diving */
-			if (on_ground == true)
-			{
-				if (vspeed >= 0)
-				{
-					dive = false;
-					dive_on_ground = 10;
-					can_attack_after_dive_on_ground = can_attack_after_dive_on_ground_max_value;
-					ground_pound = false;
-					can_ground_pound = false;
-				}
-			}
-			#endregion /* If player lands on ground when diving, stop diving END */
-
-			#region /* If player lands in water when diving, stop diving */
-			if (in_water == true)
+		#region /* If player lands on ground when diving, stop diving */
+		if (on_ground == true)
+		{
+			if (vspeed >= 0)
 			{
 				dive = false;
-				can_dive = true;
-				crouch = false;
+				dive_on_ground = 10;
+				can_attack_after_dive_on_ground = can_attack_after_dive_on_ground_max_value;
+				ground_pound = false;
+				can_ground_pound = false;
 			}
-			#endregion /* If player lands in water when diving, stop diving END */
-			
-			#region /* Cancel dive (only when you have enabled dive canceling in settings) */
-			if (cancel_dive_by_pressing_jump_or_dive_button = true)
-			{
-				if (key_jump)
-				or (key_dive_pressed)
-				{
-					dive = false;
-					can_dive = false;
-				}
-			}
-			if (cancel_dive_by_pressing_opposite_direction = true)
-			{
-				if (hspeed < 0)
-				and (key_right)
-				or (hspeed > 0)
-				and (key_left)
-				{
-					dive = false;
-					can_dive = false;
-				}
-			}
-			#endregion /* Cancel dive (only when you have enabled dive canceling in settings) END */
-			
 		}
+		#endregion /* If player lands on ground when diving, stop diving END */
+
+		#region /* If player lands in water when diving, stop diving */
+		if (in_water == true)
+		{
+			dive = false;
+			can_dive = true;
+			crouch = false;
+		}
+		#endregion /* If player lands in water when diving, stop diving END */
+			
+		#region /* Cancel dive (only when you have enabled dive canceling in settings) */
+		if (cancel_dive_by_pressing_jump_or_dive_button == true)
+		{
+			if (key_jump)
+			or (key_dive_pressed)
+			{
+				dive = false;
+				can_dive = false;
+			}
+		}
+		if (cancel_dive_by_pressing_opposite_direction == true)
+		{
+			if (hspeed < 0)
+			and (key_right)
+			or (hspeed > 0)
+			and (key_left)
+			{
+				dive = false;
+				can_dive = false;
+			}
+		}
+		#endregion /* Cancel dive (only when you have enabled dive canceling in settings) END */
+			
 	}
 }
 #endregion /* Dive END */
@@ -3760,7 +3758,7 @@ if (on_ground == true)
 #endregion /* Can Tongue After Dive On Ground END */
 
 #region /* Dive ground boost */
-if (allow_dive_ground_boost = true)
+if (allow_dive_ground_boost == true)
 and (dive_on_ground > 0)
 and (on_ground == true)
 {
@@ -3813,71 +3811,78 @@ and (on_ground == true)
 #endregion /* Dive ground boost END */
 
 #region /* Ledge Grab */
-if (allow_ledge_grab = true)
+if (allow_ledge_grab == true)
 {
 	if (in_water == true)
-	or(x < camera_get_view_x(view_camera[view_current]) + 25)
-	or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 25)
+	or (x < camera_get_view_x(view_camera[view_current]) + 25)
+	or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 25)
 	{
-		can_ledge_grab = false;
+		can_ledge_grab = false; /* You are not able to grab a ledge in certain situations, so set this variable to false */
 	}
 	else
 	{
 		can_ledge_grab = true;
 	}
-	if (can_ledge_grab = true)
+	if (can_ledge_grab == true)
 	{
-		if (hspeed!= 0)
+		if (hspeed != 0)
 		{
 			hspeed_dir = sign(hspeed);
 		}
-		if (ground_pound < 1)
-		and (burnt < 1)
+		if (ground_pound <= false)
+		and (burnt <= false)
 		{
-			if (!position_meeting(x + 37*hspeed_dir,bbox_top - 16, obj_wall))
-			and (position_meeting(x + 37*hspeed_dir,bbox_top +8, obj_wall))
-			and (yprevious - 16< y)
-			and (vspeed > 0)
-			and (!place_meeting(x, y+ sprite_height/3, obj_wall))
-			and (!key_down)
+			if (!position_meeting(x + 37 * hspeed_dir, bbox_top - 16, obj_wall))
+			and (position_meeting(x + 37 * hspeed_dir, bbox_top, obj_wall))
+			and (vspeed > 0) /* Only grab the ledge if you are falling */
+			and (!place_meeting(x, y + 1, obj_wall)) /* If there is no ground underneath you, then you can grab the ledge */
+			and (!key_down) /* If you hold down while approaching a ledge, then you don't grab it */
 			{
-				if (asset_get_type("snd_grabledge") == asset_sound)
+				if (asset_get_type("snd_grab_ledge") == asset_sound)
 				{
-					scr_audio_play(snd_grabledge, volume_source.sound);
+					scr_audio_play(snd_grab_ledge, volume_source.sound);
 				}
 				gravity = 0;
 				hspeed = 0;
 				vspeed = 0;
 				
 				#region /* Move against the ledge */
-				while(!place_meeting(x +hspeed_dir, y, obj_wall))
+				while(!place_meeting(x + hspeed_dir, y, obj_wall))
 				{
-					x +=hspeed_dir;
+					x += hspeed_dir;
 				}
-				#endregion /* Move against the ledge */
+				#endregion /* Move against the ledge END */
 				
 				#region /* Make sure we are the right height */
-				while(position_meeting(x + (17*hspeed_dir), y - 5, obj_wall))
+				while(position_meeting(x + (17 * hspeed_dir), bbox_top + 1, obj_wall))
 				{
 					y -= 1;
 				}
 				#endregion /* Make sure we are the right height END */
 				
-				ledge_grab_jump = false;
-				ledge_grab+= 1;
+				ledge_grab_jump = false; /* Make sure player doesn't move forward when first grabbing a ledge */
+				ledge_grab = true; /* Set this variable to true so the game knows you are currently grabbing a ledge*/
+				ledge_grab_delay = 0; /* Reset the grabbing ledge delay */
 				stick_to_wall = false;
-				wall_jump = 0;
-				jump = 0;
+				wall_jump = false;
+				jump = false;
+				ground_pound = false;
+				spring = false;
+				can_ground_pound = false;
+				dive = false;
+				glide = false;
 			}
 		}
-		if (ledge_grab> 0)
+		if (ledge_grab == true) /* If you are currently grabbing a ledge, then run this code */
+		and (ledge_grab_delay <= 10) /* Don't actually grab ledge if the variable is above 10, because variable above 10 is for delay when releasing ledge*/
 		{
-			ledge_grab+= 1;
-		}
-		if (ledge_grab>false)
-		{
+			if (ledge_grab_delay < 10) /* If variable is below 10, then increase it, so that there is a delay before you can climb up or jump off */
+			{
+				ledge_grab_delay += 1;
+			}
 			gravity = 0;
 			hspeed = 0;
+			vspeed = 0;
 			if (place_meeting(x - 1, y, obj_wall))
 			{
 				image_xscale = -1;
@@ -3887,21 +3892,26 @@ if (allow_ledge_grab = true)
 			{
 				image_xscale = +1;
 			}
-			vspeed = 0;
 			if (sprite_ledge_grab > noone)
 			{
 				sprite_index = sprite_ledge_grab;
 			}
 			else
+			if (sprite_wall_slide > noone)
 			{
 				sprite_index = sprite_wall_slide;
+			}
+			else
+			if (sprite_stand > noone)
+			{
+				sprite_index = sprite_stand;
 			}
 			if (key_left)
 			and (image_xscale = -1)
 			or (key_right)
 			and (image_xscale = +1)
 			{
-				if (ledge_grab> 10)
+				if (ledge_grab_delay == 10) /* Can only climb up ledge after grabbing ledge for 10 frames */
 				{
 					if (image_xscale > 0)
 					{
@@ -3911,20 +3921,20 @@ if (allow_ledge_grab = true)
 					{
 						angle = -360;
 					}
-					if (asset_get_type("snd_pullup") == asset_sound)
+					if (asset_get_type("snd_pull_up") == asset_sound)
 					{
-						scr_audio_play(snd_pullup, volume_source.sound);
+						scr_audio_play(snd_pull_up, volume_source.sound);
 					}
 					vspeed = - 8;
-					ledge_grab = false;
-					ledge_grab_jump = true;
+					ledge_grab_delay = 11; /* Start ledge grab delay so you can't immediately grab another ledge by accident */
+					ledge_grab_jump = true; /* Make the player move forward when climbing up from a ledge grab */
 					stick_to_wall = false;
 					wall_jump = 0;
 				}
 			}
 			else
-			if (key_jump)
-			or (key_up)
+			if (key_jump) /* If you press jump or up when grabbing a ledge, then you can immediately climb up, so you don't have to wait for the ledge grab delay */
+			or (key_up_pressed) /* The player have to intentionally PRESS up if they want to climb up, so you don't climb up by mistake when you hold up */
 			{
 				if (image_xscale > 0)
 				{
@@ -3934,64 +3944,80 @@ if (allow_ledge_grab = true)
 				{
 					angle = -360;
 				}
-				if (asset_get_type("snd_pullupfast") == asset_sound)
+				if (asset_get_type("snd_pull_up_fast") == asset_sound)
 				{
-					scr_audio_play(snd_pullupfast, volume_source.sound);
+					scr_audio_play(snd_pull_up_fast, volume_source.sound);
 				}
 				vspeed = -normal_jump_height;
-				ledge_grab = false;
-				ledge_grab_jump = true;
+				ledge_grab_delay = 11; /* Start ledge grab delay so you can't immediately grab another ledge by accident */
+				ledge_grab_jump = true; /* Make the player move forward when jumping up from a ledge grab */
 				stick_to_wall = false;
 				wall_jump = 0;
 			}
-			if (key_left)
+			if (key_left) /* If you press left while looking right, then drop down from ledge */
 			and (image_xscale = +1)
-			or (key_right)
+			or (key_right) /* If you press right while looking left, then drop down from ledge */
 			and (image_xscale = -1)
 			or (key_down)
 			{
-				if (ledge_grab> 10)
+				if (ledge_grab_delay >= 10) /* Can only drop down from ledge after grabbing ledge for 10 frames */
 				{
-					hspeed = + 0.1*-hspeed_dir;
-					ledge_grab = false;
-					ledge_grab_jump = true;
+					if (key_down)
+					and (key_crouch_pressed)
+					{
+						can_ground_pound = false; /* If down key uses the same input as ground pound key, you can't ground pound immediately, so you don't accidentally ground pound */
+					}
+					hspeed = +0.1 * -hspeed_dir;
+					ledge_grab_delay = 11; /* Start ledge grab delay so you can't immediately grab another ledge by accident */
+					ledge_grab_jump = false; /* Make sure player doesn't move forward when dropping down from a ledge grab */
 					stick_to_wall = false;
 					wall_jump = 0;
 				}
 			}
 		}
-		if (on_ground == true)
-		{
-			ledge_grab_jump = false;
-		}
 	}
 }
+
+#region /* Delay before you can do another ledge grab */
+if (ledge_grab_delay >= 11)
+{
+	ledge_grab_delay += 1;
+	if (ledge_grab_delay >= 13)
+	{
+		ledge_grab = false; /* The game recognizes that you are no longer grabbing a ledge after 1 frame when jumping up or down from ledge, so you don't accidentally do another action you didn't mean to do */
+	}
+	if (ledge_grab_delay >= 30)
+	{
+		ledge_grab_jump = false; /* Stop moving forward when jumping up from ledge grab */
+		ledge_grab_delay = 0; /* You can now do another ledge grab */
+	}
+}
+#endregion /* Delay before you can do another ledge grab END */
+
+if (on_ground == true)
+{
+	ledge_grab_jump = false; /* Stop moving forward when landing on ground */
+}
+
 #endregion /* Ledge Grab END */
 
-#region /* ledge_grab_jump / Get up over ledge */
-if (ledge_grab_jump = true)
+#region /* Ledge grab jump / Get up over ledge */
+if (ledge_grab_jump == true)
 and (stick_to_wall == false)
 {
 	if (image_xscale == -1)
-	and (!place_meeting(x, y - 4, obj_wall))
+	and (!place_meeting(x, y - 1, obj_wall))
 	{
-		hspeed-= 0.1;
+		hspeed -= 0.1;
 	}
 	else
 	if (image_xscale == +1)
-	and (!place_meeting(x, y + 4, obj_wall))
+	and (!place_meeting(x, y + 1, obj_wall))
 	{
 		hspeed += 0.1;
 	}
-	if (on_ground == true)
-	{
-		if (vspeed >= 0)
-		{
-			ledge_grab_jump = false;
-		}
-	}
 }
-#endregion /* ledge_grab_jump / Get up over ledge END */
+#endregion /* Ledge grab jump / Get up over ledge END */
 
 #region /* Put sprite angle at right angle */
 if (angle <- 360)
@@ -4084,7 +4110,7 @@ else
 if (asset_get_type("obj_water") == asset_object)
 {
 	if (position_meeting(x, y, obj_water))
-	or(asset_get_type("obj_water_level") == asset_object)
+	or (asset_get_type("obj_water_level") == asset_object)
 	and (instance_exists(obj_water_level))
 	and (y > obj_water_level.y)
 	and (obj_water_level.y < room_height)
@@ -4185,8 +4211,8 @@ if (asset_get_type("obj_water") == asset_object)
 				{
 					with(instance_create_depth(x, y, 0, obj_bubble))
 					{
-						direction =random(360);
-						speed =random(2);
+						direction = random(360);
+						speed = random(2);
 					}
 				}
 			}
@@ -4195,12 +4221,12 @@ if (asset_get_type("obj_water") == asset_object)
 		}
 		if (asset_get_type("obj_bubble") == asset_object)
 		{
-			if (floor(random(30 - 1))= 0)
+			if (floor(random(30 - 1)) == 0)
 			{
 				with(instance_create_depth(x, y, 0, obj_bubble))
 				{
-					direction =random(360);
-					speed =random(2);
+					direction = random(360);
+					speed = random(2);
 				}
 			}
 		}
@@ -4228,7 +4254,7 @@ if (asset_get_type("obj_water") == asset_object)
 		{
 			if (hspeed > 0)
 			{
-				hspeed-= 0.1;
+				hspeed -= 0.1;
 			}
 		}
 		#endregion /* Slow down if not pressing anything END */
@@ -4245,15 +4271,15 @@ if (asset_get_type("obj_water") == asset_object)
 #endregion /* Swimming In Water END */
 
 #region /* Drowning */
-if (allow_drowning = true)
+if (allow_drowning == true)
 and (can_move == true)
 and (goal == false)
-and (global.assist_enable = true)
-and (global.assist_breathe_underwater = false)
-or (allow_drowning = true)
+and (global.assist_enable == true)
+and (global.assist_breathe_underwater == false)
+or (allow_drowning == true)
 and (can_move == true)
 and (goal == false)
-and (global.assist_enable = false)
+and (global.assist_enable == false)
 {
 	drawn_frames_until_drowning = lerp(drawn_frames_until_drowning, frames_until_drowning, 0.1);
 	if (in_water == true)
@@ -4359,10 +4385,10 @@ if (in_water != old_in_water)
 #region /* Speedup to Dashspeed */
 if (abs(hspeed) > 7)
 and (invincible >= true)
-and (power_meter_running_sound = true)
+and (power_meter_running_sound == true)
 {
 	speedunit += 2;
-	if (speedunit> 100)
+	if (speedunit > 100)
 	{
 		speedunit = 100;
 		if (asset_get_type("snd_power_meter_running") == asset_sound)
@@ -4441,7 +4467,7 @@ if (hp <= 0)
 #region /* Don't gain more HP than your max HP */
 if (hp > max_hp)
 {
-	if (allow_overflow_hp = true)
+	if (allow_overflow_hp == true)
 	{
 		overflow_hp += 1;
 		if (overflow_hp >= max_overflow_hp)
@@ -4458,40 +4484,38 @@ if (hp > max_hp)
 
 #region /* Burnt */
 if (asset_get_type("obj_lava") == asset_object)
+and (place_meeting(x, y, obj_lava))
 {
-	if (place_meeting(x, y, obj_lava))
+	if (allow_survive_lava == true)
+	and (hp > 0)
 	{
-		if (allow_survive_lava = true)
-		and (hp > 0)
+		burnt = true;
+		dive = false;
+		ground_pound = false;
+		stick_to_wall = false;
+		crouch = false;
+		speed_max = 8;
+		takendamage = 100;
+		if (invincible < 1)
 		{
-			burnt = true;
-			dive = false;
-			ground_pound = false;
-			stick_to_wall = false;
-			crouch = false;
-			speed_max = 8;
-			takendamage = 100;
-			if (invincible < 1)
-			{
-				scr_audio_play(voice_burned, volume_source.voice);
-				hp -= 1;
-			}
-			if (invincible > 0)
-			{
-				scr_audio_play(voice_burned, volume_source.voice);
-			}
-			if (vspeed > 0)
-			{
-				vspeed = -15;
-			}
+			scr_audio_play(voice_burned, volume_source.voice);
+			hp -= 1;
 		}
-		else
+		if (invincible > 0)
 		{
-			die = true;
+			scr_audio_play(voice_burned, volume_source.voice);
+		}
+		if (vspeed > 0)
+		{
+			vspeed = -15;
 		}
 	}
+	else
+	{
+		die = true;
+	}
 }
-if (burnt = true)
+if (burnt == true)
 {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
 	if (on_ground == true)
@@ -4506,7 +4530,7 @@ if (burnt = true)
 	}
 }
 else
-if (burnt = 2)
+if (burnt == 2)
 {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
 	if (on_ground == true)
@@ -4799,7 +4823,7 @@ and (gamepad_is_connected(3))
 #endregion /* Remove player if there is no controls mapped for this player END */
 
 #region /* Die */
-if (die = true)
+if (die == true)
 and (goal == false)
 {
 	scr_gamepad_vibration(player, 1, 30);
@@ -4995,12 +5019,9 @@ and (goal == false)
 			
 		}
 		else
-		
-		#region /* Restart Game */
 		{
 			game_restart();
 		}
-		#endregion /* Restart Game END */
 		
 		instance_destroy();
 	}
@@ -5403,7 +5424,7 @@ if (allow_homing_attack == true)
 	if (place_meeting(x, y, obj_enemy))
 	{
 		if (homing_attack_x > 0)
-		or(homing_attack_y > 0)
+		or (homing_attack_y > 0)
 		{
 			hspeed = 0;
 			vspeed = -triple_jump_height;
@@ -5594,7 +5615,7 @@ if (spring == true)
 	{
 		angle = direction - 90;
 		if (speed < 6)
-		or(direction >= 90 - 10)
+		or (direction >= 90 - 10)
 		and (direction <= 90 + 10)
 		{
 			spring_twist_sprite = false;
@@ -5649,19 +5670,16 @@ and (stick_to_wall == false)
 #endregion /* Left END */
 
 #region /* Right */
-if (key_right)
+if (!audio_is_playing(snd_bump))
 and (!key_left)
-and (place_meeting(x + 1, y, obj_wall))
 and (climb == false)
+and (key_right)
+and (on_ground == true)
+and (asset_get_type("obj_wall") == asset_object)
+and (place_meeting(x + 1, y, obj_wall))
 and (stick_to_wall == false)
 {
-	if (on_ground == true)
-	{
-		if (!audio_is_playing(snd_bump))
-		{
-			scr_audio_play(snd_bump, volume_source.sound);
-		}
-	}
+	scr_audio_play(snd_bump, volume_source.sound);
 }
 #endregion /* Right END */
 
@@ -7287,7 +7305,7 @@ and (vspeed == 0)
 	{
 		if (crouch == false)
 		{
-			if (against_wall_animation = 0)
+			if (against_wall_animation == 0)
 			{
 				image_index = 0;
 				if (sprite_against_wall_start > noone){sprite_index = sprite_against_wall_start; image_speed = 0.5;}else
@@ -7297,7 +7315,7 @@ and (vspeed == 0)
 				against_wall_animation = 1;
 			}
 			else
-			if (against_wall_animation = 1)
+			if (against_wall_animation == 1)
 			{
 				if (sprite_against_wall_start > noone){sprite_index = sprite_against_wall_start; image_speed = 0.5;}else
 				if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
@@ -7351,7 +7369,7 @@ and (vspeed == 0)
 		else
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
-		and (global.rain = true)
+		and (global.rain == true)
 		and (sprite_stand_cold > noone)
 		{
 			sprite_index = sprite_stand_cold;
@@ -7364,7 +7382,7 @@ and (vspeed == 0)
 				image_index = 0;
 				idle_animtaion = choose(0, 0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 			}
-			if (idle_animtaion = 1)
+			if (idle_animtaion == 1)
 			and (sprite_stand_blink > noone)
 			{
 				sprite_index = sprite_stand_blink;
@@ -7388,25 +7406,25 @@ and (vspeed == 0)
 				sprite_index = sprite_idle_animation3;
 			}
 			else
-			if (idle_animtaion = 5)
+			if (idle_animtaion == 5)
 			and (sprite_idle_animation4 > noone)
 			{
 				sprite_index = sprite_idle_animation4;
 			}
 			else
-			if (idle_animtaion = 6)
+			if (idle_animtaion == 6)
 			and (sprite_idle_animation5 > noone)
 			{
 				sprite_index = sprite_idle_animation5;
 			}
 			else
-			if (idle_animtaion = 7)
+			if (idle_animtaion == 7)
 			and (sprite_idle_animation6 > noone)
 			{
 				sprite_index = sprite_idle_animation6;
 			}
 			else
-			if (idle_animtaion = 8)
+			if (idle_animtaion == 8)
 			and (sprite_idle_animation7 > noone)
 			{
 				sprite_index = sprite_idle_animation7;
@@ -7524,7 +7542,7 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	else
 	if (vspeed < 0)
 	{
-		if (stomp_spin = true)
+		if (stomp_spin == true)
 		{
 			if (sprite_stomp_spin > noone){sprite_index = sprite_stomp_spin;if (image_index > image_number - 1){image_speed = 0;}else{image_speed = 0.5;}}else
 			if (sprite_jump > noone){sprite_index = sprite_jump;}else
@@ -8195,6 +8213,7 @@ if (allow_glide == true)
 	and (stick_to_wall == false)
 	and (climb == false)
 	and (horizontal_rope_climb == false)
+	and (ledge_grab == false)
 	and (can_glide == 0)
 	{
 		glide = true;

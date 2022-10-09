@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_options_keyboard_and_mouse_menu",
+  "name": "scr_options_control_menu",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

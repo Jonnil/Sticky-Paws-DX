@@ -48,7 +48,7 @@ if (vspeed >= 0)
 }
 #endregion /* When falling, it's not bouncing up anymore END */
 
-if (coil_spring = true)
+if (coil_spring == true)
 {
 	if (hspeed >= 0)
 	{
@@ -71,11 +71,11 @@ if (coil_spring = true)
 	}
 	if (asset_get_type("obj_wall") == asset_object)
 	and (place_meeting(x, y + 1, obj_wall))
-	or(asset_get_type("obj_semisolid_platform") == asset_object)
+	or (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or(asset_get_type("obj_semisolid_platform") == asset_object)
+	or (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or(asset_get_type("obj_semisolid_platform") == asset_object)
+	or (asset_get_type("obj_semisolid_platform") == asset_object)
 	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		scr_audio_play(snd_star_bound, volume_source.sound);
@@ -89,7 +89,7 @@ if (place_meeting(x, y - 1, obj_wall))
 	vspeed = +1;
 }
 
-if (floor(random(10 - 1)) = 0)
+if (floor(random(10 - 1)) == 0)
 and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 and (x > camera_get_view_x(view_camera[view_current]))
 and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))

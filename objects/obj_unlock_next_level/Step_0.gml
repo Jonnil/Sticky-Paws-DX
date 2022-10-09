@@ -27,10 +27,10 @@ left down = 3
 #region /* Touch Map Turn Right Down */
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn = 0) /* Right Down = 0 */
+and (instance_nearest(x, y, obj_map_path_turn).turn == 0) /* Right Down = 0 */
 {
 	if (abs(hspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	and (instance_nearest(x, y, obj_map_path_turn).delay == 0)
 	{
 		hspeed = 0;
 		vspeed = + move_speed;
@@ -43,7 +43,7 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 0) /* Right Down = 0 */
 	}
 	else
 	if (abs(vspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	and (instance_nearest(x, y, obj_map_path_turn).delay == 0)
 	{
 		hspeed = + move_speed;
 		vspeed = 0;
@@ -62,10 +62,10 @@ else
 #region /* Touch Map Turn Up Right */
 if (asset_get_type("obj_map_path_turn") == asset_object)
 and (place_meeting(x, y, obj_map_path_turn))
-and (instance_nearest(x, y, obj_map_path_turn).turn = 1) /* Up Right = 1 */
+and (instance_nearest(x, y, obj_map_path_turn).turn == 1) /* Up Right = 1 */
 {
 	if (abs(hspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	and (instance_nearest(x, y, obj_map_path_turn).delay == 0)
 	{
 		hspeed = 0;
 		vspeed = - move_speed;
@@ -78,7 +78,7 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 1) /* Up Right = 1 */
 	}
 	else
 	if (abs(vspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	and (instance_nearest(x, y, obj_map_path_turn).delay == 0)
 	{
 		hspeed = + move_speed;
 		vspeed = 0;
@@ -100,7 +100,7 @@ and (place_meeting(x, y, obj_map_path_turn))
 and (instance_nearest(x, y, obj_map_path_turn).turn = 2) /* Up Left = 2 */
 {
 	if (abs(hspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	and (instance_nearest(x, y, obj_map_path_turn).delay == 0)
 	{
 		hspeed = 0;
 		vspeed = - move_speed;
@@ -113,7 +113,7 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 2) /* Up Left = 2 */
 	}
 	else
 	if (abs(vspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	and (instance_nearest(x, y, obj_map_path_turn).delay == 0)
 	{
 		hspeed = - move_speed;
 		vspeed = 0;
@@ -135,7 +135,7 @@ and (place_meeting(x, y, obj_map_path_turn))
 and (instance_nearest(x, y, obj_map_path_turn).turn = 3) /* Left Down = 3 */
 {
 	if (abs(hspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	and (instance_nearest(x, y, obj_map_path_turn).delay == 0)
 	{
 		hspeed = 0;
 		vspeed = + move_speed;
@@ -148,7 +148,7 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 3) /* Left Down = 3 */
 	}
 	else
 	if (abs(vspeed) > 0)
-	and (instance_nearest(x, y, obj_map_path_turn).delay = 0)
+	and (instance_nearest(x, y, obj_map_path_turn).delay == 0)
 	{
 		hspeed = - move_speed;
 		vspeed = 0;

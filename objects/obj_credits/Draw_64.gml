@@ -15,16 +15,16 @@ draw_set_valign(fa_top);
 
 #region /* If gamepad is connected */
 if (gamepad_is_connected(0))
-and (global.player1_can_play = true)
+and (global.player1_can_play == true)
 and (global.controls_used_for_menu_navigation == "controller")
 or(gamepad_is_connected(1))
-and (global.player2_can_play = true)
+and (global.player2_can_play == true)
 and (global.controls_used_for_menu_navigation == "controller")
 or(gamepad_is_connected(2))
-and (global.player3_can_play = true)
+and (global.player3_can_play == true)
 and (global.controls_used_for_menu_navigation == "controller")
 or(gamepad_is_connected(3))
-and (global.player4_can_play = true)
+and (global.player4_can_play == true)
 and (global.controls_used_for_menu_navigation == "controller")
 {
 	scr_draw_text_outlined(window_get_width() - 16, 0, l10n_text("Skip") + " : " + l10n_text("Hold Start"), global.default_text_size, c_black, c_white, 1);
@@ -35,7 +35,7 @@ else
 
 #region /* If playing on mobile */
 if (os_type == os_ios)
-or(os_type == os_android)
+or (os_type == os_android)
 {
 	scr_draw_text_outlined(window_get_width() - 16, 0, l10n_text("Skip") + " : " + l10n_text("Press and Hold Screen"), global.default_text_size, c_black, c_white, 1);
 }
@@ -77,9 +77,9 @@ or (gamepad_button_check(0, gp_start))
 or (gamepad_button_check(1, gp_start))
 or (gamepad_button_check(2, gp_start))
 or (gamepad_button_check(3, gp_start))
-or(os_type == os_ios)
+or (os_type == os_ios)
 and (mouse_check_button(mb_left))
-or(os_type == os_android)
+or (os_type == os_android)
 and (mouse_check_button(mb_left))
 {
 	skip += 1;
@@ -108,7 +108,7 @@ and (sprite_index = spr_credits)
 }
 
 if (image_index <= 1)
-and (end_credits = true)
+and (end_credits == true)
 and (sprite_index = spr_credits)
 {
 	menu_delay = 9999;
@@ -239,7 +239,7 @@ if (global.enable_transitions == true)
 		}
 		draw_rectangle_color(0, 0, window_get_width()* 2, window_get_height() / 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(0, 0, window_get_width() / 2 - iris_xscale * 128, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color (window_get_width() / 2 + iris_xscale * 128 - 1, 0, window_get_width()* 2, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(window_get_width() / 2 + iris_xscale * 128 - 1, 0, window_get_width()* 2, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(0, window_get_height() / 2 + iris_yscale * 128, window_get_width()* 2, window_get_height()* 2, c_black, c_black, c_black, c_black, false);
 	}
 }

@@ -43,7 +43,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 		and (menu != "load_custom_level")
 		and (menu != "load_characters")
 		and (menu != "load_official_level_template")
-		or (show_first_thumbnail_name = true)
+		or (show_first_thumbnail_name == true)
 		and (menu != "load_custom_level")
 		and (menu != "load_characters")
 		and (menu != "load_official_level_template")

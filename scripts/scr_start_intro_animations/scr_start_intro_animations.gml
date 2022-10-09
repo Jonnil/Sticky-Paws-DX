@@ -12,7 +12,7 @@ function scr_start_intro_animations()
 		and (obj_camera.intro_animation_play_only_once = false)
 		or(intro_animation = "cake_stolen")
 		and (instance_exists(obj_camera))
-		and (obj_camera.intro_animation_play_only_once = true)
+		and (obj_camera.intro_animation_play_only_once == true)
 		and (global.current_level_clear_rate = "enter")
 		{
 			can_move = false;
@@ -69,7 +69,7 @@ function scr_start_intro_animations()
 			else
 			if (cutscene_time > 60 * 5.2)
 			{
-				hspeed = +8;
+				hspeed = + 8;
 				vspeed = - 8;
 				can_move = true;
 				intro_animation = "";
@@ -85,7 +85,7 @@ function scr_start_intro_animations()
 		and (obj_camera.intro_animation_play_only_once = false)
 		or(intro_animation = "ending")
 		and (instance_exists(obj_camera))
-		and (obj_camera.intro_animation_play_only_once = true)
+		and (obj_camera.intro_animation_play_only_once == true)
 		and (global.current_level_clear_rate = "enter")
 		{
 			can_move = false;

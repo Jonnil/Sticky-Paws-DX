@@ -30,7 +30,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	#endregion /* Draw the inputed text END */
 	
-	#region /* A file name can't contain any of the following characters */
+	#region /* A file name can't contain any of these characters */
 	if (ord(keyboard_lastchar) != ord("\\"))
 	and (ord(keyboard_lastchar) != ord("/"))
 	and (ord(keyboard_lastchar) != ord(":"))
@@ -47,7 +47,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	{
 		keyboard_string = string_copy(what_string_to_edit, 1, max_characters);
 	}
-	#endregion /* A file name can't contain any of the following characters END */
+	#endregion /* A file name can't contain any of these characters END */
 	
 	#region /* When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that */
 	if (keyboard_string = "\u007f") /* This is the unicode for DEL character */
@@ -77,7 +77,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	var buttons_cancel_y = buttons_ok_y + 42;
 	if (can_press_ok_when_input_empty = false)
 	and (keyboard_string != "")
-	or (can_press_ok_when_input_empty = true)
+	or (can_press_ok_when_input_empty == true)
 	{
 		draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
 		if (global.controls_used_for_menu_navigation == "mouse")

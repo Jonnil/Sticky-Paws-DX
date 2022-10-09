@@ -10,7 +10,7 @@ function scr_spawn_objects_when_starting_room()
 			
 			#region /* Only spawn objects according to difficulty settings */
 			if (global.difficulty <= 0)
-			and (easy = true)
+			and (easy == true)
 			or (global.difficulty == 1)
 			and (normal == true)
 			or (global.difficulty >= 2)

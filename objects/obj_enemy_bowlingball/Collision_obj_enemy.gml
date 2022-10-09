@@ -1,6 +1,6 @@
 #region /* Turn around */
 if (die = false)
-and (sliding_along_ground = 0)
+and (sliding_along_ground == 0)
 and (other.die = false)
 {
 	if (!place_meeting(x, y, obj_bullet))
@@ -66,8 +66,8 @@ and (die = false)
 
 if (die = false)
 and (other.speed > speed)
-and (other.flat = true)
-and (other.sliding_along_ground = 0)
+and (other.flat == true)
+and (other.sliding_along_ground == 0)
 {
 	if (die_volting = false)
 	{

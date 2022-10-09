@@ -61,7 +61,7 @@ else
 	{
 		hspeed = +1;
 	}
-	if (flat = true)
+	if (flat == true)
 	{
 		speed = 0;
 		image_speed = 0.5;
@@ -80,7 +80,7 @@ if (flat = false)
 	{
 		sprite_used = "angry";
 		sprite_index = global.resource_pack_sprite_basic_enemy_angry;
-		if (blind = true)
+		if (blind == true)
 		{
 			if (global.resource_pack_sprite_basic_enemy_blind > noone){sprite_index = global.resource_pack_sprite_basic_enemy_blind;}else
 			if (global.resource_pack_sprite_basic_enemy_angry > noone){sprite_index = global.resource_pack_sprite_basic_enemy_angry;}
@@ -94,7 +94,7 @@ if (flat = false)
 	else
 	{
 		sprite_used = "stand";
-		if (blind = true)
+		if (blind == true)
 		{
 			if (global.resource_pack_sprite_basic_enemy_blind > noone){sprite_index = global.resource_pack_sprite_basic_enemy_blind;}else
 			if (global.resource_pack_sprite_basic_enemy > noone){sprite_index = global.resource_pack_sprite_basic_enemy;}
@@ -137,10 +137,10 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 }
 
 #region /* Coil spring bouncing code */
-if (coil_spring = true)
+if (coil_spring == true)
 and (die = false)
 and (place_meeting(x, y + 1, obj_wall))
-or (coil_spring = true)
+or (coil_spring == true)
 and (die = false)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
@@ -159,7 +159,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
 			effect_create_above(ef_smoke, x - 16 - 8,bbox_bottom- 8, 0, c_white);
 			effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
-			effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
+			effect_create_above(ef_smoke, x + 16 + 8,bbox_bottom- 8, 0, c_white);
 		}
 		scr_audio_play(snd_spring, volume_source.sound, 0.1);
 	}

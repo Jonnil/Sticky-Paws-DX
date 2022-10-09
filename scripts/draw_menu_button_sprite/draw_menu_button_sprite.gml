@@ -34,7 +34,7 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(x_position + (spr_width / 2), y_position + (spr_height / 2), string(string_text), global.default_text_size, c_black, c_white, 1); /* White text inside the menu button */
-		if (show_arrows = true)
+		if (show_arrows == true)
 		{
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position - 24, y_position + (spr_height / 2), 1, 1, 0, c_white, 1);
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + spr_width + 24, y_position + (spr_height / 2), 1, 1, 180, c_white, 1);

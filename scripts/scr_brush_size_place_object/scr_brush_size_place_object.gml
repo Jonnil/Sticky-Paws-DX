@@ -5,7 +5,7 @@ function scr_brush_size_place_object(xx, yy, place_brush_size_number, can_place_
 	and (obj_leveleditor.place_brush_size >= place_brush_size_number - 1)
 	and (can_put_objects_above_other_objects = false)
 	or (obj_leveleditor.place_brush_size >= place_brush_size_number - 1)
-	and (can_put_objects_above_other_objects = true)
+	and (can_put_objects_above_other_objects == true)
 	and (mouse_check_button_pressed(mb_left))
 	{
 		obj_leveleditor.placing_object = 1;

@@ -16,7 +16,7 @@ if (effect_time > 60)
 
 if (instance_number(obj_player)= 1)
 {
-	if (obj_player.assist_invincible = true)
+	if (obj_player.assist_invincible == true)
 	{
 		effect_create_above(ef_ring, x, y, 1, c_white);
 		instance_destroy();

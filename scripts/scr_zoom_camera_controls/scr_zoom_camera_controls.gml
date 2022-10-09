@@ -1,5 +1,7 @@
 function scr_zoom_camera_controls()
 {
+	/* This script uses normal draw functions so only use it in normal draw event (Not draw GUI) */
+	
 	key_player1_zoom_in_hold = scr_key_initialize(key_player1_zoom_in_hold, 0, 1, global.player1_key_zoom_in, global.player1_key2_zoom_in, global.player1_gamepad_button_zoom_in, global.player1_gamepad_button2_zoom_in);
 	key_player2_zoom_in_hold = scr_key_initialize(key_player2_zoom_in_hold, 0, 2, global.player2_key_zoom_in, global.player2_key2_zoom_in, global.player2_gamepad_button_zoom_in, global.player2_gamepad_button2_zoom_in);
 	key_player3_zoom_in_hold = scr_key_initialize(key_player3_zoom_in_hold, 0, 3, global.player3_key_zoom_in, global.player3_key2_zoom_in, global.player3_gamepad_button_zoom_in, global.player3_gamepad_button2_zoom_in);
@@ -10,34 +12,36 @@ function scr_zoom_camera_controls()
 	key_player3_zoom_out_hold = scr_key_initialize(key_player3_zoom_out_hold, 0, 3, global.player3_key_zoom_out, global.player3_key2_zoom_out, global.player3_gamepad_button_zoom_out, global.player3_gamepad_button2_zoom_out);
 	key_player4_zoom_out_hold = scr_key_initialize(key_player4_zoom_out_hold, 0, 4, global.player4_key_zoom_out, global.player4_key2_zoom_out, global.player4_gamepad_button_zoom_out, global.player4_gamepad_button2_zoom_out);
 	
-	/* This script uses normal draw functions so only use it in normal draw event (Not draw GUI) */
-	if(gamepad_axis_value(0, gp_axisrv) < 0)
-	or (gamepad_axis_value(0, gp_axisrv) < 0)
-	{
-		var zoom_speed = abs(gamepad_axis_value(0, gp_axisrv)) * 0.015;
-	}
-	else
-	if(gamepad_axis_value(1, gp_axisrv) < 0)
-	or (gamepad_axis_value(1, gp_axisrv) < 0)
-	{
-		var zoom_speed = abs(gamepad_axis_value(1, gp_axisrv)) * 0.015;
-	}
-	else
-	if(gamepad_axis_value(2, gp_axisrv) < 0)
-	or (gamepad_axis_value(2, gp_axisrv) < 0)
-	{
-		var zoom_speed = abs(gamepad_axis_value(2, gp_axisrv)) * 0.015;
-	}
-	else
-	if(gamepad_axis_value(3, gp_axisrv) < 0)
-	or (gamepad_axis_value(3, gp_axisrv) < 0)
-	{
-		var zoom_speed = abs(gamepad_axis_value(3, gp_axisrv)) * 0.015;
-	}
-	else
-	{
+	#region /* Zoom with joystick */
+	//if (gamepad_axis_value(0, gp_axisrv) < 0)
+	//or (gamepad_axis_value(0, gp_axisrv) < 0)
+	//{
+	//	var zoom_speed = abs(gamepad_axis_value(0, gp_axisrv)) * 0.015;
+	//}
+	//else
+	//if (gamepad_axis_value(1, gp_axisrv) < 0)
+	//or (gamepad_axis_value(1, gp_axisrv) < 0)
+	//{
+	//	var zoom_speed = abs(gamepad_axis_value(1, gp_axisrv)) * 0.015;
+	//}
+	//else
+	//if (gamepad_axis_value(2, gp_axisrv) < 0)
+	//or (gamepad_axis_value(2, gp_axisrv) < 0)
+	//{
+	//	var zoom_speed = abs(gamepad_axis_value(2, gp_axisrv)) * 0.015;
+	//}
+	//else
+	//if (gamepad_axis_value(3, gp_axisrv) < 0)
+	//or (gamepad_axis_value(3, gp_axisrv) < 0)
+	//{
+	//	var zoom_speed = abs(gamepad_axis_value(3, gp_axisrv)) * 0.015;
+	//}
+	#endregion /* Zoom with joystick END */
+	
+	//else
+	//{
 		var zoom_speed = 0.015;
-	}
+	//}
 	if (room = room_title)
 	{
 		zoom_lerp = 1; /* In create event, have this: zoom_lerp = 1; */
@@ -70,10 +74,10 @@ function scr_zoom_camera_controls()
 		or (key_player4_zoom_in_hold)
 		and (!key_player4_zoom_out_hold)
 		
-		or (gamepad_axis_value(0, gp_axisrv) < 0)
-		or (gamepad_axis_value(1, gp_axisrv) < 0)
-		or (gamepad_axis_value(2, gp_axisrv) < 0)
-		or (gamepad_axis_value(3, gp_axisrv) < 0)
+		//or (gamepad_axis_value(0, gp_axisrv) < 0)
+		//or (gamepad_axis_value(1, gp_axisrv) < 0)
+		//or (gamepad_axis_value(2, gp_axisrv) < 0)
+		//or (gamepad_axis_value(3, gp_axisrv) < 0)
 		{
 			if (zoom_lerp > 0.2)
 			{
@@ -109,10 +113,10 @@ function scr_zoom_camera_controls()
 		or (key_player4_zoom_out_hold)
 		and (!key_player4_zoom_in_hold)
 		
-		or (gamepad_axis_value(0, gp_axisrv) > 0)
-		or (gamepad_axis_value(1, gp_axisrv) > 0)
-		or (gamepad_axis_value(2, gp_axisrv) > 0)
-		or (gamepad_axis_value(3, gp_axisrv) > 0)
+		//or (gamepad_axis_value(0, gp_axisrv) > 0)
+		//or (gamepad_axis_value(1, gp_axisrv) > 0)
+		//or (gamepad_axis_value(2, gp_axisrv) > 0)
+		//or (gamepad_axis_value(3, gp_axisrv) > 0)
 		{
 			if (zoom_lerp < 1)
 			{

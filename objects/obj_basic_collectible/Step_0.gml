@@ -12,9 +12,9 @@ if (bounceup = false)
 		or (place_meeting(bbox_right, y, obj_player))
 		or (place_meeting(x, bbox_top, obj_player))
 		or (place_meeting(x, bbox_bottom, obj_player))
-		or(asset_get_type("obj_enemy_bowlingball") == asset_object)
+		or (asset_get_type("obj_enemy_bowlingball") == asset_object)
 		and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
-		and (instance_nearest(x, y, obj_enemy_bowlingball).flat = true)
+		and (instance_nearest(x, y, obj_enemy_bowlingball).flat == true)
 		and (instance_nearest(x, y, obj_enemy_bowlingball).die = false)
 		and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 		{
@@ -26,7 +26,7 @@ if (bounceup = false)
 			or (asset_get_type("obj_wall") == asset_object)
 			and (asset_get_type("obj_enemy_bowlingball") == asset_object)
 			and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
-			and (instance_nearest(x, y, obj_enemy_bowlingball).flat = true)
+			and (instance_nearest(x, y, obj_enemy_bowlingball).flat == true)
 			and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
 			{
 				effect_create_above(ef_ring, x, y, 0, c_white);
@@ -62,7 +62,7 @@ if (bounceup = false)
 }
 
 #region /* Bounce up */
-if (bounceup = true)
+if (bounceup == true)
 {
 	if (delay >= delay_time)
 	{

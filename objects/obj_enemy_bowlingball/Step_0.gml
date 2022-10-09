@@ -53,11 +53,11 @@ else
 	}
 	#endregion /* Set the gravity END */
 	
-	if (flat = true)
+	if (flat == true)
 	{
 		image_speed = 0.5;
 		sprite_used = "flattened";
-		if (blind = true)
+		if (blind == true)
 		{
 			if (global.resource_pack_sprite_enemy_bowlingball_blind_stomped > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_blind_stomped;}else
 			if (global.resource_pack_sprite_enemy_bowlingball_stomped > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_stomped;}
@@ -67,10 +67,10 @@ else
 			if (global.resource_pack_sprite_enemy_bowlingball_stomped > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_stomped;}else
 			if (global.resource_pack_sprite_enemy_bowlingball_blind_stomped > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_blind_stomped;}
 		}
-		if (stomped_delay = 0)
+		if (stomped_delay == 0)
 		{
 			if (instance_exists(obj_player))
-			and (sliding_along_ground = 0)
+			and (sliding_along_ground == 0)
 			and (instance_nearest(x, y, obj_player).hold_item_in_hands = "")
 			and (instance_nearest(x, y, obj_player).key_dive_hold)
 			and (instance_nearest(x, y, obj_player).horizontal_rope_climb = false)
@@ -87,10 +87,10 @@ else
 			else
 			if (instance_exists(obj_player))
 			and (position_meeting(bbox_left - 1, y, obj_player))
-			and (instance_nearest(x, y, obj_player).hspeed >= +8)
+			and (instance_nearest(x, y, obj_player).hspeed >= + 8)
 			and (instance_nearest(x, y, obj_player).x < x)
-			and (sliding_along_ground = 0)
-			and (flat = true)
+			and (sliding_along_ground == 0)
+			and (flat == true)
 			{
 				instance_nearest(x, y, obj_player).dive = false;
 				sliding_along_ground = +1;
@@ -145,8 +145,8 @@ else
 			if (instance_exists(obj_player))
 			and (position_meeting(bbox_right + 1, y, obj_player))
 			and (instance_nearest(x, y, obj_player).hspeed <= -8)
-			and (sliding_along_ground = 0)
-			and (flat = true)
+			and (sliding_along_ground == 0)
+			and (flat == true)
 			{
 				sliding_along_ground = -1;
 				sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
@@ -200,8 +200,8 @@ else
 			if (instance_exists(obj_player))
 			and (position_meeting(bbox_left - 1, y, obj_player))
 			and (instance_nearest(x, y, obj_player).x < x)
-			and (sliding_along_ground = 0)
-			and (flat = true)
+			and (sliding_along_ground == 0)
+			and (flat == true)
 			{
 				sliding_along_ground = +1;
 				sliding_along_ground_speed = 8;
@@ -255,8 +255,8 @@ else
 			else
 			if (instance_exists(obj_player))
 			and (position_meeting(bbox_right + 1, y, obj_player))
-			and (sliding_along_ground = 0)
-			and (flat = true)
+			and (sliding_along_ground == 0)
+			and (flat == true)
 			{
 				sliding_along_ground = -1;
 				sliding_along_ground_speed = 8;
@@ -334,7 +334,7 @@ if (flat = false)
 	}
 	#endregion /* Turn around END */
 	
-	if (blind = true)
+	if (blind == true)
 	{
 		if (global.resource_pack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_blind_walk;}else
 		if (global.resource_pack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_walk;}
@@ -365,10 +365,10 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	}
 }
 
-if (coil_spring = true)
+if (coil_spring == true)
 and (die = false)
 and (place_meeting(x, y + 1, obj_wall))
-or (coil_spring = true)
+or (coil_spring == true)
 and (die = false)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
@@ -387,7 +387,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
 			effect_create_above(ef_smoke, x - 16 - 8,bbox_bottom- 8, 0, c_white);
 			effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
-			effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
+			effect_create_above(ef_smoke, x + 16 + 8,bbox_bottom- 8, 0, c_white);
 		}
 		scr_audio_play(snd_spring, volume_source.sound, 0.1);
 	}
@@ -398,7 +398,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 }
 
 if (sliding_along_ground = -1)
-and (flat = true)
+and (flat == true)
 and (die = false)
 {
 	draw_angle += 10;
@@ -430,7 +430,7 @@ and (die = false)
 }
 else
 if (sliding_along_ground = +1)
-and (flat = true)
+and (flat == true)
 and (die = false)
 {
 	draw_angle -= 10;
@@ -461,8 +461,8 @@ and (die = false)
 	}
 }
 else
-if (sliding_along_ground = 0)
-and (flat = true)
+if (sliding_along_ground == 0)
+and (flat == true)
 and (die = false)
 {
 	friction = 0.05;

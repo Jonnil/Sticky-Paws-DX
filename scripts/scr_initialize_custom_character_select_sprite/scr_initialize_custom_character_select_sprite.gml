@@ -67,7 +67,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 	#endregion /* Add sprite END */
 	
 	#region /* Origin points */
-	if (saved_file_exists = true)
+	if (saved_file_exists == true)
 	{
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player])) + "/data/sprite_origin_point.ini"))
 		{
@@ -92,7 +92,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
 		and (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
-			if (can_save_to_character_config = true)
+			if (can_save_to_character_config == true)
 			{
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2);
 			}
@@ -104,7 +104,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		if (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
 		and (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
-			if (can_save_to_character_config = true)
+			if (can_save_to_character_config == true)
 			{
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2);
 			}
@@ -114,7 +114,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		}
 		else
 		{
-			if (can_save_to_character_config = true)
+			if (can_save_to_character_config == true)
 			{
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2);
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2);
@@ -131,7 +131,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 	else
 	
 	#region /* If the sprite doesn't exist, but there are still origin points saved for that sprite, then delete those origin points from sprite_origin_point.ini, but save the unused origin points in unused_sprite_origin_point.ini */
-	if (saved_file_exists = false)
+	if (saved_file_exists == false)
 	and (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player])) + "/data/sprite_origin_point.ini"))
 	{
 		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player])) + "/data/sprite_origin_point.ini");

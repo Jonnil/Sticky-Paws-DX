@@ -8,7 +8,7 @@ function scr_show_fps()
 	{
 		
 		#region /* FPS */
-		if (global.show_fps = true)
+		if (global.show_fps == true)
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
@@ -26,7 +26,7 @@ function scr_show_fps()
 		#endregion /* FPS END */
 		
 		#region /* FPS Real */
-		if (global.show_fps_real = true)
+		if (global.show_fps_real == true)
 		{
 			if (fps_real >= 200)
 			{

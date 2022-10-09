@@ -1,9 +1,9 @@
-if (water_level_change_speed = 0)
+if (water_level_change_speed == 0)
 {
 	sprite_index = spr_water_level_change_slow;
 }
 else
-if (water_level_change_speed = 1)
+if (water_level_change_speed == 1)
 {
 	sprite_index = spr_water_level_change_fast;
 }

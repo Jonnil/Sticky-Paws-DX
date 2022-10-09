@@ -1,3 +1,6 @@
+mouse_x_position = window_mouse_get_x();
+mouse_y_position = window_mouse_get_y();
+
 randomize();
 
 display_xscale = 1.5;
@@ -466,7 +469,7 @@ company_splash_3 = noone;
 controller_splash = noone;
 
 #region /* Interpolation */
-if (global.interpolate = true)
+if (global.interpolate == true)
 {
 	gpu_set_texfilter(true);
 }

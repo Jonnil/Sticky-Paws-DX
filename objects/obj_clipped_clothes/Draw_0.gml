@@ -69,7 +69,7 @@ and (fall = false)
 	}
 	#endregion /* Make clippers fly out END */
 }
-if (fall = true)
+if (fall == true)
 {
 	if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))

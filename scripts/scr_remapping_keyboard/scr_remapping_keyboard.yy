@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_keyboardremapping",
+  "name": "scr_remapping_keyboard",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

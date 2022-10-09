@@ -26,7 +26,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		and (open_dropdown == false)
 		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position + 32, y_position + 2, x_position + 555+ 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.assist_enable = true)
+		and (global.assist_enable == true)
 		and (menu == "assist_enable")
 		and (menu_delay == 0)
 		and (open_dropdown == false)
@@ -81,7 +81,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position + 32, y_position + 2, x_position + 555+ 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_pressed(mb_left))
-		and (global.assist_enable = true)
+		and (global.assist_enable == true)
 		and (menu == "assist_enable")
 		and (menu_delay == 0)
 		and (open_dropdown == false)
@@ -103,12 +103,12 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		#endregion /* Text above the menu button END */
 		
 		#region /* Text inside the menu button */
-		if (variable_to_change = 0)
+		if (variable_to_change == 0)
 		{
 			scr_draw_text_outlined(x_position + 277+ 32, y_position + 21, string(string_text_item1), global.default_text_size, c_white, c_black, 1);
 		}
 		else
-		if (variable_to_change = 1)
+		if (variable_to_change == 1)
 		{
 			scr_draw_text_outlined(x_position + 277+ 32, y_position + 21, string(string_text_item2), global.default_text_size, c_white, c_black, 1);
 		}
@@ -128,22 +128,22 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 			scr_draw_text_outlined(x_position + 277+ 32, y_position + 21, string(string_text_item5), global.default_text_size, c_white, c_black, 1);
 		}
 		else
-		if (variable_to_change = 5)
+		if (variable_to_change == 5)
 		{
 			scr_draw_text_outlined(x_position + 277+ 32, y_position + 21, string(string_text_item6), global.default_text_size, c_white, c_black, 1);
 		}
 		else
-		if (variable_to_change = 6)
+		if (variable_to_change == 6)
 		{
 			scr_draw_text_outlined(x_position + 277+ 32, y_position + 21, string(string_text_item7), global.default_text_size, c_white, c_black, 1);
 		}
 		else
-		if (variable_to_change = 7)
+		if (variable_to_change == 7)
 		{
 			scr_draw_text_outlined(x_position + 277+ 32, y_position + 21, string(string_text_item8), global.default_text_size, c_white, c_black, 1);
 		}
 		else
-		if (variable_to_change = 8)
+		if (variable_to_change == 8)
 		{
 			scr_draw_text_outlined(x_position + 277+ 32, y_position + 21, string(string_text_item9), global.default_text_size, c_white, c_black, 1);
 		}

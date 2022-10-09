@@ -64,11 +64,11 @@ if image_xscale < 0
 }
 else
 {
-	hspeed = +8;
+	hspeed = + 8;
 }
 if (x < camera_get_view_x(view_camera[view_current]) + sprite_width)
 and (image_xscale < 0)
-or(x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
+or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
 and (image_xscale > 0)
 {
 	instance_destroy();
@@ -96,7 +96,7 @@ if (draw_xscale >= 0.8)
 
 if (image_xscale == -1)
 and (x < camera_get_view_x(view_camera[view_current]))
-or(image_xscale = +1)
+or (image_xscale = +1)
 and (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 {
 	instance_destroy();

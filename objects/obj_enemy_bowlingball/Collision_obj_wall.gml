@@ -2,14 +2,14 @@ if (die_volting = false)
 or (die = false)
 {
 	if (sliding_along_ground = -1)
-	and (flat = true)
+	and (flat == true)
 	and (position_meeting(bbox_left - 1, y, obj_wall))
 	{
 		sliding_along_ground = +1;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
 	}
 	if (sliding_along_ground = +1)
-	and (flat = true)
+	and (flat == true)
 	and (position_meeting(bbox_right + 1, y, obj_wall))
 	{
 		sliding_along_ground = -1;
@@ -58,7 +58,7 @@ or (die = false)
 				effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
 				effect_create_above(ef_smoke, x - 16 - 8,bbox_bottom- 8, 0, c_white);
 				effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
-				effect_create_above(ef_smoke, x + 16 +8,bbox_bottom- 8, 0, c_white);
+				effect_create_above(ef_smoke, x + 16 + 8,bbox_bottom- 8, 0, c_white);
 			}
 		}
 		vspeed = 0;

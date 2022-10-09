@@ -11,7 +11,7 @@ else
 	speed = 0;
 }
 
-if (global.show_tutorial_signs = true)
+if (global.show_tutorial_signs == true)
 and (global.full_level_map_screenshot == false)
 {
 	visible = true;

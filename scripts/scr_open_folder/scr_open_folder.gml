@@ -1,6 +1,6 @@
 function scr_open_folder(dname)
 {
-	if (global.enable_open_custom_folder = true)
+	if (global.enable_open_custom_folder == true)
 	{
 		menu_delay = 60 * 5;
 		var escapedfolder = string_replace_all(dname, "\"", "\\\"");

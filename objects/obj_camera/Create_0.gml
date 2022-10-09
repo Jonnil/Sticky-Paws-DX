@@ -1,3 +1,6 @@
+mouse_x_position = window_mouse_get_x();
+mouse_y_position = window_mouse_get_y();
+
 black_screen_gui_alpha = 1;
 
 key_player1_sprint_toggle_pressed = noone;
@@ -75,7 +78,7 @@ or (global.character_select_in_this_menu == "level_editor")
 and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu == "main_game")
-	or (global.create_level_from_template = true)
+	or (global.create_level_from_template == true)
 	{
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 	}
@@ -212,8 +215,6 @@ time_countup_y = 32; /* What y position the countup timer should be at */
 hurry_up_message_timer = 0; /* How long the hurry up message should stay on screen */
 #endregion /* Hud Variables END */
 
-player_has_spawned = false;
-
 #region /* Checkpoint */
 if (global.actually_play_edited_level == true)
 and (global.play_edited_level == true)
@@ -221,7 +222,7 @@ and (global.play_edited_level == true)
 	if (global.checkpoint_x > 0)
 	or (global.checkpoint_y > 0)
 	{
-		camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y)
+		camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
 		if (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		{
@@ -233,16 +234,20 @@ and (global.play_edited_level == true)
 		xx = global.checkpoint_x;
 		yy = global.checkpoint_y;
 	}
+	else
+	{
+		camera_set_view_pos(view_camera[view_current], x, y); /* Spawn the camera position on this object's x and y positon when this object is created */
+	}
+}
+else
+{
+	camera_set_view_pos(view_camera[view_current], x, y); /* Spawn the camera position on this object's x and y positon when this object is created */
 }
 #endregion /* Checkpoint END */
 
 scr_initialize_level_information_ini();
 
 #region /* Spawn Players */
-player1 = noone;
-player2 = noone;
-player3 = noone;
-player4 = noone;
 if (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 and (asset_get_type("obj_title") == asset_object)
@@ -276,6 +281,10 @@ and (!instance_exists(obj_title))
 			player = 1;
 		}
 	}
+	else
+	{
+		player1 = noone;
+	}
 	if (global.player2_can_play == true)
 	{
 		if (global.checkpoint_x > 0)
@@ -303,6 +312,10 @@ and (!instance_exists(obj_title))
 			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player = 2;
 		}
+	}
+	else
+	{
+		player2 = noone;
 	}
 	if (global.player3_can_play == true)
 	{
@@ -332,6 +345,10 @@ and (!instance_exists(obj_title))
 			player = 3;
 		}
 	}
+	else
+	{
+		player3 = noone;
+	}
 	if (global.player4_can_play == true)
 	{
 		if (global.checkpoint_x > 0)
@@ -360,12 +377,28 @@ and (!instance_exists(obj_title))
 			player = 4;
 		}
 	}
+	else
+	{
+		player4 = noone;
+	}
 	if (asset_get_type("room_leveleditor") == asset_room)
 	and (room == room_leveleditor)
 	and (global.actually_play_edited_level == true)
 	{
 		player_has_spawned = true;
 	}
+	else
+	{
+		player_has_spawned = false;
+	}
+}
+else
+{
+	player1 = noone;
+	player2 = noone;
+	player3 = noone;
+	player4 = noone;
+	player_has_spawned = false;
 }
 #endregion /* Spawn Players END */
 
@@ -412,17 +445,82 @@ timer_blinking_alpha = 0;
 #region /* Initialize View */
 
 /* View Size */
-view_wview= 1024 + 400 - 32;
-view_hview= 768- 32;
+view_wview = 1024 + 400 - 32;
+view_hview = 768 - 32;
 /* View Size END */
 
 #region /* View Size */
-if (os_type == os_ios)or(os_type == os_android){
-if (view_wport > 1920){view_wport = 1920;}if (view_wview> 1920 - 64){view_wview= 1920 - 64;}if (view_hport > 1080){view_hport = 1080;}if (view_hview> 1080 - 64){view_hview= 1080 - 64;}
-if (view_wport <640 - 320){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport <480){view_hport = 480;}if (view_hview<480){view_hview= 480;}
-}else{
-if (view_wport > 1920){view_wport = 1920;}if (view_wview> 1920){view_wview= 1920;}if (view_hport > 1080){view_hport = 1080;}if (view_hview> 1080){view_hview= 1080;}
-if (view_wport <640){view_wport = 640;}if (view_wview<640){view_wview= 640;}if (view_hport <480){view_hport = 480;}if (view_hview<480){view_hview= 480;}}
+if (os_type == os_ios)
+or (os_type == os_android)
+{
+	if (view_wport > 1920)
+	{
+		view_wport = 1920;
+	}
+	if (view_wview > 1920 - 64)
+	{
+		view_wview = 1920 - 64;
+	}
+	if (view_hport > 1080)
+	{
+		view_hport = 1080;
+	}
+	if (view_hview > 1080 - 64)
+	{
+		view_hview = 1080 - 64;
+	}
+	if (view_wport < 640 - 320)
+	{
+		view_wport = 640;
+	}
+	if (view_wview < 640)
+	{
+		view_wview = 640;
+	}
+	if (view_hport < 480)
+	{
+		view_hport = 480;
+	}
+	if (view_hview < 480)
+	{
+		view_hview = 480;
+	}
+}
+else
+{
+	if (view_wport > 1920)
+	{
+		view_wport = 1920;
+	}
+	if (view_wview > 1920)
+	{
+		view_wview = 1920;
+	}
+	if (view_hport > 1080)
+	{
+		view_hport = 1080;
+	}
+	if (view_hview > 1080)
+	{
+		view_hview = 1080;
+	}
+	if (view_wport < 640)
+	{
+		view_wport = 640;
+	}
+	if (view_wview < 640)
+	{
+		view_wview = 640;
+	}
+	if (view_hport < 480)
+	{
+		view_hport = 480;
+	}
+	if (view_hview < 480)
+	{
+		view_hview = 480;
+	}
+}
 #endregion /* View Size END */
 
 #endregion /* Initialize View END */
@@ -436,7 +534,7 @@ and (room != room_title)
 	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
-	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template >= true)
 	{
@@ -459,7 +557,7 @@ and (room != room_title)
 	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
-	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template >= true)
 	{
@@ -482,7 +580,7 @@ and (room != room_title)
 	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
-	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template >= true)
 	{
@@ -505,7 +603,7 @@ and (room != room_title)
 	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
-	or(file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template >= true)
 	{
@@ -540,21 +638,17 @@ scrolling_left = 0;
 #region /* Assist Item */
 if (asset_get_type("obj_assist_item") == asset_object)
 and (asset_get_type("obj_player") == asset_object)
-and (global.assist_enable = true)
+and (global.assist_enable == true)
+and (global.assist_item_appear < 10)
+and (!instance_exists(obj_assist_item))
+and (instance_exists(obj_player))
 {
-	if (global.assist_item_appear < 10)
+	if (global.lives_until_assist >= global.assist_item_appear)
+	or (global.assist_item_appear <= 0)
 	{
-		if (global.lives_until_assist >= global.assist_item_appear)
-		or (global.assist_item_appear <= 0)
+		with(instance_nearest(x, y, obj_player))
 		{
-			if (!instance_exists(obj_assist_item))
-			and (instance_exists(obj_player))
-			{
-				with(instance_nearest(x, y, obj_player))
-				{
-					instance_create_depth(x - 32, y - 128, 0, obj_assist_item);
-				}
-			}
+			instance_create_depth(x - 32, y - 128, 0, obj_assist_item);
 		}
 	}
 }
@@ -592,12 +686,12 @@ and (!instance_exists(obj_player_map))
 #endregion /* Start Timer END */
 
 #region /* Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default */
-if (global.number_of_audio_channels = 0)
+if (global.number_of_audio_channels == 0)
 {
 	audio_channel_num(32);
 }
 else
-if (global.number_of_audio_channels = 1)
+if (global.number_of_audio_channels == 1)
 {
 	audio_channel_num(64);
 }
@@ -617,17 +711,17 @@ if (global.number_of_audio_channels = 4)
 	audio_channel_num(160);
 }
 else
-if (global.number_of_audio_channels = 5)
+if (global.number_of_audio_channels == 5)
 {
 	audio_channel_num(192);
 }
 else
-if (global.number_of_audio_channels = 6)
+if (global.number_of_audio_channels == 6)
 {
 	audio_channel_num(224);
 }
 else
-if (global.number_of_audio_channels = 7)
+if (global.number_of_audio_channels == 7)
 {
 	audio_channel_num(256);
 }

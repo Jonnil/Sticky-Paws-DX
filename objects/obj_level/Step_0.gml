@@ -20,11 +20,11 @@ else
 if (clear_rate = "clear")
 {
 	image_alpha = 1;
-	if (big_collectible1 = true)
-	and (big_collectible2 = true)
-	and (big_collectible3 = true)
-	and (big_collectible4 = true)
-	and (big_collectible5 = true)
+	if (big_collectible1 == true)
+	and (big_collectible2 == true)
+	and (big_collectible3 == true)
+	and (big_collectible4 == true)
+	and (big_collectible5 == true)
 	{
 		level_color = c_yellow;
 		level_perfect = true;

@@ -1,12 +1,12 @@
 function scr_draw_gamepad_buttons(what_button, xx, yy, scale = 1, color = c_white, alpha = 1)
 {
-	if (global.chosen_controller_used = 0)
+	if (global.chosen_controller_used == 0)
 	and (global.resource_pack_sprite_buttons_xboxone > noone)
 	{
 		var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxone;
 	}
 	else
-	if (global.chosen_controller_used = 1)
+	if (global.chosen_controller_used == 1)
 	and (global.resource_pack_sprite_buttons_xboxseriesxs > noone)
 	{
 		var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxseriesxs;

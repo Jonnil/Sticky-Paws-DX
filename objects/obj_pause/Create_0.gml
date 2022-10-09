@@ -1,3 +1,6 @@
+mouse_x_position = window_mouse_get_x();
+mouse_y_position = window_mouse_get_y();
+
 depth = -20;
 
 loading_spinning_angle = 0;
@@ -77,6 +80,10 @@ allow_player1_tongue = false;
 allow_player2_tongue = false;
 allow_player3_tongue = false;
 allow_player4_tongue = false;
+allow_player1_dive = false;
+allow_player2_dive = false;
+allow_player3_dive = false;
+allow_player4_dive = false;
 #endregion /* Remapping options variables END */
 
 open_dropdown = false;

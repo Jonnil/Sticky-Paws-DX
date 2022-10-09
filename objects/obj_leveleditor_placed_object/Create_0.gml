@@ -19,8 +19,8 @@ i = 0;
 
 place_object_angle = false;
 
-second_x = x;
-second_y = y;
+second_x = 0;
+second_y = 0;
 
 draw_xscale = 1;
 draw_yscale = 1;
