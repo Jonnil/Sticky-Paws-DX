@@ -43,12 +43,12 @@ or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_
 
 #region /* Sprite variables */
 
-sprite_map = scr_initialize_custom_character_sprite("map");
-sprite_map_enter_level = scr_initialize_custom_character_sprite("map_enter_level");
-sprite_map_enter_level = scr_initialize_custom_character_sprite("map_enter");
-sprite_stand = scr_initialize_custom_character_sprite("idle");
-sprite_stand = scr_initialize_custom_character_sprite("stand");
-sprite_walk = scr_initialize_custom_character_sprite("walk");
+sprite_map = scr_initialize_custom_character_sprite("map", sprite_map);
+sprite_map_enter_level = scr_initialize_custom_character_sprite("map_enter_level", sprite_map_enter_level);
+sprite_map_enter_level = scr_initialize_custom_character_sprite("map_enter", sprite_map_enter_level);
+sprite_stand = scr_initialize_custom_character_sprite("idle", sprite_stand);
+sprite_stand = scr_initialize_custom_character_sprite("stand", sprite_stand);
+sprite_walk = scr_initialize_custom_character_sprite("walk", sprite_walk);
 
 #endregion /* Sprite variables END */
 

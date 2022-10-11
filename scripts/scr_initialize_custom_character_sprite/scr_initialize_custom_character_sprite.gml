@@ -1,11 +1,10 @@
-/// @desc initialize_custom_character_sprite(sprite_name);
-/// @description initialize_custom_character_sprite(sprite_name);
+/// @desc initialize_custom_character_sprite(sprite_name, sprite_variable);
+/// @description initialize_custom_character_sprite(sprite_name, sprite_variable);
 /// @arg sprite_name
 
-function scr_initialize_custom_character_sprite(sprite_name)
+function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = noone)
 {
 	/* sprite_name. Sprite name. The name of the file */
-	var sprite_variable = noone;
 	
 	#region /* Add sprite */
 	index = 0;

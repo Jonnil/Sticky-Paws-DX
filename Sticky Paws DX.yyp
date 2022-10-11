@@ -393,6 +393,7 @@
     {"id":{"name":"obj_cardboard_particle","path":"objects/obj_cardboard_particle/obj_cardboard_particle.yy",},"order":13,},
     {"id":{"name":"obj_bump_in_ground","path":"objects/obj_bump_in_ground/obj_bump_in_ground.yy",},"order":21,},
     {"id":{"name":"obj_leveleditor","path":"objects/obj_leveleditor/obj_leveleditor.yy",},"order":0,},
+    {"id":{"name":"scr_get_build_date","path":"scripts/scr_get_build_date/scr_get_build_date.yy",},"order":70,},
     {"id":{"name":"obj_artwork_collection","path":"objects/obj_artwork_collection/obj_artwork_collection.yy",},"order":29,},
     {"id":{"name":"obj_arrow_sign","path":"objects/obj_arrow_sign/obj_arrow_sign.yy",},"order":17,},
     {"id":{"name":"scr_zoom_camera_draw_gui","path":"scripts/scr_zoom_camera_draw_gui/scr_zoom_camera_draw_gui.yy",},"order":54,},

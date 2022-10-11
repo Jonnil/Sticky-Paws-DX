@@ -71,9 +71,9 @@ function scr_save_custom_level()
 			{
 				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			}
-			if (!ini_key_exists("info", "first_created_on_version"))
+			if (!ini_key_exists("info", "first_created_on_version")) /* Check if there isn't already a version number saved. Only save this information once, so the number never changes */
 			{
-				ini_write_string("info", "first_created_on_version", "v" + GM_version);
+				ini_write_string("info", "first_created_on_version", "v" + string(scr_get_build_date()));
 			}
 			ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
 			if (instance_exists(obj_level_player_1_start))

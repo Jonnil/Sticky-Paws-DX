@@ -79,7 +79,7 @@ if (quit_level_editor == false)
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(window_get_width() / 2, window_get_height() - 32, l10n_text("First created on version") + ": " + ini_read_string("info", "first_created_on_version", "v" + GM_version), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(window_get_width() / 2, window_get_height() - 32, l10n_text("First created on version") + ": " + ini_read_string("info", "first_created_on_version", "v" + string(scr_get_build_date())), global.default_text_size, c_black, c_white, 1);
 			}
 			ini_close();
 			#endregion /* Show what version of the game the level was first created in END */
