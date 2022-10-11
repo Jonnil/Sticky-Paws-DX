@@ -548,13 +548,6 @@ function scr_select_official_level_menu()
 	if (iris_xscale <= 0.001)
 	and (global.character_select_in_this_menu == "level_editor")
 	{
-		if (asset_get_type("snd_music_titlescreen") == asset_sound)
-		{
-			if (audio_is_playing(snd_music_titlescreen))
-			{
-				audio_stop_sound(snd_music_titlescreen);
-			}
-		}
 		if (asset_get_type("room_leveleditor") == asset_room)
 		{
 			sprite_delete(title_screen_background);

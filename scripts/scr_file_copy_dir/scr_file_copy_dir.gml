@@ -12,7 +12,7 @@ function scr_file_copy_dir(source, target, attributes = fa_directory)
 	/* Push matching files into array: */
 	/* (Has to be done separately due to possible recursion) */
 	files = 0;
-	for (fname = file_find_first(source + "/* .*", attributes); fname != ""; fname = file_find_next())
+	for (fname = file_find_first(source + "/*.*", attributes); fname != ""; fname = file_find_next())
 	{
 		/* Don't include current/parent directory "matches": */
 		if (fname == ".")

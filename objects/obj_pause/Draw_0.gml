@@ -6,7 +6,7 @@ if (global.pause_screenshot > noone)
 #endregion /* Pause Screenshot END */
 
 #region /* Darker Background */
-if (hide_menu_for_clean_screenshots = false)
+if (hide_menu_for_clean_screenshots == false)
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0, 0, room_width, room_height, c_red, c_blue, c_blue, c_red, false);

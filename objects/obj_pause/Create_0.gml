@@ -76,14 +76,15 @@ input_key = false;
 can_remap_key = false;
 input_gamepad_button = false;
 can_remap_gamepad_button = false;
-allow_player1_tongue = false;
-allow_player2_tongue = false;
-allow_player3_tongue = false;
-allow_player4_tongue = false;
-allow_player1_dive = false;
-allow_player2_dive = false;
-allow_player3_dive = false;
-allow_player4_dive = false;
+allow_player1_tongue = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
+allow_player2_tongue = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
+allow_player3_tongue = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
+allow_player4_tongue = scr_initialize_custom_character_abilities(3, "allow_tongue", false);
+
+allow_player1_dive = scr_initialize_custom_character_abilities(0, "allow_dive", false);
+allow_player2_dive = scr_initialize_custom_character_abilities(1, "allow_dive", false);
+allow_player3_dive = scr_initialize_custom_character_abilities(2, "allow_dive", false);
+allow_player4_dive = scr_initialize_custom_character_abilities(3, "allow_dive", false);
 #endregion /* Remapping options variables END */
 
 open_dropdown = false;

@@ -10,7 +10,6 @@
 //scr_draw_text_outlined(x - 32, y - 64, "Crouch Toggle: " + string(global.player1_crouch_toggle), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x - 32, y - 246, "sprite_panting: " + string(sprite_panting), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x - 32, y - 128-64-64-64, "saved_file_exists: " + string(saved_file_exists), global.default_text_size, c_white, c_black, 1);
-//scr_draw_text_outlined(x - 32, y - 128-64-64, "can_save_to_character_config: " + string(can_save_to_character_config), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x - 32, y - 128-64, "tongue_move_player_toward_wall: " + string(tongue_move_player_toward_wall), global.default_text_size, c_white, c_black, 1);
 //scr_draw_text_outlined(x - 64, y - 128 - 64 - 64, "ledge_grab" + ": " + string(ledge_grab), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y - 128 - 64, "ledge_grab_delay" + ": " + string(ledge_grab_delay), global.default_text_size, c_white, c_red, 1);

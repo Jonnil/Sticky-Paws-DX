@@ -1539,7 +1539,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"logo_wiki.png","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"logo_twitter.png","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"logo_gamebanana.png","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"localization.csv","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"background2.png","CopyToMask":-1,"filePath":"datafiles/Levels/Intro/Backgrounds",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"background3.png","CopyToMask":-1,"filePath":"datafiles/Levels/Intro/Backgrounds",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"background1.png","CopyToMask":-1,"filePath":"datafiles/Levels/Intro/Backgrounds",},
@@ -2781,6 +2780,7 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"cutscene_open_mouth.ogg","CopyToMask":-1,"filePath":"datafiles/Characters/kai/sound/voicepack1",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"dive.ogg","CopyToMask":-1,"filePath":"datafiles/Characters/kai/sound/voicepack1",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"ledge_grab_strip4.png","CopyToMask":-1,"filePath":"datafiles/characters/kai/sprites",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"localization.csv","CopyToMask":-1,"filePath":"datafiles",},
   ],
   "MetaData": {
     "IDEVersion": "2022.9.0.49",

@@ -2402,6 +2402,7 @@ and (global.pause == false)
 	#region /* Rope Swing */
 	if (rope_swing == true)
 	{
+		dive = false;
 		can_ground_pound = false;
 		ground_pound = false;
 		gravity = 0; /* No gravity when rope swinging */
@@ -6927,7 +6928,6 @@ if (crouch == true)
 		and (!key_left)
 		and (!key_right)
 		{
-			sprite_index = sprite_crouch;
 			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
@@ -7579,8 +7579,8 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			and (ground_pound == false)
 			and (ledge_grab == false)
 			{
-				if(sprite_wall_slide_up > noone){sprite_index = sprite_wall_slide_up;}else
-				if(sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
+				if (sprite_wall_slide_up > noone){sprite_index = sprite_wall_slide_up;}else
+				if (sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
 				if (sprite_stand > noone){sprite_index = sprite_stand;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 				image_speed = 0.5;

@@ -532,6 +532,7 @@ if (menu_cursor_index > 4)
 }
 #endregion /* Menu cursor image speed END */
 
+#region /* If you haven't yet quit the level editor, then run this code */
 if (quit_level_editor <= 0)
 {
 	
@@ -554,6 +555,7 @@ if (quit_level_editor <= 0)
 			controller_view_speed = 8;
 		}
 		
+		#region /* Move view with gamepad */
 		if (pause == false)
 		{
 			if (keyboard_check(global.player1_key_up))
@@ -915,6 +917,7 @@ if (quit_level_editor <= 0)
 	#endregion /* Nearest Placed Object Code END */
 	
 }
+#endregion /* If you haven't yet quit the level editor, then run this code END */
 
 if (mouse_check_button_released(mb_left))
 {
