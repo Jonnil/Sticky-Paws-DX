@@ -514,6 +514,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Button scripths","folderPath":"folders/Scripts/Button scripths.yy","order":7,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"level editor","folderPath":"folders/Scripts/level editor.yy","order":56,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Menus","folderPath":"folders/Scripts/Menus.yy","order":15,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Other","folderPath":"folders/Scripts/Other.yy","order":71,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sequences","folderPath":"folders/Sequences.yy","order":1,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Shaders","folderPath":"folders/Shaders.yy","order":7,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sounds","folderPath":"folders/Sounds.yy","order":4,},
@@ -524,7 +525,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ground","folderPath":"folders/Sprites/ground.yy","order":35,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy","order":3,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy","order":9,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Other","folderPath":"folders/Scripts/Other.yy","order":71,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},

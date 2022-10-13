@@ -852,27 +852,43 @@ key_dive_pressed = scr_key_initialize(key_dive_pressed, 1, player, this_player_k
 key_dive_hold = scr_key_initialize(key_dive_pressed, 0, player, this_player_key_dive, this_player_key2_dive, this_player_gamepad_button_dive, this_player_gamepad_button2_dive);
 
 key_left_hold_temp = scr_key_initialize(key_left_hold_temp, 0, player, this_player_key_left, this_player_key2_left, this_player_gamepad_button_left, this_player_gamepad_button2_left);
+key_left_pressed_temp = scr_key_initialize(key_left_pressed_temp, 1, player, this_player_key_left, this_player_key2_left, this_player_gamepad_button_left, this_player_gamepad_button2_left);
 key_right_hold_temp = scr_key_initialize(key_right_hold_temp, 0, player, this_player_key_right, this_player_key2_right, this_player_gamepad_button_right, this_player_gamepad_button2_right);
+key_right_pressed_temp = scr_key_initialize(key_right_pressed_temp, 1, player, this_player_key_right, this_player_key2_right, this_player_gamepad_button_right, this_player_gamepad_button2_right);
 key_down_hold_temp = scr_key_initialize(key_down_hold_temp, 0, player, this_player_key_down, this_player_key2_down, this_player_gamepad_button_down, this_player_gamepad_button2_down);
 key_up_hold_temp = scr_key_initialize(key_up_hold_temp, 0, player, this_player_key_up, this_player_key2_up, this_player_gamepad_button_up, this_player_gamepad_button2_up);
 key_up_pressed_temp = scr_key_initialize(key_up_pressed_temp, 1, player, this_player_key_up, this_player_key2_up, this_player_gamepad_button_up, this_player_gamepad_button2_up);
 key_up_released_temp = scr_key_initialize(key_up_released_temp, 2, player, this_player_key_up, this_player_key2_up, this_player_gamepad_button_up, this_player_gamepad_button2_up);
 
 #region /* Key Left Hold */
-key_left =
+key_left_hold =
 (key_left_hold_temp)
 and (!key_right_hold_temp)
 or (gamepad_axis_value(player - 1, gp_axislh) < 0)
 or (active_left == true);
 #endregion /* Key Left Hold END */
 
+#region /* Key Left Pressed */
+key_left_pressed =
+(key_left_pressed_temp)
+and (!key_right_pressed_temp)
+or (gamepad_axis_value(player - 1, gp_axislh) < 0);
+#endregion /* Key Left Pressed END */
+
 #region /* Key Right Hold */
-key_right =
+key_right_hold =
 (key_right_hold_temp)
 and (!key_left_hold_temp)
 or (gamepad_axis_value(player - 1, gp_axislh) > 0)
 or (active_right == true);
 #endregion /* Key Right Hold END */
+
+#region /* Key Right Pressed */
+key_right_pressed =
+(key_right_pressed_temp)
+and (!key_left_pressed_temp)
+or (gamepad_axis_value(player - 1, gp_axislh) > 0);
+#endregion /* Key Right Pressed END */
 
 #region /* Key Down Hold */
 key_down =
@@ -1183,8 +1199,8 @@ else
 #endregion /* Save to variable when on ground */
 
 #region /* Go Left */
-if (key_left)
-and (!key_right)
+if (key_left_hold)
+and (!key_right_hold)
 and (can_move == true)
 and (global.pause == false)
 {
@@ -1254,8 +1270,8 @@ and (global.pause == false)
 #endregion /* Go Left END */
 
 #region /* Go Right */
-if (key_right)
-and (!key_left)
+if (key_right_hold)
+and (!key_left_hold)
 and (can_move == true)
 and (global.pause == false)
 {
@@ -1372,9 +1388,9 @@ else
 	or (double_tap_right == 3)
 	and (allow_run == true)
 	{
-		if (key_left)
+		if (key_left_hold)
 		and (ground_pound == false)
-		or (key_right)
+		or (key_right_hold)
 		and (ground_pound == false)
 		{
 			if (invincible >= true)
@@ -1416,7 +1432,7 @@ if (double_tap_to_run == true)
 	{
 		
 		#region /* Double tap left direction to run */
-		if (key_left)
+		if (key_left_hold)
 		{
 			if (double_tap_left == false)
 			{
@@ -1440,7 +1456,7 @@ if (double_tap_to_run == true)
 		else
 		
 		#region /* Double tap right direction to run */
-		if (key_right)
+		if (key_right_hold)
 		{
 			if (double_tap_right = false)
 			{
@@ -1462,8 +1478,8 @@ if (double_tap_to_run == true)
 		#endregion /* Double tap right direction to run END */
 		
 		else
-		if (!key_left)
-		and (!key_right)
+		if (!key_left_hold)
+		and (!key_right_hold)
 		{
 			if (double_tap_left == true)
 			and (double_tap_run_timer <= 28)
@@ -1499,60 +1515,48 @@ if (double_tap_to_dive == true)
 {
 	
 	#region /* Double tap left direction to dive */
-	if (key_left)
+	if (key_left_pressed)
 	{
 		if (double_tap_left_dive == false)
 		{
 			double_tap_left_dive = true;
 			double_tap_right_dive = false;
-			double_tap_dive = false;
 			double_tap_dive_timer = 15;
 		}
 		else
 		if (double_tap_left_dive == 2)
 		{
 			double_tap_dive = true; /* Make player dive when double tapping direction */
-			double_tap_dive_timer = 0;
-			double_tap_left_dive = false;
-		}
-		else
-		{
-			double_tap_dive = false;
+			double_tap_left_dive = 3;
 			double_tap_dive_timer = 15;
 		}
 	}
 	#endregion /* Double tap left direction to dive END */
-	
+		
 	else
-	
+		
 	#region /* Double tap right direction to dive */
-	if (key_right)
+	if (key_right_pressed)
 	{
 		if (double_tap_right_dive = false)
 		{
 			double_tap_right_dive = true;
 			double_tap_left_dive = false;
-			double_tap_dive = false;
 			double_tap_dive_timer = 15;
 		}
 		else
 		if (double_tap_right_dive = 2)
 		{
 			double_tap_dive = true; /* Make player dive when double tapping direction */
-			double_tap_dive_timer = 0;
-			double_tap_right_dive = false;
-		}
-		else
-		{
-			double_tap_dive = false;
+			double_tap_right_dive = 3;
 			double_tap_dive_timer = 15;
 		}
 	}
 	#endregion /* Double tap right direction to dive END */
 	
 	else
-	if (!key_left)
-	and (!key_right)
+	if (!key_left_hold)
+	and (!key_right_hold)
 	{
 		if (double_tap_left_dive == true)
 		and (double_tap_dive_timer <= 28)
@@ -1567,9 +1571,21 @@ if (double_tap_to_dive == true)
 			double_tap_dive = false;
 			double_tap_right_dive = 2;
 		}
+		else
+		if (double_tap_left_dive >= 3)
+		or (double_tap_right_dive >= 3)
+		{
+			double_tap_dive = false;
+			double_tap_dive_timer = 0;
+			double_tap_left_dive = false;
+			double_tap_right_dive = false;
+		}
 		double_tap_dive = false;
-		double_tap_dive_timer -= 1;
 	}
+}
+if (double_tap_dive_timer > 0)
+{
+	double_tap_dive_timer -= 1;
 }
 if (double_tap_dive_timer <= 0)
 {
@@ -1588,8 +1604,8 @@ if (on_ground == true)
 		if (asset_get_type("obj_ice_block") == asset_object)
 		and (place_meeting(x, y + 1, obj_ice_block))
 		{
-			if (key_left)
-			or (key_right)
+			if (key_left_hold)
+			or (key_right_hold)
 			or (goal == true)
 			{
 				friction = 0.01;
@@ -1601,8 +1617,8 @@ if (on_ground == true)
 		}
 		else
 		{
-			if (key_left)
-			or (key_right)
+			if (key_left_hold)
+			or (key_right_hold)
 			or (goal == true)
 			{
 				friction = 0.1;
@@ -1826,8 +1842,8 @@ if (on_ground == true)
 	and(allow_stop_after_landing_triple_jump)
 	{
 		jump = 0;
-		if (!key_left)
-		and (!key_right)
+		if (!key_left_hold)
+		and (!key_right_hold)
 		{
 			hspeed = 0;
 		}
@@ -2135,7 +2151,7 @@ and (global.pause == false)
 					{
 						
 						#region /* Key Left */
-						if (key_left)
+						if (key_left_hold)
 						and (!place_meeting(x - 1, y, obj_wall))
 						{
 							can_tongue = false;
@@ -2149,7 +2165,7 @@ and (global.pause == false)
 						else
 						
 						#region /* Key Right */
-						if (key_right)
+						if (key_right_hold)
 						and (!place_meeting(x + 1, y, obj_wall))
 						{
 							can_tongue = false;
@@ -2174,7 +2190,7 @@ and (global.pause == false)
 					else
 					
 					#region /* Key Left */
-					if (key_left)
+					if (key_left_hold)
 					and (!place_meeting(x - 1, y, obj_wall))
 					{
 						
@@ -2216,7 +2232,7 @@ and (global.pause == false)
 					else
 					
 					#region /* Key Right */
-					if (key_right)
+					if (key_right_hold)
 					and (!place_meeting(x + 1, y, obj_wall))
 					{
 						
@@ -2263,7 +2279,7 @@ and (global.pause == false)
 					{
 						
 						#region /* Key Left */
-						if (key_left)
+						if (key_left_hold)
 						and (!place_meeting(x - 1, y, obj_wall))
 						{
 							can_tongue = false;
@@ -2277,7 +2293,7 @@ and (global.pause == false)
 						else
 						
 						#region /* Key Right */
-						if (key_right)
+						if (key_right_hold)
 						and (!place_meeting(x + 1, y, obj_wall))
 						{
 							can_tongue = false;
@@ -2345,7 +2361,7 @@ and (global.pause == false)
 			var rope_angle_acceleration = -0.4 * dcos(rope_angle);
 			
 			#region /* Key Right */
-			if (key_right)
+			if (key_right_hold)
 			and (obj_tongue.y > y)
 			and (obj_tongue.x > x - 1)
 			and (obj_tongue.x < x + 1)
@@ -2358,7 +2374,7 @@ and (global.pause == false)
 			else
 			
 			#region /* Key Left */
-			if (key_left)
+			if (key_left_hold)
 			and (obj_tongue.y > y)
 			and (obj_tongue.x > x - 1)
 			and (obj_tongue.x < x + 1)
@@ -2371,7 +2387,7 @@ and (global.pause == false)
 			else
 			
 			#region /* Key Left */
-			if (key_left)
+			if (key_left_hold)
 			and (!place_meeting(x - 4, y, obj_wall))
 			{
 				rope_angle_acceleration -= 0.08;
@@ -2381,7 +2397,7 @@ and (global.pause == false)
 			else
 			
 			#region /* Key Right */
-			if (key_right)
+			if (key_right_hold)
 			and (!place_meeting(x + 4, y, obj_wall))
 			{
 				rope_angle_acceleration += 0.08;
@@ -2657,11 +2673,11 @@ and (hold_item_in_hands == "")
 		and (horizontal_rope_climb == false)
 		and (vspeed >= 0)
 		{
-			if (key_left)
-			and (!key_right)
+			if (key_left_hold)
+			and (!key_right_hold)
 			and (wall_jump_setting == 2)
 			and (place_meeting(x - 1, y, obj_wall))
-			or (!key_right)
+			or (!key_right_hold)
 			and (dive == false)
 			and (wall_jump_setting == 1)
 			and (place_meeting(x - 1, y, obj_wall))
@@ -2670,13 +2686,13 @@ and (hold_item_in_hands == "")
 			and (wall_jump_setting == 1)
 			and (place_meeting(x - 1, y, obj_wall))
 			and (image_xscale < 0)
-			or (key_left)
-			and (!key_right)
+			or (key_left_hold)
+			and (!key_right_hold)
 			and (wall_jump_setting <= 0)
 			and (place_meeting(x - 1, y, obj_wall))
 			and (place_meeting(x, y, obj_wall_climb_panel))
-			or (key_left)
-			and (!key_right)
+			or (key_left_hold)
+			and (!key_right_hold)
 			and (wall_jump_setting <= 0)
 			and (place_meeting(x - 1, y, obj_wall))
 			and (place_meeting(x, y, obj_wall_jump_panel))
@@ -2702,11 +2718,11 @@ and (hold_item_in_hands == "")
 				}
 			}
 			else
-			if (key_right)
-			and (!key_left)
+			if (key_right_hold)
+			and (!key_left_hold)
 			and (wall_jump_setting == 2)
 			and (place_meeting(x + 1, y, obj_wall))
-			or (!key_left)
+			or (!key_left_hold)
 			and (dive == false)
 			and (wall_jump_setting == 1)
 			and (place_meeting(x + 1, y, obj_wall))
@@ -2715,13 +2731,13 @@ and (hold_item_in_hands == "")
 			and (wall_jump_setting == 1)
 			and (place_meeting(x + 1, y, obj_wall))
 			and (image_xscale > 0)
-			or (key_right)
-			and (!key_left)
+			or (key_right_hold)
+			and (!key_left_hold)
 			and (wall_jump_setting <= 0)
 			and (place_meeting(x + 1, y, obj_wall))
 			and (place_meeting(x, y, obj_wall_climb_panel))
-			or (key_right)
-			and (!key_left)
+			or (key_right_hold)
+			and (!key_left_hold)
 			and (wall_jump_setting <= 0)
 			and (place_meeting(x + 1, y, obj_wall))
 			and (place_meeting(x, y, obj_wall_jump_panel))
@@ -2752,11 +2768,11 @@ and (hold_item_in_hands == "")
 	{
 		
 		#region /* Pressing opposite direction to drop off from wall */
-		if (key_left)
-		and (!key_right)
+		if (key_left_hold)
+		and (!key_right_hold)
 		and (image_xscale = +1)
-		or (key_right)
-		and (!key_left)
+		or (key_right_hold)
+		and (!key_left_hold)
 		and (image_xscale = -1)
 		{
 			dive = false;
@@ -2842,12 +2858,12 @@ and (hold_item_in_hands == "")
 			and (!key_down)
 			
 			or (image_xscale < 0)
-			and (key_left)
-			and (!key_right)
+			and (key_left_hold)
+			and (!key_right_hold)
 			
 			or (image_xscale > 0)
-			and (key_right)
-			and (!key_left)
+			and (key_right_hold)
+			and (!key_left_hold)
 			{
 				if (bbox_bottom> 0)
 				and (takendamage <= takendamage_freezetime)
@@ -2918,14 +2934,14 @@ and (hold_item_in_hands == "")
 		
 		or (allow_dive == true)
 		and (key_dive_pressed) /* Press dive to jump from wall using a dive */
-		and (key_left)
-		and (!key_right)
+		and (key_left_hold)
+		and (!key_right_hold)
 		and (place_meeting(x + 1, y, obj_wall))
 		
 		or (allow_dive == true)
 		and (key_dive_pressed) /* Press dive to jump from wall using a dive */
-		and (key_right)
-		and (!key_left)
+		and (key_right_hold)
+		and (!key_left_hold)
 		and (place_meeting(x - 1, y, obj_wall))
 		{
 			if (crouch == false)
@@ -2994,16 +3010,16 @@ and (hold_item_in_hands == "")
 			#region /* Change direction when diving */
 			if (key_dive_pressed)
 			and (allow_dive == true)
-			and (key_left)
-			and (!key_right)
+			and (key_left_hold)
+			and (!key_right_hold)
 			{
 				image_xscale = -1;
 			}
 			else
 			if (key_dive_pressed)
 			and (allow_dive == true)
-			and (key_right)
-			and (!key_left)
+			and (key_right_hold)
+			and (!key_left_hold)
 			{
 				image_xscale = +1;
 			}
@@ -3015,13 +3031,13 @@ and (hold_item_in_hands == "")
 
 	#region /* When pressing the jump button, a direction and besides the wall, do the wall jump even if you still haven't started the wall jump liding down state */
 	if (key_down)
-	and (!key_left)
-	and (!key_right)
+	and (!key_left_hold)
+	and (!key_right_hold)
 	and (key_sprint_pressed)
 	and (stick_to_wall == true)
 	or (key_down)
-	and (!key_left)
-	and (!key_right)
+	and (!key_left_hold)
+	and (!key_right_hold)
 	and (key_dive_pressed)
 	and (stick_to_wall == true)
 	or (pressing_opposite_direction_to_drop_off_from_wall >= 10)
@@ -3047,8 +3063,8 @@ and (hold_item_in_hands == "")
 	}
 	else
 	if (key_jump)
-	and (key_right)
-	and (!key_left)
+	and (key_right_hold)
+	and (!key_left_hold)
 	and (wall_jump_setting >= 1)
 	and (place_meeting(x + 1, y, obj_wall))
 	and (!place_meeting(x, y + 16, obj_wall))
@@ -3058,8 +3074,8 @@ and (hold_item_in_hands == "")
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	
 	or (key_jump)
-	and (key_left)
-	and (!key_right)
+	and (key_left_hold)
+	and (!key_right_hold)
 	and (wall_jump_setting >= 1)
 	and (place_meeting(x - 1, y, obj_wall))
 	and (!place_meeting(x, y + 16, obj_wall))
@@ -3087,8 +3103,8 @@ and (hold_item_in_hands == "")
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	
 	or (key_jump)
-	and (key_right)
-	and (!key_left)
+	and (key_right_hold)
+	and (!key_left_hold)
 	and (wall_jump_setting <= 0)
 	and (place_meeting(x, y, obj_wall_climb_panel))
 	and (place_meeting(x + 1, y, obj_wall))
@@ -3099,8 +3115,8 @@ and (hold_item_in_hands == "")
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	
 	or (key_jump)
-	and (key_left)
-	and (!key_right)
+	and (key_left_hold)
+	and (!key_right_hold)
 	and (wall_jump_setting <= 0)
 	and (place_meeting(x, y, obj_wall_climb_panel))
 	and (place_meeting(x - 1, y, obj_wall))
@@ -3111,8 +3127,8 @@ and (hold_item_in_hands == "")
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	
 	or (key_jump)
-	and (key_right)
-	and (!key_left)
+	and (key_right_hold)
+	and (!key_left_hold)
 	and (wall_jump_setting <= 0)
 	and (place_meeting(x, y, obj_wall_jump_panel))
 	and (place_meeting(x + 1, y, obj_wall))
@@ -3123,8 +3139,8 @@ and (hold_item_in_hands == "")
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	
 	or (key_jump)
-	and (key_left)
-	and (!key_right)
+	and (key_left_hold)
+	and (!key_right_hold)
 	and (wall_jump_setting <= 0)
 	and (place_meeting(x, y, obj_wall_jump_panel))
 	and (place_meeting(x - 1, y, obj_wall))
@@ -3525,8 +3541,8 @@ and (in_water == false)
 		}
 					
 		#region /* Choose direction to dive */
-		if (key_left)
-		and (!key_right)
+		if (key_left_hold)
+		and (!key_right_hold)
 		or (image_xscale < 0)
 		{
 			if (hspeed >- 10)
@@ -3540,8 +3556,8 @@ and (in_water == false)
 			image_xscale = -1;
 		}
 		else
-		if (key_right)
-		and (!key_left)
+		if (key_right_hold)
+		and (!key_left_hold)
 		or (image_xscale > 0)
 		{
 			if (hspeed <+ 10)
@@ -3583,10 +3599,10 @@ and (in_water == false)
 	else
 	if (dive == true)
 	{
-		if (key_left)
+		if (key_left_hold)
 		and (asset_get_type("obj_wall") == asset_object)
 		and (place_meeting(x + 1, y, obj_wall))
-		or (key_right)
+		or (key_right_hold)
 		and (asset_get_type("obj_wall") == asset_object)
 		and (place_meeting(x - 1, y, obj_wall))
 		{
@@ -3667,9 +3683,9 @@ and (in_water == false)
 		if (cancel_dive_by_pressing_opposite_direction == true)
 		{
 			if (hspeed < 0)
-			and (key_right)
+			and (key_right_hold)
 			or (hspeed > 0)
-			and (key_left)
+			and (key_left_hold)
 			{
 				dive = false;
 				can_dive = false;
@@ -3846,9 +3862,9 @@ if (allow_ledge_grab == true)
 			{
 				sprite_index = sprite_stand;
 			}
-			if (key_left)
+			if (key_left_hold)
 			and (image_xscale = -1)
-			or (key_right)
+			or (key_right_hold)
 			and (image_xscale = +1)
 			{
 				if (ledge_grab_delay == 10) /* Can only climb up ledge after grabbing ledge for 10 frames */
@@ -3894,9 +3910,9 @@ if (allow_ledge_grab == true)
 				stick_to_wall = false;
 				wall_jump = 0;
 			}
-			if (key_left) /* If you press left while looking right, then drop down from ledge */
+			if (key_left_hold) /* If you press left while looking right, then drop down from ledge */
 			and (image_xscale = +1)
-			or (key_right) /* If you press right while looking left, then drop down from ledge */
+			or (key_right_hold) /* If you press right while looking left, then drop down from ledge */
 			and (image_xscale = -1)
 			or (key_down)
 			{
@@ -3984,14 +4000,14 @@ else
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	and (vspeed > 0)
 	{
-		if (key_left)
-		and (!key_right)
+		if (key_left_hold)
+		and (!key_right_hold)
 		{
 			angle = lerp(angle, 0 + 10, 0.1);
 		}
 		else
-		if (key_right)
-		and (!key_left)
+		if (key_right_hold)
+		and (!key_left_hold)
 		{
 			angle = lerp(angle, 0 - 10, 0.1);
 		}
@@ -4183,14 +4199,14 @@ if (asset_get_type("obj_water") == asset_object)
 		}
 		
 		#region /* Slow down if not pressing anything */
-		if (!key_left)
+		if (!key_left_hold)
 		{
 			if (hspeed < 0)
 			{
 				hspeed += 0.1;
 			}
 		}
-		if (!key_right)
+		if (!key_right_hold)
 		{
 			if (hspeed > 0)
 			{
@@ -5593,8 +5609,8 @@ or (sprite_index == sprite_run4)
 #region /* A bump sound effect if a player walks into a wall to let them know that they they hit a wall */
 
 #region /* Left */
-if (key_left)
-and (!key_right)
+if (key_left_hold)
+and (!key_right_hold)
 and (place_meeting(x - 1, y, obj_wall))
 and (climb == false)
 and (stick_to_wall == false)
@@ -5611,9 +5627,9 @@ and (stick_to_wall == false)
 
 #region /* Right */
 if (!audio_is_playing(snd_bump))
-and (!key_left)
+and (!key_left_hold)
 and (climb == false)
-and (key_right)
+and (key_right_hold)
 and (on_ground == true)
 and (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x + 1, y, obj_wall))
@@ -5695,8 +5711,8 @@ and (hold_item_in_hands == "")
 		stick_to_wall = false;
 		crouch = false;
 		vspeed = 0;
-		if (key_left)
-		or (key_right)
+		if (key_left_hold)
+		or (key_right_hold)
 		{
 			friction = 0.2;
 		}
@@ -5900,8 +5916,8 @@ and (hold_item_in_hands == "")
 		else
 		
 		#region /* Climb left on horizontal rope */
-		if (key_left)
-		and (!key_right)
+		if (key_left_hold)
+		and (!key_right_hold)
 		and (!place_meeting(x - 1, y, obj_wall))
 		and (!place_meeting(x - 10, y, obj_spikes))
 		and (takendamage <= takendamage_freezetime)
@@ -5941,8 +5957,8 @@ and (hold_item_in_hands == "")
 		else
 		
 		#region /* Climb right on horizontal rope */
-		if (key_right)
-		and (!key_left)
+		if (key_right_hold)
+		and (!key_left_hold)
 		and (!place_meeting(x + 1, y, obj_wall))
 		and (!place_meeting(x + 10, y, obj_spikes))
 		and (takendamage <= takendamage_freezetime)
@@ -6042,8 +6058,8 @@ and (hold_item_in_hands == "")
 			{
 				hspeed = 0;
 			}
-			if (key_left)
-			and (!key_right)
+			if (key_left_hold)
+			and (!key_right_hold)
 			and (takendamage <= takendamage_freezetime)
 			{
 				image_xscale = -1;
@@ -6066,8 +6082,8 @@ and (hold_item_in_hands == "")
 			{
 				hspeed = 0;
 			}
-			if (key_right)
-			and (!key_left)
+			if (key_right_hold)
+			and (!key_left_hold)
 			and (takendamage <= takendamage_freezetime)
 			{
 				image_xscale = +1;
@@ -6200,8 +6216,8 @@ and (place_meeting(x, y, obj_vine))
 			}
 		}
 		else
-		if (key_left)
-		and (!key_right)
+		if (key_left_hold)
+		and (!key_right_hold)
 		and (!key_up)
 		and (!key_down)
 		and (!position_meeting(bbox_left - 1, y, obj_wall))
@@ -6228,8 +6244,8 @@ and (place_meeting(x, y, obj_vine))
 			}
 		}
 		else
-		if (key_left)
-		and (!key_right)
+		if (key_left_hold)
+		and (!key_right_hold)
 		and (!key_up)
 		and (!key_down)
 		and (position_meeting(bbox_left - 1, y, obj_wall))
@@ -6246,8 +6262,8 @@ and (place_meeting(x, y, obj_vine))
 			}
 		}
 		else
-		if (key_right)
-		and (!key_left)
+		if (key_right_hold)
+		and (!key_left_hold)
 		and (!key_up)
 		and (!key_down)
 		and (!position_meeting(bbox_right + 1, y, obj_wall))
@@ -6274,8 +6290,8 @@ and (place_meeting(x, y, obj_vine))
 			}
 		}
 		else
-		if (key_right)
-		and (!key_left)
+		if (key_right_hold)
+		and (!key_left_hold)
 		and (!key_up)
 		and (!key_down)
 		and (position_meeting(bbox_right + 1, y, obj_wall))
@@ -6439,8 +6455,8 @@ if (crouch == true)
 		
 		#region /* Crouch Stand */
 		if (speed == 0)
-		and (!key_left)
-		and (!key_right)
+		and (!key_left_hold)
+		and (!key_right_hold)
 		{
 			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}else
@@ -6459,8 +6475,8 @@ if (crouch == true)
 		else
 		
 		#region /* Crouch Crawl */
-		if (key_left)
-		or (key_right)
+		if (key_left_hold)
+		or (key_right_hold)
 		{
 			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
 			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
@@ -6512,9 +6528,9 @@ if (on_ground == true)
 	
 	#region /* Skidding */
 	if (hspeed < 0)
-	and (key_right)
+	and (key_right_hold)
 	or (hspeed > 0)
-	and (key_left)
+	and (key_left_hold)
 	{
 		if (!audio_is_playing(snd_skidding))
 		{
@@ -6593,8 +6609,8 @@ if (on_ground == true)
 	
 	#region /* Stand Underwater */
 	if (hspeed == 0)
-	and (!key_left)
-	and (!key_right)
+	and (!key_left_hold)
+	and (!key_right_hold)
 	{
 		if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
 		if (sprite_swim > noone){sprite_index = sprite_swim;}else
@@ -6864,8 +6880,8 @@ if (crouch == true)
 		
 		#region /* Crouch Still */
 		if (speed == 0)
-		and (!key_left)
-		and (!key_right)
+		and (!key_left_hold)
+		and (!key_right_hold)
 		{
 			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}else
@@ -6884,8 +6900,8 @@ if (crouch == true)
 		else
 		
 		#region /* Crouch Crawl */
-		if (key_left)
-		or (key_right)
+		if (key_left_hold)
+		or (key_right_hold)
 		{
 			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
 			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
@@ -7041,9 +7057,9 @@ and (vspeed == 0)
 	
 	#region /* Skidding */
 	if (hspeed < 0)
-	and (key_right)
+	and (key_right_hold)
 	or (hspeed > 0)
-	and (key_left)
+	and (key_left_hold)
 	{
 		if (asset_get_type("obj_ice_block") == asset_object)
 		and (place_meeting(x, y + 1, obj_ice_block))
@@ -7104,9 +7120,9 @@ and (vspeed == 0)
 	
 	#region /* Skidding Stop */
 	if (hspeed < 0)
-	and (!key_left)
+	and (!key_left_hold)
 	or (hspeed > 0)
-	and (!key_right)
+	and (!key_right_hold)
 	{
 		if (hold_item_in_hands != "")
 		{
@@ -7237,10 +7253,10 @@ and (vspeed == 0)
 	#region /* Against Wall */
 	if (place_meeting(x - 1, y, obj_wall))
 	and (on_ground == true)
-	and (key_left)
+	and (key_left_hold)
 	or (place_meeting(x + 1, y, obj_wall))
 	and (on_ground == true)
-	and (key_right)
+	and (key_right_hold)
 	{
 		if (crouch == false)
 		{
@@ -7284,8 +7300,8 @@ and (vspeed == 0)
 	
 	#region /* Stand */
 	if (hspeed == 0)
-	and (!key_left)
-	and (!key_right)
+	and (!key_left_hold)
+	and (!key_right_hold)
 	{
 		look_up_start_animation = true;
 		against_wall_animation = 0;
@@ -7714,11 +7730,11 @@ and (asset_get_type("snd_skidding_ice") == asset_sound)
 	{
 		if (speed < 2)
 		or (hspeed > 0)
-		and (key_right)
+		and (key_right_hold)
 		or (hspeed < 0)
-		and (key_left)
-		or (!key_left)
-		and (!key_right)
+		and (key_left_hold)
+		or (!key_left_hold)
+		and (!key_right_hold)
 		or (!place_meeting(x, y + 1, obj_ice_block))
 		{
 			if (asset_get_type("snd_skidding_ice") == asset_sound)
@@ -7750,11 +7766,11 @@ if (crouch == false)
 {
 	if (speed < 2)
 	or (hspeed > 0)
-	and (key_right)
+	and (key_right_hold)
 	or (hspeed < 0)
-	and (key_left)
-	or (!key_left)
-	and (!key_right)
+	and (key_left_hold)
+	or (!key_left_hold)
+	and (!key_right_hold)
 	or (!place_meeting(x, y + 1, obj_wall))
 	{
 		if (asset_get_type("snd_skidding") == asset_sound)
@@ -7787,9 +7803,9 @@ if (on_ground == true)
 	and (crouch == false)
 	{
 		if (hspeed < 0)
-		and (!key_right)
+		and (!key_right_hold)
 		or (hspeed > 0)
-		and (!key_left)
+		and (!key_left_hold)
 		{
 			if (image_index < 1)
 			{

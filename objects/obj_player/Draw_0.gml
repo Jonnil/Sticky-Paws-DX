@@ -16,6 +16,8 @@
 //scr_draw_text_outlined(x - 32, y - 128, "ledge_grab_jump" + ": " + string(ledge_grab_jump), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y + 128 - 64, "actually_play_edited_level" + ": " + string(global.actually_play_edited_level), global.default_text_size, c_white, c_red, 1);
 scr_draw_text_outlined(x - 32, y - 128, "double_tap_dive" + ": " + string(double_tap_dive), global.default_text_size, c_white, c_red, 1);
+scr_draw_text_outlined(x - 32, y - 128 - 64, "double_tap_dive_timer" + ": " + string(double_tap_dive_timer), global.default_text_size, c_white, c_red, 1);
+scr_draw_text_outlined(x - 32, y - 128 - 64 - 64, "double_tap_right_dive" + ": " + string(double_tap_right_dive), global.default_text_size, c_white, c_red, 1);
 
 #region /* Draw Raycasts */
 if (hold_item_in_hands != "")
