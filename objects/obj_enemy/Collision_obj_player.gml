@@ -78,18 +78,18 @@ if (stomped_delay <= 0)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 			}
 		}
 		#endregion /* 1 Coin END */
 	
 		#region /* 200 Score */
 		score += 200;
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y, 0, obj_scoreup))
+			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
-				scoreup = 200;
+				score_up = 200;
 			}
 		}
 		#endregion /* 200 Score END */
@@ -97,11 +97,11 @@ if (stomped_delay <= 0)
 		#region /* 1-up */
 		if (global.number_of_chain_kills_for_1up <= 1)
 		{
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+				with(instance_create_depth(x, y - 32, 0, obj_score_up))
 				{
-					scoreup = "1-up";
+					score_up = "1-up";
 				}
 			}
 		}
@@ -122,13 +122,13 @@ if (stomped_delay <= 0)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 10;
 			}
 		}
@@ -136,11 +136,11 @@ if (stomped_delay <= 0)
 	
 		#region /* 400 Score */
 		score += 400;
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y, 0, obj_scoreup))
+			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
-				scoreup = 400;
+				score_up = 400;
 			}
 		}
 		#endregion /* 400 Score END */
@@ -148,11 +148,11 @@ if (stomped_delay <= 0)
 		#region /* 1-up */
 		if (global.number_of_chain_kills_for_1up <= 2)
 		{
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+				with(instance_create_depth(x, y - 32, 0, obj_score_up))
 				{
-					scoreup = "1-up";
+					score_up = "1-up";
 				}
 			}
 		}
@@ -173,27 +173,27 @@ if (stomped_delay <= 0)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 10;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 20;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 30;
 			}
 		}
@@ -201,11 +201,11 @@ if (stomped_delay <= 0)
 	
 		#region /* 800 Score */
 		score += 800;
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y, 0, obj_scoreup))
+			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
-				scoreup = 800;
+				score_up = 800;
 			}
 		}
 		#endregion /* 800 Score END */
@@ -213,11 +213,11 @@ if (stomped_delay <= 0)
 		#region /* 1-up */
 		if (global.number_of_chain_kills_for_1up <= 3)
 		{
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+				with(instance_create_depth(x, y - 32, 0, obj_score_up))
 				{
-					scoreup = "1-up";
+					score_up = "1-up";
 				}
 			}
 		}
@@ -238,27 +238,27 @@ if (stomped_delay <= 0)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 10;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 20;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 30;
 			}
 		}
@@ -266,11 +266,11 @@ if (stomped_delay <= 0)
 	
 		#region /* 1000 Score */
 		score += 1000;
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y, 0, obj_scoreup))
+			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
-				scoreup = 1000;
+				score_up = 1000;
 			}
 		}
 		#endregion /* 1000 Score END */
@@ -278,11 +278,11 @@ if (stomped_delay <= 0)
 		#region /* 1-up */
 		if (global.number_of_chain_kills_for_1up <= 4)
 		{
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+				with(instance_create_depth(x, y - 32, 0, obj_score_up))
 				{
-					scoreup = "1-up";
+					score_up = "1-up";
 				}
 			}
 		}
@@ -303,27 +303,27 @@ if (stomped_delay <= 0)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 10;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 20;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 30;
 			}
 		}
@@ -331,11 +331,11 @@ if (stomped_delay <= 0)
 	
 		#region /* 2000 Score */
 		score += 2000;
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y, 0, obj_scoreup))
+			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
-				scoreup = 2000;
+				score_up = 2000;
 			}
 		}
 		#endregion /* 2000 Score END */
@@ -343,11 +343,11 @@ if (stomped_delay <= 0)
 		#region /* 1-up */
 		if (global.number_of_chain_kills_for_1up <= 5)
 		{
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
+				with(instance_create_depth(x, y - 16, 0, obj_score_up))
 				{
-					scoreup = "1-up";
+					score_up = "1-up";
 				}
 			}
 		}
@@ -368,27 +368,27 @@ if (stomped_delay <= 0)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 10;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 20;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 30;
 			}
 		}
@@ -396,11 +396,11 @@ if (stomped_delay <= 0)
 	
 		#region /* 4000 Score */
 		score += 4000;
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y, 0, obj_scoreup))
+			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
-				scoreup = 4000;
+				score_up = 4000;
 			}
 		}
 		#endregion /* 4000 Score END */
@@ -408,11 +408,11 @@ if (stomped_delay <= 0)
 		#region /* 1-up */
 		if (global.number_of_chain_kills_for_1up <= 6)
 		{
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+				with(instance_create_depth(x, y - 32, 0, obj_score_up))
 				{
-					scoreup = "1-up";
+					score_up = "1-up";
 				}
 			}
 		}
@@ -433,27 +433,27 @@ if (stomped_delay <= 0)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 10;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 20;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 30;
 			}
 		}
@@ -461,11 +461,11 @@ if (stomped_delay <= 0)
 	
 		#region /* 8000 Score */
 		score += 8000;
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y, 0, obj_scoreup))
+			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
-				scoreup = 8000;
+				score_up = 8000;
 			}
 		}
 		#endregion /* 8000 Score END */
@@ -473,11 +473,11 @@ if (stomped_delay <= 0)
 		#region /* 1-up */
 		if (global.number_of_chain_kills_for_1up <= 7)
 		{
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+				with(instance_create_depth(x, y - 32, 0, obj_score_up))
 				{
-					scoreup = "1-up";
+					score_up = "1-up";
 				}
 			}
 		}
@@ -498,27 +498,27 @@ if (stomped_delay <= 0)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 10;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 20;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 				delay_time = 30;
 			}
 		}
@@ -527,11 +527,11 @@ if (stomped_delay <= 0)
 		#region /* 1-up */
 		if (global.number_of_chain_kills_for_1up <= 8)
 		{
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+				with(instance_create_depth(x, y - 32, 0, obj_score_up))
 				{
-					scoreup = "1-up";
+					score_up = "1-up";
 				}
 			}
 		}
@@ -623,18 +623,18 @@ or (other.chain_reaction<= 1)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 	}
 	#endregion /* 1 Coin END */
 	
 	#region /* 200 Score */
 	score += 200;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 200;
+			score_up = 200;
 		}
 	}
 	#endregion /* 200 Score END */
@@ -642,11 +642,11 @@ or (other.chain_reaction<= 1)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 1)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -667,13 +667,13 @@ or (other.chain_reaction = 2)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 	}
@@ -681,11 +681,11 @@ or (other.chain_reaction = 2)
 	
 	#region /* 400 Score */
 	score += 400;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 400;
+			score_up = 400;
 		}
 	}
 	#endregion /* 400 Score END */
@@ -693,11 +693,11 @@ or (other.chain_reaction = 2)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 2)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -718,27 +718,27 @@ or (other.chain_reaction = 3)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -746,11 +746,11 @@ or (other.chain_reaction = 3)
 	
 	#region /* 800 Score */
 	score += 800;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 800;
+			score_up = 800;
 		}
 	}
 	#endregion /* 800 Score END */
@@ -758,11 +758,11 @@ or (other.chain_reaction = 3)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 3)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -783,27 +783,27 @@ or (other.chain_reaction = 4)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -811,11 +811,11 @@ or (other.chain_reaction = 4)
 	
 	#region /* 1000 Score */
 	score += 1000;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 1000;
+			score_up = 1000;
 		}
 	}
 	#endregion /* 1000 Score END */
@@ -823,11 +823,11 @@ or (other.chain_reaction = 4)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 4)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -849,27 +849,27 @@ or (other.chain_reaction == 5)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -877,11 +877,11 @@ or (other.chain_reaction == 5)
 	
 	#region /* 2000 Score */
 	score += 2000;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 2000;
+			score_up = 2000;
 		}
 	}
 	#endregion /* 2000 Score END */
@@ -889,11 +889,11 @@ or (other.chain_reaction == 5)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 5)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 16, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 16, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -914,27 +914,27 @@ or (other.chain_reaction == 6)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -942,11 +942,11 @@ or (other.chain_reaction == 6)
 	
 	#region /* 4000 Score */
 	score += 4000;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 4000;
+			score_up = 4000;
 		}
 	}
 	#endregion /* 4000 Score END */
@@ -954,11 +954,11 @@ or (other.chain_reaction == 6)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 6)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -979,27 +979,27 @@ or (other.chain_reaction == 7)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -1007,11 +1007,11 @@ or (other.chain_reaction == 7)
 	
 	#region /* 8000 Score */
 	score += 8000;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 8000;
+			score_up = 8000;
 		}
 	}
 	#endregion /* 8000 Score END */
@@ -1019,11 +1019,11 @@ or (other.chain_reaction == 7)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 7)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -1044,27 +1044,27 @@ or (other.chain_reaction >= 8)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -1073,11 +1073,11 @@ or (other.chain_reaction >= 8)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 8)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -1153,18 +1153,18 @@ or (other.chain_reaction<= 1)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 	}
 	#endregion /* 1 Coin END */
 	
 	#region /* 200 Score */
 	score += 200;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 200;
+			score_up = 200;
 		}
 	}
 	#endregion /* 200 Score END */
@@ -1172,11 +1172,11 @@ or (other.chain_reaction<= 1)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 1)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -1197,13 +1197,13 @@ or (other.chain_reaction = 2)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 	}
@@ -1211,11 +1211,11 @@ or (other.chain_reaction = 2)
 	
 	#region /* 400 Score */
 	score += 400;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 400;
+			score_up = 400;
 		}
 	}
 	#endregion /* 400 Score END */
@@ -1223,11 +1223,11 @@ or (other.chain_reaction = 2)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 2)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -1248,27 +1248,27 @@ or (other.chain_reaction = 3)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -1276,11 +1276,11 @@ or (other.chain_reaction = 3)
 	
 	#region /* 800 Score */
 	score += 800;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 800;
+			score_up = 800;
 		}
 	}
 	#endregion /* 800 Score END */
@@ -1288,11 +1288,11 @@ or (other.chain_reaction = 3)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 3)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -1313,27 +1313,27 @@ or (other.chain_reaction = 4)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -1341,11 +1341,11 @@ or (other.chain_reaction = 4)
 	
 	#region /* 1000 Score */
 	score += 1000;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 1000;
+			score_up = 1000;
 		}
 	}
 	#endregion /* 1000 Score END */
@@ -1353,11 +1353,11 @@ or (other.chain_reaction = 4)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 4)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -1378,27 +1378,27 @@ or (other.chain_reaction == 5)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -1406,11 +1406,11 @@ or (other.chain_reaction == 5)
 	
 	#region /* 2000 Score */
 	score += 2000;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 2000;
+			score_up = 2000;
 		}
 	}
 	#endregion /* 2000 Score END */
@@ -1418,11 +1418,11 @@ or (other.chain_reaction == 5)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 5)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 16, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 16, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -1443,27 +1443,27 @@ or (other.chain_reaction == 6)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -1471,11 +1471,11 @@ or (other.chain_reaction == 6)
 	
 	#region /* 4000 Score */
 	score += 4000;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 4000;
+			score_up = 4000;
 		}
 	}
 	#endregion /* 4000 Score END */
@@ -1483,11 +1483,11 @@ or (other.chain_reaction == 6)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 6)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -1508,27 +1508,27 @@ or (other.chain_reaction == 7)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -1536,11 +1536,11 @@ or (other.chain_reaction == 7)
 	
 	#region /* 8000 Score */
 	score += 8000;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 8000;
+			score_up = 8000;
 		}
 	}
 	#endregion /* 8000 Score END */
@@ -1548,11 +1548,11 @@ or (other.chain_reaction == 7)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 7)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}
@@ -1573,27 +1573,27 @@ or (other.chain_reaction >= 8)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 30;
 		}
 	}
@@ -1602,11 +1602,11 @@ or (other.chain_reaction >= 8)
 	#region /* 1-up */
 	if (global.number_of_chain_kills_for_1up <= 8)
 	{
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y - 32, 0, obj_scoreup))
+			with(instance_create_depth(x, y - 32, 0, obj_score_up))
 			{
-				scoreup = "1-up";
+				score_up = "1-up";
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_scoreup",
+  "name": "obj_score_up",
   "spriteId": null,
   "solid": false,
   "visible": true,

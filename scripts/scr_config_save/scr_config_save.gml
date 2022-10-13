@@ -77,6 +77,7 @@ function scr_config_save()
 	ini_write_real("config", "player1_up_key_is_jump_key", global.player1_up_key_is_jump_key);
 	ini_write_real("config", "player1_double_tap_to_run", global.player1_double_tap_to_run);
 	ini_write_real("config", "player1_sprint_toggle", global.player1_sprint_toggle);
+	ini_write_real("config", "player1_double_tap_to_dive", global.player1_double_tap_to_dive);
 	ini_write_real("config", "player1_cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("config", "player1_cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
 	ini_write_real("config", "player1_down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
@@ -92,6 +93,7 @@ function scr_config_save()
 	ini_write_real("config", "player2_up_key_is_jump_key", global.player2_up_key_is_jump_key);
 	ini_write_real("config", "player2_double_tap_to_run", global.player2_double_tap_to_run);
 	ini_write_real("config", "player2_sprint_toggle", global.player2_sprint_toggle);
+	ini_write_real("config", "player2_double_tap_to_dive", global.player2_double_tap_to_dive);
 	ini_write_real("config", "player2_cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("config", "player2_cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
 	ini_write_real("config", "player2_down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
@@ -107,6 +109,7 @@ function scr_config_save()
 	ini_write_real("config", "player3_up_key_is_jump_key", global.player3_up_key_is_jump_key);
 	ini_write_real("config", "player3_double_tap_to_run", global.player3_double_tap_to_run);
 	ini_write_real("config", "player3_sprint_toggle", global.player3_sprint_toggle);
+	ini_write_real("config", "player3_double_tap_to_dive", global.player3_double_tap_to_dive);
 	ini_write_real("config", "player3_cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("config", "player3_cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
 	ini_write_real("config", "player3_down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
@@ -122,6 +125,7 @@ function scr_config_save()
 	ini_write_real("config", "player4_up_key_is_jump_key", global.player4_up_key_is_jump_key);
 	ini_write_real("config", "player4_double_tap_to_run", global.player4_double_tap_to_run);
 	ini_write_real("config", "player4_sprint_toggle", global.player4_sprint_toggle);
+	ini_write_real("config", "player4_double_tap_to_dive", global.player4_double_tap_to_dive);
 	ini_write_real("config", "player4_cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("config", "player4_cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
 	ini_write_real("config", "player4_down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);

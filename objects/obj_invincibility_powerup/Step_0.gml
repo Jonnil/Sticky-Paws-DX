@@ -44,7 +44,7 @@ if (position_meeting(x, y, obj_wall))
 #region /* When falling, it's not bouncing up anymore */
 if (vspeed >= 0)
 {
-	bounceup = false;
+	bounce_up = false;
 }
 #endregion /* When falling, it's not bouncing up anymore END */
 

@@ -65,7 +65,7 @@ and (instance_exists(obj_player))
 		hspeed = 0;
 	}
 	if (place_meeting(x, y, obj_player))
-	and (bounceup = false)
+	and (bounce_up = false)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
@@ -79,7 +79,7 @@ and (instance_exists(obj_player))
 #region /* When falling, it's not bouncing up anymore */
 if (vspeed >= 0)
 {
-	bounceup = false;
+	bounce_up = false;
 }
 #endregion /* When falling, it's not bouncing up anymore END */
 

@@ -1,4 +1,4 @@
-if (scoreup == "Copied")
+if (score_up == "Copied")
 and (show_remaining_jumps == false)
 {
 	depth = - 15100;

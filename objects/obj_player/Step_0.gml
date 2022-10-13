@@ -562,164 +562,6 @@ if (hspeed != 0)
 
 scr_toggle_fullscreen();
 
-#region /* Set values from the Input Settings */
-
-#region /* Up Key Is Jump Key */
-if (player == 1)
-{
-	up_key_is_jump_key = global.player1_up_key_is_jump_key;
-}
-else
-if (player == 2)
-{
-	up_key_is_jump_key = global.player2_up_key_is_jump_key;
-}
-else
-if (player == 3)
-{
-	up_key_is_jump_key = global.player3_up_key_is_jump_key;
-}
-else
-if (player == 4)
-{
-	up_key_is_jump_key = global.player4_up_key_is_jump_key;
-}
-#endregion /* Up Key Is Jump Key END */
-
-#region /* Double-tap direction to run */
-if (player == 1)
-{
-	double_tap_to_run = global.player1_double_tap_to_run;
-}
-else
-if (player == 2)
-{
-	double_tap_to_run = global.player2_double_tap_to_run;
-}
-else
-if (player == 3)
-{
-	double_tap_to_run = global.player3_double_tap_to_run;
-}
-else
-if (player == 4)
-{
-	double_tap_to_run = global.player4_double_tap_to_run;
-}
-#endregion /* Double-tap direction to run END */
-
-#region /* Cancel dive by pressing the jump or dive key */
-if (player == 1)
-{
-	cancel_dive_by_pressing_jump_or_dive_button = global.player1_cancel_dive_by_pressing_jump_or_dive_button;
-}
-else
-if (player == 2)
-{
-	cancel_dive_by_pressing_jump_or_dive_button = global.player2_cancel_dive_by_pressing_jump_or_dive_button;
-}
-else
-if (player == 3)
-{
-	cancel_dive_by_pressing_jump_or_dive_button = global.player3_cancel_dive_by_pressing_jump_or_dive_button;
-}
-else
-if (player == 4)
-{
-	cancel_dive_by_pressing_jump_or_dive_button = global.player4_cancel_dive_by_pressing_jump_or_dive_button;
-}
-#endregion /* Cancel dive by pressing the jump or dive key END */
-
-#region /* Cancel dive by pressing the opposite direction */
-if (player == 1)
-{
-	cancel_dive_by_pressing_opposite_direction = global.player1_cancel_dive_by_pressing_opposite_direction;
-}
-else
-if (player == 2)
-{
-	cancel_dive_by_pressing_opposite_direction = global.player2_cancel_dive_by_pressing_opposite_direction;
-}
-else
-if (player == 3)
-{
-	cancel_dive_by_pressing_opposite_direction = global.player3_cancel_dive_by_pressing_opposite_direction;
-}
-else
-if (player == 4)
-{
-	cancel_dive_by_pressing_opposite_direction = global.player4_cancel_dive_by_pressing_opposite_direction;
-}
-#endregion /* Cancel dive by pressing the opposite direction END */
-
-#region /* Down + Jump to Ground Pound */
-if (player == 1)
-{
-	down_and_jump_to_groundpound = global.player1_down_and_jump_to_groundpound;
-}
-else
-if (player == 2)
-{
-	down_and_jump_to_groundpound = global.player2_down_and_jump_to_groundpound;
-}
-else
-if (player == 3)
-{
-	down_and_jump_to_groundpound = global.player3_down_and_jump_to_groundpound;
-}
-else
-if (player == 4)
-{
-	down_and_jump_to_groundpound = global.player4_down_and_jump_to_groundpound;
-}
-#endregion /* Down + Jump to Ground Pound END */
-
-#region /* Hold Direction Wall jump */
-if (player == 1)
-{
-	wall_jump_setting = global.player1_wall_jump_setting;
-}
-else
-if (player == 2)
-{
-	wall_jump_setting = global.player2_wall_jump_setting;
-}
-else
-if (player == 3)
-{
-	wall_jump_setting = global.player3_wall_jump_setting;
-}
-else
-if (player == 4)
-{
-	wall_jump_setting = global.player4_wall_jump_setting;
-}
-#endregion /* Hold Direction Wall jump END */
-
-#region /* Drop down form Horizontal Rope */
-if (player == 1)
-{
-	drop_from_rope = global.player1_drop_from_rope;
-}
-else
-if (player == 2)
-{
-	drop_from_rope = global.player2_drop_from_rope;
-}
-else
-if (player == 3)
-{
-	drop_from_rope = global.player3_drop_from_rope;
-}
-else
-if (player == 4)
-{
-	drop_from_rope = global.player4_drop_from_rope;
-}
-#endregion /* Drop down form Horizontal Rope END */
-
-#endregion /* Set values from the Input Settings END */
-
 #region /* Assist Invincible */
 if (assist_invincible == true)
 {
@@ -1525,7 +1367,7 @@ else
 	else
 	if (key_sprint)
 	and (allow_run == true)
-	or (double_tap_left = 3)
+	or (double_tap_left == 3)
 	and (allow_run == true)
 	or (double_tap_right == 3)
 	and (allow_run == true)
@@ -1576,14 +1418,14 @@ if (double_tap_to_run == true)
 		#region /* Double tap left direction to run */
 		if (key_left)
 		{
-			if (double_tap_left = false)
+			if (double_tap_left == false)
 			{
 				double_tap_left = true;
 				double_tap_right = false;
 				double_tap_run_timer = 15;
 			}
 			else
-			if (double_tap_left = 2)
+			if (double_tap_left == 2)
 			{
 				double_tap_left = 3;
 				double_tap_run_timer = 15;
@@ -1595,8 +1437,9 @@ if (double_tap_to_run == true)
 		}
 		#endregion /* Double tap left direction to run END */
 		
-		#region /* Double tap right direction to run */
 		else
+		
+		#region /* Double tap right direction to run */
 		if (key_right)
 		{
 			if (double_tap_right = false)
@@ -1650,6 +1493,92 @@ if (double_tap_run_timer <= 0)
 	double_tap_right = false;
 }
 #endregion /* Double-tap direction to run END */
+
+#region /* Double-tap direction to dive*/
+if (double_tap_to_dive == true)
+{
+	
+	#region /* Double tap left direction to dive */
+	if (key_left)
+	{
+		if (double_tap_left_dive == false)
+		{
+			double_tap_left_dive = true;
+			double_tap_right_dive = false;
+			double_tap_dive = false;
+			double_tap_dive_timer = 15;
+		}
+		else
+		if (double_tap_left_dive == 2)
+		{
+			double_tap_dive = true; /* Make player dive when double tapping direction */
+			double_tap_dive_timer = 0;
+			double_tap_left_dive = false;
+		}
+		else
+		{
+			double_tap_dive = false;
+			double_tap_dive_timer = 15;
+		}
+	}
+	#endregion /* Double tap left direction to dive END */
+	
+	else
+	
+	#region /* Double tap right direction to dive */
+	if (key_right)
+	{
+		if (double_tap_right_dive = false)
+		{
+			double_tap_right_dive = true;
+			double_tap_left_dive = false;
+			double_tap_dive = false;
+			double_tap_dive_timer = 15;
+		}
+		else
+		if (double_tap_right_dive = 2)
+		{
+			double_tap_dive = true; /* Make player dive when double tapping direction */
+			double_tap_dive_timer = 0;
+			double_tap_right_dive = false;
+		}
+		else
+		{
+			double_tap_dive = false;
+			double_tap_dive_timer = 15;
+		}
+	}
+	#endregion /* Double tap right direction to dive END */
+	
+	else
+	if (!key_left)
+	and (!key_right)
+	{
+		if (double_tap_left_dive == true)
+		and (double_tap_dive_timer <= 28)
+		{
+			double_tap_dive = false;
+			double_tap_left_dive = 2;
+		}
+		else
+		if (double_tap_right_dive == true)
+		and (double_tap_dive_timer <= 28)
+		{
+			double_tap_dive = false;
+			double_tap_right_dive = 2;
+		}
+		double_tap_dive = false;
+		double_tap_dive_timer -= 1;
+	}
+}
+if (double_tap_dive_timer <= 0)
+{
+	double_tap_dive = false;
+	double_tap_dive_timer = 0;
+	double_tap_left_dive = false;
+	double_tap_right_dive = false;
+}
+#endregion /* Double-tap direction to dive END */
 
 #region /* Set the friction */
 if (on_ground == true)
@@ -1967,9 +1896,9 @@ and (can_mid_air_jump == 0)
 				if (number_of_jumps >= 3)
 				and (midair_jumps_left < number_of_jumps)
 				{
-					with(instance_create_depth(x, bbox_bottom, 0, obj_scoreup))
+					with(instance_create_depth(x, bbox_bottom, 0, obj_score_up))
 					{
-						scoreup = instance_nearest(x, y, obj_player).midair_jumps_left; /* If the player can do 3 jumps, show that */
+						score_up = instance_nearest(x, y, obj_player).midair_jumps_left; /* If the player can do 3 jumps, show that */
 						not_score = true;
 						show_remaining_jumps = true;
 					}
@@ -1981,9 +1910,9 @@ and (can_mid_air_jump == 0)
 				if (number_of_jumps >= 3)
 				and (midair_jumps_left < number_of_jumps)
 				{
-					with(instance_create_depth(x, bbox_bottom, 0, obj_scoreup))
+					with(instance_create_depth(x, bbox_bottom, 0, obj_score_up))
 					{
-						scoreup = instance_nearest(x, y, obj_player).midair_jumps_left; /* If the player can do 3 jumps, show that */
+						score_up = instance_nearest(x, y, obj_player).midair_jumps_left; /* If the player can do 3 jumps, show that */
 						not_score = true;
 						show_remaining_jumps = true;
 					}
@@ -3385,7 +3314,7 @@ and (horizontal_rope_climb == false)
 		or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		or (position_meeting(bbox_right - 1,bbox_bottom + 1, obj_semisolid_platform))
 		{
-			with(instance_create_depth(x, bbox_bottom, 0, obj_blockbreak))
+			with(instance_create_depth(x, bbox_bottom, 0, obj_block_break))
 			{
 				can_break_other_blocks = true;
 				image_xscale = 0.75; /* Make the blockbreak hitbox smaller than a block so you don't accidentally break unintended blocks around you */
@@ -3553,7 +3482,16 @@ and (in_water == false)
 	and (climb == false)
 	and (horizontal_rope_climb == false)
 	and (takendamage <= takendamage_freezetime)
-	and (key_dive_pressed)
+	and (key_dive_pressed) /* Pressing the dive pressed key */
+	or (dive == false)
+	and (burnt == false)
+	and (stick_to_wall == false)
+	and (ledge_grab == false)
+	and (climb == false)
+	and (horizontal_rope_climb == false)
+	and (takendamage <= takendamage_freezetime)
+	and (double_tap_to_dive = true) /* If you are allowed to double-tap direction to dive */
+	and (double_tap_dive = true) /* If you double tapped direction to dive */
 	{
 		if (rope_swing == true)
 		{
@@ -3623,6 +3561,7 @@ and (in_water == false)
 		scr_audio_play(snd_dive, volume_source.sound);
 		scr_audio_play(voice_dive, volume_source.voice);
 		dive = true;
+		double_tap_dive = false;
 		jump = 0;
 		spring = false;
 		move_towards_spring_endpoint = false;
@@ -5801,22 +5740,22 @@ and (hold_item_in_hands == "")
 			if (image_index <= 5)
 			and (image_speed > 0.3)
 			{
-				if (asset_get_type("obj_blockbreak") == asset_object)
+				if (asset_get_type("obj_block_break") == asset_object)
 				{
-					instance_create_depth(x, y, 0, obj_blockbreak);
-					instance_create_depth(x, y + 32, 0, obj_blockbreak);
-					instance_create_depth(x, y + 64, 0, obj_blockbreak);
+					instance_create_depth(x, y, 0, obj_block_break);
+					instance_create_depth(x, y + 32, 0, obj_block_break);
+					instance_create_depth(x, y + 64, 0, obj_block_break);
 				}
 			}
 			else
 			if (image_index >= 5)
 			and (image_speed > 0.3)
 			{
-				if (asset_get_type("obj_blockbreak") == asset_object)
+				if (asset_get_type("obj_block_break") == asset_object)
 				{
-					instance_create_depth(x, y, 0, obj_blockbreak);
-					instance_create_depth(x, y - 32, 0, obj_blockbreak);
-					instance_create_depth(x, y - 64, 0, obj_blockbreak);
+					instance_create_depth(x, y, 0, obj_block_break);
+					instance_create_depth(x, y - 32, 0, obj_block_break);
+					instance_create_depth(x, y - 64, 0, obj_block_break);
 				}
 			}
 			if (image_speed < 1)
@@ -5975,7 +5914,7 @@ and (hold_item_in_hands == "")
 				if (sprite_stand > noone){sprite_index = sprite_stand;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 				if (key_sprint)
-				or (double_tap_left = 3)
+				or (double_tap_left == 3)
 				{
 					hspeed -= 0.5;
 					speed_max = speed_max_run;
@@ -6866,7 +6805,7 @@ if (crouch == true)
 	#region /* Destroy blocks above you when you jump while crouching */
 	if (key_jump)
 	{
-		with (instance_create_depth(x, bbox_top, 0, obj_blockbreak))
+		with (instance_create_depth(x, bbox_top, 0, obj_block_break))
 		{
 			can_break_other_blocks = true;
 			image_xscale = 0.75;

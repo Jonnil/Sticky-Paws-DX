@@ -66,98 +66,98 @@ and (instance_exists(obj_player))
 							{
 								image_speed = 1;
 								motion_set(90, 10);
-								bounceup = true;
+								bounce_up = true;
 							}
 							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 							{
 								image_speed = 1;
 								motion_set(90, 10);
-								bounceup = true;
+								bounce_up = true;
 								delay_time = 10;
 							}
 							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 							{
 								image_speed = 1;
 								motion_set(90, 10);
-								bounceup = true;
+								bounce_up = true;
 								delay_time = 20;
 							}
 							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 							{
 								image_speed = 1;
 								motion_set(90, 10);
-								bounceup = true;
+								bounce_up = true;
 								delay_time = 30;
 							}
 							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 							{
 								image_speed = 1;
 								motion_set(90, 10);
-								bounceup = true;
+								bounce_up = true;
 								delay_time = 40;
 							}
 							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 							{
 								image_speed = 1;
 								motion_set(90, 10);
-								bounceup = true;
+								bounce_up = true;
 								delay_time = 50;
 							}
 							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 							{
 								image_speed = 1;
 								motion_set(90, 10);
-								bounceup = true;
+								bounce_up = true;
 								delay_time = 60;
 							}
 							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 							{
 								image_speed = 1;
 								motion_set(90, 10);
-								bounceup = true;
+								bounce_up = true;
 								delay_time = 70;
 							}
 							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 							{
 								image_speed = 1;
 								motion_set(90, 10);
-								bounceup = true;
+								bounce_up = true;
 								delay_time = 80;
 							}
 							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 							{
 								image_speed = 1;
 								motion_set(90, 10);
-								bounceup = true;
+								bounce_up = true;
 								delay_time = 90;
 							}
 					
 							#region /* 2000 Score */
 							score += 2000;
-							if (asset_get_type("obj_scoreup") == asset_object)
+							if (asset_get_type("obj_score_up") == asset_object)
 							{
-								with(instance_create_depth(x, y, 0, obj_scoreup))
+								with(instance_create_depth(x, y, 0, obj_score_up))
 								{
-									scoreup = 2000;
+									score_up = 2000;
 								}
 							}
 							#endregion /* 2000 Score END */
 							
 							#region /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint */
-							if (asset_get_type("obj_scoreup") == asset_object)
+							if (asset_get_type("obj_score_up") == asset_object)
 							{
 								if (last_checkpoint == true) /*Tell the player if the checkpoint they are activating is the last checkpoint in the level, the checkpoint cosest to the goal*/
 								{
-									with(instance_create_depth(x, y - 20, 0, obj_scoreup))
+									with(instance_create_depth(x, y - 20, 0, obj_score_up))
 									{
-										scoreup = "last checkpoint";
+										score_up = "last checkpoint";
 									}
 								}
 								else
 								{
-									with(instance_create_depth(x, y - 20, 0, obj_scoreup))
+									with(instance_create_depth(x, y - 20, 0, obj_score_up))
 									{
-										scoreup = "checkpoint";
+										score_up = "checkpoint";
 									}
 								}
 							}

@@ -84,12 +84,12 @@ if (draw_xscale >= 0.8)
 		if (image_xscale == -1)
 		{
 			die_volting = -1;
-			instance_create_depth(bbox_left, y, 0, obj_blockbreak);
+			instance_create_depth(bbox_left, y, 0, obj_block_break);
 		}
 		else
 		{
 			die_volting = +1;
-			instance_create_depth(bbox_right, y, 0, obj_blockbreak);
+			instance_create_depth(bbox_right, y, 0, obj_block_break);
 		}
 	}
 }

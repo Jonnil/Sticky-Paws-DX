@@ -104,6 +104,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player1_up_key_is_jump_key")){global.player1_up_key_is_jump_key = ini_read_real("config", "player1_up_key_is_jump_key", 0);}
 		if (ini_key_exists("config", "player1_double_tap_to_run")){global.player1_double_tap_to_run = ini_read_real("config", "player1_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player1_sprint_toggle")){global.player1_sprint_toggle = ini_read_real("config", "player1_sprint_toggle", 0);}
+		if (ini_key_exists("config", "player1_double_tap_to_dive")){global.player1_double_tap_to_dive = ini_read_real("config", "player1_double_tap_to_dive", 0);}
 		if (ini_key_exists("config", "player1_cancel_dive_by_pressing_jump_or_dive_button")){global.player1_cancel_dive_by_pressing_jump_or_dive_button = ini_read_real("config", "player1_cancel_dive_by_pressing_jump_or_dive_button", 0);}
 		if (ini_key_exists("config", "player1_cancel_dive_by_pressing_opposite_direction")){global.player1_cancel_dive_by_pressing_opposite_direction = ini_read_real("config", "player1_cancel_dive_by_pressing_opposite_direction", 0);}
 		if (ini_key_exists("config", "player1_down_and_jump_to_groundpound")){global.player1_down_and_jump_to_groundpound = ini_read_real("config", "player1_down_and_jump_to_groundpound", 0);}
@@ -145,6 +146,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player2_up_key_is_jump_key")){global.player2_up_key_is_jump_key = ini_read_real("config", "player2_up_key_is_jump_key", 0);}
 		if (ini_key_exists("config", "player2_double_tap_to_run")){global.player2_double_tap_to_run = ini_read_real("config", "player2_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player2_sprint_toggle")){global.player2_sprint_toggle = ini_read_real("config", "player2_sprint_toggle", 0);}
+		if (ini_key_exists("config", "player2_double_tap_to_dive")){global.player2_double_tap_to_dive = ini_read_real("config", "player2_double_tap_to_dive", 0);}
 		if (ini_key_exists("config", "player2_cancel_dive_by_pressing_jump_or_dive_button")){global.player2_cancel_dive_by_pressing_jump_or_dive_button = ini_read_real("config", "player2_cancel_dive_by_pressing_jump_or_dive_button", 0);}
 		if (ini_key_exists("config", "player2_cancel_dive_by_pressing_opposite_direction")){global.player2_cancel_dive_by_pressing_opposite_direction = ini_read_real("config", "player2_cancel_dive_by_pressing_opposite_direction", 0);}
 		if (ini_key_exists("config", "player2_down_and_jump_to_groundpound")){global.player2_down_and_jump_to_groundpound = ini_read_real("config", "player2_down_and_jump_to_groundpound", 0);}
@@ -186,6 +188,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player3_up_key_is_jump_key")){global.player3_up_key_is_jump_key = ini_read_real("config", "player3_up_key_is_jump_key", 0);}
 		if (ini_key_exists("config", "player3_double_tap_to_run")){global.player3_double_tap_to_run = ini_read_real("config", "player3_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player3_sprint_toggle")){global.player3_sprint_toggle = ini_read_real("config", "player3_sprint_toggle", 0);}
+		if (ini_key_exists("config", "player3_double_tap_to_dive")){global.player3_double_tap_to_dive = ini_read_real("config", "player3_double_tap_to_dive", 0);}
 		if (ini_key_exists("config", "player3_cancel_dive_by_pressing_jump_or_dive_button")){global.player3_cancel_dive_by_pressing_jump_or_dive_button = ini_read_real("config", "player3_cancel_dive_by_pressing_jump_or_dive_button", 0);}
 		if (ini_key_exists("config", "player3_cancel_dive_by_pressing_opposite_direction")){global.player3_cancel_dive_by_pressing_opposite_direction = ini_read_real("config", "player3_cancel_dive_by_pressing_opposite_direction", 0);}
 		if (ini_key_exists("config", "player3_down_and_jump_to_groundpound")){global.player3_down_and_jump_to_groundpound = ini_read_real("config", "player3_down_and_jump_to_groundpound", 0);}
@@ -227,6 +230,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player4_up_key_is_jump_key")){global.player4_up_key_is_jump_key = ini_read_real("config", "player4_up_key_is_jump_key", 0);}
 		if (ini_key_exists("config", "player4_double_tap_to_run")){global.player4_double_tap_to_run = ini_read_real("config", "player4_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player4_sprint_toggle")){global.player4_sprint_toggle = ini_read_real("config", "player4_sprint_toggle", 0);}
+		if (ini_key_exists("config", "player4_double_tap_to_dive")){global.player4_double_tap_to_dive = ini_read_real("config", "player4_double_tap_to_dive", 0);}
 		if (ini_key_exists("config", "player4_cancel_dive_by_pressing_jump_or_dive_button")){global.player4_cancel_dive_by_pressing_jump_or_dive_button = ini_read_real("config", "player4_cancel_dive_by_pressing_jump_or_dive_button", 0);}
 		if (ini_key_exists("config", "player4_cancel_dive_by_pressing_opposite_direction")){global.player4_cancel_dive_by_pressing_opposite_direction = ini_read_real("config", "player4_cancel_dive_by_pressing_opposite_direction", 0);}
 		if (ini_key_exists("config", "player4_down_and_jump_to_groundpound")){global.player4_down_and_jump_to_groundpound = ini_read_real("config", "player4_down_and_jump_to_groundpound", 0);}

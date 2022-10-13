@@ -12,7 +12,7 @@ if (place_meeting(x, y - 8, other))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 				}
 			}
 		}
@@ -27,14 +27,14 @@ if (place_meeting(x, y - 8, other))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 				}
 				with(instance_create_depth(x - 24, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					visible = false;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 10;
 				}
 				with(instance_create_depth(x - 16, bbox_top, 0, obj_basic_collectible))
@@ -42,7 +42,7 @@ if (place_meeting(x, y - 8, other))
 					image_speed = 1;
 					visible = false;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 20;
 				}
 				with(instance_create_depth(x - 8, bbox_top, 0, obj_basic_collectible))
@@ -50,7 +50,7 @@ if (place_meeting(x, y - 8, other))
 					image_speed = 1;
 					visible = false;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 30;
 				}
 				with(instance_create_depth(x + 8, bbox_top, 0, obj_basic_collectible))
@@ -58,7 +58,7 @@ if (place_meeting(x, y - 8, other))
 					image_speed = 1;
 					visible = false;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 40;
 				}
 				with(instance_create_depth(x + 16, bbox_top, 0, obj_basic_collectible))
@@ -66,7 +66,7 @@ if (place_meeting(x, y - 8, other))
 					image_speed = 1;
 					visible = false;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 50;
 				}
 				with(instance_create_depth(x + 24, bbox_top, 0, obj_basic_collectible))
@@ -74,7 +74,7 @@ if (place_meeting(x, y - 8, other))
 					image_speed = 1;
 					visible = false;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 60;
 				}
 				with(instance_create_depth(x + 32, bbox_top, 0, obj_basic_collectible))
@@ -82,7 +82,7 @@ if (place_meeting(x, y - 8, other))
 					image_speed = 1;
 					visible = false;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 70;
 				}
 			}
@@ -96,7 +96,7 @@ if (place_meeting(x, y - 8, other))
 			{
 				with(instance_create_depth(x, bbox_top - 16, 0, obj_heart_balloon))
 				{
-					bounceup = true;
+					bounce_up = true;
 					motion_set(90, 10);
 				}
 			}
@@ -111,7 +111,7 @@ if (place_meeting(x, y - 8, other))
 				with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
 				{
 					number_of_extra_lives = 1;
-					bounceup = true;
+					bounce_up = true;
 					motion_set(90, 10);
 				}
 			}
@@ -126,7 +126,7 @@ if (place_meeting(x, y - 8, other))
 				with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
 				{
 					number_of_extra_lives = 2;
-					bounceup = true;
+					bounce_up = true;
 					motion_set(90, 10);
 				}
 			}
@@ -141,7 +141,7 @@ if (place_meeting(x, y - 8, other))
 				with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
 				{
 					number_of_extra_lives = 3;
-					bounceup = true;
+					bounce_up = true;
 					motion_set(90, 10);
 				}
 			}
@@ -158,7 +158,7 @@ if (place_meeting(x, y - 8, other))
 					image_speed = 1;
 					motion_set(90, 10);
 					big_collectible = 1;
-					bounceup = true;
+					bounce_up = true;
 				}
 			}
 		}
@@ -174,7 +174,7 @@ if (place_meeting(x, y - 8, other))
 					image_speed = 1;
 					motion_set(90, 10);
 					big_collectible = 2;
-					bounceup = true;
+					bounce_up = true;
 				}
 			}
 		}
@@ -190,7 +190,7 @@ if (place_meeting(x, y - 8, other))
 					image_speed = 1;
 					motion_set(90, 10);
 					big_collectible = 3;
-					bounceup = true;
+					bounce_up = true;
 				}
 			}
 		}
@@ -206,7 +206,7 @@ if (place_meeting(x, y - 8, other))
 					image_speed = 1;
 					motion_set(90, 10);
 					big_collectible = 4;
-					bounceup = true;
+					bounce_up = true;
 				}
 			}
 		}
@@ -222,7 +222,7 @@ if (place_meeting(x, y - 8, other))
 					image_speed = 1;
 					motion_set(90, 10);
 					big_collectible = 5;
-					bounceup = true;
+					bounce_up = true;
 				}
 			}
 		}
@@ -235,7 +235,7 @@ if (place_meeting(x, y - 8, other))
 			{
 				with(instance_create_depth(x, bbox_top - 20, 0, obj_invincibility_powerup))
 				{
-					bounceup = true;
+					bounce_up = true;
 					motion_set(90, 10);
 				}
 			}
@@ -249,7 +249,7 @@ if (place_meeting(x, y - 8, other))
 			{
 				with(instance_create_depth(x, bbox_top - 20, 0, obj_invincibility_powerup))
 				{
-					bounceup = true;
+					bounce_up = true;
 					coil_spring = true;
 					motion_set(90, 10);
 				}

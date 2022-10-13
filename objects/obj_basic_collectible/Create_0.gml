@@ -1,5 +1,5 @@
 depth = +11;
-bounceup = false;
+bounce_up = false;
 delay = 0;
 delay_time = 0;
 if (asset_get_type("spr_wall") == asset_object)

@@ -500,6 +500,10 @@ speed_max = 4; /* Default max speed is 4, this value is what changes and determi
 double_tap_left = false;
 double_tap_right = false;
 double_tap_run_timer = 0;
+double_tap_dive = false; /* If you are currently diving by double tapping direction */
+double_tap_dive_timer = 0;
+double_tap_left_dive = false;
+double_tap_right_dive = false;
 
 have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 

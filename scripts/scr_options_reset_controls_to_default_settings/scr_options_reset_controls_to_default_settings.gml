@@ -50,7 +50,7 @@ function scr_options_reset_controls_to_default_settings(xx, yy)
 			else
 			
 			#region /* Reset Player 3 Keyboard Remapping */
-			if (remapping_player = 2)
+			if (remapping_player == 2)
 			{
 				image_speed = 0;
 				if (global.settings_sidebar_menu == "controller_settings")
@@ -67,7 +67,7 @@ function scr_options_reset_controls_to_default_settings(xx, yy)
 			else
 			
 			#region /* Reset Player 4 Keyboard Remapping */
-			if (remapping_player = 3)
+			if (remapping_player == 3)
 			{
 				image_speed = 0;
 				if (global.settings_sidebar_menu == "controller_settings")

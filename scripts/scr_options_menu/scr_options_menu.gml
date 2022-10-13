@@ -4947,17 +4947,12 @@ function scr_options_menu()
 				}
 				menu_delay = 3;
 			}
-		
+			
 			#region /* Drop down menu */
 			if (menu == "assist_item_appear")
 			or (menu == "assist_extra_hp")
 			or (menu == "difficulty_settings")
 			or (menu == "hud_hide_time")
-			or (menu == "remap_select_player")
-			or (menu == "wall_jump_setting")
-			or (menu == "drop_from_rope")
-			or (menu == "show_controls")
-			or (menu == "chosen_controller_used")
 			or (menu == "number_of_audio_channels")
 			{
 				if (menu_delay == 0)
@@ -4975,7 +4970,7 @@ function scr_options_menu()
 				}
 			}
 			#endregion /* Drop down menu END */
-		
+			
 			if (menu == "assist_invincible") and (menu_delay == 0){if (global.assist_invincible == true){global.assist_invincible = false;}else{global.assist_invincible = true;}menu_delay = 3;}
 			if (menu == "assist_breathe_underwater") and (menu_delay == 0){if (global.assist_breathe_underwater == true){global.assist_breathe_underwater = false;}else{global.assist_breathe_underwater = true;}menu_delay = 3;}
 			if (menu == "assist_guiding_arrows") and (menu_delay == 0){if (global.assist_guiding_arrows == true){global.assist_guiding_arrows = false;}else{global.assist_guiding_arrows = true;}menu_delay = 3;}
@@ -4983,7 +4978,7 @@ function scr_options_menu()
 			if (menu == "assist_enable_enemies") and (menu_delay == 0) and (global.assist_enable == true){if (global.assist_enable_enemies == true){global.assist_enable_enemies = false;}else{global.assist_enable_enemies = true;}menu_delay = 3;}
 			if (menu == "assist_enable_spikes") and (menu_delay == 0) and (global.assist_enable == true){if (global.assist_enable_spikes == true){global.assist_enable_spikes = false;}else{global.assist_enable_spikes = true;}menu_delay = 3;}
 			if (menu == "assist_show_assist_mode_text") and (menu_delay == 0){if (global.assist_show_assist_mode_text == true){global.assist_show_assist_mode_text = false;}else{global.assist_show_assist_mode_text = true;}menu_delay = 3;}
-		
+			
 			if (menu == "automatically_pause_when_window_is_unfocused_settings") and (menu_delay == 0){if (global.automatically_pause_when_window_is_unfocused == true){global.automatically_pause_when_window_is_unfocused = false;}else{global.automatically_pause_when_window_is_unfocused = true;}menu_delay = 3;}
 			if (menu == "enable_attract_demo") and (menu_delay == 0){if (global.enable_attract_demo == true){global.enable_attract_demo = false;}else{global.enable_attract_demo = true;}menu_delay = 3;}
 			if (menu == "enable_links_at_title_screen") and (menu_delay == 0){if (global.enable_links == true){global.enable_links = false;}else{global.enable_links = true;}menu_delay = 3;}
@@ -4993,7 +4988,7 @@ function scr_options_menu()
 			if (menu == "show_tutorial_signs") and (menu_delay == 0){if (global.show_tutorial_signs == true){global.show_tutorial_signs = false;}else{global.show_tutorial_signs = true;}menu_delay = 3;}
 			if (menu == "players_can_collide") and (menu_delay == 0){if (global.players_can_collide == true){global.players_can_collide = false;}else{global.players_can_collide = true;}menu_delay = 3;}
 			if (menu == "convention_mode") and (menu_delay == 0){if (global.convention_mode == true){global.convention_mode = false;}else{global.convention_mode = true;}menu_delay = 3;}
-		
+			
 			if (menu == "fullscreen_mode") and (menu_delay == 0){if (window_get_fullscreen()){window_set_fullscreen(false);}else{window_set_fullscreen(true);}menu_delay = 3;}
 			if (menu == "interpolate") and (menu_delay == 0){if (global.interpolate == true){global.interpolate = false;gpu_set_texfilter(false);}else{global.interpolate = true;gpu_set_texfilter(true);}menu_delay = 3;}
 			if (menu == "show_fps") and (menu_delay == 0){if (global.show_fps == true){global.show_fps = false;}else{global.show_fps = true;}menu_delay = 3;}
@@ -5001,7 +4996,7 @@ function scr_options_menu()
 			if (menu == "show_instance_count") and (menu_delay == 0){if (global.show_instance_count == true){global.show_instance_count = false;}else{global.show_instance_count = true;}menu_delay = 3;}
 			if (menu == "show_collision_mask") and (menu_delay == 0){if (global.show_collision_mask == true){global.show_collision_mask = false;}else{global.show_collision_mask = true;}menu_delay = 3;}
 			if (menu == "enable_transitions") and (menu_delay == 0){if (global.enable_transitions == true){global.enable_transitions = false;}else{global.enable_transitions = true;}menu_delay = 3;}
-		
+			
 			if (menu == "enable_background_layer1") and (menu_delay == 0){if (global.enable_background_layer1 == true){global.enable_background_layer1 = false;}else{global.enable_background_layer1 = true;}menu_delay = 3;}
 			if (menu == "enable_background_layer2") and (menu_delay == 0){if (global.enable_background_layer2 == true){global.enable_background_layer2 = false;}else{global.enable_background_layer2 = true;}menu_delay = 3;}
 			if (menu == "enable_background_layer3") and (menu_delay == 0){if (global.enable_background_layer3 == true){global.enable_background_layer3 = false;}else{global.enable_background_layer3 = true;}menu_delay = 3;}
@@ -5012,73 +5007,6 @@ function scr_options_menu()
 			if (menu == "enable_foreground_layer_secret") and (menu_delay == 0){if (global.enable_foreground_layer_secret == true){global.enable_foreground_layer_secret = false;}else{global.enable_foreground_layer_secret = true;}menu_delay = 3;}
 			if (menu == "reset_level_zoom_when_going_back_to_map") and (menu_delay == 0){if (global.reset_level_zoom_when_going_back_to_map == true){global.reset_level_zoom_when_going_back_to_map = false;}else{global.reset_level_zoom_when_going_back_to_map = true;}menu_delay = 3;}
 			if (menu == "reset_world_map_zoom_when_going_back_to_map") and (menu_delay == 0){if (global.reset_world_map_zoom_when_going_back_to_map == true){global.reset_world_map_zoom_when_going_back_to_map = false;}else{global.reset_world_map_zoom_when_going_back_to_map = true;}menu_delay = 3;}
-		
-			if (menu == "up_key_is_jump_key") and (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_up_key_is_jump_key == true){global.player1_up_key_is_jump_key = false;}else{global.player1_up_key_is_jump_key = true;}menu_delay = 3;}
-			else
-			if (remapping_player == 1){if (global.player2_up_key_is_jump_key == true){global.player2_up_key_is_jump_key = false;}else{global.player2_up_key_is_jump_key = true;}menu_delay = 3;}
-			else
-			if (remapping_player = 2){if (global.player3_up_key_is_jump_key == true){global.player3_up_key_is_jump_key = false;}else{global.player3_up_key_is_jump_key = true;}menu_delay = 3;}
-			else
-			if (remapping_player = 3){if (global.player4_up_key_is_jump_key == true){global.player4_up_key_is_jump_key = false;}else{global.player4_up_key_is_jump_key = true;}menu_delay = 3;}}
-		
-			if (menu == "double_tap_to_run") and (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_double_tap_to_run == true){global.player1_double_tap_to_run = false;}else{global.player1_double_tap_to_run = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_double_tap_to_run == true){global.player2_double_tap_to_run = false;}else{global.player2_double_tap_to_run = true;}menu_delay = 3;}else
-			if (remapping_player = 2){if (global.player3_double_tap_to_run == true){global.player3_double_tap_to_run = false;}else{global.player3_double_tap_to_run = true;}menu_delay = 3;}else
-			if (remapping_player = 3){if (global.player4_double_tap_to_run == true){global.player4_double_tap_to_run = false;}else{global.player4_double_tap_to_run = true;}menu_delay = 3;}}
-		
-			if (menu == "always_run") and (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_sprint_toggle == true){global.player1_sprint_toggle = false;}else{global.player1_sprint_toggle = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_sprint_toggle == true){global.player2_sprint_toggle = false;}else{global.player2_sprint_toggle = true;}menu_delay = 3;}else
-			if (remapping_player = 2){if (global.player3_sprint_toggle == true){global.player3_sprint_toggle = false;}else{global.player3_sprint_toggle = true;}menu_delay = 3;}else
-			if (remapping_player = 3){if (global.player4_sprint_toggle == true){global.player4_sprint_toggle = false;}else{global.player4_sprint_toggle = true;}menu_delay = 3;}}
-		
-			if (menu == "cancel_dive_by_pressing_jump_or_dive_button") and (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_cancel_dive_by_pressing_jump_or_dive_button == true){global.player1_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player1_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_cancel_dive_by_pressing_jump_or_dive_button == true){global.player2_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player2_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}else
-			if (remapping_player = 2){if (global.player3_cancel_dive_by_pressing_jump_or_dive_button == true){global.player3_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player3_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}else
-			if (remapping_player = 3){if (global.player4_cancel_dive_by_pressing_jump_or_dive_button == true){global.player4_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player4_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}}
-		
-			if (menu == "cancel_dive_by_pressing_opposite_direction") and (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_cancel_dive_by_pressing_opposite_direction == true){global.player1_cancel_dive_by_pressing_opposite_direction = false;}else{global.player1_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_cancel_dive_by_pressing_opposite_direction == true){global.player2_cancel_dive_by_pressing_opposite_direction = false;}else{global.player2_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}else
-			if (remapping_player = 2){if (global.player3_cancel_dive_by_pressing_opposite_direction == true){global.player3_cancel_dive_by_pressing_opposite_direction = false;}else{global.player3_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}else
-			if (remapping_player = 3){if (global.player4_cancel_dive_by_pressing_opposite_direction == true){global.player4_cancel_dive_by_pressing_opposite_direction = false;}else{global.player4_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}}
-		
-			if (menu == "down_and_jump_to_groundpound") and (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_down_and_jump_to_groundpound == true){global.player1_down_and_jump_to_groundpound = false;}else{global.player1_down_and_jump_to_groundpound = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_down_and_jump_to_groundpound == true){global.player2_down_and_jump_to_groundpound = false;}else{global.player2_down_and_jump_to_groundpound = true;}menu_delay = 3;}else
-			if (remapping_player = 2){if (global.player3_down_and_jump_to_groundpound == true){global.player3_down_and_jump_to_groundpound = false;}else{global.player3_down_and_jump_to_groundpound = true;}menu_delay = 3;}else
-			if (remapping_player = 3){if (global.player4_down_and_jump_to_groundpound == true){global.player4_down_and_jump_to_groundpound = false;}else{global.player4_down_and_jump_to_groundpound = true;}menu_delay = 3;}}
-		
-			if (menu == "show_prompt_when_changing_controller")
-			and (menu_delay == 0)
-			{
-				if (global.settings_sidebar_menu == "controller_settings")
-				{
-					if (global.show_prompt_when_changing_to_gamepad == true)
-					{
-						global.show_prompt_when_changing_to_gamepad = false;
-					}
-					else
-					{
-						global.show_prompt_when_changing_to_gamepad = true;
-					}
-				}
-				else
-				{
-					if (global.show_prompt_when_changing_to_keyboard_and_mouse == true)
-					{
-						global.show_prompt_when_changing_to_keyboard_and_mouse = false;
-					}
-					else
-					{
-						global.show_prompt_when_changing_to_keyboard_and_mouse = true;
-					}
-				}
-				menu_delay = 3;
-			}
 		}
 		#endregion /* Accept END */
 

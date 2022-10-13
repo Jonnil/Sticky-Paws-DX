@@ -16,7 +16,7 @@ if (position_meeting(x, y, obj_wall))
 #region /* When falling, it's not bouncing up anymore */
 if (vspeed >= 0)
 {
-	bounceup = false;
+	bounce_up = false;
 }
 #endregion /* When falling, it's not bouncing up anymore END */
 
@@ -114,38 +114,38 @@ and (instance_exists(obj_player))
 		hspeed = 0;
 	}
 	if (place_meeting(x, y, obj_player))
-	and (bounceup = false)
+	and (bounce_up = false)
 	{
 		
 		#region /* Give Life */
 		if (number_of_extra_lives = 3)
 		{
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
+				with(instance_create_depth(x, y - 16, 0, obj_score_up))
 				{
-					scoreup = "3-up";
+					score_up = "3-up";
 				}
 			}
 		}
 		else
 		if (number_of_extra_lives = 2)
 		{
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
+				with(instance_create_depth(x, y - 16, 0, obj_score_up))
 				{
-					scoreup = "2-up";
+					score_up = "2-up";
 				}
 			}
 		}
 		else
 		{
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y - 16, 0, obj_scoreup))
+				with(instance_create_depth(x, y - 16, 0, obj_score_up))
 				{
-					scoreup = "1-up";
+					score_up = "1-up";
 				}
 			}
 		}

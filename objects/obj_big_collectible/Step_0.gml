@@ -1,4 +1,4 @@
-if (bounceup = false)
+if (bounce_up == false)
 {
 	if (asset_get_type("obj_camera") == asset_object)
 	and (instance_exists(obj_camera))
@@ -6,7 +6,7 @@ if (bounceup = false)
 		image_index = obj_camera.image_index;
 	}
 }
-if (bounceup = false)
+if (bounce_up == false)
 and (instance_exists(obj_player))
 {
 	if (place_meeting(bbox_left, y, obj_player))
@@ -51,20 +51,20 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 10;
 		}
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 			delay_time = 20;
 		}
 	}
@@ -72,11 +72,11 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 	
 	#region /* 1000 Score */
 	score += 1000;
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y, 0, obj_scoreup))
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			scoreup = 1000;
+			score_up = 1000;
 		}
 	}
 	#endregion /* 1000 Score END */
@@ -293,7 +293,7 @@ if (follow_player == true)
 }
 #endregion /* Follow Player END */
 
-if (bounceup == true)
+if (bounce_up == true)
 {
 	
 	#region /* Show Big Collectible HUD */
@@ -328,20 +328,20 @@ if (bounceup == true)
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 				}
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 10;
 				}
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 20;
 				}
 			}
@@ -349,11 +349,11 @@ if (bounceup == true)
 			
 			#region /* 1000 Score */
 			score += 1000;
-			if (asset_get_type("obj_scoreup") == asset_object)
+			if (asset_get_type("obj_score_up") == asset_object)
 			{
-				with(instance_create_depth(x, y, 0, obj_scoreup))
+				with(instance_create_depth(x, y, 0, obj_score_up))
 				{
-					scoreup = 1000;
+					score_up = 1000;
 				}
 			}
 			#endregion /* 1000 Score END */

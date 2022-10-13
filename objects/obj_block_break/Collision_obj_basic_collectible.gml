@@ -1,8 +1,8 @@
-if (other.bounceup = false)
+if (other.bounce_up = false)
 {
 	with(other)
 	{
-		bounceup = true;
+		bounce_up = true;
 		image_speed = 1;
 		motion_set(90, 5);
 	}

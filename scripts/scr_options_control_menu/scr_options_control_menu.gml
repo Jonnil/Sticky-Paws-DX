@@ -60,12 +60,14 @@ function scr_options_control_menu()
 	or (remapping_player = 3)
 	and (allow_player4_dive == true)
 	{
-		var menu_y_cancel_dive_by_pressing_jump_or_dive_button = menu_y_remap_key_zoom_out + 64 * 5;
-		var menu_y_cancel_dive_by_pressing_opposite_direction = menu_y_remap_key_zoom_out + 64 * 6;
-		var menu_y_down_and_jump_to_groundpound = menu_y_remap_key_zoom_out + 64 * 7;
+		var menu_y_double_tap_direction_to_dive = menu_y_remap_key_zoom_out + 64 * 5;
+		var menu_y_cancel_dive_by_pressing_jump_or_dive_button = menu_y_remap_key_zoom_out + 64 * 6;
+		var menu_y_cancel_dive_by_pressing_opposite_direction = menu_y_remap_key_zoom_out + 64 * 7;
+		var menu_y_down_and_jump_to_groundpound = menu_y_remap_key_zoom_out + 64 * 8;
 	}
 	else
 	{
+		var menu_y_double_tap_direction_to_dive = -999;
 		var menu_y_cancel_dive_by_pressing_jump_or_dive_button = -999;
 		var menu_y_cancel_dive_by_pressing_opposite_direction = -999;
 		var menu_y_down_and_jump_to_groundpound = menu_y_remap_key_zoom_out + 64 * 5;
@@ -74,7 +76,15 @@ function scr_options_control_menu()
 	var menu_y_wall_jump_setting = menu_y_down_and_jump_to_groundpound + 64 * 2;
 	var menu_y_drop_down_from_rope = menu_y_down_and_jump_to_groundpound + 64 * 3					+ 16;
 	var menu_y_show_controls = menu_y_down_and_jump_to_groundpound + 64 * 4							+ 32;
-	var menu_y_chosen_controller_used = menu_y_down_and_jump_to_groundpound + 64 * 5				+ 48;
+	if (global.enable_chosen_controller_used == true)
+	and (global.settings_sidebar_menu == "controller_settings")
+	{
+		var menu_y_chosen_controller_used = menu_y_down_and_jump_to_groundpound + 64 * 5				+ 48;
+	}
+	else
+	{
+		var menu_y_chosen_controller_used = menu_y_down_and_jump_to_groundpound -999;
+	}
 	#endregion /* Buttons positions END */
 	
 	#region /* Controls Options */
@@ -618,7 +628,7 @@ function scr_options_control_menu()
 			else
 			
 			#region /* Remapping Player 3 Key Variables */
-			if (remapping_player = 2)
+			if (remapping_player == 2)
 			{
 				
 				#region /* Remapping Player 3 Keyboard and Mouse Key Variables */
@@ -869,7 +879,7 @@ function scr_options_control_menu()
 			else
 			
 			#region /* Remapping Player 4 Key Variables */
-			if (remapping_player = 3)
+			if (remapping_player == 3)
 			{
 				
 				#region /* Remapping Player 4 Keyboard and Mouse Key Variables */
@@ -4918,95 +4928,79 @@ function scr_options_control_menu()
 		#region /* Controls checkmarks and dropdown menu settings */
 		if (remapping_player == 0)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player1_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player1_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player1_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
-			if (global.enable_chosen_controller_used == true)
-			and (global.settings_sidebar_menu == "controller_settings")
-			{
-				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, l10n_text("Xbox One"), l10n_text("Xbox Series X/S"), l10n_text("Nintendo Switch"), l10n_text("Playstation 4"), l10n_text("Playstation 5"));
-			}
-			if (os_type != os_ios)
-			and (os_type != os_android)
-			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player1_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
-			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player1_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player1_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
+			var global_up_key_is_jump_key = global.player1_up_key_is_jump_key;
+			var global_double_tap_to_run = global.player1_double_tap_to_run;
+			var global_sprint_toggle = global.player1_sprint_toggle;
+			var global_double_tap_to_dive = global.player1_double_tap_to_dive;
+			var global_cancel_dive_by_pressing_jump_or_dive_button = global.player1_cancel_dive_by_pressing_jump_or_dive_button;
+			var global_cancel_dive_by_pressing_opposite_direction = global.player1_cancel_dive_by_pressing_opposite_direction;
+			var global_down_and_jump_to_groundpound = global.player1_down_and_jump_to_groundpound;
+			var global_show_controls = global.player1_show_controls;
+			var global_drop_from_rope = global.player1_drop_from_rope;
+			var global_wall_jump_setting = global.player1_wall_jump_setting;
 		}
 		else
 		if (remapping_player == 1)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player2_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player2_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player2_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
-			if (global.enable_chosen_controller_used == true)
-			and (global.settings_sidebar_menu == "controller_settings")
-			{
-				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, l10n_text("Xbox One"), l10n_text("Xbox Series X/S"), l10n_text("Nintendo Switch"), l10n_text("Playstation 4"), l10n_text("Playstation 5"));
-			}
-			if (os_type != os_ios)
-			and (os_type != os_android)
-			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player2_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
-			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player2_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player2_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
+			var global_up_key_is_jump_key = global.player2_up_key_is_jump_key;
+			var global_double_tap_to_run = global.player2_double_tap_to_run;
+			var global_sprint_toggle = global.player2_sprint_toggle;
+			var global_double_tap_to_dive = global.player2_double_tap_to_dive;
+			var global_cancel_dive_by_pressing_jump_or_dive_button = global.player2_cancel_dive_by_pressing_jump_or_dive_button;
+			var global_cancel_dive_by_pressing_opposite_direction = global.player2_cancel_dive_by_pressing_opposite_direction;
+			var global_down_and_jump_to_groundpound = global.player2_down_and_jump_to_groundpound;
+			var global_show_controls = global.player2_show_controls;
+			var global_drop_from_rope = global.player2_drop_from_rope;
+			var global_wall_jump_setting = global.player2_wall_jump_setting;
 		}
 		else
-		if (remapping_player = 2)
+		if (remapping_player == 2)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player3_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player3_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player3_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
-			if (global.enable_chosen_controller_used == true)
-			and (global.settings_sidebar_menu == "controller_settings")
-			{
-				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, l10n_text("Xbox One"), l10n_text("Xbox Series X/S"), l10n_text("Nintendo Switch"), l10n_text("Playstation 4"), l10n_text("Playstation 5"));
-			}
-			if (os_type != os_ios)
-			and (os_type != os_android)
-			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player3_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
-			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player3_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player3_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
+			var global_up_key_is_jump_key = global.player3_up_key_is_jump_key;
+			var global_double_tap_to_run = global.player3_double_tap_to_run;
+			var global_sprint_toggle = global.player3_sprint_toggle;
+			var global_double_tap_to_dive = global.player3_double_tap_to_dive;
+			var global_cancel_dive_by_pressing_jump_or_dive_button = global.player3_cancel_dive_by_pressing_jump_or_dive_button;
+			var global_cancel_dive_by_pressing_opposite_direction = global.player3_cancel_dive_by_pressing_opposite_direction;
+			var global_down_and_jump_to_groundpound = global.player3_down_and_jump_to_groundpound;
+			var global_show_controls = global.player3_show_controls;
+			var global_drop_from_rope = global.player3_drop_from_rope;
+			var global_wall_jump_setting = global.player3_wall_jump_setting;
 		}
 		else
-		if (remapping_player = 3)
+		if (remapping_player == 3)
 		{
-			draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global.player4_up_key_is_jump_key);
-			draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global.player4_double_tap_to_run);
-			draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global.player4_sprint_toggle);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
-			draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);
-			draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
-			draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
-			if (global.enable_chosen_controller_used == true)
-			and (global.settings_sidebar_menu == "controller_settings")
-			{
-				draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, l10n_text("Xbox One"), l10n_text("Xbox Series X/S"), l10n_text("Nintendo Switch"), l10n_text("Playstation 4"), l10n_text("Playstation 5"));
-			}
-			if (os_type != os_ios)
-			and (os_type != os_android)
-			{
-				draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global.player4_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
-			}
-			draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global.player4_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
-			draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global.player4_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
+			var global_up_key_is_jump_key = global.player4_up_key_is_jump_key;
+			var global_double_tap_to_run = global.player4_double_tap_to_run;
+			var global_sprint_toggle = global.player4_sprint_toggle;
+			var global_double_tap_to_dive = global.player4_double_tap_to_dive;
+			var global_cancel_dive_by_pressing_jump_or_dive_button = global.player4_cancel_dive_by_pressing_jump_or_dive_button;
+			var global_cancel_dive_by_pressing_opposite_direction = global.player4_cancel_dive_by_pressing_opposite_direction;
+			var global_down_and_jump_to_groundpound = global.player4_down_and_jump_to_groundpound;
+			var global_show_controls = global.player4_show_controls;
+			var global_drop_from_rope = global.player4_drop_from_rope;
+			var global_wall_jump_setting = global.player4_wall_jump_setting;
 		}
+		draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global_up_key_is_jump_key);
+		draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global_double_tap_to_run);
+		draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global_sprint_toggle);
+		draw_menu_checkmark(390, menu_y_double_tap_direction_to_dive + menu_y_offset, l10n_text("Double-tap direction to dive"), "double_tap_to_dive", global_double_tap_to_dive);
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_jump_or_dive_button + menu_y_offset, l10n_text("Cancel dive by pressing the jump or dive key"), "cancel_dive_by_pressing_jump_or_dive_button", global_cancel_dive_by_pressing_jump_or_dive_button);
+		draw_menu_checkmark(390, menu_y_cancel_dive_by_pressing_opposite_direction + menu_y_offset, l10n_text("Cancel dive by pressing the opposite direction"), "cancel_dive_by_pressing_opposite_direction", global_cancel_dive_by_pressing_opposite_direction);
+		draw_menu_checkmark(390, menu_y_down_and_jump_to_groundpound + menu_y_offset, l10n_text("Down + Jump to Ground Pound"), "down_and_jump_to_groundpound", global_down_and_jump_to_groundpound);
+		draw_menu_checkmark(390, menu_y_show_prompt_when_changing_controller + menu_y_offset, l10n_text("Show prompt when changing to keyboard and mouse"), "show_prompt_when_changing_controller", global.show_prompt_when_changing_to_keyboard_and_mouse);
+		if (global.enable_chosen_controller_used == true)
+		and (global.settings_sidebar_menu == "controller_settings")
+		{
+			draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, l10n_text("Xbox One"), l10n_text("Xbox Series X/S"), l10n_text("Nintendo Switch"), l10n_text("Playstation 4"), l10n_text("Playstation 5"));
+		}
+		if (os_type != os_ios)
+		and (os_type != os_android)
+		{
+			draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
+		}
+		draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
+		draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
 		#endregion /* Controls checkmarks and dropdown menu settings END */
 		
 		#region /* Menu cursor y position */
@@ -5051,14 +5045,14 @@ function scr_options_control_menu()
 			
 			else
 			
-			if (remapping_player = 2) /* Text saying input gamepad button now for player 3 */
+			if (remapping_player == 2) /* Text saying input gamepad button now for player 3 */
 			{
 				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
-			if (remapping_player = 3) /* Text saying input gamepad button now for player 4 */
+			if (remapping_player == 3) /* Text saying input gamepad button now for player 4 */
 			{
 				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
@@ -5211,7 +5205,7 @@ function scr_options_control_menu()
 					or (remapping_player = 3)
 					and (allow_player4_dive == true)
 					{
-						menu = "cancel_dive_by_pressing_jump_or_dive_button";
+						menu = "double_tap_to_dive";
 					}
 					else
 					{
@@ -5224,6 +5218,42 @@ function scr_options_control_menu()
 			
 			else
 			
+			#region /* Double tap to dive Navigation */
+			if (menu == "double_tap_to_dive")
+			{
+				menu_cursor_y_position = menu_y_double_tap_direction_to_dive;
+				if (key_up)
+				and (menu_delay == 0)
+				{
+					menu = "always_run";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				and (menu_delay == 0)
+				{
+					if (remapping_player == 0)
+					and (allow_player1_dive == true)
+					or (remapping_player == 1)
+					and (allow_player2_dive == true)
+					or (remapping_player = 2)
+					and (allow_player3_dive == true)
+					or (remapping_player = 3)
+					and (allow_player4_dive == true)
+					{
+						menu = "cancel_dive_by_pressing_jump_or_dive_button";
+					}
+					else
+					{
+						menu = "down_and_jump_to_groundpound";
+					}
+					menu_delay = 3;
+				}
+			}
+			#endregion /* Double tap to dive Navigation END */
+			
+			else
+			
 			#region /* Cancel dive by pressing the jump or dive key Navigation */
 			if (menu == "cancel_dive_by_pressing_jump_or_dive_button")
 			{
@@ -5231,7 +5261,21 @@ function scr_options_control_menu()
 				if (key_up)
 				and (menu_delay == 0)
 				{
-					menu = "always_run";
+					if (remapping_player == 0)
+					and (allow_player1_dive == true)
+					or (remapping_player == 1)
+					and (allow_player2_dive == true)
+					or (remapping_player = 2)
+					and (allow_player3_dive == true)
+					or (remapping_player = 3)
+					and (allow_player4_dive == true)
+					{
+						menu = "double_tap_to_dive";
+					}
+					else
+					{
+						menu = "always_run";
+					}
 					menu_delay = 3;
 				}
 				else
@@ -5711,6 +5755,108 @@ function scr_options_control_menu()
 			#endregion /* Navigate Show Controls Settings END */
 			
 		}
+		
+		#region /* Accept */
+		if (key_a_pressed)
+		or (mouse_check_button_pressed(mb_left))
+		and (window_mouse_get_x() > 370)
+		{
+			
+			#region /* Drop down menu */
+			if (menu == "remap_select_player")
+			or (menu == "wall_jump_setting")
+			or (menu == "drop_from_rope")
+			or (menu == "show_controls")
+			or (menu == "chosen_controller_used")
+			{
+				if (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					open_dropdown = true;
+					menu_delay = 3;
+				}
+				else
+				if (menu_delay == 0)
+				and (open_dropdown == true)
+				{
+					open_dropdown = false;
+					menu_delay = 3;
+				}
+			}
+			#endregion /* Drop down menu END */
+			
+			if (menu == "up_key_is_jump_key") and (menu_delay == 0){
+			if (remapping_player == 0){if (global.player1_up_key_is_jump_key == true){global.player1_up_key_is_jump_key = false;}else{global.player1_up_key_is_jump_key = true;}menu_delay = 3;}else
+			if (remapping_player == 1){if (global.player2_up_key_is_jump_key == true){global.player2_up_key_is_jump_key = false;}else{global.player2_up_key_is_jump_key = true;}menu_delay = 3;}else
+			if (remapping_player == 2){if (global.player3_up_key_is_jump_key == true){global.player3_up_key_is_jump_key = false;}else{global.player3_up_key_is_jump_key = true;}menu_delay = 3;}else
+			if (remapping_player == 3){if (global.player4_up_key_is_jump_key == true){global.player4_up_key_is_jump_key = false;}else{global.player4_up_key_is_jump_key = true;}menu_delay = 3;}}
+			
+			if (menu == "double_tap_to_run") and (menu_delay == 0){
+			if (remapping_player == 0){if (global.player1_double_tap_to_run == true){global.player1_double_tap_to_run = false;}else{global.player1_double_tap_to_run = true;}menu_delay = 3;}else
+			if (remapping_player == 1){if (global.player2_double_tap_to_run == true){global.player2_double_tap_to_run = false;}else{global.player2_double_tap_to_run = true;}menu_delay = 3;}else
+			if (remapping_player == 2){if (global.player3_double_tap_to_run == true){global.player3_double_tap_to_run = false;}else{global.player3_double_tap_to_run = true;}menu_delay = 3;}else
+			if (remapping_player == 3){if (global.player4_double_tap_to_run == true){global.player4_double_tap_to_run = false;}else{global.player4_double_tap_to_run = true;}menu_delay = 3;}}
+			
+			if (menu == "always_run") and (menu_delay == 0){
+			if (remapping_player == 0){if (global.player1_sprint_toggle == true){global.player1_sprint_toggle = false;}else{global.player1_sprint_toggle = true;}menu_delay = 3;}else
+			if (remapping_player == 1){if (global.player2_sprint_toggle == true){global.player2_sprint_toggle = false;}else{global.player2_sprint_toggle = true;}menu_delay = 3;}else
+			if (remapping_player == 2){if (global.player3_sprint_toggle == true){global.player3_sprint_toggle = false;}else{global.player3_sprint_toggle = true;}menu_delay = 3;}else
+			if (remapping_player == 3){if (global.player4_sprint_toggle == true){global.player4_sprint_toggle = false;}else{global.player4_sprint_toggle = true;}menu_delay = 3;}}
+			
+			if (menu == "double_tap_to_dive") and (menu_delay == 0){
+			if (remapping_player == 0){if (global.player1_double_tap_to_dive == true){global.player1_double_tap_to_dive = false;}else{global.player1_double_tap_to_dive = true;}menu_delay = 3;}else
+			if (remapping_player == 1){if (global.player2_double_tap_to_dive == true){global.player2_double_tap_to_dive = false;}else{global.player2_double_tap_to_dive = true;}menu_delay = 3;}else
+			if (remapping_player == 2){if (global.player3_double_tap_to_dive == true){global.player3_double_tap_to_dive = false;}else{global.player3_double_tap_to_dive = true;}menu_delay = 3;}else
+			if (remapping_player == 3){if (global.player4_double_tap_to_dive == true){global.player4_double_tap_to_dive = false;}else{global.player4_double_tap_to_dive = true;}menu_delay = 3;}}
+			
+			if (menu == "cancel_dive_by_pressing_jump_or_dive_button") and (menu_delay == 0){
+			if (remapping_player == 0){if (global.player1_cancel_dive_by_pressing_jump_or_dive_button == true){global.player1_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player1_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}else
+			if (remapping_player == 1){if (global.player2_cancel_dive_by_pressing_jump_or_dive_button == true){global.player2_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player2_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}else
+			if (remapping_player == 2){if (global.player3_cancel_dive_by_pressing_jump_or_dive_button == true){global.player3_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player3_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}else
+			if (remapping_player == 3){if (global.player4_cancel_dive_by_pressing_jump_or_dive_button == true){global.player4_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player4_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}}
+			
+			if (menu == "cancel_dive_by_pressing_opposite_direction") and (menu_delay == 0){
+			if (remapping_player == 0){if (global.player1_cancel_dive_by_pressing_opposite_direction == true){global.player1_cancel_dive_by_pressing_opposite_direction = false;}else{global.player1_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}else
+			if (remapping_player == 1){if (global.player2_cancel_dive_by_pressing_opposite_direction == true){global.player2_cancel_dive_by_pressing_opposite_direction = false;}else{global.player2_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}else
+			if (remapping_player == 2){if (global.player3_cancel_dive_by_pressing_opposite_direction == true){global.player3_cancel_dive_by_pressing_opposite_direction = false;}else{global.player3_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}else
+			if (remapping_player == 3){if (global.player4_cancel_dive_by_pressing_opposite_direction == true){global.player4_cancel_dive_by_pressing_opposite_direction = false;}else{global.player4_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}}
+			
+			if (menu == "down_and_jump_to_groundpound") and (menu_delay == 0){
+			if (remapping_player == 0){if (global.player1_down_and_jump_to_groundpound == true){global.player1_down_and_jump_to_groundpound = false;}else{global.player1_down_and_jump_to_groundpound = true;}menu_delay = 3;}else
+			if (remapping_player == 1){if (global.player2_down_and_jump_to_groundpound == true){global.player2_down_and_jump_to_groundpound = false;}else{global.player2_down_and_jump_to_groundpound = true;}menu_delay = 3;}else
+			if (remapping_player == 2){if (global.player3_down_and_jump_to_groundpound == true){global.player3_down_and_jump_to_groundpound = false;}else{global.player3_down_and_jump_to_groundpound = true;}menu_delay = 3;}else
+			if (remapping_player == 3){if (global.player4_down_and_jump_to_groundpound == true){global.player4_down_and_jump_to_groundpound = false;}else{global.player4_down_and_jump_to_groundpound = true;}menu_delay = 3;}}
+			
+			if (menu == "show_prompt_when_changing_controller")
+			and (menu_delay == 0)
+			{
+				if (global.settings_sidebar_menu == "controller_settings")
+				{
+					if (global.show_prompt_when_changing_to_gamepad == true)
+					{
+						global.show_prompt_when_changing_to_gamepad = false;
+					}
+					else
+					{
+						global.show_prompt_when_changing_to_gamepad = true;
+					}
+				}
+				else
+				{
+					if (global.show_prompt_when_changing_to_keyboard_and_mouse == true)
+					{
+						global.show_prompt_when_changing_to_keyboard_and_mouse = false;
+					}
+					else
+					{
+						global.show_prompt_when_changing_to_keyboard_and_mouse = true;
+					}
+				}
+				menu_delay = 3;
+			}
+		}
+		#endregion /* Accept END */
+		
 		#endregion /* Menu Navigation END */
 		
 	}

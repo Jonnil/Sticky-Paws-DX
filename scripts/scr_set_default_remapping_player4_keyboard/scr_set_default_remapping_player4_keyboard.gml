@@ -38,6 +38,7 @@ function scr_set_default_remapping_player4_keyboard()
 	global.player4_up_key_is_jump_key = false;
 	global.player4_double_tap_to_run = true;
 	global.player4_sprint_toggle = false;
+	global.player4_double_tap_to_dive = false;
 	global.player4_cancel_dive_by_pressing_jump_or_dive_button = false;
 	global.player4_cancel_dive_by_pressing_opposite_direction = false;
 	global.player4_down_and_jump_to_groundpound = false;

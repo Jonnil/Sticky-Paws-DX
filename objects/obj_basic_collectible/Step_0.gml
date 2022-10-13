@@ -1,4 +1,4 @@
-if (bounceup = false)
+if (bounce_up == false)
 {
 	visible = true;
 	if (asset_get_type("obj_camera") == asset_object)
@@ -62,7 +62,7 @@ if (bounceup = false)
 }
 
 #region /* Bounce up */
-if (bounceup == true)
+if (bounce_up == true)
 {
 	if (delay >= delay_time)
 	{

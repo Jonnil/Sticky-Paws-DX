@@ -104,18 +104,18 @@ and (other.sliding_along_ground == 0)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				bounceup = true;
+				bounce_up = true;
 			}
 		}
 		#endregion /* 1 Coin END */
 		
 		#region /* 200 Score */
 		score += 200;
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y, 0, obj_scoreup))
+			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
-				scoreup = 200;
+				score_up = 200;
 			}
 		}
 		#endregion /* 200 Score END */

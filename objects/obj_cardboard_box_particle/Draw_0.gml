@@ -51,9 +51,9 @@ if (brick_particle = false)
 				dive = false;
 				vspeed = +4;
 			}
-			if (asset_get_type("obj_blockbreak") == asset_object)
+			if (asset_get_type("obj_block_break") == asset_object)
 			{
-				instance_create_depth(x, y - 32, 0, obj_blockbreak);
+				instance_create_depth(x, y - 32, 0, obj_block_break);
 			}
 		}
 	}

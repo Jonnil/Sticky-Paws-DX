@@ -15,7 +15,7 @@
 //scr_draw_text_outlined(x - 32, y - 128 - 64, "ledge_grab_delay" + ": " + string(ledge_grab_delay), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y - 128, "ledge_grab_jump" + ": " + string(ledge_grab_jump), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y + 128 - 64, "actually_play_edited_level" + ": " + string(global.actually_play_edited_level), global.default_text_size, c_white, c_red, 1);
-//scr_draw_text_outlined(x - 32, y + 128, "play_edited_level" + ": " + string(global.play_edited_level), global.default_text_size, c_white, c_red, 1);
+scr_draw_text_outlined(x - 32, y - 128, "double_tap_dive" + ": " + string(double_tap_dive), global.default_text_size, c_white, c_red, 1);
 
 #region /* Draw Raycasts */
 if (hold_item_in_hands != "")
@@ -233,11 +233,11 @@ if (global.basic_collectibles > 99)
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (asset_get_type("obj_scoreup") == asset_object)
+	if (asset_get_type("obj_score_up") == asset_object)
 	{
-		with(instance_create_depth(x, y - 16, 0, obj_scoreup))
+		with(instance_create_depth(x, y - 16, 0, obj_score_up))
 		{
-			scoreup = "1-up";
+			score_up = "1-up";
 		}
 	}
 }

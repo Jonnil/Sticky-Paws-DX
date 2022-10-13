@@ -1,4 +1,4 @@
-if (scoreup == "1-up")
+if (score_up == "1-up")
 {
 	global.hud_show_lives = true;
 	var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
@@ -11,7 +11,7 @@ if (scoreup == "1-up")
 	time_source_start(time_source);
 }
 else
-if (scoreup == "2-up")
+if (score_up == "2-up")
 {
 	global.hud_show_lives = true;
 	var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
@@ -32,7 +32,7 @@ if (scoreup == "2-up")
 	time_source_start(time_source);
 }
 else
-if (scoreup == "3-up")
+if (score_up == "3-up")
 {
 	global.hud_show_lives = true;
 	var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()

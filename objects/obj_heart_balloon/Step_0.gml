@@ -63,7 +63,7 @@ and (instance_exists(obj_player))
 		hspeed = 0;
 	}
 	if (place_meeting(x, y, obj_player))
-	and (bounceup = false)
+	and (bounce_up = false)
 	{
 		if (instance_nearest(x, y, obj_player).have_heart_balloon = false)
 		{
@@ -113,69 +113,69 @@ and (instance_exists(obj_player))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 				}
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 10;
 				}
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 20;
 				}
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 30;
 				}
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 40;
 				}
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 50;
 				}
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 60;
 				}
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 70;
 				}
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 80;
 				}
 				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 				{
 					image_speed = 1;
 					motion_set(90, 10);
-					bounceup = true;
+					bounce_up = true;
 					delay_time = 90;
 				}
 			}
@@ -183,11 +183,11 @@ and (instance_exists(obj_player))
 		}
 		#region /* 1000 Score */
 		score += 1000;
-		if (asset_get_type("obj_scoreup") == asset_object)
+		if (asset_get_type("obj_score_up") == asset_object)
 		{
-			with(instance_create_depth(x, y, 0, obj_scoreup))
+			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
-				scoreup = 1000;
+				score_up = 1000;
 			}
 		}
 		#endregion /* 1000 Score END */
@@ -199,7 +199,7 @@ and (instance_exists(obj_player))
 #region /* When falling, it's not bouncing up anymore */
 if (vspeed >= 0)
 {
-	bounceup = false;
+	bounce_up = false;
 }
 #endregion /* When falling, it's not bouncing up anymore END */
 

@@ -39,7 +39,7 @@ and (fall = false)
 		{
 			image_speed = 1;
 			motion_set(90, 10);
-			bounceup = true;
+			bounce_up = true;
 		}
 	}
 	#endregion /* 1 Basic Collectible END */

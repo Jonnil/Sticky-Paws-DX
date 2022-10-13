@@ -6033,9 +6033,9 @@ function scr_character_select_menu()
 						can_navigate = true;
 						file_load_timer = 0;
 						load_ok = 0;
-						with(instance_create_depth(window_get_width() / 2, window_get_height() - 42 - 42 - 42, 0, obj_scoreup))
+						with(instance_create_depth(window_get_width() / 2, window_get_height() - 42 - 42 - 42, 0, obj_score_up))
 						{
-							scoreup = "Copied";
+							score_up = "Copied";
 						}
 					}
 				}

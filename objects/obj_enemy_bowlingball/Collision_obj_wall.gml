@@ -22,9 +22,9 @@ or (die = false)
 	{
 		vspeed = 0;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
-		if (asset_get_type("obj_blockbreak") == asset_object)
+		if (asset_get_type("obj_block_break") == asset_object)
 		{
-			with(instance_create_depth(x, bbox_top - 18, 0, obj_blockbreak))
+			with(instance_create_depth(x, bbox_top - 18, 0, obj_block_break))
 			{
 				image_yscale = 0.1;
 			}

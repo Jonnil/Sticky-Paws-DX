@@ -121,16 +121,16 @@ if (show_copy_to_clipboard_button == true)
 	and (keyboard_check_pressed(ord("C")))
 	{
 		clipboard_set_text(string(open_folder_string));
-		if (instance_exists(obj_scoreup))
+		if (instance_exists(obj_score_up))
 		{
-			with(obj_scoreup)
+			with(obj_score_up)
 			{
 				instance_destroy();
 			}
 		}
-		with(instance_create_depth(window_get_width() / 2, window_get_height() / 2 + 42, 0, obj_scoreup))
+		with(instance_create_depth(window_get_width() / 2, window_get_height() / 2 + 42, 0, obj_score_up))
 		{
-			scoreup = "Copied";
+			score_up = "Copied";
 		}
 	}
 }

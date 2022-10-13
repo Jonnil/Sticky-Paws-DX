@@ -574,7 +574,7 @@ function scr_remapping_gamepad()
 	else
 	
 	#region /* Remapping 3 */
-	if (remapping_player = 2)
+	if (remapping_player == 2)
 	and (can_remap_key == true)
 	{
 		if (menu_remap_key_number == 0)
@@ -724,7 +724,7 @@ function scr_remapping_gamepad()
 	else
 	
 	#region /* Remapping 4 */
-	if (remapping_player = 3)
+	if (remapping_player == 3)
 	and (can_remap_key == true)
 	{
 		if (menu_remap_key_number == 0)

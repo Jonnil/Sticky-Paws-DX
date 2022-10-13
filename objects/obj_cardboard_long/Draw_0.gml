@@ -110,15 +110,15 @@ if (brick_particle = false)
 		and (y < obj_camera.view_y_center + 980)
 		and (y > obj_camera.view_y_center - 980)
 		
-		or (asset_get_type("obj_blockbreak") == asset_object)
-		and (place_meeting(x, y, obj_blockbreak))
+		or (asset_get_type("obj_block_break") == asset_object)
+		and (place_meeting(x, y, obj_block_break))
 		{
 			if (position_meeting(bbox_left + 3,bbox_bottom + 1, instance_nearest(x, y, obj_player)))
 			or (position_meeting(bbox_right - 3,bbox_bottom + 1, instance_nearest(x, y, obj_player)))
 			{
-				if (asset_get_type("obj_blockbreak") == asset_object)
+				if (asset_get_type("obj_block_break") == asset_object)
 				{
-					instance_create_depth(x, y - 32, 0, obj_blockbreak);
+					instance_create_depth(x, y - 32, 0, obj_block_break);
 				}
 			}
 			if (asset_get_type("obj_cardboard_long") == asset_object)
@@ -215,9 +215,9 @@ if (brick_particle = false)
 				}
 				instance_destroy();
 			}
-			if (asset_get_type("obj_blockbreak") == asset_object)
+			if (asset_get_type("obj_block_break") == asset_object)
 			{
-				instance_create_depth(x, y - 32, 0, obj_blockbreak);
+				instance_create_depth(x, y - 32, 0, obj_block_break);
 			}
 			score += 50;
 			global.hud_show_score = true;
