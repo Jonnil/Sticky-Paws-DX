@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_predict_position",
+  "name": "scr_intercept_course",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

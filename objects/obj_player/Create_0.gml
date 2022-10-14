@@ -2,6 +2,8 @@
 audio_listener_orientation(0, 0, 1, 0, -1, 0);
 audio_listener_position(x, y, 0); /* Audio listener should start on top of the player */
 
+can_collide_with_wall = true; /* For debug purposes, you can disable collision with walls */
+
 raycast_info = noone;
 
 saved_file_exists = false;
