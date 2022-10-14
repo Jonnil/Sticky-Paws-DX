@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_level_editor_placable_object",
+  "name": "scr_predict_position",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Level Editor",
-    "path": "folders/Scripts/Level Editor.yy",
+    "name": "Player Scripths",
+    "path": "folders/Scripts/Player Scripths.yy",
   },
 }

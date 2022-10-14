@@ -1039,7 +1039,6 @@ if (can_move == true)
 	{
 		
 		#region /* Show all HUD elements */
-		global.hud_show_lives = true;
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
 		{
@@ -1048,7 +1047,6 @@ if (can_move == true)
 				hud_show_lives_timer = global.hud_hide_time * 60;
 			}
 		}
-		global.hud_show_deaths = true;
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
 		{
@@ -1057,7 +1055,6 @@ if (can_move == true)
 				hud_show_deaths_timer = global.hud_hide_time * 60;
 			}
 		}
-		global.hud_show_basic_collectibles = true;
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
 		{
@@ -1066,7 +1063,6 @@ if (can_move == true)
 				hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 			}
 		}
-		global.hud_show_big_collectibles = true;
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
 		{
@@ -1075,7 +1071,6 @@ if (can_move == true)
 				hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 			}
 		}
-		global.hud_show_score = true;
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
 		{
@@ -3770,6 +3765,7 @@ and (on_ground == true)
 if (allow_ledge_grab == true)
 {
 	if (in_water == true)
+	or (ground_pound >= true)
 	or (x < camera_get_view_x(view_camera[view_current]) + 25)
 	or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 25)
 	{
@@ -5107,7 +5103,6 @@ else
 {
 	if (global.time_countdown_bonus > 0)
 	{
-		global.hud_show_score = true;
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
 		{
@@ -8398,3 +8393,5 @@ if (partner_character == true)
 	}
 }
 #endregion /* Partner Character Code */
+
+scr_predict_position();

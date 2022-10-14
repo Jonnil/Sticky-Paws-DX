@@ -432,7 +432,6 @@ and (asset_get_type("obj_wall") == asset_object)
 		}
 	}
 	score += 50;
-	global.hud_show_score = true;
 	if (asset_get_type("obj_camera") == asset_object)
 	if (instance_exists(obj_camera))
 	{

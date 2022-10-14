@@ -1,6 +1,13 @@
 if (score_up == "1-up")
 {
-	global.hud_show_lives = true;
+	if (asset_get_type("obj_camera") == asset_object)
+	and (instance_exists(obj_camera))
+	{
+		with(obj_camera)
+		{
+			hud_show_lives_timer = global.hud_hide_time * 60;
+		}
+	}
 	var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 	{
 		lives += 1;
@@ -13,7 +20,14 @@ if (score_up == "1-up")
 else
 if (score_up == "2-up")
 {
-	global.hud_show_lives = true;
+	if (asset_get_type("obj_camera") == asset_object)
+	and (instance_exists(obj_camera))
+	{
+		with(obj_camera)
+		{
+			hud_show_lives_timer = global.hud_hide_time * 60;
+		}
+	}
 	var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 	{
 		lives += 1;
@@ -34,7 +48,14 @@ if (score_up == "2-up")
 else
 if (score_up == "3-up")
 {
-	global.hud_show_lives = true;
+	if (asset_get_type("obj_camera") == asset_object)
+	and (instance_exists(obj_camera))
+	{
+		with(obj_camera)
+		{
+			hud_show_lives_timer = global.hud_hide_time * 60;
+		}
+	}
 	var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 	{
 		lives += 1;

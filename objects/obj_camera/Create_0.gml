@@ -199,8 +199,6 @@ view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_
 view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) / 2);
 
 #region /* Hud Variables */
-global.hud_show_lives = true;
-global.hud_show_deaths = true;
 hud_show_lives = - 32;
 hud_show_lives_timer = global.hud_hide_time * 60;
 hud_show_deaths = - 32;

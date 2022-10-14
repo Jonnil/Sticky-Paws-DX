@@ -4,9 +4,9 @@ if (brick_particle = false)
 }
 if (brick_particle == true)
 {
-	if (asset_get_type("obj_cardboard_long_particle") == asset_object)
+	if (asset_get_type("obj_cardboard_particle") == asset_object)
 	{
-		instance_change(obj_cardboard_long_particle, true);
+		instance_change(obj_cardboard_particle, true);
 	}
 	
 	#region /* Set the gravity */
@@ -32,12 +32,7 @@ if (brick_particle == true)
 	{
 		image_angle -= speed;
 	}
-	draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, image_angle, image_blend, image_alpha);
 	mask_index = noone;
-}
-if (asset_get_type("spr_cardboard_long") == asset_sprite)
-{
-	draw_sprite_ext(spr_cardboard_long, image_index, x, y, draw_xscale, draw_yscale, image_angle, image_blend, image_alpha);
 }
 if (asset_get_type("obj_player") == asset_object)
 and (place_meeting(x, y - 1, obj_player))
@@ -73,17 +68,30 @@ if (brick_particle = false)
 		and (instance_nearest(x, y, obj_player).wall_jump > 0)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		
+		//or (place_meeting(bbox_left - 8, y, obj_player))
+		//and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint == true)
+		//and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+		//or (place_meeting(bbox_right + 8, y, obj_player))
+		//and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint == true)
+		//and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+		//or (place_meeting(x, bbox_top - 8, obj_player))
+		//and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint == true)
+		//and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+		//or (place_meeting(x, bbox_bottom + 8, obj_player))
+		//and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint == true)
+		//and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+		
 		or (place_meeting(bbox_left - 8, y, obj_player))
-		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint == true)
+		and (instance_nearest(x, y, obj_player).speed > 20)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		or (place_meeting(bbox_right + 8, y, obj_player))
-		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint == true)
+		and (instance_nearest(x, y, obj_player).speed > 20)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		or (place_meeting(x, bbox_top - 8, obj_player))
-		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint == true)
+		and (instance_nearest(x, y, obj_player).speed > 20)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		or (place_meeting(x, bbox_bottom + 8, obj_player))
-		and (instance_nearest(x, y, obj_player).move_towards_spring_endpoint == true)
+		and (instance_nearest(x, y, obj_player).speed > 20)
 		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 		
 		or (position_meeting(bbox_left - 10, y, obj_enemy_bowlingball))
@@ -121,11 +129,11 @@ if (brick_particle = false)
 					instance_create_depth(x, y - 32, 0, obj_block_break);
 				}
 			}
-			if (asset_get_type("obj_cardboard_long") == asset_object)
+			if (asset_get_type("obj_cardboard") == asset_object)
 			{
 				if (instance_nearest(x, y, obj_player).x < x)
 				{
-					with(instance_create_depth(x, y, 0, obj_cardboard_long))
+					with(instance_create_depth(x, y, 0, obj_cardboard))
 					{
 						motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed / 2);
 						mask_index = noone;
@@ -134,7 +142,7 @@ if (brick_particle = false)
 				}
 				else
 				{
-					with(instance_create_depth(x, y, 0, obj_cardboard_long))
+					with(instance_create_depth(x, y, 0, obj_cardboard))
 					{
 						motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed / 2);
 						mask_index = noone;
@@ -183,11 +191,11 @@ if (brick_particle = false)
 		{
 			
 			#region /* Turn into cardboard particle */
-			if (asset_get_type("obj_cardboard_long") == asset_object)
+			if (asset_get_type("obj_cardboard") == asset_object)
 			{
 				if (instance_nearest(x, y, obj_bullet).x < x)
 				{
-					with(instance_create_depth(x, y, 0, obj_cardboard_long))
+					with(instance_create_depth(x, y, 0, obj_cardboard))
 					{
 						motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed / 2);
 						mask_index = noone;
@@ -196,7 +204,7 @@ if (brick_particle = false)
 				}
 				else
 				{
-					with(instance_create_depth(x, y, 0, obj_cardboard_long))
+					with(instance_create_depth(x, y, 0, obj_cardboard))
 					{
 						motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed / 2);
 						mask_index = noone;

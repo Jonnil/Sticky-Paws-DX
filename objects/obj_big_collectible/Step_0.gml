@@ -267,7 +267,6 @@ if (follow_player == true)
 	{
 		
 		#region /* Show Big Collectible HUD */
-		global.hud_show_big_collectibles = true;
 		if (instance_exists(obj_camera))
 		{
 			with(obj_camera)
@@ -297,7 +296,6 @@ if (bounce_up == true)
 {
 	
 	#region /* Show Big Collectible HUD */
-	global.hud_show_big_collectibles = true;
 	if (instance_exists(obj_camera))
 	{
 		with(obj_camera)

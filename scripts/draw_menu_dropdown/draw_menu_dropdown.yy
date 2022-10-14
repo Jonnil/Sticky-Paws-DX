@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Button scripths",
-    "path": "folders/Scripts/Button scripths.yy",
+    "name": "Button Scripths",
+    "path": "folders/Scripts/Button Scripths.yy",
   },
 }

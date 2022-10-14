@@ -154,14 +154,6 @@ can_input_player4_name = false;
 can_input_level_name = false;
 #endregion /* What player can enter a name END */
 
-#region /* Hide certain HUD elements */
-global.hud_show_lives = true;
-global.hud_show_deaths = false;
-global.hud_show_basic_collectibles = false;
-global.hud_show_big_collectibles = false;
-global.hud_show_score = false;
-#endregion /* Hide certain HUD elements END */
-
 global.playergame = 0; /* Make the game singleplayer at the start of the game */
 global.player_has_entered_goal = false;
 global.actually_play_edited_level = false;

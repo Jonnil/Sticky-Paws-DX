@@ -149,7 +149,6 @@ and (instance_exists(obj_player))
 				}
 			}
 		}
-		global.hud_show_lives = true;
 		if (asset_get_type("obj_camera") == asset_object)
 		and (instance_exists(obj_camera))
 		{

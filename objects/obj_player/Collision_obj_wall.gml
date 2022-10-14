@@ -1,4 +1,5 @@
 /* Collision Event with a solid object */
+
 #region /* Push out of the solid object */
 while (place_meeting(x, y, other))
 {

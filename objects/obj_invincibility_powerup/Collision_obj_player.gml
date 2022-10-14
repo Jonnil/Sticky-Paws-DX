@@ -8,7 +8,6 @@ if (bounce_up == false)
 		scr_audio_play(snd_music_invincible, volume_source.music);
 	}
 	score += 1000;
-	global.hud_show_score = true;
 	if (asset_get_type("obj_camera") == asset_object)
 	and (instance_exists(obj_camera))
 	{

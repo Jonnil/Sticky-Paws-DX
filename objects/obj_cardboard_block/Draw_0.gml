@@ -144,7 +144,6 @@ if (brick_particle = false)
 				}
 			}
 			score += 50;
-			global.hud_show_score = true;
 			if (asset_get_type("obj_camera") == asset_object)
 			and (instance_exists(obj_camera))
 			{
@@ -221,7 +220,6 @@ if (brick_particle = false)
 				instance_create_depth(x, y - 32, 0, obj_block_break);
 			}
 			score += 50;
-			global.hud_show_score = true;
 			if (asset_get_type("obj_camera") == asset_object)
 			and (instance_exists(obj_camera))
 			{

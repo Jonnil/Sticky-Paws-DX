@@ -98,11 +98,6 @@ global.arcade_credit = 0; /* How many coins you've inserted into the arcade mode
 
 #region /* Show HUD Global Variables */
 global.hud_hide_time = 3;
-global.hud_show_lives = true;
-global.hud_show_deaths = true;
-global.hud_show_basic_collectibles = false;
-global.hud_show_big_collectibles = false;
-global.hud_show_score = false;
 #endregion /* Show HUD Global Variables END */
 
 /* Game Start Event */

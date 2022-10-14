@@ -25,7 +25,6 @@ if (show_remaining_jumps == false)
 {
 	if (not_score == false)
 	{
-		global.hud_show_score = true;
 		if (instance_exists(obj_camera))
 		{
 			with(obj_camera)

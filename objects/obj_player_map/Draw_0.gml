@@ -79,14 +79,6 @@ if (asset_get_type("obj_level") == asset_object)
 
 #endregion /* Keep the game at 60 FPS END */
 
-#region /* Hide all HUD elements */
-global.hud_show_lives = true;
-global.hud_show_deaths = true;
-global.hud_show_basic_collectibles = false;
-global.hud_show_big_collectibles = false;
-global.hud_show_score = false;
-#endregion /* Hide all HUD elements END */
-
 scr_audio_play(snd_music_map, volume_source.music);
 audio_stop_sound(global.ambience);
 audio_stop_sound(global.ambience_underwater);

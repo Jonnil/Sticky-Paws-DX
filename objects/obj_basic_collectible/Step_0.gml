@@ -31,7 +31,6 @@ if (bounce_up == false)
 			{
 				effect_create_above(ef_ring, x, y, 0, c_white);
 				score += 200;
-				global.hud_show_score = true;
 				if (asset_get_type("obj_camera") == asset_object)
 					if (instance_exists(obj_camera))
 					{
@@ -45,7 +44,6 @@ if (bounce_up == false)
 					basic_collectibles += 1;
 				}
 				global.basic_collectibles += 1;
-				global.hud_show_basic_collectibles = true;
 				if (asset_get_type("obj_camera") == asset_object)
 				and (instance_exists(obj_camera))
 				{
@@ -82,7 +80,6 @@ if (bounce_up == true)
 		or(delay >= delay_time + 60)
 		{
 			score += 200;
-			global.hud_show_score = true;
 			if (asset_get_type("obj_camera") == asset_object)
 			and (instance_exists(obj_camera))
 			{
@@ -99,7 +96,6 @@ if (bounce_up == true)
 				}
 			}
 			global.basic_collectibles += 1;
-			global.hud_show_basic_collectibles = true;
 			if (asset_get_type("obj_camera") == asset_object)
 			and (instance_exists(obj_camera))
 			{

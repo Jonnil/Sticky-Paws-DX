@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_level_editor_placable_object",
+  "name": "scr_retriggerable_delay",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Level Editor",
-    "path": "folders/Scripts/Level Editor.yy",
+    "name": "Other",
+    "path": "folders/Scripts/Other.yy",
   },
 }

@@ -41,40 +41,36 @@ and (!instance_exists(obj_title))
 	
 	#region /* If HUD show timer is set to always hide */
 	if (global.hud_hide_time <= 0)
-	or(show_letterbox > 0)
+	or (show_letterbox > 0)
 	{
-		global.hud_show_lives = false;
-		global.hud_show_deaths = false;
-		global.hud_show_big_collectibles = false;
-		global.hud_show_basic_collectibles = false;
-		global.hud_show_score = false;
+		hud_show_lives_timer = false;
+		hud_show_deaths_timer = false;
+		hud_show_basic_collectibles_timer = false;
+		hud_show_big_collectibles_timer = false;
+		hud_show_score_timer = false;
 	}
 	#endregion /* If HUD show timer is set to always hide */
 	
 	#region /* If HUD show timer is set to never hide */
 	if (global.hud_hide_time >= 10)
 	{
-		global.hud_show_lives = true;
+		hud_show_lives_timer = global.hud_hide_time * 60;
 		if (global.show_deaths_counter == true)
 		{
-			global.hud_show_deaths = true;
+			hud_show_deaths_timer = global.hud_hide_time * 60;
 		}
-		global.hud_show_big_collectibles = true;
-		global.hud_show_basic_collectibles = true;
-		global.hud_show_score = true;
+		hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
+		hud_show_big_collectibles_timer = global.hud_hide_time * 60;
+		hud_show_score_timer = global.hud_hide_time * 60;
 	}
 	#endregion /* If HUD show timer is set to never hide */
 	
 	if (global.hud_hide_time >= 10)
 	{
-		global.hud_show_lives = true;
 		if (global.show_deaths_counter == true)
 		{
-			global.hud_show_deaths = true;
+			hud_show_deaths_timer = global.hud_hide_time * 60;
 		}
-		global.hud_show_basic_collectibles = true;
-		global.hud_show_big_collectibles = true;
-		global.hud_show_score = true;
 		hud_show_lives_timer = global.hud_hide_time * 60;
 		hud_show_deaths_timer = global.hud_hide_time * 60;
 		hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
@@ -83,41 +79,17 @@ and (!instance_exists(obj_title))
 	}
 	else
 	{
-		if (hud_show_lives_timer == 0)
-		{
-			global.hud_show_lives = false;
-		}
 		if (hud_show_lives_timer > 0)
 		{
 			hud_show_lives_timer -= 1;
-		}
-		if (hud_show_deaths_timer == 0)
-		{
-			global.hud_show_deaths = false;
 		}
 		if (hud_show_deaths_timer > 0)
 		{
 			hud_show_deaths_timer -= 1;
 		}
-		if (hud_show_basic_collectibles_timer == 0)
-		{
-			global.hud_show_basic_collectibles = false;
-		}
-		if (hud_show_basic_collectibles_timer > 0)
-		{
-			hud_show_basic_collectibles_timer -= 1;
-		}
-		if (hud_show_big_collectibles_timer == 0)
-		{
-			global.hud_show_big_collectibles = false;
-		}
 		if (hud_show_big_collectibles_timer > 0)
 		{
 			hud_show_big_collectibles_timer -= 1;
-		}
-		if (hud_show_score_timer == 0)
-		{
-			global.hud_show_score = false;
 		}
 		if (hud_show_score_timer > 0)
 		{
@@ -136,7 +108,7 @@ and (!instance_exists(obj_title))
 		}
 		else
 		{
-			if (global.hud_show_lives == true)
+			if (hud_show_lives_timer > 0)
 			{
 				hud_show_lives = lerp(hud_show_lives, 32, 0.1);
 			}
@@ -148,8 +120,7 @@ and (!instance_exists(obj_title))
 		#endregion /* Show Lives END */
 		
 		#region /* Show Deaths */
-		if (global.hud_show_deaths == true)
-		and (global.show_deaths_counter == true)
+		if (hud_show_deaths_timer > 0)
 		{
 			if (hud_show_lives > 0)
 			{
@@ -167,7 +138,7 @@ and (!instance_exists(obj_title))
 		#endregion /* Show Deaths END */
 		
 		#region /* Show Big Collectibles */
-		if (global.hud_show_big_collectibles == true)
+		if (hud_show_basic_collectibles_timer > 0)
 		{
 			if (hud_show_lives > 0)
 			and (hud_show_deaths > 0)
@@ -196,8 +167,9 @@ and (!instance_exists(obj_title))
 		#endregion /* Show Big Collectibles END */
 		
 		#region /* Show Basic Collectible */
-		if (global.hud_show_basic_collectibles == true)
+		if (hud_show_basic_collectibles_timer > 0)
 		{
+			hud_show_basic_collectibles_timer -= 1;
 			if (hud_show_lives > 0)
 			and (hud_show_deaths > 0)
 			and (global.show_deaths_counter == true)
@@ -246,7 +218,7 @@ and (!instance_exists(obj_title))
 		#endregion /* Show Basic Collectible END */
 		
 		#region /* Show Score */
-		if (global.hud_show_score == true)
+		if (hud_show_score_timer > 0)
 		{
 			hud_show_score = lerp(hud_show_score, 32, 0.1);
 		}

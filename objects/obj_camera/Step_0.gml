@@ -175,7 +175,6 @@ and (!instance_exists(obj_title))
 		else
 		if (lives <= 0)
 		{
-			global.hud_show_lives = true;
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
@@ -206,7 +205,6 @@ and (!instance_exists(obj_title))
 		else
 		if (lives <= 0)
 		{
-			global.hud_show_lives = true;
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
@@ -237,7 +235,6 @@ and (!instance_exists(obj_title))
 		else
 		if (lives <= 0)
 		{
-			global.hud_show_lives = true;
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
@@ -268,7 +265,6 @@ and (!instance_exists(obj_title))
 		else
 		if (lives <= 0)
 		{
-			global.hud_show_lives = true;
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
