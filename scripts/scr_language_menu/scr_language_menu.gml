@@ -28,6 +28,41 @@ function scr_language_menu()
 	{
 		scr_draw_text_outlined(window_get_width() - 32, 164, "(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")", global.default_text_size, c_menu_outline, c_gray, 1);
 	}
+	
+	#region /* Clicking on language completion text enables and disables the translation debug mode */
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 32 - string_width("(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")"), 164 - 32, window_get_width() - 32, 164 + 32))
+	and (global.translation_debug == false)
+	and (global.controls_used_for_menu_navigation == "mouse")
+	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 32 - string_width("(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")"), 164 - 32, window_get_width() - 32, 164 + 64))
+	and (global.translation_debug == true)
+	and (global.controls_used_for_menu_navigation == "mouse")
+	{
+		if (global.language_completion < 100)
+		{
+			scr_draw_text_outlined(window_get_width() - 32, 164, "(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")", global.default_text_size, c_menu_fill, make_color_hsv(50/100 * global.language_completion, 255, 255), 1);
+		}
+		else
+		{
+			scr_draw_text_outlined(window_get_width() - 32, 164, "(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")", global.default_text_size, c_menu_fill, c_gray, 1);
+		}
+		if (mouse_check_button_pressed(mb_left))
+		{
+			if (global.translation_debug == false)
+			{
+				global.translation_debug = true;
+			}
+			else
+			{
+				global.translation_debug = false;
+			}
+		}
+	}
+	if (global.translation_debug == true)
+	{
+		scr_draw_text_outlined(window_get_width() - 32, 164 + 32, "Translation debug: enabled", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+	}
+	#endregion /* Clicking on language completion text enables and disables the translation debug mode END */
+	
 	scr_draw_text_outlined(window_get_width() - 32, window_get_height() - 32, "(" + l10n_text("Language translations may not be 100% accurate") + ")", global.default_text_size * 0.75, c_menu_outline, c_gray, 1);
 	
 	#region /* Language Menu Navigation */
