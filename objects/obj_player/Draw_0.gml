@@ -19,6 +19,8 @@
 //scr_draw_text_outlined(x - 32, y - 128 - 64, "double_tap_dive_timer" + ": " + string(double_tap_dive_timer), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y - 128 - 64 - 64, "double_tap_right_dive" + ": " + string(double_tap_right_dive), global.default_text_size, c_white, c_red, 1);
 
+#region /* Draw things underneath the player */
+
 #region /* Draw Raycasts */
 if (hold_item_in_hands != "")
 and (key_up)
@@ -103,6 +105,7 @@ else
 }
 #endregion /* Heart above head END */
 
+#region /* Draw holding items in hands underneath the player sprite */
 if (hold_item_in_hands = "enemy_bowlingball")
 {
 	draw_sprite_ext(global.resource_pack_sprite_bowlingball, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 *sign(image_xscale), draw_yscale * 1, 0, c_white, image_alpha);
@@ -136,6 +139,7 @@ if (hold_item_in_hands = "enemy_bowlingball")
 		}
 	}
 }
+#endregion /* Draw holding items in hands underneath the player sprite END */
 
 #region /* Draw arrow when player is outside top view */
 if (y < camera_get_view_y(view_camera[view_current]))
@@ -224,26 +228,7 @@ if (draw_arrow_outside_view_down_alpha > 0.01)
 }
 #endregion /* Draw arrow when player is outside bottom view END */
 
-#region /* Get 1-up if you get 100 basic collectibles */
-if (global.basic_collectibles > 99)
-{
-	global.basic_collectibles = 0;
-	if (instance_exists(obj_camera))
-	{
-		with(obj_camera)
-		{
-			hud_show_lives_timer = global.hud_hide_time * 60;
-		}
-	}
-	if (asset_get_type("obj_score_up") == asset_object)
-	{
-		with(instance_create_depth(x, y - 16, 0, obj_score_up))
-		{
-			score_up = "1-up";
-		}
-	}
-}
-#endregion /* Get 1-up if you get 100 basic collectibles END */
+#endregion /* Draw things underneath the player END */
 
 #region /* Draw Self */
 
@@ -292,6 +277,7 @@ and (hp >= 1)
 }
 #endregion /* Make it obvious if you take damage END */
 
+#region /* Red blink timer */
 redblinktimer += 1;
 if (redblinktimer > 30)
 {
@@ -310,6 +296,7 @@ else
 {
 	double_jump_depleted_blink = 0;
 }
+#endregion /* Red blink timer END */
 
 #region /* Blink red when only having 1 HP left and no heart balloon */
 if (redblinktimer > 25)
@@ -344,6 +331,8 @@ and (intro_animation = "")
 #endregion /* Blink red when only having 1 HP left and no heart balloon END */
 
 #endregion /* Draw Self END */
+
+#region /* Draw things on top of the player */
 
 #region /* Draw Collision Mask */
 if (global.show_collision_mask == true)
@@ -628,3 +617,5 @@ if (allow_tongue == true)
 	
 }
 #endregion /* Tongue aim should always be above everything, it represents the mouse cursor END */
+
+#endregion /* Draw things on top of the player END */

@@ -17,6 +17,27 @@ or (!file_exists(working_directory + "save_files/file" + string(current_file) + 
 	global.quit_to_map = true;
 }
 
+#region /* Get 1-up if you get 100 basic collectibles */
+if (global.basic_collectibles > 99)
+{
+	global.basic_collectibles = 0;
+	if (instance_exists(obj_camera))
+	{
+		with(obj_camera)
+		{
+			hud_show_lives_timer = global.hud_hide_time * 60;
+		}
+	}
+	if (asset_get_type("obj_score_up") == asset_object)
+	{
+		with(instance_create_depth(x, y - 16, 0, obj_score_up))
+		{
+			score_up = "1-up";
+		}
+	}
+}
+#endregion /* Get 1-up if you get 100 basic collectibles END */
+
 #region /* Save whole level as screenshot png file */
 if (global.full_level_map_screenshot == true)
 and (full_level_map_screenshot_timer <= 0)

@@ -107,6 +107,7 @@
     {"id":{"name":"snd_1up","path":"sounds/snd_1up/snd_1up.yy",},"order":0,},
     {"id":{"name":"scr_initialize_resource_pack_sprite","path":"scripts/scr_initialize_resource_pack_sprite/scr_initialize_resource_pack_sprite.yy",},"order":19,},
     {"id":{"name":"obj_vine","path":"objects/obj_vine/obj_vine.yy",},"order":7,},
+    {"id":{"name":"scr_value_range_map","path":"scripts/scr_value_range_map/scr_value_range_map.yy",},"order":59,},
     {"id":{"name":"spr_level_player_4_start","path":"sprites/spr_level_player_4_start/spr_level_player_4_start.yy",},"order":73,},
     {"id":{"name":"scr_draw_pie","path":"scripts/scr_draw_pie/scr_draw_pie.yy",},"order":9,},
     {"id":{"name":"snd_enemyvoice_big_defeated2","path":"sounds/snd_enemyvoice_big_defeated2/snd_enemyvoice_big_defeated2.yy",},"order":29,},
