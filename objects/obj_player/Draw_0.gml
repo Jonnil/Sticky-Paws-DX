@@ -21,6 +21,8 @@
 
 #region /* Draw things underneath the player */
 
+draw_line_width_color( x, y, scr_line_trace( x, y, x + hspeed*4, y + vspeed*4, 1).x_hit, scr_line_trace( x, y, x + hspeed*4, y + vspeed*4, 1).y_hit, 5, c_blue, c_red)
+
 #region /* Draw Raycasts */
 if (hold_item_in_hands != "")
 and (key_up)

@@ -7944,3 +7944,16 @@ if (partner_character == true)
 	}
 }
 #endregion /* Partner Character Code */
+
+#region /* Benjamin's shitty collision */
+
+line_hit = scr_line_trace( x, y, x+hspeed, y+vspeed, 1)
+if line_hit.instance != noone
+{
+	x = line_hit.x_hit
+	y = line_hit.y_hit
+	hspeed = 0
+	vspeed = 0
+}
+
+#endregion
