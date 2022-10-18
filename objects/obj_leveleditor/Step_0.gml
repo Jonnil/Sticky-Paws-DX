@@ -71,7 +71,7 @@ and (global.play_edited_level == false)
 and (startup_loading_timer >= 3)
 {
 	instance_activate_all();
-	if (global.deactivate_objects_outsiede_view == true)
+	if (global.deactivate_objects_outside_view == true)
 	{
 		instance_deactivate_region(
 		camera_get_view_x(view_camera[0]) - 32,

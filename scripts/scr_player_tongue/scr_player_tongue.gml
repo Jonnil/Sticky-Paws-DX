@@ -281,7 +281,7 @@ function scr_player_tongue()
 				}
 			}
 		}
-
+		
 		#region /* Rope Swing */
 		if (rope_swing == true)
 		{
