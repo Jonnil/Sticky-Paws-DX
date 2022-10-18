@@ -74,7 +74,7 @@ global.default_view_height = 1080;
 global.demo = false; /* When making a demo version of the game, turn this to true, otherwise turn this to false for the full version */
 global.demo_max_levels = 3; /* Set how many levels the demo version have unlocked */
 
-global.deactivate_objects_outsiede_view = true; /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
+global.deactivate_objects_outsiede_view = false; /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
 
 global.number_of_chain_kills_for_1up = 8; /* How many chain reaction kills you need to get 1-ups. Default is 8 */
 

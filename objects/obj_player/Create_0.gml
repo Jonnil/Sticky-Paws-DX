@@ -5,6 +5,7 @@ audio_listener_position(x, y, 0); /* Audio listener should start on top of the p
 can_collide_with_wall = true; /* For debug purposes, you can disable collision with walls */
 
 raycast_info = noone;
+line_hit = noone;
 
 saved_file_exists = false;
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
