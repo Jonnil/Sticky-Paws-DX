@@ -7945,15 +7945,19 @@ if (partner_character == true)
 }
 #endregion /* Partner Character Code */
 
-#region /* Benjamin's shitty collision */
-
-line_hit = scr_line_trace( x, y, x+hspeed, y+vspeed, 1)
-if line_hit.instance != noone
+#region /* Predicting where player will end up at high speeds and stopping the player from going inside a wall */
+line_hit = scr_line_trace( x, y, x + hspeed, y + vspeed, 1);
+if (line_hit.instance != noone)
 {
-	x = line_hit.x_hit
-	y = line_hit.y_hit
-	hspeed = 0
-	vspeed = 0
+	if (abs(hspeed) > abs(vspeed)) /* If hspeed is more than vspeed, that's when x position is updated, so y position isn't unecessarely being changed and character jitters */
+	and (hspeed <> 0)
+	{
+		x = line_hit.x_hit;
+	}
+	if (abs(vspeed) > abs(hspeed)) /* If vspeed is more than hspeed, that's when y position is updated, so z position isn't unecessarely being changed and character jitters */
+	and (vspeed <> 0)
+	{
+		y = line_hit.y_hit;
+	}
 }
-
-#endregion
+#endregion /* Predicting where player will end up at high speeds and stopping the player from going inside a wall END */

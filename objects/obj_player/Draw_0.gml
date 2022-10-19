@@ -17,11 +17,9 @@
 //scr_draw_text_outlined(x - 32, y + 128 - 64, "actually_play_edited_level" + ": " + string(global.actually_play_edited_level), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y - 128, "double_tap_dive" + ": " + string(double_tap_dive), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y - 128 - 64, "double_tap_dive_timer" + ": " + string(double_tap_dive_timer), global.default_text_size, c_white, c_red, 1);
-//scr_draw_text_outlined(x - 32, y - 128 - 64 - 64, "double_tap_right_dive" + ": " + string(double_tap_right_dive), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128 - 64 - 64, "rope_angle_velocity" + ": " + string(rope_angle_velocity), global.default_text_size, c_white, c_red, 1);
 
 #region /* Draw things underneath the player */
-
-draw_line_width_color( x, y, scr_line_trace( x, y, x + hspeed*4, y + vspeed*4, 1).x_hit, scr_line_trace( x, y, x + hspeed*4, y + vspeed*4, 1).y_hit, 5, c_blue, c_red)
 
 #region /* Draw Raycasts */
 if (hold_item_in_hands != "")
@@ -351,6 +349,7 @@ if (global.show_collision_mask == true)
 	}
 	draw_rectangle_color(x - 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
 	draw_rectangle_color(x, y - 2, x, y + 2, c_red, c_red, c_red, c_red, false);
+	draw_line_width_color( x, y, scr_line_trace( x, y, x + hspeed, y + vspeed, 1).x_hit, scr_line_trace( x, y, x + hspeed, y + vspeed, 1).y_hit, 5, c_aqua, c_red);
 	image_alpha = 0.5;
 }
 else
