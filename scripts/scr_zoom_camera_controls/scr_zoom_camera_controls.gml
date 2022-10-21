@@ -42,6 +42,7 @@ function scr_zoom_camera_controls()
 	//{
 		var zoom_speed = 0.015;
 	//}
+	
 	if (room = room_title)
 	{
 		zoom_lerp = 1; /* In create event, have this: zoom_lerp = 1; */

@@ -34,6 +34,7 @@ function scr_player_tongue()
 			
 			else
 			
+			#region /* Use tongue with right stick */
 			if (gamepad_axis_value(player - 1, gp_axisrh) != 0)
 			or (gamepad_axis_value(player - 1, gp_axisrv) != 0)
 			{
@@ -43,12 +44,14 @@ function scr_player_tongue()
 					motion_set(point_direction(0, 0, gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axisrh), gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axisrv)), 16);
 				}
 			}
+			#endregion /* Use tongue with right stick END */
+			
 			else
+			
+			#region /* Key tongue pressed while moving left stick */
 			if (gamepad_axis_value(player - 1, gp_axislh) != 0)
 			or (gamepad_axis_value(player - 1, gp_axislv) != 0)
 			{
-				
-				#region /* Key tongue pressed while moving left stick */
 				if (key_tongue_pressed)
 				{
 					can_tongue = false;
@@ -57,9 +60,9 @@ function scr_player_tongue()
 						motion_set(point_direction(0, 0, gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislh), gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislv)), 16);
 					}
 				}
-				#endregion /* Key tongue pressed while moving left stick END */
 				
 			}
+			#endregion /* Key tongue pressed while moving left stick END */
 			
 			else
 			

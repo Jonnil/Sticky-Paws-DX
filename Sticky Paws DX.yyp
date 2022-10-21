@@ -352,6 +352,7 @@
     {"id":{"name":"obj_arrow_sign_small","path":"objects/obj_arrow_sign_small/obj_arrow_sign_small.yy",},"order":23,},
     {"id":{"name":"spr_water_splash","path":"sprites/spr_water_splash/spr_water_splash.yy",},"order":34,},
     {"id":{"name":"obj_semisolid_platform","path":"objects/obj_semisolid_platform/obj_semisolid_platform.yy",},"order":1,},
+    {"id":{"name":"scr_draw_cursor_tongue","path":"scripts/scr_draw_cursor_tongue/scr_draw_cursor_tongue.yy",},"order":61,},
     {"id":{"name":"scr_line_trace","path":"scripts/scr_line_trace/scr_line_trace.yy",},"order":60,},
     {"id":{"name":"scr_gamepad_vibration","path":"scripts/scr_gamepad_vibration/scr_gamepad_vibration.yy",},"order":13,},
     {"id":{"name":"spr_level_end","path":"sprites/spr_level_end/spr_level_end.yy",},"order":72,},

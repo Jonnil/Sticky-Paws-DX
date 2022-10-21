@@ -18,6 +18,11 @@
 //scr_draw_text_outlined(x - 32, y - 128, "double_tap_dive" + ": " + string(double_tap_dive), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y - 128 - 64, "double_tap_dive_timer" + ": " + string(double_tap_dive_timer), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y - 128 - 64 - 64, "rope_angle_velocity" + ": " + string(rope_angle_velocity), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128 - 64, "gp_axisrh" + ": " + string(gamepad_axis_value(player - 1, gp_axisrh)), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128 - 64 - 64, "gp_axisrv" + ": " + string(gamepad_axis_value(player - 1, gp_axisrv)), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128 - 64, "window_mouse_get_x" + ": " + string(window_mouse_get_x()), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128 - 64 - 64, "window_mouse_get_y" + ": " + string(window_mouse_get_y()), global.default_text_size, c_white, c_red, 1);
+//draw_line_width_color(x, y, window_mouse_get_x(), window_mouse_get_y(), 2, c_blue, c_red);
 
 #region /* Draw things underneath the player */
 
@@ -594,29 +599,6 @@ and (global.assist_enable == false)
 }
 #endregion /* If player has more hp, show that END */
 
-#region /* Tongue aim should always be above everything, it represents the mouse cursor */
-if (allow_tongue == true)
-{
-	if (can_tongue == true) /* If you're able to use the tongue */
-	and (climb == false)
-	and (horizontal_rope_climb == false)
-	{
-		draw_set_alpha(1); /* Don't make the cursor transparent */
-	}
-	else /* If you're not able to use the tongue */
-	{
-		draw_set_alpha(0.5); /* Make the cursor transparent when you can't use your tongue */
-	}
-	
-	#region /* Draw aim cursor with lines */
-	draw_line_width_color(mouse_x - 10, mouse_y, mouse_x - 2, mouse_y, 2, c_red, c_red);
-	draw_line_width_color(mouse_x + 2, mouse_y, mouse_x + 10, mouse_y, 2, c_red, c_red);
-	draw_line_width_color(mouse_x, mouse_y - 10, mouse_x, mouse_y - 2, 2, c_red, c_red);
-	draw_line_width_color(mouse_x, mouse_y + 2, mouse_x, mouse_y + 10, 2, c_red, c_red);
-	draw_set_alpha(1);
-	#endregion /* Draw aim cursor with lines END */
-	
-}
-#endregion /* Tongue aim should always be above everything, it represents the mouse cursor END */
-
 #endregion /* Draw things on top of the player END */
+
+scr_draw_cursor_tongue();

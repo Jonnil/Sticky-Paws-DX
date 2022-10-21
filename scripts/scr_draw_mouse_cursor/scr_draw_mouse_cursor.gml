@@ -9,32 +9,7 @@ function scr_draw_mouse_cursor()
 	and (obj_camera.can_spawn_player1 == true)
 	and (obj_camera.player1.allow_tongue == true)
 	{
-		//if (obj_camera.player1.can_tongue == true) /* If you're able to use the tongue */
-		//and (obj_camera.player1.climb == false)
-		//and (obj_camera.player1.horizontal_rope_climb == false)
-		//{
-			
-		//	#region /* Draw aim cursor with lines */
-		//	draw_line_width_color(mouse_x - 10, mouse_y, mouse_x - 2, mouse_y, 2, c_red, c_red);
-		//	draw_line_width_color(mouse_x + 2, mouse_y, mouse_x + 10, mouse_y, 2, c_red, c_red);
-		//	draw_line_width_color(mouse_x, mouse_y - 10, mouse_x, mouse_y - 2, 2, c_red, c_red);
-		//	draw_line_width_color(mouse_x, mouse_y + 2, mouse_x, mouse_y + 10, 2, c_red, c_red);
-		//	#endregion /* Draw aim cursor with lines END */
-			
-		//}
-		//else /* If you're not able to use the tongue */
-		//{
-			
-		//	#region /* Draw aim cursor with lines but transparent */
-		//	draw_set_alpha(0.5);
-		//	draw_line_width_color(mouse_x - 10, mouse_y, mouse_x - 2, mouse_y, 2, c_red, c_red);
-		//	draw_line_width_color(mouse_x + 2, mouse_y, mouse_x + 10, mouse_y, 2, c_red, c_red);
-		//	draw_line_width_color(mouse_x, mouse_y - 10, mouse_x, mouse_y - 2, 2, c_red, c_red);
-		//	draw_line_width_color(mouse_x, mouse_y + 2, mouse_x, mouse_y + 10, 2, c_red, c_red);
-		//	draw_set_alpha(1);
-		//	#endregion /* Draw aim cursor with lines END */
-			
-		//}
+		/* Do not show normal cursor */
 	}
 	#endregion /* Tongue aim should always be above everything, it represents the mouse cursor END */
 	
