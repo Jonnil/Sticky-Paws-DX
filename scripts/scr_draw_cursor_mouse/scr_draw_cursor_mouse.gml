@@ -1,4 +1,4 @@
-function scr_draw_mouse_cursor()
+function scr_draw_cursor_mouse()
 {
 	
 	#region /* Tongue aim should always be above everything, it represents the mouse cursor */

@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_player_tongue",
+  "name": "scr_draw_cursor_mouse",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Player Scripths",
-    "path": "folders/Scripts/Player Scripths.yy",
+    "name": "Other",
+    "path": "folders/Scripts/Other.yy",
   },
 }

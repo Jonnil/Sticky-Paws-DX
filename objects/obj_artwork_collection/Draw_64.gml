@@ -379,4 +379,4 @@ if (image_index = 73){current_comment = l10n_text("Artist") + ": Andrea Colunga 
 if (image_index = 74){current_comment = l10n_text("Artist") + ": Furret76 - Sticcy pau and cetlun";}
 #endregion /* Comments END */
 
-scr_draw_mouse_cursor();
+scr_draw_cursor_mouse();

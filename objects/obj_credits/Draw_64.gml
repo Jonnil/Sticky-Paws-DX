@@ -250,4 +250,4 @@ if (instance_number(obj_credits) > 1)
 	instance_destroy(); /* If there is more than 1 credits, destroy itself */
 }
 
-scr_draw_mouse_cursor();
+scr_draw_cursor_mouse();

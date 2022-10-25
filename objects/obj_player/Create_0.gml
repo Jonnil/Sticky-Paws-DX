@@ -1,4 +1,12 @@
 /* ________________________________Create Event________________________________ */
+#region /* Create object that always follows mouse */
+if (asset_get_type("obj_follow_mouse") == asset_object)
+and (!instance_exists(obj_follow_mouse))
+{
+	instance_create_depth(mouse_x, mouse_y, 0, obj_follow_mouse);
+}
+#endregion /* Create object that always follows mouse END */
+
 audio_listener_orientation(0, 0, 1, 0, -1, 0);
 audio_listener_position(x, y, 0); /* Audio listener should start on top of the player */
 

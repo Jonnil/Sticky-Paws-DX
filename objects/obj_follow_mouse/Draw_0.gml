@@ -1,0 +1,1 @@
+scr_draw_cursor_tongue(x, y, obj_camera.player1);

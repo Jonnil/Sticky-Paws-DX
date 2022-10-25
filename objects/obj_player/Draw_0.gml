@@ -600,5 +600,3 @@ and (global.assist_enable == false)
 #endregion /* If player has more hp, show that END */
 
 #endregion /* Draw things on top of the player END */
-
-scr_draw_cursor_tongue();

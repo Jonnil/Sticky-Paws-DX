@@ -2457,7 +2457,7 @@ else
 }
 #endregion /* Letterboxing during cutscenes (when the player object is absent) END */
 
-scr_draw_mouse_cursor();
+scr_draw_cursor_mouse();
 
 #region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
 if (iris_xscale <= 1)

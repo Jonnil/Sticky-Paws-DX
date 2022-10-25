@@ -197,4 +197,4 @@ if (instance_exists(obj_leveleditor))
 }
 #endregion /* Make it so you can't click on any other button while open folder text exists END */
 
-scr_draw_mouse_cursor();
+scr_draw_cursor_mouse();

@@ -2098,35 +2098,7 @@ else
 
 #region /* ________________________________MORE MOVES________________________________ */
 
-scr_player_tongue();
-
-#region /* When the character has stopped moving and can't move closer to tongue, then retrieve the tongue */
-if (instance_exists(obj_tongue))
-and (tongue_move_player_toward_wall == true)
-and (speed < +15)
-or (instance_exists(obj_tongue))
-and (tongue_move_player_toward_wall == true)
-and (tongue_move_player_toward_wall_timer > 60) /* If it's been over 1 second, cancel the move towards tongue move, as backup if the player didn't stop correctly */
-{
-	
-	#region /* Retrieve tongue */
-	with(instance_nearest(x, y, obj_tongue))
-	{
-		timer = 25;
-		move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
-	}
-	rope_angle_velocity = 0;
-	grapple_x = x;
-	grapple_y = y;
-	rope_angle = point_direction(grapple_x, grapple_y, x, y);
-	rope_length = point_distance(grapple_x, grapple_y, x, y);
-	rope_swing = false;
-	#endregion /* Retrieve tongue END */
-	
-	tongue_move_player_toward_wall = false;
-	tongue_move_player_toward_wall_timer = 0;
-}
-#endregion /* When the character has stopped moving and can't move closer to tongue, then retrieve the tongue END */
+scr_player_move_tongue();
 
 #region /* Roll when landing */
 if (allow_roll == true)

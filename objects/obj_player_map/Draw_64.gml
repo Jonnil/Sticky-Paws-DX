@@ -111,7 +111,7 @@ if (black_screen_at_start_delay < 1)
 }
 #endregion /* Have a black screen at the first frame so transitions look natural END */
 
-scr_draw_mouse_cursor();
+scr_draw_cursor_mouse();
 
 #region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
 if (iris_yscale <= 0.002)

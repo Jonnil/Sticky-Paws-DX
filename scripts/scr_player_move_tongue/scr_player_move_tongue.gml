@@ -1,4 +1,4 @@
-function scr_player_tongue()
+function scr_player_move_tongue()
 {
 	var rope_lenght_max = 320;
 	
@@ -23,14 +23,17 @@ function scr_player_tongue()
 		{
 			
 			#region /* Activate Tongue */
+			
+			#region /* Use tongue with mouse click */
 			if (mouse_check_button_pressed(mb_left))
 			{
 				can_tongue = false;
 				with(instance_create_depth(x, y, 0, obj_tongue))
 				{
-					motion_set(point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y), 16);
+					direction = point_direction(x, y, mouse_x, mouse_y);
 				}
 			}
+			#endregion /* Use tongue with mouse click END */
 			
 			else
 			
@@ -41,7 +44,7 @@ function scr_player_tongue()
 				can_tongue = false;
 				with(instance_create_depth(x, y, 0, obj_tongue))
 				{
-					motion_set(point_direction(0, 0, gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axisrh), gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axisrv)), 16);
+					direction = point_direction(0, 0, gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axisrh), gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axisrv));
 				}
 			}
 			#endregion /* Use tongue with right stick END */
@@ -57,7 +60,7 @@ function scr_player_tongue()
 					can_tongue = false;
 					with(instance_create_depth(x, y, 0, obj_tongue))
 					{
-						motion_set(point_direction(0, 0, gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislh), gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislv)), 16);
+						direction = point_direction(0, 0, gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislh), gamepad_axis_value(instance_nearest(x, y, obj_player).player - 1, gp_axislv));
 					}
 				}
 				
@@ -83,7 +86,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(135, 16);
+							direction = 135;
 						}
 					}
 					#endregion /* Key Left END */
@@ -99,7 +102,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(45, 16);
+							direction = 45;
 						}
 					}
 					#endregion /* Key Right END */
@@ -109,7 +112,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(90, 16);
+							direction = 90;
 						}
 					}
 				}
@@ -130,7 +133,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(135, 16);
+							direction = 135;
 						}
 					}
 					#endregion /* Key Up END */
@@ -143,7 +146,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(225, 16);
+							direction = 225;
 						}
 					}
 					#endregion /* Key Down END */
@@ -153,7 +156,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(180, 16);
+							direction = 180;
 						}
 					}
 				}
@@ -174,7 +177,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(85, 16);
+							direction = 85;
 						}
 					}
 					#endregion /* Key Up END */
@@ -187,7 +190,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(315, 16);
+							direction = 315;
 						}
 					}
 					#endregion /* Key Down END */
@@ -197,7 +200,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(0, 16);
+							direction = 0;
 						}
 					}
 				}
@@ -221,7 +224,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(225, 16);
+							direction = 225;
 						}
 					}
 					#endregion /* Key Left END */
@@ -237,7 +240,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(315, 16);
+							direction = 315;
 						}
 					}
 					#endregion /* Key Right END */
@@ -247,7 +250,7 @@ function scr_player_tongue()
 						can_tongue = false;
 						with(instance_create_depth(x, y, 0, obj_tongue))
 						{
-							motion_set(270, 16);
+							direction = 270;
 						}
 					}
 				}
@@ -262,7 +265,7 @@ function scr_player_tongue()
 					can_tongue = false;
 					with(instance_create_depth(x, y, 0, obj_tongue))
 					{
-						motion_set(180, 16);
+						direction = 180;
 					}
 				}
 				else
@@ -274,7 +277,7 @@ function scr_player_tongue()
 					can_tongue = false;
 					with(instance_create_depth(x, y, 0, obj_tongue))
 					{
-						motion_set(0, 16);
+						direction = 0;
 					}
 				}
 			}
@@ -579,5 +582,33 @@ function scr_player_tongue()
 		}
 	}
 	#endregion /* Tongue END */
+	
+	#region /* When the character has stopped moving and can't move closer to tongue, then retrieve the tongue */
+	if (instance_exists(obj_tongue))
+	and (tongue_move_player_toward_wall == true)
+	and (speed < +15)
+	or (instance_exists(obj_tongue))
+	and (tongue_move_player_toward_wall == true)
+	and (tongue_move_player_toward_wall_timer > 60) /* If it's been over 1 second, cancel the move towards tongue move, as backup if the player didn't stop correctly */
+	{
+		
+		#region /* Retrieve tongue */
+		with(instance_nearest(x, y, obj_tongue))
+		{
+			timer = 25;
+			move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
+		}
+		rope_angle_velocity = 0;
+		grapple_x = x;
+		grapple_y = y;
+		rope_angle = point_direction(grapple_x, grapple_y, x, y);
+		rope_length = point_distance(grapple_x, grapple_y, x, y);
+		rope_swing = false;
+		#endregion /* Retrieve tongue END */
+		
+		tongue_move_player_toward_wall = false;
+		tongue_move_player_toward_wall_timer = 0;
+	}
+	#endregion /* When the character has stopped moving and can't move closer to tongue, then retrieve the tongue END */
 	
 }

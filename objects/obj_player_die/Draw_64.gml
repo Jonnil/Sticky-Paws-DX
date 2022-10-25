@@ -169,4 +169,4 @@ if (lives <= 0)
 }
 #endregion /* Game Over END */
 
-scr_draw_mouse_cursor();
+scr_draw_cursor_mouse();

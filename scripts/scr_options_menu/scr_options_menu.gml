@@ -5021,7 +5021,7 @@ function scr_options_menu()
 		
 		scr_menu_navigation_with_joystick_delay();
 		
-		scr_draw_mouse_cursor();
+		scr_draw_cursor_mouse();
 		
 	}
 	else
