@@ -59,7 +59,11 @@ function scr_zoom_camera_controls()
 		global.zoom_level = clamp(global.zoom_level, 0.2, 1);
 	}
 	zoom_border_lerp = lerp(zoom_border_lerp, 0, 0.1); /* In create event, have this: zoom_border_lerp = 0; */
-	camera_set_view_size(view_camera[view_current], camera_get_view_width(view_camera[view_current]) * zoom_lerp, camera_get_view_height(view_camera[view_current]) * zoom_lerp);
+	
+	if (variable_instance_exists(self, "camera"))
+	{
+		camera_set_view_size(camera, camera_get_view_width(camera) * zoom_lerp, camera_get_view_height(camera) * zoom_lerp);
+	}
 	
 	if (room != room_title)
 	{

@@ -2,6 +2,8 @@
 /* Exclusively used on the world map */
 /* So no conflicting code from the normal camera is running */
 
+scr_initialize_camera();
+
 key_player1_zoom_in_hold = noone;
 key_player2_zoom_in_hold = noone;
 key_player3_zoom_in_hold = noone;

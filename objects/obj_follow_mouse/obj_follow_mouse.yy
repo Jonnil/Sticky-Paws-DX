@@ -2,7 +2,10 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "obj_follow_mouse",
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_bubble",
+    "path": "sprites/spr_bubble/spr_bubble.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,

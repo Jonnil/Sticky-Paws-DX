@@ -22,6 +22,13 @@
 //scr_draw_text_outlined(x - 32, y - 128 - 64 - 64, "gp_axisrv" + ": " + string(gamepad_axis_value(player - 1, gp_axisrv)), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y - 128 - 64, "window_mouse_get_x" + ": " + string(window_mouse_get_x()), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y - 128 - 64 - 64, "window_mouse_get_y" + ": " + string(window_mouse_get_y()), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128 - 128 - 64 - 64, "camera_get_view_width" + ": " + string(camera_get_view_width(obj_camera.camera)), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128 - 128 - 64     , "camera_get_view_height" + ": " + string(camera_get_view_height(obj_camera.camera)), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128 - 64, "window_view_mouse_get_x" + ": " + string(window_view_mouse_get_x(view_camera[view_current])), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 128 - 64 - 64, "window_view_mouse_get_y" + ": " + string(window_view_mouse_get_y(view_camera[view_current])), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 64 - 64, "camera_get_view_x" + ": " + string(camera_get_view_x(view_camera[view_current])), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 64     , "camera_get_view_y" + ": " + string(camera_get_view_y(view_camera[view_current])), global.default_text_size, c_white, c_red, 1);
+
 //draw_line_width_color(x, y, window_mouse_get_x(), window_mouse_get_y(), 2, c_blue, c_red);
 
 #region /* Draw things underneath the player */

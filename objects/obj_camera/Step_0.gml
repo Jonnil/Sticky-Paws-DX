@@ -62,6 +62,10 @@ else
 #endregion /* Deactivate instances outside view END */
 
 #region /* Activate objects that always should be active */
+if (asset_get_type("obj_follow_mouse") == asset_object)
+{
+	instance_activate_object(obj_follow_mouse);
+}
 if (asset_get_type("obj_level_player_1_start") == asset_object)
 {
 	instance_activate_object(obj_level_player_1_start);
