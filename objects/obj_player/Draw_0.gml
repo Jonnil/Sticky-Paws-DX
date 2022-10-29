@@ -28,8 +28,14 @@
 //scr_draw_text_outlined(x - 32, y - 128 - 64 - 64, "window_view_mouse_get_y" + ": " + string(window_view_mouse_get_y(view_camera[view_current])), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y - 64 - 64, "camera_get_view_x" + ": " + string(camera_get_view_x(view_camera[view_current])), global.default_text_size, c_white, c_red, 1);
 //scr_draw_text_outlined(x - 32, y - 64     , "camera_get_view_y" + ": " + string(camera_get_view_y(view_camera[view_current])), global.default_text_size, c_white, c_red, 1);
-
+//scr_draw_text_outlined(x - 32, y - 64 - 64, "device_mouse_x_to_gui" + ": " + string(device_mouse_x_to_gui(0)), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 64     , "device_mouse_y_to_gui" + ": " + string(device_mouse_y_to_gui(0)), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 64 - 64, "scr_mouse_x_to_gui" + ": " + string(scr_x_to_gui(mouse_x)), global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(x - 32, y - 64     , "scr_mouse_y_to_gui" + ": " + string(scr_y_to_gui(mouse_y)), global.default_text_size, c_white, c_red, 1);
 //draw_line_width_color(x, y, window_mouse_get_x(), window_mouse_get_y(), 2, c_blue, c_red);
+
+//draw_line_width_color(global.tongue_point_dir_x1, global.tongue_point_dir_y1, global.tongue_point_dir_x2, global.tongue_point_dir_y2, 2, c_blue, c_red);
+//scr_draw_text_outlined(global.tongue_point_dir_x2, global.tongue_point_dir_y2, "draw", global.default_text_size, c_white, c_blue, 1);
 
 #region /* Draw things underneath the player */
 

@@ -30,7 +30,7 @@ function scr_player_move_tongue()
 				can_tongue = false;
 				with(instance_create_depth(x, y, 0, obj_tongue))
 				{
-					direction = point_direction(x, y, mouse_x, mouse_y);
+					direction = point_direction(global.tongue_point_dir_x1, global.tongue_point_dir_y1, global.tongue_point_dir_x2, global.tongue_point_dir_y2);
 				}
 			}
 			#endregion /* Use tongue with mouse click END */

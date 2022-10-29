@@ -1,4 +1,7 @@
 /* ________________________________Create Event________________________________ */
+
+/*direction = point_direction(scr_x_to_gui(x), scr_y_to_gui(y), device_mouse_x_to_gui(0), device_mouse_y_to_gui(0));*/
+
 #region /* Create object that always follows mouse */
 if (asset_get_type("obj_follow_mouse") == asset_object)
 and (!instance_exists(obj_follow_mouse))

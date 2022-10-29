@@ -1,5 +1,6 @@
 function scr_initialize_camera()
 {
+	/* Taken from GameMakerStation - Matharoo Smooth Camera Tutorial https://youtu.be/VYgf3V6Fx3M */
 	
 	#region /* Resolution */
 	#macro resolution_width 960

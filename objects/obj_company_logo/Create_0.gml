@@ -204,6 +204,10 @@ global.voicepack_for_player_2 = 0; /* Player 2 Select Voicepack */
 global.voicepack_for_player_3 = 0; /* Player 3 Select Voicepack */
 global.voicepack_for_player_4 = 0; /* Player 4 Select Voicepack */
 global.world_editor = false; /* If you're editing world or not */
+global.tongue_point_dir_x1 = 0;
+global.tongue_point_dir_y1 = 0;
+global.tongue_point_dir_x2 = 0;
+global.tongue_point_dir_y2 = 0;
 device_mouse_dbclick_enable(false); /* Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled */
 draw_set_font(global.default_font);
 ds_list_add(global.all_loaded_custom_levels, "");
