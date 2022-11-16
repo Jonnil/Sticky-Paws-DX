@@ -1,5 +1,5 @@
 # Sticky-Paws-DX
-Framework used to make Sticky Paws DX and future Jonnil platformer games
+This project is Sticky Paws DX itself, and it's also being used as a framework for future Jonnil platformer games
 
 This is the framework for Sticky Paws, a platformer game that was developed in Game Maker, Sticky Paws was created by Jonnil in 2019.
 I want to continue making platformer games, and this is a project that I've mostly been programming myself
@@ -11,12 +11,17 @@ I have already started from scratch when I made Sticky Paws DX, which this proje
 developing games like my next platformer project, I'd rather stick to this framework that I already have.
 It's a perfectly usable platformer framework, that I will continue to change and expand on.
 
-Many things that make Sticky Paws, "Sticky Paws", are assets, which most of them are found in Included Files/Datafiles.
+What makes up the intellectual property of Sticky Paws™, are the assets,
+which most of them are found in Included Files/Datafiles.
 Characters, Levels, Resource Pack, Title Backgrounds, Title Logos...
-All those folders includes the sprites, sounds, even behavior of characters and levels in Sticky Paws.
+All those folders include the sprites, sounds, even behavior of characters and levels in Sticky Paws.
 When you actually play Sticky Paws, that's where things are loaded from, Included Files/Datafiles determine a lot of what Sticky Paws actually is.
 I could use the framework, but completely change what game it is with Included Files/Datafiles.
 This is the kind of vision I have for this platformer framework.
+
+IMPORTANT: Don't profit off of the assets in Included Files/Datafiles, they are copyrighted by Jonnil.
+If you're using the framework to make your own commerical game,
+make sure every asset in Included Files/Datafiles are your own assets that you yourself own.
 
 For people interested in my projects, you can at least look at the code if you want to, thank you for being a fan.
 Again, it's not "perfect" so any suggestions how to make it better are welcome.
