@@ -34,8 +34,8 @@
 //scr_draw_text_outlined(x - 32, y - 64     , "scr_mouse_y_to_gui" + ": " + string(scr_y_to_gui(mouse_y)), global.default_text_size, c_white, c_red, 1);
 //draw_line_width_color(x, y, window_mouse_get_x(), window_mouse_get_y(), 2, c_blue, c_red);
 
-//draw_line_width_color(global.tongue_point_dir_x1, global.tongue_point_dir_y1, global.tongue_point_dir_x2, global.tongue_point_dir_y2, 2, c_blue, c_red);
-//scr_draw_text_outlined(global.tongue_point_dir_x2, global.tongue_point_dir_y2, "draw", global.default_text_size, c_white, c_blue, 1);
+//draw_line_width_color(x, y, obj_follow_mouse.x, obj_follow_mouse.y, 2, c_blue, c_red);
+//scr_draw_text_outlined(obj_follow_mouse.x, obj_follow_mouse.y, "normal draw", global.default_text_size, c_white, c_red, 1);
 
 #region /* Draw things underneath the player */
 

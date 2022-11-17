@@ -2,10 +2,7 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "obj_follow_mouse",
-  "spriteId": {
-    "name": "spr_bubble",
-    "path": "sprites/spr_bubble/spr_bubble.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": false,
   "managed": true,
@@ -26,7 +23,6 @@
   "physicsShapePoints": [],
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],

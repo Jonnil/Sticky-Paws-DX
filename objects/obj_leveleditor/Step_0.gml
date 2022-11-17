@@ -74,14 +74,15 @@ and (startup_loading_timer >= 3)
 	if (global.deactivate_objects_outside_view == true)
 	{
 		instance_deactivate_region(
-		camera_get_view_x(view_camera[0]) - 32,
-		camera_get_view_y(view_camera[0]) - 32,
-		camera_get_view_width(view_camera[0]) + 32 /* Camera Width */,
-		camera_get_view_height(view_camera[0]) + 32 /* Camera Height */,
+		camera_get_view_x(view_camera[view_current]) - 32,
+		camera_get_view_y(view_camera[view_current]) - 32,
+		camera_get_view_width(view_camera[view_current]) + 32 /* Camera Width */,
+		camera_get_view_height(view_camera[view_current]) + 32 /* Camera Height */,
 		false, true);
 	}
 }
 else
+if (global.play_edited_level == false)
 {
 	instance_activate_all();
 }

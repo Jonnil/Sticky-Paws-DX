@@ -8,7 +8,7 @@
 /// @arg text_color
 /// @arg image_alpha
 
-function scr_draw_text_outlined(x_position = x, y_position = y, string_text = "", text_size = global.default_text_size, outline_color = c_menu_outline, text_color = c_menu_fill, img_alpha = 1)
+function scr_draw_text_outlined(x_position = x, y_position = y, string_text = "", text_size = global.default_text_size, outline_color = c_white, text_color = c_black, img_alpha = 1)
 {
 	var y_offset = 0; /* Y origin position offset for broken fonts */
 	

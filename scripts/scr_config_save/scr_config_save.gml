@@ -69,6 +69,7 @@ function scr_config_save()
 	ini_write_real("config", "chosen_controller_used", global.chosen_controller_used);
 	ini_write_real("config", "show_prompt_when_changing_to_gamepad", global.show_prompt_when_changing_to_gamepad);
 	ini_write_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", global.show_prompt_when_changing_to_keyboard_and_mouse);
+	ini_write_real("config", "always_show_gamepad_buttons", global.always_show_gamepad_buttons);
 	
 	#region /* Save Player 1 Keyboard Remapping */
 	ini_write_real("config", "character_index_player_1", global.character_index[0]);

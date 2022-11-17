@@ -1,3 +1,5 @@
+//x = camera_get_view_x(obj_camera.camera) + window_mouse_get_x() * (camera_get_view_width(obj_camera.camera) / window_get_width());
+//y = camera_get_view_y(obj_camera.camera) + window_mouse_get_y() * (camera_get_view_height(obj_camera.camera) / window_get_height());
 x = mouse_x;
 y = mouse_y;
 

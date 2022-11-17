@@ -1,10 +1,5 @@
 ///Platformer Player Part 1
 
-global.tongue_point_dir_x1 = obj_player.x;
-global.tongue_point_dir_y1 = obj_player.y;
-global.tongue_point_dir_x2 = window_mouse_get_x();
-global.tongue_point_dir_y2 = window_mouse_get_y();
-
 #region /* Only update audio listener position and velocity when the player is moving */
 if (speed > 0)
 {

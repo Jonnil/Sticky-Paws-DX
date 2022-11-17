@@ -1,5 +1,5 @@
-draw_line_width_color(scr_x_to_gui(global.tongue_point_dir_x1), scr_y_to_gui(global.tongue_point_dir_y1), global.tongue_point_dir_x2, global.tongue_point_dir_y2, 2, c_green, c_yellow);
-scr_draw_text_outlined(global.tongue_point_dir_x2, global.tongue_point_dir_y2, "draw gui", global.default_text_size, c_white, c_red, 1);
+//draw_line_width_color(scr_x_to_gui(x), scr_y_to_gui(y), window_mouse_get_x(), window_mouse_get_y(), 2, c_green, c_yellow);
+//scr_draw_text_outlined(window_mouse_get_x(), window_mouse_get_y(), "draw gui", global.default_text_size, c_white, c_red, 1);
 
 //var a = application_get_position();
 //var xx = a[0];

@@ -6,10 +6,6 @@ draw_rectangle_colour(0, 0, window_get_width(), window_get_height(), c_black, c_
 draw_set_alpha(1);
 
 #region /* Draw Skip Text */
-if (skip > 0)
-{
-	draw_rectangle_colour(0, + 64 - skip, window_get_width(), + 64, c_red, c_red, c_red, c_red, false);
-}
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
 
@@ -26,8 +22,10 @@ and (global.controls_used_for_menu_navigation == "controller")
 or(gamepad_is_connected(3))
 and (global.player4_can_play == true)
 and (global.controls_used_for_menu_navigation == "controller")
+or (global.always_show_gamepad_buttons == true)
 {
-	scr_draw_text_outlined(window_get_width() - 16, 0, l10n_text("Skip") + " : " + l10n_text("Hold Start"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(window_get_width() - 64, 0, l10n_text("Skip") + " : " + l10n_text("Hold"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_gamepad_buttons(gp_start, window_get_width() - 32, 21, 0.5, c_white, 1);
 }
 #endregion /* If gamepad is connected END */
 
@@ -47,7 +45,7 @@ else
 if (global.controls_used_for_menu_navigation = "keyboard")
 or (global.controls_used_for_menu_navigation = "mouse")
 {
-	draw_menu_button(window_get_width() - 370, 0, l10n_text("Skip") + " : " + l10n_text("Hold"), "skip", "skip")
+	draw_menu_button(window_get_width() - 370, 0, l10n_text("Skip") + " : " + l10n_text("Hold"), "skip", "skip");
 	draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() - 32, 21, 0.5, 0.5, 0, c_white, 1);
 }
 #endregion /* If playing on Keyboard */
@@ -55,6 +53,11 @@ or (global.controls_used_for_menu_navigation = "mouse")
 if (global.controls_used_for_menu_navigation == "mouse")
 {
 	menu = "";
+}
+
+if (skip > 0)
+{
+	scr_draw_circular_bar(window_get_width() - 32, 21, skip, 64, c_red, 20, 1, 6); /* Draw a circular bar that fills when skipping */
 }
 
 #endregion /* Draw Skip Text END */

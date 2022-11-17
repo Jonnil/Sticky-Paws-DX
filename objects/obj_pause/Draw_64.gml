@@ -1,4 +1,3 @@
-//instance_deactivate_all(true);
 instance_activate_object(obj_pause);
 
 if (global.background_brightness_menu > -0.001)
@@ -190,6 +189,19 @@ or (gamepad_button_check_pressed(3, gp_face4))
 if (hide_menu_for_clean_screenshots == false)
 {
 	
+	#region /* Games Logo in top left corner */
+	if (current_month = 12)
+	and (global.resource_pack_sprite_title_logo_christmas >= 0)
+	{
+		draw_sprite_ext(global.resource_pack_sprite_title_logo_christmas, 0, 160, scr_wave(70, 80, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
+	}
+	else
+	if (global.title_logo_index >= 0)
+	{
+		draw_sprite_ext(global.title_logo_index, 0, 160, scr_wave(70, 80, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
+	}
+	#endregion /* Games Logo in top left corner END */
+	
 	if (in_settings == false)
 	and (menu != "remap_key_up")
 	and (menu != "remap_key_down")
@@ -222,21 +234,7 @@ if (hide_menu_for_clean_screenshots == false)
 		}
 	}
 	#endregion /* Which player is controling the pause menu? END */
-
-	#region /* Games Logo in top left corner */
-
-	if (current_month = 12)
-	and (global.resource_pack_sprite_title_logo_christmas >= 0)
-	{
-		draw_sprite_ext(global.resource_pack_sprite_title_logo_christmas, 0, 160, scr_wave(100, 140, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
-	}
-	else
-	if (global.title_logo_index >= 0)
-	{
-		draw_sprite_ext(global.title_logo_index, 0, 160, scr_wave(100, 140, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
-	}
-	#endregion /* Games Logo in top left corner END */
-
+	
 	#region /* Pause Text blink effect */
 	if (pause_text_lerp <= 0)
 	{
@@ -303,7 +301,7 @@ if (hide_menu_for_clean_screenshots == false)
 			or (asset_get_type("room_leveleditor") == asset_room)
 			and (global.pause_room = room_leveleditor)
 			{
-				if (global.convention_mode = false)
+				if (global.convention_mode == false)
 				{
 					draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Options"), "options", "options");
 					draw_sprite_ext(spr_icons_cogwheel, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 21, 1, 1, 0, c_white, 1);
@@ -318,7 +316,7 @@ if (hide_menu_for_clean_screenshots == false)
 			}
 			else
 			{
-				if (global.convention_mode = false)
+				if (global.convention_mode == false)
 				{
 					draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Options"), "options", "options");
 					draw_sprite_ext(spr_icons_cogwheel, 0, window_get_width() / 2 - 185 + 20, window_get_height() / 2 + 42 + 21, 1, 1, 0, c_white, 1);
@@ -356,7 +354,8 @@ if (hide_menu_for_clean_screenshots == false)
 		{
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Quit to Map"), "quit_to_map", "quit_to_map");
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
+			and (global.enable_options_for_pc == true)
 			{
 				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
 				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
@@ -380,7 +379,8 @@ if (hide_menu_for_clean_screenshots == false)
 		and (menu == "quit_nevermind")
 		{
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
+			and (global.enable_options_for_pc == true)
 			{
 				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
 				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
@@ -401,7 +401,8 @@ if (hide_menu_for_clean_screenshots == false)
 		and (menu == "quit_nevermind")
 		{
 			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
+			and (global.enable_options_for_pc == true)
 			{
 				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
 				draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
@@ -466,7 +467,7 @@ if (hide_menu_for_clean_screenshots == false)
 			and (menu_joystick_delay <= 0)
 			{
 				menu_delay = 3;
-				if (global.convention_mode = false)
+				if (global.convention_mode == false)
 				{
 					menu = "options";
 				}
@@ -575,7 +576,7 @@ if (hide_menu_for_clean_screenshots == false)
 			and (menu_joystick_delay <= 0)
 			{
 				menu_delay = 3;
-				if (global.convention_mode = false)
+				if (global.convention_mode == false)
 				{
 					menu = "options";
 				}
@@ -760,7 +761,7 @@ if (hide_menu_for_clean_screenshots == false)
 				else
 				{
 					menu_delay = 3;
-					if (global.convention_mode = false)
+					if (global.convention_mode == false)
 					{
 						menu = "options";
 					}
@@ -922,7 +923,8 @@ if (hide_menu_for_clean_screenshots == false)
 			and (menu_joystick_delay <= 0)
 			{
 				menu_delay = 3;
-				if (global.convention_mode = false)
+				if (global.convention_mode == false)
+				and (global.enable_options_for_pc == true)
 				{
 					menu = "quit_to_desktop";
 				}
@@ -1031,7 +1033,8 @@ if (hide_menu_for_clean_screenshots == false)
 			and (menu_joystick_delay <= 0)
 			{
 				menu_delay = 3;
-				if (global.convention_mode = false)
+				if (global.convention_mode == false)
+				and (global.enable_options_for_pc == true)
 				{
 					menu = "quit_to_desktop";
 				}

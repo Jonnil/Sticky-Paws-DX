@@ -45,18 +45,24 @@ global.enable_language_settings = true; /* Enable Language settings */
 global.enable_broadcast_settings = false; /* Enable Broadcast settings */
 global.enable_add_ons_settings = false; /* Enable Add-ons settings */
 global.enable_ranks = false; /* Enable the option to show ranks in the game */
+
+#region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)
 {
 	global.enable_open_custom_folder = false; /* Enable the option to open custom folders in the game */
 	global.enable_copy_characters = false; /* Enable the option to copy characters in the game */
-	global.enable_chosen_controller_used = false; /* Enable the chosen controller used in the game */
+	global.enable_options_for_pc = false; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
+	global.enable_keyboard_and_mouse_settings = false; /* Enable Keyboard and Mouse settings */
 }
 else
 {
 	global.enable_open_custom_folder = true; /* Enable the option to open custom folders in the game */
 	global.enable_copy_characters = true; /* Enable the option to copy characters in the game */
-	global.enable_chosen_controller_used = true; /* Enable the chosen controller used in the game */
+	global.enable_options_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
+	global.enable_keyboard_and_mouse_settings = true; /* Enable Keyboard and Mouse settings */
 }
+#endregion /* If you're playing on console, then some things should not show up that is for PC END */
+
 #endregion /* What settings tabs to show up END */
 
 #region /* What settings can be changed */
@@ -67,9 +73,9 @@ global.enable_narrator = true;
 #endregion /* Change how menus look and function END */
 
 global.max_fps = 60; /* Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60 */
-global.default_text_size = 0.8 //0.1125;
-global.default_view_width = 1920;
-global.default_view_height = 1080;
+global.default_text_size = 0.8 /* This is the default text size, but text size should be able to be changed by the player in settings. Default = 0.8 */
+global.default_view_width = 1920; /* Default = 1920 */
+global.default_view_height = 1080; /* Default = 1080 */
 
 global.demo = false; /* When making a demo version of the game, turn this to true, otherwise turn this to false for the full version */
 global.demo_max_levels = 3; /* Set how many levels the demo version have unlocked */
@@ -204,10 +210,6 @@ global.voicepack_for_player_2 = 0; /* Player 2 Select Voicepack */
 global.voicepack_for_player_3 = 0; /* Player 3 Select Voicepack */
 global.voicepack_for_player_4 = 0; /* Player 4 Select Voicepack */
 global.world_editor = false; /* If you're editing world or not */
-global.tongue_point_dir_x1 = 0;
-global.tongue_point_dir_y1 = 0;
-global.tongue_point_dir_x2 = 0;
-global.tongue_point_dir_y2 = 0;
 device_mouse_dbclick_enable(false); /* Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled */
 draw_set_font(global.default_font);
 ds_list_add(global.all_loaded_custom_levels, "");
@@ -463,6 +465,8 @@ global.resource_pack_sprite_buttons_playstation5 = spr_noone;
 
 global.chosen_controller_used = 0; /* What controller buttons to use for button prompts */
 /* 0 = xboxone, 1 = xboxseriesxs, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5 */
+
+global.always_show_gamepad_buttons = false; /* You can force to show gamepad buttons, even if playing with keyboard, mouse or touch controls. Default = false */
 
 company_splash = noone;
 company_splash_1 = noone;

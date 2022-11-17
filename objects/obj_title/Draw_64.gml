@@ -45,7 +45,7 @@ and (global.enable_attract_demo == true)
 if (global.play_attract_demo == true)
 {
 	video_open("video/trailer.mp4");
-	video_resume()
+	video_resume();
 	scr_audio_play(trailer_sound, volume_source.music);
 	global.play_attract_demo = 2;
 }
@@ -102,7 +102,7 @@ or (menu == "link_wiki")
 		and (can_input_player3_name = false)
 		and (can_input_player4_name = false)
 		{
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
 			{
 				global.arcade_mode = false;
 				global.convention_mode = true;
@@ -207,7 +207,7 @@ and (show_convention_mode_enable_text > 0)
 	draw_sprite_ext(spr_checkbox, true, 32, 32, 0.5, 0.5, 0, c_white, 1);
 }
 else
-if (global.convention_mode = false)
+if (global.convention_mode == false)
 and (show_convention_mode_enable_text > 0)
 {
 	show_convention_mode_enable_text -= 1;
@@ -436,7 +436,7 @@ key_b_pressed = (gamepad_button_check_pressed(0, gp_face2)) or (keyboard_check_p
 #endregion /* Keyboard Controls END */
 
 #region /* Quit Game trough pause menu */
-if (global.convention_mode = false)
+if (global.convention_mode == false)
 and (can_remap_key == false)
 and (input_key == false)
 and (menu_delay == 0)
@@ -469,13 +469,14 @@ and (menu_delay == 0)
 #region /* Fullscreen toggle */
 if (os_type != os_ios)
 and (os_type != os_android)
+and (global.enable_options_for_pc == true)
 and (global.controls_used_for_menu_navigation != "controller")
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	if (window_get_fullscreen())
 	{
-		scr_draw_text_outlined(+ 52, display_get_gui_height() - 55 + version_y_pos, l10n_text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(+ 52, display_get_gui_height() - 55 + version_y_pos, l10n_text("Windowed"), global.default_text_size, c_white, c_black, 1);
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
@@ -489,29 +490,29 @@ and (global.controls_used_for_menu_navigation != "controller")
 			draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
 		}
 	}
-}
-if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
-and (global.controls_used_for_menu_navigation == "mouse")
-{
-	draw_set_alpha(0.5);
-	draw_rectangle_color(0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42, c_white, c_white, c_white, c_white, false);
-	draw_set_alpha(1);
-}
-if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
-and (mouse_check_button_pressed(mb_left))
-and (global.controls_used_for_menu_navigation == "mouse")
-and (menu != "quit_game_no")
-and (menu != "quit_game_yes")
-{
-	if (window_get_fullscreen())
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
+	and (global.controls_used_for_menu_navigation == "mouse")
 	{
-		window_set_fullscreen(false);
+		draw_set_alpha(0.5);
+		draw_rectangle_color(0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42, c_white, c_white, c_white, c_white, false);
+		draw_set_alpha(1);
 	}
-	else
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
+	and (mouse_check_button_pressed(mb_left))
+	and (global.controls_used_for_menu_navigation == "mouse")
+	and (menu != "quit_game_no")
+	and (menu != "quit_game_yes")
 	{
-		window_set_fullscreen(true);
+		if (window_get_fullscreen())
+		{
+			window_set_fullscreen(false);
+		}
+		else
+		{
+			window_set_fullscreen(true);
+		}
+		menu_delay = 3;
 	}
-	menu_delay = 3;
 }
 #endregion /* Fullscreen toggle END */
 
@@ -1121,7 +1122,8 @@ and (global.arcade_mode = false)
 		options_and_quit_y = display_get_gui_height() / 2 + 100 + 120 - 42 + 1;
 	}
 	
-	if (global.convention_mode = false)
+	if (global.convention_mode == false)
+	and (global.enable_options_for_pc == true)
 	{
 		draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width() / 2 - 185, options_and_quit_y, 0, 0, 1, 1, 185, 42, l10n_text("Options"), "options", "options", true);
 		draw_sprite_ext(spr_icons_cogwheel, 0, display_get_gui_width() / 2 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
@@ -1131,6 +1133,12 @@ and (global.arcade_mode = false)
 			draw_menu_button_sprite(spr_menu_button_short, display_get_gui_width() / 2 - 185, options_and_quit_y, 0, 0, 1, 1, 185, 42, l10n_text("Options"), "options", "options", true);
 			draw_sprite_ext(spr_icons_cogwheel, 0, display_get_gui_width() / 2 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
 		}
+	}
+	else
+	if (global.convention_mode == false)
+	and (global.enable_options_for_pc == false)
+	{
+		draw_menu_button(display_get_gui_width() / 2 - 185, options_and_quit_y, l10n_text("Options"), "options", "options");
 	}
 	
 	draw_menu_button_sprite(spr_noone, display_get_gui_width() - 370, display_get_gui_height() - 42, 0, 0, 1, 1, 370, 42, l10n_text("Made by") + " " + (global.company_name), "credits", "play_credits", true);
@@ -1317,7 +1325,7 @@ and (menu_delay == 0)
 		and (global.show_language_shortcut = false)
 		{
 			menu_delay = 3;
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
 			{
 				menu = "quit";
 			}
@@ -1361,7 +1369,7 @@ and (menu_delay == 0)
 		if (key_left)
 		{
 			menu_delay = 3;
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
 			{
 				menu = "quit";
 			}
@@ -1434,7 +1442,7 @@ and (menu_delay == 0)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
 			{
 				menu = "quit";
 			}
@@ -1470,7 +1478,7 @@ and (menu_delay == 0)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
 			{
 				menu = "options";
 			}
@@ -1505,7 +1513,7 @@ and (menu_delay == 0)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
 			{
 				menu = "options";
 			}
@@ -1541,7 +1549,7 @@ and (menu_delay == 0)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
 			{
 				menu = "options";
 			}
@@ -1577,7 +1585,7 @@ and (menu_delay == 0)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
 			{
 				menu = "options";
 			}
@@ -1613,7 +1621,7 @@ and (menu_delay == 0)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
 			{
 				menu = "options";
 			}
@@ -1649,7 +1657,7 @@ and (menu_delay == 0)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.convention_mode = false)
+			if (global.convention_mode == false)
 			{
 				menu = "options";
 			}

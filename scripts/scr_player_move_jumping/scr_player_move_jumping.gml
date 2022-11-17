@@ -83,6 +83,7 @@ function scr_player_move_jumping()
 				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 				buffer_jump = 0; /* Reset jump buffer timer back to 0 when jumping */
 				dive = false;
+				glide = false;
 				triplejumpdelay = 12;
 				if (abs(hspeed) > (speed_max_walk - 1))
 				or (key_up)

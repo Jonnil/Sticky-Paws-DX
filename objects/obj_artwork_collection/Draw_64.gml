@@ -167,6 +167,7 @@ scr_draw_text_outlined(+ 32, window_get_height() - 32, "< " + l10n_text("Artwork
 
 if (gamepad_is_connected(0))
 and (global.controls_used_for_menu_navigation == "controller")
+or (global.always_show_gamepad_buttons == true)
 {
 	scr_draw_gamepad_buttons(gp_padl, 128, window_get_height() / 2, 1, c_white, 1);
 	scr_draw_gamepad_buttons(gp_padr, window_get_width() - 128, window_get_height() / 2, 1, c_white, 1);
@@ -253,6 +254,7 @@ draw_sprite_ext(spr_icons_back, 0, window_get_width() - 370 + 20, window_get_hei
 #region /* Draw Back Key */
 if (gamepad_is_connected(0))
 and (global.controls_used_for_menu_navigation == "controller")
+or (global.always_show_gamepad_buttons == true)
 {
 	scr_draw_gamepad_buttons(gp_face2, window_get_width() - 32, window_get_height() -21, 0.5, c_white, 1);
 }

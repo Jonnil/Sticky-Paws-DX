@@ -30,7 +30,11 @@ function scr_player_move_tongue()
 				can_tongue = false;
 				with(instance_create_depth(x, y, 0, obj_tongue))
 				{
-					direction = point_direction(global.tongue_point_dir_x1, global.tongue_point_dir_y1, global.tongue_point_dir_x2, global.tongue_point_dir_y2);
+					xx = instance_nearest(x, y, obj_player).x;
+					yy = instance_nearest(x, y, obj_player).y;
+					xx2 = instance_nearest(x, y, obj_follow_mouse).x;
+					yy2 = instance_nearest(x, y, obj_follow_mouse).y;
+					direction = point_direction(xx, yy, xx2, yy2);
 				}
 			}
 			#endregion /* Use tongue with mouse click END */
@@ -451,6 +455,8 @@ function scr_player_move_tongue()
 					}
 				}
 				#endregion /* Hitting wall to your right END */
+				
+				rope_angle_acceleration = clamp(rope_angle_acceleration, -10, +10); /* Limit rope angle acceleration so you don't go too fast and go trough walls */
 				
 				#region /* Hitting ceiling */
 				if (place_meeting(x, y - 1, obj_wall))
