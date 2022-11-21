@@ -79,7 +79,7 @@ if (asset_get_type("obj_level") == asset_object)
 
 #endregion /* Keep the game at 60 FPS END */
 
-scr_audio_play(snd_music_map, volume_source.music);
+scr_audio_play(music_map, volume_source.music);
 audio_stop_sound(global.ambience);
 audio_stop_sound(global.ambience_underwater);
 audio_stop_sound(global.music);
@@ -689,6 +689,7 @@ and (global.quit_level == false)
 	/* Don't set entering_level to false, or can_move to true here */
 	/* Create Event will take care of that when you enter the world map again */
 	/* Doing this code here will make the iris zoom out a bit before properly entering the level */
+	audio_stop_sound(music_map); /* Stop any world map music when playing a level */
 	audio_stop_all();
 	global.trigger_demo_ending = 0;
 	global.pause = false;

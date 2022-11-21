@@ -10,7 +10,7 @@ if (other.vspeed >= 0)
 
 if (stomped_delay <= 0)
 {
-	if (other.invincible > 0)
+	if (other.invincible_timer > 0)
 	or (other.takendamage > 0)
 	or (other.dive == true)
 	or (other.can_attack_after_dive_on_ground > 0)

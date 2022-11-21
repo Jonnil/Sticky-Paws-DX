@@ -154,7 +154,7 @@ and (instance_nearest(x, y, obj_player).hspeed <= 0)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
-			if (invincible = false)
+			if (invincible_timer = false)
 			{
 				if (have_heart_balloon == true)
 				{

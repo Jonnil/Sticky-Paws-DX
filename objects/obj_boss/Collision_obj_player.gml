@@ -165,7 +165,7 @@ else
 	}
 }
 
-if (other.invincible > 0)
+if (other.invincible_timer > 0)
 and (hp > 0)
 {
 	hp = 0;

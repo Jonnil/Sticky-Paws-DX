@@ -59,7 +59,7 @@ function scr_player_move_goal()
 				global.quit_to_title = false;
 				global.restart_level = false;
 				instance_nearest(x, y, obj_goal).image_index = 1;
-				invincible = false;
+				invincible_timer = false;
 			
 				if (instance_nearest(x, y, obj_goal).trigger_ending == true)
 				{

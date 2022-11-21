@@ -180,8 +180,8 @@ if (draw_arrow_outside_view_up_alpha > 0.01)
 	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + 32, 22, c_white, c_white, true);
 	draw_set_alpha(1);
 	
-	if (assist_invincible = false)
-	and (invincible >= true)
+	if (assist_invincible == false)
+	and (invincible_timer >= true)
 	{
 		if (invincible_blinking%20 == 0)
 		and (sprite_index > 0)
@@ -224,8 +224,8 @@ if (draw_arrow_outside_view_down_alpha > 0.01)
 	draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32, 22, c_white, c_white, true);
 	draw_set_alpha(1);
 	
-	if (assist_invincible = false)
-	and (invincible >= true)
+	if (assist_invincible == false)
+	and (invincible_timer >= true)
 	{
 		if (invincible_blinking%20 == 0)
 		and (sprite_index > 0)
@@ -323,7 +323,7 @@ and (hp <= 1)
 and (max_hp >= 2)
 and (sprite_index > 0)
 and (intro_animation = "")
-and (invincible <= false)
+and (invincible_timer <= false)
 {
 	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8, + 8), yy+random_range(- 8, + 8), draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha);
 }
@@ -335,7 +335,7 @@ and (intro_animation = "")
 	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha);
 	if (hp <= 1)
 	and (max_hp >= 2)
-	and (invincible <= false)
+	and (invincible_timer <= false)
 	{
 		draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_red, 0.1);
 	}
@@ -408,9 +408,9 @@ and (hold_item_in_hands == "")
 #endregion /* Running Sparks Effect END */
 
 #region /* Invinsible */
-if (assist_invincible = false)
+if (assist_invincible == false)
 {
-	if (invincible >= true)
+	if (invincible_timer >= true)
 	and (sprite_index > 0)
 	{
 		invincible_blinking += 1;
@@ -429,7 +429,7 @@ if (assist_invincible = false)
 	}
 }
 
-if (invincible >= true)
+if (invincible_timer >= true)
 {
 	if (floor(random(10 - 1)) == 0)
 	{

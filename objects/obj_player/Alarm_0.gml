@@ -7773,7 +7773,7 @@ else
 	default_yscale = 1;
 }
 #endregion /* Default Yscale END */
-	
+
 #region /* Default Voice Pitch */
 if (ini_key_exists("values", "default_voice_pitch"))
 {
@@ -7787,7 +7787,21 @@ else
 	default_voice_pitch = 1;
 }
 #endregion /* Default Voice Pitch END */
-	
+
+#region /* Invincibility duration */
+if (ini_key_exists("values", "default_invincibility_duration_in_frames"))
+{
+	default_invincibility_duration_in_frames = ini_read_real("values", "default_invincibility_duration_in_frames", 1);
+}
+else
+{
+	if (can_save_to_character_config == true)
+	and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+	{ini_write_real("values", "default_invincibility_duration_in_frames", 1200);}
+	default_invincibility_duration_in_frames = 1200; /* By default invincibility duration should last 20 seconds. 60 (fps) * 20 = 1200 */
+}
+#endregion /* Invincibility duration END */
+
 ini_close();
 #endregion /* Character Values Handeling END */
 

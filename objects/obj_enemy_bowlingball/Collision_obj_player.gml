@@ -7,7 +7,7 @@ and (stomped_delay == 0)
 		other.spring = false;
 		other.spring_animation = 0;
 	}
-	if (other.invincible > 0)
+	if (other.invincible_timer > 0)
 	{
 		if (other.key_jump_hold)
 		{

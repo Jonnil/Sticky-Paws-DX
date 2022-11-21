@@ -35,7 +35,7 @@ function scr_player_move_sprint()
 			or (key_right_hold)
 			and (ground_pound == false)
 			{
-				if (invincible >= true)
+				if (invincible_timer >= true)
 				and (assist_invincible == false)
 				{
 					speed_max = lerp(speed_max, 10, 0.1);
@@ -53,7 +53,7 @@ function scr_player_move_sprint()
 		{
 			if (on_ground == true)
 			{
-				if (invincible >= true)
+				if (invincible_timer >= true)
 				and (assist_invincible == false)
 				{
 					speed_max = lerp(speed_max, 6, 0.05);

@@ -288,11 +288,11 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		
 	}
 	
-	#region /* "OR" text */
+	#region /* OR text */
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(key_x + 100, menu_y_remap_key + menu_y_offset, l10n_text("Or"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-	#endregion /* "OR" text END */
+	#endregion /* OR text END */
 	
 	#region /* Mouse Navigation */
 	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), key_x - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 32, menu_y_remap_key + menu_y_offset + 32))

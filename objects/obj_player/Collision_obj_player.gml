@@ -1,7 +1,7 @@
-if (other.invincible > 0)
+if (other.invincible_timer > 0)
 and (assist_invincible == false)
 {
-	invincible = other.invincible;
+	invincible_timer = other.invincible_timer;
 }
 
 if (global.players_can_collide == true)

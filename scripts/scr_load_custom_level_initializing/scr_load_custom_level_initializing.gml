@@ -5,7 +5,7 @@ function scr_load_custom_level_initializing()
 	ds_list_clear(global.thumbnail_sprite);
 	ds_list_add(global.thumbnail_sprite, spr_menu_create_custom_level);
 	
-	first_level = string(file_find_first(working_directory + "/custom_levels/* ", fa_directory))
+	first_level = string(file_find_first(working_directory + "/custom_levels/*", fa_directory))
 	if (directory_exists(working_directory + "/custom_levels/" + first_level))
 	{
 		

@@ -3,10 +3,6 @@ if (bounce_up == false)
 {
 	audio_sound_gain(global.music, 0, 0);
 	audio_sound_gain(global.music_underwater, 0, 0);
-	if (!audio_is_playing(snd_music_invincible))
-	{
-		scr_audio_play(snd_music_invincible, volume_source.music);
-	}
 	score += 1000;
 	if (asset_get_type("obj_camera") == asset_object)
 	and (instance_exists(obj_camera))
@@ -26,7 +22,7 @@ if (bounce_up == false)
 	with(other)
 	{
 		chain_reaction = 0;
-		invincible = true;
+		invincible_timer = default_invincibility_duration_in_frames;
 		scr_audio_play(voice_get_star, volume_source.voice);
 	}
 	instance_destroy(); /* Delete after doing all other code */

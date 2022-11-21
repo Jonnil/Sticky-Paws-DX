@@ -440,8 +440,8 @@ if (assist_invincible == true)
 	{
 		hp = 1;
 	}
-	invincible = true;
-	audio_stop_sound(snd_music_invincible);
+	invincible_timer = true;
+	audio_stop_sound(music_invincible);
 	if (key_jump_hold)
 	{
 		if (asset_get_type("obj_wall") == asset_object)
@@ -723,12 +723,12 @@ if (place_meeting(x, y + 4, obj_wall))
 #region /* Chain Reaction Reset */
 if (on_ground == true)
 {
-	if (invincible <= false)
+	if (invincible_timer <= false)
 	{
 		chain_reaction = 0;
 	}
 }
-if (assist_invincible == true)
+if (assist_invincible == true) /* You can never get chain reactions when you have assist invincibility */
 {
 	chain_reaction = 0;
 }
@@ -893,7 +893,7 @@ if (in_water != old_in_water)
 
 #region /* Speedup to Dashspeed */
 if (abs(hspeed) > 7)
-and (invincible >= true)
+and (invincible_timer >= true)
 and (power_meter_running_sound == true)
 {
 	speedunit += 2;
@@ -1005,12 +1005,12 @@ and (place_meeting(x, y, obj_lava))
 		crouch = false;
 		speed_max = 8;
 		takendamage = 100;
-		if (invincible < 1)
+		if (invincible_timer <= false)
 		{
 			scr_audio_play(voice_burned, volume_source.voice);
 			hp -= 1;
 		}
-		if (invincible > 0)
+		if (invincible_timer >= true)
 		{
 			scr_audio_play(voice_burned, volume_source.voice);
 		}
@@ -1344,7 +1344,7 @@ and (instance_exists(obj_spikes))
 	{
 		if (takendamage < 1)
 		and (assist_invincible == false)
-		and (invincible <= false)
+		and (invincible_timer <= false)
 		{
 			if (have_heart_balloon == true)
 			{
@@ -1389,22 +1389,28 @@ and (instance_exists(obj_spikes))
 #endregion /* If you touch spikes, take damage END */
 
 #region /* Invincible Music */
-if (invincible >= true)
+if (invincible_timer >= true)
 and (assist_invincible == false)
-and (asset_get_type("snd_music_invincible") == asset_sound)
-and (audio_is_playing(snd_music_invincible))
 {
-	audio_sound_gain(global.music, 0, 0);
-	audio_sound_gain(global.music_underwater, 0, 0);
+	invincible_timer -= 1;
+	if (!audio_is_playing(music_invincible))
+	{
+		scr_audio_play(music_invincible, volume_source.music);
+		audio_sound_gain(global.music, 0, 0);
+		audio_sound_gain(global.music_underwater, 0, 0);
+	}
+	if (audio_is_playing(music_invincible))
+	{
+		audio_sound_gain(global.music, 0, 0);
+		audio_sound_gain(global.music_underwater, 0, 0);
+	}
 }
 else
 {
-	if (!audio_is_playing(snd_music_invincible))
+	if (invincible_timer <= false)
 	{
-		invincible = false;
+		audio_stop_sound(music_invincible);
 	}
-	
-	audio_stop_sound(snd_music_invincible);
 	
 	if (!audio_is_playing(global.music))
 	{
@@ -3233,7 +3239,7 @@ and (vspeed == 0)
 		if (have_heart_balloon == false)
 		and (hp <= 1)
 		and (max_hp >= 2)
-		and (invincible <= false)
+		and (invincible_timer <= false)
 		and (sprite_panting > noone)
 		{
 			sprite_index = sprite_panting;
@@ -3460,7 +3466,7 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			}
 		}
 		else
-		if (invincible >= true)
+		if (invincible_timer >= true)
 		and (asset_get_type("spr_player_invincible_jump") == asset_sprite)
 		{
 			sprite_index = spr_player_invincible_jump;
@@ -3576,7 +3582,7 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	and (stick_to_wall == false)
 	and (spring == false)
 	{
-		if (invincible >= true)
+		if (invincible_timer >= true)
 		and (asset_get_type("spr_player_invincible_jump") == asset_sprite)
 		{
 			sprite_index = spr_player_invincible_jump;
@@ -4018,7 +4024,7 @@ else
 #region /* Speedlines Effect */
 if (asset_get_type("obj_speedline") == asset_object)
 {
-	if (invincible >= true)
+	if (invincible_timer >= true)
 	and (assist_invincible == false)
 	and (instance_exists(obj_player))
 	{
@@ -4237,7 +4243,7 @@ if (partner_character == true)
 	and (x < partner_follow_player.x - 100)
 	{
 		active_right = true;
-		if (invincible >= true)
+		if (invincible_timer >= true)
 		and (assist_invincible == false)
 		{
 			speed_max = lerp(speed_max, 10, 0.1);
@@ -4260,7 +4266,7 @@ if (partner_character == true)
 	and (x > partner_follow_player.x + 100)
 	{
 		active_left = true;
-		if (invincible >= true)
+		if (invincible_timer >= true)
 		and (assist_invincible == false)
 		{
 			speed_max = lerp(speed_max, 10, 0.1);

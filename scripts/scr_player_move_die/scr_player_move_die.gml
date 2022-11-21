@@ -38,10 +38,6 @@ function scr_player_move_die()
 				audio_stop_sound(global.music_underwater);
 				music = noone;
 				music_underwater = noone;
-				if (asset_get_type("snd_music_invincible") == asset_sound)
-				{
-					audio_stop_sound(snd_music_invincible);
-				}
 				if (asset_get_type("snd_skidding") == asset_sound)
 				{
 					audio_stop_sound(snd_skidding);
@@ -57,7 +53,7 @@ function scr_player_move_die()
 			}
 			speed = 0;
 			takendamage = 0;
-			invincible = false;
+			invincible_timer = false;
 			scr_audio_play(snd_die, volume_source.sound);
 			
 			#region /* Turn into obj_player_die */
@@ -205,6 +201,15 @@ function scr_player_move_die()
 			{
 				room_restart();
 			}
+			
+			#region /* Stop invincibility music if you're the last player dying */
+			if (asset_get_type("obj_player") == asset_object)
+			and (global.pause == false)
+			and (instance_number(obj_player) == 1)
+			{
+				audio_stop_sound(music_invincible);
+			}
+			#endregion /* Stop invincibility music if you're the last player dying END */
 			
 			instance_destroy();
 		}

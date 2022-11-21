@@ -576,10 +576,25 @@ and (room != room_title)
 	}
 	#endregion /* Update Level Clear Melody END */
 	
+	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg"))
+	{
+		music_invincible = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg");
+	}
+	else
+	if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg"))
+	{
+		music_invincible = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg");
+	}
+	else
+	{
+		music_invincible = noone;
+	}
+	
 }
 else
 {
 	level_clear_melody = noone;
+	music_invincible = noone;
 }
 #endregion /* Custom Music END */
 
@@ -596,13 +611,6 @@ xx_heart = x;
 yy_heart = y;
 #endregion /* Heart balloon starting point END */
 
-#region /* Stop any world map music when playing a level */
-if (asset_get_type("snd_music_map") == asset_sound)
-{
-	audio_stop_sound(snd_music_map);
-}
-#endregion /* Stop any world map music when playing a level END */
-
 aim_image_index = 0;
 angle = 0;
 basic_collectibles = 0;
@@ -612,6 +620,7 @@ chain_reaction = 0;
 climb = false;
 controller_connected = false;
 crouch = false;
+default_invincibility_duration_in_frames = 1200; /* By default invincibility duration should last 20 seconds. 60 (fps) * 20 = 1200 */
 default_voice_pitch = 1; /* Set the default pitch for the characters voice, by default it's 1 */
 default_xscale = 1; /* Sprite default horizontal stretching, set to 1 */
 default_yscale = 1; /* Sprite default vertical stretching, set to 1 */
@@ -627,7 +636,7 @@ homing_attack_x = 0;
 homing_attack_y = 0;
 horizontal_rope_climb = false;
 in_water = false; /* If the player is in water or not, instead of checking for the actual obj_water, check for this variable instead */
-invincible = false;
+invincible_timer = 0;
 jump = 0;
 jump_transition_to_fall_animation = 0;
 last_standing_x = x;
