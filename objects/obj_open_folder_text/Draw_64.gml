@@ -30,6 +30,18 @@ if (os_type == os_windows)
 	scr_draw_text_outlined(key_open_localappdata_x + 110, window_get_height() / 2 - 90, l10n_text("Then type") + " " + "%localappdata%", global.default_text_size * 1.1, c_black, c_white, image_alpha);
 }
 else
+if (os_type == os_macosx)
+{
+	scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, l10n_text("Add custom things in Finder"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	draw_sprite_ext(spr_keyboard_keys, vk_shift, key_open_localappdata_x, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
+	scr_draw_text_outlined(key_open_localappdata_x + 38, window_get_height() / 2 - 90, "+", global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	draw_sprite_ext(spr_keyboard_keys, 91, key_open_localappdata_x + 74, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
+	scr_draw_text_outlined(key_open_localappdata_x + 110, window_get_height() / 2 - 90, "+", global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	draw_sprite_ext(spr_keyboard_keys, ord("G"), key_open_localappdata_x + 146, window_get_height() / 2 - 90, 0.75, 0.75, 0, c_white, image_alpha);
+	draw_set_halign(fa_left);
+	scr_draw_text_outlined(key_open_localappdata_x + 182, window_get_height() / 2 - 90, l10n_text("Then type path name"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
+}
+else
 if (os_type == os_linux)
 {
 	scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, l10n_text("Add custom things in .config"), global.default_text_size * 1.1, c_black, c_white, image_alpha);

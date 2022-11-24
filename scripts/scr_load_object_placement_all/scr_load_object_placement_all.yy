@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_save_custom_world",
+  "name": "scr_load_object_placement_all",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

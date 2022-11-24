@@ -46,6 +46,8 @@ function scr_save_custom_level()
 			and (object != 734)
 			and (object != 73)
 			{
+				/* | = chr("124") */
+				/* } = chr("125") */
 				str+= string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "|";
 			}
 		}
@@ -55,9 +57,9 @@ function scr_save_custom_level()
 		file_text_close(file);
 	
 		#endregion /* Save object placement END */
-	
+		
 		scr_save_objects_with_rotation_placement();
-	
+		
 		#region /* Save Level Information */
 		if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
 		{

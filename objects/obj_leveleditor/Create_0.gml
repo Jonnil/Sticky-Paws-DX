@@ -1158,6 +1158,10 @@ with(obj_leveleditor_placed_object)
 }
 #endregion /* Destory all placed objects before loading the level, just in case there is leftover placed objects END */
 
+scr_load_object_placement_all();
+
+#region /* Old level loading method */
+
 #region /* Load Main Game Level */
 if (global.character_select_in_this_menu == "main_game")
 or (global.create_level_from_template == true)
@@ -1184,6 +1188,8 @@ or (global.create_level_from_template == true)
 		str_pos = 1;
 		while(str_pos < string_length(str))
 		{
+			/* | = chr("124") */
+			/* } = chr("125") */
 			while (string_char_at(str, str_pos) != "|")
 			{
 				str_temp += string_char_at(str, str_pos);
@@ -1193,7 +1199,8 @@ or (global.create_level_from_template == true)
 			str_temp = "";
 			str_pos += 1;
 			num += 1;
-			if (num == 6) /* Number of variables to check for.
+			if (num == 6)
+			/* Number of variables to check for.
 			val[0] = object,
 			val[1] = x position,
 			val[2] = y position,
@@ -1237,6 +1244,8 @@ or (global.create_level_from_template == true)
 		str_pos = 1;
 		while(str_pos < string_length(str))
 		{
+			/* | = chr("124") */
+			/* } = chr("125") */
 			while (string_char_at(str, str_pos) != "|")
 			{
 				str_temp += string_char_at(str, str_pos);
@@ -1390,6 +1399,8 @@ if (global.character_select_in_this_menu == "level_editor")
 			str_pos = 1;
 			while(str_pos < string_length(str))
 			{
+				/* | = chr("124") */
+				/* } = chr("125") */
 				while (string_char_at(str, str_pos) != "|")
 				{
 					str_temp += string_char_at(str, str_pos);
@@ -1399,7 +1410,8 @@ if (global.character_select_in_this_menu == "level_editor")
 				str_temp = "";
 				str_pos += 1;
 				num += 1;
-				if (num == 6) /* Number of variables to check for.
+				if (num == 6)
+				/* Number of variables to check for.
 				val[0] = object,
 				val[1] = x position,
 				val[2] = y position,
@@ -1451,6 +1463,8 @@ if (global.character_select_in_this_menu == "level_editor")
 			str_pos = 1;
 			while(str_pos < string_length(str))
 			{
+				/* | = chr("124") */
+				/* } = chr("125") */
 				while (string_char_at(str, str_pos) != "|")
 				{
 					str_temp += string_char_at(str, str_pos);
@@ -1489,5 +1503,7 @@ if (global.character_select_in_this_menu == "level_editor")
 		
 }
 #endregion /* Load Level Editor Level END */
+
+#endregion /* Old level loading method END */
 
 #endregion /* Load Level END */

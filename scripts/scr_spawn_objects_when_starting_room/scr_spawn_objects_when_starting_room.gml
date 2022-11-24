@@ -74,11 +74,11 @@ function scr_spawn_objects_when_starting_room()
 				if (object == 22) and (asset_get_type("obj_falling_block_long_solid") == asset_object){instance_create_depth(x, y, 0, obj_falling_block_long_solid);}
 				#endregion /* Falling Block END */
 				
-				if (object == 23) and (asset_get_type("obj_cloud_block") == asset_object){instance_create_depth(x, y, 0, obj_cloud_block);}
-				if (object == 24) and (asset_get_type("obj_ice_block") == asset_object){instance_create_depth(x, y, 0, obj_ice_block);}
-				if (object == 25) and (asset_get_type("obj_cardboard_block") == asset_object){instance_create_depth(x, y, 0, obj_cardboard_block);}
-				if (object == 26) and (asset_get_type("obj_cardboard") == asset_object){instance_create_depth(x, y, 0, obj_cardboard);}
-				if (object == 27) and (asset_get_type("obj_cardboard_long") == asset_object){instance_create_depth(x, y, 0, obj_cardboard_long);}
+				if (object == level_object_id.id_cloud_block) and (asset_get_type("obj_cloud_block") == asset_object){instance_create_depth(x, y, 0, obj_cloud_block);}
+				if (object == level_object_id.id_ice_block) and (asset_get_type("obj_ice_block") == asset_object){instance_create_depth(x, y, 0, obj_ice_block);}
+				if (object == level_object_id.id_cardboard_block) and (asset_get_type("obj_cardboard") == asset_object){with(instance_create_depth(x, y, 0, obj_cardboard)){length = 1;}}
+				if (object == level_object_id.id_cardboard) and (asset_get_type("obj_cardboard") == asset_object){with(instance_create_depth(x, y, 0, obj_cardboard)){length = 2;}}
+				if (object == level_object_id.id_cardboard_long) and (asset_get_type("obj_cardboard") == asset_object){with(instance_create_depth(x, y, 0, obj_cardboard)){length = 3;}}
 				
 				#region /* Bump in ground */
 				if (object == 28) and (asset_get_type("obj_bump_in_ground") == asset_object){instance_create_depth(x, y, 0, obj_bump_in_ground);}

@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Other",
-    "path": "folders/Scripts/Other.yy",
+    "name": "Level Editor",
+    "path": "folders/Scripts/Level Editor.yy",
   },
 }

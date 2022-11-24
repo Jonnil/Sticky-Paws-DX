@@ -27,6 +27,8 @@ function scr_save_objects_with_rotation_placement()
 		or (object == 734)
 		or (object == 73)
 		{
+			/* | = chr("124") */
+			/* } = chr("125") */
 			str+= string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "|" + string(second_x) + "|" + string(second_y) + "|";
 		}
 	}

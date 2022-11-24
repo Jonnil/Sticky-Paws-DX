@@ -79,39 +79,9 @@ function scr_player_move_ground_pound()
 			{
 				vspeed = +24;
 			}
-	
-			#region /* If hitting a corner of a wall, move the player either left or right */
-			if (on_ground == true)
-			{
-		
-				#region /* Move left to avoid a left corner */
-				if (!position_meeting(bbox_left - 1,bbox_bottom + 1, obj_wall))
-				and (position_meeting(bbox_right + 1,bbox_bottom + 1, obj_wall))
-				{
-					x -= 1;
-				}
-				#endregion /* Move left to avoid a left corner END */
-		
-				else
-		
-				#region /* Move right to avoid a right corner */
-				if (position_meeting(bbox_left - 1,bbox_bottom + 1, obj_wall))
-				and (!position_meeting(bbox_right + 1,bbox_bottom + 1, obj_wall))
-				{
-					y += 1;
-				}
-				#endregion /* Move right to avoid a right corner END */
-		
-			}
-			#endregion /* If hitting a corner of a wall, move the player either left or right END */
-
+			
 			#region /* If touching the ground when doing a ground pound */
-			if (position_meeting(bbox_left + 1,bbox_bottom + 1, obj_wall))
-			or (position_meeting(x, bbox_bottom + 1, obj_wall))
-			or (position_meeting(bbox_right - 1,bbox_bottom + 1, obj_wall))
-			or (position_meeting(bbox_left + 1,bbox_bottom + 1, obj_semisolid_platform))
-			or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			or (position_meeting(bbox_right - 1,bbox_bottom + 1, obj_semisolid_platform))
+			if (on_ground == true)
 			{
 				with(instance_create_depth(x, bbox_bottom, 0, obj_block_break))
 				{
