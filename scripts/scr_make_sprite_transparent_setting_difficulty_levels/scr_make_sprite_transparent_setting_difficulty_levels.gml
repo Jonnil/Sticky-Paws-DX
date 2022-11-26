@@ -1,4 +1,4 @@
-function scr_make_sprite_transparent_if_youre_setting_difficulty_levels()
+function scr_make_sprite_transparent_setting_difficulty_levels()
 {
 	
 	#region /* Make sprite transparent if you're setting difficulty levels */

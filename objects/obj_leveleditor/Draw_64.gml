@@ -1510,7 +1510,7 @@ if (quit_level_editor == false)
 			{
 				with (obj_leveleditor_placed_object)
 				{
-					scr_make_sprite_transparent_if_youre_setting_difficulty_levels();
+					scr_make_sprite_transparent_setting_difficulty_levels();
 				}
 			}
 		}
@@ -1533,7 +1533,7 @@ if (quit_level_editor == false)
 			{
 				with (obj_leveleditor_placed_object)
 				{
-					scr_make_sprite_transparent_if_youre_setting_difficulty_levels();
+					scr_make_sprite_transparent_setting_difficulty_levels();
 				}
 			}
 		}
@@ -1556,7 +1556,7 @@ if (quit_level_editor == false)
 			{
 				with (obj_leveleditor_placed_object)
 				{
-					scr_make_sprite_transparent_if_youre_setting_difficulty_levels();
+					scr_make_sprite_transparent_setting_difficulty_levels();
 				}
 			}
 		}
@@ -1587,7 +1587,7 @@ if (quit_level_editor == false)
 				{
 					with (obj_leveleditor_placed_object)
 					{
-						scr_make_sprite_transparent_if_youre_setting_difficulty_levels();
+						scr_make_sprite_transparent_setting_difficulty_levels();
 					}
 				}
 			}

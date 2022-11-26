@@ -26,7 +26,7 @@ else
 	if (object == 7){sprite_index = spr_noone; mask_index = spr_wall;}
 }
 
-scr_make_sprite_transparent_if_youre_setting_difficulty_levels();
+scr_make_sprite_transparent_setting_difficulty_levels();
 
 if (global.actually_play_edited_level == true)
 or (global.play_edited_level == true)

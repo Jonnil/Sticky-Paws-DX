@@ -85,7 +85,7 @@
     {"id":{"name":"spr_virtual_key_up","path":"sprites/spr_virtual_key_up/spr_virtual_key_up.yy",},"order":5,},
     {"id":{"name":"scr_draw_text_outlined","path":"scripts/scr_draw_text_outlined/scr_draw_text_outlined.yy",},"order":10,},
     {"id":{"name":"obj_boss","path":"objects/obj_boss/obj_boss.yy",},"order":1,},
-    {"id":{"name":"scr_make_sprite_transparent_if_youre_setting_difficulty_levels","path":"scripts/scr_make_sprite_transparent_if_youre_setting_difficulty_levels/scr_make_sprite_transparent_if_youre_setting_difficulty_levels.yy",},"order":6,},
+    {"id":{"name":"scr_make_sprite_transparent_setting_difficulty_levels","path":"scripts/scr_make_sprite_transparent_setting_difficulty_levels/scr_make_sprite_transparent_setting_difficulty_levels.yy",},"order":6,},
     {"id":{"name":"obj_virtual_joystick","path":"objects/obj_virtual_joystick/obj_virtual_joystick.yy",},"order":34,},
     {"id":{"name":"obj_big_stationary_enemy","path":"objects/obj_big_stationary_enemy/obj_big_stationary_enemy.yy",},"order":3,},
     {"id":{"name":"spr_wall_metal","path":"sprites/spr_wall_metal/spr_wall_metal.yy",},"order":1,},

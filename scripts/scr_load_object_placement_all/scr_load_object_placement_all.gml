@@ -132,12 +132,12 @@ function scr_load_object_placement_all()
 		{
 			/* | = chr("124") */
 			/* } = chr("125") */
-			//while (string_char_at(str, str_pos) != "|")
+			while (string_char_at(str, str_pos) != "|")
 			//and (string_char_at(str, str_pos) != "}")
-			//{
-			//	str_temp += string_char_at(str, str_pos);
-			//	str_pos += 1;
-			//}
+			{
+				str_temp += string_char_at(str, str_pos);
+				str_pos += 1;
+			}
 			val[num] = string(str_temp);
 			str_temp = "";
 			str_pos += 1;
