@@ -133,14 +133,13 @@ function scr_load_object_placement_all()
 			/* | = chr("124") */
 			/* } = chr("125") */
 			while (string_char_at(str, str_pos) != "|")
-			//and (string_char_at(str, str_pos) != "}")
+			and (string_char_at(str, str_pos) != "}")
 			{
 				str_temp += string_char_at(str, str_pos);
 				str_pos += 1;
 			}
 			val[num] = string(str_temp);
 			str_temp = "";
-			str_pos += 1;
 			num += 1;
 			//if (num == 6)
 			if (string_char_at(str, str_pos) == "}")
@@ -157,6 +156,7 @@ function scr_load_object_placement_all()
 					placed_for_the_first_time = false;
 				}
 			}
+		str_pos += 1;
 		}
 		file_text_close(file);
 	}
