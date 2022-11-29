@@ -94,7 +94,21 @@ function scr_load_object_placement_all()
 	#endregion /* Is the game loading from main game or from level editor? END */
 	
 	#region /* Object Placement All */
-	var file, str, str_pos, str_temp, val, num;
+	var file, str, str_pos, str_temp;
+	
+	/* Let's create our awesome struct! Names may vary but I'd recommend keeping them to 1 letter/symbol since we can only check for that
+	Also, you can set some default values here since if no value is found it uses what's here*/
+	var var_struct =
+	{
+		X : 0,
+		Y : 0,
+		O : 0,
+		E : 1,
+		N : 1,
+		H : 1,
+		Q : 0,
+		W : 0
+	}
 	
 	if (load_main_game_level == true)
 	and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.txt"))
@@ -126,153 +140,70 @@ function scr_load_object_placement_all()
 		str = file_text_read_string(file);
 		/* file_text_readln(file); things work without this, even when tutorial I follow wanted to use this. Keep just in case */
 		str_temp = "";
-		num = 0;
 		str_pos = 1;
 		while(str_pos < string_length(str))
 		{
 			/* | = chr("124") */
 			/* } = chr("125") */
-			while (string_char_at(str, str_pos) != "|")
+			while (string_char_at(str, str_pos) != "X")
+			and (string_char_at(str, str_pos) != "Y")
+			and (string_char_at(str, str_pos) != "O")
+			and (string_char_at(str, str_pos) != "E")
+			and (string_char_at(str, str_pos) != "N")
+			and (string_char_at(str, str_pos) != "H")
+			and (string_char_at(str, str_pos) != "Q")
+			and (string_char_at(str, str_pos) != "W")
 			and (string_char_at(str, str_pos) != "}")
 			{
 				str_temp += string_char_at(str, str_pos);
 				str_pos += 1;
 			}
-			val[num] = string(str_temp);
+			switch (string_char_at(str, str_pos))
+			{
+				case "X":
+				var_struct.X = string(str_temp);
+				break
+				case "Y": 
+				var_struct.Y = string(str_temp);
+				break
+				case "O":
+				var_struct.O = string(str_temp);
+				break
+				case "E":
+				var_struct.E = string(str_temp);
+				break
+				case "N":
+				var_struct.N = string(str_temp);
+				break
+				case "H":
+				var_struct.H = string(str_temp);
+				break
+				case "Q":
+				var_struct.Q = string(str_temp);
+				break
+				case "W":
+				var_struct.W = string(str_temp);
+				break
+			}
 			str_temp = "";
-			num += 1;
 			if (string_char_at(str, str_pos) == "}")
 			{
 				
-				#region /* Place the actual objecy */
-				if (num == 0)
+				#region /* Place the actual object */
 				{
-					with(instance_create_depth(0, 0, 0, obj_leveleditor_placed_object))
+					with(instance_create_depth(var_struct.X, var_struct.Y, 0, obj_leveleditor_placed_object))
 					{
-						//object = val[2];
-						//easy = val[3];
-						//normal = val[4];
-						//hard = val[5];
-						//second_x = val[6];
-						//second_y = val[7];
-						placed_for_the_first_time = false;
-					}
-				}
-				else
-				if (num == 1)
-				{
-					with(instance_create_depth(val[0], 0, 0, obj_leveleditor_placed_object))
-					{
-						//object = val[2];
-						//easy = val[3];
-						//normal = val[4];
-						//hard = val[5];
-						//second_x = val[6];
-						//second_y = val[7];
-						placed_for_the_first_time = false;
-					}
-				}
-				else
-				if (num == 2)
-				{
-					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
-					{
-						//object = val[2];
-						//easy = val[3];
-						//normal = val[4];
-						//hard = val[5];
-						//second_x = val[6];
-						//second_y = val[7];
-						placed_for_the_first_time = false;
-					}
-				}
-				else
-				if (num == 3)
-				{
-					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
-					{
-						object = val[2];
-						//easy = val[3];
-						//normal = val[4];
-						//hard = val[5];
-						//second_x = val[6];
-						//second_y = val[7];
-						placed_for_the_first_time = false;
-					}
-				}
-				else
-				if (num == 4)
-				{
-					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
-					{
-						object = val[2];
-						easy = val[3];
-						//normal = val[4];
-						//hard = val[5];
-						//second_x = val[6];
-						//second_y = val[7];
-						placed_for_the_first_time = false;
-					}
-				}
-				else
-				if (num == 5)
-				{
-					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
-					{
-						object = val[2];
-						easy = val[3];
-						normal = val[4];
-						//hard = val[5];
-						//second_x = val[6];
-						//second_y = val[7];
-						placed_for_the_first_time = false;
-					}
-				}
-				else
-				if (num == 6)
-				{
-					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
-					{
-						object = val[2];
-						easy = val[3];
-						normal = val[4];
-						hard = val[5];
-						//second_x = val[6];
-						//second_y = val[7];
-						placed_for_the_first_time = false;
-					}
-				}
-				else
-				if (num == 7)
-				{
-					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
-					{
-						object = val[2];
-						easy = val[3];
-						normal = val[4];
-						hard = val[5];
-						second_x = val[6];
-						//second_y = val[7];
-						placed_for_the_first_time = false;
-					}
-				}
-				else
-				if (num == 8)
-				{
-					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
-					{
-						object = val[2];
-						easy = val[3];
-						normal = val[4];
-						hard = val[5];
-						second_x = val[6];
-						second_y = val[7];
+						object = var_struct.O;
+						easy = var_struct.E;
+						normal = var_struct.N;
+						hard = var_struct.H;
+						second_x = var_struct.Q;
+						second_y = var_struct.W;
 						placed_for_the_first_time = false;
 					}
 				}
 				#endregion /* Place the actual objecy END */
 				
-				num = 0;
 			}
 			str_pos += 1;
 		}
