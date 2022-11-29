@@ -141,22 +141,140 @@ function scr_load_object_placement_all()
 			val[num] = string(str_temp);
 			str_temp = "";
 			num += 1;
-			//if (num == 6)
 			if (string_char_at(str, str_pos) == "}")
 			{
-				num = 0;
-				with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+				
+				#region /* Place the actual objecy */
+				if (num == 0)
 				{
-					object = val[2];
-					easy = val[3];
-					normal = val[4];
-					hard = val[5];
-					//second_x = val[6];
-					//second_y = val[7];
-					placed_for_the_first_time = false;
+					with(instance_create_depth(0, 0, 0, obj_leveleditor_placed_object))
+					{
+						//object = val[2];
+						//easy = val[3];
+						//normal = val[4];
+						//hard = val[5];
+						//second_x = val[6];
+						//second_y = val[7];
+						placed_for_the_first_time = false;
+					}
 				}
+				else
+				if (num == 1)
+				{
+					with(instance_create_depth(val[0], 0, 0, obj_leveleditor_placed_object))
+					{
+						//object = val[2];
+						//easy = val[3];
+						//normal = val[4];
+						//hard = val[5];
+						//second_x = val[6];
+						//second_y = val[7];
+						placed_for_the_first_time = false;
+					}
+				}
+				else
+				if (num == 2)
+				{
+					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+					{
+						//object = val[2];
+						//easy = val[3];
+						//normal = val[4];
+						//hard = val[5];
+						//second_x = val[6];
+						//second_y = val[7];
+						placed_for_the_first_time = false;
+					}
+				}
+				else
+				if (num == 3)
+				{
+					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+					{
+						object = val[2];
+						//easy = val[3];
+						//normal = val[4];
+						//hard = val[5];
+						//second_x = val[6];
+						//second_y = val[7];
+						placed_for_the_first_time = false;
+					}
+				}
+				else
+				if (num == 4)
+				{
+					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+					{
+						object = val[2];
+						easy = val[3];
+						//normal = val[4];
+						//hard = val[5];
+						//second_x = val[6];
+						//second_y = val[7];
+						placed_for_the_first_time = false;
+					}
+				}
+				else
+				if (num == 5)
+				{
+					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+					{
+						object = val[2];
+						easy = val[3];
+						normal = val[4];
+						//hard = val[5];
+						//second_x = val[6];
+						//second_y = val[7];
+						placed_for_the_first_time = false;
+					}
+				}
+				else
+				if (num == 6)
+				{
+					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+					{
+						object = val[2];
+						easy = val[3];
+						normal = val[4];
+						hard = val[5];
+						//second_x = val[6];
+						//second_y = val[7];
+						placed_for_the_first_time = false;
+					}
+				}
+				else
+				if (num == 7)
+				{
+					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+					{
+						object = val[2];
+						easy = val[3];
+						normal = val[4];
+						hard = val[5];
+						second_x = val[6];
+						//second_y = val[7];
+						placed_for_the_first_time = false;
+					}
+				}
+				else
+				if (num == 8)
+				{
+					with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+					{
+						object = val[2];
+						easy = val[3];
+						normal = val[4];
+						hard = val[5];
+						second_x = val[6];
+						second_y = val[7];
+						placed_for_the_first_time = false;
+					}
+				}
+				#endregion /* Place the actual objecy END */
+				
+				num = 0;
 			}
-		str_pos += 1;
+			str_pos += 1;
 		}
 		file_text_close(file);
 	}

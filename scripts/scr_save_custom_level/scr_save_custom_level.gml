@@ -20,19 +20,17 @@ function scr_save_custom_level()
 		}
 		#endregion /* Create directory for saving custom levels END */
 		
-		#region /* Save object placement */
+		#region /* Save object placement to easy difficulty layer */
 		instance_activate_all();
 		var file, str;
 		if (global.select_level_index >= 1)
 		and (global.create_level_from_template == false)
 		{
-			//file = file_text_open_write(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt"); /* Open file for writing */
 			file = file_text_open_write(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement_all.txt"); /* Open file for writing */
 		}
 		else
 		if (global.level_name != "")
 		{
-			//file = file_text_open_write(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"); /* Open file for writing */
 			file = file_text_open_write(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt"); /* Open file for writing */
 		}
 		str = ""; /* Reset string var */
@@ -40,28 +38,39 @@ function scr_save_custom_level()
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
 		{
-			if (object != 62)
-			and (object != 64)
-			and (object != 65)
-			and (object != 732)
-			and (object != 733)
-			and (object != 734)
-			and (object != 73)
+			if (object = level_object_id.id_spring)
+			and (object = level_object_id.id_arrow_sign)
+			and (object = level_object_id.id_arrow_sign_small)
+			and (object = level_object_id.id_water_level_change_slow)
+			and (object = level_object_id.id_water_level_change_fast)
+			and (object = level_object_id.id_water_level_change_faster)
+			and (object = level_object_id.id_water)
 			{
 				/* | = chr("124") */
 				/* } = chr("125") */
-				//str += string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "|";
-				str += string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "}";
+				str += string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) +"|" + string(second_x) + "|" + string(second_y) + "}";
+			}
+			else
+			{
+				/* | = chr("124") */
+				/* } = chr("125") */
+				if (easy <= false)
+				or (normal <= false)
+				or (hard <= false)
+				{
+					str += string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "}";
+				}
+				else
+				{
+					str += string(x) + "|" + string(y) + "|" + string(object) + "}";
+				}
 			}
 		}
 		#endregion /* Write all objects to file END */
-	
+		
 		file_text_write_string(file, str); /* Write string with wall information to file and start a new line */
 		file_text_close(file);
-	
-		#endregion /* Save object placement END */
-		
-		//scr_save_objects_with_rotation_placement();
+		#endregion /* Save object placement to easy difficulty layer END */
 		
 		#region /* Save Level Information */
 		if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */

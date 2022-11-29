@@ -178,7 +178,7 @@ and (instance_nearest(x, y, obj_bullet).die = false)
 			{
 				var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
 				new_instance.sprite_index = sprite_index;
-				with(instance_create_depth(x, y, 0, new_instance))
+				with(new_instance)
 				{
 					motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed / 2);
 				}
@@ -187,7 +187,7 @@ and (instance_nearest(x, y, obj_bullet).die = false)
 			{
 				var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
 				new_instance.sprite_index = sprite_index;
-				with(instance_create_depth(x, y, 0, new_instance))
+				with(new_instance)
 				{
 					motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed / 2);
 				}
