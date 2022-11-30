@@ -205,7 +205,7 @@ if (quit_level_editor == false)
 			#endregion /* If menu is on options END */
 			
 			#region /* If menu is on level editor options */
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 -42, l10n_text("Level Editor Options"), "level_editor_options", "custom_background_1_x_offset");
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 -42, l10n_text("Level Options"), "level_editor_options", "custom_background_1_x_offset");
 			
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 -42, window_get_width() / 2 + 185, window_get_height() / 2))
 			and (mouse_check_button_pressed(mb_left))

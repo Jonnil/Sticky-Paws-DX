@@ -38,43 +38,31 @@ function scr_save_custom_level()
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
 		{
-<<<<<<< HEAD
-			//if (object = level_object_id.id_spring)
-			//and (object = level_object_id.id_arrow_sign)
-			//and (object = level_object_id.id_arrow_sign_small)
-			//and (object = level_object_id.id_water_level_change_slow)
-			//and (object = level_object_id.id_water_level_change_fast)
-			//and (object = level_object_id.id_water_level_change_faster)
-			//and (object = level_object_id.id_water)
-			if (second_x != 0)
-			and (second_y != 0)
-=======
 			str += string(x) + "X" + string(y) + "Y" + string(object) + "O";
 			
-			if (object = level_object_id.id_spring)
-			and (object = level_object_id.id_arrow_sign)
-			and (object = level_object_id.id_arrow_sign_small)
-			and (object = level_object_id.id_water_level_change_slow)
-			and (object = level_object_id.id_water_level_change_fast)
-			and (object = level_object_id.id_water_level_change_faster)
-			and (object = level_object_id.id_water)
->>>>>>> be4af7088abf0efc85efe50cfb58d9015c99e993
+			if (second_x != 0)
 			{
-				/* | = chr("124") */
-				/* } = chr("125") */
-				str += string(second_x) + "Q" + string(second_y) + "W";
+				str += string(second_x) + "Q";
 			}
-			else
+			if (second_y != 0)
 			{
-				/* | = chr("124") */
-				/* } = chr("125") */
-				if (easy <= false)
-				or (normal <= false)
-				or (hard <= false)
-				{
-					str += string(easy) + "E" + string(normal) + "N" + string(hard) + "H";
-				}
+				str += string(second_y) + "W";
 			}
+			if (easy <= false)
+			{
+				str += string(easy) + "E";
+			}
+			if (normal <= false)
+			{
+				str += string(normal) + "N";
+			}
+			if (hard <= false)
+			{
+				str += string(hard) + "H";
+			}
+			
+			/* | = chr("124") */
+			/* } = chr("125") */
 			str += "}";
 		}
 		#endregion /* Write all objects to file END */
