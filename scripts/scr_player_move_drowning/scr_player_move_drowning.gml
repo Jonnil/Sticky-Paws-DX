@@ -14,6 +14,7 @@ function scr_player_move_drowning()
 	{
 		drawn_frames_until_drowning = lerp(drawn_frames_until_drowning, frames_until_drowning, 0.1);
 		if (in_water == true)
+		and (in_breathable_water == false)
 		{
 			frames_until_drowning = clamp(frames_until_drowning- 1, -60, seconds_until_drowning* 60);
 			if (frames_until_drowning <= -60)

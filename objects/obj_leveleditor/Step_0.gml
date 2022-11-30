@@ -785,10 +785,13 @@ if (quit_level_editor <= 0)
 			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up and down buttons when grid is on */
 			or (show_grid == false)
 			{
-				if (set_difficulty_mode == true)
+				if (global.enable_difficulty_selection_settings == true)
+				and (set_difficulty_mode == true)
 				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
-				or (set_difficulty_mode == false)
+				or (global.enable_difficulty_selection_settings == true)
+				and (set_difficulty_mode == false)
 				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
+				or (global.enable_difficulty_selection_settings == false)
 				{
 					
 					drag_object = false;

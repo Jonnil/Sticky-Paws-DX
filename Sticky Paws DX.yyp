@@ -497,7 +497,7 @@
     {"id":{"name":"spr_menu_slider","path":"sprites/spr_menu_slider/spr_menu_slider.yy",},"order":18,},
     {"id":{"name":"spr_cursor_scroll","path":"sprites/spr_cursor_scroll/spr_cursor_scroll.yy",},"order":107,},
     {"id":{"name":"spr_shirt","path":"sprites/spr_shirt/spr_shirt.yy",},"order":82,},
-    {"id":{"name":"scr_save_objects_with_rotation_placement","path":"scripts/scr_save_objects_with_rotation_placement/scr_save_objects_with_rotation_placement.yy",},"order":33,},
+    {"id":{"name":"scr_save_objects_with_rotation_placement","path":"scripts/scr_save_objects_with_rotation_placement/scr_save_objects_with_rotation_placement.yy",},"order":10,},
     {"id":{"name":"spr_select_character_background","path":"sprites/spr_select_character_background/spr_select_character_background.yy",},"order":79,},
     {"id":{"name":"scr_options_global_resources","path":"scripts/scr_options_global_resources/scr_options_global_resources.yy",},"order":20,},
     {"id":{"name":"spr_sign_ground_pound","path":"sprites/spr_sign_ground_pound/spr_sign_ground_pound.yy",},"order":25,},
@@ -3394,6 +3394,7 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"title_background0.png","CopyToMask":-1,"filePath":"datafiles/title_backgrounds",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"music_invincible.ogg","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sound",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"music_map.ogg","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sound",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"character_config.ini","CopyToMask":-1,"filePath":"datafiles/Characters/Catlyn/data",},
   ],
   "MetaData": {
     "IDEVersion": "2022.9.1.51",

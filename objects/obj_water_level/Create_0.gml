@@ -1,3 +1,5 @@
+breathable_water = false;
+
 water_level_change_speed = 0;
 water_bob_distance = 1.5;
 water_bob_speed = 5;

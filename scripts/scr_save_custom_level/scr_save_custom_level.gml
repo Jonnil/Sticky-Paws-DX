@@ -20,7 +20,7 @@ function scr_save_custom_level()
 		}
 		#endregion /* Create directory for saving custom levels END */
 		
-		#region /* Save object placement to easy difficulty layer */
+		#region /* Save object placement */
 		instance_activate_all();
 		var file, str;
 		if (global.select_level_index >= 1)
@@ -38,13 +38,15 @@ function scr_save_custom_level()
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
 		{
-			if (object = level_object_id.id_spring)
-			and (object = level_object_id.id_arrow_sign)
-			and (object = level_object_id.id_arrow_sign_small)
-			and (object = level_object_id.id_water_level_change_slow)
-			and (object = level_object_id.id_water_level_change_fast)
-			and (object = level_object_id.id_water_level_change_faster)
-			and (object = level_object_id.id_water)
+			//if (object = level_object_id.id_spring)
+			//and (object = level_object_id.id_arrow_sign)
+			//and (object = level_object_id.id_arrow_sign_small)
+			//and (object = level_object_id.id_water_level_change_slow)
+			//and (object = level_object_id.id_water_level_change_fast)
+			//and (object = level_object_id.id_water_level_change_faster)
+			//and (object = level_object_id.id_water)
+			if (second_x != 0)
+			and (second_y != 0)
 			{
 				/* | = chr("124") */
 				/* } = chr("125") */
@@ -70,7 +72,7 @@ function scr_save_custom_level()
 		
 		file_text_write_string(file, str); /* Write string with wall information to file and start a new line */
 		file_text_close(file);
-		#endregion /* Save object placement to easy difficulty layer END */
+		#endregion /* Save object placement END */
 		
 		#region /* Save Level Information */
 		if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */

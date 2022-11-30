@@ -1284,7 +1284,8 @@ if (quit_level_editor == false)
 		#endregion /* Show Redo icon */
 		
 		#region /* Set difficulty layer */
-		if (set_difficulty_mode == true)
+		if (global.enable_difficulty_selection_settings == true)
+		and (set_difficulty_mode == true)
 		{
 			#region /* Easy */
 			if (difficulty_layer == 1)
@@ -1324,6 +1325,7 @@ if (quit_level_editor == false)
 			#endregion /* Set Difficulty Mode / Back END */
 		}
 		else
+		if (global.enable_difficulty_selection_settings == true)
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 19, display_get_gui_width() - 32, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
@@ -1493,111 +1495,114 @@ if (quit_level_editor == false)
 	{
 		
 		#region /* Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard */
-	
-	#region /* Easy */
-	if (set_difficulty_mode == true)
-	and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width() - 192, display_get_gui_height() + 64))
-	{
-		tooltip = "Show only objects in easy";
-		show_tooltip += 2;
-		if (mouse_check_button_pressed(mb_left))
+		if (global.enable_difficulty_selection_settings == true)
 		{
-			difficulty_layer = 1;
-			fill_mode = false;
-			erase_mode = false;
-			set_difficulty_mode = true;
-			if (instance_exists(obj_leveleditor_placed_object))
-			{
-				with (obj_leveleditor_placed_object)
-				{
-					scr_make_sprite_transparent_setting_difficulty_levels();
-				}
-			}
-		}
-	}
-	#endregion /* Easy END */
-	
-	#region /* Normal */
-	if (set_difficulty_mode == true)
-	and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 192, display_get_gui_height() - 64, display_get_gui_width() - 128, display_get_gui_height() + 64))
-	{
-		tooltip = "Show only objects in normal";
-		show_tooltip += 2;
-		if (mouse_check_button_pressed(mb_left))
-		{
-			difficulty_layer = 2;
-			fill_mode = false;
-			erase_mode = false;
-			set_difficulty_mode = true;
-			if (instance_exists(obj_leveleditor_placed_object))
-			{
-				with (obj_leveleditor_placed_object)
-				{
-					scr_make_sprite_transparent_setting_difficulty_levels();
-				}
-			}
-		}
-	}
-	#endregion /* Normal END */
-	
-	#region /* Hard */
-	if (set_difficulty_mode == true)
-	and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
-	{
-		tooltip = "Show only objects in hard";
-		show_tooltip += 2;
-		if (mouse_check_button_pressed(mb_left))
-		{
-			difficulty_layer = 3;
-			fill_mode = false;
-			erase_mode = false;
-			set_difficulty_mode = true;
-			if (instance_exists(obj_leveleditor_placed_object))
-			{
-				with (obj_leveleditor_placed_object)
-				{
-					scr_make_sprite_transparent_setting_difficulty_levels();
-				}
-			}
-		}
-	}
-	#endregion /* Hard END */
-	
-	#region /* Set Difficulty Mode / Back */
-	if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
-	{
-		tooltip = "Set what objects should appear on what difficulty";
-		show_tooltip += 2;
-		if (mouse_check_button_pressed(mb_left))
-		{
-			fill_mode = false;
-			erase_mode = false;
+			
+			#region /* Easy */
 			if (set_difficulty_mode == true)
+			and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width() - 192, display_get_gui_height() + 64))
 			{
-				set_difficulty_mode = false;
-				difficulty_layer = 0;
-			}
-			else
-			{
-				set_difficulty_mode = true;
-			}
-			var time_source = time_source_create(time_source_game, 2, time_source_units_frames, function() /*For some reason the script needs to play after a bit of delay, otherwise it doesn't do anything when clicking back*/
-			{
-				if (instance_exists(obj_leveleditor_placed_object))
+				tooltip = "Show only objects in easy";
+				show_tooltip += 2;
+				if (mouse_check_button_pressed(mb_left))
 				{
-					with (obj_leveleditor_placed_object)
+					difficulty_layer = 1;
+					fill_mode = false;
+					erase_mode = false;
+					set_difficulty_mode = true;
+					if (instance_exists(obj_leveleditor_placed_object))
 					{
-						scr_make_sprite_transparent_setting_difficulty_levels();
+						with (obj_leveleditor_placed_object)
+						{
+							scr_make_sprite_transparent_setting_difficulty_levels();
+						}
 					}
 				}
 			}
-			, [], 1);
-			time_source_start(time_source);
+			#endregion /* Easy END */
+			
+			#region /* Normal */
+			if (set_difficulty_mode == true)
+			and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 192, display_get_gui_height() - 64, display_get_gui_width() - 128, display_get_gui_height() + 64))
+			{
+				tooltip = "Show only objects in normal";
+				show_tooltip += 2;
+				if (mouse_check_button_pressed(mb_left))
+				{
+					difficulty_layer = 2;
+					fill_mode = false;
+					erase_mode = false;
+					set_difficulty_mode = true;
+					if (instance_exists(obj_leveleditor_placed_object))
+					{
+						with (obj_leveleditor_placed_object)
+						{
+							scr_make_sprite_transparent_setting_difficulty_levels();
+						}
+					}
+				}
+			}
+			#endregion /* Normal END */
+			
+			#region /* Hard */
+			if (set_difficulty_mode == true)
+			and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
+			{
+				tooltip = "Show only objects in hard";
+				show_tooltip += 2;
+				if (mouse_check_button_pressed(mb_left))
+				{
+					difficulty_layer = 3;
+					fill_mode = false;
+					erase_mode = false;
+					set_difficulty_mode = true;
+					if (instance_exists(obj_leveleditor_placed_object))
+					{
+						with (obj_leveleditor_placed_object)
+						{
+							scr_make_sprite_transparent_setting_difficulty_levels();
+						}
+					}
+				}
+			}
+			#endregion /* Hard END */
+			
+			#region /* Set Difficulty Mode / Back */
+			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
+			{
+				tooltip = "Set what objects should appear on what difficulty";
+				show_tooltip += 2;
+				if (mouse_check_button_pressed(mb_left))
+				{
+					fill_mode = false;
+					erase_mode = false;
+					if (set_difficulty_mode == true)
+					{
+						set_difficulty_mode = false;
+						difficulty_layer = 0;
+					}
+					else
+					{
+						set_difficulty_mode = true;
+					}
+					var time_source = time_source_create(time_source_game, 2, time_source_units_frames, function() /*For some reason the script needs to play after a bit of delay, otherwise it doesn't do anything when clicking back*/
+					{
+						if (instance_exists(obj_leveleditor_placed_object))
+						{
+							with (obj_leveleditor_placed_object)
+							{
+								scr_make_sprite_transparent_setting_difficulty_levels();
+							}
+						}
+					}
+					, [], 1);
+					time_source_start(time_source);
+				}
+			}
+			#endregion /* Set Difficulty Mode / Back */
+			
 		}
-	}
-	#endregion /* Set Difficulty Mode / Back */
-
-	#endregion /* Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard END */
+		#endregion /* Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard END */
 		
 	}
 	#endregion /* Click icons at bottom of screen END */

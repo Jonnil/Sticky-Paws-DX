@@ -45,6 +45,7 @@ global.enable_language_settings = true; /* Enable Language settings */
 global.enable_broadcast_settings = false; /* Enable Broadcast settings */
 global.enable_add_ons_settings = false; /* Enable Add-ons settings */
 global.enable_ranks = false; /* Enable the option to show ranks in the game */
+global.enable_difficulty_selection_settings = true; /* Enable the option to change difficulty in the game */
 
 #region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)

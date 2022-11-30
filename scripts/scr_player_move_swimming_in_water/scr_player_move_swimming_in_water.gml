@@ -15,6 +15,24 @@ function scr_player_move_swimming_in_water()
 			{
 				in_water = true;
 			}
+			if (position_meeting(x, y, obj_water))
+			and (instance_nearest(x, y, obj_water).breathable_water == true)
+			{
+				in_breathable_water = true;
+			}
+			else
+			if (asset_get_type("obj_water_level") == asset_object)
+			and (instance_exists(obj_water_level))
+			and (y > obj_water_level.y)
+			and (obj_water_level.y < room_height)
+			and (instance_nearest(x, y, obj_water_level).breathable_water == true)
+			{
+				in_breathable_water = true;
+			}
+			else
+			{
+				in_breathable_water = false;
+			}
 			jump = 0;
 			midair_jumps_left = number_of_jumps;
 			speed_max = 4;

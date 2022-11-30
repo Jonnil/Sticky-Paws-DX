@@ -636,6 +636,7 @@ homing_attack_x = 0;
 homing_attack_y = 0;
 horizontal_rope_climb = false;
 in_water = false; /* If the player is in water or not, instead of checking for the actual obj_water, check for this variable instead */
+in_breathable_water = false; /* If the water is breathable or not */
 invincible_timer = 0;
 jump = 0;
 jump_transition_to_fall_animation = 0;
