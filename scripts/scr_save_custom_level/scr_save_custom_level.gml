@@ -38,6 +38,7 @@ function scr_save_custom_level()
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
 		{
+<<<<<<< HEAD
 			//if (object = level_object_id.id_spring)
 			//and (object = level_object_id.id_arrow_sign)
 			//and (object = level_object_id.id_arrow_sign_small)
@@ -47,10 +48,21 @@ function scr_save_custom_level()
 			//and (object = level_object_id.id_water)
 			if (second_x != 0)
 			and (second_y != 0)
+=======
+			str += string(x) + "X" + string(y) + "Y" + string(object) + "O";
+			
+			if (object = level_object_id.id_spring)
+			and (object = level_object_id.id_arrow_sign)
+			and (object = level_object_id.id_arrow_sign_small)
+			and (object = level_object_id.id_water_level_change_slow)
+			and (object = level_object_id.id_water_level_change_fast)
+			and (object = level_object_id.id_water_level_change_faster)
+			and (object = level_object_id.id_water)
+>>>>>>> be4af7088abf0efc85efe50cfb58d9015c99e993
 			{
 				/* | = chr("124") */
 				/* } = chr("125") */
-				str += string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) +"|" + string(second_x) + "|" + string(second_y) + "}";
+				str += string(second_x) + "Q" + string(second_y) + "W";
 			}
 			else
 			{
@@ -60,13 +72,10 @@ function scr_save_custom_level()
 				or (normal <= false)
 				or (hard <= false)
 				{
-					str += string(x) + "|" + string(y) + "|" + string(object) + "|" + string(easy) + "|" + string(normal) + "|" + string(hard) + "}";
-				}
-				else
-				{
-					str += string(x) + "|" + string(y) + "|" + string(object) + "}";
+					str += string(easy) + "E" + string(normal) + "N" + string(hard) + "H";
 				}
 			}
+			str += "}";
 		}
 		#endregion /* Write all objects to file END */
 		
