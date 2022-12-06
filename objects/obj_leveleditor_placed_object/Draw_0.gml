@@ -18,9 +18,9 @@ if (object == 62)
 else
 
 /* Water Level Change */
-if (object == 732)
-or (object == 733)
-or (object == 734)
+if (object == level_object_id.id_water_level_change_slow)
+or (object == level_object_id.id_water_level_change_fast)
+or (object == level_object_id.id_water_level_change_faster)
 {
 	draw_line_width_color(x, y, x, second_y, 4, c_black, c_black);
 	draw_line_width_color(x, y, x, second_y, 2, image_blend, image_blend);
@@ -39,9 +39,18 @@ or (object == 65)
 else
 
 /* Water Block */
-if (object == 73)
+if (object == level_object_id.id_water)
 {
+	sprite_index = spr_water;
 	draw_set_alpha(0.5);
+	draw_rectangle_color(x - 16, y - 16, 16 + second_x, 16 + second_y, c_blue, c_blue, c_blue, c_blue, false);
+	draw_set_alpha(1);
+}
+else
+if (object == level_object_id.id_breathable_water)
+{
+	sprite_index = spr_water;
+	draw_set_alpha(0.25);
 	draw_rectangle_color(x - 16, y - 16, 16 + second_x, 16 + second_y, c_blue, c_blue, c_blue, c_blue, false);
 	draw_set_alpha(1);
 }

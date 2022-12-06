@@ -352,40 +352,14 @@ else
 
 room_speed = global.max_fps; /* Room Speed END */
 
-#region /* Change the logo to different designs during specific times and dates */
-if (current_month = 12)
+#region /* Change title screen during specific times and dates */
+if (current_month == 12)
+and (current_day >= 24)
+and (current_day <= 26)
 {
-	if (current_day >= 24)
-	and (current_day <= 26)
-	{
-		effect_create_below(ef_snow, 0, 0, 2, c_white); /* Make the title screen snow when it's between 24th and 26th December */
-	}
-	if (global.resource_pack_sprite_title_logo_christmas > noone)
-	{
-		title_logo_index = global.resource_pack_sprite_title_logo_christmas;
-	}
-	else
-	if (global.title_logo_index > noone)
-	{
-		title_logo_index = global.title_logo_index;
-	}
-	else
-	{
-		title_logo_index = spr_wall;
-	}
+	effect_create_below(ef_snow, 0, 0, 2, c_white); /* Make the title screen snow when it's between 24th and 26th December */
 }
-else
-{
-	if (global.title_logo_index > noone)
-	{
-		title_logo_index = global.title_logo_index;
-	}
-	else
-	{
-		title_logo_index = spr_wall;
-	}
-}
-#endregion /* Change the logo to different designs during specific times and dates END */
+#endregion /* Change title screen during specific times and dates END */
 
 #region /* Volumes stay between 0 and 1 */
 if (global.volume_music < 0)
@@ -678,14 +652,10 @@ else
 
 #region /* Draw Title Screen */
 if (global.title_logo_index >= 0)
-or (global.resource_pack_sprite_title_logo_christmas > 0)
+and (global.title_logo_index != undefined)
+and (global.title_logo_index != "")
 {
-	if (global.title_logo_index >= 0)
-	and (global.title_logo_index != undefined)
-	and (global.title_logo_index != "")
-	{
-		draw_sprite_ext(title_logo_index, image_index, display_get_gui_width() / 2 + title_x, display_get_gui_height() / 2 - 100 + title_y, 402 / sprite_get_height(global.title_logo_index) * title_xscale, 402 / sprite_get_height(global.title_logo_index) * title_yscale, 0, c_white, title_alpha);
-	}
+	draw_sprite_ext(global.title_logo_index, image_index, display_get_gui_width() / 2 + title_x, display_get_gui_height() / 2 - 100 + title_y, 402 / sprite_get_height(global.title_logo_index) * title_xscale, 402 / sprite_get_height(global.title_logo_index) * title_yscale, 0, c_white, title_alpha);
 }
 
 if (menu!= "select_custom_level")

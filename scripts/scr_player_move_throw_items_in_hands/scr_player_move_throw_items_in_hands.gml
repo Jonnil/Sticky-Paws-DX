@@ -174,7 +174,7 @@ function scr_player_move_throw_items_in_hands()
 				}
 			}
 			else
-			if (key_left)
+			if (key_left_hold)
 			or (image_xscale < 0)
 			{
 				if (hold_item_in_hands = "enemy_bowlingball")
@@ -203,7 +203,7 @@ function scr_player_move_throw_items_in_hands()
 				}
 			}
 			else
-			if (key_right)
+			if (key_right_hold)
 			or (image_xscale > 0)
 			{
 				if (hold_item_in_hands = "enemy_bowlingball")
@@ -234,7 +234,7 @@ function scr_player_move_throw_items_in_hands()
 			hold_item_in_hands = "";
 			dive = false;
 		}
-		if (key_left)
+		if (key_left_hold)
 		or (image_xscale < 0)
 		{
 			if (hold_item_in_hands = "enemy_bowlingball")
@@ -283,7 +283,7 @@ function scr_player_move_throw_items_in_hands()
 			}
 		}
 		else
-		if (key_right)
+		if (key_right_hold)
 		or (image_xscale > 0)
 		{
 			if (hold_item_in_hands = "enemy_bowlingball")

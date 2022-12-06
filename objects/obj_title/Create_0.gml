@@ -273,7 +273,6 @@ background_brightness_menu_lerp = 0;
 title_x = 0;
 title_y = - 800;
 title_alpha = 0;
-title_logo_index = spr_wall;
 show_title_logo = true;
 title_xscale = 1;
 title_yscale = 1;

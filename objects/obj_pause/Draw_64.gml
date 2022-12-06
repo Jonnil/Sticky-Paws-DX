@@ -190,12 +190,6 @@ if (hide_menu_for_clean_screenshots == false)
 {
 	
 	#region /* Games Logo in top left corner */
-	if (current_month = 12)
-	and (global.resource_pack_sprite_title_logo_christmas >= 0)
-	{
-		draw_sprite_ext(global.resource_pack_sprite_title_logo_christmas, 0, 160, scr_wave(70, 80, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);
-	}
-	else
 	if (global.title_logo_index >= 0)
 	{
 		draw_sprite_ext(global.title_logo_index, 0, 160, scr_wave(70, 80, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1);

@@ -146,19 +146,11 @@ and (instance_exists(obj_player))
 							#region /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint */
 							if (asset_get_type("obj_score_up") == asset_object)
 							{
-								if (last_checkpoint == true) /*Tell the player if the checkpoint they are activating is the last checkpoint in the level, the checkpoint cosest to the goal*/
+								with(instance_create_depth(x, y - 20, 0, obj_score_up))
 								{
-									with(instance_create_depth(x, y - 20, 0, obj_score_up))
-									{
-										score_up = "last checkpoint";
-									}
-								}
-								else
-								{
-									with(instance_create_depth(x, y - 20, 0, obj_score_up))
-									{
-										score_up = "checkpoint";
-									}
+									checkpoint_number = instance_nearest(x, y, obj_checkpoint).checkpoint_number;
+									checkpoint_number_max = instance_nearest(x, y, obj_checkpoint).checkpoint_number_max;
+									score_up = "checkpoint";
 								}
 							}
 							#endregion /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint END */
@@ -235,8 +227,8 @@ and (instance_exists(obj_player))
 					#endregion /* Save Level Editor Checkpoint END */
 					
 					#region /* Load correct sprite when you get the checkpoint */
-					if (global.checkpoint_x = x)
-					and (global.checkpoint_y = y)
+					if (global.checkpoint_x == x)
+					and (global.checkpoint_y == y)
 					{
 						if (instance_exists(obj_camera))
 						and (instance_exists(obj_player))

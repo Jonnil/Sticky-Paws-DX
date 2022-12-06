@@ -204,6 +204,7 @@ enum level_object_id
 	id_oneway4 = 71,
 	id_horizontal_rope = 72,
 	id_water = 73,
+	id_breathable_water = 736,
 	id_water_surface = 731,
 	id_air_bubbles_spawner = 735,
 	id_water_level_change_slow = 732,
@@ -409,6 +410,7 @@ add_object(level_object_id.id_oneway4, spr_oneway, 0, spr_wall, 1, 270, c_white,
 
 add_object(level_object_id.id_horizontal_rope, spr_horizontal_rope, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_water, spr_water, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_breathable_water, spr_water, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, false, 0);
 add_object(level_object_id.id_water_surface, spr_water_surface, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 add_object(level_object_id.id_air_bubbles_spawner, spr_air_bubbles_spawner, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_water_level_change_slow, spr_water_level_change_slow, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);

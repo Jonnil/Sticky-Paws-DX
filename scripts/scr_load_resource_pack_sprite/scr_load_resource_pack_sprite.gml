@@ -50,7 +50,6 @@ function scr_load_resource_pack_sprite()
 		if (global.resource_pack_sprite_tileset_metal > 0){global.resource_pack_sprite_tileset_metal = spr_noone;}
 		if (global.resource_pack_sprite_tileset_stone > 0){global.resource_pack_sprite_tileset_stone = spr_noone;}
 		if (global.resource_pack_sprite_tileset_wood > 0){global.resource_pack_sprite_tileset_wood = spr_noone;}
-		if (global.resource_pack_sprite_title_logo_christmas > 0){global.resource_pack_sprite_title_logo_christmas = spr_noone;}
 		if (global.resource_pack_sprite_buttons_xboxone > 0){global.resource_pack_sprite_buttons_xboxone = spr_noone;}
 		if (global.resource_pack_sprite_buttons_xboxseriesxs > 0){global.resource_pack_sprite_buttons_xboxseriesxs = spr_noone;}
 		if (global.resource_pack_sprite_buttons_nintendoswitch > 0){global.resource_pack_sprite_buttons_nintendoswitch = spr_noone;}
@@ -114,7 +113,6 @@ function scr_load_resource_pack_sprite()
 		global.resource_pack_sprite_tileset_metal = scr_initialize_resource_pack_sprite("tileset_metal", global.resource_pack_sprite_tileset_metal);
 		global.resource_pack_sprite_tileset_stone = scr_initialize_resource_pack_sprite("tileset_stone", global.resource_pack_sprite_tileset_stone);
 		global.resource_pack_sprite_tileset_wood = scr_initialize_resource_pack_sprite("tileset_wood", global.resource_pack_sprite_tileset_wood);
-		global.resource_pack_sprite_title_logo_christmas = scr_initialize_resource_pack_sprite("title_logo_christmas", global.resource_pack_sprite_title_logo_christmas);
 		global.resource_pack_sprite_buttons_xboxone = scr_initialize_resource_pack_sprite("buttons_xboxone", global.resource_pack_sprite_buttons_xboxone);
 		global.resource_pack_sprite_buttons_xboxseriesxs = scr_initialize_resource_pack_sprite("buttons_xboxseriesxs", global.resource_pack_sprite_buttons_xboxseriesxs);
 		global.resource_pack_sprite_buttons_nintendoswitch = scr_initialize_resource_pack_sprite("buttons_nintendoswitch", global.resource_pack_sprite_buttons_nintendoswitch);

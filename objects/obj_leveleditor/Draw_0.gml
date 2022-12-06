@@ -292,6 +292,7 @@ if (global.world_editor == false)
 	if (asset_get_type("spr_oneway") == asset_sprite){draw_sprite_ext(spr_oneway, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + 64 * 49 + 16, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 270, c_white, selected_menu_alpha);}
 	scr_level_editor_placable_object(50, level_object_id.id_horizontal_rope, true, spr_horizontal_rope, spr_wall, + 64 * 50, 1, 0, c_white);
 	scr_level_editor_placable_object(51, level_object_id.id_water, false, spr_water_surface, spr_wall, + 64 * 51, 1, 0, c_white);
+	scr_level_editor_placable_object(51, level_object_id.id_breathable_water, false, spr_water_surface, spr_wall, + 64 * 51, 1, 0, c_white);
 	scr_level_editor_placable_object(52, level_object_id.id_air_bubbles_spawner, true, spr_air_bubbles_spawner, spr_wall, + 64 * 52, 1, 0, c_white);
 	scr_level_editor_placable_object(53, level_object_id.id_water_level_change_slow, false, spr_water_level_change_slow, spr_wall, + 64 * 53, 1, 0, c_white);
 	scr_level_editor_placable_object(54, level_object_id.id_water_level_change_fast, false, spr_water_level_change_fast, spr_wall, + 64 * 54, 1, 0, c_white);

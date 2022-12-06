@@ -4,6 +4,23 @@ scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_deactivate_objects_outside_view();
 
+#region /* Set checkpoint numbers for every checkpoint */
+instance_activate_object(obj_checkpoint);
+for(checkpoint_number = 0;
+checkpoint_number < instance_number(obj_checkpoint) + 1;
+checkpoint_number += 1)
+{
+	if (instance_exists(obj_camera))
+	and (instance_number(obj_checkpoint) >= checkpoint_number)
+	{
+		with (instance_nth_nearest(0, 0, obj_checkpoint, checkpoint_number))
+		{
+			checkpoint_number = obj_camera.checkpoint_number;
+		}
+	}
+}
+#endregion /* Set checkpoint numbers for every checkpoint END */
+
 if (room = room_leveleditor)
 {
 	layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);

@@ -18,32 +18,13 @@ menu = "";
 menu_delay = 0;
 menu_cursor_index = 0;
 
-#region /* Change the logo to different designs during specific times and dates */
-if (current_month = 12)
+#region /* Show Title Logo first during credits */
+if (global.title_logo_index > noone)
 {
-	if (global.resource_pack_sprite_title_logo_christmas > noone)
-	{
-		sprite_index = global.resource_pack_sprite_title_logo_christmas;
-	}
-	else
-	if (global.title_logo_index > noone)
-	{
-		sprite_index = global.title_logo_index;
-	}
-	else
-	{
-		sprite_index = spr_noone;
-	}
+	sprite_index = global.title_logo_index;
 }
 else
 {
-	if (global.title_logo_index > noone)
-	{
-		sprite_index = global.title_logo_index;
-	}
-	else
-	{
-		sprite_index = spr_noone;
-	}
+	sprite_index = spr_noone;
 }
-#endregion /* Change the logo to different designs during specific times and dates END */
+#endregion /* Show Title Logo first during credits END */

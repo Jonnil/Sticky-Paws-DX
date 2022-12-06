@@ -80,7 +80,7 @@ depth = -100;
 
 if (asset_get_type("spr_wall") == asset_sprite)
 {
-	mask_index = spr_wall;
+	mask_index = spr_wall; /* Mask index should be set to the size of a wall, only in Create Event */
 }
 global.player_has_entered_goal = false;
 global.quit_level = false;

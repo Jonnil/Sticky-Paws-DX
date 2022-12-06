@@ -155,7 +155,22 @@ function scr_spawn_objects_when_starting_room()
 				if (object == 63) and (asset_get_type("obj_vine") == asset_object){instance_create_depth(x, y, 0, obj_vine);}
 				if (object == 64) and (asset_get_type("obj_arrow_sign") == asset_object){with(instance_create_depth(x, y, 0, obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}
 				if (object == 65) and (asset_get_type("obj_arrow_sign_small") == asset_object){with(instance_create_depth(x, y, 0, obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}
-				if (object == 66) and (asset_get_type("obj_checkpoint") == asset_object){instance_create_depth(x, y, 0, obj_checkpoint);}
+				if (object == level_object_id.id_checkpoint)
+				and (asset_get_type("obj_checkpoint") == asset_object)
+				{
+					instance_create_depth(x, y, 0, obj_checkpoint);
+					
+					#region /* Tell the player how many checkpoints exist in the level */
+					if (instance_exists(obj_checkpoint))
+					{
+						with(obj_checkpoint)
+						{
+							checkpoint_number_max = instance_number(obj_checkpoint);
+						}
+					}
+					#endregion /* Tell the player how many checkpoints exist in the level END */
+					
+				}
 				if (object == level_object_id.id_spikes_emerge_block){if (asset_get_type("obj_spikes_emerge") == asset_object){instance_create_depth(x, y + 16, 0, obj_spikes_emerge);}}
 				if (object == level_object_id.id_spikes_emerge_block_left){if (asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15;}}}
 				if (object == level_object_id.id_spikes_emerge_block_down){if (asset_get_type("obj_spikes_emerge") == asset_object){with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 180; y -= 30;}}}
@@ -173,12 +188,13 @@ function scr_spawn_objects_when_starting_room()
 				if (object == 72) and (asset_get_type("obj_horizontal_rope") == asset_object){instance_create_depth(x, y, 0, obj_horizontal_rope);}
 				
 				#region /* Create Water */
-				if (object == 73)
+				if (object == level_object_id.id_water)
 				{
 					if (asset_get_type("obj_water") == asset_object)
 					{
 						with(instance_create_depth(x, y, 0, obj_water))
 						{
+							breathable_water = false;
 							second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
 							second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
 							if (asset_get_type("spr_water") == asset_sprite)
@@ -190,8 +206,27 @@ function scr_spawn_objects_when_starting_room()
 				}
 				#endregion /* Create Water END */
 				
+				#region /* Create Breathable Water */
+				if (object == level_object_id.id_breathable_water)
+				{
+					if (asset_get_type("obj_water") == asset_object)
+					{
+						with(instance_create_depth(x, y, 0, obj_water))
+						{
+							breathable_water = true;
+							second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
+							second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
+							if (asset_get_type("spr_water") == asset_sprite)
+							{
+								sprite_index = spr_water;
+							}
+						}
+					}
+				}
+				#endregion /* Create Breathable Water END */
+				
 				#region /* Create Water Surface */
-				if (object == 731)
+				if (object == level_object_id.id_water_surface)
 				{
 					if (asset_get_type("obj_water") == asset_object)
 					{
@@ -213,10 +248,10 @@ function scr_spawn_objects_when_starting_room()
 				}
 				#endregion /* Create Water Surface END */
 				
-				if (object == 735) and (asset_get_type("obj_air_bubbles_spawner") == asset_object){instance_create_depth(x, y, 0, obj_air_bubbles_spawner);}
-				if (object == 732) and (asset_get_type("obj_water_level_change") == asset_object){with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 0; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}
-				if (object == 733) and (asset_get_type("obj_water_level_change") == asset_object){with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 1; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}
-				if (object == 734) and (asset_get_type("obj_water_level_change") == asset_object){with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 2; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}
+				if (object == level_object_id.id_air_bubbles_spawner) and (asset_get_type("obj_air_bubbles_spawner") == asset_object){instance_create_depth(x, y, 0, obj_air_bubbles_spawner);}
+				if (object == level_object_id.id_water_level_change_slow) and (asset_get_type("obj_water_level_change") == asset_object){with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 0; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}
+				if (object == level_object_id.id_water_level_change_fast) and (asset_get_type("obj_water_level_change") == asset_object){with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 1; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}
+				if (object == level_object_id.id_water_level_change_faster) and (asset_get_type("obj_water_level_change") == asset_object){with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 2; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}
 				
 				if (object == 74) and (asset_get_type("obj_clipped_clothes") == asset_object){with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_shirt;}}
 				if (object == 75) and (asset_get_type("obj_clipped_clothes") == asset_object){with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_pants;}}

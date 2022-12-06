@@ -2,6 +2,32 @@ scr_set_screen_size();
 scr_toggle_fullscreen();
 scr_set_controls_used_to_navigate();
 
+if (goto_title_screen == true)
+{
+	if (current_month == 12)
+	{
+		var christmas_logo_index = 4;
+		global.selected_title_logo = christmas_logo_index; /* Set the selected title logo to use Christmas logo */
+		ini_open(working_directory + "config.ini");
+		ini_write_real("config", "selected_title_logo", christmas_logo_index); /* Save in config that game should be using Christmas logo, otherwise it will load the previously saved logo when going to title screen */
+		ini_close();
+		if (file_exists("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, christmas_logo_index))))
+		{
+			global.title_logo_index = sprite_add("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, christmas_logo_index)), 1, false, false, 0, 0);
+			sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) / 2, sprite_get_height(global.title_logo_index) / 2);
+		}
+	}
+	if (asset_get_type("room_title") == asset_room) /* Only go to room_title if that room exists */
+	{
+		room_goto(room_title);
+	}
+	else
+	if (room_next(room) <>- 1) /* Otherwise, just go to the next room that exists */
+	{
+		room_goto_next();
+	}
+}
+
 #region /* Skip company logo screen when pressing skip button */
 if (gamepad_button_check_pressed(0, gp_face1))
 or (keyboard_check_pressed(ord("Z")))
@@ -13,15 +39,7 @@ and (mouse_check_button_pressed(mb_left))
 {
 	if (can_navigate == true) /* Can only go to the title screen when everything is loaded */
 	{
-		if (asset_get_type("room_title") == asset_room) /* Only go to room_title if that room exists */
-		{
-			room_goto(room_title);
-		}
-		else
-		if (room_next(room) <>- 1) /* Otherwise, just go to the next room that exists */
-		{
-			room_goto_next();
-		}
+		goto_title_screen = true;
 	}
 }
 #endregion /* Skip company logo screen when pressing skip button END */
@@ -42,29 +60,13 @@ and (sprite_index = spr_company_logo)
 		else
 		if (can_navigate == true) /* Can only go to the title screen when everything is loaded */
 		{
-			if (asset_get_type("room_title") == asset_room) /* Only go to room_title if that room exists */
-			{
-				room_goto(room_title);
-			}
-			else
-			if (room_next(room) <>- 1) /* Otherwise, just go to the next room that exists */
-			{
-				room_goto_next();
-			}
+			goto_title_screen = true;
 		}
 	}
 	else
 	if (can_navigate == true) /* Can only go to the title screen when everything is loaded */
 	{
-		if (asset_get_type("room_title") == asset_room) /* Only go to room_title if that room exists */
-		{
-			room_goto(room_title);
-		}
-		else
-		if (room_next(room) <>- 1) /* Otherwise, just go to the next room that exists */
-		{
-			room_goto_next();
-		}
+		goto_title_screen = true;
 	}
 	image_index = image_number - 2;
 }
@@ -82,15 +84,7 @@ and (sprite_index == global.resource_pack_sprite_splash_controller)
 	and (!audio_is_playing(controller_splash))
 	and (can_navigate == true) /* Can only go to the title screen when everything is loaded */
 	{
-		if (asset_get_type("room_title") == asset_room) /* Only go to room_title if that room exists */
-		{
-			room_goto(room_title);
-		}
-		else
-		if (room_next(room) <>- 1) /* Otherwise, just go to the next room that exists */
-		{
-			room_goto_next();
-		}
+		goto_title_screen = true;
 	}
 }
 #endregion /* If controller splash sprite is currently used, then go to the title screen after a couple of seconds END */
@@ -109,21 +103,6 @@ and (!audio_is_playing(controller_splash))
 	scr_audio_play(controller_splash, volume_source.voice);
 }
 #endregion /* Play company splash voice or controller splash voice if the sounds exists END */
-
-#region /* Show easter egg on company logo screen when pressing specific button */
-if (gamepad_button_check_pressed(0, gp_face4))
-or (keyboard_check_pressed(ord("Y")))
-and (sprite_splash_easteregg_yoffset = 128)
-{
-	sprite_splash_easteregg_yoffset = +127;
-	scr_audio_play(audio_splash_easteregg, volume_source.voice);
-	
-}
-if (sprite_splash_easteregg_yoffset <= 127) /* Lerp the easter egg movement */
-{
-	sprite_splash_easteregg_yoffset = lerp(sprite_splash_easteregg_yoffset, - 128, 0.1);
-}
-#endregion /* Show easter egg on company logo screen when pressing specific button END */
 
 if (can_navigate = false)
 {
@@ -453,3 +432,21 @@ if (load_ok >= 4)
 	
 	can_navigate = true;
 }
+
+#region /* Show easter egg on company logo screen when pressing specific button */
+if (gamepad_button_check_pressed(0, gp_face4))
+or (keyboard_check_pressed(ord("Y")))
+and (sprite_splash_easteregg_yoffset = 128)
+{
+	sprite_splash_easteregg_yoffset = +127;
+	if (audio_splash_easteregg > 0)
+	{
+		scr_audio_play(audio_splash_easteregg, volume_source.voice);
+	}
+	
+}
+if (sprite_splash_easteregg_yoffset <= 127) /* Lerp the easter egg movement */
+{
+	sprite_splash_easteregg_yoffset = lerp(sprite_splash_easteregg_yoffset, - 128, 0.1);
+}
+#endregion /* Show easter egg on company logo screen when pressing specific button END */

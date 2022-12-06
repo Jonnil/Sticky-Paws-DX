@@ -360,8 +360,9 @@ and (delay > 1)
 	}
 	else
 	{
-		if (object == 73)
-		or (object == 731)
+		if (object == level_object_id.id_water)
+		or (object == level_object_id.id_breathable_water)
+		or (object == level_object_id.id_water_surface)
 		{
 			depth = -20;
 		}

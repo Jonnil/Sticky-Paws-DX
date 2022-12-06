@@ -12,13 +12,15 @@ else
 if (score_up == "checkpoint")
 and (show_remaining_jumps == false)
 {
-	scr_draw_text_outlined(x, y, string_upper(l10n_text("Checkpoint")), global.default_text_size * 2 * image_xscale, c_black, c_lime, image_alpha);
-}
-else
-if (score_up == "last checkpoint")
-and (show_remaining_jumps == false)
-{
-	scr_draw_text_outlined(x, y, string_upper(l10n_text("Last Checkpoint")), global.default_text_size * 2 * image_xscale, c_black, c_lime, image_alpha);
+	if (checkpoint_number >= checkpoint_number_max)
+	{
+		scr_draw_text_outlined(x, y - 62, string(checkpoint_number) + "/" + string(checkpoint_number_max) + " " + string_upper(l10n_text("Final")), global.default_text_size * image_xscale, c_black, c_lime, image_alpha);
+	}
+	else
+	{
+		scr_draw_text_outlined(x, y - 62, string(checkpoint_number) + "/" + string(checkpoint_number_max), global.default_text_size * image_xscale, c_black, c_lime, image_alpha);
+	}
+	scr_draw_text_outlined(x, y - 20, string_upper(l10n_text("Checkpoint")), global.default_text_size * 2 * image_xscale, c_black, c_lime, image_alpha);
 }
 else
 if (show_remaining_jumps == false)

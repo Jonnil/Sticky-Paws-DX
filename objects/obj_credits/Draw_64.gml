@@ -64,8 +64,6 @@ if (skip > 0)
 
 if (sprite_index == global.title_logo_index)
 and (global.title_logo_index >= 0)
-or (sprite_index == global.resource_pack_sprite_title_logo_christmas)
-and (global.resource_pack_sprite_title_logo_christmas >= 0)
 {
 	draw_sprite_ext(sprite_index, image_index, display_get_gui_width() / 2, y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, image_alpha);
 }
@@ -174,8 +172,7 @@ if (time >= room_speed* 5)
 		time = 0;
 	}
 	image_index += 1;
-	if (sprite_index == global.resource_pack_sprite_title_logo_christmas)
-	or(sprite_index = global.title_logo_index)
+	if (sprite_index == global.title_logo_index)
 	{
 		sprite_index = spr_credits;
 		image_index = 0;
@@ -248,7 +245,7 @@ if (global.enable_transitions == true)
 }
 #endregion /* Draw Iris Transitions END */
 
-if (instance_number(obj_credits) > 1)
+if (instance_exists(obj_credits) > 1)
 {
 	instance_destroy(); /* If there is more than 1 credits, destroy itself */
 }

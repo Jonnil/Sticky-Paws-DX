@@ -654,15 +654,15 @@ function scr_modify_objects_in_level_editor()
 							
 							else
 							
-							#region /* Change Water Rope */
-							if (object == 73)
+							#region /* Change Water */
+							if (object == level_object_id.id_water)
 							{
-								object = 731;
+								object = level_object_id.id_breathable_water;
 							}
 							else
-							if (object == 731)
+							if (object == level_object_id.id_breathable_water)
 							{
-								object = 73;
+								object = level_object_id.id_water;
 							}
 							#endregion /* Change Water END */
 							

@@ -88,8 +88,10 @@ draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale *sign(image_xscale)
 if (draw_xscale >= 0.8)
 and (asset_get_type("obj_wall") == asset_object)
 {
-	if (place_meeting(x - 1, y, obj_wall))
-	or (place_meeting(x + 1, y, obj_wall))
+	if (position_meeting(bbox_left, y, obj_wall))
+	and (hspeed <= 0)
+	or (position_meeting(bbox_right, y, obj_wall))
+	and (hspeed >= 0)
 	{
 		stuck_in_wall_counter += 1;
 		if (stuck_in_wall_counter >= 3)

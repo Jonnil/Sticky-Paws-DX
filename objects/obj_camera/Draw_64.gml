@@ -97,138 +97,140 @@ and (!instance_exists(obj_title))
 		}
 	}
 	
+	#region /* Y position of all HUD should be lerping onto screen when it's relevant */
 	if (global.hud_hide_time > 0)
 	{
+		/*
+		Show these in right order:
+		Lives
+		Deaths
+		Big Collectibles
+		Basic Collectibles
+		*/
 		
-		#region /* Show Lives */
+		#region /* Show Lives y position */
 		if (asset_get_type("room_world_map") == asset_room)
 		and (room == room_world_map)
 		{
-			hud_show_lives = 32;
+			hud_show_lives_y = 32;
 		}
 		else
 		{
 			if (hud_show_lives_timer > 0)
 			{
-				hud_show_lives = lerp(hud_show_lives, 32, 0.1);
+				hud_show_lives_y = lerp(hud_show_lives_y, 32, 0.1);
 			}
 			else
 			{
-				hud_show_lives = lerp(hud_show_lives, - 32, 0.1);
+				hud_show_lives_y = lerp(hud_show_lives_y, - 32, 0.1);
 			}
 		}
-		#endregion /* Show Lives END */
+		#endregion /* Show Lives y position END */
 		
-		#region /* Show Deaths */
+		#region /* Show Deaths y position */
 		if (hud_show_deaths_timer > 0)
+		and (global.show_deaths_counter == true)
 		{
-			if (hud_show_lives > 0)
+			if (hud_show_lives_y > 0)
 			{
-				hud_show_deaths = lerp(hud_show_deaths, 70, 0.1);
+				hud_show_deaths_y = lerp(hud_show_deaths_y, 70, 0.1);
 			}
 			else
 			{
-				hud_show_deaths = lerp(hud_show_deaths, 32, 0.1);
+				hud_show_deaths_y = lerp(hud_show_deaths_y, 32, 0.1);
 			}
 		}
 		else
 		{
-			hud_show_deaths = lerp(hud_show_deaths, - 32, 0.1);
+			hud_show_deaths_y = lerp(hud_show_deaths_y, - 32, 0.1);
 		}
-		#endregion /* Show Deaths END */
+		#endregion /* Show Deaths y position END */
 		
-		#region /* Show Big Collectibles */
-		if (hud_show_basic_collectibles_timer > 0)
+		#region /* Show Big Collectibles y position */
+		if (hud_show_big_collectibles_timer > 0) /* Make sure it says BIG collectibles */
 		{
-			if (hud_show_lives > 0)
-			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter == true)
+			if (hud_show_lives_y > 0)
+			and (hud_show_deaths_y > 0)
 			{
-				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 110, 0.1);
+				hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 110, 0.1);
 			}
 			else
-			if (hud_show_lives > 0)
-			and (hud_show_deaths < 0)
-			or(hud_show_lives < 0)
-			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter == true)
+			if (hud_show_lives_y > 0)
 			{
-				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 70, 0.1);
+				hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 70, 0.1);
 			}
 			else
 			{
-				hud_show_big_collectibles = lerp(hud_show_big_collectibles, 30, 0.1);
+				hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 30, 0.1);
 			}
 		}
 		else
 		{
-			hud_show_big_collectibles = lerp(hud_show_big_collectibles, - 32, 0.1);
+			hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, - 32, 0.1);
 		}
-		#endregion /* Show Big Collectibles END */
+		#endregion /* Show Big Collectibles y position END */
 		
-		#region /* Show Basic Collectible */
-		if (hud_show_basic_collectibles_timer > 0)
+		#region /* Show Basic Collectible y position */
+		if (hud_show_basic_collectibles_timer > 0) /* Make sure it says BASIC collectibles */
 		{
 			hud_show_basic_collectibles_timer -= 1;
-			if (hud_show_lives > 0)
-			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter == true)
-			and (hud_show_big_collectibles > 0)
+			
+			if (hud_show_lives_y > 0)
+			and (hud_show_deaths_y > 0)
+			and (hud_show_big_collectibles_y > 0)
 			{
-				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 150, 0.1);
+				hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 150, 0.1);
 			}
 			else
-			if (hud_show_lives < 0)
-			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter == true)
-			and (hud_show_big_collectibles > 0)
-			or(hud_show_lives > 0)
-			and (hud_show_deaths < 0)
-			and (hud_show_big_collectibles > 0)
-			or(hud_show_lives > 0)
-			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter == true)
-			and (hud_show_big_collectibles < 0)
+			if (hud_show_lives_y < 0)
+			and (hud_show_deaths_y > 0)
+			and (hud_show_big_collectibles_y > 0)
+			or(hud_show_lives_y > 0)
+			and (hud_show_deaths_y < 0)
+			and (hud_show_big_collectibles_y > 0)
+			or(hud_show_lives_y > 0)
+			and (hud_show_deaths_y > 0)
+			and (hud_show_big_collectibles_y < 0)
 			{
-				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 110, 0.1);
+				hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 110, 0.1);
 			}
 			else
-			if (hud_show_lives > 0)
-			and (hud_show_deaths < 0)
-			and (hud_show_big_collectibles < 0)
-			or(hud_show_lives < 0)
-			and (hud_show_deaths > 0)
-			and (global.show_deaths_counter == true)
-			and (hud_show_big_collectibles < 0)
-			or(hud_show_lives < 0)
-			and (hud_show_deaths < 0)
-			and (hud_show_big_collectibles > 0)
+			if (hud_show_lives_y > 0)
+			and (hud_show_deaths_y < 0)
+			and (hud_show_big_collectibles_y < 0)
+			or(hud_show_lives_y < 0)
+			and (hud_show_deaths_y > 0)
+			and (hud_show_big_collectibles_y < 0)
+			or(hud_show_lives_y < 0)
+			and (hud_show_deaths_y < 0)
+			and (hud_show_big_collectibles_y > 0)
 			{
-				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 64, 0.1);
+				hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 64, 0.1);
 			}
 			else
 			{
-				hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, 32, 0.1);
+				hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 32, 0.1);
 			}
 		}
 		else
 		{
-			hud_show_basic_collectibles = lerp(hud_show_basic_collectibles, - 32, 0.1);
+			hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, - 32, 0.1);
 		}
-		#endregion /* Show Basic Collectible END */
+		#endregion /* Show Basic Collectible y position END */
 		
-		#region /* Show Score */
+		#region /* Show Score y position */
 		if (hud_show_score_timer > 0)
 		{
-			hud_show_score = lerp(hud_show_score, 32, 0.1);
+			hud_show_score_y = lerp(hud_show_score_y, 32, 0.1);
 		}
 		else
 		{
-			hud_show_score = lerp(hud_show_score, -64, 0.1);
+			hud_show_score_y = lerp(hud_show_score_y, -64, 0.1);
 		}
-		#endregion /* Show Score END */
+		#endregion /* Show Score y position END */
 		
 	}
+	#endregion /* Y position of all HUD should be lerping onto screen when it's relevant END */
 	
 	#endregion /* Show HUD timers END */
 		
@@ -242,15 +244,15 @@ and (!instance_exists(obj_title))
 		draw_set_valign(fa_middle);
 		if (sprite_lives_icon > noone)
 		{
-			draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_lives, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_lives_y, 1, 1, 0, c_white, 1);
 		}
 		if (lives < 0)
 		{
-			scr_draw_text_outlined(64, hud_show_lives, "0", global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(64, hud_show_lives_y, "0", global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(64, hud_show_lives, lives, global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(64, hud_show_lives_y, lives, global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Lives END */
 		
@@ -259,11 +261,11 @@ and (!instance_exists(obj_title))
 		{
 			if (sprite_lives_icon > noone)
 			{
-				draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_deaths, 0.75, 0.75, 0, c_gray, 1);
+				draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_deaths_y, 0.75, 0.75, 0, c_gray, 1);
 			}
-			draw_line_width_color(32 - 16, hud_show_deaths - 16, 32 + 16, hud_show_deaths+ 16, 3, c_red, c_red);
-			draw_line_width_color(32 - 16, hud_show_deaths+ 16, 32 + 16, hud_show_deaths - 16, 3, c_red, c_red);
-			scr_draw_text_outlined(64, hud_show_deaths, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
+			draw_line_width_color(32 - 16, hud_show_deaths_y - 16, 32 + 16, hud_show_deaths+ 16, 3, c_red, c_red);
+			draw_line_width_color(32 - 16, hud_show_deaths+ 16, 32 + 16, hud_show_deaths_y - 16, 3, c_red, c_red);
+			scr_draw_text_outlined(64, hud_show_deaths_y, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Death Counter END */
 		
@@ -272,85 +274,85 @@ and (!instance_exists(obj_title))
 		#region /* Big Collectible 1 */
 		if (global.big_collectible1 = false)
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		if (global.big_collectible1 == true)
 		and (big_collectible1_already_collected = false)
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 1);
 		}
 		#endregion /* Big Collectible 1 END */
 		
 		#region /* Big Collectible 2 */
 		if (global.big_collectible2 = false)
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		if (global.big_collectible2 == true)
 		and (big_collectible2_already_collected = false)
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 1);
 		}
 		#endregion /* Big Collectible 2 END */
 		
 		#region /* Big Collectible 3 */
 		if (global.big_collectible3 = false)
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 64, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		if (global.big_collectible3 == true)
 		and (big_collectible3_already_collected = false)
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 1);
 		}
 		#endregion /* Big Collectible 3 END */
 		
 		#region /* Big Collectible 4 */
 		if (global.big_collectible4 = false)
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 96, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		if (global.big_collectible4 == true)
 		and (big_collectible4_already_collected = false)
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 1);
 		}
 		#endregion /* Big Collectible 4 END */
 		
 		#region /* Big Collectible 5 */
 		if (global.big_collectible5 = false)
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 128, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		if (global.big_collectible5 == true)
 		and (big_collectible5_already_collected = false)
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 0.5);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		{
-			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 1);
 		}
 		#endregion /* Big Collectible 5 END */
 		
@@ -359,15 +361,15 @@ and (!instance_exists(obj_title))
 		#region /* Basic Collectible */
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 0, 32, hud_show_basic_collectibles, 0.75, 0.75, 0, c_white, 1);
-		scr_draw_text_outlined(64, hud_show_basic_collectibles, global.basic_collectibles, global.default_text_size, c_black, c_white, 1);
+		draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 0, 32, hud_show_basic_collectibles_y, 0.75, 0.75, 0, c_white, 1);
+		scr_draw_text_outlined(64, hud_show_basic_collectibles_y, global.basic_collectibles, global.default_text_size, c_black, c_white, 1);
 		#endregion /* Basic Collectible END */
 		
 		#region /* Score */
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(window_get_width() - 200, hud_show_score, l10n_text("Score"), global.default_text_size, c_white, c_black, 1);
-		scr_draw_text_outlined(window_get_width() - 200, hud_show_score + 32, string(score), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(window_get_width() - 200, hud_show_score_y, l10n_text("Score"), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(window_get_width() - 200, hud_show_score_y + 32, string(score), global.default_text_size, c_white, c_black, 1);
 		#endregion /* Score END */
 		
 		#region /* Time Countdown */

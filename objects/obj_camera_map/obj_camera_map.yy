@@ -29,7 +29,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Other Objects",
-    "path": "folders/Objects/Other Objects.yy",
+    "name": "Map Screen Objects",
+    "path": "folders/Objects/Map Screen Objects.yy",
   },
 }
