@@ -532,93 +532,10 @@ function scr_character_select_menu()
 		
 		#region /* Display Selected Characters */
 		
-		#region /* Draw Character Portrait for Player 1 */
-		if (global.sprite_select_player_1 > 0)
-		and (player1_accept_selection >= 0)
-		{
-			draw_sprite_ext(global.sprite_select_player_1, 0, window_get_width() / 2 +xx1, window_get_height() / 2, 392 / sprite_get_width(global.sprite_select_player_1), 392 / sprite_get_width(global.sprite_select_player_1), 0, global.hex_color_for_player_1, 1);
-			if (can_input_player1_name == true)
-			or (can_input_player2_name == true)
-			or (can_input_player3_name == true)
-			or (can_input_player4_name == true)
-			{
-				draw_sprite_ext(global.sprite_select_player_1, 0, window_get_width() / 2 +xx1, window_get_height() / 2, 392 / sprite_get_width(global.sprite_select_player_1), 392 / sprite_get_width(global.sprite_select_player_1), 0, c_black, 0.5);
-			}
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			var uppercase_character_name;
-			uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])), 1));
-			uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))) - 1);
-			var character_name = string(uppercase_character_name);
-			scr_draw_text_outlined(window_get_width() / 2 +xx1, window_get_height() / 2 + 364, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		#endregion /* Draw Character Portrait for Player 1 END */
-		
-		#region /* Draw Character Portrait for Player 2 */
-		if (global.sprite_select_player_2 > 0)
-		and (player2_accept_selection >= 0)
-		{
-			draw_sprite_ext(global.sprite_select_player_2, 0, window_get_width() / 2 +xx2, window_get_height() / 2, 392 / sprite_get_width(global.sprite_select_player_2), 392 / sprite_get_width(global.sprite_select_player_2), 0, global.hex_color_for_player_2, 1);
-			if (can_input_player1_name == true)
-			or (can_input_player2_name == true)
-			or (can_input_player3_name == true)
-			or (can_input_player4_name == true)
-			{
-				draw_sprite_ext(global.sprite_select_player_2, 0, window_get_width() / 2 +xx2, window_get_height() / 2, 392 / sprite_get_width(global.sprite_select_player_2), 392 / sprite_get_width(global.sprite_select_player_2), 0, c_black, 0.5);
-			}
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			var uppercase_character_name;
-			uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])), 1));
-			uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[1]))) - 1);
-			var character_name = string(uppercase_character_name);
-			scr_draw_text_outlined(window_get_width() / 2 +xx2, window_get_height() / 2 + 364, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		#endregion /* Draw Character Portrait for Player 2 END */
-		
-		#region /* Draw Character Portrait for Player 3 */
-		if (global.sprite_select_player_3 > 0)
-		and (player3_accept_selection >= 0)
-		{
-			draw_sprite_ext(global.sprite_select_player_3, 0, window_get_width() / 2 +xx3, window_get_height() / 2, 392 / sprite_get_width(global.sprite_select_player_3), 392 / sprite_get_width(global.sprite_select_player_3), 0, global.hex_color_for_player_3, 1);
-			if (can_input_player1_name == true)
-			or (can_input_player2_name == true)
-			or (can_input_player3_name == true)
-			or (can_input_player4_name == true)
-			{
-				draw_sprite_ext(global.sprite_select_player_3, 0, window_get_width() / 2 +xx3, window_get_height() / 2, 392 / sprite_get_width(global.sprite_select_player_3), 392 / sprite_get_width(global.sprite_select_player_3), 0, c_black, 0.5);
-			}
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			var uppercase_character_name;
-			uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])), 1));
-			uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[2]))) - 1);
-			var character_name = string(uppercase_character_name);
-			scr_draw_text_outlined(window_get_width() / 2 +xx3, window_get_height() / 2 + 364, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		#endregion /* Draw Character Portrait for Player 3 END */
-		
-		#region /* Draw Character Portrait for Player 4 */
-		if (global.sprite_select_player_4 > 0)
-		and (player4_accept_selection >= 0)
-		{
-			draw_sprite_ext(global.sprite_select_player_4, 0, window_get_width() / 2 +xx4, window_get_height() / 2, 392 / sprite_get_width(global.sprite_select_player_4), 392 / sprite_get_width(global.sprite_select_player_4), 0, global.hex_color_for_player_4, 1);
-			if (can_input_player1_name == true)
-			or (can_input_player2_name == true)
-			or (can_input_player3_name == true)
-			or (can_input_player4_name == true)
-			{
-				draw_sprite_ext(global.sprite_select_player_4, 0, window_get_width() / 2 +xx4, window_get_height() / 2, 392 / sprite_get_width(global.sprite_select_player_4), 392 / sprite_get_width(global.sprite_select_player_4), 0, c_black, 0.5);
-			}
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			var uppercase_character_name;
-			uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])), 1));
-			uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[3]))) - 1);
-			var character_name = string(uppercase_character_name);
-			scr_draw_text_outlined(window_get_width() / 2 +xx4, window_get_height() / 2 + 364, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		}
-		#endregion /* Draw Character Portrait for Player 4 END */
+		scr_draw_character_portrait_for_player(1);
+		scr_draw_character_portrait_for_player(2);
+		scr_draw_character_portrait_for_player(3);
+		scr_draw_character_portrait_for_player(4);
 		
 		#endregion /* Display Selected Characters END */
 		
@@ -628,9 +545,9 @@ function scr_character_select_menu()
 		and (can_input_player3_name = false)
 		and (can_input_player4_name = false)
 		{
-		
+			
 			skin_y = 192;
-		
+			
 			#region /* Player 1 Select Skin */
 			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
 			and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin1"))

@@ -427,6 +427,7 @@
     {"id":{"name":"spr_water_level_change_fast","path":"sprites/spr_water_level_change_fast/spr_water_level_change_fast.yy",},"order":140,},
     {"id":{"name":"snd_enemyvoice_big_defeated","path":"sounds/snd_enemyvoice_big_defeated/snd_enemyvoice_big_defeated.yy",},"order":28,},
     {"id":{"name":"scr_player_move_tongue","path":"scripts/scr_player_move_tongue/scr_player_move_tongue.yy",},"order":0,},
+    {"id":{"name":"scr_draw_character_portrait_for_player","path":"scripts/scr_draw_character_portrait_for_player/scr_draw_character_portrait_for_player.yy",},"order":21,},
     {"id":{"name":"scr_add_object","path":"scripts/scr_add_object/scr_add_object.yy",},"order":0,},
     {"id":{"name":"obj_bubble","path":"objects/obj_bubble/obj_bubble.yy",},"order":6,},
     {"id":{"name":"obj_leveleditor_placed_object","path":"objects/obj_leveleditor_placed_object/obj_leveleditor_placed_object.yy",},"order":2,},
