@@ -120,7 +120,7 @@ if (quit_level_editor <= 0)
 #region /* List of Placable Objects */
 if (global.world_editor == false)
 {
-	total_number_of_objects = 64; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
+	total_number_of_objects = 65; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
 	//scr_level_editor_placable_object(0, level_object_id.id_wall, true, spr_wall, spr_wall, 0, 1, 0, c_white);
 	
 	scr_level_editor_placable_object(0, ds_grid_get(global.object_grid, 0, 0), ds_grid_get(global.object_grid, 10, 0), ds_grid_get(global.object_grid, 1, 0), ds_grid_get(global.object_grid, 3, 0), 0 * 64 + ds_grid_get(global.object_grid, 11, 0), ds_grid_get(global.object_grid, 4, 0), ds_grid_get(global.object_grid, 5, 0), ds_grid_get(global.object_grid, 6, 0));
@@ -324,6 +324,7 @@ if (global.world_editor == false)
 	}
 	scr_level_editor_placable_object(63, level_object_id.id_artwork_collection, false, spr_artwork_collection, spr_wall, + 64 * 63, 1, 0, c_white);
 	scr_level_editor_placable_object(64, level_object_id.id_block_only_when_player_is_near, true, global.resource_pack_sprite_block_only_when_player_is_near, spr_wall, + 64 * 64, 1, 0, c_white);
+	scr_level_editor_placable_object(65, level_object_id.id_door, false, spr_door, spr_wall, + 64 * 65, 1, 0, c_white);
 }
 else
 {

@@ -8,15 +8,19 @@ if (sprite_index > 0)
 #region /* Change certain objects angle */
 
 /* Spring */
-if (object == 62)
+if (object == level_object_id.id_spring)
 {
 	draw_line_width_color(x, y, second_x, second_y, 4, c_black, c_black);
 	draw_line_width_color(x, y, second_x, second_y, 2, image_blend, image_blend);
 	draw_angle = point_direction(x, y, second_x, second_y) -90;
 }
-
 else
-
+if (object == level_object_id.id_door)
+{
+	draw_line_width_color(x, y, second_x, second_y, 4, c_black, c_black);
+	draw_line_width_color(x, y, second_x, second_y, 2, image_blend, image_blend);
+}
+else
 /* Water Level Change */
 if (object == level_object_id.id_water_level_change_slow)
 or (object == level_object_id.id_water_level_change_fast)

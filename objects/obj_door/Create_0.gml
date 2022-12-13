@@ -1,0 +1,11 @@
+door_x = 0;
+door_xscale = 1;
+open_door = false;
+depth = 100;
+second_x = x;
+second_y = y;
+player_gamepad_button_up = noone;
+player_gamepad_button2_up = noone;
+player_key_up = noone;
+player_key2_up = noone;
+timer = 0;

@@ -359,12 +359,14 @@ else
 	if (x < camera_get_view_x(view_camera[view_current]))
 	and (instance_number(obj_player) >= 2)
 	and (intro_animation = "")
+	and (global.player_can_go_outside_view == false)
 	{
 		x = camera_get_view_x(view_camera[view_current]);
 	}
 	if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	and (instance_number(obj_player) >= 2)
 	and (intro_animation = "")
+	and (global.player_can_go_outside_view == false)
 	{
 		x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
 	}

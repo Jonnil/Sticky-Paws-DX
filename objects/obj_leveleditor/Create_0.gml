@@ -225,6 +225,7 @@ enum level_object_id
 	id_cake_stealing_enemy = 961,
 	id_artwork_collection = 97,
 	id_block_only_when_player_is_near = 98,
+	id_door = 99,
 	id_last_object_dummy = 999999999
 }
 enum world_object_id
@@ -435,7 +436,8 @@ add_object(level_object_id.id_boss_barrier, spr_boss_barrier, 0, spr_wall, 1, 0,
 add_object(level_object_id.id_cake_stealing_enemy, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_artwork_collection, spr_artwork_collection, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_block_only_when_player_is_near, global.resource_pack_sprite_block_only_when_player_is_near, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-add_object(level_object_id.id_last_object_dummy, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0); /* This dummy object is just here so the last object actually appears */
+add_object(level_object_id.id_door, spr_door, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+/* This is a dummy object, to make sure every object gets added to the list */ add_object(level_object_id.id_last_object_dummy, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0); /* This dummy object is just here so the last object actually appears */
 #endregion /* Grid Initialization END */
 
 #region /* Controls for level editor */

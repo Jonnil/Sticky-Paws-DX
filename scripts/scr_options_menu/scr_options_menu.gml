@@ -729,11 +729,11 @@ function scr_options_menu()
 		}
 		else
 		if (key_right)
-		and (global.settings_sidebar_menu!= "settings_back")
+		and (global.settings_sidebar_menu != "settings_back")
 		and (can_navigate_settings_sidebar == true)
 		and (menu_delay == 0)
 		or (key_a_pressed)
-		and (global.settings_sidebar_menu!= "settings_back")
+		and (global.settings_sidebar_menu != "settings_back")
 		and (can_navigate_settings_sidebar == true)
 		and (menu_delay == 0)
 		{

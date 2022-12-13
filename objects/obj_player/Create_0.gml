@@ -618,6 +618,7 @@ burnt = false;
 can_move = true;
 chain_reaction = 0;
 climb = false;
+collision_mask_alpha = 1;
 controller_connected = false;
 crouch = false;
 default_invincibility_duration_in_frames = 1200; /* By default invincibility duration should last 20 seconds. 60 (fps) * 20 = 1200 */

@@ -85,10 +85,10 @@ or (menu == "link_wiki")
 	if (keyboard_check_pressed(ord("C")))
 	and (keyboard_string != "arc")
 	and (can_input_level_name == false)
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
+	and (can_input_player1_name == false)
+	and (can_input_player2_name == false)
+	and (can_input_player3_name == false)
+	and (can_input_player4_name == false)
 	{
 		keyboard_string = "c";
 	}
@@ -97,10 +97,10 @@ or (menu == "link_wiki")
 	or (keyboard_string = "convention mode")
 	{
 		if (can_input_level_name == false)
-		and (can_input_player1_name = false)
-		and (can_input_player2_name = false)
-		and (can_input_player3_name = false)
-		and (can_input_player4_name = false)
+		and (can_input_player1_name == false)
+		and (can_input_player2_name == false)
+		and (can_input_player3_name == false)
+		and (can_input_player4_name == false)
 		{
 			if (global.convention_mode == false)
 			{
@@ -142,10 +142,10 @@ or (menu == "link_wiki")
 	if (keyboard_check_pressed(ord("A")))
 	and (keyboard_string != "arca")
 	and (can_input_level_name == false)
-	and (can_input_player1_name = false)
-	and (can_input_player2_name = false)
-	and (can_input_player3_name = false)
-	and (can_input_player4_name = false)
+	and (can_input_player1_name == false)
+	and (can_input_player2_name == false)
+	and (can_input_player3_name == false)
+	and (can_input_player4_name == false)
 	{
 		keyboard_string = "a";
 	}
@@ -154,10 +154,10 @@ or (menu == "link_wiki")
 	or (keyboard_string = "arcade mode")
 	{
 		if (can_input_level_name == false)
-		and (can_input_player1_name = false)
-		and (can_input_player2_name = false)
-		and (can_input_player3_name = false)
-		and (can_input_player4_name = false)
+		and (can_input_player1_name == false)
+		and (can_input_player2_name == false)
+		and (can_input_player3_name == false)
+		and (can_input_player4_name == false)
 		{
 			if (global.arcade_mode = false)
 			{

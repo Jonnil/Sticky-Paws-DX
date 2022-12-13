@@ -1196,40 +1196,19 @@ if (save_level_as_png = false)
 	and (!instance_exists(obj_player_map))
 	{
 		
-		#region /* Zoom In Player Goal */
-		if (asset_get_type("obj_player") == asset_object)
+		#region /* Zoom In */
+		if (asset_get_type("obj_player") == asset_object) /* Zoom In Player Goal */
 		and (asset_get_type("obj_goal") == asset_object)
 		and (instance_exists(obj_player))
 		and (instance_exists(obj_goal))
 		and (instance_nearest(room_width, y, obj_player).goal == true)
 		and (global.time_countdown_bonus <= 0)
-		{
-			if (iris_zoom == 1)
-			{
-				iris_xscale = lerp(iris_xscale, 1, 0.15);
-				iris_yscale = lerp(iris_yscale, 1, 0.15);
-				if (iris_xscale <= 1.1)
-				{
-					iris_zoom = 0;
-				}
-			}
-			else
-			{
-				iris_xscale = lerp(iris_xscale, 0, 0.15);
-				iris_yscale = lerp(iris_yscale, 0, 0.15);
-				if (iris_xscale <= 1.1)
-				{
-					iris_zoom = 0;
-				}
-			}
-		}
-		#endregion /* Zoom In Player Goal END */
-
-		#region /* Zoom In Player Map */
-		else
-		if (asset_get_type("obj_player_map") == asset_object)
+		
+		or (asset_get_type("obj_player_map") == asset_object) /* Zoom In Player Map */
 		and (instance_exists(obj_player_map))
 		and (obj_player_map.entering_level == true)
+		
+		or (global.iris_zoom_in == true) /* Zoom In Global Switch */
 		{
 			if (iris_zoom == 1)
 			{
@@ -1250,7 +1229,7 @@ if (save_level_as_png = false)
 				}
 			}
 		}
-		#endregion /* Zoom In Player Map END */
+		#endregion /* Zoom In END */
 		
 		else
 		

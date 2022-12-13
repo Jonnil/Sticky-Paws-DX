@@ -82,7 +82,7 @@ and (draw_xscale >= 0.8)
 }
 draw_xscale = lerp(draw_xscale, 1, 0.05);
 draw_yscale = lerp(draw_yscale, 1, 0.05);
-draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale *sign(image_xscale), draw_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * sign(image_xscale), draw_yscale, image_angle, image_blend, image_alpha);
 
 #region /* Kill enemy if it's inside the wall */
 if (draw_xscale >= 0.8)

@@ -98,13 +98,18 @@ and (have_heart_balloon == true)
 	}
 	if (takendamage %2 == 0)
 	{
+		draw_set_alpha(image_alpha);
 		draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
 		draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
-		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, image_alpha);
 	}
 	else
 	{
-		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, 0.3);
+		draw_set_alpha(image_alpha * 0.3);
+		draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
+		draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
+		draw_set_alpha(image_alpha);
+		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, image_alpha * 0.3);
 	}
 }
 
@@ -126,9 +131,9 @@ else
 #region /* Draw holding items in hands underneath the player sprite */
 if (hold_item_in_hands = "enemy_bowlingball")
 {
-	draw_sprite_ext(global.resource_pack_sprite_bowlingball, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 *sign(image_xscale), draw_yscale * 1, 0, c_white, image_alpha);
-	draw_sprite_ext(global.resource_pack_sprite_bowlingball_shine, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1, draw_yscale * 1, 0, c_white, image_alpha);
-	draw_sprite_ext(global.resource_pack_sprite_enemy_bowlingball_stomped, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 *sign(image_xscale), draw_yscale * 1, 0, c_white, image_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_bowlingball, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 * sign(image_xscale), draw_yscale * 1, 0, c_white, image_alpha * collision_mask_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_bowlingball_shine, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1, draw_yscale * 1, 0, c_white, image_alpha * collision_mask_alpha);
+	draw_sprite_ext(global.resource_pack_sprite_enemy_bowlingball_stomped, 0, xx + hold_item_in_hands_x, yy, draw_xscale * 1 * sign(image_xscale), draw_yscale * 1, 0, c_white, image_alpha * collision_mask_alpha);
 	if (image_xscale < 0)
 	{
 		angle = 0;
@@ -254,7 +259,7 @@ if (draw_arrow_outside_view_down_alpha > 0.01)
 if (intro_animation != "")
 and (intro_animation_sprite > 0)
 {
-	draw_sprite_ext(intro_animation_sprite, intro_animation_image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, 1);
+	draw_sprite_ext(intro_animation_sprite, intro_animation_image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, 1);
 }
 #endregion /* Draw intro animation sprites (cutscene) if intro is playing END */
 
@@ -325,26 +330,26 @@ and (sprite_index > 0)
 and (intro_animation = "")
 and (invincible_timer <= false)
 {
-	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8, + 8), yy+random_range(- 8, + 8), draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8, + 8), yy+random_range(- 8, + 8), draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha * collision_mask_alpha);
 }
 else
 if (takendamage%2 == 0)
 and (sprite_index > 0)
 and (intro_animation = "")
 {
-	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha * collision_mask_alpha);
 	if (hp <= 1)
 	and (max_hp >= 2)
 	and (invincible_timer <= false)
 	{
-		draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_red, 0.1);
+		draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, c_red, 0.1);
 	}
 }
 else
 if (sprite_index > 0)
 and (intro_animation = "")
 {
-	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, 0.5);
+	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, 0.5);
 }
 #endregion /* Blink red when only having 1 HP left and no heart balloon END */
 
@@ -368,11 +373,11 @@ if (global.show_collision_mask == true)
 	draw_rectangle_color(x - 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
 	draw_rectangle_color(x, y - 2, x, y + 2, c_red, c_red, c_red, c_red, false);
 	draw_line_width_color( x, y, scr_line_trace( x, y, x + hspeed, y + vspeed, 1).x_hit, scr_line_trace( x, y, x + hspeed, y + vspeed, 1).y_hit, 5, c_aqua, c_red);
-	image_alpha = 0.5;
+	collision_mask_alpha = lerp(collision_mask_alpha, 0.5, 0.01);
 }
 else
 {
-	image_alpha = 1;
+	collision_mask_alpha = lerp(collision_mask_alpha, 1, 0.01);
 }
 #endregion /* Draw Collision Mask END */
 
@@ -420,11 +425,11 @@ if (assist_invincible == false)
 		}
 		if (invincible_blinking%20 == 0)
 		{
-			draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, c_black, image_alpha);
+			draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, c_black, image_alpha * collision_mask_alpha);
 		}
 		else
 		{
-			draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale *sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha);
+			draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha * collision_mask_alpha);
 		}
 	}
 }
