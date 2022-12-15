@@ -36,12 +36,20 @@ if (open_door == true)
 		instance_nearest(x, y, obj_player).xx_heart = second_x;
 		instance_nearest(x, y, obj_player).yy_heart = second_y;
 		open_door = false;
+		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
+		{
+			global.player_can_go_outside_view = false;
+		}
+		, [], 1);
+		time_source_start(time_source);
 		with (instance_nearest(obj_player.x, obj_player.y, obj_door))
 		{
-			door_x = +32;
-			door_xscale = -1;
-			open_door = false;
-			timer += 1;
+			if (place_meeting(x, y, obj_player))
+			{
+				door_x = +32;
+				door_xscale = -1;
+				open_door = false;
+			}
 		}
 	}
 }
@@ -49,16 +57,4 @@ else
 {
 	door_x = lerp(door_x, 0, 0.05);
 	door_xscale = lerp(door_xscale, 1, 0.05);
-}
-
-if (timer > 0)
-{
-	door_x = +32;
-	door_xscale = -1;
-	timer += 1;
-	if (timer > 10)
-	{
-		global.player_can_go_outside_view = false;
-		timer = 0;
-	}
 }

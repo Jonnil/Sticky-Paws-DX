@@ -195,10 +195,10 @@ if (global.world_editor == false)
 	scr_draw_level_editor_placable_object(39, level_object_id.id_arrow_sign_small, false, spr_arrow_sign_small, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(40, level_object_id.id_checkpoint, false, spr_checkpoint, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(41, level_object_id.id_spikes_emerge_block, true, spr_spikes_emerge_block, spr_wall, + 64, 1, 0, c_white);
-	scr_draw_level_editor_placable_object(42, level_object_id.id_oneway, false, spr_oneway, spr_wall, + 64, 1, 0, c_white, - 16);
-	scr_draw_level_editor_placable_object(43, level_object_id.id_oneway, false, spr_oneway, spr_wall, + 64, 1, 90, c_white);
-	scr_draw_level_editor_placable_object(44, level_object_id.id_oneway, false, spr_oneway, spr_wall, + 64, 1, 180, c_white, + 16);
-	scr_draw_level_editor_placable_object(45, level_object_id.id_oneway, false, spr_oneway, spr_wall, + 64, 1, 270, c_white);
+	scr_draw_level_editor_placable_object(42, level_object_id.id_oneway, false, spr_oneway, spr_wall, + 64, 1, 0, c_white, -16,);
+	scr_draw_level_editor_placable_object(43, level_object_id.id_oneway, false, spr_oneway, spr_wall, + 64, 1, 90, c_white, 0, -16);
+	scr_draw_level_editor_placable_object(44, level_object_id.id_oneway, false, spr_oneway, spr_wall, + 64, 1, 180, c_white, +16);
+	scr_draw_level_editor_placable_object(45, level_object_id.id_oneway, false, spr_oneway, spr_wall, + 64, 1, 270, c_white, 0, +16);
 	scr_draw_level_editor_placable_object(46, level_object_id.id_horizontal_rope, true, spr_horizontal_rope, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(47, level_object_id.id_water, false, spr_water_surface, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(48, level_object_id.id_breathable_water, false, spr_water_surface, spr_wall, + 64, 1, 0, c_white, 0, 0, 0.5);
@@ -215,7 +215,7 @@ if (global.world_editor == false)
 	scr_draw_level_editor_placable_object(59, level_object_id.id_cake_stealing_enemy, false, global.resource_pack_sprite_cake, spr_wall, + 64, 1, 0, c_white, -16);scr_draw_level_editor_placable_object(59, level_object_id.id_cake_stealing_enemy, false, sprite_basic_enemy, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(60, level_object_id.id_artwork_collection, false, spr_artwork_collection, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(61, level_object_id.id_block_only_when_player_is_near, true, global.resource_pack_sprite_block_only_when_player_is_near, spr_wall, + 64, 1, 0, c_white);
-	scr_draw_level_editor_placable_object(62, level_object_id.id_door, false, spr_door, spr_wall, + 64, 1, 0, c_white);
+	scr_draw_level_editor_placable_object(62, level_object_id.id_door, false, spr_door, spr_wall, + 64, 1, 0, c_white, -16);
 }
 else
 {

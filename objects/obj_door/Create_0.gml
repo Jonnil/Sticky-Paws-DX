@@ -8,4 +8,3 @@ player_gamepad_button_up = noone;
 player_gamepad_button2_up = noone;
 player_key_up = noone;
 player_key2_up = noone;
-timer = 0;
