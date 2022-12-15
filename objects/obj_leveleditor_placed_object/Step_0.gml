@@ -1,3 +1,6 @@
+//insert code that checks if view is moving, only then should the transparency difficulty layers be updated. For now just have it be in step event
+scr_make_sprite_transparent_setting_difficulty_levels()
+
 #region /* All code before initializing the object */
 
 #region /* Make object change difficulty layer depending on what difficulty layer is selected */

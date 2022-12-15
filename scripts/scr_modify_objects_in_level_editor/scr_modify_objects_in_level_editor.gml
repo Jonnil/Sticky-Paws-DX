@@ -150,7 +150,7 @@ function scr_modify_objects_in_level_editor()
 							else
 							if (object == level_object_id.id_bump_in_ground_invincibility_powerup_coil_spring)
 							{
-								object = level_object_id.id_bump_in_ground;
+								object = level_object_id.id_invisible_bump_in_ground;
 							}
 							#endregion /* Change bump in ground to it's different forms END */
 								
@@ -197,7 +197,7 @@ function scr_modify_objects_in_level_editor()
 							else
 							if (object == level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring)
 							{
-								object = level_object_id.id_invisible_bump_in_ground;
+								object = level_object_id.id_bump_in_ground;
 							}
 							#endregion /* Change invisible bump in ground to it's different forms END */
 								
@@ -419,9 +419,23 @@ function scr_modify_objects_in_level_editor()
 								object = level_object_id.id_hard_block;
 							}
 							#endregion /* Hard Block END */
-								
+							
 							else
-								
+							
+							#region /* Heart Balloon / HP Pickup */
+							if (object == level_object_id.id_heart)
+							{
+								object = level_object_id.id_hp_pickup;
+							}
+							else
+							if (object == level_object_id.id_hp_pickup)
+							{
+								object = level_object_id.id_heart;
+							}
+							#endregion /* Heart Balloon / HP Pickup END */
+							
+							else
+							
 							#region /* Invincibility Powerup */
 							if (object == level_object_id.id_invincibility_powerup)
 							{
@@ -561,25 +575,39 @@ function scr_modify_objects_in_level_editor()
 							
 							else
 							
+							#region /* Change Arrow Sign */
+							if (object == level_object_id.id_arrow_sign)
+							{
+								object = level_object_id.id_arrow_sign_small;
+							}
+							else
+							if (object == level_object_id.id_arrow_sign_small)
+							{
+								object = level_object_id.id_arrow_sign;
+							}
+							#endregion /* Change Arrow Sign END */
+							
+							else
+							
 							#region /* Change Oneway Direction */
-							if (object == 68)
+							if (object == level_object_id.id_oneway)
 							{
-								object = 69;
+								object = level_object_id.id_oneway2;
 							}
 							else
-							if (object == 69)
+							if (object == level_object_id.id_oneway2)
 							{
-								object = 70;
+								object = level_object_id.id_oneway3;
 							}
 							else
-							if (object == 70)
+							if (object == level_object_id.id_oneway3)
 							{
-								object = 71;
+								object = level_object_id.id_oneway4;
 							}
 							else
-							if (object == 71)
+							if (object == level_object_id.id_oneway4)
 							{
-								object = 68;
+								object = level_object_id.id_oneway;
 							}
 							#endregion /* Change Oneway Direction END */
 							

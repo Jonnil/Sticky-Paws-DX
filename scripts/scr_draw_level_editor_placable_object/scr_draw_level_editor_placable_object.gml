@@ -6,8 +6,15 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 		can_make_place_brush_size_bigger = var_can_make_place_brush_size_bigger;
 		sprite_index = var_sprite_index; /* This changes the obj_leveleditor sprite, so you see it underneath the cursor */
 		mask_index = var_mask_index; /* This changes the obj_leveleditor mask. Object mask when placing it, so it doesn't get placed over other objects */
+		
+		draw_sprite_ext(var_sprite_index, 0,
+		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + var_scroll_x * var_selected_object + var_x_offset,
+		camera_get_view_y(view_camera[view_current]) + 64 + var_scroll_y, var_scale * 1.25, var_scale * 1.25, var_rotation, var_color, selected_menu_alpha * alpha_offset);
 	}
-	draw_sprite_ext(var_sprite_index, 0,
-	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + var_scroll_x * var_selected_object + var_x_offset,
-	camera_get_view_y(view_camera[view_current]) + 64 + var_scroll_y, var_scale, var_scale, var_rotation, var_color, selected_menu_alpha * alpha_offset);
+	else
+	{
+		draw_sprite_ext(var_sprite_index, 0,
+		camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + var_scroll_x * var_selected_object + var_x_offset,
+		camera_get_view_y(view_camera[view_current]) + 64 + var_scroll_y, var_scale, var_scale, var_rotation, var_color, selected_menu_alpha * alpha_offset);
+	}
 }
