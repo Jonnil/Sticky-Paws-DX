@@ -87,7 +87,26 @@ function scr_spawn_objects_when_starting_room()
 				if (object == 31) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "1-up";}}
 				if (object == 32) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "2-up";}}
 				if (object == 33) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "3-up";}}
-				if (object == 34) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_1";}}
+				if (object == level_object_id.id_bump_in_ground_big_collectible_1)
+				and (asset_get_type("obj_bump_in_ground") == asset_object)
+				{
+					with(instance_create_depth(x, y, 0, obj_bump_in_ground))
+					{
+						type_of_bump = "big_collectible_1";
+					}
+					instance_create_depth(x, y, 0, obj_big_collectible_number);
+					
+					#region /* Tell the player how many big collectibles exist in the level */
+					if (instance_exists(obj_big_collectible_number))
+					{
+						with(obj_big_collectible_number)
+						{
+							big_collectible_number_max = instance_number(obj_big_collectible_number);
+						}
+					}
+					#endregion /* Tell the player how many big collectibles exist in the level END */
+					
+				}
 				if (object == 35) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_2";}}
 				if (object == 36) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_3";}}
 				if (object == 37) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_4";}}
@@ -103,7 +122,27 @@ function scr_spawn_objects_when_starting_room()
 				if (object == 311) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "1-up";visible = false;}}
 				if (object == 321) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "2-up";visible = false;}}
 				if (object == 331) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "3-up";visible = false;}}
-				if (object == 341) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_1";visible = false;}}
+				if (object == level_object_id.id_invisible_bump_in_ground_big_collectible_1)
+				and (asset_get_type("obj_bump_in_ground") == asset_object)
+				{
+					with(instance_create_depth(x, y, 0, obj_bump_in_ground))
+					{
+						type_of_bump = "big_collectible_1";
+						visible = false;
+					}
+					instance_create_depth(x, y, 0, obj_big_collectible_number);
+					
+					#region /* Tell the player how many big collectibles exist in the level */
+					if (instance_exists(obj_big_collectible_number))
+					{
+						with(obj_big_collectible_number)
+						{
+							big_collectible_number_max = instance_number(obj_big_collectible_number);
+						}
+					}
+					#endregion /* Tell the player how many big collectibles exist in the level END */
+					
+				}
 				if (object == 351) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_2";visible = false;}}
 				if (object == 361) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_3";visible = false;}}
 				if (object == 371) and (asset_get_type("obj_bump_in_ground") == asset_object){with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "big_collectible_4";visible = false;}}
@@ -124,7 +163,25 @@ function scr_spawn_objects_when_starting_room()
 				#endregion /* Basic Collectible END */
 				
 				#region /* Big Collectibles */
-				if (object == 48) and (asset_get_type("obj_big_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_big_collectible)){big_collectible = 1;}}
+				if (object == level_object_id.id_big_collectible_1)
+				{
+					if (asset_get_type("obj_big_collectible") == asset_object)
+					{
+						instance_create_depth(x, y, 0, obj_big_collectible);
+						instance_create_depth(x, y, 0, obj_big_collectible_number);
+						
+						#region /* Tell the player how many big collectibles exist in the level */
+						if (instance_exists(obj_big_collectible_number))
+						{
+							with(obj_big_collectible_number)
+							{
+								big_collectible_number_max = instance_number(obj_big_collectible_number);
+							}
+						}
+						#endregion /* Tell the player how many big collectibles exist in the level END */
+						
+					}
+				}
 				if (object == 49) and (asset_get_type("obj_big_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_big_collectible)){big_collectible = 2;}}
 				if (object == 50) and (asset_get_type("obj_big_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_big_collectible)){big_collectible = 3;}}
 				if (object == 51) and (asset_get_type("obj_big_collectible") == asset_object){with(instance_create_depth(x, y, 0, obj_big_collectible)){big_collectible = 4;}}
@@ -258,19 +315,38 @@ function scr_spawn_objects_when_starting_room()
 				if (object == 76) and (asset_get_type("obj_clipped_clothes") == asset_object){with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_sock;}}
 				
 				#region /* Bucket */
-				if (object == 77) and (asset_get_type("obj_bucket") == asset_object){instance_create_depth(x, y, 0, obj_bucket);}
-				if (object == 78) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "8_basic_collectibles";}}
-				if (object == 79) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "heart_balloon";}}
-				if (object == 80) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "1-up";}}
-				if (object == 81) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "2-up";}}
-				if (object == 82) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "3-up";}}
-				if (object == 83) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_1";}}
-				if (object == 84) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_2";}}
-				if (object == 85) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_3";}}
-				if (object == 86) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_4";}}
-				if (object == 87) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_5";}}
-				if (object == 88) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup";}}
-				if (object == 88001) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup_coil_spring";}}
+				if (object == level_object_id.id_bucket) and (asset_get_type("obj_bucket") == asset_object){instance_create_depth(x, y, 0, obj_bucket);}
+				if (object == level_object_id.id_bucket_8_basic_collectibles) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "8_basic_collectibles";}}
+				if (object == level_object_id.id_bucket_heart_balloon) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "heart_balloon";}}
+				if (object == level_object_id.id_bucket_one_up) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "1-up";}}
+				if (object == level_object_id.id_bucket_two_up) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "2-up";}}
+				if (object == level_object_id.id_bucket_three_up) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "3-up";}}
+				if (object == level_object_id.id_bucket_big_collectible_1)
+				and (asset_get_type("obj_bucket") == asset_object)
+				{
+					with(instance_create_depth(x, y, 0, obj_bucket))
+					{
+						item_inside = "big_collectible_1";
+					}
+					instance_create_depth(x, y, 0, obj_big_collectible_number);
+					
+					#region /* Tell the player how many big collectibles exist in the level */
+					if (instance_exists(obj_big_collectible_number))
+					{
+						with(obj_big_collectible_number)
+						{
+							big_collectible_number_max = instance_number(obj_big_collectible_number);
+						}
+					}
+					#endregion /* Tell the player how many big collectibles exist in the level END */
+					
+				}
+				if (object == level_object_id.id_bucket_big_collectible_2) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_2";}}
+				if (object == level_object_id.id_bucket_big_collectible_3) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_3";}}
+				if (object == level_object_id.id_bucket_big_collectible_4) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_4";}}
+				if (object == level_object_id.id_bucket_big_collectible_5) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "big_collectible_5";}}
+				if (object == level_object_id.id_bucket_invincibility_powerup) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup";}}
+				if (object == level_object_id.id_bucket_invincibility_powerup_coil_spring) and (asset_get_type("obj_bucket") == asset_object){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup_coil_spring";}}
 				#endregion /* Bucket END */
 				
 				if (object == 89) and (asset_get_type("obj_bird") == asset_object){instance_create_depth(x, y, 0, obj_bird);}

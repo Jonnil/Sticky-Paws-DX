@@ -109,6 +109,7 @@
     {"id":{"name":"snd_die_melody","path":"sounds/snd_die_melody/snd_die_melody.yy",},"order":25,},
     {"id":{"name":"spr_cursor_brush","path":"sprites/spr_cursor_brush/spr_cursor_brush.yy",},"order":5,},
     {"id":{"name":"snd_stomp","path":"sounds/snd_stomp/snd_stomp.yy",},"order":135,},
+    {"id":{"name":"obj_big_collectible_number","path":"objects/obj_big_collectible_number/obj_big_collectible_number.yy",},"order":31,},
     {"id":{"name":"spr_virtual_key_zoom_in","path":"sprites/spr_virtual_key_zoom_in/spr_virtual_key_zoom_in.yy",},"order":13,},
     {"id":{"name":"snd_1up","path":"sounds/snd_1up/snd_1up.yy",},"order":0,},
     {"id":{"name":"scr_initialize_resource_pack_sprite","path":"scripts/scr_initialize_resource_pack_sprite/scr_initialize_resource_pack_sprite.yy",},"order":19,},
@@ -194,7 +195,7 @@
     {"id":{"name":"spr_catlyn_working","path":"sprites/spr_catlyn_working/spr_catlyn_working.yy",},"order":47,},
     {"id":{"name":"obj_level_player_4_start","path":"objects/obj_level_player_4_start/obj_level_player_4_start.yy",},"order":10,},
     {"id":{"name":"spr_keyboard_keys_none","path":"sprites/spr_keyboard_keys_none/spr_keyboard_keys_none.yy",},"order":19,},
-    {"id":{"name":"scr_level_editor_placable_object","path":"scripts/scr_level_editor_placable_object/scr_level_editor_placable_object.yy",},"order":1,},
+    {"id":{"name":"scr_draw_level_editor_placable_object","path":"scripts/scr_draw_level_editor_placable_object/scr_draw_level_editor_placable_object.yy",},"order":1,},
     {"id":{"name":"obj_big_air_bubble","path":"objects/obj_big_air_bubble/obj_big_air_bubble.yy",},"order":2,},
     {"id":{"name":"obj_blaster","path":"objects/obj_blaster/obj_blaster.yy",},"order":0,},
     {"id":{"name":"obj_checkpoint","path":"objects/obj_checkpoint/obj_checkpoint.yy",},"order":4,},
@@ -307,6 +308,7 @@
     {"id":{"name":"obj_cardboard","path":"objects/obj_cardboard/obj_cardboard.yy",},"order":0,},
     {"id":{"name":"spr_cursor_grab","path":"sprites/spr_cursor_grab/spr_cursor_grab.yy",},"order":3,},
     {"id":{"name":"scr_file_move","path":"scripts/scr_file_move/scr_file_move.yy",},"order":12,},
+    {"id":{"name":"scr_set_numbers_for_every_multiple_objects","path":"scripts/scr_set_numbers_for_every_multiple_objects/scr_set_numbers_for_every_multiple_objects.yy",},"order":11,},
     {"id":{"name":"spr_map_turn_right_down","path":"sprites/spr_map_turn_right_down/spr_map_turn_right_down.yy",},"order":76,},
     {"id":{"name":"scr_player_move_go_right","path":"scripts/scr_player_move_go_right/scr_player_move_go_right.yy",},"order":8,},
     {"id":{"name":"scr_draw_level_editor_thumbnail","path":"scripts/scr_draw_level_editor_thumbnail/scr_draw_level_editor_thumbnail.yy",},"order":4,},
@@ -3401,6 +3403,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"title_logo_christmas_english.png","CopyToMask":-1,"filePath":"datafiles/title_logos",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.11.0.54",
+    "IDEVersion": "2022.11.1.56",
   },
 }

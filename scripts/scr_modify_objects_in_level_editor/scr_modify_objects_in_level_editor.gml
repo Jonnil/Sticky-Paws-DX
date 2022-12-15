@@ -108,136 +108,96 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Change bump in ground to it's different forms */
-							if (object == 28)
+							if (object == level_object_id.id_bump_in_ground)
 							{
-								object = 29;
+								object = level_object_id.id_bump_in_ground_8_basic_collectibles;
 							}
 							else
-							if (object == 29)
+							if (object == level_object_id.id_bump_in_ground_8_basic_collectibles)
 							{
-								object = 30;
+								object = level_object_id.id_bump_in_ground_heart_balloon;
 							}
 							else
-							if (object == 30)
+							if (object == level_object_id.id_bump_in_ground_heart_balloon)
 							{
-								object = 31;
+								object = level_object_id.id_bump_in_ground_one_up;
 							}
 							else
-							if (object == 31)
+							if (object == level_object_id.id_bump_in_ground_one_up)
 							{
-								object = 32;
+								object = level_object_id.id_bump_in_ground_two_up;
 							}
 							else
-							if (object == 32)
+							if (object == level_object_id.id_bump_in_ground_two_up)
 							{
-								object = 33;
+								object = level_object_id.id_bump_in_ground_three_up;
 							}
 							else
-							if (object == 33)
+							if (object == level_object_id.id_bump_in_ground_three_up)
 							{
-								object = 34;
+								object = level_object_id.id_bump_in_ground_big_collectible_1;
 							}
 							else
-							if (object == 34)
+							if (object == level_object_id.id_bump_in_ground_big_collectible_1)
 							{
-								object = 35;
+								object = level_object_id.id_bump_in_ground_invincibility_powerup;
 							}
 							else
-							if (object == 35)
+							if (object == level_object_id.id_bump_in_ground_invincibility_powerup)
 							{
-								object = 36;
+								object = level_object_id.id_bump_in_ground_invincibility_powerup_coil_spring;
 							}
 							else
-							if (object == 36)
+							if (object == level_object_id.id_bump_in_ground_invincibility_powerup_coil_spring)
 							{
-								object = 37;
-							}
-							else
-							if (object == 37)
-							{
-								object = 38;
-							}
-							else
-							if (object == 38)
-							{
-								object = 39;
-							}
-							else
-							if (object == 39)
-							{
-								object = 39001;
-							}
-							else
-							if (object == 39001)
-							{
-								object = 281;
+								object = level_object_id.id_bump_in_ground;
 							}
 							#endregion /* Change bump in ground to it's different forms END */
 								
 							#region /* Change invisible bump in ground to it's different forms */
-							if (object == 281)
+							if (object == level_object_id.id_invisible_bump_in_ground)
 							{
-								object = 291;
+								object = level_object_id.id_invisible_bump_in_ground_8_basic_collectibles;
 							}
 							else
-							if (object == 291)
+							if (object == level_object_id.id_invisible_bump_in_ground_8_basic_collectibles)
 							{
-								object = 301;
+								object = level_object_id.id_invisible_bump_in_ground_heart_balloon;
 							}
 							else
-							if (object == 301)
+							if (object == level_object_id.id_invisible_bump_in_ground_heart_balloon)
 							{
-								object = 311;
+								object = level_object_id.id_invisible_bump_in_ground_one_up;
 							}
 							else
-							if (object == 311)
+							if (object == level_object_id.id_invisible_bump_in_ground_one_up)
 							{
-								object = 321;
+								object = level_object_id.id_invisible_bump_in_ground_two_up;
 							}
 							else
-							if (object == 321)
+							if (object == level_object_id.id_invisible_bump_in_ground_two_up)
 							{
-								object = 331;
+								object = level_object_id.id_invisible_bump_in_ground_three_up;
 							}
 							else
-							if (object == 331)
+							if (object == level_object_id.id_invisible_bump_in_ground_three_up)
 							{
-								object = 341;
+								object = level_object_id.id_invisible_bump_in_ground_big_collectible_1;
 							}
 							else
-							if (object == 341)
+							if (object == level_object_id.id_invisible_bump_in_ground_big_collectible_1)
 							{
-								object = 351;
+								object = level_object_id.id_invisible_bump_in_ground_invincibility_powerup;
 							}
 							else
-							if (object == 351)
+							if (object == level_object_id.id_invisible_bump_in_ground_invincibility_powerup)
 							{
-								object = 361;
+								object = level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring;
 							}
 							else
-							if (object == 361)
+							if (object == level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring)
 							{
-								object = 371;
-							}
-							else
-							if (object == 371)
-							{
-								object = 381;
-							}
-							else
-							if (object == 381)
-							{
-								object = 391;
-							}
-							else
-							if (object == 391)
-							{
-								object = 390011;
-							}
-							else
-							if (object == 390011)
-							{
-								object = 28;
+								object = level_object_id.id_invisible_bump_in_ground;
 							}
 							#endregion /* Change invisible bump in ground to it's different forms END */
 								
@@ -284,35 +244,6 @@ function scr_modify_objects_in_level_editor()
 								object = level_object_id.id_basic_collectible;
 							}
 							#endregion /* Change Basic Collectible Direction */
-							
-							else
-							
-							#region /* Change Big Collectible */
-							if (object == level_object_id.id_big_collectible_1)
-							{
-								object = level_object_id.id_big_collectible_2;
-							}
-							else
-							if (object == level_object_id.id_big_collectible_2)
-							{
-								object = level_object_id.id_big_collectible_3;
-							}
-							else
-							if (object == level_object_id.id_big_collectible_3)
-							{
-								object = level_object_id.id_big_collectible_4;
-							}
-							else
-							if (object == level_object_id.id_big_collectible_4)
-							{
-								object = level_object_id.id_big_collectible_5;
-							}
-							else
-							if (object == level_object_id.id_big_collectible_5)
-							{
-								object = level_object_id.id_big_collectible_1;
-							}
-							#endregion /* Change Big Collectible */
 							
 							else
 							
@@ -688,64 +619,49 @@ function scr_modify_objects_in_level_editor()
 							else
 							
 							#region /* Change bucket to it's different forms */
-							if (object == 77)
+							if (object == level_object_id.id_bucket)
 							{
-								object = 78;
+								object = level_object_id.id_bucket_8_basic_collectibles;
 							}
 							else
-							if (object == 78)
+							if (object == level_object_id.id_bucket_8_basic_collectibles)
 							{
-								object = 79;
+								object = level_object_id.id_bucket_heart_balloon;
 							}
 							else
-							if (object == 79)
+							if (object == level_object_id.id_bucket_heart_balloon)
 							{
-								object = 80;
+								object = level_object_id.id_bucket_one_up;
 							}
 							else
-							if (object == 80)
+							if (object == level_object_id.id_bucket_one_up)
 							{
-								object = 81;
+								object = level_object_id.id_bucket_two_up;
 							}
 							else
-							if (object == 81)
+							if (object == level_object_id.id_bucket_two_up)
 							{
-								object = 82;
+								object = level_object_id.id_bucket_three_up;
 							}
 							else
-							if (object == 82)
+							if (object == level_object_id.id_bucket_three_up)
 							{
-								object = 83;
+								object = level_object_id.id_bucket_big_collectible_1;
 							}
 							else
-							if (object == 83)
+							if (object == level_object_id.id_bucket_big_collectible_1)
 							{
-								object = 84;
+								object = level_object_id.id_bucket_invincibility_powerup;
 							}
 							else
-							if (object == 84)
+							if (object == level_object_id.id_bucket_invincibility_powerup)
 							{
-								object = 85;
+								object = level_object_id.id_bucket_invincibility_powerup_coil_spring;
 							}
 							else
-							if (object == 85)
+							if (object == level_object_id.id_bucket_invincibility_powerup_coil_spring)
 							{
-								object = 86;
-							}
-							else
-							if (object == 86)
-							{
-								object = 87;
-							}
-							else
-							if (object == 87)
-							{
-								object = 88;
-							}
-							else
-							if (object == 88)
-							{
-								object = 77;
+								object = level_object_id.id_bucket;
 							}
 							#endregion /* Change bucket to it's different forms END */
 							

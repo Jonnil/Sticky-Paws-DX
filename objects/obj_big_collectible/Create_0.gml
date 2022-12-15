@@ -9,6 +9,8 @@ if (asset_get_type("spr_wall") == asset_object)
 	mask_index = spr_wall;
 }
 coinsound = false;
-big_collectible = 0;
 follow_player = false;
 effect_time = 0;
+
+big_collectible_number_max = 0; /* Tell the player how many big collectibles exist in the level */
+big_collectible = 0; /* Tell the player which big collectible they're activating */

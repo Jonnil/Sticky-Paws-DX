@@ -213,7 +213,23 @@ enum level_object_id
 	id_clipped_shirt = 74,
 	id_clipped_pants = 75,
 	id_clipped_sock = 76,
+	
+	#region /* Bucket */
 	id_bucket = 77,
+	id_bucket_8_basic_collectibles = 78,
+	id_bucket_heart_balloon = 79,
+	id_bucket_one_up = 80,
+	id_bucket_two_up = 81,
+	id_bucket_three_up = 82,
+	id_bucket_big_collectible_1 = 83,
+	id_bucket_big_collectible_2 = 84,
+	id_bucket_big_collectible_3 = 85,
+	id_bucket_big_collectible_4 = 86,
+	id_bucket_big_collectible_5 = 87,
+	id_bucket_invincibility_powerup = 88,
+	id_bucket_invincibility_powerup_coil_spring = 88001,
+	#endregion /* Bucket END */
+	
 	id_bird = 89,
 	id_sign_crouch = 90,
 	id_sign_dive = 91,

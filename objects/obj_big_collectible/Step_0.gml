@@ -116,7 +116,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			ini_close();
 		}
 	}
-	if (big_collectible = 2)
+	if (big_collectible == 2)
 	{
 		global.big_collectible2 = true;
 		if (instance_exists(obj_camera))
@@ -150,7 +150,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			ini_close();
 		}
 	}
-	if (big_collectible = 3)
+	if (big_collectible == 3)
 	{
 		global.big_collectible3 = true;
 		if (instance_exists(obj_camera))
@@ -184,7 +184,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			ini_close();
 		}
 	}
-	if (big_collectible = 4)
+	if (big_collectible == 4)
 	{
 		global.big_collectible4 = true;
 		if (instance_exists(obj_camera))
@@ -218,7 +218,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			ini_close();
 		}
 	}
-	if (big_collectible == 5)
+	if (big_collectible >= 5)
 	{
 		global.big_collectible5 = true;
 		if (instance_exists(obj_camera))
@@ -391,7 +391,7 @@ if (bounce_up == true)
 					}
 				}
 			}
-			if (big_collectible = 2)
+			if (big_collectible == 2)
 			{
 				global.big_collectible2 = true;
 				if (instance_exists(obj_camera))
@@ -425,7 +425,7 @@ if (bounce_up == true)
 					}
 				}
 			}
-			if (big_collectible = 3)
+			if (big_collectible == 3)
 			{
 				global.big_collectible3 = true;
 				if (instance_exists(obj_camera))
@@ -459,7 +459,7 @@ if (bounce_up == true)
 					}
 				}
 			}
-			if (big_collectible = 4)
+			if (big_collectible == 4)
 			{
 				global.big_collectible4 = true;
 				if (instance_exists(obj_camera))

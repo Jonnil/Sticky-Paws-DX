@@ -35,7 +35,7 @@
 //draw_line_width_color(x, y, window_mouse_get_x(), window_mouse_get_y(), 2, c_blue, c_red);
 
 //draw_line_width_color(x, y, obj_follow_mouse.x, obj_follow_mouse.y, 2, c_blue, c_red);
-//scr_draw_text_outlined(obj_follow_mouse.x, obj_follow_mouse.y, "normal draw", global.default_text_size, c_white, c_red, 1);
+//scr_draw_text_outlined(obj_follow_mouse.x, obj_follow_mouse.y, string(global.iris_zoom_in), global.default_text_size, c_white, c_red, 1);
 
 #region /* Draw things underneath the player */
 

@@ -731,3 +731,5 @@ if (global.number_of_audio_channels == 7)
 
 zoom_lerp = global.zoom_level;
 zoom_border_lerp = 0;
+
+scr_set_numbers_for_every_multiple_objects();
