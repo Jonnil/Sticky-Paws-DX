@@ -4,6 +4,32 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 	var voicepack_y = 234;
 	var name_y = 292;
 	
+	#region /* Make character portraits smaller if screen size is too small to fit them */
+	if (window_get_width() >= 1670)
+	{
+		var scale_offset = 1;
+	}
+	else
+	if (window_get_width() >= 1276)
+	{
+		var scale_offset = 0.9;
+	}
+	else
+	if (window_get_width() >= 882)
+	{
+		var scale_offset = 0.8;
+	}
+	else
+	if (window_get_width() >= 488)
+	{
+		var scale_offset = 0.7;
+	}
+	else
+	{
+		var scale_offset = 0.6;
+	}
+	#endregion /* Make character portraits smaller if screen size is too small to fit them END */
+	
 	#region /* Set correct variables for players */
 	
 	#region /* If player is player 1, set all the variables to Player variables */
@@ -146,13 +172,13 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 	if (sprite_select_player > 0)
 	and (player_accept_selection >= 0)
 	{
-		draw_sprite_ext(sprite_select_player, 0, window_get_width() / 2 + player_xx, window_get_height() / 2, 392 / sprite_get_width(sprite_select_player), 392 / sprite_get_width(sprite_select_player), 0, hex_color_for_player, 1);
+		draw_sprite_ext(sprite_select_player, 0, window_get_width() / 2 + player_xx, window_get_height() / 2, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, hex_color_for_player, 1);
 		if (can_input_player1_name == true)
 		or (can_input_player2_name == true)
 		or (can_input_player3_name == true)
 		or (can_input_player4_name == true)
 		{
-			draw_sprite_ext(sprite_select_player, 0, window_get_width() / 2 + player_xx, window_get_height() / 2, 392 / sprite_get_width(sprite_select_player), 392 / sprite_get_width(sprite_select_player), 0, c_black, 0.5);
+			draw_sprite_ext(sprite_select_player, 0, window_get_width() / 2 + player_xx, window_get_height() / 2, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, c_black, 0.5);
 		}
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
