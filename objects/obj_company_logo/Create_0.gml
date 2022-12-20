@@ -512,8 +512,9 @@ enum volume_source
 {
 	ambient = 1,
 	footstep = 2,
-	music = 3,
-	sound = 4,
-	voice = 5,
+	jingle = 3,
+	music = 4,
+	sound = 5,
+	voice = 6
 }
 #endregion /* Things you shouldn't change, warning, don't change any of these options or you might break the game! END */

@@ -82,6 +82,7 @@ and (instance_exists(obj_camera))
 
 voice_damage = noone;
 voice_burned_die = noone;
+player_lose_jingle = noone;
 
 #region /* Disable the players for the camera */
 

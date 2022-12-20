@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_player_die",
+  "name": "obj_player_lose",
   "spriteId": null,
   "solid": false,
   "visible": true,

@@ -376,8 +376,8 @@ and (!instance_exists(obj_title))
 		if (asset_get_type("obj_player") == asset_object)
 		and (instance_exists(obj_player))
 		and (global.enable_time_countdown == true)
-		or (asset_get_type("obj_player_die") == asset_object)
-		and (instance_exists(obj_player_die))
+		or (asset_get_type("obj_player_lose") == asset_object)
+		and (instance_exists(obj_player_lose))
 		and (global.enable_time_countdown == true)
 		{
 			time_countup_y = 94;
@@ -985,9 +985,9 @@ scr_draw_cursor_mouse();
 #region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
 if (iris_xscale <= 1)
 and (iris_zoom != 0)
-or (instance_exists(obj_player_die))
-and (obj_player_die.iris_xscale <= 1)
-and (obj_player_die.iris_zoom != 0)
+or (instance_exists(obj_player_lose))
+and (obj_player_lose.iris_xscale <= 1)
+and (obj_player_lose.iris_zoom != 0)
 {
 	black_screen_gui_alpha = lerp(black_screen_gui_alpha, 1, 0.1);
 }

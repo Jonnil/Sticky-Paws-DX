@@ -25,6 +25,14 @@ function scr_audio_play(sound_id = noone, what_volume_source = volume_source.sou
 			}
 		}
 		else
+		if (what_volume_source == volume_source.jingle)
+		{
+			if (!audio_is_playing(sound_id))
+			{
+				audio_play_sound(sound_id, 0, false, global.volume_jingle * volume_modifier * global.volume_main);
+			}
+		}
+		else
 		if (what_volume_source == volume_source.music)
 		{
 			if (!audio_is_playing(sound_id))

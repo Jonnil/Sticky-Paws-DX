@@ -1,3 +1,16 @@
+#region /* Menu cursor image speed */
+menu_cursor_index += 0.3;
+if (menu_cursor_index > 4)
+{
+	menu_cursor_index = 0;
+}
+#endregion /* Menu cursor image speed END */
+
+if (menu_delay > 0)
+{
+	menu_delay -= 1;
+}
+
 count += 1;
 
 #region /* Check if the last player just died */
@@ -42,14 +55,14 @@ and (sprite_index = spr_player_burnt)
 }
 #endregion /* If the player is burned, have black smoke coming out END */
 
-#region /* Play death melody */
+#region /* Play death jingle */
 if (!instance_exists(obj_player))
 and (count = 50)
 and (last_player == true)
 {
-	scr_audio_play(snd_die_melody, volume_source.sound);
+	scr_audio_play(player_lose_jingle, volume_source.jingle);
 }
-#endregion /* Play death melody END */
+#endregion /* Play death jingle END */
 
 #region /* Limit the vertical speed */
 if (vspeed >+ 32)
@@ -67,8 +80,7 @@ and (iris_xscale <= 0.001)
 	sprite_index = noone;
 	gravity = 0;
 	speed = 0;
-	if (asset_get_type("snd_die_melody") == asset_sound)
-	and (!audio_is_playing(snd_die_melody))
+	if (!audio_is_playing(player_lose_jingle))
 	{
 		if (lives >= 1)
 		{
@@ -171,47 +183,6 @@ if (continue_falling == true)
 {
 	gravity = 0.5;
 }
-
-if (!instance_exists(obj_player))
-and (count >49)
-and (last_player == true)
-{
-	if (iris_zoom == 0)
-	{
-		iris_xscale = lerp(iris_xscale, 1, 0.1);
-		iris_yscale = lerp(iris_yscale, 1, 0.1);
-	}
-	else
-	{
-		iris_xscale = lerp(iris_xscale, 0, 0.1);
-		iris_yscale = lerp(iris_yscale, 0, 0.1);
-	}
-	if (iris_xscale <= 1.1)
-	{
-		iris_zoom = 1;
-	}
-	if (asset_get_type("obj_player_die") == asset_object)
-	and (instance_exists(obj_player_die))
-	{
-		if (iris_xscale < 16)
-		and (global.enable_transitions == true)
-		{
-			if (asset_get_type("spr_iris_dead") == asset_sprite)
-			{
-				draw_sprite_ext(spr_iris_dead, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
-			}
-			else
-			if (asset_get_type("spr_iris") == asset_sprite)
-			{
-				draw_sprite_ext(spr_iris, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
-			}
-			draw_rectangle_color(0, 0, room_width * 3, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color(0, 0, xx - iris_xscale * 128, room_height * 3, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color(xx + iris_xscale * 128, 0, room_width * 3, room_height * 3, c_black, c_black, c_black, c_black, false);
-			draw_rectangle_color(0, yy + iris_yscale * 128, room_width * 3, room_height * 3, c_black, c_black, c_black, c_black, false);
-		}
-	}
-}
 if (image_index > image_number - 1)
 {
 	image_speed = 0;
@@ -220,11 +191,6 @@ else
 {
 	image_speed = 0.5;
 }
-if (sprite_index > 0)
-{
-	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale * default_xscale, image_yscale * default_yscale, image_angle, image_blend, image_alpha);
-}
-
 #region /* Bubble */
 if (bubble == true)
 {
@@ -295,16 +261,7 @@ if (bubble == true)
 		vspeed = +4;
 	}
 	friction = 0.2;
-
-	#region /* Bubble */
-	draw_self();
-	draw_circle_color(x, y, 52, c_black, c_black, true);
-	draw_circle_color(x, y, 53, c_white, c_white, true);
-	draw_circle_color(x, y, 54, c_white, c_white, true);
-	draw_circle_color(x, y, 55, c_white, c_white, true);
-	draw_circle_color(x, y, 56, c_black, c_black, true);
-	#endregion /* Bubble END */
-
+	
 	#region /* If there are no more players in the room */
 	if (!instance_exists(obj_player))
 	{
@@ -312,59 +269,6 @@ if (bubble == true)
 		count = 0;
 	}
 	#endregion /* If there are no more players in the room END */
+	
 }
 #endregion /* Bubble END */
-
-#region /* Display Player Number and Name */
-if (global.playergame > 0)
-and (y < room_height)
-and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-{
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_middle);
-	if (player == 1)
-	{
-		if (global.player1_name = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P1", global.default_text_size, c_black, global.player1_color, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player1_name), global.default_text_size, c_black, global.player1_color, 1);
-		}
-	}
-	if (player == 2)
-	{
-		if (global.player2_name = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P2", global.default_text_size, c_black, global.player2_color, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player2_name), global.default_text_size, c_black, global.player2_color, 1);
-		}
-	}
-	if (player == 3)
-	{
-		if (global.player3_name = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P3", global.default_text_size, c_black, global.player3_color, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player3_name), global.default_text_size, c_black, global.player3_color, 1);
-		}
-	}
-	if (player == 4)
-	{
-		if (global.player4_name = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P4", global.default_text_size, c_black, global.player4_color, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player4_name), global.default_text_size, c_black, global.player4_color, 1);
-		}
-	}
-}
-#endregion /* Display Player Number and Name END */

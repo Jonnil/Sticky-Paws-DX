@@ -14,14 +14,14 @@ if asset_get_type("obj_player") == asset_object and instance_number(obj_player) 
 	}
 }
 else
-if asset_get_type("obj_player_die") == asset_object and instance_number(obj_player_die) > 0
+if asset_get_type("obj_player_lose") == asset_object and instance_number(obj_player_lose) > 0
 {
-	if instance_nearest(x, y, obj_player_die).x < x
+	if instance_nearest(x, y, obj_player_lose).x < x
 	{
 		image_xscale = -1;
 	}
 	else
-	if instance_nearest(x, y, obj_player_die).x > x
+	if instance_nearest(x, y, obj_player_lose).x > x
 	{
 		image_xscale = +1;
 	}

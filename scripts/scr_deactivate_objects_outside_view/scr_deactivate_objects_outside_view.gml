@@ -54,9 +54,9 @@ function scr_deactivate_objects_outside_view()
 	{
 		instance_activate_object(obj_player_map);
 	}
-	if (asset_get_type("obj_player_die") == asset_object)
+	if (asset_get_type("obj_player_lose") == asset_object)
 	{
-		instance_activate_object(obj_player_die);
+		instance_activate_object(obj_player_lose);
 	}
 	if (asset_get_type("obj_foreground1") == asset_object)
 	{

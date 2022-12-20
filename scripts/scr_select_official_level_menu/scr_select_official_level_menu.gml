@@ -472,11 +472,11 @@ function scr_select_official_level_menu()
 			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience.ogg",
 			working_directory + "/custom_levels/" + string(global.level_name) + "/sound/ambience.ogg");
 		}
-		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
+		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_jingle.ogg"))
 		{
 			file_copy(
-			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg",
-			working_directory + "/custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
+			"levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_jingle.ogg",
+			working_directory + "/custom_levels/" + string(global.level_name) + "/sound/clear_jingle.ogg");
 		}
 		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
 		{

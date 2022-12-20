@@ -1333,7 +1333,7 @@ and (gamepad_is_connected(3))
 }
 #endregion /* Remove player if there is no controls mapped for this player END */
 
-scr_player_move_die();
+scr_player_move_lose();
 
 #region /* If you touch spikes, take damage */
 if (asset_get_type("obj_spikes") == asset_object)

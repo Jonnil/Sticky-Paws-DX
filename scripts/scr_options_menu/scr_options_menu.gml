@@ -1952,14 +1952,24 @@ function scr_options_menu()
 		#region /* Audio Settings */
 		if (global.settings_sidebar_menu == "audio_settings")
 		{
-			var narrator_y = 132 - 36 + 8 + (64 * 7);
-			var default_audio_settings_y = 132 - 36 + (64 * 8) - 16;
-		
+			var volume_main_y = 64;
+			var volume_music_y = 96 + (64);
+			var volume_jingle_y = 96 + (64 * 2);
+			var volume_sound_y = 96 + (64 * 3);
+			var volume_ambient_y = 96 + (64 * 4);
+			var volume_footstep_y = 96 + (64 * 5);
+			var volume_voice_y = 96 + (64 * 6);
+			var number_of_audio_channels_y = 96 + 8 + (64 * 7);
+			var narrator_y = 96 + 8 + (64 * 8);
+			var default_audio_settings_y = 96 + (64 * 9);
+			
 			#region /* Make volumes stay between 0 and 1 */
 			if (global.volume_main < 0){global.volume_main = 0;}else
 			if (global.volume_main > 1){global.volume_main = 1;}
 			if (global.volume_music < 0){global.volume_music = 0;}else
 			if (global.volume_music > 1){global.volume_music = 1;}
+			if (global.volume_jingle < 0){global.volume_jingle = 0;}else
+			if (global.volume_jingle > 1){global.volume_jingle = 1;}
 			if (global.volume_sound < 0){global.volume_sound = 0;}else
 			if (global.volume_sound > 1){global.volume_sound = 1;}
 			if (global.volume_ambient < 0){global.volume_ambient = 0;}else
@@ -1971,34 +1981,35 @@ function scr_options_menu()
 			if (global.verbosity_slider < 0){global.verbosity_slider = 0;}else
 			if (global.verbosity_slider > 1){global.verbosity_slider = 1;}
 			#endregion /* Make volumes stay between 0 and 1 END */
-		
+			
 			#region /* Draw bars that represent how much volume each channel have */
-			draw_menu_slider(410, 64, l10n_text("Main Volume"), "volume_main", global.volume_main, c_red);
-			draw_line_width_color(410, 132 - 36, 820, 132 - 36, 3, c_white, c_white);
-			draw_menu_slider(410, 132 - 36 + (64), l10n_text("Music Volume"), "volume_music", global.volume_music, c_red);
-			draw_menu_slider(410, 132 - 36 + (64 * 2), l10n_text("Sound Volume"), "volume_sound", global.volume_sound, c_lime);
-			draw_menu_slider(410, 132 - 36 + (64 * 3), l10n_text("Ambient Volume"), "volume_ambient", global.volume_ambient, c_lime);
-			draw_menu_slider(410, 132 - 36 + (64 * 4), l10n_text("Footstep Volume"), "volume_footstep", global.volume_footstep, c_lime);
-			draw_menu_slider(410, 132 - 36 + (64 * 5), l10n_text("Voices Volume"), "voices_volume", global.volume_voice, c_aqua);
-		
+			draw_menu_slider(410, volume_main_y, l10n_text("Main Volume"), "volume_main", global.volume_main, c_red);
+			draw_line_width_color(410, volume_main_y + 32, 820, volume_main_y + 32, 3, c_white, c_white);
+			draw_menu_slider(410, volume_music_y, l10n_text("Music Volume"), "volume_music", global.volume_music, c_red);
+			draw_menu_slider(410, volume_jingle_y, l10n_text("Jingle Volume"), "volume_jingle", global.volume_jingle, c_red);
+			draw_menu_slider(410, volume_sound_y, l10n_text("Sound Volume"), "volume_sound", global.volume_sound, c_lime);
+			draw_menu_slider(410, volume_ambient_y, l10n_text("Ambient Volume"), "volume_ambient", global.volume_ambient, c_lime);
+			draw_menu_slider(410, volume_footstep_y, l10n_text("Footstep Volume"), "volume_footstep", global.volume_footstep, c_lime);
+			draw_menu_slider(410, volume_voice_y, l10n_text("Voices Volume"), "voices_volume", global.volume_voice, c_aqua);
+			
 			#region /* Verbosity Bar */
 			if (global.enable_verbosity_slider == true)
 			{
-				draw_menu_slider(410, 132 - 36 + (64 * 6), l10n_text("Voices Volume"), "voices_volume", global.volume_voice, c_aqua);
+				draw_menu_slider(410, 96 + (64 * 7), l10n_text("Voices Volume"), "voices_volume", global.volume_voice, c_aqua);
 			}
 			#endregion /* Verbosity Bar END */
-		
+			
 			#endregion /* Draw bars that represent how much volume each channel have END */
-		
+			
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-		
+			
 			#region /* Select Narrator */
 			if (global.enable_narrator == true)
 			{
 				var file_select_x = 450;
 				var file_select_right_arrow_x = 400;
-			
+				
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_middle);
 			
@@ -2220,7 +2231,7 @@ function scr_options_menu()
 			}
 			#endregion /* Reset to Default Audio Settings END */
 		
-			draw_menu_dropdown(390, 132 - 36 + (64 * 6), l10n_text("Number of Audio Channels"), "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256"); /* Dropdown menus should be drawn last so they are above everything else when you open them */
+			draw_menu_dropdown(390, number_of_audio_channels_y, l10n_text("Number of Audio Channels"), "number_of_audio_channels", global.number_of_audio_channels, "32", "64", "96", "128", "160", "192", "224", "256"); /* Dropdown menus should be drawn last so they are above everything else when you open them */
 		}
 		#endregion /* Audio Settings END */
 	
@@ -3182,7 +3193,7 @@ function scr_options_menu()
 		
 			else
 		
-			#region /* Msuic Volume Navigation */
+			#region /* Music Volume Navigation */
 			if (menu == "volume_music")
 			{
 				if (key_left)
@@ -3247,14 +3258,87 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					menu = "volume_sound";
+					menu = "volume_jingle";
 					menu_delay = 3;
 				}
 			}
 			#endregion /* Music Volume Navigation END */
-		
+			
 			else
-		
+			
+			#region /* Jingle Volume Navigation */
+			if (menu == "volume_jingle")
+			{
+				if (key_left)
+				and (!keyboard_check(vk_shift))
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					if (global.volume_jingle > 0)
+					{
+						global.volume_jingle -= 0.05;
+					}
+				}
+				else
+				if (key_right)
+				and (!keyboard_check(vk_shift))
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					if (global.volume_jingle < + 1)
+					{
+						global.volume_jingle += 0.05;
+					}
+				}
+				else
+				if (mouse_wheel_down())
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				or (key_left)
+				and (keyboard_check(vk_shift))
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					if (global.volume_jingle > 0)
+					{
+						global.volume_jingle -= 0.0001;
+					}
+				}
+				else
+				if (mouse_wheel_up())
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				or (key_right)
+				and (keyboard_check(vk_shift))
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					if (global.volume_jingle < + 1)
+					{
+						global.volume_jingle += 0.0001;
+					}
+				}
+				else
+				if (key_up)
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					menu = "volume_music";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					menu = "volume_sound";
+					menu_delay = 3;
+				}
+			}
+			#endregion /* Jingle Volume Navigation END */
+			
+			else
+			
 			#region /* Sound Volume Navigation */
 			if (menu == "volume_sound")
 			{
@@ -3312,7 +3396,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					menu = "volume_music";
+					menu = "volume_jingle";
 					menu_delay = 3;
 				}
 				else
