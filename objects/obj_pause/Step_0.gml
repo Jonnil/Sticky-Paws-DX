@@ -12,7 +12,7 @@ and (!instance_exists(obj_leveleditor))
 {
 	camera_set_view_target(view_camera[view_current], self);
 }
-display_set_gui_size(window_get_width(), window_get_height());
+scr_set_screen_size();
 #endregion /* Set screen size END */
 
 scr_toggle_fullscreen();

@@ -1,3 +1,5 @@
+scr_set_screen_size();
+
 scr_zoom_camera_draw_gui(10);
 
 if (global.convention_mode == true)

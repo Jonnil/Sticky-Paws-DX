@@ -51,7 +51,6 @@ function scr_player_move_save_whole_level_as_screenshot()
 		camera_set_view_border(view_camera[view_current], 1920, 1080); /* View Border */
 		camera_set_view_pos(view_camera[view_current], x, y); /* Set camera position to object's x and y positions again */
 		camera_set_view_size(view_camera[view_current], 1920, 1080);
-		display_set_gui_size(1920, 1080);
 		surface_resize(application_surface, 1920, 1080);
 		window_set_rectangle(0, 0, 1920, 1080);
 		scr_set_screen_size();

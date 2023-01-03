@@ -899,6 +899,11 @@ and (speed == 0)
 	if (instance_nearest(x, y, obj_level).clear_rate == "enter")
 	or (instance_nearest(x, y, obj_level).clear_rate == "clear")
 	{
+		if (brand_new_file == true)
+		{
+			audio_sound_gain(music_map, 0, 0);
+			audio_stop_all(); /* Stop all sound from playing whenever a brand new file is loaded */
+		}
 		
 		#region /* Save Player Position */
 		x = instance_nearest(x, y, obj_level).x;

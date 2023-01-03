@@ -5,6 +5,24 @@ if (sprite_index > 0)
 	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, image_blend, image_alpha);
 }
 
+#region /* Draw Rotate Arrow on top of objects that you rotate by clicking on the object /*
+if (object == level_object_id.id_basic_collectible)
+or (object == level_object_id.id_basic_collectible_2)
+or (object == level_object_id.id_basic_collectible_3)
+or (object == level_object_id.id_basic_collectible_4)
+or (object == level_object_id.id_basic_collectible_5)
+or (object == level_object_id.id_basic_collectible_6)
+or (object == level_object_id.id_basic_collectible_7)
+or (object == level_object_id.id_basic_collectible_8)
+or (object == level_object_id.id_oneway)
+or (object == level_object_id.id_oneway2)
+or (object == level_object_id.id_oneway3)
+or (object == level_object_id.id_oneway4)
+{
+	draw_sprite_ext(spr_rotate_arrow, image_index, x, y, scr_wave(draw_xscale * 0.3, draw_xscale * 0.2, 0.5, 0), scr_wave(draw_yscale * 0.3, draw_yscale * 0.2, 0.5, 0), draw_angle, image_blend, image_alpha);
+}
+#endregion /* Draw Rotate Arrow on top of objects that you rotate by clicking on the object END /*
+
 #region /* Change certain objects angle */
 
 /* Spring */

@@ -690,22 +690,6 @@ else
 }
 #endregion /* Draw Title Screen END */
 
-#region /* Create Camera */
-if (asset_get_type("obj_camera") == asset_object)
-{
-	if (!instance_exists(obj_camera))
-	{
-		instance_create_depth(x, y, 0, obj_camera);
-	}
-	else
-	if (instance_exists(obj_camera))
-	{
-		x = obj_camera.x;
-		y = obj_camera.y;
-	}
-}
-#endregion /* Create Camera END */
-
 #region /* Arcade Mode Menu */
 if (global.arcade_mode == true)
 {

@@ -551,6 +551,39 @@ function scr_select_custom_level_menu()
 		}
 		#endregion /* Pressing the Make button END */
 		
+		#region /* Pressing the Upload button */
+		if (menu == "level_editor_upload")
+		{
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (make_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (make_y) - 3 + 42))
+			and (mouse_check_button_pressed(mb_left))
+			and (global.controls_used_for_menu_navigation == "mouse")
+			or (key_a_pressed)
+			{
+				global.actually_play_edited_level = false;
+				global.play_edited_level = false;
+				menu_delay = 10;
+				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
+				if (ini_key_exists("info", "clear_check"))
+				{
+					var clear_check = ini_read_real("info", "clear_check", false);
+					if (clear_check == true)
+					{
+						menu = "upload_level_name";
+					}
+					else
+					{
+						menu = "clear_check_yes";
+					}
+				}
+				else
+				{
+					menu = "clear_check_yes";
+				}
+				ini_close();
+			}
+		}
+		#endregion /* Pressing the Upload button END */
+		
 		#region /* Pressing the Edit Name button */
 		if (menu == "level_editor_edit_name")
 		{
@@ -666,6 +699,145 @@ function scr_select_custom_level_menu()
 		
 	}
 	#endregion /* Draw sub menu END */
+	
+	#region /* Draw clear check menu */
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	if (menu == "clear_check_no")
+	or (menu == "clear_check_yes")
+	{
+		draw_set_alpha(0.75);
+		draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 128, l10n_text("Do a clear check?"), global.default_text_size * 1.9, c_black, c_white, 1);
+		
+		#region /* Clear Check No */
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 370, window_get_height() / 2 - 42, window_get_width() / 2 + 370, window_get_height() / 2 + 42))
+		and (global.controls_used_for_menu_navigation == "mouse")
+		{
+			if (menu_delay == 0)
+			{
+				menu = "clear_check_no";
+			}
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2, 1, 1, 180, c_white, 1);
+			draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2, 2, 2, 0, c_lime, 1);
+			scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
+			draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 370 + 32, window_get_height() / 2, 1, 1, 0, c_white, 1);
+		}
+		else
+		{
+			if (menu == "clear_check_no")
+			and (global.controls_used_for_menu_navigation == "keyboard")
+			or (menu == "clear_check_no")
+			and (global.controls_used_for_menu_navigation == "controller")
+			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2, 1, 1, 180, c_white, 1);
+				draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2, 2, 2, 0, c_lime, 1);
+				scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
+				draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 370 + 32, window_get_height() / 2, 1, 1, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2, 2, 2, 0, c_white, 1);
+				scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2, l10n_text("NO"), global.default_text_size * 2.3, c_white, c_black, 1);
+				draw_sprite_ext(spr_icons_back, 0, window_get_width() / 2 - 370 + 32, window_get_height() / 2, 1, 1, 0, c_white, 1);
+			}
+		}
+		#endregion /* Clear Check No END */
+	
+		#region /* Clear Check Yes */
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 370, window_get_height() / 2 + 84 - 42, window_get_width() / 2 + 370, window_get_height() / 2 + 84 + 42))
+		and (global.controls_used_for_menu_navigation == "mouse")
+		{
+			if (menu_delay == 0)
+			{
+				menu = "clear_check_yes";
+			}
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2 + 84, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2 + 84, 1, 1, 180, c_white, 1);
+			draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2 + 84, 2, 2, 0, c_lime, 1);
+			scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2 + 84, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
+		}
+		else
+		{
+			if (menu == "clear_check_yes")
+			and (global.controls_used_for_menu_navigation == "keyboard")
+			or (menu == "clear_check_yes")
+			and (global.controls_used_for_menu_navigation == "controller")
+			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 - 370 - 32, window_get_height() / 2 + 84, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, window_get_width() / 2 + 370 + 32, window_get_height() / 2 + 84, 1, 1, 180, c_white, 1);
+				draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2 + 84, 2, 2, 0, c_lime, 1);
+				scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2 + 84, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_menu_button, 0, window_get_width() / 2 - 370, window_get_height() / 2 + 84, 2, 2, 0, c_white, 1);
+				scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2 + 84, l10n_text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
+			}
+		}
+		#endregion /* Clear Check Yes END */
+	
+		#region /* Return to game */
+		if (key_b_pressed)
+		and (menu_delay == 0)
+		{
+			menu_delay = 3;
+			menu = "level_editor_upload"; /* Return to previous menu */
+		}
+		#endregion /* Return to game END */
+		
+		#region /* Clear Check Menu Navigation */
+		if (menu == "clear_check_no")
+		{
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 370, window_get_height() / 2 - 42, window_get_width() / 2 + 370, window_get_height() / 2 + 42))
+			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay == 0)
+			or (key_a_pressed)
+			and (menu_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "level_editor_upload"; /* Return to previous menu */
+			}
+			if (key_up)
+			and (menu_delay <= 0)
+			and (menu_joystick_delay <= 0)
+			or (key_down)
+			and (menu_delay <= 0)
+			and (menu_joystick_delay <= 0)
+			{
+				menu_delay = 3;
+				menu = "clear_check_yes";
+			}
+		}
+		else
+		if (menu == "clear_check_yes")
+		{
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 370, window_get_height() / 2 + 84 - 42, window_get_width() / 2 + 370, window_get_height() / 2 + 84 + 42))
+			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay == 0)
+			or (key_a_pressed)
+			and (menu_delay == 0)
+			{
+				game_end();
+			}
+			if (key_up)
+			and (menu_delay <= 0)
+			and (menu_joystick_delay <= 0)
+			or (key_down)
+			and (menu_delay <= 0)
+			and (menu_joystick_delay <= 0)
+			{
+				menu_delay = 3;
+				menu = "clear_check_no";
+			}
+		}
+		#endregion /* Clear Check Menu Navigation END */
+		
+	}
+	#endregion /* Draw clear check menu END */
 	
 	if (menu != "load_custom_level")
 	and (menu != "load_characters")
