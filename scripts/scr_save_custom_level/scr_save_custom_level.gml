@@ -88,6 +88,7 @@ function scr_save_custom_level()
 			{
 				ini_write_string("info", "first_created_on_version", "v" + string(scr_get_build_date()));
 			}
+			ini_write_real("info", "clear_check", false); /* When saving custom level, then the player has to do a clear check all over again, to ensure you can't just do a clear check and edit the level afterwards */
 			ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
 			if (instance_exists(obj_level_player_1_start))
 			{

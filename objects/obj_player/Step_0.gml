@@ -234,7 +234,7 @@ and (obj_camera.iris_xscale < 3)
 				and (global.play_edited_level == true)
 				and (global.character_select_in_this_menu == "level_editor")
 				and (asset_get_type("room_title") == asset_room)
-				{						
+				{
 					global.actually_play_edited_level = false;
 					global.play_edited_level = false;
 					if (!instance_exists(obj_camera.player1))

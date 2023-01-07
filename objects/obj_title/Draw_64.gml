@@ -717,6 +717,7 @@ if (global.arcade_mode == true)
 		player4_accept_selection = - 1;
 		global.character_select_in_this_menu = "main_game";
 		in_settings = false;
+		global.doing_clear_check = false;
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
 		scr_load_character_initializing();
@@ -795,6 +796,7 @@ and (global.arcade_mode = false)
 		player4_accept_selection = - 1;
 		global.character_select_in_this_menu = "main_game";
 		in_settings = false;
+		global.doing_clear_check = false;
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
 		scr_load_character_initializing();
@@ -834,6 +836,7 @@ and (global.arcade_mode = false)
 		and (global.demo == false)
 		{
 			scr_audio_play(menuvoice_leveleditor, volume_source.voice);
+			global.doing_clear_check = false;
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
 			global.character_select_in_this_menu = "level_editor";
@@ -2069,6 +2072,7 @@ and (iris_xscale <= 0.001)
 			
 			room_goto(room_leveleditor);
 		}
+		global.doing_clear_check = false;
 		global.actually_play_edited_level = true;
 		global.play_edited_level = true;
 	}
@@ -2478,6 +2482,7 @@ and (iris_xscale <= 0.001)
 			
 			room_goto(room_leveleditor);
 		}
+		global.doing_clear_check = false;
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
 	}

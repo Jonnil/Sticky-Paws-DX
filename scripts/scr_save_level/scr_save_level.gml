@@ -126,10 +126,16 @@ function scr_save_level()
 				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 			}
 			
+			#region /* If doing a clear check, and winning the level, then add in level information that you have done a clear check */
+			if (global.doing_clear_check == true)
+			{
+				ini_write_real("info", "clear_check", true);
+			}
+			#endregion /* If doing a clear check, and winning the level, then add in level information that you have done a clear check END */
+			
+			#region /* Save Fastest Time */
 			if (global.timeattack_realmillisecond > 2)
 			{
-				
-				#region /* Save Fastest Time Hard */
 				if (!ini_key_exists("rank", "rank_timeattack_realmillisecond"))
 				or (global.timeattack_realmillisecond < ini_read_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond))
 				{
@@ -138,9 +144,9 @@ function scr_save_level()
 					ini_write_real("rank", "rank_timeattack_minute", global.timeattack_minute);
 					ini_write_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond);
 				}
-				#endregion /* Save Fastest Time END */
-				
 			}
+			#endregion /* Save Fastest Time END */
+			
 			if (score > ini_read_real("rank", "rank_level_score", false))
 			{
 				ini_write_real("rank", "rank_level_score", score);

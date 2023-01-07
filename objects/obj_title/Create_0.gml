@@ -156,6 +156,7 @@ can_input_level_name = false;
 
 global.playergame = 0; /* Make the game singleplayer at the start of the game */
 global.player_has_entered_goal = false;
+global.doing_clear_check = false;
 global.actually_play_edited_level = false;
 global.play_edited_level = false;
 global.basic_collectibles = 0;

@@ -149,6 +149,7 @@ unused_y_origin_point = noone;
 view_hview_lerp = 0;
 view_wview_lerp = 0;
 goto_title_screen = false; /* If game is allowed to go to title screen yet or not. Need to load everything before going to title screen */
+global.doing_clear_check = false; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
 global.actually_play_edited_level = false; /* Actually playing finished edited level */
 global.all_loaded_characters = ds_list_create();
 global.all_loaded_custom_levels = ds_list_create(); /* The level editor will load every custom level folder */
