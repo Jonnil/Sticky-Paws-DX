@@ -48,7 +48,32 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 		and (menu != "load_characters")
 		and (menu != "load_official_level_template")
 		{
-			scr_draw_text_outlined(394 * (i - column * row) + 100 + 192, 226 * (column - scroll) + 250 + 184, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 1.2, c_white, c_black, 1);
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_middle);
+			/* Draw level name on top of level thumbnail */ scr_draw_text_outlined(394 * (i - column * row) + 100 + 192, 226 * (column - scroll) + 250 + 184, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 1.2, c_white, c_black, 1);
+			
+			#region /* Draw if level have been Clear Checked on top of level thumbnail */
+			if (i >= 1)
+			{
+				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, i)) + "/data/level_information.ini");
+				
+				var clear_check = ini_read_string("info", "clear_check", false);
+				
+				if (clear_check == true)
+				and (ini_key_exists("info", "clear_check"))
+				{
+					draw_set_halign(fa_left);
+					draw_set_valign(fa_middle);
+					if (global.select_level_index == i)
+					{
+						scr_draw_text_outlined(394 * (i - column * row) + 140, 226 * (column - scroll) + 274, string(l10n_text("Clear Checked")), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
+					}
+					draw_sprite_ext(spr_checkpoint, 1, 394 * (i - column * row) + 120, 226 * (column - scroll) + 274, scr_wave(0.4, 0.5, 1, 0), scr_wave(0.4, 0.5, 1, 0), 0, c_white, 1);
+				}
+				ini_close();
+			}
+			#endregion /* Draw if level have been Clear Checked on top of level thumbnail END */
+			
 		}
 	}
 	#endregion /* Draw Thumbnail END */

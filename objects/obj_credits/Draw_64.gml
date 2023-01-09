@@ -2,7 +2,7 @@ black_background_alpha = lerp(black_background_alpha, 0.75, 0.01);
 menu_cursor_index += 0.3;
 
 draw_set_alpha(black_background_alpha);
-draw_rectangle_colour(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+draw_rectangle_colour(0, 0, window_get_width() * 2, window_get_height() * 2, c_black, c_black, c_black, c_black, false);
 draw_set_alpha(1);
 
 #region /* Draw Skip Text */

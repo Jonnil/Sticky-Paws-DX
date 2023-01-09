@@ -159,110 +159,119 @@ and (instance_exists(obj_player))
 						
 					}
 					
-					global.checkpoint_x = x;
-					global.checkpoint_y = y;
-					global.checkpoint_millisecond = global.timeattack_millisecond;
-					global.checkpoint_second = global.timeattack_second;
-					global.checkpoint_minute = global.timeattack_minute;
-					global.checkpoint_realmillisecond = global.timeattack_realmillisecond;
-					
-					#region /* Save Level Editor Checkpoint */
-					if (asset_get_type("room_leveleditor") == asset_room)
-					and (room == room_leveleditor)
-					and (global.character_select_in_this_menu == "main_game")
-					and (global.actually_play_edited_level == true)
+					if (global.doing_clear_check == false) /* Don't save these things if you're doing a clear check. You need to restart from the very start if you lose, regardless if you hit checkpoints */
 					{
-						var uppercase_level_name;
-						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
-						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
-						var level_name = string(uppercase_level_name);
+						global.checkpoint_x = x;
+						global.checkpoint_y = y;
+						global.checkpoint_millisecond = global.timeattack_millisecond;
+						global.checkpoint_second = global.timeattack_second;
+						global.checkpoint_minute = global.timeattack_minute;
+						global.checkpoint_realmillisecond = global.timeattack_realmillisecond;
 						
-						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-						ini_write_real(level_name, "checkpoint_x", x);
-						ini_write_real(level_name, "checkpoint_y", y);
-						ini_write_real(level_name, "checkpoint_which_player", instance_nearest(x, y, obj_player).player);
-						if (instance_nearest(x, y, obj_player).hspeed < 0)
+						#region /* Save Level Editor Checkpoint */
+						if (asset_get_type("room_leveleditor") == asset_room)
+						and (room == room_leveleditor)
+						and (global.character_select_in_this_menu == "main_game")
+						and (global.actually_play_edited_level == true)
 						{
-							ini_write_real(level_name, "checkpoint_direction", -1);
-						}
-						else
-						{
-							ini_write_real(level_name, "checkpoint_direction", +1);
-						}
-						ini_write_real(level_name, "checkpoint_millisecond", global.timeattack_millisecond);
-						ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
-						ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
-						ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
-						ini_close();
-					}
-					else
-					if (asset_get_type("room_leveleditor") == asset_room)
-					and (room == room_leveleditor)
-					and (global.character_select_in_this_menu == "level_editor")
-					and (global.actually_play_edited_level == true)
-					{
-						var uppercase_level_name;
-						uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
-						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
-						var level_name = string(uppercase_level_name);
+							var uppercase_level_name;
+							uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
+							uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
+							var level_name = string(uppercase_level_name);
 							
-						ini_open(working_directory + "/save_files/custom_level_save.ini");
-						ini_write_real(level_name, "checkpoint_x", x);
-						ini_write_real(level_name, "checkpoint_y", y);
-						ini_write_real(level_name, "checkpoint_which_player", instance_nearest(x, y, obj_player).player);
-						if (instance_nearest(x, y, obj_player).hspeed < 0)
-						{
-							ini_write_real(level_name, "checkpoint_direction", -1);
+							ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+							ini_write_real(level_name, "checkpoint_x", x);
+							ini_write_real(level_name, "checkpoint_y", y);
+							ini_write_real(level_name, "checkpoint_which_player", instance_nearest(x, y, obj_player).player);
+							if (instance_nearest(x, y, obj_player).hspeed < 0)
+							{
+								ini_write_real(level_name, "checkpoint_direction", -1);
+							}
+							else
+							{
+								ini_write_real(level_name, "checkpoint_direction", +1);
+							}
+							ini_write_real(level_name, "checkpoint_millisecond", global.timeattack_millisecond);
+							ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
+							ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
+							ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
+							ini_close();
 						}
 						else
+						if (asset_get_type("room_leveleditor") == asset_room)
+						and (room == room_leveleditor)
+						and (global.character_select_in_this_menu == "level_editor")
+						and (global.actually_play_edited_level == true)
 						{
-							ini_write_real(level_name, "checkpoint_direction", +1);
+							var uppercase_level_name;
+							uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
+							uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
+							var level_name = string(uppercase_level_name);
+							
+							ini_open(working_directory + "/save_files/custom_level_save.ini");
+							ini_write_real(level_name, "checkpoint_x", x);
+							ini_write_real(level_name, "checkpoint_y", y);
+							ini_write_real(level_name, "checkpoint_which_player", instance_nearest(x, y, obj_player).player);
+							if (instance_nearest(x, y, obj_player).hspeed < 0)
+							{
+								ini_write_real(level_name, "checkpoint_direction", -1);
+							}
+							else
+							{
+								ini_write_real(level_name, "checkpoint_direction", +1);
+							}
+							ini_write_real(level_name, "checkpoint_millisecond", global.timeattack_millisecond);
+							ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
+							ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
+							ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
+							ini_close();
 						}
-						ini_write_real(level_name, "checkpoint_millisecond", global.timeattack_millisecond);
-						ini_write_real(level_name, "checkpoint_second", global.timeattack_second);
-						ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
-						ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
-						ini_close();
-					}
-					#endregion /* Save Level Editor Checkpoint END */
-					
-					#region /* Load correct sprite when you get the checkpoint */
-					if (global.checkpoint_x == x)
-					and (global.checkpoint_y == y)
-					{
-						if (instance_exists(obj_camera))
-						and (instance_exists(obj_player))
+						#endregion /* Save Level Editor Checkpoint END */
+						
+						#region /* Load correct sprite when you get the checkpoint */
+						if (global.checkpoint_x == x)
+						and (global.checkpoint_y == y)
 						{
-							if (checkpoint_which_player == 1)
-							and (obj_camera.player1 > 0)
-							and (instance_exists(obj_camera.player1))
-							and (obj_camera.player1.sprite_checkpoint_activated > 0)
+							if (instance_exists(obj_camera))
+							and (instance_exists(obj_player))
 							{
-								sprite_index = obj_camera.player1.sprite_checkpoint_activated;
-							}
-							else
-							if (checkpoint_which_player = 2)
-							and (obj_camera.player2 > 0)
-							and (instance_exists(obj_camera.player2))
-							and (obj_camera.player2.sprite_checkpoint_activated > 0)
-							{
-								sprite_index = obj_camera.player2.sprite_checkpoint_activated;
-							}
-							else
-							if (checkpoint_which_player = 3)
-							and (obj_camera.player3 > 0)
-							and (instance_exists(obj_camera.player3))
-							and (obj_camera.player3.sprite_checkpoint_activated > 0)
-							{
-								sprite_index = obj_camera.player3.sprite_checkpoint_activated;
-							}
-							else
-							if (checkpoint_which_player = 4)
-							and (obj_camera.player4 > 0)
-							and (instance_exists(obj_camera.player4))
-							and (obj_camera.player4.sprite_checkpoint_activated > 0)
-							{
-								sprite_index = obj_camera.player4.sprite_checkpoint_activated;
+								if (checkpoint_which_player == 1)
+								and (obj_camera.player1 > 0)
+								and (instance_exists(obj_camera.player1))
+								and (obj_camera.player1.sprite_checkpoint_activated > 0)
+								{
+									sprite_index = obj_camera.player1.sprite_checkpoint_activated;
+								}
+								else
+								if (checkpoint_which_player = 2)
+								and (obj_camera.player2 > 0)
+								and (instance_exists(obj_camera.player2))
+								and (obj_camera.player2.sprite_checkpoint_activated > 0)
+								{
+									sprite_index = obj_camera.player2.sprite_checkpoint_activated;
+								}
+								else
+								if (checkpoint_which_player = 3)
+								and (obj_camera.player3 > 0)
+								and (instance_exists(obj_camera.player3))
+								and (obj_camera.player3.sprite_checkpoint_activated > 0)
+								{
+									sprite_index = obj_camera.player3.sprite_checkpoint_activated;
+								}
+								else
+								if (checkpoint_which_player = 4)
+								and (obj_camera.player4 > 0)
+								and (instance_exists(obj_camera.player4))
+								and (obj_camera.player4.sprite_checkpoint_activated > 0)
+								{
+									sprite_index = obj_camera.player4.sprite_checkpoint_activated;
+								}
+								else
+								{
+									sprite_index = spr_checkpoint;
+									image_index = 1;
+									image_speed = 0;
+								}
 							}
 							else
 							{
@@ -271,15 +280,9 @@ and (instance_exists(obj_player))
 								image_speed = 0;
 							}
 						}
-						else
-						{
-							sprite_index = spr_checkpoint;
-							image_index = 1;
-							image_speed = 0;
-						}
+						#endregion /* Load correct sprite when you get the checkpoint END */
+						
 					}
-					#endregion /* Load correct sprite when you get the checkpoint END */
-				
 				}
 			}
 		}

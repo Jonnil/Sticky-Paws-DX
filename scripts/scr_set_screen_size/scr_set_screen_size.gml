@@ -1,47 +1,47 @@
 function scr_set_screen_size()
 {
 	
-	#region /* Set GUI size */
-	if (keyboard_check(ord("1")))
-	{
-		var gui_width = 768;
-		var gui_height = 1024;
-	}
-	else
-	if (keyboard_check(ord("2")))
-	{
-		var gui_width = 76;
-		var gui_height = 102;
-	}
-	else
-	if (keyboard_check(ord("3")))
-	{
-		var gui_width = 7680;
-		var gui_height = 10240;
-	}
-	else
-	if (keyboard_check(ord("4")))
-	{
-		var gui_width = 7;
-		var gui_height = 10;
-	}
-	else
-	{
+	//#region /* Set GUI size */
+	//if (keyboard_check(ord("1")))
+	//{
+	//	var gui_width = 768;
+	//	var gui_height = 1024;
+	//}
+	//else
+	//if (keyboard_check(ord("2")))
+	//{
+	//	var gui_width = 76;
+	//	var gui_height = 102;
+	//}
+	//else
+	//if (keyboard_check(ord("3")))
+	//{
+	//	var gui_width = 7680;
+	//	var gui_height = 10240;
+	//}
+	//else
+	//if (keyboard_check(ord("4")))
+	//{
+	//	var gui_width = 7;
+	//	var gui_height = 10;
+	//}
+	//else
+	//{
 		var gui_width = window_get_width();
 		var gui_height = window_get_height();
-	}
+	//}
 	
-	var gui_xscale = 1;
-	var gui_yscale = 1;
+	//var gui_xscale = 1;
+	//var gui_yscale = 1;
 	
 	display_set_gui_size(gui_width, gui_height);
-	//display_set_gui_maximise(gui_xscale, gui_yscale, 0, 0);
-	#endregion /* Set GUI size END */
+	////display_set_gui_maximise(gui_xscale, gui_yscale, 0, 0);
+	//#endregion /* Set GUI size END */
 	
-	scr_draw_text_outlined(32, 32, gui_width)
-	scr_draw_text_outlined(32, 32 + 32, gui_height)
-	scr_draw_text_outlined(32, 32 + 64, gui_xscale)
-	scr_draw_text_outlined(32, 32 + 96, gui_yscale)
+	//scr_draw_text_outlined(32, 32, gui_width)
+	//scr_draw_text_outlined(32, 32 + 32, gui_height)
+	//scr_draw_text_outlined(32, 32 + 64, gui_xscale)
+	//scr_draw_text_outlined(32, 32 + 96, gui_yscale)
 	
 	#region /* Set screen size */
 	if (variable_instance_exists(self, "camera"))

@@ -987,6 +987,12 @@ if (global.doing_clear_check == true)
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("Clear from the start"), global.default_text_size, c_white, c_black, 1);
+	global.checkpoint_x = 0;
+	global.checkpoint_y = 0;
+	global.checkpoint_millisecond = 0;
+	global.checkpoint_second = 0;
+	global.checkpoint_minute = 0;
+	global.checkpoint_realmillisecond = 0;
 }
 
 scr_draw_cursor_mouse();
@@ -1007,7 +1013,7 @@ else
 if (global.enable_transitions == true)
 {
 	draw_set_alpha(black_screen_gui_alpha);
-	draw_rectangle_color(0, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, 0, window_get_width() * 2, window_get_height() * 2, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
 #endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */
