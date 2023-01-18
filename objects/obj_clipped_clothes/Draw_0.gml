@@ -52,7 +52,7 @@ and (fall = false)
 		{
 			with(instance_create_depth(x, y - 16, 0, obj_clipper))
 			{
-				motion_set(90 +random_range(- 10, + 10), random_range(5, 10));
+				motion_set(90 + random_range(- 10, + 10), random_range(5, 10));
 			}
 		}
 		else

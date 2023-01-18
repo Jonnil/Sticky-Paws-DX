@@ -62,8 +62,8 @@ or (object == level_object_id.id_water_level_change_faster)
 else
 
 /* Arrows */
-if (object == 64)
-or (object == 65)
+if (object == level_object_id.id_arrow_sign)
+or (object == level_object_id.id_arrow_sign_small)
 {
 	draw_angle = point_direction(x, y, second_x, second_y);
 }

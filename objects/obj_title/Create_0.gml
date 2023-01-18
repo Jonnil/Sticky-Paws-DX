@@ -25,7 +25,11 @@ rectangle_bottom_right_of_thumbnail_y = 226 + 250 + 216 + 3;
 
 level_editor_edit_name = false; /* If you are editing an already made level's name or not */
 old_level_name = ""; /* Need to remember original name of level, so that renaming level doesn't actually happen if you haven't edited the name */
-options_and_quit_y = display_get_gui_height() / 2 + 100 + 120;
+old_level_description = ""; /* Need to remember original description of level, so that renaming level doesn't actually happen if you haven't edited the description */
+go_to_menu_after_loading_custom_levels = ""; /* Sometimes you want to go to another menu after loading custom levels, instead of the default */
+show_level_editor_corner_menu = true; /* If the top-left corner menu should be shown and navigatable or not. In some cases like uploading a level, the menu should not show up */
+thumbnail_x_offset = 0; /* Level thumbnail x offset, for when windows size is too small to fit every thumbnail, you need to shift the x position a bit to fit everything */
+show_delete_button = true; /* If delete custom level buttons should show up or not. Sometimes you don't want it to show up when the feature is unavailable */
 file_found = "";
 file_load_timer = 0;
 level_find_pos = 0;
@@ -152,6 +156,7 @@ can_input_player2_name = false;
 can_input_player3_name = false;
 can_input_player4_name = false;
 can_input_level_name = false;
+can_input_level_description = false;
 #endregion /* What player can enter a name END */
 
 global.playergame = 0; /* Make the game singleplayer at the start of the game */

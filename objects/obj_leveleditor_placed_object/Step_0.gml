@@ -169,19 +169,36 @@ and (obj_leveleditor.pause == false)
 }
 
 #region /* Change certain objects angle */
-if (place_object_angle == true)
-{	
-	if (instance_exists(obj_leveleditor))
-	{
-		second_x = obj_leveleditor.x;
-		second_y = obj_leveleditor.y;
+
+/* Some objects should not save second_x and second_y, only objects that actually rotate should save */
+if (object == level_object_id.id_spring)
+or (object == level_object_id.id_door)
+or (object == level_object_id.id_water_level_change_slow)
+or (object == level_object_id.id_water_level_change_fast)
+or (object == level_object_id.id_water_level_change_faster)
+or (object == level_object_id.id_arrow_sign)
+or (object == level_object_id.id_arrow_sign_small)
+or (object == level_object_id.id_water)
+{
+	if (place_object_angle == true)
+	{	
+		if (instance_exists(obj_leveleditor))
+		{
+			second_x = obj_leveleditor.x;
+			second_y = obj_leveleditor.y;
+		}
+		if (mouse_check_button_released(mb_left))
+		or (instance_exists(obj_leveleditor))
+		and (obj_leveleditor.key_a_released)
+		{
+			place_object_angle = false;
+		}
 	}
-	if (mouse_check_button_released(mb_left))
-	or (instance_exists(obj_leveleditor))
-	and (obj_leveleditor.key_a_released)
-	{
-		place_object_angle = false;
-	}
+}
+else
+{
+	second_x = 0;
+	second_y = 0;
 }
 #endregion /* Change certain objects angle END */
 

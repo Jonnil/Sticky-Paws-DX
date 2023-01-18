@@ -330,7 +330,7 @@ and (sprite_index > 0)
 and (intro_animation = "")
 and (invincible_timer <= false)
 {
-	draw_sprite_ext(sprite_index, image_index, xx +random_range(- 8, + 8), yy+random_range(- 8, + 8), draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha * collision_mask_alpha);
+	draw_sprite_ext(sprite_index, image_index, xx + random_range(- 8, + 8), yy + random_range(- 8, + 8), draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha * collision_mask_alpha);
 }
 else
 if (takendamage%2 == 0)
@@ -438,7 +438,7 @@ if (invincible_timer >= true)
 {
 	if (floor(random(10 - 1)) == 0)
 	{
-		effect_create_above(ef_star, x +random_range(- 50, + 50), y+random_range(- 50, + 50), 0, c_white);
+		effect_create_above(ef_star, x + random_range(- 50, + 50), y+ random_range(- 50, + 50), 0, c_white);
 	}
 }
 #endregion /* Invinsible END */

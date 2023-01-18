@@ -2,9 +2,9 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 {
 	
 	#region /* Red rectangle behind the level thumbnail to indicate what level you are selecting */
-	var top_left_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 - 3;
+	var top_left_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 - 3 + thumbnail_x_offset;
 	var top_left_of_thumbnail_y = 226 * (column - scroll) + 250 - 3;
-	var bottom_right_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 + 384 + 3;
+	var bottom_right_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 + 384 + 3 + thumbnail_x_offset;
 	var bottom_right_of_thumbnail_y = 226 * (column - scroll) + 250 + 216 + 3;
 	
 	if (menu!= "back_from_level_editor")
@@ -37,7 +37,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	for(i = 0; i < ds_list_size(global.thumbnail_sprite); i += 1)
 	{
 		column = floor(i/ row)
-		draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394 * (i - column * row) + 100, 226 * (column - scroll) + 250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);
+		draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394 * (i - column * row) + 100 + thumbnail_x_offset, 226 * (column - scroll) + 250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);
 		if (show_first_thumbnail_name = false)
 		and (i >= 1)
 		and (menu != "load_custom_level")
@@ -50,7 +50,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			/* Draw level name on top of level thumbnail */ scr_draw_text_outlined(394 * (i - column * row) + 100 + 192, 226 * (column - scroll) + 250 + 184, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 1.2, c_white, c_black, 1);
+			/* Draw level name on top of level thumbnail */ scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 250 + 184, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 1.2, c_white, c_black, 1);
 			
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
 			if (i >= 1)
@@ -66,9 +66,9 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 					draw_set_valign(fa_middle);
 					if (global.select_level_index == i)
 					{
-						scr_draw_text_outlined(394 * (i - column * row) + 140, 226 * (column - scroll) + 274, string(l10n_text("Clear Checked")), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
+						scr_draw_text_outlined(394 * (i - column * row) + 140 + thumbnail_x_offset, 226 * (column - scroll) + 274, string(l10n_text("Clear Checked")), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
 					}
-					draw_sprite_ext(spr_checkpoint, 1, 394 * (i - column * row) + 120, 226 * (column - scroll) + 274, scr_wave(0.4, 0.5, 1, 0), scr_wave(0.4, 0.5, 1, 0), 0, c_white, 1);
+					draw_sprite_ext(spr_checkpoint, 1, 394 * (i - column * row) + 120 + thumbnail_x_offset, 226 * (column - scroll) + 274, scr_wave(0.4, 0.5, 1, 0), scr_wave(0.4, 0.5, 1, 0), 0, c_white, 1);
 				}
 				ini_close();
 			}

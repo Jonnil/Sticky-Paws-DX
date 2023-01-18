@@ -59,6 +59,7 @@ if (quit_level_editor == false)
 		or (menu == "level_editor_options")
 		or (menu == "generate_level_map")
 		or (menu == "open_custom_levels_folder")
+		or (menu == "level_editor_upload")
 		or (menu == "quit")
 		{
 			
@@ -359,13 +360,66 @@ if (quit_level_editor == false)
 			{
 				menu_delay = 3;
 				can_navigate = true;
-				menu = "quit";
+				menu = "level_editor_upload";
 			}
 			#endregion /* Open Custom Levels Folder END */
 			
-			#region /* If menu is on quit */
-			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Save and Quit"), "quit", noone);
+			#region /* If menu is on upload */
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, l10n_text("Upload"), "level_editor_upload", noone);
 			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42, window_get_width() / 2 + 185, window_get_height() / 2 + 42 + 42 + 42))
+			and (mouse_check_button_pressed(mb_left))
+			and (menu_delay == 0)
+			{
+				menu_delay = 10;
+				quit_level_editor = true;
+				can_input_level_name = false;
+				pause = false;
+			}
+			
+			if (menu == "level_editor_upload")
+			and (can_input_level_name == false)
+			{
+				if (key_up)
+				and (menu_joystick_delay == 0)
+				and (menu_delay == 0)
+				{
+					menu_delay = 1;
+					menu = "open_custom_levels_folder";
+				}
+				else
+				if (key_down)
+				and (menu_joystick_delay == 0)
+				and (menu_delay == 0)
+				{
+					menu_delay = 1;
+					menu = "quit";
+				}
+				if (key_a_pressed)
+				or (keyboard_check_pressed(vk_enter))
+				{
+					if (menu_delay == 0)
+					{
+						menu_delay = 10;
+						quit_level_editor = false;
+						can_input_level_name = false;
+						pause = true;
+					}
+				}
+				if (key_b_pressed)
+				and (menu_delay == 0)
+				{
+					menu_delay = 10;
+					quit_level_editor = false;
+					can_input_level_name = false;
+					pause = false;
+					can_navigate = false;
+				}
+			}
+			#endregion /* If menu is on upload END */
+			
+			#region /* If menu is on quit */
+			draw_menu_button(window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42 + 42, l10n_text("Save and Quit"), "quit", noone);
+			if (point_in_rectangle(cursor_x, cursor_y, window_get_width() / 2 - 185, window_get_height() / 2 + 42 + 42 + 42, window_get_width() / 2 + 185, window_get_height() / 2 + 42 + 42 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			{
@@ -383,7 +437,7 @@ if (quit_level_editor == false)
 				and (menu_delay == 0)
 				{
 					menu_delay = 1;
-					menu = "open_custom_levels_folder";
+					menu = "level_editor_upload";
 				}
 				else
 				if (key_down)
@@ -571,6 +625,8 @@ if (quit_level_editor == false)
 			
 		}
 		#endregion /* Make the menu invisible when entering the options menu END */
+	
+	scr_draw_upload_level_menu();
 	
 	#region /* PLAYER 1 INPUT LEVEL NAME NOW */
 	if (menu == "input_level_name")

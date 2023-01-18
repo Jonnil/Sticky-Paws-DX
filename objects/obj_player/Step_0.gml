@@ -4080,6 +4080,21 @@ and (sprite_index != sprite_vine_stay)
 }
 #endregion /* Sprite standing with item in front END */
 
+if (rope_swing == true)
+{
+	if (speed > 10)
+	{
+		if (sprite_tongue_swing > noone){sprite_index = sprite_tongue_swing;}else
+		if (sprite_tongue_swing_still > noone){sprite_index = sprite_tongue_swing_still;}
+	}
+	else
+	{
+		if (sprite_tongue_swing_still > noone){sprite_index = sprite_tongue_swing_still;}else
+		if (sprite_tongue_swing > noone){sprite_index = sprite_tongue_swing;}
+	}
+	angle = point_direction(grapple_x, grapple_y, x, y) + 90;
+}
+
 #region /* Glide */
 if (allow_glide == true)
 {

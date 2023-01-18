@@ -527,7 +527,7 @@ function scr_options_menu()
 		{
 			if (global.settings_sidebar_menu == "broadcast_settings")
 			{
-				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width,broadcast_settings_y, 370,broadcast_settings_y + 40 - 1))
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, broadcast_settings_y, 370, broadcast_settings_y + 40 - 1))
 				and (global.controls_used_for_menu_navigation == "mouse")
 				{
 					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +broadcast_settings_y, 1, 1, 0, c_green, 1);
@@ -541,7 +541,7 @@ function scr_options_menu()
 			}
 			else
 			{
-				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width,broadcast_settings_y, 370,broadcast_settings_y + 40 - 1))
+				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, broadcast_settings_y, 370, broadcast_settings_y + 40 - 1))
 				and (global.controls_used_for_menu_navigation == "mouse")
 				{
 					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +broadcast_settings_y, 1, 1, 0, c_lime, 1);
@@ -819,7 +819,9 @@ function scr_options_menu()
 		#endregion /* Click Back END */
 	
 		else
-		/* Back */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, 0 - room_height, 370, 40 - 1))
+		
+		#region /* Back */
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, 0 - room_height, 370, 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button(mb_left))
 		and (menu_delay == 0)
@@ -828,16 +830,43 @@ function scr_options_menu()
 			input_key = false;
 			can_navigate_settings_sidebar = true;
 		}
+		#endregion /* Back END */
+		
 		else
 	
-		/* Click Accessibility */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, accessibility_settings_y, 370,(accessibility_settings_y + 40) - 1))
+		#region /* Click Accessibility */
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, accessibility_settings_y, 370,(accessibility_settings_y + 40) - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.settings_sidebar_menu = "accessibility_settings") and (mouse_check_button_released(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "accessibility_settings";menu_delay = 3; input_key = false;can_navigate_settings_sidebar = false;menu = "assist_enable";}else
-		/* Accessibility */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, accessibility_settings_y, 370,(accessibility_settings_y + 40) - 1))
+		and (global.settings_sidebar_menu = "accessibility_settings")
+		and (mouse_check_button_released(mb_left))
+		and (menu_delay == 0)
+		{
+			global.settings_sidebar_menu = "accessibility_settings";
+			menu_delay = 3;
+			input_key = false;
+			can_navigate_settings_sidebar = false;
+			menu = "assist_enable";
+		}
+		#endregion /* Click Accessibility END */
+		
+		else
+		
+		#region /* Accessibility */
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, accessibility_settings_y, 370,(accessibility_settings_y + 40) - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "accessibility_settings"; input_key = false;can_navigate_settings_sidebar = true;}else
-	
-		/* Click Game */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, game_settings_y, 370,(game_settings_y + 40) - 1))
+		and (mouse_check_button(mb_left))
+		and (menu_delay == 0)
+		{
+			global.settings_sidebar_menu = "accessibility_settings";
+			input_key = false;
+			can_navigate_settings_sidebar = true;
+		}
+		#endregion /* Accessibility END */
+		
+		else
+		
+		#region /* Click Game */
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, game_settings_y, 370,(game_settings_y + 40) - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (global.settings_sidebar_menu = "game_settings")
 		and (mouse_check_button_released(mb_left))
@@ -856,58 +885,173 @@ function scr_options_menu()
 				menu = "automatically_pause_when_window_is_unfocused_settings";
 			}
 		}
-		/* Game */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, game_settings_y, 370,(game_settings_y + 40) - 1))
+		#endregion /* Click Game END */
+		
+		#region /* Game */
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, game_settings_y, 370,(game_settings_y + 40) - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "game_settings"; input_key = false;can_navigate_settings_sidebar = true;}
-	
+		and (mouse_check_button(mb_left))
+		and (menu_delay == 0)
+		{
+			global.settings_sidebar_menu = "game_settings";
+			input_key = false;
+			can_navigate_settings_sidebar = true;
+		}
+		#endregion /* Game END */
+		
 		if (global.enable_multiplayer_settings == true)
 		{
-			/* Click Multiplayer */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, multiplayer_settings_y, 370, multiplayer_settings_y + 40 - 1))
+			
+			#region /* Click Multiplayer */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, multiplayer_settings_y, 370, multiplayer_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "multiplayer_settings") and (mouse_check_button_released(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "multiplayer_settings";menu_delay = 3; input_key = false;can_navigate_settings_sidebar = false;}
-			/* Multiplayer */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, multiplayer_settings_y, 370, multiplayer_settings_y + 40 - 1))
+			and (global.settings_sidebar_menu = "multiplayer_settings")
+			and (mouse_check_button_released(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "multiplayer_settings";
+				menu_delay = 3;
+				input_key = false;
+				can_navigate_settings_sidebar = false;
+			}
+			#endregion /* Click Multiplayer END */
+			
+			#region /* Multiplayer */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, multiplayer_settings_y, 370, multiplayer_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (mouse_check_button(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "multiplayer_settings"; input_key = false;can_navigate_settings_sidebar = true;}
+			and (mouse_check_button(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "multiplayer_settings";
+				input_key = false;
+				can_navigate_settings_sidebar = true;
+			}
+			#endregion /* Multiplayer END */
+			
 		}
 	
-		/* Click Keyboard and Mouse */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, keyboard_and_mouse_settings_y, 370, keyboard_and_mouse_settings_y + 40 - 1))
+		#region /* Click Keyboard and Mouse */
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, keyboard_and_mouse_settings_y, 370, keyboard_and_mouse_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.settings_sidebar_menu = "keyboard_and_mouse_settings") and (mouse_check_button_released(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "keyboard_and_mouse_settings";menu_delay = 3; input_key = false;can_navigate_settings_sidebar = false;menu = "remap_select_player";}
-		/* Keyboard and Mouse */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, keyboard_and_mouse_settings_y, 370, keyboard_and_mouse_settings_y + 40 - 1))
+		and (global.settings_sidebar_menu = "keyboard_and_mouse_settings")
+		and (mouse_check_button_released(mb_left))
+		and (menu_delay == 0)
+		{
+			global.settings_sidebar_menu = "keyboard_and_mouse_settings";
+			menu_delay = 3;
+			input_key = false;
+			can_navigate_settings_sidebar = false;
+			menu = "remap_select_player";
+		}
+		#endregion /* Click Keyboard and Mouse END */
+		
+		#region /* Keyboard and Mouse */
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, keyboard_and_mouse_settings_y, 370, keyboard_and_mouse_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "keyboard_and_mouse_settings"; input_key = false;can_navigate_settings_sidebar = true;}
-	
+		and (mouse_check_button(mb_left))
+		and (menu_delay == 0)
+		{
+			global.settings_sidebar_menu = "keyboard_and_mouse_settings";
+			input_key = false;
+			can_navigate_settings_sidebar = true;
+		}
+		#endregion /* Keyboard and Mouse END */
+		
 		if (global.enable_controller_settings == true)
 		{
-			/* Click Controller */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, controller_settings_y, 370, controller_settings_y + 40 - 1))
+			
+			#region /* Click Controller */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, controller_settings_y, 370, controller_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "controller_settings") and (mouse_check_button_released(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "controller_settings";menu_delay = 3; input_key = false;can_navigate_settings_sidebar = false;menu = "remap_select_player";}
-			/* Controller */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, controller_settings_y, 370, controller_settings_y + 40 - 1))
+			and (global.settings_sidebar_menu = "controller_settings")
+			and (mouse_check_button_released(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "controller_settings";
+				menu_delay = 3;
+				input_key = false;
+				can_navigate_settings_sidebar = false;
+				menu = "remap_select_player";
+			}
+			#endregion /* Click Controller END */
+			
+			#region /* Controller */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, controller_settings_y, 370, controller_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (mouse_check_button(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "controller_settings"; input_key = false;can_navigate_settings_sidebar = true;}
+			and (mouse_check_button(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "controller_settings";
+				input_key = false;
+				can_navigate_settings_sidebar = true;
+			}
+			#endregion /* Controller END */
+			
 		}
 	
 		if (global.enable_touch_settings == true)
 		{
-			/* Click Touch */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, touch_settings_y, 370, touch_settings_y + 40 - 1))
+			
+			#region /* Click Touch */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, touch_settings_y, 370, touch_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "touch_settings") and (mouse_check_button_released(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "touch_settings";menu_delay = 3; input_key = false;can_navigate_settings_sidebar = false;}
-			/* Touch */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, touch_settings_y, 370, touch_settings_y + 40 - 1))
+			and (global.settings_sidebar_menu = "touch_settings")
+			and (mouse_check_button_released(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "touch_settings";
+				menu_delay = 3;
+				input_key = false;
+				can_navigate_settings_sidebar = false;
+			}
+			#endregion /* Click Touch END */
+			
+			#region /* Touch */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, touch_settings_y, 370, touch_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (mouse_check_button(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "touch_settings"; input_key = false;can_navigate_settings_sidebar = true;}
+			and (mouse_check_button(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "touch_settings";
+				input_key = false;
+				can_navigate_settings_sidebar = true;
+			}
+			#endregion /* Touch END */
+			
 		}
 	
 		if (global.enable_profile_settings == true)
 		{
-			/* Click Profile */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, profile_settings_y, 370, profile_settings_y + 40 - 1))
+			
+			#region /* Click Profile */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, profile_settings_y, 370, profile_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "profile_settings") and (mouse_check_button_released(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "profile_settings";menu_delay = 3; input_key = false;can_navigate_settings_sidebar = false;}
-			/* Profile */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, profile_settings_y, 370, profile_settings_y + 40 - 1))
+			and (global.settings_sidebar_menu = "profile_settings")
+			and (mouse_check_button_released(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "profile_settings";
+				menu_delay = 3;
+				input_key = false;
+				can_navigate_settings_sidebar = false;
+			}
+			#endregion /* Click Profile END */
+			
+			#region /* Profile */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, profile_settings_y, 370, profile_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (mouse_check_button(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "profile_settings"; input_key = false;can_navigate_settings_sidebar = true;}
+			and (mouse_check_button(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "profile_settings";
+				input_key = false;
+				can_navigate_settings_sidebar = true;
+			}
+			#endregion /* Profile END */
+			
 		}
 	
-		/* Click Video */
+		#region /* Click Video */
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, video_settings_y, 370, video_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (global.settings_sidebar_menu = "video_settings")
@@ -929,7 +1073,9 @@ function scr_options_menu()
 				menu = "interpolate";
 			}
 		}
-		/* Video */
+		#endregion /* Click Video END */
+		
+		#region /* Video */
 		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, video_settings_y, 370, video_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button(mb_left))
@@ -939,17 +1085,39 @@ function scr_options_menu()
 			input_key = false;
 			can_navigate_settings_sidebar = true;
 		}
-	
-		/* Click Audio */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, audio_settings_y, 370, audio_settings_y + 40 - 1))
+		#endregion /* Video END */
+		
+		#region /* Click Audio */
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, audio_settings_y, 370, audio_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.settings_sidebar_menu = "audio_settings") and (mouse_check_button_released(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "audio_settings";menu_delay = 3; input_key = false;can_navigate_settings_sidebar = false;menu = "volume_main";}
-		/* Audio */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, audio_settings_y, 370, audio_settings_y + 40 - 1))
+		and (global.settings_sidebar_menu = "audio_settings")
+		and (mouse_check_button_released(mb_left))
+		and (menu_delay == 0)
+		{
+			global.settings_sidebar_menu = "audio_settings";
+			menu_delay = 3;
+			input_key = false;
+			can_navigate_settings_sidebar = false;
+			menu = "volume_main";
+		}
+		#endregion /* Click Audio END */
+		
+		#region /* Audio */
+		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, audio_settings_y, 370, audio_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "audio_settings"; input_key = false;can_navigate_settings_sidebar = true;}
-	
+		and (mouse_check_button(mb_left))
+		and (menu_delay == 0)
+		{
+			global.settings_sidebar_menu = "audio_settings";
+			input_key = false;
+			can_navigate_settings_sidebar = true;
+		}
+		#endregion /* Audio END */
+		
 		if (global.enable_global_resources_settings == true)
 		{
-			/* Click Global Resources */
+			
+			#region /* Click Global Resources */
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, global_resources_settings_y, 370, global_resources_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (global.settings_sidebar_menu = "global_resources_settings")
@@ -971,7 +1139,9 @@ function scr_options_menu()
 					menu = "title_backgrounds";
 				}
 			}
-			/* Global Resources */
+			#endregion /* Click Global Resources END */
+			
+			#region /* Global Resources */
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, global_resources_settings_y, 370, global_resources_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button(mb_left))
@@ -981,21 +1151,46 @@ function scr_options_menu()
 				input_key = false;
 				can_navigate_settings_sidebar = true;
 			}
+			#endregion /* Global Resources END */
+			
 		}
 	
 		if (global.enable_storage_settings == true)
 		{
-			/* Click Storage */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, storage_settings_y, 370, storage_settings_y + 40 - 1))
+			
+			#region /* Click Storage */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, storage_settings_y, 370, storage_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "storage_settings") and (mouse_check_button_released(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "storage_settings";menu_delay = 3; input_key = false;can_navigate_settings_sidebar = false;menu = "file_select";}
-			/* Storage */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, storage_settings_y, 370, storage_settings_y + 40 - 1))
+			and (global.settings_sidebar_menu = "storage_settings")
+			and (mouse_check_button_released(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "storage_settings";
+				menu_delay = 3;
+				input_key = false;
+				can_navigate_settings_sidebar = false;
+				menu = "file_select";
+			}
+			#endregion /* Click Storage END */
+			
+			#region /* Storage */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, storage_settings_y, 370, storage_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (mouse_check_button(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "storage_settings"; input_key = false;can_navigate_settings_sidebar = true;}
+			and (mouse_check_button(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "storage_settings";
+				input_key = false;
+				can_navigate_settings_sidebar = true;
+			}
+			#endregion /* Storage END */
+			
 		}
 	
 		if (global.enable_language_settings == true)
 		{
-			/* Click Language */
+			
+			#region /* Click Language */
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, language_settings_y, 370, language_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (global.settings_sidebar_menu = "language_settings")
@@ -1008,7 +1203,9 @@ function scr_options_menu()
 				can_navigate_settings_sidebar = false;
 				menu = "Language" + string(language_index);
 			}
-			/* Language */
+			#endregion /* Click Language END */
+			
+			#region /* Language */
 			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, language_settings_y, 370, language_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button(mb_left))
@@ -1018,26 +1215,70 @@ function scr_options_menu()
 				input_key = false;
 				can_navigate_settings_sidebar = true;
 			}
+			#endregion /* Language END */
+			
 		}
 	
 		if (global.enable_broadcast_settings == true)
 		{
-			/* Click Broadcast */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width,broadcast_settings_y, 370,broadcast_settings_y + 40 - 1))
+			
+			#region /* Click Broadcast */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, broadcast_settings_y, 370, broadcast_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "broadcast_settings") and (mouse_check_button_released(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "broadcast_settings";menu_delay = 3; input_key = false;can_navigate_settings_sidebar = false;}
-			/* Broadcast */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width,broadcast_settings_y, 370,broadcast_settings_y + 40 - 1))
+			and (global.settings_sidebar_menu = "broadcast_settings")
+			and (mouse_check_button_released(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "broadcast_settings";
+				menu_delay = 3;
+				input_key = false;
+				can_navigate_settings_sidebar = false;
+			}
+			#endregion /* Click Broadcast END */
+			
+			#region /* Broadcast */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, broadcast_settings_y, 370, broadcast_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (mouse_check_button(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "broadcast_settings"; input_key = false;can_navigate_settings_sidebar = true;}
+			and (mouse_check_button(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "broadcast_settings";
+				input_key = false;
+				can_navigate_settings_sidebar = true;
+			}
+			#endregion /* Broadcast END */
+			
 		}
 	
 		if (global.enable_how_to_play_settings == true)
 		{
-			/* Click How to Play */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, how_to_play_y, 370, how_to_play_y + 40 - 1))
+			
+			#region /* Click How to Play */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, how_to_play_y, 370, how_to_play_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "how_to_play") and (mouse_check_button_released(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "how_to_play";menu_delay = 3; input_key = false;can_navigate_settings_sidebar = false;}
-			/* How to Play */if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, how_to_play_y, 370, how_to_play_y + 40 - 1))
+			and (global.settings_sidebar_menu = "how_to_play")
+			and (mouse_check_button_released(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "how_to_play";
+				menu_delay = 3;
+				input_key = false;
+				can_navigate_settings_sidebar = false;
+			}
+			#endregion /* Click How to Play END */
+			
+			#region /* How to Play */
+			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0 - room_width, how_to_play_y, 370, how_to_play_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (mouse_check_button(mb_left))and (menu_delay == 0){global.settings_sidebar_menu = "how_to_play"; input_key = false;can_navigate_settings_sidebar = true;}
+			and (mouse_check_button(mb_left))
+			and (menu_delay == 0)
+			{
+				global.settings_sidebar_menu = "how_to_play";
+				input_key = false;
+				can_navigate_settings_sidebar = true;
+			}
+			#endregion /* How to Play END */
+			
 		}
 	
 		#endregion /* Menu navigation with mouse END */
@@ -1071,8 +1312,6 @@ function scr_options_menu()
 					}
 					menu_delay = 3;
 				}
-				/* Sidebar Navigation */
-		
 			}
 			#endregion /* Accessibility Settings END */
 		

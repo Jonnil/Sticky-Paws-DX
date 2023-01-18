@@ -30,8 +30,24 @@ function scr_draw_text_outlined(x_position = x, y_position = y, string_text = ""
 	var i;
 	for(i = 0; i < array_height_2d(vector) - 1; i += 1) /* Make outline text */
 	{
-		draw_text_transformed_color(x_position + vector[i][0], y_position + vector[i][1] + y_offset, string_text, text_size, text_size, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
+		if (string_width(string_text) >= 1280)
+		and (window_get_width() <= 1280)
+		{
+			draw_text_transformed_color(x_position + vector[i][0], y_position + vector[i][1] + y_offset, string_text, text_size * 0.75, text_size * 0.75, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
+		}
+		else
+		{
+			draw_text_transformed_color(x_position + vector[i][0], y_position + vector[i][1] + y_offset, string_text, text_size, text_size, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
+		}
 	}
 	
-	draw_text_transformed_color(x_position, y_position + y_offset, string_text, text_size, text_size, 0, text_color, text_color, text_color, text_color, img_alpha); /* Draw normal text above outline text */
+	if (string_width(string_text) >= 1280)
+	and (window_get_width() <= 1280)
+	{
+		draw_text_transformed_color(x_position, y_position + y_offset, string_text, text_size * 0.75, text_size * 0.75, 0, text_color, text_color, text_color, text_color, img_alpha); /* Draw normal text above outline text */
+	}
+	else
+	{
+		draw_text_transformed_color(x_position, y_position + y_offset, string_text, text_size, text_size, 0, text_color, text_color, text_color, text_color, img_alpha); /* Draw normal text above outline text */
+	}
 }

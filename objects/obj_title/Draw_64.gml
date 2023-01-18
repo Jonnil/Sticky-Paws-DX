@@ -1,3 +1,6 @@
+var main_game_y = display_get_gui_height() / 2 + 100 + 40;
+var level_editor_y = display_get_gui_height() / 2 + 100 + 80;
+
 #region /* Play Attract Demo */
 if (global.play_attract_demo = false)
 and (global.enable_attract_demo == true)
@@ -771,13 +774,30 @@ or (menu == "link_wiki")
 and (global.play_attract_demo = false)
 and (global.arcade_mode = false)
 {
+	
+	if (global.demo == false)
+	{
+		draw_menu_button(display_get_gui_width() / 2 - 185, main_game_y, l10n_text("Main Game"), "main_game", "main_game");
+		draw_menu_button(display_get_gui_width() / 2 - 185, level_editor_y, l10n_text("Level Editor"), "leveleditor", "leveleditor");
+		var options_and_quit_y = display_get_gui_height() / 2 + 100 + 120 + 1;
+	}
+	else
+	{
+		draw_menu_button(display_get_gui_width() / 2 - 185, main_game_y, l10n_text("Play Demo"), "main_game", "main_game");
+		var options_and_quit_y = display_get_gui_height() / 2 + 100 + 120 - 42 + 1;
+	}
+	
 	select_custom_level_menu_open = false;
 	can_input_level_name = false;
 	
 	#region /* Click on menu buttons */
 	
 	#region /* Click Main Game */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 + 40, display_get_gui_width() / 2 + 185, display_get_gui_height() / 2 + 100 + 60 + 19))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+	display_get_gui_width() / 2 - 185,
+	main_game_y,
+	display_get_gui_width() / 2 + 185,
+	main_game_y + 42))
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	and (in_settings = false)
@@ -808,8 +828,13 @@ and (global.arcade_mode = false)
 	else
 	
 	#region /* Click Level Editor */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 + 80 + 1, display_get_gui_width() / 2 + 185, display_get_gui_height() / 2 + 100 + 100 + 19))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+	display_get_gui_width() / 2 - 185,
+	level_editor_y,
+	display_get_gui_width() / 2 + 185,
+	level_editor_y + 42))
 	and (mouse_check_button_released(mb_left))
+	and (menu == "leveleditor")
 	and (menu_delay == 0)
 	and (in_settings = false)
 	and (global.demo == false)
@@ -1065,18 +1090,6 @@ and (global.arcade_mode = false)
 			global.level_editor_level = 0;
 		}
 		global.character_select_in_this_menu = "level_editor"; /* No custom level is selected before you go into the level editor */
-	}
-	
-	if (global.demo == false)
-	{
-		draw_menu_button(display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 + 40, l10n_text("Main Game"), "main_game", "main_game");
-		draw_menu_button(display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 + 80, l10n_text("Level Editor"), "leveleditor", "leveleditor");
-		options_and_quit_y = display_get_gui_height() / 2 + 100 + 120 + 1;
-	}
-	else
-	{
-		draw_menu_button(display_get_gui_width() / 2 - 185, display_get_gui_height() / 2 + 100 + 40, l10n_text("Play Demo"), "main_game", "main_game");
-		options_and_quit_y = display_get_gui_height() / 2 + 100 + 120 - 42 + 1;
 	}
 	
 	if (global.convention_mode == false)

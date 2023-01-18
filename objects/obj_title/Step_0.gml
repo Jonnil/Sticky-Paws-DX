@@ -107,7 +107,15 @@ if (menu == "load_custom_level")
 		{
 			file_find_close();
 			select_custom_level_menu_open = true;
-			menu = "level_editor_play";
+			if (go_to_menu_after_loading_custom_levels != "")
+			{
+				menu = go_to_menu_after_loading_custom_levels; /* Go to specific menu if this is assigned to something */
+				go_to_menu_after_loading_custom_levels = "";
+			}
+			else
+			{
+				menu = "level_editor_play";
+			}
 		}
 		else
 		{

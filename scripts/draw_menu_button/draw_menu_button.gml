@@ -10,7 +10,7 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 {
 	
 	#region /* Button */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 2, x_position + 370, y_position + 41))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 1, x_position + 370, y_position + 41))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (menu_delay == 0)
 	or (menu == menu_index)
@@ -20,6 +20,7 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	{
 		menu = menu_index;
 		draw_sprite_ext(spr_menu_button, 0, x_position, y_position + 21, 1, 1, 0, c_lime, 1);
+		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		if (string_width(string_text) >= 360)
@@ -49,7 +50,7 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	}
 	
 	#region /* Clicking the menu button */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 2, x_position + 370, y_position + 41))
+	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 1, x_position + 370, y_position + 41))
 	{
 		if (menu_takes_you_to = false)
 		or (menu_takes_you_to == noone)

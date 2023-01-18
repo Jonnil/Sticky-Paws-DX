@@ -1,18 +1,27 @@
 function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string)
 {
 	
+	if (string_width(what_string_to_edit) < 300)
+	{
+		var width = 150;
+	}
+	else
+	{
+		var width = string_width(what_string_to_edit) / 2;
+	}
+	
 	#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */
-	draw_set_alpha(0.5);
+	draw_set_alpha(0.9);
 	draw_rectangle_color(- 32, - 32, window_get_width() + 32, window_get_height() + 32, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 	#endregion /* Opaque transparent black rectangle over whole screen, but underneath name input screen END */
 	
 	#region /* Box where name is written on */
-	draw_rectangle_color(xx - 150, yy - 16, xx + 150, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
+	draw_rectangle_color(xx - width, yy - 16, xx + width, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
 	draw_set_alpha(black_rectangle_alpha);
-	draw_rectangle_color(xx - 150, yy - 16, xx + 150, yy + 16, c_black, c_black, c_black, c_black, false); /* Black transparent rectangle where text is written on */
+	draw_rectangle_color(xx - width, yy - 16, xx + width, yy + 16, c_black, c_black, c_black, c_black, false); /* Black transparent rectangle where text is written on */
 	draw_set_alpha(1);
-	draw_rectangle_color(xx - 150, yy - 16, xx + 150, yy + 16, c_white, c_white, c_white, c_white, true); /* White outline */
+	draw_rectangle_color(xx - width, yy - 16, xx + width, yy + 16, c_white, c_white, c_white, c_white, true); /* White outline */
 	#endregion /* Box where name is written on END */
 	
 	#region /* Draw the inputed text */

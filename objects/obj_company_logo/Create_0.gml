@@ -88,6 +88,10 @@ global.number_of_chain_kills_for_1up = 8; /* How many chain reaction kills you n
 global.all_loaded_main_levels = ds_list_create(); /* The main game will load every level folder. Don't change this variable, it just needs to be set before you can add more main levels */
 ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3", "level4", "level5", "level6", "level7", "level8", "ending", "level9", "levelA");
 
+/* Server stuff */
+global.base_url = "www.jonnil.games";
+global.url = "https://jonnil.games/GM/uploader/";
+
 #endregion /* Things you could change END */
 
 
@@ -383,6 +387,7 @@ global.show_prompt_when_changing_to_keyboard_and_mouse = true;
 global.fullscreen_key = vk_f11;
 
 global.level_name = ""; /* In the level editor, the name of the currently selected level will be stored here */
+global.level_description = ""; /* In the level editor, the description of the currently selected level will be stored here */
 
 global.player1_name = "";
 global.player2_name = "";
