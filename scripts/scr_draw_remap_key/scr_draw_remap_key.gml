@@ -7,6 +7,8 @@
 /// @param menu_y_remap_key
 function scr_draw_remap_key(menu_string, name_string, remapping_player_key, remapping_player_key2, key_x, menu_y_remap_key)
 {
+	var mouse_get_x = window_mouse_get_x();
+	var mouse_get_y = window_mouse_get_y();
 	
 	if (global.settings_sidebar_menu == "controller_settings")
 	{
@@ -295,7 +297,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 	#endregion /* OR text END */
 	
 	#region /* Mouse Navigation */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), key_x - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 32, menu_y_remap_key + menu_y_offset + 32))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, key_x - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 32, menu_y_remap_key + menu_y_offset + 32))
 	and (input_key == false)
 	and (open_dropdown == false)
 	and (global.controls_used_for_menu_navigation == "mouse")
@@ -304,7 +306,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		menu_remap_key_number = 0;
 		can_navigate_settings_sidebar = false;
 	}
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), key_x + 200 - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 200 + 32, menu_y_remap_key + menu_y_offset + 32))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, key_x + 200 - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 200 + 32, menu_y_remap_key + menu_y_offset + 32))
 	and (input_key == false)
 	and (open_dropdown == false)
 	and (global.controls_used_for_menu_navigation == "mouse")
@@ -313,8 +315,8 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		menu_remap_key_number = 2;
 		can_navigate_settings_sidebar = false;
 	}
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), key_x - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 32, menu_y_remap_key + menu_y_offset + 32))
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), key_x + 200 - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 200 + 32, menu_y_remap_key + menu_y_offset + 32))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, key_x - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 32, menu_y_remap_key + menu_y_offset + 32))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, key_x + 200 - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 200 + 32, menu_y_remap_key + menu_y_offset + 32))
 	{
 		if (mouse_check_button_pressed(mb_left))
 		and (global.controls_used_for_menu_navigation == "mouse")

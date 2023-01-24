@@ -1,5 +1,7 @@
 function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - column * row) + 100 - 3 + thumbnail_x_offset, yy)
 {
+	var get_window_height = display_get_gui_height();
+	var get_window_width = display_get_gui_width();
 	
 	#region /* Draw sub menu (code must be here to be above everything else) */
 	if (open_sub_menu == true)
@@ -155,6 +157,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		}
 		#endregion /* Navigate Sub Menu END */
 		
+		#region /* Button Y Positions */
 		if (show_delete_button == true)
 		{
 			var play_y = 0;
@@ -175,6 +178,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			var delete_y = -99999;
 			var back_y = 42 * 5;
 		}
+		#endregion /* Button Y Positions END */
 		
 		#region /* Show Sub Menu Buttons */
 		if (can_input_level_name == false)
@@ -187,7 +191,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			or (menu == "level_editor_delete")
 			or (menu == "level_editor_selected_back")
 			{
-				if (window_get_height() <= 720)
+				lerp_on = true;
+				if (get_window_height <= 720)
 				{
 					scroll_to = floor(global.select_level_index / row) + 0.8; /* Scroll the view to fit all the buttons */
 				}
@@ -231,13 +236,13 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 522 - 3, l10n_text("No"), "level_editor_delete_no", "level_editor_delete"); /* + 47 on y */
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 569 - 3, l10n_text("Yes"), "level_editor_delete_yes", "level_editor_delete_yes");
 				draw_sprite_ext(spr_icons_back, 0, xx + 8 + 20, 226 * (column - scroll) + 522 - 3 + 21, 1, 1, 0, c_white, 1);
-				if (window_get_width() <= 1350)
+				if (get_window_width <= 1350)
 				{
-					scr_draw_text_outlined(window_get_width() / 2, window_get_height() - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "\\", "/"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(get_window_width / 2, get_window_height - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "\\", "/"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 				}
 				else
 				{
-					scr_draw_text_outlined(window_get_width() / 2, window_get_height() - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(get_window_width / 2, get_window_height - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				}
 			}
 		}

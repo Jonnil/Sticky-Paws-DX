@@ -66,7 +66,7 @@ if (lerp_on == true)
 
 if (menu == "load_characters")
 {
-	/* Load custom level data */
+	/* Load custom character data */
 	
 	file_load_timer += 1;
 	
@@ -107,10 +107,10 @@ if (menu == "load_custom_level")
 		{
 			file_find_close();
 			select_custom_level_menu_open = true;
-			if (go_to_menu_after_loading_custom_levels != "")
+			if (global.go_to_menu_after_loading_custom_levels != "")
 			{
-				menu = go_to_menu_after_loading_custom_levels; /* Go to specific menu if this is assigned to something */
-				go_to_menu_after_loading_custom_levels = "";
+				menu = global.go_to_menu_after_loading_custom_levels; /* Go to specific menu if this is assigned to something */
+				global.go_to_menu_after_loading_custom_levels = "";
 			}
 			else
 			{

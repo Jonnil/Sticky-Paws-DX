@@ -724,7 +724,7 @@ if (global.arcade_mode == true)
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
 		scr_load_character_initializing();
-		menu = "load_characters";
+		menu = "how_many_people_1player";
 		menu_delay = 3;
 	}
 }
@@ -820,7 +820,7 @@ and (global.arcade_mode = false)
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
 		scr_load_character_initializing();
-		menu = "load_characters";
+		menu = "how_many_people_1player";
 		menu_delay = 3;
 	}
 	#endregion /* Click Main Game END */
@@ -866,7 +866,7 @@ and (global.arcade_mode = false)
 			global.play_edited_level = false;
 			global.character_select_in_this_menu = "level_editor";
 			scr_load_character_initializing();
-			menu = "load_characters";
+			menu = "how_many_people_1player";
 			menu_delay = 3;
 			global.level_editor_level = 1;
 		}

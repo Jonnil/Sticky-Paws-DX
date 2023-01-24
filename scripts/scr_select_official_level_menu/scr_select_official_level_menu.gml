@@ -34,6 +34,7 @@ function scr_select_official_level_menu()
 		{
 			if (global.select_level_index - row < 0)
 			and (global.controls_used_for_menu_navigation != "mouse")
+			and (show_level_editor_corner_menu == true)
 			{
 				menu_delay = 3;
 				menu = "back_from_level_editor";
@@ -70,6 +71,7 @@ function scr_select_official_level_menu()
 		{
 			if (global.select_level_index + row > ds_list_size(global.thumbnail_sprite) - 1)
 			and (global.controls_used_for_menu_navigation != "mouse")
+			and (show_level_editor_corner_menu == true)
 			{
 				menu_delay = 3;
 				menu = "back_from_level_editor";

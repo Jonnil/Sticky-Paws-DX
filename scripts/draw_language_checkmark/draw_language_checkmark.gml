@@ -6,6 +6,9 @@
 
 function draw_language_checkmark(x_position, y_position, string_text, menu_index)
 {
+	var mouse_get_x = window_mouse_get_x();
+	var mouse_get_y = window_mouse_get_y();
+	
 	#region /* Checkmark */
 	
 	#region /* Initialize variables */
@@ -15,12 +18,12 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	
 	if (global.language_localization != real(string_delete(menu_index, 1, 8))-1)
 	{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (menu != "assist_enable")
 		and (input_key == false)
 		and (open_dropdown == false)
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
+		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (global.assist_enable == true)
 		and (menu == "assist_enable")
@@ -44,12 +47,12 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	}
 	else
 	{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (menu != "assist_enable")
 		and (input_key == false)
 		and (open_dropdown == false)
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
+		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (global.assist_enable == true)
 		and (menu == "assist_enable")
@@ -82,13 +85,13 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	#endregion /* Show a menu cursor when the option is highlighted END */
 	
 	#region /* Clicking the menu button */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 	and (mouse_check_button_pressed(mb_left))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (menu != "assist_enable")
 	and (input_key == false)
 	and (open_dropdown == false)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 	and (mouse_check_button_pressed(mb_left))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (global.assist_enable == true)

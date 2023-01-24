@@ -14,11 +14,14 @@
 /// @param menu_takes_you_to
 /// @param show_arrows
 
-function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_offset, y_origin_offset, xscale, yscale, spr_width, spr_height, string_text, menu_index, menu_takes_you_to, show_arrows)
+function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_offset, y_origin_offset, xscale, yscale, spr_width, spr_height, string_text, menu_index, menu_takes_you_to, show_arrows = true)
 {
+	var mouse_get_x = window_mouse_get_x();
+	var mouse_get_y = window_mouse_get_y();
+	
 	#region /* Button */
 	
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (menu_delay == 0)
 	or (menu == menu_index)
@@ -52,12 +55,12 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	}
 
 	#region /* Clicking the menu button */
-	if (point_in_rectangle(mouse_x, mouse_y, x_position, y_position, x_position + spr_width, y_position + spr_height))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
 	{
-		if (menu_takes_you_to= false)
-		or (menu_takes_you_to= noone)
-		or (menu_takes_you_to= "")
-		or (menu_takes_you_to= menu_index)
+		if (menu_takes_you_to == false)
+		or (menu_takes_you_to == noone)
+		or (menu_takes_you_to == "")
+		or (menu_takes_you_to == menu_index)
 		{
 			if (mouse_check_button(mb_left))
 			{

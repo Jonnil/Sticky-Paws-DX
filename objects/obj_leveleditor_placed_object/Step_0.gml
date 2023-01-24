@@ -1,4 +1,7 @@
-//insert code that checks if view is moving, only then should the transparency difficulty layers be updated. For now just have it be in step event
+var get_window_height = display_get_gui_height();
+var get_window_width = display_get_gui_width();
+
+/* Insert code that checks if view is moving, only then should the transparency difficulty layers be updated. For now just have it be in step event */
 scr_make_sprite_transparent_setting_difficulty_levels()
 
 #region /* All code before initializing the object */
@@ -99,16 +102,6 @@ and (!mouse_check_button(mb_middle))
 					hard = false;
 				}
 			}
-			
-			#region /* Run this code after setting difficulty variables to false. If all difficulty variables are false, then delete the object */
-			if (easy == false)
-			and (normal == false)
-			and (hard == false)
-			{
-				instance_destroy();
-			}
-			#endregion /* Run this code after setting difficulty variables to false. If all difficulty variables are false, then delete the object END */
-			
 		}
 	}
 }
@@ -326,7 +319,7 @@ and (delay > 1)
 	and (!position_meeting(x, y, obj_water_level_height))
 	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
 	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height() / 2 - 32, window_get_width(), window_get_height() / 2 + 32)) /* Can't place objects when clicking the play button */
+	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width - 64, get_window_height / 2 - 32, get_window_width, get_window_height / 2 + 32)) /* Can't place objects when clicking the play button */
 	{
 		if (obj_leveleditor.show_grid == true)
 		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32 - 32, 80 + obj_leveleditor.icons_at_top_y + 16 - 32 - 32, display_get_gui_width() + 64 + 32, 80 + obj_leveleditor.icons_at_top_y + 16 + 32 + 32)) /* Up and down buttons when grid is on */
@@ -642,19 +635,17 @@ and (obj_leveleditor.pause == false)
 				hard = false;
 			}
 		}
-		
-		#region /* Run this code after setting difficulty variables to false. If all difficulty variables are false, then delete the object */
-		if (easy == false)
-		and (normal == false)
-		and (hard == false)
-		{
-			instance_destroy();
-		}
-		#endregion /* Run this code after setting difficulty variables to false. If all difficulty variables are false, then delete the object END */
-		
 	}
-	
 }
 #endregion /* Set to dissapear on difficulty level END */
+
+#region /* Run this code after setting difficulty variables to false. If all difficulty variables are false, then delete the object */
+if (easy == false)
+and (normal == false)
+and (hard == false)
+{
+	instance_destroy();
+}
+#endregion /* Run this code after setting difficulty variables to false. If all difficulty variables are false, then delete the object END */
 
 #endregion /* Difficulty settings per object END */

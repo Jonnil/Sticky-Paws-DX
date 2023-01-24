@@ -1,3 +1,6 @@
+var get_window_height = display_get_gui_height();
+var get_window_width = display_get_gui_width();
+
 scr_set_screen_size();
 
 scr_zoom_camera_draw_gui(10);
@@ -370,8 +373,8 @@ and (!instance_exists(obj_title))
 		#region /* Score */
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(window_get_width() - 200, hud_show_score_y, l10n_text("Score"), global.default_text_size, c_white, c_black, 1);
-		scr_draw_text_outlined(window_get_width() - 200, hud_show_score_y + 32, string(score), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(get_window_width - 200, hud_show_score_y, l10n_text("Score"), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(get_window_width - 200, hud_show_score_y + 32, string(score), global.default_text_size, c_white, c_black, 1);
 		#endregion /* Score END */
 		
 		#region /* Time Countdown */
@@ -418,19 +421,19 @@ and (!instance_exists(obj_title))
 				{
 					if (global.time_countdown == 0)
 					{
-						scr_draw_text_outlined(window_get_width() - 32, 42, "TIME\n0", global.default_text_size, c_black, c_red, 1);
+						scr_draw_text_outlined(get_window_width - 32, 42, "TIME\n0", global.default_text_size, c_black, c_red, 1);
 					}
 					else
 					{
 						if (global.time_countdown >= 100)
 						{
-							scr_draw_text_outlined(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_yellow, 1);
-							draw_text_transformed_color(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
+							scr_draw_text_outlined(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_yellow, 1);
+							draw_text_transformed_color(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
 						}
 						else
 						{
-							scr_draw_text_outlined(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_orange, 1);
-							draw_text_transformed_color(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
+							scr_draw_text_outlined(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_orange, 1);
+							draw_text_transformed_color(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 						}
 					}
 					if (global.timeattack_millisecond < room_speed / 2)
@@ -444,7 +447,7 @@ and (!instance_exists(obj_title))
 				}
 				else
 				{
-					scr_draw_text_outlined(window_get_width() - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
 				}
 			}
 		}
@@ -460,18 +463,18 @@ and (!instance_exists(obj_title))
 			draw_set_halign(fa_right)
 			if (global.timeattack_minute > 0)
 			{
-				scr_draw_text_outlined(window_get_width() - 100, time_countup_y, string(global.timeattack_minute) + ":", global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(get_window_width - 100, time_countup_y, string(global.timeattack_minute) + ":", global.default_text_size, c_black, c_white, 1);
 			}
 			if (global.timeattack_minute <= 0)
 			and (global.timeattack_second <= 9)
 			{
-				scr_draw_text_outlined(window_get_width() - 65, time_countup_y, global.timeattack_second, global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(get_window_width - 65, time_countup_y, global.timeattack_second, global.default_text_size, c_black, c_white, 1);
 			}
 			else
 			{
-				scr_draw_text_outlined(window_get_width() - 65, time_countup_y, string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(get_window_width - 65, time_countup_y, string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, c_white, 1);
 			}
-			scr_draw_text_outlined(window_get_width() - 30, time_countup_y + 2, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width - 30, time_countup_y + 2, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);
 		}
 		#endregion /* Time countup in Minutes, Seconds and Milliseconds END */
 		
@@ -500,16 +503,16 @@ and (global.play_attract_demo = false)
 	draw_set_valign(fa_middle);
 	if (global.arcade_mode == true)
 	{
-		scr_draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + l10n_text("Demo") + " - " + l10n_text("Arcade mode"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width / 2, + 32, string(global.game_name) + " " + l10n_text("Demo") + " - " + l10n_text("Arcade mode"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	if (global.convention_mode == true)
 	{
-		scr_draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + l10n_text("Demo") + " - " + l10n_text("Convention mode"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width / 2, + 32, string(global.game_name) + " " + l10n_text("Demo") + " - " + l10n_text("Convention mode"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	{
-		scr_draw_text_outlined(window_get_width() / 2, + 32, string(global.game_name) + " " + l10n_text("Demo"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width / 2, + 32, string(global.game_name) + " " + l10n_text("Demo"), global.default_text_size, c_black, c_white, 1);
 	}
 }
 #endregion /* Show if you are playing the demo version or not END */
@@ -522,7 +525,7 @@ and (room == room_title)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(window_get_width() / 2, + 32, l10n_text("Convention mode"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(get_window_width / 2, + 32, l10n_text("Convention mode"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /* Show if you are playing on convention mode or not END */
 
@@ -534,7 +537,7 @@ and (room == room_title)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(window_get_width() / 2, + 32, l10n_text("Arcade mode"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(get_window_width / 2, + 32, l10n_text("Arcade mode"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /* Show if you are playing on arcade mode or not END */
 
@@ -546,7 +549,7 @@ and (!instance_exists(obj_title))
 {
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(window_get_width() - 32, window_get_height() - 32, l10n_text("Assist Mode"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(get_window_width - 32, get_window_height - 32, l10n_text("Assist Mode"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /* Show if you have Assist mode enabled or not END */
 
@@ -818,11 +821,11 @@ and (global.player4_can_play >= 1)
 {
 	if (global.show_prompt_when_changing_to_gamepad == true)
 	{
-		draw_sprite_ext(spr_change_input_to_controller, 0, 110, window_get_height() + 300 + show_controller_input_change_prompt_y, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_change_input_to_controller, 0, 110, get_window_height + 300 + show_controller_input_change_prompt_y, 1, 1, 0, c_white, 1);
 	}
 	if (global.show_prompt_when_changing_to_keyboard_and_mouse == true)
 	{
-		draw_sprite_ext(spr_change_input_to_keyboard, 0, 110, window_get_height() + 300 + show_keyboard_and_mouse_input_change_prompt_y, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_change_input_to_keyboard, 0, 110, get_window_height + 300 + show_keyboard_and_mouse_input_change_prompt_y, 1, 1, 0, c_white, 1);
 	}
 }
 #endregion /* Show what input is used END */
@@ -870,75 +873,75 @@ and (global.enable_ranks == true)
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(window_get_width() / 2 - 128, window_get_height() / 2 - 74, l10n_text("Score"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width / 2 - 128, get_window_height / 2 - 74, l10n_text("Score"), global.default_text_size, c_black, c_white, 1);
 			draw_set_halign(fa_right);
-			scr_draw_text_outlined(window_get_width() / 2 - 32, window_get_height() / 2 + 74, l10n_text("S Rank Score") + ": " + string(ini_read_real("rank", "rank_level_score", 0)), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(window_get_width() / 2 - 32, window_get_height() / 2 + 74 + 32, l10n_text("Your Score") + ": " + string(score), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width / 2 - 32, get_window_height / 2 + 74, l10n_text("S Rank Score") + ": " + string(ini_read_real("rank", "rank_level_score", 0)), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width / 2 - 32, get_window_height / 2 + 74 + 32, l10n_text("Your Score") + ": " + string(score), global.default_text_size, c_black, c_white, 1);
 			if (score >= ini_read_real("rank", "rank_level_score", 0))
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank S */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank S */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 10000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank A */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank A */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 50000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank B */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank B */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 80000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank C */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank C */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 100000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank D */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank D */
 			}
 			else
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, window_get_width() / 2 - 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank E */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank E */
 			}
 		}
 		if (ini_key_exists("rank", "rank_timeattack_realmillisecond"))
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(window_get_width() / 2 + 128, window_get_height() / 2 - 74, l10n_text("Time"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width / 2 + 128, get_window_height / 2 - 74, l10n_text("Time"), global.default_text_size, c_black, c_white, 1);
 			draw_set_halign(fa_right)
-			scr_draw_text_outlined(window_get_width() / 2 + 328, window_get_height() / 2 + 74, l10n_text("S Rank Time") + ": " + string(ini_read_real("rank", "rank_timeattack_minute", 0)) + ":" + string(ini_read_real("rank", "rank_timeattack_second", 0)) + "." + string(string_replace_all(string_format(ini_read_real("rank", "rank_timeattack_millisecond", 0), 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(window_get_width() / 2 + 328, window_get_height() / 2 + 74 + 32, l10n_text("Your Time") + ": " + string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width / 2 + 328, get_window_height / 2 + 74, l10n_text("S Rank Time") + ": " + string(ini_read_real("rank", "rank_timeattack_minute", 0)) + ":" + string(ini_read_real("rank", "rank_timeattack_second", 0)) + "." + string(string_replace_all(string_format(ini_read_real("rank", "rank_timeattack_millisecond", 0), 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width / 2 + 328, get_window_height / 2 + 74 + 32, l10n_text("Your Time") + ": " + string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
 			
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0))
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank S */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank S */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 1000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank A */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank A */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 5000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank B */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank B */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 8000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank C */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank C */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 10000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank D */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank D */
 			}
 			else
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, window_get_width() / 2 + 128, window_get_height() / 2, 1, 1, 0, c_white, 1); /* Rank E */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank E */
 			}
 		}
 		ini_close();
@@ -954,8 +957,8 @@ or(show_letterbox > 0)
 and (global.play_edited_level == true)
 and (global.actually_play_edited_level == true)
 {
-	draw_rectangle_color(0, 0, room_width * 3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
-	draw_rectangle_color(0, letterbox_bottom_y, room_width * 3, window_get_height(), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, 0, get_window_width * 3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, letterbox_bottom_y, get_window_width * 3, get_window_height * 3, c_black, c_black, c_black, c_black, false);
 }
 if (asset_get_type("obj_player") == asset_object)
 and (!instance_exists(obj_player))
@@ -968,13 +971,13 @@ and (instance_exists(obj_player))
 and (obj_player.can_move = false)
 {
 	letterbox_top_y = lerp(letterbox_top_y, + 64, 0.1);
-	letterbox_bottom_y = lerp(letterbox_bottom_y, window_get_height() - 64, 0.1);
+	letterbox_bottom_y = lerp(letterbox_bottom_y, get_window_height - 64, 0.1);
 	show_letterbox = 60;
 }
 else
 {
 	letterbox_top_y = lerp(letterbox_top_y, 0, 0.1);
-	letterbox_bottom_y = lerp(letterbox_bottom_y, window_get_height(), 0.1);
+	letterbox_bottom_y = lerp(letterbox_bottom_y, get_window_height, 0.1);
 	if (show_letterbox > 0)
 	{
 		show_letterbox -= 1;
@@ -986,7 +989,7 @@ if (global.doing_clear_check == true)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("Clear from the start"), global.default_text_size, c_white, c_black, 1);
+	scr_draw_text_outlined(get_window_width / 2, 32, l10n_text("Clear from the start"), global.default_text_size, c_white, c_black, 1);
 	global.checkpoint_x = 0;
 	global.checkpoint_y = 0;
 	global.checkpoint_millisecond = 0;
@@ -1013,7 +1016,7 @@ else
 if (global.enable_transitions == true)
 {
 	draw_set_alpha(black_screen_gui_alpha);
-	draw_rectangle_color(0, 0, window_get_width() * 2, window_get_height() * 2, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 }
 #endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */

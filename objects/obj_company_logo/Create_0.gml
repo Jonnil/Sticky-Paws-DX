@@ -31,6 +31,7 @@ leveleditor_readme = noone; /* Readme textfile for how to use the level editor *
 #region /* Change how menus look and function */
 
 #region /* What settings tabs to show up */
+global.skip_how_many_people_are_playing_screen = true; /* If the game should skip the "How many people are playing?" screen */
 global.show_language_shortcut = false; /* If a shortcut for the language options should appear in the main menu to the left of the settings menu */
 global.show_accessibility_shortcut = false; /* If a shortcut for the accessibility options should appear in the main menu to the right of the settings menu */
 global.enable_how_to_play_settings = false; /* Enable How to play settings */
@@ -147,12 +148,17 @@ initialized_title_backgrounds = false;
 initialized_title_logos = false;
 load_ok = 0;
 saved_file_exists = false;
-sprite_splash_easteregg_yoffset = +128;
+sprite_splash_easteregg_yoffset = +228;
 unused_x_origin_point = noone;
 unused_y_origin_point = noone;
 view_hview_lerp = 0;
 view_wview_lerp = 0;
 goto_title_screen = false; /* If game is allowed to go to title screen yet or not. Need to load everything before going to title screen */
+global.selected_level_editing_music = 0;
+global.gui_scale = -1;
+global.gui_scale_modifier = 0;
+global.gui_width = window_get_width();
+global.gui_height = window_get_height();
 global.doing_clear_check = false; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
 global.actually_play_edited_level = false; /* Actually playing finished edited level */
 global.all_loaded_characters = ds_list_create();
@@ -219,6 +225,7 @@ global.voicepack_for_player_2 = 0; /* Player 2 Select Voicepack */
 global.voicepack_for_player_3 = 0; /* Player 3 Select Voicepack */
 global.voicepack_for_player_4 = 0; /* Player 4 Select Voicepack */
 global.world_editor = false; /* If you're editing world or not */
+global.go_to_menu_after_loading_custom_levels = ""; /* Sometimes you want to go to another menu after loading custom levels, instead of the default */
 device_mouse_dbclick_enable(false); /* Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled */
 draw_set_font(global.default_font);
 ds_list_add(global.all_loaded_custom_levels, "");
@@ -454,6 +461,10 @@ global.resource_pack_sprite_enemy_bowlingball_stomped = spr_noone;
 global.resource_pack_sprite_enemy_bowlingball_walk = spr_noone;
 global.resource_pack_sprite_hp_pickup = spr_noone;
 global.resource_pack_sprite_invincibility_powerup = spr_noone;
+global.resource_pack_sprite_menu_button_1player = spr_noone;
+global.resource_pack_sprite_menu_button_2player = spr_noone;
+global.resource_pack_sprite_menu_button_3player = spr_noone;
+global.resource_pack_sprite_menu_button_4player = spr_noone;
 global.resource_pack_sprite_ranks = spr_noone;
 global.resource_pack_sprite_splash_controller = spr_noone;
 global.resource_pack_sprite_splash_easteregg = spr_noone;

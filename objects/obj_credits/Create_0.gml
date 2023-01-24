@@ -1,12 +1,15 @@
+var get_window_height = display_get_gui_height();
+var get_window_width = display_get_gui_width();
+
 depth = -10000;
 image_speed = 0;
 image_index = 0;
 image_alpha = 0;
-x = window_get_width() / 2;
-y = window_get_height() / 2;
+x = get_window_width / 2;
+y = get_window_height / 2;
 end_credits = false;
 time = 0;
-yy = window_get_height();
+yy = get_window_height;
 alpha = 0;
 black_background_alpha = 0;
 skip = 0;

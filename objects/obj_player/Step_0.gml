@@ -1747,13 +1747,13 @@ and (hold_item_in_hands == "")
 				#region /* Do a charged upward jump depending on how fast you spin */
 				if (image_speed >= 1)
 				{
-					vspeed = -triple_jump_height* 1.25;
+					vspeed = -triple_jump_height * 1.25;
 					scr_audio_play(voice_jump_rope, volume_source.voice);
 				}
 				else
 				if (image_speed >= 0.9)
 				{
-					vspeed = -triple_jump_height* 1.125;
+					vspeed = -triple_jump_height * 1.125;
 				}
 				else
 				if (image_speed >= 0.7)

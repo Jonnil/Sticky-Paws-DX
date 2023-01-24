@@ -10,10 +10,11 @@
 
 function draw_menu_slider(x_position, y_position, string_text, menu_index, variable_to_change, bar_color)
 {
-	
 	var length_variable = 320;
+	var mouse_get_x = window_mouse_get_x();
+	var mouse_get_y = window_mouse_get_y();
 	
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position- 16, x_position + 320, y_position + 16))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position- 16, x_position + 320, y_position + 16))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (menu_delay == 0)
 	and (open_dropdown == false)
@@ -31,29 +32,29 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 		if (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button(mb_left))
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position- 32, y_position- 32, x_position + 352, y_position + 32)) /* Within the length of the slider */
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position- 32, y_position- 32, x_position + 352, y_position + 32)) /* Within the length of the slider */
 			{
-				if (menu == "volume_main"){global.volume_main = clamp((window_mouse_get_x() -x_position) /(length_variable), 0, 1);}else
-				if (menu == "volume_music"){global.volume_music = clamp((window_mouse_get_x() -x_position) /(length_variable), 0, 1);}else
-				if (menu == "volume_sound"){global.volume_sound = clamp((window_mouse_get_x() -x_position) /(length_variable), 0, 1);}else
-				if (menu == "volume_ambient"){global.volume_ambient = clamp((window_mouse_get_x() -x_position) /(length_variable), 0, 1);}else
-				if (menu == "volume_footstep"){global.volume_footstep = clamp((window_mouse_get_x() -x_position) /(length_variable), 0, 1);}else
-				if (menu == "voices_volume"){global.volume_voice = clamp((window_mouse_get_x() -x_position) /(length_variable), 0, 1);}else
+				if (menu == "volume_main"){global.volume_main = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
+				if (menu == "volume_music"){global.volume_music = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
+				if (menu == "volume_sound"){global.volume_sound = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
+				if (menu == "volume_ambient"){global.volume_ambient = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
+				if (menu == "volume_footstep"){global.volume_footstep = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
+				if (menu == "voices_volume"){global.volume_voice = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
 				
 				if (menu == "background_brightness_gameplay")
 				{
-					global.background_brightness_gameplay = clamp((window_mouse_get_x() -x_position) /(length_variable), 0, 1)*(1-(- 1)) + (- 1);
-					variable_to_change = clamp((window_mouse_get_x() -x_position) /(length_variable), 0, 1)*(1-(- 1)) + (- 1);
+					global.background_brightness_gameplay = clamp((mouse_get_x -x_position) /(length_variable), 0, 1)*(1-(- 1)) + (- 1);
+					variable_to_change = clamp((mouse_get_x -x_position) /(length_variable), 0, 1)*(1-(- 1)) + (- 1);
 				}
 				else
 				if (menu == "background_brightness_menu")
 				{
-					global.background_brightness_menu = clamp((window_mouse_get_x() -x_position) /(length_variable), 0, 1)*(1-(- 1)) + (- 1);
-					variable_to_change = clamp((window_mouse_get_x() -x_position) /(length_variable), 0, 1)*(1-(- 1)) + (- 1);
+					global.background_brightness_menu = clamp((mouse_get_x -x_position) /(length_variable), 0, 1)*(1-(- 1)) + (- 1);
+					variable_to_change = clamp((mouse_get_x -x_position) /(length_variable), 0, 1)*(1-(- 1)) + (- 1);
 				}
 				else
 				{
-					variable_to_change = clamp((window_mouse_get_x() -x_position) /(length_variable), 0, 1);
+					variable_to_change = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);
 				}
 			}
 		}
@@ -103,12 +104,12 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	#endregion /* Show a menu cursor when the option is highlighted END */
 	
 	#region /* Clicking the menu button */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position + 32, y_position + 2, x_position + 320, y_position + 41))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (mouse_check_button_pressed(mb_left))
 	and (menu != "assist_enable")
 	and (menu_delay == 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position + 32, y_position + 2, x_position + 320, y_position + 41))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (mouse_check_button_pressed(mb_left))
 	and (global.assist_enable == true)

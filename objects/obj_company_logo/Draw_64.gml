@@ -1,14 +1,17 @@
+var get_window_height = display_get_gui_height();
+var get_window_width = display_get_gui_width();
+
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
 if (sprite_index >= 0)
 {
-	draw_sprite_ext(sprite_index, image_index, window_get_width() / 2, window_get_height() / 2, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(sprite_index, image_index, get_window_width / 2, get_window_height / 2, 1, 1, 0, c_white, 1);
 }
 
 if (global.resource_pack_sprite_splash_easteregg >= 0)
 {
-	draw_sprite_ext(global.resource_pack_sprite_splash_easteregg, image_index, + 128, window_get_height() + sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(global.resource_pack_sprite_splash_easteregg, image_index, + 128, get_window_height + sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
 }
 
 if (can_navigate = false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */

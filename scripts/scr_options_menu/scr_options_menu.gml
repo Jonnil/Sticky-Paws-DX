@@ -1,6 +1,8 @@
 ///scr_options_menu()
 function scr_options_menu()
 {
+	var get_window_height = display_get_gui_height();
+	var get_window_width = display_get_gui_width();
 	
 	#region /* Background Brightness in Menus Options */
 	if (background_brightness_menu_lerp < 0)
@@ -20,7 +22,7 @@ function scr_options_menu()
 	
 	#region /* Black Background behind sidebar */
 	draw_set_alpha(1);
-	draw_rectangle_color(left_sidebar_x + 0, 0, left_sidebar_x + 370, window_get_height(), c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(left_sidebar_x + 0, 0, left_sidebar_x + 370, get_window_height, c_black, c_black, c_black, c_black, false);
 	#endregion /* Black Background behind sidebar END */
 	
 	#region /* Set Font */
@@ -651,7 +653,7 @@ function scr_options_menu()
 		#endregion /* Settings Sidebar END */
 		
 		draw_set_alpha(darken_settings_sidebar_alpha);
-		draw_rectangle_color(left_sidebar_x, 0, left_sidebar_x + 370, window_get_height(), c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(left_sidebar_x, 0, left_sidebar_x + 370, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
 	}
@@ -666,7 +668,7 @@ function scr_options_menu()
 		{
 			menu_y_offset_real = 0;
 		}
-		if (abs(menu_y_offset_real) + window_get_height() - 200 < menu_cursor_y_position)
+		if (abs(menu_y_offset_real) + get_window_height - 200 < menu_cursor_y_position)
 		{
 			menu_y_offset_real -= 10;
 		}
@@ -674,7 +676,7 @@ function scr_options_menu()
 		{
 			menu_y_offset_real += 10;
 		}
-		if (abs(menu_y_offset_real) + window_get_height() + 200 < menu_cursor_y_position)
+		if (abs(menu_y_offset_real) + get_window_height + 200 < menu_cursor_y_position)
 		{
 			menu_y_offset_real -= 100;
 		}
@@ -2038,7 +2040,7 @@ function scr_options_menu()
 				}
 				open_dropdown = false;
 				draw_set_alpha(0.5);
-				draw_rectangle_color(left_sidebar_x + 370, 157, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+				draw_rectangle_color(left_sidebar_x + 370, 157, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(1);
 			}
 		}
@@ -2129,48 +2131,48 @@ function scr_options_menu()
 		{
 			if (menu == "show_tutorial_signs"){
 			if (global.show_tutorial_signs == true)
-			{scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "> Show Tutorial Signs: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
-			else{scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "> Show Tutorial Signs: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}else
+			{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "> Show Tutorial Signs: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+			else{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "> Show Tutorial Signs: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}else
 			if (global.show_tutorial_signs == true)
-			{scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Show Tutorial Signs: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
-			else{scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Show Tutorial Signs: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Show Tutorial Signs: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			else{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Show Tutorial Signs: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		
 			if (menu == "players_can_collide"){
 			if (global.players_can_collide == true)
-			{scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "> Players can collide with each other: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
-			else{scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "> Players can collide with each other: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}
+			{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "> Players can collide with each other: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+			else{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "> Players can collide with each other: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}
 			else
 			if (global.players_can_collide == true)
-			{scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Players can collide with each other: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
-			else{scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Players can collide with each other: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Players can collide with each other: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			else{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Players can collide with each other: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		
 			if (menu == "assist_settings")
-			{scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 140, "> Assist Settings <", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
-			else{scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 140, "Assist Settings", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 140, "> Assist Settings <", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+			else{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 140, "Assist Settings", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		
 			if (menu == "convention_mode")
 			{
 				if (global.convention_mode == true)
 				{
-					scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "> Convention Mode: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-					scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "> Convention Mode: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
 				}
 				else
 				{
-					scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "> Convention Mode: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-					scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "> Convention Mode: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
 				}
 			}
 			else
 			if (global.convention_mode == true)
 			{
-				scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "Convention Mode: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "Convention Mode: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
 			}
 			else
 			{
-				scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "Convention Mode: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				scr_draw_text_outlined(window_get_width() / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "Convention Mode: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
 			}
 		}
 		#endregion /* Gameplay Settings END */
@@ -2569,13 +2571,13 @@ function scr_options_menu()
 			{
 				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.9);
-				draw_rectangle_color(0, 0, window_get_width()* 3, window_get_height()* 3, c_black, c_black, c_black, c_black, false);
+				draw_rectangle_color(0, 0, get_window_width * 3, get_window_height * 3, c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(0.1);
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(window_get_width() / 2, window_get_height() / 2 - 100, l10n_text("Are you sure you want to delete file") + " " + string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
-				draw_menu_button(window_get_width() / 2 - 370 - 32, window_get_height() / 2, l10n_text("Yes"), "file_delete_yes", "file_delete_yes");
-				draw_menu_button(window_get_width() / 2 + 32, window_get_height() / 2, l10n_text("No"), "file_delete_no", "file_delete");
+				scr_draw_text_outlined(get_window_width / 2, get_window_height / 2 - 100, l10n_text("Are you sure you want to delete file") + " " + string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
+				draw_menu_button(get_window_width / 2 - 370 - 32, get_window_height / 2, l10n_text("Yes"), "file_delete_yes", "file_delete_yes");
+				draw_menu_button(get_window_width / 2 + 32, get_window_height / 2, l10n_text("No"), "file_delete_no", "file_delete");
 			
 				if (key_left)
 				and (menu_joystick_delay == 0)
@@ -2657,7 +2659,7 @@ function scr_options_menu()
 			and (key_a_pressed)
 			and (menu_delay == 0)
 			or (menu == "file_delete_yes")
-			and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 370 - 32, window_get_height() / 2 - 21, window_get_width() / 2 - 370 - 32 + 370, window_get_height() / 2 + 42))
+			and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370 - 32, get_window_height / 2 - 21, get_window_width / 2 - 370 - 32 + 370, get_window_height / 2 + 42))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
@@ -2810,7 +2812,7 @@ function scr_options_menu()
 		#endregion /* General Settings END */
 	
 		draw_set_alpha(darken_settings_alpha);
-		draw_rectangle_color(left_sidebar_x + 370, 0, window_get_width(), window_get_height(), c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(left_sidebar_x + 370, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 	
 		#region /* Menu Navigation */
@@ -3159,9 +3161,9 @@ function scr_options_menu()
 				}
 			}
 			#endregion /* Assist Item Appear Navigation END */
-	
+			
 			else
-	
+			
 			#region /* Assist Extra HP Navigation */
 			if (menu == "assist_extra_hp")
 			{

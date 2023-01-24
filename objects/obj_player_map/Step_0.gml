@@ -1,3 +1,6 @@
+var get_window_height = display_get_gui_height();
+var get_window_width = display_get_gui_width();
+
 #region /* When changing file, you should restart the room so the right save data can load */
 if (current_file != global.file)
 or (!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
@@ -979,7 +982,7 @@ if (menu == "purchase_now")
 {
 	if (key_a_pressed)
 	and (menu_delay == 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 64, window_get_width() / 2 - 185 + 370, window_get_height() / 2 + 64 + 42))
+	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 185, get_window_height / 2 + 64, get_window_width / 2 - 185 + 370, get_window_height / 2 + 64 + 42))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay == 0)
 	{
@@ -1007,7 +1010,7 @@ if (menu == "continue_playing")
 {
 	if (key_a_pressed)
 	and (menu_delay == 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() / 2 - 185, window_get_height() / 2 + 106, window_get_width() / 2 - 185 + 370, window_get_height() / 2 + 106 + 42))
+	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 185, get_window_height / 2 + 106, get_window_width / 2 - 185 + 370, get_window_height / 2 + 106 + 42))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay == 0)
 	{

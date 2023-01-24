@@ -8,11 +8,13 @@
 
 function draw_menu_dropdown_item(string_text_item, x_position, y_position, variable_to_change, item_number)
 {
+	var mouse_get_x = window_mouse_get_x();
+	var mouse_get_y = window_mouse_get_y();
 	
 	#region /* Show Item */
 	if (string_text_item > "")
 	{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + (28 * item_number), x_position + 555, y_position + 27+ (28 * item_number)))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + (28 * item_number), x_position + 555, y_position + 27+ (28 * item_number)))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (menu_delay == 0)
 		{

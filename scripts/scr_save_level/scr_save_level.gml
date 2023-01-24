@@ -127,9 +127,12 @@ function scr_save_level()
 			}
 			
 			#region /* If doing a clear check, and winning the level, then add in level information that you have done a clear check */
-			if (global.doing_clear_check == true)
+			if (global.level_clear_rate == "clear")
+			and (global.doing_clear_check == true)
 			{
 				ini_write_real("info", "clear_check", true);
+				global.go_to_menu_after_loading_custom_levels = "upload_edit_name";
+				global.level_clear_rate = noone;
 			}
 			#endregion /* If doing a clear check, and winning the level, then add in level information that you have done a clear check END */
 			

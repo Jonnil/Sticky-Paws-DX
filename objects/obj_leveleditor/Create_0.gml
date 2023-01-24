@@ -9,43 +9,43 @@ if (file_exists("config.ini"))
 	ini_open(working_directory + "config.ini");
 	if (ini_key_exists("config", "selected_level_editing_music"))
 	{
-		selected_level_editing_music = ini_read_real("config", "selected_level_editing_music", 1); /* The selected background music when editing in the level editor */
+		global.selected_level_editing_music = ini_read_real("config", "selected_level_editing_music", 1); /* The selected background music when editing in the level editor */
 		previous_selected_level_editing_music = ini_read_real("config", "selected_level_editing_music", 1); /* When changing the editing music, you want to compare it to this variable */
 	}
 	else
 	{
-		selected_level_editing_music = 1;
+		global.selected_level_editing_music = 1;
 		previous_selected_level_editing_music = 1;
 	}
 	ini_close();
 }
 else
 {
-	selected_level_editing_music = 1;
+	global.selected_level_editing_music = 1;
 	previous_selected_level_editing_music = 1;
 }
 
-if (selected_level_editing_music == 0)
+if (global.selected_level_editing_music == 0)
 {
 	level_editing_music = noone;
 	previous_selected_level_editing_music = 0;
 }
 else
-if (selected_level_editing_music == 1)
+if (global.selected_level_editing_music == 1)
 and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg"))
 {
 	level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg");
 	previous_selected_level_editing_music = 1;
 }
 else
-if (selected_level_editing_music == 2)
+if (global.selected_level_editing_music == 2)
 and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg"))
 {
 	level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg");
 	previous_selected_level_editing_music = 2;
 }
 else
-if (selected_level_editing_music == 3)
+if (global.selected_level_editing_music == 3)
 and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg"))
 {
 	level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg");

@@ -1,47 +1,55 @@
 function scr_set_screen_size()
 {
 	
-	//#region /* Set GUI size */
-	//if (keyboard_check(ord("1")))
-	//{
-	//	var gui_width = 768;
-	//	var gui_height = 1024;
-	//}
-	//else
-	//if (keyboard_check(ord("2")))
-	//{
-	//	var gui_width = 76;
-	//	var gui_height = 102;
-	//}
-	//else
-	//if (keyboard_check(ord("3")))
-	//{
-	//	var gui_width = 7680;
-	//	var gui_height = 10240;
-	//}
-	//else
-	//if (keyboard_check(ord("4")))
-	//{
-	//	var gui_width = 7;
-	//	var gui_height = 10;
-	//}
-	//else
-	//{
-		var gui_width = window_get_width();
-		var gui_height = window_get_height();
-	//}
+	#region /* Set GUI size */
+	if (global.gui_scale_modifier == 0)
+	{
+		global.gui_width = window_get_width();
+		global.gui_height = window_get_height();
+	}
+	else
+	if (global.gui_scale_modifier == 1)
+	{
+		global.gui_width = 1920;
+		global.gui_height = 1080;
+	}
+	else
+	if (global.gui_scale_modifier == 2)
+	{
+		global.gui_width = 1600;
+		global.gui_height = 900;
+	}
+	else
+	if (global.gui_scale_modifier == 3)
+	{
+		global.gui_width = 1366;
+		global.gui_height = 768;
+	}
+	else
+	if (global.gui_scale_modifier == 4)
+	{
+		global.gui_width = 1280;
+		global.gui_height = 720;
+	}
+	else
+	if (global.gui_scale_modifier == 5)
+	{
+		global.gui_width = 1024;
+		global.gui_height = 576;
+	}
+	else
+	if (global.gui_scale_modifier == 6)
+	{
+		global.gui_width = 864;
+		global.gui_height = 480;
+	}
 	
-	//var gui_xscale = 1;
-	//var gui_yscale = 1;
-	
-	display_set_gui_size(gui_width, gui_height);
-	////display_set_gui_maximise(gui_xscale, gui_yscale, 0, 0);
-	//#endregion /* Set GUI size END */
-	
-	//scr_draw_text_outlined(32, 32, gui_width)
-	//scr_draw_text_outlined(32, 32 + 32, gui_height)
-	//scr_draw_text_outlined(32, 32 + 64, gui_xscale)
-	//scr_draw_text_outlined(32, 32 + 96, gui_yscale)
+	display_set_gui_size(global.gui_width, global.gui_height);
+	if (global.gui_scale != -1)
+	{
+		display_set_gui_maximise(global.gui_scale, global.gui_scale, 0, 0);
+	}
+	#endregion /* Set GUI size END */
 	
 	#region /* Set screen size */
 	if (variable_instance_exists(self, "camera"))

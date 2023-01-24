@@ -1,17 +1,20 @@
+var get_window_height = display_get_gui_height();
+var get_window_width = display_get_gui_width();
+
 grid_button_x = display_get_gui_width() - 224;
 
 scr_audio_play(level_editing_music, volume_source.music);
 
-if (selected_level_editing_music != previous_selected_level_editing_music)
+if (global.selected_level_editing_music != previous_selected_level_editing_music)
 {
-	if (selected_level_editing_music == 0)
+	if (global.selected_level_editing_music == 0)
 	{
 		audio_stop_sound(level_editing_music);
 		level_editing_music = noone;
 		previous_selected_level_editing_music = 0;
 	}
 	else
-	if (selected_level_editing_music == 1)
+	if (global.selected_level_editing_music == 1)
 	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg"))
 	{
 		audio_stop_sound(level_editing_music);
@@ -19,7 +22,7 @@ if (selected_level_editing_music != previous_selected_level_editing_music)
 		previous_selected_level_editing_music = 1;
 	}
 	else
-	if (selected_level_editing_music == 2)
+	if (global.selected_level_editing_music == 2)
 	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg"))
 	{
 		audio_stop_sound(level_editing_music);
@@ -27,7 +30,7 @@ if (selected_level_editing_music != previous_selected_level_editing_music)
 		previous_selected_level_editing_music = 2;
 	}
 	else
-	if (selected_level_editing_music == 3)
+	if (global.selected_level_editing_music == 3)
 	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg"))
 	{
 		audio_stop_sound(level_editing_music);
@@ -42,7 +45,7 @@ if (selected_level_editing_music != previous_selected_level_editing_music)
 	if (file_exists("config.ini"))
 	{
 		ini_open(working_directory + "config.ini");
-		ini_write_real("config", "selected_level_editing_music", selected_level_editing_music);
+		ini_write_real("config", "selected_level_editing_music", global.selected_level_editing_music);
 		ini_close();
 	}
 }
@@ -173,12 +176,12 @@ if (erase_brush_size > 5)
 }
 #endregion /* Always keep the brush size within these values END */
 
-if (window_get_height() != old_window_get_height)
-or (window_get_width() != old_window_get_width)
+if (get_window_height != old_window_get_height)
+or (get_window_width != old_window_get_width)
 {
 	scr_set_screen_size();
-	old_window_get_height = window_get_height();
-	old_window_get_width = window_get_width();
+	old_window_get_height = get_window_height;
+	old_window_get_width = get_window_width;
 }
 
 #region /* Play Level when pressing Enter Key */
@@ -202,7 +205,7 @@ or (global.full_level_map_screenshot == true)
 		and (!instance_exists(obj_camera))
 		and (asset_get_type("obj_leveleditor_placed_object") == asset_object)
 		and (!place_meeting(x, y, obj_leveleditor_placed_object))
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height() / 2 - 32, window_get_width(), window_get_height() / 2 + 32))
+		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width - 64, get_window_height / 2 - 32, get_window_width, get_window_height / 2 + 32))
 		and (asset_get_type("obj_camera") == asset_object)
 		and (!instance_exists(obj_camera))
 		or (global.full_level_map_screenshot == true)
@@ -781,7 +784,7 @@ if (quit_level_editor <= 0)
 		and (!position_meeting(x, y, obj_water_level_height))
 		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
 		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), window_get_width() - 64, window_get_height() / 2 - 32, window_get_width(), window_get_height() / 2 + 32)) /* Can't place objects when clicking the play button */
+		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width - 64, get_window_height / 2 - 32, get_window_width, get_window_height / 2 + 32)) /* Can't place objects when clicking the play button */
 		{
 			if (show_grid == true)
 			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up and down buttons when grid is on */

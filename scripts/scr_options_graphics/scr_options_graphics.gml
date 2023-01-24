@@ -29,6 +29,7 @@ function scr_options_graphics()
 		var background_brightness_menu_y = background_brightness_gameplay_y + 68;
 		var reset_level_zoom_when_going_back_to_map_y = background_brightness_menu_y + 48;
 		var reset_world_map_zoom_when_going_back_to_map_y = reset_level_zoom_when_going_back_to_map_y + 48;
+		var gui_scale_modifier_y = reset_world_map_zoom_when_going_back_to_map_y + 48;
 		
 		#region /* Fullscreen toggle */
 		if (os_type != os_ios)
@@ -102,14 +103,19 @@ function scr_options_graphics()
 		draw_menu_checkmark(386, reset_level_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset Level Zoom When Going Back To Map"), "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map);
 		draw_menu_checkmark(386, reset_world_map_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset World Map Zoom When Going Back To Map"), "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map);
 		
+		draw_menu_dropdown(420, gui_scale_modifier_y + menu_y_offset, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, "Automatic", "1920 x 1080", "1600 x 900", "1366 x 768", "1280 x 720", "1024 x 576", "864 x 480");
+		
+		#region /* Navigate */
+			
 		#region /* Navigate Fullscreen Mode */
 		if (menu == "fullscreen_mode")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = fullscreen_mode_y;
 			if (key_up)
 			and (menu_delay == 0)
 			{
-				menu = "reset_world_map_zoom_when_going_back_to_map";
+				menu = "gui_scale_modifier";
 				menu_delay = 3;
 			}
 			else
@@ -126,6 +132,7 @@ function scr_options_graphics()
 		
 		#region /* Navigate Interpolate */
 		if (menu == "interpolate")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = interpolate_y;
 			if (key_up)
@@ -159,11 +166,12 @@ function scr_options_graphics()
 			}
 		}
 		#endregion /* Navigate Interpolate END */
-		
+			
 		else
-		
+			
 		#region /* Show fps */
 		if (menu == "show_fps")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = show_fps_y;
 			if (key_up)
@@ -177,11 +185,12 @@ function scr_options_graphics()
 			}
 		}
 		#endregion /* Show fps END */
-		
+			
 		else
-		
+			
 		#region /* Show fps real */
 		if (menu == "show_fps_real")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = show_fps_real_y;
 			if (key_up)
@@ -195,11 +204,12 @@ function scr_options_graphics()
 			}
 		}
 		#endregion /* Show fps real END */
-		
+			
 		else
-		
+			
 		#region /* Show instance count */
 		if (menu == "show_instance_count")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = show_instance_count_y;
 			if (key_up)
@@ -213,11 +223,12 @@ function scr_options_graphics()
 			}
 		}
 		#endregion /* Show instance count END */
-		
+			
 		else
-		
+			
 		#region /* Show collision mask */
 		if (menu == "show_collision_mask")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = show_collision_mask_y;
 			if (key_up)
@@ -231,11 +242,12 @@ function scr_options_graphics()
 			}
 		}
 		#endregion /* Show collision mask END */
-		
+			
 		else
-		
+			
 		#region /* Navigate Enable Transitions */
 		if (menu == "enable_transitions")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = enable_transitions_y;
 			if (key_up)
@@ -253,11 +265,12 @@ function scr_options_graphics()
 			}
 		}
 		#endregion /* Navigate Enable Transitions END */
-		
+			
 		else
-		
+			
 		#region /* Enable Backgrounds and Foregrounds */
 		if (menu == "enable_background_layer1")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = enable_background_layer1_y;
 			if (key_up)
@@ -276,6 +289,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_background_layer2")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = enable_background_layer2_y;
 			if (key_up)
@@ -294,6 +308,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_background_layer3")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = enable_background_layer3_y;
 			if (key_up)
@@ -312,6 +327,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_background_layer4")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = enable_background_layer4_y;
 			if (key_up)
@@ -330,6 +346,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_foreground_layer1")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = enable_foreground_layer1_y;
 			if (key_up)
@@ -348,6 +365,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_foreground_layer_above_static_objects")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = enable_foreground_layer_above_static_objects_y;
 			if (key_up)
@@ -366,6 +384,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_foreground_layer2")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = enable_foreground_layer2_y;
 			if (key_up)
@@ -384,6 +403,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_foreground_layer_secret")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = enable_foreground_layer_secret_y;
 			if (key_up)
@@ -401,11 +421,12 @@ function scr_options_graphics()
 			}
 		}
 		#endregion /* Enable Backgrounds and Foregrounds END */
-		
+			
 		else
-		
+			
 		#region /* Navigate Background Brightness in Gameplay */
 		if (menu == "background_brightness_gameplay")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = background_brightness_gameplay_y;
 			if (global.background_brightness_gameplay < - 1)
@@ -447,11 +468,12 @@ function scr_options_graphics()
 			}
 		}
 		#endregion /* Navigate Background Brightness in Gameplay END */
-		
+			
 		else
-		
+			
 		#region /* Navigate Background Brightness in Menus */
 		if (menu == "background_brightness_menu")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = background_brightness_menu_y;
 			if (global.background_brightness_menu < - 1)
@@ -493,11 +515,12 @@ function scr_options_graphics()
 			}
 		}
 		#endregion /* Navigate Background Brightness in Menus END */
-		
+			
 		else
-		
+			
 		#region /* Reset level zoom when going back to map */
 		if (menu == "reset_level_zoom_when_going_back_to_map")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = reset_level_zoom_when_going_back_to_map_y;
 			if (key_up)
@@ -515,11 +538,12 @@ function scr_options_graphics()
 			}
 		}
 		#endregion /* Reset level zoom when going back to map END */
-		
+			
 		else
-		
+			
 		#region /* Reset world map zoom when going back to map */
 		if (menu == "reset_world_map_zoom_when_going_back_to_map")
+		and (open_dropdown == false)
 		{
 			menu_cursor_y_position = reset_world_map_zoom_when_going_back_to_map_y;
 			if (key_up)
@@ -531,6 +555,30 @@ function scr_options_graphics()
 			else
 			if (key_down)
 			and (menu_delay == 0)
+			{
+				menu = "gui_scale_modifier";
+				menu_delay = 3;
+			}
+		}
+		#endregion /* Reset world map zoom when going back to map END */
+			
+		else
+			
+		#region /* GUI Scale Modifier */
+		if (menu == "gui_scale_modifier")
+		{
+			menu_cursor_y_position = gui_scale_modifier_y + 100;
+			if (key_up)
+			and (menu_delay == 0)
+			and (open_dropdown == false)
+			{
+				menu = "reset_world_map_zoom_when_going_back_to_map";
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			and (menu_delay == 0)
+			and (open_dropdown == false)
 			{
 				if (os_type != os_ios)
 				and (os_type != os_android)
@@ -545,8 +593,27 @@ function scr_options_graphics()
 					menu_delay = 3;
 				}
 			}
+			if (key_up)
+			and (menu_delay == 0)
+			and (open_dropdown == true)
+			and (global.gui_scale_modifier > 0)
+			{
+				global.gui_scale_modifier -= 1;
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			and (menu_delay == 0)
+			and (open_dropdown == true)
+			and (global.gui_scale_modifier < 10)
+			{
+				global.gui_scale_modifier += 1;
+				menu_delay = 3;
+			}
 		}
 		#endregion /* Reset world map zoom when going back to map END */
+		
+		#endregion /* Navigate END */
 		
 		#region /* Accept */
 		if (key_a_pressed)
@@ -570,6 +637,13 @@ function scr_options_graphics()
 			if (menu == "enable_foreground_layer_secret") and (menu_delay == 0){if (global.enable_foreground_layer_secret == true){global.enable_foreground_layer_secret = false;}else{global.enable_foreground_layer_secret = true;}menu_delay = 3;}
 			if (menu == "reset_level_zoom_when_going_back_to_map") and (menu_delay == 0){if (global.reset_level_zoom_when_going_back_to_map == true){global.reset_level_zoom_when_going_back_to_map = false;}else{global.reset_level_zoom_when_going_back_to_map = true;}menu_delay = 3;}
 			if (menu == "reset_world_map_zoom_when_going_back_to_map") and (menu_delay == 0){if (global.reset_world_map_zoom_when_going_back_to_map == true){global.reset_world_map_zoom_when_going_back_to_map = false;}else{global.reset_world_map_zoom_when_going_back_to_map = true;}menu_delay = 3;}
+			if (menu == "gui_scale_modifier")
+			and (menu_delay == 0)
+			and (open_dropdown == false)
+			{
+				open_dropdown = true;
+				menu_delay = 3;
+			}
 		}
 		#endregion /* Accept END */
 		

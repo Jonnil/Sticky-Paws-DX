@@ -8,9 +8,11 @@
 
 function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to)
 {
+	var mouse_get_x = window_mouse_get_x();
+	var mouse_get_y = window_mouse_get_y();
 	
 	#region /* Button */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 1, x_position + 370, y_position + 41))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 1, x_position + 370, y_position + 41))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (menu_delay == 0)
 	or (menu == menu_index)
@@ -50,7 +52,7 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	}
 	
 	#region /* Clicking the menu button */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), x_position, y_position + 1, x_position + 370, y_position + 41))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 1, x_position + 370, y_position + 41))
 	{
 		if (menu_takes_you_to = false)
 		or (menu_takes_you_to == noone)

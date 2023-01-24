@@ -1,3 +1,5 @@
+var get_window_height = display_get_gui_height();
+
 var_x_dir = 0;
 var_y_dir = 0;
 var_x_dir_gui = 0;
@@ -12,7 +14,7 @@ stick_size = base_size / 2;
 base_size_gui = 150
 
 xx = (base_size_gui * 2);
-yy = window_get_height() - (base_size_gui * 2);
+yy = get_window_height - (base_size_gui * 2);
 
 temp_joystick = -1;
 

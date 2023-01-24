@@ -1,5 +1,8 @@
 function scr_select_custom_level_menu()
 {
+	var get_window_height = display_get_gui_height();
+	var get_window_width = display_get_gui_width();
+	
 	if (os_type == os_linux)
 	{
 		show_delete_button = false;
@@ -8,25 +11,25 @@ function scr_select_custom_level_menu()
 	{
 		show_delete_button = true;
 	}
-	if (window_get_width() >= 1670)
+	if (get_window_width >= 1670)
 	{
 		thumbnail_x_offset = 0;
 		row = 4;
 	}
 	else
-	if (window_get_width() >= 1276)
+	if (get_window_width >= 1276)
 	{
 		thumbnail_x_offset = 0;
 		row = 3;
 	}
 	else
-	if (window_get_width() >= 882)
+	if (get_window_width >= 882)
 	{
 		thumbnail_x_offset = - 64;
 		row = 3;
 	}
 	else
-	if (window_get_width() >= 488)
+	if (get_window_width >= 488)
 	{
 		thumbnail_x_offset = - 64;
 		row = 1;
@@ -49,6 +52,7 @@ function scr_select_custom_level_menu()
 		{
 			if (global.select_level_index - row < 0)
 			and (global.controls_used_for_menu_navigation != "mouse")
+			and (show_level_editor_corner_menu == true)
 			{
 				menu_delay = 3;
 				menu = "open_custom_levels_folder";
@@ -88,6 +92,7 @@ function scr_select_custom_level_menu()
 		{
 			if (global.select_level_index + row > ds_list_size(global.thumbnail_sprite) - 1)
 			and (global.controls_used_for_menu_navigation != "mouse")
+			and (show_level_editor_corner_menu == true)
 			{
 				menu_delay = 3;
 				menu = "back_from_level_editor";
@@ -283,6 +288,7 @@ function scr_select_custom_level_menu()
 		and (key_down)
 		and (menu_delay == 0)
 		and (menu_joystick_delay <= 0)
+		and (show_level_editor_corner_menu == true)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -314,6 +320,7 @@ function scr_select_custom_level_menu()
 		and (key_up)
 		and (menu_delay == 0)
 		and (menu_joystick_delay <= 0)
+		and (show_level_editor_corner_menu == true)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -884,14 +891,14 @@ function scr_select_custom_level_menu()
 	if (menu == "level_editor_enter_description_ok")
 	or (menu == "level_editor_enter_description_cancel")
 	{
-		var draw_description_input_screen_y = window_get_height() / 2;
+		var draw_description_input_screen_y = get_window_height / 2;
 		
 		if (can_input_level_name == true)
 		{
-			global.level_description = scr_draw_name_input_screen(global.level_description, 75, c_black, 1, false, window_get_width() / 2, draw_description_input_screen_y, "level_editor_enter_description_ok", "level_editor_enter_description_cancel");
+			global.level_description = scr_draw_name_input_screen(global.level_description, 75, c_black, 1, false, get_window_width / 2, draw_description_input_screen_y, "level_editor_enter_description_ok", "level_editor_enter_description_cancel");
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(window_get_width() / 2, draw_description_input_screen_y - 32, l10n_text("Enter level description for") + " " + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width / 2, draw_description_input_screen_y - 32, l10n_text("Enter level description for") + " " + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), global.default_text_size, c_black, c_white, 1);
 		}
 		
 		#region /* Input Level Description */
@@ -908,9 +915,9 @@ function scr_select_custom_level_menu()
 			or (keyboard_check_pressed(vk_enter))
 			and (menu == "level_editor_enter_description_ok")
 			or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
-			window_get_width() / 2 - 185,
+			get_window_width / 2 - 185,
 			draw_description_input_screen_y + 54,
-			window_get_width() / 2 - 185 + 370,
+			get_window_width / 2 - 185 + 370,
 			draw_description_input_screen_y + 54 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			or (gamepad_button_check_pressed(0, gp_face1))
@@ -970,9 +977,9 @@ function scr_select_custom_level_menu()
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
 		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
-		window_get_width() / 2 - 185,
+		get_window_width / 2 - 185,
 		draw_description_input_screen_y + 54 + 42,
-		window_get_width() / 2 - 185 + 370,
+		get_window_width / 2 - 185 + 370,
 		draw_description_input_screen_y + 54 + 42 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (can_input_level_name == true)
@@ -1028,7 +1035,7 @@ function scr_select_custom_level_menu()
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(window_get_width() / 2, window_get_height() - 74, string(ini_read_string("info", "level_description", "")), global.default_text_size * 1.25, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width / 2, get_window_height - 74, string(ini_read_string("info", "level_description", "")), global.default_text_size * 1.25, c_black, c_white, 1);
 		}
 		ini_close();
 	}
@@ -1039,13 +1046,13 @@ function scr_select_custom_level_menu()
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		if (window_get_width() <= 1350)
+		if (get_window_width <= 1350)
 		{
-			scr_draw_text_outlined(window_get_width() / 2, window_get_height() - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "\\", "/"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(get_window_width / 2, get_window_height - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "\\", "/"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(window_get_width() / 2, window_get_height() - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(get_window_width / 2, get_window_height - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 	}
 	#endregion /* Show the path of the custom level on the bottom of the screen END */

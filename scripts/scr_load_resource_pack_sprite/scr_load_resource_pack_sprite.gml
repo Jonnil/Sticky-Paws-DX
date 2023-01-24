@@ -39,6 +39,10 @@ function scr_load_resource_pack_sprite()
 		if (global.resource_pack_sprite_enemy_bowlingball_walk > 0){global.resource_pack_sprite_enemy_bowlingball_walk = spr_noone;}
 		if (global.resource_pack_sprite_hp_pickup > 0){global.resource_pack_sprite_hp_pickup = spr_noone;}
 		if (global.resource_pack_sprite_invincibility_powerup > 0){global.resource_pack_sprite_invincibility_powerup = spr_noone;}
+		if (global.resource_pack_sprite_menu_button_1player > 0){global.resource_pack_sprite_menu_button_1player = spr_noone;}
+		if (global.resource_pack_sprite_menu_button_2player > 0){global.resource_pack_sprite_menu_button_2player = spr_noone;}
+		if (global.resource_pack_sprite_menu_button_3player > 0){global.resource_pack_sprite_menu_button_3player = spr_noone;}
+		if (global.resource_pack_sprite_menu_button_4player > 0){global.resource_pack_sprite_menu_button_4player = spr_noone;}
 		if (global.resource_pack_sprite_ranks > 0){global.resource_pack_sprite_ranks = spr_noone;}
 		if (global.resource_pack_sprite_splash_controller > 0){global.resource_pack_sprite_splash_controller = spr_noone;}
 		if (global.resource_pack_sprite_splash_easteregg > 0){global.resource_pack_sprite_splash_easteregg = spr_noone;}
@@ -102,6 +106,10 @@ function scr_load_resource_pack_sprite()
 		global.resource_pack_sprite_enemy_bowlingball_walk = scr_initialize_resource_pack_sprite("enemy_bowlingball_walk", global.resource_pack_sprite_enemy_bowlingball_walk);
 		global.resource_pack_sprite_hp_pickup = scr_initialize_resource_pack_sprite("hp_pickup", global.resource_pack_sprite_hp_pickup);
 		global.resource_pack_sprite_invincibility_powerup = scr_initialize_resource_pack_sprite("invincibility_powerup", global.resource_pack_sprite_invincibility_powerup);
+		global.resource_pack_sprite_menu_button_1player = scr_initialize_resource_pack_sprite("menu_button_1player", global.resource_pack_sprite_menu_button_1player);
+		global.resource_pack_sprite_menu_button_2player = scr_initialize_resource_pack_sprite("menu_button_2player", global.resource_pack_sprite_menu_button_2player);
+		global.resource_pack_sprite_menu_button_3player = scr_initialize_resource_pack_sprite("menu_button_3player", global.resource_pack_sprite_menu_button_3player);
+		global.resource_pack_sprite_menu_button_4player = scr_initialize_resource_pack_sprite("menu_button_4player", global.resource_pack_sprite_menu_button_4player);
 		global.resource_pack_sprite_ranks = scr_initialize_resource_pack_sprite("ranks", global.resource_pack_sprite_ranks);
 		global.resource_pack_sprite_splash_controller = scr_initialize_resource_pack_sprite("splash_controller", global.resource_pack_sprite_splash_controller);
 		global.resource_pack_sprite_splash_easteregg = scr_initialize_resource_pack_sprite("splash_easteregg", global.resource_pack_sprite_splash_easteregg);

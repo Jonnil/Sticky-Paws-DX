@@ -98,9 +98,15 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 		global.number_of_audio_channels = change_to_value;
 	}
 	else
-	if (variable_to_change = selected_level_editing_music)
+	if (variable_to_change = global.selected_level_editing_music)
 	and (menu == "selected_level_editing_music")
 	{
-		selected_level_editing_music = change_to_value;
+		global.selected_level_editing_music = change_to_value;
+	}
+	else
+	if (variable_to_change = global.gui_scale_modifier)
+	and (menu == "gui_scale_modifier")
+	{
+		global.gui_scale_modifier = change_to_value;
 	}
 }

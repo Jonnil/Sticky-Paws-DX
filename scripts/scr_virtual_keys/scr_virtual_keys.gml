@@ -1,16 +1,19 @@
 function scr_virtual_keys()
 {
-	var mobile_key_jump_x = window_get_width() - 200;
-	var mobile_key_jump_y = window_get_height() - 200;
-	var mobile_key_crouch_x = window_get_width() - 200;
-	var mobile_key_crouch_y = window_get_height() - 500;
-	var mobile_key_sprint_x = window_get_width() - 500;
-	var mobile_key_sprint_y = window_get_height() - 200;
-	var mobile_key_pause_x = window_get_width() /2;
+	var get_window_height = display_get_gui_height();
+	var get_window_width = display_get_gui_width();
+	
+	var mobile_key_jump_x = get_window_width - 200;
+	var mobile_key_jump_y = get_window_height - 200;
+	var mobile_key_crouch_x = get_window_width - 200;
+	var mobile_key_crouch_y = get_window_height - 500;
+	var mobile_key_sprint_x = get_window_width - 500;
+	var mobile_key_sprint_y = get_window_height - 200;
+	var mobile_key_pause_x = get_window_width /2;
 	var mobile_key_pause_y = + 100;
-	var mobile_key_zoom_out_x = window_get_width() /2 + 200;
+	var mobile_key_zoom_out_x = get_window_width /2 + 200;
 	var mobile_key_zoom_out_y = + 100;
-	var mobile_key_zoom_in_x = window_get_width() /2 + 400;
+	var mobile_key_zoom_in_x = get_window_width /2 + 400;
 	var mobile_key_zoom_in_y = + 100;
 	var mobile_key_extra_deadzone = 50;
 	

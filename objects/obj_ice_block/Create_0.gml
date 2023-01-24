@@ -8,7 +8,7 @@ if (asset_get_type("obj_wall") == asset_object)
 	and (y <= 0)
 	{
 		instance_create_depth(x, y -sprite_height, 0, obj_wall);
-		instance_create_depth(x, y -sprite_height* 2, 0, obj_wall);
+		instance_create_depth(x, y -sprite_height * 2, 0, obj_wall);
 	}
 	#endregion /* Add walls up outide view END */
 
@@ -17,7 +17,7 @@ if (asset_get_type("obj_wall") == asset_object)
 	and (y >=room_height)
 	{
 		instance_create_depth(x, y + sprite_height, 0, obj_wall);
-		instance_create_depth(x, y + sprite_height* 2, 0, obj_wall);
+		instance_create_depth(x, y + sprite_height * 2, 0, obj_wall);
 	}
 	#endregion /* Add walls down outide view END */
 
