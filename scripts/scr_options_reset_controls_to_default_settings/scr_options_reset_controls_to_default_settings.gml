@@ -1,5 +1,7 @@
 function scr_options_reset_controls_to_default_settings(xx, yy)
 {
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	#region /* Reset to Default Settings */
 	draw_menu_button(xx, yy + menu_y_offset, l10n_text("Default Settings"), "remap_reset", "remap_reset");
@@ -9,8 +11,8 @@ function scr_options_reset_controls_to_default_settings(xx, yy)
 		if (key_a_pressed)
 		and (menu_delay == 0)
 		or (mouse_check_button_pressed(mb_left))
-		and (window_mouse_get_x() > 370)
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), xx, yy + menu_y_offset + 1, xx + 370, yy + menu_y_offset + 41))
+		and (mouse_get_x > 370)
+		and (point_in_rectangle(mouse_get_x, mouse_get_y, xx, yy + menu_y_offset + 1, xx + 370, yy + menu_y_offset + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (menu_delay == 0)
 		{

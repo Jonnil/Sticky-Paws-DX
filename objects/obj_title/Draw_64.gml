@@ -1,5 +1,7 @@
 var main_game_y = display_get_gui_height() / 2 + 100 + 40;
 var level_editor_y = display_get_gui_height() / 2 + 100 + 80;
+var mouse_get_x = display_mouse_get_x();
+var mouse_get_y = display_mouse_get_y();
 
 #region /* Play Attract Demo */
 if (global.play_attract_demo = false)
@@ -467,14 +469,14 @@ and (global.controls_used_for_menu_navigation != "controller")
 			draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
 		}
 	}
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	{
 		draw_set_alpha(0.5);
 		draw_rectangle_color(0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42, c_white, c_white, c_white, c_white, false);
 		draw_set_alpha(1);
 	}
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
 	and (mouse_check_button_pressed(mb_left))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (menu != "quit_game_no")
@@ -531,7 +533,7 @@ if (global.enable_links == true)
 	if (key_a_pressed)
 	and (menu == "link_discord")
 	and (menu_delay == 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_discord_x, display_get_gui_height() + 8 + version_y_pos, link_discord_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_discord_x, display_get_gui_height() + 8 + version_y_pos, link_discord_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay == 0)
 	{
@@ -542,7 +544,7 @@ if (global.enable_links == true)
 	if (key_a_pressed)
 	and (menu == "link_gamebanana")
 	and (menu_delay == 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, link_gamebanana_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, link_gamebanana_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay == 0)
 	{
@@ -553,7 +555,7 @@ if (global.enable_links == true)
 	if (key_a_pressed)
 	and (menu == "link_instagram")
 	and (menu_delay == 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_instagram_x, display_get_gui_height() + 8 + version_y_pos, link_instagram_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_instagram_x, display_get_gui_height() + 8 + version_y_pos, link_instagram_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay == 0)
 	{
@@ -564,7 +566,7 @@ if (global.enable_links == true)
 	if (key_a_pressed)
 	and (menu == "link_reddit")
 	and (menu_delay == 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_reddit_x, display_get_gui_height() + 8 + version_y_pos, link_reddit_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_reddit_x, display_get_gui_height() + 8 + version_y_pos, link_reddit_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay == 0)
 	{
@@ -575,7 +577,7 @@ if (global.enable_links == true)
 	if (key_a_pressed)
 	and (menu == "link_twitter")
 	and (menu_delay == 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_twitter_x, display_get_gui_height() + 8 + version_y_pos, link_twitter_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_twitter_x, display_get_gui_height() + 8 + version_y_pos, link_twitter_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay == 0)
 	{
@@ -586,7 +588,7 @@ if (global.enable_links == true)
 	if (key_a_pressed)
 	and (menu == "link_wiki")
 	and (menu_delay == 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), link_wiki_x, display_get_gui_height() + 8 + version_y_pos, link_wiki_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, link_wiki_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay == 0)
 	{
@@ -793,7 +795,7 @@ and (global.arcade_mode = false)
 	#region /* Click on menu buttons */
 	
 	#region /* Click Main Game */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+	if (point_in_rectangle(mouse_get_x, mouse_get_y,
 	display_get_gui_width() / 2 - 185,
 	main_game_y,
 	display_get_gui_width() / 2 + 185,
@@ -828,7 +830,7 @@ and (global.arcade_mode = false)
 	else
 	
 	#region /* Click Level Editor */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+	if (point_in_rectangle(mouse_get_x, mouse_get_y,
 	display_get_gui_width() / 2 - 185,
 	level_editor_y,
 	display_get_gui_width() / 2 + 185,
@@ -878,7 +880,7 @@ and (global.arcade_mode = false)
 	else
 	
 	#region /* Click Options */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+	if (point_in_rectangle(mouse_get_x, mouse_get_y,
 	display_get_gui_width() / 2 - 185,
 	options_and_quit_y + 2,
 	display_get_gui_width() / 2,
@@ -910,7 +912,7 @@ and (global.arcade_mode = false)
 	else
 
 	#region /* Click Language Shortcut */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+	if (point_in_rectangle(mouse_get_x, mouse_get_y,
 	display_get_gui_width() / 2 - 250,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
 	display_get_gui_width() / 2 - 208,
@@ -937,7 +939,7 @@ and (global.arcade_mode = false)
 	else
 	
 	#region /* Language Shortcut */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+	if (point_in_rectangle(mouse_get_x, mouse_get_y,
 	display_get_gui_width() / 2 - 250,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
 	display_get_gui_width() / 2 - 208,
@@ -952,7 +954,7 @@ and (global.arcade_mode = false)
 	else
 
 	#region /* Click Accessibility Shortcut */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+	if (point_in_rectangle(mouse_get_x, mouse_get_y,
 	display_get_gui_width() / 2 + 208,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
 	display_get_gui_width() / 2 + 250,
@@ -978,7 +980,7 @@ and (global.arcade_mode = false)
 	else
 	
 	#region /* Accessibility Shortcut */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+	if (point_in_rectangle(mouse_get_x, mouse_get_y,
 	display_get_gui_width() / 2 + 208,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
 	display_get_gui_width() / 2 + 250,
@@ -993,7 +995,7 @@ and (global.arcade_mode = false)
 	else
 
 	#region /* Click Profile Shortcut */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+	if (point_in_rectangle(mouse_get_x, mouse_get_y,
 	display_get_gui_width() / 2 + 208+ 50,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
 	display_get_gui_width() / 2 + 250 + 50,
@@ -1020,7 +1022,7 @@ and (global.arcade_mode = false)
 	else
 	
 	#region /* Profile Shortcut */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+	if (point_in_rectangle(mouse_get_x, mouse_get_y,
 	display_get_gui_width() / 2 + 208+ 50,
 	display_get_gui_height() / 2 + 100 + 140 - 20,
 	display_get_gui_width() / 2 + 250 + 50,
@@ -1035,7 +1037,7 @@ and (global.arcade_mode = false)
 	else
 	
 	#region /* Click Credits */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	and (in_settings = false)
@@ -1058,7 +1060,7 @@ and (global.arcade_mode = false)
 	else
 	
 	#region /* Click Quit */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2, options_and_quit_y + 2, display_get_gui_width() / 2 + 185, options_and_quit_y + 42))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() / 2, options_and_quit_y + 2, display_get_gui_width() / 2 + 185, options_and_quit_y + 42))
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	and (in_settings = false)
@@ -1118,9 +1120,9 @@ and (global.arcade_mode = false)
 	{
 		if (menu == "language_shortcut")
 		{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 - 208, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_green, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_gray, 1);}
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 - 208, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_green, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_gray, 1);}
 		draw_sprite_ext(spr_settings_icons, 12, display_get_gui_width() / 2 - 230, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
-		else{if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 - 208, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_lime, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
+		else{if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 - 208, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_lime, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 - 250, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
 		draw_sprite_ext(spr_settings_icons, 12, display_get_gui_width() / 2 - 230, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
 	}
 
@@ -1129,9 +1131,9 @@ and (global.arcade_mode = false)
 	{
 		if (menu == "accessibility_shortcut")
 		{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 + 250, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_green, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_gray, 1);}
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 + 250, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_green, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_gray, 1);}
 		draw_sprite_ext(spr_settings_icons, 1, display_get_gui_width() / 2 + 230, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
-		else{if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 + 250, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_lime, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
+		else{if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 + 250, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_lime, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
 		draw_sprite_ext(spr_settings_icons, 1, display_get_gui_width() / 2 + 230, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
 	}
 
@@ -1140,9 +1142,9 @@ and (global.arcade_mode = false)
 	{
 		if (menu == "profile_shortcut")
 		{
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 + 250 + 50, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_green, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_gray, 1);}
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 + 250 + 50, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_green, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_gray, 1);}
 		draw_sprite_ext(spr_settings_icons, 7, display_get_gui_width() / 2 + 230 + 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
-		else{if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 + 250 + 50, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_lime, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
+		else{if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140 - 20, display_get_gui_width() / 2 + 250 + 50, display_get_gui_height() / 2 + 100 + 140 + 19)){draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_lime, 1);}else{draw_sprite_ext(spr_menu_button_small, 0, display_get_gui_width() / 2 + 208+ 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
 		draw_sprite_ext(spr_settings_icons, 7, display_get_gui_width() / 2 + 230 + 50, display_get_gui_height() / 2 + 100 + 140, 1, 1, 0, c_white, 1);}
 	}
 }
@@ -1189,7 +1191,7 @@ and (global.play_attract_demo = false)
 		i += 1)
 		{
 			column = floor(i / row);
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 * (i - column * row) + 100 - 3, 226 * (column - scroll) + 250 - 3, 394 * (i - column * row) + 100 + 384 + 3, 226 * (column - scroll) + 250 + link_wiki_x + 3))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (i - column * row) + 100 - 3, 226 * (column - scroll) + 250 - 3, 394 * (i - column * row) + 100 + 384 + 3, 226 * (column - scroll) + 250 + link_wiki_x + 3))
 			{
 				if (menu != "level_editor_play")
 				and (menu_delay == 0)

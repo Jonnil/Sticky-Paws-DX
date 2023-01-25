@@ -16,8 +16,8 @@
 
 function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_offset, y_origin_offset, xscale, yscale, spr_width, spr_height, string_text, menu_index, menu_takes_you_to, show_arrows = true)
 {
-	var mouse_get_x = window_mouse_get_x();
-	var mouse_get_y = window_mouse_get_y();
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	#region /* Button */
 	

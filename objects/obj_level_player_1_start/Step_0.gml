@@ -1,3 +1,6 @@
+var mouse_get_x = display_mouse_get_x();
+var mouse_get_y = display_mouse_get_y();
+
 key_a = (gamepad_button_check(0, gp_face1))
 or (keyboard_check(global.player1_key_jump));
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))
@@ -19,7 +22,7 @@ and (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))
 	and (!mouse_check_button(mb_middle))
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+	and (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 	{
 		if (mouse_check_button_pressed(mb_left))
 		or (key_a_pressed)

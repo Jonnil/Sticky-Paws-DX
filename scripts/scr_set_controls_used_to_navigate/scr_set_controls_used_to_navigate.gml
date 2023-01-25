@@ -1,11 +1,13 @@
 function scr_set_controls_used_to_navigate()
 {
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	#region /* Set what controls are used to navigate the game */
 	
-	var mouse_moving = point_distance(mouse_x_position, mouse_y_position, window_mouse_get_x(), window_mouse_get_y()); /* Get distance from fake mouse to real mouse */
-	mouse_x_position = window_mouse_get_x(); /* Update x position of fake mouse only after setting var mouse moving */
-	mouse_y_position = window_mouse_get_y(); /* Update y position of fake mouse only after setting var mouse moving */
+	var mouse_moving = point_distance(mouse_x_position, mouse_y_position, mouse_get_x, mouse_get_y); /* Get distance from fake mouse to real mouse */
+	mouse_x_position = mouse_get_x; /* Update x position of fake mouse only after setting var mouse moving */
+	mouse_y_position = mouse_get_y; /* Update y position of fake mouse only after setting var mouse moving */
 	
 	if (keyboard_check(vk_anykey)) /* If pressing keyboard keys, then set "keyboard" as the navigation method */
 	{

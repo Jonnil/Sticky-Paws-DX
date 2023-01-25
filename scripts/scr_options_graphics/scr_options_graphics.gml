@@ -1,5 +1,7 @@
 function scr_options_graphics()
 {
+	var mouse_get_x = display_mouse_get_x();
+	
 	if (global.settings_sidebar_menu == "video_settings")
 	{
 		if (global.enable_options_for_pc == true)
@@ -618,7 +620,7 @@ function scr_options_graphics()
 		#region /* Accept */
 		if (key_a_pressed)
 		or (mouse_check_button_pressed(mb_left))
-		and (window_mouse_get_x() > 370)
+		and (mouse_get_x > 370)
 		{
 			if (menu == "fullscreen_mode") and (menu_delay == 0){if (window_get_fullscreen()){window_set_fullscreen(false);}else{window_set_fullscreen(true);}menu_delay = 3;}
 			if (menu == "interpolate") and (menu_delay == 0){if (global.interpolate == true){global.interpolate = false;gpu_set_texfilter(false);}else{global.interpolate = true;gpu_set_texfilter(true);}menu_delay = 3;}

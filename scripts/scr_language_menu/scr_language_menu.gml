@@ -2,6 +2,8 @@ function scr_language_menu()
 {
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
@@ -33,10 +35,10 @@ function scr_language_menu()
 	}
 	
 	#region /* Clicking on language completion text enables and disables the translation debug mode */
-	if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width - 32 - string_width("(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")"), 164 - 32, get_window_width - 32, 164 + 32))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - string_width("(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")"), 164 - 32, get_window_width - 32, 164 + 32))
 	and (global.translation_debug == false)
 	and (global.controls_used_for_menu_navigation == "mouse")
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width - 32 - string_width("(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")"), 164 - 32, get_window_width - 32, 164 + 64))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - string_width("(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")"), 164 - 32, get_window_width - 32, 164 + 64))
 	and (global.translation_debug == true)
 	and (global.controls_used_for_menu_navigation == "mouse")
 	{

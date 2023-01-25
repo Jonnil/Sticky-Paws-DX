@@ -7,8 +7,8 @@
 /// @param menu_y_remap_key
 function scr_draw_remap_key(menu_string, name_string, remapping_player_key, remapping_player_key2, key_x, menu_y_remap_key)
 {
-	var mouse_get_x = window_mouse_get_x();
-	var mouse_get_y = window_mouse_get_y();
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	if (global.settings_sidebar_menu == "controller_settings")
 	{

@@ -1,5 +1,7 @@
 var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
+var mouse_get_x = display_mouse_get_x();
+var mouse_get_y = display_mouse_get_y();
 
 #region /* Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden */
 if (iris_xscale <= 0.001)
@@ -105,8 +107,8 @@ if (lives <= 0)
 		or (gamepad_button_check_pressed(3, gp_face1))
 		or (menu == "continue")
 		and (point_in_rectangle(
-		window_mouse_get_x(),
-		window_mouse_get_y(),
+		mouse_get_x,
+		mouse_get_y,
 		get_window_width / 2 - 370 - game_over_menu_seperation_distance,
 		get_window_height - game_over_menu_y + 2,
 		get_window_width / 2 - 370 + 370 - game_over_menu_seperation_distance,
@@ -114,8 +116,8 @@ if (lives <= 0)
 		and (mouse_check_button_pressed(mb_left))
 		or (menu == "quit")
 		and (point_in_rectangle(
-		window_mouse_get_x(),
-		window_mouse_get_y(),
+		mouse_get_x,
+		mouse_get_y,
 		get_window_width / 2 + game_over_menu_seperation_distance,
 		get_window_height - game_over_menu_y + 2,
 		get_window_width / 2 + 370 + game_over_menu_seperation_distance,

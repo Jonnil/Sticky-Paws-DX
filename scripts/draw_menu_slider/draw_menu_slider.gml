@@ -11,8 +11,8 @@
 function draw_menu_slider(x_position, y_position, string_text, menu_index, variable_to_change, bar_color)
 {
 	var length_variable = 320;
-	var mouse_get_x = window_mouse_get_x();
-	var mouse_get_y = window_mouse_get_y();
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position- 16, x_position + 320, y_position + 16))
 	and (global.controls_used_for_menu_navigation == "mouse")

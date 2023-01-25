@@ -1,8 +1,8 @@
 function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y, left_right_buttons_right_arrow_x, left_right_buttons_text, left_right_buttons_variable_to_change, left_right_buttons_menu, scale_increment, left_right_buttons_can_go_below_0)
 {
 	var size_of_button_offset = 299;
-	var mouse_get_x = window_mouse_get_x();
-	var mouse_get_y = window_mouse_get_y();
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	#region /* Left Right Buttons */
 	draw_set_halign(fa_left);

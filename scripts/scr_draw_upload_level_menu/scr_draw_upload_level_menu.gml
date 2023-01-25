@@ -3,6 +3,8 @@ function scr_draw_upload_level_menu()
 	var upload_y = 42 * 2;
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	#region /* Pressing the Upload button */
 	if (menu == "level_editor_upload")
@@ -10,7 +12,7 @@ function scr_draw_upload_level_menu()
 		show_level_editor_corner_menu = true;
 		can_input_level_name = false;
 		if (room = room_title)
-		and (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (upload_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (upload_y) - 3 + 42))
+		and (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (upload_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (upload_y) - 3 + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		or (room = room_leveleditor)
@@ -76,7 +78,7 @@ function scr_draw_upload_level_menu()
 			scr_draw_text_outlined(get_window_width / 2, get_window_height / 2 - 128, l10n_text("Do a clear check?"), global.default_text_size * 1.9, c_black, c_white, 1);
 			
 			#region /* Clear Check No */
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, get_window_height / 2 - 42, get_window_width / 2 + 370, get_window_height / 2 + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, get_window_height / 2 - 42, get_window_width / 2 + 370, get_window_height / 2 + 42))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			{
 				if (menu_delay == 0)
@@ -112,7 +114,7 @@ function scr_draw_upload_level_menu()
 			#endregion /* Clear Check No END */
 			
 			#region /* Clear Check Yes */
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, get_window_height / 2 + 84 - 42, get_window_width / 2 + 370, get_window_height / 2 + 84 + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, get_window_height / 2 + 84 - 42, get_window_width / 2 + 370, get_window_height / 2 + 84 + 42))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			{
 				if (menu_delay == 0)
@@ -160,7 +162,7 @@ function scr_draw_upload_level_menu()
 		#region /* Clear Check Menu Navigation */
 		if (menu == "clear_check_no")
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, get_window_height / 2 - 42, get_window_width / 2 + 370, get_window_height / 2 + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, get_window_height / 2 - 42, get_window_width / 2 + 370, get_window_height / 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			or (key_a_pressed)
@@ -174,7 +176,7 @@ function scr_draw_upload_level_menu()
 		else
 		if (menu == "clear_check_yes")
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, get_window_height / 2 + 84 - 42, get_window_width / 2 + 370, get_window_height / 2 + 84 + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, get_window_height / 2 + 84 - 42, get_window_width / 2 + 370, get_window_height / 2 + 84 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			or (key_a_pressed)
@@ -313,7 +315,7 @@ function scr_draw_upload_level_menu()
 		if (menu == "upload_edit_name")
 		and (menu_delay == 0)
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 185, edit_name_y, get_window_width / 2 + 185, edit_name_y + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 185, edit_name_y, get_window_width / 2 + 185, edit_name_y + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (level_editor_edit_name = false)
@@ -339,7 +341,7 @@ function scr_draw_upload_level_menu()
 		if (menu == "upload_edit_description")
 		and (menu_delay == 0)
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 185, edit_description_y, get_window_width / 2 + 185, edit_description_y + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 185, edit_description_y, get_window_width / 2 + 185, edit_description_y + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (level_editor_edit_name = false)
@@ -416,7 +418,7 @@ function scr_draw_upload_level_menu()
 			menu_delay = 3;
 			menu = "upload_yes"; /* Return to previous menu */
 		}
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 185, cancel_y, get_window_width / 2 + 185, cancel_y + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 185, cancel_y, get_window_width / 2 + 185, cancel_y + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		or (menu == "edit_cancel")
@@ -476,7 +478,7 @@ function scr_draw_upload_level_menu()
 			and (menu != "upload_enter_name_cancel")
 			or (keyboard_check_pressed(vk_enter))
 			and (menu == "upload_enter_name_ok")
-			or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+			or (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width / 2 - 185,
 			draw_name_y + 54,
 			get_window_width / 2 - 185 + 370,
@@ -535,7 +537,7 @@ function scr_draw_upload_level_menu()
 		or (keyboard_check_pressed(vk_escape))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+		or (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width / 2 - 185,
 		draw_name_y + 54 + 42,
 		get_window_width / 2 - 185 + 370,
@@ -631,7 +633,7 @@ function scr_draw_upload_level_menu()
 			and (menu != "upload_enter_description_cancel")
 			or (keyboard_check_pressed(vk_enter))
 			and (menu == "upload_enter_description_ok")
-			or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+			or (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width / 2 - 185,
 			draw_description_y + 54,
 			get_window_width / 2 - 185 + 370,
@@ -693,7 +695,7 @@ function scr_draw_upload_level_menu()
 		or (keyboard_check_pressed(vk_escape))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+		or (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width / 2 - 185,
 		draw_description_y + 54 + 42,
 		get_window_width / 2 - 185 + 370,
@@ -775,7 +777,7 @@ function scr_draw_upload_level_menu()
 		var upload_level_yes_y = get_window_height / 2 + 84 + 42 + 42;
 		
 		#region /* Upload Level No */
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, upload_level_no_y - 42, get_window_width / 2 + 370, upload_level_no_y + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, upload_level_no_y - 42, get_window_width / 2 + 370, upload_level_no_y + 42))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (menu_delay == 0)
@@ -811,7 +813,7 @@ function scr_draw_upload_level_menu()
 		#endregion /* Upload Level No END */
 	
 		#region /* Upload Level Yes */
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, upload_level_yes_y - 42, get_window_width / 2 + 370, upload_level_yes_y + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, upload_level_yes_y - 42, get_window_width / 2 + 370, upload_level_yes_y + 42))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (menu_delay == 0)
@@ -857,7 +859,7 @@ function scr_draw_upload_level_menu()
 		#region /* Upload Level Menu Navigation */
 		if (menu == "upload_no")
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, upload_level_no_y - 42, get_window_width / 2 + 370, upload_level_no_y + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, upload_level_no_y - 42, get_window_width / 2 + 370, upload_level_no_y + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			or (key_a_pressed)
@@ -871,7 +873,7 @@ function scr_draw_upload_level_menu()
 		else
 		if (menu == "upload_yes")
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, upload_level_yes_y - 42, get_window_width / 2 + 370, upload_level_yes_y + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, upload_level_yes_y - 42, get_window_width / 2 + 370, upload_level_yes_y + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			or (key_a_pressed)
@@ -1017,7 +1019,7 @@ function scr_draw_upload_level_menu()
 		var ok_y = get_window_height / 2 + 42 + 42 + 42 + 42;
 		
 		#region /* Level Uploaded OK */
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, ok_y - 42, get_window_width / 2 + 370, ok_y + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, ok_y - 42, get_window_width / 2 + 370, ok_y + 42))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (menu_delay == 0)
@@ -1053,7 +1055,7 @@ function scr_draw_upload_level_menu()
 		#endregion /* Level Uploaded OK END */
 		
 		#region /* Return to game */
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, ok_y - 42, get_window_width / 2 + 370, ok_y + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, ok_y - 42, get_window_width / 2 + 370, ok_y + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay == 0)
 		or (mouse_check_button_pressed(mb_right))
@@ -1099,7 +1101,7 @@ function scr_draw_upload_level_menu()
 		var ok_y = get_window_height / 2 + 42 + 42 + 42;
 		
 		#region /* Level Uploaded OK */
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, ok_y - 42, get_window_width / 2 + 370, ok_y + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, ok_y - 42, get_window_width / 2 + 370, ok_y + 42))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (menu_delay == 0)
@@ -1135,7 +1137,7 @@ function scr_draw_upload_level_menu()
 		#endregion /* Level Uploaded OK END */
 		
 		#region /* Return to game */
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, ok_y - 42, get_window_width / 2 + 370, ok_y + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, ok_y - 42, get_window_width / 2 + 370, ok_y + 42))
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay == 0)
 		or (key_a_pressed)

@@ -4,6 +4,8 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 {
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	#region /* Quit to Desktop menu */
 	draw_set_halign(fa_center);
@@ -14,7 +16,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 		scr_draw_text_outlined(get_window_width / 2, get_window_height / 2 - 128, l10n_text("ARE YOU SURE YOU WANT TO QUIT?"), global.default_text_size * 1.9, c_white, c_black, 1);
 		
 		#region /* Quit No */
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, get_window_height / 2 - 42, get_window_width / 2 + 370, get_window_height / 2 + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, get_window_height / 2 - 42, get_window_width / 2 + 370, get_window_height / 2 + 42))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (mouse_check_button(mb_left))
@@ -51,7 +53,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 		
 		if (menu == "quit_game_no")
 		{		
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, get_window_height / 2 - 42, get_window_width / 2 + 370, get_window_height / 2 + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, get_window_height / 2 - 42, get_window_width / 2 + 370, get_window_height / 2 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			or (key_a_pressed)
@@ -76,7 +78,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 		#endregion /* Quit No END */
 		
 		#region /* Quit Yes */
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, get_window_height / 2 + 84 - 42, get_window_width / 2 + 370, get_window_height / 2 + 84 + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, get_window_height / 2 + 84 - 42, get_window_width / 2 + 370, get_window_height / 2 + 84 + 42))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (mouse_check_button(mb_left))
@@ -110,7 +112,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 		
 		if (menu == "quit_game_yes")
 		{
-			if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 370, get_window_height / 2 + 84 - 42, get_window_width / 2 + 370, get_window_height / 2 + 84 + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370, get_window_height / 2 + 84 - 42, get_window_width / 2 + 370, get_window_height / 2 + 84 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			or (key_a_pressed)

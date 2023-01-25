@@ -1,5 +1,6 @@
 function scr_options_control_menu()
 {
+	var mouse_get_x = display_mouse_get_x();
 	
 	#region /* Buttons positions */
 	if (remapping_player == 0)
@@ -5841,7 +5842,7 @@ function scr_options_control_menu()
 		#region /* Accept */
 		if (key_a_pressed)
 		or (mouse_check_button_pressed(mb_left))
-		and (window_mouse_get_x() > 370)
+		and (mouse_get_x > 370)
 		{
 			
 			#region /* Drop down menu */

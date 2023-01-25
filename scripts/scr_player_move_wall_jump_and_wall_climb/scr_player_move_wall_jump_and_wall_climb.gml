@@ -319,19 +319,13 @@ function scr_player_move_wall_jump_and_wall_climb()
 					if (place_meeting(x + 1, y, obj_wall))
 					{
 						image_xscale = -1;
-						if (!place_meeting(x - 6, y, obj_wall))
-						{
-							hspeed = -6;
-						}
+						hspeed = -6;
 					}
 					else
 					if (place_meeting(x - 1, y, obj_wall))
 					{
 						image_xscale = +1;
-						if (!place_meeting(x + 6, y, obj_wall))
-						{
-							hspeed = +6;
-						}
+						hspeed = +6;
 					}
 					jump = 1;
 					triplejumpdelay = 50;

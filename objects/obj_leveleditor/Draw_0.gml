@@ -1,3 +1,6 @@
+var mouse_get_x = display_mouse_get_x();
+var mouse_get_y = display_mouse_get_y();
+
 ///Draw Event
 draw_set_alpha(0.5);
 draw_rectangle_color(camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), 0, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
@@ -1084,9 +1087,9 @@ if (quit_level_editor <= 0)
 	and (erase_mode == false)
 	and (pause == false)
 	and (menu_delay == 0)
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom buttons */
-	and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
+	and (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
+	and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom buttons */
+	and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
 	{
 		if (!place_meeting(x, y, obj_leveleditor_placed_object))
 		and (!place_meeting(x, y, obj_leveleditor_fill))

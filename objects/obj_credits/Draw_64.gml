@@ -1,5 +1,7 @@
 var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
+var mouse_get_x = display_mouse_get_x();
+var mouse_get_y = display_mouse_get_y();
 
 black_background_alpha = lerp(black_background_alpha, 0.75, 0.01);
 menu_cursor_index += 0.3;
@@ -99,7 +101,7 @@ else
 		skip -= 1;
 	}
 }
-if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width - 370, 0, get_window_width, 41))
+if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 370, 0, get_window_width, 41))
 and (mouse_check_button(mb_left))
 {
 	menu_delay = 9999;

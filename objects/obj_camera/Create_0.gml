@@ -1,7 +1,7 @@
 scr_initialize_camera();
 
-mouse_x_position = window_mouse_get_x();
-mouse_y_position = window_mouse_get_y();
+mouse_x_position = display_mouse_get_x();
+mouse_y_position = display_mouse_get_y();
 
 black_screen_gui_alpha = 1;
 

@@ -1,5 +1,7 @@
 var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
+var mouse_get_x = display_mouse_get_x();
+var mouse_get_y = display_mouse_get_y();
 
 if (os_type == os_linux)
 {
@@ -129,7 +131,7 @@ if (show_copy_to_clipboard_button == true)
 	or (instance_exists(obj_leveleditor))
 	and (obj_leveleditor.key_a_pressed)
 	and (menu == "copy_to_clipboard")
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 185, get_window_height / 2 + 42, get_window_width / 2 - 185 + 370, get_window_height / 2 + 42 + 39))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 185, get_window_height / 2 + 42, get_window_width / 2 - 185 + 370, get_window_height / 2 + 42 + 39))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (mouse_check_button_pressed(mb_left))
 	or (keyboard_check(vk_control))
@@ -176,7 +178,7 @@ and (gamepad_button_check(2, gp_face1))
 or (menu == "back_open_folder_text")
 and (gamepad_button_check(3, gp_face1))
 
-or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 - 185, get_window_height / 2 + 42 + 42, get_window_width / 2 - 185 + 370, get_window_height / 2 + 42 + 39 + 42))
+or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 185, get_window_height / 2 + 42 + 42, get_window_width / 2 - 185 + 370, get_window_height / 2 + 42 + 39 + 42))
 and (global.controls_used_for_menu_navigation == "mouse")
 and (mouse_check_button_pressed(mb_left))
 {

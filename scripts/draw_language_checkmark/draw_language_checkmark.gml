@@ -6,8 +6,8 @@
 
 function draw_language_checkmark(x_position, y_position, string_text, menu_index)
 {
-	var mouse_get_x = window_mouse_get_x();
-	var mouse_get_y = window_mouse_get_y();
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	#region /* Checkmark */
 	

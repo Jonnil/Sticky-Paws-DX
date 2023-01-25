@@ -2,6 +2,8 @@ function scr_select_custom_level_menu()
 {
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	if (os_type == os_linux)
 	{
@@ -252,7 +254,7 @@ function scr_select_custom_level_menu()
 		and (menu_delay == 0)
 		and (open_sub_menu == false)
 		and (can_input_level_name == false)
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, 320, 42))
+		or (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 320, 42))
 		and (mouse_check_button_pressed(mb_left))
 		{
 			can_input_level_name = false;
@@ -306,7 +308,7 @@ function scr_select_custom_level_menu()
 		
 		#region /* Open Custom Levels Folder */
 		draw_menu_button(0, 42, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
-		if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 42 + 2, 371, 42 + 41))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 42 + 2, 371, 42 + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_pressed(mb_left))
 		and (menu_delay == 0)
@@ -779,7 +781,7 @@ function scr_select_custom_level_menu()
 			and (menu != "level_editor_enter_name_cancel")
 			or (keyboard_check_pressed(vk_enter))
 			and (menu == "level_editor_enter_name_ok")
-			or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+			or (point_in_rectangle(mouse_get_x, mouse_get_y,
 			394 * (global.select_level_index - column * row) + 300 - 185 + thumbnail_x_offset,
 			draw_name_input_screen_y + 54,
 			394 * (global.select_level_index - column * row) + 300 - 185 + 370 + thumbnail_x_offset,
@@ -837,7 +839,7 @@ function scr_select_custom_level_menu()
 		or (keyboard_check_pressed(vk_escape))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+		or (point_in_rectangle(mouse_get_x, mouse_get_y,
 		394 * (global.select_level_index - column * row) + 300 - 185 + thumbnail_x_offset,
 		draw_name_input_screen_y + 54 + 42,
 		394 * (global.select_level_index - column * row) + 300 - 185 + 370 + thumbnail_x_offset,
@@ -914,7 +916,7 @@ function scr_select_custom_level_menu()
 			and (menu != "level_editor_enter_description_cancel")
 			or (keyboard_check_pressed(vk_enter))
 			and (menu == "level_editor_enter_description_ok")
-			or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+			or (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width / 2 - 185,
 			draw_description_input_screen_y + 54,
 			get_window_width / 2 - 185 + 370,
@@ -976,7 +978,7 @@ function scr_select_custom_level_menu()
 		or (keyboard_check_pressed(vk_escape))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(),
+		or (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width / 2 - 185,
 		draw_description_input_screen_y + 54 + 42,
 		get_window_width / 2 - 185 + 370,

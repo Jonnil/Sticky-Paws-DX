@@ -1,5 +1,7 @@
 var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
+var mouse_get_x = display_mouse_get_x();
+var mouse_get_y = display_mouse_get_y();
 
 #region /* Keyboard Controls */
 var key_left = (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right)) or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D"))) or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr)) or (gamepad_axis_value(0, gp_axislh) < 0);
@@ -181,7 +183,7 @@ if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 	draw_sprite_ext(spr_keyboard_keys, vk_left, 128, get_window_height / 2, 1, 1, 0, c_white, 1);
 	draw_sprite_ext(spr_keyboard_keys, vk_right, get_window_width - 128, get_window_height / 2, 1, 1, 0, c_white, 1);
 }
-if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, get_window_width / 2 - 100, get_window_height - 42))
+if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, get_window_width / 2 - 100, get_window_height - 42))
 and (global.controls_used_for_menu_navigation == "mouse")
 {
 	draw_set_alpha(0.5);
@@ -189,7 +191,7 @@ and (global.controls_used_for_menu_navigation == "mouse")
 	draw_set_alpha(1);
 }
 else
-if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 + 100, 0, get_window_width, get_window_height - 42))
+if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 + 100, 0, get_window_width, get_window_height - 42))
 and (global.controls_used_for_menu_navigation == "mouse")
 {
 	draw_set_alpha(0.5);
@@ -199,7 +201,7 @@ and (global.controls_used_for_menu_navigation == "mouse")
 
 #region /* Left and Right Navigation */
 if (key_left)
-or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, get_window_width / 2 - 100, get_window_height - 42))
+or (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, get_window_width / 2 - 100, get_window_height - 42))
 and (mouse_check_button_pressed(mb_left))
 {
 	if (gamepad_stick == true)
@@ -218,7 +220,7 @@ and (mouse_check_button_pressed(mb_left))
 }
 else
 if (key_right)
-or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width / 2 + 100, 0, get_window_width, get_window_height - 42))
+or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 + 100, 0, get_window_width, get_window_height - 42))
 and (mouse_check_button_pressed(mb_left))
 {
 	if (gamepad_stick == true)
@@ -245,7 +247,7 @@ or (gamepad_button_check_pressed(0, gp_face2))
 or (gamepad_button_check_pressed(1, gp_face2))
 or (gamepad_button_check_pressed(2, gp_face2))
 or (gamepad_button_check_pressed(3, gp_face2))
-or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width - 370, get_window_height - 42, get_window_width, get_window_height))
+or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 370, get_window_height - 42, get_window_width, get_window_height))
 and (mouse_check_button_released(mb_left))
 {
 	instance_nearest(x, y, obj_player).can_move = true;

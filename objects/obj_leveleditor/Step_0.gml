@@ -1,5 +1,7 @@
 var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
+var mouse_get_x = display_mouse_get_x();
+var mouse_get_y = display_mouse_get_y();
 
 grid_button_x = display_get_gui_width() - 224;
 
@@ -187,7 +189,7 @@ or (get_window_width != old_window_get_width)
 #region /* Play Level when pressing Enter Key */
 if (keyboard_check_pressed(vk_enter))
 or (gamepad_button_check_pressed(0, gp_select))
-or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+or (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 and (mouse_check_button_pressed(mb_left))
 or (global.full_level_map_screenshot == true)
 {
@@ -205,7 +207,7 @@ or (global.full_level_map_screenshot == true)
 		and (!instance_exists(obj_camera))
 		and (asset_get_type("obj_leveleditor_placed_object") == asset_object)
 		and (!place_meeting(x, y, obj_leveleditor_placed_object))
-		or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width - 64, get_window_height / 2 - 32, get_window_width, get_window_height / 2 + 32))
+		or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height / 2 - 32, get_window_width, get_window_height / 2 + 32))
 		and (asset_get_type("obj_camera") == asset_object)
 		and (!instance_exists(obj_camera))
 		or (global.full_level_map_screenshot == true)
@@ -324,7 +326,7 @@ or (global.full_level_map_screenshot == true)
 					}
 				}
 				
-				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 				or (global.full_level_map_screenshot == true)
 				{
 					if (asset_get_type("obj_camera") == asset_object)
@@ -366,7 +368,7 @@ or (global.full_level_map_screenshot == true)
 					scr_save_custom_world();
 				}
 				
-				if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 				or (global.full_level_map_screenshot == true)
 				{
 					instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_player_map);
@@ -547,10 +549,10 @@ if (quit_level_editor <= 0)
 	{
 		x = mouse_x;
 		y = mouse_y;
-		cursor_x = window_mouse_get_x();
-		cursor_y = window_mouse_get_y();
-		controller_x = window_mouse_get_x();
-		controller_y = window_mouse_get_y();
+		cursor_x = mouse_get_x;
+		cursor_y = mouse_get_y;
+		controller_x = mouse_get_x;
+		controller_y = mouse_get_y;
 		
 		if (keyboard_check(vk_control))
 		{
@@ -782,20 +784,20 @@ if (quit_level_editor <= 0)
 		and (!position_meeting(x, y, obj_level_width))
 		and (asset_get_type("obj_water_level_height") == asset_object)
 		and (!position_meeting(x, y, obj_water_level_height))
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
-		and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), get_window_width - 64, get_window_height / 2 - 32, get_window_width, get_window_height / 2 + 32)) /* Can't place objects when clicking the play button */
+		and (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
+		and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
+		and (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height / 2 - 32, get_window_width, get_window_height / 2 + 32)) /* Can't place objects when clicking the play button */
 		{
 			if (show_grid == true)
-			and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up and down buttons when grid is on */
+			and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up and down buttons when grid is on */
 			or (show_grid == false)
 			{
 				if (global.enable_difficulty_selection_settings == true)
 				and (set_difficulty_mode == true)
-				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
+				and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 				or (global.enable_difficulty_selection_settings == true)
 				and (set_difficulty_mode == false)
-				and (!point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
+				and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 				or (global.enable_difficulty_selection_settings == false)
 				{
 					

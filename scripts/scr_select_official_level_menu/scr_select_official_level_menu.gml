@@ -1,5 +1,8 @@
 function scr_select_official_level_menu()
 {
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
+	
 	if (window_get_width() >= 1670)
 	{
 		row = 4;
@@ -194,7 +197,7 @@ function scr_select_official_level_menu()
 	or (key_b_pressed)
 	and (menu_delay == 0)
 	and (can_input_level_name == false)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 0, 0, 320, 42))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 320, 42))
 	and (mouse_check_button_pressed(mb_left))
 	{
 		can_input_level_name = false;
@@ -368,7 +371,7 @@ function scr_select_official_level_menu()
 	and (can_input_level_name == true)
 	and (menu_delay == 0)
 	and (keyboard_string != "")
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 * (global.select_level_index - column * row) + 100, 226 * (column - scroll) + 606 + 32, 394 * (global.select_level_index - column * row) + 100 + 370, 226 * (column - scroll) + 606 + 32 + 42))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 100, 226 * (column - scroll) + 606 + 32, 394 * (global.select_level_index - column * row) + 100 + 370, 226 * (column - scroll) + 606 + 32 + 42))
 	and (mouse_check_button_pressed(mb_left))
 	and (can_input_level_name == true)
 	and (menu_delay == 0)
@@ -510,7 +513,7 @@ function scr_select_official_level_menu()
 	if (keyboard_check_pressed(vk_escape))
 	and (can_input_level_name == true)
 	and (menu_delay == 0)
-	or (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), 394 * (global.select_level_index - column * row) + 100, 226 * (column - scroll) + 606 + 74, 394 * (global.select_level_index - column * row) + 100 + 370, 226 * (column - scroll) + 606 + 74 + 42))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 100, 226 * (column - scroll) + 606 + 74, 394 * (global.select_level_index - column * row) + 100 + 370, 226 * (column - scroll) + 606 + 74 + 42))
 	and (mouse_check_button_pressed(mb_left))
 	and (can_input_level_name == true)
 	and (menu_delay == 0)

@@ -8,8 +8,8 @@
 
 function draw_menu_dropdown_item(string_text_item, x_position, y_position, variable_to_change, item_number)
 {
-	var mouse_get_x = window_mouse_get_x();
-	var mouse_get_y = window_mouse_get_y();
+	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_y = display_mouse_get_y();
 	
 	#region /* Show Item */
 	if (string_text_item > "")
