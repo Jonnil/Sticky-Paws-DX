@@ -1,7 +1,7 @@
 function scr_draw_cursor_mouse()
 {
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Tongue aim should always be above everything, it represents the mouse cursor */
 	if (asset_get_type("obj_player") == asset_object)

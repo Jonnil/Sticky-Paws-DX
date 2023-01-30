@@ -2,8 +2,8 @@ function scr_select_custom_level_menu()
 {
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	if (os_type == os_linux)
 	{
@@ -765,6 +765,7 @@ function scr_select_custom_level_menu()
 	{
 		var draw_name_input_screen_y = 226 * (column - scroll) + 500;
 		
+		show_level_editor_corner_menu = false;
 		if (can_input_level_name == true)
 		{
 			global.level_name = scr_draw_name_input_screen(global.level_name, 32, c_black, 1, false, 394 * (global.select_level_index - column * row) + 300 + thumbnail_x_offset, draw_name_input_screen_y, "level_editor_enter_name_ok", "level_editor_enter_name_cancel");

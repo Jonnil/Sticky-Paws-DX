@@ -1,6 +1,6 @@
 function scr_options_graphics()
 {
-	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_x = device_mouse_x_to_gui(0);
 	
 	if (global.settings_sidebar_menu == "video_settings")
 	{
@@ -31,7 +31,7 @@ function scr_options_graphics()
 		var background_brightness_menu_y = background_brightness_gameplay_y + 68;
 		var reset_level_zoom_when_going_back_to_map_y = background_brightness_menu_y + 48;
 		var reset_world_map_zoom_when_going_back_to_map_y = reset_level_zoom_when_going_back_to_map_y + 48;
-		var gui_scale_modifier_y = reset_world_map_zoom_when_going_back_to_map_y + 48;
+		var gui_scale_modifier_y = reset_world_map_zoom_when_going_back_to_map_y + 48 + 10;
 		
 		#region /* Fullscreen toggle */
 		if (os_type != os_ios)

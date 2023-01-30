@@ -141,7 +141,7 @@ function scr_load_object_placement_all()
 		/* file_text_readln(file); things work without this, even when tutorial I follow wanted to use this. Keep just in case */
 		str_temp = "";
 		str_pos = 1;
-		while(str_pos < string_length(str))
+		while(str_pos <= string_length(str))
 		{
 			/* | = chr("124") */
 			/* } = chr("125") */
@@ -153,6 +153,7 @@ function scr_load_object_placement_all()
 			and (string_char_at(str, str_pos) != "H")
 			and (string_char_at(str, str_pos) != "Q")
 			and (string_char_at(str, str_pos) != "W")
+			and (string_char_at(str, str_pos) != "|")
 			and (string_char_at(str, str_pos) != "}")
 			{
 				str_temp += string_char_at(str, str_pos);
@@ -186,23 +187,22 @@ function scr_load_object_placement_all()
 				break
 			}
 			str_temp = "";
-			if (string_char_at(str, str_pos) == "}")
+			if (string_char_at(str, str_pos) == "|")
+			or (string_char_at(str, str_pos) == "}")
 			{
 				
 				#region /* Place the actual object */
+				with(instance_create_depth(var_struct.X, var_struct.Y, 0, obj_leveleditor_placed_object))
 				{
-					with(instance_create_depth(var_struct.X, var_struct.Y, 0, obj_leveleditor_placed_object))
-					{
-						object = var_struct.O;
-						easy = var_struct.E;
-						normal = var_struct.N;
-						hard = var_struct.H;
-						second_x = var_struct.Q;
-						second_y = var_struct.W;
-						placed_for_the_first_time = false;
-					}
+					object = var_struct.O;
+					easy = var_struct.E;
+					normal = var_struct.N;
+					hard = var_struct.H;
+					second_x = var_struct.Q;
+					second_y = var_struct.W;
+					placed_for_the_first_time = false;
 				}
-				#endregion /* Place the actual objecy END */
+				#endregion /* Place the actual object END */
 				
 			}
 			str_pos += 1;

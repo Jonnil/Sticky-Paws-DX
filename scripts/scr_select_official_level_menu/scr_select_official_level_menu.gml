@@ -1,7 +1,7 @@
 function scr_select_official_level_menu()
 {
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	if (window_get_width() >= 1670)
 	{

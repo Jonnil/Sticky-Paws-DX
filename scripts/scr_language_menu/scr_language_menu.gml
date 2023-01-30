@@ -2,8 +2,8 @@ function scr_language_menu()
 {
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);

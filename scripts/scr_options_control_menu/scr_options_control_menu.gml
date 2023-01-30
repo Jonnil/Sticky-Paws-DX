@@ -1,6 +1,6 @@
 function scr_options_control_menu()
 {
-	var mouse_get_x = display_mouse_get_x();
+	var mouse_get_x = device_mouse_x_to_gui(0);
 	
 	#region /* Buttons positions */
 	if (remapping_player == 0)

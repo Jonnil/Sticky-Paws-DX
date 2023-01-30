@@ -7,8 +7,8 @@
 
 function draw_menu_checkmark(x_position, y_position, string_text, menu_index, variable_to_check)
 {
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Checkmark */
 	
@@ -86,13 +86,13 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	
 	#region /* Clicking the menu button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (menu != "assist_enable")
 	and (input_key == false)
 	and (open_dropdown == false)
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (global.assist_enable == true)
 	and (menu == "assist_enable")

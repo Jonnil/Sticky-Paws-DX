@@ -8,8 +8,8 @@
 
 function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to)
 {
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 1, x_position + 370, y_position + 41))
@@ -66,7 +66,7 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 		}
 		else
 		{
-			if (mouse_check_button_pressed(mb_left))
+			if (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
 				menu = menu_takes_you_to;

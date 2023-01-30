@@ -1,5 +1,5 @@
-var mouse_get_x = display_mouse_get_x();
-var mouse_get_y = display_mouse_get_y();
+var mouse_get_x = device_mouse_x_to_gui(0);
+var mouse_get_y = device_mouse_y_to_gui(0);
 
 key_a = (gamepad_button_check(0, gp_face1))
 or (keyboard_check(global.player1_key_jump));

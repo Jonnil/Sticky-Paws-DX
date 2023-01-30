@@ -2,8 +2,8 @@ function scr_modify_objects_in_level_editor()
 {
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Modify Objects */
 	if (!keyboard_check(vk_space))
@@ -62,10 +62,11 @@ function scr_modify_objects_in_level_editor()
 					if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 					{
 						/* Don't put a move_snap here! We don't want the object to change position when modifying it */
-							
+						
 						#region /* Object ID's to modify */
 						if (global.world_editor == false)
 						{
+							modify_object_menu = true;
 							
 							#region /* Change wall into it's different forms */
 							if (object == 1)
@@ -725,7 +726,7 @@ function scr_modify_objects_in_level_editor()
 								object = 90;
 							}
 							#endregion /* Change Moveset Signs END */
-								
+							
 						}
 						#endregion /* Level Object ID's to modify END */
 						

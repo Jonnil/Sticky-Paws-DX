@@ -1,5 +1,5 @@
-mouse_x_position = display_mouse_get_x();
-mouse_y_position = display_mouse_get_y();
+mouse_x_position = device_mouse_x_to_gui(0);
+mouse_y_position = device_mouse_y_to_gui(0);
 
 order_index = 0;
 
@@ -244,6 +244,7 @@ enum level_object_id
 	id_artwork_collection = 97,
 	id_block_only_when_player_is_near = 98,
 	id_door = 99,
+	id_npc = 100,
 	id_last_object_dummy = 999999999
 }
 enum world_object_id
@@ -455,6 +456,7 @@ add_object(level_object_id.id_cake_stealing_enemy, sprite_basic_enemy, 0, spr_wa
 add_object(level_object_id.id_artwork_collection, spr_artwork_collection, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_block_only_when_player_is_near, global.resource_pack_sprite_block_only_when_player_is_near, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_door, spr_door, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_npc, spr_npc, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 /* This is a dummy object, to make sure every object gets added to the list */ add_object(level_object_id.id_last_object_dummy, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0); /* This dummy object is just here so the last object actually appears */
 #endregion /* Grid Initialization END */
 

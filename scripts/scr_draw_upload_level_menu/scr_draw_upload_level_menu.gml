@@ -3,8 +3,8 @@ function scr_draw_upload_level_menu()
 	var upload_y = 42 * 2;
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Pressing the Upload button */
 	if (menu == "level_editor_upload")
@@ -1557,8 +1557,6 @@ function scr_draw_upload_level_menu()
 			
 			room_goto(room_leveleditor);
 		}
-		global.actually_play_edited_level = true;
-		global.play_edited_level = true;
 	}
 	#endregion /* Enter Custom Level END */
 	

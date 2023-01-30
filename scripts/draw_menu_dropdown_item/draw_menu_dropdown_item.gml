@@ -8,8 +8,8 @@
 
 function draw_menu_dropdown_item(string_text_item, x_position, y_position, variable_to_change, item_number)
 {
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Show Item */
 	if (string_text_item > "")
@@ -26,7 +26,7 @@ function draw_menu_dropdown_item(string_text_item, x_position, y_position, varia
 			{
 				draw_sprite_ext(spr_menu_dropdown_item, 0, x_position, y_position + 13 + (28 * item_number), 1, 1, 0, c_lime, 1);
 			}
-			if (mouse_check_button_pressed(mb_left))
+			if (mouse_check_button_released(mb_left))
 			{
 				menu_dropdown_variable_to_change(variable_to_change, item_number);
 				open_dropdown = false;

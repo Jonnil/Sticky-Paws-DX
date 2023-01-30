@@ -23,7 +23,7 @@ or (object == level_object_id.id_oneway4)
 }
 #endregion /* Draw Rotate Arrow on top of objects that you rotate by clicking on the object END /*
 
-#region /* Change certain objects angle */
+/* Change certain objects angle */
 
 /* Spring */
 if (object == level_object_id.id_spring)
@@ -37,7 +37,8 @@ if (object == level_object_id.id_spring)
 	draw_set_color(c_white);
 	draw_angle = point_direction(x, y, second_x, second_y) -90;
 }
-else
+
+/* Door */
 if (object == level_object_id.id_door)
 {
 	draw_line_width_color(x, y, second_x, second_y, 4, c_black, c_black);
@@ -48,7 +49,7 @@ if (object == level_object_id.id_door)
 	draw_arrow(x, y, second_x, second_y, 20);
 	draw_set_color(c_white);
 }
-else
+
 /* Water Level Change */
 if (object == level_object_id.id_water_level_change_slow)
 or (object == level_object_id.id_water_level_change_fast)
@@ -59,16 +60,12 @@ or (object == level_object_id.id_water_level_change_faster)
 	draw_angle = point_direction(x, y, x, second_y) -90;
 }
 
-else
-
 /* Arrows */
 if (object == level_object_id.id_arrow_sign)
 or (object == level_object_id.id_arrow_sign_small)
 {
 	draw_angle = point_direction(x, y, second_x, second_y);
 }
-
-else
 
 /* Water Block */
 if (object == level_object_id.id_water)
@@ -78,7 +75,8 @@ if (object == level_object_id.id_water)
 	draw_rectangle_color(x - 16, y - 16, 16 + second_x, 16 + second_y, c_blue, c_blue, c_blue, c_blue, false);
 	draw_set_alpha(1);
 }
-else
+
+/* Breathable Water Block */
 if (object == level_object_id.id_breathable_water)
 {
 	sprite_index = spr_water;
@@ -87,7 +85,7 @@ if (object == level_object_id.id_breathable_water)
 	draw_set_alpha(1);
 }
 
-#endregion /* Change certain objects angle END */
+/* Change certain objects angle END */
 
 #endregion /* All code before initializing the object END */
 

@@ -13,8 +13,8 @@
 /* If you put "= default value" after an argument, then that becomes a optional argument, so no warning will show up when using this script */
 function draw_menu_dropdown(x_position, y_position, string_text, menu_index, variable_to_change, string_text_item1 = "", string_text_item2 = "", string_text_item3 = "", string_text_item4 = "", string_text_item5 = "", string_text_item6 = "", string_text_item7 = "", string_text_item8 = "", string_text_item9 = "", string_text_item10 = "", string_text_item11 = "")
 {
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	if (variable_instance_exists(self, "menu")) /* Check if the object even have these variables before running this code */
 	and (variable_instance_exists(self, "menu_delay"))
@@ -77,13 +77,13 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		#region /* Clicking the menu button */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555+ 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (menu != "assist_enable")
 		and (menu_delay == 0)
 		and (open_dropdown == false)
 		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555+ 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (global.assist_enable == true)
 		and (menu == "assist_enable")
 		and (menu_delay == 0)
@@ -189,7 +189,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		and (menu == menu_index)
 		and (menu_delay == 0)
 		{
-			if (mouse_check_button_pressed(mb_left))
+			if (mouse_check_button_released(mb_left))
 			{
 				open_dropdown = false;
 				menu_delay = 3;

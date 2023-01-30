@@ -1,7 +1,7 @@
 function scr_options_reset_controls_to_default_settings(xx, yy)
 {
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Reset to Default Settings */
 	draw_menu_button(xx, yy + menu_y_offset, l10n_text("Default Settings"), "remap_reset", "remap_reset");

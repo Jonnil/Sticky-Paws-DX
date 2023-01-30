@@ -382,9 +382,10 @@ function scr_spawn_objects_when_starting_room()
 					}
 					ini_close();
 				}
-				if (object == 97) and (asset_get_type("obj_artwork_collection") == asset_object){instance_create_depth(x, y, 0, obj_artwork_collection);}
-				if (object == 98) and (asset_get_type("obj_block_only_when_player_is_near_spawner") == asset_object){instance_create_depth(x, y, 0, obj_block_only_when_player_is_near_spawner);}
+				if (object == level_object_id.id_artwork_collection) and (asset_get_type("obj_artwork_collection") == asset_object){instance_create_depth(x, y, 0, obj_artwork_collection);}
+				if (object == level_object_id.id_block_only_when_player_is_near) and (asset_get_type("obj_block_only_when_player_is_near_spawner") == asset_object){instance_create_depth(x, y, 0, obj_block_only_when_player_is_near_spawner);}
 				if (object == level_object_id.id_door) and (asset_get_type("obj_door") == asset_object){with(instance_create_depth(x, y, 0, obj_door)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}
+				if (object == level_object_id.id_npc) and (asset_get_type("obj_npc") == asset_object){instance_create_depth(x, y, 0, obj_npc);}
 			}
 			#endregion /* Only spawn objects according to difficulty settings END */
 			

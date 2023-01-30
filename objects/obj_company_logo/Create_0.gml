@@ -1,5 +1,5 @@
-mouse_x_position = display_mouse_get_x();
-mouse_y_position = display_mouse_get_y();
+mouse_x_position = device_mouse_x_to_gui(0);
+mouse_y_position = device_mouse_y_to_gui(0);
 
 randomize();
 
@@ -27,6 +27,11 @@ global.link_to_twitter = "https://twitter.com/jonnilll";
 global.link_to_wiki = "https://stickypedia.miraheze.org/wiki/Main_Page";
 
 leveleditor_readme = noone; /* Readme textfile for how to use the level editor */
+
+#region /* Debug toggles */
+can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
+global.deactivate_objects_outside_view = true; /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
+#endregion /* Debug toggles END */
 
 #region /* Change how menus look and function */
 
@@ -81,8 +86,6 @@ global.default_view_height = 1080; /* Default = 1080 */
 
 global.demo = false; /* When making a demo version of the game, turn this to true, otherwise turn this to false for the full version */
 global.demo_max_levels = 3; /* Set how many levels the demo version have unlocked */
-
-global.deactivate_objects_outside_view = true; /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
 
 global.number_of_chain_kills_for_1up = 8; /* How many chain reaction kills you need to get 1-ups. Default is 8 */
 

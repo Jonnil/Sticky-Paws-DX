@@ -1,7 +1,7 @@
 var main_game_y = display_get_gui_height() / 2 + 100 + 40;
 var level_editor_y = display_get_gui_height() / 2 + 100 + 80;
-var mouse_get_x = display_mouse_get_x();
-var mouse_get_y = display_mouse_get_y();
+var mouse_get_x = device_mouse_x_to_gui(0);
+var mouse_get_y = device_mouse_y_to_gui(0);
 
 #region /* Play Attract Demo */
 if (global.play_attract_demo = false)

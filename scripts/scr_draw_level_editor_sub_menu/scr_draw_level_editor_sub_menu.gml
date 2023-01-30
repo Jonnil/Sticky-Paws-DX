@@ -2,8 +2,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 {
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Draw sub menu (code must be here to be above everything else) */
 	if (open_sub_menu == true)
@@ -255,11 +255,14 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		and (can_input_level_name == false)
 		and (menu_delay == 0)
 		{
+			show_level_editor_corner_menu = true;
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 - 3, xx + 8 + 370, 226 * (column - scroll) + 475 - 3 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			or (key_a_pressed)
 			{
+				menu = "level_editor_enter_name_ok";
+				
 				menu_delay = 3;
 				keyboard_string = "";
 				can_input_level_name = true;
@@ -272,6 +275,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		and (can_input_level_name == false)
 		and (menu_delay == 0)
 		{
+			show_level_editor_corner_menu = true;
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 370, 226 * (column - scroll) + 569 - 3 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
@@ -291,6 +295,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		and (can_input_level_name == false)
 		and (menu_delay == 0)
 		{
+			show_level_editor_corner_menu = true;
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (back_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (back_y) - 3 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")

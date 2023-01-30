@@ -11,8 +11,8 @@
 function draw_menu_slider(x_position, y_position, string_text, menu_index, variable_to_change, bar_color)
 {
 	var length_variable = 320;
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position- 16, x_position + 320, y_position + 16))
 	and (global.controls_used_for_menu_navigation == "mouse")
@@ -106,12 +106,12 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	#region /* Clicking the menu button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
 	and (global.controls_used_for_menu_navigation == "mouse")
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (menu != "assist_enable")
 	and (menu_delay == 0)
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
 	and (global.controls_used_for_menu_navigation == "mouse")
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (global.assist_enable == true)
 	and (menu == "assist_enable")
 	and (menu_delay == 0)

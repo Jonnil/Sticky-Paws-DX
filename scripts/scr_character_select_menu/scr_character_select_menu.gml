@@ -4,8 +4,8 @@ function scr_character_select_menu()
 	arrow_offset = 125;
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* "How many people are playing?" menu */
 	if (menu == "how_many_people_back")

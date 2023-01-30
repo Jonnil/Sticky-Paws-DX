@@ -1,7 +1,7 @@
 var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
-var mouse_get_x = display_mouse_get_x();
-var mouse_get_y = display_mouse_get_y();
+var mouse_get_x = device_mouse_x_to_gui(0);
+var mouse_get_y = device_mouse_y_to_gui(0);
 
 #region /* Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden */
 if (iris_xscale <= 0.001)

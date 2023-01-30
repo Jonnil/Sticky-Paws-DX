@@ -1,7 +1,7 @@
 function scr_draw_name_box(what_string_to_edit, box_color, white_rectangle_alpha, xx, yy)
 {
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Box where name is written on */
 	draw_rectangle_color(xx - 150, yy - 16, xx + 150, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */

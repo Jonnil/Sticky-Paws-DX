@@ -1,8 +1,8 @@
 function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y, left_right_buttons_right_arrow_x, left_right_buttons_text, left_right_buttons_variable_to_change, left_right_buttons_menu, scale_increment, left_right_buttons_can_go_below_0)
 {
 	var size_of_button_offset = 299;
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Left Right Buttons */
 	draw_set_halign(fa_left);
@@ -50,7 +50,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	}
 	if (key_left)
 	and (menu == string(left_right_buttons_menu))
-	or (mouse_check_button_pressed(mb_left))
+	or (mouse_check_button_released(mb_left))
 	and (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x - 32 + 16 + size_of_button_offset, 20 + (left_right_buttons_y) + 16))
 	{
 		if (left_right_buttons_can_go_below_0 == true)
@@ -80,7 +80,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	}
 	if (key_right)
 	and (menu == string(left_right_buttons_menu))
-	or (mouse_check_button_pressed(mb_left))
+	or (mouse_check_button_released(mb_left))
 	and (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x + left_right_buttons_right_arrow_x - 16 - size_of_button_offset, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16))
 	{
 		menu = string(left_right_buttons_menu);

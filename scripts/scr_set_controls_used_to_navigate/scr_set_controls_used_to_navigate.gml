@@ -1,7 +1,7 @@
 function scr_set_controls_used_to_navigate()
 {
-	var mouse_get_x = display_mouse_get_x();
-	var mouse_get_y = display_mouse_get_y();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Set what controls are used to navigate the game */
 	

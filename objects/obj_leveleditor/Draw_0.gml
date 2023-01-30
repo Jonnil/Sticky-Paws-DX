@@ -1,5 +1,5 @@
-var mouse_get_x = display_mouse_get_x();
-var mouse_get_y = display_mouse_get_y();
+var mouse_get_x = device_mouse_x_to_gui(0);
+var mouse_get_y = device_mouse_y_to_gui(0);
 
 ///Draw Event
 draw_set_alpha(0.5);
@@ -141,7 +141,6 @@ if (quit_level_editor <= 0)
 #region /* List of Placable Objects */
 if (global.world_editor == false)
 {
-	total_number_of_objects = 55; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
 	//scr_draw_level_editor_placable_object(0, ds_grid_get(global.object_grid, 0, 0), ds_grid_get(global.object_grid, 10, 0), ds_grid_get(global.object_grid, 1, 0), ds_grid_get(global.object_grid, 3, 0), 0 * 64 + ds_grid_get(global.object_grid, 11, 0), ds_grid_get(global.object_grid, 4, 0), ds_grid_get(global.object_grid, 5, 0), ds_grid_get(global.object_grid, 6, 0));
 	
 	order_index = 0;
@@ -215,8 +214,10 @@ if (global.world_editor == false)
 	var num_cake_stealing_enemy = order_index; scr_draw_level_editor_placable_object(num_cake_stealing_enemy, level_object_id.id_cake_stealing_enemy, false, global.resource_pack_sprite_cake, spr_wall, + 64, 1, 0, c_white, -16, 0, 1, 0);scr_draw_level_editor_placable_object(num_cake_stealing_enemy, level_object_id.id_cake_stealing_enemy, false, sprite_basic_enemy, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_artwork_collection, false, spr_artwork_collection, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_block_only_when_player_is_near, true, global.resource_pack_sprite_block_only_when_player_is_near, spr_wall, + 64, 1, 0, c_white);
+	scr_draw_level_editor_placable_object(order_index, level_object_id.id_npc, false, spr_npc, spr_wall, + 64, 1, 0, c_white);
 	#endregion /* Special Items END*/
 	
+	total_number_of_objects = order_index - 1; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
 }
 else
 {

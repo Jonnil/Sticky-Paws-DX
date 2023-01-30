@@ -63,7 +63,7 @@ function scr_save_custom_level()
 			
 			/* | = chr("124") */
 			/* } = chr("125") */
-			str += "}";
+			str += "|";
 		}
 		#endregion /* Write all objects to file END */
 		
