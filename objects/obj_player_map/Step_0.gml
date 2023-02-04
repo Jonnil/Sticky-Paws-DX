@@ -5,7 +5,7 @@ var mouse_get_y = device_mouse_y_to_gui(0);
 
 #region /* When changing file, you should restart the room so the right save data can load */
 if (current_file != global.file)
-or (!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
+or (!file_exists(working_directory + "/save_files/file" + string(current_file) + ".ini"))
 {
 	current_file = global.file;
 	room_persistent = false;
@@ -20,7 +20,7 @@ if (global.quit_level == true)
 	#region /* Save Player Position */
 	if (speed == 0)
 	{
-		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_close();
@@ -873,7 +873,8 @@ else
 #endregion /* Zoom In and Out END */
 
 #region /* Enter Level */
-if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+and (can_enter_level_automatically == true)
 and (brand_new_file == true)
 and (can_move == true)
 and (show_demo_over_message == false)
@@ -913,7 +914,7 @@ and (speed == 0)
 		#region /* Save Player Position */
 		x = instance_nearest(x, y, obj_level).x;
 		y = instance_nearest(x, y, obj_level).y;
-		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_write_real("Player", "brand_new_file", false)

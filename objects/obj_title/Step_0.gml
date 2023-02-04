@@ -1,18 +1,4 @@
-#region /* Create Camera */
-if (asset_get_type("obj_camera") == asset_object)
-{
-	if (!instance_exists(obj_camera))
-	{
-		instance_create_depth(x, y, 0, obj_camera);
-	}
-	else
-	if (instance_exists(obj_camera))
-	{
-		x = obj_camera.x;
-		y = obj_camera.y;
-	}
-}
-#endregion /* Create Camera END */
+scr_set_controls_used_to_navigate();
 
 #region /* Play title screen music */
 if (title_music > noone)

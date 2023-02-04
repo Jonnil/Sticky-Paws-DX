@@ -1,4 +1,3 @@
-///scr_character_select_menu()
 function scr_character_select_menu()
 {
 	arrow_offset = 125;
@@ -98,7 +97,7 @@ function scr_character_select_menu()
 			var menu_button_2player_x = get_window_width / 2 - 116 - 84;
 			var menu_button_3player_x = get_window_width / 2 + 116 - 84;
 			var menu_button_4player_x = get_window_width / 2 + 340 - 84;
-		
+			
 			draw_menu_button_sprite(global.resource_pack_sprite_menu_button_1player, menu_button_1player_x, get_window_height / 2 - 84, 84, 84 - 16, 1, 1, 169, 169, "", "how_many_people_1player", "load_characters", true);
 			draw_menu_button_sprite(global.resource_pack_sprite_menu_button_2player, menu_button_2player_x, get_window_height / 2 - 84, 84, 84 - 16, 1, 1, 169, 169, "", "how_many_people_2player", "load_characters", true);
 			draw_menu_button_sprite(global.resource_pack_sprite_menu_button_3player, menu_button_3player_x, get_window_height / 2 - 84, 84, 84 - 16, 1, 1, 169, 169, "", "how_many_people_3player", "load_characters", true);
@@ -264,23 +263,26 @@ function scr_character_select_menu()
 				if (obj_camera.iris_xscale >= 1)
 				and (obj_camera.iris_yscale >= 1)
 				{
-					if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, play_the_game_text_y - 32, get_window_width, play_the_game_text_y + 32))
+					if (variable_instance_exists(self, "play_the_game_text_y"))
+					and (point_in_rectangle(mouse_get_x, mouse_get_y, 0, play_the_game_text_y - 32, get_window_width, play_the_game_text_y + 32))
 					and (global.controls_used_for_menu_navigation == "mouse")
 					{
 						draw_rectangle_color(0, play_the_game_text_y - 32 -4, get_window_width, play_the_game_text_y + 32 + 4, c_red, c_yellow, c_yellow, c_red, false);
 					}
-					draw_rectangle_color(0, play_the_game_text_y - 32, get_window_width, play_the_game_text_y + 32, c_black, c_black, c_black, c_black, false);
-					
-					scr_draw_text_outlined(get_window_width / 2 -40, play_the_game_text_y, l10n_text("Play the game!"), global.default_text_size * 2, c_black, c_white, 1);
-			
-					draw_set_alpha(0.9);
-					draw_rectangle_color(get_window_width / 2 - 168, play_the_game_text_y + 32, get_window_width / 2 + 168, play_the_game_text_y+64, c_black, c_black, c_black, c_black, false);
+					if (variable_instance_exists(self, "play_the_game_text_y"))
+					{
+						draw_rectangle_color(0, play_the_game_text_y - 32, get_window_width, play_the_game_text_y + 32, c_black, c_black, c_black, c_black, false);
+						scr_draw_text_outlined(get_window_width / 2 -40, play_the_game_text_y, l10n_text("Play the game!"), global.default_text_size * 2, c_black, c_white, 1);
+						draw_set_alpha(0.9);
+						draw_rectangle_color(get_window_width / 2 - 168, play_the_game_text_y + 32, get_window_width / 2 + 168, play_the_game_text_y+64, c_black, c_black, c_black, c_black, false);
+					}
 					
 					draw_set_alpha(1);
 					draw_set_halign(fa_center);
 					draw_set_valign(fa_middle);
 					
-					if (player1_accept_selection == true)
+					if (variable_instance_exists(self, "play_the_game_text_y"))
+					and (player1_accept_selection == true)
 					and (player2_accept_selection != 0)
 					and (player3_accept_selection != 0)
 					and (player4_accept_selection != 0)
@@ -316,7 +318,8 @@ function scr_character_select_menu()
 						
 					}
 					else
-					if (player1_accept_selection != 0)
+					if (variable_instance_exists(self, "play_the_game_text_y"))
+					and (player1_accept_selection != 0)
 					and (player2_accept_selection == true)
 					and (player3_accept_selection != 0)
 					and (player4_accept_selection != 0)
@@ -351,7 +354,8 @@ function scr_character_select_menu()
 						
 					}
 					else
-					if (player1_accept_selection != 0)
+					if (variable_instance_exists(self, "play_the_game_text_y"))
+					and (player1_accept_selection != 0)
 					and (player2_accept_selection != 0)
 					and (player3_accept_selection == true)
 					and (player4_accept_selection != 0)
@@ -386,7 +390,8 @@ function scr_character_select_menu()
 						
 					}
 					else
-					if (player1_accept_selection != 0)
+					if (variable_instance_exists(self, "play_the_game_text_y"))
+					and (player1_accept_selection != 0)
 					and (player2_accept_selection != 0)
 					and (player3_accept_selection != 0)
 					and (player4_accept_selection == true)
@@ -733,8 +738,6 @@ function scr_character_select_menu()
 		}
 		#endregion /* Copy Characters END */
 		
-		#region /* Positions and Scale for each character display */
-		
 		#region /* Player positions and scale for each character display */
 		player1_display_x = -465;
 		player2_display_x = -155;
@@ -745,8 +748,6 @@ function scr_character_select_menu()
 		player3_scale = 0.85;
 		player4_scale = 0.85;
 		#endregion /* Player positions and scale for each character display END */
-		
-		#endregion /* Positions and Scale for each character display */
 		
 		#region /* Give feedback that you have selected a character */
 		if (asset_get_type("spr_select_character_background") == asset_sprite)
@@ -1734,7 +1735,8 @@ function scr_character_select_menu()
 		#endregion /* Menu Navigation END */
 		
 		#region /* Click on name to input name */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y,
+		if (variable_instance_exists(self, "name_y"))
+		and (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width / 2 + player1_display_x - 150,
 		get_window_height / 2 + name_y - 16,
 		get_window_width / 2 + player1_display_x + 150,
@@ -1750,7 +1752,8 @@ function scr_character_select_menu()
 			can_input_player3_name = false;
 			can_input_player4_name = false;
 		}
-		if (point_in_rectangle(mouse_get_x, mouse_get_y,
+		if (variable_instance_exists(self, "name_y"))
+		and (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width / 2 + player2_display_x - 150,
 		get_window_height / 2 + name_y - 16,
 		get_window_width / 2 + player2_display_x + 150,
@@ -1766,7 +1769,8 @@ function scr_character_select_menu()
 			can_input_player3_name = false;
 			can_input_player4_name = false;
 		}
-		if (point_in_rectangle(mouse_get_x, mouse_get_y,
+		if (variable_instance_exists(self, "name_y"))
+		and (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width / 2 + player3_display_x - 150,
 		get_window_height / 2 + name_y - 16,
 		get_window_width / 2 + player3_display_x + 150,
@@ -1782,7 +1786,8 @@ function scr_character_select_menu()
 			can_input_player3_name = true;
 			can_input_player4_name = false;
 		}
-		if (point_in_rectangle(mouse_get_x, mouse_get_y,
+		if (variable_instance_exists(self, "name_y"))
+		and (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width / 2 + player4_display_x - 150,
 		get_window_height / 2 + name_y - 16,
 		get_window_width / 2 + player4_display_x + 150,
@@ -2244,6 +2249,7 @@ function scr_character_select_menu()
 			and (player3_menu != "back_from_character_select")
 			
 			or (player_start_game == true)
+			and (variable_instance_exists(self, "play_the_game_text_y"))
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, 0, play_the_game_text_y - 32, get_window_width, play_the_game_text_y + 32))
 			and (mouse_check_button_pressed(mb_left))
 			{

@@ -31,3 +31,7 @@ and (reset_game_if_no_interactivity_second_countdown <= 30)
 	}
 	scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 + 42, l10n_text("Start moving to continue playing"), global.default_text_size, c_black, c_red, 1);
 }
+
+
+scr_debug_screen();
+scr_virtual_keys();

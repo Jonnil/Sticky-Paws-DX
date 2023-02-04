@@ -41,10 +41,10 @@ function scr_unzip_all()
 	
 	#region /* Unzip custom save files files */
 	var zip_file_find_first_save_files = string(file_find_first(working_directory + "/save_files/*.zip", fa_directory));
-	if (file_exists(working_directory + "save_files/"+ zip_file_find_first_save_files))
+	if (file_exists(working_directory + "/save_files/"+ zip_file_find_first_save_files))
 	{
-		zip_unzip(working_directory + "save_files/"+ zip_file_find_first_save_files, working_directory + "save_files/");
-		file_delete(working_directory + "save_files/"+ zip_file_find_first_save_files); /* Delete the zip file after it's been unzip */
+		zip_unzip(working_directory + "/save_files/"+ zip_file_find_first_save_files, working_directory + "/save_files/");
+		file_delete(working_directory + "/save_files/"+ zip_file_find_first_save_files); /* Delete the zip file after it's been unzip */
 	}
 	#endregion /* Unzip custom save files files END */
 	

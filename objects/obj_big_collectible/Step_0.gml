@@ -99,7 +99,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 			var level_name = string(uppercase_level_name);
 			
-			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			ini_write_real(level_name, "big_collectible1", true);
 			ini_close();
 		}
@@ -111,7 +111,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 			var level_name = string(uppercase_level_name);
 			
-			ini_open(working_directory + "save_files/custom_level_save.ini");
+			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible1", true);
 			ini_close();
 		}
@@ -133,7 +133,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 			var level_name = string(uppercase_level_name);
 			
-			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			ini_write_real(level_name, "big_collectible2", true);
 			ini_close();
 		}
@@ -145,7 +145,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 			var level_name = string(uppercase_level_name);
 			
-			ini_open(working_directory + "save_files/custom_level_save.ini");
+			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible2", true);
 			ini_close();
 		}
@@ -167,7 +167,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 			var level_name = string(uppercase_level_name);
 			
-			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			ini_write_real(level_name, "big_collectible3", true);
 			ini_close();
 		}
@@ -179,7 +179,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 			var level_name = string(uppercase_level_name);
 			
-			ini_open(working_directory + "save_files/custom_level_save.ini");
+			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible3", true);
 			ini_close();
 		}
@@ -201,7 +201,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 			var level_name = string(uppercase_level_name);
 			
-			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			ini_write_real(level_name, "big_collectible4", true);
 			ini_close();
 		}
@@ -213,7 +213,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 			var level_name = string(uppercase_level_name);
 			
-			ini_open(working_directory + "save_files/custom_level_save.ini");
+			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible4", true);
 			ini_close();
 		}
@@ -235,7 +235,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 			var level_name = string(uppercase_level_name);
 			
-			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			ini_write_real(level_name, "big_collectible5", true);
 			ini_close();
 		}
@@ -247,7 +247,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
 			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 			var level_name = string(uppercase_level_name);
 			
-			ini_open(working_directory + "save_files/custom_level_save.ini");
+			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible5", true);
 			ini_close();
 		}
@@ -373,7 +373,7 @@ if (bounce_up == true)
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
 						
-						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real(level_name, "big_collectible1", true);
 						ini_close();
 					}
@@ -385,7 +385,7 @@ if (bounce_up == true)
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
 						
-						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible1", true);
 						ini_close();
 					}
@@ -407,7 +407,7 @@ if (bounce_up == true)
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
 						
-						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real(level_name, "big_collectible2", true);
 						ini_close();
 					}
@@ -419,7 +419,7 @@ if (bounce_up == true)
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
 						
-						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible2", true);
 						ini_close();
 					}
@@ -441,7 +441,7 @@ if (bounce_up == true)
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
 						
-						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real(level_name, "big_collectible3", true);
 						ini_close();
 					}
@@ -453,7 +453,7 @@ if (bounce_up == true)
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
 						
-						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible3", true);
 						ini_close();
 					}
@@ -475,7 +475,7 @@ if (bounce_up == true)
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
 						
-						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real(level_name, "big_collectible4", true);
 						ini_close();
 					}
@@ -487,7 +487,7 @@ if (bounce_up == true)
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
 						
-						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible4", true);
 						ini_close();
 					}
@@ -509,7 +509,7 @@ if (bounce_up == true)
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
 						
-						ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real(level_name, "big_collectible5", true);
 						ini_close();
 					}
@@ -521,7 +521,7 @@ if (bounce_up == true)
 						uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
 						var level_name = string(uppercase_level_name);
 						
-						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible5", true);
 						ini_close();
 					}
@@ -554,13 +554,12 @@ if (bounce_up == true)
 	
 }
 
-#region /* If big collectible value is 0, destroy the big collectible */
-if (big_collectible == 0)
+#region /* If big collectible value is 0 or lower, set it to 1 */
+if (big_collectible <= 0)
 {
-	instance_create_depth(xstart, ystart, 0, obj_big_collectible_outline);
-	instance_destroy();
+	big_collectible = 1;
 }
-#endregion /* If big collectible value is 0, destroy the big collectible END */
+#endregion /* If big collectible value is 0 or lower, set it to 1 END */
 
 #region /* Expanding Ring Effect */
 effect_time += 1;

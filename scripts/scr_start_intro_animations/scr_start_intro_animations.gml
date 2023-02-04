@@ -186,7 +186,7 @@ function scr_start_intro_animations()
 				{
 					instance_create_depth(x, y, 0, obj_credits);
 				}
-				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 				ini_write_real("Player", "beat_last_level", true);
 				ini_close();
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_sitting_eating;}else

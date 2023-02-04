@@ -76,10 +76,6 @@ and (global.pause == false)
 }
 #endregion /* Show Enter Level Key END */
 
-scr_show_fps();
-
-scr_virtual_keys();
-
 #region /* Show if you are playing the demo version or not */
 if (global.demo == true)
 {

@@ -21,6 +21,7 @@ if (asset_get_type("spr_level_end") == asset_sprite)
 #region /* Drag Object */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_number(obj_leveleditor) > 0)
+and (variable_instance_exists(obj_leveleditor, "pause"))
 and (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))

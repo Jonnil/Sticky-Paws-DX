@@ -53,11 +53,23 @@ function scr_config_save()
 	ini_write_real("config", "enable_foreground_layer2", global.enable_foreground_layer2);
 	ini_write_real("config", "enable_foreground_layer_secret", global.enable_foreground_layer_secret);
 	ini_write_real("config", "enable_transitions", global.enable_transitions);
+	if (global.selected_resource_pack <= -1)
+	{
+		global.selected_resource_pack = 0;
+	}
 	ini_write_real("config", "selected_resource_pack", global.selected_resource_pack);
+	if (global.selected_title_background <= -2)
+	{
+		global.selected_title_background = -1;
+	}
 	ini_write_real("config", "selected_title_background", global.selected_title_background);
 	ini_write_real("config", "title_background_scale", global.title_background_scale);
 	ini_write_real("config", "background_layer_x_scroll", global.background_layer_x_scroll);
 	ini_write_real("config", "background_layer_y_scroll", global.background_layer_y_scroll);
+	if (global.selected_title_logo <= -1)
+	{
+		global.selected_title_logo = 0;
+	}
 	ini_write_real("config", "selected_title_logo", global.selected_title_logo);
 	ini_write_real("config", "zoom_level", global.zoom_level);
 	ini_write_real("config", "zoom_world_map", global.zoom_world_map);

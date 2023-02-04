@@ -1,3 +1,4 @@
+modify_object_menu = false;
 drag_object = false;
 dragged_from_original_place = false;
 placed_for_the_first_time = false;

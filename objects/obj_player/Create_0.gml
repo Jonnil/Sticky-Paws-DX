@@ -1,9 +1,16 @@
 /* ________________________________Create Event________________________________ */
 
+#region /* Debug toggles */
+can_initialize_custom_character = true;
+can_create_speed_lines = true;
+can_create_follow_mouse = true;
+#endregion /* Debug toggles END */
+
 /*direction = point_direction(scr_x_to_gui(x), scr_y_to_gui(y), device_mouse_x_to_gui(0), device_mouse_y_to_gui(0));*/
 
 #region /* Create object that always follows mouse */
-if (asset_get_type("obj_follow_mouse") == asset_object)
+if (can_create_follow_mouse == true)
+and (asset_get_type("obj_follow_mouse") == asset_object)
 and (!instance_exists(obj_follow_mouse))
 {
 	instance_create_depth(mouse_x, mouse_y, 0, obj_follow_mouse);
@@ -215,6 +222,16 @@ voice_wall_jump_7 = noone; /* Voice Wall Jump 7 */
 voice_wall_jump_8 = noone; /* Voice Wall Jump 8 */
 voice_wall_jump_9 = noone; /* Voice Wall Jump 9 */
 voice_wall_jump_10 = noone; /* Voice Wall Jump 10 */
+voice_wall_jump_11 = noone; /* Voice Wall Jump 11 */
+voice_wall_jump_12 = noone; /* Voice Wall Jump 12 */
+voice_wall_jump_13 = noone; /* Voice Wall Jump 13 */
+voice_wall_jump_14 = noone; /* Voice Wall Jump 14 */
+voice_wall_jump_15 = noone; /* Voice Wall Jump 15 */
+voice_wall_jump_16 = noone; /* Voice Wall Jump 16 */
+voice_wall_jump_17 = noone; /* Voice Wall Jump 17 */
+voice_wall_jump_18 = noone; /* Voice Wall Jump 18 */
+voice_wall_jump_19 = noone; /* Voice Wall Jump 19 */
+voice_wall_jump_20 = noone; /* Voice Wall Jump 20 */
 #endregion /* Voice Wall Jump END */
 
 #region /* Voice Start Running */
@@ -778,7 +795,7 @@ and (global.character_select_in_this_menu == "main_game")
 	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 	var level_name = string(uppercase_level_name);
 	
-	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
 	ini_close();
 }

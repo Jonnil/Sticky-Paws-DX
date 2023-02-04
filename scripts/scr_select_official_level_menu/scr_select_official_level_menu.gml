@@ -183,7 +183,6 @@ function scr_select_official_level_menu()
 		scr_draw_text_outlined(window_get_width() / 2, 50, l10n_text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
 	}
 	
-	//scr_draw_text_outlined(window_get_width() / 2, 50, l10n_text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
 	scr_draw_text_outlined(window_get_width() / 2, 100, l10n_text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
 	
 	#region /* Back Button */

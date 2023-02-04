@@ -1,3 +1,8 @@
+#region /* Debug toggles */
+can_create_foreground = true;
+can_spawn_players = true;
+#endregion /* Debug toggles END */
+
 scr_initialize_camera();
 
 mouse_x_position = device_mouse_x_to_gui(0);
@@ -155,30 +160,33 @@ alarm[0] = 1; /* Initialize custom character timer. This code needs to be initia
 #endregion /* Lives Icon END */
 
 #region /* Create Foreground and Background Brightness Layer */
-if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
-and (!instance_exists(obj_background_brightness_gameplay))
+if (can_create_foreground == true)
 {
-	instance_create_depth(0, 0, 0, obj_background_brightness_gameplay);
-}
-if (asset_get_type("obj_foreground1") == asset_object)
-and (!instance_exists(obj_foreground1))
-{
-	instance_create_depth(0, 0, 0, obj_foreground1);
-}
-if (asset_get_type("obj_foreground_above_static_objects") == asset_object)
-and (!instance_exists(obj_foreground_above_static_objects))
-{
-	instance_create_depth(0, 0, 0, obj_foreground_above_static_objects);
-}
-if (asset_get_type("obj_foreground2") == asset_object)
-and (!instance_exists(obj_foreground2))
-{
-	instance_create_depth(0, 0, 0, obj_foreground2);
-}
-if (asset_get_type("obj_foreground_secret") == asset_object)
-and (!instance_exists(obj_foreground_secret))
-{
-	instance_create_depth(0, 0, 0, obj_foreground_secret);
+	if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
+	and (!instance_exists(obj_background_brightness_gameplay))
+	{
+		instance_create_depth(0, 0, 0, obj_background_brightness_gameplay);
+	}
+	if (asset_get_type("obj_foreground1") == asset_object)
+	and (!instance_exists(obj_foreground1))
+	{
+		instance_create_depth(0, 0, 0, obj_foreground1);
+	}
+	if (asset_get_type("obj_foreground_above_static_objects") == asset_object)
+	and (!instance_exists(obj_foreground_above_static_objects))
+	{
+		instance_create_depth(0, 0, 0, obj_foreground_above_static_objects);
+	}
+	if (asset_get_type("obj_foreground2") == asset_object)
+	and (!instance_exists(obj_foreground2))
+	{
+		instance_create_depth(0, 0, 0, obj_foreground2);
+	}
+	if (asset_get_type("obj_foreground_secret") == asset_object)
+	and (!instance_exists(obj_foreground_secret))
+	{
+		instance_create_depth(0, 0, 0, obj_foreground_secret);
+	}
 }
 #endregion /* Create Foreground and Background Brightness Layer END */
 
@@ -250,7 +258,8 @@ else
 scr_initialize_level_information_ini();
 
 #region /* Spawn Players */
-if (asset_get_type("obj_player_map") == asset_object)
+if (can_spawn_players == true)
+and (asset_get_type("obj_player_map") == asset_object)
 and (!instance_exists(obj_player_map))
 and (asset_get_type("obj_title") == asset_object)
 and (!instance_exists(obj_title))
@@ -733,3 +742,96 @@ zoom_lerp = global.zoom_level;
 zoom_border_lerp = 0;
 
 scr_set_numbers_for_every_multiple_objects();
+
+#region /* Show keys x positions */
+/* For some reason, code within "Show keys x positions" lags the Nintendo Switch version */
+
+#region /* Player 1 show keys x positions */
+player1_show_dive_key_x = 32;
+player1_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
+player1_show_crouch_key_x = player1_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
+if (global.player1_sprint_toggle = false)
+{
+	player1_show_sprint_key_x = player1_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
+	player1_show_left_key_x = player1_show_sprint_key_x + string_width(l10n_text("Sprint")) + 37;
+	player1_show_right_key_x = player1_show_left_key_x + string_width(l10n_text("Left")) + 37;
+	player1_show_down_key_x = player1_show_right_key_x + string_width(l10n_text("Right")) + 37;
+	player1_show_up_key_x = player1_show_down_key_x + string_width(l10n_text("Down")) + 37;
+}
+else
+{
+	player1_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
+	player1_show_left_key_x = player1_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
+	player1_show_right_key_x = player1_show_left_key_x + string_width(l10n_text("Left")) + 37;
+	player1_show_down_key_x = player1_show_right_key_x + string_width(l10n_text("Right")) + 37;
+	player1_show_up_key_x = player1_show_down_key_x + string_width(l10n_text("Down")) + 37;
+}
+#endregion /* Player 1 show keys x positions END */
+
+#region /* Player 2 show keys x positions */
+player2_show_dive_key_x = 32;
+player2_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
+player2_show_crouch_key_x = player2_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
+if (global.player2_sprint_toggle = false)
+{
+	player2_show_sprint_key_x = player2_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
+	player2_show_left_key_x = player2_show_sprint_key_x + string_width(l10n_text("Sprint")) + 37;
+	player2_show_right_key_x = player2_show_left_key_x + string_width(l10n_text("Left")) + 37;
+	player2_show_down_key_x = player2_show_right_key_x + string_width(l10n_text("Right")) + 37;
+	player2_show_up_key_x = player2_show_down_key_x + string_width(l10n_text("Down")) + 37;
+}
+else
+{
+	player2_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
+	player2_show_left_key_x = player2_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
+	player2_show_right_key_x = player2_show_left_key_x + string_width(l10n_text("Left")) + 37;
+	player2_show_down_key_x = player2_show_right_key_x + string_width(l10n_text("Right")) + 37;
+	player2_show_up_key_x = player2_show_down_key_x + string_width(l10n_text("Down")) + 37;
+}
+#endregion /* Player 2 show keys x positions END */
+
+#region /* Player 3 show keys x positions */
+player3_show_dive_key_x = 32;
+player3_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
+player3_show_crouch_key_x = player3_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
+if (global.player3_sprint_toggle = false)
+{
+	player3_show_sprint_key_x = player3_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
+	player3_show_left_key_x = player3_show_sprint_key_x + string_width(l10n_text("Sprint")) + 37;
+	player3_show_right_key_x = player3_show_left_key_x + string_width(l10n_text("Left")) + 37;
+	player3_show_down_key_x = player3_show_right_key_x + string_width(l10n_text("Right")) + 37;
+	player3_show_up_key_x = player3_show_down_key_x + string_width(l10n_text("Down")) + 37;
+}
+else
+{
+	player3_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
+	player3_show_left_key_x = player3_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
+	player3_show_right_key_x = player3_show_left_key_x + string_width(l10n_text("Left")) + 37;
+	player3_show_down_key_x = player3_show_right_key_x + string_width(l10n_text("Right")) + 37;
+	player3_show_up_key_x = player3_show_down_key_x + string_width(l10n_text("Down")) + 37;
+}
+#endregion /* Player 3 show keys x positions END */
+
+#region /* Player 4 show keys x positions */
+player4_show_dive_key_x = 32;
+player4_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
+player4_show_crouch_key_x = player4_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
+if (global.player4_sprint_toggle = false)
+{
+	player4_show_sprint_key_x = player4_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
+	player4_show_left_key_x = player4_show_sprint_key_x + string_width(l10n_text("Sprint")) + 37;
+	player4_show_right_key_x = player4_show_left_key_x + string_width(l10n_text("Left")) + 37;
+	player4_show_down_key_x = player4_show_right_key_x + string_width(l10n_text("Right")) + 37;
+	player4_show_up_key_x = player4_show_down_key_x + string_width(l10n_text("Down")) + 37;
+}
+else
+{
+	player4_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
+	player4_show_left_key_x = player4_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
+	player4_show_right_key_x = player4_show_left_key_x + string_width(l10n_text("Left")) + 37;
+	player4_show_down_key_x = player4_show_right_key_x + string_width(l10n_text("Right")) + 37;
+	player4_show_up_key_x = player4_show_down_key_x + string_width(l10n_text("Down")) + 37;
+}
+#endregion /* Player 4 show keys x positions END */
+
+#endregion /* Show keys x positions END */

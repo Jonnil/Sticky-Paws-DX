@@ -29,8 +29,22 @@ global.link_to_wiki = "https://stickypedia.miraheze.org/wiki/Main_Page";
 leveleditor_readme = noone; /* Readme textfile for how to use the level editor */
 
 #region /* Debug toggles */
+/* There are more debug toggles in different objects, so click ctrl + shift + F and search "Debug toggles" to find the other debug toggles */
 can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
+global.debug_screen = false;
 global.deactivate_objects_outside_view = true; /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
+global.show_fps = false; /* Show fps for optimization debug */
+global.show_fps_real = false; /* Show fps real for optimization debug */
+global.show_instance_count = false; /* Show instance count for optimization debug */
+global.enable_transitions = true; /* During transitions when going from one room to another, the game could crash, and you can't see what's going on when the transition animation is playing and making the screen black, so turn off this for debug */
+global.enable_background_layer1 = true;
+global.enable_background_layer2 = true;
+global.enable_background_layer3 = true;
+global.enable_background_layer4 = true;
+global.enable_foreground_layer1 = false;
+global.enable_foreground_layer_above_static_objects = false;
+global.enable_foreground_layer2 = false;
+global.enable_foreground_layer_secret = false;
 #endregion /* Debug toggles END */
 
 #region /* Change how menus look and function */
@@ -277,15 +291,6 @@ scr_set_default_language();
 
 global.settings_sidebar_menu = "accessibility_settings"; /* Settings sidebar */
 global.show_tutorial_signs = true;
-global.enable_transitions = true;
-global.enable_background_layer1 = true;
-global.enable_background_layer2 = true;
-global.enable_background_layer3 = true;
-global.enable_background_layer4 = true;
-global.enable_foreground_layer1 = true;
-global.enable_foreground_layer_above_static_objects = true;
-global.enable_foreground_layer2 = true;
-global.enable_foreground_layer_secret = true;
 global.enable_attract_demo = true; /* If the attract demo can play or not */
 global.enable_links = true; /* If links to websites should show up on the title screen or not */
 global.players_can_collide = false;
@@ -354,9 +359,6 @@ global.trigger_ending = false;
 global.spikes_emerge_time = 0;
 global.goal_active = false;
 global.interpolate = true
-global.show_fps = false;
-global.show_fps_real = false;
-global.show_instance_count = false;
 global.show_collision_mask = false;
 global.pause_screenshot = noone;
 global.restart_level = false;

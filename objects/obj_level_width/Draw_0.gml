@@ -25,6 +25,7 @@ and (global.play_edited_level == false)
 #region /* Drag Object */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
+and (variable_instance_exists(obj_leveleditor, "pause"))
 and (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))

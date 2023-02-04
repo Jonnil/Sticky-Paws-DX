@@ -483,17 +483,7 @@ and (!instance_exists(obj_title))
 
 }
 
-scr_show_fps();
-
-if (global.pause = false)
-and (global.show_instance_count == true)
-and (asset_get_type("obj_title") == asset_object)
-and (!instance_exists(obj_title))
-{
-	draw_set_halign(fa_left);
-	draw_set_valign(fa_middle);
-	scr_draw_text_outlined( 32, 164, l10n_text("Instance Count") + " : " + string(instance_count), global.default_text_size, c_black, c_white, 1);
-}
+scr_debug_screen();
 
 #region /* Show if you are playing the demo version or not */
 if (global.demo == true)
@@ -554,98 +544,6 @@ and (!instance_exists(obj_title))
 #endregion /* Show if you have Assist mode enabled or not END */
 
 #region /* Show Controls */
-
-#region /* Show keys x positions */
-
-#region /* Player 1 show keys x positions */
-player1_show_dive_key_x = 32;
-player1_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
-player1_show_crouch_key_x = player1_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (global.player1_sprint_toggle = false)
-{
-	player1_show_sprint_key_x = player1_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player1_show_left_key_x = player1_show_sprint_key_x + string_width(l10n_text("Sprint")) + 37;
-	player1_show_right_key_x = player1_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player1_show_down_key_x = player1_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player1_show_up_key_x = player1_show_down_key_x + string_width(l10n_text("Down")) + 37;
-}
-else
-{
-	player1_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
-	player1_show_left_key_x = player1_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player1_show_right_key_x = player1_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player1_show_down_key_x = player1_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player1_show_up_key_x = player1_show_down_key_x + string_width(l10n_text("Down")) + 37;
-}
-#endregion /* Player 1 show keys x positions END */
-
-#region /* Player 2 show keys x positions */
-player2_show_dive_key_x = 32;
-player2_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
-player2_show_crouch_key_x = player2_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (global.player2_sprint_toggle = false)
-{
-	player2_show_sprint_key_x = player2_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player2_show_left_key_x = player2_show_sprint_key_x + string_width(l10n_text("Sprint")) + 37;
-	player2_show_right_key_x = player2_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player2_show_down_key_x = player2_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player2_show_up_key_x = player2_show_down_key_x + string_width(l10n_text("Down")) + 37;
-}
-else
-{
-	player2_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
-	player2_show_left_key_x = player2_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player2_show_right_key_x = player2_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player2_show_down_key_x = player2_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player2_show_up_key_x = player2_show_down_key_x + string_width(l10n_text("Down")) + 37;
-}
-#endregion /* Player 2 show keys x positions END */
-
-#region /* Player 3 show keys x positions */
-player3_show_dive_key_x = 32;
-player3_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
-player3_show_crouch_key_x = player3_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (global.player3_sprint_toggle = false)
-{
-	player3_show_sprint_key_x = player3_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player3_show_left_key_x = player3_show_sprint_key_x + string_width(l10n_text("Sprint")) + 37;
-	player3_show_right_key_x = player3_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player3_show_down_key_x = player3_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player3_show_up_key_x = player3_show_down_key_x + string_width(l10n_text("Down")) + 37;
-}
-else
-{
-	player3_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
-	player3_show_left_key_x = player3_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player3_show_right_key_x = player3_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player3_show_down_key_x = player3_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player3_show_up_key_x = player3_show_down_key_x + string_width(l10n_text("Down")) + 37;
-}
-#endregion /* Player 3 show keys x positions END */
-
-#region /* Player 4 show keys x positions */
-player4_show_dive_key_x = 32;
-player4_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
-player4_show_crouch_key_x = player4_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (global.player4_sprint_toggle = false)
-{
-	player4_show_sprint_key_x = player4_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player4_show_left_key_x = player4_show_sprint_key_x + string_width(l10n_text("Sprint")) + 37;
-	player4_show_right_key_x = player4_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player4_show_down_key_x = player4_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player4_show_up_key_x = player4_show_down_key_x + string_width(l10n_text("Down")) + 37;
-}
-else
-{
-	player4_show_sprint_key_x = -999; /* Hide the sprint key if you have "Always Run" turned on */
-	player4_show_left_key_x = player4_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player4_show_right_key_x = player4_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player4_show_down_key_x = player4_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player4_show_up_key_x = player4_show_down_key_x + string_width(l10n_text("Down")) + 37;
-}
-#endregion /* Player 4 show keys x positions END */
-
-#endregion /* Show keys x positions END */
 
 if (os_type != os_ios)
 and (os_type != os_android)

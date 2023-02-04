@@ -8,7 +8,7 @@ and (other.level != come_from_level)
 and (delay == 0)
 {
 	other.clear_rate = "enter";
-	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 	ini_write_string(level_name, "clear_rate", "enter");
 	ini_close();
 }

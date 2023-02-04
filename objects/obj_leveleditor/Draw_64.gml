@@ -1765,7 +1765,7 @@ if (quit_level_editor == false)
 
 	#endregion /* Click icons at top of screen END */
 	
-	scr_show_fps();
+	scr_debug_screen();
 	
 	scr_menu_navigation_with_joystick_delay();
 	

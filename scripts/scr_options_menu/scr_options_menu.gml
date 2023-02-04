@@ -2501,12 +2501,12 @@ function scr_options_menu()
 		
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(450, 20 + (40 * 8), string_replace_all(string(game_save_id) + "\save_files\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(450, 20 + (40 * 8), string_replace_all(string(game_save_id) + "/save_files\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		
 			#region /* Display save file data */
-			if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+			if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
 			{
-				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			
 				if (ini_key_exists("Player", "current_month"))
 				and (ini_key_exists("Player", "current_day"))
@@ -2546,7 +2546,7 @@ function scr_options_menu()
 			if (menu != "file_delete_yes")
 			and (menu != "file_delete_no")
 			{
-				if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+				if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
 				{
 					draw_menu_button(450, 20 + (40 * 5), l10n_text("Delete File"), "file_delete", "file_delete_no");
 				}
@@ -2564,7 +2564,7 @@ function scr_options_menu()
 				and (key_a_pressed)
 				and (menu_delay == 0)
 				{
-					scr_open_folder(game_save_id + "\save_files")
+					scr_open_folder(game_save_id + "/save_files")
 				}
 			}
 			else
@@ -2668,7 +2668,7 @@ function scr_options_menu()
 			{
 				can_navigate_settings_sidebar = false;
 				menu = "file_select";
-				file_delete(working_directory + "save_files/file" + string(global.file) + ".ini");
+				file_delete(working_directory + "/save_files/file" + string(global.file) + ".ini");
 				menu_delay = 10;
 			}
 		
@@ -2698,7 +2698,7 @@ function scr_options_menu()
 				else
 				if (menu == "open_save_file_folder")
 				{
-					if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+					if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
 					{
 						menu = "file_delete";
 					}
@@ -2718,7 +2718,7 @@ function scr_options_menu()
 				menu_joystick_delay = 10;
 				if (menu == "file_select")
 				{
-					if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+					if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
 					{
 						menu = "file_delete";
 					}

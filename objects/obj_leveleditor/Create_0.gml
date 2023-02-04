@@ -1,3 +1,11 @@
+#region /* Debug toggles */
+can_load_level = true;
+can_initialize_level_information = true;
+can_create_foreground = true;
+can_create_water_level = true;
+can_load_custom_sprites = true;
+#endregion /* Debug toggles END */
+
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
@@ -245,6 +253,8 @@ enum level_object_id
 	id_block_only_when_player_is_near = 98,
 	id_door = 99,
 	id_npc = 100,
+	id_black_wall = 101,
+	id_ring = 102,
 	id_last_object_dummy = 999999999
 }
 enum world_object_id
@@ -457,6 +467,8 @@ add_object(level_object_id.id_artwork_collection, spr_artwork_collection, 0, spr
 add_object(level_object_id.id_block_only_when_player_is_near, global.resource_pack_sprite_block_only_when_player_is_near, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 add_object(level_object_id.id_door, spr_door, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 add_object(level_object_id.id_npc, spr_npc, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_black_wall, spr_black_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+add_object(level_object_id.id_ring, spr_ring, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 /* This is a dummy object, to make sure every object gets added to the list */ add_object(level_object_id.id_last_object_dummy, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0); /* This dummy object is just here so the last object actually appears */
 #endregion /* Grid Initialization END */
 
@@ -533,30 +545,34 @@ alarm[0] = 1; /* Initialize custom character timer. This code needs to be initia
 #endregion /* Lives Icon END */
 
 #region /* Create Foreground */
-if (asset_get_type("obj_foreground1") == asset_object)
-and (!instance_exists(obj_foreground1))
+if (can_create_foreground == true)
 {
-	instance_create_depth(0, 0, 0, obj_foreground1);
-}
-if (asset_get_type("obj_foreground_above_static_objects") == asset_object)
-and (!instance_exists(obj_foreground_above_static_objects))
-{
-	instance_create_depth(0, 0, 0, obj_foreground_above_static_objects);
-}
-if (asset_get_type("obj_foreground2") == asset_object)
-and (!instance_exists(obj_foreground2))
-{
-	instance_create_depth(0, 0, 0, obj_foreground2);
-}
-if (asset_get_type("obj_foreground_secret") == asset_object)
-and (!instance_exists(obj_foreground_secret))
-{
-	instance_create_depth(0, 0, 0, obj_foreground_secret);
+	if (asset_get_type("obj_foreground1") == asset_object)
+	and (!instance_exists(obj_foreground1))
+	{
+		instance_create_depth(0, 0, 0, obj_foreground1);
+	}
+	if (asset_get_type("obj_foreground_above_static_objects") == asset_object)
+	and (!instance_exists(obj_foreground_above_static_objects))
+	{
+		instance_create_depth(0, 0, 0, obj_foreground_above_static_objects);
+	}
+	if (asset_get_type("obj_foreground2") == asset_object)
+	and (!instance_exists(obj_foreground2))
+	{
+		instance_create_depth(0, 0, 0, obj_foreground2);
+	}
+	if (asset_get_type("obj_foreground_secret") == asset_object)
+	and (!instance_exists(obj_foreground_secret))
+	{
+		instance_create_depth(0, 0, 0, obj_foreground_secret);
+	}
 }
 #endregion /* Create Foreground END */
 
 #region /* Create Background Brightness in Gameplay */
-if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
+if (can_create_foreground == true)
+and (asset_get_type("obj_background_brightness_gameplay") == asset_object)
 and (!instance_exists(obj_background_brightness_gameplay))
 {
 	instance_create_depth(x, y, 0, obj_background_brightness_gameplay);
@@ -574,7 +590,8 @@ and (!instance_exists(obj_level_width))
 {
 	instance_create_depth(2720, 0, 0, obj_level_width);
 }
-if (asset_get_type("obj_water_level_height") == asset_object)
+if (can_create_water_level == true)
+and (asset_get_type("obj_water_level_height") == asset_object)
 and (instance_exists(obj_level_height))
 and (!instance_exists(obj_water_level_height))
 {
@@ -748,22 +765,27 @@ image_speed = 0;
 image_index = 0;
 
 #region /* Initialize level_information.ini */
-if (global.character_select_in_this_menu == "main_game")
+if (can_initialize_level_information == true)
+and (global.character_select_in_this_menu == "main_game")
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
-or (global.character_select_in_this_menu == "level_editor")
+or (can_initialize_level_information == true)
+and (global.character_select_in_this_menu == "level_editor")
 and (global.create_level_from_template == true)
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
-or (global.character_select_in_this_menu == "level_editor")
+or (can_initialize_level_information == true)
+and (global.character_select_in_this_menu == "level_editor")
 and (global.select_level_index <= 0)
 and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 
-or (global.character_select_in_this_menu == "level_editor")
+or (can_initialize_level_information == true)
+and (global.character_select_in_this_menu == "level_editor")
 and (global.create_level_from_template >= 2)
 and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 
-or (global.character_select_in_this_menu == "level_editor")
+or (can_initialize_level_information == true)
+and (global.character_select_in_this_menu == "level_editor")
 and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu == "main_game")
@@ -1174,239 +1196,30 @@ player1_show_controls_timer = 0;
 player1_show_controls_alpha = 0;
 
 #region /* Load Level */
-
-#region /* Destory all placed objects before loading the level, just in case there is leftover placed objects */
-with(obj_leveleditor_placed_object)
-{
-	instance_destroy();
-}
-#endregion /* Destory all placed objects before loading the level, just in case there is leftover placed objects END */
-
-scr_load_object_placement_all();
-
-#region /* Old level loading method */
-
-#region /* Load Main Game Level */
-if (global.character_select_in_this_menu == "main_game")
-or (global.create_level_from_template == true)
+if (can_load_level == true)
 {
 	
-	#region /* Object Placement */
-	var file, str, str_pos, str_temp, val, num;
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement.txt"))
+	#region /* Destory all placed objects before loading the level, just in case there is leftover placed objects */
+	with(obj_leveleditor_placed_object)
 	{
-		file = file_text_open_read("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement.txt");
+		instance_destroy();
 	}
-	else
-	{
-		file = -1;
-	}
+	#endregion /* Destory all placed objects before loading the level, just in case there is leftover placed objects END */
 	
-	if (file != -1)
-	{
-		/* Next objects */
-		str = file_text_read_string(file);
-		//file_text_readln(file);
-		str_temp = "";
-		num = 0;
-		str_pos = 1;
-		while(str_pos < string_length(str))
-		{
-			/* | = chr("124") */
-			/* } = chr("125") */
-			while (string_char_at(str, str_pos) != "|")
-			{
-				str_temp += string_char_at(str, str_pos);
-				str_pos += 1;
-			}
-			val[num] = string(str_temp);
-			str_temp = "";
-			str_pos += 1;
-			num += 1;
-			if (num == 6)
-			/* Number of variables to check for.
-			val[0] = object,
-			val[1] = x position,
-			val[2] = y position,
-			val[3] = easy,
-			val[4] = normal,
-			val[5] = hard */
-			{
-				num = 0;
-				with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
-				{
-					object = val[2];
-					easy = val[3];
-					normal = val[4];
-					hard = val[5];
-					placed_for_the_first_time = false;
-				}
-			}
-		}
-		file_text_close(file);
-	}
-	#endregion /* Object Placement END */
+	scr_load_object_placement_all();
 	
-	#region /* Object With Rotation Placement */
-	var file, str, str_pos, str_temp, val, num;
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_rotation_placement.txt"))
-	{
-		file = file_text_open_read("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_rotation_placement.txt");
-	}
-	else
-	{
-		file = -1;
-	}
-	
-	if (file != -1)
-	{
-		/* Next objects */
-		str = file_text_read_string(file);
-		//file_text_readln(file);
-		str_temp = "";
-		num = 0;
-		str_pos = 1;
-		while(str_pos < string_length(str))
-		{
-			/* | = chr("124") */
-			/* } = chr("125") */
-			while (string_char_at(str, str_pos) != "|")
-			{
-				str_temp += string_char_at(str, str_pos);
-				str_pos += 1;
-			}
-			val[num] = string(str_temp);
-			str_temp = "";
-			str_pos += 1;
-			num += 1;
-			if (num == 8) /* Number of variables to check for.
-			val[0] = object,
-			val[1] = x position,
-			val[2] = y position,
-			val[3] = easy,
-			val[4] = normal,
-			val[5] = hard,
-			val[6] = second_x,
-			val[7] = second_y */
-			{
-				num = 0;
-				with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
-				{
-					object = val[2];
-					easy = val[3];
-					normal = val[4];
-					hard = val[5];
-					second_x = val[6];
-					second_y = val[7];
-					placed_for_the_first_time = false;
-				}
-			}
-		}
-		file_text_close(file);
-	}
-	#endregion /* Object With Rotation Placement END */
-	
-}
-#endregion /* Load Main Game Level END */
+	#region /* Old level loading method */
 
-else
-
-#region /* Load Level Editor Level */
-if (global.character_select_in_this_menu == "level_editor")
-{
-	
-	#region /* Create directories */
-
-	#region /* Create directory for saving custom levels */
-	if (global.select_level_index >= 1)
-	and (global.create_level_from_template == false)
-	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))))
+	#region /* Load Main Game Level */
+	if (global.character_select_in_this_menu == "main_game")
+	or (global.create_level_from_template == true)
 	{
-		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
-	}
-	else
-	if (global.level_name != "")
-	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name)))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(global.level_name));
-	}
-	#endregion /* Create directory for saving custom levels END */
-	
-	#region /* Create directory for backgrouns in custom levels */
-	if (global.select_level_index >= 1)
-	and (global.create_level_from_template == false)
-	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds");
-	}
-	else
-	if (global.level_name != "")
-	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/backgrounds"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/backgrounds");
-	}
-	#endregion /* Create directory for backgrounds in custom levels END */
-	
-	#region /* Create directory for data in custom levels */
-	if (global.select_level_index >= 1)
-	and (global.create_level_from_template == false)
-	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data");
-	}
-	else
-	if (global.level_name != "")
-	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/data");
-	}
-	#endregion /* Create directory for data in custom levels END */
-	
-	#region /* Create directory for sounds in custom levels */
-	if (global.select_level_index >= 1)
-	and (global.create_level_from_template == false)
-	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound");
-	}
-	else
-	if (global.level_name != "")
-	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sound"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sound");
-	}
-	#endregion /* Create directory for sounds in custom levels END */
-	
-	#region /* Create directory for tilesets in custom levels */
-	if (global.select_level_index >= 1)
-	and (global.create_level_from_template == false)
-	and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets");
-	}
-	else
-	if (global.level_name != "")
-	and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets"))
-	{
-		directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets");
-	}
-	#endregion /* Create directory for tilesets in custom levels END */
-	
-	#endregion /* Create directories END */
 	
 		#region /* Object Placement */
 		var file, str, str_pos, str_temp, val, num;
-		if (global.select_level_index >= 1)
-		and (global.create_level_from_template == false)
-		and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt"))
+		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement.txt"))
 		{
-			file = file_text_open_read(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt");
-		}
-		else
-		if (global.level_name != "")
-		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"))
-		{
-			file = file_text_open_read(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt");
+			file = file_text_open_read("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement.txt");
 		}
 		else
 		{
@@ -1457,20 +1270,12 @@ if (global.character_select_in_this_menu == "level_editor")
 			file_text_close(file);
 		}
 		#endregion /* Object Placement END */
-		
+	
 		#region /* Object With Rotation Placement */
 		var file, str, str_pos, str_temp, val, num;
-		if (global.select_level_index >= 1)
-		and (global.create_level_from_template == false)
-		and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_rotation_placement.txt"))
+		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_rotation_placement.txt"))
 		{
-			file = file_text_open_read(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_rotation_placement.txt");
-		}
-		else
-		if (global.level_name != "")
-		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt"))
-		{
-			file = file_text_open_read(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt");
+			file = file_text_open_read("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_rotation_placement.txt");
 		}
 		else
 		{
@@ -1524,10 +1329,230 @@ if (global.character_select_in_this_menu == "level_editor")
 			file_text_close(file);
 		}
 		#endregion /* Object With Rotation Placement END */
+	
+	}
+	#endregion /* Load Main Game Level END */
+
+	else
+
+	#region /* Load Level Editor Level */
+	if (global.character_select_in_this_menu == "level_editor")
+	{
+	
+		#region /* Create directories */
+
+		#region /* Create directory for saving custom levels */
+		if (global.select_level_index >= 1)
+		and (global.create_level_from_template == false)
+		and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))))
+		{
+			directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
+		}
+		else
+		if (global.level_name != "")
+		and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name)))
+		{
+			directory_create(working_directory + "/custom_levels/" + string(global.level_name));
+		}
+		#endregion /* Create directory for saving custom levels END */
+	
+		#region /* Create directory for backgrouns in custom levels */
+		if (global.select_level_index >= 1)
+		and (global.create_level_from_template == false)
+		and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds"))
+		{
+			directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds");
+		}
+		else
+		if (global.level_name != "")
+		and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/backgrounds"))
+		{
+			directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/backgrounds");
+		}
+		#endregion /* Create directory for backgrounds in custom levels END */
+	
+		#region /* Create directory for data in custom levels */
+		if (global.select_level_index >= 1)
+		and (global.create_level_from_template == false)
+		and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data"))
+		{
+			directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data");
+		}
+		else
+		if (global.level_name != "")
+		and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data"))
+		{
+			directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/data");
+		}
+		#endregion /* Create directory for data in custom levels END */
+	
+		#region /* Create directory for sounds in custom levels */
+		if (global.select_level_index >= 1)
+		and (global.create_level_from_template == false)
+		and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound"))
+		{
+			directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound");
+		}
+		else
+		if (global.level_name != "")
+		and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sound"))
+		{
+			directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/sound");
+		}
+		#endregion /* Create directory for sounds in custom levels END */
+	
+		#region /* Create directory for tilesets in custom levels */
+		if (global.select_level_index >= 1)
+		and (global.create_level_from_template == false)
+		and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets"))
+		{
+			directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/tilesets");
+		}
+		else
+		if (global.level_name != "")
+		and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets"))
+		{
+			directory_create(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets");
+		}
+		#endregion /* Create directory for tilesets in custom levels END */
+	
+		#endregion /* Create directories END */
+	
+			#region /* Object Placement */
+			var file, str, str_pos, str_temp, val, num;
+			if (global.select_level_index >= 1)
+			and (global.create_level_from_template == false)
+			and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt"))
+			{
+				file = file_text_open_read(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt");
+			}
+			else
+			if (global.level_name != "")
+			and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"))
+			{
+				file = file_text_open_read(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt");
+			}
+			else
+			{
+				file = -1;
+			}
+	
+			if (file != -1)
+			{
+				/* Next objects */
+				str = file_text_read_string(file);
+				//file_text_readln(file);
+				str_temp = "";
+				num = 0;
+				str_pos = 1;
+				while(str_pos < string_length(str))
+				{
+					/* | = chr("124") */
+					/* } = chr("125") */
+					while (string_char_at(str, str_pos) != "|")
+					{
+						str_temp += string_char_at(str, str_pos);
+						str_pos += 1;
+					}
+					val[num] = string(str_temp);
+					str_temp = "";
+					str_pos += 1;
+					num += 1;
+					if (num == 6)
+					/* Number of variables to check for.
+					val[0] = object,
+					val[1] = x position,
+					val[2] = y position,
+					val[3] = easy,
+					val[4] = normal,
+					val[5] = hard */
+					{
+						num = 0;
+						with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+						{
+							object = val[2];
+							easy = val[3];
+							normal = val[4];
+							hard = val[5];
+							placed_for_the_first_time = false;
+						}
+					}
+				}
+				file_text_close(file);
+			}
+			#endregion /* Object Placement END */
 		
+			#region /* Object With Rotation Placement */
+			var file, str, str_pos, str_temp, val, num;
+			if (global.select_level_index >= 1)
+			and (global.create_level_from_template == false)
+			and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_rotation_placement.txt"))
+			{
+				file = file_text_open_read(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_rotation_placement.txt");
+			}
+			else
+			if (global.level_name != "")
+			and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt"))
+			{
+				file = file_text_open_read(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt");
+			}
+			else
+			{
+				file = -1;
+			}
+	
+			if (file != -1)
+			{
+				/* Next objects */
+				str = file_text_read_string(file);
+				//file_text_readln(file);
+				str_temp = "";
+				num = 0;
+				str_pos = 1;
+				while(str_pos < string_length(str))
+				{
+					/* | = chr("124") */
+					/* } = chr("125") */
+					while (string_char_at(str, str_pos) != "|")
+					{
+						str_temp += string_char_at(str, str_pos);
+						str_pos += 1;
+					}
+					val[num] = string(str_temp);
+					str_temp = "";
+					str_pos += 1;
+					num += 1;
+					if (num == 8) /* Number of variables to check for.
+					val[0] = object,
+					val[1] = x position,
+					val[2] = y position,
+					val[3] = easy,
+					val[4] = normal,
+					val[5] = hard,
+					val[6] = second_x,
+					val[7] = second_y */
+					{
+						num = 0;
+						with(instance_create_depth(val[0], val[1], 0, obj_leveleditor_placed_object))
+						{
+							object = val[2];
+							easy = val[3];
+							normal = val[4];
+							hard = val[5];
+							second_x = val[6];
+							second_y = val[7];
+							placed_for_the_first_time = false;
+						}
+					}
+				}
+				file_text_close(file);
+			}
+			#endregion /* Object With Rotation Placement END */
+		
+	}
+	#endregion /* Load Level Editor Level END */
+
+	#endregion /* Old level loading method END */
+	
 }
-#endregion /* Load Level Editor Level END */
-
-#endregion /* Old level loading method END */
-
 #endregion /* Load Level END */

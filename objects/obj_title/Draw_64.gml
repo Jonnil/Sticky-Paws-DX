@@ -1298,6 +1298,7 @@ and (menu_delay == 0)
 		{
 			menu_delay = 3;
 			if (global.convention_mode == false)
+			and (global.enable_options_for_pc == true)
 			{
 				menu = "quit";
 			}
@@ -1342,6 +1343,7 @@ and (menu_delay == 0)
 		{
 			menu_delay = 3;
 			if (global.convention_mode == false)
+			and (global.enable_options_for_pc == true)
 			{
 				menu = "quit";
 			}
@@ -1415,12 +1417,13 @@ and (menu_delay == 0)
 		{
 			menu_delay = 3;
 			if (global.convention_mode == false)
+			and (global.enable_options_for_pc == true)
 			{
 				menu = "quit";
 			}
 			else
 			{
-				menu = "leveleditor";
+				menu = "options";
 			}
 		}
 		else
@@ -1670,6 +1673,7 @@ if (menu == "quit")
 and (key_a_pressed)
 and (menu_delay == 0)
 and (global.convention_mode = false)
+and (global.enable_options_for_pc == true)
 {
 	menu = "quit_game_no";
 	menu_delay = 3;
@@ -2577,6 +2581,7 @@ if (instance_exists(obj_player))
 #endregion /* If player object is present, destroy the player object END */
 
 scr_menu_navigation_with_joystick_delay();
+scr_draw_cursor_mouse();
 
 #region /* Have a black screen at the first frame so transitions look natural */
 if (black_screen_at_start_delay < 1)
@@ -2643,6 +2648,8 @@ if (menu == "load_custom_level")
 or (menu == "load_characters")
 or (menu == "load_official_level_template")
 {
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
 	loading_spinning_angle -= 10;
 	draw_sprite_ext(spr_loading, 0, display_get_gui_width() / 2, display_get_gui_height() / 2, 1, 1, loading_spinning_angle, c_white, 1);
 	scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 +64, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);

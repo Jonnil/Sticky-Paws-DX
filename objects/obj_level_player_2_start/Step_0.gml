@@ -116,14 +116,14 @@ or (global.actually_play_edited_level == true)
 		{
 			
 			#region /* Load Custom Level Checkpoint */
-			if (file_exists(working_directory + "save_files\file" + string(global.file) + ".ini"))
+			if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
 			and (global.character_select_in_this_menu == "main_game")
-			or (file_exists(working_directory + "\custom_level_save.ini"))
+			or (file_exists(working_directory + "/custom_level_save.ini"))
 			and (global.character_select_in_this_menu == "level_editor")
 			{
 				if (global.character_select_in_this_menu == "main_game")
 				{
-					ini_open(working_directory + "save_files\file" + string(global.file) + ".ini");
+					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_x"))
 					{
 						global.checkpoint_x = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_x", 0);
@@ -153,7 +153,7 @@ or (global.actually_play_edited_level == true)
 				else
 				if (global.character_select_in_this_menu == "level_editor")
 				{
-					ini_open(working_directory + "\custom_level_save.ini");
+					ini_open(working_directory + "/custom_level_save.ini");
 					if (ini_key_exists(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_x"))
 					{
 						global.checkpoint_x = ini_read_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_x", 0);
@@ -200,7 +200,7 @@ or (global.actually_play_edited_level == true)
 	#region /* Destroy the level player 2 start if player 2 has spawned in the level */
 	if (asset_get_type("obj_camera") == asset_object)
 	and (instance_exists(obj_camera))
-	and (obj_camera.player2 >= 0)
+	//and (obj_camera.player2 >= 0)
 	{
 		instance_destroy();
 	}

@@ -17,10 +17,10 @@ ground_surface = 0;
 
 image_speed = 0;
 
-if (y <= 0)
-and (!instance_place(x, y - 1, obj_ground))
-{
-	instance_create_depth(x, y - 32, 0, obj_wall);
-}
+//if (y <= 0)
+//and (!instance_place(x, y - 1, obj_ground))
+//{
+//	instance_create_depth(x, y - 32, 0, obj_wall);
+//}
 
 alarm_set(0, 1);

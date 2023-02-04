@@ -365,7 +365,7 @@ function scr_spawn_objects_when_starting_room()
 					uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 					var level_name = string(uppercase_level_name);
 					
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					if (global.character_select_in_this_menu == "main_game")
 					and (ini_read_string(level_name, "clear_rate", "closed") != "clear")
 					{
@@ -386,6 +386,8 @@ function scr_spawn_objects_when_starting_room()
 				if (object == level_object_id.id_block_only_when_player_is_near) and (asset_get_type("obj_block_only_when_player_is_near_spawner") == asset_object){instance_create_depth(x, y, 0, obj_block_only_when_player_is_near_spawner);}
 				if (object == level_object_id.id_door) and (asset_get_type("obj_door") == asset_object){with(instance_create_depth(x, y, 0, obj_door)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}
 				if (object == level_object_id.id_npc) and (asset_get_type("obj_npc") == asset_object){instance_create_depth(x, y, 0, obj_npc);}
+				if (object == level_object_id.id_black_wall) and (asset_get_type("obj_black_wall") == asset_object){instance_create_depth(x, y, 0, obj_black_wall);}
+				if (object == level_object_id.id_ring) and (asset_get_type("obj_ring") == asset_object){instance_create_depth(x, y, 0, obj_ring);}
 			}
 			#endregion /* Only spawn objects according to difficulty settings END */
 			

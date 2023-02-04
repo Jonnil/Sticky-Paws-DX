@@ -1,4 +1,4 @@
-///Platformer Player Part 1
+/* Platformer Player Part 1 */
 
 #region /* Only update audio listener position and velocity when the player is moving */
 if (speed > 0)
@@ -9,7 +9,7 @@ if (speed > 0)
 #endregion /* Only update audio listener position and velocity when the player is moving END */
 
 if (current_file != global.file)
-or (!file_exists(working_directory + "save_files/file" + string(current_file) + ".ini"))
+or (!file_exists(working_directory + "/save_files/file" + string(current_file) + ".ini"))
 {
 	current_file = global.file;
 	room_persistent = false;
@@ -1355,25 +1355,25 @@ and (instance_exists(obj_spikes))
 				#region /* Save heart balloon to be false */
 				if (player == 1)
 				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_1_have_heart_balloon", false);
 					ini_close();
 				}
 				if (player == 2)
 				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_2_have_heart_balloon", false);
 					ini_close();
 				}
 				if (player == 3)
 				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_3_have_heart_balloon", false);
 					ini_close();
 				}
 				if (player == 4)
 				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_4_have_heart_balloon", false);
 					ini_close();
 				}
@@ -1517,7 +1517,7 @@ scr_player_move_spring();
 
 #endregion /* ________________________________MORE MOVES________________________________ */
 
-///Platformer Player Part 2
+/* Platformer Player Part 2 */
 #region /* ________________________________Handling the sprites and sounds in the step event________________________________ */
 draw_xscale = lerp(draw_xscale, 1, 0.2); /* Make horizontal stretching slowly reset back to 1 */
 draw_yscale = lerp(draw_yscale, 1, 0.2); /* Make vertical stretching slowly reset back to 1 */
@@ -3452,7 +3452,7 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			}
 		}
 		else
-		/* Make it look natural when climbing wall *//* IMPORTANT */
+		/* Make it look natural when climbing wall */
 		/* Run up wall / wall_slide up */
 		if (stick_to_wall == true)
 		{
@@ -4025,6 +4025,7 @@ else
 
 #region /* Speedlines Effect */
 if (asset_get_type("obj_speedline") == asset_object)
+and (can_create_speed_lines == true)
 {
 	if (invincible_timer >= true)
 	and (assist_invincible == false)

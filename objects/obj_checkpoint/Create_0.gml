@@ -25,7 +25,7 @@ and (global.actually_play_edited_level == true)
 	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 	var level_name = string(uppercase_level_name);
 					
-	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 	checkpoint_which_player = ini_read_real(level_name, "checkpoint_which_player", 1);
 	ini_close();
 }

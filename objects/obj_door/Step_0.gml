@@ -5,7 +5,16 @@ and (place_meeting(x, y, obj_player))
 and (open_door == false)
 and (door_xscale >= 0.9)
 {
-	open_door = true;
+	/* The door must sit on ground too before a player can enter */
+	if (position_meeting(x, bbox_bottom + 1, obj_wall))
+	or (position_meeting(bbox_left - 1, bbox_bottom + 1, obj_wall))
+	or (position_meeting(bbox_right + 1, bbox_bottom + 1, obj_wall))
+	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_left - 1, bbox_bottom + 1, obj_semisolid_platform))
+	or (position_meeting(bbox_right + 1, bbox_bottom + 1, obj_semisolid_platform))
+	{
+		open_door = true;
+	}
 }
 if (open_door == true)
 {

@@ -130,25 +130,25 @@ else
 				#region /* Save heart balloon to be false */
 				if (other.player == 1)
 				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_1_have_heart_balloon", false);
 					ini_close();
 				}
 				if (other.player = 2)
 				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_2_have_heart_balloon", false);
 					ini_close();
 				}
 				if (other.player = 3)
 				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_3_have_heart_balloon", false);
 					ini_close();
 				}
 				if (other.player = 4)
 				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player_4_have_heart_balloon", false);
 					ini_close();
 				}

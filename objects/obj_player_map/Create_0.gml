@@ -1,3 +1,8 @@
+#region /* Debug toggles */
+can_update_all_backgrounds = true;
+can_enter_level_automatically = false;
+#endregion /* Debug toggles END */
+
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
@@ -115,9 +120,9 @@ menu_cursor_index = 0;
 menu_delay = 0;
 
 #region /* Load Game */
-if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
 {
-	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 	
 	brand_new_file = ini_read_real("Player", "brand_new_file", true);
 	
@@ -198,7 +203,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 }
 else
 {
-	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 	ini_write_real("Player", "brand_new_file", true);
 	ini_close();
 	brand_new_file = true;
@@ -241,7 +246,7 @@ if (file_exists("localization.csv"))
 }
 
 /* Make number of level cleared 1 because of the level intro */
-ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)
 {
 	ini_write_real("Player", "number_of_levels_cleared", 1)

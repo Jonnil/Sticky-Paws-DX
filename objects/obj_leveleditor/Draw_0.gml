@@ -154,6 +154,7 @@ if (global.world_editor == false)
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_metal, true, spr_wall_metal, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_stone, true, spr_wall_stone, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_wood, true, spr_wall_wood, spr_wall, + 64, 1, 0, c_white);
+	scr_draw_level_editor_placable_object(order_index, level_object_id.id_black_wall, true, spr_black_wall, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_spikes, true, spr_spikes, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_semisolid_platform, true, spr_semisolid_platform, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_brick_block, true, spr_brick_block, spr_wall, + 64, 1, 0, c_white);
@@ -170,7 +171,7 @@ if (global.world_editor == false)
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_big_collectible_1, false, global.resource_pack_sprite_big_collectible, spr_wall, 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_heart, true, spr_heart, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_invincibility_powerup, true, global.resource_pack_sprite_invincibility_powerup, spr_wall, + 64, 1, 0, c_white);
-	var one_up_x = 64 * order_index; scr_draw_level_editor_placable_object(21, level_object_id.id_one_up, true, sprite_lives_icon, spr_wall, + 64, 1, 0, c_white);draw_set_halign(fa_center);draw_set_valign(fa_middle);scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + one_up_x, camera_get_view_y(view_camera[view_current]) + 64, "1-up", global.default_text_size / 2, c_white, c_black, selected_menu_alpha);
+	var one_up_x = 64 * order_index;scr_draw_level_editor_placable_object(order_index, level_object_id.id_one_up, true, sprite_lives_icon, spr_wall, + 64, 1, 0, c_white);draw_set_halign(fa_center);draw_set_valign(fa_middle);scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + selected_object_menu_x + one_up_x, camera_get_view_y(view_camera[view_current]) + 64, "1-up", global.default_text_size / 2, c_white, c_black, selected_menu_alpha);
 	#endregion /* Item Objects END */
 	
 	#region /* Enemy Objects */
@@ -215,6 +216,7 @@ if (global.world_editor == false)
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_artwork_collection, false, spr_artwork_collection, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_block_only_when_player_is_near, true, global.resource_pack_sprite_block_only_when_player_is_near, spr_wall, + 64, 1, 0, c_white);
 	scr_draw_level_editor_placable_object(order_index, level_object_id.id_npc, false, spr_npc, spr_wall, + 64, 1, 0, c_white);
+	scr_draw_level_editor_placable_object(order_index, level_object_id.id_ring, false, spr_ring, spr_wall, + 64, 1, 0, c_white);
 	#endregion /* Special Items END*/
 	
 	total_number_of_objects = order_index - 1; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
