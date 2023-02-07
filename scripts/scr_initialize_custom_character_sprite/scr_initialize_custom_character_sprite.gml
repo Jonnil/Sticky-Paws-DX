@@ -84,7 +84,7 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 		and (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
 			/* If both xorig and yorig exists, then use that for the sprite origin point */
-			sprite_set_offset(sprite_variable, ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2), ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2));
+			sprite_set_offset(sprite_variable, ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5), ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5));
 		}
 		else
 		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
@@ -93,9 +93,9 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 			if (can_save_to_character_config == true)
 			{
 				/* If xorig exists but yorig doesn't exists, then use xorig, and then take sprite height by half and make that the yorig */
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2);
+				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5);
 			}
-			sprite_set_offset(sprite_variable, ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2), sprite_get_height(sprite_variable) / 2);
+			sprite_set_offset(sprite_variable, ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5), sprite_get_height(sprite_variable) * 0.5);
 		}
 		else
 		if (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
@@ -104,19 +104,19 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 			if (can_save_to_character_config == true)
 			{
 				/* If xorig doesn't exists but yorig exists, then use yorig, and then take sprite width by half and make that the xorig */
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2);
+				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5);
 			}
-			sprite_set_offset(sprite_variable, sprite_get_width(sprite_variable) / 2, ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2));
+			sprite_set_offset(sprite_variable, sprite_get_width(sprite_variable) * 0.5, ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5));
 		}
 		else
 		{
 			if (can_save_to_character_config == true)
 			{
 				/* If xorig and yorig doesn't exist, then take sprite width and sprite height by hald and make that the xorig and yorig */
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2);
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2);
+				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5);
+				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5);
 			}
-			sprite_set_offset(sprite_variable, sprite_get_width(sprite_variable) / 2, sprite_get_height(sprite_variable) / 2);
+			sprite_set_offset(sprite_variable, sprite_get_width(sprite_variable) * 0.5, sprite_get_height(sprite_variable) * 0.5);
 		}
 		#endregion /* x and y origin points END */
 		

@@ -1,6 +1,7 @@
 function scr_update_all_backgrounds()
 {
-	if (variable_instance_exists(self, "can_update_all_backgrounds"))
+	if (global.can_load_official_and_custom_resources == true)
+	and (variable_instance_exists(self, "can_update_all_backgrounds"))
 	and (can_update_all_backgrounds == true)
 	{
 		

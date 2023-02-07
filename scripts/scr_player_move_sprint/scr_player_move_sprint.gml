@@ -14,7 +14,7 @@ function scr_player_move_sprint()
 		{
 			if (allow_crawl == true)
 			{
-				speed_max = lerp(speed_max, speed_max_walk / 2, 0.05);
+				speed_max = lerp(speed_max, speed_max_walk * 0.5, 0.05);
 			}
 			else
 			{

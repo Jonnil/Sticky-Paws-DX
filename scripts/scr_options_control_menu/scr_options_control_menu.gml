@@ -5048,44 +5048,44 @@ function scr_options_control_menu()
 		if (input_key == true)
 		{
 			draw_set_alpha(0.75);
-			draw_rectangle_color(window_get_width() / 2 - 284, 12, window_get_width() / 2 + 284, 84, c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(window_get_width() * 0.5 - 284, 12, window_get_width() * 0.5 + 284, 84, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			
 			if (remapping_player == 0) /* Text saying input gamepad button now for player 1 */
 			{
-				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(window_get_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player == 1) /* Text saying input gamepad button now for player 2 */
 			{
-				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(window_get_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player == 2) /* Text saying input gamepad button now for player 3 */
 			{
-				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(window_get_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player == 3) /* Text saying input gamepad button now for player 4 */
 			{
-				scr_draw_text_outlined(window_get_width() / 2, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(window_get_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
-			scr_draw_text_outlined(window_get_width() / 2 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(window_get_width() * 0.5 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			if (global.controls_used_for_menu_navigation == "controller")
 			or (global.always_show_gamepad_buttons == true)
 			{
-				scr_draw_gamepad_buttons(gp_start, window_get_width() / 2 + 220, 64, 0.50, c_white, 1);
+				scr_draw_gamepad_buttons(gp_start, window_get_width() * 0.5 + 220, 64, 0.50, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() / 2 + 220, 64, 0.50, 0.50, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() * 0.5 + 220, 64, 0.50, 0.50, 0, c_white, 1);
 			}
 		}
 		#endregion /* Show the player when they can input a gamepad button to remap controls END */

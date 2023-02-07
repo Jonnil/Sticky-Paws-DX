@@ -2133,48 +2133,48 @@ function scr_options_menu()
 		{
 			if (menu == "show_tutorial_signs"){
 			if (global.show_tutorial_signs == true)
-			{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "> Show Tutorial Signs: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
-			else{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "> Show Tutorial Signs: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}else
+			{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 50, "> Show Tutorial Signs: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+			else{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 50, "> Show Tutorial Signs: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}else
 			if (global.show_tutorial_signs == true)
-			{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Show Tutorial Signs: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
-			else{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 50, "Show Tutorial Signs: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 50, "Show Tutorial Signs: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			else{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 50, "Show Tutorial Signs: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		
 			if (menu == "players_can_collide"){
 			if (global.players_can_collide == true)
-			{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "> Players can collide with each other: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
-			else{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "> Players can collide with each other: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}
+			{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 110, "> Players can collide with each other: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+			else{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 110, "> Players can collide with each other: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}
 			else
 			if (global.players_can_collide == true)
-			{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Players can collide with each other: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
-			else{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 110, "Players can collide with each other: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 110, "Players can collide with each other: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			else{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 110, "Players can collide with each other: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		
 			if (menu == "assist_settings")
-			{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 140, "> Assist Settings <", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
-			else{scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 140, "Assist Settings", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 140, "> Assist Settings <", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
+			else{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 140, "Assist Settings", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		
 			if (menu == "convention_mode")
 			{
 				if (global.convention_mode == true)
 				{
-					scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "> Convention Mode: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-					scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 170, "> Convention Mode: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
 				}
 				else
 				{
-					scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "> Convention Mode: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-					scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 170, "> Convention Mode: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
 				}
 			}
 			else
 			if (global.convention_mode == true)
 			{
-				scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "Convention Mode: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 170, "Convention Mode: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
 			}
 			else
 			{
-				scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 170, "Convention Mode: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				scr_draw_text_outlined(get_window_width / 2, camera_get_view_height(view_camera[view_current]) / 2 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 170, "Convention Mode: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
 			}
 		}
 		#endregion /* Gameplay Settings END */
@@ -2577,9 +2577,9 @@ function scr_options_menu()
 				draw_set_alpha(0.1);
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(get_window_width / 2, get_window_height / 2 - 100, l10n_text("Are you sure you want to delete file") + " " + string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
-				draw_menu_button(get_window_width / 2 - 370 - 32, get_window_height / 2, l10n_text("Yes"), "file_delete_yes", "file_delete_yes");
-				draw_menu_button(get_window_width / 2 + 32, get_window_height / 2, l10n_text("No"), "file_delete_no", "file_delete");
+				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 100, l10n_text("Are you sure you want to delete file") + " " + string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
+				draw_menu_button(get_window_width * 0.5 - 370 - 32, get_window_height * 0.5, l10n_text("Yes"), "file_delete_yes", "file_delete_yes");
+				draw_menu_button(get_window_width * 0.5 + 32, get_window_height * 0.5, l10n_text("No"), "file_delete_no", "file_delete");
 			
 				if (key_left)
 				and (menu_joystick_delay == 0)
@@ -2661,7 +2661,7 @@ function scr_options_menu()
 			and (key_a_pressed)
 			and (menu_delay == 0)
 			or (menu == "file_delete_yes")
-			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 370 - 32, get_window_height / 2 - 21, get_window_width / 2 - 370 - 32 + 370, get_window_height / 2 + 42))
+			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5 - 21, get_window_width * 0.5 - 370 - 32 + 370, get_window_height * 0.5 + 42))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)

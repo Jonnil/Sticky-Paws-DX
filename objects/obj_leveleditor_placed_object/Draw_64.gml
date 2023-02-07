@@ -13,7 +13,7 @@ if (modify_object_menu == true)
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
-		scr_draw_text_outlined(get_window_width / 2, 64, "Edit NPC", global.default_text_size * 1.5);
+		scr_draw_text_outlined(get_window_width * 0.5, 64, "Edit NPC", global.default_text_size * 1.5);
 	}
 	else
 	{

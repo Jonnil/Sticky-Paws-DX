@@ -207,7 +207,7 @@ or (global.full_level_map_screenshot == true)
 		and (!instance_exists(obj_camera))
 		and (asset_get_type("obj_leveleditor_placed_object") == asset_object)
 		and (!place_meeting(x, y, obj_leveleditor_placed_object))
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height / 2 - 32, get_window_width, get_window_height / 2 + 32))
+		or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32))
 		and (asset_get_type("obj_camera") == asset_object)
 		and (!instance_exists(obj_camera))
 		or (global.full_level_map_screenshot == true)
@@ -786,7 +786,7 @@ if (quit_level_editor <= 0)
 		and (!position_meeting(x, y, obj_water_level_height))
 		and (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
 		and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
-		and (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height / 2 - 32, get_window_width, get_window_height / 2 + 32)) /* Can't place objects when clicking the play button */
+		and (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32)) /* Can't place objects when clicking the play button */
 		{
 			if (show_grid == true)
 			and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up and down buttons when grid is on */

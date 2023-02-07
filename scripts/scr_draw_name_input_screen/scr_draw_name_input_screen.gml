@@ -7,7 +7,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	else
 	{
-		var width = string_width(what_string_to_edit) / 2;
+		var width = string_width(what_string_to_edit) * 0.5;
 	}
 	
 	#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */

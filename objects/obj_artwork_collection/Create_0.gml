@@ -6,7 +6,7 @@ sprite_index = global.resource_pack_sprite_artwork_collection;
 max_artwork = 50; /* The number of artworks corresponds with the total amount of big collectibles in the game */
 can_navigate = false;
 current_comment = "";
-xx = window_get_width() / 2;
+xx = window_get_width() * 0.5;
 yy = y;
 if (global.demo == true)
 {

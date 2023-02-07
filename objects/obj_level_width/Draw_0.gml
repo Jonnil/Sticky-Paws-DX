@@ -1,6 +1,6 @@
 depth = -100;
 
-y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2;
+y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5;
 
 key_a = (gamepad_button_check(0, gp_face1)) or (keyboard_check(global.player1_key_jump));
 key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))

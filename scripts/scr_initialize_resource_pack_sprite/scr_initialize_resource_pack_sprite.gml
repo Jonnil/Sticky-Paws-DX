@@ -80,8 +80,8 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable)
 		and (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
 			sprite_set_offset(sprite_variable,
-			ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2),
-			ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2));
+			ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5),
+			ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5));
 		}
 		else
 		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
@@ -89,11 +89,11 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable)
 		{
 			if (can_save_to_character_config == true)
 			{
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2);
+				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5);
 			}
 			sprite_set_offset(sprite_variable,
-			ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2),
-			sprite_get_height(sprite_variable) / 2);
+			ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5),
+			sprite_get_height(sprite_variable) * 0.5);
 		}
 		else
 		if (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
@@ -101,20 +101,20 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable)
 		{
 			if (can_save_to_character_config == true)
 			{
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2);
+				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5);
 			}
 			sprite_set_offset(sprite_variable,
-			sprite_get_width(sprite_variable) / 2,
-			ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2));
+			sprite_get_width(sprite_variable) * 0.5,
+			ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5));
 		}
 		else
 		{
 			if (can_save_to_character_config == true)
 			{
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2);
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2);
+				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5);
+				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5);
 			}
-			sprite_set_offset(sprite_variable, sprite_get_width(sprite_variable) / 2, sprite_get_height(sprite_variable) / 2);
+			sprite_set_offset(sprite_variable, sprite_get_width(sprite_variable) * 0.5, sprite_get_height(sprite_variable) * 0.5);
 		}
 		#endregion /* x and y origin points END */
 		
@@ -138,28 +138,28 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable)
 			and (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 			{
 				sprite_set_offset(sprite_variable,
-				ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2),
-				ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2));
+				ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5),
+				ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5));
 			}
 			else
 			if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
 			and (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 			{
 				sprite_set_offset(sprite_variable,
-				ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) / 2),
-				sprite_get_height(sprite_variable) / 2);
+				ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5),
+				sprite_get_height(sprite_variable) * 0.5);
 			}
 			else
 			if (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
 			and (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 			{
 				sprite_set_offset(sprite_variable,
-				sprite_get_width(sprite_variable) / 2,
-				ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) / 2));
+				sprite_get_width(sprite_variable) * 0.5,
+				ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5));
 			}
 			else
 			{
-				sprite_set_offset(sprite_variable, sprite_get_width(sprite_variable) / 2, sprite_get_height(sprite_variable) / 2);
+				sprite_set_offset(sprite_variable, sprite_get_width(sprite_variable) * 0.5, sprite_get_height(sprite_variable) * 0.5);
 			}
 			#endregion /* x and y origin points END */
 		

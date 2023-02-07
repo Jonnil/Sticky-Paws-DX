@@ -7,7 +7,7 @@ else
 	image_alpha = 0.5;
 }
 
-x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2;
+x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5;
 
 if (water_level_change_speed == 0)
 {

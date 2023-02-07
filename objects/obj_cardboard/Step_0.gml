@@ -128,7 +128,7 @@ and (instance_exists(obj_player))
 				new_instance.sprite_index = sprite_index;
 				with(new_instance)
 				{
-					motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed / 2);
+					motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
 				}
 			}
 			else
@@ -137,7 +137,7 @@ and (instance_exists(obj_player))
 				new_instance.sprite_index = sprite_index;
 				with(new_instance)
 				{
-					motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed / 2);
+					motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
 				}
 			}
 		}
@@ -191,7 +191,7 @@ and (instance_nearest(x, y, obj_bullet).die = false)
 				new_instance.sprite_index = sprite_index;
 				with(new_instance)
 				{
-					motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed / 2);
+					motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed * 0.5);
 				}
 			}
 			else
@@ -200,7 +200,7 @@ and (instance_nearest(x, y, obj_bullet).die = false)
 				new_instance.sprite_index = sprite_index;
 				with(new_instance)
 				{
-					motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed / 2);
+					motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_bullet).speed * 0.5);
 				}
 			}
 		}

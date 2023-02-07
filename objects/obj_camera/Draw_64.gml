@@ -28,13 +28,13 @@ and (reset_game_if_no_interactivity_second_countdown <= 30)
 	draw_set_valign(fa_middle);
 	if (reset_game_if_no_interactivity_second_countdown >= 2)
 	{
-		scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, l10n_text("Game will restart in") + " " + string(reset_game_if_no_interactivity_second_countdown) + " " + l10n_text("seconds"), global.default_text_size * 2, c_black, c_red, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Game will restart in") + " " + string(reset_game_if_no_interactivity_second_countdown) + " " + l10n_text("seconds"), global.default_text_size * 2, c_black, c_red, 1);
 	}
 	else
 	{
-		scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, l10n_text("Game will restart in") + " " + string(reset_game_if_no_interactivity_second_countdown) + " " + l10n_text("second"), global.default_text_size * 2, c_black, c_red, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Game will restart in") + " " + string(reset_game_if_no_interactivity_second_countdown) + " " + l10n_text("second"), global.default_text_size * 2, c_black, c_red, 1);
 	}
-	scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2 + 42, l10n_text("Start moving to continue playing"), global.default_text_size, c_black, c_red, 1);
+	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Start moving to continue playing"), global.default_text_size, c_black, c_red, 1);
 }
 
 ///HUD
@@ -396,8 +396,8 @@ and (!instance_exists(obj_title))
 					hurry_up_message_timer += 1;
 					draw_set_halign(fa_center);
 					draw_set_valign(fa_middle);
-					scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, l10n_text("HURRY UP!"), global.default_text_size, c_black, c_orange, 1);
-					draw_text_transformed_color(display_get_gui_width() / 2, display_get_gui_height() / 2, l10n_text("HURRY UP!"), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("HURRY UP!"), global.default_text_size, c_black, c_orange, 1);
+					draw_text_transformed_color(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("HURRY UP!"), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 				}
 			}
 			#endregion /* Time is running out message END */
@@ -408,7 +408,7 @@ and (!instance_exists(obj_title))
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(display_get_gui_width() / 2, display_get_gui_height() / 2, l10n_text("TIME OVER"), global.default_text_size * 5, c_black, c_white, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("TIME OVER"), global.default_text_size * 5, c_black, c_white, 1);
 			}
 			#endregion /* Time Over Message END */
 			
@@ -436,7 +436,7 @@ and (!instance_exists(obj_title))
 							draw_text_transformed_color(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 						}
 					}
-					if (global.timeattack_millisecond < room_speed / 2)
+					if (global.timeattack_millisecond < room_speed * 0.5)
 					{
 						timer_blinking_alpha = lerp(timer_blinking_alpha, 1, 0.2);
 					}
@@ -493,16 +493,16 @@ and (global.play_attract_demo = false)
 	draw_set_valign(fa_middle);
 	if (global.arcade_mode == true)
 	{
-		scr_draw_text_outlined(get_window_width / 2, + 32, string(global.game_name) + " " + l10n_text("Demo") + " - " + l10n_text("Arcade mode"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, + 32, string(global.game_name) + " " + l10n_text("Demo") + " - " + l10n_text("Arcade mode"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	if (global.convention_mode == true)
 	{
-		scr_draw_text_outlined(get_window_width / 2, + 32, string(global.game_name) + " " + l10n_text("Demo") + " - " + l10n_text("Convention mode"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, + 32, string(global.game_name) + " " + l10n_text("Demo") + " - " + l10n_text("Convention mode"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	{
-		scr_draw_text_outlined(get_window_width / 2, + 32, string(global.game_name) + " " + l10n_text("Demo"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, + 32, string(global.game_name) + " " + l10n_text("Demo"), global.default_text_size, c_black, c_white, 1);
 	}
 }
 #endregion /* Show if you are playing the demo version or not END */
@@ -515,7 +515,7 @@ and (room == room_title)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(get_window_width / 2, + 32, l10n_text("Convention mode"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(get_window_width * 0.5, + 32, l10n_text("Convention mode"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /* Show if you are playing on convention mode or not END */
 
@@ -527,7 +527,7 @@ and (room == room_title)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(get_window_width / 2, + 32, l10n_text("Arcade mode"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(get_window_width * 0.5, + 32, l10n_text("Arcade mode"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /* Show if you are playing on arcade mode or not END */
 
@@ -771,75 +771,75 @@ and (global.enable_ranks == true)
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(get_window_width / 2 - 128, get_window_height / 2 - 74, l10n_text("Score"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5 - 128, get_window_height * 0.5 - 74, l10n_text("Score"), global.default_text_size, c_black, c_white, 1);
 			draw_set_halign(fa_right);
-			scr_draw_text_outlined(get_window_width / 2 - 32, get_window_height / 2 + 74, l10n_text("S Rank Score") + ": " + string(ini_read_real("rank", "rank_level_score", 0)), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(get_window_width / 2 - 32, get_window_height / 2 + 74 + 32, l10n_text("Your Score") + ": " + string(score), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5 - 32, get_window_height * 0.5 + 74, l10n_text("S Rank Score") + ": " + string(ini_read_real("rank", "rank_level_score", 0)), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5 - 32, get_window_height * 0.5 + 74 + 32, l10n_text("Your Score") + ": " + string(score), global.default_text_size, c_black, c_white, 1);
 			if (score >= ini_read_real("rank", "rank_level_score", 0))
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank S */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank S */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 10000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank A */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank A */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 50000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank B */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank B */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 80000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank C */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank C */
 			}
 			else
 			if (score >= ini_read_real("rank", "rank_level_score", 0) - 100000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank D */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank D */
 			}
 			else
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, get_window_width / 2 - 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank E */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank E */
 			}
 		}
 		if (ini_key_exists("rank", "rank_timeattack_realmillisecond"))
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(get_window_width / 2 + 128, get_window_height / 2 - 74, l10n_text("Time"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5 + 128, get_window_height * 0.5 - 74, l10n_text("Time"), global.default_text_size, c_black, c_white, 1);
 			draw_set_halign(fa_right)
-			scr_draw_text_outlined(get_window_width / 2 + 328, get_window_height / 2 + 74, l10n_text("S Rank Time") + ": " + string(ini_read_real("rank", "rank_timeattack_minute", 0)) + ":" + string(ini_read_real("rank", "rank_timeattack_second", 0)) + "." + string(string_replace_all(string_format(ini_read_real("rank", "rank_timeattack_millisecond", 0), 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(get_window_width / 2 + 328, get_window_height / 2 + 74 + 32, l10n_text("Your Time") + ": " + string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5 + 328, get_window_height * 0.5 + 74, l10n_text("S Rank Time") + ": " + string(ini_read_real("rank", "rank_timeattack_minute", 0)) + ":" + string(ini_read_real("rank", "rank_timeattack_second", 0)) + "." + string(string_replace_all(string_format(ini_read_real("rank", "rank_timeattack_millisecond", 0), 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5 + 328, get_window_height * 0.5 + 74 + 32, l10n_text("Your Time") + ": " + string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
 			
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0))
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank S */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank S */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 1000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank A */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank A */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 5000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank B */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank B */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 8000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank C */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank C */
 			}
 			else
 			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 10000)
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank D */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank D */
 			}
 			else
 			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, get_window_width / 2 + 128, get_window_height / 2, 1, 1, 0, c_white, 1); /* Rank E */
+				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank E */
 			}
 		}
 		ini_close();
@@ -887,7 +887,7 @@ if (global.doing_clear_check == true)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(get_window_width / 2, 32, l10n_text("Clear from the start"), global.default_text_size, c_white, c_black, 1);
+	scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("Clear from the start"), global.default_text_size, c_white, c_black, 1);
 	global.checkpoint_x = 0;
 	global.checkpoint_y = 0;
 	global.checkpoint_millisecond = 0;

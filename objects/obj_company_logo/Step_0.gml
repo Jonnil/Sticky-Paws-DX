@@ -14,7 +14,7 @@ if (goto_title_screen == true)
 		if (file_exists("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, christmas_logo_index))))
 		{
 			global.title_logo_index = sprite_add("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, christmas_logo_index)), 1, false, false, 0, 0);
-			sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) / 2, sprite_get_height(global.title_logo_index) / 2);
+			sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) * 0.5, sprite_get_height(global.title_logo_index) * 0.5);
 		}
 	}
 	if (asset_get_type("room_title") == asset_room) /* Only go to room_title if that room exists */
@@ -108,7 +108,7 @@ if (can_navigate = false)
 {
 	file_load_timer += 1;
 	
-	if (can_load_official_and_custom_resources == true)
+	if (global.can_load_official_and_custom_resources == true)
 	{
 		
 		#region /* Load Characters */
@@ -378,13 +378,13 @@ if (can_navigate = false)
 				if (file_exists("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
 				{
 					global.title_logo_index = sprite_add("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo)), 1, false, false, 0, 0);
-					sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) / 2, sprite_get_height(global.title_logo_index) / 2);
+					sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) * 0.5, sprite_get_height(global.title_logo_index) * 0.5);
 				}
 				else
 				if (file_exists(working_directory + "/custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
 				{
 					global.title_logo_index = sprite_add(working_directory + "/custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo)), 1, false, false, 0, 0);
-					sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) / 2, sprite_get_height(global.title_logo_index) / 2);
+					sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) * 0.5, sprite_get_height(global.title_logo_index) * 0.5);
 				}
 				else
 				{

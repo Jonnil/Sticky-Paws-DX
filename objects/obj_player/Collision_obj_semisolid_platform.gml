@@ -78,7 +78,7 @@ and (stick_to_wall == false)
 		vspeed = 0;
 		gravity = 0;
 		last_standing_x = x;
-		last_standing_y = y + sprite_height / 2;
+		last_standing_y = y + sprite_height * 0.5;
 		can_ground_pound = true;
 		can_dive = true;
 		spring = false;

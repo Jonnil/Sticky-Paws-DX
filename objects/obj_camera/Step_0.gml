@@ -919,7 +919,7 @@ if (save_level_as_png = false)
 			{
 				yy = player1.y
 			}
-			if (player1.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2)
+			if (player1.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 			{
 				yy = player1.y;
 			}
@@ -934,7 +934,7 @@ if (save_level_as_png = false)
 			{
 				if (asset_get_type("obj_camera") == asset_object)
 				{
-					if (player1.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2)
+					if (player1.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 					{
 						yy = player1.y;
 					}
@@ -975,7 +975,7 @@ if (save_level_as_png = false)
 			{
 				yy = player2.y
 			}
-			if (player2.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2)
+			if (player2.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 			{
 				yy = player2.y;
 			}
@@ -990,7 +990,7 @@ if (save_level_as_png = false)
 			{
 				if (asset_get_type("obj_camera") == asset_object)
 				{
-					if (player2.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2)
+					if (player2.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 					{
 						yy = player2.y;
 					}
@@ -1031,7 +1031,7 @@ if (save_level_as_png = false)
 			{
 				yy = player3.y
 			}
-			if (player3.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2)
+			if (player3.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 			{
 				yy = player3.y;
 			}
@@ -1046,7 +1046,7 @@ if (save_level_as_png = false)
 			{
 				if (asset_get_type("obj_camera") == asset_object)
 				{
-					if (player3.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2)
+					if (player3.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 					{
 						yy = player3.y;
 					}
@@ -1087,7 +1087,7 @@ if (save_level_as_png = false)
 			{
 				yy = player4.y
 			}
-			if (player4.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2)
+			if (player4.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 			{
 				yy = player4.y;
 			}
@@ -1102,7 +1102,7 @@ if (save_level_as_png = false)
 			{
 				if (asset_get_type("obj_camera") == asset_object)
 				{
-					if (player4.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2)
+					if (player4.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 					{
 						yy = player4.y;
 					}
@@ -1130,11 +1130,11 @@ if (save_level_as_png = false)
 		and (fps >= global.max_fps)
 		or (instance_nearest(x, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
 		and (fps >= global.max_fps)
-		or (instance_nearest(0, room_height / 2, obj_player).x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 - 320)
-		and (instance_nearest(room_width, room_height / 2, obj_player).x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) / 2 + 320)
+		or (instance_nearest(0, room_height * 0.5, obj_player).x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 - 320)
+		and (instance_nearest(room_width, room_height * 0.5, obj_player).x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + 320)
 		and (fps >= global.max_fps)
-		or (instance_nearest(room_width / 2, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 - 320)
-		and (instance_nearest(room_width / 2, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) / 2 + 320)
+		or (instance_nearest(room_width * 0.5, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 - 320)
+		and (instance_nearest(room_width * 0.5, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 + 320)
 		and (fps >= global.max_fps)
 		{
 			if (camera_get_view_height(view_camera[view_current]) < room_height)

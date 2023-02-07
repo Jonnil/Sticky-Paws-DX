@@ -8,6 +8,7 @@ function scr_debug_screen()
 	var fps_y = 64;
 	var fps_real_y = 96;
 	var instance_count_y = 128;
+	var all_instance_count_y = 160;
 	
 	var fps_real_target = 250; /* fps real should be above 250 on most devices */
 	var instance_count_target = 200;
@@ -96,6 +97,27 @@ function scr_debug_screen()
 		}
 		#endregion /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen END */
 		
+		#region /* Click on All Instance Count to toggle if it should stay on screen even after you close debug screen */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, all_instance_count_y - 15, 370, all_instance_count_y + 15))
+		and (global.controls_used_for_menu_navigation == "mouse")
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(0, all_instance_count_y - 16, 370, all_instance_count_y + 16, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
+			if (mouse_check_button_pressed(mb_left))
+			{
+				if (global.show_all_instance_count == true)
+				{
+					global.show_all_instance_count = false;
+				}
+				else
+				{
+					global.show_all_instance_count = true;
+				}
+			}
+		}
+		#endregion /* Click on All Instance Count to toggle if it should stay on screen even after you close debug screen END */
+		
 	}
 	
 	if (global.debug_screen == true)
@@ -104,11 +126,11 @@ function scr_debug_screen()
 		draw_set_valign(fa_middle);
 		if (global.controls_used_for_menu_navigation == "controller")
 		{
-			scr_draw_text_outlined(display_get_gui_width() / 2, 32, l10n_text("Press both sticks to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press both sticks to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(display_get_gui_width() / 2, 32, l10n_text("Press F3 to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press F3 to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
 		}
 	}
 	
@@ -192,6 +214,17 @@ function scr_debug_screen()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(32, instance_count_y, l10n_text("Instance Count") + " : " + string(instance_count), global.default_text_size, c_black, c_white, 1);
+	}
+	#endregion /* Instance Count END */
+	
+	#region /* All Instance Count */
+	if (global.show_all_instance_count == true)
+	{
+		if (global.show_all_instance_count == true)
+		and (global.debug_screen == true)
+		{
+			draw_sprite_ext(spr_lock_icon, 0, 16, all_instance_count_y, 1, 1, 0, c_white, 1);
+		}
 		
 		#region /* Show what objects are currently in the room */
 		for (var i = 0; i < 100; ++i;)
@@ -199,18 +232,18 @@ function scr_debug_screen()
 			if (instance_exists(i))
 			and (instance_number(i) >= instance_count_target)
 			{
-				scr_draw_text_outlined(32, instance_count_y + 32 + (8 * i) + scr_wave(-3, +3, 0.5), string(object_get_name(i)) + ": " + string(instance_number(i)), global.default_text_size, c_black, make_color_hsv(instance_number(i), 255, 255), 1);
+				scr_draw_text_outlined(32, all_instance_count_y + (8 * i) + scr_wave(-3, +3, 0.5), string(object_get_name(i)) + ": " + string(instance_number(i)), global.default_text_size, c_black, make_color_hsv(instance_number(i), 255, 255), 1);
 			}
 			else
 			if (instance_exists(i))
 			{
-				scr_draw_text_outlined(32, instance_count_y + 32 + (8 * i), string(object_get_name(i)) + ": " + string(instance_number(i)), global.default_text_size, c_black, make_color_hsv(instance_number(i), 255, 255), 1);
+				scr_draw_text_outlined(32, all_instance_count_y + (8 * i), string(object_get_name(i)) + ": " + string(instance_number(i)), global.default_text_size, c_black, make_color_hsv(instance_number(i), 255, 255), 1);
 			}
 		}
 		#endregion /* Show what objects are currently in the room END */
 		
 	}
-	#endregion /* Instance Count END */
+	#endregion /* All Instance Count END */
 	
 	if (global.debug_screen == true)
 	and (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 32))

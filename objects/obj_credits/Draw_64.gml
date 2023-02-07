@@ -70,12 +70,12 @@ if (skip > 0)
 if (sprite_index == global.title_logo_index)
 and (global.title_logo_index >= 0)
 {
-	draw_sprite_ext(sprite_index, image_index, display_get_gui_width() / 2, y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, display_get_gui_width() * 0.5, y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, image_alpha);
 }
 else
 if (sprite_index > 0)
 {
-	draw_sprite_ext(sprite_index, image_index, get_window_width / 2, y, 1, 1, 0, c_white, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, get_window_width * 0.5, y, 1, 1, 0, c_white, image_alpha);
 }
 
 if (keyboard_check(vk_escape))
@@ -154,7 +154,7 @@ else
 if (time >= room_speed* 1- 10)
 if (time <= room_speed* 1 + 10)
 {
-	yy = get_window_height / 2;
+	yy = get_window_height * 0.5;
 	alpha = 1;
 }
 if (time >= room_speed* 4 - 10)
@@ -240,12 +240,12 @@ if (global.enable_transitions == true)
 	{
 		if (asset_get_type("spr_iris") == asset_sprite)
 		{
-			draw_sprite_ext(spr_iris, 0, get_window_width / 2, get_window_height / 2, iris_xscale, iris_yscale, 0, c_black, 1);
+			draw_sprite_ext(spr_iris, 0, get_window_width * 0.5, get_window_height * 0.5, iris_xscale, iris_yscale, 0, c_black, 1);
 		}
-		draw_rectangle_color(0, 0, get_window_width * 2, get_window_height / 2 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color(0, 0, get_window_width / 2 - iris_xscale * 128, get_window_height * 2, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color(get_window_width / 2 + iris_xscale * 128 - 1, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
-		draw_rectangle_color(0, get_window_height / 2 + iris_yscale * 128, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, get_window_width * 2, get_window_height * 0.5 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, get_window_width * 0.5 - iris_xscale * 128, get_window_height * 2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(get_window_width * 0.5 + iris_xscale * 128 - 1, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, get_window_height * 0.5 + iris_yscale * 128, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
 	}
 }
 #endregion /* Draw Iris Transitions END */

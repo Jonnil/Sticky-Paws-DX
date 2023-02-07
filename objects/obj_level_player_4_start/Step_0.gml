@@ -117,8 +117,8 @@ or (global.actually_play_edited_level == true)
 {
 	if (global.actually_play_edited_level == true)
 	{
-		view_xview = x - view_wview / 2;
-		view_yview = y - view_hview / 2;
+		view_xview = x - view_wview * 0.5;
+		view_yview = y - view_hview * 0.5;
 		if (asset_get_type("obj_camera") == asset_object)
 		and (!instance_exists(obj_camera))
 		{

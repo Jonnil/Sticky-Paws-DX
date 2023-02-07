@@ -303,9 +303,9 @@ and (obj_camera.iris_xscale < 3)
 			}
 			else
 			{
-				if (x > room_width + sprite_width / 2)
+				if (x > room_width + sprite_width * 0.5)
 				{
-					x = room_width + sprite_width / 2;
+					x = room_width + sprite_width * 0.5;
 					hspeed = 0;
 					vspeed = 0;
 				}
@@ -3849,8 +3849,8 @@ if (on_ground == true)
 				
 			}
 			else
-			if (image_index > image_number/ 2 - 1)
-			and (image_index < image_number/ 2 + 1)
+			if (image_index > image_number* 0.5 - 1)
+			and (image_index < image_number* 0.5 + 1)
 			{
 				
 				#region /* Right Footstep Sounds */

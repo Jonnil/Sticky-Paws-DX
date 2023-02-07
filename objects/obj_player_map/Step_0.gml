@@ -968,6 +968,51 @@ and (show_demo_over_message == false)
 }
 #endregion /* Enter Level END */
 
+#region /* Clear Level in debug */
+if (key_b_pressed)
+{
+	if (global.debug_screen == true)
+	{
+		if (can_move == true)
+		and (can_enter_level >= 30)
+		and (asset_get_type("obj_level") == asset_object)
+		and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+		and (speed == 0)
+		and (instance_nearest(x, y, obj_level).clear_rate = "enter")
+		and (global.pause == false)
+		{
+			with (instance_nearest(x, y, obj_level))
+			{
+				clear_rate = "clear";
+				alarm_set(1, 1)
+			}
+			
+			#region /* Save Player Position */
+			x = instance_nearest(x, y, obj_level).x;
+			y = instance_nearest(x, y, obj_level).y;
+			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+			ini_write_real("Player", "player_x", x);
+			ini_write_real("Player", "player_y", y);
+			ini_write_real("Player", "brand_new_file", false)
+			ini_close();
+			#endregion /* Save Player Position END */
+			
+			if (global.character_select_in_this_menu == "main_game")
+			{
+				var uppercase_level_name;
+				uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
+				uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
+				var level_name = string(uppercase_level_name);
+				
+				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+				ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
+				ini_close();
+			}
+		}
+	}
+}
+#endregion /* Clear Level in debug END */
+
 #region /* Menu cursor image speed */
 menu_cursor_index += 0.3;
 if (menu_cursor_index > 4)
@@ -985,7 +1030,7 @@ if (menu == "purchase_now")
 {
 	if (key_a_pressed)
 	and (menu_delay == 0)
-	or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 185, get_window_height / 2 + 64, get_window_width / 2 - 185 + 370, get_window_height / 2 + 64 + 42))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 64, get_window_width * 0.5 - 185 + 370, get_window_height * 0.5 + 64 + 42))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay == 0)
 	{
@@ -1013,7 +1058,7 @@ if (menu == "continue_playing")
 {
 	if (key_a_pressed)
 	and (menu_delay == 0)
-	or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width / 2 - 185, get_window_height / 2 + 106, get_window_width / 2 - 185 + 370, get_window_height / 2 + 106 + 42))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 106, get_window_width * 0.5 - 185 + 370, get_window_height * 0.5 + 106 + 42))
 	and (mouse_check_button_pressed(mb_left))
 	and (menu_delay == 0)
 	{

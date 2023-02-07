@@ -1,3 +1,5 @@
+#region /* Set Tile and Sprite */
+
 #region /* Set Tile */
 tile = 44;
 if (position_meeting(x, y - look_outward, same_object))
@@ -211,7 +213,7 @@ image_index = tile; /* Set image index to be the tile variable after all "set ti
 #endregion /* Set Tile END */
 
 #region /* Set Sprite */
-if (global.custom_tileset >= 0)
+if (global.custom_tileset > 0)
 {
 	sprite_index = global.custom_tileset;
 }
@@ -266,3 +268,5 @@ and (ground_surface == 7)
 	sprite_index = global.resource_pack_sprite_tileset_wood;
 }
 #endregion /* Set Sprite END */
+
+#endregion /* Set Tile and Sprite END */

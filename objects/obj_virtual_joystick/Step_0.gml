@@ -37,7 +37,7 @@ if (instance_exists(obj_finger_indicator))
 }
 
 base_size = 150 * (camera_get_view_width(view_camera[view_current]) / global.default_view_width);
-stick_size = base_size / 2;
+stick_size = base_size * 0.5;
 
 x = camera_get_view_x(view_camera[view_current]) + (base_size * 2);
 y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - (base_size * 2);

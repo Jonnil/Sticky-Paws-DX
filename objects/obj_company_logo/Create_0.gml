@@ -30,26 +30,25 @@ leveleditor_readme = noone; /* Readme textfile for how to use the level editor *
 
 #region /* Debug toggles */
 /* There are more debug toggles in different objects, so click ctrl + shift + F and search "Debug toggles" to find the other debug toggles */
-can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
+global.can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
 global.debug_screen = false;
 global.deactivate_objects_outside_view = true; /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
 global.show_fps = false; /* Show fps for optimization debug */
 global.show_fps_real = false; /* Show fps real for optimization debug */
 global.show_instance_count = false; /* Show instance count for optimization debug */
+global.show_all_instance_count = false; /* Show all the different instances within a room and how many there are for optimization debug */
 global.enable_transitions = true; /* During transitions when going from one room to another, the game could crash, and you can't see what's going on when the transition animation is playing and making the screen black, so turn off this for debug */
 global.enable_background_layer1 = true;
 global.enable_background_layer2 = true;
 global.enable_background_layer3 = true;
 global.enable_background_layer4 = true;
-global.enable_foreground_layer1 = false;
-global.enable_foreground_layer_above_static_objects = false;
-global.enable_foreground_layer2 = false;
-global.enable_foreground_layer_secret = false;
+global.enable_foreground_layer1 = true;
+global.enable_foreground_layer_above_static_objects = true;
+global.enable_foreground_layer2 = true;
+global.enable_foreground_layer_secret = true;
 #endregion /* Debug toggles END */
 
 #region /* Change how menus look and function */
-
-#region /* What settings tabs to show up */
 global.skip_how_many_people_are_playing_screen = true; /* If the game should skip the "How many people are playing?" screen */
 global.show_language_shortcut = false; /* If a shortcut for the language options should appear in the main menu to the left of the settings menu */
 global.show_accessibility_shortcut = false; /* If a shortcut for the accessibility options should appear in the main menu to the right of the settings menu */
@@ -67,9 +66,25 @@ global.enable_add_ons_settings = false; /* Enable Add-ons settings */
 global.enable_ranks = false; /* Enable the option to show ranks in the game */
 global.enable_difficulty_selection_settings = true; /* Enable the option to change difficulty in the game */
 
+#region /* If you're playing on mobile, then some things should show up that is not on PC */
+if (os_type == os_android)
+or (os_type == os_ios)
+{
+	global.show_virtual_controls = true; /* Show virtual controls on desktop or not, false by default */
+}
+else
+{
+	global.show_virtual_controls = false; /* Show virtual controls on desktop or not, false by default */
+}
+#endregion /* If you're playing on mobile, then some things should show up that is not on PC END */
+
 #region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)
 {
+	global.chosen_controller_used = 2; /* What controller buttons to use for button prompts */
+	/* 0 = xboxone, 1 = xboxseriesxs, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5 */
+	global.show_prompt_when_changing_to_gamepad = false;
+	global.show_prompt_when_changing_to_keyboard_and_mouse = false;	
 	global.enable_open_custom_folder = false; /* Enable the option to open custom folders in the game */
 	global.enable_copy_characters = false; /* Enable the option to copy characters in the game */
 	global.enable_options_for_pc = false; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
@@ -77,14 +92,16 @@ if (os_type == os_switch)
 }
 else
 {
+	global.chosen_controller_used = 0; /* What controller buttons to use for button prompts */
+	/* 0 = xboxone, 1 = xboxseriesxs, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5 */
+	global.show_prompt_when_changing_to_gamepad = true;
+	global.show_prompt_when_changing_to_keyboard_and_mouse = true;
 	global.enable_open_custom_folder = true; /* Enable the option to open custom folders in the game */
 	global.enable_copy_characters = true; /* Enable the option to copy characters in the game */
 	global.enable_options_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
 	global.enable_keyboard_and_mouse_settings = true; /* Enable Keyboard and Mouse settings */
 }
 #endregion /* If you're playing on console, then some things should not show up that is for PC END */
-
-#endregion /* What settings tabs to show up END */
 
 #region /* What settings can be changed */
 global.enable_verbosity_slider = false;
@@ -271,8 +288,6 @@ switch (os_get_language())
 }
 #endregion /* Select title logo depending on what language the OS is set to END */
 
-global.show_virtual_controls = false; /* Show virtual controls on desktop or not, false by default */
-
 global.default_zoom_level = 1; /* if reset_level_zoom_when_going_back_to_map = true, then set zoom to this number */
 global.default_zoom_world_map = 1; /* if reset_world_map_zoom_when_going_back_to_map = true, then set zoom to this number */
 
@@ -393,9 +408,6 @@ global.player2_down_and_jump_to_groundpound = false;
 global.player3_down_and_jump_to_groundpound = false;
 global.player4_down_and_jump_to_groundpound = false;
 
-global.show_prompt_when_changing_to_gamepad = true;
-global.show_prompt_when_changing_to_keyboard_and_mouse = true;
-
 global.fullscreen_key = vk_f11;
 
 global.level_name = ""; /* In the level editor, the name of the currently selected level will be stored here */
@@ -487,9 +499,6 @@ global.resource_pack_sprite_buttons_nintendoswitch = spr_noone;
 global.resource_pack_sprite_buttons_playstation4 = spr_noone;
 global.resource_pack_sprite_buttons_playstation5 = spr_noone;
 #endregion /* Resource Packs END */
-
-global.chosen_controller_used = 0; /* What controller buttons to use for button prompts */
-/* 0 = xboxone, 1 = xboxseriesxs, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5 */
 
 global.always_show_gamepad_buttons = false; /* You can force to show gamepad buttons, even if playing with keyboard, mouse or touch controls. Default = false */
 

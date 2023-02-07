@@ -16,11 +16,5 @@ ground_surface = 0;
 7 = wood */
 
 image_speed = 0;
-
-//if (y <= 0)
-//and (!instance_place(x, y - 1, obj_ground))
-//{
-//	instance_create_depth(x, y - 32, 0, obj_wall);
-//}
-
+mask_index = spr_wall;
 alarm_set(0, 1);
