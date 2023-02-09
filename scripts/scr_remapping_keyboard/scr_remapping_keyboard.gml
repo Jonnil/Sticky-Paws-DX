@@ -173,6 +173,22 @@ function scr_remapping_keyboard()
 				ini_write_real("config", "player1_key_zoom_out", global.player1_key_zoom_out);
 				ini_close();
 			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player1_key_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_key_accept", global.player1_key_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player1_key_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_key_back", global.player1_key_back);
+				ini_close();
+			}
 			can_remap_key = false;
 			input_key = false;
 			menu_delay = 10;
@@ -281,6 +297,22 @@ function scr_remapping_keyboard()
 				global.player1_key2_zoom_out = last_key;
 				ini_open(working_directory + "config.ini");
 				ini_write_real("config", "player1_key2_zoom_out", global.player1_key2_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player1_key2_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_key2_accept", global.player1_key2_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player1_key2_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_key2_back", global.player1_key2_back);
 				ini_close();
 			}
 			can_remap_key = false;
@@ -401,6 +433,22 @@ function scr_remapping_keyboard()
 				ini_write_real("config", "player2_key_zoom_out", global.player2_key_zoom_out);
 				ini_close();
 			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player2_key_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_key_accept", global.player2_key_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player2_key_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_key_back", global.player2_key_back);
+				ini_close();
+			}
 			can_remap_key = false;
 			input_key = false;
 			menu_delay = 10;
@@ -509,6 +557,22 @@ function scr_remapping_keyboard()
 				global.player2_key2_zoom_out = last_key;
 				ini_open(working_directory + "config.ini");
 				ini_write_real("config", "player2_key2_zoom_out", global.player2_key2_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player2_key2_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_key2_accept", global.player2_key2_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player2_key2_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_key2_back", global.player2_key2_back);
 				ini_close();
 			}
 			can_remap_key = false;
@@ -629,6 +693,22 @@ function scr_remapping_keyboard()
 				ini_write_real("config", "player3_key_zoom_out", global.player3_key_zoom_out);
 				ini_close();
 			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player3_key_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_key_accept", global.player3_key_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player3_key_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_key_back", global.player3_key_back);
+				ini_close();
+			}
 			can_remap_key = false;
 			input_key = false;
 			menu_delay = 10;
@@ -737,6 +817,22 @@ function scr_remapping_keyboard()
 				global.player3_key2_zoom_out = last_key;
 				ini_open(working_directory + "config.ini");
 				ini_write_real("config", "player3_key2_zoom_out", global.player3_key2_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player3_key2_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_key2_accept", global.player3_key2_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player3_key2_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_key2_back", global.player3_key2_back);
 				ini_close();
 			}
 			can_remap_key = false;
@@ -857,6 +953,22 @@ function scr_remapping_keyboard()
 				ini_write_real("config", "player4_key_zoom_out", global.player4_key_zoom_out);
 				ini_close();
 			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player4_key_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_key_accept", global.player4_key_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player4_key_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_key_back", global.player4_key_back);
+				ini_close();
+			}
 			can_remap_key = false;
 			input_key = false;
 			menu_delay = 10;
@@ -965,6 +1077,22 @@ function scr_remapping_keyboard()
 				global.player4_key2_zoom_out = last_key;
 				ini_open(working_directory + "config.ini");
 				ini_write_real("config", "player4_key2_zoom_out", global.player4_key2_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player4_key2_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_key2_accept", global.player4_key2_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player4_key2_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_key2_back", global.player4_key2_back);
 				ini_close();
 			}
 			can_remap_key = false;

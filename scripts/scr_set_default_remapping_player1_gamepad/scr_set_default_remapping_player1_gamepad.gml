@@ -1,7 +1,7 @@
 function scr_set_default_remapping_player1_gamepad()
 {
 	
-	#region /* Player 1 Keyboard Remapping */
+	#region /* Player 1 Gamepad Remapping */
 	
 	#region /* Player 1 Gamepad Buttons 1 defaults */
 	global.player1_gamepad_button_dive = gp_face3;
@@ -17,6 +17,16 @@ function scr_set_default_remapping_player1_gamepad()
 	global.player1_gamepad_button_tongue = noone;
 	global.player1_gamepad_button_zoom_in = noone;
 	global.player1_gamepad_button_zoom_out = noone;
+	if (os_type == os_switch)
+	{
+		global.player1_gamepad_button_accept = gp_face2;
+		global.player1_gamepad_button_back = gp_face1;
+	}
+	else
+	{
+		global.player1_gamepad_button_accept = gp_face1;
+		global.player1_gamepad_button_back = gp_face2;
+	}
 	#endregion /* Player 1 Gamepad Buttons 1 defaults END */
 	
 	#region /* Player 1 Gamepad Buttons 2 defaults */
@@ -33,6 +43,8 @@ function scr_set_default_remapping_player1_gamepad()
 	global.player1_gamepad_button2_tongue = noone;
 	global.player1_gamepad_button2_zoom_in = noone;
 	global.player1_gamepad_button2_zoom_out = noone;
+	global.player1_gamepad_button2_accept = noone;
+	global.player1_gamepad_button2_back = noone;
 	#endregion /* Player 1 Gamepad Buttons 2 defaults END */
 	
 	global.player1_up_key_is_jump_key = false;
@@ -45,6 +57,6 @@ function scr_set_default_remapping_player1_gamepad()
 	global.player1_wall_jump_setting = 1;
 	global.player1_drop_from_rope = 1;
 	global.player1_show_controls = 1;
-	#endregion /* Player 1 Keyboard Remapping END */
+	#endregion /* Player 1 Gamepad Remapping END */
 	
 }

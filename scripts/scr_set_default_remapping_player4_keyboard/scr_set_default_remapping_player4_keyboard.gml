@@ -17,6 +17,8 @@ function scr_set_default_remapping_player4_keyboard()
 	global.player4_key_tongue = noone;
 	global.player4_key_zoom_in = noone;
 	global.player4_key_zoom_out = noone;
+	global.player4_key_accept = noone;
+	global.player4_key_back = noone;
 	#endregion /* Player 4 Key 1 defaults END */
 	
 	#region /* Player 4 Key 2 defaults */
@@ -33,6 +35,8 @@ function scr_set_default_remapping_player4_keyboard()
 	global.player4_key2_tongue = noone;
 	global.player4_key2_zoom_in = noone;
 	global.player4_key2_zoom_out = noone;
+	global.player4_key2_accept = noone;
+	global.player4_key2_back = noone;
 	#endregion /* Player 4 Key 2 defaults END */
 	
 	global.player4_up_key_is_jump_key = false;

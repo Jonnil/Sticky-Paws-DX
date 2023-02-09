@@ -55,12 +55,14 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		var player_key_down = global.player1_key_down;
 		var player_key2_up = global.player1_key2_up;
 		var player_key2_down = global.player1_key2_down;
-		var player_key_dive = global.player1_key_dive;
-		var player_key2_dive = global.player1_key2_dive;
-		var player_key_sprint = global.player1_key_sprint;
-		var player_key2_sprint = global.player1_key2_sprint;
-		var player_key_jump = global.player1_key_jump;
-		var player_key2_jump = global.player1_key2_jump;
+		var player_key_back = global.player1_key_back;
+		var player_key2_back = global.player1_key2_back;
+		var player_key_accept = global.player1_key_accept;
+		var player_key2_accept = global.player1_key2_accept;
+		var player_gamepad_button_back = global.player1_gamepad_button_back;
+		var player_gamepad_button2_back = global.player1_gamepad_button2_back;
+		var player_gamepad_button_accept = global.player1_gamepad_button_accept;
+		var player_gamepad_button2_accept = global.player1_gamepad_button2_accept;
 		var menu_joystick_delay = menu_joystick1_delay;
 		var can_input_player_name = can_input_player1_name;
 		var player_name = global.player1_name;
@@ -89,12 +91,14 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		var player_key_down = global.player2_key_down;
 		var player_key2_up = global.player2_key2_up;
 		var player_key2_down = global.player2_key2_down;
-		var player_key_dive = global.player2_key_dive;
-		var player_key2_dive = global.player2_key2_dive;
-		var player_key_sprint = global.player2_key_sprint;
-		var player_key2_sprint = global.player2_key2_sprint;
-		var player_key_jump = global.player2_key_jump;
-		var player_key2_jump = global.player2_key2_jump;
+		var player_key_back = global.player2_key_back;
+		var player_key2_back = global.player2_key2_back;
+		var player_key_accept = global.player2_key_accept;
+		var player_key2_accept = global.player2_key2_accept;
+		var player_gamepad_button_back = global.player2_gamepad_button_back;
+		var player_gamepad_button2_back = global.player2_gamepad_button2_back;
+		var player_gamepad_button_accept = global.player2_gamepad_button_accept;
+		var player_gamepad_button2_accept = global.player2_gamepad_button2_accept;
 		var menu_joystick_delay = menu_joystick2_delay;
 		var can_input_player_name = can_input_player2_name;
 		var player_name = global.player2_name;
@@ -123,12 +127,14 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		var player_key_down = global.player3_key_down;
 		var player_key2_up = global.player3_key2_up;
 		var player_key2_down = global.player3_key2_down;
-		var player_key_dive = global.player3_key_dive;
-		var player_key2_dive = global.player3_key2_dive;
-		var player_key_sprint = global.player3_key_sprint;
-		var player_key2_sprint = global.player3_key2_sprint;
-		var player_key_jump = global.player3_key_jump;
-		var player_key2_jump = global.player3_key2_jump;
+		var player_key_back = global.player3_key_back;
+		var player_key2_back = global.player3_key2_back;
+		var player_key_accept = global.player3_key_accept;
+		var player_key2_accept = global.player3_key2_accept;
+		var player_gamepad_button_back = global.player3_gamepad_button_back;
+		var player_gamepad_button2_back = global.player3_gamepad_button2_back;
+		var player_gamepad_button_accept = global.player3_gamepad_button_accept;
+		var player_gamepad_button2_accept = global.player3_gamepad_button2_accept;
 		var menu_joystick_delay = menu_joystick3_delay;
 		var can_input_player_name = can_input_player3_name;
 		var player_name = global.player3_name;
@@ -157,12 +163,14 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		var player_key_down = global.player4_key_down;
 		var player_key2_up = global.player4_key2_up;
 		var player_key2_down = global.player4_key2_down;
-		var player_key_dive = global.player4_key_dive;
-		var player_key2_dive = global.player4_key2_dive;
-		var player_key_sprint = global.player4_key_sprint;
-		var player_key2_sprint = global.player4_key2_sprint;
-		var player_key_jump = global.player4_key_jump;
-		var player_key2_jump = global.player4_key2_jump;
+		var player_key_back = global.player4_key_back;
+		var player_key2_back = global.player4_key2_back;
+		var player_key_accept = global.player4_key_accept;
+		var player_key2_accept = global.player4_key2_accept;
+		var player_gamepad_button_back = global.player4_gamepad_button_back;
+		var player_gamepad_button2_back = global.player4_gamepad_button2_back;
+		var player_gamepad_button_accept = global.player4_gamepad_button_accept;
+		var player_gamepad_button2_accept = global.player4_gamepad_button2_accept;
 		var menu_joystick_delay = menu_joystick4_delay;
 		var can_input_player_name = can_input_player4_name;
 		var player_name = global.player4_name;
@@ -916,7 +924,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 	{
 		if (player1_accept_selection == false)
 		{
-			if (gamepad_button_check_pressed(0, gp_face2))
+			if (gamepad_button_check_pressed(0, player_gamepad_button_back))
 			and (menu_delay == 0)
 			or (keyboard_check_pressed(ord("X")))
 			and (menu_delay == 0)
@@ -924,13 +932,11 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 			and (menu_delay == 0)
 			or (mouse_check_button_pressed(mb_side1))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(vk_backspace))
-			and (menu_delay == 0)
 			or (keyboard_check_pressed(vk_escape))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(player_key_dive))
+			or (keyboard_check_pressed(global.player1_key_back))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(player_key2_dive))
+			or (keyboard_check_pressed(global.player1_key2_back))
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -939,11 +945,11 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		}
 		if (player2_accept_selection = false)
 		{
-			if (gamepad_button_check_pressed(1, gp_face2))
+			if (gamepad_button_check_pressed(1, player_gamepad_button_back))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player2_key_dive))
+			or (keyboard_check_pressed(global.player2_key_back))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player2_key2_dive))
+			or (keyboard_check_pressed(global.player2_key2_back))
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -952,11 +958,11 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		}
 		if (player3_accept_selection = false)
 		{
-			if (gamepad_button_check_pressed(2, gp_face2))
+			if (gamepad_button_check_pressed(2, player_gamepad_button_back))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player3_key_dive))
+			or (keyboard_check_pressed(global.player3_key_back))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player3_key2_dive))
+			or (keyboard_check_pressed(global.player3_key2_back))
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -965,11 +971,11 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		}
 		if (player4_accept_selection = false)
 		{
-			if (gamepad_button_check_pressed(3, gp_face2))
+			if (gamepad_button_check_pressed(3, player_gamepad_button_back))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player4_key_dive))
+			or (keyboard_check_pressed(global.player4_key_back))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player4_key2_dive))
+			or (keyboard_check_pressed(global.player4_key2_back))
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -1247,20 +1253,20 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			{
-				scr_draw_gamepad_buttons(gp_face1, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, c_white, 1);
+				scr_draw_gamepad_buttons(player_gamepad_button_accept, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, c_white, 1);
 			}
 			else
 			{
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					if (player_key_jump > noone)
+					if (player_key_accept > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys, player_key_jump, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys, player_key_accept, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (player_key2_jump > noone)
+					if (player_key2_accept > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys, player_key2_jump, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys, player_key2_accept, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
@@ -1313,30 +1319,20 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			{
-				scr_draw_gamepad_buttons(gp_face2, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, c_white, 1);
+				scr_draw_gamepad_buttons(player_gamepad_button_back, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, c_white, 1);
 			}
 			else
 			{
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					if (player_key_dive > noone)
+					if (player_key_back > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys, player_key_dive, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys, player_key_back, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (player_key2_dive > noone)
+					if (player_key2_back > noone)
 					{
-						draw_sprite_ext(spr_keyboard_keys, player_key2_dive, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (player_key_sprint > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, player_key_sprint, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (player_key2_sprint > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, player_key2_sprint, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, 0.5, 0, c_white, 1);
+						draw_sprite_ext(spr_keyboard_keys, player_key2_back, get_window_width * 0.5 + player_display_x + 80, get_window_height * 0.5 + 150, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
 					{
@@ -1367,20 +1363,20 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		if (gamepad_is_connected(what_player - 1))
 		and (global.controls_used_for_menu_navigation == "controller")
 		{
-			scr_draw_gamepad_buttons(gp_face1, get_window_width * 0.5 + player_display_x + 70, get_window_height * 0.5 + name_y + 42, 0.5, c_white, 1);
+			scr_draw_gamepad_buttons(player_gamepad_button_accept, get_window_width * 0.5 + player_display_x + 70, get_window_height * 0.5 + name_y + 42, 0.5, c_white, 1);
 		}
 		else
 		{
 			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
-				if (player_key_jump > noone)
+				if (player_key_accept > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, player_key_jump, get_window_width * 0.5 + player_display_x + 70, get_window_height * 0.5 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, player_key_accept, get_window_width * 0.5 + player_display_x + 70, get_window_height * 0.5 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
-				if (player_key2_jump > noone)
+				if (player_key2_accept > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, player_key2_jump, get_window_width * 0.5 + player_display_x + 70, get_window_height * 0.5 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, player_key2_accept, get_window_width * 0.5 + player_display_x + 70, get_window_height * 0.5 + name_y + 42, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
 				{
