@@ -10,7 +10,14 @@ function scr_debug_screen()
 	var instance_count_y = 128;
 	var all_instance_count_y = 160;
 	
-	var fps_real_target = 250; /* fps real should be above 250 on most devices */
+	if (os_type = os_switch) /* On Switch, it's much weaker than a PC or even mobile phone */
+	{
+		var fps_real_target = 60; /* fps real should be above 60 */
+	}
+	else
+	{
+		var fps_real_target = 250; /* fps real should be above 250 on most devices */
+	}
 	var instance_count_target = 200;
 	
 	if (keyboard_check_pressed(vk_f3))

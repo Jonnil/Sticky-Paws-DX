@@ -1,35 +1,5 @@
-if (asset_get_type("obj_player") == asset_object)
-and (place_meeting(x, y - 1, obj_player))
-{
-	draw_xscale = lerp(draw_xscale, 1.1, 0.3);
-	draw_yscale = lerp(draw_yscale, 0.9, 0.3);
-}
-else
-{
-	draw_xscale = lerp(draw_xscale, 1, 0.3);
-	draw_yscale = lerp(draw_yscale, 1, 0.3);
-}
-
-#region /* No collision underneath */
-if (length == 1)
-and (!position_meeting(x, bbox_bottom + 3, obj_wall))
-and (!position_meeting(x, bbox_bottom + 3, obj_semisolid_platform))
-and (asset_get_type("obj_camera") == asset_object)
-and (instance_exists(obj_camera))
-and (x < obj_camera.view_x_center + 980 - sprite_width)
-and (x > obj_camera.view_x_center - 980)
-and (y < obj_camera.view_y_center + 980)
-and (y > obj_camera.view_y_center - 980)
-
-or (length >= 2)
-and (!place_meeting(x, y + 3, obj_wall))
-and (!place_meeting(x, y + 3, obj_semisolid_platform))
-and (asset_get_type("obj_camera") == asset_object)
-and (instance_exists(obj_camera))
-and (x < obj_camera.view_x_center + 980 - sprite_width)
-and (x > obj_camera.view_x_center - 980)
-and (y < obj_camera.view_y_center + 980)
-and (y > obj_camera.view_y_center - 980)
+if (asset_get_type("obj_block_break") == asset_object)
+and (place_meeting(x, y, obj_block_break))
 {
 	if (asset_get_type("obj_block_break") == asset_object)
 	{
@@ -37,7 +7,7 @@ and (y > obj_camera.view_y_center - 980)
 	}
 	if (asset_get_type("obj_cardboard") == asset_object)
 	{
-		if (instance_nearest(x, y, obj_player).x < x)
+		if (other.x < x)
 		{
 			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
 			new_instance.sprite_index = sprite_index;
@@ -83,4 +53,3 @@ and (y > obj_camera.view_y_center - 980)
 	}
 	instance_destroy();
 }
-#endregion /* No collision underneath END */

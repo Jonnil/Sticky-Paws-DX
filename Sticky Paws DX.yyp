@@ -3330,6 +3330,7 @@
     {"id":{"name":"spr_small_mask","path":"sprites/spr_small_mask/spr_small_mask.yy",},"order":84,},
     {"id":{"name":"obj_cloud_block","path":"objects/obj_cloud_block/obj_cloud_block.yy",},"order":8,},
     {"id":{"name":"spr_leveleditor_icon_fill","path":"sprites/spr_leveleditor_icon_fill/spr_leveleditor_icon_fill.yy",},"order":12,},
+    {"id":{"name":"scr_different_items_inside","path":"scripts/scr_different_items_inside/scr_different_items_inside.yy",},"order":0,},
     {"id":{"name":"spr_hard_block_2x2","path":"sprites/spr_hard_block_2x2/spr_hard_block_2x2.yy",},"order":52,},
     {"id":{"name":"scr_menu_navigation_with_joystick_delay","path":"scripts/scr_menu_navigation_with_joystick_delay/scr_menu_navigation_with_joystick_delay.yy",},"order":24,},
     {"id":{"name":"scr_player_move_pause","path":"scripts/scr_player_move_pause/scr_player_move_pause.yy",},"order":9,},

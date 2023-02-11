@@ -282,66 +282,121 @@ function scr_remapping_gamepad()
 			if (menu == "remap_key_dive")
 			{
 				global.player1_gamepad_button_dive = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_dive", global.player1_gamepad_button_dive);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_jump")
 			{
 				global.player1_gamepad_button_jump = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_jump", global.player1_gamepad_button_jump);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch")
 			{
 				global.player1_gamepad_button_crouch = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_crouch", global.player1_gamepad_button_crouch);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player1_gamepad_button_crouch_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_crouch_toggle", global.player1_gamepad_button_crouch_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint")
 			{
 				global.player1_gamepad_button_sprint = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_sprint", global.player1_gamepad_button_sprint);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player1_gamepad_button_sprint_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_sprint_toggle", global.player1_gamepad_button_sprint_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_left")
 			{
 				global.player1_gamepad_button_left = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_left", global.player1_gamepad_button_left);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_right")
 			{
 				global.player1_gamepad_button_right = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_right", global.player1_gamepad_button_right);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_down")
 			{
 				global.player1_gamepad_button_down = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_down", global.player1_gamepad_button_down);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_up")
 			{
 				global.player1_gamepad_button_up = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_up", global.player1_gamepad_button_up);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_tongue")
 			{
 				global.player1_gamepad_button_tongue = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_tongue", global.player1_gamepad_button_tongue);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_in")
 			{
 				global.player1_gamepad_button_zoom_in = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_zoom_in", global.player1_gamepad_button_zoom_in);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_out")
 			{
 				global.player1_gamepad_button_zoom_out = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_zoom_out", global.player1_gamepad_button_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player1_gamepad_button_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_accept", global.player1_gamepad_button_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player1_gamepad_button_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button_back", global.player1_gamepad_button_back);
+				ini_close();
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -353,66 +408,121 @@ function scr_remapping_gamepad()
 			if (menu == "remap_key_dive")
 			{
 				global.player1_gamepad_button2_dive = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_dive", global.player1_gamepad_button2_dive);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_jump")
 			{
 				global.player1_gamepad_button2_jump = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_jump", global.player1_gamepad_button2_jump);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch")
 			{
 				global.player1_gamepad_button2_crouch = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_crouch", global.player1_gamepad_button2_crouch);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player1_gamepad_button2_crouch_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_crouch_toggle", global.player1_gamepad_button2_crouch_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint")
 			{
 				global.player1_gamepad_button2_sprint = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_sprint", global.player1_gamepad_button2_sprint);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player1_gamepad_button2_sprint_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_sprint_toggle", global.player1_gamepad_button2_sprint_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_left")
 			{
 				global.player1_gamepad_button2_left = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_left", global.player1_gamepad_button2_left);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_right")
 			{
 				global.player1_gamepad_button2_right = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_right", global.player1_gamepad_button2_right);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_down")
 			{
 				global.player1_gamepad_button2_down = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_down", global.player1_gamepad_button2_down);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_up")
 			{
 				global.player1_gamepad_button2_up = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_up", global.player1_gamepad_button2_up);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_tongue")
 			{
 				global.player1_gamepad_button2_tongue = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_tongue", global.player1_player1_gamepad_button2_tonguegamepad_button_dive);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_in")
 			{
 				global.player1_gamepad_button2_zoom_in = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_zoom_in", global.player1_gamepad_button2_zoom_in);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_out")
 			{
 				global.player1_gamepad_button2_zoom_out = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_zoom_out", global.player1_gamepad_button2_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player1_gamepad_button2_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_accept", global.player1_gamepad_button2_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player1_gamepad_button2_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player1_gamepad_button2_back", global.player1_gamepad_button2_back);
+				ini_close();
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -432,66 +542,121 @@ function scr_remapping_gamepad()
 			if (menu == "remap_key_dive")
 			{
 				global.player2_gamepad_button_dive = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_dive", global.player2_gamepad_button_dive);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_jump")
 			{
 				global.player2_gamepad_button_jump = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_jump", global.player2_gamepad_button_jump);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch")
 			{
 				global.player2_gamepad_button_crouch = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_crouch", global.player2_gamepad_button_crouch);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player2_gamepad_button_crouch_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_crouch_toggle", global.player2_gamepad_button_crouch_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint")
 			{
 				global.player2_gamepad_button_sprint = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_sprint", global.player2_gamepad_button_sprint);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player2_gamepad_button_sprint_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_sprint_toggle", global.player2_gamepad_button_sprint_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_left")
 			{
 				global.player2_gamepad_button_left = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_left", global.player2_gamepad_button_left);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_right")
 			{
 				global.player2_gamepad_button_right = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_right", global.player2_gamepad_button_right);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_down")
 			{
 				global.player2_gamepad_button_down = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_down", global.player2_gamepad_button_down);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_up")
 			{
 				global.player2_gamepad_button_up = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_up", global.player2_gamepad_button_up);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_tongue")
 			{
 				global.player2_gamepad_button_tongue = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_tongue", global.player2_gamepad_button_tongue);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_in")
 			{
 				global.player2_gamepad_button_zoom_in = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_zoom_in", global.player2_gamepad_button_zoom_in);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_out")
 			{
 				global.player2_gamepad_button_zoom_out = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_zoom_out", global.player2_gamepad_button_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player2_gamepad_button_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_accept", global.player2_gamepad_button_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player2_gamepad_button_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button_back", global.player2_gamepad_button_back);
+				ini_close();
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -503,66 +668,121 @@ function scr_remapping_gamepad()
 			if (menu == "remap_key_dive")
 			{
 				global.player2_gamepad_button2_dive = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_dive", global.player2_gamepad_button2_dive);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_jump")
 			{
 				global.player2_gamepad_button2_jump = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_jump", global.player2_gamepad_button2_jump);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch")
 			{
 				global.player2_gamepad_button2_crouch = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_crouch", global.player2_gamepad_button2_crouch);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player2_gamepad_button2_crouch_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_crouch_toggle", global.player2_gamepad_button2_crouch_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint")
 			{
 				global.player2_gamepad_button2_sprint = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_sprint", global.player2_gamepad_button2_sprint);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player2_gamepad_button2_sprint_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_sprint_toggle", global.player2_gamepad_button2_sprint_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_left")
 			{
 				global.player2_gamepad_button2_left = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_left", global.player2_gamepad_button2_left);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_right")
 			{
 				global.player2_gamepad_button2_right = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_right", global.player2_gamepad_button2_right);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_down")
 			{
 				global.player2_gamepad_button2_down = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_down", global.player2_gamepad_button2_down);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_up")
 			{
 				global.player2_gamepad_button2_up = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_up", global.player2_gamepad_button2_up);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_tongue")
 			{
 				global.player2_gamepad_button2_tongue = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_tongue", global.player2_gamepad_button2_tongue);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_in")
 			{
 				global.player2_gamepad_button2_zoom_in = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_zoom_in", global.player2_gamepad_button2_zoom_in);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_out")
 			{
 				global.player2_gamepad_button2_zoom_out = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_zoom_out", global.player2_gamepad_button2_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player2_gamepad_button2_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_accept", global.player2_gamepad_button2_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player2_gamepad_button2_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player2_gamepad_button2_back", global.player2_gamepad_button2_back);
+				ini_close();
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -582,66 +802,121 @@ function scr_remapping_gamepad()
 			if (menu == "remap_key_dive")
 			{
 				global.player3_gamepad_button_dive = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_dive", global.player3_gamepad_button_dive);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_jump")
 			{
 				global.player3_gamepad_button_jump = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_jump", global.player3_gamepad_button_jump);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch")
 			{
 				global.player3_gamepad_button_crouch = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_crouch", global.player3_gamepad_button_crouch);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player3_gamepad_button_crouch_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_crouch_toggle", global.player3_gamepad_button_crouch_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint")
 			{
 				global.player3_gamepad_button_sprint = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_sprint", global.player3_gamepad_button_sprint);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player3_gamepad_button_sprint_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_sprint_toggle", global.player3_gamepad_button_sprint_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_left")
 			{
 				global.player3_gamepad_button_left = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_left", global.player3_gamepad_button_left);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_right")
 			{
 				global.player3_gamepad_button_right = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_right", global.player3_gamepad_button_right);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_down")
 			{
 				global.player3_gamepad_button_down = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_down", global.player3_gamepad_button_down);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_up")
 			{
 				global.player3_gamepad_button_up = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_up", global.player3_gamepad_button_up);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_tongue")
 			{
 				global.player3_gamepad_button_tongue = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_tongue", global.player3_gamepad_button_tongue);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_in")
 			{
 				global.player3_gamepad_button_zoom_in = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_zoom_in", global.player3_gamepad_button_zoom_in);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_out")
 			{
 				global.player3_gamepad_button_zoom_out = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_zoom_out", global.player3_gamepad_button_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player3_gamepad_button_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_accept", global.player3_gamepad_button_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player3_gamepad_button_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button_back", global.player3_gamepad_button_back);
+				ini_close();
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -653,66 +928,121 @@ function scr_remapping_gamepad()
 			if (menu == "remap_key_dive")
 			{
 				global.player3_gamepad_button2_dive = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_dive", global.player3_gamepad_button2_dive);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_jump")
 			{
 				global.player3_gamepad_button2_jump = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_jump", global.player3_gamepad_button2_jump);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch")
 			{
 				global.player3_gamepad_button2_crouch = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_crouch", global.player3_gamepad_button2_crouch);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player3_gamepad_button2_crouch_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_crouch_toggle", global.player3_gamepad_button2_crouch_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint")
 			{
 				global.player3_gamepad_button2_sprint = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_sprint", global.player3_gamepad_button2_sprint);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player3_gamepad_button2_sprint_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_sprint_toggle", global.player3_gamepad_button2_sprint_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_left")
 			{
 				global.player3_gamepad_button2_left = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_left", global.player3_gamepad_button2_left);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_right")
 			{
 				global.player3_gamepad_button2_right = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_right", global.player3_gamepad_button2_right);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_down")
 			{
 				global.player3_gamepad_button2_down = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_down", global.player3_gamepad_button2_down);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_up")
 			{
 				global.player3_gamepad_button2_up = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_up", global.player3_gamepad_button2_up);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_tongue")
 			{
 				global.player3_gamepad_button2_tongue = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_tongue", global.player3_gamepad_button2_tongue);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_in")
 			{
 				global.player3_gamepad_button2_zoom_in = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_zoom_in", global.player3_gamepad_button2_zoom_in);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_out")
 			{
 				global.player3_gamepad_button2_zoom_out = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_zoom_out", global.player3_gamepad_button2_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player3_gamepad_button2_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_accept", global.player3_gamepad_button2_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player3_gamepad_button2_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player3_gamepad_button2_back", global.player3_gamepad_button2_back);
+				ini_close();
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -732,66 +1062,121 @@ function scr_remapping_gamepad()
 			if (menu == "remap_key_dive")
 			{
 				global.player4_gamepad_button_dive = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_dive", global.player4_gamepad_button_dive);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_jump")
 			{
 				global.player4_gamepad_button_jump = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_jump", global.player4_gamepad_button_jump);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch")
 			{
 				global.player4_gamepad_button_crouch = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_crouch", global.player4_gamepad_button_crouch);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player4_gamepad_button_crouch_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_crouch_toggle", global.player4_gamepad_button_crouch_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint")
 			{
 				global.player4_gamepad_button_sprint = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_sprint", global.player4_gamepad_button_sprint);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player4_gamepad_button_sprint_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_sprint_toggle", global.player4_gamepad_button_sprint_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_left")
 			{
 				global.player4_gamepad_button_left = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_left", global.player4_gamepad_button_left);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_right")
 			{
 				global.player4_gamepad_button_right = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_right", global.player4_gamepad_button_right);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_down")
 			{
 				global.player4_gamepad_button_down = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_down", global.player4_gamepad_button_down);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_up")
 			{
 				global.player4_gamepad_button_up = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_up", global.player4_gamepad_button_up);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_tongue")
 			{
 				global.player4_gamepad_button_tongue = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_tongue", global.player4_gamepad_button_tongue);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_in")
 			{
 				global.player4_gamepad_button_zoom_in = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_zoom_in", global.player4_gamepad_button_zoom_in);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_out")
 			{
 				global.player4_gamepad_button_zoom_out = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_zoom_out", global.player4_gamepad_button_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player4_gamepad_button_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_accept", global.player4_gamepad_button_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player4_gamepad_button_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button_back", global.player4_gamepad_button_back);
+				ini_close();
 			}
 			can_remap_key = false;
 			input_key = false;
@@ -803,66 +1188,121 @@ function scr_remapping_gamepad()
 			if (menu == "remap_key_dive")
 			{
 				global.player4_gamepad_button2_dive = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_dive", global.player4_gamepad_button2_dive);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_jump")
 			{
 				global.player4_gamepad_button2_jump = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_jump", global.player4_gamepad_button2_jump);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch")
 			{
 				global.player4_gamepad_button2_crouch = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_crouch", global.player4_gamepad_button2_crouch);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_crouch_toggle")
 			{
 				global.player4_gamepad_button2_crouch_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_crouch_toggle", global.player4_gamepad_button2_crouch_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint")
 			{
 				global.player4_gamepad_button2_sprint = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_sprint", global.player4_gamepad_button2_sprint);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_sprint_toggle")
 			{
 				global.player4_gamepad_button2_sprint_toggle = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_sprint_toggle", global.player4_gamepad_button2_sprint_toggle);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_left")
 			{
 				global.player4_gamepad_button2_left = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_left", global.player4_gamepad_button2_left);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_right")
 			{
 				global.player4_gamepad_button2_right = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_right", global.player4_gamepad_button2_right);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_down")
 			{
 				global.player4_gamepad_button2_down = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_down", global.player4_gamepad_button2_down);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_up")
 			{
 				global.player4_gamepad_button2_up = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_up", global.player4_gamepad_button2_up);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_tongue")
 			{
 				global.player4_gamepad_button2_tongue = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_tongue", global.player4_gamepad_button2_tongue);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_in")
 			{
 				global.player4_gamepad_button2_zoom_in = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_zoom_in", global.player4_gamepad_button2_zoom_in);
+				ini_close();
 			}
 			else
 			if (menu == "remap_key_zoom_out")
 			{
 				global.player4_gamepad_button2_zoom_out = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_zoom_out", global.player4_gamepad_button2_zoom_out);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_accept")
+			{
+				global.player4_gamepad_button2_accept = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_accept", global.player4_gamepad_button2_accept);
+				ini_close();
+			}
+			else
+			if (menu == "remap_key_back")
+			{
+				global.player4_gamepad_button2_back = last_key;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player4_gamepad_button2_back", global.player4_gamepad_button2_back);
+				ini_close();
 			}
 			menu_delay = 10;
 			can_remap_key = false;

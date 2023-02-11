@@ -5,7 +5,7 @@ function scr_deactivate_objects_outside_view()
 	#endregion /* Debug toggles END */
 	
 	#region /* Deactivate instances outside view */
-	if (delay = 2)
+	if (delay >= 10)
 	{
 		instance_activate_all();
 		if (global.deactivate_objects_outside_view == true) /* This global variable is for debug purposes, and should always be set to true when playing the game normally */

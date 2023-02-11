@@ -1,94 +1,7 @@
-if (bounce_up == false)
+if (asset_get_type("obj_camera") == asset_object)
+and (instance_exists(obj_camera))
 {
-	visible = true;
-	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
-	{
-		image_index = obj_camera.image_index;
-	}
-	if (asset_get_type("obj_player") == asset_object)
-	{
-		if (place_meeting(bbox_left, y, obj_player))
-		or (place_meeting(bbox_right, y, obj_player))
-		or (place_meeting(x, bbox_top, obj_player))
-		or (place_meeting(x, bbox_bottom, obj_player))
-		or (asset_get_type("obj_enemy_bowlingball") == asset_object)
-		and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
-		and (instance_nearest(x, y, obj_enemy_bowlingball).flat == true)
-		and (instance_nearest(x, y, obj_enemy_bowlingball).die = false)
-		and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting = false)
-		{
-			if (asset_get_type("obj_wall") == asset_object)
-			and (instance_exists(obj_player))
-			and (instance_exists(obj_wall))
-			and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-			and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_semisolid_platform, false, true))
-			or (asset_get_type("obj_wall") == asset_object)
-			and (asset_get_type("obj_enemy_bowlingball") == asset_object)
-			and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
-			and (instance_nearest(x, y, obj_enemy_bowlingball).flat == true)
-			and (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
-			{
-				effect_create_above(ef_ring, x, y, 0, c_white);
-				score += 200;
-				if (asset_get_type("obj_camera") == asset_object)
-					if (instance_exists(obj_camera))
-					{
-						with(obj_camera)
-						{
-							hud_show_score_timer = global.hud_hide_time * 60;
-						}
-					}
-				with(instance_nearest(x, y, obj_player))
-				{
-					basic_collectibles += 1;
-				}
-				global.basic_collectibles += 1;
-				
-				#region /* Get 1-up if you get 100 basic collectibles */
-				if (global.basic_collectibles > 99) /* After the code where you collect the basic collectible, then check if you have collected 100 basic collectibles */
-				{
-					global.basic_collectibles = 0;
-					if (instance_exists(obj_camera))
-					{
-						with(obj_camera)
-						{
-							hud_show_lives_timer = global.hud_hide_time * 60;
-						}
-					}
-					if (asset_get_type("obj_score_up") == asset_object)
-					and (asset_get_type("obj_player") == asset_object)
-					and (instance_exists(obj_player))
-					{
-						with(instance_create_depth(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y - 16, 0, obj_score_up))
-						{
-							score_up = "1-up";
-						}
-					}
-					else
-					if (asset_get_type("obj_score_up") == asset_object)
-					{
-						with(instance_create_depth(x, y - 16, 0, obj_score_up))
-						{
-							score_up = "1-up";
-						}
-					}
-				}
-				#endregion /* Get 1-up if you get 100 basic collectibles END */
-				
-				if (asset_get_type("obj_camera") == asset_object)
-				and (instance_exists(obj_camera))
-				{
-					with(obj_camera)
-					{
-						hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
-					}
-				}
-				scr_audio_play(snd_basic_collectible, volume_source.sound);
-				instance_destroy();
-			}
-		}
-	}
+	image_index = obj_camera.image_index;
 }
 
 #region /* Bounce up */
@@ -103,13 +16,15 @@ if (bounce_up == true)
 		}
 		depth = - 100;
 		visible = true;
+		
 		#region /* Set the gravity */
 		gravity_direction = 270; /* Direction of the gravity */
 		gravity = 0.5; /* The gravity */
 		#endregion /* Set the gravity END */
+		
 		if (vspeed > 0)
 		and (y > ystart - 32)
-		or(delay >= delay_time + 60)
+		or (delay >= delay_time + 60)
 		{
 			score += 200;
 			if (asset_get_type("obj_camera") == asset_object)

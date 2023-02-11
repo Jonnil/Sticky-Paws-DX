@@ -11,3 +11,5 @@ length = 2;
 2 Block Lenght = 2
 3 Block Lenght = 3
 */
+
+alarm_set(0, 1);
