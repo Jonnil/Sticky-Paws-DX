@@ -42,7 +42,7 @@ if (global.restart_level == true)
 	
 	score = 0;
 	
-	room_restart();
+	show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
 }
 #endregion /* Restart Level END */
 
@@ -227,7 +227,7 @@ and (obj_camera.iris_xscale < 3)
 				{
 					global.actually_play_edited_level = false;
 					global.play_edited_level = false;
-					room_restart();
+					show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
 				}
 				else
 				if (global.actually_play_edited_level == true)

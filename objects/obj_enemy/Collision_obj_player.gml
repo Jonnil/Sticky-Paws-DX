@@ -53,7 +53,7 @@ if (stomped_delay <= 0)
 				if (other.x < x)
 				{
 					vspeed = - 8;
-					die_volting = - 1;
+					die_volting = -1;
 				}
 				else
 				{
@@ -1622,7 +1622,7 @@ image_index = 0;
 if (other.x < x)
 {
 	vspeed = - 8;
-	die_volting = - 1;
+	die_volting = -1;
 }
 else
 {

@@ -1,4 +1,3 @@
-///scr_remapping_keyboard()
 function scr_remapping_keyboard()
 {
 	if (!keyboard_check_pressed(vk_escape))

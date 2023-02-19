@@ -1683,9 +1683,7 @@ and (global.enable_options_for_pc == true)
 #endregion /* Accept END */
 
 #region /* Start Game */
-if (asset_get_type("obj_camera") == asset_object)
-and (instance_exists(obj_camera))
-and (iris_xscale <= 0.001)
+if (iris_xscale <= 0.001)
 {
 	
 	#region /* Play Level Editor */
@@ -2581,12 +2579,13 @@ if (instance_exists(obj_player))
 #endregion /* If player object is present, destroy the player object END */
 
 scr_menu_navigation_with_joystick_delay();
+scr_debug_screen();
 scr_draw_cursor_mouse();
 
 #region /* Have a black screen at the first frame so transitions look natural */
 if (black_screen_at_start_delay < 1)
 {
-	draw_rectangle_color(0, 0, display_get_gui_width()* 3, display_get_gui_height()* 3, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, 0, display_get_gui_width() * 3, display_get_gui_height() * 3, c_black, c_black, c_black, c_black, false);
 	black_screen_at_start_delay += 1;
 }
 #endregion /* Have a black screen at the first frame so transitions look natural END */

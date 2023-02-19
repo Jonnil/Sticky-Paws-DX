@@ -58,7 +58,10 @@ function zip_impl_write(_dst,_src,_srcPos,_srcLen){
 		}
 		buffer_resize(_dst,_dstSize);
 	}
-	buffer_copy(_src,_srcPos,_srcLen,_dst,_dstPos);
+	if (_src > -1)
+	{
+		buffer_copy(_src,_srcPos,_srcLen,_dst,_dstPos);
+	}
 	buffer_seek(_dst,buffer_seek_start,_dstNext);
 }
 
@@ -97,7 +100,10 @@ function zip_add_buffer_ext(_this,_path1,_buf,_pos,_len,_compressionLevel){
 	var _clen=_len;
 	if(_compress){
 		_cbuf=buffer_compress(_buf,_pos,_len);
-		_clen=buffer_get_size(_cbuf)-6;
+		if (_cbuf > -1)
+		{
+			_clen=buffer_get_size(_cbuf)-6;
+		}
 	}
 	buffer_write(_o,buffer_u32,_crc);
 	buffer_write(_o,buffer_s32,_clen);

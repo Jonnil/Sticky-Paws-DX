@@ -1,6 +1,6 @@
 #region /* Load correct sprite when you get the checkpoint */
-if (global.checkpoint_x == x)
-and (global.checkpoint_y == y)
+if (global.checkpoint_x == xstart)
+and (global.checkpoint_y == ystart)
 {
 	checkpoint_activated = true;
 	if (instance_exists(obj_camera))

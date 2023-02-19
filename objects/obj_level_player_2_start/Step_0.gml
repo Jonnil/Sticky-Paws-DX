@@ -185,11 +185,7 @@ or (global.actually_play_edited_level == true)
 				or (global.checkpoint_y > 0)
 				{
 					camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
-					if (asset_get_type("obj_camera") == asset_object)
-					and (!instance_exists(obj_camera))
-					{
-						instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_camera);
-					}
+					instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_camera);
 				}
 			}
 			#endregion /* Load Checkpoint END */

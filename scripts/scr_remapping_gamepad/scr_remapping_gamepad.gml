@@ -1,4 +1,3 @@
-///scr_remapping_gamepad()
 function scr_remapping_gamepad()
 {
 	

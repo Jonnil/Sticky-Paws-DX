@@ -66,6 +66,25 @@ and (other.die = false)
 		{
 			scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
 		}
+		
+		if (other.x < x)
+		{
+			with(other)
+			{
+				die = true;
+				vspeed = - 8;
+				die_volting = - 1;
+			}
+		}
+		else
+		{
+			with(other)
+			{
+				die = true;
+				vspeed = - 8;
+				die_volting = +1;
+			}
+		}
 		instance_destroy();
 	}
 }

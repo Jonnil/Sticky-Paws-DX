@@ -87,7 +87,7 @@ function scr_player_move_pause()
 			}
 			#endregion /* Save Level Information when in level editor END */
 			
-			room_restart();
+			show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
 		}
 		else
 		{

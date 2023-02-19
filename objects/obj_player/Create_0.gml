@@ -668,14 +668,6 @@ else
 }
 #endregion /* Custom Music END */
 
-#region /* Camera */
-if (asset_get_type("obj_camera") == asset_object)
-and (!instance_exists(obj_camera))
-{
-	instance_create_depth(x, y, 0, obj_camera);
-}
-#endregion /* Camera END */
-
 #region /* Heart balloon starting point */
 xx_heart = x;
 yy_heart = y;

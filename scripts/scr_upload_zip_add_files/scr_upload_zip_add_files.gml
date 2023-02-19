@@ -70,7 +70,7 @@ function scr_upload_zip_add_files()
 		
 		if (file_name != "")
 		{
-			zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(game_save_id) + "/custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+			/* CRASHES THE GAME */ zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(game_save_id) + "/custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
 		}
 	}
 	file_find_close();
@@ -171,8 +171,8 @@ function scr_upload_zip_add_files()
 	
 	#region /* Finally save the zip file */
 	
-	file = "test.zip"; /* Before closing the zip file creation, save the file to this variable */
-	zip_save(z, "test.zip"); /* I can't save it as string(level_name) + ".zip" I can only save if something is in front of .zip without spaces???*/
+	file = string(level_name) + ".zip"; /* Before closing the zip file creation, save the file to this variable. Save it as string(level_name) + ".zip" */
+	zip_save(z, string(file)); /* Save it as string(file) so it's consistent */
 	
 	zip_destroy(z); /* Last thing you do is close the zip file creation */
 	

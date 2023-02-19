@@ -727,6 +727,25 @@ function scr_modify_objects_in_level_editor()
 							}
 							#endregion /* Change Moveset Signs END */
 							
+							#region /* Update variables */
+							if (global.actually_play_edited_level == false)
+							{
+								for(i = 0; i < ds_grid_height(global.object_grid)-1; i += 1)
+								{
+									if (object == ds_grid_get(global.object_grid, 0, i))
+									{
+										sprite_index = ds_grid_get(global.object_grid, 1, i);
+										mask_index = ds_grid_get(global.object_grid, 3, i);
+										draw_xscale = ds_grid_get(global.object_grid, 4, i);
+										draw_yscale = ds_grid_get(global.object_grid, 4, i);
+										draw_angle = ds_grid_get(global.object_grid, 5, i);
+										image_blend = ds_grid_get(global.object_grid, 6, i);
+										image_alpha = ds_grid_get(global.object_grid, 7, i);
+									}
+								}
+							}
+							#endregion /* Update variables END */
+							
 						}
 						#endregion /* Level Object ID's to modify END */
 						

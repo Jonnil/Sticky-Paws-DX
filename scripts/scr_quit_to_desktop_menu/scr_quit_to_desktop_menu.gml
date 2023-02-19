@@ -1,5 +1,3 @@
-/// @desc scr_quit_to_desktop_menu(return_to_this_menu)
-/// @arg return_to_this_menu
 function scr_quit_to_desktop_menu(return_to_this_menu)
 {
 	var get_window_height = display_get_gui_height();
@@ -13,7 +11,10 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 	if (menu == "quit_game_no")
 	or (menu == "quit_game_yes")
 	{
-		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 128, l10n_text("ARE YOU SURE YOU WANT TO QUIT?"), global.default_text_size * 1.9, c_white, c_black, 1);
+		draw_set_alpha(0.5);
+		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 128, l10n_text("ARE YOU SURE YOU WANT TO QUIT?"), global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Quit No */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, get_window_height * 0.5 - 42, get_window_width * 0.5 + 370, get_window_height * 0.5 + 42))

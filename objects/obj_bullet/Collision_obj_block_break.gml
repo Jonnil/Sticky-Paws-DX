@@ -23,7 +23,7 @@ if (die = false)
 		if (other.x < x)
 		{
 			vspeed = - 8;
-			die_volting = - 1;
+			die_volting = -1;
 		}
 		else
 		{

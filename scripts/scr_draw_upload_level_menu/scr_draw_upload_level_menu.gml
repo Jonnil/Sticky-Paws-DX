@@ -1,6 +1,12 @@
 function scr_draw_upload_level_menu()
 {
+	
+	#region /* Debug toggles */
+	var destroy_zip_after_uploading = false;
+	#endregion /* Debug toggles END */
+	
 	var upload_y = 42 * 2;
+	var message_x_offset = 330;
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
@@ -13,11 +19,11 @@ function scr_draw_upload_level_menu()
 		can_input_level_name = false;
 		if (room = room_title)
 		and (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (upload_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (upload_y) - 3 + 42))
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		or (room = room_leveleditor)
 		and (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42))
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		or (key_a_pressed)
 		{
@@ -67,6 +73,9 @@ function scr_draw_upload_level_menu()
 	if (menu == "clear_check_no")
 	or (menu == "clear_check_yes")
 	{
+		var do_a_clear_check_y = 432;
+		var do_a_clear_check_no_y = 532;
+		var do_a_clear_check_yes_y = 532;
 		if (global.doing_clear_check == false)
 		{
 			draw_set_halign(fa_center);
@@ -75,21 +84,24 @@ function scr_draw_upload_level_menu()
 			draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
-			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 128, l10n_text("Do a clear check?"), global.default_text_size * 1.9, c_black, c_white, 1);
+			draw_set_alpha(0.9);
+			draw_rectangle_color(get_window_width * 0.5 - message_x_offset, do_a_clear_check_y - 32, get_window_width * 0.5 + message_x_offset, do_a_clear_check_y + 32, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+			scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_y, l10n_text("Do a clear check?"), global.default_text_size * 1.9, c_black, c_white, 1);
 			
 			#region /* Clear Check No */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, get_window_height * 0.5 - 42, get_window_width * 0.5 + 370, get_window_height * 0.5 + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_no_y + 42))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			{
 				if (menu_delay == 0)
 				{
 					menu = "clear_check_no";
 				}
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5, 1, 1, 0, c_white, 1);
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, get_window_height * 0.5, 1, 1, 180, c_white, 1);
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, get_window_height * 0.5, 2, 2, 0, c_lime, 1);
-				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
-				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, get_window_height * 0.5, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_no_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_no_y, 1, 1, 180, c_white, 1);
+				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, do_a_clear_check_no_y, 2, 2, 0, c_lime, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_no_y, l10n_text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
+				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, do_a_clear_check_no_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
@@ -98,33 +110,33 @@ function scr_draw_upload_level_menu()
 				or (menu == "clear_check_no")
 				and (global.controls_used_for_menu_navigation == "controller")
 				{
-					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5, 1, 1, 0, c_white, 1);
-					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, get_window_height * 0.5, 1, 1, 180, c_white, 1);
-					draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, get_window_height * 0.5, 2, 2, 0, c_lime, 1);
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
-					draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, get_window_height * 0.5, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_no_y, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_no_y, 1, 1, 180, c_white, 1);
+					draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, do_a_clear_check_no_y, 2, 2, 0, c_lime, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_no_y, l10n_text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
+					draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, do_a_clear_check_no_y, 1, 1, 0, c_white, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, get_window_height * 0.5, 2, 2, 0, c_white, 1);
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("NO"), global.default_text_size * 2.3, c_white, c_black, 1);
-					draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, get_window_height * 0.5, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, do_a_clear_check_no_y, 2, 2, 0, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_no_y, l10n_text("NO"), global.default_text_size * 2.3, c_white, c_black, 1);
+					draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, do_a_clear_check_no_y, 1, 1, 0, c_white, 1);
 				}
 			}
 			#endregion /* Clear Check No END */
 			
 			#region /* Clear Check Yes */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84 - 42, get_window_width * 0.5 + 370, get_window_height * 0.5 + 84 + 42))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_yes_y + 84 - 42, get_window_width * 0.5 + 370, do_a_clear_check_yes_y + 84 + 42))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			{
 				if (menu_delay == 0)
 				{
 					menu = "clear_check_yes";
 				}
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5 + 84, 1, 1, 0, c_white, 1);
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, get_window_height * 0.5 + 84, 1, 1, 180, c_white, 1);
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84, 2, 2, 0, c_lime, 1);
-				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 84, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_yes_y + 84, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_yes_y + 84, 1, 1, 180, c_white, 1);
+				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, do_a_clear_check_yes_y + 84, 2, 2, 0, c_lime, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_yes_y + 84, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
 			}
 			else
 			{
@@ -133,15 +145,15 @@ function scr_draw_upload_level_menu()
 				or (menu == "clear_check_yes")
 				and (global.controls_used_for_menu_navigation == "controller")
 				{
-					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5 + 84, 1, 1, 0, c_white, 1);
-					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, get_window_height * 0.5 + 84, 1, 1, 180, c_white, 1);
-					draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84, 2, 2, 0, c_lime, 1);
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 84, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_yes_y + 84, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_yes_y + 84, 1, 1, 180, c_white, 1);
+					draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, do_a_clear_check_yes_y + 84, 2, 2, 0, c_lime, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_yes_y + 84, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84, 2, 2, 0, c_white, 1);
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 84, l10n_text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
+					draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, do_a_clear_check_yes_y + 84, 2, 2, 0, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_yes_y + 84, l10n_text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
 				}
 			}
 			#endregion /* Clear Check Yes END */
@@ -162,8 +174,8 @@ function scr_draw_upload_level_menu()
 		#region /* Clear Check Menu Navigation */
 		if (menu == "clear_check_no")
 		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, get_window_height * 0.5 - 42, get_window_width * 0.5 + 370, get_window_height * 0.5 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_no_y + 42))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (key_a_pressed)
 			and (menu_delay == 0)
@@ -176,8 +188,8 @@ function scr_draw_upload_level_menu()
 		else
 		if (menu == "clear_check_yes")
 		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84 - 42, get_window_width * 0.5 + 370, get_window_height * 0.5 + 84 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_yes_y + 84 - 42, get_window_width * 0.5 + 370, do_a_clear_check_yes_y + 84 + 42))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (key_a_pressed)
 			and (menu_delay == 0)
@@ -210,7 +222,7 @@ function scr_draw_upload_level_menu()
 					pause = false;
 					menu_delay = 0;
 					global.character_select_in_this_menu = "level_editor";
-					room_restart();
+					show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
 				}
 				else
 				{
@@ -316,7 +328,7 @@ function scr_draw_upload_level_menu()
 		and (menu_delay == 0)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, edit_name_y, get_window_width * 0.5 + 185, edit_name_y + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (level_editor_edit_name = false)
 			or (key_a_pressed)
@@ -342,7 +354,7 @@ function scr_draw_upload_level_menu()
 		and (menu_delay == 0)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, edit_description_y, get_window_width * 0.5 + 185, edit_description_y + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (level_editor_edit_name = false)
 			or (key_a_pressed)
@@ -419,7 +431,7 @@ function scr_draw_upload_level_menu()
 			menu = "upload_yes"; /* Return to previous menu */
 		}
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, cancel_y, get_window_width * 0.5 + 185, cancel_y + 42))
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		or (menu == "edit_cancel")
 		and (key_a_pressed)
@@ -483,7 +495,7 @@ function scr_draw_upload_level_menu()
 			draw_name_y + 54,
 			get_window_width * 0.5 - 185 + 370,
 			draw_name_y + 54 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			or (gamepad_button_check_pressed(0, gp_face1))
 			or (gamepad_button_check_pressed(1, gp_face1))
 			or (gamepad_button_check_pressed(2, gp_face1))
@@ -542,10 +554,10 @@ function scr_draw_upload_level_menu()
 		draw_name_y + 54 + 42,
 		get_window_width * 0.5 - 185 + 370,
 		draw_name_y + 54 + 42 + 42))
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (mouse_check_button_pressed(mb_right))
+		or (mouse_check_button_released(mb_right))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
 		or (gamepad_button_check_pressed(0, gp_face2))
@@ -638,7 +650,7 @@ function scr_draw_upload_level_menu()
 			draw_description_y + 54,
 			get_window_width * 0.5 - 185 + 370,
 			draw_description_y + 54 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			or (gamepad_button_check_pressed(0, gp_face1))
 			or (gamepad_button_check_pressed(1, gp_face1))
 			or (gamepad_button_check_pressed(2, gp_face1))
@@ -700,10 +712,10 @@ function scr_draw_upload_level_menu()
 		draw_description_y + 54 + 42,
 		get_window_width * 0.5 - 185 + 370,
 		draw_description_y + 54 + 42 + 42))
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (mouse_check_button_pressed(mb_right))
+		or (mouse_check_button_released(mb_right))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
 		or (gamepad_button_check_pressed(0, gp_face2))
@@ -752,6 +764,9 @@ function scr_draw_upload_level_menu()
 	if (menu == "upload_yes")
 	or (menu == "upload_no")
 	{
+		var upload_name_question_y = 432;
+		var upload_level_no_y = 532;
+		var upload_level_yes_y = 532 + 84;
 		
 		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
@@ -771,10 +786,10 @@ function scr_draw_upload_level_menu()
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
-		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("Upload") + " " + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "?", global.default_text_size * 1.9, c_black, c_white, 1);
-		
-		var upload_level_no_y = get_window_height * 0.5 + 42 + 42;
-		var upload_level_yes_y = get_window_height * 0.5 + 84 + 42 + 42;
+		draw_set_alpha(0.9);
+		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, upload_name_question_y - 32, get_window_width * 0.5 + message_x_offset, upload_name_question_y + 32, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		scr_draw_text_outlined(get_window_width * 0.5, upload_name_question_y, l10n_text("Upload") + " " + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "?", global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Upload Level No */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_no_y - 42, get_window_width * 0.5 + 370, upload_level_no_y + 42))
@@ -860,7 +875,7 @@ function scr_draw_upload_level_menu()
 		if (menu == "upload_no")
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_no_y - 42, get_window_width * 0.5 + 370, upload_level_no_y + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (key_a_pressed)
 			and (menu_delay == 0)
@@ -874,7 +889,7 @@ function scr_draw_upload_level_menu()
 		if (menu == "upload_yes")
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_yes_y - 42, get_window_width * 0.5 + 370, upload_level_yes_y + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (key_a_pressed)
 			and (menu_delay == 0)
@@ -901,6 +916,7 @@ function scr_draw_upload_level_menu()
 	#region /* Uploading Level */
 	if (menu == "uploading_level")
 	{
+		var uploading_level_message_y = 532;
 		
 		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
@@ -920,7 +936,10 @@ function scr_draw_upload_level_menu()
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
-		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("Uploading") + " " + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "...", global.default_text_size * 1.9, c_black, c_white, 1);
+		draw_set_alpha(0.9);
+		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, uploading_level_message_y - 32, get_window_width * 0.5 + message_x_offset, uploading_level_message_y + 32, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y, l10n_text("Uploading") + " " + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "...", global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Generate Level ID */
 		if (menu_delay = 50)
@@ -981,7 +1000,10 @@ function scr_draw_upload_level_menu()
 			#endregion /* Actually upload the level to the server END */
 			
 			#region /* Delete some leftover files and folders */
-			file_delete(file);
+			if (destroy_zip_after_uploading == true)
+			{
+				file_delete(file);
+			}
 			#endregion /* Delete some leftover files and folders END */
 			
 			menu = "level_uploaded";
@@ -994,6 +1016,8 @@ function scr_draw_upload_level_menu()
 	#region /* Level Uploaded */
 	if (menu == "level_uploaded")
 	{
+		var uploaded_level_message_y = 432;
+		var ok_y = uploaded_level_message_y + 168;
 		
 		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
@@ -1013,10 +1037,11 @@ function scr_draw_upload_level_menu()
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
-		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + " " + l10n_text("Uploaded"), global.default_text_size * 1.9, c_black, c_white, 1);
-		/* Show Level ID */ scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 84, l10n_text("Level ID") + ": " + string(level_id), global.default_text_size * 1.9, c_black, c_white, 1);
-		
-		var ok_y = get_window_height * 0.5 + 42 + 42 + 42 + 42;
+		draw_set_alpha(0.9);
+		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, uploaded_level_message_y - 32, get_window_width * 0.5 + message_x_offset, uploaded_level_message_y + 128, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		scr_draw_text_outlined(get_window_width * 0.5, uploaded_level_message_y, string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + " " + l10n_text("Uploaded"), global.default_text_size * 1.9, c_black, c_white, 1);
+		/* Show Level ID */ scr_draw_text_outlined(get_window_width * 0.5, uploaded_level_message_y + 84, l10n_text("Level ID") + ": " + string(level_id), global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Level Uploaded OK */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
@@ -1056,9 +1081,9 @@ function scr_draw_upload_level_menu()
 		
 		#region /* Return to game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
-		or (mouse_check_button_pressed(mb_right))
+		or (mouse_check_button_released(mb_right))
 		and (menu_delay == 0)
 		or (key_a_pressed)
 		and (menu_delay == 0)
@@ -1138,7 +1163,7 @@ function scr_draw_upload_level_menu()
 		
 		#region /* Return to game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		or (key_a_pressed)
 		and (menu_delay == 0)

@@ -1,13 +1,19 @@
+var view_left = camera_get_view_x(view_camera[view_current]) - 22;
+var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 22;
+var view_top = camera_get_view_y(view_camera[view_current]) - 22;
+var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current])) + 22;
+
 #region /* Gravity */
 if (asset_get_type("obj_wall") == asset_object)
 and (!position_meeting(x, bbox_bottom + 1, obj_wall))
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 and (asset_get_type("obj_camera") == asset_object)
 and (instance_exists(obj_camera))
-and (x < obj_camera.view_x_center + 960)
-and (x > obj_camera.view_x_center - 960)
-and (y < obj_camera.view_y_center + 960)
-and (y > obj_camera.view_y_center - 960)
+and (x < view_right)
+and (x > view_left)
+and (y < view_bottom)
+and (y > view_top)
+and (stop_gravity == false)
 {
 	gravity = 0.5;
 }

@@ -1,25 +1,38 @@
 function scr_deactivate_objects_outside_view()
 {
 	#region /* Debug toggles */
+	var deactivate_objects_outside_view = true; /* This is for debug purposes, and should always be set to true when playing the game normally */
 	var can_activate_always_active_objects = true;
+	var deactivate_from_center = false;
 	#endregion /* Debug toggles END */
 	
 	#region /* Deactivate instances outside view */
 	if (delay >= 10)
 	{
 		instance_activate_all();
-		if (global.deactivate_objects_outside_view == true) /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
+		if (deactivate_objects_outside_view == true) /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
 		{
 			view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) * 0.5);
 			view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) * 0.5);
-			var view_distance_from_center = 1000; /* Default: 1000 */
-			
-			instance_deactivate_region(
-			view_x_center - view_distance_from_center /* Left */ ,
-			view_y_center - view_distance_from_center /* Top */ ,
-			view_distance_from_center * 2 /* Width */ ,
-			view_distance_from_center * 2 /* Height */ ,
-			false, true);
+			if (deactivate_from_center == false)
+			{
+				instance_deactivate_region(
+				camera_get_view_x(view_camera[view_current]) - 64,
+				camera_get_view_y(view_camera[view_current]) - 64,
+				camera_get_view_width(view_camera[view_current]) + 128 /* Camera Width */,
+				camera_get_view_height(view_camera[view_current]) + 128 /* Camera Height */,
+				false, true);
+			}
+			else
+			{
+				var view_distance_from_center = 1000; /* Default: 1000 */
+				instance_deactivate_region(
+				view_x_center - view_distance_from_center /* Left */ ,
+				view_y_center - view_distance_from_center /* Top */ ,
+				view_distance_from_center * 2 /* Width */ ,
+				view_distance_from_center * 2 /* Height */ ,
+				false, true);
+			}
 		}
 	}
 	else

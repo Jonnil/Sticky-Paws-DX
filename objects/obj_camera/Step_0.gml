@@ -4,7 +4,7 @@ scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_deactivate_objects_outside_view();
 
-if (room = room_leveleditor)
+if (room == room_leveleditor)
 {
 	layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);
 	layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);
@@ -13,7 +13,7 @@ if (room = room_leveleditor)
 }
 
 #region /* Make background visible */
-if (room = room_leveleditor)
+if (room == room_leveleditor)
 {
 	if (global.custom_background1 > noone)
 	and (global.enable_background_layer1 == true)
@@ -60,7 +60,7 @@ if (room = room_leveleditor)
 #region /* Timer Countup */
 if (asset_get_type("obj_goal") == asset_object)
 and (instance_exists(obj_goal))
-and (obj_goal.goal = false)
+and (obj_goal.goal == false)
 and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (obj_player.allow_timeattack == true)
@@ -89,7 +89,7 @@ if (asset_get_type("obj_goal") == asset_object)
 and (global.pause == false)
 {
 	if (instance_exists(obj_goal))
-	and (obj_goal.goal = false)
+	and (obj_goal.goal == false)
 	or (!instance_exists(obj_goal))
 	{
 		if (asset_get_type("obj_player") == asset_object)
@@ -124,7 +124,7 @@ and (global.pause == false)
 and (asset_get_type("obj_goal") == asset_object)
 {
 	if (instance_exists(obj_goal))
-	and (obj_goal.goal = false)
+	and (obj_goal.goal == false)
 	or (!instance_exists(obj_goal))
 	{
 		time_second += 1;
@@ -167,10 +167,6 @@ and (obj_player.stop_screen_from_scrolling_left == true)
 
 #region /* Rain Effect */
 if (global.rain == true)
-and (asset_get_type("obj_title") == asset_object)
-and (!instance_exists(obj_title))
-and (asset_get_type("obj_player_map") == asset_object)
-and (!instance_exists(obj_player_map))
 {
 	if (floor(random(10 - 1)) == 0)
 	{
@@ -190,7 +186,7 @@ and (instance_exists(player1))
 and (iris_xscale >= 10)
 {
 	if (global.player1_show_controls == 0)
-	or (obj_player.can_move = false)
+	or (obj_player.can_move == false)
 	{
 		player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.2);
 	}
@@ -210,7 +206,7 @@ and (iris_xscale >= 10)
 		}
 	}
 	else
-	if (global.player1_show_controls = 10)
+	if (global.player1_show_controls == 10)
 	{
 		player1_show_controls_alpha = lerp(player1_show_controls_alpha, 1, 0.1);
 	}
@@ -554,10 +550,6 @@ if (lives < 0)
 if (instance_exists(obj_player))
 and (global.pause == false)
 and (global.goal_active = false)
-and (asset_get_type("obj_player_map") == asset_object)
-and (!instance_exists(obj_player_map))
-and (asset_get_type("obj_title") == asset_object)
-and (!instance_exists(obj_title))
 {
 	if (gamepad_button_check_pressed(0, gp_face1))
 	or (keyboard_check_pressed(global.player1_key_jump))
@@ -693,18 +685,6 @@ if (save_level_as_png = false)
 	
 	x = lerp(x, xx, 0.1);
 	y = lerp(y, yy, 0.1);
-	
-	#region /* World Map Camera */
-	if (asset_get_type("obj_player_map") == asset_object)
-	and (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_player_map))
-	{
-		xx = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player_map).x;
-		yy = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player_map).y;
-	}
-	#endregion /* World Map Camera END */
-	
-	else
 	
 	#region /* Boss Battle Camera */
 	if (asset_get_type("obj_player") == asset_object)
@@ -1175,8 +1155,6 @@ if (save_level_as_png = false)
 	
 	#region /* Iris */
 	if (allow_iris == true)
-	and (asset_get_type("obj_player_map") == asset_object)
-	and (!instance_exists(obj_player_map))
 	{
 		
 		#region /* Zoom In */
@@ -1186,10 +1164,6 @@ if (save_level_as_png = false)
 		and (instance_exists(obj_goal))
 		and (instance_nearest(room_width, y, obj_player).goal == true)
 		and (global.time_countdown_bonus <= 0)
-		
-		or (asset_get_type("obj_player_map") == asset_object) /* Zoom In Player Map */
-		and (instance_exists(obj_player_map))
-		and (obj_player_map.entering_level == true)
 		
 		or (global.iris_zoom_in == true) /* Zoom In Global Switch */
 		{
@@ -1241,3 +1215,484 @@ if (save_level_as_png = false)
 	#endregion /* Iris END */
 	
 }
+
+#region /* Step Sprint Toggling */
+key_player1_sprint_toggle_pressed = scr_key_initialize(key_player1_sprint_toggle_pressed, 1, 1, global.player1_key_sprint_toggle, global.player1_key2_sprint_toggle, global.player1_gamepad_button_sprint_toggle, global.player1_gamepad_button2_sprint_toggle);
+key_player2_sprint_toggle_pressed = scr_key_initialize(key_player2_sprint_toggle_pressed, 1, 2, global.player2_key_sprint_toggle, global.player2_key2_sprint_toggle, global.player2_gamepad_button_sprint_toggle, global.player2_gamepad_button2_sprint_toggle);
+key_player3_sprint_toggle_pressed = scr_key_initialize(key_player3_sprint_toggle_pressed, 1, 3, global.player3_key_sprint_toggle, global.player3_key2_sprint_toggle, global.player3_gamepad_button_sprint_toggle, global.player3_gamepad_button2_sprint_toggle);
+key_player4_sprint_toggle_pressed = scr_key_initialize(key_player4_sprint_toggle_pressed, 1, 4, global.player4_key_sprint_toggle, global.player4_key2_sprint_toggle, global.player4_gamepad_button_sprint_toggle, global.player4_gamepad_button2_sprint_toggle);
+
+if (key_player1_sprint_toggle_pressed)
+and (asset_get_type("obj_pause") == asset_object)
+and (!instance_exists(obj_pause))
+{
+	show_sprint_toggle_for_player1 = 100;
+	show_sprint_toggle_for_player2 = 0;
+	show_sprint_toggle_for_player3 = 0;
+	show_sprint_toggle_for_player4 = 0;
+	if (global.player1_sprint_toggle = false)
+	{
+		global.player1_sprint_toggle = true;
+	}
+	else
+	{
+		global.player1_sprint_toggle = false;
+	}
+}
+if (key_player2_sprint_toggle_pressed)
+and (asset_get_type("obj_pause") == asset_object)
+and (!instance_exists(obj_pause))
+{
+	show_sprint_toggle_for_player1 = 0;
+	show_sprint_toggle_for_player2 = 100;
+	show_sprint_toggle_for_player3 = 0;
+	show_sprint_toggle_for_player4 = 0;
+	if (global.player2_sprint_toggle = false)
+	{
+		global.player2_sprint_toggle = true;
+	}
+	else
+	{
+		global.player2_sprint_toggle = false;
+	}
+}
+if (key_player3_sprint_toggle_pressed)
+and (asset_get_type("obj_pause") == asset_object)
+and (!instance_exists(obj_pause))
+{
+	show_sprint_toggle_for_player1 = 0;
+	show_sprint_toggle_for_player2 = 0;
+	show_sprint_toggle_for_player3 = 100;
+	show_sprint_toggle_for_player4 = 0;
+	if (global.player3_sprint_toggle = false)
+	{
+		global.player3_sprint_toggle = true;
+	}
+	else
+	{
+		global.player3_sprint_toggle = false;
+	}
+}
+if (key_player4_sprint_toggle_pressed)
+and (asset_get_type("obj_pause") == asset_object)
+and (!instance_exists(obj_pause))
+{
+	show_sprint_toggle_for_player1 = 0;
+	show_sprint_toggle_for_player2 = 0;
+	show_sprint_toggle_for_player3 = 0;
+	show_sprint_toggle_for_player4 = 100;
+	if (global.player4_sprint_toggle = false)
+	{
+		global.player4_sprint_toggle = true;
+	}
+	else
+	{
+		global.player4_sprint_toggle = false;
+	}
+}
+#endregion /* Step Sprint Toggling END */
+
+#region /* Step Convention Mode */
+if (global.convention_mode == true)
+{
+	reset_game_if_no_interactivity += 1;
+	reset_game_if_no_interactivity_second_countdown_timer += 1;
+	if (reset_game_if_no_interactivity_second_countdown_timer >= 60)
+	{
+		reset_game_if_no_interactivity_second_countdown_timer = 0;
+		reset_game_if_no_interactivity_second_countdown -= 1;
+	}
+	if (reset_game_if_no_interactivity >= 3600)
+	{
+		game_restart();
+	}
+}
+#endregion /* Step Convention Mode END */
+
+#region /* Show HUD timers */
+
+#region /* If HUD show timer is set to always hide */
+if (global.hud_hide_time <= 0)
+or (show_letterbox > 0)
+{
+	hud_show_lives_timer = false;
+	hud_show_deaths_timer = false;
+	hud_show_basic_collectibles_timer = false;
+	hud_show_big_collectibles_timer = false;
+	hud_show_score_timer = false;
+}
+#endregion /* If HUD show timer is set to always hide */
+
+#region /* If HUD show timer is set to never hide */
+if (global.hud_hide_time >= 10)
+{
+	hud_show_lives_timer = global.hud_hide_time * 60;
+	if (global.show_deaths_counter == true)
+	{
+		hud_show_deaths_timer = global.hud_hide_time * 60;
+	}
+	hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
+	hud_show_big_collectibles_timer = global.hud_hide_time * 60;
+	hud_show_score_timer = global.hud_hide_time * 60;
+}
+#endregion /* If HUD show timer is set to never hide */
+
+if (global.hud_hide_time >= 10)
+{
+	if (global.show_deaths_counter == true)
+	{
+		hud_show_deaths_timer = global.hud_hide_time * 60;
+	}
+	hud_show_lives_timer = global.hud_hide_time * 60;
+	hud_show_deaths_timer = global.hud_hide_time * 60;
+	hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
+	hud_show_big_collectibles_timer = global.hud_hide_time * 60;
+	hud_show_score_timer = global.hud_hide_time * 60;
+}
+else
+{
+	if (hud_show_lives_timer > 0)
+	{
+		hud_show_lives_timer -= 1;
+	}
+	if (hud_show_deaths_timer > 0)
+	{
+		hud_show_deaths_timer -= 1;
+	}
+	if (hud_show_big_collectibles_timer > 0)
+	{
+		hud_show_big_collectibles_timer -= 1;
+	}
+	if (hud_show_score_timer > 0)
+	{
+		hud_show_score_timer -= 1;
+	}
+}
+
+#region /* Y position of all HUD should be lerping onto screen when it's relevant */
+if (global.hud_hide_time > 0)
+{
+	/*
+	Show these in right order:
+	Lives
+	Deaths
+	Big Collectibles
+	Basic Collectibles
+	*/
+	
+	#region /* Show Lives y position */
+	if (asset_get_type("room_world_map") == asset_room)
+	and (room == room_world_map)
+	{
+		hud_show_lives_y = 32;
+	}
+	else
+	{
+		if (hud_show_lives_timer > 0)
+		{
+			hud_show_lives_y = lerp(hud_show_lives_y, 32, 0.1);
+		}
+		else
+		{
+			hud_show_lives_y = lerp(hud_show_lives_y, -32, 0.1);
+		}
+	}
+	#endregion /* Show Lives y position END */
+	
+	#region /* Show Deaths y position */
+	if (hud_show_deaths_timer > 0)
+	and (global.show_deaths_counter == true)
+	{
+		if (hud_show_lives_y > 0)
+		{
+			hud_show_deaths_y = lerp(hud_show_deaths_y, 70, 0.1);
+		}
+		else
+		{
+			hud_show_deaths_y = lerp(hud_show_deaths_y, 32, 0.1);
+		}
+	}
+	else
+	{
+		hud_show_deaths_y = lerp(hud_show_deaths_y, -32, 0.1);
+	}
+	#endregion /* Show Deaths y position END */
+	
+	#region /* Show Big Collectibles y position */
+	if (hud_show_big_collectibles_timer > 0) /* Make sure it says BIG collectibles */
+	{
+		if (hud_show_lives_y > 0)
+		and (hud_show_deaths_y > 0)
+		{
+			hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 110, 0.1);
+		}
+		else
+		if (hud_show_lives_y > 0)
+		{
+			hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 70, 0.1);
+		}
+		else
+		{
+			hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 30, 0.1);
+		}
+	}
+	else
+	{
+		hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, -32, 0.1);
+	}
+	#endregion /* Show Big Collectibles y position END */
+	
+	#region /* Show Basic Collectible y position */
+	if (hud_show_basic_collectibles_timer > 0) /* Make sure it says BASIC collectibles */
+	{
+		hud_show_basic_collectibles_timer -= 1;
+		
+		if (hud_show_lives_y > 0)
+		and (hud_show_deaths_y > 0)
+		and (hud_show_big_collectibles_y > 0)
+		{
+			hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 150, 0.1);
+		}
+		else
+		if (hud_show_lives_y < 0)
+		and (hud_show_deaths_y > 0)
+		and (hud_show_big_collectibles_y > 0)
+		or(hud_show_lives_y > 0)
+		and (hud_show_deaths_y < 0)
+		and (hud_show_big_collectibles_y > 0)
+		or(hud_show_lives_y > 0)
+		and (hud_show_deaths_y > 0)
+		and (hud_show_big_collectibles_y < 0)
+		{
+			hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 110, 0.1);
+		}
+		else
+		if (hud_show_lives_y > 0)
+		and (hud_show_deaths_y < 0)
+		and (hud_show_big_collectibles_y < 0)
+		or(hud_show_lives_y < 0)
+		and (hud_show_deaths_y > 0)
+		and (hud_show_big_collectibles_y < 0)
+		or(hud_show_lives_y < 0)
+		and (hud_show_deaths_y < 0)
+		and (hud_show_big_collectibles_y > 0)
+		{
+			hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 64, 0.1);
+		}
+		else
+		{
+			hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 32, 0.1);
+		}
+	}
+	else
+	{
+		hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, -32, 0.1);
+	}
+	#endregion /* Show Basic Collectible y position END */
+	
+	#region /* Show Score y position */
+	if (hud_show_score_timer > 0)
+	{
+		hud_show_score_y = lerp(hud_show_score_y, 32, 0.1);
+	}
+	else
+	{
+		hud_show_score_y = lerp(hud_show_score_y, -64, 0.1);
+	}
+	#endregion /* Show Score y position END */
+	
+}
+#endregion /* Y position of all HUD should be lerping onto screen when it's relevant END */
+
+#endregion /* Show HUD timers END */
+
+#region /* Show Controls */
+if (os_type != os_ios)
+and (os_type != os_android)
+and (asset_get_type("obj_pause") == asset_object)
+and (!instance_exists(obj_pause))
+{
+	
+	#region /* Show Multiplayer Controls */
+	if (global.player1_can_play == true)
+	or (global.player2_can_play == true)
+	or (global.player3_can_play == true)
+	or (global.player4_can_play == true)
+	{
+		
+		#region /* Y position of show controls for each player */
+		if (player1_show_controls_alpha > 0)
+		and (player2_show_controls_alpha <= 0)
+		and (player3_show_controls_alpha <= 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, 32, 0.1);
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		}
+		else
+		if (player1_show_controls_alpha <= 0)
+		and (player2_show_controls_alpha > 0)
+		and (player3_show_controls_alpha <= 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		}
+		else
+		if (player1_show_controls_alpha <= 0)
+		and (player2_show_controls_alpha <= 0)
+		and (player3_show_controls_alpha > 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		}
+		else
+		if (player1_show_controls_alpha <= 0)
+		and (player2_show_controls_alpha <= 0)
+		and (player3_show_controls_alpha <= 0)
+		and (player4_show_controls_alpha > 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
+		}
+		else
+		if (player1_show_controls_alpha > 0)
+		and (player2_show_controls_alpha > 0)
+		and (player3_show_controls_alpha <= 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
+			show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		}
+		else
+		if (player1_show_controls_alpha > 0)
+		and (player2_show_controls_alpha > 0)
+		and (player3_show_controls_alpha > 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, 116, 0.1);
+			show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
+			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		}
+		else
+		if (player1_show_controls_alpha > 0)
+		and (player2_show_controls_alpha <= 0)
+		and (player3_show_controls_alpha > 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		}
+		else
+		if (player1_show_controls_alpha <= 0)
+		and (player2_show_controls_alpha > 0)
+		and (player3_show_controls_alpha > 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
+			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		}
+		else
+		if (player1_show_controls_alpha <= 0)
+		and (player2_show_controls_alpha <= 0)
+		and (player3_show_controls_alpha <= 0)
+		and (player4_show_controls_alpha <= 0)
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		}
+		else
+		{
+			show_player1_controls_y = lerp(show_player1_controls_y, 158, 0.1);
+			show_player2_controls_y = lerp(show_player2_controls_y, 116, 0.1);
+			show_player3_controls_y = lerp(show_player3_controls_y, 74, 0.1);
+			show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
+		}
+		#endregion /* Y position of show controls for each player END */
+		
+	}
+	#endregion /* Show Multiplayer Controls END */
+	
+}
+#endregion /* Show Controls END */
+
+#region /* Show what input is used */
+if (show_controller_input_change_prompt > 0)
+{
+	show_controller_input_change_prompt -= 1;
+	show_keyboard_and_mouse_input_change_prompt = 0;
+	show_controller_input_change_prompt_y = lerp(show_controller_input_change_prompt_y, -400, 0.1);
+}
+else
+{
+	show_controller_input_change_prompt_y = lerp(show_controller_input_change_prompt_y, 0, 0.1);
+}
+
+if (show_keyboard_and_mouse_input_change_prompt > 0)
+{
+	show_keyboard_and_mouse_input_change_prompt -= 1;
+	show_controller_input_change_prompt = 0;
+	show_keyboard_and_mouse_input_change_prompt_y = lerp(show_keyboard_and_mouse_input_change_prompt_y, -400, 0.1);
+}
+else
+{
+	show_keyboard_and_mouse_input_change_prompt_y = lerp(show_keyboard_and_mouse_input_change_prompt_y, 0, 0.1);
+}
+#endregion /* Show what input is used END */
+
+#region /* Letterboxing during cutscenes (when the player object is absent) */
+if (asset_get_type("obj_player") == asset_object)
+and (!instance_exists(obj_player))
+or (asset_get_type("obj_player") == asset_object)
+and (instance_exists(obj_player))
+and (obj_player.can_move = false)
+{
+	letterbox_top_y = lerp(letterbox_top_y, + 64, 0.1);
+	letterbox_bottom_y = lerp(letterbox_bottom_y, display_get_gui_height() - 64, 0.1);
+	show_letterbox = 60;
+}
+else
+{
+	letterbox_top_y = lerp(letterbox_top_y, 0, 0.1);
+	letterbox_bottom_y = lerp(letterbox_bottom_y, display_get_gui_height(), 0.1);
+	if (show_letterbox > 0)
+	{
+		show_letterbox -= 1;
+	}
+}
+#endregion /* Letterboxing during cutscenes (when the player object is absent) END */
+
+#region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
+if (iris_xscale <= 1)
+and (iris_zoom != 0)
+and (delay <= 1)
+or (instance_exists(obj_player_lose))
+and (obj_player_lose.iris_xscale <= 1)
+and (obj_player_lose.iris_zoom != 0)
+and (delay <= 1)
+{
+	black_screen_gui_alpha = lerp(black_screen_gui_alpha, 1, 0.1);
+}
+else
+{
+	black_screen_gui_alpha = lerp(black_screen_gui_alpha, 0, 0.1);
+}
+#endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */

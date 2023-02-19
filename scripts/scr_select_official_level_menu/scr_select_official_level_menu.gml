@@ -155,8 +155,8 @@ function scr_select_official_level_menu()
 			scroll_to = floor(global.select_level_index / row);
 			lerp_on = true;
 			menu_delay = 3;
-			global.level_name = "";
-			keyboard_string = "";
+			global.level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+			keyboard_string = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 			can_input_level_name = true;
 		}
 	}
@@ -272,11 +272,11 @@ function scr_select_official_level_menu()
 	{
 		if (name_enter_blink< 1)
 		{
-			scr_draw_text_outlined(394 * (global.select_level_index - column * row) + 300, 226 * (column - scroll) + 569 - 3, string(global.level_name) + "|", global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(394 * (global.select_level_index - column * row) + 300, 226 * (column - scroll) + 569 - 3, string(global.level_name) + "|", global.default_text_size, c_white, c_black, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(394 * (global.select_level_index - column * row) + 300, 226 * (column - scroll) + 569 - 3, string(global.level_name), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(394 * (global.select_level_index - column * row) + 300, 226 * (column - scroll) + 569 - 3, string(global.level_name), global.default_text_size, c_white, c_black, 1);
 		}
 	}
 	#endregion /* Inputed Name Text END */

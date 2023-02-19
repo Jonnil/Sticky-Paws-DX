@@ -1,4 +1,3 @@
-///scr_options_menu()
 function scr_options_menu()
 {
 	var get_window_height = display_get_gui_height();

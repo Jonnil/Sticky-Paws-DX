@@ -12,6 +12,14 @@ key_player1_zoom_out_hold = noone;
 key_player2_zoom_out_hold = noone;
 key_player3_zoom_out_hold = noone;
 key_player4_zoom_out_hold = noone;
+key_player1_zoom_in_release = noone;
+key_player2_zoom_in_release = noone;
+key_player3_zoom_in_release = noone;
+key_player4_zoom_in_release = noone;
+key_player1_zoom_out_release = noone;
+key_player2_zoom_out_release = noone;
+key_player3_zoom_out_release = noone;
+key_player4_zoom_out_release = noone;
 
 reset_game_if_no_interactivity = 0;
 reset_game_if_no_interactivity_second_countdown_timer = 0;

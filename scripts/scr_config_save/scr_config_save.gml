@@ -1,4 +1,3 @@
-///scr_config_save()
 function scr_config_save()
 {
 	ini_open(working_directory + "config.ini");

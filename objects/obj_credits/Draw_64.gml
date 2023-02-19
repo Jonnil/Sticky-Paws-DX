@@ -126,7 +126,7 @@ if (iris_xscale <= 0.01)
 	if (room = room_title)
 	{
 		global.character_select_in_this_menu = "main_game";
-		room_restart();
+		show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
 	}
 	else
 	{

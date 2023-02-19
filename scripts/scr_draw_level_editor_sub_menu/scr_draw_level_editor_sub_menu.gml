@@ -321,7 +321,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			or (key_a_pressed)
 			{
 				global.doing_clear_check = false;
-				global.actually_play_edited_level = true;
+				global.actually_play_edited_level = true; /* Even before going to the level, set this variable to true */
 				global.play_edited_level = true;
 				can_navigate = false;
 				menu_delay = 9999;

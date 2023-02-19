@@ -32,7 +32,6 @@ leveleditor_readme = noone; /* Readme textfile for how to use the level editor *
 /* There are more debug toggles in different objects, so click ctrl + shift + F and search "Debug toggles" to find the other debug toggles */
 global.can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
 global.debug_screen = false;
-global.deactivate_objects_outside_view = true; /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
 global.show_fps = false; /* Show fps for optimization debug */
 global.show_fps_real = false; /* Show fps real for optimization debug */
 global.show_instance_count = false; /* Show instance count for optimization debug */
@@ -427,13 +426,6 @@ scr_set_default_remapping_player3_gamepad();
 scr_set_default_remapping_player4_keyboard();
 scr_set_default_remapping_player4_gamepad();
 
-#region /* Load Config */
-if (asset_get_type("scr_config_load") == asset_script)
-{
-	scr_config_load();
-}
-#endregion /* Load Config END */
-
 #region /* Set default language */
 if (file_exists("localization.csv"))
 {
@@ -548,4 +540,12 @@ enum volume_source
 	sound = 5,
 	voice = 6
 }
+
+#region /* Load Config */
+if (asset_get_type("scr_config_load") == asset_script)
+{
+	scr_config_load();
+}
+#endregion /* Load Config END */
+
 #endregion /* Things you shouldn't change, warning, don't change any of these options or you might break the game! END */

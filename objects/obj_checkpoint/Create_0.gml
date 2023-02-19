@@ -4,8 +4,8 @@ mask_index = spr_checkpoint;
 get_rewards_cooldown = 10;
 checkpoint_number = 1; /* Tell the player which checkpoint they're activating */
 checkpoint_number_max = 1; /* Tell the player how many checkpoints exist in the level */
-if (global.checkpoint_x == x)
-and (global.checkpoint_y == y)
+if (global.checkpoint_x == xstart)
+and (global.checkpoint_y == ystart)
 {
 	checkpoint_activated = true;
 }

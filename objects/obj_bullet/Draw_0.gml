@@ -7,7 +7,7 @@ and (global.assist_enable_enemies == false)
 #endregion /* If enemies are disabled, destroy this object END */
 
 if (die_volting = - 1)
-or(die_volting = +1)
+or (die_volting = +1)
 {
 	if (die_volting = - 1)
 	{
@@ -65,14 +65,17 @@ else
 	hspeed = +4;
 }
 
+var view_left = camera_get_view_x(view_camera[view_current]) - 22;
+var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 22;
+
 if (asset_get_type("obj_camera") == asset_object)
 and (instance_exists(obj_camera))
-and (x < obj_camera.view_x_center - 980)
+and (x < view_left)
 and (image_xscale < 0)
 and (draw_xscale >= 0.8)
 or (asset_get_type("obj_camera") == asset_object)
 and (instance_exists(obj_camera))
-and (x > obj_camera.view_x_center + 980)
+and (x > view_right)
 and (image_xscale > 0)
 and (draw_xscale >= 0.8)
 {

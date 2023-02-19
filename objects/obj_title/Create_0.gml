@@ -1,18 +1,3 @@
-#region /* Create Camera */
-if (asset_get_type("obj_camera") == asset_object)
-and (!instance_exists(obj_camera))
-{
-	instance_create_depth(x, y, 0, obj_camera);
-}
-else
-if (asset_get_type("obj_camera") == asset_object)
-and (instance_exists(obj_camera))
-{
-	x = obj_camera.x;
-	y = obj_camera.y;
-}
-#endregion /* Create Camera END */
-
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 

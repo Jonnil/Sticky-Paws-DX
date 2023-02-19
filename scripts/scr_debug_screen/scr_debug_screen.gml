@@ -16,7 +16,7 @@ function scr_debug_screen()
 	}
 	else
 	{
-		var fps_real_target = 250; /* fps real should be above 250 on most devices */
+		var fps_real_target = 300; /* fps real should be above 250 on most devices */
 	}
 	var instance_count_target = 200;
 	

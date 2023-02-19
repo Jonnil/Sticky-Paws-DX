@@ -54,17 +54,12 @@ function scr_player_move_save_whole_level_as_screenshot()
 		surface_resize(application_surface, 1920, 1080);
 		window_set_rectangle(0, 0, 1920, 1080);
 		scr_set_screen_size();
-		if (asset_get_type("obj_camera") == asset_object)
-		and (!instance_exists(obj_camera))
-		{
-			instance_create_depth(x, y, 0, obj_camera);
-		}
 		global.full_level_map_screenshot = false;
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
 		full_level_map_screenshot_timer = 0;
 		can_move = true;
-		room_restart();
+		show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
 	}
 	#endregion /* Save whole level as screenshot png file END */
 	

@@ -3,33 +3,6 @@ if (get_rewards_cooldown > 0)
 	get_rewards_cooldown -= 1;
 }
 
-#region /* Gravity */
-if (asset_get_type("obj_wall") == asset_object)
-and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-and (asset_get_type("obj_camera") == asset_object)
-and (instance_exists(obj_camera))
-and (x < obj_camera.view_x_center + 960)
-and (x > obj_camera.view_x_center - 960)
-and (y < obj_camera.view_y_center + 960)
-and (y > obj_camera.view_y_center - 960)
-{
-	gravity = 0.5;
-}
-else
-{
-	hspeed = 0;
-	vspeed = 0;
-	gravity = 0;
-	x = xprevious;
-	y = yprevious;
-}
-if (vspeed >= 16)
-{
-	vspeed = 16;
-}
-#endregion /* Gravity END */
-
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 {
@@ -161,8 +134,8 @@ and (instance_exists(obj_player))
 					
 					if (global.doing_clear_check == false) /* Don't save these things if you're doing a clear check. You need to restart from the very start if you lose, regardless if you hit checkpoints */
 					{
-						global.checkpoint_x = x;
-						global.checkpoint_y = y;
+						global.checkpoint_x = xstart;
+						global.checkpoint_y = ystart;
 						global.checkpoint_millisecond = global.timeattack_millisecond;
 						global.checkpoint_second = global.timeattack_second;
 						global.checkpoint_minute = global.timeattack_minute;
@@ -228,50 +201,45 @@ and (instance_exists(obj_player))
 						}
 						#endregion /* Save Level Editor Checkpoint END */
 						
-						#region /* Load correct sprite when you get the checkpoint */
-						if (global.checkpoint_x == x)
-						and (global.checkpoint_y == y)
+					}
+					
+					#region /* Load correct sprite when you get the checkpoint */
+					if (global.checkpoint_x == xstart)
+					and (global.checkpoint_y == ystart)
+					{
+						if (instance_exists(obj_camera))
+						and (instance_exists(obj_player))
 						{
-							if (instance_exists(obj_camera))
-							and (instance_exists(obj_player))
+							if (checkpoint_which_player == 1)
+							and (obj_camera.player1 > 0)
+							and (instance_exists(obj_camera.player1))
+							and (obj_camera.player1.sprite_checkpoint_activated > 0)
 							{
-								if (checkpoint_which_player == 1)
-								and (obj_camera.player1 > 0)
-								and (instance_exists(obj_camera.player1))
-								and (obj_camera.player1.sprite_checkpoint_activated > 0)
-								{
-									sprite_index = obj_camera.player1.sprite_checkpoint_activated;
-								}
-								else
-								if (checkpoint_which_player = 2)
-								and (obj_camera.player2 > 0)
-								and (instance_exists(obj_camera.player2))
-								and (obj_camera.player2.sprite_checkpoint_activated > 0)
-								{
-									sprite_index = obj_camera.player2.sprite_checkpoint_activated;
-								}
-								else
-								if (checkpoint_which_player = 3)
-								and (obj_camera.player3 > 0)
-								and (instance_exists(obj_camera.player3))
-								and (obj_camera.player3.sprite_checkpoint_activated > 0)
-								{
-									sprite_index = obj_camera.player3.sprite_checkpoint_activated;
-								}
-								else
-								if (checkpoint_which_player = 4)
-								and (obj_camera.player4 > 0)
-								and (instance_exists(obj_camera.player4))
-								and (obj_camera.player4.sprite_checkpoint_activated > 0)
-								{
-									sprite_index = obj_camera.player4.sprite_checkpoint_activated;
-								}
-								else
-								{
-									sprite_index = spr_checkpoint;
-									image_index = 1;
-									image_speed = 0;
-								}
+								sprite_index = obj_camera.player1.sprite_checkpoint_activated;
+							}
+							else
+							if (checkpoint_which_player = 2)
+							and (obj_camera.player2 > 0)
+							and (instance_exists(obj_camera.player2))
+							and (obj_camera.player2.sprite_checkpoint_activated > 0)
+							{
+								sprite_index = obj_camera.player2.sprite_checkpoint_activated;
+							}
+							else
+							if (checkpoint_which_player = 3)
+							and (obj_camera.player3 > 0)
+							and (instance_exists(obj_camera.player3))
+							and (obj_camera.player3.sprite_checkpoint_activated > 0)
+							{
+								sprite_index = obj_camera.player3.sprite_checkpoint_activated;
+							}
+							else
+							if (checkpoint_which_player = 4)
+							and (obj_camera.player4 > 0)
+							and (instance_exists(obj_camera.player4))
+							and (obj_camera.player4.sprite_checkpoint_activated > 0)
+							{
+								sprite_index = obj_camera.player4.sprite_checkpoint_activated;
 							}
 							else
 							{
@@ -280,9 +248,15 @@ and (instance_exists(obj_player))
 								image_speed = 0;
 							}
 						}
-						#endregion /* Load correct sprite when you get the checkpoint END */
-						
+						else
+						{
+							sprite_index = spr_checkpoint;
+							image_index = 1;
+							image_speed = 0;
+						}
 					}
+					#endregion /* Load correct sprite when you get the checkpoint END */
+					
 				}
 			}
 		}

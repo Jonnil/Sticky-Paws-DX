@@ -1,4 +1,5 @@
 scr_set_controls_used_to_navigate();
+scr_set_screen_size();
 
 #region /* Play title screen music */
 if (title_music > noone)

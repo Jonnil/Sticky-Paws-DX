@@ -34,7 +34,7 @@ and (stomped_delay == 0)
 			{
 				vspeed = - 8;
 				die = true;
-				die_volting = - 1;
+				die_volting = -1;
 			}
 			else
 			{
@@ -1810,7 +1810,7 @@ and (stomped_delay == 0)
 				if (other.x < x)
 				{
 					vspeed = - 8;
-					die_volting = - 1;
+					die_volting = -1;
 				}
 				else
 				{

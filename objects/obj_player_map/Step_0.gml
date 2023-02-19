@@ -9,7 +9,7 @@ or (!file_exists(working_directory + "/save_files/file" + string(current_file) +
 {
 	current_file = global.file;
 	room_persistent = false;
-	room_restart();
+	show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
 }
 #endregion /* When changing file, you should restart the room so the right save data can load END */
 
