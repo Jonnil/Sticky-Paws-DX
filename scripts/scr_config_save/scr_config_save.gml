@@ -37,6 +37,7 @@ function scr_config_save()
 	ini_write_real("config", "show_collision_mask", global.show_collision_mask);
 	ini_write_real("config", "volume_main", global.volume_main * 10000);
 	ini_write_real("config", "volume_music", global.volume_music * 10000);
+	ini_write_real("config", "volume_jingle", global.volume_jingle * 10000);
 	ini_write_real("config", "volume_sound", global.volume_sound * 10000);
 	ini_write_real("config", "volume_ambient", global.volume_ambient * 10000);
 	ini_write_real("config", "volume_footstep", global.volume_footstep * 10000);

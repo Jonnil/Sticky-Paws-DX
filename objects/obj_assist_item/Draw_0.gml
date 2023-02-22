@@ -26,7 +26,7 @@ if (instance_number(obj_player)= 1)
 #region /* Destroy Assist Item if appearing in rooms it's not meant to be in */
 if (asset_get_type("room_title") == asset_room)
 {
-	if (room = room_title)
+	if (room == room_title)
 	{
 		instance_destroy();
 	}
@@ -34,7 +34,7 @@ if (asset_get_type("room_title") == asset_room)
 else
 if (asset_get_type("room_world_map") == asset_room)
 {
-	if (room = room_world_map)
+	if (room == room_world_map)
 	{
 		instance_destroy();
 	}

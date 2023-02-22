@@ -33,6 +33,7 @@ function scr_save_level()
 		ini_write_real("Player", "current_hour", current_hour);
 		ini_write_real("Player", "current_minute", current_minute);
 		ini_write_real("Player", "current_second", current_second);
+		ini_write_real("Player", "brand_new_file", false); /* Make absolutely sure that the game knows you're not starting on a brand new file if you hit checkpoints or goals */
 		ini_write_real(level_name, "lives_until_assist", global.lives_until_assist);
 		ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
 		ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);

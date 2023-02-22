@@ -1,4 +1,4 @@
-if (room = room_leveleditor)
+if (room == room_leveleditor)
 {
 	image_alpha = 0.5;
 	depth = -10;

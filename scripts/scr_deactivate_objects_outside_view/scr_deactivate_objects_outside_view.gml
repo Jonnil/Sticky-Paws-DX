@@ -3,7 +3,6 @@ function scr_deactivate_objects_outside_view()
 	#region /* Debug toggles */
 	var deactivate_objects_outside_view = true; /* This is for debug purposes, and should always be set to true when playing the game normally */
 	var can_activate_always_active_objects = true;
-	var deactivate_from_center = false;
 	#endregion /* Debug toggles END */
 	
 	#region /* Deactivate instances outside view */
@@ -14,7 +13,7 @@ function scr_deactivate_objects_outside_view()
 		{
 			view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) * 0.5);
 			view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) * 0.5);
-			if (deactivate_from_center == false)
+			if (global.deactivate_objects_from_most_zoomed_out == false)
 			{
 				instance_deactivate_region(
 				camera_get_view_x(view_camera[view_current]) - 64,

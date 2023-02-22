@@ -1,5 +1,4 @@
 #region /* Debug toggles */
-can_create_foreground = true;
 can_spawn_players = true;
 #endregion /* Debug toggles END */
 
@@ -166,37 +165,6 @@ else
 }
 alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
 #endregion /* Lives Icon END */
-
-#region /* Create Foreground and Background Brightness Layer */
-if (can_create_foreground == true)
-{
-	if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
-	and (!instance_exists(obj_background_brightness_gameplay))
-	{
-		instance_create_depth(0, 0, 0, obj_background_brightness_gameplay);
-	}
-	if (asset_get_type("obj_foreground1") == asset_object)
-	and (!instance_exists(obj_foreground1))
-	{
-		instance_create_depth(0, 0, 0, obj_foreground1);
-	}
-	if (asset_get_type("obj_foreground_above_static_objects") == asset_object)
-	and (!instance_exists(obj_foreground_above_static_objects))
-	{
-		instance_create_depth(0, 0, 0, obj_foreground_above_static_objects);
-	}
-	if (asset_get_type("obj_foreground2") == asset_object)
-	and (!instance_exists(obj_foreground2))
-	{
-		instance_create_depth(0, 0, 0, obj_foreground2);
-	}
-	if (asset_get_type("obj_foreground_secret") == asset_object)
-	and (!instance_exists(obj_foreground_secret))
-	{
-		instance_create_depth(0, 0, 0, obj_foreground_secret);
-	}
-}
-#endregion /* Create Foreground and Background Brightness Layer END */
 
 save_level_as_png = false;
 can_spawn_player1 = true;

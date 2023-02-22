@@ -273,9 +273,9 @@ if (global.actually_play_edited_level == false)
 		}
 
 		#endregion /* All code before initializing the object */
-
+		
 		#region /* Difficulty settings per object */
-	
+		
 		#region /* Set to appear on difficulty level */
 		if (!mouse_check_button(mb_right))
 		and (instance_exists(obj_leveleditor))
@@ -285,7 +285,7 @@ if (global.actually_play_edited_level == false)
 		and (obj_leveleditor.drag_object == false)
 		and (obj_leveleditor.erase_mode == false)
 		and (obj_leveleditor.pause == false)
-
+		
 		or (instance_exists(obj_leveleditor))
 		and (!obj_leveleditor.key_b_hold)
 		and (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2))
@@ -296,13 +296,13 @@ if (global.actually_play_edited_level == false)
 		and (obj_leveleditor.pause == false)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
-	
+			
 			/* Place Brush Size 1 */
 			or (obj_leveleditor.place_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y, id))
 			or (obj_leveleditor.place_brush_size >= 1) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y + 32, id))
 			or (obj_leveleditor.place_brush_size >= 1) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 32, id))
 			/* Place Brush Size 1 END */
-	
+			
 			/* Place Brush Size 2 */
 			or (obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 32, id))
 			or (obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y - 32, id))
@@ -310,7 +310,7 @@ if (global.actually_play_edited_level == false)
 			or (obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y, id))
 			or (obj_leveleditor.place_brush_size >= 2) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y + 32, id))
 			/* Place Brush Size 2 END */
-	
+			
 			/* Place Brush Size 3 */
 			or (obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 32, id))
 			or (obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y, id))
@@ -320,7 +320,7 @@ if (global.actually_play_edited_level == false)
 			or (obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x, obj_leveleditor.y + 64, id))
 			or (obj_leveleditor.place_brush_size >= 3) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y + 64, id))
 			/* Place Brush Size 3 END */
-	
+			
 			/* Place Brush Size 4 */
 			or (obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 64, obj_leveleditor.y - 64, id))
 			or (obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x + 32, obj_leveleditor.y - 64, id))
@@ -332,7 +332,7 @@ if (global.actually_play_edited_level == false)
 			or (obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y + 32, id))
 			or (obj_leveleditor.place_brush_size >= 4) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y + 64, id))
 			/* Place Brush Size 4 END */
-	
+			
 			/* Place Brush Size 5 */
 			or (obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x + 96, obj_leveleditor.y - 64, id))
 			or (obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x + 96, obj_leveleditor.y - 32, id))
@@ -346,7 +346,7 @@ if (global.actually_play_edited_level == false)
 			or (obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 32, obj_leveleditor.y + 96, id))
 			or (obj_leveleditor.place_brush_size >= 5) and (position_meeting(obj_leveleditor.x - 64, obj_leveleditor.y + 96, id))
 			/* Place Brush Size 5 END */
-	
+			
 			{
 				if (obj_leveleditor.difficulty_layer == 1)
 				and (obj_leveleditor.set_difficulty_mode == true)
@@ -380,7 +380,7 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		#endregion /* Set to appear on difficulty level END */
-
+		
 		#region /* Set to dissapear on difficulty level */
 		if (!mouse_check_button(mb_left))
 		and (instance_exists(obj_leveleditor))
@@ -388,7 +388,7 @@ if (global.actually_play_edited_level == false)
 		and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 		and (mouse_check_button(mb_right))
 		and (obj_leveleditor.pause == false)
-
+		
 		or (instance_exists(obj_leveleditor))
 		and (!obj_leveleditor.key_a_hold)
 		and (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2))
@@ -480,20 +480,21 @@ if (global.actually_play_edited_level == false)
 						hard = false;
 					}
 				}
+				
+				#region /* Run this code after setting difficulty variables to false. If all difficulty variables are false, then delete the object */
+				if (easy == false)
+				and (normal == false)
+				and (hard == false)
+				{
+					instance_destroy();
+				}
+				#endregion /* Run this code after setting difficulty variables to false. If all difficulty variables are false, then delete the object END */
+				
 			}
 		}
 		#endregion /* Set to dissapear on difficulty level END */
-
-		#region /* Run this code after setting difficulty variables to false. If all difficulty variables are false, then delete the object */
-		if (easy == false)
-		and (normal == false)
-		and (hard == false)
-		{
-			instance_destroy();
-		}
-		#endregion /* Run this code after setting difficulty variables to false. If all difficulty variables are false, then delete the object END */
-
+		
 		#endregion /* Difficulty settings per object END */
-	
+		
 	}
 }

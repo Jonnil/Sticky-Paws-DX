@@ -3,16 +3,20 @@
 #region /* Debug toggles */
 can_load_level = true;
 can_initialize_level_information = true;
+can_set_background = true;
 can_create_foreground = true;
 can_create_water_level = true;
 can_load_custom_sprites = true;
 #endregion /* Debug toggles END */
 
 #region /* Backgrounds */
-layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);
-layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);
-layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), global.custom_background3);
-layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), global.custom_background4);
+if (can_set_background == true)
+{
+	layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);
+	layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);
+	layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), global.custom_background3);
+	layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), global.custom_background4);
+}
 #endregion /* Backgrounds END */
 
 #region /* Essential variables */
@@ -276,17 +280,17 @@ if (can_create_foreground == true)
 	{
 		instance_create_depth(0, 0, 0, obj_foreground_secret);
 	}
+	
+	#region /* Create Background Brightness in Gameplay */
+	if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
+	and (!instance_exists(obj_background_brightness_gameplay))
+	{
+		instance_create_depth(x, y, 0, obj_background_brightness_gameplay);
+	}
+	#endregion /* Create Background Brightness in Gameplay END */
+	
 }
 #endregion /* Create Foreground END */
-
-#region /* Create Background Brightness in Gameplay */
-if (can_create_foreground == true)
-and (asset_get_type("obj_background_brightness_gameplay") == asset_object)
-and (!instance_exists(obj_background_brightness_gameplay))
-{
-	instance_create_depth(x, y, 0, obj_background_brightness_gameplay);
-}
-#endregion /* Create Background Brightness in Gameplay END */
 
 #region /* Create level height and level width objects */
 if (asset_get_type("obj_level_height") == asset_object)
@@ -632,6 +636,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	
 	#endregion /* Custom Backgrounds END */
 	
+	#region /* Make every tileset into default tileset */
 	if (ini_key_exists("info", "make_every_tileset_into_default_tileset"))
 	{
 		global.make_every_tileset_into_default_tileset = ini_read_real("info", "make_every_tileset_into_default_tileset", false);
@@ -645,6 +650,9 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		global.make_every_tileset_into_default_tileset = false;
 	}
+	#endregion /* Make every tileset into default tileset END */
+	
+	#region /* Enable time countdown */
 	if (ini_key_exists("info", "enable_time_countdown"))
 	{
 		global.time_countdown = ini_read_real("info", "enable_time_countdown", false);
@@ -658,6 +666,9 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		global.enable_time_countdown = false;
 	}
+	#endregion /* Enable time countdown END */
+	
+	#region /* Time countdown */
 	if (ini_key_exists("info", "time_countdown"))
 	{
 		global.time_countdown = ini_read_real("info", "time_countdown", 500); /* Set the countdown to whatever is stored in the level_information.ini file */
@@ -671,6 +682,9 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		global.time_countdown = 500;
 	}
+	#endregion /* Time countdown END */
+	
+	#region /* Rain */
 	if (ini_key_exists("info", "rain"))
 	{
 		global.rain = ini_read_real("info", "rain", false);
@@ -684,6 +698,24 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 		}
 		global.rain = false;
 	}
+	#endregion /* Rain END */
+	
+	#region /* Deactivate objects from center */
+	if (ini_key_exists("info", "deactivate_objects_from_most_zoomed_out"))
+	{
+		global.deactivate_objects_from_most_zoomed_out = ini_read_real("info", "deactivate_objects_from_most_zoomed_out", false);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_string("info", "deactivate_objects_from_most_zoomed_out", false);
+		}
+		global.deactivate_objects_from_most_zoomed_out = false;
+	}
+	#endregion /* Deactivate objects from center END */
+	
 	if (global.play_edited_level = false)
 	and (global.actually_play_edited_level == false)
 	{
@@ -1063,6 +1095,7 @@ if (global.actually_play_edited_level == false)
 	room_speed = global.max_fps; /* Set correct fps */
 	x = mouse_x;
 	y = mouse_y;
+	show_level_editor_corner_menu = true;
 	view_hview_lerp = 0;
 	view_wview_lerp = 0;
 	controller_x = mouse_x;
@@ -1086,6 +1119,7 @@ if (global.actually_play_edited_level == false)
 	zoom_reset = false; /* When this is true, reset zoom */
 	zoom_out = false; /* When this is true, zoom out */
 	difficulty_layer = 0; /* 0 = All, 1 = Easy, 2 = Normal, 3 = Hard */
+	level_editor_edit_name = false;
 	set_difficulty_mode = false; /* Toggle so you get a pen that can select what object appear in what difficulty */
 	place_object = noone;
 	placing_object = 0; /* If you are currently placing any object or not. This check is used for when modifying other objects, it shouldn't happen when currently placing any object */

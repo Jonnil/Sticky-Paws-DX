@@ -123,10 +123,29 @@ and (sprite_index = spr_credits)
 
 if (iris_xscale <= 0.01)
 {
-	if (room = room_title)
+	if (room == room_title)
 	{
 		global.character_select_in_this_menu = "main_game";
-		show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
+		room_restart();
+	}
+	else
+	if (room == room_leveleditor)
+	and (global.character_select_in_this_menu == "level_editor")
+	and (global.actually_play_edited_level == true)
+	and (global.play_edited_level == true)
+	{
+		global.actually_play_edited_level = false;
+		global.play_edited_level = false;
+		room_goto(room_title);
+	}
+	else
+	if (room == room_leveleditor)
+	and (global.character_select_in_this_menu == "level_editor")
+	and (global.actually_play_edited_level == false)
+	and (global.play_edited_level == true)
+	{
+		global.play_edited_level = false;
+		room_restart();
 	}
 	else
 	{

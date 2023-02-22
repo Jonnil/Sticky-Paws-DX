@@ -1,7 +1,5 @@
 if (global.actually_play_edited_level == false)
 {
-	var mouse_get_x = device_mouse_x_to_gui(0);
-	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	///Draw Event
 	draw_set_alpha(0.5);

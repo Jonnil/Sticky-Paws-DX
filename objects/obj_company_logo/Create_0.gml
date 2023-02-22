@@ -342,6 +342,7 @@ global.enable_time_countdown = false; /* If timer should be enabled in specific 
 global.time_countdown = 500; /* Countdown timer before you get a Time Over, default should be "500" in case there is a countdown */
 global.time_countdown_bonus = 500; /* Bonus countdown timer that gives extra points if you finish a level quickly, default should be "500" so you get bonus points if you win a level less than 8 minutes */
 global.rain = false;
+global.deactivate_objects_from_most_zoomed_out = false; /* In some levels, you want to deactivate objects from most zoomed out state, so objects are working outside view */
 global.make_every_tileset_into_default_tileset = false;
 global.timeattack_millisecond = 0;
 global.timeattack_second = 0;

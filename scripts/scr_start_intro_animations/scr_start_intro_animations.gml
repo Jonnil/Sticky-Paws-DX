@@ -110,11 +110,11 @@ function scr_start_intro_animations()
 				}
 				if (!instance_exists(obj_cake))
 				{
-					instance_create_depth(- 16 -sprite_width, y, 0, obj_cake);
+					instance_create_depth(-16, y, 0, obj_cake);
 				}
 				if (!instance_exists(obj_cake_stealing_enemy))
 				{
-					with(instance_create_depth(- 16 -sprite_width, y, 0, obj_cake_stealing_enemy))
+					with(instance_create_depth(-16, y, 0, obj_cake_stealing_enemy))
 					{
 						time = room_speed* 2;
 					}

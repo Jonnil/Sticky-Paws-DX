@@ -205,7 +205,7 @@ function scr_player_move_lose()
 			
 			else
 			{
-				show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
+				room_restart();
 			}
 			
 			#region /* Stop invincibility music if you're the last player dying */

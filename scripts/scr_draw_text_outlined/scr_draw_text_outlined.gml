@@ -11,7 +11,7 @@
 function scr_draw_text_outlined(x_position = x, y_position = y, string_text = "", text_size = global.default_text_size, outline_color = c_white, text_color = c_black, img_alpha = 1)
 {
 	#region /* Debug toggles */
-	var draw_outline = false; /* Drawing outline this way is intense on performance */
+	var draw_outline = true; /* Drawing outline this way is intense on performance */
 	var draw_fill = true;
 	#endregion /* Debug toggles END */
 	

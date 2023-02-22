@@ -8,6 +8,10 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 			{
 				var default_blend = ds_grid_get(global.object_grid, 6, i);
 			}
+			else
+			{
+				var default_blend = c_white;
+			}
 	    }
 		
 		#region /* Make sprite transparent if you're setting difficulty levels */
@@ -22,7 +26,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 			and (normal == true)
 			{
 				image_alpha = 1;
-				image_blend = default_blend;;
+				image_blend = default_blend;
 			}
 			#endregion /* Show only normal difficulty layer in regular colors when saving a thumbnail END */
 			
@@ -49,7 +53,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 				and (hard == false)
 				{
 					image_alpha = 0.1;
-					image_blend = default_blend;;
+					image_blend = default_blend;
 				}
 				else
 				if (easy == false)
@@ -65,7 +69,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 				and (hard == true)
 				{
 					image_alpha = 0.1;
-					image_blend = default_blend;;
+					image_blend = default_blend;
 				}
 				else
 				if (easy == false)
@@ -81,7 +85,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 				and (hard == true)
 				{
 					image_alpha = 0.1;
-					image_blend = default_blend;;
+					image_blend = default_blend;
 				}
 				#endregion /* Transparent Object END */
 				
@@ -91,7 +95,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 				and (hard == true)
 				{
 					image_alpha = 1;
-					image_blend = default_blend;;
+					image_blend = default_blend;
 				}
 			}
 			#endregion /* All layer END */
@@ -126,7 +130,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 					and (hard == false)
 					{
 						image_alpha = 0.1;
-						image_blend = default_blend;;
+						image_blend = default_blend;
 					}
 					else
 					if (easy == false)
@@ -142,7 +146,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 					and (hard == true)
 					{
 						image_alpha = 0.1;
-						image_blend = default_blend;;
+						image_blend = default_blend;
 					}
 					else
 					if (easy == false)
@@ -158,7 +162,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 					and (hard == true)
 					{
 						image_alpha = 0.1;
-						image_blend = default_blend;;
+						image_blend = default_blend;
 					}
 					#endregion /* Transparent Object END */
 					
@@ -194,7 +198,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 					and (hard == false)
 					{
 						image_alpha = 0.1;
-						image_blend = default_blend;;
+						image_blend = default_blend;
 					}
 					else
 					if (easy == false)
@@ -210,7 +214,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 					and (hard == true)
 					{
 						image_alpha = 0.1;
-						image_blend = default_blend;;
+						image_blend = default_blend;
 					}
 					else
 					if (easy == false)
@@ -226,7 +230,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 					and (hard == true)
 					{
 						image_alpha = 0.1;
-						image_blend = default_blend;;
+						image_blend = default_blend;
 					}
 					#endregion /* Transparent Object END */
 					
@@ -262,7 +266,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 					and (hard == false)
 					{
 						image_alpha = 0.1;
-						image_blend = default_blend;;
+						image_blend = default_blend;
 					}
 					else
 					if (easy == false)
@@ -278,7 +282,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 					and (hard == true)
 					{
 						image_alpha = 0.1;
-						image_blend = default_blend;;
+						image_blend = default_blend;
 					}
 					else
 					if (easy == false)
@@ -294,7 +298,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 					and (hard == true)
 					{
 						image_alpha = 0.1;
-						image_blend = default_blend;;
+						image_blend = default_blend;
 					}
 					#endregion /* Transparent Object END */
 					
@@ -307,7 +311,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 		if (global.character_select_in_this_menu == "level_editor")
 		{
 			image_alpha = 1;
-			image_blend = default_blend;;
+			image_blend = default_blend;
 		}
 		#endregion /* Make sprite transparent if you're setting difficulty levels END */
 		

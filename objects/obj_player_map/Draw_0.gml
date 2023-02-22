@@ -30,7 +30,6 @@ and (point_distance(xx, yy, x, y) < 40)
 	if (instance_nearest(x, y, obj_level).clear_rate == "enter")
 	or (instance_nearest(x, y, obj_level).clear_rate == "clear")
 	{
-		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		
@@ -50,6 +49,23 @@ and (point_distance(xx, yy, x, y) < 40)
 			best_score_y = -96;
 			best_time_y = -128;
 			show_big_collectibles_y = -160;
+		}
+		
+		if (global.show_deaths_counter == true)
+		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
+		or (instance_nearest(x, y, obj_level).number_of_clears > 0)
+		or (instance_nearest(x, y, obj_level).level_score > 0)
+		or (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
+		and (instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
+		or (instance_nearest(x, y, obj_level).big_collectible1 == true)
+		or (instance_nearest(x, y, obj_level).big_collectible2 == true)
+		or (instance_nearest(x, y, obj_level).big_collectible3 == true)
+		or (instance_nearest(x, y, obj_level).big_collectible4 == true)
+		or (instance_nearest(x, y, obj_level).big_collectible5 == true)
+		{
+			draw_set_alpha(0.9);
+			draw_rectangle_color(x - 140, y - abs(show_big_collectibles_y) - 16, x + 140, y - 52, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
 		}
 		
 		#region /* Total number of deaths */

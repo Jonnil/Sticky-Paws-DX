@@ -1,5 +1,6 @@
 scr_set_controls_used_to_navigate();
 scr_set_screen_size();
+scr_character_select_menu_step();
 
 #region /* Play title screen music */
 if (title_music > noone)

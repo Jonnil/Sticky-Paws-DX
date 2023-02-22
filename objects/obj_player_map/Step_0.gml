@@ -9,7 +9,7 @@ or (!file_exists(working_directory + "/save_files/file" + string(current_file) +
 {
 	current_file = global.file;
 	room_persistent = false;
-	show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
+	room_restart();
 }
 #endregion /* When changing file, you should restart the room so the right save data can load END */
 
@@ -28,7 +28,7 @@ if (global.quit_level == true)
 	#endregion /* Save Player Position END */
 	
 	global.quit_level = false;
-	room_persistent = false;
+	room_persistent = false; /* Whenever you quit the game, you need to turn off room persistent */
 	if (asset_get_type("room_title") == asset_room)
 	{
 		room_goto(room_title);
@@ -152,51 +152,57 @@ or (gamepad_button_check_pressed(0, gp_start))
 or (!window_has_focus())
 and (global.automatically_pause_when_window_is_unfocused == true)
 {
+	global.pause_player = 0;
+	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
+	room_persistent = true;
+	global.pause_room = room;
+	audio_pause_all();
 	if (asset_get_type("room_pause") == asset_room)
 	{
-		global.pause_player = 0;
-		global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-		room_persistent = true;
-		global.pause_room = room;
-		audio_pause_all();
 		room_goto(room_pause);
 	}
 }
 else
 if (gamepad_button_check_pressed(1, gp_select))
 or (gamepad_button_check_pressed(1, gp_start))
-and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 1;
 	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
 	room_persistent = true;
 	global.pause_room = room;
 	audio_pause_all();
-	room_goto(room_pause);
+	if (asset_get_type("room_pause") == asset_room)
+	{
+		room_goto(room_pause);
+	}
 }
 else
 if (gamepad_button_check_pressed(2, gp_select))
 or (gamepad_button_check_pressed(2, gp_start))
-and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 2;
 	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
 	room_persistent = true;
 	global.pause_room = room;
 	audio_pause_all();
-	room_goto(room_pause);
+	if (asset_get_type("room_pause") == asset_room)
+	{
+		room_goto(room_pause);
+	}
 }
 else
 if (gamepad_button_check_pressed(3, gp_select))
 or (gamepad_button_check_pressed(3, gp_start))
-and (asset_get_type("room_pause") == asset_room)
 {
 	global.pause_player = 3;
 	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
 	room_persistent = true;
 	global.pause_room = room;
 	audio_pause_all();
-	room_goto(room_pause);
+	if (asset_get_type("room_pause") == asset_room)
+	{
+		room_goto(room_pause);
+	}
 }
 #endregion /* Pause END */
 
@@ -695,6 +701,9 @@ and (iris_yscale <= 0.001)
 and (asset_get_type("obj_level") == asset_object)
 and (global.quit_level == false)
 {
+	room_persistent = false; /* Whenever you enter a level, you need to turn off room persistent */
+	/* Otherwise when trying to win or quit a level, you'll get back to a world map that saved when you were entering a level, making you loop to enter a level over and over again */
+	
 	/* Don't set entering_level to false, or can_move to true here */
 	/* Create Event will take care of that when you enter the world map again */
 	/* Doing this code here will make the iris zoom out a bit before properly entering the level */
@@ -917,7 +926,7 @@ and (speed == 0)
 		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
-		ini_write_real("Player", "brand_new_file", false)
+		ini_write_real("Player", "brand_new_file", false);
 		ini_close();
 		#endregion /* Save Player Position END */
 		
@@ -993,7 +1002,7 @@ if (key_b_pressed)
 			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			ini_write_real("Player", "player_x", x);
 			ini_write_real("Player", "player_y", y);
-			ini_write_real("Player", "brand_new_file", false)
+			ini_write_real("Player", "brand_new_file", false);
 			ini_close();
 			#endregion /* Save Player Position END */
 			

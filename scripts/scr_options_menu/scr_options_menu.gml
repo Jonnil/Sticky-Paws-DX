@@ -2557,7 +2557,7 @@ function scr_options_menu()
 			
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 450, 20 + (40 * 6) + 2, 450 + 371, 20 + (40 * 6) + 41))
 				and (global.controls_used_for_menu_navigation == "mouse")
-				and (mouse_check_button_pressed(mb_left))
+				and (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				or (menu == "open_save_file_folder")
 				and (key_a_pressed)
@@ -3337,9 +3337,9 @@ function scr_options_menu()
 				}
 			}
 			#endregion /* Assist Enable Spikes Navigation END */
-		
+			
 			else
-		
+			
 			#region /* Assist Show Assist Mode Text Navigation */
 			if (menu == "assist_show_assist_mode_text")
 			{
@@ -4080,7 +4080,7 @@ function scr_options_menu()
 	
 		#region /* Accept */
 		if (key_a_pressed)
-		or (mouse_check_button_pressed(mb_left))
+		or (mouse_check_button_released(mb_left))
 		and (mouse_get_x > 370)
 		{
 			if (menu == "assist_enable")

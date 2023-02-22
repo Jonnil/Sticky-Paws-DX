@@ -1,5 +1,4 @@
 #region /* Debug toggles */
-can_update_all_backgrounds = true;
 can_enter_level_automatically = false;
 #endregion /* Debug toggles END */
 

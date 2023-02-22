@@ -35,7 +35,7 @@ function scr_options_level_editor()
 	
 		#region /* Accept drop down menu */
 		if (key_a_pressed)
-		or (mouse_check_button_pressed(mb_left))
+		or (mouse_check_button_released(mb_left))
 		{
 		
 			#region /* Drop down menu */
@@ -88,15 +88,16 @@ function scr_options_level_editor()
 		or (menu == "default_view_height")
 		or (menu == "default_view_width")
 		or (menu == "make_every_tileset_into_default_tileset")
+		or (menu == "deactivate_objects_from_most_zoomed_out")
 		or (menu == "rain")
 		or (menu == "enable_time_countdown")
 		or (menu == "time_countdown")
 		or (menu == "selected_level_editing_music")
 		or (menu == "delete_all_objects")
 		{
-		
+			
 			#region /* Menu Navigation */
-		
+			
 			#region /* Back Navigation */
 			if (key_b_pressed)
 			and (!keyboard_check(vk_control))
@@ -230,6 +231,43 @@ function scr_options_level_editor()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
+					menu = "deactivate_objects_from_most_zoomed_out";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "deactivate_objects_from_most_zoomed_out")
+			{
+				if (key_a_pressed)
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				or (mouse_check_button_pressed(mb_left))
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					if (global.deactivate_objects_from_most_zoomed_out = false)
+					{
+						global.deactivate_objects_from_most_zoomed_out = true;
+					}
+					else
+					{
+						global.deactivate_objects_from_most_zoomed_out = false;
+					}
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					menu = "make_every_tileset_into_default_tileset";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
 					menu = "rain";
 					menu_delay = 3;
 				}
@@ -258,7 +296,7 @@ function scr_options_level_editor()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					menu = "make_every_tileset_into_default_tileset";
+					menu = "deactivate_objects_from_most_zoomed_out";
 					menu_delay = 3;
 				}
 				else
@@ -432,6 +470,7 @@ function scr_options_level_editor()
 				ini_write_real("info", "default_view_height", global.default_view_height);
 				ini_write_real("info", "default_view_width", global.default_view_width);
 				ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
+				ini_write_real("info", "deactivate_objects_from_most_zoomed_out", global.deactivate_objects_from_most_zoomed_out);
 				ini_write_real("info", "rain", global.rain);
 				ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
 				ini_write_real("info", "time_countdown", global.time_countdown);
@@ -461,14 +500,15 @@ function scr_options_level_editor()
 			global.default_view_height = draw_menu_left_right_buttons(level_editor_options_x, 47 * 4 + menu_y_offset, options_level_editor_right_arrow_x, "Default view height", global.default_view_height, "default_view_height", 1, false);
 			global.default_view_width = draw_menu_left_right_buttons(level_editor_options_x, 47 * 5 + menu_y_offset, options_level_editor_right_arrow_x, "Default view width", global.default_view_width, "default_view_width", 1, false);
 			draw_menu_checkmark(level_editor_options_x - 90, 47 * 6 + menu_y_offset, "Make every tileset into default tileset", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
-			draw_menu_checkmark(level_editor_options_x - 90, 47 * 7 + menu_y_offset, "Rain", "rain", global.rain);
-			draw_menu_checkmark(level_editor_options_x - 90, 47 * 8 + menu_y_offset, "Enable Time Countdown", "enable_time_countdown", global.enable_time_countdown);
+			draw_menu_checkmark(level_editor_options_x - 90, 47 * 7 + menu_y_offset, "Deactivate objects from most zoomed out", "deactivate_objects_from_most_zoomed_out", global.deactivate_objects_from_most_zoomed_out);
+			draw_menu_checkmark(level_editor_options_x - 90, 47 * 8 + menu_y_offset, "Rain", "rain", global.rain);
+			draw_menu_checkmark(level_editor_options_x - 90, 47 * 9 + menu_y_offset, "Enable Time Countdown", "enable_time_countdown", global.enable_time_countdown);
 			if (global.enable_time_countdown == true)
 			{
-				global.time_countdown = draw_menu_left_right_buttons(level_editor_options_x, 46 * 9 + menu_y_offset, options_level_editor_right_arrow_x, "Time Countdown", global.time_countdown, "time_countdown", 1, false);
+				global.time_countdown = draw_menu_left_right_buttons(level_editor_options_x, 46 * 10 + menu_y_offset, options_level_editor_right_arrow_x, "Time Countdown", global.time_countdown, "time_countdown", 1, false);
 			}
-			draw_menu_button(level_editor_options_x, 46 * 12 + menu_y_offset, "Delete All Objects", "delete_all_objects", "delete_all_objects_no");
-			draw_menu_dropdown(level_editor_options_x - 32, 46 * 10 + menu_y_offset + 20, "Level Editing Music", "selected_level_editing_music", global.selected_level_editing_music, "None", "Music 1", "Music 2", "Music 3");
+			draw_menu_button(level_editor_options_x, 46 * 13 + menu_y_offset, "Delete All Objects", "delete_all_objects", "delete_all_objects_no");
+			draw_menu_dropdown(level_editor_options_x - 32, 46 * 11 + menu_y_offset + 20, "Level Editing Music", "selected_level_editing_music", global.selected_level_editing_music, "None", "Music 1", "Music 2", "Music 3");
 		}
 		else
 		if (menu == "delete_all_objects_yes")

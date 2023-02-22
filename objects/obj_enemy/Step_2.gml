@@ -7,9 +7,13 @@ var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_v
 if (die == false)
 {
 	if (x > view_right)
+	and (hspeed > 0)
 	or (x < view_left)
+	and (hspeed < 0)
 	or (y > view_bottom)
+	and (vspeed > 0)
 	or (y < view_top)
+	and (vspeed < 0)
 	{
 		hspeed = 0;
 		vspeed = 0;

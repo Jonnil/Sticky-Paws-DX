@@ -24,12 +24,12 @@ function scr_zoom_camera_controls()
 	
 	var zoom_speed = 0.015;
 	
-	if (room = room_title)
+	if (room == room_title)
 	{
 		zoom_lerp = 1; /* In create event, have this: zoom_lerp = 1; */
 	}
 	else
-	if (room = room_world_map)
+	if (room == room_world_map)
 	{
 		zoom_lerp = lerp(zoom_lerp, global.zoom_world_map, 0.1); /* In create event, have this: zoom_lerp = global.zoom_world_map; */
 		global.zoom_world_map = clamp(global.zoom_world_map, 0.2, 1);
@@ -62,7 +62,7 @@ function scr_zoom_camera_controls()
 		{
 			if (zoom_lerp > 0.2)
 			{
-				if (room = room_world_map)
+				if (room == room_world_map)
 				{
 					global.zoom_world_map -= zoom_speed;
 				}
@@ -90,7 +90,7 @@ function scr_zoom_camera_controls()
 		{
 			if (zoom_lerp < 1)
 			{
-				if (room = room_world_map)
+				if (room == room_world_map)
 				{
 					global.zoom_world_map += zoom_speed;
 				}
@@ -116,7 +116,7 @@ function scr_zoom_camera_controls()
 		or (key_player4_zoom_in_release)
 		{
 			/* If you put this code in the "hold key" then it makes the game lag, so put this code in "release key" instead */
-			if (room = room_world_map)
+			if (room == room_world_map)
 			{
 				ini_open("config.ini");
 				ini_write_real("config", "zoom_world_map", global.zoom_world_map);

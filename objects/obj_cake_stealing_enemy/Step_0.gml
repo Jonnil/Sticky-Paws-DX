@@ -1,3 +1,28 @@
+var view_left = camera_get_view_x(view_camera[view_current]) - 42;
+var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 42;
+var view_top = camera_get_view_y(view_camera[view_current]) - 42;
+var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current])) + 42;
+
+if (x > view_right)
+and (hspeed > 0)
+or (x < view_left)
+and (hspeed < 0)
+or (y > view_bottom)
+and (vspeed > 0)
+or (y < view_top)
+and (vspeed < 0)
+{
+	hspeed = 0;
+	vspeed = 0;
+	speed = 0;
+	gravity = 0;
+	friction = 500;
+}
+else
+{
+	friction = 0;
+}
+
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
 if (asset_get_type("obj_wall") == asset_object)
@@ -104,12 +129,6 @@ if (cutscene = 2)
 		hspeed = +7;
 		image_xscale = +1;
 	}
-}
-
-if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 16)
-and (cutscene != 1)
-{
-	instance_destroy();
 }
 
 if (instance_exists(obj_player))

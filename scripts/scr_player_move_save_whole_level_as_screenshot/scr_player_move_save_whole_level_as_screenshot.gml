@@ -59,7 +59,7 @@ function scr_player_move_save_whole_level_as_screenshot()
 		global.play_edited_level = false;
 		full_level_map_screenshot_timer = 0;
 		can_move = true;
-		show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
+		room_restart();
 	}
 	#endregion /* Save whole level as screenshot png file END */
 	

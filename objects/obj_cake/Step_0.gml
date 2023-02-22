@@ -6,7 +6,7 @@ if (instance_number(obj_player) > 0)
 		y = instance_nearest(x, y, obj_player).bbox_top - 32;
 	}
 }
-if (room = room_world_map)
+if (room == room_world_map)
 {
 	if (global.win == true)
 	{
@@ -16,11 +16,4 @@ if (room = room_world_map)
 	{
 		visible = false;
 	}
-}
-
-if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 16)
-and (attatch_player = false)
-and (cutscene != 1)
-{
-	instance_destroy();
 }

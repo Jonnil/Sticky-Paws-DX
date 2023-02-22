@@ -18,7 +18,7 @@ function scr_draw_circular_bar(xx, yy, value, max_value, colour = c_black, radiu
 		val = (value / max_value) * numberofsections;
 		if (val > 1)
 		{ /* HTML5 version doesnt like triangle with only 2 sides */
-			piesurface = surface_create(radius * 2, radius * 2);
+			var piesurface = surface_create(radius * 2, radius * 2);
 			draw_set_colour(colour);
 			draw_set_alpha(transparency);
 			surface_set_target(piesurface);

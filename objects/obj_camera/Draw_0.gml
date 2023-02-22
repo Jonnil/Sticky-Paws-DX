@@ -152,7 +152,6 @@ or (instance_exists(obj_water_level))
 		if (player1.allow_drowning == true)
 		&& (player1.drawn_frames_until_drowning <= player1.seconds_until_drowning* 60)
 		{
-			scr_draw_circular_bar(player1.x + 2, player1.bbox_top - 54, player1.drawn_frames_until_drowning, player1.seconds_until_drowning* 60, c_black, 20, 0.8, 6);
 			scr_draw_circular_bar(player1.x, player1.bbox_top - 56, player1.drawn_frames_until_drowning, player1.seconds_until_drowning* 60, scr_make_color_hsv_transition(player1.drawn_frames_until_drowning, player1.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 		}
 	}
@@ -165,7 +164,6 @@ or (instance_exists(obj_water_level))
 		if (player2.allow_drowning == true)
 		&& (player2.drawn_frames_until_drowning <= player2.seconds_until_drowning* 60)
 		{
-			scr_draw_circular_bar(player2.x + 2, player2.bbox_top - 54, player2.drawn_frames_until_drowning, player2.seconds_until_drowning* 60, c_black, 20, 0.8, 6);
 			scr_draw_circular_bar(player2.x, player2.bbox_top - 56, player2.drawn_frames_until_drowning, player2.seconds_until_drowning* 60, scr_make_color_hsv_transition(player2.drawn_frames_until_drowning, player2.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 		}
 	}
@@ -178,7 +176,6 @@ or (instance_exists(obj_water_level))
 		if (player3.allow_drowning == true)
 		&& (player3.drawn_frames_until_drowning <= player3.seconds_until_drowning* 60)
 		{
-			scr_draw_circular_bar(player3.x + 2, player3.bbox_top - 54, player3.drawn_frames_until_drowning, player3.seconds_until_drowning* 60, c_black, 20, 0.8, 6);
 			scr_draw_circular_bar(player3.x, player3.bbox_top - 56, player3.drawn_frames_until_drowning, player3.seconds_until_drowning* 60, scr_make_color_hsv_transition(player3.drawn_frames_until_drowning, player3.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 		}
 	}
@@ -191,7 +188,6 @@ or (instance_exists(obj_water_level))
 		if (player4.allow_drowning == true)
 		&& (player4.drawn_frames_until_drowning <= player4.seconds_until_drowning* 60)
 		{
-			scr_draw_circular_bar(player4.x + 2, player4.bbox_top - 54, player4.drawn_frames_until_drowning, player4.seconds_until_drowning* 60, c_black, 20, 0.8, 6);
 			scr_draw_circular_bar(player4.x, player4.bbox_top - 56, player4.drawn_frames_until_drowning, player4.seconds_until_drowning* 60, scr_make_color_hsv_transition(player4.drawn_frames_until_drowning, player4.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 		}
 	}

@@ -1,10 +1,11 @@
 function scr_save_custom_level()
 {
+	instance_activate_all(); /* Make sure all objects are activated before saving */
 	
 	#region /* Save Custom Level */
 	if (global.character_select_in_this_menu == "level_editor")
 	{
-	
+		
 		#region /* Create directory for saving custom levels */
 		if (global.select_level_index >= 1)
 		and (global.create_level_from_template == false)
@@ -21,7 +22,6 @@ function scr_save_custom_level()
 		#endregion /* Create directory for saving custom levels END */
 		
 		#region /* Save object placement */
-		instance_activate_all();
 		var file, str;
 		if (global.select_level_index >= 1)
 		and (global.create_level_from_template == false)
@@ -38,27 +38,45 @@ function scr_save_custom_level()
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
 		{
+			if (easy == false)
+			and (normal == false)
+			and (hard == false)
+			{
+				instance_destroy();
+			}
+			
 			str += string(x) + "X" + string(y) + "Y" + string(object) + "O";
 			
-			if (second_x != 0)
-			{
-				str += string(second_x) + "Q";
-			}
-			if (second_y != 0)
-			{
-				str += string(second_y) + "W";
-			}
-			if (easy <= false)
-			{
+			//if (easy == false)
+			//{
 				str += string(easy) + "E";
-			}
-			if (normal <= false)
-			{
+			//}
+			//if (normal == false)
+			//{
 				str += string(normal) + "N";
-			}
-			if (hard <= false)
-			{
+			//}
+			//if (hard == false)
+			//{
 				str += string(hard) + "H";
+			//}
+			
+			if (object == level_object_id.id_spring)
+			or (object == level_object_id.id_door)
+			or (object == level_object_id.id_water_level_change_slow)
+			or (object == level_object_id.id_water_level_change_fast)
+			or (object == level_object_id.id_water_level_change_faster)
+			or (object == level_object_id.id_arrow_sign)
+			or (object == level_object_id.id_arrow_sign_small)
+			or (object == level_object_id.id_water)
+			{
+				if (!second_x = 0)
+				{
+					str += string(second_x) + "Q";
+				}
+				if (!second_y = 0)
+				{
+					str += string(second_y) + "W";
+				}
 			}
 			
 			/* | = chr("124") */

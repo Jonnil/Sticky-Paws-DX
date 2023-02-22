@@ -94,7 +94,7 @@ and (iris_xscale <= 0.001)
 			and (room == room_leveleditor)
 			{
 				global.play_edited_level = false;
-				show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
+				room_restart();
 			}
 			#endregion /* Go to level editor if you die in level editor END */
 			
@@ -114,7 +114,7 @@ and (iris_xscale <= 0.001)
 			and (room == room_leveleditor)
 			{
 				global.play_edited_level = false;
-				show_message("room_restart! room: " + string(room_get_name(room)) + " object: " + string(object_get_name(object_index)));room_restart();
+				room_restart();
 			}
 			#endregion /* Go to level editor if you die in level editor END */
 			

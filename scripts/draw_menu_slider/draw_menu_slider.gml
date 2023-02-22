@@ -36,6 +36,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 			{
 				if (menu == "volume_main"){global.volume_main = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
 				if (menu == "volume_music"){global.volume_music = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
+				if (menu == "volume_jingle"){global.volume_jingle = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
 				if (menu == "volume_sound"){global.volume_sound = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
 				if (menu == "volume_ambient"){global.volume_ambient = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
 				if (menu == "volume_footstep"){global.volume_footstep = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);}else
@@ -126,7 +127,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	#region /* Text above the menu button */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(x_position, y_position- 32, string(string_text) + ": " + string(variable_to_change * 100) + "%", global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(x_position, y_position- 32, string(string_text) + ": " + string(round(variable_to_change * 100)) + "%", global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 	#endregion /* Text above the menu button END */
 	
 }

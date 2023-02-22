@@ -83,7 +83,7 @@ function scr_options_control_menu()
 	
 	if (global.enable_options_for_pc == true)
 	{
-		var menu_y_show_prompt_when_changing_controller = menu_y_down_and_jump_to_groundpound + 64 * 4				+ 48;;
+		var menu_y_show_prompt_when_changing_controller = menu_y_down_and_jump_to_groundpound + 64 * 4				+ 48;
 	}
 	else
 	{
@@ -6025,7 +6025,7 @@ function scr_options_control_menu()
 		
 		#region /* Accept */
 		if (key_a_pressed)
-		or (mouse_check_button_pressed(mb_left))
+		or (mouse_check_button_released(mb_left))
 		and (mouse_get_x > 370)
 		{
 			

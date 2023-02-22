@@ -346,7 +346,7 @@ if (global.actually_play_edited_level == false)
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, get_window_width * 0.5 - 185 + 371, get_window_height * 0.5 + 42 + 41))
 				and (global.controls_used_for_menu_navigation == "mouse")
-				and (mouse_check_button_pressed(mb_left))
+				and (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				or (menu == "open_custom_levels_folder")
 				and (key_a_pressed)

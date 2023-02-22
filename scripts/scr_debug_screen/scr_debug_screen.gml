@@ -16,7 +16,7 @@ function scr_debug_screen()
 	}
 	else
 	{
-		var fps_real_target = 300; /* fps real should be above 250 on most devices */
+		var fps_real_target = 250; /* fps real should be above 250 on most devices */
 	}
 	var instance_count_target = 200;
 	
@@ -251,6 +251,41 @@ function scr_debug_screen()
 		
 	}
 	#endregion /* All Instance Count END */
+	
+	if (global.debug_screen == true)
+	{
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_top);
+		scr_draw_text_outlined(display_get_width() - 32, 32, 
+		//"gamepad_get_description (0): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (1): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (2): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (3): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (4): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (5): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (6): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (7): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (8): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (9): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (10): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (11): " + string(gamepad_get_description(0)) + "\n" +
+		//"gamepad_get_description (12): " + string(gamepad_get_description(0)) + "\n" +
+		"gamepad_is_connected (0): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (1): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (2): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (3): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (4): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (5): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (6): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (7): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (8): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (9): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (10): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (11): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_is_connected (12): " + string(gamepad_is_connected(0)) + "\n" +
+		"gamepad_get_device_count: " + string(gamepad_get_device_count()) + "\n"
+		,global.default_text_size, c_black, c_white, 1);
+	}
 	
 	if (global.debug_screen == true)
 	and (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 32))

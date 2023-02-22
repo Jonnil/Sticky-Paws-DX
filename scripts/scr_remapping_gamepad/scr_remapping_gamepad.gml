@@ -14,7 +14,6 @@ function scr_remapping_gamepad()
 	or (remapping_player = 3)
 	and (gamepad_button_check_pressed(3, gp_face1))
 	and (!gamepad_button_check(3, gp_start))
-	or (keyboard_check_pressed(ord("A")))
 	{
 		last_key = gp_face1;
 		can_remap_key = true;
@@ -32,7 +31,6 @@ function scr_remapping_gamepad()
 	or (remapping_player = 3)
 	and (gamepad_button_check_pressed(3, gp_face2))
 	and (!gamepad_button_check(3, gp_start))
-	or (keyboard_check_pressed(ord("B")))
 	{
 		last_key = gp_face2;
 		can_remap_key = true;
@@ -50,7 +48,6 @@ function scr_remapping_gamepad()
 	or (remapping_player = 3)
 	and (gamepad_button_check_pressed(3, gp_face3))
 	and (!gamepad_button_check(3, gp_start))
-	or (keyboard_check_pressed(ord("X")))
 	{
 		last_key = gp_face3;
 		can_remap_key = true;
@@ -68,7 +65,6 @@ function scr_remapping_gamepad()
 	or (remapping_player = 3)
 	and (gamepad_button_check_pressed(3, gp_face4))
 	and (!gamepad_button_check(3, gp_start))
-	or (keyboard_check_pressed(ord("Y")))
 	{
 		last_key = gp_face4;
 		can_remap_key = true;
@@ -86,7 +82,6 @@ function scr_remapping_gamepad()
 	or (remapping_player = 3)
 	and (gamepad_button_check_pressed(3, gp_shoulderl))
 	and (!gamepad_button_check(3, gp_start))
-	or (keyboard_check_pressed(ord("L")))
 	{
 		last_key = gp_shoulderl;
 		can_remap_key = true;
@@ -121,7 +116,6 @@ function scr_remapping_gamepad()
 	or (remapping_player = 3)
 	and (gamepad_button_check_pressed(3, gp_shoulderr))
 	and (!gamepad_button_check(3, gp_start))
-	or (keyboard_check_pressed(ord("R")))
 	{
 		last_key = gp_shoulderr;
 		can_remap_key = true;
@@ -488,7 +482,7 @@ function scr_remapping_gamepad()
 			{
 				global.player1_gamepad_button2_tongue = last_key;
 				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_tongue", global.player1_player1_gamepad_button2_tonguegamepad_button_dive);
+				ini_write_real("config", "player1_gamepad_button2_tongue", global.player1_gamepad_button2_tongue);
 				ini_close();
 			}
 			else

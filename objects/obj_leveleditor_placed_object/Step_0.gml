@@ -6,7 +6,7 @@ if (global.actually_play_edited_level == false)
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Change certain objects angle */
-	/* Some objects should not save second_x and second_y, only objects that actually rotate should save */
+	/* Some objects should not save second x and second y, only objects that actually rotate should save */
 	if (place_object_angle == true)
 	{
 		if (object == level_object_id.id_spring)

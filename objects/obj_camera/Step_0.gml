@@ -4,14 +4,6 @@ scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_deactivate_objects_outside_view();
 
-if (room == room_leveleditor)
-{
-	layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);
-	layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);
-	layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), global.custom_background3);
-	layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), global.custom_background4);
-}
-
 #region /* Make background visible */
 if (room == room_leveleditor)
 {
