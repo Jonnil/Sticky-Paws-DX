@@ -41,6 +41,7 @@ function scr_deactivate_objects_outside_view()
 	#endregion /* Deactivate instances outside view END */
 	
 	#region /* Activate objects that always should be active */
+	
 	if (can_activate_always_active_objects == true)
 	{
 		if (asset_get_type("obj_follow_mouse") == asset_object)

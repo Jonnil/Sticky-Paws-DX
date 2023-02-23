@@ -18,3 +18,9 @@ ground_surface = 0;
 image_speed = 0;
 mask_index = spr_wall;
 alarm_set(0, 1);
+
+if (y <= 0)
+{
+	instance_create_depth(x, y - 32, 0, obj_wall);
+	instance_create_depth(x, y - 64, 0, obj_wall);
+}

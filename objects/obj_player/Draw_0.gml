@@ -581,6 +581,3 @@ and (global.assist_enable == false)
 #endregion /* If player has more hp, show that END */
 
 #endregion /* Draw things on top of the player END */
-
-draw_set_halign(fa_center);
-scr_draw_text_outlined(x, y, "deactivate_objects_from_most_zoomed_out: " + string(global.deactivate_objects_from_most_zoomed_out), global.default_text_size * 0.5);

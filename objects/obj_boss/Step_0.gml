@@ -178,7 +178,7 @@ and (has_seen_player == true)
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_start_running;
 	}
-	if (time == room_speed * 8)
+	if (time >= room_speed * 8)
 	{
 		if (image_xscale == -1)
 		{

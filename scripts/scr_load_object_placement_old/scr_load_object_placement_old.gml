@@ -7,7 +7,7 @@ function scr_load_object_placement_old()
 	if (global.character_select_in_this_menu == "main_game")
 	or (global.create_level_from_template == true)
 	{
-	
+		
 		#region /* Object Placement */
 		var file, str, str_pos, str_temp, val, num;
 		if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement.txt"))

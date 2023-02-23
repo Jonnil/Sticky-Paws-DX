@@ -23,6 +23,8 @@ function scr_zoom_camera_controls()
 	key_player4_zoom_out_release = scr_key_initialize(key_player4_zoom_out_release, 2, 4, global.player4_key_zoom_out, global.player4_key2_zoom_out, global.player4_gamepad_button_zoom_out, global.player4_gamepad_button2_zoom_out);
 	
 	var zoom_speed = 0.015;
+	var zoom_minimum = 0.5;
+	var zoom_maximum = 2;
 	
 	if (room == room_title)
 	{
@@ -32,18 +34,36 @@ function scr_zoom_camera_controls()
 	if (room == room_world_map)
 	{
 		zoom_lerp = lerp(zoom_lerp, global.zoom_world_map, 0.1); /* In create event, have this: zoom_lerp = global.zoom_world_map; */
-		global.zoom_world_map = clamp(global.zoom_world_map, 0.2, 1);
+		global.zoom_world_map = clamp(global.zoom_world_map, zoom_minimum, zoom_maximum);
 	}
 	else
 	{
 		zoom_lerp = lerp(zoom_lerp, global.zoom_level, 0.1); /* In create event, have this: zoom_lerp = global.zoom_level; */
-		global.zoom_level = clamp(global.zoom_level, 0.2, 1);
+		global.zoom_level = clamp(global.zoom_level, zoom_minimum, zoom_maximum);
 	}
 	zoom_border_lerp = lerp(zoom_border_lerp, 0, 0.1); /* In create event, have this: zoom_border_lerp = 0; */
 	
 	if (variable_instance_exists(self, "camera"))
 	{
-		camera_set_view_size(camera, camera_get_view_width(camera) * zoom_lerp, camera_get_view_height(camera) * zoom_lerp);
+		if (camera_get_view_width(camera) * zoom_lerp > room_width)
+		and (camera_get_view_height(camera) * zoom_lerp > room_height)
+		{
+			camera_set_view_size(camera, room_width, room_height);
+		}
+		else
+		if (camera_get_view_width(camera) * zoom_lerp > room_width)
+		{
+			camera_set_view_size(camera, room_width, camera_get_view_height(camera) * zoom_lerp);
+		}
+		else
+		if (camera_get_view_height(camera) * zoom_lerp > room_height)
+		{
+			camera_set_view_size(camera, camera_get_view_width(camera) * zoom_lerp, room_height);
+		}
+		else
+		{
+			camera_set_view_size(camera, camera_get_view_width(camera) * zoom_lerp, camera_get_view_height(camera) * zoom_lerp);
+		}
 	}
 	
 	if (room != room_title)
@@ -60,7 +80,7 @@ function scr_zoom_camera_controls()
 		or (key_player4_zoom_in_hold)
 		and (!key_player4_zoom_out_hold)
 		{
-			if (zoom_lerp > 0.2)
+			if (zoom_lerp > zoom_minimum)
 			{
 				if (room == room_world_map)
 				{
@@ -88,7 +108,9 @@ function scr_zoom_camera_controls()
 		or (key_player4_zoom_out_hold)
 		and (!key_player4_zoom_in_hold)
 		{
-			if (zoom_lerp < 1)
+			if (zoom_lerp < zoom_maximum)
+			and (camera_get_view_width(camera) * zoom_lerp < room_width)
+			and (camera_get_view_height(camera) * zoom_lerp < room_height)
 			{
 				if (room == room_world_map)
 				{

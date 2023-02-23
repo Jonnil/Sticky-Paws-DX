@@ -14,6 +14,7 @@ undo_value = 0;
 i = 0;
 
 place_object_angle = false;
+draw_rotate_arrow = false;
 
 second_x = 0;
 second_y = 0;

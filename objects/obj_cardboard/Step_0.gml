@@ -11,7 +11,8 @@ else
 }
 
 #region /* Collision with player */
-if (distance_to_object(obj_player) < 32)
+if (instance_exists(obj_player))
+and (distance_to_object(obj_player) < 32)
 {
 	if (place_meeting(x, bbox_bottom, obj_player))
 	and (instance_nearest(x, y, obj_player).vspeed < 0)

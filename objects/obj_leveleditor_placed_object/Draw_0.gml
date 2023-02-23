@@ -9,18 +9,7 @@ if (global.actually_play_edited_level == false)
 	}
 	
 	#region /* Draw Rotate Arrow on top of objects that you rotate by clicking on the object /*
-	if (object == level_object_id.id_basic_collectible)
-	or (object == level_object_id.id_basic_collectible_2)
-	or (object == level_object_id.id_basic_collectible_3)
-	or (object == level_object_id.id_basic_collectible_4)
-	or (object == level_object_id.id_basic_collectible_5)
-	or (object == level_object_id.id_basic_collectible_6)
-	or (object == level_object_id.id_basic_collectible_7)
-	or (object == level_object_id.id_basic_collectible_8)
-	or (object == level_object_id.id_oneway)
-	or (object == level_object_id.id_oneway2)
-	or (object == level_object_id.id_oneway3)
-	or (object == level_object_id.id_oneway4)
+	if (draw_rotate_arrow == true)
 	{
 		draw_sprite_ext(spr_rotate_arrow, image_index, x, y, scr_wave(draw_xscale * 0.3, draw_xscale * 0.2, 0.5, 0), scr_wave(draw_yscale * 0.3, draw_yscale * 0.2, 0.5, 0), draw_angle, image_blend, image_alpha);
 	}
@@ -40,6 +29,7 @@ if (global.actually_play_edited_level == false)
 		draw_set_color(c_white);
 		draw_angle = point_direction(x, y, second_x, second_y) -90;
 	}
+	else
 	
 	/* Door */
 	if (object == level_object_id.id_door)
@@ -52,6 +42,7 @@ if (global.actually_play_edited_level == false)
 		draw_arrow(x, y, second_x, second_y, 20);
 		draw_set_color(c_white);
 	}
+	else
 	
 	/* Water Level Change */
 	if (object == level_object_id.id_water_level_change_slow)
@@ -62,6 +53,7 @@ if (global.actually_play_edited_level == false)
 		draw_line_width_color(x, y, x, second_y, 2, image_blend, image_blend);
 		draw_angle = point_direction(x, y, x, second_y) -90;
 	}
+	else
 	
 	/* Arrows */
 	if (object == level_object_id.id_arrow_sign)
@@ -69,6 +61,7 @@ if (global.actually_play_edited_level == false)
 	{
 		draw_angle = point_direction(x, y, second_x, second_y);
 	}
+	else
 	
 	/* Water Block */
 	if (object == level_object_id.id_water)
@@ -78,6 +71,7 @@ if (global.actually_play_edited_level == false)
 		draw_rectangle_color(x - 16, y - 16, 16 + second_x, 16 + second_y, c_blue, c_blue, c_blue, c_blue, false);
 		draw_set_alpha(1);
 	}
+	else
 	
 	/* Breathable Water Block */
 	if (object == level_object_id.id_breathable_water)

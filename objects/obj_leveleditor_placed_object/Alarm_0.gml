@@ -20,6 +20,23 @@ if (global.actually_play_edited_level == false)
 				image_alpha = ds_grid_get(global.object_grid, 7, i);
 			}
 		}
+		
+		if (object == level_object_id.id_basic_collectible)
+		or (object == level_object_id.id_basic_collectible_2)
+		or (object == level_object_id.id_basic_collectible_3)
+		or (object == level_object_id.id_basic_collectible_4)
+		or (object == level_object_id.id_basic_collectible_5)
+		or (object == level_object_id.id_basic_collectible_6)
+		or (object == level_object_id.id_basic_collectible_7)
+		or (object == level_object_id.id_basic_collectible_8)
+		or (object == level_object_id.id_oneway)
+		or (object == level_object_id.id_oneway2)
+		or (object == level_object_id.id_oneway3)
+		or (object == level_object_id.id_oneway4)
+		{
+			draw_rotate_arrow = true;
+		}
+		
 	}
 	else
 	{

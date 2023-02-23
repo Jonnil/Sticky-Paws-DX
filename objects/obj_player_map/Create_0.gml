@@ -1,5 +1,5 @@
 #region /* Debug toggles */
-can_enter_level_automatically = false;
+can_enter_level_automatically = true;
 #endregion /* Debug toggles END */
 
 mouse_x_position = device_mouse_x_to_gui(0);

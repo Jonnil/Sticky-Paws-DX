@@ -16,7 +16,7 @@ if (room == room_leveleditor)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background")), false)
 	}
-
+	
 	if (global.custom_background2 > noone)
 	and (global.enable_background_layer2 == true)
 	{
@@ -26,7 +26,7 @@ if (room == room_leveleditor)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_2")), false)
 	}
-
+	
 	if (global.custom_background3 > noone)
 	and (global.enable_background_layer3 == true)
 	{
@@ -36,7 +36,7 @@ if (room == room_leveleditor)
 	{
 		layer_background_visible(layer_background_get_id(layer_get_id("Background_3")), false)
 	}
-
+	
 	if (global.custom_background4 > noone)
 	and (global.enable_background_layer4 == true)
 	{
@@ -676,7 +676,7 @@ if (save_level_as_png = false)
 	}
 	
 	x = lerp(x, xx, 0.1);
-	y = lerp(y, yy, 0.1);
+	y = lerp(y, yy, 0.15);
 	
 	#region /* Boss Battle Camera */
 	if (asset_get_type("obj_player") == asset_object)

@@ -7,6 +7,7 @@ function scr_load_object_placement_all()
 	{
 		var load_main_game_level = true;
 	}
+	else
 	if (global.character_select_in_this_menu == "level_editor")
 	{
 		var load_main_game_level = false;
@@ -144,7 +145,6 @@ function scr_load_object_placement_all()
 		while(str_pos <= string_length(str))
 		{
 			/* | = chr("124") */
-			/* } = chr("125") */
 			while (string_char_at(str, str_pos) != "X")
 			and (string_char_at(str, str_pos) != "Y")
 			and (string_char_at(str, str_pos) != "O")

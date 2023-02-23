@@ -35,6 +35,8 @@ function scr_update_all_backgrounds()
 			var path = working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/";
 		}
 		
+		/* On some levels (LEVEL 4) the background is unable to be loaded, so need to fix that */
+		
 		#region /* Update Background1 */
 		/* PNG small letter File */if (file_exists(string(path) + "background1.png")){global.custom_background1 = sprite_add(string(path) + "background1.png", 0, false, false, 0, 0);}else
 		//* BMP small letter File */if (file_exists(string(path) + "background1.bmp")){global.custom_background1 = sprite_add(string(path) + "background1.bmp", 0, false, false, 0, 0);}else

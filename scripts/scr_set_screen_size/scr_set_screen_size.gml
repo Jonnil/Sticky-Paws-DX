@@ -53,6 +53,7 @@ function scr_set_screen_size()
 	
 	#region /* Set screen size */
 	camera_set_view_border(view_camera[view_current], camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current])); /* View Border */
+	
 	if (window_get_width() <= global.default_view_width)
 	and (window_get_height() <= global.default_view_height)
 	{
@@ -74,6 +75,7 @@ function scr_set_screen_size()
 	{
 		camera_set_view_size(view_camera[view_current], global.default_view_width, global.default_view_height);
 	}
+	
 	if (global.play_edited_level == true)
 	or (room = room_world_map)
 	{
