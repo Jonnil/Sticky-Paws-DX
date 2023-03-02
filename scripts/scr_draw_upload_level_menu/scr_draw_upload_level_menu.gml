@@ -6,7 +6,7 @@ function scr_draw_upload_level_menu()
 	#endregion /* Debug toggles END */
 	
 	var upload_y = 42 * 2;
-	var message_x_offset = 330;
+	var message_x_offset = 340;
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);

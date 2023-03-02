@@ -31,7 +31,7 @@ and (touch_player = false)
 }
 
 if (die_volting = -1)
-or(die_volting = +1)
+or (die_volting = +1)
 {
 	if (die_volting = -1)
 	{

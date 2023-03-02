@@ -2,7 +2,7 @@
 if (asset_get_type("obj_bullet") == asset_object)
 and (instance_exists(obj_bullet))
 and (distance_to_object(obj_bullet) < 32)
-and (other.die = false)
+and (other.die == false)
 {
 	if (place_meeting(x, y, obj_bullet))
 	or (place_meeting(x - 5, y, obj_bullet))

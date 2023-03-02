@@ -1,7 +1,7 @@
 #region /* Turn around */
-if (die = false)
+if (die == false)
 and (sliding_along_ground == 0)
-and (other.die = false)
+and (other.die == false)
 {
 	if (!place_meeting(x, y, obj_bullet))
 	and (!place_meeting(x, y, obj_arrow))
@@ -27,12 +27,16 @@ and (other.die = false)
 }
 #endregion /* Turn around END */
 
-if (sliding_along_ground = +1)
-and (other.die = false)
-and (die = false)
-or (sliding_along_ground = -1)
-and (other.die = false)
-and (die = false)
+if (sliding_along_ground == +1)
+and (other.die == false)
+and (die == false)
+and (die_volting == false)
+and (other.die_volting == false)
+or (sliding_along_ground == -1)
+and (other.die == false)
+and (die == false)
+and (die_volting == false)
+and (other.die_volting == false)
 {
 	if (other.x < x)
 	{
@@ -64,8 +68,10 @@ and (die = false)
 	}
 }
 
-if (die = false)
-and (other.die = false)
+if (die == false)
+and (die_volting == false)
+and (other.die_volting == false)
+and (other.die == false)
 and (other.speed > speed)
 and (other.flat == true)
 and (other.sliding_along_ground == 0)

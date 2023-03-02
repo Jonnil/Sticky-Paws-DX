@@ -24,14 +24,14 @@ and (can_die_from_spikes == true)
 	and (hspeed <= 0)
 	{
 		if (x < instance_nearest(x, y, obj_spikes_emerge).x)
-		and (die = false)
+		and (die == false)
 		{
 			vspeed = - 8;
 			die_volting = -1;
 			die = true;
 		}
 		else
-		if (die = false)
+		if (die == false)
 		{
 			vspeed = - 8;
 			die_volting = +1;

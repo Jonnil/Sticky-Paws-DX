@@ -32,7 +32,7 @@ function scr_player_move_goal()
 				x = instance_nearest(x, y, obj_goal).bbox_left + 4;
 			}
 			#endregion /* Can't walk back when touched goal END */
-		
+			
 			if (just_hit_goal == true)
 			and (goal == false)
 			{
@@ -60,12 +60,12 @@ function scr_player_move_goal()
 				global.restart_level = false;
 				instance_nearest(x, y, obj_goal).image_index = 1;
 				invincible_timer = false;
-			
+				
 				if (instance_nearest(x, y, obj_goal).trigger_ending == true)
 				{
 					global.trigger_ending = true;
 				}
-			
+				
 				#region /* Stop Music */
 				audio_stop_sound(global.music);
 				audio_stop_sound(global.music_underwater);
@@ -74,7 +74,7 @@ function scr_player_move_goal()
 				music = noone;
 				music_underwater = noone;
 				#endregion /* Stop Music END */
-			
+				
 				#region /* Save Checkpoint */
 				if (asset_get_type("room_leveleditor") == asset_room)
 				and (room == room_leveleditor)
@@ -130,9 +130,9 @@ function scr_player_move_goal()
 					ini_close();
 				}
 				#endregion /* Save Checkpoint END */
-			
+				
 				scr_audio_play(voice_enter_goal, volume_source.voice);
-			
+				
 				#region /* Level Clear Jingle */
 				if (level_clear_jingle > noone)
 				and (!audio_is_playing(level_clear_jingle))
@@ -140,19 +140,10 @@ function scr_player_move_goal()
 					scr_audio_play(level_clear_jingle, volume_source.jingle);
 				}
 				#endregion /* Level Clear Jingle END */
-			
-				goal = true; /* Set goal to true on last */
-			
+				
+				goal = true; /* Set goal to true on last line */
 			}
 		}
-	}
-	if (goal == true)
-	and (global.time_countdown_bonus <= 0)
-	{
-		allow_ground_pound = false;
-		ground_pound = false;
-		allow_dive = false;
-		dive = false;
 	}
 	#endregion /* Goal END */
 	

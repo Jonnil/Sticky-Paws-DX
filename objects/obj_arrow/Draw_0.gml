@@ -104,7 +104,7 @@ and (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(vi
 
 #region /* Kill enemy if it's inside the wall */
 if (position_meeting(x, y, obj_wall))
-and (die = false)
+and (die == false)
 and (draw_xscale >= 0.8)
 {
 	stuck_in_wall_counter += 1;

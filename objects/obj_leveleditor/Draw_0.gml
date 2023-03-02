@@ -1,6 +1,16 @@
 if (global.actually_play_edited_level == false)
 {
 	
+	#region /* Draw where player will do playtesting from */
+	if (sprite_player > 0)
+	and (quit_level_editor <= 0)
+	{
+		playtest_x_lerp = lerp(playtest_x_lerp, playtest_x, 0.5);
+		playtest_y_lerp = lerp(playtest_y_lerp, playtest_y, 0.5);
+		draw_sprite_ext(sprite_player, 0, playtest_x_lerp, playtest_y_lerp, 1, 1, 0, c_white, 1);
+	}
+	#endregion /* Draw where player will do playtesting from END */
+	
 	///Draw Event
 	draw_set_alpha(0.5);
 	draw_rectangle_color(camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), 0, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
@@ -101,23 +111,23 @@ if (global.actually_play_edited_level == false)
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_falling_block_long, true, spr_falling_block_long, spr_falling_block_long, + 64, 1, 0, c_white, 0, -16);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_cloud_block, true, spr_cloud_block, spr_wall, + 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_ice_block, true, spr_ice_block, spr_wall, + 64, 1, 0, c_white);
-		#endregion /* Terrain Objects END*/
+		#endregion /* Terrain Objects END */
 	
 		#region /* Item Objects */
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_basic_collectible, true, global.resource_pack_sprite_basic_collectible, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_big_collectible_1, false, global.resource_pack_sprite_big_collectible, spr_wall, 64, 1, 0, c_white);
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_big_collectible, false, global.resource_pack_sprite_big_collectible, spr_wall, 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_heart, true, spr_heart, spr_wall, + 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_invincibility_powerup, true, global.resource_pack_sprite_invincibility_powerup, spr_wall, + 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_one_up, true, sprite_lives_icon, spr_wall, + 64, 1, 0, c_white);
 		#endregion /* Item Objects END */
-	
+		
 		#region /* Enemy Objects */
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_basic_enemy, true, sprite_basic_enemy, spr_wall, + 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_enemy_bowlingball, true, sprite_enemy_bowlingball, spr_wall, + 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_big_stationary_enemy, true, sprite_big_stationary_enemy, spr_wall, + 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_boss, false, spr_boss_stand, spr_wall, + 64, 0.5, 0, c_white);
 		#endregion /* Enemy Objects END */
-	
+		
 		#region /* Gizmo Objects */
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_blaster, true, global.resource_pack_sprite_blaster, spr_wall, + 64, 1, 0, c_white, -16);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_door, false, spr_door, spr_wall, + 64, 1, 0, c_white, -16);
@@ -128,7 +138,7 @@ if (global.actually_play_edited_level == false)
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_spikes_emerge_block, true, spr_spikes_emerge_block, spr_wall, + 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_oneway, false, spr_oneway, spr_wall, + 64, 1, 0, c_white, -16,);
 		#endregion /* Gizmo Objects END */
-	
+		
 		#region /* Special Items */
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_cardboard_block, true, spr_cardboard_block, spr_wall, + 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_cardboard, true, spr_cardboard, spr_cardboard, + 64, 0.75, 0, c_white, 0, -8);
@@ -154,7 +164,7 @@ if (global.actually_play_edited_level == false)
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_block_only_when_player_is_near, true, global.resource_pack_sprite_block_only_when_player_is_near, spr_wall, + 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_npc, false, spr_npc, spr_wall, + 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_ring, false, spr_ring, spr_wall, + 64, 1, 0, c_white);
-		#endregion /* Special Items END*/
+		#endregion /* Special Items END */
 	
 		total_number_of_objects = order_index - 1; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
 	}
@@ -366,173 +376,178 @@ if (global.actually_play_edited_level == false)
 	#region /* Position the Cursor */
 	if (quit_level_editor <= 0)
 	{
-	
-	#region /* Fill Cursor */
-	if (fill_mode == true)
-	and (erase_mode == false)
-	and (scroll_view == false)
-	and (!place_meeting(x, y, obj_level_player_1_start))
-	and (!place_meeting(x, y, obj_level_player_2_start))
-	and (!place_meeting(x, y, obj_level_player_3_start))
-	and (!place_meeting(x, y, obj_level_player_4_start))
-	and (!place_meeting(x, y, obj_level_end))
-	{
-		if (!place_meeting(x, y, obj_leveleditor_placed_object))
-		and (sprite_index >= 0)
+		
+		#region /* Fill Cursor */
+		if (fill_mode == true)
+		and (erase_mode == false)
+		and (scroll_view == false)
+		and (!place_meeting(x, y, obj_level_player_1_start))
+		and (!place_meeting(x, y, obj_level_player_2_start))
+		and (!place_meeting(x, y, obj_level_player_3_start))
+		and (!place_meeting(x, y, obj_level_player_4_start))
+		and (!place_meeting(x, y, obj_level_end))
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 0.2);
+			if (!place_meeting(x, y, obj_leveleditor_placed_object))
+			and (sprite_index >= 0)
+			{
+				draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 0.2);
+			}
+			draw_set_alpha(1);
 		}
-		draw_set_alpha(1);
-	}
-	#endregion /* Fill Cursor END */
-	
-	else
-	
-	#region /* Erase Cursor */
-	if (erase_mode == true)
-	and (scroll_view == false)
-	and (pause == false)
-	{
-		draw_set_alpha(0.5);
+		#endregion /* Fill Cursor END */
+		
+		else
+		
+		#region /* Erase Cursor */
+		if (erase_mode == true)
+		and (scroll_view == false)
+		and (pause == false)
 		{
-			if (erase_brush_size == 5)
+			draw_set_alpha(0.5);
 			{
-				draw_rectangle_color(x - 80, y - 80, x + 112, y + 112, c_red, c_red, c_red, c_red, false);
+				if (erase_brush_size == 5)
+				{
+					draw_rectangle_color(x - 80, y - 80, x + 112, y + 112, c_red, c_red, c_red, c_red, false);
+				}
+				else
+				if (erase_brush_size == 4)
+				{
+					draw_rectangle_color(x - 80, y - 80, x + 80, y + 80, c_red, c_red, c_red, c_red, false);
+				}
+				else
+				if (erase_brush_size == 3)
+				{
+					draw_rectangle_color(x - 48, y - 48, x + 80, y + 80, c_red, c_red, c_red, c_red, false);
+				}
+				else
+				if (erase_brush_size == 2)
+				{
+					draw_rectangle_color(x - 48, y - 48, x + 48, y + 48, c_red, c_red, c_red, c_red, false);
+				}
+				else
+				if (erase_brush_size == 1)
+				{
+					draw_rectangle_color(x - 16, y - 16, x + 48, y + 48, c_red, c_red, c_red, c_red, false);
+				}
+				else
+				{
+					draw_rectangle_color(x - 16, y - 16, x + 16, y + 16, c_red, c_red, c_red, c_red, false);
+				}
 			}
-			else
-			if (erase_brush_size == 4)
-			{
-				draw_rectangle_color(x - 80, y - 80, x + 80, y + 80, c_red, c_red, c_red, c_red, false);
-			}
-			else
-			if (erase_brush_size == 3)
-			{
-				draw_rectangle_color(x - 48, y - 48, x + 80, y + 80, c_red, c_red, c_red, c_red, false);
-			}
-			else
-			if (erase_brush_size == 2)
-			{
-				draw_rectangle_color(x - 48, y - 48, x + 48, y + 48, c_red, c_red, c_red, c_red, false);
-			}
-			else
-			if (erase_brush_size == 1)
-			{
-				draw_rectangle_color(x - 16, y - 16, x + 48, y + 48, c_red, c_red, c_red, c_red, false);
-			}
-			else
-			{
-				draw_rectangle_color(x - 16, y - 16, x + 16, y + 16, c_red, c_red, c_red, c_red, false);
-			}
+			draw_set_alpha(1);
 		}
-		draw_set_alpha(1);
-	}
-	#endregion /* Erase Cursor END */
-	
-	else
-	
-	#region /* Default Cursor */
-	if (asset_get_type("obj_leveleditor_placed_object") == asset_object)
-	and (scroll_view == false)
-	and (drag_object == false)
-	and (fill_mode == false)
-	and (pause == false)
-	{
-		if (!place_meeting(x, y, obj_leveleditor_placed_object))
-		and (sprite_index >= 0)
+		#endregion /* Erase Cursor END */
+		
+		else
+		
+		#region /* Default Cursor */
+		if (asset_get_type("obj_leveleditor_placed_object") == asset_object)
+		and (scroll_view == false)
+		and (drag_object == false)
+		and (fill_mode == false)
+		and (pause == false)
 		{
-			draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 0.2);
+			if (!place_meeting(x, y, obj_leveleditor_placed_object))
+			and (sprite_index >= 0)
+			{
+				draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 0.2);
+			}
+			
+			if (can_make_place_brush_size_bigger == true)
+			and (sprite_index >= 0)
+			{
+				if (!place_meeting(x + 32, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 1){draw_sprite_ext(sprite_index, image_index, x + 32, y, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 32, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 1){draw_sprite_ext(sprite_index, image_index, x + 32, y + 32, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 1){draw_sprite_ext(sprite_index, image_index, x, y + 32, 1, 1, 0, c_white, 0.2);}
+				
+				if (!place_meeting(x + 32, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x + 32, y - 32, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x, y - 32, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 32, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y - 32, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 32, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 32, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y + 32, 1, 1, 0, c_white, 0.2);}
+				
+				if (!place_meeting(x + 64, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y - 32, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 64, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 64, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y + 32, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 64, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y + 64, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 32, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 32, y + 64, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x, y + 64, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 32, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x - 32, y + 64, 1, 1, 0, c_white, 0.2);}
+				
+				if (!place_meeting(x + 64, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x + 64, y - 64, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 32, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x + 32, y - 64, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x, y - 64, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 32, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 32, y - 64, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 64, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y - 64, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 64, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y - 32, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 64, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 64, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y + 32, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 64, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y + 64, 1, 1, 0, c_white, 0.2);}
+				
+				if (!place_meeting(x + 96, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y - 64, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 96, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y - 32, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 96, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 96, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y + 32, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 96, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y + 64, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 96, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y + 96, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 64, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 64, y + 96, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x + 32, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 32, y + 96, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x, y + 96, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 32, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x - 32, y + 96, 1, 1, 0, c_white, 0.2);}
+				if (!place_meeting(x - 64, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x - 64, y + 96, 1, 1, 0, c_white, 0.2);}
+			}
+			
+			#region /* Draw a rectangle around the placable objects */
+			if (place_brush_size == 5)
+			and (can_make_place_brush_size_bigger == true)
+			{
+				draw_rectangle_color(x - 80, y - 80, x + 112, y + 112, c_black, c_black, c_black, c_black, true);
+			}
+			else
+			if (place_brush_size == 4)
+			and (can_make_place_brush_size_bigger == true)
+			{
+				draw_rectangle_color(x - 80, y - 80, x + 80, y + 80, c_black, c_black, c_black, c_black, true);
+			}
+			else
+			if (place_brush_size == 3)
+			and (can_make_place_brush_size_bigger == true)
+			{
+				draw_rectangle_color(x - 48, y - 48, x + 80, y + 80, c_black, c_black, c_black, c_black, true);
+			}
+			else
+			if (place_brush_size == 2)
+			and (can_make_place_brush_size_bigger == true)
+			{
+				draw_rectangle_color(x - 48, y - 48, x + 48, y + 48, c_black, c_black, c_black, c_black, true);
+			}
+			else
+			if (place_brush_size == 1)
+			and (can_make_place_brush_size_bigger == true)
+			{
+				draw_rectangle_color(x - 16, y - 16, x + 48, y + 48, c_black, c_black, c_black, c_black, true);
+			}
+			else
+			{
+				if (mask_index == spr_2x2_block)
+				{
+					draw_rectangle_color(x - 24, y - 24, x + 24, y + 24, c_black, c_black, c_black, c_black, true);
+				}
+				else
+				{
+					draw_rectangle_color(x - 16, y - 16, x + 16, y + 16, c_black, c_black, c_black, c_black, true);
+				}
+			}
+			#endregion /* Draw a rectangle around the placable objects END */
+			
+		}
+		#endregion /* Default Cursor END */
+		
+		if (global.controls_used_for_menu_navigation == "controller")
+		{
+			scr_draw_mouse_cursor_sprite();
 		}
 		
-		if (can_make_place_brush_size_bigger == true)
-		and (sprite_index >= 0)
-		{
-			if (!place_meeting(x + 32, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 1){draw_sprite_ext(sprite_index, image_index, x + 32, y, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 32, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 1){draw_sprite_ext(sprite_index, image_index, x + 32, y + 32, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 1){draw_sprite_ext(sprite_index, image_index, x, y + 32, 1, 1, 0, c_white, 0.2);}
-			
-			if (!place_meeting(x + 32, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x + 32, y - 32, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x, y - 32, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 32, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y - 32, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 32, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 32, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 2){draw_sprite_ext(sprite_index, image_index, x - 32, y + 32, 1, 1, 0, c_white, 0.2);}
-			
-			if (!place_meeting(x + 64, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y - 32, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 64, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 64, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y + 32, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 64, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 64, y + 64, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 32, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x + 32, y + 64, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x, y + 64, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 32, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 3){draw_sprite_ext(sprite_index, image_index, x - 32, y + 64, 1, 1, 0, c_white, 0.2);}
-			
-			if (!place_meeting(x + 64, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x + 64, y - 64, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 32, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x + 32, y - 64, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x, y - 64, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 32, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 32, y - 64, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 64, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y - 64, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 64, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y - 32, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 64, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 64, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y + 32, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 64, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 4){draw_sprite_ext(sprite_index, image_index, x - 64, y + 64, 1, 1, 0, c_white, 0.2);}
-			
-			if (!place_meeting(x + 96, y - 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y - 64, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 96, y - 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y - 32, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 96, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 96, y + 32, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y + 32, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 96, y + 64, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y + 64, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 96, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 96, y + 96, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 64, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 64, y + 96, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x + 32, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x + 32, y + 96, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x, y + 96, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 32, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x - 32, y + 96, 1, 1, 0, c_white, 0.2);}
-			if (!place_meeting(x - 64, y + 96, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 5){draw_sprite_ext(sprite_index, image_index, x - 64, y + 96, 1, 1, 0, c_white, 0.2);}
-		}
-		
-		#region /* Draw a rectangle around the placable objects */
-		if (place_brush_size == 5)
-		and (can_make_place_brush_size_bigger == true)
-		{
-			draw_rectangle_color(x - 80, y - 80, x + 112, y + 112, c_black, c_black, c_black, c_black, true);
-		}
-		else
-		if (place_brush_size == 4)
-		and (can_make_place_brush_size_bigger == true)
-		{
-			draw_rectangle_color(x - 80, y - 80, x + 80, y + 80, c_black, c_black, c_black, c_black, true);
-		}
-		else
-		if (place_brush_size == 3)
-		and (can_make_place_brush_size_bigger == true)
-		{
-			draw_rectangle_color(x - 48, y - 48, x + 80, y + 80, c_black, c_black, c_black, c_black, true);
-		}
-		else
-		if (place_brush_size == 2)
-		and (can_make_place_brush_size_bigger == true)
-		{
-			draw_rectangle_color(x - 48, y - 48, x + 48, y + 48, c_black, c_black, c_black, c_black, true);
-		}
-		else
-		if (place_brush_size == 1)
-		and (can_make_place_brush_size_bigger == true)
-		{
-			draw_rectangle_color(x - 16, y - 16, x + 48, y + 48, c_black, c_black, c_black, c_black, true);
-		}
-		else
-		{
-			if (mask_index == spr_2x2_block)
-			{
-				draw_rectangle_color(x - 24, y - 24, x + 24, y + 24, c_black, c_black, c_black, c_black, true);
-			}
-			else
-			{
-				draw_rectangle_color(x - 16, y - 16, x + 16, y + 16, c_black, c_black, c_black, c_black, true);
-			}
-		}
-		#endregion /* Draw a rectangle around the placable objects END */
-		
-	}
-	#endregion /* Default Cursor END */
-	
 	}
 	#endregion /* Position the Cursor END */
 	
@@ -551,172 +566,5 @@ if (global.actually_play_edited_level == false)
 		}
 	}
 	#endregion /* Pause virtual key END */
-
-	#region /* Change mouse cursor. Draw mouse cursor for menu navigation */
-	if (global.controls_used_for_menu_navigation == "controller")
-	{
-	
-		#region /* Scroll mouse cursor */
-		if (scroll_view == true)
-		and (pause == false)
-		and (asset_get_type("spr_cursor_scroll") == asset_sprite)
-		{
-			draw_sprite_ext(spr_cursor_scroll, 1, cursor_x, cursor_y, 1, 1, 0, c_red, 1);
-		}
-		else
-		if (asset_get_type("spr_cursor_scroll") == asset_sprite)
-		and (keyboard_check(vk_space))
-		and (pause == false)
-		{
-			draw_sprite_ext(spr_cursor_scroll, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-		}
-		#endregion /* Scroll mouse cursor END */
-	
-		else
-	
-		#region /* Grab mouse cursor */
-		if (asset_get_type("spr_cursor_grab") == asset_sprite)
-		and (position_meeting(cursor_x, cursor_y, obj_leveleditor_placed_object))
-		and (!mouse_check_button(mb_left))
-		and (!mouse_check_button(mb_right))
-		and (drag_object == false)
-		and (asset_get_type("obj_level_player_1_start") == asset_object)
-		and (instance_exists(obj_level_player_1_start))
-		and (obj_level_player_1_start.drag_object == false)
-		and (asset_get_type("obj_level_player_2_start") == asset_object)
-		and (instance_exists(obj_level_player_2_start))
-		and (obj_level_player_2_start.drag_object == false)
-		and (asset_get_type("obj_level_player_3_start") == asset_object)
-		and (instance_exists(obj_level_player_3_start))
-		and (obj_level_player_3_start.drag_object == false)
-		and (asset_get_type("obj_level_player_4_start") == asset_object)
-		and (instance_exists(obj_level_player_4_start))
-		and (obj_level_player_4_start.drag_object == false)
-		and (asset_get_type("obj_level_end") == asset_object)
-		and (instance_exists(obj_level_end))
-		and (obj_level_end.drag_object == false)
-		and (erase_mode == false)
-		and (set_difficulty_mode == false)
-		and (pause == false)
-		and (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-		and (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-		and (!point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
-		{
-			draw_sprite_ext(spr_cursor_grab, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-		}
-		else
-		if (position_meeting(cursor_x, cursor_y, obj_leveleditor_placed_object))
-		and (drag_object == true)
-		and (set_difficulty_mode == false)
-		and (pause == false)
-		and (asset_get_type("obj_level_player_1_start") == asset_object)
-		and (instance_exists(obj_level_player_1_start))
-		and (obj_level_player_1_start.drag_object == false)
-		and (asset_get_type("obj_level_player_2_start") == asset_object)
-		and (instance_exists(obj_level_player_2_start))
-		and (obj_level_player_2_start.drag_object == false)
-		and (asset_get_type("obj_level_player_3_start") == asset_object)
-		and (instance_exists(obj_level_player_3_start))
-		and (obj_level_player_3_start.drag_object == false)
-		and (asset_get_type("obj_level_player_4_start") == asset_object)
-		and (instance_exists(obj_level_player_4_start))
-		and (obj_level_player_4_start.drag_object == false)
-		and (pause == false)
-		or (asset_get_type("obj_level_end") == asset_object)
-		and (instance_exists(obj_level_end))
-		and (obj_level_end.drag_object == true)
-		and (pause == false)
-		and (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-		and (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-		and (!point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
-		{
-			draw_sprite_ext(spr_cursor_grab, 1, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-		}
-		#endregion /* Grab mouse cursor END */
-	
-		else
-	
-		#region /* Default mouse cursor */
-		if (point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-		and (asset_get_type("spr_cursor") == asset_sprite)
-		or (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-		and (asset_get_type("spr_cursor") == asset_sprite)
-		or (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
-		and (asset_get_type("spr_cursor") == asset_sprite)
-		or (pause == true)
-		and (asset_get_type("spr_cursor") == asset_sprite)
-		{
-			draw_sprite_ext(spr_cursor, erase_brush_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-		}
-		#endregion /* Default mouse cursor END */
-	
-		else
-	
-		#region /* Erase mouse cursor */
-		if (asset_get_type("spr_cursor_erase") == asset_sprite)
-		and (erase_mode == true)
-		and (pause == false)
-		{
-			draw_sprite_ext(spr_cursor_erase, erase_brush_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-		}
-		#endregion /* Erase mouse cursor END */
-	
-		else
-	
-		#region /* Fill mouse cursor */
-		if (asset_get_type("spr_cursor_fill") == asset_sprite)
-		and (fill_mode == true)
-		and (fill_mode_type == "fill")
-		and (drag_object == false)
-		and (erase_mode == false)
-		and (set_difficulty_mode == false)
-		and (pause == false)
-		{
-			draw_sprite_ext(spr_cursor_fill_full, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-		}
-		#endregion /* Fill mouse cursor END */
-		
-		else
-		
-		#region /* Fill Horizontal mouse cursor */
-		if (asset_get_type("spr_cursor_fill") == asset_sprite)
-		and (fill_mode == true)
-		and (fill_mode_type == "horizontal")
-		and (drag_object == false)
-		and (erase_mode == false)
-		and (set_difficulty_mode == false)
-		and (pause == false)
-		{
-			draw_sprite_ext(spr_cursor_fill, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-		}
-		#endregion /* Fill Horizontal mouse cursor END */
-		
-		else
-		
-		#region /* Fill Vertical mouse cursor */
-		if (asset_get_type("spr_cursor_fill") == asset_sprite)
-		and (fill_mode == true)
-		and (fill_mode_type == "vertical")
-		and (drag_object == false)
-		and (erase_mode == false)
-		and (set_difficulty_mode == false)
-		and (pause == false)
-		{
-			draw_sprite_ext(spr_cursor_fill, 0, cursor_x, cursor_y, 1, 1, 90, c_white, 1);
-		}
-		#endregion /* Fill Vertical mouse cursor END */
-		
-		else
-		
-		#region /* Brush mouse cursor */
-		if (asset_get_type("spr_cursor_brush") == asset_sprite)
-		and (pause == false)
-		{
-			draw_sprite_ext(spr_cursor_brush, place_brush_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-		}
-		#endregion /* Brush mouse cursor END */
-		
-	}
-	#endregion /* Change mouse cursor. Draw mouse cursor for menu navigation END */
 	
 }

@@ -26,7 +26,7 @@ and (asset_get_type("obj_wall") == asset_object)
 				}
 			}
 		}
-		if (empty = false)
+		if (empty == false)
 		{
 			if (instance_exists(obj_player))
 			and (asset_get_type("scr_gamepad_vibration") == asset_script)

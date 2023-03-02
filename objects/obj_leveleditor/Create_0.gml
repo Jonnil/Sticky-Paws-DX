@@ -20,6 +20,7 @@ if (can_set_background == true)
 #endregion /* Backgrounds END */
 
 #region /* Essential variables */
+global.time_countdown_bonus = 500;
 pause = false;
 if (global.player1_can_play == true)
 {
@@ -120,11 +121,7 @@ enum level_object_id
 	id_bump_in_ground_one_up = 31,
 	id_bump_in_ground_two_up = 32,
 	id_bump_in_ground_three_up = 33,
-	id_bump_in_ground_big_collectible_1 = 34,
-	id_bump_in_ground_big_collectible_2 = 35,
-	id_bump_in_ground_big_collectible_3 = 36,
-	id_bump_in_ground_big_collectible_4 = 37,
-	id_bump_in_ground_big_collectible_5 = 38,
+	id_bump_in_ground_big_collectible = 34,
 	id_bump_in_ground_invincibility_powerup = 39,
 	id_bump_in_ground_invincibility_powerup_coil_spring = 39001,
 	#endregion /* Bump in Ground END */
@@ -136,11 +133,7 @@ enum level_object_id
 	id_invisible_bump_in_ground_one_up = 311,
 	id_invisible_bump_in_ground_two_up = 321,
 	id_invisible_bump_in_ground_three_up = 331,
-	id_invisible_bump_in_ground_big_collectible_1 = 341,
-	id_invisible_bump_in_ground_big_collectible_2 = 351,
-	id_invisible_bump_in_ground_big_collectible_3 = 361,
-	id_invisible_bump_in_ground_big_collectible_4 = 371,
-	id_invisible_bump_in_ground_big_collectible_5 = 381,
+	id_invisible_bump_in_ground_big_collectible = 341,
 	id_invisible_bump_in_ground_invincibility_powerup = 391,
 	id_invisible_bump_in_ground_invincibility_powerup_coil_spring = 390011,
 	#endregion /* Invisible Bump in Ground END */
@@ -153,11 +146,7 @@ enum level_object_id
 	id_basic_collectible_6 = 45,
 	id_basic_collectible_7 = 46,
 	id_basic_collectible_8 = 47,
-	id_big_collectible_1 = 48,
-	id_big_collectible_2 = 49,
-	id_big_collectible_3 = 50,
-	id_big_collectible_4 = 51,
-	id_big_collectible_5 = 52,
+	id_big_collectible = 48,
 	id_heart = 53,
 	id_hp_pickup = 54,
 	id_invincibility_powerup = 55,
@@ -217,11 +206,7 @@ enum level_object_id
 	id_bucket_one_up = 80,
 	id_bucket_two_up = 81,
 	id_bucket_three_up = 82,
-	id_bucket_big_collectible_1 = 83,
-	id_bucket_big_collectible_2 = 84,
-	id_bucket_big_collectible_3 = 85,
-	id_bucket_big_collectible_4 = 86,
-	id_bucket_big_collectible_5 = 87,
+	id_bucket_big_collectible = 83,
 	id_bucket_invincibility_powerup = 88,
 	id_bucket_invincibility_powerup_coil_spring = 88001,
 	#endregion /* Bucket END */
@@ -339,10 +324,15 @@ and (global.character_select_in_this_menu == "level_editor")
 and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu == "main_game")
-	or (global.create_level_from_template == true)
 	{
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 		can_save_to_level_information = false;
+	}
+	else
+	if (global.create_level_from_template == true)
+	{
+		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
+		can_save_to_level_information = true;
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor")
@@ -362,141 +352,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	
 	#region /* Custom Backgrounds */
 	
-	#region /* Custom Background 4 x and y parallax points */
-	#region /* Custom Background 4 y parallax point */
-	if (ini_key_exists("Custom Backgrounds", "custom_background_4_y_parallax"))
-	{
-		custom_background_4_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
-	}
-	else
-	{
-		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information == true)
-		{
-			ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
-		}
-		custom_background_4_y_parallax = 9;
-	}
-	#endregion /* Custom Background 4 y parallax point END */
-	
-	#region /* Custom Background 4 x parallax point */
-	if (ini_key_exists("Custom Backgrounds", "custom_background_4_x_parallax"))
-	{
-		custom_background_4_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
-	}
-	else
-	{
-		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information == true)
-		{
-			ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
-		}
-		custom_background_4_x_parallax = 9;
-	}
-	#endregion /* Custom Background 4 x parallax point END */
-	#endregion /* Custom Background 4 x and y parallax points END */
-	
-	#region /* Custom Background 3 x and y parallax points */
-	#region /* Custom Background 3 y parallax point */
-	if (ini_key_exists("Custom Backgrounds", "custom_background_3_y_parallax"))
-	{
-		custom_background_3_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
-	}
-	else
-	{
-		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information == true)
-		{
-			ini_write_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
-		}
-		custom_background_3_y_parallax = 7;
-	}
-	#endregion /* Custom Background 3 y parallax point END */
-	
-	#region /* Custom Background 3 x parallax point */
-	if (ini_key_exists("Custom Backgrounds", "custom_background_3_x_parallax"))
-	{
-		custom_background_3_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
-	}
-	else
-	{
-		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information == true)
-		{
-			ini_write_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
-		}
-		custom_background_3_x_parallax = 7;
-	}
-	#endregion /* Custom Background 3 x parallax point END */
-	#endregion /* Custom Background 3 x and y parallax points END */
-	
-	#region /* Custom Background 2 x and y parallax points */
-	#region /* Custom Background 2 y parallax point */
-	if (ini_key_exists("Custom Backgrounds", "custom_background_2_y_parallax"))
-	{
-		custom_background_2_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
-	}
-	else
-	{
-		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information == true)
-		{
-			ini_write_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
-		}
-		custom_background_2_y_parallax = 5;
-	}
-	#endregion /* Custom Background 2 y parallax point END */
-	
-	#region /* Custom Background 2 x parallax point */
-	if (ini_key_exists("Custom Backgrounds", "custom_background_2_x_parallax"))
-	{
-		custom_background_2_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
-	}
-	else
-	{
-		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information == true)
-		{
-			ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
-		}
-		custom_background_2_x_parallax = 5;
-	}
-	#endregion /* Custom Background 2 x parallax point END */
-	#endregion /* Custom Background 2 x and y parallax points END */
-	
-	#region /* Custom Background 1 x and y parallax points */
-	#region /* Custom Background 1 y parallax point */
-	if (ini_key_exists("Custom Backgrounds", "custom_background_1_y_parallax"))
-	{
-		custom_background_1_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
-	}
-	else
-	{
-		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information == true)
-		{
-			ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
-		}
-		custom_background_1_y_parallax = 3;
-	}
-	#endregion /* Custom Background 1 y parallax point END */
-	
-	#region /* Custom Background 1 x parallax point */
-	if (ini_key_exists("Custom Backgrounds", "custom_background_1_x_parallax"))
-	{
-		custom_background_1_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
-	}
-	else
-	{
-		if (global.character_select_in_this_menu == "level_editor")
-		and (can_save_to_level_information == true)
-		{
-			ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
-		}
-		custom_background_1_x_parallax = 3;
-	}
-	#endregion /* Custom Background 1 x parallax point END */
-	#endregion /* Custom Background 1 x and y parallax points END */
+	#region /* Custom Background All Offsets */
 	
 	#region /* Custom Background 4 x and y offset points */
 	#region /* Custom Background 4 y offset point */
@@ -634,6 +490,288 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	#endregion /* Custom Background 1 x offset point END */
 	#endregion /* Custom Background 1 x and y offset points END */
 	
+	#endregion /* Custom Background All Offsets END */
+	
+	#region /* Custom Background All Parallaxs */
+	
+	#region /* Custom Background 4 x and y parallax points */
+	#region /* Custom Background 4 y parallax point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_4_y_parallax"))
+	{
+		custom_background_4_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
+		}
+		custom_background_4_y_parallax = 9;
+	}
+	#endregion /* Custom Background 4 y parallax point END */
+	
+	#region /* Custom Background 4 x parallax point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_4_x_parallax"))
+	{
+		custom_background_4_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
+		}
+		custom_background_4_x_parallax = 9;
+	}
+	#endregion /* Custom Background 4 x parallax point END */
+	#endregion /* Custom Background 4 x and y parallax points END */
+	
+	#region /* Custom Background 3 x and y parallax points */
+	#region /* Custom Background 3 y parallax point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_3_y_parallax"))
+	{
+		custom_background_3_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
+		}
+		custom_background_3_y_parallax = 7;
+	}
+	#endregion /* Custom Background 3 y parallax point END */
+	
+	#region /* Custom Background 3 x parallax point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_3_x_parallax"))
+	{
+		custom_background_3_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
+		}
+		custom_background_3_x_parallax = 7;
+	}
+	#endregion /* Custom Background 3 x parallax point END */
+	#endregion /* Custom Background 3 x and y parallax points END */
+	
+	#region /* Custom Background 2 x and y parallax points */
+	#region /* Custom Background 2 y parallax point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_2_y_parallax"))
+	{
+		custom_background_2_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
+		}
+		custom_background_2_y_parallax = 5;
+	}
+	#endregion /* Custom Background 2 y parallax point END */
+	
+	#region /* Custom Background 2 x parallax point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_2_x_parallax"))
+	{
+		custom_background_2_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
+		}
+		custom_background_2_x_parallax = 5;
+	}
+	#endregion /* Custom Background 2 x parallax point END */
+	#endregion /* Custom Background 2 x and y parallax points END */
+	
+	#region /* Custom Background 1 x and y parallax points */
+	#region /* Custom Background 1 y parallax point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_1_y_parallax"))
+	{
+		custom_background_1_y_parallax = ini_read_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
+		}
+		custom_background_1_y_parallax = 3;
+	}
+	#endregion /* Custom Background 1 y parallax point END */
+	
+	#region /* Custom Background 1 x parallax point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_1_x_parallax"))
+	{
+		custom_background_1_x_parallax = ini_read_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
+		}
+		custom_background_1_x_parallax = 3;
+	}
+	#endregion /* Custom Background 1 x parallax point END */
+	#endregion /* Custom Background 1 x and y parallax points END */
+	
+	#endregion /* Custom Background All Parallaxs END */
+	
+	#region /* Custom Background All Scales */
+	
+	#region /* Custom Background 4 x and y scale points */
+	#region /* Custom Background 4 y scale point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_4_y_scale"))
+	{
+		custom_background_4_y_scale = ini_read_real("Custom Backgrounds", "custom_background_4_y_scale", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_y_scale", 1);
+		}
+		custom_background_4_y_scale = 1;
+	}
+	#endregion /* Custom Background 4 y scale point END */
+	
+	#region /* Custom Background 4 x scale point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_4_x_scale"))
+	{
+		custom_background_4_x_scale = ini_read_real("Custom Backgrounds", "custom_background_4_x_scale", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_x_scale", 1);
+		}
+		custom_background_4_x_scale = 1;
+	}
+	#endregion /* Custom Background 4 x scale point END */
+	#endregion /* Custom Background 4 x and y scale points END */
+	
+	#region /* Custom Background 3 x and y scale points */
+	#region /* Custom Background 3 y scale point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_3_y_scale"))
+	{
+		custom_background_3_y_scale = ini_read_real("Custom Backgrounds", "custom_background_3_y_scale", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_y_scale", 1);
+		}
+		custom_background_3_y_scale = 1;
+	}
+	#endregion /* Custom Background 3 y scale point END */
+	
+	#region /* Custom Background 3 x scale point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_3_x_scale"))
+	{
+		custom_background_3_x_scale = ini_read_real("Custom Backgrounds", "custom_background_3_x_scale", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_x_scale", 1);
+		}
+		custom_background_3_x_scale = 1;
+	}
+	#endregion /* Custom Background 3 x scale point END */
+	#endregion /* Custom Background 3 x and y scale points END */
+	
+	#region /* Custom Background 2 x and y scale points */
+	#region /* Custom Background 2 y scale point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_2_y_scale"))
+	{
+		custom_background_2_y_scale = ini_read_real("Custom Backgrounds", "custom_background_2_y_scale", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_y_scale", 1);
+		}
+		custom_background_2_y_scale = 1;
+	}
+	#endregion /* Custom Background 2 y scale point END */
+	
+	#region /* Custom Background 2 x scale point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_2_x_scale"))
+	{
+		custom_background_2_x_scale = ini_read_real("Custom Backgrounds", "custom_background_2_x_scale", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_x_scale", 1);
+		}
+		custom_background_2_x_scale = 1;
+	}
+	#endregion /* Custom Background 2 x scale point END */
+	#endregion /* Custom Background 2 x and y scale points END */
+	
+	#region /* Custom Background 1 x and y scale points */
+	#region /* Custom Background 1 y scale point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_1_y_scale"))
+	{
+		custom_background_1_y_scale = ini_read_real("Custom Backgrounds", "custom_background_1_y_scale", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_y_scale", 1);
+		}
+		custom_background_1_y_scale = 1;
+	}
+	#endregion /* Custom Background 1 y scale point END */
+	
+	#region /* Custom Background 1 x scale point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_1_x_scale"))
+	{
+		custom_background_1_x_scale = ini_read_real("Custom Backgrounds", "custom_background_1_x_scale", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_x_scale", 1);
+		}
+		custom_background_1_x_scale = 1;
+	}
+	#endregion /* Custom Background 1 x scale point END */
+	#endregion /* Custom Background 1 x and y scale points END */
+	
+	#endregion /* Custom Background All Scales END */
+	
 	#endregion /* Custom Backgrounds END */
 	
 	#region /* Make every tileset into default tileset */
@@ -744,13 +882,22 @@ else
 	custom_background_3_y_parallax = 7;
 	custom_background_4_x_parallax = 9;
 	custom_background_4_y_parallax = 9;
+	custom_background_1_x_scale = 1;
+	custom_background_1_y_scale = 1;
+	custom_background_2_x_scale = 1;
+	custom_background_2_y_scale = 1;
+	custom_background_3_x_scale = 1;
+	custom_background_3_y_scale = 1;
+	custom_background_4_x_scale = 1;
+	custom_background_4_y_scale = 1;
 	global.enable_time_countdown = false;
 	global.time_countdown = 500;
-	global.time_countdown_bonus = 500;
 	global.make_every_tileset_into_default_tileset = false;
 	global.rain = false;
 }
 #endregion /* Initialize level_information.ini END */
+
+scr_scale_background();
 
 #region /* Load Level */
 if (can_load_level == true)
@@ -878,11 +1025,7 @@ if (global.actually_play_edited_level == false)
 	add_object(level_object_id.id_bump_in_ground_one_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(level_object_id.id_bump_in_ground_two_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(level_object_id.id_bump_in_ground_three_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(level_object_id.id_bump_in_ground_big_collectible_1, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(level_object_id.id_bump_in_ground_big_collectible_2, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(level_object_id.id_bump_in_ground_big_collectible_3, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(level_object_id.id_bump_in_ground_big_collectible_4, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(level_object_id.id_bump_in_ground_big_collectible_5, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(level_object_id.id_bump_in_ground_big_collectible, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(level_object_id.id_bump_in_ground_invincibility_powerup, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(level_object_id.id_bump_in_ground_invincibility_powerup_coil_spring, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Bump in Ground END */
@@ -894,11 +1037,7 @@ if (global.actually_play_edited_level == false)
 	add_object(level_object_id.id_invisible_bump_in_ground_one_up, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 	add_object(level_object_id.id_invisible_bump_in_ground_two_up, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 	add_object(level_object_id.id_invisible_bump_in_ground_three_up, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_1, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_2, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_3, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_4, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_big_collectible_5, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+	add_object(level_object_id.id_invisible_bump_in_ground_big_collectible, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 	add_object(level_object_id.id_invisible_bump_in_ground_invincibility_powerup, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 	add_object(level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 	#endregion /* Invisible Bump in Ground END */
@@ -915,11 +1054,7 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Basic Collectible END */
 	
 	#region /* Big Collectible */
-	add_object(level_object_id.id_big_collectible_1, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(level_object_id.id_big_collectible_2, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(level_object_id.id_big_collectible_3, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(level_object_id.id_big_collectible_4, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(level_object_id.id_big_collectible_5, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(level_object_id.id_big_collectible, global.resource_pack_sprite_big_collectible, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	#endregion /* Big Collectible END */
 	
 	add_object(level_object_id.id_heart, spr_heart, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -1062,19 +1197,6 @@ if (global.actually_play_edited_level == false)
 	}
 	#endregion /* Loading selected level editing music END */
 	
-	#region /* Controls for level editor */
-	key_up = (keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down)) or (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down)) or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S"))) or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd)) or (gamepad_axis_value(0, gp_axislv) < 0);
-	key_left = (keyboard_check_pressed(global.player1_key_left)) and (!keyboard_check_pressed(global.player1_key_right)) or (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right)) or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D"))) or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr)) or (gamepad_axis_value(0, gp_axislh) < 0);
-	key_right = (keyboard_check_pressed(global.player1_key_right)) and (!keyboard_check_pressed(global.player1_key_left)) or (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left)) or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A"))) or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl)) or (gamepad_axis_value(0, gp_axislh) > 0);
-	key_down = (keyboard_check_pressed(global.player1_key_down)) and (!keyboard_check_pressed(global.player1_key_up)) or (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up)) or (keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W"))) or (gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu)) or (gamepad_axis_value(0, gp_axislv) > 0);
-	/* Player 1 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(0, global.player1_gamepad_button_accept)) or (gamepad_button_check_pressed(0, global.player1_gamepad_button2_accept)) or (keyboard_check_pressed(global.player1_key_accept)) or (keyboard_check_pressed(global.player1_key2_accept)) or (keyboard_check_pressed(vk_space));
-	key_a_released = (gamepad_button_check_released(0, gp_face1)) or (keyboard_check_released(global.player1_key_jump)) or (keyboard_check_released(ord("Z")));
-	key_a_hold = (gamepad_button_check(0, gp_face1)) or (keyboard_check(global.player1_key_jump)) or (keyboard_check(ord("Z")));
-	key_b_hold = (gamepad_button_check(0, gp_face2)) or (keyboard_check(global.player1_key_sprint)) or (keyboard_check(ord("X"))) or (keyboard_check(vk_backspace));
-	/* Player 1 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(0, global.player1_gamepad_button_back)) or (gamepad_button_check_pressed(0, global.player1_gamepad_button2_back)) or (keyboard_check_pressed(global.player1_key_back)) or (keyboard_check_pressed(global.player1_key2_back)) or (keyboard_check_pressed(vk_escape));
-	key_b_released = (gamepad_button_check_released(0, gp_face2)) or (keyboard_check_released(global.player1_key_sprint)) or (keyboard_check_released(ord("X"))) or (keyboard_check_released(vk_backspace));
-	#endregion /* Controls for level editor END */
-	
 	unused_x_origin_point = noone;
 	unused_y_origin_point = noone;
 	
@@ -1083,7 +1205,6 @@ if (global.actually_play_edited_level == false)
 	depth = -300;
 	
 	global.player_has_entered_goal = false;
-	global.time_countdown_bonus = 500;
 	
 	old_window_get_height = 0;
 	old_window_get_width = 0;
@@ -1091,7 +1212,18 @@ if (global.actually_play_edited_level == false)
 	mx = mouse_x;
 	my = mouse_y;
 	
+	selected_skin = global.skin_for_player_1;
+	
+	sprite_player = noone;
+	sprite_player = scr_initialize_custom_character_select_sprite("idle", sprite_player, global.skin_for_player_1);
+	sprite_player = scr_initialize_custom_character_select_sprite("stand", sprite_player, global.skin_for_player_1);
+	
 	audio_stop_all();
+	pressing_play_timer = 0; /* You have to hold down the play button for some time before you play the level from the beginning */
+	playtest_x = x; /* Where in the room you want to do playtest */
+	playtest_y = y;
+	playtest_x_lerp = x;
+	playtest_y_lerp = y;
 	room_speed = global.max_fps; /* Set correct fps */
 	x = mouse_x;
 	y = mouse_y;
@@ -1108,7 +1240,6 @@ if (global.actually_play_edited_level == false)
 	place_brush_size = 0; /* The size of the brush when placeing objects */
 	erase_brush_size = 0; /* The size of the brush when erasing */
 	can_make_place_brush_size_bigger = true; /* If you can make the brush size bigger for certain objects */
-	can_put_objects_above_other_objects = false; /* If you can put objects above other objects */
 	mouse_sprite = spr_cursor; /* Sets what cursor sprite to use */
 	undo_and_redo_buttons_enabled = false; /* If undo and redo buttons should appear or not */
 	tooltip = "";

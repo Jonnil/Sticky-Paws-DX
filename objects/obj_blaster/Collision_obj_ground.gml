@@ -1,4 +1,4 @@
-if (place_meeting(x, y + 1, other))
+if (position_meeting(x, bbox_bottom + 1, other))
 {
 	stop_gravity = true;
 }

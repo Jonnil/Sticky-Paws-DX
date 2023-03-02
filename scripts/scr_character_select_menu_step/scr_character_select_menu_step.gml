@@ -687,7 +687,7 @@ function scr_character_select_menu_step()
 					}
 				}
 			}
-			#endregion /* Player 1 Menu Navigation END*/
+			#endregion /* Player 1 Menu Navigation END */
 			
 			#region /* Player 2 Menu Navigation */
 			if (player2_menu == "select_character")

@@ -303,11 +303,13 @@ and (obj_camera.iris_xscale < 3)
 			}
 			else
 			{
-				if (x > room_width + sprite_width * 0.5)
+				if (x > room_width + 32)
 				{
-					x = room_width + sprite_width * 0.5;
+					x = room_width + 32;
 					hspeed = 0;
 					vspeed = 0;
+					friction = 500;
+					visible = false;
 				}
 			}
 		}
@@ -531,7 +533,7 @@ and (global.time_countdown_bonus <= 0)
 	{
 		hspeed += 0.3;
 	}
-	can_move = false;
+	//can_move = false;
 	if (hspeed > 0)
 	{
 		image_xscale = +1;
@@ -681,6 +683,7 @@ if (bbox_top > room_height)
 }
 if (bbox_top > room_height + 200)
 and (goal == false)
+and (global.goal_active == false)
 {
 	die = true;
 }
@@ -692,6 +695,7 @@ and (can_collide_with_wall == true)
 {
 	stuck_in_wall_counter += 1;
 	if (stuck_in_wall_counter >= 3)
+	and (global.goal_active == false)
 	{
 		die = true;
 	}
@@ -970,6 +974,7 @@ if (takendamage > 0)
 
 #region /* Make the player die if you have 0 HP */
 if (hp <= 0)
+and (global.goal_active == false)
 {
 	die = true;
 }
@@ -1022,6 +1027,7 @@ and (place_meeting(x, y, obj_lava))
 		}
 	}
 	else
+	if (global.goal_active == false)
 	{
 		die = true;
 	}
@@ -1438,6 +1444,7 @@ if (goal == false)
 	and (global.enable_time_countdown == true)
 	and (allow_timeup == true)
 	and (global.player_has_entered_goal == false)
+	and (global.goal_active == false)
 	{
 		die = true;
 	}
@@ -2480,7 +2487,7 @@ if (on_ground == true)
 	
 	else
 	
-	#region /* Run */
+	#region /* Run in Water */
 	if (hspeed <+ 0.1)
 	or (hspeed >- 0.1)
 	{
@@ -2529,7 +2536,7 @@ if (on_ground == true)
 		}
 		image_speed = speed / 13.5+0.1;
 	}
-	#endregion /* Run END */
+	#endregion /* Run in Water END */
 	
 	else
 	
@@ -3075,7 +3082,6 @@ and (vspeed == 0)
 	if (hspeed == 0)
 	and (key_up)
 	and (!key_down)
-	and (can_move == true)
 	{
 		if (look_up_start_animation == true)
 		{

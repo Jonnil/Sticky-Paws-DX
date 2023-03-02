@@ -5,5 +5,4 @@
 //clipboard_set_text(global.url + results);
 
 /* Sets our message for display */
-//show_message_time = 200;
 //msg = "URL Copied to Clipboard";

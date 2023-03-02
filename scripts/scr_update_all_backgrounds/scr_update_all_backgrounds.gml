@@ -35,33 +35,31 @@ function scr_update_all_backgrounds()
 			var path = working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/backgrounds/";
 		}
 		
-		/* On some levels (LEVEL 4) the background is unable to be loaded, so need to fix that */
-		
 		#region /* Update Background1 */
-		/* PNG small letter File */if (file_exists(string(path) + "background1.png")){global.custom_background1 = sprite_add(string(path) + "background1.png", 0, false, false, 0, 0);}else
-		//* BMP small letter File */if (file_exists(string(path) + "background1.bmp")){global.custom_background1 = sprite_add(string(path) + "background1.bmp", 0, false, false, 0, 0);}else
-		//* GIF small letter File */if (file_exists(string(path) + "background1.gif")){global.custom_background1 = sprite_add(string(path) + "background1.gif", 0, false, false, 0, 0);}else
-		//* JPG small letter File */if (file_exists(string(path) + "background1.jpg")){global.custom_background1 = sprite_add(string(path) + "background1.jpg", 0, false, false, 0, 0);}else
+		/* PNG small letter File */ if (file_exists(string(path) + "background1.png")){global.custom_background1 = sprite_add(string(path) + "background1.png", 0, false, false, 0, 0);}else
+		//* BMP small letter File */ if (file_exists(string(path) + "background1.bmp")){global.custom_background1 = sprite_add(string(path) + "background1.bmp", 0, false, false, 0, 0);}else
+		//* GIF small letter File */ if (file_exists(string(path) + "background1.gif")){global.custom_background1 = sprite_add(string(path) + "background1.gif", 0, false, false, 0, 0);}else
+		//* JPG small letter File */ if (file_exists(string(path) + "background1.jpg")){global.custom_background1 = sprite_add(string(path) + "background1.jpg", 0, false, false, 0, 0);}else
 		{
 			global.custom_background1 = noone;
 		}
 		#endregion /* Update Background1 END */
 		
 		#region /* Update Background2 */
-		/* PNG small letter File */if (file_exists(string(path) + "background2.png")){global.custom_background2 = sprite_add(string(path) + "background2.png", 0, false, false, 0, 0);}else
-		//* BMP small letter File */if (file_exists(string(path) + "background2.bmp")){global.custom_background2 = sprite_add(string(path) + "background2.bmp", 0, false, false, 0, 0);}else
-		//* GIF small letter File */if (file_exists(string(path) + "background2.gif")){global.custom_background2 = sprite_add(string(path) + "background2.gif", 0, false, false, 0, 0);}else
-		//* JPG small letter File */if (file_exists(string(path) + "background2.jpg")){global.custom_background2 = sprite_add(string(path) + "background2.jpg", 0, false, false, 0, 0);}else
+		/* PNG small letter File */ if (file_exists(string(path) + "background2.png")){global.custom_background2 = sprite_add(string(path) + "background2.png", 0, false, false, 0, 0);}else
+		//* BMP small letter File */ if (file_exists(string(path) + "background2.bmp")){global.custom_background2 = sprite_add(string(path) + "background2.bmp", 0, false, false, 0, 0);}else
+		//* GIF small letter File */ if (file_exists(string(path) + "background2.gif")){global.custom_background2 = sprite_add(string(path) + "background2.gif", 0, false, false, 0, 0);}else
+		//* JPG small letter File */ if (file_exists(string(path) + "background2.jpg")){global.custom_background2 = sprite_add(string(path) + "background2.jpg", 0, false, false, 0, 0);}else
 		{
 			global.custom_background2 = noone;
 		}
 		#endregion /* Update Background2 END */
 		
 		#region /* Update Background3 */
-		/* PNG small letter File */if (file_exists(string(path) + "background3.png")){global.custom_background3 = sprite_add(string(path) + "background3.png", 0, false, false, 0, 0);}else
-		//* BMP small letter File */if (file_exists(string(path) + "background3.bmp")){global.custom_background3 = sprite_add(string(path) + "background3.bmp", 0, false, false, 0, 0);}else
-		//* GIF small letter File */if (file_exists(string(path) + "background3.gif")){global.custom_background3 = sprite_add(string(path) + "background3.gif", 0, false, false, 0, 0);}else
-		//* JPG small letter File */if (file_exists(string(path) + "background3.jpg")){global.custom_background3 = sprite_add(string(path) + "background3.jpg", 0, false, false, 0, 0);}else
+		/* PNG small letter File */ if (file_exists(string(path) + "background3.png")){global.custom_background3 = sprite_add(string(path) + "background3.png", 0, false, false, 0, 0);}else
+		//* BMP small letter File */ if (file_exists(string(path) + "background3.bmp")){global.custom_background3 = sprite_add(string(path) + "background3.bmp", 0, false, false, 0, 0);}else
+		//* GIF small letter File */ if (file_exists(string(path) + "background3.gif")){global.custom_background3 = sprite_add(string(path) + "background3.gif", 0, false, false, 0, 0);}else
+		//* JPG small letter File */ if (file_exists(string(path) + "background3.jpg")){global.custom_background3 = sprite_add(string(path) + "background3.jpg", 0, false, false, 0, 0);}else
 		{
 			global.custom_background3 = noone;
 		}

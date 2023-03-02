@@ -21,7 +21,10 @@ and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest
 			new_instance.sprite_index = sprite_index;
 			with(new_instance)
 			{
-				motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
+				if (instance_exists(other))
+				{
+					motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, other).speed * 0.5);
+				}
 			}
 		}
 		else
@@ -30,7 +33,10 @@ and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest
 			new_instance.sprite_index = sprite_index;
 			with(new_instance)
 			{
-				motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
+				if (instance_exists(other))
+				{
+					motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, other).speed * 0.5);
+				}
 			}
 		}
 	}

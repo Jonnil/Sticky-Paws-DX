@@ -257,11 +257,7 @@ function scr_debug_screen()
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_top);
 		
-		if (instance_exists(obj_camera))
-		{
-			scr_draw_text_outlined(display_get_width() - 32, 32, "Camera Width: " + string(camera_get_view_width(obj_camera.camera)));
-			scr_draw_text_outlined(display_get_width() - 32, 64, "Camera Height: " + string(camera_get_view_height(obj_camera.camera)));
-		}
+		scr_draw_text_outlined(320, 320, "global.custom_background1: " + string(global.custom_background1))
 		
 		//scr_draw_text_outlined(display_get_width() - 32, 32, 
 		////"gamepad_get_description (0): " + string(gamepad_get_description(0)) + "\n" +

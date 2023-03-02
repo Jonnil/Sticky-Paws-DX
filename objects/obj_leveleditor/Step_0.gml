@@ -4,11 +4,11 @@ if (global.actually_play_edited_level == false)
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-
+	
 	grid_button_x = display_get_gui_width() - 224;
-
+	
 	scr_audio_play(level_editing_music, volume_source.music);
-
+	
 	if (global.selected_level_editing_music != previous_selected_level_editing_music)
 	{
 		if (global.selected_level_editing_music == 0)
@@ -54,21 +54,10 @@ if (global.actually_play_edited_level == false)
 		}
 	}
 
-	#region /* Controls for level editor */
-	key_up = (keyboard_check_pressed(global.player1_key_up)) and (!keyboard_check_pressed(global.player1_key_down)) or (keyboard_check_pressed(vk_up)) and (!keyboard_check_pressed(vk_down)) or (keyboard_check_pressed(ord("W"))) and (!keyboard_check_pressed(ord("S"))) or (gamepad_button_check_pressed(0, gp_padu)) and (!gamepad_button_check_pressed(0, gp_padd)) or (gamepad_axis_value(0, gp_axislv) < 0);
-	key_left = (keyboard_check_pressed(global.player1_key_left)) and (!keyboard_check_pressed(global.player1_key_right)) or (keyboard_check_pressed(vk_left)) and (!keyboard_check_pressed(vk_right)) or (keyboard_check_pressed(ord("A"))) and (!keyboard_check_pressed(ord("D"))) or (gamepad_button_check_pressed(0, gp_padl)) and (!gamepad_button_check_pressed(0, gp_padr)) or (gamepad_axis_value(0, gp_axislh) < 0);
-	key_right = (keyboard_check_pressed(global.player1_key_right)) and (!keyboard_check_pressed(global.player1_key_left)) or (keyboard_check_pressed(vk_right)) and (!keyboard_check_pressed(vk_left)) or (keyboard_check_pressed(ord("D"))) and (!keyboard_check_pressed(ord("A"))) or (gamepad_button_check_pressed(0, gp_padr)) and (!gamepad_button_check_pressed(0, gp_padl)) or (gamepad_axis_value(0, gp_axislh) > 0);
-	key_down = (keyboard_check_pressed(global.player1_key_down)) and (!keyboard_check_pressed(global.player1_key_up)) or (keyboard_check_pressed(vk_down)) and (!keyboard_check_pressed(vk_up)) or (keyboard_check_pressed(ord("S"))) and (!keyboard_check_pressed(ord("W"))) or (gamepad_button_check_pressed(0, gp_padd)) and (!gamepad_button_check_pressed(0, gp_padu)) or (gamepad_axis_value(0, gp_axislv) > 0);
-	/* Player 1 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(0, global.player1_gamepad_button_accept)) or (gamepad_button_check_pressed(0, global.player1_gamepad_button2_accept)) or (keyboard_check_pressed(global.player1_key_accept)) or (keyboard_check_pressed(global.player1_key2_accept)) or (keyboard_check_pressed(vk_space));
-	key_a_released = (gamepad_button_check_released(0, gp_face1)) or (keyboard_check_released(global.player1_key_jump)) or (keyboard_check_released(ord("Z")));
-	key_a_hold = (gamepad_button_check(0, gp_face1)) or (keyboard_check(global.player1_key_jump)) or (keyboard_check(ord("Z")));
-	key_b_hold = (gamepad_button_check(0, gp_face2)) or (keyboard_check(global.player1_key_sprint)) or (keyboard_check(ord("X"))) or (keyboard_check(vk_backspace));
-	/* Player 1 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(0, global.player1_gamepad_button_back)) or (gamepad_button_check_pressed(0, global.player1_gamepad_button2_back)) or (keyboard_check_pressed(global.player1_key_back)) or (keyboard_check_pressed(global.player1_key2_back)) or (keyboard_check_pressed(vk_escape));
-	key_b_released = (gamepad_button_check_released(0, gp_face2)) or (keyboard_check_released(global.player1_key_sprint)) or (keyboard_check_released(ord("X"))) or (keyboard_check_released(vk_backspace));
-	#endregion /* Controls for level editor END */
-
+	scr_controls_for_level_editor();
+	
 	scr_toggle_fullscreen();
-
+	
 	#region /* Deactivate instances outside view */
 	if (startup_loading_timer <= 3)
 	{
@@ -185,12 +174,23 @@ if (global.actually_play_edited_level == false)
 		old_window_get_width = get_window_width;
 	}
 	
-	#region /* Play Level when pressing Enter Key */
-	if (keyboard_check_pressed(vk_enter))
-	or (gamepad_button_check_pressed(0, gp_select))
+	#region /* Holding the play key down */
+	if (keyboard_check(key_play))
+	or (gamepad_button_check(0, button_play))
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button(mb_left))
+	{
+		pressing_play_timer += 1;
+	}
+	#endregion /* Holding the play key down END */
+	
+	#region /* Play Level when releasing Enter Key */
+	if (keyboard_check_released(key_play))
+	or (gamepad_button_check_released(0, button_play))
+	or (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+	and (mouse_check_button_released(mb_left))
 	or (global.full_level_map_screenshot == true)
+	or (pressing_play_timer > 60)
 	{
 		if (pause == false)
 		and (menu_delay == 0)
@@ -321,11 +321,11 @@ if (global.actually_play_edited_level == false)
 					{
 						with(obj_leveleditor_placed_object)
 						{
-							scr_spawn_objects_when_starting_room(); /* Only spawn objects after saving custom level */
+							scr_spawn_objects_when_starting_room(); /* Only spawn objects AFTER saving custom level */
 						}
 					}
 					
-					if (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+					if (pressing_play_timer >= 60)
 					or (global.full_level_map_screenshot == true)
 					{
 						if (asset_get_type("obj_camera") == asset_object)
@@ -339,7 +339,7 @@ if (global.actually_play_edited_level == false)
 						if (asset_get_type("obj_camera") == asset_object)
 						and (!instance_exists(obj_camera))
 						{
-							instance_create_depth(x, y, 0, obj_camera);
+							instance_create_depth(playtest_x, playtest_y, 0, obj_camera);
 						}
 					}
 				}
@@ -384,11 +384,12 @@ if (global.actually_play_edited_level == false)
 						}
 					}
 				}
+				scr_scale_background();
 				instance_destroy();
 			}
 		}
 	}
-	#endregion /* Play Level when pressing Enter Key END */
+	#endregion /* Play Level when releasing Enter Key END */
 	
 	#region /* Scroll View */
 	if (mouse_check_button_pressed(mb_left))
@@ -538,7 +539,34 @@ if (global.actually_play_edited_level == false)
 		menu_cursor_index = 0;
 	}
 	#endregion /* Menu cursor image speed END */
-
+	
+	#region /* Update position of playtest x and playtest y when you're moving cursor or view faster */
+	if (key_move_faster)
+	{
+		playtest_x = x;
+		playtest_y = y;
+	}
+	#endregion /* Update position of playtest x and playtest y when you're moving cursor or view faster END */
+	
+	#region /* Limit playtest x and playtest y inside view */
+	if (playtest_x < camera_get_view_x(view_camera[view_current]))
+	{
+		playtest_x = camera_get_view_x(view_camera[view_current]);
+	}
+	if (playtest_x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	{
+		playtest_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+	}
+	if (playtest_y < camera_get_view_y(view_camera[view_current]))
+	{
+		playtest_y = camera_get_view_y(view_camera[view_current]);
+	}
+	if (playtest_y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+	{
+		playtest_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+	}
+	#endregion /* Limit playtest x and playtest y inside view END */
+	
 	#region /* If you haven't yet quit the level editor, then run this code */
 	if (quit_level_editor <= 0)
 	{
@@ -552,7 +580,7 @@ if (global.actually_play_edited_level == false)
 			cursor_y = mouse_get_y;
 			controller_x = mouse_get_x;
 			controller_y = mouse_get_y;
-		
+			
 			if (keyboard_check(vk_control))
 			{
 				controller_view_speed = 16;
@@ -626,70 +654,63 @@ if (global.actually_play_edited_level == false)
 				controller_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
 			}
 			#endregion /* Keep controller_x and controller_y within view END */
-		
-			if (key_up)
-			and (controller_y > camera_get_view_y(view_camera[view_current]))
+			
+			if (pause == false)
 			{
-				if (gamepad_button_check(0, gp_face3))
-				or (gamepad_button_check(0, gp_face4))
-				or (gamepad_button_check(0, gp_stickl))
+				if (key_up)
+				and (controller_y > camera_get_view_y(view_camera[view_current]))
 				{
-					controller_y -= 8;
+					if (key_move_faster)
+					{
+						controller_y -= 12;
+					}
+					else
+					{
+						controller_y -= 4;
+					}
 				}
-				else
+				if (key_down)
+				and (controller_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 				{
-					controller_y -= 4;
+					if (key_move_faster)
+					{
+						controller_y += 12;
+					}
+					else
+					{
+						controller_y += 4;
+					}
 				}
-			}
-			if (key_down)
-			and (controller_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-			{
-				if (gamepad_button_check(0, gp_face3))
-				or (gamepad_button_check(0, gp_face4))
-				or (gamepad_button_check(0, gp_stickl))
+				if (key_left)
+				and (controller_x > camera_get_view_x(view_camera[view_current]))
 				{
-					controller_y += 8;
+					if (key_move_faster)
+					{
+						controller_x -= 12;
+					}
+					else
+					{
+						controller_x -= 4;
+					}
 				}
-				else
+				if (key_right)
+				and (controller_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 				{
-					controller_y += 4;
-				}
-			}
-			if (key_left)
-			and (controller_x > camera_get_view_x(view_camera[view_current]))
-			{
-				if (gamepad_button_check(0, gp_face3))
-				or (gamepad_button_check(0, gp_face4))
-				or (gamepad_button_check(0, gp_stickl))
-				{
-					controller_x -= 8;
-				}
-				else
-				{
-					controller_x -= 4;
-				}
-			}
-			if (key_right)
-			and (controller_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-			{
-				if (gamepad_button_check(0, gp_face3))
-				or (gamepad_button_check(0, gp_face4))
-				or (gamepad_button_check(0, gp_stickl))
-				{
-					controller_x += 8;
-				}
-				else
-				{
-					controller_x += 4;
+					if (key_move_faster)
+					{
+						controller_x += 12;
+					}
+					else
+					{
+						controller_x += 4;
+					}
 				}
 			}
 		
 			#region /* Move view with gamepad */
-			if (gamepad_button_check(0, gp_face3))
-			or (gamepad_button_check(0, gp_face4))
-			or (gamepad_button_check(0, gp_stickl))
+			if (key_move_faster)
 			{
-				controller_view_speed = 16;
+				controller_view_speed = 24;
 			}
 			else
 			{
@@ -737,7 +758,7 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 			#endregion /* Move view with gamepad END */
-		
+			
 		}
 		#endregion /* Controller Input Changes END */
 	
@@ -746,23 +767,21 @@ if (global.actually_play_edited_level == false)
 		#region /* Place Object */
 		if (can_make_place_brush_size_bigger == false)
 		and (mouse_check_button_pressed(mb_left))
-		and (scroll_view == false)
+		
 		or (can_make_place_brush_size_bigger == true)
 		and (mouse_check_button(mb_left))
-		and (scroll_view == false)
+		
 		or (can_make_place_brush_size_bigger = false)
 		and (key_a_released)
-		and (scroll_view == false)
+		
 		or (can_make_place_brush_size_bigger == true)
-		and (gamepad_button_check(0, gp_face1))
-		and (scroll_view == false)
-		or (can_make_place_brush_size_bigger == true)
-		and (keyboard_check(ord("Z")))
-		and (scroll_view == false)
+		and (key_a_hold)
 		{
 			if (!keyboard_check(vk_space))
 			and (!mouse_check_button(mb_middle))
 			and (!mouse_check_button(mb_right))
+			and (pressing_play_timer == 0)
+			and (scroll_view == false)
 			and (drag_object == false)
 			and (fill_mode == false)
 			and (erase_mode == false)
@@ -991,7 +1010,10 @@ if (global.actually_play_edited_level == false)
 	#region /* Keyboard Shortcuts */
 	
 	#region /* Press D key to change to drawing tool in level editor */
-	if (keyboard_check_pressed(ord("D")))
+	if (keyboard_check_pressed(key_draw))
+	and (pause == false)
+	or (gamepad_button_check_pressed(0, button_draw))
+	and (pause == false)
 	{
 		if (fill_mode == false)
 		and (erase_mode == false)
@@ -1035,7 +1057,9 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Press D key to change to drawing tool in level editor END */
 	
 	#region /* Press E key to change to erase tool in level editor */
-	if (keyboard_check_pressed(ord("E")))
+	if (keyboard_check_pressed(key_erase))
+	and (pause == false)
+	or (gamepad_button_check_pressed(0, button_erase))
 	and (pause == false)
 	{
 		if (erase_mode == false)
@@ -1081,7 +1105,10 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Press E key to change to erase tool in level editor */
 	
 	#region /* Press F key to change to fill tool in level editor */
-	if (keyboard_check_pressed(ord("F")))
+	if (keyboard_check_pressed(key_fill))
+	and (pause == false)
+	or (gamepad_button_check_pressed(0, button_fill))
+	and (pause == false)
 	{
 		if (fill_mode == false)
 		{
@@ -1216,7 +1243,9 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Keyboard Shortcuts END */
 	
 	#region /* Show or hide grid hotkey */
-	if (keyboard_check_pressed(ord("G")))
+	if (keyboard_check_pressed(key_grid))
+	and (pause == false)
+	or (gamepad_button_check_pressed(0, button_grid))
 	and (pause == false)
 	{
 		if (show_grid == false)
@@ -1481,22 +1510,7 @@ if (global.actually_play_edited_level == false)
 			current_undo_value = 0;
 		}
 		#endregion /* Minimum undo value END */
-	
-		#region /* Can put objects above other objects toggle */
-		if (keyboard_check_pressed(ord("S")))
-		and (!keyboard_check(vk_control))
-		{
-			if (can_put_objects_above_other_objects == false)
-			{
-				can_put_objects_above_other_objects = true;
-			}
-			else
-			{
-				can_put_objects_above_other_objects = false;
-			}
-		}
-		#endregion /* Can put objects above other objects toggle END */
-	
+		
 		#region /* Fill with Objects */
 		if (mouse_check_button(mb_left))
 		and (!keyboard_check(vk_space))
@@ -1552,13 +1566,7 @@ if (global.actually_play_edited_level == false)
 		and (!mouse_check_button(mb_left))
 		and (erase_mode == false)
 		and (pause == false)
-		or (keyboard_check_pressed(ord("Q")))
-		and (!mouse_check_button(mb_middle))
-		and (!key_a_pressed)
-		and (!mouse_check_button(mb_left))
-		and (erase_mode == false)
-		and (pause == false)
-		or (gamepad_button_check_pressed(0, gp_shoulderl))
+		or (gamepad_button_check_pressed(0, gp_padl))
 		and (erase_mode == false)
 		and (pause == false)
 		{
@@ -1588,13 +1596,7 @@ if (global.actually_play_edited_level == false)
 		and (!mouse_check_button(mb_left))
 		and (erase_mode == false)
 		and (pause == false)
-		or (keyboard_check_pressed(ord("W")))
-		and (!mouse_check_button(mb_middle))
-		and (!key_a_pressed)
-		and (!mouse_check_button(mb_left))
-		and (erase_mode == false)
-		and (pause == false)
-		or (gamepad_button_check_pressed(0, gp_shoulderr))
+		or (gamepad_button_check_pressed(0, gp_padr))
 		and (erase_mode == false)
 		and (pause == false)
 		{

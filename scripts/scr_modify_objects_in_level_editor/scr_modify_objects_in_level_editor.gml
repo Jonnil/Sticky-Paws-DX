@@ -69,44 +69,44 @@ function scr_modify_objects_in_level_editor()
 							modify_object_menu = true;
 							
 							#region /* Change wall into it's different forms */
-							if (object == 1)
+							if (object == level_object_id.id_wall)
 							{
-								object = 1001;
+								object = level_object_id.id_wall_dirt;
 							}
 							else
-							if (object == 1001)
+							if (object == level_object_id.id_wall_dirt)
 							{
-								object = 1002;
+								object = level_object_id.id_wall_glass;
 							}
 							else
-							if (object == 1002)
+							if (object == level_object_id.id_wall_glass)
 							{
-								object = 1003;
+								object = level_object_id.id_wall_grass;
 							}
 							else
-							if (object == 1003)
+							if (object == level_object_id.id_wall_grass)
 							{
-								object = 1004;
+								object = level_object_id.id_wall_gravel;
 							}
 							else
-							if (object == 1004)
+							if (object == level_object_id.id_wall_gravel)
 							{
-								object = 1005;
+								object = level_object_id.id_wall_metal;
 							}
 							else
-							if (object == 1005)
+							if (object == level_object_id.id_wall_metal)
 							{
-								object = 1006;
+								object = level_object_id.id_wall_stone;
 							}
 							else
-							if (object == 1006)
+							if (object == level_object_id.id_wall_stone)
 							{
-								object = 1007;
+								object = level_object_id.id_wall_wood;
 							}
 							else
-							if (object == 1007)
+							if (object == level_object_id.id_wall_wood)
 							{
-								object = 1;
+								object = level_object_id.id_wall;
 							}
 							#endregion /* Change wall into it's different forms END */
 							
@@ -140,10 +140,10 @@ function scr_modify_objects_in_level_editor()
 							else
 							if (object == level_object_id.id_bump_in_ground_three_up)
 							{
-								object = level_object_id.id_bump_in_ground_big_collectible_1;
+								object = level_object_id.id_bump_in_ground_big_collectible;
 							}
 							else
-							if (object == level_object_id.id_bump_in_ground_big_collectible_1)
+							if (object == level_object_id.id_bump_in_ground_big_collectible)
 							{
 								object = level_object_id.id_bump_in_ground_invincibility_powerup;
 							}
@@ -187,10 +187,10 @@ function scr_modify_objects_in_level_editor()
 							else
 							if (object == level_object_id.id_invisible_bump_in_ground_three_up)
 							{
-								object = level_object_id.id_invisible_bump_in_ground_big_collectible_1;
+								object = level_object_id.id_invisible_bump_in_ground_big_collectible;
 							}
 							else
-							if (object == level_object_id.id_invisible_bump_in_ground_big_collectible_1)
+							if (object == level_object_id.id_invisible_bump_in_ground_big_collectible)
 							{
 								object = level_object_id.id_invisible_bump_in_ground_invincibility_powerup;
 							}
@@ -679,10 +679,10 @@ function scr_modify_objects_in_level_editor()
 							else
 							if (object == level_object_id.id_bucket_three_up)
 							{
-								object = level_object_id.id_bucket_big_collectible_1;
+								object = level_object_id.id_bucket_big_collectible;
 							}
 							else
-							if (object == level_object_id.id_bucket_big_collectible_1)
+							if (object == level_object_id.id_bucket_big_collectible)
 							{
 								object = level_object_id.id_bucket_invincibility_powerup;
 							}

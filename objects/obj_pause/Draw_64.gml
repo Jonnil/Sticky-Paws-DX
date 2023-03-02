@@ -304,10 +304,14 @@ if (hide_menu_for_clean_screenshots == false)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Options"), "options", "options");
 					draw_sprite_ext(spr_icons_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1);
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Restart"), "restart", "restart");
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map");
+					if (global.goal_active == false)
+					{
+						draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Restart"), "restart", "restart");
+						draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map");
+					}
 				}
 				else
+				if (global.goal_active == false)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Restart"), "restart", "restart");
 					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map");
@@ -319,9 +323,13 @@ if (hide_menu_for_clean_screenshots == false)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Options"), "options", "options");
 					draw_sprite_ext(spr_icons_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1);
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit");
+					if (global.goal_active == false)
+					{
+						draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit");
+					}
 				}
 				else
+				if (global.goal_active == false)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit"), "quit", "quit");
 				}
@@ -457,7 +465,14 @@ if (hide_menu_for_clean_screenshots == false)
 			and (menu_joystick_delay <= 0)
 			{
 				menu_delay = 3;
-				menu = "quit";
+				if (global.goal_active == false)
+				{
+					menu = "quit";
+				}
+				else
+				{
+					menu = "options";
+				}
 			}
 			else
 			if (key_down)
@@ -471,6 +486,7 @@ if (hide_menu_for_clean_screenshots == false)
 					menu = "options";
 				}
 				else
+				if (global.goal_active == false)
 				{
 					if (global.pause_room = room_leveleditor)
 					{
@@ -484,13 +500,13 @@ if (hide_menu_for_clean_screenshots == false)
 			}
 		}
 		#endregion /* Continue END */
-	
+		
 		else
-	
+		
 		#region /* Options */
 		if (menu == "options")
 		{
-		
+			
 			#region /* Select Options */
 			if (key_a_pressed)
 			and (menu_delay == 0)
@@ -522,15 +538,23 @@ if (hide_menu_for_clean_screenshots == false)
 			and (menu_delay <= 0)
 			and (menu_joystick_delay <= 0)
 			{
-				if (global.pause_room = room_leveleditor)
+				if (global.goal_active == false)
 				{
-					menu_delay = 3;
-					menu = "restart";
+					if (global.pause_room = room_leveleditor)
+					{
+						menu_delay = 3;
+						menu = "restart";
+					}
+					else
+					{
+						menu_delay = 3;
+						menu = "quit";
+					}
 				}
 				else
 				{
 					menu_delay = 3;
-					menu = "quit";
+					menu = "continue";
 				}
 			}
 		}
@@ -540,6 +564,7 @@ if (hide_menu_for_clean_screenshots == false)
 	
 		#region /* Restart */
 		if (menu == "restart")
+		and (global.goal_active == false)
 		{
 			if (key_a_pressed)
 			and (menu_delay == 0)
@@ -600,6 +625,7 @@ if (hide_menu_for_clean_screenshots == false)
 	
 		#region /* Reset from Checkpoint */
 		if (menu == "reset_from_checkpoint")
+		and (global.goal_active == false)
 		{
 			if (key_a_pressed)
 			and (menu_delay == 0)
@@ -638,6 +664,7 @@ if (hide_menu_for_clean_screenshots == false)
 	
 		#region /* Reset from Start */
 		if (menu == "reset_from_start")
+		and (global.goal_active == false)
 		{
 			if (key_a_pressed)
 			and (menu_delay == 0)
@@ -676,6 +703,7 @@ if (hide_menu_for_clean_screenshots == false)
 	
 		#region /* Restart Nevermind */
 		if (menu == "restart_nevermind")
+		and (global.goal_active == false)
 		{
 			if (key_a_pressed)
 			and (menu_delay == 0)
@@ -710,6 +738,7 @@ if (hide_menu_for_clean_screenshots == false)
 	
 		#region /* Quit */
 		if (menu == "quit")
+		and (global.goal_active == false)
 		{
 			if (key_a_pressed)
 			and (menu_delay == 0)
@@ -786,7 +815,8 @@ if (hide_menu_for_clean_screenshots == false)
 	
 		#region /* Quit to Map */
 		if (menu == "quit_to_map")
-		and (global.pause_room = room_leveleditor)
+		and (global.goal_active == false)
+		and (global.pause_room == room_leveleditor)
 		{
 			if (global.character_select_in_this_menu == "level_editor")
 			{
@@ -843,6 +873,7 @@ if (hide_menu_for_clean_screenshots == false)
 	
 		#region /* Quit to Title */
 		if (menu == "quit_to_title")
+		and (global.goal_active == false)
 		{
 			if (key_a_pressed)
 			and (menu_delay == 0)
@@ -939,6 +970,7 @@ if (hide_menu_for_clean_screenshots == false)
 		
 		#region /* Quit to Desktop */
 		if (menu == "quit_to_desktop")
+		and (global.goal_active == false)
 		{
 			if (key_a_pressed)
 			and (menu_delay == 0)
@@ -986,6 +1018,7 @@ if (hide_menu_for_clean_screenshots == false)
 		
 		#region /* Quit Nevermind */
 		if (menu == "quit_nevermind")
+		and (global.goal_active == false)
 		{
 			if (key_a_pressed)
 			and (menu_delay == 0)

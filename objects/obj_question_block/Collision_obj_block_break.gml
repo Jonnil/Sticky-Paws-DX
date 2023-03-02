@@ -8,7 +8,7 @@ and (asset_get_type("obj_wall") == asset_object)
 	and (variable_instance_exists(obj_block_break, "can_break_other_blocks"))
 	and (instance_nearest(x, y, obj_block_break).can_break_other_blocks == true)
 	{
-		if (empty = false)
+		if (empty == false)
 		{
 			if (instance_exists(obj_player))
 			and (asset_get_type("scr_gamepad_vibration") == asset_script)

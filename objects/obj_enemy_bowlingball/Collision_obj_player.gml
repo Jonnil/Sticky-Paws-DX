@@ -1,5 +1,5 @@
 /* Collision Event with player object */
-if (die = false)
+if (die == false)
 and (stomped_delay == 0)
 {
 	if (other.vspeed >= 0)
@@ -1147,7 +1147,7 @@ and (stomped_delay == 0)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
-							stomped_delay = 10;
+							stomped_delay = 5;
 						}
 						else
 						if (instance_exists(obj_player))
@@ -1158,7 +1158,7 @@ and (stomped_delay == 0)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
-							stomped_delay = 10;
+							stomped_delay = 5;
 						}
 						else
 						if (instance_exists(obj_player))
@@ -1169,7 +1169,7 @@ and (stomped_delay == 0)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = 8;
-							stomped_delay = 10;
+							stomped_delay = 5;
 						}
 						else
 						if (instance_exists(obj_player))
@@ -1179,14 +1179,14 @@ and (stomped_delay == 0)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = 8;
-							stomped_delay = 10;
+							stomped_delay = 5;
 						}
 						else
 						if (sliding_along_ground < 0)
 						or (sliding_along_ground > 0)
 						{
 							sliding_along_ground = 0;
-							stomped_delay = 10;
+							stomped_delay = 5;
 						}
 					}
 				}
@@ -1211,7 +1211,7 @@ and (stomped_delay == 0)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
-							stomped_delay = 10;
+							stomped_delay = 5;
 						}
 						else
 						if (instance_exists(obj_player))
@@ -1222,7 +1222,7 @@ and (stomped_delay == 0)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
-							stomped_delay = 10;
+							stomped_delay = 5;
 						}
 						else
 						if (instance_exists(obj_player))
@@ -1233,7 +1233,7 @@ and (stomped_delay == 0)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = 8;
-							stomped_delay = 10;
+							stomped_delay = 5;
 						}
 						else
 						if (instance_exists(obj_player))
@@ -1243,21 +1243,21 @@ and (stomped_delay == 0)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = 8;
-							stomped_delay = 10;
+							stomped_delay = 5;
 						}
 						else
 						if (sliding_along_ground < 0)
 						or (sliding_along_ground > 0)
 						{
 							sliding_along_ground = 0;
-							stomped_delay = 10;
+							stomped_delay = 5;
 						}
 					}
 				}
 				if (coil_spring == true)
 				{
 					coil_spring = false;
-					stomped_delay = 20;
+					stomped_delay = 5;
 					global.enemy_counter += 1;
 					if (vspeed < 0)
 					{
@@ -1267,7 +1267,7 @@ and (stomped_delay == 0)
 				else
 				{
 					flat = true;
-					stomped_delay = 10;
+					stomped_delay = 5;
 					global.enemy_counter += 1;
 				}
 				image_index = 0;
@@ -1823,15 +1823,15 @@ and (stomped_delay == 0)
 		else
 		
 		if (stomped_delay == 0)
-		and (die = false)
+		and (die == false)
 		and (flat = false)
 		or (sliding_along_ground < 0)
 		and (stomped_delay == 0)
-		and (die = false)
+		and (die == false)
 		and (flat == true)
 		or (sliding_along_ground > 0)
 		and (stomped_delay == 0)
-		and (die = false)
+		and (die == false)
 		and (flat == true)
 		{
 			if (other.takendamage <= 0)

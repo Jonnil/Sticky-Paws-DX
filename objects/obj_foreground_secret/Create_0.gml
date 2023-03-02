@@ -4,6 +4,7 @@ if (global.custom_foreground_secret >= 0)
 {
 	mask_index = global.custom_foreground_secret;
 	sprite_index = global.custom_foreground_secret;
+	//sprite_collision_mask(global.custom_foreground_secret, true, 0, 0, 0, 0, 0, bboxkind_precise, 254);
 }
 
 #region /* Initialize Foreground */

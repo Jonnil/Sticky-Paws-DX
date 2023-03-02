@@ -841,10 +841,25 @@ if (global.actually_play_edited_level == false)
 	
 		#region /* Play Level Button */
 		draw_sprite_ext(spr_menu_button_play, 0, play_level_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
-		if (global.controls_used_for_menu_navigation != "controller")
+		
+		#region /* Draw Play Key */
+		if (gamepad_is_connected(0))
+		and (global.controls_used_for_menu_navigation == "controller")
+		or (global.always_show_gamepad_buttons == true)
 		{
-			draw_sprite_ext(spr_keyboard_keys, vk_enter, play_level_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+			scr_draw_gamepad_buttons(button_play, play_level_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
 		}
+		else
+		{
+			draw_sprite_ext(spr_keyboard_keys, key_play, play_level_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+		}
+		#endregion /* Draw Play key END */
+		
+		if (pressing_play_timer > 0)
+		{
+			scr_draw_circular_bar(play_level_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, pressing_play_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding play key */
+		}
+		
 		if (point_in_rectangle(cursor_x, cursor_y, play_level_icon_x - 32 + 1, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64 - 1))
 		and (show_icons_at_bottom == true)
 		and (pause == false)
@@ -929,12 +944,20 @@ if (global.actually_play_edited_level == false)
 			{
 				draw_sprite_ext(spr_leveleditor_icons, 5, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 			}
-		
-			if (global.controls_used_for_menu_navigation != "controller")
+			
+			#region /* Draw Brush Key */
+			if (gamepad_is_connected(0))
+			and (global.controls_used_for_menu_navigation == "controller")
+			or (global.always_show_gamepad_buttons == true)
 			{
-				draw_sprite_ext(spr_keyboard_keys, ord("D"), place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				scr_draw_gamepad_buttons(button_draw, place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
 			}
-		
+			else
+			{
+				draw_sprite_ext(spr_keyboard_keys, key_draw, place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+			}
+			#endregion /* Draw Brush key END */
+			
 			#region /* Click Pen */
 			if (point_in_rectangle(cursor_x, cursor_y, place_brush_icon_x - 32 + 1, display_get_gui_height() - 64, place_brush_icon_x + 32, display_get_gui_height() + 64 - 1))
 			and (show_icons_at_bottom == true)
@@ -1107,12 +1130,20 @@ if (global.actually_play_edited_level == false)
 			{
 				draw_sprite_ext(spr_leveleditor_icons, 11, erase_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 			}
-		
-			if (global.controls_used_for_menu_navigation != "controller")
+			
+			#region /* Draw Eraser Key */
+			if (gamepad_is_connected(0))
+			and (global.controls_used_for_menu_navigation == "controller")
+			or (global.always_show_gamepad_buttons == true)
 			{
-				draw_sprite_ext(spr_keyboard_keys, ord("E"), erase_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				scr_draw_gamepad_buttons(button_erase, erase_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
 			}
-		
+			else
+			{
+				draw_sprite_ext(spr_keyboard_keys, key_erase, erase_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+			}
+			#endregion /* Draw Eraser key END */
+			
 			#region /* Click Erase */
 			if (point_in_rectangle(cursor_x, cursor_y, erase_icon_x - 32 + 1, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64 - 1))
 			and (show_icons_at_bottom == true)
@@ -1215,11 +1246,20 @@ if (global.actually_play_edited_level == false)
 					draw_sprite_ext(spr_leveleditor_icons, 12, fill_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 90, c_dkgray, 1);
 				}
 			}
-			if (global.controls_used_for_menu_navigation != "controller")
+			
+			#region /* Draw Eraser Key */
+			if (gamepad_is_connected(0))
+			and (global.controls_used_for_menu_navigation == "controller")
+			or (global.always_show_gamepad_buttons == true)
 			{
-				draw_sprite_ext(spr_keyboard_keys, ord("F"), fill_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				scr_draw_gamepad_buttons(button_fill, fill_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
 			}
-		
+			else
+			{
+				draw_sprite_ext(spr_keyboard_keys, key_fill, fill_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+			}
+			#endregion /* Draw Eraser key END */
+			
 			#region /* Click Fill */
 			if (point_in_rectangle(cursor_x, cursor_y, fill_icon_x - 32 + 1, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64 - 1))
 			and (show_icons_at_bottom == true)
@@ -1395,14 +1435,7 @@ if (global.actually_play_edited_level == false)
 		
 			if (pause == false)
 			{
-			
-				if (can_put_objects_above_other_objects == true)
-				{
-					draw_set_halign(fa_left);
-					draw_set_valign(fa_middle);
-					scr_draw_text_outlined(200, 100, l10n_text("Can put objects above other objects: True"), global.default_text_size, c_black, c_white, 1);
-				}
-			
+				
 				#region /* Show Grid */
 				if (show_grid == true)
 				{
@@ -1767,172 +1800,10 @@ if (global.actually_play_edited_level == false)
 		
 		scr_menu_navigation_with_joystick_delay();
 		
-		#region /* Change mouse cursor. Draw mouse cursor for menu navigation */
 		if (global.controls_used_for_menu_navigation != "controller")
 		{
-			
-			#region /* Scroll mouse cursor */
-			if (scroll_view == true)
-			and (pause == false)
-			and (asset_get_type("spr_cursor_scroll") == asset_sprite)
-			{
-				draw_sprite_ext(spr_cursor_scroll, 1, cursor_x, cursor_y, 1, 1, 0, c_red, 1);
-			}
-			else
-			if (asset_get_type("spr_cursor_scroll") == asset_sprite)
-			and (keyboard_check(vk_space))
-			and (pause == false)
-			{
-				draw_sprite_ext(spr_cursor_scroll, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-			}
-			#endregion /* Scroll mouse cursor END */
-			
-			else
-			
-			#region /* Grab mouse cursor */
-			if (asset_get_type("spr_cursor_grab") == asset_sprite)
-			and (position_meeting(mouse_x, mouse_y, obj_leveleditor_placed_object))
-			and (!mouse_check_button(mb_left))
-			and (!mouse_check_button(mb_right))
-			and (drag_object == false)
-			and (asset_get_type("obj_level_player_1_start") == asset_object)
-			and (instance_exists(obj_level_player_1_start))
-			and (obj_level_player_1_start.drag_object == false)
-			and (asset_get_type("obj_level_player_2_start") == asset_object)
-			and (instance_exists(obj_level_player_2_start))
-			and (obj_level_player_2_start.drag_object == false)
-			and (asset_get_type("obj_level_player_3_start") == asset_object)
-			and (instance_exists(obj_level_player_3_start))
-			and (obj_level_player_3_start.drag_object == false)
-			and (asset_get_type("obj_level_player_4_start") == asset_object)
-			and (instance_exists(obj_level_player_4_start))
-			and (obj_level_player_4_start.drag_object == false)
-			and (asset_get_type("obj_level_end") == asset_object)
-			and (instance_exists(obj_level_end))
-			and (obj_level_end.drag_object == false)
-			and (erase_mode == false)
-			and (set_difficulty_mode == false)
-			and (pause == false)
-			and (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-			and (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-			and (!point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
-			{
-				draw_sprite_ext(spr_cursor_grab, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-			}
-			else
-			if (position_meeting(mouse_x, mouse_y, obj_leveleditor_placed_object))
-			and (drag_object == true)
-			and (set_difficulty_mode == false)
-			and (pause == false)
-			and (asset_get_type("obj_level_player_1_start") == asset_object)
-			and (instance_exists(obj_level_player_1_start))
-			and (obj_level_player_1_start.drag_object == false)
-			and (asset_get_type("obj_level_player_2_start") == asset_object)
-			and (instance_exists(obj_level_player_2_start))
-			and (obj_level_player_2_start.drag_object == false)
-			and (asset_get_type("obj_level_player_3_start") == asset_object)
-			and (instance_exists(obj_level_player_3_start))
-			and (obj_level_player_3_start.drag_object == false)
-			and (asset_get_type("obj_level_player_4_start") == asset_object)
-			and (instance_exists(obj_level_player_4_start))
-			and (obj_level_player_4_start.drag_object == false)
-			and (pause == false)
-			or (asset_get_type("obj_level_end") == asset_object)
-			and (instance_exists(obj_level_end))
-			and (obj_level_end.drag_object == true)
-			and (pause == false)
-			and (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-			and (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-			and (!point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
-			{
-				draw_sprite_ext(spr_cursor_grab, 1, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-			}
-			#endregion /* Grab mouse cursor END */
-		
-			else
-		
-			#region /* Default mouse cursor */
-			if (point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-			and (asset_get_type("spr_cursor") == asset_sprite)
-			or (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-			and (asset_get_type("spr_cursor") == asset_sprite)
-			or (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
-			and (asset_get_type("spr_cursor") == asset_sprite)
-			or (pause == true)
-			and (asset_get_type("spr_cursor") == asset_sprite)
-			{
-				draw_sprite_ext(spr_cursor, erase_brush_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-			}
-			#endregion /* Default mouse cursor END */
-		
-			else
-		
-			#region /* Erase mouse cursor */
-			if (asset_get_type("spr_cursor_erase") == asset_sprite)
-			and (erase_mode == true)
-			and (pause == false)
-			{
-				draw_sprite_ext(spr_cursor_erase, erase_brush_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-			}
-			#endregion /* Erase mouse cursor END */
-		
-			else
-		
-			#region /* Fill mouse cursor */
-			if (asset_get_type("spr_cursor_fill") == asset_sprite)
-			and (fill_mode == true)
-			and (fill_mode_type == "fill")
-			and (drag_object == false)
-			and (erase_mode == false)
-			and (set_difficulty_mode == false)
-			and (pause == false)
-			{
-				draw_sprite_ext(spr_cursor_fill_full, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-			}
-			#endregion /* Fill mouse cursor END */
-		
-			else
-		
-			#region /* Fill Horizontal mouse cursor */
-			if (asset_get_type("spr_cursor_fill") == asset_sprite)
-			and (fill_mode == true)
-			and (fill_mode_type == "horizontal")
-			and (drag_object == false)
-			and (erase_mode == false)
-			and (set_difficulty_mode == false)
-			and (pause == false)
-			{
-				draw_sprite_ext(spr_cursor_fill, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-			}
-			#endregion /* Fill Horizontal mouse cursor END */
-		
-			else
-		
-			#region /* Fill Vertical mouse cursor */
-			if (asset_get_type("spr_cursor_fill") == asset_sprite)
-			and (fill_mode == true)
-			and (fill_mode_type == "vertical")
-			and (drag_object == false)
-			and (erase_mode == false)
-			and (set_difficulty_mode == false)
-			and (pause == false)
-			{
-				draw_sprite_ext(spr_cursor_fill, 0, cursor_x, cursor_y, 1, 1, 90, c_white, 1);
-			}
-			#endregion /* Fill Vertical mouse cursor END */
-		
-			else
-		
-			#region /* Brush mouse cursor */
-			if (asset_get_type("spr_cursor_brush") == asset_sprite)
-			and (pause == false)
-			{
-				draw_sprite_ext(spr_cursor_brush, place_brush_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
-			}
-			#endregion /* Brush mouse cursor END */
-	
+			scr_draw_mouse_cursor_sprite();
 		}
-		#endregion /* Change mouse cursor. Draw mouse cursor for menu navigation END */
 	
 	}
 }

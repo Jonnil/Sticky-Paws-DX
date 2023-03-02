@@ -12,7 +12,7 @@ if (stomped_delay > 0)
 }
 
 if (die_volting = -1)
-or(die_volting = +1)
+or (die_volting = +1)
 {
 	depth = -900;
 	if (die_volting = - 1)
@@ -366,10 +366,10 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 }
 
 if (coil_spring == true)
-and (die = false)
+and (die == false)
 and (place_meeting(x, y + 1, obj_wall))
 or (coil_spring == true)
-and (die = false)
+and (die == false)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (instance_exists(obj_foreground_secret))
@@ -397,9 +397,9 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	draw_yscale = 0.75;
 }
 
-if (sliding_along_ground = -1)
+if (sliding_along_ground == -1)
 and (flat == true)
-and (die = false)
+and (die == false)
 {
 	draw_angle += 10;
 	if (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
@@ -429,9 +429,9 @@ and (die = false)
 	}
 }
 else
-if (sliding_along_ground = +1)
+if (sliding_along_ground == +1)
 and (flat == true)
-and (die = false)
+and (die == false)
 {
 	draw_angle -= 10;
 	if (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
@@ -463,14 +463,14 @@ and (die = false)
 else
 if (sliding_along_ground == 0)
 and (flat == true)
-and (die = false)
+and (die == false)
 {
 	friction = 0.05;
 }
 
 #region /* Kill enemy if it's inside the wall */
 if (position_meeting(x, y, obj_wall))
-and (die = false)
+and (die == false)
 and (draw_xscale >= 0.8)
 {
 	stuck_in_wall_counter += 1;

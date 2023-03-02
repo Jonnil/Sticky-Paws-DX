@@ -196,12 +196,6 @@ function scr_load_object_placement_all()
 					easy = var_struct.E;
 					normal = var_struct.N;
 					hard = var_struct.H;
-					if (var_struct.E == false)
-					and (var_struct.N == false)
-					and (var_struct.H == false)
-					{
-						show_message("Something wrong with LOADING")
-					}
 					second_x = var_struct.Q;
 					second_y = var_struct.W;
 					placed_for_the_first_time = false;

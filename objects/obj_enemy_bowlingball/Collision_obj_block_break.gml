@@ -1,5 +1,5 @@
 /* Collision Event with player object */
-if (die = false)
+if (die == false)
 and (die_volting = false)
 and (vspeed >= 0)
 and (stomped_delay == 0)

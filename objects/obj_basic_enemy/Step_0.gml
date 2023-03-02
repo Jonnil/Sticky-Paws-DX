@@ -12,7 +12,7 @@ and (global.assist_enable_enemies == false)
 #endregion /* If enemies are disabled, destroy this object END */
 
 if (die_volting = - 1)
-or(die_volting = +1)
+or (die_volting = +1)
 {
 	depth = -900;
 	if (die_volting = - 1)
@@ -138,10 +138,10 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 
 #region /* Coil spring bouncing code */
 if (coil_spring == true)
-and (die = false)
+and (die == false)
 and (place_meeting(x, y + 1, obj_wall))
 or (coil_spring == true)
-and (die = false)
+and (die == false)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (instance_exists(obj_foreground_secret))
@@ -172,7 +172,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 
 #region /* Kill enemy if it's inside the wall */
 if (position_meeting(x, y, obj_wall))
-and (die = false)
+and (die == false)
 and (draw_xscale >= 0.8)
 {
 	stuck_in_wall_counter += 1;

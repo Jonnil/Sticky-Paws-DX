@@ -506,11 +506,11 @@ if (global.doing_clear_check == true)
 
 scr_draw_cursor_mouse();
 
-#region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
-if (global.enable_transitions == true)
-{
-	draw_set_alpha(black_screen_gui_alpha);
-	draw_rectangle_color(0, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
-	draw_set_alpha(1);
-}
-#endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */
+//#region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
+//if (global.enable_transitions == true)
+//{
+//	draw_set_alpha(black_screen_gui_alpha);
+//	draw_rectangle_color(0, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
+//	draw_set_alpha(1);
+//}
+//#endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */

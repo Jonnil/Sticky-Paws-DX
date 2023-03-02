@@ -194,6 +194,7 @@ scr_draw_cursor_mouse();
 
 #region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
 if (iris_yscale <= 0.002)
+or (brand_new_file == true)
 {
 	draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 }

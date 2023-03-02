@@ -69,7 +69,10 @@ and (distance_to_object(obj_player) < 32)
 				new_instance.sprite_index = sprite_index;
 				with(new_instance)
 				{
-					motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
+					if (instance_exists(obj_player))
+					{
+						motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
+					}
 				}
 			}
 			else
@@ -78,7 +81,10 @@ and (distance_to_object(obj_player) < 32)
 				new_instance.sprite_index = sprite_index;
 				with(new_instance)
 				{
-					motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
+					if (instance_exists(obj_player))
+					{
+						motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
+					}
 				}
 			}
 		}

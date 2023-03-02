@@ -1,4 +1,4 @@
-if (die = false)
+if (die == false)
 {
 	#region /* Push out of the solid object */
 	if (position_meeting(x, bbox_bottom + 1, other))

@@ -1,23 +1,26 @@
 if (die_volting = false)
-or (die = false)
+or (die == false)
 {
-	if (sliding_along_ground = -1)
+	if (sliding_along_ground == -1)
 	and (flat == true)
 	and (position_meeting(bbox_left - 1, y, obj_wall))
 	{
+		stomped_delay = 0;
 		sliding_along_ground = +1;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
 	}
-	if (sliding_along_ground = +1)
+	else
+	if (sliding_along_ground == +1)
 	and (flat == true)
 	and (position_meeting(bbox_right + 1, y, obj_wall))
 	{
+		stomped_delay = 0;
 		sliding_along_ground = -1;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
 	}
 	
 	if (position_meeting(x, bbox_top - 1, obj_wall))
-	and (die = false)
+	and (die == false)
 	and (vspeed < 0)
 	{
 		vspeed = 0;
@@ -66,5 +69,6 @@ or (die = false)
 		draw_xscale = 1.25;
 		draw_yscale = 0.75;
 	}
+	#endregion /* Landing on solid object END */
+	
 }
-#endregion /* Landing on solid object END */

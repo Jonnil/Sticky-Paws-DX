@@ -120,27 +120,24 @@ function scr_player_move_pause()
 			}
 			#endregion /* What player should control the pause menu END */
 			
-			if (global.goal_active = false)
+			if (asset_get_type("room_pause") == asset_room)
 			{
-				if (asset_get_type("room_pause") == asset_room)
+				global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
+				room_persistent = true;
+				global.pause_room = room;
+				audio_pause_all();
+				room_goto(room_pause);
+			}
+			else
+			{
+				audio_pause_all();
+				if (asset_get_type("obj_pause") == asset_object)
+				and (!instance_exists(obj_pause))
 				{
-					global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-					room_persistent = true;
-					global.pause_room = room;
-					audio_pause_all();
-					room_goto(room_pause);
-				}
-				else
-				{
-					audio_pause_all();
-					if (asset_get_type("obj_pause") == asset_object)
-					and (!instance_exists(obj_pause))
-					{
-						global.pause = true;
-						pause_hspeed = hspeed;
-						pause_vspeed = vspeed;
-						instance_create_depth(x, y, 0, obj_pause); /* This pause objects creates, that handles the pause screen */
-					}
+					global.pause = true;
+					pause_hspeed = hspeed;
+					pause_vspeed = vspeed;
+					instance_create_depth(x, y, 0, obj_pause); /* This pause objects creates, that handles the pause screen */
 				}
 			}
 		}

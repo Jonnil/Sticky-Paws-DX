@@ -32,7 +32,7 @@ and (asset_get_type("obj_wall") == asset_object)
 	and (variable_instance_exists(obj_player, "dive"))
 	and (instance_nearest(x, y, obj_player).dive == true)
 	{
-		if (empty = false)
+		if (empty == false)
 		{
 			if (instance_exists(obj_player))
 			and (asset_get_type("scr_gamepad_vibration") == asset_script)

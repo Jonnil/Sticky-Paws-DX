@@ -27,4 +27,4 @@ if (bounce_up == false)
 	}
 	instance_destroy(); /* Delete after doing all other code */
 }
-#endregion /* Collect Invincibility Powerup END*/
+#endregion /* Collect Invincibility Powerup END */

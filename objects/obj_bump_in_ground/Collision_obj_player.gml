@@ -148,8 +148,8 @@ if (place_meeting(x, y - 8, other))
 		}
 		#endregion /* 3-up END */
 		
-		#region /* Big Collectible 1 */
-		if (type_of_bump = "big_collectible_1")
+		#region /* Big Collectible */
+		if (type_of_bump = "big_collectible")
 		{
 			if (asset_get_type("obj_big_collectible") == asset_object)
 			{
@@ -162,71 +162,7 @@ if (place_meeting(x, y - 8, other))
 				}
 			}
 		}
-		#endregion /* Big Collectible 1 END */
-		
-		#region /* Big Collectible 2 */
-		if (type_of_bump = "big_collectible_2")
-		{
-			if (asset_get_type("obj_big_collectible") == asset_object)
-			{
-				with(instance_create_depth(x, bbox_top, 0, obj_big_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					big_collectible = 2;
-					bounce_up = true;
-				}
-			}
-		}
-		#endregion /* Big Collectible 2 END */
-		
-		#region /* Big Collectible 3 */
-		if (type_of_bump = "big_collectible_3")
-		{
-			if (asset_get_type("obj_big_collectible") == asset_object)
-			{
-				with(instance_create_depth(x, bbox_top, 0, obj_big_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					big_collectible = 3;
-					bounce_up = true;
-				}
-			}
-		}
-		#endregion /* Big Collectible 3 END */
-		
-		#region /* Big Collectible 4 */
-		if (type_of_bump = "big_collectible_4")
-		{
-			if (asset_get_type("obj_big_collectible") == asset_object)
-			{
-				with(instance_create_depth(x, bbox_top, 0, obj_big_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					big_collectible = 4;
-					bounce_up = true;
-				}
-			}
-		}
-		#endregion /* Big Collectible 4 END */
-		
-		#region /* Big Collectible 5 */
-		if (type_of_bump = "big_collectible_5")
-		{
-			if (asset_get_type("obj_big_collectible") == asset_object)
-			{
-				with(instance_create_depth(x, bbox_top, 0, obj_big_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					big_collectible = 5;
-					bounce_up = true;
-				}
-			}
-		}
-		#endregion /* Big Collectible 5 END */
+		#endregion /* Big Collectible END */
 		
 		#region /* Invincibility Powerup */
 		if (type_of_bump = "invincibility_powerup")

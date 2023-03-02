@@ -619,7 +619,7 @@ and (instance_exists(obj_player))
 time_second = 0;
 if (instance_exists(obj_player))
 {
-	if (global.trigger_ending = false)
+	if (global.trigger_ending == false)
 	{
 		if (global.actually_play_edited_level == true)
 		and (global.play_edited_level == true)

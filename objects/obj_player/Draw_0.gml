@@ -255,7 +255,7 @@ if (takendamage >= takendamage_freezetime)
 	}
 }
 if (takendamage >= 100)
-and (die = false)
+and (die == false)
 and (hp >= 1)
 {
 	audio_sound_pitch(voice_damage, default_voice_pitch);
