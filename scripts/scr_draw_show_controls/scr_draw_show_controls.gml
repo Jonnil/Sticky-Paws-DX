@@ -27,6 +27,11 @@ function scr_draw_show_controls(what_player = 1)
 		var player_key_jump = global.player1_key_jump;
 		var player_key2_jump = global.player1_key2_jump;
 		
+		var player_gamepad_button_accept = global.player1_gamepad_button_accept;
+		var player_gamepad_button2_accept = global.player1_gamepad_button2_accept;
+		var player_key_accept = global.player1_key_accept;
+		var player_key2_accept = global.player1_key2_accept;
+		
 		var player_show_crouch_key_x = player1_show_crouch_key_x;
 		var player_gamepad_button_crouch = global.player1_gamepad_button_crouch;
 		var player_gamepad_button2_crouch = global.player1_gamepad_button2_crouch;
@@ -100,6 +105,11 @@ function scr_draw_show_controls(what_player = 1)
 		var player_gamepad_button2_jump = global.player2_gamepad_button2_jump;
 		var player_key_jump = global.player2_key_jump;
 		var player_key2_jump = global.player2_key2_jump;
+		
+		var player_gamepad_button_accept = global.player2_gamepad_button_accept;
+		var player_gamepad_button2_accept = global.player2_gamepad_button2_accept;
+		var player_key_accept = global.player2_key_accept;
+		var player_key2_accept = global.player2_key2_accept;
 		
 		var player_show_crouch_key_x = player2_show_crouch_key_x;
 		var player_gamepad_button_crouch = global.player2_gamepad_button_crouch;
@@ -175,6 +185,11 @@ function scr_draw_show_controls(what_player = 1)
 		var player_key_jump = global.player3_key_jump;
 		var player_key2_jump = global.player3_key2_jump;
 		
+		var player_gamepad_button_accept = global.player3_gamepad_button_accept;
+		var player_gamepad_button2_accept = global.player3_gamepad_button2_accept;
+		var player_key_accept = global.player3_key_accept;
+		var player_key2_accept = global.player3_key2_accept;
+		
 		var player_show_crouch_key_x = player3_show_crouch_key_x;
 		var player_gamepad_button_crouch = global.player3_gamepad_button_crouch;
 		var player_gamepad_button2_crouch = global.player3_gamepad_button2_crouch;
@@ -248,6 +263,11 @@ function scr_draw_show_controls(what_player = 1)
 		var player_gamepad_button2_jump = global.player4_gamepad_button2_jump;
 		var player_key_jump = global.player4_key_jump;
 		var player_key2_jump = global.player4_key2_jump;
+		
+		var player_gamepad_button_accept = global.player4_gamepad_button_accept;
+		var player_gamepad_button2_accept = global.player4_gamepad_button2_accept;
+		var player_key_accept = global.player4_key_accept;
+		var player_key2_accept = global.player4_key2_accept;
 		
 		var player_show_crouch_key_x = player4_show_crouch_key_x;
 		var player_gamepad_button_crouch = global.player4_gamepad_button_crouch;
@@ -672,19 +692,27 @@ function scr_draw_show_controls(what_player = 1)
 			and (global.controls_used_for_menu_navigation == "controller")
 			or (global.always_show_gamepad_buttons == true)
 			{
-				scr_draw_gamepad_buttons(gp_face1, 252, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
+				if (player_gamepad_button_accept > noone)
+				{
+					scr_draw_gamepad_buttons(player_gamepad_button_accept, 252, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
+				}
+				else
+				if (player_gamepad_button2_accept > noone)
+				{
+					scr_draw_gamepad_buttons(player_gamepad_button2_accept, 252, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
+				}
 			}
 			else
 			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-			and (player_key_jump > noone)
+			and (player_key_accept > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, player_key_jump, 252, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha);
+				draw_sprite_ext(spr_keyboard_keys, player_key_accept, 252, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha);
 			}
 			else
 			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-			and (player_key2_jump > noone)
+			and (player_key2_accept > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, player_key2_jump, 252, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha);
+				draw_sprite_ext(spr_keyboard_keys, player_key2_accept, 252, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha);
 			}
 		}
 		#endregion /* Show Player Join Game Key END */

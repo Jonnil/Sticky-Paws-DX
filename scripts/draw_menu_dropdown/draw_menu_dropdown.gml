@@ -22,12 +22,12 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 	{
 		
 		#region /* Button */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555+ 32, y_position + 41))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (menu != "assist_enable")
 		and (menu_delay == 0)
 		and (open_dropdown == false)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555+ 32, y_position + 41))
+		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (global.assist_enable == true)
 		and (menu == "assist_enable")
@@ -75,13 +75,13 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		#endregion /* Show a menu cursor when the option is highlighted END */
 		
 		#region /* Clicking the menu button */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555+ 32, y_position + 41))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_released(mb_left))
 		and (menu != "assist_enable")
 		and (menu_delay == 0)
 		and (open_dropdown == false)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555+ 32, y_position + 41))
+		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_released(mb_left))
 		and (global.assist_enable == true)
@@ -102,7 +102,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		#region /* Text above the menu button */
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(x_position + 277+ 32, y_position + 21- 32, string(string_text), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+		scr_draw_text_outlined(x_position + 277+ 32, y_position + 21 - 32, string(string_text), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 		#endregion /* Text above the menu button END */
 		
 		#region /* Text inside the menu button */
@@ -183,7 +183,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		#endregion /* Button END */
 		
 		#region /* Clicking outside the menu button */
-		if (!point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555+ 32, y_position + 41))
+		if (!point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (open_dropdown == true)
 		and (menu == menu_index)

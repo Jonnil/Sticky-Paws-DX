@@ -151,9 +151,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	if (menu_delay == 0)
 	{
 		if (keyboard_check_pressed(vk_up))
-		and (!keyboard_check_pressed(vk_down))
 		or (gamepad_button_check_pressed(0, gp_padu))
-		and (!gamepad_button_check_pressed(0, gp_padd))
 		or (gamepad_axis_value(0, gp_axislv) < 0)
 		or (mouse_wheel_up())
 		{
@@ -161,9 +159,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		}
 		else
 		if (keyboard_check_pressed(vk_down))
-		and (!keyboard_check_pressed(vk_up))
 		or (gamepad_button_check_pressed(0, gp_padd))
-		and (!gamepad_button_check_pressed(0, gp_padu))
 		or (gamepad_axis_value(0, gp_axislv) > 0)
 		or (mouse_wheel_down())
 		{

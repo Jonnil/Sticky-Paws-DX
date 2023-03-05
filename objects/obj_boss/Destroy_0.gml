@@ -43,3 +43,5 @@ else
 	global.music_underwater = noone;
 }
 #endregion /* Update Music Underwater END */
+
+instance_create_depth(xstart, ystart, 0, obj_boss_defeated);

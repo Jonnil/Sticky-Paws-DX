@@ -279,8 +279,6 @@ if (global.actually_play_edited_level == false)
 				menu_delay = 9999; /* Disable all menu control */
 				lives = 5;
 				global.lives_until_assist = 0;
-				global.actually_play_edited_level = false;
-				global.play_edited_level = true;
 				global.character_select_in_this_menu = "level_editor";
 				
 				audio_stop_sound(level_editing_music); /* Stop the background music that plays during level editing when playtesting a level */
@@ -317,20 +315,13 @@ if (global.actually_play_edited_level == false)
 						scr_save_custom_level();
 					}
 					
-					if (instance_exists(obj_leveleditor_placed_object))
-					{
-						with(obj_leveleditor_placed_object)
-						{
-							scr_spawn_objects_when_starting_room(); /* Only spawn objects AFTER saving custom level */
-						}
-					}
-					
 					if (pressing_play_timer >= 60)
 					or (global.full_level_map_screenshot == true)
 					{
 						if (asset_get_type("obj_camera") == asset_object)
 						and (!instance_exists(obj_camera))
 						{
+							instance_activate_object(obj_camera);
 							instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_camera);
 						}
 					}
@@ -339,6 +330,7 @@ if (global.actually_play_edited_level == false)
 						if (asset_get_type("obj_camera") == asset_object)
 						and (!instance_exists(obj_camera))
 						{
+							instance_activate_object(obj_camera);
 							instance_create_depth(playtest_x, playtest_y, 0, obj_camera);
 						}
 					}
@@ -385,6 +377,8 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				scr_scale_background();
+				global.actually_play_edited_level = false;
+				global.play_edited_level = true;
 				instance_destroy();
 			}
 		}
@@ -398,8 +392,7 @@ if (global.actually_play_edited_level == false)
 	or (mouse_check_button_pressed(mb_middle))
 	and (quit_level_editor <= 0)
 	{
-		if (pause == false)
-		and (!instance_exists(obj_leveleditor_fill))
+		if (!instance_exists(obj_leveleditor_fill))
 		{
 			drag_x = mouse_x;
 			drag_y = mouse_y;
@@ -408,7 +401,6 @@ if (global.actually_play_edited_level == false)
 	}
 	if (scroll_view == true)
 	and (quit_level_editor <= 0)
-	and (pause == false)
 	and (!instance_exists(obj_leveleditor_fill))
 	{
 		camera_set_view_pos(view_camera[view_current], drag_x -(mouse_x -camera_get_view_x(view_camera[view_current])), drag_y -(mouse_y -camera_get_view_y(view_camera[view_current]))); /* Scroll the camera position with the mouse */
@@ -531,7 +523,7 @@ if (global.actually_play_edited_level == false)
 		global.character_select_in_this_menu = "level_editor";
 		create_level_from_template_save_delay += 1; /* Stop saving template level */
 	}
-
+	
 	#region /* Menu cursor image speed */
 	menu_cursor_index += 0.3;
 	if (menu_cursor_index > 4)
@@ -570,7 +562,7 @@ if (global.actually_play_edited_level == false)
 	#region /* If you haven't yet quit the level editor, then run this code */
 	if (quit_level_editor <= 0)
 	{
-	
+		
 		#region /* Controller Input Changes */
 		if (global.controls_used_for_menu_navigation != "controller")
 		{
@@ -818,19 +810,19 @@ if (global.actually_play_edited_level == false)
 					and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 					or (global.enable_difficulty_selection_settings == false)
 					{
-					
+						
 						drag_object = false;
-					
+						
 						#region /* Brush size 1 */
 						scr_brush_size_place_object(   0,    0, 1, true);
 						#endregion /* Brush size 1 END */
-					
+						
 						#region /* Brush size 2 */
 						scr_brush_size_place_object(   0, + 32, 2, false);
 						scr_brush_size_place_object(+ 32,    0, 2, false);
 						scr_brush_size_place_object(+ 32, + 32, 2, false);
 						#endregion /* Brush size 2 END */
-					
+						
 						#region /* Brush size 3 */
 						scr_brush_size_place_object(   0, - 32, 3, false);
 						scr_brush_size_place_object(+ 32, - 32, 3, false);
@@ -838,7 +830,7 @@ if (global.actually_play_edited_level == false)
 						scr_brush_size_place_object(- 32, + 32, 3, false);
 						scr_brush_size_place_object(- 32, - 32, 3, false);
 						#endregion /* Brush size 3 END */
-					
+						
 						#region /* Brush size 4 */
 						scr_brush_size_place_object(   0, + 64, 4, false);
 						scr_brush_size_place_object(+ 32, + 64, 4, false);
@@ -848,7 +840,7 @@ if (global.actually_play_edited_level == false)
 						scr_brush_size_place_object(+ 64, - 32, 4, false);
 						scr_brush_size_place_object(- 32, + 64, 4, false);
 						#endregion /* Brush size 4 END */
-					
+						
 						#region /* Brush size 5 */
 						scr_brush_size_place_object(   0, - 64, 5, false);
 						scr_brush_size_place_object(+ 32, - 64, 5, false);
@@ -860,7 +852,7 @@ if (global.actually_play_edited_level == false)
 						scr_brush_size_place_object(- 64, - 32, 5, false);
 						scr_brush_size_place_object(- 64, - 64, 5, false);
 						#endregion /* Brush size 5 END */
-					
+						
 						#region /* Brush size 6 */
 						scr_brush_size_place_object(   0, + 96, 6, false);
 						scr_brush_size_place_object(+ 32, + 96, 6, false);
@@ -874,7 +866,7 @@ if (global.actually_play_edited_level == false)
 						scr_brush_size_place_object(- 32, + 96, 6, false);
 						scr_brush_size_place_object(- 64, + 96, 6, false);
 						#endregion /* Brush size 6 END */
-					
+						
 						#region /* Reset Level Editor Checkpoint */
 						if (asset_get_type("room_leveleditor") == asset_room)
 						and (room == room_leveleditor)
@@ -892,16 +884,16 @@ if (global.actually_play_edited_level == false)
 							ini_close();
 						}
 						#endregion /* Reset Level Editor Checkpoint END */
-					
+						
 						#region /* Reset ranking highscore to actual custom level when placing objects */
 						if (global.character_select_in_this_menu == "level_editor")
 						and (global.select_level_index <= 0)
 						and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-					
+						
 						or (global.character_select_in_this_menu == "level_editor")
 						and (global.create_level_from_template >= 2)
 						and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-					
+						
 						or (global.character_select_in_this_menu == "level_editor")
 						and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 						{
@@ -917,19 +909,19 @@ if (global.actually_play_edited_level == false)
 							{
 								ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 							}
-						
+							
 							#region /* Reset Fastest Time Hard */
 							ini_key_delete("rank", "rank_timeattack_millisecond");
 							ini_key_delete("rank", "rank_timeattack_second");
 							ini_key_delete("rank", "rank_timeattack_minute");
 							ini_key_delete("rank", "rank_timeattack_realmillisecond");
 							#endregion /* Reset Fastest Time END */
-						
+							
 							ini_key_delete("rank", "rank_level_score");
 							ini_close();
 						}
 						#endregion /* Reset ranking highscore to actual custom level when placing objects END */
-					
+						
 					}
 				}
 			}
@@ -957,12 +949,6 @@ if (global.actually_play_edited_level == false)
 	{
 		placing_object -= 0.2;	
 	}
-}
-
-if (global.actually_play_edited_level == false)
-{
-	var mouse_get_x = device_mouse_x_to_gui(0);
-	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	scr_set_controls_used_to_navigate();
 	

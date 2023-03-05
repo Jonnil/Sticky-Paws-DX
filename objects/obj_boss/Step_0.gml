@@ -107,6 +107,7 @@ if (time == room_speed * 3)
 #region /* Phase 1 */
 if (hp >= 3)
 and (has_seen_player == true)
+and (flying_back == 0)
 {
 	if (time < room_speed * 7)
 	and (instance_exists(obj_player))
@@ -192,7 +193,7 @@ and (has_seen_player == true)
 			hspeed = +16;
 		}
 	}
-	if (place_meeting(x - 8, y, obj_wall))
+	if (place_meeting(x - 16, y, obj_wall))
 	and (time > room_speed * 8)
 	and (can_jump_on_head == false)
 	{
@@ -201,18 +202,17 @@ and (has_seen_player == true)
 		{
 			obj_camera.shake = 10;
 		}
-		flying_back = true;
+		flying_back = 10;
 		can_jump_on_head = true;
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_vulnerable;
 		angle = +90;
-		hspeed = 0;
 		vspeed = -10;
 		hspeed = +5;
 	}
 	else
-	if (place_meeting(x + 8, y, obj_wall))
+	if (place_meeting(x + 16, y, obj_wall))
 	and (time > room_speed * 8)
 	and (can_jump_on_head == false)
 	{
@@ -221,13 +221,12 @@ and (has_seen_player == true)
 		{
 			obj_camera.shake = 10;
 		}
-		flying_back = true;
+		flying_back = 10;
 		can_jump_on_head = true;
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_vulnerable;
 		angle = -90;
-		hspeed = 0;
 		vspeed = -10;
 		hspeed = -5;
 	}
@@ -239,6 +238,7 @@ else
 #region /* Phase 2 */
 if (hp >= 2)
 and (has_seen_player == true)
+and (flying_back == 0)
 {
 	if (time < room_speed * 8)
 	and (instance_exists(obj_player))
@@ -327,7 +327,7 @@ and (has_seen_player == true)
 			hspeed = +16;
 		}
 	}
-	if (place_meeting(x - 8, y, obj_wall))
+	if (place_meeting(x - 16, y, obj_wall))
 	and (time > room_speed * 9)
 	and (can_jump_on_head == false)
 	{
@@ -336,18 +336,17 @@ and (has_seen_player == true)
 		{
 			obj_camera.shake = 10;
 		}
-		flying_back = true;
+		flying_back = 10;
 		can_jump_on_head = true;
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_vulnerable;
 		angle = +90;
-		hspeed = 0;
 		vspeed = -10;
 		hspeed = +5;
 	}
 	else
-	if (place_meeting(x + 8, y, obj_wall))
+	if (place_meeting(x + 16, y, obj_wall))
 	and (time > room_speed * 9)
 	and (can_jump_on_head == false)
 	{
@@ -356,13 +355,12 @@ and (has_seen_player == true)
 		{
 			obj_camera.shake = 10;
 		}
-		flying_back = true;
+		flying_back = 10;
 		can_jump_on_head = true;
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_vulnerable;
 		angle = -90;
-		hspeed = 0;
 		vspeed = -10;
 		hspeed = -5;
 	}
@@ -373,6 +371,7 @@ else
 
 #region /* Phase 3 */
 if (has_seen_player == true)
+and (flying_back == 0)
 {
 	if (time < room_speed * 9)
 	{
@@ -464,7 +463,7 @@ if (has_seen_player == true)
 			hspeed = +16;
 		}
 	}
-	if (place_meeting(x - 8, y, obj_wall))
+	if (place_meeting(x - 16, y, obj_wall))
 	and (time > room_speed * 10)
 	and (can_jump_on_head == false)
 	{
@@ -473,18 +472,17 @@ if (has_seen_player == true)
 		{
 			obj_camera.shake = 10;
 		}
-		flying_back = true;
+		flying_back = 10;
 		can_jump_on_head = true;
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_vulnerable;
 		angle = +90;
-		hspeed = 0;
 		vspeed = -10;
 		hspeed = +5;
 	}
 	else
-	if (place_meeting(x + 8, y, obj_wall))
+	if (place_meeting(x + 16, y, obj_wall))
 	and (time > room_speed * 10)
 	and (can_jump_on_head == false)
 	{
@@ -493,31 +491,17 @@ if (has_seen_player == true)
 		{
 			obj_camera.shake = 10;
 		}
-		flying_back = true;
+		flying_back = 10;
 		can_jump_on_head = true;
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_vulnerable;
 		angle = -90;
-		hspeed = 0;
 		vspeed = -10;
 		hspeed = -5;
 	}
 }
 #endregion /* Phase 3 END */
-
-if (place_meeting(x, y + 1, obj_wall))
-and (vspeed >= 0)
-and (flying_back == true)
-{
-	hspeed = 0;
-	vspeed = 0;
-	mask_index = spr_boss_vulnerable;
-	sprite_index = spr_boss_vulnerable;
-	time = -100;
-	image_speed = 0.5;
-	flying_back = false;
-}
 
 if (sprite_index == spr_boss_throw)
 and (image_index > image_number - 1)
@@ -592,3 +576,21 @@ if (stuck_in_wall_counter > 0)
 	stuck_in_wall_counter -= 1;
 }
 #endregion /* Kill enemy if it's inside the wall END */
+
+if (flying_back > 2)
+{
+	if (hspeed < 0)
+	{
+		hspeed = -5;
+		vspeed = -10;
+	}
+	else
+	{
+		hspeed = +5;
+		vspeed = -10;
+	}
+}
+if (flying_back > 1)
+{
+	flying_back -= 1;
+}

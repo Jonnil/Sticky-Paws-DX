@@ -39,3 +39,16 @@ if (sprite_index == spr_boss_fall)
 {
 	sprite_index = spr_boss_stand;
 }
+
+if (place_meeting(x, y + 1, obj_wall))
+and (vspeed >= 0)
+and (flying_back == 1)
+{
+	hspeed = 0;
+	vspeed = 0;
+	mask_index = spr_boss_vulnerable;
+	sprite_index = spr_boss_vulnerable;
+	time = -100;
+	image_speed = 0.5;
+	flying_back = false;
+}

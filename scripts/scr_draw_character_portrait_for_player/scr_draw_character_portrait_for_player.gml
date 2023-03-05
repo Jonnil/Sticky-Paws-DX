@@ -229,11 +229,8 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					
 					#region /* Player key left Skin */
 					if (keyboard_check_pressed(player_key_left))
-					and (!keyboard_check_pressed(player_key_right))
 					or (keyboard_check_pressed(player_key2_left))
-					and (!keyboard_check_pressed(player_key2_right))
 					or (gamepad_button_check_pressed(what_player - 1, gp_padl))
-					and (!gamepad_button_check_pressed(what_player - 1, gp_padr))
 					or (gamepad_axis_value(what_player - 1, gp_axislh) < 0)
 					and (menu_joystick_delay <= 0)
 					or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
@@ -301,11 +298,8 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					
 					#region /* Player key right Skin */
 					if (keyboard_check_pressed(player_key_right))
-					and (!keyboard_check_pressed(player_key_left))
 					or (keyboard_check_pressed(player_key2_right))
-					and (!keyboard_check_pressed(player_key2_left))
 					or (gamepad_button_check_pressed(what_player - 1, gp_padr))
-					and (!gamepad_button_check_pressed(what_player - 1, gp_padl))
 					or (gamepad_axis_value(what_player - 1, gp_axislh) > 0)
 					and (menu_joystick_delay <= 0)
 					or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
@@ -375,11 +369,8 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					
 					#region /* Player key up Skin */
 					if (keyboard_check_pressed(player_key_up))
-					and (!keyboard_check_pressed(player_key_down))
 					or (keyboard_check_pressed(player_key2_up))
-					and (!keyboard_check_pressed(player_key2_down))
 					or (gamepad_button_check_pressed(what_player - 1, gp_padu))
-					and (!gamepad_button_check_pressed(what_player - 1, gp_padd))
 					or (gamepad_axis_value(what_player - 1, gp_axislv) < 0)
 					and (menu_joystick_delay <= 0)
 					{
@@ -412,11 +403,8 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					
 					#region /* Player key down Skin */
 					if (keyboard_check_pressed(player_key_down))
-					and (!keyboard_check_pressed(player_key_up))
 					or (keyboard_check_pressed(player_key2_down))
-					and (!keyboard_check_pressed(player_key2_up))
 					or (gamepad_button_check_pressed(what_player - 1, gp_padd))
-					and (!gamepad_button_check_pressed(what_player - 1, gp_padu))
 					or (gamepad_axis_value(what_player - 1, gp_axislv) > 0)
 					and (menu_joystick_delay <= 0)
 					{
@@ -619,11 +607,8 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					
 					#region /* Player key left Voice Pack */
 					if (keyboard_check_pressed(player_key_left))
-					and (!keyboard_check_pressed(player_key_right))
 					or (keyboard_check_pressed(player_key2_left))
-					and (!keyboard_check_pressed(player_key2_right))
 					or (gamepad_button_check_pressed(what_player - 1, gp_padl))
-					and (!gamepad_button_check_pressed(what_player - 1, gp_padr))
 					or (gamepad_axis_value(what_player - 1, gp_axislh) < 0)
 					and (menu_joystick_delay <= 0)
 					or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
@@ -667,11 +652,8 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					
 					#region /* Player key right Voice Pack */
 					if (keyboard_check_pressed(player_key_right))
-					and (!keyboard_check_pressed(player_key_left))
 					or (keyboard_check_pressed(player_key2_right))
-					and (!keyboard_check_pressed(player_key2_left))
 					or (gamepad_button_check_pressed(what_player - 1, gp_padr))
-					and (!gamepad_button_check_pressed(what_player - 1, gp_padl))
 					or (gamepad_axis_value(what_player - 1, gp_axislh) > 0)
 					and (menu_joystick_delay <= 0)
 					or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
@@ -717,11 +699,8 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					
 					#region /* Player key up Voice Pack */
 					if (keyboard_check_pressed(player_key_up))
-					and (!keyboard_check_pressed(player_key_down))
 					or (keyboard_check_pressed(player_key2_up))
-					and (!keyboard_check_pressed(player_key2_down))
 					or (gamepad_button_check_pressed(what_player - 1, gp_padu))
-					and (!gamepad_button_check_pressed(what_player - 1, gp_padd))
 					or (gamepad_axis_value(what_player - 1, gp_axislv) < 0)
 					and (menu_joystick_delay <= 0)
 					{
@@ -797,11 +776,8 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					
 					#region /* Player key down Voice Pack */
 					if (keyboard_check_pressed(player_key_down))
-					and (!keyboard_check_pressed(player_key_up))
 					or (keyboard_check_pressed(player_key2_down))
-					and (!keyboard_check_pressed(player_key2_up))
 					or (gamepad_button_check_pressed(what_player - 1, gp_padd))
-					and (!gamepad_button_check_pressed(what_player - 1, gp_padu))
 					or (gamepad_axis_value(what_player - 1, gp_axislv) > 0)
 					and (menu_joystick_delay <= 0)
 					{

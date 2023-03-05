@@ -8,22 +8,22 @@ function scr_player_move_customizable_controls()
 	#region /* Up Key Is Jump Key */
 	if (player == 1)
 	{
-		up_key_is_jump_key = global.player1_up_key_is_jump_key;
+		up_is_also_jump = global.player1_up_is_also_jump;
 	}
 	else
 	if (player == 2)
 	{
-		up_key_is_jump_key = global.player2_up_key_is_jump_key;
+		up_is_also_jump = global.player2_up_is_also_jump;
 	}
 	else
 	if (player == 3)
 	{
-		up_key_is_jump_key = global.player3_up_key_is_jump_key;
+		up_is_also_jump = global.player3_up_is_also_jump;
 	}
 	else
 	if (player == 4)
 	{
-		up_key_is_jump_key = global.player4_up_key_is_jump_key;
+		up_is_also_jump = global.player4_up_is_also_jump;
 	}
 	#endregion /* Up Key Is Jump Key END */
 	
@@ -497,8 +497,8 @@ function scr_player_move_customizable_controls()
 	
 	key_jump =
 	(key_jump_pressed_temp)
-	or (variable_instance_exists(self, "up_key_is_jump_key"))
-	and (up_key_is_jump_key == true)
+	or (variable_instance_exists(self, "up_is_also_jump"))
+	and (up_is_also_jump == true)
 	and (key_up_pressed)
 	or (active_jump == true);
 	#endregion /* Key Jump Pressed END */
@@ -508,8 +508,8 @@ function scr_player_move_customizable_controls()
 	
 	key_jump_hold =
 	(key_jump_hold_temp)
-	or (variable_instance_exists(self, "up_key_is_jump_key"))
-	and (up_key_is_jump_key == true)
+	or (variable_instance_exists(self, "up_is_also_jump"))
+	and (up_is_also_jump == true)
 	and (key_up)
 	or (active_jump == true);
 	#endregion /* Key Jump Hold END */
@@ -519,8 +519,8 @@ function scr_player_move_customizable_controls()
 	
 	key_jump_released =
 	(key_jump_released_temp)
-	or (variable_instance_exists(self, "up_key_is_jump_key"))
-	and (up_key_is_jump_key == true)
+	or (variable_instance_exists(self, "up_is_also_jump"))
+	and (up_is_also_jump == true)
 	and (key_up_released_temp)
 	#endregion /* Key Jump Released END */
 	

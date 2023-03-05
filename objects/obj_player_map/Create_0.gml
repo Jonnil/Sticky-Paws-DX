@@ -2,6 +2,12 @@
 can_enter_level_automatically = true;
 #endregion /* Debug toggles END */
 
+gamepad_set_vibration(0, 0, 0);
+gamepad_set_vibration(1, 0, 0);
+gamepad_set_vibration(2, 0, 0);
+gamepad_set_vibration(3, 0, 0);
+gamepad_set_vibration(4, 0, 0);
+
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 

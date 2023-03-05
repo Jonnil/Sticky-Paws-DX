@@ -36,8 +36,7 @@ function scr_draw_upload_level_menu()
 			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 			if (ini_key_exists("info", "clear_check"))
 			{
-				var clear_check = ini_read_real("info", "clear_check", false);
-				if (clear_check == true)
+				if (ini_read_real("info", "clear_check", false) == true)
 				{
 					if (os_is_network_connected()) /* Check if you're even connected to the internet */
 					{
@@ -290,8 +289,7 @@ function scr_draw_upload_level_menu()
 		
 		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		var clear_check = ini_read_real("info", "clear_check", false);
-		if (clear_check == false)
+		if (ini_read_real("info", "clear_check", false) == false)
 		{
 			menu_delay = 3;
 			menu = "clear_check_yes";
@@ -485,8 +483,7 @@ function scr_draw_upload_level_menu()
 		
 		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		var clear_check = ini_read_real("info", "clear_check", false);
-		if (clear_check == false)
+		if (ini_read_real("info", "clear_check", false) == false)
 		{
 			menu_delay = 3;
 			menu = "clear_check_yes";
@@ -642,8 +639,7 @@ function scr_draw_upload_level_menu()
 		
 		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		var clear_check = ini_read_real("info", "clear_check", false);
-		if (clear_check == false)
+		if (ini_read_real("info", "clear_check", false) == false)
 		{
 			menu_delay = 3;
 			menu = "clear_check_yes";
@@ -806,8 +802,7 @@ function scr_draw_upload_level_menu()
 		
 		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		var clear_check = ini_read_real("info", "clear_check", false);
-		if (clear_check == false)
+		if (ini_read_real("info", "clear_check", false) == false)
 		{
 			menu_delay = 3;
 			menu = "clear_check_yes";
@@ -965,8 +960,7 @@ function scr_draw_upload_level_menu()
 		
 		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		var clear_check = ini_read_real("info", "clear_check", false);
-		if (clear_check == false)
+		if (ini_read_real("info", "clear_check", false) == false)
 		{
 			menu_delay = 3;
 			menu = "clear_check_yes";
@@ -1069,8 +1063,7 @@ function scr_draw_upload_level_menu()
 		
 		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		var clear_check = ini_read_real("info", "clear_check", false);
-		if (clear_check == false)
+		if (ini_read_real("info", "clear_check", false) == false)
 		{
 			menu_delay = 3;
 			menu = "clear_check_yes";
@@ -1159,8 +1152,7 @@ function scr_draw_upload_level_menu()
 		
 		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		var clear_check = ini_read_real("info", "clear_check", false);
-		if (clear_check == false)
+		if (ini_read_real("info", "clear_check", false) == false)
 		{
 			menu_delay = 3;
 			menu = "clear_check_yes";

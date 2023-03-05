@@ -15,7 +15,7 @@ and (place_meeting(x, y, obj_block_break))
 			{
 				if (instance_exists(obj_player))
 				{
-					motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
+					motion_set(random_range(13, 77), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
 				}
 			}
 		}
@@ -27,7 +27,7 @@ and (place_meeting(x, y, obj_block_break))
 			{
 				if (instance_exists(obj_player))
 				{
-					motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
+					motion_set(random_range(103, 167), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
 				}
 			}
 		}

@@ -187,6 +187,7 @@ unused_y_origin_point = noone;
 view_hview_lerp = 0;
 view_wview_lerp = 0;
 goto_title_screen = false; /* If game is allowed to go to title screen yet or not. Need to load everything before going to title screen */
+global.every_player_can_navigate_menu = true; /* To make menu navigation easier with multiple different gamepads that can be connected and isn't neccesarely connected as player 1, make it so you can toggle on or off if every player can navigate menus. By default have this true */
 global.selected_level_editing_music = 0;
 global.gui_scale = -1;
 global.gui_scale_modifier = 0;

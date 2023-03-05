@@ -1,11 +1,14 @@
-if (id > other.id)
-and (drag_object == false)
-and (other.drag_object == false)
-and (other.object == object)
-and (position_meeting(x, y, other))
+if (global.actually_play_edited_level == false)
 {
-	with(other)
+	if (id > other.id)
+	and (drag_object == false)
+	and (other.drag_object == false)
+	and (other.object == object)
+	and (position_meeting(x, y, other))
 	{
-		instance_destroy();
+		with(other)
+		{
+			instance_destroy();
+		}
 	}
 }

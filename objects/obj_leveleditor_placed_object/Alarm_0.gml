@@ -1,7 +1,3 @@
-#region /* Debug toggles */
-var can_spawn_objects = true;
-#endregion /* Debug toggles END */
-
 #region /* Initialize Object */
 if (global.actually_play_edited_level == false)
 {
@@ -85,12 +81,4 @@ or (object == 87)
 }
 #endregion /* Big collectible uses old ID's, need to update them so old levels are compatible END */
 
-if (can_spawn_objects == true)
-{
-	if (global.actually_play_edited_level == true)
-	or (global.play_edited_level == true)
-	{
-		scr_spawn_objects_when_starting_room();
-	}
-}
 #endregion /* Initialize Object END */

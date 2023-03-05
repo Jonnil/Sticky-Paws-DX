@@ -1738,7 +1738,7 @@ and (hold_item_in_hands == "")
 				
 			#region /* Jump from rope spin */
 			if (key_jump)
-			or (up_key_is_jump_key == true)
+			or (up_is_also_jump == true)
 			and (!key_up)
 			{
 				scr_audio_play(snd_jump, volume_source.sound);
@@ -2534,7 +2534,7 @@ if (on_ground == true)
 				if (sprite_stand > noone){sprite_index = sprite_stand;}
 			}
 		}
-		image_speed = speed / 13.5+0.1;
+		image_speed = speed / 13.5 +0.1;
 	}
 	#endregion /* Run in Water END */
 	

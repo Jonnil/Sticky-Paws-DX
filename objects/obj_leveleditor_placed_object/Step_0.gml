@@ -1,3 +1,9 @@
+if (global.actually_play_edited_level == true)
+or (global.play_edited_level == true)
+{
+	scr_spawn_objects_when_starting_room(); /* Only spawn objects AFTER saving custom level */
+}
+
 if (global.actually_play_edited_level == false)
 {
 	var get_window_height = display_get_gui_height();

@@ -21,6 +21,10 @@ if (global.actually_play_edited_level == false)
 		{
 			if (keyboard_check_pressed(vk_escape))
 			or (gamepad_button_check_pressed(0, gp_start))
+			or (gamepad_button_check_pressed(1, gp_start))
+			or (gamepad_button_check_pressed(2, gp_start))
+			or (gamepad_button_check_pressed(3, gp_start))
+			or (gamepad_button_check_pressed(4, gp_start))
 			{
 				scr_save_custom_level(); /* Save level before going to the pause menu */
 				
@@ -45,16 +49,6 @@ if (global.actually_play_edited_level == false)
 			
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			if (keyboard_check_pressed(vk_escape))
-			and (input_key == false)
-			or (gamepad_button_check_pressed(0, gp_start))
-			and (input_key == false)
-			{
-				quit_level_editor = false;
-				can_input_level_name = false;
-				pause = false;
-				can_navigate = false;
-			}
 			
 			#region /* Make the menu invisible when entering the options menu */
 			if (menu == "continue")
@@ -65,6 +59,24 @@ if (global.actually_play_edited_level == false)
 			or (menu == "level_editor_upload")
 			or (menu == "quit")
 			{
+				
+				#region /* Only quit the pause menu when you're in the first pause menu */
+				if (keyboard_check_pressed(vk_escape))
+				or (gamepad_button_check_pressed(0, gp_start))
+				or (gamepad_button_check_pressed(1, gp_start))
+				or (gamepad_button_check_pressed(2, gp_start))
+				or (gamepad_button_check_pressed(3, gp_start))
+				or (gamepad_button_check_pressed(4, gp_start))
+				{
+					if (input_key == false)
+					{
+						quit_level_editor = false;
+						can_input_level_name = false;
+						pause = false;
+						can_navigate = false;
+					}
+				}
+				#endregion /* Only quit the pause menu when you're in the first pause menu END */
 				
 				#region /* Show what version of the game the level was first created in */
 				/* This should make it easier to port old levels to new game versions */
@@ -621,79 +633,79 @@ if (global.actually_play_edited_level == false)
 			
 			}
 			#endregion /* Make the menu invisible when entering the options menu END */
-	
-		scr_draw_upload_level_menu();
-	
-		#region /* PLAYER 1 INPUT LEVEL NAME NOW */
-		if (menu == "input_level_name")
-		and (can_input_level_name == true)
-		{
-		
-			#region /* Press enter when done typing */
-			if (keyboard_check_pressed(vk_enter))
-			or (gamepad_button_check_pressed(0, gp_start))
+			
+			scr_draw_upload_level_menu();
+			
+			#region /* PLAYER 1 INPUT LEVEL NAME NOW */
+			if (menu == "input_level_name")
+			and (can_input_level_name == true)
 			{
-				if (menu_delay == 0)
+		
+				#region /* Press enter when done typing */
+				if (keyboard_check_pressed(vk_enter))
+				or (gamepad_button_check_pressed(0, gp_start))
 				{
-					menu_delay = 10;
-					can_input_level_name = false;
-					quit_level_editor = false;
-					pause = true;
-					menu = "enter_level_name";
+					if (menu_delay == 0)
+					{
+						menu_delay = 10;
+						can_input_level_name = false;
+						quit_level_editor = false;
+						pause = true;
+						menu = "enter_level_name";
+					}
+				}
+				#endregion /* Press enter when done typing END */
+		
+				#region /* Make Background Darker */
+				draw_set_alpha(0.9);
+				draw_rectangle_color(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
+				draw_set_alpha(1);
+				#endregion /* Make Background Darker END */
+		
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_middle);
+		
+				#region /* Inputed Name Text */
+				if (name_enter_blink< 1)
+				{
+					scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name) + "|", global.default_text_size, c_black, c_white, 1);
+				}
+				else
+				{
+					scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name), global.default_text_size, c_black, c_white, 1);
+				}
+				#endregion /* Inputed Name Text END */
+		
+				#region /* Limit Name Input Length for Level Name */
+				draw_set_halign(fa_center);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 + 100, "Limit: " + string(string_length(level_name)) + "/32", global.default_text_size, c_black, c_white, 1);
+				level_name = keyboard_string;
+				if (string_length(level_name) > 32)
+				{
+					keyboard_string = string_copy(level_name, 1, 32);
+				}
+				#endregion /* Limit Name Input Length for Level Name END */
+			
+				name_enter_blink+= 0.05;
+				if (name_enter_blink > 1.5)
+				{
+					name_enter_blink = 0;
 				}
 			}
-			#endregion /* Press enter when done typing END */
-		
-			#region /* Make Background Darker */
-			draw_set_alpha(0.9);
-			draw_rectangle_color(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
-			draw_set_alpha(1);
-			#endregion /* Make Background Darker END */
-		
-			draw_set_halign(fa_left);
-			draw_set_valign(fa_middle);
-		
-			#region /* Inputed Name Text */
-			if (name_enter_blink< 1)
-			{
-				scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name) + "|", global.default_text_size, c_black, c_white, 1);
-			}
-			else
-			{
-				scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name), global.default_text_size, c_black, c_white, 1);
-			}
-			#endregion /* Inputed Name Text END */
-		
-			#region /* Limit Name Input Length for Level Name */
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 + 100, "Limit: " + string(string_length(level_name)) + "/32", global.default_text_size, c_black, c_white, 1);
-			level_name = keyboard_string;
-			if (string_length(level_name) > 32)
-			{
-				keyboard_string = string_copy(level_name, 1, 32);
-			}
-			#endregion /* Limit Name Input Length for Level Name END */
-		
-			name_enter_blink+= 0.05;
-			if (name_enter_blink > 1.5)
-			{
-				name_enter_blink = 0;
-			}
-		}
-		#endregion /* PLAYER 1 INPUT LEVEL NAME NOW END */
-	
+			#endregion /* PLAYER 1 INPUT LEVEL NAME NOW END */
+			
 		}
 		#endregion /* Pause Menu END */
-	
+		
 		if (pause == true)
 		{
 			scr_options_menu(); /* Options */
 			scr_options_level_editor(); /* Level Editor Options */
 		}
-	
+		
 		#region /* Hover over icons reveals the icons */
-	
+		
 		#region /* Make bottom row of icons appear if mouse is hovering at bottom screen */
 		if (drag_object == false)
 		and (asset_get_type("obj_level_player_1_start") == asset_object)
@@ -733,7 +745,7 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		#endregion /* Make bottom row of icons appear if mouse is hovering at bottom screen END */
-	
+		
 		#region /* Make undo and redo icons appear if mouse is hovering at right screen */
 		if (undo_and_redo_buttons_enabled == true)
 		and (drag_object == false)
@@ -770,7 +782,7 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		#endregion /* Make undo and redo icons appear if mouse is hovering at right screen END */
-	
+		
 		#region /* Make top row of icons appear if mouse is hovering at top screen */
 		if (drag_object == false)
 		and (asset_get_type("obj_level_player_1_start") == asset_object)
@@ -807,9 +819,9 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		#endregion /* Make top row of icons appear if mouse is hovering at top screen END */
-	
+		
 		#endregion /* Hover over icons reveals the icons END */
-	
+		
 		#region /* Show icons at bottom of screen */
 		if (show_icons_at_bottom == true)
 		and (drag_object == false)
@@ -825,7 +837,7 @@ if (global.actually_play_edited_level == false)
 			icons_at_bottom_y = lerp(icons_at_bottom_y, + 100, 0.1);
 		}
 		#endregion /* Show icons at bottom of screen END */
-	
+		
 		#region /* Show undo and redo icons to the right of screen */
 		if (show_undo_redo_icons == true)
 		{
@@ -836,9 +848,9 @@ if (global.actually_play_edited_level == false)
 			undo_redo_icons_y = lerp(undo_redo_icons_y, + 200, 0.1);
 		}
 		#endregion /* Show undo and redo icons to the right of screen END */
-	
+		
 		#region /* Level Editor Icons */
-	
+		
 		#region /* Play Level Button */
 		draw_sprite_ext(spr_menu_button_play, 0, play_level_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		
@@ -871,10 +883,10 @@ if (global.actually_play_edited_level == false)
 			draw_set_alpha(1);
 		}
 		#endregion /* Play Level Button END */
-	
+		
 		if (asset_get_type("spr_leveleditor_icons") == asset_sprite)
 		{
-		
+			
 			#region /* Place brush icons */
 			if (place_brush_size <= 0)
 			{
@@ -1062,9 +1074,9 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 			#endregion /* Click Pen END */
-		
+			
 			#endregion /* Place brush icons END */
-		
+			
 			#region /* Erase icons */
 			if (erase_brush_size <= 0)
 			{
@@ -1206,9 +1218,9 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 			#endregion /* Click Erase END */
-		
+			
 			#endregion /* Erase icons END */
-		
+			
 			#region /* Fill icon */
 			if (fill_mode == true)
 			and (erase_mode == false)
@@ -1301,9 +1313,9 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 			#endregion /* Click Fill END */
-		
+			
 			#endregion /* Fill icon END */
-		
+			
 			#region /* Always show level editor buttons toggle */
 			if (global.always_show_level_editor_buttons == false)
 			{
@@ -1350,7 +1362,7 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 			#endregion /* Always show level editor buttons toggle END */
-		
+			
 			#region /* Show Undo icon */
 			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
 			and (mouse_check_button(mb_left))
@@ -1362,7 +1374,7 @@ if (global.actually_play_edited_level == false)
 				draw_sprite_ext(spr_leveleditor_icons, 17, display_get_gui_width() - 96 + undo_redo_icons_y, display_get_gui_height() - 96, 1, 1, 0, c_dkgray, 1);
 			}
 			#endregion /* Show Undo icon END */
-		
+			
 			#region /* Show Redo icon */
 			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
 			and (mouse_check_button(mb_left))
@@ -1374,7 +1386,7 @@ if (global.actually_play_edited_level == false)
 				draw_sprite_ext(spr_leveleditor_icons, 18, display_get_gui_width() - 32 + undo_redo_icons_y, display_get_gui_height() - 96, 1, 1, 0, c_dkgray, 1);
 			}
 			#endregion /* Show Redo icon */
-		
+			
 			#region /* Set difficulty layer */
 			if (global.enable_difficulty_selection_settings == true)
 			and (set_difficulty_mode == true)
@@ -1389,7 +1401,7 @@ if (global.actually_play_edited_level == false)
 					draw_sprite_ext(spr_leveleditor_icons, 20, display_get_gui_width() - 224, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 				}
 				#endregion /* Easy END */
-		
+				
 				#region /* Normal */
 				if (difficulty_layer == 2)
 				{
@@ -1400,7 +1412,7 @@ if (global.actually_play_edited_level == false)
 					draw_sprite_ext(spr_leveleditor_icons, 21, display_get_gui_width() - 160, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 				}
 				#endregion /* Normal END */
-		
+				
 				#region /* Hard */
 				if (difficulty_layer == 3)
 				{
@@ -1411,10 +1423,11 @@ if (global.actually_play_edited_level == false)
 					draw_sprite_ext(spr_leveleditor_icons, 22, display_get_gui_width() - 96, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 				}
 				#endregion /* Hard END */
-		
+				
 				#region /* Set Difficulty Mode / Back */
 				draw_sprite_ext(spr_leveleditor_icons, 24, display_get_gui_width() - 32, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 				#endregion /* Set Difficulty Mode / Back END */
+				
 			}
 			else
 			if (global.enable_difficulty_selection_settings == true)
@@ -1422,7 +1435,7 @@ if (global.actually_play_edited_level == false)
 				draw_sprite_ext(spr_leveleditor_icons, 19, display_get_gui_width() - 32, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 			}
 			#endregion /* Set difficulty layer END */
-		
+			
 			#region /* Show icons at top of screen */
 			if (show_icons_at_top == true)
 			{
@@ -1432,7 +1445,7 @@ if (global.actually_play_edited_level == false)
 			{
 				icons_at_top_y = lerp(icons_at_top_y, - 100, 0.1);
 			}
-		
+			
 			if (pause == false)
 			{
 				
@@ -1476,7 +1489,7 @@ if (global.actually_play_edited_level == false)
 					draw_sprite_ext(spr_leveleditor_icons, 13, grid_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
 				}
 				#endregion /* Show Grid END */
-			
+				
 				#region /* Zoom Out */
 				if (zoom_out == true)
 				{
@@ -1487,7 +1500,7 @@ if (global.actually_play_edited_level == false)
 					draw_sprite_ext(spr_leveleditor_icons, 14, display_get_gui_width() - 160, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
 				}
 				#endregion /* Zoom Out END */
-			
+				
 				#region /* Zoom Reset */
 				if (zoom_reset == true)
 				{
@@ -1498,7 +1511,7 @@ if (global.actually_play_edited_level == false)
 					draw_sprite_ext(spr_leveleditor_icons, 15, display_get_gui_width() - 96, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
 				}
 				#endregion /* Zoom Reset END */
-			
+				
 				#region /* Zoom In */
 				if (zoom_in == true)
 				{
@@ -1509,14 +1522,14 @@ if (global.actually_play_edited_level == false)
 					draw_sprite_ext(spr_leveleditor_icons, 16, display_get_gui_width() - 32, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
 				}
 				#endregion /* Zoom In END */
-			
+				
 			}
-		
+			
 			#endregion /* Show icons at top of screen END */
-		
+			
 		}
 		#endregion /* Level Editor Icons */
-	
+		
 		#region /* Show Tooltip when hovering over icon, this code needs to be after the show icons code so it appears above the icons */
 		if (show_tooltip >= 100)
 		{
@@ -1536,11 +1549,11 @@ if (global.actually_play_edited_level == false)
 			show_tooltip = 0;
 		}
 		#endregion /* Show Tooltip when hovering over icon, this code needs to be after the show icons code so it appears above the icons END */
-
+		
 		#region /* Undo and Redo icons */
 		if (show_undo_redo_icons == true)
 		{
-		
+			
 			#region /* Click Undo icon */
 			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
 			{
@@ -1552,9 +1565,10 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 			#endregion /* Click Undo icon END */
-	
-			#region /* Click Redo icon */
+			
 			else
+			
+			#region /* Click Redo icon */
 			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
 			{
 				tooltip = "Redo (CTRL + Y)";
@@ -1565,24 +1579,24 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 			#endregion /* Click Redo icon END */
-		
+			
 		}
 		#endregion /* Undo and Redo icons END */
-	
+		
 		if (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
 		{
 			show_tooltip = 0;
 		}
-	
+		
 		#region /* Click icons at bottom of screen */
 		if (show_icons_at_bottom == true)
 		and (pause == false)
 		{
-		
+			
 			#region /* Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard */
 			if (global.enable_difficulty_selection_settings == true)
 			{
-			
+				
 				#region /* Easy */
 				if (set_difficulty_mode == true)
 				and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width() - 192, display_get_gui_height() + 64))
@@ -1605,7 +1619,7 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				#endregion /* Easy END */
-			
+				
 				#region /* Normal */
 				if (set_difficulty_mode == true)
 				and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 192, display_get_gui_height() - 64, display_get_gui_width() - 128, display_get_gui_height() + 64))
@@ -1628,7 +1642,7 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				#endregion /* Normal END */
-			
+				
 				#region /* Hard */
 				if (set_difficulty_mode == true)
 				and (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
@@ -1651,7 +1665,7 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				#endregion /* Hard END */
-			
+				
 				#region /* Set Difficulty Mode / Back */
 				if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
 				{
@@ -1685,15 +1699,15 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				#endregion /* Set Difficulty Mode / Back */
-			
+				
 			}
 			#endregion /* Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard END */
-		
+			
 		}
 		#endregion /* Click icons at bottom of screen END */
-
+		
 		#region /* Click icons at top of screen */
-	
+		
 		#region /* Toggle Grid */
 		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, - 64, display_get_gui_width() - 192, + 64))
 		and (show_icons_at_top == true)
@@ -1714,7 +1728,7 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		#endregion /* Toggle Grid END */
-
+		
 		#region /* Zoom Out */
 		if (keyboard_check(global.player1_key_zoom_out))
 		and (!keyboard_check(global.player1_key_zoom_in))
@@ -1745,7 +1759,7 @@ if (global.actually_play_edited_level == false)
 			zoom_out = false;
 		}
 		#endregion /* Zoom Out END */
-
+		
 		#region /* Reset Zoom */
 		if (keyboard_check(vk_control))
 		and (keyboard_check(vk_enter))
@@ -1764,7 +1778,7 @@ if (global.actually_play_edited_level == false)
 			zoom_reset = false;
 		}
 		#endregion /* Reset Zoom END */
-
+		
 		#region /* Zoom In */
 		if (keyboard_check(global.player1_key_zoom_in))
 		and (!keyboard_check(global.player1_key_zoom_out))
@@ -1804,7 +1818,6 @@ if (global.actually_play_edited_level == false)
 		{
 			scr_draw_mouse_cursor_sprite();
 		}
-	
 	}
 }
 

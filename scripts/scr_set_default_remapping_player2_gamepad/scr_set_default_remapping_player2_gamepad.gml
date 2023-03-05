@@ -47,7 +47,7 @@ function scr_set_default_remapping_player2_gamepad()
 	global.player2_gamepad_button2_back = noone;
 	#endregion /* Player 2 Gamepad Buttons 2 defaults END */
 	
-	global.player2_up_key_is_jump_key = false;
+	global.player2_up_is_also_jump = false;
 	global.player2_double_tap_to_run = true;
 	global.player2_sprint_toggle = false;
 	global.player2_double_tap_to_dive = false;
@@ -91,7 +91,7 @@ function scr_set_default_remapping_player2_gamepad()
 	ini_write_real("config", "player2_gamepad_button2_accept", global.player2_gamepad_button2_accept);
 	ini_write_real("config", "player2_gamepad_button_back", global.player2_gamepad_button_back);
 	ini_write_real("config", "player2_gamepad_button2_back", global.player2_gamepad_button2_back);
-	ini_write_real("config", "player2_up_key_is_jump_key", global.player2_up_key_is_jump_key);
+	ini_write_real("config", "player2_up_is_also_jump", global.player2_up_is_also_jump);
 	ini_write_real("config", "player2_double_tap_to_run", global.player2_double_tap_to_run);
 	ini_write_real("config", "player2_sprint_toggle", global.player2_sprint_toggle);
 	ini_write_real("config", "player2_double_tap_to_dive", global.player2_double_tap_to_dive);

@@ -1490,121 +1490,115 @@ and (!instance_exists(obj_pause))
 {
 	
 	#region /* Show Multiplayer Controls */
-	if (global.player1_can_play == true)
-	or (global.player2_can_play == true)
-	or (global.player3_can_play == true)
-	or (global.player4_can_play == true)
+	
+	#region /* Y position of show controls for each player */
+	if (player1_show_controls_alpha > 0)
+	and (player2_show_controls_alpha <= 0)
+	and (player3_show_controls_alpha <= 0)
+	and (player4_show_controls_alpha <= 0)
 	{
-		
-		#region /* Y position of show controls for each player */
-		if (player1_show_controls_alpha > 0)
-		and (player2_show_controls_alpha <= 0)
-		and (player3_show_controls_alpha <= 0)
-		and (player4_show_controls_alpha <= 0)
-		{
-			show_player1_controls_y = lerp(show_player1_controls_y, 32, 0.1);
-			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
-		}
-		else
-		if (player1_show_controls_alpha <= 0)
-		and (player2_show_controls_alpha > 0)
-		and (player3_show_controls_alpha <= 0)
-		and (player4_show_controls_alpha <= 0)
-		{
-			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
-			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
-		}
-		else
-		if (player1_show_controls_alpha <= 0)
-		and (player2_show_controls_alpha <= 0)
-		and (player3_show_controls_alpha > 0)
-		and (player4_show_controls_alpha <= 0)
-		{
-			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
-		}
-		else
-		if (player1_show_controls_alpha <= 0)
-		and (player2_show_controls_alpha <= 0)
-		and (player3_show_controls_alpha <= 0)
-		and (player4_show_controls_alpha > 0)
-		{
-			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
-		}
-		else
-		if (player1_show_controls_alpha > 0)
-		and (player2_show_controls_alpha > 0)
-		and (player3_show_controls_alpha <= 0)
-		and (player4_show_controls_alpha <= 0)
-		{
-			show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
-			show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
-			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
-		}
-		else
-		if (player1_show_controls_alpha > 0)
-		and (player2_show_controls_alpha > 0)
-		and (player3_show_controls_alpha > 0)
-		and (player4_show_controls_alpha <= 0)
-		{
-			show_player1_controls_y = lerp(show_player1_controls_y, 116, 0.1);
-			show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
-			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
-		}
-		else
-		if (player1_show_controls_alpha > 0)
-		and (player2_show_controls_alpha <= 0)
-		and (player3_show_controls_alpha > 0)
-		and (player4_show_controls_alpha <= 0)
-		{
-			show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
-			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
-		}
-		else
-		if (player1_show_controls_alpha <= 0)
-		and (player2_show_controls_alpha > 0)
-		and (player3_show_controls_alpha > 0)
-		and (player4_show_controls_alpha <= 0)
-		{
-			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
-			show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
-		}
-		else
-		if (player1_show_controls_alpha <= 0)
-		and (player2_show_controls_alpha <= 0)
-		and (player3_show_controls_alpha <= 0)
-		and (player4_show_controls_alpha <= 0)
-		{
-			show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
-			show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
-		}
-		else
-		{
-			show_player1_controls_y = lerp(show_player1_controls_y, 158, 0.1);
-			show_player2_controls_y = lerp(show_player2_controls_y, 116, 0.1);
-			show_player3_controls_y = lerp(show_player3_controls_y, 74, 0.1);
-			show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
-		}
-		#endregion /* Y position of show controls for each player END */
-		
+		show_player1_controls_y = lerp(show_player1_controls_y, 32, 0.1);
+		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 	}
+	else
+	if (player1_show_controls_alpha <= 0)
+	and (player2_show_controls_alpha > 0)
+	and (player3_show_controls_alpha <= 0)
+	and (player4_show_controls_alpha <= 0)
+	{
+		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
+		show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+	}
+	else
+	if (player1_show_controls_alpha <= 0)
+	and (player2_show_controls_alpha <= 0)
+	and (player3_show_controls_alpha > 0)
+	and (player4_show_controls_alpha <= 0)
+	{
+		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
+		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+	}
+	else
+	if (player1_show_controls_alpha <= 0)
+	and (player2_show_controls_alpha <= 0)
+	and (player3_show_controls_alpha <= 0)
+	and (player4_show_controls_alpha > 0)
+	{
+		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
+	}
+	else
+	if (player1_show_controls_alpha > 0)
+	and (player2_show_controls_alpha > 0)
+	and (player3_show_controls_alpha <= 0)
+	and (player4_show_controls_alpha <= 0)
+	{
+		show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
+		show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
+		show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+	}
+	else
+	if (player1_show_controls_alpha > 0)
+	and (player2_show_controls_alpha > 0)
+	and (player3_show_controls_alpha > 0)
+	and (player4_show_controls_alpha <= 0)
+	{
+		show_player1_controls_y = lerp(show_player1_controls_y, 116, 0.1);
+		show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
+		show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
+		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+	}
+	else
+	if (player1_show_controls_alpha > 0)
+	and (player2_show_controls_alpha <= 0)
+	and (player3_show_controls_alpha > 0)
+	and (player4_show_controls_alpha <= 0)
+	{
+		show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
+		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
+		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+	}
+	else
+	if (player1_show_controls_alpha <= 0)
+	and (player2_show_controls_alpha > 0)
+	and (player3_show_controls_alpha > 0)
+	and (player4_show_controls_alpha <= 0)
+	{
+		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
+		show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
+		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+	}
+	else
+	if (player1_show_controls_alpha <= 0)
+	and (player2_show_controls_alpha <= 0)
+	and (player3_show_controls_alpha <= 0)
+	and (player4_show_controls_alpha <= 0)
+	{
+		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+	}
+	else
+	{
+		show_player1_controls_y = lerp(show_player1_controls_y, 158, 0.1);
+		show_player2_controls_y = lerp(show_player2_controls_y, 116, 0.1);
+		show_player3_controls_y = lerp(show_player3_controls_y, 74, 0.1);
+		show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
+	}
+	#endregion /* Y position of show controls for each player END */
+	
 	#endregion /* Show Multiplayer Controls END */
 	
 }

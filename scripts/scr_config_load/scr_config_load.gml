@@ -110,7 +110,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player1_key2_accept")){global.player1_key2_accept = ini_read_real("config", "player1_key2_accept", 0);}
 		if (ini_key_exists("config", "player1_key2_back")){global.player1_key2_back = ini_read_real("config", "player1_key2_back", 0);}
 		
-		if (ini_key_exists("config", "player1_up_key_is_jump_key")){global.player1_up_key_is_jump_key = ini_read_real("config", "player1_up_key_is_jump_key", 0);}
+		if (ini_key_exists("config", "player1_up_is_also_jump")){global.player1_up_is_also_jump = ini_read_real("config", "player1_up_is_also_jump", 0);}
 		if (ini_key_exists("config", "player1_double_tap_to_run")){global.player1_double_tap_to_run = ini_read_real("config", "player1_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player1_sprint_toggle")){global.player1_sprint_toggle = ini_read_real("config", "player1_sprint_toggle", 0);}
 		if (ini_key_exists("config", "player1_double_tap_to_dive")){global.player1_double_tap_to_dive = ini_read_real("config", "player1_double_tap_to_dive", 0);}
@@ -158,7 +158,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player2_key2_accept")){global.player2_key2_accept = ini_read_real("config", "player2_key2_accept", 0);}
 		if (ini_key_exists("config", "player2_key2_back")){global.player2_key2_back = ini_read_real("config", "player2_key2_back", 0);}
 		
-		if (ini_key_exists("config", "player2_up_key_is_jump_key")){global.player2_up_key_is_jump_key = ini_read_real("config", "player2_up_key_is_jump_key", 0);}
+		if (ini_key_exists("config", "player2_up_is_also_jump")){global.player2_up_is_also_jump = ini_read_real("config", "player2_up_is_also_jump", 0);}
 		if (ini_key_exists("config", "player2_double_tap_to_run")){global.player2_double_tap_to_run = ini_read_real("config", "player2_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player2_sprint_toggle")){global.player2_sprint_toggle = ini_read_real("config", "player2_sprint_toggle", 0);}
 		if (ini_key_exists("config", "player2_double_tap_to_dive")){global.player2_double_tap_to_dive = ini_read_real("config", "player2_double_tap_to_dive", 0);}
@@ -206,7 +206,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player3_key2_accept")){global.player3_key2_accept = ini_read_real("config", "player3_key2_accept", 0);}
 		if (ini_key_exists("config", "player3_key2_back")){global.player3_key2_back = ini_read_real("config", "player3_key2_back", 0);}
 		
-		if (ini_key_exists("config", "player3_up_key_is_jump_key")){global.player3_up_key_is_jump_key = ini_read_real("config", "player3_up_key_is_jump_key", 0);}
+		if (ini_key_exists("config", "player3_up_is_also_jump")){global.player3_up_is_also_jump = ini_read_real("config", "player3_up_is_also_jump", 0);}
 		if (ini_key_exists("config", "player3_double_tap_to_run")){global.player3_double_tap_to_run = ini_read_real("config", "player3_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player3_sprint_toggle")){global.player3_sprint_toggle = ini_read_real("config", "player3_sprint_toggle", 0);}
 		if (ini_key_exists("config", "player3_double_tap_to_dive")){global.player3_double_tap_to_dive = ini_read_real("config", "player3_double_tap_to_dive", 0);}
@@ -254,7 +254,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player4_key2_accept")){global.player4_key2_accept = ini_read_real("config", "player4_key2_accept", 0);}
 		if (ini_key_exists("config", "player4_key2_back")){global.player4_key2_back = ini_read_real("config", "player4_key2_back", 0);}
 		
-		if (ini_key_exists("config", "player4_up_key_is_jump_key")){global.player4_up_key_is_jump_key = ini_read_real("config", "player4_up_key_is_jump_key", 0);}
+		if (ini_key_exists("config", "player4_up_is_also_jump")){global.player4_up_is_also_jump = ini_read_real("config", "player4_up_is_also_jump", 0);}
 		if (ini_key_exists("config", "player4_double_tap_to_run")){global.player4_double_tap_to_run = ini_read_real("config", "player4_double_tap_to_run", 0);}
 		if (ini_key_exists("config", "player4_sprint_toggle")){global.player4_sprint_toggle = ini_read_real("config", "player4_sprint_toggle", 0);}
 		if (ini_key_exists("config", "player4_double_tap_to_dive")){global.player4_double_tap_to_dive = ini_read_real("config", "player4_double_tap_to_dive", 0);}

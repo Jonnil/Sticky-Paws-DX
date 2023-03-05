@@ -18,7 +18,7 @@ and (other.die == false)
 				new_instance.sprite_index = sprite_index;
 				with(new_instance)
 				{
-					motion_set(random_range(45 - 32, 45+ 32), random_range(5, 10) + other.speed * 0.5);
+					motion_set(random_range(13, 77), random_range(5, 10) + other.speed * 0.5);
 				}
 			}
 			else
@@ -27,7 +27,7 @@ and (other.die == false)
 				new_instance.sprite_index = sprite_index;
 				with(new_instance)
 				{
-					motion_set(random_range(135 - 32, 135+ 32), random_range(5, 10) + other.speed * 0.5);
+					motion_set(random_range(103, 167), random_range(5, 10) + other.speed * 0.5);
 				}
 			}
 		}

@@ -47,7 +47,7 @@ function scr_set_default_remapping_player4_gamepad()
 	global.player4_gamepad_button2_back = noone;
 	#endregion /* Player 4 Gamepad Buttons 2 defaults END */
 	
-	global.player4_up_key_is_jump_key = false;
+	global.player4_up_is_also_jump = false;
 	global.player4_double_tap_to_run = true;
 	global.player4_sprint_toggle = false;
 	global.player4_double_tap_to_dive = false;
@@ -91,7 +91,7 @@ function scr_set_default_remapping_player4_gamepad()
 	ini_write_real("config", "player4_gamepad_button2_accept", global.player4_gamepad_button2_accept);
 	ini_write_real("config", "player4_gamepad_button_back", global.player4_gamepad_button_back);
 	ini_write_real("config", "player4_gamepad_button2_back", global.player4_gamepad_button2_back);
-	ini_write_real("config", "player4_up_key_is_jump_key", global.player4_up_key_is_jump_key);
+	ini_write_real("config", "player4_up_is_also_jump", global.player4_up_is_also_jump);
 	ini_write_real("config", "player4_double_tap_to_run", global.player4_double_tap_to_run);
 	ini_write_real("config", "player4_sprint_toggle", global.player4_sprint_toggle);
 	ini_write_real("config", "player4_double_tap_to_dive", global.player4_double_tap_to_dive);

@@ -221,7 +221,3 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Initialize Object END */
 	
 }
-else
-{
-	draw_self();
-}

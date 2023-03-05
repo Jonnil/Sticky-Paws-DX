@@ -185,6 +185,7 @@ or (global.actually_play_edited_level == true)
 				or (global.checkpoint_y > 0)
 				{
 					camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
+					instance_activate_object(obj_camera);
 					instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_camera);
 				}
 			}

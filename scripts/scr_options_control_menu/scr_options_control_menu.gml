@@ -53,7 +53,7 @@ function scr_options_control_menu()
 		var menu_y_remap_key_back = menu_y_remap_key_jump + 64 * 12;
 	}
 	var menu_y_remap_reset = menu_y_remap_key_back + 64 * 1 - 16;
-	var menu_y_up_key_is_jump_key = menu_y_remap_key_back + 64 * 2;
+	var menu_y_up_is_also_jump = menu_y_remap_key_back + 64 * 2;
 	var menu_y_double_tap_direction_to_run = menu_y_remap_key_back + 64 * 3;
 	var menu_y_always_run = menu_y_remap_key_back + 64 * 4;
 	if (remapping_player == 0)
@@ -5066,7 +5066,7 @@ function scr_options_control_menu()
 				else
 				if (key_down)
 				{
-					menu = "up_key_is_jump_key";
+					menu = "up_is_also_jump";
 					menu_delay = 3;
 				}
 			}
@@ -5124,7 +5124,7 @@ function scr_options_control_menu()
 		#region /* Controls checkmarks and dropdown menu settings */
 		if (remapping_player == 0)
 		{
-			var global_up_key_is_jump_key = global.player1_up_key_is_jump_key;
+			var global_up_is_also_jump = global.player1_up_is_also_jump;
 			var global_double_tap_to_run = global.player1_double_tap_to_run;
 			var global_sprint_toggle = global.player1_sprint_toggle;
 			var global_double_tap_to_dive = global.player1_double_tap_to_dive;
@@ -5138,7 +5138,7 @@ function scr_options_control_menu()
 		else
 		if (remapping_player == 1)
 		{
-			var global_up_key_is_jump_key = global.player2_up_key_is_jump_key;
+			var global_up_is_also_jump = global.player2_up_is_also_jump;
 			var global_double_tap_to_run = global.player2_double_tap_to_run;
 			var global_sprint_toggle = global.player2_sprint_toggle;
 			var global_double_tap_to_dive = global.player2_double_tap_to_dive;
@@ -5152,7 +5152,7 @@ function scr_options_control_menu()
 		else
 		if (remapping_player == 2)
 		{
-			var global_up_key_is_jump_key = global.player3_up_key_is_jump_key;
+			var global_up_is_also_jump = global.player3_up_is_also_jump;
 			var global_double_tap_to_run = global.player3_double_tap_to_run;
 			var global_sprint_toggle = global.player3_sprint_toggle;
 			var global_double_tap_to_dive = global.player3_double_tap_to_dive;
@@ -5166,7 +5166,7 @@ function scr_options_control_menu()
 		else
 		if (remapping_player == 3)
 		{
-			var global_up_key_is_jump_key = global.player4_up_key_is_jump_key;
+			var global_up_is_also_jump = global.player4_up_is_also_jump;
 			var global_double_tap_to_run = global.player4_double_tap_to_run;
 			var global_sprint_toggle = global.player4_sprint_toggle;
 			var global_double_tap_to_dive = global.player4_double_tap_to_dive;
@@ -5177,7 +5177,7 @@ function scr_options_control_menu()
 			var global_drop_from_rope = global.player4_drop_from_rope;
 			var global_wall_jump_setting = global.player4_wall_jump_setting;
 		}
-		draw_menu_checkmark(390, menu_y_up_key_is_jump_key + menu_y_offset, l10n_text("Up key is jump key"), "up_key_is_jump_key", global_up_key_is_jump_key);
+		draw_menu_checkmark(390, menu_y_up_is_also_jump + menu_y_offset, l10n_text("Up is also jump"), "up_is_also_jump", global_up_is_also_jump);
 		draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global_double_tap_to_run);
 		draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global_sprint_toggle);
 		draw_menu_checkmark(390, menu_y_double_tap_direction_to_dive + menu_y_offset, l10n_text("Double-tap direction to dive"), "double_tap_to_dive", global_double_tap_to_dive);
@@ -5349,9 +5349,9 @@ function scr_options_control_menu()
 			else
 			
 			#region /* Up Key is Jump Key Navigation */
-			if (menu == "up_key_is_jump_key")
+			if (menu == "up_is_also_jump")
 			{
-				menu_cursor_y_position = menu_y_up_key_is_jump_key;
+				menu_cursor_y_position = menu_y_up_is_also_jump;
 				if (key_up)
 				and (menu_delay == 0)
 				{
@@ -5377,7 +5377,7 @@ function scr_options_control_menu()
 				if (key_up)
 				and (menu_delay == 0)
 				{
-					menu = "up_key_is_jump_key";
+					menu = "up_is_also_jump";
 					menu_delay = 3;
 				}
 				else
@@ -6052,11 +6052,11 @@ function scr_options_control_menu()
 			}
 			#endregion /* Drop down menu END */
 			
-			if (menu == "up_key_is_jump_key") and (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_up_key_is_jump_key == true){global.player1_up_key_is_jump_key = false;}else{global.player1_up_key_is_jump_key = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_up_key_is_jump_key == true){global.player2_up_key_is_jump_key = false;}else{global.player2_up_key_is_jump_key = true;}menu_delay = 3;}else
-			if (remapping_player == 2){if (global.player3_up_key_is_jump_key == true){global.player3_up_key_is_jump_key = false;}else{global.player3_up_key_is_jump_key = true;}menu_delay = 3;}else
-			if (remapping_player == 3){if (global.player4_up_key_is_jump_key == true){global.player4_up_key_is_jump_key = false;}else{global.player4_up_key_is_jump_key = true;}menu_delay = 3;}}
+			if (menu == "up_is_also_jump") and (menu_delay == 0){
+			if (remapping_player == 0){if (global.player1_up_is_also_jump == true){global.player1_up_is_also_jump = false;}else{global.player1_up_is_also_jump = true;}menu_delay = 3;}else
+			if (remapping_player == 1){if (global.player2_up_is_also_jump == true){global.player2_up_is_also_jump = false;}else{global.player2_up_is_also_jump = true;}menu_delay = 3;}else
+			if (remapping_player == 2){if (global.player3_up_is_also_jump == true){global.player3_up_is_also_jump = false;}else{global.player3_up_is_also_jump = true;}menu_delay = 3;}else
+			if (remapping_player == 3){if (global.player4_up_is_also_jump == true){global.player4_up_is_also_jump = false;}else{global.player4_up_is_also_jump = true;}menu_delay = 3;}}
 			
 			if (menu == "double_tap_to_run") and (menu_delay == 0){
 			if (remapping_player == 0){if (global.player1_double_tap_to_run == true){global.player1_double_tap_to_run = false;}else{global.player1_double_tap_to_run = true;}menu_delay = 3;}else

@@ -39,7 +39,7 @@ function scr_set_default_remapping_player1_keyboard()
 	global.player1_key2_back = vk_backspace;
 	#endregion /* Player 1 Key 2 defaults END */
 	
-	global.player1_up_key_is_jump_key = false;
+	global.player1_up_is_also_jump = false;
 	global.player1_double_tap_to_run = true;
 	global.player1_sprint_toggle = false;
 	global.player1_double_tap_to_dive = false;
@@ -83,7 +83,7 @@ function scr_set_default_remapping_player1_keyboard()
 	ini_write_real("config", "player1_key2_accept", global.player1_key2_accept);
 	ini_write_real("config", "player1_key_back", global.player1_key_back);
 	ini_write_real("config", "player1_key2_back", global.player1_key2_back);
-	ini_write_real("config", "player1_up_key_is_jump_key", global.player1_up_key_is_jump_key);
+	ini_write_real("config", "player1_up_is_also_jump", global.player1_up_is_also_jump);
 	ini_write_real("config", "player1_double_tap_to_run", global.player1_double_tap_to_run);
 	ini_write_real("config", "player1_sprint_toggle", global.player1_sprint_toggle);
 	ini_write_real("config", "player1_double_tap_to_dive", global.player1_double_tap_to_dive);

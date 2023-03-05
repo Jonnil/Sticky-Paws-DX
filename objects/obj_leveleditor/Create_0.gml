@@ -772,6 +772,146 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	
 	#endregion /* Custom Background All Scales END */
 	
+	#region /* Custom Background All Tiled */
+	
+	#region /* Custom Background 4 htiled and vtiled points */
+	#region /* Custom Background 4 vtiled point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_4_vtiled"))
+	{
+		custom_background_4_vtiled = ini_read_real("Custom Backgrounds", "custom_background_4_vtiled", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_vtiled", 1);
+		}
+		custom_background_4_vtiled = 1;
+	}
+	#endregion /* Custom Background 4 vtiled point END */
+	
+	#region /* Custom Background 4 htiled point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_4_htiled"))
+	{
+		custom_background_4_htiled = ini_read_real("Custom Backgrounds", "custom_background_4_htiled", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_4_htiled", 1);
+		}
+		custom_background_4_htiled = 1;
+	}
+	#endregion /* Custom Background 4 htiled point END */
+	#endregion /* Custom Background 4 htiled and vtiled points END */
+	
+	#region /* Custom Background 3 htiled and vtiled points */
+	#region /* Custom Background 3 vtiled point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_3_vtiled"))
+	{
+		custom_background_3_vtiled = ini_read_real("Custom Backgrounds", "custom_background_3_vtiled", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_vtiled", 1);
+		}
+		custom_background_3_vtiled = 1;
+	}
+	#endregion /* Custom Background 3 vtiled point END */
+	
+	#region /* Custom Background 3 htiled point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_3_htiled"))
+	{
+		custom_background_3_htiled = ini_read_real("Custom Backgrounds", "custom_background_3_htiled", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_3_htiled", 1);
+		}
+		custom_background_3_htiled = 1;
+	}
+	#endregion /* Custom Background 3 htiled point END */
+	#endregion /* Custom Background 3 htiled and vtiled points END */
+	
+	#region /* Custom Background 2 htiled and vtiled points */
+	#region /* Custom Background 2 vtiled point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_2_vtiled"))
+	{
+		custom_background_2_vtiled = ini_read_real("Custom Backgrounds", "custom_background_2_vtiled", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_vtiled", 1);
+		}
+		custom_background_2_vtiled = 1;
+	}
+	#endregion /* Custom Background 2 vtiled point END */
+	
+	#region /* Custom Background 2 htiled point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_2_htiled"))
+	{
+		custom_background_2_htiled = ini_read_real("Custom Backgrounds", "custom_background_2_htiled", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_2_htiled", 1);
+		}
+		custom_background_2_htiled = 1;
+	}
+	#endregion /* Custom Background 2 htiled point END */
+	#endregion /* Custom Background 2 htiled and vtiled points END */
+	
+	#region /* Custom Background 1 htiled and vtiled points */
+	#region /* Custom Background 1 vtiled point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_1_vtiled"))
+	{
+		custom_background_1_vtiled = ini_read_real("Custom Backgrounds", "custom_background_1_vtiled", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_vtiled", 1);
+		}
+		custom_background_1_vtiled = 1;
+	}
+	#endregion /* Custom Background 1 vtiled point END */
+	
+	#region /* Custom Background 1 htiled point */
+	if (ini_key_exists("Custom Backgrounds", "custom_background_1_htiled"))
+	{
+		custom_background_1_htiled = ini_read_real("Custom Backgrounds", "custom_background_1_htiled", 1);
+	}
+	else
+	{
+		if (global.character_select_in_this_menu == "level_editor")
+		and (can_save_to_level_information == true)
+		{
+			ini_write_real("Custom Backgrounds", "custom_background_1_htiled", 1);
+		}
+		custom_background_1_htiled = 1;
+	}
+	#endregion /* Custom Background 1 htiled point END */
+	#endregion /* Custom Background 1 htiled and vtiled points END */
+	
+	#endregion /* Custom Background All Tiled END */
+	
 	#endregion /* Custom Backgrounds END */
 	
 	#region /* Make every tileset into default tileset */
@@ -890,6 +1030,14 @@ else
 	custom_background_3_y_scale = 1;
 	custom_background_4_x_scale = 1;
 	custom_background_4_y_scale = 1;
+	custom_background_1_htiled = 1;
+	custom_background_1_vtiled = 1;
+	custom_background_2_htiled = 1;
+	custom_background_2_vtiled = 1;
+	custom_background_3_htiled = 1;
+	custom_background_3_vtiled = 1;
+	custom_background_4_htiled = 1;
+	custom_background_4_vtiled = 1;
 	global.enable_time_countdown = false;
 	global.time_countdown = 500;
 	global.make_every_tileset_into_default_tileset = false;
@@ -897,25 +1045,18 @@ else
 }
 #endregion /* Initialize level_information.ini END */
 
-scr_scale_background();
+#region /* Set if background is horizontally or vertically tiled */
+layer_background_htiled(layer_background_get_id(layer_get_id("Background")), custom_background_1_htiled);
+layer_background_vtiled(layer_background_get_id(layer_get_id("Background")), custom_background_1_vtiled);
+layer_background_htiled(layer_background_get_id(layer_get_id("Background_2")), custom_background_2_htiled);
+layer_background_vtiled(layer_background_get_id(layer_get_id("Background_2")), custom_background_2_vtiled);
+layer_background_htiled(layer_background_get_id(layer_get_id("Background_3")), custom_background_3_htiled);
+layer_background_vtiled(layer_background_get_id(layer_get_id("Background_3")), custom_background_3_vtiled);
+layer_background_htiled(layer_background_get_id(layer_get_id("Background_4")), custom_background_4_htiled);
+layer_background_vtiled(layer_background_get_id(layer_get_id("Background_4")), custom_background_4_vtiled);
+#endregion /* Set if background is horizontally or vertically tiled END */
 
-#region /* Load Level */
-if (can_load_level == true)
-{
-	
-	#region /* Destory all placed objects before loading the level, just in case there is leftover placed objects */
-	with(obj_leveleditor_placed_object)
-	{
-		instance_destroy();
-	}
-	#endregion /* Destory all placed objects before loading the level, just in case there is leftover placed objects END */
-	
-	scr_load_object_placement_all();
-	
-	scr_load_object_placement_old();
-	
-}
-#endregion /* Load Level END */
+scr_scale_background();
 
 #region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
 if (global.doing_clear_check == true)
@@ -925,6 +1066,17 @@ if (global.doing_clear_check == true)
 	instance_destroy();
 }
 #endregion /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" END */
+
+#region /* Load Level */
+if (can_load_level == true)
+{
+	
+	scr_load_object_placement_all();
+	
+	scr_load_object_placement_old();
+	
+}
+#endregion /* Load Level END */
 
 #region /* If actually playing level, set play_edited_level to true and delete itself. Have this code after the "doing clear check = true" */
 if (global.actually_play_edited_level == true)

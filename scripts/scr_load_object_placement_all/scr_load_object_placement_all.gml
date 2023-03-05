@@ -189,7 +189,7 @@ function scr_load_object_placement_all()
 			if (string_char_at(str, str_pos) == "|")
 			{
 				
-				#region /* Place the actual object */
+				#region /* Place the object */
 				with(instance_create_depth(var_struct.X, var_struct.Y, 0, obj_leveleditor_placed_object))
 				{
 					object = var_struct.O;
@@ -198,12 +198,19 @@ function scr_load_object_placement_all()
 					hard = var_struct.H;
 					second_x = var_struct.Q;
 					second_y = var_struct.W;
-					placed_for_the_first_time = false;
+					
+					/* Reset these var structs once you have created the object, because if a object changes these, there is cases where the game remebers these variables and wrong objects get placed */
+					var_struct.E = 1;
+					var_struct.N = 1;
+					var_struct.H = 1;
+					var_struct.Q = 0;
+					var_struct.W = 0;
 				}
-				#endregion /* Place the actual object END */
+				#endregion /* Place the object END */
 				
 			}
 			str_pos += 1;
+			
 		}
 		file_text_close(file);
 	}
