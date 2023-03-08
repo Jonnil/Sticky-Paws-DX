@@ -182,20 +182,29 @@ if (menu == noone)
 	show_demo_over_message = false;
 }
 
+scr_draw_cursor_mouse();
+
 #region /* Have a black screen at the first frame so transitions look natural */
 if (black_screen_at_start_delay < 1)
 {
-	draw_rectangle_color(0, 0, get_window_width* 3, get_window_height* 3, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 	black_screen_at_start_delay += 1;
 }
 #endregion /* Have a black screen at the first frame so transitions look natural END */
-
-scr_draw_cursor_mouse();
 
 #region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
 if (iris_yscale <= 0.002)
 or (brand_new_file == true)
 {
 	draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+	
+	#region /* Draw loading screen when transitioning to other rooms */
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	global.loading_spinning_angle -= 10;
+	draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, 1);
+	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
+	#endregion /* Draw loading screen when transitioning to other rooms END */
+	
 }
 #endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */

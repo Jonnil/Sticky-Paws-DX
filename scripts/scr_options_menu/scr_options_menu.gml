@@ -2494,7 +2494,10 @@ function scr_options_menu()
 		
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(450, 20 + (40 * 8), string_replace_all(string(game_save_id) + "/save_files\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			if (global.enable_options_for_pc == true)
+			{
+				scr_draw_text_outlined(450, 20 + (40 * 8), string_replace_all(string(game_save_id) + "/save_files\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			}
 		
 			#region /* Display save file data */
 			if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))

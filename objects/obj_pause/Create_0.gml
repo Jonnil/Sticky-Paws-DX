@@ -3,7 +3,6 @@ mouse_y_position = device_mouse_y_to_gui(0);
 
 depth = -20;
 
-loading_spinning_angle = 0;
 show_loading_icon = false;
 
 #region /* Mouse x and mouse y initializing */

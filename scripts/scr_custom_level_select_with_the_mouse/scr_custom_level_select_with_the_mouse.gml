@@ -3,7 +3,7 @@ function scr_custom_level_select_with_the_mouse()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
-	/* Don't set the "row" or "thumbnail_x_offset" variables in here, those variables are set in scr_select_custom_level_menu */
+	/* Don't set the "row" or "thumbnail_x_offset" variables in here, those variables are set in "scr select custom level menu" */
 	column = clamp(floor(global.select_level_index / row), 0, floor(ds_list_size(global.all_loaded_custom_levels)))
 	if (global.controls_used_for_menu_navigation == "mouse")
 	and (open_sub_menu == false)

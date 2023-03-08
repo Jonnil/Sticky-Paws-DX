@@ -512,11 +512,11 @@ if (hide_menu_for_clean_screenshots == false)
 			#region /* Select Options */
 			if (key_a_pressed)
 			and (menu_delay == 0)
-			and (global.convention_mode = false)
+			and (global.convention_mode == false)
 			or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
-			and (global.convention_mode = false)
+			and (global.convention_mode == false)
 			{
 				menu_delay = 3;
 				scr_audio_play(voice_options, volume_source.voice);
@@ -571,7 +571,7 @@ if (hide_menu_for_clean_screenshots == false)
 			if (key_a_pressed)
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
-			and (global.convention_mode = false)
+			and (global.convention_mode == false)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
@@ -745,12 +745,12 @@ if (hide_menu_for_clean_screenshots == false)
 			if (key_a_pressed)
 			and (menu_delay == 0)
 			or (global.pause_room = room_world_map)
-			and (global.convention_mode = false)
+			and (global.convention_mode == false)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
-			and (global.convention_mode = false)
+			and (global.convention_mode == false)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
@@ -977,17 +977,20 @@ if (hide_menu_for_clean_screenshots == false)
 			if (key_a_pressed)
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
-			and (global.convention_mode = false)
+			and (global.convention_mode == false)
+			and (global.enable_options_for_pc == true)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_world_map)
-			and (global.convention_mode = false)
+			and (global.convention_mode == false)
+			and (global.enable_options_for_pc == true)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
-			and (global.convention_mode = false)
+			and (global.convention_mode == false)
+			and (global.enable_options_for_pc == true)
 			and (global.character_select_in_this_menu == "level_editor")
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
 			and (mouse_check_button_pressed(mb_left))
@@ -1025,17 +1028,17 @@ if (hide_menu_for_clean_screenshots == false)
 			if (key_a_pressed)
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
-			and (global.convention_mode = false)
+			and (global.convention_mode == false)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_world_map)
-			and (global.convention_mode = false)
+			and (global.convention_mode == false)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
-			and (global.convention_mode = false)
+			and (global.convention_mode == false)
 			and (global.character_select_in_this_menu == "level_editor")
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
 			and (mouse_check_button_pressed(mb_left))
@@ -1157,14 +1160,14 @@ if (hide_menu_for_clean_screenshots == false)
 	#region /* Show loading icon and reset level */
 	if (show_loading_icon == true)
 	{
-		loading_spinning_angle -= 10;
+		global.loading_spinning_angle -= 10;
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, loading_spinning_angle, c_white, 1);
+		draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
 		
 		if (menu == "reset_from_checkpoint")
-		and (loading_spinning_angle < -20)
+		and (global.loading_spinning_angle < -20)
 		{
 			
 			#region /* Restart Level */
@@ -1198,9 +1201,9 @@ if (hide_menu_for_clean_screenshots == false)
 		}
 		
 		if (menu == "reset_from_start")
-		and (loading_spinning_angle < -20)
+		and (global.loading_spinning_angle < -20)
 		or (menu == "restart")
-		and (loading_spinning_angle < -20)
+		and (global.loading_spinning_angle < -20)
 		{
 			
 			#region /* Restart Level */

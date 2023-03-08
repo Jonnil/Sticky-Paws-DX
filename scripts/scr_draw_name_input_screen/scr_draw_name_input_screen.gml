@@ -12,7 +12,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	
 	#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */
 	draw_set_alpha(0.9);
-	draw_rectangle_color(- 32, - 32, window_get_width() + 32, window_get_height() + 32, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 	#endregion /* Opaque transparent black rectangle over whole screen, but underneath name input screen END */
 	

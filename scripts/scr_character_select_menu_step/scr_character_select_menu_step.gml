@@ -2885,7 +2885,7 @@ function scr_character_select_menu_step()
 		
 		if (can_navigate = false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
 		{
-			loading_spinning_angle -= 10;
+			global.loading_spinning_angle -= 10;
 		}
 	}
 }

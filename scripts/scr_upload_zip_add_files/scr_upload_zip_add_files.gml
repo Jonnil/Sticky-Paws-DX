@@ -171,7 +171,7 @@ function scr_upload_zip_add_files()
 	
 	#region /* Finally save the zip file */
 	
-	file = string(level_name) + ".zip"; /* Before closing the zip file creation, save the file to this variable. Save it as string(level_name) + ".zip" */
+	file = string(level_id) + ".zip"; /* Before closing the zip file creation, save the file to this variable. Save it as string(level_id) + ".zip" */
 	zip_save(z, string(file)); /* Save it as string(file) so it's consistent */
 	
 	zip_destroy(z); /* Last thing you do is close the zip file creation */

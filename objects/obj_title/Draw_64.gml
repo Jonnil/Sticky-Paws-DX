@@ -407,6 +407,7 @@ if (global.volume_voice > 1)
 
 #region /* Quit Game trough pause menu */
 if (global.convention_mode == false)
+and (global.enable_options_for_pc == true)
 and (can_remap_key == false)
 and (input_key == false)
 and (menu_delay == 0)
@@ -654,7 +655,7 @@ and (global.title_logo_index != "")
 	draw_sprite_ext(global.title_logo_index, image_index, display_get_gui_width() * 0.5 + title_x, display_get_gui_height() * 0.5 - 100 + title_y, 402 / sprite_get_height(global.title_logo_index) * title_xscale, 402 / sprite_get_height(global.title_logo_index) * title_yscale, 0, c_white, title_alpha);
 }
 
-if (menu!= "select_custom_level")
+if (menu != "select_custom_level")
 and (menu != "level_editor_play")
 and (menu != "level_editor_make")
 and (menu != "import_export_level")
@@ -1055,12 +1056,14 @@ and (global.arcade_mode = false)
 	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	and (in_settings = false)
-	and (global.convention_mode = false)
+	and (global.convention_mode == false)
+	and (global.enable_options_for_pc == true)
 	or (menu == "quit")
 	and (key_a_pressed)
 	and (menu_delay == 0)
 	and (in_settings = false)
-	and (global.convention_mode = false)
+	and (global.convention_mode == false)
+	and (global.enable_options_for_pc == true)
 	{
 		in_settings = false;
 		menu = "quit_game_no";
@@ -1107,7 +1110,7 @@ and (global.arcade_mode = false)
 	draw_menu_button_sprite(spr_noone, display_get_gui_width() - 370, display_get_gui_height() - 42, 0, 0, 1, 1, 370, 42, l10n_text("Made by") + " " + (global.company_name), "credits", "play_credits", true);
 	
 	if (global.show_language_shortcut == true)
-	and (global.convention_mode = false)
+	and (global.convention_mode == false)
 	{
 		if (menu == "language_shortcut")
 		{
@@ -1118,7 +1121,7 @@ and (global.arcade_mode = false)
 	}
 
 	if (global.show_accessibility_shortcut == true)
-	and (global.convention_mode = false)
+	and (global.convention_mode == false)
 	{
 		if (menu == "accessibility_shortcut")
 		{
@@ -1129,7 +1132,7 @@ and (global.arcade_mode = false)
 	}
 
 	if (global.show_profile_shortcut == true)
-	and (global.convention_mode = false)
+	and (global.convention_mode == false)
 	{
 		if (menu == "profile_shortcut")
 		{
@@ -1204,6 +1207,13 @@ and (global.play_attract_demo = false)
 }
 #endregion /* Select Custom Level Menu END */
 
+if (menu == "search_id_ok")
+or (menu == "search_id_cancel")
+or (menu == "searching_for_id")
+{
+	scr_draw_menu_search_id();
+}
+
 scr_character_select_menu_draw();
 
 #region /* Menu Navigation */
@@ -1236,7 +1246,7 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_down)
-		and (global.convention_mode = false)
+		and (global.convention_mode == false)
 		{
 			menu_delay = 3;
 			menu = "options";
@@ -1259,7 +1269,7 @@ and (menu_delay == 0)
 		}
 		else
 		if (key_down)
-		and (global.convention_mode = false)
+		and (global.convention_mode == false)
 		{
 			menu_delay = 3;
 			menu = "options";
@@ -1277,7 +1287,7 @@ and (menu_delay == 0)
 	{
 		if (key_left)
 		and (global.show_language_shortcut == true)
-		and (global.convention_mode = false)
+		and (global.convention_mode == false)
 		{
 			menu_delay = 3;
 			menu = "language_shortcut";
@@ -1346,7 +1356,7 @@ and (menu_delay == 0)
 		else
 		if (key_right)
 		and (global.show_profile_shortcut == true)
-		and (global.convention_mode = false)
+		and (global.convention_mode == false)
 		{
 			menu_delay = 3;
 			menu = "profile_shortcut";
@@ -1365,10 +1375,10 @@ and (menu_delay == 0)
 	if (menu == "quit")
 	{
 		if (key_left)
-		and (global.convention_mode = false)
+		and (global.convention_mode == false)
 		or (key_right)
 		and (global.show_accessibility_shortcut = false)
-		and (global.convention_mode = false)
+		and (global.convention_mode == false)
 		{
 			menu_delay = 3;
 			menu = "options";
@@ -1376,7 +1386,7 @@ and (menu_delay == 0)
 		else
 		if (key_right)
 		and (global.show_accessibility_shortcut == true)
-		and (global.convention_mode = false)
+		and (global.convention_mode == false)
 		{
 			menu_delay = 3;
 			menu = "accessibility_shortcut";
@@ -1663,7 +1673,7 @@ and (menu_delay == 0)
 if (menu == "quit")
 and (key_a_pressed)
 and (menu_delay == 0)
-and (global.convention_mode = false)
+and (global.convention_mode == false)
 and (global.enable_options_for_pc == true)
 {
 	menu = "quit_game_no";
@@ -1874,8 +1884,8 @@ or (menu == "load_official_level_template")
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	loading_spinning_angle -= 10;
-	draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, loading_spinning_angle, c_white, 1);
+	global.loading_spinning_angle -= 10;
+	draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, 1);
 	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 +64, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
 	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 +64 + 32, string(file_found), global.default_text_size, c_white, c_black, 1);
 }

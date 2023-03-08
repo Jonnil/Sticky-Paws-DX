@@ -58,6 +58,7 @@
     {"name":"spr_menu_checkmark","order":17,"path":"sprites/spr_menu_checkmark/spr_menu_checkmark.yy",},
     {"name":"spr_keyboard_keys","order":112,"path":"sprites/spr_keyboard_keys/spr_keyboard_keys.yy",},
     {"name":"snd_enemyvoice_defeated","order":31,"path":"sounds/snd_enemyvoice_defeated/snd_enemyvoice_defeated.yy",},
+    {"name":"scr_draw_menu_search_id","order":25,"path":"scripts/scr_draw_menu_search_id/scr_draw_menu_search_id.yy",},
     {"name":"spr_change_input_to_keyboard","order":62,"path":"sprites/spr_change_input_to_keyboard/spr_change_input_to_keyboard.yy",},
     {"name":"spr_map_tree_pink","order":75,"path":"sprites/spr_map_tree_pink/spr_map_tree_pink.yy",},
     {"name":"scr_player_move_sprint","order":6,"path":"scripts/scr_player_move_sprint/scr_player_move_sprint.yy",},

@@ -28,7 +28,7 @@ function scr_draw_upload_level_menu()
 		and (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42))
 		and (mouse_check_button_released(mb_left))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		or (key_a_pressed)
+		or (key_a_released)
 		{
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
@@ -194,7 +194,7 @@ function scr_draw_upload_level_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_no_y + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			or (key_a_pressed)
+			or (key_a_released)
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -211,7 +211,7 @@ function scr_draw_upload_level_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_yes_y + 84 - 42, get_window_width * 0.5 + 370, do_a_clear_check_yes_y + 84 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			or (key_a_pressed)
+			or (key_a_released)
 			and (menu_delay == 0)
 			{
 				
@@ -286,21 +286,6 @@ function scr_draw_upload_level_menu()
 	or (menu == "edit_ok")
 	or (menu == "edit_cancel")
 	{
-		
-		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		if (ini_read_real("info", "clear_check", false) == false)
-		{
-			menu_delay = 3;
-			menu = "clear_check_yes";
-			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-			{
-				show_level_editor_corner_menu = false;
-			}
-		}
-		ini_close();
-		#endregion /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu END */
-		
 		if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 		{
 			show_level_editor_corner_menu = false;
@@ -356,7 +341,7 @@ function scr_draw_upload_level_menu()
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (level_editor_edit_name = false)
-			or (key_a_pressed)
+			or (key_a_released)
 			and (level_editor_edit_name = false)
 			{
 				level_editor_edit_name = true;
@@ -382,7 +367,7 @@ function scr_draw_upload_level_menu()
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (level_editor_edit_name = false)
-			or (key_a_pressed)
+			or (key_a_released)
 			and (level_editor_edit_name = false)
 			{
 				level_editor_edit_name = true;
@@ -449,17 +434,35 @@ function scr_draw_upload_level_menu()
 			}
 		}
 		if (menu == "edit_ok")
-		and (key_a_pressed)
+		and (key_a_released)
 		and (menu_delay == 0)
 		{
-			menu_delay = 3;
-			menu = "upload_yes"; /* Return to previous menu */
+			
+			#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
+			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
+			if (ini_read_real("info", "clear_check", false) == false)
+			{
+				menu = "clear_check_yes";
+				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+				{
+					show_level_editor_corner_menu = false;
+				}
+				menu_delay = 3;
+			}
+			else
+			{
+				menu = "upload_yes"; /* Go to upload confirmation screen */
+				menu_delay = 3;
+			}
+			ini_close();
+			#endregion /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu END */
+			
 		}
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, cancel_y, get_window_width * 0.5 + 185, cancel_y + 42))
 		and (mouse_check_button_released(mb_left))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		or (menu == "edit_cancel")
-		and (key_a_pressed)
+		and (key_a_released)
 		and (menu_delay == 0)
 		or (key_b_pressed)
 		and (menu_delay == 0)
@@ -480,21 +483,6 @@ function scr_draw_upload_level_menu()
 	if (menu == "upload_enter_name_ok")
 	or (menu == "upload_enter_name_cancel")
 	{
-		
-		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		if (ini_read_real("info", "clear_check", false) == false)
-		{
-			menu_delay = 3;
-			menu = "clear_check_yes";
-			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-			{
-				show_level_editor_corner_menu = false;
-			}
-		}
-		ini_close();
-		#endregion /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu END */
-		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		draw_set_alpha(0.9);
@@ -509,16 +497,16 @@ function scr_draw_upload_level_menu()
 		
 		#region /* Input Level Name */
 	
-		#region /* Press Enter to make new level from scratch */
+		#region /* Press Enter to confirm new name */
 		if (can_input_level_name == true)
 		and (menu_delay == 0)
 		and (keyboard_string != "")
 		and (global.level_name != undefined)
 		{
-			if (keyboard_check_pressed(vk_enter))
+			if (keyboard_check_released(vk_enter))
 			and (menu != "upload_enter_name_ok")
 			and (menu != "upload_enter_name_cancel")
-			or (keyboard_check_pressed(vk_enter))
+			or (keyboard_check_released(vk_enter))
 			and (menu == "upload_enter_name_ok")
 			or (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width * 0.5 - 185,
@@ -526,10 +514,10 @@ function scr_draw_upload_level_menu()
 			get_window_width * 0.5 - 185 + 370,
 			draw_name_y + 54 + 42))
 			and (mouse_check_button_released(mb_left))
-			or (gamepad_button_check_pressed(0, gp_face1))
-			or (gamepad_button_check_pressed(1, gp_face1))
-			or (gamepad_button_check_pressed(2, gp_face1))
-			or (gamepad_button_check_pressed(3, gp_face1))
+			or (gamepad_button_check_released(0, gp_face1))
+			or (gamepad_button_check_released(1, gp_face1))
+			or (gamepad_button_check_released(2, gp_face1))
+			or (gamepad_button_check_released(3, gp_face1))
 			{
 				if (level_editor_edit_name == true)
 				and (global.level_name != old_level_name)
@@ -569,14 +557,14 @@ function scr_draw_upload_level_menu()
 				can_input_level_name = false;
 			}
 		}
-		#endregion /* Press Enter to make new level from scratch END */
+		#endregion /* Press Enter to confirm new name END */
 	
-		#region /* Press Escape to back out from level from scratch menu */
-		if (keyboard_check_pressed(vk_enter))
+		#region /* Press Escape to back out from name input menu */
+		if (keyboard_check_released(vk_enter))
 		and (menu == "upload_enter_name_cancel")
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (keyboard_check_pressed(vk_escape))
+		or (keyboard_check_released(vk_escape))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
 		or (point_in_rectangle(mouse_get_x, mouse_get_y,
@@ -590,16 +578,16 @@ function scr_draw_upload_level_menu()
 		or (mouse_check_button_released(mb_right))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(0, gp_face2))
+		or (gamepad_button_check_released(0, gp_face2))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(1, gp_face2))
+		or (gamepad_button_check_released(1, gp_face2))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(2, gp_face2))
+		or (gamepad_button_check_released(2, gp_face2))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(3, gp_face2))
+		or (gamepad_button_check_released(3, gp_face2))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
 		{
@@ -623,7 +611,7 @@ function scr_draw_upload_level_menu()
 				menu = "upload_edit_name";
 			}
 		}
-		#endregion /* Press Escape to back out from level from scratch menu END */
+		#endregion /* Press Escape to back out from name input menu END */
 	
 		#endregion /* Input Level Name END */
 		
@@ -636,21 +624,6 @@ function scr_draw_upload_level_menu()
 	if (menu == "upload_enter_description_ok")
 	or (menu == "upload_enter_description_cancel")
 	{
-		
-		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		if (ini_read_real("info", "clear_check", false) == false)
-		{
-			menu_delay = 3;
-			menu = "clear_check_yes";
-			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-			{
-				show_level_editor_corner_menu = false;
-			}
-		}
-		ini_close();
-		#endregion /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu END */
-		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		draw_set_alpha(0.9);
@@ -666,16 +639,16 @@ function scr_draw_upload_level_menu()
 		
 		#region /* Input Level Description */
 		
-		#region /* Press Enter to make new level from scratch */
+		#region /* Press Enter to confirm new description */
 		if (can_input_level_name == true)
 		and (menu_delay == 0)
 		and (keyboard_string != "")
 		and (global.level_description != undefined)
 		{
-			if (keyboard_check_pressed(vk_enter))
+			if (keyboard_check_released(vk_enter))
 			and (menu != "upload_enter_description_ok")
 			and (menu != "upload_enter_description_cancel")
-			or (keyboard_check_pressed(vk_enter))
+			or (keyboard_check_released(vk_enter))
 			and (menu == "upload_enter_description_ok")
 			or (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width * 0.5 - 185,
@@ -683,10 +656,10 @@ function scr_draw_upload_level_menu()
 			get_window_width * 0.5 - 185 + 370,
 			draw_description_y + 54 + 42))
 			and (mouse_check_button_released(mb_left))
-			or (gamepad_button_check_pressed(0, gp_face1))
-			or (gamepad_button_check_pressed(1, gp_face1))
-			or (gamepad_button_check_pressed(2, gp_face1))
-			or (gamepad_button_check_pressed(3, gp_face1))
+			or (gamepad_button_check_released(0, gp_face1))
+			or (gamepad_button_check_released(1, gp_face1))
+			or (gamepad_button_check_released(2, gp_face1))
+			or (gamepad_button_check_released(3, gp_face1))
 			{
 				if (level_editor_edit_name == true)
 				and (global.level_description != old_level_description)
@@ -729,14 +702,14 @@ function scr_draw_upload_level_menu()
 				can_input_level_name = false;
 			}
 		}
-		#endregion /* Press Enter to make new level from scratch END */
+		#endregion /* Press Enter to confirm new description END */
 		
-		#region /* Press Escape to back out from level from scratch menu */
-		if (keyboard_check_pressed(vk_enter))
+		#region /* Press Escape to back out from description input menu */
+		if (keyboard_check_released(vk_enter))
 		and (menu == "upload_enter_description_cancel")
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (keyboard_check_pressed(vk_escape))
+		or (keyboard_check_released(vk_escape))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
 		or (point_in_rectangle(mouse_get_x, mouse_get_y,
@@ -750,16 +723,16 @@ function scr_draw_upload_level_menu()
 		or (mouse_check_button_released(mb_right))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(0, gp_face2))
+		or (gamepad_button_check_released(0, gp_face2))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(1, gp_face2))
+		or (gamepad_button_check_released(1, gp_face2))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(2, gp_face2))
+		or (gamepad_button_check_released(2, gp_face2))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(3, gp_face2))
+		or (gamepad_button_check_released(3, gp_face2))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
 		{
@@ -783,7 +756,7 @@ function scr_draw_upload_level_menu()
 				menu = "upload_edit_description";
 			}
 		}
-		#endregion /* Press Escape to back out from level from scratch menu END */
+		#endregion /* Press Escape to back out from descriptin input menu END */
 	
 		#endregion /* Input Level Description END */
 		
@@ -799,20 +772,6 @@ function scr_draw_upload_level_menu()
 		var upload_name_question_y = 432;
 		var upload_level_no_y = 532;
 		var upload_level_yes_y = 532 + 84;
-		
-		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		if (ini_read_real("info", "clear_check", false) == false)
-		{
-			menu_delay = 3;
-			menu = "clear_check_yes";
-			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-			{
-				show_level_editor_corner_menu = false;
-			}
-		}
-		ini_close();
-		#endregion /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu END */
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
@@ -914,7 +873,7 @@ function scr_draw_upload_level_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_no_y - 42, get_window_width * 0.5 + 370, upload_level_no_y + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			or (key_a_pressed)
+			or (key_a_released)
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -931,7 +890,7 @@ function scr_draw_upload_level_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_yes_y - 42, get_window_width * 0.5 + 370, upload_level_yes_y + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			or (key_a_pressed)
+			or (key_a_released)
 			and (menu_delay == 0)
 			{
 				menu = "uploading_level"; /* Go to uploading level loading screen */
@@ -957,20 +916,6 @@ function scr_draw_upload_level_menu()
 	if (menu == "uploading_level")
 	{
 		var uploading_level_message_y = 532;
-		
-		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		if (ini_read_real("info", "clear_check", false) == false)
-		{
-			menu_delay = 3;
-			menu = "clear_check_yes";
-			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-			{
-				show_level_editor_corner_menu = false;
-			}
-		}
-		ini_close();
-		#endregion /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu END */
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
@@ -1061,20 +1006,6 @@ function scr_draw_upload_level_menu()
 		var uploaded_level_message_y = 432;
 		var ok_y = uploaded_level_message_y + 168;
 		
-		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		if (ini_read_real("info", "clear_check", false) == false)
-		{
-			menu_delay = 3;
-			menu = "clear_check_yes";
-			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-			{
-				show_level_editor_corner_menu = false;
-			}
-		}
-		ini_close();
-		#endregion /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu END */
-		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		draw_set_alpha(0.9);
@@ -1129,7 +1060,7 @@ function scr_draw_upload_level_menu()
 		and (menu_delay == 0)
 		or (mouse_check_button_released(mb_right))
 		and (menu_delay == 0)
-		or (key_a_pressed)
+		or (key_a_released)
 		and (menu_delay == 0)
 		or (key_b_pressed)
 		and (menu_delay == 0)
@@ -1149,21 +1080,6 @@ function scr_draw_upload_level_menu()
 	#region /* No Internet */
 	if (menu == "no_internet")
 	{
-		
-		#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		if (ini_read_real("info", "clear_check", false) == false)
-		{
-			menu_delay = 3;
-			menu = "clear_check_yes";
-			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-			{
-				show_level_editor_corner_menu = false;
-			}
-		}
-		ini_close();
-		#endregion /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu END */
-		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		draw_set_alpha(0.9);
@@ -1214,7 +1130,7 @@ function scr_draw_upload_level_menu()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
-		or (key_a_pressed)
+		or (key_a_released)
 		and (menu_delay == 0)
 		or (key_b_pressed)
 		and (level_editor_edit_name = false)

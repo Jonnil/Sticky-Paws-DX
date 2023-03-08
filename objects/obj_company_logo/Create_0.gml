@@ -515,7 +515,7 @@ else
 #endregion /* Interpolation END */
 
 can_navigate = false;
-loading_spinning_angle = 0;
+global.loading_spinning_angle = 0;
 file_load_timer = 0;
 file_found = "";
 time = 0;

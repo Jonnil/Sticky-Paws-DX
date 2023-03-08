@@ -7,25 +7,16 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	var bottom_right_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 + 384 + 3 + thumbnail_x_offset;
 	var bottom_right_of_thumbnail_y = 226 * (column - scroll) + 250 + 216 + 3;
 	
-	if (menu!= "back_from_level_editor")
+	if (menu != "back_from_level_editor")
 	and (menu != "open_custom_levels_folder")
+	and (menu != "search_id")
 	and (menu_delay <= 0)
-	or (menu!= "back_from_level_editor")
+	or (menu != "back_from_level_editor")
 	and (menu != "open_custom_levels_folder")
+	and (menu != "search_id")
 	and (open_sub_menu == true)
 	{
 		var custom_level_select_blinking = scr_wave(1, 0, 2, 0);
-		rectangle_top_left_of_thumbnail_x = lerp(rectangle_top_left_of_thumbnail_x, top_left_of_thumbnail_x, 0.3);
-		rectangle_top_left_of_thumbnail_y = lerp(rectangle_top_left_of_thumbnail_y, top_left_of_thumbnail_y, 0.3);
-		rectangle_bottom_right_of_thumbnail_x = lerp(rectangle_bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_x, 0.3);
-		rectangle_bottom_right_of_thumbnail_y = lerp(rectangle_bottom_right_of_thumbnail_y, bottom_right_of_thumbnail_y, 0.3);
-		
-		draw_set_alpha(0.5);
-		draw_rectangle_color(rectangle_top_left_of_thumbnail_x, rectangle_top_left_of_thumbnail_y, rectangle_bottom_right_of_thumbnail_x, rectangle_bottom_right_of_thumbnail_y, c_red, c_red, c_red, c_red, false);
-		draw_set_alpha(custom_level_select_blinking * 0.5);
-		draw_rectangle_color(rectangle_top_left_of_thumbnail_x, rectangle_top_left_of_thumbnail_y, rectangle_bottom_right_of_thumbnail_x, rectangle_bottom_right_of_thumbnail_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
-		draw_set_alpha(1);
-		
 		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_red, c_red, c_red, c_red, false);
 		draw_set_alpha(custom_level_select_blinking);
 		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
@@ -82,11 +73,13 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	#endregion /* Draw Thumbnail END */
 	
 	#region /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting */
-	if (menu!= "back_from_level_editor")
+	if (menu != "back_from_level_editor")
 	and (menu != "open_custom_levels_folder")
+	and (menu != "search_id")
 	and (menu_delay <= 0)
-	or (menu!= "back_from_level_editor")
+	or (menu != "back_from_level_editor")
 	and (menu != "open_custom_levels_folder")
+	and (menu != "search_id")
 	and (open_sub_menu == true)
 	{
 		var custom_level_select_arrows_moving = scr_wave(10, 0, 1, 0);

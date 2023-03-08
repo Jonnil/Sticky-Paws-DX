@@ -6,7 +6,7 @@ if (global.actually_play_edited_level == false)
 	{
 		quit_level_editor += 1;
 		instance_activate_all(); /* Activate all instances before saving the custom level */
-	
+		
 		#region /* Save Thumbnail */
 		if (quit_level_editor == 3)
 		{
@@ -108,12 +108,12 @@ if (global.actually_play_edited_level == false)
 			global.character_select_in_this_menu = "level_editor";
 		}
 		#endregion /* Save Thumbnail END */
-	
+		
 		if (quit_level_editor > 5)
 		{
 			global.create_level_from_template = false; /* Disable global.create_level_from_template after loading everything and quitting the level editor, to let every object have time to load and save */
 			global.level_name = "";
-			global.select_level_index = 0;
+			global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Select level index should be set to where the new custom level is saved */
 			room_goto(room_title);
 		}
 	}

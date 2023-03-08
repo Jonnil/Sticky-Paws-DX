@@ -377,7 +377,7 @@ and (global.goal_active == true)
 	or (global.character_select_in_this_menu == "level_editor")
 	and (global.select_level_index <= 0)
 	and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-		
+	
 	or (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template >= 2)
 	and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -506,11 +506,23 @@ if (global.doing_clear_check == true)
 
 scr_draw_cursor_mouse();
 
-//#region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
-//if (global.enable_transitions == true)
-//{
-//	draw_set_alpha(black_screen_gui_alpha);
-//	draw_rectangle_color(0, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
-//	draw_set_alpha(1);
-//}
-//#endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */
+#region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
+if (black_screen_gui_alpha > 0.2)
+{
+	if (global.enable_transitions == true)
+	{
+		draw_set_alpha(black_screen_gui_alpha);
+		draw_rectangle_color(0, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+	}
+	
+	#region /* Draw loading screen when transitioning to other rooms */
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	global.loading_spinning_angle -= 10;
+	draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, black_screen_gui_alpha);
+	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, black_screen_gui_alpha);
+	#endregion /* Draw loading screen when transitioning to other rooms END */
+	
+}
+#endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */

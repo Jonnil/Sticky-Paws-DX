@@ -91,6 +91,18 @@ if (global.every_player_can_navigate_menu == true)
 	or (keyboard_check_pressed(global.player1_key2_accept))
 	or (keyboard_check_pressed(vk_space));
 	
+	/* Player All Key Accept Released */ key_a_released = (gamepad_button_check_released(0, global.player1_gamepad_button_accept))
+	or (gamepad_button_check_released(0, global.player1_gamepad_button2_accept))
+	or (gamepad_button_check_released(1, global.player2_gamepad_button_accept))
+	or (gamepad_button_check_released(1, global.player2_gamepad_button2_accept))
+	or (gamepad_button_check_released(2, global.player3_gamepad_button_accept))
+	or (gamepad_button_check_released(2, global.player3_gamepad_button2_accept))
+	or (gamepad_button_check_released(3, global.player4_gamepad_button_accept))
+	or (gamepad_button_check_released(3, global.player4_gamepad_button2_accept))
+	or (keyboard_check_released(global.player1_key_accept))
+	or (keyboard_check_released(global.player1_key2_accept))
+	or (keyboard_check_released(vk_space));
+	
 	/* Player All Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(0, global.player1_gamepad_button_back))
 	or (gamepad_button_check_pressed(0, global.player1_gamepad_button2_back))
 	or (gamepad_button_check_pressed(1, global.player2_gamepad_button_back))
@@ -110,6 +122,7 @@ else
 	key_right = (keyboard_check_pressed(vk_right)) or (keyboard_check_pressed(ord("D"))) or (gamepad_button_check_pressed(0, gp_padr)) or (gamepad_axis_value(0, gp_axislh) > 0) and (menu_joystick_delay <= 0);
 	key_down = (keyboard_check_pressed(vk_down)) or (keyboard_check_pressed(ord("S"))) or (gamepad_button_check_pressed(0, gp_padd)) or (gamepad_axis_value(0, gp_axislv) > 0) and (menu_joystick_delay <= 0) or mouse_wheel_down();
 	/* Player 1 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(0, global.player1_gamepad_button_accept)) or (gamepad_button_check_pressed(0, global.player1_gamepad_button2_accept)) or (keyboard_check_pressed(global.player1_key_accept)) or (keyboard_check_pressed(global.player1_key2_accept)) or (keyboard_check_pressed(vk_space));
+	/* Player 1 Key Accept Released */ key_a_released = (gamepad_button_check_released(0, global.player1_gamepad_button_accept)) or (gamepad_button_check_released(0, global.player1_gamepad_button2_accept)) or (keyboard_check_released(global.player1_key_accept)) or (keyboard_check_released(global.player1_key2_accept)) or (keyboard_check_released(vk_space));
 	/* Player 1 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(0, global.player1_gamepad_button_back)) or (gamepad_button_check_pressed(0, global.player1_gamepad_button2_back)) or (keyboard_check_pressed(global.player1_key_back)) or (keyboard_check_pressed(global.player1_key2_back)) or (keyboard_check_pressed(vk_escape));
 }
 #endregion /* Keyboard Controls END */

@@ -158,7 +158,7 @@ function scr_save_level()
 			
 			ini_close();
 			#endregion /* Update ranking highscore to actual custom level END */
-		
+			
 		}
 	}
 	global.timeattack_realmillisecond = 0;
