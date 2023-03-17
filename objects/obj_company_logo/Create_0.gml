@@ -1,13 +1,3 @@
-mouse_x_position = device_mouse_x_to_gui(0);
-mouse_y_position = device_mouse_y_to_gui(0);
-
-randomize();
-
-display_xscale = 1.5;
-display_yscale = 1.5;
-display_xoffset = 0;
-display_yoffset = 0;
-
 #region /* Things you could change */
 var max_players = 4; /* How many players you want to be able to play */
 
@@ -27,25 +17,6 @@ global.link_to_twitter = "https://twitter.com/jonnilll";
 global.link_to_wiki = "https://stickypedia.miraheze.org/wiki/Main_Page";
 
 leveleditor_readme = noone; /* Readme textfile for how to use the level editor */
-
-#region /* Debug toggles */
-/* There are more debug toggles in different objects, so click ctrl + shift + F and search "Debug toggles" to find the other debug toggles */
-global.can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
-global.debug_screen = false;
-global.show_fps = false; /* Show fps for optimization debug */
-global.show_fps_real = false; /* Show fps real for optimization debug */
-global.show_instance_count = false; /* Show instance count for optimization debug */
-global.show_all_instance_count = false; /* Show all the different instances within a room and how many there are for optimization debug */
-global.enable_transitions = true; /* During transitions when going from one room to another, the game could crash, and you can't see what's going on when the transition animation is playing and making the screen black, so turn off this for debug */
-global.enable_background_layer1 = true;
-global.enable_background_layer2 = true;
-global.enable_background_layer3 = true;
-global.enable_background_layer4 = true;
-global.enable_foreground_layer1 = true;
-global.enable_foreground_layer_above_static_objects = true;
-global.enable_foreground_layer2 = true;
-global.enable_foreground_layer_secret = true;
-#endregion /* Debug toggles END */
 
 #region /* Change how menus look and function */
 global.skip_how_many_people_are_playing_screen = true; /* If the game should skip the "How many people are playing?" screen */
@@ -122,9 +93,11 @@ global.number_of_chain_kills_for_1up = 8; /* How many chain reaction kills you n
 global.all_loaded_main_levels = ds_list_create(); /* The main game will load every level folder. Don't change this variable, it just needs to be set before you can add more main levels */
 ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3", "level4", "level5", "level6", "level7", "level8", "ending", "level9", "levelA");
 
-/* Server stuff */
+#region /* Server stuff */
 global.base_url = "www.jonnil.games";
-global.url = "https://jonnil.games/GM/uploader/";
+global.url_game_name = "sticky-paws"; /* Should be all small letters, and spaces should be replaced with hyphens - */
+global.url_uploader = "https://jonnil.games/" + string(global.url_game_name) + "/uploader/";
+#endregion /* Server stuff END */
 
 #endregion /* Things you could change END */
 
@@ -132,7 +105,40 @@ global.url = "https://jonnil.games/GM/uploader/";
 
 
 
+
+
+
+
+
 #region /* Things you shouldn't change, warning, don't change any of these options or you might break the game! */
+
+mouse_x_position = device_mouse_x_to_gui(0);
+mouse_y_position = device_mouse_y_to_gui(0);
+
+display_xscale = 1.5;
+display_yscale = 1.5;
+display_xoffset = 0;
+display_yoffset = 0;
+
+#region /* Debug toggles */
+/* There are more debug toggles in different objects, so click ctrl + shift + F and search "Debug toggles" to find the other debug toggles */
+/* Most of these can be toggled on or off within the games settings, so you don't have to change these settings here */
+global.can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
+global.debug_screen = false;
+global.show_fps = false; /* Show fps for optimization debug */
+global.show_fps_real = false; /* Show fps real for optimization debug */
+global.show_instance_count = false; /* Show instance count for optimization debug */
+global.show_all_instance_count = false; /* Show all the different instances within a room and how many there are for optimization debug */
+global.enable_transitions = true; /* During transitions when going from one room to another, the game could crash, and you can't see what's going on when the transition animation is playing and making the screen black, so turn off this for debug */
+global.enable_background_layer1 = true;
+global.enable_background_layer2 = true;
+global.enable_background_layer3 = true;
+global.enable_background_layer4 = true;
+global.enable_foreground_layer1 = true;
+global.enable_foreground_layer_above_static_objects = true;
+global.enable_foreground_layer2 = true;
+global.enable_foreground_layer_secret = true;
+#endregion /* Debug toggles END */
 
 /* Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu */
 global.equipped_upgrade_double_jump = true; /* If you have equipped the Double Jump Upgrade */
@@ -174,6 +180,8 @@ if (!directory_exists(working_directory + "\custom_characters"))
 
 #endregion /* File Handeling END */
 
+scr_initialize_object_id_enums(); /* Initialize the object ID enums when the game starts so you never have to initialize the object ID's ever again */
+
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
 initialized_characters = false;
 initialized_resource_pack = false;
@@ -187,6 +195,7 @@ unused_y_origin_point = noone;
 view_hview_lerp = 0;
 view_wview_lerp = 0;
 goto_title_screen = false; /* If game is allowed to go to title screen yet or not. Need to load everything before going to title screen */
+global.keyboard_virtual_timer = 0; /* Delay for when virtual keyboard can show up */
 global.every_player_can_navigate_menu = true; /* To make menu navigation easier with multiple different gamepads that can be connected and isn't neccesarely connected as player 1, make it so you can toggle on or off if every player can navigate menus. By default have this true */
 global.selected_level_editing_music = 0;
 global.gui_scale = -1;
@@ -419,6 +428,13 @@ global.player2_name = "";
 global.player3_name = "";
 global.player4_name = "";
 
+#region /* Controller ports */
+global.player1_slot = 0;
+global.player2_slot = 1;
+global.player3_slot = 2;
+global.player4_slot = 3;
+#endregion /* Controller ports END */
+
 scr_set_default_remapping_player1_keyboard();
 scr_set_default_remapping_player1_gamepad();
 scr_set_default_remapping_player2_keyboard();
@@ -537,7 +553,7 @@ enum volume_source
 {
 	ambient = 1,
 	footstep = 2,
-	jingle = 3,
+	melody = 3,
 	music = 4,
 	sound = 5,
 	voice = 6

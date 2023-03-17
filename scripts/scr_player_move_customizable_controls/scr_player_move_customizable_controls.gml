@@ -1,6 +1,28 @@
 function scr_player_move_customizable_controls()
 {
 	
+	#region /* Set correct controller ports */
+	if (player == 1)
+	{
+		var player_gamepad_slot = global.player1_slot;
+	}
+	else
+	if (player == 2)
+	{
+		var player_gamepad_slot = global.player2_slot;
+	}
+	else
+	if (player == 3)
+	{
+		var player_gamepad_slot = global.player3_slot;
+	}
+	else
+	if (player == 4)
+	{
+		var player_gamepad_slot = global.player4_slot;
+	}
+	#endregion /* Set correct controller ports END */
+	
 	#region /* Customizable Controls */
 	
 	#region /* Set values from the Input Settings */
@@ -444,7 +466,7 @@ function scr_player_move_customizable_controls()
 	key_left_hold =
 	(key_left_hold_temp)
 	and (!key_right_hold_temp)
-	or (gamepad_axis_value(player - 1, gp_axislh) < 0)
+	or (gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0)
 	or (active_left == true);
 	#endregion /* Key Left Hold END */
 	
@@ -452,14 +474,14 @@ function scr_player_move_customizable_controls()
 	key_left_pressed =
 	(key_left_pressed_temp)
 	and (!key_right_pressed_temp)
-	or (gamepad_axis_value(player - 1, gp_axislh) < 0);
+	or (gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0);
 	#endregion /* Key Left Pressed END */
 	
 	#region /* Key Right Hold */
 	key_right_hold =
 	(key_right_hold_temp)
 	and (!key_left_hold_temp)
-	or (gamepad_axis_value(player - 1, gp_axislh) > 0)
+	or (gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0)
 	or (active_right == true);
 	#endregion /* Key Right Hold END */
 	
@@ -467,14 +489,14 @@ function scr_player_move_customizable_controls()
 	key_right_pressed =
 	(key_right_pressed_temp)
 	and (!key_left_pressed_temp)
-	or (gamepad_axis_value(player - 1, gp_axislh) > 0);
+	or (gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0);
 	#endregion /* Key Right Pressed END */
 	
 	#region /* Key Down Hold */
 	key_down =
 	(key_down_hold_temp)
 	and (!key_up_hold_temp)
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0)
+	or (gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0)
 	or (active_down == true);
 	#endregion /* Key Down Hold END */
 	
@@ -482,14 +504,14 @@ function scr_player_move_customizable_controls()
 	key_up =
 	(key_up_hold_temp)
 	and (!key_down_hold_temp)
-	or (gamepad_axis_value(player - 1, gp_axislv) < 0)
+	or (gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0)
 	or (active_up == true);
 	#endregion /* Key Up Hold END */
 	
 	#region /* Key Up Pressed */
 	key_up_pressed =
 	(key_up_pressed_temp)
-	or (gamepad_axis_value(player - 1, gp_axislv) < 0);
+	or (gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0);
 	#endregion /* Key Up Pressed END */
 	
 	#region /* Key Jump Pressed */
@@ -529,12 +551,12 @@ function scr_player_move_customizable_controls()
 	
 	key_crouch_hold =
 	(key_crouch_hold_temp)
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0)
+	or (gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0)
 	or (player <= 1)
 	and (global.player1_crouch_toggle == true)
-	or (player = 2)
+	or (player == 2)
 	and (global.player2_crouch_toggle == true)
-	or (player = 3)
+	or (player == 3)
 	and (global.player3_crouch_toggle == true)
 	or (player >= 4)
 	and (global.player4_crouch_toggle == true);
@@ -545,7 +567,7 @@ function scr_player_move_customizable_controls()
 	
 	key_crouch_pressed =
 	(key_crouch_pressed_temp)
-	or (gamepad_axis_value(player - 1, gp_axislv) > 0);
+	or (gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0);
 	#endregion /* Key Crouch Pressed END */
 	
 	#region /* Key Sprint Hold */
@@ -555,9 +577,9 @@ function scr_player_move_customizable_controls()
 	(key_sprint_hold_temp)
 	or (player <= 1)
 	and (global.player1_sprint_toggle == true)
-	or (player = 2)
+	or (player == 2)
 	and (global.player2_sprint_toggle == true)
-	or (player = 3)
+	or (player == 3)
 	and (global.player3_sprint_toggle == true)
 	or (player >= 4)
 	and (global.player4_sprint_toggle == true);
@@ -568,18 +590,18 @@ function scr_player_move_customizable_controls()
 	
 	#region /* Key Spin Hold */
 	key_spin =
-	(gamepad_button_check(player - 1, gp_shoulderl))
-	or (gamepad_button_check(player - 1, gp_shoulderlb))
-	or (gamepad_button_check(player - 1, gp_shoulderr))
-	or (gamepad_button_check(player - 1, gp_shoulderrb));
+	(gamepad_button_check(player_gamepad_slot, gp_shoulderl))
+	or (gamepad_button_check(player_gamepad_slot, gp_shoulderlb))
+	or (gamepad_button_check(player_gamepad_slot, gp_shoulderr))
+	or (gamepad_button_check(player_gamepad_slot, gp_shoulderrb));
 	#endregion /* Key Spin Hold */
 	
 	#region /* Key Spin Pressed */
 	key_spin_pressed =
-	(gamepad_button_check_pressed(player - 1, gp_shoulderl))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderlb))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderr))
-	or (gamepad_button_check_pressed(player - 1, gp_shoulderrb));
+	(gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderl))
+	or (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderlb))
+	or (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderr))
+	or (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderrb));
 	#endregion /* Key Spin Pressed END */
 	
 	#region /* Key Always Do Full Jump */

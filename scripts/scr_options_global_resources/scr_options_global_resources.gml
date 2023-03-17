@@ -331,6 +331,7 @@ function scr_options_global_resources()
 		if (global.enable_open_custom_folder == true)
 		{
 			draw_menu_button(resource_pack_x, 20 + (open_resource_pack_y), l10n_text("Open Resource Pack Folder"), "open_resource_pack_folder", "open_resource_pack_folder");
+			draw_sprite_ext(spr_icons_folder, 0, resource_pack_x + 16, 20 + (open_resource_pack_y) + 21, 1, 1, 0, c_white, 1);
 		}
 		
 		#region /* Custom Title Background */
@@ -776,6 +777,7 @@ function scr_options_global_resources()
 		if (global.enable_open_custom_folder == true)
 		{
 			draw_menu_button(resource_pack_x, 20 + (custom_title_background_open_y), l10n_text("Open Background Folder"), "open_title_background_folder", "open_title_background_folder");
+			draw_sprite_ext(spr_icons_folder, 0, resource_pack_x + 16, 20 + (custom_title_background_open_y) + 21, 1, 1, 0, c_white, 1);
 		}
 		#endregion /* Other Custom Title Background Options END */
 		
@@ -920,6 +922,7 @@ function scr_options_global_resources()
 		if (global.enable_open_custom_folder == true)
 		{
 			draw_menu_button(resource_pack_x, 20 + (custom_title_logo_open_y), l10n_text("Open Title Logo Folder"), "open_title_logo_folder", "open_title_logo_folder");
+			draw_sprite_ext(spr_icons_folder, 0, resource_pack_x + 16, 20 + (custom_title_logo_open_y) + 21, 1, 1, 0, c_white, 1);
 		}
 		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x, 20 + (open_resource_pack_y) + 2, resource_pack_x + 371, 20 + (open_resource_pack_y) + 41))

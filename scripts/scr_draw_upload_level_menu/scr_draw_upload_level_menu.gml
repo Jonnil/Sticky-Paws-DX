@@ -97,7 +97,11 @@ function scr_draw_upload_level_menu()
 			draw_set_alpha(0.9);
 			draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
-			/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+			if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
+			{
+				/* Draw Thumbnail */
+				draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+			}
 			draw_set_alpha(0.9);
 			draw_rectangle_color(get_window_width * 0.5 - message_x_offset, do_a_clear_check_y - 32, get_window_width * 0.5 + message_x_offset, do_a_clear_check_y + 32, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
@@ -228,7 +232,7 @@ function scr_draw_upload_level_menu()
 					{
 						ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					}
-					ini_write_real("info", "clear_check", false); /* Set clear_check to false */
+					ini_write_real("info", "clear_check", false); /* Set "clear check" to false when you click on "clear check yes" just in case it isn't already false when doing a "clear check" */
 					ini_close();
 				}
 				#endregion /* Set clear_check to false whenever you agree to do a clear check for the first time, just in case it's already not END */
@@ -273,8 +277,24 @@ function scr_draw_upload_level_menu()
 	}
 	#endregion /* Draw clear check menu END */
 	
-	var draw_name_y = get_window_height * 0.5 - 22;
-	var draw_description_y = get_window_height * 0.5 + 42 * 1;
+	if (keyboard_virtual_status())
+	and (keyboard_virtual_height() != 0)
+	{
+		var draw_name_y = display_get_gui_height() - keyboard_virtual_height() - 160;
+	}
+	else
+	{
+		var draw_name_y = get_window_height * 0.5 - 22;
+	}
+	if (keyboard_virtual_status())
+	and (keyboard_virtual_height() != 0)
+	{
+		var draw_description_y = display_get_gui_height() - keyboard_virtual_height() - 160;
+	}
+	else
+	{
+		var draw_description_y = get_window_height * 0.5 + 42 * 1;
+	}
 	var edit_name_y = get_window_height * 0.5 + 42 * 2;
 	var edit_description_y = get_window_height * 0.5 + 42 * 3;
 	var ok_y = get_window_height * 0.5 + 42 * 5;
@@ -308,11 +328,19 @@ function scr_draw_upload_level_menu()
 		draw_set_alpha(1);
 		if (get_window_height <= 720)
 		{
-			/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 210, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 1.1, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 1.1, 0, c_white, 1);
+			if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
+			{
+				/* Draw Thumbnail */
+				draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 210, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 1.1, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 1.1, 0, c_white, 1);
+			}
 		}
 		else
 		{
-			/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+			if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
+			{
+				/* Draw Thumbnail */
+				draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+			}
 		}
 		/* Draw Level Name */ scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), global.default_text_size * 1.9, c_black, c_white, 1);
 		
@@ -332,6 +360,7 @@ function scr_draw_upload_level_menu()
 		draw_menu_button(get_window_width * 0.5 - 185, edit_description_y, l10n_text("Edit Description"), "upload_edit_description", "upload_edit_description");
 		draw_menu_button(get_window_width * 0.5 - 185, ok_y, l10n_text("Upload"), "edit_ok", "upload_yes");
 		draw_menu_button(get_window_width * 0.5 - 185, cancel_y, l10n_text("Cancel"), "edit_cancel", "edit_cancel");
+		draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 16, cancel_y + 21, 1, 1, 0, c_white, 1);
 		
 		#region /* Pressing the Edit Name button */
 		if (menu == "upload_edit_name")
@@ -488,7 +517,11 @@ function scr_draw_upload_level_menu()
 		draw_set_alpha(0.9);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+		if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
+		{
+			/* Draw Thumbnail */
+			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+		}
 		
 		if (can_input_level_name == true)
 		{
@@ -514,10 +547,14 @@ function scr_draw_upload_level_menu()
 			get_window_width * 0.5 - 185 + 370,
 			draw_name_y + 54 + 42))
 			and (mouse_check_button_released(mb_left))
-			or (gamepad_button_check_released(0, gp_face1))
-			or (gamepad_button_check_released(1, gp_face1))
-			or (gamepad_button_check_released(2, gp_face1))
-			or (gamepad_button_check_released(3, gp_face1))
+			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_accept))
+			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button2_accept))
+			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_accept))
+			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_accept))
 			{
 				if (level_editor_edit_name == true)
 				and (global.level_name != old_level_name)
@@ -560,59 +597,51 @@ function scr_draw_upload_level_menu()
 		#endregion /* Press Enter to confirm new name END */
 	
 		#region /* Press Escape to back out from name input menu */
-		if (keyboard_check_released(vk_enter))
-		and (menu == "upload_enter_name_cancel")
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (keyboard_check_released(vk_escape))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y,
-		get_window_width * 0.5 - 185,
-		draw_name_y + 54 + 42,
-		get_window_width * 0.5 - 185 + 370,
-		draw_name_y + 54 + 42 + 42))
-		and (mouse_check_button_released(mb_left))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (mouse_check_button_released(mb_right))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (gamepad_button_check_released(0, gp_face2))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (gamepad_button_check_released(1, gp_face2))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (gamepad_button_check_released(2, gp_face2))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (gamepad_button_check_released(3, gp_face2))
-		and (can_input_level_name == true)
+		if (can_input_level_name == true)
 		and (menu_delay == 0)
 		{
-			menu_delay = 3;
-			if (asset_get_type("obj_camera") == asset_object)
-			and (instance_exists(obj_camera))
+			if (keyboard_check_released(vk_enter))
+			and (menu == "upload_enter_name_cancel")
+			or (keyboard_check_released(vk_escape))
+			or (point_in_rectangle(mouse_get_x, mouse_get_y,
+			get_window_width * 0.5 - 185,
+			draw_name_y + 54 + 42,
+			get_window_width * 0.5 - 185 + 370,
+			draw_name_y + 54 + 42 + 42))
+			and (mouse_check_button_released(mb_left))
+			or (mouse_check_button_released(mb_right))
+			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_back))
+			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_back))
+			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_back))
+			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button2_back))
+			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_back))
+			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_back))
+			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_back))
+			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_back))
 			{
-				with(obj_camera)
+				menu_delay = 3;
+				if (asset_get_type("obj_camera") == asset_object)
+				and (instance_exists(obj_camera))
 				{
-					iris_zoom = 0;
+					with(obj_camera)
+					{
+						iris_zoom = 0;
+					}
 				}
-			}
-			can_input_level_name = false;
-			if (level_editor_edit_name == true)
-			{
-				menu = "upload_edit_name";
-				level_editor_edit_name = false;
-			}
-			else
-			{
-				menu = "upload_edit_name";
+				can_input_level_name = false;
+				if (level_editor_edit_name == true)
+				{
+					menu = "upload_edit_name";
+					level_editor_edit_name = false;
+				}
+				else
+				{
+					menu = "upload_edit_name";
+				}
 			}
 		}
 		#endregion /* Press Escape to back out from name input menu END */
-	
+		
 		#endregion /* Input Level Name END */
 		
 	}
@@ -629,7 +658,11 @@ function scr_draw_upload_level_menu()
 		draw_set_alpha(0.9);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+		if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
+		{
+			/* Draw Thumbnail */
+			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+		}
 		/* Draw Level Name above description input */ scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		if (can_input_level_name == true)
@@ -656,10 +689,14 @@ function scr_draw_upload_level_menu()
 			get_window_width * 0.5 - 185 + 370,
 			draw_description_y + 54 + 42))
 			and (mouse_check_button_released(mb_left))
-			or (gamepad_button_check_released(0, gp_face1))
-			or (gamepad_button_check_released(1, gp_face1))
-			or (gamepad_button_check_released(2, gp_face1))
-			or (gamepad_button_check_released(3, gp_face1))
+			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_accept))
+			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button2_accept))
+			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_accept))
+			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_accept))
 			{
 				if (level_editor_edit_name == true)
 				and (global.level_description != old_level_description)
@@ -705,55 +742,47 @@ function scr_draw_upload_level_menu()
 		#endregion /* Press Enter to confirm new description END */
 		
 		#region /* Press Escape to back out from description input menu */
-		if (keyboard_check_released(vk_enter))
-		and (menu == "upload_enter_description_cancel")
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (keyboard_check_released(vk_escape))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y,
-		get_window_width * 0.5 - 185,
-		draw_description_y + 54 + 42,
-		get_window_width * 0.5 - 185 + 370,
-		draw_description_y + 54 + 42 + 42))
-		and (mouse_check_button_released(mb_left))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (mouse_check_button_released(mb_right))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (gamepad_button_check_released(0, gp_face2))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (gamepad_button_check_released(1, gp_face2))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (gamepad_button_check_released(2, gp_face2))
-		and (can_input_level_name == true)
-		and (menu_delay == 0)
-		or (gamepad_button_check_released(3, gp_face2))
-		and (can_input_level_name == true)
+		if (can_input_level_name == true)
 		and (menu_delay == 0)
 		{
-			menu_delay = 3;
-			if (asset_get_type("obj_camera") == asset_object)
-			and (instance_exists(obj_camera))
+			if (keyboard_check_released(vk_enter))
+			and (menu == "upload_enter_description_cancel")
+			or (keyboard_check_released(vk_escape))
+			or (point_in_rectangle(mouse_get_x, mouse_get_y,
+			get_window_width * 0.5 - 185,
+			draw_description_y + 54 + 42,
+			get_window_width * 0.5 - 185 + 370,
+			draw_description_y + 54 + 42 + 42))
+			and (mouse_check_button_released(mb_left))
+			or (mouse_check_button_released(mb_right))
+			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_back))
+			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_back))
+			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_back))
+			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button2_back))
+			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_back))
+			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_back))
+			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_back))
+			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_back))
 			{
-				with(obj_camera)
+				menu_delay = 3;
+				if (asset_get_type("obj_camera") == asset_object)
+				and (instance_exists(obj_camera))
 				{
-					iris_zoom = 0;
+					with(obj_camera)
+					{
+						iris_zoom = 0;
+					}
 				}
-			}
-			can_input_level_name = false;
-			if (level_editor_edit_name == true)
-			{
-				menu = "upload_edit_description";
-				level_editor_edit_name = false;
-			}
-			else
-			{
-				menu = "upload_edit_description";
+				can_input_level_name = false;
+				if (level_editor_edit_name == true)
+				{
+					menu = "upload_edit_description";
+					level_editor_edit_name = false;
+				}
+				else
+				{
+					menu = "upload_edit_description";
+				}
 			}
 		}
 		#endregion /* Press Escape to back out from descriptin input menu END */
@@ -778,7 +807,11 @@ function scr_draw_upload_level_menu()
 		draw_set_alpha(0.9);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+		if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
+		{
+			/* Draw Thumbnail */
+			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+		}
 		draw_set_alpha(0.9);
 		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, upload_name_question_y - 32, get_window_width * 0.5 + message_x_offset, upload_name_question_y + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
@@ -922,7 +955,11 @@ function scr_draw_upload_level_menu()
 		draw_set_alpha(0.9);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+		if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
+		{
+			/* Draw Thumbnail */
+			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+		}
 		draw_set_alpha(0.9);
 		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, uploading_level_message_y - 32, get_window_width * 0.5 + message_x_offset, uploading_level_message_y + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
@@ -941,7 +978,7 @@ function scr_draw_upload_level_menu()
 			level_id_7 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
 			level_id_8 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
 			level_id_9 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			level_id = string(level_id_1) + string(level_id_2) + string(level_id_3) + "-" + string(level_id_4) + string(level_id_5) + string(level_id_6) + "-" + string(level_id_7) + string(level_id_8) + string(level_id_9);
+			level_id = string(level_id_1) + string(level_id_2) + string(level_id_3) + string(level_id_4) + string(level_id_5) + string(level_id_6) + string(level_id_7) + string(level_id_8) + string(level_id_9);
 		}
 		#endregion /* Generate Level ID END */
 		
@@ -978,7 +1015,7 @@ function scr_draw_upload_level_menu()
 			data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
 			
 			/* Post the data to the upload script */
-			http_request(global.url + "upload.php", "POST", map, "name-" + file_name + "&data-" + data_send);
+			http_request(global.url_uploader + "upload.php", "POST", map, "name-" + file_name + "&data-" + data_send);
 			
 			/* Cleans up! */
 			buffer_delete(send_buffer);
@@ -1011,7 +1048,11 @@ function scr_draw_upload_level_menu()
 		draw_set_alpha(0.9);
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		/* Draw Thumbnail */ draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+		if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
+		{
+			/* Draw Thumbnail */
+			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
+		}
 		draw_set_alpha(0.9);
 		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, uploaded_level_message_y - 32, get_window_width * 0.5 + message_x_offset, uploaded_level_message_y + 128, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);

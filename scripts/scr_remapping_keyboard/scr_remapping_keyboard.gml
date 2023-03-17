@@ -51,13 +51,13 @@ function scr_remapping_keyboard()
 	else
 	if (keyboard_check_pressed(vk_escape))
 	or (remapping_player == 0)
-	and (gamepad_button_check(0, gp_start))
+	and (gamepad_button_check(global.player1_slot, gp_start))
 	or (remapping_player == 1)
-	and (gamepad_button_check(1, gp_start))
+	and (gamepad_button_check(global.player2_slot, gp_start))
 	or (remapping_player = 2)
-	and (gamepad_button_check(2, gp_start))
+	and (gamepad_button_check(global.player3_slot, gp_start))
 	or (remapping_player = 3)
-	and (gamepad_button_check(3, gp_start))
+	and (gamepad_button_check(global.player4_slot, gp_start))
 	{
 		last_key = noone;
 		can_remap_key = true;
@@ -193,7 +193,7 @@ function scr_remapping_keyboard()
 			menu_delay = 10;
 		}
 		else
-		if (menu_remap_key_number = 2)
+		if (menu_remap_key_number == 2)
 		{
 			if (menu == "remap_key_dive")
 			{
@@ -453,7 +453,7 @@ function scr_remapping_keyboard()
 			menu_delay = 10;
 		}
 		else
-		if (menu_remap_key_number = 2)
+		if (menu_remap_key_number == 2)
 		{
 			if (menu == "remap_key_dive")
 			{
@@ -713,7 +713,7 @@ function scr_remapping_keyboard()
 			menu_delay = 10;
 		}
 		else
-		if (menu_remap_key_number = 2)
+		if (menu_remap_key_number == 2)
 		{
 			if (menu == "remap_key_dive")
 			{
@@ -973,7 +973,7 @@ function scr_remapping_keyboard()
 			menu_delay = 10;
 		}
 		else
-		if (menu_remap_key_number = 2)
+		if (menu_remap_key_number == 2)
 		{
 			if (menu == "remap_key_dive")
 			{

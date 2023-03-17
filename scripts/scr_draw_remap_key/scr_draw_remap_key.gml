@@ -17,6 +17,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		if (menu == menu_string)
 		and (menu_remap_key_number == 0)
 		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, key_x - 54, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			if (remapping_player_key > noone)
 			{
 				scr_draw_gamepad_buttons(remapping_player_key, key_x, menu_y_remap_key + menu_y_offset, 1, c_white, 1);
@@ -41,8 +42,9 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		
 		#region /* Remap Gamepad Button 2 */
 		if (menu == menu_string)
-		and (menu_remap_key_number = 2)
+		and (menu_remap_key_number == 2)
 		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, key_x + 200 - 54, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			if (remapping_player_key2 > noone)
 			{
 				scr_draw_gamepad_buttons(remapping_player_key2, key_x + 200, menu_y_remap_key + menu_y_offset, 1, c_white, 1);
@@ -76,6 +78,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		if (menu == menu_string)
 		and (menu_remap_key_number == 0)
 		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, key_x - 54, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			if (remapping_player_key == 0)
 			or (remapping_player_key == noone)
 			{
@@ -182,8 +185,9 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		
 		#region /* Remap Keyboard Key 2 */
 		if (menu == menu_string)
-		and (menu_remap_key_number = 2)
+		and (menu_remap_key_number == 2)
 		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, key_x + 200 - 54, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			if (remapping_player_key2 == 0)
 			or (remapping_player_key2 == noone)
 			{

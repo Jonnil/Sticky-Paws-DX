@@ -121,7 +121,7 @@ function scr_options_level_editor()
 			#region /* Menu Navigation */
 			
 			#region /* Back Navigation */
-			if (key_b_pressed)
+			if (key_b_released)
 			and (!keyboard_check(vk_control))
 			and (menu_delay == 0)
 			or (menu == "back_level_editor_options")
@@ -344,7 +344,7 @@ function scr_options_level_editor()
 				if (key_a_released)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
-				or (mouse_check_button_pressed(mb_left))
+				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
@@ -381,7 +381,7 @@ function scr_options_level_editor()
 				if (key_a_released)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
-				or (mouse_check_button_pressed(mb_left))
+				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
@@ -417,7 +417,7 @@ function scr_options_level_editor()
 				if (key_a_released)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
-				or (mouse_check_button_pressed(mb_left))
+				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
@@ -453,7 +453,7 @@ function scr_options_level_editor()
 				if (key_a_released)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
-				or (mouse_check_button_pressed(mb_left))
+				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
@@ -599,20 +599,20 @@ function scr_options_level_editor()
 				global.time_countdown = 0;
 			}
 			
-			var back_level_editor_options_y = 47 * 2 + menu_y_offset;
-			var background_offset_y = 47 * 3 + menu_y_offset;
-			var background_parallax_y = 47 * 4 + menu_y_offset;
-			var background_scale_y = 47 * 5 + menu_y_offset;
-			var background_tiled_y = 47 * 6 + menu_y_offset;
-			var default_view_height_y = 47 * 7 + menu_y_offset;
-			var default_view_width_y = 47 * 8 + menu_y_offset;
-			var make_every_tileset_into_default_tileset_y = 47 * 9 + menu_y_offset;
-			var deactivate_objects_from_most_zoomed_out_y = 47 * 10 + menu_y_offset;
-			var rain_y = 47 * 11 + menu_y_offset;
-			var enable_time_countdown_y = 47 * 12 + menu_y_offset;
-			var time_countdown_y = 46 * 13 + menu_y_offset;
-			var selected_level_editing_music_y = 46 * 14 + menu_y_offset;
-			var delete_all_objects_y = 46 * 15 + menu_y_offset + 20;
+			var back_level_editor_options_y = 47 * 1 + menu_y_offset;
+			var background_offset_y = 47 * 2 + menu_y_offset;
+			var background_parallax_y = 47 * 3 + menu_y_offset;
+			var background_scale_y = 47 * 4 + menu_y_offset;
+			var background_tiled_y = 47 * 5 + menu_y_offset;
+			var default_view_height_y = 47 * 6 + menu_y_offset;
+			var default_view_width_y = 47 * 7 + menu_y_offset;
+			var make_every_tileset_into_default_tileset_y = 47 * 8 + menu_y_offset;
+			var deactivate_objects_from_most_zoomed_out_y = 47 * 9 + menu_y_offset;
+			var rain_y = 47 * 10 + menu_y_offset;
+			var enable_time_countdown_y = 47 * 11 + menu_y_offset;
+			var time_countdown_y = 46 * 12 + menu_y_offset;
+			var selected_level_editing_music_y = 46 * 14 + menu_y_offset - 16;
+			var delete_all_objects_y = 46 * 15 + menu_y_offset + 20 - 16;
 			
 			draw_menu_button(level_editor_options_x, back_level_editor_options_y, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icons_back, 0, level_editor_options_x + 20, back_level_editor_options_y + 21, 1, 1, 0, c_white, 1);
@@ -622,16 +622,17 @@ function scr_options_level_editor()
 			draw_menu_button(level_editor_options_x, background_tiled_y, l10n_text("BG Tiled"), "background_tiled", "back_background_tiled");
 			global.default_view_height = draw_menu_left_right_buttons(level_editor_options_x, default_view_height_y, options_level_editor_right_arrow_x, "Default view height", global.default_view_height, "default_view_height", 1, false);
 			global.default_view_width = draw_menu_left_right_buttons(level_editor_options_x, default_view_width_y, options_level_editor_right_arrow_x, "Default view width", global.default_view_width, "default_view_width", 1, false);
-			draw_menu_checkmark(level_editor_options_x - 90, make_every_tileset_into_default_tileset_y, "Make every tileset into default tileset", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
-			draw_menu_checkmark(level_editor_options_x - 90, deactivate_objects_from_most_zoomed_out_y, "Deactivate objects from most zoomed out", "deactivate_objects_from_most_zoomed_out", global.deactivate_objects_from_most_zoomed_out);
-			draw_menu_checkmark(level_editor_options_x - 90, rain_y, "Rain", "rain", global.rain);
-			draw_menu_checkmark(level_editor_options_x - 90, enable_time_countdown_y, "Enable Time Countdown", "enable_time_countdown", global.enable_time_countdown);
+			draw_menu_checkmark(level_editor_options_x - 90, make_every_tileset_into_default_tileset_y, l10n_text("Make every tileset into default tileset"), "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
+			draw_menu_checkmark(level_editor_options_x - 90, deactivate_objects_from_most_zoomed_out_y, l10n_text("Deactivate objects from most zoomed out"), "deactivate_objects_from_most_zoomed_out", global.deactivate_objects_from_most_zoomed_out);
+			draw_menu_checkmark(level_editor_options_x - 90, rain_y, l10n_text("Rain"), "rain", global.rain);
+			draw_menu_checkmark(level_editor_options_x - 90, enable_time_countdown_y, l10n_text("Enable Time Countdown"), "enable_time_countdown", global.enable_time_countdown);
 			if (global.enable_time_countdown == true)
 			{
-				global.time_countdown = draw_menu_left_right_buttons(level_editor_options_x, time_countdown_y, options_level_editor_right_arrow_x, "Time Countdown", global.time_countdown, "time_countdown", 1, false);
+				global.time_countdown = draw_menu_left_right_buttons(level_editor_options_x, time_countdown_y, options_level_editor_right_arrow_x, l10n_text("Time Countdown"), global.time_countdown, "time_countdown", 1, false);
 			}
-			draw_menu_button(level_editor_options_x, delete_all_objects_y, "Delete All Objects", "delete_all_objects", "delete_all_objects_no");
-			draw_menu_dropdown(level_editor_options_x - 32, selected_level_editing_music_y, "Level Editing Music", "selected_level_editing_music", global.selected_level_editing_music, "None", "Music 1", "Music 2", "Music 3");
+			draw_menu_button(level_editor_options_x, delete_all_objects_y, l10n_text("Delete All Objects"), "delete_all_objects", "delete_all_objects_no");
+			draw_sprite_ext(spr_icons_delete, 0, level_editor_options_x + 16, delete_all_objects_y + 21, 1, 1, 0, c_white, 1);
+			draw_menu_dropdown(level_editor_options_x - 32, selected_level_editing_music_y, l10n_text("Level Editing Music"), "selected_level_editing_music", global.selected_level_editing_music, l10n_text("None"), l10n_text("Music 1"), l10n_text("Music 2"), l10n_text("Music 3"));
 		}
 		else
 		if (menu == "delete_all_objects_yes")
@@ -644,11 +645,19 @@ function scr_options_level_editor()
 			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 100, l10n_text("Are you sure you want to delete every object in the level?"), global.default_text_size, c_black, c_red, 1);
 			draw_menu_button(get_window_width * 0.5 - 370 - 32, get_window_height * 0.5, l10n_text("Yes"), "delete_all_objects_yes", "delete_all_objects_deleting");
+			draw_sprite_ext(spr_icons_delete, 0, get_window_width * 0.5 - 370 - 32 + 16, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(get_window_width * 0.5 + 32, get_window_height * 0.5, l10n_text("No"), "delete_all_objects_no", "delete_all_objects");
-		
+			draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 + 32 + 16, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1);
+			
+			if (key_b_released)
+			and (menu_delay == 0)
+			{
+				menu = "delete_all_objects";
+				menu_delay = 3;
+			}
+			else
 			if (key_a_released)
 			and (menu_delay == 0)
-			and (open_dropdown == false)
 			{
 				if (menu == "delete_all_objects_no")
 				{
@@ -727,7 +736,7 @@ function scr_options_level_editor()
 			#region /* Background Offset Menu Navigation */
 			
 			#region /* Background Offset Back Navigation */
-			if (key_b_pressed)
+			if (key_b_released)
 			and (!keyboard_check(vk_control))
 			and (menu_delay == 0)
 			and (open_dropdown == false)
@@ -1171,7 +1180,7 @@ function scr_options_level_editor()
 			#region /* Background Parallax Menu Navigation */
 			
 			#region /* Background Parallax Back Navigation */
-			if (key_b_pressed)
+			if (key_b_released)
 			and (!keyboard_check(vk_control))
 			and (menu_delay == 0)
 			and (open_dropdown == false)
@@ -1431,7 +1440,7 @@ function scr_options_level_editor()
 			#region /* Background Scale Menu Navigation */
 			
 			#region /* Background Scale Back Navigation */
-			if (key_b_pressed)
+			if (key_b_released)
 			and (!keyboard_check(vk_control))
 			and (menu_delay == 0)
 			and (open_dropdown == false)
@@ -1691,7 +1700,7 @@ function scr_options_level_editor()
 			#region /* Background Tiled Menu Navigation */
 			
 			#region /* Background Tiled Back Navigation */
-			if (key_b_pressed)
+			if (key_b_released)
 			and (!keyboard_check(vk_control))
 			and (menu_delay == 0)
 			and (open_dropdown == false)

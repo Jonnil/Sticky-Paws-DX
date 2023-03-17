@@ -1,3 +1,6 @@
+repeat_length = 0;
+can_set_length = true;
+
 if (global.actually_play_edited_level == false)
 {
 	modify_object_menu = false;

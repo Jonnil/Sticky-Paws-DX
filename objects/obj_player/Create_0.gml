@@ -545,105 +545,105 @@ if (asset_get_type("room_title") == asset_room)
 and (room != room_title)
 {
 	
-	#region /* Update Level Clear Jingle */
+	#region /* Update Level Clear Melody */
 	/* OGG small letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_jingle.ogg"))
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
-	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_jingle.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template == true)
 	{
-		level_clear_jingle = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_jingle.ogg");
+		level_clear_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg");
 	}
 	else
 	/* OGG big letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Jingle.ogg"))
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
-	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Jingle.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template == true)
 	{
-		level_clear_jingle = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Jingle.ogg");
+		level_clear_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg");
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/clear_jingle.ogg"))
+	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	{
-		level_clear_jingle = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/clear_jingle.ogg");
+		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/clear_melody.ogg");
 	}
 	else
 	/* OGG big letter File */
-	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/Clear_Jingle.ogg"))
+	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	{
-		level_clear_jingle = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/Clear_Jingle.ogg");
+		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/Clear_Melody.ogg");
 	}
 	else
-	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_jingle.ogg"))
+	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
 	{
-		level_clear_jingle = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_jingle.ogg");
+		level_clear_melody = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
 	}
 	else
-	if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_jingle.ogg"))
+	if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
 	{
-		level_clear_jingle = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_jingle.ogg");
+		level_clear_melody = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
 	}
 	else
 	{
-		level_clear_jingle = noone;
+		level_clear_melody = noone;
 	}
-	#endregion /* Update Level Clear Jingle END */
+	#endregion /* Update Level Clear Melody END */
 	
-	#region /* Update Player Lose Jingle */
+	#region /* Update Player Lose Melody */
 	/* OGG small letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_jingle.ogg"))
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
-	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_jingle.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template == true)
 	{
-		player_lose_jingle = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_jingle.ogg");
+		player_lose_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg");
 	}
 	else
 	/* OGG big letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Lose_Jingle.ogg"))
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Lose_Melody.ogg"))
 	and (global.character_select_in_this_menu == "main_game")
-	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Lose_Jingle.ogg"))
+	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Lose_Melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.create_level_from_template == true)
 	{
-		player_lose_jingle = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Lose_Jingle.ogg");
+		player_lose_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/Lose_Melody.ogg");
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/lose_jingle.ogg"))
+	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/lose_melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	{
-		player_lose_jingle = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/clear_jingle.ogg");
+		player_lose_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/clear_melody.ogg");
 	}
 	else
 	/* OGG big letter File */
-	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/Lose_Jingle.ogg"))
+	if (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/Lose_Melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
 	{
-		player_lose_jingle = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/Lose_Jingle.ogg");
+		player_lose_melody = audio_create_stream(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/sound/Lose_Melody.ogg");
 	}
 	else
-	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_jingle.ogg"))
+	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg"))
 	{
-		player_lose_jingle = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_jingle.ogg");
+		player_lose_melody = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg");
 	}
 	else
-	if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_jingle.ogg"))
+	if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg"))
 	{
-		player_lose_jingle = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_jingle.ogg");
+		player_lose_melody = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg");
 	}
 	else
 	{
-		player_lose_jingle = noone;
+		player_lose_melody = noone;
 	}
-	#endregion /* Update Player Lose Jingle END */
+	#endregion /* Update Player Lose Melody END */
 	
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg"))
 	{
@@ -662,8 +662,8 @@ and (room != room_title)
 }
 else
 {
-	level_clear_jingle = noone;
-	player_lose_jingle = noone;
+	level_clear_melody = noone;
+	player_lose_melody = noone;
 	music_invincible = noone;
 }
 #endregion /* Custom Music END */

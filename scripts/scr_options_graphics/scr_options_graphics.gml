@@ -105,7 +105,7 @@ function scr_options_graphics()
 		draw_menu_checkmark(386, reset_level_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset Level Zoom When Going Back To Map"), "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map);
 		draw_menu_checkmark(386, reset_world_map_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset World Map Zoom When Going Back To Map"), "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map);
 		
-		draw_menu_dropdown(420, gui_scale_modifier_y + menu_y_offset, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, "Automatic", "1920 x 1080", "1600 x 900", "1366 x 768", "1280 x 720", "1024 x 576", "864 x 480");
+		draw_menu_dropdown(420, gui_scale_modifier_y + menu_y_offset, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, l10n_text("Automatic"), "1920 x 1080", "1600 x 900", "1366 x 768", "1280 x 720", "1024 x 576", "864 x 480");
 		
 		#region /* Navigate */
 			

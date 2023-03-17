@@ -1,11 +1,11 @@
 x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5;
 
-key_a = (gamepad_button_check(0, gp_face1)) or (keyboard_check(global.player1_key_jump));
-key_a_pressed = (gamepad_button_check_pressed(0, gp_face1))
+key_a = (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept)) or (keyboard_check(global.player1_key_jump));
+key_a_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept))
 or (keyboard_check_pressed(global.player1_key_jump));
-key_a_released = (gamepad_button_check_released(0, gp_face1))
+key_a_released = (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept))
 or (keyboard_check_released(global.player1_key_jump));
-key_b = (gamepad_button_check(0, gp_face2))
+key_b = (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_back))
 or (keyboard_check(global.player1_key_sprint));
 
 if (global.actually_play_edited_level == false)

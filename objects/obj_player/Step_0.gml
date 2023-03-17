@@ -482,13 +482,13 @@ scr_player_move_customizable_controls();
 
 #region /* If controller gets disconnected during gameplay, pause the game */
 if (player == 1)
-and (gamepad_is_connected(0))
-or (player = 2)
-and (gamepad_is_connected(1))
-or (player = 3)
-and (gamepad_is_connected(2))
-or (player = 4)
-and (gamepad_is_connected(3))
+and (gamepad_is_connected(global.player1_slot))
+or (player == 2)
+and (gamepad_is_connected(global.player2_slot))
+or (player == 3)
+and (gamepad_is_connected(global.player3_slot))
+or (player == 4)
+and (gamepad_is_connected(global.player4_slot))
 {
 	controller_connected = true;
 }
@@ -1059,7 +1059,7 @@ if (burnt == 2)
 
 #region /* Remove player if there is no controls mapped for this player */
 if (player == 1)
-and (!gamepad_is_connected(0))
+and (!gamepad_is_connected(global.player1_slot))
 {
 	if (global.player1_key_dive == noone)
 	and (global.player1_key_jump == noone)
@@ -1094,7 +1094,7 @@ and (!gamepad_is_connected(0))
 }
 else
 if (player == 2)
-and (!gamepad_is_connected(1))
+and (!gamepad_is_connected(global.player2_slot))
 {
 	if (global.player2_key_dive == noone)
 	and (global.player2_key_jump == noone)
@@ -1129,7 +1129,7 @@ and (!gamepad_is_connected(1))
 }
 else
 if (player == 3)
-and (!gamepad_is_connected(2))
+and (!gamepad_is_connected(global.player3_slot))
 {
 	if (global.player3_key_dive == noone)
 	and (global.player3_key_jump == noone)
@@ -1164,7 +1164,7 @@ and (!gamepad_is_connected(2))
 }
 else
 if (player == 4)
-and (!gamepad_is_connected(3))
+and (!gamepad_is_connected(global.player4_slot))
 {
 	if (global.player4_key_dive == noone)
 	and (global.player4_key_jump == noone)
@@ -1199,7 +1199,7 @@ and (!gamepad_is_connected(3))
 }
 else
 if (player == 1)
-and (gamepad_is_connected(0))
+and (gamepad_is_connected(global.player1_slot))
 {
 	if (global.player1_gamepad_button_dive == noone)
 	and (global.player1_gamepad_button_jump == noone)
@@ -1234,7 +1234,7 @@ and (gamepad_is_connected(0))
 }
 else
 if (player == 2)
-and (gamepad_is_connected(1))
+and (gamepad_is_connected(global.player2_slot))
 {
 	if (global.player2_gamepad_button_dive == noone)
 	and (global.player2_gamepad_button_jump == noone)
@@ -1269,7 +1269,7 @@ and (gamepad_is_connected(1))
 }
 else
 if (player == 3)
-and (gamepad_is_connected(2))
+and (gamepad_is_connected(global.player3_slot))
 {
 	if (global.player3_gamepad_button_dive == noone)
 	and (global.player3_gamepad_button_jump == noone)
@@ -1304,7 +1304,7 @@ and (gamepad_is_connected(2))
 }
 else
 if (player == 4)
-and (gamepad_is_connected(3))
+and (gamepad_is_connected(global.player4_slot))
 {
 	if (global.player4_gamepad_button_dive == noone)
 	and (global.player4_gamepad_button_jump == noone)
@@ -1407,6 +1407,7 @@ and (assist_invincible == false)
 		audio_sound_gain(global.music, 0, 0);
 		audio_sound_gain(global.music_underwater, 0, 0);
 	}
+	else
 	if (audio_is_playing(music_invincible))
 	{
 		audio_sound_gain(global.music, 0, 0);
@@ -1425,6 +1426,10 @@ else
 		if (!audio_is_playing(snd_hurry_up))
 		{
 			scr_audio_play(global.music, volume_source.music);
+			if (audio_is_playing(global.loading_music))
+			{
+				audio_stop_sound(global.loading_music);
+			}
 		}
 	}
 	if (!audio_is_playing(global.music_underwater))
@@ -1432,6 +1437,10 @@ else
 		if (!audio_is_playing(snd_hurry_up))
 		{
 			scr_audio_play(global.music_underwater, volume_source.music);
+			if (audio_is_playing(global.loading_music))
+			{
+				audio_stop_sound(global.loading_music);
+			}
 		}
 	}
 }

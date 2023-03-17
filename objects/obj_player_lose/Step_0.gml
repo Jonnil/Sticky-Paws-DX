@@ -55,14 +55,14 @@ and (sprite_index = spr_player_burnt)
 }
 #endregion /* If the player is burned, have black smoke coming out END */
 
-#region /* Play death jingle */
+#region /* Play death melody */
 if (!instance_exists(obj_player))
 and (count = 50)
 and (last_player == true)
 {
-	scr_audio_play(player_lose_jingle, volume_source.jingle);
+	scr_audio_play(player_lose_melody, volume_source.melody);
 }
-#endregion /* Play death jingle END */
+#endregion /* Play death melody END */
 
 #region /* Limit the vertical speed */
 if (vspeed >+ 32)
@@ -80,7 +80,7 @@ and (iris_xscale <= 0.001)
 	sprite_index = noone;
 	gravity = 0;
 	speed = 0;
-	if (!audio_is_playing(player_lose_jingle))
+	if (!audio_is_playing(player_lose_melody))
 	{
 		if (lives >= 1)
 		{

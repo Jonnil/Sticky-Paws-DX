@@ -39,11 +39,11 @@ function scr_config_load()
 		if (ini_key_exists("config", "show_collision_mask")){global.show_collision_mask = ini_read_real("config", "show_collision_mask", 0);}
 		if (ini_key_exists("config", "volume_main")){global.volume_main = ini_read_real("config", "volume_main", 7000) * 0.0001;}
 		if (ini_key_exists("config", "volume_music")){global.volume_music = ini_read_real("config", "volume_music", 7000) * 0.0001;}
-		if (ini_key_exists("config", "volume_jingle")){global.volume_jingle = ini_read_real("config", "volume_jingle", 7000) * 0.0001;}
+		if (ini_key_exists("config", "volume_melody")){global.volume_melody = ini_read_real("config", "volume_melody", 7000) * 0.0001;}
 		if (ini_key_exists("config", "volume_sound")){global.volume_sound = ini_read_real("config", "volume_sound", 7000) * 0.0001;}
 		if (ini_key_exists("config", "volume_ambient")){global.volume_ambient = ini_read_real("config", "volume_ambient", 7000) * 0.0001;}
 		if (ini_key_exists("config", "volume_footstep")){global.volume_footstep = ini_read_real("config", "volume_footstep", 7000) * 0.0001;}
-		if (ini_key_exists("config", "voices_volume")){global.volume_voice = ini_read_real("config", "voices_volume", 7000) * 0.0001;}
+		if (ini_key_exists("config", "volume_voices")){global.volume_voice = ini_read_real("config", "volume_voices", 7000) * 0.0001;}
 		if (ini_key_exists("config", "background_brightness_gameplay")){global.background_brightness_gameplay = ini_read_real("config", "background_brightness_gameplay", 0) * 0.0001;}
 		if (ini_key_exists("config", "background_brightness_menu")){global.background_brightness_menu = ini_read_real("config", "background_brightness_menu", 0) * 0.0001;}
 		if (ini_key_exists("config", "enable_background_layer1")){global.enable_background_layer1 = ini_read_real("config", "enable_background_layer1", 0);}

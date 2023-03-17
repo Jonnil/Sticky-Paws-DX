@@ -325,6 +325,7 @@ function scr_select_custom_level_menu()
 		
 		#region /* Open Custom Levels Folder */
 		draw_menu_button(0, 42, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
+		draw_sprite_ext(spr_icons_folder, 0, 16, 42 + 21, 1, 1, 0, c_white, 1);
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 42 + 2, 371, 42 + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_released(mb_left))
@@ -384,7 +385,7 @@ function scr_select_custom_level_menu()
 		draw_menu_button(get_window_width - 370, 0, l10n_text("Search ID"), "search_id", "search_id_ok");
 		
 		#region /* Draw Search Key */
-		if (gamepad_is_connected(0))
+		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
 		or (global.always_show_gamepad_buttons == true)
 		{
@@ -401,19 +402,19 @@ function scr_select_custom_level_menu()
 		and (menu_delay == 0)
 		and (open_sub_menu == false)
 		and (can_input_level_name == false)
-		or (gamepad_button_check_released(0, gp_face4))
+		or (gamepad_button_check_released(global.player1_slot, gp_face4))
 		and (menu_delay == 0)
 		and (open_sub_menu == false)
 		and (can_input_level_name == false)
-		or (gamepad_button_check_released(1, gp_face4))
+		or (gamepad_button_check_released(global.player2_slot, gp_face4))
 		and (menu_delay == 0)
 		and (open_sub_menu == false)
 		and (can_input_level_name == false)
-		or (gamepad_button_check_released(2, gp_face4))
+		or (gamepad_button_check_released(global.player3_slot, gp_face4))
 		and (menu_delay == 0)
 		and (open_sub_menu == false)
 		and (can_input_level_name == false)
-		or (gamepad_button_check_released(3, gp_face4))
+		or (gamepad_button_check_released(global.player4_slot, gp_face4))
 		and (menu_delay == 0)
 		and (open_sub_menu == false)
 		and (can_input_level_name == false)
@@ -456,7 +457,6 @@ function scr_select_custom_level_menu()
 			can_navigate = true;
 			select_custom_level_menu_open = true;
 			menu = "level_editor_play";
-			global.select_level_index = 0;
 			scroll_to = floor(global.select_level_index / row);
 			lerp_on = true;
 		}
@@ -494,9 +494,8 @@ function scr_select_custom_level_menu()
 		if (asset_get_type("room_leveleditor") == asset_room)
 		{
 			sprite_delete(title_screen_background);
-			
 			scr_update_all_backgrounds();
-			
+			global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
 			room_goto(room_leveleditor);
 		}
 		global.actually_play_edited_level = false;
@@ -508,7 +507,15 @@ function scr_select_custom_level_menu()
 	if (menu == "level_editor_enter_name_ok")
 	or (menu == "level_editor_enter_name_cancel")
 	{
-		var draw_name_input_screen_y = 226 * (column - scroll) + 500;
+		if (keyboard_virtual_status())
+		and (keyboard_virtual_height() != 0)
+		{
+			var draw_name_input_screen_y = display_get_gui_height() - keyboard_virtual_height() - 160;
+		}
+		else
+		{
+			var draw_name_input_screen_y = 226 * (column - scroll) + 500;
+		}
 		
 		show_level_editor_corner_menu = false;
 		if (can_input_level_name == true)
@@ -533,10 +540,10 @@ function scr_select_custom_level_menu()
 			394 * (global.select_level_index - column * row) + 300 - 185 + 370 + thumbnail_x_offset,
 			draw_name_input_screen_y + 54 + 42))
 			and (mouse_check_button_released(mb_left))
-			or (gamepad_button_check_released(0, global.player1_gamepad_button_accept))
-			or (gamepad_button_check_released(1, global.player2_gamepad_button_accept))
-			or (gamepad_button_check_released(2, global.player3_gamepad_button_accept))
-			or (gamepad_button_check_released(3, global.player4_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_accept))
 			{
 				if (level_editor_edit_name == true)
 				and (global.level_name != old_level_name)
@@ -596,16 +603,16 @@ function scr_select_custom_level_menu()
 		or (mouse_check_button_released(mb_right))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_released(0, global.player1_gamepad_button_back))
+		or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_back))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_released(1, global.player2_gamepad_button_back))
+		or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_back))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_released(2, global.player3_gamepad_button_back))
+		or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_back))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_released(3, global.player4_gamepad_button_back))
+		or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_back))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
 		{
@@ -638,7 +645,15 @@ function scr_select_custom_level_menu()
 	if (menu == "level_editor_enter_description_ok")
 	or (menu == "level_editor_enter_description_cancel")
 	{
-		var draw_description_input_screen_y = get_window_height * 0.5;
+		if (keyboard_virtual_status())
+		and (keyboard_virtual_height() != 0)
+		{
+			var draw_description_input_screen_y = display_get_gui_height() - keyboard_virtual_height() - 160;
+		}
+		else
+		{
+			var draw_description_input_screen_y = get_window_height * 0.5;
+		}
 		
 		if (can_input_level_name == true)
 		{
@@ -667,10 +682,10 @@ function scr_select_custom_level_menu()
 			get_window_width * 0.5 - 185 + 370,
 			draw_description_input_screen_y + 54 + 42))
 			and (mouse_check_button_released(mb_left))
-			or (gamepad_button_check_released(0, global.player1_gamepad_button_accept))
-			or (gamepad_button_check_released(1, global.player2_gamepad_button_accept))
-			or (gamepad_button_check_released(2, global.player3_gamepad_button_accept))
-			or (gamepad_button_check_released(3, global.player4_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_accept))
+			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_accept))
 			{
 				if (level_editor_edit_name == true)
 				and (global.level_description != old_level_description)
@@ -734,16 +749,16 @@ function scr_select_custom_level_menu()
 		or (mouse_check_button_released(mb_right))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_released(0, global.player1_gamepad_button_back))
+		or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_back))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_released(1, global.player2_gamepad_button_back))
+		or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_back))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_released(2, global.player3_gamepad_button_back))
+		or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_back))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
-		or (gamepad_button_check_released(3, global.player4_gamepad_button_back))
+		or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_back))
 		and (can_input_level_name == true)
 		and (menu_delay == 0)
 		{

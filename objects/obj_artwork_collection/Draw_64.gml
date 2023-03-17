@@ -4,8 +4,27 @@ var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 
 #region /* Keyboard Controls */
-var key_left = (keyboard_check_pressed(vk_left)) or (keyboard_check_pressed(ord("A"))) or (gamepad_button_check_pressed(0, gp_padl)) or (gamepad_axis_value(0, gp_axislh) < 0);
-var key_right = (keyboard_check_pressed(vk_right)) or (keyboard_check_pressed(ord("D"))) or (gamepad_button_check_pressed(0, gp_padr)) or (gamepad_axis_value(0, gp_axislh) > 0);
+var key_left = (keyboard_check_pressed(vk_left))
+or (keyboard_check_pressed(ord("A")))
+or (gamepad_button_check_pressed(global.player1_slot, gp_padl))
+or (gamepad_button_check_pressed(global.player2_slot, gp_padl))
+or (gamepad_button_check_pressed(global.player3_slot, gp_padl))
+or (gamepad_button_check_pressed(global.player4_slot, gp_padl))
+or (gamepad_axis_value(global.player1_slot, gp_axislh) < 0)
+or (gamepad_axis_value(global.player2_slot, gp_axislh) < 0)
+or (gamepad_axis_value(global.player3_slot, gp_axislh) < 0)
+or (gamepad_axis_value(global.player4_slot, gp_axislh) < 0);
+
+var key_right = (keyboard_check_pressed(vk_right))
+or (keyboard_check_pressed(ord("D")))
+or (gamepad_button_check_pressed(global.player1_slot, gp_padr))
+or (gamepad_button_check_pressed(global.player2_slot, gp_padr))
+or (gamepad_button_check_pressed(global.player3_slot, gp_padr))
+or (gamepad_button_check_pressed(global.player4_slot, gp_padr))
+or (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
+or (gamepad_axis_value(global.player2_slot, gp_axislh) > 0)
+or (gamepad_axis_value(global.player3_slot, gp_axislh) > 0)
+or (gamepad_axis_value(global.player4_slot, gp_axislh) > 0);
 #endregion /* Keyboard Controls END */
 
 xx = lerp(xx, get_window_width * 0.5, 0.1);
@@ -170,7 +189,7 @@ draw_set_valign(fa_middle);
 scr_draw_text_outlined(+ 32, get_window_height - 32, "< " + l10n_text("Artwork") + " " + string(image_index + 1) + "/" + string(image_number) + " >", global.default_text_size * 2, c_black, c_white, 1);
 #endregion /* Draw what artwork is selected END */
 
-if (gamepad_is_connected(0))
+if (gamepad_is_connected(global.player1_slot))
 and (global.controls_used_for_menu_navigation == "controller")
 or (global.always_show_gamepad_buttons == true)
 {
@@ -249,14 +268,14 @@ or (keyboard_check_pressed(global.player3_key2_back))
 or (keyboard_check_pressed(global.player4_key_back))
 or (keyboard_check_pressed(global.player4_key2_back))
 or (keyboard_check_pressed(vk_escape))
-or (gamepad_button_check_pressed(0, global.player1_gamepad_button_back))
-or (gamepad_button_check_pressed(1, global.player2_gamepad_button_back))
-or (gamepad_button_check_pressed(2, global.player3_gamepad_button_back))
-or (gamepad_button_check_pressed(3, global.player4_gamepad_button_back))
-or (gamepad_button_check_pressed(0, global.player1_gamepad_button2_back))
-or (gamepad_button_check_pressed(1, global.player2_gamepad_button2_back))
-or (gamepad_button_check_pressed(2, global.player3_gamepad_button2_back))
-or (gamepad_button_check_pressed(3, global.player4_gamepad_button2_back))
+or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_back))
+or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_back))
+or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_back))
+or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_back))
+or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_back))
+or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button2_back))
+or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button2_back))
+or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button2_back))
 or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 370, get_window_height - 42, get_window_width, get_window_height))
 and (mouse_check_button_released(mb_left))
 {
@@ -267,7 +286,7 @@ draw_menu_button(get_window_width - 370, get_window_height - 42, l10n_text("Back
 draw_sprite_ext(spr_icons_back, 0, get_window_width - 370 + 20, get_window_height - 42 + 21, 1, 1, 0, c_white, 1);
 
 #region /* Draw Back Key */
-if (gamepad_is_connected(0))
+if (gamepad_is_connected(global.player1_slot))
 and (global.controls_used_for_menu_navigation == "controller")
 or (global.always_show_gamepad_buttons == true)
 {

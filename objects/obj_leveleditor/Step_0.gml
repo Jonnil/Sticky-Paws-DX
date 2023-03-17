@@ -57,95 +57,6 @@ if (global.actually_play_edited_level == false)
 	scr_controls_for_level_editor();
 	
 	scr_toggle_fullscreen();
-	
-	#region /* Deactivate instances outside view */
-	if (startup_loading_timer <= 3)
-	{
-		startup_loading_timer += 1;
-	}
-
-	if (quit_level_editor == 0)
-	and (global.play_edited_level == false)
-	and (startup_loading_timer >= 3)
-	{
-		instance_activate_all();
-		instance_deactivate_region(
-		camera_get_view_x(view_camera[view_current]) - 32,
-		camera_get_view_y(view_camera[view_current]) - 32,
-		camera_get_view_width(view_camera[view_current]) + 32 /* Camera Width */,
-		camera_get_view_height(view_camera[view_current]) + 32 /* Camera Height */,
-		false, true);
-	}
-	else
-	if (global.play_edited_level == false)
-	{
-		instance_activate_all();
-	}
-
-	#region /* Activate objects that always should be active */
-	if (asset_get_type("obj_player") == asset_object)
-	{
-		instance_activate_object(obj_player);
-	}
-	if (asset_get_type("obj_player_lose") == asset_object)
-	{
-		instance_activate_object(obj_player_lose);
-	}
-	if (asset_get_type("obj_foreground1") == asset_object)
-	{
-		instance_activate_object(obj_foreground1);
-	}
-	if (asset_get_type("obj_foreground_above_static_objects") == asset_object)
-	{
-		instance_activate_object(obj_foreground_above_static_objects);
-	}
-	if (asset_get_type("obj_foreground2") == asset_object)
-	{
-		instance_activate_object(obj_foreground2);
-	}
-	if (asset_get_type("obj_foreground_secret") == asset_object)
-	{
-		instance_activate_object(obj_foreground_secret);
-	}
-	if (asset_get_type("obj_level_player_1_start") == asset_object)
-	{
-		instance_activate_object(obj_level_player_1_start);
-	}
-	if (asset_get_type("obj_level_player_2_start") == asset_object)
-	{
-		instance_activate_object(obj_level_player_2_start);
-	}
-	if (asset_get_type("obj_level_player_3_start") == asset_object)
-	{
-		instance_activate_object(obj_level_player_3_start);
-	}
-	if (asset_get_type("obj_level_player_4_start") == asset_object)
-	{
-		instance_activate_object(obj_level_player_4_start);
-	}
-	if (asset_get_type("obj_level_end") == asset_object)
-	{
-		instance_activate_object(obj_level_end);
-	}
-	if (asset_get_type("obj_level_height") == asset_object)
-	{
-		instance_activate_object(obj_level_height);
-	}
-	if (asset_get_type("obj_level_width") == asset_object)
-	{
-		instance_activate_object(obj_level_width);
-	}
-	if (asset_get_type("obj_water_level_height") == asset_object)
-	{
-		instance_activate_object(obj_water_level_height);
-	}
-	if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
-	{
-		instance_activate_object(obj_background_brightness_gameplay);
-	}
-	#endregion /* Activate objects that always should be active END */
-
-	#endregion /* Deactivate instances outside view END */
 
 	#region /* Always keep the brush size within these values */
 	if (place_brush_size < 0)
@@ -176,7 +87,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Holding the play key down */
 	if (keyboard_check(key_play))
-	or (gamepad_button_check(0, button_play))
+	or (gamepad_button_check(global.player1_slot, button_play))
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 	and (mouse_check_button(mb_left))
 	{
@@ -186,7 +97,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Play Level when releasing Enter Key */
 	if (keyboard_check_released(key_play))
-	or (gamepad_button_check_released(0, button_play))
+	or (gamepad_button_check_released(global.player1_slot, button_play))
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 	and (mouse_check_button_released(mb_left))
 	or (global.full_level_map_screenshot == true)
@@ -310,10 +221,7 @@ if (global.actually_play_edited_level == false)
 					sprite_delete(thumbnail_sprite);
 					#endregion /* Save Level Thumbnail END */
 					
-					if (asset_get_type("scr_save_custom_level") == asset_script)
-					{
-						scr_save_custom_level();
-					}
+					scr_save_custom_level();
 					
 					if (pressing_play_timer >= 60)
 					or (global.full_level_map_screenshot == true)
@@ -513,9 +421,8 @@ if (global.actually_play_edited_level == false)
 		}
 		sprite_delete(thumbnail_sprite);
 		#endregion /* Save Thumbnail END */
-	
+		
 		menu_delay = 10; /* Disable all menu control */
-		scr_save_custom_level();
 		lives = 5;
 		global.lives_until_assist = 0;
 		global.actually_play_edited_level = false;
@@ -709,7 +616,7 @@ if (global.actually_play_edited_level == false)
 				controller_view_speed = 8;
 			}
 		
-			if (gamepad_axis_value(0, gp_axisrv) < 0)
+			if (gamepad_axis_value(global.player1_slot, gp_axisrv) < 0)
 			or (key_up)
 			and (controller_y <= camera_get_view_y(view_camera[view_current]))
 			{
@@ -719,7 +626,7 @@ if (global.actually_play_edited_level == false)
 					controller_y -= controller_view_speed;
 				}
 			}
-			if (gamepad_axis_value(0, gp_axisrv) > 0)
+			if (gamepad_axis_value(global.player1_slot, gp_axisrv) > 0)
 			or (key_down)
 			and (controller_y >= camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 			{
@@ -729,7 +636,7 @@ if (global.actually_play_edited_level == false)
 					controller_y += controller_view_speed;
 				}
 			}
-			if (gamepad_axis_value(0, gp_axisrh) < 0)
+			if (gamepad_axis_value(global.player1_slot, gp_axisrh) < 0)
 			or (key_left)
 			and (controller_x <= camera_get_view_x(view_camera[view_current]))
 			{
@@ -739,7 +646,7 @@ if (global.actually_play_edited_level == false)
 					controller_x -= controller_view_speed;
 				}
 			}
-			if (gamepad_axis_value(0, gp_axisrh) > 0)
+			if (gamepad_axis_value(global.player1_slot, gp_axisrh) > 0)
 			or (key_right)
 			and (controller_x >= camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 			{
@@ -956,6 +863,7 @@ if (global.actually_play_edited_level == false)
 	if (room == room_leveleditor)
 	{
 		if (global.custom_background1 > noone)
+		and (global.full_level_map_screenshot == false)
 		{
 			layer_background_visible(layer_background_get_id(layer_get_id("Background")), true)
 		}
@@ -963,8 +871,9 @@ if (global.actually_play_edited_level == false)
 		{
 			layer_background_visible(layer_background_get_id(layer_get_id("Background")), false)
 		}
-
+		
 		if (global.custom_background2 > noone)
+		and (global.full_level_map_screenshot == false)
 		{
 			layer_background_visible(layer_background_get_id(layer_get_id("Background_2")), true)
 		}
@@ -972,8 +881,9 @@ if (global.actually_play_edited_level == false)
 		{
 			layer_background_visible(layer_background_get_id(layer_get_id("Background_2")), false)
 		}
-
+		
 		if (global.custom_background3 > noone)
+		and (global.full_level_map_screenshot == false)
 		{
 			layer_background_visible(layer_background_get_id(layer_get_id("Background_3")), true)
 		}
@@ -981,8 +891,9 @@ if (global.actually_play_edited_level == false)
 		{
 			layer_background_visible(layer_background_get_id(layer_get_id("Background_3")), false)
 		}
-
+		
 		if (global.custom_background4 > noone)
+		and (global.full_level_map_screenshot == false)
 		{
 			layer_background_visible(layer_background_get_id(layer_get_id("Background_4")), true)
 		}
@@ -998,7 +909,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Press D key to change to drawing tool in level editor */
 	if (keyboard_check_pressed(key_draw))
 	and (pause == false)
-	or (gamepad_button_check_pressed(0, button_draw))
+	or (gamepad_button_check_pressed(global.player1_slot, button_draw))
 	and (pause == false)
 	{
 		if (fill_mode == false)
@@ -1045,7 +956,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Press E key to change to erase tool in level editor */
 	if (keyboard_check_pressed(key_erase))
 	and (pause == false)
-	or (gamepad_button_check_pressed(0, button_erase))
+	or (gamepad_button_check_pressed(global.player1_slot, button_erase))
 	and (pause == false)
 	{
 		if (erase_mode == false)
@@ -1093,7 +1004,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Press F key to change to fill tool in level editor */
 	if (keyboard_check_pressed(key_fill))
 	and (pause == false)
-	or (gamepad_button_check_pressed(0, button_fill))
+	or (gamepad_button_check_pressed(global.player1_slot, button_fill))
 	and (pause == false)
 	{
 		if (fill_mode == false)
@@ -1231,7 +1142,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Show or hide grid hotkey */
 	if (keyboard_check_pressed(key_grid))
 	and (pause == false)
-	or (gamepad_button_check_pressed(0, button_grid))
+	or (gamepad_button_check_pressed(global.player1_slot, button_grid))
 	and (pause == false)
 	{
 		if (show_grid == false)
@@ -1552,7 +1463,7 @@ if (global.actually_play_edited_level == false)
 		and (!mouse_check_button(mb_left))
 		and (erase_mode == false)
 		and (pause == false)
-		or (gamepad_button_check_pressed(0, gp_padl))
+		or (gamepad_button_check_pressed(global.player1_slot, gp_padl))
 		and (erase_mode == false)
 		and (pause == false)
 		{
@@ -1582,7 +1493,7 @@ if (global.actually_play_edited_level == false)
 		and (!mouse_check_button(mb_left))
 		and (erase_mode == false)
 		and (pause == false)
-		or (gamepad_button_check_pressed(0, gp_padr))
+		or (gamepad_button_check_pressed(global.player1_slot, gp_padr))
 		and (erase_mode == false)
 		and (pause == false)
 		{
@@ -1627,5 +1538,217 @@ if (global.actually_play_edited_level == false)
 		virtual_key_add(1100 - 128, 0, 400, 128, vk_escape); /* Pause virtual key */
 	}
 	#endregion /* Pause virtual key END */
+	
+	#region /* End Game */
+	if (quit_level_editor >= true)
+	{
+		quit_level_editor += 1;
+		instance_activate_all(); /* Activate all instances before saving the custom level */
+		
+		#region /* Save Thumbnail */
+		if (quit_level_editor == 3)
+		{
+			
+			#region /* Limit so cursor and view can't go outside room */
+			if (camera_get_view_width(view_camera[view_current]) < 1920)
+			or (camera_get_view_height(view_camera[view_current]) < 1080)
+			{
+				camera_set_view_size(view_camera[view_current], 1920, 1080);
+			}
+			scr_set_screen_size();
+			
+			#region /* Limit controller x and controller y inside room */
+			if (controller_x < camera_get_view_x(view_camera[view_current]))
+			{
+				controller_x = camera_get_view_x(view_camera[view_current]);
+			}
+			if (controller_x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+			{
+				controller_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+			}
+			if (controller_y < camera_get_view_y(view_camera[view_current]))
+			{
+				controller_y = camera_get_view_y(view_camera[view_current]);
+			}
+			if (controller_y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+			{
+				controller_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+			}
+			#endregion /* Limit controller x and controller y inside room END */
+			
+			#region /* Limit x and y inside room */
+			if (x < camera_get_view_x(view_camera[view_current]))
+			{
+				x = camera_get_view_x(view_camera[view_current]);
+			}
+			if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+			{
+				x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+			}
+			if (y < camera_get_view_y(view_camera[view_current]))
+			{
+				y = camera_get_view_y(view_camera[view_current]);
+			}
+			if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+			{
+				y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+			}
+			#endregion /* Limit x and y inside room END */
+		
+			#region /* Limit view inside room */
+			camera_set_view_pos(view_camera[view_current],
+			max(0, min(camera_get_view_x(view_camera[view_current]), room_width - camera_get_view_width(view_camera[view_current]))),
+			max(0, min(camera_get_view_y(view_camera[view_current]), room_height - camera_get_view_height(view_camera[view_current]))));
+			#endregion /* Limit view inside room END */
+		
+			#endregion /* Limit so view and cursor can't go outside room END */
+		
+			global.checkpoint_x = 0;
+			global.checkpoint_y = 0;
+			global.checkpoint_millisecond = 0;
+			global.checkpoint_second = 0;
+			global.checkpoint_minute = 0;
+			global.checkpoint_realmillisecond = 0;
+		
+			ini_open(working_directory + "/save_files/custom_level_save.ini");
+			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_x", 0);
+			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_y", 0);
+			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", 0);
+			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", 0);
+			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", 0);
+			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
+			ini_close();
+		
+			#region /* Save Thumbnail */
+			var thumbnail_sprite;
+			thumbnail_sprite = sprite_create_from_surface(application_surface,
+			camera_get_view_x(view_camera[view_current]),
+			camera_get_view_y(view_camera[view_current]),
+			camera_get_view_width(view_camera[view_current]),
+			camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
+			if (global.select_level_index >= 1)
+			and (global.create_level_from_template == false)
+			{
+				sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/automatic_thumbnail.png");
+			}
+			else
+			if (global.level_name != "")
+			{
+				sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
+			}
+			sprite_delete(thumbnail_sprite);
+			#endregion /* Save Thumbnail END */
+		
+			menu_delay = 9999; /* Disable all menu control */
+			scr_save_custom_level();
+			lives = 5;
+			global.lives_until_assist = 0;
+			global.actually_play_edited_level = false;
+			global.play_edited_level = false; /* Set this to false so you don't playtest the level */
+			global.character_select_in_this_menu = "level_editor";
+		}
+		#endregion /* Save Thumbnail END */
+		
+		if (quit_level_editor > 5)
+		{
+			global.create_level_from_template = false; /* Disable global.create_level_from_template after loading everything and quitting the level editor, to let every object have time to load and save */
+			room_goto(room_title);
+		}
+	}
+	#endregion /* End Game END */
+	
+	#region /* Deactivate instances outside view, run this code last in step event */
+	deactivate_timer += 1;
+	if (deactivate_timer >= 3)
+	{
+		if (startup_loading_timer <= 3)
+		{
+			startup_loading_timer += 1;
+		}
+		
+		if (quit_level_editor == 0)
+		and (global.play_edited_level == false)
+		and (startup_loading_timer >= 3)
+		{
+			instance_activate_all();
+			//instance_deactivate_region(
+			//camera_get_view_x(view_camera[view_current]) - 32,
+			//camera_get_view_y(view_camera[view_current]) - 32,
+			//camera_get_view_width(view_camera[view_current]) + 32 /* Camera Width */,
+			//camera_get_view_height(view_camera[view_current]) + 32 /* Camera Height */,
+			//false, true);
+		}
+		else
+		if (global.play_edited_level == false)
+		{
+			instance_activate_all();
+		}
+		
+		#region /* Activate objects that always should be active */
+		if (asset_get_type("obj_player") == asset_object)
+		{
+			instance_activate_object(obj_player);
+		}
+		if (asset_get_type("obj_player_lose") == asset_object)
+		{
+			instance_activate_object(obj_player_lose);
+		}
+		if (asset_get_type("obj_foreground1") == asset_object)
+		{
+			instance_activate_object(obj_foreground1);
+		}
+		if (asset_get_type("obj_foreground_above_static_objects") == asset_object)
+		{
+			instance_activate_object(obj_foreground_above_static_objects);
+		}
+		if (asset_get_type("obj_foreground2") == asset_object)
+		{
+			instance_activate_object(obj_foreground2);
+		}
+		if (asset_get_type("obj_foreground_secret") == asset_object)
+		{
+			instance_activate_object(obj_foreground_secret);
+		}
+		if (asset_get_type("obj_level_player_1_start") == asset_object)
+		{
+			instance_activate_object(obj_level_player_1_start);
+		}
+		if (asset_get_type("obj_level_player_2_start") == asset_object)
+		{
+			instance_activate_object(obj_level_player_2_start);
+		}
+		if (asset_get_type("obj_level_player_3_start") == asset_object)
+		{
+			instance_activate_object(obj_level_player_3_start);
+		}
+		if (asset_get_type("obj_level_player_4_start") == asset_object)
+		{
+			instance_activate_object(obj_level_player_4_start);
+		}
+		if (asset_get_type("obj_level_end") == asset_object)
+		{
+			instance_activate_object(obj_level_end);
+		}
+		if (asset_get_type("obj_level_height") == asset_object)
+		{
+			instance_activate_object(obj_level_height);
+		}
+		if (asset_get_type("obj_level_width") == asset_object)
+		{
+			instance_activate_object(obj_level_width);
+		}
+		if (asset_get_type("obj_water_level_height") == asset_object)
+		{
+			instance_activate_object(obj_water_level_height);
+		}
+		if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
+		{
+			instance_activate_object(obj_background_brightness_gameplay);
+		}
+		#endregion /* Activate objects that always should be active END */
+		
+		deactivate_timer = 0;
+	}
+	#endregion /* Deactivate instances outside view, run this code last in step event END */
 	
 }

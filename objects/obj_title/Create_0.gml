@@ -340,6 +340,22 @@ else
 title_music_lerp = 0;
 #endregion /* Update Music END */
 
+#region /* Loading Music */
+if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/loading.ogg"))
+{
+	global.loading_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/loading.ogg");
+}
+else
+if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/loading.ogg"))
+{
+	global.loading_music = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/loading.ogg");
+}
+else
+{
+	global.loading_music = noone;
+}
+#endregion /* Loading Music END */
+
 #region /* Update Trailer Sound */
 if (file_exists("video/trailer.ogg"))
 {

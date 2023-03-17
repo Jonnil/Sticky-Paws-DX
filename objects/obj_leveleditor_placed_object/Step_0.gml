@@ -612,3 +612,37 @@ if (global.actually_play_edited_level == false)
 	}
 	
 }
+
+#region /* Big collectible uses old ID's, need to update them so old levels are compatible */
+if (object == 35)
+or (object == 36)
+or (object == 37)
+or (object == 38)
+{
+	object = 34;
+}
+else
+if (object == 351)
+or (object == 361)
+or (object == 371)
+or (object == 381)
+{
+	object = 341;
+}
+else
+if (object == 49)
+or (object == 50)
+or (object == 51)
+or (object == 52)
+{
+	object = 48;
+}
+else
+if (object == 84)
+or (object == 85)
+or (object == 86)
+or (object == 87)
+{
+	object = 83;
+}
+#endregion /* Big collectible uses old ID's, need to update them so old levels are compatible END */

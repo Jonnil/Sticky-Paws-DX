@@ -62,7 +62,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 			if (keyboard_check(vk_control))
 			and (menu_delay == 0)
 			and (can_navigate_settings_sidebar = false)
-			or (gamepad_button_check(0, gp_face3))
+			or (gamepad_button_check(global.player1_slot, gp_face3))
 			and (menu_delay == 0)
 			and (can_navigate_settings_sidebar = false)
 			{
@@ -88,7 +88,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 		if (keyboard_check(vk_control))
 		and (menu_delay == 0)
 		and (can_navigate_settings_sidebar = false)
-		or (gamepad_button_check(0, gp_face3))
+		or (gamepad_button_check(global.player1_slot, gp_face3))
 		and (menu_delay == 0)
 		and (can_navigate_settings_sidebar = false)
 		{

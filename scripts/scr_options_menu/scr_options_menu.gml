@@ -2196,7 +2196,7 @@ function scr_options_menu()
 		{
 			var volume_main_y = 64;
 			var volume_music_y = 96 + (64);
-			var volume_jingle_y = 96 + (64 * 2);
+			var volume_melody_y = 96 + (64 * 2);
 			var volume_sound_y = 96 + (64 * 3);
 			var volume_ambient_y = 96 + (64 * 4);
 			var volume_footstep_y = 96 + (64 * 5);
@@ -2210,8 +2210,8 @@ function scr_options_menu()
 			if (global.volume_main > 1){global.volume_main = 1;}
 			if (global.volume_music < 0){global.volume_music = 0;}else
 			if (global.volume_music > 1){global.volume_music = 1;}
-			if (global.volume_jingle < 0){global.volume_jingle = 0;}else
-			if (global.volume_jingle > 1){global.volume_jingle = 1;}
+			if (global.volume_melody < 0){global.volume_melody = 0;}else
+			if (global.volume_melody > 1){global.volume_melody = 1;}
 			if (global.volume_sound < 0){global.volume_sound = 0;}else
 			if (global.volume_sound > 1){global.volume_sound = 1;}
 			if (global.volume_ambient < 0){global.volume_ambient = 0;}else
@@ -2228,16 +2228,16 @@ function scr_options_menu()
 			draw_menu_slider(410, volume_main_y, l10n_text("Main Volume"), "volume_main", global.volume_main, c_red);
 			draw_line_width_color(410, volume_main_y + 32, 820, volume_main_y + 32, 3, c_white, c_white);
 			draw_menu_slider(410, volume_music_y, l10n_text("Music Volume"), "volume_music", global.volume_music, c_red);
-			draw_menu_slider(410, volume_jingle_y, l10n_text("Jingle Volume"), "volume_jingle", global.volume_jingle, c_red);
+			draw_menu_slider(410, volume_melody_y, l10n_text("Melody Volume"), "volume_melody", global.volume_melody, c_red);
 			draw_menu_slider(410, volume_sound_y, l10n_text("Sound Volume"), "volume_sound", global.volume_sound, c_lime);
 			draw_menu_slider(410, volume_ambient_y, l10n_text("Ambient Volume"), "volume_ambient", global.volume_ambient, c_lime);
 			draw_menu_slider(410, volume_footstep_y, l10n_text("Footstep Volume"), "volume_footstep", global.volume_footstep, c_lime);
-			draw_menu_slider(410, volume_voice_y, l10n_text("Voices Volume"), "voices_volume", global.volume_voice, c_aqua);
+			draw_menu_slider(410, volume_voice_y, l10n_text("Voices Volume"), "volume_voices", global.volume_voice, c_aqua);
 			
 			#region /* Verbosity Bar */
 			if (global.enable_verbosity_slider == true)
 			{
-				draw_menu_slider(410, 96 + (64 * 7), l10n_text("Voices Volume"), "voices_volume", global.volume_voice, c_aqua);
+				draw_menu_slider(410, 96 + (64 * 7), l10n_text("Voices Volume"), "volume_voices", global.volume_voice, c_aqua);
 			}
 			#endregion /* Verbosity Bar END */
 			
@@ -2313,9 +2313,9 @@ function scr_options_menu()
 				and (menu == "select_narrator")
 				or (keyboard_check_pressed(global.player1_key2_left))
 				and (menu == "select_narrator")
-				or (gamepad_button_check_pressed(0, gp_padl))
+				or (gamepad_button_check_pressed(global.player1_slot, gp_padl))
 				and (menu == "select_narrator")
-				or (gamepad_axis_value(0, gp_axislh) < 0)
+				or (gamepad_axis_value(global.player1_slot, gp_axislh) < 0)
 				and (menu_joystick_delay <= 0)
 				and (menu == "select_narrator")
 				or (mouse_check_button_pressed(mb_left))
@@ -2384,9 +2384,9 @@ function scr_options_menu()
 				and (menu == "select_narrator")
 				or (keyboard_check_pressed(global.player1_key2_right))
 				and (menu == "select_narrator")
-				or (gamepad_button_check_pressed(0, gp_padr))
+				or (gamepad_button_check_pressed(global.player1_slot, gp_padr))
 				and (menu == "select_narrator")
-				or (gamepad_axis_value(0, gp_axislh) > 0)
+				or (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
 				and (menu_joystick_delay <= 0)
 				and (menu == "select_narrator")
 				or (mouse_check_button_pressed(mb_left))
@@ -2487,23 +2487,30 @@ function scr_options_menu()
 		{
 			var file_select_x = 450;
 			var file_select_right_arrow_x = 400;
-		
+			var file_y = 20 + (40 * 4);
+			var delete_file_y = 20 + (40 * 5);
+			var open_save_file_folder_y = 20 + (40 * 6);
+			var file_path_y = 20 + (40 * 8);
+			var date_modified_y = 20 + (40 * 9);
+			var last_played_today_y = 20 + (40 * 10);
+			var number_of_levels_passed_y = 20 + (40 * 12);
+			
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(file_select_x, 20 + (40 * 4), l10n_text("File") + ": " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(file_select_x, file_y, l10n_text("File") + ": " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			if (global.enable_options_for_pc == true)
 			{
-				scr_draw_text_outlined(450, 20 + (40 * 8), string_replace_all(string(game_save_id) + "/save_files\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(450, file_path_y, string_replace_all(string(game_save_id) + "save_files\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 		
 			#region /* Display save file data */
 			if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
 			{
 				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
-			
+				
 				if (ini_key_exists("Player", "current_month"))
 				and (ini_key_exists("Player", "current_day"))
 				and (ini_key_exists("Player", "current_year"))
@@ -2511,28 +2518,28 @@ function scr_options_menu()
 				and (ini_key_exists("Player", "current_minute"))
 				and (ini_key_exists("Player", "current_second"))
 				{
-					scr_draw_text_outlined(file_select_x, 20 + (40 * 9), l10n_text("Date modified") + ":", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-					scr_draw_text_outlined(file_select_x, 20 + (40 * 10),
+					scr_draw_text_outlined(file_select_x, date_modified_y,
+					l10n_text("Date modified") + ": " +
 					string(ini_read_real("Player", "current_month", 0)) + "/" +
 					string(ini_read_real("Player", "current_day", 0)) + "/" +
 					string(ini_read_real("Player", "current_year", 0)) + " " +
 					string(string_replace_all(string_format(ini_read_real("Player", "current_hour", 0), 2, 0), " ", "0")) + ":" +
 					string(string_replace_all(string_format(ini_read_real("Player", "current_minute", 0), 2, 0), " ", "0")) + "." +
 					string(string_replace_all(string_format(ini_read_real("Player", "current_second", 0), 2, 0), " ", "0"))
-					, global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-				
+					,global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+					
 					if (ini_read_real("Player", "current_month", 0) = current_month)
 					and (ini_read_real("Player", "current_day", 0) = current_day)
 					and (ini_read_real("Player", "current_year", 0) = current_year)
 					{
-						scr_draw_text_outlined(file_select_x, 20 + (40 * 11), l10n_text("Last played today!"), global.default_text_size * 1.05, c_menu_outline, c_menu_fill, 1);
+						scr_draw_text_outlined(file_select_x, last_played_today_y, l10n_text("Last played today!"), global.default_text_size * 1.05, c_menu_outline, c_menu_fill, 1);
 					}
-				
+					
 				}
-			
+				
 				if (ini_key_exists("Player", "number_of_levels_cleared"))
 				{
-					scr_draw_text_outlined(file_select_x, 20 + (40 * 13), l10n_text("Number of levels passed") + ": " + string(ini_read_real("Player", "number_of_levels_cleared", false)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(file_select_x, number_of_levels_passed_y, l10n_text("Number of levels passed") + ": " + string(ini_read_real("Player", "number_of_levels_cleared", false)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				}
 			
 				ini_close();
@@ -2544,15 +2551,17 @@ function scr_options_menu()
 			{
 				if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
 				{
-					draw_menu_button(450, 20 + (40 * 5), l10n_text("Delete File"), "file_delete", "file_delete_no");
+					draw_menu_button(450, delete_file_y, l10n_text("Delete File"), "file_delete", "file_delete_no");
+					draw_sprite_ext(spr_icons_delete, 0, 450 + 16, delete_file_y + 21, 1, 1, 0, c_white, 1);
 				}
 			
 				if (global.enable_open_custom_folder == true)
 				{
-					draw_menu_button(450, 20 + (40 * 6), l10n_text("Open Save File Folder"), "open_save_file_folder", "open_save_file_folder");
+					draw_menu_button(450, open_save_file_folder_y, l10n_text("Open Save File Folder"), "open_save_file_folder", "open_save_file_folder");
+					draw_sprite_ext(spr_icons_folder, 0, 450 + 16, open_save_file_folder_y + 21, 1, 1, 0, c_white, 1);
 				}
 			
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 450, 20 + (40 * 6) + 2, 450 + 371, 20 + (40 * 6) + 41))
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 450, open_save_file_folder_y + 2, 450 + 371, open_save_file_folder_y + 41))
 				and (global.controls_used_for_menu_navigation == "mouse")
 				and (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
@@ -2575,8 +2584,10 @@ function scr_options_menu()
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 100, l10n_text("Are you sure you want to delete file") + " " + string(global.file) + "?", global.default_text_size, c_black, c_red, 1);
 				draw_menu_button(get_window_width * 0.5 - 370 - 32, get_window_height * 0.5, l10n_text("Yes"), "file_delete_yes", "file_delete_yes");
+				draw_sprite_ext(spr_icons_delete, 0, get_window_width * 0.5 - 370 - 32 + 16, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1);
 				draw_menu_button(get_window_width * 0.5 + 32, get_window_height * 0.5, l10n_text("No"), "file_delete_no", "file_delete");
-			
+				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 + 32 + 16, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1);
+				
 				if (key_left)
 				and (menu_joystick_delay == 0)
 				or (key_right)
@@ -2604,26 +2615,26 @@ function scr_options_menu()
 			and (menu != "file_delete_no")
 			and (menu != "file_delete_yes")
 			{
-				draw_sprite_ext(spr_keyboard_keys, vk_left, file_select_x - 32, 20 + (40 * 4), 0.5, 0.5, 0, c_white, 1);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x - 32 - 16, 20 + (40 * 4) - 16, file_select_x - 32 + 16, 20 + (40 * 4) + 16))
+				draw_sprite_ext(spr_keyboard_keys, vk_left, file_select_x - 32, file_y, 0.5, 0.5, 0, c_white, 1);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x - 32 - 16, file_y - 16, file_select_x - 32 + 16, file_y + 16))
 				and (global.controls_used_for_menu_navigation == "mouse")
 				{
 					menu = "file_delete";
 					draw_set_alpha(0.5);
-					draw_rectangle_color(file_select_x - 32 - 16, 20 + (40 * 4) - 16, file_select_x - 32 + 16, 20 + (40 * 4) + 16, c_white, c_white, c_white, c_white, false);
+					draw_rectangle_color(file_select_x - 32 - 16, file_y - 16, file_select_x - 32 + 16, file_y + 16, c_white, c_white, c_white, c_white, false);
 					draw_set_alpha(1);
 				}
 			}
 			if (menu != "file_delete_no")
 			and (menu != "file_delete_yes")
 			{
-				draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, 20 + (40 * 4), 0.5, 0.5, 0, c_white, 1);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, 20 + (40 * 4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 * 4) + 16))
+				draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, file_y, 0.5, 0.5, 0, c_white, 1);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16))
 				and (global.controls_used_for_menu_navigation == "mouse")
 				{
 					menu = "file_delete";
 					draw_set_alpha(0.5);
-					draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, 20 + (40 * 4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 * 4) + 16, c_white, c_white, c_white, c_white, false);
+					draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16, c_white, c_white, c_white, c_white, false);
 					draw_set_alpha(1);
 				}
 			}
@@ -2751,14 +2762,14 @@ function scr_options_menu()
 		
 			if (menu == "file_select")
 			{
-				draw_sprite(spr_menu_cursor, menu_cursor_index, file_select_x - 32 - 32, 20 + (40 * 4));
+				draw_sprite(spr_menu_cursor, menu_cursor_index, file_select_x - 32 - 32, file_y);
 			}
 		
 			if (key_left)
 			and (menu == "file_select")
 			and (can_navigate_settings_sidebar = false)
 			or (mouse_check_button_pressed(mb_left))
-			and (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x - 32 - 16, 20 + (40 * 4) - 16, file_select_x - 32 + 16, 20 + (40 * 4) + 16))
+			and (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x - 32 - 16, file_y - 16, file_select_x - 32 + 16, file_y + 16))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (menu != "file_delete_no")
 			and (menu != "file_delete_yes")
@@ -2779,7 +2790,7 @@ function scr_options_menu()
 			and (menu == "file_select")
 			and (can_navigate_settings_sidebar = false)
 			or (mouse_check_button_pressed(mb_left))
-			and (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, 20 + (40 * 4) - 16, file_select_x + file_select_right_arrow_x + 16, 20 + (40 * 4) + 16))
+			and (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (menu != "file_delete_no")
 			and (menu != "file_delete_yes")
@@ -3364,52 +3375,39 @@ function scr_options_menu()
 			if (menu == "volume_main")
 			{
 				if (key_left)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
 					if (global.volume_main > 0)
 					{
-						global.volume_main -= 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_main -= 0.0001;
+						}
+						else
+						{
+							global.volume_main -= 0.05;
+						}
 					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_right)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.volume_main < + 1)
+					if (global.volume_main < +1)
 					{
-						global.volume_main += 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_main += 0.0001;
+						}
+						else
+						{
+							global.volume_main += 0.05;
+						}
 					}
-				}
-				if (mouse_wheel_down())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_left)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_main > 0)
-					{
-						global.volume_main -= 0.0001;
-					}
-				}
-				else
-				if (mouse_wheel_up())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_right)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_main < + 1)
-					{
-						global.volume_main += 0.0001;
-					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_up)
@@ -3436,55 +3434,40 @@ function scr_options_menu()
 			if (menu == "volume_music")
 			{
 				if (key_left)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
 					if (global.volume_music > 0)
 					{
-						global.volume_music -= 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_music -= 0.0001;
+						}
+						else
+						{
+							global.volume_music -= 0.05;
+						}
 					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_music * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_right)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.volume_music < + 1)
+					if (global.volume_music < +1)
 					{
-						global.volume_music += 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_music += 0.0001;
+						}
+						else
+						{
+							global.volume_music += 0.05;
+						}
 					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_music * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
-				else
-				if (mouse_wheel_down())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_left)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_music > 0)
-					{
-						global.volume_music -= 0.0001;
-					}
-				}
-				else
-				if (mouse_wheel_up())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_right)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_music < + 1)
-					{
-						global.volume_music += 0.0001;
-					}
-				}
-				else
 				if (key_up)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
@@ -3497,7 +3480,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					menu = "volume_jingle";
+					menu = "volume_melody";
 					menu_delay = 3;
 				}
 			}
@@ -3505,57 +3488,43 @@ function scr_options_menu()
 			
 			else
 			
-			#region /* Jingle Volume Navigation */
-			if (menu == "volume_jingle")
+			#region /* Melody Volume Navigation */
+			if (menu == "volume_melody")
 			{
 				if (key_left)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.volume_jingle > 0)
+					if (global.volume_melody > 0)
 					{
-						global.volume_jingle -= 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_melody -= 0.0001;
+						}
+						else
+						{
+							global.volume_melody -= 0.05;
+						}
 					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_melody * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_right)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.volume_jingle < + 1)
+					if (global.volume_melody < +1)
 					{
-						global.volume_jingle += 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_melody += 0.0001;
+						}
+						else
+						{
+							global.volume_melody += 0.05;
+						}
 					}
-				}
-				else
-				if (mouse_wheel_down())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_left)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_jingle > 0)
-					{
-						global.volume_jingle -= 0.0001;
-					}
-				}
-				else
-				if (mouse_wheel_up())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_right)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_jingle < + 1)
-					{
-						global.volume_jingle += 0.0001;
-					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_melody * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_up)
@@ -3574,7 +3543,7 @@ function scr_options_menu()
 					menu_delay = 3;
 				}
 			}
-			#endregion /* Jingle Volume Navigation END */
+			#endregion /* Melody Volume Navigation END */
 			
 			else
 			
@@ -3582,60 +3551,46 @@ function scr_options_menu()
 			if (menu == "volume_sound")
 			{
 				if (key_left)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
 					if (global.volume_sound > 0)
 					{
-						global.volume_sound -= 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_sound -= 0.0001;
+						}
+						else
+						{
+							global.volume_sound -= 0.05;
+						}
 					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_sound * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_right)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.volume_sound < + 1)
+					if (global.volume_sound < +1)
 					{
-						global.volume_sound += 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_sound += 0.0001;
+						}
+						else
+						{
+							global.volume_sound += 0.05;
+						}
 					}
-				}
-				else
-				if (mouse_wheel_down())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_left)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_sound > 0)
-					{
-						global.volume_sound -= 0.0001;
-					}
-				}
-				else
-				if (mouse_wheel_up())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_right)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_sound < + 1)
-					{
-						global.volume_sound += 0.0001;
-					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_sound * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_up)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					menu = "volume_jingle";
+					menu = "volume_melody";
 					menu_delay = 3;
 				}
 				else
@@ -3655,52 +3610,39 @@ function scr_options_menu()
 			if (menu == "volume_ambient")
 			{
 				if (key_left)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
 					if (global.volume_ambient > 0)
 					{
-						global.volume_ambient -= 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_ambient -= 0.0001;
+						}
+						else
+						{
+							global.volume_ambient -= 0.05;
+						}
 					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_ambient * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_right)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.volume_ambient < + 1)
+					if (global.volume_ambient < +1)
 					{
-						global.volume_ambient += 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_ambient += 0.0001;
+						}
+						else
+						{
+							global.volume_ambient += 0.05;
+						}
 					}
-				}
-				if (mouse_wheel_down())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_left)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_ambient > 0)
-					{
-						global.volume_ambient -= 0.0001;
-					}
-				}
-				else
-				if (mouse_wheel_up())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_right)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_ambient < + 1)
-					{
-						global.volume_ambient += 0.0001;
-					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_ambient * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_up)
@@ -3727,52 +3669,39 @@ function scr_options_menu()
 			if (menu == "volume_footstep")
 			{
 				if (key_left)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
 					if (global.volume_footstep > 0)
 					{
-						global.volume_footstep -= 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_footstep -= 0.0001;
+						}
+						else
+						{
+							global.volume_footstep -= 0.05;
+						}
 					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_footstep * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_right)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.volume_footstep < + 1)
+					if (global.volume_footstep < +1)
 					{
-						global.volume_footstep += 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_footstep += 0.0001;
+						}
+						else
+						{
+							global.volume_footstep += 0.05;
+						}
 					}
-				}
-				if (mouse_wheel_down())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_left)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_footstep > 0)
-					{
-						global.volume_footstep -= 0.0001;
-					}
-				}
-				else
-				if (mouse_wheel_up())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_right)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_footstep < + 1)
-					{
-						global.volume_footstep += 0.0001;
-					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_footstep * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_up)
@@ -3787,7 +3716,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					menu = "voices_volume";
+					menu = "volume_voices";
 					menu_delay = 3;
 				}
 			}
@@ -3796,56 +3725,42 @@ function scr_options_menu()
 			else
 		
 			#region /* Voices Volume Navigation */
-			if (menu == "voices_volume")
+			if (menu == "volume_voices")
 			{
 				if (key_left)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
 					if (global.volume_voice > 0)
 					{
-						global.volume_voice -= 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_voice -= 0.0001;
+						}
+						else
+						{
+							global.volume_voice -= 0.05;
+						}
 					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_voice * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_right)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.volume_voice < + 1)
+					if (global.volume_voice < +1)
 					{
-						global.volume_voice += 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.volume_voice += 0.0001;
+						}
+						else
+						{
+							global.volume_voice += 0.05;
+						}
 					}
-				}
-				else
-				if (mouse_wheel_down())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_left)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_voice > 0)
-					{
-						global.volume_voice -= 0.0001;
-					}
-				}
-				else
-				if (mouse_wheel_up())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_right)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.volume_voice < + 1)
-					{
-						global.volume_voice += 0.0001;
-					}
+					audio_play_sound(snd_basic_collectible, 0, 0, global.volume_voice * global.volume_main); /* Play a sound effect so player can hear how loud it will sound like */
 				}
 				else
 				if (key_up)
@@ -3875,7 +3790,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					menu = "voices_volume";
+					menu = "volume_voices";
 					menu_delay = 3;
 				}
 				else
@@ -3927,52 +3842,36 @@ function scr_options_menu()
 			if (menu == "verbosity_slider")
 			{
 				if (key_left)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
 					if (global.verbosity_slider > 0)
 					{
-						global.verbosity_slider -= 0.05;
+						if (keyboard_check(vk_shift))
+						{
+							global.verbosity_slider -= 0.0001;
+						}
+						else
+						{
+							global.verbosity_slider -= 0.05;
+						}
 					}
 				}
 				else
 				if (key_right)
-				and (!keyboard_check(vk_shift))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.verbosity_slider < + 1)
+					if (global.verbosity_slider < +1)
 					{
-						global.verbosity_slider += 0.05;
-					}
-				}
-				else
-				if (mouse_wheel_down())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_left)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.verbosity_slider > 0)
-					{
-						global.verbosity_slider -= 0.0001;
-					}
-				}
-				else
-				if (mouse_wheel_up())
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				or (key_right)
-				and (keyboard_check(vk_shift))
-				and (menu_delay == 0)
-				and (open_dropdown == false)
-				{
-					if (global.verbosity_slider < + 1)
-					{
-						global.verbosity_slider += 0.0001;
+						if (keyboard_check(vk_shift))
+						{
+							global.verbosity_slider += 0.0001;
+						}
+						else
+						{
+							global.verbosity_slider += 0.05;
+						}
 					}
 				}
 				else
@@ -3980,7 +3879,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					menu = "voices_volume";
+					menu = "volume_voices";
 					menu_delay = 3;
 				}
 				else

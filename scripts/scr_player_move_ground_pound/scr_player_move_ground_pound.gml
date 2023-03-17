@@ -197,16 +197,16 @@ function scr_player_move_ground_pound()
 
 	#region /* You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true */
 	if (joystick_can_ground_pound == false)
-	and (gamepad_axis_value(0, gp_axislv) <= 0)
+	and (gamepad_axis_value(global.player1_slot, gp_axislv) <= 0)
 	and (player <= 1)
 	or (joystick_can_ground_pound == false)
-	and (gamepad_axis_value(1, gp_axislv) <= 0)
+	and (gamepad_axis_value(global.player2_slot, gp_axislv) <= 0)
 	and (player <= 2)
 	or (joystick_can_ground_pound == false)
-	and (gamepad_axis_value(2, gp_axislv) <= 0)
+	and (gamepad_axis_value(global.player3_slot, gp_axislv) <= 0)
 	and (player <= 3)
 	or (joystick_can_ground_pound == false)
-	and (gamepad_axis_value(3, gp_axislv) <= 0)
+	and (gamepad_axis_value(global.player4_slot, gp_axislv) <= 0)
 	and (player <= 4)
 	{
 		joystick_can_ground_pound = true;
@@ -215,16 +215,16 @@ function scr_player_move_ground_pound()
 
 	#region /* You must have this code after the previous code otherwise the joystick_can_ground_pound is always set to true */
 	if (joystick_can_ground_pound == true)
-	and (gamepad_axis_value(0, gp_axislv) > 0)
+	and (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
 	and (player <= 1)
 	or (joystick_can_ground_pound == true)
-	and (gamepad_axis_value(1, gp_axislv) > 0)
+	and (gamepad_axis_value(global.player2_slot, gp_axislv) > 0)
 	and (player <= 2)
 	or (joystick_can_ground_pound == true)
-	and (gamepad_axis_value(2, gp_axislv) > 0)
+	and (gamepad_axis_value(global.player3_slot, gp_axislv) > 0)
 	and (player <= 3)
 	or (joystick_can_ground_pound == true)
-	and (gamepad_axis_value(3, gp_axislv) > 0)
+	and (gamepad_axis_value(global.player4_slot, gp_axislv) > 0)
 	and (player <= 4)
 	{
 		joystick_can_ground_pound = false;

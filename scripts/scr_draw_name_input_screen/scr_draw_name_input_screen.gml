@@ -1,5 +1,13 @@
-function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string)
+function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false)
 {
+	
+	#region /* Set name input screen to always be above the virtual keyboard */
+	if (keyboard_virtual_status())
+	and (keyboard_virtual_height() != 0)
+	{
+		yy = display_get_gui_height() - keyboard_virtual_height() - 160;
+	}
+	#endregion /* Set name input screen to always be above the virtual keyboard END */
 	
 	if (string_width(what_string_to_edit) < 300)
 	{
@@ -8,6 +16,15 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	else
 	{
 		var width = string_width(what_string_to_edit) * 0.5;
+	}
+	
+	if (global.keyboard_virtual_timer < 2)
+	{
+		global.keyboard_virtual_timer += 1;
+	}
+	if (global.keyboard_virtual_timer == 1)
+	{
+		keyboard_virtual_show(kbv_type_default, kbv_returnkey_default, kbv_autocapitalize_characters, false);
 	}
 	
 	#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */
@@ -88,32 +105,58 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	and (keyboard_string != "")
 	or (can_press_ok_when_input_empty == true)
 	{
-		draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
-		if (global.controls_used_for_menu_navigation == "mouse")
-		or (menu != ok_menu_string)
-		and (menu != cancel_menu_string)
-		or (menu == ok_menu_string)
+		if (max_characters_needed == true) /* On some code input screens, you want to fill all the characters to the max before you can continue */
+		and (string_length(what_string_to_edit) == max_characters)
+		or (max_characters_needed == false)
 		{
-			if (gamepad_is_connected(0))
-			and (global.controls_used_for_menu_navigation == "controller")
+			draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
+			if (global.controls_used_for_menu_navigation == "mouse")
+			or (menu != ok_menu_string)
+			and (menu != cancel_menu_string)
+			or (menu == ok_menu_string)
 			{
-				scr_draw_gamepad_buttons(global.player1_gamepad_button_accept, xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, c_white, 1);
+				if (gamepad_is_connected(global.player1_slot))
+				and (global.controls_used_for_menu_navigation == "controller")
+				{
+					scr_draw_gamepad_buttons(global.player1_gamepad_button_accept, xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, c_white, 1);
+				}
+				else
+				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+				{
+					draw_sprite_ext(spr_keyboard_keys, vk_enter, xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, 0.5, 0, c_white, 1);
+				}
 			}
-			else
-			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+			
+			#region /* Clicking the OK button */
+			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
+			and (mouse_check_button_released(mb_left))
 			{
-				draw_sprite_ext(spr_keyboard_keys, vk_enter, xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, 0.5, 0, c_white, 1);
+				global.keyboard_virtual_timer = 0;
+				keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking OK */
 			}
+			#endregion /* Clicking the OK button END */
+			
 		}
 	}
 	draw_menu_button(xx + buttons_x, yy + buttons_cancel_y, l10n_text("Cancel"), cancel_menu_string, cancel_menu_string);
+	
+	#region /* Clicking the Cancel button */
+	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
+	and (mouse_check_button_released(mb_left))
+	or (keyboard_check_released(vk_backspace))
+	{
+		global.keyboard_virtual_timer = 0;
+		keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
+	}
+	#endregion /* Clicking the Cancel button END */
+	
 	draw_sprite_ext(spr_icons_back, 0, xx + buttons_x + 55, yy + buttons_cancel_y + 21, 1, 1, 0, c_white, 1);
 	if (global.controls_used_for_menu_navigation == "mouse")
 	or (menu != ok_menu_string)
 	and (menu != cancel_menu_string)
 	or (menu == ok_menu_string)
 	{
-		if (gamepad_is_connected(0))
+		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
 		{
 			scr_draw_gamepad_buttons(global.player1_gamepad_button_back, xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
@@ -126,7 +169,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	else
 	if (menu == cancel_menu_string)
 	{
-		if (gamepad_is_connected(0))
+		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
 		{
 			scr_draw_gamepad_buttons(global.player1_gamepad_button_accept, xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
@@ -151,16 +194,16 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	if (menu_delay == 0)
 	{
 		if (keyboard_check_pressed(vk_up))
-		or (gamepad_button_check_pressed(0, gp_padu))
-		or (gamepad_axis_value(0, gp_axislv) < 0)
+		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
+		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
 		or (mouse_wheel_up())
 		{
 			menu = ok_menu_string;
 		}
 		else
 		if (keyboard_check_pressed(vk_down))
-		or (gamepad_button_check_pressed(0, gp_padd))
-		or (gamepad_axis_value(0, gp_axislv) > 0)
+		or (gamepad_button_check_pressed(global.player1_slot, gp_padd))
+		or (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
 		or (mouse_wheel_down())
 		{
 			menu = cancel_menu_string;

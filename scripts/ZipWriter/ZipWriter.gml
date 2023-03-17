@@ -119,7 +119,8 @@ function zip_add_buffer_ext(_this,_path1,_buf,_pos,_len,_compressionLevel){
 	ds_list_add(_this[1],_file);
 }
 
-function zip_add_buffer(_this,_path1,_buf,_compressionLevel){
+function zip_add_buffer(_this,_path1,_buf,_compressionLevel)
+{
 	/// zip_add_buffer(this:zip, path:string, buf:buffer, ?compressionLevel:int)
 	/// @param {zip} this
 	/// @param {string} path
@@ -128,21 +129,22 @@ function zip_add_buffer(_this,_path1,_buf,_compressionLevel){
 	if(false)show_debug_message(argument[2]);
 	if (_buf > -1)
 	{
-		zip_add_buffer_ext(_this,_path1,_buf,0,buffer_get_size(_buf),_compressionLevel);
+		zip_add_buffer_ext(_this, _path1, _buf, 0, buffer_get_size(_buf), _compressionLevel);
 	}
 }
 
-function zip_add_file(_this,_path1,_filePath,_compressionLevel){
+function zip_add_file(_this,_path1,_filePath,_compressionLevel)
+{
 	/// zip_add_file(this:zip, path:string, filePath:string, ?compressionLevel:int)
 	/// @param {zip} this
 	/// @param {string} path
 	/// @param {string} filePath
 	/// @param {int} ?compressionLevel
 	if(false)show_debug_message(argument[2]);
-	var _buf=buffer_load(_filePath);
+	var _buf = buffer_load(_filePath);
 	if (_buf > -1)
 	{
-		zip_add_buffer_ext(_this,_path1,_buf,0,buffer_get_size(_buf),_compressionLevel);
+		zip_add_buffer_ext(_this, _path1, _buf, 0, buffer_get_size(_buf), _compressionLevel);
 	}
 	buffer_delete(_buf);
 }

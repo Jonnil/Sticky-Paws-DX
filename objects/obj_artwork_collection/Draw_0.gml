@@ -12,7 +12,7 @@ and (can_navigate = false)
 {
 	
 	#region /* Draw Enter Gallery Key */
-	if (gamepad_is_connected(0))
+	if (gamepad_is_connected(global.player1_slot))
 	and (global.controls_used_for_menu_navigation == "controller")
 	or (global.always_show_gamepad_buttons == true)
 	{

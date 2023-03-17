@@ -3,7 +3,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Draw where player will do playtesting from */
 	if (sprite_player > 0)
-	and (quit_level_editor <= 0)
+	and (quit_level_editor == false)
 	{
 		playtest_x_lerp = lerp(playtest_x_lerp, playtest_x, 0.5);
 		playtest_y_lerp = lerp(playtest_y_lerp, playtest_y, 0.5);

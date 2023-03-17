@@ -1,13 +1,35 @@
 function scr_player_move_pause()
 {
 	
+	#region /* Set correct controller ports */
+	if (player == 1)
+	{
+		var player_gamepad_slot = global.player1_slot;
+	}
+	else
+	if (player == 2)
+	{
+		var player_gamepad_slot = global.player2_slot;
+	}
+	else
+	if (player == 3)
+	{
+		var player_gamepad_slot = global.player3_slot;
+	}
+	else
+	if (player == 4)
+	{
+		var player_gamepad_slot = global.player4_slot;
+	}
+	#endregion /* Set correct controller ports END */
+	
 	#region /* Pause */	
 	if (keyboard_check_pressed(vk_escape))
 	or (keyboard_check(vk_tab))
 	and (keyboard_check(vk_lshift))
-	or (gamepad_button_check_pressed(player - 1, gp_start))
-	or (gamepad_button_check_pressed(player - 1, gp_select))
-	or (!gamepad_is_connected(player - 1))
+	or (gamepad_button_check_pressed(player_gamepad_slot, gp_start))
+	or (gamepad_button_check_pressed(player_gamepad_slot, gp_select))
+	or (!gamepad_is_connected(player_gamepad_slot))
 	and (controller_connected == true)
 	or (global.actually_play_edited_level == true)
 	and (!window_has_focus())
@@ -93,8 +115,8 @@ function scr_player_move_pause()
 		{
 			
 			#region /* What player should control the pause menu */
-			if (gamepad_button_check_pressed(player - 1, gp_start))
-			or (gamepad_button_check_pressed(player - 1, gp_select))
+			if (gamepad_button_check_pressed(player_gamepad_slot, gp_start))
+			or (gamepad_button_check_pressed(player_gamepad_slot, gp_select))
 			{
 				global.pause_player = player - 1;
 			}

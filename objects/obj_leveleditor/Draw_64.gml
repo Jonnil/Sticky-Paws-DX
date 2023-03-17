@@ -20,12 +20,13 @@ if (global.actually_play_edited_level == false)
 		if (pause == false)
 		{
 			if (keyboard_check_pressed(vk_escape))
-			or (gamepad_button_check_pressed(0, gp_start))
-			or (gamepad_button_check_pressed(1, gp_start))
-			or (gamepad_button_check_pressed(2, gp_start))
-			or (gamepad_button_check_pressed(3, gp_start))
+			or (gamepad_button_check_pressed(global.player1_slot, gp_start))
+			or (gamepad_button_check_pressed(global.player2_slot, gp_start))
+			or (gamepad_button_check_pressed(global.player3_slot, gp_start))
+			or (gamepad_button_check_pressed(global.player4_slot, gp_start))
 			or (gamepad_button_check_pressed(4, gp_start))
 			{
+				
 				scr_save_custom_level(); /* Save level before going to the pause menu */
 				
 				global.pause_room = room_leveleditor;
@@ -62,10 +63,10 @@ if (global.actually_play_edited_level == false)
 				
 				#region /* Only quit the pause menu when you're in the first pause menu */
 				if (keyboard_check_pressed(vk_escape))
-				or (gamepad_button_check_pressed(0, gp_start))
-				or (gamepad_button_check_pressed(1, gp_start))
-				or (gamepad_button_check_pressed(2, gp_start))
-				or (gamepad_button_check_pressed(3, gp_start))
+				or (gamepad_button_check_pressed(global.player1_slot, gp_start))
+				or (gamepad_button_check_pressed(global.player2_slot, gp_start))
+				or (gamepad_button_check_pressed(global.player3_slot, gp_start))
+				or (gamepad_button_check_pressed(global.player4_slot, gp_start))
 				or (gamepad_button_check_pressed(4, gp_start))
 				{
 					if (input_key == false)
@@ -368,6 +369,7 @@ if (global.actually_play_edited_level == false)
 				if (global.enable_options_for_pc == true)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
+					draw_sprite_ext(spr_icons_folder, 0, get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1);
 					if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, get_window_width * 0.5 - 185 + 371, get_window_height * 0.5 + 42 + 41))
 					and (global.controls_used_for_menu_navigation == "mouse")
 					and (mouse_check_button_released(mb_left))
@@ -670,7 +672,7 @@ if (global.actually_play_edited_level == false)
 		
 				#region /* Press enter when done typing */
 				if (keyboard_check_pressed(vk_enter))
-				or (gamepad_button_check_pressed(0, gp_start))
+				or (gamepad_button_check_pressed(global.player1_slot, gp_start))
 				{
 					if (menu_delay == 0)
 					{
@@ -882,7 +884,7 @@ if (global.actually_play_edited_level == false)
 		draw_sprite_ext(spr_menu_button_play, 0, play_level_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		
 		#region /* Draw Play Key */
-		if (gamepad_is_connected(0))
+		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
 		or (global.always_show_gamepad_buttons == true)
 		{
@@ -985,7 +987,7 @@ if (global.actually_play_edited_level == false)
 			}
 			
 			#region /* Draw Brush Key */
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(global.player1_slot))
 			and (global.controls_used_for_menu_navigation == "controller")
 			or (global.always_show_gamepad_buttons == true)
 			{
@@ -1171,7 +1173,7 @@ if (global.actually_play_edited_level == false)
 			}
 			
 			#region /* Draw Eraser Key */
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(global.player1_slot))
 			and (global.controls_used_for_menu_navigation == "controller")
 			or (global.always_show_gamepad_buttons == true)
 			{
@@ -1287,7 +1289,7 @@ if (global.actually_play_edited_level == false)
 			}
 			
 			#region /* Draw Eraser Key */
-			if (gamepad_is_connected(0))
+			if (gamepad_is_connected(global.player1_slot))
 			and (global.controls_used_for_menu_navigation == "controller")
 			or (global.always_show_gamepad_buttons == true)
 			{

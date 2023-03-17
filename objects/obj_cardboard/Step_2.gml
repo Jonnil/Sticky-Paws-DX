@@ -1,7 +1,7 @@
-var view_left = camera_get_view_x(view_camera[view_current]) - 22
-var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 22
-var view_top = camera_get_view_y(view_camera[view_current]) - 22
-var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current])) + 22
+var view_left = camera_get_view_x(view_camera[view_current]) - 21;
+var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 21;
+var view_top = camera_get_view_y(view_camera[view_current]) - 21;
+var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current])) + 21;
 
 #region /* No collision underneath */
 if (!place_meeting(x, y + 3, obj_wall))

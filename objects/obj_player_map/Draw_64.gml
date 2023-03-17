@@ -2,7 +2,6 @@ var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
 var clear_prompt_x = 164;
 
-
 #region /* Show Enter Level Key */
 if (can_move == true)
 and (can_enter_level >= 30)
@@ -15,7 +14,7 @@ and (global.pause == false)
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(64, get_window_height - 28, l10n_text("Play"), global.default_text_size, c_black, c_white, 1);
-	if (gamepad_is_connected(0))
+	if (gamepad_is_connected(global.player1_slot))
 	and (global.controls_used_for_menu_navigation == "controller")
 	{
 		scr_draw_gamepad_buttons(global.player1_gamepad_button_accept, 32, get_window_height - 28, 0.5, c_white, 1);
@@ -92,7 +91,7 @@ if (global.debug_screen == true)
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(clear_prompt_x + 32, get_window_height - 28, l10n_text("Clear"), global.default_text_size, c_black, c_white, 1);
-		if (gamepad_is_connected(0))
+		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
 		{
 			scr_draw_gamepad_buttons(global.player1_gamepad_button_back, clear_prompt_x, get_window_height - 28, 0.5, c_white, 1);

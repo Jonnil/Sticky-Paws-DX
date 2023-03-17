@@ -21,10 +21,10 @@ function scr_debug_screen()
 	var instance_count_target = 200;
 	
 	if (keyboard_check_pressed(vk_f3))
-	or (gamepad_button_check(0, gp_stickl))
-	and (gamepad_button_check_pressed(0, gp_stickr))
-	or (gamepad_button_check(0, gp_stickr))
-	and (gamepad_button_check_pressed(0, gp_stickl))
+	or (gamepad_button_check(global.player1_slot, gp_stickl))
+	and (gamepad_button_check_pressed(global.player1_slot, gp_stickr))
+	or (gamepad_button_check(global.player1_slot, gp_stickr))
+	and (gamepad_button_check_pressed(global.player1_slot, gp_stickl))
 	{
 		if (global.debug_screen == true)
 		{
@@ -252,15 +252,45 @@ function scr_debug_screen()
 	}
 	#endregion /* All Instance Count END */
 	
+	#region /* Controller ports */
+	if (os_type == os_switch)
+	{
+		if (gamepad_get_description(0) == "Handheld")
+		and (gamepad_get_description(1) != "")
+		or (gamepad_get_description(0) == "")
+		and (gamepad_get_description(1) != "")
+		{
+			global.player1_slot = 1;
+			global.player2_slot = 2;
+			global.player3_slot = 3;
+			global.player4_slot = 4;
+		}
+		else
+		{
+			global.player1_slot = 0;
+			global.player2_slot = 1;
+			global.player3_slot = 2;
+			global.player4_slot = 3;
+		}
+	}
+	else
+	{
+		global.player1_slot = 0;
+		global.player2_slot = 1;
+		global.player3_slot = 2;
+		global.player4_slot = 3;
+	}
+	#endregion /* Controller ports END */
+	
 	if (global.debug_screen == true)
 	{
-		draw_set_halign(fa_right);
+		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
 		
-		if (instance_exists(obj_title))
-		{
-			scr_draw_text_outlined(320, 320, string(obj_title.menu));
-		}
+		scr_draw_text_outlined(32, 320, "gamepad_get_description(0): " + string(gamepad_get_description(0)));
+		scr_draw_text_outlined(32, 340, "gamepad_get_description(1): " + string(gamepad_get_description(1)));
+		scr_draw_text_outlined(32, 360, "gamepad_get_description(2): " + string(gamepad_get_description(2)));
+		scr_draw_text_outlined(32, 380, "gamepad_get_description(3): " + string(gamepad_get_description(3)));
 	}
 	
 	if (global.debug_screen == true)

@@ -108,7 +108,8 @@ function scr_load_object_placement_all()
 		N : 1,
 		H : 1,
 		Q : 0,
-		W : 0
+		W : 0,
+		L : 0
 	}
 	
 	if (load_main_game_level == true)
@@ -153,6 +154,7 @@ function scr_load_object_placement_all()
 			and (string_char_at(str, str_pos) != "H")
 			and (string_char_at(str, str_pos) != "Q")
 			and (string_char_at(str, str_pos) != "W")
+			and (string_char_at(str, str_pos) != "L")
 			and (string_char_at(str, str_pos) != "|")
 			{
 				str_temp += string_char_at(str, str_pos);
@@ -184,6 +186,9 @@ function scr_load_object_placement_all()
 				case "W":
 				var_struct.W = string(str_temp);
 				break
+				case "L":
+				var_struct.L = string(str_temp);
+				break
 			}
 			str_temp = "";
 			if (string_char_at(str, str_pos) == "|")
@@ -198,15 +203,31 @@ function scr_load_object_placement_all()
 					hard = var_struct.H;
 					second_x = var_struct.Q;
 					second_y = var_struct.W;
-					
-					/* Reset these var structs once you have created the object, because if a object changes these, there is cases where the game remebers these variables and wrong objects get placed */
-					var_struct.E = 1;
-					var_struct.N = 1;
-					var_struct.H = 1;
-					var_struct.Q = 0;
-					var_struct.W = 0;
+				}
+				if (var_struct.L >= 1)
+				{
+					for(i = 1; i <= var_struct.L; i += 1)
+					{
+						with(instance_create_depth(real(var_struct.X) + (32 * i), var_struct.Y, 0, obj_leveleditor_placed_object))
+						{
+							object = var_struct.O;
+							easy = var_struct.E;
+							normal = var_struct.N;
+							hard = var_struct.H;
+							second_x = var_struct.Q;
+							second_y = var_struct.W;
+						}
+					}
 				}
 				#endregion /* Place the object END */
+				
+				/* Reset these var structs once you have created the object, because if a object changes these, there is cases where the game remebers these variables and wrong objects get placed */
+				var_struct.E = 1;
+				var_struct.N = 1;
+				var_struct.H = 1;
+				var_struct.Q = 0;
+				var_struct.W = 0;
+				var_struct.L = 0;
 				
 			}
 			str_pos += 1;

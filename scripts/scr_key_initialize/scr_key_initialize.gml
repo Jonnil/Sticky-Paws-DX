@@ -11,6 +11,28 @@
 function scr_key_initialize(key, hold0_press1_release2, which_player, this_player_key, this_player_key2, this_player_gamepad_button, this_player_gamepad_button2)
 {
 	
+	#region /* Set correct controller ports */
+	if (which_player == 1)
+	{
+		var player_gamepad_slot = global.player1_slot;
+	}
+	else
+	if (which_player == 2)
+	{
+		var player_gamepad_slot = global.player2_slot;
+	}
+	else
+	if (which_player == 3)
+	{
+		var player_gamepad_slot = global.player3_slot;
+	}
+	else
+	if (which_player == 4)
+	{
+		var player_gamepad_slot = global.player4_slot;
+	}
+	#endregion /* Set correct controller ports END */
+	
 	#region /* Mouse */
 	
 	#region /* Mouse 1 */
@@ -247,22 +269,22 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	and (keyboard_check_released(this_player_key2))
 	
 	or(hold0_press1_release2 == 0)
-	and (gamepad_button_check(which_player - 1, this_player_gamepad_button))
+	and (gamepad_button_check(player_gamepad_slot, this_player_gamepad_button))
 	
 	or(hold0_press1_release2 == 1)
-	and (gamepad_button_check_pressed(which_player - 1, this_player_gamepad_button))
+	and (gamepad_button_check_pressed(player_gamepad_slot, this_player_gamepad_button))
 	
 	or(hold0_press1_release2 = 2)
-	and (gamepad_button_check_released(which_player - 1, this_player_gamepad_button))
+	and (gamepad_button_check_released(player_gamepad_slot, this_player_gamepad_button))
 	
 	or(hold0_press1_release2 == 0)
-	and (gamepad_button_check(which_player - 1, this_player_gamepad_button2))
+	and (gamepad_button_check(player_gamepad_slot, this_player_gamepad_button2))
 	
 	or(hold0_press1_release2 == 1)
-	and (gamepad_button_check_pressed(which_player - 1, this_player_gamepad_button2))
+	and (gamepad_button_check_pressed(player_gamepad_slot, this_player_gamepad_button2))
 	
 	or(hold0_press1_release2 = 2)
-	and (gamepad_button_check_released(which_player - 1, this_player_gamepad_button2));
+	and (gamepad_button_check_released(player_gamepad_slot, this_player_gamepad_button2));
 	
 	key = key_mouse or key2_mouse or key_other;
 	

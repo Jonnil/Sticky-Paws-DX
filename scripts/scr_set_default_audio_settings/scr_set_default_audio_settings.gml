@@ -6,7 +6,7 @@ function scr_set_default_audio_settings()
 	/* By default volumes are 70% so it doesn't hurt ears first time playing the game */
 	global.volume_main = 0.7;
 	global.volume_music = 0.7;
-	global.volume_jingle = 0.7;
+	global.volume_melody = 0.7;
 	global.volume_sound = 0.7;
 	global.volume_ambient = 0.7;
 	global.volume_footstep = 0.7;

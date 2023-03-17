@@ -29,14 +29,14 @@ if (goto_title_screen == true)
 }
 
 #region /* Skip company logo screen when pressing skip button */
-if (gamepad_button_check_pressed(0, global.player1_gamepad_button_accept))
-or (gamepad_button_check_pressed(0, global.player1_gamepad_button2_accept))
-or (gamepad_button_check_pressed(1, global.player2_gamepad_button_accept))
-or (gamepad_button_check_pressed(1, global.player2_gamepad_button2_accept))
-or (gamepad_button_check_pressed(2, global.player3_gamepad_button_accept))
-or (gamepad_button_check_pressed(2, global.player3_gamepad_button2_accept))
-or (gamepad_button_check_pressed(3, global.player4_gamepad_button_accept))
-or (gamepad_button_check_pressed(3, global.player4_gamepad_button2_accept))
+if (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept))
+or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_accept))
+or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_accept))
+or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button2_accept))
+or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_accept))
+or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button2_accept))
+or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_accept))
+or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button2_accept))
 or (keyboard_check_pressed(global.player1_key_accept))
 or (keyboard_check_pressed(global.player1_key2_accept))
 or (keyboard_check_pressed(global.player2_key_accept))
@@ -61,9 +61,9 @@ and (mouse_check_button_pressed(mb_left))
 if (image_index > image_number - 2)
 and (sprite_index = spr_company_logo)
 {
-	if (!gamepad_is_connected(0)) /* If there are no controllers connected to the game, then show a controller prompt to let players know they can use controllers */
-	and (!gamepad_is_connected(1))
-	and (!gamepad_is_connected(2))
+	if (!gamepad_is_connected(global.player1_slot)) /* If there are no controllers connected to the game, then show a controller prompt to let players know they can use controllers */
+	and (!gamepad_is_connected(global.player2_slot))
+	and (!gamepad_is_connected(global.player3_slot))
 	and (!gamepad_is_connected(3))
 	{
 		if (global.resource_pack_sprite_splash_controller >= 0) /* Check if the controller splash sprite exists before trying to switch sprite to it */
@@ -456,7 +456,7 @@ if (load_ok >= 4)
 }
 
 #region /* Show easter egg on company logo screen when pressing specific button */
-if (gamepad_button_check_pressed(0, gp_face4))
+if (gamepad_button_check_pressed(global.player1_slot, gp_face4))
 or (keyboard_check_pressed(ord("Y")))
 and (sprite_splash_easteregg_yoffset = 128)
 {

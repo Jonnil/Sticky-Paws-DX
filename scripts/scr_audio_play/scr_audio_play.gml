@@ -10,48 +10,54 @@ function scr_audio_play(sound_id = noone, what_volume_source = volume_source.sou
 		#region /* Different audio sources play differently */
 		if (what_volume_source == volume_source.ambient)
 		{
+			audio_sound_gain(sound_id, global.volume_ambient * volume_modifier * global.volume_main, 0);
 			if (!audio_is_playing(sound_id))
 			{
-				audio_play_sound(sound_id, 0, true, global.volume_ambient * volume_modifier * global.volume_main);
+				audio_play_sound(sound_id, 0, true);
 			}
 		}
 		else
 		if (what_volume_source == volume_source.footstep)
 		{
+			audio_sound_gain(sound_id, global.volume_footstep * volume_modifier * global.volume_main, 0);
 			audio_stop_sound(sound_id); /* Stop same sound effects from playing before playing another of the same sound effect */
 			if (!audio_is_playing(sound_id))
 			{
-				audio_play_sound_at(sound_id, x, y, 0, falloff_ref_dist, fallof_max_dist, fallof_factor, false, 0, global.volume_footstep * volume_modifier * global.volume_main);
+				audio_play_sound_at(sound_id, x, y, 0, falloff_ref_dist, fallof_max_dist, fallof_factor, false, 0);
 			}
 		}
 		else
-		if (what_volume_source == volume_source.jingle)
+		if (what_volume_source == volume_source.melody)
 		{
+			audio_sound_gain(sound_id, global.volume_melody * volume_modifier * global.volume_main, 0);
 			if (!audio_is_playing(sound_id))
 			{
-				audio_play_sound(sound_id, 0, false, global.volume_jingle * volume_modifier * global.volume_main);
+				audio_play_sound(sound_id, 0, false);
 			}
 		}
 		else
 		if (what_volume_source == volume_source.music)
 		{
+			audio_sound_gain(sound_id, global.volume_music * volume_modifier * global.volume_main, 0);
 			if (!audio_is_playing(sound_id))
 			{
-				audio_play_sound(sound_id, 0, true, global.volume_music * volume_modifier * global.volume_main);
+				audio_play_sound(sound_id, 0, true);
 			}
 		}
 		else
 		if (what_volume_source == volume_source.sound)
 		{
+			audio_sound_gain(sound_id, global.volume_sound * volume_modifier * global.volume_main, 0);
 			audio_stop_sound(sound_id); /* Stop same sound effects from playing before playing another of the same sound effect */
 			if (!audio_is_playing(sound_id))
 			{
-				audio_play_sound_at(sound_id, x, y, 0, falloff_ref_dist, fallof_max_dist, fallof_factor, false, 0, global.volume_sound * volume_modifier * global.volume_main);
+				audio_play_sound_at(sound_id, x, y, 0, falloff_ref_dist, fallof_max_dist, fallof_factor, false, 0);
 			}
 		}
 		else
 		if (what_volume_source == volume_source.voice)
 		{
+			audio_sound_gain(sound_id, global.volume_voice * volume_modifier * global.volume_main, 0);
 			audio_stop_sound(sound_id); /* Stop same sound effects from playing before playing another of the same sound effect */
 			if (variable_instance_exists(self, "default_voice_pitch"))
 			{
@@ -59,7 +65,7 @@ function scr_audio_play(sound_id = noone, what_volume_source = volume_source.sou
 			}
 			if (!audio_is_playing(sound_id))
 			{
-				voice = audio_play_sound(sound_id, 0, false, global.volume_voice * volume_modifier * global.volume_main);
+				voice = audio_play_sound(sound_id, 0, false);
 			}
 		}
 		#endregion /* Different audio sources play differently END */

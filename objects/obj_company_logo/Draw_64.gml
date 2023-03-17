@@ -65,7 +65,7 @@ else
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, l10n_text("Press and Hold Screen"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
-	if (gamepad_is_connected(0))
+	if (gamepad_is_connected(global.player1_slot))
 	and (global.controls_used_for_menu_navigation == "controller")
 	or (global.always_show_gamepad_buttons == true)
 	or (os_type == os_switch)

@@ -1210,6 +1210,8 @@ and (global.play_attract_demo = false)
 if (menu == "search_id_ok")
 or (menu == "search_id_cancel")
 or (menu == "searching_for_id")
+or (menu == "searched_file_downloaded")
+or (menu == "searched_file_downloaded_ok")
 {
 	scr_draw_menu_search_id();
 }

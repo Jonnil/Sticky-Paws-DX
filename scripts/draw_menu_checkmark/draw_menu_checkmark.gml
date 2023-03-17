@@ -13,7 +13,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	#region /* Checkmark */
 	
 	#region /* Initialize variables */
-	var widen_button_offset = 7;
+	var widen_button_offset = 6;
 	var width_of_button = string_width(string_text) + 100;
 	//var width_of_button = 670;
 	#endregion /* Initialize variables END */

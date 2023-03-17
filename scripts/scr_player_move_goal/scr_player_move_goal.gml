@@ -133,13 +133,13 @@ function scr_player_move_goal()
 				
 				scr_audio_play(voice_enter_goal, volume_source.voice);
 				
-				#region /* Level Clear Jingle */
-				if (level_clear_jingle > noone)
-				and (!audio_is_playing(level_clear_jingle))
+				#region /* Level Clear Melody */
+				if (level_clear_melody > noone)
+				and (!audio_is_playing(level_clear_melody))
 				{
-					scr_audio_play(level_clear_jingle, volume_source.jingle);
+					scr_audio_play(level_clear_melody, volume_source.melody);
 				}
-				#endregion /* Level Clear Jingle END */
+				#endregion /* Level Clear Melody END */
 				
 				goal = true; /* Set goal to true on last line */
 			}

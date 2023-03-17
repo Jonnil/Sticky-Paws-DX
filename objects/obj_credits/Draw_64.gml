@@ -15,16 +15,16 @@ draw_set_halign(fa_right);
 draw_set_valign(fa_top);
 
 #region /* If gamepad is connected */
-if (gamepad_is_connected(0))
+if (gamepad_is_connected(global.player1_slot))
 and (global.player1_can_play == true)
 and (global.controls_used_for_menu_navigation == "controller")
-or(gamepad_is_connected(1))
+or(gamepad_is_connected(global.player2_slot))
 and (global.player2_can_play == true)
 and (global.controls_used_for_menu_navigation == "controller")
-or(gamepad_is_connected(2))
+or(gamepad_is_connected(global.player3_slot))
 and (global.player3_can_play == true)
 and (global.controls_used_for_menu_navigation == "controller")
-or(gamepad_is_connected(3))
+or(gamepad_is_connected(global.player4_slot))
 and (global.player4_can_play == true)
 and (global.controls_used_for_menu_navigation == "controller")
 or (global.always_show_gamepad_buttons == true)
@@ -79,10 +79,10 @@ if (sprite_index > 0)
 }
 
 if (keyboard_check(vk_escape))
-or (gamepad_button_check(0, gp_start))
-or (gamepad_button_check(1, gp_start))
-or (gamepad_button_check(2, gp_start))
-or (gamepad_button_check(3, gp_start))
+or (gamepad_button_check(global.player1_slot, gp_start))
+or (gamepad_button_check(global.player2_slot, gp_start))
+or (gamepad_button_check(global.player3_slot, gp_start))
+or (gamepad_button_check(global.player4_slot, gp_start))
 or (os_type == os_ios)
 and (mouse_check_button(mb_left))
 or (os_type == os_android)
@@ -154,10 +154,10 @@ if (iris_xscale <= 0.01)
 }
 
 if (keyboard_check(vk_space))
-or (gamepad_button_check(0, gp_face1))
-or (gamepad_button_check(1, gp_face1))
-or (gamepad_button_check(2, gp_face1))
-or (gamepad_button_check(3, gp_face1))
+or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept))
+or (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_accept))
+or (gamepad_button_check(global.player3_slot, global.player3_gamepad_button_accept))
+or (gamepad_button_check(global.player4_slot, global.player4_gamepad_button_accept))
 {
 	time += 10;
 	y = lerp(y, yy, 0.75);
