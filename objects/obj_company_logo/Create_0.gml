@@ -94,8 +94,8 @@ global.all_loaded_main_levels = ds_list_create(); /* The main game will load eve
 ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3", "level4", "level5", "level6", "level7", "level8", "ending", "level9", "levelA");
 
 #region /* Server stuff */
-global.base_url = "https://sticky-paws.uc.r.appspot.com";
-global.url_uploader = "https://sticky-paws.uc.r.appspot.com";
+global.base_url = "https://sticky-paws.uc.r.appspot.com/";
+global.url_uploader = "https://sticky-paws.uc.r.appspot.com/";
 global.api_key = "626ef06a-5092-4d09-b423-45480b1d4e4d";
 #endregion /* Server stuff END */
 
@@ -111,6 +111,8 @@ global.api_key = "626ef06a-5092-4d09-b423-45480b1d4e4d";
 
 
 #region /* Things you shouldn't change, warning, don't change any of these options or you might break the game! */
+
+randomize(); /* You need to get random level ID codes when you upload a new level */
 
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);

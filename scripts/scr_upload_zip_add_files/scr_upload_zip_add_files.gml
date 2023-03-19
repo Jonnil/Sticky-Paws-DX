@@ -34,7 +34,7 @@ function scr_upload_zip_add_files()
 	var files = [];
 	var folder_name = "data";
 	var file_type = "ini";
-	//var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
+	var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
 	if (file_name != "")
 	{
 		zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
@@ -57,7 +57,7 @@ function scr_upload_zip_add_files()
 	var files = [];
 	var folder_name = "data";
 	var file_type = "txt";
-	//var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
+	var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
 	if (file_name != "")
 	{
 		zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
@@ -80,7 +80,7 @@ function scr_upload_zip_add_files()
 	var files = [];
 	var folder_name = "sound";
 	var file_type = "ogg";
-	//var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
+	var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
 	if (file_name != "")
 	{
 		zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
@@ -103,7 +103,7 @@ function scr_upload_zip_add_files()
 	var files = [];
 	var folder_name = "tilesets";
 	var file_type = "png";
-	//var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
+	var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
 	if (file_name != "")
 	{
 		zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
@@ -126,7 +126,7 @@ function scr_upload_zip_add_files()
 	var files = [];
 	var folder_name = "tilesets";
 	var file_type = "png";
-	//var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
+	var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
 	if (file_name != "")
 	{
 		zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
@@ -148,7 +148,7 @@ function scr_upload_zip_add_files()
 	#region /* Other png files */
 	var files = [];
 	var file_type = "png";
-	//var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/*." + string(file_type), 0);
+	var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/*." + string(file_type), 0);
 	if (file_name != "")
 	{
 		zip_add_file(z, string(level_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(file_name));
@@ -175,6 +175,8 @@ function scr_upload_zip_add_files()
 	zip_save(z, string(file)); /* Save it as string(file) so it's consistent */
 	
 	zip_destroy(z); /* Last thing you do is close the zip file creation */
+	
+	return file;
 	
 	/* When trying to open the created zip file manually, it says that the files are corrupted, but when doing a simple zip_unzip() of that zip file within GameMaker, it opens these files flawlessly */
 	#endregion /* Finally save the zip file END */

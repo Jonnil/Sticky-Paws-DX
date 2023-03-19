@@ -3,6 +3,7 @@ function scr_draw_upload_level_menu()
 	
 	#region /* Debug toggles */
 	var destroy_zip_after_uploading = false;
+	var skip_clear_check = true;
 	#endregion /* Debug toggles END */
 	
 	var upload_y = 42 * 2;
@@ -35,8 +36,12 @@ function scr_draw_upload_level_menu()
 			menu_delay = 10;
 			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 			if (ini_key_exists("info", "clear_check"))
+			and (skip_clear_check == false)
+			or (skip_clear_check == true)
 			{
 				if (ini_read_real("info", "clear_check", false) == true)
+				and (skip_clear_check == false)
+				or (skip_clear_check == true)
 				{
 					if (os_is_network_connected()) /* Check if you're even connected to the internet */
 					{
@@ -470,6 +475,7 @@ function scr_draw_upload_level_menu()
 			#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
 			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 			if (ini_read_real("info", "clear_check", false) == false)
+			and (skip_clear_check == false)
 			{
 				menu = "clear_check_yes";
 				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
@@ -985,56 +991,53 @@ function scr_draw_upload_level_menu()
 		#region /* Create Zip File */
 		if (menu_delay = 40)
 		{
-			scr_upload_zip_add_files(); /* Add all the level files to a new zip file */
+			file = scr_upload_zip_add_files(); /* Add all the level files to a new zip file */
 		}
 		#endregion /* Create Zip File END */
 		
 		#region /* Send Zip File to the Server */
 		if (menu_delay <= 0)
 		{
-			
+		    
 			#region /* Actually upload the level to the server */
 			
-			/* User is prompted for a file to upload */
-			file_name = filename_name(file);
+		    // User is prompted for a file to upload
+		    file_name = filename_name(file);
 			
-			/* Create DS Map to hold the HTTP Header info */
-			map = ds_map_create();
+		    // Create DS Map to hold the HTTP Header info
+		    map = ds_map_create();
 			
-			/* Add to the header DS Map */
-			ds_map_add(map, "Host", global.base_url);
-			ds_map_add(map, "User-Agent", "gmuploader");
-			ds_map_add(map, "Content-Type", "application/x-www-form-urlencoded");
-			ds_map_add(map, "Accept", "+/+");
-			ds_map_add(map, "X-API-Key", global.api_key);
+		    // Add to the header DS Map
+		    ds_map_add(map, "Host", global.base_url);
+		    ds_map_add(map, "User-Agent", "gmuploader");
+		    ds_map_add(map, "Content-Type", "application/x-www-form-urlencoded");
+		    ds_map_add(map, "Accept", "+/+");
+		    ds_map_add(map, "X-API-Key", global.api_key);
 			
-			/* Loads the file into a buffer */
-			send_buffer = buffer_create(1, buffer_grow, 1);
-			buffer_load_ext(send_buffer, file, 0);
+		    // Loads the file into a buffer
+		    send_buffer = buffer_create(1, buffer_grow, 1);
+		    buffer_load_ext(send_buffer, file, 0);
 			
-			/* Encodes the data as base64 */
-			data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
+		    // Encodes the data as base64
+		    data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
 			
-			/* Prepare the form data */
-			form_data = "--boundary\r\nContent-Disposition: form-data; name='level'; filename='" + file_name + "'\r\nContent-Type: application/octet-stream\r\n\r\n" + data_send + "\r\n--boundary--";
+		    // Post the data to the upload script
+		    http_request(global.url_uploader + "upload", "POST", map, "name=" + file_name + "&data=" + data_send);
 			
-			/* Post the data to the upload script */
-			http_request(global.url_uploader + "/upload", "POST", map, form_data);
+		    // Cleans up!
+		    buffer_delete(send_buffer);
+		    ds_map_destroy(map);
 			
-			/* Cleans up! */
-			buffer_delete(send_buffer);
-			ds_map_destroy(map);
+		    #endregion /* Actually upload the level to the server END */
 			
-			#endregion /* Actually upload the level to the server END */
+		    #region /* Delete some leftover files and folders */
+		    if (destroy_zip_after_uploading == true)
+		    {
+		        file_delete(file);
+		    }
+		    #endregion /* Delete some leftover files and folders END */
 			
-			#region /* Delete some leftover files and folders */
-			if (destroy_zip_after_uploading == true)
-			{
-				file_delete(file);
-			}
-			#endregion /* Delete some leftover files and folders END */
-			
-			menu = "level_uploaded";
+		    menu = "level_uploaded";
 		}
 		#endregion /* Send Zip File to the Server END */
 		
