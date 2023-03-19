@@ -1006,6 +1006,7 @@ function scr_draw_upload_level_menu()
 			ds_map_add(map, "User-Agent", "gmuploader");
 			ds_map_add(map, "Content-Type", "application/x-www-form-urlencoded");
 			ds_map_add(map, "Accept", "+/+");
+			ds_map_add(map, "X-API-Key", global.api_key);
 			
 			/* Loads the file into a buffer */
 			send_buffer = buffer_create(1, buffer_grow, 1);
@@ -1014,8 +1015,11 @@ function scr_draw_upload_level_menu()
 			/* Encodes the data as base64 */
 			data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
 			
+			/* Prepare the form data */
+			form_data = "--boundary\r\nContent-Disposition: form-data; name='level'; filename='" + file_name + "'\r\nContent-Type: application/octet-stream\r\n\r\n" + data_send + "\r\n--boundary--";
+			
 			/* Post the data to the upload script */
-			http_request(global.url_uploader + "upload.php", "POST", map, "name-" + file_name + "&data-" + data_send);
+			http_request(global.url_uploader + "/upload", "POST", map, form_data);
 			
 			/* Cleans up! */
 			buffer_delete(send_buffer);

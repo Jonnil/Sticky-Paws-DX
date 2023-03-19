@@ -1175,16 +1175,21 @@ if (global.actually_play_edited_level == false)
 	
 	selected_skin = global.skin_for_player_1;
 	
-	sprite_player = noone;
-	sprite_player = scr_initialize_custom_character_select_sprite("idle", sprite_player, global.skin_for_player_1);
-	sprite_player = scr_initialize_custom_character_select_sprite("stand", sprite_player, global.skin_for_player_1);
+	sprite_player1 = noone;
+	sprite_player1 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 0, global.skin_for_player_1);
+	sprite_player1 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 0, global.skin_for_player_1);
+	sprite_player2 = noone;
+	sprite_player2 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 1, global.skin_for_player_2);
+	sprite_player2 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 1, global.skin_for_player_2);
+	sprite_player3 = noone;
+	sprite_player3 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 2, global.skin_for_player_3);
+	sprite_player3 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 2, global.skin_for_player_3);
+	sprite_player4 = noone;
+	sprite_player4 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 3, global.skin_for_player_4);
+	sprite_player4 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 3, global.skin_for_player_4);
 	
 	audio_stop_all();
 	pressing_play_timer = 0; /* You have to hold down the play button for some time before you play the level from the beginning */
-	playtest_x = x; /* Where in the room you want to do playtest */
-	playtest_y = y;
-	playtest_x_lerp = x;
-	playtest_y_lerp = y;
 	room_speed = global.max_fps; /* Set correct fps */
 	x = mouse_x;
 	y = mouse_y;
@@ -1315,14 +1320,14 @@ if (global.actually_play_edited_level == false)
 		{
 			ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
 		}
-						
+		
 		#region /* Character Name */
 		var uppercase_narrator_name;
 		uppercase_narrator_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 1));
 		uppercase_narrator_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.narrator))) - 1);
 		narrator_name = string(uppercase_narrator_name);
 		#endregion /* Character Name END */
-						
+		
 		ini_close();
 	}
 	else

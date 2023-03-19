@@ -94,9 +94,9 @@ global.all_loaded_main_levels = ds_list_create(); /* The main game will load eve
 ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3", "level4", "level5", "level6", "level7", "level8", "ending", "level9", "levelA");
 
 #region /* Server stuff */
-global.base_url = "www.jonnil.games";
-global.url_game_name = "sticky-paws"; /* Should be all small letters, and spaces should be replaced with hyphens - */
-global.url_uploader = "https://jonnil.games/" + string(global.url_game_name) + "/uploader/";
+global.base_url = "https://sticky-paws.uc.r.appspot.com";
+global.url_uploader = "https://sticky-paws.uc.r.appspot.com";
+global.api_key = "626ef06a-5092-4d09-b423-45480b1d4e4d";
 #endregion /* Server stuff END */
 
 #endregion /* Things you could change END */

@@ -1,13 +1,74 @@
 if (global.actually_play_edited_level == false)
 {
+	var view_center_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5;
+	var view_center_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5;
+	
+	#region /* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is */
+	if (quit_level_editor == false)
+	{
+		draw_set_alpha(0.5);
+		draw_circle_color(view_center_x, view_center_y, 3, c_black, c_black, true);
+		draw_circle_color(view_center_x, view_center_y, 4, c_white, c_white, true);
+		draw_set_alpha(1);
+	}
+	#endregion /* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is END */
 	
 	#region /* Draw where player will do playtesting from */
-	if (sprite_player > 0)
+	if (sprite_player4 > 0) /* Display Player 4 behind Player 3 */
 	and (quit_level_editor == false)
 	{
-		playtest_x_lerp = lerp(playtest_x_lerp, playtest_x, 0.5);
-		playtest_y_lerp = lerp(playtest_y_lerp, playtest_y, 0.5);
-		draw_sprite_ext(sprite_player, 0, playtest_x_lerp, playtest_y_lerp, 1, 1, 0, c_white, 1);
+		if (pressing_play_timer > 0)
+		and (global.player4_can_play == true)
+		{
+			draw_sprite_ext(sprite_player4, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
+		}
+		else
+		if (instance_exists(obj_level_player_4_start))
+		{
+			draw_sprite_ext(sprite_player4, 0, obj_level_player_4_start.x, obj_level_player_4_start.y, 1, 1, 0, c_white, 1);
+		}
+	}
+	if (sprite_player3 > 0) /* Display Player 3 on top of Player 4 */
+	and (quit_level_editor == false)
+	{
+		if (pressing_play_timer > 0)
+		and (global.player3_can_play == true)
+		{
+			draw_sprite_ext(sprite_player3, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
+		}
+		else
+		if (instance_exists(obj_level_player_3_start))
+		{
+			draw_sprite_ext(sprite_player3, 0, obj_level_player_3_start.x, obj_level_player_3_start.y, 1, 1, 0, c_white, 1);
+		}
+	}
+	if (sprite_player2 > 0) /* Display Player 2 on top of Player 3 */
+	and (quit_level_editor == false)
+	{
+		if (pressing_play_timer > 0)
+		and (global.player2_can_play == true)
+		{
+			draw_sprite_ext(sprite_player2, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
+		}
+		else
+		if (instance_exists(obj_level_player_2_start))
+		{
+			draw_sprite_ext(sprite_player2, 0, obj_level_player_2_start.x, obj_level_player_2_start.y, 1, 1, 0, c_white, 1);
+		}
+	}
+	if (sprite_player1 > 0) /* Display Player 1 on top of Player 2 */
+	and (quit_level_editor == false)
+	{
+		if (pressing_play_timer > 0)
+		and (global.player1_can_play == true)
+		{
+			draw_sprite_ext(sprite_player1, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
+		}
+		else
+		if (instance_exists(obj_level_player_1_start))
+		{
+			draw_sprite_ext(sprite_player1, 0, obj_level_player_1_start.x, obj_level_player_1_start.y, 1, 1, 0, c_white, 1);
+		}
 	}
 	#endregion /* Draw where player will do playtesting from END */
 	
