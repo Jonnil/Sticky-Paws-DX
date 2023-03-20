@@ -317,13 +317,16 @@ function scr_draw_upload_level_menu()
 		}
 		open_sub_menu = true;
 		lerp_on = true;
-		if (get_window_height <= 720)
+		if (room == room_title)
 		{
-			scroll_to = floor(global.select_level_index / row) + 0.8; /* Scroll the view to fit all the buttons */
-		}
-		else
-		{
-			scroll_to = floor(global.select_level_index / row) + 0.1; /* Scroll the view to fit all the buttons */
+			if (get_window_height <= 720)
+			{
+				scroll_to = floor(global.select_level_index / row) + 0.8; /* Scroll the view to fit all the buttons */
+			}
+			else
+			{
+				scroll_to = floor(global.select_level_index / row) + 0.1; /* Scroll the view to fit all the buttons */
+			}
 		}
 		
 		draw_set_halign(fa_center);
@@ -996,50 +999,61 @@ function scr_draw_upload_level_menu()
 		#endregion /* Create Zip File END */
 		
 		#region /* Send Zip File to the Server */
-		if (menu_delay <= 0)
-		{
-		    
-			#region /* Actually upload the level to the server */
-			
-		    // User is prompted for a file to upload
-		    file_name = filename_name(file);
-			
-		    // Create DS Map to hold the HTTP Header info
-		    map = ds_map_create();
-			
-		    // Add to the header DS Map
-		    ds_map_add(map, "Host", global.base_url);
-		    ds_map_add(map, "User-Agent", "gmuploader");
-		    ds_map_add(map, "Content-Type", "application/x-www-form-urlencoded");
-		    ds_map_add(map, "Accept", "+/+");
-		    ds_map_add(map, "X-API-Key", global.api_key);
-			
-		    // Loads the file into a buffer
-		    send_buffer = buffer_create(1, buffer_grow, 1);
-		    buffer_load_ext(send_buffer, file, 0);
-			
-		    // Encodes the data as base64
-		    data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
-			
-		    // Post the data to the upload script
-		    http_request(global.url_uploader + "upload", "POST", map, "name=" + file_name + "&data=" + data_send);
-			
-		    // Cleans up!
-		    buffer_delete(send_buffer);
-		    ds_map_destroy(map);
-			
-		    #endregion /* Actually upload the level to the server END */
-			
-		    #region /* Delete some leftover files and folders */
-		    if (destroy_zip_after_uploading == true)
-		    {
-		        file_delete(file);
-		    }
-		    #endregion /* Delete some leftover files and folders END */
-			
-		    menu = "level_uploaded";
-		}
-		#endregion /* Send Zip File to the Server END */
+        if (menu_delay <= 0)
+        {
+            
+            #region /* Actually upload the level to the server */
+            
+            // User is prompted for a file to upload
+            file_name = filename_name(file);
+            
+            // Create DS Map to hold the HTTP Header info
+            map = ds_map_create();
+            
+            // Add to the header DS Map
+            ds_map_add(map, "Host", global.base_url);
+            var boundary = "----GMBoundary";
+            ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
+            ds_map_add(map, "User-Agent", "gmuploader");
+            ds_map_add(map, "X-API-Key", global.api_key);
+            
+            // Loads the file into a buffer
+            send_buffer = buffer_create(1, buffer_grow, 1);
+            buffer_load_ext(send_buffer, file, 0);
+            
+            // Encodes the data as base64
+            data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
+            
+            // Post the data to the upload script
+            var post_data = "--" + boundary + "\r\n";
+            post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
+            post_data += file_name + "\r\n";
+            post_data += "--" + boundary + "\r\n";
+            post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
+            post_data += data_send + "\r\n";
+            post_data += "--" + boundary + "--";
+            
+            // Add the Content-Length header to the map
+            ds_map_add(map, "Content-Length", string(string_length(post_data)));
+
+            http_request(global.url_uploader + "upload", "POST", map, post_data);
+            
+            // Cleans up!
+            buffer_delete(send_buffer);
+            ds_map_destroy(map);
+            
+            #endregion /* Actually upload the level to the server END */
+            
+            #region /* Delete some leftover files and folders */
+            if (destroy_zip_after_uploading == true)
+            {
+                file_delete(file);
+            }
+            #endregion /* Delete some leftover files and folders END */
+            
+            menu = "level_uploaded";
+        }
+        #endregion /* Send Zip File to the Server END */
 		
 	}
 	#endregion /* Uploading Level END */

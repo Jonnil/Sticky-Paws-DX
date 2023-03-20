@@ -1204,6 +1204,7 @@ and (global.play_attract_demo = false)
 	level_editor_template_select = false;
 	scr_select_custom_level_menu();
 	scr_custom_level_select_with_the_mouse()
+	scr_draw_upload_level_menu(); /* Draw upload level menu above everything */
 }
 #endregion /* Select Custom Level Menu END */
 

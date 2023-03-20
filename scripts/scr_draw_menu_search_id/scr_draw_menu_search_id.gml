@@ -99,7 +99,7 @@ function scr_draw_menu_search_id()
 			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_accept))
 			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_accept))
 			{
-				http_get_file(global.url_uploader + string(search_id) + ".zip", working_directory + "/custom_levels/" + string(search_id) + ".zip"); /* Download the file from the server */
+				http_get_file(global.url_downloader + string(search_id) + ".zip", working_directory + "/custom_levels/" + string(search_id) + ".zip"); /* Download the file from the server */
 				menu = "searching_for_id";
 				menu_delay = 3;
 			}

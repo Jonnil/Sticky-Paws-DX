@@ -820,6 +820,4 @@ function scr_select_custom_level_menu()
 	}
 	#endregion /* Show the path of the custom level on the bottom of the screen END */
 	
-	scr_draw_upload_level_menu(); /* Draw upload level menu above everything */
-	
 }
