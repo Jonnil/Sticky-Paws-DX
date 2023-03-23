@@ -1036,7 +1036,7 @@ function scr_draw_upload_level_menu()
             // Add the Content-Length header to the map
             ds_map_add(map, "Content-Length", string(string_length(post_data)));
 
-            http_request(global.url_uploader + "upload", "POST", map, post_data);
+            http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
             
             // Cleans up!
             buffer_delete(send_buffer);
