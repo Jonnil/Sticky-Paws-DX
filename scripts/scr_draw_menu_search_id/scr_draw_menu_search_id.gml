@@ -99,7 +99,19 @@ function scr_draw_menu_search_id()
 			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_accept))
 			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_accept))
 			{
-				http_get_file(global.url_downloader + string(search_id) + ".zip", working_directory + "/custom_levels/" + string(search_id) + ".zip"); /* Download the file from the server */
+				// Create DS Map to hold the HTTP Header info
+				map = ds_map_create();
+            
+				// Add to the header DS Map
+				ds_map_add(map, "Host", global.base_url);
+				ds_map_add(map, "Content-Type", "application/json");
+				ds_map_add(map, "User-Agent", "gmdownloader");
+			
+				// Send the HTTP GET request to the /download endpoint
+				global.search_id = string(search_id);
+				global.http_request_id = http_request("http://" + global.base_url + global.download_endpoint + global.search_id, "GET", map, "")
+				ds_map_destroy(map);
+
 				menu = "searching_for_id";
 				menu_delay = 3;
 			}

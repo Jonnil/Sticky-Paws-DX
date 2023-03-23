@@ -95,8 +95,8 @@ ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3"
 
 #region /* Server stuff */
 global.base_url = "sticky-paws.uc.r.appspot.com";
-global.url_uploader = "https://sticky-paws.uc.r.appspot.com/";
-global.url_downloader = "https://storage.googleapis.com/sticky-paws.appspot.com/levels/";
+global.upload_endpoint = "/upload";
+global.download_endpoint = "/download/";
 global.api_key = "626ef06a-5092-4d09-b423-45480b1d4e4d";
 #endregion /* Server stuff END */
 
