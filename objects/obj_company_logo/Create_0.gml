@@ -504,6 +504,7 @@ global.resource_pack_sprite_tileset_glass = spr_noone;
 global.resource_pack_sprite_tileset_grass = spr_noone;
 global.resource_pack_sprite_tileset_gravel = spr_noone;
 global.resource_pack_sprite_tileset_metal = spr_noone;
+global.resource_pack_sprite_tileset_path = spr_noone;
 global.resource_pack_sprite_tileset_stone = spr_noone;
 global.resource_pack_sprite_tileset_wood = spr_noone;
 global.resource_pack_sprite_buttons_xboxone = spr_noone;

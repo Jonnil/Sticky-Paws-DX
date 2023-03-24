@@ -25,7 +25,7 @@ and (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (move_delay > 10)
 and (instance_nearest(x, y, obj_level).level_number != 0)
-and (point_distance(xx, yy, x, y) < 40)
+and (point_distance(xx, yy, x, y) < 30)
 {
 	if (instance_nearest(x, y, obj_level).clear_rate == "enter")
 	or (instance_nearest(x, y, obj_level).clear_rate == "clear")

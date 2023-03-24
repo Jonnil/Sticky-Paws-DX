@@ -5,6 +5,10 @@ or (global.play_edited_level == true)
 }
 
 if (global.actually_play_edited_level == false)
+and (x < (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 12)
+and (x > camera_get_view_x(view_camera[view_current]) - 12)
+and (y < (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current])) + 12)
+and (y > camera_get_view_y(view_camera[view_current]) - 12)
 {
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();

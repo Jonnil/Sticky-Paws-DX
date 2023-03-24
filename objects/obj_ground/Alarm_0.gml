@@ -221,7 +221,6 @@ else
 if (global.resource_pack_sprite_tileset_default >= 0)
 and (ground_surface == 0)
 or (global.make_every_tileset_into_default_tileset == true)
-and (global.full_level_map_screenshot == false)
 and (global.resource_pack_sprite_tileset_default >= 0)
 {
 	sprite_index = global.resource_pack_sprite_tileset_default;

@@ -3,11 +3,11 @@ function scr_draw_upload_level_menu()
 	
 	#region /* Debug toggles */
 	var destroy_zip_after_uploading = false;
-	var skip_clear_check = true;
+	var skip_clear_check = false;
 	#endregion /* Debug toggles END */
 	
 	var upload_y = 42 * 2;
-	var message_x_offset = 340;
+	var message_x_offset = 400;
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
@@ -365,8 +365,11 @@ function scr_draw_upload_level_menu()
 		#endregion /* Draw Level Description END */
 		
 		draw_menu_button(get_window_width * 0.5 - 185, edit_name_y, l10n_text("Edit Name"), "upload_edit_name", "upload_edit_name");
+		draw_sprite_ext(spr_icons_pen, 0, get_window_width * 0.5 - 185 + 16, edit_name_y + 21, 1, 1, 0, c_white, 1);
 		draw_menu_button(get_window_width * 0.5 - 185, edit_description_y, l10n_text("Edit Description"), "upload_edit_description", "upload_edit_description");
+		draw_sprite_ext(spr_icons_pen, 0, get_window_width * 0.5 - 185 + 16, edit_description_y + 21, 1, 1, 0, c_white, 1);
 		draw_menu_button(get_window_width * 0.5 - 185, ok_y, l10n_text("Upload"), "edit_ok", "upload_yes");
+		draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 185 + 16, ok_y + 21, 1, 1, 0, c_white, 1);
 		draw_menu_button(get_window_width * 0.5 - 185, cancel_y, l10n_text("Cancel"), "edit_cancel", "edit_cancel");
 		draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 16, cancel_y + 21, 1, 1, 0, c_white, 1);
 		
@@ -874,6 +877,7 @@ function scr_draw_upload_level_menu()
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_level_yes_y, 1, 1, 180, c_white, 1);
 			draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_level_yes_y, 2, 2, 0, c_lime, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
+			draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
@@ -886,11 +890,13 @@ function scr_draw_upload_level_menu()
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_level_yes_y, 1, 1, 180, c_white, 1);
 				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_level_yes_y, 2, 2, 0, c_lime, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
+				draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
 				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_level_yes_y, 2, 2, 0, c_white, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
+				draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
 			}
 		}
 		#endregion /* Upload Level Yes END */
@@ -1035,9 +1041,15 @@ function scr_draw_upload_level_menu()
             
             // Add the Content-Length header to the map
             ds_map_add(map, "Content-Length", string(string_length(post_data)));
+<<<<<<< Updated upstream
 
             http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
             
+=======
+			
+			http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
+			
+>>>>>>> Stashed changes
             // Cleans up!
             buffer_delete(send_buffer);
             ds_map_destroy(map);

@@ -7,6 +7,14 @@ if (global.actually_play_edited_level == false)
 	var view_center_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5;
 	var view_center_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5;
 	
+	//if (keyboard_check_pressed(vk_rcontrol))
+	//{
+	//	with(obj_leveleditor_placed_object)
+	//	{
+	//		scr_set_length_variable();
+	//	}
+	//}
+	
 	grid_button_x = display_get_gui_width() - 224;
 	
 	scr_audio_play(level_editing_music, volume_source.music);
@@ -118,7 +126,6 @@ if (global.actually_play_edited_level == false)
 			if (asset_get_type("obj_camera") == asset_object)
 			and (!instance_exists(obj_camera))
 			and (asset_get_type("obj_leveleditor_placed_object") == asset_object)
-			and (!place_meeting(x, y, obj_leveleditor_placed_object))
 			or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32))
 			and (asset_get_type("obj_camera") == asset_object)
 			and (!instance_exists(obj_camera))
@@ -1641,7 +1648,6 @@ if (global.actually_play_edited_level == false)
 			#endregion /* Save Thumbnail END */
 		
 			menu_delay = 9999; /* Disable all menu control */
-			scr_save_custom_level();
 			lives = 5;
 			global.lives_until_assist = 0;
 			global.actually_play_edited_level = false;
@@ -1660,7 +1666,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Deactivate instances outside view, run this code last in step event */
 	deactivate_timer += 1;
-	if (deactivate_timer >= 3)
+	if (deactivate_timer >= 10)
 	{
 		if (startup_loading_timer <= 3)
 		{

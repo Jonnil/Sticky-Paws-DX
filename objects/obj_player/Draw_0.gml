@@ -25,7 +25,7 @@ and (key_up)
 	{
 		draw_set_color(c_red);
 		draw_circle(raycast_info.x, raycast_info.y, 2, false);
-		draw_set_color(c_green);
+		draw_set_color(c_lime);
 	}
 	else
 	{
@@ -33,10 +33,12 @@ and (key_up)
 	}
 	if (!position_meeting(xx + 32 * image_xscale, yy, obj_wall))
 	{
+		draw_set_alpha(0.1);
 		draw_line_width(xx + 32 * image_xscale, yy, raycast_info.x, raycast_info.y, 2);
 	}
 	else
 	{
+		draw_set_alpha(0.1);
 		draw_line_width(xx, yy, raycast_info.x, raycast_info.y, 2);
 	}
 }

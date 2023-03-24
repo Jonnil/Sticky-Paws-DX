@@ -69,12 +69,12 @@ room_speed = global.max_fps;
 
 #region /* Deactivate instances outside view */
 instance_activate_all();
-instance_deactivate_region(
-camera_get_view_x(view_camera[view_current]) - 64,
-camera_get_view_y(view_camera[view_current]) - 64,
-camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64,
-camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 64,
-false, true);
+//instance_deactivate_region(
+//camera_get_view_x(view_camera[view_current]) - 64,
+//camera_get_view_y(view_camera[view_current]) - 64,
+//camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64,
+//camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 64,
+//false, true);
 if (asset_get_type("obj_camera_map") == asset_object)
 {
 	instance_activate_object(obj_camera_map);
@@ -139,8 +139,8 @@ if (global.player4_can_play == true)
 #endregion /* Keyboard Controls END */
 
 #region /* Lerp the player position and scale to make the player move smoothly */
-xx = lerp(xx, x, 0.1);
-yy = lerp(yy, y, 0.1);
+xx = lerp(xx, x, 0.2);
+yy = lerp(yy, y, 0.2);
 draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
 #endregion /* Lerp the player position and scale to make the player move smoothly END */

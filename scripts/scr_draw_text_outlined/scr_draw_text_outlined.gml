@@ -18,7 +18,8 @@ function scr_draw_text_outlined(x_position = x, y_position = y, string_text = ""
 	var y_offset = 0; /* Y origin position offset for broken fonts */
 	
 	#region /* Draw outline of text first */
-	if (draw_outline == true)
+	if (outline_color != noone)
+	and (draw_outline == true)
 	{
 		/* This is an "array", meaning a list, to get the first value in a list you ask for 
 		"vector[0]" then add more [0] if the list has a list in it 

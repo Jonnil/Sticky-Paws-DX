@@ -5,36 +5,32 @@
 /* Better to have the unlock level code in obj_level than obj_player_map */
 if (clear_rate = "clear")
 {
-	with(instance_create_depth(x - 32, y, 0, obj_unlock_next_level))
+	with(instance_create_depth(x, y, 0, obj_unlock_next_level))
 	{
-		delay = 3;
 		if (instance_exists(obj_level))
 		{
 			come_from_level = instance_nearest(x, y, obj_level).level;
 		}
 		hspeed -= move_speed;
 	}
-	with(instance_create_depth(x + 32, y, 0, obj_unlock_next_level))
+	with(instance_create_depth(x, y, 0, obj_unlock_next_level))
 	{
-		delay = 3;
 		if (instance_exists(obj_level))
 		{
 			come_from_level = instance_nearest(x, y, obj_level).level;
 		}
 		hspeed += move_speed;
 	}
-	with(instance_create_depth(x, y - 32, 0, obj_unlock_next_level))
+	with(instance_create_depth(x, y, 0, obj_unlock_next_level))
 	{
-		delay = 3;
 		if (instance_exists(obj_level))
 		{
 			come_from_level = instance_nearest(x, y, obj_level).level;
 		}
 		vspeed -= move_speed;
 	}
-	with(instance_create_depth(x, y + 32, 0, obj_unlock_next_level))
+	with(instance_create_depth(x, y, 0, obj_unlock_next_level))
 	{
-		delay = 3;
 		if (instance_exists(obj_level))
 		{
 			come_from_level = instance_nearest(x, y, obj_level).level;

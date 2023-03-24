@@ -148,6 +148,7 @@ function scr_player_move_pause()
 				room_persistent = true;
 				global.pause_room = room;
 				audio_pause_all();
+				global.pause = true;
 				room_goto(room_pause);
 			}
 			else

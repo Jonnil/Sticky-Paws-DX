@@ -5,6 +5,7 @@ var clear_prompt_x = 164;
 #region /* Show Enter Level Key */
 if (can_move == true)
 and (can_enter_level >= 30)
+and (point_distance(xx, yy, x, y) < 30)
 and (asset_get_type("obj_level") == asset_object)
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed == 0)

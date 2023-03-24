@@ -2273,7 +2273,8 @@ function scr_options_menu()
 				{
 					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + " : " + string(narrator_name), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				}
-			
+				
+				#region /* Select Narrator Left and Right Key, show underneath text */
 				if (global.narrator >= 0)
 				{
 					draw_sprite_ext(spr_keyboard_keys, vk_left, file_select_x - 32, narrator_y, 0.5, 0.5, 0, c_white, 1);
@@ -2289,11 +2290,10 @@ function scr_options_menu()
 						draw_set_alpha(1);
 					}
 				}
-			
 				if (global.narrator < ds_list_size(global.all_loaded_characters) - 1)
 				{
-					draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, narrator_y, 0.5, 0.5, 0, c_white, 1);
-					if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 16, narrator_y + 16))
+					draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x + 100, narrator_y, 0.5, 0.5, 0, c_white, 1);
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x + 100 - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 100 + 16, narrator_y + 16))
 					and (global.controls_used_for_menu_navigation == "mouse")
 					{
 						if (open_dropdown == false)
@@ -2301,10 +2301,11 @@ function scr_options_menu()
 							menu = "select_narrator";
 						}
 						draw_set_alpha(0.5);
-						draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 16, narrator_y + 16, c_white, c_white, c_white, c_white, false);
+						draw_rectangle_color(file_select_x + file_select_right_arrow_x + 100 - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 100 + 16, narrator_y + 16, c_white, c_white, c_white, c_white, false);
 						draw_set_alpha(1);
 					}
 				}
+				#endregion /* Select Narrator Left and Right Key, show underneath text END */
 			
 				#region /* Player 1 change portrait when clicking left or right */
 			
@@ -2390,7 +2391,7 @@ function scr_options_menu()
 				and (menu_joystick_delay <= 0)
 				and (menu == "select_narrator")
 				or (mouse_check_button_pressed(mb_left))
-				and (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 16, narrator_y + 16))
+				and (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x + 100 - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 100 + 16, narrator_y + 16))
 				and (global.controls_used_for_menu_navigation == "mouse")
 				{
 					menu = "select_narrator";

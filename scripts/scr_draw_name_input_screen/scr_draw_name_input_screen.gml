@@ -84,6 +84,16 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	#endregion /* When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that END */
 	
+	#region /* Can paste text from clipboard */
+	if (keyboard_check(vk_control))
+	and (keyboard_check_pressed(ord("V")))
+	and (clipboard_has_text())
+	{
+		keyboard_string = clipboard_get_text();
+	    what_string_to_edit = clipboard_get_text();
+	}
+	#endregion /* Can paste text from clipboard END */
+	
 	#region /* Show how many characters a name has and what the max amount of characters is */
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);

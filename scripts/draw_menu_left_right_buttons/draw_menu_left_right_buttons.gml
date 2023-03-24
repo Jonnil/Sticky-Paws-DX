@@ -5,10 +5,8 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Left Right Buttons */
-	draw_set_halign(fa_left);
-	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(left_right_buttons_x, 20 + (left_right_buttons_y), l10n_text(string(left_right_buttons_text)) + ": " + string(left_right_buttons_variable_to_change), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 	
+	#region /* Draw Left Key */
 	draw_sprite_ext(spr_keyboard_keys, vk_left, left_right_buttons_x - 32, 20 + (left_right_buttons_y), 0.5, 0.5, 0, c_white, 1);
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x - 32 + 16 + size_of_button_offset, 20 + (left_right_buttons_y) + 16))
 	and (global.controls_used_for_menu_navigation == "mouse")
@@ -25,7 +23,9 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 			draw_set_alpha(1);
 		}
 	}
+	#endregion /* Draw Left Key END */
 	
+	#region /* Draw Right Key */
 	draw_sprite_ext(spr_keyboard_keys, vk_right, left_right_buttons_x + left_right_buttons_right_arrow_x, 20 + (left_right_buttons_y), 0.5, 0.5, 0, c_white, 1);
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x + left_right_buttons_right_arrow_x - 16 - size_of_button_offset, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16))
 	and (global.controls_used_for_menu_navigation == "mouse")
@@ -37,6 +37,14 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 		draw_rectangle_color(left_right_buttons_x + left_right_buttons_right_arrow_x - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16, c_white, c_white, c_white, c_white, false);
 		draw_set_alpha(1);
 	}
+	#endregion /* Draw Right Key END */
+	
+	#region /* Draw Text */
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
+	scr_draw_text_outlined(left_right_buttons_x, 20 + (left_right_buttons_y), l10n_text(string(left_right_buttons_text)) + ": " + string(left_right_buttons_variable_to_change), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+	#endregion /* Draw Text END */
+	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	{

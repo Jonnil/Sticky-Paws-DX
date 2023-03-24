@@ -6,7 +6,7 @@ function scr_options_level_editor()
 	if (pause == true)
 	{
 		var level_editor_options_x = 500;
-		var options_level_editor_right_arrow_x = 600;
+		var options_level_editor_right_arrow_x = 650;
 		var custom_background_1_x_offset_y = (40 * 3);
 		var custom_background_1_y_offset_y = (40 * 4);
 		var custom_background_2_x_offset_y = (40 * 5);

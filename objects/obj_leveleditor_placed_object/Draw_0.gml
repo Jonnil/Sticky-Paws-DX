@@ -1,13 +1,9 @@
 if (global.actually_play_edited_level == false)
 {
-	var view_left = camera_get_view_x(view_camera[view_current]) - 12;
-	var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 12;
-	var view_top = camera_get_view_y(view_camera[view_current]) - 12;
-	var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current])) + 12;
-	if (x < view_right)
-	and (x > view_left)
-	and (y < view_bottom)
-	and (y > view_top)
+	if (x < (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 12)
+	and (x > camera_get_view_x(view_camera[view_current]) - 12)
+	and (y < (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current])) + 12)
+	and (y > camera_get_view_y(view_camera[view_current]) - 12)
 	{
 		
 		#region /* All code before initializing the object */
@@ -228,8 +224,7 @@ if (global.actually_play_edited_level == false)
 			if (object == 7){if (asset_get_type("spr_map_turn_right_down") == asset_sprite){draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 270, image_blend, 1);}sprite_index = spr_noone; mask_index = spr_wall;}
 		}
 		#endregion /* Initialize Object END */
-	
+		
+		//scr_draw_text_outlined(x, y, string(repeat_length), global.default_text_size, noone);
 	}
 }
-
-//scr_draw_text_outlined(x, y, string(repeat_length));

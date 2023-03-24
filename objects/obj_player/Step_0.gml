@@ -2871,7 +2871,7 @@ if (crouch == true)
 			if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
 			if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
 			if (sprite_jump > noone) and (vspeed <= 0){sprite_index = sprite_jump;}else
-			if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
+			if (sprite_fall_slower > noone) and (vspeed > 0) and (key_jump_hold){sprite_index = sprite_fall_slower;}else
 			if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
 			if (sprite_jump > noone){sprite_index = sprite_jump;}else
 			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
@@ -2923,7 +2923,7 @@ if (crouch == true)
 				if (sprite_crouch_jump_transition_to_fall > noone){sprite_index = sprite_crouch_jump_transition_to_fall; image_index = image_number - 1;}else
 				if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
 				if (sprite_jump > noone) and (vspeed <= 0){sprite_index = sprite_jump;}else
-				if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
+				if (sprite_fall_slower > noone) and (vspeed > 0) and (key_jump_hold){sprite_index = sprite_fall_slower;}else
 				if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
 				if (sprite_jump > noone){sprite_index = sprite_jump;}else
 				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
@@ -3388,7 +3388,7 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		if (sprite_burnt > noone){sprite_index = sprite_burnt;}else
 		if (sprite_die > noone){sprite_index = sprite_die;}else
 		if (sprite_jump > noone) and (vspeed <= 0){sprite_index = sprite_jump;}else
-		if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
+		if (sprite_fall_slower > noone) and (vspeed > 0) and (key_jump_hold){sprite_index = sprite_fall_slower;}else
 		if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
 		if (sprite_jump > noone){sprite_index = sprite_jump;}else
 		if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
@@ -3400,7 +3400,7 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (sprite_dive > noone){sprite_index = sprite_dive;if (image_index > image_number - 1){image_speed = 0;}else{image_speed = 0.5;}}else
 		if (sprite_jump > noone) and (vspeed <= 0){sprite_index = sprite_jump;}else
-		if (sprite_fall_slower > noone) and (vspeed > 0) and (key_a_hold){sprite_index = sprite_fall_slower;}else
+		if (sprite_fall_slower > noone) and (vspeed > 0) and (key_jump_hold){sprite_index = sprite_fall_slower;}else
 		if (sprite_fall > noone) and (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
 		if (sprite_jump > noone){sprite_index = sprite_jump;}else
 		if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
