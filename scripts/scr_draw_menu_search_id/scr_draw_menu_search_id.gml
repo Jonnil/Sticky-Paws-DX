@@ -98,45 +98,23 @@ function scr_draw_menu_search_id()
 			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_accept))
 			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_accept))
 			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_accept))
-<<<<<<< Updated upstream
 			{
 				// Create DS Map to hold the HTTP Header info
 				map = ds_map_create();
-            
+				
 				// Add to the header DS Map
 				ds_map_add(map, "Host", global.base_url);
 				ds_map_add(map, "Content-Type", "application/json");
 				ds_map_add(map, "User-Agent", "gmdownloader");
-			
+				
 				// Send the HTTP GET request to the /download endpoint
 				global.search_id = string(search_id);
 				global.http_request_id = http_request("http://" + global.base_url + global.download_endpoint + global.search_id, "GET", map, "")
 				ds_map_destroy(map);
-
+				
 				menu = "searching_for_id";
 				menu_delay = 3;
 			}
-=======
-			  {
-                // Create DS Map to hold the HTTP Header info
-                map = ds_map_create();
-				
-                // Add to the header DS Map
-                ds_map_add(map, "Host", global.base_url);
-                ds_map_add(map, "Content-Type", "application/json");
-                ds_map_add(map, "User-Agent", "gmdownloader");
-				
-                // Send the HTTP GET request to the /download endpoint
-                global.search_id = string(search_id);
-                //global.http_request_id = http_get(global.download_endpoint + global.search_id);
-                //show_message(string(global.base_url + global.download_endpoint + global.search_id));
-                global.http_request_id = http_request("http://" + global.base_url + global.download_endpoint + global.search_id, "GET", map, "")
-                ds_map_destroy(map);
-				
-                menu = "searching_for_id";
-                menu_delay = 3;
-            }
->>>>>>> Stashed changes
 		}
 		#endregion /* Press Enter to search for the inputted ID END */
 		

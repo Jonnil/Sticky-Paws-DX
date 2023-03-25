@@ -127,9 +127,12 @@ else
 	title_screen_background = noone;
 }
 
-if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
+if (variable_instance_exists(self, "title_screen_background"))
 {
-	layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
+	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
+	{
+		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
+	}
 }
 #endregion /* Custom Title Screen Background */
 

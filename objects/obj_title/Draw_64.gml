@@ -1704,7 +1704,7 @@ if (iris_xscale <= 0.001)
 		}
 		if (asset_get_type("room_leveleditor") == asset_room)
 		{
-			sprite_delete(title_screen_background);
+			scr_delete_sprite_properly(title_screen_background);
 			
 			scr_update_all_backgrounds();
 			
@@ -1731,7 +1731,7 @@ if (iris_xscale <= 0.001)
 		}
 		if (asset_get_type("room_leveleditor") == asset_room)
 		{
-			sprite_delete(title_screen_background);
+			scr_delete_sprite_properly(title_screen_background);
 			
 			scr_update_all_backgrounds();
 			
@@ -1758,7 +1758,7 @@ if (iris_xscale <= 0.001)
 		}
 		if (asset_get_type("room_world_map") == asset_room)
 		{
-			sprite_delete(title_screen_background);
+			scr_delete_sprite_properly(title_screen_background);
 			scr_config_save();
 			room_goto(room_world_map);
 		}

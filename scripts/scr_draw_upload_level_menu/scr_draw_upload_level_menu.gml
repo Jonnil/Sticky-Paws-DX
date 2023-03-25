@@ -994,6 +994,9 @@ function scr_draw_upload_level_menu()
 			level_id_8 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
 			level_id_9 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
 			level_id = string(level_id_1) + string(level_id_2) + string(level_id_3) + string(level_id_4) + string(level_id_5) + string(level_id_6) + string(level_id_7) + string(level_id_8) + string(level_id_9);
+			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
+			ini_write_string("info", "level_id", string(level_id)); /* Save the level ID in the level information.ini file, so that it can be referenced later */
+			ini_close();
 		}
 		#endregion /* Generate Level ID END */
 		
@@ -1005,67 +1008,60 @@ function scr_draw_upload_level_menu()
 		#endregion /* Create Zip File END */
 		
 		#region /* Send Zip File to the Server */
-        if (menu_delay <= 0)
-        {
-            
-            #region /* Actually upload the level to the server */
-            
-            // User is prompted for a file to upload
-            file_name = filename_name(file);
-            
-            // Create DS Map to hold the HTTP Header info
-            map = ds_map_create();
-            
-            // Add to the header DS Map
-            ds_map_add(map, "Host", global.base_url);
-            var boundary = "----GMBoundary";
-            ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
-            ds_map_add(map, "User-Agent", "gmuploader");
-            ds_map_add(map, "X-API-Key", global.api_key);
-            
-            // Loads the file into a buffer
-            send_buffer = buffer_create(1, buffer_grow, 1);
-            buffer_load_ext(send_buffer, file, 0);
-            
-            // Encodes the data as base64
-            data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
-            
-            // Post the data to the upload script
-            var post_data = "--" + boundary + "\r\n";
-            post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
-            post_data += file_name + "\r\n";
-            post_data += "--" + boundary + "\r\n";
-            post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
-            post_data += data_send + "\r\n";
-            post_data += "--" + boundary + "--";
-            
-            // Add the Content-Length header to the map
-            ds_map_add(map, "Content-Length", string(string_length(post_data)));
-<<<<<<< Updated upstream
-
-            http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
-            
-=======
+		if (menu_delay <= 0)
+		{
 			
+			#region /* Actually upload the level to the server */
+			
+			/* User is prompted for a file to upload */
+			file_name = filename_name(file);
+			
+			/* Create DS Map to hold the HTTP Header info */
+			map = ds_map_create();
+			
+			/* Add to the header DS Map */
+			ds_map_add(map, "Host", global.base_url);
+			var boundary = "----GMBoundary";
+			ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
+			ds_map_add(map, "User-Agent", "gmuploader");
+			ds_map_add(map, "X-API-Key", global.api_key);
+			
+			/* Loads the file into a buffer */
+			send_buffer = buffer_create(1, buffer_grow, 1);
+			buffer_load_ext(send_buffer, file, 0);
+			
+			/* Encodes the data as base64 */
+			data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
+			
+			/* Post the data to the upload script */
+			var post_data = "--" + boundary + "\r\n";
+			post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
+			post_data += file_name + "\r\n";
+			post_data += "--" + boundary + "\r\n";
+			post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
+			post_data += data_send + "\r\n";
+			post_data += "--" + boundary + "--";
+			
+			/* Add the Content-Length header to the map */
+			ds_map_add(map, "Content-Length", string(string_length(post_data)));
 			http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
 			
->>>>>>> Stashed changes
-            // Cleans up!
-            buffer_delete(send_buffer);
-            ds_map_destroy(map);
-            
-            #endregion /* Actually upload the level to the server END */
-            
-            #region /* Delete some leftover files and folders */
-            if (destroy_zip_after_uploading == true)
-            {
-                file_delete(file);
-            }
-            #endregion /* Delete some leftover files and folders END */
-            
-            menu = "level_uploaded";
-        }
-        #endregion /* Send Zip File to the Server END */
+			/* Cleans up! */
+			buffer_delete(send_buffer);
+			ds_map_destroy(map);
+			
+			#endregion /* Actually upload the level to the server END */
+			
+			#region /* Delete some leftover files and folders */
+			if (destroy_zip_after_uploading == true)
+			{
+				file_delete(file);
+			}
+			#endregion /* Delete some leftover files and folders END */
+			
+			menu = "level_uploaded";
+		}
+		#endregion /* Send Zip File to the Server END */
 		
 	}
 	#endregion /* Uploading Level END */
@@ -1233,7 +1229,7 @@ function scr_draw_upload_level_menu()
 		}
 		if (asset_get_type("room_leveleditor") == asset_room)
 		{
-			sprite_delete(title_screen_background);
+			scr_delete_sprite_properly(title_screen_background);
 			
 			scr_update_all_backgrounds();
 			

@@ -493,7 +493,7 @@ function scr_select_custom_level_menu()
 		}
 		if (asset_get_type("room_leveleditor") == asset_room)
 		{
-			sprite_delete(title_screen_background);
+			scr_delete_sprite_properly(title_screen_background);
 			scr_update_all_backgrounds();
 			global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
 			room_goto(room_leveleditor);

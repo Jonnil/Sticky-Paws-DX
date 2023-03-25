@@ -69,12 +69,12 @@ room_speed = global.max_fps;
 
 #region /* Deactivate instances outside view */
 instance_activate_all();
-//instance_deactivate_region(
-//camera_get_view_x(view_camera[view_current]) - 64,
-//camera_get_view_y(view_camera[view_current]) - 64,
-//camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64,
-//camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 64,
-//false, true);
+instance_deactivate_region(
+camera_get_view_x(view_camera[view_current]) - 64,
+camera_get_view_y(view_camera[view_current]) - 64,
+camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64,
+camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 64,
+false, true);
 if (asset_get_type("obj_camera_map") == asset_object)
 {
 	instance_activate_object(obj_camera_map);
@@ -82,6 +82,22 @@ if (asset_get_type("obj_camera_map") == asset_object)
 if (asset_get_type("obj_level") == asset_object)
 {
 	instance_activate_object(obj_level);
+}
+if (asset_get_type("obj_unlock_next_level") == asset_object)
+{
+	instance_activate_object(obj_unlock_next_level);
+}
+if (asset_get_type("obj_path") == asset_object)
+{
+	instance_activate_object(obj_path);
+}
+if (asset_get_type("obj_map_path_turn") == asset_object)
+{
+	instance_activate_object(obj_map_path_turn);
+}
+if (asset_get_type("obj_map_exit") == asset_object)
+{
+	instance_activate_object(obj_map_exit);
 }
 #endregion /* Deactivate instances outside view END */
 

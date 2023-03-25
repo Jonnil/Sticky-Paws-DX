@@ -56,6 +56,18 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 					var clear_check = ini_read_string("info", "clear_check", false);
 					
 					if (clear_check == true)
+					and (ini_key_exists("info", "level_id"))
+					{
+						draw_set_halign(fa_left);
+						draw_set_valign(fa_middle);
+						if (global.select_level_index == i)
+						{
+							scr_draw_text_outlined(394 * (i - column * row) + 140 + thumbnail_x_offset, 226 * (column - scroll) + 274, string(ini_read_string("info", "level_id", "")), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
+						}
+						draw_sprite_ext(spr_checkpoint, 1, 394 * (i - column * row) + 120 + thumbnail_x_offset, 226 * (column - scroll) + 274, scr_wave(0.4, 0.5, 1, 0), scr_wave(0.4, 0.5, 1, 0), 0, c_white, 1);
+					}
+					else
+					if (clear_check == true)
 					and (ini_key_exists("info", "clear_check"))
 					{
 						draw_set_halign(fa_left);

@@ -44,7 +44,7 @@ function scr_player_move_save_whole_level_as_screenshot()
 		{
 			sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
 		}
-		sprite_delete(custom_level_map_sprite);
+		scr_delete_sprite_properly(custom_level_map_sprite);
 	}
 	if (full_level_map_screenshot_timer == 20)
 	{

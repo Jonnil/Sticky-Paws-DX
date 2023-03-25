@@ -489,7 +489,7 @@ function scr_select_official_level_menu()
 	{
 		if (asset_get_type("room_leveleditor") == asset_room)
 		{
-			sprite_delete(title_screen_background);
+			scr_delete_sprite_properly(title_screen_background);
 			
 			scr_update_all_backgrounds();
 			

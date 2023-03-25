@@ -227,7 +227,7 @@ if (global.actually_play_edited_level == false)
 					{
 						sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
 					}
-					sprite_delete(thumbnail_sprite);
+					scr_delete_sprite_properly(thumbnail_sprite);
 					#endregion /* Save Level Thumbnail END */
 					
 					scr_save_custom_level();
@@ -268,7 +268,7 @@ if (global.actually_play_edited_level == false)
 					{
 						sprite_save(thumbnail_sprite, 0, working_directory + "/custom_worlds/" + string(global.level_name) + "/automatic_thumbnail.png");
 					}
-					sprite_delete(thumbnail_sprite);
+					scr_delete_sprite_properly(thumbnail_sprite);
 					#endregion /* Save World Thumbnail END */
 					
 					if (asset_get_type("scr_save_custom_world") == asset_script)
@@ -428,7 +428,7 @@ if (global.actually_play_edited_level == false)
 		{
 			sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
 		}
-		sprite_delete(thumbnail_sprite);
+		scr_delete_sprite_properly(thumbnail_sprite);
 		#endregion /* Save Thumbnail END */
 		
 		menu_delay = 10; /* Disable all menu control */
@@ -1644,7 +1644,7 @@ if (global.actually_play_edited_level == false)
 			{
 				sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
 			}
-			sprite_delete(thumbnail_sprite);
+			scr_delete_sprite_properly(thumbnail_sprite);
 			#endregion /* Save Thumbnail END */
 		
 			menu_delay = 9999; /* Disable all menu control */

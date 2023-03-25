@@ -10,14 +10,14 @@ function scr_update_all_backgrounds()
 		
 		#region /* Update All Backgrounds */
 		
-		sprite_delete(global.custom_background1);
-		sprite_delete(global.custom_background2);
-		sprite_delete(global.custom_background3);
-		sprite_delete(global.custom_background4);
-		sprite_delete(global.custom_foreground1);
-		sprite_delete(global.custom_foreground_above_static_objects);
-		sprite_delete(global.custom_foreground2);
-		sprite_delete(global.custom_foreground_secret);
+		scr_delete_sprite_properly(global.custom_background1);
+		scr_delete_sprite_properly(global.custom_background2);
+		scr_delete_sprite_properly(global.custom_background3);
+		scr_delete_sprite_properly(global.custom_background4);
+		scr_delete_sprite_properly(global.custom_foreground1);
+		scr_delete_sprite_properly(global.custom_foreground_above_static_objects);
+		scr_delete_sprite_properly(global.custom_foreground2);
+		scr_delete_sprite_properly(global.custom_foreground_secret);
 		
 		if (global.character_select_in_this_menu == "main_game")
 		{
@@ -118,7 +118,7 @@ function scr_update_all_backgrounds()
 		#endregion /* Update All Backgrounds END */
 		
 		#region /* Load Level Tileset File */
-		sprite_delete(global.custom_tileset);
+		scr_delete_sprite_properly(global.custom_tileset);
 		if (global.character_select_in_this_menu == "main_game")
 		and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png"))
 		{
