@@ -255,10 +255,10 @@ global.selected_title_background = 0; /* 0 = default */
 global.show_deaths_counter = false; /* Show a deaths counter or not */
 global.show_ranks = false; /* Show ranks you get at the end of the level */
 global.show_timer = false; /* Show a countup timer or not */
-global.skin_for_player_1 = 0; /* Player 1 Select Skin, make default skin 1 */
-global.skin_for_player_2 = 1; /* Player 2 Select Skin, make default skin 2 */
-global.skin_for_player_3 = 2; /* Player 3 Select Skin, make default skin 3 */
-global.skin_for_player_4 = 3; /* Player 4 Select Skin, make default skin 4 */
+global.actual_skin_for_player_1 = 0; /* Player 1 Select Skin, make default skin 1 */
+global.actual_skin_for_player_2 = 1; /* Player 2 Select Skin, make default skin 2 */
+global.actual_skin_for_player_3 = 2; /* Player 3 Select Skin, make default skin 3 */
+global.actual_skin_for_player_4 = 3; /* Player 4 Select Skin, make default skin 4 */
 global.sprite_select_player_1 = noone;
 global.sprite_select_player_2 = noone;
 global.sprite_select_player_3 = noone;
@@ -569,5 +569,12 @@ if (asset_get_type("scr_config_load") == asset_script)
 	scr_config_load();
 }
 #endregion /* Load Config END */
+
+#region /* Set these global variables after loading config file */
+global.skin_for_player_1 = global.actual_skin_for_player_1; /* In case the player selected a character that doesn't have skins, use this variable */
+global.skin_for_player_2 = global.actual_skin_for_player_2; /* In case the player selected a character that doesn't have skins, use this variable */
+global.skin_for_player_3 = global.actual_skin_for_player_3; /* In case the player selected a character that doesn't have skins, use this variable */
+global.skin_for_player_4 = global.actual_skin_for_player_4; /* In case the player selected a character that doesn't have skins, use this variable */
+#endregion /* Set these global variables after loading config file END */
 
 #endregion /* Things you shouldn't change, warning, don't change any of these options or you might break the game! END */

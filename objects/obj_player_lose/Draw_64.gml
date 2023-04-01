@@ -3,13 +3,6 @@ var get_window_width = display_get_gui_width();
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 
-#region /* Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden */
-if (iris_xscale <= 0.001)
-{
-	draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-}
-#endregion /* Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden END */
-
 #region /* Game Over */
 if (lives <= 0)
 {
@@ -173,5 +166,18 @@ if (lives <= 0)
 	
 }
 #endregion /* Game Over END */
+
+#region /* Draw loading screen when reloading level */
+if (iris_xscale <= 0.001)
+and (lives >= 1)
+{
+	draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false); /* Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden */
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	global.loading_spinning_angle -= 10;
+	draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, 1);
+	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
+}
+#endregion /* Draw loading screen when reloading level END */
 
 scr_draw_cursor_mouse();

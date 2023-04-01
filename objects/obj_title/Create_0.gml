@@ -23,6 +23,7 @@ selected_skin = 0;
 background_layer_x = 0;
 background_layer_y = 0;
 
+downloaded_thumbnail_sprite = noone; /* When downloading a level, you want to show a thumbnail temporarely */
 level_editor_edit_name = false; /* If you are editing an already made level's name or not */
 old_level_name = ""; /* Need to remember original name of level, so that renaming level doesn't actually happen if you haven't edited the name */
 old_level_description = ""; /* Need to remember original description of level, so that renaming level doesn't actually happen if you haven't edited the description */
@@ -448,3 +449,23 @@ if (global.narrator >= 0)
 #endregion /* Narrator Voice variable handeling END */
 
 scr_audio_play(voice_game_title, volume_source.voice); /* Say the games title */
+
+#region /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch */
+if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+{
+	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+	if (ini_section_exists("Unlock Placable Objects"))
+	{
+		can_create_level_from_scratch = true;
+	}
+	else
+	{
+		can_create_level_from_scratch = false;
+	}
+	ini_close();
+}
+else
+{
+	can_create_level_from_scratch = false;
+}
+#endregion /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch END */

@@ -82,12 +82,6 @@ if (global.actually_play_edited_level == false)
 				#region /* Show what version of the game the level was first created in */
 				/* This should make it easier to port old levels to new game versions */
 				/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
-				if (global.select_level_index >= 1)
-				and (global.create_level_from_template == false)
-				{
-					ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-				}
-				else
 				if (global.level_name != "")
 				{
 					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
@@ -102,7 +96,7 @@ if (global.actually_play_edited_level == false)
 				#endregion /* Show what version of the game the level was first created in END */
 			
 				#region /* Draw if level have been Clear Checked on top of screen */
-				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
+				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				
 				var clear_check = ini_read_string("info", "clear_check", false);
 				
@@ -913,6 +907,18 @@ if (global.actually_play_edited_level == false)
 			draw_set_alpha(1);
 		}
 		#endregion /* Play Level Button END */
+		
+		#region /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing */
+		if (set_difficulty_mode == false)
+		{
+			draw_set_halign(fa_right);
+			draw_set_valign(fa_middle);
+			draw_set_alpha(0.5);
+			draw_rectangle_color(display_get_gui_width() - 26 - string_width(global.level_name), display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+			scr_draw_text_outlined(display_get_gui_width() - 66, display_get_gui_height() - 16, string(global.level_name), global.default_text_size, c_black, c_white, 1);
+		}
+		#endregion /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing END */
 		
 		if (asset_get_type("spr_leveleditor_icons") == asset_sprite)
 		{

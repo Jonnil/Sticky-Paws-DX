@@ -4,6 +4,17 @@ scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_deactivate_objects_outside_view();
 
+if (menu_delay > 0)
+{
+	menu_delay -= 1;
+}
+
+if (keyboard_check_pressed(vk_rcontrol))
+{
+	draw_flush();
+	draw_texture_flush();
+}
+
 #region /* Make background visible */
 if (room == room_leveleditor)
 {

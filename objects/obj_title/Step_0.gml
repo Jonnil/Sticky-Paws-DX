@@ -113,7 +113,8 @@ if (global.every_player_can_navigate_menu == true)
 	or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button2_back))
 	or (keyboard_check_pressed(global.player1_key_back))
 	or (keyboard_check_pressed(global.player1_key2_back))
-	or (keyboard_check_pressed(vk_escape));
+	or (keyboard_check_pressed(vk_escape))
+	or (mouse_check_button_pressed(mb_right));
 }
 else
 {
@@ -231,52 +232,57 @@ if (menu == "load_custom_level")
 			}
 			else
 			{
+				can_navigate = true;
+				file_load_timer = 0;
 				menu = "level_editor_play";
+				menu_delay = 3;
 			}
 		}
 		else
 		{
 			if (directory_exists(working_directory + "/custom_levels/" + file_found))
+			and (file_exists(working_directory + "/custom_levels/" + file_found + "/data/level_information.ini"))
 			{
 				ds_list_add(global.all_loaded_custom_levels, file_found)
+				
+				#region /* Update Thumbnail */
+				/* BMP Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.bmp"))
+				{
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.bmp", 0, false, true, 0, 0));
+				}
+				else
+				/* PNG Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.png"))
+				{
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.png", 0, false, true, 0, 0));
+				}
+				else
+				/* GIF Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.gif"))
+				{
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.gif", 0, false, true, 0, 0));
+				}
+				else
+				/* JPG Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.jpg"))
+				{
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.jpg", 0, false, true, 0, 0));
+				}
+				else
+				/* PNG Automatic Thumbnail */
+				if (file_exists(working_directory + "/custom_levels/" + file_found + "/automatic_thumbnail.png"))
+				{
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/automatic_thumbnail.png", 0, false, true, 0, 0));
+				}
+				else
+				if (file_exists(working_directory + "/custom_levels/" + file_found + "/Automatic Thumbnail.png"))
+				{
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Automatic Thumbnail.png", 0, false, true, 0, 0));
+				}
+				else
+				{
+					ds_list_add(global.thumbnail_sprite, spr_thumbnail_missing)
+				}
+				#endregion /* Update Thumbnail END */
+				
 			}
-			
-			#region /* Update Thumbnail */
-			/* BMP Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.bmp"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.bmp", 0, false, true, 0, 0));
-			}
-			else
-			/* PNG Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.png"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.png", 0, false, true, 0, 0));
-			}
-			else
-			/* GIF Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.gif"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.gif", 0, false, true, 0, 0));
-			}
-			else
-			/* JPG Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.jpg"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.jpg", 0, false, true, 0, 0));
-			}
-			else
-			/* PNG Automatic Thumbnail */
-			if (file_exists(working_directory + "/custom_levels/" + file_found + "/automatic_thumbnail.png"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/automatic_thumbnail.png", 0, false, true, 0, 0));
-			}
-			else
-			if (file_exists(working_directory + "/custom_levels/" + file_found + "/Automatic Thumbnail.png"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Automatic Thumbnail.png", 0, false, true, 0, 0));
-			}
-			else
-			{
-				ds_list_add(global.thumbnail_sprite, spr_thumbnail_missing)
-			}
-			#endregion /* Update Thumbnail END */
 			
 			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
 		}

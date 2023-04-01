@@ -76,7 +76,7 @@ function scr_config_load()
 		
 		#region /* Load Player 1 Keyboard Remapping */
 		if (ini_key_exists("config", "character_index_player_1")){global.character_index[0] = ini_read_real("config", "character_index_player_1", 0);}
-		if (ini_key_exists("config", "skin_for_player_1")){global.skin_for_player_1 = ini_read_real("config", "skin_for_player_1", 0);}
+		if (ini_key_exists("config", "skin_for_player_1")){global.actual_skin_for_player_1 = ini_read_real("config", "skin_for_player_1", 0);}
 		if (ini_key_exists("config", "player1_name")){global.player1_name = ini_read_string("config", "player1_name", 0);}
 		if (ini_key_exists("config", "player1_key_dive")){global.player1_key_dive = ini_read_real("config", "player1_key_dive", 0);}
 		if (ini_key_exists("config", "player1_key_jump")){global.player1_key_jump = ini_read_real("config", "player1_key_jump", 0);}
@@ -124,7 +124,7 @@ function scr_config_load()
 		
 		#region /* Load Player 2 Keyboard Remapping */
 		if (ini_key_exists("config", "character_index_player_2")){global.character_index[1] = ini_read_real("config", "character_index_player_2", 1);}
-		if (ini_key_exists("config", "skin_for_player_2")){global.skin_for_player_2 = ini_read_real("config", "skin_for_player_2", 1);}
+		if (ini_key_exists("config", "skin_for_player_2")){global.actual_skin_for_player_2 = ini_read_real("config", "skin_for_player_2", 1);}
 		if (ini_key_exists("config", "player2_name")){global.player2_name = ini_read_string("config", "player2_name", 0);}
 		if (ini_key_exists("config", "player2_key_dive")){global.player2_key_dive = ini_read_real("config", "player2_key_dive", 0);}
 		if (ini_key_exists("config", "player2_key_jump")){global.player2_key_jump = ini_read_real("config", "player2_key_jump", 0);}
@@ -172,7 +172,7 @@ function scr_config_load()
 		
 		#region /* Load Player 3 Keyboard Remapping */
 		if (ini_key_exists("config", "character_index_player_3")){global.character_index[2] = ini_read_real("config", "character_index_player_3", 2);}
-		if (ini_key_exists("config", "skin_for_player_3")){global.skin_for_player_3 = ini_read_real("config", "skin_for_player_3", 2);}
+		if (ini_key_exists("config", "skin_for_player_3")){global.actual_skin_for_player_3 = ini_read_real("config", "skin_for_player_3", 2);}
 		if (ini_key_exists("config", "player3_name")){global.player3_name = ini_read_string("config", "player3_name", 0);}
 		if (ini_key_exists("config", "player3_key_dive")){global.player3_key_dive = ini_read_real("config", "player3_key_dive", 0);}
 		if (ini_key_exists("config", "player3_key_jump")){global.player3_key_jump = ini_read_real("config", "player3_key_jump", 0);}
@@ -220,7 +220,7 @@ function scr_config_load()
 		
 		#region /* Load Player 4 Keyboard Remapping */
 		if (ini_key_exists("config", "character_index_player_4")){global.character_index[3] = ini_read_real("config", "character_index_player_4", 3);}
-		if (ini_key_exists("config", "skin_for_player_4")){global.skin_for_player_4 = ini_read_real("config", "skin_for_player_4", 3);}
+		if (ini_key_exists("config", "skin_for_player_4")){global.actual_skin_for_player_4 = ini_read_real("config", "skin_for_player_4", 3);}
 		if (ini_key_exists("config", "player4_name")){global.player4_name = ini_read_string("config", "player4_name", 0);}
 		if (ini_key_exists("config", "player4_key_dive")){global.player4_key_dive = ini_read_real("config", "player4_key_dive", 0);}
 		if (ini_key_exists("config", "player4_key_jump")){global.player4_key_jump = ini_read_real("config", "player4_key_jump", 0);}

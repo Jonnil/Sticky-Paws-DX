@@ -67,8 +67,8 @@ function scr_save_level()
 	and (global.actually_play_edited_level == true)
 	{
 		var uppercase_level_name;
-		uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
-		uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
+		uppercase_level_name = string_upper(string_char_at(string(global.level_name), 1));
+		uppercase_level_name += string_copy(string(global.level_name), 2, string_length(string(global.level_name)) - 1);
 		var level_name = string(uppercase_level_name);
 		
 		#region /* Save to custom level save file */
@@ -104,27 +104,11 @@ function scr_save_level()
 		
 		#region /* Update ranking highscore to actual custom level */
 		if (global.character_select_in_this_menu == "level_editor")
-		and (global.select_level_index <= 0)
 		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-		
-		or (global.character_select_in_this_menu == "level_editor")
-		and (global.create_level_from_template >= 2)
-		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-		
-		or (global.character_select_in_this_menu == "level_editor")
-		and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 		{
 			if (global.character_select_in_this_menu == "level_editor")
-			and (global.select_level_index <= 0)
-			or (global.character_select_in_this_menu == "level_editor")
-			and (global.create_level_from_template >= 2)
 			{
 				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-			}
-			else
-			if (global.character_select_in_this_menu == "level_editor")
-			{
-				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 			}
 			
 			#region /* If doing a clear check, and winning the level, then add in level information that you have done a clear check */

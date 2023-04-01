@@ -86,7 +86,7 @@ function scr_config_save()
 	
 	#region /* Save Player 1 Keyboard Remapping */
 	ini_write_real("config", "character_index_player_1", global.character_index[0]);
-	ini_write_real("config", "skin_for_player_1", global.skin_for_player_1);
+	ini_write_real("config", "skin_for_player_1", global.actual_skin_for_player_1);
 	ini_write_string("config", "player1_name", global.player1_name);
 	ini_write_real("config", "player1_up_is_also_jump", global.player1_up_is_also_jump);
 	ini_write_real("config", "player1_double_tap_to_run", global.player1_double_tap_to_run);
@@ -102,7 +102,7 @@ function scr_config_save()
 	
 	#region /* Save Player 2 Keyboard Remapping */
 	ini_write_real("config", "character_index_player_2", global.character_index[1]);
-	ini_write_real("config", "skin_for_player_2", global.skin_for_player_2);
+	ini_write_real("config", "skin_for_player_2", global.actual_skin_for_player_2);
 	ini_write_string("config", "player2_name", global.player2_name);
 	ini_write_real("config", "player2_up_is_also_jump", global.player2_up_is_also_jump);
 	ini_write_real("config", "player2_double_tap_to_run", global.player2_double_tap_to_run);
@@ -118,7 +118,7 @@ function scr_config_save()
 	
 	#region /* Save Player 3 Keyboard Remapping */
 	ini_write_real("config", "character_index_player_3", global.character_index[2]);
-	ini_write_real("config", "skin_for_player_3", global.skin_for_player_3);
+	ini_write_real("config", "skin_for_player_3", global.actual_skin_for_player_3);
 	ini_write_string("config", "player3_name", global.player3_name);
 	ini_write_real("config", "player3_up_is_also_jump", global.player3_up_is_also_jump);
 	ini_write_real("config", "player3_double_tap_to_run", global.player3_double_tap_to_run);
@@ -134,7 +134,7 @@ function scr_config_save()
 	
 	#region /* Save Player 4 Keyboard Remapping */
 	ini_write_real("config", "character_index_player_4", global.character_index[3]);
-	ini_write_real("config", "skin_for_player_4", global.skin_for_player_4);
+	ini_write_real("config", "skin_for_player_4", global.actual_skin_for_player_4);
 	ini_write_string("config", "player4_name", global.player4_name);
 	ini_write_real("config", "player4_up_is_also_jump", global.player4_up_is_also_jump);
 	ini_write_real("config", "player4_double_tap_to_run", global.player4_double_tap_to_run);

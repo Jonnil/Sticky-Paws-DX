@@ -230,7 +230,15 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])), 1));
 		uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]))) - 1);
 		var character_name = string(uppercase_character_name);
-		scr_draw_text_outlined(get_window_width * 0.5 + player_display_x, get_window_height * 0.5 + 324, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		if (player_menu != "select_name")
+		and (can_input_player1_name == false)
+		and (can_input_player2_name == false)
+		and (can_input_player3_name == false)
+		and (can_input_player4_name == false)
+		and (global.controls_used_for_menu_navigation != "mouse")
+		{
+			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x, get_window_height * 0.5 + 324, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1); /* Display Character Name */
+		}
 	}
 	#endregion /* Draw Character Portrait for Player END */
 	
@@ -278,6 +286,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							if (what_player == 1)
 							{
 								global.skin_for_player_1 -= 1;
+								global.actual_skin_for_player_1 = global.skin_for_player_1; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 								menu_joystick1_delay = 30;
 								global.sprite_select_player_1 = spr_noone;
 								global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
@@ -290,6 +299,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							if (what_player == 2)
 							{
 								global.skin_for_player_2 -= 1;
+								global.actual_skin_for_player_2 = global.skin_for_player_2; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 								menu_joystick2_delay = 30;
 								global.sprite_select_player_2 = spr_noone;
 								global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_2, 1, global.skin_for_player_2);
@@ -302,6 +312,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							if (what_player == 3)
 							{
 								global.skin_for_player_3 -= 1;
+								global.actual_skin_for_player_3 = global.skin_for_player_3; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 								menu_joystick3_delay = 30;
 								global.sprite_select_player_3 = spr_noone;
 								global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_3, 2, global.skin_for_player_3);
@@ -314,6 +325,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							if (what_player == 4)
 							{
 								global.skin_for_player_4 -= 1;
+								global.actual_skin_for_player_4 = global.skin_for_player_4; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 								menu_joystick4_delay = 30;
 								global.sprite_select_player_4 = spr_noone;
 								global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_4, 3, global.skin_for_player_4);
@@ -349,6 +361,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							if (what_player == 1)
 							{
 								global.skin_for_player_1 += 1;
+								global.actual_skin_for_player_1 = global.skin_for_player_1; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 								menu_joystick1_delay = 30;
 								global.sprite_select_player_1 = spr_noone;
 								global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
@@ -361,6 +374,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							if (what_player == 2)
 							{
 								global.skin_for_player_2 += 1;
+								global.actual_skin_for_player_2 = global.skin_for_player_2; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 								menu_joystick2_delay = 30;
 								global.sprite_select_player_2 = spr_noone;
 								global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_2, 1, global.skin_for_player_2);
@@ -373,6 +387,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							if (what_player == 3)
 							{
 								global.skin_for_player_3 += 1;
+								global.actual_skin_for_player_3 = global.skin_for_player_3; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 								menu_joystick3_delay = 30;
 								global.sprite_select_player_3 = spr_noone;
 								global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_3, 2, global.skin_for_player_3);
@@ -385,6 +400,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							if (what_player == 4)
 							{
 								global.skin_for_player_4 += 1;
+								global.actual_skin_for_player_4 = global.skin_for_player_4; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 								menu_joystick4_delay = 30;
 								global.sprite_select_player_4 = spr_noone;
 								global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_4, 3, global.skin_for_player_4);

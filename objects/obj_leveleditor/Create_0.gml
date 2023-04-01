@@ -117,22 +117,7 @@ and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_le
 
 or (can_initialize_level_information == true)
 and (global.character_select_in_this_menu == "level_editor")
-and (global.create_level_from_template == true)
-and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
-
-or (can_initialize_level_information == true)
-and (global.character_select_in_this_menu == "level_editor")
-and (global.select_level_index <= 0)
 and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-
-or (can_initialize_level_information == true)
-and (global.character_select_in_this_menu == "level_editor")
-and (global.create_level_from_template >= 2)
-and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-
-or (can_initialize_level_information == true)
-and (global.character_select_in_this_menu == "level_editor")
-and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu == "main_game")
 	or (global.create_level_from_template == true)
@@ -142,17 +127,8 @@ and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_val
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor")
-	and (global.select_level_index <= 0)
-	or (global.character_select_in_this_menu == "level_editor")
-	and (global.create_level_from_template >= 2)
 	{
 		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-		can_save_to_level_information = true;
-	}
-	else
-	if (global.character_select_in_this_menu == "level_editor")
-	{
-		ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 		can_save_to_level_information = true;
 	}
 	
@@ -875,7 +851,7 @@ if (global.doing_clear_check == true)
 
 #region /* Load Level */
 scr_load_object_placement_all();
-//scr_load_object_placement_old();
+scr_load_object_placement_old();
 #endregion /* Load Level END */
 
 #region /* If actually playing level, set play_edited_level to true and delete itself. Have this code after the "doing clear check = true" */
@@ -900,6 +876,98 @@ if (global.actually_play_edited_level == true)
 #region /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level */
 if (global.actually_play_edited_level == false)
 {
+	
+	#region /* Unlock placable objects */
+	if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+	{
+		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		
+		/* Read all the objects that should be unlocked */
+		
+		#region /* Terrain Objects */
+		unlocked_object[0] = ini_read_real("Unlock Placable Objects", level_object_id.id_wall, false);
+		unlocked_object[1] = ini_read_real("Unlock Placable Objects", level_object_id.id_wall_dirt, false);
+		unlocked_object[2] = ini_read_real("Unlock Placable Objects", level_object_id.id_wall_glass, false);
+		unlocked_object[3] = ini_read_real("Unlock Placable Objects", level_object_id.id_wall_grass, false);
+		unlocked_object[4] = ini_read_real("Unlock Placable Objects", level_object_id.id_wall_gravel, false);
+		unlocked_object[5] = ini_read_real("Unlock Placable Objects", level_object_id.id_wall_metal, false);
+		unlocked_object[6] = ini_read_real("Unlock Placable Objects", level_object_id.id_wall_stone, false);
+		unlocked_object[7] = ini_read_real("Unlock Placable Objects", level_object_id.id_wall_wood, false);
+		unlocked_object[8] = ini_read_real("Unlock Placable Objects", level_object_id.id_black_wall, false);
+		unlocked_object[9] = ini_read_real("Unlock Placable Objects", level_object_id.id_spikes, false);
+		unlocked_object[10] = ini_read_real("Unlock Placable Objects", level_object_id.id_semisolid_platform, false);
+		unlocked_object[11] = ini_read_real("Unlock Placable Objects", level_object_id.id_brick_block, false);
+		unlocked_object[12] = ini_read_real("Unlock Placable Objects", level_object_id.id_question_block, false);
+		unlocked_object[13] = ini_read_real("Unlock Placable Objects", level_object_id.id_hard_block, false);
+		unlocked_object[14] = ini_read_real("Unlock Placable Objects", level_object_id.id_falling_block, false);
+		unlocked_object[15] = ini_read_real("Unlock Placable Objects", level_object_id.id_falling_block_long, false);
+		unlocked_object[16] = ini_read_real("Unlock Placable Objects", level_object_id.id_cloud_block, false);
+		unlocked_object[17] = ini_read_real("Unlock Placable Objects", level_object_id.id_ice_block, false);
+		#endregion /* Terrain Objects END */
+		
+		#region /* Item Objects */
+		unlocked_object[18] = ini_read_real("Unlock Placable Objects", level_object_id.id_basic_collectible, false);
+		unlocked_object[19] = ini_read_real("Unlock Placable Objects", level_object_id.id_big_collectible, false);
+		unlocked_object[20] = ini_read_real("Unlock Placable Objects", level_object_id.id_heart, false);
+		unlocked_object[21] = ini_read_real("Unlock Placable Objects", level_object_id.id_invincibility_powerup, false);
+		unlocked_object[22] = ini_read_real("Unlock Placable Objects", level_object_id.id_one_up, false);
+		#endregion /* Item Objects END */
+		
+		#region /* Enemy Objects */
+		unlocked_object[23] = ini_read_real("Unlock Placable Objects", level_object_id.id_basic_enemy, false);
+		unlocked_object[24] = ini_read_real("Unlock Placable Objects", level_object_id.id_enemy_bowlingball, false);
+		unlocked_object[25] = ini_read_real("Unlock Placable Objects", level_object_id.id_big_stationary_enemy, false);
+		unlocked_object[26] = ini_read_real("Unlock Placable Objects", level_object_id.id_boss, false);
+		#endregion /* Enemy Objects END */
+		
+		#region /* Gizmo Objects */
+		unlocked_object[27] = ini_read_real("Unlock Placable Objects", level_object_id.id_blaster, false);
+		unlocked_object[28] = ini_read_real("Unlock Placable Objects", level_object_id.id_door, false);
+		unlocked_object[29] = ini_read_real("Unlock Placable Objects", level_object_id.id_spring, false);
+		unlocked_object[30] = ini_read_real("Unlock Placable Objects", level_object_id.id_ladder, false);
+		unlocked_object[31] = ini_read_real("Unlock Placable Objects", level_object_id.id_arrow_sign, false);
+		unlocked_object[32] = ini_read_real("Unlock Placable Objects", level_object_id.id_checkpoint, false);
+		unlocked_object[33] = ini_read_real("Unlock Placable Objects", level_object_id.id_spikes_emerge_block, false);
+		unlocked_object[34] = ini_read_real("Unlock Placable Objects", level_object_id.id_oneway, false);
+		#endregion /* Gizmo Objects END */
+		
+		#region /* Special Items */
+		unlocked_object[35] = ini_read_real("Unlock Placable Objects", level_object_id.id_cardboard_block, false);
+		unlocked_object[36] = ini_read_real("Unlock Placable Objects", level_object_id.id_cardboard, false);
+		unlocked_object[37] = ini_read_real("Unlock Placable Objects", level_object_id.id_cardboard_long, false);
+		unlocked_object[38] = ini_read_real("Unlock Placable Objects", level_object_id.id_bump_in_ground, false);
+		unlocked_object[39] = ini_read_real("Unlock Placable Objects", level_object_id.id_wall_jump_panel, false);
+		unlocked_object[40] = ini_read_real("Unlock Placable Objects", level_object_id.id_wall_climb_panel, false);
+		unlocked_object[41] = ini_read_real("Unlock Placable Objects", level_object_id.id_melon_block, false);
+		unlocked_object[42] = ini_read_real("Unlock Placable Objects", level_object_id.id_horizontal_rope, false);
+		unlocked_object[43] = ini_read_real("Unlock Placable Objects", level_object_id.id_water, false);
+		unlocked_object[44] = ini_read_real("Unlock Placable Objects", level_object_id.id_breathable_water, false);
+		unlocked_object[45] = ini_read_real("Unlock Placable Objects", level_object_id.id_air_bubbles_spawner, false);
+		unlocked_object[46] = ini_read_real("Unlock Placable Objects", level_object_id.id_water_level_change_slow, false);
+		unlocked_object[47] = ini_read_real("Unlock Placable Objects", level_object_id.id_water_level_change_fast, false);
+		unlocked_object[48] = ini_read_real("Unlock Placable Objects", level_object_id.id_water_level_change_faster, false);
+		unlocked_object[49] = ini_read_real("Unlock Placable Objects", level_object_id.id_clipped_shirt, false);
+		unlocked_object[50] = ini_read_real("Unlock Placable Objects", level_object_id.id_bucket, false);
+		unlocked_object[51] = ini_read_real("Unlock Placable Objects", level_object_id.id_bird, false);
+		unlocked_object[52] = ini_read_real("Unlock Placable Objects", level_object_id.id_sign_crouch, false);
+		unlocked_object[53] = ini_read_real("Unlock Placable Objects", level_object_id.id_boss_barrier, false);
+		unlocked_object[54] = ini_read_real("Unlock Placable Objects", level_object_id.id_cake_stealing_enemy, false);
+		unlocked_object[55] = ini_read_real("Unlock Placable Objects", level_object_id.id_artwork_collection, false);
+		unlocked_object[56] = ini_read_real("Unlock Placable Objects", level_object_id.id_block_only_when_player_is_near, false);
+		unlocked_object[57] = ini_read_real("Unlock Placable Objects", level_object_id.id_npc, false);
+		unlocked_object[58] = ini_read_real("Unlock Placable Objects", level_object_id.id_ring, false);
+		#endregion /* Special Items END */
+		
+		ini_close();
+	}
+	else
+	{
+		for (var i = 0; i <= 58; ++i;)
+		{
+			unlocked_object[i] = false;
+		}
+	}
+	#endregion /* Unlock placable objects END */
 	
 	#region /* Load custom sprites */
 	sprite_lives_icon = spr_1up;
@@ -1103,6 +1171,7 @@ if (global.actually_play_edited_level == false)
 	mouse_y_position = device_mouse_y_to_gui(0);
 	
 	order_index = 0;
+	unlock_index = 0;
 	
 	#region /* Loading selected level editing music */
 	if (file_exists("config.ini"))

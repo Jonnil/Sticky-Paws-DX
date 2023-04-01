@@ -19,6 +19,8 @@ menuvoice_4player = noone;
 menuvoice_leveleditor = noone;
 menuvoice_leveleditor_denied = noone;
 
+holding_key_timer = 0; /* Player needs to hold down button to reset level or quit level, so you can't misclick */
+
 #region /* No Narrator */
 if (global.narrator = -1)
 {

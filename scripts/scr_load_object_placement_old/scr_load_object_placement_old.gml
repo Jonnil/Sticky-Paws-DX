@@ -9,13 +9,6 @@ function scr_load_object_placement_old()
 			
 			#region /* Object Placement */
 			var file, str, str_pos, str_temp, val, num;
-			if (global.select_level_index >= 1)
-			and (global.create_level_from_template == false)
-			and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt"))
-			{
-				file = file_text_open_read(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement.txt");
-			}
-			else
 			if (global.level_name != "")
 			and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"))
 			{
@@ -25,7 +18,7 @@ function scr_load_object_placement_old()
 			{
 				file = -1;
 			}
-	
+			
 			if (file != -1)
 			{
 				/* Next objects */
@@ -73,13 +66,6 @@ function scr_load_object_placement_old()
 		
 			#region /* Object With Rotation Placement */
 			var file, str, str_pos, str_temp, val, num;
-			if (global.select_level_index >= 1)
-			and (global.create_level_from_template == false)
-			and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_rotation_placement.txt"))
-			{
-				file = file_text_open_read(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_rotation_placement.txt");
-			}
-			else
 			if (global.level_name != "")
 			and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt"))
 			{

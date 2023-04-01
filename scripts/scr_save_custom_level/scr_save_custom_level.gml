@@ -13,13 +13,6 @@ function scr_save_custom_level()
 	{
 		
 		#region /* Create directory for saving custom levels */
-		if (global.select_level_index >= 1)
-		and (global.create_level_from_template == false)
-		and (!directory_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))))
-		{
-			directory_create(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
-		}
-		else
 		if (global.level_name != "")
 		and (!directory_exists(working_directory + "/custom_levels/" + string(global.level_name)))
 		{
@@ -29,12 +22,6 @@ function scr_save_custom_level()
 		
 		#region /* Save object placement */
 		var file, str;
-		if (global.select_level_index >= 1)
-		and (global.create_level_from_template == false)
-		{
-			file = file_text_open_write(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_placement_all.txt"); /* Open file for writing */
-		}
-		else
 		if (global.level_name != "")
 		{
 			file = file_text_open_write(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt"); /* Open file for writing */
@@ -98,12 +85,6 @@ function scr_save_custom_level()
 		#endregion /* Save object placement END */
 		
 		#region /* Save Level Information */
-		if (global.select_level_index >= 1)
-		and (global.create_level_from_template == false)
-		{
-			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-		}
-		else
 		if (global.level_name != "")
 		{
 			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
@@ -247,8 +228,8 @@ function scr_save_custom_level()
 		
 		ini_close();
 		#endregion /* Save Level Information END */
-	
+		
 	}
-
 	#endregion /* Save Custom Level END */
+	
 }

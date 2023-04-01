@@ -233,11 +233,16 @@ function scr_character_select_menu_step()
 			global.skin_for_player_1 -= 1;
 			
 			#region /* Player 1 character select portrait sprite */
-			global.sprite_select_player_1 = spr_noone;
-			global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
-			global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
-			global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1);
-			global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1);
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player_1)))
+			or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player_1)))
+			{
+				/* Don't update "actual skin for player" here, because it will save what skin you're supposed to have with other characters, so it doesn't change unintentinally for the player */
+				global.sprite_select_player_1 = spr_noone;
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1);
+				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1);
+			}
 			#endregion /* Player 1 character select portrait sprite END */
 			
 		}
@@ -250,11 +255,16 @@ function scr_character_select_menu_step()
 			global.skin_for_player_2 -= 1;
 			
 			#region /* Player 2 character select portrait sprite */
-			global.sprite_select_player_2 = spr_noone;
-			global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_2, 1, global.skin_for_player_2);
-			global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_2, 1, global.skin_for_player_2);
-			global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_2, 1, global.skin_for_player_2);
-			global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_2, 1, global.skin_for_player_2);
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin" + string(global.skin_for_player_2)))
+			or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin" + string(global.skin_for_player_2)))
+			{
+				/* Don't update "actual skin for player" here, because it will save what skin you're supposed to have with other characters, so it doesn't change unintentinally for the player */
+				global.sprite_select_player_2 = spr_noone;
+				global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_2, 1, global.skin_for_player_2);
+				global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_2, 1, global.skin_for_player_2);
+				global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_2, 1, global.skin_for_player_2);
+				global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_2, 1, global.skin_for_player_2);
+			}
 			#endregion /* Player 2 character select portrait sprite END */
 			
 		}
@@ -267,11 +277,16 @@ function scr_character_select_menu_step()
 			global.skin_for_player_3 -= 1;
 			
 			#region /* Player 3 character select portrait sprite */
-			global.sprite_select_player_3 = spr_noone;
-			global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_3, 2, global.skin_for_player_3);
-			global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_3, 2, global.skin_for_player_3);
-			global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_3, 2, global.skin_for_player_3);
-			global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_3, 2, global.skin_for_player_3);
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin" + string(global.skin_for_player_3)))
+			or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin" + string(global.skin_for_player_3)))
+			{
+				/* Don't update "actual skin for player" here, because it will save what skin you're supposed to have with other characters, so it doesn't change unintentinally for the player */
+				global.sprite_select_player_3 = spr_noone;
+				global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_3, 2, global.skin_for_player_3);
+				global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_3, 2, global.skin_for_player_3);
+				global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_3, 2, global.skin_for_player_3);
+				global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_3, 2, global.skin_for_player_3);
+			}
 			#endregion /* Player 3 character select portrait sprite END */
 			
 		}
@@ -284,11 +299,16 @@ function scr_character_select_menu_step()
 			global.skin_for_player_4 -= 1;
 			
 			#region /* Player 4 character select portrait sprite */
-			global.sprite_select_player_4 = spr_noone;
-			global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_4, 3, global.skin_for_player_4);
-			global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_4, 3, global.skin_for_player_4);
-			global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_4, 3, global.skin_for_player_4);
-			global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_4, 3, global.skin_for_player_4);
+			if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin" + string(global.skin_for_player_4)))
+			or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin" + string(global.skin_for_player_4)))
+			{
+				/* Don't update "actual skin for player" here, because it will save what skin you're supposed to have with other characters, so it doesn't change unintentinally for the player */
+				global.sprite_select_player_4 = spr_noone;
+				global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_4, 3, global.skin_for_player_4);
+				global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_4, 3, global.skin_for_player_4);
+				global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_4, 3, global.skin_for_player_4);
+				global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_4, 3, global.skin_for_player_4);
+			}
 			#endregion /* Player 4 character select portrait sprite END */
 			
 		}
@@ -451,7 +471,7 @@ function scr_character_select_menu_step()
 					get_window_height * 0.5 + 16))
 					and (mouse_check_button_pressed(mb_left))
 					{
-				
+						
 						if (menu_delay == 0)
 						and (global.character_index[0] > 0)
 						{
@@ -470,6 +490,7 @@ function scr_character_select_menu_step()
 							}
 				
 							#region /* Player 1 character select portrait sprite */
+							global.skin_for_player_1 = global.actual_skin_for_player_1; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 							global.sprite_select_player_1 = spr_noone;
 							global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
 							global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
@@ -508,6 +529,7 @@ function scr_character_select_menu_step()
 							}
 							
 							#region /* Player 1 character select portrait sprite */
+							global.skin_for_player_1 = global.actual_skin_for_player_1; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 							global.sprite_select_player_1 = spr_noone;
 							global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
 							global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
@@ -696,6 +718,7 @@ function scr_character_select_menu_step()
 							}
 					
 							#region /* Player 2 character select portrait sprite */
+							global.skin_for_player_2 = global.actual_skin_for_player_2; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 							global.sprite_select_player_2 = spr_noone;
 							global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_2, 1, global.skin_for_player_2);
 							global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_2, 1, global.skin_for_player_2);
@@ -734,6 +757,7 @@ function scr_character_select_menu_step()
 							}
 							
 							#region /* Player 2 character select portrait sprite */
+							global.skin_for_player_2 = global.actual_skin_for_player_2; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 							global.sprite_select_player_2 = spr_noone;
 							global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_2, 1, global.skin_for_player_2);
 							global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_2, 1, global.skin_for_player_2);
@@ -890,6 +914,7 @@ function scr_character_select_menu_step()
 							}
 					
 							#region /* Player 3 character select portrait sprite */
+							global.skin_for_player_3 = global.actual_skin_for_player_3; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 							global.sprite_select_player_3 = spr_noone;
 							global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_3, 2, global.skin_for_player_3);
 							global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_3, 2, global.skin_for_player_3);
@@ -928,6 +953,7 @@ function scr_character_select_menu_step()
 							}
 							
 							#region /* Player 3 character select portrait sprite */
+							global.skin_for_player_3 = global.actual_skin_for_player_3; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 							global.sprite_select_player_3 = spr_noone;
 							global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_3, 2, global.skin_for_player_3);
 							global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_3, 2, global.skin_for_player_3);
@@ -1084,6 +1110,7 @@ function scr_character_select_menu_step()
 							}
 					
 							#region /* Player 4 character select portrait sprite */
+							global.skin_for_player_4 = global.actual_skin_for_player_4; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 							global.sprite_select_player_4 = spr_noone;
 							global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_4, 3, global.skin_for_player_4);
 							global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_4, 3, global.skin_for_player_4);
@@ -1122,6 +1149,7 @@ function scr_character_select_menu_step()
 							}
 							
 							#region /* Player 4 character select portrait sprite */
+							global.skin_for_player_4 = global.actual_skin_for_player_4; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 							global.sprite_select_player_4 = spr_noone;
 							global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_4, 3, global.skin_for_player_4);
 							global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_4, 3, global.skin_for_player_4);
@@ -2328,6 +2356,7 @@ function scr_character_select_menu_step()
 				}
 				
 				#region /* Player 1 character select portrait sprite */
+				global.skin_for_player_1 = global.actual_skin_for_player_1; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 				global.sprite_select_player_1 = spr_noone;
 				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
 				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
@@ -2367,6 +2396,7 @@ function scr_character_select_menu_step()
 				}
 				
 				#region /* Player 1 character select portrait sprite */
+				global.skin_for_player_1 = global.actual_skin_for_player_1; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 				global.sprite_select_player_1 = spr_noone;
 				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
 				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);

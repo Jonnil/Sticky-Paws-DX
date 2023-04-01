@@ -1,5 +1,6 @@
 function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_name)
 {
+	var custom_level_select_blinking = 0;
 	
 	#region /* Red rectangle behind the level thumbnail to indicate what level you are selecting */
 	var top_left_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 - 3 + thumbnail_x_offset;
@@ -9,11 +10,13 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	
 	if (menu != "back_from_level_editor")
 	and (menu != "open_custom_levels_folder")
-	and (menu != "search_id")
+	and (menu != "online_level_list")
+	and (menu != "search_level_id")
 	and (menu_delay <= 0)
 	or (menu != "back_from_level_editor")
 	and (menu != "open_custom_levels_folder")
-	and (menu != "search_id")
+	and (menu != "online_level_list")
+	and (menu != "search_level_id")
 	and (open_sub_menu == true)
 	{
 		var custom_level_select_blinking = scr_wave(1, 0, 2, 0);
@@ -90,11 +93,13 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	#region /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting */
 	if (menu != "back_from_level_editor")
 	and (menu != "open_custom_levels_folder")
-	and (menu != "search_id")
+	and (menu != "online_level_list")
+	and (menu != "search_level_id")
 	and (menu_delay <= 0)
 	or (menu != "back_from_level_editor")
 	and (menu != "open_custom_levels_folder")
-	and (menu != "search_id")
+	and (menu != "online_level_list")
+	and (menu != "search_level_id")
 	and (open_sub_menu == true)
 	{
 		var custom_level_select_arrows_moving = scr_wave(10, 0, 1, 0);

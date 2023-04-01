@@ -7,14 +7,6 @@ if (global.actually_play_edited_level == false)
 	var view_center_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5;
 	var view_center_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5;
 	
-	//if (keyboard_check_pressed(vk_rcontrol))
-	//{
-	//	with(obj_leveleditor_placed_object)
-	//	{
-	//		scr_set_length_variable();
-	//	}
-	//}
-	
 	grid_button_x = display_get_gui_width() - 224;
 	
 	scr_audio_play(level_editing_music, volume_source.music);
@@ -801,29 +793,13 @@ if (global.actually_play_edited_level == false)
 							
 							#region /* Reset ranking highscore to actual custom level when placing objects */
 							if (global.character_select_in_this_menu == "level_editor")
-							and (global.select_level_index <= 0)
 							and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-							
-							or (global.character_select_in_this_menu == "level_editor")
-							and (global.create_level_from_template >= 2)
-							and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-							
-							or (global.character_select_in_this_menu == "level_editor")
-							and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 							{
 								if (global.character_select_in_this_menu == "level_editor")
-								and (global.select_level_index <= 0)
-								or (global.character_select_in_this_menu == "level_editor")
-								and (global.create_level_from_template >= 2)
 								{
 									ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 								}
-								else
-								if (global.character_select_in_this_menu == "level_editor")
-								{
-									ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-								}
-							
+								
 								#region /* Reset Fastest Time Hard */
 								ini_key_delete("rank", "rank_timeattack_millisecond");
 								ini_key_delete("rank", "rank_timeattack_second");
@@ -1553,7 +1529,7 @@ if (global.actually_play_edited_level == false)
 		quit_level_editor += 1;
 		instance_activate_all(); /* Activate all instances before saving the custom level */
 		
-		#region /* Save Thumbnail */
+		#region /* Save Level */
 		if (quit_level_editor == 3)
 		{
 			
@@ -1602,22 +1578,22 @@ if (global.actually_play_edited_level == false)
 				y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
 			}
 			#endregion /* Limit x and y inside room END */
-		
+			
 			#region /* Limit view inside room */
 			camera_set_view_pos(view_camera[view_current],
 			max(0, min(camera_get_view_x(view_camera[view_current]), room_width - camera_get_view_width(view_camera[view_current]))),
 			max(0, min(camera_get_view_y(view_camera[view_current]), room_height - camera_get_view_height(view_camera[view_current]))));
 			#endregion /* Limit view inside room END */
-		
+			
 			#endregion /* Limit so view and cursor can't go outside room END */
-		
+			
 			global.checkpoint_x = 0;
 			global.checkpoint_y = 0;
 			global.checkpoint_millisecond = 0;
 			global.checkpoint_second = 0;
 			global.checkpoint_minute = 0;
 			global.checkpoint_realmillisecond = 0;
-		
+			
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_x", 0);
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_y", 0);
@@ -1626,8 +1602,19 @@ if (global.actually_play_edited_level == false)
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", 0);
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
 			ini_close();
+			
+			menu_delay = 9999; /* Disable all menu control */
+			lives = 5;
+			global.lives_until_assist = 0;
+			global.actually_play_edited_level = false;
+			global.play_edited_level = false; /* Set this to false so you don't playtest the level */
+			global.character_select_in_this_menu = "level_editor";
+		}
+		#endregion /* Save Level END */
 		
-			#region /* Save Thumbnail */
+		#region /* Save Thumbnail a little bit after saving level */
+		if (quit_level_editor == 4)
+		{
 			var thumbnail_sprite;
 			thumbnail_sprite = sprite_create_from_surface(application_surface,
 			camera_get_view_x(view_camera[view_current]),
@@ -1645,16 +1632,8 @@ if (global.actually_play_edited_level == false)
 				sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
 			}
 			scr_delete_sprite_properly(thumbnail_sprite);
-			#endregion /* Save Thumbnail END */
-		
-			menu_delay = 9999; /* Disable all menu control */
-			lives = 5;
-			global.lives_until_assist = 0;
-			global.actually_play_edited_level = false;
-			global.play_edited_level = false; /* Set this to false so you don't playtest the level */
-			global.character_select_in_this_menu = "level_editor";
 		}
-		#endregion /* Save Thumbnail END */
+		#endregion /* Save Thumbnail a little bit after saving level END */
 		
 		if (quit_level_editor > 5)
 		{

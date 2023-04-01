@@ -89,16 +89,6 @@ function scr_player_move_pause()
 			score = 0;
 			
 			#region /* Save Level Information when in level editor */
-			if (global.select_level_index >= 1)
-			and (global.create_level_from_template == false)
-			and (global.character_select_in_this_menu == "level_editor")
-			{
-				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
-				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
-				ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
-				ini_close();
-			}
-			else
 			if (global.character_select_in_this_menu == "level_editor")
 			and (global.level_name != "")
 			{

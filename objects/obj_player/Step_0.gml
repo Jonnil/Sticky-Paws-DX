@@ -677,10 +677,7 @@ else
 #endregion /* Limits the vertical speed END */
 
 #region /* Bottomless Pit */
-if (bbox_top > room_height)
-{
-	hspeed = 0;
-}
+/* Don't stop horizontal speed, as it feels awkward when falling down */
 if (bbox_top > room_height + 200)
 and (goal == false)
 and (global.goal_active == false)

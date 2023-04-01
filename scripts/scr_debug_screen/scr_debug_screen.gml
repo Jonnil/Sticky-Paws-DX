@@ -291,6 +291,10 @@ function scr_debug_screen()
 		scr_draw_text_outlined(32, 340, "gamepad_get_description(1): " + string(gamepad_get_description(1)), global.default_text_size, noone);
 		scr_draw_text_outlined(32, 360, "gamepad_get_description(2): " + string(gamepad_get_description(2)), global.default_text_size, noone);
 		scr_draw_text_outlined(32, 380, "gamepad_get_description(3): " + string(gamepad_get_description(3)), global.default_text_size, noone);
+		if (instance_exists(obj_pause))
+		{
+			scr_draw_text_outlined(32, 400, "obj_pause.holding_key_timer: " + string(obj_pause.holding_key_timer), global.default_text_size, noone);
+		}
 	}
 	
 	if (global.debug_screen == true)

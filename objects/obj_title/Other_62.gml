@@ -14,7 +14,7 @@ if (async_load[? "id"] == global.http_request_id)
 		
 		/* Save the decoded data to a local file (with the .zip extension) */
 		var buffer = buffer_base64_decode(file_data_base64);
-		var file_save_location = working_directory + "/custom_levels/" + string(response_json[? "name"]) + ".zip";
+		var file_save_location = working_directory + "/downloaded_level/" + string(response_json[? "name"]) + ".zip";
 		buffer_save(buffer, file_save_location);
 		
 		/* Free the buffer memory */

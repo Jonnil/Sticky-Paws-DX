@@ -20,7 +20,6 @@ function scr_draw_cursor_mouse()
 	#region /* Draw mouse cursor for menu navigation */
 	if (global.controls_used_for_menu_navigation == "mouse")
 	and (global.full_level_map_screenshot == false)
-	and (global.pause == false)
 	and (os_type != os_android)
 	and (os_type != os_ios)
 	{

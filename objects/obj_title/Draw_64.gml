@@ -1211,10 +1211,11 @@ and (global.play_attract_demo = false)
 if (menu == "search_id_ok")
 or (menu == "search_id_cancel")
 or (menu == "searching_for_id")
-or (menu == "searched_file_downloaded")
-or (menu == "searched_file_downloaded_ok")
+or (menu == "searched_file_downloaded_play")
+or (menu == "searched_file_downloaded_make")
+or (menu == "searched_file_downloaded_back")
 {
-	scr_draw_menu_search_id();
+	scr_draw_menu_search_id("level");
 }
 
 scr_character_select_menu_draw();
@@ -1688,38 +1689,12 @@ and (global.enable_options_for_pc == true)
 
 #region /* Start Game */
 if (iris_xscale <= 0.001)
+and (menu_delay > 999) /* Make sure you can only start the game when the menu delay is set to over 999, as that's when the iris xscale is set to zoom in */
 {
 	
-	#region /* Play Level Editor */
-	if (menu == "level_editor_play")
-	and (global.character_select_in_this_menu == "level_editor")
-	and (global.create_level_from_template == false)
-	{
-		if (title_music > noone)
-		{
-			if (audio_is_playing(title_music))
-			{
-				audio_stop_sound(title_music);
-			}
-		}
-		if (asset_get_type("room_leveleditor") == asset_room)
-		{
-			scr_delete_sprite_properly(title_screen_background);
-			
-			scr_update_all_backgrounds();
-			
-			room_goto(room_leveleditor);
-		}
-		global.doing_clear_check = false;
-		global.actually_play_edited_level = true;
-		global.play_edited_level = true;
-	}
-	#endregion /* Play Level Editor END */
-	
-	else
-	
-	#region /* Make Level Editor */
-	if (menu == "level_editor_make")
+	#region /* Play or Make Level Editor */
+	if (menu != "select_character")
+	and (menu != "back_from_character_select")
 	and (global.character_select_in_this_menu == "level_editor")
 	{
 		if (title_music > noone)
@@ -1732,16 +1707,18 @@ if (iris_xscale <= 0.001)
 		if (asset_get_type("room_leveleditor") == asset_room)
 		{
 			scr_delete_sprite_properly(title_screen_background);
-			
+			if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
+			and (global.create_level_from_template == false)
+			{
+				/* Update the "global level name" before updating all backgrounds and going to the level editor */
+				global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
+			}
 			scr_update_all_backgrounds();
-			
 			room_goto(room_leveleditor);
 		}
-		global.doing_clear_check = false;
-		global.actually_play_edited_level = false;
-		global.play_edited_level = false;
+		/* The variables "doing clear check", "actually play edited level", and "play edited level" should be set before doing "menu delay = 9999" to zoom the iris xscale */
 	}
-	#endregion /* Make Level Editor END */
+	#endregion /* Play or Make Level Editor END */
 	
 	else
 	

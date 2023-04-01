@@ -375,15 +375,7 @@ and (global.goal_active == true)
 	and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 	
 	or (global.character_select_in_this_menu == "level_editor")
-	and (global.select_level_index <= 0)
 	and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-	
-	or (global.character_select_in_this_menu == "level_editor")
-	and (global.create_level_from_template >= 2)
-	and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-	
-	or (global.character_select_in_this_menu == "level_editor")
-	and (file_exists(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini"))
 	{
 		if (global.character_select_in_this_menu == "main_game")
 		{
@@ -391,16 +383,8 @@ and (global.goal_active == true)
 		}
 		else
 		if (global.character_select_in_this_menu == "level_editor")
-		and (global.select_level_index <= 0)
-		or (global.character_select_in_this_menu == "level_editor")
-		and (global.create_level_from_template >= 2)
 		{
 			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-		}
-		else
-		if (global.character_select_in_this_menu == "level_editor")
-		{
-			ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/level_information.ini");
 		}
 		
 		if (ini_key_exists("rank", "rank_level_score"))
@@ -504,6 +488,42 @@ if (global.doing_clear_check == true)
 	global.checkpoint_realmillisecond = 0;
 }
 
+#region /* Pause Level Button */
+if (global.play_edited_level == true) /* When playtesting the level */
+and (global.actually_play_edited_level == false) /* But not actually playing the level */
+and (global.character_select_in_this_menu == "level_editor")
+{
+	draw_sprite_ext(spr_menu_button_pause, 0, 32, display_get_gui_height() - 32, 1, 1, 0, c_white, 1);
+	
+	#region /* Draw Pause Key */
+	if (gamepad_is_connected(global.player1_slot))
+	and (global.controls_used_for_menu_navigation == "controller")
+	or (global.always_show_gamepad_buttons == true)
+	{
+		scr_draw_gamepad_buttons(gp_select, 32 + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1);
+	}
+	else
+	{
+		draw_sprite_ext(spr_keyboard_keys, vk_escape, 32 + 20, display_get_gui_height() - 32 + 20, 0.4, 0.4, 0, c_white, 1);
+	}
+	#endregion /* Draw Pause key END */
+	
+	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
+	{
+		if (mouse_check_button_released(mb_left))
+		and (menu_delay == 0)
+		{
+			global.actually_play_edited_level = false;
+			global.play_edited_level = false;
+			room_restart();
+		}
+		draw_set_alpha(0.5);
+		draw_rectangle_color(32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
+		draw_set_alpha(1);
+	}
+}
+#endregion /* Play Level Button END */
+
 scr_draw_cursor_mouse();
 
 #region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
@@ -517,11 +537,14 @@ if (black_screen_gui_alpha > 0.2)
 	}
 	
 	#region /* Draw loading screen when transitioning to other rooms */
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_middle);
-	global.loading_spinning_angle -= 10;
-	draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, black_screen_gui_alpha);
-	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, black_screen_gui_alpha);
+	if (lives >= 1)
+	{
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		global.loading_spinning_angle -= 10;
+		draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, black_screen_gui_alpha);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, black_screen_gui_alpha);
+	}
 	#endregion /* Draw loading screen when transitioning to other rooms END */
 	
 }
