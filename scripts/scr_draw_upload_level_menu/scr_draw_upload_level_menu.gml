@@ -1038,13 +1038,16 @@ function scr_draw_upload_level_menu()
 			post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
 			post_data += file_name + "\r\n";
 			post_data += "--" + boundary + "\r\n";
+			post_data += "Content-Disposition: form-data; name=\"content_type\"\r\n\r\n";
+			post_data += "levels" + "\r\n";
+			post_data += "--" + boundary + "\r\n";
 			post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
 			post_data += data_send + "\r\n";
 			post_data += "--" + boundary + "--";
 			
 			/* Add the Content-Length header to the map */
 			ds_map_add(map, "Content-Length", string(string_length(post_data)));
-			http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
+			global.http_request_id = http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
 			
 			/* Cleans up! */
 			buffer_delete(send_buffer);
