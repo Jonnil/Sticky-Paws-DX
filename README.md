@@ -1,31 +1,31 @@
 # Sticky-Paws-DX
-This project is Sticky Paws DX itself, and it's also being used as a framework for future Jonnil platformer games
 
-This is the framework for Sticky Paws, a platformer game that was developed in Game Maker, Sticky Paws was created by Jonnil in 2019.
-I want to continue making platformer games, and this is a project that I've mostly been programming myself
-when I first started out, with some major help from Pixpak and Rahim Ali later on when making Sticky Paws DX.
+_Sticky Paws DX_ is both a platformer game and a framework for future Jonnil platformer games. It was developed in Game Maker and created by Jonnil in 2019, with help from Pixpak and Rahim Ali later on.
 
-I really do like this little platformer framework, it's not "the perfect platformer framework" but it has stuff
-that I'm still proud of, and I want to continue using it for future games, rather than starting completly from scratch.
-I have already started from scratch when I made Sticky Paws DX, which this project is. If I'm going to have a chance to keep
-developing games like my next platformer project, I'd rather stick to this framework that I already have.
-It's a perfectly usable platformer framework, that I will continue to change and expand on.
+## About the Framework
 
-What makes up the intellectual property of Sticky Paws™, are the assets,
-which most of them are found in Included Files/Datafiles.
-Characters, Levels, Resource Pack, Title Backgrounds, Title Logos...
-All those folders include the sprites, sounds, even behavior of characters and levels in Sticky Paws.
-When you actually play Sticky Paws, that's where things are loaded from, Included Files/Datafiles determine a lot of what Sticky Paws actually is.
-I could use the framework, but completely change what game it is with Included Files/Datafiles.
-This is the kind of vision I have for this platformer framework.
+While not "the perfect platformer framework," it contains many features that we're proud of, and we plan to continue using and improving it for future games, rather than starting from scratch.
 
-IMPORTANT: Don't profit off of the assets in Included Files/Datafiles, they are copyrighted by Jonnil.
-If you're using the framework to make your own commerical game,
-make sure every asset in Included Files/Datafiles are your own assets that you yourself own.
+By modifying the `Included Files/Datafiles`, the framework can be adapted to create an entirely different game.
 
-For people interested in my projects, you can at least look at the code if you want to, thank you for being a fan.
-Again, it's not "perfect" so any suggestions how to make it better are welcome.
+## Contributions
 
-The games that I myself will make with this platformer framework, will be sold for profit on Steam and such.
-If you want to be so kind, please support me by buying the game on Steam.
-Buy Sticky Paws on Steam here: https://store.steampowered.com/app/1129090/Sticky_Paws/
+For fans interested in our projects, feel free to examine the code. We welcome any suggestions on how to improve the framework.
+
+## Supporting the Project
+
+The games created with this platformer framework will be sold for profit on platforms like Steam. If you'd like to support us, please consider buying the game on Steam.
+
+[Buy Sticky Paws on Steam](https://store.steampowered.com/app/1129090/Sticky_Paws/)
+
+## License
+
+This project is licensed under the [Apache 2.0](./LICENSE) License.
+
+### Intellectual Property
+
+The intellectual property of Sticky Paws™ consists of the assets found in `Included Files/Datafiles`. This includes characters, levels, resource packs, title backgrounds, title logos, sprites, sounds, and even the behavior of characters and levels.
+
+### Important Note
+
+**Do not** profit from the assets in `Included Files/Datafiles`, as they are copyrighted by Jonnil. If you're using the framework to make your own commercial game, ensure all assets in `Included Files/Datafiles` are your own and that you own the rights to them.
