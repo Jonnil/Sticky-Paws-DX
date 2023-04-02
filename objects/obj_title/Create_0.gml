@@ -4,15 +4,13 @@ mouse_y_position = device_mouse_y_to_gui(0);
 scr_unzip_all() /* Unzip any .zip folder found in AppData */
 
 search_id = "";
+content_type = "level"; /* What kind of ID you are searching for. Either "level" or "character" */
 
 global.play_attract_demo = false;
 play_attract_demo_time = 0;
 
 load_from_where = "characters";
-saved_file_exists = false;
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
-unused_x_origin_point = noone;
-unused_y_origin_point = noone;
 
 initialized_copy = false;
 first_copy_file = "";
@@ -449,23 +447,3 @@ if (global.narrator >= 0)
 #endregion /* Narrator Voice variable handeling END */
 
 scr_audio_play(voice_game_title, volume_source.voice); /* Say the games title */
-
-#region /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch */
-if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
-{
-	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
-	if (ini_section_exists("Unlock Placable Objects"))
-	{
-		can_create_level_from_scratch = true;
-	}
-	else
-	{
-		can_create_level_from_scratch = false;
-	}
-	ini_close();
-}
-else
-{
-	can_create_level_from_scratch = false;
-}
-#endregion /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch END */

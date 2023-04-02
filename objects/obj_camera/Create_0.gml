@@ -43,10 +43,7 @@ reset_game_if_no_interactivity = 0;
 reset_game_if_no_interactivity_second_countdown_timer = 0;
 reset_game_if_no_interactivity_second_countdown = 60;
 
-saved_file_exists = false;
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
-unused_x_origin_point = noone;
-unused_y_origin_point = noone;
 
 display_xscale = 1.5
 display_yscale = 1.5

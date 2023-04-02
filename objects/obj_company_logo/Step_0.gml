@@ -117,7 +117,7 @@ and (!audio_is_playing(controller_splash))
 }
 #endregion /* Play company splash voice or controller splash voice if the sounds exists END */
 
-if (can_navigate = false)
+if (can_navigate == false)
 {
 	file_load_timer += 1;
 	

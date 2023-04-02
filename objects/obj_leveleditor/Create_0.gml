@@ -1227,10 +1227,6 @@ if (global.actually_play_edited_level == false)
 	}
 	#endregion /* Loading selected level editing music END */
 	
-	unused_x_origin_point = noone;
-	unused_y_origin_point = noone;
-	
-	saved_file_exists = false;
 	can_save_to_level_information = false;
 	depth = -300;
 	

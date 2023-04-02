@@ -230,7 +230,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 					draw_set_alpha(0.5);
 					draw_rectangle_color(xx + 8, 226 * (column - scroll) + 475 - 3, xx + 8 + 370, 226 * (column - scroll) + 475 - 3 + 42, c_black, c_black, c_black, c_black, false);
 					draw_set_alpha(1);
-					draw_sprite_ext(spr_lock_icon, 0, xx + 8, 226 * (column - scroll) + 475 - 3, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_lock_icon, 0, xx + 8 + 16, 226 * (column - scroll) + 475 - 3 + 20, 1, 1, 0, c_white, 1);
 				}
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 522 - 3, l10n_text("Create from Template"), "level_editor_create_from_template", "level_editor_create_from_template"); /* + 47 on y */
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 569 - 3, l10n_text("Back"), "level_editor_create_from_back", "level_editor_create_from_back");

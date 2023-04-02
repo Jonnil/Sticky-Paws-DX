@@ -5,6 +5,9 @@
 function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = noone)
 {
 	/* sprite_name. Sprite name. The name of the file */
+	var saved_file_exists = false;
+	var unused_x_origin_point = noone;
+	var unused_y_origin_point = noone;
 	
 	#region /* Add sprite */
 	index = 0;
@@ -13,55 +16,55 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png"))
 		{
 			sprite_variable = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
-			saved_file_exists = true;
+			var saved_file_exists = true;
 			break;
 		}
 		else
 		if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png"))
 		{
 			sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
-			saved_file_exists = true;
+			var saved_file_exists = true;
 			break;
 		}
-		//else
-		//if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png"))
-		//{
-		//	sprite_variable = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
-		//	saved_file_exists = true;
-		//	break;
-		//}
-		//else
-		//if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png"))
-		//{
-		//	sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
-		//	saved_file_exists = true;
-		//	break;
-		//}
+		else
+		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png"))
+		{
+			sprite_variable = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
+			var saved_file_exists = true;
+			break;
+		}
+		else
+		if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png"))
+		{
+			sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
+			var saved_file_exists = true;
+			break;
+		}
 		index += 1;
 	}
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + ".png"))
 	{
 		sprite_variable = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
-		saved_file_exists = true;
+		var saved_file_exists = true;
 	}
 	else
 	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + ".png"))
 	{
 		sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
-		saved_file_exists = true;
+		var saved_file_exists = true;
 	}
-	//else
-	//if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png"))
-	//{
-	//	sprite_variable = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
-	//	saved_file_exists = true;
-	//}
-	//else
-	//if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png"))
-	//{
-	//	sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
-	//	saved_file_exists = true;
-	//}
+	else
+	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png"))
+	{
+		sprite_variable = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
+		var saved_file_exists = true;
+	}
+	else
+	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png"))
+	{
+		sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
+		var saved_file_exists = true;
+	}
 	#endregion /* Add sprite END */
 	
 	#region /* Origin points */
@@ -121,7 +124,6 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 		#endregion /* x and y origin points END */
 		
 		ini_close();
-		saved_file_exists = false;
 	}
 	#endregion /* Origin points END */
 	
@@ -137,12 +139,12 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 		#region /* Delete x and y origin points if the sprite doesn't even exist */
 		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
 		{
-			unused_x_origin_point = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", noone);
+			var unused_x_origin_point = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", noone);
 			ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_xorig");
 		}
 		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
-			unused_y_origin_point = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", noone);
+			var unused_y_origin_point = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", noone);
 			ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_yorig");
 		}
 		#endregion /* Delete x and y origin points if the sprite doesn't even exist END */
@@ -153,12 +155,10 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 		if (unused_x_origin_point > noone)
 		{
 			ini_write_real("unused sprite origin points", "sprite_" + string(sprite_name) + "_xorig", unused_x_origin_point);
-			unused_x_origin_point = noone;
 		}
 		if (unused_y_origin_point > noone)
 		{
 			ini_write_real("unused sprite origin points", "sprite_" + string(sprite_name) + "_yorig", unused_y_origin_point);
-			unused_y_origin_point = noone;
 		}
 		#endregion /* Save unused x and y origin points just in case it's still useful for something END */
 		
@@ -166,9 +166,6 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 	}
 	#endregion /* If the sprite doesn't exist, but there are still origin points saved for that sprite, then delete those origin points from sprite_origin_point.ini, but save the unused origin points in unused_sprite_origin_point.ini END */
 	
-	saved_file_exists = false;
-	unused_x_origin_point = noone;
-	unused_y_origin_point = noone;
 	if (sprite_variable != noone)
 	{
 		return (sprite_variable);

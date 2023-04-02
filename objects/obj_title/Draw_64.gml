@@ -1214,8 +1214,9 @@ or (menu == "searching_for_id")
 or (menu == "searched_file_downloaded_play")
 or (menu == "searched_file_downloaded_make")
 or (menu == "searched_file_downloaded_back")
+or (menu == "searching_for_id_back")
 {
-	scr_draw_menu_search_id("level");
+	scr_draw_menu_search_id(content_type); /* Display the search for ID screen */
 }
 
 scr_character_select_menu_draw();

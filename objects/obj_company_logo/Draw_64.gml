@@ -14,7 +14,7 @@ if (global.resource_pack_sprite_splash_easteregg >= 0)
 	draw_sprite_ext(global.resource_pack_sprite_splash_easteregg, image_index, + 128, get_window_height + sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
 }
 
-if (can_navigate = false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
+if (can_navigate == false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
 {
 	global.loading_spinning_angle -= 10;
 	draw_set_halign(fa_center);

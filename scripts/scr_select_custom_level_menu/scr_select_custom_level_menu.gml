@@ -195,6 +195,28 @@ function scr_select_custom_level_menu()
 			if (global.select_level_index == 0)
 			and (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
 			{
+				
+				#region /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch */
+				/* Check this before going to create level from scratch */
+				if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+				{
+					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+					if (ini_section_exists("Unlock Placable Objects"))
+					{
+						can_create_level_from_scratch = true;
+					}
+					else
+					{
+						can_create_level_from_scratch = false;
+					}
+					ini_close();
+				}
+				else
+				{
+					can_create_level_from_scratch = false;
+				}
+				#endregion /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch END */
+				
 				scroll_to = floor(global.select_level_index / row);
 				lerp_on = true;
 				menu = "level_editor_create_from_scratch";
@@ -433,7 +455,7 @@ function scr_select_custom_level_menu()
 		}
 		#endregion /* Online Level List END */
 		
-		#region /* Search Button */
+		#region /* Search Level ID Button */
 		if (global.enable_open_custom_folder == true)
 		{
 			var draw_search_id_y = 42 * 3;
@@ -442,7 +464,7 @@ function scr_select_custom_level_menu()
 		{
 			var draw_search_id_y = 42 * 2;
 		}
-		draw_menu_button(0, draw_search_id_y, l10n_text("Search ID"), "search_level_id", "search_id_ok");
+		draw_menu_button(0, draw_search_id_y, l10n_text("Search Level ID"), "search_level_id", "search_level_id");
 		
 		#region /* Draw Search Key */
 		if (gamepad_is_connected(global.player1_slot))
@@ -453,43 +475,27 @@ function scr_select_custom_level_menu()
 		}
 		#endregion /* Draw Search key END */
 		
-		if (menu == "search_level_id")
-		and (key_a_released)
+		if (can_input_level_name == false)
 		and (menu_delay == 0)
 		and (open_sub_menu == false)
-		and (can_input_level_name == false)
-		or (key_b_pressed)
-		and (menu_delay == 0)
-		and (open_sub_menu == false)
-		and (can_input_level_name == false)
-		or (gamepad_button_check_released(global.player1_slot, gp_face4))
-		and (menu_delay == 0)
-		and (open_sub_menu == false)
-		and (can_input_level_name == false)
-		or (gamepad_button_check_released(global.player2_slot, gp_face4))
-		and (menu_delay == 0)
-		and (open_sub_menu == false)
-		and (can_input_level_name == false)
-		or (gamepad_button_check_released(global.player3_slot, gp_face4))
-		and (menu_delay == 0)
-		and (open_sub_menu == false)
-		and (can_input_level_name == false)
-		or (gamepad_button_check_released(global.player4_slot, gp_face4))
-		and (menu_delay == 0)
-		and (open_sub_menu == false)
-		and (can_input_level_name == false)
-		or (gamepad_button_check_released(4, gp_face4))
-		and (menu_delay == 0)
-		and (open_sub_menu == false)
-		and (can_input_level_name == false)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_search_id_y + 2, 370, draw_search_id_y + 41))
-		and (mouse_check_button_released(mb_left))
 		{
-			keyboard_string = "";
-			search_id = "";
-			menu = "search_id_ok";
-			select_custom_level_menu_open = false;
-			menu_delay = 3;
+			if (menu == "search_level_id")
+			and (key_a_released)
+			or (gamepad_button_check_released(global.player1_slot, gp_face4))
+			or (gamepad_button_check_released(global.player2_slot, gp_face4))
+			or (gamepad_button_check_released(global.player3_slot, gp_face4))
+			or (gamepad_button_check_released(global.player4_slot, gp_face4))
+			or (gamepad_button_check_released(4, gp_face4))
+			or (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_search_id_y + 2, 370, draw_search_id_y + 41))
+			and (mouse_check_button_released(mb_left))
+			{
+				keyboard_string = "";
+				search_id = "";
+				content_type = "level";
+				menu = "search_id_ok";
+				select_custom_level_menu_open = false;
+				menu_delay = 3;
+			}
 		}
 		if (menu == "search_level_id")
 		and (key_up)
@@ -521,7 +527,7 @@ function scr_select_custom_level_menu()
 			show_level_editor_corner_menu = true;
 			scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
 		}
-		#endregion /* Search Button END */
+		#endregion /* Search Level ID Button END */
 		
 	}
 	#endregion /* Corner menu: Back button, Open custom levels folder, Search button END */

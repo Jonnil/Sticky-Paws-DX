@@ -4,6 +4,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var id_max_length = 9;
 	var downloaded_file_name = "";
+	var content_type = string(what_kind_of_id) + "s"
 	
 	#region /* Search ID menu */
 	if (menu == "search_id_ok")
@@ -67,7 +68,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (menu_delay == 0)
 			{
 				search_id = "";
-				select_custom_level_menu_open = true;
+				if (what_kind_of_id == "level")
+				{
+					select_custom_level_menu_open = true;
+				}
 				menu = "search_" + string(what_kind_of_id) + "_id";
 				menu_delay = 3;
 			}
@@ -110,7 +114,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				
 				/* Send the HTTP GET request to the /download endpoint */
 				global.search_id = string_upper(search_id);
-				global.http_request_id = http_request("http://" + global.base_url + global.download_endpoint + global.search_id, "GET", map, "")
+				global.http_request_id = http_request("http://" + global.base_url + global.download_endpoint + string(content_type) + "/" + global.search_id, "GET", map, "")
 				ds_map_destroy(map);
 				
 				menu = "searching_for_id";
@@ -132,15 +136,18 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		if (file_exists(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip")) /* Find if a new .zip file has been downloaded */
 		{
 			zip_unzip(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", working_directory + "/downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
-			var downloaded_file_name = string(file_find_first(working_directory + "/downloaded_" + string(what_kind_of_id) + "/*", fa_directory));
+			file_delete(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
+			var downloaded_file_name = string(file_find_first(working_directory + "/downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
+			show_message(downloaded_file_name);
 			if (directory_exists(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name)))
 			{
-				scr_copy_move_files(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), working_directory + "/custom_levels/" + string(downloaded_file_name), true);
+				scr_copy_move_files(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), working_directory + "/custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
 			}
 			
 			#region /* Downloading level */
 			if (what_kind_of_id == "level")
 			{
+				global.level_name = downloaded_file_name;
 				global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, string(downloaded_file_name)); /* "Select level index" should be set to where the downloaded custom level is saved */
 				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
 				if (file_exists(working_directory + "/custom_levels/" + string(downloaded_file_name) + "/thumbnail.png"))
@@ -163,6 +170,27 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			#endregion /* Downloading level END */
 			
+			else
+			
+			#region /* Downloading character */
+			if (what_kind_of_id == "character")
+			{
+				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
+				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1, string(downloaded_file_name));
+				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1, string(downloaded_file_name));
+				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1, string(downloaded_file_name));
+				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1, string(downloaded_file_name));
+				if (file_exists(working_directory + "/custom_characters/" + string(downloaded_file_name) + "/data/level_information.ini"))
+				{
+					ini_open(working_directory + "/custom_characters/" + string(downloaded_file_name) + "/data/level_information.ini");
+					{
+						global.level_description = ini_read_string("info", "level_description", "");
+					}
+				}
+				menu = "searched_file_downloaded_back"; /* Go to the screen where you see the file has been downloaded */
+			}
+			#endregion /* Downloading character END */
+			
 			ini_close();
 			menu_delay = 3;
 		}
@@ -178,7 +206,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Downloading file..."), global.default_text_size * 2, c_black, c_white, 1)
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Downloading" + " " + l10n_text(string(what_kind_of_id)) + "..."), global.default_text_size * 2, c_black, c_white, 1)
 		
 		#region /* Draw loading icon when waiting for download */
 		draw_set_halign(fa_center);
@@ -190,20 +218,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		#endregion /* Draw text explaining to the player that the file is downloading, and a loading icon that is spinning END */
 		
 		#region /* You can always cancel searching if game can't find file on server */
-		if (!directory_exists(working_directory + "custom_levels/" + string(downloaded_file_name)))
+		if (!directory_exists(working_directory + "custom_levels/*"))
 		{
-			
-			#region /* The level have been successfully downloaded, so delete temporary folders and zip files now */
-			if (file_exists(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"))
-			{
-				file_delete(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy the unzipped file last */
-			}
-			if (directory_exists(working_directory + "/downloaded_" + string(what_kind_of_id)))
-			{
-				directory_destroy(working_directory + "/downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
-			}
-			#endregion /* The level have been successfully downloaded, so delete temporary folders and zip files now END */
-			
 			var cancel_button_y = display_get_gui_height() * 0.5 + 100;
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, cancel_button_y, l10n_text("Cancel"), "searching_for_id", "searching_for_id");
 			
@@ -215,14 +231,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			and (key_a_released)
 			and (menu_delay == 0)
 			{
-				/* Go back to select custom level menu */
-				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
-				can_navigate = false;
-				search_id = "";
-				select_custom_level_menu_open = true;
-				scr_load_custom_level_initializing();
-				menu = "load_custom_level";
-				menu_delay = 3;
+				menu = "searching_for_id_back";
 			}
 		}
 		#endregion /* You can always cancel searching if game can't find file on server END */
@@ -261,56 +270,81 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			#endregion /* The level have been successfully downloaded, so delete temporary folders and zip files now END */
 			
-			/* Show level name, level thumbnail, and level description */
-			/* Draw Level Name */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_name_y, string(downloaded_file_name), global.default_text_size * 1.9, c_black, c_white, 1);
-			
-			if (display_get_gui_height() <= 720)
+			if (what_kind_of_id == "level")
 			{
-				if (downloaded_thumbnail_sprite > 0)
+				/* Show level name, level thumbnail, and level description */
+				/* Draw Level Name */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_name_y, string(global.level_name), global.default_text_size * 1.9, c_black, c_white, 1);
+				/* Draw Level Description */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y, string(global.level_description), global.default_text_size * 1.25, c_black, c_white, 1);
+				if (display_get_gui_height() <= 720)
 				{
-					/* Draw Thumbnail */
-					draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5 - 210, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * 1.1, 216 / sprite_get_height(downloaded_thumbnail_sprite) * 1.1, 0, c_white, 1);
-					var draw_description_y = 350;
+					if (downloaded_thumbnail_sprite > 0)
+					{
+						/* Draw Level Thumbnail */
+						draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * 1.1, 216 / sprite_get_height(downloaded_thumbnail_sprite) * 1.1, 0, c_white, 1);
+						var draw_description_y = 350;
+					}
+					else
+					{
+						var draw_description_y = display_get_gui_height() * 0.5 - 22;
+					}
 				}
 				else
 				{
-					var draw_description_y = display_get_gui_height() * 0.5 - 22;
+					if (downloaded_thumbnail_sprite > 0)
+					{
+						/* Draw Level Thumbnail */
+						draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * 2, 216 / sprite_get_height(downloaded_thumbnail_sprite) * 2, 0, c_white, 1);
+						var draw_description_y = 532;
+					}
+					else
+					{
+						var draw_description_y = display_get_gui_height() * 0.5 - 22;
+					}
 				}
 			}
 			else
+			if (what_kind_of_id == "character")
 			{
 				if (downloaded_thumbnail_sprite > 0)
 				{
-					/* Draw Thumbnail */
-					draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5 - 390, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * 2, 216 / sprite_get_height(downloaded_thumbnail_sprite) * 2, 0, c_white, 1);
-					var draw_description_y = 532;
+					var scale_offset = 1;
+					/* Draw Character Thumbnail */
+					draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, 270, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, 0, c_white, 1);
+					var draw_description_y = 500;
 				}
 				else
 				{
 					var draw_description_y = display_get_gui_height() * 0.5 - 22;
 				}
 			}
-		
-			/* Draw Level Description */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y, string(global.level_description), global.default_text_size * 1.25, c_black, c_white, 1);
-			/* Draw Level ID */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y + 50, l10n_text("Level ID") + ": " + string(search_id), global.default_text_size * 1.25, c_black, c_white, 1);
+			/* Draw ID */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y + 50, l10n_text(string(what_kind_of_id)) + " " + l10n_text("ID") + ": " + string(search_id), global.default_text_size * 1.25, c_black, c_white, 1);
 			
-			/* Level is downloaded, so you get a choice if you want to play, make, or go back to custom level select*/
 			var downloaded_message_y = draw_description_y + 100;
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, downloaded_message_y, l10n_text("Level downloaded"), global.default_text_size * 2, c_black, c_white, 1)
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, "Play", "searched_file_downloaded_play", "searched_file_downloaded_play");
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50 + 42, "Make", "searched_file_downloaded_make", "searched_file_downloaded_make");
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50 + (42 * 2), "Back", "searched_file_downloaded_back", "searched_file_downloaded_back");
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, downloaded_message_y, l10n_text(string(what_kind_of_id)) + " " + l10n_text("downloaded"), global.default_text_size * 2, c_black, c_white, 1)
+			if (what_kind_of_id == "level")
+			{
+				/* Level is downloaded, so you get a choice if you want to play, make, or go back to custom level select*/
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, "Play", "searched_file_downloaded_play", "searched_file_downloaded_play");
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50 + 42, "Make", "searched_file_downloaded_make", "searched_file_downloaded_make");
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50 + (42 * 2), "Back", "searched_file_downloaded_back", "searched_file_downloaded_back");
+			}
+			else
+			{
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, "Back", "searched_file_downloaded_back", "searched_file_downloaded_back");
+			}
 			
 			#region /* Play, Make, Back Navigation */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + 41))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
+			and (what_kind_of_id == "level")
 			or (menu == "searched_file_downloaded_play")
 			and (key_a_released)
 			and (menu_delay == 0)
+			and (what_kind_of_id == "level")
 			{
 				/* Play the downloaded level */
 				global.doing_clear_check = false;
@@ -324,9 +358,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
+			and (what_kind_of_id == "level")
 			or (menu == "searched_file_downloaded_make")
 			and (key_a_released)
 			and (menu_delay == 0)
+			and (what_kind_of_id == "level")
 			{
 				/* Edit the downloaded level */
 				global.doing_clear_check = false;
@@ -344,18 +380,12 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			and (key_a_released)
 			and (menu_delay == 0)
 			{
-				/* Go back to select custom level menu */
-				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
-				can_navigate = false;
-				search_id = "";
-				select_custom_level_menu_open = true;
-				scr_load_custom_level_initializing();
-				menu = "load_custom_level";
-				menu_delay = 3;
+				menu = "searching_for_id_back";
 			}
 			
 			if (key_down)
 			and (menu_delay == 0)
+			and (what_kind_of_id == "level")
 			{
 				if (menu == "searched_file_downloaded_play")
 				{
@@ -376,6 +406,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			else
 			if (key_up)
 			and (menu_delay == 0)
+			and (what_kind_of_id == "level")
 			{
 				if (menu == "searched_file_downloaded_play")
 				{
@@ -418,7 +449,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			var downloaded_message_y = display_get_gui_height() * 0.5;
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Failed to download level"), global.default_text_size * 2, c_black, c_white, 1)
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Failed to download") + " " + l10n_text(string(what_kind_of_id)), global.default_text_size * 2, c_black, c_white, 1)
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, l10n_text("OK"), "searched_file_downloaded_back", "searched_file_downloaded_back");
 			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + 41))
@@ -429,14 +460,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			and (key_a_released)
 			and (menu_delay == 0)
 			{
-				/* Go back to select custom level menu */
-				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
-				can_navigate = false;
-				search_id = "";
-				select_custom_level_menu_open = true;
-				scr_load_custom_level_initializing();
-				menu = "load_custom_level";
-				menu_delay = 3;
+				menu = "searching_for_id_back";
 			}
 		}
 		#endregion /* If level doesn't exist or is not downloaded, show this menu END */
@@ -444,4 +468,24 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	}
 	#endregion /* Searched file downloaded menu END */
 	
+	if (menu == "searching_for_id_back")
+	{
+		search_id = ""; /* Always set this to empty string when going back to previous menu */
+		menu_delay = 3;
+		if (what_kind_of_id == "level")
+		{
+			/* Go back to select custom level menu */
+			can_navigate = false;
+			scr_delete_sprite_properly(downloaded_thumbnail_sprite);
+			select_custom_level_menu_open = true;
+			scr_load_custom_level_initializing();
+			menu = "load_custom_level";
+		}
+		else
+		if (what_kind_of_id == "character")
+		{
+			select_custom_level_menu_open = false;
+			menu = "load_characters";
+		}
+	}
 }

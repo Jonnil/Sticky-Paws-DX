@@ -212,6 +212,7 @@ function scr_character_select_menu_step()
 	or (menu == "back_from_character_select")
 	or (menu == "open_custom_characters_folder")
 	or (menu == "copy_character")
+	or (menu == "search_character_id")
 	or (menu == "input_name_ok")
 	or (menu == "input_name_cancel")
 	{
@@ -2557,7 +2558,7 @@ function scr_character_select_menu_step()
 			load_from_where = working_directory + "/custom_characters";
 		}
 		
-		if (can_navigate = false)
+		if (can_navigate == false)
 		{
 			file_load_timer += 1;
 			
@@ -2913,7 +2914,7 @@ function scr_character_select_menu_step()
 		}
 		#endregion /* Back from Copy Characters END */
 		
-		if (can_navigate = false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
+		if (can_navigate == false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
 		{
 			global.loading_spinning_angle -= 10;
 		}

@@ -332,7 +332,7 @@ and (instance_exists(obj_player))
 {
 	instance_nearest(x, y, obj_player).can_move = false;
 }
-if (can_navigate = false)
+if (can_navigate == false)
 {
 	gamepad_stick = false;
 }

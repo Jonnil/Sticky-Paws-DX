@@ -16,10 +16,7 @@ active_right = false;
 active_up = false;
 active_down = false;
 
-saved_file_exists = false;
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
-unused_x_origin_point = noone;
-unused_y_origin_point = noone;
 
 move_speed = 8;
 
