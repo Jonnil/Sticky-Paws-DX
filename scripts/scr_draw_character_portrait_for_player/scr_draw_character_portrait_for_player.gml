@@ -235,7 +235,6 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		and (can_input_player2_name == false)
 		and (can_input_player3_name == false)
 		and (can_input_player4_name == false)
-		and (global.controls_used_for_menu_navigation != "mouse")
 		{
 			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x, get_window_height * 0.5 + 324, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1); /* Display Character Name */
 		}
@@ -1233,7 +1232,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 	if (player_menu != "select_name")
 	and (player_menu != "back_from_character_select")
 	and (player_menu != "open_custom_characters_folder")
-	and (player_menu != "copy_character")
+	and (player_menu != "manage_character")
 	and (can_input_player1_name == false)
 	and (can_input_player2_name == false)
 	and (can_input_player3_name == false)

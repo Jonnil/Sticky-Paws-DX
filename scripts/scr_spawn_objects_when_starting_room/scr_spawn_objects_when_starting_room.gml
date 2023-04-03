@@ -332,16 +332,13 @@ function scr_spawn_objects_when_starting_room()
 				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 				if (global.character_select_in_this_menu == "main_game")
 				and (ini_read_string(level_name, "clear_rate", "closed") != "clear")
+				or (global.character_select_in_this_menu == "leveleditor")
 				{
 					with(instance_create_depth(x, y, 0, obj_cake_stealing_enemy))
 					{
 						cutscene = 1;
 						image_xscale = -1;
 						visible = true;
-					}
-					with(instance_create_depth(x, y, 0, obj_cake))
-					{
-						cutscene = 1;
 					}
 				}
 				ini_close();

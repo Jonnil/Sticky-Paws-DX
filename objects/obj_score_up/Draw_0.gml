@@ -26,6 +26,7 @@ and (show_remaining_jumps == false)
 }
 else
 if (show_remaining_jumps == false)
+and (score_up != "Copied")
 {
 	if (not_score == false)
 	{

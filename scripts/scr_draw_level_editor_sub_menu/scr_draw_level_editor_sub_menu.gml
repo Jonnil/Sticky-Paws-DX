@@ -223,7 +223,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			or (menu == "level_editor_create_from_back")
 			{
 				scroll_to = floor(global.select_level_index / row) + 0.1; /* Scroll the view to fit all the buttons */
-				draw_rectangle_color(xx, 226 * (column - scroll) + 455 - 3, xx + 384, 226 * (column - scroll) + 408+ 216 + 3, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(xx, 226 * (column - scroll) + 455 - 3, xx + 384, 226 * (column - scroll) + 408 + 216 + 3, c_white, c_white, c_white, c_white, false);
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 475 - 3, l10n_text("Create from Scratch"), "level_editor_create_from_scratch", "level_editor_create_from_scratch");
 				if (can_create_level_from_scratch == false)
 				{
@@ -241,7 +241,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			or (menu == "level_editor_delete_yes")
 			{
 				scroll_to = floor(global.select_level_index / row) + 0.1; /* Scroll the view to fit all the buttons */
-				draw_rectangle_color(xx, 226 * (column - scroll) + 455 - 3, xx + 384, 226 * (column - scroll) + 408+ 216 + 3, c_red, c_red, c_red, c_red, false);
+				draw_rectangle_color(xx, 226 * (column - scroll) + 455 - 3, xx + 384, 226 * (column - scroll) + 408 + 216 + 3, c_red, c_red, c_red, c_red, false);
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(xx + 200, 226 * (column - scroll) + 485 - 3, l10n_text("Delete Level") + "?", global.default_text_size * 1.2, c_white, c_black, 1);

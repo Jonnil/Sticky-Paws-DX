@@ -211,7 +211,7 @@ function scr_character_select_menu_step()
 	if (menu == "select_character")
 	or (menu == "back_from_character_select")
 	or (menu == "open_custom_characters_folder")
-	or (menu == "copy_character")
+	or (menu == "manage_character")
 	or (menu == "search_character_id")
 	or (menu == "input_name_ok")
 	or (menu == "input_name_cancel")
@@ -558,22 +558,9 @@ function scr_character_select_menu_step()
 					{
 						menu_delay = 3;
 						menu_joystick1_delay = 30;
-						if (global.enable_copy_characters == true)
-						{
-							player1_menu = "copy_character";
-							menu = "copy_character";
-						}
-						else
-						if (global.enable_open_custom_folder == true)
-						{
-							player1_menu = "open_custom_characters_folder";
-							menu = "open_custom_characters_folder";
-						}
-						else
-						{
-							player1_menu = "back_from_character_select";
-							menu = "back_from_character_select";
-						}
+						
+						player1_menu = "search_character_id";
+						menu = "search_character_id";
 					}
 				}
 				#endregion /* Player 1 key up END */
@@ -1261,7 +1248,7 @@ function scr_character_select_menu_step()
 			}
 			#endregion /* Player 4 Menu Navigation END */
 			
-			#region /* The 3 buttons in the top left corner of character select screen */
+			#region /* The buttons in the top left corner of character select screen */
 			
 			#region /* Click Open Custom Levels Folder */
 			if (global.enable_open_custom_folder == true)
@@ -1285,17 +1272,17 @@ function scr_character_select_menu_step()
 			else
 			
 			#region /* Click Copy Characters */
-			if (global.enable_copy_characters == true)
+			if (global.enable_manage_characters == true)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 42 + 2 + 42, 371, 42 + 41 + 42))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_pressed(mb_left))
 			and (menu_delay == 0)
-			or (global.enable_copy_characters == true)
-			and (menu == "copy_character")
+			or (global.enable_manage_characters == true)
+			and (menu == "manage_character")
 			and (player1_key_a_pressed)
 			and (menu_delay == 0)
-			or (global.enable_copy_characters == true)
-			and (player1_menu == "copy_character")
+			or (global.enable_manage_characters == true)
+			and (player1_menu == "manage_character")
 			and (player1_key_a_pressed)
 			and (menu_delay == 0)
 			{
@@ -1316,7 +1303,6 @@ function scr_character_select_menu_step()
 				if (menu_delay == 0)
 				and (menu_joystick_delay <= 0)
 				{
-					
 					if (global.enable_open_custom_folder == true)
 					and (menu == "open_custom_characters_folder") /* Open Custom Characters Folder */
 					{
@@ -1325,14 +1311,34 @@ function scr_character_select_menu_step()
 						player1_menu = "back_from_character_select";
 						menu = "back_from_character_select";
 					}
-					
 					else
-					
-					if (global.enable_copy_characters == true)
-					and (menu == "copy_character") /* Copy Character */
+					if (global.enable_manage_characters == true)
+					and (menu == "manage_character") /* Copy Character */
 					{
 						menu_delay = 3;
 						can_navigate = true;
+						if (global.enable_open_custom_folder == true)
+						{
+							player1_menu = "open_custom_characters_folder";
+							menu = "open_custom_characters_folder";
+						}
+						else
+						{
+							player1_menu = "back_from_character_select";
+							menu = "back_from_character_select";
+						}
+					}
+					else
+					if (menu == "search_character_id") /* Search Character ID */
+					{
+						menu_delay = 3;
+						can_navigate = true;
+						if (global.enable_manage_characters == true)
+						{
+							player1_menu = "manage_character";
+							menu = "manage_character";
+						}
+						else
 						if (global.enable_open_custom_folder == true)
 						{
 							player1_menu = "open_custom_characters_folder";
@@ -1369,10 +1375,10 @@ function scr_character_select_menu_step()
 							menu = "open_custom_characters_folder"
 						}
 						else
-						if (global.enable_copy_characters == true)
+						if (global.enable_manage_characters == true)
 						{
-							player1_menu = "copy_character";
-							menu = "copy_character";
+							player1_menu = "manage_character";
+							menu = "manage_character";
 						}
 						else
 						{
@@ -1380,18 +1386,16 @@ function scr_character_select_menu_step()
 							menu = "select_character";
 						}
 					}
-					
 					else
-					
 					if (global.enable_open_custom_folder == true)
 					and (menu == "open_custom_characters_folder") /* Open Custom Characters Folder */
 					{
 						menu_delay = 3;
 						can_navigate = true;
-						if (global.enable_copy_characters == true)
+						if (global.enable_manage_characters == true)
 						{
-							player1_menu = "copy_character";
-							menu = "copy_character";
+							player1_menu = "manage_character";
+							menu = "manage_character";
 						}
 						else
 						{
@@ -1399,11 +1403,17 @@ function scr_character_select_menu_step()
 							menu = "select_character";
 						}
 					}
-					
 					else
-					
-					if (global.enable_copy_characters == true)
-					and (menu == "copy_character") /* Copy Character */
+					if (global.enable_manage_characters == true)
+					and (menu == "manage_character") /* Manage Characters */
+					{
+						menu_delay = 3;
+						can_navigate = true;
+						player1_menu = "search_character_id";
+						menu = "search_character_id";
+					}
+					else
+					if (menu == "search_character_id") /* Search Character ID */
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -1414,7 +1424,7 @@ function scr_character_select_menu_step()
 			}
 			#endregion /* Key Down END */
 			
-			#endregion /* The 3 buttons in the top left corner of character select screen END */
+			#endregion /* The buttons in the top left corner of character select screen END */
 			
 		}
 		#endregion /* Menu Navigation END */
@@ -1847,7 +1857,8 @@ function scr_character_select_menu_step()
 			and (player1_key_a_pressed)
 			and (player1_menu != "back_from_character_select")
 			and (player1_menu != "open_custom_characters_folder")
-			and (player1_menu != "copy_character")
+			and (player1_menu != "manage_character")
+			and (player1_menu != "search_character_id")
 			
 			or (player1_accept_selection = -1)
 			and (player2_accept_selection == true)
@@ -2208,8 +2219,10 @@ function scr_character_select_menu_step()
 					and (player1_menu != "back_from_character_select")
 					and (menu != "open_custom_characters_folder")
 					and (player1_menu != "open_custom_characters_folder")
-					and (menu != "copy_character")
-					and (player1_menu != "copy_character")
+					and (menu != "manage_character")
+					and (player1_menu != "manage_character")
+					and (menu != "search_character_id")
+					and (player1_menu != "search_character_id")
 					{
 						menu = "select_character";
 						player1_menu = "select_character";
@@ -2313,610 +2326,10 @@ function scr_character_select_menu_step()
 		
 	}
 	else
-	if (menu == "click_copy_character")
-	or (menu == "open_folder_copy_character")
-	or (menu == "back_from_copy_character")
+	
+	#region /* Step Manage Characters Menu */
 	{
-		player1_display_x = 0;
-		xx1 = 0;
-		
-		#region /* Player 1 */
-		
-		#region /* Player 1 change portrait when clicking left or right */
-		
-		#region /* Player 1 Key Left (change portrait sprites) */
-		if (keyboard_check_pressed(global.player1_key_left))
-		or (keyboard_check_pressed(global.player1_key2_left))
-		or (gamepad_button_check_pressed(global.player1_slot, gp_padl))
-		or (gamepad_axis_value(global.player1_slot, gp_axislh) < 0)
-		and (menu_joystick1_delay <= 0)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y,
-		get_window_width * 0.5 + player1_display_x - arrow_offset - 16,
-		get_window_height * 0.5 - 16,
-		get_window_width * 0.5 + player1_display_x - arrow_offset + 16,
-		get_window_height * 0.5 + 16))
-		and (mouse_check_button_pressed(mb_left))
-		{
-			
-			if (menu_delay == 0)
-			and (can_navigate == true)
-			and (global.character_index[0] > 0)
-			{
-				menu_delay = 3;
-				menu_joystick1_delay = 30;
-				if (global.character_index[0] > 0)
-				{
-					global.character_index[0] -= 1;
-					global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
-					xx1 = player1_display_x - 32;
-				}
-				else
-				{
-					global.character_index[0] = 0;
-					global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
-				}
-				
-				#region /* Player 1 character select portrait sprite */
-				global.skin_for_player_1 = global.actual_skin_for_player_1; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
-				global.sprite_select_player_1 = spr_noone;
-				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
-				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
-				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1);
-				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1);
-				#endregion /* Player 1 character select portrait sprite END */
-				
-			}
-		}
-		#endregion /* Player 1 Key Left (change portrait sprites) END */
-		
-		#region /* Player 1 Key Right (change portrait sprites) */
-		if (keyboard_check_pressed(global.player1_key_right))
-		or (keyboard_check_pressed(global.player1_key2_right))
-		or (gamepad_button_check_pressed(global.player1_slot, gp_padr))
-		or (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
-		and (menu_joystick1_delay <= 0)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y,
-		get_window_width * 0.5 + player1_display_x + arrow_offset - 16,
-		get_window_height * 0.5 - 16,
-		get_window_width * 0.5 + player1_display_x + arrow_offset + 16,
-		get_window_height * 0.5 + 16))
-		and (mouse_check_button_pressed(mb_left))
-		{
-			
-			if (menu_delay == 0)
-			and (can_navigate == true)
-			{
-				menu_delay = 3;
-				menu_joystick1_delay = 30;
-				
-				if (global.character_index[0] < ds_list_size(global.all_loaded_characters) - 1)
-				{
-					global.character_index[0] = clamp(global.character_index[0] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
-					global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
-					xx1 = player1_display_x + 32;
-				}
-				
-				#region /* Player 1 character select portrait sprite */
-				global.skin_for_player_1 = global.actual_skin_for_player_1; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
-				global.sprite_select_player_1 = spr_noone;
-				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
-				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
-				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1);
-				global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1);
-				#endregion /* Player 1 character select portrait sprite END */
-				
-			}
-		}
-		#endregion /* Player 1 Key Right (change portrait sprites) END */
-		
-		#endregion /* Player 1 change portrait when clicking left or right END */
-		
-		#region /* Key Left */
-		if (global.character_index[0] > 0)
-		and (can_navigate == true)
-		{		
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player1_display_x - arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player1_display_x - arrow_offset + 16, get_window_height * 0.5 + 16))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			{
-				player1_menu = "select_character";
-			}
-		}
-		#endregion /* Key Left END */
-		
-		#region /* Key Right */
-		if (global.character_index[0] < ds_list_size(global.all_loaded_characters) - 1)
-		and (can_navigate == true)
-		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player1_display_x + arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player1_display_x + arrow_offset + 16, get_window_height * 0.5 + 16))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			{
-				player1_menu = "select_character";
-			}
-		}
-		#endregion /* Key Right END */
-		
-		#endregion /* Player 1 END */
-		
-		#region /* Copy Characters */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height - 42 - 42 - 42 + 2, get_window_width * 0.5 - 185 + 371, get_window_height - 42 - 43 + 42 - 42))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_pressed(mb_left))
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		or (menu == "click_copy_character")
-		and (player1_key_a_pressed)
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		or (player1_menu = "click_copy_character")
-		and (player1_key_a_pressed)
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		{
-			can_navigate = false;
-			load_ok = 0;
-			load_specific_folder = 0;
-			first_copy_file = "";
-			menu = "click_copy_character";
-			player1_menu = "click_copy_character";
-			
-			#region /* Copy character files to new character folder */
-			
-			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy"))
-			{
-				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy")
-			}
-			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data"))
-			{
-				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data")
-			}
-			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound"))
-			{
-				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound")
-			}
-			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites"))
-			{
-				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites")
-			}
-			
-			#region /* Copy files from selected character to custom character copy */
-			if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
-			{
-				file_copy(
-				"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini",
-				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/character_config.ini");
-			}
-			if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
-			{
-				file_copy(
-				"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini",
-				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/sprite_origin_point.ini");
-			}
-			if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
-			{
-				file_copy(
-				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini",
-				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/character_config.ini");
-			}
-			if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
-			{
-				file_copy(
-				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini",
-				working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/sprite_origin_point.ini");
-			}
-			#endregion /* Copy files from selected character to custom character copy END */
-			
-			#endregion /* Copy character files to new character folder END */
-			
-			menu_delay = 3;
-		}
-		if (keyboard_check_pressed(global.player1_key_up))
-		or (keyboard_check_pressed(global.player1_key2_up))
-		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
-		and (menu_joystick1_delay <= 0)
-		{
-			if (menu == "click_copy_character")
-			and (menu_delay == 0)
-			and (menu_joystick_delay <= 0)
-			and (can_navigate == true)
-			{
-				menu_delay = 3;
-				can_navigate = true;
-				player1_menu = "back_from_copy_character";
-				menu = "back_from_copy_character";
-			}
-		}
-		if (menu == "click_copy_character")
-		and (key_down)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
-		and (can_navigate == true)
-		{
-			menu_delay = 3;
-			can_navigate = true;
-			if (global.enable_open_custom_folder == true)
-			{
-				player1_menu = "open_folder_copy_character";
-				menu = "open_folder_copy_character";
-			}
-			else
-			{
-				player1_menu = "back_from_copy_character";
-				menu = "back_from_copy_character";
-			}
-		}
-		#endregion /* Copy Characters END */
-		
-		#region /* Copy Actual Characters Code */
-		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
-		{
-			load_from_where = "characters";
-		}
-		else
-		if (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
-		{
-			load_from_where = working_directory + "/custom_characters";
-		}
-		
-		if (can_navigate == false)
-		{
-			file_load_timer += 1;
-			
-			if (file_load_timer > 1)
-			and (load_ok == 0)
-			{
-				if (initialized_copy = false)
-				{
-					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/*.ogg", 0)
-					file_copy(
-					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/" + string(first_copy_file),
-					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/" + string(first_copy_file))
-					initialized_copy = true;
-				}
-				file_found = file_find_next()
-				if (file_found == "")
-				{
-					file_find_close();
-					file_load_timer = 0;
-					initialized_copy = false;
-					load_ok += 1;
-				}
-				else
-				{
-					file_copy(
-					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/" + string(file_found),
-					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/" + string(file_found))
-					
-					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
-				}
-			}
-			else
-			if (file_load_timer > 1)
-			and (load_ok == 1)
-			{
-				file_load_timer = 0;
-				load_ok += 1;
-				load_specific_folder = 0;
-			}
-			else
-			if (file_load_timer > 1)
-			and (load_ok = 2)
-			{
-				if (initialized_copy = false)
-				{
-					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/*.png", 0)
-					file_copy(
-					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/" + string(first_copy_file),
-					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/" + string(first_copy_file))
-					initialized_copy = true;
-				}
-				file_found = file_find_next()
-				if (file_found == "")
-				{
-					file_find_close();
-					file_load_timer = 0;
-					initialized_copy = false;
-					load_ok += 1;
-				}
-				else
-				{
-					file_copy(
-					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/" + string(file_found),
-					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/" + string(file_found))
-					
-					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
-				}
-			}
-			else
-			if (file_load_timer > 1)
-			and (load_ok = 3)
-			{
-				file_load_timer = 0;
-				load_ok += 1;
-				load_specific_folder = 0;
-			}
-			else
-			if (file_load_timer > 1)
-			and (load_ok = 4)
-			{
-				if (initialized_copy = false)
-				{
-					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/*", fa_directory)
-					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/" + string(first_copy_file))
-					initialized_copy = true;
-				}
-				file_found = file_find_next()
-				if (file_found == "")
-				{
-					file_find_close();
-					file_load_timer = 0;
-					initialized_copy = false;
-					load_ok += 1;
-				}
-				else
-				{
-					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/" + string(file_found))
-					
-					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
-				}
-			}
-			else
-			if (file_load_timer > 1)
-			and (load_ok == 5)
-			{
-				file_load_timer = 0;
-				load_ok += 1;
-				load_specific_folder = 0;
-			}
-			else
-			if (file_load_timer > 1)
-			and (load_ok == 6)
-			{
-				if (initialized_copy = false)
-				{
-					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/*", fa_directory)
-					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/" + string(first_copy_file))
-					initialized_copy = true;
-				}
-				file_found = file_find_next()
-				if (file_found == "")
-				{
-					file_find_close();
-					file_load_timer = 0;
-					initialized_copy = false;
-					load_ok += 1;
-				}
-				else
-				{
-					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/" + string(file_found))
-					
-					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
-				}
-			}
-			else
-			if (file_load_timer > 1)
-			and (load_ok == 7)
-			{
-				file_load_timer = 0;
-				load_ok += 1;
-				load_specific_folder = 0;
-			}
-			else
-			if (file_load_timer > 1)
-			and (load_ok == 8)
-			{
-				if (initialized_copy = false)
-				{
-					if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(load_specific_folder)))
-					{
-						first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(load_specific_folder) + "/*.ogg", 0)
-						file_copy(
-						string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(load_specific_folder) + "/" + string(first_copy_file),
-						working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/voicepack" + string(load_specific_folder) + "/" + string(first_copy_file))
-						initialized_copy = true;
-					}
-					else
-					{
-						load_specific_folder = 0; /* Set this variable to 0 before going to the next loading code */
-						file_load_timer = 0;
-						load_ok += 1;
-					}
-				}
-				file_found = file_find_next()
-				if (file_found == "")
-				{
-					file_find_close();
-					file_load_timer = 0;
-					initialized_copy = false;
-					load_specific_folder += 1;
-				}
-				else
-				{
-					file_copy(
-					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(load_specific_folder) + "/" + string(file_found),
-					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/voicepack" + string(load_specific_folder) + "/" + string(file_found))
-					
-					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
-				}
-			}
-			else
-			if (file_load_timer > 1)
-			and (load_ok = 9)
-			{
-				file_load_timer = 0;
-				load_ok += 1;
-				load_specific_folder = 0;
-			}
-			else
-			if (file_load_timer > 1)
-			and (load_ok = 10)
-			{
-				if (initialized_copy = false)
-				{
-					if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(load_specific_folder)))
-					{
-						first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(load_specific_folder) + "/*.png", 0)
-						file_copy(
-						string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(load_specific_folder) + "/" + string(first_copy_file),
-						working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/skin" + string(load_specific_folder) + "/" + string(first_copy_file))
-						initialized_copy = true;
-					}
-					else
-					{
-						load_specific_folder = 0; /* Set this variable to 0 before going to the next loading code */
-						can_navigate = true;
-						file_load_timer = 0;
-						load_ok = 0;
-						with(instance_create_depth(get_window_width * 0.5, get_window_height - 42 - 42 - 42, 0, obj_score_up))
-						{
-							score_up = "Copied";
-						}
-					}
-				}
-				file_found = file_find_next()
-				if (file_found == "")
-				{
-					file_find_close();
-					load_specific_folder += 1;
-					initialized_copy = false;
-					file_load_timer = 0;
-				}
-				else
-				{
-					file_copy(
-					string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(load_specific_folder) + "/" + string(file_found),
-					working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/skin" + string(load_specific_folder) + "/" + string(file_found))
-					
-					file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
-				}
-			}
-		}
-		#endregion /* Copy Actual Characters Code END */
-		
-		#region /* Open Character Folder */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height - 42 - 42 + 2, get_window_width * 0.5 - 185 + 371, get_window_height - 42 - 41 + 42))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_released(mb_left))
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		or (menu == "open_folder_copy_character")
-		and (player1_key_a_pressed)
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		or (player1_menu = "open_folder_copy_character")
-		and (player1_key_a_pressed)
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		{
-			menu = "open_folder_copy_character";
-			player1_menu = "open_folder_copy_character";
-			
-			if (directory_exists("characters\\" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
-			{
-				scr_open_folder("characters\\" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])))
-			}
-			else
-			if (directory_exists(game_save_id + "\custom_characters\\" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
-			{
-				scr_open_folder(game_save_id + "\custom_characters\\" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])))
-			}
-			
-			menu_delay = 3;
-		}
-		if (keyboard_check_pressed(global.player1_key_up))
-		or (keyboard_check_pressed(global.player1_key2_up))
-		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
-		and (menu_joystick1_delay <= 0)
-		{
-			if (menu == "open_folder_copy_character")
-			and (menu_delay == 0)
-			and (menu_joystick_delay <= 0)
-			and (can_navigate == true)
-			{
-				menu_delay = 3;
-				can_navigate = true;
-				player1_menu = "click_copy_character";
-				menu = "click_copy_character";
-			}
-		}
-		if (menu == "open_folder_copy_character")
-		and (key_down)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
-		and (can_navigate == true)
-		{
-			menu_delay = 3;
-			can_navigate = true;
-			player1_menu = "back_from_copy_character";
-			menu = "back_from_copy_character";
-		}
-		#endregion /* Open Character Folder END */
-		
-		#region /* Back from Copy Characters */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height - 42 + 2, get_window_width * 0.5 - 185 + 371, get_window_height - 42 - 41))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_pressed(mb_left))
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		or (menu == "back_from_copy_character")
-		and (player1_key_a_pressed)
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		or (player1_menu = "back_from_copy_character")
-		and (player1_key_a_pressed)
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		or (player1_key_b_pressed)
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		{
-			scr_load_character_initializing();
-			menu = "load_characters";
-			player1_menu = "load_characters";
-			menu_delay = 3;
-		}
-		if (keyboard_check_pressed(global.player1_key_up))
-		or (keyboard_check_pressed(global.player1_key2_up))
-		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
-		and (menu_joystick1_delay <= 0)
-		{
-			if (menu == "back_from_copy_character")
-			and (menu_delay == 0)
-			and (menu_joystick_delay <= 0)
-			and (can_navigate == true)
-			{
-				menu_delay = 3;
-				can_navigate = true;
-				if (global.enable_open_custom_folder == true)
-				{
-					player1_menu = "open_folder_copy_character";
-					menu = "open_folder_copy_character";
-				}
-				else
-				{
-					player1_menu = "click_copy_character";
-					menu = "click_copy_character";
-				}
-			}
-		}
-		if (menu == "back_from_copy_character")
-		and (key_down)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
-		and (can_navigate == true)
-		{
-			menu_delay = 3;
-			can_navigate = true;
-			player1_menu = "click_copy_character";
-			menu = "click_copy_character";
-		}
-		#endregion /* Back from Copy Characters END */
-		
-		if (can_navigate == false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
-		{
-			global.loading_spinning_angle -= 10;
-		}
+		scr_character_manage_menu_step();
 	}
+	#endregion /* Step Manage Characters Menu END */
 }

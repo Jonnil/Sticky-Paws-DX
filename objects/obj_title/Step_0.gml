@@ -192,7 +192,24 @@ if (menu == "load_characters")
 		{
 			file_find_close();
 			scr_load_all_character_portraits();
-			menu = "select_character";
+			if (player1_menu == "click_copy_character")
+			{
+				with(instance_create_depth(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 0, obj_score_up))
+				{
+					score_up = "Copied"; /* Show that you have copied the character */
+				}
+				menu = "click_copy_character";
+			}
+			else
+			if (player1_menu == "click_delete_character")
+			{
+				menu = "click_delete_character";
+			}
+			else
+			{
+				menu = "select_character"; /* Default menu to go to after loading all characters */
+				player1_menu = "select_character"; /* Set this to be "select character" so it's not on wrong menu unintentionally */
+			}
 		}
 		else
 		{

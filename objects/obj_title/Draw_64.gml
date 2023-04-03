@@ -1887,3 +1887,6 @@ if (global.enable_transitions == true)
 	}
 }
 #endregion /* Draw Iris Transitions END */
+
+scr_draw_text_outlined(320, 320, "menu: " + string(menu));
+scr_draw_text_outlined(320, 320 + 42, "player1_menu: " + string(player1_menu));

@@ -485,7 +485,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		if (what_kind_of_id == "character")
 		{
 			select_custom_level_menu_open = false;
+			scr_load_character_initializing();
 			menu = "load_characters";
+			menu_delay = 3;
+			menu_joystick1_delay = 30;
 		}
 	}
 }
