@@ -1,4 +1,5 @@
-if (instance_number(obj_player) > 0)
+if (instance_exists(obj_player))
+and (obj_player.intro_animation != "ending_chair")
 {
 	if (attatch_player == true)
 	{

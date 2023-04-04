@@ -105,20 +105,48 @@ function scr_character_manage_menu_draw()
 		
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 128, l10n_text("Manage Characters"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		
-		if (global.enable_open_custom_folder == true)
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
 		{
-			var character_name_y = display_get_gui_height() - (42 * 6);
-			var copy_character_y = display_get_gui_height() - (42 * 5);
-			var delete_character_y = display_get_gui_height() - (42 * 4);
-			var upload_character_y = display_get_gui_height() - (42 * 3);
+			var selecting_official_character = true;
 		}
 		else
 		{
-			var copy_character_y = display_get_gui_height() - (42 * 4);
-			var delete_character_y = display_get_gui_height() - (42 * 3);
-			var upload_character_y = display_get_gui_height() - (42 * 2);
+			var selecting_official_character = false;
 		}
-		var open_character_folder_y = display_get_gui_height() - 42 - 42;
+		
+		if (global.enable_open_custom_folder == true)
+		{
+			var character_name_y = display_get_gui_height() - (42 * 6);
+			if (selecting_official_character == false)
+			{
+				var copy_character_y = display_get_gui_height() - (42 * 5);
+				var delete_character_y = display_get_gui_height() - (42 * 4);
+				var upload_character_y = display_get_gui_height() - (42 * 3);
+			}
+			else
+			{
+				var copy_character_y = display_get_gui_height() - (42 * 3);
+				var delete_character_y = -9999;
+				var upload_character_y = -9999;
+			}
+			var open_character_folder_y = display_get_gui_height() - 42 - 42;
+		}
+		else
+		{
+			if (selecting_official_character == false)
+			{
+				var copy_character_y = display_get_gui_height() - (42 * 4);
+				var delete_character_y = display_get_gui_height() - (42 * 3);
+				var upload_character_y = display_get_gui_height() - (42 * 2);
+			}
+			else
+			{
+				var copy_character_y = display_get_gui_height() - (42 * 2);
+				var delete_character_y = -9999;
+				var upload_character_y = -9999;
+			}
+			var open_character_folder_y = -9999;
+		}
 		var back_y = display_get_gui_height() - 42;
 		
 		scr_draw_text_outlined(display_get_gui_width() * 0.5 + player1_display_x, character_name_y, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
@@ -132,10 +160,13 @@ function scr_character_manage_menu_draw()
 			or (menu == "back_from_copy_character")
 			{
 				draw_menu_button(display_get_gui_width() * 0.5 - 185, copy_character_y, l10n_text("Copy Character"), "click_copy_character", "click_copy_character"); /* Copy Characters */
-				draw_menu_button(display_get_gui_width() * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no"); /* Copy Characters */
-				draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, delete_character_y + 21, 1, 1, 0, c_white, 1);
-				draw_menu_button(display_get_gui_width() * 0.5 - 185, upload_character_y, l10n_text("Upload Character"), "click_upload_character", "click_upload_character"); /* Copy Characters */
-				draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 - 185 + 16, upload_character_y + 21, 1, 1, 0, c_white, 1);
+				if (selecting_official_character == false)
+				{	
+					draw_menu_button(display_get_gui_width() * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no"); /* Copy Characters */
+					draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, delete_character_y + 21, 1, 1, 0, c_white, 1);
+					draw_menu_button(display_get_gui_width() * 0.5 - 185, upload_character_y, l10n_text("Upload Character"), "click_upload_character", "click_upload_character"); /* Copy Characters */
+					draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 - 185 + 16, upload_character_y + 21, 1, 1, 0, c_white, 1);
+				}
 				
 				#region /* Open Character Folder */
 				if (global.enable_open_custom_folder == true)
@@ -296,7 +327,7 @@ function scr_character_manage_menu_draw()
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, upload_character_no_y - 42, display_get_gui_width() * 0.5 + 370, upload_character_no_y + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			or (key_a_released)
+			or (key_a_pressed)
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -309,10 +340,17 @@ function scr_character_manage_menu_draw()
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, upload_character_yes_y - 42, display_get_gui_width() * 0.5 + 370, upload_character_yes_y + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			or (key_a_released)
+			or (key_a_pressed)
 			and (menu_delay == 0)
 			{
-				menu = "uploading_character"; /* Go to uploading character loading screen */
+				if (os_is_network_connected())
+				{
+					menu = "uploading_character"; /* Go to uploading character loading screen */
+				}
+				else
+				{
+					menu = "no_internet_character";
+				}
 				menu_delay = 60 * 3;
 			}
 		}
@@ -334,6 +372,7 @@ function scr_character_manage_menu_draw()
 	#region /* Uploading Character */
 	if (menu == "uploading_character")
 	{
+		content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
 		var uploading_character_message_y = 532;
 		
 		draw_set_halign(fa_center);
@@ -377,7 +416,7 @@ function scr_character_manage_menu_draw()
 		#region /* Create Zip File */
 		if (menu_delay = 40)
 		{
-			file = scr_upload_zip_add_files(); /* Add all the character files to a new zip file */
+			file = scr_upload_zip_add_files("character"); /* Add all the character files to a new zip file */
 		}
 		#endregion /* Create Zip File END */
 		
@@ -386,6 +425,8 @@ function scr_character_manage_menu_draw()
 		{
 			
 			#region /* Actually upload the character to the server */
+			
+			content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
 			
 			/* User is prompted for a file to upload */
 			file_name = filename_name(file);
@@ -431,7 +472,14 @@ function scr_character_manage_menu_draw()
 			
 			file_delete(file); /* Delete some leftover files and folders */
 			
-			menu = "character_uploaded";
+			if (os_is_network_connected())
+			{
+				menu = "character_uploaded";
+			}
+			else
+			{
+				menu = "no_internet_character";
+			}
 		}
 		#endregion /* Send Zip File to the Server END */
 		
@@ -505,7 +553,7 @@ function scr_character_manage_menu_draw()
 		and (menu_delay == 0)
 		or (mouse_check_button_released(mb_right))
 		and (menu_delay == 0)
-		or (key_a_released)
+		or (key_a_pressed)
 		and (menu_delay == 0)
 		or (key_b_pressed)
 		and (menu_delay == 0)
@@ -540,7 +588,7 @@ function scr_character_manage_menu_draw()
 		{
 			if (menu_delay == 0)
 			{
-				menu = "no_internet";
+				menu = "no_internet_character";
 			}
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
@@ -550,9 +598,9 @@ function scr_character_manage_menu_draw()
 		}
 		else
 		{
-			if (menu == "no_internet")
+			if (menu == "no_internet_character")
 			and (global.controls_used_for_menu_navigation == "keyboard")
-			or (menu == "no_internet")
+			or (menu == "no_internet_character")
 			and (global.controls_used_for_menu_navigation == "controller")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
@@ -574,7 +622,7 @@ function scr_character_manage_menu_draw()
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, ok_y - 42, display_get_gui_width() * 0.5 + 370, ok_y + 42))
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
-		or (key_a_released)
+		or (key_a_pressed)
 		and (menu_delay == 0)
 		or (key_b_pressed)
 		and (menu_delay == 0)

@@ -469,7 +469,7 @@ and (global.controls_used_for_menu_navigation != "controller")
 		draw_set_alpha(1);
 	}
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (menu != "quit_game_no")
 	and (menu != "quit_game_yes")
@@ -526,7 +526,7 @@ if (global.enable_links == true)
 	and (menu == "link_discord")
 	and (menu_delay == 0)
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_discord_x, display_get_gui_height() + 8 + version_y_pos, link_discord_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_discord));
@@ -537,7 +537,7 @@ if (global.enable_links == true)
 	and (menu == "link_gamebanana")
 	and (menu_delay == 0)
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, link_gamebanana_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_gamebanana));
@@ -548,7 +548,7 @@ if (global.enable_links == true)
 	and (menu == "link_instagram")
 	and (menu_delay == 0)
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_instagram_x, display_get_gui_height() + 8 + version_y_pos, link_instagram_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_instagram));
@@ -559,7 +559,7 @@ if (global.enable_links == true)
 	and (menu == "link_reddit")
 	and (menu_delay == 0)
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_reddit_x, display_get_gui_height() + 8 + version_y_pos, link_reddit_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_reddit));
@@ -570,7 +570,7 @@ if (global.enable_links == true)
 	and (menu == "link_twitter")
 	and (menu_delay == 0)
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_twitter_x, display_get_gui_height() + 8 + version_y_pos, link_twitter_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_twitter));
@@ -581,7 +581,7 @@ if (global.enable_links == true)
 	and (menu == "link_wiki")
 	and (menu_delay == 0)
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, link_wiki_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_wiki));
@@ -1888,5 +1888,4 @@ if (global.enable_transitions == true)
 }
 #endregion /* Draw Iris Transitions END */
 
-scr_draw_text_outlined(320, 320, "menu: " + string(menu));
-scr_draw_text_outlined(320, 320 + 42, "player1_menu: " + string(player1_menu));
+scr_draw_text_outlined(320, 320, "content_type: " + string(content_type));

@@ -419,7 +419,7 @@ function scr_options_global_resources()
 					if (variable_instance_exists(self, "title_screen_background"))
 					{
 						scr_delete_sprite_properly(title_screen_background);
-						title_screen_background = sprite_add("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 1, false, false, 0, 0);
+						title_screen_background = sprite_add("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 					}
 				}
 				else
@@ -428,7 +428,7 @@ function scr_options_global_resources()
 					if (variable_instance_exists(self, "title_screen_background"))
 					{
 						scr_delete_sprite_properly(title_screen_background);
-						title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 1, false, false, 0, 0);
+						title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 					}
 				}
 				else
@@ -492,7 +492,7 @@ function scr_options_global_resources()
 					if (variable_instance_exists(self, "title_screen_background"))
 					{
 						scr_delete_sprite_properly(title_screen_background);
-						title_screen_background = sprite_add("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 1, false, false, 0, 0);
+						title_screen_background = sprite_add("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 					}
 				}
 				else
@@ -501,7 +501,7 @@ function scr_options_global_resources()
 					if (variable_instance_exists(self, "title_screen_background"))
 					{
 						scr_delete_sprite_properly(title_screen_background);
-						title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 1, false, false, 0, 0);
+						title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 					}
 				}
 				else

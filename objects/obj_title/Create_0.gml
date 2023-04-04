@@ -114,12 +114,12 @@ repeat(50)
 #region /* Custom Title Screen Background */
 if (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 {
-	title_screen_background = sprite_add("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 1, false, false, 0, 0);
+	title_screen_background = sprite_add("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 }
 else
 if (file_exists(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 {
-	title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 1, false, false, 0, 0);
+	title_screen_background = sprite_add(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 }
 else
 {
@@ -131,6 +131,7 @@ if (variable_instance_exists(self, "title_screen_background"))
 	if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
 	{
 		layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
+		layer_background_speed(layer_background_get_id(layer_get_id("Background")), 1);
 	}
 }
 #endregion /* Custom Title Screen Background */

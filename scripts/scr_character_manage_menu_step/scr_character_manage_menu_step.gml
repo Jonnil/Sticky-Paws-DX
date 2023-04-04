@@ -30,7 +30,7 @@ function scr_character_manage_menu_step()
 		display_get_gui_height() * 0.5 - 16,
 		display_get_gui_width() * 0.5 + player1_display_x - arrow_offset + 16,
 		display_get_gui_height() * 0.5 + 16))
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		{
 			if (menu != "click_delete_character_no")
 			and (menu != "click_delete_character_no")
@@ -76,7 +76,7 @@ function scr_character_manage_menu_step()
 		display_get_gui_height() * 0.5 - 16,
 		display_get_gui_width() * 0.5 + player1_display_x + arrow_offset + 16,
 		display_get_gui_height() * 0.5 + 16))
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		{
 			if (menu != "click_delete_character_no")
 			and (menu != "click_delete_character_no")
@@ -134,19 +134,47 @@ function scr_character_manage_menu_step()
 		
 		#endregion /* Player 1 END */
 		
-		if (global.enable_open_custom_folder == true)
+		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
 		{
-			var copy_character_y = display_get_gui_height() - (42 * 5);
-			var delete_character_y = display_get_gui_height() - (42 * 4);
-			var upload_character_y = display_get_gui_height() - (42 * 3);
+			var selecting_official_character = true;
 		}
 		else
 		{
-			var copy_character_y = display_get_gui_height() - (42 * 4);
-			var delete_character_y = display_get_gui_height() - (42 * 3);
-			var upload_character_y = display_get_gui_height() - (42 * 2);
+			var selecting_official_character = false;
 		}
-		var open_character_folder_y = display_get_gui_height() - 42 - 42;
+		
+		if (global.enable_open_custom_folder == true)
+		{
+			if (selecting_official_character == false)
+			{
+				var copy_character_y = display_get_gui_height() - (42 * 5);
+				var delete_character_y = display_get_gui_height() - (42 * 4);
+				var upload_character_y = display_get_gui_height() - (42 * 3);
+			}
+			else
+			{
+				var copy_character_y = display_get_gui_height() - (42 * 3);
+				var delete_character_y = -9999;
+				var upload_character_y = -9999;
+			}
+			var open_character_folder_y = display_get_gui_height() - 42 - 42;
+		}
+		else
+		{
+			if (selecting_official_character == false)
+			{
+				var copy_character_y = display_get_gui_height() - (42 * 4);
+				var delete_character_y = display_get_gui_height() - (42 * 3);
+				var upload_character_y = display_get_gui_height() - (42 * 2);
+			}
+			else
+			{
+				var copy_character_y = display_get_gui_height() - (42 * 2);
+				var delete_character_y = -9999;
+				var upload_character_y = -9999;
+			}
+			var open_character_folder_y = -9999;
+		}
 		var back_y = display_get_gui_height() - 42;
 		var delete_character_no_y = display_get_gui_height() - (42 * 3);
 		var delete_character_yes_y = display_get_gui_height() - (42 * 2);
@@ -154,18 +182,15 @@ function scr_character_manage_menu_step()
 		#region /* Copy Characters */
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, copy_character_y + 2, display_get_gui_width() * 0.5 - 185 + 371, copy_character_y + 42))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (menu == "click_copy_character")
-		and (player1_key_a_pressed)
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		or (player1_menu = "click_copy_character")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		{
+			menu_delay = 3;
 			can_navigate = false;
 			load_ok = 0;
 			load_specific_folder = 0;
@@ -245,15 +270,15 @@ function scr_character_manage_menu_step()
 		{
 			menu_delay = 3;
 			can_navigate = true;
-			if (global.enable_open_custom_folder == true)
+			if (selecting_official_character == false)
 			{
 				player1_menu = "click_delete_character";
 				menu = "click_delete_character";
 			}
 			else
 			{
-				player1_menu = "click_delete_character";
-				menu = "click_delete_character";
+				player1_menu = "open_folder_copy_character";
+				menu = "open_folder_copy_character";
 			}
 		}
 		
@@ -529,16 +554,19 @@ function scr_character_manage_menu_step()
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (menu == "click_delete_character")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (player1_menu = "click_delete_character")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		{
-			menu = "click_delete_character_no";
-			player1_menu = "click_delete_character_no";
+			if (selecting_official_character == false)
+			{
+				menu = "click_delete_character_no";
+				player1_menu = "click_delete_character_no";
+			}
 		}
 		else
 		if (menu == "click_delete_character_no")
@@ -548,42 +576,57 @@ function scr_character_manage_menu_step()
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (menu == "click_delete_character_no")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (player1_menu = "click_delete_character_no")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		{
-			menu = "click_delete_character";
-			player1_menu = "click_delete_character";
+			if (selecting_official_character == false)
+			{
+				menu = "click_delete_character";
+				player1_menu = "click_delete_character";
+			}
 		}
 		else
 		if (menu == "click_delete_character_yes")
 		and (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, delete_character_yes_y + 2, display_get_gui_width() * 0.5 - 185 + 371, delete_character_yes_y + 42))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (menu == "click_delete_character_yes")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (player1_menu = "click_delete_character_yes")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		{
-			if (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
+			if (selecting_official_character == false)
 			{
-				directory_destroy(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])));
+				if (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
+				{
+					directory_destroy(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])));
+				}
+				
+				#region /* After deleting character, go to previous character, so you don't accidentally go to a undefined character */
+				if (global.character_index[0] > 0)
+				{
+					global.character_index[0] = clamp(global.character_index[0] - 1, 0, ds_list_size(global.all_loaded_characters) - 1);
+					global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
+					xx1 = player1_display_x - 32;
+				}
+				#endregion /* After deleting character, go to previous character, so you don't accidentally go to a undefined character END */
+				
+				scr_load_character_initializing();
+				menu = "load_characters";
+				player1_menu = "click_delete_character"; /* Go back to this menu after reloading all characters */
+				menu_delay = 3;
 			}
-			
-			scr_load_character_initializing();
-			menu = "load_characters";
-			player1_menu = "click_delete_character"; /* Go back to this menu after reloading all characters */
-			menu_delay = 3;
 		}
 		
 		if (keyboard_check_pressed(global.player1_key_up))
@@ -611,15 +654,21 @@ function scr_character_manage_menu_step()
 		{
 			menu_delay = 3;
 			can_navigate = true;
-			if (global.enable_open_custom_folder == true)
+			if (selecting_official_character == false)
 			{
 				player1_menu = "click_upload_character";
 				menu = "click_upload_character";
 			}
 			else
+			if (global.enable_open_custom_folder == true)
 			{
-				player1_menu = "click_upload_character";
-				menu = "click_upload_character";
+				player1_menu = "open_folder_copy_character";
+				menu = "open_folder_copy_character";
+			}
+			else
+			{
+				player1_menu = "back_from_copy_character";
+				menu = "back_from_copy_character";
 			}
 		}
 		
@@ -656,20 +705,23 @@ function scr_character_manage_menu_step()
 		#region /* Upload Characters */
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, upload_character_y + 2, display_get_gui_width() * 0.5 - 185 + 371, upload_character_y + 42))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (menu == "click_upload_character")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (player1_menu = "click_upload_character")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		{
-			menu_delay = 3;
-			menu = "upload_yes_character"
+			if (selecting_official_character == false)
+			{
+				menu_delay = 3;
+				menu = "upload_yes_character"
+			}
 		}
 		if (keyboard_check_pressed(global.player1_key_up))
 		or (keyboard_check_pressed(global.player1_key2_up))
@@ -684,8 +736,16 @@ function scr_character_manage_menu_step()
 			{
 				menu_delay = 3;
 				can_navigate = true;
-				player1_menu = "click_delete_character";
-				menu = "click_delete_character";
+				if (selecting_official_character == false)
+				{
+					player1_menu = "click_delete_character";
+					menu = "click_delete_character";
+				}
+				else
+				{
+					player1_menu = "click_copy_character";
+					menu = "click_copy_character";
+				}
 			}
 		}
 		if (menu == "click_upload_character")
@@ -716,11 +776,11 @@ function scr_character_manage_menu_step()
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (menu == "open_folder_copy_character")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (player1_menu = "open_folder_copy_character")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		{
@@ -752,8 +812,16 @@ function scr_character_manage_menu_step()
 			{
 				menu_delay = 3;
 				can_navigate = true;
-				player1_menu = "click_upload_character";
-				menu = "click_upload_character";
+				if (selecting_official_character == false)
+				{
+					player1_menu = "click_upload_character";
+					menu = "click_upload_character";
+				}
+				else
+				{
+					player1_menu = "click_copy_character";
+					menu = "click_copy_character";
+				}
 			}
 		}
 		if (menu == "open_folder_copy_character")
@@ -772,18 +840,18 @@ function scr_character_manage_menu_step()
 		#region /* Back from Copy Characters */
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, back_y + 2, display_get_gui_width() * 0.5 - 185 + 371, back_y + 42))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (menu == "back_from_copy_character")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		or (player1_menu = "back_from_copy_character")
-		and (player1_key_a_pressed)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
-		or (player1_key_b_pressed)
+		or (key_b_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		{

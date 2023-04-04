@@ -960,6 +960,7 @@ function scr_draw_upload_level_menu()
 	#region /* Uploading Level */
 	if (menu == "uploading_level")
 	{
+		content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
 		var uploading_level_message_y = 532;
 		
 		draw_set_halign(fa_center);
@@ -1000,7 +1001,7 @@ function scr_draw_upload_level_menu()
 		#region /* Create Zip File */
 		if (menu_delay = 40)
 		{
-			file = scr_upload_zip_add_files(); /* Add all the level files to a new zip file */
+			file = scr_upload_zip_add_files("level"); /* Add all the level files to a new zip file */
 		}
 		#endregion /* Create Zip File END */
 		
@@ -1009,6 +1010,8 @@ function scr_draw_upload_level_menu()
 		{
 			
 			#region /* Actually upload the level to the server */
+			
+			content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
 			
 			/* User is prompted for a file to upload */
 			file_name = filename_name(file);
