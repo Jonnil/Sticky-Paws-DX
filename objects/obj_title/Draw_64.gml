@@ -663,7 +663,7 @@ and (menu != "delete_level")
 and (show_title_logo == true)
 {
 	title_x = lerp(title_x, 0, 0.1);
-	title_y = lerp(title_y, scr_wave(0, 40, 4.5, 0), 0.1);
+	title_y = lerp(title_y, scr_sin_oscillate(0, 40, 4.5), 0.1);
 	title_alpha = lerp(title_alpha, 1, 0.1);
 	title_xscale = lerp(title_xscale, 1, 0.1);
 	title_yscale = lerp(title_yscale, 1, 0.1);
@@ -680,7 +680,7 @@ if (global.play_attract_demo = false)
 else
 {
 	title_x = lerp(title_x, - 800, 0.1);
-	title_y = lerp(title_y, scr_wave(-200, -240, 4.5, 0), 0.1);
+	title_y = lerp(title_y, scr_sin_oscillate(-200, -240, 4.5), 0.1);
 	title_alpha = lerp(title_alpha, 0.5, 0.1);
 	title_xscale = lerp(title_xscale, 0.5, 0.1);
 	title_yscale = lerp(title_yscale, 0.5, 0.1);
