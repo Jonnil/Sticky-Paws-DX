@@ -1710,6 +1710,7 @@ and (menu_delay > 999) /* Make sure you can only start the game when the menu de
 			scr_delete_sprite_properly(title_screen_background);
 			if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 			and (global.create_level_from_template == false)
+			and (global.select_level_index > 0) /* Don't update if you're selecting "create from scratch" */
 			{
 				/* Update the "global level name" before updating all backgrounds and going to the level editor */
 				global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
@@ -1887,5 +1888,3 @@ if (global.enable_transitions == true)
 	}
 }
 #endregion /* Draw Iris Transitions END */
-
-scr_draw_text_outlined(320, 320, "content_type: " + string(content_type));

@@ -18,3 +18,11 @@ if (room == room_world_map)
 		visible = false;
 	}
 }
+if (obj_player.intro_animation == "ending_chair")
+{
+	if (instance_exists(obj_chair_and_table))
+	{
+		x = instance_nearest(x, y, obj_chair_and_table).x + 23;
+		y = instance_nearest(x, y, obj_chair_and_table).y - 16;
+	}
+}

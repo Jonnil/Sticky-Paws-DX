@@ -198,6 +198,13 @@ if (menu == "load_characters")
 				{
 					score_up = "Copied"; /* Show that you have copied the character */
 				}
+				
+				#region /* After copying character, show the copied character */
+				global.character_index[0] = ds_list_find_index(global.all_loaded_characters, ds_list_find_value(global.all_loaded_characters, global.character_index[0]) + " - Copy");
+				global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
+				xx1 = player1_display_x + 32;
+				#endregion /* After copying character, show the copied character END */
+				
 				menu = "click_copy_character";
 			}
 			else

@@ -25,9 +25,6 @@ function scr_set_controls_used_to_navigate()
 			if (global.controls_used_for_menu_navigation == "controller")
 			{
 				obj_camera.show_keyboard_and_mouse_input_change_prompt = 100;
-			}
-			else
-			{
 				global.controls_used_for_menu_navigation = "keyboard";
 			}
 		}
@@ -62,9 +59,6 @@ function scr_set_controls_used_to_navigate()
 			if (global.controls_used_for_menu_navigation == "controller")
 			{
 				obj_camera.show_keyboard_and_mouse_input_change_prompt = 100;
-			}
-			else
-			{
 				global.controls_used_for_menu_navigation = "mouse";
 			}
 		}
@@ -228,7 +222,7 @@ function scr_set_controls_used_to_navigate()
 		or (instance_exists(obj_camera))
 		and (mouse_moving)
 		and (global.play_attract_demo = false)
-
+		
 		or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept))
 		or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_back))
 		or (gamepad_button_check(global.player1_slot, gp_face3))

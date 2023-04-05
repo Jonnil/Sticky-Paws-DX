@@ -185,10 +185,12 @@ function scr_character_manage_menu_step()
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		and (can_navigate == true)
+		and (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
 		or (menu == "click_copy_character")
 		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (can_navigate == true)
+		and (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
 		{
 			menu_delay = 3;
 			can_navigate = false;
@@ -294,6 +296,7 @@ function scr_character_manage_menu_step()
 		}
 		
 		if (can_navigate == false)
+		and (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
 		{
 			file_load_timer += 1;
 			
@@ -510,16 +513,6 @@ function scr_character_manage_menu_step()
 						player1_menu = "click_copy_character"; /* Go back to this menu after reloading all characters */
 						menu_delay = 3;
 						menu_joystick1_delay = 30;
-						
-						#region /* After copying character, show the copied character */
-						if (global.character_index[0] < ds_list_size(global.all_loaded_characters) - 1)
-						{
-							global.character_index[0] = clamp(global.character_index[0] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
-							global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
-							xx1 = player1_display_x + 32;
-						}
-						#endregion /* After copying character, show the copied character END */
-						
 						#endregion /* Copying character is finished! END */
 						
 					}
@@ -856,7 +849,7 @@ function scr_character_manage_menu_step()
 		and (can_navigate == true)
 		{
 			menu = "manage_character";
-			player1_menu = "select_character"; /* When going back to previous menu, you have to set this to "select character" */
+			player1_menu = "manage_character"; /* When going back to previous menu, you have to set this to "manage character" */
 			menu_delay = 3;
 		}
 		if (keyboard_check_pressed(global.player1_key_up))

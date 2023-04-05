@@ -149,7 +149,15 @@ function scr_character_manage_menu_draw()
 		}
 		var back_y = display_get_gui_height() - 42;
 		
-		scr_draw_text_outlined(display_get_gui_width() * 0.5 + player1_display_x, character_name_y, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		if string_ends_with(string(character_name), " - Copy")
+		{
+			/* Show that the character is a copy */
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 + player1_display_x, character_name_y + scr_wave(0, 2, 0.5, 0), string(character_name), global.default_text_size, c_menu_outline, c_lime, 1);
+		}
+		else
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 + player1_display_x, character_name_y, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
 		
 		if (can_navigate == true)
 		{

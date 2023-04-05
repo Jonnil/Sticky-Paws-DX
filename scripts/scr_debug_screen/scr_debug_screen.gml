@@ -287,14 +287,11 @@ function scr_debug_screen()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
 		
-		scr_draw_text_outlined(32, 320, "gamepad_get_description(0): " + string(gamepad_get_description(0)), global.default_text_size, noone);
-		scr_draw_text_outlined(32, 340, "gamepad_get_description(1): " + string(gamepad_get_description(1)), global.default_text_size, noone);
-		scr_draw_text_outlined(32, 360, "gamepad_get_description(2): " + string(gamepad_get_description(2)), global.default_text_size, noone);
-		scr_draw_text_outlined(32, 380, "gamepad_get_description(3): " + string(gamepad_get_description(3)), global.default_text_size, noone);
-		if (instance_exists(obj_pause))
-		{
-			scr_draw_text_outlined(32, 400, "obj_pause.holding_key_timer: " + string(obj_pause.holding_key_timer), global.default_text_size, noone);
-		}
+		scr_draw_text_outlined(32, 320, "gamepad_get_description(0): " + string(gamepad_get_description(0)));
+		scr_draw_text_outlined(32, 340, "gamepad_get_description(1): " + string(gamepad_get_description(1)));
+		scr_draw_text_outlined(32, 360, "gamepad_get_description(2): " + string(gamepad_get_description(2)));
+		scr_draw_text_outlined(32, 380, "gamepad_get_description(3): " + string(gamepad_get_description(3)));
+		scr_draw_text_outlined(32, 400, "global.controls_used_for_menu_navigation: " + string(global.controls_used_for_menu_navigation));
 	}
 	
 	if (global.debug_screen == true)

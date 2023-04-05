@@ -121,6 +121,7 @@ if (menu == "back_open_folder_text")
 #endregion /* Navigate menu up and down END */
 
 if (show_copy_to_clipboard_button == true)
+and (menu_delay == 0)
 {
 	if (instance_exists(obj_title))
 	and (obj_title.key_a_pressed)
@@ -137,6 +138,7 @@ if (show_copy_to_clipboard_button == true)
 	or (keyboard_check(vk_control))
 	and (keyboard_check_pressed(ord("C")))
 	{
+		menu_delay = 3;
 		clipboard_set_text(string(open_folder_string));
 		if (instance_exists(obj_score_up))
 		{
@@ -182,7 +184,11 @@ or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, g
 and (global.controls_used_for_menu_navigation == "mouse")
 and (mouse_check_button_pressed(mb_left))
 {
-	close = true;
+	if (menu_delay == 0)
+	{
+		menu_delay = 3;
+		close = true;
+	}
 }
 #endregion /* Close the open folder text by pressing any button END */
 
