@@ -14,6 +14,288 @@ and (have_heart_balloon == true)
 }
 #endregion /* Heart above head END */
 
+#region /* Show arrows where you can walk */
+if (can_move == true)
+and (can_enter_level >= 30)
+and (point_distance(xx, yy, x, y) < 30)
+and (asset_get_type("obj_level") == asset_object)
+and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+and (speed == 0)
+and (instance_nearest(x, y, obj_level).clear_rate != "closed")
+and (global.pause == false)
+{
+	
+	#region /* Can go up */
+	if (!place_meeting(x, y - 1, obj_wall))
+	{
+		if (gamepad_is_connected(global.player1_slot))
+		and (global.controls_used_for_menu_navigation == "controller")
+		or (global.always_show_gamepad_buttons == true)
+		{
+			scr_draw_gamepad_buttons(global.player1_gamepad_button_up, x, y - 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
+		}
+		else
+		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+		{
+			if (global.player1_can_play == true)
+			{
+				if (global.player1_key_up > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player1_key2_up > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player2_can_play == true)
+			{
+				if (global.player2_key_up > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player2_key_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player2_key2_up > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player2_key2_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player3_can_play == true)
+			{
+				if (global.player3_key_up > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player3_key_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player3_key2_up > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player3_key2_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player4_can_play == true)
+			{
+				if (global.player4_key_up > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player4_key_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player4_key2_up > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player4_key2_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+		}
+	}
+	#endregion /* Can go up END */
+	
+	#region /* Can go down */
+	if (!place_meeting(x, y + 1, obj_wall))
+	{
+		if (gamepad_is_connected(global.player1_slot))
+		and (global.controls_used_for_menu_navigation == "controller")
+		or (global.always_show_gamepad_buttons == true)
+		{
+			scr_draw_gamepad_buttons(global.player1_gamepad_button_down, x, y + 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
+		}
+		else
+		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+		{
+			if (global.player1_can_play == true)
+			{
+				if (global.player1_key_down > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player1_key2_down > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player2_can_play == true)
+			{
+				if (global.player2_key_down > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player2_key_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player2_key2_down > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player2_key2_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player3_can_play == true)
+			{
+				if (global.player3_key_down > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player3_key_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player3_key2_down > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player3_key2_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player4_can_play == true)
+			{
+				if (global.player4_key_down > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player4_key_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player4_key2_down > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player4_key2_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+		}
+	}
+	#endregion /* Can go down END */
+	
+	#region /* Can go left */
+	if (!place_meeting(x - 1, y, obj_wall))
+	{
+		if (gamepad_is_connected(global.player1_slot))
+		and (global.controls_used_for_menu_navigation == "controller")
+		or (global.always_show_gamepad_buttons == true)
+		{
+			scr_draw_gamepad_buttons(global.player1_gamepad_button_left, x - 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
+		}
+		else
+		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+		{
+			if (global.player1_can_play == true)
+			{
+				if (global.player1_key_left > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player1_key2_left > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player2_can_play == true)
+			{
+				if (global.player2_key_left > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player2_key_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player2_key2_left > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player2_key2_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player3_can_play == true)
+			{
+				if (global.player3_key_left > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player3_key_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player3_key2_left > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player3_key2_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player4_can_play == true)
+			{
+				if (global.player4_key_left > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player4_key_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player4_key2_left > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player4_key2_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+		}
+	}
+	#endregion /* Can go left END */
+	
+	#region /* Can go right */
+	if (!place_meeting(x + 1, y, obj_wall))
+	{
+		if (gamepad_is_connected(global.player1_slot))
+		and (global.controls_used_for_menu_navigation == "controller")
+		or (global.always_show_gamepad_buttons == true)
+		{
+			scr_draw_gamepad_buttons(global.player1_gamepad_button_right, x + 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
+		}
+		else
+		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+		{
+			if (global.player1_can_play == true)
+			{
+				if (global.player1_key_right > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player1_key2_right > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player2_can_play == true)
+			{
+				if (global.player2_key_right > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player2_key_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player2_key2_right > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player2_key2_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player3_can_play == true)
+			{
+				if (global.player3_key_right > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player3_key_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player3_key2_right > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player3_key2_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+			else
+			if (global.player4_can_play == true)
+			{
+				if (global.player4_key_right > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player4_key_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+				else
+				if (global.player4_key2_right > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player4_key2_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				}
+			}
+		}
+	}
+	#endregion /* Can go right END */
+	
+}
+#endregion /* Show arrows where you can walk END*/
+
 if (sprite_index > 0)
 {
 	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 0, image_blend, 1);

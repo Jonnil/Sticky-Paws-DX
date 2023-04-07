@@ -1,6 +1,21 @@
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
+tag_art = false;
+tag_boss_battle = false;
+tag_dont_move = false;
+tag_kaizo = false;
+tag_multiplayer = false;
+tag_music = false;
+tag_puzzle_solving = false;
+tag_short_and_sweet = false;
+tag_singleplayer = false;
+tag_speedrun = false;
+tag_standard = false;
+tag_technical = false;
+tag_themed = false;
+intended_level_difficulty = 1; /* Easy = 0. Normal = 1. Hard = 2. Super Hard = 3 */
+
 scr_unzip_all() /* Unzip any .zip folder found in AppData */
 
 search_id = "";

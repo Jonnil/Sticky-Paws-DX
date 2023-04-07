@@ -53,4 +53,5 @@ function draw_menu_dropdown_item(string_text_item, x_position, y_position, varia
 	}
 	#endregion /* Show Item END */
 	
+	return(variable_to_change);
 }

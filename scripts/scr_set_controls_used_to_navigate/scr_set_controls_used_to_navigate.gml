@@ -221,7 +221,7 @@ function scr_set_controls_used_to_navigate()
 		or (mouse_wheel_up())
 		or (instance_exists(obj_camera))
 		and (mouse_moving)
-		and (global.play_attract_demo = false)
+		and (global.play_attract_demo == false)
 		
 		or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept))
 		or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_back))

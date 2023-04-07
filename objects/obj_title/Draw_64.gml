@@ -726,46 +726,46 @@ if (global.arcade_mode == true)
 
 #region /* Main Menu */
 if (menu == "main_game")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "leveleditor")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "options")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "language_shortcut")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "accessibility_shortcut")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "profile_shortcut")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "credits")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "quit")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "link_discord")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "link_gamebanana")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "link_instagram")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "link_reddit")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "link_twitter")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 or (menu == "link_wiki")
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 and (global.arcade_mode = false)
 {
 	
@@ -1150,7 +1150,7 @@ scr_quit_to_desktop_menu("quit");
 
 #region /* Select Custom Level Menu */
 if (level_editor_template_select == true)
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 {
 	select_custom_level_menu_open = false;
 	scr_select_official_level_menu();
@@ -1199,7 +1199,7 @@ and (global.play_attract_demo = false)
 }
 else
 if (select_custom_level_menu_open == true)
-and (global.play_attract_demo = false)
+and (global.play_attract_demo == false)
 {
 	level_editor_template_select = false;
 	scr_select_custom_level_menu();

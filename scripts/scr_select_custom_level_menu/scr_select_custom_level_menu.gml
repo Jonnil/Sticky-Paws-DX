@@ -5,6 +5,16 @@ function scr_select_custom_level_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
+	if (global.select_level_index >= 1)
+	and (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
+	{
+		if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
+		{
+			/* Update the "global level name" so game knows what level player is selecting when opening sub menu */
+			global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
+		}
+	}
+	
 	if (os_type == os_linux)
 	{
 		show_delete_button = false;
@@ -819,7 +829,8 @@ function scr_select_custom_level_menu()
 	#endregion /* Edit level description END */
 	
 	#region /* Draw Level Description */
-	if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+	if (global.select_level_index >= 1)
+	and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 	{
 		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		if (ini_key_exists("info", "level_description"))

@@ -67,7 +67,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 						{
 							scr_draw_text_outlined(394 * (i - column * row) + 140 + thumbnail_x_offset, 226 * (column - scroll) + 274, string(ini_read_string("info", "level_id", "")), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
 						}
-						draw_sprite_ext(spr_checkpoint, 1, 394 * (i - column * row) + 120 + thumbnail_x_offset, 226 * (column - scroll) + 274, scr_wave(0.4, 0.5, 1, 0), scr_wave(0.4, 0.5, 1, 0), 0, c_white, 1);
+						draw_sprite_ext(spr_icons_upload, 1, 394 * (i - column * row) + 120 + thumbnail_x_offset, 226 * (column - scroll) + 274, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
 					}
 					else
 					if (clear_check == true)

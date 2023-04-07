@@ -17,6 +17,7 @@ and (global.pause == false)
 	scr_draw_text_outlined(64, get_window_height - 28, l10n_text("Play"), global.default_text_size, c_black, c_white, 1);
 	if (gamepad_is_connected(global.player1_slot))
 	and (global.controls_used_for_menu_navigation == "controller")
+	or (global.always_show_gamepad_buttons == true)
 	{
 		scr_draw_gamepad_buttons(global.player1_gamepad_button_accept, 32, get_window_height - 28, 0.5, c_white, 1);
 	}

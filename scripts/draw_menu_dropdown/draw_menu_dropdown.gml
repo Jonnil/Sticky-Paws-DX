@@ -198,5 +198,5 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		#endregion /* Clicking outside the menu button END */
 		
 	}
-	
+	return(variable_to_change);
 }

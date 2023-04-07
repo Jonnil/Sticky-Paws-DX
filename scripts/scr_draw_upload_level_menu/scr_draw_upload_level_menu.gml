@@ -13,6 +13,23 @@ function scr_draw_upload_level_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
+	#region /* How many tags */
+	var how_may_tags = 0;
+	if (tag_art == true){var tag_art_text = "Art" + " ";how_may_tags += 1;}else{var tag_art_text = "";};
+	if (tag_boss_battle == true){var tag_boss_battle_text = "Boss Battle" + " ";how_may_tags += 1;}else{var tag_boss_battle_text = "";};
+	if (tag_dont_move == true){var tag_dont_move_text = "Don't Move" + " ";how_may_tags += 1;}else{var tag_dont_move_text = "";};
+	if (tag_kaizo == true){var tag_kaizo_text = "Kaizo" + " ";how_may_tags += 1;}else{var tag_kaizo_text = "";};
+	if (tag_multiplayer == true){var tag_multiplayer_text = "Multiplayer" + " ";how_may_tags += 1;}else{var tag_multiplayer_text = "";};
+	if (tag_music == true){var tag_music_text = "Music" + " ";how_may_tags += 1;}else{var tag_music_text = "";};
+	if (tag_puzzle_solving == true){var tag_puzzle_solving_text = "Puzzle-solving" + " ";how_may_tags += 1;}else{var tag_puzzle_solving_text = "";};
+	if (tag_short_and_sweet == true){var tag_short_and_sweet_text = "Short and Sweet" + " ";how_may_tags += 1;}else{var tag_short_and_sweet_text = "";};
+	if (tag_singleplayer == true){var tag_singleplayer_text = "Singleplayer" + " ";how_may_tags += 1;}else{var tag_singleplayer_text = "";};
+	if (tag_speedrun == true){var tag_speedrun_text = "Speedrun" + " ";how_may_tags += 1;}else{var tag_speedrun_text = "";};
+	if (tag_standard == true){var tag_standard_text = "Standard" + " ";how_may_tags += 1;}else{var tag_standard_text = "";};
+	if (tag_technical == true){var tag_technical_text = "Technical" + " ";how_may_tags += 1;}else{var tag_technical_text = "";};
+	if (tag_themed == true){var tag_themed_text = "Themed" + " ";how_may_tags += 1;}else{var tag_themed_text = "";};
+	#endregion /* How many tags END */
+	
 	#region /* Pressing the Upload button */
 	if (menu == "level_editor_upload")
 	{
@@ -29,7 +46,7 @@ function scr_draw_upload_level_menu()
 		and (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42))
 		and (mouse_check_button_released(mb_left))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		or (key_a_released)
+		or (key_a_pressed)
 		{
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
@@ -45,6 +62,26 @@ function scr_draw_upload_level_menu()
 				{
 					if (os_is_network_connected()) /* Check if you're even connected to the internet */
 					{
+						
+						#region /* loads tags from level_information.ini */
+						ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						tag_art = ini_read_real("tags", "tag_art", false);
+						tag_boss_battle = ini_read_real("tags", "tag_boss_battle", false);
+						tag_dont_move = ini_read_real("tags", "tag_dont_move", false);
+						tag_kaizo = ini_read_real("tags", "tag_kaizo", false);
+						tag_multiplayer = ini_read_real("tags", "tag_multiplayer", false);
+						tag_music = ini_read_real("tags", "tag_music", false);
+						tag_puzzle_solving = ini_read_real("tags", "tag_puzzle_solving", false);
+						tag_short_and_sweet = ini_read_real("tags", "tag_short_and_sweet", false);
+						tag_singleplayer = ini_read_real("tags", "tag_singleplayer", false);
+						tag_speedrun = ini_read_real("tags", "tag_speedrun", false);
+						tag_standard = ini_read_real("tags", "tag_standard", false);
+						tag_technical = ini_read_real("tags", "tag_technical", false);
+						tag_themed = ini_read_real("tags", "tag_themed", false);
+						intended_level_difficulty = ini_read_real("info", "intended_level_difficulty", 1);
+						ini_close();
+						#endregion /* loads tags from level_information.ini END */
+						
 						menu_delay = 3;
 						menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
 						if (variable_instance_exists(self, "show_level_editor_corner_menu"))
@@ -203,7 +240,7 @@ function scr_draw_upload_level_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_no_y + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			or (key_a_released)
+			or (key_a_pressed)
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -220,7 +257,7 @@ function scr_draw_upload_level_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_yes_y + 84 - 42, get_window_width * 0.5 + 370, do_a_clear_check_yes_y + 84 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			or (key_a_released)
+			or (key_a_pressed)
 			and (menu_delay == 0)
 			{
 				
@@ -294,14 +331,17 @@ function scr_draw_upload_level_menu()
 	{
 		var draw_description_y = get_window_height * 0.5 + 42 * 1;
 	}
-	var edit_name_y = get_window_height * 0.5 + 42 * 2;
-	var edit_description_y = get_window_height * 0.5 + 42 * 3;
-	var ok_y = get_window_height * 0.5 + 42 * 5;
-	var cancel_y = get_window_height * 0.5 + 42 * 6;
+	var draw_tags_y = get_window_height * 0.5 + 42 * 2;
+	var edit_name_y = get_window_height * 0.5 + 42 * 3;
+	var edit_description_y = get_window_height * 0.5 + 42 * 4;
+	var edit_tags_y = get_window_height * 0.5 + 42 * 5;
+	var ok_y = get_window_height * 0.5 + 42 * 6;
+	var cancel_y = get_window_height * 0.5 + 42 * 7;
 	
 	#region /* Edit things before uploading */
 	if (menu == "upload_edit_name")
 	or (menu == "upload_edit_description")
+	or (menu == "upload_edit_tags")
 	or (menu == "edit_ok")
 	or (menu == "edit_cancel")
 	{
@@ -358,10 +398,30 @@ function scr_draw_upload_level_menu()
 		}
 		#endregion /* Draw Level Description END */
 		
+		#region /* Draw Level Tags */
+		draw_set_halign(fa_center);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_tags_y,
+		string(tag_art_text) +
+		string(tag_boss_battle_text) +
+		string(tag_dont_move_text) +
+		string(tag_kaizo_text) +
+		string(tag_multiplayer_text) +
+		string(tag_music_text) +
+		string(tag_puzzle_solving_text) +
+		string(tag_short_and_sweet_text) +
+		string(tag_singleplayer_text) +
+		string(tag_speedrun_text) +
+		string(tag_standard_text) +
+		string(tag_technical_text) +
+		string(tag_themed_text));
+		#endregion /* Draw Level Tags END */
+		
 		draw_menu_button(get_window_width * 0.5 - 185, edit_name_y, l10n_text("Edit Name"), "upload_edit_name", "upload_edit_name");
 		draw_sprite_ext(spr_icons_pen, 0, get_window_width * 0.5 - 185 + 16, edit_name_y + 21, 1, 1, 0, c_white, 1);
 		draw_menu_button(get_window_width * 0.5 - 185, edit_description_y, l10n_text("Edit Description"), "upload_edit_description", "upload_edit_description");
 		draw_sprite_ext(spr_icons_pen, 0, get_window_width * 0.5 - 185 + 16, edit_description_y + 21, 1, 1, 0, c_white, 1);
+		draw_menu_button(get_window_width * 0.5 - 185, edit_tags_y, l10n_text("Edit Tags"), "upload_edit_tags", "upload_edit_tags");
+		draw_sprite_ext(spr_icons_pen, 0, get_window_width * 0.5 - 185 + 16, edit_tags_y + 21, 1, 1, 0, c_white, 1);
 		draw_menu_button(get_window_width * 0.5 - 185, ok_y, l10n_text("Upload"), "edit_ok", "upload_yes");
 		draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 185 + 16, ok_y + 21, 1, 1, 0, c_white, 1);
 		draw_menu_button(get_window_width * 0.5 - 185, cancel_y, l10n_text("Cancel"), "edit_cancel", "edit_cancel");
@@ -375,7 +435,7 @@ function scr_draw_upload_level_menu()
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (level_editor_edit_name = false)
-			or (key_a_released)
+			or (key_a_pressed)
 			and (level_editor_edit_name = false)
 			{
 				level_editor_edit_name = true;
@@ -404,7 +464,7 @@ function scr_draw_upload_level_menu()
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (level_editor_edit_name = false)
-			or (key_a_released)
+			or (key_a_pressed)
 			and (level_editor_edit_name = false)
 			{
 				level_editor_edit_name = true;
@@ -432,18 +492,51 @@ function scr_draw_upload_level_menu()
 		}
 		#endregion /* Pressing the Edit Description button END */
 		
+		#region /* Pressing the Edit Tags button */
+		if (menu == "upload_edit_tags")
+		and (menu_delay == 0)
+		{
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, edit_tags_y, get_window_width * 0.5 + 185, edit_tags_y + 42))
+			and (mouse_check_button_released(mb_left))
+			and (global.controls_used_for_menu_navigation == "mouse")
+			and (level_editor_edit_name = false)
+			or (key_a_pressed)
+			and (level_editor_edit_name = false)
+			{
+				level_editor_edit_name = false;
+				can_input_level_name = false;
+				can_navigate = true;
+				global.doing_clear_check = false;
+				global.actually_play_edited_level = false;
+				global.play_edited_level = false;
+				menu_delay = 3;
+				menu = "tag_art";
+			}
+		}
+		#endregion /* Pressing the Edit Tags button END */
+		
 		if (key_up)
 		and (menu_delay == 3)
 		{
 			menu_delay = 3;
+			if (menu == "upload_edit_name")
+			{
+				menu = "edit_cancel";
+			}
+			else
 			if (menu == "upload_edit_description")
 			{
 				menu = "upload_edit_name";
 			}
 			else
-			if (menu == "edit_ok")
+			if (menu == "upload_edit_tags")
 			{
 				menu = "upload_edit_description";
+			}
+			else
+			if (menu == "edit_ok")
+			{
+				menu = "upload_edit_tags";
 			}
 			else
 			if (menu == "edit_cancel")
@@ -462,6 +555,11 @@ function scr_draw_upload_level_menu()
 			else
 			if (menu == "upload_edit_description")
 			{
+				menu = "upload_edit_tags";
+			}
+			else
+			if (menu == "upload_edit_tags")
+			{
 				menu = "edit_ok";
 			}
 			else
@@ -469,9 +567,14 @@ function scr_draw_upload_level_menu()
 			{
 				menu = "edit_cancel";
 			}
+			else
+			if (menu == "edit_cancel")
+			{
+				menu = "upload_edit_name";
+			}
 		}
 		if (menu == "edit_ok")
-		and (key_a_released)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		{
 			
@@ -500,7 +603,7 @@ function scr_draw_upload_level_menu()
 		and (mouse_check_button_released(mb_left))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		or (menu == "edit_cancel")
-		and (key_a_released)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		or (key_b_pressed)
 		and (menu_delay == 0)
@@ -545,10 +648,10 @@ function scr_draw_upload_level_menu()
 		and (keyboard_string != "")
 		and (global.level_name != undefined)
 		{
-			if (keyboard_check_released(vk_enter))
+			if (keyboard_check_pressed(vk_enter))
 			and (menu != "upload_enter_name_ok")
 			and (menu != "upload_enter_name_cancel")
-			or (keyboard_check_released(vk_enter))
+			or (keyboard_check_pressed(vk_enter))
 			and (menu == "upload_enter_name_ok")
 			or (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width * 0.5 - 185,
@@ -556,14 +659,14 @@ function scr_draw_upload_level_menu()
 			get_window_width * 0.5 - 185 + 370,
 			draw_name_y + 54 + 42))
 			and (mouse_check_button_released(mb_left))
-			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept))
-			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_accept))
-			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_accept))
-			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button2_accept))
-			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_accept))
-			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_accept))
-			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_accept))
-			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_accept))
+			or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept))
+			or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_accept))
+			or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_accept))
+			or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button2_accept))
+			or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_accept))
+			or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button2_accept))
+			or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_accept))
+			or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button2_accept))
 			{
 				if (level_editor_edit_name == true)
 				and (global.level_name != old_level_name)
@@ -609,24 +712,24 @@ function scr_draw_upload_level_menu()
 		if (can_input_level_name == true)
 		and (menu_delay == 0)
 		{
-			if (keyboard_check_released(vk_enter))
+			if (keyboard_check_pressed(vk_enter))
 			and (menu == "upload_enter_name_cancel")
-			or (keyboard_check_released(vk_escape))
+			or (keyboard_check_pressed(vk_escape))
 			or (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width * 0.5 - 185,
 			draw_name_y + 54 + 42,
 			get_window_width * 0.5 - 185 + 370,
 			draw_name_y + 54 + 42 + 42))
 			and (mouse_check_button_released(mb_left))
-			or (mouse_check_button_released(mb_right))
-			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_back))
-			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_back))
-			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_back))
-			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button2_back))
-			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_back))
-			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_back))
-			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_back))
-			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_back))
+			or (mouse_check_button_pressed(mb_right))
+			or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_back))
+			or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_back))
+			or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_back))
+			or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button2_back))
+			or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_back))
+			or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button2_back))
+			or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_back))
+			or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button2_back))
 			{
 				menu_delay = 3;
 				if (asset_get_type("obj_camera") == asset_object)
@@ -687,10 +790,10 @@ function scr_draw_upload_level_menu()
 		and (keyboard_string != "")
 		and (global.level_description != undefined)
 		{
-			if (keyboard_check_released(vk_enter))
+			if (keyboard_check_pressed(vk_enter))
 			and (menu != "upload_enter_description_ok")
 			and (menu != "upload_enter_description_cancel")
-			or (keyboard_check_released(vk_enter))
+			or (keyboard_check_pressed(vk_enter))
 			and (menu == "upload_enter_description_ok")
 			or (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width * 0.5 - 185,
@@ -698,14 +801,14 @@ function scr_draw_upload_level_menu()
 			get_window_width * 0.5 - 185 + 370,
 			draw_description_y + 54 + 42))
 			and (mouse_check_button_released(mb_left))
-			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept))
-			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_accept))
-			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_accept))
-			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button2_accept))
-			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_accept))
-			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_accept))
-			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_accept))
-			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_accept))
+			or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept))
+			or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_accept))
+			or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_accept))
+			or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button2_accept))
+			or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_accept))
+			or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button2_accept))
+			or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_accept))
+			or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button2_accept))
 			{
 				if (level_editor_edit_name == true)
 				and (global.level_description != old_level_description)
@@ -754,24 +857,24 @@ function scr_draw_upload_level_menu()
 		if (can_input_level_name == true)
 		and (menu_delay == 0)
 		{
-			if (keyboard_check_released(vk_enter))
+			if (keyboard_check_pressed(vk_enter))
 			and (menu == "upload_enter_description_cancel")
-			or (keyboard_check_released(vk_escape))
+			or (keyboard_check_pressed(vk_escape))
 			or (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width * 0.5 - 185,
 			draw_description_y + 54 + 42,
 			get_window_width * 0.5 - 185 + 370,
 			draw_description_y + 54 + 42 + 42))
 			and (mouse_check_button_released(mb_left))
-			or (mouse_check_button_released(mb_right))
-			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_back))
-			or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_back))
-			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_back))
-			or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button2_back))
-			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_back))
-			or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_back))
-			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_back))
-			or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_back))
+			or (mouse_check_button_pressed(mb_right))
+			or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_back))
+			or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_back))
+			or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_back))
+			or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button2_back))
+			or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_back))
+			or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button2_back))
+			or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_back))
+			or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button2_back))
 			{
 				menu_delay = 3;
 				if (asset_get_type("obj_camera") == asset_object)
@@ -800,6 +903,154 @@ function scr_draw_upload_level_menu()
 		
 	}
 	#endregion /* Edit level description END */
+	
+	else
+	
+	#region /* Edit level tags */
+	if (menu == "upload_edit_tags_ok")
+	or (menu == "tag_art")
+	or (menu == "tag_boss_battle")
+	or (menu == "tag_dont_move")
+	or (menu == "tag_kaizo")
+	or (menu == "tag_multiplayer")
+	or (menu == "tag_music")
+	or (menu == "tag_puzzle_solving")
+	or (menu == "tag_short_and_sweet")
+	or (menu == "tag_singleplayer")
+	or (menu == "tag_speedrun")
+	or (menu == "tag_standard")
+	or (menu == "tag_technical")
+	or (menu == "tag_themed")
+	or (menu == "intended_level_difficulty")
+	{
+		draw_set_alpha(0.9);
+		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		
+		#region /* Tell player what tags are selected at top of screen */
+		draw_set_halign(fa_center);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 42,
+		string(tag_art_text) +
+		string(tag_boss_battle_text) +
+		string(tag_dont_move_text) +
+		string(tag_kaizo_text) +
+		string(tag_multiplayer_text) +
+		string(tag_music_text) +
+		string(tag_puzzle_solving_text) +
+		string(tag_short_and_sweet_text) +
+		string(tag_singleplayer_text) +
+		string(tag_speedrun_text) +
+		string(tag_standard_text) +
+		string(tag_technical_text) +
+		string(tag_themed_text));
+		if (how_may_tags > 3)
+		{
+			/* If you have more than 3 tags, show message that you can only have 3 tags max */
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42 * 2, string("A level can only have three tags!"), global.default_text_size, c_black, c_red, 1);
+		}
+		#endregion /* Tell player what tags are selected at top of screen END */
+		
+		if (how_may_tags <= 3)
+		{
+			draw_menu_button(0, 0, "Back", "upload_edit_tags_ok", "upload_edit_tags_ok");
+		}
+		tag_art = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 3), "Art", "tag_art", tag_art);
+		tag_boss_battle = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 4), "Boss Battle", "tag_boss_battle", tag_boss_battle);
+		tag_dont_move = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 5), "Don't Move", "tag_dont_move", tag_dont_move);
+		tag_kaizo = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 6), "Kaizo", "tag_kaizo", tag_kaizo);
+		tag_multiplayer = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 7), "Multiplayer", "tag_multiplayer", tag_multiplayer);
+		tag_music = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 8), "Music", "tag_music", tag_music);
+		tag_puzzle_solving = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 9), "Puzzle-solving", "tag_puzzle_solving", tag_puzzle_solving);
+		tag_short_and_sweet = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 10), "Short and Sweet", "tag_short_and_sweet", tag_short_and_sweet);
+		tag_singleplayer = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 11), "Single-player", "tag_singleplayer", tag_singleplayer);
+		tag_speedrun = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 12), "Speedrun", "tag_speedrun", tag_speedrun);
+		tag_standard = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 13), "Standard", "tag_standard", tag_standard);
+		tag_technical = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 14), "Technical", "tag_technical", tag_technical);
+		tag_themed = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 15), "Themed", "tag_themed", tag_themed);
+		intended_level_difficulty = draw_menu_dropdown(display_get_gui_width() * 0.5 - 185, (45 * 16), "Intended Difficulty", "intended_level_difficulty", intended_level_difficulty, "Easy", "Normal", "Hard", "Super Hard")
+		
+		#region /* Save tags to level when going back to previous menu */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 42))
+		and (mouse_check_button_released(mb_left))
+		or (key_a_pressed)
+		and (menu == "upload_edit_tags_ok")
+		or (key_b_pressed)
+		{
+			if (how_may_tags <= 3) /* Don't save and back out if there are more than 3 tags */
+			and (menu_delay == 0)
+			and (open_dropdown == false)
+			{
+				/* Save tags to level_information.ini */
+				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				if (ini_section_exists("tags"))
+				{
+					ini_section_delete("tags"); /* Delete every tag before saving tags, so there doesn't have to be a bunch of tags not used */
+				}
+				if (tag_art == true){ini_write_real("tags", "tag_art", true);}
+				if (tag_boss_battle == true){ini_write_real("tags", "tag_boss_battle", true);}
+				if (tag_dont_move == true){ini_write_real("tags", "tag_dont_move", true);}
+				if (tag_kaizo == true){ini_write_real("tags", "tag_kaizo", true);}
+				if (tag_multiplayer == true){ini_write_real("tags", "tag_multiplayer", true);}
+				if (tag_music == true){ini_write_real("tags", "tag_music", true);}
+				if (tag_puzzle_solving == true){ini_write_real("tags", "tag_puzzle_solving", true);}
+				if (tag_short_and_sweet == true){ini_write_real("tags", "tag_short_and_sweet", true);}
+				if (tag_singleplayer == true){ini_write_real("tags", "tag_singleplayer", true);}
+				if (tag_speedrun == true){ini_write_real("tags", "tag_speedrun", true);}
+				if (tag_standard == true){ini_write_real("tags", "tag_standard", true);}
+				if (tag_technical == true){ini_write_real("tags", "tag_technical", true);}
+				if (tag_themed == true){ini_write_real("tags", "tag_themed", true);}
+				ini_write_real("info", "intended_level_difficulty", intended_level_difficulty);
+				ini_close();
+				
+				menu_delay = 3;
+				menu = "upload_edit_tags";
+			}
+		}
+		#endregion /* Save tags to level when going back to previous menu END */
+		
+		if (key_up)
+		and (menu_delay == 3)
+		{
+			menu_delay = 3;
+			if (menu == "upload_edit_tags_ok"){menu = "tag_themed";}else
+			if (menu == "tag_art"){if (how_may_tags <= 3){menu = "upload_edit_tags_ok";}else{menu = "tag_themed";}}else
+			if (menu == "tag_boss_battle"){menu = "tag_art";}else
+			if (menu == "tag_dont_move"){menu = "tag_boss_battle";}else
+			if (menu == "tag_kaizo"){menu = "tag_dont_move";}else
+			if (menu == "tag_multiplayer"){menu = "tag_kaizo";}else
+			if (menu == "tag_music"){menu = "tag_multiplayer";}else
+			if (menu == "tag_puzzle_solving"){menu = "tag_music";}else
+			if (menu == "tag_short_and_sweet"){menu = "tag_puzzle_solving";}else
+			if (menu == "tag_singleplayer"){menu = "tag_short_and_sweet";}else
+			if (menu == "tag_speedrun"){menu = "tag_singleplayer";}else
+			if (menu == "tag_standard"){menu = "tag_speedrun";}else
+			if (menu == "tag_technical"){menu = "tag_standard";}else
+			if (menu == "tag_themed"){menu = "tag_technical";}else
+			if (menu == "intended_level_difficulty"){menu = "tag_themed";}
+		}
+		else
+		if (key_down)
+		and (menu_delay == 3)
+		{
+			menu_delay = 3;
+			if (menu == "upload_edit_tags_ok"){menu = "tag_art";}else
+			if (menu == "tag_art"){menu = "tag_boss_battle";}else
+			if (menu == "tag_boss_battle"){menu = "tag_dont_move";}else
+			if (menu == "tag_dont_move"){menu = "tag_kaizo";}else
+			if (menu == "tag_kaizo"){menu = "tag_multiplayer";}else
+			if (menu == "tag_multiplayer"){menu = "tag_music";}else
+			if (menu == "tag_music"){menu = "tag_puzzle_solving";}else
+			if (menu == "tag_puzzle_solving"){menu = "tag_short_and_sweet";}else
+			if (menu == "tag_short_and_sweet"){menu = "tag_singleplayer";}else
+			if (menu == "tag_singleplayer"){menu = "tag_speedrun";}else
+			if (menu == "tag_speedrun"){menu = "tag_standard";}else
+			if (menu == "tag_standard"){menu = "tag_technical";}else
+			if (menu == "tag_technical"){menu = "tag_themed";}else
+			if (menu == "tag_themed"){menu = "intended_level_difficulty";}else
+			if (menu == "intended_level_difficulty"){if (how_may_tags <= 3){menu = "upload_edit_tags_ok";}else{menu = "tag_art";}}
+		}
+	}
+	#endregion /* Edit level tags END */
 	
 	else
 	
@@ -918,7 +1169,7 @@ function scr_draw_upload_level_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_no_y - 42, get_window_width * 0.5 + 370, upload_level_no_y + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			or (key_a_released)
+			or (key_a_pressed)
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -935,7 +1186,7 @@ function scr_draw_upload_level_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_yes_y - 42, get_window_width * 0.5 + 370, upload_level_yes_y + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			or (key_a_released)
+			or (key_a_pressed)
 			and (menu_delay == 0)
 			{
 				menu = "uploading_level"; /* Go to uploading level loading screen */
@@ -1131,9 +1382,9 @@ function scr_draw_upload_level_menu()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
-		or (mouse_check_button_released(mb_right))
+		or (mouse_check_button_pressed(mb_right))
 		and (menu_delay == 0)
-		or (key_a_released)
+		or (key_a_pressed)
 		and (menu_delay == 0)
 		or (key_b_pressed)
 		and (menu_delay == 0)
@@ -1203,7 +1454,7 @@ function scr_draw_upload_level_menu()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
-		or (key_a_released)
+		or (key_a_pressed)
 		and (menu_delay == 0)
 		or (key_b_pressed)
 		and (level_editor_edit_name = false)

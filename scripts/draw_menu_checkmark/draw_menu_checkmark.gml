@@ -91,6 +91,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	and (menu != "assist_enable")
 	and (input_key == false)
 	and (open_dropdown == false)
+	and (menu_delay == 0)
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 	and (mouse_check_button_released(mb_left))
 	and (global.controls_used_for_menu_navigation == "mouse")
@@ -98,7 +99,21 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	and (menu == "assist_enable")
 	and (input_key == false)
 	and (open_dropdown == false)
+	and (menu_delay == 0)
+	or (key_a_pressed)
+	and (menu == menu_index)
+	and (input_key == false)
+	and (open_dropdown == false)
+	and (menu_delay == 0)
 	{
+		if (variable_to_check == true)
+		{
+			variable_to_check = false;
+		}
+		else
+		{
+			variable_to_check = true;
+		}
 		menu = menu_index;
 		can_navigate_settings_sidebar = false;
 	}
@@ -111,4 +126,6 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	#endregion /* Text inside the menu button END */
 	
 	#endregion /* Checkmark END */
+	
+	return(variable_to_check);
 }

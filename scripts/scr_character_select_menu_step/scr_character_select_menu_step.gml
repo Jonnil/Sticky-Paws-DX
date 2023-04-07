@@ -15,12 +15,6 @@ function scr_character_select_menu_step()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
-	if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player1_display_x - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player1_display_x + 100, get_window_height * 0.5 + 150 + 20))
-	and (mouse_check_button_released(mb_left))
-	{
-		show_message("bruh");
-	}
-	
 	#region /* "How many people are playing?" menu */
 	if (menu == "how_many_people_back")
 	or (menu == "how_many_people_1player")
