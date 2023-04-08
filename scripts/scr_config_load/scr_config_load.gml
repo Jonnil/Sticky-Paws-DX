@@ -32,7 +32,7 @@ function scr_config_load()
 		#endregion /* Assist Settings END */
 		
 		#region /* Account Settings */
-		if (ini_key_exists("config", "account_name")){window_set_fullscreen(ini_read_real("config", "account_name", 0));}
+		if (ini_key_exists("config", "account_name")){global.account_name = ini_read_string("config", "account_name", "");}
 		#endregion /* Account Settings END */
 		
 		if (ini_key_exists("config", "fullscreen_mode")){window_set_fullscreen(ini_read_real("config", "fullscreen_mode", 0));}

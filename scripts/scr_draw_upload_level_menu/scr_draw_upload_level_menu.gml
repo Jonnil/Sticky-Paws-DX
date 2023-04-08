@@ -373,7 +373,7 @@ function scr_draw_upload_level_menu()
 				{
 					/* Save account name to config file */
 					ini_open(working_directory + "config.ini");
-					ini_write_real("config", "account_name", global.account_name);
+					ini_write_string("config", "account_name", string(global.account_name));
 					ini_close();
 						
 					menu_delay = 3;
