@@ -986,7 +986,7 @@ and (global.arcade_mode = false)
 	
 	else
 
-	#region /* Click Profile Shortcut */
+	#region /* Click Account Shortcut */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y,
 	display_get_gui_width() * 0.5 + 208+ 50,
 	display_get_gui_height() * 0.5 + 100 + 140 - 20,
@@ -1006,10 +1006,10 @@ and (global.arcade_mode = false)
 		menu_delay = 3;
 		in_settings = true;
 		can_navigate_settings_sidebar = false;
-		global.settings_sidebar_menu = "profile_settings";
+		global.settings_sidebar_menu = "account_settings";
 		menu = noone;
 	}
-	#endregion /* Click Profile Shortcut END */
+	#endregion /* Click Account Shortcut END */
 	
 	else
 	

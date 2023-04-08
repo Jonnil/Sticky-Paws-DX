@@ -22,13 +22,6 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	{
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (menu != "assist_enable")
-		and (input_key == false)
-		and (open_dropdown == false)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.assist_enable == true)
-		and (menu == "assist_enable")
 		and (input_key == false)
 		and (open_dropdown == false)
 		{
@@ -50,13 +43,6 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	{
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (menu != "assist_enable")
-		and (input_key == false)
-		and (open_dropdown == false)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.assist_enable == true)
-		and (menu == "assist_enable")
 		and (input_key == false)
 		and (open_dropdown == false)
 		{
@@ -80,6 +66,10 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	#region /* Show a menu cursor when the option is highlighted */
 	if (menu == menu_index)
 	{
+		if (variable_instance_exists(self, "menu_cursor_y_position"))
+		{
+			menu_cursor_y_position = y_position;
+		}
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + 16, y_position + 16, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Show a menu cursor when the option is highlighted END */
@@ -88,15 +78,6 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 	and (mouse_check_button_released(mb_left))
 	and (global.controls_used_for_menu_navigation == "mouse")
-	and (menu != "assist_enable")
-	and (input_key == false)
-	and (open_dropdown == false)
-	and (menu_delay == 0)
-	or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-	and (mouse_check_button_released(mb_left))
-	and (global.controls_used_for_menu_navigation == "mouse")
-	and (global.assist_enable == true)
-	and (menu == "assist_enable")
 	and (input_key == false)
 	and (open_dropdown == false)
 	and (menu_delay == 0)

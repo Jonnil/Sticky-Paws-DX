@@ -31,6 +31,10 @@ function scr_config_load()
 		if (ini_key_exists("config", "assist_show_assist_mode_text")){global.assist_show_assist_mode_text = ini_read_real("config", "assist_show_assist_mode_text", 0);}
 		#endregion /* Assist Settings END */
 		
+		#region /* Account Settings */
+		if (ini_key_exists("config", "account_name")){window_set_fullscreen(ini_read_real("config", "account_name", 0));}
+		#endregion /* Account Settings END */
+		
 		if (ini_key_exists("config", "fullscreen_mode")){window_set_fullscreen(ini_read_real("config", "fullscreen_mode", 0));}
 		if (ini_key_exists("config", "interpolate")){global.interpolate = ini_read_real("config", "interpolate", 0);}
 		if (ini_key_exists("config", "show_fps")){global.show_fps = ini_read_real("config", "show_fps", 0);}

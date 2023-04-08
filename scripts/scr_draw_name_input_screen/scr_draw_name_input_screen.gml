@@ -153,7 +153,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	#region /* Clicking the Cancel button */
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
 	and (mouse_check_button_released(mb_left))
-	or (keyboard_check_released(vk_backspace))
+	or (keyboard_check_released(vk_escape))
 	{
 		global.keyboard_virtual_timer = 0;
 		keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */

@@ -877,6 +877,21 @@ if (global.actually_play_edited_level == true)
 if (global.actually_play_edited_level == false)
 {
 	
+	tag_art = false;
+	tag_boss_battle = false;
+	tag_dont_move = false;
+	tag_kaizo = false;
+	tag_multiplayer = false;
+	tag_music = false;
+	tag_puzzle_solving = false;
+	tag_short_and_sweet = false;
+	tag_singleplayer = false;
+	tag_speedrun = false;
+	tag_standard = false;
+	tag_technical = false;
+	tag_themed = false;
+	intended_level_difficulty = 1; /* Easy = 0. Normal = 1. Hard = 2. Super Hard = 3 */
+	
 	#region /* Unlock placable objects */
 	if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
 	{
@@ -1332,7 +1347,7 @@ if (global.actually_play_edited_level == false)
 	controller_settings_y = 40 * 7;
 	touch_settings_y = 40 * 8;
 	general_text_y = 40 * 9;
-	profile_settings_y = 40 * 10;
+	account_settings_y = 40 * 10;
 	video_settings_y = 40 * 11;
 	audio_settings_y = 40 * 12;
 	global_resources_settings_y = 40 * 13;

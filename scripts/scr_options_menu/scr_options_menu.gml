@@ -90,14 +90,14 @@ function scr_options_menu()
 			touch_settings_y = -999;
 			general_text_y = controller_settings_y + 40;
 		}
-		if (global.enable_profile_settings == true)
+		if (global.enable_account_settings == true)
 		{
-			profile_settings_y = general_text_y + 40;
-			video_settings_y = profile_settings_y + 40;
+			account_settings_y = general_text_y + 40;
+			video_settings_y = account_settings_y + 40;
 		}
 		else
 		{
-			profile_settings_y = -999;
+			account_settings_y = -999;
 			video_settings_y = general_text_y + 40;
 		}
 		audio_settings_y = video_settings_y + 40;
@@ -327,39 +327,39 @@ function scr_options_menu()
 		#region /* General Settings */
 		scr_draw_text_outlined(left_sidebar_x + 20 + text_x_offset, 20 + general_text_y, l10n_text("General"), global.default_text_size * 0.5, c_black, c_white, 1);
 		
-		#region /* Profile Settings */
-		if (global.enable_profile_settings == true)
+		#region /* Account Settings */
+		if (global.enable_account_settings == true)
 		{
-			if (global.settings_sidebar_menu == "profile_settings")
+			if (global.settings_sidebar_menu == "account_settings")
 			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, profile_settings_y, 370, profile_settings_y + 40 - 1))
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, account_settings_y, 370, account_settings_y + 40 - 1))
 				and (global.controls_used_for_menu_navigation == "mouse")
 				{
-					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +profile_settings_y, 1, 1, 0, c_green, 1);
+					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +account_settings_y, 1, 1, 0, c_green, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +profile_settings_y, 1, 1, 0, c_gray, 1);
+					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +account_settings_y, 1, 1, 0, c_gray, 1);
 				}
-				draw_sprite_ext(spr_settings_icons, 7, left_sidebar_x + 20 + icon_x_offset, 20 +profile_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
-				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +profile_settings_y, l10n_text("Profile"), global.default_text_size * 1.05, c_black, c_white, 1);
+				draw_sprite_ext(spr_settings_icons, 7, left_sidebar_x + 20 + icon_x_offset, 20 +account_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
+				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +account_settings_y, l10n_text("Profile"), global.default_text_size * 1.05, c_black, c_white, 1);
 			}
 			else
 			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, profile_settings_y, 370, profile_settings_y + 40 - 1))
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, account_settings_y, 370, account_settings_y + 40 - 1))
 				and (global.controls_used_for_menu_navigation == "mouse")
 				{
-					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +profile_settings_y, 1, 1, 0, c_lime, 1);
+					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +account_settings_y, 1, 1, 0, c_lime, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +profile_settings_y, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +account_settings_y, 1, 1, 0, c_white, 1);
 				}
-				draw_sprite_ext(spr_settings_icons, 7, left_sidebar_x + 20 + icon_x_offset, 20 +profile_settings_y, 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
-				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +profile_settings_y, l10n_text("Profile"), global.default_text_size, c_white, c_black, 1);
+				draw_sprite_ext(spr_settings_icons, 7, left_sidebar_x + 20 + icon_x_offset, 20 +account_settings_y, 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
+				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +account_settings_y, l10n_text("Profile"), global.default_text_size, c_white, c_black, 1);
 			}
 		}
-		#endregion /* Profile Settings END */
+		#endregion /* Account Settings END */
 		
 		#region /* Video Settings */
 		if (global.settings_sidebar_menu == "video_settings")
@@ -756,6 +756,7 @@ function scr_options_menu()
 			}
 			if (global.settings_sidebar_menu == "keyboard_and_mouse_settings"){menu = "remap_select_player";}
 			if (global.settings_sidebar_menu == "controller_settings"){menu = "remap_select_player";}
+			if (global.settings_sidebar_menu == "account_settings"){menu = "change_account_name";}
 			if (global.settings_sidebar_menu == "video_settings")
 			{
 				if (os_type != os_ios)
@@ -1023,37 +1024,38 @@ function scr_options_menu()
 			
 		}
 	
-		if (global.enable_profile_settings == true)
+		if (global.enable_account_settings == true)
 		{
 			
-			#region /* Click Profile */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, profile_settings_y, 370, profile_settings_y + 40 - 1))
+			#region /* Click Account */
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, account_settings_y, 370, account_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "profile_settings")
+			and (global.settings_sidebar_menu = "account_settings")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
-				global.settings_sidebar_menu = "profile_settings";
+				global.settings_sidebar_menu = "account_settings";
 				menu_delay = 3;
 				input_key = false;
 				can_navigate_settings_sidebar = false;
+				menu = "change_account_name";
 			}
-			#endregion /* Click Profile END */
+			#endregion /* Click Account END */
 			
 			#region /* Profile */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, profile_settings_y, 370, profile_settings_y + 40 - 1))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, account_settings_y, 370, account_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button(mb_left))
 			and (menu_delay == 0)
 			{
-				global.settings_sidebar_menu = "profile_settings";
+				global.settings_sidebar_menu = "account_settings";
 				input_key = false;
 				can_navigate_settings_sidebar = true;
 			}
 			#endregion /* Profile END */
 			
 		}
-	
+		
 		#region /* Click Video */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, video_settings_y, 370, video_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
@@ -1386,9 +1388,9 @@ function scr_options_menu()
 						global.settings_sidebar_menu = "touch_settings";
 					}
 					else
-					if (global.enable_profile_settings == true)
+					if (global.enable_account_settings == true)
 					{
-						global.settings_sidebar_menu = "profile_settings";
+						global.settings_sidebar_menu = "account_settings";
 					}
 					else
 					{
@@ -1431,9 +1433,9 @@ function scr_options_menu()
 							global.settings_sidebar_menu = "touch_settings";
 						}
 						else
-						if (global.enable_profile_settings == true)
+						if (global.enable_account_settings == true)
 						{
-							global.settings_sidebar_menu = "profile_settings";
+							global.settings_sidebar_menu = "account_settings";
 						}
 						else
 						{
@@ -1481,9 +1483,9 @@ function scr_options_menu()
 						global.settings_sidebar_menu = "touch_settings";
 					}
 					else
-					if (global.enable_profile_settings == true)
+					if (global.enable_account_settings == true)
 					{
-						global.settings_sidebar_menu = "profile_settings";
+						global.settings_sidebar_menu = "account_settings";
 					}
 					else
 					{
@@ -1530,9 +1532,9 @@ function scr_options_menu()
 							global.settings_sidebar_menu = "touch_settings";
 						}
 						else
-						if (global.enable_profile_settings == true)
+						if (global.enable_account_settings == true)
 						{
-							global.settings_sidebar_menu = "profile_settings";
+							global.settings_sidebar_menu = "account_settings";
 						}
 						else
 						{
@@ -1568,9 +1570,9 @@ function scr_options_menu()
 					and (can_navigate_settings_sidebar == true)
 					and (menu_delay == 0)
 					{
-						if (global.enable_profile_settings == true)
+						if (global.enable_account_settings == true)
 						{
-							global.settings_sidebar_menu = "profile_settings";
+							global.settings_sidebar_menu = "account_settings";
 						}
 						else
 						{
@@ -1586,10 +1588,10 @@ function scr_options_menu()
 		
 			#region /* General Settings */
 	
-			#region /* Profile Settings */
-			if (global.enable_profile_settings == true)
+			#region /* Account Settings */
+			if (global.enable_account_settings == true)
 			{
-				if (global.settings_sidebar_menu == "profile_settings")
+				if (global.settings_sidebar_menu == "account_settings")
 				{
 					if (key_up)
 					and (can_navigate_settings_sidebar == true)
@@ -1600,7 +1602,7 @@ function scr_options_menu()
 							global.settings_sidebar_menu = "touch_settings";
 						}
 						else
-						if (global.enable_touch_settings == true)
+						if (global.enable_controller_settings == true)
 						{
 							global.settings_sidebar_menu = "controller_settings";
 						}
@@ -1620,7 +1622,7 @@ function scr_options_menu()
 					}
 				}
 			}
-			#endregion /* Profile Settings END */
+			#endregion /* Account Settings END */
 	
 			#region /* Video Settings */
 			if (global.settings_sidebar_menu == "video_settings")
@@ -1629,9 +1631,9 @@ function scr_options_menu()
 				and (can_navigate_settings_sidebar == true)
 				and (menu_delay == 0)
 				{
-					if (global.enable_profile_settings == true)
+					if (global.enable_account_settings == true)
 					{
-						global.settings_sidebar_menu = "profile_settings";
+						global.settings_sidebar_menu = "account_settings";
 					}
 					else
 					if (global.enable_touch_settings == true)
@@ -2178,14 +2180,66 @@ function scr_options_menu()
 		}
 		#endregion /* Gameplay Settings END */
 	
-		#region /* Profile Settings */
-		if (global.settings_sidebar_menu == "profile_settings")
+		#region /* Account Settings */
+		if (global.settings_sidebar_menu == "account_settings")
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(410, 20 + (40 * 3), "Setup your profile here. \n Enter name here.", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			var change_account_name_x = 410;
+			var change_account_name_y = 20 + (40 * 5);
+			scr_draw_text_outlined(change_account_name_x, 20 + (40 * 2), l10n_text("Setup your Account here. This is used for uploading levels"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(change_account_name_x, 20 + (40 * 4), l10n_text("Account name") + ": " + string(global.account_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			if (menu != "change_account_name_ok")
+			and (menu != "change_account_name_cancel")
+			{
+				draw_menu_button(change_account_name_x, change_account_name_y, l10n_text("Change Account Name"), "change_account_name", "change_account_name");
+			}
+			
+			#region /* Change account name */
+			if (menu == "change_account_name")
+			{
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, change_account_name_x, change_account_name_y, change_account_name_x + 370, change_account_name_y + 40 - 1))
+				and (global.controls_used_for_menu_navigation == "mouse")
+				and (mouse_check_button_released(mb_left))
+				and (menu_delay == 0)
+				or (key_a_pressed)
+				and (menu_delay == 0)
+				{
+					menu_delay = 3;
+					input_key = true;
+					menu = "change_account_name_ok";
+				}
+			}
+			if (menu == "change_account_name_ok")
+			or (menu == "change_account_name_cancel")
+			{
+				global.account_name = scr_draw_name_input_screen(global.account_name, 32, c_white, 0.9, false, change_account_name_x + 185, change_account_name_y + 21, "change_account_name_ok", "change_account_name_cancel", false);
+				if (key_a_pressed)
+				or (key_b_pressed)
+				or (point_in_rectangle(mouse_get_x, mouse_get_y, change_account_name_x, change_account_name_y + 22 + 52, change_account_name_x + 370, change_account_name_y + 22 + 52 + 42 + 42))
+				and (global.controls_used_for_menu_navigation == "mouse")
+				and (mouse_check_button_released(mb_left))
+				{
+					if (!keyboard_check_pressed(ord("Z")))
+					and (!keyboard_check_pressed(ord("X")))
+					and (!keyboard_check_pressed(vk_backspace))
+					and (menu_delay == 0)
+					{
+						/* Save account name to config file */
+						ini_open(working_directory + "config.ini");
+						ini_write_real("config", "account_name", global.account_name);
+						ini_close();
+						
+						menu_delay = 3;
+						input_key = false;
+						menu = "change_account_name";
+					}
+				}
+			}
+			#endregion /* Change account name END */
+			
 		}
-		#endregion /* Profile Settings END */
+		#endregion /* Account Settings END */
 	
 		#region /* Graphics Settings */
 		scr_options_graphics();

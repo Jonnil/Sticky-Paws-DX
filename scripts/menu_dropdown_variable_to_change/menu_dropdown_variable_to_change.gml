@@ -109,4 +109,10 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	{
 		global.gui_scale_modifier = change_to_value;
 	}
+	else
+	if (variable_to_change = intended_level_difficulty)
+	and (menu == "intended_level_difficulty")
+	{
+		intended_level_difficulty = change_to_value;
+	}
 }

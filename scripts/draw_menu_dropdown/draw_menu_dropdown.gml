@@ -24,13 +24,6 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		#region /* Button */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (menu != "assist_enable")
-		and (menu_delay == 0)
-		and (open_dropdown == false)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.assist_enable == true)
-		and (menu == "assist_enable")
 		and (menu_delay == 0)
 		and (open_dropdown == false)
 		{
@@ -63,6 +56,10 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		if (menu == menu_index)
 		and (open_dropdown == false)
 		{
+			if (variable_instance_exists(self, "menu_cursor_y_position"))
+			{
+				menu_cursor_y_position = y_position;
+			}
 			if (variable_instance_exists(self, "menu_cursor_index"))
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + 16, y_position + 24, 1, 1, 0, c_white, 1);
@@ -78,16 +75,18 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_released(mb_left))
-		and (menu != "assist_enable")
 		and (menu_delay == 0)
 		and (open_dropdown == false)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_released(mb_left))
-		and (global.assist_enable == true)
-		and (menu == "assist_enable")
-		and (menu_delay == 0)
+		or (key_a_pressed)
+		and (menu == menu_index)
+		and (input_key == false)
 		and (open_dropdown == false)
+		and (menu_delay == 0)
+		or (key_b_pressed)
+		and (menu == menu_index)
+		and (input_key == false)
+		and (open_dropdown == false)
+		and (menu_delay == 0)
 		{
 			menu = menu_index;
 			open_dropdown = true;
