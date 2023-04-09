@@ -188,7 +188,20 @@ function scr_character_manage_menu_draw()
 				draw_menu_button(display_get_gui_width() * 0.5 - 185, back_y, l10n_text("Back"), "back_from_copy_character", "manage_character");
 				draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 20, back_y + 21, 1, 1, 0, c_white, 1);
 				#endregion /* Back from Copy Characters END */
-			
+				
+				#region /* Draw who made the character */
+				draw_set_halign(fa_right);
+				if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+				{
+					ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
+					if (ini_key_exists("info", "username"))
+					{
+						scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
+					}
+					ini_close();
+				}
+				#endregion /* Draw who made the character END */
+				
 			}
 			else
 			if (menu == "click_delete_character_no")
@@ -351,15 +364,24 @@ function scr_character_manage_menu_draw()
 			or (key_a_pressed)
 			and (menu_delay == 0)
 			{
-				if (os_is_network_connected())
+				if (global.username != "") /* Check if there is an username or not */
 				{
-					menu = "uploading_character"; /* Go to uploading character loading screen */
+					if (os_is_network_connected())
+					{
+						menu = "uploading_character"; /* Go to uploading character loading screen */
+					}
+					else
+					{
+						menu = "no_internet_character";
+					}
+					menu_delay = 60 * 3;
 				}
 				else
 				{
-					menu = "no_internet_character";
+					keyboard_string = "";
+					menu_delay = 3;
+					menu = "upload_character_edit_username_ok"; /* If there isn't an username, have the player make an username */
 				}
-				menu_delay = 60 * 3;
 			}
 		}
 		if (key_up)
@@ -376,6 +398,105 @@ function scr_character_manage_menu_draw()
 		
 	}
 	#endregion /* Upload Character Menu END */
+	
+	#region /* Draw enter username screen */
+	if (menu == "upload_character_edit_username_ok")
+	or (menu == "upload_character_edit_username_cancel")
+	{
+		draw_set_alpha(0.9);
+		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		var change_username_x = display_get_gui_width() * 0.5;
+		var change_username_y = 20 + (40 * 5);
+		
+		#region /* Change username */
+		if (menu == "upload_character_edit_username_ok")
+		or (menu == "upload_character_edit_username_cancel")
+		{
+			global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_character_edit_username_ok", "upload_character_edit_username_cancel", false);
+			
+			#region /* Pressing Change Username OK */
+			if (key_a_pressed)
+			and (menu = "upload_character_edit_username_ok")
+			and (global.username != "")
+			or (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), change_username_x - 185, change_username_y + 22 + 52, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42))
+			and (global.username != "")
+			and (global.controls_used_for_menu_navigation == "mouse")
+			and (mouse_check_button_released(mb_left))
+			{
+				if (!keyboard_check_pressed(ord("Z")))
+				and (!keyboard_check_pressed(ord("X")))
+				and (!keyboard_check_pressed(vk_backspace))
+				and (menu_delay == 0)
+				{
+					/* Save username to config file */
+					ini_open(working_directory + "config.ini");
+					ini_write_string("config", "username", string(global.username));
+					ini_close();
+					
+					menu_delay = 3;
+					input_key = false;
+					if (os_is_network_connected())
+					{
+						menu = "uploading_character"; /* Go to uploading character loading screen */
+					}
+					else
+					{
+						menu = "no_internet_character";
+					}
+				}
+			}
+			#endregion /* Pressing Change Username OK END */
+			
+			else
+			
+			#region /* Pressing Change Username Cancel */
+			if (key_a_pressed)
+			and (menu = "upload_character_edit_username_cancel")
+			or (key_b_pressed)
+			or (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), change_username_x - 185, change_username_y + 22 + 52 + 42, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42 + 42))
+			and (global.controls_used_for_menu_navigation == "mouse")
+			and (mouse_check_button_released(mb_left))
+			{
+				if (!keyboard_check_pressed(ord("Z")))
+				and (!keyboard_check_pressed(ord("X")))
+				and (!keyboard_check_pressed(vk_backspace))
+				and (!keyboard_check_pressed(vk_space))
+				and (menu_delay == 0)
+				{
+					/* Save username as blank to config file, then go back */
+					ini_open(working_directory + "config.ini");
+					ini_write_string("config", "username", "");
+					ini_close();
+					global.username = "";
+					keyboard_string = "";
+					menu_delay = 3;
+					input_key = false;
+					menu = "click_upload_character"; /* Go back to the upload character button */
+				}
+			}
+			#endregion /* Pressing Change Username Cancel END */
+			
+		}
+		#region /* Draw the username text above everything */
+		if (global.username != "")
+		{
+			scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("Account name") + ": " + string(global.username), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+		else
+		{
+			scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+		}
+		#endregion /* Draw the username text above everything END */
+		
+		#endregion /* Change username END */
+		
+	}
+	#endregion /* Draw enter username screen END */
 	
 	#region /* Uploading Character */
 	if (menu == "uploading_character")
@@ -417,6 +538,7 @@ function scr_character_manage_menu_draw()
 			character_id = string(character_id_1) + string(character_id_2) + string(character_id_3) + string(character_id_4) + string(character_id_5) + string(character_id_6) + string(character_id_7) + string(character_id_8) + string(character_id_9);
 			ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 			ini_write_string("info", "character_id", string(character_id)); /* Save the character ID in the character_config.ini file, so that it can be referenced later */
+			ini_write_string("info", "username", string(global.username)); /* Save the username in the level character_config.ini file, so that it can be referenced later */
 			ini_close();
 		}
 		#endregion /* Generate Character ID END */

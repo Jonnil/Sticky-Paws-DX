@@ -542,6 +542,58 @@ function scr_select_custom_level_menu()
 	}
 	#endregion /* Corner menu: Back button, Open custom levels folder, Search button END */
 	
+	#region /* Show level information at bottom of screen */
+	
+	#region /* Draw Level Description */
+	if (global.select_level_index >= 1)
+	and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+	{
+		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		if (ini_key_exists("info", "level_description"))
+		{
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_middle);
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 74, string(ini_read_string("info", "level_description", "")), global.default_text_size * 1.25, c_black, c_white, 1);
+		}
+		ini_close();
+	}
+	#endregion /* Draw Level Description END */
+	
+	#region /* Draw who made the level */
+	draw_set_halign(fa_right);
+	if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+	{
+		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		if (ini_key_exists("info", "username"))
+		{
+			scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
+		}
+		ini_close();
+	}
+	#endregion /* Draw who made the level END */
+	
+	#region /* Show the path of the custom level on the bottom of the screen */
+	if (global.select_level_index >= 1)
+	and (global.enable_options_for_pc == true)
+	and (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only show path that isn't undefined */
+	{
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		if (get_window_width <= 1350)
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name), "\\", "/"), global.default_text_size * 0.75, c_menu_outline, c_dkgray, 1);
+		}
+		else
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name), "\\", "/"), global.default_text_size, c_menu_outline, c_dkgray, 1);
+		}
+	}
+	#endregion /* Show the path of the custom level on the bottom of the screen END */
+	
+	#endregion /* Show level information at bottom of screen END */
+	
+	#region /* Draw above everything else */
+	
 	#region /* Input Level Name */
 	if (menu == "level_editor_enter_name_ok")
 	or (menu == "level_editor_enter_name_cancel")
@@ -828,37 +880,6 @@ function scr_select_custom_level_menu()
 	}
 	#endregion /* Edit level description END */
 	
-	#region /* Draw Level Description */
-	if (global.select_level_index >= 1)
-	and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-	{
-		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-		if (ini_key_exists("info", "level_description"))
-		{
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 74, string(ini_read_string("info", "level_description", "")), global.default_text_size * 1.25, c_black, c_white, 1);
-		}
-		ini_close();
-	}
-	#endregion /* Draw Level Description END */
-	
-	#region /* Show the path of the custom level on the bottom of the screen */
-	if (global.select_level_index >= 1)
-	and (global.enable_options_for_pc == true)
-	and (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only show path that isn't undefined */
-	{
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		if (get_window_width <= 1350)
-		{
-			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name), "\\", "/"), global.default_text_size * 0.75, c_menu_outline, c_dkgray, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name), "\\", "/"), global.default_text_size, c_menu_outline, c_dkgray, 1);
-		}
-	}
-	#endregion /* Show the path of the custom level on the bottom of the screen END */
+	#endregion /* Draw above everything else END */
 	
 }

@@ -138,7 +138,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			zip_unzip(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", working_directory + "/downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
 			file_delete(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
 			var downloaded_file_name = string(file_find_first(working_directory + "/downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
-			show_message(downloaded_file_name);
+			
 			if (directory_exists(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name)))
 			{
 				scr_copy_move_files(working_directory + "/downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), working_directory + "/custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
@@ -175,6 +175,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#region /* Downloading character */
 			if (what_kind_of_id == "character")
 			{
+				downloaded_character_name = string(downloaded_file_name);
 				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
 				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1, string(downloaded_file_name));
 				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1, string(downloaded_file_name));
@@ -275,6 +276,18 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				/* Show level name, level thumbnail, and level description */
 				/* Draw Level Name */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_name_y, string(global.level_name), global.default_text_size * 1.9, c_black, c_white, 1);
 				/* Draw Level Description */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y, string(global.level_description), global.default_text_size * 1.25, c_black, c_white, 1);
+				#region /* Draw who made the level */
+				draw_set_halign(fa_right);
+				if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				{
+					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					if (ini_key_exists("info", "username"))
+					{
+						scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
+					}
+					ini_close();
+				}
+				#endregion /* Draw who made the level END */
 				if (display_get_gui_height() <= 720)
 				{
 					if (downloaded_thumbnail_sprite > 0)
@@ -309,8 +322,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					var scale_offset = 1;
 					/* Draw Character Thumbnail */
-					draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, 270, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, 0, c_white, 1);
-					var draw_description_y = 500;
+					draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 100, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, 0, c_white, 1);
+					var draw_description_y = display_get_gui_height() * 0.5 + 132;
 				}
 				else
 				{
@@ -328,11 +341,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				/* Level is downloaded, so you get a choice if you want to play, make, or go back to custom level select*/
 				draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, "Play", "searched_file_downloaded_play", "searched_file_downloaded_play");
 				draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50 + 42, "Make", "searched_file_downloaded_make", "searched_file_downloaded_make");
-				draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50 + (42 * 2), "Back", "searched_file_downloaded_back", "searched_file_downloaded_back");
+				var searched_file_downloaded_back_y = downloaded_message_y + 50 + (42 * 2);
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, "Back", "searched_file_downloaded_back", "searched_file_downloaded_back");
 			}
 			else
 			{
-				draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, "Back", "searched_file_downloaded_back", "searched_file_downloaded_back");
+				var searched_file_downloaded_back_y = downloaded_message_y + 50;
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, "Back", "searched_file_downloaded_back", "searched_file_downloaded_back");
 			}
 			
 			#region /* Play, Make, Back Navigation */
@@ -372,7 +387,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				menu_delay = 9999;
 			}
 			
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50 + (42 * 2), display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + (42 * 2) + 41))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_back_y + 41))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
@@ -484,6 +499,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		else
 		if (what_kind_of_id == "character")
 		{
+			player1_menu = "load_downloaded_character";
 			select_custom_level_menu_open = false;
 			scr_load_character_initializing();
 			menu = "load_characters";

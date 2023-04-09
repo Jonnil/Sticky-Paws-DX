@@ -20,6 +20,7 @@ scr_unzip_all() /* Unzip any .zip folder found in AppData */
 
 search_id = "";
 content_type = "level"; /* What kind of ID you are searching for. Either "level" or "character" */
+downloaded_character_name = ""; /* After loading the downloaded custom character, save the character name for later use */
 
 global.play_attract_demo = false;
 play_attract_demo_time = 0;

@@ -777,6 +777,7 @@ function scr_character_manage_menu_step()
 		and (menu_delay == 0)
 		and (can_navigate == true)
 		{
+			menu_delay = 3;
 			menu = "open_folder_copy_character";
 			player1_menu = "open_folder_copy_character";
 			
@@ -789,8 +790,6 @@ function scr_character_manage_menu_step()
 			{
 				scr_open_folder(game_save_id + "\custom_characters\\" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])))
 			}
-			
-			menu_delay = 3;
 		}
 		if (keyboard_check_pressed(global.player1_key_up))
 		or (keyboard_check_pressed(global.player1_key2_up))

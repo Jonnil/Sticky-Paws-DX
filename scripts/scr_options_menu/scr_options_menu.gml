@@ -756,7 +756,7 @@ function scr_options_menu()
 			}
 			if (global.settings_sidebar_menu == "keyboard_and_mouse_settings"){menu = "remap_select_player";}
 			if (global.settings_sidebar_menu == "controller_settings"){menu = "remap_select_player";}
-			if (global.settings_sidebar_menu == "account_settings"){menu = "change_account_name";}
+			if (global.settings_sidebar_menu == "account_settings"){menu = "change_username";}
 			if (global.settings_sidebar_menu == "video_settings")
 			{
 				if (os_type != os_ios)
@@ -1038,7 +1038,7 @@ function scr_options_menu()
 				menu_delay = 3;
 				input_key = false;
 				can_navigate_settings_sidebar = false;
-				menu = "change_account_name";
+				menu = "change_username";
 			}
 			#endregion /* Click Account END */
 			
@@ -2185,20 +2185,40 @@ function scr_options_menu()
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			var change_account_name_x = 410;
-			var change_account_name_y = 20 + (40 * 5);
-			scr_draw_text_outlined(change_account_name_x, 20 + (40 * 2), l10n_text("Setup your Account here. This is used for uploading levels"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(change_account_name_x, 20 + (40 * 4), l10n_text("Account name") + ": " + string(global.account_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			if (menu != "change_account_name_ok")
-			and (menu != "change_account_name_cancel")
+			var change_username_x = 410;
+			var change_username_y = 20 + (40 * 5);
+			scr_draw_text_outlined(change_username_x, 20 + (40 * 2), l10n_text("Setup your Account here. This is used for uploading levels"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			if (menu != "change_username_ok")
+			and (menu != "change_username_cancel")
 			{
-				draw_menu_button(change_account_name_x, change_account_name_y, l10n_text("Change Account Name"), "change_account_name", "change_account_name");
+				draw_menu_button(change_username_x, change_username_y, l10n_text("Change Username"), "change_username", "change_username");
+				draw_menu_button(change_username_x, change_username_y + 50, l10n_text("Get Device Username"), "get_device_name", "get_device_name");
 			}
 			
-			#region /* Change account name */
-			if (menu == "change_account_name")
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x, change_username_y + 50, change_username_x + 370, change_username_y + 50 + 40 - 1))
+			and (global.controls_used_for_menu_navigation == "mouse")
+			and (mouse_check_button_released(mb_left))
+			and (menu == "get_device_name")
+			and (menu_delay == 0)
+			or (key_a_pressed)
+			and (menu == "get_device_name")
+			and (menu_delay == 0)
 			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, change_account_name_x, change_account_name_y, change_account_name_x + 370, change_account_name_y + 40 - 1))
+				with(instance_create_depth(change_username_x + 128, change_username_y + 50, 0, obj_score_up))
+				{
+					score_up = "Copied"; /* Show that you have copied the device username */
+				}
+				global.username = environment_get_variable("USERNAME");
+				/* Save username to config file */
+				ini_open(working_directory + "config.ini");
+				ini_write_string("config", "username", string(environment_get_variable("USERNAME")));
+				ini_close();
+			}
+			
+			#region /* Change username */
+			if (menu == "change_username")
+			{
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x, change_username_y, change_username_x + 370, change_username_y + 40 - 1))
 				and (global.controls_used_for_menu_navigation == "mouse")
 				and (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
@@ -2207,36 +2227,82 @@ function scr_options_menu()
 				{
 					menu_delay = 3;
 					input_key = true;
-					menu = "change_account_name_ok";
+					keyboard_string = string(global.username);
+					menu = "change_username_ok";
 				}
 			}
-			if (menu == "change_account_name_ok")
-			or (menu == "change_account_name_cancel")
+			if (menu == "change_username_ok")
+			or (menu == "change_username_cancel")
 			{
-				global.account_name = scr_draw_name_input_screen(global.account_name, 32, c_white, 0.9, false, change_account_name_x + 185, change_account_name_y + 21, "change_account_name_ok", "change_account_name_cancel", false);
+				global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x + 185, change_username_y + 21, "change_username_ok", "change_username_cancel", false);
 				if (key_a_pressed)
 				or (key_b_pressed)
-				or (point_in_rectangle(mouse_get_x, mouse_get_y, change_account_name_x, change_account_name_y + 22 + 52, change_account_name_x + 370, change_account_name_y + 22 + 52 + 42 + 42))
+				or (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x, change_username_y + 22 + 52, change_username_x + 370, change_username_y + 22 + 52 + 42 + 42))
 				and (global.controls_used_for_menu_navigation == "mouse")
 				and (mouse_check_button_released(mb_left))
 				{
 					if (!keyboard_check_pressed(ord("Z")))
 					and (!keyboard_check_pressed(ord("X")))
 					and (!keyboard_check_pressed(vk_backspace))
+					and (!keyboard_check_pressed(vk_space))
 					and (menu_delay == 0)
 					{
-						/* Save account name to config file */
+						/* Save username to config file */
 						ini_open(working_directory + "config.ini");
-						ini_write_string("config", "account_name", string(global.account_name));
+						ini_write_string("config", "username", string(global.username));
 						ini_close();
 						
 						menu_delay = 3;
 						input_key = false;
-						menu = "change_account_name";
+						menu = "change_username";
 					}
 				}
 			}
-			#endregion /* Change account name END */
+			#endregion /* Change username END */
+			
+			#region /* Draw the username text above everything */
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_middle);
+			if (global.username != "")
+			{
+				scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("Account name") + ": " + string(global.username), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			}
+			else
+			{
+				scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+			}
+			#endregion /* Draw the username text above everything END */
+			
+			if (key_up)
+			and (menu_delay == 0)
+			{
+				menu_delay = 3;
+				if (menu == "change_username")
+				{
+					menu = "get_device_name";
+				}
+				else
+				if (menu == "get_device_name")
+				{
+					menu = "change_username";
+				}
+				
+			}
+			if (key_down)
+			and (menu_delay == 0)
+			{
+				menu_delay = 3;
+				if (menu == "change_username")
+				{
+					menu = "get_device_name";
+				}
+				else
+				if (menu == "get_device_name")
+				{
+					menu = "change_username";
+				}
+			}
 			
 		}
 		#endregion /* Account Settings END */

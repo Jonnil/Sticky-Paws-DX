@@ -19,11 +19,11 @@ function scr_draw_upload_level_menu()
 	if (tag_boss_battle == true){var tag_boss_battle_text = "Boss Battle" + " ";how_may_tags += 1;}else{var tag_boss_battle_text = "";};
 	if (tag_dont_move == true){var tag_dont_move_text = "Don't Move" + " ";how_may_tags += 1;}else{var tag_dont_move_text = "";};
 	if (tag_kaizo == true){var tag_kaizo_text = "Kaizo" + " ";how_may_tags += 1;}else{var tag_kaizo_text = "";};
-	if (tag_multiplayer == true){var tag_multiplayer_text = "Multiplayer" + " ";how_may_tags += 1;}else{var tag_multiplayer_text = "";};
+	if (tag_multiplayer == true){var tag_multiplayer_text = "Multiplayer Only" + " ";how_may_tags += 1;}else{var tag_multiplayer_text = "";};
 	if (tag_music == true){var tag_music_text = "Music" + " ";how_may_tags += 1;}else{var tag_music_text = "";};
 	if (tag_puzzle_solving == true){var tag_puzzle_solving_text = "Puzzle-solving" + " ";how_may_tags += 1;}else{var tag_puzzle_solving_text = "";};
 	if (tag_short_and_sweet == true){var tag_short_and_sweet_text = "Short and Sweet" + " ";how_may_tags += 1;}else{var tag_short_and_sweet_text = "";};
-	if (tag_singleplayer == true){var tag_singleplayer_text = "Singleplayer" + " ";how_may_tags += 1;}else{var tag_singleplayer_text = "";};
+	if (tag_singleplayer == true){var tag_singleplayer_text = "Singleplayer Only" + " ";how_may_tags += 1;}else{var tag_singleplayer_text = "";};
 	if (tag_speedrun == true){var tag_speedrun_text = "Speedrun" + " ";how_may_tags += 1;}else{var tag_speedrun_text = "";};
 	if (tag_standard == true){var tag_standard_text = "Standard" + " ";how_may_tags += 1;}else{var tag_standard_text = "";};
 	if (tag_technical == true){var tag_technical_text = "Technical" + " ";how_may_tags += 1;}else{var tag_technical_text = "";};
@@ -60,7 +60,7 @@ function scr_draw_upload_level_menu()
 				and (skip_clear_check == false)
 				or (skip_clear_check == true)
 				{
-					if (global.account_name != "") /* Check if there is an account name or not */
+					if (global.username != "") /* Check if there is an username or not */
 					{
 						if (os_is_network_connected()) /* Check if you're even connected to the internet */
 						{
@@ -103,8 +103,9 @@ function scr_draw_upload_level_menu()
 					}
 					else
 					{
+						keyboard_string = "";
 						menu_delay = 3;
-						menu = "upload_edit_account_name"; /* If there isn't an account name, have the player make an account name */
+						menu = "upload_edit_username_ok"; /* If there isn't an username, have the player make an username */
 						if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 						{
 							show_level_editor_corner_menu = false;
@@ -325,44 +326,31 @@ function scr_draw_upload_level_menu()
 	}
 	#endregion /* Draw clear check menu END */
 	
-	#region /* Draw enter account name screen */
-	if (menu == "upload_edit_account_name")
-	or (menu == "upload_edit_account_name_ok")
-	if (menu == "upload_edit_account_name_cancel")
+	#region /* Draw enter username screen */
+	if (menu == "upload_edit_username_ok")
+	or (menu == "upload_edit_username_cancel")
 	{
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_middle);
-		var change_account_name_x = display_get_gui_width() * 0.5;
-		var change_account_name_y = 20 + (40 * 5);
-		scr_draw_text_outlined(change_account_name_x, 20 + (40 * 4), l10n_text("Account name") + ": " + string(global.account_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		if (menu != "upload_edit_account_name_ok")
-		and (menu != "upload_edit_account_name_cancel")
-		{
-			draw_menu_button(change_account_name_x, change_account_name_y, l10n_text("Change Account Name"), "upload_edit_account_name", "upload_edit_account_name");
-		}
+		draw_set_alpha(0.9);
+		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
 		
-		#region /* Change account name */
-		if (menu == "upload_edit_account_name")
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		var change_username_x = display_get_gui_width() * 0.5;
+		var change_username_y = 20 + (40 * 5);
+		
+		#region /* Change username */
+		if (menu == "upload_edit_username_ok")
+		or (menu == "upload_edit_username_cancel")
 		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, change_account_name_x, change_account_name_y, change_account_name_x + 370, change_account_name_y + 40 - 1))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			and (mouse_check_button_released(mb_left))
-			and (menu_delay == 0)
-			or (key_a_pressed)
-			and (menu_delay == 0)
-			{
-				menu_delay = 3;
-				input_key = true;
-				menu = "upload_edit_account_name_ok";
-			}
-		}
-		if (menu == "upload_edit_account_name_ok")
-		or (menu == "upload_edit_account_name_cancel")
-		{
-			global.account_name = scr_draw_name_input_screen(global.account_name, 32, c_white, 0.9, false, change_account_name_x + 185, change_account_name_y + 21, "upload_edit_account_name_ok", "upload_edit_account_name_cancel", false);
+			global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_edit_username_ok", "upload_edit_username_cancel", false);
+			
+			#region /* Pressing Change Username OK */
 			if (key_a_pressed)
-			or (key_b_pressed)
-			or (point_in_rectangle(mouse_get_x, mouse_get_y, change_account_name_x, change_account_name_y + 22 + 52, change_account_name_x + 370, change_account_name_y + 22 + 52 + 42 + 42))
+			and (menu = "upload_edit_username_ok")
+			and (global.username != "")
+			or (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x - 185, change_username_y + 22 + 52, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42))
+			and (global.username != "")
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_released(mb_left))
 			{
@@ -371,21 +359,71 @@ function scr_draw_upload_level_menu()
 				and (!keyboard_check_pressed(vk_backspace))
 				and (menu_delay == 0)
 				{
-					/* Save account name to config file */
+					/* Save username to config file */
 					ini_open(working_directory + "config.ini");
-					ini_write_string("config", "account_name", string(global.account_name));
+					ini_write_string("config", "username", string(global.username));
 					ini_close();
-						
+					
 					menu_delay = 3;
 					input_key = false;
-					menu = "upload_edit_account_name";
+					if (os_is_network_connected())
+					{
+						menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
+					}
+					else
+					{
+						menu = "no_internet_character";
+					}
 				}
 			}
+			#endregion /* Pressing Change Username OK END */
+			
+			else
+			
+			#region /* Pressing Change Username Cancel */
+			if (key_a_pressed)
+			and (menu = "upload_edit_username_cancel")
+			or (key_b_pressed)
+			or (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x - 185, change_username_y + 22 + 52 + 42, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42 + 42))
+			and (global.controls_used_for_menu_navigation == "mouse")
+			and (mouse_check_button_released(mb_left))
+			{
+				if (!keyboard_check_pressed(ord("Z")))
+				and (!keyboard_check_pressed(ord("X")))
+				and (!keyboard_check_pressed(vk_backspace))
+				and (!keyboard_check_pressed(vk_space))
+				and (menu_delay == 0)
+				{
+					/* Save username as blank to config file, then go back */
+					ini_open(working_directory + "config.ini");
+					ini_write_string("config", "username", "");
+					ini_close();
+					global.username = "";
+					keyboard_string = "";
+					menu_delay = 3;
+					input_key = false;
+					menu = "level_editor_upload";
+				}
+			}
+			#endregion /* Pressing Change Username Cancel END */
+			
 		}
-		#endregion /* Change account name END */
+		#region /* Draw the username text above everything */
+		if (global.username != "")
+		{
+			scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("Account name") + ": " + string(global.username), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
+		else
+		{
+			scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+		}
+		#endregion /* Draw the username text above everything END */
+		
+		#endregion /* Change username END */
 		
 	}
-	#endregion /* Draw enter account name screen END */
+	#endregion /* Draw enter username screen END */
 	
 	if (keyboard_virtual_status())
 	and (keyboard_virtual_height() != 0)
@@ -474,21 +512,55 @@ function scr_draw_upload_level_menu()
 		
 		#region /* Draw Level Tags */
 		draw_set_halign(fa_center);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_tags_y,
-		string(tag_art_text) +
-		string(tag_boss_battle_text) +
-		string(tag_dont_move_text) +
-		string(tag_kaizo_text) +
-		string(tag_multiplayer_text) +
-		string(tag_music_text) +
-		string(tag_puzzle_solving_text) +
-		string(tag_short_and_sweet_text) +
-		string(tag_singleplayer_text) +
-		string(tag_speedrun_text) +
-		string(tag_standard_text) +
-		string(tag_technical_text) +
-		string(tag_themed_text));
+		if (tag_art_text == "")
+		and (tag_boss_battle_text == "")
+		and (tag_dont_move_text == "")
+		and (tag_kaizo_text == "")
+		and (tag_multiplayer_text == "")
+		and (tag_music_text == "")
+		and (tag_puzzle_solving_text == "")
+		and (tag_short_and_sweet_text == "")
+		and (tag_singleplayer_text == "")
+		and (tag_speedrun_text == "")
+		and (tag_standard_text == "")
+		and (tag_technical_text == "")
+		and (tag_themed_text == "")
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_tags_y, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_tags_y, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
+		}
+		else
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_tags_y, l10n_text("Tags") + ": " +
+			string(tag_art_text) +
+			string(tag_boss_battle_text) +
+			string(tag_dont_move_text) +
+			string(tag_kaizo_text) +
+			string(tag_multiplayer_text) +
+			string(tag_music_text) +
+			string(tag_puzzle_solving_text) +
+			string(tag_short_and_sweet_text) +
+			string(tag_singleplayer_text) +
+			string(tag_speedrun_text) +
+			string(tag_standard_text) +
+			string(tag_technical_text) +
+			string(tag_themed_text)
+			, global.default_text_size, c_black, c_white, 1);
+		}
 		#endregion /* Draw Level Tags END */
+		
+		#region /* Draw who made the level */
+		draw_set_halign(fa_right);
+		if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		{
+			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			if (ini_key_exists("info", "username"))
+			{
+				scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
+			}
+			ini_close();
+		}
+		#endregion /* Draw who made the level END */
 		
 		draw_menu_button(get_window_width * 0.5 - 185, edit_name_y, l10n_text("Edit Name"), "upload_edit_name", "upload_edit_name");
 		draw_sprite_ext(spr_icons_pen, 0, get_window_width * 0.5 - 185 + 16, edit_name_y + 21, 1, 1, 0, c_white, 1);
@@ -1029,11 +1101,11 @@ function scr_draw_upload_level_menu()
 		tag_boss_battle = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 4) + menu_y_offset, "Boss Battle", "tag_boss_battle", tag_boss_battle);
 		tag_dont_move = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 5) + menu_y_offset, "Don't Move", "tag_dont_move", tag_dont_move);
 		tag_kaizo = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 6) + menu_y_offset, "Kaizo", "tag_kaizo", tag_kaizo);
-		tag_multiplayer = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 7) + menu_y_offset, "Multiplayer", "tag_multiplayer", tag_multiplayer);
+		tag_multiplayer = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 7) + menu_y_offset, "Multiplayer Only", "tag_multiplayer", tag_multiplayer);
 		tag_music = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 8) + menu_y_offset, "Music", "tag_music", tag_music);
 		tag_puzzle_solving = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 9) + menu_y_offset, "Puzzle-solving", "tag_puzzle_solving", tag_puzzle_solving);
 		tag_short_and_sweet = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 10) + menu_y_offset, "Short and Sweet", "tag_short_and_sweet", tag_short_and_sweet);
-		tag_singleplayer = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 11) + menu_y_offset, "Singleplayer", "tag_singleplayer", tag_singleplayer);
+		tag_singleplayer = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 11) + menu_y_offset, "Singleplayer Only", "tag_singleplayer", tag_singleplayer);
 		tag_speedrun = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 12) + menu_y_offset, "Speedrun", "tag_speedrun", tag_speedrun);
 		tag_standard = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 13) + menu_y_offset, "Standard", "tag_standard", tag_standard);
 		tag_technical = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 14) + menu_y_offset, "Technical", "tag_technical", tag_technical);
@@ -1045,20 +1117,42 @@ function scr_draw_upload_level_menu()
 		draw_rectangle_color(0, 0, get_window_width, 42 * 2 + 16, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		draw_set_halign(fa_center);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 42,
-		string(tag_art_text) +
-		string(tag_boss_battle_text) +
-		string(tag_dont_move_text) +
-		string(tag_kaizo_text) +
-		string(tag_multiplayer_text) +
-		string(tag_music_text) +
-		string(tag_puzzle_solving_text) +
-		string(tag_short_and_sweet_text) +
-		string(tag_singleplayer_text) +
-		string(tag_speedrun_text) +
-		string(tag_standard_text) +
-		string(tag_technical_text) +
-		string(tag_themed_text));
+		
+		if (tag_art_text == "")
+		and (tag_boss_battle_text == "")
+		and (tag_dont_move_text == "")
+		and (tag_kaizo_text == "")
+		and (tag_multiplayer_text == "")
+		and (tag_music_text == "")
+		and (tag_puzzle_solving_text == "")
+		and (tag_short_and_sweet_text == "")
+		and (tag_singleplayer_text == "")
+		and (tag_speedrun_text == "")
+		and (tag_standard_text == "")
+		and (tag_technical_text == "")
+		and (tag_themed_text == "")
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
+		}
+		else
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("Tags") + ": " +
+			string(tag_art_text) +
+			string(tag_boss_battle_text) +
+			string(tag_dont_move_text) +
+			string(tag_kaizo_text) +
+			string(tag_multiplayer_text) +
+			string(tag_music_text) +
+			string(tag_puzzle_solving_text) +
+			string(tag_short_and_sweet_text) +
+			string(tag_singleplayer_text) +
+			string(tag_speedrun_text) +
+			string(tag_standard_text) +
+			string(tag_technical_text) +
+			string(tag_themed_text)
+			, global.default_text_size, c_black, c_white, 1);
+		}
 		if (how_may_tags > 3)
 		{
 			/* If you have more than 3 tags, show message that you can only have 3 tags max */
@@ -1370,6 +1464,7 @@ function scr_draw_upload_level_menu()
 			level_id = string(level_id_1) + string(level_id_2) + string(level_id_3) + string(level_id_4) + string(level_id_5) + string(level_id_6) + string(level_id_7) + string(level_id_8) + string(level_id_9);
 			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			ini_write_string("info", "level_id", string(level_id)); /* Save the level ID in the level information.ini file, so that it can be referenced later */
+			ini_write_string("info", "username", string(global.username)); /* Save the username in the level information.ini file, so that it can be referenced later */
 			ini_close();
 		}
 		#endregion /* Generate Level ID END */

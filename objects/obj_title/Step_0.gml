@@ -214,6 +214,22 @@ if (menu == "load_characters")
 			}
 			else
 			{
+				if (player1_menu == "load_downloaded_character")
+				{
+					/* When you have downloaded a custom character, player 1 should be set to the downloaded custom character so that the player can play with them immediately */
+					global.character_index[0] = ds_list_find_index(global.all_loaded_characters, string(downloaded_character_name));
+					global.character_for_player_1 = ds_list_find_index(global.all_loaded_characters, global.character_index[0]);
+					
+					#region /* Player 1 character select portrait sprite */
+					global.skin_for_player_1 = global.actual_skin_for_player_1; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
+					global.sprite_select_player_1 = spr_noone;
+					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
+					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
+					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1);
+					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1);
+					#endregion /* Player 1 character select portrait sprite END */
+					
+				}
 				menu = "select_character"; /* Default menu to go to after loading all characters */
 				player1_menu = "select_character"; /* Set this to be "select character" so it's not on wrong menu unintentionally */
 			}
