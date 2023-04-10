@@ -26,29 +26,66 @@ function scr_draw_online_level_list()
 	if (menu = "online_level_list_menu")
 	{
 		
+		//if (global.online_level_list != "")
+		//{
+		//	var result_map = json_parse(global.online_level_list);
+		//	var list = ds_map_find_value(result_map, "name");
+		//	//if (list != undefined) /* Don't run this code if it's undefined, otherwise it can crash the game */
+		//	//{
+		//	var size = ds_list_size(list);
+		//	for (var n = 0; n < size; n++;)
+		//	{
+		//		var online_level_list_map = ds_list_find_value(list, n);
+		//		var curr = ds_map_find_first(online_level_list_map);
+		//		while (is_string(curr))
+		//		{
+		//			scr_draw_text_outlined(display_get_width() * 0.5, 50 * n, string(ds_map_find_value(online_level_list_map, "name")));
+		//			curr = ds_map_find_next(online_level_list_map, curr);
+		//		}
+		//	}
+		//	//}
+		//	ds_map_destroy(result_map);
+		//}
+		
+		#region /* If there is a online level list loaded, interpret that as a struct using "json parse" */
 		if (global.online_level_list != "")
 		{
-			show_message(string(global.online_level_list));
-			var result_map = json_decode(global.online_level_list);
-			var list = ds_map_find_value(result_map, "name");
-			show_message(list);
-			if (list != undefined) /* Don't run this code if it's undefined, otherwise it can crash the game */
+			str1 = global.online_level_list;
+			str2 = string_replace_all(str1, "\"", "\\" + chr(34));
+			str3 = string_replace_all(str2, "[", "\"");
+			str4 = string_replace_all(str3, "]", "\"");
+			str5 = string_replace_all(str4,
+			chr(34) + "{\\" + chr(34),
+			chr(34) + "{\\" + chr(34) + "online_levels\\" + chr(34) + ": { \\" + chr(34));
+			str6 = string_replace_all(str5,
+			chr(34) + "}" + chr(34),
+			chr(34) + "}}" + chr(34));
+			str7 = string_replace_all(str6, "},{", ",")
+			
+			clipboard_set_text(str7);
+			
+			json = string(str7);
+			//json = "{\"online_levels\": { \"name\":\"levels/NDGTG0P2P.zip\",\"time_created\":\"2023-04-01T21:20:10Z\",\"name\":\"levels/2FTSHTTPB.zip\",\"time_created\":\"2023-04-01T20:55:43Z\",\"name\":\"levels/TEST_DATA.zip\",\"time_created\":\"2023-03-23T21:55:20Z\"}}"
+			data = json_parse(json);
+			
+			/* Check if the struct has myObj variable */
+			if (variable_struct_exists(data, "online_levels"))
 			{
-				var size = ds_map_size(list);
-				for (var n = 0; n < size; n++;)
+				/* Check if it's a struct */
+				if (is_struct(data.online_levels))
 				{
-				    var online_level_list_map = ds_map_find_value(list, n);
-				    var curr = ds_map_find_first(online_level_list_map);
-				    while (is_string(curr))
-				    {
-						scr_draw_text_outlined(display_get_width() * 0.5, 50 * n, string(ds_map_find_value(online_level_list_map, "name")));
-				        curr = ds_map_find_next(online_level_list_map, curr);
-				    }
+					/* Print all struct members to the log */
+					var _names = variable_struct_get_names(data.online_levels);
+					var _str = "";
+					for (var i = 0; i < array_length(_names); i++;)
+					{
+						_str = _names[i] + ": " + string(variable_struct_get(data.online_levels, _names[i]));
+						show_message(_str);
+					}
 				}
 			}
-			ds_map_destroy(result_map);
 		}
+		#endregion /* If there is a online level list loaded, interpret that as a struct using "json parse" END */
 		
-		//scr_draw_text_outlined(display_get_width() * 0.5, display_get_height() * 0.5, string(online_level_list));
 	}
 }
