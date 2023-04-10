@@ -1,6 +1,7 @@
 /* Check if the current request ID matches the one we sent */
 if (async_load[? "id"] == global.http_request_id)
 {
+	
 	/* Get the status code and response body */
 	var status_code = async_load[? "status"];
 	var response_str = async_load[? "result"];
@@ -27,7 +28,6 @@ if (async_load[? "id"] == global.http_request_id)
 			default:
 			/* Handle the list data here */
 			var file_save_location = "";
-			show_message(response_str);
 			global.online_level_list = response_str;
 			break;
 		}

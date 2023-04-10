@@ -20,31 +20,34 @@ function scr_draw_online_level_list()
 		ds_map_destroy(map);
 		#endregion /* Get Online Level List END */
 		
-		if (global.online_level_list != "")
-		{
-			menu = "online_level_list_menu";
-		}
+		menu = "online_level_list_menu";
 	}
 	else
 	if (menu = "online_level_list_menu")
 	{
 		
-		show_message(string(global.online_level_list));
-		var result_map = json_decode(global.online_level_list);
-		var list = ds_map_find_value(result_map, "name");
-		show_message(list);
-		var size = ds_map_size(list);
-		for (var n = 0; n < size; n++;)
+		if (global.online_level_list != "")
 		{
-		    var online_level_list_map = ds_map_find_value(list, n);
-		    var curr = ds_map_find_first(online_level_list_map);
-		    while (is_string(curr))
-		    {
-				scr_draw_text_outlined(display_get_width() * 0.5, 50 * n, string(ds_map_find_value(online_level_list_map, "name")));
-		        curr = ds_map_find_next(online_level_list_map, curr);
-		    }
+			show_message(string(global.online_level_list));
+			var result_map = json_decode(global.online_level_list);
+			var list = ds_map_find_value(result_map, "name");
+			show_message(list);
+			if (list != undefined) /* Don't run this code if it's undefined, otherwise it can crash the game */
+			{
+				var size = ds_map_size(list);
+				for (var n = 0; n < size; n++;)
+				{
+				    var online_level_list_map = ds_map_find_value(list, n);
+				    var curr = ds_map_find_first(online_level_list_map);
+				    while (is_string(curr))
+				    {
+						scr_draw_text_outlined(display_get_width() * 0.5, 50 * n, string(ds_map_find_value(online_level_list_map, "name")));
+				        curr = ds_map_find_next(online_level_list_map, curr);
+				    }
+				}
+			}
+			ds_map_destroy(result_map);
 		}
-		ds_map_destroy(result_map);
 		
 		//scr_draw_text_outlined(display_get_width() * 0.5, display_get_height() * 0.5, string(online_level_list));
 	}
