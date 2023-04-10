@@ -1221,6 +1221,8 @@ or (menu == "searching_for_id_back")
 
 scr_character_select_menu_draw();
 
+scr_draw_online_level_list();
+
 #region /* Menu Navigation */
 if (menu_joystick_delay <= 0)
 and (input_key == false)

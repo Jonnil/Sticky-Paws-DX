@@ -14,16 +14,27 @@ if (async_load[? "id"] == global.http_request_id)
 		
 		/* Save the decoded data to a local file (with the .zip extension) */
 		var buffer = buffer_base64_decode(file_data_base64);
-		if (content_type == "level")
+		switch (content_type)
 		{
+			case "level":
 			var file_save_location = working_directory + "/downloaded_level/" + string(response_json[? "name"]) + ".zip";
-		}
-		else
-		if (content_type == "character")
-		{
+			break;
+			
+			case "character":
 			var file_save_location = working_directory + "/downloaded_character/" + string(response_json[? "name"]) + ".zip";
+			break;
+			
+			default:
+			/* Handle the list data here */
+			var file_save_location = "";
+			show_message(response_str);
+			global.online_level_list = response_str;
+			break;
 		}
-		buffer_save(buffer, file_save_location);
+		if (file_save_location != "")
+		{
+			buffer_save(buffer, file_save_location);
+		}
 		
 		/* Free the buffer memory */
 		buffer_delete(buffer);

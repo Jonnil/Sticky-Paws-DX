@@ -1478,6 +1478,7 @@ function scr_draw_upload_level_menu()
 		
 		#region /* Send Zip File to the Server */
 		if (menu_delay <= 0)
+		and (file_exists(working_directory + string(level_id) + ".zip"))
 		{
 			
 			#region /* Actually upload the level to the server */
@@ -1518,7 +1519,7 @@ function scr_draw_upload_level_menu()
 			
 			/* Add the Content-Length header to the map */
 			ds_map_add(map, "Content-Length", string(string_length(post_data)));
-			global.http_request_id = http_request("https://" + global.base_url + global.upload_endpoint + "/levels", "POST", map, post_data);
+			global.http_request_id = http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
 			
 			/* Cleans up! */
 			buffer_delete(send_buffer);

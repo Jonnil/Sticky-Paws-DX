@@ -552,6 +552,7 @@ function scr_character_manage_menu_draw()
 		
 		#region /* Send Zip File to the Server */
 		if (menu_delay <= 0)
+		and (file_exists(working_directory + string(character_id) + ".zip"))
 		{
 			
 			#region /* Actually upload the character to the server */
@@ -592,7 +593,7 @@ function scr_character_manage_menu_draw()
 			
 			/* Add the Content-Length header to the map */
 			ds_map_add(map, "Content-Length", string(string_length(post_data)));
-			global.http_request_id = http_request("https://" + global.base_url + global.upload_endpoint + "/characters", "POST", map, post_data);
+			global.http_request_id = http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
 			
 			/* Cleans up! */
 			buffer_delete(send_buffer);

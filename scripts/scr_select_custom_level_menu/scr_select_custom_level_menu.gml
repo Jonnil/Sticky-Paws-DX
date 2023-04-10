@@ -189,7 +189,7 @@ function scr_select_custom_level_menu()
 	else
 	
 	#region /* Key A Released */
-	if (key_a_released)
+	if (key_a_pressed)
 	or (mouse_check_button_released(mb_left))
 	{
 		if (can_input_level_name == false)
@@ -296,7 +296,7 @@ function scr_select_custom_level_menu()
 		draw_menu_button(0, 0, l10n_text("Back"), "back_from_level_editor", "back_from_level_editor");
 		draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 		if (menu == "back_from_level_editor")
-		and (key_a_released)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		and (open_sub_menu == false)
 		and (can_input_level_name == false)
@@ -363,15 +363,15 @@ function scr_select_custom_level_menu()
 		#endregion /* Back Button END */
 		
 		#region /* Open Custom Levels Folder */
-		var draw_online_level_list_y = 42;
-		draw_menu_button(0, draw_online_level_list_y, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
+		var draw_open_custom_levels_folder_y = 42;
+		draw_menu_button(0, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
 		draw_sprite_ext(spr_icons_folder, 0, 16, 42 + 21, 1, 1, 0, c_white, 1);
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_level_list_y + 2, 370, draw_online_level_list_y + 41))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_open_custom_levels_folder_y + 2, 370, draw_open_custom_levels_folder_y + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		or (menu == "open_custom_levels_folder")
-		and (key_a_released)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		{
 			scr_open_folder(game_save_id + "\custom_levels")
@@ -422,10 +422,12 @@ function scr_select_custom_level_menu()
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		or (menu == "online_level_list")
-		and (key_a_released)
+		and (key_a_pressed)
 		and (menu_delay == 0)
 		{
 			/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+			select_custom_level_menu_open = false;
+			menu = "online_level_list_load";
 		}
 		if (menu == "online_level_list")
 		and (key_up)
@@ -490,7 +492,7 @@ function scr_select_custom_level_menu()
 		and (open_sub_menu == false)
 		{
 			if (menu == "search_level_id")
-			and (key_a_released)
+			and (key_a_pressed)
 			or (gamepad_button_check_released(global.player1_slot, gp_face4))
 			or (gamepad_button_check_released(global.player2_slot, gp_face4))
 			or (gamepad_button_check_released(global.player3_slot, gp_face4))
