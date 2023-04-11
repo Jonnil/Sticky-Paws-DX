@@ -275,7 +275,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (can_create_level_from_scratch == true)
-			or (key_a_released)
+			or (key_a_pressed)
 			and (can_create_level_from_scratch == true)
 			{
 				menu = "level_editor_enter_name_ok";
@@ -295,7 +295,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 370, 226 * (column - scroll) + 569 - 3 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			or (key_a_released)
+			or (key_a_pressed)
 			{
 				menu_delay = 3;
 				open_sub_menu = false;
@@ -315,7 +315,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (back_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (back_y) - 3 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			or (key_a_released)
+			or (key_a_pressed)
 			{
 				menu_delay = 3;
 				open_sub_menu = false;
@@ -334,7 +334,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (play_y)- 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (play_y)- 3 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			or (key_a_released)
+			or (key_a_pressed)
 			{
 				global.doing_clear_check = false;
 				global.actually_play_edited_level = true; /* Even before going to the level, set this variable to true */
@@ -351,7 +351,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (make_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (make_y) - 3 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			or (key_a_released)
+			or (key_a_pressed)
 			{
 				global.doing_clear_check = false;
 				global.actually_play_edited_level = false;
@@ -369,7 +369,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (level_editor_edit_name = false)
-			or (key_a_released)
+			or (key_a_pressed)
 			and (level_editor_edit_name = false)
 			{
 				level_editor_edit_name = true;
@@ -397,7 +397,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (level_editor_edit_name = false)
-			or (key_a_released)
+			or (key_a_pressed)
 			and (level_editor_edit_name = false)
 			{
 				level_editor_edit_name = true;
@@ -427,8 +427,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		}
 		#endregion /* Pressing the Edit Description button END */
 		
-		#region /* Key A Released */
-		if (key_a_released)
+		#region /* Key A pressed */
+		if (key_a_pressed)
 		and (can_input_level_name == false)
 		and (menu_delay == 0)
 		{
@@ -460,10 +460,10 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			#endregion /* Pressing the No Delete button END */
 			
 		}
-		#endregion /* Key A Released END */
+		#endregion /* Key A pressed END */
 		
 		#region /* Pressing the Create from Template button */
-		if (key_a_released)
+		if (key_a_pressed)
 		and (can_input_level_name == false)
 		and (menu_delay == 0)
 		or (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 522 - 3, xx + 8 + 320, 226 * (column - scroll) + 522 - 3 + 42))
@@ -485,7 +485,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		#endregion /* Pressing the Create from Template button END */
 		
 		#region /* Pressing the Yes Delete button */
-		if (key_a_released)
+		if (key_a_pressed)
 		and (can_input_level_name == false)
 		and (menu_delay == 0)
 		or (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 320, 226 * (column - scroll) + 569 - 3 + 42))
