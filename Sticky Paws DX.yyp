@@ -2588,7 +2588,7 @@
     {"id":{"name":"spr_water_level_change_fast","path":"sprites/spr_water_level_change_fast/spr_water_level_change_fast.yy",},},
     {"id":{"name":"snd_enemyvoice_big_defeated","path":"sounds/snd_enemyvoice_big_defeated/snd_enemyvoice_big_defeated.yy",},},
     {"id":{"name":"scr_player_move_tongue","path":"scripts/scr_player_move_tongue/scr_player_move_tongue.yy",},},
-    {"id":{"name":"scr_draw_online_level_list","path":"scripts/scr_draw_online_level_list/scr_draw_online_level_list.yy",},},
+    {"id":{"name":"scr_draw_online_download_list","path":"scripts/scr_draw_online_download_list/scr_draw_online_download_list.yy",},},
     {"id":{"name":"scr_draw_character_portrait_for_player","path":"scripts/scr_draw_character_portrait_for_player/scr_draw_character_portrait_for_player.yy",},},
     {"id":{"name":"scr_add_object","path":"scripts/scr_add_object/scr_add_object.yy",},},
     {"id":{"name":"spr_icons_upload","path":"sprites/spr_icons_upload/spr_icons_upload.yy",},},

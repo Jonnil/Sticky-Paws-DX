@@ -1,4 +1,4 @@
-function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false)
+function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true)
 {
 	
 	#region /* Set name input screen to always be above the virtual keyboard */
@@ -120,10 +120,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		or (max_characters_needed == false)
 		{
 			draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
-			if (global.controls_used_for_menu_navigation == "mouse")
-			or (menu != ok_menu_string)
-			and (menu != cancel_menu_string)
-			or (menu == ok_menu_string)
+			if (menu == ok_menu_string)
 			{
 				if (gamepad_is_connected(global.player1_slot))
 				and (global.controls_used_for_menu_navigation == "controller")
@@ -161,10 +158,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	#endregion /* Clicking the Cancel button END */
 	
 	draw_sprite_ext(spr_icons_back, 0, xx + buttons_x + 55, yy + buttons_cancel_y + 21, 1, 1, 0, c_white, 1);
-	if (global.controls_used_for_menu_navigation == "mouse")
-	or (menu != ok_menu_string)
-	and (menu != cancel_menu_string)
-	or (menu == ok_menu_string)
+	if (menu != cancel_menu_string)
 	{
 		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
@@ -202,11 +196,12 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	
 	if (menu_delay == 0)
+	and (menu_joystick_delay == 0)
+	and (use_script_navigation_code == true)
 	{
 		if (keyboard_check_pressed(vk_up))
 		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
 		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
-		or (mouse_wheel_up())
 		{
 			menu = ok_menu_string;
 		}
@@ -214,7 +209,6 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		if (keyboard_check_pressed(vk_down))
 		or (gamepad_button_check_pressed(global.player1_slot, gp_padd))
 		or (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
-		or (mouse_wheel_down())
 		{
 			menu = cancel_menu_string;
 		}

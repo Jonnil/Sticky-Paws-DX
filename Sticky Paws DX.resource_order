@@ -461,7 +461,7 @@
     {"name":"scr_zoom_camera_draw_gui","order":57,"path":"scripts/scr_zoom_camera_draw_gui/scr_zoom_camera_draw_gui.yy",},
     {"name":"spr_water_level_change_fast","order":140,"path":"sprites/spr_water_level_change_fast/spr_water_level_change_fast.yy",},
     {"name":"snd_enemyvoice_big_defeated","order":28,"path":"sounds/snd_enemyvoice_big_defeated/snd_enemyvoice_big_defeated.yy",},
-    {"name":"scr_draw_online_level_list","order":28,"path":"scripts/scr_draw_online_level_list/scr_draw_online_level_list.yy",},
+    {"name":"scr_draw_online_download_list","order":28,"path":"scripts/scr_draw_online_download_list/scr_draw_online_download_list.yy",},
     {"name":"scr_draw_character_portrait_for_player","order":21,"path":"scripts/scr_draw_character_portrait_for_player/scr_draw_character_portrait_for_player.yy",},
     {"name":"spr_icons_upload","order":27,"path":"sprites/spr_icons_upload/spr_icons_upload.yy",},
     {"name":"spr_map_bridge","order":146,"path":"sprites/spr_map_bridge/spr_map_bridge.yy",},

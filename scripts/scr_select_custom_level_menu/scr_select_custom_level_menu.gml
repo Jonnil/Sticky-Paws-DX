@@ -427,8 +427,8 @@ function scr_select_custom_level_menu()
 		{
 			/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
 			select_custom_level_menu_open = false;
-			content_type = ""; /* Need to clear the content_type, so Async - HTTP Event is running correctly */
-			menu = "online_level_list_load";
+			content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+			menu = "online_download_list_load";
 		}
 		if (menu == "online_level_list")
 		and (key_up)
@@ -449,6 +449,7 @@ function scr_select_custom_level_menu()
 			}
 			lerp_on = true;
 		}
+		else
 		if (menu == "online_level_list")
 		and (key_down)
 		and (menu_delay == 0)

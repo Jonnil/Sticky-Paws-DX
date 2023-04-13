@@ -374,7 +374,7 @@ function scr_character_select_menu_step()
 			or (keyboard_check_pressed(vk_escape))
 			
 			or (can_input_player1_name == true)
-			and(point_in_rectangle(mouse_get_x, mouse_get_y,
+			and (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width * 0.5 + player1_display_x - 185,
 			get_window_height * 0.5 + name_y + 52,
 			get_window_width * 0.5 + player1_display_x - 185 + 370,
@@ -382,7 +382,7 @@ function scr_character_select_menu_step()
 			and (mouse_check_button_released(mb_left))
 			
 			or (can_input_player2_name == true)
-			and(point_in_rectangle(mouse_get_x, mouse_get_y,
+			and (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width * 0.5 + player2_display_x - 185,
 			get_window_height * 0.5 + name_y + 52,
 			get_window_width * 0.5 + player2_display_x - 185 + 370,
@@ -390,7 +390,7 @@ function scr_character_select_menu_step()
 			and (mouse_check_button_released(mb_left))
 			
 			or (can_input_player3_name == true)
-			and(point_in_rectangle(mouse_get_x, mouse_get_y,
+			and (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width * 0.5 + player3_display_x - 185,
 			get_window_height * 0.5 + name_y + 52,
 			get_window_width * 0.5 + player3_display_x - 185 + 370,
@@ -398,7 +398,7 @@ function scr_character_select_menu_step()
 			and (mouse_check_button_released(mb_left))
 			
 			or (can_input_player4_name == true)
-			and(point_in_rectangle(mouse_get_x, mouse_get_y,
+			and (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width * 0.5 + player4_display_x - 185,
 			get_window_height * 0.5 + name_y + 52,
 			get_window_width * 0.5 + player4_display_x - 185 + 370,

@@ -1210,6 +1210,7 @@ and (global.play_attract_demo == false)
 
 if (menu == "search_id_ok")
 or (menu == "search_id_cancel")
+or (menu == "search_online_list")
 or (menu == "searching_for_id")
 or (menu == "searched_file_downloaded_play")
 or (menu == "searched_file_downloaded_make")
@@ -1221,7 +1222,7 @@ or (menu == "searching_for_id_back")
 
 scr_character_select_menu_draw();
 
-scr_draw_online_level_list();
+scr_draw_online_download_list();
 
 #region /* Menu Navigation */
 if (menu_joystick_delay <= 0)
@@ -1890,3 +1891,6 @@ if (global.enable_transitions == true)
 	}
 }
 #endregion /* Draw Iris Transitions END */
+
+//draw_set_halign(fa_left)
+//scr_draw_text_outlined(320, 32, string(menu));

@@ -848,7 +848,7 @@ function scr_character_manage_menu_step()
 		and (can_navigate == true)
 		{
 			menu = "manage_character";
-			player1_menu = "manage_character"; /* When going back to previous menu, you have to set this to "manage character" */
+			player1_menu = "select_character"; /* When going back to previous menu, you have to set this to "select character" */
 			menu_delay = 3;
 		}
 		if (keyboard_check_pressed(global.player1_key_up))
