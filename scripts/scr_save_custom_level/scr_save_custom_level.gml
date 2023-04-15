@@ -88,146 +88,147 @@ function scr_save_custom_level()
 		if (global.level_name != "")
 		{
 			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-		}
-		if (!ini_key_exists("info", "first_created_on_version")) /* Check if there isn't already a version number saved. Only save this information once, so the number never changes */
-		{
-			ini_write_string("info", "first_created_on_version", "v" + string(scr_get_build_date()));
-		}
-		ini_write_string("info", "username", global.username);
-		ini_write_real("info", "clear_check", false); /* When saving custom level, then the player has to do a clear check all over again, to ensure you can't just do a clear check and edit the level afterwards */
-		ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
-		if (instance_exists(obj_level_player_1_start))
-		{
-			ini_write_real("info", "level_player_1_start_x", obj_level_player_1_start.x);
-		}
-		if (instance_exists(obj_level_player_1_start))
-		{
-			ini_write_real("info", "level_player_1_start_y", obj_level_player_1_start.y);
-		}
-		if (instance_exists(obj_level_player_2_start))
-		{
-			ini_write_real("info", "level_player_2_start_x", obj_level_player_2_start.x);
-		}
-		if (instance_exists(obj_level_player_2_start))
-		{
-			ini_write_real("info", "level_player_2_start_y", obj_level_player_2_start.y);
-		}
-		if (instance_exists(obj_level_player_3_start))
-		{
-			ini_write_real("info", "level_player_3_start_x", obj_level_player_3_start.x);
-		}
-		if (instance_exists(obj_level_player_3_start))
-		{
-			ini_write_real("info", "level_player_3_start_y", obj_level_player_3_start.y);
-		}
-		if (instance_exists(obj_level_player_4_start))
-		{
-			ini_write_real("info", "level_player_4_start_x", obj_level_player_4_start.x);
-		}
-		if (instance_exists(obj_level_player_4_start))
-		{
-			ini_write_real("info", "level_player_4_start_y", obj_level_player_4_start.y);
-		}
-		if (instance_exists(obj_level_end))
-		{
-			ini_write_real("info", "level_end_x", obj_level_end.x);
-		}
-		if (instance_exists(obj_level_end))
-		{
-			ini_write_real("info", "level_end_y", obj_level_end.y);
-		}
-		if (instance_exists(obj_level_height))
-		{
-			ini_write_real("info", "level_height", obj_level_height.y);
-		}
-		if (instance_exists(obj_level_width))
-		{
-			ini_write_real("info", "level_width", obj_level_width.x);
-		}
-		if (instance_exists(obj_water_level_height))
-		{
-			ini_write_real("info", "water_level_height", obj_water_level_height.y);
-		}
-		ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
-		ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
+			if (!ini_key_exists("info", "first_created_on_version")) /* Check if there isn't already a version number saved. Only save this information once, so the number never changes */
+			{
+				ini_write_string("info", "first_created_on_version", "v" + string(scr_get_build_date()));
+			}
+			ini_write_string("info", "level_name", global.level_name);
+			ini_write_string("info", "username", global.username);
+			ini_write_real("info", "clear_check", false); /* When saving custom level, then the player has to do a clear check all over again, to ensure you can't just do a clear check and edit the level afterwards */
+			ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
+			if (instance_exists(obj_level_player_1_start))
+			{
+				ini_write_real("info", "level_player_1_start_x", obj_level_player_1_start.x);
+			}
+			if (instance_exists(obj_level_player_1_start))
+			{
+				ini_write_real("info", "level_player_1_start_y", obj_level_player_1_start.y);
+			}
+			if (instance_exists(obj_level_player_2_start))
+			{
+				ini_write_real("info", "level_player_2_start_x", obj_level_player_2_start.x);
+			}
+			if (instance_exists(obj_level_player_2_start))
+			{
+				ini_write_real("info", "level_player_2_start_y", obj_level_player_2_start.y);
+			}
+			if (instance_exists(obj_level_player_3_start))
+			{
+				ini_write_real("info", "level_player_3_start_x", obj_level_player_3_start.x);
+			}
+			if (instance_exists(obj_level_player_3_start))
+			{
+				ini_write_real("info", "level_player_3_start_y", obj_level_player_3_start.y);
+			}
+			if (instance_exists(obj_level_player_4_start))
+			{
+				ini_write_real("info", "level_player_4_start_x", obj_level_player_4_start.x);
+			}
+			if (instance_exists(obj_level_player_4_start))
+			{
+				ini_write_real("info", "level_player_4_start_y", obj_level_player_4_start.y);
+			}
+			if (instance_exists(obj_level_end))
+			{
+				ini_write_real("info", "level_end_x", obj_level_end.x);
+			}
+			if (instance_exists(obj_level_end))
+			{
+				ini_write_real("info", "level_end_y", obj_level_end.y);
+			}
+			if (instance_exists(obj_level_height))
+			{
+				ini_write_real("info", "level_height", obj_level_height.y);
+			}
+			if (instance_exists(obj_level_width))
+			{
+				ini_write_real("info", "level_width", obj_level_width.x);
+			}
+			if (instance_exists(obj_water_level_height))
+			{
+				ini_write_real("info", "water_level_height", obj_water_level_height.y);
+			}
+			ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
+			ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
 		
-		ini_write_real("info", "default_view_height", global.default_view_height);
-		ini_write_real("info", "default_view_width", global.default_view_width);
-		ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
-		ini_write_real("info", "deactivate_objects_from_most_zoomed_out", global.deactivate_objects_from_most_zoomed_out);
-		ini_write_real("info", "rain", global.rain);
-		ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
-		ini_write_real("info", "time_countdown", global.time_countdown);
+			ini_write_real("info", "default_view_height", global.default_view_height);
+			ini_write_real("info", "default_view_width", global.default_view_width);
+			ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
+			ini_write_real("info", "deactivate_objects_from_most_zoomed_out", global.deactivate_objects_from_most_zoomed_out);
+			ini_write_real("info", "rain", global.rain);
+			ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
+			ini_write_real("info", "time_countdown", global.time_countdown);
 		
-		#region /* Save Custom Background Settings */
+			#region /* Save Custom Background Settings */
 		
-		#region /* Save Custom Backgrounds Offset */
-		ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", custom_background_1_x_offset);
-		ini_write_real("Custom Backgrounds", "custom_background_1_y_offset", custom_background_1_y_offset);
-		ini_write_real("Custom Backgrounds", "custom_background_2_x_offset", custom_background_2_x_offset);
-		ini_write_real("Custom Backgrounds", "custom_background_2_y_offset", custom_background_2_y_offset);
-		ini_write_real("Custom Backgrounds", "custom_background_3_x_offset", custom_background_3_x_offset);
-		ini_write_real("Custom Backgrounds", "custom_background_3_y_offset", custom_background_3_y_offset);
-		ini_write_real("Custom Backgrounds", "custom_background_4_x_offset", custom_background_4_x_offset);
-		ini_write_real("Custom Backgrounds", "custom_background_4_y_offset", custom_background_4_y_offset);
-		if (instance_exists(obj_foreground1))
-		{
-			ini_write_real("Custom Backgrounds", "custom_foreground_1_x_offset", obj_foreground1.x_offset);
-			ini_write_real("Custom Backgrounds", "custom_foreground_1_y_offset", obj_foreground1.y_offset);
+			#region /* Save Custom Backgrounds Offset */
+			ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", custom_background_1_x_offset);
+			ini_write_real("Custom Backgrounds", "custom_background_1_y_offset", custom_background_1_y_offset);
+			ini_write_real("Custom Backgrounds", "custom_background_2_x_offset", custom_background_2_x_offset);
+			ini_write_real("Custom Backgrounds", "custom_background_2_y_offset", custom_background_2_y_offset);
+			ini_write_real("Custom Backgrounds", "custom_background_3_x_offset", custom_background_3_x_offset);
+			ini_write_real("Custom Backgrounds", "custom_background_3_y_offset", custom_background_3_y_offset);
+			ini_write_real("Custom Backgrounds", "custom_background_4_x_offset", custom_background_4_x_offset);
+			ini_write_real("Custom Backgrounds", "custom_background_4_y_offset", custom_background_4_y_offset);
+			if (instance_exists(obj_foreground1))
+			{
+				ini_write_real("Custom Backgrounds", "custom_foreground_1_x_offset", obj_foreground1.x_offset);
+				ini_write_real("Custom Backgrounds", "custom_foreground_1_y_offset", obj_foreground1.y_offset);
+			}
+			if (instance_exists(obj_foreground_above_static_objects))
+			{
+				ini_write_real("Custom Backgrounds", "custom_foreground_above_static_objects_x_offset", obj_foreground_above_static_objects.x_offset);
+				ini_write_real("Custom Backgrounds", "custom_foreground_above_static_objects_y_offset", obj_foreground_above_static_objects.y_offset);
+			}
+			if (instance_exists(obj_foreground2))
+			{
+				ini_write_real("Custom Backgrounds", "custom_foreground_2_x_offset", obj_foreground2.x_offset);
+				ini_write_real("Custom Backgrounds", "custom_foreground_2_y_offset", obj_foreground2.y_offset);
+			}
+			if (instance_exists(obj_foreground_secret))
+			{
+				ini_write_real("Custom Backgrounds", "custom_foreground_secret_x_offset", obj_foreground_secret.x);
+				ini_write_real("Custom Backgrounds", "custom_foreground_secret_y_offset", obj_foreground_secret.y);
+			}
+			#endregion /* Save Custom Backgrounds Offset END */
+		
+			#region /* Save Custom Backgrounds Parallax */
+			ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", custom_background_1_x_parallax);
+			ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", custom_background_1_y_parallax);
+			ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", custom_background_2_x_parallax);
+			ini_write_real("Custom Backgrounds", "custom_background_2_y_parallax", custom_background_2_y_parallax);
+			ini_write_real("Custom Backgrounds", "custom_background_3_x_parallax", custom_background_3_x_parallax);
+			ini_write_real("Custom Backgrounds", "custom_background_3_y_parallax", custom_background_3_y_parallax);
+			ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", custom_background_4_x_parallax);
+			ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", custom_background_4_y_parallax);
+			#endregion /* Save Custom Backgrounds Parallax END */
+		
+			#region /* Save Custom Backgrounds Scale */
+			ini_write_real("Custom Backgrounds", "custom_background_1_x_scale", custom_background_1_x_scale);
+			ini_write_real("Custom Backgrounds", "custom_background_1_y_scale", custom_background_1_y_scale);
+			ini_write_real("Custom Backgrounds", "custom_background_2_x_scale", custom_background_2_x_scale);
+			ini_write_real("Custom Backgrounds", "custom_background_2_y_scale", custom_background_2_y_scale);
+			ini_write_real("Custom Backgrounds", "custom_background_3_x_scale", custom_background_3_x_scale);
+			ini_write_real("Custom Backgrounds", "custom_background_3_y_scale", custom_background_3_y_scale);
+			ini_write_real("Custom Backgrounds", "custom_background_4_x_scale", custom_background_4_x_scale);
+			ini_write_real("Custom Backgrounds", "custom_background_4_y_scale", custom_background_4_y_scale);
+			#endregion /* Save Custom Backgrounds Scale END */
+		
+			#region /* Save Custom Backgrounds Tiled */
+			ini_write_real("Custom Backgrounds", "custom_background_1_htiled", custom_background_1_htiled);
+			ini_write_real("Custom Backgrounds", "custom_background_1_vtiled", custom_background_1_vtiled);
+			ini_write_real("Custom Backgrounds", "custom_background_2_htiled", custom_background_2_htiled);
+			ini_write_real("Custom Backgrounds", "custom_background_2_vtiled", custom_background_2_vtiled);
+			ini_write_real("Custom Backgrounds", "custom_background_3_htiled", custom_background_3_htiled);
+			ini_write_real("Custom Backgrounds", "custom_background_3_vtiled", custom_background_3_vtiled);
+			ini_write_real("Custom Backgrounds", "custom_background_4_htiled", custom_background_4_htiled);
+			ini_write_real("Custom Backgrounds", "custom_background_4_vtiled", custom_background_4_vtiled);
+			#endregion /* Save Custom Backgrounds Tiled END */
+		
+			#endregion /* Save Custom Background Settings END */
+		
+			ini_close();
 		}
-		if (instance_exists(obj_foreground_above_static_objects))
-		{
-			ini_write_real("Custom Backgrounds", "custom_foreground_above_static_objects_x_offset", obj_foreground_above_static_objects.x_offset);
-			ini_write_real("Custom Backgrounds", "custom_foreground_above_static_objects_y_offset", obj_foreground_above_static_objects.y_offset);
-		}
-		if (instance_exists(obj_foreground2))
-		{
-			ini_write_real("Custom Backgrounds", "custom_foreground_2_x_offset", obj_foreground2.x_offset);
-			ini_write_real("Custom Backgrounds", "custom_foreground_2_y_offset", obj_foreground2.y_offset);
-		}
-		if (instance_exists(obj_foreground_secret))
-		{
-			ini_write_real("Custom Backgrounds", "custom_foreground_secret_x_offset", obj_foreground_secret.x);
-			ini_write_real("Custom Backgrounds", "custom_foreground_secret_y_offset", obj_foreground_secret.y);
-		}
-		#endregion /* Save Custom Backgrounds Offset END */
-		
-		#region /* Save Custom Backgrounds Parallax */
-		ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", custom_background_1_x_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", custom_background_1_y_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", custom_background_2_x_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background_2_y_parallax", custom_background_2_y_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background_3_x_parallax", custom_background_3_x_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background_3_y_parallax", custom_background_3_y_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", custom_background_4_x_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", custom_background_4_y_parallax);
-		#endregion /* Save Custom Backgrounds Parallax END */
-		
-		#region /* Save Custom Backgrounds Scale */
-		ini_write_real("Custom Backgrounds", "custom_background_1_x_scale", custom_background_1_x_scale);
-		ini_write_real("Custom Backgrounds", "custom_background_1_y_scale", custom_background_1_y_scale);
-		ini_write_real("Custom Backgrounds", "custom_background_2_x_scale", custom_background_2_x_scale);
-		ini_write_real("Custom Backgrounds", "custom_background_2_y_scale", custom_background_2_y_scale);
-		ini_write_real("Custom Backgrounds", "custom_background_3_x_scale", custom_background_3_x_scale);
-		ini_write_real("Custom Backgrounds", "custom_background_3_y_scale", custom_background_3_y_scale);
-		ini_write_real("Custom Backgrounds", "custom_background_4_x_scale", custom_background_4_x_scale);
-		ini_write_real("Custom Backgrounds", "custom_background_4_y_scale", custom_background_4_y_scale);
-		#endregion /* Save Custom Backgrounds Scale END */
-		
-		#region /* Save Custom Backgrounds Tiled */
-		ini_write_real("Custom Backgrounds", "custom_background_1_htiled", custom_background_1_htiled);
-		ini_write_real("Custom Backgrounds", "custom_background_1_vtiled", custom_background_1_vtiled);
-		ini_write_real("Custom Backgrounds", "custom_background_2_htiled", custom_background_2_htiled);
-		ini_write_real("Custom Backgrounds", "custom_background_2_vtiled", custom_background_2_vtiled);
-		ini_write_real("Custom Backgrounds", "custom_background_3_htiled", custom_background_3_htiled);
-		ini_write_real("Custom Backgrounds", "custom_background_3_vtiled", custom_background_3_vtiled);
-		ini_write_real("Custom Backgrounds", "custom_background_4_htiled", custom_background_4_htiled);
-		ini_write_real("Custom Backgrounds", "custom_background_4_vtiled", custom_background_4_vtiled);
-		#endregion /* Save Custom Backgrounds Tiled END */
-		
-		#endregion /* Save Custom Background Settings END */
-		
-		ini_close();
 		#endregion /* Save Level Information END */
 		
 	}

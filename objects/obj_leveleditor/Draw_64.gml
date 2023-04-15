@@ -372,13 +372,6 @@ if (global.actually_play_edited_level == false)
 					and (key_a_pressed)
 					and (menu_delay == 0)
 					{
-						
-						if (global.select_level_index >= 1)
-						and (global.create_level_from_template == false)
-						{
-							scr_open_folder(game_save_id + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)))
-						}
-						else
 						if (global.level_name != "")
 						{
 							scr_open_folder(game_save_id + "\custom_levels\\" + string(global.level_name))
@@ -507,31 +500,13 @@ if (global.actually_play_edited_level == false)
 				if (global.enable_options_for_pc == true)
 				{
 					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192, l10n_text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
-					if (global.character_select_in_this_menu == "level_editor")
-					and (global.select_level_index <= 0)
-					or (global.character_select_in_this_menu == "level_editor")
-					and (global.create_level_from_template >= 2)
+					if (get_window_width <= 1350)
 					{
-						if (get_window_width <= 1350)
-						{
-							scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size * 0.75, c_black, c_white, 1);
-						}
-						else
-						{
-							scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
-						}
+						scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size * 0.75, c_black, c_white, 1);
 					}
 					else
-					if (global.character_select_in_this_menu == "level_editor")
 					{
-						if (get_window_width <= 1350)
-						{
-							scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "\\full_level_map.png", "\\", "/"), global.default_text_size * 0.75, c_black, c_white, 1);
-						}
-						else
-						{
-							scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
-						}
+						scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
 					}
 				}
 				else

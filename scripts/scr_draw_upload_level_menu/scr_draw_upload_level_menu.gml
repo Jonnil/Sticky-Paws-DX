@@ -824,6 +824,12 @@ function scr_draw_upload_level_menu()
 					global.go_to_menu_after_loading_custom_levels = "upload_edit_name";
 					menu = "load_custom_level";
 					level_editor_edit_name = false;
+					if (global.level_name != "")
+					{
+						ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_write_string("info", "level_name", global.level_name);
+						ini_close();
+					}
 				}
 				else
 				if (level_editor_edit_name == true)

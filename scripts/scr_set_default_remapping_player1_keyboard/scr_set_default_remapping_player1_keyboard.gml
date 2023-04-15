@@ -1,6 +1,54 @@
 function scr_set_default_remapping_player1_keyboard()
 {
 	
+	//#region /* Player Key Remapping */
+	
+	///* [player] [key number] [key name] */
+	
+	//#region /* Player Key 1 defaults */
+	
+	//// global.player_[keyboard/gamepad][player][key1/key2][action]
+	//global.player_["key"][1][1]["dive"] = ord("X");
+	//global.player_["key"][1][1]["jump"] = ord("Z");
+	//global.player_["key"][1][1]["crouch"] = vk_down;
+	//global.player_["key"][1][1]["crouch_toggle"] = noone;
+	//global.player_["key"][1][1]["sprint"] = vk_lcontrol;
+	//global.player_["key"][1][1]["sprint_toggle"] = 20;
+	//global.player_["key"][1][1]["left"] = vk_left
+	//global.player_["key"][1][1]["right"] = vk_right;
+	//global.player_["key"][1][1]["down"] = vk_down;
+	//global.player_["key"][1][1]["up"] = vk_up;
+	//global.player_["key"][1][1]["tongue"] = noone;
+	//global.player_["key"][1][1]["zoom_in"] = 187;
+	//global.player_["key"][1][1]["zoom_out"] = 189;
+	//global.player_["key"][1][1]["accept"] = ord("Z");
+	//global.player_["key"][1][1]["back"] = ord("X");
+	//#endregion /* Player Key 1 defaults END */
+	
+	//#region
+	//// global.player_[keyboard/gamepad][player][key1/key2][action]
+	//global.player_["key"][1][2]["dive"] = noone;
+	//global.player_["key"][1][2]["jump"] = vk_space;
+	//global.player_["key"][1][2]["crouch"] = vk_shift;
+	//global.player_["key"][1][2]["crouch_toggle"] = noone;
+	//global.player_["key"][1][2]["sprint"] = ord("X");
+	//global.player_["key"][1][2]["sprint_toggle"] = noone;
+	//global.player_["key"][1][2]["left"] = ord("A");
+	//global.player_["key"][1][2]["right"] = ord("D");
+	//global.player_["key"][1][2]["down"] = ord("S");
+	//global.player_["key"][1][2]["up"] = ord("W");
+	//global.player_["key"][1][2]["tongue"] = noone;
+	//global.player_["key"][1][2]["zoom_in"] = vk_add;
+	//global.player_["key"][1][2]["zoom_out"] = vk_subtract;
+	//global.player_["key"][1][2]["accept"] = vk_enter;
+	//global.player_["key"][1][2]["back"] = vk_backspace;
+	//#endregion /* Player Key 1 defaults END */
+	
+	//#endregion /* Player Key Remapping END */
+	
+	
+	
+
 	#region /* Player 1 Keyboard Remapping */
 	
 	#region /* Player 1 Key 1 defaults */

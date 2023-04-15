@@ -48,11 +48,11 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	var name_entering_blink = scr_wave(0, 1, 1, 0);
 	if (name_entering_blink > 0.5)
 	{
-		scr_draw_text_outlined(xx + 6, yy, string(what_string_to_edit) + "|", global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(xx + 6, yy, string(keyboard_string) + "|", global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	{
-		scr_draw_text_outlined(xx, yy, string(what_string_to_edit), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(xx, yy, string(keyboard_string), global.default_text_size, c_black, c_white, 1);
 	}
 	#endregion /* Draw the inputed text END */
 	
@@ -150,7 +150,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	#region /* Clicking the Cancel button */
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
 	and (mouse_check_button_released(mb_left))
-	or (keyboard_check_released(vk_escape))
+	or (keyboard_check_pressed(vk_escape))
 	{
 		global.keyboard_virtual_timer = 0;
 		keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */

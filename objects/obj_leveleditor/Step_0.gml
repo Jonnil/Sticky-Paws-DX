@@ -198,23 +198,17 @@ if (global.actually_play_edited_level == false)
 				if (global.world_editor == false)
 				{
 					ini_open(working_directory + "/save_files/custom_level_save.ini");
-					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_x", 0);
-					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_y", 0);
-					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", 0);
-					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", 0);
-					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", 0);
-					ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
+					ini_write_real(string(global.level_name), "checkpoint_x", 0);
+					ini_write_real(string(global.level_name), "checkpoint_y", 0);
+					ini_write_real(string(global.level_name), "checkpoint_millisecond", 0);
+					ini_write_real(string(global.level_name), "checkpoint_second", 0);
+					ini_write_real(string(global.level_name), "checkpoint_minute", 0);
+					ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
 					ini_close();
 					
 					#region /* Save Level Thumbnail */
 					var thumbnail_sprite;
 					thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
-					if (global.select_level_index >= 1)
-					and (global.create_level_from_template == false)
-					{
-						sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/automatic_thumbnail.png");
-					}
-					else
 					if (global.level_name != "")
 					{
 						sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
@@ -250,12 +244,6 @@ if (global.actually_play_edited_level == false)
 					#region /* Save World Thumbnail */
 					var thumbnail_sprite;
 					thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
-					if (global.select_level_index >= 1)
-					and (global.create_level_from_template == false)
-					{
-						sprite_save(thumbnail_sprite, 0, working_directory + "/custom_worlds/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/automatic_thumbnail.png");
-					}
-					else
 					if (global.level_name != "")
 					{
 						sprite_save(thumbnail_sprite, 0, working_directory + "/custom_worlds/" + string(global.level_name) + "/automatic_thumbnail.png");
@@ -395,12 +383,12 @@ if (global.actually_play_edited_level == false)
 		global.checkpoint_realmillisecond = 0;
 	
 		ini_open(working_directory + "/save_files/custom_level_save.ini");
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_x", 0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_y", 0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", 0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", 0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", 0);
-		ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
+		ini_write_real(string(global.level_name), "checkpoint_x", 0);
+		ini_write_real(string(global.level_name), "checkpoint_y", 0);
+		ini_write_real(string(global.level_name), "checkpoint_millisecond", 0);
+		ini_write_real(string(global.level_name), "checkpoint_second", 0);
+		ini_write_real(string(global.level_name), "checkpoint_minute", 0);
+		ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
 		ini_close();
 	
 		#region /* Save Thumbnail */
@@ -410,12 +398,6 @@ if (global.actually_play_edited_level == false)
 		camera_get_view_y(view_camera[view_current]),
 		camera_get_view_width(view_camera[view_current]),
 		camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
-		if (global.select_level_index >= 1)
-		and (global.create_level_from_template == false)
-		{
-			sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/automatic_thumbnail.png");
-		}
-		else
 		if (global.level_name != "")
 		{
 			sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
@@ -780,13 +762,13 @@ if (global.actually_play_edited_level == false)
 							and (global.create_level_from_template == false)
 							{
 								ini_open(working_directory + "/save_files/custom_level_save.ini");
-								ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_x");
-								ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_y");
-								ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond");
-								ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_second");
-								ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_minute");
-								ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_realmillisecond");
-								ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_direction");
+								ini_key_delete(global.level_name, "checkpoint_x");
+								ini_key_delete(global.level_name, "checkpoint_y");
+								ini_key_delete(global.level_name, "checkpoint_millisecond");
+								ini_key_delete(global.level_name, "checkpoint_second");
+								ini_key_delete(global.level_name, "checkpoint_minute");
+								ini_key_delete(global.level_name, "checkpoint_realmillisecond");
+								ini_key_delete(global.level_name, "checkpoint_direction");
 								ini_close();
 							}
 							#endregion /* Reset Level Editor Checkpoint END */
@@ -1595,12 +1577,12 @@ if (global.actually_play_edited_level == false)
 			global.checkpoint_realmillisecond = 0;
 			
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_x", 0);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_y", 0);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", 0);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", 0);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", 0);
-			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
+			ini_write_real(string(global.level_name), "checkpoint_x", 0);
+			ini_write_real(string(global.level_name), "checkpoint_y", 0);
+			ini_write_real(string(global.level_name), "checkpoint_millisecond", 0);
+			ini_write_real(string(global.level_name), "checkpoint_second", 0);
+			ini_write_real(string(global.level_name), "checkpoint_minute", 0);
+			ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
 			ini_close();
 			
 			menu_delay = 9999; /* Disable all menu control */
@@ -1621,12 +1603,6 @@ if (global.actually_play_edited_level == false)
 			camera_get_view_y(view_camera[view_current]),
 			camera_get_view_width(view_camera[view_current]),
 			camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
-			if (global.select_level_index >= 1)
-			and (global.create_level_from_template == false)
-			{
-				sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/automatic_thumbnail.png");
-			}
-			else
 			if (global.level_name != "")
 			{
 				sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");

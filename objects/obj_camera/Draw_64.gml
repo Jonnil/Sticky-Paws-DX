@@ -521,6 +521,17 @@ and (global.character_select_in_this_menu == "level_editor")
 		draw_rectangle_color(32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
 		draw_set_alpha(1);
 	}
+	
+	#region /* Draw mouse cursor for menu navigation */
+	if (global.controls_used_for_menu_navigation == "mouse")
+	and (global.full_level_map_screenshot == false)
+	and (os_type != os_android)
+	and (os_type != os_ios)
+	{
+		draw_sprite_ext(spr_cursor, 0, device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 1, 1, 0, c_white, 1);
+	}
+	#endregion /* Draw mouse cursor for menu navigation END */
+	
 }
 #endregion /* Play Level Button END */
 

@@ -1,6 +1,63 @@
 function scr_set_default_remapping_player1_gamepad()
 {
 	
+	//#region /* Player Key Remapping */
+	
+	///* [player] [key number] [key name] */
+	
+	//#region /* Player Key 1 defaults */
+	
+	//// global.player_[key/gp][player][key1/key2][action]
+	//global.player_["gp"][1][1]["dive"] = gp_face3;
+	//global.player_["gp"][1][1]["jump"] = gp_face1;
+	//global.player_["gp"][1][1]["crouch"] = gp_padd;
+	//global.player_["gp"][1][1]["crouch_toggle"] = noone;
+	//global.player_["gp"][1][1]["sprint"] = gp_face3;
+	//global.player_["gp"][1][1]["sprint_toggle"] = noone;
+	//global.player_["gp"][1][1]["left"] = gp_padl;
+	//global.player_["gp"][1][1]["right"] = gp_padr;
+	//global.player_["gp"][1][1]["down"] = gp_padd;
+	//global.player_["gp"][1][1]["up"] = gp_padu;
+	//global.player_["gp"][1][1]["tongue"] = noone;
+	//global.player_["gp"][1][1]["zoom_in"] = noone;
+	//global.player_["gp"][1][1]["zoom_out"] = noone;
+	//if (os_type == os_switch)
+	//{
+	//	global.player_["gp"][1][1]["accept"]  = gp_face2;
+	//	global.player_["gp"][1][1]["back"]  = gp_face1;
+	//}
+	//else
+	//{
+	//	global.player_["gp"][1][1]["accept"]  = gp_face1;
+	//	global.player_["gp"][1][1]["back"]  = gp_face2;
+	//}
+	//#endregion /* Player Key 1 defaults END */
+	
+	//#region
+	//// global.player_[keyboard/gamepad][player][key1/key2][action]
+	//global.player_["gp"][1][2]["dive"] = noone;
+	//global.player_["gp"][1][2]["jump"] = noone;
+	//global.player_["gp"][1][2]["crouch"] = noone;
+	//global.player_["gp"][1][2]["crouch_toggle"] = noone;
+	//global.player_["gp"][1][2]["sprint"] = gp_shoulderrb;
+	//global.player_["gp"][1][2]["sprint_toggle"] = noone;
+	//global.player_["gp"][1][2]["left"] = noone;
+	//global.player_["gp"][1][2]["right"] = noone;
+	//global.player_["gp"][1][2]["down"] = noone;
+	//global.player_["gp"][1][2]["up"] = noone;
+	//global.player_["gp"][1][2]["tongue"] = noone;
+	//global.player_["gp"][1][2]["zoom_in"] = noone;
+	//global.player_["gp"][1][2]["zoom_out"] = noone;
+	//global.player_["gp"][1][2]["accept"] = noone;
+	//global.player_["gp"][1][2]["back"] = noone;
+	//#endregion /* Player Key 1 defaults END */
+	
+	//#endregion /* Player Key Remapping END */
+	
+	
+	
+	
+	
 	#region /* Player 1 Gamepad Remapping */
 	
 	#region /* Player 1 Gamepad Buttons 1 defaults */

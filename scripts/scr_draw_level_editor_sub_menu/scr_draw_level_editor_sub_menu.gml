@@ -379,6 +379,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				global.actually_play_edited_level = false;
 				if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 				{
+					show_message("keyboard_string = " + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
 					global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
 					keyboard_string = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
 				}

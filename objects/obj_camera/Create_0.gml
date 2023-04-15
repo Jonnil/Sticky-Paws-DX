@@ -182,7 +182,9 @@ if (global.actually_play_edited_level == true)
 and (global.play_edited_level == true)
 {
 	if (global.checkpoint_x > 0)
+	and (global.create_level_from_template >= true)
 	or (global.checkpoint_y > 0)
+	and (global.create_level_from_template >= true)
 	{
 		camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
 		if (asset_get_type("obj_player") == asset_object)
@@ -215,8 +217,10 @@ if (can_spawn_players == true)
 	if (global.player1_can_play == true)
 	{
 		if (global.checkpoint_x > 0)
+		and (global.create_level_from_template >= true)
 		and (global.actually_play_edited_level == true)
 		or (global.checkpoint_y > 0)
+		and (global.create_level_from_template >= true)
 		and (global.actually_play_edited_level == true)
 		{
 			player1 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
@@ -247,8 +251,10 @@ if (can_spawn_players == true)
 	if (global.player2_can_play == true)
 	{
 		if (global.checkpoint_x > 0)
+		and (global.create_level_from_template >= true)
 		and (global.actually_play_edited_level == true)
 		or (global.checkpoint_y > 0)
+		and (global.create_level_from_template >= true)
 		and (global.actually_play_edited_level == true)
 		{
 			player2 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
@@ -279,8 +285,10 @@ if (can_spawn_players == true)
 	if (global.player3_can_play == true)
 	{
 		if (global.checkpoint_x > 0)
+		and (global.create_level_from_template >= true)
 		and (global.actually_play_edited_level == true)
 		or (global.checkpoint_y > 0)
+		and (global.create_level_from_template >= true)
 		and (global.actually_play_edited_level == true)
 		{
 			player3 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
@@ -311,8 +319,10 @@ if (can_spawn_players == true)
 	if (global.player4_can_play == true)
 	{
 		if (global.checkpoint_x > 0)
+		and (global.create_level_from_template >= true)
 		and (global.actually_play_edited_level == true)
 		or (global.checkpoint_y > 0)
+		and (global.create_level_from_template >= true)
 		and (global.actually_play_edited_level == true)
 		{
 			player4 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
@@ -600,9 +610,12 @@ if (instance_exists(obj_player))
 		if (global.actually_play_edited_level == true)
 		and (global.play_edited_level == true)
 		and (global.checkpoint_x > 0)
+		and (global.create_level_from_template >= true)
+		
 		or (global.actually_play_edited_level == true)
 		and (global.play_edited_level == true)
 		and (global.checkpoint_y > 0)
+		and (global.create_level_from_template >= true)
 		{
 			global.timeattack_realmillisecond = global.checkpoint_realmillisecond;
 			global.timeattack_millisecond = global.checkpoint_millisecond;

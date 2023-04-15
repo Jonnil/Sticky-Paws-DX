@@ -2494,6 +2494,7 @@
     {"id":{"name":"obj_ground","path":"objects/obj_ground/obj_ground.yy",},},
     {"id":{"name":"spr_oneway","path":"sprites/spr_oneway/spr_oneway.yy",},},
     {"id":{"name":"spr_bird","path":"sprites/spr_bird/spr_bird.yy",},},
+    {"id":{"name":"scr_menu_navigation_initialization","path":"scripts/scr_menu_navigation_initialization/scr_menu_navigation_initialization.yy",},},
     {"id":{"name":"scr_zoom_camera_controls","path":"scripts/scr_zoom_camera_controls/scr_zoom_camera_controls.yy",},},
     {"id":{"name":"obj_heart_balloon","path":"objects/obj_heart_balloon/obj_heart_balloon.yy",},},
     {"id":{"name":"obj_cake_stealing_enemy","path":"objects/obj_cake_stealing_enemy/obj_cake_stealing_enemy.yy",},},

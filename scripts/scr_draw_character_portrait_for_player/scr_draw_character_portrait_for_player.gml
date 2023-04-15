@@ -970,7 +970,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 				player1_accept_selection = -1;
 			}
 		}
-		if (player2_accept_selection = false)
+		if (player2_accept_selection == false)
 		{
 			if (gamepad_button_check_pressed(1, player_gamepad_button_back))
 			and (menu_delay == 0)
@@ -983,7 +983,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 				player2_accept_selection = -1;
 			}
 		}
-		if (player3_accept_selection = false)
+		if (player3_accept_selection == false)
 		{
 			if (gamepad_button_check_pressed(2, player_gamepad_button_back))
 			and (menu_delay == 0)
@@ -996,7 +996,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 				player3_accept_selection = -1;
 			}
 		}
-		if (player4_accept_selection = false)
+		if (player4_accept_selection == false)
 		{
 			if (gamepad_button_check_pressed(3, player_gamepad_button_back))
 			and (menu_delay == 0)

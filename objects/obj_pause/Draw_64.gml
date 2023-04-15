@@ -63,7 +63,7 @@ if (global.pause_player == 0)
 	/* Player 1 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept)) or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_accept)) or (keyboard_check_pressed(global.player1_key_accept)) or (keyboard_check_pressed(global.player1_key2_accept)) or (keyboard_check_pressed(vk_space));
 	/* Player 1 Key Accept Hold */ key_a_hold = (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept)) or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button2_accept)) or (keyboard_check(global.player1_key_accept)) or (keyboard_check(global.player1_key2_accept)) or (keyboard_check(vk_space));
 	/* Player 1 Key Accept Released */ key_a_released = (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept)) or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_accept)) or (keyboard_check_released(global.player1_key_accept)) or (keyboard_check_released(global.player1_key2_accept)) or (keyboard_check_released(vk_space));
-	/* Player 1 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_back)) or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_back)) or (keyboard_check_pressed(global.player1_key_back)) or (keyboard_check_pressed(global.player1_key2_back)) or (keyboard_check_pressed(vk_escape));
+	/* Player 1 Key Back Pressed */ key_b_pressed = scr_key_initialize(key_b_pressed, 1, 1, global.player1_key_back, global.player1_key2_back, global.player1_gamepad_button_back, global.player1_gamepad_button_back);
 }
 #endregion /* Player 1 END */
 

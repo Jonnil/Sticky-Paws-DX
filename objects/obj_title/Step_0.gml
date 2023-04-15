@@ -180,6 +180,34 @@ if (lerp_on == true)
 
 if (menu == "load_characters")
 {
+	
+	#region /* Player Automatically Join */
+	/* When going to the character select menu, game should remember what player entered the menu, and therefore should automatically join the game, as the game should already know for certain that player is already joining the game */
+	/* Player 1 Key Accept Hold */ player1_key_a_hold = (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept)) or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button2_accept)) or (keyboard_check(global.player1_key_accept)) or (keyboard_check(global.player1_key2_accept)) or (keyboard_check(vk_space));
+	/* Player 2 Key Accept Hold */ player2_key_a_hold = (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_accept)) or (gamepad_button_check(global.player2_slot, global.player2_gamepad_button2_accept)) or (keyboard_check(global.player2_key_accept)) or (keyboard_check(global.player2_key2_accept));
+	/* Player 3 Key Accept Hold */ player3_key_a_hold = (gamepad_button_check(global.player3_slot, global.player3_gamepad_button_accept)) or (gamepad_button_check(global.player3_slot, global.player3_gamepad_button2_accept)) or (keyboard_check(global.player3_key_accept)) or (keyboard_check(global.player3_key2_accept));
+	/* Player 4 Key Accept Hold */ player4_key_a_hold = (gamepad_button_check(global.player4_slot, global.player4_gamepad_button_accept)) or (gamepad_button_check(global.player4_slot, global.player4_gamepad_button2_accept)) or (keyboard_check(global.player4_key_accept)) or (keyboard_check(global.player4_key2_accept));
+	if (player1_key_a_hold)
+	{
+		player1_automatically_join = true;
+	}
+	else
+	if (player2_key_a_hold)
+	{
+		player2_automatically_join = true;
+	}
+	else
+	if (player3_key_a_hold)
+	{
+		player3_automatically_join = true;
+	}
+	else
+	if (player4_key_a_hold)
+	{
+		player4_automatically_join = true;
+	}
+	#endregion /* Player Automatically Join END */
+	
 	/* Load custom character data */
 	
 	file_load_timer += 1;
