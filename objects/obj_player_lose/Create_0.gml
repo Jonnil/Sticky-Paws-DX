@@ -11,6 +11,7 @@ menu_cursor_index = 0;
 game_over_menu_y = 64;
 game_over_menu_seperation_distance = 64;
 menu_delay = 0;
+open_dropdown = false;
 if (bbox_top >= room_height)
 {
 	continue_falling = true;
@@ -57,7 +58,7 @@ if (global.character_select_in_this_menu == "level_editor")
 #endregion /* Save how many times you have died END */
 
 bubble = false;
-if (bubble = false)
+if (bubble == false)
 {
 	lives -= 1;
 	global.lives_until_assist += 1;

@@ -20,13 +20,13 @@ if (stomped_delay <= 0)
 			other.dive = false;
 			with(other)
 			{
-				if (simple_controls = false)
+				if (simple_controls == false)
 				{
 					vspeed = -triple_jump_height;
 				}
 			}
 		}
-		if (die_volting = false)
+		if (die_volting == false)
 		{
 			if (coil_spring == true)
 			{
@@ -557,16 +557,16 @@ if (stomped_delay <= 0)
 
 
 
-if (die_volting = false)
+if (die_volting == false)
 and (stomped_delay <= 0)
 {
 	if (other.vspeed > 0)
-	or (other.climb = false)
+	or (other.climb == false)
 	and (other.vspeed < 0)
 	or (other.bbox_bottom < y)
 	{
-		if (other.ground_pound = false)
-		and (flat = false)
+		if (other.ground_pound == false)
+		and (flat == false)
 		{
 			if (abs(other.hspeed) > 7)
 			{
@@ -1098,7 +1098,7 @@ if (other.key_jump_hold)
 			vspeed = -4;
 		}
 		else
-		if (simple_controls = false)
+		if (simple_controls == false)
 		{
 			vspeed = -triple_jump_height;
 		}
@@ -1123,7 +1123,7 @@ image_index = 0;
 }
 else
 if (other.ground_pound == true) /* Ground pound the enemy and kill it instantly */
-and (flat = false)
+and (flat == false)
 {
 	die = true;
 	global.enemy_counter += 1;
@@ -1635,7 +1635,7 @@ else
 
 else
 if (other.takendamage <= 0)
-and (other.assist_invincible = false)
+and (other.assist_invincible == false)
 {
 	if (other.have_heart_balloon == true)
 	{

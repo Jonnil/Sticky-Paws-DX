@@ -205,201 +205,13 @@ function scr_player_move_customizable_controls()
 	
 	#endregion /* Set values from the Input Settings END */
 	
-	#region /* Initialize Player Controls */
-	
-	#region /* Player 1 Controls */
-	if (player <= 1)
-	{
-		var this_player_key_crouch_toggle = global.player1_key_crouch_toggle;
-		var this_player_key2_crouch_toggle = global.player1_key2_crouch_toggle;
-		var this_player_gamepad_button_crouch_toggle = global.player1_gamepad_button_crouch_toggle;
-		var this_player_gamepad_button2_crouch_toggle = global.player1_gamepad_button2_crouch_toggle;
-		var this_player_key_tongue = global.player1_key_tongue;
-		var this_player_key2_tongue = global.player1_key2_tongue;
-		var this_player_gamepad_button_tongue = global.player1_gamepad_button_tongue;
-		var this_player_gamepad_button2_tongue = global.player1_gamepad_button2_tongue;
-		var this_player_key_dive = global.player1_key_dive;
-		var this_player_key2_dive = global.player1_key2_dive;
-		var this_player_gamepad_button_dive = global.player1_gamepad_button_dive;
-		var this_player_gamepad_button2_dive = global.player1_gamepad_button2_dive;
-		var this_player_key_jump = global.player1_key_jump;
-		var this_player_key2_jump = global.player1_key2_jump;
-		var this_player_gamepad_button_jump = global.player1_gamepad_button_jump;
-		var this_player_gamepad_button2_jump = global.player1_gamepad_button2_jump;
-		var this_player_key_up = global.player1_key_up;
-		var this_player_key2_up = global.player1_key2_up;
-		var this_player_gamepad_button_up = global.player1_gamepad_button_up;
-		var this_player_gamepad_button2_up = global.player1_gamepad_button2_up;
-		var this_player_key_down = global.player1_key_down;
-		var this_player_key2_down = global.player1_key2_down;
-		var this_player_gamepad_button_down = global.player1_gamepad_button_down;
-		var this_player_gamepad_button2_down = global.player1_gamepad_button2_down;
-		var this_player_key_left = global.player1_key_left;
-		var this_player_key2_left = global.player1_key2_left;
-		var this_player_gamepad_button_left = global.player1_gamepad_button_left;
-		var this_player_gamepad_button2_left = global.player1_gamepad_button2_left;
-		var this_player_key_right = global.player1_key_right;
-		var this_player_key2_right = global.player1_key2_right;
-		var this_player_gamepad_button_right = global.player1_gamepad_button_right;
-		var this_player_gamepad_button2_right = global.player1_gamepad_button2_right;
-		var this_player_key_crouch = global.player1_key_crouch;
-		var this_player_key2_crouch = global.player1_key2_crouch;
-		var this_player_gamepad_button_crouch = global.player1_gamepad_button_crouch;
-		var this_player_gamepad_button2_crouch = global.player1_gamepad_button2_crouch;
-		var this_player_key_sprint = global.player1_key_sprint;
-		var this_player_key2_sprint = global.player1_key2_sprint;
-		var this_player_gamepad_button_sprint = global.player1_gamepad_button_sprint;
-		var this_player_gamepad_button2_sprint = global.player1_gamepad_button2_sprint;
-	}
-	#endregion /* Player 1 Controls END */
-
-	#region /* Player 2 Controls */
-	if (player == 2)
-	{
-		var this_player_key_crouch_toggle = global.player2_key_crouch_toggle;
-		var this_player_key2_crouch_toggle = global.player2_key2_crouch_toggle;
-		var this_player_gamepad_button_crouch_toggle = global.player2_gamepad_button_crouch_toggle;
-		var this_player_gamepad_button2_crouch_toggle = global.player2_gamepad_button2_crouch_toggle;
-		var this_player_key_tongue = global.player2_key_tongue;
-		var this_player_key2_tongue = global.player2_key2_tongue;
-		var this_player_gamepad_button_tongue = global.player2_gamepad_button_tongue;
-		var this_player_gamepad_button2_tongue = global.player2_gamepad_button2_tongue;
-		var this_player_key_dive = global.player2_key_dive;
-		var this_player_key2_dive = global.player2_key2_dive;
-		var this_player_gamepad_button_dive = global.player2_gamepad_button_dive;
-		var this_player_gamepad_button2_dive = global.player2_gamepad_button2_dive;
-		var this_player_key_jump = global.player2_key_jump;
-		var this_player_key2_jump = global.player2_key2_jump;
-		var this_player_gamepad_button_jump = global.player2_gamepad_button_jump;
-		var this_player_gamepad_button2_jump = global.player2_gamepad_button2_jump;
-		var this_player_key_up = global.player2_key_up;
-		var this_player_key2_up = global.player2_key2_up;
-		var this_player_gamepad_button_up = global.player2_gamepad_button_up;
-		var this_player_gamepad_button2_up = global.player2_gamepad_button2_up;
-		var this_player_key_down = global.player2_key_down;
-		var this_player_key2_down = global.player2_key2_down;
-		var this_player_gamepad_button_down = global.player2_gamepad_button_down;
-		var this_player_gamepad_button2_down = global.player2_gamepad_button2_down;
-		var this_player_key_left = global.player2_key_left;
-		var this_player_key2_left = global.player2_key2_left;
-		var this_player_gamepad_button_left = global.player2_gamepad_button_left;
-		var this_player_gamepad_button2_left = global.player2_gamepad_button2_left;
-		var this_player_key_right = global.player2_key_right;
-		var this_player_key2_right = global.player2_key2_right;
-		var this_player_gamepad_button_right = global.player2_gamepad_button_right;
-		var this_player_gamepad_button2_right = global.player2_gamepad_button2_right;
-		var this_player_key_crouch = global.player2_key_crouch;
-		var this_player_key2_crouch = global.player2_key2_crouch;
-		var this_player_gamepad_button_crouch = global.player2_gamepad_button_crouch;
-		var this_player_gamepad_button2_crouch = global.player2_gamepad_button2_crouch;
-		var this_player_key_sprint = global.player2_key_sprint;
-		var this_player_key2_sprint = global.player2_key2_sprint;
-		var this_player_gamepad_button_sprint = global.player2_gamepad_button_sprint;
-		var this_player_gamepad_button2_sprint = global.player2_gamepad_button2_sprint;
-	}
-	#endregion /* Player 2 Controls END */
-
-	#region /* Player 3 Controls */
-	if (player == 3)
-	{
-		var this_player_key_crouch_toggle = global.player3_key_crouch_toggle;
-		var this_player_key2_crouch_toggle = global.player3_key2_crouch_toggle;
-		var this_player_gamepad_button_crouch_toggle = global.player3_gamepad_button_crouch_toggle;
-		var this_player_gamepad_button2_crouch_toggle = global.player3_gamepad_button2_crouch_toggle;
-		var this_player_key_tongue = global.player3_key_tongue;
-		var this_player_key2_tongue = global.player3_key2_tongue;
-		var this_player_gamepad_button_tongue = global.player3_gamepad_button_tongue;
-		var this_player_gamepad_button2_tongue = global.player3_gamepad_button2_tongue;
-		var this_player_key_dive = global.player3_key_dive;
-		var this_player_key2_dive = global.player3_key2_dive;
-		var this_player_gamepad_button_dive = global.player3_gamepad_button_dive;
-		var this_player_gamepad_button2_dive = global.player3_gamepad_button2_dive;
-		var this_player_key_jump = global.player3_key_jump;
-		var this_player_key2_jump = global.player3_key2_jump;
-		var this_player_gamepad_button_jump = global.player3_gamepad_button_jump;
-		var this_player_gamepad_button2_jump = global.player3_gamepad_button2_jump;
-		var this_player_key_up = global.player3_key_up;
-		var this_player_key2_up = global.player3_key2_up;
-		var this_player_gamepad_button_up = global.player3_gamepad_button_up;
-		var this_player_gamepad_button2_up = global.player3_gamepad_button2_up;
-		var this_player_key_down = global.player3_key_down;
-		var this_player_key2_down = global.player3_key2_down;
-		var this_player_gamepad_button_down = global.player3_gamepad_button_down;
-		var this_player_gamepad_button2_down = global.player3_gamepad_button2_down;
-		var this_player_key_left = global.player3_key_left;
-		var this_player_key2_left = global.player3_key2_left;
-		var this_player_gamepad_button_left = global.player3_gamepad_button_left;
-		var this_player_gamepad_button2_left = global.player3_gamepad_button2_left;
-		var this_player_key_right = global.player3_key_right;
-		var this_player_key2_right = global.player3_key2_right;
-		var this_player_gamepad_button_right = global.player3_gamepad_button_right;
-		var this_player_gamepad_button2_right = global.player3_gamepad_button2_right;
-		var this_player_key_crouch = global.player3_key_crouch;
-		var this_player_key2_crouch = global.player3_key2_crouch;
-		var this_player_gamepad_button_crouch = global.player3_gamepad_button_crouch;
-		var this_player_gamepad_button2_crouch = global.player3_gamepad_button2_crouch;
-		var this_player_key_sprint = global.player3_key_sprint;
-		var this_player_key2_sprint = global.player3_key2_sprint;
-		var this_player_gamepad_button_sprint = global.player3_gamepad_button_sprint;
-		var this_player_gamepad_button2_sprint = global.player3_gamepad_button2_sprint;
-	}
-	#endregion /* Player 3 Controls END */
-
-	#region /* Player 4 Controls */
-	if (player >= 4)
-	{
-		var this_player_key_crouch_toggle = global.player4_key_crouch_toggle;
-		var this_player_key2_crouch_toggle = global.player4_key2_crouch_toggle;
-		var this_player_gamepad_button_crouch_toggle = global.player4_gamepad_button_crouch_toggle;
-		var this_player_gamepad_button2_crouch_toggle = global.player4_gamepad_button2_crouch_toggle;
-		var this_player_key_tongue = global.player4_key_tongue;
-		var this_player_key2_tongue = global.player4_key2_tongue;
-		var this_player_gamepad_button_tongue = global.player4_gamepad_button_tongue;
-		var this_player_gamepad_button2_tongue = global.player4_gamepad_button2_tongue;
-		var this_player_key_dive = global.player4_key_dive;
-		var this_player_key2_dive = global.player4_key2_dive;
-		var this_player_gamepad_button_dive = global.player4_gamepad_button_dive;
-		var this_player_gamepad_button2_dive = global.player4_gamepad_button2_dive;
-		var this_player_key_jump = global.player4_key_jump;
-		var this_player_key2_jump = global.player4_key2_jump;
-		var this_player_gamepad_button_jump = global.player4_gamepad_button_jump;
-		var this_player_gamepad_button2_jump = global.player4_gamepad_button2_jump;
-		var this_player_key_up = global.player4_key_up;
-		var this_player_key2_up = global.player4_key2_up;
-		var this_player_gamepad_button_up = global.player4_gamepad_button_up;
-		var this_player_gamepad_button2_up = global.player4_gamepad_button2_up;
-		var this_player_key_down = global.player4_key_down;
-		var this_player_key2_down = global.player4_key2_down;
-		var this_player_gamepad_button_down = global.player4_gamepad_button_down;
-		var this_player_gamepad_button2_down = global.player4_gamepad_button2_down;
-		var this_player_key_left = global.player4_key_left;
-		var this_player_key2_left = global.player4_key2_left;
-		var this_player_gamepad_button_left = global.player4_gamepad_button_left;
-		var this_player_gamepad_button2_left = global.player4_gamepad_button2_left;
-		var this_player_key_right = global.player4_key_right;
-		var this_player_key2_right = global.player4_key2_right;
-		var this_player_gamepad_button_right = global.player4_gamepad_button_right;
-		var this_player_gamepad_button2_right = global.player4_gamepad_button2_right;
-		var this_player_key_crouch = global.player4_key_crouch;
-		var this_player_key2_crouch = global.player4_key2_crouch;
-		var this_player_gamepad_button_crouch = global.player4_gamepad_button_crouch;
-		var this_player_gamepad_button2_crouch = global.player4_gamepad_button2_crouch;
-		var this_player_key_sprint = global.player4_key_sprint;
-		var this_player_key2_sprint = global.player4_key2_sprint;
-		var this_player_gamepad_button_sprint = global.player4_gamepad_button_sprint;
-		var this_player_gamepad_button2_sprint = global.player4_gamepad_button2_sprint;
-	}
-	#endregion /* Player 4 Controls END */
-
-	#endregion /* Initialize Player Controls END */
-	
 	#region /* Crouch Toggling */
-	key_crouch_toggle = scr_key_initialize(key_crouch_toggle, 1, player, this_player_key_crouch_toggle, this_player_key2_crouch_toggle, this_player_gamepad_button_crouch_toggle, this_player_gamepad_button2_crouch_toggle);
+	key_crouch_toggle = scr_key_initialize(key_crouch_toggle, 1, player, action.crouch_toggle);
 	if (key_crouch_toggle)
 	{
 		if (player <= 1)
 		{
-			if (global.player1_crouch_toggle = false)
+			if (global.player1_crouch_toggle == false)
 			{
 				global.player1_crouch_toggle = true;
 			}
@@ -411,7 +223,7 @@ function scr_player_move_customizable_controls()
 		else
 		if (player == 2)
 		{
-			if (global.player2_crouch_toggle = false)
+			if (global.player2_crouch_toggle == false)
 			{
 				global.player2_crouch_toggle = true;
 			}
@@ -423,7 +235,7 @@ function scr_player_move_customizable_controls()
 		else
 		if (player == 3)
 		{
-			if (global.player3_crouch_toggle = false)
+			if (global.player3_crouch_toggle == false)
 			{
 				global.player3_crouch_toggle = true;
 			}
@@ -435,7 +247,7 @@ function scr_player_move_customizable_controls()
 		else
 		if (player == 4)
 		{
-			if (global.player4_crouch_toggle = false)
+			if (global.player4_crouch_toggle == false)
 			{
 				global.player4_crouch_toggle = true;
 			}
@@ -447,20 +259,20 @@ function scr_player_move_customizable_controls()
 	}
 	#endregion /* Crouch Toggling END */
 	
-	key_tongue = scr_key_initialize(key_tongue, 0, player, this_player_key_tongue, this_player_key2_tongue, this_player_gamepad_button_tongue, this_player_gamepad_button2_tongue);
-	key_tongue_pressed = scr_key_initialize(key_tongue_pressed, 1, player, this_player_key_tongue, this_player_key2_tongue, this_player_gamepad_button_tongue, this_player_gamepad_button2_tongue);
-	key_tongue_released = scr_key_initialize(key_tongue_released, 2, player, this_player_key_tongue, this_player_key2_tongue, this_player_gamepad_button_tongue, this_player_gamepad_button2_tongue);
-	key_dive_pressed = scr_key_initialize(key_dive_pressed, 1, player, this_player_key_dive, this_player_key2_dive, this_player_gamepad_button_dive, this_player_gamepad_button2_dive);
-	key_dive_hold = scr_key_initialize(key_dive_pressed, 0, player, this_player_key_dive, this_player_key2_dive, this_player_gamepad_button_dive, this_player_gamepad_button2_dive);
+	key_tongue = scr_key_initialize(key_tongue, 0, player, action.tongue);
+	key_tongue_pressed = scr_key_initialize(key_tongue_pressed, 1, player, action.tongue);
+	key_tongue_released = scr_key_initialize(key_tongue_released, 2, player, action.tongue);
+	key_dive_pressed = scr_key_initialize(key_dive_pressed, 1, player, action.dive);
+	key_dive_hold = scr_key_initialize(key_dive_hold, 0, player, action.dive);
 	
-	key_left_hold_temp = scr_key_initialize(key_left_hold_temp, 0, player, this_player_key_left, this_player_key2_left, this_player_gamepad_button_left, this_player_gamepad_button2_left);
-	key_left_pressed_temp = scr_key_initialize(key_left_pressed_temp, 1, player, this_player_key_left, this_player_key2_left, this_player_gamepad_button_left, this_player_gamepad_button2_left);
-	key_right_hold_temp = scr_key_initialize(key_right_hold_temp, 0, player, this_player_key_right, this_player_key2_right, this_player_gamepad_button_right, this_player_gamepad_button2_right);
-	key_right_pressed_temp = scr_key_initialize(key_right_pressed_temp, 1, player, this_player_key_right, this_player_key2_right, this_player_gamepad_button_right, this_player_gamepad_button2_right);
-	key_down_hold_temp = scr_key_initialize(key_down_hold_temp, 0, player, this_player_key_down, this_player_key2_down, this_player_gamepad_button_down, this_player_gamepad_button2_down);
-	key_up_hold_temp = scr_key_initialize(key_up_hold_temp, 0, player, this_player_key_up, this_player_key2_up, this_player_gamepad_button_up, this_player_gamepad_button2_up);
-	key_up_pressed_temp = scr_key_initialize(key_up_pressed_temp, 1, player, this_player_key_up, this_player_key2_up, this_player_gamepad_button_up, this_player_gamepad_button2_up);
-	key_up_released_temp = scr_key_initialize(key_up_released_temp, 2, player, this_player_key_up, this_player_key2_up, this_player_gamepad_button_up, this_player_gamepad_button2_up);
+	key_left_hold_temp = scr_key_initialize(key_left_hold_temp, 0, player, action.left);
+	key_left_pressed_temp = scr_key_initialize(key_left_pressed_temp, 1, player, action.left);
+	key_right_hold_temp = scr_key_initialize(key_right_hold_temp, 0, player, action.right);
+	key_right_pressed_temp = scr_key_initialize(key_right_pressed_temp, 1, player, action.right);
+	key_down_hold_temp = scr_key_initialize(key_down_hold_temp, 0, player, action.down);
+	key_up_hold_temp = scr_key_initialize(key_up_hold_temp, 0, player, action.up);
+	key_up_pressed_temp = scr_key_initialize(key_up_pressed_temp, 1, player, action.up);
+	key_up_released_temp = scr_key_initialize(key_up_released_temp, 2, player, action.up);
 	
 	#region /* Key Left Hold */
 	key_left_hold =
@@ -515,7 +327,7 @@ function scr_player_move_customizable_controls()
 	#endregion /* Key Up Pressed END */
 	
 	#region /* Key Jump Pressed */
-	key_jump_pressed_temp = scr_key_initialize(key_jump_pressed_temp, 1, player, this_player_key_jump, this_player_key2_jump, this_player_gamepad_button_jump, this_player_gamepad_button2_jump);
+	key_jump_pressed_temp = scr_key_initialize(key_jump_pressed_temp, 1, player, action.jump);
 	
 	key_jump =
 	(key_jump_pressed_temp)
@@ -526,7 +338,7 @@ function scr_player_move_customizable_controls()
 	#endregion /* Key Jump Pressed END */
 	
 	#region /* Key Jump Hold */
-	key_jump_hold_temp = scr_key_initialize(key_jump_hold_temp, 0, player, this_player_key_jump, this_player_key2_jump, this_player_gamepad_button_jump, this_player_gamepad_button2_jump);
+	key_jump_hold_temp = scr_key_initialize(key_jump_hold_temp, 0, player, action.jump);
 	
 	key_jump_hold =
 	(key_jump_hold_temp)
@@ -537,7 +349,7 @@ function scr_player_move_customizable_controls()
 	#endregion /* Key Jump Hold END */
 	
 	#region /* Key Jump Released */
-	key_jump_released_temp = scr_key_initialize(key_jump_released_temp, 2, player, this_player_key_jump, this_player_key2_jump, this_player_gamepad_button_jump, this_player_gamepad_button2_jump);
+	key_jump_released_temp = scr_key_initialize(key_jump_released_temp, 2, player, action.jump);
 	
 	key_jump_released =
 	(key_jump_released_temp)
@@ -547,7 +359,7 @@ function scr_player_move_customizable_controls()
 	#endregion /* Key Jump Released END */
 	
 	#region /* Key Crouch Hold */
-	key_crouch_hold_temp = scr_key_initialize(key_crouch_hold_temp, 0, player, this_player_key_crouch, this_player_key2_crouch, this_player_gamepad_button_crouch, this_player_gamepad_button2_crouch);
+	key_crouch_hold_temp = scr_key_initialize(key_crouch_hold_temp, 0, player, action.crouch);
 	
 	key_crouch_hold =
 	(key_crouch_hold_temp)
@@ -563,7 +375,7 @@ function scr_player_move_customizable_controls()
 	#endregion /* Key Crouch Hold END */
 	
 	#region /* Key Crouch Pressed */
-	key_crouch_pressed_temp = scr_key_initialize(key_crouch_pressed_temp, 1, player, this_player_key_crouch, this_player_key2_crouch, this_player_gamepad_button_crouch, this_player_gamepad_button2_crouch);
+	key_crouch_pressed_temp = scr_key_initialize(key_crouch_pressed_temp, 1, player, action.crouch);
 	
 	key_crouch_pressed =
 	(key_crouch_pressed_temp)
@@ -571,7 +383,7 @@ function scr_player_move_customizable_controls()
 	#endregion /* Key Crouch Pressed END */
 	
 	#region /* Key Sprint Hold */
-	key_sprint_hold_temp = scr_key_initialize(key_sprint_hold_temp, 0, player, this_player_key_sprint, this_player_key2_sprint, this_player_gamepad_button_sprint, this_player_gamepad_button2_sprint);
+	key_sprint_hold_temp = scr_key_initialize(key_sprint_hold_temp, 0, player, action.sprint);
 	
 	key_sprint =
 	(key_sprint_hold_temp)
@@ -585,8 +397,8 @@ function scr_player_move_customizable_controls()
 	and (global.player4_sprint_toggle == true);
 	#endregion /* Key Sprint Hold END */
 	
-	key_sprint_pressed = scr_key_initialize(key_sprint_pressed, 1, player, this_player_key_sprint, this_player_key2_sprint, this_player_gamepad_button_sprint, this_player_gamepad_button2_sprint);
-	key_sprint_released = scr_key_initialize(key_sprint_released, 2, player, this_player_key_sprint, this_player_key2_sprint, this_player_gamepad_button_sprint, this_player_gamepad_button2_sprint);
+	key_sprint_pressed = scr_key_initialize(key_sprint_pressed, 1, player, action.sprint);
+	key_sprint_released = scr_key_initialize(key_sprint_released, 2, player, action.sprint);
 	
 	#region /* Key Spin Hold */
 	key_spin =

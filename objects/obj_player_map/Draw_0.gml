@@ -32,60 +32,60 @@ and (global.pause == false)
 		and (global.controls_used_for_menu_navigation == "controller")
 		or (global.always_show_gamepad_buttons == true)
 		{
-			scr_draw_gamepad_buttons(global.player1_gamepad_button_up, x, y - 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
+			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.up], x, y - 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			if (global.player1_can_play == true)
 			{
-				if (global.player1_key_up > noone)
+				if (global.player_[inp.key][1][1][action.up] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player1_key2_up > noone)
+				if (global.player_[inp.key][1][2][action.up] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player2_can_play == true)
 			{
-				if (global.player2_key_up > noone)
+				if (global.player_[inp.key][2][1][action.up] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player2_key_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player2_key2_up > noone)
+				if (global.player_[inp.key][2][2][action.up] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player2_key2_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player3_can_play == true)
 			{
-				if (global.player3_key_up > noone)
+				if (global.player_[inp.key][3][1][action.up] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player3_key_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player3_key2_up > noone)
+				if (global.player_[inp.key][3][2][action.up] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player3_key2_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player4_can_play == true)
 			{
-				if (global.player4_key_up > noone)
+				if (global.player_[inp.key][4][1][action.up] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player4_key_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player4_key2_up > noone)
+				if (global.player_[inp.key][4][2][action.up] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player4_key2_up, x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 		}
@@ -99,60 +99,60 @@ and (global.pause == false)
 		and (global.controls_used_for_menu_navigation == "controller")
 		or (global.always_show_gamepad_buttons == true)
 		{
-			scr_draw_gamepad_buttons(global.player1_gamepad_button_down, x, y + 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
+			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.down], x, y + 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			if (global.player1_can_play == true)
 			{
-				if (global.player1_key_down > noone)
+				if (global.player_[inp.key][1][1][action.down] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player1_key2_down > noone)
+				if (global.player_[inp.key][1][2][action.down] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player2_can_play == true)
 			{
-				if (global.player2_key_down > noone)
+				if (global.player_[inp.key][2][1][action.down] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player2_key_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player2_key2_down > noone)
+				if (global.player_[inp.key][2][2][action.down] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player2_key2_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player3_can_play == true)
 			{
-				if (global.player3_key_down > noone)
+				if (global.player_[inp.key][3][1][action.down] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player3_key_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player3_key2_down > noone)
+				if (global.player_[inp.key][3][2][action.down] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player3_key2_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player4_can_play == true)
 			{
-				if (global.player4_key_down > noone)
+				if (global.player_[inp.key][4][1][action.down] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player4_key_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player4_key2_down > noone)
+				if (global.player_[inp.key][4][2][action.down] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player4_key2_down, x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 		}
@@ -166,60 +166,60 @@ and (global.pause == false)
 		and (global.controls_used_for_menu_navigation == "controller")
 		or (global.always_show_gamepad_buttons == true)
 		{
-			scr_draw_gamepad_buttons(global.player1_gamepad_button_left, x - 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
+			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.left], x - 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			if (global.player1_can_play == true)
 			{
-				if (global.player1_key_left > noone)
+				if (global.player_[inp.key][1][1][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player1_key2_left > noone)
+				if (global.player_[inp.key][1][2][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player2_can_play == true)
 			{
-				if (global.player2_key_left > noone)
+				if (global.player_[inp.key][2][1][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player2_key_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player2_key2_left > noone)
+				if (global.player_[inp.key][2][2][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player2_key2_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player3_can_play == true)
 			{
-				if (global.player3_key_left > noone)
+				if (global.player_[inp.key][3][1][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player3_key_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player3_key2_left > noone)
+				if (global.player_[inp.key][3][2][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player3_key2_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player4_can_play == true)
 			{
-				if (global.player4_key_left > noone)
+				if (global.player_[inp.key][4][1][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player4_key_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player4_key2_left > noone)
+				if (global.player_[inp.key][4][2][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player4_key2_left, x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 		}
@@ -233,60 +233,60 @@ and (global.pause == false)
 		and (global.controls_used_for_menu_navigation == "controller")
 		or (global.always_show_gamepad_buttons == true)
 		{
-			scr_draw_gamepad_buttons(global.player1_gamepad_button_right, x + 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
+			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.right], x + 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			if (global.player1_can_play == true)
 			{
-				if (global.player1_key_right > noone)
+				if (global.player_[inp.key][1][1][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player1_key2_right > noone)
+				if (global.player_[inp.key][1][2][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player2_can_play == true)
 			{
-				if (global.player2_key_right > noone)
+				if (global.player_[inp.key][2][1][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player2_key_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player2_key2_right > noone)
+				if (global.player_[inp.key][2][2][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player2_key2_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player3_can_play == true)
 			{
-				if (global.player3_key_right > noone)
+				if (global.player_[inp.key][3][1][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player3_key_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player3_key2_right > noone)
+				if (global.player_[inp.key][3][2][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player3_key2_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 			else
 			if (global.player4_can_play == true)
 			{
-				if (global.player4_key_right > noone)
+				if (global.player_[inp.key][4][1][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player4_key_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 				else
-				if (global.player4_key2_right > noone)
+				if (global.player_[inp.key][4][2][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player4_key2_right, x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
 				}
 			}
 		}

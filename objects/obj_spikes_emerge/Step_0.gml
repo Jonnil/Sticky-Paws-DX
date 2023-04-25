@@ -1,6 +1,6 @@
 #region /* If spikes are disabled, destroy this object */
 if (global.assist_enable == true)
-and (global.assist_enable_spikes = false)
+and (global.assist_enable_spikes == false)
 {
 	instance_destroy();
 }
@@ -14,7 +14,7 @@ and (global.assist_enable_spikes = false)
 #region /* Normal timing */
 if (global.spikes_emerge_time < room_speed * 1)
 {
-	if (timer_offset = false)
+	if (timer_offset == false)
 	{
 		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
 		{
@@ -38,7 +38,7 @@ else
 if (global.spikes_emerge_time < room_speed * 2)
 and (global.spikes_emerge_time > room_speed * 1)
 {
-	if (timer_offset = false)
+	if (timer_offset == false)
 	{
 		if (asset_get_type("spr_spikes_emerge_in") == asset_sprite)
 		{
@@ -62,7 +62,7 @@ else
 if (global.spikes_emerge_time < room_speed * 3)
 and (global.spikes_emerge_time > room_speed * 2)
 {
-	if (timer_offset = false)
+	if (timer_offset == false)
 	{
 		if (asset_get_type("spr_spikes_emerge_in") == asset_sprite)
 		{
@@ -85,7 +85,7 @@ and (global.spikes_emerge_time > room_speed * 2)
 else
 if (global.spikes_emerge_time > room_speed * 3)
 {
-	if (timer_offset = false)
+	if (timer_offset == false)
 	{
 		if (asset_get_type("spr_spikes_emerge_half_out") == asset_sprite)
 		{
@@ -148,13 +148,13 @@ and (!place_meeting(x, y + 1, instance_nearest(x, y, obj_player)))
 and (instance_nearest(x, y, obj_player).hspeed <= 0)
 {
 	if (instance_nearest(x, y, obj_player).takendamage < 1)
-	and (instance_nearest(x, y, obj_player).assist_invincible = false)
+	and (instance_nearest(x, y, obj_player).assist_invincible == false)
 	and (asset_get_type("spr_spikes_emerge") == asset_sprite)
 	and (sprite_index = spr_spikes_emerge)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
-			if (invincible_timer = false)
+			if (invincible_timer == false)
 			{
 				if (have_heart_balloon == true)
 				{

@@ -79,30 +79,6 @@ function scr_draw_online_download_list()
 		if (data == noone)
 		and (in_online_download_list_menu == true)
 		{
-			var number_downloads_loaded = 10; /* How many downloads are loaded at one page */
-			
-			#region /* If there is a online download list loaded, interpret that as a struct using "json parse" */
-			if (global.online_download_list != "")
-			{
-				/* chr(34) = " */
-				str = string_replace_all(global.online_download_list, "[{" + chr(34), "{" + chr(34) + "online_downloads" + chr(34) + ": { " + chr(34)) /* Replace [{ with {"online_downloads": { " */
-				str = string_replace_all(str, "}]", "}}"); /* Replace "}] with "}}" */
-				str = string_replace_all(str, "},{", ", ");
-				
-				#region /* Add a number after each "name" and "time created" */
-				for(var n = 0; n < number_downloads_loaded ; n++)
-				{
-					str = string_replace(str, "e" + chr(34), "e" + string(n) + chr(34));
-					str = string_replace(str, "d" + chr(34), "d" + string(n) + chr(34));
-				}
-				#endregion /* Add a number after each "name" and "time created" END */
-				
-				show_debug_message(str);
-				
-				json = string(str);
-				data = json_parse(json);
-			}
-			#endregion /* If there is a online download list loaded, interpret that as a struct using "json parse" END */
 			
 			#region /* Draw loading screen when loading download list */
 			draw_set_halign(fa_center);
@@ -110,81 +86,95 @@ function scr_draw_online_download_list()
 			global.loading_spinning_angle -= 10;
 			draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, 1);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(32, display_get_gui_height() * 0.5 + (42 * 2), string(global.online_download_list), global.default_text_size, c_white, c_black, 1);
+			draw_set_halign(fa_right);
+			scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() * 0.5 + (42 * 3), string(global.online_download_list), global.default_text_size, c_white, c_black, 1);
 			#endregion /* Draw loading screen when loading download list END */
+			
+			#region /* If there is an online download list loaded, interpret that as a struct using "json parse" */
+			if (global.online_download_list != "")
+			{
+				data = json_parse(global.online_download_list); /* When there is data here, then go to the online downloads menu */
+			}
+			#endregion /* If there is an online download list loaded, interpret that as a struct using "json parse" END */
 			
 		}
 		#endregion /* If there is no data, then apply the retrieved download data to it END */
 		
-		#region /* If there is data, then show a online downloads menu */
+		#region /* If there is data, then show an online downloads menu */
 		if (data != noone)
 		and (menu != "search_id_ok")
 		{
-			/* Check if the struct has "online downloads" variable */
-			if (variable_struct_exists(data, "online_downloads"))
+			
+			scr_scroll_menu();
+			
+			/* Check if it's an array */
+			if (is_array(data))
 			{
-				/* Check if it's a struct */
-				if (is_struct(data.online_downloads))
+				/* Get the number of items in the JSON array */
+				var num_items = array_length(data);
+				var online_download_index = 0;
+				var selected_online_download_index = 0;
+				for (var i = 0; i < num_items; i++;)
 				{
-					/* Print all struct members to the log */
-					var _names = variable_struct_get_names(data.online_downloads);
-					var online_download_index = 0;
-					var selected_online_download_index = 0;
-					for (var i = 0; i < array_length(_names); i++;)
+					online_download_index += 1;
+					var download_online_x = 100;
+					var download_online_y = (44 * i);
+					draw_menu_button(download_online_x, 64 + download_online_y + menu_y_offset, "Download", "download_online_" + string(online_download_index), "download_online_" + string(online_download_index));
+					draw_set_halign(fa_left);
+					
+					/* Fetch the "name" and "time_created" properties from the JSON object */
+					var item = data[i];
+					var draw_download_id = item.name;
+					draw_download_id = string_replace(draw_download_id, string(content_type) + "s/", "");
+					draw_download_id = string_replace(draw_download_id, ".zip", "");
+					var draw_download_time = string_replace(item.time_created, "T", " ");
+					draw_download_time = string_replace(draw_download_time, "Z", "");
+					
+					if (menu == "download_online_" + string(online_download_index))
 					{
-						online_download_index += 1;
-						var download_online_x = 100;
-						var download_online_y = 64 + (32 * i);
-						draw_menu_button(download_online_x, download_online_y, "Download", "download_online_" + string(online_download_index), "download_online_" + string(online_download_index));
-						draw_set_halign(fa_left);
+						menu_cursor_y_position = 64 + download_online_y;
+						var selected_download_c_menu_fill = c_lime;
+						/* Highlight the text in lime green so the player knows they are selecting this download */
+						var selected_online_download_index = online_download_index;
 						
-						if (string_pos_ext("levels/", string(variable_struct_get(data.online_downloads, _names[i])), 0))
-						or (string_pos_ext("characters/", string(variable_struct_get(data.online_downloads, _names[i])), 0))
+						#region /* Download selected file when pressing A */
+						if (key_a_pressed)
+						or (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x, 64 + download_online_y + menu_y_offset, download_online_x + 370, 64 + download_online_y + menu_y_offset + 41))
+						and (mouse_check_button_released(mb_left))
 						{
-							var draw_download_id = string(variable_struct_get(data.online_downloads, _names[i]));
-							var draw_download_id = string_replace(string(variable_struct_get(data.online_downloads, _names[i])), "levels/", "");
-							var draw_download_id = string_replace(draw_download_id, "characters/", "");
-							var draw_download_id = string_replace(draw_download_id, ".zip", "");
-						}
-						if (menu == "download_online_" + string(online_download_index))
-						{
-							var selected_download_c_menu_fill = c_lime; /* Highlight the text in lime green so player knows they are selecting this download */
-							var selected_online_download_index = online_download_index;
-								
-							#region /* Download selected file when pressing A */
-							if (key_a_pressed)
-							or (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x, download_online_y, download_online_x + 370, download_online_y + 42))
-							and (mouse_check_button_released(mb_left))
+							if (menu_delay == 0)
 							{
-								if (menu_delay == 0)
-								{
-									#region /* Go to download download menu first */
-									global.search_id = string_upper(draw_download_id);
-									keyboard_string = string_upper(draw_download_id);
-									search_id = string_upper(draw_download_id); /* Then need to set search ID */
-									automatically_search_id = true; /* Don't set this variable to false yet, it's used in "scr_draw_menu_search_id" to automatically enter the search ID. We need to do the HTTP Request in that script */
-									in_online_download_list_menu = false; /* We are not supposed to show the online download list menu when going to search ID menu */
-									menu = "search_id_ok";
-									#endregion /* Go to download download menu first END */
-									
-								}
+								
+								#region /* Go to download menu */
+								global.search_id = string_upper(draw_download_id);
+								keyboard_string = string_upper(draw_download_id);
+								search_id = string_upper(draw_download_id); /* Then need to set search ID */
+								automatically_search_id = true; /* Don't set this variable to false yet, it's used in "scr_draw_menu_search_id" to automatically enter the search ID. We need to do the HTTP Request in that script */
+								in_online_download_list_menu = false; /* We are not supposed to show the online download list menu when going to search ID menu */
+								menu = "search_id_ok";
+								#endregion /* Go to download menu END */
+								
 							}
-							#endregion /* Download selected file when pressing A END */
-							
 						}
-						else
-						{
-							var selected_download_c_menu_fill = c_menu_fill;
-						}
+						#endregion /* Download selected file when pressing A END */
 						
-						/* Write the list index to the left of download button */ scr_draw_text_outlined(32, 86 + 32 * i, string(online_download_index), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
-						
-						/* Write the ID */ scr_draw_text_outlined(510, 76 + 32 * i, string_upper(content_type) + " " + l10n_text("ID") + ": " + string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
-						
-						i += 1;
-						var draw_download_time = string_replace(string(variable_struct_get(data.online_downloads, _names[i])), "T", " ");
-						var draw_download_time = string_replace(draw_download_time, "Z", "");
-						/* Write date of upload */ scr_draw_text_outlined(510, 96 + 32 * (i - 1), string(draw_download_time), global.default_text_size * 0.5, c_menu_outline, selected_download_c_menu_fill, 1);
 					}
+					else
+					{
+						var selected_download_c_menu_fill = c_menu_fill;
+					}
+					
+					/* Write the list index to the left of download button */
+					scr_draw_text_outlined(32, 86 + download_online_y + menu_y_offset, string(online_download_index), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					
+					/* Write the ID */
+					scr_draw_text_outlined(510, 76 + download_online_y + menu_y_offset, string_upper(content_type) + " " + l10n_text("ID") + ": " + string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					
+					/* Write date of upload */
+					scr_draw_text_outlined(510, 96 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.5, c_menu_outline, selected_download_c_menu_fill, 1);
+					
 				}
 			}
 			
@@ -195,7 +185,7 @@ function scr_draw_online_download_list()
 				and (menu_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "download_online_" + string(array_length(_names) * 0.5);
+					menu = "download_online_" + string(num_items);
 				}
 				else
 				if (key_down)
@@ -218,7 +208,7 @@ function scr_draw_online_download_list()
 				and (menu_delay == 0)
 				{
 					menu_delay = 3;
-					if (array_length(_names) >= 4)
+					if (num_items >= 2)
 					{
 						menu = "download_online_2";
 					}
@@ -239,7 +229,7 @@ function scr_draw_online_download_list()
 				else
 				if (key_down)
 				and (menu_delay == 0)
-				and (selected_online_download_index < array_length(_names) * 0.5)
+				and (selected_online_download_index < num_items)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(selected_online_download_index + 1);
@@ -255,7 +245,7 @@ function scr_draw_online_download_list()
 			#endregion /* Online download List Menu Navigation END */
 			
 		}
-		#endregion /* If there is data, then show a online downloads menu END */
+		#endregion /* If there is data, then show an online downloads menu END */
 		
 	}
 }

@@ -1,7 +1,7 @@
 draw_self();
 image_speed = 0.1;
 if (place_meeting(x, y, obj_player))
-and (fall = false)
+and (fall == false)
 {
 	fall = true;
 	

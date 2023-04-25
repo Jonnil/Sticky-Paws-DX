@@ -5,14 +5,6 @@ if (x < 0)
 
 y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5;
 
-key_a = (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept)) or (keyboard_check(global.player1_key_jump));
-key_a_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept))
-or (keyboard_check_pressed(global.player1_key_jump));
-key_a_released = (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept))
-or (keyboard_check_released(global.player1_key_jump));
-key_b = (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_back))
-or (keyboard_check(global.player1_key_sprint));
-
 #region /* Drag Object */
 if (asset_get_type("obj_leveleditor") == asset_object)
 and (instance_exists(obj_leveleditor))
@@ -23,7 +15,7 @@ and (obj_leveleditor.pause == false)
 	and (!mouse_check_button(mb_middle))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		or (key_a_pressed)
+		or (obj_leveleditor.key_a_pressed)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
@@ -47,7 +39,7 @@ and (obj_leveleditor.pause == false)
 	
 	#region /* Release the object */
 	if (mouse_check_button_released(mb_left))
-	or (key_a_released)
+	or (obj_leveleditor.key_a_released)
 	{
 		if (drag_object == true)
 		{

@@ -111,18 +111,18 @@ function scr_virtual_keys()
 				#region /* Virtual D-pad */
 				if (enable_joystick == false)
 				{
-					scr_initialize_virtual_button(global.player1_key_up, global.player1_key2_up, mobile_key_up_x, mobile_key_up_y, spr_virtual_key_direction, mobile_key_extra_deadzone, 90);
-					scr_initialize_virtual_button(global.player1_key_down, global.player1_key2_down, mobile_key_down_x, mobile_key_down_y, spr_virtual_key_direction, mobile_key_extra_deadzone, 270);
-					scr_initialize_virtual_button(global.player1_key_left, global.player1_key2_left, mobile_key_left_x, mobile_key_left_y, spr_virtual_key_direction, mobile_key_extra_deadzone, 180);
-					scr_initialize_virtual_button(global.player1_key_right, global.player1_key2_right, mobile_key_right_x, mobile_key_right_y, spr_virtual_key_direction, mobile_key_extra_deadzone, 0);
+					scr_initialize_virtual_button(global.player_[inp.key][1][1][action.up], global.player_[inp.key][1][2][action.up], mobile_key_up_x, mobile_key_up_y, spr_virtual_key_direction, mobile_key_extra_deadzone, 90);
+					scr_initialize_virtual_button(global.player_[inp.key][1][1][action.down], global.player_[inp.key][1][2][action.down], mobile_key_down_x, mobile_key_down_y, spr_virtual_key_direction, mobile_key_extra_deadzone, 270);
+					scr_initialize_virtual_button(global.player_[inp.key][1][1][action.left], global.player_[inp.key][1][2][action.left], mobile_key_left_x, mobile_key_left_y, spr_virtual_key_direction, mobile_key_extra_deadzone, 180);
+					scr_initialize_virtual_button(global.player_[inp.key][1][1][action.right], global.player_[inp.key][1][2][action.right], mobile_key_right_x, mobile_key_right_y, spr_virtual_key_direction, mobile_key_extra_deadzone, 0);
 				}
 				#endregion /* Virtual D-pad END */
 				
 				#region /* Virtual key add */
-				scr_initialize_virtual_button(global.player1_key_jump, global.player1_key2_jump, mobile_key_jump_x, mobile_key_jump_y, spr_virtual_key_jump, mobile_key_extra_deadzone);
-				scr_initialize_virtual_button(global.player1_key_crouch, global.player1_key2_crouch, mobile_key_crouch_x, mobile_key_crouch_y, spr_virtual_key_crouch, mobile_key_extra_deadzone);
-				scr_initialize_virtual_button(global.player1_key_sprint, global.player1_key2_sprint, mobile_key_sprint_x, mobile_key_sprint_y, noone, mobile_key_extra_deadzone);
-				scr_initialize_virtual_button(global.player1_key_dive, global.player1_key2_dive, mobile_key_sprint_x, mobile_key_sprint_y, spr_virtual_key_sprint, mobile_key_extra_deadzone);
+				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.jump], global.player_[inp.key][1][2][action.jump], mobile_key_jump_x, mobile_key_jump_y, spr_virtual_key_jump, mobile_key_extra_deadzone);
+				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.crouch], global.player_[inp.key][1][2][action.crouch], mobile_key_crouch_x, mobile_key_crouch_y, spr_virtual_key_crouch, mobile_key_extra_deadzone);
+				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.sprint], global.player_[inp.key][1][2][action.sprint], mobile_key_sprint_x, mobile_key_sprint_y, noone, mobile_key_extra_deadzone);
+				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.dive], global.player_[inp.key][1][2][action.dive], mobile_key_sprint_x, mobile_key_sprint_y, spr_virtual_key_sprint, mobile_key_extra_deadzone);
 				#endregion /* Virtual key add END */
 				
 				#region /* Pause virtual key */

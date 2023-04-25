@@ -26,7 +26,7 @@ function scr_player_move_mid_air_jump()
 	{
 		if (spring == true)
 		and (vspeed > - 20)
-		or (spring = false)
+		or (spring == false)
 		{
 			if (number_of_jumps >= 2)
 			and (midair_jumps_left > 0)

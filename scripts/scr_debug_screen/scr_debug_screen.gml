@@ -291,7 +291,8 @@ function scr_debug_screen()
 		scr_draw_text_outlined(32, 340, "gamepad_get_description(1): " + string(gamepad_get_description(1)));
 		scr_draw_text_outlined(32, 360, "gamepad_get_description(2): " + string(gamepad_get_description(2)));
 		scr_draw_text_outlined(32, 380, "gamepad_get_description(3): " + string(gamepad_get_description(3)));
-		scr_draw_text_outlined(32, 400, "global.controls_used_for_menu_navigation: " + string(global.controls_used_for_menu_navigation));
+		//scr_draw_text_outlined(32, 400, "menu_delay: " + string(menu_delay));
+		//scr_draw_text_outlined(32, 420, "menu_joystick1_delay: " + string(menu_joystick1_delay));
 	}
 	
 	if (global.debug_screen == true)

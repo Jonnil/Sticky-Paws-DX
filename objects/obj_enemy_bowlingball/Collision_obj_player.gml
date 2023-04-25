@@ -15,13 +15,13 @@ and (stomped_delay == 0)
 			with(other)
 			{
 				dive = false;
-				if (simple_controls = false)
+				if (simple_controls == false)
 				{
 					vspeed = -triple_jump_height;
 				}
 			}
 		}
-		if (die_volting = false)
+		if (die_volting == false)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{
@@ -565,14 +565,14 @@ and (stomped_delay == 0)
 
 		}
 	}
-	if (die_volting = false)
+	if (die_volting == false)
 	{
 		if (other.vspeed > 0)
-		or (other.climb = false)
+		or (other.climb == false)
 		and (other.vspeed < 0)
 		or (other.bbox_bottom < y)
 		{
-			if (other.ground_pound = false)
+			if (other.ground_pound == false)
 			{
 				if (abs(other.hspeed) > 7)
 				{
@@ -1127,7 +1127,7 @@ and (stomped_delay == 0)
 							vspeed = -4;
 						}
 						else
-						if (simple_controls = false)
+						if (simple_controls == false)
 						{
 							vspeed = -triple_jump_height;
 						}
@@ -1824,7 +1824,7 @@ and (stomped_delay == 0)
 		
 		if (stomped_delay == 0)
 		and (die == false)
-		and (flat = false)
+		and (flat == false)
 		or (sliding_along_ground < 0)
 		and (stomped_delay == 0)
 		and (die == false)
@@ -1835,7 +1835,7 @@ and (stomped_delay == 0)
 		and (flat == true)
 		{
 			if (other.takendamage <= 0)
-			and (other.assist_invincible = false)
+			and (other.assist_invincible == false)
 			{
 				if (other.have_heart_balloon == true)
 				{

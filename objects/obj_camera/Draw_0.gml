@@ -1,5 +1,5 @@
 //#region /* Black screen when starting level */
-//if (save_level_as_png = false)
+//if (save_level_as_png == false)
 //and (allow_iris == true)
 //and (delay <= 1)
 //{
@@ -52,9 +52,9 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player3 = 0;
 	show_sprint_toggle_for_player4 = 0;
 	if (global.player1_can_play == true)
-	and (global.player2_can_play = false)
-	and (global.player3_can_play = false)
-	and (global.player4_can_play = false)
+	and (global.player2_can_play == false)
+	and (global.player3_can_play == false)
+	and (global.player4_can_play == false)
 	{
 		if (global.player1_sprint_toggle == true)
 		{

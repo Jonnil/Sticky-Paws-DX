@@ -1,15 +1,6 @@
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 
-key_a = (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept))
-or (keyboard_check(global.player1_key_jump));
-key_a_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept))
-or (keyboard_check_pressed(global.player1_key_jump));
-key_a_released = (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept))
-or (keyboard_check_released(global.player1_key_jump));
-key_b = (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_back))
-or (keyboard_check(global.player1_key_sprint));
-
 if (global.play_edited_level == true)
 {
 	visible = false;
@@ -43,7 +34,7 @@ and (obj_leveleditor.pause == false)
 	and (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		or (key_a_pressed)
+		or (obj_leveleditor.key_a_pressed)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
@@ -66,7 +57,7 @@ and (obj_leveleditor.pause == false)
 	
 	#region /* Release the object */
 	if (mouse_check_button_released(mb_left))
-	or (key_a_released)
+	or (obj_leveleditor.key_a_released)
 	{
 		if (drag_object == true)
 		{
@@ -190,9 +181,7 @@ or (global.actually_play_edited_level == true)
 				}
 				
 				if (global.checkpoint_x > 0)
-				and (global.create_level_from_template >= true)
 				or (global.checkpoint_y > 0)
-				and (global.create_level_from_template >= true)
 				{
 					camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
 					instance_activate_object(obj_camera);

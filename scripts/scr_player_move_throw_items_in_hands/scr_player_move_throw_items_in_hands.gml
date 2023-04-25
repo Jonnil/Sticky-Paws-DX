@@ -240,7 +240,7 @@ function scr_player_move_throw_items_in_hands()
 			if (hold_item_in_hands = "enemy_bowlingball")
 			and (place_meeting(x - 16, y, obj_enemy))
 			and (!place_meeting(x, y + 8, obj_enemy))
-			and (instance_nearest(x + 1, y, obj_enemy).die = false)
+			and (instance_nearest(x + 1, y, obj_enemy).die == false)
 			{
 				with(instance_nearest(x - 1, y, obj_enemy))
 				{
@@ -289,7 +289,7 @@ function scr_player_move_throw_items_in_hands()
 			if (hold_item_in_hands = "enemy_bowlingball")
 			and (place_meeting(x + 16, y, obj_enemy))
 			and (!place_meeting(x, y + 8, obj_enemy))
-			and (instance_nearest(x + 1, y, obj_enemy).die = false)
+			and (instance_nearest(x + 1, y, obj_enemy).die == false)
 			{
 				with(instance_nearest(x + 1, y, obj_enemy))
 				{

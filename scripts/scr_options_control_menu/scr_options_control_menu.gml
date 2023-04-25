@@ -105,7 +105,7 @@ function scr_options_control_menu()
 	
 	#region /* Controls Options */
 	if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
-	or (global.settings_sidebar_menu = "controller_settings")
+	or (global.settings_sidebar_menu == "controller_settings")
 	{
 		
 		#region /* Show sprite of the character you have currently selected for current player you are remapping */
@@ -138,1138 +138,179 @@ function scr_options_control_menu()
 			image_speed = 0;
 			key1_x = 800;
 			key2_x = 1000;
-		
+			
 			#region /* Show the keys for every player */
-		
+			
 			#region /* Remapping Player 1 Key Variables */
 			if (remapping_player == 0)
 			{
-				
-				#region /* Remapping Player 1 Keyboard and Mouse Key Variables */
-				if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
-				{
-					var remapping_player_key_dive = global.player1_key_dive;
-					var remapping_player_key_jump = global.player1_key_jump;
-					var remapping_player_key_crouch = global.player1_key_crouch;
-					var remapping_player_key_crouch_toggle = global.player1_key_crouch_toggle;
-					var remapping_player_key_sprint = global.player1_key_sprint;
-					var remapping_player_key_sprint_toggle = global.player1_key_sprint_toggle;
-					var remapping_player_key_left = global.player1_key_left;
-					var remapping_player_key_right = global.player1_key_right;
-					var remapping_player_key_down = global.player1_key_down;
-					var remapping_player_key_up = global.player1_key_up;
-					var remapping_player_key_tongue = global.player1_key_tongue;
-					var remapping_player_key_zoom_in = global.player1_key_zoom_in;
-					var remapping_player_key_zoom_out = global.player1_key_zoom_out;
-					var remapping_player_key_accept = global.player1_key_accept;
-					var remapping_player_key_back = global.player1_key_back;
-					
-					var remapping_player_key2_dive = global.player1_key2_dive;
-					var remapping_player_key2_jump = global.player1_key2_jump;
-					var remapping_player_key2_crouch = global.player1_key2_crouch;
-					var remapping_player_key2_crouch_toggle = global.player1_key2_crouch_toggle;
-					var remapping_player_key2_sprint = global.player1_key2_sprint;
-					var remapping_player_key2_sprint_toggle = global.player1_key2_sprint_toggle;
-					var remapping_player_key2_left = global.player1_key2_left;
-					var remapping_player_key2_right = global.player1_key2_right;
-					var remapping_player_key2_down = global.player1_key2_down;
-					var remapping_player_key2_up = global.player1_key2_up;
-					var remapping_player_key2_tongue = global.player1_key2_tongue;
-					var remapping_player_key2_zoom_in = global.player1_key2_zoom_in;
-					var remapping_player_key2_zoom_out = global.player1_key2_zoom_out;
-					var remapping_player_key2_accept = global.player1_key2_accept;
-					var remapping_player_key2_back = global.player1_key2_back;
-					
-					#region /* Other player's keys */
-					var remapping_other1_player_key_dive = global.player2_key_dive;
-					var remapping_other1_player_key_jump = global.player2_key_jump;
-					var remapping_other1_player_key_crouch = global.player2_key_crouch;
-					var remapping_other1_player_key_crouch_toggle = global.player2_key_crouch_toggle;
-					var remapping_other1_player_key_sprint = global.player2_key_sprint;
-					var remapping_other1_player_key_sprint_toggle = global.player2_key_sprint_toggle;
-					var remapping_other1_player_key_left = global.player2_key_left;
-					var remapping_other1_player_key_right = global.player2_key_right;
-					var remapping_other1_player_key_down = global.player2_key_down;
-					var remapping_other1_player_key_up = global.player2_key_up;
-					var remapping_other1_player_key_tongue = global.player2_key_tongue;
-					var remapping_other1_player_key_zoom_in = global.player2_key_zoom_in;
-					var remapping_other1_player_key_zoom_out = global.player2_key_zoom_out;
-					var remapping_other1_player_key_accept = global.player2_key_accept;
-					var remapping_other1_player_key_back = global.player2_key_back;
-					
-					var remapping_other1_player_key2_dive = global.player2_key2_dive;
-					var remapping_other1_player_key2_jump = global.player2_key2_jump;
-					var remapping_other1_player_key2_crouch = global.player2_key2_crouch;
-					var remapping_other1_player_key2_crouch_toggle = global.player2_key2_crouch_toggle;
-					var remapping_other1_player_key2_sprint = global.player2_key2_sprint;
-					var remapping_other1_player_key2_sprint_toggle = global.player2_key2_sprint_toggle;
-					var remapping_other1_player_key2_left = global.player2_key2_left;
-					var remapping_other1_player_key2_right = global.player2_key2_right;
-					var remapping_other1_player_key2_down = global.player2_key2_down;
-					var remapping_other1_player_key2_up = global.player2_key2_up;
-					var remapping_other1_player_key2_tongue = global.player2_key2_tongue;
-					var remapping_other1_player_key2_zoom_in = global.player2_key2_zoom_in;
-					var remapping_other1_player_key2_zoom_out = global.player2_key2_zoom_out;
-					var remapping_other1_player_key2_accept = global.player2_key2_accept;
-					var remapping_other1_player_key2_back = global.player2_key2_back;
-					
-					var remapping_other2_player_key_dive = global.player3_key_dive;
-					var remapping_other2_player_key_jump = global.player3_key_jump;
-					var remapping_other2_player_key_crouch = global.player3_key_crouch;
-					var remapping_other2_player_key_crouch_toggle = global.player3_key_crouch_toggle;
-					var remapping_other2_player_key_sprint = global.player3_key_sprint;
-					var remapping_other2_player_key_sprint_toggle = global.player3_key_sprint_toggle;
-					var remapping_other2_player_key_left = global.player3_key_left;
-					var remapping_other2_player_key_right = global.player3_key_right;
-					var remapping_other2_player_key_down = global.player3_key_down;
-					var remapping_other2_player_key_up = global.player3_key_up;
-					var remapping_other2_player_key_tongue = global.player3_key_tongue;
-					var remapping_other2_player_key_zoom_in = global.player3_key_zoom_in;
-					var remapping_other2_player_key_zoom_out = global.player3_key_zoom_out;
-					var remapping_other2_player_key_accept = global.player3_key_accept;
-					var remapping_other2_player_key_back = global.player3_key_back;
-					
-					var remapping_other2_player_key2_dive = global.player3_key2_dive;
-					var remapping_other2_player_key2_jump = global.player3_key2_jump;
-					var remapping_other2_player_key2_crouch = global.player3_key2_crouch;
-					var remapping_other2_player_key2_crouch_toggle = global.player3_key2_crouch_toggle;
-					var remapping_other2_player_key2_sprint = global.player3_key2_sprint;
-					var remapping_other2_player_key2_sprint_toggle = global.player3_key2_sprint_toggle;
-					var remapping_other2_player_key2_left = global.player3_key2_left;
-					var remapping_other2_player_key2_right = global.player3_key2_right;
-					var remapping_other2_player_key2_down = global.player3_key2_down;
-					var remapping_other2_player_key2_up = global.player3_key2_up;
-					var remapping_other2_player_key2_tongue = global.player3_key2_tongue;
-					var remapping_other2_player_key2_zoom_in = global.player3_key2_zoom_in;
-					var remapping_other2_player_key2_zoom_out = global.player3_key2_zoom_out;
-					var remapping_other2_player_key2_accept = global.player3_key2_accept;
-					var remapping_other2_player_key2_back = global.player3_key2_back;
-					
-					var remapping_other3_player_key_dive = global.player4_key_dive;
-					var remapping_other3_player_key_jump = global.player4_key_jump;
-					var remapping_other3_player_key_crouch = global.player4_key_crouch;
-					var remapping_other3_player_key_crouch_toggle = global.player4_key_crouch_toggle;
-					var remapping_other3_player_key_sprint = global.player4_key_sprint;
-					var remapping_other3_player_key_sprint_toggle = global.player4_key_sprint_toggle;
-					var remapping_other3_player_key_left = global.player4_key_left;
-					var remapping_other3_player_key_right = global.player4_key_right;
-					var remapping_other3_player_key_down = global.player4_key_down;
-					var remapping_other3_player_key_up = global.player4_key_up;
-					var remapping_other3_player_key_tongue = global.player4_key_tongue;
-					var remapping_other3_player_key_zoom_in = global.player4_key_zoom_in;
-					var remapping_other3_player_key_zoom_out = global.player4_key_zoom_out;
-					var remapping_other3_player_key_accept = global.player4_key_accept;
-					var remapping_other3_player_key_back = global.player4_key_back;
-					
-					var remapping_other3_player_key2_dive = global.player4_key2_dive;
-					var remapping_other3_player_key2_jump = global.player4_key2_jump;
-					var remapping_other3_player_key2_crouch = global.player4_key2_crouch;
-					var remapping_other3_player_key2_crouch_toggle = global.player4_key2_crouch_toggle;
-					var remapping_other3_player_key2_sprint = global.player4_key2_sprint;
-					var remapping_other3_player_key2_sprint_toggle = global.player4_key2_sprint_toggle;
-					var remapping_other3_player_key2_left = global.player4_key2_left;
-					var remapping_other3_player_key2_right = global.player4_key2_right;
-					var remapping_other3_player_key2_down = global.player4_key2_down;
-					var remapping_other3_player_key2_up = global.player4_key2_up;
-					var remapping_other3_player_key2_tongue = global.player4_key2_tongue;
-					var remapping_other3_player_key2_zoom_in = global.player4_key2_zoom_in;
-					var remapping_other3_player_key2_zoom_out = global.player4_key2_zoom_out;
-					var remapping_other3_player_key2_accept = global.player4_key2_accept;
-					var remapping_other3_player_key2_back = global.player4_key2_back;
-					#endregion /* Other player's keys END */
-					
-				}
-				#endregion /* Remapping Player 1 Keyboard and Mouse Key Variables END */
-				
-				else
-				
-				#region /* Remapping Player 1 Gamepad Key Variables */
-				if (global.settings_sidebar_menu == "controller_settings")
-				{
-					var remapping_player_key_dive = global.player1_gamepad_button_dive;
-					var remapping_player_key_jump = global.player1_gamepad_button_jump;
-					var remapping_player_key_crouch = global.player1_gamepad_button_crouch;
-					var remapping_player_key_crouch_toggle = global.player1_gamepad_button_crouch_toggle;
-					var remapping_player_key_sprint = global.player1_gamepad_button_sprint;
-					var remapping_player_key_sprint_toggle = global.player1_gamepad_button_sprint_toggle;
-					var remapping_player_key_left = global.player1_gamepad_button_left;
-					var remapping_player_key_right = global.player1_gamepad_button_right;
-					var remapping_player_key_down = global.player1_gamepad_button_down;
-					var remapping_player_key_up = global.player1_gamepad_button_up;
-					var remapping_player_key_tongue = global.player1_gamepad_button_tongue;
-					var remapping_player_key_zoom_in = global.player1_gamepad_button_zoom_in;
-					var remapping_player_key_zoom_out = global.player1_gamepad_button_zoom_out;
-					var remapping_player_key_accept = global.player1_gamepad_button_accept;
-					var remapping_player_key_back = global.player1_gamepad_button_back;
-					
-					var remapping_player_key2_dive = global.player1_gamepad_button2_dive;
-					var remapping_player_key2_jump = global.player1_gamepad_button2_jump;
-					var remapping_player_key2_crouch = global.player1_gamepad_button2_crouch;
-					var remapping_player_key2_crouch_toggle = global.player1_gamepad_button2_crouch_toggle;
-					var remapping_player_key2_sprint = global.player1_gamepad_button2_sprint;
-					var remapping_player_key2_sprint_toggle = global.player1_gamepad_button2_sprint_toggle;
-					var remapping_player_key2_left = global.player1_gamepad_button2_left;
-					var remapping_player_key2_right = global.player1_gamepad_button2_right;
-					var remapping_player_key2_down = global.player1_gamepad_button2_down;
-					var remapping_player_key2_up = global.player1_gamepad_button2_up;
-					var remapping_player_key2_tongue = global.player1_gamepad_button2_tongue;
-					var remapping_player_key2_zoom_in = global.player1_gamepad_button2_zoom_in;
-					var remapping_player_key2_zoom_out = global.player1_gamepad_button2_zoom_out;
-					var remapping_player_key2_accept = global.player1_gamepad_button2_accept;
-					var remapping_player_key2_back = global.player1_gamepad_button2_back;
-					
-					#region /* Other player's keys */
-					var remapping_other1_player_key_dive = global.player2_gamepad_button_dive;
-					var remapping_other1_player_key_jump = global.player2_gamepad_button_jump;
-					var remapping_other1_player_key_crouch = global.player2_gamepad_button_crouch;
-					var remapping_other1_player_key_crouch_toggle = global.player2_gamepad_button_crouch_toggle;
-					var remapping_other1_player_key_sprint = global.player2_gamepad_button_sprint;
-					var remapping_other1_player_key_sprint_toggle = global.player2_gamepad_button_sprint_toggle;
-					var remapping_other1_player_key_left = global.player2_gamepad_button_left;
-					var remapping_other1_player_key_right = global.player2_gamepad_button_right;
-					var remapping_other1_player_key_down = global.player2_gamepad_button_down;
-					var remapping_other1_player_key_up = global.player2_gamepad_button_up;
-					var remapping_other1_player_key_tongue = global.player2_gamepad_button_tongue;
-					var remapping_other1_player_key_zoom_in = global.player2_gamepad_button_zoom_in;
-					var remapping_other1_player_key_zoom_out = global.player2_gamepad_button_zoom_out;
-					var remapping_other1_player_key_accept = global.player2_gamepad_button_accept;
-					var remapping_other1_player_key_back = global.player2_gamepad_button_back;
-					
-					var remapping_other1_player_key2_dive = global.player2_gamepad_button2_dive;
-					var remapping_other1_player_key2_jump = global.player2_gamepad_button2_jump;
-					var remapping_other1_player_key2_crouch = global.player2_gamepad_button2_crouch;
-					var remapping_other1_player_key2_crouch_toggle = global.player2_gamepad_button2_crouch_toggle;
-					var remapping_other1_player_key2_sprint = global.player2_gamepad_button2_sprint;
-					var remapping_other1_player_key2_sprint_toggle = global.player2_gamepad_button2_sprint_toggle;
-					var remapping_other1_player_key2_left = global.player2_gamepad_button2_left;
-					var remapping_other1_player_key2_right = global.player2_gamepad_button2_right;
-					var remapping_other1_player_key2_down = global.player2_gamepad_button2_down;
-					var remapping_other1_player_key2_up = global.player2_gamepad_button2_up;
-					var remapping_other1_player_key2_tongue = global.player2_gamepad_button2_tongue;
-					var remapping_other1_player_key2_zoom_in = global.player2_gamepad_button2_zoom_in;
-					var remapping_other1_player_key2_zoom_out = global.player2_gamepad_button2_zoom_out;
-					var remapping_other1_player_key2_accept = global.player2_gamepad_button2_accept;
-					var remapping_other1_player_key2_back = global.player2_gamepad_button2_back;
-					
-					var remapping_other2_player_key_dive = global.player3_gamepad_button_dive;
-					var remapping_other2_player_key_jump = global.player3_gamepad_button_jump;
-					var remapping_other2_player_key_crouch = global.player3_gamepad_button_crouch;
-					var remapping_other2_player_key_crouch_toggle = global.player3_gamepad_button_crouch_toggle;
-					var remapping_other2_player_key_sprint = global.player3_gamepad_button_sprint;
-					var remapping_other2_player_key_sprint_toggle = global.player3_gamepad_button_sprint_toggle;
-					var remapping_other2_player_key_left = global.player3_gamepad_button_left;
-					var remapping_other2_player_key_right = global.player3_gamepad_button_right;
-					var remapping_other2_player_key_down = global.player3_gamepad_button_down;
-					var remapping_other2_player_key_up = global.player3_gamepad_button_up;
-					var remapping_other2_player_key_tongue = global.player3_gamepad_button_tongue;
-					var remapping_other2_player_key_zoom_in = global.player3_gamepad_button_zoom_in;
-					var remapping_other2_player_key_zoom_out = global.player3_gamepad_button_zoom_out;
-					var remapping_other2_player_key_accept = global.player3_gamepad_button_accept;
-					var remapping_other2_player_key_back = global.player3_gamepad_button_back;
-					
-					var remapping_other2_player_key2_dive = global.player3_gamepad_button2_dive;
-					var remapping_other2_player_key2_jump = global.player3_gamepad_button2_jump;
-					var remapping_other2_player_key2_crouch = global.player3_gamepad_button2_crouch;
-					var remapping_other2_player_key2_crouch_toggle = global.player3_gamepad_button2_crouch_toggle;
-					var remapping_other2_player_key2_sprint = global.player3_gamepad_button2_sprint;
-					var remapping_other2_player_key2_sprint_toggle = global.player3_gamepad_button2_sprint_toggle;
-					var remapping_other2_player_key2_left = global.player3_gamepad_button2_left;
-					var remapping_other2_player_key2_right = global.player3_gamepad_button2_right;
-					var remapping_other2_player_key2_down = global.player3_gamepad_button2_down;
-					var remapping_other2_player_key2_up = global.player3_gamepad_button2_up;
-					var remapping_other2_player_key2_tongue = global.player3_gamepad_button2_tongue;
-					var remapping_other2_player_key2_zoom_in = global.player3_gamepad_button2_zoom_in;
-					var remapping_other2_player_key2_zoom_out = global.player3_gamepad_button2_zoom_out;
-					var remapping_other2_player_key2_accept = global.player3_gamepad_button2_accept;
-					var remapping_other2_player_key2_back = global.player3_gamepad_button2_back;
-					
-					var remapping_other3_player_key_dive = global.player4_gamepad_button_dive;
-					var remapping_other3_player_key_jump = global.player4_gamepad_button_jump;
-					var remapping_other3_player_key_crouch = global.player4_gamepad_button_crouch;
-					var remapping_other3_player_key_crouch_toggle = global.player4_gamepad_button_crouch_toggle;
-					var remapping_other3_player_key_sprint = global.player4_gamepad_button_sprint;
-					var remapping_other3_player_key_sprint_toggle = global.player4_gamepad_button_sprint_toggle;
-					var remapping_other3_player_key_left = global.player4_gamepad_button_left;
-					var remapping_other3_player_key_right = global.player4_gamepad_button_right;
-					var remapping_other3_player_key_down = global.player4_gamepad_button_down;
-					var remapping_other3_player_key_up = global.player4_gamepad_button_up;
-					var remapping_other3_player_key_tongue = global.player4_gamepad_button_tongue;
-					var remapping_other3_player_key_zoom_in = global.player4_gamepad_button_zoom_in;
-					var remapping_other3_player_key_zoom_out = global.player4_gamepad_button_zoom_out;
-					var remapping_other3_player_key_accept = global.player4_gamepad_button_accept;
-					var remapping_other3_player_key_back = global.player4_gamepad_button_back;
-					
-					var remapping_other3_player_key2_dive = global.player4_gamepad_button2_dive;
-					var remapping_other3_player_key2_jump = global.player4_gamepad_button2_jump;
-					var remapping_other3_player_key2_crouch = global.player4_gamepad_button2_crouch;
-					var remapping_other3_player_key2_crouch_toggle = global.player4_gamepad_button2_crouch_toggle;
-					var remapping_other3_player_key2_sprint = global.player4_gamepad_button2_sprint;
-					var remapping_other3_player_key2_sprint_toggle = global.player4_gamepad_button2_sprint_toggle;
-					var remapping_other3_player_key2_left = global.player4_gamepad_button2_left;
-					var remapping_other3_player_key2_right = global.player4_gamepad_button2_right;
-					var remapping_other3_player_key2_down = global.player4_gamepad_button2_down;
-					var remapping_other3_player_key2_up = global.player4_gamepad_button2_up;
-					var remapping_other3_player_key2_tongue = global.player4_gamepad_button2_tongue;
-					var remapping_other3_player_key2_zoom_in = global.player4_gamepad_button2_zoom_in;
-					var remapping_other3_player_key2_zoom_out = global.player4_gamepad_button2_zoom_out;
-					var remapping_other3_player_key2_accept = global.player4_gamepad_button2_accept;
-					var remapping_other3_player_key2_back = global.player4_gamepad_button2_back;
-					#endregion /* Other player's keys END */
-					
-				}
-				#endregion /* Remapping Player 1 Gamepad Key Variables END */
-				
+				var selected_remapping_player = 1;
+				var other1_remapping_player = 2;
+				var other2_remapping_player = 3;
+				var other3_remapping_player = 4;
 			}
-			#endregion /* Remapping Player 1 Key Variables END */
-			
-			else
-			
-			#region /* Remapping Player 2 Key Variables */
 			if (remapping_player == 1)
 			{
-				
-				#region /* Remapping Player 2 Keyboard and Mouse Key Variables */
-				if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
-				{
-					var remapping_player_key_dive = global.player2_key_dive;
-					var remapping_player_key_jump = global.player2_key_jump;
-					var remapping_player_key_crouch = global.player2_key_crouch;
-					var remapping_player_key_crouch_toggle = global.player2_key_crouch_toggle;
-					var remapping_player_key_sprint = global.player2_key_sprint;
-					var remapping_player_key_sprint_toggle = global.player2_key_sprint_toggle;
-					var remapping_player_key_left = global.player2_key_left;
-					var remapping_player_key_right = global.player2_key_right;
-					var remapping_player_key_down = global.player2_key_down;
-					var remapping_player_key_up = global.player2_key_up;
-					var remapping_player_key_tongue = global.player2_key_tongue;
-					var remapping_player_key_zoom_in = global.player2_key_zoom_in;
-					var remapping_player_key_zoom_out = global.player2_key_zoom_out;
-					var remapping_player_key_accept = global.player2_key_accept;
-					var remapping_player_key_back = global.player2_key_back;
-					
-					var remapping_player_key2_dive = global.player2_key2_dive;
-					var remapping_player_key2_jump = global.player2_key2_jump;
-					var remapping_player_key2_crouch = global.player2_key2_crouch;
-					var remapping_player_key2_crouch_toggle = global.player2_key2_crouch_toggle;
-					var remapping_player_key2_sprint = global.player2_key2_sprint;
-					var remapping_player_key2_sprint_toggle = global.player2_key2_sprint_toggle;
-					var remapping_player_key2_left = global.player2_key2_left;
-					var remapping_player_key2_right = global.player2_key2_right;
-					var remapping_player_key2_down = global.player2_key2_down;
-					var remapping_player_key2_up = global.player2_key2_up;
-					var remapping_player_key2_tongue = global.player2_key2_tongue;
-					var remapping_player_key2_zoom_in = global.player2_key2_zoom_in;
-					var remapping_player_key2_zoom_out = global.player2_key2_zoom_out;
-					var remapping_player_key2_accept = global.player2_key2_accept;
-					var remapping_player_key2_back = global.player2_key2_back;
-					
-					#region /* Other player's keys */
-					var remapping_other1_player_key_dive = global.player1_key_dive;
-					var remapping_other1_player_key_jump = global.player1_key_jump;
-					var remapping_other1_player_key_crouch = global.player1_key_crouch;
-					var remapping_other1_player_key_crouch_toggle = global.player1_key_crouch_toggle;
-					var remapping_other1_player_key_sprint = global.player1_key_sprint;
-					var remapping_other1_player_key_sprint_toggle = global.player1_key_sprint_toggle;
-					var remapping_other1_player_key_left = global.player1_key_left;
-					var remapping_other1_player_key_right = global.player1_key_right;
-					var remapping_other1_player_key_down = global.player1_key_down;
-					var remapping_other1_player_key_up = global.player1_key_up;
-					var remapping_other1_player_key_tongue = global.player1_key_tongue;
-					var remapping_other1_player_key_zoom_in = global.player1_key_zoom_in;
-					var remapping_other1_player_key_zoom_out = global.player1_key_zoom_out;
-					var remapping_other1_player_key_accept = global.player1_key_accept;
-					var remapping_other1_player_key_back = global.player1_key_back;
-					
-					var remapping_other1_player_key2_dive = global.player1_key2_dive;
-					var remapping_other1_player_key2_jump = global.player1_key2_jump;
-					var remapping_other1_player_key2_crouch = global.player1_key2_crouch;
-					var remapping_other1_player_key2_crouch_toggle = global.player1_key2_crouch_toggle;
-					var remapping_other1_player_key2_sprint = global.player1_key2_sprint;
-					var remapping_other1_player_key2_sprint_toggle = global.player1_key2_sprint_toggle;
-					var remapping_other1_player_key2_left = global.player1_key2_left;
-					var remapping_other1_player_key2_right = global.player1_key2_right;
-					var remapping_other1_player_key2_down = global.player1_key2_down;
-					var remapping_other1_player_key2_up = global.player1_key2_up;
-					var remapping_other1_player_key2_tongue = global.player1_key2_tongue;
-					var remapping_other1_player_key2_zoom_in = global.player1_key2_zoom_in;
-					var remapping_other1_player_key2_zoom_out = global.player1_key2_zoom_out;
-					var remapping_other1_player_key2_accept = global.player1_key2_accept;
-					var remapping_other1_player_key2_back = global.player1_key2_back;
-					
-					var remapping_other2_player_key_dive = global.player3_key_dive;
-					var remapping_other2_player_key_jump = global.player3_key_jump;
-					var remapping_other2_player_key_crouch = global.player3_key_crouch;
-					var remapping_other2_player_key_crouch_toggle = global.player3_key_crouch_toggle;
-					var remapping_other2_player_key_sprint = global.player3_key_sprint;
-					var remapping_other2_player_key_sprint_toggle = global.player3_key_sprint_toggle;
-					var remapping_other2_player_key_left = global.player3_key_left;
-					var remapping_other2_player_key_right = global.player3_key_right;
-					var remapping_other2_player_key_down = global.player3_key_down;
-					var remapping_other2_player_key_up = global.player3_key_up;
-					var remapping_other2_player_key_tongue = global.player3_key_tongue;
-					var remapping_other2_player_key_zoom_in = global.player3_key_zoom_in;
-					var remapping_other2_player_key_zoom_out = global.player3_key_zoom_out;
-					var remapping_other2_player_key_accept = global.player3_key_accept;
-					var remapping_other2_player_key_back = global.player3_key_back;
-					
-					var remapping_other2_player_key2_dive = global.player3_key2_dive;
-					var remapping_other2_player_key2_jump = global.player3_key2_jump;
-					var remapping_other2_player_key2_crouch = global.player3_key2_crouch;
-					var remapping_other2_player_key2_crouch_toggle = global.player3_key2_crouch_toggle;
-					var remapping_other2_player_key2_sprint = global.player3_key2_sprint;
-					var remapping_other2_player_key2_sprint_toggle = global.player3_key2_sprint_toggle;
-					var remapping_other2_player_key2_left = global.player3_key2_left;
-					var remapping_other2_player_key2_right = global.player3_key2_right;
-					var remapping_other2_player_key2_down = global.player3_key2_down;
-					var remapping_other2_player_key2_up = global.player3_key2_up;
-					var remapping_other2_player_key2_tongue = global.player3_key2_tongue;
-					var remapping_other2_player_key2_zoom_in = global.player3_key2_zoom_in;
-					var remapping_other2_player_key2_zoom_out = global.player3_key2_zoom_out;
-					var remapping_other2_player_key2_accept = global.player3_key2_accept;
-					var remapping_other2_player_key2_back = global.player3_key2_back;
-					
-					var remapping_other3_player_key_dive = global.player4_key_dive;
-					var remapping_other3_player_key_jump = global.player4_key_jump;
-					var remapping_other3_player_key_crouch = global.player4_key_crouch;
-					var remapping_other3_player_key_crouch_toggle = global.player4_key_crouch_toggle;
-					var remapping_other3_player_key_sprint = global.player4_key_sprint;
-					var remapping_other3_player_key_sprint_toggle = global.player4_key_sprint_toggle;
-					var remapping_other3_player_key_left = global.player4_key_left;
-					var remapping_other3_player_key_right = global.player4_key_right;
-					var remapping_other3_player_key_down = global.player4_key_down;
-					var remapping_other3_player_key_up = global.player4_key_up;
-					var remapping_other3_player_key_tongue = global.player4_key_tongue;
-					var remapping_other3_player_key_zoom_in = global.player4_key_zoom_in;
-					var remapping_other3_player_key_zoom_out = global.player4_key_zoom_out;
-					var remapping_other3_player_key_accept = global.player4_key_accept;
-					var remapping_other3_player_key_back = global.player4_key_back;
-					
-					var remapping_other3_player_key2_dive = global.player4_key2_dive;
-					var remapping_other3_player_key2_jump = global.player4_key2_jump;
-					var remapping_other3_player_key2_crouch = global.player4_key2_crouch;
-					var remapping_other3_player_key2_crouch_toggle = global.player4_key2_crouch_toggle;
-					var remapping_other3_player_key2_sprint = global.player4_key2_sprint;
-					var remapping_other3_player_key2_sprint_toggle = global.player4_key2_sprint_toggle;
-					var remapping_other3_player_key2_left = global.player4_key2_left;
-					var remapping_other3_player_key2_right = global.player4_key2_right;
-					var remapping_other3_player_key2_down = global.player4_key2_down;
-					var remapping_other3_player_key2_up = global.player4_key2_up;
-					var remapping_other3_player_key2_tongue = global.player4_key2_tongue;
-					var remapping_other3_player_key2_zoom_in = global.player4_key2_zoom_in;
-					var remapping_other3_player_key2_zoom_out = global.player4_key2_zoom_out;
-					var remapping_other3_player_key2_accept = global.player4_key2_accept;
-					var remapping_other3_player_key2_back = global.player4_key2_back;
-					#endregion /* Other player's keys END */
-					
-				}
-				#endregion /* Remapping Player 2 Keyboard and Mouse Key Variables END */
-				
-				else
-				
-				#region /* Remapping Player 2 Gamepad Key Variables */
-				if (global.settings_sidebar_menu == "controller_settings")
-				{
-					var remapping_player_key_dive = global.player2_gamepad_button_dive;
-					var remapping_player_key_jump = global.player2_gamepad_button_jump;
-					var remapping_player_key_crouch = global.player2_gamepad_button_crouch;
-					var remapping_player_key_crouch_toggle = global.player2_gamepad_button_crouch_toggle;
-					var remapping_player_key_sprint = global.player2_gamepad_button_sprint;
-					var remapping_player_key_sprint_toggle = global.player2_gamepad_button_sprint_toggle;
-					var remapping_player_key_left = global.player2_gamepad_button_left;
-					var remapping_player_key_right = global.player2_gamepad_button_right;
-					var remapping_player_key_down = global.player2_gamepad_button_down;
-					var remapping_player_key_up = global.player2_gamepad_button_up;
-					var remapping_player_key_tongue = global.player2_gamepad_button_tongue;
-					var remapping_player_key_zoom_in = global.player2_gamepad_button_zoom_in;
-					var remapping_player_key_zoom_out = global.player2_gamepad_button_zoom_out;
-					var remapping_player_key_accept = global.player2_gamepad_button_accept;
-					var remapping_player_key_back = global.player2_gamepad_button_back;
-					
-					var remapping_player_key2_dive = global.player2_gamepad_button2_dive;
-					var remapping_player_key2_jump = global.player2_gamepad_button2_jump;
-					var remapping_player_key2_crouch = global.player2_gamepad_button2_crouch;
-					var remapping_player_key2_crouch_toggle = global.player2_gamepad_button2_crouch_toggle;
-					var remapping_player_key2_sprint = global.player2_gamepad_button2_sprint;
-					var remapping_player_key2_sprint_toggle = global.player2_gamepad_button2_sprint_toggle;
-					var remapping_player_key2_left = global.player2_gamepad_button2_left;
-					var remapping_player_key2_right = global.player2_gamepad_button2_right;
-					var remapping_player_key2_down = global.player2_gamepad_button2_down;
-					var remapping_player_key2_up = global.player2_gamepad_button2_up;
-					var remapping_player_key2_tongue = global.player2_gamepad_button2_tongue;
-					var remapping_player_key2_zoom_in = global.player2_gamepad_button2_zoom_in;
-					var remapping_player_key2_zoom_out = global.player2_gamepad_button2_zoom_out;
-					var remapping_player_key2_accept = global.player2_gamepad_button2_accept;
-					var remapping_player_key2_back = global.player2_gamepad_button2_back;
-					
-					#region /* Other player's keys */
-					var remapping_other1_player_key_dive = global.player1_gamepad_button_dive;
-					var remapping_other1_player_key_jump = global.player1_gamepad_button_jump;
-					var remapping_other1_player_key_crouch = global.player1_gamepad_button_crouch;
-					var remapping_other1_player_key_crouch_toggle = global.player1_gamepad_button_crouch_toggle;
-					var remapping_other1_player_key_sprint = global.player1_gamepad_button_sprint;
-					var remapping_other1_player_key_sprint_toggle = global.player1_gamepad_button_sprint_toggle;
-					var remapping_other1_player_key_left = global.player1_gamepad_button_left;
-					var remapping_other1_player_key_right = global.player1_gamepad_button_right;
-					var remapping_other1_player_key_down = global.player1_gamepad_button_down;
-					var remapping_other1_player_key_up = global.player1_gamepad_button_up;
-					var remapping_other1_player_key_tongue = global.player1_gamepad_button_tongue;
-					var remapping_other1_player_key_zoom_in = global.player1_gamepad_button_zoom_in;
-					var remapping_other1_player_key_zoom_out = global.player1_gamepad_button_zoom_out;
-					var remapping_other1_player_key_accept = global.player1_gamepad_button_accept;
-					var remapping_other1_player_key_back = global.player1_gamepad_button_back;
-					
-					var remapping_other1_player_key2_dive = global.player1_gamepad_button2_dive;
-					var remapping_other1_player_key2_jump = global.player1_gamepad_button2_jump;
-					var remapping_other1_player_key2_crouch = global.player1_gamepad_button2_crouch;
-					var remapping_other1_player_key2_crouch_toggle = global.player1_gamepad_button2_crouch_toggle;
-					var remapping_other1_player_key2_sprint = global.player1_gamepad_button2_sprint;
-					var remapping_other1_player_key2_sprint_toggle = global.player1_gamepad_button2_sprint_toggle;
-					var remapping_other1_player_key2_left = global.player1_gamepad_button2_left;
-					var remapping_other1_player_key2_right = global.player1_gamepad_button2_right;
-					var remapping_other1_player_key2_down = global.player1_gamepad_button2_down;
-					var remapping_other1_player_key2_up = global.player1_gamepad_button2_up;
-					var remapping_other1_player_key2_tongue = global.player1_gamepad_button2_tongue;
-					var remapping_other1_player_key2_zoom_in = global.player1_gamepad_button2_zoom_in;
-					var remapping_other1_player_key2_zoom_out = global.player1_gamepad_button2_zoom_out;
-					var remapping_other1_player_key2_accept = global.player1_gamepad_button2_accept;
-					var remapping_other1_player_key2_back = global.player1_gamepad_button2_back;
-					
-					var remapping_other2_player_key_dive = global.player3_gamepad_button_dive;
-					var remapping_other2_player_key_jump = global.player3_gamepad_button_jump;
-					var remapping_other2_player_key_crouch = global.player3_gamepad_button_crouch;
-					var remapping_other2_player_key_crouch_toggle = global.player3_gamepad_button_crouch_toggle;
-					var remapping_other2_player_key_sprint = global.player3_gamepad_button_sprint;
-					var remapping_other2_player_key_sprint_toggle = global.player3_gamepad_button_sprint_toggle;
-					var remapping_other2_player_key_left = global.player3_gamepad_button_left;
-					var remapping_other2_player_key_right = global.player3_gamepad_button_right;
-					var remapping_other2_player_key_down = global.player3_gamepad_button_down;
-					var remapping_other2_player_key_up = global.player3_gamepad_button_up;
-					var remapping_other2_player_key_tongue = global.player3_gamepad_button_tongue;
-					var remapping_other2_player_key_zoom_in = global.player3_gamepad_button_zoom_in;
-					var remapping_other2_player_key_zoom_out = global.player3_gamepad_button_zoom_out;
-					var remapping_other2_player_key_accept = global.player3_gamepad_button_accept;
-					var remapping_other2_player_key_back = global.player3_gamepad_button_back;
-					
-					var remapping_other2_player_key2_dive = global.player3_gamepad_button2_dive;
-					var remapping_other2_player_key2_jump = global.player3_gamepad_button2_jump;
-					var remapping_other2_player_key2_crouch = global.player3_gamepad_button2_crouch;
-					var remapping_other2_player_key2_crouch_toggle = global.player3_gamepad_button2_crouch_toggle;
-					var remapping_other2_player_key2_sprint = global.player3_gamepad_button2_sprint;
-					var remapping_other2_player_key2_sprint_toggle = global.player3_gamepad_button2_sprint_toggle;
-					var remapping_other2_player_key2_left = global.player3_gamepad_button2_left;
-					var remapping_other2_player_key2_right = global.player3_gamepad_button2_right;
-					var remapping_other2_player_key2_down = global.player3_gamepad_button2_down;
-					var remapping_other2_player_key2_up = global.player3_gamepad_button2_up;
-					var remapping_other2_player_key2_tongue = global.player3_gamepad_button2_tongue;
-					var remapping_other2_player_key2_zoom_in = global.player3_gamepad_button2_zoom_in;
-					var remapping_other2_player_key2_zoom_out = global.player3_gamepad_button2_zoom_out;
-					var remapping_other2_player_key2_accept = global.player3_gamepad_button2_accept;
-					var remapping_other2_player_key2_back = global.player3_gamepad_button2_back;
-					
-					var remapping_other3_player_key_dive = global.player4_gamepad_button_dive;
-					var remapping_other3_player_key_jump = global.player4_gamepad_button_jump;
-					var remapping_other3_player_key_crouch = global.player4_gamepad_button_crouch;
-					var remapping_other3_player_key_crouch_toggle = global.player4_gamepad_button_crouch_toggle;
-					var remapping_other3_player_key_sprint = global.player4_gamepad_button_sprint;
-					var remapping_other3_player_key_sprint_toggle = global.player4_gamepad_button_sprint_toggle;
-					var remapping_other3_player_key_left = global.player4_gamepad_button_left;
-					var remapping_other3_player_key_right = global.player4_gamepad_button_right;
-					var remapping_other3_player_key_down = global.player4_gamepad_button_down;
-					var remapping_other3_player_key_up = global.player4_gamepad_button_up;
-					var remapping_other3_player_key_tongue = global.player4_gamepad_button_tongue;
-					var remapping_other3_player_key_zoom_in = global.player4_gamepad_button_zoom_in;
-					var remapping_other3_player_key_zoom_out = global.player4_gamepad_button_zoom_out;
-					var remapping_other3_player_key_accept = global.player4_gamepad_button_accept;
-					var remapping_other3_player_key_back = global.player4_gamepad_button_back;
-					
-					var remapping_other3_player_key2_dive = global.player4_gamepad_button2_dive;
-					var remapping_other3_player_key2_jump = global.player4_gamepad_button2_jump;
-					var remapping_other3_player_key2_crouch = global.player4_gamepad_button2_crouch;
-					var remapping_other3_player_key2_crouch_toggle = global.player4_gamepad_button2_crouch_toggle;
-					var remapping_other3_player_key2_sprint = global.player4_gamepad_button2_sprint;
-					var remapping_other3_player_key2_sprint_toggle = global.player4_gamepad_button2_sprint_toggle;
-					var remapping_other3_player_key2_left = global.player4_gamepad_button2_left;
-					var remapping_other3_player_key2_right = global.player4_gamepad_button2_right;
-					var remapping_other3_player_key2_down = global.player4_gamepad_button2_down;
-					var remapping_other3_player_key2_up = global.player4_gamepad_button2_up;
-					var remapping_other3_player_key2_tongue = global.player4_gamepad_button2_tongue;
-					var remapping_other3_player_key2_zoom_in = global.player4_gamepad_button2_zoom_in;
-					var remapping_other3_player_key2_zoom_out = global.player4_gamepad_button2_zoom_out;
-					var remapping_other3_player_key2_accept = global.player4_gamepad_button2_accept;
-					var remapping_other3_player_key2_back = global.player4_gamepad_button2_back;
-					#endregion /* Other player's keys END */
-					
-				}
-				#endregion /* Remapping Player 2 Gamepad Key Variables END */
-				
+				var selected_remapping_player = 2;
+				var other1_remapping_player = 1;
+				var other2_remapping_player = 3;
+				var other3_remapping_player = 4;
 			}
-			#endregion /* Remapping Player 2 Key Variables END */
-			
-			else
-			
-			#region /* Remapping Player 3 Key Variables */
 			if (remapping_player == 2)
 			{
-				
-				#region /* Remapping Player 3 Keyboard and Mouse Key Variables */
-				if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
-				{
-					var remapping_player_key_dive = global.player3_key_dive;
-					var remapping_player_key_jump = global.player3_key_jump;
-					var remapping_player_key_crouch = global.player3_key_crouch;
-					var remapping_player_key_crouch_toggle = global.player3_key_crouch_toggle;
-					var remapping_player_key_sprint = global.player3_key_sprint;
-					var remapping_player_key_sprint_toggle = global.player3_key_sprint_toggle;
-					var remapping_player_key_left = global.player3_key_left;
-					var remapping_player_key_right = global.player3_key_right;
-					var remapping_player_key_down = global.player3_key_down;
-					var remapping_player_key_up = global.player3_key_up;
-					var remapping_player_key_tongue = global.player3_key_tongue;
-					var remapping_player_key_zoom_in = global.player3_key_zoom_in;
-					var remapping_player_key_zoom_out = global.player3_key_zoom_out;
-					var remapping_player_key_accept = global.player3_key_accept;
-					var remapping_player_key_back = global.player3_key_back;
-					
-					var remapping_player_key2_dive = global.player3_key2_dive;
-					var remapping_player_key2_jump = global.player3_key2_jump;
-					var remapping_player_key2_crouch = global.player3_key2_crouch;
-					var remapping_player_key2_crouch_toggle = global.player3_key2_crouch_toggle;
-					var remapping_player_key2_sprint = global.player3_key2_sprint;
-					var remapping_player_key2_sprint_toggle = global.player3_key2_sprint_toggle;
-					var remapping_player_key2_left = global.player3_key2_left;
-					var remapping_player_key2_right = global.player3_key2_right;
-					var remapping_player_key2_down = global.player3_key2_down;
-					var remapping_player_key2_up = global.player3_key2_up;
-					var remapping_player_key2_tongue = global.player3_key2_tongue;
-					var remapping_player_key2_zoom_in = global.player3_key2_zoom_in;
-					var remapping_player_key2_zoom_out = global.player3_key2_zoom_out;
-					var remapping_player_key2_accept = global.player3_key2_accept;
-					var remapping_player_key2_back = global.player3_key2_back;
-					
-					#region /* Other player's keys */
-					var remapping_other1_player_key_dive = global.player2_key_dive;
-					var remapping_other1_player_key_jump = global.player2_key_jump;
-					var remapping_other1_player_key_crouch = global.player2_key_crouch;
-					var remapping_other1_player_key_crouch_toggle = global.player2_key_crouch_toggle;
-					var remapping_other1_player_key_sprint = global.player2_key_sprint;
-					var remapping_other1_player_key_sprint_toggle = global.player2_key_sprint_toggle;
-					var remapping_other1_player_key_left = global.player2_key_left;
-					var remapping_other1_player_key_right = global.player2_key_right;
-					var remapping_other1_player_key_down = global.player2_key_down;
-					var remapping_other1_player_key_up = global.player2_key_up;
-					var remapping_other1_player_key_tongue = global.player2_key_tongue;
-					var remapping_other1_player_key_zoom_in = global.player2_key_zoom_in;
-					var remapping_other1_player_key_zoom_out = global.player2_key_zoom_out;
-					var remapping_other1_player_key_accept = global.player2_key_accept;
-					var remapping_other1_player_key_back = global.player2_key_back;
-					
-					var remapping_other1_player_key2_dive = global.player2_key2_dive;
-					var remapping_other1_player_key2_jump = global.player2_key2_jump;
-					var remapping_other1_player_key2_crouch = global.player2_key2_crouch;
-					var remapping_other1_player_key2_crouch_toggle = global.player2_key2_crouch_toggle;
-					var remapping_other1_player_key2_sprint = global.player2_key2_sprint;
-					var remapping_other1_player_key2_sprint_toggle = global.player2_key2_sprint_toggle;
-					var remapping_other1_player_key2_left = global.player2_key2_left;
-					var remapping_other1_player_key2_right = global.player2_key2_right;
-					var remapping_other1_player_key2_down = global.player2_key2_down;
-					var remapping_other1_player_key2_up = global.player2_key2_up;
-					var remapping_other1_player_key2_tongue = global.player2_key2_tongue;
-					var remapping_other1_player_key2_zoom_in = global.player2_key2_zoom_in;
-					var remapping_other1_player_key2_zoom_out = global.player2_key2_zoom_out;
-					var remapping_other1_player_key2_accept = global.player2_key2_accept;
-					var remapping_other1_player_key2_back = global.player2_key2_back;
-					
-					var remapping_other2_player_key_dive = global.player1_key_dive;
-					var remapping_other2_player_key_jump = global.player1_key_jump;
-					var remapping_other2_player_key_crouch = global.player1_key_crouch;
-					var remapping_other2_player_key_crouch_toggle = global.player1_key_crouch_toggle;
-					var remapping_other2_player_key_sprint = global.player1_key_sprint;
-					var remapping_other2_player_key_sprint_toggle = global.player1_key_sprint_toggle;
-					var remapping_other2_player_key_left = global.player1_key_left;
-					var remapping_other2_player_key_right = global.player1_key_right;
-					var remapping_other2_player_key_down = global.player1_key_down;
-					var remapping_other2_player_key_up = global.player1_key_up;
-					var remapping_other2_player_key_tongue = global.player1_key_tongue;
-					var remapping_other2_player_key_zoom_in = global.player1_key_zoom_in;
-					var remapping_other2_player_key_zoom_out = global.player1_key_zoom_out;
-					var remapping_other2_player_key_accept = global.player1_key_accept;
-					var remapping_other2_player_key_back = global.player1_key_back;
-					
-					var remapping_other2_player_key2_dive = global.player1_key2_dive;
-					var remapping_other2_player_key2_jump = global.player1_key2_jump;
-					var remapping_other2_player_key2_crouch = global.player1_key2_crouch;
-					var remapping_other2_player_key2_crouch_toggle = global.player1_key2_crouch_toggle;
-					var remapping_other2_player_key2_sprint = global.player1_key2_sprint;
-					var remapping_other2_player_key2_sprint_toggle = global.player1_key2_sprint_toggle;
-					var remapping_other2_player_key2_left = global.player1_key2_left;
-					var remapping_other2_player_key2_right = global.player1_key2_right;
-					var remapping_other2_player_key2_down = global.player1_key2_down;
-					var remapping_other2_player_key2_up = global.player1_key2_up;
-					var remapping_other2_player_key2_tongue = global.player1_key2_tongue;
-					var remapping_other2_player_key2_zoom_in = global.player1_key2_zoom_in;
-					var remapping_other2_player_key2_zoom_out = global.player1_key2_zoom_out;
-					var remapping_other2_player_key2_accept = global.player1_key2_accept;
-					var remapping_other2_player_key2_back = global.player1_key2_back;
-					
-					var remapping_other3_player_key_dive = global.player4_key_dive;
-					var remapping_other3_player_key_jump = global.player4_key_jump;
-					var remapping_other3_player_key_crouch = global.player4_key_crouch;
-					var remapping_other3_player_key_crouch_toggle = global.player4_key_crouch_toggle;
-					var remapping_other3_player_key_sprint = global.player4_key_sprint;
-					var remapping_other3_player_key_sprint_toggle = global.player4_key_sprint_toggle;
-					var remapping_other3_player_key_left = global.player4_key_left;
-					var remapping_other3_player_key_right = global.player4_key_right;
-					var remapping_other3_player_key_down = global.player4_key_down;
-					var remapping_other3_player_key_up = global.player4_key_up;
-					var remapping_other3_player_key_tongue = global.player4_key_tongue;
-					var remapping_other3_player_key_zoom_in = global.player4_key_zoom_in;
-					var remapping_other3_player_key_zoom_out = global.player4_key_zoom_out;
-					var remapping_other3_player_key_accept = global.player4_key_accept;
-					var remapping_other3_player_key_back = global.player4_key_back;
-					
-					var remapping_other3_player_key2_dive = global.player4_key2_dive;
-					var remapping_other3_player_key2_jump = global.player4_key2_jump;
-					var remapping_other3_player_key2_crouch = global.player4_key2_crouch;
-					var remapping_other3_player_key2_crouch_toggle = global.player4_key2_crouch_toggle;
-					var remapping_other3_player_key2_sprint = global.player4_key2_sprint;
-					var remapping_other3_player_key2_sprint_toggle = global.player4_key2_sprint_toggle;
-					var remapping_other3_player_key2_left = global.player4_key2_left;
-					var remapping_other3_player_key2_right = global.player4_key2_right;
-					var remapping_other3_player_key2_down = global.player4_key2_down;
-					var remapping_other3_player_key2_up = global.player4_key2_up;
-					var remapping_other3_player_key2_tongue = global.player4_key2_tongue;
-					var remapping_other3_player_key2_zoom_in = global.player4_key2_zoom_in;
-					var remapping_other3_player_key2_zoom_out = global.player4_key2_zoom_out;
-					var remapping_other3_player_key2_accept = global.player4_key2_accept;
-					var remapping_other3_player_key2_back = global.player4_key2_back;
-					#endregion /* Other player's keys END */
-					
-				}
-				#endregion /* Remapping Player 3 Keyboard and Mouse Key Variables END */
-				
-				else
-				
-				#region /* Remapping Player 3 Gamepad Key Variables */
-				if (global.settings_sidebar_menu == "controller_settings")
-				{
-					var remapping_player_key_dive = global.player3_gamepad_button_dive;
-					var remapping_player_key_jump = global.player3_gamepad_button_jump;
-					var remapping_player_key_crouch = global.player3_gamepad_button_crouch;
-					var remapping_player_key_crouch_toggle = global.player3_gamepad_button_crouch_toggle;
-					var remapping_player_key_sprint = global.player3_gamepad_button_sprint;
-					var remapping_player_key_sprint_toggle = global.player3_gamepad_button_sprint_toggle;
-					var remapping_player_key_left = global.player3_gamepad_button_left;
-					var remapping_player_key_right = global.player3_gamepad_button_right;
-					var remapping_player_key_down = global.player3_gamepad_button_down;
-					var remapping_player_key_up = global.player3_gamepad_button_up;
-					var remapping_player_key_tongue = global.player3_gamepad_button_tongue;
-					var remapping_player_key_zoom_in = global.player3_gamepad_button_zoom_in;
-					var remapping_player_key_zoom_out = global.player3_gamepad_button_zoom_out;
-					var remapping_player_key_accept = global.player3_gamepad_button_accept;
-					var remapping_player_key_back = global.player3_gamepad_button_back;
-					
-					var remapping_player_key2_dive = global.player3_gamepad_button2_dive;
-					var remapping_player_key2_jump = global.player3_gamepad_button2_jump;
-					var remapping_player_key2_crouch = global.player3_gamepad_button2_crouch;
-					var remapping_player_key2_crouch_toggle = global.player3_gamepad_button2_crouch_toggle;
-					var remapping_player_key2_sprint = global.player3_gamepad_button2_sprint;
-					var remapping_player_key2_sprint_toggle = global.player3_gamepad_button2_sprint_toggle;
-					var remapping_player_key2_left = global.player3_gamepad_button2_left;
-					var remapping_player_key2_right = global.player3_gamepad_button2_right;
-					var remapping_player_key2_down = global.player3_gamepad_button2_down;
-					var remapping_player_key2_up = global.player3_gamepad_button2_up;
-					var remapping_player_key2_tongue = global.player3_gamepad_button2_tongue;
-					var remapping_player_key2_zoom_in = global.player3_gamepad_button2_zoom_in;
-					var remapping_player_key2_zoom_out = global.player3_gamepad_button2_zoom_out;
-					var remapping_player_key2_accept = global.player3_gamepad_button2_accept;
-					var remapping_player_key2_back = global.player3_gamepad_button2_back;
-					
-					#region /* Other player's keys */
-					var remapping_other1_player_key_dive = global.player2_gamepad_button_dive;
-					var remapping_other1_player_key_jump = global.player2_gamepad_button_jump;
-					var remapping_other1_player_key_crouch = global.player2_gamepad_button_crouch;
-					var remapping_other1_player_key_crouch_toggle = global.player2_gamepad_button_crouch_toggle;
-					var remapping_other1_player_key_sprint = global.player2_gamepad_button_sprint;
-					var remapping_other1_player_key_sprint_toggle = global.player2_gamepad_button_sprint_toggle;
-					var remapping_other1_player_key_left = global.player2_gamepad_button_left;
-					var remapping_other1_player_key_right = global.player2_gamepad_button_right;
-					var remapping_other1_player_key_down = global.player2_gamepad_button_down;
-					var remapping_other1_player_key_up = global.player2_gamepad_button_up;
-					var remapping_other1_player_key_tongue = global.player2_gamepad_button_tongue;
-					var remapping_other1_player_key_zoom_in = global.player2_gamepad_button_zoom_in;
-					var remapping_other1_player_key_zoom_out = global.player2_gamepad_button_zoom_out;
-					var remapping_other1_player_key_accept = global.player2_gamepad_button_accept;
-					var remapping_other1_player_key_back = global.player2_gamepad_button_back;
-					
-					var remapping_other1_player_key2_dive = global.player2_gamepad_button2_dive;
-					var remapping_other1_player_key2_jump = global.player2_gamepad_button2_jump;
-					var remapping_other1_player_key2_crouch = global.player2_gamepad_button2_crouch;
-					var remapping_other1_player_key2_crouch_toggle = global.player2_gamepad_button2_crouch_toggle;
-					var remapping_other1_player_key2_sprint = global.player2_gamepad_button2_sprint;
-					var remapping_other1_player_key2_sprint_toggle = global.player2_gamepad_button2_sprint_toggle;
-					var remapping_other1_player_key2_left = global.player2_gamepad_button2_left;
-					var remapping_other1_player_key2_right = global.player2_gamepad_button2_right;
-					var remapping_other1_player_key2_down = global.player2_gamepad_button2_down;
-					var remapping_other1_player_key2_up = global.player2_gamepad_button2_up;
-					var remapping_other1_player_key2_tongue = global.player2_gamepad_button2_tongue;
-					var remapping_other1_player_key2_zoom_in = global.player2_gamepad_button2_zoom_in;
-					var remapping_other1_player_key2_zoom_out = global.player2_gamepad_button2_zoom_out;
-					var remapping_other1_player_key2_accept = global.player2_gamepad_button2_accept;
-					var remapping_other1_player_key2_back = global.player2_gamepad_button2_back;
-					
-					var remapping_other2_player_key_dive = global.player1_gamepad_button_dive;
-					var remapping_other2_player_key_jump = global.player1_gamepad_button_jump;
-					var remapping_other2_player_key_crouch = global.player1_gamepad_button_crouch;
-					var remapping_other2_player_key_crouch_toggle = global.player1_gamepad_button_crouch_toggle;
-					var remapping_other2_player_key_sprint = global.player1_gamepad_button_sprint;
-					var remapping_other2_player_key_sprint_toggle = global.player1_gamepad_button_sprint_toggle;
-					var remapping_other2_player_key_left = global.player1_gamepad_button_left;
-					var remapping_other2_player_key_right = global.player1_gamepad_button_right;
-					var remapping_other2_player_key_down = global.player1_gamepad_button_down;
-					var remapping_other2_player_key_up = global.player1_gamepad_button_up;
-					var remapping_other2_player_key_tongue = global.player1_gamepad_button_tongue;
-					var remapping_other2_player_key_zoom_in = global.player1_gamepad_button_zoom_in;
-					var remapping_other2_player_key_zoom_out = global.player1_gamepad_button_zoom_out;
-					var remapping_other2_player_key_accept = global.player1_gamepad_button_accept;
-					var remapping_other2_player_key_back = global.player1_gamepad_button_back;
-					
-					var remapping_other2_player_key2_dive = global.player1_gamepad_button2_dive;
-					var remapping_other2_player_key2_jump = global.player1_gamepad_button2_jump;
-					var remapping_other2_player_key2_crouch = global.player1_gamepad_button2_crouch;
-					var remapping_other2_player_key2_crouch_toggle = global.player1_gamepad_button2_crouch_toggle;
-					var remapping_other2_player_key2_sprint = global.player1_gamepad_button2_sprint;
-					var remapping_other2_player_key2_sprint_toggle = global.player1_gamepad_button2_sprint_toggle;
-					var remapping_other2_player_key2_left = global.player1_gamepad_button2_left;
-					var remapping_other2_player_key2_right = global.player1_gamepad_button2_right;
-					var remapping_other2_player_key2_down = global.player1_gamepad_button2_down;
-					var remapping_other2_player_key2_up = global.player1_gamepad_button2_up;
-					var remapping_other2_player_key2_tongue = global.player1_gamepad_button2_tongue;
-					var remapping_other2_player_key2_zoom_in = global.player1_gamepad_button2_zoom_in;
-					var remapping_other2_player_key2_zoom_out = global.player1_gamepad_button2_zoom_out;
-					var remapping_other2_player_key2_accept = global.player1_gamepad_button2_accept;
-					var remapping_other2_player_key2_back = global.player1_gamepad_button2_back;
-					
-					var remapping_other3_player_key_dive = global.player4_gamepad_button_dive;
-					var remapping_other3_player_key_jump = global.player4_gamepad_button_jump;
-					var remapping_other3_player_key_crouch = global.player4_gamepad_button_crouch;
-					var remapping_other3_player_key_crouch_toggle = global.player4_gamepad_button_crouch_toggle;
-					var remapping_other3_player_key_sprint = global.player4_gamepad_button_sprint;
-					var remapping_other3_player_key_sprint_toggle = global.player4_gamepad_button_sprint_toggle;
-					var remapping_other3_player_key_left = global.player4_gamepad_button_left;
-					var remapping_other3_player_key_right = global.player4_gamepad_button_right;
-					var remapping_other3_player_key_down = global.player4_gamepad_button_down;
-					var remapping_other3_player_key_up = global.player4_gamepad_button_up;
-					var remapping_other3_player_key_tongue = global.player4_gamepad_button_tongue;
-					var remapping_other3_player_key_zoom_in = global.player4_gamepad_button_zoom_in;
-					var remapping_other3_player_key_zoom_out = global.player4_gamepad_button_zoom_out;
-					var remapping_other3_player_key_accept = global.player4_gamepad_button_accept;
-					var remapping_other3_player_key_back = global.player4_gamepad_button_back;
-					
-					var remapping_other3_player_key2_dive = global.player4_gamepad_button2_dive;
-					var remapping_other3_player_key2_jump = global.player4_gamepad_button2_jump;
-					var remapping_other3_player_key2_crouch = global.player4_gamepad_button2_crouch;
-					var remapping_other3_player_key2_crouch_toggle = global.player4_gamepad_button2_crouch_toggle;
-					var remapping_other3_player_key2_sprint = global.player4_gamepad_button2_sprint;
-					var remapping_other3_player_key2_sprint_toggle = global.player4_gamepad_button2_sprint_toggle;
-					var remapping_other3_player_key2_left = global.player4_gamepad_button2_left;
-					var remapping_other3_player_key2_right = global.player4_gamepad_button2_right;
-					var remapping_other3_player_key2_down = global.player4_gamepad_button2_down;
-					var remapping_other3_player_key2_up = global.player4_gamepad_button2_up;
-					var remapping_other3_player_key2_tongue = global.player4_gamepad_button2_tongue;
-					var remapping_other3_player_key2_zoom_in = global.player4_gamepad_button2_zoom_in;
-					var remapping_other3_player_key2_zoom_out = global.player4_gamepad_button2_zoom_out;
-					var remapping_other3_player_key2_accept = global.player4_gamepad_button2_accept;
-					var remapping_other3_player_key2_back = global.player4_gamepad_button2_back;
-					#endregion /* Other player's keys END */
-					
-				}
-				#endregion /* Remapping Player 3 Gamepad Key Variables END */
-				
+				var selected_remapping_player = 3;
+				var other1_remapping_player = 1;
+				var other2_remapping_player = 2;
+				var other3_remapping_player = 4;
 			}
-			#endregion /* Remapping Player 3 Key Variables */
-			
-			else
-			
-			#region /* Remapping Player 4 Key Variables */
 			if (remapping_player == 3)
 			{
-				
-				#region /* Remapping Player 4 Keyboard and Mouse Key Variables */
-				if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
-				{
-					var remapping_player_key_dive = global.player4_key_dive;
-					var remapping_player_key_jump = global.player4_key_jump;
-					var remapping_player_key_crouch = global.player4_key_crouch;
-					var remapping_player_key_crouch_toggle = global.player4_key_crouch_toggle;
-					var remapping_player_key_sprint = global.player4_key_sprint;
-					var remapping_player_key_sprint_toggle = global.player4_key_sprint_toggle;
-					var remapping_player_key_left = global.player4_key_left;
-					var remapping_player_key_right = global.player4_key_right;
-					var remapping_player_key_down = global.player4_key_down;
-					var remapping_player_key_up = global.player4_key_up;
-					var remapping_player_key_tongue = global.player4_key_tongue;
-					var remapping_player_key_zoom_in = global.player4_key_zoom_in;
-					var remapping_player_key_zoom_out = global.player4_key_zoom_out;
-					var remapping_player_key_accept = global.player4_key_accept;
-					var remapping_player_key_back = global.player4_key_back;
-					
-					var remapping_player_key2_dive = global.player4_key2_dive;
-					var remapping_player_key2_jump = global.player4_key2_jump;
-					var remapping_player_key2_crouch = global.player4_key2_crouch;
-					var remapping_player_key2_crouch_toggle = global.player4_key2_crouch_toggle;
-					var remapping_player_key2_sprint = global.player4_key2_sprint;
-					var remapping_player_key2_sprint_toggle = global.player4_key2_sprint_toggle;
-					var remapping_player_key2_left = global.player4_key2_left;
-					var remapping_player_key2_right = global.player4_key2_right;
-					var remapping_player_key2_down = global.player4_key2_down;
-					var remapping_player_key2_up = global.player4_key2_up;
-					var remapping_player_key2_tongue = global.player4_key2_tongue;
-					var remapping_player_key2_zoom_in = global.player4_key2_zoom_in;
-					var remapping_player_key2_zoom_out = global.player4_key2_zoom_out;
-					var remapping_player_key2_accept = global.player4_key2_accept;
-					var remapping_player_key2_back = global.player4_key2_back;
-					
-					#region /* Other player's keys */
-					var remapping_other1_player_key_dive = global.player2_key_dive;
-					var remapping_other1_player_key_jump = global.player2_key_jump;
-					var remapping_other1_player_key_crouch = global.player2_key_crouch;
-					var remapping_other1_player_key_crouch_toggle = global.player2_key_crouch_toggle;
-					var remapping_other1_player_key_sprint = global.player2_key_sprint;
-					var remapping_other1_player_key_sprint_toggle = global.player2_key_sprint_toggle;
-					var remapping_other1_player_key_left = global.player2_key_left;
-					var remapping_other1_player_key_right = global.player2_key_right;
-					var remapping_other1_player_key_down = global.player2_key_down;
-					var remapping_other1_player_key_up = global.player2_key_up;
-					var remapping_other1_player_key_tongue = global.player2_key_tongue;
-					var remapping_other1_player_key_zoom_in = global.player2_key_zoom_in;
-					var remapping_other1_player_key_zoom_out = global.player2_key_zoom_out;
-					var remapping_other1_player_key_accept = global.player2_key_accept;
-					var remapping_other1_player_key_back = global.player2_key_back;
-					
-					var remapping_other1_player_key2_dive = global.player2_key2_dive;
-					var remapping_other1_player_key2_jump = global.player2_key2_jump;
-					var remapping_other1_player_key2_crouch = global.player2_key2_crouch;
-					var remapping_other1_player_key2_crouch_toggle = global.player2_key2_crouch_toggle;
-					var remapping_other1_player_key2_sprint = global.player2_key2_sprint;
-					var remapping_other1_player_key2_sprint_toggle = global.player2_key2_sprint_toggle;
-					var remapping_other1_player_key2_left = global.player2_key2_left;
-					var remapping_other1_player_key2_right = global.player2_key2_right;
-					var remapping_other1_player_key2_down = global.player2_key2_down;
-					var remapping_other1_player_key2_up = global.player2_key2_up;
-					var remapping_other1_player_key2_tongue = global.player2_key2_tongue;
-					var remapping_other1_player_key2_zoom_in = global.player2_key2_zoom_in;
-					var remapping_other1_player_key2_zoom_out = global.player2_key2_zoom_out;
-					var remapping_other1_player_key2_accept = global.player2_key2_accept;
-					var remapping_other1_player_key2_back = global.player2_key2_back;
-					
-					var remapping_other2_player_key_dive = global.player3_key_dive;
-					var remapping_other2_player_key_jump = global.player3_key_jump;
-					var remapping_other2_player_key_crouch = global.player3_key_crouch;
-					var remapping_other2_player_key_crouch_toggle = global.player3_key_crouch_toggle;
-					var remapping_other2_player_key_sprint = global.player3_key_sprint;
-					var remapping_other2_player_key_sprint_toggle = global.player3_key_sprint_toggle;
-					var remapping_other2_player_key_left = global.player3_key_left;
-					var remapping_other2_player_key_right = global.player3_key_right;
-					var remapping_other2_player_key_down = global.player3_key_down;
-					var remapping_other2_player_key_up = global.player3_key_up;
-					var remapping_other2_player_key_tongue = global.player3_key_tongue;
-					var remapping_other2_player_key_zoom_in = global.player3_key_zoom_in;
-					var remapping_other2_player_key_zoom_out = global.player3_key_zoom_out;
-					var remapping_other2_player_key_accept = global.player3_key_accept;
-					var remapping_other2_player_key_back = global.player3_key_back;
-					
-					var remapping_other2_player_key2_dive = global.player3_key2_dive;
-					var remapping_other2_player_key2_jump = global.player3_key2_jump;
-					var remapping_other2_player_key2_crouch = global.player3_key2_crouch;
-					var remapping_other2_player_key2_crouch_toggle = global.player3_key2_crouch_toggle;
-					var remapping_other2_player_key2_sprint = global.player3_key2_sprint;
-					var remapping_other2_player_key2_sprint_toggle = global.player3_key2_sprint_toggle;
-					var remapping_other2_player_key2_left = global.player3_key2_left;
-					var remapping_other2_player_key2_right = global.player3_key2_right;
-					var remapping_other2_player_key2_down = global.player3_key2_down;
-					var remapping_other2_player_key2_up = global.player3_key2_up;
-					var remapping_other2_player_key2_tongue = global.player3_key2_tongue;
-					var remapping_other2_player_key2_zoom_in = global.player3_key2_zoom_in;
-					var remapping_other2_player_key2_zoom_out = global.player3_key2_zoom_out;
-					var remapping_other2_player_key2_accept = global.player3_key2_accept;
-					var remapping_other2_player_key2_back = global.player3_key2_back;
-					
-					var remapping_other3_player_key_dive = global.player1_key_dive;
-					var remapping_other3_player_key_jump = global.player1_key_jump;
-					var remapping_other3_player_key_crouch = global.player1_key_crouch;
-					var remapping_other3_player_key_crouch_toggle = global.player1_key_crouch_toggle;
-					var remapping_other3_player_key_sprint = global.player1_key_sprint;
-					var remapping_other3_player_key_sprint_toggle = global.player1_key_sprint_toggle;
-					var remapping_other3_player_key_left = global.player1_key_left;
-					var remapping_other3_player_key_right = global.player1_key_right;
-					var remapping_other3_player_key_down = global.player1_key_down;
-					var remapping_other3_player_key_up = global.player1_key_up;
-					var remapping_other3_player_key_tongue = global.player1_key_tongue;
-					var remapping_other3_player_key_zoom_in = global.player1_key_zoom_in;
-					var remapping_other3_player_key_zoom_out = global.player1_key_zoom_out;
-					var remapping_other3_player_key_accept = global.player1_key_accept;
-					var remapping_other3_player_key_back = global.player1_key_back;
-					
-					var remapping_other3_player_key2_dive = global.player1_key2_dive;
-					var remapping_other3_player_key2_jump = global.player1_key2_jump;
-					var remapping_other3_player_key2_crouch = global.player1_key2_crouch;
-					var remapping_other3_player_key2_crouch_toggle = global.player1_key2_crouch_toggle;
-					var remapping_other3_player_key2_sprint = global.player1_key2_sprint;
-					var remapping_other3_player_key2_sprint_toggle = global.player1_key2_sprint_toggle;
-					var remapping_other3_player_key2_left = global.player1_key2_left;
-					var remapping_other3_player_key2_right = global.player1_key2_right;
-					var remapping_other3_player_key2_down = global.player1_key2_down;
-					var remapping_other3_player_key2_up = global.player1_key2_up;
-					var remapping_other3_player_key2_tongue = global.player1_key2_tongue;
-					var remapping_other3_player_key2_zoom_in = global.player1_key2_zoom_in;
-					var remapping_other3_player_key2_zoom_out = global.player1_key2_zoom_out;
-					var remapping_other3_player_key2_accept = global.player1_key2_accept;
-					var remapping_other3_player_key2_back = global.player1_key2_back;
-					#endregion /* Other player's keys END */
-					
-				}
-				#endregion /* Remapping Player 4 Keyboard and Mouse Key Variables END */
-				
-				else
-				
-				#region /* Remapping Player 4 Gamepad Key Variables */
-				if (global.settings_sidebar_menu == "controller_settings")
-				{
-					var remapping_player_key_dive = global.player4_gamepad_button_dive;
-					var remapping_player_key_jump = global.player4_gamepad_button_jump;
-					var remapping_player_key_crouch = global.player4_gamepad_button_crouch;
-					var remapping_player_key_crouch_toggle = global.player4_gamepad_button_crouch_toggle;
-					var remapping_player_key_sprint = global.player4_gamepad_button_sprint;
-					var remapping_player_key_sprint_toggle = global.player4_gamepad_button_sprint_toggle;
-					var remapping_player_key_left = global.player4_gamepad_button_left;
-					var remapping_player_key_right = global.player4_gamepad_button_right;
-					var remapping_player_key_down = global.player4_gamepad_button_down;
-					var remapping_player_key_up = global.player4_gamepad_button_up;
-					var remapping_player_key_tongue = global.player4_gamepad_button_tongue;
-					var remapping_player_key_zoom_in = global.player4_gamepad_button_zoom_in;
-					var remapping_player_key_zoom_out = global.player4_gamepad_button_zoom_out;
-					var remapping_player_key_accept = global.player4_gamepad_button_accept;
-					var remapping_player_key_back = global.player4_gamepad_button_back;
-					
-					var remapping_player_key2_dive = global.player4_gamepad_button2_dive;
-					var remapping_player_key2_jump = global.player4_gamepad_button2_jump;
-					var remapping_player_key2_crouch = global.player4_gamepad_button2_crouch;
-					var remapping_player_key2_crouch_toggle = global.player4_gamepad_button2_crouch_toggle;
-					var remapping_player_key2_sprint = global.player4_gamepad_button2_sprint;
-					var remapping_player_key2_sprint_toggle = global.player4_gamepad_button2_sprint_toggle;
-					var remapping_player_key2_left = global.player4_gamepad_button2_left;
-					var remapping_player_key2_right = global.player4_gamepad_button2_right;
-					var remapping_player_key2_down = global.player4_gamepad_button2_down;
-					var remapping_player_key2_up = global.player4_gamepad_button2_up;
-					var remapping_player_key2_tongue = global.player4_gamepad_button2_tongue;
-					var remapping_player_key2_zoom_in = global.player4_gamepad_button2_zoom_in;
-					var remapping_player_key2_zoom_out = global.player4_gamepad_button2_zoom_out;
-					var remapping_player_key2_accept = global.player4_gamepad_button2_accept;
-					var remapping_player_key2_back = global.player4_gamepad_button2_back;
-					
-					#region /* Other player's keys */
-					var remapping_other1_player_key_dive = global.player2_gamepad_button_dive;
-					var remapping_other1_player_key_jump = global.player2_gamepad_button_jump;
-					var remapping_other1_player_key_crouch = global.player2_gamepad_button_crouch;
-					var remapping_other1_player_key_crouch_toggle = global.player2_gamepad_button_crouch_toggle;
-					var remapping_other1_player_key_sprint = global.player2_gamepad_button_sprint;
-					var remapping_other1_player_key_sprint_toggle = global.player2_gamepad_button_sprint_toggle;
-					var remapping_other1_player_key_left = global.player2_gamepad_button_left;
-					var remapping_other1_player_key_right = global.player2_gamepad_button_right;
-					var remapping_other1_player_key_down = global.player2_gamepad_button_down;
-					var remapping_other1_player_key_up = global.player2_gamepad_button_up;
-					var remapping_other1_player_key_tongue = global.player2_gamepad_button_tongue;
-					var remapping_other1_player_key_zoom_in = global.player2_gamepad_button_zoom_in;
-					var remapping_other1_player_key_zoom_out = global.player2_gamepad_button_zoom_out;
-					var remapping_other1_player_key_accept = global.player2_gamepad_button_accept;
-					var remapping_other1_player_key_back = global.player2_gamepad_button_back;
-					
-					var remapping_other1_player_key2_dive = global.player2_gamepad_button2_dive;
-					var remapping_other1_player_key2_jump = global.player2_gamepad_button2_jump;
-					var remapping_other1_player_key2_crouch = global.player2_gamepad_button2_crouch;
-					var remapping_other1_player_key2_crouch_toggle = global.player2_gamepad_button2_crouch_toggle;
-					var remapping_other1_player_key2_sprint = global.player2_gamepad_button2_sprint;
-					var remapping_other1_player_key2_sprint_toggle = global.player2_gamepad_button2_sprint_toggle;
-					var remapping_other1_player_key2_left = global.player2_gamepad_button2_left;
-					var remapping_other1_player_key2_right = global.player2_gamepad_button2_right;
-					var remapping_other1_player_key2_down = global.player2_gamepad_button2_down;
-					var remapping_other1_player_key2_up = global.player2_gamepad_button2_up;
-					var remapping_other1_player_key2_tongue = global.player2_gamepad_button2_tongue;
-					var remapping_other1_player_key2_zoom_in = global.player2_gamepad_button2_zoom_in;
-					var remapping_other1_player_key2_zoom_out = global.player2_gamepad_button2_zoom_out;
-					var remapping_other1_player_key2_accept = global.player2_gamepad_button2_accept;
-					var remapping_other1_player_key2_back = global.player2_gamepad_button2_back;
-					
-					var remapping_other2_player_key_dive = global.player3_gamepad_button_dive;
-					var remapping_other2_player_key_jump = global.player3_gamepad_button_jump;
-					var remapping_other2_player_key_crouch = global.player3_gamepad_button_crouch;
-					var remapping_other2_player_key_crouch_toggle = global.player3_gamepad_button_crouch_toggle;
-					var remapping_other2_player_key_sprint = global.player3_gamepad_button_sprint;
-					var remapping_other2_player_key_sprint_toggle = global.player3_gamepad_button_sprint_toggle;
-					var remapping_other2_player_key_left = global.player3_gamepad_button_left;
-					var remapping_other2_player_key_right = global.player3_gamepad_button_right;
-					var remapping_other2_player_key_down = global.player3_gamepad_button_down;
-					var remapping_other2_player_key_up = global.player3_gamepad_button_up;
-					var remapping_other2_player_key_tongue = global.player3_gamepad_button_tongue;
-					var remapping_other2_player_key_zoom_in = global.player3_gamepad_button_zoom_in;
-					var remapping_other2_player_key_zoom_out = global.player3_gamepad_button_zoom_out;
-					var remapping_other2_player_key_accept = global.player3_gamepad_button_accept;
-					var remapping_other2_player_key_back = global.player3_gamepad_button_back;
-					
-					var remapping_other2_player_key2_dive = global.player3_gamepad_button2_dive;
-					var remapping_other2_player_key2_jump = global.player3_gamepad_button2_jump;
-					var remapping_other2_player_key2_crouch = global.player3_gamepad_button2_crouch;
-					var remapping_other2_player_key2_crouch_toggle = global.player3_gamepad_button2_crouch_toggle;
-					var remapping_other2_player_key2_sprint = global.player3_gamepad_button2_sprint;
-					var remapping_other2_player_key2_sprint_toggle = global.player3_gamepad_button2_sprint_toggle;
-					var remapping_other2_player_key2_left = global.player3_gamepad_button2_left;
-					var remapping_other2_player_key2_right = global.player3_gamepad_button2_right;
-					var remapping_other2_player_key2_down = global.player3_gamepad_button2_down;
-					var remapping_other2_player_key2_up = global.player3_gamepad_button2_up;
-					var remapping_other2_player_key2_tongue = global.player3_gamepad_button2_tongue;
-					var remapping_other2_player_key2_zoom_in = global.player3_gamepad_button2_zoom_in;
-					var remapping_other2_player_key2_zoom_out = global.player3_gamepad_button2_zoom_out;
-					var remapping_other2_player_key2_accept = global.player3_gamepad_button2_accept;
-					var remapping_other2_player_key2_back = global.player3_gamepad_button2_back;
-					
-					var remapping_other3_player_key_dive = global.player1_gamepad_button_dive;
-					var remapping_other3_player_key_jump = global.player1_gamepad_button_jump;
-					var remapping_other3_player_key_crouch = global.player1_gamepad_button_crouch;
-					var remapping_other3_player_key_crouch_toggle = global.player1_gamepad_button_crouch_toggle;
-					var remapping_other3_player_key_sprint = global.player1_gamepad_button_sprint;
-					var remapping_other3_player_key_sprint_toggle = global.player1_gamepad_button_sprint_toggle;
-					var remapping_other3_player_key_left = global.player1_gamepad_button_left;
-					var remapping_other3_player_key_right = global.player1_gamepad_button_right;
-					var remapping_other3_player_key_down = global.player1_gamepad_button_down;
-					var remapping_other3_player_key_up = global.player1_gamepad_button_up;
-					var remapping_other3_player_key_tongue = global.player1_gamepad_button_tongue;
-					var remapping_other3_player_key_zoom_in = global.player1_gamepad_button_zoom_in;
-					var remapping_other3_player_key_zoom_out = global.player1_gamepad_button_zoom_out;
-					var remapping_other3_player_key_accept = global.player1_gamepad_button_accept;
-					var remapping_other3_player_key_back = global.player1_gamepad_button_back;
-					
-					var remapping_other3_player_key2_dive = global.player1_gamepad_button2_dive;
-					var remapping_other3_player_key2_jump = global.player1_gamepad_button2_jump;
-					var remapping_other3_player_key2_crouch = global.player1_gamepad_button2_crouch;
-					var remapping_other3_player_key2_crouch_toggle = global.player1_gamepad_button2_crouch_toggle;
-					var remapping_other3_player_key2_sprint = global.player1_gamepad_button2_sprint;
-					var remapping_other3_player_key2_sprint_toggle = global.player1_gamepad_button2_sprint_toggle;
-					var remapping_other3_player_key2_left = global.player1_gamepad_button2_left;
-					var remapping_other3_player_key2_right = global.player1_gamepad_button2_right;
-					var remapping_other3_player_key2_down = global.player1_gamepad_button2_down;
-					var remapping_other3_player_key2_up = global.player1_gamepad_button2_up;
-					var remapping_other3_player_key2_tongue = global.player1_gamepad_button2_tongue;
-					var remapping_other3_player_key2_zoom_in = global.player1_gamepad_button2_zoom_in;
-					var remapping_other3_player_key2_zoom_out = global.player1_gamepad_button2_zoom_out;
-					var remapping_other3_player_key2_accept = global.player1_gamepad_button2_accept;
-					var remapping_other3_player_key2_back = global.player1_gamepad_button2_back;
-					#endregion /* Other player's keys END */
-					
-				}
-				#endregion /* Remapping Player 4 Gamepad Key Variables END */
-				
+				var selected_remapping_player = 4;
+				var other1_remapping_player = 1;
+				var other2_remapping_player = 2;
+				var other3_remapping_player = 3;
 			}
-			#endregion /* Remapping Player 4 Key Variables END */
+			if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
+			{
+				var keyboard_or_gamepad = inp.key;
+			}
+			else
+			{
+				var keyboard_or_gamepad = inp.gp;
+			}
+			
+			/* global.player_[keyboard/gamepad][player][key1/key2][action] */
+			var remapping_player_key_dive = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.dive];
+			var remapping_player_key_jump = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.jump];
+			var remapping_player_key_crouch = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.crouch];
+			var remapping_player_key_crouch_toggle = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.crouch_toggle];
+			var remapping_player_key_sprint = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.sprint];
+			var remapping_player_key_sprint_toggle = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.sprint_toggle];
+			var remapping_player_key_left = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.left];
+			var remapping_player_key_right = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.right];
+			var remapping_player_key_down = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.down];
+			var remapping_player_key_up = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.up];
+			var remapping_player_key_tongue = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.tongue];
+			var remapping_player_key_zoom_in = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.zoom_in];
+			var remapping_player_key_zoom_out = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.zoom_out];
+			var remapping_player_key_accept = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.accept];
+			var remapping_player_key_back = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.back];
+			
+			var remapping_player_key2_dive = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.dive];
+			var remapping_player_key2_jump = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.jump];
+			var remapping_player_key2_crouch = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.crouch];
+			var remapping_player_key2_crouch_toggle = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.crouch_toggle];
+			var remapping_player_key2_sprint = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.sprint];
+			var remapping_player_key2_sprint_toggle = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.sprint_toggle];
+			var remapping_player_key2_left = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.left];
+			var remapping_player_key2_right = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.right];
+			var remapping_player_key2_down = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.down];
+			var remapping_player_key2_up = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.up];
+			var remapping_player_key2_tongue = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.tongue];
+			var remapping_player_key2_zoom_in = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.zoom_in];
+			var remapping_player_key2_zoom_out = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.zoom_out];
+			var remapping_player_key2_accept = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.accept];
+			var remapping_player_key2_back = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.back];
+			
+			#region /* Other player's keys */
+			var remapping_other1_player_key_dive = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.dive];
+			var remapping_other1_player_key_jump = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.jump];
+			var remapping_other1_player_key_crouch = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.crouch];
+			var remapping_other1_player_key_crouch_toggle = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.crouch_toggle];
+			var remapping_other1_player_key_sprint = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.sprint];
+			var remapping_other1_player_key_sprint_toggle = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.sprint_toggle];
+			var remapping_other1_player_key_left = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.left];
+			var remapping_other1_player_key_right = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.right];
+			var remapping_other1_player_key_down = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.down];
+			var remapping_other1_player_key_up = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.up];
+			var remapping_other1_player_key_tongue = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.tongue];
+			var remapping_other1_player_key_zoom_in = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.zoom_in];
+			var remapping_other1_player_key_zoom_out = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.zoom_out];
+			//var remapping_other1_player_key_accept = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.accept];
+			//var remapping_other1_player_key_back = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.back];
+			
+			var remapping_other1_player_key2_dive = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.dive];
+			var remapping_other1_player_key2_jump = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.jump];
+			var remapping_other1_player_key2_crouch = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.crouch];
+			var remapping_other1_player_key2_crouch_toggle = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.crouch_toggle];
+			var remapping_other1_player_key2_sprint = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.sprint];
+			var remapping_other1_player_key2_sprint_toggle = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.sprint_toggle];
+			var remapping_other1_player_key2_left = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.left];
+			var remapping_other1_player_key2_right = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.right];
+			var remapping_other1_player_key2_down = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.down];
+			var remapping_other1_player_key2_up = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.up];
+			var remapping_other1_player_key2_tongue = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.tongue];
+			var remapping_other1_player_key2_zoom_in = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.zoom_in];
+			var remapping_other1_player_key2_zoom_out = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.zoom_out];
+			//var remapping_other1_player_key2_accept = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.accept];
+			//var remapping_other1_player_key2_back = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.back];
+			
+			var remapping_other2_player_key_dive = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.dive];
+			var remapping_other2_player_key_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.jump];
+			var remapping_other2_player_key_crouch = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.crouch];
+			var remapping_other2_player_key_crouch_toggle = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.crouch_toggle];
+			var remapping_other2_player_key_sprint = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.sprint];
+			var remapping_other2_player_key_sprint_toggle = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.sprint_toggle];
+			var remapping_other2_player_key_left = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.left];
+			var remapping_other2_player_key_right = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.right];
+			var remapping_other2_player_key_down = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.down];
+			var remapping_other2_player_key_up = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.up];
+			var remapping_other2_player_key_tongue = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.tongue];
+			var remapping_other2_player_key_zoom_in = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.zoom_in];
+			var remapping_other2_player_key_zoom_out = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.zoom_out];
+			//var remapping_other2_player_key_accept = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.accept];
+			//var remapping_other2_player_key_back = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.back];
+			
+			var remapping_other2_player_key2_dive = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.dive];
+			var remapping_other2_player_key2_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.jump];
+			var remapping_other2_player_key2_crouch = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.crouch];
+			var remapping_other2_player_key2_crouch_toggle = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.crouch_toggle];
+			var remapping_other2_player_key2_sprint = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.sprint];
+			var remapping_other2_player_key2_sprint_toggle = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.sprint_toggle];
+			var remapping_other2_player_key2_left = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.left];
+			var remapping_other2_player_key2_right = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.right];
+			var remapping_other2_player_key2_down = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.down];
+			var remapping_other2_player_key2_up = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.up];
+			var remapping_other2_player_key2_tongue = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.tongue];
+			var remapping_other2_player_key2_zoom_in = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.zoom_in];
+			var remapping_other2_player_key2_zoom_out = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.zoom_out];
+			//var remapping_other2_player_key2_accept = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.accept];
+			//var remapping_other2_player_key2_back = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.back];
+			
+			var remapping_other3_player_key_dive = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.dive];
+			var remapping_other3_player_key_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.jump];
+			var remapping_other3_player_key_crouch = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.crouch];
+			var remapping_other3_player_key_crouch_toggle = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.crouch_toggle];
+			var remapping_other3_player_key_sprint = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.sprint];
+			var remapping_other3_player_key_sprint_toggle = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.sprint_toggle];
+			var remapping_other3_player_key_left = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.left];
+			var remapping_other3_player_key_right = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.right];
+			var remapping_other3_player_key_down = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.down];
+			var remapping_other3_player_key_up = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.up];
+			var remapping_other3_player_key_tongue = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.tongue];
+			var remapping_other3_player_key_zoom_in = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.zoom_in];
+			var remapping_other3_player_key_zoom_out = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.zoom_out];
+			//var remapping_other3_player_key_accept = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.accept];
+			//var remapping_other3_player_key_back = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.back];
+			
+			var remapping_other3_player_key2_dive = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.dive];
+			var remapping_other3_player_key2_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.jump];
+			var remapping_other3_player_key2_crouch = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.crouch];
+			var remapping_other3_player_key2_crouch_toggle = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.crouch_toggle];
+			var remapping_other3_player_key2_sprint = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.sprint];
+			var remapping_other3_player_key2_sprint_toggle = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.sprint_toggle];
+			var remapping_other3_player_key2_left = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.left];
+			var remapping_other3_player_key2_right = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.right];
+			var remapping_other3_player_key2_down = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.down];
+			var remapping_other3_player_key2_up = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.up];
+			var remapping_other3_player_key2_tongue = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.tongue];
+			var remapping_other3_player_key2_zoom_in = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.zoom_in];
+			var remapping_other3_player_key2_zoom_out = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.zoom_out];
+			//var remapping_other3_player_key2_accept = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.accept];
+			//var remapping_other3_player_key2_back = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.back];
+			#endregion /* Other player's keys END */
+			
+			#endregion /* Remapping Player Key Variables END */
 			
 			#region /* Make keys red if in conflict with other keys */
 			

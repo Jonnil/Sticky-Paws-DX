@@ -173,7 +173,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 }
 
 if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-and (continue_falling = false)
+and (continue_falling == false)
 {
 	y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 1;
 	sprite_index = noone;

@@ -21,8 +21,8 @@ if (global.actually_play_edited_level == false)
 	place_object_angle = false;
 	draw_rotate_arrow = false;
 	
-	second_x = 0;
-	second_y = 0;
+	second_x = x;
+	second_y = y;
 	
 	draw_xscale = 1;
 	draw_yscale = 1;

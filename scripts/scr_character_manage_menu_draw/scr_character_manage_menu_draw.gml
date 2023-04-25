@@ -37,14 +37,14 @@ function scr_character_manage_menu_draw()
 			else
 			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
-				if (global.player1_key_left > noone)
+				if (global.player_[inp.key][1][1][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key_left, display_get_gui_width() * 0.5 + player1_display_x - arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.left], display_get_gui_width() * 0.5 + player1_display_x - arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
-				if (global.player1_key2_left > noone)
+				if (global.player_[inp.key][1][2][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_left, display_get_gui_width() * 0.5 + player1_display_x - arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.left], display_get_gui_width() * 0.5 + player1_display_x - arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
 				{
@@ -76,14 +76,14 @@ function scr_character_manage_menu_draw()
 			else
 			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
-				if (global.player1_key_right > noone)
+				if (global.player_[inp.key][1][1][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key_right, display_get_gui_width() * 0.5 + player1_display_x + arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.right], display_get_gui_width() * 0.5 + player1_display_x + arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
-				if (global.player1_key2_right > noone)
+				if (global.player_[inp.key][1][2][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player1_key2_right, display_get_gui_width() * 0.5 + player1_display_x + arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.right], display_get_gui_width() * 0.5 + player1_display_x + arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
 				{
@@ -169,11 +169,14 @@ function scr_character_manage_menu_draw()
 			{
 				draw_menu_button(display_get_gui_width() * 0.5 - 185, copy_character_y, l10n_text("Copy Character"), "click_copy_character", "click_copy_character"); /* Copy Characters */
 				if (selecting_official_character == false)
-				{	
+				{
 					draw_menu_button(display_get_gui_width() * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no"); /* Copy Characters */
 					draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, delete_character_y + 21, 1, 1, 0, c_white, 1);
-					draw_menu_button(display_get_gui_width() * 0.5 - 185, upload_character_y, l10n_text("Upload Character"), "click_upload_character", "click_upload_character"); /* Copy Characters */
-					draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 - 185 + 16, upload_character_y + 21, 1, 1, 0, c_white, 1);
+					if (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+					{
+						draw_menu_button(display_get_gui_width() * 0.5 - 185, upload_character_y, l10n_text("Upload Character"), "click_upload_character", "click_upload_character"); /* Copy Characters */
+						draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 - 185 + 16, upload_character_y + 21, 1, 1, 0, c_white, 1);
+					}
 				}
 				
 				#region /* Open Character Folder */
@@ -201,6 +204,22 @@ function scr_character_manage_menu_draw()
 					ini_close();
 				}
 				#endregion /* Draw who made the character END */
+				
+				#region /* Draw error message if character doesn't have a "Skin" folder */
+				if (!directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+				and (selecting_official_character == false)
+				{
+					draw_set_alpha(0.5);
+					draw_rectangle_color(display_get_gui_width() * 0.5 - 520, 128 + 16, display_get_gui_width() * 0.5 + 520, 128 + (32 * 5), c_black, c_black, c_black, c_black, false);
+					draw_set_alpha(1);
+					draw_set_halign(fa_center);
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 1), l10n_text("There is no skin0 folder in sprites folder for this character!"), global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 1), l10n_text("There is no skin0 folder in sprites folder for this character!"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 2), l10n_text("To optimize the sprite loading,"), global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 3), l10n_text("all character sprites need to be in skin folders to work properly,"), global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 4), l10n_text("even if you only have 1 set of sprites"), global.default_text_size, c_black, c_white, 1);
+				}
+				#endregion /* Draw error message if character doesn't have a "Skin" folder END */
 				
 			}
 			else

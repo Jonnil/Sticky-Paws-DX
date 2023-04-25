@@ -44,8 +44,9 @@ function scr_select_official_level_menu()
 			}
 			else
 			if (global.select_level_index - row > - 1)
+			and (ds_exists(global.all_loaded_main_levels, ds_type_list))
 			{
-				global.select_level_index -= clamp(row, 0, ds_list_size(global.all_loaded_main_levels - 2 / row));
+				global.select_level_index -= clamp(row, 0, ds_list_size(global.all_loaded_main_levels));
 				menu_delay = 3;
 				if (mouse_wheel_up())
 				{
@@ -81,8 +82,9 @@ function scr_select_official_level_menu()
 			}
 			else
 			if (global.select_level_index + row < ds_list_size(global.thumbnail_sprite))
+			and (ds_exists(global.all_loaded_main_levels, ds_type_list))
 			{
-				global.select_level_index += clamp(row, 0, ds_list_size(global.all_loaded_main_levels - 2 / row));
+				global.select_level_index += clamp(row, 0, ds_list_size(global.all_loaded_main_levels));
 				menu_delay = 3;
 				if (mouse_wheel_down())
 				{
@@ -145,7 +147,7 @@ function scr_select_official_level_menu()
 	#endregion /* Key Right END */
 	
 	#region /* Key A */
-	if (key_a_released)
+	if (key_a_pressed)
 	or (mouse_check_button_released(mb_left))
 	{
 		if (menu == "level_editor_play")
@@ -194,7 +196,7 @@ function scr_select_official_level_menu()
 	draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 	
 	if (menu == "back_from_level_editor")
-	and (key_a_released)
+	and (key_a_pressed)
 	and (menu_delay == 0)
 	and (can_input_level_name == false)
 	or (key_b_pressed)
@@ -273,10 +275,10 @@ function scr_select_official_level_menu()
 	and (keyboard_string != "")
 	and (global.level_name != undefined)
 	{
-		if (keyboard_check_released(vk_enter))
+		if (keyboard_check_pressed(vk_enter))
 		and (menu != "level_editor_enter_name_ok")
 		and (menu != "level_editor_enter_name_cancel")
-		or (keyboard_check_released(vk_enter))
+		or (keyboard_check_pressed(vk_enter))
 		and (menu == "level_editor_enter_name_ok")
 		or (point_in_rectangle(mouse_get_x, mouse_get_y,
 		display_get_gui_width() * 0.5 - 185,
@@ -284,14 +286,14 @@ function scr_select_official_level_menu()
 		display_get_gui_width() * 0.5 - 185 + 370,
 		input_name_y + 54 + 42))
 		and (mouse_check_button_released(mb_left))
-		or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept))
-		or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_accept))
-		or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_accept))
-		or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button2_accept))
-		or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_accept))
-		or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_accept))
-		or (gamepad_button_check_released(3, global.player4_gamepad_button_accept))
-		or (gamepad_button_check_released(3, global.player4_gamepad_button2_accept))
+		or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+		or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
+		or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+		or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.accept]))
+		or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+		or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.accept]))
+		or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+		or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept]))
 		{
 			
 			global.actually_play_edited_level = false;
@@ -430,9 +432,9 @@ function scr_select_official_level_menu()
 	#endregion /* Press Enter to make new level from template END */
 	
 	#region /* Press Escape to back out from name input menu */
-	if (keyboard_check_released(vk_enter))
+	if (keyboard_check_pressed(vk_enter))
 	and (menu == "level_editor_enter_name_cancel")
-	or (keyboard_check_released(vk_escape))
+	or (keyboard_check_pressed(vk_escape))
 	or (point_in_rectangle(mouse_get_x, mouse_get_y,
 	display_get_gui_width() * 0.5 - 185,
 	input_name_y + 54 + 42,
@@ -440,14 +442,14 @@ function scr_select_official_level_menu()
 	input_name_y + 54 + 42 + 42))
 	and (mouse_check_button_released(mb_left))
 	or (mouse_check_button_released(mb_right))
-	or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_back))
-	or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_back))
-	or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_back))
-	or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button2_back))
-	or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_back))
-	or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_back))
-	or (gamepad_button_check_released(3, global.player4_gamepad_button_back))
-	or (gamepad_button_check_released(3, global.player4_gamepad_button2_back))
+	or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
+	or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
+	or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
+	or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.back]))
+	or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back]))
+	or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.back]))
+	or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
+	or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.back]))
 	{
 		if (can_input_level_name == true)
 		and (menu_delay == 0)

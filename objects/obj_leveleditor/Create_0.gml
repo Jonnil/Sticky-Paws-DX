@@ -776,7 +776,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(global.level_nam
 	}
 	#endregion /* Deactivate objects from center END */
 	
-	if (global.play_edited_level = false)
+	if (global.play_edited_level == false)
 	and (global.actually_play_edited_level == false)
 	{
 		camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), ini_read_real("info", "view_yview", 0)); /* Set camera position on the last positions you had the camera when doing level editing */
@@ -876,6 +876,7 @@ if (global.actually_play_edited_level == true)
 #region /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level */
 if (global.actually_play_edited_level == false)
 {
+	scr_controls_for_level_editor();
 	
 	tag_art = false;
 	tag_boss_battle = false;

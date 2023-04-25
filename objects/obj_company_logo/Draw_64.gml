@@ -73,14 +73,14 @@ else
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5 + 32, display_get_gui_height() - 32, l10n_text("Skip") + ":", global.default_text_size, c_black, c_white, 1);
-		if (global.player1_gamepad_button_accept > noone)
+		if (global.player_[inp.gp][1][1][action.accept] > noone)
 		{
-			scr_draw_gamepad_buttons(global.player1_gamepad_button_accept, display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, c_white, 1);
+			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, c_white, 1);
 		}
 		else
-		if (global.player1_gamepad_button2_accept > noone)
+		if (global.player_[inp.gp][1][2][action.accept] > noone)
 		{
-			scr_draw_gamepad_buttons(global.player1_gamepad_button2_accept, display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, c_white, 1);
+			scr_draw_gamepad_buttons(global.player_[inp.gp][1][2][action.accept], display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, c_white, 1);
 		}
 	}
 	else
@@ -89,14 +89,14 @@ else
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5 + 32, display_get_gui_height() - 32, l10n_text("Skip") + ":", global.default_text_size, c_black, c_white, 1);
-		if (global.player1_key_accept > noone)
+		if (global.player_[inp.key][1][1][action.accept] > noone)
 		{
-			draw_sprite_ext(spr_keyboard_keys, global.player1_key_accept, display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.accept], display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, 0.5, 0, c_white, 1);
 		}
 		else
-		if (global.player1_key2_accept > noone)
+		if (global.player_[inp.key][1][2][action.accept] > noone)
 		{
-			draw_sprite_ext(spr_keyboard_keys, global.player1_key2_accept, display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.accept], display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, 0.5, 0, c_white, 1);
 		}
 	}
 }

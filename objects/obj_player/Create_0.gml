@@ -100,7 +100,7 @@ acceleration_on_ice = 0.05; /* How much acceleration the character has on ice */
 seconds_until_drowning = 10; /* How many seconds you can breathe underwater */
 frames_until_drowning = seconds_until_drowning* 60 + 1;
 drawn_frames_until_drowning = frames_until_drowning;
-if (global.assist_enable = false)
+if (global.assist_enable == false)
 {
 	hp = 1; /* Starting HP */
 	max_hp = 1; /* Starting Max HP */
@@ -697,6 +697,7 @@ spark2_effect = false; /* Running spark effect 2 handler */
 
 #region /* Initialize the controls */
 key_dive_pressed = noone;
+key_dive_hold = noone;
 key_jump = noone;
 key_jump_hold = noone;
 key_jump_hold_temp = noone;

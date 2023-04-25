@@ -1,68 +1,61 @@
-/// @desc initialize_custom_character_sprite(sprite_name, sprite_variable);
-/// @description initialize_custom_character_sprite(sprite_name, sprite_variable);
-/// @arg sprite_name
+// @desc initialize_custom_character_sprite(sprite_name, sprite_variable);
+// @description initialize_custom_character_sprite(sprite_name, sprite_variable);
+// @arg sprite_name
 
 function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = noone)
 {
-	/* sprite_name. Sprite name. The name of the file */
 	var saved_file_exists = false;
 	var unused_x_origin_point = noone;
 	var unused_y_origin_point = noone;
 	
 	#region /* Add sprite */
-	index = 0;
-	repeat(30)
-	{
-		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png"))
+	var sprite_found = false;
+	
+	/* Define possible sprite names and folders to check */
+	var sprite_names = [
+		string(sprite_name) + "_strip",
+		string(sprite_name)
+	];
+	var sprite_folders = string(character_folder) + "/sprites/skin" + string(selected_skin) + "/";
+	
+	/* This loop goes through all possible combinations of sprite names and folders. */
+	/* sprite_names and sprite_folders are arrays that contain the names of the sprites and folders to search through. */
+	
+	for (var i = 0; i < array_length_1d(sprite_names); i++) {
+		
+		/* If a sprite is already found, break out of the loop. */
+		if (sprite_found) break;
+		
+		/* Concatenate the sprite folder and name to create a full sprite path. */
+		var sprite_path = sprite_folders + sprite_names[i];
+		
+		/* Get the first sprite number in the specified path by using the "file_find_first" function */
+		/* and extract all the digits from it using the "string_digits" function */
+		var sprite_number = string_digits(file_find_first(sprite_path + "*.png", fa_none));
+		/* Convert the extracted sprite number to a string using the "string" function and concatenate it with the sprite path and file extension to form the full filename */
+		var sprite_filename = sprite_path + string(sprite_number) + ".png";
+		
+		/*If the file exists, add the sprite to the game and set sprite_found to true. */
+		if (file_exists(sprite_filename)) 
+		and (sprite_number != "")
 		{
-			sprite_variable = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
-			var saved_file_exists = true;
+			sprite_variable = sprite_add(sprite_filename, sprite_number, false, false, 0, 0);
+			sprite_found = true;
 			break;
 		}
-		else
-		if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png"))
-		{
-			sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
-			var saved_file_exists = true;
+		
+		/* If the sprite was not found with a number in the file name, try again without a number. */
+		if (!sprite_found && file_exists(sprite_path + ".png")) {
+			sprite_variable = sprite_add(sprite_path + ".png", 1, false, false, 0, 0);
+			sprite_found = true;
 			break;
 		}
-		else
-		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png"))
-		{
-			sprite_variable = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
-			var saved_file_exists = true;
-			break;
-		}
-		else
-		if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png"))
-		{
-			sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
-			var saved_file_exists = true;
-			break;
-		}
-		index += 1;
 	}
-	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + ".png"))
-	{
-		sprite_variable = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
-		var saved_file_exists = true;
-	}
-	else
-	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + ".png"))
-	{
-		sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/skin" + string(selected_skin) + "/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
-		var saved_file_exists = true;
-	}
-	else
-	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png"))
-	{
-		sprite_variable = sprite_add("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
-		var saved_file_exists = true;
-	}
-	else
-	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png"))
-	{
-		sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
+	
+	/* sprite_found is a boolean variable that is true if a sprite was found, and false otherwise. */
+	
+	/* If sprite is found, set saved_file_exists to true */
+	if (sprite_found) {
 		var saved_file_exists = true;
 	}
 	#endregion /* Add sprite END */
@@ -83,44 +76,24 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 		}
 		
 		#region /* x and y origin points */
-		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
-		and (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
-		{
-			/* If both xorig and yorig exists, then use that for the sprite origin point */
-			sprite_set_offset(sprite_variable, ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5), ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5));
+		/* Read the x and y origin points for the sprite from the config file */
+		var spr_origin_x = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", -1);
+		var spr_origin_y = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", -1);
+		
+		/* If the x origin is not found in the config file, set it to half the sprite width and save it to the config file */
+		if (spr_origin_x == -1) {
+			spr_origin_x = sprite_get_width(sprite_variable) * 0.5;
+			if (can_save_to_character_config) ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", spr_origin_x);
 		}
-		else
-		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
-		and (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
-		{
-			if (can_save_to_character_config == true)
-			{
-				/* If xorig exists but yorig doesn't exists, then use xorig, and then take sprite height by half and make that the yorig */
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5);
-			}
-			sprite_set_offset(sprite_variable, ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5), sprite_get_height(sprite_variable) * 0.5);
+		
+		/* If the y origin is not found in the config file, set it to half the sprite height and save it to the config file */
+		if (spr_origin_y == -1) {
+			spr_origin_y = sprite_get_height(sprite_variable) * 0.5;
+			if (can_save_to_character_config) ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", spr_origin_y);
 		}
-		else
-		if (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
-		and (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
-		{
-			if (can_save_to_character_config == true)
-			{
-				/* If xorig doesn't exists but yorig exists, then use yorig, and then take sprite width by half and make that the xorig */
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5);
-			}
-			sprite_set_offset(sprite_variable, sprite_get_width(sprite_variable) * 0.5, ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5));
-		}
-		else
-		{
-			if (can_save_to_character_config == true)
-			{
-				/* If xorig and yorig doesn't exist, then take sprite width and sprite height by hald and make that the xorig and yorig */
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5);
-				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5);
-			}
-			sprite_set_offset(sprite_variable, sprite_get_width(sprite_variable) * 0.5, sprite_get_height(sprite_variable) * 0.5);
-		}
+		
+		/* Set the sprite offset to the x and y origin points */
+		sprite_set_offset(sprite_variable, spr_origin_x, spr_origin_y);
 		#endregion /* x and y origin points END */
 		
 		ini_close();
@@ -130,39 +103,37 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 	else
 	
 	#region /* If the sprite doesn't exist, but there are still origin points saved for that sprite, then delete those origin points from sprite_origin_point.ini, but save the unused origin points in unused_sprite_origin_point.ini */
-	if (sprite_variable == noone)
-	and (saved_file_exists == false)
-	and (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/sprite_origin_point.ini"))
 	{
-		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/sprite_origin_point.ini");
+		/* Construct the path to the character's data directory */
+		var char_data_dir = "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/";
 		
-		#region /* Delete x and y origin points if the sprite doesn't even exist */
-		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
-		{
-			var unused_x_origin_point = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", noone);
-			ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_xorig");
-		}
-		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
-		{
-			var unused_y_origin_point = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", noone);
-			ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_yorig");
-		}
-		#endregion /* Delete x and y origin points if the sprite doesn't even exist END */
+		/* If the sprite variable is undefined and there is no saved file, and the sprite origin point INI file exists */
+		if (sprite_variable == noone && !saved_file_exists && file_exists(char_data_dir + "sprite_origin_point.ini")) {
 		
-		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/unused_sprite_origin_point.ini");
-		
-		#region /* Save unused x and y origin points just in case it's still useful for something */
-		if (unused_x_origin_point > noone)
-		{
-			ini_write_real("unused sprite origin points", "sprite_" + string(sprite_name) + "_xorig", unused_x_origin_point);
+			/* Open the sprite origin point INI file and delete the x and y origin point keys for this sprite */
+			with (ini_open(char_data_dir + "sprite_origin_point.ini")) {
+				ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_xorig");
+				ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_yorig");
+			}
+			
+			/* Open the unused sprite origin point INI file */
+			with (ini_open(char_data_dir + "unused_sprite_origin_point.ini")) {
+				
+				/* Read the x and y origin point keys for this sprite, if they exist */
+				var unused_x_origin_point = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", noone);
+				var unused_y_origin_point = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", noone);
+				
+				/* If an x origin point was found, write it to the unused sprite origin point INI file */
+				if (unused_x_origin_point > noone) ini_write_real("unused sprite origin points", "sprite_" + string(sprite_name) + "_xorig", unused_x_origin_point);
+				
+				/* If a y origin point was found, write it to the unused sprite origin point INI file */
+				if (unused_y_origin_point > noone) ini_write_real("unused sprite origin points", "sprite_" + string(sprite_name) + "_yorig", unused_y_origin_point);
+				
+				/* Delete the x and y origin point keys for this sprite */
+				ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_xorig");
+				ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_yorig");
+			}
 		}
-		if (unused_y_origin_point > noone)
-		{
-			ini_write_real("unused sprite origin points", "sprite_" + string(sprite_name) + "_yorig", unused_y_origin_point);
-		}
-		#endregion /* Save unused x and y origin points just in case it's still useful for something END */
-		
-		ini_close();
 	}
 	#endregion /* If the sprite doesn't exist, but there are still origin points saved for that sprite, then delete those origin points from sprite_origin_point.ini, but save the unused origin points in unused_sprite_origin_point.ini END */
 	

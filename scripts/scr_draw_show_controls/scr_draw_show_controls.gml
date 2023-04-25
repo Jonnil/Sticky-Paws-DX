@@ -3,321 +3,129 @@ function scr_draw_show_controls(what_player = 1)
 	var get_window_height = display_get_gui_height();
 	
 	#region /* Set correct variables for players */
-	
-	#region /* If player is player 1, set all the variables to player 1 variables */
 	if (what_player == 1)
 	{
 		var player_instance = player1;
-		var player_show_controls = global.player1_show_controls;
 		var show_player_controls_y = show_player1_controls_y;
-		var player_color = global.player1_color;
 		var player_show_controls_alpha = player1_show_controls_alpha;
 		var can_spawn_player = can_spawn_player1;
-		var player_can_play = global.player1_can_play;
-		
 		var player_show_dive_key_x = player1_show_dive_key_x;
-		var player_gamepad_button_dive = global.player1_gamepad_button_dive;
-		var player_gamepad_button2_dive = global.player1_gamepad_button2_dive;
-		var player_key_dive = global.player1_key_dive;
-		var player_key2_dive = global.player1_key2_dive;
-		
 		var player_show_jump_key_x = player1_show_jump_key_x;
-		var player_gamepad_button_jump = global.player1_gamepad_button_jump;
-		var player_gamepad_button2_jump = global.player1_gamepad_button2_jump;
-		var player_key_jump = global.player1_key_jump;
-		var player_key2_jump = global.player1_key2_jump;
-		
-		var player_gamepad_button_accept = global.player1_gamepad_button_accept;
-		var player_gamepad_button2_accept = global.player1_gamepad_button2_accept;
-		var player_key_accept = global.player1_key_accept;
-		var player_key2_accept = global.player1_key2_accept;
-		
 		var player_show_crouch_key_x = player1_show_crouch_key_x;
-		var player_gamepad_button_crouch = global.player1_gamepad_button_crouch;
-		var player_gamepad_button2_crouch = global.player1_gamepad_button2_crouch;
-		var player_key_crouch = global.player1_key_crouch;
-		var player_key2_crouch = global.player1_key2_crouch;
-		
-		var player_gamepad_button_crouch_toggle = global.player1_gamepad_button_crouch_toggle;
-		var player_gamepad_button2_crouch_toggle = global.player1_gamepad_button2_crouch_toggle;
-		var player_key_crouch_toggle = global.player1_key_crouch_toggle;
-		var player_key2_crouch_toggle = global.player1_key2_crouch_toggle;
-		
 		var player_show_sprint_key_x = player1_show_sprint_key_x;
-		var player_gamepad_button_sprint = global.player1_gamepad_button_sprint;
-		var player_gamepad_button2_sprint = global.player1_gamepad_button2_sprint;
-		var player_key_sprint = global.player1_key_sprint;
-		var player_key2_sprint = global.player1_key2_sprint;
-		
-		var player_sprint_toggle = global.player1_sprint_toggle;
-		var player_gamepad_button_sprint_toggle = global.player1_gamepad_button_sprint_toggle;
-		var player_gamepad_button2_sprint_toggle = global.player1_gamepad_button2_sprint_toggle;
-		var player_key_sprint_toggle = global.player1_key_sprint_toggle;
-		var player_key2_sprint_toggle = global.player1_key2_sprint_toggle;
-		
 		var player_show_left_key_x = player1_show_left_key_x;
-		var player_gamepad_button_left = global.player1_gamepad_button_left;
-		var player_gamepad_button2_left = global.player1_gamepad_button2_left;
-		var player_key_left = global.player1_key_left;
-		var player_key2_left = global.player1_key2_left;
-		
 		var player_show_right_key_x = player1_show_right_key_x;
-		var player_gamepad_button_right = global.player1_gamepad_button_right;
-		var player_gamepad_button2_right = global.player1_gamepad_button2_right;
-		var player_key_right = global.player1_key_right;
-		var player_key2_right = global.player1_key2_right;
-		
 		var player_show_down_key_x = player1_show_down_key_x;
-		var player_gamepad_button_down = global.player1_gamepad_button_down;
-		var player_gamepad_button2_down = global.player1_gamepad_button2_down;
-		var player_key_down = global.player1_key_down;
-		var player_key2_down = global.player1_key2_down;
-		
 		var player_show_up_key_x = player1_show_up_key_x;
-		var player_gamepad_button_up = global.player1_gamepad_button_up;
-		var player_gamepad_button2_up = global.player1_gamepad_button2_up;
-		var player_key_up = global.player1_key_up;
-		var player_key2_up = global.player1_key2_up;
 	}
-	#endregion /* If player is player 1, set all the variables to player 1 variables END */
-	
 	else
-	
-	#region /* If player is player 2, set all the variables to player 2 variables */
 	if (what_player == 2)
 	{
 		var player_instance = player2;
-		var player_show_controls = global.player2_show_controls;
 		var show_player_controls_y = show_player2_controls_y;
-		var player_color = global.player2_color;
 		var player_show_controls_alpha = player2_show_controls_alpha;
 		var can_spawn_player = can_spawn_player2;
-		var player_can_play = global.player2_can_play;
-		
 		var player_show_dive_key_x = player2_show_dive_key_x;
-		var player_gamepad_button_dive = global.player2_gamepad_button_dive;
-		var player_gamepad_button2_dive = global.player2_gamepad_button2_dive;
-		var player_key_dive = global.player2_key_dive;
-		var player_key2_dive = global.player2_key2_dive;
-		
 		var player_show_jump_key_x = player2_show_jump_key_x;
-		var player_gamepad_button_jump = global.player2_gamepad_button_jump;
-		var player_gamepad_button2_jump = global.player2_gamepad_button2_jump;
-		var player_key_jump = global.player2_key_jump;
-		var player_key2_jump = global.player2_key2_jump;
-		
-		var player_gamepad_button_accept = global.player2_gamepad_button_accept;
-		var player_gamepad_button2_accept = global.player2_gamepad_button2_accept;
-		var player_key_accept = global.player2_key_accept;
-		var player_key2_accept = global.player2_key2_accept;
-		
 		var player_show_crouch_key_x = player2_show_crouch_key_x;
-		var player_gamepad_button_crouch = global.player2_gamepad_button_crouch;
-		var player_gamepad_button2_crouch = global.player2_gamepad_button2_crouch;
-		var player_key_crouch = global.player2_key_crouch;
-		var player_key2_crouch = global.player2_key2_crouch;
-		
-		var player_gamepad_button_crouch_toggle = global.player2_gamepad_button_crouch_toggle;
-		var player_gamepad_button2_crouch_toggle = global.player2_gamepad_button2_crouch_toggle;
-		var player_key_crouch_toggle = global.player2_key_crouch_toggle;
-		var player_key2_crouch_toggle = global.player2_key2_crouch_toggle;
-		
 		var player_show_sprint_key_x = player2_show_sprint_key_x;
-		var player_gamepad_button_sprint = global.player2_gamepad_button_sprint;
-		var player_gamepad_button2_sprint = global.player2_gamepad_button2_sprint;
-		var player_key_sprint = global.player2_key_sprint;
-		var player_key2_sprint = global.player2_key2_sprint;
-		
-		var player_sprint_toggle = global.player2_sprint_toggle;
-		var player_gamepad_button_sprint_toggle = global.player2_gamepad_button_sprint_toggle;
-		var player_gamepad_button2_sprint_toggle = global.player2_gamepad_button2_sprint_toggle;
-		var player_key_sprint_toggle = global.player2_key_sprint_toggle;
-		var player_key2_sprint_toggle = global.player2_key2_sprint_toggle;
-		
 		var player_show_left_key_x = player2_show_left_key_x;
-		var player_gamepad_button_left = global.player2_gamepad_button_left;
-		var player_gamepad_button2_left = global.player2_gamepad_button2_left;
-		var player_key_left = global.player2_key_left;
-		var player_key2_left = global.player2_key2_left;
-		
 		var player_show_right_key_x = player2_show_right_key_x;
-		var player_gamepad_button_right = global.player2_gamepad_button_right;
-		var player_gamepad_button2_right = global.player2_gamepad_button2_right;
-		var player_key_right = global.player2_key_right;
-		var player_key2_right = global.player2_key2_right;
-		
 		var player_show_down_key_x = player2_show_down_key_x;
-		var player_gamepad_button_down = global.player2_gamepad_button_down;
-		var player_gamepad_button2_down = global.player2_gamepad_button2_down;
-		var player_key_down = global.player2_key_down;
-		var player_key2_down = global.player2_key2_down;
-		
 		var player_show_up_key_x = player2_show_up_key_x;
-		var player_gamepad_button_up = global.player2_gamepad_button_up;
-		var player_gamepad_button2_up = global.player2_gamepad_button2_up;
-		var player_key_up = global.player2_key_up;
-		var player_key2_up = global.player2_key2_up;
 	}
-	#endregion /* If player is player 2, set all the variables to player 2 variables END */
-	
 	else
-	
-	#region /* If player is player 3, set all the variables to player 3 variables */
 	if (what_player == 3)
 	{
 		var player_instance = player3;
-		var player_show_controls = global.player3_show_controls;
 		var show_player_controls_y = show_player3_controls_y;
-		var player_color = global.player3_color;
 		var player_show_controls_alpha = player3_show_controls_alpha;
 		var can_spawn_player = can_spawn_player3;
-		var player_can_play = global.player3_can_play;
-		
 		var player_show_dive_key_x = player3_show_dive_key_x;
-		var player_gamepad_button_dive = global.player3_gamepad_button_dive;
-		var player_gamepad_button2_dive = global.player3_gamepad_button2_dive;
-		var player_key_dive = global.player3_key_dive;
-		var player_key2_dive = global.player3_key2_dive;
-		
 		var player_show_jump_key_x = player3_show_jump_key_x;
-		var player_gamepad_button_jump = global.player3_gamepad_button_jump;
-		var player_gamepad_button2_jump = global.player3_gamepad_button2_jump;
-		var player_key_jump = global.player3_key_jump;
-		var player_key2_jump = global.player3_key2_jump;
-		
-		var player_gamepad_button_accept = global.player3_gamepad_button_accept;
-		var player_gamepad_button2_accept = global.player3_gamepad_button2_accept;
-		var player_key_accept = global.player3_key_accept;
-		var player_key2_accept = global.player3_key2_accept;
-		
 		var player_show_crouch_key_x = player3_show_crouch_key_x;
-		var player_gamepad_button_crouch = global.player3_gamepad_button_crouch;
-		var player_gamepad_button2_crouch = global.player3_gamepad_button2_crouch;
-		var player_key_crouch = global.player3_key_crouch;
-		var player_key2_crouch = global.player3_key2_crouch;
-		
-		var player_gamepad_button_crouch_toggle = global.player3_gamepad_button_crouch_toggle;
-		var player_gamepad_button2_crouch_toggle = global.player3_gamepad_button2_crouch_toggle;
-		var player_key_crouch_toggle = global.player3_key_crouch_toggle;
-		var player_key2_crouch_toggle = global.player3_key2_crouch_toggle;
-		
 		var player_show_sprint_key_x = player3_show_sprint_key_x;
-		var player_gamepad_button_sprint = global.player3_gamepad_button_sprint;
-		var player_gamepad_button2_sprint = global.player3_gamepad_button2_sprint;
-		var player_key_sprint = global.player3_key_sprint;
-		var player_key2_sprint = global.player3_key2_sprint;
-		
-		var player_sprint_toggle = global.player3_sprint_toggle;
-		var player_gamepad_button_sprint_toggle = global.player3_gamepad_button_sprint_toggle;
-		var player_gamepad_button2_sprint_toggle = global.player3_gamepad_button2_sprint_toggle;
-		var player_key_sprint_toggle = global.player3_key_sprint_toggle;
-		var player_key2_sprint_toggle = global.player3_key2_sprint_toggle;
-		
 		var player_show_left_key_x = player3_show_left_key_x;
-		var player_gamepad_button_left = global.player3_gamepad_button_left;
-		var player_gamepad_button2_left = global.player3_gamepad_button2_left;
-		var player_key_left = global.player3_key_left;
-		var player_key2_left = global.player3_key2_left;
-		
 		var player_show_right_key_x = player3_show_right_key_x;
-		var player_gamepad_button_right = global.player3_gamepad_button_right;
-		var player_gamepad_button2_right = global.player3_gamepad_button2_right;
-		var player_key_right = global.player3_key_right;
-		var player_key2_right = global.player3_key2_right;
-		
 		var player_show_down_key_x = player3_show_down_key_x;
-		var player_gamepad_button_down = global.player3_gamepad_button_down;
-		var player_gamepad_button2_down = global.player3_gamepad_button2_down;
-		var player_key_down = global.player3_key_down;
-		var player_key2_down = global.player3_key2_down;
-		
 		var player_show_up_key_x = player3_show_up_key_x;
-		var player_gamepad_button_up = global.player3_gamepad_button_up;
-		var player_gamepad_button2_up = global.player3_gamepad_button2_up;
-		var player_key_up = global.player3_key_up;
-		var player_key2_up = global.player3_key2_up;
 	}
-	#endregion /* If player is player 3, set all the variables to player 3 variables END */
-	
 	else
-	
-	#region /* If player is player 4, set all the variables to player 4 variables */
 	if (what_player == 4)
 	{
 		var player_instance = player4;
-		var player_show_controls = global.player4_show_controls;
 		var show_player_controls_y = show_player4_controls_y;
-		var player_color = global.player4_color;
 		var player_show_controls_alpha = player4_show_controls_alpha;
 		var can_spawn_player = can_spawn_player4;
-		var player_can_play = global.player4_can_play;
-		
 		var player_show_dive_key_x = player4_show_dive_key_x;
-		var player_gamepad_button_dive = global.player4_gamepad_button_dive;
-		var player_gamepad_button2_dive = global.player4_gamepad_button2_dive;
-		var player_key_dive = global.player4_key_dive;
-		var player_key2_dive = global.player4_key2_dive;
-		
 		var player_show_jump_key_x = player4_show_jump_key_x;
-		var player_gamepad_button_jump = global.player4_gamepad_button_jump;
-		var player_gamepad_button2_jump = global.player4_gamepad_button2_jump;
-		var player_key_jump = global.player4_key_jump;
-		var player_key2_jump = global.player4_key2_jump;
-		
-		var player_gamepad_button_accept = global.player4_gamepad_button_accept;
-		var player_gamepad_button2_accept = global.player4_gamepad_button2_accept;
-		var player_key_accept = global.player4_key_accept;
-		var player_key2_accept = global.player4_key2_accept;
-		
 		var player_show_crouch_key_x = player4_show_crouch_key_x;
-		var player_gamepad_button_crouch = global.player4_gamepad_button_crouch;
-		var player_gamepad_button2_crouch = global.player4_gamepad_button2_crouch;
-		var player_key_crouch = global.player4_key_crouch;
-		var player_key2_crouch = global.player4_key2_crouch;
-		
-		var player_gamepad_button_crouch_toggle = global.player4_gamepad_button_crouch_toggle;
-		var player_gamepad_button2_crouch_toggle = global.player4_gamepad_button2_crouch_toggle;
-		var player_key_crouch_toggle = global.player4_key_crouch_toggle;
-		var player_key2_crouch_toggle = global.player4_key2_crouch_toggle;
-		
 		var player_show_sprint_key_x = player4_show_sprint_key_x;
-		var player_gamepad_button_sprint = global.player4_gamepad_button_sprint;
-		var player_gamepad_button2_sprint = global.player4_gamepad_button2_sprint;
-		var player_key_sprint = global.player4_key_sprint;
-		var player_key2_sprint = global.player4_key2_sprint;
-		
-		var player_sprint_toggle = global.player4_sprint_toggle;
-		var player_gamepad_button_sprint_toggle = global.player4_gamepad_button_sprint_toggle;
-		var player_gamepad_button2_sprint_toggle = global.player4_gamepad_button2_sprint_toggle;
-		var player_key_sprint_toggle = global.player4_key_sprint_toggle;
-		var player_key2_sprint_toggle = global.player4_key2_sprint_toggle;
-		
 		var player_show_left_key_x = player4_show_left_key_x;
-		var player_gamepad_button_left = global.player4_gamepad_button_left;
-		var player_gamepad_button2_left = global.player4_gamepad_button2_left;
-		var player_key_left = global.player4_key_left;
-		var player_key2_left = global.player4_key2_left;
-		
 		var player_show_right_key_x = player4_show_right_key_x;
-		var player_gamepad_button_right = global.player4_gamepad_button_right;
-		var player_gamepad_button2_right = global.player4_gamepad_button2_right;
-		var player_key_right = global.player4_key_right;
-		var player_key2_right = global.player4_key2_right;
-		
 		var player_show_down_key_x = player4_show_down_key_x;
-		var player_gamepad_button_down = global.player4_gamepad_button_down;
-		var player_gamepad_button2_down = global.player4_gamepad_button2_down;
-		var player_key_down = global.player4_key_down;
-		var player_key2_down = global.player4_key2_down;
-		
 		var player_show_up_key_x = player4_show_up_key_x;
-		var player_gamepad_button_up = global.player4_gamepad_button_up;
-		var player_gamepad_button2_up = global.player4_gamepad_button2_up;
-		var player_key_up = global.player4_key_up;
-		var player_key2_up = global.player4_key2_up;
 	}
-	#endregion /* If player is player 4, set all the variables to player 4 variables END */
 	
+	var player_show_controls = global.player1_show_controls;
+	var player_color = global.player1_color;
+	var player_can_play = global.player1_can_play;
+	
+	var player_gamepad_button_dive = global.player_[inp.gp][1][1][action.dive];
+	var player_gamepad_button2_dive = global.player_[inp.gp][1][2][action.dive];
+	var player_key_dive = global.player_[inp.key][what_player][1][action.dive];
+	var player_key2_dive = global.player_[inp.key][1][2][action.dive];
+	
+	var player_gamepad_button_jump = global.player_[inp.gp][1][1][action.jump];
+	var player_gamepad_button2_jump = global.player_[inp.gp][1][2][action.jump];
+	var player_key_jump = global.player_[inp.key][what_player][1][action.jump];
+	var player_key2_jump = global.player_[inp.key][1][2][action.jump];
+	
+	var player_gamepad_button_accept = global.player_[inp.gp][1][1][action.accept];
+	var player_gamepad_button2_accept = global.player_[inp.gp][1][2][action.accept];
+	var player_key_accept = global.player_[inp.key][what_player][1][action.accept];
+	var player_key2_accept = global.player_[inp.key][1][2][action.accept];
+	
+	var player_gamepad_button_crouch = global.player_[inp.gp][1][1][action.crouch];
+	var player_gamepad_button2_crouch = global.player_[inp.gp][1][2][action.crouch];
+	var player_key_crouch = global.player_[inp.key][what_player][1][action.crouch];
+	var player_key2_crouch = global.player_[inp.key][1][2][action.crouch];
+	
+	var player_gamepad_button_crouch_toggle = global.player_[inp.gp][1][1][action.crouch_toggle];
+	var player_gamepad_button2_crouch_toggle = global.player_[inp.gp][1][2][action.crouch_toggle];
+	var player_key_crouch_toggle = global.player_[inp.key][what_player][1][action.crouch_toggle];
+	var player_key2_crouch_toggle = global.player_[inp.key][1][2][action.crouch_toggle];
+	
+	var player_gamepad_button_sprint = global.player_[inp.gp][1][1][action.sprint];
+	var player_gamepad_button2_sprint = global.player_[inp.gp][1][2][action.sprint];
+	var player_key_sprint = global.player_[inp.key][what_player][1][action.sprint];
+	var player_key2_sprint = global.player_[inp.key][1][2][action.sprint];
+	
+	var player_sprint_toggle = global.player1_sprint_toggle;
+	var player_gamepad_button_sprint_toggle = global.player_[inp.gp][1][1][action.sprint_toggle];
+	var player_gamepad_button2_sprint_toggle = global.player_[inp.gp][1][2][action.sprint_toggle];
+	var player_key_sprint_toggle = global.player_[inp.key][what_player][1][action.sprint_toggle];
+	var player_key2_sprint_toggle = global.player_[inp.key][1][2][action.sprint_toggle];
+	
+	var player_gamepad_button_left = global.player_[inp.gp][1][1][action.left];
+	var player_gamepad_button2_left = global.player_[inp.gp][1][2][action.left];
+	var player_key_left = global.player_[inp.key][what_player][1][action.left];
+	var player_key2_left = global.player_[inp.key][1][2][action.left];
+	
+	var player_gamepad_button_right = global.player_[inp.gp][1][1][action.right];
+	var player_gamepad_button2_right = global.player_[inp.gp][1][2][action.right];
+	var player_key_right = global.player_[inp.key][what_player][1][action.right];
+	var player_key2_right = global.player_[inp.key][1][2][action.right];
+	
+	var player_gamepad_button_down = global.player_[inp.gp][1][1][action.down];
+	var player_gamepad_button2_down = global.player_[inp.gp][1][2][action.down];
+	var player_key_down = global.player_[inp.key][what_player][1][action.down];
+	var player_key2_down = global.player_[inp.key][1][2][action.down];
+	
+	var player_gamepad_button_up = global.player_[inp.gp][1][1][action.up];
+	var player_gamepad_button2_up = global.player_[inp.gp][1][2][action.up];
+	var player_key_up = global.player_[inp.key][what_player][1][action.up];
+	var player_key2_up = global.player_[inp.key][1][2][action.up];
 	#endregion /* Set correct variables for players END */
 	
 	#region /* Show Controls for Player */
@@ -466,7 +274,7 @@ function scr_draw_show_controls(what_player = 1)
 		#endregion /* Show Player Crouch Key END */
 		
 		#region /* Show Player Sprint Key */
-		if (player_sprint_toggle = false)
+		if (player_sprint_toggle == false)
 		{
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
@@ -685,7 +493,6 @@ function scr_draw_show_controls(what_player = 1)
 		and (lives > 0)
 		and (player_show_controls >= 1)
 		{
-			player_show_controls_alpha = lerp(player_show_controls_alpha, 1, 0.3);
 			scr_draw_text_outlined(30, get_window_height - show_player_controls_y, l10n_text("Join Game"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 			
 			if (gamepad_is_connected(what_player - 1))

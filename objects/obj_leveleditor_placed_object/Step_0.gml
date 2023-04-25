@@ -27,6 +27,7 @@ and (y > camera_get_view_y(view_camera[view_current]) - 12)
 		or (object == level_object_id.id_arrow_sign)
 		or (object == level_object_id.id_arrow_sign_small)
 		or (object == level_object_id.id_water)
+		or (object == level_object_id.id_breathable_water)
 		{
 			if (instance_exists(obj_leveleditor))
 			{

@@ -8,7 +8,7 @@ and (point_distance(x, y, obj_player.x, obj_player.y) < 64)
 and (instance_nearest(x, y, obj_player).vspeed == 0)
 and (instance_nearest(x, y, obj_player).can_move == true)
 and (instance_nearest(x, y, obj_player).intro_animation = "")
-and (can_navigate = false)
+and (can_navigate == false)
 {
 	
 	#region /* Draw Enter Gallery Key */

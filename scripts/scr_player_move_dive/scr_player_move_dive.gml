@@ -25,8 +25,8 @@ function scr_player_move_dive()
 		and (climb == false)
 		and (horizontal_rope_climb == false)
 		and (takendamage <= takendamage_freezetime)
-		and (double_tap_to_dive = true) /* If you are allowed to double-tap direction to dive */
-		and (double_tap_dive = true) /* If you double tapped direction to dive */
+		and (double_tap_to_dive == true) /* If you are allowed to double-tap direction to dive */
+		and (double_tap_dive == true) /* If you double tapped direction to dive */
 		{
 			if (rope_swing == true)
 			{

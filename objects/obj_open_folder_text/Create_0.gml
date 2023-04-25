@@ -5,3 +5,4 @@ close = false;
 menu = "copy_to_clipboard";
 menu_cursor_index = 0;
 menu_delay = 3;
+open_dropdown = false;

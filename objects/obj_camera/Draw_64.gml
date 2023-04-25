@@ -67,13 +67,13 @@ and (!instance_exists(obj_pause))
 	{
 		
 		#region /* Big Collectible 1 */
-		if (global.big_collectible1 = false)
+		if (global.big_collectible1 == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		if (global.big_collectible1 == true)
-		and (big_collectible1_already_collected = false)
+		and (big_collectible1_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -84,13 +84,13 @@ and (!instance_exists(obj_pause))
 		#endregion /* Big Collectible 1 END */
 		
 		#region /* Big Collectible 2 */
-		if (global.big_collectible2 = false)
+		if (global.big_collectible2 == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		if (global.big_collectible2 == true)
-		and (big_collectible2_already_collected = false)
+		and (big_collectible2_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -101,13 +101,13 @@ and (!instance_exists(obj_pause))
 		#endregion /* Big Collectible 2 END */
 		
 		#region /* Big Collectible 3 */
-		if (global.big_collectible3 = false)
+		if (global.big_collectible3 == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 64, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		if (global.big_collectible3 == true)
-		and (big_collectible3_already_collected = false)
+		and (big_collectible3_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -118,13 +118,13 @@ and (!instance_exists(obj_pause))
 		#endregion /* Big Collectible 3 END */
 		
 		#region /* Big Collectible 4 */
-		if (global.big_collectible4 = false)
+		if (global.big_collectible4 == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 96, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		if (global.big_collectible4 == true)
-		and (big_collectible4_already_collected = false)
+		and (big_collectible4_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -135,13 +135,13 @@ and (!instance_exists(obj_pause))
 		#endregion /* Big Collectible 4 END */
 		
 		#region /* Big Collectible 5 */
-		if (global.big_collectible5 = false)
+		if (global.big_collectible5 == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 128, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
 		else
 		if (global.big_collectible5 == true)
-		and (big_collectible5_already_collected = false)
+		and (big_collectible5_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -185,7 +185,7 @@ and (!instance_exists(obj_pause))
 		time_countup_y = 94;
 			
 		#region /* Time is running out message */
-		if (global.player_has_entered_goal = false)
+		if (global.player_has_entered_goal == false)
 		{
 			if (global.time_countdown <= 99)
 			and (hurry_up_message_timer <= 300) /* Make the hurry up message stay on screen for 5 seconds (which is 300 frames) */
@@ -214,7 +214,7 @@ and (!instance_exists(obj_pause))
 		{
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_middle);
-			if (global.player_has_entered_goal = false)
+			if (global.player_has_entered_goal == false)
 			{
 				if (global.time_countdown == 0)
 				{
@@ -521,17 +521,6 @@ and (global.character_select_in_this_menu == "level_editor")
 		draw_rectangle_color(32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
 		draw_set_alpha(1);
 	}
-	
-	#region /* Draw mouse cursor for menu navigation */
-	if (global.controls_used_for_menu_navigation == "mouse")
-	and (global.full_level_map_screenshot == false)
-	and (os_type != os_android)
-	and (os_type != os_ios)
-	{
-		draw_sprite_ext(spr_cursor, 0, device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 1, 1, 0, c_white, 1);
-	}
-	#endregion /* Draw mouse cursor for menu navigation END */
-	
 }
 #endregion /* Play Level Button END */
 

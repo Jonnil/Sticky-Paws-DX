@@ -89,7 +89,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 			}
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5 + 84, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, get_window_height * 0.5 + 84, 1, 1, 180, c_white, 1);
-			draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84, 2, 2, 0, c_lime, 1);
+			draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84, 2, 2, 0, c_red, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 84, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
 		}
 		else
@@ -101,7 +101,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5 + 84, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, get_window_height * 0.5 + 84, 1, 1, 180, c_white, 1);
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84, 2, 2, 0, c_lime, 1);
+				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84, 2, 2, 0, c_red, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 84, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
 			}
 			else

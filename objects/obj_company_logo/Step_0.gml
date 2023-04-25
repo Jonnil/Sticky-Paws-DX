@@ -29,22 +29,22 @@ if (goto_title_screen == true)
 }
 
 #region /* Skip company logo screen when pressing skip button */
-if (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept))
-or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_accept))
-or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_accept))
-or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button2_accept))
-or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_accept))
-or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button2_accept))
-or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_accept))
-or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button2_accept))
-or (keyboard_check_pressed(global.player1_key_accept))
-or (keyboard_check_pressed(global.player1_key2_accept))
-or (keyboard_check_pressed(global.player2_key_accept))
-or (keyboard_check_pressed(global.player2_key2_accept))
-or (keyboard_check_pressed(global.player3_key_accept))
-or (keyboard_check_pressed(global.player3_key2_accept))
-or (keyboard_check_pressed(global.player4_key_accept))
-or (keyboard_check_pressed(global.player4_key2_accept))
+if (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
+or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.accept]))
+or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.accept]))
+or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept]))
+or (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept]))
+or (keyboard_check_pressed(global.player_[inp.key][1][2][action.accept]))
+or (keyboard_check_pressed(global.player_[inp.key][2][1][action.accept]))
+or (keyboard_check_pressed(global.player_[inp.key][2][2][action.accept]))
+or (keyboard_check_pressed(global.player_[inp.key][3][1][action.accept]))
+or (keyboard_check_pressed(global.player_[inp.key][3][2][action.accept]))
+or (keyboard_check_pressed(global.player_[inp.key][4][1][action.accept]))
+or (keyboard_check_pressed(global.player_[inp.key][4][2][action.accept]))
 or (keyboard_check_pressed(vk_space))
 or (keyboard_check_pressed(vk_escape))
 or (window_has_focus())
@@ -128,7 +128,7 @@ if (can_navigate == false)
 		if (file_load_timer > 1)
 		and (load_ok == 0)
 		{
-			if (initialized_characters = false)
+			if (initialized_characters == false)
 			{
 				scr_load_character_initializing();
 				initialized_characters = true;
@@ -302,7 +302,7 @@ if (can_navigate == false)
 		if (file_load_timer > 1)
 		and (load_ok == 1)
 		{
-			if (initialized_resource_pack = false)
+			if (initialized_resource_pack == false)
 			{
 				scr_load_resource_pack_initializing();
 				initialized_resource_pack = true;
@@ -350,7 +350,7 @@ if (can_navigate == false)
 		if (file_load_timer > 1)
 		and (load_ok = 2)
 		{
-			if (initialized_title_backgrounds = false)
+			if (initialized_title_backgrounds == false)
 			{
 				scr_load_title_background_initializing();
 				initialized_title_backgrounds = true;
@@ -379,7 +379,7 @@ if (can_navigate == false)
 		if (file_load_timer > 1)
 		and (load_ok = 3)
 		{
-			if (initialized_title_logos = false)
+			if (initialized_title_logos == false)
 			{
 				scr_load_title_logo_initializing();
 				initialized_title_logos = true;

@@ -6,7 +6,7 @@
 /// @param menu_index
 /// @param menu_takes_you_to
 
-function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to)
+function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to, highlight_color = c_lime)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
@@ -15,13 +15,16 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 1, x_position + 370, y_position + 41))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (menu_delay == 0)
+	and (open_dropdown == false)
 	or (menu == menu_index)
 	and (global.controls_used_for_menu_navigation == "keyboard")
+	and (open_dropdown == false)
 	or (menu == menu_index)
 	and (global.controls_used_for_menu_navigation == "controller")
+	and (open_dropdown == false)
 	{
 		menu = menu_index;
-		draw_sprite_ext(spr_menu_button, 0, x_position, y_position + 21, 1, 1, 0, c_lime, 1);
+		draw_sprite_ext(spr_menu_button, 0, x_position, y_position + 21, 1, 1, 0, highlight_color, 1);
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
@@ -39,6 +42,10 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	else
 	{
 		draw_sprite_ext(spr_menu_button, 0, x_position, y_position + 21, 1, 1, 0, c_white, 1);
+		if (highlight_color != c_lime)
+		{
+			draw_sprite_ext(spr_menu_button, 0, x_position, y_position + 21, 1, 1, 0, highlight_color, 0.1);
+		}
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		if (string_width(string_text) >= 360)
@@ -54,12 +61,13 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	#region /* Clicking the menu button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 1, x_position + 370, y_position + 41))
 	{
-		if (menu_takes_you_to = false)
+		if (menu_takes_you_to == false)
 		or (menu_takes_you_to == noone)
 		or (menu_takes_you_to = "")
 		or (menu_takes_you_to = menu_index)
 		{
 			if (mouse_check_button(mb_left))
+			and (open_dropdown == false)
 			{
 				menu = menu_index;
 			}
@@ -68,6 +76,7 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 		{
 			if (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
+			and (open_dropdown == false)
 			{
 				menu = menu_takes_you_to;
 			}

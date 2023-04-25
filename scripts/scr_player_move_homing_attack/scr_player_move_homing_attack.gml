@@ -22,7 +22,7 @@ function scr_player_move_homing_attack()
 		and (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_enemy).x + 1, instance_nearest(x, y, obj_enemy).y + 1, obj_wall, false, true))
 		and (distance_to_object(obj_enemy) < homing_attack_distance)
 		and (instance_nearest(x, y, obj_enemy).bbox_bottom > y)
-		and (instance_nearest(x, y, obj_enemy).die = false)
+		and (instance_nearest(x, y, obj_enemy).die == false)
 		and (homing_attack_x == 0)
 		and (homing_attack_y == 0)
 		{

@@ -32,7 +32,7 @@ yy = lerp(yy, scr_wave(y - 8, y + 8, 4.5, 0), 0.1);
 if (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (point_distance(x, y, obj_player.x, obj_player.y) < 64)
-and (can_navigate = false)
+and (can_navigate == false)
 and (instance_nearest(x, y, obj_player).key_up_pressed)
 and (instance_nearest(x, y, obj_player).vspeed == 0)
 {
@@ -259,23 +259,23 @@ and (mouse_check_button_pressed(mb_left))
 #endregion /* Left and Right Navigation END */
 
 #region /* Back */
-if (keyboard_check_pressed(global.player1_key_back))
-or (keyboard_check_pressed(global.player1_key2_back))
-or (keyboard_check_pressed(global.player2_key_back))
-or (keyboard_check_pressed(global.player2_key2_back))
-or (keyboard_check_pressed(global.player3_key_back))
-or (keyboard_check_pressed(global.player3_key2_back))
-or (keyboard_check_pressed(global.player4_key_back))
-or (keyboard_check_pressed(global.player4_key2_back))
+if (keyboard_check_pressed(global.player_[inp.key][1][1][action.back]))
+or (keyboard_check_pressed(global.player_[inp.key][1][2][action.back]))
+or (keyboard_check_pressed(global.player_[inp.key][2][1][action.back]))
+or (keyboard_check_pressed(global.player_[inp.key][2][2][action.back]))
+or (keyboard_check_pressed(global.player_[inp.key][3][1][action.back]))
+or (keyboard_check_pressed(global.player_[inp.key][3][2][action.back]))
+or (keyboard_check_pressed(global.player_[inp.key][4][1][action.back]))
+or (keyboard_check_pressed(global.player_[inp.key][4][2][action.back]))
 or (keyboard_check_pressed(vk_escape))
-or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_back))
-or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_back))
-or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_back))
-or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_back))
-or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_back))
-or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button2_back))
-or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button2_back))
-or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button2_back))
+or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
+or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
+or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back]))
+or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
+or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
+or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.back]))
+or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.back]))
+or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.back]))
 or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 370, get_window_height - 42, get_window_width, get_window_height))
 and (mouse_check_button_released(mb_left))
 {
@@ -290,11 +290,11 @@ if (gamepad_is_connected(global.player1_slot))
 and (global.controls_used_for_menu_navigation == "controller")
 or (global.always_show_gamepad_buttons == true)
 {
-	scr_draw_gamepad_buttons(global.player1_gamepad_button_back, get_window_width - 32, get_window_height -21, 0.5, c_white, 1);
+	scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], get_window_width - 32, get_window_height -21, 0.5, c_white, 1);
 }
 else
 {
-	draw_sprite_ext(spr_keyboard_keys, global.player1_key_back, get_window_width - 32, get_window_height -21, 0.5, 0.5, 0, c_white, 1);
+	draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.back], get_window_width - 32, get_window_height -21, 0.5, 0.5, 0, c_white, 1);
 }
 #endregion /* Draw Back key END */
 
@@ -318,7 +318,7 @@ else
 	image_speed = 0;
 }
 
-if (gamepad_stick = false)
+if (gamepad_stick == false)
 {
 	if (!key_left)
 	and (!key_right)

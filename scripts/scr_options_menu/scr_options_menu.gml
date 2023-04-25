@@ -663,42 +663,20 @@ function scr_options_menu()
 	if (in_settings == true)
 	{
 		
-		#region /* Scroll menu on right side */
-		menu_y_offset = lerp(menu_y_offset, menu_y_offset_real, 0.5);
-		if (menu_y_offset_real >= 0)
-		{
-			menu_y_offset_real = 0;
-		}
-		if (abs(menu_y_offset_real) + get_window_height - 200 < menu_cursor_y_position)
-		{
-			menu_y_offset_real -= 10;
-		}
-		if (abs(menu_y_offset_real) + 200 > menu_cursor_y_position)
-		{
-			menu_y_offset_real += 10;
-		}
-		if (abs(menu_y_offset_real) + get_window_height + 200 < menu_cursor_y_position)
-		{
-			menu_y_offset_real -= 100;
-		}
-		if (abs(menu_y_offset_real) - 200 > menu_cursor_y_position)
-		{
-			menu_y_offset_real += 100;
-		}
-		#endregion /* Scroll menu on right side END */
+		scr_scroll_menu();
 		
 		#region /* Go back out of setting menu */
 		if (key_a_pressed)
 		and (menu_delay == 0)
-		and (global.settings_sidebar_menu = "settings_back")
+		and (global.settings_sidebar_menu == "settings_back")
 		and (can_navigate_settings_sidebar == true)
 		and (input_key == false)
-		and (input_gamepad_button = false)
+		and (input_gamepad_button == false)
 		or (key_b_pressed)
 		and (menu_delay == 0)
 		and (can_navigate_settings_sidebar == true)
 		and (input_key == false)
-		and (input_gamepad_button = false)
+		and (input_gamepad_button == false)
 		{
 			scr_config_save(); /* Save Config */
 			if (global.pause_room != room_leveleditor)
@@ -714,10 +692,10 @@ function scr_options_menu()
 		#endregion /* Go back out of setting menu END */
 	
 		if (key_b_pressed)
-		and (can_navigate_settings_sidebar = false)
+		and (can_navigate_settings_sidebar == false)
 		and (menu_delay == 0)
 		and (input_key == false)
-		and (input_gamepad_button = false)
+		and (input_gamepad_button == false)
 		{
 			if (open_dropdown == true)
 			{
@@ -804,7 +782,7 @@ function scr_options_menu()
 		#region /* Click Back */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, 0 - room_height, 370, 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.settings_sidebar_menu = "settings_back")
+		and (global.settings_sidebar_menu == "settings_back")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		{
@@ -841,7 +819,7 @@ function scr_options_menu()
 		#region /* Click Accessibility */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, accessibility_settings_y, 370,(accessibility_settings_y + 40) - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.settings_sidebar_menu = "accessibility_settings")
+		and (global.settings_sidebar_menu == "accessibility_settings")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		{
@@ -872,7 +850,7 @@ function scr_options_menu()
 		#region /* Click Game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, game_settings_y, 370,(game_settings_y + 40) - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.settings_sidebar_menu = "game_settings")
+		and (global.settings_sidebar_menu == "game_settings")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		{
@@ -909,7 +887,7 @@ function scr_options_menu()
 			#region /* Click Multiplayer */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, multiplayer_settings_y, 370, multiplayer_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "multiplayer_settings")
+			and (global.settings_sidebar_menu == "multiplayer_settings")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
@@ -937,7 +915,7 @@ function scr_options_menu()
 		#region /* Click Keyboard and Mouse */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, keyboard_and_mouse_settings_y, 370, keyboard_and_mouse_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.settings_sidebar_menu = "keyboard_and_mouse_settings")
+		and (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		{
@@ -967,7 +945,7 @@ function scr_options_menu()
 			#region /* Click Controller */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, controller_settings_y, 370, controller_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "controller_settings")
+			and (global.settings_sidebar_menu == "controller_settings")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
@@ -999,7 +977,7 @@ function scr_options_menu()
 			#region /* Click Touch */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, touch_settings_y, 370, touch_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "touch_settings")
+			and (global.settings_sidebar_menu == "touch_settings")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
@@ -1030,7 +1008,7 @@ function scr_options_menu()
 			#region /* Click Account */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, account_settings_y, 370, account_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "account_settings")
+			and (global.settings_sidebar_menu == "account_settings")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
@@ -1059,7 +1037,7 @@ function scr_options_menu()
 		#region /* Click Video */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, video_settings_y, 370, video_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.settings_sidebar_menu = "video_settings")
+		and (global.settings_sidebar_menu == "video_settings")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		{
@@ -1095,7 +1073,7 @@ function scr_options_menu()
 		#region /* Click Audio */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, audio_settings_y, 370, audio_settings_y + 40 - 1))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.settings_sidebar_menu = "audio_settings")
+		and (global.settings_sidebar_menu == "audio_settings")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		{
@@ -1125,7 +1103,7 @@ function scr_options_menu()
 			#region /* Click Global Resources */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, global_resources_settings_y, 370, global_resources_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "global_resources_settings")
+			and (global.settings_sidebar_menu == "global_resources_settings")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
@@ -1166,7 +1144,7 @@ function scr_options_menu()
 			#region /* Click Storage */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, storage_settings_y, 370, storage_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "storage_settings")
+			and (global.settings_sidebar_menu == "storage_settings")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
@@ -1198,7 +1176,7 @@ function scr_options_menu()
 			#region /* Click Language */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, language_settings_y, 370, language_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "language_settings")
+			and (global.settings_sidebar_menu == "language_settings")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
@@ -1230,7 +1208,7 @@ function scr_options_menu()
 			#region /* Click Broadcast */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, broadcast_settings_y, 370, broadcast_settings_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "broadcast_settings")
+			and (global.settings_sidebar_menu == "broadcast_settings")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
@@ -1261,7 +1239,7 @@ function scr_options_menu()
 			#region /* Click How to Play */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, how_to_play_y, 370, how_to_play_y + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (global.settings_sidebar_menu = "how_to_play")
+			and (global.settings_sidebar_menu == "how_to_play")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
@@ -2029,7 +2007,7 @@ function scr_options_menu()
 			l10n_text("Never Appear"));
 			#endregion /* Assist item appear END */
 		
-			if (global.assist_enable = false)
+			if (global.assist_enable == false)
 			{
 				if (menu == "assist_invincible")
 				if (menu == "assist_breathe_underwater")
@@ -2073,13 +2051,17 @@ function scr_options_menu()
 			{
 				show_ranks_settings_y = 164 + (48 * 5);
 				show_tutorial_signs_y = 164 + (48 * 6);
-				hud_hide_time_y = 164 + (48 * 8) - 16;
+				show_new_items_notification_y = 164 + (48 * 7);
+				hud_hide_time_y = 164 + (48 * 9) - 16;
+				selected_font_y = 164 + (48 * 10);
 			}
 			else
 			{
 				show_ranks_settings_y = -9999;
 				show_tutorial_signs_y = 164 + (48 * 5);
-				hud_hide_time_y = 164 + (48 * 7) - 16;
+				show_new_items_notification_y = 164 + (48 * 6);
+				hud_hide_time_y = 164 + (48 * 8) - 16;
+				selected_font_y = 164 + (48 * 9);
 			}
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
@@ -2094,13 +2076,16 @@ function scr_options_menu()
 				draw_menu_checkmark(380, show_ranks_settings_y, l10n_text("Show Ranks"), "show_ranks_settings", global.show_ranks); /* Show Ranks */
 			}
 			draw_menu_checkmark(380, show_tutorial_signs_y, l10n_text("Show Tutorial Signs"), "show_tutorial_signs", global.show_tutorial_signs); /* Show Tutorial Signs */
-		
+			draw_menu_checkmark(380, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification", global.show_new_items_notification); /* Show new items notification in level editor */
+			
 			if (global.hud_hide_time > 10)
 			{
 				global.hud_hide_time = 3;
 			}
-		
+			
+			draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "selected_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic"));
 			draw_menu_dropdown(380, hud_hide_time_y, l10n_text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
+			
 			if (global.enable_difficulty_selection_settings == true)
 			{
 				draw_menu_dropdown(380, difficulty_settings_y, l10n_text("Level Layout Difficulty"), "difficulty_settings", global.difficulty, l10n_text("Easy"), l10n_text("Normal"), l10n_text("Hard")); /* Difficulty Settings */
@@ -2430,9 +2415,9 @@ function scr_options_menu()
 				#region /* Player 1 change portrait when clicking left or right */
 			
 				#region /* Player 1 Key Left (change portrait sprites) */
-				if (keyboard_check_pressed(global.player1_key_left))
+				if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
 				and (menu == "select_narrator")
-				or (keyboard_check_pressed(global.player1_key2_left))
+				or (keyboard_check_pressed(global.player_[inp.key][1][2][action.left]))
 				and (menu == "select_narrator")
 				or (gamepad_button_check_pressed(global.player1_slot, gp_padl))
 				and (menu == "select_narrator")
@@ -2501,9 +2486,9 @@ function scr_options_menu()
 				#endregion /* Player 1 Key Left (change portrait sprites) END */
 			
 				#region /* Player 1 Key Right (change portrait sprites) */
-				if (keyboard_check_pressed(global.player1_key_right))
+				if (keyboard_check_pressed(global.player_[inp.key][1][1][action.right]))
 				and (menu == "select_narrator")
-				or (keyboard_check_pressed(global.player1_key2_right))
+				or (keyboard_check_pressed(global.player_[inp.key][1][2][action.right]))
 				and (menu == "select_narrator")
 				or (gamepad_button_check_pressed(global.player1_slot, gp_padr))
 				and (menu == "select_narrator")
@@ -2803,7 +2788,7 @@ function scr_options_menu()
 			if (key_up)
 			and (menu != "file_delete_yes")
 			and (menu != "file_delete_no")
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (menu_joystick_delay == 0)
 			{
 				menu_joystick_delay = 10;
@@ -2840,7 +2825,7 @@ function scr_options_menu()
 			if (key_down)
 			and (menu != "file_delete_yes")
 			and (menu != "file_delete_no")
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (menu_joystick_delay == 0)
 			{
 				menu_joystick_delay = 10;
@@ -2888,7 +2873,7 @@ function scr_options_menu()
 		
 			if (key_left)
 			and (menu == "file_select")
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			or (mouse_check_button_pressed(mb_left))
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x - 32 - 16, file_y - 16, file_select_x - 32 + 16, file_y + 16))
 			and (global.controls_used_for_menu_navigation == "mouse")
@@ -2909,7 +2894,7 @@ function scr_options_menu()
 			else
 			if (key_right)
 			and (menu == "file_select")
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			or (mouse_check_button_pressed(mb_left))
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16))
 			and (global.controls_used_for_menu_navigation == "mouse")
@@ -2978,7 +2963,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "hud_hide_time";
+					menu = "selected_font";
 				}
 				else
 				if (key_down)
@@ -3007,7 +2992,7 @@ function scr_options_menu()
 					}
 					else
 					{
-						menu = "hud_hide_time";
+						menu = "selected_font";
 					}
 				}
 				else
@@ -3144,6 +3129,25 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				{
 					menu_delay = 3;
+					menu = "show_new_items_notification";
+				}
+			}
+			else
+			if (menu == "show_new_items_notification")
+			{
+				if (key_up)
+				and (open_dropdown == false)
+				and (menu_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "show_tutorial_signs";
+				}
+				else
+				if (key_down)
+				and (open_dropdown == false)
+				and (menu_delay == 0)
+				{
+					menu_delay = 3;
 					menu = "hud_hide_time";
 				}
 			}
@@ -3173,7 +3177,46 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "show_tutorial_signs";
+					menu = "show_new_items_notification";
+				}
+				else
+				if (key_down)
+				and (open_dropdown == false)
+				and (menu_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "selected_font";
+				}
+			}
+			else
+			if (menu == "selected_font")
+			{
+				if (key_up)
+				and (open_dropdown == true)
+				and (menu_delay == 0)
+				and (global.selected_font > 0)
+				{
+					menu_delay = 3;
+					global.selected_font -= 1;
+					scr_set_font();
+				}
+				else
+				if (key_down)
+				and (open_dropdown == true)
+				and (menu_delay == 0)
+				and (global.selected_font < 2)
+				{
+					menu_delay = 3;
+					global.selected_font += 1;
+					scr_set_font();
+				}
+				else
+				if (key_up)
+				and (open_dropdown == false)
+				and (menu_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "hud_hide_time";
 				}
 				else
 				if (key_down)
@@ -3192,9 +3235,9 @@ function scr_options_menu()
 				}
 			}
 			#endregion /* Navigate Game Settings END */
-	
+			
 			else
-	
+			
 			#region /* Players can collide */
 			if (menu == "players_can_collide")
 			{
@@ -3209,9 +3252,9 @@ function scr_options_menu()
 				}
 			}
 			#endregion /* Players can collide END */
-	
+			
 			else
-	
+			
 			#region /* Convention Mode */
 			if (menu == "convention_mode")
 			{
@@ -4119,6 +4162,7 @@ function scr_options_menu()
 			or (menu == "assist_extra_hp")
 			or (menu == "difficulty_settings")
 			or (menu == "hud_hide_time")
+			or (menu == "selected_font")
 			or (menu == "number_of_audio_channels")
 			{
 				if (menu_delay == 0)
@@ -4152,6 +4196,7 @@ function scr_options_menu()
 			if (menu == "show_deaths_counter_settings") and (menu_delay == 0){if (global.show_deaths_counter == true){global.show_deaths_counter = false;}else{global.show_deaths_counter = true;}menu_delay = 3;}
 			if (menu == "show_ranks_settings") and (menu_delay == 0){if (global.show_ranks == true){global.show_ranks = false;}else{global.show_ranks = true;}menu_delay = 3;}
 			if (menu == "show_tutorial_signs") and (menu_delay == 0){if (global.show_tutorial_signs == true){global.show_tutorial_signs = false;}else{global.show_tutorial_signs = true;}menu_delay = 3;}
+			if (menu == "show_new_items_notification") and (menu_delay == 0){if (global.show_new_items_notification == true){global.show_new_items_notification = false;}else{global.show_new_items_notification = true;}menu_delay = 3;}
 			if (menu == "players_can_collide") and (menu_delay == 0){if (global.players_can_collide == true){global.players_can_collide = false;}else{global.players_can_collide = true;}menu_delay = 3;}
 			if (menu == "convention_mode") and (menu_delay == 0){if (global.convention_mode == true){global.convention_mode = false;}else{global.convention_mode = true;}menu_delay = 3;}
 		}
@@ -4185,7 +4230,7 @@ function scr_options_menu()
 		darken_settings_sidebar_alpha = lerp(darken_settings_sidebar_alpha, 0, 0.1); /* But not the settings sidebar */
 	}
 	else
-	if (can_navigate_settings_sidebar = false)
+	if (can_navigate_settings_sidebar == false)
 	and (in_settings == true)
 	{
 		darken_settings_alpha = lerp(darken_settings_alpha, 0, 0.1); /* Don't darken the settings */

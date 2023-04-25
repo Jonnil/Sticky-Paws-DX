@@ -29,7 +29,7 @@ or (other.dive == true)
 		{
 			with(other)
 			{
-				if (simple_controls = false)
+				if (simple_controls == false)
 				{
 					vspeed = -triple_jump_height;
 				}
@@ -66,7 +66,7 @@ or (other.dive == true)
 		{
 			with(other)
 			{
-				if (simple_controls = false)
+				if (simple_controls == false)
 				{
 					vspeed = -triple_jump_height;
 				}
@@ -100,7 +100,7 @@ if (can_jump_on_head == true)
 	{
 		with(other)
 		{
-			if (simple_controls = false)
+			if (simple_controls == false)
 			{
 				vspeed = -triple_jump_height;
 			}
@@ -121,7 +121,7 @@ else
 	and (takendamage == 0)
 	{
 		if (other.takendamage <= 0)
-		and (other.assist_invincible = false)
+		and (other.assist_invincible == false)
 		{
 			if (other.have_heart_balloon == true)
 			{

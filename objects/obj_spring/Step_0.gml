@@ -21,7 +21,7 @@ and (can_bounce == 0)
 		audio_sound_pitch(snd_spring, 1);
 		scr_audio_play(snd_spring, volume_source.sound);
 	}
-	if (instance_nearest(x, y, obj_player).horizontal_rope_climb = false)
+	if (instance_nearest(x, y, obj_player).horizontal_rope_climb == false)
 	{
 		image_index = 1;
 		image_speed = 1;

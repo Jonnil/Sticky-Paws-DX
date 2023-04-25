@@ -79,22 +79,22 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		var skin_for_player = global.skin_for_player_1;
 		var voicepack_for_player = global.voicepack_for_player_1;
 		var player_menu = player1_menu;
-		var player_key_left = global.player1_key_left;
-		var player_key_right = global.player1_key_right;
-		var player_key2_left = global.player1_key2_left;
-		var player_key2_right = global.player1_key2_right;
-		var player_key_up = global.player1_key_up;
-		var player_key_down = global.player1_key_down;
-		var player_key2_up = global.player1_key2_up;
-		var player_key2_down = global.player1_key2_down;
-		var player_key_back = global.player1_key_back;
-		var player_key2_back = global.player1_key2_back;
-		var player_key_accept = global.player1_key_accept;
-		var player_key2_accept = global.player1_key2_accept;
-		var player_gamepad_button_back = global.player1_gamepad_button_back;
-		var player_gamepad_button2_back = global.player1_gamepad_button2_back;
-		var player_gamepad_button_accept = global.player1_gamepad_button_accept;
-		var player_gamepad_button2_accept = global.player1_gamepad_button2_accept;
+		var player_key_left = global.player_[inp.key][1][1][action.left];
+		var player_key_right = global.player_[inp.key][1][1][action.right];
+		var player_key2_left = global.player_[inp.key][1][2][action.left];
+		var player_key2_right = global.player_[inp.key][1][2][action.right];
+		var player_key_up = global.player_[inp.key][1][1][action.up];
+		var player_key_down = global.player_[inp.key][1][1][action.down];
+		var player_key2_up = global.player_[inp.key][1][2][action.up];
+		var player_key2_down = global.player_[inp.key][1][2][action.down];
+		var player_key_back = global.player_[inp.key][1][1][action.back];
+		var player_key2_back = global.player_[inp.key][1][2][action.back];
+		var player_key_accept = global.player_[inp.key][1][1][action.accept];
+		var player_key2_accept = global.player_[inp.key][1][2][action.accept];
+		var player_gamepad_button_back = global.player_[inp.gp][1][1][action.back];
+		var player_gamepad_button2_back = global.player_[inp.gp][1][2][action.back];
+		var player_gamepad_button_accept = global.player_[inp.gp][1][1][action.accept];
+		var player_gamepad_button2_accept = global.player_[inp.gp][1][2][action.accept];
 		var menu_joystick_delay = menu_joystick1_delay;
 		var can_input_player_name = can_input_player1_name;
 		var player_name = global.player1_name;
@@ -115,22 +115,22 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		var skin_for_player = global.skin_for_player_2;
 		var voicepack_for_player = global.voicepack_for_player_2;
 		var player_menu = player2_menu;
-		var player_key_left = global.player2_key_left;
-		var player_key_right = global.player2_key_right;
-		var player_key2_left = global.player2_key2_left;
-		var player_key2_right = global.player2_key2_right;
-		var player_key_up = global.player2_key_up;
-		var player_key_down = global.player2_key_down;
-		var player_key2_up = global.player2_key2_up;
-		var player_key2_down = global.player2_key2_down;
-		var player_key_back = global.player2_key_back;
-		var player_key2_back = global.player2_key2_back;
-		var player_key_accept = global.player2_key_accept;
-		var player_key2_accept = global.player2_key2_accept;
-		var player_gamepad_button_back = global.player2_gamepad_button_back;
-		var player_gamepad_button2_back = global.player2_gamepad_button2_back;
-		var player_gamepad_button_accept = global.player2_gamepad_button_accept;
-		var player_gamepad_button2_accept = global.player2_gamepad_button2_accept;
+		var player_key_left = global.player_[inp.key][2][1][action.left];
+		var player_key_right = global.player_[inp.key][2][1][action.right];
+		var player_key2_left = global.player_[inp.key][2][2][action.left];
+		var player_key2_right = global.player_[inp.key][2][2][action.right];
+		var player_key_up = global.player_[inp.key][2][1][action.up];
+		var player_key_down = global.player_[inp.key][2][1][action.down];
+		var player_key2_up = global.player_[inp.key][2][2][action.up];
+		var player_key2_down = global.player_[inp.key][2][2][action.down];
+		var player_key_back = global.player_[inp.key][2][1][action.back];
+		var player_key2_back = global.player_[inp.key][2][2][action.back];
+		var player_key_accept = global.player_[inp.key][2][1][action.accept];
+		var player_key2_accept = global.player_[inp.key][2][2][action.accept];
+		var player_gamepad_button_back = global.player_[inp.gp][2][1][action.back];
+		var player_gamepad_button2_back = global.player_[inp.gp][2][2][action.back];
+		var player_gamepad_button_accept = global.player_[inp.gp][2][1][action.accept];
+		var player_gamepad_button2_accept = global.player_[inp.gp][2][2][action.accept];
 		var menu_joystick_delay = menu_joystick2_delay;
 		var can_input_player_name = can_input_player2_name;
 		var player_name = global.player2_name;
@@ -151,22 +151,22 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		var skin_for_player = global.skin_for_player_3;
 		var voicepack_for_player = global.voicepack_for_player_3;
 		var player_menu = player3_menu;
-		var player_key_left = global.player3_key_left;
-		var player_key_right = global.player3_key_right;
-		var player_key2_left = global.player3_key2_left;
-		var player_key2_right = global.player3_key2_right;
-		var player_key_up = global.player3_key_up;
-		var player_key_down = global.player3_key_down;
-		var player_key2_up = global.player3_key2_up;
-		var player_key2_down = global.player3_key2_down;
-		var player_key_back = global.player3_key_back;
-		var player_key2_back = global.player3_key2_back;
-		var player_key_accept = global.player3_key_accept;
-		var player_key2_accept = global.player3_key2_accept;
-		var player_gamepad_button_back = global.player3_gamepad_button_back;
-		var player_gamepad_button2_back = global.player3_gamepad_button2_back;
-		var player_gamepad_button_accept = global.player3_gamepad_button_accept;
-		var player_gamepad_button2_accept = global.player3_gamepad_button2_accept;
+		var player_key_left = global.player_[inp.key][3][1][action.left];
+		var player_key_right = global.player_[inp.key][3][1][action.right];
+		var player_key2_left = global.player_[inp.key][3][2][action.left];
+		var player_key2_right = global.player_[inp.key][3][2][action.right];
+		var player_key_up = global.player_[inp.key][3][1][action.up];
+		var player_key_down = global.player_[inp.key][3][1][action.down];
+		var player_key2_up = global.player_[inp.key][3][2][action.up];
+		var player_key2_down = global.player_[inp.key][3][2][action.down];
+		var player_key_back = global.player_[inp.key][3][1][action.back];
+		var player_key2_back = global.player_[inp.key][3][2][action.back];
+		var player_key_accept = global.player_[inp.key][3][1][action.accept];
+		var player_key2_accept = global.player_[inp.key][3][2][action.accept];
+		var player_gamepad_button_back = global.player_[inp.gp][3][1][action.back];
+		var player_gamepad_button2_back = global.player_[inp.gp][3][2][action.back];
+		var player_gamepad_button_accept = global.player_[inp.gp][3][1][action.accept];
+		var player_gamepad_button2_accept = global.player_[inp.gp][3][2][action.accept];
 		var menu_joystick_delay = menu_joystick3_delay;
 		var can_input_player_name = can_input_player3_name;
 		var player_name = global.player3_name;
@@ -187,22 +187,22 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		var skin_for_player = global.skin_for_player_4;
 		var voicepack_for_player = global.voicepack_for_player_4;
 		var player_menu = player4_menu;
-		var player_key_left = global.player4_key_left;
-		var player_key_right = global.player4_key_right;
-		var player_key2_left = global.player4_key2_left;
-		var player_key2_right = global.player4_key2_right;
-		var player_key_up = global.player4_key_up;
-		var player_key_down = global.player4_key_down;
-		var player_key2_up = global.player4_key2_up;
-		var player_key2_down = global.player4_key2_down;
-		var player_key_back = global.player4_key_back;
-		var player_key2_back = global.player4_key2_back;
-		var player_key_accept = global.player4_key_accept;
-		var player_key2_accept = global.player4_key2_accept;
-		var player_gamepad_button_back = global.player4_gamepad_button_back;
-		var player_gamepad_button2_back = global.player4_gamepad_button2_back;
-		var player_gamepad_button_accept = global.player4_gamepad_button_accept;
-		var player_gamepad_button2_accept = global.player4_gamepad_button2_accept;
+		var player_key_left = global.player_[inp.key][4][1][action.left];
+		var player_key_right = global.player_[inp.key][4][1][action.right];
+		var player_key2_left = global.player_[inp.key][4][2][action.left];
+		var player_key2_right = global.player_[inp.key][4][2][action.right];
+		var player_key_up = global.player_[inp.key][4][1][action.up];
+		var player_key_down = global.player_[inp.key][4][1][action.down];
+		var player_key2_up = global.player_[inp.key][4][2][action.up];
+		var player_key2_down = global.player_[inp.key][4][2][action.down];
+		var player_key_back = global.player_[inp.key][4][1][action.back];
+		var player_key2_back = global.player_[inp.key][4][2][action.back];
+		var player_key_accept = global.player_[inp.key][4][1][action.accept];
+		var player_key2_accept = global.player_[inp.key][4][2][action.accept];
+		var player_gamepad_button_back = global.player_[inp.gp][4][1][action.back];
+		var player_gamepad_button2_back = global.player_[inp.gp][4][2][action.back];
+		var player_gamepad_button_accept = global.player_[inp.gp][4][1][action.accept];
+		var player_gamepad_button2_accept = global.player_[inp.gp][4][2][action.accept];
 		var menu_joystick_delay = menu_joystick4_delay;
 		var can_input_player_name = can_input_player4_name;
 		var player_name = global.player4_name;
@@ -230,14 +230,19 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])), 1));
 		uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]))) - 1);
 		var character_name = string(uppercase_character_name);
+		
+		#region /* Display Character Name */
 		if (player_menu != "select_name")
 		and (can_input_player1_name == false)
 		and (can_input_player2_name == false)
 		and (can_input_player3_name == false)
 		and (can_input_player4_name == false)
+		or (global.controls_used_for_menu_navigation == "mouse")
 		{
-			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x, get_window_height * 0.5 + 324, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1); /* Display Character Name */
+			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x, get_window_height * 0.5 + 324, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
+		#endregion /* Display Character Name END */
+		
 	}
 	#endregion /* Draw Character Portrait for Player END */
 	
@@ -271,7 +276,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					or (keyboard_check_pressed(player_key2_left))
 					or (gamepad_button_check_pressed(player_gamepad_slot, gp_padl))
 					or (gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0)
-					and (menu_joystick_delay <= 0)
+					and (menu_joystick_delay == 29)
 					or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
 					and (mouse_check_button_pressed(mb_left))
 					and (global.controls_used_for_menu_navigation == "mouse")
@@ -286,7 +291,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							{
 								global.skin_for_player_1 -= 1;
 								global.actual_skin_for_player_1 = global.skin_for_player_1; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-								menu_joystick1_delay = 30;
+								menu_joystick1_delay = 60;
 								global.sprite_select_player_1 = spr_noone;
 								global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
 								global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
@@ -299,7 +304,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							{
 								global.skin_for_player_2 -= 1;
 								global.actual_skin_for_player_2 = global.skin_for_player_2; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-								menu_joystick2_delay = 30;
+								menu_joystick2_delay = 60;
 								global.sprite_select_player_2 = spr_noone;
 								global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_2, 1, global.skin_for_player_2);
 								global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_2, 1, global.skin_for_player_2);
@@ -312,7 +317,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							{
 								global.skin_for_player_3 -= 1;
 								global.actual_skin_for_player_3 = global.skin_for_player_3; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-								menu_joystick3_delay = 30;
+								menu_joystick3_delay = 60;
 								global.sprite_select_player_3 = spr_noone;
 								global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_3, 2, global.skin_for_player_3);
 								global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_3, 2, global.skin_for_player_3);
@@ -325,7 +330,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							{
 								global.skin_for_player_4 -= 1;
 								global.actual_skin_for_player_4 = global.skin_for_player_4; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-								menu_joystick4_delay = 30;
+								menu_joystick4_delay = 60;
 								global.sprite_select_player_4 = spr_noone;
 								global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_4, 3, global.skin_for_player_4);
 								global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_4, 3, global.skin_for_player_4);
@@ -344,7 +349,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					or (keyboard_check_pressed(player_key2_right))
 					or (gamepad_button_check_pressed(player_gamepad_slot, gp_padr))
 					or (gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0)
-					and (menu_joystick_delay <= 0)
+					and (menu_joystick_delay == 29)
 					or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
 					and (mouse_check_button_pressed(mb_left))
 					and (global.controls_used_for_menu_navigation == "mouse")
@@ -361,7 +366,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							{
 								global.skin_for_player_1 += 1;
 								global.actual_skin_for_player_1 = global.skin_for_player_1; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-								menu_joystick1_delay = 30;
+								menu_joystick1_delay = 60;
 								global.sprite_select_player_1 = spr_noone;
 								global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
 								global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
@@ -374,7 +379,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							{
 								global.skin_for_player_2 += 1;
 								global.actual_skin_for_player_2 = global.skin_for_player_2; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-								menu_joystick2_delay = 30;
+								menu_joystick2_delay = 60;
 								global.sprite_select_player_2 = spr_noone;
 								global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_2, 1, global.skin_for_player_2);
 								global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_2, 1, global.skin_for_player_2);
@@ -387,7 +392,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							{
 								global.skin_for_player_3 += 1;
 								global.actual_skin_for_player_3 = global.skin_for_player_3; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-								menu_joystick3_delay = 30;
+								menu_joystick3_delay = 60;
 								global.sprite_select_player_3 = spr_noone;
 								global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_3, 2, global.skin_for_player_3);
 								global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_3, 2, global.skin_for_player_3);
@@ -400,7 +405,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							{
 								global.skin_for_player_4 += 1;
 								global.actual_skin_for_player_4 = global.skin_for_player_4; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-								menu_joystick4_delay = 30;
+								menu_joystick4_delay = 60;
 								global.sprite_select_player_4 = spr_noone;
 								global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_4, 3, global.skin_for_player_4);
 								global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_4, 3, global.skin_for_player_4);
@@ -419,29 +424,32 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					or (keyboard_check_pressed(player_key2_up))
 					or (gamepad_button_check_pressed(player_gamepad_slot, gp_padu))
 					or (gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0)
-					and (menu_joystick_delay <= 0)
+					and (menu_joystick_delay == 29)
 					{
 						if (menu_delay == 0)
 						{
 							menu_delay = 3;
-							menu_joystick_delay = 30;
 							if (what_player == 1)
 							{
+								menu_joystick1_delay = 60;
 								player1_menu = "select_character";
 							}
 							else
 							if (what_player == 2)
 							{
+								menu_joystick2_delay = 60;
 								player2_menu = "select_character";
 							}
 							else
 							if (what_player == 3)
 							{
+								menu_joystick3_delay = 60;
 								player3_menu = "select_character";
 							}
 							else
 							if (what_player == 4)
 							{
+								menu_joystick4_delay = 60;
 								player4_menu = "select_character";
 							}
 						}
@@ -453,12 +461,11 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					or (keyboard_check_pressed(player_key2_down))
 					or (gamepad_button_check_pressed(player_gamepad_slot, gp_padd))
 					or (gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0)
-					and (menu_joystick_delay <= 0)
+					and (menu_joystick_delay == 29)
 					{
 						if (menu_delay == 0)
 						{
 							menu_delay = 3;
-							menu_joystick_delay = 30;
 							if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack0"))
 							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack1"))
 							or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack0"))
@@ -466,21 +473,25 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							{
 								if (what_player == 1)
 								{
+									menu_joystick1_delay = 60;
 									player1_menu = "select_voicepack";
 								}
 								else
 								if (what_player == 2)
 								{
+									menu_joystick2_delay = 60;
 									player2_menu = "select_voicepack";
 								}
 								else
 								if (what_player == 3)
 								{
+									menu_joystick3_delay = 60;
 									player3_menu = "select_voicepack";
 								}
 								else
 								if (what_player == 4)
 								{
+									menu_joystick4_delay = 60;
 									player4_menu = "select_voicepack";
 								}
 							}
@@ -659,7 +670,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					or (keyboard_check_pressed(player_key2_left))
 					or (gamepad_button_check_pressed(player_gamepad_slot, gp_padl))
 					or (gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0)
-					and (menu_joystick_delay <= 0)
+					and (menu_joystick_delay == 29)
 					or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
 					and (mouse_check_button_pressed(mb_left))
 					and (global.controls_used_for_menu_navigation == "mouse")
@@ -671,28 +682,28 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							if (what_player == 1)
 							{
 								global.voicepack_for_player_1 -= 1;
-								menu_joystick1_delay = 30;
+								menu_joystick1_delay = 60;
 								xx1 = player_display_x - 32;
 							}
 							else
 							if (what_player == 2)
 							{
 								global.voicepack_for_player_2 -= 1;
-								menu_joystick2_delay = 30;
+								menu_joystick2_delay = 60;
 								xx2 = player_display_x - 32;
 							}
 							else
 							if (what_player == 3)
 							{
 								global.voicepack_for_player_3 -= 1;
-								menu_joystick3_delay = 30;
+								menu_joystick3_delay = 60;
 								xx3 = player_display_x - 32;
 							}
 							else
 							if (what_player == 4)
 							{
 								global.voicepack_for_player_4 -= 1;
-								menu_joystick4_delay = 30;
+								menu_joystick4_delay = 60;
 								xx4 = player_display_x - 32;
 							}
 						}
@@ -704,7 +715,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					or (keyboard_check_pressed(player_key2_right))
 					or (gamepad_button_check_pressed(player_gamepad_slot, gp_padr))
 					or (gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0)
-					and (menu_joystick_delay <= 0)
+					and (menu_joystick_delay == 29)
 					or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
 					and (mouse_check_button_pressed(mb_left))
 					and (global.controls_used_for_menu_navigation == "mouse")
@@ -718,28 +729,28 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							if (what_player == 1)
 							{
 								global.voicepack_for_player_1 += 1;
-								menu_joystick1_delay = 30;
+								menu_joystick1_delay = 60;
 								xx1 = player_display_x + 32;
 							}
 							else
 							if (what_player == 2)
 							{
 								global.voicepack_for_player_2 += 1;
-								menu_joystick2_delay = 30;
+								menu_joystick2_delay = 60;
 								xx2 = player_display_x + 32;
 							}
 							else
 							if (what_player == 3)
 							{
 								global.voicepack_for_player_3 += 1;
-								menu_joystick3_delay = 30;
+								menu_joystick3_delay = 60;
 								xx3 = player_display_x + 32;
 							}
 							else
 							if (what_player == 4)
 							{
 								global.voicepack_for_player_4 += 1;
-								menu_joystick4_delay = 30;
+								menu_joystick4_delay = 60;
 								xx4 = player_display_x + 32;
 							}
 						}
@@ -751,7 +762,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					or (keyboard_check_pressed(player_key2_up))
 					or (gamepad_button_check_pressed(player_gamepad_slot, gp_padu))
 					or (gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0)
-					and (menu_joystick_delay <= 0)
+					and (menu_joystick_delay == 29)
 					{
 						if (menu_delay == 0)
 						{
@@ -765,25 +776,25 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 								#region /* Go from selecting voicepack to selecting skin */
 								if (what_player == 1)
 								{
-									menu_joystick1_delay = 30;
+									menu_joystick1_delay = 60;
 									player1_menu = "select_skin";
 								}
 								else
 								if (what_player == 2)
 								{
-									menu_joystick2_delay = 30;
+									menu_joystick2_delay = 60;
 									player2_menu = "select_skin";
 								}
 								else
 								if (what_player == 3)
 								{
-									menu_joystick3_delay = 30;
+									menu_joystick3_delay = 60;
 									player3_menu = "select_skin";
 								}
 								else
 								if (what_player == 4)
 								{
-									menu_joystick4_delay = 30;
+									menu_joystick4_delay = 60;
 									player4_menu = "select_skin";
 								}
 								#endregion /* Go from selecting voicepack to selecting skin END */
@@ -795,25 +806,25 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 								#region /* Go from selecting voicepack to selecting character */
 								if (what_player == 1)
 								{
-									menu_joystick1_delay = 30;
+									menu_joystick1_delay = 60;
 									player1_menu = "select_character";
 								}
 								else
 								if (what_player == 2)
 								{
-									menu_joystick2_delay = 30;
+									menu_joystick2_delay = 60;
 									player2_menu = "select_character";
 								}
 								else
 								if (what_player == 3)
 								{
-									menu_joystick3_delay = 30;
+									menu_joystick3_delay = 60;
 									player3_menu = "select_character";
 								}
 								else
 								if (what_player == 4)
 								{
-									menu_joystick4_delay = 30;
+									menu_joystick4_delay = 60;
 									player4_menu = "select_character";
 								}
 								#endregion /* Go from selecting voicepack to selecting character END */
@@ -828,32 +839,32 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					or (keyboard_check_pressed(player_key2_down))
 					or (gamepad_button_check_pressed(player_gamepad_slot, gp_padd))
 					or (gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0)
-					and (menu_joystick_delay <= 0)
+					and (menu_joystick_delay == 29)
 					{
 						if (menu_delay == 0)
 						{
 							menu_delay = 3;
 							if (what_player == 1)
 							{
-								menu_joystick1_delay = 30;
+								menu_joystick1_delay = 60;
 								player1_menu = "select_name";
 							}
 							else
 							if (what_player == 2)
 							{
-								menu_joystick2_delay = 30;
+								menu_joystick2_delay = 60;
 								player2_menu = "select_name";
 							}
 							else
 							if (what_player == 3)
 							{
-								menu_joystick3_delay = 30;
+								menu_joystick3_delay = 60;
 								player3_menu = "select_name";
 							}
 							else
 							if (what_player == 4)
 							{
-								menu_joystick4_delay = 30;
+								menu_joystick4_delay = 60;
 								player4_menu = "select_name";
 							}
 						}
@@ -961,9 +972,9 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 			and (menu_delay == 0)
 			or (keyboard_check_pressed(vk_escape))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player1_key_back))
+			or (keyboard_check_pressed(global.player_[inp.key][1][1][action.back]))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player1_key2_back))
+			or (keyboard_check_pressed(global.player_[inp.key][1][2][action.back]))
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -974,9 +985,9 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		{
 			if (gamepad_button_check_pressed(1, player_gamepad_button_back))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player2_key_back))
+			or (keyboard_check_pressed(global.player_[inp.key][2][1][action.back]))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player2_key2_back))
+			or (keyboard_check_pressed(global.player_[inp.key][2][2][action.back]))
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -987,9 +998,9 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		{
 			if (gamepad_button_check_pressed(2, player_gamepad_button_back))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player3_key_back))
+			or (keyboard_check_pressed(global.player_[inp.key][3][1][action.back]))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player3_key2_back))
+			or (keyboard_check_pressed(global.player_[inp.key][3][2][action.back]))
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -1000,9 +1011,9 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		{
 			if (gamepad_button_check_pressed(3, player_gamepad_button_back))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player4_key_back))
+			or (keyboard_check_pressed(global.player_[inp.key][4][1][action.back]))
 			and (menu_delay == 0)
-			or (keyboard_check_pressed(global.player4_key2_back))
+			or (keyboard_check_pressed(global.player_[inp.key][4][2][action.back]))
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -1271,6 +1282,13 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 				
 				draw_set_alpha(0.75);
 				draw_rectangle_color(get_window_width * 0.5 + player_display_x - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x + 100, get_window_height * 0.5 + 150 + 20, c_white, c_white, c_white, c_white, false);
+				draw_set_alpha(1);
+			}
+			else
+			{
+				/* Make the Accept button blink to make it more noticable for the player */
+				draw_set_alpha(scr_wave(0, 0.75, 1, 0));
+				draw_rectangle_color(get_window_width * 0.5 + player_display_x - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x + 100, get_window_height * 0.5 + 150 + 20, player_color, player_color, player_color, player_color, false);
 				draw_set_alpha(1);
 			}
 		

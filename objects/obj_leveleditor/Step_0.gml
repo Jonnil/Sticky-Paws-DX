@@ -55,8 +55,16 @@ if (global.actually_play_edited_level == false)
 			ini_close();
 		}
 	}
-
-	scr_controls_for_level_editor();
+	
+	if (pause == false)
+	{
+		scr_controls_for_level_editor();
+	}
+	else
+	if (pause == true)
+	{
+		scr_menu_navigation_initialization(1, true);
+	}
 	
 	scr_toggle_fullscreen();
 
@@ -448,8 +456,8 @@ if (global.actually_play_edited_level == false)
 			#region /* Move view with gamepad */
 			if (pause == false)
 			{
-				if (keyboard_check(global.player1_key_up))
-				and (!keyboard_check(global.player1_key_down))
+				if (keyboard_check(global.player_[inp.key][1][1][action.up]))
+				and (!keyboard_check(global.player_[inp.key][1][1][action.down]))
 				or (keyboard_check(vk_up))
 				and (!keyboard_check(vk_down))
 				{
@@ -458,8 +466,8 @@ if (global.actually_play_edited_level == false)
 						camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - controller_view_speed); /* Move camera up */
 					}
 				}
-				if (keyboard_check(global.player1_key_down))
-				and (!keyboard_check(global.player1_key_up))
+				if (keyboard_check(global.player_[inp.key][1][1][action.down]))
+				and (!keyboard_check(global.player_[inp.key][1][1][action.up]))
 				or (keyboard_check(vk_down))
 				and (!keyboard_check(vk_up))
 				{
@@ -469,8 +477,8 @@ if (global.actually_play_edited_level == false)
 						camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + controller_view_speed); /* Move camera down */
 					}
 				}
-				if (keyboard_check(global.player1_key_left))
-				and (!keyboard_check(global.player1_key_right))
+				if (keyboard_check(global.player_[inp.key][1][1][action.left]))
+				and (!keyboard_check(global.player_[inp.key][1][1][action.right]))
 				or (keyboard_check(vk_left))
 				and (!keyboard_check(vk_right))
 				{
@@ -479,8 +487,8 @@ if (global.actually_play_edited_level == false)
 						camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) - controller_view_speed, camera_get_view_y(view_camera[view_current])); /* Move camera left */
 					}
 				}
-				if (keyboard_check(global.player1_key_right))
-				and (!keyboard_check(global.player1_key_left))
+				if (keyboard_check(global.player_[inp.key][1][1][action.right]))
+				and (!keyboard_check(global.player_[inp.key][1][1][action.left]))
 				or (keyboard_check(vk_right))
 				and (!keyboard_check(vk_left))
 				{
@@ -640,8 +648,8 @@ if (global.actually_play_edited_level == false)
 		or (can_make_place_brush_size_bigger == true)
 		and (mouse_check_button(mb_left))
 		
-		or (can_make_place_brush_size_bigger = false)
-		and (key_a_released)
+		or (can_make_place_brush_size_bigger == false)
+		and (key_a_pressed)
 		
 		or (can_make_place_brush_size_bigger == true)
 		and (key_a_hold)
@@ -680,12 +688,15 @@ if (global.actually_play_edited_level == false)
 				or (show_grid == false)
 				{
 					if (global.enable_difficulty_selection_settings == true)
+					and (global.enable_difficutly_layers_in_level_editor == true)
 					and (set_difficulty_mode == true)
 					and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 					or (global.enable_difficulty_selection_settings == true)
+					and (global.enable_difficutly_layers_in_level_editor == true)
 					and (set_difficulty_mode == false)
 					and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 					or (global.enable_difficulty_selection_settings == false)
+					or (global.enable_difficutly_layers_in_level_editor == false)
 					{
 						if (x > -16) /* Can only place objects within the level */
 						and (y > -16)
@@ -754,6 +765,14 @@ if (global.actually_play_edited_level == false)
 							scr_brush_size_place_object(- 32, + 96, 6, false);
 							scr_brush_size_place_object(- 64, + 96, 6, false);
 							#endregion /* Brush size 6 END */
+							
+							/* Unlocked objects should be set as not recently unlocked anymore */
+							ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+							if (ini_read_real("Unlock Placable Objects", place_object, false) == true) /* Only update if the current object is recently unlocked */
+							{
+								ini_write_real("Unlock Placable Objects", place_object, 2); /* Set that the unlockable object isn't recently unlocked and "New" anymore */
+							}
+							ini_close();
 							
 							#region /* Reset Level Editor Checkpoint */
 							if (asset_get_type("room_leveleditor") == asset_room)

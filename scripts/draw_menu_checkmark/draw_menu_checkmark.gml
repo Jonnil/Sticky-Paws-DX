@@ -18,7 +18,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	//var width_of_button = 670;
 	#endregion /* Initialize variables END */
 	
-	if (variable_to_check = false)
+	if (variable_to_check == false)
 	{
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 		and (global.controls_used_for_menu_navigation == "mouse")
@@ -29,10 +29,8 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 			draw_rectangle_color(x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			draw_sprite_ext(spr_menu_checkmark, 0, x_position + 42, y_position, 1, 1, 0, c_lime, 1);
-			{
-				menu = menu_index;
-				can_navigate_settings_sidebar = false;
-			}
+			menu = menu_index;
+			can_navigate_settings_sidebar = false;
 		}
 		else
 		{
@@ -50,7 +48,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 			draw_rectangle_color(x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			draw_sprite_ext(spr_menu_checkmark, 1, x_position + 42, y_position, 1, 1, 0, c_lime, 1);
-			if (input_key = false)
+			if (input_key == false)
 			and (open_dropdown == false)
 			{
 				menu = menu_index;
@@ -66,10 +64,6 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	#region /* Show a menu cursor when the option is highlighted */
 	if (menu == menu_index)
 	{
-		if (variable_instance_exists(self, "menu_cursor_y_position"))
-		{
-			menu_cursor_y_position = y_position;
-		}
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + 16, y_position + 16, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Show a menu cursor when the option is highlighted END */

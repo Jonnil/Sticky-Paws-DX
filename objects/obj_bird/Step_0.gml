@@ -13,7 +13,7 @@ and (asset_get_type("obj_wall") == asset_object)
 and (instance_exists(obj_player))
 and (distance_to_object(obj_player) < 128)
 and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-and (touch_player = false)
+and (touch_player == false)
 {
 	image_index = 1;
 
@@ -51,7 +51,7 @@ or (die_volting = +1)
 }
 
 if (asset_get_type("obj_player") == asset_object)
-and (touch_player = false)
+and (touch_player == false)
 and (instance_exists(obj_player))
 and (place_meeting(x, y, obj_player))
 {
@@ -92,7 +92,7 @@ and (place_meeting(x, y, obj_player))
 #region /* Change direction when hitting a wall */
 if (asset_get_type("obj_wall") == asset_object)
 and (speed > 0)
-and (touch_player = false)
+and (touch_player == false)
 {
 	if (place_meeting(x - 1, y, obj_wall))
 	{
@@ -117,7 +117,7 @@ and (touch_player = false)
 
 #region /* If it's inside the wall, destroy itself */
 if (position_meeting(x, y, obj_wall))
-and (touch_player = false)
+and (touch_player == false)
 {
 	instance_destroy();
 }

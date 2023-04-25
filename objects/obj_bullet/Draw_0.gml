@@ -28,7 +28,7 @@ or (die_volting = +1)
 }
 else
 {
-	if (flat = false)
+	if (flat == false)
 	{
 		/* Set the gravity */
 		gravity_direction = 270; /* Direction of the gravity */

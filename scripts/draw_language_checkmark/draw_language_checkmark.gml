@@ -63,7 +63,7 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 			draw_rectangle_color(x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			draw_sprite_ext(spr_menu_checkmark, 1, x_position + 42, y_position, 1, 1, 0, c_lime, 1);
-			if (input_key = false)
+			if (input_key == false)
 			and (open_dropdown == false)
 			{
 				menu = menu_index;

@@ -51,65 +51,7 @@ if (global.narrator >= 0)
 
 room_speed = global.max_fps;
 
-#region /* Keyboard Controls */
-
-#region /* Player 1 */
-if (global.pause_player == 0)
-{
-	key_up = (keyboard_check_pressed(vk_up)) or (keyboard_check_pressed(ord("W"))) or (gamepad_button_check_pressed(global.player1_slot, gp_padu)) or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0);
-	key_left = (keyboard_check_pressed(vk_left)) or (keyboard_check_pressed(ord("A"))) or (gamepad_button_check_pressed(global.player1_slot, gp_padl)) or (gamepad_axis_value(global.player1_slot, gp_axislh) < 0);
-	key_right = (keyboard_check_pressed(vk_right)) or (keyboard_check_pressed(ord("D"))) or (gamepad_button_check_pressed(global.player1_slot, gp_padr)) or (gamepad_axis_value(global.player1_slot, gp_axislh) > 0);
-	key_down = (keyboard_check_pressed(vk_down)) or (keyboard_check_pressed(ord("S"))) or (gamepad_button_check_pressed(global.player1_slot, gp_padd)) or (gamepad_axis_value(global.player1_slot, gp_axislv) > 0);
-	/* Player 1 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept)) or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_accept)) or (keyboard_check_pressed(global.player1_key_accept)) or (keyboard_check_pressed(global.player1_key2_accept)) or (keyboard_check_pressed(vk_space));
-	/* Player 1 Key Accept Hold */ key_a_hold = (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept)) or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button2_accept)) or (keyboard_check(global.player1_key_accept)) or (keyboard_check(global.player1_key2_accept)) or (keyboard_check(vk_space));
-	/* Player 1 Key Accept Released */ key_a_released = (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept)) or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_accept)) or (keyboard_check_released(global.player1_key_accept)) or (keyboard_check_released(global.player1_key2_accept)) or (keyboard_check_released(vk_space));
-	/* Player 1 Key Back Pressed */ key_b_pressed = scr_key_initialize(key_b_pressed, 1, 1, global.player1_key_back, global.player1_key2_back, global.player1_gamepad_button_back, global.player1_gamepad_button_back);
-}
-#endregion /* Player 1 END */
-
-#region /* Player 2 */
-if (global.pause_player == 1)
-{
-	key_up = (keyboard_check_pressed(global.player2_key_up)) or (gamepad_button_check_pressed(global.player2_slot, gp_padu)) or (gamepad_axis_value(global.player2_slot, gp_axislv) < 0);
-	key_left = (keyboard_check_pressed(global.player2_key_left)) or (gamepad_button_check_pressed(global.player2_slot, gp_padl)) or (gamepad_axis_value(global.player2_slot, gp_axislh) < 0);
-	key_right = (keyboard_check_pressed(global.player2_key_right)) or (gamepad_button_check_pressed(global.player2_slot, gp_padr)) or (gamepad_axis_value(global.player2_slot, gp_axislh) > 0);
-	key_down = (keyboard_check_pressed(global.player2_key_down)) or (gamepad_button_check_pressed(global.player2_slot, gp_padd)) or (gamepad_axis_value(global.player2_slot, gp_axislv) > 0);
-	/* Player 2 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_accept)) or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button2_accept)) or (keyboard_check_pressed(global.player2_key_accept)) or (keyboard_check_pressed(global.player2_key2_accept)) or (keyboard_check_pressed(vk_space));
-	/* Player 2 Key Accept Hold */ key_a_hold = (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_accept)) or (gamepad_button_check(global.player2_slot, global.player2_gamepad_button2_accept)) or (keyboard_check(global.player2_key_accept)) or (keyboard_check(global.player2_key2_accept)) or (keyboard_check(vk_space));
-	/* Player 2 Key Accept Released */ key_a_released = (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button_accept)) or (gamepad_button_check_released(global.player2_slot, global.player2_gamepad_button2_accept)) or (keyboard_check_released(global.player2_key_accept)) or (keyboard_check_released(global.player2_key2_accept)) or (keyboard_check_released(vk_space));
-	/* Player 2 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_back)) or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button2_back)) or (keyboard_check_pressed(global.player2_key_back)) or (keyboard_check_pressed(global.player2_key2_back)) or (keyboard_check_pressed(vk_escape));
-}
-#endregion /* Player 2 END */
-
-#region /* Player 3 */
-if (global.pause_player = 2)
-{
-	key_up = (keyboard_check_pressed(global.player3_key_up)) or (gamepad_button_check_pressed(global.player3_slot, gp_padu)) or (gamepad_axis_value(global.player3_slot, gp_axislv) < 0);
-	key_left = (keyboard_check_pressed(global.player3_key_left)) or (gamepad_button_check_pressed(global.player3_slot, gp_padl)) or (gamepad_axis_value(global.player3_slot, gp_axislh) < 0);
-	key_right = (keyboard_check_pressed(global.player3_key_right)) or (gamepad_button_check_pressed(global.player3_slot, gp_padr)) or (gamepad_axis_value(global.player3_slot, gp_axislh) > 0);
-	key_down = (keyboard_check_pressed(global.player3_key_down)) or (gamepad_button_check_pressed(global.player3_slot, gp_padd)) or (gamepad_axis_value(global.player3_slot, gp_axislv) > 0);
-	/* Player 3 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_accept)) or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button2_accept)) or (keyboard_check_pressed(global.player3_key_accept)) or (keyboard_check_pressed(global.player3_key2_accept)) or (keyboard_check_pressed(vk_space));
-	/* Player 3 Key Accept Hold */ key_a_hold = (gamepad_button_check(global.player3_slot, global.player3_gamepad_button_accept)) or (gamepad_button_check(global.player3_slot, global.player3_gamepad_button2_accept)) or (keyboard_check(global.player3_key_accept)) or (keyboard_check(global.player3_key2_accept)) or (keyboard_check(vk_space));
-	/* Player 3 Key Accept Released */ key_a_released = (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button_accept)) or (gamepad_button_check_released(global.player3_slot, global.player3_gamepad_button2_accept)) or (keyboard_check_released(global.player3_key_accept)) or (keyboard_check_released(global.player3_key2_accept)) or (keyboard_check_released(vk_space));
-	/* Player 3 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_back)) or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button2_back)) or (keyboard_check_pressed(global.player3_key_back)) or (keyboard_check_pressed(global.player3_key2_back)) or (keyboard_check_pressed(vk_escape));
-}
-#endregion /* Player 3 END */
-
-#region /* Player 4 */
-if (global.pause_player = 3)
-{
-	key_up = (keyboard_check_pressed(global.player4_key_up)) or (gamepad_button_check_pressed(global.player4_slot, gp_padu)) or (gamepad_axis_value(global.player4_slot, gp_axislv) < 0);
-	key_left = (keyboard_check_pressed(global.player4_key_left)) or (gamepad_button_check_pressed(global.player4_slot, gp_padl)) or (gamepad_axis_value(global.player4_slot, gp_axislh) < 0);
-	key_right = (keyboard_check_pressed(global.player4_key_right)) or (gamepad_button_check_pressed(global.player4_slot, gp_padr)) or (gamepad_axis_value(global.player4_slot, gp_axislh) > 0);
-	key_down = (keyboard_check_pressed(global.player4_key_down)) or (gamepad_button_check_pressed(global.player4_slot, gp_padd)) or (gamepad_axis_value(global.player4_slot, gp_axislv) > 0);
-	/* Player 4 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_accept)) or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button2_accept)) or (keyboard_check_pressed(global.player4_key_accept)) or (keyboard_check_pressed(global.player4_key2_accept)) or (keyboard_check_pressed(vk_space));
-	/* Player 4 Key Accept Hold */ key_a_hold = (gamepad_button_check(global.player4_slot, global.player4_gamepad_button_accept)) or (gamepad_button_check(global.player4_slot, global.player4_gamepad_button2_accept)) or (keyboard_check(global.player4_key_accept)) or (keyboard_check(global.player4_key2_accept)) or (keyboard_check(vk_space));
-	/* Player 4 Key Accept Released */ key_a_released = (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button_accept)) or (gamepad_button_check_released(global.player4_slot, global.player4_gamepad_button2_accept)) or (keyboard_check_released(global.player4_key_accept)) or (keyboard_check_released(global.player4_key2_accept)) or (keyboard_check_released(vk_space));
-	/* Player 4 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_back)) or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button2_back)) or (keyboard_check_pressed(global.player4_key_back)) or (keyboard_check_pressed(global.player4_key2_back)) or (keyboard_check_pressed(vk_escape));
-}
-#endregion /* Player 4 END */
-
-#endregion /* Keyboard Controls END */
+scr_menu_navigation_initialization(1);
 
 scr_quit_to_desktop_menu("quit_to_desktop");
 
@@ -135,7 +77,7 @@ or (menu == "quit_game_no")
 }
 
 if (hide_menu_for_clean_screenshots == false)
-and (in_settings = false)
+and (in_settings == false)
 and (os_type != os_ios)
 and (os_type != os_android)
 {
@@ -161,7 +103,7 @@ or (gamepad_button_check_pressed(global.player4_slot, gp_face4))
 {
 	if (hide_menu_for_clean_screenshots == false)
 	and (menu_delay == 0)
-	and (in_settings = false)
+	and (in_settings == false)
 	and (menu != "quit_game_yes")
 	and (menu != "quit_game_no")
 	{
@@ -171,21 +113,21 @@ or (gamepad_button_check_pressed(global.player4_slot, gp_face4))
 }
 
 if (keyboard_check_pressed(vk_anykey))
-or (mouse_check_button_pressed(mb_middle))
-or (mouse_check_button_pressed(mb_right))
-or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept))
-or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_back))
+or (mouse_check_button_released(mb_middle))
+or (mouse_check_button_released(mb_right))
+or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
 or (gamepad_button_check_pressed(global.player1_slot, gp_face3))
 or (gamepad_button_check_pressed(global.player1_slot, gp_face4))
-or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_accept))
-or (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_back))
+or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
 or (gamepad_button_check_pressed(global.player2_slot, gp_face3))
 or (gamepad_button_check_pressed(global.player2_slot, gp_face4))
-or (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_accept))
-or (gamepad_button_check_pressed(global.player3_slot, global.player2_gamepad_button_back))
+or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][2][1][action.back]))
 or (gamepad_button_check_pressed(global.player3_slot, gp_face3))
 or (gamepad_button_check_pressed(global.player3_slot, gp_face4))
-or (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_accept))
+or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
 or (gamepad_button_check_pressed(global.player4_slot, gp_face2))
 or (gamepad_button_check_pressed(global.player4_slot, gp_face3))
 or (gamepad_button_check_pressed(global.player4_slot, gp_face4))
@@ -286,16 +228,16 @@ if (hide_menu_for_clean_screenshots == false)
 	/* PAUSE LEVEL SELECT / LEVEL EDITOR MENU */
 	if (asset_get_type("room_world_map") == asset_room)
 	and (room == room_world_map)
-	and (show_loading_icon = false)
+	and (show_loading_icon == false)
 	or (asset_get_type("room_leveleditor") == asset_room)
 	and (room == room_leveleditor)
-	and (show_loading_icon = false)
+	and (show_loading_icon == false)
 	or (asset_get_type("room_world_map") == asset_room)
 	and (global.pause_room = room_world_map)
-	and (show_loading_icon = false)
+	and (show_loading_icon == false)
 	or (asset_get_type("room_leveleditor") == asset_room)
 	and (global.pause_room = room_leveleditor)
-	and (show_loading_icon = false)
+	and (show_loading_icon == false)
 	{
 		if (menu == "continue")
 		or (menu == "options")
@@ -324,7 +266,7 @@ if (hide_menu_for_clean_screenshots == false)
 						{
 							scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 42 + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
 						}
-						draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map");
+						draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map", c_red);
 					}
 				}
 				else
@@ -338,7 +280,7 @@ if (hide_menu_for_clean_screenshots == false)
 					{
 						scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
 					}
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map");
+					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map", c_red);
 				}
 			}
 			else
@@ -349,13 +291,13 @@ if (hide_menu_for_clean_screenshots == false)
 					draw_sprite_ext(spr_icons_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1);
 					if (global.goal_active == false)
 					{
-						draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit");
+						draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit", c_red);
 					}
 				}
 				else
 				if (global.goal_active == false)
 				{
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit"), "quit", "quit");
+					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit"), "quit", "quit", c_red);
 				}
 			}
 		}
@@ -398,7 +340,7 @@ if (hide_menu_for_clean_screenshots == false)
 			if (global.convention_mode == false)
 			and (global.enable_options_for_pc == true)
 			{
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 			}
@@ -423,7 +365,7 @@ if (hide_menu_for_clean_screenshots == false)
 			if (global.convention_mode == false)
 			and (global.enable_options_for_pc == true)
 			{
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 			}
@@ -445,7 +387,7 @@ if (hide_menu_for_clean_screenshots == false)
 			if (global.convention_mode == false)
 			and (global.enable_options_for_pc == true)
 			{
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop");
+				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 			}
@@ -459,10 +401,10 @@ if (hide_menu_for_clean_screenshots == false)
 		#region /* Continue */
 		if (menu == "continue")
 		{
-			if (key_a_released)
+			if (key_a_pressed)
 			and (menu_delay == 0)
 			or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
 			
@@ -543,11 +485,11 @@ if (hide_menu_for_clean_screenshots == false)
 		{
 			
 			#region /* Select Options */
-			if (key_a_released)
+			if (key_a_pressed)
 			and (menu_delay == 0)
 			and (global.convention_mode == false)
 			or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			and (global.convention_mode == false)
 			{
@@ -773,10 +715,10 @@ if (hide_menu_for_clean_screenshots == false)
 		if (menu == "restart_nevermind")
 		and (global.goal_active == false)
 		{
-			if (key_a_released)
+			if (key_a_pressed)
 			and (menu_delay == 0)
 			or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
 				holding_key_timer = 0;
@@ -811,27 +753,27 @@ if (hide_menu_for_clean_screenshots == false)
 		if (menu == "quit")
 		and (global.goal_active == false)
 		{
-			if (key_a_released)
+			if (key_a_pressed)
 			and (menu_delay == 0)
 			or (global.pause_room = room_world_map)
 			and (global.convention_mode == false)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
 			and (global.convention_mode == false)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_world_map)
 			and (global.convention_mode == true)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
 			and (global.convention_mode == true)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -894,10 +836,10 @@ if (hide_menu_for_clean_screenshots == false)
 			{
 				menu = "quit_to_title";
 			}
-			if (key_a_released)
+			if (key_a_pressed)
 			and (menu_delay == 0)
 			or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
 			
@@ -947,20 +889,20 @@ if (hide_menu_for_clean_screenshots == false)
 		if (menu == "quit_to_title")
 		and (global.goal_active == false)
 		{
-			if (key_a_released)
+			if (key_a_pressed)
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_world_map)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
 			and (global.character_select_in_this_menu == "level_editor")
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
 			
@@ -1044,26 +986,26 @@ if (hide_menu_for_clean_screenshots == false)
 		if (menu == "quit_to_desktop")
 		and (global.goal_active == false)
 		{
-			if (key_a_released)
+			if (key_a_pressed)
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
 			and (global.convention_mode == false)
 			and (global.enable_options_for_pc == true)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_world_map)
 			and (global.convention_mode == false)
 			and (global.enable_options_for_pc == true)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
 			and (global.convention_mode == false)
 			and (global.enable_options_for_pc == true)
 			and (global.character_select_in_this_menu == "level_editor")
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -1095,40 +1037,40 @@ if (hide_menu_for_clean_screenshots == false)
 		if (menu == "quit_nevermind")
 		and (global.goal_active == false)
 		{
-			if (key_a_released)
+			if (key_a_pressed)
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
 			and (global.convention_mode == false)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_world_map)
 			and (global.convention_mode == false)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
 			and (global.convention_mode == false)
 			and (global.character_select_in_this_menu == "level_editor")
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			
 			or (global.pause_room = room_leveleditor)
 			and (global.convention_mode == true)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_world_map)
 			and (global.convention_mode == true)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room = room_leveleditor)
 			and (global.convention_mode == true)
 			and (global.character_select_in_this_menu == "level_editor")
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
-			and (mouse_check_button_pressed(mb_left))
+			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			{
 				menu_delay = 3;
@@ -1357,7 +1299,7 @@ if (hide_menu_for_clean_screenshots == false)
 	or (gamepad_button_check_pressed(global.player3_slot, gp_select))
 	or (gamepad_button_check_pressed(global.player4_slot, gp_select))
 	{
-		if (can_remap_key = false)
+		if (can_remap_key == false)
 		and (input_key == false)
 		and (menu_delay == 0)
 		{

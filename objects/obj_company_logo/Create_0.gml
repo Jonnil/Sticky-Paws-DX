@@ -35,6 +35,7 @@ global.enable_broadcast_settings = false; /* Enable Broadcast settings */
 global.enable_add_ons_settings = false; /* Enable Add-ons settings */
 global.enable_ranks = false; /* Enable the option to show ranks in the game */
 global.enable_difficulty_selection_settings = true; /* Enable the option to change difficulty in the game */
+global.enable_difficutly_layers_in_level_editor = false; /* If you can change difficulty layers in level editor. You need to unlock this feature first by using the difficulty settings */
 
 #region /* If you're playing on mobile, then some things should show up that is not on PC */
 if (os_type == os_android)
@@ -225,7 +226,7 @@ global.custom_foreground2 = noone;
 global.custom_foreground_above_static_objects = noone;
 global.custom_foreground_secret = noone;
 global.custom_tileset = noone;
-global.default_font = font_add("gamefont.ttc", 24, true, false, 32, 128);
+global.selected_font = 0;
 global.difficulty = 1; /* Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard */
 global.grid_hsnap = 32; /* Horizontal grid snapping */
 global.grid_vsnap = 32; /* Vertical grid snapping */
@@ -271,7 +272,6 @@ global.voicepack_for_player_4 = 0; /* Player 4 Select Voicepack */
 global.world_editor = false; /* If you're editing world or not */
 global.go_to_menu_after_loading_custom_levels = ""; /* Sometimes you want to go to another menu after loading custom levels, instead of the default */
 device_mouse_dbclick_enable(false); /* Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled */
-draw_set_font(global.default_font);
 ds_list_add(global.all_loaded_custom_levels, "");
 font_add_enable_aa(false);
 gamepad_set_axis_deadzone(0, 0.50);
@@ -316,6 +316,7 @@ scr_set_default_language();
 
 global.settings_sidebar_menu = "accessibility_settings"; /* Settings sidebar */
 global.show_tutorial_signs = true;
+global.show_new_items_notification = true; /* In level editor, items you haven't used before show a "New" notification on top of the item, but you should be able to set this to not show up */
 global.enable_attract_demo = true; /* If the attract demo can play or not */
 global.enable_links = true; /* If links to websites should show up on the title screen or not */
 global.players_can_collide = false;
@@ -436,6 +437,31 @@ global.player3_slot = 2;
 global.player4_slot = 3;
 #endregion /* Controller ports END */
 
+#region /* Set controls */
+enum action
+{
+	dive = 0,
+	jump = 1,
+	crouch = 2,
+	crouch_toggle = 3,
+	sprint = 4,
+	sprint_toggle = 5,
+	left = 6,
+	right = 7,
+	down = 8,
+	up = 9,
+	tongue = 10,
+	zoom_in = 11,
+	zoom_out = 12,
+	accept = 13,
+	back = 14
+}
+enum inp
+{
+	key = 0,
+	gp = 1
+}
+
 scr_set_default_remapping_player1_keyboard();
 scr_set_default_remapping_player1_gamepad();
 scr_set_default_remapping_player2_keyboard();
@@ -444,6 +470,7 @@ scr_set_default_remapping_player3_keyboard();
 scr_set_default_remapping_player3_gamepad();
 scr_set_default_remapping_player4_keyboard();
 scr_set_default_remapping_player4_gamepad();
+#endregion /* Set controls END */
 
 #region /* Set default language */
 if (file_exists("localization.csv"))
@@ -573,6 +600,7 @@ global.skin_for_player_1 = global.actual_skin_for_player_1; /* In case the playe
 global.skin_for_player_2 = global.actual_skin_for_player_2; /* In case the player selected a character that doesn't have skins, use this variable */
 global.skin_for_player_3 = global.actual_skin_for_player_3; /* In case the player selected a character that doesn't have skins, use this variable */
 global.skin_for_player_4 = global.actual_skin_for_player_4; /* In case the player selected a character that doesn't have skins, use this variable */
+scr_set_font();
 #endregion /* Set these global variables after loading config file END */
 
 #endregion /* Things you shouldn't change, warning, don't change any of these options or you might break the game! END */

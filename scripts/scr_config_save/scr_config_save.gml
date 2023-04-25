@@ -4,6 +4,11 @@ function scr_config_save()
 	
 	ini_write_real("config", "current_file", global.file);
 	ini_write_real("config", "difficulty", global.difficulty);
+	if (global.difficulty != 1)
+	{
+		global.enable_difficutly_layers_in_level_editor = true;
+		ini_write_real("config", "enable_difficutly_layers_in_level_editor", true);
+	}
 	ini_write_real("config", "automatically_pause_when_window_is_unfocused", global.automatically_pause_when_window_is_unfocused);
 	ini_write_real("config", "enable_attract_demo", global.enable_attract_demo);
 	ini_write_real("config", "enable_links", global.enable_links);
@@ -15,7 +20,9 @@ function scr_config_save()
 	ini_write_real("config", "assist_enable_spikes", global.assist_enable_spikes);
 	ini_write_real("config", "narrator", global.narrator);
 	ini_write_real("config", "show_tutorial_signs", global.show_tutorial_signs);
+	ini_write_real("config", "show_new_items_notification", global.show_new_items_notification);
 	ini_write_real("config", "hud_hide_time", global.hud_hide_time);
+	ini_write_real("config", "selected_font", global.selected_font);
 	ini_write_real("config", "players_can_collide", global.players_can_collide);
 	
 	#region /* Assist Settings */

@@ -1,6 +1,7 @@
 var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
 
+open_dropdown = false;
 depth = -10000;
 image_speed = 0;
 image_index = 0;

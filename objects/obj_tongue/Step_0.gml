@@ -6,7 +6,7 @@ and (instance_exists(obj_player))
 	if (timer > 10)
 	{
 		if (place_meeting(x, y, obj_player))
-		and (instance_nearest(x, y, obj_player).rope_swing = false)
+		and (instance_nearest(x, y, obj_player).rope_swing == false)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{
@@ -36,7 +36,7 @@ and (instance_exists(obj_player))
 	#endregion /* Make tongue homing toward closest object END */
 	
 	/* Match movement with player movement */
-	if (obj_player.rope_swing = false)
+	if (obj_player.rope_swing == false)
 	{
 		hspeed += obj_player.hspeed /8;
 		vspeed += obj_player.vspeed /8;

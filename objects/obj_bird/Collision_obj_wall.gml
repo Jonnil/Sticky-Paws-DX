@@ -1,4 +1,4 @@
-if (touch_player = false)
+if (touch_player == false)
 {
 	while (place_meeting(x, y, other))
 	{

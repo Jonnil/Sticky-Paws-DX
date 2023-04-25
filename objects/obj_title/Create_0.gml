@@ -1,6 +1,8 @@
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
+play_the_game_text_y_lerp = -100;
+
 tag_art = false;
 tag_boss_battle = false;
 tag_dont_move = false;

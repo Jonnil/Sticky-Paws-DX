@@ -154,10 +154,10 @@ if (iris_xscale <= 0.01)
 }
 
 if (keyboard_check(vk_space))
-or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept))
-or (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_accept))
-or (gamepad_button_check(global.player3_slot, global.player3_gamepad_button_accept))
-or (gamepad_button_check(global.player4_slot, global.player4_gamepad_button_accept))
+or (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+or (gamepad_button_check(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+or (gamepad_button_check(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+or (gamepad_button_check(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
 {
 	time += 10;
 	y = lerp(y, yy, 0.75);
@@ -191,7 +191,7 @@ if (time <= room_speed* 5 + 10)
 }
 if (time >= room_speed* 5)
 {
-	if (end_credits = false)
+	if (end_credits == false)
 	{
 		time = 0;
 	}

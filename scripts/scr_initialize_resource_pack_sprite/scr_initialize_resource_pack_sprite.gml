@@ -39,7 +39,7 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable)
 	#endregion /* Sprite Add END */
 	
 	#region /* Sprite Add Official Sprite */
-	if (found_resource_sprite = false)
+	if (found_resource_sprite == false)
 	{
 		index = 0;
 		repeat(100) /* Must repeat enough times, if sprite_strip is too high for the repeat, then the sprite can't load at all */
@@ -123,7 +123,7 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable)
 	#endregion /* Origin points END */
 	
 	#region /* Origin points Official */
-	if (found_resource_sprite = false)
+	if (found_resource_sprite == false)
 	{
 		if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, 0)) + "/data/sprite_origin_point.ini"))
 		{

@@ -1,5 +1,16 @@
 #region /* Initialize Custom Character */
 
+if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
+{
+	character_folder = "characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]));
+	can_save_to_character_config = false; /* You can't save values to included files */
+}
+else
+{
+	character_folder = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]));
+	can_save_to_character_config = true; /* You can save values to local appdata */
+}
+
 /* The order of the variables needs to be in reverse alphabetical order, so it shows up in alphabetical order in the config.ini file. This also means that x should be after y */
 
 #region /* Play as Custom Character */

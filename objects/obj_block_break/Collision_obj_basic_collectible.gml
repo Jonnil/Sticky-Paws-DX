@@ -1,4 +1,4 @@
-if (other.bounce_up = false)
+if (other.bounce_up == false)
 {
 	with(other)
 	{

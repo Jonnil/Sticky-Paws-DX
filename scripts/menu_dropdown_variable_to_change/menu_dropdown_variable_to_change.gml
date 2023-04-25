@@ -115,4 +115,11 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	{
 		intended_level_difficulty = change_to_value;
 	}
+	else
+	if (variable_to_change = global.selected_font)
+	and (menu == "selected_font")
+	{
+		global.selected_font = change_to_value;
+		scr_set_font();
+	}
 }

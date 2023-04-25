@@ -25,8 +25,8 @@ function scr_set_controls_used_to_navigate()
 			if (global.controls_used_for_menu_navigation == "controller")
 			{
 				obj_camera.show_keyboard_and_mouse_input_change_prompt = 100;
-				global.controls_used_for_menu_navigation = "keyboard";
 			}
+			global.controls_used_for_menu_navigation = "keyboard";
 		}
 		else
 		{
@@ -59,8 +59,8 @@ function scr_set_controls_used_to_navigate()
 			if (global.controls_used_for_menu_navigation == "controller")
 			{
 				obj_camera.show_keyboard_and_mouse_input_change_prompt = 100;
-				global.controls_used_for_menu_navigation = "mouse";
 			}
+			global.controls_used_for_menu_navigation = "mouse";
 		}
 		else
 		{
@@ -82,8 +82,8 @@ function scr_set_controls_used_to_navigate()
 	
 	else
 	
-	if (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept)) /* If pressing gamepad buttons, then set "gamepad" as the navigation method */
-	or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_back))
+	if (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.accept])) /* If pressing gamepad buttons, then set "gamepad" as the navigation method */
+	or (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
 	or (gamepad_button_check(global.player1_slot, gp_face3))
 	or (gamepad_button_check(global.player1_slot, gp_face4))
 	or (gamepad_button_check(global.player1_slot, gp_padd))
@@ -135,8 +135,8 @@ function scr_set_controls_used_to_navigate()
 	if (instance_exists(obj_camera))
 	or (instance_exists(obj_camera_map))
 	{
-		if (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_accept))
-		or (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_back))
+		if (gamepad_button_check(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+		or (gamepad_button_check(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
 		or (gamepad_button_check(global.player2_slot, gp_face3))
 		or (gamepad_button_check(global.player2_slot, gp_face4))
 		or (gamepad_button_check(global.player2_slot, gp_padd))
@@ -156,8 +156,8 @@ function scr_set_controls_used_to_navigate()
 		or (gamepad_axis_value(global.player2_slot, gp_axisrh) <> 0)
 		or (gamepad_axis_value(global.player2_slot, gp_axisrv) <> 0)
 	
-		or (gamepad_button_check(global.player3_slot, global.player3_gamepad_button_accept))
-		or (gamepad_button_check(global.player3_slot, global.player2_gamepad_button_back))
+		or (gamepad_button_check(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+		or (gamepad_button_check(global.player3_slot, global.player_[inp.gp][2][1][action.back]))
 		or (gamepad_button_check(global.player3_slot, gp_face3))
 		or (gamepad_button_check(global.player3_slot, gp_face4))
 		or (gamepad_button_check(global.player3_slot, gp_padd))
@@ -177,8 +177,8 @@ function scr_set_controls_used_to_navigate()
 		or (gamepad_axis_value(global.player3_slot, gp_axisrh) <> 0)
 		or (gamepad_axis_value(global.player3_slot, gp_axisrv) <> 0)
 	
-		or (gamepad_button_check(global.player4_slot, global.player4_gamepad_button_accept))
-		or (gamepad_button_check(global.player4_slot, global.player2_gamepad_button_back))
+		or (gamepad_button_check(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+		or (gamepad_button_check(global.player4_slot, global.player_[inp.gp][2][1][action.back]))
 		or (gamepad_button_check(global.player4_slot, gp_face3))
 		or (gamepad_button_check(global.player4_slot, gp_face4))
 		or (gamepad_button_check(global.player4_slot, gp_padd))
@@ -223,8 +223,8 @@ function scr_set_controls_used_to_navigate()
 		and (mouse_moving)
 		and (global.play_attract_demo == false)
 		
-		or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept))
-		or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_back))
+		or (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+		or (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
 		or (gamepad_button_check(global.player1_slot, gp_face3))
 		or (gamepad_button_check(global.player1_slot, gp_face4))
 		or (gamepad_button_check(global.player1_slot, gp_padd))
@@ -244,8 +244,8 @@ function scr_set_controls_used_to_navigate()
 		or (gamepad_axis_value(global.player1_slot, gp_axisrh) <> 0)
 		or (gamepad_axis_value(global.player1_slot, gp_axisrv) <> 0)
 
-		or (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_accept))
-		or (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_back))
+		or (gamepad_button_check(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+		or (gamepad_button_check(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
 		or (gamepad_button_check(global.player2_slot, gp_face3))
 		or (gamepad_button_check(global.player2_slot, gp_face4))
 		or (gamepad_button_check(global.player2_slot, gp_padd))
@@ -265,8 +265,8 @@ function scr_set_controls_used_to_navigate()
 		or (gamepad_axis_value(global.player2_slot, gp_axisrh) <> 0)
 		or (gamepad_axis_value(global.player2_slot, gp_axisrv) <> 0)
 
-		or (gamepad_button_check(global.player3_slot, global.player3_gamepad_button_accept))
-		or (gamepad_button_check(global.player3_slot, global.player2_gamepad_button_back))
+		or (gamepad_button_check(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+		or (gamepad_button_check(global.player3_slot, global.player_[inp.gp][2][1][action.back]))
 		or (gamepad_button_check(global.player3_slot, gp_face3))
 		or (gamepad_button_check(global.player3_slot, gp_face4))
 		or (gamepad_button_check(global.player3_slot, gp_padd))
@@ -286,8 +286,8 @@ function scr_set_controls_used_to_navigate()
 		or (gamepad_axis_value(global.player3_slot, gp_axisrh) <> 0)
 		or (gamepad_axis_value(global.player3_slot, gp_axisrv) <> 0)
 
-		or (gamepad_button_check(global.player4_slot, global.player4_gamepad_button_accept))
-		or (gamepad_button_check(global.player4_slot, global.player2_gamepad_button_back))
+		or (gamepad_button_check(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+		or (gamepad_button_check(global.player4_slot, global.player_[inp.gp][2][1][action.back]))
 		or (gamepad_button_check(global.player4_slot, gp_face3))
 		or (gamepad_button_check(global.player4_slot, gp_face4))
 		or (gamepad_button_check(global.player4_slot, gp_padd))

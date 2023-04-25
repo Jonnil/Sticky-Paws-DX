@@ -10,13 +10,12 @@ gamepad_set_vibration(4, 0, 0);
 
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
+menu_joystick_delay = 0;
 
 active_left = false;
 active_right = false;
 active_up = false;
 active_down = false;
-
-can_save_to_character_config = false; /* Only turn true when playing as custom character */
 
 move_speed = 8;
 
@@ -33,13 +32,6 @@ else
 {
 	music_map = noone;
 }
-
-/* Player 1 Key Left Hold */ key_left = (keyboard_check(global.player1_key_left)) and (!keyboard_check(global.player1_key_right)) or (keyboard_check(vk_left)) and (!keyboard_check(vk_right)) or (keyboard_check(ord("A"))) and (!keyboard_check(ord("D"))) or (gamepad_button_check(global.player1_slot, gp_padl)) and (!gamepad_button_check(global.player1_slot, gp_padr)) or (gamepad_axis_value(global.player1_slot, gp_axislh) < 0);
-/* Player 1 Key Right Hold */ key_right = (keyboard_check(global.player1_key_right)) and (!keyboard_check(global.player1_key_left)) or (keyboard_check(vk_right)) and (!keyboard_check(vk_left)) or (keyboard_check(ord("D"))) and (!keyboard_check(ord("A"))) or (gamepad_button_check(global.player1_slot, gp_padr)) and (!gamepad_button_check(global.player1_slot, gp_padl)) or (gamepad_axis_value(global.player1_slot, gp_axislh) > 0);
-/* Player 1 Key Down Hold */ key_down = (keyboard_check(global.player1_key_down)) and (!keyboard_check(global.player1_key_up)) or (keyboard_check(vk_down)) and (!keyboard_check(vk_up)) or (keyboard_check(ord("S"))) and (!keyboard_check(ord("W"))) or (gamepad_button_check(global.player1_slot, gp_padd)) and (!gamepad_button_check(global.player1_slot, gp_padu)) or (gamepad_axis_value(global.player1_slot, gp_axislv) > 0);
-/* Player 1 Key Up Hold */ key_up = (keyboard_check(global.player1_key_up)) and (!keyboard_check(global.player1_key_down)) or (keyboard_check(vk_up)) and (!keyboard_check(vk_down)) or (keyboard_check(ord("W"))) and (!keyboard_check(ord("S"))) or (gamepad_button_check(global.player1_slot, gp_padu)) and (!gamepad_button_check(global.player1_slot, gp_padd)) or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0);
-/* Player 1 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept)) or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_accept)) or (keyboard_check_pressed(global.player1_key_accept)) or (keyboard_check_pressed(global.player1_key2_accept)) or (keyboard_check_pressed(vk_space));
-/* Player 1 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_back)) or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_back)) or (keyboard_check_pressed(global.player1_key_back)) or (keyboard_check_pressed(global.player1_key2_back)) or (keyboard_check_pressed(vk_escape));
 
 #region /* Play as custom character */
 if (global.player1_can_play == true)

@@ -20,8 +20,8 @@ function scr_character_manage_menu_step()
 		#region /* Player 1 change portrait when clicking left or right */
 		
 		#region /* Player 1 Key Left (change portrait sprites) */
-		if (keyboard_check_pressed(global.player1_key_left))
-		or (keyboard_check_pressed(global.player1_key2_left))
+		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
+		or (keyboard_check_pressed(global.player_[inp.key][1][2][action.left]))
 		or (gamepad_button_check_pressed(global.player1_slot, gp_padl))
 		or (gamepad_axis_value(global.player1_slot, gp_axislh) < 0)
 		and (menu_joystick1_delay <= 0)
@@ -66,8 +66,8 @@ function scr_character_manage_menu_step()
 		#endregion /* Player 1 Key Left (change portrait sprites) END */
 		
 		#region /* Player 1 Key Right (change portrait sprites) */
-		if (keyboard_check_pressed(global.player1_key_right))
-		or (keyboard_check_pressed(global.player1_key2_right))
+		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.right]))
+		or (keyboard_check_pressed(global.player_[inp.key][1][2][action.right]))
 		or (gamepad_button_check_pressed(global.player1_slot, gp_padr))
 		or (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
 		and (menu_joystick1_delay <= 0)
@@ -200,19 +200,19 @@ function scr_character_manage_menu_step()
 			
 			#region /* Copy character files to new character folder */
 			
-			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy"))
+			if (!directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy"))
 			{
 				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy")
 			}
-			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data"))
+			if (!directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data"))
 			{
 				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data")
 			}
-			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound"))
+			if (!directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound"))
 			{
 				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound")
 			}
-			if (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites"))
+			if (!directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites"))
 			{
 				directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites")
 			}
@@ -247,8 +247,8 @@ function scr_character_manage_menu_step()
 			#endregion /* Copy character files to new character folder END */
 			
 		}
-		if (keyboard_check_pressed(global.player1_key_up))
-		or (keyboard_check_pressed(global.player1_key2_up))
+		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
+		or (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
 		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
 		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
 		and (menu_joystick1_delay <= 0)
@@ -303,7 +303,7 @@ function scr_character_manage_menu_step()
 			if (file_load_timer > 1)
 			and (load_ok == 0)
 			{
-				if (initialized_copy = false)
+				if (initialized_copy == false)
 				{
 					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/*.ogg", 0)
 					file_copy(
@@ -340,7 +340,7 @@ function scr_character_manage_menu_step()
 			if (file_load_timer > 1)
 			and (load_ok = 2)
 			{
-				if (initialized_copy = false)
+				if (initialized_copy == false)
 				{
 					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/*.png", 0)
 					file_copy(
@@ -377,7 +377,7 @@ function scr_character_manage_menu_step()
 			if (file_load_timer > 1)
 			and (load_ok = 4)
 			{
-				if (initialized_copy = false)
+				if (initialized_copy == false)
 				{
 					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/*", fa_directory)
 					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound/" + string(first_copy_file))
@@ -410,7 +410,7 @@ function scr_character_manage_menu_step()
 			if (file_load_timer > 1)
 			and (load_ok == 6)
 			{
-				if (initialized_copy = false)
+				if (initialized_copy == false)
 				{
 					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/*", fa_directory)
 					directory_create(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites/" + string(first_copy_file))
@@ -443,7 +443,7 @@ function scr_character_manage_menu_step()
 			if (file_load_timer > 1)
 			and (load_ok == 8)
 			{
-				if (initialized_copy = false)
+				if (initialized_copy == false)
 				{
 					if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(load_specific_folder)))
 					{
@@ -489,7 +489,7 @@ function scr_character_manage_menu_step()
 			if (file_load_timer > 1)
 			and (load_ok = 10)
 			{
-				if (initialized_copy = false)
+				if (initialized_copy == false)
 				{
 					if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(load_specific_folder)))
 					{
@@ -622,8 +622,8 @@ function scr_character_manage_menu_step()
 			}
 		}
 		
-		if (keyboard_check_pressed(global.player1_key_up))
-		or (keyboard_check_pressed(global.player1_key2_up))
+		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
+		or (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
 		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
 		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
 		and (menu_joystick1_delay <= 0)
@@ -648,6 +648,7 @@ function scr_character_manage_menu_step()
 			menu_delay = 3;
 			can_navigate = true;
 			if (selecting_official_character == false)
+			and (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
 			{
 				player1_menu = "click_upload_character";
 				menu = "click_upload_character";
@@ -665,8 +666,8 @@ function scr_character_manage_menu_step()
 			}
 		}
 		
-		if (keyboard_check_pressed(global.player1_key_up))
-		or (keyboard_check_pressed(global.player1_key2_up))
+		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
+		or (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
 		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
 		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
 		and (menu_joystick1_delay <= 0)
@@ -696,28 +697,27 @@ function scr_character_manage_menu_step()
 		#endregion /* Delete Characters END */
 		
 		#region /* Upload Characters */
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, upload_character_y + 2, display_get_gui_width() * 0.5 - 185 + 371, upload_character_y + 42))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_released(mb_left))
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		or (menu == "click_upload_character")
-		and (key_a_pressed)
-		and (menu_delay == 0)
-		and (can_navigate == true)
-		or (player1_menu = "click_upload_character")
-		and (key_a_pressed)
-		and (menu_delay == 0)
-		and (can_navigate == true)
+		if (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
 		{
-			if (selecting_official_character == false)
+			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, upload_character_y + 2, display_get_gui_width() * 0.5 - 185 + 371, upload_character_y + 42))
+			and (global.controls_used_for_menu_navigation == "mouse")
+			and (mouse_check_button_released(mb_left))
+			and (menu_delay == 0)
+			and (can_navigate == true)
+			or (menu == "click_upload_character")
+			and (key_a_pressed)
+			and (menu_delay == 0)
+			and (can_navigate == true)
 			{
-				menu_delay = 3;
-				menu = "upload_yes_character"
+				if (selecting_official_character == false)
+				{
+					menu_delay = 3;
+					menu = "upload_yes_character"
+				}
 			}
 		}
-		if (keyboard_check_pressed(global.player1_key_up))
-		or (keyboard_check_pressed(global.player1_key2_up))
+		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
+		or (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
 		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
 		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
 		and (menu_joystick1_delay <= 0)
@@ -791,8 +791,8 @@ function scr_character_manage_menu_step()
 				scr_open_folder(game_save_id + "\custom_characters\\" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])))
 			}
 		}
-		if (keyboard_check_pressed(global.player1_key_up))
-		or (keyboard_check_pressed(global.player1_key2_up))
+		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
+		or (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
 		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
 		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
 		and (menu_joystick1_delay <= 0)
@@ -805,9 +805,16 @@ function scr_character_manage_menu_step()
 				menu_delay = 3;
 				can_navigate = true;
 				if (selecting_official_character == false)
+				and (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
 				{
 					player1_menu = "click_upload_character";
 					menu = "click_upload_character";
+				}
+				else
+				if (selecting_official_character == false)
+				{
+					player1_menu = "click_delete_character";
+					menu = "click_delete_character";
 				}
 				else
 				{
@@ -848,11 +855,11 @@ function scr_character_manage_menu_step()
 		and (can_navigate == true)
 		{
 			menu = "manage_character";
-			player1_menu = "select_character"; /* When going back to previous menu, you have to set this to "select character" */
+			player1_menu = "manage_character"; /* When going back to previous menu from "manage character", you have to set this to "manage character" */
 			menu_delay = 3;
 		}
-		if (keyboard_check_pressed(global.player1_key_up))
-		or (keyboard_check_pressed(global.player1_key2_up))
+		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
+		or (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
 		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
 		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
 		and (menu_joystick1_delay <= 0)

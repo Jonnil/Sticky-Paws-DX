@@ -74,7 +74,7 @@ else
 		}
 	}
 }
-if (flat = false)
+if (flat == false)
 {
 	if (distance_to_object(obj_player) <256)
 	{
@@ -118,9 +118,9 @@ if (position_meeting(bbox_right + 1, y, obj_wall))
 }
 #endregion /* Turn around END */
 
-if (blind = false)
+if (blind == false)
 and (place_meeting(x, y + 1, obj_wall))
-or (blind = false)
+or (blind == false)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (!place_meeting(x + 5, y + 1, obj_wall))

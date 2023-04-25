@@ -1,14 +1,11 @@
-/// @description scr_key_initialize(key, hold0_press1_release2, which_player, this_player_key, this_player_key2, key_mouse, key2_mouse, this_player_gamepad_button, this_player_gamepad_button2);
+/// @description scr_key_initialize(key, hold0_press1_release2, which_player, this_player_key);
 /// @param key
 /// @param hold0_press1_release2
 /// @param which_player
 /// @param this_player_key
-/// @param this_player_key2
 /// @param key_mouse
 /// @param key2_mouse
-/// @param this_player_gamepad_button
-/// @param this_player_gamepad_button2
-function scr_key_initialize(key, hold0_press1_release2, which_player, this_player_key, this_player_key2, this_player_gamepad_button, this_player_gamepad_button2)
+function scr_key_initialize(key, hold0_press1_release2, which_player, this_player_key = action.jump)
 {
 	
 	#region /* Set correct controller ports */
@@ -36,7 +33,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	#region /* Mouse */
 	
 	#region /* Mouse 1 */
-	if (this_player_key = mouse_button_value.mb_left)
+	if (global.player_[inp.key][which_player][1][this_player_key] = mouse_button_value.mb_left)
 	{
 		if (hold0_press1_release2 == 0)
 		{
@@ -54,7 +51,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 		}
 	}
 	else
-	if (this_player_key = mouse_button_value.mb_middle)
+	if (global.player_[inp.key][which_player][1][this_player_key] = mouse_button_value.mb_middle)
 	{
 		if (hold0_press1_release2 == 0)
 		{
@@ -72,7 +69,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 		}
 	}
 	else
-	if (this_player_key = mouse_button_value.mb_right)
+	if (global.player_[inp.key][which_player][1][this_player_key] = mouse_button_value.mb_right)
 	{
 		if (hold0_press1_release2 == 0)
 		{
@@ -90,7 +87,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 		}
 	}
 	else
-	if (this_player_key = mouse_button_value.mb_side1)
+	if (global.player_[inp.key][which_player][1][this_player_key] = mouse_button_value.mb_side1)
 	{
 		if (hold0_press1_release2 == 0)
 		{
@@ -108,7 +105,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 		}
 	}
 	else
-	if (this_player_key = mouse_button_value.mb_side2)
+	if (global.player_[inp.key][which_player][1][this_player_key] = mouse_button_value.mb_side2)
 	{
 		if (hold0_press1_release2 == 0)
 		{
@@ -126,12 +123,12 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 		}
 	}
 	else
-	if (this_player_key = mouse_button_value.mwheel_down)
+	if (global.player_[inp.key][which_player][1][this_player_key] = mouse_button_value.mwheel_down)
 	{
 		var key_mouse = mouse_wheel_down();
 	}
 	else
-	if (this_player_key = mouse_button_value.mwheel_up)
+	if (global.player_[inp.key][which_player][1][this_player_key] = mouse_button_value.mwheel_up)
 	{
 		var key_mouse = mouse_wheel_up();
 	}
@@ -142,7 +139,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	#endregion /* Mouse 1 END */
 	
 	#region /* Mouse 2 */
-	if (this_player_key2 = mouse_button_value.mb_left)
+	if (global.player_[inp.key][which_player][2][this_player_key] = mouse_button_value.mb_left)
 	{
 		if (hold0_press1_release2 == 0)
 		{
@@ -160,7 +157,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 		}
 	}
 	else
-	if (this_player_key2 = mouse_button_value.mb_middle)
+	if (global.player_[inp.key][which_player][2][this_player_key] = mouse_button_value.mb_middle)
 	{
 		if (hold0_press1_release2 == 0)
 		{
@@ -178,7 +175,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 		}
 	}
 	else
-	if (this_player_key2 = mouse_button_value.mb_right)
+	if (global.player_[inp.key][which_player][2][this_player_key] = mouse_button_value.mb_right)
 	{
 		if (hold0_press1_release2 == 0)
 		{
@@ -196,7 +193,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 		}
 	}
 	else
-	if (this_player_key2 = mouse_button_value.mb_side1)
+	if (global.player_[inp.key][which_player][2][this_player_key] = mouse_button_value.mb_side1)
 	{
 		if (hold0_press1_release2 == 0)
 		{
@@ -214,7 +211,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 		}
 	}
 	else
-	if (this_player_key2 = mouse_button_value.mb_side2)
+	if (global.player_[inp.key][which_player][2][this_player_key] = mouse_button_value.mb_side2)
 	{
 		if (hold0_press1_release2 == 0)
 		{
@@ -232,12 +229,12 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 		}
 	}
 	else
-	if (this_player_key2 = mouse_button_value.mwheel_down)
+	if (global.player_[inp.key][which_player][2][this_player_key] = mouse_button_value.mwheel_down)
 	{
 		var key2_mouse = mouse_wheel_down();
 	}
 	else
-	if (this_player_key2 = mouse_button_value.mwheel_up)
+	if (global.player_[inp.key][which_player][2][this_player_key] = mouse_button_value.mwheel_up)
 	{
 		var key2_mouse = mouse_wheel_up();
 	}
@@ -251,40 +248,40 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	
 	var key_other =
 	(hold0_press1_release2 == 0)
-	and (keyboard_check(this_player_key))
+	and (keyboard_check(global.player_[inp.key][which_player][1][this_player_key] /* global.player_[keyboard/gamepad][player][key1/key2][action] */))
 	
-	or(hold0_press1_release2 == 1)
-	and (keyboard_check_pressed(this_player_key))
+	or (hold0_press1_release2 == 1)
+	and (keyboard_check_pressed(global.player_[inp.key][which_player][1][this_player_key]))
 	
-	or(hold0_press1_release2 = 2)
-	and (keyboard_check_released(this_player_key))
+	or (hold0_press1_release2 = 2)
+	and (keyboard_check_released(global.player_[inp.key][which_player][1][this_player_key]))
 	
-	or(hold0_press1_release2 == 0)
-	and (keyboard_check(this_player_key2))
+	or (hold0_press1_release2 == 0)
+	and (keyboard_check(global.player_[inp.key][which_player][2][this_player_key]))
 	
-	or(hold0_press1_release2 == 1)
-	and (keyboard_check_pressed(this_player_key2))
+	or (hold0_press1_release2 == 1)
+	and (keyboard_check_pressed(global.player_[inp.key][which_player][2][this_player_key]))
 	
-	or(hold0_press1_release2 = 2)
-	and (keyboard_check_released(this_player_key2))
+	or (hold0_press1_release2 = 2)
+	and (keyboard_check_released(global.player_[inp.key][which_player][2][this_player_key]))
 	
-	or(hold0_press1_release2 == 0)
-	and (gamepad_button_check(player_gamepad_slot, this_player_gamepad_button))
+	or (hold0_press1_release2 == 0)
+	and (gamepad_button_check(player_gamepad_slot, global.player_[inp.gp][which_player][1][this_player_key]))
 	
-	or(hold0_press1_release2 == 1)
-	and (gamepad_button_check_pressed(player_gamepad_slot, this_player_gamepad_button))
+	or (hold0_press1_release2 == 1)
+	and (gamepad_button_check_pressed(player_gamepad_slot, global.player_[inp.gp][which_player][1][this_player_key]))
 	
-	or(hold0_press1_release2 = 2)
-	and (gamepad_button_check_released(player_gamepad_slot, this_player_gamepad_button))
+	or (hold0_press1_release2 = 2)
+	and (gamepad_button_check_released(player_gamepad_slot, global.player_[inp.gp][which_player][1][this_player_key]))
 	
-	or(hold0_press1_release2 == 0)
-	and (gamepad_button_check(player_gamepad_slot, this_player_gamepad_button2))
+	or (hold0_press1_release2 == 0)
+	and (gamepad_button_check(player_gamepad_slot, global.player_[inp.gp][which_player][2][this_player_key]))
 	
-	or(hold0_press1_release2 == 1)
-	and (gamepad_button_check_pressed(player_gamepad_slot, this_player_gamepad_button2))
+	or (hold0_press1_release2 == 1)
+	and (gamepad_button_check_pressed(player_gamepad_slot, global.player_[inp.gp][which_player][2][this_player_key]))
 	
-	or(hold0_press1_release2 = 2)
-	and (gamepad_button_check_released(player_gamepad_slot, this_player_gamepad_button2));
+	or (hold0_press1_release2 = 2)
+	and (gamepad_button_check_released(player_gamepad_slot, global.player_[inp.gp][which_player][2][this_player_key]));
 	
 	key = key_mouse or key2_mouse or key_other;
 	

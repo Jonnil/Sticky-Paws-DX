@@ -73,8 +73,8 @@ else
 			and (sliding_along_ground == 0)
 			and (instance_nearest(x, y, obj_player).hold_item_in_hands = "")
 			and (instance_nearest(x, y, obj_player).key_dive_hold)
-			and (instance_nearest(x, y, obj_player).horizontal_rope_climb = false)
-			and (instance_nearest(x, y, obj_player).ground_pound = false)
+			and (instance_nearest(x, y, obj_player).horizontal_rope_climb == false)
+			and (instance_nearest(x, y, obj_player).ground_pound == false)
 			{
 				if (distance_to_object(instance_nearest(x, y, obj_player)) < 16)
 				{
@@ -310,7 +310,7 @@ else
 		}
 	}
 }
-if (flat = false)
+if (flat == false)
 {
 	if (image_xscale < 0)
 	{
@@ -323,12 +323,12 @@ if (flat = false)
 	
 	#region /* Turn around */
 	if (place_meeting(x - 2, y, obj_wall))
-	and (flat = false)
+	and (flat == false)
 	{
 		image_xscale = +1;
 	}
 	if (place_meeting(x + 2, y, obj_wall))
-	and (flat = false)
+	and (flat == false)
 	{
 		image_xscale = -1;
 	}
@@ -347,9 +347,9 @@ if (flat = false)
 	image_speed = 0.3;
 }
 
-if (blind = false)
+if (blind == false)
 and (place_meeting(x, y + 1, obj_wall))
-or (blind = false)
+or (blind == false)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (!place_meeting(x + 5, y + 1, obj_wall))

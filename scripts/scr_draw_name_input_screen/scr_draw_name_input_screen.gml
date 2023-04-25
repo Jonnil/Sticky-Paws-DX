@@ -111,7 +111,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	var buttons_x = -185;
 	var buttons_ok_y = +54;
 	var buttons_cancel_y = buttons_ok_y + 42;
-	if (can_press_ok_when_input_empty = false)
+	if (can_press_ok_when_input_empty == false)
 	and (keyboard_string != "")
 	or (can_press_ok_when_input_empty == true)
 	{
@@ -125,7 +125,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 				if (gamepad_is_connected(global.player1_slot))
 				and (global.controls_used_for_menu_navigation == "controller")
 				{
-					scr_draw_gamepad_buttons(global.player1_gamepad_button_accept, xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, c_white, 1);
+					scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, c_white, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
@@ -163,7 +163,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
 		{
-			scr_draw_gamepad_buttons(global.player1_gamepad_button_back, xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
+			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
 		}
 		else
 		{
@@ -176,7 +176,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
 		{
-			scr_draw_gamepad_buttons(global.player1_gamepad_button_accept, xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
+			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
 		}
 		else
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)

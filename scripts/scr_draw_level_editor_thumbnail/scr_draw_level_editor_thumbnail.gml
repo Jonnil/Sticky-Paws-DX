@@ -35,7 +35,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 		{
 			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394 * (i - column * row) + 100 + thumbnail_x_offset, 226 * (column - scroll) + 250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);
 		}
-		if (show_first_thumbnail_name = false)
+		if (show_first_thumbnail_name == false)
 		and (i >= 1)
 		and (menu != "load_custom_level")
 		and (menu != "load_characters")

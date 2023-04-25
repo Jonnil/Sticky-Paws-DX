@@ -3,16 +3,16 @@ function scr_remapping_gamepad()
 	
 	#region /* Check for player 1 button presses */
 	if (remapping_player == 0)
-	and (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept))
+	and (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
 	and (!gamepad_button_check(global.player1_slot, gp_start))
 	or (remapping_player == 1)
-	and (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_accept))
+	and (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
 	and (!gamepad_button_check(global.player2_slot, gp_start))
 	or (remapping_player = 2)
-	and (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_accept))
+	and (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
 	and (!gamepad_button_check(global.player3_slot, gp_start))
 	or (remapping_player = 3)
-	and (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_accept))
+	and (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
 	and (!gamepad_button_check(global.player4_slot, gp_start))
 	{
 		last_key = gp_face1;
@@ -20,16 +20,16 @@ function scr_remapping_gamepad()
 	}
 	else
 	if (remapping_player == 0)
-	and (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_back))
+	and (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
 	and (!gamepad_button_check(global.player1_slot, gp_start))
 	or (remapping_player == 1)
-	and (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_back))
+	and (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
 	and (!gamepad_button_check(global.player2_slot, gp_start))
 	or (remapping_player = 2)
-	and (gamepad_button_check_pressed(global.player3_slot, global.player2_gamepad_button_back))
+	and (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][2][1][action.back]))
 	and (!gamepad_button_check(global.player3_slot, gp_start))
 	or (remapping_player = 3)
-	and (gamepad_button_check_pressed(global.player4_slot, global.player2_gamepad_button_back))
+	and (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][2][1][action.back]))
 	and (!gamepad_button_check(global.player4_slot, gp_start))
 	{
 		last_key = gp_face2;
@@ -266,1042 +266,145 @@ function scr_remapping_gamepad()
 		can_remap_key = true;
 	}
 	
-	#region /* Remapping 1 */
-	if (remapping_player == 0)
-	and (can_remap_key == true)
+	#region /* Remapping Gamepad */
+	if (menu_remap_key_number == 0)
 	{
-		if (menu_remap_key_number == 0)
-		{
-			if (menu == "remap_key_dive")
-			{
-				global.player1_gamepad_button_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_dive", global.player1_gamepad_button_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player1_gamepad_button_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_jump", global.player1_gamepad_button_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player1_gamepad_button_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_crouch", global.player1_gamepad_button_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player1_gamepad_button_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_crouch_toggle", global.player1_gamepad_button_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player1_gamepad_button_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_sprint", global.player1_gamepad_button_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player1_gamepad_button_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_sprint_toggle", global.player1_gamepad_button_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player1_gamepad_button_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_left", global.player1_gamepad_button_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player1_gamepad_button_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_right", global.player1_gamepad_button_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player1_gamepad_button_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_down", global.player1_gamepad_button_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player1_gamepad_button_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_up", global.player1_gamepad_button_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player1_gamepad_button_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_tongue", global.player1_gamepad_button_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player1_gamepad_button_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_zoom_in", global.player1_gamepad_button_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player1_gamepad_button_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_zoom_out", global.player1_gamepad_button_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player1_gamepad_button_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_accept", global.player1_gamepad_button_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player1_gamepad_button_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button_back", global.player1_gamepad_button_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
-		}
-		else
-		if (menu_remap_key_number == 2)
-		{
-			if (menu == "remap_key_dive")
-			{
-				global.player1_gamepad_button2_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_dive", global.player1_gamepad_button2_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player1_gamepad_button2_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_jump", global.player1_gamepad_button2_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player1_gamepad_button2_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_crouch", global.player1_gamepad_button2_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player1_gamepad_button2_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_crouch_toggle", global.player1_gamepad_button2_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player1_gamepad_button2_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_sprint", global.player1_gamepad_button2_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player1_gamepad_button2_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_sprint_toggle", global.player1_gamepad_button2_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player1_gamepad_button2_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_left", global.player1_gamepad_button2_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player1_gamepad_button2_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_right", global.player1_gamepad_button2_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player1_gamepad_button2_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_down", global.player1_gamepad_button2_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player1_gamepad_button2_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_up", global.player1_gamepad_button2_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player1_gamepad_button2_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_tongue", global.player1_gamepad_button2_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player1_gamepad_button2_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_zoom_in", global.player1_gamepad_button2_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player1_gamepad_button2_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_zoom_out", global.player1_gamepad_button2_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player1_gamepad_button2_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_accept", global.player1_gamepad_button2_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player1_gamepad_button2_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_gamepad_button2_back", global.player1_gamepad_button2_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
-		}
+		var remap_key_number_string = "";
+		var remap_key_number = 1;
 	}
-	#endregion /* Remapping 1 END */
-	
 	else
-	
-	#region /* Remapping 2 */
-	if (remapping_player == 1)
-	and (can_remap_key == true)
+	if (menu_remap_key_number == 2)
 	{
-		if (menu_remap_key_number == 0)
+		var remap_key_number_string = "2";
+		var remap_key_number = 2;
+	}
+	
+	if (can_remap_key == true)
+	{
+		/* global.player_[keyboard/gamepad][player][key1/key2][action] */
+		if (menu == "remap_key_dive")
 		{
-			if (menu == "remap_key_dive")
-			{
-				global.player2_gamepad_button_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_dive", global.player2_gamepad_button_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player2_gamepad_button_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_jump", global.player2_gamepad_button_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player2_gamepad_button_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_crouch", global.player2_gamepad_button_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player2_gamepad_button_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_crouch_toggle", global.player2_gamepad_button_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player2_gamepad_button_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_sprint", global.player2_gamepad_button_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player2_gamepad_button_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_sprint_toggle", global.player2_gamepad_button_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player2_gamepad_button_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_left", global.player2_gamepad_button_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player2_gamepad_button_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_right", global.player2_gamepad_button_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player2_gamepad_button_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_down", global.player2_gamepad_button_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player2_gamepad_button_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_up", global.player2_gamepad_button_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player2_gamepad_button_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_tongue", global.player2_gamepad_button_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player2_gamepad_button_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_zoom_in", global.player2_gamepad_button_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player2_gamepad_button_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_zoom_out", global.player2_gamepad_button_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player2_gamepad_button_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_accept", global.player2_gamepad_button_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player2_gamepad_button_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button_back", global.player2_gamepad_button_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.dive] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_dive", last_key);
+			ini_close();
 		}
 		else
-		if (menu_remap_key_number == 2)
+		if (menu == "remap_key_jump")
 		{
-			if (menu == "remap_key_dive")
-			{
-				global.player2_gamepad_button2_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_dive", global.player2_gamepad_button2_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player2_gamepad_button2_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_jump", global.player2_gamepad_button2_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player2_gamepad_button2_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_crouch", global.player2_gamepad_button2_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player2_gamepad_button2_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_crouch_toggle", global.player2_gamepad_button2_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player2_gamepad_button2_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_sprint", global.player2_gamepad_button2_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player2_gamepad_button2_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_sprint_toggle", global.player2_gamepad_button2_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player2_gamepad_button2_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_left", global.player2_gamepad_button2_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player2_gamepad_button2_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_right", global.player2_gamepad_button2_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player2_gamepad_button2_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_down", global.player2_gamepad_button2_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player2_gamepad_button2_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_up", global.player2_gamepad_button2_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player2_gamepad_button2_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_tongue", global.player2_gamepad_button2_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player2_gamepad_button2_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_zoom_in", global.player2_gamepad_button2_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player2_gamepad_button2_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_zoom_out", global.player2_gamepad_button2_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player2_gamepad_button2_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_accept", global.player2_gamepad_button2_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player2_gamepad_button2_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_gamepad_button2_back", global.player2_gamepad_button2_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
-		}
-	}
-	#endregion /* Remapping 2 END */
-	
-	else
-	
-	#region /* Remapping 3 */
-	if (remapping_player == 2)
-	and (can_remap_key == true)
-	{
-		if (menu_remap_key_number == 0)
-		{
-			if (menu == "remap_key_dive")
-			{
-				global.player3_gamepad_button_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_dive", global.player3_gamepad_button_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player3_gamepad_button_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_jump", global.player3_gamepad_button_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player3_gamepad_button_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_crouch", global.player3_gamepad_button_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player3_gamepad_button_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_crouch_toggle", global.player3_gamepad_button_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player3_gamepad_button_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_sprint", global.player3_gamepad_button_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player3_gamepad_button_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_sprint_toggle", global.player3_gamepad_button_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player3_gamepad_button_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_left", global.player3_gamepad_button_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player3_gamepad_button_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_right", global.player3_gamepad_button_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player3_gamepad_button_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_down", global.player3_gamepad_button_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player3_gamepad_button_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_up", global.player3_gamepad_button_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player3_gamepad_button_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_tongue", global.player3_gamepad_button_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player3_gamepad_button_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_zoom_in", global.player3_gamepad_button_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player3_gamepad_button_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_zoom_out", global.player3_gamepad_button_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player3_gamepad_button_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_accept", global.player3_gamepad_button_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player3_gamepad_button_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button_back", global.player3_gamepad_button_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.jump] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_jump", last_key);
+			ini_close();
 		}
 		else
-		if (menu_remap_key_number == 2)
+		if (menu == "remap_key_crouch")
 		{
-			if (menu == "remap_key_dive")
-			{
-				global.player3_gamepad_button2_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_dive", global.player3_gamepad_button2_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player3_gamepad_button2_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_jump", global.player3_gamepad_button2_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player3_gamepad_button2_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_crouch", global.player3_gamepad_button2_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player3_gamepad_button2_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_crouch_toggle", global.player3_gamepad_button2_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player3_gamepad_button2_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_sprint", global.player3_gamepad_button2_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player3_gamepad_button2_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_sprint_toggle", global.player3_gamepad_button2_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player3_gamepad_button2_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_left", global.player3_gamepad_button2_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player3_gamepad_button2_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_right", global.player3_gamepad_button2_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player3_gamepad_button2_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_down", global.player3_gamepad_button2_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player3_gamepad_button2_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_up", global.player3_gamepad_button2_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player3_gamepad_button2_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_tongue", global.player3_gamepad_button2_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player3_gamepad_button2_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_zoom_in", global.player3_gamepad_button2_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player3_gamepad_button2_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_zoom_out", global.player3_gamepad_button2_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player3_gamepad_button2_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_accept", global.player3_gamepad_button2_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player3_gamepad_button2_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_gamepad_button2_back", global.player3_gamepad_button2_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
-		}
-	}
-	#endregion /* Remapping 3 END */
-	
-	else
-	
-	#region /* Remapping 4 */
-	if (remapping_player == 3)
-	and (can_remap_key == true)
-	{
-		if (menu_remap_key_number == 0)
-		{
-			if (menu == "remap_key_dive")
-			{
-				global.player4_gamepad_button_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_dive", global.player4_gamepad_button_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player4_gamepad_button_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_jump", global.player4_gamepad_button_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player4_gamepad_button_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_crouch", global.player4_gamepad_button_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player4_gamepad_button_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_crouch_toggle", global.player4_gamepad_button_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player4_gamepad_button_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_sprint", global.player4_gamepad_button_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player4_gamepad_button_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_sprint_toggle", global.player4_gamepad_button_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player4_gamepad_button_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_left", global.player4_gamepad_button_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player4_gamepad_button_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_right", global.player4_gamepad_button_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player4_gamepad_button_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_down", global.player4_gamepad_button_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player4_gamepad_button_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_up", global.player4_gamepad_button_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player4_gamepad_button_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_tongue", global.player4_gamepad_button_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player4_gamepad_button_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_zoom_in", global.player4_gamepad_button_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player4_gamepad_button_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_zoom_out", global.player4_gamepad_button_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player4_gamepad_button_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_accept", global.player4_gamepad_button_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player4_gamepad_button_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button_back", global.player4_gamepad_button_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.crouch] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_crouch", last_key);
+			ini_close();
 		}
 		else
-		if (menu_remap_key_number == 2)
+		if (menu == "remap_key_crouch_toggle")
 		{
-			if (menu == "remap_key_dive")
-			{
-				global.player4_gamepad_button2_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_dive", global.player4_gamepad_button2_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player4_gamepad_button2_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_jump", global.player4_gamepad_button2_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player4_gamepad_button2_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_crouch", global.player4_gamepad_button2_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player4_gamepad_button2_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_crouch_toggle", global.player4_gamepad_button2_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player4_gamepad_button2_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_sprint", global.player4_gamepad_button2_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player4_gamepad_button2_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_sprint_toggle", global.player4_gamepad_button2_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player4_gamepad_button2_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_left", global.player4_gamepad_button2_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player4_gamepad_button2_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_right", global.player4_gamepad_button2_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player4_gamepad_button2_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_down", global.player4_gamepad_button2_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player4_gamepad_button2_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_up", global.player4_gamepad_button2_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player4_gamepad_button2_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_tongue", global.player4_gamepad_button2_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player4_gamepad_button2_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_zoom_in", global.player4_gamepad_button2_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player4_gamepad_button2_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_zoom_out", global.player4_gamepad_button2_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player4_gamepad_button2_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_accept", global.player4_gamepad_button2_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player4_gamepad_button2_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_gamepad_button2_back", global.player4_gamepad_button2_back);
-				ini_close();
-			}
-			menu_delay = 10;
-			can_remap_key = false;
-			input_key = false;
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.crouch_toggle] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_crouch_toggle", last_key);
+			ini_close();
 		}
+		else
+		if (menu == "remap_key_sprint")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.sprint] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_sprint", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_sprint_toggle")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.sprint_toggle] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_sprint_toggle", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_left")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.left] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_left", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_right")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.right] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_right", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_down")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.down] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_down", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_up")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.up] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_up", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_tongue")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.tongue] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_tongue", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_zoom_in")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.zoom_in] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_zoom_in", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_zoom_out")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.zoom_out] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_zoom_out", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_accept")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_accept", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_back")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_back", last_key);
+			ini_close();
+		}
+		can_remap_key = false;
+		input_key = false;
+		menu_delay = 10;
 	}
-	#endregion /* Remapping 4 END */
-
+	#endregion /* Remapping Gamepad END */
+	
 }

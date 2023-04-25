@@ -236,8 +236,10 @@ function scr_spawn_objects_when_starting_room()
 						sprite_index = spr_water;
 					}
 				}
-			}else
+			}
 			#endregion /* Create Water END */
+			
+			else
 			
 			#region /* Create Breathable Water */
 			if (object == level_object_id.id_breathable_water)
@@ -252,8 +254,10 @@ function scr_spawn_objects_when_starting_room()
 						sprite_index = spr_water;
 					}
 				}
-			}else
+			}
 			#endregion /* Create Breathable Water END */
+			
+			else
 			
 			#region /* Create Water Surface */
 			if (object == level_object_id.id_water_surface)
@@ -272,8 +276,10 @@ function scr_spawn_objects_when_starting_room()
 						sprite_index = spr_water;
 					}
 				}
-			}else
+			}
 			#endregion /* Create Water Surface END */
+			
+			else
 			
 			if (object == level_object_id.id_air_bubbles_spawner){instance_create_depth(x, y, 0, obj_air_bubbles_spawner);}else
 			if (object == level_object_id.id_water_level_change_slow){with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 0; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}else
@@ -309,7 +315,8 @@ function scr_spawn_objects_when_starting_room()
 				}
 				#endregion /* Tell the player how many big collectibles exist in the level END */
 				
-			}else
+			}
+			else
 			if (object == level_object_id.id_bucket_invincibility_powerup){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup";}}else
 			if (object == level_object_id.id_bucket_invincibility_powerup_coil_spring){with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup_coil_spring";}}else
 			#endregion /* Bucket END */
@@ -332,7 +339,7 @@ function scr_spawn_objects_when_starting_room()
 				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 				if (global.character_select_in_this_menu == "main_game")
 				and (ini_read_string(level_name, "clear_rate", "closed") != "clear")
-				or (global.character_select_in_this_menu == "leveleditor")
+				or (global.character_select_in_this_menu == "level_editor")
 				{
 					with(instance_create_depth(x, y, 0, obj_cake_stealing_enemy))
 					{
@@ -342,7 +349,8 @@ function scr_spawn_objects_when_starting_room()
 					}
 				}
 				ini_close();
-			}else
+			}
+			else
 			if (object == level_object_id.id_artwork_collection){instance_create_depth(x, y, 0, obj_artwork_collection);}else
 			if (object == level_object_id.id_block_only_when_player_is_near){instance_create_depth(x, y, 0, obj_block_only_when_player_is_near_spawner);}else
 			if (object == level_object_id.id_door){with(instance_create_depth(x, y, 0, obj_door)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}}else

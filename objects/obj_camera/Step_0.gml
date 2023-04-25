@@ -217,42 +217,8 @@ and (iris_xscale >= 10)
 	{
 		player1_show_controls_alpha = lerp(player1_show_controls_alpha, 1, 0.1);
 	}
-
-	if (keyboard_check(global.player1_key_up))
-	or (keyboard_check(global.player1_key2_up))
-	or (gamepad_button_check(global.player1_slot, gp_padu))
-	or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
-	or (keyboard_check(global.player1_key_left))
-	or (keyboard_check(global.player1_key2_left))
-	or (gamepad_button_check(global.player1_slot, gp_padl))
-	or (gamepad_axis_value(global.player1_slot, gp_axislh) < 0)
-	or (keyboard_check(global.player1_key_right))
-	or (keyboard_check(global.player1_key2_right))
-	or (gamepad_button_check(global.player1_slot, gp_padr))
-	or (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
-	or (keyboard_check(global.player1_key_down))
-	or (keyboard_check(global.player1_key2_down))
-	or (gamepad_button_check(global.player1_slot, gp_padd))
-	or (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
-	or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept))
-	or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_back))
-	or (keyboard_check(global.player1_key_jump))
-	or (keyboard_check(global.player1_key2_jump))
-	or (gamepad_button_check(global.player1_slot, gp_face3))
-	or (gamepad_button_check(global.player1_slot, gp_face4))
-	or (keyboard_check(global.player1_key_sprint))
-	or (keyboard_check(global.player1_key2_sprint))
 	
-	or (keyboard_check(global.player1_key_sprint_toggle))
-	or (keyboard_check(global.player1_key2_sprint_toggle))
-	or (keyboard_check(global.player1_key_crouch))
-	or (keyboard_check(global.player1_key2_crouch))
-	or (keyboard_check(global.player1_key_crouch_toggle))
-	or (keyboard_check(global.player1_key2_crouch_toggle))
-	or (keyboard_check(global.player1_key_dive))
-	or (keyboard_check(global.player1_key2_dive))
-	or (keyboard_check(global.player1_key_tongue))
-	or (keyboard_check(global.player1_key2_tongue))
+	if (player1.speed > 0)
 	{
 		player1_show_controls_timer = room_speed * global.player1_show_controls;
 	}
@@ -272,7 +238,7 @@ and (instance_exists(player2))
 and (iris_xscale >= 10)
 {
 	if (global.player2_show_controls == 0)
-	or (obj_player.can_move = false)
+	or (obj_player.can_move == false)
 	{
 		player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.2);
 	}
@@ -296,42 +262,8 @@ and (iris_xscale >= 10)
 	{
 		player2_show_controls_alpha = lerp(player2_show_controls_alpha, 1, 0.1);
 	}
-
-	if (keyboard_check(global.player2_key_up))
-	or (keyboard_check(global.player2_key2_up))
-	or (gamepad_button_check(global.player2_slot, gp_padu))
-	or (gamepad_axis_value(global.player2_slot, gp_axislv) < 0)
-	or (keyboard_check(global.player2_key_left))
-	or (keyboard_check(global.player2_key2_left))
-	or (gamepad_button_check(global.player2_slot, gp_padl))
-	or (gamepad_axis_value(global.player2_slot, gp_axislh) < 0)
-	or (keyboard_check(global.player2_key_right))
-	or (keyboard_check(global.player2_key2_right))
-	or (gamepad_button_check(global.player2_slot, gp_padr))
-	or (gamepad_axis_value(global.player2_slot, gp_axislh) > 0)
-	or (keyboard_check(global.player2_key_down))
-	or (keyboard_check(global.player2_key2_down))
-	or (gamepad_button_check(global.player2_slot, gp_padd))
-	or (gamepad_axis_value(global.player2_slot, gp_axislv) > 0)
-	or (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_accept))
-	or (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_back))
-	or (keyboard_check(global.player2_key_jump))
-	or (keyboard_check(global.player2_key2_jump))
-	or (gamepad_button_check(global.player2_slot, gp_face3))
-	or (gamepad_button_check(global.player2_slot, gp_face4))
-	or (keyboard_check(global.player2_key_sprint))
-	or (keyboard_check(global.player2_key2_sprint))
 	
-	or (keyboard_check(global.player2_key_sprint_toggle))
-	or (keyboard_check(global.player2_key2_sprint_toggle))
-	or (keyboard_check(global.player2_key_crouch))
-	or (keyboard_check(global.player2_key2_crouch))
-	or (keyboard_check(global.player2_key_crouch_toggle))
-	or (keyboard_check(global.player2_key2_crouch_toggle))
-	or (keyboard_check(global.player2_key_dive))
-	or (keyboard_check(global.player2_key2_dive))
-	or (keyboard_check(global.player2_key_tongue))
-	or (keyboard_check(global.player2_key2_tongue))
+	if (player2.speed > 0)
 	{
 		player2_show_controls_timer = room_speed * global.player2_show_controls;
 	}
@@ -351,7 +283,7 @@ and (instance_exists(player3))
 and (iris_xscale >= 10)
 {
 	if (global.player3_show_controls == 0)
-	or (obj_player.can_move = false)
+	or (obj_player.can_move == false)
 	{
 		player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.2);
 	}
@@ -375,42 +307,8 @@ and (iris_xscale >= 10)
 	{
 		player3_show_controls_alpha = lerp(player3_show_controls_alpha, 1, 0.2);
 	}
-
-	if (keyboard_check(global.player3_key_up))
-	or (keyboard_check(global.player3_key2_up))
-	or (gamepad_button_check(global.player3_slot, gp_padu))
-	or (gamepad_axis_value(global.player3_slot, gp_axislv) < 0)
-	or (keyboard_check(global.player3_key_left))
-	or (keyboard_check(global.player3_key2_left))
-	or (gamepad_button_check(global.player3_slot, gp_padl))
-	or (gamepad_axis_value(global.player3_slot, gp_axislh) < 0)
-	or (keyboard_check(global.player3_key_right))
-	or (keyboard_check(global.player3_key2_right))
-	or (gamepad_button_check(global.player3_slot, gp_padr))
-	or (gamepad_axis_value(global.player3_slot, gp_axislh) > 0)
-	or (keyboard_check(global.player3_key_down))
-	or (keyboard_check(global.player3_key2_down))
-	or (gamepad_button_check(global.player3_slot, gp_padd))
-	or (gamepad_axis_value(global.player3_slot, gp_axislv) > 0)
-	or (gamepad_button_check(global.player3_slot, global.player3_gamepad_button_accept))
-	or (gamepad_button_check(global.player3_slot, global.player2_gamepad_button_back))
-	or (keyboard_check(global.player3_key_jump))
-	or (keyboard_check(global.player3_key2_jump))
-	or (gamepad_button_check(global.player3_slot, gp_face3))
-	or (gamepad_button_check(global.player3_slot, gp_face4))
-	or (keyboard_check(global.player3_key_sprint))
-	or (keyboard_check(global.player3_key2_sprint))
 	
-	or (keyboard_check(global.player3_key_sprint_toggle))
-	or (keyboard_check(global.player3_key2_sprint_toggle))
-	or (keyboard_check(global.player3_key_crouch))
-	or (keyboard_check(global.player3_key2_crouch))
-	or (keyboard_check(global.player3_key_crouch_toggle))
-	or (keyboard_check(global.player3_key2_crouch_toggle))
-	or (keyboard_check(global.player3_key_dive))
-	or (keyboard_check(global.player3_key2_dive))
-	or (keyboard_check(global.player3_key_tongue))
-	or (keyboard_check(global.player3_key2_tongue))
+	if (player3.speed > 0)
 	{
 		player3_show_controls_timer = room_speed * global.player3_show_controls;
 	}
@@ -430,7 +328,7 @@ and (instance_exists(player4))
 and (iris_xscale >= 10)
 {
 	if (global.player4_show_controls == 0)
-	or (obj_player.can_move = false)
+	or (obj_player.can_move == false)
 	{
 		player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.2);
 	}
@@ -454,42 +352,8 @@ and (iris_xscale >= 10)
 	{
 		player4_show_controls_alpha = lerp(player4_show_controls_alpha, 1, 0.1);
 	}
-
-	if (keyboard_check(global.player4_key_up))
-	or (keyboard_check(global.player4_key2_up))
-	or (gamepad_button_check(global.player4_slot, gp_padu))
-	or (gamepad_axis_value(global.player4_slot, gp_axislv) < 0)
-	or (keyboard_check(global.player4_key_left))
-	or (keyboard_check(global.player4_key2_left))
-	or (gamepad_button_check(global.player4_slot, gp_padl))
-	or (gamepad_axis_value(global.player4_slot, gp_axislh) < 0)
-	or (keyboard_check(global.player4_key_right))
-	or (keyboard_check(global.player4_key2_right))
-	or (gamepad_button_check(global.player4_slot, gp_padr))
-	or (gamepad_axis_value(global.player4_slot, gp_axislh) > 0)
-	or (keyboard_check(global.player4_key_down))
-	or (keyboard_check(global.player4_key2_down))
-	or (gamepad_button_check(global.player4_slot, gp_padd))
-	or (gamepad_axis_value(global.player4_slot, gp_axislv) > 0)
-	or (gamepad_button_check(global.player4_slot, global.player4_gamepad_button_accept))
-	or (gamepad_button_check(global.player4_slot, global.player2_gamepad_button_back))
-	or (keyboard_check(global.player4_key_jump))
-	or (keyboard_check(global.player4_key2_jump))
-	or (gamepad_button_check(global.player4_slot, gp_face3))
-	or (gamepad_button_check(global.player4_slot, gp_face4))
-	or (keyboard_check(global.player4_key_sprint))
-	or (keyboard_check(global.player4_key2_sprint))
 	
-	or (keyboard_check(global.player4_key_sprint_toggle))
-	or (keyboard_check(global.player4_key2_sprint_toggle))
-	or (keyboard_check(global.player4_key_crouch))
-	or (keyboard_check(global.player4_key2_crouch))
-	or (keyboard_check(global.player4_key_crouch_toggle))
-	or (keyboard_check(global.player4_key2_crouch_toggle))
-	or (keyboard_check(global.player4_key_dive))
-	or (keyboard_check(global.player4_key2_dive))
-	or (keyboard_check(global.player4_key_tongue))
-	or (keyboard_check(global.player4_key2_tongue))
+	if (player4.speed > 0)
 	{
 		player4_show_controls_timer = room_speed * global.player4_show_controls;
 	}
@@ -513,7 +377,7 @@ if (mouse_wheel_up())
 #region /* Stop gamepad vibration for different players */
 
 #region /* Stop gamepad vibration for player 1 */
-if (player1_vibration_active = false)
+if (player1_vibration_active == false)
 {
 	player1_motor_speed = lerp(player1_motor_speed, 0, 0.1);
 }
@@ -521,7 +385,7 @@ gamepad_set_vibration(0, player1_motor_speed, player1_motor_speed);
 #endregion /* Stop gamepad vibration for player 1 END */
 
 #region /* Stop gamepad vibration for player 2 */
-if (player2_vibration_active = false)
+if (player2_vibration_active == false)
 {
 	player2_motor_speed = lerp(player2_motor_speed, 0, 0.1);
 }
@@ -529,7 +393,7 @@ gamepad_set_vibration(1, player2_motor_speed, player2_motor_speed);
 #endregion /* Stop gamepad vibration for player 2 END */
 
 #region /* Stop gamepad vibration for player 3 */
-if (player3_vibration_active = false)
+if (player3_vibration_active == false)
 {
 	player3_motor_speed = lerp(player3_motor_speed, 0, 0.1);
 }
@@ -537,7 +401,7 @@ gamepad_set_vibration(2, player3_motor_speed, player3_motor_speed);
 #endregion /* Stop gamepad vibration for player 3 END */
 
 #region /* Stop gamepad vibration for player 4 */
-if (player4_vibration_active = false)
+if (player4_vibration_active == false)
 {
 	player4_motor_speed = lerp(player4_motor_speed, 0, 0.1);
 }
@@ -556,11 +420,11 @@ if (lives < 0)
 #region /* Spawn Players in multiplayer */
 if (instance_exists(obj_player))
 and (global.pause == false)
-and (global.goal_active = false)
+and (global.goal_active == false)
 {
-	if (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept))
-	or (keyboard_check_pressed(global.player1_key_jump))
-	or (keyboard_check_pressed(global.player1_key2_jump))
+	if (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+	or (keyboard_check_pressed(global.player_[inp.key][1][1][action.jump]))
+	or (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
 	{
 		if (player1 <= 0)
 		and (can_spawn_player1 == true)
@@ -588,9 +452,9 @@ and (global.goal_active = false)
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(global.player2_slot, global.player2_gamepad_button_accept))
-	or (keyboard_check_pressed(global.player2_key_jump))
-	or (keyboard_check_pressed(global.player2_key2_jump))
+	if (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+	or (keyboard_check_pressed(global.player_[inp.key][2][1][action.jump]))
+	or (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
 	{
 		if (player2 <= 0)
 		and (can_spawn_player2 == true)
@@ -618,9 +482,9 @@ and (global.goal_active = false)
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(global.player3_slot, global.player3_gamepad_button_accept))
-	or (keyboard_check_pressed(global.player3_key_jump))
-	or (keyboard_check_pressed(global.player3_key2_jump))
+	if (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+	or (keyboard_check_pressed(global.player_[inp.key][3][1][action.jump]))
+	or (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
 	{
 		if (player3 <= 0)
 		and (can_spawn_player3 == true)
@@ -648,9 +512,9 @@ and (global.goal_active = false)
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(global.player4_slot, global.player4_gamepad_button_accept))
-	or (keyboard_check_pressed(global.player4_key_jump))
-	or (keyboard_check_pressed(global.player4_key2_jump))
+	if (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+	or (keyboard_check_pressed(global.player_[inp.key][4][1][action.jump]))
+	or (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
 	{
 		if (player4 <= 0)
 		and (can_spawn_player4 == true)
@@ -681,7 +545,7 @@ and (global.goal_active = false)
 }
 #endregion /* Spawn Players in multiplayer END */
 
-if (save_level_as_png = false)
+if (save_level_as_png == false)
 {
 	if (shake > 0)
 	{
@@ -707,7 +571,7 @@ if (save_level_as_png = false)
 		if (player1 > 0)
 		and (instance_exists(player1))
 		{
-			if (player1.partner_character = false)
+			if (player1.partner_character == false)
 			{
 				xx = mean(player1.x, obj_boss.x);
 				yy = mean(player1.y, obj_boss.y);
@@ -717,7 +581,7 @@ if (save_level_as_png = false)
 		if (player2 > 0)
 		and (instance_exists(player2))
 		{
-			if (player2.partner_character = false)
+			if (player2.partner_character == false)
 			{
 				xx = mean(player2.x, obj_boss.x);
 				yy = mean(player2.y, obj_boss.y);
@@ -727,7 +591,7 @@ if (save_level_as_png = false)
 		if (player3 > 0)
 		and (instance_exists(player3))
 		{
-			if (player3.partner_character = false)
+			if (player3.partner_character == false)
 			{
 				xx = mean(player3.x, obj_boss.x);
 				yy = mean(player3.y, obj_boss.y);
@@ -737,7 +601,7 @@ if (save_level_as_png = false)
 		if (player4 > 0)
 		and (instance_exists(player4))
 		{
-			if (player4.partner_character = false)
+			if (player4.partner_character == false)
 			{
 				xx = mean(player4.x, obj_boss.x);
 				yy = mean(player4.y, obj_boss.y);
@@ -759,16 +623,16 @@ if (save_level_as_png = false)
 		/* 1, 2, 3, 4 */
 		if (player1 > 0)
 		and (instance_exists(player1))
-		and (player1.partner_character = false)
+		and (player1.partner_character == false)
 		and (player2 > 0)
 		and (instance_exists(player2))
-		and (player2.partner_character = false)
+		and (player2.partner_character == false)
 		and (player3 > 0)
 		and (instance_exists(player3))
-		and (player3.partner_character = false)
+		and (player3.partner_character == false)
 		and (player4 > 0)
 		and (instance_exists(player4))
-		and (player4.partner_character = false)
+		and (player4.partner_character == false)
 		{
 			xx = mean(player1.x, player2.x, player3.x, player4.x);
 			yy = mean(player1.y, player2.y, player3.y, player4.y);
@@ -779,13 +643,13 @@ if (save_level_as_png = false)
 		/* 1, 2, 3 */
 		if (player1 > 0)
 		and (instance_exists(player1))
-		and (player1.partner_character = false)
+		and (player1.partner_character == false)
 		and (player2 > 0)
 		and (instance_exists(player2))
-		and (player2.partner_character = false)
+		and (player2.partner_character == false)
 		and (player3 > 0)
 		and (instance_exists(player3))
-		and (player3.partner_character = false)
+		and (player3.partner_character == false)
 		{
 			xx = mean(player1.x, player2.x, player3.x);
 			yy = mean(player1.y, player2.y, player3.y);
@@ -796,10 +660,10 @@ if (save_level_as_png = false)
 		/* 1, 2 */
 		if (player1 > 0)
 		and (instance_exists(player1))
-		and (player1.partner_character = false)
+		and (player1.partner_character == false)
 		and (player2 > 0)
 		and (instance_exists(player2))
-		and (player2.partner_character = false)
+		and (player2.partner_character == false)
 		{
 			xx = mean(player1.x, player2.x);
 			yy = mean(player1.y, player2.y);
@@ -810,10 +674,10 @@ if (save_level_as_png = false)
 		/* 1, 3 */
 		if (player1 > 0)
 		and (instance_exists(player1))
-		and (player1.partner_character = false)
+		and (player1.partner_character == false)
 		and (player3 > 0)
 		and (instance_exists(player3))
-		and (player3.partner_character = false)
+		and (player3.partner_character == false)
 		{
 			xx = mean(player1.x, player3.x);
 			yy = mean(player1.y, player3.y);
@@ -824,10 +688,10 @@ if (save_level_as_png = false)
 		/* 1, 4 */
 		if (player1 > 0)
 		and (instance_exists(player1))
-		and (player1.partner_character = false)
+		and (player1.partner_character == false)
 		and (player4 > 0)
 		and (instance_exists(player4))
-		and (player4.partner_character = false)
+		and (player4.partner_character == false)
 		{
 			xx = mean(player1.x, player4.x);
 			yy = mean(player1.y, player4.y);
@@ -838,10 +702,10 @@ if (save_level_as_png = false)
 		/* 2, 3 */
 		if (player2 > 0)
 		and (instance_exists(player2))
-		and (player2.partner_character = false)
+		and (player2.partner_character == false)
 		and (player3 > 0)
 		and (instance_exists(player3))
-		and (player3.partner_character = false)
+		and (player3.partner_character == false)
 		{
 			xx = mean(player2.x, player3.x);
 			yy = mean(player2.y, player3.y);
@@ -852,10 +716,10 @@ if (save_level_as_png = false)
 		/* 2, 4 */
 		if (player1 > 0)
 		and (instance_exists(player2))
-		and (player2.partner_character = false)
+		and (player2.partner_character == false)
 		and (player4 > 0)
 		and (instance_exists(player4))
-		and (player4.partner_character = false)
+		and (player4.partner_character == false)
 		{
 			xx = mean(player2.x, player4.x);
 			yy = mean(player2.y, player4.y);
@@ -866,10 +730,10 @@ if (save_level_as_png = false)
 		/* 3, 4 */
 		if (player3 > 0)
 		and (instance_exists(player3))
-		and (player3.partner_character = false)
+		and (player3.partner_character == false)
 		and (player4 > 0)
 		and (instance_exists(player4))
-		and (player4.partner_character = false)
+		and (player4.partner_character == false)
 		{
 			xx = mean(player3.x, player4.x);
 			yy = mean(player3.y, player4.y);
@@ -882,7 +746,7 @@ if (save_level_as_png = false)
 		/* 1 */
 		if (player1 > 0)
 		and (instance_exists(player1))
-		and (player1.partner_character = false)
+		and (player1.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -938,7 +802,7 @@ if (save_level_as_png = false)
 		/* 2 */
 		if (player2 > 0)
 		and (instance_exists(player2))
-		and (player2.partner_character = false)
+		and (player2.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -994,7 +858,7 @@ if (save_level_as_png = false)
 		/* 3 */
 		if (player3 > 0)
 		and (instance_exists(player3))
-		and (player3.partner_character = false)
+		and (player3.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -1050,7 +914,7 @@ if (save_level_as_png = false)
 		/* 4 */
 		if (player4 > 0)
 		and (instance_exists(player4))
-		and (player4.partner_character = false)
+		and (player4.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -1206,10 +1070,10 @@ if (save_level_as_png = false)
 }
 
 #region /* Step Sprint Toggling */
-key_player1_sprint_toggle_pressed = scr_key_initialize(key_player1_sprint_toggle_pressed, 1, 1, global.player1_key_sprint_toggle, global.player1_key2_sprint_toggle, global.player1_gamepad_button_sprint_toggle, global.player1_gamepad_button2_sprint_toggle);
-key_player2_sprint_toggle_pressed = scr_key_initialize(key_player2_sprint_toggle_pressed, 1, 2, global.player2_key_sprint_toggle, global.player2_key2_sprint_toggle, global.player2_gamepad_button_sprint_toggle, global.player2_gamepad_button2_sprint_toggle);
-key_player3_sprint_toggle_pressed = scr_key_initialize(key_player3_sprint_toggle_pressed, 1, 3, global.player3_key_sprint_toggle, global.player3_key2_sprint_toggle, global.player3_gamepad_button_sprint_toggle, global.player3_gamepad_button2_sprint_toggle);
-key_player4_sprint_toggle_pressed = scr_key_initialize(key_player4_sprint_toggle_pressed, 1, 4, global.player4_key_sprint_toggle, global.player4_key2_sprint_toggle, global.player4_gamepad_button_sprint_toggle, global.player4_gamepad_button2_sprint_toggle);
+key_player1_sprint_toggle_pressed = scr_key_initialize(key_player1_sprint_toggle_pressed, 1, 1, action.sprint_toggle);
+key_player2_sprint_toggle_pressed = scr_key_initialize(key_player2_sprint_toggle_pressed, 1, 2, action.sprint_toggle);
+key_player3_sprint_toggle_pressed = scr_key_initialize(key_player3_sprint_toggle_pressed, 1, 3, action.sprint_toggle);
+key_player4_sprint_toggle_pressed = scr_key_initialize(key_player4_sprint_toggle_pressed, 1, 4, action.sprint_toggle);
 
 if (key_player1_sprint_toggle_pressed)
 and (asset_get_type("obj_pause") == asset_object)
@@ -1219,7 +1083,7 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player2 = 0;
 	show_sprint_toggle_for_player3 = 0;
 	show_sprint_toggle_for_player4 = 0;
-	if (global.player1_sprint_toggle = false)
+	if (global.player1_sprint_toggle == false)
 	{
 		global.player1_sprint_toggle = true;
 	}
@@ -1236,7 +1100,7 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player2 = 100;
 	show_sprint_toggle_for_player3 = 0;
 	show_sprint_toggle_for_player4 = 0;
-	if (global.player2_sprint_toggle = false)
+	if (global.player2_sprint_toggle == false)
 	{
 		global.player2_sprint_toggle = true;
 	}
@@ -1253,7 +1117,7 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player2 = 0;
 	show_sprint_toggle_for_player3 = 100;
 	show_sprint_toggle_for_player4 = 0;
-	if (global.player3_sprint_toggle = false)
+	if (global.player3_sprint_toggle == false)
 	{
 		global.player3_sprint_toggle = true;
 	}
@@ -1270,7 +1134,7 @@ and (!instance_exists(obj_pause))
 	show_sprint_toggle_for_player2 = 0;
 	show_sprint_toggle_for_player3 = 0;
 	show_sprint_toggle_for_player4 = 100;
-	if (global.player4_sprint_toggle = false)
+	if (global.player4_sprint_toggle == false)
 	{
 		global.player4_sprint_toggle = true;
 	}
@@ -1646,7 +1510,7 @@ if (asset_get_type("obj_player") == asset_object)
 and (!instance_exists(obj_player))
 or (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
-and (obj_player.can_move = false)
+and (obj_player.can_move == false)
 {
 	letterbox_top_y = lerp(letterbox_top_y, + 64, 0.1);
 	letterbox_bottom_y = lerp(letterbox_bottom_y, display_get_gui_height() - 64, 0.1);

@@ -34,7 +34,7 @@ function scr_player_move_double_tap_direction_to_run()
 			#region /* Double tap right direction to run */
 			if (key_right_hold)
 			{
-				if (double_tap_right = false)
+				if (double_tap_right == false)
 				{
 					double_tap_right = true;
 					double_tap_left = false;

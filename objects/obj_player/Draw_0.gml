@@ -288,7 +288,7 @@ else
 
 #region /* Blink red when only having 1 HP left and no heart balloon */
 if (redblinktimer > 25)
-and (have_heart_balloon = false)
+and (have_heart_balloon == false)
 and (hp <= 1)
 and (max_hp >= 2)
 and (sprite_index > 0)
@@ -449,7 +449,7 @@ if (allow_homing_attack == true)
 	and (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_enemy).x + 1, instance_nearest(x, y, obj_enemy).y + 1, obj_wall, false, true))
 	and (distance_to_object(obj_enemy) < homing_attack_distance)
 	and (instance_nearest(x, y, obj_enemy).bbox_bottom > y)
-	and (instance_nearest(x, y, obj_enemy).die = false)
+	and (instance_nearest(x, y, obj_enemy).die == false)
 	{
 		aim_image_index += 1;
 		if (asset_get_type("spr_aim") == asset_sprite)
@@ -567,7 +567,7 @@ and (global.player4_can_play == true)
 #region /* If player has more hp, show that */
 if (hp > 0)
 and (global.assist_enable == true)
-and (global.assist_invincible = false)
+and (global.assist_invincible == false)
 or (hp > 0)
 and (global.assist_enable == false)
 {

@@ -63,1042 +63,145 @@ function scr_remapping_keyboard()
 		can_remap_key = true;
 	}
 	
-	#region /* Remapping 1 */
-	if (remapping_player == 0)
-	and (can_remap_key == true)
+	#region /* Remapping Keyboard */
+	if (menu_remap_key_number == 0)
 	{
-		if (menu_remap_key_number == 0)
-		{
-			if (menu == "remap_key_dive")
-			{
-				global.player1_key_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_dive", global.player1_key_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player1_key_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_jump", global.player1_key_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player1_key_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_crouch", global.player1_key_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player1_key_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_crouch_toggle", global.player1_key_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player1_key_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_sprint", global.player1_key_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player1_key_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_sprint_toggle", global.player1_key_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player1_key_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_left", global.player1_key_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player1_key_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_right", global.player1_key_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player1_key_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_down", global.player1_key_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player1_key_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_up", global.player1_key_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player1_key_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_tongue", global.player1_key_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player1_key_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_zoom_in", global.player1_key_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player1_key_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_zoom_out", global.player1_key_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player1_key_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_accept", global.player1_key_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player1_key_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key_back", global.player1_key_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
-		}
-		else
-		if (menu_remap_key_number == 2)
-		{
-			if (menu == "remap_key_dive")
-			{
-				global.player1_key2_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_dive", global.player1_key2_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player1_key2_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_jump", global.player1_key2_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player1_key2_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_crouch", global.player1_key2_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player1_key2_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_crouch_toggle", global.player1_key2_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player1_key2_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_sprint", global.player1_key2_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player1_key2_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_sprint_toggle", global.player1_key2_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player1_key2_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_left", global.player1_key2_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player1_key2_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_right", global.player1_key2_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player1_key2_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_down", global.player1_key2_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player1_key2_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_up", global.player1_key2_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player1_key2_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_tongue", global.player1_key2_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player1_key2_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_zoom_in", global.player1_key2_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player1_key2_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_zoom_out", global.player1_key2_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player1_key2_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_accept", global.player1_key2_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player1_key2_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player1_key2_back", global.player1_key2_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
-		}
+		var remap_key_number_string = "";
+		var remap_key_number = 1;
 	}
-	#endregion /* Remapping 1 END */
-	
 	else
-	
-	#region /* Remapping 2 */
-	if (remapping_player == 1)
-	and (can_remap_key == true)
+	if (menu_remap_key_number == 2)
 	{
-		if (menu_remap_key_number == 0)
+		var remap_key_number_string = "2";
+		var remap_key_number = 2;
+	}
+	
+	if (can_remap_key == true)
+	{
+		/* global.player_[keyboard/gamepad][player][key1/key2][action] */
+		if (menu == "remap_key_dive")
 		{
-			if (menu == "remap_key_dive")
-			{
-				global.player2_key_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_dive", global.player2_key_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player2_key_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_jump", global.player2_key_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player2_key_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_crouch", global.player2_key_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player2_key_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_crouch_toggle", global.player2_key_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player2_key_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_sprint", global.player2_key_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player2_key_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_sprint_toggle", global.player2_key_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player2_key_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_left", global.player2_key_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player2_key_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_right", global.player2_key_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player2_key_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_down", global.player2_key_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player2_key_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_up", global.player2_key_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player2_key_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_tongue", global.player2_key_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player2_key_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_zoom_in", global.player2_key_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player2_key_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_zoom_out", global.player2_key_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player2_key_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_accept", global.player2_key_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player2_key_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key_back", global.player2_key_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.dive] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_dive", last_key);
+			ini_close();
 		}
 		else
-		if (menu_remap_key_number == 2)
+		if (menu == "remap_key_jump")
 		{
-			if (menu == "remap_key_dive")
-			{
-				global.player2_key2_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_dive", global.player2_key2_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player2_key2_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_jump", global.player2_key2_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player2_key2_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_crouch", global.player2_key2_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player2_key2_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_crouch_toggle", global.player2_key2_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player2_key2_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_sprint", global.player2_key2_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player2_key2_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_sprint_toggle", global.player2_key2_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player2_key2_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_left", global.player2_key2_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player2_key2_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_right", global.player2_key2_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player2_key2_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_down", global.player2_key2_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player2_key2_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_up", global.player2_key2_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player2_key2_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_tongue", global.player2_key2_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player2_key2_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_zoom_in", global.player2_key2_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player2_key2_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_zoom_out", global.player2_key2_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player2_key2_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_accept", global.player2_key2_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player2_key2_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player2_key2_back", global.player2_key2_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
-		}
-	}
-	#endregion /* Remapping 2 END */
-	
-	else
-	
-	#region /* Remapping 3 */
-	if (remapping_player == 2)
-	and (can_remap_key == true)
-	{
-		if (menu_remap_key_number == 0)
-		{
-			if (menu == "remap_key_dive")
-			{
-				global.player3_key_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_dive", global.player3_key_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player3_key_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_jump", global.player3_key_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player3_key_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_crouch", global.player3_key_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player3_key_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_crouch_toggle", global.player3_key_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player3_key_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_sprint", global.player3_key_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player3_key_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_sprint_toggle", global.player3_key_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player3_key_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_left", global.player3_key_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player3_key_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_right", global.player3_key_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player3_key_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_down", global.player3_key_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player3_key_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_up", global.player3_key_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player3_key_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_tongue", global.player3_key_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player3_key_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_zoom_in", global.player3_key_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player3_key_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_zoom_out", global.player3_key_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player3_key_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_accept", global.player3_key_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player3_key_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key_back", global.player3_key_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.jump] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_jump", last_key);
+			ini_close();
 		}
 		else
-		if (menu_remap_key_number == 2)
+		if (menu == "remap_key_crouch")
 		{
-			if (menu == "remap_key_dive")
-			{
-				global.player3_key2_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_dive", global.player3_key2_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player3_key2_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_jump", global.player3_key2_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player3_key2_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_crouch", global.player3_key2_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player3_key2_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_crouch_toggle", global.player3_key2_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player3_key2_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_sprint", global.player3_key2_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player3_key2_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_sprint_toggle", global.player3_key2_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player3_key2_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_left", global.player3_key2_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player3_key2_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_right", global.player3_key2_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player3_key2_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_down", global.player3_key2_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player3_key2_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_up", global.player3_key2_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player3_key2_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_tongue", global.player3_key2_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player3_key2_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_zoom_in", global.player3_key2_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player3_key2_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_zoom_out", global.player3_key2_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player3_key2_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_accept", global.player3_key2_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player3_key2_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player3_key2_back", global.player3_key2_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
-		}
-	}
-	#endregion /* Remapping 3 END */
-	
-	else
-	
-	#region /* Remapping 4 */
-	if (remapping_player == 3)
-	and (can_remap_key == true)
-	{
-		if (menu_remap_key_number == 0)
-		{
-			if (menu == "remap_key_dive")
-			{
-				global.player4_key_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_dive", global.player4_key_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player4_key_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_jump", global.player4_key_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player4_key_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_crouch", global.player4_key_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player4_key_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_crouch_toggle", global.player4_key_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player4_key_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_sprint", global.player4_key_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player4_key_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_sprint_toggle", global.player4_key_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player4_key_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_left", global.player4_key_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player4_key_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_right", global.player4_key_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player4_key_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_down", global.player4_key_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player4_key_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_up", global.player4_key_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player4_key_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_tongue", global.player4_key_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player4_key_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_zoom_in", global.player4_key_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player4_key_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_zoom_out", global.player4_key_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player4_key_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_accept", global.player4_key_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player4_key_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key_back", global.player4_key_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.crouch] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_crouch", last_key);
+			ini_close();
 		}
 		else
-		if (menu_remap_key_number == 2)
+		if (menu == "remap_key_crouch_toggle")
 		{
-			if (menu == "remap_key_dive")
-			{
-				global.player4_key2_dive = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_dive", global.player4_key2_dive);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_jump")
-			{
-				global.player4_key2_jump = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_jump", global.player4_key2_jump);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch")
-			{
-				global.player4_key2_crouch = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_crouch", global.player4_key2_crouch);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_crouch_toggle")
-			{
-				global.player4_key2_crouch_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_crouch_toggle", global.player4_key2_crouch_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint")
-			{
-				global.player4_key2_sprint = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_sprint", global.player4_key2_sprint);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_sprint_toggle")
-			{
-				global.player4_key2_sprint_toggle = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_sprint_toggle", global.player4_key2_sprint_toggle);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_left")
-			{
-				global.player4_key2_left = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_left", global.player4_key2_left);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_right")
-			{
-				global.player4_key2_right = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_right", global.player4_key2_right);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_down")
-			{
-				global.player4_key2_down = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_down", global.player4_key2_down);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_up")
-			{
-				global.player4_key2_up = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_up", global.player4_key2_up);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_tongue")
-			{
-				global.player4_key2_tongue = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_tongue", global.player4_key2_tongue);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_in")
-			{
-				global.player4_key2_zoom_in = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_zoom_in", global.player4_key2_zoom_in);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_zoom_out")
-			{
-				global.player4_key2_zoom_out = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_zoom_out", global.player4_key2_zoom_out);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_accept")
-			{
-				global.player4_key2_accept = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_accept", global.player4_key2_accept);
-				ini_close();
-			}
-			else
-			if (menu == "remap_key_back")
-			{
-				global.player4_key2_back = last_key;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player4_key2_back", global.player4_key2_back);
-				ini_close();
-			}
-			can_remap_key = false;
-			input_key = false;
-			menu_delay = 10;
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.crouch_toggle] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_crouch_toggle", last_key);
+			ini_close();
 		}
+		else
+		if (menu == "remap_key_sprint")
+		{
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.sprint] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_sprint", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_sprint_toggle")
+		{
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.sprint_toggle] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_sprint_toggle", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_left")
+		{
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.left] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_left", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_right")
+		{
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.right] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_right", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_down")
+		{
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.down] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_down", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_up")
+		{
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.up] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_up", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_tongue")
+		{
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.tongue] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_tongue", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_zoom_in")
+		{
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.zoom_in] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_zoom_in", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_zoom_out")
+		{
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.zoom_out] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_zoom_out", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_accept")
+		{
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.accept] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_accept", last_key);
+			ini_close();
+		}
+		else
+		if (menu == "remap_key_back")
+		{
+			global.player_[inp.key][remapping_player + 1][remap_key_number][action.back] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_back", last_key);
+			ini_close();
+		}
+		can_remap_key = false;
+		input_key = false;
+		menu_delay = 10;
 	}
-	#endregion /* Remapping 4 END */
+	#endregion /* Remapping Keyboard END */
 	
 }

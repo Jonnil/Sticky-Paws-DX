@@ -26,7 +26,7 @@ if (brick_particle == true)
 		image_angle -= 10;
 	}
 }
-if (brick_particle = false)
+if (brick_particle == false)
 	and (asset_get_type("obj_player") == asset_object)
 	{
 		if (position_meeting(bbox_left + 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))

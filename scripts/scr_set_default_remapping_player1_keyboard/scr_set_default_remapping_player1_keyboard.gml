@@ -1,90 +1,44 @@
-function scr_set_default_remapping_player1_keyboard()
+function scr_set_default_remapping_player1_keyboard(save_default_controls_to_config = false)
 {
 	
-	//#region /* Player Key Remapping */
-	
-	///* [player] [key number] [key name] */
-	
-	//#region /* Player Key 1 defaults */
-	
-	//// global.player_[keyboard/gamepad][player][key1/key2][action]
-	//global.player_["key"][1][1]["dive"] = ord("X");
-	//global.player_["key"][1][1]["jump"] = ord("Z");
-	//global.player_["key"][1][1]["crouch"] = vk_down;
-	//global.player_["key"][1][1]["crouch_toggle"] = noone;
-	//global.player_["key"][1][1]["sprint"] = vk_lcontrol;
-	//global.player_["key"][1][1]["sprint_toggle"] = 20;
-	//global.player_["key"][1][1]["left"] = vk_left
-	//global.player_["key"][1][1]["right"] = vk_right;
-	//global.player_["key"][1][1]["down"] = vk_down;
-	//global.player_["key"][1][1]["up"] = vk_up;
-	//global.player_["key"][1][1]["tongue"] = noone;
-	//global.player_["key"][1][1]["zoom_in"] = 187;
-	//global.player_["key"][1][1]["zoom_out"] = 189;
-	//global.player_["key"][1][1]["accept"] = ord("Z");
-	//global.player_["key"][1][1]["back"] = ord("X");
-	//#endregion /* Player Key 1 defaults END */
-	
-	//#region
-	//// global.player_[keyboard/gamepad][player][key1/key2][action]
-	//global.player_["key"][1][2]["dive"] = noone;
-	//global.player_["key"][1][2]["jump"] = vk_space;
-	//global.player_["key"][1][2]["crouch"] = vk_shift;
-	//global.player_["key"][1][2]["crouch_toggle"] = noone;
-	//global.player_["key"][1][2]["sprint"] = ord("X");
-	//global.player_["key"][1][2]["sprint_toggle"] = noone;
-	//global.player_["key"][1][2]["left"] = ord("A");
-	//global.player_["key"][1][2]["right"] = ord("D");
-	//global.player_["key"][1][2]["down"] = ord("S");
-	//global.player_["key"][1][2]["up"] = ord("W");
-	//global.player_["key"][1][2]["tongue"] = noone;
-	//global.player_["key"][1][2]["zoom_in"] = vk_add;
-	//global.player_["key"][1][2]["zoom_out"] = vk_subtract;
-	//global.player_["key"][1][2]["accept"] = vk_enter;
-	//global.player_["key"][1][2]["back"] = vk_backspace;
-	//#endregion /* Player Key 1 defaults END */
-	
-	//#endregion /* Player Key Remapping END */
-	
-	
-	
-
-	#region /* Player 1 Keyboard Remapping */
+	#region /* Player 1 Key Remapping */
 	
 	#region /* Player 1 Key 1 defaults */
-	global.player1_key_dive = ord("X");
-	global.player1_key_jump = ord("Z");
-	global.player1_key_crouch = vk_down;
-	global.player1_key_crouch_toggle = noone;
-	global.player1_key_sprint = vk_lcontrol;
-	global.player1_key_sprint_toggle = 20;
-	global.player1_key_left = vk_left;
-	global.player1_key_right = vk_right;
-	global.player1_key_down = vk_down;
-	global.player1_key_up = vk_up;
-	global.player1_key_tongue = noone;
-	global.player1_key_zoom_in = 187;
-	global.player1_key_zoom_out = 189;
-	global.player1_key_accept = ord("Z");
-	global.player1_key_back = ord("X");
+	/* global.player_[keyboard/gamepad][player][key1/key2][action] */
+	global.player_[inp.key][1][1][action.dive] = ord("X");
+	global.player_[inp.key][1][1][action.jump] = ord("Z");
+	global.player_[inp.key][1][1][action.crouch] = vk_down;
+	global.player_[inp.key][1][1][action.crouch_toggle] = noone;
+	global.player_[inp.key][1][1][action.sprint] = vk_lcontrol;
+	global.player_[inp.key][1][1][action.sprint_toggle] = 20;
+	global.player_[inp.key][1][1][action.left] = vk_left;
+	global.player_[inp.key][1][1][action.right] = vk_right;
+	global.player_[inp.key][1][1][action.down] = vk_down;
+	global.player_[inp.key][1][1][action.up] = vk_up;
+	global.player_[inp.key][1][1][action.tongue] = noone;
+	global.player_[inp.key][1][1][action.zoom_in] = 187;
+	global.player_[inp.key][1][1][action.zoom_out] = 189;
+	global.player_[inp.key][1][1][action.accept] = ord("Z");
+	global.player_[inp.key][1][1][action.back] = ord("X");
 	#endregion /* Player 1 Key 1 defaults END */
 	
 	#region /* Player 1 Key 2 defaults */
-	global.player1_key2_dive = noone;
-	global.player1_key2_jump = vk_space;
-	global.player1_key2_crouch = vk_shift;
-	global.player1_key2_crouch_toggle = noone;
-	global.player1_key2_sprint = ord("X");
-	global.player1_key2_sprint_toggle = noone;
-	global.player1_key2_left = ord("A");
-	global.player1_key2_right = ord("D");
-	global.player1_key2_down = ord("S");
-	global.player1_key2_up = ord("W");
-	global.player1_key2_tongue = noone;
-	global.player1_key2_zoom_in = vk_add;
-	global.player1_key2_zoom_out = vk_subtract;
-	global.player1_key2_accept = vk_enter;
-	global.player1_key2_back = vk_backspace;
+	/* global.player_[keyboard/gamepad][player][key1/key2][action] */
+	global.player_[inp.key][1][2][action.dive] = noone;
+	global.player_[inp.key][1][2][action.jump] = vk_space;
+	global.player_[inp.key][1][2][action.crouch] = vk_shift;
+	global.player_[inp.key][1][2][action.crouch_toggle] = noone;
+	global.player_[inp.key][1][2][action.sprint] = ord("X");
+	global.player_[inp.key][1][2][action.sprint_toggle] = noone;
+	global.player_[inp.key][1][2][action.left] = ord("A");
+	global.player_[inp.key][1][2][action.right] = ord("D");
+	global.player_[inp.key][1][2][action.down] = ord("S");
+	global.player_[inp.key][1][2][action.up] = ord("W");
+	global.player_[inp.key][1][2][action.tongue] = noone;
+	global.player_[inp.key][1][2][action.zoom_in] = vk_add;
+	global.player_[inp.key][1][2][action.zoom_out] = vk_subtract;
+	global.player_[inp.key][1][2][action.accept] = vk_enter;
+	global.player_[inp.key][1][2][action.back] = vk_backspace;
 	#endregion /* Player 1 Key 2 defaults END */
 	
 	global.player1_up_is_also_jump = false;
@@ -100,48 +54,51 @@ function scr_set_default_remapping_player1_keyboard()
 	#endregion /* Player 1 Keyboard Remapping END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
-	ini_open(working_directory + "config.ini");
-	ini_write_real("config", "player1_key_dive", global.player1_key_dive);
-	ini_write_real("config", "player1_key2_dive", global.player1_key2_dive);
-	ini_write_real("config", "player1_key_jump", global.player1_key_jump);
-	ini_write_real("config", "player1_key2_jump", global.player1_key2_jump);
-	ini_write_real("config", "player1_key_crouch", global.player1_key_crouch);
-	ini_write_real("config", "player1_key2_crouch", global.player1_key2_crouch);
-	ini_write_real("config", "player1_key_crouch_toggle", global.player1_key_crouch_toggle);
-	ini_write_real("config", "player1_key2_crouch_toggle", global.player1_key2_crouch_toggle);
-	ini_write_real("config", "player1_key_sprint", global.player1_key_sprint);
-	ini_write_real("config", "player1_key2_sprint", global.player1_key2_sprint);
-	ini_write_real("config", "player1_key_sprint_toggle", global.player1_key_sprint_toggle);
-	ini_write_real("config", "player1_key2_sprint_toggle", global.player1_key2_sprint_toggle);
-	ini_write_real("config", "player1_key_left", global.player1_key_left);
-	ini_write_real("config", "player1_key2_left", global.player1_key2_left);
-	ini_write_real("config", "player1_key_right", global.player1_key_right);
-	ini_write_real("config", "player1_key2_right", global.player1_key2_right);
-	ini_write_real("config", "player1_key_down", global.player1_key_down);
-	ini_write_real("config", "player1_key2_down", global.player1_key2_down);
-	ini_write_real("config", "player1_key_up", global.player1_key_up);
-	ini_write_real("config", "player1_key2_up", global.player1_key2_up);
-	ini_write_real("config", "player1_key_tongue", global.player1_key_tongue);
-	ini_write_real("config", "player1_key2_tongue", global.player1_key2_tongue);
-	ini_write_real("config", "player1_key_zoom_in", global.player1_key_zoom_in);
-	ini_write_real("config", "player1_key2_zoom_in", global.player1_key2_zoom_in);
-	ini_write_real("config", "player1_key_zoom_out", global.player1_key_zoom_out);
-	ini_write_real("config", "player1_key2_zoom_out", global.player1_key2_zoom_out);
-	ini_write_real("config", "player1_key_accept", global.player1_key_accept);
-	ini_write_real("config", "player1_key2_accept", global.player1_key2_accept);
-	ini_write_real("config", "player1_key_back", global.player1_key_back);
-	ini_write_real("config", "player1_key2_back", global.player1_key2_back);
-	ini_write_real("config", "player1_up_is_also_jump", global.player1_up_is_also_jump);
-	ini_write_real("config", "player1_double_tap_to_run", global.player1_double_tap_to_run);
-	ini_write_real("config", "player1_sprint_toggle", global.player1_sprint_toggle);
-	ini_write_real("config", "player1_double_tap_to_dive", global.player1_double_tap_to_dive);
-	ini_write_real("config", "player1_cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
-	ini_write_real("config", "player1_cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
-	ini_write_real("config", "player1_down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
-	ini_write_real("config", "player1_wall_jump_setting", global.player1_wall_jump_setting);
-	ini_write_real("config", "player1_drop_from_rope", global.player1_drop_from_rope);
-	ini_write_real("config", "player1_show_controls", global.player1_show_controls);
-	ini_close();
+	if (save_default_controls_to_config == true)
+	{
+		ini_open(working_directory + "config.ini");
+		ini_write_real("config", "player1_key_dive", global.player_[inp.key][1][1][action.dive]);
+		ini_write_real("config", "player1_key2_dive", global.player_[inp.key][1][2][action.dive]);
+		ini_write_real("config", "player1_key_jump", global.player_[inp.key][1][1][action.jump]);
+		ini_write_real("config", "player1_key2_jump", global.player_[inp.key][1][2][action.jump]);
+		ini_write_real("config", "player1_key_crouch", global.player_[inp.key][1][1][action.crouch]);
+		ini_write_real("config", "player1_key2_crouch", global.player_[inp.key][1][2][action.crouch]);
+		ini_write_real("config", "player1_key_crouch_toggle", global.player_[inp.key][1][1][action.crouch_toggle]);
+		ini_write_real("config", "player1_key2_crouch_toggle", global.player_[inp.key][1][2][action.crouch_toggle]);
+		ini_write_real("config", "player1_key_sprint", global.player_[inp.key][1][1][action.sprint]);
+		ini_write_real("config", "player1_key2_sprint", global.player_[inp.key][1][2][action.sprint]);
+		ini_write_real("config", "player1_key_sprint_toggle", global.player_[inp.key][1][1][action.sprint_toggle]);
+		ini_write_real("config", "player1_key2_sprint_toggle", global.player_[inp.key][1][2][action.sprint_toggle]);
+		ini_write_real("config", "player1_key_left", global.player_[inp.key][1][1][action.left]);
+		ini_write_real("config", "player1_key2_left", global.player_[inp.key][1][2][action.left]);
+		ini_write_real("config", "player1_key_right", global.player_[inp.key][1][1][action.right]);
+		ini_write_real("config", "player1_key2_right", global.player_[inp.key][1][2][action.right]);
+		ini_write_real("config", "player1_key_down", global.player_[inp.key][1][1][action.down]);
+		ini_write_real("config", "player1_key2_down", global.player_[inp.key][1][2][action.down]);
+		ini_write_real("config", "player1_key_up", global.player_[inp.key][1][1][action.up]);
+		ini_write_real("config", "player1_key2_up", global.player_[inp.key][1][2][action.up]);
+		ini_write_real("config", "player1_key_tongue", global.player_[inp.key][1][1][action.tongue]);
+		ini_write_real("config", "player1_key2_tongue", global.player_[inp.key][1][2][action.tongue]);
+		ini_write_real("config", "player1_key_zoom_in", global.player_[inp.key][1][1][action.zoom_in]);
+		ini_write_real("config", "player1_key2_zoom_in", global.player_[inp.key][1][2][action.zoom_in]);
+		ini_write_real("config", "player1_key_zoom_out", global.player_[inp.key][1][1][action.zoom_out]);
+		ini_write_real("config", "player1_key2_zoom_out", global.player_[inp.key][1][2][action.zoom_out]);
+		ini_write_real("config", "player1_key_accept", global.player_[inp.key][1][1][action.accept]);
+		ini_write_real("config", "player1_key2_accept", global.player_[inp.key][1][2][action.accept]);
+		ini_write_real("config", "player1_key_back", global.player_[inp.key][1][1][action.back]);
+		ini_write_real("config", "player1_key2_back", global.player_[inp.key][1][2][action.back]);
+		ini_write_real("config", "player1_up_is_also_jump", global.player1_up_is_also_jump);
+		ini_write_real("config", "player1_double_tap_to_run", global.player1_double_tap_to_run);
+		ini_write_real("config", "player1_sprint_toggle", global.player1_sprint_toggle);
+		ini_write_real("config", "player1_double_tap_to_dive", global.player1_double_tap_to_dive);
+		ini_write_real("config", "player1_cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
+		ini_write_real("config", "player1_cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
+		ini_write_real("config", "player1_down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
+		ini_write_real("config", "player1_wall_jump_setting", global.player1_wall_jump_setting);
+		ini_write_real("config", "player1_drop_from_rope", global.player1_drop_from_rope);
+		ini_write_real("config", "player1_show_controls", global.player1_show_controls);
+		ini_close();
+	}
 	#endregion /* After setting the keyboard controls back to default, save these settings in config END */
 	
 }

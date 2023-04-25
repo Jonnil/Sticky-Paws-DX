@@ -67,7 +67,7 @@ else
 	scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size, c_black, c_white, image_alpha);
 }
 
-if (close = false)
+if (close == false)
 {
 	if (show_copy_to_clipboard_button == true)
 	{
@@ -134,7 +134,7 @@ and (menu_delay == 0)
 	and (menu == "copy_to_clipboard")
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, get_window_width * 0.5 - 185 + 370, get_window_height * 0.5 + 42 + 39))
 	and (global.controls_used_for_menu_navigation == "mouse")
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	or (keyboard_check(vk_control))
 	and (keyboard_check_pressed(ord("C")))
 	{
@@ -158,12 +158,12 @@ and (menu_delay == 0)
 if (keyboard_check_pressed(ord("X")))
 or (keyboard_check_pressed(vk_backspace))
 or (keyboard_check_pressed(vk_escape))
-or (mouse_check_button_pressed(mb_right))
-or (mouse_check_button_pressed(mb_side1))
-or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_back))
-or (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_back))
-or (gamepad_button_check(global.player3_slot, global.player2_gamepad_button_back))
-or (gamepad_button_check(global.player4_slot, global.player2_gamepad_button_back))
+or (mouse_check_button_released(mb_right))
+or (mouse_check_button_released(mb_side1))
+or (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
+or (gamepad_button_check(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
+or (gamepad_button_check(global.player3_slot, global.player_[inp.gp][2][1][action.back]))
+or (gamepad_button_check(global.player4_slot, global.player_[inp.gp][2][1][action.back]))
 
 or (menu == "back_open_folder_text")
 and (keyboard_check_pressed(ord("Z")))
@@ -172,17 +172,17 @@ and (keyboard_check_pressed(vk_space))
 or (menu == "back_open_folder_text")
 and (keyboard_check_pressed(vk_enter))
 or (menu == "back_open_folder_text")
-and (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept))
+and (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
 or (menu == "back_open_folder_text")
-and (gamepad_button_check(global.player2_slot, global.player2_gamepad_button_accept))
+and (gamepad_button_check(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
 or (menu == "back_open_folder_text")
-and (gamepad_button_check(global.player3_slot, global.player3_gamepad_button_accept))
+and (gamepad_button_check(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
 or (menu == "back_open_folder_text")
-and (gamepad_button_check(global.player4_slot, global.player4_gamepad_button_accept))
+and (gamepad_button_check(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
 
 or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 - 185 + 370, get_window_height * 0.5 + 42 + 39 + 42))
 and (global.controls_used_for_menu_navigation == "mouse")
-and (mouse_check_button_pressed(mb_left))
+and (mouse_check_button_released(mb_left))
 {
 	if (menu_delay == 0)
 	{
@@ -221,3 +221,12 @@ if (instance_exists(obj_leveleditor))
 #endregion /* Make it so you can't click on any other button while open folder text exists END */
 
 scr_draw_cursor_mouse();
+
+if (menu_delay > 0)
+{
+	menu_delay -= 1;
+}
+
+draw_set_halign(fa_left);
+scr_draw_text_outlined(32, 32, "menu delay: " + string(menu_delay));
+scr_draw_text_outlined(32, 64, "menu: " + string(menu));

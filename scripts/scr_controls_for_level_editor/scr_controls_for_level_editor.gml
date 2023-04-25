@@ -1,52 +1,56 @@
 function scr_controls_for_level_editor()
 {
+	key_up = noone;
+	key_left = noone;
+	key_right = noone;
+	key_down = noone;
 	
 	#region /* Controls for level editor */
-	key_up = (keyboard_check_pressed(global.player1_key_up)) or (keyboard_check_pressed(vk_up)) or (keyboard_check_pressed(ord("W"))) or (gamepad_button_check_pressed(global.player1_slot, gp_padu)) or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0);
-	key_left = (keyboard_check_pressed(global.player1_key_left)) or (keyboard_check_pressed(vk_left)) or (keyboard_check_pressed(ord("A"))) or (gamepad_button_check_pressed(global.player1_slot, gp_padl)) or (gamepad_axis_value(global.player1_slot, gp_axislh) < 0);
-	key_right = (keyboard_check_pressed(global.player1_key_right)) or (keyboard_check_pressed(vk_right)) or (keyboard_check_pressed(ord("D"))) or (gamepad_button_check_pressed(global.player1_slot, gp_padr)) or (gamepad_axis_value(global.player1_slot, gp_axislh) > 0);
-	key_down = (keyboard_check_pressed(global.player1_key_down)) or (keyboard_check_pressed(vk_down)) or (keyboard_check_pressed(ord("S"))) or (gamepad_button_check_pressed(global.player1_slot, gp_padd)) or (gamepad_axis_value(global.player1_slot, gp_axislv) > 0);
+	key_up = scr_key_initialize(key_up, 0, 1, action.up) or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0) and (menu_joystick_delay <= 0);
+	key_left = scr_key_initialize(key_left, 0, 1, action.left) or (gamepad_axis_value(global.player1_slot, gp_axislh) < 0) and (menu_joystick_delay <= 0);
+	key_right = scr_key_initialize(key_right, 0, 1, action.right) or (gamepad_axis_value(global.player1_slot, gp_axislh) > 0) and (menu_joystick_delay <= 0);
+	key_down = scr_key_initialize(key_down, 0, 1, action.down) or (gamepad_axis_value(global.player1_slot, gp_axislv) > 0) and (menu_joystick_delay <= 0);
 	
 	#region /* Player 1 Key Accept */
 	
-	/* Player 1 Key Accept Hold */ key_a_hold = (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_accept))
-	or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button2_accept))
-	or (keyboard_check(global.player1_key_accept))
-	or (keyboard_check(global.player1_key2_accept))
+	/* Player 1 Key Accept Hold */ key_a_hold = (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+	or (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
+	or (keyboard_check(global.player_[inp.key][1][1][action.accept]))
+	or (keyboard_check(global.player_[inp.key][1][2][action.accept]))
 	or (keyboard_check(vk_space));
 	
-	/* Player 1 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_accept))
-	or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_accept))
-	or (keyboard_check_pressed(global.player1_key_accept))
-	or (keyboard_check_pressed(global.player1_key2_accept))
+	/* Player 1 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+	or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
+	or (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept]))
+	or (keyboard_check_pressed(global.player_[inp.key][1][2][action.accept]))
 	or (keyboard_check_pressed(vk_space));
 	
-	/* Player 1 Key Accept Released */ key_a_released = (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_accept))
-	or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_accept))
-	or (keyboard_check_released(global.player1_key_accept))
-	or (keyboard_check_released(global.player1_key2_accept))
+	/* Player 1 Key Accept Released */ key_a_released = (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+	or (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
+	or (keyboard_check_released(global.player_[inp.key][1][1][action.accept]))
+	or (keyboard_check_released(global.player_[inp.key][1][2][action.accept]))
 	or (keyboard_check_released(vk_space));
 	
 	#endregion /* Player 1 Key Accept END */
 	
 	#region /* Player 1 Key Back */
 	
-	/* Player 1 Key Back Hold */ key_b_hold = (gamepad_button_check(global.player1_slot, global.player1_gamepad_button_back))
-	or (gamepad_button_check(global.player1_slot, global.player1_gamepad_button2_back))
-	or (keyboard_check(global.player1_key_back))
-	or (keyboard_check(global.player1_key2_back))
+	/* Player 1 Key Back Hold */ key_b_hold = (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
+	or (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
+	or (keyboard_check(global.player_[inp.key][1][1][action.back]))
+	or (keyboard_check(global.player_[inp.key][1][2][action.back]))
 	or (keyboard_check(vk_escape));
 	
-	/* Player 1 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button_back))
-	or (gamepad_button_check_pressed(global.player1_slot, global.player1_gamepad_button2_back))
-	or (keyboard_check_pressed(global.player1_key_back))
-	or (keyboard_check_pressed(global.player1_key2_back))
+	/* Player 1 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
+	or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
+	or (keyboard_check_pressed(global.player_[inp.key][1][1][action.back]))
+	or (keyboard_check_pressed(global.player_[inp.key][1][2][action.back]))
 	or (keyboard_check_pressed(vk_escape));
 	
-	/* Player 1 Key Back Released */ key_b_released = (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button_back))
-	or (gamepad_button_check_released(global.player1_slot, global.player1_gamepad_button2_back))
-	or (keyboard_check_released(global.player1_key_back))
-	or (keyboard_check_released(global.player1_key2_back))
+	/* Player 1 Key Back Released */ key_b_released = (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
+	or (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
+	or (keyboard_check_released(global.player_[inp.key][1][1][action.back]))
+	or (keyboard_check_released(global.player_[inp.key][1][2][action.back]))
 	or (keyboard_check_released(vk_escape));
 	
 	#endregion /* Player 1 Key Back END */

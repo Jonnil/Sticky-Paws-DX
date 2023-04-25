@@ -368,9 +368,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (edit_name_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (edit_name_y) - 3 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (level_editor_edit_name = false)
+			and (level_editor_edit_name == false)
 			or (key_a_pressed)
-			and (level_editor_edit_name = false)
+			and (level_editor_edit_name == false)
 			{
 				level_editor_edit_name = true;
 				can_input_level_name = true;
@@ -379,7 +379,6 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				global.actually_play_edited_level = false;
 				if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 				{
-					show_message("keyboard_string = " + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
 					global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
 					keyboard_string = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
 				}
@@ -397,9 +396,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (edit_description_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (edit_description_y) - 3 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (level_editor_edit_name = false)
+			and (level_editor_edit_name == false)
 			or (key_a_pressed)
-			and (level_editor_edit_name = false)
+			and (level_editor_edit_name == false)
 			{
 				level_editor_edit_name = true;
 				can_input_level_name = true;

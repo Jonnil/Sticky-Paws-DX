@@ -6,34 +6,34 @@ if (instance_exists(obj_player))
 {
 	if (instance_nearest(x, y, obj_player).player == 1)
 	{
-		player_gamepad_button_up = global.player1_gamepad_button_up;
-		player_gamepad_button2_up = global.player1_gamepad_button2_up;
-		player_key_up = global.player1_key_up;
-		player_key2_up = global.player1_key2_up;
+		player_gamepad_button_up = global.player_[inp.gp][1][1][action.up];
+		player_gamepad_button2_up = global.player_[inp.gp][1][2][action.up];
+		player_key_up = global.player_[inp.key][1][1][action.up];
+		player_key2_up = global.player_[inp.key][1][2][action.up];
 	}
 	else
 	if (instance_nearest(x, y, obj_player).player == 2)
 	{
-		player_gamepad_button_up = global.player2_gamepad_button_up;
-		player_gamepad_button2_up = global.player2_gamepad_button2_up;
-		player_key_up = global.player2_key_up;
-		player_key2_up = global.player2_key2_up;
+		player_gamepad_button_up = global.player_[inp.gp][2][1][action.up];
+		player_gamepad_button2_up = global.player_[inp.gp][2][2][action.up];
+		player_key_up = global.player_[inp.key][2][1][action.up];
+		player_key2_up = global.player_[inp.key][2][2][action.up];
 	}
 	else
 	if (instance_nearest(x, y, obj_player).player == 3)
 	{
-		player_gamepad_button_up = global.player3_gamepad_button_up;
-		player_gamepad_button2_up = global.player3_gamepad_button2_up;
-		player_key_up = global.player3_key_up;
-		player_key2_up = global.player3_key2_up;
+		player_gamepad_button_up = global.player_[inp.gp][3][1][action.up];
+		player_gamepad_button2_up = global.player_[inp.gp][3][2][action.up];
+		player_key_up = global.player_[inp.key][3][1][action.up];
+		player_key2_up = global.player_[inp.key][3][2][action.up];
 	}
 	else
 	if (instance_nearest(x, y, obj_player).player == 4)
 	{
-		player_gamepad_button_up = global.player4_gamepad_button_up;
-		player_gamepad_button2_up = global.player4_gamepad_button2_up;
-		player_key_up = global.player4_key_up;
-		player_key2_up = global.player4_key2_up;
+		player_gamepad_button_up = global.player_[inp.gp][4][1][action.up];
+		player_gamepad_button2_up = global.player_[inp.gp][4][2][action.up];
+		player_key_up = global.player_[inp.key][4][1][action.up];
+		player_key2_up = global.player_[inp.key][4][2][action.up];
 	}
 }
 if (door_xscale > 0)

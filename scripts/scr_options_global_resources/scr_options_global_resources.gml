@@ -40,7 +40,7 @@ function scr_options_global_resources()
 		}
 		
 		if (key_up)
-		and (can_navigate_settings_sidebar = false)
+		and (can_navigate_settings_sidebar == false)
 		and (menu_delay == 0)
 		{
 			if (menu == "resource_pack")
@@ -138,7 +138,7 @@ function scr_options_global_resources()
 		}
 		else
 		if (key_down)
-		and (can_navigate_settings_sidebar = false)
+		and (can_navigate_settings_sidebar == false)
 		and (menu_delay == 0)
 		{
 			if (menu == "resource_pack")
@@ -285,7 +285,7 @@ function scr_options_global_resources()
 			}
 			
 			if (key_left)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (menu == "resource_pack")
 			or (mouse_check_button_pressed(mb_left))
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (resource_pack_y) - 16, resource_pack_x - 32 + 16, 20 + (resource_pack_y) + 16))
@@ -293,7 +293,7 @@ function scr_options_global_resources()
 			{
 				menu = "resource_pack";
 				if (menu_delay == 0)
-				and (can_navigate_settings_sidebar = false)
+				and (can_navigate_settings_sidebar == false)
 				and (global.selected_resource_pack > 0)
 				and (global.pause_room != room_leveleditor)
 				{
@@ -306,7 +306,7 @@ function scr_options_global_resources()
 			}
 			else
 			if (key_right)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (menu == "resource_pack")
 			or (mouse_check_button_pressed(mb_left))
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (resource_pack_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (resource_pack_y) + 16))
@@ -314,7 +314,7 @@ function scr_options_global_resources()
 			{
 				menu = "resource_pack";
 				if (menu_delay == 0)
-				and (can_navigate_settings_sidebar = false)
+				and (can_navigate_settings_sidebar == false)
 				and (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack + 1)) + "/data/sprite_origin_point.ini"))
 				and (global.pause_room != room_leveleditor)
 				{
@@ -392,7 +392,7 @@ function scr_options_global_resources()
 		{
 			menu = "title_backgrounds";
 			if (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (global.selected_title_background > 0)
 			{
 				if (keyboard_check(vk_control))
@@ -456,12 +456,12 @@ function scr_options_global_resources()
 		{
 			menu = "title_backgrounds";
 			if (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
 			and (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 			and (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != "")
 			or (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (file_exists(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
 			and (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 			and (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != "")
@@ -564,7 +564,7 @@ function scr_options_global_resources()
 		{
 			menu = "title_background_scale";
 			if (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (global.title_background_scale > scale_increment)
 			{
 				if (keyboard_check(vk_control))
@@ -589,7 +589,7 @@ function scr_options_global_resources()
 		{
 			menu = "title_background_scale";
 			if (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			{
 				if (keyboard_check(vk_control))
 				{
@@ -657,7 +657,7 @@ function scr_options_global_resources()
 		{
 			menu = "background_layer_x_scroll";
 			if (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (global.background_layer_x_scroll > - 10)
 			{
 				if (keyboard_check(vk_control))
@@ -679,7 +679,7 @@ function scr_options_global_resources()
 		{
 			menu = "background_layer_x_scroll";
 			if (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (global.background_layer_x_scroll < + 10)
 			{
 				if (keyboard_check(vk_control))
@@ -741,7 +741,7 @@ function scr_options_global_resources()
 		{
 			menu = "background_layer_y_scroll";
 			if (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (global.background_layer_y_scroll > - 10)
 			{
 				if (keyboard_check(vk_control))
@@ -763,7 +763,7 @@ function scr_options_global_resources()
 		{
 			menu = "background_layer_y_scroll";
 			if (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (global.background_layer_y_scroll < + 10)
 			{
 				if (keyboard_check(vk_control))
@@ -869,7 +869,7 @@ function scr_options_global_resources()
 		{
 			menu = "title_logos";
 			if (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (global.selected_title_logo > -1)
 			{
 				global.selected_title_logo -= 1;
@@ -906,12 +906,12 @@ function scr_options_global_resources()
 		{
 			menu = "title_logos";
 			if (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (file_exists("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1))))
 			and (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != undefined)
 			and (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != "")
 			or (menu_delay == 0)
-			and (can_navigate_settings_sidebar = false)
+			and (can_navigate_settings_sidebar == false)
 			and (file_exists(working_directory + "/custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1))))
 			and (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != undefined)
 			and (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != "")

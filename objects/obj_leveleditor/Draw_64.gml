@@ -886,12 +886,22 @@ if (global.actually_play_edited_level == false)
 		#region /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing */
 		if (set_difficulty_mode == false)
 		{
+			if (global.enable_difficulty_selection_settings == false)
+			or (global.enable_difficutly_layers_in_level_editor == false)
+			{
+				var level_name_x_offset = 20;
+			}
+			else
+			{
+				var level_name_x_offset = 66;
+			}
+			
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_middle);
 			draw_set_alpha(0.5);
-			draw_rectangle_color(display_get_gui_width() - 26 - string_width(global.level_name), display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(display_get_gui_width() - (level_name_x_offset * 0.5) - string_width(global.level_name), display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
-			scr_draw_text_outlined(display_get_gui_width() - 66, display_get_gui_height() - 16, string(global.level_name), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - level_name_x_offset, display_get_gui_height() - 16, string(global.level_name), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing END */
 		
@@ -1400,6 +1410,7 @@ if (global.actually_play_edited_level == false)
 			
 			#region /* Set difficulty layer */
 			if (global.enable_difficulty_selection_settings == true)
+			and (global.enable_difficutly_layers_in_level_editor == true)
 			and (set_difficulty_mode == true)
 			{
 				#region /* Easy */
@@ -1442,6 +1453,7 @@ if (global.actually_play_edited_level == false)
 			}
 			else
 			if (global.enable_difficulty_selection_settings == true)
+			and (global.enable_difficutly_layers_in_level_editor == true)
 			{
 				draw_sprite_ext(spr_leveleditor_icons, 19, display_get_gui_width() - 32, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 			}
@@ -1606,6 +1618,7 @@ if (global.actually_play_edited_level == false)
 			
 			#region /* Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard */
 			if (global.enable_difficulty_selection_settings == true)
+			and (global.enable_difficutly_layers_in_level_editor == true)
 			{
 				
 				#region /* Easy */
@@ -1741,22 +1754,22 @@ if (global.actually_play_edited_level == false)
 		#endregion /* Toggle Grid END */
 		
 		#region /* Zoom Out */
-		if (keyboard_check(global.player1_key_zoom_out))
-		and (!keyboard_check(global.player1_key_zoom_in))
-		or (keyboard_check(global.player2_key_zoom_out))
-		and (!keyboard_check(global.player2_key_zoom_in))
-		or (keyboard_check(global.player3_key_zoom_out))
-		and (!keyboard_check(global.player3_key_zoom_in))
-		or (keyboard_check(global.player4_key_zoom_out))
-		and (!keyboard_check(global.player4_key_zoom_in))
-		or (keyboard_check(global.player1_key2_zoom_out))
-		and (!keyboard_check(global.player1_key2_zoom_in))
-		or (keyboard_check(global.player2_key2_zoom_out))
-		and (!keyboard_check(global.player2_key2_zoom_in))
-		or (keyboard_check(global.player3_key2_zoom_out))
-		and (!keyboard_check(global.player3_key2_zoom_in))
-		or (keyboard_check(global.player4_key2_zoom_out))
-		and (!keyboard_check(global.player4_key2_zoom_in))
+		if (keyboard_check(global.player_[inp.key][1][1][action.zoom_out]))
+		and (!keyboard_check(global.player_[inp.key][1][1][action.zoom_in]))
+		or (keyboard_check(global.player_[inp.key][2][1][action.zoom_out]))
+		and (!keyboard_check(global.player_[inp.key][2][1][action.zoom_in]))
+		or (keyboard_check(global.player_[inp.key][3][1][action.zoom_out]))
+		and (!keyboard_check(global.player_[inp.key][3][1][action.zoom_in]))
+		or (keyboard_check(global.player_[inp.key][4][1][action.zoom_out]))
+		and (!keyboard_check(global.player_[inp.key][4][1][action.zoom_in]))
+		or (keyboard_check(global.player_[inp.key][1][2][action.zoom_out]))
+		and (!keyboard_check(global.player_[inp.key][1][2][action.zoom_in]))
+		or (keyboard_check(global.player_[inp.key][2][2][action.zoom_out]))
+		and (!keyboard_check(global.player_[inp.key][2][2][action.zoom_in]))
+		or (keyboard_check(global.player_[inp.key][3][2][action.zoom_out]))
+		and (!keyboard_check(global.player_[inp.key][3][2][action.zoom_in]))
+		or (keyboard_check(global.player_[inp.key][4][2][action.zoom_out]))
+		and (!keyboard_check(global.player_[inp.key][4][2][action.zoom_in]))
 		or (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 192, - 64, display_get_gui_width() - 128, + 64))
 		and (show_icons_at_top == true)
 		and (mouse_check_button(mb_left))
@@ -1791,22 +1804,22 @@ if (global.actually_play_edited_level == false)
 		#endregion /* Reset Zoom END */
 		
 		#region /* Zoom In */
-		if (keyboard_check(global.player1_key_zoom_in))
-		and (!keyboard_check(global.player1_key_zoom_out))
-		or (keyboard_check(global.player2_key_zoom_in))
-		and (!keyboard_check(global.player2_key_zoom_out))
-		or (keyboard_check(global.player3_key_zoom_in))
-		and (!keyboard_check(global.player3_key_zoom_out))
-		or (keyboard_check(global.player4_key_zoom_in))
-		and (!keyboard_check(global.player4_key_zoom_out))
-		or (keyboard_check(global.player1_key2_zoom_in))
-		and (!keyboard_check(global.player1_key2_zoom_out))
-		or (keyboard_check(global.player2_key2_zoom_in))
-		and (!keyboard_check(global.player2_key2_zoom_out))
-		or (keyboard_check(global.player3_key2_zoom_in))
-		and (!keyboard_check(global.player3_key2_zoom_out))
-		or (keyboard_check(global.player4_key2_zoom_in))
-		and (!keyboard_check(global.player4_key2_zoom_out))
+		if (keyboard_check(global.player_[inp.key][1][1][action.zoom_in]))
+		and (!keyboard_check(global.player_[inp.key][1][1][action.zoom_out]))
+		or (keyboard_check(global.player_[inp.key][2][1][action.zoom_in]))
+		and (!keyboard_check(global.player_[inp.key][2][1][action.zoom_out]))
+		or (keyboard_check(global.player_[inp.key][3][1][action.zoom_in]))
+		and (!keyboard_check(global.player_[inp.key][3][1][action.zoom_out]))
+		or (keyboard_check(global.player_[inp.key][4][1][action.zoom_in]))
+		and (!keyboard_check(global.player_[inp.key][4][1][action.zoom_out]))
+		or (keyboard_check(global.player_[inp.key][1][2][action.zoom_in]))
+		and (!keyboard_check(global.player_[inp.key][1][2][action.zoom_out]))
+		or (keyboard_check(global.player_[inp.key][2][2][action.zoom_in]))
+		and (!keyboard_check(global.player_[inp.key][2][2][action.zoom_out]))
+		or (keyboard_check(global.player_[inp.key][3][2][action.zoom_in]))
+		and (!keyboard_check(global.player_[inp.key][3][2][action.zoom_out]))
+		or (keyboard_check(global.player_[inp.key][4][2][action.zoom_in]))
+		and (!keyboard_check(global.player_[inp.key][4][2][action.zoom_out]))
 		or (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, - 64, display_get_gui_width(), + 64))
 		and (show_icons_at_top == true)
 		and (mouse_check_button(mb_left))

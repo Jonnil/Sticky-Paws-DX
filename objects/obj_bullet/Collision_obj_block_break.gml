@@ -1,7 +1,7 @@
 /* Collision Event with player object */
 if (die == false)
 {
-	if (die_volting = false)
+	if (die_volting == false)
 	{
 		die = true;
 		if (image_xscale < 0)

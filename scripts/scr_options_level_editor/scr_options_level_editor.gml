@@ -52,8 +52,7 @@ function scr_options_level_editor()
 		var custom_background_4_vtiled_y = (50 * 10);
 		
 		#region /* Accept drop down menu */
-		if (key_a_released)
-		or (mouse_check_button_released(mb_left))
+		if (key_a_pressed)
 		{
 			
 			#region /* Drop down menu */
@@ -78,29 +77,7 @@ function scr_options_level_editor()
 		}
 		#endregion /* Accept drop down menu END */
 		
-		#region /* Scroll menu on right side */
-		menu_y_offset = lerp(menu_y_offset, menu_y_offset_real, 0.5);
-		if (menu_y_offset_real >= 0)
-		{
-			menu_y_offset_real = 0;
-		}
-		if (abs(menu_y_offset_real) + get_window_height - 200 < menu_cursor_y_position)
-		{
-			menu_y_offset_real -= 10;
-		}
-		if (abs(menu_y_offset_real) + 200 > menu_cursor_y_position)
-		{
-			menu_y_offset_real += 10;
-		}
-		if (abs(menu_y_offset_real) + get_window_height + 200 < menu_cursor_y_position)
-		{
-			menu_y_offset_real -= 100;
-		}
-		if (abs(menu_y_offset_real) - 200 > menu_cursor_y_position)
-		{
-			menu_y_offset_real += 100;
-		}
-		#endregion /* Scroll menu on right side END */
+		scr_scroll_menu();
 	
 		if (menu == "back_level_editor_options")
 		or (menu == "background_offset")
@@ -114,6 +91,7 @@ function scr_options_level_editor()
 		or (menu == "rain")
 		or (menu == "enable_time_countdown")
 		or (menu == "time_countdown")
+		or (menu == "show_new_items_notification_level_editor")
 		or (menu == "selected_level_editing_music")
 		or (menu == "delete_all_objects")
 		{
@@ -121,11 +99,11 @@ function scr_options_level_editor()
 			#region /* Menu Navigation */
 			
 			#region /* Back Navigation */
-			if (key_b_released)
+			if (key_b_pressed)
 			and (!keyboard_check(vk_control))
 			and (menu_delay == 0)
 			or (menu == "back_level_editor_options")
-			and (key_a_released)
+			and (key_a_pressed)
 			and (menu_delay == 0)
 			{
 				
@@ -141,8 +119,20 @@ function scr_options_level_editor()
 					ini_write_real("info", "rain", global.rain);
 					ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
 					ini_write_real("info", "time_countdown", global.time_countdown);
+					ini_close();
 				}
 				#endregion /* Save level_information.ini END */
+				
+				#region /* Save config.ini */
+				if (global.character_select_in_this_menu == "level_editor")
+				and (file_exists(working_directory + "/config.ini"))
+				{
+					ini_open(working_directory + "/config.ini");
+					ini_write_real("config", "show_new_items_notification_level_editor", global.show_new_items_notification);
+					ini_write_real("config", "selected_level_editing_music", global.selected_level_editing_music);
+					ini_close();
+				}
+				#endregion /* Save config.ini END */
 				
 				if (open_dropdown == true)
 				{
@@ -177,7 +167,7 @@ function scr_options_level_editor()
 			else
 			if (menu == "background_offset")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
@@ -204,7 +194,7 @@ function scr_options_level_editor()
 			else
 			if (menu == "background_parallax")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
@@ -231,7 +221,7 @@ function scr_options_level_editor()
 			else
 			if (menu == "background_scale")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
@@ -258,7 +248,7 @@ function scr_options_level_editor()
 			else
 			if (menu == "background_tiled")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
@@ -321,14 +311,14 @@ function scr_options_level_editor()
 			}
 			if (menu == "make_every_tileset_into_default_tileset")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.make_every_tileset_into_default_tileset = false)
+					if (global.make_every_tileset_into_default_tileset == false)
 					{
 						global.make_every_tileset_into_default_tileset = true;
 					}
@@ -358,14 +348,14 @@ function scr_options_level_editor()
 			else
 			if (menu == "deactivate_objects_from_most_zoomed_out")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.deactivate_objects_from_most_zoomed_out = false)
+					if (global.deactivate_objects_from_most_zoomed_out == false)
 					{
 						global.deactivate_objects_from_most_zoomed_out = true;
 					}
@@ -394,14 +384,14 @@ function scr_options_level_editor()
 			}
 			if (menu == "rain")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.rain = false)
+					if (global.rain == false)
 					{
 						global.rain = true;
 					}
@@ -430,14 +420,14 @@ function scr_options_level_editor()
 			}
 			if (menu == "enable_time_countdown")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.enable_time_countdown = false)
+					if (global.enable_time_countdown == false)
 					{
 						global.enable_time_countdown = true;
 					}
@@ -466,7 +456,7 @@ function scr_options_level_editor()
 					}
 					else
 					{
-						menu = "selected_level_editing_music";
+						menu = "show_new_items_notification_level_editor";
 					}
 					menu_delay = 3;
 				}
@@ -486,12 +476,29 @@ function scr_options_level_editor()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					menu = "selected_level_editing_music";
+					menu = "show_new_items_notification_level_editor";
 					menu_delay = 3;
 				}
 			}
-			if (menu == "selected_level_editing_music")
+			if (menu == "show_new_items_notification_level_editor")
 			{
+				if (key_a_pressed)
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				or (mouse_check_button_released(mb_left))
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					if (global.show_new_items_notification == false)
+					{
+						global.show_new_items_notification = true;
+					}
+					else
+					{
+						global.show_new_items_notification = false;
+					}
+					menu_delay = 3;
+				}
 				if (key_up)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
@@ -504,6 +511,24 @@ function scr_options_level_editor()
 					{
 						menu = "enable_time_countdown";
 					}
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					menu = "selected_level_editing_music";
+					menu_delay = 3;
+				}
+			}
+			if (menu == "selected_level_editing_music")
+			{
+				if (key_up)
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					menu = "show_new_items_notification_level_editor";
 					menu_delay = 3;
 				}
 				else
@@ -536,7 +561,7 @@ function scr_options_level_editor()
 			else
 			if (menu == "delete_all_objects")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
@@ -591,8 +616,9 @@ function scr_options_level_editor()
 			var rain_y = 47 * 10 + menu_y_offset;
 			var enable_time_countdown_y = 47 * 11 + menu_y_offset;
 			var time_countdown_y = 46 * 12 + menu_y_offset;
-			var selected_level_editing_music_y = 46 * 14 + menu_y_offset - 16;
-			var delete_all_objects_y = 46 * 15 + menu_y_offset + 20 - 16;
+			var show_new_items_notification_y = 46 * 13 + menu_y_offset;
+			var selected_level_editing_music_y = 46 * 15 + menu_y_offset - 16;
+			var delete_all_objects_y = 46 * 16 + menu_y_offset + 20 - 16;
 			
 			draw_menu_button(level_editor_options_x, back_level_editor_options_y, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icons_back, 0, level_editor_options_x + 20, back_level_editor_options_y + 21, 1, 1, 0, c_white, 1);
@@ -610,6 +636,7 @@ function scr_options_level_editor()
 			{
 				global.time_countdown = draw_menu_left_right_buttons(level_editor_options_x, time_countdown_y, options_level_editor_right_arrow_x, l10n_text("Time Countdown"), global.time_countdown, "time_countdown", 1, false);
 			}
+			draw_menu_checkmark(level_editor_options_x - 90, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification_level_editor", global.show_new_items_notification);
 			draw_menu_button(level_editor_options_x, delete_all_objects_y, l10n_text("Delete All Objects"), "delete_all_objects", "delete_all_objects_no");
 			draw_sprite_ext(spr_icons_delete, 0, level_editor_options_x + 16, delete_all_objects_y + 21, 1, 1, 0, c_white, 1);
 			draw_menu_dropdown(level_editor_options_x - 32, selected_level_editing_music_y, l10n_text("Level Editing Music"), "selected_level_editing_music", global.selected_level_editing_music, l10n_text("None"), l10n_text("Music 1"), l10n_text("Music 2"), l10n_text("Music 3"));
@@ -629,14 +656,14 @@ function scr_options_level_editor()
 			draw_menu_button(get_window_width * 0.5 + 32, get_window_height * 0.5, l10n_text("No"), "delete_all_objects_no", "delete_all_objects");
 			draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 + 32 + 16, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1);
 			
-			if (key_b_released)
+			if (key_b_pressed)
 			and (menu_delay == 0)
 			{
 				menu = "delete_all_objects";
 				menu_delay = 3;
 			}
 			else
-			if (key_a_released)
+			if (key_a_pressed)
 			and (menu_delay == 0)
 			{
 				if (menu == "delete_all_objects_no")
@@ -716,12 +743,12 @@ function scr_options_level_editor()
 			#region /* Background Offset Menu Navigation */
 			
 			#region /* Background Offset Back Navigation */
-			if (key_b_released)
+			if (key_b_pressed)
 			and (!keyboard_check(vk_control))
 			and (menu_delay == 0)
 			and (open_dropdown == false)
 			or (menu == "back_background_offset")
-			and (key_a_released)
+			and (key_a_pressed)
 			and (menu_delay == 0)
 			and (open_dropdown == false)
 			{
@@ -1140,12 +1167,12 @@ function scr_options_level_editor()
 			#region /* Background Parallax Menu Navigation */
 			
 			#region /* Background Parallax Back Navigation */
-			if (key_b_released)
+			if (key_b_pressed)
 			and (!keyboard_check(vk_control))
 			and (menu_delay == 0)
 			and (open_dropdown == false)
 			or (menu == "back_background_parallax")
-			and (key_a_released)
+			and (key_a_pressed)
 			and (menu_delay == 0)
 			and (open_dropdown == false)
 			{
@@ -1380,12 +1407,12 @@ function scr_options_level_editor()
 			#region /* Background Scale Menu Navigation */
 			
 			#region /* Background Scale Back Navigation */
-			if (key_b_released)
+			if (key_b_pressed)
 			and (!keyboard_check(vk_control))
 			and (menu_delay == 0)
 			and (open_dropdown == false)
 			or (menu == "back_background_scale")
-			and (key_a_released)
+			and (key_a_pressed)
 			and (menu_delay == 0)
 			and (open_dropdown == false)
 			{
@@ -1620,12 +1647,12 @@ function scr_options_level_editor()
 			#region /* Background Tiled Menu Navigation */
 			
 			#region /* Background Tiled Back Navigation */
-			if (key_b_released)
+			if (key_b_pressed)
 			and (!keyboard_check(vk_control))
 			and (menu_delay == 0)
 			and (open_dropdown == false)
 			or (menu == "back_background_tiled")
-			and (key_a_released)
+			and (key_a_pressed)
 			and (menu_delay == 0)
 			and (open_dropdown == false)
 			{
@@ -1673,7 +1700,7 @@ function scr_options_level_editor()
 			else
 			if (menu == "custom_background_1_htiled")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
@@ -1700,7 +1727,7 @@ function scr_options_level_editor()
 			}
 			if (menu == "custom_background_1_vtiled")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
@@ -1727,7 +1754,7 @@ function scr_options_level_editor()
 			}
 			if (menu == "custom_background_2_htiled")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
@@ -1754,7 +1781,7 @@ function scr_options_level_editor()
 			}
 			if (menu == "custom_background_2_vtiled")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
@@ -1781,7 +1808,7 @@ function scr_options_level_editor()
 			}
 			if (menu == "custom_background_3_htiled")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
@@ -1808,7 +1835,7 @@ function scr_options_level_editor()
 			}
 			if (menu == "custom_background_3_vtiled")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
@@ -1835,7 +1862,7 @@ function scr_options_level_editor()
 			}
 			if (menu == "custom_background_4_htiled")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
@@ -1862,7 +1889,7 @@ function scr_options_level_editor()
 			}
 			if (menu == "custom_background_4_vtiled")
 			{
-				if (key_a_released)
+				if (key_a_pressed)
 				and (menu_delay == 0)
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)

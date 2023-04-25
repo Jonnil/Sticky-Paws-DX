@@ -63,6 +63,7 @@ function scr_save_custom_level()
 				or (object == level_object_id.id_arrow_sign)
 				or (object == level_object_id.id_arrow_sign_small)
 				or (object == level_object_id.id_water)
+				or (object == level_object_id.id_breathable_water)
 				{
 					/* Always save second x AND y for these objects no matter what, even if they are on coordinate 0 */
 					str += string(second_x) + "Q";

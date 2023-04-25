@@ -82,11 +82,6 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		and (input_key == false)
 		and (open_dropdown == false)
 		and (menu_delay == 0)
-		or (key_b_pressed)
-		and (menu == menu_index)
-		and (input_key == false)
-		and (open_dropdown == false)
-		and (menu_delay == 0)
 		{
 			menu = menu_index;
 			open_dropdown = true;
@@ -95,6 +90,17 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 			{
 				can_navigate_settings_sidebar = false;
 			}
+		}
+		else
+		if (key_b_pressed)
+		and (menu == menu_index)
+		and (input_key == false)
+		and (open_dropdown == true)
+		and (menu_delay == 0)
+		{
+			menu = menu_index;
+			open_dropdown = false;
+			menu_delay = 3;
 		}
 		#endregion /* Clicking the menu button END */
 		

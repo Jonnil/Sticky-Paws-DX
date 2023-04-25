@@ -1,4 +1,4 @@
-if (global.show_collision_mask = false)
+if (global.show_collision_mask == false)
 {
 	visible = false;
 }
