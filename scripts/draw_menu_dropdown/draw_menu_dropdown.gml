@@ -171,6 +171,10 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		if (open_dropdown == true)
 		and (menu == menu_index)
 		{
+			if (variable_instance_exists(self, "menu_cursor_y_position"))
+			{
+				menu_cursor_y_position = y_position + 100;
+			}
 			draw_menu_dropdown_item(string_text_item1, x_position + 32, y_position, variable_to_change, 0);
 			draw_menu_dropdown_item(string_text_item2, x_position + 32, y_position, variable_to_change, 1);
 			draw_menu_dropdown_item(string_text_item3, x_position + 32, y_position, variable_to_change, 2);

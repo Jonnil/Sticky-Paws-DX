@@ -16,6 +16,7 @@ tag_speedrun = false;
 tag_standard = false;
 tag_technical = false;
 tag_themed = false;
+tag_glitch_showcase = false;
 intended_level_difficulty = 1; /* Easy = 0. Normal = 1. Hard = 2. Super Hard = 3 */
 
 scr_unzip_all() /* Unzip any .zip folder found in AppData */

@@ -11,6 +11,15 @@ else
 	can_save_to_character_config = true; /* You can save values to local appdata */
 }
 
+if (directory_exists(string(character_folder) + "/sprites/skin" + string(selected_skin)))
+{
+	skin_folder = "/skin" + string(selected_skin) + "/";
+}
+else
+{
+	skin_folder = "/";
+}
+
 /* The order of the variables needs to be in reverse alphabetical order, so it shows up in alphabetical order in the config.ini file. This also means that x should be after y */
 
 #region /* Play as Custom Character */

@@ -5,6 +5,17 @@ function scr_character_manage_menu_draw()
 	uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))) - 1);
 	var character_name = string(uppercase_character_name);
 	
+	var skin0_required = false;
+	if (!directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+	and (skin0_required == true)
+	{
+		var skin0_warning = true;
+	}
+	else
+	{
+		var skin0_warning = false;
+	}
+	
 	if (menu == "click_copy_character")
 	or (menu == "click_delete_character")
 	or (menu == "click_delete_character_no")
@@ -172,7 +183,7 @@ function scr_character_manage_menu_draw()
 				{
 					draw_menu_button(display_get_gui_width() * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no"); /* Copy Characters */
 					draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, delete_character_y + 21, 1, 1, 0, c_white, 1);
-					if (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+					if (skin0_warning == false)
 					{
 						draw_menu_button(display_get_gui_width() * 0.5 - 185, upload_character_y, l10n_text("Upload Character"), "click_upload_character", "click_upload_character"); /* Copy Characters */
 						draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 - 185 + 16, upload_character_y + 21, 1, 1, 0, c_white, 1);
@@ -206,7 +217,7 @@ function scr_character_manage_menu_draw()
 				#endregion /* Draw who made the character END */
 				
 				#region /* Draw error message if character doesn't have a "Skin" folder */
-				if (!directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+				if (skin0_warning == true)
 				and (selecting_official_character == false)
 				{
 					draw_set_alpha(0.5);
@@ -216,7 +227,7 @@ function scr_character_manage_menu_draw()
 					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 1), l10n_text("There is no skin0 folder in sprites folder for this character!"), global.default_text_size, c_black, c_white, 1);
 					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 1), l10n_text("There is no skin0 folder in sprites folder for this character!"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
 					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 2), l10n_text("To optimize the sprite loading,"), global.default_text_size, c_black, c_white, 1);
-					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 3), l10n_text("all character sprites need to be in skin folders to work properly,"), global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 3), l10n_text("all character sprites need to be in skin folders,"), global.default_text_size, c_black, c_white, 1);
 					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 4), l10n_text("even if you only have 1 set of sprites"), global.default_text_size, c_black, c_white, 1);
 				}
 				#endregion /* Draw error message if character doesn't have a "Skin" folder END */

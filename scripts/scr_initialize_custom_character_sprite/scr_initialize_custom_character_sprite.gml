@@ -16,7 +16,7 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 		string(sprite_name) + "_strip",
 		string(sprite_name)
 	];
-	var sprite_folders = string(character_folder) + "/sprites/skin" + string(selected_skin) + "/";
+	var sprite_folders = string(character_folder) + "/sprites" + string(skin_folder);
 	
 	/* This loop goes through all possible combinations of sprite names and folders. */
 	/* sprite_names and sprite_folders are arrays that contain the names of the sprites and folders to search through. */

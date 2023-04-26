@@ -11,6 +11,15 @@ else
 	can_save_to_character_config = true; /* You can save values to local appdata */
 }
 
+if (directory_exists(string(character_folder) + "/sprites/skin" + string(selected_skin)))
+{
+	skin_folder = "/skin" + string(selected_skin) + "/";
+}
+else
+{
+	skin_folder = "/";
+}
+
 allow_timeup = true;
 allow_timeattack = true;
 simple_controls = false; /* Simple Controls, used for testing if a level can be completed with limitations. All levels should be able to be finished, not 100% completed, with this option set to true. This option should be false by default when creating executable */

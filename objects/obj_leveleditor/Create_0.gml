@@ -891,6 +891,7 @@ if (global.actually_play_edited_level == false)
 	tag_standard = false;
 	tag_technical = false;
 	tag_themed = false;
+	tag_glitch_showcase = false;
 	intended_level_difficulty = 1; /* Easy = 0. Normal = 1. Hard = 2. Super Hard = 3 */
 	
 	#region /* Unlock placable objects */
@@ -1218,24 +1219,28 @@ if (global.actually_play_edited_level == false)
 	}
 	else
 	if (global.selected_level_editing_music == 1)
+	{
+		previous_selected_level_editing_music = -1;
+	}
+	if (global.selected_level_editing_music == 2)
 	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg"))
 	{
 		level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg");
-		previous_selected_level_editing_music = 1;
-	}
-	else
-	if (global.selected_level_editing_music == 2)
-	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg"))
-	{
-		level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg");
 		previous_selected_level_editing_music = 2;
 	}
 	else
 	if (global.selected_level_editing_music == 3)
+	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg"))
+	{
+		level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg");
+		previous_selected_level_editing_music = 3;
+	}
+	else
+	if (global.selected_level_editing_music == 4)
 	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg"))
 	{
 		level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg");
-		previous_selected_level_editing_music = 3;
+		previous_selected_level_editing_music = 4;
 	}
 	else
 	{

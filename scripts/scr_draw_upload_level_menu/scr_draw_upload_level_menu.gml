@@ -28,6 +28,7 @@ function scr_draw_upload_level_menu()
 	if (tag_standard == true){var tag_standard_text = "Standard" + " ";how_may_tags += 1;}else{var tag_standard_text = "";};
 	if (tag_technical == true){var tag_technical_text = "Technical" + " ";how_may_tags += 1;}else{var tag_technical_text = "";};
 	if (tag_themed == true){var tag_themed_text = "Themed" + " ";how_may_tags += 1;}else{var tag_themed_text = "";};
+	if (tag_glitch_showcase == true){var tag_glitch_showcase_text = "Glitch Showcase" + " ";how_may_tags += 1;}else{var tag_glitch_showcase_text = "";};
 	#endregion /* How many tags END */
 	
 	#region /* Pressing the Upload button */
@@ -80,6 +81,7 @@ function scr_draw_upload_level_menu()
 							tag_standard = ini_read_real("tags", "tag_standard", false);
 							tag_technical = ini_read_real("tags", "tag_technical", false);
 							tag_themed = ini_read_real("tags", "tag_themed", false);
+							tag_glitch_showcase = ini_read_real("tags", "glitch_showcase", false);
 							intended_level_difficulty = ini_read_real("info", "intended_level_difficulty", 1);
 							ini_close();
 							#endregion /* loads tags from level_information.ini END */
@@ -525,6 +527,7 @@ function scr_draw_upload_level_menu()
 		and (tag_standard_text == "")
 		and (tag_technical_text == "")
 		and (tag_themed_text == "")
+		and (tag_glitch_showcase_text == "")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_tags_y, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_tags_y, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
@@ -544,7 +547,8 @@ function scr_draw_upload_level_menu()
 			string(tag_speedrun_text) +
 			string(tag_standard_text) +
 			string(tag_technical_text) +
-			string(tag_themed_text)
+			string(tag_themed_text) + 
+			string(tag_glitch_showcase_text)
 			, global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Draw Level Tags END */
@@ -1073,6 +1077,7 @@ function scr_draw_upload_level_menu()
 	or (menu == "tag_standard")
 	or (menu == "tag_technical")
 	or (menu == "tag_themed")
+	or (menu == "tag_glitch_showcase")
 	or (menu == "intended_level_difficulty")
 	{
 		draw_set_alpha(0.9);
@@ -1094,7 +1099,8 @@ function scr_draw_upload_level_menu()
 		tag_standard = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 13) + menu_y_offset, "Standard", "tag_standard", tag_standard);
 		tag_technical = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 14) + menu_y_offset, "Technical", "tag_technical", tag_technical);
 		tag_themed = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 15) + menu_y_offset, "Themed", "tag_themed", tag_themed);
-		draw_menu_dropdown(display_get_gui_width() * 0.5 - 185, (45 * 16) + menu_y_offset, "Intended Difficulty", "intended_level_difficulty", intended_level_difficulty, "Easy", "Normal", "Hard", "Super Hard")
+		tag_glitch_showcase = draw_menu_checkmark(display_get_gui_width() * 0.5 - 185, (45 * 16) + menu_y_offset, "Glitch Showcase", "tag_glitch_showcase", tag_glitch_showcase);
+		draw_menu_dropdown(display_get_gui_width() * 0.5 - 185, (45 * 17) + 8 + menu_y_offset, "Intended Difficulty", "intended_level_difficulty", intended_level_difficulty, "Easy", "Normal", "Hard", "Super Hard")
 		
 		#region /* Tell player what tags are selected at top of tags */
 		draw_set_alpha(0.9);
@@ -1115,6 +1121,7 @@ function scr_draw_upload_level_menu()
 		and (tag_standard_text == "")
 		and (tag_technical_text == "")
 		and (tag_themed_text == "")
+		and (tag_glitch_showcase_text == "")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
@@ -1134,7 +1141,8 @@ function scr_draw_upload_level_menu()
 			string(tag_speedrun_text) +
 			string(tag_standard_text) +
 			string(tag_technical_text) +
-			string(tag_themed_text)
+			string(tag_themed_text) + 
+			string(tag_glitch_showcase_text)
 			, global.default_text_size, c_black, c_white, 1);
 		}
 		if (how_may_tags > 3)
@@ -1181,6 +1189,7 @@ function scr_draw_upload_level_menu()
 				if (tag_standard == true){ini_write_real("tags", "tag_standard", true);}
 				if (tag_technical == true){ini_write_real("tags", "tag_technical", true);}
 				if (tag_themed == true){ini_write_real("tags", "tag_themed", true);}
+				if (tag_glitch_showcase == true){ini_write_real("tags", "tag_glitch_showcase", true);}
 				ini_write_real("info", "intended_level_difficulty", intended_level_difficulty);
 				ini_close();
 				
@@ -1208,7 +1217,8 @@ function scr_draw_upload_level_menu()
 			if (menu == "tag_standard"){menu = "tag_speedrun";}else
 			if (menu == "tag_technical"){menu = "tag_standard";}else
 			if (menu == "tag_themed"){menu = "tag_technical";}else
-			if (menu == "intended_level_difficulty")and (open_dropdown == false){menu = "tag_themed";}
+			if (menu == "tag_glitch_showcase"){menu = "tag_themed";}else
+			if (menu == "intended_level_difficulty")and (open_dropdown == false){menu = "tag_glitch_showcase";}
 		}
 		else
 		if (key_down)
@@ -1228,7 +1238,8 @@ function scr_draw_upload_level_menu()
 			if (menu == "tag_speedrun"){menu = "tag_standard";}else
 			if (menu == "tag_standard"){menu = "tag_technical";}else
 			if (menu == "tag_technical"){menu = "tag_themed";}else
-			if (menu == "tag_themed"){menu = "intended_level_difficulty";}else
+			if (menu == "tag_themed"){menu = "tag_glitch_showcase";}else
+			if (menu == "tag_glitch_showcase"){menu = "intended_level_difficulty";}else
 			if (menu == "intended_level_difficulty")and (open_dropdown == false){if (how_may_tags <= 3){menu = "upload_edit_tags_ok";}else{menu = "tag_art";}}
 		}
 		

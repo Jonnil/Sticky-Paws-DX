@@ -1119,6 +1119,7 @@ or (menu == "searching_for_id")
 or (menu == "searched_file_downloaded_play")
 or (menu == "searched_file_downloaded_make")
 or (menu == "searched_file_downloaded_back")
+or (menu == "searched_file_downloaded_failed")
 or (menu == "searching_for_id_back")
 {
 	scr_draw_menu_search_id(content_type); /* Display the search for ID screen */
@@ -1775,8 +1776,8 @@ or (menu == "load_official_level_template")
 	draw_set_valign(fa_middle);
 	global.loading_spinning_angle -= 10;
 	draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, 1);
-	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 +64, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
-	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 +64 + 32, string(file_found), global.default_text_size, c_white, c_black, 1);
+	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 64, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
+	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 64 + 32, string(file_found), global.default_text_size, c_white, c_black, 1);
 }
 #endregion /* Loading Screen END */
 
@@ -1795,6 +1796,3 @@ if (global.enable_transitions == true)
 	}
 }
 #endregion /* Draw Iris Transitions END */
-
-//draw_set_halign(fa_left)
-//scr_draw_text_outlined(320, 32, string(menu_y_offset_real));

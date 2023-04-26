@@ -1,5 +1,16 @@
 function scr_character_manage_menu_step()
 {
+	var skin0_required = false;
+	if (!directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+	and (skin0_required == true)
+	{
+		var skin0_warning = true;
+	}
+	else
+	{
+		var skin0_warning = false;
+	}
+	
 	if (menu == "click_copy_character")
 	or (menu == "click_delete_character")
 	or (menu == "click_delete_character_no")
@@ -648,7 +659,7 @@ function scr_character_manage_menu_step()
 			menu_delay = 3;
 			can_navigate = true;
 			if (selecting_official_character == false)
-			and (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+			and (skin0_warning == false)
 			{
 				player1_menu = "click_upload_character";
 				menu = "click_upload_character";
@@ -697,7 +708,7 @@ function scr_character_manage_menu_step()
 		#endregion /* Delete Characters END */
 		
 		#region /* Upload Characters */
-		if (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+		if (skin0_warning == false)
 		{
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, upload_character_y + 2, display_get_gui_width() * 0.5 - 185 + 371, upload_character_y + 42))
 			and (global.controls_used_for_menu_navigation == "mouse")
@@ -805,7 +816,7 @@ function scr_character_manage_menu_step()
 				menu_delay = 3;
 				can_navigate = true;
 				if (selecting_official_character == false)
-				and (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
+				and (skin0_warning == false)
 				{
 					player1_menu = "click_upload_character";
 					menu = "click_upload_character";

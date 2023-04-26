@@ -192,6 +192,18 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		}
 		#endregion /* Press Escape to back out from Search ID menu END */
 		
+		#region /* If game is retrieving a level ID over id_max_length, then show download failed and why */
+		if (automatically_search_id == true)
+		{
+			if (string_length(search_id) < id_max_length)
+			or (string_length(search_id) > id_max_length)
+			{
+				menu = "searched_file_downloaded_failed";
+				menu_delay = 3;
+			}
+		}
+		#endregion /* If game is retrieving a level ID over id_max_length, then show download failed and why */
+		
 		#region /* Press Enter to search for the inputted ID */
 		if (menu_delay == 0)
 		and (keyboard_string != "")
@@ -605,27 +617,49 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			#endregion /* The level have been successfully downloaded, so delete temporary folders and zip files now END */
 			
-			var downloaded_message_y = display_get_gui_height() * 0.5;
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Failed to download") + " " + l10n_text(string(what_kind_of_id)), global.default_text_size * 2, c_black, c_white, 1)
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, l10n_text("OK"), "searched_file_downloaded_back", "searched_file_downloaded_back");
-			
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + 41))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			and (mouse_check_button_released(mb_left))
-			and (menu_delay == 0)
-			or (menu == "searched_file_downloaded_back")
-			and (key_a_pressed)
-			and (menu_delay == 0)
-			{
-				menu = "searching_for_id_back";
-			}
+			menu = "searched_file_downloaded_failed";
+			menu_delay = 3;
 		}
 		#endregion /* If level doesn't exist or is not downloaded, show this menu END */
 		
 	}
 	#endregion /* Searched file downloaded menu END */
+	
+	#region /* Show Download Failed message */
+	if (menu == "searched_file_downloaded_failed")
+	{
+		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
+		draw_set_alpha(0.9);
+		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
+		
+		var downloaded_message_y = display_get_gui_height() * 0.5;
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Failed to download") + " " + l10n_text(string(what_kind_of_id)), global.default_text_size * 2, c_black, c_white, 1)
+		if (string_length(search_id) > id_max_length)
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 22, l10n_text("Retrieved ID with more than max character length"), global.default_text_size, c_black, c_white, 1)
+		}
+		if (string_length(search_id) < id_max_length)
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 22, l10n_text("Retrieved ID with less than max character length"), global.default_text_size, c_black, c_white, 1)
+		}
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, l10n_text("OK"), "searched_file_downloaded_failed", "searched_file_downloaded_failed");
+		
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + 41))
+		and (global.controls_used_for_menu_navigation == "mouse")
+		and (mouse_check_button_released(mb_left))
+		and (menu_delay == 0)
+		or (menu == "searched_file_downloaded_back")
+		and (key_a_pressed)
+		and (menu_delay == 0)
+		{
+			menu = "searching_for_id_back";
+		}
+	}
+	#endregion /* Show Download Failed message END */
 	
 	if (menu == "searching_for_id_back")
 	{
