@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_load_object_placement_all",
+  "name": "get_custom_level_information",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

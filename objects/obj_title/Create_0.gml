@@ -1,3 +1,12 @@
+scr_delete_sprite_properly(global.custom_background1);
+scr_delete_sprite_properly(global.custom_background2);
+scr_delete_sprite_properly(global.custom_background3);
+scr_delete_sprite_properly(global.custom_background4);
+scr_delete_sprite_properly(global.custom_foreground1);
+scr_delete_sprite_properly(global.custom_foreground_above_static_objects);
+scr_delete_sprite_properly(global.custom_foreground2);
+scr_delete_sprite_properly(global.custom_foreground_secret);
+
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 

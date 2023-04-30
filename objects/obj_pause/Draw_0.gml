@@ -1,5 +1,5 @@
 #region /* Pause Screenshot */
-if (global.pause_screenshot > noone)
+if (sprite_exists(global.pause_screenshot))
 {
 	draw_sprite_ext(global.pause_screenshot, 0, 0, 0, 1, 1, 0, c_white, 1);
 }

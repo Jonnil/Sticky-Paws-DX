@@ -135,7 +135,7 @@ function scr_player_move_pause()
 			if (asset_get_type("room_pause") == asset_room)
 			{
 				global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-				room_persistent = true;
+				room_persistent = true; /* Turn ON Room Persistency */
 				global.pause_room = room;
 				audio_pause_all();
 				global.pause = true;
@@ -157,7 +157,7 @@ function scr_player_move_pause()
 	}
 	else
 	{
-		room_persistent = false;
+		room_persistent = false; /* Turn OFF Room Persistency */
 	}
 	#endregion /* Pause END */
 	

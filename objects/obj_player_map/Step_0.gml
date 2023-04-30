@@ -8,7 +8,7 @@ if (current_file != global.file)
 or (!file_exists(working_directory + "/save_files/file" + string(current_file) + ".ini"))
 {
 	current_file = global.file;
-	room_persistent = false;
+	room_persistent = false; /* Turn OFF Room Persistency */
 	room_restart();
 }
 #endregion /* When changing file, you should restart the room so the right save data can load END */
@@ -28,7 +28,7 @@ if (global.quit_level == true)
 	#endregion /* Save Player Position END */
 	
 	global.quit_level = false;
-	room_persistent = false; /* Whenever you quit the game, you need to turn off room persistent */
+	room_persistent = false; /* Turn OFF Room Persistency. Whenever you quit the game, you need to turn off room persistent */
 	if (asset_get_type("room_title") == asset_room)
 	{
 		room_goto(room_title);
@@ -129,7 +129,7 @@ and (global.automatically_pause_when_window_is_unfocused == true)
 {
 	global.pause_player = 0;
 	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-	room_persistent = true;
+	room_persistent = true; /* Turn ON Room Persistency */
 	global.pause_room = room;
 	audio_pause_all();
 	if (asset_get_type("room_pause") == asset_room)
@@ -143,7 +143,7 @@ or (gamepad_button_check_pressed(global.player2_slot, gp_start))
 {
 	global.pause_player = 1;
 	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-	room_persistent = true;
+	room_persistent = true; /* Turn ON Room Persistency */
 	global.pause_room = room;
 	audio_pause_all();
 	if (asset_get_type("room_pause") == asset_room)
@@ -157,7 +157,7 @@ or (gamepad_button_check_pressed(global.player3_slot, gp_start))
 {
 	global.pause_player = 2;
 	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-	room_persistent = true;
+	room_persistent = true; /* Turn ON Room Persistency */
 	global.pause_room = room;
 	audio_pause_all();
 	if (asset_get_type("room_pause") == asset_room)
@@ -171,7 +171,7 @@ or (gamepad_button_check_pressed(global.player4_slot, gp_start))
 {
 	global.pause_player = 3;
 	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-	room_persistent = true;
+	room_persistent = true; /* Turn ON Room Persistency */
 	global.pause_room = room;
 	audio_pause_all();
 	if (asset_get_type("room_pause") == asset_room)
@@ -676,7 +676,7 @@ and (iris_yscale <= 0.001)
 and (asset_get_type("obj_level") == asset_object)
 and (global.quit_level == false)
 {
-	room_persistent = false; /* Whenever you enter a level, you need to turn off room persistent */
+	room_persistent = false; /* Turn OFF Room Persistency. Whenever you enter a level, you need to turn off room persistent */
 	/* Otherwise when trying to win or quit a level, you'll get back to a world map that saved when you were entering a level, making you loop to enter a level over and over again */
 	
 	/* Don't set entering_level to false, or can_move to true here */

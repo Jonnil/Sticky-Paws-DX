@@ -129,7 +129,7 @@ function scr_player_move_spring()
 			if (sprite_jump > noone){sprite_index = sprite_jump; image_index = image_number - 1;}else
 			if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
+			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 		}
 		else
 		if (spring_animation == 1)
@@ -164,7 +164,7 @@ function scr_player_move_spring()
 			if (sprite_double_jump > noone){sprite_index = sprite_double_jump;}else
 			if (sprite_jump > noone){sprite_index = sprite_jump; image_index = image_number - 1;}else
 			if (sprite_stand > noone){sprite_index = sprite_stand;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk;}
+			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 			if (vspeed <= 0)
 			{
 				spring_animation = 0;

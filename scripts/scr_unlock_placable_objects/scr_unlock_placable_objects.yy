@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_save_custom_level",
+  "name": "scr_unlock_placable_objects",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

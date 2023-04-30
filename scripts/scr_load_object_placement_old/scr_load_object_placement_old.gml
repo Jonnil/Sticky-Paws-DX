@@ -1,5 +1,7 @@
 function scr_load_object_placement_old()
 {
+	/* This is the old .txt level loading method. To make the levels load much faster, this function should not run. This is just here for compatiblity in case you need it for older .txt levels */
+	/* If you need to play a old .txt level, simply add this function after calling the new "scr load object placement" function */
 	
 	#region /* Old level loading method */
 	

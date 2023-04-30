@@ -642,6 +642,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 22, l10n_text("Retrieved ID with more than max character length"), global.default_text_size, c_black, c_white, 1)
 		}
+		else
 		if (string_length(search_id) < id_max_length)
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 22, l10n_text("Retrieved ID with less than max character length"), global.default_text_size, c_black, c_white, 1)

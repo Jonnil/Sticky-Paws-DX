@@ -90,6 +90,15 @@ if (global.actually_play_edited_level == false)
 				{
 					draw_set_halign(fa_center);
 					draw_set_valign(fa_middle);
+					if (string_digits(ini_read_string("info", "first_created_on_version", "v" + string(scr_get_build_date()))) < string_digits(scr_get_build_date()))
+					{
+						scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32 - 32, l10n_text("Level made in old version"), global.default_text_size * 0.75, c_black, c_white, 1);
+					}
+					else
+					if (string_digits(ini_read_string("info", "first_created_on_version", "v" + string(scr_get_build_date()))) > string_digits(scr_get_build_date()))
+					{
+						scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32 - 32, l10n_text("Level made in new version"), global.default_text_size * 0.75, c_black, c_white, 1);
+					}
 					scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, l10n_text("First created on version") + ": " + ini_read_string("info", "first_created_on_version", "v" + string(scr_get_build_date())), global.default_text_size, c_black, c_white, 1);
 				}
 				ini_close();

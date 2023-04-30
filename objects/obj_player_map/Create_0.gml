@@ -2,6 +2,15 @@
 can_enter_level_automatically = true;
 #endregion /* Debug toggles END */
 
+scr_delete_sprite_properly(global.custom_background1);
+scr_delete_sprite_properly(global.custom_background2);
+scr_delete_sprite_properly(global.custom_background3);
+scr_delete_sprite_properly(global.custom_background4);
+scr_delete_sprite_properly(global.custom_foreground1);
+scr_delete_sprite_properly(global.custom_foreground_above_static_objects);
+scr_delete_sprite_properly(global.custom_foreground2);
+scr_delete_sprite_properly(global.custom_foreground_secret);
+
 gamepad_set_vibration(0, 0, 0);
 gamepad_set_vibration(1, 0, 0);
 gamepad_set_vibration(2, 0, 0);

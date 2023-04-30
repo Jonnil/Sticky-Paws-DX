@@ -15,54 +15,7 @@ if (keyboard_check_pressed(vk_rcontrol))
 	draw_texture_flush();
 }
 
-#region /* Make background visible */
-if (room == room_leveleditor)
-{
-	if (global.custom_background1 > noone)
-	and (global.enable_background_layer1 == true)
-	and (global.full_level_map_screenshot == false)
-	{
-		layer_background_visible(layer_background_get_id(layer_get_id("Background")), true)
-	}
-	else
-	{
-		layer_background_visible(layer_background_get_id(layer_get_id("Background")), false)
-	}
-	
-	if (global.custom_background2 > noone)
-	and (global.enable_background_layer2 == true)
-	and (global.full_level_map_screenshot == false)
-	{
-		layer_background_visible(layer_background_get_id(layer_get_id("Background_2")), true)
-	}
-	else
-	{
-		layer_background_visible(layer_background_get_id(layer_get_id("Background_2")), false)
-	}
-	
-	if (global.custom_background3 > noone)
-	and (global.enable_background_layer3 == true)
-	and (global.full_level_map_screenshot == false)
-	{
-		layer_background_visible(layer_background_get_id(layer_get_id("Background_3")), true)
-	}
-	else
-	{
-		layer_background_visible(layer_background_get_id(layer_get_id("Background_3")), false)
-	}
-	
-	if (global.custom_background4 > noone)
-	and (global.enable_background_layer4 == true)
-	and (global.full_level_map_screenshot == false)
-	{
-		layer_background_visible(layer_background_get_id(layer_get_id("Background_4")), true)
-	}
-	else
-	{
-		layer_background_visible(layer_background_get_id(layer_get_id("Background_4")), false)
-	}
-}
-#endregion /* Make background visible END */
+scr_make_background_visible();
 
 #region /* Timer Countup */
 if (asset_get_type("obj_goal") == asset_object)

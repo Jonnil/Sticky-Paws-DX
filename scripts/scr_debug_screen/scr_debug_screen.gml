@@ -38,6 +38,16 @@ function scr_debug_screen()
 		}
 	}
 	
+	if (global.debug_screen == true && keyboard_check_pressed(vk_f1))
+	{
+		with(instance_create_depth(x, y, 0, obj_score_up))
+		{
+			score_up = "gc_collect();";
+		}
+		gc_enable(true);
+		gc_collect();
+	}
+	
 	if (global.debug_screen == true)
 	{
 		
@@ -138,6 +148,7 @@ function scr_debug_screen()
 		else
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press F3 to toggle debug screen"), global.default_text_size * 0.75, noone, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Press F1 to use gc_collect()"), global.default_text_size * 0.75, noone, c_white, 1);
 		}
 	}
 	
@@ -292,7 +303,7 @@ function scr_debug_screen()
 		scr_draw_text_outlined(32, 360, "gamepad_get_description(2): " + string(gamepad_get_description(2)));
 		scr_draw_text_outlined(32, 380, "gamepad_get_description(3): " + string(gamepad_get_description(3)));
 		//scr_draw_text_outlined(32, 400, "menu_cursor_y_position: " + string(menu_cursor_y_position));
-		scr_draw_text_outlined(32, 400, "menu: " + string(menu));
+		//scr_draw_text_outlined(32, 400, "menu: " + string(menu));
 		//scr_draw_text_outlined(32, 420, "menu_joystick1_delay: " + string(menu_joystick1_delay));
 	}
 	

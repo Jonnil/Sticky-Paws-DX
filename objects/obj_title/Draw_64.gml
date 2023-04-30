@@ -321,7 +321,7 @@ and (menu_delay == 0)
 		}
 		else
 		{
-			room_persistent = false;
+			room_persistent = false; /* Turn OFF Room Persistency */
 		}
 		if (global.quit_level == true)
 		{

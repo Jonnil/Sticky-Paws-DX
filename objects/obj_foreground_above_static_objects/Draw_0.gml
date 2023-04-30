@@ -29,7 +29,10 @@ and (global.full_level_map_screenshot == false)
 and (asset_get_type("room_leveleditor") == asset_room)
 and (room == room_leveleditor)
 {
-	draw_sprite(global.custom_foreground_above_static_objects, image_index, x_offset, y_offset);
+	if (sprite_exists(global.custom_foreground_above_static_objects))
+	{
+		draw_sprite(global.custom_foreground_above_static_objects, image_index, x_offset, y_offset);
+	}
 }
 #endregion /* Update Foreground above static objects END */
 draw_set_alpha(1);
