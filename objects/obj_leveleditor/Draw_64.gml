@@ -908,7 +908,7 @@ if (global.actually_play_edited_level == false)
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_middle);
 			draw_set_alpha(0.5);
-			draw_rectangle_color(display_get_gui_width() - (level_name_x_offset * 0.5) - string_width(global.level_name), display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+			draw_rectangle_color(display_get_gui_width() - (level_name_x_offset * 0.5) - string_width(global.level_name) - 32, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			scr_draw_text_outlined(display_get_gui_width() - level_name_x_offset, display_get_gui_height() - 16, string(global.level_name), global.default_text_size, c_black, c_white, 1);
 		}

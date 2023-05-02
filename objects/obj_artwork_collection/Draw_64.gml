@@ -221,7 +221,7 @@ and (global.controls_used_for_menu_navigation == "mouse")
 #region /* Left and Right Navigation */
 if (key_left)
 or (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, get_window_width * 0.5 - 100, get_window_height - 42))
-and (mouse_check_button_pressed(mb_left))
+and (mouse_check_button_released(mb_left))
 {
 	if (gamepad_stick == true)
 	{
@@ -240,7 +240,7 @@ and (mouse_check_button_pressed(mb_left))
 else
 if (key_right)
 or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + 100, 0, get_window_width, get_window_height - 42))
-and (mouse_check_button_pressed(mb_left))
+and (mouse_check_button_released(mb_left))
 {
 	if (gamepad_stick == true)
 	{

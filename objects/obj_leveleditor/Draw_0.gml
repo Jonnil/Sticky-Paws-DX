@@ -157,82 +157,75 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Terrain Objects */
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall, true, spr_wall, spr_wall, 0, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_dirt, true, spr_wall_dirt, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_glass, true, spr_wall_glass, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_grass, true, spr_wall_grass, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_gravel, true, spr_wall_gravel, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_metal, true, spr_wall_metal, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_stone, true, spr_wall_stone, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_wood, true, spr_wall_wood, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_black_wall, true, spr_black_wall, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_spikes, true, spr_spikes, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_semisolid_platform, true, spr_semisolid_platform, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_brick_block, true, spr_brick_block, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_question_block, true, spr_question_block, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_hard_block, true, spr_hard_block, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_falling_block, true, spr_falling_block, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_falling_block_long, true, spr_falling_block_long, spr_falling_block_long, + 64, 1, 0, c_white, 0, -16);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_cloud_block, true, spr_cloud_block, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_ice_block, true, spr_ice_block, spr_wall, + 64, 1, 0, c_white);
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_dirt, true, spr_wall_dirt, spr_wall, + 64, 1, 0, c_white,,,,,"Dirt");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_glass, true, spr_wall_glass, spr_wall, + 64, 1, 0, c_white,,,,,"Glass");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_grass, true, spr_wall_grass, spr_wall, + 64, 1, 0, c_white,,,,,"Grass");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_gravel, true, spr_wall_gravel, spr_wall, + 64, 1, 0, c_white,,,,,"Gravel");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_metal, true, spr_wall_metal, spr_wall, + 64, 1, 0, c_white,,,,,"Metal");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_stone, true, spr_wall_stone, spr_wall, + 64, 1, 0, c_white,,,,,"Stone");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_wood, true, spr_wall_wood, spr_wall, + 64, 1, 0, c_white,,,,,"Wood");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_black_wall, true, spr_black_wall, spr_wall, + 64, 1, 0, c_white,,,,,"Black Wall");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_spikes, true, spr_spikes, spr_wall, + 64, 1, 0, c_white,,,,,"Spikes");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_semisolid_platform, true, spr_semisolid_platform, spr_wall, + 64, 1, 0, c_white,,,,,"Semisolid Platform");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_brick_block, true, spr_brick_block, spr_wall, + 64, 1, 0, c_white,,,,,"Lamp Block");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_question_block, true, spr_question_block, spr_wall, + 64, 1, 0, c_white,,,,,"? Cardboard");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_hard_block, true, spr_hard_block, spr_wall, + 64, 1, 0, c_white,,,,,"Hard Block");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_falling_block, true, spr_falling_block, spr_wall, + 64, 1, 0, c_white,,,,,"Falling Block");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_falling_block_long, true, spr_falling_block_long, spr_falling_block_long, + 64, 1, 0, c_white, 0, -16,,,"Falling Block Long");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_cloud_block, true, spr_cloud_block, spr_wall, + 64, 1, 0, c_white,,,,,"Cloud Block");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_ice_block, true, spr_ice_block, spr_wall, + 64, 1, 0, c_white,,,,,"Ice Block");
 		#endregion /* Terrain Objects END */
 		
 		#region /* Item Objects */
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_basic_collectible, true, global.resource_pack_sprite_basic_collectible, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_big_collectible, false, global.resource_pack_sprite_big_collectible, spr_wall, 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_heart, true, spr_heart, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_invincibility_powerup, true, global.resource_pack_sprite_invincibility_powerup, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_one_up, true, sprite_lives_icon, spr_wall, + 64, 1, 0, c_white);
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_basic_collectible, true, global.resource_pack_sprite_basic_collectible, spr_wall, + 64, 1, 0, c_white,,,,,"Fish");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_big_collectible, false, global.resource_pack_sprite_big_collectible, spr_wall, 64, 1, 0, c_white,,,,,"Big Fish");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_heart, true, spr_heart, spr_wall, + 64, 1, 0, c_white,,,,,"Heart Balloon - Gives you one extra hit");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_invincibility_powerup, true, global.resource_pack_sprite_invincibility_powerup, spr_wall, + 64, 1, 0, c_white,,,,,"Invincibility");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_one_up, true, sprite_lives_icon, spr_wall, + 64, 1, 0, c_white,,,,,"Extra Life");
 		#endregion /* Item Objects END */
 		
 		#region /* Enemy Objects */
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_basic_enemy, true, sprite_basic_enemy, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_enemy_bowlingball, true, sprite_enemy_bowlingball, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_big_stationary_enemy, true, sprite_big_stationary_enemy, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_boss, false, spr_boss_stand, spr_wall, + 64, 0.5, 0, c_white);
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_basic_enemy, true, sprite_basic_enemy, spr_wall, + 64, 1, 0, c_white,,,,,"Rat");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_enemy_bowlingball, true, sprite_enemy_bowlingball, spr_wall, + 64, 1, 0, c_white,,,,,"Bowlingball Rat");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_big_stationary_enemy, true, sprite_big_stationary_enemy, spr_wall, + 64, 1, 0, c_white,,,,,"Big Rat");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_boss, false, spr_boss_stand, spr_wall, + 64, 0.5, 0, c_white,,,,,"Mousette");
 		#endregion /* Enemy Objects END */
 		
 		#region /* Gizmo Objects */
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_blaster, true, global.resource_pack_sprite_blaster, spr_wall, + 64, 1, 0, c_white, -16);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_door, false, spr_door, spr_wall, + 64, 1, 0, c_white, -16);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_spring, false, spr_spring, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_ladder, true, spr_ladder, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_arrow_sign, false, spr_arrow_sign, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_checkpoint, false, spr_checkpoint, spr_wall, + 64, 1, 0, c_white, -32);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_spikes_emerge_block, true, spr_spikes_emerge_block, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_oneway, false, spr_oneway, spr_wall, + 64, 1, 0, c_white, -16,);
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_blaster, true, global.resource_pack_sprite_blaster, spr_wall, + 64, 1, 0, c_white, -16,,,,"Rat Blaster");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_door, false, spr_door, spr_wall, + 64, 1, 0, c_white, -16,,,,"Door");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_spring, false, spr_spring, spr_wall, + 64, 1, 0, c_white,,,,,"Spring");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_ladder, true, spr_ladder, spr_wall, + 64, 1, 0, c_white,,,,,"Ladder");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_arrow_sign, false, spr_arrow_sign, spr_wall, + 64, 1, 0, c_white,,,,,"Arrow Sign");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_checkpoint, false, spr_checkpoint, spr_wall, + 64, 1, 0, c_white, -32,,,,"Checkpoint");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_spikes_emerge_block, true, spr_spikes_emerge_block, spr_wall, + 64, 1, 0, c_white,,,,,"Emerging Spikes");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_oneway, false, spr_oneway, spr_wall, + 64, 1, 0, c_white, -16,,,,"One-Way Wall");
 		#endregion /* Gizmo Objects END */
 		
 		#region /* Special Items */
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_cardboard_block, true, spr_cardboard_block, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_cardboard, true, spr_cardboard, spr_cardboard, + 64, 0.75, 0, c_white, 0, -8);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_cardboard_long, true, spr_cardboard_long, spr_cardboard_long, + 64, 0.5, 0, c_white, 0, -16);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_bump_in_ground, true, spr_bump_in_ground, spr_wall, + 64, 1, 0, c_white, -16);
-		if (unlocked_object[order_index] == true)
-		{
-			var num_wall_jump_panel = order_index; scr_draw_level_editor_placable_object(num_wall_jump_panel, level_object_id.id_wall_jump_panel, true, spr_wall_jump_panel, spr_wall, + 64, 1.5, 0, c_white, 0, +16);if (selected_object == num_wall_jump_panel){draw_set_halign(fa_center);draw_set_valign(fa_middle);scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 144, l10n_text("Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump"), global.default_text_size * 0.75, c_black, c_white, selected_menu_alpha);}
-		}
-		if (unlocked_object[order_index] == true)
-		{
-			var num_wall_climb_panel = order_index; scr_draw_level_editor_placable_object(num_wall_climb_panel, level_object_id.id_wall_climb_panel, true, spr_wall_climb_panel, spr_wall, + 64, 1.5, 0, c_white, 0, +16);if (selected_object == num_wall_climb_panel){draw_set_halign(fa_center);draw_set_valign(fa_middle);scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 144, l10n_text("Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb"), global.default_text_size * 0.75, c_black, c_white, selected_menu_alpha);}
-		}
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_melon_block, true, spr_melon_block, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_horizontal_rope, true, spr_horizontal_rope, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_water, false, spr_water_surface, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_breathable_water, false, spr_water_surface, spr_wall, + 64, 1, 0, c_white, 0, 0, 0.5);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_air_bubbles_spawner, true, spr_air_bubbles_spawner, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_water_level_change_slow, false, spr_water_level_change_slow, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_water_level_change_fast, false, spr_water_level_change_fast, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_water_level_change_faster, false, spr_water_level_change_faster, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_clipped_shirt, true, spr_clipped_shirt, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_bucket, true, spr_bucket, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_bird, true, spr_bird, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_sign_crouch, true, spr_sign_crouch, spr_wall, + 64, 0.5, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_boss_barrier, true, spr_boss_barrier, spr_wall, + 64, 1, 0, c_white);
-		var num_cake_stealing_enemy = order_index; scr_draw_level_editor_placable_object(num_cake_stealing_enemy, level_object_id.id_cake_stealing_enemy, false, global.resource_pack_sprite_cake, spr_wall, + 64, 1, 0, c_white, -16, 0, 1, 0);scr_draw_level_editor_placable_object(num_cake_stealing_enemy, level_object_id.id_cake_stealing_enemy, false, sprite_basic_enemy, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_artwork_collection, false, spr_artwork_collection, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_block_only_when_player_is_near, true, global.resource_pack_sprite_block_only_when_player_is_near, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_npc, false, spr_npc, spr_wall, + 64, 1, 0, c_white);
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_ring, false, spr_ring, spr_wall, + 64, 1, 0, c_white);
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_cardboard_block, true, spr_cardboard_block, spr_wall, + 64, 1, 0, c_white,,,,,"Carbdoard Block");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_cardboard, true, spr_cardboard, spr_cardboard, + 64, 0.75, 0, c_white, 0, -8,,,"Cardboard");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_cardboard_long, true, spr_cardboard_long, spr_cardboard_long, + 64, 0.5, 0, c_white, 0, -16,,,"Long Cardboard");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_bump_in_ground, true, spr_bump_in_ground, spr_wall, + 64, 1, 0, c_white, -16,,,,"Bump in Ground");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_jump_panel, true, spr_wall_jump_panel, spr_wall, + 64, 1.5, 0, c_white, 0, +16,,,"Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_climb_panel, true, spr_wall_climb_panel, spr_wall, + 64, 1.5, 0, c_white, 0, +16,,,"Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_melon_block, true, spr_melon_block, spr_wall, + 64, 1, 0, c_white,,,,,"Melon Block");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_horizontal_rope, true, spr_horizontal_rope, spr_wall, + 64, 1, 0, c_white,,,,,"Horizontal Rope");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_water, false, spr_water_surface, spr_wall, + 64, 1, 0, c_white,,,,,"Water");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_air_bubbles_spawner, true, spr_air_bubbles_spawner, spr_wall, + 64, 1, 0, c_white,,,,,"Air Bubbles - Some characters needs air when swimming underwater");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_water_level_change_slow, false, spr_water_level_change_slow, spr_wall, + 64, 1, 0, c_white,,,,,"Change Water Level Slow");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_water_level_change_fast, false, spr_water_level_change_fast, spr_wall, + 64, 1, 0, c_white,,,,,"Change Water Level Fast");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_water_level_change_faster, false, spr_water_level_change_faster, spr_wall, + 64, 1, 0, c_white,,,,,"Change Water LEvel Faster");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_clipped_shirt, true, spr_clipped_shirt, spr_wall, + 64, 1, 0, c_white,,,,,"Clipped Clothes");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_bucket, true, spr_bucket, spr_wall, + 64, 1, 0, c_white,,,,,"Bucket - Let clothes drop into the bucket to get rewards");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_bird, true, spr_bird, spr_wall, + 64, 1, 0, c_white,,,,,"Bird");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_sign_crouch, true, spr_sign_crouch, spr_wall, + 64, 0.5, 0, c_white,,,,,"Tutorial Signs");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_boss_barrier, true, spr_boss_barrier, spr_wall, + 64, 1, 0, c_white,,,,,"Boss Barrier - This block dissapears when Mousette is defeated");
+		var num_cake_stealing_enemy = order_index; scr_draw_level_editor_placable_object(num_cake_stealing_enemy, level_object_id.id_cake_stealing_enemy, false, global.resource_pack_sprite_cake, spr_wall, + 64, 1, 0, c_white, -16, 0, 1, 0, "Cake Stealing Rat");scr_draw_level_editor_placable_object(num_cake_stealing_enemy, level_object_id.id_cake_stealing_enemy, false, sprite_basic_enemy, spr_wall, + 64, 1, 0, c_white);
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_artwork_collection, false, spr_artwork_collection, spr_wall, + 64, 1, 0, c_white,,,,,"Artwork Collection");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_block_only_when_player_is_near, true, global.resource_pack_sprite_block_only_when_player_is_near, spr_wall, + 64, 1, 0, c_white,,,,,"Eye Block");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_npc, false, spr_npc, spr_wall, + 64, 1, 0, c_white,,,,,"NPC - This object is unfinished!!!");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_ring, false, spr_ring, spr_wall, + 64, 1, 0, c_white,,,,,"Ring - Swing with long tongue on this ring");
 		#endregion /* Special Items END */
 		
 		total_number_of_objects = order_index - 1; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
@@ -434,9 +427,9 @@ if (global.actually_play_edited_level == false)
 		draw_set_color(c_white);
 		draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 16 - 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 16 + 8, 30);
 		draw_set_color(c_black);
-		draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 128 - 16 + 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 128 - 16 - 8, 40);
+		draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 110 - 16 + 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 110 - 16 - 8, 40);
 		draw_set_color(c_white);
-		draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 128 - 16 + 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 128 - 16 - 8, 30);
+		draw_arrow(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 110 - 16 + 8, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + 110 - 16 - 8, 30);
 		draw_set_alpha(1);
 		#endregion /* Draw an arrow pointing to currently selected object END */
 	

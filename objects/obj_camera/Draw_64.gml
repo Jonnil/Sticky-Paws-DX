@@ -315,23 +315,12 @@ and (global.assist_show_assist_mode_text == true)
 #region /* Show Controls */
 if (os_type != os_ios)
 and (os_type != os_android)
-and (asset_get_type("obj_pause") == asset_object)
 and (!instance_exists(obj_pause))
 {
-	
-	#region /* Show Multiplayer Controls */
-	if (global.player1_can_play == true)
-	or (global.player2_can_play == true)
-	or (global.player3_can_play == true)
-	or (global.player4_can_play == true)
-	{
-		scr_draw_show_controls(1);
-		scr_draw_show_controls(2);
-		scr_draw_show_controls(3);
-		scr_draw_show_controls(4);
-	}
-	#endregion /* Show Multiplayer Controls END */
-	
+	scr_draw_show_controls(1);
+	scr_draw_show_controls(2);
+	scr_draw_show_controls(3);
+	scr_draw_show_controls(4);
 }
 #endregion /* Show Controls END */
 

@@ -50,7 +50,7 @@ function scr_language_menu()
 		{
 			scr_draw_text_outlined(get_window_width - 32, 164, "(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")", global.default_text_size, c_menu_fill, c_gray, 1);
 		}
-		if (mouse_check_button_pressed(mb_left))
+		if (mouse_check_button_released(mb_left))
 		{
 			if (global.translation_debug == false)
 			{

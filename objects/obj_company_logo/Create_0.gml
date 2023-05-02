@@ -196,7 +196,6 @@ sprite_splash_easteregg_yoffset = +228;
 view_hview_lerp = 0;
 view_wview_lerp = 0;
 goto_title_screen = false; /* If game is allowed to go to title screen yet or not. Need to load everything before going to title screen */
-global.save_custom_level_as_json = true; /* .json files can load faster than .txt files, but keep it an option if you want to save to .json or .txt, for compatibility */
 global.username = environment_get_variable("USERNAME"); /* Account name for when you upload levels, you enter an username in account settings, and the levels uploaded will be credited under this name */
 global.keyboard_virtual_timer = 0; /* Delay for when virtual keyboard can show up */
 global.every_player_can_navigate_menu = true; /* To make menu navigation easier with multiple different gamepads that can be connected and isn't neccesarely connected as player 1, make it so you can toggle on or off if every player can navigate menus. By default have this true */

@@ -106,7 +106,7 @@ if (lives <= 0)
 		get_window_height - game_over_menu_y + 2,
 		get_window_width * 0.5 - 370 + 370 - game_over_menu_seperation_distance,
 		get_window_height - game_over_menu_y + 41))
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		or (menu == "quit")
 		and (point_in_rectangle(
 		mouse_get_x,
@@ -115,7 +115,7 @@ if (lives <= 0)
 		get_window_height - game_over_menu_y + 2,
 		get_window_width * 0.5 + 370 + game_over_menu_seperation_distance,
 		get_window_height - game_over_menu_y + 41))
-		and (mouse_check_button_pressed(mb_left))
+		and (mouse_check_button_released(mb_left))
 		{
 			
 			#region /* Click Menu */

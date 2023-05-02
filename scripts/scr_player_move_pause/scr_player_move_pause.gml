@@ -37,43 +37,14 @@ function scr_player_move_pause()
 	{
 		
 		#region /* Show all HUD elements */
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
 				hud_show_lives_timer = global.hud_hide_time * 60;
-			}
-		}
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
-		{
-			with(obj_camera)
-			{
 				hud_show_deaths_timer = global.hud_hide_time * 60;
-			}
-		}
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
-		{
-			with(obj_camera)
-			{
 				hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
-			}
-		}
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
-		{
-			with(obj_camera)
-			{
 				hud_show_big_collectibles_timer = global.hud_hide_time * 60;
-			}
-		}
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
-		{
-			with(obj_camera)
-			{
 				hud_show_score_timer = global.hud_hide_time * 60;
 			}
 		}
@@ -132,27 +103,12 @@ function scr_player_move_pause()
 			}
 			#endregion /* What player should control the pause menu END */
 			
-			if (asset_get_type("room_pause") == asset_room)
-			{
-				global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-				room_persistent = true; /* Turn ON Room Persistency */
-				global.pause_room = room;
-				audio_pause_all();
-				global.pause = true;
-				room_goto(room_pause);
-			}
-			else
-			{
-				audio_pause_all();
-				if (asset_get_type("obj_pause") == asset_object)
-				and (!instance_exists(obj_pause))
-				{
-					global.pause = true;
-					pause_hspeed = hspeed;
-					pause_vspeed = vspeed;
-					instance_create_depth(x, y, 0, obj_pause); /* This pause objects creates, that handles the pause screen */
-				}
-			}
+			global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
+			room_persistent = true; /* Turn ON Room Persistency */
+			global.pause_room = room;
+			audio_pause_all();
+			global.pause = true;
+			room_goto(room_pause);
 		}
 	}
 	else

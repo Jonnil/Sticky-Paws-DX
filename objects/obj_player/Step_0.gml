@@ -9,7 +9,6 @@ if (speed > 0)
 #endregion /* Only update audio listener position and velocity when the player is moving END */
 
 if (current_file != global.file)
-or (!file_exists(working_directory + "/save_files/file" + string(current_file) + ".ini"))
 {
 	current_file = global.file;
 	room_persistent = false; /* Turn OFF Room Persistency */

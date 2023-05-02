@@ -433,11 +433,21 @@ if (hide_menu_for_clean_screenshots == false)
 		{
 			if (key_a_hold)
 			and (menu_delay == 0)
-			or (global.pause_room == room_leveleditor)
+			
+			or (global.checkpoint_x == 0)
+			and (global.checkpoint_y == 0)
+			and (global.pause_room == room_leveleditor)
 			and (global.convention_mode == false)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
 			and (mouse_check_button(mb_left))
 			and (menu_delay == 0)
+			
+			or (global.pause_room == room_leveleditor)
+			and (global.convention_mode == false)
+			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
+			and (mouse_check_button_released(mb_left))
+			and (menu_delay == 0)
+			
 			or (global.pause_room == room_leveleditor)
 			and (global.convention_mode == true)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))

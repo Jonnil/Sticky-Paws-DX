@@ -1,14 +1,37 @@
 function scr_deactivate_objects_outside_view()
 {
-	#region /* Debug toggles */
-	var deactivate_objects_outside_view = true; /* This is for debug purposes, and should always be set to true when playing the game normally */
-	var can_activate_always_active_objects = true;
-	#endregion /* Debug toggles END */
+	/* Initialize variables */
+	var camera_x = camera_get_view_x(view_camera[0]);
+	var camera_y = camera_get_view_y(view_camera[0]);
+	var camera_moving = false;
+	var camera_delay = 5; /* Time delay in steps */
 	
-	#region /* Deactivate instances outside view */
-	instance_activate_all();
-	if (deactivate_objects_outside_view == true) /* This global variable is for debug purposes, and should always be set to true when playing the game normally */
+	/* Check for camera movement in each step */
+	if (camera_get_view_x(view_camera[0]) != camera_x || camera_get_view_y(view_camera[0]) != camera_y)
 	{
+	    camera_moving = true;
+	    camera_x = camera_get_view_x(view_camera[0]);
+	    camera_y = camera_get_view_y(view_camera[0]);
+	}
+	
+	/* Wait for the camera to stop moving */
+	if (camera_moving)
+	{
+	    camera_delay--;
+	    if (camera_delay <= 0)
+	    {
+	        camera_moving = false;
+	        camera_delay = 5; /* Reset delay */
+	        /* Code to run when camera stops moving goes here */
+	    }
+	}
+	
+	if (camera_moving)
+	{
+		
+		#region /* Deactivate instances outside view */
+		instance_activate_all();
+		
 		view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) * 0.5);
 		view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) * 0.5);
 		if (global.deactivate_objects_from_most_zoomed_out == false)
@@ -30,86 +53,17 @@ function scr_deactivate_objects_outside_view()
 			view_distance_from_center * 2 /* Height */ ,
 			false, true);
 		}
+		#endregion /* Deactivate instances outside view END */
+		
+		#region /* Activate objects that always should be active */
+		var objects = [        obj_follow_mouse,        obj_level_player_1_start,        obj_level_player_2_start,        obj_level_player_3_start,        obj_level_player_4_start,        obj_player,        obj_player_map,        obj_player_lose,        obj_foreground1,        obj_foreground_above_static_objects,        obj_foreground2,        obj_foreground_secret,        obj_background_brightness_gameplay,        obj_water_level,        obj_level_height,        obj_level_width,        obj_credits,        obj_title    ];
+	    for (var i = 0; i < array_length_1d(objects); i++) {
+	        var object = objects[i];
+	        if (asset_get_type(object) == asset_object) {
+	            instance_activate_object(object);
+	        }
+	    }
+		#endregion /* Activate objects that always should be active END */
+		
 	}
-	#endregion /* Deactivate instances outside view END */
-	
-	#region /* Activate objects that always should be active */
-	
-	if (can_activate_always_active_objects == true)
-	{
-		if (asset_get_type("obj_follow_mouse") == asset_object)
-		{
-			instance_activate_object(obj_follow_mouse);
-		}
-		if (asset_get_type("obj_level_player_1_start") == asset_object)
-		{
-			instance_activate_object(obj_level_player_1_start);
-		}
-		if (asset_get_type("obj_level_player_2_start") == asset_object)
-		{
-			instance_activate_object(obj_level_player_2_start);
-		}
-		if (asset_get_type("obj_level_player_3_start") == asset_object)
-		{
-			instance_activate_object(obj_level_player_3_start);
-		}
-		if (asset_get_type("obj_level_player_4_start") == asset_object)
-		{
-			instance_activate_object(obj_level_player_4_start);
-		}
-		if (asset_get_type("obj_player") == asset_object)
-		{
-			instance_activate_object(obj_player);
-		}
-		if (asset_get_type("obj_player_map") == asset_object)
-		{
-			instance_activate_object(obj_player_map);
-		}
-		if (asset_get_type("obj_player_lose") == asset_object)
-		{
-			instance_activate_object(obj_player_lose);
-		}
-		if (asset_get_type("obj_foreground1") == asset_object)
-		{
-			instance_activate_object(obj_foreground1);
-		}
-		if (asset_get_type("obj_foreground_above_static_objects") == asset_object)
-		{
-			instance_activate_object(obj_foreground_above_static_objects);
-		}
-		if (asset_get_type("obj_foreground2") == asset_object)
-		{
-			instance_activate_object(obj_foreground2);
-		}
-		if (asset_get_type("obj_foreground_secret") == asset_object)
-		{
-			instance_activate_object(obj_foreground_secret);
-		}
-		if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
-		{
-			instance_activate_object(obj_background_brightness_gameplay);
-		}
-		if (asset_get_type("obj_water_level") == asset_object)
-		{
-			instance_activate_object(obj_water_level);
-		}
-		if (asset_get_type("obj_level_height") == asset_object)
-		{
-			instance_activate_object(obj_level_height);
-		}
-		if (asset_get_type("obj_level_width") == asset_object)
-		{
-			instance_activate_object(obj_level_width);
-		}
-		if (asset_get_type("obj_credits") == asset_object)
-		{
-			instance_activate_object(obj_credits);
-		}
-		if (asset_get_type("obj_title") == asset_object)
-		{
-			instance_activate_object(obj_title);
-		}
-	}
-	#endregion /* Activate objects that always should be active END */
-	
 }

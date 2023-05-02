@@ -225,6 +225,5 @@ if (global.actually_play_edited_level == false)
 		}
 		#endregion /* Initialize Object END */
 		
-		//scr_draw_text_outlined(x, y, string(repeat_length), global.default_text_size, noone);
 	}
 }

@@ -552,7 +552,7 @@ function scr_options_level_editor()
 				if (key_down)
 				and (menu_delay == 0)
 				and (open_dropdown == true)
-				and (global.selected_level_editing_music < 4)
+				and (global.selected_level_editing_music < 5)
 				{
 					global.selected_level_editing_music += 1;
 					menu_delay = 3;
@@ -639,7 +639,7 @@ function scr_options_level_editor()
 			draw_menu_checkmark(level_editor_options_x - 90, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification_level_editor", global.show_new_items_notification);
 			draw_menu_button(level_editor_options_x, delete_all_objects_y, l10n_text("Delete All Objects"), "delete_all_objects", "delete_all_objects_no");
 			draw_sprite_ext(spr_icons_delete, 0, level_editor_options_x + 16, delete_all_objects_y + 21, 1, 1, 0, c_white, 1);
-			draw_menu_dropdown(level_editor_options_x - 32, selected_level_editing_music_y, l10n_text("Level Editing Music"), "selected_level_editing_music", global.selected_level_editing_music, l10n_text("None"), l10n_text("Random"), l10n_text("Music 1"), l10n_text("Music 2"), l10n_text("Music 3"));
+			draw_menu_dropdown(level_editor_options_x - 32, selected_level_editing_music_y, l10n_text("Level Editing Music"), "selected_level_editing_music", global.selected_level_editing_music, l10n_text("None"), l10n_text("Random"), l10n_text("Music 1"), l10n_text("Music 2"), l10n_text("Music 3"), l10n_text("Music 4"));
 		}
 		else
 		if (menu == "delete_all_objects_yes")

@@ -1,5 +1,7 @@
+/* THIS IS LOADING JSON FILE */
 function scr_load_object_placement_json()
 {
+	
 	if (global.character_select_in_this_menu == "main_game" || global.create_level_from_template == true)
 		load_main_game_level = true;
 	else
@@ -17,8 +19,6 @@ function scr_load_object_placement_json()
 		}
 	}
 	
-	var var_struct = {X : 0, Y : 0, O : 0, E : 1, N : 1, H : 1, Q : 0, W : 0, L : 0};
-	
 	var file_path = "";
 	if (load_main_game_level)
 		file_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.json";
@@ -27,6 +27,8 @@ function scr_load_object_placement_json()
 	
 	if (file_exists(file_path))
 	{
+		var var_struct = {X : 0, Y : 0, O : 0, E : 1, N : 1, H : 1, Q : 0, W : 0, L : 0};
+		var placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
 		var file = file_text_open_read(file_path)
 		var json_string = file_text_read_string(file);
 		file_text_close(file);
@@ -36,23 +38,54 @@ function scr_load_object_placement_json()
 		for (var i = 0; i < array_length(data); i++)
 		{
 			var var_struct = data[i];
+			ds_list_add(placed_objects_list, var_struct.O);
 			
 			new_obj = instance_create_depth(real(var_struct.X), real(var_struct.Y), 0, obj_leveleditor_placed_object);
 			if (new_obj)
 			{
 				new_obj.object = var_struct.O;
-			    new_obj.easy = var_struct.E;
-			    new_obj.normal = var_struct.N;
-			    new_obj.hard = var_struct.H;
-			    new_obj.second_x = var_struct.Q;
-			    new_obj.second_y = var_struct.W;
+				new_obj.easy = var_struct.E;
+				new_obj.normal = var_struct.N;
+				new_obj.hard = var_struct.H;
+				new_obj.second_x = var_struct.Q;
+				new_obj.second_y = var_struct.W;
 			}
 			/* Reset the var struct variables after creating the object */
 			var_struct.E = 1;var_struct.N = 1;var_struct.H = 1;var_struct.Q = 0;var_struct.W = 0;var_struct.L = 0;
 		}
+		
+		#region /* Save unlockable objects, only if the file exists */
+		/* Open the INI file */
+		unlocked = ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		
+		/* Iterate over the ds_list and write each element to the INI file */
+		for (var i = 0; i < ds_list_size(placed_objects_list); i++) {
+			var value = ds_list_find_value(placed_objects_list, i);
+			if (!ini_key_exists("Unlock Placable Objects", value))
+			{
+				/* Only write to the INI file if it exists and the object is not already unlocked */
+				ini_write_real("Unlock Placable Objects", value, true);
+			}
+		}
+		
+		/* Close the INI file */
+		ini_close();
+		ds_list_destroy(placed_objects_list);
+		#endregion /* Save unlockable objects, only if the file exists END */
+		
 	}
 }
 
+
+
+
+
+
+
+
+
+
+/* THIS IS LOADING TXT FILE */
 function scr_load_object_placement_txt()
 {
 	if (global.character_select_in_this_menu == "main_game" || global.create_level_from_template == true)
@@ -72,8 +105,6 @@ function scr_load_object_placement_txt()
 		}
 	}
 	
-	var var_struct = {X : 0, Y : 0, O : 0, E : 1, N : 1, H : 1, Q : 0, W : 0, L : 0};
-	
 	var file_path = "";
 	if (load_main_game_level)
 		file_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.txt";
@@ -84,6 +115,8 @@ function scr_load_object_placement_txt()
 	
 	if (file != -1)
 	{
+		var var_struct = {X : 0, Y : 0, O : 0, E : 1, N : 1, H : 1, Q : 0, W : 0, L : 0};
+		var placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
 		var str, str_pos, str_temp;
 		str = file_text_read_string(file);
 		str_temp = "";
@@ -112,7 +145,7 @@ function scr_load_object_placement_txt()
 			#region /* When code sees | in string, then place object */
 			if (string_char_at(str, str_pos) == "|")
 			{
-				//scr_unlock_placable_objects(var_struct.O);
+				ds_list_add(placed_objects_list, var_struct.O);
 				
 				/* Place the object and set its properties in one loop */
 				for (i = 0; i <= var_struct.L; i += 1)
@@ -138,12 +171,43 @@ function scr_load_object_placement_txt()
 			
 		}
 		file_text_close(file);
+		
+		#region /* Save unlockable objects, only if the file exists */
+		/* Open the INI file */
+		unlocked = ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		
+		/* Iterate over the ds_list and write each element to the INI file */
+		for (var i = 0; i < ds_list_size(placed_objects_list); i++) {
+			var value = ds_list_find_value(placed_objects_list, i);
+			if (!ini_key_exists("Unlock Placable Objects", value))
+			{
+				/* Only write to the INI file if it exists and the object is not already unlocked */
+				ini_write_real("Unlock Placable Objects", value, true);
+			}
+		}
+		
+		/* Close the INI file */
+		ini_close();
+		ds_list_destroy(placed_objects_list);
+		#endregion /* Save unlockable objects, only if the file exists END */
+		
 	}
 }
 
+
+
+
+
+
+
+
+
+
+/* THIS IS DECIDING IF SAVING LEVEL AS .JSON FILE OR .TXT FILE, FOR COMPATIBILITY */
 function scr_save_custom_level()
 {
-	if (global.save_custom_level_as_json == true)
+	var save_custom_level_as_json = false; /* .json files can load faster than .txt files, but keep it an option if you want to save to .json or .txt, for compatibility */
+	if (save_custom_level_as_json == true)
 	{
 		scr_save_custom_level_json();
 	}
@@ -153,6 +217,16 @@ function scr_save_custom_level()
 	}
 }
 
+
+
+
+
+
+
+
+
+
+/* THIS IS SAVING .JSON FILE */
 function scr_save_custom_level_json()
 {
 	with(obj_leveleditor_placed_object)
@@ -178,56 +252,52 @@ function scr_save_custom_level_json()
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
 		{
-			for (var i = 0; i <= repeat_length; i++)
-	        {
-	            var obj_data = {
-	                X: string(x + 32 * i),
-	                Y: string(y),
-	                O: string(object),
+			if (repeat_length >= 0) /* Only save object if length variable is 0 or above */
+			{
+				for (var i = 0; i <= repeat_length; i++) /* This is WRONG, should not be in a for loop. Should add what the with(obj_leveleditor_placed_object) finds into a ds_list */
+		        {
+		            var obj_data = {
+		                X: string(x + 32 * i),
+		                Y: string(y),
+		                O: string(object),
+		            };
 					
-					E: string(easy),
-					N: string(normal),
-					H: string(hard),
-					Q: string(second_x),
-					W: string(second_y),
-					L: string(repeat_length)
-	            };
-				
-				//* Only add the "E" variable if easy is not true */
-		        //if (!easy) obj_data.E = string(easy);
-				
-		        ///* Only add the "N" variable if normal is not true */
-		        //if (!normal) obj_data.N = string(normal);
-				
-		        ///* Only add the "H" variable if hard is not true */
-		        //if (!hard) obj_data.H = string(hard);
-				
-				//var obj_ids = ds_list_create();
-				//ds_list_add(obj_ids, level_object_id.id_spring);
-				//ds_list_add(obj_ids, level_object_id.id_door);
-				//ds_list_add(obj_ids, level_object_id.id_water_level_change_slow);
-				//ds_list_add(obj_ids, level_object_id.id_water_level_change_fast);
-				//ds_list_add(obj_ids, level_object_id.id_water_level_change_faster);
-				//ds_list_add(obj_ids, level_object_id.id_arrow_sign);
-				//ds_list_add(obj_ids, level_object_id.id_arrow_sign_small);
-				//ds_list_add(obj_ids, level_object_id.id_water);
-				//ds_list_add(obj_ids, level_object_id.id_breathable_water);
-				
-				//if (ds_list_find_index(obj_ids, object) != -1)
-				//{
-				//	/* Always save second x AND y for these objects no matter what, even if they are on coordinate 0 */
-				//	obj_data.Q = string(second_x);
-				//	obj_data.W = string(second_y);
-				//}
-				//ds_list_destroy(obj_ids);
-				
-				//if (repeat_length >= 1) /* Only save "L" if length variable is 1 or above */
-				//{
-				//	obj_data.L = string(repeat_length);
-				//}
-				
-	            data[array_length_1d(data)] = obj_data;
-	        }
+					/* Only add the "E" variable if easy is not true */
+			        if (!easy) obj_data.E = string(easy);
+					
+			        /* Only add the "N" variable if normal is not true */
+			        if (!normal) obj_data.N = string(normal);
+					
+			        /* Only add the "H" variable if hard is not true */
+			        if (!hard) obj_data.H = string(hard);
+					
+					var obj_ids = ds_list_create();
+					ds_list_add(obj_ids, level_object_id.id_spring);
+					ds_list_add(obj_ids, level_object_id.id_door);
+					ds_list_add(obj_ids, level_object_id.id_water_level_change_slow);
+					ds_list_add(obj_ids, level_object_id.id_water_level_change_fast);
+					ds_list_add(obj_ids, level_object_id.id_water_level_change_faster);
+					ds_list_add(obj_ids, level_object_id.id_arrow_sign);
+					ds_list_add(obj_ids, level_object_id.id_arrow_sign_small);
+					ds_list_add(obj_ids, level_object_id.id_water);
+					ds_list_add(obj_ids, level_object_id.id_breathable_water);
+					
+					if (ds_list_find_index(obj_ids, object) != -1)
+					{
+						/* Always save second x AND y for these objects no matter what, even if they are on coordinate 0 */
+						obj_data.Q = string(second_x);
+						obj_data.W = string(second_y);
+					}
+					ds_list_destroy(obj_ids);
+					
+					if (repeat_length >= 1) /* Only save "L" if length variable is 1 or above */
+					{
+						obj_data.L = string(repeat_length);
+					}
+					
+		            data[array_length_1d(data)] = obj_data;
+		        }
+			}
 		}
 		#endregion /* Write all objects to file END */
 		
@@ -242,6 +312,16 @@ function scr_save_custom_level_json()
 	
 }
 
+
+
+
+
+
+
+
+
+
+/* THIS IS SAVING .TXT FILE */
 function scr_save_custom_level_txt()
 {
 	with(obj_leveleditor_placed_object)
@@ -267,8 +347,6 @@ function scr_save_custom_level_txt()
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
 		{
-			if (!easy && !normal && !hard){instance_destroy();}
-			
 			if (repeat_length >= 0) /* Only save object if length variable is 0 or above */
 			{
 				str += string(x) + "X" + string(y) + "Y" + string(object) + "O";
@@ -321,6 +399,16 @@ function scr_save_custom_level_txt()
 	
 }
 
+
+
+
+
+
+
+
+
+
+/* THIS IS SAVING ADDITIONAL LEVEL INFORMATION IN A .INI FILE */
 function scr_save_level_information()
 {
 	

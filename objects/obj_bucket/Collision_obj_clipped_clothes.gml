@@ -179,6 +179,21 @@ and (sprite_index = spr_bucket)
 			}
 		}
 		#endregion /* Invincibility Powerup END */
+		
+		#region /* Invincibility Powerup Coil Spring */
+		if (item_inside = "invincibility_powerup_coil_spring")
+		{
+			if (asset_get_type("obj_invincibility_powerup") == asset_object)
+			{
+				with(instance_create_depth(x, bbox_top - 16, 0, obj_invincibility_powerup))
+				{
+					bounce_up = true;
+					coil_spring = true;
+					motion_set(90, 10);
+				}
+			}
+		}
+		#endregion /* Invincibility Powerup Coil Spring END */
 	
 }
 with(other)

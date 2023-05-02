@@ -139,9 +139,6 @@ if (global.rain == true)
 
 #region /* Player 1 Show Controls HUD timer */
 if (player1 >= 1)
-and (can_spawn_player1 == true)
-and (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
 and (instance_exists(player1))
 and (iris_xscale >= 10)
 {
@@ -177,6 +174,11 @@ and (iris_xscale >= 10)
 	}
 }
 else
+if (global.player1_can_play)
+{
+	player1_show_controls_alpha = lerp(player1_show_controls_alpha, 1, 0.1);
+}
+else
 {
 	player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.2);
 	player1_show_controls_timer = room_speed * global.player1_show_controls;
@@ -185,8 +187,6 @@ else
 
 #region /* Player 2 Show Controls HUD timer */
 if (player2 >= 1)
-and (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
 and (instance_exists(player2))
 and (iris_xscale >= 10)
 {
@@ -222,6 +222,11 @@ and (iris_xscale >= 10)
 	}
 }
 else
+if (global.player2_can_play)
+{
+	player2_show_controls_alpha = lerp(player2_show_controls_alpha, 1, 0.1);
+}
+else
 {
 	player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.2);
 	player2_show_controls_timer = room_speed * global.player2_show_controls;
@@ -230,8 +235,6 @@ else
 
 #region /* Player 3 Show Controls HUD timer */
 if (player3 >= 1)
-and (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
 and (instance_exists(player3))
 and (iris_xscale >= 10)
 {
@@ -267,6 +270,11 @@ and (iris_xscale >= 10)
 	}
 }
 else
+if (global.player3_can_play)
+{
+	player3_show_controls_alpha = lerp(player3_show_controls_alpha, 1, 0.1);
+}
+else
 {
 	player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.2);
 	player3_show_controls_timer = room_speed * global.player3_show_controls;
@@ -275,8 +283,6 @@ else
 
 #region /* Player 4 Show Controls HUD timer */
 if (player4 >= 1)
-and (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
 and (instance_exists(player4))
 and (iris_xscale >= 10)
 {
@@ -310,6 +316,11 @@ and (iris_xscale >= 10)
 	{
 		player4_show_controls_timer = room_speed * global.player4_show_controls;
 	}
+}
+else
+if (global.player4_can_play)
+{
+	player4_show_controls_alpha = lerp(player4_show_controls_alpha, 1, 0.1);
 }
 else
 {

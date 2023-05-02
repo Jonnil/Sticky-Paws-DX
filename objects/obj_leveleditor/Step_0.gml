@@ -36,8 +36,14 @@ if (global.actually_play_edited_level == false)
 			}
 			else
 			if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg"))
+			and (floor(random(3 - 1)) == 0)
 			{
 				level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg");
+			}
+			else
+			if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_4.ogg"))
+			{
+				level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_4.ogg");
 			}
 			previous_selected_level_editing_music = 1;
 		}
@@ -64,6 +70,14 @@ if (global.actually_play_edited_level == false)
 			audio_stop_sound(level_editing_music);
 			level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg");
 			previous_selected_level_editing_music = 4;
+		}
+		else
+		if (global.selected_level_editing_music == 5)
+		and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_4.ogg"))
+		{
+			audio_stop_sound(level_editing_music);
+			level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_4.ogg");
+			previous_selected_level_editing_music = 5;
 		}
 		else
 		{

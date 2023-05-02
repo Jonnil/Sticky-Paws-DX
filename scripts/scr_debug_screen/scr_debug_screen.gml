@@ -58,7 +58,7 @@ function scr_debug_screen()
 			draw_set_alpha(0.5);
 			draw_rectangle_color(0, fps_y - 16, 370, fps_y + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			if (mouse_check_button_pressed(mb_left))
+			if (mouse_check_button_released(mb_left))
 			{
 				if (global.show_fps == true)
 				{
@@ -79,7 +79,7 @@ function scr_debug_screen()
 			draw_set_alpha(0.5);
 			draw_rectangle_color(0, fps_real_y - 16, 370, fps_real_y + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			if (mouse_check_button_pressed(mb_left))
+			if (mouse_check_button_released(mb_left))
 			{
 				if (global.show_fps_real == true)
 				{
@@ -100,7 +100,7 @@ function scr_debug_screen()
 			draw_set_alpha(0.5);
 			draw_rectangle_color(0, instance_count_y - 16, 370, instance_count_y + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			if (mouse_check_button_pressed(mb_left))
+			if (mouse_check_button_released(mb_left))
 			{
 				if (global.show_instance_count == true)
 				{
@@ -121,7 +121,7 @@ function scr_debug_screen()
 			draw_set_alpha(0.5);
 			draw_rectangle_color(0, all_instance_count_y - 16, 370, all_instance_count_y + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
-			if (mouse_check_button_pressed(mb_left))
+			if (mouse_check_button_released(mb_left))
 			{
 				if (global.show_all_instance_count == true)
 				{

@@ -2064,6 +2064,7 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"open_dyslexic_font.otf","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"sprite_origin_point.ini","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/data",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"clear_melody.ogg","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sound",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"level_editor_music_4.ogg","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sound",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"level_editor_music_1.ogg","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sound",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"level_editor_music_2.ogg","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sound",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"level_editor_music_3.ogg","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sound",},

@@ -86,10 +86,6 @@ function scr_draw_online_download_list()
 			global.loading_spinning_angle -= 10;
 			draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, 1);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
-			draw_set_halign(fa_left);
-			scr_draw_text_outlined(32, display_get_gui_height() * 0.5 + (42 * 2), string(global.online_download_list), global.default_text_size, c_white, c_black, 1);
-			draw_set_halign(fa_right);
-			scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() * 0.5 + (42 * 3), string(global.online_download_list), global.default_text_size, c_white, c_black, 1);
 			#endregion /* Draw loading screen when loading download list END */
 			
 			#region /* If there is an online download list loaded, interpret that as a struct using "json parse" */

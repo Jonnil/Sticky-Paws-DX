@@ -226,7 +226,3 @@ if (menu_delay > 0)
 {
 	menu_delay -= 1;
 }
-
-draw_set_halign(fa_left);
-scr_draw_text_outlined(32, 32, "menu delay: " + string(menu_delay));
-scr_draw_text_outlined(32, 64, "menu: " + string(menu));

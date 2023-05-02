@@ -10,7 +10,7 @@ function scr_options_reset_controls_to_default_settings(xx, yy)
 		menu_cursor_y_position = yy;
 		if (key_a_pressed)
 		and (menu_delay == 0)
-		or (mouse_check_button_pressed(mb_left))
+		or (mouse_check_button_released(mb_left))
 		and (mouse_get_x > 370)
 		and (point_in_rectangle(mouse_get_x, mouse_get_y, xx, yy + menu_y_offset + 1, xx + 370, yy + menu_y_offset + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")

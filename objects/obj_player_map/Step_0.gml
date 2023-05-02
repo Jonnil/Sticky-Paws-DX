@@ -1023,7 +1023,7 @@ if (menu == "purchase_now")
 	if (key_a_pressed)
 	and (menu_delay == 0)
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 64, get_window_width * 0.5 - 185 + 370, get_window_height * 0.5 + 64 + 42))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	{
 		url_open(string(global.link_to_steam_page));
@@ -1051,7 +1051,7 @@ if (menu == "continue_playing")
 	if (key_a_pressed)
 	and (menu_delay == 0)
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 106, get_window_width * 0.5 - 185 + 370, get_window_height * 0.5 + 106 + 42))
-	and (mouse_check_button_pressed(mb_left))
+	and (mouse_check_button_released(mb_left))
 	and (menu_delay == 0)
 	{
 		menu = noone;

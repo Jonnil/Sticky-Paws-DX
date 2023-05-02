@@ -48,7 +48,7 @@ or (keyboard_check_pressed(global.player_[inp.key][4][2][action.accept]))
 or (keyboard_check_pressed(vk_space))
 or (keyboard_check_pressed(vk_escape))
 or (window_has_focus())
-and (mouse_check_button_pressed(mb_left))
+and (mouse_check_button_released(mb_left))
 {
 	if (can_navigate == true) /* Can only go to the title screen when everything is loaded */
 	{
