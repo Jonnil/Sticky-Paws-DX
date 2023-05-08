@@ -67,6 +67,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			{
 				/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
 				select_custom_level_menu_open = false;
+				selected_online_download_index = 1;
 				menu = "online_download_list_load";
 			}
 			
@@ -318,7 +319,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						global.level_description = ini_read_string("info", "character_description", "");
 					}
 				}
-				menu = "searched_file_downloaded_back"; /* Go to the screen where you see the file has been downloaded */
+				menu = "searched_file_downloaded_back_to_list"; /* Go to the screen where you see the file has been downloaded */
 			}
 			#endregion /* Downloading character END */
 			
@@ -354,6 +355,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		{
 			var cancel_button_y = display_get_gui_height() * 0.5 + 100 + 64;
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, cancel_button_y, l10n_text("Cancel"), "searching_for_id", "searching_for_id");
+			draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, cancel_button_y + 20, 1, 1, 0, c_white, 1);
 			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, cancel_button_y, display_get_gui_width() * 0.5 + 185, cancel_button_y + 41))
 			and (global.controls_used_for_menu_navigation == "mouse")
@@ -376,6 +378,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	#region /* Searched file downloaded menu */
 	if (menu == "searched_file_downloaded_play")
 	or (menu == "searched_file_downloaded_make")
+	or (menu == "searched_file_downloaded_delete")
+	or (menu == "searched_file_downloaded_back_to_list")
 	or (menu == "searched_file_downloaded_back")
 	{
 		
@@ -413,6 +417,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (display_get_gui_height() <= 720)
 				{
 					if (downloaded_thumbnail_sprite > 0)
+					and (sprite_exists(downloaded_thumbnail_sprite))
 					{
 						draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * 1.1, 216 / sprite_get_height(downloaded_thumbnail_sprite) * 1.1, 0, c_white, 1);
 						var draw_description_y = 350;
@@ -425,6 +430,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				else
 				{
 					if (downloaded_thumbnail_sprite > 0)
+					and (sprite_exists(downloaded_thumbnail_sprite))
 					{
 						draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, 64, 384 / sprite_get_width(downloaded_thumbnail_sprite) * 2, 216 / sprite_get_height(downloaded_thumbnail_sprite) * 2, 0, c_white, 1);
 						var draw_description_y = 532;
@@ -458,6 +464,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				
 				#region /* Draw Character Thumbnail */
 				if (downloaded_thumbnail_sprite > 0)
+				and (sprite_exists(downloaded_thumbnail_sprite))
 				{
 					var scale_offset = 1;
 					draw_sprite_ext(downloaded_thumbnail_sprite, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 100, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, (392 / sprite_get_width(downloaded_thumbnail_sprite)) * scale_offset, 0, c_white, 1);
@@ -495,54 +502,120 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (what_kind_of_id == "level")
 			{
 				/* Level is downloaded, so you get a choice if you want to play, make, or go back to custom level select*/
-				draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, "Play", "searched_file_downloaded_play", "searched_file_downloaded_play");
-				draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50 + 42, "Make", "searched_file_downloaded_make", "searched_file_downloaded_make");
-				var searched_file_downloaded_back_y = downloaded_message_y + 50 + (42 * 2);
-				draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, "Back", "searched_file_downloaded_back", "searched_file_downloaded_back");
+				if (directory_exists(working_directory + "/custom_levels/" + string(global.level_name)))
+				{
+					draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, "Play", "searched_file_downloaded_play", "searched_file_downloaded_play");
+					draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50 + 42, "Make", "searched_file_downloaded_make", "searched_file_downloaded_make");
+				}
+				var searched_file_downloaded_delete_y = downloaded_message_y + 50 + (42 * 2);
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, "Delete", "searched_file_downloaded_delete", "searched_file_downloaded_delete");
+				draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
+				var back_to_list_y = downloaded_message_y + 50 + (42 * 3);
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, back_to_list_y, "Back to online level list", "searched_file_downloaded_back_to_list", "searched_file_downloaded_back_to_list");
+				draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
+				var searched_file_downloaded_back_y = downloaded_message_y + 50 + (42 * 4);
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, "Back to custom level select", "searched_file_downloaded_back", "searched_file_downloaded_back");
+				draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_back_y + 20, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
-				var searched_file_downloaded_back_y = downloaded_message_y + 50;
-				draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, "Back", "searched_file_downloaded_back", "searched_file_downloaded_back");
+				var searched_file_downloaded_delete_y = downloaded_message_y + 50;
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, "Delete", "searched_file_downloaded_delete", "searched_file_downloaded_delete");
+				draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
+				var back_to_list_y = downloaded_message_y + 50 + 42;
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, back_to_list_y, "Back to online character list", "searched_file_downloaded_back_to_list", "searched_file_downloaded_back_to_list");
+				draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
+				var searched_file_downloaded_back_y = downloaded_message_y + 50 + (42 * 2);
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, "Back to character select", "searched_file_downloaded_back", "searched_file_downloaded_back");
+				draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_back_y + 20, 1, 1, 0, c_white, 1);
 			}
 			
-			#region /* Play, Make, Back Navigation */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + 41))
+			#region /* Play, Make, Delete, Back Navigation */
+			
+			#region /* Click Play */
+			if (menu_delay == 0)
+			and (what_kind_of_id == "level")
+			{
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + 41))
+				and (global.controls_used_for_menu_navigation == "mouse")
+				and (mouse_check_button_released(mb_left))
+				or (menu == "searched_file_downloaded_play")
+				and (key_a_pressed)
+				{
+					/* Play the downloaded level */
+					global.doing_clear_check = false;
+					global.actually_play_edited_level = true; /* Even before going to the level, set this variable to true */
+					global.play_edited_level = true;
+					can_navigate = false;
+					menu_delay = 9999;
+				}
+			}
+			#endregion /* Click Play END */
+			
+			#region /* Click Make */
+			if (menu_delay == 0)
+			and (what_kind_of_id == "level")
+			{
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50 + 42, display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + 42 + 41))
+				and (global.controls_used_for_menu_navigation == "mouse")
+				and (mouse_check_button_released(mb_left))
+				or (menu == "searched_file_downloaded_make")
+				and (key_a_pressed)
+				{
+					/* Edit the downloaded level */
+					global.doing_clear_check = false;
+					global.actually_play_edited_level = false;
+					global.play_edited_level = false;
+					can_navigate = false;
+					menu_delay = 9999;
+				}
+			}
+			#endregion /* Click Make END */
+			
+			#region /* Click Delete */
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_delete_y + 41))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			and (what_kind_of_id == "level")
-			or (menu == "searched_file_downloaded_play")
+			or (menu == "searched_file_downloaded_delete")
 			and (key_a_pressed)
 			and (menu_delay == 0)
-			and (what_kind_of_id == "level")
 			{
-				/* Play the downloaded level */
-				global.doing_clear_check = false;
-				global.actually_play_edited_level = true; /* Even before going to the level, set this variable to true */
-				global.play_edited_level = true;
-				can_navigate = false;
-				menu_delay = 9999;
+				if (what_kind_of_id == "level")
+				and (directory_exists(working_directory + "/custom_levels/" + string(global.level_name)))
+				{
+					directory_destroy(working_directory + "/custom_levels/" + string(global.level_name));
+					global.select_level_index = 0;
+					global.level_name = "";
+				}
+				else
+				if (what_kind_of_id == "character")
+				and (directory_exists(working_directory + "/custom_characters/" + string(downloaded_character_name)))
+				{
+					directory_destroy(working_directory + "/custom_characters/" + string(downloaded_character_name));
+					global.character_index[0] = 0;
+				}
+				menu = "searched_file_downloaded_deleted_back_to_list";
+				menu_delay = 3;
 			}
+			#endregion /* Click Delete END */
 			
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50 + 42, display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + 42 + 41))
+			#region /* Click back to online level list */
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, back_to_list_y, display_get_gui_width() * 0.5 + 185, back_to_list_y + 41))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			and (what_kind_of_id == "level")
-			or (menu == "searched_file_downloaded_make")
+			or (menu == "searched_file_downloaded_back_to_list")
 			and (key_a_pressed)
 			and (menu_delay == 0)
-			and (what_kind_of_id == "level")
 			{
-				/* Edit the downloaded level */
-				global.doing_clear_check = false;
-				global.actually_play_edited_level = false;
-				global.play_edited_level = false;
-				can_navigate = false;
-				menu_delay = 9999;
+				/* Don't set the "select level index" or "level name" here, because we want it saved still */
+				menu = "online_download_list_load"; /* Go back to online level list */
+				menu_delay = 3;
 			}
+			#endregion /* Click back to online level list END */
 			
+			#region /* Click back to custom level select */
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_back_y + 41))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_released(mb_left))
@@ -553,6 +626,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			{
 				menu = "searching_for_id_back";
 			}
+			#endregion /* Click back to custom level select END */
 			
 			if (key_down)
 			and (menu_delay == 0)
@@ -564,6 +638,16 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 				else
 				if (menu == "searched_file_downloaded_make")
+				{
+					menu = "searched_file_downloaded_delete";
+				}
+				else
+				if (menu == "searched_file_downloaded_delete")
+				{
+					menu = "searched_file_downloaded_back_to_list";
+				}
+				else
+				if (menu == "searched_file_downloaded_back_to_list")
 				{
 					menu = "searched_file_downloaded_back";
 				}
@@ -589,13 +673,65 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					menu = "searched_file_downloaded_play";
 				}
 				else
-				if (menu == "searched_file_downloaded_back")
+				if (menu == "searched_file_downloaded_delete")
 				{
 					menu = "searched_file_downloaded_make";
 				}
+				else
+				if (menu == "searched_file_downloaded_back_to_list")
+				{
+					menu = "searched_file_downloaded_delete";
+				}
+				else
+				if (menu == "searched_file_downloaded_back")
+				{
+					menu = "searched_file_downloaded_back_to_list";
+				}
 				menu_delay = 3;
 			}
-			#endregion /* Play, Make, Back Navigation END */
+			else
+			if (key_down)
+			and (menu_delay == 0)
+			and (what_kind_of_id == "character")
+			{
+				if (menu == "searched_file_downloaded_delete")
+				{
+					menu = "searched_file_downloaded_back_to_list";
+				}
+				else
+				if (menu == "searched_file_downloaded_back_to_list")
+				{
+					menu = "searched_file_downloaded_back";
+				}
+				else
+				if (menu == "searched_file_downloaded_back")
+				{
+					menu = "searched_file_downloaded_delete";
+				}
+				menu_delay = 3;
+			}
+			else
+			if (key_up)
+			and (menu_delay == 0)
+			and (what_kind_of_id == "character")
+			{
+				if (menu == "searched_file_downloaded_delete")
+				{
+					menu = "searched_file_downloaded_back";
+				}
+				else
+				if (menu == "searched_file_downloaded_back_to_list")
+				{
+					menu = "searched_file_downloaded_delete";
+				}
+				else
+				if (menu == "searched_file_downloaded_back")
+				{
+					menu = "searched_file_downloaded_back_to_list";
+				}
+				menu_delay = 3;
+			}
+			#endregion /* Play, Make, Delete, Back Navigation END */
 			
 		}
 		#endregion /* If level existed and is downloaded, show this menu END */
@@ -625,6 +761,141 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	}
 	#endregion /* Searched file downloaded menu END */
 	
+	else
+	
+	#region /* Deleted file */
+	if (menu == "searched_file_downloaded_deleted_back_to_list")
+	or (menu == "searched_file_downloaded_deleted")
+	{
+		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
+		draw_set_alpha(0.9);
+		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
+		
+		var deleted_back_to_list_y = display_get_gui_height() * 0.5;
+		var deleted_back_to_level_select_y = deleted_back_to_list_y + 42;
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		if (what_kind_of_id == "level")
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Deleted") + " " + string(global.level_name), global.default_text_size * 2, c_black, c_white, 1);
+			draw_menu_button(display_get_gui_width() * 0.5 - 185, deleted_back_to_list_y + 50, l10n_text("Back to online level list"), "searched_file_downloaded_deleted_back_to_list", "searched_file_downloaded_deleted_back_to_list");
+			draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, deleted_back_to_list_y + 50 + 20, 1, 1, 0, c_white, 1);
+			draw_menu_button(display_get_gui_width() * 0.5 - 185, deleted_back_to_level_select_y + 50, l10n_text("Back to custom level select"), "searched_file_downloaded_deleted", "searched_file_downloaded_deleted");
+			draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, deleted_back_to_level_select_y + 50 + 20, 1, 1, 0, c_white, 1);
+		}
+		else
+		if (what_kind_of_id == "character")
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, l10n_text("Deleted") + " " + string(downloaded_character_name), global.default_text_size * 2, c_black, c_white, 1);
+			draw_menu_button(display_get_gui_width() * 0.5 - 185, deleted_back_to_list_y + 50, l10n_text("Back to online character list"), "searched_file_downloaded_deleted_back_to_list", "searched_file_downloaded_deleted_back_to_list");
+			draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, deleted_back_to_list_y + 50 + 20, 1, 1, 0, c_white, 1);
+			draw_menu_button(display_get_gui_width() * 0.5 - 185, deleted_back_to_level_select_y + 50, l10n_text("Back to character select"), "searched_file_downloaded_deleted", "searched_file_downloaded_deleted");
+			draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, deleted_back_to_level_select_y + 50 + 20, 1, 1, 0, c_white, 1);
+		}
+		
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_back_to_list_y + 50, display_get_gui_width() * 0.5 + 185, deleted_back_to_list_y + 50 + 41))
+		and (global.controls_used_for_menu_navigation == "mouse")
+		and (mouse_check_button_released(mb_left))
+		and (menu_delay == 0)
+		or (menu == "searched_file_downloaded_deleted_back_to_list")
+		and (key_a_pressed)
+		and (menu_delay == 0)
+		or (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_back_to_level_select_y + 50, display_get_gui_width() * 0.5 + 185, deleted_back_to_level_select_y + 50 + 41))
+		and (global.controls_used_for_menu_navigation == "mouse")
+		and (mouse_check_button_released(mb_left))
+		and (menu_delay == 0)
+		or (menu == "searched_file_downloaded_deleted")
+		and (key_a_pressed)
+		and (menu_delay == 0)
+		{
+			
+			#region /* If any "character index" is set to undefined, reset it to 0 */
+			if (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) == undefined)
+			{
+				global.character_index[0] = 0;
+			}
+			if (ds_list_find_value(global.all_loaded_characters, global.character_index[1]) == undefined)
+			{
+				global.character_index[1] = 0;
+			}
+			if (ds_list_find_value(global.all_loaded_characters, global.character_index[2]) == undefined)
+			{
+				global.character_index[2] = 0;
+			}
+			if (ds_list_find_value(global.all_loaded_characters, global.character_index[3]) == undefined)
+			{
+				global.character_index[3] = 0;
+			}
+			#endregion /* If any "character index" is set to undefined, reset it to 0 END */
+			
+		}
+		
+		#region /* Click back to online list */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_back_to_list_y + 50, display_get_gui_width() * 0.5 + 185, deleted_back_to_list_y + 50 + 41))
+		and (global.controls_used_for_menu_navigation == "mouse")
+		and (mouse_check_button_released(mb_left))
+		and (menu_delay == 0)
+		or (menu == "searched_file_downloaded_deleted_back_to_list")
+		and (key_a_pressed)
+		and (menu_delay == 0)
+		{
+			/* Don't set the "select level index" or "level name" here, because we want it saved still */
+			menu = "online_download_list_load"; /* Go back to online level list */
+			menu_delay = 3;
+		}
+		#endregion /* Click back to online list END */
+		
+		#region /* Click back to custom level select */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_back_to_level_select_y + 50, display_get_gui_width() * 0.5 + 185, deleted_back_to_level_select_y + 50 + 41))
+		and (global.controls_used_for_menu_navigation == "mouse")
+		and (mouse_check_button_released(mb_left))
+		and (menu_delay == 0)
+		or (menu == "searched_file_downloaded_deleted")
+		and (key_a_pressed)
+		and (menu_delay == 0)
+		{
+			global.select_level_index = 0;
+			global.level_name = "";
+			menu = "searching_for_id_back";
+			menu_delay = 3;
+		}
+		#endregion /* Click back to custom level select END */
+		
+		if (key_down)
+		and (menu_delay == 0)
+		{
+			if (menu == "searched_file_downloaded_deleted_back_to_list")
+			{
+				menu = "searched_file_downloaded_deleted";
+			}
+			else
+			if (menu == "searched_file_downloaded_deleted")
+			{
+				menu = "searched_file_downloaded_deleted_back_to_list";
+			}
+			menu_delay = 3;
+		}
+		else
+		if (key_up)
+		and (menu_delay == 0)
+		{
+			if (menu == "searched_file_downloaded_deleted_back_to_list")
+			{
+				menu = "searched_file_downloaded_deleted";
+			}
+			else
+			if (menu == "searched_file_downloaded_deleted")
+			{
+				menu = "searched_file_downloaded_deleted_back_to_list";
+			}
+			menu_delay = 3;
+		}
+		
+	}
+	#endregion /* Deleted file END */
+	
 	#region /* Show Download Failed message */
 	if (menu == "searched_file_downloaded_failed")
 	{
@@ -648,6 +919,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 22, l10n_text("Retrieved ID with less than max character length"), global.default_text_size, c_black, c_white, 1)
 		}
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, l10n_text("OK"), "searched_file_downloaded_failed", "searched_file_downloaded_failed");
+		draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, downloaded_message_y + 50 + 20, 1, 1, 0, c_white, 1);
 		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
@@ -681,6 +953,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			player1_menu = "load_downloaded_character";
 			select_custom_level_menu_open = false;
 			scr_load_character_initializing();
+			player1_automatically_join = true;
 			menu = "load_characters";
 			menu_delay = 3;
 			menu_joystick1_delay = 30;

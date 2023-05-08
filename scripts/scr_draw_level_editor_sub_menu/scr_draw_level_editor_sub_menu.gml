@@ -249,18 +249,6 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				draw_sprite_ext(spr_icons_back, 0, xx + 8 + 20, 226 * (column - scroll) + 522 - 3 + 21, 1, 1, 0, c_white, 1);
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 569 - 3, l10n_text("Yes"), "level_editor_delete_yes", "level_editor_delete_yes");
 				draw_sprite_ext(spr_icons_delete, 0, xx + 8 + 16, 226 * (column - scroll) + 569 - 3 + 21, 1, 1, 0, c_white, 1);
-				
-				if (global.enable_options_for_pc == true)
-				{
-					if (get_window_width <= 1350)
-					{
-						scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, working_directory + "/custom_levels/" + string(global.level_name), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
-					}
-					else
-					{
-						scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, working_directory + "/custom_levels/" + string(global.level_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-					}
-				}
 			}
 		}
 		#endregion /* Show Sub Menu Buttons END */
@@ -500,6 +488,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				{
 					directory_destroy(working_directory + "/custom_levels/" + string(global.level_name));
 				}
+				global.select_level_index -= 1; /* Decrease the "select level index" so that the cursor isn't selecting a level that no longer exists */
 				scr_load_custom_level_initializing();
 				can_input_player1_name = false;
 				can_input_player2_name = false;

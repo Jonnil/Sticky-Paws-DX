@@ -40,15 +40,36 @@ function scr_load_object_placement_json()
 			var var_struct = data[i];
 			ds_list_add(placed_objects_list, var_struct.O);
 			
-			new_obj = instance_create_depth(real(var_struct.X), real(var_struct.Y), 0, obj_leveleditor_placed_object);
-			if (new_obj)
+			if variable_struct_exists(var_struct, "L")
 			{
-				new_obj.object = var_struct.O;
-				new_obj.easy = var_struct.E;
-				new_obj.normal = var_struct.N;
-				new_obj.hard = var_struct.H;
-				new_obj.second_x = var_struct.Q;
-				new_obj.second_y = var_struct.W;
+				for (var j = 0; j <= var_struct.L; j += 1)
+				{
+					new_obj = instance_create_depth(real(var_struct.X) + real(32 * j), real(var_struct.Y), 0, obj_leveleditor_placed_object);
+					if (new_obj)
+					{
+						new_obj.object = var_struct.O;
+						
+						if variable_struct_exists(var_struct, "E") new_obj.easy = var_struct.E else new_obj.easy = 1;
+						if variable_struct_exists(var_struct, "N") new_obj.normal = var_struct.N else new_obj.normal = 1;
+						if variable_struct_exists(var_struct, "H") new_obj.hard = var_struct.H else new_obj.hard = 1;
+						if variable_struct_exists(var_struct, "Q") new_obj.second_x = var_struct.Q else new_obj.second_x = 0;
+						if variable_struct_exists(var_struct, "W") new_obj.second_y = var_struct.W else new_obj.second_y = 0;
+					}
+				}
+			}
+			else
+			{
+				new_obj = instance_create_depth(real(var_struct.X), real(var_struct.Y), 0, obj_leveleditor_placed_object);
+				if (new_obj)
+				{
+					new_obj.object = var_struct.O;
+						
+					if variable_struct_exists(var_struct, "E") new_obj.easy = var_struct.E else new_obj.easy = 1;
+					if variable_struct_exists(var_struct, "N") new_obj.normal = var_struct.N else new_obj.normal = 1;
+					if variable_struct_exists(var_struct, "H") new_obj.hard = var_struct.H else new_obj.hard = 1;
+					if variable_struct_exists(var_struct, "Q") new_obj.second_x = var_struct.Q else new_obj.second_x = 0;
+					if variable_struct_exists(var_struct, "W") new_obj.second_y = var_struct.W else new_obj.second_y = 0;
+				}
 			}
 			/* Reset the var struct variables after creating the object */
 			var_struct.E = 1;var_struct.N = 1;var_struct.H = 1;var_struct.Q = 0;var_struct.W = 0;var_struct.L = 0;
@@ -148,7 +169,7 @@ function scr_load_object_placement_txt()
 				ds_list_add(placed_objects_list, var_struct.O);
 				
 				/* Place the object and set its properties in one loop */
-				for (i = 0; i <= var_struct.L; i += 1)
+				for (var i = 0; i <= var_struct.L; i += 1)
 				{
 					new_obj = instance_create_depth(real(var_struct.X) + real(32 * i), real(var_struct.Y), 0, obj_leveleditor_placed_object);
 					if (new_obj)
@@ -206,7 +227,7 @@ function scr_load_object_placement_txt()
 /* THIS IS DECIDING IF SAVING LEVEL AS .JSON FILE OR .TXT FILE, FOR COMPATIBILITY */
 function scr_save_custom_level()
 {
-	var save_custom_level_as_json = false; /* .json files can load faster than .txt files, but keep it an option if you want to save to .json or .txt, for compatibility */
+	var save_custom_level_as_json = true; /* .json files can load faster than .txt files, but keep it an option if you want to save to .json or .txt, for compatibility */
 	if (save_custom_level_as_json == true)
 	{
 		scr_save_custom_level_json();
@@ -229,10 +250,6 @@ function scr_save_custom_level()
 /* THIS IS SAVING .JSON FILE */
 function scr_save_custom_level_json()
 {
-	with(obj_leveleditor_placed_object)
-	{
-		scr_set_length_variable();
-	}
 	
 	#region /* Save Custom Level */
 	if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
@@ -252,51 +269,49 @@ function scr_save_custom_level_json()
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
 		{
+			scr_set_length_variable();
 			if (repeat_length >= 0) /* Only save object if length variable is 0 or above */
 			{
-				for (var i = 0; i <= repeat_length; i++) /* This is WRONG, should not be in a for loop. Should add what the with(obj_leveleditor_placed_object) finds into a ds_list */
-		        {
-		            var obj_data = {
-		                X: string(x + 32 * i),
-		                Y: string(y),
-		                O: string(object),
-		            };
-					
-					/* Only add the "E" variable if easy is not true */
-			        if (!easy) obj_data.E = string(easy);
-					
-			        /* Only add the "N" variable if normal is not true */
-			        if (!normal) obj_data.N = string(normal);
-					
-			        /* Only add the "H" variable if hard is not true */
-			        if (!hard) obj_data.H = string(hard);
-					
-					var obj_ids = ds_list_create();
-					ds_list_add(obj_ids, level_object_id.id_spring);
-					ds_list_add(obj_ids, level_object_id.id_door);
-					ds_list_add(obj_ids, level_object_id.id_water_level_change_slow);
-					ds_list_add(obj_ids, level_object_id.id_water_level_change_fast);
-					ds_list_add(obj_ids, level_object_id.id_water_level_change_faster);
-					ds_list_add(obj_ids, level_object_id.id_arrow_sign);
-					ds_list_add(obj_ids, level_object_id.id_arrow_sign_small);
-					ds_list_add(obj_ids, level_object_id.id_water);
-					ds_list_add(obj_ids, level_object_id.id_breathable_water);
-					
-					if (ds_list_find_index(obj_ids, object) != -1)
-					{
-						/* Always save second x AND y for these objects no matter what, even if they are on coordinate 0 */
-						obj_data.Q = string(second_x);
-						obj_data.W = string(second_y);
-					}
-					ds_list_destroy(obj_ids);
-					
-					if (repeat_length >= 1) /* Only save "L" if length variable is 1 or above */
-					{
-						obj_data.L = string(repeat_length);
-					}
-					
-		            data[array_length_1d(data)] = obj_data;
-		        }
+				var obj_data = {
+		            X: string(x),
+		            Y: string(y),
+		            O: string(object),
+		        };
+				
+				/* Only add the "E" variable if easy is not true */
+			    if (!easy) obj_data.E = string(easy);
+				
+			    /* Only add the "N" variable if normal is not true */
+			    if (!normal) obj_data.N = string(normal);
+				
+			    /* Only add the "H" variable if hard is not true */
+			    if (!hard) obj_data.H = string(hard);
+				
+				var obj_ids = ds_list_create();
+				ds_list_add(obj_ids, level_object_id.id_spring);
+				ds_list_add(obj_ids, level_object_id.id_door);
+				ds_list_add(obj_ids, level_object_id.id_water_level_change_slow);
+				ds_list_add(obj_ids, level_object_id.id_water_level_change_fast);
+				ds_list_add(obj_ids, level_object_id.id_water_level_change_faster);
+				ds_list_add(obj_ids, level_object_id.id_arrow_sign);
+				ds_list_add(obj_ids, level_object_id.id_arrow_sign_small);
+				ds_list_add(obj_ids, level_object_id.id_water);
+				ds_list_add(obj_ids, level_object_id.id_breathable_water);
+				
+				if (ds_list_find_index(obj_ids, object) != -1)
+				{
+					/* Always save second x AND y for these objects no matter what, even if they are on coordinate 0 */
+					obj_data.Q = string(second_x);
+					obj_data.W = string(second_y);
+				}
+				ds_list_destroy(obj_ids);
+				
+				if (repeat_length >= 1) /* Only save "L" if length variable is 1 or above */
+				{
+					obj_data.L = string(repeat_length);
+				}
+				
+		        data[array_length_1d(data)] = obj_data;
 			}
 		}
 		#endregion /* Write all objects to file END */

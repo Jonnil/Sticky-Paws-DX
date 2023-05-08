@@ -23,7 +23,7 @@ function scr_draw_online_download_list()
 		ds_map_destroy(map);
 		#endregion /* Get Online Download List END */
 		
-		menu = "download_online_1";
+		menu = "download_online_" + string(selected_online_download_index);
 		
 		automatically_search_id = false;
 		in_online_download_list_menu = true;
@@ -46,6 +46,17 @@ function scr_draw_online_download_list()
 		draw_set_alpha(1);
 		
 		draw_menu_button(0, 0, "Back", "download_online_back", "download_online_back");
+		if (content_type == "character")
+		{
+			draw_menu_button(0, 42, "Search Character ID", "download_online_search_id", "download_online_search_id");
+		}
+		else
+		if (content_type == "level")
+		{
+			draw_menu_button(0, 42, "Search Level ID", "download_online_search_id", "download_online_search_id");
+		}
+		
+		#region /* Pressing the Back button */
 		if (key_b_pressed)
 		or (menu = "download_online_back")
 		and (key_a_pressed)
@@ -68,12 +79,30 @@ function scr_draw_online_download_list()
 				else
 				if (content_type == "character")
 				{
-					menu = "search_online_list";
+					menu = "search_character_id";
 				}
 				menu_delay = 3;
 				search_id = "";
 			}
 		}
+		#endregion /* Pressing the Back button END*/
+		
+		#region /* Pressing the Search ID button */
+		if (menu = "download_online_search_id")
+		and (key_a_pressed)
+		or (menu = "download_online_search_id")
+		and (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42, 370, 42 + 42))
+		and (mouse_check_button_released(mb_left))
+		{
+			in_online_download_list_menu = false; /* Get out of the online download list menu */
+			automatically_search_id = false; /* Manual search ID */
+			keyboard_string = "";
+			search_id = "";
+			menu = "search_id_ok";
+			select_custom_level_menu_open = false;
+			menu_delay = 3;
+		}
+		#endregion /* Pressing the Search ID button END */
 		
 		#region /* If there is no data, then apply the retrieved download data to it */
 		if (data == noone)
@@ -90,8 +119,15 @@ function scr_draw_online_download_list()
 			
 			#region /* If there is an online download list loaded, interpret that as a struct using "json parse" */
 			if (global.online_download_list != "")
+			and (global.online_download_list != "HTTP request exception")
 			{
 				data = json_parse(global.online_download_list); /* When there is data here, then go to the online downloads menu */
+			}
+			else
+			if (global.online_download_list == "HTTP request exception")
+			{
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, l10n_text("HTTP request exception"), global.default_text_size, c_white, c_black, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, l10n_text("HTTP request exception"), global.default_text_size, c_white, c_red, scr_wave(0, 1, 1, 0));
 			}
 			#endregion /* If there is an online download list loaded, interpret that as a struct using "json parse" END */
 			
@@ -102,7 +138,6 @@ function scr_draw_online_download_list()
 		if (data != noone)
 		and (menu != "search_id_ok")
 		{
-			
 			scr_scroll_menu();
 			
 			/* Check if it's an array */
@@ -111,12 +146,11 @@ function scr_draw_online_download_list()
 				/* Get the number of items in the JSON array */
 				var num_items = array_length(data);
 				var online_download_index = 0;
-				var selected_online_download_index = 0;
 				for (var i = 0; i < num_items; i++;)
 				{
 					online_download_index += 1;
 					var download_online_x = 100;
-					var download_online_y = (44 * i);
+					var download_online_y = 32 + (44 * i);
 					draw_menu_button(download_online_x, 64 + download_online_y + menu_y_offset, "Download", "download_online_" + string(online_download_index), "download_online_" + string(online_download_index));
 					draw_set_halign(fa_left);
 					
@@ -130,10 +164,23 @@ function scr_draw_online_download_list()
 					
 					if (menu == "download_online_" + string(online_download_index))
 					{
+						
+						
+						
+						if (keyboard_check_pressed(ord("C")))
+						{
+							/* Get level information. The level info should be retrieved only once but I put it here for now where you need to press C, I just want this to work */
+							global.http_request_info = http_request("http://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(draw_download_id), "GET", map, "");
+						}
+						draw_set_halign(fa_right);
+						scr_draw_text_outlined(display_get_gui_width() - 32, 290, "global.http_request_info: " + string(global.http_request_info))
+						
+						
+						
 						menu_cursor_y_position = 64 + download_online_y;
 						var selected_download_c_menu_fill = c_lime;
 						/* Highlight the text in lime green so the player knows they are selecting this download */
-						var selected_online_download_index = online_download_index;
+						selected_online_download_index = online_download_index;
 						
 						#region /* Download selected file when pressing A */
 						if (key_a_pressed)
@@ -188,16 +235,34 @@ function scr_draw_online_download_list()
 				and (menu_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "download_online_1";
+					menu = "download_online_search_id";
 				}
 			}
-			if (menu == "download_online_1")
+			else
+			if (menu == "download_online_search_id")
 			{
 				if (key_up)
 				and (menu_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_back";
+				}
+				else
+				if (key_down)
+				and (menu_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "download_online_1";
+				}
+			}
+			else
+			if (menu == "download_online_1")
+			{
+				if (key_up)
+				and (menu_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "download_online_search_id";
 				}
 				else
 				if (key_down)
@@ -214,6 +279,7 @@ function scr_draw_online_download_list()
 					}
 				}
 			}
+			else
 			if (menu == "download_online_" + string(selected_online_download_index))
 			{
 				if (key_up)
@@ -243,5 +309,7 @@ function scr_draw_online_download_list()
 		}
 		#endregion /* If there is data, then show an online downloads menu END */
 		
+		draw_set_halign(fa_right);
+		scr_draw_text_outlined(display_get_gui_width() - 32, 320, "global.online_download_list_info: " + string(global.online_download_list_info))
 	}
 }

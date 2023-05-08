@@ -263,42 +263,13 @@ and (current_day <= 26)
 #endregion /* Change title screen during specific times and dates END */
 
 #region /* Volumes stay between 0 and 1 */
-if (global.volume_music < 0)
-{
-	global.volume_music = 0;
-}
-else
-if (global.volume_music > 1)
-{
-	global.volume_music = 1;
-}
-if (global.volume_sound < 0)
-{
-	global.volume_sound = 0;
-}
-else
-if (global.volume_sound > 1)
-{
-	global.volume_sound = 1;
-}
-if (global.volume_ambient < 0)
-{
-	global.volume_ambient = 0;
-}
-else
-if (global.volume_ambient > 1)
-{
-	global.volume_ambient = 1;
-}
-if (global.volume_voice < 0)
-{
-	global.volume_voice = 0;
-}
-else
-if (global.volume_voice > 1)
-{
-	global.volume_voice = 1;
-}
+global.volume_ambient = clamp(global.volume_ambient, 0, 1);
+global.volume_footstep = clamp(global.volume_footstep, 0, 1);
+global.volume_main = clamp(global.volume_main, 0, 1);
+global.volume_melody = clamp(global.volume_melody, 0, 1);
+global.volume_music = clamp(global.volume_music, 0, 1);
+global.volume_sound = clamp(global.volume_sound, 0, 1);
+global.volume_voice = clamp(global.volume_voice, 0, 1);
 #endregion /* Volumes stay between 0 and 1 END */
 
 #region /* Quit Game trough pause menu */
@@ -417,6 +388,25 @@ if (global.enable_links == true)
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_reddit, link_reddit_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_reddit", "link_reddit", false);
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_twitter, link_twitter_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_twitter", "link_twitter", false);
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_wiki, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_wiki", "link_wiki", false);
+	
+	if (menu == "link_discord")
+	or (menu == "link_gamebanana")
+	or (menu == "link_instagram")
+	or (menu == "link_reddit")
+	or (menu == "link_twitter")
+	or (menu == "link_wiki")
+	{
+		draw_set_alpha(0.95);
+		draw_rectangle_color(0, display_get_gui_height() - 80, 700, display_get_gui_height() - 64 + 20, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+	}
+	draw_set_halign(fa_left);
+	if (menu == "link_discord"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_discord), global.default_text_size, c_black, c_white, 1);}
+	if (menu == "link_gamebanana"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_gamebanana), global.default_text_size, c_black, c_white, 1);}
+	if (menu == "link_instagram"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_instagram), global.default_text_size, c_black, c_white, 1);}
+	if (menu == "link_reddit"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_reddit), global.default_text_size, c_black, c_white, 1);}
+	if (menu == "link_twitter"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_twitter), global.default_text_size, c_black, c_white, 1);}
+	if (menu == "link_wiki"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_wiki), global.default_text_size, c_black, c_white, 1);}
 	
 	if (key_a_pressed)
 	and (menu == "link_discord")
@@ -1118,8 +1108,12 @@ or (menu == "search_online_list")
 or (menu == "searching_for_id")
 or (menu == "searched_file_downloaded_play")
 or (menu == "searched_file_downloaded_make")
+or (menu == "searched_file_downloaded_delete")
+or (menu == "searched_file_downloaded_back_to_list")
 or (menu == "searched_file_downloaded_back")
 or (menu == "searched_file_downloaded_failed")
+or (menu == "searched_file_downloaded_deleted_back_to_list")
+or (menu == "searched_file_downloaded_deleted")
 or (menu == "searching_for_id_back")
 {
 	scr_draw_menu_search_id(content_type); /* Display the search for ID screen */

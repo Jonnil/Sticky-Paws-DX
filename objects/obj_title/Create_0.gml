@@ -7,6 +7,8 @@ scr_delete_sprite_properly(global.custom_foreground_above_static_objects);
 scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
 
+directory_destroy(working_directory + "/levels");
+
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
@@ -34,10 +36,12 @@ search_id = "";
 content_type = "level"; /* What kind of ID you are searching for. Either "level" or "character" */
 downloaded_character_name = ""; /* After loading the downloaded custom character, save the character name for later use */
 global.online_download_list = ""; /* Get the uploaded online levels as a list */
+global.online_download_list_info = ""; /* Get the uploaded online level thumbnails as a list */
 data = noone; /* The uploaded online levels will be json parsed into this variable */
 automatically_search_id = false; /* When downloading from online download list, you want to automatically search for the selected ID */
 in_online_download_list_menu = false; /* If you are in the online download list menu or not */
 in_online_download_list_load_menu = false; /* If you are loading online download list or not */
+selected_online_download_index = 1;
 
 global.play_attract_demo = false;
 play_attract_demo_time = 0;

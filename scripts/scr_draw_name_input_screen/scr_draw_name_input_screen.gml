@@ -1,13 +1,31 @@
 function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true)
 {
 	
-	#region /* Set name input screen to always be above the virtual keyboard */
+	#region /* Never draw x too far off screen */
+	if (xx < 200)
+	{
+		xx = 200;
+	}
+	else
+	if (xx > display_get_gui_width() + 200)
+	{
+		xx = display_get_gui_width() + 200;
+	}
+	#endregion /* Never draw x too far off screen END */
+	
+	#region /* Never draw y too low on screen so it shows up underneath the screen */
 	if (keyboard_virtual_status())
 	and (keyboard_virtual_height() != 0)
 	{
+		/* Set name input screen to always be above the virtual keyboard */
 		yy = display_get_gui_height() - keyboard_virtual_height() - 160;
 	}
-	#endregion /* Set name input screen to always be above the virtual keyboard END */
+	else
+	if (yy > display_get_gui_height() - 160)
+	{
+		yy = display_get_gui_height() - 160;
+	}
+	#endregion /* Never draw y too low on screen so it shows up underneath the screen END */
 	
 	if (string_width(what_string_to_edit) < 300)
 	{
@@ -137,7 +155,13 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			#region /* Clicking the OK button */
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
 			and (mouse_check_button_released(mb_left))
+			and (menu_delay == 0)
 			{
+				menu_delay = 3;
+				can_input_player1_name = false;
+				can_input_player2_name = false;
+				can_input_player3_name = false;
+				can_input_player4_name = false;
 				global.keyboard_virtual_timer = 0;
 				keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking OK */
 			}
@@ -150,8 +174,15 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	#region /* Clicking the Cancel button */
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
 	and (mouse_check_button_released(mb_left))
+	and (menu_delay == 0)
 	or (keyboard_check_pressed(vk_escape))
+	and (menu_delay == 0)
 	{
+		menu_delay = 3;
+		can_input_player1_name = false;
+		can_input_player2_name = false;
+		can_input_player3_name = false;
+		can_input_player4_name = false;
 		global.keyboard_virtual_timer = 0;
 		keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
 	}

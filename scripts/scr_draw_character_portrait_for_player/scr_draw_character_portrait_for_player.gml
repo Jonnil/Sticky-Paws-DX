@@ -215,6 +215,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 	#region /* Draw Character Portrait for Player */
 	if (sprite_select_player > 0)
 	and (player_accept_selection >= 0)
+	and (sprite_exists(sprite_select_player))
 	{
 		draw_sprite_ext(sprite_select_player, 0, get_window_width * 0.5 + player_xx, get_window_height * 0.5, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, hex_color_for_player, 1);
 		if (can_input_player1_name == true)
@@ -1291,12 +1292,12 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 				draw_rectangle_color(get_window_width * 0.5 + player_display_x - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x + 100, get_window_height * 0.5 + 150 + 20, player_color, player_color, player_color, player_color, false);
 				draw_set_alpha(1);
 			}
-		
+			
 			#region /* Accept Text */
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x + 60, get_window_height * 0.5 + 150, l10n_text("Accept") + " : ", global.default_text_size, c_black, c_white, 1);
 			#endregion /* Accept Text END */
-	
+			
 			#region /* Key A */
 			if (gamepad_is_connected(player_gamepad_slot))
 			and (global.controls_used_for_menu_navigation == "controller")
@@ -1363,7 +1364,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x + 60, get_window_height * 0.5 + 150, l10n_text("Cancel") + " : ", global.default_text_size, c_black, c_white, 1);
 			#endregion /* Cancel Text END */
-		
+			
 			#region /* Key B */
 			if (gamepad_is_connected(player_gamepad_slot))
 			and (global.controls_used_for_menu_navigation == "controller")
@@ -1391,7 +1392,7 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 				}
 			}
 			#endregion /* Key B END */
-		
+			
 		}
 	}
 	#endregion /* Tell the player what button to push to select or cancel a selection END */
@@ -1407,14 +1408,14 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 	and (can_input_player4_name == false)
 	and (global.controls_used_for_menu_navigation != "mouse")
 	{
-		scr_draw_text_outlined(get_window_width * 0.5 + player_display_x + 60, name_input_y + 42, l10n_text("Enter name") + " : ", global.default_text_size, c_black, c_white, 1); /* Accept Text */
+		scr_draw_text_outlined(get_window_width * 0.5 + player_display_x + 60, name_input_y + 35, l10n_text("Enter name") + " : ", global.default_text_size, c_black, c_white, 1); /* Accept Text */
 		
 		#region /* Key A */
 		if (gamepad_is_connected(player_gamepad_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
 		or (global.always_show_gamepad_buttons == true)
 		{
-			scr_draw_gamepad_buttons(player_gamepad_button_accept, get_window_width * 0.5 + player_display_x + 70, name_input_y + 42, 0.5, c_white, 1);
+			scr_draw_gamepad_buttons(player_gamepad_button_accept, get_window_width * 0.5 + player_display_x + 70, name_input_y + 35, 0.5, c_white, 1);
 		}
 		else
 		{
@@ -1422,16 +1423,16 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 			{
 				if (player_key_accept > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, player_key_accept, get_window_width * 0.5 + player_display_x + 70, name_input_y + 42, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, player_key_accept, get_window_width * 0.5 + player_display_x + 70, name_input_y + 35, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
 				if (player_key2_accept > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, player_key2_accept, get_window_width * 0.5 + player_display_x + 70, name_input_y + 42, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, player_key2_accept, get_window_width * 0.5 + player_display_x + 70, name_input_y + 35, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_keyboard_keys_none, 0, get_window_width * 0.5 + player_display_x + 70, name_input_y + 42, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys_none, 0, get_window_width * 0.5 + player_display_x + 70, name_input_y + 35, 0.5, 0.5, 0, c_white, 1);
 				}
 			}
 		}

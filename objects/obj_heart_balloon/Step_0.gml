@@ -1,8 +1,6 @@
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
-if (asset_get_type("obj_wall") == asset_object)
-and (!place_meeting(x, y + 1, obj_wall))
-and (asset_get_type("obj_semisolid_platform") == asset_object)
+if (!place_meeting(x, y + 1, obj_wall))
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	gravity = 0.5; /* The gravity */
@@ -20,8 +18,7 @@ if (position_meeting(x, y, obj_wall))
 }
 #endregion /* If inside wall, destroy yourself END */
 
-if (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
+if (instance_exists(obj_player))
 {
 	if (allow_move == true)
 	{
@@ -106,89 +103,83 @@ and (instance_exists(obj_player))
 		else
 		{
 			#region /* 10 Basic Collectibles */
-			if (asset_get_type("obj_basic_collectible") == asset_object)
+			scr_audio_play(snd_basic_collectible, volume_source.sound);
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
-				scr_audio_play(snd_basic_collectible, volume_source.sound);
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-					delay_time = 10;
-				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-					delay_time = 20;
-				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-					delay_time = 30;
-				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-					delay_time = 40;
-				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-					delay_time = 50;
-				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-					delay_time = 60;
-				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-					delay_time = 70;
-				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-					delay_time = 80;
-				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-					delay_time = 90;
-				}
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 10;
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 20;
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 30;
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 40;
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 50;
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 60;
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 70;
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 80;
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 90;
 			}
 			#endregion /* 10 Basic Collectibles END */
 		}
 		#region /* 1000 Score */
 		score += 1000;
-		if (asset_get_type("obj_score_up") == asset_object)
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			with(instance_create_depth(x, y, 0, obj_score_up))
-			{
-				score_up = 1000;
-			}
+			score_up = 1000;
 		}
 		#endregion /* 1000 Score END */
 		effect_create_below(ef_ring, x, y, 1, c_white);
@@ -203,20 +194,17 @@ if (vspeed >= 0)
 }
 #endregion /* When falling, it's not bouncing up anymore END */
 
-if (asset_get_type("obj_wall") == asset_object)
+if (place_meeting(x - 1, y, obj_wall))
 {
-	if (place_meeting(x - 1, y, obj_wall))
-	{
-		dir = +1;
-	}
-	if (place_meeting(x + 1, y, obj_wall))
-	{
-		dir =- 1;
-	}
-	if (place_meeting(x, y - 1, obj_wall))
-	{
-		vspeed = +4;
-	}
+	dir = +1;
+}
+if (place_meeting(x + 1, y, obj_wall))
+{
+	dir =- 1;
+}
+if (place_meeting(x, y - 1, obj_wall))
+{
+	vspeed = +4;
 }
 
 #region /* Expanding Ring Effect */

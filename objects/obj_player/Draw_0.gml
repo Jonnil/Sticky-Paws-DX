@@ -373,7 +373,7 @@ and (hold_item_in_hands == "")
 			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, 0, c_white, 0.5);
 		}
 	}
-	effect_speedspark_subimg += 1;
+	effect_speedspark_subimg += 0.5;
 }
 #endregion /* Running Sparks Effect END */
 

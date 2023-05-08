@@ -32,7 +32,7 @@ if (os_type == os_windows)
 	scr_draw_text_outlined(key_open_localappdata_x + 38, get_window_height * 0.5 - 90, "+", global.default_text_size * 1.1, c_black, c_white, image_alpha);
 	draw_sprite_ext(spr_keyboard_keys, ord("R"), key_open_localappdata_x + 74, get_window_height * 0.5 - 90, 0.75, 0.75, 0, c_white, image_alpha);
 	draw_set_halign(fa_left);
-	scr_draw_text_outlined(key_open_localappdata_x + 110, get_window_height * 0.5 - 90, l10n_text("Then type") + " " + "%localappdata%", global.default_text_size * 1.1, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(key_open_localappdata_x + 110, get_window_height * 0.5 - 90, l10n_text("Then type path name"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
 }
 else
 if (os_type == os_macosx)

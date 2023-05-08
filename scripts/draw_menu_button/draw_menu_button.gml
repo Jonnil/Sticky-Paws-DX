@@ -66,7 +66,7 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 		or (menu_takes_you_to = "")
 		or (menu_takes_you_to = menu_index)
 		{
-			if (mouse_check_button(mb_left))
+			if (mouse_check_button_released(mb_left))
 			and (open_dropdown == false)
 			{
 				menu = menu_index;

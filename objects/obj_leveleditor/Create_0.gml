@@ -68,7 +68,7 @@ if (global.doing_clear_check == true)
 #endregion /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" END */
 
 #region /* Load Level */
-//scr_load_object_placement_json();
+scr_load_object_placement_json();
 scr_load_object_placement_txt();
 #endregion /* Load Level END */
 

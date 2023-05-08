@@ -121,7 +121,10 @@ if (menu == "load_characters")
 				if (player1_menu == "load_downloaded_character")
 				{
 					/* When you have downloaded a custom character, player 1 should be set to the downloaded custom character so that the player can play with them immediately */
-					global.character_index[0] = ds_list_find_index(global.all_loaded_characters, string(downloaded_character_name));
+					if (downloaded_character_name != "")
+					{
+						global.character_index[0] = ds_list_find_index(global.all_loaded_characters, string(downloaded_character_name));
+					}
 					global.character_for_player_1 = ds_list_find_index(global.all_loaded_characters, global.character_index[0]);
 					
 					#region /* Player 1 character select portrait sprite */

@@ -328,26 +328,15 @@ function scr_character_manage_menu_draw()
 		#endregion /* Upload Character No END */
 	
 		#region /* Upload Character Yes */
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, upload_character_yes_y - 42, display_get_gui_width() * 0.5 + 370, upload_character_yes_y + 42))
-		and (global.controls_used_for_menu_navigation == "mouse")
+		if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
 		{
-			if (menu_delay == 0)
+			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, upload_character_yes_y - 42, display_get_gui_width() * 0.5 + 370, upload_character_yes_y + 42))
+			and (global.controls_used_for_menu_navigation == "mouse")
 			{
-				menu = "upload_yes_character";
-			}
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 - 370 - 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 + 370 + 32, upload_character_yes_y, 1, 1, 180, c_white, 1);
-			draw_sprite_ext(spr_menu_button, 0, display_get_gui_width() * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_lime, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, upload_character_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
-			draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 - 370 + 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
-		}
-		else
-		{
-			if (menu == "upload_yes_character")
-			and (global.controls_used_for_menu_navigation == "keyboard")
-			or (menu == "upload_yes_character")
-			and (global.controls_used_for_menu_navigation == "controller")
-			{
+				if (menu_delay == 0)
+				{
+					menu = "upload_yes_character";
+				}
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 - 370 - 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 + 370 + 32, upload_character_yes_y, 1, 1, 180, c_white, 1);
 				draw_sprite_ext(spr_menu_button, 0, display_get_gui_width() * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_lime, 1);
@@ -356,10 +345,29 @@ function scr_character_manage_menu_draw()
 			}
 			else
 			{
-				draw_sprite_ext(spr_menu_button, 0, display_get_gui_width() * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_white, 1);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, upload_character_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
-				draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 - 370 + 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
+				if (menu == "upload_yes_character")
+				and (global.controls_used_for_menu_navigation == "keyboard")
+				or (menu == "upload_yes_character")
+				and (global.controls_used_for_menu_navigation == "controller")
+				{
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 - 370 - 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 + 370 + 32, upload_character_yes_y, 1, 1, 180, c_white, 1);
+					draw_sprite_ext(spr_menu_button, 0, display_get_gui_width() * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_lime, 1);
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, upload_character_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
+					draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 - 370 + 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_menu_button, 0, display_get_gui_width() * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_white, 1);
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, upload_character_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
+					draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 - 370 + 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
+				}
 			}
+		}
+		else
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, upload_character_yes_y, l10n_text("character_config.ini is missing"), global.default_text_size * 1.5, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, upload_character_yes_y, l10n_text("character_config.ini is missing"), global.default_text_size * 1.5, c_black, c_red, scr_wave(0, 1, 1, 0));
 		}
 		#endregion /* Upload Character Yes END */
 		
@@ -398,13 +406,17 @@ function scr_character_manage_menu_draw()
 				{
 					if (os_is_network_connected())
 					{
-						menu = "uploading_character"; /* Go to uploading character loading screen */
+						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+						{
+							/* Essential files does exist, so upload now */
+							menu = "uploading_character"; /* Go to uploading character loading screen */
+							menu_delay = 60 * 3;
+						}
 					}
 					else
 					{
 						menu = "no_internet_character";
 					}
-					menu_delay = 60 * 3;
 				}
 				else
 				{

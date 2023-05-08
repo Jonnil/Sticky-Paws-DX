@@ -2,22 +2,18 @@ if (y > room_height + sprite_height)
 {
 	instance_destroy();
 }
-if (asset_get_type("obj_water") == asset_object)
+if (place_meeting(x, y, obj_water))
 {
-	if (place_meeting(x, y, obj_water))
+	if (vspeed > +1)
 	{
-		if (vspeed > +1)
-		{
-			vspeed = +1;
-		}
+		vspeed = +1;
 	}
 }
 
 draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
 
-if (asset_get_type("obj_camera") == asset_object)
-and (instance_exists(obj_camera))
+if (instance_exists(obj_camera))
 and (distance_to_object(obj_camera) < 500)
 and (asset_get_type("snd_music_boss") == asset_sound)
 and (global.music != snd_music_boss)
@@ -28,8 +24,7 @@ and (has_seen_player == true)
 	global.music = snd_music_boss;
 }
 
-if (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
+if (instance_exists(obj_player))
 and (distance_to_object(obj_player) < 500)
 and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, true, true))
 and (has_seen_player == false)
@@ -47,9 +42,7 @@ and (global.assist_enable_enemies == false)
 
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
-if (asset_get_type("obj_wall") == asset_object)
-and (!place_meeting(x, y + 1, obj_wall))
-and (asset_get_type("obj_semisolid_platform") == asset_object)
+if (!place_meeting(x, y + 1, obj_wall))
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -168,10 +161,7 @@ and (flying_back == 0)
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_throw;
-		if (asset_get_type("obj_arrow") == asset_object)
-		{
-			instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
-		}
+		instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
 	}
 	if (time == room_speed * 7)
 	{
@@ -197,8 +187,7 @@ and (flying_back == 0)
 	and (time > room_speed * 8)
 	and (can_jump_on_head == false)
 	{
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			obj_camera.shake = 10;
 		}
@@ -216,8 +205,7 @@ and (flying_back == 0)
 	and (time > room_speed * 8)
 	and (can_jump_on_head == false)
 	{
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			obj_camera.shake = 10;
 		}
@@ -302,10 +290,7 @@ and (flying_back == 0)
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_throw;
-		if (asset_get_type("obj_arrow") == asset_object)
-		{
-			instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
-		}
+		instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
 	}
 	if (time == room_speed * 8)
 	{
@@ -331,8 +316,7 @@ and (flying_back == 0)
 	and (time > room_speed * 9)
 	and (can_jump_on_head == false)
 	{
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			obj_camera.shake = 10;
 		}
@@ -350,8 +334,7 @@ and (flying_back == 0)
 	and (time > room_speed * 9)
 	and (can_jump_on_head == false)
 	{
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			obj_camera.shake = 10;
 		}
@@ -438,10 +421,7 @@ and (flying_back == 0)
 		image_speed = 0.3;
 		mask_index = spr_boss_stand;
 		sprite_index = spr_boss_throw;
-		if (asset_get_type("obj_arrow") == asset_object)
-		{
-			instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
-		}
+		instance_create_depth(x, y + random_range(0, + 8), 0, obj_arrow);
 	}
 	if (time == room_speed * 9)
 	{
@@ -467,8 +447,7 @@ and (flying_back == 0)
 	and (time > room_speed * 10)
 	and (can_jump_on_head == false)
 	{
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			obj_camera.shake = 10;
 		}
@@ -486,8 +465,7 @@ and (flying_back == 0)
 	and (time > room_speed * 10)
 	and (can_jump_on_head == false)
 	{
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			obj_camera.shake = 10;
 		}
@@ -529,23 +507,17 @@ if (hp <= 0)
 		effect_create_above(ef_smoke, x + 32, y + 64, 2, c_white);
 
 		/* 1 Coin */
-		if asset_get_type("obj_basic_collectible") == asset_object
+		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
-			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-			{
-				image_speed = 1;
-				motion_set(90, 10);
-				bounce_up = true;
-			}
+			image_speed = 1;
+			motion_set(90, 10);
+			bounce_up = true;
 		}
 		/* 200 Score */
 		score += 200;
-		if (asset_get_type("obj_score_up") == asset_object)
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			with(instance_create_depth(x, y, 0, obj_score_up))
-			{
-				score_up = 200;
-			}
+			score_up = 200;
 		}
 		scr_audio_play(snd_boss_defeated, volume_source.sound);
 		instance_destroy();

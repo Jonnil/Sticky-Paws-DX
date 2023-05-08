@@ -138,9 +138,9 @@ if (can_navigate == false)
 			{
 				file_find_close();
 				scr_load_all_character_portraits();
-			
+				
 				#region /* Narrator Voice variable handeling */
-			
+				
 				#region /* No Narrator */
 				if (global.narrator = -1)
 				{
@@ -148,13 +148,13 @@ if (can_navigate == false)
 					controller_splash = noone;
 				}
 				#endregion /* No Narrator END */
-			
+				
 				else
-			
+				
 				#region /* Character as Narrator */
 				if (global.narrator >= 0)
 				{
-				
+					
 					#region /* Company Splash 1 */
 					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash.ogg"))
 					{
@@ -190,7 +190,7 @@ if (can_navigate == false)
 						company_splash_1 = noone;
 					}
 					#endregion /* Company Splash 1 END */
-				
+					
 					#region /* Company Splash 2 */
 					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_2.ogg"))
 					{
@@ -216,7 +216,7 @@ if (can_navigate == false)
 						company_splash_2 = noone;
 					}
 					#endregion /* Company Splash 2 END */
-				
+					
 					#region /* Company Splash 3 */
 					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/company_splash_3.ogg"))
 					{
@@ -242,7 +242,7 @@ if (can_navigate == false)
 						company_splash_3 = noone;
 					}
 					#endregion /* Company Splash 3 END */
-				
+					
 					if (company_splash_1 > noone)
 					and (company_splash_2 == noone)
 					and (company_splash_3 == noone)
@@ -263,7 +263,7 @@ if (can_navigate == false)
 					{
 						company_splash = choose(company_splash_1, company_splash_2, company_splash_3);
 					}
-				
+					
 					if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/controller_splash.ogg"))
 					{
 						controller_splash = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/controller_splash.ogg");
@@ -279,9 +279,9 @@ if (can_navigate == false)
 					}
 				}
 				#endregion /* Character as Narrator END */
-			
+				
 				#endregion /* Narrator Voice variable handeling END */
-			
+				
 				load_ok = 1;
 			}
 			else
@@ -290,7 +290,7 @@ if (can_navigate == false)
 				{
 					ds_list_add(global.all_loaded_characters, file_found);
 				}
-			
+				
 				file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
 			}
 		}

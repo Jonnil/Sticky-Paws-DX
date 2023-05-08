@@ -298,12 +298,25 @@ function scr_debug_screen()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
 		
-		scr_draw_text_outlined(32, 320, "gamepad_get_description(0): " + string(gamepad_get_description(0)));
-		scr_draw_text_outlined(32, 340, "gamepad_get_description(1): " + string(gamepad_get_description(1)));
-		scr_draw_text_outlined(32, 360, "gamepad_get_description(2): " + string(gamepad_get_description(2)));
-		scr_draw_text_outlined(32, 380, "gamepad_get_description(3): " + string(gamepad_get_description(3)));
-		//scr_draw_text_outlined(32, 400, "menu_cursor_y_position: " + string(menu_cursor_y_position));
-		//scr_draw_text_outlined(32, 400, "menu: " + string(menu));
+		if (gamepad_get_description(0) != "")
+		{
+			scr_draw_text_outlined(32, 320, "gamepad_get_description(0): " + string(gamepad_get_description(0)));
+		}
+		if (gamepad_get_description(1) != "")
+		{
+			scr_draw_text_outlined(32, 340, "gamepad_get_description(1): " + string(gamepad_get_description(1)));
+		}
+		if (gamepad_get_description(2) != "")
+		{
+			scr_draw_text_outlined(32, 360, "gamepad_get_description(2): " + string(gamepad_get_description(2)));
+		}
+		if (gamepad_get_description(3) != "")
+		{
+			scr_draw_text_outlined(32, 380, "gamepad_get_description(3): " + string(gamepad_get_description(3)));
+		}
+		
+		
+		scr_draw_text_outlined(32, 400, "global.character_index[0]: " + string(global.character_index[0]));
 		//scr_draw_text_outlined(32, 420, "menu_joystick1_delay: " + string(menu_joystick1_delay));
 	}
 	

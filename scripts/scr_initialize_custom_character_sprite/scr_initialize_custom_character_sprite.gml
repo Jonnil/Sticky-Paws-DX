@@ -141,4 +141,8 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 	{
 		return (sprite_variable);
 	}
+	else
+	{
+		return noone;
+	}
 }

@@ -1,6 +1,25 @@
 function scr_load_all_character_portraits()
 {
 	
+	#region /* If any "character index" is set to undefined, reset it to 0 */
+	if (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) == undefined)
+	{
+		global.character_index[0] = 0;
+	}
+	if (ds_list_find_value(global.all_loaded_characters, global.character_index[1]) == undefined)
+	{
+		global.character_index[1] = 0;
+	}
+	if (ds_list_find_value(global.all_loaded_characters, global.character_index[2]) == undefined)
+	{
+		global.character_index[2] = 0;
+	}
+	if (ds_list_find_value(global.all_loaded_characters, global.character_index[3]) == undefined)
+	{
+		global.character_index[3] = 0;
+	}
+	#endregion /* If any "character index" is set to undefined, reset it to 0 END */
+	
 	#region /* Player 1 character select portrait sprite */
 	global.sprite_select_player_1 = spr_noone;
 	global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);

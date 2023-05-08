@@ -1,39 +1,9 @@
 image_index = obj_camera.image_index;
 
-function get_1up_when_collect_basic_collectibles()
-{
-	
-	#region /* Get 1-up if you get 100 basic collectibles */
-	var basic_collectible_threshold = 100;
-	if (global.basic_collectibles >= basic_collectible_threshold)
-	{
-		global.basic_collectibles = 0;
-		with(obj_camera)
-		{
-			hud_show_lives_timer = global.hud_hide_time * 60;
-		}
-		var nearest_instance = instance_nearest(x, y, obj_player);
-		if (instance_exists(nearest_instance))
-		{
-			with(instance_create_depth(nearest_instance.x, nearest_instance.y - 16, 0, obj_score_up))
-			{
-				score_up = "1-up";
-			}
-		}
-		else if (instance_exists(obj_player))
-		{
-			with(instance_create_depth(obj_player.x, obj_player.y - 16, 0, obj_score_up))
-			{
-				score_up = "1-up";
-			}
-		}
-	}
-	#endregion /* Get 1-up if you get 100 basic collectibles END */
-	
-}
+var object_camera = obj_camera;
 
 #region /* Bounce up */
-if (bounce_up == true)
+if (bounce_up)
 {
 	if (delay >= delay_time)
 	{
@@ -47,15 +17,10 @@ if (bounce_up == true)
 		gravity_direction = 270;
 		gravity = 0.5;
 		
-		if (vspeed > 0)
-		and (y > ystart - 32)
-		or (delay >= delay_time + 60)
+		if (vspeed > 0 && y > ystart - 32 || delay >= delay_time + 60)
 		{
 			score += 200;
-			with(obj_camera)
-			{
-				hud_show_score_timer = global.hud_hide_time * 60;
-			}
+			object_camera.hud_show_score_timer = global.hud_hide_time * 60;
 			with(instance_nearest(x, y, obj_player))
 			{
 				basic_collectibles += 1;
@@ -64,10 +29,7 @@ if (bounce_up == true)
 			
 			get_1up_when_collect_basic_collectibles();
 			
-			with(obj_camera)
-			{
-				hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
-			}
+			object_camera.hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 			effect_create_above(ef_ring, x, y, 0, c_white);
 			instance_destroy();
 		}
@@ -80,39 +42,28 @@ if (bounce_up == true)
 	}
 	
 	#region /* Don't go outside view boundary */
-	x = clamp(x, camera_get_view_x(view_camera[view_current]) + 32, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 32);
-	y = clamp(y, camera_get_view_y(view_camera[view_current]) + 32, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]));
+	var view_x = camera_get_view_x(view_camera[view_current]);
+	var view_y = camera_get_view_y(view_camera[view_current]);
+	var view_width = camera_get_view_width(view_camera[view_current]);
+	var view_height = camera_get_view_height(view_camera[view_current]);
+	x = clamp(x, view_x + 32, view_x + view_width - 32);
+	y = clamp(y, view_y + 32, view_y + view_height);
 	#endregion /* Don't go outside view boundary END */
 	
 }
 #endregion /* Bounce up END */
 
 #region /* Touch Player */
-if (bounce_up == false)
-and (distance_to_object(instance_nearest(x, y, obj_player) < 32))
+if (bounce_up == false && distance_to_object(instance_nearest(x, y, obj_player)) < 12)
 {
-	if (place_meeting(x - 10, y, instance_nearest(x, y, obj_player)))
-	or (place_meeting(x + 10, y, instance_nearest(x, y, obj_player)))
-	or (place_meeting(x, y - 10, instance_nearest(x, y, obj_player)))
-	or (place_meeting(x, y + 10, instance_nearest(x, y, obj_player)))
-	{
-		effect_create_above(ef_ring, x, y, 0, c_white);
-		with(instance_nearest(x, y, obj_player))
-		{
-			score += 200;
-			basic_collectibles += 1;
-			global.basic_collectibles += 1;
-		}
-		
-		get_1up_when_collect_basic_collectibles();
-		
-		with(obj_camera)
-		{
-			hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
-			hud_show_score_timer = global.hud_hide_time * 60;
-		}
-		scr_audio_play(snd_basic_collectible, volume_source.sound);
-		instance_destroy();
-	}
+	effect_create_above(ef_ring, x, y, 0, c_white);
+	score += 200;
+	global.basic_collectibles += 1;
+	instance_nearest(x, y, obj_player).basic_collectibles += 1;
+	get_1up_when_collect_basic_collectibles();
+	object_camera.hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
+	object_camera.hud_show_score_timer = global.hud_hide_time * 60;
+	scr_audio_play(snd_basic_collectible, volume_source.sound);
+	instance_destroy();
 }
 #endregion /* Touch Player END */

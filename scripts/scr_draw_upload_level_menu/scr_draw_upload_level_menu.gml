@@ -2,7 +2,7 @@ function scr_draw_upload_level_menu()
 {
 	
 	#region /* Debug toggles */
-	var destroy_zip_after_uploading = true; /* Game should destroy the zip file once it's been uploaded to the server as a zip file */
+	var destroy_zip_after_uploading = true; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
 	var skip_clear_check = false;
 	#endregion /* Debug toggles END */
 	
@@ -823,7 +823,7 @@ function scr_draw_upload_level_menu()
 				{
 					can_navigate = true;
 					menu_delay = 3;
-					scr_copy_move_files(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), string(game_save_id) + "\custom_levels\\" + string(global.level_name), true);
+					scr_copy_move_files(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "/custom_levels/" + string(global.level_name), true);
 					scr_load_custom_level_initializing();
 					global.go_to_menu_after_loading_custom_levels = "upload_edit_name";
 					menu = "load_custom_level";
@@ -1328,38 +1328,67 @@ function scr_draw_upload_level_menu()
 		#endregion /* Upload Level No END */
 	
 		#region /* Upload Level Yes */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_yes_y - 42, get_window_width * 0.5 + 370, upload_level_yes_y + 42))
-		and (global.controls_used_for_menu_navigation == "mouse")
+		if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 		{
-			if (menu_delay == 0)
+			if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.json"))
+			or (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt"))
 			{
-				menu = "upload_yes";
+				if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/thumbnail.png"))
+				or (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png"))
+				{
+					/* Essential files does exist, so upload now */
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_yes_y - 42, get_window_width * 0.5 + 370, upload_level_yes_y + 42))
+					and (global.controls_used_for_menu_navigation == "mouse")
+					{
+						if (menu_delay == 0)
+						{
+							menu = "upload_yes";
+						}
+						draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
+						draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_level_yes_y, 1, 1, 180, c_white, 1);
+						draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_level_yes_y, 2, 2, 0, c_lime, 1);
+						scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
+						draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
+					}
+					else
+					{
+						if (menu == "upload_yes")
+						and (global.controls_used_for_menu_navigation == "keyboard")
+						or (menu == "upload_yes")
+						and (global.controls_used_for_menu_navigation == "controller")
+						{
+							draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
+							draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_level_yes_y, 1, 1, 180, c_white, 1);
+							draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_level_yes_y, 2, 2, 0, c_lime, 1);
+							scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
+							draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
+						}
+						else
+						{
+							draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_level_yes_y, 2, 2, 0, c_white, 1);
+							scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
+							draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
+						}
+					}
+				}
 			}
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_level_yes_y, 1, 1, 180, c_white, 1);
-			draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_level_yes_y, 2, 2, 0, c_lime, 1);
-			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
-			draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
 		}
-		else
+		if (!file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 		{
-			if (menu == "upload_yes")
-			and (global.controls_used_for_menu_navigation == "keyboard")
-			or (menu == "upload_yes")
-			and (global.controls_used_for_menu_navigation == "controller")
-			{
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
-				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_level_yes_y, 1, 1, 180, c_white, 1);
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_level_yes_y, 2, 2, 0, c_lime, 1);
-				scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
-				draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_level_yes_y, 2, 2, 0, c_white, 1);
-				scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
-				draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
-			}
+			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("level_information.ini is missing"), global.default_text_size * 1.5, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("level_information.ini is missing"), global.default_text_size * 1.5, c_black, c_red, scr_wave(0, 1, 1, 0));
+		}
+		if (!file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.json"))
+		and (!file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt"))
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y + 42, l10n_text("object_placement_all.json is missing"), global.default_text_size * 1.5, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y + 42, l10n_text("object_placement_all.json is missing"), global.default_text_size * 1.5, c_black, c_red, scr_wave(0, 1, 1, 0));
+		}
+		if (!file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/thumbnail.png"))
+		and (!file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png"))
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y + 42 + 42, l10n_text("thumbnail.png is missing"), global.default_text_size * 1.5, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y + 42 + 42, l10n_text("thumbnail.png is missing"), global.default_text_size * 1.5, c_black, c_red, scr_wave(0, 1, 1, 0));
 		}
 		#endregion /* Upload Level Yes END */
 		
@@ -1403,8 +1432,21 @@ function scr_draw_upload_level_menu()
 			or (key_a_pressed)
 			and (menu_delay == 0)
 			{
-				menu = "uploading_level"; /* Go to uploading level loading screen */
-				menu_delay = 60 * 3;
+				/* Check if essential files exists or not */
+				if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				{
+					if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.json"))
+					or (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt"))
+					{
+						if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/thumbnail.png"))
+						or (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png"))
+						{
+							/* Essential files does exist, so upload now */
+							menu = "uploading_level"; /* Go to uploading level loading screen */
+							menu_delay = 60 * 3;
+						}
+					}
+				}
 			}
 		}
 		if (key_up)
@@ -1477,7 +1519,6 @@ function scr_draw_upload_level_menu()
 		{
 			
 			#region /* Actually upload the level to the server */
-			
 			content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
 			
 			/* User is prompted for a file to upload */
@@ -1519,16 +1560,13 @@ function scr_draw_upload_level_menu()
 			/* Cleans up! */
 			buffer_delete(send_buffer);
 			ds_map_destroy(map);
-			
 			#endregion /* Actually upload the level to the server END */
 			
-			#region /* Delete some leftover files and folders */
+			/* Delete some leftover files and folders */
 			if (destroy_zip_after_uploading == true)
 			{
 				file_delete(file);
 			}
-			#endregion /* Delete some leftover files and folders END */
-			
 			menu = "level_uploaded";
 		}
 		#endregion /* Send Zip File to the Server END */

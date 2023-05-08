@@ -18,7 +18,8 @@ and (!place_meeting(x, y + 3, obj_semisolid_platform))
 		}
 		if (asset_get_type("obj_cardboard") == asset_object)
 		{
-			if (instance_nearest(x, y, obj_player).x < x)
+			if (instance_exists(obj_player))
+			and (instance_nearest(x, y, obj_player).x < x)
 			{
 				var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
 				new_instance.sprite_index = sprite_index;

@@ -9,6 +9,45 @@ function scr_character_select_menu_step()
 	/* Player 4 Key Accept Pressed */ player4_key_a_pressed = (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept])) or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept])) or (keyboard_check_pressed(global.player_[inp.key][4][1][action.accept])) or (keyboard_check_pressed(global.player_[inp.key][4][2][action.accept]));
 	/* Player 4 Key Back Pressed */ player4_key_b_pressed = (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back])) or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.back])) or (keyboard_check_pressed(global.player_[inp.key][4][1][action.back])) or (keyboard_check_pressed(global.player_[inp.key][4][2][action.back]));
 	
+	#region /* If any "character index" is set to -1, reset it to 0 */
+	if (global.character_index[0] <= -1)
+	{
+		global.character_index[0] = 0;
+		global.sprite_select_player_1 = spr_noone;
+		global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
+		global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
+		global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1);
+		global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1);
+	}
+	if (global.character_index[1] <= -1)
+	{
+		global.character_index[1] = 0;
+		global.sprite_select_player_2 = spr_noone;
+		global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_2, 0, global.skin_for_player_2);
+		global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_2, 0, global.skin_for_player_2);
+		global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_2, 0, global.skin_for_player_2);
+		global.sprite_select_player_2 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_2, 0, global.skin_for_player_2);
+	}
+	if (global.character_index[2] <= -1)
+	{
+		global.character_index[2] = 0;
+		global.sprite_select_player_3 = spr_noone;
+		global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_3, 0, global.skin_for_player_3);
+		global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_3, 0, global.skin_for_player_3);
+		global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_3, 0, global.skin_for_player_3);
+		global.sprite_select_player_3 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_3, 0, global.skin_for_player_3);
+	}
+	if (global.character_index[3] <= -1)
+	{
+		global.character_index[3] = 0;
+		global.sprite_select_player_4 = spr_noone;
+		global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_4, 0, global.skin_for_player_4);
+		global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_4, 0, global.skin_for_player_4);
+		global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_4, 0, global.skin_for_player_4);
+		global.sprite_select_player_4 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_4, 0, global.skin_for_player_4);
+	}
+	#endregion /* If any "character index" is set to -1, reset it to 0 END */
+	
 	#region /* Lerp Play the game text */
 	if (player_start_game == true)
 	and (can_input_player1_name == false)
@@ -409,38 +448,6 @@ function scr_character_select_menu_step()
 		{
 			if (keyboard_check_pressed(vk_enter))
 			or (keyboard_check_pressed(vk_escape))
-			
-			or (can_input_player1_name == true)
-			and (point_in_rectangle(mouse_get_x, mouse_get_y,
-			get_window_width * 0.5 + player1_display_x - 185,
-			get_window_height * 0.5 + name_y + 52,
-			get_window_width * 0.5 + player1_display_x - 185 + 370,
-			get_window_height * 0.5 + name_y + 52 + 42 + 42))
-			and (mouse_check_button_released(mb_left))
-			
-			or (can_input_player2_name == true)
-			and (point_in_rectangle(mouse_get_x, mouse_get_y,
-			get_window_width * 0.5 + player2_display_x - 185,
-			get_window_height * 0.5 + name_y + 52,
-			get_window_width * 0.5 + player2_display_x - 185 + 370,
-			get_window_height * 0.5 + name_y + 52 + 42 + 42))
-			and (mouse_check_button_released(mb_left))
-			
-			or (can_input_player3_name == true)
-			and (point_in_rectangle(mouse_get_x, mouse_get_y,
-			get_window_width * 0.5 + player3_display_x - 185,
-			get_window_height * 0.5 + name_y + 52,
-			get_window_width * 0.5 + player3_display_x - 185 + 370,
-			get_window_height * 0.5 + name_y + 52 + 42 + 42))
-			and (mouse_check_button_released(mb_left))
-			
-			or (can_input_player4_name == true)
-			and (point_in_rectangle(mouse_get_x, mouse_get_y,
-			get_window_width * 0.5 + player4_display_x - 185,
-			get_window_height * 0.5 + name_y + 52,
-			get_window_width * 0.5 + player4_display_x - 185 + 370,
-			get_window_height * 0.5 + name_y + 52 + 42 + 42))
-			and (mouse_check_button_released(mb_left))
 			
 			or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
 			or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
@@ -1459,8 +1466,7 @@ function scr_character_select_menu_step()
 		#endregion /* Menu Navigation END */
 		
 		#region /* Click on name to input name */
-		if (variable_instance_exists(self, "name_y"))
-		and (point_in_rectangle(mouse_get_x, mouse_get_y,
+		if (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width * 0.5 + player1_display_x - 150,
 		get_window_height * 0.5 + name_y - 16,
 		get_window_width * 0.5 + player1_display_x + 150,
@@ -1468,6 +1474,7 @@ function scr_character_select_menu_step()
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		and (player1_accept_selection >= 0)
+		and (can_input_player1_name == false)
 		{
 			menu_delay = 3;
 			keyboard_string = global.player1_name;
@@ -1476,8 +1483,7 @@ function scr_character_select_menu_step()
 			can_input_player3_name = false;
 			can_input_player4_name = false;
 		}
-		if (variable_instance_exists(self, "name_y"))
-		and (point_in_rectangle(mouse_get_x, mouse_get_y,
+		if (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width * 0.5 + player2_display_x - 150,
 		get_window_height * 0.5 + name_y - 16,
 		get_window_width * 0.5 + player2_display_x + 150,
@@ -1485,6 +1491,7 @@ function scr_character_select_menu_step()
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		and (player2_accept_selection >= 0)
+		and (can_input_player2_name == false)
 		{
 			menu_delay = 3;
 			keyboard_string = global.player2_name;
@@ -1493,8 +1500,7 @@ function scr_character_select_menu_step()
 			can_input_player3_name = false;
 			can_input_player4_name = false;
 		}
-		if (variable_instance_exists(self, "name_y"))
-		and (point_in_rectangle(mouse_get_x, mouse_get_y,
+		if (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width * 0.5 + player3_display_x - 150,
 		get_window_height * 0.5 + name_y - 16,
 		get_window_width * 0.5 + player3_display_x + 150,
@@ -1502,6 +1508,7 @@ function scr_character_select_menu_step()
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		and (player3_accept_selection >= 0)
+		and (can_input_player3_name == false)
 		{
 			menu_delay = 3;
 			keyboard_string = global.player3_name;
@@ -1510,8 +1517,7 @@ function scr_character_select_menu_step()
 			can_input_player3_name = true;
 			can_input_player4_name = false;
 		}
-		if (variable_instance_exists(self, "name_y"))
-		and (point_in_rectangle(mouse_get_x, mouse_get_y,
+		if (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width * 0.5 + player4_display_x - 150,
 		get_window_height * 0.5 + name_y - 16,
 		get_window_width * 0.5 + player4_display_x + 150,
@@ -1519,6 +1525,7 @@ function scr_character_select_menu_step()
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
 		and (player4_accept_selection >= 0)
+		and (can_input_player4_name == false)
 		{
 			menu_delay = 3;
 			keyboard_string = global.player4_name;

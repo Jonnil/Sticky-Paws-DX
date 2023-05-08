@@ -167,7 +167,7 @@ function scr_start_intro_animations()
 			{
 				with(instance_nearest(x, y, obj_cake))
 				{
-					attatch_player = false;
+					attach_player = false;
 					if (instance_exists(obj_chair_and_table))
 					{
 						x = instance_nearest(x, y, obj_chair_and_table).x + 23;
@@ -215,7 +215,7 @@ function scr_start_intro_animations()
 			{
 				with(instance_nearest(x, y, obj_cake))
 				{
-					attatch_player = false;
+					attach_player = false;
 					if (instance_exists(obj_chair_and_table))
 					{
 						x = instance_nearest(x, y, obj_chair_and_table).x + 23;

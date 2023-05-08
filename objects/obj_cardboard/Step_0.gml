@@ -1,5 +1,4 @@
-if (asset_get_type("obj_player") == asset_object)
-and (place_meeting(x, y - 1, obj_player))
+if (place_meeting(x, y - 1, obj_player))
 {
 	draw_xscale = lerp(draw_xscale, 1.1, 0.3);
 	draw_yscale = lerp(draw_yscale, 0.9, 0.3);
@@ -58,40 +57,33 @@ and (distance_to_object(obj_player) < 32)
 	and (instance_nearest(x, y, obj_player).speed > 30)
 	and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 	{
-		if (asset_get_type("obj_block_break") == asset_object)
+		instance_create_depth(x, y - 32, 0, obj_block_break);
+		if (instance_nearest(x, y, obj_player).x < x)
 		{
-			instance_create_depth(x, y - 32, 0, obj_block_break);
-		}
-		if (asset_get_type("obj_cardboard") == asset_object)
-		{
-			if (instance_nearest(x, y, obj_player).x < x)
+			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
+			new_instance.sprite_index = sprite_index;
+			with(new_instance)
 			{
-				var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
-				new_instance.sprite_index = sprite_index;
-				with(new_instance)
+				if (instance_exists(obj_player))
 				{
-					if (instance_exists(obj_player))
-					{
-						motion_set(random_range(13, 77), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
-					}
+					motion_set(random_range(13, 77), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
 				}
 			}
-			else
+		}
+		else
+		{
+			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
+			new_instance.sprite_index = sprite_index;
+			with(new_instance)
 			{
-				var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
-				new_instance.sprite_index = sprite_index;
-				with(new_instance)
+				if (instance_exists(obj_player))
 				{
-					if (instance_exists(obj_player))
-					{
-						motion_set(random_range(103, 135 + 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
-					}
+					motion_set(random_range(103, 135 + 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
 				}
 			}
 		}
 		score += 50;
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			
 			#region /* Only do the breaking smoke effect and sound effect if it's inside the view */
@@ -131,40 +123,33 @@ and (distance_to_object(obj_enemy_bowlingball) < 32)
 	and (instance_nearest(x, y, obj_enemy).vspeed < 0)
 	and (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
 	{
-		if (asset_get_type("obj_block_break") == asset_object)
+		instance_create_depth(x, y - 32, 0, obj_block_break);
+		if (instance_nearest(x, y, obj_enemy_bowlingball).x < x)
 		{
-			instance_create_depth(x, y - 32, 0, obj_block_break);
-		}
-		if (asset_get_type("obj_cardboard") == asset_object)
-		{
-			if (instance_nearest(x, y, obj_enemy_bowlingball).x < x)
+			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
+			new_instance.sprite_index = sprite_index;
+			with(new_instance)
 			{
-				var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
-				new_instance.sprite_index = sprite_index;
-				with(new_instance)
+				if (instance_exists(obj_enemy_bowlingball))
 				{
-					if (instance_exists(obj_enemy_bowlingball))
-					{
-						motion_set(random_range(13, 77), random_range(5, 10) + instance_nearest(x, y, obj_enemy_bowlingball).speed * 0.5);
-					}
+					motion_set(random_range(13, 77), random_range(5, 10) + instance_nearest(x, y, obj_enemy_bowlingball).speed * 0.5);
 				}
 			}
-			else
+		}
+		else
+		{
+			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
+			new_instance.sprite_index = sprite_index;
+			with(new_instance)
 			{
-				var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
-				new_instance.sprite_index = sprite_index;
-				with(new_instance)
+				if (instance_exists(obj_enemy_bowlingball))
 				{
-					if (instance_exists(obj_enemy_bowlingball))
-					{
-						motion_set(random_range(103, 135 + 32), random_range(5, 10) + instance_nearest(x, y, obj_enemy_bowlingball).speed * 0.5);
-					}
+					motion_set(random_range(103, 135 + 32), random_range(5, 10) + instance_nearest(x, y, obj_enemy_bowlingball).speed * 0.5);
 				}
 			}
 		}
 		score += 50;
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{

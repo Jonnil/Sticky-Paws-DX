@@ -428,6 +428,7 @@ function scr_select_custom_level_menu()
 			/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
 			select_custom_level_menu_open = false;
 			content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+			selected_online_download_index = 1;
 			menu = "online_download_list_load";
 		}
 		if (menu == "online_level_list")
@@ -645,7 +646,7 @@ function scr_select_custom_level_menu()
 				{
 					can_navigate = true;
 					menu_delay = 3;
-					scr_copy_move_files(string(game_save_id) + "\custom_levels\\" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), string(game_save_id) + "\custom_levels\\" + string(global.level_name), true);
+					scr_copy_move_files(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "/custom_levels/" + string(global.level_name), true);
 					scr_load_custom_level_initializing();
 					menu = "load_custom_level";
 					level_editor_edit_name = false;

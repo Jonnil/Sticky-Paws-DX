@@ -1,11 +1,6 @@
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
-if (asset_get_type("spr_wall") == asset_sprite)
-{
-	mask_index = spr_wall;
-}
-
 #region /* If inside wall, destroy yourself */
 if (position_meeting(x, y, obj_wall))
 {
@@ -35,7 +30,6 @@ if (number_of_extra_lives = 3)
 	{
 		draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_blue, 1);
 	}
-	//scr_draw_text_outlined(x, y, "3-up", global.default_text_size * 0.75, c_white, c_black, text_alpha);
 }
 else
 if (number_of_extra_lives = 2)
@@ -44,7 +38,6 @@ if (number_of_extra_lives = 2)
 	{
 		draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_lime, 1);
 	}
-	//scr_draw_text_outlined(x, y, "2-up", global.default_text_size * 0.75, c_white, c_black, text_alpha);
 }
 else
 {
@@ -52,15 +45,12 @@ else
 	{
 		draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 1);
 	}
-	//scr_draw_text_outlined(x, y, "1-up", global.default_text_size * 0.75, c_white, c_black, text_alpha);
 }
 #endregion /* Color the extra live pickup differently if it grants you different amounts of lives END */
 
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
-if (asset_get_type("obj_wall") == asset_object)
-and (!place_meeting(x, y + 1, obj_wall))
-and (asset_get_type("obj_semisolid_platform") == asset_object)
+if (!place_meeting(x, y + 1, obj_wall))
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	gravity = 0.5; /* The gravity */
@@ -71,8 +61,7 @@ else
 }
 #endregion /* Set the gravity END */
 
-if (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
+if (instance_exists(obj_player))
 {
 	if (allow_move == true)
 	{
@@ -120,37 +109,27 @@ and (instance_exists(obj_player))
 		#region /* Give Life */
 		if (number_of_extra_lives = 3)
 		{
-			if (asset_get_type("obj_score_up") == asset_object)
+			with(instance_create_depth(x, y - 16, 0, obj_score_up))
 			{
-				with(instance_create_depth(x, y - 16, 0, obj_score_up))
-				{
-					score_up = "3-up";
-				}
+				score_up = "3-up";
 			}
 		}
 		else
 		if (number_of_extra_lives = 2)
 		{
-			if (asset_get_type("obj_score_up") == asset_object)
+			with(instance_create_depth(x, y - 16, 0, obj_score_up))
 			{
-				with(instance_create_depth(x, y - 16, 0, obj_score_up))
-				{
-					score_up = "2-up";
-				}
+				score_up = "2-up";
 			}
 		}
 		else
 		{
-			if (asset_get_type("obj_score_up") == asset_object)
+			with(instance_create_depth(x, y - 16, 0, obj_score_up))
 			{
-				with(instance_create_depth(x, y - 16, 0, obj_score_up))
-				{
-					score_up = "1-up";
-				}
+				score_up = "1-up";
 			}
 		}
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -163,20 +142,18 @@ and (instance_exists(obj_player))
 		instance_destroy();
 	}
 }
-if (asset_get_type("obj_wall") == asset_object)
+
+if (place_meeting(x - 1, y, obj_wall))
 {
-	if (place_meeting(x - 1, y, obj_wall))
-	{
-		dir = +1;
-	}
-	if (place_meeting(x + 1, y, obj_wall))
-	{
-		dir = -1;
-	}
-	if (place_meeting(x, y - 1, obj_wall))
-	{
-		vspeed = +4;
-	}
+	dir = +1;
+}
+if (place_meeting(x + 1, y, obj_wall))
+{
+	dir = -1;
+}
+if (place_meeting(x, y - 1, obj_wall))
+{
+	vspeed = +4;
 }
 
 #region /* Expanding Ring Effect */

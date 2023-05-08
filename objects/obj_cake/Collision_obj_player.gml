@@ -5,6 +5,6 @@ and (instance_nearest(x, y, obj_cake_stealing_enemy).cutscene != 1)
 and (instance_exists(obj_player))
 and (obj_player.intro_animation != "ending_chair")
 {
-	attatch_player = true;
+	attach_player = true;
 	global.win = true;
 }

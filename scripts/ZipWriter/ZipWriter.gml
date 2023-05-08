@@ -95,7 +95,7 @@ function zip_add_buffer_ext(_this,_path1,_buf,_pos,_len,_compressionLevel){
 	var _time=zip_std_Date_now();
 	buffer_write(_o,buffer_u16,(((date_get_hour(_time[1])<<11)|(date_get_minute(_time[1])<<5))|(date_get_second(_time[1])>>1)));
 	buffer_write(_o,buffer_u16,(((date_get_year(_time[1])-1980<<9)|(date_get_month(_time[1])-1+1<<5))|date_get_weekday(_time[1])));
-	var _crc=buffer_crc32(_buf,_pos,_len);
+	var _crc=buffer_crc32(_buf,_pos,_len) ^ 0xFFFFFFFF; /* You need this ^ 0xFFFFFFFF line here otherwise the saved zip file will be corrupted */
 	var _cbuf=undefined;
 	var _clen=_len;
 	if(_compress){

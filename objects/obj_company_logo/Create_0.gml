@@ -99,6 +99,7 @@ global.base_url = "sticky-paws.uc.r.appspot.com";
 global.upload_endpoint = "/upload";
 global.download_endpoint = "/download/";
 global.api_key = "626ef06a-5092-4d09-b423-45480b1d4e4d";
+global.http_request_info = noone;
 #endregion /* Server stuff END */
 
 #endregion /* Things you could change END */

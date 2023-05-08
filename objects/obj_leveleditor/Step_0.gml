@@ -266,13 +266,14 @@ if (global.actually_play_edited_level == false)
 						ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
 						ini_close();
 						
-						/* Save Level Thumbnail */
+						#region /* Save Level Thumbnail */
 						var thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
 						if (global.level_name != "")
 						{
 							sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
 						}
 						scr_delete_sprite_properly(thumbnail_sprite);
+						#endregion /* Save Level Thumbnail END */
 						
 						scr_save_custom_level();
 						
