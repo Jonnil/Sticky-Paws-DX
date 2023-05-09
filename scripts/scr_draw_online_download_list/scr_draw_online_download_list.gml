@@ -152,7 +152,6 @@ function scr_draw_online_download_list()
 					var download_online_x = 100;
 					var download_online_y = 32 + (44 * i);
 					draw_menu_button(download_online_x, 64 + download_online_y + menu_y_offset, "Download", "download_online_" + string(online_download_index), "download_online_" + string(online_download_index));
-					draw_set_halign(fa_left);
 					
 					/* Fetch the "name" and "time_created" properties from the JSON object */
 					var item = data[i];
@@ -164,18 +163,7 @@ function scr_draw_online_download_list()
 					
 					if (menu == "download_online_" + string(online_download_index))
 					{
-						
-						
-						
-						if (keyboard_check_pressed(ord("C")))
-						{
-							/* Get level information. The level info should be retrieved only once but I put it here for now where you need to press C, I just want this to work */
-							global.http_request_info = http_request("http://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(draw_download_id), "GET", map, "");
-						}
-						draw_set_halign(fa_right);
-						scr_draw_text_outlined(display_get_gui_width() - 32, 290, "global.http_request_info: " + string(global.http_request_info))
-						
-						
+						currently_selected_id = draw_download_id;
 						
 						menu_cursor_y_position = 64 + download_online_y;
 						var selected_download_c_menu_fill = c_lime;
@@ -208,6 +196,7 @@ function scr_draw_online_download_list()
 					{
 						var selected_download_c_menu_fill = c_menu_fill;
 					}
+					draw_set_halign(fa_left);
 					
 					/* Write the list index to the left of download button */
 					scr_draw_text_outlined(32, 86 + download_online_y + menu_y_offset, string(online_download_index), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
@@ -220,6 +209,63 @@ function scr_draw_online_download_list()
 					
 				}
 			}
+			
+			#region /* Get information about currently selected ID. If there is information data, then show info about currently selected ID */
+			if (old_currently_selected_id != currently_selected_id)
+			{
+				/* Get level information. The level info should be retrieved only once you select a new ID */
+				old_currently_selected_id = currently_selected_id;
+				info_data = noone;
+				global.online_download_list_info = "";
+				global.http_request_info = http_request("http://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id), "GET", map, "");
+			}
+			
+			if (info_data == noone)
+			and (in_online_download_list_menu == true)
+			{
+				/* If there is an online download list information loaded, interpret that as a struct using "json parse" */
+				if (global.online_download_list_info != "")
+				and (global.online_download_list_info != "HTTP request exception")
+				{
+					info_data = json_parse(global.online_download_list_info); /* When there is data here, then go to the online downloads menu */
+				}
+			}
+			
+			if (info_data != noone)
+			and (menu != "search_id_ok")
+			{
+				/* Check if it's an array */
+				//if (is_array(info_data))
+				{
+					draw_text(32, 320 + (32 * 4), string(data));
+					draw_text(32, 320 + (32 * 5), string(info_data));
+					/* Get the number of items in the JSON array */
+					var num_items = array_length(info_data);
+					for (var i = 0; i < num_items; i++;)
+					{
+						/* Fetch the "name" and "thumbnail" properties from the JSON object */
+						var item = info_data[i];
+						var draw_download_name = item.name;
+						var draw_download_thumbnail = noone//item.thumbnail;
+						
+						scr_delete_sprite_properly(spr_download_list_thumbnail);
+						spr_download_list_thumbnail = sprite_add(draw_download_thumbnail, 0, false, true, 0, 0);
+						
+						draw_set_halign(fa_center);
+						
+						/* Write the name associated with the ID */
+						scr_draw_text_outlined(1000, 128, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+						
+						/* Draw the thumbnail */
+						if (sprite_exists(spr_download_list_thumbnail))
+						{
+							draw_sprite_ext(spr_download_list_thumbnail, 1, 1000, 256, 1, 1, 0, c_white, 1);
+						}
+						
+					}
+				}
+			}
+			#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
 			
 			#region /* Online download List Menu Navigation */
 			if (menu == "download_online_back")
@@ -309,7 +355,5 @@ function scr_draw_online_download_list()
 		}
 		#endregion /* If there is data, then show an online downloads menu END */
 		
-		draw_set_halign(fa_right);
-		scr_draw_text_outlined(display_get_gui_width() - 32, 320, "global.online_download_list_info: " + string(global.online_download_list_info))
 	}
 }
