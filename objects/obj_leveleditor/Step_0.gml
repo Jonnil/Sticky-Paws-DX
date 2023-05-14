@@ -1,11 +1,15 @@
 if (global.actually_play_edited_level == false)
 {
+	var cam_x = camera_get_view_x(view_camera[view_current]);
+	var cam_y = camera_get_view_y(view_camera[view_current]);
+	var cam_width = camera_get_view_width(view_camera[view_current]);
+	var cam_height = camera_get_view_height(view_camera[view_current]);
 	
 	#region /* Deactivate instances outside view. Run this code at start of Step Event */
 	deactivate_timer += 1;
 	if (deactivate_timer >= 10)
-	and (pressing_play_timer == 0)
-	and (pause <= 1)
+	&& (pressing_play_timer == 0)
+	&& (pause <= 1)
 	{
 		if (startup_loading_timer <= 3)
 		{
@@ -13,11 +17,11 @@ if (global.actually_play_edited_level == false)
 		}
 		
 		if (quit_level_editor == 0)
-		and (global.play_edited_level == false)
-		and (startup_loading_timer >= 3)
+		&& (global.play_edited_level == false)
+		&& (startup_loading_timer >= 3)
 		{
 			instance_activate_all();
-			instance_deactivate_region(camera_get_view_x(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, camera_get_view_width(view_camera[view_current]) + 32, camera_get_view_height(view_camera[view_current]) + 32, false, true);
+			instance_deactivate_region(cam_x - 32, cam_y - 32, cam_width + 32, cam_height + 32, false, true);
 		}
 		
 		#region /* Activate objects that always should be active */
@@ -44,8 +48,8 @@ if (global.actually_play_edited_level == false)
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	var view_center_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5;
-	var view_center_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5;
+	var view_center_x = cam_x + cam_width * 0.5;
+	var view_center_y = cam_y + cam_height * 0.5;
 	
 	grid_button_x = display_get_gui_width() - 224;
 	
@@ -64,19 +68,19 @@ if (global.actually_play_edited_level == false)
 		{
 			audio_stop_sound(level_editing_music);
 			if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg"))
-			and (floor(random(3 - 1)) == 0)
+			&& (floor(random(3 - 1)) == 0)
 			{
 				level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg");
 			}
 			else
 			if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg"))
-			and (floor(random(3 - 1)) == 0)
+			&& (floor(random(3 - 1)) == 0)
 			{
 				level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg");
 			}
 			else
 			if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg"))
-			and (floor(random(3 - 1)) == 0)
+			&& (floor(random(3 - 1)) == 0)
 			{
 				level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg");
 			}
@@ -89,7 +93,7 @@ if (global.actually_play_edited_level == false)
 		}
 		else
 		if (global.selected_level_editing_music == 2)
-		and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg"))
+		&& (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg"))
 		{
 			audio_stop_sound(level_editing_music);
 			level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg");
@@ -97,7 +101,7 @@ if (global.actually_play_edited_level == false)
 		}
 		else
 		if (global.selected_level_editing_music == 3)
-		and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg"))
+		&& (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg"))
 		{
 			audio_stop_sound(level_editing_music);
 			level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg");
@@ -105,7 +109,7 @@ if (global.actually_play_edited_level == false)
 		}
 		else
 		if (global.selected_level_editing_music == 4)
-		and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg"))
+		&& (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg"))
 		{
 			audio_stop_sound(level_editing_music);
 			level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg");
@@ -113,7 +117,7 @@ if (global.actually_play_edited_level == false)
 		}
 		else
 		if (global.selected_level_editing_music == 5)
-		and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_4.ogg"))
+		&& (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_4.ogg"))
 		{
 			audio_stop_sound(level_editing_music);
 			level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_4.ogg");
@@ -164,7 +168,7 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Always keep the brush size within these values END */
 	
 	if (get_window_height != old_window_get_height)
-	or (get_window_width != old_window_get_width)
+	|| (get_window_width != old_window_get_width)
 	{
 		scr_set_screen_size();
 		old_window_get_height = get_window_height;
@@ -173,9 +177,9 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Holding the play key down */
 	if (keyboard_check_pressed(key_play))
-	or (gamepad_button_check_pressed(global.player1_slot, button_play))
-	or (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
-	and (mouse_check_button_pressed(mb_left))
+	|| (gamepad_button_check_pressed(global.player1_slot, button_play))
+	|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+	&& (mouse_check_button_pressed(mb_left))
 	{
 		if (pause == false)
 		{
@@ -183,13 +187,13 @@ if (global.actually_play_edited_level == false)
 		}
 	}
 	if (keyboard_check(key_play))
-	or (gamepad_button_check(global.player1_slot, button_play))
-	or (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
-	and (mouse_check_button(mb_left))
-	or (pressing_play_timer < 3)
+	|| (gamepad_button_check(global.player1_slot, button_play))
+	|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+	&& (mouse_check_button(mb_left))
+	|| (pressing_play_timer < 3)
 	{
 		if (pause == false)
-		and (pressing_play_timer >= 1)
+		&& (pressing_play_timer >= 1)
 		{
 			pressing_play_timer += 1;
 		}
@@ -201,72 +205,72 @@ if (global.actually_play_edited_level == false)
 	{
 		instance_activate_all(); /* Activate all instances before saving the custom level. You need this code right here otherwise the game crashes */
 		if (keyboard_check_released(key_play))
-		or (gamepad_button_check_released(global.player1_slot, button_play))
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
-		and (mouse_check_button_released(mb_left))
-		or (global.full_level_map_screenshot == true)
-		or (pressing_play_timer > 60)
+		|| (gamepad_button_check_released(global.player1_slot, button_play))
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+		&& (mouse_check_button_released(mb_left))
+		|| (global.full_level_map_screenshot == true)
+		|| (pressing_play_timer > 60)
 		{
 			if (pause == false)
-			and (menu_delay == 0)
-			and (global.character_select_in_this_menu == "level_editor")
+			&& (menu_delay == 0)
+			&& (global.character_select_in_this_menu == "level_editor")
 			{
 				if (!instance_exists(obj_camera))
-				or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32))
-				and (!instance_exists(obj_camera))
-				or (global.full_level_map_screenshot == true)
+				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32))
+				&& (!instance_exists(obj_camera))
+				|| (global.full_level_map_screenshot == true)
 				{
 					
 					#region /* Limit so cursor and view can't go outside room */
-					if (camera_get_view_width(view_camera[view_current]) < 1920)
-					or (camera_get_view_height(view_camera[view_current]) < 1080)
+					if (cam_width < 1920)
+					|| (cam_height < 1080)
 					{
 						camera_set_view_size(view_camera[view_current], 1920, 1080);
 					}
 					scr_set_screen_size();
 					
 					#region /* Limit controller x and controller y inside room */
-					if (controller_x < camera_get_view_x(view_camera[view_current]))
+					if (controller_x < cam_x)
 					{
-						controller_x = camera_get_view_x(view_camera[view_current]);
+						controller_x = cam_x;
 					}
-					if (controller_x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+					if (controller_x > cam_x + cam_width)
 					{
-						controller_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+						controller_x = cam_x + cam_width;
 					}
-					if (controller_y < camera_get_view_y(view_camera[view_current]))
+					if (controller_y < cam_y)
 					{
-						controller_y = camera_get_view_y(view_camera[view_current]);
+						controller_y = cam_y;
 					}
-					if (controller_y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+					if (controller_y > cam_y + cam_height)
 					{
-						controller_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+						controller_y = cam_y + cam_height;
 					}
 					#endregion /* Limit controller x and controller y inside room END */
 					
 					#region /* Limit x and y inside room */
-					if (x < camera_get_view_x(view_camera[view_current]))
+					if (x < cam_x)
 					{
-						x = camera_get_view_x(view_camera[view_current]);
+						x = cam_x;
 					}
-					if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+					if (x > cam_x + cam_width)
 					{
-						x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+						x = cam_x + cam_width;
 					}
-					if (y < camera_get_view_y(view_camera[view_current]))
+					if (y < cam_y)
 					{
-						y = camera_get_view_y(view_camera[view_current]);
+						y = cam_y;
 					}
-					if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+					if (y > cam_y + cam_height)
 					{
-						y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+						y = cam_y + cam_height;
 					}
 					#endregion /* Limit x and y inside room END */
 					
 					#region /* Limit view inside room */
 					camera_set_view_pos(view_camera[view_current],
-					max(0, min(camera_get_view_x(view_camera[view_current]), room_width - camera_get_view_width(view_camera[view_current]))),
-					max(0, min(camera_get_view_y(view_camera[view_current]), room_height - camera_get_view_height(view_camera[view_current]))));
+					max(0, min(cam_x, room_width - cam_width)),
+					max(0, min(cam_y, room_height - cam_height)));
 					#endregion /* Limit view inside room END */
 				
 					#endregion /* Limit so view and cursor can't go outside room END */
@@ -297,7 +301,7 @@ if (global.actually_play_edited_level == false)
 						ini_close();
 						
 						#region /* Save Level Thumbnail */
-						var thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
+						var thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, cam_width, cam_height, false, true, 0, 0);
 						if (global.level_name != "")
 						{
 							sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
@@ -327,7 +331,7 @@ if (global.actually_play_edited_level == false)
 					else
 					{
 						/* Save World Thumbnail */
-						var thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, camera_get_view_width(view_camera[view_current]), camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
+						var thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, cam_width, cam_height, false, true, 0, 0);
 						if (global.level_name != "")
 						{
 							sprite_save(thumbnail_sprite, 0, working_directory + "/custom_worlds/" + string(global.level_name) + "/automatic_thumbnail.png");
@@ -358,10 +362,10 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Scroll View */
 	if (mouse_check_button_pressed(mb_left))
-	and (keyboard_check(vk_space))
-	and (quit_level_editor <= 0)
-	or (mouse_check_button_pressed(mb_middle))
-	and (quit_level_editor <= 0)
+	&& (keyboard_check(vk_space))
+	&& (quit_level_editor <= 0)
+	|| (mouse_check_button_pressed(mb_middle))
+	&& (quit_level_editor <= 0)
 	{
 		if (!instance_exists(obj_leveleditor_fill))
 		{
@@ -371,80 +375,80 @@ if (global.actually_play_edited_level == false)
 		}
 	}
 	if (scroll_view == true)
-	and (quit_level_editor <= 0)
-	and (!instance_exists(obj_leveleditor_fill))
+	&& (quit_level_editor <= 0)
+	&& (!instance_exists(obj_leveleditor_fill))
 	{
-		camera_set_view_pos(view_camera[view_current], drag_x -(mouse_x -camera_get_view_x(view_camera[view_current])), drag_y -(mouse_y -camera_get_view_y(view_camera[view_current]))); /* Scroll the camera position with the mouse */
+		camera_set_view_pos(view_camera[view_current], drag_x -(mouse_x -cam_x), drag_y -(mouse_y -cam_y)); /* Scroll the camera position with the mouse */
 	}
 	if (mouse_check_button_released(mb_left))
-	and (scroll_view == true)
-	or (mouse_check_button_released(mb_middle))
-	and (scroll_view == true)
+	&& (scroll_view == true)
+	|| (mouse_check_button_released(mb_middle))
+	&& (scroll_view == true)
 	{
 		scroll_view = false;
 	}
 	#endregion /* Scroll View END */
 
 	if (global.create_level_from_template == true)
-	and (create_level_from_template_save_delay < 10)
+	&& (create_level_from_template_save_delay < 10)
 	{
 		create_level_from_template_save_delay += 1;
 	}
 	else
 	if (global.create_level_from_template == true)
-	and (create_level_from_template_save_delay == 10)
+	&& (create_level_from_template_save_delay == 10)
 	{
 	
 		#region /* Limit so cursor and view can't go outside room */
-		if (camera_get_view_width(view_camera[view_current]) < 1920)
-		or (camera_get_view_height(view_camera[view_current]) < 1080)
+		if (cam_width < 1920)
+		|| (cam_height < 1080)
 		{
 			camera_set_view_size(view_camera[view_current], 1920, 1080);
 		}
 		scr_set_screen_size();
 	
 		#region /* Limit controller x and controller y inside room */
-		if (controller_x < camera_get_view_x(view_camera[view_current]))
+		if (controller_x < cam_x)
 		{
-			controller_x = camera_get_view_x(view_camera[view_current]);
+			controller_x = cam_x;
 		}
-		if (controller_x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+		if (controller_x > cam_x + cam_width)
 		{
-			controller_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+			controller_x = cam_x + cam_width;
 		}
-		if (controller_y < camera_get_view_y(view_camera[view_current]))
+		if (controller_y < cam_y)
 		{
-			controller_y = camera_get_view_y(view_camera[view_current]);
+			controller_y = cam_y;
 		}
-		if (controller_y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+		if (controller_y > cam_y + cam_height)
 		{
-			controller_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+			controller_y = cam_y + cam_height;
 		}
 		#endregion /* Limit controller x and controller y inside room END */
 	
 		#region /* Limit x and y inside room */
-		if (x < camera_get_view_x(view_camera[view_current]))
+		if (x < cam_x)
 		{
-			x = camera_get_view_x(view_camera[view_current]);
+			x = cam_x;
 		}
-		if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+		if (x > cam_x + cam_width)
 		{
-			x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+			x = cam_x + cam_width;
 		}
-		if (y < camera_get_view_y(view_camera[view_current]))
+		if (y < cam_y)
 		{
-			y = camera_get_view_y(view_camera[view_current]);
+			y = cam_y;
 		}
-		if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+		if (y > cam_y + cam_height)
 		{
-			y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+			y = cam_y + cam_height;
 		}
 		#endregion /* Limit x and y inside room END */
 	
 		#region /* Limit view inside room */
 		camera_set_view_pos(view_camera[view_current],
-		max(0, min(camera_get_view_x(view_camera[view_current]), room_width - camera_get_view_width(view_camera[view_current]))),
-		max(0, min(camera_get_view_y(view_camera[view_current]), room_height - camera_get_view_height(view_camera[view_current]))));
+		max(0, min(cam_x, room_width - cam_width)),
+		max(0, min(cam_y, room_height - cam_height)));
 		#endregion /* Limit view inside room END */
 	
 		#endregion /* Limit so view and cursor can't go outside room END */
@@ -468,10 +472,10 @@ if (global.actually_play_edited_level == false)
 		#region /* Save Thumbnail */
 		var thumbnail_sprite;
 		thumbnail_sprite = sprite_create_from_surface(application_surface,
-		camera_get_view_x(view_camera[view_current]),
-		camera_get_view_y(view_camera[view_current]),
-		camera_get_view_width(view_camera[view_current]),
-		camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
+		cam_x,
+		cam_y,
+		cam_width,
+		cam_height, false, true, 0, 0);
 		if (global.level_name != "")
 		{
 			sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
@@ -523,45 +527,45 @@ if (global.actually_play_edited_level == false)
 			if (pause == false)
 			{
 				if (keyboard_check(global.player_[inp.key][1][1][action.up]))
-				and (!keyboard_check(global.player_[inp.key][1][1][action.down]))
-				or (keyboard_check(vk_up))
-				and (!keyboard_check(vk_down))
+				&& (!keyboard_check(global.player_[inp.key][1][1][action.down]))
+				|| (keyboard_check(vk_up))
+				&& (!keyboard_check(vk_down))
 				{
 					if (view_center_y > 0)
 					{
-						camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - controller_view_speed); /* Move camera up */
+						camera_set_view_pos(view_camera[view_current], cam_x, cam_y - controller_view_speed); /* Move camera up */
 					}
 				}
 				if (keyboard_check(global.player_[inp.key][1][1][action.down]))
-				and (!keyboard_check(global.player_[inp.key][1][1][action.up]))
-				or (keyboard_check(vk_down))
-				and (!keyboard_check(vk_up))
+				&& (!keyboard_check(global.player_[inp.key][1][1][action.up]))
+				|| (keyboard_check(vk_down))
+				&& (!keyboard_check(vk_up))
 				{
 					if (instance_exists(obj_level_height))
-					and (view_center_y < obj_level_height.y)
+					&& (view_center_y < obj_level_height.y)
 					{
-						camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + controller_view_speed); /* Move camera down */
+						camera_set_view_pos(view_camera[view_current], cam_x, cam_y + controller_view_speed); /* Move camera down */
 					}
 				}
 				if (keyboard_check(global.player_[inp.key][1][1][action.left]))
-				and (!keyboard_check(global.player_[inp.key][1][1][action.right]))
-				or (keyboard_check(vk_left))
-				and (!keyboard_check(vk_right))
+				&& (!keyboard_check(global.player_[inp.key][1][1][action.right]))
+				|| (keyboard_check(vk_left))
+				&& (!keyboard_check(vk_right))
 				{
 					if (view_center_x > 0)
 					{
-						camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) - controller_view_speed, camera_get_view_y(view_camera[view_current])); /* Move camera left */
+						camera_set_view_pos(view_camera[view_current], cam_x - controller_view_speed, cam_y); /* Move camera left */
 					}
 				}
 				if (keyboard_check(global.player_[inp.key][1][1][action.right]))
-				and (!keyboard_check(global.player_[inp.key][1][1][action.left]))
-				or (keyboard_check(vk_right))
-				and (!keyboard_check(vk_left))
+				&& (!keyboard_check(global.player_[inp.key][1][1][action.left]))
+				|| (keyboard_check(vk_right))
+				&& (!keyboard_check(vk_left))
 				{
 					if (instance_exists(obj_level_width))
-					and (view_center_x < obj_level_width.x)
+					&& (view_center_x < obj_level_width.x)
 					{
-						camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) + controller_view_speed, camera_get_view_y(view_camera[view_current])); /* Move camera right */
+						camera_set_view_pos(view_camera[view_current], cam_x + controller_view_speed, cam_y); /* Move camera right */
 					}
 				}
 			}
@@ -577,31 +581,31 @@ if (global.actually_play_edited_level == false)
 			cursor_y = controller_y;
 		
 			#region /* Keep controller_x and controller_y within view */
-			if (controller_x < camera_get_view_x(view_camera[view_current]))
+			if (controller_x < cam_x)
 			{
-				controller_x = camera_get_view_x(view_camera[view_current]);
+				controller_x = cam_x;
 			}
 			else
-			if (controller_x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+			if (controller_x > cam_x + cam_width)
 			{
-				controller_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+				controller_x = cam_x + cam_width;
 			}
 			else
-			if (controller_y < camera_get_view_y(view_camera[view_current]))
+			if (controller_y < cam_y)
 			{
-				controller_y = camera_get_view_y(view_camera[view_current]);
+				controller_y = cam_y;
 			}
 			else
-			if (controller_y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+			if (controller_y > cam_y + cam_height)
 			{
-				controller_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+				controller_y = cam_y + cam_height;
 			}
 			#endregion /* Keep controller_x and controller_y within view END */
 			
 			if (pause == false)
 			{
 				if (key_up)
-				and (controller_y > camera_get_view_y(view_camera[view_current]))
+				&& (controller_y > cam_y)
 				{
 					if (key_move_faster)
 					{
@@ -613,7 +617,7 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				if (key_down)
-				and (controller_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+				&& (controller_y < cam_y + cam_height)
 				{
 					if (key_move_faster)
 					{
@@ -625,7 +629,7 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				if (key_left)
-				and (controller_x > camera_get_view_x(view_camera[view_current]))
+				&& (controller_x > cam_x)
 				{
 					if (key_move_faster)
 					{
@@ -637,7 +641,7 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				if (key_right)
-				and (controller_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+				&& (controller_x < cam_x + cam_width)
 				{
 					if (key_move_faster)
 					{
@@ -661,41 +665,41 @@ if (global.actually_play_edited_level == false)
 			}
 		
 			if (gamepad_axis_value(global.player1_slot, gp_axisrv) < 0)
-			or (key_up)
-			and (controller_y <= camera_get_view_y(view_camera[view_current]))
+			|| (key_up)
+			&& (controller_y <= cam_y)
 			{
-				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - controller_view_speed); /* Move camera up */
-				if (controller_y > camera_get_view_y(view_camera[view_current]))
+				camera_set_view_pos(view_camera[view_current], cam_x, cam_y - controller_view_speed); /* Move camera up */
+				if (controller_y > cam_y)
 				{
 					controller_y -= controller_view_speed;
 				}
 			}
 			if (gamepad_axis_value(global.player1_slot, gp_axisrv) > 0)
-			or (key_down)
-			and (controller_y >= camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+			|| (key_down)
+			&& (controller_y >= cam_y + cam_height)
 			{
-				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + controller_view_speed); /* Move camera down */
-				if (controller_y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+				camera_set_view_pos(view_camera[view_current], cam_x, cam_y + controller_view_speed); /* Move camera down */
+				if (controller_y < cam_y + cam_height)
 				{
 					controller_y += controller_view_speed;
 				}
 			}
 			if (gamepad_axis_value(global.player1_slot, gp_axisrh) < 0)
-			or (key_left)
-			and (controller_x <= camera_get_view_x(view_camera[view_current]))
+			|| (key_left)
+			&& (controller_x <= cam_x)
 			{
-				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) - controller_view_speed, camera_get_view_y(view_camera[view_current])); /* Move camera left */
-				if (controller_x > camera_get_view_x(view_camera[view_current]))
+				camera_set_view_pos(view_camera[view_current], cam_x - controller_view_speed, cam_y); /* Move camera left */
+				if (controller_x > cam_x)
 				{
 					controller_x -= controller_view_speed;
 				}
 			}
 			if (gamepad_axis_value(global.player1_slot, gp_axisrh) > 0)
-			or (key_right)
-			and (controller_x >= camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+			|| (key_right)
+			&& (controller_x >= cam_x + cam_width)
 			{
-				camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]) + controller_view_speed, camera_get_view_y(view_camera[view_current])); /* Move camera right */
-				if (controller_x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+				camera_set_view_pos(view_camera[view_current], cam_x + controller_view_speed, cam_y); /* Move camera right */
+				if (controller_x < cam_x + cam_width)
 				{
 					controller_x += controller_view_speed;
 				}
@@ -720,51 +724,51 @@ if (global.actually_play_edited_level == false)
 		        || (!can_make_place_brush_size_bigger && key_a_pressed)))
 		{
 			if (!keyboard_check(vk_space))
-			and (!mouse_check_button(mb_middle))
-			and (!mouse_check_button(mb_right))
-			and (pressing_play_timer == 0)
-			and (scroll_view == false)
-			and (drag_object == false)
-			and (fill_mode == false)
-			and (erase_mode == false)
-			and (pause == false)
-			and (menu_delay == 0)
-			and (!place_meeting(x, y, obj_level_player_1_start))
-			and (!place_meeting(x, y, obj_level_player_2_start))
-			and (!place_meeting(x, y, obj_level_player_3_start))
-			and (!place_meeting(x, y, obj_level_player_4_start))
-			and (!position_meeting(x, y, obj_level_height))
-			and (!position_meeting(x, y, obj_level_width))
-			and (!position_meeting(x, y, obj_water_level_height))
-			and (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
-			and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
-			and (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32)) /* Can't place objects when clicking the play button */
+			&& (!mouse_check_button(mb_middle))
+			&& (!mouse_check_button(mb_right))
+			&& (pressing_play_timer == 0)
+			&& (scroll_view == false)
+			&& (drag_object == false)
+			&& (fill_mode == false)
+			&& (erase_mode == false)
+			&& (pause == false)
+			&& (menu_delay == 0)
+			&& (!place_meeting(x, y, obj_level_player_1_start))
+			&& (!place_meeting(x, y, obj_level_player_2_start))
+			&& (!place_meeting(x, y, obj_level_player_3_start))
+			&& (!place_meeting(x, y, obj_level_player_4_start))
+			&& (!position_meeting(x, y, obj_level_height))
+			&& (!position_meeting(x, y, obj_level_width))
+			&& (!position_meeting(x, y, obj_water_level_height))
+			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
+			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
+			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32)) /* Can't place objects when clicking the play button */
 			{
 				if (show_grid == true)
-				and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up and down buttons when grid is on */
-				or (show_grid == false)
+				&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up && down buttons when grid is on */
+				|| (show_grid == false)
 				{
 					if (global.enable_difficulty_selection_settings == true)
-					and (global.enable_difficutly_layers_in_level_editor == true)
-					and (set_difficulty_mode == true)
-					and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
-					or (global.enable_difficulty_selection_settings == true)
-					and (global.enable_difficutly_layers_in_level_editor == true)
-					and (set_difficulty_mode == false)
-					and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
-					or (global.enable_difficulty_selection_settings == false)
-					or (global.enable_difficutly_layers_in_level_editor == false)
+					&& (global.enable_difficutly_layers_in_level_editor == true)
+					&& (set_difficulty_mode == true)
+					&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
+					|| (global.enable_difficulty_selection_settings == true)
+					&& (global.enable_difficutly_layers_in_level_editor == true)
+					&& (set_difficulty_mode == false)
+					&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
+					|| (global.enable_difficulty_selection_settings == false)
+					|| (global.enable_difficutly_layers_in_level_editor == false)
 					{
 						if (x > -16) /* Can only place objects within the level */
-						and (y > -16)
-						and (instance_exists(obj_level_width))
-						and (obj_level_width.drag_object == false)
-						and (obj_level_width.drag_release_timer == 0)
-						and (x < obj_level_width.x + 16)
-						and (instance_exists(obj_level_height))
-						and (obj_level_height.drag_object == false)
-						and (obj_level_height.drag_release_timer == 0)
-						and (y < obj_level_height.y + 16)
+						&& (y > -16)
+						&& (instance_exists(obj_level_width))
+						&& (obj_level_width.drag_object == false)
+						&& (obj_level_width.drag_release_timer == 0)
+						&& (x < obj_level_width.x + 16)
+						&& (instance_exists(obj_level_height))
+						&& (obj_level_height.drag_object == false)
+						&& (obj_level_height.drag_release_timer == 0)
+						&& (y < obj_level_height.y + 16)
 						{
 							if (place_object_delay_timer < 3)
 							{
@@ -839,8 +843,8 @@ if (global.actually_play_edited_level == false)
 									
 								#region /* Reset Level Editor Checkpoint */
 								if (room == room_leveleditor)
-								and (global.character_select_in_this_menu == "level_editor")
-								and (global.create_level_from_template == false)
+								&& (global.character_select_in_this_menu == "level_editor")
+								&& (global.create_level_from_template == false)
 								{
 									ini_open(working_directory + "/save_files/custom_level_save.ini");
 									ini_key_delete(global.level_name, "checkpoint_x");
@@ -856,7 +860,7 @@ if (global.actually_play_edited_level == false)
 									
 								#region /* Reset ranking highscore to actual custom level when placing objects */
 								if (global.character_select_in_this_menu == "level_editor")
-								and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+								&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 								{
 									if (global.character_select_in_this_menu == "level_editor")
 									{
@@ -904,7 +908,7 @@ if (global.actually_play_edited_level == false)
 		placing_object -= 0.2;
 	}
 	if (placing_object <= 0.9)
-	and (placing_object > 0)
+	&& (placing_object > 0)
 	{
 		placing_object -= 0.2;	
 	}
@@ -917,12 +921,12 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Press D key to change to drawing tool in level editor */
 	if (keyboard_check_pressed(key_draw))
-	and (pause == false)
-	or (gamepad_button_check_pressed(global.player1_slot, button_draw))
-	and (pause == false)
+	&& (pause == false)
+	|| (gamepad_button_check_pressed(global.player1_slot, button_draw))
+	&& (pause == false)
 	{
 		if (fill_mode == false)
-		and (erase_mode == false)
+		&& (erase_mode == false)
 		{
 			if (place_brush_size == 0)
 			{
@@ -964,9 +968,9 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Press E key to change to erase tool in level editor */
 	if (keyboard_check_pressed(key_erase))
-	and (pause == false)
-	or (gamepad_button_check_pressed(global.player1_slot, button_erase))
-	and (pause == false)
+	&& (pause == false)
+	|| (gamepad_button_check_pressed(global.player1_slot, button_erase))
+	&& (pause == false)
 	{
 		if (erase_mode == false)
 		{
@@ -1012,9 +1016,9 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Press F key to change to fill tool in level editor */
 	if (keyboard_check_pressed(key_fill))
-	and (pause == false)
-	or (gamepad_button_check_pressed(global.player1_slot, button_fill))
-	and (pause == false)
+	&& (pause == false)
+	|| (gamepad_button_check_pressed(global.player1_slot, button_fill))
+	&& (pause == false)
 	{
 		if (fill_mode == false)
 		{
@@ -1023,24 +1027,24 @@ if (global.actually_play_edited_level == false)
 		}
 		else
 		if (fill_mode_type == "fill")
-		and (erase_mode == false)
-		and (fill_mode == true)
+		&& (erase_mode == false)
+		&& (fill_mode == true)
 		{
 			erase_mode = false;
 			fill_mode_type = "horizontal";
 		}
 		else
 		if (fill_mode_type == "horizontal")
-		and (erase_mode == false)
-		and (fill_mode == true)
+		&& (erase_mode == false)
+		&& (fill_mode == true)
 		{
 			erase_mode = false;
 			fill_mode_type = "vertical";
 		}
 		else
 		if (fill_mode_type == "vertical")
-		and (erase_mode == false)
-		and (fill_mode == true)
+		&& (erase_mode == false)
+		&& (fill_mode == true)
 		{
 			erase_mode = false;
 			fill_mode_type = "fill";
@@ -1050,9 +1054,9 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Scroll mouse wheel to change drawing tool size in level editor */
 	if (fill_mode == false)
-	and (erase_mode == false)
-	and (mouse_check_button(mb_left))
-	and (pause == false)
+	&& (erase_mode == false)
+	&& (mouse_check_button(mb_left))
+	&& (pause == false)
 	{
 		if (mouse_wheel_down())
 		{
@@ -1074,7 +1078,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Scroll mouse wheel to change erase tool size in level editor */
 	if (erase_mode == true)
-	and (pause == false)
+	&& (pause == false)
 	{
 		if (mouse_wheel_down())
 		{
@@ -1098,13 +1102,13 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Grid hotkeys */
 	if (keyboard_check(vk_control))
-	and (keyboard_check(vk_shift))
-	and (keyboard_check_pressed(ord("A")))
-	and (pause == false)
+	&& (keyboard_check(vk_shift))
+	&& (keyboard_check_pressed(ord("A")))
+	&& (pause == false)
 	{
 		show_grid = true;
 		if (global.grid_hsnap > 16)
-		or (global.grid_vsnap > 16)
+		|| (global.grid_vsnap > 16)
 		{
 			global.grid_hsnap -= 16;
 			global.grid_vsnap -= 16;
@@ -1112,9 +1116,9 @@ if (global.actually_play_edited_level == false)
 	}
 	else
 	if (keyboard_check(vk_control))
-	and (keyboard_check(vk_shift))
-	and (keyboard_check_pressed(ord("S")))
-	and (pause == false)
+	&& (keyboard_check(vk_shift))
+	&& (keyboard_check_pressed(ord("S")))
+	&& (pause == false)
 	{
 		show_grid = true;
 		global.grid_hsnap += 16;
@@ -1122,13 +1126,13 @@ if (global.actually_play_edited_level == false)
 	}
 	else
 	if (keyboard_check(vk_control))
-	and (!keyboard_check(vk_shift))
-	and (keyboard_check_pressed(ord("A")))
-	and (pause == false)
+	&& (!keyboard_check(vk_shift))
+	&& (keyboard_check_pressed(ord("A")))
+	&& (pause == false)
 	{
 		show_grid = true;
 		if (global.grid_hsnap > 1)
-		or (global.grid_vsnap > 1)
+		|| (global.grid_vsnap > 1)
 		{
 			global.grid_hsnap -= 1;
 			global.grid_vsnap -= 1;
@@ -1136,9 +1140,9 @@ if (global.actually_play_edited_level == false)
 	}
 	else
 	if (keyboard_check(vk_control))
-	and (!keyboard_check(vk_shift))
-	and (keyboard_check_pressed(ord("S")))
-	and (pause == false)
+	&& (!keyboard_check(vk_shift))
+	&& (keyboard_check_pressed(ord("S")))
+	&& (pause == false)
 	{
 		show_grid = true;
 		global.grid_hsnap += 1;
@@ -1150,9 +1154,9 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Show or hide grid hotkey */
 	if (keyboard_check_pressed(key_grid))
-	and (pause == false)
-	or (gamepad_button_check_pressed(global.player1_slot, button_grid))
-	and (pause == false)
+	&& (pause == false)
+	|| (gamepad_button_check_pressed(global.player1_slot, button_grid))
+	&& (pause == false)
 	{
 		if (show_grid == false)
 		{
@@ -1183,11 +1187,11 @@ if (global.actually_play_edited_level == false)
 		#region /* Zoom Out */
 		if (zoom_out == true)
 		{
-			if (camera_get_view_width(view_camera[view_current]) < 3840) /* 1920 * 2 = 3840 */
-			and (camera_get_view_height(view_camera[view_current]) < 2160) /* 1080 * 2 = 2160 */
+			if (cam_width < 3840) /* 1920 * 2 = 3840 */
+			&& (cam_height < 2160) /* 1080 * 2 = 2160 */
 			{
-				camera_set_view_size((view_camera[view_current]), camera_get_view_width(view_camera[view_current]) + 8, camera_get_view_height(view_camera[view_current]) + 4.5);
-				camera_set_view_pos((view_camera[view_current]), camera_get_view_x(view_camera[view_current]) -4, camera_get_view_y(view_camera[view_current]) - 2.5); /* Move camera position when zooming out so it doesn't look too weird */
+				camera_set_view_size((view_camera[view_current]), cam_width + 8, cam_height + 4.5);
+				camera_set_view_pos((view_camera[view_current]), cam_x -4, cam_y - 2.5); /* Move camera position when zooming out so it doesn't look too weird */
 			}
 		}
 		#endregion /* Zoom Out END */
@@ -1202,47 +1206,47 @@ if (global.actually_play_edited_level == false)
 			scr_set_screen_size();
 			
 			#region /* Limit controller x and controller y inside room */
-			if (controller_x < camera_get_view_x(view_camera[view_current]))
+			if (controller_x < cam_x)
 			{
-				controller_x = camera_get_view_x(view_camera[view_current]);
+				controller_x = cam_x;
 			}
-			if (controller_x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+			if (controller_x > cam_x + cam_width)
 			{
-				controller_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+				controller_x = cam_x + cam_width;
 			}
-			if (controller_y < camera_get_view_y(view_camera[view_current]))
+			if (controller_y < cam_y)
 			{
-				controller_y = camera_get_view_y(view_camera[view_current]);
+				controller_y = cam_y;
 			}
-			if (controller_y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+			if (controller_y > cam_y + cam_height)
 			{
-				controller_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+				controller_y = cam_y + cam_height;
 			}
 			#endregion /* Limit controller x and controller y inside room END */
 			
 			#region /* Limit x and y inside room */
-			if (x < camera_get_view_x(view_camera[view_current]))
+			if (x < cam_x)
 			{
-				x = camera_get_view_x(view_camera[view_current]);
+				x = cam_x;
 			}
-			if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+			if (x > cam_x + cam_width)
 			{
-				x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+				x = cam_x + cam_width;
 			}
-			if (y < camera_get_view_y(view_camera[view_current]))
+			if (y < cam_y)
 			{
-				y = camera_get_view_y(view_camera[view_current]);
+				y = cam_y;
 			}
-			if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+			if (y > cam_y + cam_height)
 			{
-				y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
+				y = cam_y + cam_height;
 			}
 			#endregion /* Limit x and y inside room END */
 		
 			#region /* Limit view inside room */
 			camera_set_view_pos(view_camera[view_current],
-			max(0, min(camera_get_view_x(view_camera[view_current]), room_width - camera_get_view_width(view_camera[view_current]))),
-			max(0, min(camera_get_view_y(view_camera[view_current]), room_height - camera_get_view_height(view_camera[view_current]))));
+			max(0, min(cam_x, room_width - cam_width)),
+			max(0, min(cam_y, room_height - cam_height)));
 			#endregion /* Limit view inside room END */
 		
 			#endregion /* Limit so view and cursor can't go outside room END */
@@ -1255,11 +1259,11 @@ if (global.actually_play_edited_level == false)
 		#region /* Zoom In */
 		if (zoom_in == true)
 		{
-			if (camera_get_view_width(view_camera[view_current]) > 696)
-			and (camera_get_view_height(view_camera[view_current]) > 368)
+			if (cam_width > 696)
+			&& (cam_height > 368)
 			{
-				camera_set_view_size((view_camera[view_current]), camera_get_view_width(view_camera[view_current]) - 8, camera_get_view_height(view_camera[view_current]) -4.5);
-				camera_set_view_pos((view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + 4, camera_get_view_y(view_camera[view_current]) + 2.5); /* Move camera position when zooming in so it doesn't look too weird */
+				camera_set_view_size((view_camera[view_current]), cam_width - 8, cam_height -4.5);
+				camera_set_view_pos((view_camera[view_current]), cam_x + 4, cam_y + 2.5); /* Move camera position when zooming in so it doesn't look too weird */
 			}
 		}
 		#endregion /* Zoom In END */
@@ -1269,8 +1273,8 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Select Object Menu */
 	if (mouse_check_button(mb_any))
-	or (keyboard_check(vk_anykey))
-	or (key_a_hold)
+	|| (keyboard_check(vk_anykey))
+	|| (key_a_hold)
 	{
 		selected_menu_alpha = lerp(selected_menu_alpha, 0, 0.1);
 	}
@@ -1286,8 +1290,8 @@ if (global.actually_play_edited_level == false)
 
 	#region /* Scroll Cursor */
 	if (keyboard_check(vk_space))
-	and (mouse_check_button(mb_left))
-	or (mouse_check_button(mb_middle))
+	&& (mouse_check_button(mb_left))
+	|| (mouse_check_button(mb_middle))
 	{
 		if (asset_get_type("spr_cursor_scroll") == asset_sprite)
 		{
@@ -1318,13 +1322,13 @@ if (global.actually_play_edited_level == false)
 
 	#region /* Fill Cursor */
 	if (fill_mode == true)
-	and (erase_mode == false)
-	and (scroll_view == false)
-	and (!place_meeting(x, y, obj_level_player_1_start))
-	and (!place_meeting(x, y, obj_level_player_2_start))
-	and (!place_meeting(x, y, obj_level_player_3_start))
-	and (!place_meeting(x, y, obj_level_player_4_start))
-	and (!place_meeting(x, y, obj_level_end))
+	&& (erase_mode == false)
+	&& (scroll_view == false)
+	&& (!place_meeting(x, y, obj_level_player_1_start))
+	&& (!place_meeting(x, y, obj_level_player_2_start))
+	&& (!place_meeting(x, y, obj_level_player_3_start))
+	&& (!place_meeting(x, y, obj_level_player_4_start))
+	&& (!place_meeting(x, y, obj_level_end))
 	{
 		if (asset_get_type("spr_cursor_fill") == asset_sprite)
 		{
@@ -1342,8 +1346,8 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Erase Cursor */
 	if (erase_mode == true)
-	and (scroll_view == false)
-	and (pause == false)
+	&& (scroll_view == false)
+	&& (pause == false)
 	{
 		if (asset_get_type("spr_cursor_erase") == asset_sprite)
 		{
@@ -1361,9 +1365,9 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Default Cursor */
 	if (scroll_view == false)
-	and (drag_object == false)
-	and (fill_mode == false)
-	and (pause == false)
+	&& (drag_object == false)
+	&& (fill_mode == false)
+	&& (pause == false)
 	{
 		if (asset_get_type("spr_cursor_brush") == asset_sprite)
 		{
@@ -1384,7 +1388,7 @@ if (global.actually_play_edited_level == false)
 	if (mouse_check_button_pressed(mb_right))
 	{
 		if (pause == false)
-		and (menu_delay == 0)
+		&& (menu_delay == 0)
 		{
 			erase_mode = true;
 		}
@@ -1392,7 +1396,7 @@ if (global.actually_play_edited_level == false)
 	if (mouse_check_button_released(mb_right))
 	{
 		if (pause == false)
-		and (menu_delay == 0)
+		&& (menu_delay == 0)
 		{
 			erase_mode = false;
 		}
@@ -1418,22 +1422,22 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Fill with Objects */
 		if (mouse_check_button(mb_left))
-		and (!keyboard_check(vk_space))
-		and (!mouse_check_button(mb_middle))
-		and (!mouse_check_button(mb_right))
-		and (!key_b_hold)
-		and (scroll_view == false)
-		and (drag_object == false)
-		and (fill_mode == true)
-		and (erase_mode == false)
-		and (pause == false)
-		and (menu_delay == 0)
-		and (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
-		and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom buttons */
-		and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
+		&& (!keyboard_check(vk_space))
+		&& (!mouse_check_button(mb_middle))
+		&& (!mouse_check_button(mb_right))
+		&& (!key_b_hold)
+		&& (scroll_view == false)
+		&& (drag_object == false)
+		&& (fill_mode == true)
+		&& (erase_mode == false)
+		&& (pause == false)
+		&& (menu_delay == 0)
+		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
+		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom buttons */
+		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
 		{
 			if (!place_meeting(x, y, obj_leveleditor_placed_object))
-			and (!place_meeting(x, y, obj_leveleditor_fill))
+			&& (!place_meeting(x, y, obj_leveleditor_fill))
 			{
 				if (fill_mode_type == "fill")
 				{
@@ -1466,14 +1470,14 @@ if (global.actually_play_edited_level == false)
 	
 		#region /* Scroll Objects Left */
 		if (mouse_wheel_up())
-		and (!mouse_check_button(mb_middle))
-		and (!key_a_pressed)
-		and (!mouse_check_button(mb_left))
-		and (erase_mode == false)
-		and (pause == false)
-		or (gamepad_button_check_pressed(global.player1_slot, gp_padl))
-		and (erase_mode == false)
-		and (pause == false)
+		&& (!mouse_check_button(mb_middle))
+		&& (!key_a_pressed)
+		&& (!mouse_check_button(mb_left))
+		&& (erase_mode == false)
+		&& (pause == false)
+		|| (gamepad_button_check_pressed(global.player1_slot, gp_padl))
+		&& (erase_mode == false)
+		&& (pause == false)
 		{
 			if (!instance_exists(obj_leveleditor_fill))
 			{
@@ -1495,14 +1499,14 @@ if (global.actually_play_edited_level == false)
 	
 		#region /* Scroll Objects Right */
 		if (mouse_wheel_down())
-		and (!mouse_check_button(mb_middle))
-		and (!key_a_pressed)
-		and (!mouse_check_button(mb_left))
-		and (erase_mode == false)
-		and (pause == false)
-		or (gamepad_button_check_pressed(global.player1_slot, gp_padr))
-		and (erase_mode == false)
-		and (pause == false)
+		&& (!mouse_check_button(mb_middle))
+		&& (!key_a_pressed)
+		&& (!mouse_check_button(mb_left))
+		&& (erase_mode == false)
+		&& (pause == false)
+		|| (gamepad_button_check_pressed(global.player1_slot, gp_padr))
+		&& (erase_mode == false)
+		&& (pause == false)
 		{
 			if (!instance_exists(obj_leveleditor_fill))
 			{
@@ -1538,8 +1542,7 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Menu Navigation Delay END */
 	
 	#region /* Pause virtual key */
-	if (os_type == os_ios)
-	or (os_type == os_android)
+	if (os_type == os_ios or os_type == os_android)
 	{
 		virtual_key_add(1100 - 128, 0, 400, 128, vk_escape); /* Pause virtual key */
 	}
@@ -1556,65 +1559,26 @@ if (global.actually_play_edited_level == false)
 		{
 			
 			#region /* Limit so cursor and view can't go outside room */
-			if (camera_get_view_width(view_camera[view_current]) < 1920)
-			or (camera_get_view_height(view_camera[view_current]) < 1080)
+			if (cam_width < 1920 or cam_height < 1080)
 			{
 				camera_set_view_size(view_camera[view_current], 1920, 1080);
 			}
 			scr_set_screen_size();
 			
-			#region /* Limit controller x and controller y inside room */
-			if (controller_x < camera_get_view_x(view_camera[view_current]))
-			{
-				controller_x = camera_get_view_x(view_camera[view_current]);
-			}
-			if (controller_x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-			{
-				controller_x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
-			}
-			if (controller_y < camera_get_view_y(view_camera[view_current]))
-			{
-				controller_y = camera_get_view_y(view_camera[view_current]);
-			}
-			if (controller_y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-			{
-				controller_y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
-			}
-			#endregion /* Limit controller x and controller y inside room END */
+			/* Limit view inside room */
+			var view_x = max(0, min(cam_x, room_width - cam_width));
+			var view_y = max(0, min(cam_y, room_height - cam_height));
+			camera_set_view_pos(view_camera[view_current], view_x, view_y);
 			
-			#region /* Limit x and y inside room */
-			if (x < camera_get_view_x(view_camera[view_current]))
-			{
-				x = camera_get_view_x(view_camera[view_current]);
-			}
-			if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-			{
-				x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
-			}
-			if (y < camera_get_view_y(view_camera[view_current]))
-			{
-				y = camera_get_view_y(view_camera[view_current]);
-			}
-			if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-			{
-				y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]);
-			}
-			#endregion /* Limit x and y inside room END */
+			/* Limit controller x and y inside room */
+			controller_x = clamp(controller_x, cam_x, cam_x + cam_width);
+			controller_y = clamp(controller_y, cam_y, cam_y + cam_height);
 			
-			#region /* Limit view inside room */
-			camera_set_view_pos(view_camera[view_current],
-			max(0, min(camera_get_view_x(view_camera[view_current]), room_width - camera_get_view_width(view_camera[view_current]))),
-			max(0, min(camera_get_view_y(view_camera[view_current]), room_height - camera_get_view_height(view_camera[view_current]))));
-			#endregion /* Limit view inside room END */
+			/* Limit x and y inside room */
+			x = clamp(x, cam_x, cam_x + cam_width);
+			y = clamp(y, cam_y, cam_y + cam_height);
 			
 			#endregion /* Limit so view and cursor can't go outside room END */
-			
-			global.checkpoint_x = 0;
-			global.checkpoint_y = 0;
-			global.checkpoint_millisecond = 0;
-			global.checkpoint_second = 0;
-			global.checkpoint_minute = 0;
-			global.checkpoint_realmillisecond = 0;
 			
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(string(global.level_name), "checkpoint_x", 0);
@@ -1624,6 +1588,13 @@ if (global.actually_play_edited_level == false)
 			ini_write_real(string(global.level_name), "checkpoint_minute", 0);
 			ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
 			ini_close();
+			
+			global.checkpoint_x = 0;
+			global.checkpoint_y = 0;
+			global.checkpoint_millisecond = 0;
+			global.checkpoint_second = 0;
+			global.checkpoint_minute = 0;
+			global.checkpoint_realmillisecond = 0;
 			
 			menu_delay = 9999; /* Disable all menu control */
 			lives = 5;
@@ -1639,10 +1610,10 @@ if (global.actually_play_edited_level == false)
 		{
 			var thumbnail_sprite;
 			thumbnail_sprite = sprite_create_from_surface(application_surface,
-			camera_get_view_x(view_camera[view_current]),
-			camera_get_view_y(view_camera[view_current]),
-			camera_get_view_width(view_camera[view_current]),
-			camera_get_view_height(view_camera[view_current]), false, true, 0, 0);
+			cam_x,
+			cam_y,
+			cam_width,
+			cam_height, false, true, 0, 0);
 			if (global.level_name != "")
 			{
 				sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
@@ -1661,14 +1632,14 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Press Pause Button */
 	if (quit_level_editor == false)
-	and (pause == false)
+	&& (pause == false)
 	{
 		if (keyboard_check_pressed(vk_escape))
-		or (gamepad_button_check_pressed(global.player1_slot, gp_start))
-		or (gamepad_button_check_pressed(global.player2_slot, gp_start))
-		or (gamepad_button_check_pressed(global.player3_slot, gp_start))
-		or (gamepad_button_check_pressed(global.player4_slot, gp_start))
-		or (gamepad_button_check_pressed(4, gp_start))
+		|| (gamepad_button_check_pressed(global.player1_slot, gp_start))
+		|| (gamepad_button_check_pressed(global.player2_slot, gp_start))
+		|| (gamepad_button_check_pressed(global.player3_slot, gp_start))
+		|| (gamepad_button_check_pressed(global.player4_slot, gp_start))
+		|| (gamepad_button_check_pressed(4, gp_start))
 		{
 			pause = 2;
 		}
@@ -1698,30 +1669,30 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Keep view within the level */
 	if (view_center_x < 0)
-	and (scroll_view == false)
+	&& (scroll_view == false)
 	{
-		camera_set_view_pos(view_camera[view_current], 0 - camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]));
+		camera_set_view_pos(view_camera[view_current], 0 - cam_width * 0.5, cam_y);
 	}
 	if (view_center_y < 0)
-	and (scroll_view == false)
+	&& (scroll_view == false)
 	{
-		camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), 0 - camera_get_view_height(view_camera[view_current]) * 0.5);
+		camera_set_view_pos(view_camera[view_current], cam_x, 0 - cam_height * 0.5);
 	}
 	if (instance_exists(obj_level_width))
-	and (obj_level_width.drag_object == false)
-	and (obj_level_width.drag_release_timer == 0)
-	and (view_center_x > obj_level_width.x)
-	and (scroll_view == false)
+	&& (obj_level_width.drag_object == false)
+	&& (obj_level_width.drag_release_timer == 0)
+	&& (view_center_x > obj_level_width.x)
+	&& (scroll_view == false)
 	{
-		camera_set_view_pos(view_camera[view_current], obj_level_width.x - camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]));
+		camera_set_view_pos(view_camera[view_current], obj_level_width.x - cam_width * 0.5, cam_y);
 	}
 	if (instance_exists(obj_level_height))
-	and (obj_level_height.drag_object == false)
-	and (obj_level_height.drag_release_timer == 0)
-	and (view_center_y > obj_level_height.y)
-	and (scroll_view == false)
+	&& (obj_level_height.drag_object == false)
+	&& (obj_level_height.drag_release_timer == 0)
+	&& (view_center_y > obj_level_height.y)
+	&& (scroll_view == false)
 	{
-		camera_set_view_pos(view_camera[view_current], camera_get_view_x(view_camera[view_current]), obj_level_height.y - camera_get_view_height(view_camera[view_current]) * 0.5);
+		camera_set_view_pos(view_camera[view_current], cam_x, obj_level_height.y - cam_height * 0.5);
 	}
 	#endregion /* Keep view within the level END */
 	
