@@ -29,16 +29,9 @@ else
 {
 	/* Sets the gravity */
 	gravity_direction = 270; /* Direction of the gravity */
-	if asset_get_type("obj_wall") == asset_object
+	if (!place_meeting(x, y + 1, obj_wall))
 	{
-		if (!place_meeting(x, y + 1, obj_wall))
-		{
-			gravity = 0; /* The gravity */
-		}
-	}
-	else
-	{
-		gravity = 0;
+		gravity = 0; /* The gravity */
 	}
 	if flat = true
 	{

@@ -13,7 +13,6 @@ if (global.enable_transitions == true)
 and (global.actually_play_edited_level == true)
 {
 	if (iris_xscale < 31)
-	and (asset_get_type("obj_player") == asset_object)
 	and (instance_exists(obj_player))
 	{
 		if (asset_get_type("spr_iris") == asset_sprite)
@@ -44,7 +43,6 @@ and (global.actually_play_edited_level == true)
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 if (show_sprint_toggle_for_player1 > 0)
-and (asset_get_type("obj_pause") == asset_object)
 and (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 -= 1;
@@ -82,7 +80,6 @@ and (!instance_exists(obj_pause))
 	}
 }
 if (show_sprint_toggle_for_player2 > 0)
-and (asset_get_type("obj_pause") == asset_object)
 and (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
@@ -101,7 +98,6 @@ and (!instance_exists(obj_pause))
 	}
 }
 if (show_sprint_toggle_for_player3 > 0)
-and (asset_get_type("obj_pause") == asset_object)
 and (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
@@ -120,7 +116,6 @@ and (!instance_exists(obj_pause))
 	}
 }
 if (show_sprint_toggle_for_player4 > 0)
-and (asset_get_type("obj_pause") == asset_object)
 and (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;

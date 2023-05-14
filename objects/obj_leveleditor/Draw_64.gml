@@ -17,27 +17,6 @@ if (global.actually_play_edited_level == false)
 		}
 		
 		#region /* Pause Menu */
-		if (pause == false)
-		{
-			if (keyboard_check_pressed(vk_escape))
-			or (gamepad_button_check_pressed(global.player1_slot, gp_start))
-			or (gamepad_button_check_pressed(global.player2_slot, gp_start))
-			or (gamepad_button_check_pressed(global.player3_slot, gp_start))
-			or (gamepad_button_check_pressed(global.player4_slot, gp_start))
-			or (gamepad_button_check_pressed(4, gp_start))
-			{
-				
-				scr_save_custom_level(); /* Save level before going to the pause menu */
-				
-				global.pause_room = room_leveleditor;
-				quit_level_editor = false;
-				can_input_level_name = false;
-				pause = true;
-				input_key = false;
-				menu = "continue";
-			}
-		}
-		else
 		if (pause == true)
 		and (quit_level_editor <= 0)
 		{
@@ -68,9 +47,12 @@ if (global.actually_play_edited_level == false)
 				or (gamepad_button_check_pressed(global.player3_slot, gp_start))
 				or (gamepad_button_check_pressed(global.player4_slot, gp_start))
 				or (gamepad_button_check_pressed(4, gp_start))
+				or (key_b_pressed)
 				{
 					if (input_key == false)
+					and (menu_delay == 0)
 					{
+						menu_delay = 3;
 						quit_level_editor = false;
 						can_input_level_name = false;
 						pause = false;
@@ -120,16 +102,6 @@ if (global.actually_play_edited_level == false)
 				ini_close();
 				#endregion /* Draw if level have been Clear Checked on top of screen END */
 				
-				if (key_b_pressed)
-				and (menu_delay == 0)
-				{
-					menu_delay = 10;
-					quit_level_editor = false;
-					can_input_level_name = false;
-					pause = false;
-					can_navigate = false;
-				}
-				
 				in_settings = false;
 				
 				#region /* If menu is on continue */
@@ -140,7 +112,7 @@ if (global.actually_play_edited_level == false)
 				and (mouse_check_button_pressed(mb_left))
 				and (menu_delay == 0)
 				{
-					menu_delay = 10;
+					menu_delay = 3;
 					quit_level_editor = false;
 					can_input_level_name = false;
 					pause = false;
@@ -168,7 +140,7 @@ if (global.actually_play_edited_level == false)
 					{
 						if (menu_delay == 0)
 						{
-							menu_delay = 10;
+							menu_delay = 3;
 							quit_level_editor = false;
 							can_input_level_name = false;
 							pause = false;
@@ -192,7 +164,7 @@ if (global.actually_play_edited_level == false)
 					in_settings = true;
 					can_navigate_settings_sidebar = true;
 					menu = noone;
-					menu_delay = 10;
+					menu_delay = 3;
 				}
 			
 				if (menu == "options")
@@ -225,13 +197,13 @@ if (global.actually_play_edited_level == false)
 							in_settings = true;
 							can_navigate_settings_sidebar = true;
 							menu = noone;
-							menu_delay = 10;
+							menu_delay = 3;
 						}
 					}
 					if (key_b_pressed)
 					and (menu_delay == 0)
 					{
-						menu_delay = 10;
+						menu_delay = 3;
 						quit_level_editor = false;
 						can_input_level_name = false;
 						pause = false;
@@ -254,7 +226,7 @@ if (global.actually_play_edited_level == false)
 					in_settings = false;
 					can_navigate_settings_sidebar = false;
 					menu = "back_level_editor_options";
-					menu_delay = 10;
+					menu_delay = 3;
 				}
 			
 				if (menu == "level_editor_options")
@@ -294,13 +266,13 @@ if (global.actually_play_edited_level == false)
 							in_settings = false;
 							can_navigate_settings_sidebar = false;
 							menu = "back_level_editor_options";
-							menu_delay = 10;
+							menu_delay = 3;
 						}
 					}
 					if (key_b_pressed)
 					and (menu_delay == 0)
 					{
-						menu_delay = 10;
+						menu_delay = 3;
 						quit_level_editor = false;
 						can_input_level_name = false;
 						pause = false;
@@ -318,7 +290,7 @@ if (global.actually_play_edited_level == false)
 					and (mouse_check_button_pressed(mb_left))
 					and (menu_delay == 0)
 					{
-						menu_delay = 10;
+						menu_delay = 3;
 						quit_level_editor = false;
 						can_input_level_name = false;
 						pause = true;
@@ -348,7 +320,7 @@ if (global.actually_play_edited_level == false)
 						{
 							if (menu_delay == 0)
 							{
-								menu_delay = 10;
+								menu_delay = 3;
 								quit_level_editor = false;
 								can_input_level_name = false;
 								pause = true;
@@ -358,7 +330,7 @@ if (global.actually_play_edited_level == false)
 						if (key_b_pressed)
 						and (menu_delay == 0)
 						{
-							menu_delay = 10;
+							menu_delay = 3;
 							quit_level_editor = false;
 							can_input_level_name = false;
 							pause = false;
@@ -439,7 +411,7 @@ if (global.actually_play_edited_level == false)
 					if (key_b_pressed)
 					and (menu_delay == 0)
 					{
-						menu_delay = 10;
+						menu_delay = 3;
 						quit_level_editor = false;
 						can_input_level_name = false;
 						pause = false;
@@ -462,7 +434,7 @@ if (global.actually_play_edited_level == false)
 				and (can_input_level_name == false)
 				and (menu_delay == 0)
 				{
-					menu_delay = 10;
+					menu_delay = 3;
 					quit_level_editor = true;
 					can_input_level_name = false;
 					pause = false;
@@ -488,7 +460,7 @@ if (global.actually_play_edited_level == false)
 					if (key_b_pressed)
 					and (menu_delay == 0)
 					{
-						menu_delay = 10;
+						menu_delay = 3;
 						quit_level_editor = false;
 						can_input_level_name = false;
 						pause = false;
@@ -535,7 +507,7 @@ if (global.actually_play_edited_level == false)
 				and (mouse_check_button_pressed(mb_left))
 				and (menu_delay == 0)
 				{
-					menu_delay = 10;
+					menu_delay = 3;
 					quit_level_editor = false;
 					can_input_level_name = false;
 					pause = false;
@@ -564,7 +536,7 @@ if (global.actually_play_edited_level == false)
 					{
 						if (menu_delay == 0)
 						{
-							menu_delay = 10;
+							menu_delay = 3;
 							quit_level_editor = false;
 							can_input_level_name = false;
 							pause = false;
@@ -574,7 +546,7 @@ if (global.actually_play_edited_level == false)
 					if (key_b_pressed)
 					and (menu_delay == 0)
 					{
-						menu_delay = 10;
+						menu_delay = 3;
 						quit_level_editor = false;
 						can_input_level_name = false;
 						pause = true;
@@ -591,7 +563,7 @@ if (global.actually_play_edited_level == false)
 				and (mouse_check_button_pressed(mb_left))
 				and (menu_delay == 0)
 				{
-					menu_delay = 10;
+					menu_delay = 3;
 					quit_level_editor = false;
 					can_input_level_name = false;
 					pause = true;
@@ -620,7 +592,7 @@ if (global.actually_play_edited_level == false)
 					{
 						if (menu_delay == 0)
 						{
-							menu_delay = 10;
+							menu_delay = 3;
 							quit_level_editor = false;
 							can_input_level_name = false;
 							pause = true;
@@ -630,7 +602,7 @@ if (global.actually_play_edited_level == false)
 					if (key_b_pressed)
 					and (menu_delay == 0)
 					{
-						menu_delay = 10;
+						menu_delay = 3;
 						quit_level_editor = false;
 						can_input_level_name = false;
 						pause = true;
@@ -648,14 +620,14 @@ if (global.actually_play_edited_level == false)
 			if (menu == "input_level_name")
 			and (can_input_level_name == true)
 			{
-		
+				
 				#region /* Press enter when done typing */
 				if (keyboard_check_pressed(vk_enter))
 				or (gamepad_button_check_pressed(global.player1_slot, gp_start))
 				{
 					if (menu_delay == 0)
 					{
-						menu_delay = 10;
+						menu_delay = 3;
 						can_input_level_name = false;
 						quit_level_editor = false;
 						pause = true;
@@ -663,16 +635,16 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				#endregion /* Press enter when done typing END */
-		
+				
 				#region /* Make Background Darker */
 				draw_set_alpha(0.9);
 				draw_rectangle_color(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(1);
 				#endregion /* Make Background Darker END */
-		
+				
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_middle);
-		
+				
 				#region /* Inputed Name Text */
 				if (name_enter_blink< 1)
 				{
@@ -683,7 +655,7 @@ if (global.actually_play_edited_level == false)
 					scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name), global.default_text_size, c_black, c_white, 1);
 				}
 				#endregion /* Inputed Name Text END */
-		
+				
 				#region /* Limit Name Input Length for Level Name */
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
@@ -694,7 +666,7 @@ if (global.actually_play_edited_level == false)
 					keyboard_string = string_copy(level_name, 1, 32);
 				}
 				#endregion /* Limit Name Input Length for Level Name END */
-			
+				
 				name_enter_blink+= 0.05;
 				if (name_enter_blink > 1.5)
 				{
@@ -716,19 +688,14 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Make bottom row of icons appear if mouse is hovering at bottom screen */
 		if (drag_object == false)
-		and (asset_get_type("obj_level_player_1_start") == asset_object)
 		and (instance_exists(obj_level_player_1_start))
 		and (obj_level_player_1_start.drag_object == false)
-		and (asset_get_type("obj_level_player_2_start") == asset_object)
 		and (instance_exists(obj_level_player_2_start))
 		and (obj_level_player_2_start.drag_object == false)
-		and (asset_get_type("obj_level_player_3_start") == asset_object)
 		and (instance_exists(obj_level_player_3_start))
 		and (obj_level_player_3_start.drag_object == false)
-		and (asset_get_type("obj_level_player_4_start") == asset_object)
 		and (instance_exists(obj_level_player_4_start))
 		and (obj_level_player_4_start.drag_object == false)
-		and (asset_get_type("obj_level_end") == asset_object)
 		and (instance_exists(obj_level_end))
 		and (obj_level_end.drag_object == false)
 		{
@@ -757,19 +724,14 @@ if (global.actually_play_edited_level == false)
 		#region /* Make undo and redo icons appear if mouse is hovering at right screen */
 		if (undo_and_redo_buttons_enabled == true)
 		and (drag_object == false)
-		and (asset_get_type("obj_level_player_1_start") == asset_object)
 		and (instance_exists(obj_level_player_1_start))
 		and (obj_level_player_1_start.drag_object == false)
-		and (asset_get_type("obj_level_player_2_start") == asset_object)
 		and (instance_exists(obj_level_player_2_start))
 		and (obj_level_player_2_start.drag_object == false)
-		and (asset_get_type("obj_level_player_3_start") == asset_object)
 		and (instance_exists(obj_level_player_3_start))
 		and (obj_level_player_3_start.drag_object == false)
-		and (asset_get_type("obj_level_player_4_start") == asset_object)
 		and (instance_exists(obj_level_player_4_start))
 		and (obj_level_player_4_start.drag_object == false)
-		and (asset_get_type("obj_level_end") == asset_object)
 		and (instance_exists(obj_level_end))
 		and (obj_level_end.drag_object == false)
 		{
@@ -793,19 +755,14 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Make top row of icons appear if mouse is hovering at top screen */
 		if (drag_object == false)
-		and (asset_get_type("obj_level_player_1_start") == asset_object)
 		and (instance_exists(obj_level_player_1_start))
 		and (obj_level_player_1_start.drag_object == false)
-		and (asset_get_type("obj_level_player_2_start") == asset_object)
 		and (instance_exists(obj_level_player_2_start))
 		and (obj_level_player_2_start.drag_object == false)
-		and (asset_get_type("obj_level_player_3_start") == asset_object)
 		and (instance_exists(obj_level_player_3_start))
 		and (obj_level_player_3_start.drag_object == false)
-		and (asset_get_type("obj_level_player_4_start") == asset_object)
 		and (instance_exists(obj_level_player_4_start))
 		and (obj_level_player_4_start.drag_object == false)
-		and (asset_get_type("obj_level_end") == asset_object)
 		and (instance_exists(obj_level_end))
 		and (obj_level_end.drag_object == false)
 		{

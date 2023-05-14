@@ -302,8 +302,7 @@ function scr_draw_upload_level_menu()
 				else
 				{
 					menu_delay = 9999;
-					if (asset_get_type("obj_camera") == asset_object)
-					and (instance_exists(obj_camera))
+					if (instance_exists(obj_camera))
 					{
 						with(obj_camera)
 						{
@@ -847,8 +846,7 @@ function scr_draw_upload_level_menu()
 				{
 					can_navigate = false;
 					menu_delay = 9999;
-					if (asset_get_type("obj_camera") == asset_object)
-					and (instance_exists(obj_camera))
+					if (instance_exists(obj_camera))
 					{
 						with(obj_camera)
 						{
@@ -888,8 +886,7 @@ function scr_draw_upload_level_menu()
 			or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.back]))
 			{
 				menu_delay = 3;
-				if (asset_get_type("obj_camera") == asset_object)
-				and (instance_exists(obj_camera))
+				if (instance_exists(obj_camera))
 				{
 					with(obj_camera)
 					{
@@ -992,8 +989,7 @@ function scr_draw_upload_level_menu()
 				{
 					can_navigate = false;
 					menu_delay = 9999;
-					if (asset_get_type("obj_camera") == asset_object)
-					and (instance_exists(obj_camera))
+					if (instance_exists(obj_camera))
 					{
 						with(obj_camera)
 						{
@@ -1033,8 +1029,7 @@ function scr_draw_upload_level_menu()
 			or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.back]))
 			{
 				menu_delay = 3;
-				if (asset_get_type("obj_camera") == asset_object)
-				and (instance_exists(obj_camera))
+				if (instance_exists(obj_camera))
 				{
 					with(obj_camera)
 					{

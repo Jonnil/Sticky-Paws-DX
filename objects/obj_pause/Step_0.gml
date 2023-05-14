@@ -104,8 +104,7 @@ gamepad_set_vibration(4, 0, 0);
 camera_set_view_border(view_camera[view_current], 1920, 1080); /* View Border */
 camera_set_view_size(view_camera[view_current], 1920, 1080);
 
-if (asset_get_type("obj_leveleditor") == asset_object)
-and (!instance_exists(obj_leveleditor))
+if (!instance_exists(obj_leveleditor))
 {
 	camera_set_view_target(view_camera[view_current], self);
 }

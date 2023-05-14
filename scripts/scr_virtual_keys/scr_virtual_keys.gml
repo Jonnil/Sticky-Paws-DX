@@ -37,21 +37,17 @@ function scr_virtual_keys()
 		if (instance_exists(obj_player_map))
 		and (obj_player_map.iris_xscale > 0.25)
 		and (obj_player_map.iris_yscale > 0.25)
-		and (asset_get_type("obj_title") == asset_object)
 		and (!instance_exists(obj_title))
 		
 		or (variable_instance_exists(self, "iris_xscale"))
 		and (variable_instance_exists(self, "iris_yscale"))
 		and (iris_xscale > 0.25)
 		and (iris_yscale > 0.25)
-		and (asset_get_type("obj_title") == asset_object)
 		and (!instance_exists(obj_title))
 		{
-			if (asset_get_type("obj_player") == asset_object)
-			and (instance_exists(obj_player))
+			if (instance_exists(obj_player))
 			and (obj_player.can_move == true)
-			or (asset_get_type("obj_player_map") == asset_object)
-			and (instance_exists(obj_player_map))
+			or (instance_exists(obj_player_map))
 			and (obj_player_map.can_move == true)
 			{
 				

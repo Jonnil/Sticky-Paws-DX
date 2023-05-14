@@ -47,3 +47,37 @@ if (global.actually_play_edited_level == false)
 	scr_make_sprite_transparent_setting_difficulty_levels();
 }
 #endregion /* Initialize Object END */
+
+#region /* Big collectible uses old ID's, need to update them so old levels are compatible */
+if (object == 35)
+|| (object == 36)
+|| (object == 37)
+|| (object == 38)
+{
+	object = 34;
+}
+else
+if (object == 351)
+|| (object == 361)
+|| (object == 371)
+|| (object == 381)
+{
+	object = 341;
+}
+else
+if (object == 49)
+|| (object == 50)
+|| (object == 51)
+|| (object == 52)
+{
+	object = 48;
+}
+else
+if (object == 84)
+|| (object == 85)
+|| (object == 86)
+|| (object == 87)
+{
+	object = 83;
+}
+#endregion /* Big collectible uses old ID's, need to update them so old levels are compatible END */

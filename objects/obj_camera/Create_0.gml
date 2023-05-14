@@ -185,8 +185,7 @@ and (global.play_edited_level == true)
 	or (global.checkpoint_y > 0)
 	{
 		camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
-		if (asset_get_type("obj_player") == asset_object)
-		and (instance_exists(obj_player))
+		if (instance_exists(obj_player))
 		{
 			obj_player.x = global.checkpoint_x;
 			obj_player.y = global.checkpoint_y;
@@ -573,9 +572,7 @@ shake = false;
 scrolling_left = 0;
 
 #region /* Assist Item */
-if (asset_get_type("obj_assist_item") == asset_object)
-and (asset_get_type("obj_player") == asset_object)
-and (global.assist_enable == true)
+if (global.assist_enable == true)
 and (global.assist_item_appear < 10)
 and (!instance_exists(obj_assist_item))
 and (instance_exists(obj_player))

@@ -19,11 +19,8 @@ and (reset_game_if_no_interactivity_second_countdown <= 30)
 	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Start moving to continue playing"), global.default_text_size, c_black, c_red, 1);
 }
 
-///HUD
-
 #region /* Lives, Deaths, Big Collectibles, Basic Collectibles, Score and Timer */
-if (asset_get_type("obj_pause") == asset_object)
-and (!instance_exists(obj_pause))
+if (!instance_exists(obj_pause))
 {
 	
 	#region /* Lives */
@@ -175,11 +172,9 @@ and (!instance_exists(obj_pause))
 	#endregion /* Score END */
 	
 	#region /* Time Countdown */
-	if (asset_get_type("obj_player") == asset_object)
-	and (instance_exists(obj_player))
+	if (instance_exists(obj_player))
 	and (global.enable_time_countdown == true)
-	or (asset_get_type("obj_player_lose") == asset_object)
-	and (instance_exists(obj_player_lose))
+	or (instance_exists(obj_player_lose))
 	and (global.enable_time_countdown == true)
 	{
 		time_countup_y = 94;

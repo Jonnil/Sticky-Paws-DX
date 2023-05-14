@@ -5,8 +5,7 @@ and (other.die_volting == false)
 {
 	effect_create_above(ef_ring, x, y, 0, c_white);
 	
-	if (asset_get_type("obj_player") == asset_object)
-	and (instance_exists(obj_player))
+	if (instance_exists(obj_player))
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
@@ -27,9 +26,7 @@ and (other.die_volting == false)
 				hud_show_lives_timer = global.hud_hide_time * 60;
 			}
 		}
-		if (asset_get_type("obj_score_up") == asset_object)
-		and (asset_get_type("obj_player") == asset_object)
-		and (instance_exists(obj_player))
+		if (instance_exists(obj_player))
 		{
 			with(instance_create_depth(other.x, other.y - 16, 0, obj_score_up))
 			{
@@ -37,7 +34,6 @@ and (other.die_volting == false)
 			}
 		}
 		else
-		if (asset_get_type("obj_score_up") == asset_object)
 		{
 			with(instance_create_depth(x, y - 16, 0, obj_score_up))
 			{
@@ -47,8 +43,7 @@ and (other.die_volting == false)
 	}
 	#endregion /* Get 1-up if you get 100 basic collectibles END */
 	
-	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
+	if (instance_exists(obj_camera))
 	{
 		with(obj_camera)
 		{

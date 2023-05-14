@@ -12,41 +12,34 @@ and (!place_meeting(x, y + 3, obj_semisolid_platform))
 	and (y < view_bottom)
 	and (y > view_top)
 	{
-		if (asset_get_type("obj_block_break") == asset_object)
+		instance_create_depth(x, y - 32, 0, obj_block_break);
+		if (instance_exists(obj_player))
+		and (instance_nearest(x, y, obj_player).x < x)
 		{
-			instance_create_depth(x, y - 32, 0, obj_block_break);
-		}
-		if (asset_get_type("obj_cardboard") == asset_object)
-		{
-			if (instance_exists(obj_player))
-			and (instance_nearest(x, y, obj_player).x < x)
+			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
+			new_instance.sprite_index = sprite_index;
+			with(new_instance)
 			{
-				var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
-				new_instance.sprite_index = sprite_index;
-				with(new_instance)
+				if (instance_exists(obj_player))
 				{
-					if (instance_exists(obj_player))
-					{
-						motion_set(random_range(13, 77), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
-					}
+					motion_set(random_range(13, 77), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
 				}
 			}
-			else
+		}
+		else
+		{
+			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
+			new_instance.sprite_index = sprite_index;
+			with(new_instance)
 			{
-				var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
-				new_instance.sprite_index = sprite_index;
-				with(new_instance)
+				if (instance_exists(obj_player))
 				{
-					if (instance_exists(obj_player))
-					{
-						motion_set(random_range(103, 167), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
-					}
+					motion_set(random_range(103, 167), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
 				}
 			}
 		}
 		score += 50;
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			
 			#region /* Only do the breaking smoke effect and sound effect if it's inside the view */

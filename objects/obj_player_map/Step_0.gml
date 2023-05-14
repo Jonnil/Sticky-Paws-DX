@@ -75,35 +75,16 @@ camera_get_view_y(view_camera[view_current]) - 64,
 camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64,
 camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 64,
 false, true);
-if (asset_get_type("obj_camera_map") == asset_object)
-{
-	instance_activate_object(obj_camera_map);
-}
-if (asset_get_type("obj_level") == asset_object)
-{
-	instance_activate_object(obj_level);
-}
-if (asset_get_type("obj_unlock_next_level") == asset_object)
-{
-	instance_activate_object(obj_unlock_next_level);
-}
-if (asset_get_type("obj_path") == asset_object)
-{
-	instance_activate_object(obj_path);
-}
-if (asset_get_type("obj_map_path_turn") == asset_object)
-{
-	instance_activate_object(obj_map_path_turn);
-}
-if (asset_get_type("obj_map_exit") == asset_object)
-{
-	instance_activate_object(obj_map_exit);
-}
+instance_activate_object(obj_camera_map);
+instance_activate_object(obj_level);
+instance_activate_object(obj_unlock_next_level);
+instance_activate_object(obj_path);
+instance_activate_object(obj_map_path_turn);
+instance_activate_object(obj_map_exit);
 #endregion /* Deactivate instances outside view END */
 
 #region /* Make sure camera map is always present on the map screen. Only run this code after doing the deactivate instances code */
-if (asset_get_type("obj_camera_map") == asset_object)
-and (!instance_exists(obj_camera_map))
+if (!instance_exists(obj_camera_map))
 {
 	instance_create_depth(x, y, 0, obj_camera_map);
 }
@@ -400,8 +381,7 @@ and (global.quit_level == false)
 		if (move_delay > 10)
 		and (speed == 0)
 		{
-			if (asset_get_type("obj_wall") == asset_object)
-			and (!place_meeting(x + 4, y, obj_wall))
+			if (!place_meeting(x + 4, y, obj_wall))
 			and (speed == 0)
 			{
 				
@@ -470,8 +450,7 @@ and (global.quit_level == false)
 				#endregion /* Key Right END */
 				
 			}
-			if (asset_get_type("obj_wall") == asset_object)
-			and (!place_meeting(x - 4, y, obj_wall))
+			if (!place_meeting(x - 4, y, obj_wall))
 			and (speed == 0)
 			{
 				
@@ -540,8 +519,7 @@ and (global.quit_level == false)
 				#endregion /* Key Left END */
 				
 			}
-			if (asset_get_type("obj_wall") == asset_object)
-			and (!place_meeting(x, y + 4, obj_wall))
+			if (!place_meeting(x, y + 4, obj_wall))
 			and (speed == 0)
 			{
 				
@@ -578,8 +556,7 @@ and (global.quit_level == false)
 				#endregion /* Key Down END */
 				
 			}
-			if (asset_get_type("obj_wall") == asset_object)
-			and (!place_meeting(x, y - 4, obj_wall))
+			if (!place_meeting(x, y - 4, obj_wall))
 			and (speed == 0)
 			{
 				
@@ -624,8 +601,7 @@ and (global.quit_level == false)
 #endregion /* Movement END */
 
 #region /* Stop player when touching level */
-if (asset_get_type("obj_level") == asset_object)
-and (instance_exists(obj_level))
+if (instance_exists(obj_level))
 and (place_meeting(x, y, obj_level))
 and (stop_at_level == false)
 {
@@ -661,8 +637,7 @@ if (can_enter_level < 30)
 #endregion /* Delay countup END */
 
 #region /* Set selected level index to the level closest to you */
-if (asset_get_type("obj_level") == asset_object)
-and (instance_exists(obj_level))
+if (instance_exists(obj_level))
 {
 	global.select_level_index = instance_nearest(x, y, obj_level).level;
 }
@@ -673,7 +648,6 @@ if (can_move == false)
 and (entering_level == true)
 and (delay >= 60)
 and (iris_yscale <= 0.001)
-and (asset_get_type("obj_level") == asset_object)
 and (global.quit_level == false)
 {
 	room_persistent = false; /* Turn OFF Room Persistency. Whenever you enter a level, you need to turn off room persistent */
@@ -752,8 +726,7 @@ else
 #endregion /* Set what sprite player should use END */
 
 #region /* Set a bunch of global variables to default when you're not on a selected level */
-if (asset_get_type("obj_level") == asset_object)
-and (distance_to_object(instance_nearest(xx, yy, obj_level)) > 32)
+if (distance_to_object(instance_nearest(xx, yy, obj_level)) > 32)
 if (iris_xscale >= 1)
 {
 	global.checkpoint_x = 0;
@@ -774,8 +747,7 @@ if (iris_xscale >= 1)
 #endregion /* Set a bunch of global variables to default when you're not on a selected level END */
 
 #region /* If player object is present, delete the player object */
-if (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
+if (instance_exists(obj_player))
 {
 	with(obj_player)
 	{
@@ -866,7 +838,6 @@ and (can_enter_level_automatically == true)
 and (brand_new_file == true)
 and (can_move == true)
 and (show_demo_over_message == false)
-and (asset_get_type("obj_level") == asset_object)
 and (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 
 or (key_a_pressed)
@@ -874,7 +845,6 @@ and (global.demo == false)
 and (can_move == true)
 and (show_demo_over_message == false)
 and (can_enter_level >= 30)
-and (asset_get_type("obj_level") == asset_object)
 and (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed == 0)
@@ -885,7 +855,6 @@ and (instance_nearest(x, y, obj_level).level <= global.demo_max_levels)
 and (can_move == true)
 and (show_demo_over_message == false)
 and (can_enter_level >= 30)
-and (asset_get_type("obj_level") == asset_object)
 and (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed == 0)
@@ -907,9 +876,29 @@ and (speed == 0)
 		x = instance_nearest(x, y, obj_level).x;
 		y = instance_nearest(x, y, obj_level).y;
 		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		
+//		buffer_async_group_begin("save_files");
+//buffer_async_group_option("savepadindex", 0); //The number you pass in is the pad number of the user who is saving/loading.
+//buffer_async_group_option("showdialog",0);    // Stop platform dialogues appearing for this auto-save 
+//                                              // (if you do this your player won't be able to select a slot manually)
+//buffer_async_group_option("slottitle","SaveForMyGame");    // Set the title of the slot we're going to save into
+//buffer_async_group_option("subtitle","Save file for my awesome game");   // Set a subtitle that's visible in the PS4 UI
+
+//global.savebuff = buffer_create(1,buffer_grow,1);
+
+//ini_open_from_string("");
+		
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_write_real("Player", "brand_new_file", false);
+		
+//		var inistring = ini_close();
+//buffer_write(global.savebuff,buffer_string,inistring);
+
+//buffer_save_async(global.savebuff,"file" + string(global.file) + ".ini",0,buffer_get_size(global.savebuff));    // Pass the data to be saved
+//global.saveid = buffer_async_group_end();     // Start the save process
+
+		
 		ini_close();
 		#endregion /* Save Player Position END */
 		
@@ -948,7 +937,6 @@ and (can_move == true)
 and (show_demo_over_message == false)
 and (menu_delay == 0)
 and (can_enter_level >= 30)
-and (asset_get_type("obj_level") == asset_object)
 and (instance_exists(obj_level))
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed == 0)
@@ -967,7 +955,6 @@ if (key_b_pressed)
 	{
 		if (can_move == true)
 		and (can_enter_level >= 30)
-		and (asset_get_type("obj_level") == asset_object)
 		and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 		and (speed == 0)
 		and (instance_nearest(x, y, obj_level).clear_rate = "enter")
@@ -1088,8 +1075,7 @@ left down = 3
  */
 
 #region /* Touch Map Turn Right Down */
-if (asset_get_type("obj_map_path_turn") == asset_object)
-and (place_meeting(x, y, obj_map_path_turn))
+if (place_meeting(x, y, obj_map_path_turn))
 and (instance_nearest(x, y, obj_map_path_turn).turn == 0) /* Right Down = 0 */
 {
 	if (abs(hspeed) > 0)
@@ -1123,8 +1109,7 @@ and (instance_nearest(x, y, obj_map_path_turn).turn == 0) /* Right Down = 0 */
 else
 
 #region /* Touch Map Turn Up Right */
-if (asset_get_type("obj_map_path_turn") == asset_object)
-and (place_meeting(x, y, obj_map_path_turn))
+if (place_meeting(x, y, obj_map_path_turn))
 and (instance_nearest(x, y, obj_map_path_turn).turn == 1) /* Up Right = 1 */
 {
 	if (abs(hspeed) > 0)
@@ -1158,8 +1143,7 @@ and (instance_nearest(x, y, obj_map_path_turn).turn == 1) /* Up Right = 1 */
 else
 
 #region /* Touch Map Turn Up Left */
-if (asset_get_type("obj_map_path_turn") == asset_object)
-and (place_meeting(x, y, obj_map_path_turn))
+if (place_meeting(x, y, obj_map_path_turn))
 and (instance_nearest(x, y, obj_map_path_turn).turn = 2) /* Up Left = 2 */
 {
 	if (abs(hspeed) > 0)
@@ -1193,8 +1177,7 @@ and (instance_nearest(x, y, obj_map_path_turn).turn = 2) /* Up Left = 2 */
 else
 
 #region /* Touch Map Turn Left Down */
-if (asset_get_type("obj_map_path_turn") == asset_object)
-and (place_meeting(x, y, obj_map_path_turn))
+if (place_meeting(x, y, obj_map_path_turn))
 and (instance_nearest(x, y, obj_map_path_turn).turn = 3) /* Left Down = 3 */
 {
 	if (abs(hspeed) > 0)

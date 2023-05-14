@@ -504,8 +504,7 @@ if (global.actually_play_edited_level == false)
 		else
 		
 		#region /* Default Cursor */
-		if (asset_get_type("obj_leveleditor_placed_object") == asset_object)
-		and (scroll_view == false)
+		if (scroll_view == false)
 		and (drag_object == false)
 		and (fill_mode == false)
 		and (pause == false)

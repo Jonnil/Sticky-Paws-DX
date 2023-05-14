@@ -41,9 +41,7 @@ else
 
 	#region /* Set the gravity */
 	gravity_direction = 270; /* Direction of the gravity */
-	if (asset_get_type("obj_wall") == asset_object)
-	and (!place_meeting(x, y + 1, obj_wall))
-	and (asset_get_type("obj_semisolid_platform") == asset_object)
+	if (!place_meeting(x, y + 1, obj_wall))
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -103,8 +101,7 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	or (instance_exists(obj_foreground_secret))
 	and (!place_meeting(x, y, obj_foreground_secret))
 	{
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		and (obj_camera.iris_xscale > 1)
 		{
 			effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
@@ -123,20 +120,17 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 }
 #endregion /* Coil spring bouncing code END */
 
-if (asset_get_type("obj_player") == asset_object)
+if (instance_number(obj_player) > 0)
 {
-	if (instance_number(obj_player) > 0)
+	if (die == false)
 	{
-		if (die == false)
+		if (instance_nearest(x, y, obj_player).x < x)
 		{
-			if (instance_nearest(x, y, obj_player).x < x)
-			{
-				image_xscale = -1;
-			}
-			else
-			{
-				image_xscale = +1;
-			}
+			image_xscale = -1;
+		}
+		else
+		{
+			image_xscale = +1;
 		}
 	}
 }

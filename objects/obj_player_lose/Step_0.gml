@@ -15,7 +15,6 @@ count += 1;
 
 #region /* Check if the last player just died */
 if (count == 1)
-and (asset_get_type("obj_player") == asset_object)
 and (!instance_exists(obj_player))
 {
 	last_player = true;

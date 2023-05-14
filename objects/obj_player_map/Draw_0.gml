@@ -18,7 +18,6 @@ and (have_heart_balloon == true)
 if (can_move == true)
 and (can_enter_level >= 30)
 and (point_distance(xx, yy, x, y) < 30)
-and (asset_get_type("obj_level") == asset_object)
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed == 0)
 and (instance_nearest(x, y, obj_level).clear_rate != "closed")
@@ -302,8 +301,7 @@ if (sprite_index > 0)
 }
 
 #region /* Show Level Info */
-if (asset_get_type("obj_level") == asset_object)
-and (instance_exists(obj_level)) /* Must check if obj_level exists or not */
+if (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (move_delay > 10)
 and (instance_nearest(x, y, obj_level).level_number != 0)

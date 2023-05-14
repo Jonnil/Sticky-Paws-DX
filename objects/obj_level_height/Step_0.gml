@@ -6,8 +6,7 @@ if (y < 0)
 x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5;
 
 #region /* Drag Object */
-if (asset_get_type("obj_leveleditor") == asset_object)
-and (instance_exists(obj_leveleditor))
+if (instance_exists(obj_leveleditor))
 and (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))

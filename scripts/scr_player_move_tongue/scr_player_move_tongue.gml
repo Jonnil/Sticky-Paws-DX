@@ -6,12 +6,9 @@ function scr_player_move_tongue()
 	if (can_move == true)
 	and (global.pause == false)
 	{
-		if (asset_get_type("obj_tongue") == asset_object)
+		if (!instance_exists(obj_tongue))
 		{
-			if (!instance_exists(obj_tongue))
-			{
-				can_tongue = true;
-			}
+			can_tongue = true;
 		}
 		
 		#region /* If you are allowed to use tongue, then you are able to use your tongue END */
@@ -19,7 +16,6 @@ function scr_player_move_tongue()
 		and (can_tongue == true)
 		and (climb == false)
 		and (horizontal_rope_climb == false)
-		and (asset_get_type("obj_tongue") == asset_object)
 		{
 			
 			#region /* Activate Tongue */
@@ -300,8 +296,7 @@ function scr_player_move_tongue()
 			can_ground_pound = false;
 			ground_pound = false;
 			gravity = 0; /* No gravity when rope swinging */
-			if (asset_get_type("obj_tongue") == asset_object)
-			and (instance_exists(obj_tongue))
+			if (instance_exists(obj_tongue))
 			{
 				grapple_x = instance_nearest(x, y, obj_tongue).x;
 				grapple_y = instance_nearest(x, y, obj_tongue).y;

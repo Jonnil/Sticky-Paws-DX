@@ -5,6 +5,12 @@ function scr_select_custom_level_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
+	/* Never have the select level index under 0, if it does, set it to 0 */
+	if (global.select_level_index <= -1)
+	{
+		global.select_level_index = 0;
+	}
+	
 	if (global.select_level_index >= 1)
 	and (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
 	{
@@ -669,8 +675,7 @@ function scr_select_custom_level_menu()
 				{
 					can_navigate = false;
 					menu_delay = 9999;
-					if (asset_get_type("obj_camera") == asset_object)
-					and (instance_exists(obj_camera))
+					if (instance_exists(obj_camera))
 					{
 						with(obj_camera)
 						{
@@ -719,8 +724,7 @@ function scr_select_custom_level_menu()
 		and (menu_delay == 0)
 		{
 			menu_delay = 3;
-			if (asset_get_type("obj_camera") == asset_object)
-			and (instance_exists(obj_camera))
+			if (instance_exists(obj_camera))
 			{
 				with(obj_camera)
 				{
@@ -815,8 +819,7 @@ function scr_select_custom_level_menu()
 				{
 					can_navigate = false;
 					menu_delay = 9999;
-					if (asset_get_type("obj_camera") == asset_object)
-					and (instance_exists(obj_camera))
+					if (instance_exists(obj_camera))
 					{
 						with(obj_camera)
 						{
@@ -865,8 +868,7 @@ function scr_select_custom_level_menu()
 		and (menu_delay == 0)
 		{
 			menu_delay = 3;
-			if (asset_get_type("obj_camera") == asset_object)
-			and (instance_exists(obj_camera))
+			if (instance_exists(obj_camera))
 			{
 				with(obj_camera)
 				{

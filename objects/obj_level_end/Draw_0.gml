@@ -11,9 +11,7 @@ if (asset_get_type("spr_level_end") == asset_sprite)
 }
 
 #region /* Drag Object */
-if (asset_get_type("obj_leveleditor") == asset_object)
-and (instance_number(obj_leveleditor) > 0)
-and (variable_instance_exists(obj_leveleditor, "pause"))
+if (instance_number(obj_leveleditor) > 0)
 and (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))
@@ -96,9 +94,6 @@ if (y > room_height)
 if (global.play_edited_level == true)
 or (global.actually_play_edited_level == true)
 {
-	if (asset_get_type("obj_goal") == asset_object)
-	{
-		instance_create_depth(x, y - 256, 0, obj_goal);
-	}
+	instance_create_depth(x, y - 256, 0, obj_goal);
 	instance_destroy();
 }

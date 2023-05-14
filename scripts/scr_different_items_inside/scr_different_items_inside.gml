@@ -8,7 +8,6 @@ function scr_different_items_inside()
 	{
 		empty = true;
 		if (block_type = "question_block")
-		and (asset_get_type("obj_basic_collectible") == asset_object)
 		{
 			if (asset_get_type("scr_audio_play") == asset_script)
 			{
@@ -42,42 +41,36 @@ function scr_different_items_inside()
 		{
 			bounce_up = true;
 			hit += 1;
-			if (asset_get_type("obj_block_break") == asset_object)
+			with(instance_create_depth(x, y - 32, 0, obj_block_break))
 			{
-				with(instance_create_depth(x, y - 32, 0, obj_block_break))
-				{
-					image_yscale = 0.1;
-				}
+				image_yscale = 0.1;
 			}
 			
 			#region /* 2 Basic Collectibles per hit */
-			if asset_get_type("obj_basic_collectible") == asset_object
+			if (asset_get_type("scr_audio_play") == asset_script)
 			{
-				if (asset_get_type("scr_audio_play") == asset_script)
+				scr_audio_play(snd_basic_collectible, volume_source.sound);
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				if (variable_instance_exists(self, "bounce_up"))
 				{
-					scr_audio_play(snd_basic_collectible, volume_source.sound);
+					bounce_up = true;
 				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				if (variable_instance_exists(self, "bounce_up"))
 				{
-					image_speed = 1;
-					motion_set(90, 10);
-					if (variable_instance_exists(self, "bounce_up"))
-					{
-						bounce_up = true;
-					}
+					bounce_up = true;
 				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+				if (variable_instance_exists(self, "delay_time"))
 				{
-					image_speed = 1;
-					motion_set(90, 10);
-					if (variable_instance_exists(self, "bounce_up"))
-					{
-						bounce_up = true;
-					}
-					if (variable_instance_exists(self, "delay_time"))
-					{
-						delay_time = 10;
-					}
+					delay_time = 10;
 				}
 			}
 			if (hit >= 5)
@@ -93,8 +86,7 @@ function scr_different_items_inside()
 	#region /* Heart Balloon */
 	if (item_inside = "heart_balloon")
 	{
-		if (asset_get_type("obj_heart_balloon") == asset_object)
-		and (!place_meeting(x, y - 1, obj_wall))
+		if (!place_meeting(x, y - 1, obj_wall))
 		{
 			with(instance_create_depth(x, bbox_top - 16, 0, obj_heart_balloon))
 			{
@@ -113,8 +105,7 @@ function scr_different_items_inside()
 	#region /* 1-up */
 	if (item_inside = "1-up")
 	{
-		if (asset_get_type("obj_extra_life_pickup") == asset_object)
-		and (!place_meeting(x, y - 1, obj_wall))
+		if (!place_meeting(x, y - 1, obj_wall))
 		{
 			with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
 			{
@@ -137,8 +128,7 @@ function scr_different_items_inside()
 	#region /* 2-up */
 	if (item_inside = "2-up")
 	{
-		if (asset_get_type("obj_extra_life_pickup") == asset_object)
-		and (!place_meeting(x, y - 1, obj_wall))
+		if (!place_meeting(x, y - 1, obj_wall))
 		{
 			with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
 			{
@@ -161,8 +151,7 @@ function scr_different_items_inside()
 	#region /* 3-up */
 	if (item_inside = "3-up")
 	{
-		if (asset_get_type("obj_extra_life_pickup") == asset_object)
-		and (!place_meeting(x, y - 1, obj_wall))
+		if (!place_meeting(x, y - 1, obj_wall))
 		{
 			with(instance_create_depth(x, bbox_top - 16, 0, obj_extra_life_pickup))
 			{
@@ -185,8 +174,7 @@ function scr_different_items_inside()
 	#region /* Invincibility Powerup */
 	if (item_inside = "invincibility_powerup")
 	{
-		if (asset_get_type("obj_invincibility_powerup") == asset_object)
-		and (!place_meeting(x, y - 1, obj_wall))
+		if (!place_meeting(x, y - 1, obj_wall))
 		{
 			with(instance_create_depth(x, bbox_top - 32, 0, obj_invincibility_powerup))
 			{
@@ -210,8 +198,7 @@ function scr_different_items_inside()
 	#region /* Invincibility Powerup Coil Spring */
 	if (item_inside = "invincibility_powerup_coil_spring")
 	{
-		if (asset_get_type("obj_invincibility_powerup") == asset_object)
-		and (!place_meeting(x, y - 1, obj_wall))
+		if (!place_meeting(x, y - 1, obj_wall))
 		{
 			with(instance_create_depth(x, bbox_top - 32, 0, obj_invincibility_powerup))
 			{

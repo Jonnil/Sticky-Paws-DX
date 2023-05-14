@@ -10,24 +10,18 @@ if (global.actually_play_edited_level == false)
 			delay += 1;
 		}
 		
-		if (asset_get_type("obj_leveleditor") == asset_object)
-		and (instance_exists(obj_leveleditor))
+		if (instance_exists(obj_leveleditor))
 		and (delay == 3)
-		and (variable_instance_exists(obj_leveleditor, "pause"))
 		and (obj_leveleditor.pause == false)
 		{
 			
 			#region /* Destroy if erased */
-			if (asset_get_type("obj_level_player_1_start") == asset_object)
-			and (instance_exists(obj_level_player_1_start))
+			if (instance_exists(obj_level_player_1_start))
 			and (place_meeting(x, y, obj_level_player_1_start))
-			and (asset_get_type("obj_level_player_2_start") == asset_object)
 			and (instance_exists(obj_level_player_2_start))
 			and (place_meeting(x, y, obj_level_player_2_start))
-			and (asset_get_type("obj_level_player_3_start") == asset_object)
 			and (instance_exists(obj_level_player_3_start))
 			and (place_meeting(x, y, obj_level_player_3_start))
-			and (asset_get_type("obj_level_player_4_start") == asset_object)
 			and (instance_exists(obj_level_player_4_start))
 			and (place_meeting(x, y, obj_level_player_4_start))
 			and (obj_leveleditor.drag_object == false)
@@ -38,8 +32,7 @@ if (global.actually_play_edited_level == false)
 			{
 				
 				#region /* Reset Level Editor Checkpoint */
-				if (asset_get_type("room_leveleditor") == asset_room)
-				and (room == room_leveleditor)
+				if (room == room_leveleditor)
 				and (global.character_select_in_this_menu == "level_editor")
 				{
 					ini_open(working_directory + "/save_files/custom_level_save.ini");

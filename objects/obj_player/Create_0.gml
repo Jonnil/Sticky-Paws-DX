@@ -10,7 +10,6 @@ can_create_follow_mouse = true;
 
 #region /* Create object that always follows mouse */
 if (can_create_follow_mouse == true)
-and (asset_get_type("obj_follow_mouse") == asset_object)
 and (!instance_exists(obj_follow_mouse))
 {
 	instance_create_depth(mouse_x, mouse_y, 0, obj_follow_mouse);

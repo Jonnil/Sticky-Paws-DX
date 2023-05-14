@@ -29,8 +29,7 @@ or (gamepad_axis_value(global.player4_slot, gp_axislh) > 0);
 
 xx = lerp(xx, get_window_width * 0.5, 0.1);
 yy = lerp(yy, scr_wave(y - 8, y + 8, 4.5, 0), 0.1);
-if (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
+if (instance_exists(obj_player))
 and (point_distance(x, y, obj_player.x, obj_player.y) < 64)
 and (can_navigate == false)
 and (instance_nearest(x, y, obj_player).key_up_pressed)
@@ -304,8 +303,7 @@ else
 else
 {
 	depth = +10;
-	if (asset_get_type("obj_player") == asset_object)
-	and (instance_exists(obj_player))
+	if (instance_exists(obj_player))
 	and (instance_nearest(x, y, obj_player).can_move == true)
 	and (instance_nearest(x, y, obj_player).intro_animation = "")
 	{

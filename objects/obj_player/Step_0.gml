@@ -171,29 +171,23 @@ else
 #endregion /* Music Pitch END */
 
 #region /* Make sure the heart stays on the character if you spawn from a checkpoint */
-if (asset_get_type("obj_checkpoint") == asset_object)
-and (asset_get_type("obj_camera") == asset_object)
+if (instance_exists(obj_checkpoint))
+and (place_meeting(x, y, obj_checkpoint))
+and (instance_exists(obj_camera))
+and (place_meeting(x, y, obj_camera))
 {
-	if (instance_exists(obj_checkpoint))
-	and (place_meeting(x, y, obj_checkpoint))
-	and (instance_exists(obj_camera))
-	and (place_meeting(x, y, obj_camera))
+	if (obj_camera.iris_xscale < 0.3)
+	or (obj_camera.iris_yscale < 0.3)
 	{
-		if (obj_camera.iris_xscale < 0.3)
-		or (obj_camera.iris_yscale < 0.3)
-		{
 			
-			xx_heart = x;
-			yy_heart = y;
-		}
+		xx_heart = x;
+		yy_heart = y;
 	}
 }
 #endregion /* Make sure the heart stays on the character if you spawn from a checkpoint END */
 
 #region /* Winning the level and transitioning to the next area */
-if (asset_get_type("obj_checkpoint") == asset_object)
-and (asset_get_type("obj_camera") == asset_object)
-and (!place_meeting(x, y, obj_checkpoint))
+if (!place_meeting(x, y, obj_checkpoint))
 and (instance_exists(obj_camera))
 and (obj_camera.iris_xscale < 3)
 {
@@ -216,10 +210,7 @@ and (obj_camera.iris_xscale < 3)
 				global.checkpoint_minute = 0;
 				global.checkpoint_realmillisecond = 0;
 				global.lives_until_assist = 0;
-				if (asset_get_type("scr_save_level") == asset_script)
-				{
-					scr_save_level(); /* Important that you save all level information here, before going back to map screen, but after setting level_clear_rate to clear */
-				}
+				scr_save_level(); /* Important that you save all level information here, before going back to map screen, but after setting level_clear_rate to clear */
 				if (global.actually_play_edited_level == false)
 				and (global.play_edited_level == true)
 				and (global.character_select_in_this_menu == "level_editor")
@@ -447,9 +438,7 @@ if (assist_invincible == true)
 	audio_stop_sound(music_invincible);
 	if (key_jump_hold)
 	{
-		if (asset_get_type("obj_wall") == asset_object)
-		and (!place_meeting(x, y + 1, obj_wall))
-		and (asset_get_type("obj_semisolid_platform") == asset_object)
+		if (!place_meeting(x, y + 1, obj_wall))
 		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 		and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -500,14 +489,10 @@ if (can_move == true)
 	scr_player_move_pause();
 	
 	#region /* Save to variable when on ground */
-	if (asset_get_type("obj_wall") == asset_object)
-	and (place_meeting(x, y + 1, obj_wall) /* If there is wall underneath */)
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
-	or (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
+	if (place_meeting(x, y + 1, obj_wall) /* If there is wall underneath */)
+	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
+	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
+	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
 	{
 		on_ground = true;
 	}
@@ -551,8 +536,7 @@ if (on_ground == true)
 {
 	if (speed > 0)
 	{
-		if (asset_get_type("obj_ice_block") == asset_object)
-		and (place_meeting(x, y + 1, obj_ice_block))
+		if (place_meeting(x, y + 1, obj_ice_block))
 		{
 			if (key_left_hold)
 			or (key_right_hold)
@@ -613,9 +597,7 @@ if (vspeed > 0)
 
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
-if (asset_get_type("obj_wall") == asset_object)
-and (!place_meeting(x, y + 1, obj_wall))
-and (asset_get_type("obj_semisolid_platform") == asset_object)
+if (!place_meeting(x, y + 1, obj_wall))
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -779,9 +761,7 @@ if (ground_pound == true)
 }
 else
 {
-	if (asset_get_type("obj_wall") == asset_object)
-	and (!place_meeting(x, y + 1, obj_wall))
-	and (asset_get_type("obj_semisolid_platform") == asset_object)
+	if (!place_meeting(x, y + 1, obj_wall))
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -874,20 +854,13 @@ if (in_water != old_in_water)
 	
 	old_in_water = in_water;
 	
-	if (asset_get_type("obj_water") == asset_object)
-	and (asset_get_type("obj_water_splash") == asset_object)
+	instance_create_depth(x, y, 0, obj_water_splash);
+	repeat(10)
 	{
-		instance_create_depth(x, y, 0, obj_water_splash);
-		if (asset_get_type("obj_water_splash_particle") == asset_object)
+		with(instance_create_depth(x, bbox_top, 0, obj_water_splash_particle))
 		{
-			repeat(10)
-			{
-				with(instance_create_depth(x, bbox_top, 0, obj_water_splash_particle))
-				{
-					direction = random_range(0, 180);
-					speed = random_range(2, 10);
-				}
-			}
+			direction = random_range(0, 180);
+			speed = random_range(2, 10);
 		}
 	}
 }
@@ -927,8 +900,7 @@ else
 #endregion /* Speedup to Dashspeed END */
 
 #region /* Interaction with other players */
-if (asset_get_type("obj_player") == asset_object)
-and (in_water == false)
+if (in_water == false)
 {
 			
 	#region /* Jump on other players heads */
@@ -1056,8 +1028,7 @@ if (burnt == 2)
 scr_player_move_lose();
 
 #region /* If you touch spikes, take damage */
-if (asset_get_type("obj_spikes") == asset_object)
-and (instance_exists(obj_spikes))
+if (instance_exists(obj_spikes))
 {
 	if (place_meeting(x - 1, y, obj_spikes))
 	or (place_meeting(x + 1, y, obj_spikes))
@@ -1171,8 +1142,7 @@ if (goal == false)
 	{
 		die = true;
 	}
-	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
+	if (instance_exists(obj_camera))
 	and (obj_camera.hurry_up_message_timer == 1)
 	and (global.enable_time_countdown == true)
 	{
@@ -1194,8 +1164,7 @@ else
 {
 	if (global.time_countdown_bonus > 0)
 	{
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -1224,12 +1193,9 @@ else
 			audio_stop_sound(snd_beep);
 		}
 	}
-	if (asset_get_type("obj_enemy") == asset_object)
+	with(obj_enemy)
 	{
-		with(obj_enemy)
-		{
-			instance_destroy();
-		}
+		instance_destroy();
 	}
 }
 #endregion /* Time END */
@@ -1287,7 +1253,6 @@ and (!key_left_hold)
 and (climb == false)
 and (key_right_hold)
 and (on_ground == true)
-and (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x + 1, y, obj_wall))
 and (stick_to_wall == false)
 {
@@ -1297,13 +1262,11 @@ and (stick_to_wall == false)
 
 #endregion /* A bump sound effect if a player walks into a wall to let them know that they they hit a wall END */
 
-if (asset_get_type("obj_vine") == asset_object)
-and (!place_meeting(x, y, obj_vine))
+if (!place_meeting(x, y, obj_vine))
 {
 	climb = false;
 }
-if (asset_get_type("obj_horizontal_rope") == asset_object)
-and (!place_meeting(x, y, obj_horizontal_rope))
+if (!place_meeting(x, y, obj_horizontal_rope))
 {
 	horizontal_rope_climb = false;
 }
@@ -1314,16 +1277,13 @@ if (can_climb_horizontal_rope_cooldown > 0)
 	can_climb_horizontal_rope_cooldown -= 1;
 }
 
-if (asset_get_type("obj_horizontal_rope") == asset_object)
-and (place_meeting(x, y, obj_horizontal_rope))
+if (place_meeting(x, y, obj_horizontal_rope))
 
 and (!instance_position(instance_nearest(x, y, obj_horizontal_rope).x, instance_nearest(x, y, obj_horizontal_rope).y + 64, obj_wall)) /*If there is no wall underneath the horizontal rope, then it's safe to grab onto the horizontal rope*/
 and (!instance_position(instance_nearest(x, y, obj_horizontal_rope).x, instance_nearest(x, y, obj_horizontal_rope).y + 32, obj_wall))
 and (!instance_position(instance_nearest(x, y, obj_horizontal_rope).x, instance_nearest(x, y, obj_horizontal_rope).y + 16, obj_wall))
 
-and (asset_get_type("obj_wall") == asset_object)
 and (!place_meeting(x, y + 1, obj_wall))
-and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -1412,23 +1372,17 @@ and (hold_item_in_hands == "")
 			if (image_index <= 5)
 			and (image_speed > 0.3)
 			{
-				if (asset_get_type("obj_block_break") == asset_object)
-				{
-					instance_create_depth(x, y, 0, obj_block_break);
-					instance_create_depth(x, y + 32, 0, obj_block_break);
-					instance_create_depth(x, y + 64, 0, obj_block_break);
-				}
+				instance_create_depth(x, y, 0, obj_block_break);
+				instance_create_depth(x, y + 32, 0, obj_block_break);
+				instance_create_depth(x, y + 64, 0, obj_block_break);
 			}
 			else
 			if (image_index >= 5)
 			and (image_speed > 0.3)
 			{
-				if (asset_get_type("obj_block_break") == asset_object)
-				{
-					instance_create_depth(x, y, 0, obj_block_break);
-					instance_create_depth(x, y - 32, 0, obj_block_break);
-					instance_create_depth(x, y - 64, 0, obj_block_break);
-				}
+				instance_create_depth(x, y, 0, obj_block_break);
+				instance_create_depth(x, y - 32, 0, obj_block_break);
+				instance_create_depth(x, y - 64, 0, obj_block_break);
 			}
 			if (image_speed < 1)
 			{
@@ -1758,8 +1712,7 @@ and (hold_item_in_hands == "")
 else
 
 #region /* Climb Vine / Ladder */
-if (asset_get_type("obj_vine") == asset_object)
-and (place_meeting(x, y, obj_vine))
+if (place_meeting(x, y, obj_vine))
 {
 	if (key_up)
 	and (vspeed >= 0)
@@ -2449,9 +2402,7 @@ and (roll == true)
 	{
 		mask_index = spr_player_stand;
 	}
-	if (asset_get_type("obj_wall") == asset_object)
-	and (!place_meeting(x, y + 1, obj_wall))
-	and (asset_get_type("obj_semisolid_platform") == asset_object)
+	if (!place_meeting(x, y + 1, obj_wall))
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -2570,9 +2521,7 @@ if (crouch == true)
 	}
 
 	else
-	if (asset_get_type("obj_wall") == asset_object)
-	and (!place_meeting(x, y + 1, obj_wall))
-	and (asset_get_type("obj_semisolid_platform") == asset_object)
+	if (!place_meeting(x, y + 1, obj_wall))
 	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -2717,8 +2666,7 @@ and (vspeed == 0)
 	or (hspeed > 0)
 	and (key_left_hold)
 	{
-		if (asset_get_type("obj_ice_block") == asset_object)
-		and (place_meeting(x, y + 1, obj_ice_block))
+		if (place_meeting(x, y + 1, obj_ice_block))
 		{
 			if (!audio_is_playing(snd_skidding_ice))
 			{
@@ -2732,8 +2680,7 @@ and (vspeed == 0)
 				scr_audio_play(snd_skidding, volume_source.sound);
 			}
 		}
-		if (asset_get_type("obj_ice_block") == asset_object)
-		and (place_meeting(x, y + 1, obj_ice_block))
+		if (place_meeting(x, y + 1, obj_ice_block))
 		{
 			if (hold_item_in_hands != "")
 			{
@@ -2891,8 +2838,7 @@ and (vspeed == 0)
 			if (sprite_run > noone){sprite_index = sprite_run;} /* If no walk sprite, use run sprite */ else
 			if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
 		}
-		if (asset_get_type("obj_ice_block") == asset_object)
-		and (place_meeting(x, y + 1, obj_ice_block))
+		if (place_meeting(x, y + 1, obj_ice_block))
 		{
 			image_speed = 0.5;
 		}
@@ -2960,8 +2906,7 @@ and (vspeed == 0)
 	{
 		look_up_start_animation = true;
 		against_wall_animation = 0;
-		if (asset_get_type("obj_bump_in_ground") == asset_object)
-		and (place_meeting(x, y + 1, obj_bump_in_ground))
+		if (place_meeting(x, y + 1, obj_bump_in_ground))
 		and (sprite_standing_on_something > noone)
 		{
 			sprite_index = sprite_standing_on_something;
@@ -2977,8 +2922,7 @@ and (vspeed == 0)
 			image_speed = 0.3;
 		}
 		else
-		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		and (global.rain == true)
 		and (sprite_stand_cold > noone)
 		{
@@ -3090,9 +3034,7 @@ and (vspeed == 0)
 else
 
 #region /* Jumping Sprites */
-if (asset_get_type("obj_wall") == asset_object)
-and (!place_meeting(x, y + 1, obj_wall))
-and (asset_get_type("obj_semisolid_platform") == asset_object)
+if (!place_meeting(x, y + 1, obj_wall))
 and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -3378,8 +3320,7 @@ and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 }
 
 #region/* Stop skidding ice sound */
-if (asset_get_type("obj_ice_block") == asset_object)
-and (asset_get_type("snd_skidding_ice") == asset_sound)
+if (asset_get_type("snd_skidding_ice") == asset_sound)
 {
 	if (crouch == false)
 	{
@@ -3468,8 +3409,7 @@ if (on_ground == true)
 				#region /* Left Footstep Sounds */
 				
 				#region /* Dirt Footstep Left */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 1)
 				{
 					if (!audio_is_playing(snd_footstep_dirt_left))
@@ -3482,8 +3422,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Glass Footstep Left */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 2)
 				{
 					if (!audio_is_playing(snd_footstep_glass_left))
@@ -3496,8 +3435,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Grass Footstep Left */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 3)
 				{
 					if (!audio_is_playing(snd_footstep_grass_left))
@@ -3510,8 +3448,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Gravel Footstep Left */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 4)
 				{
 					if (!audio_is_playing(snd_footstep_gravel_left))
@@ -3524,8 +3461,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Metal Footstep Left */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 5)
 				{
 					if (!audio_is_playing(snd_footstep_metal_left))
@@ -3538,8 +3474,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Stone Footstep Left */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 6)
 				{
 					if (!audio_is_playing(snd_footstep_stone_left))
@@ -3552,8 +3487,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Wood Footstep Left */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 7)
 				{
 					if (!audio_is_playing(snd_footstep_wood_left))
@@ -3585,8 +3519,7 @@ if (on_ground == true)
 				#region /* Right Footstep Sounds */
 				
 				#region /* Dirt Footstep Right */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 1)
 				{
 					if (!audio_is_playing(snd_footstep_dirt_right))
@@ -3599,8 +3532,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Glass Footstep Right */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 2)
 				{
 					if (!audio_is_playing(snd_footstep_glass_right))
@@ -3613,8 +3545,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Grass Footstep Right */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 3)
 				{
 					if (!audio_is_playing(snd_footstep_grass_right))
@@ -3627,8 +3558,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Gravel Footstep Right */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 4)
 				{
 					if (!audio_is_playing(snd_footstep_gravel_right))
@@ -3641,8 +3571,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Metal Footstep Right */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 5)
 				{
 					if (!audio_is_playing(snd_footstep_metal_right))
@@ -3655,8 +3584,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Stone Footstep Right */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 6)
 				{
 					if (!audio_is_playing(snd_footstep_stone_right))
@@ -3669,8 +3597,7 @@ if (on_ground == true)
 				else
 				
 				#region /* Wood Footstep Right */
-				if (asset_get_type("obj_ground") == asset_object)
-				and (place_meeting(x, y + 1, obj_ground))
+				if (place_meeting(x, y + 1, obj_ground))
 				and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 7)
 				{
 					if (!audio_is_playing(snd_footstep_wood_right))
@@ -3753,8 +3680,7 @@ else
 #endregion /* Running Sparks Effect END */
 
 #region /* Speedlines Effect */
-if (asset_get_type("obj_speedline") == asset_object)
-and (can_create_speed_lines == true)
+if (can_create_speed_lines == true)
 {
 	if (invincible_timer >= true)
 	and (assist_invincible == false)

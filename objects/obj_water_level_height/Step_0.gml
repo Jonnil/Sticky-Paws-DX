@@ -1,8 +1,7 @@
 x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5;
 
 #region /* Drag Object */
-if (asset_get_type("obj_leveleditor") == asset_object)
-and (instance_exists(obj_leveleditor))
+if (instance_exists(obj_leveleditor))
 and (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))
@@ -66,10 +65,7 @@ if (y > room_height)
 if (global.play_edited_level == true)
 or (global.actually_play_edited_level == true)
 {
-	if (asset_get_type("obj_water_level") == asset_object)
-	{
-		instance_create_depth(x, y, 0, obj_water_level);
-	}
+	instance_create_depth(x, y, 0, obj_water_level);
 	instance_destroy();
 }
 

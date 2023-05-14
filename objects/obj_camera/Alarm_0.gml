@@ -5,8 +5,7 @@ if (global.create_level_from_template == true)
 	global.create_level_from_template = 2;
 }
 
-if (asset_get_type("obj_player_map") == asset_object)
-and (instance_exists(obj_player_map))
+if (instance_exists(obj_player_map))
 {
 	x = obj_player_map.x;
 	y = obj_player_map.y;

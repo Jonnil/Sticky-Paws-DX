@@ -493,6 +493,7 @@ if (global.actually_play_edited_level == false)
 	room_speed = global.max_fps; /* Set correct fps */
 	x = mouse_x;
 	y = mouse_y;
+	place_object_delay_timer = 0; /* Delay for when you can place objects, when using a touch screen to place objects, the cursor doesn't have enough time to update where new position of you touching the screen is, so you accidentally place objects where cursor was last positioned */
 	show_level_editor_corner_menu = true;
 	view_hview_lerp = 0;
 	view_wview_lerp = 0;

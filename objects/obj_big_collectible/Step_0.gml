@@ -1,7 +1,6 @@
 if (bounce_up == false)
 {
-	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
+	if (instance_exists(obj_camera))
 	{
 		image_index = obj_camera.image_index;
 	}
@@ -22,10 +21,8 @@ and (instance_exists(obj_player))
 	}
 }
 if (follow_player == true)
-and (asset_get_type("obj_wall") == asset_object)
 and (place_meeting(x, y + 16, obj_wall))
 or (follow_player == true)
-and (asset_get_type("obj_semisolid_platform") == asset_object)
 and (place_meeting(x, y + 16, obj_semisolid_platform))
 or (follow_player == true)
 and (instance_exists(obj_player))
@@ -36,8 +33,7 @@ and (instance_nearest(x, y, obj_player).climb == true)
 or (follow_player == true)
 and (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
-or (asset_get_type("obj_enemy_bowlingball") == asset_object)
-and (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
+or (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
 and (instance_nearest(x, y, obj_enemy_bowlingball).flat == true)
 and (instance_nearest(x, y, obj_enemy_bowlingball).die == false)
 and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
@@ -45,39 +41,33 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 	effect_create_above(ef_ring, x, y, 2, c_white);
 	
 	#region /* 3 Basic Collectibles */
-	if (asset_get_type("obj_basic_collectible") == asset_object)
+	with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 	{
-		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-		{
-			image_speed = 1;
-			motion_set(90, 10);
-			bounce_up = true;
-		}
-		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-		{
-			image_speed = 1;
-			motion_set(90, 10);
-			bounce_up = true;
-			delay_time = 10;
-		}
-		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-		{
-			image_speed = 1;
-			motion_set(90, 10);
-			bounce_up = true;
-			delay_time = 20;
-		}
+		image_speed = 1;
+		motion_set(90, 10);
+		bounce_up = true;
+	}
+	with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+	{
+		image_speed = 1;
+		motion_set(90, 10);
+		bounce_up = true;
+		delay_time = 10;
+	}
+	with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+	{
+		image_speed = 1;
+		motion_set(90, 10);
+		bounce_up = true;
+		delay_time = 20;
 	}
 	#endregion /* 3 Basic Collectibles END */
 	
 	#region /* 1000 Score */
 	score += 1000;
-	if (asset_get_type("obj_score_up") == asset_object)
+	with(instance_create_depth(x, y, 0, obj_score_up))
 	{
-		with(instance_create_depth(x, y, 0, obj_score_up))
-		{
-			score_up = 1000;
-		}
+		score_up = 1000;
 	}
 	#endregion /* 1000 Score END */
 	
@@ -320,39 +310,33 @@ if (bounce_up == true)
 		{
 			
 			#region /* 3 Basic Collectibles */
-			if (asset_get_type("obj_basic_collectible") == asset_object)
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-					delay_time = 10;
-				}
-				with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-				{
-					image_speed = 1;
-					motion_set(90, 10);
-					bounce_up = true;
-					delay_time = 20;
-				}
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 10;
+			}
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+			{
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
+				delay_time = 20;
 			}
 			#endregion /* 3 Basic Collectibles END */
 			
 			#region /* 1000 Score */
 			score += 1000;
-			if (asset_get_type("obj_score_up") == asset_object)
+			with(instance_create_depth(x, y, 0, obj_score_up))
 			{
-				with(instance_create_depth(x, y, 0, obj_score_up))
-				{
-					score_up = 1000;
-				}
+				score_up = 1000;
 			}
 			#endregion /* 1000 Score END */
 			

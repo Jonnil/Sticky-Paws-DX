@@ -20,9 +20,7 @@ function scr_player_move_ground_pound()
 		and (key_down)
 		and (key_jump)
 		{
-			if (asset_get_type("obj_wall") == asset_object)
-			and (!place_meeting(x, y + 8, obj_wall))
-			and (asset_get_type("obj_semisolid_platform") == asset_object)
+			if (!place_meeting(x, y + 8, obj_wall))
 			and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 			and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -112,12 +110,9 @@ function scr_player_move_ground_pound()
 				}
 				#endregion /* Continuesly break blocks underneath you, if they are breakable END */
 				
-				if (asset_get_type("obj_camera") == asset_object)
+				with(instance_nearest(x, y, obj_camera))
 				{
-					with(instance_nearest(x, y, obj_camera))
-					{
-						shake = 10;
-					}
+					shake = 10;
 				}
 				scr_audio_play(snd_hipattack, volume_source.sound);
 			}

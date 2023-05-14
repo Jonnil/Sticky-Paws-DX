@@ -18,10 +18,8 @@ if (keyboard_check_pressed(vk_rcontrol))
 scr_make_background_visible();
 
 #region /* Timer Countup */
-if (asset_get_type("obj_goal") == asset_object)
-and (instance_exists(obj_goal))
+if (instance_exists(obj_goal))
 and (obj_goal.goal == false)
-and (asset_get_type("obj_player") == asset_object)
 and (instance_exists(obj_player))
 and (obj_player.allow_timeattack == true)
 and (global.pause == false)
@@ -45,15 +43,13 @@ and (global.pause == false)
 	}
 }
 else
-if (asset_get_type("obj_goal") == asset_object)
-and (global.pause == false)
+if (global.pause == false)
 {
 	if (instance_exists(obj_goal))
 	and (obj_goal.goal == false)
 	or (!instance_exists(obj_goal))
 	{
-		if (asset_get_type("obj_player") == asset_object)
-		and (instance_exists(obj_player))
+		if (instance_exists(obj_player))
 		and (obj_player.allow_timeattack == true)
 		{
 			if (instance_exists(obj_player))
@@ -78,10 +74,8 @@ and (global.pause == false)
 #endregion /* Timer Countup */
 
 #region /* Time Countdown */
-if (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
+if (instance_exists(obj_player))
 and (global.pause == false)
-and (asset_get_type("obj_goal") == asset_object)
 {
 	if (instance_exists(obj_goal))
 	and (obj_goal.goal == false)
@@ -110,8 +104,7 @@ if (global.spikes_emerge_time >= room_speed * 4)
 }
 
 #region /* Stop the screen from scrolling left if scrolling left isn't allowed */
-if (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
+if (instance_exists(obj_player))
 and (obj_player.stop_screen_from_scrolling_left == true)
 {
 	if (x > scrolling_left)
@@ -398,16 +391,13 @@ and (global.goal_active == false)
 			{
 				global.player1_can_play = true;
 			}
-			if (asset_get_type("obj_player") == asset_object)
+			player1 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+			with(player1)
 			{
-				player1 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
-				with(player1)
-				{
-					custom_character = global.character_for_player_1;
-					selected_voice_pack = global.voicepack_for_player_1;
-					selected_skin = global.skin_for_player_1;
-					player = 1;
-				}
+				custom_character = global.character_for_player_1;
+				selected_voice_pack = global.voicepack_for_player_1;
+				selected_skin = global.skin_for_player_1;
+				player = 1;
 			}
 		}
 		else
@@ -428,16 +418,13 @@ and (global.goal_active == false)
 			{
 				global.player2_can_play = true;
 			}
-			if (asset_get_type("obj_player") == asset_object)
+			player2 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
+			with(player2)
 			{
-				player2 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
-				with(player2)
-				{
-					custom_character = global.character_for_player_2;
-					selected_voice_pack = global.voicepack_for_player_2;
-					selected_skin = global.skin_for_player_2;
-					player = 2;
-				}
+				custom_character = global.character_for_player_2;
+				selected_voice_pack = global.voicepack_for_player_2;
+				selected_skin = global.skin_for_player_2;
+				player = 2;
 			}
 		}
 		else
@@ -458,16 +445,13 @@ and (global.goal_active == false)
 			{
 				global.player3_can_play = true;
 			}
-			if (asset_get_type("obj_player") == asset_object)
+			player3 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
+			with(player3)
 			{
-				player3 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
-				with(player3)
-				{
-					custom_character = global.character_for_player_3;
-					selected_voice_pack = global.voicepack_for_player_3;
-					selected_skin = global.skin_for_player_3;
-					player = 3;
-				}
+				custom_character = global.character_for_player_3;
+				selected_voice_pack = global.voicepack_for_player_3;
+				selected_skin = global.skin_for_player_3;
+				player = 3;
 			}
 		}
 		else
@@ -488,16 +472,13 @@ and (global.goal_active == false)
 			{
 				global.player4_can_play = true;
 			}
-			if (asset_get_type("obj_player") == asset_object)
+			player4 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
+			with(player4)
 			{
-				player4 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
-				with(player4)
-				{
-					custom_character = global.character_for_player_4;
-					selected_voice_pack = global.voicepack_for_player_4;
-					selected_skin = global.skin_for_player_4;
-					player = 4;
-				}
+				custom_character = global.character_for_player_4;
+				selected_voice_pack = global.voicepack_for_player_4;
+				selected_skin = global.skin_for_player_4;
+				player = 4;
 			}
 		}
 		else
@@ -522,9 +503,7 @@ if (save_level_as_png == false)
 	y = lerp(y, yy, 0.15);
 	
 	#region /* Boss Battle Camera */
-	if (asset_get_type("obj_player") == asset_object)
-	and (asset_get_type("obj_boss") == asset_object)
-	and (instance_exists(obj_player))
+	if (instance_exists(obj_player))
 	and (instance_exists(obj_boss))
 	and (distance_to_object(obj_boss) < 500)
 	{
@@ -577,9 +556,7 @@ if (save_level_as_png == false)
 	else
 	
 	#region /* MULTIPLAYER CAMERA */
-	if (asset_get_type("obj_player") == asset_object)
-	and (asset_get_type("obj_camera") == asset_object)
-	and (instance_number(obj_player) >= 1)
+	if (instance_number(obj_player) >= 1)
 	{
 		
 		#region /* Camera should follow multiple players */
@@ -745,12 +722,9 @@ if (save_level_as_png == false)
 			or (player1.climb == true)
 			or (player1.horizontal_rope_climb == true)
 			{
-				if (asset_get_type("obj_camera") == asset_object)
+				if (player1.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
-					if (player1.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
-					{
-						yy = player1.y;
-					}
+					yy = player1.y;
 				}
 			}
 			#endregion /* Follow Player in y position when doing specific things END */
@@ -801,12 +775,9 @@ if (save_level_as_png == false)
 			or (player2.climb == true)
 			or (player2.horizontal_rope_climb == true)
 			{
-				if (asset_get_type("obj_camera") == asset_object)
+				if (player2.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
-					if (player2.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
-					{
-						yy = player2.y;
-					}
+					yy = player2.y;
 				}
 			}
 			#endregion /* Follow Player in y position when doing specific things END */
@@ -857,12 +828,9 @@ if (save_level_as_png == false)
 			or (player3.climb == true)
 			or (player3.horizontal_rope_climb == true)
 			{
-				if (asset_get_type("obj_camera") == asset_object)
+				if (player3.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
-					if (player3.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
-					{
-						yy = player3.y;
-					}
+					yy = player3.y;
 				}
 			}
 			#endregion /* Follow Player in y position when doing specific things END */
@@ -913,12 +881,9 @@ if (save_level_as_png == false)
 			or (player4.climb == true)
 			or (player4.horizontal_rope_climb == true)
 			{
-				if (asset_get_type("obj_camera") == asset_object)
+				if (player4.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
-					if (player4.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
-					{
-						yy = player4.y;
-					}
+					yy = player4.y;
 				}
 			}
 			#endregion /* Follow Player in y position when doing specific things END */
@@ -977,8 +942,7 @@ if (save_level_as_png == false)
 	{
 		
 		#region /* Zoom In */
-		if (asset_get_type("obj_player") == asset_object) /* Zoom In Player Goal */
-		and (instance_exists(obj_player))
+		if (instance_exists(obj_player))
 		and (instance_nearest(room_width, y, obj_player).goal == true)
 		and (global.time_countdown_bonus <= 0)
 		
@@ -1040,7 +1004,6 @@ key_player3_sprint_toggle_pressed = scr_key_initialize(key_player3_sprint_toggle
 key_player4_sprint_toggle_pressed = scr_key_initialize(key_player4_sprint_toggle_pressed, 1, 4, action.sprint_toggle);
 
 if (key_player1_sprint_toggle_pressed)
-and (asset_get_type("obj_pause") == asset_object)
 and (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 100;
@@ -1057,7 +1020,6 @@ and (!instance_exists(obj_pause))
 	}
 }
 if (key_player2_sprint_toggle_pressed)
-and (asset_get_type("obj_pause") == asset_object)
 and (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
@@ -1074,7 +1036,6 @@ and (!instance_exists(obj_pause))
 	}
 }
 if (key_player3_sprint_toggle_pressed)
-and (asset_get_type("obj_pause") == asset_object)
 and (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
@@ -1091,7 +1052,6 @@ and (!instance_exists(obj_pause))
 	}
 }
 if (key_player4_sprint_toggle_pressed)
-and (asset_get_type("obj_pause") == asset_object)
 and (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
@@ -1198,8 +1158,7 @@ if (global.hud_hide_time > 0)
 	*/
 	
 	#region /* Show Lives y position */
-	if (asset_get_type("room_world_map") == asset_room)
-	and (room == room_world_map)
+	if (room == room_world_map)
 	{
 		hud_show_lives_y = 32;
 	}
@@ -1326,7 +1285,6 @@ if (global.hud_hide_time > 0)
 #region /* Show Controls */
 if (os_type != os_ios)
 and (os_type != os_android)
-and (asset_get_type("obj_pause") == asset_object)
 and (!instance_exists(obj_pause))
 {
 	
@@ -1470,10 +1428,8 @@ else
 #endregion /* Show what input is used END */
 
 #region /* Letterboxing during cutscenes (when the player object is absent) */
-if (asset_get_type("obj_player") == asset_object)
-and (!instance_exists(obj_player))
-or (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
+if (!instance_exists(obj_player))
+or (instance_exists(obj_player))
 and (obj_player.can_move == false)
 {
 	letterbox_top_y = lerp(letterbox_top_y, + 64, 0.1);

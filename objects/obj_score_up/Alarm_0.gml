@@ -1,7 +1,6 @@
 if (score_up == "1-up")
 {
-	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
+	if (instance_exists(obj_camera))
 	{
 		with(obj_camera)
 		{
@@ -20,8 +19,7 @@ if (score_up == "1-up")
 else
 if (score_up == "2-up")
 {
-	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
+	if (instance_exists(obj_camera))
 	{
 		with(obj_camera)
 		{
@@ -48,8 +46,7 @@ if (score_up == "2-up")
 else
 if (score_up == "3-up")
 {
-	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
+	if (instance_exists(obj_camera))
 	{
 		with(obj_camera)
 		{

@@ -27,33 +27,29 @@ if (brick_particle == true)
 	}
 }
 if (brick_particle == false)
-	and (asset_get_type("obj_player") == asset_object)
+{
+	if (position_meeting(bbox_left + 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))
+	or (position_meeting(bbox_right - 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))
+	or (place_meeting(x, y - 16, instance_nearest(x, y, obj_player)))
+	and (instance_nearest(x, y, obj_player).ground_pound == true)
+	or (place_meeting(bbox_left - 4, y, instance_nearest(x, y, obj_player)))
+	and (instance_nearest(x, y, obj_player).dive == true)
+	or (place_meeting(bbox_right + 4, y, instance_nearest(x, y, obj_player)))
+	and (instance_nearest(x, y, obj_player).dive == true)
 	{
-		if (position_meeting(bbox_left + 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))
-			or (position_meeting(bbox_right - 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))
-		or (place_meeting(x, y - 16, instance_nearest(x, y, obj_player)))
-		and (instance_nearest(x, y, obj_player).ground_pound == true)
-		or (place_meeting(bbox_left - 4, y, instance_nearest(x, y, obj_player)))
-		and (instance_nearest(x, y, obj_player).dive == true)
-		or (place_meeting(bbox_right + 4, y, instance_nearest(x, y, obj_player)))
-		and (instance_nearest(x, y, obj_player).dive == true)
+		with(instance_nearest(x, y, obj_player))
 		{
-			with(instance_nearest(x, y, obj_player))
+			if (key_down)
 			{
-				if (key_down)
-				{
-					ground_pound = true;
-				}
-				else
-				{
-					ground_pound = false;
-				}
-				dive = false;
-				vspeed = +4;
+				ground_pound = true;
 			}
-			if (asset_get_type("obj_block_break") == asset_object)
+			else
 			{
-				instance_create_depth(x, y - 32, 0, obj_block_break);
+				ground_pound = false;
 			}
+			dive = false;
+			vspeed = +4;
 		}
+		instance_create_depth(x, y - 32, 0, obj_block_break);
 	}
+}

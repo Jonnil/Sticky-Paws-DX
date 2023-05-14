@@ -339,10 +339,6 @@ function scr_save_custom_level_json()
 /* THIS IS SAVING .TXT FILE */
 function scr_save_custom_level_txt()
 {
-	with(obj_leveleditor_placed_object)
-	{
-		scr_set_length_variable();
-	}
 	
 	#region /* Save Custom Level */
 	if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
@@ -362,6 +358,7 @@ function scr_save_custom_level_txt()
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
 		{
+			scr_set_length_variable();
 			if (repeat_length >= 0) /* Only save object if length variable is 0 or above */
 			{
 				str += string(x) + "X" + string(y) + "Y" + string(object) + "O";

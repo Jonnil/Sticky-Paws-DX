@@ -7,9 +7,7 @@ if (global.play_edited_level == true)
 }
 
 #region /* Drag Object */
-if (asset_get_type("obj_leveleditor") == asset_object)
-and (instance_exists(obj_leveleditor))
-and (variable_instance_exists(obj_leveleditor, "pause"))
+if (instance_exists(obj_leveleditor))
 and (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))
@@ -93,8 +91,7 @@ or (global.actually_play_edited_level == true)
 	{
 		view_xview = x - view_wview * 0.5;
 		view_yview = y - view_hview * 0.5;
-		if (asset_get_type("obj_camera") == asset_object)
-		and (!instance_exists(obj_camera))
+		if (!instance_exists(obj_camera))
 		{
 			
 			#region /* Load Custom Level Checkpoint */
@@ -187,9 +184,7 @@ or (global.actually_play_edited_level == true)
 	}
 	
 	#region /* Destroy the level player 1 start if player 1 has spawned in the level */
-	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
-	//and (obj_camera.player1 >= 0)
+	if (instance_exists(obj_camera))
 	{
 		instance_destroy();
 	}

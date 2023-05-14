@@ -143,12 +143,12 @@ function scr_debug_screen()
 		draw_set_valign(fa_middle);
 		if (global.controls_used_for_menu_navigation == "controller")
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press both sticks to toggle debug screen"), global.default_text_size * 0.75, noone, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press both sticks to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press F3 to toggle debug screen"), global.default_text_size * 0.75, noone, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Press F1 to use gc_collect()"), global.default_text_size * 0.75, noone, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press F3 to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Press F1 to use gc_collect()"), global.default_text_size * 0.75, c_black, c_white, 1);
 		}
 	}
 	
@@ -157,7 +157,7 @@ function scr_debug_screen()
 	{
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + string(scr_get_build_date()), global.default_text_size, noone, c_white, 1);
+		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + string(scr_get_build_date()), global.default_text_size, c_black, c_white, 1);
 	}
 	#endregion /* Version END */
 	
@@ -231,7 +231,7 @@ function scr_debug_screen()
 		}
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(32, instance_count_y, l10n_text("Instance Count") + ": " + string(instance_count), global.default_text_size, noone, c_white, 1);
+		scr_draw_text_outlined(32, instance_count_y, l10n_text("Instance Count") + ": " + string(instance_count), global.default_text_size, c_black, c_white, 1);
 	}
 	#endregion /* Instance Count END */
 	
@@ -300,23 +300,27 @@ function scr_debug_screen()
 		
 		if (gamepad_get_description(0) != "")
 		{
-			scr_draw_text_outlined(32, 320, "gamepad_get_description(0): " + string(gamepad_get_description(0)));
+			scr_draw_text_outlined(32, 320, "gamepad(0): " + string(gamepad_get_description(0)));
 		}
 		if (gamepad_get_description(1) != "")
 		{
-			scr_draw_text_outlined(32, 340, "gamepad_get_description(1): " + string(gamepad_get_description(1)));
+			scr_draw_text_outlined(32, 340, "gamepad(1): " + string(gamepad_get_description(1)));
 		}
 		if (gamepad_get_description(2) != "")
 		{
-			scr_draw_text_outlined(32, 360, "gamepad_get_description(2): " + string(gamepad_get_description(2)));
+			scr_draw_text_outlined(32, 360, "gamepad(2): " + string(gamepad_get_description(2)));
 		}
 		if (gamepad_get_description(3) != "")
 		{
-			scr_draw_text_outlined(32, 380, "gamepad_get_description(3): " + string(gamepad_get_description(3)));
+			scr_draw_text_outlined(32, 380, "gamepad(3): " + string(gamepad_get_description(3)));
+		}
+		if (gamepad_get_description(4) != "")
+		{
+			scr_draw_text_outlined(32, 400, "gamepad(4): " + string(gamepad_get_description(4)));
 		}
 		
 		
-		scr_draw_text_outlined(32, 400, "global.character_index[0]: " + string(global.character_index[0]));
+		//scr_draw_text_outlined(32, 400, "global.character_index[0]: " + string(global.character_index[0]));
 		//scr_draw_text_outlined(32, 420, "menu_joystick1_delay: " + string(menu_joystick1_delay));
 	}
 	
@@ -332,12 +336,12 @@ function scr_debug_screen()
 		draw_set_alpha(1);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(8, 64, l10n_text("This bar is split into sections, with each section being 1/60th of a second. As you can see, the bar is made up of various colours:"), global.default_text_size, noone, c_white, 1);
+		scr_draw_text_outlined(8, 64, l10n_text("This bar is split into sections, with each section being 1/60th of a second. As you can see, the bar is made up of various colours:"), global.default_text_size, c_black, c_white, 1);
 		scr_draw_text_outlined(8, 64 + (32 * 3), l10n_text("Green - Input / Output processing (ie: keyboard, mouse, gamepad, networking etc...)"), global.default_text_size, noone, c_lime, 1);
 		scr_draw_text_outlined(8, 64 + (32 * 4), l10n_text("Red - The update speed of the step event"), global.default_text_size, noone, c_red, 1);
 		scr_draw_text_outlined(8, 64 + (32 * 5), l10n_text("Yellow - The time required for the draw event"), global.default_text_size, noone, c_yellow, 1);
 		scr_draw_text_outlined(8, 64 + (32 * 6), l10n_text("Orange - Debug update time, which is only normally visible when you use the debug module"), global.default_text_size, noone, c_orange, 1);
-		scr_draw_text_outlined(8, 64 + (32 * 7), l10n_text("White - GPU left over time, which is the time spent waiting for the GPU to finish the rendering of the frame before the next one can start"), global.default_text_size, noone, c_white, 1);
+		scr_draw_text_outlined(8, 64 + (32 * 7), l10n_text("White - GPU left over time, which is the time spent waiting for the GPU to finish the rendering of the frame before the next one can start"), global.default_text_size, c_black, c_white, 1);
 		scr_draw_text_outlined(8, 64 + (32 * 8), l10n_text("Cyan - The text rendering time"), global.default_text_size, noone, c_aqua, 1);
 		scr_draw_text_outlined(8, 64 + (32 * 9), l10n_text("Grey - The time required to clear screen each draw step"), global.default_text_size, noone, c_grey, 1);
 		scr_draw_text_outlined(8, 64 + (32 * 10), l10n_text("Blue - The time required for the Garbage Collector to run"), global.default_text_size, noone, c_blue, 1);

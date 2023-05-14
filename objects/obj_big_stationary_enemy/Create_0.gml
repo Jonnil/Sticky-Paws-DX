@@ -9,6 +9,7 @@ die_volting = false;
 mask = spr_big_stationary_enemy;
 coil_spring = false;
 can_die_from_spikes = true;
+number_of_times_stomped = 0;
 if (asset_get_type("snd_enemyvoice_big_defeated") == asset_sound)
 {
 	enemyvoice_defeated1 = snd_enemyvoice_big_defeated;
