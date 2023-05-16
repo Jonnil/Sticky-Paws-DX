@@ -171,7 +171,10 @@ if (lives <= 0)
 if (iris_xscale <= 0.001)
 and (lives >= 1)
 {
-	draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false); /* Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden */
+	if (global.enable_transitions == true)
+	{
+		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false); /* Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden */
+	}
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	global.loading_spinning_angle -= 10;

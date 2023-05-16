@@ -318,9 +318,7 @@ function scr_debug_screen()
 		{
 			scr_draw_text_outlined(32, 400, "gamepad(4): " + string(gamepad_get_description(4)));
 		}
-		
-		
-		//scr_draw_text_outlined(32, 400, "global.character_index[0]: " + string(global.character_index[0]));
+		scr_draw_text_outlined(32, 420, "current room: " + string(room_get_name(room)));
 		//scr_draw_text_outlined(32, 420, "menu_joystick1_delay: " + string(menu_joystick1_delay));
 	}
 	

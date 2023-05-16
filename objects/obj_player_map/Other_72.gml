@@ -4,7 +4,7 @@ var error = async_load[? "error"];
 
 // Saving 
 if (ident == global.saveid)
-{ 
+{
    buffer_delete(global.savebuff);
    show_debug_message("saved data status " + string(status) + " error " + string(error));
 }

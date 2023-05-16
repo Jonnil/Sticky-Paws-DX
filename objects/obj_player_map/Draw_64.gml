@@ -188,7 +188,10 @@ scr_draw_cursor_mouse();
 #region /* Have a black screen at the first frame so transitions look natural */
 if (black_screen_at_start_delay < 1)
 {
-	draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+	if (global.enable_transitions == true)
+	{
+		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+	}
 	black_screen_at_start_delay += 1;
 }
 #endregion /* Have a black screen at the first frame so transitions look natural END */
@@ -198,7 +201,10 @@ if (iris_yscale <= 0.002)
 or (brand_new_file == true)
 and (can_enter_level_automatically == true)
 {
-	draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+	if (global.enable_transitions == true)
+	{
+		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+	}
 	
 	#region /* Draw loading screen when transitioning to other rooms */
 	draw_set_halign(fa_center);

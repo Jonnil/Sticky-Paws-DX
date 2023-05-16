@@ -5,7 +5,7 @@ var mouse_get_y = device_mouse_y_to_gui(0);
 
 #region /* When changing file, you should restart the room so the right save data can load */
 if (current_file != global.file)
-or (!file_exists(working_directory + "/save_files/file" + string(current_file) + ".ini"))
+//or (!file_exists(working_directory + "/save_files/file" + string(current_file) + ".ini"))
 {
 	current_file = global.file;
 	room_persistent = false; /* Turn OFF Room Persistency */
@@ -65,7 +65,6 @@ scr_audio_play(music_map, volume_source.music); /* Play the map screen music */
 #endregion /* Make sure level music stops playing, and play the map screen music END */
 
 #region /* Keep the game at 60 FPS */
-room_speed = global.max_fps;
 
 #region /* Deactivate instances outside view */
 instance_activate_all();
@@ -833,9 +832,9 @@ else
 #endregion /* Zoom In and Out END */
 
 #region /* Enter Level */
-if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+if (!file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
 and (can_enter_level_automatically == true)
-and (brand_new_file == true)
+//and (brand_new_file == true)
 and (can_move == true)
 and (show_demo_over_message == false)
 and (instance_exists(obj_level)) /* Must check if obj_level exists or not */
@@ -912,7 +911,7 @@ and (speed == 0)
 		with(instance_nearest(x, y, obj_level))
 		{
 			if (checkpoint_x > 0)
-			or(checkpoint_y > 0)
+			or (checkpoint_y > 0)
 			{
 				global.checkpoint_realmillisecond = checkpoint_realmillisecond;
 				global.checkpoint_millisecond = checkpoint_millisecond;

@@ -1,6 +1,8 @@
 #region /* Debug toggles */
-can_enter_level_automatically = false;
+can_enter_level_automatically = true;
 #endregion /* Debug toggles END */
+
+room_speed = global.max_fps;
 
 scr_delete_sprite_properly(global.custom_background1);
 scr_delete_sprite_properly(global.custom_background2);

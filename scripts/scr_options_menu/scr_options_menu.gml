@@ -2684,7 +2684,7 @@ function scr_options_menu()
 			{
 				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.9);
-				draw_rectangle_color(0, 0, get_window_width * 3, get_window_height * 3, c_black, c_black, c_black, c_black, false);
+				draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(0.1);
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);

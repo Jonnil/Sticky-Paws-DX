@@ -454,8 +454,8 @@ and (global.goal_active == true)
 #region /* Letterboxing during cutscenes (when the player object is absent) */
 if (show_letterbox > 0)
 {
-	draw_rectangle_color(0, 0, get_window_width * 3, letterbox_top_y, c_black, c_black, c_black, c_black, false);
-	draw_rectangle_color(0, letterbox_bottom_y, get_window_width * 3, get_window_height * 3, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, 0, get_window_width, letterbox_top_y, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(0, letterbox_bottom_y, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 }
 #endregion /* Letterboxing during cutscenes (when the player object is absent) END */
 
