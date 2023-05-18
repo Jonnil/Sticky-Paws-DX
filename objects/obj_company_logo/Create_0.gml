@@ -98,7 +98,7 @@ ds_list_add(global.all_loaded_main_levels, "intro", "level1", "level2", "level3"
 global.base_url = "sticky-paws.uc.r.appspot.com";
 global.upload_endpoint = "/upload";
 global.download_endpoint = "/download/";
-global.api_key = "626ef06a-5092-4d09-b423-45480b1d4e4d";
+global.api_key = "eMCnsR7k2dq_jGHijae6_3tazPYp!UUL";
 global.http_request_info = noone;
 #endregion /* Server stuff END */
 
@@ -204,7 +204,14 @@ global.keyboard_virtual_timer = 0; /* Delay for when virtual keyboard can show u
 global.every_player_can_navigate_menu = true; /* To make menu navigation easier with multiple different gamepads that can be connected and isn't neccesarely connected as player 1, make it so you can toggle on or off if every player can navigate menus. By default have this true */
 global.selected_level_editing_music = 0;
 global.gui_scale = -1;
-global.gui_scale_modifier = 0;
+if (os_type == os_android || os_type == os_ios)
+{
+	global.gui_scale_modifier = 0;
+}
+else
+{
+	global.gui_scale_modifier = 3;
+}
 global.gui_width = window_get_width();
 global.gui_height = window_get_height();
 global.doing_clear_check = false; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
@@ -580,6 +587,17 @@ enum mouse_button_value
 	mb_side2 = 13219945202315,
 	mwheel_down = 13234,
 	mwheel_up = 132321
+}
+enum joystick_value
+{
+	joyleft_left = 1000,
+	joyleft_right = 1001,
+	joyleft_down = 1002,
+	joyleft_up = 1003,
+	joyright_left = 1004,
+	joyright_right = 1005,
+	joyright_down = 1006,
+	joyright_up = 1007,
 }
 enum volume_source
 {

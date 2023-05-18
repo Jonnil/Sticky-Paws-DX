@@ -261,6 +261,12 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin0"))
 		and (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin1"))
 		and (player_accept_selection >= 0)
+		or (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin0/mask.png"))
+		and (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin1/mask.png"))
+		and (player_accept_selection >= 0)
+		or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin0/mask.png"))
+		and (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin1/mask.png"))
+		and (player_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
@@ -359,6 +365,10 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin" + string(skin_for_player + 1)))
 						or (menu_delay == 0)
 						and (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin" + string(skin_for_player + 1)))
+						or (menu_delay == 0)
+						and (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin" + string(skin_for_player + 1) + "/mask.png"))
+						or (menu_delay == 0)
+						and (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin" + string(skin_for_player + 1) + "/mask.png"))
 						{
 							menu_delay = 3;
 							
@@ -471,6 +481,10 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack1"))
 							or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack0"))
 							and (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack1"))
+							or (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack0/jump.ogg"))
+							and (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack1/jump.ogg"))
+							or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack0/jump.ogg"))
+							and (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack1/jump.ogg"))
 							{
 								if (what_player == 1)
 								{
@@ -580,6 +594,8 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					#region /* Show right key for character skin select */
 					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin" + string(skin_for_player + 1)))
 					or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin" + string(skin_for_player + 1)))
+					or (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin" + string(skin_for_player + 1) + "/jump.ogg"))
+					or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin" + string(skin_for_player + 1) + "/jump.ogg"))
 					{
 						if (gamepad_is_connected(player_gamepad_slot))
 						and (global.controls_used_for_menu_navigation == "controller")
@@ -655,6 +671,12 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 		or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack0"))
 		and (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack1"))
 		and (player_accept_selection >= 0)
+		or (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack0/jump.ogg"))
+		and (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack1/jump.ogg"))
+		and (player_accept_selection >= 0)
+		or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack0/jump.ogg"))
+		and (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack1/jump.ogg"))
+		and (player_accept_selection >= 0)
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
@@ -725,6 +747,10 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 						and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack" + string(voicepack_for_player + 1)))
 						or (menu_delay == 0)
 						and (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack" + string(voicepack_for_player + 1)))
+						or (menu_delay == 0)
+						and (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack" + string(voicepack_for_player + 1) + "/jump.ogg"))
+						or (menu_delay == 0)
+						and (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack" + string(voicepack_for_player + 1) + "/jump.ogg"))
 						{
 							menu_delay = 3;
 							if (what_player == 1)
@@ -772,6 +798,10 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 							and (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin1"))
 							or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin0"))
 							and (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin1"))
+							or (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin0/maks.png"))
+							and (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin1/mask.png"))
+							or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin0/mask.png"))
+							and (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sprites/skin1/mask.png"))
 							{
 								
 								#region /* Go from selecting voicepack to selecting skin */
@@ -912,6 +942,8 @@ function scr_draw_character_portrait_for_player(what_player = 1)
 					#region /* Show right key for character voicepack select */
 					if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack" + string(voicepack_for_player + 1)))
 					or (directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack" + string(voicepack_for_player + 1)))
+					or (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack" + string(voicepack_for_player + 1) + "/jump.ogg"))
+					or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/sound/voicepack" + string(voicepack_for_player + 1) + "/jump.ogg"))
 					{
 						if (gamepad_is_connected(player_gamepad_slot))
 						and (global.controls_used_for_menu_navigation == "controller")

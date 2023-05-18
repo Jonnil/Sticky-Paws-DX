@@ -5,7 +5,6 @@ var mouse_get_y = device_mouse_y_to_gui(0);
 
 #region /* When changing file, you should restart the room so the right save data can load */
 if (current_file != global.file)
-//or (!file_exists(working_directory + "/save_files/file" + string(current_file) + ".ini"))
 {
 	current_file = global.file;
 	room_persistent = false; /* Turn OFF Room Persistency */
@@ -29,14 +28,7 @@ if (global.quit_level == true)
 	
 	global.quit_level = false;
 	room_persistent = false; /* Turn OFF Room Persistency. Whenever you quit the game, you need to turn off room persistent */
-	if (asset_get_type("room_title") == asset_room)
-	{
-		room_goto(room_title);
-	}
-	else
-	{
-		game_restart();
-	}
+	room_goto(room_title);
 }
 #endregion /* Quit Game END */
 
@@ -68,12 +60,7 @@ scr_audio_play(music_map, volume_source.music); /* Play the map screen music */
 
 #region /* Deactivate instances outside view */
 instance_activate_all();
-instance_deactivate_region(
-camera_get_view_x(view_camera[view_current]) - 64,
-camera_get_view_y(view_camera[view_current]) - 64,
-camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64,
-camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 64,
-false, true);
+instance_deactivate_region(camera_get_view_x(view_camera[view_current]) - 64, camera_get_view_y(view_camera[view_current]) - 64, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 64, false, true);
 instance_activate_object(obj_camera_map);
 instance_activate_object(obj_level);
 instance_activate_object(obj_unlock_next_level);
@@ -81,13 +68,6 @@ instance_activate_object(obj_path);
 instance_activate_object(obj_map_path_turn);
 instance_activate_object(obj_map_exit);
 #endregion /* Deactivate instances outside view END */
-
-#region /* Make sure camera map is always present on the map screen. Only run this code after doing the deactivate instances code */
-if (!instance_exists(obj_camera_map))
-{
-	instance_create_depth(x, y, 0, obj_camera_map);
-}
-#endregion /* Make sure camera map is always present on the map screen. Only run this code after doing the deactivate instances code END */
 
 #endregion /* Keep the game at 60 FPS END */
 
@@ -112,10 +92,7 @@ and (global.automatically_pause_when_window_is_unfocused == true)
 	room_persistent = true; /* Turn ON Room Persistency */
 	global.pause_room = room;
 	audio_pause_all();
-	if (asset_get_type("room_pause") == asset_room)
-	{
-		room_goto(room_pause);
-	}
+	room_goto(room_pause);
 }
 else
 if (gamepad_button_check_pressed(global.player2_slot, gp_select))
@@ -126,10 +103,7 @@ or (gamepad_button_check_pressed(global.player2_slot, gp_start))
 	room_persistent = true; /* Turn ON Room Persistency */
 	global.pause_room = room;
 	audio_pause_all();
-	if (asset_get_type("room_pause") == asset_room)
-	{
-		room_goto(room_pause);
-	}
+	room_goto(room_pause);
 }
 else
 if (gamepad_button_check_pressed(global.player3_slot, gp_select))
@@ -140,10 +114,7 @@ or (gamepad_button_check_pressed(global.player3_slot, gp_start))
 	room_persistent = true; /* Turn ON Room Persistency */
 	global.pause_room = room;
 	audio_pause_all();
-	if (asset_get_type("room_pause") == asset_room)
-	{
-		room_goto(room_pause);
-	}
+	room_goto(room_pause);
 }
 else
 if (gamepad_button_check_pressed(global.player4_slot, gp_select))
@@ -154,10 +125,7 @@ or (gamepad_button_check_pressed(global.player4_slot, gp_start))
 	room_persistent = true; /* Turn ON Room Persistency */
 	global.pause_room = room;
 	audio_pause_all();
-	if (asset_get_type("room_pause") == asset_room)
-	{
-		room_goto(room_pause);
-	}
+	room_goto(room_pause);
 }
 #endregion /* Pause END */
 
@@ -600,8 +568,7 @@ and (global.quit_level == false)
 #endregion /* Movement END */
 
 #region /* Stop player when touching level */
-if (instance_exists(obj_level))
-and (place_meeting(x, y, obj_level))
+if (place_meeting(x, y, obj_level))
 and (stop_at_level == false)
 {
 	hspeed = 0;
@@ -612,8 +579,7 @@ and (stop_at_level == false)
 	y = instance_nearest(x, y, obj_level).y;
 	global.current_level_clear_rate = instance_nearest(x, y, obj_level).clear_rate; /* Set the level clear rate to global current clear rate variable for use inside levels, like if a into animation should play or not. Put this code as the last step before closing bracket */
 }
-if (instance_exists(obj_level))
-and (!place_meeting(x, y, obj_level))
+if (!place_meeting(x, y, obj_level))
 {
 	stop_at_level = false;
 }
@@ -667,12 +633,9 @@ and (global.quit_level == false)
 	
 	scr_update_all_backgrounds();
 	
-	if (asset_get_type("room_leveleditor") == asset_room)
-	{
-		global.actually_play_edited_level = true;
-		global.play_edited_level = true;
-		room_goto(room_leveleditor);
-	}
+	global.actually_play_edited_level = true;
+	global.play_edited_level = true;
+	room_goto(room_leveleditor);
 }
 #endregion /* After pressing enter level, the iris should shrink and then start the level END */
 
@@ -744,16 +707,6 @@ if (iris_xscale >= 1)
 	transfer_data = false;
 }
 #endregion /* Set a bunch of global variables to default when you're not on a selected level END */
-
-#region /* If player object is present, delete the player object */
-if (instance_exists(obj_player))
-{
-	with(obj_player)
-	{
-		instance_destroy()
-	}
-}
-#endregion /* If player object is present, delete the player object END */
 
 #region /* Give the player lives if they get a game over */
 if (lives <= 0)
@@ -832,9 +785,8 @@ else
 #endregion /* Zoom In and Out END */
 
 #region /* Enter Level */
-if (!file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
-and (can_enter_level_automatically == true)
-//and (brand_new_file == true)
+if (can_enter_level_automatically == true)
+and (brand_new_file == true)
 and (can_move == true)
 and (show_demo_over_message == false)
 and (instance_exists(obj_level)) /* Must check if obj_level exists or not */

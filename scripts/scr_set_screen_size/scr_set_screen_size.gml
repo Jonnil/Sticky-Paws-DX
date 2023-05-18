@@ -1,23 +1,16 @@
 function scr_set_screen_size()
 {
 	#region /* Set GUI size */
-	if (global.gui_scale_modifier == 0)
+	switch (global.gui_scale_modifier)
 	{
-		global.gui_width = window_get_width();
-		global.gui_height = window_get_height();
-	}
-	else
-	{
-		switch (global.gui_scale_modifier)
-		{
-			case 1: global.gui_width = 1920; global.gui_height = 1080; break;
-			case 2: global.gui_width = 1600; global.gui_height = 900; break;
-			case 3: global.gui_width = 1366; global.gui_height = 768; break;
-			case 4: global.gui_width = 1280; global.gui_height = 720; break;
-			case 5: global.gui_width = 1024; global.gui_height = 576; break;
-			case 6: global.gui_width = 864; global.gui_height = 480; break;
-			default: break;
-		}
+		case 0: global.gui_width = window_get_width() * 0.7; global.gui_height = window_get_height() * 0.7; break;
+		case 1: global.gui_width = window_get_width() * 0.8; global.gui_height = window_get_height() * 0.8; break;
+		case 2: global.gui_width = window_get_width() * 0.9; global.gui_height = window_get_height() * 0.9; break;
+		case 3: global.gui_width = window_get_width(); global.gui_height = window_get_height(); break;
+		case 4: global.gui_width = window_get_width() * 1.1; global.gui_height = window_get_height() * 1.1; break;
+		case 5: global.gui_width = window_get_width() * 1.2; global.gui_height = window_get_height() * 1.2; break;
+		case 6: global.gui_width = window_get_width() * 1.3; global.gui_height = window_get_height() * 1.3; break;
+		default: break;
 	}
 	display_set_gui_size(global.gui_width, global.gui_height);
 	#endregion /* Set GUI size END */

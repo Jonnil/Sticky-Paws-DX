@@ -12,6 +12,7 @@ else
 }
 
 if (directory_exists(string(character_folder) + "/sprites/skin" + string(selected_skin)))
+or (file_exists(string(character_folder) + "/sprites/skin" + string(selected_skin) + "/mask.png"))
 {
 	skin_folder = "/skin" + string(selected_skin) + "/";
 }

@@ -124,10 +124,10 @@ menu = noone;
 menu_cursor_index = 0;
 menu_delay = 0;
 
-brand_new_file = true;
-	xx_heart = x;
-	yy_heart = y - 64;
-	have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
+brand_new_file = -1;
+xx_heart = x;
+yy_heart = y - 64;
+have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 
 scr_buffer_async_load("save_files", "file" + string(global.file) + ".ini");
 
@@ -290,3 +290,10 @@ else
 	zoom_lerp = global.zoom_world_map;
 	zoom_border_lerp = 0;
 }
+
+#region /* Make sure camera map is always present on the map screen. Only run this code after doing the deactivate instances code */
+if (!instance_exists(obj_camera_map))
+{
+	instance_create_depth(x, y, 0, obj_camera_map);
+}
+#endregion /* Make sure camera map is always present on the map screen. Only run this code after doing the deactivate instances code END */

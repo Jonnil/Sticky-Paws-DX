@@ -243,6 +243,142 @@ function scr_remapping_gamepad()
 		last_key = gp_padr;
 		can_remap_key = true;
 	}
+	else
+	if (remapping_player == 0)
+	and (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+	and (!gamepad_button_check(global.player1_slot, gp_start))
+	or (remapping_player == 1)
+	and (gamepad_axis_value(global.player2_slot, gp_axislv) < 0)
+	and (!gamepad_button_check(global.player2_slot, gp_start))
+	or (remapping_player = 2)
+	and (gamepad_axis_value(global.player3_slot, gp_axislv) < 0)
+	and (!gamepad_button_check(global.player3_slot, gp_start))
+	or (remapping_player = 3)
+	and (gamepad_axis_value(global.player4_slot, gp_axislv) < 0)
+	and (!gamepad_button_check(global.player4_slot, gp_start))
+	{
+		last_key = joystick_value.joyleft_up;
+		can_remap_key = true;
+	}
+	else
+	if (remapping_player == 0)
+	and (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
+	and (!gamepad_button_check(global.player1_slot, gp_start))
+	or (remapping_player == 1)
+	and (gamepad_axis_value(global.player2_slot, gp_axislv) > 0)
+	and (!gamepad_button_check(global.player2_slot, gp_start))
+	or (remapping_player = 2)
+	and (gamepad_axis_value(global.player3_slot, gp_axislv) > 0)
+	and (!gamepad_button_check(global.player3_slot, gp_start))
+	or (remapping_player = 3)
+	and (gamepad_axis_value(global.player4_slot, gp_axislv) > 0)
+	and (!gamepad_button_check(global.player4_slot, gp_start))
+	{
+		last_key = joystick_value.joyleft_down;
+		can_remap_key = true;
+	}
+	else
+	if (remapping_player == 0)
+	and (gamepad_axis_value(global.player1_slot, gp_axislh) < 0)
+	and (!gamepad_button_check(global.player1_slot, gp_start))
+	or (remapping_player == 1)
+	and (gamepad_axis_value(global.player2_slot, gp_axislh) < 0)
+	and (!gamepad_button_check(global.player2_slot, gp_start))
+	or (remapping_player = 2)
+	and (gamepad_axis_value(global.player3_slot, gp_axislh) < 0)
+	and (!gamepad_button_check(global.player3_slot, gp_start))
+	or (remapping_player = 3)
+	and (gamepad_axis_value(global.player4_slot, gp_axislh) < 0)
+	and (!gamepad_button_check(global.player4_slot, gp_start))
+	{
+		last_key = joystick_value.joyleft_left;
+		can_remap_key = true;
+	}
+	else
+	if (remapping_player == 0)
+	and (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
+	and (!gamepad_button_check(global.player1_slot, gp_start))
+	or (remapping_player == 1)
+	and (gamepad_axis_value(global.player2_slot, gp_axislh) > 0)
+	and (!gamepad_button_check(global.player2_slot, gp_start))
+	or (remapping_player = 2)
+	and (gamepad_axis_value(global.player3_slot, gp_axislh) > 0)
+	and (!gamepad_button_check(global.player3_slot, gp_start))
+	or (remapping_player = 3)
+	and (gamepad_axis_value(global.player4_slot, gp_axislh) > 0)
+	and (!gamepad_button_check(global.player4_slot, gp_start))
+	{
+		last_key = joystick_value.joyleft_right;
+		can_remap_key = true;
+	}
+	else
+	if (remapping_player == 0)
+	and (gamepad_axis_value(global.player1_slot, gp_axisrv) < 0)
+	and (!gamepad_button_check(global.player1_slot, gp_start))
+	or (remapping_player == 1)
+	and (gamepad_axis_value(global.player2_slot, gp_axisrv) < 0)
+	and (!gamepad_button_check(global.player2_slot, gp_start))
+	or (remapping_player = 2)
+	and (gamepad_axis_value(global.player3_slot, gp_axisrv) < 0)
+	and (!gamepad_button_check(global.player3_slot, gp_start))
+	or (remapping_player = 3)
+	and (gamepad_axis_value(global.player4_slot, gp_axisrv) < 0)
+	and (!gamepad_button_check(global.player4_slot, gp_start))
+	{
+		last_key = joystick_value.joyright_up;
+		can_remap_key = true;
+	}
+	else
+	if (remapping_player == 0)
+	and (gamepad_axis_value(global.player1_slot, gp_axisrv) > 0)
+	and (!gamepad_button_check(global.player1_slot, gp_start))
+	or (remapping_player == 1)
+	and (gamepad_axis_value(global.player2_slot, gp_axisrv) > 0)
+	and (!gamepad_button_check(global.player2_slot, gp_start))
+	or (remapping_player = 2)
+	and (gamepad_axis_value(global.player3_slot, gp_axisrv) > 0)
+	and (!gamepad_button_check(global.player3_slot, gp_start))
+	or (remapping_player = 3)
+	and (gamepad_axis_value(global.player4_slot, gp_axisrv) > 0)
+	and (!gamepad_button_check(global.player4_slot, gp_start))
+	{
+		last_key = joystick_value.joyright_down;
+		can_remap_key = true;
+	}
+	else
+	if (remapping_player == 0)
+	and (gamepad_axis_value(global.player1_slot, gp_axisrh) < 0)
+	and (!gamepad_button_check(global.player1_slot, gp_start))
+	or (remapping_player == 1)
+	and (gamepad_axis_value(global.player2_slot, gp_axisrh) < 0)
+	and (!gamepad_button_check(global.player2_slot, gp_start))
+	or (remapping_player = 2)
+	and (gamepad_axis_value(global.player3_slot, gp_axisrh) < 0)
+	and (!gamepad_button_check(global.player3_slot, gp_start))
+	or (remapping_player = 3)
+	and (gamepad_axis_value(global.player4_slot, gp_axisrh) < 0)
+	and (!gamepad_button_check(global.player4_slot, gp_start))
+	{
+		last_key = joystick_value.joyright_left;
+		can_remap_key = true;
+	}
+	else
+	if (remapping_player == 0)
+	and (gamepad_axis_value(global.player1_slot, gp_axisrh) > 0)
+	and (!gamepad_button_check(global.player1_slot, gp_start))
+	or (remapping_player == 1)
+	and (gamepad_axis_value(global.player2_slot, gp_axisrh) > 0)
+	and (!gamepad_button_check(global.player2_slot, gp_start))
+	or (remapping_player = 2)
+	and (gamepad_axis_value(global.player3_slot, gp_axisrh) > 0)
+	and (!gamepad_button_check(global.player3_slot, gp_start))
+	or (remapping_player = 3)
+	and (gamepad_axis_value(global.player4_slot, gp_axisrh) > 0)
+	and (!gamepad_button_check(global.player4_slot, gp_start))
+	{
+		last_key = joystick_value.joyright_right;
+		can_remap_key = true;
+	}
 	#endregion /* Check for player 1 button presses END */
 	
 	else
@@ -332,6 +468,11 @@ function scr_remapping_gamepad()
 		else
 		if (menu == "remap_key_left")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				last_key = gp_padl;
+			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.left] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_left", last_key);
@@ -340,6 +481,11 @@ function scr_remapping_gamepad()
 		else
 		if (menu == "remap_key_right")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				last_key = gp_padr;
+			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.right] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_right", last_key);
@@ -348,6 +494,11 @@ function scr_remapping_gamepad()
 		else
 		if (menu == "remap_key_down")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				last_key = gp_padd;
+			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.down] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_down", last_key);
@@ -356,6 +507,11 @@ function scr_remapping_gamepad()
 		else
 		if (menu == "remap_key_up")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				last_key = gp_padu;
+			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.up] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_up", last_key);
@@ -388,6 +544,25 @@ function scr_remapping_gamepad()
 		else
 		if (menu == "remap_key_accept")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				if (os_type == os_switch)
+				{
+					last_key = gp_face2;
+				}
+				else
+				{
+					last_key = gp_face1;
+				}
+			}
+			if (global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back] == last_key)
+			{
+				global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back] = global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept];
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_back", global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept]);
+				ini_close();
+			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_accept", last_key);
@@ -396,6 +571,25 @@ function scr_remapping_gamepad()
 		else
 		if (menu == "remap_key_back")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				if (os_type == os_switch)
+				{
+					last_key = gp_face1;
+				}
+				else
+				{
+					last_key = gp_face2;
+				}
+			}
+			if (global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept] == last_key)
+			{
+				global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept] = global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back];
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_accept", global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back]);
+				ini_close();
+			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_back", last_key);

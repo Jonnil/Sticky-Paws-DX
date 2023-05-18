@@ -38,3 +38,4 @@ stuck_in_wall_counter = 0;
 sliding_along_ground = 0;
 sliding_along_ground_speed = 8;
 can_die_from_spikes = true;
+give_rewards = true;

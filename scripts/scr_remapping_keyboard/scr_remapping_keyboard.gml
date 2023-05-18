@@ -129,6 +129,11 @@ function scr_remapping_keyboard()
 		else
 		if (menu == "remap_key_left")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				last_key = vk_left;
+			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.left] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_left", last_key);
@@ -137,6 +142,11 @@ function scr_remapping_keyboard()
 		else
 		if (menu == "remap_key_right")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				last_key = vk_right;
+			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.right] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_right", last_key);
@@ -145,6 +155,11 @@ function scr_remapping_keyboard()
 		else
 		if (menu == "remap_key_down")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				last_key = vk_down;
+			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.down] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_down", last_key);
@@ -153,6 +168,11 @@ function scr_remapping_keyboard()
 		else
 		if (menu == "remap_key_up")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				last_key = vk_up;
+			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.up] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_up", last_key);
@@ -185,6 +205,18 @@ function scr_remapping_keyboard()
 		else
 		if (menu == "remap_key_accept")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				last_key = ord("Z");
+			}
+			if (global.player_[inp.key][remapping_player + 1][remap_key_number][action.back] == last_key)
+			{
+				global.player_[inp.key][remapping_player + 1][remap_key_number][action.back] = global.player_[inp.key][remapping_player + 1][remap_key_number][action.accept];
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_back", global.player_[inp.key][remapping_player + 1][remap_key_number][action.accept]);
+				ini_close();
+			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.accept] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_accept", last_key);
@@ -193,6 +225,18 @@ function scr_remapping_keyboard()
 		else
 		if (menu == "remap_key_back")
 		{
+			if (last_key == noone)
+			and (menu_remap_key_number == 0)
+			{
+				last_key = ord("X");
+			}
+			if (global.player_[inp.key][remapping_player + 1][remap_key_number][action.accept] == last_key)
+			{
+				global.player_[inp.key][remapping_player + 1][remap_key_number][action.accept] = global.player_[inp.key][remapping_player + 1][remap_key_number][action.back];
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_accept", global.player_[inp.key][remapping_player + 1][remap_key_number][action.back]);
+				ini_close();
+			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.back] = last_key;
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_back", last_key);

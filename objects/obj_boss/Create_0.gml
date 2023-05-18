@@ -18,6 +18,7 @@ arrow_xscale = 0;
 stuck_in_wall_counter = 0;
 sliding_along_ground = 0;
 can_die_from_spikes = false;
+give_rewards = true;
 
 if (asset_get_type("snd_enemyvoice_defeated") == asset_sound)
 {

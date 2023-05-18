@@ -2177,16 +2177,21 @@ function scr_options_menu()
 			and (menu != "change_username_cancel")
 			{
 				draw_menu_button(change_username_x, change_username_y, l10n_text("Change Username"), "change_username", "change_username");
-				draw_menu_button(change_username_x, change_username_y + 50, l10n_text("Get Device Username"), "get_device_name", "get_device_name");
+				if (environment_get_variable("USERNAME") != "")
+				{
+					draw_menu_button(change_username_x, change_username_y + 50, l10n_text("Get Device Username"), "get_device_name", "get_device_name");
+				}
 			}
 			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x, change_username_y + 50, change_username_x + 370, change_username_y + 50 + 40 - 1))
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_released(mb_left))
 			and (menu == "get_device_name")
+			and (environment_get_variable("USERNAME") != "")
 			and (menu_delay == 0)
 			or (key_a_pressed)
 			and (menu == "get_device_name")
+			and (environment_get_variable("USERNAME") != "")
 			and (menu_delay == 0)
 			{
 				with(instance_create_depth(change_username_x + 128, change_username_y + 50, 0, obj_score_up))
@@ -2264,6 +2269,7 @@ function scr_options_menu()
 			{
 				menu_delay = 3;
 				if (menu == "change_username")
+				and (environment_get_variable("USERNAME") != "")
 				{
 					menu = "get_device_name";
 				}
@@ -2279,6 +2285,7 @@ function scr_options_menu()
 			{
 				menu_delay = 3;
 				if (menu == "change_username")
+				and (environment_get_variable("USERNAME") != "")
 				{
 					menu = "get_device_name";
 				}

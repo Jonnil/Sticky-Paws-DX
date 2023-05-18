@@ -4,41 +4,22 @@ function scr_debug_screen()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
-	var version_y = 32
+	var version_y = 32;
 	var fps_y = 64;
 	var fps_real_y = 96;
 	var instance_count_y = 128;
 	var all_instance_count_y = 160;
 	
-	if (os_type = os_switch) /* On Switch, it's much weaker than a PC or even mobile phone */
-	{
-		var fps_real_target = 60; /* fps real should be above 60 */
-	}
-	else
-	{
-		var fps_real_target = 250; /* fps real should be above 250 on most devices */
-	}
+	var fps_real_target = (os_type == os_switch) ? 60 : 250;
 	var instance_count_target = 200;
 	
-	if (keyboard_check_pressed(vk_f3))
-	or (gamepad_button_check(global.player1_slot, gp_stickl))
-	and (gamepad_button_check_pressed(global.player1_slot, gp_stickr))
-	or (gamepad_button_check(global.player1_slot, gp_stickr))
-	and (gamepad_button_check_pressed(global.player1_slot, gp_stickl))
+	if (keyboard_check_pressed(vk_f3) || gamepad_button_check(global.player1_slot, gp_stickl) && gamepad_button_check_pressed(global.player1_slot, gp_stickr) || gamepad_button_check(global.player1_slot, gp_stickr) && gamepad_button_check_pressed(global.player1_slot, gp_stickl))
 	{
-		if (global.debug_screen == true)
-		{
-			show_debug_overlay(false);
-			global.debug_screen = false;
-		}
-		else
-		{
-			show_debug_overlay(true);
-			global.debug_screen = true;
-		}
+		global.debug_screen = !global.debug_screen;
+		show_debug_overlay(global.debug_screen);
 	}
 	
-	if (global.debug_screen == true && keyboard_check_pressed(vk_f1))
+	if (global.debug_screen && keyboard_check_pressed(vk_f1))
 	{
 		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
@@ -48,97 +29,61 @@ function scr_debug_screen()
 		gc_collect();
 	}
 	
-	if (global.debug_screen == true)
+	if (global.debug_screen)
 	{
 		
 		#region /* Click on FPS to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_y - 15, 370, fps_y + 15))
-		and (global.controls_used_for_menu_navigation == "mouse")
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_y - 15, 370, fps_y + 15) && global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(0, fps_y - 16, 370, fps_y + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_released(mb_left))
 			{
-				if (global.show_fps == true)
-				{
-					global.show_fps = false;
-				}
-				else
-				{
-					global.show_fps = true;
-				}
+				global.show_fps = !global.show_fps;
 			}
 		}
 		#endregion /* Click on FPS to toggle if it should stay on screen even after you close debug screen END */
 		
 		#region /* Click on FPS Real to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_real_y - 15, 370, fps_real_y + 15))
-		and (global.controls_used_for_menu_navigation == "mouse")
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_real_y - 15, 370, fps_real_y + 15) && global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(0, fps_real_y - 16, 370, fps_real_y + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_released(mb_left))
 			{
-				if (global.show_fps_real == true)
-				{
-					global.show_fps_real = false;
-				}
-				else
-				{
-					global.show_fps_real = true;
-				}
+				global.show_fps_real = !global.show_fps_real;
 			}
 		}
 		#endregion /* Click on FPS Real to toggle if it should stay on screen even after you close debug screen END */
 		
 		#region /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, instance_count_y - 15, 370, instance_count_y + 15))
-		and (global.controls_used_for_menu_navigation == "mouse")
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, instance_count_y - 15, 370, instance_count_y + 15) && global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(0, instance_count_y - 16, 370, instance_count_y + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_released(mb_left))
 			{
-				if (global.show_instance_count == true)
-				{
-					global.show_instance_count = false;
-				}
-				else
-				{
-					global.show_instance_count = true;
-				}
+				global.show_instance_count = !global.show_instance_count;
 			}
 		}
 		#endregion /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen END */
 		
 		#region /* Click on All Instance Count to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, all_instance_count_y - 15, 370, all_instance_count_y + 15))
-		and (global.controls_used_for_menu_navigation == "mouse")
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, all_instance_count_y - 15, 370, all_instance_count_y + 15) && global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(0, all_instance_count_y - 16, 370, all_instance_count_y + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_released(mb_left))
 			{
-				if (global.show_all_instance_count == true)
-				{
-					global.show_all_instance_count = false;
-				}
-				else
-				{
-					global.show_all_instance_count = true;
-				}
+				global.show_all_instance_count = !global.show_all_instance_count;
 			}
 		}
 		#endregion /* Click on All Instance Count to toggle if it should stay on screen even after you close debug screen END */
 		
-	}
-	
-	if (global.debug_screen == true)
-	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		if (global.controls_used_for_menu_navigation == "controller")
@@ -150,23 +95,15 @@ function scr_debug_screen()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press F3 to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Press F1 to use gc_collect()"), global.default_text_size * 0.75, c_black, c_white, 1);
 		}
-	}
-	
-	#region /* Version */
-	if (global.debug_screen == true)
-	{
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + string(scr_get_build_date()), global.default_text_size, c_black, c_white, 1);
 	}
-	#endregion /* Version END */
 	
 	#region /* FPS */
-	if (global.show_fps == true)
-	or (global.debug_screen == true)
+	if (global.show_fps || global.debug_screen)
 	{
-		if (global.show_fps == true)
-		and (global.debug_screen == true)
+		if (global.show_fps && global.debug_screen)
 		{
 			draw_sprite_ext(spr_lock_icon, 0, 16, fps_y, 1, 1, 0, c_white, 1);
 		}
@@ -185,11 +122,9 @@ function scr_debug_screen()
 	#endregion /* FPS END */
 	
 	#region /* FPS Real */
-	if (global.show_fps_real == true)
-	or (global.debug_screen == true)
+	if (global.show_fps_real || global.debug_screen)
 	{
-		if (global.show_fps_real == true)
-		and (global.debug_screen == true)
+		if (global.show_fps_real && global.debug_screen)
 		{
 			draw_sprite_ext(spr_lock_icon, 0, 16, fps_real_y, 1, 1, 0, c_white, 1);
 		}
@@ -199,33 +134,25 @@ function scr_debug_screen()
 		#region /* FPS Real Rating */
 		if (fps_real >= fps_real_target)
 		{
+			scr_draw_text_outlined(32, fps_real_y, l10n_text("FPS Real") + ": " + string(fps_real), global.default_text_size, noone, c_lime, 1);
 			scr_draw_text_outlined(320, fps_real_y + scr_wave(-3, +3, 0.5), l10n_text("GOOD"), global.default_text_size, noone, c_lime, 1);
 			scr_draw_text_outlined(420, fps_real_y + scr_wave(-3, +3, 0.5), ">" + string(fps_real_target), global.default_text_size * 0.5, noone, c_lime, 1);
 		}
 		else
 		{
+			scr_draw_text_outlined(32, fps_real_y, l10n_text("FPS Real") + ": " + string(fps_real), global.default_text_size, noone, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
 			scr_draw_text_outlined(320, fps_real_y, l10n_text("BAD"), global.default_text_size, noone, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
 			scr_draw_text_outlined(420, fps_real_y, "<" + string(fps_real_target), global.default_text_size * 0.5, noone, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
 		}
 		#endregion /* FPS Real Rating END */
 		
-		if (fps_real >= fps_real_target)
-		{
-			scr_draw_text_outlined(32, fps_real_y, l10n_text("FPS Real") + ": " + string(fps_real), global.default_text_size, noone, c_lime, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(32, fps_real_y, l10n_text("FPS Real") + ": " + string(fps_real), global.default_text_size, noone, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
-		}
 	}
 	#endregion /* FPS Real END */
 	
 	#region /* Instance Count */
-	if (global.show_instance_count == true)
-	or (global.debug_screen == true)
+	if (global.show_instance_count || global.debug_screen)
 	{
-		if (global.show_instance_count == true)
-		and (global.debug_screen == true)
+		if (global.show_instance_count && global.debug_screen)
 		{
 			draw_sprite_ext(spr_lock_icon, 0, 16, instance_count_y, 1, 1, 0, c_white, 1);
 		}
@@ -236,10 +163,9 @@ function scr_debug_screen()
 	#endregion /* Instance Count END */
 	
 	#region /* All Instance Count */
-	if (global.show_all_instance_count == true)
+	if (global.show_all_instance_count)
 	{
-		if (global.show_all_instance_count == true)
-		and (global.debug_screen == true)
+		if (global.show_all_instance_count && global.debug_screen)
 		{
 			draw_sprite_ext(spr_lock_icon, 0, 16, all_instance_count_y, 1, 1, 0, c_white, 1);
 		}
@@ -247,8 +173,7 @@ function scr_debug_screen()
 		#region /* Show what objects are currently in the room */
 		for (var i = 0; i < 100; ++i;)
 		{
-			if (instance_exists(i))
-			and (instance_number(i) >= instance_count_target)
+			if (instance_exists(i) && instance_number(i) >= instance_count_target)
 			{
 				scr_draw_text_outlined(32, all_instance_count_y + (8 * i) + scr_wave(-3, +3, 0.5), string(object_get_name(i)) + ": " + string(instance_number(i)), global.default_text_size, noone, make_color_hsv(instance_number(i), 255, 255), 1);
 			}
@@ -266,10 +191,10 @@ function scr_debug_screen()
 	#region /* Controller ports */
 	if (os_type == os_switch)
 	{
-		if (gamepad_get_description(0) == "Handheld")
-		and (gamepad_get_description(1) != "")
-		or (gamepad_get_description(0) == "")
-		and (gamepad_get_description(1) != "")
+		var description0 = gamepad_get_description(0);
+		var description1 = gamepad_get_description(1);
+		
+		if ((description0 == "Handheld" || description1 == "Handheld") && (description1 != "" || description0 != ""))
 		{
 			global.player1_slot = 1;
 			global.player2_slot = 2;
@@ -293,7 +218,7 @@ function scr_debug_screen()
 	}
 	#endregion /* Controller ports END */
 	
-	if (global.debug_screen == true)
+	if (global.debug_screen)
 	{
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
@@ -318,11 +243,11 @@ function scr_debug_screen()
 		{
 			scr_draw_text_outlined(32, 400, "gamepad(4): " + string(gamepad_get_description(4)));
 		}
-		scr_draw_text_outlined(32, 420, "current room: " + string(room_get_name(room)));
-		//scr_draw_text_outlined(32, 420, "menu_joystick1_delay: " + string(menu_joystick1_delay));
+		draw_set_halign(fa_right);
+		scr_draw_text_outlined(display_get_gui_height() - 32, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)));
 	}
 	
-	if (global.debug_screen == true)
+	if (global.debug_screen)
 	and (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 32))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	{

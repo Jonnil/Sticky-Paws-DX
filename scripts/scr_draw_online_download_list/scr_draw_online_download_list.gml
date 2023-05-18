@@ -120,6 +120,7 @@ function scr_draw_online_download_list()
 			#region /* If there is an online download list loaded, interpret that as a struct using "json parse" */
 			if (global.online_download_list != "")
 			and (global.online_download_list != "HTTP request exception")
+			and (global.online_download_list != "Unauthorized")
 			{
 				data = json_parse(global.online_download_list); /* When there is data here, then go to the online downloads menu */
 			}
@@ -128,6 +129,12 @@ function scr_draw_online_download_list()
 			{
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, l10n_text("HTTP request exception"), global.default_text_size, c_white, c_black, 1);
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, l10n_text("HTTP request exception"), global.default_text_size, c_white, c_red, scr_wave(0, 1, 1, 0));
+			}
+			else
+			if (global.online_download_list == "Unauthorized")
+			{
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, l10n_text("Unauthorized"), global.default_text_size, c_white, c_black, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, l10n_text("Unauthorized"), global.default_text_size, c_white, c_red, scr_wave(0, 1, 1, 0));
 			}
 			#endregion /* If there is an online download list loaded, interpret that as a struct using "json parse" END */
 			
@@ -226,19 +233,21 @@ function scr_draw_online_download_list()
 				/* If there is an online download list information loaded, interpret that as a struct using "json parse" */
 				if (global.online_download_list_info != "")
 				and (global.online_download_list_info != "HTTP request exception")
+				and (global.online_download_list_info != "Unauthorized")
 				{
 					info_data = json_parse(global.online_download_list_info); /* When there is data here, then go to the online downloads menu */
 				}
 			}
 			
 			if (info_data != noone)
-			and (menu != "search_id_ok")
+			if (menu != "search_id_ok")
 			{
 				/* Check if it's an array */
-				//if (is_array(info_data))
+				if (is_array(info_data))
 				{
-					draw_text(32, 320 + (32 * 4), string(data));
-					draw_text(32, 320 + (32 * 5), string(info_data));
+					draw_text(32, 320 + (32 * 4), "data: " + string(data));
+					draw_text(32, 320 + (32 * 5), "info_data: " + string(info_data));
+					draw_text(32, 320 + (32 * 6), "global.online_download_list_info: " + string(global.online_download_list_info));
 					/* Get the number of items in the JSON array */
 					var num_items = array_length(info_data);
 					for (var i = 0; i < num_items; i++;)

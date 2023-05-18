@@ -119,4 +119,44 @@ function scr_draw_gamepad_buttons(what_button, xx, yy, overall_scale = 1, color 
 	{
 		draw_sprite_ext(what_sprites_to_use, 15, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
 	}
+	else
+	if (what_button = joystick_value.joyleft_left)
+	{
+		draw_sprite_ext(what_sprites_to_use, 16, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
+	}
+	else
+	if (what_button = joystick_value.joyleft_right)
+	{
+		draw_sprite_ext(what_sprites_to_use, 17, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
+	}
+	else
+	if (what_button = joystick_value.joyleft_down)
+	{
+		draw_sprite_ext(what_sprites_to_use, 18, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
+	}
+	else
+	if (what_button = joystick_value.joyleft_up)
+	{
+		draw_sprite_ext(what_sprites_to_use, 19, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
+	}
+	else
+	if (what_button = joystick_value.joyright_left)
+	{
+		draw_sprite_ext(what_sprites_to_use, 20, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
+	}
+	else
+	if (what_button = joystick_value.joyright_right)
+	{
+		draw_sprite_ext(what_sprites_to_use, 21, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
+	}
+	else
+	if (what_button = joystick_value.joyright_down)
+	{
+		draw_sprite_ext(what_sprites_to_use, 22, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
+	}
+	else
+	if (what_button = joystick_value.joyright_up)
+	{
+		draw_sprite_ext(what_sprites_to_use, 23, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
+	}
 }
