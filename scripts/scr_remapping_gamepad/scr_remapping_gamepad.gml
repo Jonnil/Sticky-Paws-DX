@@ -434,6 +434,14 @@ function scr_remapping_gamepad()
 			ini_close();
 		}
 		else
+		if (menu == "remap_key_double_jump")
+		{
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.double_jump] = last_key;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_double_jump", last_key);
+			ini_close();
+		}
+		else
 		if (menu == "remap_key_crouch")
 		{
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.crouch] = last_key;

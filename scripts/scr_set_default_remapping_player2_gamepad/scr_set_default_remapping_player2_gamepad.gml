@@ -7,6 +7,7 @@ function scr_set_default_remapping_player2_gamepad(save_default_controls_to_conf
 	/* global.player_[keyboard/gamepad][player][key1/key2][action] */
 	global.player_[inp.gp][2][1][action.dive] = gp_face3;
 	global.player_[inp.gp][2][1][action.jump] = gp_face1;
+	global.player_[inp.gp][2][1][action.double_jump] = gp_face1;
 	global.player_[inp.gp][2][1][action.crouch] = gp_padd;
 	global.player_[inp.gp][2][1][action.crouch_toggle] = noone;
 	global.player_[inp.gp][2][1][action.sprint] = gp_face3;
@@ -34,6 +35,7 @@ function scr_set_default_remapping_player2_gamepad(save_default_controls_to_conf
 	/* global.player_[keyboard/gamepad][player][key1/key2][action] */
 	global.player_[inp.gp][2][2][action.dive] = noone;
 	global.player_[inp.gp][2][2][action.jump] = noone;
+	global.player_[inp.gp][2][2][action.double_jump] = noone;
 	global.player_[inp.gp][2][2][action.crouch] = joystick_value.joyleft_down;
 	global.player_[inp.gp][2][2][action.crouch_toggle] = noone;
 	global.player_[inp.gp][2][2][action.sprint] = gp_shoulderrb;
@@ -69,6 +71,8 @@ function scr_set_default_remapping_player2_gamepad(save_default_controls_to_conf
 		ini_write_real("config", "player2_gamepad_button2_dive", global.player_[inp.gp][2][2][action.dive]);
 		ini_write_real("config", "player2_gamepad_button_jump", global.player_[inp.gp][2][1][action.jump]);
 		ini_write_real("config", "player2_gamepad_button2_jump", global.player_[inp.gp][2][2][action.jump]);
+		ini_write_real("config", "player2_gamepad_button_double_jump", global.player_[inp.gp][2][1][action.double_jump]);
+		ini_write_real("config", "player2_gamepad_button2_double_jump", global.player_[inp.gp][2][2][action.double_jump]);
 		ini_write_real("config", "player2_gamepad_button_crouch", global.player_[inp.gp][2][1][action.crouch]);
 		ini_write_real("config", "player2_gamepad_button2_crouch", global.player_[inp.gp][2][2][action.crouch]);
 		ini_write_real("config", "player2_gamepad_button_crouch_toggle", global.player_[inp.gp][2][1][action.crouch_toggle]);

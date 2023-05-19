@@ -18,16 +18,40 @@ function scr_options_control_menu()
 	else
 	{
 		var menu_y_remap_key_dive = -999;
-		var menu_y_remap_key_jump = 64 * 2;
+		var menu_y_remap_key_jump = 64 * 1;
 	}
-	var menu_y_remap_key_crouch = menu_y_remap_key_jump + 64 * 1;
-	var menu_y_remap_key_crouch_toggle = menu_y_remap_key_jump + 64 * 2;
-	var menu_y_remap_key_sprint = menu_y_remap_key_jump + 64 * 3;
-	var menu_y_remap_key_sprint_toggle = menu_y_remap_key_jump + 64 * 4;
-	var menu_y_remap_key_left = menu_y_remap_key_jump + 64 * 5;
-	var menu_y_remap_key_right = menu_y_remap_key_jump + 64 * 6;
-	var menu_y_remap_key_down = menu_y_remap_key_jump + 64 * 7;
-	var menu_y_remap_key_up = menu_y_remap_key_jump + 64 * 8;
+	if (remapping_player == 0)
+	and (allow_player1_double_jump >= 2)
+	or (remapping_player == 1)
+	and (allow_player2_double_jump >= 2)
+	or (remapping_player = 2)
+	and (allow_player3_double_jump >= 2)
+	or (remapping_player = 3)
+	and (allow_player4_double_jump >= 2)
+	or (remapping_player == 0)
+	and (allow_player1_double_jump == -1)
+	or (remapping_player == 1)
+	and (allow_player2_double_jump == -1)
+	or (remapping_player = 2)
+	and (allow_player3_double_jump == -1)
+	or (remapping_player = 3)
+	and (allow_player4_double_jump == -1)
+	{
+		var menu_y_remap_key_double_jump = menu_y_remap_key_jump + 64 * 1;
+		var menu_y_remap_key_crouch = menu_y_remap_key_jump + 64 * 2;
+	}
+	else
+	{
+		var menu_y_remap_key_double_jump = -999;
+		var menu_y_remap_key_crouch = menu_y_remap_key_jump + 64 * 1;
+	}
+	var menu_y_remap_key_crouch_toggle = menu_y_remap_key_crouch + 64 * 1;
+	var menu_y_remap_key_sprint = menu_y_remap_key_crouch + 64 * 2;
+	var menu_y_remap_key_sprint_toggle = menu_y_remap_key_crouch + 64 * 3;
+	var menu_y_remap_key_left = menu_y_remap_key_crouch + 64 * 4;
+	var menu_y_remap_key_right = menu_y_remap_key_crouch + 64 * 5;
+	var menu_y_remap_key_down = menu_y_remap_key_crouch + 64 * 6;
+	var menu_y_remap_key_up = menu_y_remap_key_crouch + 64 * 7;
 	
 	if (remapping_player == 0)
 	and (allow_player1_tongue == true)
@@ -38,19 +62,19 @@ function scr_options_control_menu()
 	or (remapping_player = 3)
 	and (allow_player4_tongue == true)
 	{
-		var menu_y_remap_key_tongue = menu_y_remap_key_jump + 64 * 9;
-		var menu_y_remap_key_zoom_in = menu_y_remap_key_jump + 64 * 10;
-		var menu_y_remap_key_zoom_out = menu_y_remap_key_jump + 64 * 11;
-		var menu_y_remap_key_accept = menu_y_remap_key_jump + 64 * 12;
-		var menu_y_remap_key_back = menu_y_remap_key_jump + 64 * 13;
+		var menu_y_remap_key_tongue = menu_y_remap_key_crouch + 64 * 8;
+		var menu_y_remap_key_zoom_in = menu_y_remap_key_crouch + 64 * 9;
+		var menu_y_remap_key_zoom_out = menu_y_remap_key_crouch + 64 * 10;
+		var menu_y_remap_key_accept = menu_y_remap_key_crouch + 64 * 11;
+		var menu_y_remap_key_back = menu_y_remap_key_crouch + 64 * 12;
 	}
 	else
 	{
 		var menu_y_remap_key_tongue = -999;
-		var menu_y_remap_key_zoom_in = menu_y_remap_key_jump + 64 * 9;
-		var menu_y_remap_key_zoom_out = menu_y_remap_key_jump + 64 * 10;
-		var menu_y_remap_key_accept = menu_y_remap_key_jump + 64 * 11;
-		var menu_y_remap_key_back = menu_y_remap_key_jump + 64 * 12;
+		var menu_y_remap_key_zoom_in = menu_y_remap_key_crouch + 64 * 8;
+		var menu_y_remap_key_zoom_out = menu_y_remap_key_crouch + 64 * 9;
+		var menu_y_remap_key_accept = menu_y_remap_key_crouch + 64 * 10;
+		var menu_y_remap_key_back = menu_y_remap_key_crouch + 64 * 11;
 	}
 	var menu_y_remap_reset = menu_y_remap_key_back + 64 * 1 - 16;
 	var menu_y_up_is_also_jump = menu_y_remap_key_back + 64 * 2;
@@ -182,6 +206,7 @@ function scr_options_control_menu()
 			/* global.player_[keyboard/gamepad][player][key1/key2][action] */
 			var remapping_player_key_dive = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.dive];
 			var remapping_player_key_jump = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.jump];
+			var remapping_player_key_double_jump = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.double_jump];
 			var remapping_player_key_crouch = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.crouch];
 			var remapping_player_key_crouch_toggle = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.crouch_toggle];
 			var remapping_player_key_sprint = global.player_[keyboard_or_gamepad][selected_remapping_player][1][action.sprint];
@@ -198,6 +223,7 @@ function scr_options_control_menu()
 			
 			var remapping_player_key2_dive = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.dive];
 			var remapping_player_key2_jump = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.jump];
+			var remapping_player_key2_double_jump = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.double_jump];
 			var remapping_player_key2_crouch = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.crouch];
 			var remapping_player_key2_crouch_toggle = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.crouch_toggle];
 			var remapping_player_key2_sprint = global.player_[keyboard_or_gamepad][selected_remapping_player][2][action.sprint];
@@ -215,6 +241,7 @@ function scr_options_control_menu()
 			#region /* Other player's keys */
 			var remapping_other1_player_key_dive = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.dive];
 			var remapping_other1_player_key_jump = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.jump];
+			var remapping_other1_player_key_double_jump = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.double_jump];
 			var remapping_other1_player_key_crouch = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.crouch];
 			var remapping_other1_player_key_crouch_toggle = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.crouch_toggle];
 			var remapping_other1_player_key_sprint = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.sprint];
@@ -231,6 +258,7 @@ function scr_options_control_menu()
 			
 			var remapping_other1_player_key2_dive = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.dive];
 			var remapping_other1_player_key2_jump = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.jump];
+			var remapping_other1_player_key2_double_jump = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.double_jump];
 			var remapping_other1_player_key2_crouch = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.crouch];
 			var remapping_other1_player_key2_crouch_toggle = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.crouch_toggle];
 			var remapping_other1_player_key2_sprint = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.sprint];
@@ -247,6 +275,7 @@ function scr_options_control_menu()
 			
 			var remapping_other2_player_key_dive = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.dive];
 			var remapping_other2_player_key_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.jump];
+			var remapping_other2_player_key_double_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.double_jump];
 			var remapping_other2_player_key_crouch = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.crouch];
 			var remapping_other2_player_key_crouch_toggle = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.crouch_toggle];
 			var remapping_other2_player_key_sprint = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.sprint];
@@ -263,6 +292,7 @@ function scr_options_control_menu()
 			
 			var remapping_other2_player_key2_dive = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.dive];
 			var remapping_other2_player_key2_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.jump];
+			var remapping_other2_player_key2_double_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.double_jump];
 			var remapping_other2_player_key2_crouch = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.crouch];
 			var remapping_other2_player_key2_crouch_toggle = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.crouch_toggle];
 			var remapping_other2_player_key2_sprint = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.sprint];
@@ -279,6 +309,7 @@ function scr_options_control_menu()
 			
 			var remapping_other3_player_key_dive = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.dive];
 			var remapping_other3_player_key_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.jump];
+			var remapping_other3_player_key_double_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.double_jump];
 			var remapping_other3_player_key_crouch = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.crouch];
 			var remapping_other3_player_key_crouch_toggle = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.crouch_toggle];
 			var remapping_other3_player_key_sprint = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.sprint];
@@ -295,6 +326,7 @@ function scr_options_control_menu()
 			
 			var remapping_other3_player_key2_dive = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.dive];
 			var remapping_other3_player_key2_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.jump];
+			var remapping_other3_player_key2_double_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.double_jump];
 			var remapping_other3_player_key2_crouch = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.crouch];
 			var remapping_other3_player_key2_crouch_toggle = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.crouch_toggle];
 			var remapping_other3_player_key2_sprint = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.sprint];
@@ -3678,21 +3710,48 @@ function scr_options_control_menu()
 			
 			#endregion /* Make keys red if in conflict with other keys END */
 			
-			scr_draw_remap_key("remap_key_dive", "Dive", remapping_player_key_dive, remapping_player_key2_dive, key1_x, menu_y_remap_key_dive);
-			scr_draw_remap_key("remap_key_jump", "Jump", remapping_player_key_jump, remapping_player_key2_jump, key1_x, menu_y_remap_key_jump);
-			scr_draw_remap_key("remap_key_crouch", "Crouch", remapping_player_key_crouch, remapping_player_key2_crouch, key1_x, menu_y_remap_key_crouch);
-			scr_draw_remap_key("remap_key_crouch_toggle", "Crouch Toggle", remapping_player_key_crouch_toggle, remapping_player_key2_crouch_toggle, key1_x, menu_y_remap_key_crouch_toggle);
-			scr_draw_remap_key("remap_key_sprint", "Sprint", remapping_player_key_sprint, remapping_player_key2_sprint, key1_x, menu_y_remap_key_sprint);
-			scr_draw_remap_key("remap_key_sprint_toggle", "Sprint Toggle", remapping_player_key_sprint_toggle, remapping_player_key2_sprint_toggle, key1_x, menu_y_remap_key_sprint_toggle);
-			scr_draw_remap_key("remap_key_left", "Left", remapping_player_key_left, remapping_player_key2_left, key1_x, menu_y_remap_key_left);
-			scr_draw_remap_key("remap_key_right", "Right", remapping_player_key_right, remapping_player_key2_right, key1_x, menu_y_remap_key_right);
-			scr_draw_remap_key("remap_key_down", "Down", remapping_player_key_down, remapping_player_key2_down, key1_x, menu_y_remap_key_down);
-			scr_draw_remap_key("remap_key_up", "Up", remapping_player_key_up, remapping_player_key2_up, key1_x, menu_y_remap_key_up);
-			scr_draw_remap_key("remap_key_tongue", "Tongue", remapping_player_key_tongue, remapping_player_key2_tongue, key1_x, menu_y_remap_key_tongue);
-			scr_draw_remap_key("remap_key_zoom_in", "Zoom In", remapping_player_key_zoom_in, remapping_player_key2_zoom_in, key1_x, menu_y_remap_key_zoom_in);
-			scr_draw_remap_key("remap_key_zoom_out", "Zoom Out", remapping_player_key_zoom_out, remapping_player_key2_zoom_out, key1_x, menu_y_remap_key_zoom_out);
-			scr_draw_remap_key("remap_key_accept", "Accept", remapping_player_key_accept, remapping_player_key2_accept, key1_x, menu_y_remap_key_accept);
-			scr_draw_remap_key("remap_key_back", "Back", remapping_player_key_back, remapping_player_key2_back, key1_x, menu_y_remap_key_back);
+			scr_draw_remap_key("remap_key_dive", l10n_text("Dive"), remapping_player_key_dive, remapping_player_key2_dive, key1_x, menu_y_remap_key_dive);
+			scr_draw_remap_key("remap_key_jump", l10n_text("Jump"), remapping_player_key_jump, remapping_player_key2_jump, key1_x, menu_y_remap_key_jump);
+			if (remapping_player == 0)
+			and (allow_player1_double_jump >= 3)
+			or (remapping_player == 1)
+			and (allow_player2_double_jump >= 3)
+			or (remapping_player = 2)
+			and (allow_player3_double_jump >= 3)
+			or (remapping_player = 3)
+			and (allow_player4_double_jump >= 3)
+			{
+				scr_draw_remap_key("remap_key_double_jump", l10n_text("Multi Jump"), remapping_player_key_double_jump, remapping_player_key2_double_jump, key1_x, menu_y_remap_key_double_jump);
+			}
+			else
+			if (remapping_player == 0)
+			and (allow_player1_double_jump == -1)
+			or (remapping_player == 1)
+			and (allow_player2_double_jump == -1)
+			or (remapping_player = 2)
+			and (allow_player3_double_jump == -1)
+			or (remapping_player = 3)
+			and (allow_player4_double_jump == -1)
+			{
+				scr_draw_remap_key("remap_key_double_jump", l10n_text("Infinite Jump"), remapping_player_key_double_jump, remapping_player_key2_double_jump, key1_x, menu_y_remap_key_double_jump);
+			}
+			else
+			{
+				scr_draw_remap_key("remap_key_double_jump", l10n_text("Double Jump"), remapping_player_key_double_jump, remapping_player_key2_double_jump, key1_x, menu_y_remap_key_double_jump);
+			}
+			scr_draw_remap_key("remap_key_crouch", l10n_text("Crouch"), remapping_player_key_crouch, remapping_player_key2_crouch, key1_x, menu_y_remap_key_crouch);
+			scr_draw_remap_key("remap_key_crouch_toggle", l10n_text("Crouch Toggle"), remapping_player_key_crouch_toggle, remapping_player_key2_crouch_toggle, key1_x, menu_y_remap_key_crouch_toggle);
+			scr_draw_remap_key("remap_key_sprint", l10n_text("Sprint"), remapping_player_key_sprint, remapping_player_key2_sprint, key1_x, menu_y_remap_key_sprint);
+			scr_draw_remap_key("remap_key_sprint_toggle", l10n_text("Sprint Toggle"), remapping_player_key_sprint_toggle, remapping_player_key2_sprint_toggle, key1_x, menu_y_remap_key_sprint_toggle);
+			scr_draw_remap_key("remap_key_left", l10n_text("Left"), remapping_player_key_left, remapping_player_key2_left, key1_x, menu_y_remap_key_left);
+			scr_draw_remap_key("remap_key_right", l10n_text("Right"), remapping_player_key_right, remapping_player_key2_right, key1_x, menu_y_remap_key_right);
+			scr_draw_remap_key("remap_key_down", l10n_text("Down"), remapping_player_key_down, remapping_player_key2_down, key1_x, menu_y_remap_key_down);
+			scr_draw_remap_key("remap_key_up", l10n_text("Up"), remapping_player_key_up, remapping_player_key2_up, key1_x, menu_y_remap_key_up);
+			scr_draw_remap_key("remap_key_tongue", l10n_text("Tongue"), remapping_player_key_tongue, remapping_player_key2_tongue, key1_x, menu_y_remap_key_tongue);
+			scr_draw_remap_key("remap_key_zoom_in", l10n_text("Zoom In"), remapping_player_key_zoom_in, remapping_player_key2_zoom_in, key1_x, menu_y_remap_key_zoom_in);
+			scr_draw_remap_key("remap_key_zoom_out", l10n_text("Zoom Out"), remapping_player_key_zoom_out, remapping_player_key2_zoom_out, key1_x, menu_y_remap_key_zoom_out);
+			scr_draw_remap_key("remap_key_accept", l10n_text("Accept"), remapping_player_key_accept, remapping_player_key2_accept, key1_x, menu_y_remap_key_accept);
+			scr_draw_remap_key("remap_key_back", l10n_text("Back"), remapping_player_key_back, remapping_player_key2_back, key1_x, menu_y_remap_key_back);
 			
 			#endregion /* Show the keys for every player END */
 			
@@ -3757,11 +3816,56 @@ function scr_options_control_menu()
 				else
 				if (key_down)
 				{
-					menu = "remap_key_crouch";
+					if (remapping_player == 0)
+					and (allow_player1_double_jump >= 2)
+					or (remapping_player == 1)
+					and (allow_player2_double_jump >= 2)
+					or (remapping_player = 2)
+					and (allow_player3_double_jump >= 2)
+					or (remapping_player = 3)
+					and (allow_player4_double_jump >= 2)
+					or (remapping_player == 0)
+					and (allow_player1_double_jump == -1)
+					or (remapping_player == 1)
+					and (allow_player2_double_jump == -1)
+					or (remapping_player = 2)
+					and (allow_player3_double_jump == -1)
+					or (remapping_player = 3)
+					and (allow_player4_double_jump == -1)
+					{
+						menu = "remap_key_double_jump";
+					}
+					else
+					{
+						menu = "remap_key_crouch";
+					}
 					menu_delay = 3;
 				}
 			}
 			#endregion /* Remap key jump END */
+			
+			else
+			
+			#region /* Remap key double jump */
+			if (menu == "remap_key_double_jump")
+			and (can_remap_key == false)
+			and (input_key == false)
+			and (menu_delay == 0)
+			and (menu_joystick_delay == 0)
+			{
+				if (key_up)
+				{
+					menu = "remap_key_jump";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				{
+					menu = "remap_key_crouch";
+					menu_delay = 3;
+				}
+			}
+			#endregion /* Remap key double jump END */
 			
 			else
 			
@@ -3774,7 +3878,29 @@ function scr_options_control_menu()
 			{
 				if (key_up)
 				{
-					menu = "remap_key_jump";
+					if (remapping_player == 0)
+					and (allow_player1_double_jump >= 2)
+					or (remapping_player == 1)
+					and (allow_player2_double_jump >= 2)
+					or (remapping_player = 2)
+					and (allow_player3_double_jump >= 2)
+					or (remapping_player = 3)
+					and (allow_player4_double_jump >= 2)
+					or (remapping_player == 0)
+					and (allow_player1_double_jump == -1)
+					or (remapping_player == 1)
+					and (allow_player2_double_jump == -1)
+					or (remapping_player = 2)
+					and (allow_player3_double_jump == -1)
+					or (remapping_player = 3)
+					and (allow_player4_double_jump == -1)
+					{
+						menu = "remap_key_double_jump";
+					}
+					else
+					{
+						menu = "remap_key_jump";
+					}
 					menu_delay = 3;
 				}
 				else
@@ -4116,6 +4242,7 @@ function scr_options_control_menu()
 			#region /* Menu remap key number */
 			if (menu == "remap_key_dive")
 			or (menu == "remap_key_jump")
+			or (menu == "remap_key_double_jump")
 			or (menu == "remap_key_crouch")
 			or (menu == "remap_key_crouch_toggle")
 			or (menu == "remap_key_sprint")

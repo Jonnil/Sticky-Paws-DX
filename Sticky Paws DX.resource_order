@@ -341,7 +341,6 @@
     {"name":"scr_draw_level_editor_sub_menu","order":23,"path":"scripts/scr_draw_level_editor_sub_menu/scr_draw_level_editor_sub_menu.yy",},
     {"name":"spr_icons_delete","order":25,"path":"sprites/spr_icons_delete/spr_icons_delete.yy",},
     {"name":"scr_copy_move_files","order":12,"path":"scripts/scr_copy_move_files/scr_copy_move_files.yy",},
-    {"name":"scr_set_numbers_for_every_multiple_objects","order":11,"path":"scripts/scr_set_numbers_for_every_multiple_objects/scr_set_numbers_for_every_multiple_objects.yy",},
     {"name":"spr_map_turn_right_down","order":76,"path":"sprites/spr_map_turn_right_down/spr_map_turn_right_down.yy",},
     {"name":"scr_player_move_go_right","order":8,"path":"scripts/scr_player_move_go_right/scr_player_move_go_right.yy",},
     {"name":"scr_draw_level_editor_thumbnail","order":4,"path":"scripts/scr_draw_level_editor_thumbnail/scr_draw_level_editor_thumbnail.yy",},

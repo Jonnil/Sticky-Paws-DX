@@ -703,6 +703,7 @@ key_jump_hold_temp = noone;
 key_jump_released = noone;
 key_jump_released_temp = noone;
 key_jump_pressed_temp = noone;
+key_double_jump = noone;
 key_crouch_hold = noone;
 key_crouch_hold_temp = noone;
 key_crouch_pressed = noone;

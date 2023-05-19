@@ -4,6 +4,8 @@ can_spawn_players = true;
 
 scr_initialize_camera();
 
+global.player_has_entered_goal = false;
+
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
@@ -70,6 +72,31 @@ big_collectible2_already_collected = false;
 big_collectible3_already_collected = false;
 big_collectible4_already_collected = false;
 big_collectible5_already_collected = false;
+
+if (global.character_select_in_this_menu == "main_game")
+and (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+{
+	var uppercase_level_name;
+	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
+	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
+	var level_name = string(uppercase_level_name);
+	
+	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+	timeattack_record_millisecond = ini_read_real(level_name, "timeattack_millisecond", 0);
+	timeattack_record_second = ini_read_real(level_name, "timeattack_second", 0);
+	timeattack_record_minute = ini_read_real(level_name, "timeattack_minute", 0);
+	timeattack_record_realmillisecond = ini_read_real(level_name, "timeattack_realmillisecond", 999999999);
+	level_score_record = ini_read_real(level_name, "level_score", 0);
+	ini_close();
+}
+else
+{
+	timeattack_record_millisecond = 0;
+	timeattack_record_second = 0;
+	timeattack_record_minute = 0;
+	timeattack_record_realmillisecond = 999999999;
+	level_score_record = 0;
+}
 
 if (global.character_select_in_this_menu == "main_game")
 and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
@@ -665,7 +692,19 @@ if (global.number_of_audio_channels == 7)
 zoom_lerp = global.zoom_level;
 zoom_border_lerp = 0;
 
-scr_set_numbers_for_every_multiple_objects();
+#region /* Set checkpoint numbers for every checkpoint */
+instance_activate_object(obj_checkpoint);
+for(checkpoint_number = 0;checkpoint_number < instance_number(obj_checkpoint) + 1;checkpoint_number += 1)
+{
+	if (instance_number(obj_checkpoint) >= checkpoint_number)
+	{
+		with (instance_nth_nearest(global.level_player_1_start_x, global.level_player_1_start_y, obj_checkpoint, checkpoint_number))
+		{
+			checkpoint_number = obj_camera.checkpoint_number;
+		}
+	}
+}
+#endregion /* Set checkpoint numbers for every checkpoint END */
 
 #region /* Show keys x positions */
 /* For some reason, code within "Show keys x positions" lags the Nintendo Switch version */

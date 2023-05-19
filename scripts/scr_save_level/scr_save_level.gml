@@ -163,6 +163,11 @@ function scr_save_level()
 	global.timeattack_realmillisecond = 0;
 	score = 0;
 	
+	ini_open(working_directory + "/config.ini")
+	ini_write_real("config", "zoom_level", global.zoom_level);
+	ini_write_real("config", "zoom_world_map", global.zoom_world_map);
+	ini_close();
+	
 	//var inistring = ini_close();
 	//buffer_write(global.savebuff, buffer_string, inistring);
 	//buffer_save_async(global.savebuff, "file" + string(global.file) + ".ini", 0, buffer_get_size(global.savebuff)); /* Pass the data to be saved */

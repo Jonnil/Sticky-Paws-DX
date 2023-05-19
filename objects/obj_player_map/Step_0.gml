@@ -2,6 +2,10 @@ var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
+var view_x = camera_get_view_x(view_camera[view_current]);
+var view_y = camera_get_view_y(view_camera[view_current]);
+var view_width = camera_get_view_width(view_camera[view_current]);
+var view_height = camera_get_view_height(view_camera[view_current]);
 
 #region /* When changing file, you should restart the room so the right save data can load */
 if (current_file != global.file)
@@ -60,7 +64,7 @@ scr_audio_play(music_map, volume_source.music); /* Play the map screen music */
 
 #region /* Deactivate instances outside view */
 instance_activate_all();
-instance_deactivate_region(camera_get_view_x(view_camera[view_current]) - 64, camera_get_view_y(view_camera[view_current]) - 64, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 64, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 64, false, true);
+instance_deactivate_region(view_x - 64, view_y - 64, view_x + view_width + 64, view_y + view_height + 64, false, true);
 instance_activate_object(obj_camera_map);
 instance_activate_object(obj_level);
 instance_activate_object(obj_unlock_next_level);
@@ -81,46 +85,27 @@ draw_yscale = lerp(draw_yscale, 1, 0.1);
 #endregion /* Lerp the player position and scale to make the player move smoothly END */
 
 #region /* Pause */
-if (keyboard_check_pressed(vk_escape))
-or (gamepad_button_check_pressed(global.player1_slot, gp_select))
-or (gamepad_button_check_pressed(global.player1_slot, gp_start))
-or (!window_has_focus())
-and (global.automatically_pause_when_window_is_unfocused == true)
+if (keyboard_check_pressed(vk_escape) ||
+	gamepad_button_check_pressed(global.player1_slot, gp_select) ||
+	gamepad_button_check_pressed(global.player1_slot, gp_start) ||
+	gamepad_button_check_pressed(global.player2_slot, gp_select) ||
+	gamepad_button_check_pressed(global.player2_slot, gp_start) ||
+	gamepad_button_check_pressed(global.player3_slot, gp_select) ||
+	gamepad_button_check_pressed(global.player3_slot, gp_start) ||
+	gamepad_button_check_pressed(global.player4_slot, gp_select) ||
+	gamepad_button_check_pressed(global.player4_slot, gp_start) ||
+	(!window_has_focus() && global.automatically_pause_when_window_is_unfocused)
+	)
 {
-	global.pause_player = 0;
-	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-	room_persistent = true; /* Turn ON Room Persistency */
-	global.pause_room = room;
-	audio_pause_all();
-	room_goto(room_pause);
-}
-else
-if (gamepad_button_check_pressed(global.player2_slot, gp_select))
-or (gamepad_button_check_pressed(global.player2_slot, gp_start))
-{
-	global.pause_player = 1;
-	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-	room_persistent = true; /* Turn ON Room Persistency */
-	global.pause_room = room;
-	audio_pause_all();
-	room_goto(room_pause);
-}
-else
-if (gamepad_button_check_pressed(global.player3_slot, gp_select))
-or (gamepad_button_check_pressed(global.player3_slot, gp_start))
-{
-	global.pause_player = 2;
-	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-	room_persistent = true; /* Turn ON Room Persistency */
-	global.pause_room = room;
-	audio_pause_all();
-	room_goto(room_pause);
-}
-else
-if (gamepad_button_check_pressed(global.player4_slot, gp_select))
-or (gamepad_button_check_pressed(global.player4_slot, gp_start))
-{
-	global.pause_player = 3;
+	var pause_player = 0;
+	if (gamepad_button_check_pressed(global.player2_slot, gp_select) || gamepad_button_check_pressed(global.player2_slot, gp_start))
+		pause_player = 1;
+	else if (gamepad_button_check_pressed(global.player3_slot, gp_select) || gamepad_button_check_pressed(global.player3_slot, gp_start))
+		pause_player = 2;
+	else if (gamepad_button_check_pressed(global.player4_slot, gp_select) || gamepad_button_check_pressed(global.player4_slot, gp_start))
+		pause_player = 3;
+	
+	global.pause_player = pause_player;
 	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
 	room_persistent = true; /* Turn ON Room Persistency */
 	global.pause_room = room;
@@ -143,7 +128,7 @@ and (global.quit_level == false)
 		and (point_distance(xx, yy, x, y) < 4)
 		and (move_delay > 10)
 		{
-			if (y > camera_get_view_y(view_camera[view_current]) + 64)
+			if (y > view_y + 64)
 			{
 				if (!position_meeting(x, y - 32, obj_wall))
 				and (!position_meeting(x, y - 64, obj_wall))
@@ -169,7 +154,7 @@ and (global.quit_level == false)
 		and (point_distance(xx, yy, x, y) < 4)
 		and (move_delay > 10)
 		{
-			if (x > camera_get_view_x(view_camera[view_current]) + 64)
+			if (x > view_x + 64)
 			{
 				if (!position_meeting(x - 32, y, obj_wall))
 				and (!position_meeting(x - 64, y, obj_wall))
@@ -195,7 +180,7 @@ and (global.quit_level == false)
 		and (point_distance(xx, yy, x, y) < 4)
 		and (move_delay > 10)
 		{
-			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 64)
+			if (x < view_x + view_width - 64)
 			{
 				if (!position_meeting(x + 32, y, obj_wall))
 				and (!position_meeting(x + 64, y, obj_wall))
@@ -221,7 +206,7 @@ and (global.quit_level == false)
 		and (point_distance(xx, yy, x, y) < 4)
 		and (move_delay > 10)
 		{
-			if (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 64)
+			if (y < view_y + view_height - 64)
 			{
 				if (!position_meeting(x, y + 32, obj_wall))
 				and (!position_meeting(x, y + 64, obj_wall))
@@ -250,91 +235,46 @@ and (global.quit_level == false)
 	{
 		
 		#region /* Movement on paths */
-		if (key_up)
-		and (move_delay > 10)
-		and (speed == 0)
-		{
-			if (y > camera_get_view_y(view_camera[view_current]) + 64)
-			{
-				if (!position_meeting(x, y - 32, obj_wall))
-				{
+		if (move_delay > 10) {
+			if (key_up && speed == 0) {
+				if (y > view_y + 64 && !position_meeting(x, y - 32, obj_wall)) {
 					vspeed -= move_speed;
 					move_delay = 0;
 					transfer_data = false;
-				}
-				else
-				if (asset_get_type("snd_bump") == asset_sound)
-				and (!audio_is_playing(snd_bump))
-				{
+				} else if (!audio_is_playing(snd_bump)) {
 					draw_xscale = 1.5;
 					draw_yscale = 0.5;
 					yy -= 32;
 					scr_audio_play(snd_bump, volume_source.sound);
 				}
-			}
-		}
-		if (key_left)
-		and (move_delay > 10)
-		and (speed == 0)
-		{
-			if (x > camera_get_view_x(view_camera[view_current]) + 64)
-			{
-				if (!position_meeting(x - 32, y, obj_wall))
-				{
+			} else if (key_left && speed == 0) {
+				if (x > view_x + 64 && !position_meeting(x - 32, y, obj_wall)) {
 					hspeed -= move_speed;
 					move_delay = 0;
 					transfer_data = false;
-				}
-				else
-				if (asset_get_type("snd_bump") == asset_sound)
-				and (!audio_is_playing(snd_bump))
-				{
+				} else if (!audio_is_playing(snd_bump)) {
 					draw_xscale = 0.5;
 					draw_yscale = 1.5;
 					xx -= 32;
 					scr_audio_play(snd_bump, volume_source.sound);
 				}
-			}
-		}
-		if (key_right)
-		and (move_delay > 10)
-		and (speed == 0)
-		{
-			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 64)
-			{
-				if (!position_meeting(x + 32, y, obj_wall))
-				{
+			} else if (key_right && speed == 0) {
+				if (x < view_x + view_width - 64 && !position_meeting(x + 32, y, obj_wall)) {
 					hspeed += move_speed;
 					move_delay = 0;
 					transfer_data = false;
-				}
-				else
-				if (asset_get_type("snd_bump") == asset_sound)
-				and (!audio_is_playing(snd_bump))
-				{
+				} else if (!audio_is_playing(snd_bump)) {
 					draw_xscale = 0.5;
 					draw_yscale = 1.5;
 					xx += 32;
 					scr_audio_play(snd_bump, volume_source.sound);
 				}
-			}
-		}
-		if (key_down)
-		and (move_delay > 10)
-		and (speed == 0)
-		{
-			if (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 64)
-			{
-				if (!position_meeting(x, y + 32, obj_wall))
-				{
+			} else if (key_down && speed == 0) {
+				if (y < view_y + view_height - 64 && !position_meeting(x, y + 32, obj_wall)) {
 					vspeed += move_speed;
 					move_delay = 0;
 					transfer_data = false;
-				}
-				else
-				if (asset_get_type("snd_bump") == asset_sound)
-				and (!audio_is_playing(snd_bump))
-				{
+				} else if (!audio_is_playing(snd_bump)) {
 					draw_xscale = 1.5;
 					draw_yscale = 0.5;
 					yy += 32;
@@ -586,18 +526,16 @@ if (!place_meeting(x, y, obj_level))
 #endregion /* Stop player when touching level END */
 
 #region /* Delay countup */
-if (can_move == false)
-and (delay < 100)
-{
-	delay += 1;
+if (!can_move && delay < 100) {
+	delay++;
 }
-if (move_delay < 50)
-{
-	move_delay += 1;
+
+if (move_delay < 50) {
+	move_delay++;
 }
-if (can_enter_level < 30)
-{
-	can_enter_level += 1;
+
+if (can_enter_level < 30) {
+	can_enter_level++;
 }
 #endregion /* Delay countup END */
 
@@ -901,44 +839,40 @@ and (show_demo_over_message == false)
 
 #region /* Clear Level in debug */
 if (key_b_pressed)
+and (global.debug_screen == true)
+and (can_move == true)
+and (can_enter_level >= 30)
+and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+and (speed == 0)
+and (instance_nearest(x, y, obj_level).clear_rate = "enter")
+and (global.pause == false)
 {
-	if (global.debug_screen == true)
+	with (instance_nearest(x, y, obj_level))
 	{
-		if (can_move == true)
-		and (can_enter_level >= 30)
-		and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
-		and (speed == 0)
-		and (instance_nearest(x, y, obj_level).clear_rate = "enter")
-		and (global.pause == false)
-		{
-			with (instance_nearest(x, y, obj_level))
-			{
-				clear_rate = "clear";
-				alarm_set(1, 1)
-			}
-			
-			#region /* Save Player Position */
-			x = instance_nearest(x, y, obj_level).x;
-			y = instance_nearest(x, y, obj_level).y;
-			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
-			ini_write_real("Player", "player_x", x);
-			ini_write_real("Player", "player_y", y);
-			ini_write_real("Player", "brand_new_file", false);
-			ini_close();
-			#endregion /* Save Player Position END */
-			
-			if (global.character_select_in_this_menu == "main_game")
-			{
-				var uppercase_level_name;
-				uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
-				uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
-				var level_name = string(uppercase_level_name);
-				
-				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
-				ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
-				ini_close();
-			}
-		}
+		clear_rate = "clear";
+		alarm_set(1, 1)
+	}
+	
+	#region /* Save Player Position */
+	x = instance_nearest(x, y, obj_level).x;
+	y = instance_nearest(x, y, obj_level).y;
+	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+	ini_write_real("Player", "player_x", x);
+	ini_write_real("Player", "player_y", y);
+	ini_write_real("Player", "brand_new_file", false);
+	ini_close();
+	#endregion /* Save Player Position END */
+	
+	if (global.character_select_in_this_menu == "main_game")
+	{
+		var uppercase_level_name;
+		uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
+		uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
+		var level_name = string(uppercase_level_name);
+		
+		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
+		ini_close();
 	}
 }
 #endregion /* Clear Level in debug END */
@@ -1017,7 +951,6 @@ if (global.goal_active == true)
 }
 
 #region /* Path Turning */
-
 /* 
 right down = 0
 up right = 1

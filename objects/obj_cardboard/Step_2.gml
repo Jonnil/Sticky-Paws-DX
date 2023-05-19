@@ -4,8 +4,8 @@ var view_top = camera_get_view_y(view_camera[view_current]) - 21;
 var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current])) + 21;
 
 #region /* No collision underneath */
-if (!place_meeting(x, y + 3, obj_wall))
-and (!place_meeting(x, y + 3, obj_semisolid_platform))
+if (!place_meeting(x, y + 1, obj_wall))
+and (!place_meeting(x, y + 1, obj_semisolid_platform))
 {
 	if (x < view_right)
 	and (x > view_left)

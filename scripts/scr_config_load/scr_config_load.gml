@@ -87,6 +87,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player1_name")){global.player1_name = ini_read_string("config", "player1_name", 0);}
 		if (ini_key_exists("config", "player1_key_dive")){global.player_[inp.key][1][1][action.dive] = ini_read_real("config", "player1_key_dive", 0);}
 		if (ini_key_exists("config", "player1_key_jump")){global.player_[inp.key][1][1][action.jump] = ini_read_real("config", "player1_key_jump", 0);}
+		if (ini_key_exists("config", "player1_key_double_jump")){global.player_[inp.key][1][1][action.double_jump] = ini_read_real("config", "player1_key_double_jump", 0);}
 		if (ini_key_exists("config", "player1_key_crouch")){global.player_[inp.key][1][1][action.crouch] = ini_read_real("config", "player1_key_crouch", 0);}
 		if (ini_key_exists("config", "player1_key_crouch_toggle")){global.player_[inp.key][1][1][action.crouch_toggle] = ini_read_real("config", "player1_key_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player1_key_sprint")){global.player_[inp.key][1][1][action.sprint] = ini_read_real("config", "player1_key_sprint", 0);}
@@ -103,6 +104,7 @@ function scr_config_load()
 		
 		if (ini_key_exists("config", "player1_key2_dive")){global.player_[inp.key][1][2][action.dive] = ini_read_real("config", "player1_key2_dive", 0);}
 		if (ini_key_exists("config", "player1_key2_jump")){global.player_[inp.key][1][2][action.jump] = ini_read_real("config", "player1_key2_jump", 0);}
+		if (ini_key_exists("config", "player1_key2_double_jump")){global.player_[inp.key][1][2][action.double_jump] = ini_read_real("config", "player1_key2_double_jump", 0);}
 		if (ini_key_exists("config", "player1_key2_crouch")){global.player_[inp.key][1][2][action.crouch] = ini_read_real("config", "player1_key2_crouch", 0);}
 		if (ini_key_exists("config", "player1_key2_crouch_toggle")){global.player_[inp.key][1][2][action.crouch_toggle] = ini_read_real("config", "player1_key2_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player1_key2_sprint")){global.player_[inp.key][1][2][action.sprint] = ini_read_real("config", "player1_key2_sprint", 0);}
@@ -135,6 +137,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player2_name")){global.player2_name = ini_read_string("config", "player2_name", 0);}
 		if (ini_key_exists("config", "player2_key_dive")){global.player_[inp.key][2][1][action.dive] = ini_read_real("config", "player2_key_dive", 0);}
 		if (ini_key_exists("config", "player2_key_jump")){global.player_[inp.key][2][1][action.jump] = ini_read_real("config", "player2_key_jump", 0);}
+		if (ini_key_exists("config", "player2_key_double_jump")){global.player_[inp.key][2][1][action.double_jump] = ini_read_real("config", "player2_key_double_jump", 0);}
 		if (ini_key_exists("config", "player2_key_crouch")){global.player_[inp.key][2][1][action.crouch] = ini_read_real("config", "player2_key_crouch", 0);}
 		if (ini_key_exists("config", "player2_key_crouch_toggle")){global.player_[inp.key][2][1][action.crouch_toggle] = ini_read_real("config", "player2_key_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player2_key_sprint")){global.player_[inp.key][2][1][action.sprint] = ini_read_real("config", "player2_key_sprint", 0);}
@@ -151,6 +154,7 @@ function scr_config_load()
 		
 		if (ini_key_exists("config", "player2_key2_dive")){global.player_[inp.key][2][2][action.dive] = ini_read_real("config", "player2_key2_dive", 0);}
 		if (ini_key_exists("config", "player2_key2_jump")){global.player_[inp.key][2][2][action.jump] = ini_read_real("config", "player2_key2_jump", 0);}
+		if (ini_key_exists("config", "player2_key2_double_jump")){global.player_[inp.key][2][2][action.double_jump] = ini_read_real("config", "player2_key2_double_jump", 0);}
 		if (ini_key_exists("config", "player2_key2_crouch")){global.player_[inp.key][2][2][action.crouch] = ini_read_real("config", "player2_key2_crouch", 0);}
 		if (ini_key_exists("config", "player2_key2_crouch_toggle")){global.player_[inp.key][2][2][action.crouch_toggle] = ini_read_real("config", "player2_key2_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player2_key2_sprint")){global.player_[inp.key][2][2][action.sprint] = ini_read_real("config", "player2_key2_sprint", 0);}
@@ -183,6 +187,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player3_name")){global.player3_name = ini_read_string("config", "player3_name", 0);}
 		if (ini_key_exists("config", "player3_key_dive")){global.player_[inp.key][3][1][action.dive] = ini_read_real("config", "player3_key_dive", 0);}
 		if (ini_key_exists("config", "player3_key_jump")){global.player_[inp.key][3][1][action.jump] = ini_read_real("config", "player3_key_jump", 0);}
+		if (ini_key_exists("config", "player3_key_double_jump")){global.player_[inp.key][3][1][action.double_jump] = ini_read_real("config", "player3_key_double_jump", 0);}
 		if (ini_key_exists("config", "player3_key_crouch")){global.player_[inp.key][3][1][action.crouch] = ini_read_real("config", "player3_key_crouch", 0);}
 		if (ini_key_exists("config", "player3_key_crouch_toggle")){global.player_[inp.key][3][1][action.crouch_toggle] = ini_read_real("config", "player3_key_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player3_key_sprint")){global.player_[inp.key][3][1][action.sprint] = ini_read_real("config", "player3_key_sprint", 0);}
@@ -199,6 +204,7 @@ function scr_config_load()
 		
 		if (ini_key_exists("config", "player3_key2_dive")){global.player_[inp.key][3][2][action.dive] = ini_read_real("config", "player3_key2_dive", 0);}
 		if (ini_key_exists("config", "player3_key2_jump")){global.player_[inp.key][3][2][action.jump] = ini_read_real("config", "player3_key2_jump", 0);}
+		if (ini_key_exists("config", "player3_key2_double_jump")){global.player_[inp.key][3][2][action.double_jump] = ini_read_real("config", "player3_key2_double_jump", 0);}
 		if (ini_key_exists("config", "player3_key2_crouch")){global.player_[inp.key][3][2][action.crouch] = ini_read_real("config", "player3_key2_crouch", 0);}
 		if (ini_key_exists("config", "player3_key2_crouch_toggle")){global.player_[inp.key][3][2][action.crouch_toggle] = ini_read_real("config", "player3_key2_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player3_key2_sprint")){global.player_[inp.key][3][2][action.sprint] = ini_read_real("config", "player3_key2_sprint", 0);}
@@ -231,6 +237,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "player4_name")){global.player4_name = ini_read_string("config", "player4_name", 0);}
 		if (ini_key_exists("config", "player4_key_dive")){global.player_[inp.key][4][1][action.dive] = ini_read_real("config", "player4_key_dive", 0);}
 		if (ini_key_exists("config", "player4_key_jump")){global.player_[inp.key][4][1][action.jump] = ini_read_real("config", "player4_key_jump", 0);}
+		if (ini_key_exists("config", "player4_key_double_jump")){global.player_[inp.key][4][1][action.double_jump] = ini_read_real("config", "player4_key_double_jump", 0);}
 		if (ini_key_exists("config", "player4_key_crouch")){global.player_[inp.key][4][1][action.crouch] = ini_read_real("config", "player4_key_crouch", 0);}
 		if (ini_key_exists("config", "player4_key_crouch_toggle")){global.player_[inp.key][4][1][action.crouch_toggle] = ini_read_real("config", "player4_key_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player4_key_sprint")){global.player_[inp.key][4][1][action.sprint] = ini_read_real("config", "player4_key_sprint", 0);}
@@ -247,6 +254,7 @@ function scr_config_load()
 		
 		if (ini_key_exists("config", "player4_key2_dive")){global.player_[inp.key][4][2][action.dive] = ini_read_real("config", "player4_key2_dive", 0);}
 		if (ini_key_exists("config", "player4_key2_jump")){global.player_[inp.key][4][2][action.jump] = ini_read_real("config", "player4_key2_jump", 0);}
+		if (ini_key_exists("config", "player4_key2_double_jump")){global.player_[inp.key][4][2][action.double_jump] = ini_read_real("config", "player4_key2_double_jump", 0);}
 		if (ini_key_exists("config", "player4_key2_crouch")){global.player_[inp.key][4][2][action.crouch] = ini_read_real("config", "player4_key2_crouch", 0);}
 		if (ini_key_exists("config", "player4_key2_crouch_toggle")){global.player_[inp.key][4][2][action.crouch_toggle] = ini_read_real("config", "player4_key2_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player4_key2_sprint")){global.player_[inp.key][4][2][action.sprint] = ini_read_real("config", "player4_key2_sprint", 0);}
@@ -276,6 +284,7 @@ function scr_config_load()
 		#region /* Load Player 1 Gamepad Remapping */
 		if (ini_key_exists("config", "player1_gamepad_button_dive")){global.player_[inp.gp][1][1][action.dive] = ini_read_real("config", "player1_gamepad_button_dive", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button_jump")){global.player_[inp.gp][1][1][action.jump] = ini_read_real("config", "player1_gamepad_button_jump", 0);}
+		if (ini_key_exists("config", "player1_gamepad_button_double_jump")){global.player_[inp.gp][1][1][action.double_jump] = ini_read_real("config", "player1_gamepad_button_double_jump", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button_crouch")){global.player_[inp.gp][1][1][action.crouch] = ini_read_real("config", "player1_gamepad_button_crouch", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button_crouch_toggle")){global.player_[inp.gp][1][1][action.crouch_toggle] = ini_read_real("config", "player1_gamepad_button_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button_sprint")){global.player_[inp.gp][1][1][action.sprint] = ini_read_real("config", "player1_gamepad_button_sprint", 0);}
@@ -292,6 +301,7 @@ function scr_config_load()
 		
 		if (ini_key_exists("config", "player1_gamepad_button2_dive")){global.player_[inp.gp][1][2][action.dive] = ini_read_real("config", "player1_gamepad_button2_dive", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button2_jump")){global.player_[inp.gp][1][2][action.jump] = ini_read_real("config", "player1_gamepad_button2_jump", 0);}
+		if (ini_key_exists("config", "player1_gamepad_button2_double_jump")){global.player_[inp.gp][1][2][action.double_jump] = ini_read_real("config", "player1_gamepad_button2_double_jump", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button2_crouch")){global.player_[inp.gp][1][2][action.crouch] = ini_read_real("config", "player1_gamepad_button2_crouch", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button2_crouch_toggle")){global.player_[inp.gp][1][2][action.crouch_toggle] = ini_read_real("config", "player1_gamepad_button2_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player1_gamepad_button2_sprint")){global.player_[inp.gp][1][2][action.sprint] = ini_read_real("config", "player1_gamepad_button2_sprint", 0);}
@@ -310,6 +320,7 @@ function scr_config_load()
 		#region /* Load Player 2 Gamepad Remapping */
 		if (ini_key_exists("config", "player2_gamepad_button_dive")){global.player_[inp.gp][2][1][action.dive] = ini_read_real("config", "player2_gamepad_button_dive", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button_jump")){global.player_[inp.gp][2][1][action.jump] = ini_read_real("config", "player2_gamepad_button_jump", 0);}
+		if (ini_key_exists("config", "player2_gamepad_button_double_jump")){global.player_[inp.gp][2][1][action.double_jump] = ini_read_real("config", "player2_gamepad_button_double_jump", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button_crouch")){global.player_[inp.gp][2][1][action.crouch] = ini_read_real("config", "player2_gamepad_button_crouch", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button_crouch_toggle")){global.player_[inp.gp][2][1][action.crouch_toggle] = ini_read_real("config", "player2_gamepad_button_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button_sprint")){global.player_[inp.gp][2][1][action.sprint] = ini_read_real("config", "player2_gamepad_button_sprint", 0);}
@@ -326,6 +337,7 @@ function scr_config_load()
 		
 		if (ini_key_exists("config", "player2_gamepad_button2_dive")){global.player_[inp.gp][2][2][action.dive] = ini_read_real("config", "player2_gamepad_button2_dive", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button2_jump")){global.player_[inp.gp][2][2][action.jump] = ini_read_real("config", "player2_gamepad_button2_jump", 0);}
+		if (ini_key_exists("config", "player2_gamepad_button2_double_jump")){global.player_[inp.gp][2][2][action.double_jump] = ini_read_real("config", "player2_gamepad_button2_double_jump", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button2_crouch")){global.player_[inp.gp][2][2][action.crouch] = ini_read_real("config", "player2_gamepad_button2_crouch", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button2_crouch_toggle")){global.player_[inp.gp][2][2][action.crouch_toggle] = ini_read_real("config", "player2_gamepad_button2_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player2_gamepad_button2_sprint")){global.player_[inp.gp][2][2][action.sprint] = ini_read_real("config", "player2_gamepad_button2_sprint", 0);}
@@ -344,6 +356,7 @@ function scr_config_load()
 		#region /* Load Player 3 Gamepad Remapping */
 		if (ini_key_exists("config", "player3_gamepad_button_dive")){global.player_[inp.gp][3][1][action.dive] = ini_read_real("config", "player3_gamepad_button_dive", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button_jump")){global.player_[inp.gp][3][1][action.jump] = ini_read_real("config", "player3_gamepad_button_jump", 0);}
+		if (ini_key_exists("config", "player3_gamepad_button_double_jump")){global.player_[inp.gp][3][1][action.double_jump] = ini_read_real("config", "player3_gamepad_button_double_jump", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button_crouch")){global.player_[inp.gp][3][1][action.crouch] = ini_read_real("config", "player3_gamepad_button_crouch", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button_crouch_toggle")){global.player_[inp.gp][3][1][action.crouch_toggle] = ini_read_real("config", "player3_gamepad_button_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button_sprint")){global.player_[inp.gp][3][1][action.sprint] = ini_read_real("config", "player3_gamepad_button_sprint", 0);}
@@ -360,6 +373,7 @@ function scr_config_load()
 		
 		if (ini_key_exists("config", "player3_gamepad_button2_dive")){global.player_[inp.gp][3][2][action.dive] = ini_read_real("config", "player3_gamepad_button2_dive", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button2_jump")){global.player_[inp.gp][3][2][action.jump] = ini_read_real("config", "player3_gamepad_button2_jump", 0);}
+		if (ini_key_exists("config", "player3_gamepad_button2_double_jump")){global.player_[inp.gp][3][2][action.double_jump] = ini_read_real("config", "player3_gamepad_button2_double_jump", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button2_crouch")){global.player_[inp.gp][3][2][action.crouch] = ini_read_real("config", "player3_gamepad_button2_crouch", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button2_crouch_toggle")){global.player_[inp.gp][3][2][action.crouch_toggle] = ini_read_real("config", "player3_gamepad_button2_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player3_gamepad_button2_sprint")){global.player_[inp.gp][3][2][action.sprint] = ini_read_real("config", "player3_gamepad_button2_sprint", 0);}
@@ -378,6 +392,7 @@ function scr_config_load()
 		#region /* Load Player 4 Gamepad Remapping */
 		if (ini_key_exists("config", "player4_gamepad_button_dive")){global.player_[inp.gp][4][1][action.dive] = ini_read_real("config", "player4_gamepad_button_dive", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button_jump")){global.player_[inp.gp][4][1][action.jump] = ini_read_real("config", "player4_gamepad_button_jump", 0);}
+		if (ini_key_exists("config", "player4_gamepad_button_double_jump")){global.player_[inp.gp][4][1][action.double_jump] = ini_read_real("config", "player4_gamepad_button_double_jump", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button_crouch")){global.player_[inp.gp][4][1][action.crouch] = ini_read_real("config", "player4_gamepad_button_crouch", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button_crouch_toggle")){global.player_[inp.gp][4][1][action.crouch_toggle] = ini_read_real("config", "player4_gamepad_button_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button_sprint")){global.player_[inp.gp][4][1][action.sprint] = ini_read_real("config", "player4_gamepad_button_sprint", 0);}
@@ -394,6 +409,7 @@ function scr_config_load()
 		
 		if (ini_key_exists("config", "player4_gamepad_button2_dive")){global.player_[inp.gp][4][2][action.dive] = ini_read_real("config", "player4_gamepad_button2_dive", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button2_jump")){global.player_[inp.gp][4][2][action.jump] = ini_read_real("config", "player4_gamepad_button2_jump", 0);}
+		if (ini_key_exists("config", "player4_gamepad_button2_double_jump")){global.player_[inp.gp][4][2][action.double_jump] = ini_read_real("config", "player4_gamepad_button2_double_jump", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button2_crouch")){global.player_[inp.gp][4][2][action.crouch] = ini_read_real("config", "player4_gamepad_button2_crouch", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button2_crouch_toggle")){global.player_[inp.gp][4][2][action.crouch_toggle] = ini_read_real("config", "player4_gamepad_button2_crouch_toggle", 0);}
 		if (ini_key_exists("config", "player4_gamepad_button2_sprint")){global.player_[inp.gp][4][2][action.sprint] = ini_read_real("config", "player4_gamepad_button2_sprint", 0);}

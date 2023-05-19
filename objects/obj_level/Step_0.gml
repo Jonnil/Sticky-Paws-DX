@@ -1,30 +1,14 @@
-enter_blink += 1;
-if (enter_blink > 60)
-{
-	enter_blink = 0;
-}
+enter_blink = (enter_blink + 1) % 61;
 
-if (clear_rate = "enter")
+if (clear_rate == "enter")
 {
 	image_alpha = 1;
-	if (enter_blink > room_speed / 4)
-	{
-		level_color = c_red;
-	}
-	else
-	{
-		level_color = c_white;
-	}
+	level_color = (enter_blink > room_speed / 4) ? c_red : c_white;
 }
-else
-if (clear_rate = "clear")
+else if (clear_rate == "clear")
 {
 	image_alpha = 1;
-	if (big_collectible1 == true)
-	and (big_collectible2 == true)
-	and (big_collectible3 == true)
-	and (big_collectible4 == true)
-	and (big_collectible5 == true)
+	if (big_collectible1 && big_collectible2 && big_collectible3 && big_collectible4 && big_collectible5)
 	{
 		level_color = c_yellow;
 		level_perfect = true;

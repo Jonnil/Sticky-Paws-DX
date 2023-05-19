@@ -7,7 +7,7 @@ function scr_player_move_mid_air_jump()
 		can_mid_air_jump -= 1;
 	}
 
-	if (key_jump)
+	if (key_double_jump)
 	and (can_move == true)
 	and (global.pause == false)
 	and (global.equipped_upgrade_double_jump == true)

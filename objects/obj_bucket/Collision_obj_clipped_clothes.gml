@@ -139,7 +139,6 @@ and (sprite_index = spr_bucket)
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				big_collectible = 1;
 				bounce_up = true;
 			}
 		}

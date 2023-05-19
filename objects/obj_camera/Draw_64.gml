@@ -251,7 +251,17 @@ if (!instance_exists(obj_pause))
 	
 	#region /* Time countup in Minutes, Seconds and Milliseconds */
 	if (global.show_timer == true)
+	or (global.player_has_entered_goal == true)
 	{
+		
+		if (global.timeattack_realmillisecond < timeattack_record_realmillisecond)
+		and (global.player_has_entered_goal == true)
+		and (timeattack_record_realmillisecond != 999999999)
+		{
+			scr_draw_text_outlined(get_window_width - 32, time_countup_y - 20, l10n_text("New Record"), global.default_text_size * 0.75, c_black, c_white, scr_wave(0, 1, 0.5));
+		}
+		
+		#region /* Your Time */
 		draw_set_halign(fa_right)
 		if (global.timeattack_minute > 0)
 		{
@@ -267,6 +277,37 @@ if (!instance_exists(obj_pause))
 			scr_draw_text_outlined(get_window_width - 65, time_countup_y, string_replace_all(string_format(global.timeattack_second, 2, 0), " ", "0"), global.default_text_size, c_black, c_white, 1);
 		}
 		scr_draw_text_outlined(get_window_width - 30, time_countup_y + 2, "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);
+		#endregion /* Your Time END */
+		
+		#region /* Record Time */
+		if (timeattack_record_realmillisecond != 999999999)
+		{
+			draw_set_halign(fa_right)
+			if (timeattack_record_minute > 0)
+			{
+				scr_draw_text_outlined(get_window_width - 100 - string_width(timeattack_record_minute), time_countup_y + 32, l10n_text("Best") + ": ", global.default_text_size * 0.75, c_black, c_white, 1);
+			}
+			else
+			{
+				scr_draw_text_outlined(get_window_width - 65 - string_width(timeattack_record_second), time_countup_y + 32, l10n_text("Best") + ": ", global.default_text_size * 0.75, c_black, c_white, 1);
+			}
+			if (timeattack_record_minute > 0)
+			{
+				scr_draw_text_outlined(get_window_width - 100, time_countup_y + 32, string(timeattack_record_minute) + ":", global.default_text_size, c_black, c_white, 1);
+			}
+			if (timeattack_record_minute <= 0)
+			and (timeattack_record_second <= 9)
+			{
+				scr_draw_text_outlined(get_window_width - 65, time_countup_y + 32, timeattack_record_second, global.default_text_size, c_black, c_white, 1);
+			}
+			else
+			{
+				scr_draw_text_outlined(get_window_width - 65, time_countup_y + 32, string_replace_all(string_format(timeattack_record_second, 2, 0), " ", "0"), global.default_text_size, c_black, c_white, 1);
+			}
+			scr_draw_text_outlined(get_window_width - 30, time_countup_y + 32 + 2, "." + string(string_replace_all(string_format(timeattack_record_millisecond, 2, 0), " ", "0")), global.default_text_size * 0.75, c_black, c_white, 1);
+		}
+		#endregion /* Record Time END */
+		
 	}
 	#endregion /* Time countup in Minutes, Seconds and Milliseconds END */
 	

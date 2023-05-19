@@ -1,6 +1,3 @@
-draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, image_index, xstart, ystart, image_xscale, image_yscale, image_angle, image_blend, 1);
-draw_self();
-
 if (global.show_collision_mask)
 {
 	draw_set_halign(fa_center);

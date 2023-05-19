@@ -28,3 +28,6 @@ and (file_exists(working_directory + "/custom_levels/" + string(global.level_nam
 	}
 	ini_close();
 }
+
+global.level_player_1_start_x = x;
+global.level_player_1_start_y = y;

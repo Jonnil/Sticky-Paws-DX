@@ -21,6 +21,8 @@ brand_new_file = ini_read_real("Player", "brand_new_file", true);
 	{
 		x = ini_read_real("Player", "player_x", 0);
 		y = ini_read_real("Player", "player_y", 0);
+		obj_camera_map.x = ini_read_real("Player", "player_x", 0);
+		obj_camera_map.y = ini_read_real("Player", "player_y", 0);
 		xx = ini_read_real("Player", "player_x", 0);
 		yy = ini_read_real("Player", "player_y", 0);
 		if (instance_exists(obj_level))

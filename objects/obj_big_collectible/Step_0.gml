@@ -538,13 +538,6 @@ if (bounce_up == true)
 	
 }
 
-#region /* If big collectible value is 0 or lower, set it to 1 */
-if (big_collectible <= 0)
-{
-	big_collectible = 1;
-}
-#endregion /* If big collectible value is 0 or lower, set it to 1 END */
-
 #region /* Expanding Ring Effect */
 effect_time += 1;
 if (effect_time > 60)

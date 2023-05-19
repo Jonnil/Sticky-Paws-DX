@@ -351,6 +351,10 @@ function scr_player_move_customizable_controls()
 	and (key_up_released_temp)
 	#endregion /* Key Jump Released END */
 	
+	#region /* Key Double Jump Pressed */
+	key_double_jump = scr_key_initialize(key_double_jump, 1, player, action.double_jump);
+	#endregion /* Key Double Jump Pressed END */
+	
 	#region /* Key Crouch Hold */
 	key_crouch_hold_temp = scr_key_initialize(key_crouch_hold_temp, 0, player, action.crouch);
 	

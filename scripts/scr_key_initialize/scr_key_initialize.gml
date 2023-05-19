@@ -205,19 +205,19 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	
 	var key_other =
 	(hold0_press1_release2 == 0)
-	&& (keyboard_check(global.player_[inp.key][which_player][1][this_player_key] /* global.player_[keyboard/gamepad][player][key1/key2][action] */))
-	
-	|| (hold0_press1_release2 == 1)
-	&& (keyboard_check_pressed(global.player_[inp.key][which_player][1][this_player_key]))
-	
-	|| (hold0_press1_release2 = 2)
-	&& (keyboard_check_released(global.player_[inp.key][which_player][1][this_player_key]))
+	&& (keyboard_check(global.player_[inp.key][which_player][1][this_player_key])) /* global.player_[keyboard/gamepad][player][key1/key2][action] */
 	
 	|| (hold0_press1_release2 == 0)
 	&& (keyboard_check(global.player_[inp.key][which_player][2][this_player_key]))
 	
 	|| (hold0_press1_release2 == 1)
+	&& (keyboard_check_pressed(global.player_[inp.key][which_player][1][this_player_key]))
+	
+	|| (hold0_press1_release2 == 1)
 	&& (keyboard_check_pressed(global.player_[inp.key][which_player][2][this_player_key]))
+	
+	|| (hold0_press1_release2 = 2)
+	&& (keyboard_check_released(global.player_[inp.key][which_player][1][this_player_key]))
 	
 	|| (hold0_press1_release2 = 2)
 	&& (keyboard_check_released(global.player_[inp.key][which_player][2][this_player_key]))
@@ -225,17 +225,17 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	|| (hold0_press1_release2 == 0)
 	&& (gamepad_button_check(player_gamepad_slot, global.player_[inp.gp][which_player][1][this_player_key]))
 	
-	|| (hold0_press1_release2 == 1)
-	&& (gamepad_button_check_pressed(player_gamepad_slot, global.player_[inp.gp][which_player][1][this_player_key]))
-	
-	|| (hold0_press1_release2 = 2)
-	&& (gamepad_button_check_released(player_gamepad_slot, global.player_[inp.gp][which_player][1][this_player_key]))
-	
 	|| (hold0_press1_release2 == 0)
 	&& (gamepad_button_check(player_gamepad_slot, global.player_[inp.gp][which_player][2][this_player_key]))
 	
 	|| (hold0_press1_release2 == 1)
+	&& (gamepad_button_check_pressed(player_gamepad_slot, global.player_[inp.gp][which_player][1][this_player_key]))
+	
+	|| (hold0_press1_release2 == 1)
 	&& (gamepad_button_check_pressed(player_gamepad_slot, global.player_[inp.gp][which_player][2][this_player_key]))
+	
+	|| (hold0_press1_release2 = 2)
+	&& (gamepad_button_check_released(player_gamepad_slot, global.player_[inp.gp][which_player][1][this_player_key]))
 	
 	|| (hold0_press1_release2 = 2)
 	&& (gamepad_button_check_released(player_gamepad_slot, global.player_[inp.gp][which_player][2][this_player_key]));

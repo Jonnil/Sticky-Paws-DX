@@ -452,6 +452,7 @@ enum action
 {
 	dive = 0,
 	jump = 1,
+	double_jump = 15,
 	crouch = 2,
 	crouch_toggle = 3,
 	sprint = 4,

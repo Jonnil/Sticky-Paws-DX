@@ -41,6 +41,9 @@ function scr_debug_screen()
 			if (mouse_check_button_released(mb_left))
 			{
 				global.show_fps = !global.show_fps;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "show_fps", global.show_fps);
+				ini_close();
 			}
 		}
 		#endregion /* Click on FPS to toggle if it should stay on screen even after you close debug screen END */
@@ -54,6 +57,9 @@ function scr_debug_screen()
 			if (mouse_check_button_released(mb_left))
 			{
 				global.show_fps_real = !global.show_fps_real;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "show_fps_real", global.show_fps_real);
+				ini_close();
 			}
 		}
 		#endregion /* Click on FPS Real to toggle if it should stay on screen even after you close debug screen END */
@@ -67,6 +73,9 @@ function scr_debug_screen()
 			if (mouse_check_button_released(mb_left))
 			{
 				global.show_instance_count = !global.show_instance_count;
+				ini_open(working_directory + "config.ini");
+				ini_write_real("config", "show_instance_count", global.show_instance_count);
+				ini_close();
 			}
 		}
 		#endregion /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen END */

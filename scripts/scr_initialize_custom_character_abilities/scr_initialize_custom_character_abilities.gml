@@ -1,11 +1,4 @@
-/// @desc scr_initialize_custom_character_abilities(what_player, ability_variable, ability_string, default_value);
-/// @description scr_initialize_custom_character_abilities(what_player, ability_variable, ability_string, default_value);
-/// @arg what_player
-/// @arg ability_variable
-/// @arg ability_string
-/// @arg default_value
-
-function scr_initialize_custom_character_abilities(what_player, ability_string, default_value = false)
+function scr_initialize_custom_character_abilities(what_player, ability_string, default_value = false, section_string = "allow abilities")
 {
 	/* ability_string. Ability string. The name of the ability in string */
 	/* default_value. Ability default value. The default value of the ability */
@@ -22,16 +15,16 @@ function scr_initialize_custom_character_abilities(what_player, ability_string, 
 	}
 	
 	#region /* Allow Ability */
-	if (ini_key_exists("allow abilities", string(ability_string)))
+	if (ini_key_exists(string(section_string), string(ability_string)))
 	{
-		return (ini_read_real("allow abilities", string(ability_string), default_value))
+		return (ini_read_real(string(section_string), string(ability_string), default_value))
 	}
 	else
 	{
 		if (can_save_to_character_config == true)
 		and (ds_list_find_value(global.all_loaded_characters, global.character_index[what_player]) != undefined)
 		{
-			ini_write_real("allow abilities", string(ability_string), default_value);
+			ini_write_real(string(section_string), string(ability_string), default_value);
 		}
 		return (default_value);
 	}
