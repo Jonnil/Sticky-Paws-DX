@@ -1,6 +1,7 @@
 function scr_options_control_menu()
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
+	var can_change_profile = true;
 	
 	#region /* Buttons positions */
 	if (remapping_player == 0)
@@ -12,13 +13,13 @@ function scr_options_control_menu()
 	or (remapping_player = 3)
 	and (allow_player4_dive == true)
 	{
-		var menu_y_remap_key_dive = 64 * 2;
-		var menu_y_remap_key_jump = 64 * 3;
+		var menu_y_remap_key_dive = 8 + 64 * 3;
+		var menu_y_remap_key_jump = 8 + 64 * 4;
 	}
 	else
 	{
 		var menu_y_remap_key_dive = -999;
-		var menu_y_remap_key_jump = 64 * 1;
+		var menu_y_remap_key_jump = 8 + 64 * 3;
 	}
 	if (remapping_player == 0)
 	and (allow_player1_double_jump >= 2)
@@ -3773,7 +3774,14 @@ function scr_options_control_menu()
 			{
 				if (key_up)
 				{
-					menu = "remap_select_player";
+					if (can_change_profile)
+					{
+						menu = "remap_select_profile";
+					}
+					else
+					{
+						menu = "remap_select_player";
+					}
 					menu_delay = 3;
 				}
 				else
@@ -3806,6 +3814,11 @@ function scr_options_control_menu()
 					and (allow_player4_dive == true)
 					{
 						menu = "remap_key_dive";
+					}
+					else
+					if (can_change_profile)
+					{
+						menu = "remap_select_profile";
 					}
 					else
 					{
@@ -4394,6 +4407,28 @@ function scr_options_control_menu()
 		}
 		#endregion /* Menu cursor y position END */
 		
+		/* Have multiple profiles so that for example Joycons upright or on the side can work */
+		if (remapping_player == 0)
+		{
+			var remapping_profile = global.player1_profile;
+		}
+		else
+		if (remapping_player == 1)
+		{
+			var remapping_profile = global.player2_profile;
+		}
+		else
+		if (remapping_player == 2)
+		{
+			var remapping_profile = global.player3_profile;
+		}
+		else
+		if (remapping_player == 3)
+		{
+			var remapping_profile = global.player4_profile;
+		}
+		draw_menu_dropdown(390, 120 + menu_y_offset, l10n_text("Remap This Profile"), "remap_select_profile", remapping_profile, l10n_text("Profile 1"), l10n_text("Profile 2"), l10n_text("Profile 3"), l10n_text("Profile 4")); /* Remap Select Profile - Which profile do you want to remap the controls for? */
+		
 		draw_menu_dropdown(390, 50 + menu_y_offset, l10n_text("Remap This Player"), "remap_select_player", remapping_player, l10n_text("Player 1"), l10n_text("Player 2"), l10n_text("Player 3"), l10n_text("Player 4")); /* Remap Select Player - Which player do you want to remap the controls for? */
 		
 		#region /* Show the player when they can input a gamepad button to remap controls */
@@ -4476,6 +4511,11 @@ function scr_options_control_menu()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
+					if (can_change_profile)
+					{
+						menu = "remap_select_profile";
+					}
+					else
 					if (remapping_player == 0)
 					and (allow_player1_dive == true)
 					or (remapping_player == 1)
@@ -4513,6 +4553,128 @@ function scr_options_control_menu()
 				}
 			}
 			#endregion /* Remap Select Player Navigation END */
+			
+			else
+			
+			#region /* Remap Select Profile Navigation */
+			if (menu == "remap_select_profile")
+			{
+				menu_cursor_y_position = 0;
+				if (key_up)
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					menu = "remap_select_player";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				and (menu_delay == 0)
+				and (open_dropdown == false)
+				{
+					if (remapping_player == 0)
+					and (allow_player1_dive == true)
+					or (remapping_player == 1)
+					and (allow_player2_dive == true)
+					or (remapping_player = 2)
+					and (allow_player3_dive == true)
+					or (remapping_player = 3)
+					and (allow_player4_dive == true)
+					{
+						menu = "remap_key_dive";
+					}
+					else
+					{
+						menu = "remap_key_jump";
+					}
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				and (menu_delay == 0)
+				and (open_dropdown == true)
+				{
+					if (remapping_player == 0)
+					and (global.player1_profile > 0)
+					{
+						global.player1_profile -= 1;
+					}
+					else
+					if (remapping_player == 1)
+					and (global.player2_profile > 0)
+					{
+						global.player2_profile -= 1;
+					}
+					else
+					if (remapping_player == 2)
+					and (global.player3_profile > 0)
+					{
+						global.player3_profile -= 1;
+					}
+					else
+					if (remapping_player == 3)
+					and (global.player4_profile > 0)
+					{
+						global.player4_profile -= 1;
+					}
+					ini_open(working_directory + "config.ini");
+					if (!ini_section_exists("player1_profile" + string(change_to_value)))
+					{
+						scr_set_default_remapping_player1_gamepad(true);
+						scr_set_default_remapping_player1_keyboard(true);
+					}
+					else
+					{
+						scr_config_save();
+					}
+					ini_close();
+					menu_delay = 3;
+					scr_config_load();
+				}
+				else
+				if (key_down)
+				and (menu_delay == 0)
+				and (open_dropdown == true)
+				{
+					if (remapping_player == 0)
+					and (global.player1_profile < 3)
+					{
+						global.player1_profile += 1;
+					}
+					else
+					if (remapping_player == 1)
+					and (global.player2_profile < 3)
+					{
+						global.player2_profile += 1;
+					}
+					else
+					if (remapping_player == 2)
+					and (global.player3_profile < 3)
+					{
+						global.player3_profile += 1;
+					}
+					else
+					if (remapping_player == 3)
+					and (global.player4_profile < 3)
+					{
+						global.player4_profile += 1;
+					}
+					ini_open(working_directory + "config.ini");
+					if (!ini_section_exists("player1_profile" + string(change_to_value)))
+					{
+						scr_set_default_remapping_player1_gamepad(true);
+						scr_set_default_remapping_player1_keyboard(true);
+					}
+					else
+					{
+						scr_config_save();
+					}
+					ini_close();
+					menu_delay = 3;
+					scr_config_load();
+				}
+			}
+			#endregion /* Remap Select Profile Navigation END */
 			
 			else
 			
@@ -5199,6 +5361,7 @@ function scr_options_control_menu()
 			
 			#region /* Drop down menu */
 			if (menu == "remap_select_player")
+			or (menu == "remap_select_profile")
 			or (menu == "wall_jump_setting")
 			or (menu == "drop_from_rope")
 			or (menu == "show_controls")

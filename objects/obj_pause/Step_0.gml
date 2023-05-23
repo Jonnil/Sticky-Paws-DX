@@ -1,14 +1,4 @@
-if (global.background_brightness_menu > -0.001)
-{
-	c_menu_outline = c_white;
-	c_menu_fill = c_black;
-}
-else
-{
-	c_menu_outline = c_black;
-	c_menu_fill = c_white;
-}
-
+scr_set_menu_font_color();
 scr_set_controls_used_to_navigate();
 
 if (menu_delay > 0)

@@ -252,6 +252,7 @@ function scr_debug_screen()
 		{
 			scr_draw_text_outlined(32, 400, "gamepad(4): " + string(gamepad_get_description(4)));
 		}
+		scr_draw_text_outlined(32, 420, "global.background_brightness_menu: " + string(global.background_brightness_menu));
 		draw_set_halign(fa_right);
 		scr_draw_text_outlined(display_get_gui_height() - 32, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)));
 	}

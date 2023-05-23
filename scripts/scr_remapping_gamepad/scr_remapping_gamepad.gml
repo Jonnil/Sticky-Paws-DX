@@ -1,5 +1,24 @@
 function scr_remapping_gamepad()
 {
+	if (remapping_player == 0)
+	{
+		player_profile = global.player1_profile;
+	}
+	else
+	if (remapping_player == 1)
+	{
+		player_profile = global.player2_profile;
+	}
+	else
+	if (remapping_player == 2)
+	{
+		player_profile = global.player3_profile;
+	}
+	else
+	if (remapping_player == 3)
+	{
+		player_profile = global.player4_profile;
+	}
 	
 	#region /* Check for player 1 button presses */
 	if (remapping_player == 0)
@@ -422,7 +441,7 @@ function scr_remapping_gamepad()
 		{
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.dive] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_dive", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_dive", last_key);
 			ini_close();
 		}
 		else
@@ -430,7 +449,7 @@ function scr_remapping_gamepad()
 		{
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.jump] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_jump", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_jump", last_key);
 			ini_close();
 		}
 		else
@@ -438,7 +457,7 @@ function scr_remapping_gamepad()
 		{
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.double_jump] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_double_jump", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_double_jump", last_key);
 			ini_close();
 		}
 		else
@@ -446,7 +465,7 @@ function scr_remapping_gamepad()
 		{
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.crouch] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_crouch", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_crouch", last_key);
 			ini_close();
 		}
 		else
@@ -454,7 +473,7 @@ function scr_remapping_gamepad()
 		{
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.crouch_toggle] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_crouch_toggle", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_crouch_toggle", last_key);
 			ini_close();
 		}
 		else
@@ -462,7 +481,7 @@ function scr_remapping_gamepad()
 		{
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.sprint] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_sprint", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_sprint", last_key);
 			ini_close();
 		}
 		else
@@ -470,7 +489,7 @@ function scr_remapping_gamepad()
 		{
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.sprint_toggle] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_sprint_toggle", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_sprint_toggle", last_key);
 			ini_close();
 		}
 		else
@@ -483,7 +502,7 @@ function scr_remapping_gamepad()
 			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.left] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_left", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_left", last_key);
 			ini_close();
 		}
 		else
@@ -496,7 +515,7 @@ function scr_remapping_gamepad()
 			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.right] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_right", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_right", last_key);
 			ini_close();
 		}
 		else
@@ -509,7 +528,7 @@ function scr_remapping_gamepad()
 			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.down] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_down", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_down", last_key);
 			ini_close();
 		}
 		else
@@ -522,7 +541,7 @@ function scr_remapping_gamepad()
 			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.up] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_up", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_up", last_key);
 			ini_close();
 		}
 		else
@@ -530,7 +549,7 @@ function scr_remapping_gamepad()
 		{
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.tongue] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_tongue", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_tongue", last_key);
 			ini_close();
 		}
 		else
@@ -538,7 +557,7 @@ function scr_remapping_gamepad()
 		{
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.zoom_in] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_zoom_in", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_zoom_in", last_key);
 			ini_close();
 		}
 		else
@@ -546,7 +565,7 @@ function scr_remapping_gamepad()
 		{
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.zoom_out] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_zoom_out", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_zoom_out", last_key);
 			ini_close();
 		}
 		else
@@ -568,12 +587,12 @@ function scr_remapping_gamepad()
 			{
 				global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back] = global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept];
 				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_back", global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept]);
+				ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_back", global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept]);
 				ini_close();
 			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_accept", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_accept", last_key);
 			ini_close();
 		}
 		else
@@ -595,12 +614,12 @@ function scr_remapping_gamepad()
 			{
 				global.player_[inp.gp][remapping_player + 1][remap_key_number][action.accept] = global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back];
 				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_accept", global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back]);
+				ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_accept", global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back]);
 				ini_close();
 			}
 			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.back] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_back", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_back", last_key);
 			ini_close();
 		}
 		can_remap_key = false;

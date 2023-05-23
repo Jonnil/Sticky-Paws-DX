@@ -238,17 +238,6 @@ and (show_arcade_mode_enable_text > 0)
 	draw_sprite_ext(spr_checkbox, false, 32, 32, 0.5, 0.5, 0, c_white, 1);
 }
 
-if (global.background_brightness_menu > +0.001)
-{
-	c_menu_outline = c_white;
-	c_menu_fill = c_black;
-}
-else
-{
-	c_menu_outline = c_black;
-	c_menu_fill = c_white;
-}
-
 /* Title Screen */
 
 room_speed = global.max_fps; /* Room Speed END */

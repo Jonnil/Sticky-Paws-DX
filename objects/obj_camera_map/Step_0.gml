@@ -7,8 +7,8 @@ y = lerp(y, yy, 0.1);
 
 #region /* Make sure player map is always present on the map screen */
 instance_activate_object(obj_player_map);
-if (asset_get_type("obj_player_map") == asset_object)
-and (!instance_exists(obj_player_map))
+instance_activate_object(obj_background_brightness_gameplay);
+if (!instance_exists(obj_player_map))
 {
 	instance_create_depth(x, y, 0, obj_player_map);
 }

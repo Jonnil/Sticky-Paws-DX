@@ -1,6 +1,7 @@
 scr_set_controls_used_to_navigate();
 scr_set_screen_size();
 scr_character_select_menu_step();
+scr_set_menu_font_color();
 
 scr_menu_navigation_initialization(1, true); /* Keyboard Controls END */
 

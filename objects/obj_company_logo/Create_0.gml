@@ -447,6 +447,13 @@ global.player3_slot = 2;
 global.player4_slot = 3;
 #endregion /* Controller ports END */
 
+#region /* Remap Profiles */
+global.player1_profile = 0;
+global.player2_profile = 0;
+global.player3_profile = 0;
+global.player4_profile = 0;
+#endregion /* Remap Profiles END */
+
 #region /* Set controls */
 enum action
 {
@@ -473,14 +480,14 @@ enum inp
 	gp = 1
 }
 
-scr_set_default_remapping_player1_keyboard();
-scr_set_default_remapping_player1_gamepad();
-scr_set_default_remapping_player2_keyboard();
-scr_set_default_remapping_player2_gamepad();
-scr_set_default_remapping_player3_keyboard();
-scr_set_default_remapping_player3_gamepad();
-scr_set_default_remapping_player4_keyboard();
-scr_set_default_remapping_player4_gamepad();
+scr_set_default_remapping_player1_keyboard(true);
+scr_set_default_remapping_player1_gamepad(true);
+scr_set_default_remapping_player2_keyboard(true);
+scr_set_default_remapping_player2_gamepad(true);
+scr_set_default_remapping_player3_keyboard(true);
+scr_set_default_remapping_player3_gamepad(true);
+scr_set_default_remapping_player4_keyboard(true);
+scr_set_default_remapping_player4_gamepad(true);
 #endregion /* Set controls END */
 
 #region /* Set default language */
