@@ -191,3 +191,5 @@ else
 	}
 }
 #endregion /* Kill enemy if it's inside the wall END */
+
+scr_enemy_dying_offscreen();

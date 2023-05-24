@@ -33,6 +33,7 @@ if (asset_get_type("spr_small_mask") == asset_sprite)
 draw_xscale = 1;
 draw_yscale = 1;
 die = false;
+die_volting = false;
 stomped_delay = 0;
 stuck_in_wall_counter = 0;
 sliding_along_ground = 0;

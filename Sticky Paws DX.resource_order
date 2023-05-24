@@ -212,6 +212,7 @@
     {"name":"spr_clipped_sock","order":14,"path":"sprites/spr_clipped_sock/spr_clipped_sock.yy",},
     {"name":"scr_player_move_dive","order":16,"path":"scripts/scr_player_move_dive/scr_player_move_dive.yy",},
     {"name":"spr_lock_icon","order":144,"path":"sprites/spr_lock_icon/spr_lock_icon.yy",},
+    {"name":"scr_enemy_dying_offscreen","order":76,"path":"scripts/scr_enemy_dying_offscreen/scr_enemy_dying_offscreen.yy",},
     {"name":"snd_footstep_glass_right","order":43,"path":"sounds/snd_footstep_glass_right/snd_footstep_glass_right.yy",},
     {"name":"snd_bigjump","order":6,"path":"sounds/snd_bigjump/snd_bigjump.yy",},
     {"name":"scr_upload_zip_add_files","order":12,"path":"scripts/scr_upload_zip_add_files/scr_upload_zip_add_files.yy",},

@@ -2355,6 +2355,7 @@
     {"id":{"name":"spr_clipped_sock","path":"sprites/spr_clipped_sock/spr_clipped_sock.yy",},},
     {"id":{"name":"scr_player_move_dive","path":"scripts/scr_player_move_dive/scr_player_move_dive.yy",},},
     {"id":{"name":"spr_lock_icon","path":"sprites/spr_lock_icon/spr_lock_icon.yy",},},
+    {"id":{"name":"scr_enemy_dying_offscreen","path":"scripts/scr_enemy_dying_offscreen/scr_enemy_dying_offscreen.yy",},},
     {"id":{"name":"snd_footstep_glass_right","path":"sounds/snd_footstep_glass_right/snd_footstep_glass_right.yy",},},
     {"id":{"name":"snd_bigjump","path":"sounds/snd_bigjump/snd_bigjump.yy",},},
     {"id":{"name":"scr_upload_zip_add_files","path":"scripts/scr_upload_zip_add_files/scr_upload_zip_add_files.yy",},},

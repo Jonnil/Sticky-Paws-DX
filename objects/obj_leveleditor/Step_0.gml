@@ -7,7 +7,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Deactivate instances outside view. Run this code at start of Step Event */
 	deactivate_timer += 1;
-	if (deactivate_timer >= 10)
+	if (deactivate_timer >= 5)
 	&& (pressing_play_timer == 0)
 	&& (pause <= 1)
 	{
@@ -359,35 +359,6 @@ if (global.actually_play_edited_level == false)
 		}
 	}
 	#endregion /* Play Level when releasing Enter Key END */
-	
-	#region /* Scroll View */
-	if (mouse_check_button_pressed(mb_left))
-	&& (keyboard_check(vk_space))
-	&& (quit_level_editor <= 0)
-	|| (mouse_check_button_pressed(mb_middle))
-	&& (quit_level_editor <= 0)
-	{
-		if (!instance_exists(obj_leveleditor_fill))
-		{
-			drag_x = mouse_x;
-			drag_y = mouse_y;
-			scroll_view = true;
-		}
-	}
-	if (scroll_view == true)
-	&& (quit_level_editor <= 0)
-	&& (!instance_exists(obj_leveleditor_fill))
-	{
-		camera_set_view_pos(view_camera[view_current], drag_x -(mouse_x -cam_x), drag_y -(mouse_y -cam_y)); /* Scroll the camera position with the mouse */
-	}
-	if (mouse_check_button_released(mb_left))
-	&& (scroll_view == true)
-	|| (mouse_check_button_released(mb_middle))
-	&& (scroll_view == true)
-	{
-		scroll_view = false;
-	}
-	#endregion /* Scroll View END */
 
 	if (global.create_level_from_template == true)
 	&& (create_level_from_template_save_delay < 10)
@@ -514,6 +485,7 @@ if (global.actually_play_edited_level == false)
 			controller_x = mouse_get_x;
 			controller_y = mouse_get_y;
 			
+			#region /* Move view with keyboard */
 			if (keyboard_check(vk_control))
 			{
 				controller_view_speed = 16;
@@ -522,8 +494,8 @@ if (global.actually_play_edited_level == false)
 			{
 				controller_view_speed = 8;
 			}
-		
-			#region /* Move view with gamepad */
+			var view_x_direction = 0;
+			var view_y_direction = 0;
 			if (pause == false)
 			{
 				if (keyboard_check(global.player_[inp.key][1][1][action.up]))
@@ -533,7 +505,7 @@ if (global.actually_play_edited_level == false)
 				{
 					if (view_center_y > 0)
 					{
-						camera_set_view_pos(view_camera[view_current], cam_x, cam_y - controller_view_speed); /* Move camera up */
+						view_y_direction = -controller_view_speed; /* Move camera up */
 					}
 				}
 				if (keyboard_check(global.player_[inp.key][1][1][action.down]))
@@ -544,7 +516,7 @@ if (global.actually_play_edited_level == false)
 					if (instance_exists(obj_level_height))
 					&& (view_center_y < obj_level_height.y)
 					{
-						camera_set_view_pos(view_camera[view_current], cam_x, cam_y + controller_view_speed); /* Move camera down */
+						view_y_direction = +controller_view_speed; /* Move camera down */
 					}
 				}
 				if (keyboard_check(global.player_[inp.key][1][1][action.left]))
@@ -554,7 +526,7 @@ if (global.actually_play_edited_level == false)
 				{
 					if (view_center_x > 0)
 					{
-						camera_set_view_pos(view_camera[view_current], cam_x - controller_view_speed, cam_y); /* Move camera left */
+						view_x_direction = -controller_view_speed; /* Move camera left */
 					}
 				}
 				if (keyboard_check(global.player_[inp.key][1][1][action.right]))
@@ -565,10 +537,11 @@ if (global.actually_play_edited_level == false)
 					if (instance_exists(obj_level_width))
 					&& (view_center_x < obj_level_width.x)
 					{
-						camera_set_view_pos(view_camera[view_current], cam_x + controller_view_speed, cam_y); /* Move camera right */
+						view_x_direction = +controller_view_speed; /* Move camera right */
 					}
 				}
 			}
+			camera_set_view_pos(view_camera[view_current], cam_x + view_x_direction, cam_y + view_y_direction); /* Move actual camera */
 			#endregion /* Move view with gamepad END */
 		
 		}
@@ -585,17 +558,14 @@ if (global.actually_play_edited_level == false)
 			{
 				controller_x = cam_x;
 			}
-			else
 			if (controller_x > cam_x + cam_width)
 			{
 				controller_x = cam_x + cam_width;
 			}
-			else
 			if (controller_y < cam_y)
 			{
 				controller_y = cam_y;
 			}
-			else
 			if (controller_y > cam_y + cam_height)
 			{
 				controller_y = cam_y + cam_height;
@@ -653,7 +623,7 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 			}
-		
+			
 			#region /* Move view with gamepad */
 			if (key_move_faster)
 			{
@@ -663,12 +633,13 @@ if (global.actually_play_edited_level == false)
 			{
 				controller_view_speed = 8;
 			}
-		
+			var view_x_direction = 0;
+			var view_y_direction = 0;
 			if (gamepad_axis_value(global.player1_slot, gp_axisrv) < 0)
 			|| (key_up)
 			&& (controller_y <= cam_y)
 			{
-				camera_set_view_pos(view_camera[view_current], cam_x, cam_y - controller_view_speed); /* Move camera up */
+				view_y_direction = -controller_view_speed; /* Move camera up */
 				if (controller_y > cam_y)
 				{
 					controller_y -= controller_view_speed;
@@ -678,7 +649,7 @@ if (global.actually_play_edited_level == false)
 			|| (key_down)
 			&& (controller_y >= cam_y + cam_height)
 			{
-				camera_set_view_pos(view_camera[view_current], cam_x, cam_y + controller_view_speed); /* Move camera down */
+				view_y_direction = +controller_view_speed; /* Move camera down */
 				if (controller_y < cam_y + cam_height)
 				{
 					controller_y += controller_view_speed;
@@ -688,7 +659,7 @@ if (global.actually_play_edited_level == false)
 			|| (key_left)
 			&& (controller_x <= cam_x)
 			{
-				camera_set_view_pos(view_camera[view_current], cam_x - controller_view_speed, cam_y); /* Move camera left */
+				view_x_direction = -controller_view_speed; /* Move camera left */
 				if (controller_x > cam_x)
 				{
 					controller_x -= controller_view_speed;
@@ -698,12 +669,13 @@ if (global.actually_play_edited_level == false)
 			|| (key_right)
 			&& (controller_x >= cam_x + cam_width)
 			{
-				camera_set_view_pos(view_camera[view_current], cam_x + controller_view_speed, cam_y); /* Move camera right */
+				view_x_direction = +controller_view_speed; /* Move camera right */
 				if (controller_x < cam_x + cam_width)
 				{
 					controller_x += controller_view_speed;
 				}
 			}
+			camera_set_view_pos(view_camera[view_current], cam_x + view_x_direction, cam_y + view_y_direction); /* Move actual camera */
 			#endregion /* Move view with gamepad END */
 			
 		}
@@ -1695,5 +1667,34 @@ if (global.actually_play_edited_level == false)
 		camera_set_view_pos(view_camera[view_current], cam_x, obj_level_height.y - cam_height * 0.5);
 	}
 	#endregion /* Keep view within the level END */
+	
+	#region /* Scroll View. Need to have this code at the bottom of the Step Event */
+	if (mouse_check_button_pressed(mb_left))
+	&& (keyboard_check(vk_space))
+	&& (quit_level_editor <= 0)
+	|| (mouse_check_button_pressed(mb_middle))
+	&& (quit_level_editor <= 0)
+	{
+		if (!instance_exists(obj_leveleditor_fill))
+		{
+			drag_x = mouse_x;
+			drag_y = mouse_y;
+			scroll_view = true;
+		}
+	}
+	if (scroll_view == true)
+	&& (quit_level_editor <= 0)
+	&& (!instance_exists(obj_leveleditor_fill))
+	{
+		camera_set_view_pos(view_camera[view_current], drag_x -(mouse_x -cam_x), drag_y -(mouse_y -cam_y)); /* Scroll the camera position with the mouse */
+	}
+	if (mouse_check_button_released(mb_left))
+	&& (scroll_view == true)
+	|| (mouse_check_button_released(mb_middle))
+	&& (scroll_view == true)
+	{
+		scroll_view = false;
+	}
+	#endregion /* Scroll View. Need to have this code at the bottom of the Step Event END */
 	
 }

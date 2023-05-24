@@ -8,10 +8,10 @@ function scr_deactivate_objects_outside_view()
 	
 	if (!global.deactivate_objects_from_most_zoomed_out)
 	{
-		var region_x = camera_get_view_x(view_camera[view_current]) - 64;
-		var region_y = camera_get_view_y(view_camera[view_current]) - 64;
-		var region_width = camera_get_view_width(view_camera[view_current]) + 128;
-		var region_height = camera_get_view_height(view_camera[view_current]) + 128;
+		var region_x = camera_get_view_x(view_camera[view_current]) - 64 - 32;
+		var region_y = camera_get_view_y(view_camera[view_current]) - 64 - 32;
+		var region_width = camera_get_view_width(view_camera[view_current]) + 128 + 32;
+		var region_height = camera_get_view_height(view_camera[view_current]) + 128 + 32;
 	}
 	else
 	{

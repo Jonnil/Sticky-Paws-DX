@@ -1,16 +1,16 @@
-var view_left = camera_get_view_x(view_camera[view_current]) - 21;
-var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 21;
-var view_top = camera_get_view_y(view_camera[view_current]) - 21;
-var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current])) + 21;
+var view_left = camera_get_view_x(view_camera[view_current]);
+var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current]));
+var view_top = camera_get_view_y(view_camera[view_current]);
+var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current]));
 
 #region /* No collision underneath */
 if (!place_meeting(x, y + 3, obj_wall))
 and (!place_meeting(x, y + 3, obj_semisolid_platform))
 {
-	if (x < view_right)
-	and (x > view_left)
-	and (y < view_bottom)
-	and (y > view_top)
+	if (bbox_left < view_right + 8)
+	and (bbox_right > view_left - 8)
+	and (bbox_top < view_bottom + 8)
+	and (bbox_bottom > view_top - 8)
 	{
 		instance_create_depth(x, y - 32, 0, obj_block_break);
 		if (instance_exists(obj_player))
@@ -43,10 +43,10 @@ and (!place_meeting(x, y + 3, obj_semisolid_platform))
 		{
 			
 			#region /* Only do the breaking smoke effect and sound effect if it's inside the view */
-			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-			and (x > camera_get_view_x(view_camera[view_current]))
-			and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-			and (y > camera_get_view_y(view_camera[view_current]))
+			if (x < view_right)
+			and (x > view_left)
+			and (y < view_bottom)
+			and (y > view_top)
 			{
 				effect_create_above(ef_smoke, x, y, 1, c_dkgray);
 				scr_audio_play(snd_blockbreak, volume_source.sound);

@@ -1,7 +1,3 @@
-if (y > room_height + sprite_height)
-{
-	instance_destroy();
-}
 if (place_meeting(x, y, obj_water))
 {
 	if (vspeed > +1)
@@ -566,3 +562,5 @@ if (flying_back > 1)
 {
 	flying_back -= 1;
 }
+
+scr_enemy_dying_offscreen();
