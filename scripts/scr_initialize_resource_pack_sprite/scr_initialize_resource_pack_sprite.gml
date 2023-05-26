@@ -60,8 +60,8 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable)
 	
 	#region /* Origin points */
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
-	and (found_resource_sprite == true)
-	or (found_resource_sprite == true)
+	and (found_resource_sprite)
+	or (found_resource_sprite)
 	{
 		if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 		{
@@ -69,7 +69,7 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable)
 			can_save_to_character_config = false; /* You can't save values to included files */
 		}
 		else
-		if (found_resource_sprite == true)
+		if (found_resource_sprite)
 		{
 			ini_open(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
 			can_save_to_character_config = true; /* You can save values to local appdata */
@@ -87,7 +87,7 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable)
 		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
 		and (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
-			if (can_save_to_character_config == true)
+			if (can_save_to_character_config)
 			{
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5);
 			}
@@ -99,7 +99,7 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable)
 		if (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
 		and (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
-			if (can_save_to_character_config == true)
+			if (can_save_to_character_config)
 			{
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5);
 			}
@@ -109,7 +109,7 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable)
 		}
 		else
 		{
-			if (can_save_to_character_config == true)
+			if (can_save_to_character_config)
 			{
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5);
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5);

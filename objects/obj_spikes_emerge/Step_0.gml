@@ -1,5 +1,5 @@
 #region /* If spikes are disabled, destroy this object */
-if (global.assist_enable == true)
+if (global.assist_enable)
 and (global.assist_enable_spikes == false)
 {
 	instance_destroy();
@@ -24,7 +24,7 @@ if (global.spikes_emerge_time < room_speed * 1)
 		image_speed = 1;
 	}
 	else
-	if (timer_offset == true)
+	if (timer_offset)
 	{
 		if (asset_get_type("spr_spikes_emerge_in") == asset_sprite)
 		{
@@ -48,7 +48,7 @@ and (global.spikes_emerge_time > room_speed * 1)
 		mask_index = noone;
 	}
 	else
-	if (timer_offset == true)
+	if (timer_offset)
 	{
 		if (asset_get_type("spr_spikes_emerge_half_out") == asset_sprite)
 		{
@@ -72,7 +72,7 @@ and (global.spikes_emerge_time > room_speed * 2)
 		mask_index = noone;
 	}
 	else
-	if (timer_offset == true)
+	if (timer_offset)
 	{
 		if (asset_get_type("spr_spikes_emerge") == asset_sprite)
 		{
@@ -95,7 +95,7 @@ if (global.spikes_emerge_time > room_speed * 3)
 		mask_index = noone;
 	}
 	else
-	if (timer_offset == true)
+	if (timer_offset)
 	{
 		if (asset_get_type("spr_spikes_emerge_in") == asset_sprite)
 		{
@@ -156,7 +156,7 @@ and (instance_nearest(x, y, obj_player).hspeed <= 0)
 		{
 			if (invincible_timer == false)
 			{
-				if (have_heart_balloon == true)
+				if (have_heart_balloon)
 				{
 					have_heart_balloon = false;
 					
@@ -254,7 +254,7 @@ and (asset_get_type("spr_spikes_emerge") == asset_sprite)
 and (sprite_index = spr_spikes_emerge)
 and (instance_exists(obj_player))
 and (position_meeting(x, y - 4, instance_nearest(x, y, obj_player)))
-and (instance_nearest(x, y, obj_player).dive == true)
+and (instance_nearest(x, y, obj_player).dive)
 {
 	with(instance_nearest(x, y, obj_player))
 	{
@@ -268,7 +268,7 @@ and (asset_get_type("spr_spikes_emerge") == asset_sprite)
 and (sprite_index = spr_spikes_emerge)
 and (instance_exists(obj_player))
 and (position_meeting(x - 4, y, instance_nearest(x, y, obj_player)))
-and (instance_nearest(x, y, obj_player).dive == true)
+and (instance_nearest(x, y, obj_player).dive)
 {
 	with(instance_nearest(x, y, obj_player))
 	{
@@ -283,7 +283,7 @@ and (asset_get_type("spr_spikes_emerge") == asset_sprite)
 and (sprite_index = spr_spikes_emerge)
 and (instance_exists(obj_player))
 and (position_meeting(x, y + 4, instance_nearest(x, y, obj_player)))
-and (instance_nearest(x, y, obj_player).dive == true)
+and (instance_nearest(x, y, obj_player).dive)
 {
 	with(instance_nearest(x, y, obj_player))
 	{
@@ -297,7 +297,7 @@ and (asset_get_type("spr_spikes_emerge") == asset_sprite)
 and (sprite_index = spr_spikes_emerge)
 and (instance_exists(obj_player))
 and (position_meeting(x + 4, y, instance_nearest(x, y, obj_player)))
-and (instance_nearest(x, y, obj_player).dive == true)
+and (instance_nearest(x, y, obj_player).dive)
 {
 	with(instance_nearest(x, y, obj_player))
 	{

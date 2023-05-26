@@ -63,7 +63,7 @@ else
 
 if (instance_exists(obj_player))
 {
-	if (allow_move == true)
+	if (allow_move)
 	{
 		if (dir = +1)
 		{

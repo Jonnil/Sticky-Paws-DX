@@ -69,7 +69,7 @@ else
 
 if (close == false)
 {
-	if (show_copy_to_clipboard_button == true)
+	if (show_copy_to_clipboard_button)
 	{
 		draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Copy to Clipboard"), "copy_to_clipboard", "copy_to_clipboard");
 	}
@@ -112,7 +112,7 @@ if (menu == "back_open_folder_text")
 	or (instance_exists(obj_leveleditor))
 	and (obj_leveleditor.key_down)
 	{
-		if (show_copy_to_clipboard_button == true)
+		if (show_copy_to_clipboard_button)
 		{
 			menu = "copy_to_clipboard";
 		}
@@ -120,7 +120,7 @@ if (menu == "back_open_folder_text")
 }
 #endregion /* Navigate menu up and down END */
 
-if (show_copy_to_clipboard_button == true)
+if (show_copy_to_clipboard_button)
 and (menu_delay == 0)
 {
 	if (instance_exists(obj_title))
@@ -192,7 +192,7 @@ and (mouse_check_button_released(mb_left))
 }
 #endregion /* Close the open folder text by pressing any button END */
 
-if (close == true)
+if (close)
 {
 	image_alpha = lerp(image_alpha, 0, 0.3);
 	if (image_alpha <= 0)

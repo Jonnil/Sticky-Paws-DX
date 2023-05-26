@@ -1,6 +1,6 @@
 if (!instance_exists(obj_player))
 and (count > 49)
-and (last_player == true)
+and (last_player)
 {
 	if (iris_zoom == 0)
 	{
@@ -20,7 +20,7 @@ and (last_player == true)
 	and (instance_exists(obj_player_lose))
 	{
 		if (iris_xscale < 16)
-		and (global.enable_transitions == true)
+		and (global.enable_transitions)
 		{
 			if (asset_get_type("spr_iris_dead") == asset_sprite)
 			{
@@ -44,7 +44,7 @@ if (sprite_index > 0)
 }
 
 #region /* Bubble */
-if (bubble == true)
+if (bubble)
 {
 	
 	#region /* Bubble */

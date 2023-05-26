@@ -64,7 +64,7 @@ function scr_set_default_remapping_player1_gamepad(save_default_controls_to_conf
 	#endregion /* Player 1 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
-	if (save_default_controls_to_config == true)
+	if (save_default_controls_to_config)
 	{
 		ini_open(working_directory + "config.ini");
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_gamepad_button_dive", global.player_[inp.gp][1][1][action.dive]);
@@ -173,7 +173,7 @@ function scr_set_default_remapping_player1_keyboard(save_default_controls_to_con
 	#endregion /* Player 1 Keyboard Remapping END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
-	if (save_default_controls_to_config == true)
+	if (save_default_controls_to_config)
 	{
 		ini_open(working_directory + "config.ini");
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_key_dive", global.player_[inp.key][1][1][action.dive]);
@@ -290,7 +290,7 @@ function scr_set_default_remapping_player2_gamepad(save_default_controls_to_conf
 	#endregion /* Player 2 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
-	if (save_default_controls_to_config == true)
+	if (save_default_controls_to_config)
 	{
 		ini_open(working_directory + "config.ini");
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_gamepad_button_dive", global.player_[inp.gp][2][1][action.dive]);
@@ -399,7 +399,7 @@ function scr_set_default_remapping_player2_keyboard(save_default_controls_to_con
 	#endregion /* Player 2 Keyboard Remapping (everything should be set to noone) END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
-	if (save_default_controls_to_config == true)
+	if (save_default_controls_to_config)
 	{
 		ini_open(working_directory + "config.ini");
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_key_dive", global.player_[inp.key][2][1][action.dive]);
@@ -516,7 +516,7 @@ function scr_set_default_remapping_player3_gamepad(save_default_controls_to_conf
 	#endregion /* Player 3 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
-	if (save_default_controls_to_config == true)
+	if (save_default_controls_to_config)
 	{
 		ini_open(working_directory + "config.ini");
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_gamepad_button_dive", global.player_[inp.gp][3][1][action.dive]);
@@ -625,7 +625,7 @@ function scr_set_default_remapping_player3_keyboard(save_default_controls_to_con
 	#endregion /* Player 3 Keyboard Remapping (everything should be set to noone) END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
-	if (save_default_controls_to_config == true)
+	if (save_default_controls_to_config)
 	{
 		ini_open(working_directory + "config.ini");
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_key_dive", global.player_[inp.key][3][1][action.dive]);
@@ -742,7 +742,7 @@ function scr_set_default_remapping_player4_gamepad(save_default_controls_to_conf
 	#endregion /* Player 4 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
-	if (save_default_controls_to_config == true)
+	if (save_default_controls_to_config)
 	{
 		ini_open(working_directory + "config.ini");
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_gamepad_button_dive", global.player_[inp.gp][4][1][action.dive]);
@@ -851,7 +851,7 @@ function scr_set_default_remapping_player4_keyboard(save_default_controls_to_con
 	#endregion /* Player 4 Keyboard Remapping (everything should be set to noone) END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
-	if (save_default_controls_to_config == true)
+	if (save_default_controls_to_config)
 	{
 		ini_open(working_directory + "config.ini");
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_key_dive", global.player_[inp.key][4][1][action.dive]);

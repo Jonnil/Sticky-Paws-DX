@@ -45,7 +45,7 @@ else
 	}
 }
 if (asset_get_type("spr_arrow_sign") == asset_sprite)
-and (can_jump_on_head == true)
+and (can_jump_on_head)
 {
 	arrow_xscale = scr_wave(1, 0, 1, 0);
 	draw_sprite_ext(spr_arrow_sign, image_index, x, y - 32, 1, arrow_xscale, 270, image_blend, 1);

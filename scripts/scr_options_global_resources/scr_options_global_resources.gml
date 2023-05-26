@@ -14,7 +14,7 @@ function scr_options_global_resources()
 		
 		if (ds_list_size(global.all_loaded_resource_pack) >= 2)
 		and (global.enable_options_for_pc == false)
-		or (global.enable_options_for_pc == true)
+		or (global.enable_options_for_pc)
 		{
 			var resource_pack_y = 40 * 1; /* 1 */
 			var open_resource_pack_y = 40 * 3; /* 3 */
@@ -45,7 +45,7 @@ function scr_options_global_resources()
 		{
 			if (menu == "resource_pack")
 			{
-				if (global.enable_open_custom_folder == true)
+				if (global.enable_open_custom_folder)
 				{
 					menu = "open_title_logo_folder";
 				}
@@ -59,12 +59,12 @@ function scr_options_global_resources()
 			{
 				if (ds_list_size(global.all_loaded_resource_pack) >= 2)
 				and (global.enable_options_for_pc == false)
-				or (global.enable_options_for_pc == true)
+				or (global.enable_options_for_pc)
 				{
 					menu = "resource_pack";
 				}
 				else
-				if (global.enable_open_custom_folder == true)
+				if (global.enable_open_custom_folder)
 				{
 					menu = "open_title_logo_folder";
 				}
@@ -76,19 +76,19 @@ function scr_options_global_resources()
 			else
 			if (menu == "title_backgrounds")
 			{
-				if (global.enable_open_custom_folder == true)
+				if (global.enable_open_custom_folder)
 				{
 					menu = "open_resource_pack_folder";
 				}
 				else
 				if (ds_list_size(global.all_loaded_resource_pack) >= 2)
 				and (global.enable_options_for_pc == false)
-				or (global.enable_options_for_pc == true)
+				or (global.enable_options_for_pc)
 				{
 					menu = "resource_pack";
 				}
 				else
-				if (global.enable_open_custom_folder == true)
+				if (global.enable_open_custom_folder)
 				{
 					menu = "open_title_logo_folder";
 				}
@@ -120,7 +120,7 @@ function scr_options_global_resources()
 			else
 			if (menu == "title_logos")
 			{
-				if (global.enable_open_custom_folder == true)
+				if (global.enable_open_custom_folder)
 				{
 					menu = "open_title_background_folder";
 				}
@@ -143,7 +143,7 @@ function scr_options_global_resources()
 		{
 			if (menu == "resource_pack")
 			{
-				if (global.enable_open_custom_folder == true)
+				if (global.enable_open_custom_folder)
 				{
 					menu = "open_resource_pack_folder";
 				}
@@ -175,7 +175,7 @@ function scr_options_global_resources()
 			else
 			if (menu == "background_layer_y_scroll")
 			{
-				if (global.enable_open_custom_folder == true)
+				if (global.enable_open_custom_folder)
 				{
 					menu = "open_title_background_folder";
 				}
@@ -192,14 +192,14 @@ function scr_options_global_resources()
 			else
 			if (menu == "title_logos")
 			{
-				if (global.enable_open_custom_folder == true)
+				if (global.enable_open_custom_folder)
 				{
 					menu = "open_title_logo_folder";
 				}
 				else
 				if (ds_list_size(global.all_loaded_resource_pack) >= 2)
 				and (global.enable_options_for_pc == false)
-				or (global.enable_options_for_pc == true)
+				or (global.enable_options_for_pc)
 				{
 					menu = "resource_pack";
 				}
@@ -213,7 +213,7 @@ function scr_options_global_resources()
 			{
 				if (ds_list_size(global.all_loaded_resource_pack) >= 2)
 				and (global.enable_options_for_pc == false)
-				or (global.enable_options_for_pc == true)
+				or (global.enable_options_for_pc)
 				{
 					menu = "resource_pack";
 				}
@@ -231,7 +231,7 @@ function scr_options_global_resources()
 		
 		if (ds_list_size(global.all_loaded_resource_pack) >= 2)
 		and (global.enable_options_for_pc == false)
-		or (global.enable_options_for_pc == true)
+		or (global.enable_options_for_pc)
 		{
 			if (global.selected_resource_pack > ds_list_size(global.all_loaded_resource_pack) - 1)
 			{
@@ -244,7 +244,7 @@ function scr_options_global_resources()
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
-			scr_draw_text_outlined(resource_pack_x, 20 + (resource_pack_y), l10n_text("Resource Pack") + " : " + string(global.selected_resource_pack + 1) + "/" + string(ds_list_size(global.all_loaded_resource_pack)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(resource_pack_x, 20 + (resource_pack_y), l10n_text("Resource Pack") + ": " + string(global.selected_resource_pack + 1) + "/" + string(ds_list_size(global.all_loaded_resource_pack)), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 			/* Draw text of what the file is called */ scr_draw_text_outlined(resource_pack_x, 20 + (resource_pack_y + 40), string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)), global.default_text_size * 1.1, c_menu_outline, c_dkgray, 1);
 			
 			if (global.selected_resource_pack > 0)
@@ -328,7 +328,7 @@ function scr_options_global_resources()
 		}
 		#endregion /* Custom Resource Packs END */
 		
-		if (global.enable_open_custom_folder == true)
+		if (global.enable_open_custom_folder)
 		{
 			draw_menu_button(resource_pack_x, 20 + (open_resource_pack_y), l10n_text("Open Resource Pack Folder"), "open_resource_pack_folder", "open_resource_pack_folder");
 			draw_sprite_ext(spr_icons_folder, 0, resource_pack_x + 16, 20 + (open_resource_pack_y) + 21, 1, 1, 0, c_white, 1);
@@ -796,7 +796,7 @@ function scr_options_global_resources()
 			global.background_layer_y_scroll = - 10;
 		}
 		
-		if (global.enable_open_custom_folder == true)
+		if (global.enable_open_custom_folder)
 		{
 			draw_menu_button(resource_pack_x, 20 + (custom_title_background_open_y), l10n_text("Open Background Folder"), "open_title_background_folder", "open_title_background_folder");
 			draw_sprite_ext(spr_icons_folder, 0, resource_pack_x + 16, 20 + (custom_title_background_open_y) + 21, 1, 1, 0, c_white, 1);
@@ -945,7 +945,7 @@ function scr_options_global_resources()
 		}
 		#endregion /* Custom Title Logo END */
 		
-		if (global.enable_open_custom_folder == true)
+		if (global.enable_open_custom_folder)
 		{
 			draw_menu_button(resource_pack_x, 20 + (custom_title_logo_open_y), l10n_text("Open Title Logo Folder"), "open_title_logo_folder", "open_title_logo_folder");
 			draw_sprite_ext(spr_icons_folder, 0, resource_pack_x + 16, 20 + (custom_title_logo_open_y) + 21, 1, 1, 0, c_white, 1);

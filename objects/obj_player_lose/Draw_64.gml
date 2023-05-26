@@ -171,7 +171,7 @@ if (lives <= 0)
 if (iris_xscale <= 0.001)
 and (lives >= 1)
 {
-	if (global.enable_transitions == true)
+	if (global.enable_transitions)
 	{
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false); /* Make the screen completly black in Draw GUI whenever the iris is small enough, to make sure that effects are completly hidden */
 	}

@@ -1,6 +1,6 @@
 draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, image_angle, image_blend, image_alpha);
 
-if (brick_particle == true)
+if (brick_particle)
 {
 	#region /* Set the gravity */
 	gravity_direction = 270;
@@ -31,11 +31,11 @@ if (brick_particle == false)
 	if (position_meeting(bbox_left + 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))
 	or (position_meeting(bbox_right - 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))
 	or (place_meeting(x, y - 16, instance_nearest(x, y, obj_player)))
-	and (instance_nearest(x, y, obj_player).ground_pound == true)
+	and (instance_nearest(x, y, obj_player).ground_pound)
 	or (place_meeting(bbox_left - 4, y, instance_nearest(x, y, obj_player)))
-	and (instance_nearest(x, y, obj_player).dive == true)
+	and (instance_nearest(x, y, obj_player).dive)
 	or (place_meeting(bbox_right + 4, y, instance_nearest(x, y, obj_player)))
-	and (instance_nearest(x, y, obj_player).dive == true)
+	and (instance_nearest(x, y, obj_player).dive)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{

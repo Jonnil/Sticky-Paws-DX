@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_draw_character_portrait_for_player",
+  "name": "scr_character_portrait_for_player_step",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

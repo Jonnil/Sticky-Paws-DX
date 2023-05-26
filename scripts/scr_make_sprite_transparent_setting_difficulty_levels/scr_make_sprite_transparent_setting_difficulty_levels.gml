@@ -10,7 +10,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels() {
 	}
 	
 	if (global.character_select_in_this_menu == "level_editor") {
-	    if (obj_leveleditor.quit_level_editor >= true && normal == true) {
+	    if (obj_leveleditor.quit_level_editor >= true && normal) {
 	        image_alpha = 1;
 	        image_blend = default_blend;
 	    } else if (obj_leveleditor.quit_level_editor == false) {

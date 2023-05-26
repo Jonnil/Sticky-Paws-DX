@@ -85,7 +85,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	and (open_dropdown == false)
 	and (menu_delay == 0)
 	{
-		if (variable_to_check == true)
+		if (variable_to_check)
 		{
 			variable_to_check = false;
 		}

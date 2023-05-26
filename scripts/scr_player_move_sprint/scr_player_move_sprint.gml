@@ -2,17 +2,17 @@ function scr_player_move_sprint()
 {
 	
 	#region /* Sprint */
-	if (goal == true)
+	if (goal)
 	and (global.time_countdown_bonus <= 0)
 	{
 		speed_max = lerp(speed_max, speed_max_run, 0.1);
 	}
 	else
 	{
-		if (crouch == true)
-		and (on_ground == true)
+		if (crouch)
+		and (on_ground)
 		{
-			if (allow_crawl == true)
+			if (allow_crawl)
 			{
 				speed_max = lerp(speed_max, speed_max_walk * 0.5, 0.05);
 			}
@@ -24,11 +24,11 @@ function scr_player_move_sprint()
 		}
 		else
 		if (key_sprint)
-		and (allow_run == true)
+		and (allow_run)
 		or (double_tap_left == 3)
-		and (allow_run == true)
+		and (allow_run)
 		or (double_tap_right == 3)
-		and (allow_run == true)
+		and (allow_run)
 		{
 			if (key_left_hold)
 			and (ground_pound == false)
@@ -51,7 +51,7 @@ function scr_player_move_sprint()
 		}
 		else
 		{
-			if (on_ground == true)
+			if (on_ground)
 			{
 				if (invincible_timer >= true)
 				and (assist_invincible == false)

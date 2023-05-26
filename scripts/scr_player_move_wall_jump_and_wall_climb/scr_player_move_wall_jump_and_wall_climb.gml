@@ -2,21 +2,21 @@ function scr_player_move_wall_jump_and_wall_climb()
 {
 	
 	#region /* Wall Jump and Wall Climb */
-	if (allow_wall_jump == true)
-	and (can_wall_jump == true)
-	and (can_move == true)
+	if (allow_wall_jump)
+	and (can_wall_jump)
+	and (can_move)
 	and (global.pause == false)
 	and (takendamage <= takendamage_freezetime)
 	and (wall_jump_setting >= 1)
 	and (hold_item_in_hands == "")
 	
-	or (can_move == true)
+	or (can_move)
 	and (global.pause == false)
 	and (takendamage <= takendamage_freezetime)
 	and (place_meeting(x, y, obj_wall_jump_panel))
 	and (hold_item_in_hands == "")
 	
-	or (can_move == true)
+	or (can_move)
 	and (global.pause == false)
 	and (takendamage <= takendamage_freezetime)
 	and (place_meeting(x, y, obj_wall_climb_panel))
@@ -43,7 +43,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 				and (wall_jump_setting == 1)
 				and (place_meeting(x - 1, y, obj_wall))
 				and (image_xscale < 0)
-				or (dive == true)
+				or (dive)
 				and (wall_jump_setting == 1)
 				and (place_meeting(x - 1, y, obj_wall))
 				and (image_xscale < 0)
@@ -88,7 +88,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 				and (wall_jump_setting == 1)
 				and (place_meeting(x + 1, y, obj_wall))
 				and (image_xscale > 0)
-				or (dive == true)
+				or (dive)
 				and (wall_jump_setting == 1)
 				and (place_meeting(x + 1, y, obj_wall))
 				and (image_xscale > 0)
@@ -125,7 +125,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 				}
 			}
 		}
-		if (stick_to_wall == true)
+		if (stick_to_wall)
 		{
 		
 			#region /* Pressing opposite direction to drop off from wall */
@@ -147,7 +147,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 			#endregion /* Pressing opposite direction to drop off from wall END */
 		
 			#region /* If there is ground under you while trying to go down, then stop wall climbing */
-			if (on_ground == true)
+			if (on_ground)
 			{
 				stick_to_wall = false;
 			}
@@ -197,7 +197,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 			}
 		
 			#region /* Wall Climb */
-			if (allow_wall_climb == true)
+			if (allow_wall_climb)
 			or (place_meeting(x, y, obj_wall_climb_panel))
 			{
 				dive = false;
@@ -293,13 +293,13 @@ function scr_player_move_wall_jump_and_wall_climb()
 			and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 			and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 		
-			or (allow_dive == true)
+			or (allow_dive)
 			and (key_dive_pressed) /* Press dive to jump from wall using a dive */
 			and (key_left_hold)
 			and (!key_right_hold)
 			and (place_meeting(x + 1, y, obj_wall))
 		
-			or (allow_dive == true)
+			or (allow_dive)
 			and (key_dive_pressed) /* Press dive to jump from wall using a dive */
 			and (key_right_hold)
 			and (!key_left_hold)
@@ -364,7 +364,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		
 				#region /* Change direction when diving */
 				if (key_dive_pressed)
-				and (allow_dive == true)
+				and (allow_dive)
 				and (key_left_hold)
 				and (!key_right_hold)
 				{
@@ -372,7 +372,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 				}
 				else
 				if (key_dive_pressed)
-				and (allow_dive == true)
+				and (allow_dive)
 				and (key_right_hold)
 				and (!key_left_hold)
 				{
@@ -389,12 +389,12 @@ function scr_player_move_wall_jump_and_wall_climb()
 		and (!key_left_hold)
 		and (!key_right_hold)
 		and (key_sprint_pressed)
-		and (stick_to_wall == true)
+		and (stick_to_wall)
 		or (key_down)
 		and (!key_left_hold)
 		and (!key_right_hold)
 		and (key_dive_pressed)
-		and (stick_to_wall == true)
+		and (stick_to_wall)
 		or (pressing_opposite_direction_to_drop_off_from_wall >= 10)
 		{
 			if (place_meeting(x - 1, y, obj_wall))

@@ -95,7 +95,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		if (key_b_pressed)
 		and (menu == menu_index)
 		and (input_key == false)
-		and (open_dropdown == true)
+		and (open_dropdown)
 		and (menu_delay == 0)
 		{
 			menu = menu_index;
@@ -168,7 +168,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		#endregion /* Text inside the menu button END */
 		
 		#region /* Open dropdown menu */
-		if (open_dropdown == true)
+		if (open_dropdown)
 		and (menu == menu_index)
 		{
 			if (variable_instance_exists(self, "menu_cursor_y_position"))
@@ -194,7 +194,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		#region /* Clicking outside the menu button */
 		if (!point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
 		and (global.controls_used_for_menu_navigation == "mouse")
-		and (open_dropdown == true)
+		and (open_dropdown)
 		and (menu == menu_index)
 		and (menu_delay == 0)
 		{

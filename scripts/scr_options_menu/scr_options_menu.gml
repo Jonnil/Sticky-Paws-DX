@@ -49,7 +49,7 @@ function scr_options_menu()
 		
 		#region /* Menu navigation tabs y positions */
 		accessibility_settings_y = 40;
-		if (global.enable_how_to_play_settings == true)
+		if (global.enable_how_to_play_settings)
 		{
 			how_to_play_y = accessibility_settings_y + 40;
 			game_text_y = how_to_play_y + 40;
@@ -60,7 +60,7 @@ function scr_options_menu()
 			game_text_y = accessibility_settings_y + 40;
 		}
 		game_settings_y = game_text_y + 40;
-		if (global.enable_multiplayer_settings == true)
+		if (global.enable_multiplayer_settings)
 		{
 			multiplayer_settings_y = game_settings_y + 40;
 			controls_text_y = multiplayer_settings_y + 40;
@@ -70,7 +70,7 @@ function scr_options_menu()
 			multiplayer_settings_y = -999;
 			controls_text_y = game_settings_y + 40;
 		}
-		if (global.enable_keyboard_and_mouse_settings == true)
+		if (global.enable_keyboard_and_mouse_settings)
 		{
 			keyboard_and_mouse_settings_y = controls_text_y + 40;
 			controller_settings_y = keyboard_and_mouse_settings_y + 40;
@@ -80,7 +80,7 @@ function scr_options_menu()
 			keyboard_and_mouse_settings_y = -999;
 			controller_settings_y = controls_text_y + 40;
 		}
-		if (global.enable_touch_settings == true)
+		if (global.enable_touch_settings)
 		{
 			touch_settings_y = controller_settings_y + 40;
 			general_text_y = touch_settings_y + 40;
@@ -90,7 +90,7 @@ function scr_options_menu()
 			touch_settings_y = -999;
 			general_text_y = controller_settings_y + 40;
 		}
-		if (global.enable_account_settings == true)
+		if (global.enable_account_settings)
 		{
 			account_settings_y = general_text_y + 40;
 			video_settings_y = account_settings_y + 40;
@@ -104,7 +104,7 @@ function scr_options_menu()
 		global_resources_settings_y = audio_settings_y + 40;
 		storage_settings_y = global_resources_settings_y + 40;
 		language_settings_y = storage_settings_y + 40;
-		if (global.enable_broadcast_settings == true)
+		if (global.enable_broadcast_settings)
 		{
 			broadcast_settings_y = language_settings_y + 40;
 		}
@@ -182,7 +182,7 @@ function scr_options_menu()
 		#endregion /* Game Settings END */
 		
 		#region /* Multiplayer Settings */
-		if (global.enable_multiplayer_settings == true)
+		if (global.enable_multiplayer_settings)
 		{
 			if (global.settings_sidebar_menu == "multiplayer_settings")
 			{
@@ -221,7 +221,7 @@ function scr_options_menu()
 		scr_draw_text_outlined(left_sidebar_x + 20 + text_x_offset, 20 + (controls_text_y), l10n_text("Controls"), global.default_text_size * 0.5, c_black, c_white, 1);
 		
 		#region /* Keyboard and Mouse Settings */
-		if (global.enable_keyboard_and_mouse_settings == true)
+		if (global.enable_keyboard_and_mouse_settings)
 		{
 			if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
 			{
@@ -255,7 +255,7 @@ function scr_options_menu()
 		#endregion /* Keyboard and Mouse Settings */
 		
 		#region /* Controller Settings */
-		if (global.enable_controller_settings == true)
+		if (global.enable_controller_settings)
 		{
 			if (global.settings_sidebar_menu == "controller_settings")
 			{
@@ -289,7 +289,7 @@ function scr_options_menu()
 		#endregion /* Controller Settings END */
 		
 		#region /* Touch Settings */
-		if (global.enable_touch_settings == true)
+		if (global.enable_touch_settings)
 		{
 			if (global.settings_sidebar_menu == "touch_settings")
 			{
@@ -328,7 +328,7 @@ function scr_options_menu()
 		scr_draw_text_outlined(left_sidebar_x + 20 + text_x_offset, 20 + general_text_y, l10n_text("General"), global.default_text_size * 0.5, c_black, c_white, 1);
 		
 		#region /* Account Settings */
-		if (global.enable_account_settings == true)
+		if (global.enable_account_settings)
 		{
 			if (global.settings_sidebar_menu == "account_settings")
 			{
@@ -424,7 +424,7 @@ function scr_options_menu()
 		#endregion /* Audio Settings END */
 		
 		#region /* Global Resources Settings */
-		if (global.enable_global_resources_settings == true)
+		if (global.enable_global_resources_settings)
 		{
 			if (global.settings_sidebar_menu == "global_resources_settings")
 			{
@@ -458,7 +458,7 @@ function scr_options_menu()
 		#endregion /* Global Resources Settings END */
 		
 		#region /* Storage Settings */
-		if (global.enable_storage_settings == true)
+		if (global.enable_storage_settings)
 		{
 			if (global.settings_sidebar_menu == "storage_settings")
 			{
@@ -492,7 +492,7 @@ function scr_options_menu()
 		#endregion /* Storage Settings END */
 		
 		#region /* Language Settings */
-		if (global.enable_language_settings == true)
+		if (global.enable_language_settings)
 		{
 			if (global.settings_sidebar_menu == "language_settings")
 			{
@@ -526,7 +526,7 @@ function scr_options_menu()
 		#endregion /* Language Settings END */
 		
 		#region /* Broadcast Settings */
-		if (global.enable_broadcast_settings == true)
+		if (global.enable_broadcast_settings)
 		{
 			if (global.settings_sidebar_menu == "broadcast_settings")
 			{
@@ -560,7 +560,7 @@ function scr_options_menu()
 		#endregion /* Broadcast Settings END */
 		
 		#region /* How to play Settings */
-		if (global.enable_how_to_play_settings == true)
+		if (global.enable_how_to_play_settings)
 		{
 			if (global.settings_sidebar_menu == "how_to_play")
 			{
@@ -594,7 +594,7 @@ function scr_options_menu()
 		#endregion /* General Settings END */
 		
 		#region /* Add-Ons Settings */
-		if (global.enable_add_ons_settings == true)
+		if (global.enable_add_ons_settings)
 		{
 			scr_draw_text_outlined(left_sidebar_x + 20 + text_x_offset, 20 + (40 * 18), l10n_text("Add-Ons"), global.default_text_size * 0.5, c_black, c_white, 1);
 			
@@ -660,7 +660,7 @@ function scr_options_menu()
 	}
 	#endregion /* Tabs Graphics END */
 	
-	if (in_settings == true)
+	if (in_settings)
 	{
 		
 		scr_scroll_menu();
@@ -669,12 +669,12 @@ function scr_options_menu()
 		if (key_a_pressed)
 		and (menu_delay == 0)
 		and (global.settings_sidebar_menu == "settings_back")
-		and (can_navigate_settings_sidebar == true)
+		and (can_navigate_settings_sidebar)
 		and (input_key == false)
 		and (input_gamepad_button == false)
 		or (key_b_pressed)
 		and (menu_delay == 0)
-		and (can_navigate_settings_sidebar == true)
+		and (can_navigate_settings_sidebar)
 		and (input_key == false)
 		and (input_gamepad_button == false)
 		{
@@ -697,7 +697,7 @@ function scr_options_menu()
 		and (input_key == false)
 		and (input_gamepad_button == false)
 		{
-			if (open_dropdown == true)
+			if (open_dropdown)
 			{
 				open_dropdown = false;
 			}
@@ -711,11 +711,11 @@ function scr_options_menu()
 		else
 		if (key_right)
 		and (global.settings_sidebar_menu != "settings_back")
-		and (can_navigate_settings_sidebar == true)
+		and (can_navigate_settings_sidebar)
 		and (menu_delay == 0)
 		or (key_a_pressed)
 		and (global.settings_sidebar_menu != "settings_back")
-		and (can_navigate_settings_sidebar == true)
+		and (can_navigate_settings_sidebar)
 		and (menu_delay == 0)
 		{
 			menu_delay = 3;
@@ -723,7 +723,7 @@ function scr_options_menu()
 			if (global.settings_sidebar_menu == "accessibility_settings"){menu = "assist_enable";}
 			if (global.settings_sidebar_menu == "game_settings")
 			{
-				if (global.enable_difficulty_selection_settings == true)
+				if (global.enable_difficulty_selection_settings)
 				{
 					menu = "difficulty_settings";
 				}
@@ -754,7 +754,7 @@ function scr_options_menu()
 			{
 				if (os_type != os_ios)
 				and (os_type != os_android)
-				and (global.enable_options_for_pc == true)
+				and (global.enable_options_for_pc)
 				{
 					menu = "fullscreen_mode";
 				}
@@ -768,7 +768,7 @@ function scr_options_menu()
 			{
 				if (ds_list_size(global.all_loaded_resource_pack) >= 2)
 				and (global.enable_options_for_pc == false)
-				or (global.enable_options_for_pc == true)
+				or (global.enable_options_for_pc)
 				{
 					menu = "resource_pack";
 				}
@@ -873,7 +873,7 @@ function scr_options_menu()
 			menu_delay = 3;
 			input_key = false;
 			can_navigate_settings_sidebar = false;
-			if (global.enable_difficulty_selection_settings == true)
+			if (global.enable_difficulty_selection_settings)
 			{
 				menu = "difficulty_settings";
 			}
@@ -896,7 +896,7 @@ function scr_options_menu()
 		}
 		#endregion /* Game END */
 		
-		if (global.enable_multiplayer_settings == true)
+		if (global.enable_multiplayer_settings)
 		{
 			
 			#region /* Click Multiplayer */
@@ -966,7 +966,7 @@ function scr_options_menu()
 		}
 		#endregion /* Keyboard and Mouse END */
 		
-		if (global.enable_controller_settings == true)
+		if (global.enable_controller_settings)
 		{
 			
 			#region /* Click Controller */
@@ -1010,7 +1010,7 @@ function scr_options_menu()
 			
 		}
 	
-		if (global.enable_touch_settings == true)
+		if (global.enable_touch_settings)
 		{
 			
 			#region /* Click Touch */
@@ -1041,7 +1041,7 @@ function scr_options_menu()
 			
 		}
 	
-		if (global.enable_account_settings == true)
+		if (global.enable_account_settings)
 		{
 			
 			#region /* Click Account */
@@ -1086,7 +1086,7 @@ function scr_options_menu()
 			can_navigate_settings_sidebar = false;
 			if (os_type != os_ios)
 			and (os_type != os_android)
-			and (global.enable_options_for_pc == true)
+			and (global.enable_options_for_pc)
 			{
 				menu = "fullscreen_mode";
 			}
@@ -1136,7 +1136,7 @@ function scr_options_menu()
 		}
 		#endregion /* Audio END */
 		
-		if (global.enable_global_resources_settings == true)
+		if (global.enable_global_resources_settings)
 		{
 			
 			#region /* Click Global Resources */
@@ -1152,7 +1152,7 @@ function scr_options_menu()
 				can_navigate_settings_sidebar = false;
 				if (ds_list_size(global.all_loaded_resource_pack) >= 2)
 				and (global.enable_options_for_pc == false)
-				or (global.enable_options_for_pc == true)
+				or (global.enable_options_for_pc)
 				{
 					menu = "resource_pack";
 				}
@@ -1177,7 +1177,7 @@ function scr_options_menu()
 			
 		}
 	
-		if (global.enable_storage_settings == true)
+		if (global.enable_storage_settings)
 		{
 			
 			#region /* Click Storage */
@@ -1209,7 +1209,7 @@ function scr_options_menu()
 			
 		}
 	
-		if (global.enable_language_settings == true)
+		if (global.enable_language_settings)
 		{
 			
 			#region /* Click Language */
@@ -1241,7 +1241,7 @@ function scr_options_menu()
 			
 		}
 	
-		if (global.enable_broadcast_settings == true)
+		if (global.enable_broadcast_settings)
 		{
 			
 			#region /* Click Broadcast */
@@ -1272,7 +1272,7 @@ function scr_options_menu()
 			
 		}
 	
-		if (global.enable_how_to_play_settings == true)
+		if (global.enable_how_to_play_settings)
 		{
 			
 			#region /* Click How to Play */
@@ -1313,7 +1313,7 @@ function scr_options_menu()
 			if (global.settings_sidebar_menu == "accessibility_settings")
 			{
 				if (key_up)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
 					global.settings_sidebar_menu = "settings_back";
@@ -1321,10 +1321,10 @@ function scr_options_menu()
 				}
 				else
 				if (key_down)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
-					if (global.enable_how_to_play_settings == true)
+					if (global.enable_how_to_play_settings)
 					{
 						global.settings_sidebar_menu = "how_to_play";
 					}
@@ -1338,12 +1338,12 @@ function scr_options_menu()
 			#endregion /* Accessibility Settings END */
 		
 			#region /* How to play Settings */
-			if (global.enable_how_to_play_settings == true)
+			if (global.enable_how_to_play_settings)
 			{
 				if (global.settings_sidebar_menu == "how_to_play")
 				{
 					if (key_up)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "accessibility_settings";
@@ -1351,7 +1351,7 @@ function scr_options_menu()
 					}
 					else
 					if (key_down)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "game_settings";
@@ -1367,10 +1367,10 @@ function scr_options_menu()
 			if (global.settings_sidebar_menu == "game_settings")
 			{
 				if (key_up)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
-					if (global.enable_how_to_play_settings == true)
+					if (global.enable_how_to_play_settings)
 					{
 						global.settings_sidebar_menu = "how_to_play";
 					}
@@ -1382,30 +1382,30 @@ function scr_options_menu()
 				}
 				else
 				if (key_down)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
-					if (global.enable_multiplayer_settings == true)
+					if (global.enable_multiplayer_settings)
 					{
 						global.settings_sidebar_menu = "multiplayer_settings";
 					}
 					else
-					if (global.enable_keyboard_and_mouse_settings == true)
+					if (global.enable_keyboard_and_mouse_settings)
 					{
 						global.settings_sidebar_menu = "keyboard_and_mouse_settings";
 					}
 					else
-					if (global.enable_controller_settings == true)
+					if (global.enable_controller_settings)
 					{
 						global.settings_sidebar_menu = "controller_settings";
 					}
 					else
-					if (global.enable_touch_settings == true)
+					if (global.enable_touch_settings)
 					{
 						global.settings_sidebar_menu = "touch_settings";
 					}
 					else
-					if (global.enable_account_settings == true)
+					if (global.enable_account_settings)
 					{
 						global.settings_sidebar_menu = "account_settings";
 					}
@@ -1419,12 +1419,12 @@ function scr_options_menu()
 			#endregion /* Game Settings END */
 	
 			#region /* Multiplayer Settings */
-			if (global.enable_multiplayer_settings == true)
+			if (global.enable_multiplayer_settings)
 			{
 				if (global.settings_sidebar_menu == "multiplayer_settings")
 				{
 					if (key_up)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "game_settings";
@@ -1432,25 +1432,25 @@ function scr_options_menu()
 					}
 					else
 					if (key_down)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
-						if (global.enable_keyboard_and_mouse_settings == true)
+						if (global.enable_keyboard_and_mouse_settings)
 						{
 							global.settings_sidebar_menu = "keyboard_and_mouse_settings";
 						}
 						else
-						if (global.enable_controller_settings == true)
+						if (global.enable_controller_settings)
 						{
 							global.settings_sidebar_menu = "controller_settings";
 						}
 						else
-						if (global.enable_touch_settings == true)
+						if (global.enable_touch_settings)
 						{
 							global.settings_sidebar_menu = "touch_settings";
 						}
 						else
-						if (global.enable_account_settings == true)
+						if (global.enable_account_settings)
 						{
 							global.settings_sidebar_menu = "account_settings";
 						}
@@ -1472,10 +1472,10 @@ function scr_options_menu()
 			if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
 			{
 				if (key_up)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
-					if (global.enable_multiplayer_settings == true)
+					if (global.enable_multiplayer_settings)
 					{
 						global.settings_sidebar_menu = "multiplayer_settings";
 					}
@@ -1487,20 +1487,20 @@ function scr_options_menu()
 				}
 				else
 				if (key_down)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
-					if (global.enable_controller_settings == true)
+					if (global.enable_controller_settings)
 					{
 						global.settings_sidebar_menu = "controller_settings";
 					}
 					else
-					if (global.enable_touch_settings == true)
+					if (global.enable_touch_settings)
 					{
 						global.settings_sidebar_menu = "touch_settings";
 					}
 					else
-					if (global.enable_account_settings == true)
+					if (global.enable_account_settings)
 					{
 						global.settings_sidebar_menu = "account_settings";
 					}
@@ -1514,21 +1514,21 @@ function scr_options_menu()
 			#endregion /* Keyboard and Mouse Settings */
 	
 			#region /* Controller Settings */
-			if (global.enable_controller_settings == true)
+			if (global.enable_controller_settings)
 			{
 				if (global.settings_sidebar_menu == "controller_settings")
 				{
 					if (key_up)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
-						if (global.enable_keyboard_and_mouse_settings == true)
+						if (global.enable_keyboard_and_mouse_settings)
 						{
 							global.settings_sidebar_menu = "keyboard_and_mouse_settings";
 						}
 						else
 						{
-							if (global.enable_multiplayer_settings == true)
+							if (global.enable_multiplayer_settings)
 							{
 								global.settings_sidebar_menu = "multiplayer_settings";
 							}
@@ -1541,15 +1541,15 @@ function scr_options_menu()
 					}
 					else
 					if (key_down)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
-						if (global.enable_touch_settings == true)
+						if (global.enable_touch_settings)
 						{
 							global.settings_sidebar_menu = "touch_settings";
 						}
 						else
-						if (global.enable_account_settings == true)
+						if (global.enable_account_settings)
 						{
 							global.settings_sidebar_menu = "account_settings";
 						}
@@ -1564,15 +1564,15 @@ function scr_options_menu()
 			#endregion /* Controller Settings END */
 	
 			#region /* Touch Settings */
-			if (global.enable_touch_settings == true)
+			if (global.enable_touch_settings)
 			{
 				if (global.settings_sidebar_menu == "touch_settings")
 				{
 					if (key_up)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
-						if (global.enable_touch_settings == true)
+						if (global.enable_touch_settings)
 						{
 							global.settings_sidebar_menu = "controller_settings";
 						}
@@ -1584,10 +1584,10 @@ function scr_options_menu()
 					}
 					else
 					if (key_down)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
-						if (global.enable_account_settings == true)
+						if (global.enable_account_settings)
 						{
 							global.settings_sidebar_menu = "account_settings";
 						}
@@ -1606,20 +1606,20 @@ function scr_options_menu()
 			#region /* General Settings */
 	
 			#region /* Account Settings */
-			if (global.enable_account_settings == true)
+			if (global.enable_account_settings)
 			{
 				if (global.settings_sidebar_menu == "account_settings")
 				{
 					if (key_up)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
-						if (global.enable_touch_settings == true)
+						if (global.enable_touch_settings)
 						{
 							global.settings_sidebar_menu = "touch_settings";
 						}
 						else
-						if (global.enable_controller_settings == true)
+						if (global.enable_controller_settings)
 						{
 							global.settings_sidebar_menu = "controller_settings";
 						}
@@ -1631,7 +1631,7 @@ function scr_options_menu()
 					}
 					else
 					if (key_down)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "video_settings";
@@ -1645,20 +1645,20 @@ function scr_options_menu()
 			if (global.settings_sidebar_menu == "video_settings")
 			{
 				if (key_up)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
-					if (global.enable_account_settings == true)
+					if (global.enable_account_settings)
 					{
 						global.settings_sidebar_menu = "account_settings";
 					}
 					else
-					if (global.enable_touch_settings == true)
+					if (global.enable_touch_settings)
 					{
 						global.settings_sidebar_menu = "touch_settings";
 					}
 					else
-					if (global.enable_controller_settings == true)
+					if (global.enable_controller_settings)
 					{
 						global.settings_sidebar_menu = "controller_settings";
 					}
@@ -1670,7 +1670,7 @@ function scr_options_menu()
 				}
 				else
 				if (key_down)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
 					global.settings_sidebar_menu = "audio_settings";
@@ -1683,7 +1683,7 @@ function scr_options_menu()
 			if (global.settings_sidebar_menu == "audio_settings")
 			{
 				if (key_up)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
 					global.settings_sidebar_menu = "video_settings";
@@ -1691,35 +1691,35 @@ function scr_options_menu()
 				}
 				else
 				if (key_down)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
-					if (global.enable_global_resources_settings == true)
+					if (global.enable_global_resources_settings)
 					{
 						global.settings_sidebar_menu = "global_resources_settings";
 					}
 					else
-					if (global.enable_storage_settings == true)
+					if (global.enable_storage_settings)
 					{
 						global.settings_sidebar_menu = "storage_settings";
 					}
 					else
-					if (global.enable_language_settings == true)
+					if (global.enable_language_settings)
 					{
 						global.settings_sidebar_menu = "language_settings";
 					}
 					else
-					if (global.enable_broadcast_settings == true)
+					if (global.enable_broadcast_settings)
 					{
 						global.settings_sidebar_menu = "broadcast_settings";
 					}
 					else
-					if (global.enable_how_to_play_settings == true)
+					if (global.enable_how_to_play_settings)
 					{
 						global.settings_sidebar_menu = "how_to_play_settings";
 					}
 					else
-					if (global.enable_add_ons_settings == true)
+					if (global.enable_add_ons_settings)
 					{
 						global.settings_sidebar_menu = "resource_pack_settings";
 					}
@@ -1733,12 +1733,12 @@ function scr_options_menu()
 			#endregion /* Audio Settings END */
 	
 			#region /* Global Resources Settings */
-			if (global.enable_global_resources_settings == true)
+			if (global.enable_global_resources_settings)
 			{
 				if (global.settings_sidebar_menu == "global_resources_settings")
 				{
 					if (key_up)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "audio_settings";
@@ -1746,30 +1746,30 @@ function scr_options_menu()
 					}
 					else
 					if (key_down)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
-						if (global.enable_storage_settings == true)
+						if (global.enable_storage_settings)
 						{
 							global.settings_sidebar_menu = "storage_settings";
 						}
 						else
-						if (global.enable_language_settings == true)
+						if (global.enable_language_settings)
 						{
 							global.settings_sidebar_menu = "language_settings";
 						}
 						else
-						if (global.enable_broadcast_settings == true)
+						if (global.enable_broadcast_settings)
 						{
 							global.settings_sidebar_menu = "broadcast_settings";
 						}
 						else
-						if (global.enable_how_to_play_settings == true)
+						if (global.enable_how_to_play_settings)
 						{
 							global.settings_sidebar_menu = "how_to_play_settings";
 						}
 						else
-						if (global.enable_add_ons_settings == true)
+						if (global.enable_add_ons_settings)
 						{
 							global.settings_sidebar_menu = "resource_pack_settings";
 						}
@@ -1784,15 +1784,15 @@ function scr_options_menu()
 			#endregion /* Global Resources Settings END */
 	
 			#region /* Storage Settings */
-			if (global.enable_storage_settings == true)
+			if (global.enable_storage_settings)
 			{
 				if (global.settings_sidebar_menu == "storage_settings")
 				{
 					if (key_up)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
-						if (global.enable_global_resources_settings == true)
+						if (global.enable_global_resources_settings)
 						{
 							global.settings_sidebar_menu = "global_resources_settings";
 						}
@@ -1804,25 +1804,25 @@ function scr_options_menu()
 					}
 					else
 					if (key_down)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
-						if (global.enable_language_settings == true)
+						if (global.enable_language_settings)
 						{
 							global.settings_sidebar_menu = "language_settings";
 						}
 						else
-						if (global.enable_broadcast_settings == true)
+						if (global.enable_broadcast_settings)
 						{
 							global.settings_sidebar_menu = "broadcast_settings";
 						}
 						else
-						if (global.enable_how_to_play_settings == true)
+						if (global.enable_how_to_play_settings)
 						{
 							global.settings_sidebar_menu = "how_to_play_settings";
 						}
 						else
-						if (global.enable_add_ons_settings == true)
+						if (global.enable_add_ons_settings)
 						{
 							global.settings_sidebar_menu = "resource_pack_settings";
 						}
@@ -1837,12 +1837,12 @@ function scr_options_menu()
 			#endregion /* Storage Settings END */
 	
 			#region /* Language Settings */
-			if (global.enable_language_settings == true)
+			if (global.enable_language_settings)
 			{
 				if (global.settings_sidebar_menu == "language_settings")
 				{
 					if (key_up)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "storage_settings";
@@ -1850,15 +1850,15 @@ function scr_options_menu()
 					}
 					else
 					if (key_down)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
-						if (global.enable_broadcast_settings == true)
+						if (global.enable_broadcast_settings)
 						{
 							global.settings_sidebar_menu = "broadcast_settings";
 						}
 						else
-						if (global.enable_add_ons_settings == true)
+						if (global.enable_add_ons_settings)
 						{
 							global.settings_sidebar_menu = "resource_pack_settings";
 						}
@@ -1873,12 +1873,12 @@ function scr_options_menu()
 			#endregion /* Language Settings END */
 	
 			#region /* Broadcast Settings */
-			if (global.enable_broadcast_settings == true)
+			if (global.enable_broadcast_settings)
 			{
 				if (global.settings_sidebar_menu == "broadcast_settings")
 				{
 					if (key_up)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "language_settings";
@@ -1886,7 +1886,7 @@ function scr_options_menu()
 					}
 					else
 					if (key_down)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "how_to_play";
@@ -1897,12 +1897,12 @@ function scr_options_menu()
 			#endregion /* Broadcast Settings END */
 		
 			#region /* Add-Ons Settings */
-			if (global.enable_add_ons_settings == true)
+			if (global.enable_add_ons_settings)
 			{
 				if (global.settings_sidebar_menu == "resource_pack_settings")
 				{
 					if (key_up)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "how_to_play";
@@ -1910,7 +1910,7 @@ function scr_options_menu()
 					}
 					else
 					if (key_down)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "behavior_packs_settings";
@@ -1921,7 +1921,7 @@ function scr_options_menu()
 				if (global.settings_sidebar_menu == "behavior_packs_settings")
 				{
 					if (key_up)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "resource_pack_settings";
@@ -1929,7 +1929,7 @@ function scr_options_menu()
 					}
 					else
 					if (key_down)
-					and (can_navigate_settings_sidebar == true)
+					and (can_navigate_settings_sidebar)
 					and (menu_delay == 0)
 					{
 						global.settings_sidebar_menu = "settings_back";
@@ -1943,35 +1943,35 @@ function scr_options_menu()
 			if (global.settings_sidebar_menu == "settings_back")
 			{
 				if (key_up)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
-					if (global.enable_add_ons_settings == true)
+					if (global.enable_add_ons_settings)
 					{
 						global.settings_sidebar_menu = "behavior_packs_settings";
 					}
 					else
-					if (global.enable_how_to_play_settings == true)
+					if (global.enable_how_to_play_settings)
 					{
 						global.settings_sidebar_menu = "how_to_play";
 					}
 					else
-					if (global.enable_broadcast_settings == true)
+					if (global.enable_broadcast_settings)
 					{
 						global.settings_sidebar_menu = "broadcast_settings";
 					}
 					else
-					if (global.enable_language_settings == true)
+					if (global.enable_language_settings)
 					{
 						global.settings_sidebar_menu = "language_settings";
 					}
 					else
-					if (global.enable_storage_settings == true)
+					if (global.enable_storage_settings)
 					{
 						global.settings_sidebar_menu = "storage_settings";
 					}
 					else
-					if (global.enable_global_resources_settings == true)
+					if (global.enable_global_resources_settings)
 					{
 						global.settings_sidebar_menu = "global_resources_settings";
 					}
@@ -1983,7 +1983,7 @@ function scr_options_menu()
 				}
 				else
 				if (key_down)
-				and (can_navigate_settings_sidebar == true)
+				and (can_navigate_settings_sidebar)
 				and (menu_delay == 0)
 				{
 					global.settings_sidebar_menu = "accessibility_settings";
@@ -2071,7 +2071,7 @@ function scr_options_menu()
 		#region /* Game Settings */
 		if (global.settings_sidebar_menu == "game_settings")
 		{
-			if (global.enable_difficulty_selection_settings == true)
+			if (global.enable_difficulty_selection_settings)
 			{
 				difficulty_settings_y = 98;
 				automatically_pause_when_window_is_unfocused_settings_y = 164;
@@ -2086,7 +2086,7 @@ function scr_options_menu()
 			enable_links_demo_y = 164 + (48 * 2);
 			show_timer_settings_y = 164 + (48 * 3);
 			show_deaths_counter_settings_y = 164 + (48 * 4);
-			if (global.enable_ranks == true)
+			if (global.enable_ranks)
 			{
 				show_ranks_settings_y = 164 + (48 * 5);
 				show_tutorial_signs_y = 164 + (48 * 6);
@@ -2110,7 +2110,7 @@ function scr_options_menu()
 			draw_menu_checkmark(380, enable_links_demo_y, l10n_text("Enable Links at Title Screen"), "enable_links_at_title_screen", global.enable_links);
 			draw_menu_checkmark(380, show_timer_settings_y, l10n_text("Show Timer"), "show_timer_settings", global.show_timer); /* Show Timer */
 			draw_menu_checkmark(380, show_deaths_counter_settings_y, l10n_text("Show Deaths Counter"), "show_deaths_counter_settings", global.show_deaths_counter); /* Show Deaths Counter */
-			if (global.enable_ranks == true)
+			if (global.enable_ranks)
 			{
 				draw_menu_checkmark(380, show_ranks_settings_y, l10n_text("Show Ranks"), "show_ranks_settings", global.show_ranks); /* Show Ranks */
 			}
@@ -2125,7 +2125,7 @@ function scr_options_menu()
 			draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "selected_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic"));
 			draw_menu_dropdown(380, hud_hide_time_y, l10n_text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			
-			if (global.enable_difficulty_selection_settings == true)
+			if (global.enable_difficulty_selection_settings)
 			{
 				draw_menu_dropdown(380, difficulty_settings_y, l10n_text("Level Layout Difficulty"), "difficulty_settings", global.difficulty, l10n_text("Easy"), l10n_text("Normal"), l10n_text("Hard")); /* Difficulty Settings */
 			}
@@ -2157,19 +2157,19 @@ function scr_options_menu()
 		or (menu == "convention_mode")
 		{
 			if (menu == "show_tutorial_signs"){
-			if (global.show_tutorial_signs == true)
+			if (global.show_tutorial_signs)
 			{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 50, "> Show Tutorial Signs: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
 			else{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 50, "> Show Tutorial Signs: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}else
-			if (global.show_tutorial_signs == true)
+			if (global.show_tutorial_signs)
 			{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 50, "Show Tutorial Signs: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 			else{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 50, "Show Tutorial Signs: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		
 			if (menu == "players_can_collide"){
-			if (global.players_can_collide == true)
+			if (global.players_can_collide)
 			{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 110, "> Players can collide with each other: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
 			else{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 110, "> Players can collide with each other: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}}
 			else
-			if (global.players_can_collide == true)
+			if (global.players_can_collide)
 			{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 110, "Players can collide with each other: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 			else{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 110, "Players can collide with each other: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 		
@@ -2179,7 +2179,7 @@ function scr_options_menu()
 		
 			if (menu == "convention_mode")
 			{
-				if (global.convention_mode == true)
+				if (global.convention_mode)
 				{
 					scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 170, "> Convention Mode: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 					scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
@@ -2191,7 +2191,7 @@ function scr_options_menu()
 				}
 			}
 			else
-			if (global.convention_mode == true)
+			if (global.convention_mode)
 			{
 				scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 170, "Convention Mode: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
@@ -2386,7 +2386,7 @@ function scr_options_menu()
 			draw_menu_slider(410, volume_voice_y, l10n_text("Voices Volume"), "volume_voices", global.volume_voice, c_aqua);
 			
 			#region /* Verbosity Bar */
-			if (global.enable_verbosity_slider == true)
+			if (global.enable_verbosity_slider)
 			{
 				draw_menu_slider(410, 96 + (64 * 7), l10n_text("Voices Volume"), "volume_voices", global.volume_voice, c_aqua);
 			}
@@ -2398,7 +2398,7 @@ function scr_options_menu()
 			draw_set_valign(fa_middle);
 			
 			#region /* Select Narrator */
-			if (global.enable_narrator == true)
+			if (global.enable_narrator)
 			{
 				var file_select_x = 450;
 				var file_select_right_arrow_x = 400;
@@ -2417,12 +2417,12 @@ function scr_options_menu()
 				}
 				if (global.narrator <= -1)
 				{
-					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + " : " + l10n_text("Nobody"), global.default_text_size * 1.05, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + ": " + l10n_text("Nobody"), global.default_text_size * 1.05, c_menu_outline, c_menu_fill, 1);
 				}
 				else
 				if (global.narrator >= 0)
 				{
-					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + " : " + string(narrator_name), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(file_select_x, narrator_y, l10n_text("Narrator") + ": " + string(narrator_name), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				}
 				
 				#region /* Select Narrator Left and Right Key, show underneath text */
@@ -2653,7 +2653,7 @@ function scr_options_menu()
 			
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			if (global.enable_options_for_pc == true)
+			if (global.enable_options_for_pc)
 			{
 				scr_draw_text_outlined(450, file_path_y, string_replace_all(string(game_save_id) + "save_files\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_dkgray, 1);
 			}
@@ -2707,7 +2707,7 @@ function scr_options_menu()
 					draw_sprite_ext(spr_icons_delete, 0, 450 + 16, delete_file_y + 21, 1, 1, 0, c_white, 1);
 				}
 			
-				if (global.enable_open_custom_folder == true)
+				if (global.enable_open_custom_folder)
 				{
 					draw_menu_button(450, open_save_file_folder_y, l10n_text("Open Save File Folder"), "open_save_file_folder", "open_save_file_folder");
 					draw_sprite_ext(spr_icons_folder, 0, 450 + 16, open_save_file_folder_y + 21, 1, 1, 0, c_white, 1);
@@ -2840,7 +2840,7 @@ function scr_options_menu()
 				menu_joystick_delay = 10;
 				if (menu == "file_select")
 				{
-					if (global.enable_open_custom_folder == true)
+					if (global.enable_open_custom_folder)
 					{
 						menu = "open_save_file_folder";
 					}
@@ -2883,7 +2883,7 @@ function scr_options_menu()
 					}
 					else
 					{
-						if (global.enable_open_custom_folder == true)
+						if (global.enable_open_custom_folder)
 						{
 							menu = "open_save_file_folder";
 						}
@@ -2896,7 +2896,7 @@ function scr_options_menu()
 				else
 				if (menu == "file_delete")
 				{
-					if (global.enable_open_custom_folder == true)
+					if (global.enable_open_custom_folder)
 					{
 						menu = "open_save_file_folder";
 					}
@@ -2978,7 +2978,7 @@ function scr_options_menu()
 	
 		#region /* Menu Navigation */
 		if (menu_joystick_delay <= 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 		
 			#region /* Options Menu */
@@ -2987,7 +2987,7 @@ function scr_options_menu()
 			if (menu == "difficulty_settings")
 			{
 				if (key_up)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (menu_delay == 0)
 				and (global.difficulty > 0)
 				{
@@ -2996,7 +2996,7 @@ function scr_options_menu()
 				}
 				else
 				if (key_down)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (menu_delay == 0)
 				and (global.difficulty < 2)
 				{
@@ -3032,7 +3032,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				{
 					menu_delay = 3;
-					if (global.enable_difficulty_selection_settings == true)
+					if (global.enable_difficulty_selection_settings)
 					{
 						menu = "difficulty_settings";
 					}
@@ -3123,7 +3123,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				{
 					menu_delay = 3;
-					if (global.enable_ranks == true)
+					if (global.enable_ranks)
 					{
 						menu = "show_ranks_settings";
 					}
@@ -3160,7 +3160,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				{
 					menu_delay = 3;
-					if (global.enable_ranks == true)
+					if (global.enable_ranks)
 					{
 						menu = "show_ranks_settings";
 					}
@@ -3201,7 +3201,7 @@ function scr_options_menu()
 			if (menu == "hud_hide_time")
 			{
 				if (key_up)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (menu_delay == 0)
 				and (global.hud_hide_time > 0)
 				{
@@ -3210,7 +3210,7 @@ function scr_options_menu()
 				}
 				else
 				if (key_down)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (menu_delay == 0)
 				and (global.hud_hide_time < 10)
 				{
@@ -3238,7 +3238,7 @@ function scr_options_menu()
 			if (menu == "selected_font")
 			{
 				if (key_up)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (menu_delay == 0)
 				and (global.selected_font > 0)
 				{
@@ -3248,7 +3248,7 @@ function scr_options_menu()
 				}
 				else
 				if (key_down)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (menu_delay == 0)
 				and (global.selected_font < 2)
 				{
@@ -3270,7 +3270,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				{
 					menu_delay = 3;
-					if (global.enable_difficulty_selection_settings == true)
+					if (global.enable_difficulty_selection_settings)
 					{
 						menu = "difficulty_settings";
 					}
@@ -3320,7 +3320,7 @@ function scr_options_menu()
 	
 			#region /* Assist Enable Navigation */
 			if (menu == "assist_enable")
-			and (global.assist_enable == true)
+			and (global.assist_enable)
 			{
 				if (key_up)
 				and (menu_delay == 0)
@@ -3363,7 +3363,7 @@ function scr_options_menu()
 				else
 				if (key_up)
 				and (menu_delay == 0)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (global.assist_item_appear > 0)
 				{
 					global.assist_item_appear -= 1;
@@ -3372,7 +3372,7 @@ function scr_options_menu()
 				else
 				if (key_down)
 				and (menu_delay == 0)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (global.assist_item_appear < 10)
 				{
 					global.assist_item_appear += 1;
@@ -3402,7 +3402,7 @@ function scr_options_menu()
 				else
 				if (key_up)
 				and (menu_delay == 0)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (global.assist_extra_hp > 0)
 				{
 					global.assist_extra_hp -= 1;
@@ -3410,7 +3410,7 @@ function scr_options_menu()
 				else
 				if (key_down)
 				and (menu_delay == 0)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (global.assist_extra_hp < 9)
 				{
 					global.assist_extra_hp += 1;
@@ -4008,13 +4008,13 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.enable_verbosity_slider == true)
+					if (global.enable_verbosity_slider)
 					{
 						menu = "verbosity_slider";
 						menu_delay = 3;
 					}
 					else
-					if (global.enable_narrator == true)
+					if (global.enable_narrator)
 					{
 						menu = "select_narrator";
 						menu_delay = 3;
@@ -4028,7 +4028,7 @@ function scr_options_menu()
 				else
 				if (key_up)
 				and (menu_delay == 0)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (global.number_of_audio_channels> 0)
 				{
 					global.number_of_audio_channels -= 1;
@@ -4037,7 +4037,7 @@ function scr_options_menu()
 				else
 				if (key_down)
 				and (menu_delay == 0)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (global.number_of_audio_channels< 7)
 				{
 					global.number_of_audio_channels+= 1;
@@ -4097,7 +4097,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.enable_narrator == true)
+					if (global.enable_narrator)
 					{
 						menu = "select_narrator";
 						menu_delay = 3;
@@ -4120,7 +4120,7 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.enable_verbosity_slider == true)
+					if (global.enable_verbosity_slider)
 					{
 						menu = "verbosity_slider";
 						menu_delay = 3;
@@ -4151,13 +4151,13 @@ function scr_options_menu()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.enable_narrator == true)
+					if (global.enable_narrator)
 					{
 						menu = "select_narrator";
 						menu_delay = 3;
 					}
 					else
-					if (global.enable_verbosity_slider == true)
+					if (global.enable_verbosity_slider)
 					{
 						menu = "verbosity_slider";
 						menu_delay = 3;
@@ -4192,7 +4192,7 @@ function scr_options_menu()
 			if (menu == "assist_enable")
 			and (menu_delay == 0)
 			{
-				if (global.assist_enable == true)
+				if (global.assist_enable)
 				{
 					global.assist_enable = false;
 				}
@@ -4219,7 +4219,7 @@ function scr_options_menu()
 				}
 				else
 				if (menu_delay == 0)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				{
 					open_dropdown = false;
 					menu_delay = 3;
@@ -4227,24 +4227,24 @@ function scr_options_menu()
 			}
 			#endregion /* Drop down menu END */
 			
-			if (menu == "assist_invincible") and (menu_delay == 0){if (global.assist_invincible == true){global.assist_invincible = false;}else{global.assist_invincible = true;}menu_delay = 3;}
-			if (menu == "assist_breathe_underwater") and (menu_delay == 0){if (global.assist_breathe_underwater == true){global.assist_breathe_underwater = false;}else{global.assist_breathe_underwater = true;}menu_delay = 3;}
-			if (menu == "assist_guiding_arrows") and (menu_delay == 0){if (global.assist_guiding_arrows == true){global.assist_guiding_arrows = false;}else{global.assist_guiding_arrows = true;}menu_delay = 3;}
-			if (menu == "assist_normal_arrows") and (menu_delay == 0){if (global.assist_normal_arrows == true){global.assist_normal_arrows = false;}else{global.assist_normal_arrows = true;}menu_delay = 3;}
-			if (menu == "assist_enable_enemies") and (menu_delay == 0) and (global.assist_enable == true){if (global.assist_enable_enemies == true){global.assist_enable_enemies = false;}else{global.assist_enable_enemies = true;}menu_delay = 3;}
-			if (menu == "assist_enable_spikes") and (menu_delay == 0) and (global.assist_enable == true){if (global.assist_enable_spikes == true){global.assist_enable_spikes = false;}else{global.assist_enable_spikes = true;}menu_delay = 3;}
-			if (menu == "assist_show_assist_mode_text") and (menu_delay == 0){if (global.assist_show_assist_mode_text == true){global.assist_show_assist_mode_text = false;}else{global.assist_show_assist_mode_text = true;}menu_delay = 3;}
+			if (menu == "assist_invincible") and (menu_delay == 0){if (global.assist_invincible){global.assist_invincible = false;}else{global.assist_invincible = true;}menu_delay = 3;}
+			if (menu == "assist_breathe_underwater") and (menu_delay == 0){if (global.assist_breathe_underwater){global.assist_breathe_underwater = false;}else{global.assist_breathe_underwater = true;}menu_delay = 3;}
+			if (menu == "assist_guiding_arrows") and (menu_delay == 0){if (global.assist_guiding_arrows){global.assist_guiding_arrows = false;}else{global.assist_guiding_arrows = true;}menu_delay = 3;}
+			if (menu == "assist_normal_arrows") and (menu_delay == 0){if (global.assist_normal_arrows){global.assist_normal_arrows = false;}else{global.assist_normal_arrows = true;}menu_delay = 3;}
+			if (menu == "assist_enable_enemies") and (menu_delay == 0) and (global.assist_enable){if (global.assist_enable_enemies){global.assist_enable_enemies = false;}else{global.assist_enable_enemies = true;}menu_delay = 3;}
+			if (menu == "assist_enable_spikes") and (menu_delay == 0) and (global.assist_enable){if (global.assist_enable_spikes){global.assist_enable_spikes = false;}else{global.assist_enable_spikes = true;}menu_delay = 3;}
+			if (menu == "assist_show_assist_mode_text") and (menu_delay == 0){if (global.assist_show_assist_mode_text){global.assist_show_assist_mode_text = false;}else{global.assist_show_assist_mode_text = true;}menu_delay = 3;}
 			
-			if (menu == "automatically_pause_when_window_is_unfocused_settings") and (menu_delay == 0){if (global.automatically_pause_when_window_is_unfocused == true){global.automatically_pause_when_window_is_unfocused = false;}else{global.automatically_pause_when_window_is_unfocused = true;}menu_delay = 3;}
-			if (menu == "enable_attract_demo") and (menu_delay == 0){if (global.enable_attract_demo == true){global.enable_attract_demo = false;}else{global.enable_attract_demo = true;}menu_delay = 3;}
-			if (menu == "enable_links_at_title_screen") and (menu_delay == 0){if (global.enable_links == true){global.enable_links = false;}else{global.enable_links = true;}menu_delay = 3;}
-			if (menu == "show_timer_settings") and (menu_delay == 0){if (global.show_timer == true){global.show_timer = false;}else{global.show_timer = true;}menu_delay = 3;}
-			if (menu == "show_deaths_counter_settings") and (menu_delay == 0){if (global.show_deaths_counter == true){global.show_deaths_counter = false;}else{global.show_deaths_counter = true;}menu_delay = 3;}
-			if (menu == "show_ranks_settings") and (menu_delay == 0){if (global.show_ranks == true){global.show_ranks = false;}else{global.show_ranks = true;}menu_delay = 3;}
-			if (menu == "show_tutorial_signs") and (menu_delay == 0){if (global.show_tutorial_signs == true){global.show_tutorial_signs = false;}else{global.show_tutorial_signs = true;}menu_delay = 3;}
-			if (menu == "show_new_items_notification") and (menu_delay == 0){if (global.show_new_items_notification == true){global.show_new_items_notification = false;}else{global.show_new_items_notification = true;}menu_delay = 3;}
-			if (menu == "players_can_collide") and (menu_delay == 0){if (global.players_can_collide == true){global.players_can_collide = false;}else{global.players_can_collide = true;}menu_delay = 3;}
-			if (menu == "convention_mode") and (menu_delay == 0){if (global.convention_mode == true){global.convention_mode = false;}else{global.convention_mode = true;}menu_delay = 3;}
+			if (menu == "automatically_pause_when_window_is_unfocused_settings") and (menu_delay == 0){if (global.automatically_pause_when_window_is_unfocused){global.automatically_pause_when_window_is_unfocused = false;}else{global.automatically_pause_when_window_is_unfocused = true;}menu_delay = 3;}
+			if (menu == "enable_attract_demo") and (menu_delay == 0){if (global.enable_attract_demo){global.enable_attract_demo = false;}else{global.enable_attract_demo = true;}menu_delay = 3;}
+			if (menu == "enable_links_at_title_screen") and (menu_delay == 0){if (global.enable_links){global.enable_links = false;}else{global.enable_links = true;}menu_delay = 3;}
+			if (menu == "show_timer_settings") and (menu_delay == 0){if (global.show_timer){global.show_timer = false;}else{global.show_timer = true;}menu_delay = 3;}
+			if (menu == "show_deaths_counter_settings") and (menu_delay == 0){if (global.show_deaths_counter){global.show_deaths_counter = false;}else{global.show_deaths_counter = true;}menu_delay = 3;}
+			if (menu == "show_ranks_settings") and (menu_delay == 0){if (global.show_ranks){global.show_ranks = false;}else{global.show_ranks = true;}menu_delay = 3;}
+			if (menu == "show_tutorial_signs") and (menu_delay == 0){if (global.show_tutorial_signs){global.show_tutorial_signs = false;}else{global.show_tutorial_signs = true;}menu_delay = 3;}
+			if (menu == "show_new_items_notification") and (menu_delay == 0){if (global.show_new_items_notification){global.show_new_items_notification = false;}else{global.show_new_items_notification = true;}menu_delay = 3;}
+			if (menu == "players_can_collide") and (menu_delay == 0){if (global.players_can_collide){global.players_can_collide = false;}else{global.players_can_collide = true;}menu_delay = 3;}
+			if (menu == "convention_mode") and (menu_delay == 0){if (global.convention_mode){global.convention_mode = false;}else{global.convention_mode = true;}menu_delay = 3;}
 		}
 		#endregion /* Accept END */
 
@@ -4269,15 +4269,15 @@ function scr_options_menu()
 	}
 	
 	#region /* Darken sidebar when it's not the focus */
-	if (can_navigate_settings_sidebar == true)
-	and (in_settings == true)
+	if (can_navigate_settings_sidebar)
+	and (in_settings)
 	{
 		darken_settings_alpha = lerp(darken_settings_alpha, 0.5, 0.1); /* Darken the settings */
 		darken_settings_sidebar_alpha = lerp(darken_settings_sidebar_alpha, 0, 0.1); /* But not the settings sidebar */
 	}
 	else
 	if (can_navigate_settings_sidebar == false)
-	and (in_settings == true)
+	and (in_settings)
 	{
 		darken_settings_alpha = lerp(darken_settings_alpha, 0, 0.1); /* Don't darken the settings */
 		darken_settings_sidebar_alpha = lerp(darken_settings_sidebar_alpha, 0.5, 0.1); /* But darken the settings sidebar */

@@ -62,7 +62,7 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 	
 	#region /* Origin points */
 	if (sprite_variable != noone)
-	and (saved_file_exists == true)
+	and (saved_file_exists)
 	{
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/sprite_origin_point.ini"))
 		{

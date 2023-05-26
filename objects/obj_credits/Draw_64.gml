@@ -16,20 +16,20 @@ draw_set_valign(fa_top);
 
 #region /* If gamepad is connected */
 if (gamepad_is_connected(global.player1_slot))
-and (global.player1_can_play == true)
+and (global.player1_can_play)
 and (global.controls_used_for_menu_navigation == "controller")
 or(gamepad_is_connected(global.player2_slot))
-and (global.player2_can_play == true)
+and (global.player2_can_play)
 and (global.controls_used_for_menu_navigation == "controller")
 or(gamepad_is_connected(global.player3_slot))
-and (global.player3_can_play == true)
+and (global.player3_can_play)
 and (global.controls_used_for_menu_navigation == "controller")
 or(gamepad_is_connected(global.player4_slot))
-and (global.player4_can_play == true)
+and (global.player4_can_play)
 and (global.controls_used_for_menu_navigation == "controller")
-or (global.always_show_gamepad_buttons == true)
+or (global.always_show_gamepad_buttons)
 {
-	scr_draw_text_outlined(get_window_width - 64, 0, l10n_text("Skip") + " : " + l10n_text("Hold"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(get_window_width - 64, 0, l10n_text("Skip") + ": " + l10n_text("Hold"), global.default_text_size, c_black, c_white, 1);
 	scr_draw_gamepad_buttons(gp_start, get_window_width - 32, 21, 0.5, c_white, 1);
 }
 #endregion /* If gamepad is connected END */
@@ -40,7 +40,7 @@ else
 if (os_type == os_ios)
 or (os_type == os_android)
 {
-	scr_draw_text_outlined(get_window_width - 16, 0, l10n_text("Skip") + " : " + l10n_text("Press and Hold Screen"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(get_window_width - 16, 0, l10n_text("Skip") + ": " + l10n_text("Press and Hold Screen"), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /* If playing on mobile END */
 
@@ -50,7 +50,7 @@ else
 if (global.controls_used_for_menu_navigation = "keyboard")
 or (global.controls_used_for_menu_navigation = "mouse")
 {
-	draw_menu_button(get_window_width - 370, 0, l10n_text("Skip") + " : " + l10n_text("Hold"), "skip", "skip");
+	draw_menu_button(get_window_width - 370, 0, l10n_text("Skip") + ": " + l10n_text("Hold"), "skip", "skip");
 	draw_sprite_ext(spr_keyboard_keys, vk_escape, get_window_width - 32, 21, 0.5, 0.5, 0, c_white, 1);
 }
 #endregion /* If playing on Keyboard */
@@ -114,7 +114,7 @@ and (sprite_index = spr_credits)
 }
 
 if (image_index <= 1)
-and (end_credits == true)
+and (end_credits)
 and (sprite_index = spr_credits)
 {
 	menu_delay = 9999;
@@ -131,8 +131,8 @@ if (iris_xscale <= 0.01)
 	else
 	if (room == room_leveleditor)
 	and (global.character_select_in_this_menu == "level_editor")
-	and (global.actually_play_edited_level == true)
-	and (global.play_edited_level == true)
+	and (global.actually_play_edited_level)
+	and (global.play_edited_level)
 	{
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false;
@@ -142,7 +142,7 @@ if (iris_xscale <= 0.01)
 	if (room == room_leveleditor)
 	and (global.character_select_in_this_menu == "level_editor")
 	and (global.actually_play_edited_level == false)
-	and (global.play_edited_level == true)
+	and (global.play_edited_level)
 	{
 		global.play_edited_level = false;
 		room_restart();
@@ -253,7 +253,7 @@ else
 
 #endregion /* Iris Zooming END */
 
-if (global.enable_transitions == true)
+if (global.enable_transitions)
 {
 	if (iris_xscale < 15)
 	{

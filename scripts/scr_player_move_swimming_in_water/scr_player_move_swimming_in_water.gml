@@ -16,7 +16,7 @@ function scr_player_move_swimming_in_water()
 				in_water = true;
 			}
 			if (position_meeting(x, y, obj_water))
-			and (instance_nearest(x, y, obj_water).breathable_water == true)
+			and (instance_nearest(x, y, obj_water).breathable_water)
 			{
 				in_breathable_water = true;
 			}
@@ -25,7 +25,7 @@ function scr_player_move_swimming_in_water()
 			and (instance_exists(obj_water_level))
 			and (y > obj_water_level.y)
 			and (obj_water_level.y < room_height)
-			and (instance_nearest(x, y, obj_water_level).breathable_water == true)
+			and (instance_nearest(x, y, obj_water_level).breathable_water)
 			{
 				in_breathable_water = true;
 			}
@@ -143,7 +143,7 @@ function scr_player_move_swimming_in_water()
 					}
 				}
 			}
-			if (on_ground == true)
+			if (on_ground)
 			{
 				if (hspeed <- 2)
 				{

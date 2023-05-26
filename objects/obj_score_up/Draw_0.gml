@@ -41,7 +41,7 @@ and (score_up != "Copied")
 	scr_draw_text_outlined(x, y, string_upper(score_up), global.default_text_size * image_xscale, c_white, c_black, image_alpha);
 }
 
-if (show_remaining_jumps == true)
+if (show_remaining_jumps)
 {
 	scr_draw_text_outlined(x, y, string_upper(score_up), global.default_text_size * image_xscale, c_gray, c_white, image_alpha);
 }

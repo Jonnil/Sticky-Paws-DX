@@ -66,7 +66,7 @@
 		if (mouse_check_button_released(mb_left))
 		|| (obj_leveleditor.key_a_released)
 		{
-			if (drag_object == true)
+			if (drag_object)
 			{
 				drag_release_timer = 3;
 				drag_object = 0.5;

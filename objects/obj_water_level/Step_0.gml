@@ -1,4 +1,4 @@
-if (breathable_water == true)
+if (breathable_water)
 {
 	image_alpha = 0.25;
 }

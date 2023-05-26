@@ -7,11 +7,11 @@ function scr_spawn_objects_when_starting_room()
 		
 		#region /* Only spawn objects according to difficulty settings */
 		if (global.difficulty <= 0)
-		&& (easy == true)
+		&& (easy)
 		|| (global.difficulty == 1)
-		&& (normal == true)
+		&& (normal)
 		|| (global.difficulty >= 2)
-		&& (hard == true)
+		&& (hard)
 		{
 			switch (object) {
 			    case level_object_id.id_wall:

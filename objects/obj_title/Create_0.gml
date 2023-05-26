@@ -9,6 +9,23 @@ scr_delete_sprite_properly(global.custom_foreground_secret);
 
 directory_destroy(working_directory + "/levels");
 
+character_portrait_for_player_directory_exists_1[1] = false;
+character_portrait_for_player_directory_exists_2[1] = false;
+character_portrait_for_player_directory_exists_3[1] = false;
+character_portrait_for_player_directory_exists_4[1] = false;
+character_portrait_for_player_directory_exists_1[2] = false;
+character_portrait_for_player_directory_exists_2[2] = false;
+character_portrait_for_player_directory_exists_3[2] = false;
+character_portrait_for_player_directory_exists_4[2] = false;
+character_portrait_for_player_directory_exists_1[3] = false;
+character_portrait_for_player_directory_exists_2[3] = false;
+character_portrait_for_player_directory_exists_3[3] = false;
+character_portrait_for_player_directory_exists_4[3] = false;
+character_portrait_for_player_directory_exists_1[4] = false;
+character_portrait_for_player_directory_exists_2[4] = false;
+character_portrait_for_player_directory_exists_3[4] = false;
+character_portrait_for_player_directory_exists_4[4] = false;
+
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
@@ -429,7 +446,7 @@ scr_audio_play(title_music, volume_source.music); /* Play title screen music */
 scr_audio_play(trailer_sound, volume_source.music); /* Play trailer sound */
 
 #region /* Reset level zoom */
-if (global.reset_level_zoom_when_going_back_to_map == true)
+if (global.reset_level_zoom_when_going_back_to_map)
 {
 	global.zoom_level = global.default_zoom_level;
 	ini_open("config.ini");
@@ -439,7 +456,7 @@ if (global.reset_level_zoom_when_going_back_to_map == true)
 #endregion /* Reset level zoom END */
 
 #region /* Reset world map zoom */
-if (global.reset_world_map_zoom_when_going_back_to_map == true)
+if (global.reset_world_map_zoom_when_going_back_to_map)
 {
 	global.zoom_world_map = global.default_zoom_world_map;
 	ini_open("config.ini");

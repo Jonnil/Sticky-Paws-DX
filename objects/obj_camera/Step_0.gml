@@ -21,7 +21,7 @@ scr_make_background_visible();
 if (instance_exists(obj_goal))
 and (obj_goal.goal == false)
 and (instance_exists(obj_player))
-and (obj_player.allow_timeattack == true)
+and (obj_player.allow_timeattack)
 and (global.pause == false)
 {
 	if (instance_exists(obj_player))
@@ -50,7 +50,7 @@ if (global.pause == false)
 	or (!instance_exists(obj_goal))
 	{
 		if (instance_exists(obj_player))
-		and (obj_player.allow_timeattack == true)
+		and (obj_player.allow_timeattack)
 		{
 			if (instance_exists(obj_player))
 			{
@@ -86,8 +86,8 @@ and (global.pause == false)
 		{
 			time_second = 0;
 			global.time_countdown_bonus -= 1;
-			if (obj_player.allow_timeup == true)
-			and (global.enable_time_countdown == true)
+			if (obj_player.allow_timeup)
+			and (global.enable_time_countdown)
 			{
 				global.time_countdown -= 1;
 			}
@@ -105,7 +105,7 @@ if (global.spikes_emerge_time >= room_speed * 4)
 
 #region /* Stop the screen from scrolling left if scrolling left isn't allowed */
 if (instance_exists(obj_player))
-and (obj_player.stop_screen_from_scrolling_left == true)
+and (obj_player.stop_screen_from_scrolling_left)
 {
 	if (x > scrolling_left)
 	{
@@ -119,7 +119,7 @@ and (obj_player.stop_screen_from_scrolling_left == true)
 #endregion /* Stop the screen from scrolling left if scrolling left isn't allowed END */
 
 #region /* Rain Effect */
-if (global.rain == true)
+if (global.rain)
 {
 	if (floor(random(10 - 1)) == 0)
 	{
@@ -384,7 +384,7 @@ and (global.goal_active == false)
 	or (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
 	{
 		if (player1 <= 0)
-		and (can_spawn_player1 == true)
+		and (can_spawn_player1)
 		and (lives > 0)
 		{
 			if (global.player1_can_play == false)
@@ -411,7 +411,7 @@ and (global.goal_active == false)
 	or (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
 	{
 		if (player2 <= 0)
-		and (can_spawn_player2 == true)
+		and (can_spawn_player2)
 		and (lives > 0)
 		{
 			if (global.player2_can_play == false)
@@ -438,7 +438,7 @@ and (global.goal_active == false)
 	or (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
 	{
 		if (player3 <= 0)
-		and (can_spawn_player3 == true)
+		and (can_spawn_player3)
 		and (lives > 0)
 		{
 			if (global.player3_can_play == false)
@@ -465,7 +465,7 @@ and (global.goal_active == false)
 	or (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
 	{
 		if (player4 <= 0)
-		and (can_spawn_player4 == true)
+		and (can_spawn_player4)
 		and (lives > 0)
 		{
 			if (global.player4_can_play == false)
@@ -694,7 +694,7 @@ if (save_level_as_png == false)
 			
 			#region /* Tries to be a bit ahead of player */
 			xx = player1.x + player1.hspeed * 15;
-			if (player1.on_ground == true)
+			if (player1.on_ground)
 			and (player1.vspeed >= 0)
 			{
 				yy = player1.y
@@ -704,8 +704,8 @@ if (save_level_as_png == false)
 			{
 				yy -= abs(player1.vspeed);
 			}
-			if (player1.wall_jump == true)
-			or (player1.climb == true)
+			if (player1.wall_jump)
+			or (player1.climb)
 			{
 				yy = player1.y
 			}
@@ -716,11 +716,11 @@ if (save_level_as_png == false)
 			#endregion /* Tries to be a bit ahead of player END */
 			
 			#region /* Follow Player in y position when doing specific things */
-			if (player1.in_water == true)
-			or (player1.stick_to_wall == true)
-			or (player1.spring == true)
-			or (player1.climb == true)
-			or (player1.horizontal_rope_climb == true)
+			if (player1.in_water)
+			or (player1.stick_to_wall)
+			or (player1.spring)
+			or (player1.climb)
+			or (player1.horizontal_rope_climb)
 			{
 				if (player1.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
@@ -747,7 +747,7 @@ if (save_level_as_png == false)
 			
 			#region /* Tries to be a bit ahead of player */
 			xx = player2.x + player2.hspeed * 15;
-			if (player2.on_ground == true)
+			if (player2.on_ground)
 			and (player2.vspeed >= 0)
 			{
 				yy = player2.y
@@ -757,8 +757,8 @@ if (save_level_as_png == false)
 			{
 				yy -= abs(player2.vspeed);
 			}
-			if (player2.wall_jump == true)
-			or (player2.climb == true)
+			if (player2.wall_jump)
+			or (player2.climb)
 			{
 				yy = player2.y
 			}
@@ -769,11 +769,11 @@ if (save_level_as_png == false)
 			#endregion /* Tries to be a bit ahead of player END */
 			
 			#region /* Follow Player in y position when doing specific things */
-			if (player2.in_water == true)
-			or (player2.stick_to_wall == true)
-			or (player2.spring == true)
-			or (player2.climb == true)
-			or (player2.horizontal_rope_climb == true)
+			if (player2.in_water)
+			or (player2.stick_to_wall)
+			or (player2.spring)
+			or (player2.climb)
+			or (player2.horizontal_rope_climb)
 			{
 				if (player2.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
@@ -800,7 +800,7 @@ if (save_level_as_png == false)
 			
 			#region /* Tries to be a bit ahead of player */
 			xx = player3.x + player3.hspeed * 15;
-			if (player3.on_ground == true)
+			if (player3.on_ground)
 			and (player3.vspeed >= 0)
 			{
 				yy = player3.y
@@ -810,8 +810,8 @@ if (save_level_as_png == false)
 			{
 				yy -= abs(player3.vspeed);
 			}
-			if (player3.wall_jump == true)
-			or (player3.climb == true)
+			if (player3.wall_jump)
+			or (player3.climb)
 			{
 				yy = player3.y
 			}
@@ -822,11 +822,11 @@ if (save_level_as_png == false)
 			#endregion /* Tries to be a bit ahead of player END */
 			
 			#region /* Follow Player in y position when doing specific things */
-			if (player3.in_water == true)
-			or (player3.stick_to_wall == true)
-			or (player3.spring == true)
-			or (player3.climb == true)
-			or (player3.horizontal_rope_climb == true)
+			if (player3.in_water)
+			or (player3.stick_to_wall)
+			or (player3.spring)
+			or (player3.climb)
+			or (player3.horizontal_rope_climb)
 			{
 				if (player3.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
@@ -853,7 +853,7 @@ if (save_level_as_png == false)
 			
 			#region /* Tries to be a bit ahead of player */
 			xx = player4.x + player4.hspeed * 15;
-			if (player4.on_ground == true)
+			if (player4.on_ground)
 			and (player4.vspeed >= 0)
 			{
 				yy = player4.y
@@ -863,8 +863,8 @@ if (save_level_as_png == false)
 			{
 				yy -= abs(player4.vspeed);
 			}
-			if (player4.wall_jump == true)
-			or (player4.climb == true)
+			if (player4.wall_jump)
+			or (player4.climb)
 			{
 				yy = player4.y
 			}
@@ -875,11 +875,11 @@ if (save_level_as_png == false)
 			#endregion /* Tries to be a bit ahead of player END */
 			
 			#region /* Follow Player in y position when doing specific things */
-			if (player4.in_water == true)
-			or (player4.stick_to_wall == true)
-			or (player4.spring == true)
-			or (player4.climb == true)
-			or (player4.horizontal_rope_climb == true)
+			if (player4.in_water)
+			or (player4.stick_to_wall)
+			or (player4.spring)
+			or (player4.climb)
+			or (player4.horizontal_rope_climb)
 			{
 				if (player4.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
@@ -938,15 +938,15 @@ if (save_level_as_png == false)
 	#endregion /* MULTIPLAYER CAMERA */
 	
 	#region /* Iris */
-	if (allow_iris == true)
+	if (allow_iris)
 	{
 		
 		#region /* Zoom In */
 		if (instance_exists(obj_player))
-		and (instance_nearest(room_width, y, obj_player).goal == true)
+		and (instance_nearest(room_width, y, obj_player).goal)
 		and (global.time_countdown_bonus <= 0)
 		
-		or (global.iris_zoom_in == true) /* Zoom In Global Switch */
+		or (global.iris_zoom_in) /* Zoom In Global Switch */
 		{
 			if (iris_zoom == 1)
 			{
@@ -1070,7 +1070,7 @@ and (!instance_exists(obj_pause))
 #endregion /* Step Sprint Toggling END */
 
 #region /* Step Convention Mode */
-if (global.convention_mode == true)
+if (global.convention_mode)
 {
 	reset_game_if_no_interactivity += 1;
 	reset_game_if_no_interactivity_second_countdown_timer += 1;
@@ -1104,7 +1104,7 @@ or (show_letterbox > 0)
 if (global.hud_hide_time >= 10)
 {
 	hud_show_lives_timer = global.hud_hide_time * 60;
-	if (global.show_deaths_counter == true)
+	if (global.show_deaths_counter)
 	{
 		hud_show_deaths_timer = global.hud_hide_time * 60;
 	}
@@ -1116,7 +1116,7 @@ if (global.hud_hide_time >= 10)
 
 if (global.hud_hide_time >= 10)
 {
-	if (global.show_deaths_counter == true)
+	if (global.show_deaths_counter)
 	{
 		hud_show_deaths_timer = global.hud_hide_time * 60;
 	}
@@ -1177,7 +1177,7 @@ if (global.hud_hide_time > 0)
 	
 	#region /* Show Deaths y position */
 	if (hud_show_deaths_timer > 0)
-	and (global.show_deaths_counter == true)
+	and (global.show_deaths_counter)
 	{
 		if (hud_show_lives_y > 0)
 		{

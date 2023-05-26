@@ -71,7 +71,7 @@ function l10n_text(key = "") /* The common abbreviation for localization is l10n
         var letter = string_char_at("ABCDEFGHIJKLMNOPQRSTUVWXYZ", global.language_localization + 2);
         text = global.language_local_data[# 1, global.translations[?key]];
         var a = argument_count > 1 ? argument[1] : "";
-        if (global.translation_debug == true)
+        if (global.translation_debug)
         {
             text = string(letter) + string(global.translations[?key] + 1) + " " + string_replace_all(text, "{a}", a) + string(round(random(9)));
             /* In debug mode, make all untranslated text flash random numbers beside the original text, to indicate easier what line is untranslated */
@@ -83,7 +83,7 @@ function l10n_text(key = "") /* The common abbreviation for localization is l10n
     }
     else
     {
-        if (global.translation_debug == true)
+        if (global.translation_debug)
         {
             text = "A? " + key + string(round(random(9)));
             /* In debug mode, make all untranslated text flash random numbers beside the original text, to indicate easier what line is untranslated */

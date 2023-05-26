@@ -45,28 +45,28 @@ else
 }
 
 #region /* Play as custom character */
-if (global.player1_can_play == true)
+if (global.player1_can_play)
 {
 	player = 1;
 	selected_voice_pack = global.voicepack_for_player_1;
 	selected_skin = global.skin_for_player_1;
 }
 else
-if (global.player2_can_play == true)
+if (global.player2_can_play)
 {
 	player = 2;
 	selected_voice_pack = global.voicepack_for_player_2;
 	selected_skin = global.skin_for_player_2;
 }
 else
-if (global.player3_can_play == true)
+if (global.player3_can_play)
 {
 	player = 3;
 	selected_voice_pack = global.voicepack_for_player_3;
 	selected_skin = global.skin_for_player_3;
 }
 else
-if (global.player4_can_play == true)
+if (global.player4_can_play)
 {
 	player = 4;
 	selected_voice_pack = global.voicepack_for_player_4;
@@ -264,7 +264,7 @@ if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)
 ini_close();
 
 #region /* Reset level zoom */
-if (global.reset_level_zoom_when_going_back_to_map == true)
+if (global.reset_level_zoom_when_going_back_to_map)
 {
 	global.zoom_level = global.default_zoom_level;
 	ini_open("config.ini");
@@ -274,7 +274,7 @@ if (global.reset_level_zoom_when_going_back_to_map == true)
 #endregion /* Reset level zoom END */
 
 #region /* Reset world map zoom */
-if (global.reset_world_map_zoom_when_going_back_to_map == true)
+if (global.reset_world_map_zoom_when_going_back_to_map)
 {
 	global.zoom_world_map = global.default_zoom_world_map;
 	zoom_lerp = global.default_zoom_world_map;

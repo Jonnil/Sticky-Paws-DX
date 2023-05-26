@@ -141,7 +141,7 @@ if (global.actually_play_edited_level == false)
 		scr_controls_for_level_editor();
 	}
 	else
-	if (pause == true)
+	if (pause)
 	{
 		scr_menu_navigation_initialization(1, true);
 	}
@@ -208,7 +208,7 @@ if (global.actually_play_edited_level == false)
 		|| (gamepad_button_check_released(global.player1_slot, button_play))
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 		&& (mouse_check_button_released(mb_left))
-		|| (global.full_level_map_screenshot == true)
+		|| (global.full_level_map_screenshot)
 		|| (pressing_play_timer > 60)
 		{
 			if (pause == false)
@@ -218,7 +218,7 @@ if (global.actually_play_edited_level == false)
 				if (!instance_exists(obj_camera))
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32))
 				&& (!instance_exists(obj_camera))
-				|| (global.full_level_map_screenshot == true)
+				|| (global.full_level_map_screenshot)
 				{
 					
 					#region /* Limit so cursor and view can't go outside room */
@@ -360,13 +360,13 @@ if (global.actually_play_edited_level == false)
 	}
 	#endregion /* Play Level when releasing Enter Key END */
 
-	if (global.create_level_from_template == true)
+	if (global.create_level_from_template)
 	&& (create_level_from_template_save_delay < 10)
 	{
 		create_level_from_template_save_delay += 1;
 	}
 	else
-	if (global.create_level_from_template == true)
+	if (global.create_level_from_template)
 	&& (create_level_from_template_save_delay == 10)
 	{
 	
@@ -716,16 +716,16 @@ if (global.actually_play_edited_level == false)
 			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
 			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32)) /* Can't place objects when clicking the play button */
 			{
-				if (show_grid == true)
+				if (show_grid)
 				&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up && down buttons when grid is on */
 				|| (show_grid == false)
 				{
-					if (global.enable_difficulty_selection_settings == true)
-					&& (global.enable_difficutly_layers_in_level_editor == true)
-					&& (set_difficulty_mode == true)
+					if (global.enable_difficulty_selection_settings)
+					&& (global.enable_difficutly_layers_in_level_editor)
+					&& (set_difficulty_mode)
 					&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
-					|| (global.enable_difficulty_selection_settings == true)
-					&& (global.enable_difficutly_layers_in_level_editor == true)
+					|| (global.enable_difficulty_selection_settings)
+					&& (global.enable_difficutly_layers_in_level_editor)
 					&& (set_difficulty_mode == false)
 					&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 					|| (global.enable_difficulty_selection_settings == false)
@@ -807,7 +807,7 @@ if (global.actually_play_edited_level == false)
 									
 								/* Unlocked objects should be set as not recently unlocked anymore */
 								ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
-								if (ini_read_real("Unlock Placable Objects", place_object, false) == true) /* Only update if the current object is recently unlocked */
+								if (ini_read_real("Unlock Placable Objects", place_object, false)) /* Only update if the current object is recently unlocked */
 								{
 									ini_write_real("Unlock Placable Objects", place_object, 2); /* Set that the unlockable object isn't recently unlocked and "New" anymore */
 								}
@@ -950,7 +950,7 @@ if (global.actually_play_edited_level == false)
 			fill_mode = false;
 		}
 		else
-		if (erase_mode == true)
+		if (erase_mode)
 		{
 			fill_mode = false;
 			if (erase_brush_size == 0)
@@ -1000,7 +1000,7 @@ if (global.actually_play_edited_level == false)
 		else
 		if (fill_mode_type == "fill")
 		&& (erase_mode == false)
-		&& (fill_mode == true)
+		&& (fill_mode)
 		{
 			erase_mode = false;
 			fill_mode_type = "horizontal";
@@ -1008,7 +1008,7 @@ if (global.actually_play_edited_level == false)
 		else
 		if (fill_mode_type == "horizontal")
 		&& (erase_mode == false)
-		&& (fill_mode == true)
+		&& (fill_mode)
 		{
 			erase_mode = false;
 			fill_mode_type = "vertical";
@@ -1016,7 +1016,7 @@ if (global.actually_play_edited_level == false)
 		else
 		if (fill_mode_type == "vertical")
 		&& (erase_mode == false)
-		&& (fill_mode == true)
+		&& (fill_mode)
 		{
 			erase_mode = false;
 			fill_mode_type = "fill";
@@ -1049,7 +1049,7 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Scroll mouse wheel to change drawing tool size in level editor End */
 	
 	#region /* Scroll mouse wheel to change erase tool size in level editor */
-	if (erase_mode == true)
+	if (erase_mode)
 	&& (pause == false)
 	{
 		if (mouse_wheel_down())
@@ -1142,7 +1142,7 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Show or hide grid hotkey END */
 	
 	#region /* Fade grid in and out when toggeling */
-	if (show_grid == true)
+	if (show_grid)
 	{
 		grid_alpha = lerp(grid_alpha, 0.25, 0.1);
 	}
@@ -1157,7 +1157,7 @@ if (global.actually_play_edited_level == false)
 	{
 		
 		#region /* Zoom Out */
-		if (zoom_out == true)
+		if (zoom_out)
 		{
 			if (cam_width < 3840) /* 1920 * 2 = 3840 */
 			&& (cam_height < 2160) /* 1080 * 2 = 2160 */
@@ -1171,7 +1171,7 @@ if (global.actually_play_edited_level == false)
 		else
 		
 		#region /* Reset Zoom */
-		if (zoom_reset == true)
+		if (zoom_reset)
 		{
 			
 			#region /* Limit so cursor and view can't go outside room */
@@ -1229,7 +1229,7 @@ if (global.actually_play_edited_level == false)
 		else
 	
 		#region /* Zoom In */
-		if (zoom_in == true)
+		if (zoom_in)
 		{
 			if (cam_width > 696)
 			&& (cam_height > 368)
@@ -1293,7 +1293,7 @@ if (global.actually_play_edited_level == false)
 	else
 
 	#region /* Fill Cursor */
-	if (fill_mode == true)
+	if (fill_mode)
 	&& (erase_mode == false)
 	&& (scroll_view == false)
 	&& (!place_meeting(x, y, obj_level_player_1_start))
@@ -1317,7 +1317,7 @@ if (global.actually_play_edited_level == false)
 	else
 	
 	#region /* Erase Cursor */
-	if (erase_mode == true)
+	if (erase_mode)
 	&& (scroll_view == false)
 	&& (pause == false)
 	{
@@ -1400,7 +1400,7 @@ if (global.actually_play_edited_level == false)
 		&& (!key_b_hold)
 		&& (scroll_view == false)
 		&& (drag_object == false)
-		&& (fill_mode == true)
+		&& (fill_mode)
 		&& (erase_mode == false)
 		&& (pause == false)
 		&& (menu_delay == 0)
@@ -1682,16 +1682,16 @@ if (global.actually_play_edited_level == false)
 			scroll_view = true;
 		}
 	}
-	if (scroll_view == true)
+	if (scroll_view)
 	&& (quit_level_editor <= 0)
 	&& (!instance_exists(obj_leveleditor_fill))
 	{
 		camera_set_view_pos(view_camera[view_current], drag_x -(mouse_x -cam_x), drag_y -(mouse_y -cam_y)); /* Scroll the camera position with the mouse */
 	}
 	if (mouse_check_button_released(mb_left))
-	&& (scroll_view == true)
+	&& (scroll_view)
 	|| (mouse_check_button_released(mb_middle))
-	&& (scroll_view == true)
+	&& (scroll_view)
 	{
 		scroll_view = false;
 	}

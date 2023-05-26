@@ -2,11 +2,11 @@ function scr_player_move_dive()
 {
 	
 	#region /* Dive */
-	if (allow_dive == true)
-	and (can_move == true)
+	if (allow_dive)
+	and (can_move)
 	and (hold_item_in_hands == "")
 	and (global.pause == false)
-	and (can_dive == true)
+	and (can_dive)
 	and (drop_off_wall_climb == 0)
 	and (in_water == false)
 	{
@@ -25,10 +25,10 @@ function scr_player_move_dive()
 		and (climb == false)
 		and (horizontal_rope_climb == false)
 		and (takendamage <= takendamage_freezetime)
-		and (double_tap_to_dive == true) /* If you are allowed to double-tap direction to dive */
-		and (double_tap_dive == true) /* If you double tapped direction to dive */
+		and (double_tap_to_dive) /* If you are allowed to double-tap direction to dive */
+		and (double_tap_dive) /* If you double tapped direction to dive */
 		{
-			if (rope_swing == true)
+			if (rope_swing)
 			{
 				if (instance_exists(obj_tongue))
 				{
@@ -116,7 +116,7 @@ function scr_player_move_dive()
 			can_glide = 20;
 		}
 		else
-		if (dive == true)
+		if (dive)
 		{
 			if (key_left_hold)
 			and (asset_get_type("obj_wall") == asset_object)
@@ -167,7 +167,7 @@ function scr_player_move_dive()
 			#endregion /* Propel the player forward in the direction the player is facing END */
 			
 			#region /* If player lands on ground when diving, stop diving */
-			if (on_ground == true)
+			if (on_ground)
 			{
 				if (vspeed >= 0)
 				{
@@ -181,7 +181,7 @@ function scr_player_move_dive()
 			#endregion /* If player lands on ground when diving, stop diving END */
 
 			#region /* If player lands in water when diving, stop diving */
-			if (in_water == true)
+			if (in_water)
 			{
 				dive = false;
 				can_dive = true;
@@ -190,7 +190,7 @@ function scr_player_move_dive()
 			#endregion /* If player lands in water when diving, stop diving END */
 			
 			#region /* Cancel dive (only when you have enabled dive canceling in settings) */
-			if (cancel_dive_by_pressing_jump_or_dive_button == true)
+			if (cancel_dive_by_pressing_jump_or_dive_button)
 			{
 				if (key_jump)
 				or (key_dive_pressed)
@@ -199,7 +199,7 @@ function scr_player_move_dive()
 					can_dive = false;
 				}
 			}
-			if (cancel_dive_by_pressing_opposite_direction == true)
+			if (cancel_dive_by_pressing_opposite_direction)
 			{
 				if (hspeed < 0)
 				and (key_right_hold)

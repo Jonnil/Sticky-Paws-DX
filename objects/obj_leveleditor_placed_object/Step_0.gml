@@ -1,5 +1,5 @@
-if (global.actually_play_edited_level == true)
-|| (global.play_edited_level == true)
+if (global.actually_play_edited_level)
+|| (global.play_edited_level)
 {
 	scr_spawn_objects_when_starting_room(); /* Only spawn objects AFTER saving custom level */
 }
@@ -8,7 +8,7 @@ if (global.actually_play_edited_level == false)
 {
 	
 	#region /* Actually drag the object */
-	if (drag_object == true)
+	if (drag_object)
 	{
 		x = obj_leveleditor.x;
 		y = obj_leveleditor.y;
@@ -17,7 +17,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Change certain objects angle */
 	/* Some objects should not save second x and second y, only objects that actually rotate should save */
-	if (place_object_angle == true)
+	if (place_object_angle)
 	{
 		if (object == level_object_id.id_spring)
 		|| (object == level_object_id.id_door)
@@ -66,11 +66,11 @@ if (global.actually_play_edited_level == false)
 		&& (!keyboard_check(vk_space))
 		&& (!mouse_check_button(mb_middle))
 		{
-			if (obj_leveleditor.erase_mode == true)
+			if (obj_leveleditor.erase_mode)
 			&& (mouse_check_button(mb_left))
 			|| (mouse_check_button(mb_right))
 			|| (instance_exists(obj_leveleditor))
-			&& (obj_leveleditor.erase_mode == true)
+			&& (obj_leveleditor.erase_mode)
 			&& (obj_leveleditor.key_a_hold)
 			|| (instance_exists(obj_leveleditor))
 			&& (obj_leveleditor.key_b_hold)
@@ -130,7 +130,7 @@ if (global.actually_play_edited_level == false)
 				{
 					if (obj_leveleditor.difficulty_layer == 1)
 					{
-						if (easy == true)
+						if (easy)
 						{
 							easy = false;
 						}
@@ -138,7 +138,7 @@ if (global.actually_play_edited_level == false)
 					else
 					if (obj_leveleditor.difficulty_layer == 2)
 					{
-						if (normal == true)
+						if (normal)
 						{
 							normal = false;
 						}
@@ -146,7 +146,7 @@ if (global.actually_play_edited_level == false)
 					else
 					if (obj_leveleditor.difficulty_layer == 3)
 					{
-						if (hard == true)
+						if (hard)
 						{
 							hard = false;
 						}
@@ -162,7 +162,7 @@ if (global.actually_play_edited_level == false)
 			if (instance_exists(obj_leveleditor))
 			&& (obj_leveleditor.difficulty_layer == 0)
 			&& (obj_leveleditor.drag_object == false)
-			&& (obj_leveleditor.erase_mode == true)
+			&& (obj_leveleditor.erase_mode)
 			&& (obj_leveleditor.scroll_view == false)
 			&& (obj_leveleditor.pause == false)
 			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2))
@@ -170,7 +170,7 @@ if (global.actually_play_edited_level == false)
 			&& (!keyboard_check(vk_space))
 			&& (!mouse_check_button(mb_middle))
 			{
-				if (obj_leveleditor.set_difficulty_mode == true)
+				if (obj_leveleditor.set_difficulty_mode)
 				&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 256, get_window_height - 64, get_window_width, room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 				|| (obj_leveleditor.set_difficulty_mode == false)
 				&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height - 64, get_window_width, room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
@@ -324,7 +324,7 @@ if (global.actually_play_edited_level == false)
 		
 			{
 				if (obj_leveleditor.difficulty_layer == 1)
-				&& (obj_leveleditor.set_difficulty_mode == true)
+				&& (obj_leveleditor.set_difficulty_mode)
 				{
 					if (easy == false)
 					{
@@ -334,7 +334,7 @@ if (global.actually_play_edited_level == false)
 				}
 				else
 				if (obj_leveleditor.difficulty_layer == 2)
-				&& (obj_leveleditor.set_difficulty_mode == true)
+				&& (obj_leveleditor.set_difficulty_mode)
 				{
 					if (normal == false)
 					{
@@ -344,7 +344,7 @@ if (global.actually_play_edited_level == false)
 				}
 				else
 				if (obj_leveleditor.difficulty_layer == 3)
-				&& (obj_leveleditor.set_difficulty_mode == true)
+				&& (obj_leveleditor.set_difficulty_mode)
 				{
 					if (hard == false)
 					{
@@ -417,42 +417,42 @@ if (global.actually_play_edited_level == false)
 				{
 					if (obj_leveleditor.difficulty_layer == 0)
 					{
-						if (easy == true)
+						if (easy)
 						{
 							easy = false;
 						}
-						if (normal == true)
+						if (normal)
 						{
 							normal = false;
 						}
-						if (hard == true)
+						if (hard)
 						{
 							hard = false;
 						}
 					}
 					else
 					if (obj_leveleditor.difficulty_layer == 1)
-					&& (obj_leveleditor.set_difficulty_mode == true)
+					&& (obj_leveleditor.set_difficulty_mode)
 					{
-						if (easy == true)
+						if (easy)
 						{
 							easy = false;
 						}
 					}
 					else
 					if (obj_leveleditor.difficulty_layer == 2)
-					&& (obj_leveleditor.set_difficulty_mode == true)
+					&& (obj_leveleditor.set_difficulty_mode)
 					{
-						if (normal == true)
+						if (normal)
 						{
 							normal = false;
 						}
 					}
 					else
 					if (obj_leveleditor.difficulty_layer == 3)
-					&& (obj_leveleditor.set_difficulty_mode == true)
+					&& (obj_leveleditor.set_difficulty_mode)
 					{
-						if (hard == true)
+						if (hard)
 						{
 							hard = false;
 						}

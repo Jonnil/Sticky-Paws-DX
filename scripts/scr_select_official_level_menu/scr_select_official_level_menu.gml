@@ -37,7 +37,7 @@ function scr_select_official_level_menu()
 		{
 			if (global.select_level_index - row < 0)
 			and (global.controls_used_for_menu_navigation != "mouse")
-			and (show_level_editor_corner_menu == true)
+			and (show_level_editor_corner_menu)
 			{
 				menu_delay = 3;
 				menu = "back_from_level_editor";
@@ -75,7 +75,7 @@ function scr_select_official_level_menu()
 		{
 			if (global.select_level_index + row > ds_list_size(global.thumbnail_sprite) - 1)
 			and (global.controls_used_for_menu_navigation != "mouse")
-			and (show_level_editor_corner_menu == true)
+			and (show_level_editor_corner_menu)
 			{
 				menu_delay = 3;
 				menu = "back_from_level_editor";
@@ -263,14 +263,14 @@ function scr_select_official_level_menu()
 	{
 		var input_name_y = 226 * (column - scroll) + 569 - 3 - 16
 	}
-	if (can_input_level_name == true)
+	if (can_input_level_name)
 	{
 		global.level_name = scr_draw_name_input_screen(global.level_name, 32, c_black, 1, false, display_get_gui_width() * 0.5, input_name_y, "level_editor_enter_name_ok", "level_editor_enter_name_cancel");
 	}
 	#endregion /* INPUT LEVEL NAME NOW END */
 	
 	#region /* Press Enter to make new level from template */
-	if (can_input_level_name == true)
+	if (can_input_level_name)
 	and (menu_delay == 0)
 	and (keyboard_string != "")
 	and (global.level_name != undefined)
@@ -451,7 +451,7 @@ function scr_select_official_level_menu()
 	or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
 	or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.back]))
 	{
-		if (can_input_level_name == true)
+		if (can_input_level_name)
 		and (menu_delay == 0)
 		{
 			menu_delay = 3;

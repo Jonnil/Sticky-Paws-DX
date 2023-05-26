@@ -2,7 +2,7 @@ function scr_player_move_save_whole_level_as_screenshot()
 {
 	
 	#region /* Save whole level as screenshot png file */
-	if (global.full_level_map_screenshot == true)
+	if (global.full_level_map_screenshot)
 	and (full_level_map_screenshot_timer <= 0)
 	{
 		can_move = false; /* Make it so you can't move while game is generating a full level map screenshot, so you can't mess with the screenshot */

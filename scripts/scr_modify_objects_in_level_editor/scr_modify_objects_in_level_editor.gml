@@ -40,11 +40,11 @@ function scr_modify_objects_in_level_editor()
 	and (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32)) /* Can't place objects when clicking the play button */
 	and (obj_leveleditor.placing_object <= 0)
 	{
-		if (obj_leveleditor.show_grid == true)
+		if (obj_leveleditor.show_grid)
 		and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32 - 32, 80 + obj_leveleditor.icons_at_top_y + 16 - 32 - 32, display_get_gui_width() + 64 + 32, 80 + obj_leveleditor.icons_at_top_y + 16 + 32 + 32)) /* Up and down buttons when grid is on */
 		or (obj_leveleditor.show_grid == false)
 		{
-			if (obj_leveleditor.set_difficulty_mode == true)
+			if (obj_leveleditor.set_difficulty_mode)
 			and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 			or (obj_leveleditor.set_difficulty_mode == false)
 			and (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */

@@ -6,7 +6,7 @@ and (asset_get_type("obj_wall") == asset_object)
 	if (asset_get_type("obj_block_break") == asset_object)
 	and (place_meeting(x, y, obj_block_break)) /* This object is a hurtbox, for blocks. So when this block comes in contact with this object, it will break */
 	and (variable_instance_exists(obj_block_break, "can_break_other_blocks"))
-	and (instance_nearest(x, y, obj_block_break).can_break_other_blocks == true)
+	and (instance_nearest(x, y, obj_block_break).can_break_other_blocks)
 	{
 		if (empty == false)
 		{

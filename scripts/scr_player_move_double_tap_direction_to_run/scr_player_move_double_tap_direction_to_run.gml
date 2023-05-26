@@ -2,7 +2,7 @@ function scr_player_move_double_tap_direction_to_run()
 {
 	
 	#region /* Double-tap direction to run */
-	if (double_tap_to_run == true)
+	if (double_tap_to_run)
 	{
 		if (!key_sprint)
 		{
@@ -57,13 +57,13 @@ function scr_player_move_double_tap_direction_to_run()
 			if (!key_left_hold)
 			and (!key_right_hold)
 			{
-				if (double_tap_left == true)
+				if (double_tap_left)
 				and (double_tap_run_timer <= 28)
 				{
 					double_tap_left = 2;
 				}
 				else
-				if (double_tap_right == true)
+				if (double_tap_right)
 				and (double_tap_run_timer <= 28)
 				{
 					double_tap_right = 2;

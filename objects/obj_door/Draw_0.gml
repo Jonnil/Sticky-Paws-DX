@@ -42,7 +42,7 @@ if (door_xscale > 0)
 	and (gamepad_is_connected(instance_nearest(x, y, obj_player).player - 1))
 	and (global.controls_used_for_menu_navigation == "controller")
 	and (player_gamepad_button_up > noone)
-	or (global.always_show_gamepad_buttons == true)
+	or (global.always_show_gamepad_buttons)
 	{
 		scr_draw_gamepad_buttons(player_gamepad_button_up, x + door_x, y, 0.4, c_white, 0.5, door_xscale, 1);
 	}
@@ -51,7 +51,7 @@ if (door_xscale > 0)
 	and (gamepad_is_connected(instance_nearest(x, y, obj_player).player - 1))
 	and (global.controls_used_for_menu_navigation == "controller")
 	and (player_gamepad_button2_up > noone)
-	or (global.always_show_gamepad_buttons == true)
+	or (global.always_show_gamepad_buttons)
 	{
 		scr_draw_gamepad_buttons(player_gamepad_button2_up, x + door_x, y, 0.4, c_white, 0.5, door_xscale, 1);
 	}

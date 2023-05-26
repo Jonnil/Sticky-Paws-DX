@@ -2,7 +2,7 @@ function scr_player_move_partner_character()
 {
 	
 	#region /* Partner Character Code */
-	if (partner_character == true)
+	if (partner_character)
 	{
 	
 		#region /* What player to follow */
@@ -141,19 +141,19 @@ function scr_player_move_partner_character()
 		and (instance_exists(partner_follow_player))
 		and (distance_to_object(partner_follow_player) > 100)
 		and (y > partner_follow_player.y + 100)
-		and (on_ground == true)
+		and (on_ground)
 		or (instance_exists(obj_camera))
 		and (instance_exists(partner_follow_player))
 		and (distance_to_object(partner_follow_player) > 100)
 		and (place_meeting(x - 1, y, obj_wall))
 		and (x > partner_follow_player.x + 100)
-		and (on_ground == true)
+		and (on_ground)
 		or (instance_exists(obj_camera))
 		and (instance_exists(partner_follow_player))
 		and (distance_to_object(partner_follow_player) > 100)
 		and (place_meeting(x + 1, y, obj_wall))
 		and (x < partner_follow_player.x - 100)
-		and (on_ground == true)
+		and (on_ground)
 		{
 			active_jump = true;
 			active_up = true;

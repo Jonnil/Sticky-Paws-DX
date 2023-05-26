@@ -29,7 +29,7 @@ instance_activate_object(self);
 
 #region /* When Foreground secret should be visible */
 if (global.custom_foreground_secret > noone)
-and (global.enable_foreground_layer_secret == true)
+and (global.enable_foreground_layer_secret)
 and (global.full_level_map_screenshot == false)
 and (asset_get_type("room_leveleditor") == asset_room)
 and (room == room_leveleditor)

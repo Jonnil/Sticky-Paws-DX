@@ -2,7 +2,7 @@ scr_set_screen_size();
 scr_toggle_fullscreen();
 scr_set_controls_used_to_navigate();
 
-if (goto_title_screen == true)
+if (goto_title_screen)
 {
 	if (current_month == 12)
 	{
@@ -50,7 +50,7 @@ or (keyboard_check_pressed(vk_escape))
 or (window_has_focus())
 and (mouse_check_button_released(mb_left))
 {
-	if (can_navigate == true) /* Can only go to the title screen when everything is loaded */
+	if (can_navigate) /* Can only go to the title screen when everything is loaded */
 	{
 		goto_title_screen = true;
 	}
@@ -71,13 +71,13 @@ and (sprite_index = spr_company_logo)
 			sprite_index = global.resource_pack_sprite_splash_controller;
 		}
 		else
-		if (can_navigate == true) /* Can only go to the title screen when everything is loaded */
+		if (can_navigate) /* Can only go to the title screen when everything is loaded */
 		{
 			goto_title_screen = true;
 		}
 	}
 	else
-	if (can_navigate == true) /* Can only go to the title screen when everything is loaded */
+	if (can_navigate) /* Can only go to the title screen when everything is loaded */
 	{
 		goto_title_screen = true;
 	}
@@ -95,7 +95,7 @@ and (sprite_index == global.resource_pack_sprite_splash_controller)
 	}
 	if (time > 100) /* After a couple of seconds, go to the title screen */
 	and (!audio_is_playing(controller_splash))
-	and (can_navigate == true) /* Can only go to the title screen when everything is loaded */
+	and (can_navigate) /* Can only go to the title screen when everything is loaded */
 	{
 		goto_title_screen = true;
 	}
@@ -121,7 +121,7 @@ if (can_navigate == false)
 {
 	file_load_timer += 1;
 	
-	if (global.can_load_official_and_custom_resources == true)
+	if (global.can_load_official_and_custom_resources)
 	{
 		
 		#region /* Load Characters */

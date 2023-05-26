@@ -122,7 +122,7 @@ function scr_draw_show_controls(what_player = 1)
 		and (player_instance.partner_character == false)
 		and (instance_exists(obj_player))
 		and (player_show_controls >= true)
-		and (player_can_play == true)
+		and (player_can_play)
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
@@ -130,7 +130,7 @@ function scr_draw_show_controls(what_player = 1)
 			#region /* Show Player Dive Key */
 			if (global.controls_used_for_menu_navigation == "controller" and gamepad_is_connected(what_player - 1)) {
 			    var dive_button = max(player_gamepad_button_dive, player_gamepad_button2_dive);
-			    if (dive_button != noone or global.always_show_gamepad_buttons == true) {
+			    if (dive_button != noone or global.always_show_gamepad_buttons) {
 			        scr_draw_text_outlined(player_show_dive_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Dive"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 			        scr_draw_gamepad_buttons(dive_button, player_show_dive_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
 			    }
@@ -146,7 +146,7 @@ function scr_draw_show_controls(what_player = 1)
 			#region /* Show Player Jump Key */
 			if (global.controls_used_for_menu_navigation == "controller" and gamepad_is_connected(what_player - 1)) {
 			    var jump_button = max(player_gamepad_button_jump, player_gamepad_button2_jump);
-			    if (jump_button != noone or global.always_show_gamepad_buttons == true) {
+			    if (jump_button != noone or global.always_show_gamepad_buttons) {
 			        scr_draw_text_outlined(player_show_jump_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Jump"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 			        scr_draw_gamepad_buttons(jump_button, player_show_jump_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
 			    }
@@ -163,7 +163,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button_crouch > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_crouch_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Crouch"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button_crouch, player_show_crouch_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -172,7 +172,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button2_crouch > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_crouch_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Crouch"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button2_crouch, player_show_crouch_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -181,7 +181,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button_crouch_toggle > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_crouch_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Crouch"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button_crouch_toggle, player_show_crouch_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -190,7 +190,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button2_crouch_toggle > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_crouch_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Crouch"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button2_crouch_toggle, player_show_crouch_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -231,7 +231,7 @@ function scr_draw_show_controls(what_player = 1)
 				if (gamepad_is_connected(what_player - 1))
 				and (global.controls_used_for_menu_navigation == "controller")
 				and (player_gamepad_button_sprint > noone)
-				or (global.always_show_gamepad_buttons == true)
+				or (global.always_show_gamepad_buttons)
 				{
 					scr_draw_text_outlined(player_show_sprint_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Sprint"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 					scr_draw_gamepad_buttons(player_gamepad_button_sprint, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -240,7 +240,7 @@ function scr_draw_show_controls(what_player = 1)
 				if (gamepad_is_connected(what_player - 1))
 				and (global.controls_used_for_menu_navigation == "controller")
 				and (player_gamepad_button2_sprint > noone)
-				or (global.always_show_gamepad_buttons == true)
+				or (global.always_show_gamepad_buttons)
 				{
 					scr_draw_text_outlined(player_show_sprint_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Sprint"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 					scr_draw_gamepad_buttons(player_gamepad_button2_sprint, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -249,7 +249,7 @@ function scr_draw_show_controls(what_player = 1)
 				if (gamepad_is_connected(what_player - 1))
 				and (global.controls_used_for_menu_navigation == "controller")
 				and (player_gamepad_button_sprint_toggle > noone)
-				or (global.always_show_gamepad_buttons == true)
+				or (global.always_show_gamepad_buttons)
 				{
 					scr_draw_text_outlined(player_show_sprint_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Sprint"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 					scr_draw_gamepad_buttons(player_gamepad_button_sprint_toggle, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -258,7 +258,7 @@ function scr_draw_show_controls(what_player = 1)
 				if (gamepad_is_connected(what_player - 1))
 				and (global.controls_used_for_menu_navigation == "controller")
 				and (player_gamepad_button2_sprint_toggle > noone)
-				or (global.always_show_gamepad_buttons == true)
+				or (global.always_show_gamepad_buttons)
 				{
 					scr_draw_text_outlined(player_show_sprint_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Sprint"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 					scr_draw_gamepad_buttons(player_gamepad_button2_sprint_toggle, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -298,7 +298,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button_left > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_left_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Left"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button_left, player_show_left_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -307,7 +307,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button2_left > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_left_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Left"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button2_left, player_show_left_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -332,7 +332,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button_right > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_right_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Right"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button_right, player_show_right_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -341,7 +341,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button2_right > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_right_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Right"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button2_right, player_show_right_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -366,7 +366,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button_down > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_down_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Down"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button_down, player_show_down_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -375,7 +375,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button2_down > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_down_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Down"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button2_down, player_show_down_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -400,7 +400,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button_up > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_up_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Up"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button_up, player_show_up_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);
@@ -409,7 +409,7 @@ function scr_draw_show_controls(what_player = 1)
 			if (gamepad_is_connected(what_player - 1))
 			and (global.controls_used_for_menu_navigation == "controller")
 			and (player_gamepad_button2_up > noone)
-			or (global.always_show_gamepad_buttons == true)
+			or (global.always_show_gamepad_buttons)
 			{
 				scr_draw_text_outlined(player_show_up_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Up"), global.default_text_size, c_black, player_color, player_show_controls_alpha);
 				scr_draw_gamepad_buttons(player_gamepad_button2_up, player_show_up_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha);

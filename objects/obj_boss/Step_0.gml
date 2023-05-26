@@ -13,7 +13,7 @@ if (instance_exists(obj_camera))
 and (distance_to_object(obj_camera) < 500)
 and (asset_get_type("snd_music_boss") == asset_sound)
 and (global.music != snd_music_boss)
-and (has_seen_player == true)
+and (has_seen_player)
 {
 	audio_stop_sound(global.music);
 	audio_stop_sound(global.music_underwater);
@@ -29,7 +29,7 @@ and (has_seen_player == false)
 }
 
 #region /* If enemies are disabled, destroy this object */
-if (global.assist_enable == true)
+if (global.assist_enable)
 and (global.assist_enable_enemies == false)
 {
 	instance_destroy();
@@ -72,7 +72,7 @@ else
 	angle = lerp(angle, 0, 0.1);
 }
 
-if (has_seen_player == true)
+if (has_seen_player)
 {
 	time += 1;
 }
@@ -83,7 +83,7 @@ if (takendamage > 0)
 }
 if (time == room_speed * 3)
 {
-	if (can_jump_on_head == true)
+	if (can_jump_on_head)
 	{
 		can_jump_on_head = false;
 		scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -95,7 +95,7 @@ if (time == room_speed * 3)
 
 #region /* Phase 1 */
 if (hp >= 3)
-and (has_seen_player == true)
+and (has_seen_player)
 and (flying_back == 0)
 {
 	if (time < room_speed * 7)
@@ -113,7 +113,7 @@ and (flying_back == 0)
 	}
 	if (time == room_speed * 1)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -124,7 +124,7 @@ and (flying_back == 0)
 	}
 	if (time == room_speed * 2)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -136,7 +136,7 @@ and (flying_back == 0)
 	}
 	if (time == room_speed * 3)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -149,7 +149,7 @@ and (flying_back == 0)
 	or (time == room_speed * 5)
 	or (time == room_speed * 6)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -221,7 +221,7 @@ else
 
 #region /* Phase 2 */
 if (hp >= 2)
-and (has_seen_player == true)
+and (has_seen_player)
 and (flying_back == 0)
 {
 	if (time < room_speed * 8)
@@ -239,7 +239,7 @@ and (flying_back == 0)
 	}
 	if (time == room_speed * 1)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -252,7 +252,7 @@ and (flying_back == 0)
 	}
 	if (time == room_speed * 2)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -264,7 +264,7 @@ and (flying_back == 0)
 	}
 	if (time == room_speed * 3)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -278,7 +278,7 @@ and (flying_back == 0)
 	or (time == room_speed * 6)
 	or (time == room_speed * 7)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -349,7 +349,7 @@ and (flying_back == 0)
 else
 
 #region /* Phase 3 */
-if (has_seen_player == true)
+if (has_seen_player)
 and (flying_back == 0)
 {
 	if (time < room_speed * 9)
@@ -369,7 +369,7 @@ and (flying_back == 0)
 	}
 	if (time == room_speed * 1)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -382,7 +382,7 @@ and (flying_back == 0)
 	}
 	if (time == room_speed * 2)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -394,7 +394,7 @@ and (flying_back == 0)
 	}
 	if (time == room_speed * 3)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);
@@ -409,7 +409,7 @@ and (flying_back == 0)
 	or (time == room_speed * 7)
 	or (time == room_speed * 8)
 	{
-		if (can_jump_on_head == true)
+		if (can_jump_on_head)
 		{
 			can_jump_on_head = false;
 			scr_audio_play(snd_boss_invulnerable, volume_source.sound);

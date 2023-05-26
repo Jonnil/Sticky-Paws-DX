@@ -129,25 +129,25 @@ else
 }
 
 #region /* Lives Icon */
-if (global.player1_can_play == true)
+if (global.player1_can_play)
 {
 	camera_player = 0;
 	camera_selected_skin = global.skin_for_player_1;
 }
 else
-if (global.player2_can_play == true)
+if (global.player2_can_play)
 {
 	camera_player = 1;
 	camera_selected_skin = global.skin_for_player_2;
 }
 else
-if (global.player3_can_play == true)
+if (global.player3_can_play)
 {
 	camera_player = 2;
 	camera_selected_skin = global.skin_for_player_3;
 }
 else
-if (global.player4_can_play == true)
+if (global.player4_can_play)
 {
 	camera_player = 3;
 	camera_selected_skin = global.skin_for_player_4;
@@ -205,8 +205,8 @@ hurry_up_message_timer = 0; /* How long the hurry up message should stay on scre
 #endregion /* Hud Variables END */
 
 #region /* Checkpoint */
-if (global.actually_play_edited_level == true)
-and (global.play_edited_level == true)
+if (global.actually_play_edited_level)
+and (global.play_edited_level)
 {
 	if (global.checkpoint_x > 0)
 	or (global.checkpoint_y > 0)
@@ -236,19 +236,19 @@ else
 scr_initialize_level_information_ini();
 
 #region /* Spawn Players */
-if (can_spawn_players == true)
+if (can_spawn_players)
 {
-	if (global.player1_can_play == true)
+	if (global.player1_can_play)
 	{
 		if (global.checkpoint_x > 0)
-		and (global.actually_play_edited_level == true)
+		and (global.actually_play_edited_level)
 		or (global.checkpoint_y > 0)
-		and (global.actually_play_edited_level == true)
+		and (global.actually_play_edited_level)
 		{
 			player1 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
-		if (global.actually_play_edited_level == true)
+		if (global.actually_play_edited_level)
 		and (instance_exists(obj_level_player_1_start))
 		{
 			player1 = instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_player);
@@ -270,17 +270,17 @@ if (can_spawn_players == true)
 	{
 		player1 = noone;
 	}
-	if (global.player2_can_play == true)
+	if (global.player2_can_play)
 	{
 		if (global.checkpoint_x > 0)
-		and (global.actually_play_edited_level == true)
+		and (global.actually_play_edited_level)
 		or (global.checkpoint_y > 0)
-		and (global.actually_play_edited_level == true)
+		and (global.actually_play_edited_level)
 		{
 			player2 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
-		if (global.actually_play_edited_level == true)
+		if (global.actually_play_edited_level)
 		and (instance_exists(obj_level_player_2_start))
 		{
 			player2 = instance_create_depth(obj_level_player_2_start.x, obj_level_player_2_start.y, 0, obj_player);
@@ -302,17 +302,17 @@ if (can_spawn_players == true)
 	{
 		player2 = noone;
 	}
-	if (global.player3_can_play == true)
+	if (global.player3_can_play)
 	{
 		if (global.checkpoint_x > 0)
-		and (global.actually_play_edited_level == true)
+		and (global.actually_play_edited_level)
 		or (global.checkpoint_y > 0)
-		and (global.actually_play_edited_level == true)
+		and (global.actually_play_edited_level)
 		{
 			player3 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
-		if (global.actually_play_edited_level == true)
+		if (global.actually_play_edited_level)
 		and (instance_exists(obj_level_player_3_start))
 		{
 			player3 = instance_create_depth(obj_level_player_3_start.x, obj_level_player_3_start.y, 0, obj_player);
@@ -334,17 +334,17 @@ if (can_spawn_players == true)
 	{
 		player3 = noone;
 	}
-	if (global.player4_can_play == true)
+	if (global.player4_can_play)
 	{
 		if (global.checkpoint_x > 0)
-		and (global.actually_play_edited_level == true)
+		and (global.actually_play_edited_level)
 		or (global.checkpoint_y > 0)
-		and (global.actually_play_edited_level == true)
+		and (global.actually_play_edited_level)
 		{
 			player4 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
-		if (global.actually_play_edited_level == true)
+		if (global.actually_play_edited_level)
 		and (instance_exists(obj_level_player_4_start))
 		{
 			player4 = instance_create_depth(obj_level_player_4_start.x, obj_level_player_4_start.y, 0, obj_player);
@@ -368,7 +368,7 @@ if (can_spawn_players == true)
 	}
 	if (asset_get_type("room_leveleditor") == asset_room)
 	and (room == room_leveleditor)
-	and (global.actually_play_edited_level == true)
+	and (global.actually_play_edited_level)
 	{
 		player_has_spawned = true;
 	}
@@ -599,7 +599,7 @@ shake = false;
 scrolling_left = 0;
 
 #region /* Assist Item */
-if (global.assist_enable == true)
+if (global.assist_enable)
 and (global.assist_item_appear < 10)
 and (!instance_exists(obj_assist_item))
 and (instance_exists(obj_player))
@@ -621,13 +621,13 @@ if (instance_exists(obj_player))
 {
 	if (global.trigger_ending == false)
 	{
-		if (global.actually_play_edited_level == true)
-		and (global.play_edited_level == true)
+		if (global.actually_play_edited_level)
+		and (global.play_edited_level)
 		and (global.checkpoint_x > 0)
 		and (global.create_level_from_template >= true)
 		
-		or (global.actually_play_edited_level == true)
-		and (global.play_edited_level == true)
+		or (global.actually_play_edited_level)
+		and (global.play_edited_level)
 		and (global.checkpoint_y > 0)
 		and (global.create_level_from_template >= true)
 		{

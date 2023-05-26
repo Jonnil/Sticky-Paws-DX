@@ -17,7 +17,7 @@ if (current_file != global.file)
 #endregion /* When changing file, you should restart the room so the right save data can load END */
 
 #region /* Quit Game */
-if (global.quit_level == true)
+if (global.quit_level)
 {
 	
 	#region /* Save Player Position */
@@ -115,12 +115,12 @@ if (keyboard_check_pressed(vk_escape) ||
 #endregion /* Pause END */
 
 #region /* Movement */
-if (can_move == true)
+if (can_move)
 and (show_demo_over_message == false)
 and (global.pause == false)
 and (global.quit_level == false)
 {
-	if (allow_free_movement == true)
+	if (allow_free_movement)
 	{
 		
 		#region /* Free Movement */
@@ -295,14 +295,14 @@ and (global.quit_level == false)
 				#region /* Key Right */
 				if (gamepad_is_connected(global.player1_slot))
 				and (global.controls_used_for_menu_navigation == "controller")
-				or (global.always_show_gamepad_buttons == true)
+				or (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, c_white, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					if (global.player1_can_play == true)
+					if (global.player1_can_play)
 					{
 						if (global.player_[inp.key][1][1][action.right] > noone)
 						{
@@ -315,7 +315,7 @@ and (global.quit_level == false)
 						}
 					}
 					else
-					if (global.player2_can_play == true)
+					if (global.player2_can_play)
 					{
 						if (global.player_[inp.key][2][1][action.right] > noone)
 						{
@@ -328,7 +328,7 @@ and (global.quit_level == false)
 						}
 					}
 					else
-					if (global.player3_can_play == true)
+					if (global.player3_can_play)
 					{
 						if (global.player_[inp.key][3][1][action.right] > noone)
 						{
@@ -341,7 +341,7 @@ and (global.quit_level == false)
 						}
 					}
 					else
-					if (global.player4_can_play == true)
+					if (global.player4_can_play)
 					{
 						if (global.player_[inp.key][4][1][action.right] > noone)
 						{
@@ -364,14 +364,14 @@ and (global.quit_level == false)
 				#region /* Key Left */
 				if (gamepad_is_connected(global.player1_slot))
 				and (global.controls_used_for_menu_navigation == "controller")
-				or (global.always_show_gamepad_buttons == true)
+				or (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padl, x - 64, y, 0.5, c_white, 1);
 				}
 				else
 				
 				{
-					if (global.player1_can_play == true)
+					if (global.player1_can_play)
 					{
 						if (global.player_[inp.key][1][1][action.left] > noone)
 						{
@@ -384,7 +384,7 @@ and (global.quit_level == false)
 						}
 					}
 					else
-					if (global.player2_can_play == true)
+					if (global.player2_can_play)
 					{
 						if (global.player_[inp.key][2][1][action.left] > noone)
 						{
@@ -397,7 +397,7 @@ and (global.quit_level == false)
 						}
 					}
 					else
-					if (global.player3_can_play == true)
+					if (global.player3_can_play)
 					{
 						if (global.player_[inp.key][3][1][action.left] > noone)
 						{
@@ -410,7 +410,7 @@ and (global.quit_level == false)
 						}
 					}
 					else
-					if (global.player4_can_play == true)
+					if (global.player4_can_play)
 					{
 						if (global.player_[inp.key][4][1][action.left] > noone)
 						{
@@ -433,29 +433,29 @@ and (global.quit_level == false)
 				#region /* Key Down */
 				if (gamepad_is_connected(global.player1_slot))
 				and (global.controls_used_for_menu_navigation == "controller")
-				or (global.always_show_gamepad_buttons == true)
+				or (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, c_white, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					if (global.player1_can_play == true)
+					if (global.player1_can_play)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player2_can_play == true)
+					if (global.player2_can_play)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player3_can_play == true)
+					if (global.player3_can_play)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player4_can_play == true)
+					if (global.player4_can_play)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
 					}
@@ -470,29 +470,29 @@ and (global.quit_level == false)
 				#region /* Key Up */
 				if (gamepad_is_connected(global.player1_slot))
 				and (global.controls_used_for_menu_navigation == "controller")
-				or (global.always_show_gamepad_buttons == true)
+				or (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);
 				}
 				else
 				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
-					if (global.player1_can_play == true)
+					if (global.player1_can_play)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player2_can_play == true)
+					if (global.player2_can_play)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player3_can_play == true)
+					if (global.player3_can_play)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
 					}
 					else
-					if (global.player4_can_play == true)
+					if (global.player4_can_play)
 					{
 						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
 					}
@@ -548,7 +548,7 @@ if (instance_exists(obj_level))
 
 #region /* After pressing enter level, the iris should shrink and then start the level */
 if (can_move == false)
-and (entering_level == true)
+and (entering_level)
 and (delay >= 60)
 and (iris_yscale <= 0.001)
 and (global.quit_level == false)
@@ -578,7 +578,7 @@ and (global.quit_level == false)
 #endregion /* After pressing enter level, the iris should shrink and then start the level END */
 
 #region /* Set what sprite player should use */
-if (entering_level == true)
+if (entering_level)
 {
 	if (sprite_map_enter_level > noone)
 	{
@@ -674,7 +674,7 @@ if (lives <= 0)
 #region /* Zoom In and Out */
 
 #region /* Zoom In */
-if (entering_level == true)
+if (entering_level)
 {
 	if (iris_zoom == 1)
 	{
@@ -723,15 +723,15 @@ else
 #endregion /* Zoom In and Out END */
 
 #region /* Enter Level */
-if (can_enter_level_automatically == true)
-and (brand_new_file == true)
-and (can_move == true)
+if (can_enter_level_automatically)
+and (brand_new_file)
+and (can_move)
 and (show_demo_over_message == false)
 and (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 
 or (key_a_pressed)
 and (global.demo == false)
-and (can_move == true)
+and (can_move)
 and (show_demo_over_message == false)
 and (can_enter_level >= 30)
 and (instance_exists(obj_level)) /* Must check if obj_level exists or not */
@@ -739,9 +739,9 @@ and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed == 0)
 
 or (key_a_pressed)
-and (global.demo == true)
+and (global.demo)
 and (instance_nearest(x, y, obj_level).level <= global.demo_max_levels)
-and (can_move == true)
+and (can_move)
 and (show_demo_over_message == false)
 and (can_enter_level >= 30)
 and (instance_exists(obj_level)) /* Must check if obj_level exists or not */
@@ -751,7 +751,7 @@ and (speed == 0)
 	if (instance_nearest(x, y, obj_level).clear_rate == "enter")
 	or (instance_nearest(x, y, obj_level).clear_rate == "clear")
 	{
-		if (brand_new_file == true)
+		if (brand_new_file)
 		{
 			audio_sound_gain(music_map, 0, 0);
 			audio_stop_all(); /* Stop all sound from playing whenever a brand new file is loaded, so nothing is playing at the loading screen first */
@@ -819,10 +819,10 @@ and (speed == 0)
 	}
 }
 else
-if (global.demo == true)
+if (global.demo)
 and (instance_nearest(x, y, obj_level).level > global.demo_max_levels)
 and (key_a_pressed)
-and (can_move == true)
+and (can_move)
 and (show_demo_over_message == false)
 and (menu_delay == 0)
 and (can_enter_level >= 30)
@@ -839,8 +839,8 @@ and (show_demo_over_message == false)
 
 #region /* Clear Level in debug */
 if (key_b_pressed)
-and (global.debug_screen == true)
-and (can_move == true)
+and (global.debug_screen)
+and (can_move)
 and (can_enter_level >= 30)
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 and (speed == 0)
@@ -945,7 +945,7 @@ if (menu == "continue_playing")
 	}
 }
 
-if (global.goal_active == true)
+if (global.goal_active)
 {
 	global.goal_active = false;
 }

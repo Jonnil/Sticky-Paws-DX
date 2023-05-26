@@ -4,7 +4,7 @@ function scr_options_graphics()
 	
 	if (global.settings_sidebar_menu == "video_settings")
 	{
-		if (global.enable_options_for_pc == true)
+		if (global.enable_options_for_pc)
 		{
 			var fullscreen_mode_y = 48;
 			var interpolate_y = fullscreen_mode_y + 48;
@@ -36,7 +36,7 @@ function scr_options_graphics()
 		#region /* Fullscreen toggle */
 		if (os_type != os_ios)
 		and (os_type != os_android)
-		and (global.enable_options_for_pc == true)
+		and (global.enable_options_for_pc)
 		{
 			if (window_get_fullscreen())
 			{
@@ -143,7 +143,7 @@ function scr_options_graphics()
 				if (os_type != os_ios)
 				and (os_type != os_android)
 				{
-					if (global.enable_options_for_pc == true)
+					if (global.enable_options_for_pc)
 					{
 						menu = "fullscreen_mode";
 					}
@@ -584,7 +584,7 @@ function scr_options_graphics()
 			{
 				if (os_type != os_ios)
 				and (os_type != os_android)
-				and (global.enable_options_for_pc == true)
+				and (global.enable_options_for_pc)
 				{
 					menu = "fullscreen_mode";
 					menu_delay = 3;
@@ -597,7 +597,7 @@ function scr_options_graphics()
 			}
 			if (key_up)
 			and (menu_delay == 0)
-			and (open_dropdown == true)
+			and (open_dropdown)
 			and (global.gui_scale_modifier > 0)
 			{
 				global.gui_scale_modifier -= 1;
@@ -606,7 +606,7 @@ function scr_options_graphics()
 			else
 			if (key_down)
 			and (menu_delay == 0)
-			and (open_dropdown == true)
+			and (open_dropdown)
 			and (global.gui_scale_modifier < 6)
 			{
 				global.gui_scale_modifier += 1;
@@ -623,22 +623,22 @@ function scr_options_graphics()
 		and (mouse_get_x > 370)
 		{
 			if (menu == "fullscreen_mode") and (menu_delay == 0){if (window_get_fullscreen()){window_set_fullscreen(false);}else{window_set_fullscreen(true);}menu_delay = 3;}
-			if (menu == "interpolate") and (menu_delay == 0){if (global.interpolate == true){global.interpolate = false;gpu_set_texfilter(false);}else{global.interpolate = true;gpu_set_texfilter(true);}menu_delay = 3;}
-			if (menu == "show_fps") and (menu_delay == 0){if (global.show_fps == true){global.show_fps = false;}else{global.show_fps = true;}menu_delay = 3;}
-			if (menu == "show_fps_real") and (menu_delay == 0){if (global.show_fps_real == true){global.show_fps_real = false;}else{global.show_fps_real = true;}menu_delay = 3;}
-			if (menu == "show_instance_count") and (menu_delay == 0){if (global.show_instance_count == true){global.show_instance_count = false;}else{global.show_instance_count = true;}menu_delay = 3;}
-			if (menu == "show_collision_mask") and (menu_delay == 0){if (global.show_collision_mask == true){global.show_collision_mask = false;}else{global.show_collision_mask = true;}menu_delay = 3;}
-			if (menu == "enable_transitions") and (menu_delay == 0){if (global.enable_transitions == true){global.enable_transitions = false;}else{global.enable_transitions = true;}menu_delay = 3;}
-			if (menu == "enable_background_layer1") and (menu_delay == 0){if (global.enable_background_layer1 == true){global.enable_background_layer1 = false;}else{global.enable_background_layer1 = true;}menu_delay = 3;}
-			if (menu == "enable_background_layer2") and (menu_delay == 0){if (global.enable_background_layer2 == true){global.enable_background_layer2 = false;}else{global.enable_background_layer2 = true;}menu_delay = 3;}
-			if (menu == "enable_background_layer3") and (menu_delay == 0){if (global.enable_background_layer3 == true){global.enable_background_layer3 = false;}else{global.enable_background_layer3 = true;}menu_delay = 3;}
-			if (menu == "enable_background_layer4") and (menu_delay == 0){if (global.enable_background_layer4 == true){global.enable_background_layer4 = false;}else{global.enable_background_layer4 = true;}menu_delay = 3;}
-			if (menu == "enable_foreground_layer1") and (menu_delay == 0){if (global.enable_foreground_layer1 == true){global.enable_foreground_layer1 = false;}else{global.enable_foreground_layer1 = true;}menu_delay = 3;}
-			if (menu == "enable_foreground_layer_above_static_objects") and (menu_delay == 0){if (global.enable_foreground_layer_above_static_objects == true){global.enable_foreground_layer_above_static_objects = false;}else{global.enable_foreground_layer_above_static_objects = true;}menu_delay = 3;}
-			if (menu == "enable_foreground_layer2") and (menu_delay == 0){if (global.enable_foreground_layer2 == true){global.enable_foreground_layer2 = false;}else{global.enable_foreground_layer2 = true;}menu_delay = 3;}
-			if (menu == "enable_foreground_layer_secret") and (menu_delay == 0){if (global.enable_foreground_layer_secret == true){global.enable_foreground_layer_secret = false;}else{global.enable_foreground_layer_secret = true;}menu_delay = 3;}
-			if (menu == "reset_level_zoom_when_going_back_to_map") and (menu_delay == 0){if (global.reset_level_zoom_when_going_back_to_map == true){global.reset_level_zoom_when_going_back_to_map = false;}else{global.reset_level_zoom_when_going_back_to_map = true;}menu_delay = 3;}
-			if (menu == "reset_world_map_zoom_when_going_back_to_map") and (menu_delay == 0){if (global.reset_world_map_zoom_when_going_back_to_map == true){global.reset_world_map_zoom_when_going_back_to_map = false;}else{global.reset_world_map_zoom_when_going_back_to_map = true;}menu_delay = 3;}
+			if (menu == "interpolate") and (menu_delay == 0){if (global.interpolate){global.interpolate = false;gpu_set_texfilter(false);}else{global.interpolate = true;gpu_set_texfilter(true);}menu_delay = 3;}
+			if (menu == "show_fps") and (menu_delay == 0){if (global.show_fps){global.show_fps = false;}else{global.show_fps = true;}menu_delay = 3;}
+			if (menu == "show_fps_real") and (menu_delay == 0){if (global.show_fps_real){global.show_fps_real = false;}else{global.show_fps_real = true;}menu_delay = 3;}
+			if (menu == "show_instance_count") and (menu_delay == 0){if (global.show_instance_count){global.show_instance_count = false;}else{global.show_instance_count = true;}menu_delay = 3;}
+			if (menu == "show_collision_mask") and (menu_delay == 0){if (global.show_collision_mask){global.show_collision_mask = false;}else{global.show_collision_mask = true;}menu_delay = 3;}
+			if (menu == "enable_transitions") and (menu_delay == 0){if (global.enable_transitions){global.enable_transitions = false;}else{global.enable_transitions = true;}menu_delay = 3;}
+			if (menu == "enable_background_layer1") and (menu_delay == 0){if (global.enable_background_layer1){global.enable_background_layer1 = false;}else{global.enable_background_layer1 = true;}menu_delay = 3;}
+			if (menu == "enable_background_layer2") and (menu_delay == 0){if (global.enable_background_layer2){global.enable_background_layer2 = false;}else{global.enable_background_layer2 = true;}menu_delay = 3;}
+			if (menu == "enable_background_layer3") and (menu_delay == 0){if (global.enable_background_layer3){global.enable_background_layer3 = false;}else{global.enable_background_layer3 = true;}menu_delay = 3;}
+			if (menu == "enable_background_layer4") and (menu_delay == 0){if (global.enable_background_layer4){global.enable_background_layer4 = false;}else{global.enable_background_layer4 = true;}menu_delay = 3;}
+			if (menu == "enable_foreground_layer1") and (menu_delay == 0){if (global.enable_foreground_layer1){global.enable_foreground_layer1 = false;}else{global.enable_foreground_layer1 = true;}menu_delay = 3;}
+			if (menu == "enable_foreground_layer_above_static_objects") and (menu_delay == 0){if (global.enable_foreground_layer_above_static_objects){global.enable_foreground_layer_above_static_objects = false;}else{global.enable_foreground_layer_above_static_objects = true;}menu_delay = 3;}
+			if (menu == "enable_foreground_layer2") and (menu_delay == 0){if (global.enable_foreground_layer2){global.enable_foreground_layer2 = false;}else{global.enable_foreground_layer2 = true;}menu_delay = 3;}
+			if (menu == "enable_foreground_layer_secret") and (menu_delay == 0){if (global.enable_foreground_layer_secret){global.enable_foreground_layer_secret = false;}else{global.enable_foreground_layer_secret = true;}menu_delay = 3;}
+			if (menu == "reset_level_zoom_when_going_back_to_map") and (menu_delay == 0){if (global.reset_level_zoom_when_going_back_to_map){global.reset_level_zoom_when_going_back_to_map = false;}else{global.reset_level_zoom_when_going_back_to_map = true;}menu_delay = 3;}
+			if (menu == "reset_world_map_zoom_when_going_back_to_map") and (menu_delay == 0){if (global.reset_world_map_zoom_when_going_back_to_map){global.reset_world_map_zoom_when_going_back_to_map = false;}else{global.reset_world_map_zoom_when_going_back_to_map = true;}menu_delay = 3;}
 			if (menu == "gui_scale_modifier")
 			and (menu_delay == 0)
 			and (open_dropdown == false)

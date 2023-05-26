@@ -1,11 +1,11 @@
 #region /* Break this Block */
-if (empty == true)
+if (empty)
 {
 	break_this_block = true;
 }
 
-if (can_break_this_block == true)
-and (break_this_block == true)
+if (can_break_this_block)
+and (break_this_block)
 and (asset_get_type("obj_player") == asset_object)
 and (asset_get_type("obj_wall") == asset_object)
 {
@@ -14,11 +14,11 @@ and (asset_get_type("obj_wall") == asset_object)
 	or (place_meeting(bbox_left - 4, y, obj_player))
 	and (!place_meeting(x - 4, y, obj_wall))
 	and (variable_instance_exists(obj_player, "dive"))
-	and (instance_nearest(x, y, obj_player).dive == true)
+	and (instance_nearest(x, y, obj_player).dive)
 	or (place_meeting(bbox_right + 4, y, obj_player))
 	and (!place_meeting(x + 4, y, obj_wall))
 	and (variable_instance_exists(obj_player, "dive"))
-	and (instance_nearest(x, y, obj_player).dive == true)
+	and (instance_nearest(x, y, obj_player).dive)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
@@ -83,7 +83,7 @@ and (asset_get_type("obj_wall") == asset_object)
 			}
 		}
 	}
-	if (show_score_up == true)
+	if (show_score_up)
 	and (asset_get_type("obj_score_up") == asset_object)
 	{
 		with(instance_create_depth(x, y, 0, obj_score_up))
@@ -121,14 +121,14 @@ if (bounce_up == false)
 	}
 }
 else
-if (bounce_up == true)
+if (bounce_up)
 {
 	draw_xscale += 0.1;
 	draw_yscale += 0.1;
 	yy -= 4;
 	if (draw_xscale > 1.5)
 	{
-		if (empty == true)
+		if (empty)
 		{
 			if (block_type = "question_block")
 			and (asset_get_type("spr_question_block_empty") == asset_sprite)
@@ -162,30 +162,30 @@ and (distance_to_object(obj_player) < 32)
 		if (place_meeting(x, y - 4, obj_player)) /* If player is ground pounding this block */
 		and (!place_meeting(x, y - 1, obj_wall))
 		and (variable_instance_exists(obj_player, "ground_pound"))
-		and (instance_nearest(x, y, obj_player).ground_pound == true)
-		and (can_be_ground_pounded == true)
+		and (instance_nearest(x, y, obj_player).ground_pound)
+		and (can_be_ground_pounded)
 	
 		or (position_meeting(x, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 		and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-		and (can_be_hit_from_below == true)
+		and (can_be_hit_from_below)
 	
 		or (position_meeting(bbox_left + 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 		and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-		and (can_be_hit_from_below == true)
+		and (can_be_hit_from_below)
 	
 		or (position_meeting(bbox_right - 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
 		and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-		and (can_be_hit_from_below == true)
+		and (can_be_hit_from_below)
 	
 		or (place_meeting(bbox_left - 4, y, obj_player))
 		and (!place_meeting(x - 4, y, obj_wall))
 		and (variable_instance_exists(obj_player, "dive"))
-		and (instance_nearest(x, y, obj_player).dive == true)
+		and (instance_nearest(x, y, obj_player).dive)
 	
 		or (place_meeting(bbox_right + 4, y, obj_player))
 		and (!place_meeting(x + 4, y, obj_wall))
 		and (variable_instance_exists(obj_player, "dive"))
-		and (instance_nearest(x, y, obj_player).dive == true)
+		and (instance_nearest(x, y, obj_player).dive)
 		{
 			if (empty == false)
 			{
@@ -225,7 +225,7 @@ and (distance_to_object(obj_enemy_bowlingball) < 32)
 		
 		or (place_meeting(x, y + 1, obj_enemy_bowlingball))
 		and (instance_nearest(x, y, obj_enemy_bowlingball).vspeed <= 0)
-		and (can_be_hit_from_below == true)
+		and (can_be_hit_from_below)
 		{
 			if (empty == false)
 			{

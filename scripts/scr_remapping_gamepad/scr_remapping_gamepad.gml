@@ -434,7 +434,7 @@ function scr_remapping_gamepad()
 		var remap_key_number = 2;
 	}
 	
-	if (can_remap_key == true)
+	if (can_remap_key)
 	{
 		/* global.player_[keyboard/gamepad][player][key1/key2][action] */
 		if (menu == "remap_key_dive")

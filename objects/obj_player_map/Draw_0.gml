@@ -4,7 +4,7 @@ scr_set_controls_used_to_navigate();
 
 #region /* Heart above head */
 if (asset_get_type("spr_heart") == asset_sprite)
-and (have_heart_balloon == true)
+and (have_heart_balloon)
 {
 	xx_heart = lerp(xx_heart, x, 0.05);
 	yy_heart = lerp(yy_heart, y - 64, 0.05);
@@ -15,7 +15,7 @@ and (have_heart_balloon == true)
 #endregion /* Heart above head END */
 
 #region /* Show arrows where you can walk */
-if (can_move == true)
+if (can_move)
 and (can_enter_level >= 30)
 and (point_distance(xx, yy, x, y) < 30)
 and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
@@ -29,14 +29,14 @@ and (global.pause == false)
 	{
 		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
-		or (global.always_show_gamepad_buttons == true)
+		or (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.up], x, y - 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
-			if (global.player1_can_play == true)
+			if (global.player1_can_play)
 			{
 				if (global.player_[inp.key][1][1][action.up] > noone)
 				{
@@ -49,7 +49,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player2_can_play == true)
+			if (global.player2_can_play)
 			{
 				if (global.player_[inp.key][2][1][action.up] > noone)
 				{
@@ -62,7 +62,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player3_can_play == true)
+			if (global.player3_can_play)
 			{
 				if (global.player_[inp.key][3][1][action.up] > noone)
 				{
@@ -75,7 +75,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player4_can_play == true)
+			if (global.player4_can_play)
 			{
 				if (global.player_[inp.key][4][1][action.up] > noone)
 				{
@@ -96,14 +96,14 @@ and (global.pause == false)
 	{
 		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
-		or (global.always_show_gamepad_buttons == true)
+		or (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.down], x, y + 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
-			if (global.player1_can_play == true)
+			if (global.player1_can_play)
 			{
 				if (global.player_[inp.key][1][1][action.down] > noone)
 				{
@@ -116,7 +116,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player2_can_play == true)
+			if (global.player2_can_play)
 			{
 				if (global.player_[inp.key][2][1][action.down] > noone)
 				{
@@ -129,7 +129,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player3_can_play == true)
+			if (global.player3_can_play)
 			{
 				if (global.player_[inp.key][3][1][action.down] > noone)
 				{
@@ -142,7 +142,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player4_can_play == true)
+			if (global.player4_can_play)
 			{
 				if (global.player_[inp.key][4][1][action.down] > noone)
 				{
@@ -163,14 +163,14 @@ and (global.pause == false)
 	{
 		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
-		or (global.always_show_gamepad_buttons == true)
+		or (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.left], x - 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
-			if (global.player1_can_play == true)
+			if (global.player1_can_play)
 			{
 				if (global.player_[inp.key][1][1][action.left] > noone)
 				{
@@ -183,7 +183,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player2_can_play == true)
+			if (global.player2_can_play)
 			{
 				if (global.player_[inp.key][2][1][action.left] > noone)
 				{
@@ -196,7 +196,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player3_can_play == true)
+			if (global.player3_can_play)
 			{
 				if (global.player_[inp.key][3][1][action.left] > noone)
 				{
@@ -209,7 +209,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player4_can_play == true)
+			if (global.player4_can_play)
 			{
 				if (global.player_[inp.key][4][1][action.left] > noone)
 				{
@@ -230,14 +230,14 @@ and (global.pause == false)
 	{
 		if (gamepad_is_connected(global.player1_slot))
 		and (global.controls_used_for_menu_navigation == "controller")
-		or (global.always_show_gamepad_buttons == true)
+		or (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.right], x + 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
-			if (global.player1_can_play == true)
+			if (global.player1_can_play)
 			{
 				if (global.player_[inp.key][1][1][action.right] > noone)
 				{
@@ -250,7 +250,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player2_can_play == true)
+			if (global.player2_can_play)
 			{
 				if (global.player_[inp.key][2][1][action.right] > noone)
 				{
@@ -263,7 +263,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player3_can_play == true)
+			if (global.player3_can_play)
 			{
 				if (global.player_[inp.key][3][1][action.right] > noone)
 				{
@@ -276,7 +276,7 @@ and (global.pause == false)
 				}
 			}
 			else
-			if (global.player4_can_play == true)
+			if (global.player4_can_play)
 			{
 				if (global.player_[inp.key][4][1][action.right] > noone)
 				{
@@ -313,7 +313,7 @@ and (point_distance(xx, yy, x, y) < 30)
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		
-		if (global.show_deaths_counter == true)
+		if (global.show_deaths_counter)
 		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
 		{
 			total_deaths_y = -64;
@@ -331,17 +331,17 @@ and (point_distance(xx, yy, x, y) < 30)
 			show_big_collectibles_y = -160;
 		}
 		
-		if (global.show_deaths_counter == true)
+		if (global.show_deaths_counter)
 		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
 		or (instance_nearest(x, y, obj_level).number_of_clears > 0)
 		or (instance_nearest(x, y, obj_level).level_score > 0)
 		or (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
 		and (instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
-		or (instance_nearest(x, y, obj_level).big_collectible1 == true)
-		or (instance_nearest(x, y, obj_level).big_collectible2 == true)
-		or (instance_nearest(x, y, obj_level).big_collectible3 == true)
-		or (instance_nearest(x, y, obj_level).big_collectible4 == true)
-		or (instance_nearest(x, y, obj_level).big_collectible5 == true)
+		or (instance_nearest(x, y, obj_level).big_collectible1)
+		or (instance_nearest(x, y, obj_level).big_collectible2)
+		or (instance_nearest(x, y, obj_level).big_collectible3)
+		or (instance_nearest(x, y, obj_level).big_collectible4)
+		or (instance_nearest(x, y, obj_level).big_collectible5)
 		{
 			draw_set_alpha(0.9);
 			draw_rectangle_color(x - 140, y - abs(show_big_collectibles_y) - 16, x + 140, y - 52, c_black, c_black, c_black, c_black, false);
@@ -349,24 +349,24 @@ and (point_distance(xx, yy, x, y) < 30)
 		}
 		
 		#region /* Total number of deaths */
-		if (global.show_deaths_counter == true)
+		if (global.show_deaths_counter)
 		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
 		{
-			scr_draw_text_outlined(x, y + total_deaths_y, l10n_text("Total Deaths") + " : " + string(instance_nearest(x, y, obj_level).number_of_deaths), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(x, y + total_deaths_y, l10n_text("Total Deaths") + ": " + string(instance_nearest(x, y, obj_level).number_of_deaths), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Total number of deaths END */
 		
 		#region /* Number of times played */
 		if (instance_nearest(x, y, obj_level).number_of_clears > 0)
 		{
-			scr_draw_text_outlined(x, y + times_cleared_y, l10n_text("Times Passed") + " : " + string(instance_nearest(x, y, obj_level).number_of_clears), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(x, y + times_cleared_y, l10n_text("Times Passed") + ": " + string(instance_nearest(x, y, obj_level).number_of_clears), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Number of times played END */
 		
 		#region /* Show High Score */
 		if (instance_nearest(x, y, obj_level).level_score > 0)
 		{
-			scr_draw_text_outlined(x, y + best_score_y, l10n_text("Best Score") + " : " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(x, y + best_score_y, l10n_text("Best Score") + ": " + string(instance_nearest(x, y, obj_level).level_score), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Show High Score END */
 		
@@ -374,20 +374,20 @@ and (point_distance(xx, yy, x, y) < 30)
 		if (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
 		and (instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
 		{
-			scr_draw_text_outlined(x, y + best_time_y, l10n_text("Best Time") + " : " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
+			scr_draw_text_outlined(x, y + best_time_y, l10n_text("Best Time") + ": " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
 			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_second, 2, 0), " ", "0")) + "." +
 			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Show Fastest Time END */
 		
 		#region /* Show Big Collectible */
-		if (instance_nearest(x, y, obj_level).big_collectible1 == true)
-		or (instance_nearest(x, y, obj_level).big_collectible2 == true)
-		or (instance_nearest(x, y, obj_level).big_collectible3 == true)
-		or (instance_nearest(x, y, obj_level).big_collectible4 == true)
-		or (instance_nearest(x, y, obj_level).big_collectible5 == true)
+		if (instance_nearest(x, y, obj_level).big_collectible1)
+		or (instance_nearest(x, y, obj_level).big_collectible2)
+		or (instance_nearest(x, y, obj_level).big_collectible3)
+		or (instance_nearest(x, y, obj_level).big_collectible4)
+		or (instance_nearest(x, y, obj_level).big_collectible5)
 		{
-			if (instance_nearest(x, y, obj_level).big_collectible1 == true)
+			if (instance_nearest(x, y, obj_level).big_collectible1)
 			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
@@ -397,7 +397,7 @@ and (point_distance(xx, yy, x, y) < 30)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
-			if (instance_nearest(x, y, obj_level).big_collectible2 == true)
+			if (instance_nearest(x, y, obj_level).big_collectible2)
 			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
@@ -407,7 +407,7 @@ and (point_distance(xx, yy, x, y) < 30)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
-			if (instance_nearest(x, y, obj_level).big_collectible3 == true)
+			if (instance_nearest(x, y, obj_level).big_collectible3)
 			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
@@ -417,7 +417,7 @@ and (point_distance(xx, yy, x, y) < 30)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
-			if (instance_nearest(x, y, obj_level).big_collectible4 == true)
+			if (instance_nearest(x, y, obj_level).big_collectible4)
 			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
@@ -427,7 +427,7 @@ and (point_distance(xx, yy, x, y) < 30)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
-			if (instance_nearest(x, y, obj_level).big_collectible5 == true)
+			if (instance_nearest(x, y, obj_level).big_collectible5)
 			and (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x + 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
@@ -445,7 +445,7 @@ and (point_distance(xx, yy, x, y) < 30)
 #endregion /* Show Level Info END */
 
 #region /* Draw Iris Transitions */
-if (global.enable_transitions == true)
+if (global.enable_transitions)
 {
 	if (iris_xscale < 15)
 	{

@@ -6,7 +6,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Draw sub menu (code must be here to be above everything else) */
-	if (open_sub_menu == true)
+	if (open_sub_menu)
 	{
 		
 		#region /* Navigate Sub Menu */
@@ -42,7 +42,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			else
 			if (menu == "level_editor_selected_back")
 			{
-				if (show_delete_button == true)
+				if (show_delete_button)
 				{
 					menu = "level_editor_delete";
 				}
@@ -111,7 +111,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			else
 			if (menu == "level_editor_enter_description")
 			{
-				if (show_delete_button == true)
+				if (show_delete_button)
 				{
 					menu = "level_editor_delete";
 				}
@@ -160,7 +160,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		#endregion /* Navigate Sub Menu END */
 		
 		#region /* Button Y Positions */
-		if (show_delete_button == true)
+		if (show_delete_button)
 		{
 			var play_y = 0;
 			var make_y = 42;
@@ -262,9 +262,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 - 3, xx + 8 + 370, 226 * (column - scroll) + 475 - 3 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (global.controls_used_for_menu_navigation == "mouse")
-			and (can_create_level_from_scratch == true)
+			and (can_create_level_from_scratch)
 			or (key_a_pressed)
-			and (can_create_level_from_scratch == true)
+			and (can_create_level_from_scratch)
 			{
 				menu = "level_editor_enter_name_ok";
 				menu_delay = 3;
@@ -423,7 +423,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			
 			#region /* Pressing the Delete button */
 			if (menu == "level_editor_delete")
-			and (show_delete_button == true)
+			and (show_delete_button)
 			{
 				menu_delay = 3;
 				menu = "level_editor_delete_no";
@@ -436,7 +436,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (menu == "level_editor_delete_no")
 			{
 				menu_delay = 3;
-				if (show_delete_button == true)
+				if (show_delete_button)
 				{
 					menu = "level_editor_delete"
 				}

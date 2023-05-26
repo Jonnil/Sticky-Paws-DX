@@ -48,7 +48,7 @@ if (vspeed >= 0)
 }
 #endregion /* When falling, it's not bouncing up anymore END */
 
-if (coil_spring == true)
+if (coil_spring)
 {
 	if (hspeed >= 0)
 	{

@@ -17,7 +17,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	and (menu != "open_custom_levels_folder")
 	and (menu != "online_level_list")
 	and (menu != "search_level_id")
-	and (open_sub_menu == true)
+	and (open_sub_menu)
 	{
 		var custom_level_select_blinking = scr_wave(1, 0, 2, 0);
 		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_red, c_red, c_red, c_red, false);
@@ -40,7 +40,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 		and (menu != "load_custom_level")
 		and (menu != "load_characters")
 		and (menu != "load_official_level_template")
-		or (show_first_thumbnail_name == true)
+		or (show_first_thumbnail_name)
 		and (menu != "load_custom_level")
 		and (menu != "load_characters")
 		and (menu != "load_official_level_template")
@@ -58,7 +58,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 					
 					var clear_check = ini_read_string("info", "clear_check", false);
 					
-					if (clear_check == true)
+					if (clear_check)
 					and (ini_key_exists("info", "level_id"))
 					{
 						draw_set_halign(fa_left);
@@ -70,7 +70,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 						draw_sprite_ext(spr_icons_upload, 1, 394 * (i - column * row) + 120 + thumbnail_x_offset, 226 * (column - scroll) + 274, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
 					}
 					else
-					if (clear_check == true)
+					if (clear_check)
 					and (ini_key_exists("info", "clear_check"))
 					{
 						draw_set_halign(fa_left);
@@ -100,7 +100,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	and (menu != "open_custom_levels_folder")
 	and (menu != "online_level_list")
 	and (menu != "search_level_id")
-	and (open_sub_menu == true)
+	and (open_sub_menu)
 	{
 		var custom_level_select_arrows_moving = scr_wave(10, 0, 1, 0);
 		

@@ -113,7 +113,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
 	and (global.controls_used_for_menu_navigation == "mouse")
 	and (mouse_check_button_released(mb_left))
-	and (global.assist_enable == true)
+	and (global.assist_enable)
 	and (menu == "assist_enable")
 	and (menu_delay == 0)
 	{

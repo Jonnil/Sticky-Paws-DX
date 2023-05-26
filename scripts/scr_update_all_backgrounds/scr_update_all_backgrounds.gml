@@ -4,8 +4,8 @@ function scr_update_all_backgrounds()
 	var can_update_all_backgrounds = true;
 	#endregion /* Debug toggles END */
 	
-	if (global.can_load_official_and_custom_resources == true)
-	and (can_update_all_backgrounds == true)
+	if (global.can_load_official_and_custom_resources)
+	and (can_update_all_backgrounds)
 	{
 		
 		#region /* Update All Backgrounds */

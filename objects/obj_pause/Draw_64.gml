@@ -225,7 +225,7 @@ if (hide_menu_for_clean_screenshots == false)
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Map"), "quit_to_map", "quit_to_map");
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
 			if (global.convention_mode == false)
-			and (global.enable_options_for_pc == true)
+			and (global.enable_options_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
@@ -250,7 +250,7 @@ if (hide_menu_for_clean_screenshots == false)
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
 			if (global.convention_mode == false)
-			and (global.enable_options_for_pc == true)
+			and (global.enable_options_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
@@ -272,7 +272,7 @@ if (hide_menu_for_clean_screenshots == false)
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title");
 			if (global.convention_mode == false)
-			and (global.enable_options_for_pc == true)
+			and (global.enable_options_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind");
@@ -449,7 +449,7 @@ if (hide_menu_for_clean_screenshots == false)
 			and (menu_delay == 0)
 			
 			or (global.pause_room == room_leveleditor)
-			and (global.convention_mode == true)
+			and (global.convention_mode)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
 			and (mouse_check_button(mb_left))
 			and (menu_delay == 0)
@@ -663,12 +663,12 @@ if (hide_menu_for_clean_screenshots == false)
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room == room_world_map)
-			and (global.convention_mode == true)
+			and (global.convention_mode)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room == room_leveleditor)
-			and (global.convention_mode == true)
+			and (global.convention_mode)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
@@ -865,7 +865,7 @@ if (hide_menu_for_clean_screenshots == false)
 			{
 				menu_delay = 3;
 				if (global.convention_mode == false)
-				and (global.enable_options_for_pc == true)
+				and (global.enable_options_for_pc)
 				{
 					menu = "quit_to_desktop";
 				}
@@ -887,19 +887,19 @@ if (hide_menu_for_clean_screenshots == false)
 			and (menu_delay == 0)
 			or (global.pause_room == room_leveleditor)
 			and (global.convention_mode == false)
-			and (global.enable_options_for_pc == true)
+			and (global.enable_options_for_pc)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room == room_world_map)
 			and (global.convention_mode == false)
-			and (global.enable_options_for_pc == true)
+			and (global.enable_options_for_pc)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room == room_leveleditor)
 			and (global.convention_mode == false)
-			and (global.enable_options_for_pc == true)
+			and (global.enable_options_for_pc)
 			and (global.character_select_in_this_menu == "level_editor")
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
 			and (mouse_check_button_released(mb_left))
@@ -954,17 +954,17 @@ if (hide_menu_for_clean_screenshots == false)
 			and (menu_delay == 0)
 			
 			or (global.pause_room == room_leveleditor)
-			and (global.convention_mode == true)
+			and (global.convention_mode)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room == room_world_map)
-			and (global.convention_mode == true)
+			and (global.convention_mode)
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
 			or (global.pause_room == room_leveleditor)
-			and (global.convention_mode == true)
+			and (global.convention_mode)
 			and (global.character_select_in_this_menu == "level_editor")
 			and (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
 			and (mouse_check_button_released(mb_left))
@@ -980,7 +980,7 @@ if (hide_menu_for_clean_screenshots == false)
 			{
 				menu_delay = 3;
 				if (global.convention_mode == false)
-				and (global.enable_options_for_pc == true)
+				and (global.enable_options_for_pc)
 				{
 					menu = "quit_to_desktop";
 				}
@@ -1068,7 +1068,7 @@ if (hide_menu_for_clean_screenshots == false)
 	/* PAUSE LEVEL EDITOR MENU */
 	
 	#region /* Show loading icon and reset level */
-	if (show_loading_icon == true)
+	if (show_loading_icon)
 	{
 		global.loading_spinning_angle -= 10;
 		draw_set_halign(fa_center);

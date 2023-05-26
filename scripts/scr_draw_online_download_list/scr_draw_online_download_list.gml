@@ -39,7 +39,7 @@ function scr_draw_online_download_list()
 		
 	}
 	else
-	if (in_online_download_list_menu == true)
+	if (in_online_download_list_menu)
 	{
 		draw_set_alpha(0.5);
 		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
@@ -106,7 +106,7 @@ function scr_draw_online_download_list()
 		
 		#region /* If there is no data, then apply the retrieved download data to it */
 		if (data == noone)
-		and (in_online_download_list_menu == true)
+		and (in_online_download_list_menu)
 		{
 			
 			#region /* Draw loading screen when loading download list */
@@ -228,7 +228,7 @@ function scr_draw_online_download_list()
 			}
 			
 			if (info_data == noone)
-			and (in_online_download_list_menu == true)
+			and (in_online_download_list_menu)
 			{
 				/* If there is an online download list information loaded, interpret that as a struct using "json parse" */
 				if (global.online_download_list_info != "")

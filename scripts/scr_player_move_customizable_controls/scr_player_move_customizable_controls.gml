@@ -278,7 +278,7 @@ function scr_player_move_customizable_controls()
 	key_left_hold =
 	(key_left_hold_temp)
 	and (!key_right_hold_temp)
-	or (active_left == true);
+	or (active_left);
 	#endregion /* Key Left Hold END */
 	
 	#region /* Key Left Pressed */
@@ -291,7 +291,7 @@ function scr_player_move_customizable_controls()
 	key_right_hold =
 	(key_right_hold_temp)
 	and (!key_left_hold_temp)
-	or (active_right == true);
+	or (active_right);
 	#endregion /* Key Right Hold END */
 	
 	#region /* Key Right Pressed */
@@ -304,14 +304,14 @@ function scr_player_move_customizable_controls()
 	key_down =
 	(key_down_hold_temp)
 	and (!key_up_hold_temp)
-	or (active_down == true);
+	or (active_down);
 	#endregion /* Key Down Hold END */
 	
 	#region /* Key Up Hold */
 	key_up =
 	(key_up_hold_temp)
 	and (!key_down_hold_temp)
-	or (active_up == true);
+	or (active_up);
 	#endregion /* Key Up Hold END */
 	
 	#region /* Key Up Pressed */
@@ -325,9 +325,9 @@ function scr_player_move_customizable_controls()
 	key_jump =
 	(key_jump_pressed_temp)
 	or (variable_instance_exists(self, "up_is_also_jump"))
-	and (up_is_also_jump == true)
+	and (up_is_also_jump)
 	and (key_up_pressed)
-	or (active_jump == true);
+	or (active_jump);
 	#endregion /* Key Jump Pressed END */
 	
 	#region /* Key Jump Hold */
@@ -336,9 +336,9 @@ function scr_player_move_customizable_controls()
 	key_jump_hold =
 	(key_jump_hold_temp)
 	or (variable_instance_exists(self, "up_is_also_jump"))
-	and (up_is_also_jump == true)
+	and (up_is_also_jump)
 	and (key_up)
-	or (active_jump == true);
+	or (active_jump);
 	#endregion /* Key Jump Hold END */
 	
 	#region /* Key Jump Released */
@@ -347,7 +347,7 @@ function scr_player_move_customizable_controls()
 	key_jump_released =
 	(key_jump_released_temp)
 	or (variable_instance_exists(self, "up_is_also_jump"))
-	and (up_is_also_jump == true)
+	and (up_is_also_jump)
 	and (key_up_released_temp)
 	#endregion /* Key Jump Released END */
 	
@@ -361,13 +361,13 @@ function scr_player_move_customizable_controls()
 	key_crouch_hold =
 	(key_crouch_hold_temp)
 	or (player <= 1)
-	and (global.player1_crouch_toggle == true)
+	and (global.player1_crouch_toggle)
 	or (player == 2)
-	and (global.player2_crouch_toggle == true)
+	and (global.player2_crouch_toggle)
 	or (player == 3)
-	and (global.player3_crouch_toggle == true)
+	and (global.player3_crouch_toggle)
 	or (player >= 4)
-	and (global.player4_crouch_toggle == true);
+	and (global.player4_crouch_toggle);
 	#endregion /* Key Crouch Hold END */
 	
 	#region /* Key Crouch Pressed */
@@ -383,13 +383,13 @@ function scr_player_move_customizable_controls()
 	key_sprint =
 	(key_sprint_hold_temp)
 	or (player <= 1)
-	and (global.player1_sprint_toggle == true)
+	and (global.player1_sprint_toggle)
 	or (player == 2)
-	and (global.player2_sprint_toggle == true)
+	and (global.player2_sprint_toggle)
 	or (player == 3)
-	and (global.player3_sprint_toggle == true)
+	and (global.player3_sprint_toggle)
 	or (player >= 4)
-	and (global.player4_sprint_toggle == true);
+	and (global.player4_sprint_toggle);
 	#endregion /* Key Sprint Hold END */
 	
 	key_sprint_pressed = scr_key_initialize(key_sprint_pressed, 1, player, action.sprint);

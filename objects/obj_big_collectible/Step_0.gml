@@ -20,21 +20,21 @@ and (instance_exists(obj_player))
 		}
 	}
 }
-if (follow_player == true)
+if (follow_player)
 and (place_meeting(x, y + 16, obj_wall))
-or (follow_player == true)
+or (follow_player)
 and (place_meeting(x, y + 16, obj_semisolid_platform))
-or (follow_player == true)
+or (follow_player)
 and (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).horizontal_rope_climb == true)
-or (follow_player == true)
+and (instance_nearest(x, y, obj_player).horizontal_rope_climb)
+or (follow_player)
 and (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).climb == true)
-or (follow_player == true)
+and (instance_nearest(x, y, obj_player).climb)
+or (follow_player)
 and (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
 or (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
-and (instance_nearest(x, y, obj_enemy_bowlingball).flat == true)
+and (instance_nearest(x, y, obj_enemy_bowlingball).flat)
 and (instance_nearest(x, y, obj_enemy_bowlingball).die == false)
 and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 {
@@ -250,7 +250,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 }
 
 #region /* Follow Player */
-if (follow_player == true)
+if (follow_player)
 {
 	if (instance_exists(obj_player))
 	and (distance_to_object(obj_player) < sprite_height + sprite_width)
@@ -282,7 +282,7 @@ if (follow_player == true)
 }
 #endregion /* Follow Player END */
 
-if (bounce_up == true)
+if (bounce_up)
 {
 	
 	#region /* Show Big Collectible HUD */

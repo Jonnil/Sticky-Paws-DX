@@ -12,7 +12,7 @@ else
 	speed = 0;
 }
 
-if (global.show_tutorial_signs == true)
+if (global.show_tutorial_signs)
 and (global.full_level_map_screenshot == false)
 {
 	visible = true;
@@ -22,7 +22,7 @@ else
 	visible = false;
 }
 
-if (global.full_level_map_screenshot == true)
+if (global.full_level_map_screenshot)
 {
 	instance_destroy();
 }

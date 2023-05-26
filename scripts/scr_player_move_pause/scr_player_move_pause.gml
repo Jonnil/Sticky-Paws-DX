@@ -30,10 +30,10 @@ function scr_player_move_pause()
 	or (gamepad_button_check_pressed(player_gamepad_slot, gp_start))
 	or (gamepad_button_check_pressed(player_gamepad_slot, gp_select))
 	or (!gamepad_is_connected(player_gamepad_slot))
-	and (controller_connected == true)
-	or (global.actually_play_edited_level == true)
+	and (controller_connected)
+	or (global.actually_play_edited_level)
 	and (!window_has_focus())
-	and (global.automatically_pause_when_window_is_unfocused == true)
+	and (global.automatically_pause_when_window_is_unfocused)
 	{
 		
 		#region /* Show all HUD elements */
@@ -51,7 +51,7 @@ function scr_player_move_pause()
 		#endregion /* Show all HUD elements END */
 		
 		controller_connected = false;
-		if (global.play_edited_level == true)
+		if (global.play_edited_level)
 		and (global.actually_play_edited_level == false)
 		and (global.character_select_in_this_menu == "level_editor")
 		{
@@ -82,22 +82,22 @@ function scr_player_move_pause()
 				global.pause_player = player - 1;
 			}
 			else
-			if (global.player1_can_play == true)
+			if (global.player1_can_play)
 			{
 				global.pause_player = 0;
 			}
 			else
-			if (global.player2_can_play == true)
+			if (global.player2_can_play)
 			{
 				global.pause_player = 1;
 			}
 			else
-			if (global.player3_can_play == true)
+			if (global.player3_can_play)
 			{
 				global.pause_player = 2;
 			}
 			else
-			if (global.player4_can_play == true)
+			if (global.player4_can_play)
 			{
 				global.pause_player = 3;
 			}

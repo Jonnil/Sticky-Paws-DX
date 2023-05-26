@@ -41,7 +41,7 @@ voice_damage = noone;
 voice_burned_running = noone;
 voice_burned = noone;
 
-if (can_initialize_custom_character == true)
+if (can_initialize_custom_character)
 {
 	
 	/* The order of the variables needs to be in reverse alphabetical order, so it shows up in alphabetical order in the config.ini file. This also means that x should be after y */
@@ -82,7 +82,7 @@ if (can_initialize_custom_character == true)
 	}
 	else
 	{
-		if (can_save_to_character_config == true)
+		if (can_save_to_character_config)
 		and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
 		{
 			ini_write_real("sprite origin points", "climb_under_y_offset", 10);

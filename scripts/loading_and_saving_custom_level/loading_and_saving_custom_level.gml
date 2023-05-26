@@ -2,7 +2,7 @@
 function scr_load_object_placement_json()
 {
 	
-	if (global.character_select_in_this_menu == "main_game" || global.create_level_from_template == true)
+	if (global.character_select_in_this_menu == "main_game" || global.create_level_from_template)
 		load_main_game_level = true;
 	else
 	{
@@ -109,7 +109,7 @@ function scr_load_object_placement_json()
 /* THIS IS LOADING TXT FILE */
 function scr_load_object_placement_txt()
 {
-	if (global.character_select_in_this_menu == "main_game" || global.create_level_from_template == true)
+	if (global.character_select_in_this_menu == "main_game" || global.create_level_from_template)
 		load_main_game_level = true;
 	else
 	{
@@ -228,7 +228,7 @@ function scr_load_object_placement_txt()
 function scr_save_custom_level()
 {
 	var save_custom_level_as_json = true; /* .json files can load faster than .txt files, but keep it an option if you want to save to .json or .txt, for compatibility */
-	if (save_custom_level_as_json == true)
+	if (save_custom_level_as_json)
 	{
 		scr_save_custom_level_json();
 	}

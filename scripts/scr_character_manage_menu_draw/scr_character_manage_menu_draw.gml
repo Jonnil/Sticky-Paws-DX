@@ -7,7 +7,7 @@ function scr_character_manage_menu_draw()
 	
 	var skin0_required = false;
 	if (!directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
-	and (skin0_required == true)
+	and (skin0_required)
 	{
 		var skin0_warning = true;
 	}
@@ -36,7 +36,7 @@ function scr_character_manage_menu_draw()
 	
 		#region /* Key Left */
 		if (global.character_index[0] > 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		and (menu != "click_delete_character_no")
 		and (menu != "click_delete_character_yes")
 		{
@@ -75,7 +75,7 @@ function scr_character_manage_menu_draw()
 	
 		#region /* Key Right */
 		if (global.character_index[0] < ds_list_size(global.all_loaded_characters) - 1)
-		and (can_navigate == true)
+		and (can_navigate)
 		and (menu != "click_delete_character_no")
 		and (menu != "click_delete_character_yes")
 		{
@@ -125,7 +125,7 @@ function scr_character_manage_menu_draw()
 			var selecting_official_character = false;
 		}
 		
-		if (global.enable_open_custom_folder == true)
+		if (global.enable_open_custom_folder)
 		{
 			var character_name_y = display_get_gui_height() - (42 * 6);
 			if (selecting_official_character == false)
@@ -170,7 +170,7 @@ function scr_character_manage_menu_draw()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5 + player1_display_x, character_name_y, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 		
-		if (can_navigate == true)
+		if (can_navigate)
 		{
 			if (menu == "click_copy_character")
 			or (menu == "click_delete_character")
@@ -191,7 +191,7 @@ function scr_character_manage_menu_draw()
 				}
 				
 				#region /* Open Character Folder */
-				if (global.enable_open_custom_folder == true)
+				if (global.enable_open_custom_folder)
 				{
 					draw_menu_button(display_get_gui_width() * 0.5 - 185, open_character_folder_y, l10n_text("Open Character Folder"), "open_folder_copy_character", "open_folder_copy_character");
 					draw_sprite_ext(spr_icons_folder, 0, display_get_gui_width() * 0.5 - 185 + 16, open_character_folder_y + 21, 1, 1, 0, c_white, 1);
@@ -217,7 +217,7 @@ function scr_character_manage_menu_draw()
 				#endregion /* Draw who made the character END */
 				
 				#region /* Draw error message if character doesn't have a "Skin" folder */
-				if (skin0_warning == true)
+				if (skin0_warning)
 				and (selecting_official_character == false)
 				{
 					draw_set_alpha(0.5);

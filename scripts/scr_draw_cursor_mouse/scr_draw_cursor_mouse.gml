@@ -6,8 +6,8 @@ function scr_draw_cursor_mouse()
 	and (instance_exists(obj_player))
 	and (instance_exists(obj_camera))
 	and (obj_camera.player1 >= 1)
-	and (obj_camera.can_spawn_player1 == true)
-	and (obj_camera.player1.allow_tongue == true)
+	and (obj_camera.can_spawn_player1)
+	and (obj_camera.player1.allow_tongue)
 	{
 		/* Do not show normal cursor */
 	}

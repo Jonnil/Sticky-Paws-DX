@@ -6,7 +6,7 @@ if (stomped_delay > 0)
 }
 
 #region /* If enemies are disabled, destroy this object */
-if (global.assist_enable == true)
+if (global.assist_enable)
 and (global.assist_enable_enemies == false)
 {
 	instance_destroy();
@@ -60,7 +60,7 @@ else
 	}
 	#endregion /* Set the gravity END */
 	
-	if (flat == true)
+	if (flat)
 	{
 		speed = 0;
 		if (image_index > image_number - 1)
@@ -88,10 +88,10 @@ else
 mask_index = mask;
 
 #region /* Coil spring bouncing code */
-if (coil_spring == true)
+if (coil_spring)
 and (die == false)
 and (place_meeting(x, y + 1, obj_wall))
-or (coil_spring == true)
+or (coil_spring)
 and (die == false)
 and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {

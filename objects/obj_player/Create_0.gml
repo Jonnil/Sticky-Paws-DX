@@ -9,7 +9,7 @@ can_create_follow_mouse = true;
 /*direction = point_direction(scr_x_to_gui(x), scr_y_to_gui(y), device_mouse_x_to_gui(0), device_mouse_y_to_gui(0));*/
 
 #region /* Create object that always follows mouse */
-if (can_create_follow_mouse == true)
+if (can_create_follow_mouse)
 and (!instance_exists(obj_follow_mouse))
 {
 	instance_create_depth(mouse_x, mouse_y, 0, obj_follow_mouse);
@@ -547,7 +547,7 @@ and (room != room_title)
 	and (global.character_select_in_this_menu == "main_game")
 	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
-	and (global.create_level_from_template == true)
+	and (global.create_level_from_template)
 	{
 		level_clear_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg");
 	}
@@ -580,7 +580,7 @@ and (room != room_title)
 	and (global.character_select_in_this_menu == "main_game")
 	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg"))
 	and (global.character_select_in_this_menu == "level_editor")
-	and (global.create_level_from_template == true)
+	and (global.create_level_from_template)
 	{
 		player_lose_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg");
 	}

@@ -60,7 +60,7 @@ else
 }
 #endregion /* Level Load END */
 
-if (always_open == true)
+if (always_open)
 and (clear_rate = "closed")
 {
 	clear_rate = "enter";

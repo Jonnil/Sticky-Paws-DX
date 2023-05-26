@@ -4,7 +4,7 @@ function scr_player_move_go_left()
 	#region /* Go Left */
 	if (key_left_hold)
 	and (!key_right_hold)
-	and (can_move == true)
+	and (can_move)
 	and (global.pause == false)
 	{
 		if (wall_jump == 0)
@@ -39,7 +39,7 @@ function scr_player_move_go_left()
 					}
 					else
 					{
-						if (on_ground == true)
+						if (on_ground)
 						{
 							hspeed -= acceleration_on_ground;
 						}
@@ -54,7 +54,7 @@ function scr_player_move_go_left()
 					if (!place_meeting(x - 2, y, obj_wall))
 					and (!place_meeting(x, y - 2, obj_wall))
 					{
-						if (on_ground == true)
+						if (on_ground)
 						{
 							hspeed -= acceleration_on_ground;
 						}

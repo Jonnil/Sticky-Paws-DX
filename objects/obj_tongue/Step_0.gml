@@ -103,8 +103,8 @@ and (instance_exists(obj_player))
 		
 	}
 	
-	if (instance_nearest(x, y, obj_player).climb == true)
-	or (instance_nearest(x, y, obj_player).horizontal_rope_climb == true)
+	if (instance_nearest(x, y, obj_player).climb)
+	or (instance_nearest(x, y, obj_player).horizontal_rope_climb)
 	{
 		move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
 		obj_player.rope_swing = false;

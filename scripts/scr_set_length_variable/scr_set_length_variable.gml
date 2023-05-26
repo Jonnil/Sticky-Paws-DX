@@ -14,7 +14,7 @@ function scr_set_length_variable()
 	&& (instance_position(x - 32, y, placed_object).second_x == second_x)
 	&& (instance_position(x - 32, y, placed_object).second_y == second_y)
 	&& (mask_index == spr_wall)
-	&& (can_set_length == true)
+	&& (can_set_length)
 	{
 		repeat_length = -1;
 		can_set_length = false;
@@ -33,13 +33,13 @@ function scr_set_length_variable()
 		&& (instance_position(xx, y, placed_object).second_x == second_x)
 		&& (instance_position(xx, y, placed_object).second_y == second_y)
 		&& (mask_index == spr_wall)
-		&& (can_set_length == true)
+		&& (can_set_length)
 		{
 			repeat_length = i;
 		}
 		else
 		if (mask_index == spr_wall)
-		&& (can_set_length == true)
+		&& (can_set_length)
 		{
 			if (!position_meeting(xx, y, placed_object))
 			|| (position_meeting(xx, y, placed_object))

@@ -1,6 +1,6 @@
 if (place_meeting(x, y - 8, other))
 {
-	if (other.ground_pound == true)
+	if (other.ground_pound)
 	{
 		
 		#region /* 1 Basic Collectible */

@@ -2,9 +2,9 @@ function scr_player_move_dive_ground_boost()
 {
 	
 	#region /* Dive ground boost */
-	if (allow_dive_ground_boost == true)
+	if (allow_dive_ground_boost)
 	and (dive_on_ground > 0)
-	and (on_ground == true)
+	and (on_ground)
 	{
 		dive_on_ground -= 1;
 		if (key_jump)

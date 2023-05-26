@@ -46,7 +46,7 @@ if (menu_delay > 0)
 	menu_delay -= 1;
 }
 
-if (lerp_on == true)
+if (lerp_on)
 {
 	scroll = lerp(scroll, scroll_to, 0.15)
 	if (scroll == scroll_to)

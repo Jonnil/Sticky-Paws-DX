@@ -94,7 +94,7 @@ and (stomped_delay == 0)
 				{
 					with(other)
 					{
-						if (in_water == true)
+						if (in_water)
 						{
 							vspeed = -4;
 						}
@@ -115,7 +115,7 @@ and (stomped_delay == 0)
 						and (instance_nearest(x, y, obj_player).hspeed >= + 8)
 						and (instance_nearest(x, y, obj_player).x < x)
 						and (sliding_along_ground == 0)
-						and (flat == true)
+						and (flat)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
@@ -126,7 +126,7 @@ and (stomped_delay == 0)
 						and (place_meeting(x, y, obj_player))
 						and (instance_nearest(x, y, obj_player).hspeed <= -8)
 						and (sliding_along_ground == 0)
-						and (flat == true)
+						and (flat)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
@@ -137,7 +137,7 @@ and (stomped_delay == 0)
 						and (place_meeting(x, y, obj_player))
 						and (instance_nearest(x, y, obj_player).x < x)
 						and (sliding_along_ground == 0)
-						and (flat == true)
+						and (flat)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = 8;
@@ -147,7 +147,7 @@ and (stomped_delay == 0)
 						if (instance_exists(obj_player))
 						and (place_meeting(x, y, obj_player))
 						and (sliding_along_ground == 0)
-						and (flat == true)
+						and (flat)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = 8;
@@ -164,7 +164,7 @@ and (stomped_delay == 0)
 				}
 				else
 				{
-					if (other.in_water == true)
+					if (other.in_water)
 					{
 						other.vspeed = -4;
 					}
@@ -179,7 +179,7 @@ and (stomped_delay == 0)
 						and (instance_nearest(x, y, obj_player).hspeed >= + 8)
 						and (instance_nearest(x, y, obj_player).x < x)
 						and (sliding_along_ground == 0)
-						and (flat == true)
+						and (flat)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
@@ -190,7 +190,7 @@ and (stomped_delay == 0)
 						and (place_meeting(x, y, obj_player))
 						and (instance_nearest(x, y, obj_player).hspeed <= -8)
 						and (sliding_along_ground == 0)
-						and (flat == true)
+						and (flat)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
@@ -201,7 +201,7 @@ and (stomped_delay == 0)
 						and (place_meeting(x, y, obj_player))
 						and (instance_nearest(x, y, obj_player).x < x)
 						and (sliding_along_ground == 0)
-						and (flat == true)
+						and (flat)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = 8;
@@ -211,7 +211,7 @@ and (stomped_delay == 0)
 						if (instance_exists(obj_player))
 						and (place_meeting(x, y, obj_player))
 						and (sliding_along_ground == 0)
-						and (flat == true)
+						and (flat)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = 8;
@@ -226,7 +226,7 @@ and (stomped_delay == 0)
 						}
 					}
 				}
-				if (coil_spring == true)
+				if (coil_spring)
 				{
 					coil_spring = false;
 					stomped_delay = 5;
@@ -245,7 +245,7 @@ and (stomped_delay == 0)
 				image_index = 0;
 			}
 			else
-			if (other.ground_pound == true)
+			if (other.ground_pound)
 			{
 				die = true;
 				global.enemy_counter += 1;
@@ -286,16 +286,16 @@ and (stomped_delay == 0)
 		or (sliding_along_ground < 0)
 		and (stomped_delay == 0)
 		and (die == false)
-		and (flat == true)
+		and (flat)
 		or (sliding_along_ground > 0)
 		and (stomped_delay == 0)
 		and (die == false)
-		and (flat == true)
+		and (flat)
 		{
 			if (other.takendamage <= 0)
 			and (other.assist_invincible == false)
 			{
-				if (other.have_heart_balloon == true)
+				if (other.have_heart_balloon)
 				{
 					other.have_heart_balloon = false;
 		

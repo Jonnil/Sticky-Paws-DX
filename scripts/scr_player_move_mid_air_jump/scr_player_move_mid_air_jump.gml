@@ -8,9 +8,9 @@ function scr_player_move_mid_air_jump()
 	}
 
 	if (key_double_jump)
-	and (can_move == true)
+	and (can_move)
 	and (global.pause == false)
-	and (global.equipped_upgrade_double_jump == true)
+	and (global.equipped_upgrade_double_jump)
 	and (ground_pound == false)
 	and (climb == false)
 	and (horizontal_rope_climb == false)
@@ -24,7 +24,7 @@ function scr_player_move_mid_air_jump()
 	and (in_water == false)
 	and (can_mid_air_jump == 0)
 	{
-		if (spring == true)
+		if (spring)
 		and (vspeed > - 20)
 		or (spring == false)
 		{
@@ -105,7 +105,7 @@ function scr_player_move_mid_air_jump()
 	#endregion /* Mid-Air / Double Jumping END */
 	
 	#region /* Recharge mid-air / double jump when landing on ground */
-	if (on_ground == true)
+	if (on_ground)
 	{
 		if (vspeed >= 0)
 		{

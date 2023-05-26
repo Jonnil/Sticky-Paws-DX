@@ -18,7 +18,7 @@ if (global.actually_play_edited_level == false)
 	and (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
-		and (global.player4_can_play == true)
+		and (global.player4_can_play)
 		{
 			draw_sprite_ext(sprite_player4, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
 		}
@@ -32,7 +32,7 @@ if (global.actually_play_edited_level == false)
 	and (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
-		and (global.player3_can_play == true)
+		and (global.player3_can_play)
 		{
 			draw_sprite_ext(sprite_player3, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
 		}
@@ -46,7 +46,7 @@ if (global.actually_play_edited_level == false)
 	and (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
-		and (global.player2_can_play == true)
+		and (global.player2_can_play)
 		{
 			draw_sprite_ext(sprite_player2, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
 		}
@@ -60,7 +60,7 @@ if (global.actually_play_edited_level == false)
 	and (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
-		and (global.player1_can_play == true)
+		and (global.player1_can_play)
 		{
 			draw_sprite_ext(sprite_player1, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
 		}
@@ -365,7 +365,7 @@ if (global.actually_play_edited_level == false)
 	{
 		
 		#region /* Zoom Out */
-		if (zoom_out == true)
+		if (zoom_out)
 		{
 			if (camera_get_view_width(view_camera[view_current]) < room_width)
 			and (camera_get_view_height(view_camera[view_current]) < room_height)
@@ -385,7 +385,7 @@ if (global.actually_play_edited_level == false)
 		else
 		
 		#region /* Zoom In */
-		if (zoom_in == true)
+		if (zoom_in)
 		{
 			if (camera_get_view_width(view_camera[view_current]) > 696)
 			and (camera_get_view_height(view_camera[view_current]) > 368)
@@ -408,7 +408,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Select Object Menu */
 	if (quit_level_editor <= 0)
 	{
-		if (global.world_editor == true)
+		if (global.world_editor)
 		{
 			if (asset_get_type("spr_wall") == asset_sprite){draw_sprite_ext(spr_wall, 0,											camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);}
 			if (asset_get_type("spr_level_ring") == asset_sprite){draw_sprite_ext(spr_level_ring, 0,								camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_yellow, selected_menu_alpha);}
@@ -441,7 +441,7 @@ if (global.actually_play_edited_level == false)
 	{
 		
 		#region /* Fill Cursor */
-		if (fill_mode == true)
+		if (fill_mode)
 		and (erase_mode == false)
 		and (scroll_view == false)
 		and (!place_meeting(x, y, obj_level_player_1_start))
@@ -462,7 +462,7 @@ if (global.actually_play_edited_level == false)
 		else
 		
 		#region /* Erase Cursor */
-		if (erase_mode == true)
+		if (erase_mode)
 		and (scroll_view == false)
 		and (pause == false)
 		{
@@ -515,7 +515,7 @@ if (global.actually_play_edited_level == false)
 				draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 0.2);
 			}
 			
-			if (can_make_place_brush_size_bigger == true)
+			if (can_make_place_brush_size_bigger)
 			and (sprite_index >= 0)
 			{
 				if (!place_meeting(x + 32, y, obj_leveleditor_placed_object)) and (obj_leveleditor.place_brush_size >= 1){draw_sprite_ext(sprite_index, image_index, x + 32, y, 1, 1, 0, c_white, 0.2);}
@@ -561,31 +561,31 @@ if (global.actually_play_edited_level == false)
 			
 			#region /* Draw a rectangle around the placable objects */
 			if (place_brush_size == 5)
-			and (can_make_place_brush_size_bigger == true)
+			and (can_make_place_brush_size_bigger)
 			{
 				draw_rectangle_color(x - 80, y - 80, x + 112, y + 112, c_black, c_black, c_black, c_black, true);
 			}
 			else
 			if (place_brush_size == 4)
-			and (can_make_place_brush_size_bigger == true)
+			and (can_make_place_brush_size_bigger)
 			{
 				draw_rectangle_color(x - 80, y - 80, x + 80, y + 80, c_black, c_black, c_black, c_black, true);
 			}
 			else
 			if (place_brush_size == 3)
-			and (can_make_place_brush_size_bigger == true)
+			and (can_make_place_brush_size_bigger)
 			{
 				draw_rectangle_color(x - 48, y - 48, x + 80, y + 80, c_black, c_black, c_black, c_black, true);
 			}
 			else
 			if (place_brush_size == 2)
-			and (can_make_place_brush_size_bigger == true)
+			and (can_make_place_brush_size_bigger)
 			{
 				draw_rectangle_color(x - 48, y - 48, x + 48, y + 48, c_black, c_black, c_black, c_black, true);
 			}
 			else
 			if (place_brush_size == 1)
-			and (can_make_place_brush_size_bigger == true)
+			and (can_make_place_brush_size_bigger)
 			{
 				draw_rectangle_color(x - 16, y - 16, x + 48, y + 48, c_black, c_black, c_black, c_black, true);
 			}

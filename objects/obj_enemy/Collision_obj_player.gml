@@ -12,7 +12,7 @@ if (stomped_delay <= 0)
 {
 	if (other.invincible_timer > 0)
 	or (other.takendamage > 0)
-	or (other.dive == true)
+	or (other.dive)
 	or (other.can_attack_after_dive_on_ground > 0)
 	{
 		if (other.key_jump_hold)
@@ -28,7 +28,7 @@ if (stomped_delay <= 0)
 		}
 		if (die_volting == false)
 		{
-			if (coil_spring == true)
+			if (coil_spring)
 			{
 				coil_spring = false;
 				stomped_delay = 20;
@@ -109,7 +109,7 @@ and (stomped_delay <= 0)
 					}
 				}
 			}
-			if (coil_spring == true)
+			if (coil_spring)
 			{
 				coil_spring = false;
 				stomped_delay = 20;
@@ -144,7 +144,7 @@ if (other.key_jump_hold)
 {
 	with(other)
 	{
-		if (in_water == true)
+		if (in_water)
 		{
 			vspeed = -4;
 		}
@@ -161,7 +161,7 @@ if (other.key_jump_hold)
 }
 else
 {
-	if (other.in_water == true)
+	if (other.in_water)
 	{
 		other.vspeed = -4;
 	}
@@ -173,7 +173,7 @@ else
 image_index = 0;
 }
 else
-if (other.ground_pound == true) /* Ground pound the enemy and kill it instantly */
+if (other.ground_pound) /* Ground pound the enemy and kill it instantly */
 and (flat == false)
 {
 	die = true;
@@ -214,7 +214,7 @@ else
 if (other.takendamage <= 0)
 and (other.assist_invincible == false)
 {
-	if (other.have_heart_balloon == true)
+	if (other.have_heart_balloon)
 	{
 		other.have_heart_balloon = false;
 		

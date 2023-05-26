@@ -4,7 +4,7 @@ and (assist_invincible == false)
 	invincible_timer = other.invincible_timer;
 }
 
-if (global.players_can_collide == true)
+if (global.players_can_collide)
 {
 	if (hspeed < 0)
 	and (other.hspeed > 0)

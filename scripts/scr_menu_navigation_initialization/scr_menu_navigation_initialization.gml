@@ -14,8 +14,8 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 	
 	#region /* Player 1 */
 	if (global.pause_player == 0)
-	or (global.player1_can_play == true)
-	or (only_player_1_can_navigate == true)
+	or (global.player1_can_play)
+	or (only_player_1_can_navigate)
 	{
 		var which_player = 1;
 		var player_slot = global.player1_slot;
@@ -26,7 +26,7 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 	
 	#region /* Player 2 */
 	if (global.pause_player == 1)
-	or (global.player2_can_play == true)
+	or (global.player2_can_play)
 	{
 		var which_player = 2;
 		var player_slot = global.player2_slot;
@@ -37,7 +37,7 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 	
 	#region /* Player 3 */
 	if (global.pause_player == 2)
-	or (global.player3_can_play == true)
+	or (global.player3_can_play)
 	{
 		var which_player = 3;
 		var player_slot = global.player3_slot;
@@ -48,7 +48,7 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 	
 	#region /* Player 4 */
 	if (global.pause_player == 3)
-	or (global.player4_can_play == true)
+	or (global.player4_can_play)
 	{
 		var which_player = 4;
 		var player_slot = global.player4_slot;

@@ -27,13 +27,13 @@ function scr_player_move_goal()
 			
 			#region /* Can't walk back when touched goal */
 			if (x < instance_nearest(x, y, obj_goal).bbox_left + 4)
-			and (goal == true)
+			and (goal)
 			{
 				x = instance_nearest(x, y, obj_goal).bbox_left + 4;
 			}
 			#endregion /* Can't walk back when touched goal END */
 			
-			if (just_hit_goal == true)
+			if (just_hit_goal)
 			and (goal == false)
 			{
 				if (!instance_exists(obj_camera.player1))
@@ -61,7 +61,7 @@ function scr_player_move_goal()
 				instance_nearest(x, y, obj_goal).image_index = 1;
 				invincible_timer = false;
 				
-				if (instance_nearest(x, y, obj_goal).trigger_ending == true)
+				if (instance_nearest(x, y, obj_goal).trigger_ending)
 				{
 					global.trigger_ending = true;
 				}

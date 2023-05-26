@@ -67,7 +67,7 @@ else
 	else
 	if (gamepad_is_connected(global.player1_slot))
 	and (global.controls_used_for_menu_navigation == "controller")
-	or (global.always_show_gamepad_buttons == true)
+	or (global.always_show_gamepad_buttons)
 	or (os_type == os_switch)
 	{
 		draw_set_halign(fa_right);

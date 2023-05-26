@@ -672,7 +672,7 @@ if (position_meeting(x, y, obj_wall))
 and (can_collide_with_wall == true)
 {
 	stuck_in_wall_counter += 1;
-	if (stuck_in_wall_counter >= 3)
+	if (stuck_in_wall_counter > 6)
 	and (global.goal_active == false)
 	{
 		die = true;
@@ -685,6 +685,12 @@ else
 		stuck_in_wall_counter -= 1;
 	}
 }
+
+if (position_meeting(x, bbox_top + 8, obj_wall))
+and (position_meeting(x, bbox_bottom - 8, obj_wall))
+{
+	die = true; /* If there is solid ground above and underneath you, you are probably getting flattened */
+}
 #endregion /* Stuck inside a wall END */
 
 #region /* ________________________________MORE MOVES________________________________ */
@@ -694,7 +700,7 @@ scr_player_move_tongue();
 scr_player_move_roll_when_landing();
 
 #region /* Go with Platform */
-if (place_meeting(x, y + 4, obj_wall))
+if (place_meeting(x, y + 1, obj_wall))
 {
 	if (instance_nearest(x, bbox_bottom, obj_wall).vspeed > 0)
 	{

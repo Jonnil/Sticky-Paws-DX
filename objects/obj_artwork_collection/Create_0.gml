@@ -8,7 +8,7 @@ can_navigate = false;
 current_comment = "";
 xx = window_get_width() * 0.5;
 yy = y;
-if (global.demo == true)
+if (global.demo)
 {
 	instance_destroy();
 }

@@ -2,7 +2,7 @@ function scr_character_manage_menu_step()
 {
 	var skin0_required = false;
 	if (!directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
-	and (skin0_required == true)
+	and (skin0_required)
 	{
 		var skin0_warning = true;
 	}
@@ -46,7 +46,7 @@ function scr_character_manage_menu_step()
 			if (menu != "click_delete_character_no")
 			and (menu != "click_delete_character_no")
 			and (menu_delay == 0)
-			and (can_navigate == true)
+			and (can_navigate)
 			and (global.character_index[0] > 0)
 			{
 				menu_delay = 3;
@@ -92,7 +92,7 @@ function scr_character_manage_menu_step()
 			if (menu != "click_delete_character_no")
 			and (menu != "click_delete_character_no")
 			and (menu_delay == 0)
-			and (can_navigate == true)
+			and (can_navigate)
 			{
 				menu_delay = 3;
 				menu_joystick1_delay = 30;
@@ -121,7 +121,7 @@ function scr_character_manage_menu_step()
 		
 		#region /* Key Left */
 		if (global.character_index[0] > 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{		
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 + player1_display_x - arrow_offset - 16, display_get_gui_height() * 0.5 - 16, display_get_gui_width() * 0.5 + player1_display_x - arrow_offset + 16, display_get_gui_height() * 0.5 + 16))
 			and (global.controls_used_for_menu_navigation == "mouse")
@@ -133,7 +133,7 @@ function scr_character_manage_menu_step()
 		
 		#region /* Key Right */
 		if (global.character_index[0] < ds_list_size(global.all_loaded_characters) - 1)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 + player1_display_x + arrow_offset - 16, display_get_gui_height() * 0.5 - 16, display_get_gui_width() * 0.5 + player1_display_x + arrow_offset + 16, display_get_gui_height() * 0.5 + 16))
 			and (global.controls_used_for_menu_navigation == "mouse")
@@ -154,7 +154,7 @@ function scr_character_manage_menu_step()
 			var selecting_official_character = false;
 		}
 		
-		if (global.enable_open_custom_folder == true)
+		if (global.enable_open_custom_folder)
 		{
 			if (selecting_official_character == false)
 			{
@@ -195,12 +195,12 @@ function scr_character_manage_menu_step()
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		and (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
 		or (menu == "click_copy_character")
 		and (key_a_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		and (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
 		{
 			menu_delay = 3;
@@ -267,7 +267,7 @@ function scr_character_manage_menu_step()
 			if (menu == "click_copy_character")
 			and (menu_delay == 0)
 			and (menu_joystick_delay <= 0)
-			and (can_navigate == true)
+			and (can_navigate)
 			{
 				menu_delay = 3;
 				can_navigate = true;
@@ -279,7 +279,7 @@ function scr_character_manage_menu_step()
 		and (key_down)
 		and (menu_delay == 0)
 		and (menu_joystick_delay <= 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -556,15 +556,15 @@ function scr_character_manage_menu_step()
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		or (menu == "click_delete_character")
 		and (key_a_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		or (player1_menu = "click_delete_character")
 		and (key_a_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			if (selecting_official_character == false)
 			{
@@ -578,15 +578,15 @@ function scr_character_manage_menu_step()
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		or (menu == "click_delete_character_no")
 		and (key_a_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		or (player1_menu = "click_delete_character_no")
 		and (key_a_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			if (selecting_official_character == false)
 			{
@@ -600,15 +600,15 @@ function scr_character_manage_menu_step()
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		or (menu == "click_delete_character_yes")
 		and (key_a_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		or (player1_menu = "click_delete_character_yes")
 		and (key_a_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			if (selecting_official_character == false)
 			{
@@ -642,7 +642,7 @@ function scr_character_manage_menu_step()
 			if (menu == "click_delete_character")
 			and (menu_delay == 0)
 			and (menu_joystick_delay <= 0)
-			and (can_navigate == true)
+			and (can_navigate)
 			{
 				menu_delay = 3;
 				can_navigate = true;
@@ -654,7 +654,7 @@ function scr_character_manage_menu_step()
 		and (key_down)
 		and (menu_delay == 0)
 		and (menu_joystick_delay <= 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -665,7 +665,7 @@ function scr_character_manage_menu_step()
 				menu = "click_upload_character";
 			}
 			else
-			if (global.enable_open_custom_folder == true)
+			if (global.enable_open_custom_folder)
 			{
 				player1_menu = "open_folder_copy_character";
 				menu = "open_folder_copy_character";
@@ -686,7 +686,7 @@ function scr_character_manage_menu_step()
 			if (menu == "click_delete_character_yes")
 			and (menu_delay == 0)
 			and (menu_joystick_delay <= 0)
-			and (can_navigate == true)
+			and (can_navigate)
 			{
 				menu_delay = 3;
 				can_navigate = true;
@@ -698,7 +698,7 @@ function scr_character_manage_menu_step()
 		and (key_down)
 		and (menu_delay == 0)
 		and (menu_joystick_delay <= 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -714,11 +714,11 @@ function scr_character_manage_menu_step()
 			and (global.controls_used_for_menu_navigation == "mouse")
 			and (mouse_check_button_released(mb_left))
 			and (menu_delay == 0)
-			and (can_navigate == true)
+			and (can_navigate)
 			or (menu == "click_upload_character")
 			and (key_a_pressed)
 			and (menu_delay == 0)
-			and (can_navigate == true)
+			and (can_navigate)
 			{
 				if (selecting_official_character == false)
 				{
@@ -736,7 +736,7 @@ function scr_character_manage_menu_step()
 			if (menu == "click_upload_character")
 			and (menu_delay == 0)
 			and (menu_joystick_delay <= 0)
-			and (can_navigate == true)
+			and (can_navigate)
 			{
 				menu_delay = 3;
 				can_navigate = true;
@@ -756,11 +756,11 @@ function scr_character_manage_menu_step()
 		and (key_down)
 		and (menu_delay == 0)
 		and (menu_joystick_delay <= 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			menu_delay = 3;
 			can_navigate = true;
-			if (global.enable_open_custom_folder == true)
+			if (global.enable_open_custom_folder)
 			{
 				player1_menu = "open_folder_copy_character";
 				menu = "open_folder_copy_character";
@@ -778,15 +778,15 @@ function scr_character_manage_menu_step()
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		or (menu == "open_folder_copy_character")
 		and (key_a_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		or (player1_menu = "open_folder_copy_character")
 		and (key_a_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			menu_delay = 3;
 			menu = "open_folder_copy_character";
@@ -811,7 +811,7 @@ function scr_character_manage_menu_step()
 			if (menu == "open_folder_copy_character")
 			and (menu_delay == 0)
 			and (menu_joystick_delay <= 0)
-			and (can_navigate == true)
+			and (can_navigate)
 			{
 				menu_delay = 3;
 				can_navigate = true;
@@ -838,7 +838,7 @@ function scr_character_manage_menu_step()
 		and (key_down)
 		and (menu_delay == 0)
 		and (menu_joystick_delay <= 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -852,18 +852,18 @@ function scr_character_manage_menu_step()
 		and (global.controls_used_for_menu_navigation == "mouse")
 		and (mouse_check_button_released(mb_left))
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		or (menu == "back_from_copy_character")
 		and (key_a_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		or (player1_menu = "back_from_copy_character")
 		and (key_a_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		or (key_b_pressed)
 		and (menu_delay == 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			menu = "manage_character";
 			player1_menu = "manage_character"; /* When going back to previous menu from "manage character", you have to set this to "manage character" */
@@ -878,11 +878,11 @@ function scr_character_manage_menu_step()
 			if (menu == "back_from_copy_character")
 			and (menu_delay == 0)
 			and (menu_joystick_delay <= 0)
-			and (can_navigate == true)
+			and (can_navigate)
 			{
 				menu_delay = 3;
 				can_navigate = true;
-				if (global.enable_open_custom_folder == true)
+				if (global.enable_open_custom_folder)
 				{
 					player1_menu = "open_folder_copy_character";
 					menu = "open_folder_copy_character";
@@ -898,7 +898,7 @@ function scr_character_manage_menu_step()
 		and (key_down)
 		and (menu_delay == 0)
 		and (menu_joystick_delay <= 0)
-		and (can_navigate == true)
+		and (can_navigate)
 		{
 			menu_delay = 3;
 			can_navigate = true;

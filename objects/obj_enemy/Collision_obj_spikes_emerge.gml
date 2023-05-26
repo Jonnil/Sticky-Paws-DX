@@ -1,6 +1,6 @@
 #region /* Enemy touching emerging spikes */
 if (instance_exists(obj_spikes_emerge))
-and (can_die_from_spikes == true)
+and (can_die_from_spikes)
 {
 	if (instance_nearest(x, y, obj_spikes_emerge).image_angle == 0)
 	and (place_meeting(x, y + 2, instance_nearest(x, y, obj_spikes_emerge)))

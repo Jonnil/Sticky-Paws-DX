@@ -16,7 +16,7 @@ function scr_player_move_jumping()
 	}
 
 	if (buffer_jump > 0)
-	and (can_move == true)
+	and (can_move)
 	and (global.pause == false)
 	and (key_jump_hold)
 	{
@@ -57,13 +57,13 @@ function scr_player_move_jumping()
 			or (asset_get_type("obj_wall") == asset_object)
 			and (place_meeting(x, y + 1, obj_wall))
 			and!(place_meeting(x, y - 1, obj_wall))
-			and (crouch == true)
+			and (crouch)
 			and (vspeed == 0)
 		
 			or (asset_get_type("obj_semisolid_platform") == asset_object)
 			and (place_meeting(x, y + 1, obj_semisolid_platform))
 			and!(place_meeting(x, y - 1, obj_semisolid_platform))
-			and (crouch == true)
+			and (crouch)
 			and (vspeed == 0)
 			{
 				if (abs(hspeed) > (speed_max_run -1))

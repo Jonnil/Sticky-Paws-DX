@@ -13,7 +13,55 @@ function scr_debug_screen()
 	var fps_real_target = (os_type == os_switch) ? 60 : 250;
 	var instance_count_target = 200;
 	
-	if (keyboard_check_pressed(vk_f3) || gamepad_button_check(global.player1_slot, gp_stickl) && gamepad_button_check_pressed(global.player1_slot, gp_stickr) || gamepad_button_check(global.player1_slot, gp_stickr) && gamepad_button_check_pressed(global.player1_slot, gp_stickl))
+	//if (gamepad_button_check(0, gp_face1))
+	//{
+	//	effect_create_above(ef_explosion, random_range(0, room_width), random_range(0, room_height), 2, c_aqua);
+	//}
+	//if (gamepad_button_check(1, gp_face1))
+	//{
+	//	effect_create_above(ef_explosion, random_range(0, room_width), random_range(0, room_height), 2, c_red);
+	//}
+	//if (gamepad_button_check(2, gp_face1))
+	//{
+	//	effect_create_above(ef_explosion, random_range(0, room_width), random_range(0, room_height), 2, c_lime);
+	//}
+	//if (gamepad_button_check(3, gp_face1))
+	//{
+	//	effect_create_above(ef_explosion, random_range(0, room_width), random_range(0, room_height), 2, c_yellow);
+	//}
+	//if (gamepad_button_check(4, gp_face1))
+	//{
+	//	effect_create_above(ef_explosion, random_range(0, room_width), random_range(0, room_height), 2, c_purple);
+	//}
+	
+	//if (gamepad_button_check(global.player1_slot, gp_face1))
+	//{
+	//	effect_create_above(ef_ellipse, random_range(0, room_width), random_range(0, room_height), 2, c_aqua);
+	//}
+	//if (gamepad_button_check(global.player2_slot, gp_face1))
+	//{
+	//	effect_create_above(ef_ellipse, random_range(0, room_width), random_range(0, room_height), 2, c_red);
+	//}
+	//if (gamepad_button_check(global.player3_slot, gp_face1))
+	//{
+	//	effect_create_above(ef_ellipse, random_range(0, room_width), random_range(0, room_height), 2, c_lime);
+	//}
+	//if (gamepad_button_check(global.player4_slot, gp_face1))
+	//{
+	//	effect_create_above(ef_ellipse, random_range(0, room_width), random_range(0, room_height), 2, c_yellow);
+	//}
+	
+	if (keyboard_check_pressed(vk_f3) ||
+	gamepad_button_check(0, gp_stickl) && gamepad_button_check_pressed(0, gp_stickr) ||
+	gamepad_button_check(0, gp_stickr) && gamepad_button_check_pressed(0, gp_stickl) ||
+	gamepad_button_check(1, gp_stickl) && gamepad_button_check_pressed(1, gp_stickr) ||
+	gamepad_button_check(1, gp_stickr) && gamepad_button_check_pressed(1, gp_stickl) ||
+	gamepad_button_check(2, gp_stickl) && gamepad_button_check_pressed(2, gp_stickr) ||
+	gamepad_button_check(2, gp_stickr) && gamepad_button_check_pressed(2, gp_stickl) ||
+	gamepad_button_check(3, gp_stickl) && gamepad_button_check_pressed(3, gp_stickr) ||
+	gamepad_button_check(3, gp_stickr) && gamepad_button_check_pressed(3, gp_stickl) ||
+	gamepad_button_check(4, gp_stickl) && gamepad_button_check_pressed(3, gp_stickr) ||
+	gamepad_button_check(4, gp_stickr) && gamepad_button_check_pressed(3, gp_stickl))
 	{
 		global.debug_screen = !global.debug_screen;
 		show_debug_overlay(global.debug_screen);
@@ -205,10 +253,10 @@ function scr_debug_screen()
 		
 		if ((description0 == "Handheld" || description1 == "Handheld") && (description1 != "" || description0 != ""))
 		{
-			global.player1_slot = 1;
-			global.player2_slot = 2;
-			global.player3_slot = 3;
-			global.player4_slot = 4;
+			global.player1_slot = 0;
+			global.player2_slot = 1;
+			global.player3_slot = 2;
+			global.player4_slot = 3;
 		}
 		else
 		{
@@ -252,9 +300,16 @@ function scr_debug_screen()
 		{
 			scr_draw_text_outlined(32, 400, "gamepad(4): " + string(gamepad_get_description(4)));
 		}
-		scr_draw_text_outlined(32, 420, "global.background_brightness_menu: " + string(global.background_brightness_menu));
-		draw_set_halign(fa_right);
-		scr_draw_text_outlined(display_get_gui_height() - 32, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)));
+		scr_draw_text_outlined(32, 420, "player1_slot: " + string(global.player1_slot));
+		scr_draw_text_outlined(32, 440, "player2_slot: " + string(global.player2_slot));
+		scr_draw_text_outlined(32, 460, "player3_slot: " + string(global.player3_slot));
+		scr_draw_text_outlined(32, 480, "player4_slot: " + string(global.player4_slot));
+		if (variable_instance_exists(self, "menu"))
+		{
+			scr_draw_text_outlined(32, 500, "menu: " + string(menu));
+		}
+		draw_set_halign(fa_center);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)));
 	}
 	
 	if (global.debug_screen)

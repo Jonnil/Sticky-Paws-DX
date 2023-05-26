@@ -3,7 +3,7 @@ function scr_options_level_editor()
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
 	
-	if (pause == true)
+	if (pause)
 	{
 		var level_editor_options_x = 500;
 		var options_level_editor_right_arrow_x = 650;
@@ -66,7 +66,7 @@ function scr_options_level_editor()
 				}
 				else
 				if (menu_delay == 0)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				{
 					open_dropdown = false;
 					menu_delay = 3;
@@ -134,7 +134,7 @@ function scr_options_level_editor()
 				}
 				#endregion /* Save config.ini END */
 				
-				if (open_dropdown == true)
+				if (open_dropdown)
 				{
 					open_dropdown = false;
 				}
@@ -450,7 +450,7 @@ function scr_options_level_editor()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.enable_time_countdown == true)
+					if (global.enable_time_countdown)
 					{
 						menu = "time_countdown";
 					}
@@ -462,7 +462,7 @@ function scr_options_level_editor()
 				}
 			}
 			if (menu == "time_countdown")
-			and (global.enable_time_countdown == true)
+			and (global.enable_time_countdown)
 			{
 				if (key_up)
 				and (menu_delay == 0)
@@ -503,7 +503,7 @@ function scr_options_level_editor()
 				and (menu_delay == 0)
 				and (open_dropdown == false)
 				{
-					if (global.enable_time_countdown == true)
+					if (global.enable_time_countdown)
 					{
 						menu = "time_countdown";
 					}
@@ -542,7 +542,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				and (menu_delay == 0)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (global.selected_level_editing_music > 0)
 				{
 					global.selected_level_editing_music -= 1;
@@ -551,7 +551,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				and (menu_delay == 0)
-				and (open_dropdown == true)
+				and (open_dropdown)
 				and (global.selected_level_editing_music < 5)
 				{
 					global.selected_level_editing_music += 1;
@@ -632,7 +632,7 @@ function scr_options_level_editor()
 			draw_menu_checkmark(level_editor_options_x - 90, deactivate_objects_from_most_zoomed_out_y, l10n_text("Deactivate objects from most zoomed out"), "deactivate_objects_from_most_zoomed_out", global.deactivate_objects_from_most_zoomed_out);
 			draw_menu_checkmark(level_editor_options_x - 90, rain_y, l10n_text("Rain"), "rain", global.rain);
 			draw_menu_checkmark(level_editor_options_x - 90, enable_time_countdown_y, l10n_text("Enable Time Countdown"), "enable_time_countdown", global.enable_time_countdown);
-			if (global.enable_time_countdown == true)
+			if (global.enable_time_countdown)
 			{
 				global.time_countdown = draw_menu_left_right_buttons(level_editor_options_x, time_countdown_y, options_level_editor_right_arrow_x, l10n_text("Time Countdown"), global.time_countdown, "time_countdown", 1, false);
 			}
@@ -1705,7 +1705,7 @@ function scr_options_level_editor()
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				{
-					if (custom_background_1_htiled == true){custom_background_1_htiled = false;}else{custom_background_1_htiled = true;}menu_delay = 3;
+					if (custom_background_1_htiled){custom_background_1_htiled = false;}else{custom_background_1_htiled = true;}menu_delay = 3;
 					layer_background_htiled(layer_background_get_id(layer_get_id("Background")), custom_background_1_htiled);
 				}
 				else
@@ -1732,7 +1732,7 @@ function scr_options_level_editor()
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				{
-					if (custom_background_1_vtiled == true){custom_background_1_vtiled = false;}else{custom_background_1_vtiled = true;}menu_delay = 3;
+					if (custom_background_1_vtiled){custom_background_1_vtiled = false;}else{custom_background_1_vtiled = true;}menu_delay = 3;
 					layer_background_vtiled(layer_background_get_id(layer_get_id("Background")), custom_background_1_vtiled);
 				}
 				else
@@ -1759,7 +1759,7 @@ function scr_options_level_editor()
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				{
-					if (custom_background_2_htiled == true){custom_background_2_htiled = false;}else{custom_background_2_htiled = true;}menu_delay = 3;
+					if (custom_background_2_htiled){custom_background_2_htiled = false;}else{custom_background_2_htiled = true;}menu_delay = 3;
 					layer_background_htiled(layer_background_get_id(layer_get_id("Background_2")), custom_background_2_htiled);
 				}
 				else
@@ -1786,7 +1786,7 @@ function scr_options_level_editor()
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				{
-					if (custom_background_2_vtiled == true){custom_background_2_vtiled = false;}else{custom_background_2_vtiled = true;}menu_delay = 3;
+					if (custom_background_2_vtiled){custom_background_2_vtiled = false;}else{custom_background_2_vtiled = true;}menu_delay = 3;
 					layer_background_vtiled(layer_background_get_id(layer_get_id("Background_2")), custom_background_2_vtiled);
 				}
 				else
@@ -1813,7 +1813,7 @@ function scr_options_level_editor()
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				{
-					if (custom_background_3_htiled == true){custom_background_3_htiled = false;}else{custom_background_3_htiled = true;}menu_delay = 3;
+					if (custom_background_3_htiled){custom_background_3_htiled = false;}else{custom_background_3_htiled = true;}menu_delay = 3;
 					layer_background_htiled(layer_background_get_id(layer_get_id("Background_3")), custom_background_3_htiled);
 				}
 				else
@@ -1840,7 +1840,7 @@ function scr_options_level_editor()
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				{
-					if (custom_background_3_vtiled == true){custom_background_3_vtiled = false;}else{custom_background_3_vtiled = true;}menu_delay = 3;
+					if (custom_background_3_vtiled){custom_background_3_vtiled = false;}else{custom_background_3_vtiled = true;}menu_delay = 3;
 					layer_background_vtiled(layer_background_get_id(layer_get_id("Background_3")), custom_background_3_vtiled);
 				}
 				else
@@ -1867,7 +1867,7 @@ function scr_options_level_editor()
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				{
-					if (custom_background_4_htiled == true){custom_background_4_htiled = false;}else{custom_background_4_htiled = true;}menu_delay = 3;
+					if (custom_background_4_htiled){custom_background_4_htiled = false;}else{custom_background_4_htiled = true;}menu_delay = 3;
 					layer_background_htiled(layer_background_get_id(layer_get_id("Background_4")), custom_background_4_htiled);
 				}
 				else
@@ -1894,7 +1894,7 @@ function scr_options_level_editor()
 				or (mouse_check_button_released(mb_left))
 				and (menu_delay == 0)
 				{
-					if (custom_background_4_vtiled == true){custom_background_4_vtiled = false;}else{custom_background_4_vtiled = true;}menu_delay = 3;
+					if (custom_background_4_vtiled){custom_background_4_vtiled = false;}else{custom_background_4_vtiled = true;}menu_delay = 3;
 					layer_background_vtiled(layer_background_get_id(layer_get_id("Background_4")), custom_background_4_vtiled);
 				}
 				else

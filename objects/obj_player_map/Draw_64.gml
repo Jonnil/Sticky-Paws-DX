@@ -3,7 +3,7 @@ var get_window_width = display_get_gui_width();
 var clear_prompt_x = 164;
 
 #region /* Show Enter Level Key */
-if (can_move == true)
+if (can_move)
 and (can_enter_level >= 30)
 and (point_distance(xx, yy, x, y) < 30)
 and (asset_get_type("obj_level") == asset_object)
@@ -17,14 +17,14 @@ and (global.pause == false)
 	scr_draw_text_outlined(64, get_window_height - 28, l10n_text("Play"), global.default_text_size, c_black, c_white, 1);
 	if (gamepad_is_connected(global.player1_slot))
 	and (global.controls_used_for_menu_navigation == "controller")
-	or (global.always_show_gamepad_buttons == true)
+	or (global.always_show_gamepad_buttons)
 	{
 		scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], 32, get_window_height - 28, 0.5, c_white, 1);
 	}
 	else
 	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 	{
-		if (global.player1_can_play == true)
+		if (global.player1_can_play)
 		{
 			if (global.player_[inp.key][1][1][action.accept] > noone)
 			{
@@ -37,7 +37,7 @@ and (global.pause == false)
 			}
 		}
 		else
-		if (global.player2_can_play == true)
+		if (global.player2_can_play)
 		{
 			if (global.player_[inp.key][2][1][action.accept] > noone)
 			{
@@ -50,7 +50,7 @@ and (global.pause == false)
 			}
 		}
 		else
-		if (global.player3_can_play == true)
+		if (global.player3_can_play)
 		{
 			if (global.player_[inp.key][3][1][action.accept] > noone)
 			{
@@ -63,7 +63,7 @@ and (global.pause == false)
 			}
 		}
 		else
-		if (global.player4_can_play == true)
+		if (global.player4_can_play)
 		{
 			if (global.player_[inp.key][4][1][action.accept] > noone)
 			{
@@ -80,9 +80,9 @@ and (global.pause == false)
 #endregion /* Show Enter Level Key END */
 
 #region /* Show Clear Level Key in debug */
-if (global.debug_screen == true)
+if (global.debug_screen)
 {
-	if (can_move == true)
+	if (can_move)
 	and (can_enter_level >= 30)
 	and (asset_get_type("obj_level") == asset_object)
 	and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
@@ -101,7 +101,7 @@ if (global.debug_screen == true)
 		else
 		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
-			if (global.player1_can_play == true)
+			if (global.player1_can_play)
 			{
 				if (global.player_[inp.key][1][1][action.back] > noone)
 				{
@@ -114,7 +114,7 @@ if (global.debug_screen == true)
 				}
 			}
 			else
-			if (global.player2_can_play == true)
+			if (global.player2_can_play)
 			{
 				if (global.player_[inp.key][2][1][action.back] > noone)
 				{
@@ -127,7 +127,7 @@ if (global.debug_screen == true)
 				}
 			}
 			else
-			if (global.player3_can_play == true)
+			if (global.player3_can_play)
 			{
 				if (global.player_[inp.key][3][1][action.back] > noone)
 				{
@@ -140,7 +140,7 @@ if (global.debug_screen == true)
 				}
 			}
 			else
-			if (global.player4_can_play == true)
+			if (global.player4_can_play)
 			{
 				if (global.player_[inp.key][4][1][action.back] > noone)
 				{
@@ -158,7 +158,7 @@ if (global.debug_screen == true)
 #endregion /* Show Clear Level Key in debug END */
 
 #region /* Show if you are playing the demo version or not */
-if (global.demo == true)
+if (global.demo)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
@@ -166,7 +166,7 @@ if (global.demo == true)
 }
 #endregion /* Show if you are playing the demo version or not END */
 
-if (show_demo_over_message == true)
+if (show_demo_over_message)
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(0, 0, get_window_width* 3, get_window_height* 3, c_black, c_black, c_black, c_black, false);
@@ -188,7 +188,7 @@ scr_draw_cursor_mouse();
 #region /* Have a black screen at the first frame so transitions look natural */
 if (black_screen_at_start_delay < 1)
 {
-	if (global.enable_transitions == true)
+	if (global.enable_transitions)
 	{
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 	}
@@ -198,10 +198,10 @@ if (black_screen_at_start_delay < 1)
 
 #region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
 if (iris_yscale <= 0.002)
-or (brand_new_file == true)
-and (can_enter_level_automatically == true)
+or (brand_new_file)
+and (can_enter_level_automatically)
 {
-	if (global.enable_transitions == true)
+	if (global.enable_transitions)
 	{
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 	}

@@ -2,9 +2,9 @@ function scr_draw_cursor_tongue(cursor_x = x, cursor_y = y, what_player_object =
 {
 	if (instance_exists(obj_camera))
 	and (instance_exists(what_player_object))
-	and (what_player_object.allow_tongue == true)
+	and (what_player_object.allow_tongue)
 	{
-		if (what_player_object.can_tongue == true) /* If you're able to use the tongue */
+		if (what_player_object.can_tongue) /* If you're able to use the tongue */
 		and (what_player_object.climb == false)
 		and (what_player_object.horizontal_rope_climb == false)
 		{

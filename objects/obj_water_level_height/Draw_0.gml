@@ -16,6 +16,6 @@ and (global.play_edited_level == false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(x, y + 32, l10n_text("Water Height") + " : " + string(bbox_top), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(x, y + 32, l10n_text("Water Height") + ": " + string(bbox_top), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */

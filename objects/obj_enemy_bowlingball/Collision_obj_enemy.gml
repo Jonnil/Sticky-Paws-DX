@@ -72,7 +72,7 @@ if (die == false)
 and (die_volting == false)
 and (other.die_volting == false)
 and (other.speed > speed)
-and (other.flat == true)
+and (other.flat)
 and (other.sliding_along_ground == 0)
 {
 	if (die_volting == false)

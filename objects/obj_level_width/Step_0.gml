@@ -27,7 +27,7 @@ and (obj_leveleditor.pause == false)
 	}
 	
 	#region /* Drag the object */
-	if (drag_object == true)
+	if (drag_object)
 	and (instance_exists(obj_leveleditor))
 	and (obj_leveleditor.x > 100)
 	{
@@ -39,7 +39,7 @@ and (obj_leveleditor.pause == false)
 	if (mouse_check_button_released(mb_left))
 	or (obj_leveleditor.key_a_released)
 	{
-		if (drag_object == true)
+		if (drag_object)
 		{
 			drag_release_timer = 3;
 			drag_object = 0.5;
@@ -63,8 +63,8 @@ else
 	}
 }
 
-if (global.play_edited_level == true)
-or (global.actually_play_edited_level == true)
+if (global.play_edited_level)
+or (global.actually_play_edited_level)
 {
 	room_width = bbox_left;
 	instance_destroy();

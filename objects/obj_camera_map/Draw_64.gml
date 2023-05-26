@@ -1,6 +1,6 @@
 scr_zoom_camera_draw_gui(10);
 
-if (global.convention_mode == true)
+if (global.convention_mode)
 and (!instance_exists(obj_title))
 {
 	reset_game_if_no_interactivity += 1;
@@ -15,7 +15,7 @@ and (!instance_exists(obj_title))
 		game_restart();
 	}
 }
-if (global.convention_mode == true)
+if (global.convention_mode)
 and (!instance_exists(obj_title))
 and (reset_game_if_no_interactivity_second_countdown <= 30)
 {

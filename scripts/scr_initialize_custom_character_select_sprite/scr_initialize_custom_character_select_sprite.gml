@@ -70,7 +70,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 	#endregion /* Add sprite END */
 	
 	#region /* Origin points */
-	if (saved_file_exists == true)
+	if (saved_file_exists)
 	{
 		if (file_exists("characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini"))
 		{
@@ -95,7 +95,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
 		and (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
-			if (can_save_to_character_config == true)
+			if (can_save_to_character_config)
 			{
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5);
 			}
@@ -107,7 +107,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		if (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
 		and (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
-			if (can_save_to_character_config == true)
+			if (can_save_to_character_config)
 			{
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5);
 			}
@@ -117,7 +117,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		}
 		else
 		{
-			if (can_save_to_character_config == true)
+			if (can_save_to_character_config)
 			{
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5);
 				ini_write_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", sprite_get_height(sprite_variable) * 0.5);

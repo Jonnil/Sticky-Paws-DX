@@ -1,4 +1,4 @@
-if (ending == true)
+if (ending)
 {
 	other.intro_animation = "ending_chair";
 }

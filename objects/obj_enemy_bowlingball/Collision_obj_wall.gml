@@ -2,7 +2,7 @@ if (die_volting == false)
 or (die == false)
 {
 	if (sliding_along_ground == -1)
-	and (flat == true)
+	and (flat)
 	and (position_meeting(bbox_left - 1, y, obj_wall))
 	{
 		stomped_delay = 0;
@@ -11,7 +11,7 @@ or (die == false)
 	}
 	else
 	if (sliding_along_ground == +1)
-	and (flat == true)
+	and (flat)
 	and (position_meeting(bbox_right + 1, y, obj_wall))
 	{
 		stomped_delay = 0;

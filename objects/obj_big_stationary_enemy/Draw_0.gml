@@ -1,5 +1,5 @@
 #region /* Draw coil spring */
-if (coil_spring == true)
+if (coil_spring)
 {
 	if (place_meeting(x, y + 1, obj_wall))
 	or (asset_get_type("obj_semisolid_platform") == asset_object)

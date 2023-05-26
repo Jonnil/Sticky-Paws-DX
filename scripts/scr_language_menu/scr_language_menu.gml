@@ -39,7 +39,7 @@ function scr_language_menu()
 	and (global.translation_debug == false)
 	and (global.controls_used_for_menu_navigation == "mouse")
 	or (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - string_width("(" + l10n_text("Translation completion") + ": " + string(global.language_completion) + "%" + ")"), 164 - 32, get_window_width - 32, 164 + 64))
-	and (global.translation_debug == true)
+	and (global.translation_debug)
 	and (global.controls_used_for_menu_navigation == "mouse")
 	{
 		if (global.language_completion < 100)
@@ -62,7 +62,7 @@ function scr_language_menu()
 			}
 		}
 	}
-	if (global.translation_debug == true)
+	if (global.translation_debug)
 	{
 		scr_draw_text_outlined(get_window_width - 32, 164 + 32, "Translation debug: enabled", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
@@ -72,7 +72,7 @@ function scr_language_menu()
 	
 	#region /* Language Menu Navigation */
 	if (menu_joystick_delay <= 0)
-	and (can_navigate == true)
+	and (can_navigate)
 	and global.settings_sidebar_menu = "language_settings"
 	{
 		if (global.controls_used_for_menu_navigation != "mouse")

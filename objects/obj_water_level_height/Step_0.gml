@@ -21,7 +21,7 @@ and (obj_leveleditor.pause == false)
 		}
 	}
 	#region /* Drag the object */
-	if (drag_object == true)
+	if (drag_object)
 	{
 		y = obj_leveleditor.y;
 	}
@@ -31,7 +31,7 @@ and (obj_leveleditor.pause == false)
 	if (mouse_check_button_released(mb_left))
 	or (obj_leveleditor.key_a_released)
 	{
-		if (drag_object == true)
+		if (drag_object)
 		{
 			drag_release_timer = 3;
 			drag_object = 0.5;
@@ -62,8 +62,8 @@ if (y > room_height)
 }
 #endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */
 
-if (global.play_edited_level == true)
-or (global.actually_play_edited_level == true)
+if (global.play_edited_level)
+or (global.actually_play_edited_level)
 {
 	instance_create_depth(x, y, 0, obj_water_level);
 	instance_destroy();

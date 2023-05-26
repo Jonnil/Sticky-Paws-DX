@@ -2,9 +2,9 @@ function scr_player_move_ledge_grab()
 {
 	
 	#region /* Ledge Grab */
-	if (allow_ledge_grab == true)
+	if (allow_ledge_grab)
 	{
-		if (in_water == true)
+		if (in_water)
 		or (ground_pound >= true)
 		or (x < camera_get_view_x(view_camera[view_current]) + 25)
 		or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 25)
@@ -15,7 +15,7 @@ function scr_player_move_ledge_grab()
 		{
 			can_ledge_grab = true;
 		}
-		if (can_ledge_grab == true)
+		if (can_ledge_grab)
 		{
 			if (hspeed != 0)
 			{
@@ -65,7 +65,7 @@ function scr_player_move_ledge_grab()
 					glide = false;
 				}
 			}
-			if (ledge_grab == true) /* If you are currently grabbing a ledge, then run this code */
+			if (ledge_grab) /* If you are currently grabbing a ledge, then run this code */
 			and (ledge_grab_delay <= 10) /* Don't actually grab ledge if the variable is above 10, because variable above 10 is for delay when releasing ledge*/
 			{
 				if (ledge_grab_delay < 10) /* If variable is below 10, then increase it, so that there is a delay before you can climb up or jump off */
@@ -186,7 +186,7 @@ function scr_player_move_ledge_grab()
 	}
 	#endregion /* Delay before you can do another ledge grab END */
 
-	if (on_ground == true)
+	if (on_ground)
 	{
 		ledge_grab_jump = false; /* Stop moving forward when landing on ground */
 	}
@@ -194,7 +194,7 @@ function scr_player_move_ledge_grab()
 	#endregion /* Ledge Grab END */
 
 	#region /* Ledge grab jump / Get up over ledge */
-	if (ledge_grab_jump == true)
+	if (ledge_grab_jump)
 	and (stick_to_wall == false)
 	{
 		if (image_xscale == -1)

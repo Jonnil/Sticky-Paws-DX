@@ -25,5 +25,5 @@ if (player_exists)
 
 if (room == room_world_map)
 {
-    visible = (global.win == true);
+    visible = (global.win);
 }

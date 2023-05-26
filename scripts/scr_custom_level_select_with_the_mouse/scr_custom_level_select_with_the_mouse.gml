@@ -8,7 +8,7 @@ function scr_custom_level_select_with_the_mouse()
 	if (global.controls_used_for_menu_navigation == "mouse")
 	and (open_sub_menu == false)
 	and (can_input_level_name == false)
-	and (can_navigate == true)
+	and (can_navigate)
 	and (file_load_timer == 0) /* You should not be able to navigate the custom level select if it's still loading the levels */
 	{
 		for(i = 0;

@@ -1,4 +1,4 @@
-if (die == true)
+if (die)
 {
 	instance_destroy();
 }

@@ -1,4 +1,4 @@
-if (coil_spring == true)
+if (coil_spring)
 {
 	if (asset_get_type("obj_wall") == asset_object)
 	and (place_meeting(x, y + 1, obj_wall))

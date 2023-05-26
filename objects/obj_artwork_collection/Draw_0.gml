@@ -5,7 +5,7 @@ if (asset_get_type("spr_artwork_collection") == asset_sprite)
 if (instance_exists(obj_player))
 and (point_distance(x, y, obj_player.x, obj_player.y) < 64)
 and (instance_nearest(x, y, obj_player).vspeed == 0)
-and (instance_nearest(x, y, obj_player).can_move == true)
+and (instance_nearest(x, y, obj_player).can_move)
 and (instance_nearest(x, y, obj_player).intro_animation = "")
 and (can_navigate == false)
 {
@@ -13,7 +13,7 @@ and (can_navigate == false)
 	#region /* Draw Enter Gallery Key */
 	if (gamepad_is_connected(global.player1_slot))
 	and (global.controls_used_for_menu_navigation == "controller")
-	or (global.always_show_gamepad_buttons == true)
+	or (global.always_show_gamepad_buttons)
 	{
 		scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);
 	}

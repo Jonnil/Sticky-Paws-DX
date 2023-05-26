@@ -1,4 +1,4 @@
-if (coil_spring == true)
+if (coil_spring)
 {
 	if (place_meeting(x, y + 1, obj_wall))
 	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))

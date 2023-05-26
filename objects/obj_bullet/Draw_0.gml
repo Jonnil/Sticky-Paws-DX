@@ -1,5 +1,5 @@
 #region /* If enemies are disabled, destroy this object */
-if (global.assist_enable == true)
+if (global.assist_enable)
 and (global.assist_enable_enemies == false)
 {
 	instance_destroy();
@@ -36,7 +36,7 @@ else
 		sprite_index = global.resource_pack_sprite_bullet;
 	}
 	else
-	if (flat == true)
+	if (flat)
 	{
 		gravity_direction = 270; /* Direction of the gravity */
 		gravity = 0.5; /* The gravity */

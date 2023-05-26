@@ -1,6 +1,6 @@
 /* Collision Event with a solid object */
 
-if (can_collide_with_wall == true)
+if (can_collide_with_wall)
 {
 	
 	#region /* Push out of the solid object */

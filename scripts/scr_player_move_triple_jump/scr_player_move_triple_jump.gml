@@ -2,7 +2,7 @@ function scr_player_move_triple_jump()
 {
 	
 	#region /* Triple Jump */
-	if (on_ground == true)
+	if (on_ground)
 	{
 		if (triplejumpdelay > 0)
 		{

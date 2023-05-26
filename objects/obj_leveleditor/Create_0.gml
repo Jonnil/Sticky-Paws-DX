@@ -3,25 +3,25 @@
 #region /* Essential variables */
 global.time_countdown_bonus = 500;
 pause = false;
-if (global.player1_can_play == true)
+if (global.player1_can_play)
 {
 	camera_player = 0;
 	camera_selected_skin = global.skin_for_player_1;
 }
 else
-if (global.player2_can_play == true)
+if (global.player2_can_play)
 {
 	camera_player = 1;
 	camera_selected_skin = global.skin_for_player_2;
 }
 else
-if (global.player3_can_play == true)
+if (global.player3_can_play)
 {
 	camera_player = 2;
 	camera_selected_skin = global.skin_for_player_3;
 }
 else
-if (global.player4_can_play == true)
+if (global.player4_can_play)
 {
 	camera_player = 3;
 	camera_selected_skin = global.skin_for_player_4;
@@ -59,7 +59,7 @@ layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), g
 #endregion /* Backgrounds END */
 
 #region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
-if (global.doing_clear_check == true)
+if (global.doing_clear_check)
 {
 	global.actually_play_edited_level = true;
 	global.play_edited_level = true;
@@ -73,7 +73,7 @@ scr_load_object_placement_txt();
 #endregion /* Load Level END */
 
 #region /* If actually playing level, set play_edited_level to true and delete itself. Have this code after the "doing clear check = true" */
-if (global.actually_play_edited_level == true)
+if (global.actually_play_edited_level)
 {
 	global.play_edited_level = true;
 	instance_destroy();

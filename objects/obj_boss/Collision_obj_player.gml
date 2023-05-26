@@ -1,11 +1,11 @@
 if (other.vspeed > 0)
 or (other.bbox_bottom < y)
-or (other.dive == true)
+or (other.dive)
 {
-	if (can_jump_on_head == true)
+	if (can_jump_on_head)
 	{
 		scr_audio_play(snd_boss_damaged, volume_source.sound);
-		if (other.ground_pound == true)
+		if (other.ground_pound)
 		{
 			hp -= 2;
 			other.ground_pound = false;
@@ -83,7 +83,7 @@ or (other.dive == true)
 	}
 }
 else
-if (can_jump_on_head == true)
+if (can_jump_on_head)
 {
 	if (other.x < x)
 	{
@@ -123,7 +123,7 @@ else
 		if (other.takendamage <= 0)
 		and (other.assist_invincible == false)
 		{
-			if (other.have_heart_balloon == true)
+			if (other.have_heart_balloon)
 			{
 				other.have_heart_balloon = false;
 				

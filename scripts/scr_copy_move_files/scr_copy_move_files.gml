@@ -6,7 +6,7 @@ function scr_copy_move_files(source, target, delete_original_folder = false)
 	scr_file_copy_dir(source, target, fa_readonly); /* Then copy all files */
 	scr_file_copy_dir(source, target, fa_hidden); /* And finally copy all hidden files, if there are any */
 	
-	if (delete_original_folder == true) /* If this is set to true, then also delete the original folder */
+	if (delete_original_folder) /* If this is set to true, then also delete the original folder */
 	and (directory_exists(source)) /* Only delete folder if it exists */
 	{
 		directory_destroy(source);

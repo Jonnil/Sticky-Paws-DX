@@ -79,7 +79,7 @@ function scr_player_move_ground_pound()
 			}
 			
 			#region /* If touching the ground when doing a ground pound */
-			if (on_ground == true)
+			if (on_ground)
 			{
 				with(instance_create_depth(x, bbox_bottom, 0, obj_block_break))
 				{
@@ -97,7 +97,7 @@ function scr_player_move_ground_pound()
 				and (instance_nearest(x, y + 1, obj_question_block).block_type == "brick_block")
 				or (key_crouch_hold)
 				and (place_meeting(x, y + 1, obj_question_block))
-				and (instance_nearest(x, y + 1, obj_question_block).can_break_this_block == true)
+				and (instance_nearest(x, y + 1, obj_question_block).can_break_this_block)
 				{
 					ground_pound = 1;
 					speed_max = 0;
@@ -134,7 +134,7 @@ function scr_player_move_ground_pound()
 		else
 		if (ground_pound == 2)
 		{
-			if (on_ground == true)
+			if (on_ground)
 			{
 				speed_max = 0;
 				hspeed = 0;
@@ -218,7 +218,7 @@ function scr_player_move_ground_pound()
 	or (joystick_can_ground_pound == true)
 	and (gamepad_axis_value(global.player3_slot, gp_axislv) > 0)
 	and (player <= 3)
-	or (joystick_can_ground_pound == true)
+	or (joystick_can_ground_pound = true)
 	and (gamepad_axis_value(global.player4_slot, gp_axislv) > 0)
 	and (player <= 4)
 	{

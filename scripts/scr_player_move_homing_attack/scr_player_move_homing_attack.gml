@@ -2,7 +2,7 @@ function scr_player_move_homing_attack()
 {
 	
 	#region /* Homing Attack */
-	if (allow_homing_attack == true)
+	if (allow_homing_attack)
 	{
 		
 		#region /* Homing Enemy */

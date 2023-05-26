@@ -4,7 +4,7 @@ function scr_draw_mouse_cursor_sprite()
 	#region /* Change mouse cursor. Draw mouse cursor for menu navigation */
 	
 	#region /* Scroll mouse cursor */
-	if (scroll_view == true)
+	if (scroll_view)
 	and (pause == false)
 	and (asset_get_type("spr_cursor_scroll") == asset_sprite)
 	{
@@ -48,7 +48,7 @@ function scr_draw_mouse_cursor_sprite()
 	}
 	else
 	if (position_meeting(mouse_x, mouse_y, obj_leveleditor_placed_object))
-	and (drag_object == true)
+	and (drag_object)
 	and (set_difficulty_mode == false)
 	and (pause == false)
 	and (instance_exists(obj_level_player_1_start))
@@ -61,7 +61,7 @@ function scr_draw_mouse_cursor_sprite()
 	and (obj_level_player_4_start.drag_object == false)
 	and (pause == false)
 	or (instance_exists(obj_level_end))
-	and (obj_level_end.drag_object == true)
+	and (obj_level_end.drag_object)
 	and (pause == false)
 	and (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
 	and (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
@@ -80,7 +80,7 @@ function scr_draw_mouse_cursor_sprite()
 	and (asset_get_type("spr_cursor") == asset_sprite)
 	or (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
 	and (asset_get_type("spr_cursor") == asset_sprite)
-	or (pause == true)
+	or (pause)
 	and (asset_get_type("spr_cursor") == asset_sprite)
 	{
 		draw_sprite_ext(spr_cursor, erase_brush_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
@@ -91,19 +91,19 @@ function scr_draw_mouse_cursor_sprite()
 	
 	#region /* Erase mouse cursor */
 	if (asset_get_type("spr_cursor_erase") == asset_sprite)
-	and (erase_mode == true)
+	and (erase_mode)
 	and (pause == false)
 	and (key_a_hold)
 	or (asset_get_type("spr_cursor_erase") == asset_sprite)
-	and (erase_mode == true)
+	and (erase_mode)
 	and (pause == false)
 	and (key_b_hold)
 	or (asset_get_type("spr_cursor_erase") == asset_sprite)
-	and (erase_mode == true)
+	and (erase_mode)
 	and (pause == false)
 	and (mouse_check_button(mb_left))
 	or (asset_get_type("spr_cursor_erase") == asset_sprite)
-	and (erase_mode == true)
+	and (erase_mode)
 	and (pause == false)
 	and (mouse_check_button(mb_right))
 	{
@@ -111,7 +111,7 @@ function scr_draw_mouse_cursor_sprite()
 	}
 	else
 	if (asset_get_type("spr_cursor_erase") == asset_sprite)
-	and (erase_mode == true)
+	and (erase_mode)
 	and (pause == false)
 	{
 		draw_sprite_ext(spr_cursor_erase, erase_brush_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
@@ -122,7 +122,7 @@ function scr_draw_mouse_cursor_sprite()
 	
 	#region /* Fill mouse cursor */
 	if (asset_get_type("spr_cursor_fill") == asset_sprite)
-	and (fill_mode == true)
+	and (fill_mode)
 	and (fill_mode_type == "fill")
 	and (drag_object == false)
 	and (erase_mode == false)
@@ -137,7 +137,7 @@ function scr_draw_mouse_cursor_sprite()
 	
 	#region /* Fill Horizontal mouse cursor */
 	if (asset_get_type("spr_cursor_fill") == asset_sprite)
-	and (fill_mode == true)
+	and (fill_mode)
 	and (fill_mode_type == "horizontal")
 	and (drag_object == false)
 	and (erase_mode == false)
@@ -152,7 +152,7 @@ function scr_draw_mouse_cursor_sprite()
 	
 	#region /* Fill Vertical mouse cursor */
 	if (asset_get_type("spr_cursor_fill") == asset_sprite)
-	and (fill_mode == true)
+	and (fill_mode)
 	and (fill_mode_type == "vertical")
 	and (drag_object == false)
 	and (erase_mode == false)

@@ -30,7 +30,7 @@ if (hide_menu_for_clean_screenshots_timer = 60 * 3)
 {
 	hide_menu_for_clean_screenshots_alpha = lerp(hide_menu_for_clean_screenshots_alpha, 1, 0.01);
 }
-if (in_settings == true)
+if (in_settings)
 or (menu == "quit_game_yes")
 or (menu == "quit_game_no")
 {
@@ -75,7 +75,7 @@ or (gamepad_button_check_pressed(global.player4_slot, gp_face2))
 or (gamepad_button_check_pressed(global.player4_slot, gp_face3))
 or (gamepad_button_check_pressed(global.player4_slot, gp_face4))
 {
-	if (hide_menu_for_clean_screenshots == true)
+	if (hide_menu_for_clean_screenshots)
 	and (menu_delay == 0)
 	{
 		hide_menu_for_clean_screenshots = false;
@@ -111,7 +111,7 @@ if (menu_cursor_index > 4)
 }
 #endregion /* Menu cursor image speed END */
 
-if (unpause == true)
+if (unpause)
 {
 	scr_delete_sprite_properly(global.pause_screenshot);
 	room = global.pause_room;

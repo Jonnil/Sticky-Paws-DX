@@ -13,7 +13,7 @@ or (global.character_select_in_this_menu == "level_editor")
 and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu == "main_game")
-	or (global.create_level_from_template == true)
+	or (global.create_level_from_template)
 	{
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 	}

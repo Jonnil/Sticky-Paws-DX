@@ -46,11 +46,11 @@ and (key_up)
 
 #region /* Heart above head */
 if (asset_get_type("spr_heart") == asset_sprite)
-and (have_heart_balloon == true)
+and (have_heart_balloon)
 {
 	if (asset_get_type("obj_horizontal_rope") == asset_object)
 	and (place_meeting(x, y - 1, obj_horizontal_rope))
-	and (horizontal_rope_climb == true)
+	and (horizontal_rope_climb)
 	and (key_up)
 	and (!key_down)
 	and (!place_meeting(x, y - 16, obj_wall))
@@ -323,9 +323,9 @@ and (intro_animation = "")
 #region /* Draw things on top of the player */
 
 #region /* Draw Collision Mask */
-if (global.show_collision_mask == true)
+if (global.show_collision_mask)
 {
-	if (crouch == true)
+	if (crouch)
 	and (sprite_mask_crouch > 0)
 	{
 		draw_sprite_ext(sprite_mask_crouch, 0, x, y, image_xscale, 1, 0, c_white, 1);
@@ -416,8 +416,8 @@ if (smooth_teleport < 1)
 	smooth_teleport += 0.1;
 }
 else
-if (stomp_spin == true)
-or (spring == true)
+if (stomp_spin)
+or (spring)
 {
 	xx = lerp(xx, x, 0.4);
 	yy = lerp(yy, y, 0.4);
@@ -430,7 +430,7 @@ else
 #endregion /* Don't make it look like the player is teleporting when the player teleports END */
 
 #region /* Homing Attack */
-if (allow_homing_attack == true)
+if (allow_homing_attack)
 {
 	
 	#region /* Homing Enemy */
@@ -502,18 +502,18 @@ if (allow_homing_attack == true)
 #endregion /* Homing Attack END */
 
 #region /* Display Player Number and Name */
-if (global.player1_can_play == true)
-and (global.player2_can_play == true)
-or (global.player1_can_play == true)
-and (global.player3_can_play == true)
-or (global.player1_can_play == true)
-and (global.player4_can_play == true)
-or (global.player2_can_play == true)
-and (global.player3_can_play == true)
-or (global.player2_can_play == true)
-and (global.player4_can_play == true)
-or (global.player3_can_play == true)
-and (global.player4_can_play == true)
+if (global.player1_can_play)
+and (global.player2_can_play)
+or (global.player1_can_play)
+and (global.player3_can_play)
+or (global.player1_can_play)
+and (global.player4_can_play)
+or (global.player2_can_play)
+and (global.player3_can_play)
+or (global.player2_can_play)
+and (global.player4_can_play)
+or (global.player3_can_play)
+and (global.player4_can_play)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
@@ -566,7 +566,7 @@ and (global.player4_can_play == true)
 
 #region /* If player has more hp, show that */
 if (hp > 0)
-and (global.assist_enable == true)
+and (global.assist_enable)
 and (global.assist_invincible == false)
 or (hp > 0)
 and (global.assist_enable == false)

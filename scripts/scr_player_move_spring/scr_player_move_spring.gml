@@ -64,7 +64,7 @@ function scr_player_move_spring()
 		instance_nearest(x, y, obj_spring).image_speed = 1;
 	}
 
-	if (move_towards_spring_endpoint == true)
+	if (move_towards_spring_endpoint)
 	{
 		move_towards_point(spring_endpoint_x, spring_endpoint_y, 20);
 	
@@ -104,7 +104,7 @@ function scr_player_move_spring()
 		}
 	}
 
-	if (spring == true)
+	if (spring)
 	{
 		if (spring_animation == 0)
 		{
@@ -172,7 +172,7 @@ function scr_player_move_spring()
 		}
 	
 		#region /* Make the cahracter face wherever you're going */
-		if (spring_twist_sprite == true)
+		if (spring_twist_sprite)
 		{
 			angle = direction - 90;
 			if (speed < 6)

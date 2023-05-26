@@ -194,7 +194,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		#endregion /* Press Escape to back out from Search ID menu END */
 		
 		#region /* If game is retrieving a level ID over id_max_length, then show download failed and why */
-		if (automatically_search_id == true)
+		if (automatically_search_id)
 		{
 			if (string_length(search_id) < id_max_length)
 			or (string_length(search_id) > id_max_length)
@@ -227,7 +227,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.accept]))
 			or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
 			or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept]))
-			or (automatically_search_id == true) /* If you enter this menu from "online level list menu", automatically enter the search ID and search for the level */
+			or (automatically_search_id) /* If you enter this menu from "online level list menu", automatically enter the search ID and search for the level */
 			{
 				/* Create DS Map to hold the HTTP Header info */
 				map = ds_map_create();

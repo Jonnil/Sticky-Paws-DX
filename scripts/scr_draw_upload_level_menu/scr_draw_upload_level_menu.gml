@@ -15,20 +15,20 @@ function scr_draw_upload_level_menu()
 	
 	#region /* How many tags */
 	var how_may_tags = 0;
-	if (tag_art == true){var tag_art_text = "Art" + " ";how_may_tags += 1;}else{var tag_art_text = "";};
-	if (tag_boss_battle == true){var tag_boss_battle_text = "Boss Battle" + " ";how_may_tags += 1;}else{var tag_boss_battle_text = "";};
-	if (tag_dont_move == true){var tag_dont_move_text = "Don't Move" + " ";how_may_tags += 1;}else{var tag_dont_move_text = "";};
-	if (tag_kaizo == true){var tag_kaizo_text = "Kaizo" + " ";how_may_tags += 1;}else{var tag_kaizo_text = "";};
-	if (tag_multiplayer == true){var tag_multiplayer_text = "Multiplayer Only" + " ";how_may_tags += 1;}else{var tag_multiplayer_text = "";};
-	if (tag_music == true){var tag_music_text = "Music" + " ";how_may_tags += 1;}else{var tag_music_text = "";};
-	if (tag_puzzle_solving == true){var tag_puzzle_solving_text = "Puzzle-solving" + " ";how_may_tags += 1;}else{var tag_puzzle_solving_text = "";};
-	if (tag_short_and_sweet == true){var tag_short_and_sweet_text = "Short and Sweet" + " ";how_may_tags += 1;}else{var tag_short_and_sweet_text = "";};
-	if (tag_singleplayer == true){var tag_singleplayer_text = "Singleplayer Only" + " ";how_may_tags += 1;}else{var tag_singleplayer_text = "";};
-	if (tag_speedrun == true){var tag_speedrun_text = "Speedrun" + " ";how_may_tags += 1;}else{var tag_speedrun_text = "";};
-	if (tag_standard == true){var tag_standard_text = "Standard" + " ";how_may_tags += 1;}else{var tag_standard_text = "";};
-	if (tag_technical == true){var tag_technical_text = "Technical" + " ";how_may_tags += 1;}else{var tag_technical_text = "";};
-	if (tag_themed == true){var tag_themed_text = "Themed" + " ";how_may_tags += 1;}else{var tag_themed_text = "";};
-	if (tag_glitch_showcase == true){var tag_glitch_showcase_text = "Glitch Showcase" + " ";how_may_tags += 1;}else{var tag_glitch_showcase_text = "";};
+	if (tag_art){var tag_art_text = "Art" + " ";how_may_tags += 1;}else{var tag_art_text = "";};
+	if (tag_boss_battle){var tag_boss_battle_text = "Boss Battle" + " ";how_may_tags += 1;}else{var tag_boss_battle_text = "";};
+	if (tag_dont_move){var tag_dont_move_text = "Don't Move" + " ";how_may_tags += 1;}else{var tag_dont_move_text = "";};
+	if (tag_kaizo){var tag_kaizo_text = "Kaizo" + " ";how_may_tags += 1;}else{var tag_kaizo_text = "";};
+	if (tag_multiplayer){var tag_multiplayer_text = "Multiplayer Only" + " ";how_may_tags += 1;}else{var tag_multiplayer_text = "";};
+	if (tag_music){var tag_music_text = "Music" + " ";how_may_tags += 1;}else{var tag_music_text = "";};
+	if (tag_puzzle_solving){var tag_puzzle_solving_text = "Puzzle-solving" + " ";how_may_tags += 1;}else{var tag_puzzle_solving_text = "";};
+	if (tag_short_and_sweet){var tag_short_and_sweet_text = "Short and Sweet" + " ";how_may_tags += 1;}else{var tag_short_and_sweet_text = "";};
+	if (tag_singleplayer){var tag_singleplayer_text = "Singleplayer Only" + " ";how_may_tags += 1;}else{var tag_singleplayer_text = "";};
+	if (tag_speedrun){var tag_speedrun_text = "Speedrun" + " ";how_may_tags += 1;}else{var tag_speedrun_text = "";};
+	if (tag_standard){var tag_standard_text = "Standard" + " ";how_may_tags += 1;}else{var tag_standard_text = "";};
+	if (tag_technical){var tag_technical_text = "Technical" + " ";how_may_tags += 1;}else{var tag_technical_text = "";};
+	if (tag_themed){var tag_themed_text = "Themed" + " ";how_may_tags += 1;}else{var tag_themed_text = "";};
+	if (tag_glitch_showcase){var tag_glitch_showcase_text = "Glitch Showcase" + " ";how_may_tags += 1;}else{var tag_glitch_showcase_text = "";};
 	#endregion /* How many tags END */
 	
 	#region /* Pressing the Upload button */
@@ -55,11 +55,11 @@ function scr_draw_upload_level_menu()
 			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			if (ini_key_exists("info", "clear_check"))
 			and (skip_clear_check == false)
-			or (skip_clear_check == true)
+			or (skip_clear_check)
 			{
-				if (ini_read_real("info", "clear_check", false) == true)
+				if (ini_read_real("info", "clear_check", false))
 				and (skip_clear_check == false)
-				or (skip_clear_check == true)
+				or (skip_clear_check)
 				{
 					if (global.username != "") /* Check if there is an username or not */
 					{
@@ -784,7 +784,7 @@ function scr_draw_upload_level_menu()
 			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
 		}
 		
-		if (can_input_level_name == true)
+		if (can_input_level_name)
 		{
 			global.level_name = scr_draw_name_input_screen(global.level_name, 32, c_black, 1, false, get_window_width * 0.5, draw_name_y, "upload_enter_name_ok", "upload_enter_name_cancel");
 		}
@@ -792,7 +792,7 @@ function scr_draw_upload_level_menu()
 		#region /* Input Level Name */
 	
 		#region /* Press Enter to confirm new name */
-		if (can_input_level_name == true)
+		if (can_input_level_name)
 		and (menu_delay == 0)
 		and (keyboard_string != "")
 		and (global.level_name != undefined)
@@ -817,7 +817,7 @@ function scr_draw_upload_level_menu()
 			or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
 			or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept]))
 			{
-				if (level_editor_edit_name == true)
+				if (level_editor_edit_name)
 				and (global.level_name != old_level_name)
 				{
 					can_navigate = true;
@@ -835,7 +835,7 @@ function scr_draw_upload_level_menu()
 					}
 				}
 				else
-				if (level_editor_edit_name == true)
+				if (level_editor_edit_name)
 				and (global.level_name == old_level_name)
 				{
 					menu = "upload_edit_name";
@@ -863,7 +863,7 @@ function scr_draw_upload_level_menu()
 		#endregion /* Press Enter to confirm new name END */
 	
 		#region /* Press Escape to back out from name input menu */
-		if (can_input_level_name == true)
+		if (can_input_level_name)
 		and (menu_delay == 0)
 		{
 			if (keyboard_check_pressed(vk_enter))
@@ -894,7 +894,7 @@ function scr_draw_upload_level_menu()
 					}
 				}
 				can_input_level_name = false;
-				if (level_editor_edit_name == true)
+				if (level_editor_edit_name)
 				{
 					menu = "upload_edit_name";
 					level_editor_edit_name = false;
@@ -930,7 +930,7 @@ function scr_draw_upload_level_menu()
 		}
 		/* Draw Level Name above description input */ scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, string(global.level_name), global.default_text_size * 1.9, c_black, c_white, 1);
 		
-		if (can_input_level_name == true)
+		if (can_input_level_name)
 		{
 			global.level_description = scr_draw_name_input_screen(global.level_description, 75, c_black, 1, false, get_window_width * 0.5, draw_description_y, "upload_enter_description_ok", "upload_enter_description_cancel");
 		}
@@ -938,7 +938,7 @@ function scr_draw_upload_level_menu()
 		#region /* Input Level Description */
 		
 		#region /* Press Enter to confirm new description */
-		if (can_input_level_name == true)
+		if (can_input_level_name)
 		and (menu_delay == 0)
 		and (keyboard_string != "")
 		and (global.level_description != undefined)
@@ -963,7 +963,7 @@ function scr_draw_upload_level_menu()
 			or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
 			or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept]))
 			{
-				if (level_editor_edit_name == true)
+				if (level_editor_edit_name)
 				and (global.level_description != old_level_description)
 				{
 					can_navigate = true;
@@ -978,7 +978,7 @@ function scr_draw_upload_level_menu()
 					level_editor_edit_name = false;
 				}
 				else
-				if (level_editor_edit_name == true)
+				if (level_editor_edit_name)
 				and (global.level_description == old_level_description)
 				{
 					menu = "upload_edit_description";
@@ -1006,7 +1006,7 @@ function scr_draw_upload_level_menu()
 		#endregion /* Press Enter to confirm new description END */
 		
 		#region /* Press Escape to back out from description input menu */
-		if (can_input_level_name == true)
+		if (can_input_level_name)
 		and (menu_delay == 0)
 		{
 			if (keyboard_check_pressed(vk_enter))
@@ -1037,7 +1037,7 @@ function scr_draw_upload_level_menu()
 					}
 				}
 				can_input_level_name = false;
-				if (level_editor_edit_name == true)
+				if (level_editor_edit_name)
 				{
 					menu = "upload_edit_description";
 					level_editor_edit_name = false;
@@ -1171,20 +1171,20 @@ function scr_draw_upload_level_menu()
 				{
 					ini_section_delete("tags"); /* Delete every tag before saving tags, so there doesn't have to be a bunch of tags not used */
 				}
-				if (tag_art == true){ini_write_real("tags", "tag_art", true);}
-				if (tag_boss_battle == true){ini_write_real("tags", "tag_boss_battle", true);}
-				if (tag_dont_move == true){ini_write_real("tags", "tag_dont_move", true);}
-				if (tag_kaizo == true){ini_write_real("tags", "tag_kaizo", true);}
-				if (tag_multiplayer == true){ini_write_real("tags", "tag_multiplayer", true);}
-				if (tag_music == true){ini_write_real("tags", "tag_music", true);}
-				if (tag_puzzle_solving == true){ini_write_real("tags", "tag_puzzle_solving", true);}
-				if (tag_short_and_sweet == true){ini_write_real("tags", "tag_short_and_sweet", true);}
-				if (tag_singleplayer == true){ini_write_real("tags", "tag_singleplayer", true);}
-				if (tag_speedrun == true){ini_write_real("tags", "tag_speedrun", true);}
-				if (tag_standard == true){ini_write_real("tags", "tag_standard", true);}
-				if (tag_technical == true){ini_write_real("tags", "tag_technical", true);}
-				if (tag_themed == true){ini_write_real("tags", "tag_themed", true);}
-				if (tag_glitch_showcase == true){ini_write_real("tags", "tag_glitch_showcase", true);}
+				if (tag_art){ini_write_real("tags", "tag_art", true);}
+				if (tag_boss_battle){ini_write_real("tags", "tag_boss_battle", true);}
+				if (tag_dont_move){ini_write_real("tags", "tag_dont_move", true);}
+				if (tag_kaizo){ini_write_real("tags", "tag_kaizo", true);}
+				if (tag_multiplayer){ini_write_real("tags", "tag_multiplayer", true);}
+				if (tag_music){ini_write_real("tags", "tag_music", true);}
+				if (tag_puzzle_solving){ini_write_real("tags", "tag_puzzle_solving", true);}
+				if (tag_short_and_sweet){ini_write_real("tags", "tag_short_and_sweet", true);}
+				if (tag_singleplayer){ini_write_real("tags", "tag_singleplayer", true);}
+				if (tag_speedrun){ini_write_real("tags", "tag_speedrun", true);}
+				if (tag_standard){ini_write_real("tags", "tag_standard", true);}
+				if (tag_technical){ini_write_real("tags", "tag_technical", true);}
+				if (tag_themed){ini_write_real("tags", "tag_themed", true);}
+				if (tag_glitch_showcase){ini_write_real("tags", "tag_glitch_showcase", true);}
 				ini_write_real("info", "intended_level_difficulty", intended_level_difficulty);
 				ini_close();
 				
@@ -1242,7 +1242,7 @@ function scr_draw_upload_level_menu()
 		{
 			if (key_up)
 			and (menu_delay == 3)
-			and (open_dropdown == true)
+			and (open_dropdown)
 			and (intended_level_difficulty > 0)
 			{
 				intended_level_difficulty -= 1;
@@ -1251,7 +1251,7 @@ function scr_draw_upload_level_menu()
 			else
 			if (key_down)
 			and (menu_delay == 3)
-			and (open_dropdown == true)
+			and (open_dropdown)
 			and (intended_level_difficulty < 3)
 			{
 				intended_level_difficulty += 1;
@@ -1558,7 +1558,7 @@ function scr_draw_upload_level_menu()
 			#endregion /* Actually upload the level to the server END */
 			
 			/* Delete some leftover files and folders */
-			if (destroy_zip_after_uploading == true)
+			if (destroy_zip_after_uploading)
 			{
 				file_delete(file);
 			}

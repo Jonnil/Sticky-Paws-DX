@@ -3,7 +3,7 @@ function scr_player_move_tongue()
 	var rope_lenght_max = 320;
 	
 	#region /* Tongue */
-	if (can_move == true)
+	if (can_move)
 	and (global.pause == false)
 	{
 		if (!instance_exists(obj_tongue))
@@ -12,8 +12,8 @@ function scr_player_move_tongue()
 		}
 		
 		#region /* If you are allowed to use tongue, then you are able to use your tongue END */
-		if (allow_tongue == true)
-		and (can_tongue == true)
+		if (allow_tongue)
+		and (can_tongue)
 		and (climb == false)
 		and (horizontal_rope_climb == false)
 		{
@@ -80,7 +80,7 @@ function scr_player_move_tongue()
 					#region /* Key Left */
 					if (key_left_hold)
 					and (!place_meeting(x - 1, y, obj_wall))
-					and (can_collide_with_wall == true)
+					and (can_collide_with_wall)
 					or (key_left_hold)
 					{
 						can_tongue = false;
@@ -96,7 +96,7 @@ function scr_player_move_tongue()
 					#region /* Key Right */
 					if (key_right_hold)
 					and (!place_meeting(x + 1, y, obj_wall))
-					and (can_collide_with_wall == true)
+					and (can_collide_with_wall)
 					or (key_right_hold)
 					{
 						can_tongue = false;
@@ -123,7 +123,7 @@ function scr_player_move_tongue()
 				#region /* Key Left */
 				if (key_left_hold)
 				and (!place_meeting(x - 1, y, obj_wall))
-				and (can_collide_with_wall == true)
+				and (can_collide_with_wall)
 				or (key_left_hold)
 				{
 					
@@ -167,7 +167,7 @@ function scr_player_move_tongue()
 				#region /* Key Right */
 				if (key_right_hold)
 				and (!place_meeting(x + 1, y, obj_wall))
-				and (can_collide_with_wall == true)
+				and (can_collide_with_wall)
 				or (key_right_hold)
 				{
 					
@@ -211,14 +211,14 @@ function scr_player_move_tongue()
 				#region /* Key Down */
 				if (key_down)
 				and (!place_meeting(x, y + 1, obj_wall))
-				and (can_collide_with_wall == true)
+				and (can_collide_with_wall)
 				or (key_down)
 				{
 					
 					#region /* Key Left */
 					if (key_left_hold)
 					and (!place_meeting(x - 1, y, obj_wall))
-					and (can_collide_with_wall == true)
+					and (can_collide_with_wall)
 					or (key_left_hold)
 					{
 						can_tongue = false;
@@ -234,7 +234,7 @@ function scr_player_move_tongue()
 					#region /* Key Right */
 					if (key_right_hold)
 					and (!place_meeting(x + 1, y, obj_wall))
-					and (can_collide_with_wall == true)
+					and (can_collide_with_wall)
 					or (key_right_hold)
 					{
 						can_tongue = false;
@@ -259,7 +259,7 @@ function scr_player_move_tongue()
 				else
 				if (image_xscale < 0)
 				and (!place_meeting(x - 1, y, obj_wall))
-				and (can_collide_with_wall == true)
+				and (can_collide_with_wall)
 				or (image_xscale < 0)
 				{
 					can_tongue = false;
@@ -271,7 +271,7 @@ function scr_player_move_tongue()
 				else
 				if (image_xscale > 0)
 				and (!place_meeting(x + 1, y, obj_wall))
-				and (can_collide_with_wall == true)
+				and (can_collide_with_wall)
 				or (image_xscale > 0)
 				{
 					can_tongue = false;
@@ -289,7 +289,7 @@ function scr_player_move_tongue()
 		#endregion /* If you are allowed to use tongue, then you are able to use your tongue */
 		
 		#region /* Rope Swing */
-		if (rope_swing == true)
+		if (rope_swing)
 		{
 			can_collide_with_wall = true;
 			dive = false;
@@ -312,7 +312,7 @@ function scr_player_move_tongue()
 				and (obj_tongue.x > x - 1)
 				and (obj_tongue.x < x + 1)
 				and (!place_meeting(x - 4, y, obj_wall))
-				and (can_collide_with_wall == true)
+				and (can_collide_with_wall)
 				or (key_left_hold)
 				and (obj_tongue.y > y)
 				and (obj_tongue.x > x - 1)
@@ -330,7 +330,7 @@ function scr_player_move_tongue()
 				and (obj_tongue.x > x - 1)
 				and (obj_tongue.x < x + 1)
 				and (!place_meeting(x + 4, y, obj_wall))
-				and (can_collide_with_wall == true)
+				and (can_collide_with_wall)
 				or (key_right_hold)
 				and (obj_tongue.y > y)
 				and (obj_tongue.x > x - 1)
@@ -345,7 +345,7 @@ function scr_player_move_tongue()
 				#region /* Key Left */
 				if (key_left_hold)
 				and (!place_meeting(x - 4, y, obj_wall))
-				and (can_collide_with_wall == true)
+				and (can_collide_with_wall)
 				or (key_left_hold)
 				{
 					rope_angle_acceleration -= 0.08;
@@ -357,7 +357,7 @@ function scr_player_move_tongue()
 				#region /* Key Right */
 				if (key_right_hold)
 				and (!place_meeting(x + 4, y, obj_wall))
-				and (can_collide_with_wall == true)
+				and (can_collide_with_wall)
 				or (key_right_hold)
 				{
 					rope_angle_acceleration += 0.08;
@@ -372,7 +372,7 @@ function scr_player_move_tongue()
 				{
 					if (rope_length > 5)
 					and (!place_meeting(x, y - 4, obj_wall))
-					and (can_collide_with_wall == true)
+					and (can_collide_with_wall)
 					or (rope_length > 5)
 					{
 						rope_length -= 2;
@@ -390,7 +390,7 @@ function scr_player_move_tongue()
 				{
 					if (rope_length < rope_lenght_max)
 					and (!place_meeting(x, y + 4, obj_wall))
-					and (can_collide_with_wall == true)
+					and (can_collide_with_wall)
 					or (rope_length < rope_lenght_max)
 					{
 						rope_length += 2;
@@ -515,19 +515,19 @@ function scr_player_move_tongue()
 		#endregion /* Rope Swing END */
 		
 		#region /* Fly toward wall when clicking tongue button again */
-		if (rope_swing == true)
+		if (rope_swing)
 		and (mouse_check_button_pressed(mb_left))
-		or (rope_swing == true)
+		or (rope_swing)
 		and (key_tongue_pressed)
 		{
 			tongue_move_player_toward_wall = true;
 		}
 		
 		if (instance_exists(obj_tongue))
-		and (tongue_move_player_toward_wall == true)
+		and (tongue_move_player_toward_wall)
 		{
 			if (tongue_move_player_toward_wall_timer > 3)
-			and (can_collide_with_wall == true)
+			and (can_collide_with_wall)
 			{
 				if (!place_meeting(x-1, y, obj_wall))
 				or (!place_meeting(x+1, y, obj_wall))
@@ -586,10 +586,10 @@ function scr_player_move_tongue()
 	
 	#region /* When the character has stopped moving and can't move closer to tongue, then retrieve the tongue */
 	if (instance_exists(obj_tongue))
-	and (tongue_move_player_toward_wall == true)
+	and (tongue_move_player_toward_wall)
 	and (speed < +15)
 	or (instance_exists(obj_tongue))
-	and (tongue_move_player_toward_wall == true)
+	and (tongue_move_player_toward_wall)
 	and (tongue_move_player_toward_wall_timer > 60) /* If it's been over 1 second, cancel the move towards tongue move, as backup if the player didn't stop correctly */
 	{
 		

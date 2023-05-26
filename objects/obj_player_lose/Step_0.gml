@@ -57,7 +57,7 @@ and (sprite_index = spr_player_burnt)
 #region /* Play death melody */
 if (!instance_exists(obj_player))
 and (count = 50)
-and (last_player == true)
+and (last_player)
 {
 	scr_audio_play(player_lose_melody, volume_source.melody);
 }
@@ -178,7 +178,7 @@ and (continue_falling == false)
 	sprite_index = noone;
 }
 else
-if (continue_falling == true)
+if (continue_falling)
 {
 	gravity = 0.5;
 }
@@ -191,7 +191,7 @@ else
 	image_speed = 0.5;
 }
 #region /* Bubble */
-if (bubble == true)
+if (bubble)
 {
 	
 	#region /* Don't go outside view boundary */

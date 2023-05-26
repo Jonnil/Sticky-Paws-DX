@@ -1,6 +1,6 @@
 if (instance_exists(obj_player))
 and (instance_nearest(x, y, obj_player).key_up_pressed)
-and (instance_nearest(x, y, obj_player).on_ground == true)
+and (instance_nearest(x, y, obj_player).on_ground)
 and (place_meeting(x, y, obj_player))
 and (open_door == false)
 and (door_xscale >= 0.9)
@@ -16,7 +16,7 @@ and (door_xscale >= 0.9)
 		open_door = true;
 	}
 }
-if (open_door == true)
+if (open_door)
 {
 	global.iris_zoom_in = true;
 	with(instance_nearest(x, y, obj_player))

@@ -566,7 +566,7 @@ company_splash_3 = noone;
 controller_splash = noone;
 
 #region /* Interpolation */
-if (global.interpolate == true)
+if (global.interpolate)
 {
 	gpu_set_texfilter(true);
 }

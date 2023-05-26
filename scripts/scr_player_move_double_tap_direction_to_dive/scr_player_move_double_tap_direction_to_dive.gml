@@ -2,7 +2,7 @@ function scr_player_move_double_tap_direction_to_dive()
 {
 	
 	#region /* Double-tap direction to dive*/
-	if (double_tap_to_dive == true)
+	if (double_tap_to_dive)
 	{
 	
 		#region /* Double tap left direction to dive */
@@ -49,14 +49,14 @@ function scr_player_move_double_tap_direction_to_dive()
 		if (!key_left_hold)
 		and (!key_right_hold)
 		{
-			if (double_tap_left_dive == true)
+			if (double_tap_left_dive)
 			and (double_tap_dive_timer <= 28)
 			{
 				double_tap_dive = false;
 				double_tap_left_dive = 2;
 			}
 			else
-			if (double_tap_right_dive == true)
+			if (double_tap_right_dive)
 			and (double_tap_dive_timer <= 28)
 			{
 				double_tap_dive = false;

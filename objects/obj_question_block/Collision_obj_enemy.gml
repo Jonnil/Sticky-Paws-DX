@@ -7,7 +7,7 @@ and (asset_get_type("obj_wall") == asset_object)
 	and (instance_exists(obj_enemy))
 	and (place_meeting(x, bbox_bottom, obj_enemy))
 	and (instance_nearest(x, y, obj_enemy).vspeed < 0)
-	and (can_be_hit_from_below == true)
+	and (can_be_hit_from_below)
 	{
 		if (asset_get_type("obj_enemy") == asset_object)
 		and (instance_exists(obj_enemy))

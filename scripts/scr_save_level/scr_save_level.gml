@@ -13,7 +13,7 @@ function scr_save_level()
 	
 	
 	if (global.character_select_in_this_menu == "main_game")
-	and (global.actually_play_edited_level == true)
+	and (global.actually_play_edited_level)
 	{
 		var uppercase_level_name;
 		uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -25,7 +25,7 @@ function scr_save_level()
 		if (global.level_clear_rate == "clear")
 		{
 			ini_write_real(level_name, "number_of_clears", ini_read_real(level_name, "number_of_clears", 0) + 1); /* Increase how many times you've played this specific level */
-			if (global.increase_number_of_levels_cleared == true)
+			if (global.increase_number_of_levels_cleared)
 			and (ini_key_exists(level_name, "clear_rate"))
 			and (ini_read_string(level_name, "clear_rate", "closed") != "clear")
 			{
@@ -75,7 +75,7 @@ function scr_save_level()
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor")
-	and (global.actually_play_edited_level == true)
+	and (global.actually_play_edited_level)
 	{
 		var uppercase_level_name;
 		uppercase_level_name = string_upper(string_char_at(string(global.level_name), 1));
@@ -124,7 +124,7 @@ function scr_save_level()
 			
 			#region /* If doing a clear check, and winning the level, then add in level information that you have done a clear check */
 			if (global.level_clear_rate == "clear")
-			and (global.doing_clear_check == true)
+			and (global.doing_clear_check)
 			{
 				ini_write_real("info", "clear_check", true);
 				global.go_to_menu_after_loading_custom_levels = "upload_edit_name";

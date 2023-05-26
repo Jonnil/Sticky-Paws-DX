@@ -21,9 +21,9 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 			camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + var_scroll_x * var_selected_object + var_x_offset,
 			camera_get_view_y(view_camera[view_current]) + 64 + var_scroll_y, var_scale, var_scale, var_rotation, var_color, selected_menu_alpha * alpha_offset);
 		}
-		//if (unlocked_object[unlock_index] == true)
-		if (unlocked_object[var_place_object_id] == true)
-		and (global.show_new_items_notification == true)
+		//if (unlocked_object[unlock_index])
+		if (unlocked_object[var_place_object_id])
+		and (global.show_new_items_notification)
 		{
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + var_scroll_x * var_selected_object,

@@ -1,5 +1,5 @@
 if (bounce_up == false)
-and (other.flat == true)
+and (other.flat)
 and (other.die == false)
 and (other.die_volting == false)
 {

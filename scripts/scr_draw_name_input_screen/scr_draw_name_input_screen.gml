@@ -131,9 +131,9 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	var buttons_cancel_y = buttons_ok_y + 42;
 	if (can_press_ok_when_input_empty == false)
 	and (keyboard_string != "")
-	or (can_press_ok_when_input_empty == true)
+	or (can_press_ok_when_input_empty)
 	{
-		if (max_characters_needed == true) /* On some code input screens, you want to fill all the characters to the max before you can continue */
+		if (max_characters_needed) /* On some code input screens, you want to fill all the characters to the max before you can continue */
 		and (string_length(what_string_to_edit) == max_characters)
 		or (max_characters_needed == false)
 		{
@@ -228,7 +228,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	
 	if (menu_delay == 0)
 	and (menu_joystick_delay == 0)
-	and (use_script_navigation_code == true)
+	and (use_script_navigation_code)
 	{
 		if (keyboard_check_pressed(vk_up))
 		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
