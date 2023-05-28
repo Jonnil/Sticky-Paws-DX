@@ -7,15 +7,15 @@ if (global.play_edited_level)
 }
 
 #region /* Push yourself out of other level start objects way */
-if (instance_exists(obj_level_player_1_start))
-and (place_meeting(x, y, obj_level_player_1_start))
-and (obj_level_player_1_start.drag_object == false)
-or (instance_exists(obj_level_player_2_start))
-and (place_meeting(x, y, obj_level_player_2_start))
-and (obj_level_player_2_start.drag_object == false)
-or (instance_exists(obj_level_player_3_start))
-and (place_meeting(x, y, obj_level_player_3_start))
-and (obj_level_player_3_start.drag_object == false)
+if (instance_exists(obj_level_player1_start))
+and (place_meeting(x, y, obj_level_player1_start))
+and (obj_level_player1_start.drag_object == false)
+or (instance_exists(obj_level_player2_start))
+and (place_meeting(x, y, obj_level_player2_start))
+and (obj_level_player2_start.drag_object == false)
+or (instance_exists(obj_level_player3_start))
+and (place_meeting(x, y, obj_level_player3_start))
+and (obj_level_player3_start.drag_object == false)
 {
 	x -= 32;
 }

@@ -26,9 +26,9 @@ function scr_character_manage_menu_draw()
 	{
 		
 		#region /* Draw Character Portrait for Player 1 */
-		if (global.sprite_select_player_1 > 0)
+		if (global.sprite_select_player[1] > 0)
 		{
-			draw_sprite_ext(global.sprite_select_player_1, 0, display_get_gui_width() * 0.5 + xx1, display_get_gui_height() * 0.5, 392 / sprite_get_width(global.sprite_select_player_1), 392 / sprite_get_width(global.sprite_select_player_1), 0, global.hex_color_for_player_1, 1);
+			draw_sprite_ext(global.sprite_select_player[1], 0, display_get_gui_width() * 0.5 + xx[1], display_get_gui_height() * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
 		}
 		#endregion /* Draw Character Portrait for Player 1 END */
 		
@@ -280,9 +280,9 @@ function scr_character_manage_menu_draw()
 		draw_set_alpha(1);
 		
 		#region /* Draw Character Portrait */
-		if (global.sprite_select_player_1 > 0)
+		if (global.sprite_select_player[1] > 0)
 		{
-			draw_sprite_ext(global.sprite_select_player_1, 0, display_get_gui_width() * 0.5 + xx1, display_get_gui_height() * 0.5, 392 / sprite_get_width(global.sprite_select_player_1), 392 / sprite_get_width(global.sprite_select_player_1), 0, global.hex_color_for_player_1, 1);
+			draw_sprite_ext(global.sprite_select_player[1], 0, display_get_gui_width() * 0.5 + xx[1], display_get_gui_height() * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
 		}
 		#endregion /* Draw Character Portrait END */
 		
@@ -553,9 +553,9 @@ function scr_character_manage_menu_draw()
 		draw_set_alpha(1);
 		
 		#region /* Draw Character Portrait */
-		if (global.sprite_select_player_1 > 0)
+		if (global.sprite_select_player[1] > 0)
 		{
-			draw_sprite_ext(global.sprite_select_player_1, 0, display_get_gui_width() * 0.5 + xx1, display_get_gui_height() * 0.5, 392 / sprite_get_width(global.sprite_select_player_1), 392 / sprite_get_width(global.sprite_select_player_1), 0, global.hex_color_for_player_1, 1);
+			draw_sprite_ext(global.sprite_select_player[1], 0, display_get_gui_width() * 0.5 + xx[1], display_get_gui_height() * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
 		}
 		#endregion /* Draw Character Portrait END */
 		
@@ -672,9 +672,9 @@ function scr_character_manage_menu_draw()
 		draw_set_alpha(1);
 		
 		#region /* Draw Character Portrait */
-		if (global.sprite_select_player_1 > 0)
+		if (global.sprite_select_player[1] > 0)
 		{
-			draw_sprite_ext(global.sprite_select_player_1, 0, display_get_gui_width() * 0.5 + xx1, display_get_gui_height() * 0.5, 392 / sprite_get_width(global.sprite_select_player_1), 392 / sprite_get_width(global.sprite_select_player_1), 0, global.hex_color_for_player_1, 1);
+			draw_sprite_ext(global.sprite_select_player[1], 0, display_get_gui_width() * 0.5 + xx[1], display_get_gui_height() * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
 		}
 		#endregion /* Draw Character Portrait END */
 		
@@ -733,9 +733,9 @@ function scr_character_manage_menu_draw()
 		{
 			scr_load_character_initializing();
 			menu = "load_characters";
-			player1_menu = "select_character"; /* Go back to this menu after reloading all characters */
+			player_menu[1] = "select_character"; /* Go back to this menu after reloading all characters */
 			menu_delay = 3;
-			menu_joystick1_delay = 30;
+			menu_specific_joystick_delay[1] = 30;
 		}
 		#endregion /* Return to game END */
 		

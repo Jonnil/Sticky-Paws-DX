@@ -6,30 +6,30 @@ pause = false;
 if (global.player1_can_play)
 {
 	camera_player = 0;
-	camera_selected_skin = global.skin_for_player_1;
+	camera_selected_skin = global.skin_for_player[1];
 }
 else
 if (global.player2_can_play)
 {
 	camera_player = 1;
-	camera_selected_skin = global.skin_for_player_2;
+	camera_selected_skin = global.skin_for_player[2];
 }
 else
 if (global.player3_can_play)
 {
 	camera_player = 2;
-	camera_selected_skin = global.skin_for_player_3;
+	camera_selected_skin = global.skin_for_player[3];
 }
 else
 if (global.player4_can_play)
 {
 	camera_player = 3;
-	camera_selected_skin = global.skin_for_player_4;
+	camera_selected_skin = global.skin_for_player[4];
 }
 else
 {
 	camera_player = 0;
-	camera_selected_skin = global.skin_for_player_1;
+	camera_selected_skin = global.skin_for_player[1];
 }
 #endregion /* Essential variables END */
 
@@ -473,20 +473,20 @@ if (global.actually_play_edited_level == false)
 	mx = mouse_x;
 	my = mouse_y;
 	
-	selected_skin = global.skin_for_player_1;
+	selected_skin = global.skin_for_player[1];
 	
 	sprite_player1 = noone;
-	sprite_player1 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 0, global.skin_for_player_1);
-	sprite_player1 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 0, global.skin_for_player_1);
+	sprite_player1 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 0, global.skin_for_player[1]);
+	sprite_player1 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 0, global.skin_for_player[1]);
 	sprite_player2 = noone;
-	sprite_player2 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 1, global.skin_for_player_2);
-	sprite_player2 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 1, global.skin_for_player_2);
+	sprite_player2 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 1, global.skin_for_player[2]);
+	sprite_player2 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 1, global.skin_for_player[2]);
 	sprite_player3 = noone;
-	sprite_player3 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 2, global.skin_for_player_3);
-	sprite_player3 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 2, global.skin_for_player_3);
+	sprite_player3 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 2, global.skin_for_player[3]);
+	sprite_player3 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 2, global.skin_for_player[3]);
 	sprite_player4 = noone;
-	sprite_player4 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 3, global.skin_for_player_4);
-	sprite_player4 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 3, global.skin_for_player_4);
+	sprite_player4 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 3, global.skin_for_player[4]);
+	sprite_player4 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 3, global.skin_for_player[4]);
 	
 	audio_stop_all();
 	pressing_play_timer = 0; /* You have to hold down the play button for some time before you play the level from the beginning */
@@ -672,7 +672,7 @@ if (global.actually_play_edited_level == false)
 	
 	/* HUD Show Controls keys that have been pressed */
 	player1_show_controls_timer = 0;
-	player1_show_controls_alpha = 0;
+	player_show_controls_alpha[1] = 0;
 	
 }
 #endregion /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level END */

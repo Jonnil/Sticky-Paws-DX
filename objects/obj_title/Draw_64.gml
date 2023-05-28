@@ -2,12 +2,13 @@ var main_game_y = display_get_gui_height() * 0.5 + 100 + 40;
 var level_editor_y = display_get_gui_height() * 0.5 + 100 + 80;
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
+var attract_demo_exists = false;
 
 #region /* Play Attract Demo */
 if (global.play_attract_demo == false)
 and (global.enable_attract_demo)
 {
-	if (file_exists("video/trailer.mp4"))
+	if (attract_demo_exists)
 	{
 		play_attract_demo_time += 1;
 	}
@@ -27,7 +28,7 @@ and (global.enable_attract_demo)
 	or (menu == "link_wiki")
 	{
 		if (play_attract_demo_time >= 960)
-		and (file_exists("video/trailer.mp4"))
+		and (attract_demo_exists)
 		{
 			in_settings = false;
 			video_seek_to(0);
@@ -38,7 +39,7 @@ and (global.enable_attract_demo)
 	{
 		if (play_attract_demo_time >= 3600)
 		and (global.convention_mode)
-		and (file_exists("video/trailer.mp4"))
+		and (attract_demo_exists)
 		{
 			in_settings = false;
 			menu = "main_game";

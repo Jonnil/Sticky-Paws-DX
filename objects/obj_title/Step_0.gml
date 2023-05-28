@@ -97,7 +97,7 @@ if (menu == "load_characters")
 		{
 			file_find_close();
 			scr_load_all_character_portraits();
-			if (player1_menu == "click_copy_character")
+			if (player_menu[1] == "click_copy_character")
 			{
 				with(instance_create_depth(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 0, obj_score_up))
 				{
@@ -106,40 +106,47 @@ if (menu == "load_characters")
 				
 				#region /* After copying character, show the copied character */
 				global.character_index[0] = ds_list_find_index(global.all_loaded_characters, ds_list_find_value(global.all_loaded_characters, global.character_index[0]) + " - Copy");
-				global.character_for_player_1 = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
-				xx1 = player1_display_x + 32;
+				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
+				xx[1] = player1_display_x + 32;
 				#endregion /* After copying character, show the copied character END */
 				
 				menu = "click_copy_character";
 			}
 			else
-			if (player1_menu == "click_delete_character")
+			if (player_menu[1] == "click_delete_character")
 			{
 				menu = "click_delete_character";
 			}
 			else
 			{
-				if (player1_menu == "load_downloaded_character")
+				if (player_menu[1] == "load_downloaded_character")
 				{
 					/* When you have downloaded a custom character, player 1 should be set to the downloaded custom character so that the player can play with them immediately */
 					if (downloaded_character_name != "")
 					{
 						global.character_index[0] = ds_list_find_index(global.all_loaded_characters, string(downloaded_character_name));
 					}
-					global.character_for_player_1 = ds_list_find_index(global.all_loaded_characters, global.character_index[0]);
+					global.character_for_player[1] = ds_list_find_index(global.all_loaded_characters, global.character_index[0]);
 					
 					#region /* Player 1 character select portrait sprite */
-					global.skin_for_player_1 = global.actual_skin_for_player_1; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
-					global.sprite_select_player_1 = spr_noone;
-					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1);
-					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1);
-					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1);
-					global.sprite_select_player_1 = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1);
+					global.skin_for_player[1] = global.actual_skin_for_player[1]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
+					global.sprite_select_player[1] = spr_noone;
+					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
 					#endregion /* Player 1 character select portrait sprite END */
 					
 				}
+				
+				character_portrait_for_player_update_directory[1] = true;
+				character_portrait_for_player_update_directory[2] = true;
+				character_portrait_for_player_update_directory[3] = true;
+				character_portrait_for_player_update_directory[4] = true;
+				alarm[0] = 1;
+				
 				menu = "select_character"; /* Default menu to go to after loading all characters */
-				player1_menu = "select_character"; /* Set this to be "select character" so it's not on wrong menu unintentionally */
+				player_menu[1] = "select_character"; /* Set this to be "select character" so it's not on wrong menu unintentionally */
 			}
 		}
 		else
@@ -188,8 +195,7 @@ if (menu == "load_custom_level")
 		}
 		else
 		{
-			if (directory_exists(working_directory + "/custom_levels/" + file_found))
-			and (file_exists(working_directory + "/custom_levels/" + file_found + "/data/level_information.ini"))
+			if (file_exists(working_directory + "/custom_levels/" + file_found + "/data/level_information.ini"))
 			{
 				ds_list_add(global.all_loaded_custom_levels, file_found)
 				

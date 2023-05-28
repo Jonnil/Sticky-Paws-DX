@@ -519,46 +519,46 @@ and (global.player4_can_play)
 	draw_set_valign(fa_middle);
 	if (player == 1)
 	{
-		if (global.player1_name = "")
+		if (global.player_name[1] = "")
 		{
 			scr_draw_text_outlined(x, y - 64, "P1", global.default_text_size, c_black, global.player1_color, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(x, y - 64, string(global.player1_name), global.default_text_size, c_black, global.player1_color, 1);
+			scr_draw_text_outlined(x, y - 64, string(global.player_name[1]), global.default_text_size, c_black, global.player1_color, 1);
 		}
 	}
 	if (player == 2)
 	{
-		if (global.player2_name = "")
+		if (global.player_name[2] = "")
 		{
 			scr_draw_text_outlined(x, y - 64, "P2", global.default_text_size, c_black, global.player2_color, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(x, y - 64, string(global.player2_name), global.default_text_size, c_black, global.player2_color, 1);
+			scr_draw_text_outlined(x, y - 64, string(global.player_name[2]), global.default_text_size, c_black, global.player2_color, 1);
 		}
 	}
 	if (player == 3)
 	{
-		if (global.player3_name = "")
+		if (global.player_name[3] = "")
 		{
 			scr_draw_text_outlined(x, y - 64, "P3", global.default_text_size, c_black, global.player3_color, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(x, y - 64, string(global.player3_name), global.default_text_size, c_black, global.player3_color, 1);
+			scr_draw_text_outlined(x, y - 64, string(global.player_name[3]), global.default_text_size, c_black, global.player3_color, 1);
 		}
 	}
 	if (player == 4)
 	{
-		if (global.player4_name = "")
+		if (global.player_name[4] = "")
 		{
 			scr_draw_text_outlined(x, y - 64, "P4", global.default_text_size, c_black, global.player4_color, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(x, y - 64, string(global.player4_name), global.default_text_size, c_black, global.player4_color, 1);
+			scr_draw_text_outlined(x, y - 64, string(global.player_name[4]), global.default_text_size, c_black, global.player4_color, 1);
 		}
 	}
 }

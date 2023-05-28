@@ -138,7 +138,7 @@ and (iris_xscale >= 10)
 	if (global.player1_show_controls == 0)
 	or (obj_player.can_move == false)
 	{
-		player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.2);
+		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
 	}
 	else
 	if (global.player1_show_controls >= 1)
@@ -146,19 +146,19 @@ and (iris_xscale >= 10)
 	{
 		if (player1_show_controls_timer >= 1)
 		{
-			player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.2);
+			player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
 			player1_show_controls_timer -= 1;
 		}
 		if (player1_show_controls_timer <= 0)
 		and (player1.speed == 0)
 		{
-			player1_show_controls_alpha = lerp(player1_show_controls_alpha, 1, 0.1);
+			player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 1, 0.1);
 		}
 	}
 	else
 	if (global.player1_show_controls == 10)
 	{
-		player1_show_controls_alpha = lerp(player1_show_controls_alpha, 1, 0.1);
+		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 1, 0.1);
 	}
 	
 	if (player1.speed > 0)
@@ -169,11 +169,11 @@ and (iris_xscale >= 10)
 else
 if (global.player1_can_play)
 {
-	player1_show_controls_alpha = lerp(player1_show_controls_alpha, 1, 0.1);
+	player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 1, 0.1);
 }
 else
 {
-	player1_show_controls_alpha = lerp(player1_show_controls_alpha, 0, 0.2);
+	player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
 	player1_show_controls_timer = room_speed * global.player1_show_controls;
 }
 #endregion /* Player 1 Show Controls HUD timer */
@@ -186,7 +186,7 @@ and (iris_xscale >= 10)
 	if (global.player2_show_controls == 0)
 	or (obj_player.can_move == false)
 	{
-		player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.2);
+		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
 	}
 	else
 	if (global.player2_show_controls >= 1)
@@ -194,19 +194,19 @@ and (iris_xscale >= 10)
 	{
 		if (player2_show_controls_timer >= 1)
 		{
-			player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.2);
+			player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
 			player2_show_controls_timer -= 1;
 		}
 		if (player2_show_controls_timer <= 0)
 		and (player2.speed == 0)
 		{
-			player2_show_controls_alpha = lerp(player2_show_controls_alpha, 1, 0.1);
+			player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
 		}
 	}
 	else
 	if (global.player2_show_controls = 10)
 	{
-		player2_show_controls_alpha = lerp(player2_show_controls_alpha, 1, 0.1);
+		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
 	}
 	
 	if (player2.speed > 0)
@@ -217,11 +217,11 @@ and (iris_xscale >= 10)
 else
 if (global.player2_can_play)
 {
-	player2_show_controls_alpha = lerp(player2_show_controls_alpha, 1, 0.1);
+	player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
 }
 else
 {
-	player2_show_controls_alpha = lerp(player2_show_controls_alpha, 0, 0.2);
+	player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
 	player2_show_controls_timer = room_speed * global.player2_show_controls;
 }
 #endregion /* Player 2 Show Controls HUD timer */
@@ -234,7 +234,7 @@ and (iris_xscale >= 10)
 	if (global.player3_show_controls == 0)
 	or (obj_player.can_move == false)
 	{
-		player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.2);
+		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
 	}
 	else
 	if (global.player3_show_controls >= 1)
@@ -242,19 +242,19 @@ and (iris_xscale >= 10)
 	{
 		if (player3_show_controls_timer >= 1)
 		{
-			player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.2);
+			player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
 			player3_show_controls_timer -= 1;
 		}
 		if (player3_show_controls_timer <= 0)
 		and (player3.speed == 0)
 		{
-			player3_show_controls_alpha = lerp(player3_show_controls_alpha, 1, 0.1);
+			player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.1);
 		}
 	}
 	else
 	if (global.player3_show_controls = 10)
 	{
-		player3_show_controls_alpha = lerp(player3_show_controls_alpha, 1, 0.2);
+		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.2);
 	}
 	
 	if (player3.speed > 0)
@@ -265,11 +265,11 @@ and (iris_xscale >= 10)
 else
 if (global.player3_can_play)
 {
-	player3_show_controls_alpha = lerp(player3_show_controls_alpha, 1, 0.1);
+	player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.1);
 }
 else
 {
-	player3_show_controls_alpha = lerp(player3_show_controls_alpha, 0, 0.2);
+	player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
 	player3_show_controls_timer = room_speed * global.player3_show_controls;
 }
 #endregion /* Player 3 Show Controls HUD timer */
@@ -282,7 +282,7 @@ and (iris_xscale >= 10)
 	if (global.player4_show_controls == 0)
 	or (obj_player.can_move == false)
 	{
-		player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.2);
+		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
 	}
 	else
 	if (global.player4_show_controls >= 1)
@@ -290,19 +290,19 @@ and (iris_xscale >= 10)
 	{
 		if (player4_show_controls_timer >= 1)
 		{
-			player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.2);
+			player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
 			player4_show_controls_timer -= 1;
 		}
 		if (player4_show_controls_timer <= 0)
 		and (player4.speed == 0)
 		{
-			player4_show_controls_alpha = lerp(player4_show_controls_alpha, 1, 0.1);
+			player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
 		}
 	}
 	else
 	if (global.player4_show_controls = 10)
 	{
-		player4_show_controls_alpha = lerp(player4_show_controls_alpha, 1, 0.1);
+		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
 	}
 	
 	if (player4.speed > 0)
@@ -313,11 +313,11 @@ and (iris_xscale >= 10)
 else
 if (global.player4_can_play)
 {
-	player4_show_controls_alpha = lerp(player4_show_controls_alpha, 1, 0.1);
+	player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
 }
 else
 {
-	player4_show_controls_alpha = lerp(player4_show_controls_alpha, 0, 0.2);
+	player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
 	player4_show_controls_timer = room_speed * global.player4_show_controls;
 }
 #endregion /* Player 4 Show Controls HUD timer */
@@ -394,9 +394,9 @@ and (global.goal_active == false)
 			player1 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
 			with(player1)
 			{
-				custom_character = global.character_for_player_1;
-				selected_voice_pack = global.voicepack_for_player_1;
-				selected_skin = global.skin_for_player_1;
+				custom_character = global.character_for_player[1];
+				selected_voice_pack = global.voicepack_for_player[1];
+				selected_skin = global.skin_for_player[1];
 				player = 1;
 			}
 		}
@@ -421,9 +421,9 @@ and (global.goal_active == false)
 			player2 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
 			with(player2)
 			{
-				custom_character = global.character_for_player_2;
-				selected_voice_pack = global.voicepack_for_player_2;
-				selected_skin = global.skin_for_player_2;
+				custom_character = global.character_for_player[2];
+				selected_voice_pack = global.voicepack_for_player[2];
+				selected_skin = global.skin_for_player[2];
 				player = 2;
 			}
 		}
@@ -448,9 +448,9 @@ and (global.goal_active == false)
 			player3 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
 			with(player3)
 			{
-				custom_character = global.character_for_player_3;
-				selected_voice_pack = global.voicepack_for_player_3;
-				selected_skin = global.skin_for_player_3;
+				custom_character = global.character_for_player[3];
+				selected_voice_pack = global.voicepack_for_player[3];
+				selected_skin = global.skin_for_player[3];
 				player = 3;
 			}
 		}
@@ -475,9 +475,9 @@ and (global.goal_active == false)
 			player4 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
 			with(player4)
 			{
-				custom_character = global.character_for_player_4;
-				selected_voice_pack = global.voicepack_for_player_4;
-				selected_skin = global.skin_for_player_4;
+				custom_character = global.character_for_player[4];
+				selected_voice_pack = global.voicepack_for_player[4];
+				selected_skin = global.skin_for_player[4];
 				player = 4;
 			}
 		}
@@ -1291,10 +1291,10 @@ and (!instance_exists(obj_pause))
 	#region /* Show Multiplayer Controls */
 	
 	#region /* Y position of show controls for each player */
-	if (player1_show_controls_alpha > 0)
-	and (player2_show_controls_alpha <= 0)
-	and (player3_show_controls_alpha <= 0)
-	and (player4_show_controls_alpha <= 0)
+	if (player_show_controls_alpha[1] > 0)
+	and (player_show_controls_alpha[2] <= 0)
+	and (player_show_controls_alpha[3] <= 0)
+	and (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, 32, 0.1);
 		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
@@ -1302,10 +1302,10 @@ and (!instance_exists(obj_pause))
 		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 	}
 	else
-	if (player1_show_controls_alpha <= 0)
-	and (player2_show_controls_alpha > 0)
-	and (player3_show_controls_alpha <= 0)
-	and (player4_show_controls_alpha <= 0)
+	if (player_show_controls_alpha[1] <= 0)
+	and (player_show_controls_alpha[2] > 0)
+	and (player_show_controls_alpha[3] <= 0)
+	and (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 		show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
@@ -1313,10 +1313,10 @@ and (!instance_exists(obj_pause))
 		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 	}
 	else
-	if (player1_show_controls_alpha <= 0)
-	and (player2_show_controls_alpha <= 0)
-	and (player3_show_controls_alpha > 0)
-	and (player4_show_controls_alpha <= 0)
+	if (player_show_controls_alpha[1] <= 0)
+	and (player_show_controls_alpha[2] <= 0)
+	and (player_show_controls_alpha[3] > 0)
+	and (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
@@ -1324,10 +1324,10 @@ and (!instance_exists(obj_pause))
 		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 	}
 	else
-	if (player1_show_controls_alpha <= 0)
-	and (player2_show_controls_alpha <= 0)
-	and (player3_show_controls_alpha <= 0)
-	and (player4_show_controls_alpha > 0)
+	if (player_show_controls_alpha[1] <= 0)
+	and (player_show_controls_alpha[2] <= 0)
+	and (player_show_controls_alpha[3] <= 0)
+	and (player_show_controls_alpha[4] > 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
@@ -1335,10 +1335,10 @@ and (!instance_exists(obj_pause))
 		show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
 	}
 	else
-	if (player1_show_controls_alpha > 0)
-	and (player2_show_controls_alpha > 0)
-	and (player3_show_controls_alpha <= 0)
-	and (player4_show_controls_alpha <= 0)
+	if (player_show_controls_alpha[1] > 0)
+	and (player_show_controls_alpha[2] > 0)
+	and (player_show_controls_alpha[3] <= 0)
+	and (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
 		show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
@@ -1346,10 +1346,10 @@ and (!instance_exists(obj_pause))
 		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 	}
 	else
-	if (player1_show_controls_alpha > 0)
-	and (player2_show_controls_alpha > 0)
-	and (player3_show_controls_alpha > 0)
-	and (player4_show_controls_alpha <= 0)
+	if (player_show_controls_alpha[1] > 0)
+	and (player_show_controls_alpha[2] > 0)
+	and (player_show_controls_alpha[3] > 0)
+	and (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, 116, 0.1);
 		show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
@@ -1357,10 +1357,10 @@ and (!instance_exists(obj_pause))
 		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 	}
 	else
-	if (player1_show_controls_alpha > 0)
-	and (player2_show_controls_alpha <= 0)
-	and (player3_show_controls_alpha > 0)
-	and (player4_show_controls_alpha <= 0)
+	if (player_show_controls_alpha[1] > 0)
+	and (player_show_controls_alpha[2] <= 0)
+	and (player_show_controls_alpha[3] > 0)
+	and (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
 		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
@@ -1368,10 +1368,10 @@ and (!instance_exists(obj_pause))
 		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 	}
 	else
-	if (player1_show_controls_alpha <= 0)
-	and (player2_show_controls_alpha > 0)
-	and (player3_show_controls_alpha > 0)
-	and (player4_show_controls_alpha <= 0)
+	if (player_show_controls_alpha[1] <= 0)
+	and (player_show_controls_alpha[2] > 0)
+	and (player_show_controls_alpha[3] > 0)
+	and (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 		show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
@@ -1379,10 +1379,10 @@ and (!instance_exists(obj_pause))
 		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
 	}
 	else
-	if (player1_show_controls_alpha <= 0)
-	and (player2_show_controls_alpha <= 0)
-	and (player3_show_controls_alpha <= 0)
-	and (player4_show_controls_alpha <= 0)
+	if (player_show_controls_alpha[1] <= 0)
+	and (player_show_controls_alpha[2] <= 0)
+	and (player_show_controls_alpha[3] <= 0)
+	and (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */

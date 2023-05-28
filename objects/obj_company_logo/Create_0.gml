@@ -4,10 +4,10 @@ var max_players = 4; /* How many players you want to be able to play */
 global.company_name = "Jonnil"; /* String of what the company is called */
 global.game_name = "Sticky Paws"; /* String of what the game is called */
 global.game_name_appdata = "Sticky_Paws_DX"; /* String of what the game is called at appdata folder */
-global.character_for_player_1 = "sticky"; /* Player 1 Select Character 1 */
-global.character_for_player_2 = "catlyn"; /* Player 2 Select Character 2 */
-global.character_for_player_3 = "sticky"; /* Player 3 Select Character 3 */
-global.character_for_player_4 = "catlyn"; /* Player 4 Select Character 4 */
+global.character_for_player[1] = "sticky"; /* Player 1 Select Character 1 */
+global.character_for_player[2] = "catlyn"; /* Player 2 Select Character 2 */
+global.character_for_player[3] = "sticky"; /* Player 3 Select Character 3 */
+global.character_for_player[4] = "catlyn"; /* Player 4 Select Character 4 */
 global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws/";
 global.link_to_discord = "https://discord.com/invite/fGCy36x";
 global.link_to_gamebanana = "https://gamebanana.com/games/7722";
@@ -240,10 +240,10 @@ global.selected_font = 0;
 global.difficulty = 1; /* Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard */
 global.grid_hsnap = 32; /* Horizontal grid snapping */
 global.grid_vsnap = 32; /* Vertical grid snapping */
-global.hex_color_for_player_1 = c_white; /* Player 1 Hex Value Color */
-global.hex_color_for_player_2 = c_white; /* Player 1 Hex Value Color */
-global.hex_color_for_player_3 = c_white; /* Player 1 Hex Value Color */
-global.hex_color_for_player_4 = c_white; /* Player 1 Hex Value Color */
+global.hex_color_for_player1 = c_white; /* Player 1 Hex Value Color */
+global.hex_color_for_player2 = c_white; /* Player 1 Hex Value Color */
+global.hex_color_for_player3 = c_white; /* Player 1 Hex Value Color */
+global.hex_color_for_player4 = c_white; /* Player 1 Hex Value Color */
 global.iris_zoom_in = false; /* When you want to enable and disable iris zoom in code */
 global.player_can_go_outside_view = false; /* Let the player go outside view in specific scenarios */
 global.level_editor_level = 0; /* What level is selected in the custom level editor */
@@ -264,21 +264,21 @@ global.selected_title_background = 0; /* 0 = default */
 global.show_deaths_counter = false; /* Show a deaths counter or not */
 global.show_ranks = false; /* Show ranks you get at the end of the level */
 global.show_timer = false; /* Show a countup timer or not */
-global.actual_skin_for_player_1 = 0; /* Player 1 Select Skin, make default skin 1 */
-global.actual_skin_for_player_2 = 1; /* Player 2 Select Skin, make default skin 2 */
-global.actual_skin_for_player_3 = 2; /* Player 3 Select Skin, make default skin 3 */
-global.actual_skin_for_player_4 = 3; /* Player 4 Select Skin, make default skin 4 */
-global.sprite_select_player_1 = noone;
-global.sprite_select_player_2 = noone;
-global.sprite_select_player_3 = noone;
-global.sprite_select_player_4 = noone;
+global.actual_skin_for_player[1] = 0; /* Player 1 Select Skin, make default skin 1 */
+global.actual_skin_for_player[2] = 1; /* Player 2 Select Skin, make default skin 2 */
+global.actual_skin_for_player[3] = 2; /* Player 3 Select Skin, make default skin 3 */
+global.actual_skin_for_player[4] = 3; /* Player 4 Select Skin, make default skin 4 */
+global.sprite_select_player[1] = noone;
+global.sprite_select_player[2] = noone;
+global.sprite_select_player[3] = noone;
+global.sprite_select_player[4] = noone;
 global.thumbnail_sprite = ds_list_create();
 global.title_background_scale = 1;
 global.title_logo_index = spr_noone;
-global.voicepack_for_player_1 = 0; /* Player 1 Select Voicepack */
-global.voicepack_for_player_2 = 0; /* Player 2 Select Voicepack */
-global.voicepack_for_player_3 = 0; /* Player 3 Select Voicepack */
-global.voicepack_for_player_4 = 0; /* Player 4 Select Voicepack */
+global.voicepack_for_player[1] = 0; /* Player 1 Select Voicepack */
+global.voicepack_for_player[2] = 0; /* Player 2 Select Voicepack */
+global.voicepack_for_player[3] = 0; /* Player 3 Select Voicepack */
+global.voicepack_for_player[4] = 0; /* Player 4 Select Voicepack */
 global.world_editor = false; /* If you're editing world or not */
 global.go_to_menu_after_loading_custom_levels = ""; /* Sometimes you want to go to another menu after loading custom levels, instead of the default */
 device_mouse_dbclick_enable(false); /* Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled */
@@ -435,10 +435,10 @@ global.fullscreen_key = vk_f11;
 global.level_name = ""; /* In the level editor, the name of the currently selected level will be stored here */
 global.level_description = ""; /* In the level editor, the description of the currently selected level will be stored here */
 
-global.player1_name = "";
-global.player2_name = "";
-global.player3_name = "";
-global.player4_name = "";
+global.player_name[1] = "";
+global.player_name[2] = "";
+global.player_name[3] = "";
+global.player_name[4] = "";
 
 #region /* Controller ports */
 global.player1_slot = 0;
@@ -625,10 +625,10 @@ if (asset_get_type("scr_config_load") == asset_script)
 #endregion /* Load Config END */
 
 #region /* Set these global variables after loading config file */
-global.skin_for_player_1 = global.actual_skin_for_player_1; /* In case the player selected a character that doesn't have skins, use this variable */
-global.skin_for_player_2 = global.actual_skin_for_player_2; /* In case the player selected a character that doesn't have skins, use this variable */
-global.skin_for_player_3 = global.actual_skin_for_player_3; /* In case the player selected a character that doesn't have skins, use this variable */
-global.skin_for_player_4 = global.actual_skin_for_player_4; /* In case the player selected a character that doesn't have skins, use this variable */
+global.skin_for_player[1] = global.actual_skin_for_player[1]; /* In case the player selected a character that doesn't have skins, use this variable */
+global.skin_for_player[2] = global.actual_skin_for_player[2]; /* In case the player selected a character that doesn't have skins, use this variable */
+global.skin_for_player[3] = global.actual_skin_for_player[3]; /* In case the player selected a character that doesn't have skins, use this variable */
+global.skin_for_player[4] = global.actual_skin_for_player[4]; /* In case the player selected a character that doesn't have skins, use this variable */
 scr_set_font();
 #endregion /* Set these global variables after loading config file END */
 

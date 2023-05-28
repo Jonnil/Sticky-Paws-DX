@@ -49,14 +49,10 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	if (what_player == 1)
 	{
 		var player_gamepad_slot = global.player1_slot;
-		var sprite_select_player = global.sprite_select_player_1;
+		var sprite_select_player = global.sprite_select_player[1];
 		var player_accept_selection = player1_accept_selection;
-		var player_xx = xx1;
-		var hex_color_for_player = global.hex_color_for_player_1;
+		var hex_color_for_player = global.hex_color_for_player1;
 		var player_display_x = player1_display_x;
-		var skin_for_player = global.skin_for_player_1;
-		var voicepack_for_player = global.voicepack_for_player_1;
-		var player_menu = player1_menu;
 		var player_key_left = global.player_[inp.key][1][1][action.left];
 		var player_key_right = global.player_[inp.key][1][1][action.right];
 		var player_key2_left = global.player_[inp.key][1][2][action.left];
@@ -73,9 +69,8 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button2_back = global.player_[inp.gp][1][2][action.back];
 		var player_gamepad_button_accept = global.player_[inp.gp][1][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][1][2][action.accept];
-		var menu_joystick_delay = menu_joystick1_delay;
 		var can_input_player_name = can_input_player1_name;
-		var player_name = global.player1_name;
+		var player_name = global.player_name[1];
 		var player_color = global.player1_color;
 	}
 	#endregion /* If player is player 1, set all the variables to Player variables END */
@@ -86,14 +81,10 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	if (what_player == 2)
 	{
 		var player_gamepad_slot = global.player2_slot;
-		var sprite_select_player = global.sprite_select_player_2;
+		var sprite_select_player = global.sprite_select_player[2];
 		var player_accept_selection = player2_accept_selection;
-		var player_xx = xx2;
-		var hex_color_for_player = global.hex_color_for_player_2;
+		var hex_color_for_player = global.hex_color_for_player2;
 		var player_display_x = player2_display_x;
-		var skin_for_player = global.skin_for_player_2;
-		var voicepack_for_player = global.voicepack_for_player_2;
-		var player_menu = player2_menu;
 		var player_key_left = global.player_[inp.key][2][1][action.left];
 		var player_key_right = global.player_[inp.key][2][1][action.right];
 		var player_key2_left = global.player_[inp.key][2][2][action.left];
@@ -110,9 +101,8 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button2_back = global.player_[inp.gp][2][2][action.back];
 		var player_gamepad_button_accept = global.player_[inp.gp][2][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][2][2][action.accept];
-		var menu_joystick_delay = menu_joystick2_delay;
 		var can_input_player_name = can_input_player2_name;
-		var player_name = global.player2_name;
+		var player_name = global.player_name[2];
 		var player_color = global.player2_color;
 	}
 	#endregion /* If player is player 2, set all the variables to player 2 variables END */
@@ -123,14 +113,10 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	if (what_player == 3)
 	{
 		var player_gamepad_slot = global.player3_slot;
-		var sprite_select_player = global.sprite_select_player_3;
+		var sprite_select_player = global.sprite_select_player[3];
 		var player_accept_selection = player3_accept_selection;
-		var player_xx = xx3;
-		var hex_color_for_player = global.hex_color_for_player_3;
+		var hex_color_for_player = global.hex_color_for_player3;
 		var player_display_x = player3_display_x;
-		var skin_for_player = global.skin_for_player_3;
-		var voicepack_for_player = global.voicepack_for_player_3;
-		var player_menu = player3_menu;
 		var player_key_left = global.player_[inp.key][3][1][action.left];
 		var player_key_right = global.player_[inp.key][3][1][action.right];
 		var player_key2_left = global.player_[inp.key][3][2][action.left];
@@ -147,9 +133,8 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button2_back = global.player_[inp.gp][3][2][action.back];
 		var player_gamepad_button_accept = global.player_[inp.gp][3][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][3][2][action.accept];
-		var menu_joystick_delay = menu_joystick3_delay;
 		var can_input_player_name = can_input_player3_name;
-		var player_name = global.player3_name;
+		var player_name = global.player_name[3];
 		var player_color = global.player3_color;
 	}
 	#endregion /* If player is player 3, set all the variables to player 3 variables END */
@@ -160,14 +145,10 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	if (what_player == 4)
 	{
 		var player_gamepad_slot = global.player4_slot;
-		var sprite_select_player = global.sprite_select_player_4;
+		var sprite_select_player = global.sprite_select_player[4];
 		var player_accept_selection = player4_accept_selection;
-		var player_xx = xx4;
-		var hex_color_for_player = global.hex_color_for_player_4;
+		var hex_color_for_player = global.hex_color_for_player4;
 		var player_display_x = player4_display_x;
-		var skin_for_player = global.skin_for_player_4;
-		var voicepack_for_player = global.voicepack_for_player_4;
-		var player_menu = player4_menu;
 		var player_key_left = global.player_[inp.key][4][1][action.left];
 		var player_key_right = global.player_[inp.key][4][1][action.right];
 		var player_key2_left = global.player_[inp.key][4][2][action.left];
@@ -184,9 +165,8 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button2_back = global.player_[inp.gp][4][2][action.back];
 		var player_gamepad_button_accept = global.player_[inp.gp][4][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][4][2][action.accept];
-		var menu_joystick_delay = menu_joystick4_delay;
 		var can_input_player_name = can_input_player4_name;
-		var player_name = global.player4_name;
+		var player_name = global.player_name[4];
 		var player_color = global.player4_color;
 	}
 	#endregion /* If player is player 4, set all the variables to player 4 variables END */
@@ -198,13 +178,13 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	and (player_accept_selection >= 0)
 	and (sprite_exists(sprite_select_player))
 	{
-		draw_sprite_ext(sprite_select_player, 0, get_window_width * 0.5 + player_xx, get_window_height * 0.5, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, hex_color_for_player, 1);
+		draw_sprite_ext(sprite_select_player, 0, get_window_width * 0.5 + xx[what_player] , get_window_height * 0.5, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, hex_color_for_player, 1);
 		if (can_input_player1_name)
 		or (can_input_player2_name)
 		or (can_input_player3_name)
 		or (can_input_player4_name)
 		{
-			draw_sprite_ext(sprite_select_player, 0, get_window_width * 0.5 + player_xx, get_window_height * 0.5, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, c_black, 0.5);
+			draw_sprite_ext(sprite_select_player, 0, get_window_width * 0.5 + xx[what_player] , get_window_height * 0.5, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, c_black, 0.5);
 		}
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
@@ -214,7 +194,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var character_name = string(uppercase_character_name);
 		
 		#region /* Display Character Name */
-		if (player_menu != "select_name")
+		if (player_menu[what_player] != "select_name")
 		and (can_input_player1_name == false)
 		and (can_input_player2_name == false)
 		and (can_input_player3_name == false)
@@ -242,17 +222,17 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(get_window_width * 0.5 + player_display_x, get_window_height * 0.5 + skin_y, l10n_text("Skin") + ": " + string(skin_for_player + 1), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(get_window_width * 0.5 + player_display_x, get_window_height * 0.5 + skin_y, l10n_text("Skin") + ": " + string(global.skin_for_player[what_player] + 1), global.default_text_size, c_black, c_white, 1);
 			}
 			
-			if (player_menu == "select_skin")
+			if (player_menu[what_player] == "select_skin")
 			or (global.controls_used_for_menu_navigation == "mouse")
 			{
 				if (player_accept_selection == false)
 				{
 					
 					#region /* Show left key for character skin select */
-					if (skin_for_player > 0)
+					if (global.skin_for_player[what_player] > 0)
 					{
 						if (gamepad_is_connected(player_gamepad_slot))
 						and (global.controls_used_for_menu_navigation == "controller")
@@ -339,17 +319,17 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(get_window_width * 0.5 + player_display_x, get_window_height * 0.5 + voicepack_y, l10n_text("Voice Pack") + ": " + string(voicepack_for_player + 1), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(get_window_width * 0.5 + player_display_x, get_window_height * 0.5 + voicepack_y, l10n_text("Voice Pack") + ": " + string(global.voicepack_for_player[what_player] + 1), global.default_text_size, c_black, c_white, 1);
 			}
 			
-			if (player_menu = "select_voicepack")
+			if (player_menu[what_player] = "select_voicepack")
 			or (global.controls_used_for_menu_navigation = "mouse")
 			{
 				if (player_accept_selection == false)
 				{
 					
 					#region /* Show left key for character voicepack select */
-					if (voicepack_for_player > 0)
+					if (global.voicepack_for_player[what_player] > 0)
 					{
 						if (gamepad_is_connected(player_gamepad_slot))
 						and (global.controls_used_for_menu_navigation == "controller")
@@ -374,7 +354,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
 						and (global.controls_used_for_menu_navigation == "mouse")
 						{
-							player_menu = "select_voicepack";
+							player_menu[what_player] = "select_voicepack";
 							draw_set_alpha(0.5);
 							draw_rectangle_color(get_window_width * 0.5 + player_display_x - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16, c_white, c_white, c_white, c_white, false);
 							draw_set_alpha(1);
@@ -408,7 +388,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
 						and (global.controls_used_for_menu_navigation == "mouse")
 						{
-							player_menu = "select_voicepack";
+							player_menu[what_player] = "select_voicepack";
 							draw_set_alpha(0.5);
 							draw_rectangle_color(get_window_width * 0.5 + player_display_x + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16, c_white, c_white, c_white, c_white, false);
 							draw_set_alpha(1);
@@ -432,7 +412,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	{
 		
 		#region /* Player Show left and right arrows when selecting character */
-		if (player_menu = "select_character")
+		if (player_menu[what_player] = "select_character")
 		or (global.controls_used_for_menu_navigation = "mouse")
 		{
 			if (player_accept_selection == false)
@@ -522,25 +502,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	{
 		if (player_name = "")
 		{
-			if (what_player == 1)
-			{
-				scr_draw_name_box("Player 1", player_color, 0.5, get_window_width * 0.5 + player_display_x, name_input_y);
-			}
-			else
-			if (what_player == 2)
-			{
-				scr_draw_name_box("Player 2", player_color, 0.5, get_window_width * 0.5 + player_display_x, name_input_y);
-			}
-			else
-			if (what_player == 3)
-			{
-				scr_draw_name_box("Player 3", player_color, 0.5, get_window_width * 0.5 + player_display_x, name_input_y);
-			}
-			else
-			if (what_player == 4)
-			{
-				scr_draw_name_box("Player 4", player_color, 0.5, get_window_width * 0.5 + player_display_x, name_input_y);
-			}
+			scr_draw_name_box(l10n_text("Player " + string(what_player)), player_color, 0.5, get_window_width * 0.5 + player_display_x, name_input_y);
 		}
 		else
 		{
@@ -551,25 +513,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	if (player_accept_selection >= 0)
 	and (can_input_player_name)
 	{
-		if (what_player == 1)
-		{
-			global.player1_name = scr_draw_name_input_screen(player_name, 32, player_color, 0.5, true, get_window_width * 0.5 + player_display_x, name_input_y, "input_name_ok", "input_name_cancel");
-		}
-		else
-		if (what_player == 2)
-		{
-			global.player2_name = scr_draw_name_input_screen(player_name, 32, player_color, 0.5, true, get_window_width * 0.5 + player_display_x, name_input_y, "input_name_ok", "input_name_cancel");
-		}
-		else
-		if (what_player == 3)
-		{
-			global.player3_name = scr_draw_name_input_screen(player_name, 32, player_color, 0.5, true, get_window_width * 0.5 + player_display_x, name_input_y, "input_name_ok", "input_name_cancel");
-		}
-		else
-		if (what_player == 4)
-		{
-			global.player4_name = scr_draw_name_input_screen(player_name, 32, player_color, 0.5, true, get_window_width * 0.5 + player_display_x, name_input_y, "input_name_ok", "input_name_cancel");
-		}
+		global.player_name[what_player] = scr_draw_name_input_screen(player_name, 32, player_color, 0.5, true, get_window_width * 0.5 + player_display_x, name_input_y, "input_name_ok", "input_name_cancel");
 	}
 	
 	#endregion /* Tell the player the inputed name END */
@@ -580,11 +524,11 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	draw_set_halign(fa_middle);
 	draw_set_valign(fa_middle);
 	
-	if (player_menu != "select_name")
-	and (player_menu != "back_from_character_select")
-	and (player_menu != "open_custom_characters_folder")
-	and (player_menu != "manage_character")
-	and (player_menu != "search_character_id")
+	if (player_menu[what_player] != "select_name")
+	and (player_menu[what_player] != "back_from_character_select")
+	and (player_menu[what_player] != "open_custom_characters_folder")
+	and (player_menu[what_player] != "manage_character")
+	and (player_menu[what_player] != "search_character_id")
 	and (can_input_player1_name == false)
 	and (can_input_player2_name == false)
 	and (can_input_player3_name == false)
@@ -694,7 +638,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
 	
-	if (player_menu = "select_name")
+	if (player_menu[what_player] = "select_name")
 	and (can_input_player1_name == false)
 	and (can_input_player2_name == false)
 	and (can_input_player3_name == false)

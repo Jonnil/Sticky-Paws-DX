@@ -16,19 +16,19 @@ if (global.actually_play_edited_level == false)
 		{
 			
 			#region /* Destroy if erased */
-			if (instance_exists(obj_level_player_1_start))
-			and (place_meeting(x, y, obj_level_player_1_start))
-			and (instance_exists(obj_level_player_2_start))
-			and (place_meeting(x, y, obj_level_player_2_start))
-			and (instance_exists(obj_level_player_3_start))
-			and (place_meeting(x, y, obj_level_player_3_start))
-			and (instance_exists(obj_level_player_4_start))
-			and (place_meeting(x, y, obj_level_player_4_start))
+			if (instance_exists(obj_level_player1_start))
+			and (place_meeting(x, y, obj_level_player1_start))
+			and (instance_exists(obj_level_player2_start))
+			and (place_meeting(x, y, obj_level_player2_start))
+			and (instance_exists(obj_level_player3_start))
+			and (place_meeting(x, y, obj_level_player3_start))
+			and (instance_exists(obj_level_player4_start))
+			and (place_meeting(x, y, obj_level_player4_start))
 			and (obj_leveleditor.drag_object == false)
-			and (obj_level_player_1_start.drag_object == false)
-			and (obj_level_player_2_start.drag_object == false)
-			and (obj_level_player_3_start.drag_object == false)
-			and (obj_level_player_4_start.drag_object == false)
+			and (obj_level_player1_start.drag_object == false)
+			and (obj_level_player2_start.drag_object == false)
+			and (obj_level_player3_start.drag_object == false)
+			and (obj_level_player4_start.drag_object == false)
 			{
 				
 				#region /* Reset Level Editor Checkpoint */

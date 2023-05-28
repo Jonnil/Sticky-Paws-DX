@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_level_player_2_start",
+  "name": "obj_level_player2_start",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
@@ -29,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_level_player_2_start",
-    "path": "sprites/spr_level_player_2_start/spr_level_player_2_start.yy",
+    "name": "spr_level_player2_start",
+    "path": "sprites/spr_level_player2_start/spr_level_player2_start.yy",
   },
   "spriteMaskId": null,
   "visible": true,

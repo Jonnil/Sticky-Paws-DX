@@ -29,9 +29,9 @@ if (global.actually_play_edited_level == false)
 		instance_activate_object(obj_foreground_above_static_objects);
 		instance_activate_object(obj_foreground2);
 		instance_activate_object(obj_foreground_secret);
-		instance_activate_object(obj_level_player_1_start);
-		instance_activate_object(obj_level_player_2_start);
-		instance_activate_object(obj_level_player_3_start);
+		instance_activate_object(obj_level_player1_start);
+		instance_activate_object(obj_level_player2_start);
+		instance_activate_object(obj_level_player3_start);
 		instance_activate_object(obj_level_player_4_start);
 		instance_activate_object(obj_level_end);
 		instance_activate_object(obj_level_height);
@@ -316,7 +316,7 @@ if (global.actually_play_edited_level == false)
 							if (!instance_exists(obj_camera))
 							{
 								instance_activate_object(obj_camera);
-								instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_camera);
+								instance_create_depth(obj_level_player1_start.x, obj_level_player1_start.y, 0, obj_camera);
 							}
 						}
 						else
@@ -342,7 +342,7 @@ if (global.actually_play_edited_level == false)
 						
 						if (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64) || global.full_level_map_screenshot)
 						{
-							instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_player_map);
+							instance_create_depth(obj_level_player1_start.x, obj_level_player1_start.y, 0, obj_player_map);
 						}
 						else
 						{
@@ -705,9 +705,9 @@ if (global.actually_play_edited_level == false)
 			&& (erase_mode == false)
 			&& (pause == false)
 			&& (menu_delay == 0)
-			&& (!place_meeting(x, y, obj_level_player_1_start))
-			&& (!place_meeting(x, y, obj_level_player_2_start))
-			&& (!place_meeting(x, y, obj_level_player_3_start))
+			&& (!place_meeting(x, y, obj_level_player1_start))
+			&& (!place_meeting(x, y, obj_level_player2_start))
+			&& (!place_meeting(x, y, obj_level_player3_start))
 			&& (!place_meeting(x, y, obj_level_player_4_start))
 			&& (!position_meeting(x, y, obj_level_height))
 			&& (!position_meeting(x, y, obj_level_width))
@@ -1296,9 +1296,9 @@ if (global.actually_play_edited_level == false)
 	if (fill_mode)
 	&& (erase_mode == false)
 	&& (scroll_view == false)
-	&& (!place_meeting(x, y, obj_level_player_1_start))
-	&& (!place_meeting(x, y, obj_level_player_2_start))
-	&& (!place_meeting(x, y, obj_level_player_3_start))
+	&& (!place_meeting(x, y, obj_level_player1_start))
+	&& (!place_meeting(x, y, obj_level_player2_start))
+	&& (!place_meeting(x, y, obj_level_player3_start))
 	&& (!place_meeting(x, y, obj_level_player_4_start))
 	&& (!place_meeting(x, y, obj_level_end))
 	{

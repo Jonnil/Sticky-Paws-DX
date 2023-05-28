@@ -308,10 +308,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			{
 				downloaded_character_name = string(downloaded_file_name);
 				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
-				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player_1, 0, global.skin_for_player_1, string(downloaded_file_name));
-				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player_1, 0, global.skin_for_player_1, string(downloaded_file_name));
-				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player_1, 0, global.skin_for_player_1, string(downloaded_file_name));
-				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player_1, 0, global.skin_for_player_1, string(downloaded_file_name));
+				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player[1], 0, global.skin_for_player[1], string(downloaded_file_name));
+				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player[1], 0, global.skin_for_player[1], string(downloaded_file_name));
+				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1], string(downloaded_file_name));
+				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1], string(downloaded_file_name));
 				if (file_exists(working_directory + "/custom_characters/" + string(downloaded_file_name) + "/data/character_config.ini"))
 				{
 					ini_open(working_directory + "/custom_characters/" + string(downloaded_file_name) + "/data/character_config.ini");
@@ -950,13 +950,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		else
 		if (what_kind_of_id == "character")
 		{
-			player1_menu = "load_downloaded_character";
+			player_menu[1] = "load_downloaded_character";
 			select_custom_level_menu_open = false;
 			scr_load_character_initializing();
 			player1_automatically_join = true;
 			menu = "load_characters";
 			menu_delay = 3;
-			menu_joystick1_delay = 30;
+			menu_specific_joystick_delay[1] = 30;
 		}
 	}
 }

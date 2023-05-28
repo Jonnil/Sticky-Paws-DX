@@ -437,10 +437,10 @@ function scr_save_level_information()
 		ini_write_real("info", "clear_check", false);
 		ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
 			
-		var player_starts = [		[obj_level_player_1_start, "level_player_1_start"],
-			[obj_level_player_2_start, "level_player_2_start"],
-			[obj_level_player_3_start, "level_player_3_start"],
-			[obj_level_player_4_start, "level_player_4_start"]
+		var player_starts = [		[obj_level_player1_start, "level_player1_start"],
+			[obj_level_player2_start, "level_player2_start"],
+			[obj_level_player3_start, "level_player3_start"],
+			[obj_level_player4_start, "level_player4_start"]
 		];
 		for (var i = 0; i < array_length_1d(player_starts); i++)
 		{

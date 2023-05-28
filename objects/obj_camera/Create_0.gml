@@ -132,30 +132,30 @@ else
 if (global.player1_can_play)
 {
 	camera_player = 0;
-	camera_selected_skin = global.skin_for_player_1;
+	camera_selected_skin = global.skin_for_player[1];
 }
 else
 if (global.player2_can_play)
 {
 	camera_player = 1;
-	camera_selected_skin = global.skin_for_player_2;
+	camera_selected_skin = global.skin_for_player[2];
 }
 else
 if (global.player3_can_play)
 {
 	camera_player = 2;
-	camera_selected_skin = global.skin_for_player_3;
+	camera_selected_skin = global.skin_for_player[3];
 }
 else
 if (global.player4_can_play)
 {
 	camera_player = 3;
-	camera_selected_skin = global.skin_for_player_4;
+	camera_selected_skin = global.skin_for_player[4];
 }
 else
 {
 	camera_player = 0;
-	camera_selected_skin = global.skin_for_player_1;
+	camera_selected_skin = global.skin_for_player[1];
 }
 
 if (asset_get_type("spr_1up") == asset_sprite)
@@ -249,9 +249,9 @@ if (can_spawn_players)
 		}
 		else
 		if (global.actually_play_edited_level)
-		and (instance_exists(obj_level_player_1_start))
+		and (instance_exists(obj_level_player1_start))
 		{
-			player1 = instance_create_depth(obj_level_player_1_start.x, obj_level_player_1_start.y, 0, obj_player);
+			player1 = instance_create_depth(obj_level_player1_start.x, obj_level_player1_start.y, 0, obj_player);
 		}
 		else
 		{
@@ -259,9 +259,9 @@ if (can_spawn_players)
 		}
 		with(player1)
 		{
-			custom_character = global.character_for_player_1;
-			selected_voice_pack = global.voicepack_for_player_1;
-			selected_skin = global.skin_for_player_1;
+			custom_character = global.character_for_player[1];
+			selected_voice_pack = global.voicepack_for_player[1];
+			selected_skin = global.skin_for_player[1];
 			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player = 1;
 		}
@@ -281,9 +281,9 @@ if (can_spawn_players)
 		}
 		else
 		if (global.actually_play_edited_level)
-		and (instance_exists(obj_level_player_2_start))
+		and (instance_exists(obj_level_player2_start))
 		{
-			player2 = instance_create_depth(obj_level_player_2_start.x, obj_level_player_2_start.y, 0, obj_player);
+			player2 = instance_create_depth(obj_level_player2_start.x, obj_level_player2_start.y, 0, obj_player);
 		}
 		else
 		{
@@ -291,9 +291,9 @@ if (can_spawn_players)
 		}
 		with(player2)
 		{
-			custom_character = global.character_for_player_2;
-			selected_voice_pack = global.voicepack_for_player_2;
-			selected_skin = global.skin_for_player_2;
+			custom_character = global.character_for_player[2];
+			selected_voice_pack = global.voicepack_for_player[2];
+			selected_skin = global.skin_for_player[2];
 			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player = 2;
 		}
@@ -313,9 +313,9 @@ if (can_spawn_players)
 		}
 		else
 		if (global.actually_play_edited_level)
-		and (instance_exists(obj_level_player_3_start))
+		and (instance_exists(obj_level_player3_start))
 		{
-			player3 = instance_create_depth(obj_level_player_3_start.x, obj_level_player_3_start.y, 0, obj_player);
+			player3 = instance_create_depth(obj_level_player3_start.x, obj_level_player3_start.y, 0, obj_player);
 		}
 		else
 		{
@@ -323,9 +323,9 @@ if (can_spawn_players)
 		}
 		with(player3)
 		{
-			custom_character = global.character_for_player_3;
-			selected_voice_pack = global.voicepack_for_player_3;
-			selected_skin = global.skin_for_player_3;
+			custom_character = global.character_for_player[3];
+			selected_voice_pack = global.voicepack_for_player[3];
+			selected_skin = global.skin_for_player[3];
 			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player = 3;
 		}
@@ -345,9 +345,9 @@ if (can_spawn_players)
 		}
 		else
 		if (global.actually_play_edited_level)
-		and (instance_exists(obj_level_player_4_start))
+		and (instance_exists(obj_level_player4_start))
 		{
-			player4 = instance_create_depth(obj_level_player_4_start.x, obj_level_player_4_start.y, 0, obj_player);
+			player4 = instance_create_depth(obj_level_player4_start.x, obj_level_player4_start.y, 0, obj_player);
 		}
 		else
 		{
@@ -355,9 +355,9 @@ if (can_spawn_players)
 		}
 		with(player4)
 		{
-			custom_character = global.character_for_player_4;
-			selected_voice_pack = global.voicepack_for_player_4;
-			selected_skin = global.skin_for_player_4;
+			custom_character = global.character_for_player[4];
+			selected_voice_pack = global.voicepack_for_player[4];
+			selected_skin = global.skin_for_player[4];
 			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
 			player = 4;
 		}
@@ -393,10 +393,10 @@ player2_show_controls_timer = 0;
 player3_show_controls_timer = 0;
 player4_show_controls_timer = 0;
 
-player1_show_controls_alpha = 0;
-player2_show_controls_alpha = 0;
-player3_show_controls_alpha = 0;
-player4_show_controls_alpha = 0;
+player_show_controls_alpha[1] = 0;
+player_show_controls_alpha[2] = 0;
+player_show_controls_alpha[3] = 0;
+player_show_controls_alpha[4] = 0;
 
 show_sprint_toggle_for_player1 = 0;
 show_sprint_toggle_for_player2 = 0;
@@ -698,7 +698,7 @@ for(checkpoint_number = 0;checkpoint_number < instance_number(obj_checkpoint) + 
 {
 	if (instance_number(obj_checkpoint) >= checkpoint_number)
 	{
-		with (instance_nth_nearest(global.level_player_1_start_x, global.level_player_1_start_y, obj_checkpoint, checkpoint_number))
+		with (instance_nth_nearest(global.level_player1_start_x, global.level_player1_start_y, obj_checkpoint, checkpoint_number))
 		{
 			checkpoint_number = obj_camera.checkpoint_number;
 		}

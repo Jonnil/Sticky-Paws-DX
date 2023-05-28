@@ -25,10 +25,10 @@
 			    && !obj_leveleditor.erase_mode
 			    && !obj_leveleditor.pause
 			    && obj_leveleditor.menu_delay == 0
-			    && !place_meeting(x, y, obj_level_player_1_start)
-			    && !place_meeting(x, y, obj_level_player_2_start)
-			    && !place_meeting(x, y, obj_level_player_3_start)
-			    && !place_meeting(x, y, obj_level_player_4_start)
+			    && !place_meeting(x, y, obj_level_player1_start)
+			    && !place_meeting(x, y, obj_level_player2_start)
+			    && !place_meeting(x, y, obj_level_player3_start)
+			    && !place_meeting(x, y, obj_level_player4_start)
 			    && !position_meeting(x, y, obj_level_height)
 			    && !position_meeting(x, y, obj_level_width)
 			    && !position_meeting(x, y, obj_water_level_height)

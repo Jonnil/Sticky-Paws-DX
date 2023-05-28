@@ -63,9 +63,9 @@ else
 {
 	partner_follow_player = noone;
 }
-custom_character = global.character_for_player_1;
-selected_voice_pack = global.voicepack_for_player_1;
-selected_skin = global.skin_for_player_1;
+custom_character = global.character_for_player[1];
+selected_voice_pack = global.voicepack_for_player[1];
+selected_skin = global.skin_for_player[1];
 alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
 #endregion /* What custom character to use, change the character sprites and voice END */
 

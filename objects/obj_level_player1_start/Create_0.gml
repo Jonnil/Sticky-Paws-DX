@@ -18,16 +18,16 @@ and (file_exists(working_directory + "/custom_levels/" + string(global.level_nam
 		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	}
 	
-	if (ini_key_exists("info", "level_player_1_start_x"))
+	if (ini_key_exists("info", "level_player1_start_x"))
 	{
-		x = ini_read_real("info", "level_player_1_start_x", 0);
+		x = ini_read_real("info", "level_player1_start_x", 0);
 	}
-	if (ini_key_exists("info", "level_player_1_start_y"))
+	if (ini_key_exists("info", "level_player1_start_y"))
 	{
-		y = ini_read_real("info", "level_player_1_start_y", 0);
+		y = ini_read_real("info", "level_player1_start_y", 0);
 	}
 	ini_close();
 }
 
-global.level_player_1_start_x = x;
-global.level_player_1_start_y = y;
+global.level_player1_start_x = x;
+global.level_player1_start_y = y;

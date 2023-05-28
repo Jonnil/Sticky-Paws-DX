@@ -23,7 +23,7 @@ for(big_collectible = 0;big_collectible < instance_number(obj_big_collectible_nu
 {
 	if (instance_number(obj_big_collectible_number) >= big_collectible)
 	{
-		with (instance_nth_nearest(global.level_player_1_start_x, global.level_player_1_start_y, obj_big_collectible_number, big_collectible))
+		with (instance_nth_nearest(global.level_player1_start_x, global.level_player1_start_y, obj_big_collectible_number, big_collectible))
 		{
 			big_collectible = obj_camera.big_collectible;
 		}

@@ -276,10 +276,10 @@ function scr_character_select_menu_draw()
 		
 		#endregion /* Play the game text END */
 		
-		xx1 = lerp(xx1, player1_display_x, 0.1);
-		xx2 = lerp(xx2, player2_display_x, 0.1);
-		xx3 = lerp(xx3, player3_display_x, 0.1);
-		xx4 = lerp(xx4, player4_display_x, 0.1);
+		xx[1] = lerp(xx[1], player1_display_x, 0.1);
+		xx[2] = lerp(xx[2], player2_display_x, 0.1);
+		xx[3] = lerp(xx[3], player3_display_x, 0.1);
+		xx[4] = lerp(xx[4], player4_display_x, 0.1);
 		
 		#region /* All code before menu navigation code */
 		

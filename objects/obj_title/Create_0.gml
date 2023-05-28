@@ -9,6 +9,10 @@ scr_delete_sprite_properly(global.custom_foreground_secret);
 
 directory_destroy(working_directory + "/levels");
 
+character_portrait_for_player_update_directory[1] = false;
+character_portrait_for_player_update_directory[2] = false;
+character_portrait_for_player_update_directory[3] = false;
+character_portrait_for_player_update_directory[4] = false;
 character_portrait_for_player_directory_exists_1[1] = false;
 character_portrait_for_player_directory_exists_2[1] = false;
 character_portrait_for_player_directory_exists_3[1] = false;
@@ -207,10 +211,10 @@ player_start_game = false;
 #endregion /* Character select Accept Selection END */
 
 #region /* Color Select for CharacterSelect */
-player1_menu = "select_character";
-player2_menu = "select_character";
-player3_menu = "select_character";
-player4_menu = "select_character";
+player_menu[1] = "select_character";
+player_menu[2] = "select_character";
+player_menu[3] = "select_character";
+player_menu[4] = "select_character";
 #endregion /* Color Select for CharacterSelect END */
 
 #region /* What player can enter a name */
@@ -319,19 +323,19 @@ allow_player4_dive = scr_initialize_custom_character_abilities(3, "allow_dive", 
 open_dropdown = false;
 menu_delay = 3;
 menu_joystick_delay = 3;
-menu_joystick1_delay = 3;
-menu_joystick2_delay = 3;
-menu_joystick3_delay = 3;
-menu_joystick4_delay = 3;
+menu_specific_joystick_delay[1] = 3;
+menu_specific_joystick_delay[2] = 3;
+menu_specific_joystick_delay[3] = 3;
+menu_specific_joystick_delay[4] = 3;
 black_screen_at_start_delay = 0;
 player1_display_x = 0;
 player2_display_x = 0;
 player3_display_x = 0;
 player4_display_x = 0;
-xx1 = 0;
-xx2 = 0;
-xx3 = 0;
-xx4 = 0;
+xx[1] = 0;
+xx[2] = 0;
+xx[3] = 0;
+xx[4] = 0;
 remap_y_pos = 0;
 version_y_pos = 0;
 menu_cursor_index = 0;

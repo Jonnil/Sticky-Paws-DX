@@ -527,31 +527,31 @@ if (global.character_select_in_this_menu == "main_game" && file_exists(working_d
 	switch (player)
 	{
 		case 1:
-		have_heart_balloon = ini_read_real("Player", "player_1_have_heart_balloon", false);
-		if (!ini_key_exists("Player", "player_1_have_heart_balloon"))
+		have_heart_balloon = ini_read_real("Player", "player1_have_heart_balloon", false);
+		if (!ini_key_exists("Player", "player1_have_heart_balloon"))
 		{
-			ini_write_real("Player", "player_1_have_heart_balloon", false);
+			ini_write_real("Player", "player1_have_heart_balloon", false);
 		}
 		break;
 		case 2:
-		have_heart_balloon = ini_read_real("Player", "player_2_have_heart_balloon", false);
-		if (!ini_key_exists("Player", "player_2_have_heart_balloon"))
+		have_heart_balloon = ini_read_real("Player", "player2_have_heart_balloon", false);
+		if (!ini_key_exists("Player", "player2_have_heart_balloon"))
 		{
-			ini_write_real("Player", "player_2_have_heart_balloon", false);
+			ini_write_real("Player", "player2_have_heart_balloon", false);
 		}
 		break;
 		case 3:
-		have_heart_balloon = ini_read_real("Player", "player_3_have_heart_balloon", false);
-		if (!ini_key_exists("Player", "player_3_have_heart_balloon"))
+		have_heart_balloon = ini_read_real("Player", "player3_have_heart_balloon", false);
+		if (!ini_key_exists("Player", "player3_have_heart_balloon"))
 		{
-			ini_write_real("Player", "player_3_have_heart_balloon", false);
+			ini_write_real("Player", "player3_have_heart_balloon", false);
 		}
 		break;
 		case 4:
-		have_heart_balloon = ini_read_real("Player", "player_4_have_heart_balloon", false);
-		if (!ini_key_exists("Player", "player_4_have_heart_balloon"))
+		have_heart_balloon = ini_read_real("Player", "player4_have_heart_balloon", false);
+		if (!ini_key_exists("Player", "player4_have_heart_balloon"))
 		{
-			ini_write_real("Player", "player_4_have_heart_balloon", false);
+			ini_write_real("Player", "player4_have_heart_balloon", false);
 		}
 		break;
 	}

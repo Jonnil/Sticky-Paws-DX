@@ -97,10 +97,10 @@ allow_player4_dive = scr_initialize_custom_character_abilities(3, "allow_dive", 
 
 open_dropdown = false;
 menu_joystick_delay = 0;
-menu_joystick1_delay = 0; /* These variables shouldn't be used unless specific player input is needed, but they are here still as failsafe */
-menu_joystick2_delay = 0;
-menu_joystick3_delay = 0;
-menu_joystick4_delay = 0;
+menu_specific_joystick_delay[1] = 0; /* These variables shouldn't be used unless specific player input is needed, but they are here still as failsafe */
+menu_specific_joystick_delay[2] = 0;
+menu_specific_joystick_delay[3] = 0;
+menu_specific_joystick_delay[4] = 0;
 can_navigate = true;
 remap_y_pos = 0;
 menu_cursor_index = 0;

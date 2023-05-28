@@ -2,14 +2,14 @@ move_snap(global.grid_hsnap, global.grid_vsnap);
 delay += 1;
 if (delay > 1)
 {
-	if (instance_exists(obj_level_player_1_start))
-	and (place_meeting(x, y, obj_level_player_1_start))
-	or (instance_exists(obj_level_player_2_start))
-	and (place_meeting(x, y, obj_level_player_2_start))
-	or (instance_exists(obj_level_player_3_start))
-	and (place_meeting(x, y, obj_level_player_3_start))
-	or (instance_exists(obj_level_player_4_start))
-	and (place_meeting(x, y, obj_level_player_4_start))
+	if (instance_exists(obj_level_player1_start))
+	and (place_meeting(x, y, obj_level_player1_start))
+	or (instance_exists(obj_level_player2_start))
+	and (place_meeting(x, y, obj_level_player2_start))
+	or (instance_exists(obj_level_player3_start))
+	and (place_meeting(x, y, obj_level_player3_start))
+	or (instance_exists(obj_level_player4_start))
+	and (place_meeting(x, y, obj_level_player4_start))
 	or (x < camera_get_view_x(view_camera[view_current]))
 	or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	{

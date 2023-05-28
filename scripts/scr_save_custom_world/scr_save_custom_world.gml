@@ -62,13 +62,13 @@ function scr_save_custom_world()
 			{
 				ini_open(working_directory + "/custom_worlds/" + string(global.level_name) + "/data/level_information.ini");
 			}
-			if (instance_exists(obj_level_player_1_start))
+			if (instance_exists(obj_level_player1_start))
 			{
-				ini_write_real("info", "level_player_1_start_x", obj_level_player_1_start.x);
+				ini_write_real("info", "level_player1_start_x", obj_level_player1_start.x);
 			}
-			if (instance_exists(obj_level_player_1_start))
+			if (instance_exists(obj_level_player1_start))
 			{
-				ini_write_real("info", "level_player_1_start_y", obj_level_player_1_start.y);
+				ini_write_real("info", "level_player1_start_y", obj_level_player1_start.y);
 			}
 			if (instance_exists(obj_level_height))
 			{

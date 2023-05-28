@@ -48,35 +48,35 @@ else
 if (global.player1_can_play)
 {
 	player = 1;
-	selected_voice_pack = global.voicepack_for_player_1;
-	selected_skin = global.skin_for_player_1;
+	selected_voice_pack = global.voicepack_for_player[1];
+	selected_skin = global.skin_for_player[1];
 }
 else
 if (global.player2_can_play)
 {
 	player = 2;
-	selected_voice_pack = global.voicepack_for_player_2;
-	selected_skin = global.skin_for_player_2;
+	selected_voice_pack = global.voicepack_for_player[2];
+	selected_skin = global.skin_for_player[2];
 }
 else
 if (global.player3_can_play)
 {
 	player = 3;
-	selected_voice_pack = global.voicepack_for_player_3;
-	selected_skin = global.skin_for_player_3;
+	selected_voice_pack = global.voicepack_for_player[3];
+	selected_skin = global.skin_for_player[3];
 }
 else
 if (global.player4_can_play)
 {
 	player = 4;
-	selected_voice_pack = global.voicepack_for_player_4;
-	selected_skin = global.skin_for_player_4;
+	selected_voice_pack = global.voicepack_for_player[4];
+	selected_skin = global.skin_for_player[4];
 }
 else
 {
 	player = 1;
-	selected_voice_pack = global.voicepack_for_player_1;
-	selected_skin = global.skin_for_player_1;
+	selected_voice_pack = global.voicepack_for_player[1];
+	selected_skin = global.skin_for_player[1];
 }
 
 alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
@@ -161,49 +161,49 @@ scr_buffer_async_load("save_files", "file" + string(global.file) + ".ini");
 //	#region /* Have Heart Balloon */
 //	if (player == 1)
 //	{
-//		if (ini_key_exists("Player", "player_1_have_heart_balloon"))
+//		if (ini_key_exists("Player", "player1_have_heart_balloon"))
 //		{
-//			have_heart_balloon = ini_read_real("Player", "player_1_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
+//			have_heart_balloon = ini_read_real("Player", "player1_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
 //		}
 //		else
 //		{
-//			ini_write_real("Player", "player_1_have_heart_balloon", false);
+//			ini_write_real("Player", "player1_have_heart_balloon", false);
 //			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 //		}
 //	}
 //	if (player == 2)
 //	{
-//		if (ini_key_exists("Player", "player_2_have_heart_balloon"))
+//		if (ini_key_exists("Player", "player2_have_heart_balloon"))
 //		{
-//			have_heart_balloon = ini_read_real("Player", "player_2_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
+//			have_heart_balloon = ini_read_real("Player", "player2_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
 //		}
 //		else
 //		{
-//			ini_write_real("Player", "player_2_have_heart_balloon", false);
+//			ini_write_real("Player", "player2_have_heart_balloon", false);
 //			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 //		}
 //	}
 //	if (player == 3)
 //	{
-//		if (ini_key_exists("Player", "player_3_have_heart_balloon"))
+//		if (ini_key_exists("Player", "player3_have_heart_balloon"))
 //		{
-//			have_heart_balloon = ini_read_real("Player", "player_3_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
+//			have_heart_balloon = ini_read_real("Player", "player3_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
 //		}
 //		else
 //		{
-//			ini_write_real("Player", "player_3_have_heart_balloon", false);
+//			ini_write_real("Player", "player3_have_heart_balloon", false);
 //			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 //		}
 //	}
 //	if (player == 4)
 //	{
-//		if (ini_key_exists("Player", "player_4_have_heart_balloon"))
+//		if (ini_key_exists("Player", "player4_have_heart_balloon"))
 //		{
-//			have_heart_balloon = ini_read_real("Player", "player_4_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
+//			have_heart_balloon = ini_read_real("Player", "player4_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
 //		}
 //		else
 //		{
-//			ini_write_real("Player", "player_4_have_heart_balloon", false);
+//			ini_write_real("Player", "player4_have_heart_balloon", false);
 //			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 //		}
 //	}

@@ -13,16 +13,17 @@ or (position_meeting(bbox_right, bbox_bottom + 2, other))
 or (position_meeting(bbox_right, bbox_bottom + 3, other))
 or (position_meeting(bbox_right, bbox_bottom + 4, other))
 {
+	if (dive)
+	and (vspeed >= -4)
+	{
+		dive = false;
+		dive_on_ground = 10;
+		can_attack_after_dive_on_ground = can_attack_after_dive_on_ground_max_value;
+		ground_pound = false;
+		can_ground_pound = false;
+	}
 	if (vspeed >= 0)
 	{
-		if (dive)
-		{
-			dive = false;
-			dive_on_ground = 10;
-			can_attack_after_dive_on_ground = can_attack_after_dive_on_ground_max_value;
-			ground_pound = false;
-			can_ground_pound = false;
-		}
 		y -= 1;
 	}
 }

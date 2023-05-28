@@ -136,19 +136,19 @@ function scr_options_control_menu()
 		#region /* Show sprite of the character you have currently selected for current player you are remapping */
 		if (remapping_player == 0)
 		{
-			draw_sprite_ext(global.sprite_select_player_1, 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player_1), 100 / sprite_get_width(global.sprite_select_player_1), 0, global.hex_color_for_player_1, 1);
+			draw_sprite_ext(global.sprite_select_player[1], 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player[1]), 100 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
 		}
 		if (remapping_player == 1)
 		{
-			draw_sprite_ext(global.sprite_select_player_2, 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player_2), 100 / sprite_get_width(global.sprite_select_player_2), 0, global.hex_color_for_player_2, 1);
+			draw_sprite_ext(global.sprite_select_player[2], 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player[2]), 100 / sprite_get_width(global.sprite_select_player[2]), 0, global.hex_color_for_player2, 1);
 		}
 		if (remapping_player == 2)
 		{
-			draw_sprite_ext(global.sprite_select_player_3, 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player_3), 100 / sprite_get_width(global.sprite_select_player_3), 0, global.hex_color_for_player_3, 1);
+			draw_sprite_ext(global.sprite_select_player[3], 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player[3]), 100 / sprite_get_width(global.sprite_select_player[3]), 0, global.hex_color_for_player3, 1);
 		}
 		if (remapping_player == 3)
 		{
-			draw_sprite_ext(global.sprite_select_player_4, 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player_4), 100 / sprite_get_width(global.sprite_select_player_4), 0, global.hex_color_for_player_4, 1);
+			draw_sprite_ext(global.sprite_select_player[4], 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player[4]), 100 / sprite_get_width(global.sprite_select_player[4]), 0, global.hex_color_for_player4, 1);
 		}
 		#endregion /* Show sprite of the character you have currently selected for current player you are remapping END */
 		

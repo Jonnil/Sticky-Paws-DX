@@ -7,9 +7,12 @@ if (global.play_edited_level)
 }
 
 #region /* Push yourself out of other level start objects way */
-if (instance_exists(obj_level_player_1_start))
-and (place_meeting(x, y, obj_level_player_1_start))
-and (obj_level_player_1_start.drag_object == false)
+if (instance_exists(obj_level_player1_start))
+and (place_meeting(x, y, obj_level_player1_start))
+and (obj_level_player1_start.drag_object == false)
+or (instance_exists(obj_level_player2_start))
+and (place_meeting(x, y, obj_level_player2_start))
+and (obj_level_player2_start.drag_object == false)
 {
 	x -= 32;
 }
@@ -182,11 +185,11 @@ or (global.actually_play_edited_level)
 		}
 	}
 	
-	#region /* Destroy the level player 2 start if player 2 has spawned in the level */
+	#region /* Destroy the level player 3 start if player 3 has spawned in the level */
 	if (instance_exists(obj_camera))
 	{
 		instance_destroy();
 	}
-	#endregion /* Destroy the level player 2 start if player 2 has spawned in the level END */
+	#endregion /* Destroy the level player 3 start if player 3 has spawned in the level END */
 	
 }
