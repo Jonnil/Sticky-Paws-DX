@@ -5,12 +5,12 @@ function scr_get_rewards_when_jumped_on()
 		
 		#region /* Rewards */
 		if (instance_exists(obj_player))
-		and (instance_nearest(x, y, obj_player).chain_reaction <= 1)
-		and (number_of_times_stomped < 10)
-		or (other.chain_reaction <= 1)
-		and (number_of_times_stomped < 10)
+		&& (instance_nearest(x, y, obj_player).chain_reaction <= 1)
+		&& (number_of_times_stomped < 10)
+		|| (other.chain_reaction <= 1)
+		&& (number_of_times_stomped < 10)
 		{
-			number_of_times_stomped += 1;
+			number_of_times_stomped ++;
 			
 			#region /* 1 Coin */
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -44,12 +44,12 @@ function scr_get_rewards_when_jumped_on()
 		}
 		else
 		if (instance_exists(obj_player))
-		and (instance_nearest(x, y, obj_player).chain_reaction = 2)
-		and (number_of_times_stomped < 10)
-		or (other.chain_reaction = 2)
-		and (number_of_times_stomped < 10)
+		&& (instance_nearest(x, y, obj_player).chain_reaction = 2)
+		&& (number_of_times_stomped < 10)
+		|| (other.chain_reaction = 2)
+		&& (number_of_times_stomped < 10)
 		{
-			number_of_times_stomped += 1;
+			number_of_times_stomped ++;
 			
 			#region /* 2 Coin */
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -90,12 +90,12 @@ function scr_get_rewards_when_jumped_on()
 		}
 		else
 		if (instance_exists(obj_player))
-		and (instance_nearest(x, y, obj_player).chain_reaction = 3)
-		and (number_of_times_stomped < 10)
-		or (other.chain_reaction = 3)
-		and (number_of_times_stomped < 10)
+		&& (instance_nearest(x, y, obj_player).chain_reaction = 3)
+		&& (number_of_times_stomped < 10)
+		|| (other.chain_reaction = 3)
+		&& (number_of_times_stomped < 10)
 		{
-			number_of_times_stomped += 1;
+			number_of_times_stomped ++;
 			
 			#region /* 4 Coin */
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -150,12 +150,12 @@ function scr_get_rewards_when_jumped_on()
 		}
 		else
 		if (instance_exists(obj_player))
-		and (instance_nearest(x, y, obj_player).chain_reaction = 4)
-		and (number_of_times_stomped < 10)
-		or (other.chain_reaction = 4)
-		and (number_of_times_stomped < 10)
+		&& (instance_nearest(x, y, obj_player).chain_reaction = 4)
+		&& (number_of_times_stomped < 10)
+		|| (other.chain_reaction = 4)
+		&& (number_of_times_stomped < 10)
 		{
-			number_of_times_stomped += 1;
+			number_of_times_stomped ++;
 			
 			#region /* 4 Coin */
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -210,12 +210,12 @@ function scr_get_rewards_when_jumped_on()
 		}
 		else
 		if (instance_exists(obj_player))
-		and (instance_nearest(x, y, obj_player).chain_reaction == 5)
-		and (number_of_times_stomped < 10)
-		or (other.chain_reaction == 5)
-		and (number_of_times_stomped < 10)
+		&& (instance_nearest(x, y, obj_player).chain_reaction == 5)
+		&& (number_of_times_stomped < 10)
+		|| (other.chain_reaction == 5)
+		&& (number_of_times_stomped < 10)
 		{
-			number_of_times_stomped += 1;
+			number_of_times_stomped ++;
 			
 			#region /* 4 Coin */
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -270,12 +270,12 @@ function scr_get_rewards_when_jumped_on()
 		}
 		else
 		if (instance_exists(obj_player))
-		and (instance_nearest(x, y, obj_player).chain_reaction == 6)
-		and (number_of_times_stomped < 10)
-		or (other.chain_reaction == 6)
-		and (number_of_times_stomped < 10)
+		&& (instance_nearest(x, y, obj_player).chain_reaction == 6)
+		&& (number_of_times_stomped < 10)
+		|| (other.chain_reaction == 6)
+		&& (number_of_times_stomped < 10)
 		{
-			number_of_times_stomped += 1;
+			number_of_times_stomped ++;
 			
 			#region /* 4 Coin */
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -330,12 +330,12 @@ function scr_get_rewards_when_jumped_on()
 		}
 		else
 		if (instance_exists(obj_player))
-		and (instance_nearest(x, y, obj_player).chain_reaction == 7)
-		and (number_of_times_stomped < 10)
-		or (other.chain_reaction == 7)
-		and (number_of_times_stomped < 10)
+		&& (instance_nearest(x, y, obj_player).chain_reaction == 7)
+		&& (number_of_times_stomped < 10)
+		|| (other.chain_reaction == 7)
+		&& (number_of_times_stomped < 10)
 		{
-			number_of_times_stomped += 1;
+			number_of_times_stomped ++;
 			
 			#region /* 4 Coin */
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
@@ -390,12 +390,12 @@ function scr_get_rewards_when_jumped_on()
 		}
 		else
 		if (instance_exists(obj_player))
-		and (instance_nearest(x, y, obj_player).chain_reaction >= 8)
-		and (number_of_times_stomped < 10)
-		or (other.chain_reaction >= 8)
-		and (number_of_times_stomped < 10)
+		&& (instance_nearest(x, y, obj_player).chain_reaction >= 8)
+		&& (number_of_times_stomped < 10)
+		|| (other.chain_reaction >= 8)
+		&& (number_of_times_stomped < 10)
 		{
-			number_of_times_stomped += 1;
+			number_of_times_stomped ++;
 			
 			#region /* 4 Coin */
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))

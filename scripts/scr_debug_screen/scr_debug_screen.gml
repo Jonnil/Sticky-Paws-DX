@@ -9,6 +9,9 @@ function scr_debug_screen()
 	var fps_real_y = 96;
 	var instance_count_y = 128;
 	var all_instance_count_y = 160;
+	var player_xy_y = 160;
+	var display_y = 32
+	var d3d11_y = 64;
 	
 	var fps_real_target = (os_type == os_switch) ? 60 : 250;
 	var instance_count_target = 200;
@@ -29,14 +32,13 @@ function scr_debug_screen()
 		show_debug_overlay(global.debug_screen);
 	}
 	
-	if (global.debug_screen && keyboard_check_pressed(vk_f1))
+	if (global.debug_screen && keyboard_check_pressed(vk_f2))
 	{
 		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			score_up = "gc_collect();";
+			score_up = "Save OS information to os_info.ini";
 		}
-		gc_enable(true);
-		gc_collect();
+		scr_save_os_info_ini();
 	}
 	
 	if (global.debug_screen)
@@ -53,7 +55,7 @@ function scr_debug_screen()
 				global.show_fps = !global.show_fps;
 				ini_open(working_directory + "config.ini");
 				ini_write_real("config", "show_fps", global.show_fps);
-				ini_close();
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 		}
 		#endregion /* Click on FPS to toggle if it should stay on screen even after you close debug screen END */
@@ -69,7 +71,7 @@ function scr_debug_screen()
 				global.show_fps_real = !global.show_fps_real;
 				ini_open(working_directory + "config.ini");
 				ini_write_real("config", "show_fps_real", global.show_fps_real);
-				ini_close();
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 		}
 		#endregion /* Click on FPS Real to toggle if it should stay on screen even after you close debug screen END */
@@ -85,7 +87,7 @@ function scr_debug_screen()
 				global.show_instance_count = !global.show_instance_count;
 				ini_open(working_directory + "config.ini");
 				ini_write_real("config", "show_instance_count", global.show_instance_count);
-				ini_close();
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 		}
 		#endregion /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen END */
@@ -112,7 +114,6 @@ function scr_debug_screen()
 		else
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press F3 to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Press F1 to use gc_collect()"), global.default_text_size * 0.75, c_black, c_white, 1);
 		}
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
@@ -131,11 +132,11 @@ function scr_debug_screen()
 		
 		if (fps >= global.max_fps)
 		{
-			scr_draw_text_outlined(32, fps_y, l10n_text("FPS") + ": " + string(fps) + " / " + string(global.max_fps), global.default_text_size, noone, c_lime, 1);
+			scr_draw_text_outlined(32, fps_y, l10n_text("FPS") + ": " + string(fps) + "/" + string(global.max_fps), global.default_text_size, c_black, c_lime, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(32, fps_y, l10n_text("FPS") + ": " + string(fps) + " / " + string(global.max_fps), global.default_text_size, noone, make_color_hsv(50 / global.max_fps * fps, 255, 255), 1);
+			scr_draw_text_outlined(32, fps_y, l10n_text("FPS") + ": " + string(fps) + "/" + string(global.max_fps), global.default_text_size, c_black, make_color_hsv(50 / global.max_fps * fps, 255, 255), 1);
 		}
 	}
 	#endregion /* FPS END */
@@ -153,15 +154,15 @@ function scr_debug_screen()
 		#region /* FPS Real Rating */
 		if (fps_real >= fps_real_target)
 		{
-			scr_draw_text_outlined(32, fps_real_y, l10n_text("FPS Real") + ": " + string(fps_real), global.default_text_size, noone, c_lime, 1);
-			scr_draw_text_outlined(320, fps_real_y + scr_wave(-3, +3, 0.5), l10n_text("GOOD"), global.default_text_size, noone, c_lime, 1);
-			scr_draw_text_outlined(420, fps_real_y + scr_wave(-3, +3, 0.5), ">" + string(fps_real_target), global.default_text_size * 0.5, noone, c_lime, 1);
+			scr_draw_text_outlined(32, fps_real_y, l10n_text("FPS Real") + ": " + string(fps_real), global.default_text_size, c_black, c_lime, 1);
+			scr_draw_text_outlined(320, fps_real_y + scr_wave(-3, +3, 0.5), l10n_text("GOOD"), global.default_text_size, c_black, c_lime, 1);
+			scr_draw_text_outlined(420, fps_real_y + scr_wave(-3, +3, 0.5), ">" + string(fps_real_target), global.default_text_size * 0.5, c_black, c_lime, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(32, fps_real_y, l10n_text("FPS Real") + ": " + string(fps_real), global.default_text_size, noone, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
-			scr_draw_text_outlined(320, fps_real_y, l10n_text("BAD"), global.default_text_size, noone, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
-			scr_draw_text_outlined(420, fps_real_y, "<" + string(fps_real_target), global.default_text_size * 0.5, noone, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
+			scr_draw_text_outlined(32, fps_real_y, l10n_text("FPS Real") + ": " + string(fps_real), global.default_text_size, c_black, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
+			scr_draw_text_outlined(320, fps_real_y, l10n_text("BAD"), global.default_text_size, c_black, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
+			scr_draw_text_outlined(420, fps_real_y, "<" + string(fps_real_target), global.default_text_size * 0.5, c_black, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
 		}
 		#endregion /* FPS Real Rating END */
 		
@@ -207,18 +208,72 @@ function scr_debug_screen()
 	}
 	#endregion /* All Instance Count END */
 	
+	#region /* X and Y position of player */
+	if (global.debug_screen)
+	{
+		if (instance_exists(obj_camera))
+		&& (instance_exists(obj_camera.player1))
+		{
+			var get_player = obj_camera.player1;
+		}
+		else
+		if (instance_exists(obj_camera))
+		&& (instance_exists(obj_camera.player2))
+		{
+			var get_player = obj_camera.player2;
+		}
+		else
+		if (instance_exists(obj_camera))
+		&& (instance_exists(obj_camera.player3))
+		{
+			var get_player = obj_camera.player3;
+		}
+		else
+		if (instance_exists(obj_camera))
+		&& (instance_exists(obj_camera.player4))
+		{
+			var get_player = obj_camera.player4;
+		}
+		else
+		if (instance_exists(obj_player_map))
+		{
+			var get_player = obj_player_map;
+		}
+		else
+		{
+			var get_player = noone;
+		}
+		if (get_player != noone)
+		{
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_middle);
+			scr_draw_text_outlined(32, player_xy_y, "X: " + string(get_player.x) + " Y: " + string(get_player.y), global.default_text_size, c_black, c_white, 1);
+		}
+	}
+	#endregion /* X and Y position of player END */
+	
+	if (global.debug_screen)
+	{
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_middle);
+		var _info = os_get_info();
+		scr_draw_text_outlined(display_get_gui_width() - 32, display_y, "Display: " + string(window_get_width()) + "x" + string(window_get_height()), global.default_text_size, c_black, c_white, 1);
+		if (_info[? "video_adapter_description"] != undefined)
+		{
+			scr_draw_text_outlined(display_get_gui_width() - 32, d3d11_y, string(_info[? "video_adapter_description"]), global.default_text_size, c_black, c_white, 1);
+		}
+	}
+	
 	#region /* Controller ports */
 	if (os_type == os_switch)
 	{
-		var description0 = gamepad_get_description(0);
-		var description1 = gamepad_get_description(1);
-		
-		if ((description0 == "Handheld" || description1 == "Handheld") && (description1 != "" || description0 != ""))
+		if (gamepad_get_description(0) == "Handheld" && gamepad_get_description(1) != "")
+		|| (gamepad_get_description(0) == "" && gamepad_get_description(1) != "")
 		{
-			global.player1_slot = 0;
-			global.player2_slot = 1;
-			global.player3_slot = 2;
-			global.player4_slot = 3;
+			global.player1_slot = 1;
+			global.player2_slot = 2;
+			global.player3_slot = 3;
+			global.player4_slot = 4;
 		}
 		else
 		{
@@ -244,36 +299,42 @@ function scr_debug_screen()
 		
 		if (gamepad_get_description(0) != "")
 		{
-			scr_draw_text_outlined(32, 320, "gamepad(0): " + string(gamepad_get_description(0)));
+			scr_draw_text_outlined(32, 320, "gamepad(0): " + string(gamepad_get_description(0)), global.default_text_size, c_black, c_white);
 		}
 		if (gamepad_get_description(1) != "")
 		{
-			scr_draw_text_outlined(32, 340, "gamepad(1): " + string(gamepad_get_description(1)));
+			scr_draw_text_outlined(32, 340, "gamepad(1): " + string(gamepad_get_description(1)), global.default_text_size, c_black, c_white);
 		}
 		if (gamepad_get_description(2) != "")
 		{
-			scr_draw_text_outlined(32, 360, "gamepad(2): " + string(gamepad_get_description(2)));
+			scr_draw_text_outlined(32, 360, "gamepad(2): " + string(gamepad_get_description(2)), global.default_text_size, c_black, c_white);
 		}
 		if (gamepad_get_description(3) != "")
 		{
-			scr_draw_text_outlined(32, 380, "gamepad(3): " + string(gamepad_get_description(3)));
+			scr_draw_text_outlined(32, 380, "gamepad(3): " + string(gamepad_get_description(3)), global.default_text_size, c_black, c_white);
 		}
 		if (gamepad_get_description(4) != "")
 		{
-			scr_draw_text_outlined(32, 400, "gamepad(4): " + string(gamepad_get_description(4)));
+			scr_draw_text_outlined(32, 400, "gamepad(4): " + string(gamepad_get_description(4)), global.default_text_size, c_black, c_white);
 		}
-		scr_draw_text_outlined(32, 420, "player1_slot: " + string(global.player1_slot));
-		scr_draw_text_outlined(32, 440, "player2_slot: " + string(global.player2_slot));
-		scr_draw_text_outlined(32, 460, "player3_slot: " + string(global.player3_slot));
-		scr_draw_text_outlined(32, 480, "player4_slot: " + string(global.player4_slot));
+		
+		scr_draw_text_outlined(32, 420, "player slots: " + string(global.player1_slot) + ", " + string(global.player2_slot) + ", " + string(global.player3_slot) + ", " + string(global.player4_slot), global.default_text_size, c_black, c_white);
+		
+		if (variable_instance_exists(self, "menu"))
+		&& (variable_instance_exists(self, "menu_delay"))
+		{
+			scr_draw_text_outlined(32, 440, "menu: " + string(menu) + "     menu_delay: " + string(menu_delay), global.default_text_size, c_black, c_white);
+		}
+		
+		scr_draw_text_outlined(32, 460, "player_menu[1]: " + string(player_menu[1]), global.default_text_size, c_black, c_white);
 		
 		draw_set_halign(fa_center);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)));
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)), global.default_text_size, c_black, c_white);
 	}
 	
 	if (global.debug_screen)
-	and (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 32))
-	and (global.controls_used_for_menu_navigation == "mouse")
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 32))
+	&& (global.controls_used_for_menu_navigation == "mouse")
 	{
 		draw_set_alpha(0.5);
 		draw_rectangle_color(0, 0, 370, 32, c_white, c_white, c_white, c_white, false);

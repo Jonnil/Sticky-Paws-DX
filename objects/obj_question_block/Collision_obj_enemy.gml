@@ -1,17 +1,17 @@
 #region /* Collision Event with enemy */
 if (bounce_up == false)
-and (asset_get_type("obj_player") == asset_object)
-and (asset_get_type("obj_wall") == asset_object)
+&& (asset_get_type("obj_player") == asset_object)
+&& (asset_get_type("obj_wall") == asset_object)
 {
 	if (asset_get_type("obj_enemy") == asset_object)
-	and (instance_exists(obj_enemy))
-	and (place_meeting(x, bbox_bottom, obj_enemy))
-	and (instance_nearest(x, y, obj_enemy).vspeed < 0)
-	and (can_be_hit_from_below)
+	&& (instance_exists(obj_enemy))
+	&& (place_meeting(x, bbox_bottom, obj_enemy))
+	&& (instance_nearest(x, y, obj_enemy).vspeed < 0)
+	&& (can_be_hit_from_below)
 	{
 		if (asset_get_type("obj_enemy") == asset_object)
-		and (instance_exists(obj_enemy))
-		and (instance_nearest(x, y, obj_enemy).vspeed < 0)
+		&& (instance_exists(obj_enemy))
+		&& (instance_nearest(x, y, obj_enemy).vspeed < 0)
 		{
 			instance_nearest(x, y, obj_enemy).vspeed = 0;
 			if (asset_get_type("obj_block_break") == asset_object)
@@ -29,7 +29,7 @@ and (asset_get_type("obj_wall") == asset_object)
 		if (empty == false)
 		{
 			if (instance_exists(obj_player))
-			and (asset_get_type("scr_gamepad_vibration") == asset_script)
+			&& (asset_get_type("scr_gamepad_vibration") == asset_script)
 			{
 				scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
 			}

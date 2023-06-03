@@ -27,7 +27,7 @@ function scr_initialize_virtual_button(key_1, key_2, key_x, key_y, key_sprite, m
 	if (key_sprite > noone)
 	{
 		if (keyboard_check(key_1))
-		or (keyboard_check(key_2))
+		|| (keyboard_check(key_2))
 		{
 			draw_sprite_ext(key_sprite, 0, key_x, key_y, 0.95, 0.95, angle, c_gray, 0.5);
 		}

@@ -42,7 +42,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 			sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, what_player, what_selected_skin);
 			var saved_file_exists = true;
 		}
-		index += 1;
+		index ++;
 	}
 	if (file_exists("characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + ".png"))
 	{
@@ -85,7 +85,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		
 		#region /* x and y origin points */
 		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
-		and (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
+		&& (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
 			sprite_set_offset(sprite_variable,
 			ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", sprite_get_width(sprite_variable) * 0.5),
@@ -93,7 +93,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		}
 		else
 		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
-		and (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
+		&& (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
 			if (can_save_to_character_config)
 			{
@@ -105,7 +105,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		}
 		else
 		if (!ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
-		and (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
+		&& (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_yorig"))
 		{
 			if (can_save_to_character_config)
 			{
@@ -126,7 +126,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		}
 		#endregion /* x and y origin points END */
 		
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* Origin points END */
 	
@@ -134,7 +134,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 	
 	#region /* If the sprite doesn't exist, but there are still origin points saved for that sprite, then delete those origin points from sprite_origin_point.ini, but save the unused origin points in unused_sprite_origin_point.ini */
 	if (saved_file_exists == false)
-	and (file_exists(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini"))
+	&& (file_exists(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini"))
 	{
 		ini_open(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini");
 		
@@ -164,7 +164,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		}
 		#endregion /* Save unused x and y origin points just in case it's still useful for something END */
 		
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* If the sprite doesn't exist, but there are still origin points saved for that sprite, then delete those origin points from sprite_origin_point.ini, but save the unused origin points in unused_sprite_origin_point.ini END */
 	

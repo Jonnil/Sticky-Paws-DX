@@ -277,41 +277,41 @@ function scr_player_move_customizable_controls()
 	#region /* Key Left Hold */
 	key_left_hold =
 	(key_left_hold_temp)
-	and (!key_right_hold_temp)
-	or (active_left);
+	&& (!key_right_hold_temp)
+	|| (active_left);
 	#endregion /* Key Left Hold END */
 	
 	#region /* Key Left Pressed */
 	key_left_pressed =
 	(key_left_pressed_temp)
-	and (!key_right_pressed_temp)
+	&& (!key_right_pressed_temp)
 	#endregion /* Key Left Pressed END */
 	
 	#region /* Key Right Hold */
 	key_right_hold =
 	(key_right_hold_temp)
-	and (!key_left_hold_temp)
-	or (active_right);
+	&& (!key_left_hold_temp)
+	|| (active_right);
 	#endregion /* Key Right Hold END */
 	
 	#region /* Key Right Pressed */
 	key_right_pressed =
 	(key_right_pressed_temp)
-	and (!key_left_pressed_temp)
+	&& (!key_left_pressed_temp)
 	#endregion /* Key Right Pressed END */
 	
 	#region /* Key Down Hold */
 	key_down =
 	(key_down_hold_temp)
-	and (!key_up_hold_temp)
-	or (active_down);
+	&& (!key_up_hold_temp)
+	|| (active_down);
 	#endregion /* Key Down Hold END */
 	
 	#region /* Key Up Hold */
 	key_up =
 	(key_up_hold_temp)
-	and (!key_down_hold_temp)
-	or (active_up);
+	&& (!key_down_hold_temp)
+	|| (active_up);
 	#endregion /* Key Up Hold END */
 	
 	#region /* Key Up Pressed */
@@ -324,10 +324,10 @@ function scr_player_move_customizable_controls()
 	
 	key_jump =
 	(key_jump_pressed_temp)
-	or (variable_instance_exists(self, "up_is_also_jump"))
-	and (up_is_also_jump)
-	and (key_up_pressed)
-	or (active_jump);
+	|| (variable_instance_exists(self, "up_is_also_jump"))
+	&& (up_is_also_jump)
+	&& (key_up_pressed)
+	|| (active_jump);
 	#endregion /* Key Jump Pressed END */
 	
 	#region /* Key Jump Hold */
@@ -335,10 +335,10 @@ function scr_player_move_customizable_controls()
 	
 	key_jump_hold =
 	(key_jump_hold_temp)
-	or (variable_instance_exists(self, "up_is_also_jump"))
-	and (up_is_also_jump)
-	and (key_up)
-	or (active_jump);
+	|| (variable_instance_exists(self, "up_is_also_jump"))
+	&& (up_is_also_jump)
+	&& (key_up)
+	|| (active_jump);
 	#endregion /* Key Jump Hold END */
 	
 	#region /* Key Jump Released */
@@ -346,9 +346,9 @@ function scr_player_move_customizable_controls()
 	
 	key_jump_released =
 	(key_jump_released_temp)
-	or (variable_instance_exists(self, "up_is_also_jump"))
-	and (up_is_also_jump)
-	and (key_up_released_temp)
+	|| (variable_instance_exists(self, "up_is_also_jump"))
+	&& (up_is_also_jump)
+	&& (key_up_released_temp)
 	#endregion /* Key Jump Released END */
 	
 	#region /* Key Double Jump Pressed */
@@ -360,14 +360,14 @@ function scr_player_move_customizable_controls()
 	
 	key_crouch_hold =
 	(key_crouch_hold_temp)
-	or (player <= 1)
-	and (global.player1_crouch_toggle)
-	or (player == 2)
-	and (global.player2_crouch_toggle)
-	or (player == 3)
-	and (global.player3_crouch_toggle)
-	or (player >= 4)
-	and (global.player4_crouch_toggle);
+	|| (player <= 1)
+	&& (global.player1_crouch_toggle)
+	|| (player == 2)
+	&& (global.player2_crouch_toggle)
+	|| (player == 3)
+	&& (global.player3_crouch_toggle)
+	|| (player >= 4)
+	&& (global.player4_crouch_toggle);
 	#endregion /* Key Crouch Hold END */
 	
 	#region /* Key Crouch Pressed */
@@ -382,14 +382,14 @@ function scr_player_move_customizable_controls()
 	
 	key_sprint =
 	(key_sprint_hold_temp)
-	or (player <= 1)
-	and (global.player1_sprint_toggle)
-	or (player == 2)
-	and (global.player2_sprint_toggle)
-	or (player == 3)
-	and (global.player3_sprint_toggle)
-	or (player >= 4)
-	and (global.player4_sprint_toggle);
+	|| (player <= 1)
+	&& (global.player1_sprint_toggle)
+	|| (player == 2)
+	&& (global.player2_sprint_toggle)
+	|| (player == 3)
+	&& (global.player3_sprint_toggle)
+	|| (player >= 4)
+	&& (global.player4_sprint_toggle);
 	#endregion /* Key Sprint Hold END */
 	
 	key_sprint_pressed = scr_key_initialize(key_sprint_pressed, 1, player, action.sprint);
@@ -398,17 +398,17 @@ function scr_player_move_customizable_controls()
 	#region /* Key Spin Hold */
 	key_spin =
 	(gamepad_button_check(player_gamepad_slot, gp_shoulderl))
-	or (gamepad_button_check(player_gamepad_slot, gp_shoulderlb))
-	or (gamepad_button_check(player_gamepad_slot, gp_shoulderr))
-	or (gamepad_button_check(player_gamepad_slot, gp_shoulderrb));
+	|| (gamepad_button_check(player_gamepad_slot, gp_shoulderlb))
+	|| (gamepad_button_check(player_gamepad_slot, gp_shoulderr))
+	|| (gamepad_button_check(player_gamepad_slot, gp_shoulderrb));
 	#endregion /* Key Spin Hold */
 	
 	#region /* Key Spin Pressed */
 	key_spin_pressed =
 	(gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderl))
-	or (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderlb))
-	or (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderr))
-	or (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderrb));
+	|| (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderlb))
+	|| (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderr))
+	|| (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderrb));
 	#endregion /* Key Spin Pressed END */
 	
 	#region /* Key Always Do Full Jump */

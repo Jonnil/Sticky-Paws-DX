@@ -19,16 +19,16 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	if (global.language_localization != real(string_delete(menu_index, 1, 8))-1)
 	{
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (menu != "assist_enable")
-		and (input_key == false)
-		and (open_dropdown == false)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.assist_enable)
-		and (menu == "assist_enable")
-		and (input_key == false)
-		and (open_dropdown == false)
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (menu != "assist_enable")
+		&& (input_key == false)
+		&& (open_dropdown == false)
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.assist_enable)
+		&& (menu == "assist_enable")
+		&& (input_key == false)
+		&& (open_dropdown == false)
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset, c_white, c_white, c_white, c_white, false);
@@ -48,23 +48,23 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	else
 	{
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (menu != "assist_enable")
-		and (input_key == false)
-		and (open_dropdown == false)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (global.assist_enable)
-		and (menu == "assist_enable")
-		and (input_key == false)
-		and (open_dropdown == false)
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (menu != "assist_enable")
+		&& (input_key == false)
+		&& (open_dropdown == false)
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.assist_enable)
+		&& (menu == "assist_enable")
+		&& (input_key == false)
+		&& (open_dropdown == false)
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			draw_sprite_ext(spr_menu_checkmark, 1, x_position + 42, y_position, 1, 1, 0, c_lime, 1);
 			if (input_key == false)
-			and (open_dropdown == false)
+			&& (open_dropdown == false)
 			{
 				menu = menu_index;
 				language_index = real(string_delete(menu_index, 1, 8))
@@ -86,18 +86,18 @@ function draw_language_checkmark(x_position, y_position, string_text, menu_index
 	
 	#region /* Clicking the menu button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-	and (mouse_check_button_released(mb_left))
-	and (global.controls_used_for_menu_navigation == "mouse")
-	and (menu != "assist_enable")
-	and (input_key == false)
-	and (open_dropdown == false)
-	or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-	and (mouse_check_button_released(mb_left))
-	and (global.controls_used_for_menu_navigation == "mouse")
-	and (global.assist_enable)
-	and (menu == "assist_enable")
-	and (input_key == false)
-	and (open_dropdown == false)
+	&& (mouse_check_button_released(mb_left))
+	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (menu != "assist_enable")
+	&& (input_key == false)
+	&& (open_dropdown == false)
+	|| (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
+	&& (mouse_check_button_released(mb_left))
+	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.assist_enable)
+	&& (menu == "assist_enable")
+	&& (input_key == false)
+	&& (open_dropdown == false)
 	{	
 		global.language_localization = real(string_delete(menu_index, 1, 8)-1);
 		calculate_translation_completion()

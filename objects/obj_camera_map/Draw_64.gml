@@ -1,14 +1,14 @@
 scr_zoom_camera_draw_gui(10);
 
 if (global.convention_mode)
-and (!instance_exists(obj_title))
+&& (!instance_exists(obj_title))
 {
-	reset_game_if_no_interactivity += 1;
-	reset_game_if_no_interactivity_second_countdown_timer += 1;
+	reset_game_if_no_interactivity ++;
+	reset_game_if_no_interactivity_second_countdown_timer ++;
 	if (reset_game_if_no_interactivity_second_countdown_timer >= 60)
 	{
 		reset_game_if_no_interactivity_second_countdown_timer = 0;
-		reset_game_if_no_interactivity_second_countdown -= 1;
+		reset_game_if_no_interactivity_second_countdown --;
 	}
 	if (reset_game_if_no_interactivity >= 3600)
 	{
@@ -16,8 +16,8 @@ and (!instance_exists(obj_title))
 	}
 }
 if (global.convention_mode)
-and (!instance_exists(obj_title))
-and (reset_game_if_no_interactivity_second_countdown <= 30)
+&& (!instance_exists(obj_title))
+&& (reset_game_if_no_interactivity_second_countdown <= 30)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);

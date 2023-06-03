@@ -3,7 +3,7 @@ function scr_player_move_roll_when_landing()
 	
 	#region /* Roll when landing */
 	if (allow_roll)
-	and (on_ground)
+	&& (on_ground)
 	{
 		if (y > last_standing_y + 4)
 		{

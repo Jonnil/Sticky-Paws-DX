@@ -1,10 +1,10 @@
 #region /* Turn around */
 if (die == false)
-and (sliding_along_ground == 0)
-and (other.die == false)
+&& (sliding_along_ground == 0)
+&& (other.die == false)
 {
 	if (!place_meeting(x, y, obj_bullet))
-	and (!place_meeting(x, y, obj_arrow))
+	&& (!place_meeting(x, y, obj_arrow))
 	{
 		while(place_meeting(x, y, other))
 		{
@@ -13,14 +13,14 @@ and (other.die == false)
 		}
 	}
 	if (position_meeting(bbox_left - 1, y, other))
-	and (!position_meeting(bbox_left - 1, y, obj_bullet))
-	and (!position_meeting(bbox_left - 1, y, obj_arrow))
+	&& (!position_meeting(bbox_left - 1, y, obj_bullet))
+	&& (!position_meeting(bbox_left - 1, y, obj_arrow))
 	{
 		image_xscale = +1;
 	}
 	if (position_meeting(bbox_right + 1, y, other))
-	and (!position_meeting(bbox_right + 1, y, obj_bullet))
-	and (!position_meeting(bbox_right + 1, y, obj_arrow))
+	&& (!position_meeting(bbox_right + 1, y, obj_bullet))
+	&& (!position_meeting(bbox_right + 1, y, obj_arrow))
 	{
 		image_xscale = -1;
 	}
@@ -28,15 +28,15 @@ and (other.die == false)
 #endregion /* Turn around END */
 
 if (sliding_along_ground == +1)
-and (other.die == false)
-and (die == false)
-and (die_volting == false)
-and (other.die_volting == false)
-or (sliding_along_ground == -1)
-and (other.die == false)
-and (die == false)
-and (die_volting == false)
-and (other.die_volting == false)
+&& (other.die == false)
+&& (die == false)
+&& (die_volting == false)
+&& (other.die_volting == false)
+|| (sliding_along_ground == -1)
+&& (other.die == false)
+&& (die == false)
+&& (die_volting == false)
+&& (other.die_volting == false)
 {
 	if (other.x < x)
 	{
@@ -69,15 +69,15 @@ and (other.die_volting == false)
 }
 
 if (die == false)
-and (die_volting == false)
-and (other.die_volting == false)
-and (other.speed > speed)
-and (other.flat)
-and (other.sliding_along_ground == 0)
+&& (die_volting == false)
+&& (other.die_volting == false)
+&& (other.speed > speed)
+&& (other.flat)
+&& (other.sliding_along_ground == 0)
 {
 	if (die_volting == false)
 	{
-		global.enemy_counter += 1;
+		global.enemy_counter ++;
 		if (other.x < x)
 		{
 			vspeed = - 8;
@@ -92,7 +92,7 @@ and (other.sliding_along_ground == 0)
 		}
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 		if (asset_get_type("obj_player") == asset_object)
-		and (instance_exists(obj_player))
+		&& (instance_exists(obj_player))
 		{
 			scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.5, 10);
 		}

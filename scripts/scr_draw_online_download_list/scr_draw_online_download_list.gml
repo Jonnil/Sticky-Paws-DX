@@ -37,6 +37,22 @@ function scr_draw_online_download_list()
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
 		#endregion /* Draw loading screen when loading download list END */
 		
+		if (!os_is_network_connected())
+		{
+			if (content_type == "character")
+			{
+				in_online_download_list_menu = false;
+				menu = "no_internet_character";
+			}
+			else
+			if (content_type == "level")
+			{
+				in_online_download_list_menu = false;
+				select_custom_level_menu_open = true;
+				show_level_editor_corner_menu = false;
+				menu = "no_internet_level";
+			}
+		}
 	}
 	else
 	if (in_online_download_list_menu)
@@ -58,10 +74,10 @@ function scr_draw_online_download_list()
 		
 		#region /* Pressing the Back button */
 		if (key_b_pressed)
-		or (menu = "download_online_back")
-		and (key_a_pressed)
-		or (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 0, 370, 42))
-		and (mouse_check_button_released(mb_left))
+		|| (menu = "download_online_back")
+		&& (key_a_pressed)
+		|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 0, 370, 42))
+		&& (mouse_check_button_released(mb_left))
 		{
 			if (menu_delay == 0)
 			{
@@ -89,10 +105,10 @@ function scr_draw_online_download_list()
 		
 		#region /* Pressing the Search ID button */
 		if (menu = "download_online_search_id")
-		and (key_a_pressed)
-		or (menu = "download_online_search_id")
-		and (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42, 370, 42 + 42))
-		and (mouse_check_button_released(mb_left))
+		&& (key_a_pressed)
+		|| (menu = "download_online_search_id")
+		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42, 370, 42 + 42))
+		&& (mouse_check_button_released(mb_left))
 		{
 			in_online_download_list_menu = false; /* Get out of the online download list menu */
 			automatically_search_id = false; /* Manual search ID */
@@ -106,7 +122,7 @@ function scr_draw_online_download_list()
 		
 		#region /* If there is no data, then apply the retrieved download data to it */
 		if (data == noone)
-		and (in_online_download_list_menu)
+		&& (in_online_download_list_menu)
 		{
 			
 			#region /* Draw loading screen when loading download list */
@@ -119,8 +135,8 @@ function scr_draw_online_download_list()
 			
 			#region /* If there is an online download list loaded, interpret that as a struct using "json parse" */
 			if (global.online_download_list != "")
-			and (global.online_download_list != "HTTP request exception")
-			and (global.online_download_list != "Unauthorized")
+			&& (global.online_download_list != "HTTP request exception")
+			&& (global.online_download_list != "Unauthorized")
 			{
 				data = json_parse(global.online_download_list); /* When there is data here, then go to the online downloads menu */
 			}
@@ -143,7 +159,7 @@ function scr_draw_online_download_list()
 		
 		#region /* If there is data, then show an online downloads menu */
 		if (data != noone)
-		and (menu != "search_id_ok")
+		&& (menu != "search_id_ok")
 		{
 			scr_scroll_menu();
 			
@@ -155,7 +171,7 @@ function scr_draw_online_download_list()
 				var online_download_index = 0;
 				for (var i = 0; i < num_items; i++;)
 				{
-					online_download_index += 1;
+					online_download_index ++;
 					var download_online_x = 100;
 					var download_online_y = 32 + (44 * i);
 					draw_menu_button(download_online_x, 64 + download_online_y + menu_y_offset, "Download", "download_online_" + string(online_download_index), "download_online_" + string(online_download_index));
@@ -179,8 +195,8 @@ function scr_draw_online_download_list()
 						
 						#region /* Download selected file when pressing A */
 						if (key_a_pressed)
-						or (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x, 64 + download_online_y + menu_y_offset, download_online_x + 370, 64 + download_online_y + menu_y_offset + 41))
-						and (mouse_check_button_released(mb_left))
+						|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x, 64 + download_online_y + menu_y_offset, download_online_x + 370, 64 + download_online_y + menu_y_offset + 41))
+						&& (mouse_check_button_released(mb_left))
 						{
 							if (menu_delay == 0)
 							{
@@ -228,12 +244,12 @@ function scr_draw_online_download_list()
 			}
 			
 			if (info_data == noone)
-			and (in_online_download_list_menu)
+			&& (in_online_download_list_menu)
 			{
 				/* If there is an online download list information loaded, interpret that as a struct using "json parse" */
 				if (global.online_download_list_info != "")
-				and (global.online_download_list_info != "HTTP request exception")
-				and (global.online_download_list_info != "Unauthorized")
+				&& (global.online_download_list_info != "HTTP request exception")
+				&& (global.online_download_list_info != "Unauthorized")
 				{
 					info_data = json_parse(global.online_download_list_info); /* When there is data here, then go to the online downloads menu */
 				}
@@ -280,14 +296,14 @@ function scr_draw_online_download_list()
 			if (menu == "download_online_back")
 			{
 				if (key_up)
-				and (menu_delay == 0)
+				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(num_items);
 				}
 				else
 				if (key_down)
-				and (menu_delay == 0)
+				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_search_id";
@@ -297,14 +313,14 @@ function scr_draw_online_download_list()
 			if (menu == "download_online_search_id")
 			{
 				if (key_up)
-				and (menu_delay == 0)
+				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_back";
 				}
 				else
 				if (key_down)
-				and (menu_delay == 0)
+				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_1";
@@ -314,14 +330,14 @@ function scr_draw_online_download_list()
 			if (menu == "download_online_1")
 			{
 				if (key_up)
-				and (menu_delay == 0)
+				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_search_id";
 				}
 				else
 				if (key_down)
-				and (menu_delay == 0)
+				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
 					if (num_items >= 2)
@@ -338,22 +354,22 @@ function scr_draw_online_download_list()
 			if (menu == "download_online_" + string(selected_online_download_index))
 			{
 				if (key_up)
-				and (menu_delay == 0)
+				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(selected_online_download_index - 1);
 				}
 				else
 				if (key_down)
-				and (menu_delay == 0)
-				and (selected_online_download_index < num_items)
+				&& (menu_delay == 0)
+				&& (selected_online_download_index < num_items)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(selected_online_download_index + 1);
 				}
 				else
 				if (key_down)
-				and (menu_delay == 0)
+				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_back";
@@ -364,5 +380,21 @@ function scr_draw_online_download_list()
 		}
 		#endregion /* If there is data, then show an online downloads menu END */
 		
+		if (!os_is_network_connected())
+		{
+			if (content_type == "character")
+			{
+				in_online_download_list_menu = false;
+				menu = "no_internet_character";
+			}
+			else
+			if (content_type == "level")
+			{
+				in_online_download_list_menu = false;
+				select_custom_level_menu_open = true;
+				show_level_editor_corner_menu = false;
+				menu = "no_internet_level";
+			}
+		}
 	}
 }

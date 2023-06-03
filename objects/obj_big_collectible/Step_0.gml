@@ -6,37 +6,37 @@ if (bounce_up == false)
 	}
 }
 if (bounce_up == false)
-and (instance_exists(obj_player))
+&& (instance_exists(obj_player))
 {
 	if (place_meeting(bbox_left, y, obj_player))
-	or (place_meeting(bbox_right, y, obj_player))
-	or (place_meeting(x, bbox_top, obj_player))
-	or (place_meeting(x, bbox_bottom, obj_player))
+	|| (place_meeting(bbox_right, y, obj_player))
+	|| (place_meeting(x, bbox_top, obj_player))
+	|| (place_meeting(x, bbox_bottom, obj_player))
 	{
 		if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-		and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_semisolid_platform, false, true))
+		&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_semisolid_platform, false, true))
 		{
 			follow_player = true;
 		}
 	}
 }
 if (follow_player)
-and (place_meeting(x, y + 16, obj_wall))
-or (follow_player)
-and (place_meeting(x, y + 16, obj_semisolid_platform))
-or (follow_player)
-and (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).horizontal_rope_climb)
-or (follow_player)
-and (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).climb)
-or (follow_player)
-and (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
-or (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
-and (instance_nearest(x, y, obj_enemy_bowlingball).flat)
-and (instance_nearest(x, y, obj_enemy_bowlingball).die == false)
-and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
+&& (place_meeting(x, y + 16, obj_wall))
+|| (follow_player)
+&& (place_meeting(x, y + 16, obj_semisolid_platform))
+|| (follow_player)
+&& (instance_exists(obj_player))
+&& (instance_nearest(x, y, obj_player).horizontal_rope_climb)
+|| (follow_player)
+&& (instance_exists(obj_player))
+&& (instance_nearest(x, y, obj_player).climb)
+|| (follow_player)
+&& (instance_exists(obj_player))
+&& (instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
+|| (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
+&& (instance_nearest(x, y, obj_enemy_bowlingball).flat)
+&& (instance_nearest(x, y, obj_enemy_bowlingball).die == false)
+&& (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 {
 	effect_create_above(ef_ring, x, y, 2, c_white);
 	
@@ -91,7 +91,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 			
 			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			ini_write_real(level_name, "big_collectible1", true);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		else
 		if (global.character_select_in_this_menu == "level_editor")
@@ -103,7 +103,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 			
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible1", true);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 	}
 	if (big_collectible == 2)
@@ -125,7 +125,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 			
 			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			ini_write_real(level_name, "big_collectible2", true);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		else
 		if (global.character_select_in_this_menu == "level_editor")
@@ -137,7 +137,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 			
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible2", true);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 	}
 	if (big_collectible == 3)
@@ -159,7 +159,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 			
 			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			ini_write_real(level_name, "big_collectible3", true);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		else
 		if (global.character_select_in_this_menu == "level_editor")
@@ -171,7 +171,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 			
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible3", true);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 	}
 	if (big_collectible == 4)
@@ -193,7 +193,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 			
 			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			ini_write_real(level_name, "big_collectible4", true);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		else
 		if (global.character_select_in_this_menu == "level_editor")
@@ -205,7 +205,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 			
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible4", true);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 	}
 	if (big_collectible >= 5)
@@ -227,7 +227,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 			
 			ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 			ini_write_real(level_name, "big_collectible5", true);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		else
 		if (global.character_select_in_this_menu == "level_editor")
@@ -239,7 +239,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 			
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible5", true);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 	}
 	#endregion /* What Big Collectible is this? END */
@@ -253,7 +253,7 @@ and (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 if (follow_player)
 {
 	if (instance_exists(obj_player))
-	and (distance_to_object(obj_player) < sprite_height + sprite_width)
+	&& (distance_to_object(obj_player) < sprite_height + sprite_width)
 	{
 		
 		#region /* Show Big Collectible HUD */
@@ -274,7 +274,7 @@ if (follow_player)
 		x = lerp(x, xstart, 0.5);
 		y = lerp(y, ystart, 0.5);
 		if (x = xstart)
-		and (y = ystart)
+		&& (y = ystart)
 		{
 			follow_player = false;
 		}
@@ -306,7 +306,7 @@ if (bounce_up)
 		gravity_direction = 270; /* Direction of the gravity */
 		gravity = 0.5; /* The gravity */
 		if (vspeed > 0)
-		and (y > ystart - 32)
+		&& (y > ystart - 32)
 		{
 			
 			#region /* 3 Basic Collectibles */
@@ -359,7 +359,7 @@ if (bounce_up)
 						
 						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real(level_name, "big_collectible1", true);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (global.character_select_in_this_menu == "level_editor")
@@ -371,7 +371,7 @@ if (bounce_up)
 						
 						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible1", true);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 				}
 			}
@@ -393,7 +393,7 @@ if (bounce_up)
 						
 						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real(level_name, "big_collectible2", true);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (global.character_select_in_this_menu == "level_editor")
@@ -405,7 +405,7 @@ if (bounce_up)
 						
 						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible2", true);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 				}
 			}
@@ -427,7 +427,7 @@ if (bounce_up)
 						
 						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real(level_name, "big_collectible3", true);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (global.character_select_in_this_menu == "level_editor")
@@ -439,7 +439,7 @@ if (bounce_up)
 						
 						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible3", true);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 				}
 			}
@@ -461,7 +461,7 @@ if (bounce_up)
 						
 						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real(level_name, "big_collectible4", true);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (global.character_select_in_this_menu == "level_editor")
@@ -473,7 +473,7 @@ if (bounce_up)
 						
 						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible4", true);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 				}
 			}
@@ -495,7 +495,7 @@ if (bounce_up)
 						
 						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real(level_name, "big_collectible5", true);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (global.character_select_in_this_menu == "level_editor")
@@ -507,7 +507,7 @@ if (bounce_up)
 						
 						ini_open(working_directory + "/save_files/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible5", true);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 				}
 			}
@@ -520,7 +520,7 @@ if (bounce_up)
 	}
 	else
 	{
-		delay += 1;
+		delay ++;
 		visible = false;
 		y = ystart;
 	}
@@ -539,7 +539,7 @@ if (bounce_up)
 }
 
 #region /* Expanding Ring Effect */
-effect_time += 1;
+effect_time ++;
 if (effect_time > 60)
 {
 	effect_time = 0;

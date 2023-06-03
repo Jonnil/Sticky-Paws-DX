@@ -3,10 +3,10 @@ function scr_player_move_dive_ground_boost()
 	
 	#region /* Dive ground boost */
 	if (allow_dive_ground_boost)
-	and (dive_on_ground > 0)
-	and (on_ground)
+	&& (dive_on_ground > 0)
+	&& (on_ground)
 	{
-		dive_on_ground -= 1;
+		dive_on_ground --;
 		if (key_jump)
 		{
 			dive_on_ground = false;
@@ -22,9 +22,9 @@ function scr_player_move_dive_ground_boost()
 					if (hspeed >- 10)
 					{
 						if (!place_meeting(x - 1, y, obj_wall))
-						and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-						and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-						and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+						&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+						&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+						&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 						{
 							hspeed = - 10;
 						}
@@ -40,9 +40,9 @@ function scr_player_move_dive_ground_boost()
 					if (hspeed <+ 10)
 					{
 						if (!place_meeting(x + 1, y, obj_wall))
-						and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-						and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-						and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+						&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+						&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+						&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 						{
 							hspeed = +10;
 						}

@@ -8,7 +8,7 @@ function scr_initialize_level_information_ini()
 	{
 		can_save_to_level_information = false;
 		if (global.create_level_from_template)
-		or (global.character_select_in_this_menu == "main_game")
+		|| (global.character_select_in_this_menu == "main_game")
 		{
 			ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 		}
@@ -67,14 +67,14 @@ function scr_initialize_level_information_ini()
 		global.default_view_height = get_custom_level_information_real("info", "default_view_height", 1080);
 		
 		if (global.play_edited_level == false)
-		and (global.actually_play_edited_level == false)
-		and (object_index == obj_leveleditor)
+		&& (global.actually_play_edited_level == false)
+		&& (object_index == obj_leveleditor)
 		{
 			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), ini_read_real("info", "view_yview", 0)); /* Set camera position on the last positions you had the camera when doing level editing */
 			x = ini_read_real("info", "view_xview", 0);
 			y = ini_read_real("info", "view_yview", 0);
 		}
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	else
 	{

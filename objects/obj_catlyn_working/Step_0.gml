@@ -1,5 +1,5 @@
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).intro_animation = "ending_chair")
+&& (instance_nearest(x, y, obj_player).intro_animation = "ending_chair")
 {
 	image_speed = 0.2;
 	if (image_index >= 7)
@@ -10,7 +10,7 @@ and (instance_nearest(x, y, obj_player).intro_animation = "ending_chair")
 }
 else
 if (instance_exists(obj_player))
-and (distance_to_object(obj_player) < 500)
+&& (distance_to_object(obj_player) < 500)
 {
 	image_speed = 0.2;
 	if (image_index >= 3)
@@ -21,20 +21,20 @@ and (distance_to_object(obj_player) < 500)
 }
 else
 if (image_index >= 2)
-and (image_index <= 3)
+&& (image_index <= 3)
 {
 	image_index = 3;
 	image_speed = 0;
 }
 
 if (global.character_for_player[1] = "catlyn")
-and (global.player1_can_play)
-or (global.character_for_player[2] = "catlyn")
-and (global.player2_can_play)
-or (global.character_for_player[3] = "catlyn")
-and (global.player3_can_play)
-or (global.character_for_player[4] = "catlyn")
-and (global.player4_can_play)
+&& (global.player1_can_play)
+|| (global.character_for_player[2] = "catlyn")
+&& (global.player2_can_play)
+|| (global.character_for_player[3] = "catlyn")
+&& (global.player3_can_play)
+|| (global.character_for_player[4] = "catlyn")
+&& (global.player4_can_play)
 {
 	image_alpha = 0; /* If anyone is playing as Catlyn, make it invisible */
 }

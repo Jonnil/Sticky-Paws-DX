@@ -4,7 +4,7 @@ var get_window_width = display_get_gui_width();
 scr_zoom_camera_draw_gui(10);
 
 if (global.convention_mode)
-and (reset_game_if_no_interactivity_second_countdown <= 30)
+&& (reset_game_if_no_interactivity_second_countdown <= 30)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
@@ -70,7 +70,7 @@ if (!instance_exists(obj_pause))
 		}
 		else
 		if (global.big_collectible1)
-		and (big_collectible1_already_collected == false)
+		&& (big_collectible1_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -87,7 +87,7 @@ if (!instance_exists(obj_pause))
 		}
 		else
 		if (global.big_collectible2)
-		and (big_collectible2_already_collected == false)
+		&& (big_collectible2_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -104,7 +104,7 @@ if (!instance_exists(obj_pause))
 		}
 		else
 		if (global.big_collectible3)
-		and (big_collectible3_already_collected == false)
+		&& (big_collectible3_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -121,7 +121,7 @@ if (!instance_exists(obj_pause))
 		}
 		else
 		if (global.big_collectible4)
-		and (big_collectible4_already_collected == false)
+		&& (big_collectible4_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -138,7 +138,7 @@ if (!instance_exists(obj_pause))
 		}
 		else
 		if (global.big_collectible5)
-		and (big_collectible5_already_collected == false)
+		&& (big_collectible5_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -173,9 +173,9 @@ if (!instance_exists(obj_pause))
 	
 	#region /* Time Countdown */
 	if (instance_exists(obj_player))
-	and (global.enable_time_countdown)
-	or (instance_exists(obj_player_lose))
-	and (global.enable_time_countdown)
+	&& (global.enable_time_countdown)
+	|| (instance_exists(obj_player_lose))
+	&& (global.enable_time_countdown)
 	{
 		time_countup_y = 94;
 			
@@ -183,9 +183,9 @@ if (!instance_exists(obj_pause))
 		if (global.player_has_entered_goal == false)
 		{
 			if (global.time_countdown <= 99)
-			and (hurry_up_message_timer <= 300) /* Make the hurry up message stay on screen for 5 seconds (which is 300 frames) */
+			&& (hurry_up_message_timer <= 300) /* Make the hurry up message stay on screen for 5 seconds (which is 300 frames) */
 			{
-				hurry_up_message_timer += 1;
+				hurry_up_message_timer ++;
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("HURRY UP!"), global.default_text_size, c_black, c_orange, 1);
@@ -196,7 +196,7 @@ if (!instance_exists(obj_pause))
 			
 		#region /* Time Over Message */
 		if (global.time_countdown == 0)
-		and (global.player_has_entered_goal == false)
+		&& (global.player_has_entered_goal == false)
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
@@ -251,12 +251,12 @@ if (!instance_exists(obj_pause))
 	
 	#region /* Time countup in Minutes, Seconds and Milliseconds */
 	if (global.show_timer)
-	or (global.player_has_entered_goal)
+	|| (global.player_has_entered_goal)
 	{
 		
 		if (global.timeattack_realmillisecond < timeattack_record_realmillisecond)
-		and (global.player_has_entered_goal)
-		and (timeattack_record_realmillisecond != 999999999)
+		&& (global.player_has_entered_goal)
+		&& (timeattack_record_realmillisecond != 999999999)
 		{
 			scr_draw_text_outlined(get_window_width - 32, time_countup_y - 20, l10n_text("New Record"), global.default_text_size * 0.75, c_black, c_white, scr_wave(0, 1, 0.5));
 		}
@@ -268,7 +268,7 @@ if (!instance_exists(obj_pause))
 			scr_draw_text_outlined(get_window_width - 100, time_countup_y, string(global.timeattack_minute) + ":", global.default_text_size, c_black, c_white, 1);
 		}
 		if (global.timeattack_minute <= 0)
-		and (global.timeattack_second <= 9)
+		&& (global.timeattack_second <= 9)
 		{
 			scr_draw_text_outlined(get_window_width - 65, time_countup_y, global.timeattack_second, global.default_text_size, c_black, c_white, 1);
 		}
@@ -296,7 +296,7 @@ if (!instance_exists(obj_pause))
 				scr_draw_text_outlined(get_window_width - 100, time_countup_y + 32, string(timeattack_record_minute) + ":", global.default_text_size, c_black, c_white, 1);
 			}
 			if (timeattack_record_minute <= 0)
-			and (timeattack_record_second <= 9)
+			&& (timeattack_record_second <= 9)
 			{
 				scr_draw_text_outlined(get_window_width - 65, time_countup_y + 32, timeattack_record_second, global.default_text_size, c_black, c_white, 1);
 			}
@@ -318,7 +318,7 @@ scr_debug_screen();
 
 #region /* Show if you are playing the demo version or not */
 if (global.demo)
-and (global.play_attract_demo == false)
+&& (global.play_attract_demo == false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
@@ -340,7 +340,7 @@ and (global.play_attract_demo == false)
 
 #region /* Show if you have Assist mode enabled or not */
 if (global.assist_enable)
-and (global.assist_show_assist_mode_text)
+&& (global.assist_show_assist_mode_text)
 {
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
@@ -350,8 +350,8 @@ and (global.assist_show_assist_mode_text)
 
 #region /* Show Controls */
 if (os_type != os_ios)
-and (os_type != os_android)
-and (!instance_exists(obj_pause))
+&& (os_type != os_android)
+&& (!instance_exists(obj_pause))
 {
 	scr_draw_show_controls(1);
 	scr_draw_show_controls(2);
@@ -362,21 +362,21 @@ and (!instance_exists(obj_pause))
 
 #region /* Show what input is used */
 if (global.player1_can_play >= 1) /* Only show controller input change if there is only one player in the game */
-and (global.player2_can_play <= 0)
-and (global.player3_can_play <= 0)
-and (global.player4_can_play <= 0)
-or (global.player1_can_play <= 0)
-and (global.player2_can_play >= 1)
-and (global.player3_can_play <= 0)
-and (global.player4_can_play <= 0)
-or (global.player1_can_play <= 0)
-and (global.player2_can_play <= 0)
-and (global.player3_can_play >= 1)
-and (global.player4_can_play <= 0)
-or (global.player1_can_play <= 0)
-and (global.player2_can_play <= 0)
-and (global.player3_can_play <= 0)
-and (global.player4_can_play >= 1)
+&& (global.player2_can_play <= 0)
+&& (global.player3_can_play <= 0)
+&& (global.player4_can_play <= 0)
+|| (global.player1_can_play <= 0)
+&& (global.player2_can_play >= 1)
+&& (global.player3_can_play <= 0)
+&& (global.player4_can_play <= 0)
+|| (global.player1_can_play <= 0)
+&& (global.player2_can_play <= 0)
+&& (global.player3_can_play >= 1)
+&& (global.player4_can_play <= 0)
+|| (global.player1_can_play <= 0)
+&& (global.player2_can_play <= 0)
+&& (global.player3_can_play <= 0)
+&& (global.player4_can_play >= 1)
 {
 	if (global.show_prompt_when_changing_to_gamepad)
 	{
@@ -393,14 +393,14 @@ scr_virtual_keys();
 
 #region /* Display Rank */
 if (global.enable_ranks)
-and (global.show_ranks)
-and (global.goal_active)
+&& (global.show_ranks)
+&& (global.goal_active)
 {
 	if (global.character_select_in_this_menu == "main_game")
-	and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
+	&& (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 	
-	or (global.character_select_in_this_menu == "level_editor")
-	and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+	|| (global.character_select_in_this_menu == "level_editor")
+	&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 	{
 		if (global.character_select_in_this_menu == "main_game")
 		{
@@ -487,7 +487,7 @@ and (global.goal_active)
 				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank E */
 			}
 		}
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 }
 #endregion /* Display Rank END */
@@ -515,15 +515,15 @@ if (global.doing_clear_check)
 
 #region /* Pause Level Button */
 if (global.play_edited_level) /* When playtesting the level */
-and (global.actually_play_edited_level == false) /* But not actually playing the level */
-and (global.character_select_in_this_menu == "level_editor")
+&& (global.actually_play_edited_level == false) /* But not actually playing the level */
+&& (global.character_select_in_this_menu == "level_editor")
 {
 	draw_sprite_ext(spr_menu_button_pause, 0, 32, display_get_gui_height() - 32, 1, 1, 0, c_white, 1);
 	
 	#region /* Draw Pause Key */
 	if (gamepad_is_connected(global.player1_slot))
-	and (global.controls_used_for_menu_navigation == "controller")
-	or (global.always_show_gamepad_buttons)
+	&& (global.controls_used_for_menu_navigation == "controller")
+	|| (global.always_show_gamepad_buttons)
 	{
 		scr_draw_gamepad_buttons(gp_select, 32 + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1);
 	}
@@ -536,7 +536,7 @@ and (global.character_select_in_this_menu == "level_editor")
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
 	{
 		if (mouse_check_button_released(mb_left))
-		and (menu_delay == 0)
+		&& (menu_delay == 0)
 		{
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;

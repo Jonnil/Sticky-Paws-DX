@@ -4,7 +4,7 @@
 /// @param y
 /// @param string
 /// @param menu_index
-/// @param variable_to_cahange
+/// @param variable_to_change
 /// @param string_item1
 /// @param string_item2
 /// @param string_item3
@@ -17,15 +17,15 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	if (variable_instance_exists(self, "menu")) /* Check if the object even have these variables before running this code */
-	and (variable_instance_exists(self, "menu_delay"))
-	and (variable_instance_exists(self, "open_dropdown"))
+	&& (variable_instance_exists(self, "menu_delay"))
+	&& (variable_instance_exists(self, "open_dropdown"))
 	{
 		
 		#region /* Button */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (menu_delay == 0)
-		and (open_dropdown == false)
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (menu_delay == 0)
+		&& (open_dropdown == false)
 		{
 			if (open_dropdown == false)
 			{
@@ -40,9 +40,9 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		else
 		{
 			if (menu == menu_index)
-			and (global.controls_used_for_menu_navigation == "keyboard")
-			or (menu == menu_index)
-			and (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "keyboard")
+			|| (menu == menu_index)
+			&& (global.controls_used_for_menu_navigation == "controller")
 			{
 				draw_sprite_ext(spr_menu_dropdown, 0, x_position + 32, y_position + 21, 1, 1, 0, c_gray, 1);
 			}
@@ -54,7 +54,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		
 		#region /* Show a menu cursor when the option is highlighted */
 		if (menu == menu_index)
-		and (open_dropdown == false)
+		&& (open_dropdown == false)
 		{
 			if (variable_instance_exists(self, "menu_cursor_y_position"))
 			{
@@ -73,15 +73,15 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		
 		#region /* Clicking the menu button */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_released(mb_left))
-		and (menu_delay == 0)
-		and (open_dropdown == false)
-		or (key_a_pressed)
-		and (menu == menu_index)
-		and (input_key == false)
-		and (open_dropdown == false)
-		and (menu_delay == 0)
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		&& (open_dropdown == false)
+		|| (key_a_pressed)
+		&& (menu == menu_index)
+		&& (input_key == false)
+		&& (open_dropdown == false)
+		&& (menu_delay == 0)
 		{
 			menu = menu_index;
 			open_dropdown = true;
@@ -93,10 +93,10 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		}
 		else
 		if (key_b_pressed)
-		and (menu == menu_index)
-		and (input_key == false)
-		and (open_dropdown)
-		and (menu_delay == 0)
+		&& (menu == menu_index)
+		&& (input_key == false)
+		&& (open_dropdown)
+		&& (menu_delay == 0)
 		{
 			menu = menu_index;
 			open_dropdown = false;
@@ -169,7 +169,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		
 		#region /* Open dropdown menu */
 		if (open_dropdown)
-		and (menu == menu_index)
+		&& (menu == menu_index)
 		{
 			if (variable_instance_exists(self, "menu_cursor_y_position"))
 			{
@@ -193,10 +193,10 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		
 		#region /* Clicking outside the menu button */
 		if (!point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (open_dropdown)
-		and (menu == menu_index)
-		and (menu_delay == 0)
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (open_dropdown)
+		&& (menu == menu_index)
+		&& (menu_delay == 0)
 		{
 			if (mouse_check_button_released(mb_left))
 			{

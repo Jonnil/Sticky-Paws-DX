@@ -3,22 +3,22 @@ function scr_start_intro_animations()
 	
 	#region /* Start Intro Animations */
 	if (global.checkpoint_x <= 0) /* Make sure that you aren't in the middle of a level by touching a checkpoint */
-	and (global.checkpoint_y <= 0)
+	&& (global.checkpoint_y <= 0)
 	{
 		
 		#region /* This intro animation is called "cake_stolen", more intros can be added here */
 		if (intro_animation = "cake_stolen")
-		and (instance_exists(obj_camera))
-		and (obj_camera.intro_animation_play_only_once == false)
-		or (intro_animation = "cake_stolen")
-		and (instance_exists(obj_camera))
-		and (obj_camera.intro_animation_play_only_once)
-		and (global.current_level_clear_rate = "enter")
+		&& (instance_exists(obj_camera))
+		&& (obj_camera.intro_animation_play_only_once == false)
+		|| (intro_animation = "cake_stolen")
+		&& (instance_exists(obj_camera))
+		&& (obj_camera.intro_animation_play_only_once)
+		&& (global.current_level_clear_rate = "enter")
 		{
 			can_move = false;
 			crouch = false;
-			cutscene_time += 1;
-			intro_animation_image_index += 1;
+			cutscene_time ++;
+			intro_animation_image_index ++;
 			if (cutscene_time <= 1)
 			{
 				if (!instance_exists(obj_chair_and_table))
@@ -81,16 +81,16 @@ function scr_start_intro_animations()
 		
 		#region /* This intro animation is called "ending", more intros can be added here */
 		if (intro_animation = "ending")
-		and (instance_exists(obj_camera))
-		and (obj_camera.intro_animation_play_only_once == false)
+		&& (instance_exists(obj_camera))
+		&& (obj_camera.intro_animation_play_only_once == false)
 		or(intro_animation = "ending")
-		and (instance_exists(obj_camera))
-		and (obj_camera.intro_animation_play_only_once)
-		and (global.current_level_clear_rate = "enter")
+		&& (instance_exists(obj_camera))
+		&& (obj_camera.intro_animation_play_only_once)
+		&& (global.current_level_clear_rate = "enter")
 		{
 			can_move = false;
 			crouch = false;
-			cutscene_time += 1;
+			cutscene_time ++;
 			intro_animation_image_index += 0.4;
 			if (cutscene_time <= 1)
 			{
@@ -126,7 +126,7 @@ function scr_start_intro_animations()
 			}
 			else
 			if (cutscene_time >= 60 * 1)
-			and (cutscene_time < 60 * 2)
+			&& (cutscene_time < 60 * 2)
 			{
 				x += 8;
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_run;}else
@@ -156,12 +156,12 @@ function scr_start_intro_animations()
 			vspeed = 0;
 			if (!place_meeting(x, y + 1, obj_wall))
 			{
-				y += 1;
+				y ++;
 			}
 			image_xscale = +1;
 			can_move = false;
 			crouch = false;
-			cutscene_time += 1;
+			cutscene_time ++;
 			intro_animation_image_index += 0.2;
 			if (instance_exists(obj_chair_and_table))
 			{
@@ -188,7 +188,7 @@ function scr_start_intro_animations()
 				}
 				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 				ini_write_real("Player", "beat_last_level", true);
-				ini_close();
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_sitting_eating;}else
 				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
 				intro_animation = "ending_chair_eating";
@@ -205,7 +205,7 @@ function scr_start_intro_animations()
 			vspeed = 0;
 			if (!place_meeting(x, y + 1, obj_wall))
 			{
-				y += 1;
+				y ++;
 			}
 			image_xscale = +1;
 			can_move = false;

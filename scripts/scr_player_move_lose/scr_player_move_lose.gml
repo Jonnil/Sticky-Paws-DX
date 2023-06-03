@@ -3,7 +3,7 @@ function scr_player_move_lose()
 	
 	#region /* Die */
 	if (die)
-	and (goal == false)
+	&& (goal == false)
 	{
 		scr_gamepad_vibration(player, 1, 30);
 		
@@ -16,21 +16,21 @@ function scr_player_move_lose()
 		
 		#region /* Update Level Editor Checkpoint Time */
 		if (asset_get_type("room_leveleditor") == asset_room)
-		and (room == room_leveleditor)
-		and (global.actually_play_edited_level)
-		and (global.character_select_in_this_menu == "level_editor")
+		&& (room == room_leveleditor)
+		&& (global.actually_play_edited_level)
+		&& (global.character_select_in_this_menu == "level_editor")
 		{
 			ini_open(working_directory + "/save_files/custom_level_save.ini");
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", global.timeattack_millisecond);
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", global.timeattack_second);
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", global.timeattack_minute);
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_realmillisecond", global.timeattack_realmillisecond);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		#endregion /* Update Level Editor Checkpoint Time END */
 		
 		if (asset_get_type("obj_player") == asset_object)
-		and (global.pause == false)
+		&& (global.pause == false)
 		{
 			if (instance_number(obj_player) <= 1)
 			{
@@ -210,8 +210,8 @@ function scr_player_move_lose()
 			
 			#region /* Stop invincibility music if you're the last player dying */
 			if (asset_get_type("obj_player") == asset_object)
-			and (global.pause == false)
-			and (instance_number(obj_player) == 1)
+			&& (global.pause == false)
+			&& (instance_number(obj_player) == 1)
 			{
 				audio_stop_sound(music_invincible);
 			}

@@ -79,7 +79,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "chosen_controller_used")){global.chosen_controller_used = ini_read_real("config", "chosen_controller_used", 0);}
 		if (ini_key_exists("config", "show_prompt_when_changing_to_gamepad")){global.show_prompt_when_changing_to_gamepad = ini_read_real("config", "show_prompt_when_changing_to_gamepad", 1);}
 		if (ini_key_exists("config", "show_prompt_when_changing_to_keyboard_and_mouse")){global.show_prompt_when_changing_to_keyboard_and_mouse = ini_read_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", 1);}
-		if (ini_key_exists("config", "always_show_gamepad_buttons")){global.always_show_gamepad_buttons = ini_read_real("config", "always_show_gamepad_buttons", 1);}
+		if (ini_key_exists("config", "always_show_gamepad_buttons")){global.always_show_gamepad_buttons = ini_read_real("config", "always_show_gamepad_buttons", 0);}
 		
 		#region /* Load Player 1 Keyboard Remapping */
 		if (ini_key_exists("config", "character_index_player1")){global.character_index[0] = ini_read_real("config", "character_index_player1", 0);}
@@ -425,6 +425,6 @@ function scr_config_load()
 		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_gamepad_button2_back")){global.player_[inp.gp][4][2][action.back] = ini_read_real("player4_profile" + string(global.player4_profile), "player4_gamepad_button2_back", 0);}
 		#endregion /* Load Player 4 Gamepad Remapping END */
 		
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 }

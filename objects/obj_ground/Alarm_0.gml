@@ -219,51 +219,51 @@ if (global.custom_tileset > 0)
 }
 else
 if (global.resource_pack_sprite_tileset_default >= 0)
-and (ground_surface == 0)
-or (global.make_every_tileset_into_default_tileset)
-and (global.resource_pack_sprite_tileset_default >= 0)
+&& (ground_surface == 0)
+|| (global.make_every_tileset_into_default_tileset)
+&& (global.resource_pack_sprite_tileset_default >= 0)
 {
 	sprite_index = global.resource_pack_sprite_tileset_default;
 }
 else
 if (global.resource_pack_sprite_tileset_dirt >= 0)
-and (ground_surface == 1)
+&& (ground_surface == 1)
 {
 	sprite_index = global.resource_pack_sprite_tileset_dirt;
 }
 else
 if (global.resource_pack_sprite_tileset_glass >= 0)
-and (ground_surface = 2)
+&& (ground_surface = 2)
 {
 	sprite_index = global.resource_pack_sprite_tileset_glass;
 }
 else
 if (global.resource_pack_sprite_tileset_grass >= 0)
-and (ground_surface = 3)
+&& (ground_surface = 3)
 {
 	sprite_index = global.resource_pack_sprite_tileset_grass;
 }
 else
 if (global.resource_pack_sprite_tileset_gravel >= 0)
-and (ground_surface = 4)
+&& (ground_surface = 4)
 {
 	sprite_index = global.resource_pack_sprite_tileset_gravel;
 }
 else
 if (global.resource_pack_sprite_tileset_metal >= 0)
-and (ground_surface == 5)
+&& (ground_surface == 5)
 {
 	sprite_index = global.resource_pack_sprite_tileset_metal;
 }
 else
 if (global.resource_pack_sprite_tileset_stone >= 0)
-and (ground_surface == 6)
+&& (ground_surface == 6)
 {
 	sprite_index = global.resource_pack_sprite_tileset_stone;
 }
 else
 if (global.resource_pack_sprite_tileset_wood >= 0)
-and (ground_surface == 7)
+&& (ground_surface == 7)
 {
 	sprite_index = global.resource_pack_sprite_tileset_wood;
 }

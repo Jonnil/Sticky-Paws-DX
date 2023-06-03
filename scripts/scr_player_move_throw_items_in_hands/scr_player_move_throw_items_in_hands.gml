@@ -13,8 +13,8 @@ function scr_player_move_throw_items_in_hands()
 					if (hold_item_in_hands = "enemy_bowlingball")
 					{
 						if (y + 16 < camera_get_view_y(view_camera[view_current]))
-						and (!place_meeting(x, y + 1, obj_wall))
-						and (!place_meeting(x, y + 1, obj_semisolid_platform))
+						&& (!place_meeting(x, y + 1, obj_wall))
+						&& (!place_meeting(x, y + 1, obj_semisolid_platform))
 						{
 							with(instance_create_depth(x, camera_get_view_y(view_camera[view_current]) + 16, 0, obj_enemy_bowlingball))
 							{
@@ -28,7 +28,7 @@ function scr_player_move_throw_items_in_hands()
 						}
 						else
 						if (!position_meeting(bbox_left - 32, y, obj_wall))
-						and (!collision_line(x, y, bbox_left - 16, bbox_top + 16, obj_wall, false, true))
+						&& (!collision_line(x, y, bbox_left - 16, bbox_top + 16, obj_wall, false, true))
 						{
 							with(instance_create_depth(bbox_left - 16, bbox_top + 16, 0, obj_enemy_bowlingball))
 							{
@@ -60,8 +60,8 @@ function scr_player_move_throw_items_in_hands()
 					if (hold_item_in_hands = "enemy_bowlingball")
 					{
 						if (y + 16 < camera_get_view_y(view_camera[view_current]))
-						and (!place_meeting(x, y + 1, obj_wall))
-						and (!place_meeting(x, y + 1, obj_semisolid_platform))
+						&& (!place_meeting(x, y + 1, obj_wall))
+						&& (!place_meeting(x, y + 1, obj_semisolid_platform))
 						{
 							with(instance_create_depth(x, camera_get_view_y(view_camera[view_current]) + 16, 0, obj_enemy_bowlingball))
 							{
@@ -75,7 +75,7 @@ function scr_player_move_throw_items_in_hands()
 						}
 						else
 						if (!position_meeting(bbox_right + 32, y, obj_wall))
-						and (!collision_line(x, y, bbox_right + 16, bbox_top + 16, obj_wall, false, true))
+						&& (!collision_line(x, y, bbox_right + 16, bbox_top + 16, obj_wall, false, true))
 						{
 							with(instance_create_depth(bbox_right + 16, bbox_top + 16, 0, obj_enemy_bowlingball))
 							{
@@ -110,7 +110,7 @@ function scr_player_move_throw_items_in_hands()
 					if (hold_item_in_hands = "enemy_bowlingball")
 					{
 						if (!position_meeting(bbox_left - 32, y, obj_wall))
-						and (!collision_line(x, y, bbox_left - 32, y, obj_wall, false, true))
+						&& (!collision_line(x, y, bbox_left - 32, y, obj_wall, false, true))
 						{
 							with(instance_create_depth(bbox_left - 32, y, 0, obj_enemy_bowlingball))
 							{
@@ -144,7 +144,7 @@ function scr_player_move_throw_items_in_hands()
 					if (hold_item_in_hands = "enemy_bowlingball")
 					{
 						if (!position_meeting(bbox_right + 32, y, obj_wall))
-						and (!collision_line(x, y, bbox_right + 32, y, obj_wall, false, true))
+						&& (!collision_line(x, y, bbox_right + 32, y, obj_wall, false, true))
 						{
 							with(instance_create_depth(bbox_right + 32, y, 0, obj_enemy_bowlingball))
 							{
@@ -175,10 +175,10 @@ function scr_player_move_throw_items_in_hands()
 			}
 			else
 			if (key_left_hold)
-			or (image_xscale < 0)
+			|| (image_xscale < 0)
 			{
 				if (hold_item_in_hands = "enemy_bowlingball")
-				and (!collision_line(x, y, bbox_left - 32, y, obj_wall, false, true))
+				&& (!collision_line(x, y, bbox_left - 32, y, obj_wall, false, true))
 				{
 					with(instance_create_depth(bbox_left - 32, y, 0, obj_enemy_bowlingball))
 					{
@@ -204,10 +204,10 @@ function scr_player_move_throw_items_in_hands()
 			}
 			else
 			if (key_right_hold)
-			or (image_xscale > 0)
+			|| (image_xscale > 0)
 			{
 				if (hold_item_in_hands = "enemy_bowlingball")
-				and (!collision_line(x, y, bbox_right + 32, y, obj_wall, false, true))
+				&& (!collision_line(x, y, bbox_right + 32, y, obj_wall, false, true))
 				{
 					with(instance_create_depth(bbox_right + 32, y, 0, obj_enemy_bowlingball))
 					{
@@ -235,12 +235,12 @@ function scr_player_move_throw_items_in_hands()
 			dive = false;
 		}
 		if (key_left_hold)
-		or (image_xscale < 0)
+		|| (image_xscale < 0)
 		{
 			if (hold_item_in_hands = "enemy_bowlingball")
-			and (place_meeting(x - 16, y, obj_enemy))
-			and (!place_meeting(x, y + 8, obj_enemy))
-			and (instance_nearest(x + 1, y, obj_enemy).die == false)
+			&& (place_meeting(x - 16, y, obj_enemy))
+			&& (!place_meeting(x, y + 8, obj_enemy))
+			&& (instance_nearest(x + 1, y, obj_enemy).die == false)
 			{
 				with(instance_nearest(x - 1, y, obj_enemy))
 				{
@@ -284,12 +284,12 @@ function scr_player_move_throw_items_in_hands()
 		}
 		else
 		if (key_right_hold)
-		or (image_xscale > 0)
+		|| (image_xscale > 0)
 		{
 			if (hold_item_in_hands = "enemy_bowlingball")
-			and (place_meeting(x + 16, y, obj_enemy))
-			and (!place_meeting(x, y + 8, obj_enemy))
-			and (instance_nearest(x + 1, y, obj_enemy).die == false)
+			&& (place_meeting(x + 16, y, obj_enemy))
+			&& (!place_meeting(x, y + 8, obj_enemy))
+			&& (instance_nearest(x + 1, y, obj_enemy).die == false)
 			{
 				with(instance_nearest(x + 1, y, obj_enemy))
 				{

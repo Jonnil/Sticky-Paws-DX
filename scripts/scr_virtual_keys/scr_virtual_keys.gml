@@ -35,25 +35,25 @@ function scr_virtual_keys()
 	if (global.show_virtual_controls)
 	{
 		if (instance_exists(obj_player_map))
-		and (obj_player_map.iris_xscale > 0.25)
-		and (obj_player_map.iris_yscale > 0.25)
-		and (!instance_exists(obj_title))
+		&& (obj_player_map.iris_xscale > 0.25)
+		&& (obj_player_map.iris_yscale > 0.25)
+		&& (!instance_exists(obj_title))
 		
-		or (variable_instance_exists(self, "iris_xscale"))
-		and (variable_instance_exists(self, "iris_yscale"))
-		and (iris_xscale > 0.25)
-		and (iris_yscale > 0.25)
-		and (!instance_exists(obj_title))
+		|| (variable_instance_exists(self, "iris_xscale"))
+		&& (variable_instance_exists(self, "iris_yscale"))
+		&& (iris_xscale > 0.25)
+		&& (iris_yscale > 0.25)
+		&& (!instance_exists(obj_title))
 		{
 			if (instance_exists(obj_player))
-			and (obj_player.can_move)
-			or (instance_exists(obj_player_map))
-			and (obj_player_map.can_move)
+			&& (obj_player.can_move)
+			|| (instance_exists(obj_player_map))
+			&& (obj_player_map.can_move)
 			{
 				
 				#region /* Joystick */
 				if (enable_joystick)
-				and (!instance_exists(obj_virtual_joystick))
+				&& (!instance_exists(obj_virtual_joystick))
 				{
 					instance_create_depth(x, y, 0, obj_virtual_joystick);
 				}

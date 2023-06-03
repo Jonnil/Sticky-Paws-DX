@@ -5,16 +5,16 @@ var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_v
 
 #region /* No collision underneath */
 if (!place_meeting(x, y + 3, obj_wall))
-and (!place_meeting(x, y + 3, obj_semisolid_platform))
+&& (!place_meeting(x, y + 3, obj_semisolid_platform))
 {
 	if (bbox_left < view_right + 8)
-	and (bbox_right > view_left - 8)
-	and (bbox_top < view_bottom + 8)
-	and (bbox_bottom > view_top - 8)
+	&& (bbox_right > view_left - 8)
+	&& (bbox_top < view_bottom + 8)
+	&& (bbox_bottom > view_top - 8)
 	{
 		instance_create_depth(x, y - 32, 0, obj_block_break);
 		if (instance_exists(obj_player))
-		and (instance_nearest(x, y, obj_player).x < x)
+		&& (instance_nearest(x, y, obj_player).x < x)
 		{
 			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
 			new_instance.sprite_index = sprite_index;
@@ -44,9 +44,9 @@ and (!place_meeting(x, y + 3, obj_semisolid_platform))
 			
 			#region /* Only do the breaking smoke effect and sound effect if it's inside the view */
 			if (x < view_right)
-			and (x > view_left)
-			and (y < view_bottom)
-			and (y > view_top)
+			&& (x > view_left)
+			&& (y < view_bottom)
+			&& (y > view_top)
 			{
 				effect_create_above(ef_smoke, x, y, 1, c_dkgray);
 				scr_audio_play(snd_blockbreak, volume_source.sound);

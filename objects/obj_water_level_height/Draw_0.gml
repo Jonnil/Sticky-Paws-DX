@@ -1,5 +1,5 @@
 if (global.actually_play_edited_level == false)
-and (global.play_edited_level == false)
+&& (global.play_edited_level == false)
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(camera_get_view_x(view_camera[0]), y - 16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_blue, c_blue, c_blue, c_blue, false);
@@ -12,7 +12,7 @@ and (global.play_edited_level == false)
 
 #region /* Make sure the level end isn't outside of the level, this code has to be after the drag object code */
 if (global.actually_play_edited_level == false)
-and (global.play_edited_level == false)
+&& (global.play_edited_level == false)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);

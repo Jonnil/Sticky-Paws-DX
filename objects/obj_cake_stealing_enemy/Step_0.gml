@@ -4,13 +4,13 @@ var view_top = camera_get_view_y(view_camera[view_current]) - 42;
 var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current])) + 42;
 
 if (x > view_right)
-and (hspeed > 0)
-or (x < view_left)
-and (hspeed < 0)
-or (y > view_bottom)
-and (vspeed > 0)
-or (y < view_top)
-and (vspeed < 0)
+&& (hspeed > 0)
+|| (x < view_left)
+&& (hspeed < 0)
+|| (y > view_bottom)
+&& (vspeed > 0)
+|| (y < view_top)
+&& (vspeed < 0)
 {
 	hspeed = 0;
 	vspeed = 0;
@@ -26,7 +26,7 @@ else
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
 if (asset_get_type("obj_wall") == asset_object)
-and (!place_meeting(x, y + 1, obj_wall))
+&& (!place_meeting(x, y + 1, obj_wall))
 {
 	gravity = 0.5; /* The gravity */
 }
@@ -37,19 +37,19 @@ else
 if (asset_get_type("obj_semisolid_platform") == asset_object)
 {
 	if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(x, bbox_bottom + 2, obj_semisolid_platform))
-	or (position_meeting(x, bbox_bottom + 3, obj_semisolid_platform))
-	or (position_meeting(x, bbox_bottom + 4, obj_semisolid_platform))
+	|| (position_meeting(x, bbox_bottom + 2, obj_semisolid_platform))
+	|| (position_meeting(x, bbox_bottom + 3, obj_semisolid_platform))
+	|| (position_meeting(x, bbox_bottom + 4, obj_semisolid_platform))
 
-	or (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_left, bbox_bottom + 2, obj_semisolid_platform))
-	or (position_meeting(bbox_left, bbox_bottom + 3, obj_semisolid_platform))
-	or (position_meeting(bbox_left, bbox_bottom + 4, obj_semisolid_platform))
+	|| (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	|| (position_meeting(bbox_left, bbox_bottom + 2, obj_semisolid_platform))
+	|| (position_meeting(bbox_left, bbox_bottom + 3, obj_semisolid_platform))
+	|| (position_meeting(bbox_left, bbox_bottom + 4, obj_semisolid_platform))
 
-	or (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 2, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 3, obj_semisolid_platform))
-	or (position_meeting(bbox_right, bbox_bottom + 4, obj_semisolid_platform))
+	|| (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	|| (position_meeting(bbox_right, bbox_bottom + 2, obj_semisolid_platform))
+	|| (position_meeting(bbox_right, bbox_bottom + 3, obj_semisolid_platform))
+	|| (position_meeting(bbox_right, bbox_bottom + 4, obj_semisolid_platform))
 	{
 		gravity = 0;
 	}
@@ -58,7 +58,7 @@ if (asset_get_type("obj_semisolid_platform") == asset_object)
 
 if (cutscene == 0)
 {
-	time += 1;
+	time ++;
 	if (time >= room_speed* 2.3)
 	{
 		if (place_meeting(x + 1, y, obj_wall))
@@ -86,13 +86,13 @@ if (cutscene == 1) /* When placed in level, use this cutscene value */
 		{
 			instance_destroy();
 		}
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	if (instance_exists(obj_player))
-	and (distance_to_object(obj_player) < 256)
-	or (instance_exists(obj_player))
-	and (instance_nearest(x, y, obj_player).bbox_right >= bbox_left)
-	and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+	&& (distance_to_object(obj_player) < 256)
+	|| (instance_exists(obj_player))
+	&& (instance_nearest(x, y, obj_player).bbox_right >= bbox_left)
+	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 	{
 		time += 30;
 	}
@@ -104,7 +104,7 @@ if (cutscene == 1) /* When placed in level, use this cutscene value */
 	}
 	else
 	if (time >= 1)
-	and (!place_meeting(x + 1, y, obj_wall))
+	&& (!place_meeting(x + 1, y, obj_wall))
 	{
 		sprite_index = global.resource_pack_sprite_basic_enemy_angry;
 		hspeed = +12;
@@ -114,7 +114,7 @@ if (cutscene == 1) /* When placed in level, use this cutscene value */
 else
 if (cutscene = 2)
 {
-	time += 1;
+	time ++;
 	if (place_meeting(x + 1, y, obj_wall))
 	{
 		sprite_index = global.resource_pack_sprite_basic_enemy;
@@ -123,7 +123,7 @@ if (cutscene = 2)
 	}
 	else
 	if (time >= room_speed* 2)
-	and (!place_meeting(x + 1, y, obj_wall))
+	&& (!place_meeting(x + 1, y, obj_wall))
 	{
 		sprite_index = global.resource_pack_sprite_basic_enemy_angry;
 		hspeed = +7;
@@ -132,9 +132,9 @@ if (cutscene = 2)
 }
 
 if (instance_exists(obj_player))
-and (place_meeting(x, y, obj_player))
-and (instance_nearest(x, y, obj_player).intro_animation = "")
-and (cutscene != 1)
+&& (place_meeting(x, y, obj_player))
+&& (instance_nearest(x, y, obj_player).intro_animation = "")
+&& (cutscene != 1)
 {
 	with (instance_create_depth(x, y, 0, obj_basic_enemy))
 	{

@@ -1,7 +1,7 @@
 if (bounce_up == false)
-and (other.flat)
-and (other.die == false)
-and (other.die_volting == false)
+&& (other.flat)
+&& (other.die == false)
+&& (other.die_volting == false)
 {
 	effect_create_above(ef_ring, x, y, 0, c_white);
 	
@@ -10,8 +10,8 @@ and (other.die_volting == false)
 		with(instance_nearest(x, y, obj_player))
 		{
 			score += 200;
-			basic_collectibles += 1;
-			global.basic_collectibles += 1;
+			basic_collectibles ++;
+			global.basic_collectibles ++;
 		}
 	}
 	

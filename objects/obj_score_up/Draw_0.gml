@@ -1,19 +1,19 @@
 draw_set_halign(fa_center);
 if (score_up == "1-up")
-and (show_remaining_jumps == false)
-or (score_up == "2-up")
-and (show_remaining_jumps == false)
-or (score_up == "3-up")
-and (show_remaining_jumps == false)
+&& (show_remaining_jumps == false)
+|| (score_up == "2-up")
+&& (show_remaining_jumps == false)
+|| (score_up == "3-up")
+&& (show_remaining_jumps == false)
 {
 	scr_draw_text_outlined(x, y, string_upper(score_up), global.default_text_size * 2 * image_xscale, c_black, c_lime, image_alpha);
 }
 else
 if (score_up == "checkpoint")
-and (show_remaining_jumps == false)
+&& (show_remaining_jumps == false)
 {
 	if (checkpoint_number >= checkpoint_number_max)
-	and (checkpoint_number_max >= 2)
+	&& (checkpoint_number_max >= 2)
 	{
 		scr_draw_text_outlined(x, y - 62, string(checkpoint_number) + "/" + string(checkpoint_number_max) + " " + string_upper(l10n_text("Final")), global.default_text_size * image_xscale, c_black, c_lime, image_alpha);
 	}
@@ -26,7 +26,7 @@ and (show_remaining_jumps == false)
 }
 else
 if (show_remaining_jumps == false)
-and (score_up != "Copied")
+&& (score_up != "Copied")
 {
 	if (not_score == false)
 	{

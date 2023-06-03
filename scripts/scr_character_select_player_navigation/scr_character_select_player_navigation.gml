@@ -19,7 +19,6 @@ function scr_character_select_player_navigation(what_player = 1)
 	{
 		var player_gamepad_slot = global.player1_slot;
 		var player_accept_selection = player1_accept_selection;
-		var player_display_x = player1_display_x;
 		var can_input_player_name = can_input_player1_name;
 		var can_input_player_name2 = can_input_player2_name;
 		var can_input_player_name3 = can_input_player3_name;
@@ -34,7 +33,6 @@ function scr_character_select_player_navigation(what_player = 1)
 	{
 		var player_gamepad_slot = global.player2_slot;
 		var player_accept_selection = player2_accept_selection;
-		var player_display_x = player2_display_x;
 		var can_input_player_name = can_input_player2_name;
 		var can_input_player_name2 = can_input_player1_name;
 		var can_input_player_name3 = can_input_player3_name;
@@ -49,7 +47,6 @@ function scr_character_select_player_navigation(what_player = 1)
 	{
 		var player_gamepad_slot = global.player3_slot;
 		var player_accept_selection = player3_accept_selection;
-		var player_display_x = player3_display_x;
 		var can_input_player_name = can_input_player3_name;
 		var can_input_player_name2 = can_input_player1_name;
 		var can_input_player_name3 = can_input_player2_name;
@@ -64,7 +61,6 @@ function scr_character_select_player_navigation(what_player = 1)
 	{
 		var player_gamepad_slot = global.player4_slot;
 		var player_accept_selection = player4_accept_selection;
-		var player_display_x = player4_display_x;
 		var can_input_player_name = can_input_player4_name;
 		var can_input_player_name2 = can_input_player1_name;
 		var can_input_player_name3 = can_input_player2_name;
@@ -81,39 +77,39 @@ function scr_character_select_player_navigation(what_player = 1)
 		
 		#region /* Player */
 		if (menu_specific_joystick_delay[what_player] <= 0)
-		and (input_key == false)
-		and (can_navigate)
-		and (player_accept_selection == false)
+		&& (input_key == false)
+		&& (can_navigate)
+		&& (player_accept_selection == false)
 		{
 			
 			#region /* Player change portrait when clicking left or right */
 			
 			#region /* Player Key Left (change portrait sprites) */
 			if (keyboard_check_pressed(player_key_left))
-			or (keyboard_check_pressed(player_key2_left))
-			or (gamepad_button_check_pressed(player_gamepad_slot, gp_padl))
-			or (gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0)
-			or (point_in_rectangle(mouse_get_x, mouse_get_y,
-			get_window_width * 0.5 + player_display_x - arrow_offset - 16,
+			|| (keyboard_check_pressed(player_key2_left))
+			|| (gamepad_button_check_pressed(player_gamepad_slot, gp_padl))
+			|| (gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0)
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y,
+			get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16,
 			get_window_height * 0.5 - 16,
-			get_window_width * 0.5 + player_display_x - arrow_offset + 16,
+			get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16,
 			get_window_height * 0.5 + 16))
-			and (mouse_check_button_released(mb_left))
+			&& (mouse_check_button_released(mb_left))
 			{
 				
 				if (menu_delay == 0)
-				and (global.character_index[what_player - 1] > 0)
+				&& (global.character_index[what_player - 1] > 0)
 				{
 					menu_delay = 3;
 					menu_specific_joystick_delay[what_player] = 30;
 					if (global.character_index[what_player - 1] > 0)
 					{
-						global.character_index[what_player - 1] -= 1;
+						global.character_index[what_player - 1] --;
 						character_portrait_for_player_update_directory[what_player] = true;
 						alarm[0] = 1;
 						alarm[1] = 1;
 						global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
-						xx[what_player]  = player_display_x - 32;
+						xx_delay[what_player] = -1;
 					}
 					else
 					{
@@ -123,11 +119,6 @@ function scr_character_select_player_navigation(what_player = 1)
 					
 					#region /* Player character select portrait sprite */
 					global.skin_for_player[what_player] = global.actual_skin_for_player[what_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
-					global.sprite_select_player[what_player] = spr_noone;
-					global.sprite_select_player[what_player] = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player[what_player], 0, global.skin_for_player[what_player]);
-					global.sprite_select_player[what_player] = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player[what_player], 0, global.skin_for_player[what_player]);
-					global.sprite_select_player[what_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[what_player], 0, global.skin_for_player[what_player]);
-					global.sprite_select_player[what_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[what_player], 0, global.skin_for_player[what_player]);
 					#endregion /* Player character select portrait sprite END */
 					
 				}
@@ -136,15 +127,15 @@ function scr_character_select_player_navigation(what_player = 1)
 			
 			#region /* Player Key Right (change portrait sprites) */
 			if (keyboard_check_pressed(player_key_right))
-			or (keyboard_check_pressed(player_key2_right))
-			or (gamepad_button_check_pressed(player_gamepad_slot, gp_padr))
-			or (gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0)
-			or (point_in_rectangle(mouse_get_x, mouse_get_y,
-			get_window_width * 0.5 + player_display_x + arrow_offset - 16,
+			|| (keyboard_check_pressed(player_key2_right))
+			|| (gamepad_button_check_pressed(player_gamepad_slot, gp_padr))
+			|| (gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0)
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y,
+			get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16,
 			get_window_height * 0.5 - 16,
-			get_window_width * 0.5 + player_display_x + arrow_offset + 16,
+			get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16,
 			get_window_height * 0.5 + 16))
-			and (mouse_check_button_released(mb_left))
+			&& (mouse_check_button_released(mb_left))
 			{
 				
 				if (menu_delay == 0)
@@ -159,16 +150,11 @@ function scr_character_select_player_navigation(what_player = 1)
 						alarm[0] = 1;
 						alarm[1] = 1;
 						global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
-						xx[what_player]  = player_display_x + 32;
+						xx_delay[what_player] = +1;
 					}
 					
 					#region /* Player character select portrait sprite */
 					global.skin_for_player[what_player] = global.actual_skin_for_player[what_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
-					global.sprite_select_player[what_player] = spr_noone;
-					global.sprite_select_player[what_player] = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player[what_player], 0, global.skin_for_player[what_player]);
-					global.sprite_select_player[what_player] = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player[what_player], 0, global.skin_for_player[what_player]);
-					global.sprite_select_player[what_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[what_player], 0, global.skin_for_player[what_player]);
-					global.sprite_select_player[what_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[what_player], 0, global.skin_for_player[what_player]);
 					#endregion /* Player character select portrait sprite END */
 					
 				}
@@ -182,10 +168,10 @@ function scr_character_select_player_navigation(what_player = 1)
 		
 		#region /* Player key up */
 		if (keyboard_check_pressed(player_key_up))
-		or (keyboard_check_pressed(player_key2_up))
-		or (gamepad_button_check_pressed(player_gamepad_slot, gp_padu))
-		or (gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0)
-		and (menu_specific_joystick_delay[what_player] <= 0)
+		|| (keyboard_check_pressed(player_key2_up))
+		|| (gamepad_button_check_pressed(player_gamepad_slot, gp_padu))
+		|| (gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0)
+		&& (menu_specific_joystick_delay[what_player] <= 0)
 		{
 			if (menu_delay == 0)
 			{
@@ -200,13 +186,13 @@ function scr_character_select_player_navigation(what_player = 1)
 		
 		#region /* Player key down */
 		if (keyboard_check_pressed(player_key_down))
-		or (keyboard_check_pressed(player_key2_down))
-		or (gamepad_button_check_pressed(player_gamepad_slot, gp_padd))
-		or (gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0)
-		and (menu_specific_joystick_delay[what_player] <= 0)
+		|| (keyboard_check_pressed(player_key2_down))
+		|| (gamepad_button_check_pressed(player_gamepad_slot, gp_padd))
+		|| (gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0)
+		&& (menu_specific_joystick_delay[what_player] <= 0)
 		{
 			if (menu_delay == 0)
-			and (player_accept_selection == 0)
+			&& (player_accept_selection == 0)
 			{
 				menu_delay = 3;
 				menu_specific_joystick_delay[what_player] = 30;
@@ -234,10 +220,10 @@ function scr_character_select_player_navigation(what_player = 1)
 		
 		#region /* Player key up */
 		if (keyboard_check_pressed(player_key_up))
-		or (keyboard_check_pressed(player_key2_up))
-		or (gamepad_button_check_pressed(player_gamepad_slot, gp_padu))
-		or (gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0)
-		and (menu_specific_joystick_delay[what_player] <= 0)
+		|| (keyboard_check_pressed(player_key2_up))
+		|| (gamepad_button_check_pressed(player_gamepad_slot, gp_padu))
+		|| (gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0)
+		&& (menu_specific_joystick_delay[what_player] <= 0)
 		{
 			if (menu_delay == 0)
 			{

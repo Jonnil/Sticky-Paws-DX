@@ -14,6 +14,15 @@ if (global.resource_pack_sprite_splash_easteregg >= 0)
 	draw_sprite_ext(global.resource_pack_sprite_splash_easteregg, image_index, + 128, get_window_height + sprite_splash_easteregg_yoffset, 1, 1, 0, c_white, 1);
 }
 
+if (show_skip_button)
+{
+	show_skip_button_alpha = lerp(show_skip_button_alpha, 1, 0.1);
+}
+else
+{
+	show_skip_button_alpha = 0;
+}
+
 if (can_navigate == false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
 {
 	global.loading_spinning_angle -= 10;
@@ -56,48 +65,31 @@ if (can_navigate == false) /* When game is loading in assets, display a detailed
 	}
 }
 else
+if (show_skip_button)
 {
 	if (os_type == os_ios)
-	or (os_type = os_android)
+	|| (os_type = os_android)
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, l10n_text("Press and Hold Screen"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, l10n_text("Press on Screen"), global.default_text_size, c_black, c_white, show_skip_button_alpha);
 	}
 	else
 	if (gamepad_is_connected(global.player1_slot))
-	and (global.controls_used_for_menu_navigation == "controller")
-	or (global.always_show_gamepad_buttons)
-	or (os_type == os_switch)
+	&& (global.controls_used_for_menu_navigation == "controller")
+	|| (global.always_show_gamepad_buttons)
 	{
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5 + 32, display_get_gui_height() - 32, l10n_text("Skip") + ":", global.default_text_size, c_black, c_white, 1);
-		if (global.player_[inp.gp][1][1][action.accept] > noone)
-		{
-			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, c_white, 1);
-		}
-		else
-		if (global.player_[inp.gp][1][2][action.accept] > noone)
-		{
-			scr_draw_gamepad_buttons(global.player_[inp.gp][1][2][action.accept], display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, c_white, 1);
-		}
+		scr_draw_text_outlined(display_get_gui_width() * 0.5 + 32, display_get_gui_height() - 32, l10n_text("Skip") + ":", global.default_text_size, c_black, c_white, show_skip_button_alpha);
+		scr_draw_gamepad_buttons(skip_button, display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, c_white, show_skip_button_alpha);
 	}
 	else
-	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 	{
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5 + 32, display_get_gui_height() - 32, l10n_text("Skip") + ":", global.default_text_size, c_black, c_white, 1);
-		if (global.player_[inp.key][1][1][action.accept] > noone)
-		{
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.accept], display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, 0.5, 0, c_white, 1);
-		}
-		else
-		if (global.player_[inp.key][1][2][action.accept] > noone)
-		{
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.accept], display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, 0.5, 0, c_white, 1);
-		}
+		scr_draw_text_outlined(display_get_gui_width() * 0.5 + 32, display_get_gui_height() - 32, l10n_text("Skip") + ":", global.default_text_size, c_black, c_white, show_skip_button_alpha);
+		draw_sprite_ext(spr_keyboard_keys, skip_key, display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 32, 0.5, 0.5, 0, c_white, show_skip_button_alpha);
 	}
 }
 

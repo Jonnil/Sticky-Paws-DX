@@ -1,7 +1,7 @@
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
 if (!place_meeting(x, y + 1, obj_wall))
-and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	gravity = 0.5; /* The gravity */
 }
@@ -25,7 +25,7 @@ if (instance_exists(obj_player))
 		if (dir = +1)
 		{
 			if (instance_nearest(x, y, obj_player).x > x)
-			and (instance_nearest(x, y, obj_player).hspeed >+ 2)
+			&& (instance_nearest(x, y, obj_player).hspeed >+ 2)
 			{
 				hspeed = instance_nearest(x, y, obj_player).hspeed;
 				if (hspeed >+8)
@@ -41,7 +41,7 @@ if (instance_exists(obj_player))
 		else
 		{
 			if (instance_nearest(x, y, obj_player).x < x)
-			and (instance_nearest(x, y, obj_player).hspeed <- 2)
+			&& (instance_nearest(x, y, obj_player).hspeed <- 2)
 			{
 				hspeed = instance_nearest(x, y, obj_player).hspeed;
 				if (hspeed <- 8)
@@ -60,7 +60,7 @@ if (instance_exists(obj_player))
 		hspeed = 0;
 	}
 	if (place_meeting(x, y, obj_player))
-	and (bounce_up == false)
+	&& (bounce_up == false)
 	{
 		if (instance_nearest(x, y, obj_player).have_heart_balloon == false)
 		{
@@ -76,25 +76,25 @@ if (instance_exists(obj_player))
 				{
 					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player1_have_heart_balloon", true);
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				if (player == 2)
 				{
 					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player2_have_heart_balloon", true);
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				if (player == 3)
 				{
 					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player3_have_heart_balloon", true);
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				if (player == 4)
 				{
 					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player4_have_heart_balloon", true);
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				#endregion /* Save heart balloon to be true END */
 				
@@ -208,7 +208,7 @@ if (place_meeting(x, y - 1, obj_wall))
 }
 
 #region /* Expanding Ring Effect */
-effect_time += 1;
+effect_time ++;
 if (effect_time > 60)
 {
 	effect_time = 0;

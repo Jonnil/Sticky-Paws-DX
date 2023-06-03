@@ -22,15 +22,15 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	#region /* Button */
 	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
-	and (global.controls_used_for_menu_navigation == "mouse")
-	and (menu_delay == 0)
-	and (open_dropdown == false)
-	or (menu == menu_index)
-	and (global.controls_used_for_menu_navigation == "keyboard")
-	and (open_dropdown == false)
-	or (menu == menu_index)
-	and (global.controls_used_for_menu_navigation == "controller")
-	and (open_dropdown == false)
+	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (menu_delay == 0)
+	&& (open_dropdown == false)
+	|| (menu == menu_index)
+	&& (global.controls_used_for_menu_navigation == "keyboard")
+	&& (open_dropdown == false)
+	|| (menu == menu_index)
+	&& (global.controls_used_for_menu_navigation == "controller")
+	&& (open_dropdown == false)
 	{
 		menu = menu_index;
 		if (spr_index >= 0)
@@ -64,21 +64,13 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	#region /* Clicking the menu button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
 	{
-		if (menu_takes_you_to == false)
-		or (menu_takes_you_to == noone)
-		or (menu_takes_you_to == "")
-		or (menu_takes_you_to == menu_index)
-		{
-			if (mouse_check_button(mb_left))
-			and (open_dropdown == false)
-			{
-				menu = menu_index;
-			}
-		}
-		else
+		if (menu_takes_you_to != false)
+		|| (menu_takes_you_to != noone)
+		|| (menu_takes_you_to != "")
+		|| (menu_takes_you_to != menu_index)
 		{
 			if (mouse_check_button_released(mb_left))
-			and (open_dropdown == false)
+			&& (open_dropdown == false)
 			{
 				menu = menu_takes_you_to;
 			}

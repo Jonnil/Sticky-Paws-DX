@@ -1,8 +1,8 @@
 if (instance_exists(obj_player))
-and (distance_to_object(obj_player) < 128)
-and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-and (touch_player == false)
-and (speed == 0)
+&& (distance_to_object(obj_player) < 128)
+&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+&& (touch_player == false)
+&& (speed == 0)
 {
 	image_speed = 0.3;
 	
@@ -21,7 +21,7 @@ and (speed == 0)
 }
 
 if (die_volting = -1)
-or (die_volting = +1)
+|| (die_volting = +1)
 {
 	image_speed = 0;
 	image_index = 1;

@@ -392,7 +392,7 @@ function scr_spawn_objects_when_starting_room()
 							visible = true;
 						}
 					}
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					break;
 				case level_object_id.id_artwork_collection: instance_create_depth(x, y, 0, obj_artwork_collection);break;
 				case level_object_id.id_block_only_when_player_is_near: instance_create_depth(x, y, 0, obj_block_only_when_player_is_near_spawner);break;

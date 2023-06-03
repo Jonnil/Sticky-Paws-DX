@@ -5,10 +5,10 @@ function scr_player_move_swimming_in_water()
 	if (asset_get_type("obj_water") == asset_object)
 	{
 		if (position_meeting(x, y, obj_water))
-		or (asset_get_type("obj_water_level") == asset_object)
-		and (instance_exists(obj_water_level))
-		and (y > obj_water_level.y)
-		and (obj_water_level.y < room_height)
+		|| (asset_get_type("obj_water_level") == asset_object)
+		&& (instance_exists(obj_water_level))
+		&& (y > obj_water_level.y)
+		&& (obj_water_level.y < room_height)
 		{
 			dive = false;
 			if (in_water == false)
@@ -16,16 +16,16 @@ function scr_player_move_swimming_in_water()
 				in_water = true;
 			}
 			if (position_meeting(x, y, obj_water))
-			and (instance_nearest(x, y, obj_water).breathable_water)
+			&& (instance_nearest(x, y, obj_water).breathable_water)
 			{
 				in_breathable_water = true;
 			}
 			else
 			if (asset_get_type("obj_water_level") == asset_object)
-			and (instance_exists(obj_water_level))
-			and (y > obj_water_level.y)
-			and (obj_water_level.y < room_height)
-			and (instance_nearest(x, y, obj_water_level).breathable_water)
+			&& (instance_exists(obj_water_level))
+			&& (y > obj_water_level.y)
+			&& (obj_water_level.y < room_height)
+			&& (instance_nearest(x, y, obj_water_level).breathable_water)
 			{
 				in_breathable_water = true;
 			}
@@ -46,16 +46,16 @@ function scr_player_move_swimming_in_water()
 			spring = false;
 		
 			if (asset_get_type("obj_wall") == asset_object)
-			and (!place_meeting(x, y + 1, obj_wall))
-			and (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!place_meeting(x, y + 1, obj_wall))
+			&& (asset_get_type("obj_semisolid_platform") == asset_object)
+			&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				if (key_up)
-				and (!key_down)
-				or (key_jump_hold)
-				and (!key_down)
+				&& (!key_down)
+				|| (key_jump_hold)
+				&& (!key_down)
 				{
 					if (vspeed > 1)
 					{
@@ -64,7 +64,7 @@ function scr_player_move_swimming_in_water()
 				}
 				else
 				if (key_down)
-				and (!key_up)
+				&& (!key_up)
 				{
 					if (vspeed > 5)
 					{
@@ -83,11 +83,11 @@ function scr_player_move_swimming_in_water()
 			#region /* Set the gravity underwater */
 			gravity_direction = 270; /* Direction of the gravity */
 			if (asset_get_type("obj_wall") == asset_object)
-			and (!place_meeting(x, y + 1, obj_wall))
-			and (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!place_meeting(x, y + 1, obj_wall))
+			&& (asset_get_type("obj_semisolid_platform") == asset_object)
+			&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				gravity = 0.1; /* Set gravity */
 			}
@@ -104,14 +104,14 @@ function scr_player_move_swimming_in_water()
 				#region /* Swim up */
 				{
 					if (key_up)
-					and (!key_down)
+					&& (!key_down)
 					{
 						vspeed = -6;
 					}
 					else
 					if (key_down)
-					and (!key_up)
-					and (crouch == false)
+					&& (!key_up)
+					&& (crouch == false)
 					{
 						vspeed = -2;
 					}

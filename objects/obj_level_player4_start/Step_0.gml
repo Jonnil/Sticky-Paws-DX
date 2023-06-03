@@ -8,14 +8,14 @@ if (global.play_edited_level)
 
 #region /* Push yourself out of other level start objects way */
 if (instance_exists(obj_level_player1_start))
-and (place_meeting(x, y, obj_level_player1_start))
-and (obj_level_player1_start.drag_object == false)
-or (instance_exists(obj_level_player2_start))
-and (place_meeting(x, y, obj_level_player2_start))
-and (obj_level_player2_start.drag_object == false)
-or (instance_exists(obj_level_player3_start))
-and (place_meeting(x, y, obj_level_player3_start))
-and (obj_level_player3_start.drag_object == false)
+&& (place_meeting(x, y, obj_level_player1_start))
+&& (obj_level_player1_start.drag_object == false)
+|| (instance_exists(obj_level_player2_start))
+&& (place_meeting(x, y, obj_level_player2_start))
+&& (obj_level_player2_start.drag_object == false)
+|| (instance_exists(obj_level_player3_start))
+&& (place_meeting(x, y, obj_level_player3_start))
+&& (obj_level_player3_start.drag_object == false)
 {
 	x -= 32;
 }
@@ -23,14 +23,14 @@ and (obj_level_player3_start.drag_object == false)
 
 #region /* Drag Object */
 if (instance_exists(obj_leveleditor))
-and (obj_leveleditor.pause == false)
+&& (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))
-	and (!mouse_check_button(mb_middle))
-	and (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
+	&& (!mouse_check_button(mb_middle))
+	&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		or (obj_leveleditor.key_a_pressed)
+		|| (obj_leveleditor.key_a_pressed)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
@@ -53,7 +53,7 @@ and (obj_leveleditor.pause == false)
 	
 	#region /* Release the object */
 	if (mouse_check_button_released(mb_left))
-	or (obj_leveleditor.key_a_released)
+	|| (obj_leveleditor.key_a_released)
 	{
 		if (drag_object)
 		{
@@ -69,7 +69,7 @@ and (obj_leveleditor.pause == false)
 
 if (drag_release_timer > 0)
 {
-	drag_release_timer -= 1;
+	drag_release_timer --;
 }
 else
 {
@@ -100,7 +100,7 @@ if (y > room_height)
 #endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */
 
 if (global.play_edited_level)
-or (global.actually_play_edited_level)
+|| (global.actually_play_edited_level)
 {
 	if (global.actually_play_edited_level)
 	{
@@ -111,9 +111,9 @@ or (global.actually_play_edited_level)
 			
 			#region /* Load Custom Level Checkpoint */
 			if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
-			and (global.character_select_in_this_menu == "main_game")
-			or (file_exists(working_directory + "/custom_level_save.ini"))
-			and (global.character_select_in_this_menu == "level_editor")
+			&& (global.character_select_in_this_menu == "main_game")
+			|| (file_exists(working_directory + "/custom_level_save.ini"))
+			&& (global.character_select_in_this_menu == "level_editor")
 			{
 				if (global.character_select_in_this_menu == "main_game")
 				{
@@ -142,7 +142,7 @@ or (global.actually_play_edited_level)
 					{
 						global.checkpoint_realmillisecond = ini_read_real(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), "checkpoint_realmillisecond", 0);
 					}
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (global.character_select_in_this_menu == "level_editor")
@@ -172,11 +172,11 @@ or (global.actually_play_edited_level)
 					{
 						global.checkpoint_realmillisecond = ini_read_real(string(global.level_name), "checkpoint_realmillisecond", 0);
 					}
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				
 				if (global.checkpoint_x > 0)
-				or (global.checkpoint_y > 0)
+				|| (global.checkpoint_y > 0)
 				{
 					camera_set_view_pos(view_camera[view_current], global.checkpoint_x, global.checkpoint_y); /* Set camera position to be on the last used checkpoint position */
 					instance_activate_object(obj_camera);

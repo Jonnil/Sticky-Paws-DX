@@ -13,7 +13,7 @@ function scr_save_level()
 	
 	
 	if (global.character_select_in_this_menu == "main_game")
-	and (global.actually_play_edited_level)
+	&& (global.actually_play_edited_level)
 	{
 		var uppercase_level_name;
 		uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -26,8 +26,8 @@ function scr_save_level()
 		{
 			ini_write_real(level_name, "number_of_clears", ini_read_real(level_name, "number_of_clears", 0) + 1); /* Increase how many times you've played this specific level */
 			if (global.increase_number_of_levels_cleared)
-			and (ini_key_exists(level_name, "clear_rate"))
-			and (ini_read_string(level_name, "clear_rate", "closed") != "clear")
+			&& (ini_key_exists(level_name, "clear_rate"))
+			&& (ini_read_string(level_name, "clear_rate", "closed") != "clear")
 			{
 				ini_write_real("Player", "number_of_levels_cleared", ini_read_real("Player", "number_of_levels_cleared", 1) + 1); /* Increase how many levels in total you have cleared */
 			}
@@ -57,7 +57,7 @@ function scr_save_level()
 			
 			#region /* Save Fastest Time */
 			if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
-			or (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond))
+			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond))
 			{
 				ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
 				ini_write_real(level_name, "timeattack_second", global.timeattack_second);
@@ -71,11 +71,11 @@ function scr_save_level()
 		{
 			ini_write_real(level_name, "level_score", score);
 		}
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor")
-	and (global.actually_play_edited_level)
+	&& (global.actually_play_edited_level)
 	{
 		var uppercase_level_name;
 		uppercase_level_name = string_upper(string_char_at(string(global.level_name), 1));
@@ -96,7 +96,7 @@ function scr_save_level()
 			
 			#region /* Save Fastest Time */
 			if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
-			or (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond))
+			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond))
 			{
 				ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
 				ini_write_real(level_name, "timeattack_second", global.timeattack_second);
@@ -110,12 +110,12 @@ function scr_save_level()
 		{
 			ini_write_real(level_name, "level_score", score);
 		}
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Save to custom level save file END */
 		
 		#region /* Update ranking highscore to actual custom level */
 		if (global.character_select_in_this_menu == "level_editor")
-		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 		{
 			if (global.character_select_in_this_menu == "level_editor")
 			{
@@ -124,7 +124,7 @@ function scr_save_level()
 			
 			#region /* If doing a clear check, and winning the level, then add in level information that you have done a clear check */
 			if (global.level_clear_rate == "clear")
-			and (global.doing_clear_check)
+			&& (global.doing_clear_check)
 			{
 				ini_write_real("info", "clear_check", true);
 				global.go_to_menu_after_loading_custom_levels = "upload_edit_name";
@@ -136,7 +136,7 @@ function scr_save_level()
 			if (global.timeattack_realmillisecond > 2)
 			{
 				if (!ini_key_exists("rank", "rank_timeattack_realmillisecond"))
-				or (global.timeattack_realmillisecond < ini_read_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond))
+				|| (global.timeattack_realmillisecond < ini_read_real("rank", "rank_timeattack_realmillisecond", global.timeattack_realmillisecond))
 				{
 					ini_write_real("rank", "rank_timeattack_millisecond", global.timeattack_millisecond);
 					ini_write_real("rank", "rank_timeattack_second", global.timeattack_second);
@@ -151,7 +151,7 @@ function scr_save_level()
 				ini_write_real("rank", "rank_level_score", score);
 			}
 			
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			#endregion /* Update ranking highscore to actual custom level END */
 			
 		}
@@ -166,9 +166,9 @@ function scr_save_level()
 	ini_open(working_directory + "/config.ini")
 	ini_write_real("config", "zoom_level", global.zoom_level);
 	ini_write_real("config", "zoom_world_map", global.zoom_world_map);
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	
-	//var inistring = ini_close();
+	//var inistring = ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	//buffer_write(global.savebuff, buffer_string, inistring);
 	//buffer_save_async(global.savebuff, "file" + string(global.file) + ".ini", 0, buffer_get_size(global.savebuff)); /* Pass the data to be saved */
 	//global.saveid = buffer_async_group_end(); /* Start the save process */

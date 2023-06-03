@@ -1,9 +1,9 @@
 if (die_volting == false)
-or (die == false)
+|| (die == false)
 {
 	if (sliding_along_ground == -1)
-	and (flat)
-	and (position_meeting(bbox_left - 1, y, obj_wall))
+	&& (flat)
+	&& (position_meeting(bbox_left - 1, y, obj_wall))
 	{
 		stomped_delay = 0;
 		sliding_along_ground = +1;
@@ -11,8 +11,8 @@ or (die == false)
 	}
 	else
 	if (sliding_along_ground == +1)
-	and (flat)
-	and (position_meeting(bbox_right + 1, y, obj_wall))
+	&& (flat)
+	&& (position_meeting(bbox_right + 1, y, obj_wall))
 	{
 		stomped_delay = 0;
 		sliding_along_ground = -1;
@@ -20,8 +20,8 @@ or (die == false)
 	}
 	
 	if (position_meeting(x, bbox_top - 1, obj_wall))
-	and (die == false)
-	and (vspeed < 0)
+	&& (die == false)
+	&& (vspeed < 0)
 	{
 		vspeed = 0;
 		scr_audio_play(snd_bump, volume_source.sound, 0.1);
@@ -41,16 +41,16 @@ or (die == false)
 	
 	#region /* Landing on solid object */
 	if (position_meeting(x, bbox_bottom + 1, other))
-	and (vspeed >= 0)
+	&& (vspeed >= 0)
 	{
 		if (instance_exists(obj_foreground_secret))
-		and (place_meeting(x, y, obj_foreground_secret))
-		and (obj_foreground_secret.image_alpha < 0.5)
-		or (instance_exists(obj_foreground_secret))
-		and (!place_meeting(x, y, obj_foreground_secret))
+		&& (place_meeting(x, y, obj_foreground_secret))
+		&& (obj_foreground_secret.image_alpha < 0.5)
+		|| (instance_exists(obj_foreground_secret))
+		&& (!place_meeting(x, y, obj_foreground_secret))
 		{
 			if (instance_exists(obj_camera))
-			and (obj_camera.iris_xscale > 1)
+			&& (obj_camera.iris_xscale > 1)
 			{
 				effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
 				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);

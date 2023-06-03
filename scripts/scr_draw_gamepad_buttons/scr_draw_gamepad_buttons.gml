@@ -1,31 +1,31 @@
 function scr_draw_gamepad_buttons(what_button, xx, yy, overall_scale = 1, color = c_white, alpha = 1, xscale = 1, yscale = 1)
 {
 	if (global.chosen_controller_used == 0)
-	and (global.resource_pack_sprite_buttons_xboxone > noone)
+	&& (global.resource_pack_sprite_buttons_xboxone > noone)
 	{
 		var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxone;
 	}
 	else
 	if (global.chosen_controller_used == 1)
-	and (global.resource_pack_sprite_buttons_xboxseriesxs > noone)
+	&& (global.resource_pack_sprite_buttons_xboxseriesxs > noone)
 	{
 		var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxseriesxs;
 	}
 	else
 	if (global.chosen_controller_used = 2)
-	and (global.resource_pack_sprite_buttons_nintendoswitch > noone)
+	&& (global.resource_pack_sprite_buttons_nintendoswitch > noone)
 	{
 		var what_sprites_to_use = global.resource_pack_sprite_buttons_nintendoswitch;
 	}
 	else
 	if (global.chosen_controller_used = 3)
-	and (global.resource_pack_sprite_buttons_playstation4 > noone)
+	&& (global.resource_pack_sprite_buttons_playstation4 > noone)
 	{
 		var what_sprites_to_use = global.resource_pack_sprite_buttons_playstation4;
 	}
 	else
 	if (global.chosen_controller_used = 4)
-	and (global.resource_pack_sprite_buttons_playstation5 > noone)
+	&& (global.resource_pack_sprite_buttons_playstation5 > noone)
 	{
 		var what_sprites_to_use = global.resource_pack_sprite_buttons_playstation5;
 	}
@@ -35,7 +35,7 @@ function scr_draw_gamepad_buttons(what_button, xx, yy, overall_scale = 1, color 
 	}
 	
 	if (what_button == noone)
-	and (asset_get_type("spr_keyboard_keys") == asset_sprite)
+	&& (asset_get_type("spr_keyboard_keys") == asset_sprite)
 	{
 		draw_sprite_ext(spr_keyboard_keys_none, 0, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
 	}

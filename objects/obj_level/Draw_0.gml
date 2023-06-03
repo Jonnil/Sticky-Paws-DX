@@ -22,9 +22,9 @@ if (level_number != 0)
 
 #region /* Show if Checkpoint is activated */
 if (checkpoint_x > 0)
-and (asset_get_type("spr_checkpoint") == asset_sprite)
+&& (asset_get_type("spr_checkpoint") == asset_sprite)
 or(checkpoint_y > 0)
-and (asset_get_type("spr_checkpoint") == asset_sprite)
+&& (asset_get_type("spr_checkpoint") == asset_sprite)
 {
 	draw_sprite_ext(spr_checkpoint, 1, x + 32, y, 0.5, 0.5, 0, c_white, 1);
 }

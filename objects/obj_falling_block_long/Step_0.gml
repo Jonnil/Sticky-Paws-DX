@@ -1,22 +1,22 @@
 if (distance_to_object(obj_player) < 32)
 {
 	if (asset_get_type("obj_player") == asset_object)
-	and (position_meeting(x, bbox_top - 1, obj_player))
-	and (fall < 100)
-	or (asset_get_type("obj_player") == asset_object)
-	and (position_meeting(x + 16, bbox_top - 1, obj_player))
-	and (fall < 100)
-	or (asset_get_type("obj_player") == asset_object)
-	and (position_meeting(x + 32, bbox_top - 1, obj_player))
-	and (fall < 100)
-	or (asset_get_type("obj_player") == asset_object)
-	and (position_meeting(bbox_left, bbox_top - 1, obj_player))
-	and (fall < 100)
-	or (asset_get_type("obj_player") == asset_object)
-	and (position_meeting(bbox_right, bbox_top - 1, obj_player))
-	and (fall < 100)
+	&& (position_meeting(x, bbox_top - 1, obj_player))
+	&& (fall < 100)
+	|| (asset_get_type("obj_player") == asset_object)
+	&& (position_meeting(x + 16, bbox_top - 1, obj_player))
+	&& (fall < 100)
+	|| (asset_get_type("obj_player") == asset_object)
+	&& (position_meeting(x + 32, bbox_top - 1, obj_player))
+	&& (fall < 100)
+	|| (asset_get_type("obj_player") == asset_object)
+	&& (position_meeting(bbox_left, bbox_top - 1, obj_player))
+	&& (fall < 100)
+	|| (asset_get_type("obj_player") == asset_object)
+	&& (position_meeting(bbox_right, bbox_top - 1, obj_player))
+	&& (fall < 100)
 	{
-		fall += 1;
+		fall ++;
 		image_blend = c_red;
 		if (fall > 75)
 		{
@@ -81,7 +81,7 @@ if (vspeed > 16)
 
 #region /* Falling Block falling outside of view */
 if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-and (fall >= 100)
+&& (fall >= 100)
 {
 	x = xstart;
 	y = camera_get_view_y(view_camera[view_current]);
@@ -97,7 +97,7 @@ if (image_alpha < 1)
 {
 	instance_activate_object(self);
 	gravity = 0;
-	respawn_timer -= 1;
+	respawn_timer --;
 	if (respawn_timer <= 0)
 	{
 		x = xstart;

@@ -11,7 +11,7 @@ if (used)
 	image_xscale = lerp(image_xscale, 0, 0.1);
 	image_yscale = lerp(image_yscale, 0, 0.1);
 	if (image_xscale <= 0)
-	or (image_xscale <= 0)
+	|| (image_xscale <= 0)
 	{
 		instance_destroy();
 	}
@@ -26,8 +26,8 @@ if (asset_get_type("obj_water") == asset_object)
 if (asset_get_type("obj_water_level") == asset_object)
 {
 	if (!position_meeting(x, bbox_top, obj_water))
-	and (instance_exists(obj_water_level))
-	and (y < obj_water_level.y)
+	&& (instance_exists(obj_water_level))
+	&& (y < obj_water_level.y)
 	{
 		image_alpha = lerp(image_alpha, 0, 0.3);
 		gravity = 0;

@@ -16,7 +16,7 @@ if (vspeed >= 0)
 #endregion /* When falling, it's not bouncing up anymore END */
 
 if (instance_exists(obj_camera))
-and (obj_camera.sprite_lives_icon > noone)
+&& (obj_camera.sprite_lives_icon > noone)
 {
 	sprite_index = obj_camera.sprite_lives_icon;
 }
@@ -51,7 +51,7 @@ else
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
 if (!place_meeting(x, y + 1, obj_wall))
-and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	gravity = 0.5; /* The gravity */
 }
@@ -68,7 +68,7 @@ if (instance_exists(obj_player))
 		if (dir = +1)
 		{
 			if (instance_nearest(x, y, obj_player).x > x)
-			and (instance_nearest(x, y, obj_player).hspeed > + 2)
+			&& (instance_nearest(x, y, obj_player).hspeed > + 2)
 			{
 				hspeed = instance_nearest(x, y, obj_player).hspeed;
 				if (hspeed > + 8)
@@ -84,7 +84,7 @@ if (instance_exists(obj_player))
 		else
 		{
 			if (instance_nearest(x, y, obj_player).x < x)
-			and (instance_nearest(x, y, obj_player).hspeed < - 2)
+			&& (instance_nearest(x, y, obj_player).hspeed < - 2)
 			{
 				hspeed = instance_nearest(x, y, obj_player).hspeed;
 				if (hspeed < - 8)
@@ -103,7 +103,7 @@ if (instance_exists(obj_player))
 		hspeed = 0;
 	}
 	if (place_meeting(x, y, obj_player))
-	and (bounce_up == false)
+	&& (bounce_up == false)
 	{
 		
 		#region /* Give Life */
@@ -159,10 +159,10 @@ if (place_meeting(x, y - 1, obj_wall))
 #region /* Expanding Ring Effect */
 if effect_time < 60
 {
-	effect_time += 1;
+	effect_time ++;
 }
 if effect_time > 60
-and (global.pause == false)
+&& (global.pause == false)
 {
 	effect_time = 0;
 	effect_create_below(ef_ring, x, y, 1, c_white);

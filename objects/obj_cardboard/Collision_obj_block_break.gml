@@ -1,5 +1,5 @@
 if (asset_get_type("obj_block_break") == asset_object)
-and (place_meeting(x, y, obj_block_break))
+&& (place_meeting(x, y, obj_block_break))
 {
 	if (asset_get_type("obj_block_break") == asset_object)
 	{
@@ -34,7 +34,7 @@ and (place_meeting(x, y, obj_block_break))
 	}
 	score += 50;
 	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
+	&& (instance_exists(obj_camera))
 	{
 		with(obj_camera)
 		{
@@ -44,9 +44,9 @@ and (place_meeting(x, y, obj_block_break))
 	
 	#region /* Only do the breaking smoke effect and sound effect if it's inside the view */
 	if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	and (x > camera_get_view_x(view_camera[view_current]))
-	and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-	and (y > camera_get_view_y(view_camera[view_current]))
+	&& (x > camera_get_view_x(view_camera[view_current]))
+	&& (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+	&& (y > camera_get_view_y(view_camera[view_current]))
 	{
 		effect_create_above(ef_smoke, x, y, 1, c_dkgray);
 		scr_audio_play(snd_blockbreak, volume_source.sound);

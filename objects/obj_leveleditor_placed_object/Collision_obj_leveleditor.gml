@@ -93,7 +93,7 @@
 	
 	if (drag_release_timer > 0)
 	{
-		drag_release_timer -= 1;
+		drag_release_timer --;
 	}
 	else
 	if (drag_object == 0.5)

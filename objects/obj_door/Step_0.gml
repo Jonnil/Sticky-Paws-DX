@@ -1,17 +1,17 @@
 if (instance_exists(obj_player))
-and (instance_nearest(x, y, obj_player).key_up_pressed)
-and (instance_nearest(x, y, obj_player).on_ground)
-and (place_meeting(x, y, obj_player))
-and (open_door == false)
-and (door_xscale >= 0.9)
+&& (instance_nearest(x, y, obj_player).key_up_pressed)
+&& (instance_nearest(x, y, obj_player).on_ground)
+&& (place_meeting(x, y, obj_player))
+&& (open_door == false)
+&& (door_xscale >= 0.9)
 {
 	/* The door must sit on ground too before a player can enter */
 	if (position_meeting(x, bbox_bottom + 1, obj_wall))
-	or (position_meeting(bbox_left - 1, bbox_bottom + 1, obj_wall))
-	or (position_meeting(bbox_right + 1, bbox_bottom + 1, obj_wall))
-	or (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_left - 1, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_right + 1, bbox_bottom + 1, obj_semisolid_platform))
+	|| (position_meeting(bbox_left - 1, bbox_bottom + 1, obj_wall))
+	|| (position_meeting(bbox_right + 1, bbox_bottom + 1, obj_wall))
+	|| (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	|| (position_meeting(bbox_left - 1, bbox_bottom + 1, obj_semisolid_platform))
+	|| (position_meeting(bbox_right + 1, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		open_door = true;
 	}

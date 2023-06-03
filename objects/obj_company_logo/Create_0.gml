@@ -39,7 +39,7 @@ global.enable_difficutly_layers_in_level_editor = false; /* If you can change di
 
 #region /* If you're playing on mobile, then some things should show up that is not on PC */
 if (os_type == os_android)
-or (os_type == os_ios)
+|| (os_type == os_ios)
 {
 	global.show_virtual_controls = true; /* Show virtual controls on desktop or not, false by default */
 }
@@ -115,8 +115,13 @@ global.http_request_info = noone;
 
 #region /* Things you shouldn't change, warning, don't change any of these options or you might break the game! */
 
+scr_sync_saving_create();
 randomize(); /* You need to get random level ID codes when you upload a new level */
 
+skip_button = gp_start;
+skip_key = vk_escape;
+show_skip_button = false;
+show_skip_button_alpha = 0;
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
@@ -296,7 +301,7 @@ var i = max_players - 1;
 repeat(max_players)
 {
 	global.character_index[i] = 0;
-	i -= 1;
+	i --;
 }
 #endregion /* Set Max Players END */
 
@@ -494,7 +499,7 @@ scr_set_default_remapping_player4_gamepad(true);
 if (file_exists("localization.csv"))
 {
 	if (global.language_localization > ds_grid_width(global.language_local_data))
-	or (global.language_localization < 0)
+	|| (global.language_localization < 0)
 	{
 		scr_set_default_language();
 	}
@@ -557,7 +562,14 @@ global.resource_pack_sprite_buttons_playstation4 = spr_noone;
 global.resource_pack_sprite_buttons_playstation5 = spr_noone;
 #endregion /* Resource Packs END */
 
-global.always_show_gamepad_buttons = false; /* You can force to show gamepad buttons, even if playing with keyboard, mouse or touch controls. Default = false */
+if (os_type == os_switch)
+{
+	global.always_show_gamepad_buttons = true;
+}
+else
+{
+	global.always_show_gamepad_buttons = false; /* You can force to show gamepad buttons, even if playing with keyboard, mouse or touch controls. Default = false */
+}
 
 company_splash = noone;
 company_splash_1 = noone;

@@ -37,35 +37,35 @@ if (lives <= 0)
 		draw_menu_button(get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Quit"), "quit", "quit", c_red);
 		
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
-		or (keyboard_check_pressed(global.player_[inp.key][2][1][action.left]))
-		or (keyboard_check_pressed(global.player_[inp.key][3][1][action.left]))
-		or (keyboard_check_pressed(global.player_[inp.key][4][1][action.left]))
-		or (keyboard_check_pressed(global.player_[inp.key][1][2][action.left]))
-		or (keyboard_check_pressed(global.player_[inp.key][2][2][action.left]))
-		or (keyboard_check_pressed(global.player_[inp.key][3][2][action.left]))
-		or (keyboard_check_pressed(global.player_[inp.key][4][2][action.left]))
-		or (keyboard_check_pressed(ord("A")))
-		or (keyboard_check_pressed(vk_left))
-		or (gamepad_button_check_pressed(global.player1_slot, gp_padl))
-		or (gamepad_button_check_pressed(global.player2_slot, gp_padl))
-		or (gamepad_button_check_pressed(global.player3_slot, gp_padl))
-		or (gamepad_button_check_pressed(global.player4_slot, gp_padl))
-		or (gamepad_axis_value(global.player1_slot, gp_axislh) < 0)
-		or (keyboard_check_pressed(global.player_[inp.key][1][1][action.right]))
-		or (keyboard_check_pressed(global.player_[inp.key][2][1][action.right]))
-		or (keyboard_check_pressed(global.player_[inp.key][3][1][action.right]))
-		or (keyboard_check_pressed(global.player_[inp.key][4][1][action.right]))
-		or (keyboard_check_pressed(global.player_[inp.key][1][2][action.right]))
-		or (keyboard_check_pressed(global.player_[inp.key][2][2][action.right]))
-		or (keyboard_check_pressed(global.player_[inp.key][3][2][action.right]))
-		or (keyboard_check_pressed(global.player_[inp.key][4][2][action.right]))
-		or (keyboard_check_pressed(ord("D")))
-		or (keyboard_check_pressed(vk_right))
-		or (gamepad_button_check_pressed(global.player1_slot, gp_padr))
-		or (gamepad_button_check_pressed(global.player2_slot, gp_padr))
-		or (gamepad_button_check_pressed(global.player3_slot, gp_padr))
-		or (gamepad_button_check_pressed(global.player4_slot, gp_padr))
-		or (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
+		|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.left]))
+		|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.left]))
+		|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.left]))
+		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.left]))
+		|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.left]))
+		|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.left]))
+		|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.left]))
+		|| (keyboard_check_pressed(ord("A")))
+		|| (keyboard_check_pressed(vk_left))
+		|| (gamepad_button_check_pressed(global.player1_slot, gp_padl))
+		|| (gamepad_button_check_pressed(global.player2_slot, gp_padl))
+		|| (gamepad_button_check_pressed(global.player3_slot, gp_padl))
+		|| (gamepad_button_check_pressed(global.player4_slot, gp_padl))
+		|| (gamepad_axis_value(global.player1_slot, gp_axislh) < 0)
+		|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.right]))
+		|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.right]))
+		|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.right]))
+		|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.right]))
+		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.right]))
+		|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.right]))
+		|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.right]))
+		|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.right]))
+		|| (keyboard_check_pressed(ord("D")))
+		|| (keyboard_check_pressed(vk_right))
+		|| (gamepad_button_check_pressed(global.player1_slot, gp_padr))
+		|| (gamepad_button_check_pressed(global.player2_slot, gp_padr))
+		|| (gamepad_button_check_pressed(global.player3_slot, gp_padr))
+		|| (gamepad_button_check_pressed(global.player4_slot, gp_padr))
+		|| (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
 		{
 			if (menu_delay == 0)
 			{
@@ -84,38 +84,38 @@ if (lives <= 0)
 		}
 		
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.jump]))
-		or (keyboard_check_pressed(global.player_[inp.key][2][1][action.jump]))
-		or (keyboard_check_pressed(global.player_[inp.key][3][1][action.jump]))
-		or (keyboard_check_pressed(global.player_[inp.key][4][1][action.jump]))
-		or (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
-		or (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
-		or (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
-		or (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
-		or (keyboard_check_pressed(ord("Z")))
-		or (keyboard_check_pressed(vk_space))
-		or (keyboard_check_pressed(vk_enter))
-		or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-		or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
-		or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
-		or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
-		or (menu == "continue")
-		and (point_in_rectangle(
+		|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.jump]))
+		|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.jump]))
+		|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.jump]))
+		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
+		|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
+		|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
+		|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
+		|| (keyboard_check_pressed(ord("Z")))
+		|| (keyboard_check_pressed(vk_space))
+		|| (keyboard_check_pressed(vk_enter))
+		|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+		|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+		|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+		|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+		|| (menu == "continue")
+		&& (point_in_rectangle(
 		mouse_get_x,
 		mouse_get_y,
 		get_window_width * 0.5 - 370 - game_over_menu_seperation_distance,
 		get_window_height - game_over_menu_y + 2,
 		get_window_width * 0.5 - 370 + 370 - game_over_menu_seperation_distance,
 		get_window_height - game_over_menu_y + 41))
-		and (mouse_check_button_released(mb_left))
-		or (menu == "quit")
-		and (point_in_rectangle(
+		&& (mouse_check_button_released(mb_left))
+		|| (menu == "quit")
+		&& (point_in_rectangle(
 		mouse_get_x,
 		mouse_get_y,
 		get_window_width * 0.5 + game_over_menu_seperation_distance,
 		get_window_height - game_over_menu_y + 2,
 		get_window_width * 0.5 + 370 + game_over_menu_seperation_distance,
 		get_window_height - game_over_menu_y + 41))
-		and (mouse_check_button_released(mb_left))
+		&& (mouse_check_button_released(mb_left))
 		{
 			
 			#region /* Click Menu */
@@ -149,7 +149,7 @@ if (lives <= 0)
 				
 			#region /* Go to level editor if you die in level editor */
 			if (asset_get_type("room_leveleditor") == asset_room)
-			and (room == room_leveleditor)
+			&& (room == room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();
@@ -169,7 +169,7 @@ if (lives <= 0)
 
 #region /* Draw loading screen when reloading level */
 if (iris_xscale <= 0.001)
-and (lives >= 1)
+&& (lives >= 1)
 {
 	if (global.enable_transitions)
 	{

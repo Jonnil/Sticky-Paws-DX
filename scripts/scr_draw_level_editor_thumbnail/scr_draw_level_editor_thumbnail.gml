@@ -9,15 +9,15 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	var bottom_right_of_thumbnail_y = 226 * (column - scroll) + 250 + 216 + 3;
 	
 	if (menu != "back_from_level_editor")
-	and (menu != "open_custom_levels_folder")
-	and (menu != "online_level_list")
-	and (menu != "search_level_id")
-	and (menu_delay <= 0)
-	or (menu != "back_from_level_editor")
-	and (menu != "open_custom_levels_folder")
-	and (menu != "online_level_list")
-	and (menu != "search_level_id")
-	and (open_sub_menu)
+	&& (menu != "open_custom_levels_folder")
+	&& (menu != "online_level_list")
+	&& (menu != "search_level_id")
+	&& (menu_delay <= 0)
+	|| (menu != "back_from_level_editor")
+	&& (menu != "open_custom_levels_folder")
+	&& (menu != "online_level_list")
+	&& (menu != "search_level_id")
+	&& (open_sub_menu)
 	{
 		var custom_level_select_blinking = scr_wave(1, 0, 2, 0);
 		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_red, c_red, c_red, c_red, false);
@@ -36,14 +36,14 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394 * (i - column * row) + 100 + thumbnail_x_offset, 226 * (column - scroll) + 250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);
 		}
 		if (show_first_thumbnail_name == false)
-		and (i >= 1)
-		and (menu != "load_custom_level")
-		and (menu != "load_characters")
-		and (menu != "load_official_level_template")
-		or (show_first_thumbnail_name)
-		and (menu != "load_custom_level")
-		and (menu != "load_characters")
-		and (menu != "load_official_level_template")
+		&& (i >= 1)
+		&& (menu != "load_custom_level")
+		&& (menu != "load_characters")
+		&& (menu != "load_official_level_template")
+		|| (show_first_thumbnail_name)
+		&& (menu != "load_custom_level")
+		&& (menu != "load_characters")
+		&& (menu != "load_official_level_template")
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
@@ -59,7 +59,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 					var clear_check = ini_read_string("info", "clear_check", false);
 					
 					if (clear_check)
-					and (ini_key_exists("info", "level_id"))
+					&& (ini_key_exists("info", "level_id"))
 					{
 						draw_set_halign(fa_left);
 						draw_set_valign(fa_middle);
@@ -71,7 +71,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 					}
 					else
 					if (clear_check)
-					and (ini_key_exists("info", "clear_check"))
+					&& (ini_key_exists("info", "clear_check"))
 					{
 						draw_set_halign(fa_left);
 						draw_set_valign(fa_middle);
@@ -81,7 +81,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 						}
 						draw_sprite_ext(spr_checkpoint, 1, 394 * (i - column * row) + 120 + thumbnail_x_offset, 226 * (column - scroll) + 274, scr_wave(0.4, 0.5, 1, 0), scr_wave(0.4, 0.5, 1, 0), 0, c_white, 1);
 					}
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 			}
 			#endregion /* Draw if level have been Clear Checked on top of level thumbnail END */
@@ -92,15 +92,15 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	
 	#region /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting */
 	if (menu != "back_from_level_editor")
-	and (menu != "open_custom_levels_folder")
-	and (menu != "online_level_list")
-	and (menu != "search_level_id")
-	and (menu_delay <= 0)
-	or (menu != "back_from_level_editor")
-	and (menu != "open_custom_levels_folder")
-	and (menu != "online_level_list")
-	and (menu != "search_level_id")
-	and (open_sub_menu)
+	&& (menu != "open_custom_levels_folder")
+	&& (menu != "online_level_list")
+	&& (menu != "search_level_id")
+	&& (menu_delay <= 0)
+	|| (menu != "back_from_level_editor")
+	&& (menu != "open_custom_levels_folder")
+	&& (menu != "online_level_list")
+	&& (menu != "search_level_id")
+	&& (open_sub_menu)
 	{
 		var custom_level_select_arrows_moving = scr_wave(10, 0, 1, 0);
 		

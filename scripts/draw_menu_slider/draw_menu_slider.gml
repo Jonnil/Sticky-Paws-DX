@@ -15,9 +15,9 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position- 16, x_position + 320, y_position + 16))
-	and (global.controls_used_for_menu_navigation == "mouse")
-	and (menu_delay == 0)
-	and (open_dropdown == false)
+	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (menu_delay == 0)
+	&& (open_dropdown == false)
 	{
 		menu = menu_index;
 		can_navigate_settings_sidebar = false;
@@ -29,8 +29,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 		draw_rectangle_color(x_position- 2, y_position- 16 - 2, x_position + 320 + 2, y_position + 16 + 2, c_black, c_black, c_black, c_black, false);
 		
 		#region /* Click to change value */
-		if (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button(mb_left))
+		if (mouse_check_button(mb_left))
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position- 32, y_position- 32, x_position + 352, y_position + 32)) /* Within the length of the slider */
 			{
@@ -63,12 +62,12 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 		
 	}
 	if (menu_index = "background_brightness_gameplay")
-	or (menu_index = "background_brightness_menu")
+	|| (menu_index = "background_brightness_menu")
 	{
 		draw_rectangle_color(x_position, y_position- 16, x_position + 320, y_position + 16, c_black, c_white, c_white, c_black, false);
 		if (menu_index = "background_brightness_gameplay")
 		{
-			if (variable_to_change < 0)
+			if (variable_to_change <= 0)
 			{
 				draw_rectangle_color(x_position + (variable_to_change -(- 1)) /(1-(- 1))* 320 - 2, y_position- 16, x_position + (variable_to_change -(- 1)) /(1-(- 1))* 320 + 2, y_position + 16, c_white, c_white, c_white, c_white, false);
 			}
@@ -80,7 +79,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 		else
 		if (menu_index = "background_brightness_menu")
 		{
-			if (variable_to_change < 0)
+			if (variable_to_change <= 0)
 			{
 				draw_rectangle_color(x_position + (variable_to_change -(- 1)) /(1-(- 1))* 320 - 2, y_position- 16, x_position + (variable_to_change - (- 1)) /(1-(- 1))* 320 + 2, y_position + 16, c_white, c_white, c_white, c_white, false);
 			}
@@ -106,16 +105,16 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	
 	#region /* Clicking the menu button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
-	and (global.controls_used_for_menu_navigation == "mouse")
-	and (mouse_check_button_released(mb_left))
-	and (menu != "assist_enable")
-	and (menu_delay == 0)
-	or (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
-	and (global.controls_used_for_menu_navigation == "mouse")
-	and (mouse_check_button_released(mb_left))
-	and (global.assist_enable)
-	and (menu == "assist_enable")
-	and (menu_delay == 0)
+	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (mouse_check_button_released(mb_left))
+	&& (menu != "assist_enable")
+	&& (menu_delay == 0)
+	|| (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
+	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (mouse_check_button_released(mb_left))
+	&& (global.assist_enable)
+	&& (menu == "assist_enable")
+	&& (menu_delay == 0)
 	{
 		menu = menu_index;
 		can_navigate_settings_sidebar = false;

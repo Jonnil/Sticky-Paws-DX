@@ -17,7 +17,7 @@ brand_new_file = ini_read_real("Player", "brand_new_file", true);
 	
 	#region /* Load Player Position */
 	if (ini_read_real("Player", "player_x", 0) > 0)
-	and (ini_read_real("Player", "player_y", 0) > 0)
+	&& (ini_read_real("Player", "player_y", 0) > 0)
 	{
 		x = ini_read_real("Player", "player_x", 0);
 		y = ini_read_real("Player", "player_y", 0);
@@ -26,7 +26,7 @@ brand_new_file = ini_read_real("Player", "brand_new_file", true);
 		xx = ini_read_real("Player", "player_x", 0);
 		yy = ini_read_real("Player", "player_y", 0);
 		if (instance_exists(obj_level))
-		and (position_meeting(x, y, obj_level))
+		&& (position_meeting(x, y, obj_level))
 		{
 			x = instance_nearest(x, y, obj_level).x;
 			y = instance_nearest(x, y, obj_level).y;
@@ -91,7 +91,7 @@ brand_new_file = ini_read_real("Player", "brand_new_file", true);
 	#endregion /* Have Heart Balloon END */
 	
 	
-   ini_close();
+   ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
    buffer_delete(global.loadbuff);
    show_debug_message("read string from buffer " + buffstring);
 }

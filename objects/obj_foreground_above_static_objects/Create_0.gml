@@ -1,9 +1,9 @@
 #region /* Initialize Foreground */
 if (global.character_select_in_this_menu == "main_game")
-and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
+&& (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 
-or (global.character_select_in_this_menu == "level_editor")
-and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+|| (global.character_select_in_this_menu == "level_editor")
+&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 {
 	if (global.character_select_in_this_menu == "main_game")
 	{
@@ -62,7 +62,7 @@ and (file_exists(working_directory + "/custom_levels/" + string(global.level_nam
 	}
 	#endregion /* Custom Foreground Above Static Objects depth END */
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 else
 {

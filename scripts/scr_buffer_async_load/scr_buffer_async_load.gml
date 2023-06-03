@@ -1,4 +1,4 @@
-function scr_buffer_async_load(save_folder_name = "save_folder_name", save_file_name = "my_save_file.sav")
+function scr_buffer_async_load(save_folder_name = "save_folder_name", save_file_name = "my_save_file.ini")
 {
 	global.loadbuff = buffer_create(1, buffer_grow, 1);
 	buffer_async_group_begin(save_folder_name); /* save folder */

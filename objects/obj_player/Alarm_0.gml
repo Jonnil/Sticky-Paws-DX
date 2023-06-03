@@ -3,16 +3,13 @@
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
 {
 	character_folder = "characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]));
-	can_save_to_character_config = false; /* You can't save values to included files */
 }
 else
 {
 	character_folder = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]));
-	can_save_to_character_config = true; /* You can save values to local appdata */
 }
 
-if (directory_exists(string(character_folder) + "/sprites/skin" + string(selected_skin)))
-or (file_exists(string(character_folder) + "/sprites/skin" + string(selected_skin) + "/mask.png"))
+if (file_exists(string(character_folder) + "/sprites/skin" + string(selected_skin) + "/mask.png"))
 {
 	skin_folder = "/skin" + string(selected_skin) + "/";
 }
@@ -83,7 +80,7 @@ if (can_initialize_custom_character)
 	else
 	{
 		if (can_save_to_character_config)
-		and (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
+		&& (ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]) != undefined)
 		{
 			ini_write_real("sprite origin points", "climb_under_y_offset", 10);
 		}
@@ -91,7 +88,7 @@ if (can_initialize_custom_character)
 	}
 	#endregion /* x and y origin points END */
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* Origin points END */
 	
 	#region /* Sprite variables */
@@ -511,11 +508,11 @@ if (can_save_to_character_config == true && character != undefined && !file_exis
 	ini_write_real("values", "midair_jump_flip_animation", 2);
 	ini_write_real("values", "hp", default_hp);
 	ini_write_real("values", "max_hp", default_hp);
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 
 // Close the character config file
-ini_close();
+ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #endregion /* Character Values Handeling END */
 
 #region /* Have Heart Balloon */
@@ -556,7 +553,7 @@ if (global.character_select_in_this_menu == "main_game" && file_exists(working_d
 		break;
 	}
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 else
 {

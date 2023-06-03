@@ -3,9 +3,9 @@ function scr_player_move_spring()
 	
 	#region /* Spring */
 	if (asset_get_type("obj_spring") == asset_object)
-	and (instance_exists(obj_spring))
-	and (place_meeting(x, y, obj_spring))
-	and (instance_nearest(x, y, obj_spring).can_bounce == 0)
+	&& (instance_exists(obj_spring))
+	&& (place_meeting(x, y, obj_spring))
+	&& (instance_nearest(x, y, obj_spring).can_bounce == 0)
 	{
 		scr_gamepad_vibration(player, 0.4, 10);
 		scr_audio_play(voice_jump_spring, volume_source.voice);
@@ -51,7 +51,7 @@ function scr_player_move_spring()
 		spring = true;
 		move_towards_spring_endpoint = true;
 		if (asset_get_type("obj_spring") == asset_object)
-		and (instance_exists(obj_spring))
+		&& (instance_exists(obj_spring))
 		{
 			spring_endpoint_x = instance_nearest(x, y, obj_spring).second_x;
 			spring_endpoint_y = instance_nearest(x, y, obj_spring).second_y;
@@ -69,8 +69,8 @@ function scr_player_move_spring()
 		move_towards_point(spring_endpoint_x, spring_endpoint_y, 20);
 	
 		if (asset_get_type("obj_spring") == asset_object)
-		and (instance_exists(obj_spring))
-		and (point_distance(
+		&& (instance_exists(obj_spring))
+		&& (point_distance(
 		spring_endpoint_x,
 		spring_endpoint_y,
 		instance_nearest(spring_endpoint_x, spring_endpoint_y, obj_spring).x,
@@ -86,16 +86,16 @@ function scr_player_move_spring()
 			spring_endpoint_y = 0;
 		}
 		if (asset_get_type("obj_wall") == asset_object)
-		and (instance_exists(obj_wall))
+		&& (instance_exists(obj_wall))
 		{
 			if (place_meeting(x - 4, y, obj_wall))
-			and (hspeed < 0)
-			or (place_meeting(x + 4, y, obj_wall))
-			and (hspeed > 0)
-			or (place_meeting(x, y - 4, obj_wall))
-			and (vspeed < 0)
-			or (place_meeting(x, y + 4, obj_wall))
-			and (vspeed > 0)
+			&& (hspeed < 0)
+			|| (place_meeting(x + 4, y, obj_wall))
+			&& (hspeed > 0)
+			|| (place_meeting(x, y - 4, obj_wall))
+			&& (vspeed < 0)
+			|| (place_meeting(x, y + 4, obj_wall))
+			&& (vspeed > 0)
 			{
 				move_towards_spring_endpoint = false;
 				spring_endpoint_x = 0;
@@ -109,10 +109,10 @@ function scr_player_move_spring()
 		if (spring_animation == 0)
 		{
 			if (image_index > image_number - 1)
-			and (vspeed >= 0)
+			&& (vspeed >= 0)
 			{
 				if (sprite_spring_transition > noone)
-				or (sprite_jump_transition_to_fall > noone)
+				|| (sprite_jump_transition_to_fall > noone)
 				{
 					image_index = 0;
 					spring_animation = 1;
@@ -158,7 +158,7 @@ function scr_player_move_spring()
 		{
 			if (sprite_spring_down > noone){sprite_index = sprite_spring_down;}else
 			if (sprite_spring_up > noone){sprite_index = sprite_spring_up;}else
-			if (key_jump_hold) and (sprite_fall_slower > noone){sprite_index = sprite_fall_slower;}else
+			if (key_jump_hold) && (sprite_fall_slower > noone){sprite_index = sprite_fall_slower;}else
 			if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
 			if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall; if (image_index > image_number - 1){image_index = image_number - 1;}}else
 			if (sprite_double_jump > noone){sprite_index = sprite_double_jump;}else
@@ -176,15 +176,15 @@ function scr_player_move_spring()
 		{
 			angle = direction - 90;
 			if (speed < 6)
-			or (direction >= 90 - 10)
-			and (direction <= 90 + 10)
+			|| (direction >= 90 - 10)
+			&& (direction <= 90 + 10)
 			{
 				spring_twist_sprite = false;
 			}
 		}
 		#endregion /* Make the cahracter face wherever you're going END */
 	
-		star_image_index += 1;
+		star_image_index ++;
 		if (star_image_index == 5)
 		{
 			effect_create_above(ef_star, x + random_range(-32, +32), y + random_range(-32, +32), 0, c_white);

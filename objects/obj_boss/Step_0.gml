@@ -10,10 +10,10 @@ draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
 
 if (instance_exists(obj_camera))
-and (distance_to_object(obj_camera) < 500)
-and (asset_get_type("snd_music_boss") == asset_sound)
-and (global.music != snd_music_boss)
-and (has_seen_player)
+&& (distance_to_object(obj_camera) < 500)
+&& (asset_get_type("snd_music_boss") == asset_sound)
+&& (global.music != snd_music_boss)
+&& (has_seen_player)
 {
 	audio_stop_sound(global.music);
 	audio_stop_sound(global.music_underwater);
@@ -21,16 +21,16 @@ and (has_seen_player)
 }
 
 if (instance_exists(obj_player))
-and (distance_to_object(obj_player) < 500)
-and (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, true, true))
-and (has_seen_player == false)
+&& (distance_to_object(obj_player) < 500)
+&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, true, true))
+&& (has_seen_player == false)
 {
 	has_seen_player = true; /* Only see player if player is close and in line of sight */
 }
 
 #region /* If enemies are disabled, destroy this object */
 if (global.assist_enable)
-and (global.assist_enable_enemies == false)
+&& (global.assist_enable_enemies == false)
 {
 	instance_destroy();
 }
@@ -39,14 +39,14 @@ and (global.assist_enable_enemies == false)
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
 if (!place_meeting(x, y + 1, obj_wall))
-and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	and (x > camera_get_view_x(view_camera[view_current]))
-	and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-	and (y > camera_get_view_y(view_camera[view_current]))
+	&& (x > camera_get_view_x(view_camera[view_current]))
+	&& (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+	&& (y > camera_get_view_y(view_camera[view_current]))
 	{
 		gravity = 0.5; /* The gravity */
 	}
@@ -74,12 +74,12 @@ else
 
 if (has_seen_player)
 {
-	time += 1;
+	time ++;
 }
 
 if (takendamage > 0)
 {
-	takendamage -= 1;
+	takendamage --;
 }
 if (time == room_speed * 3)
 {
@@ -95,11 +95,11 @@ if (time == room_speed * 3)
 
 #region /* Phase 1 */
 if (hp >= 3)
-and (has_seen_player)
-and (flying_back == 0)
+&& (has_seen_player)
+&& (flying_back == 0)
 {
 	if (time < room_speed * 7)
-	and (instance_exists(obj_player))
+	&& (instance_exists(obj_player))
 	{
 		if (instance_nearest(x, y, obj_player).x < x)
 		{
@@ -146,8 +146,8 @@ and (flying_back == 0)
 		sprite_index = spr_boss_stand;
 	}
 	if (time == room_speed * 4)
-	or (time == room_speed * 5)
-	or (time == room_speed * 6)
+	|| (time == room_speed * 5)
+	|| (time == room_speed * 6)
 	{
 		if (can_jump_on_head)
 		{
@@ -180,8 +180,8 @@ and (flying_back == 0)
 		}
 	}
 	if (place_meeting(x - 16, y, obj_wall))
-	and (time > room_speed * 8)
-	and (can_jump_on_head == false)
+	&& (time > room_speed * 8)
+	&& (can_jump_on_head == false)
 	{
 		if (instance_exists(obj_camera))
 		{
@@ -198,8 +198,8 @@ and (flying_back == 0)
 	}
 	else
 	if (place_meeting(x + 16, y, obj_wall))
-	and (time > room_speed * 8)
-	and (can_jump_on_head == false)
+	&& (time > room_speed * 8)
+	&& (can_jump_on_head == false)
 	{
 		if (instance_exists(obj_camera))
 		{
@@ -221,11 +221,11 @@ else
 
 #region /* Phase 2 */
 if (hp >= 2)
-and (has_seen_player)
-and (flying_back == 0)
+&& (has_seen_player)
+&& (flying_back == 0)
 {
 	if (time < room_speed * 8)
-	and (instance_exists(obj_player))
+	&& (instance_exists(obj_player))
 	{
 		if (instance_nearest(x, y, obj_player).x < x)
 		{
@@ -274,9 +274,9 @@ and (flying_back == 0)
 		sprite_index = spr_boss_stand;
 	}
 	if (time == room_speed * 4)
-	or (time == room_speed * 5)
-	or (time == room_speed * 6)
-	or (time == room_speed * 7)
+	|| (time == room_speed * 5)
+	|| (time == room_speed * 6)
+	|| (time == room_speed * 7)
 	{
 		if (can_jump_on_head)
 		{
@@ -309,8 +309,8 @@ and (flying_back == 0)
 		}
 	}
 	if (place_meeting(x - 16, y, obj_wall))
-	and (time > room_speed * 9)
-	and (can_jump_on_head == false)
+	&& (time > room_speed * 9)
+	&& (can_jump_on_head == false)
 	{
 		if (instance_exists(obj_camera))
 		{
@@ -327,8 +327,8 @@ and (flying_back == 0)
 	}
 	else
 	if (place_meeting(x + 16, y, obj_wall))
-	and (time > room_speed * 9)
-	and (can_jump_on_head == false)
+	&& (time > room_speed * 9)
+	&& (can_jump_on_head == false)
 	{
 		if (instance_exists(obj_camera))
 		{
@@ -350,7 +350,7 @@ else
 
 #region /* Phase 3 */
 if (has_seen_player)
-and (flying_back == 0)
+&& (flying_back == 0)
 {
 	if (time < room_speed * 9)
 	{
@@ -404,10 +404,10 @@ and (flying_back == 0)
 		sprite_index = spr_boss_stand;
 	}
 	if (time == room_speed * 4)
-	or (time == room_speed * 5)
-	or (time == room_speed * 6)
-	or (time == room_speed * 7)
-	or (time == room_speed * 8)
+	|| (time == room_speed * 5)
+	|| (time == room_speed * 6)
+	|| (time == room_speed * 7)
+	|| (time == room_speed * 8)
 	{
 		if (can_jump_on_head)
 		{
@@ -440,8 +440,8 @@ and (flying_back == 0)
 		}
 	}
 	if (place_meeting(x - 16, y, obj_wall))
-	and (time > room_speed * 10)
-	and (can_jump_on_head == false)
+	&& (time > room_speed * 10)
+	&& (can_jump_on_head == false)
 	{
 		if (instance_exists(obj_camera))
 		{
@@ -458,8 +458,8 @@ and (flying_back == 0)
 	}
 	else
 	if (place_meeting(x + 16, y, obj_wall))
-	and (time > room_speed * 10)
-	and (can_jump_on_head == false)
+	&& (time > room_speed * 10)
+	&& (can_jump_on_head == false)
 	{
 		if (instance_exists(obj_camera))
 		{
@@ -478,7 +478,7 @@ and (flying_back == 0)
 #endregion /* Phase 3 END */
 
 if (sprite_index == spr_boss_throw)
-and (image_index > image_number - 1)
+&& (image_index > image_number - 1)
 {
 	mask_index = spr_boss_stand;
 	sprite_index = spr_boss_stand;
@@ -488,7 +488,7 @@ and (image_index > image_number - 1)
 if (hp <= 0)
 {
 	if (time == room_speed * 3 - 1)
-	or (takendamage == 0)
+	|| (takendamage == 0)
 	{
 		effect_create_above(ef_smoke, x - 32, y, 2, c_white);
 		effect_create_above(ef_smoke, x - 42, y + 32, 2, c_white);
@@ -527,10 +527,10 @@ if (takendamage == 50)
 
 #region /* Kill enemy if it's inside the wall */
 if (position_meeting(x, y, obj_wall))
-and (die == false)
-and (draw_xscale >= 0.8)
+&& (die == false)
+&& (draw_xscale >= 0.8)
 {
-	stuck_in_wall_counter += 1;
+	stuck_in_wall_counter ++;
 	if (stuck_in_wall_counter >= 3)
 	{
 		flat = false;
@@ -541,7 +541,7 @@ and (draw_xscale >= 0.8)
 else
 if (stuck_in_wall_counter > 0)
 {
-	stuck_in_wall_counter -= 1;
+	stuck_in_wall_counter --;
 }
 #endregion /* Kill enemy if it's inside the wall END */
 
@@ -560,7 +560,7 @@ if (flying_back > 2)
 }
 if (flying_back > 1)
 {
-	flying_back -= 1;
+	flying_back --;
 }
 
 scr_enemy_dying_offscreen();

@@ -1,13 +1,13 @@
 #region /* If enemies are disabled, destroy this object */
 if (global.assist_enable)
-and (global.assist_enable_enemies == false)
+&& (global.assist_enable_enemies == false)
 {
 	instance_destroy();
 }
 #endregion /* If enemies are disabled, destroy this object END */
 
 if (die_volting = - 1)
-or (die_volting = +1)
+|| (die_volting = +1)
 {
 	if (die_volting = - 1)
 	{
@@ -45,10 +45,10 @@ else
 		if (image_index > image_number - 1)
 		{
 			if (instance_exists(obj_foreground_secret))
-			and (place_meeting(x, y, obj_foreground_secret))
-			and (obj_foreground_secret.image_alpha < 0.5)
-			or (instance_exists(obj_foreground_secret))
-			and (!place_meeting(x, y, obj_foreground_secret))
+			&& (place_meeting(x, y, obj_foreground_secret))
+			&& (obj_foreground_secret.image_alpha < 0.5)
+			|| (instance_exists(obj_foreground_secret))
+			&& (!place_meeting(x, y, obj_foreground_secret))
 			{
 				effect_create_above(ef_smoke, x, y, 2, c_white);
 			}
@@ -69,15 +69,15 @@ var view_left = camera_get_view_x(view_camera[view_current]) - 22;
 var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 22;
 
 if (asset_get_type("obj_camera") == asset_object)
-and (instance_exists(obj_camera))
-and (x < view_left)
-and (image_xscale < 0)
-and (draw_xscale >= 0.8)
-or (asset_get_type("obj_camera") == asset_object)
-and (instance_exists(obj_camera))
-and (x > view_right)
-and (image_xscale > 0)
-and (draw_xscale >= 0.8)
+&& (instance_exists(obj_camera))
+&& (x < view_left)
+&& (image_xscale < 0)
+&& (draw_xscale >= 0.8)
+|| (asset_get_type("obj_camera") == asset_object)
+&& (instance_exists(obj_camera))
+&& (x > view_right)
+&& (image_xscale > 0)
+&& (draw_xscale >= 0.8)
 {
 	instance_destroy();
 	x = 0;
@@ -89,14 +89,14 @@ draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * sign(image_xscale
 
 #region /* Kill enemy if it's inside the wall */
 if (draw_xscale >= 0.8)
-and (asset_get_type("obj_wall") == asset_object)
+&& (asset_get_type("obj_wall") == asset_object)
 {
 	if (position_meeting(bbox_left, y, obj_wall))
-	and (hspeed <= 0)
-	or (position_meeting(bbox_right, y, obj_wall))
-	and (hspeed >= 0)
+	&& (hspeed <= 0)
+	|| (position_meeting(bbox_right, y, obj_wall))
+	&& (hspeed >= 0)
 	{
-		stuck_in_wall_counter += 1;
+		stuck_in_wall_counter ++;
 		if (stuck_in_wall_counter >= 3)
 		{
 			flat = false;
@@ -107,7 +107,7 @@ and (asset_get_type("obj_wall") == asset_object)
 	else
 	if (stuck_in_wall_counter > 0)
 	{
-		stuck_in_wall_counter -= 1;
+		stuck_in_wall_counter --;
 	}
 }
 #endregion /* Kill enemy if it's inside the wall END */

@@ -155,6 +155,6 @@ function scr_config_save()
 	ini_write_real("player4_profile" + string(global.player4_profile), "player4_show_controls", global.player4_show_controls);
 	#endregion /* Save Player 4 Keyboard Remapping END */
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	
 }

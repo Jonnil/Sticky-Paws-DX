@@ -1,12 +1,12 @@
 #region /* Collision with bullet */
 if (asset_get_type("obj_bullet") == asset_object)
-and (instance_exists(obj_bullet))
-and (distance_to_object(obj_bullet) < 32)
-and (other.die == false)
+&& (instance_exists(obj_bullet))
+&& (distance_to_object(obj_bullet) < 32)
+&& (other.die == false)
 {
 	if (place_meeting(x, y, obj_bullet))
-	or (place_meeting(x - 5, y, obj_bullet))
-	or (place_meeting(x + 5, y, obj_bullet))
+	|| (place_meeting(x - 5, y, obj_bullet))
+	|| (place_meeting(x + 5, y, obj_bullet))
 	{
 		
 		#region /* Turn into cardboard particle */
@@ -43,7 +43,7 @@ and (other.die == false)
 		}
 		score += 50;
 		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		&& (instance_exists(obj_camera))
 		{
 			with(obj_camera)
 			{
@@ -53,9 +53,9 @@ and (other.die == false)
 		
 		#region /* Only do the breaking smoke effect and sound effect if it's inside the view */
 		if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-		and (x > camera_get_view_x(view_camera[view_current]))
-		and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-		and (y > camera_get_view_y(view_camera[view_current]))
+		&& (x > camera_get_view_x(view_camera[view_current]))
+		&& (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+		&& (y > camera_get_view_y(view_camera[view_current]))
 		{
 			effect_create_above(ef_smoke, x, y, 1, c_dkgray);
 			scr_audio_play(snd_blockbreak, volume_source.sound);

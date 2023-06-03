@@ -62,8 +62,8 @@ if (mouse_check_button(mb_any))
 	
 	#region /* Move in Level */
 	if (var_joystick_active)
-	and (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > 10)
-	and (instance_exists(obj_player))
+	&& (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > 10)
+	&& (instance_exists(obj_player))
 	{
 		
 		#region /* Left */
@@ -123,8 +123,8 @@ if (mouse_check_button(mb_any))
 	
 	#region /* Move in Map */
 	if (var_joystick_active)
-	and (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > 10)
-	and (instance_exists(obj_player_map))
+	&& (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > 10)
+	&& (instance_exists(obj_player_map))
 	{
 		
 		#region /* Left */
@@ -183,7 +183,7 @@ if (mouse_check_button(mb_any))
 	#endregion /* Move in Map END */
 	
 	if (var_joystick_active)
-	and (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > base_size * var_screen_size)
+	&& (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) > base_size * var_screen_size)
 	{
 		var_direction = temp_dir;
 		var_x_dir = lengthdir_x(base_size * var_screen_size, temp_dir);

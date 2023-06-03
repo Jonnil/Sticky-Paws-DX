@@ -1,20 +1,20 @@
 /* Collision Event with a solid object */
 
 if (position_meeting(x, bbox_bottom + 1, other))
-or (position_meeting(x, bbox_bottom + 2, other))
-or (position_meeting(x, bbox_bottom + 3, other))
-or (position_meeting(x, bbox_bottom + 4, other))
-or (position_meeting(bbox_left, bbox_bottom + 1, other))
-or (position_meeting(bbox_left, bbox_bottom + 2, other))
-or (position_meeting(bbox_left, bbox_bottom + 3, other))
-or (position_meeting(bbox_left, bbox_bottom + 4, other))
-or (position_meeting(bbox_right, bbox_bottom + 1, other))
-or (position_meeting(bbox_right, bbox_bottom + 2, other))
-or (position_meeting(bbox_right, bbox_bottom + 3, other))
-or (position_meeting(bbox_right, bbox_bottom + 4, other))
+|| (position_meeting(x, bbox_bottom + 2, other))
+|| (position_meeting(x, bbox_bottom + 3, other))
+|| (position_meeting(x, bbox_bottom + 4, other))
+|| (position_meeting(bbox_left, bbox_bottom + 1, other))
+|| (position_meeting(bbox_left, bbox_bottom + 2, other))
+|| (position_meeting(bbox_left, bbox_bottom + 3, other))
+|| (position_meeting(bbox_left, bbox_bottom + 4, other))
+|| (position_meeting(bbox_right, bbox_bottom + 1, other))
+|| (position_meeting(bbox_right, bbox_bottom + 2, other))
+|| (position_meeting(bbox_right, bbox_bottom + 3, other))
+|| (position_meeting(bbox_right, bbox_bottom + 4, other))
 {
 	if (dive)
-	and (vspeed >= -4)
+	&& (vspeed >= -4)
 	{
 		dive = false;
 		dive_on_ground = 10;
@@ -24,29 +24,29 @@ or (position_meeting(bbox_right, bbox_bottom + 4, other))
 	}
 	if (vspeed >= 0)
 	{
-		y -= 1;
+		y --;
 	}
 }
 
 #region /* Landing on solid object */
 if (position_meeting(x, bbox_bottom + 1, other))
-and (stick_to_wall == false)
-or (position_meeting(bbox_left, bbox_bottom + 1, other))
-and (stick_to_wall == false)
-or (position_meeting(bbox_right, bbox_bottom + 1, other))
-and (stick_to_wall == false)
+&& (stick_to_wall == false)
+|| (position_meeting(bbox_left, bbox_bottom + 1, other))
+&& (stick_to_wall == false)
+|| (position_meeting(bbox_right, bbox_bottom + 1, other))
+&& (stick_to_wall == false)
 {
 	
 	#region /* Smoke Landing Effect */
 	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
-	and (obj_camera.iris_xscale > 1)
+	&& (instance_exists(obj_camera))
+	&& (obj_camera.iris_xscale > 1)
 	{
 		if (instance_exists(obj_foreground_secret))
-		and (place_meeting(x, y, obj_foreground_secret))
-		and (obj_foreground_secret.image_alpha < 0.5)
-		or (instance_exists(obj_foreground_secret))
-		and (!place_meeting(x, y, obj_foreground_secret))
+		&& (place_meeting(x, y, obj_foreground_secret))
+		&& (obj_foreground_secret.image_alpha < 0.5)
+		|| (instance_exists(obj_foreground_secret))
+		&& (!place_meeting(x, y, obj_foreground_secret))
 		{
 			if (vspeed > 2)
 			{
@@ -101,10 +101,10 @@ and (stick_to_wall == false)
 
 #region /* Landing on different surfaces sound effects */
 if (position_meeting(x, bbox_bottom + 1, other))
-and (vspeed >= 0)
+&& (vspeed >= 0)
 {
 	if (asset_get_type("obj_ground") == asset_object)
-	and (place_meeting(x, y + 1, obj_ground))
+	&& (place_meeting(x, y + 1, obj_ground))
 	{
 		scr_audio_play(snd_land_dirt, volume_source.footstep);
 	}
@@ -119,8 +119,8 @@ and (vspeed >= 0)
 
 #region /* Dirt Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
-and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 1)
+&& (place_meeting(x, y + 1, obj_ground))
+&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 1)
 {
 	if (!audio_is_playing(snd_footstep_dirt_right))
 	{
@@ -133,8 +133,8 @@ else
 
 #region /* Glass Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
-and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 2)
+&& (place_meeting(x, y + 1, obj_ground))
+&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 2)
 {
 	if (!audio_is_playing(snd_footstep_glass_right))
 	{
@@ -147,8 +147,8 @@ else
 
 #region /* Grass Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
-and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 3)
+&& (place_meeting(x, y + 1, obj_ground))
+&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 3)
 {
 	if (!audio_is_playing(snd_footstep_grass_right))
 	{
@@ -161,8 +161,8 @@ else
 
 #region /* Gravel Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
-and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 4)
+&& (place_meeting(x, y + 1, obj_ground))
+&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 4)
 {
 	if (!audio_is_playing(snd_footstep_gravel_right))
 	{
@@ -175,8 +175,8 @@ else
 
 #region /* Metal Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
-and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 5)
+&& (place_meeting(x, y + 1, obj_ground))
+&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 5)
 {
 	if (!audio_is_playing(snd_footstep_metal_right))
 	{
@@ -189,8 +189,8 @@ else
 
 #region /* Stone Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
-and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 6)
+&& (place_meeting(x, y + 1, obj_ground))
+&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 6)
 {
 	if (!audio_is_playing(snd_footstep_stone_right))
 	{
@@ -203,8 +203,8 @@ else
 
 #region /* Wood Footstep Right */
 if (asset_get_type("obj_ground") == asset_object)
-and (place_meeting(x, y + 1, obj_ground))
-and (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 7)
+&& (place_meeting(x, y + 1, obj_ground))
+&& (instance_nearest(x, bbox_bottom, obj_ground).ground_surface == 7)
 {
 	if (!audio_is_playing(snd_footstep_wood_right))
 	{

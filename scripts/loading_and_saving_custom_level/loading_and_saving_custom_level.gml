@@ -90,7 +90,7 @@ function scr_load_object_placement_json()
 		}
 		
 		/* Close the INI file */
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		ds_list_destroy(placed_objects_list);
 		#endregion /* Save unlockable objects, only if the file exists END */
 		
@@ -147,7 +147,7 @@ function scr_load_object_placement_txt()
 			while (string_char_at(str, str_pos) != "X" && string_char_at(str, str_pos) != "Y" && string_char_at(str, str_pos) != "O" && string_char_at(str, str_pos) != "E" && string_char_at(str, str_pos) != "N" && string_char_at(str, str_pos) != "H" && string_char_at(str, str_pos) != "Q" && string_char_at(str, str_pos) != "W" && string_char_at(str, str_pos) != "L" && string_char_at(str, str_pos) != "|")
 			{
 				str_temp += string_char_at(str, str_pos);
-				str_pos += 1;
+				str_pos ++;
 			}
 			switch (string_char_at(str, str_pos))
 			{
@@ -188,7 +188,7 @@ function scr_load_object_placement_txt()
 			}
 			#endregion /* When code sees | in string, then place object END */
 			
-			str_pos += 1;
+			str_pos ++;
 			
 		}
 		file_text_close(file);
@@ -208,7 +208,7 @@ function scr_load_object_placement_txt()
 		}
 		
 		/* Close the INI file */
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		ds_list_destroy(placed_objects_list);
 		#endregion /* Save unlockable objects, only if the file exists END */
 		
@@ -520,7 +520,7 @@ function scr_save_level_information()
 			
 		#endregion /* Save Custom Background Settings END */
 			
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* Save Level Information END */
 	

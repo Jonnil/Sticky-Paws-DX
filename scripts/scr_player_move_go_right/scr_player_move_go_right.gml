@@ -3,15 +3,15 @@ function scr_player_move_go_right()
 	
 	#region /* Go Right */
 	if (key_right_hold)
-	and (!key_left_hold)
-	and (can_move)
-	and (global.pause == false)
+	&& (!key_left_hold)
+	&& (can_move)
+	&& (global.pause == false)
 	{
 		if (wall_jump == 0)
-		and (stick_to_wall == false)
-		and (climb == false)
-		and (horizontal_rope_climb == false)
-		and (takendamage <= takendamage_freezetime)
+		&& (stick_to_wall == false)
+		&& (climb == false)
+		&& (horizontal_rope_climb == false)
+		&& (takendamage <= takendamage_freezetime)
 		{
 			if (dive == false)
 			{
@@ -33,7 +33,7 @@ function scr_player_move_go_right()
 				if (!place_meeting(x + 1, y, obj_wall))
 				{
 					if (asset_get_type("obj_ice_block") == asset_object)
-					and (place_meeting(x, y + 1, obj_ice_block))
+					&& (place_meeting(x, y + 1, obj_ice_block))
 					{
 						hspeed += acceleration_on_ice;
 					}
@@ -52,7 +52,7 @@ function scr_player_move_go_right()
 				else
 				{
 					if (!place_meeting(x + 2, y, obj_wall))
-					and (!place_meeting(x, y - 2, obj_wall))
+					&& (!place_meeting(x, y - 2, obj_wall))
 					{
 						if (on_ground)
 						{
@@ -62,9 +62,9 @@ function scr_player_move_go_right()
 						{
 							hspeed += acceleration_in_air;
 						}
-						vspeed -= 1;
-						x += 1;
-						y -= 1;
+						vspeed --;
+						x ++;
+						y --;
 					}
 				}
 			}

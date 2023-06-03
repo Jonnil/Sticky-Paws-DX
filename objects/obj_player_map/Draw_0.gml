@@ -4,7 +4,7 @@ scr_set_controls_used_to_navigate();
 
 #region /* Heart above head */
 if (asset_get_type("spr_heart") == asset_sprite)
-and (have_heart_balloon)
+&& (have_heart_balloon)
 {
 	xx_heart = lerp(xx_heart, x, 0.05);
 	yy_heart = lerp(yy_heart, y - 64, 0.05);
@@ -16,20 +16,20 @@ and (have_heart_balloon)
 
 #region /* Show arrows where you can walk */
 if (can_move)
-and (can_enter_level >= 30)
-and (point_distance(xx, yy, x, y) < 30)
-and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
-and (speed == 0)
-and (instance_nearest(x, y, obj_level).clear_rate != "closed")
-and (global.pause == false)
+&& (can_enter_level >= 30)
+&& (point_distance(xx, yy, x, y) < 30)
+&& (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+&& (speed == 0)
+&& (instance_nearest(x, y, obj_level).clear_rate != "closed")
+&& (global.pause == false)
 {
 	
 	#region /* Can go up */
 	if (!place_meeting(x, y - 1, obj_wall))
 	{
 		if (gamepad_is_connected(global.player1_slot))
-		and (global.controls_used_for_menu_navigation == "controller")
-		or (global.always_show_gamepad_buttons)
+		&& (global.controls_used_for_menu_navigation == "controller")
+		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.up], x, y - 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
@@ -95,8 +95,8 @@ and (global.pause == false)
 	if (!place_meeting(x, y + 1, obj_wall))
 	{
 		if (gamepad_is_connected(global.player1_slot))
-		and (global.controls_used_for_menu_navigation == "controller")
-		or (global.always_show_gamepad_buttons)
+		&& (global.controls_used_for_menu_navigation == "controller")
+		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.down], x, y + 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
@@ -162,8 +162,8 @@ and (global.pause == false)
 	if (!place_meeting(x - 1, y, obj_wall))
 	{
 		if (gamepad_is_connected(global.player1_slot))
-		and (global.controls_used_for_menu_navigation == "controller")
-		or (global.always_show_gamepad_buttons)
+		&& (global.controls_used_for_menu_navigation == "controller")
+		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.left], x - 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
@@ -229,8 +229,8 @@ and (global.pause == false)
 	if (!place_meeting(x + 1, y, obj_wall))
 	{
 		if (gamepad_is_connected(global.player1_slot))
-		and (global.controls_used_for_menu_navigation == "controller")
-		or (global.always_show_gamepad_buttons)
+		&& (global.controls_used_for_menu_navigation == "controller")
+		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.right], x + 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
@@ -302,19 +302,19 @@ if (sprite_index > 0)
 
 #region /* Show Level Info */
 if (instance_exists(obj_level)) /* Must check if obj_level exists or not */
-and (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
-and (move_delay > 10)
-and (instance_nearest(x, y, obj_level).level_number != 0)
-and (point_distance(xx, yy, x, y) < 30)
+&& (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+&& (move_delay > 10)
+&& (instance_nearest(x, y, obj_level).level_number != 0)
+&& (point_distance(xx, yy, x, y) < 30)
 {
 	if (instance_nearest(x, y, obj_level).clear_rate == "enter")
-	or (instance_nearest(x, y, obj_level).clear_rate == "clear")
+	|| (instance_nearest(x, y, obj_level).clear_rate == "clear")
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		
 		if (global.show_deaths_counter)
-		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
+		&& (instance_nearest(x, y, obj_level).number_of_deaths > 0)
 		{
 			total_deaths_y = -64;
 			times_cleared_y = -96;
@@ -332,16 +332,16 @@ and (point_distance(xx, yy, x, y) < 30)
 		}
 		
 		if (global.show_deaths_counter)
-		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
-		or (instance_nearest(x, y, obj_level).number_of_clears > 0)
-		or (instance_nearest(x, y, obj_level).level_score > 0)
-		or (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
-		and (instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
-		or (instance_nearest(x, y, obj_level).big_collectible1)
-		or (instance_nearest(x, y, obj_level).big_collectible2)
-		or (instance_nearest(x, y, obj_level).big_collectible3)
-		or (instance_nearest(x, y, obj_level).big_collectible4)
-		or (instance_nearest(x, y, obj_level).big_collectible5)
+		&& (instance_nearest(x, y, obj_level).number_of_deaths > 0)
+		|| (instance_nearest(x, y, obj_level).number_of_clears > 0)
+		|| (instance_nearest(x, y, obj_level).level_score > 0)
+		|| (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
+		&& (instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
+		|| (instance_nearest(x, y, obj_level).big_collectible1)
+		|| (instance_nearest(x, y, obj_level).big_collectible2)
+		|| (instance_nearest(x, y, obj_level).big_collectible3)
+		|| (instance_nearest(x, y, obj_level).big_collectible4)
+		|| (instance_nearest(x, y, obj_level).big_collectible5)
 		{
 			draw_set_alpha(0.9);
 			draw_rectangle_color(x - 140, y - abs(show_big_collectibles_y) - 16, x + 140, y - 52, c_black, c_black, c_black, c_black, false);
@@ -350,7 +350,7 @@ and (point_distance(xx, yy, x, y) < 30)
 		
 		#region /* Total number of deaths */
 		if (global.show_deaths_counter)
-		and (instance_nearest(x, y, obj_level).number_of_deaths > 0)
+		&& (instance_nearest(x, y, obj_level).number_of_deaths > 0)
 		{
 			scr_draw_text_outlined(x, y + total_deaths_y, l10n_text("Total Deaths") + ": " + string(instance_nearest(x, y, obj_level).number_of_deaths), global.default_text_size, c_black, c_white, 1);
 		}
@@ -372,7 +372,7 @@ and (point_distance(xx, yy, x, y) < 30)
 		
 		#region /* Show Fastest Time */
 		if (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
-		and (instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
+		&& (instance_nearest(x, y, obj_level).timeattack_realmillisecond > 0)
 		{
 			scr_draw_text_outlined(x, y + best_time_y, l10n_text("Best Time") + ": " + string(instance_nearest(x, y, obj_level).timeattack_minute) + ":" +
 			string(string_replace_all(string_format(instance_nearest(x, y, obj_level).timeattack_second, 2, 0), " ", "0")) + "." +
@@ -382,13 +382,13 @@ and (point_distance(xx, yy, x, y) < 30)
 		
 		#region /* Show Big Collectible */
 		if (instance_nearest(x, y, obj_level).big_collectible1)
-		or (instance_nearest(x, y, obj_level).big_collectible2)
-		or (instance_nearest(x, y, obj_level).big_collectible3)
-		or (instance_nearest(x, y, obj_level).big_collectible4)
-		or (instance_nearest(x, y, obj_level).big_collectible5)
+		|| (instance_nearest(x, y, obj_level).big_collectible2)
+		|| (instance_nearest(x, y, obj_level).big_collectible3)
+		|| (instance_nearest(x, y, obj_level).big_collectible4)
+		|| (instance_nearest(x, y, obj_level).big_collectible5)
 		{
 			if (instance_nearest(x, y, obj_level).big_collectible1)
-			and (global.resource_pack_sprite_big_collectible > 0)
+			&& (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
@@ -398,7 +398,7 @@ and (point_distance(xx, yy, x, y) < 30)
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x - 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible2)
-			and (global.resource_pack_sprite_big_collectible > 0)
+			&& (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
@@ -408,7 +408,7 @@ and (point_distance(xx, yy, x, y) < 30)
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x - 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible3)
-			and (global.resource_pack_sprite_big_collectible > 0)
+			&& (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
@@ -418,7 +418,7 @@ and (point_distance(xx, yy, x, y) < 30)
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible4)
-			and (global.resource_pack_sprite_big_collectible > 0)
+			&& (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
@@ -428,7 +428,7 @@ and (point_distance(xx, yy, x, y) < 30)
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, x + 24, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}
 			if (instance_nearest(x, y, obj_level).big_collectible5)
-			and (global.resource_pack_sprite_big_collectible > 0)
+			&& (global.resource_pack_sprite_big_collectible > 0)
 			{
 				draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, x + 48, y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
 			}

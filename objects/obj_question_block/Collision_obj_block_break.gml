@@ -1,17 +1,17 @@
 #region /* Collision Event with block break mask */
 if (bounce_up == false)
-and (asset_get_type("obj_player") == asset_object)
-and (asset_get_type("obj_wall") == asset_object)
+&& (asset_get_type("obj_player") == asset_object)
+&& (asset_get_type("obj_wall") == asset_object)
 {
 	if (asset_get_type("obj_block_break") == asset_object)
-	and (place_meeting(x, y, obj_block_break)) /* This object is a hurtbox, for blocks. So when this block comes in contact with this object, it will break */
-	and (variable_instance_exists(obj_block_break, "can_break_other_blocks"))
-	and (instance_nearest(x, y, obj_block_break).can_break_other_blocks)
+	&& (place_meeting(x, y, obj_block_break)) /* This object is a hurtbox, for blocks. So when this block comes in contact with this object, it will break */
+	&& (variable_instance_exists(obj_block_break, "can_break_other_blocks"))
+	&& (instance_nearest(x, y, obj_block_break).can_break_other_blocks)
 	{
 		if (empty == false)
 		{
 			if (instance_exists(obj_player))
-			and (asset_get_type("scr_gamepad_vibration") == asset_script)
+			&& (asset_get_type("scr_gamepad_vibration") == asset_script)
 			{
 				scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
 			}

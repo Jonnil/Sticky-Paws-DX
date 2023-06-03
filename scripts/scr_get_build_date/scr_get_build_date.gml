@@ -27,25 +27,25 @@ function scr_get_build_date(include_hour = false, include_minute = false)
 		minute = "0" + string(minute);
 	}
 	if (include_hour >= true)
-	and (include_minute >= true)
+	&& (include_minute >= true)
 	{
 		return (string(year) + "." + string(month) + "." + string(day) + "." + string(hour) + "." + string(minute));
 	}
 	else
 	if (include_hour <= false)
-	and (include_minute >= true)
+	&& (include_minute >= true)
 	{
 		return (string(year) + "." + string(month) + "." + string(day) + "." + string(minute));
 	}
 	else
 	if (include_hour >= true)
-	and (include_minute <= false)
+	&& (include_minute <= false)
 	{
 		return (string(year) + "." + string(month) + "." + string(day) + "." + string(hour));
 	}
 	else
 	if (include_hour <= false)
-	and (include_minute <= false)
+	&& (include_minute <= false)
 	{
 		return (string(year) + "." + string(month) + "." + string(day));
 	}

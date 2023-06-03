@@ -12,7 +12,7 @@ else
 }
 
 if (directory_exists(string(character_folder) + "/sprites/skin" + string(selected_skin)))
-or (file_exists(string(character_folder) + "/sprites/skin" + string(selected_skin) + "/mask.png"))
+|| (file_exists(string(character_folder) + "/sprites/skin" + string(selected_skin) + "/mask.png"))
 {
 	skin_folder = "/skin" + string(selected_skin) + "/";
 }
@@ -26,7 +26,7 @@ else
 #region /* Play as Custom Character */
 
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
-or (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
+|| (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
 {
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
 	{
@@ -93,8 +93,8 @@ if (sprite_walk > noone)
 
 #region /* Make sure you spawn on top of a level one last time before playing */
 if (asset_get_type("obj_level") == asset_object)
-and (instance_exists(obj_level))
-and (!position_meeting(x, y, obj_level))
+&& (instance_exists(obj_level))
+&& (!position_meeting(x, y, obj_level))
 {
 	x = instance_nearest(x, y, obj_level).x;
 	y = instance_nearest(x, y, obj_level).y;

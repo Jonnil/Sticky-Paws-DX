@@ -5,7 +5,7 @@ if (bounce_up == false)
 	audio_sound_gain(global.music_underwater, 0, 0);
 	score += 1000;
 	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
+	&& (instance_exists(obj_camera))
 	{
 		with(obj_camera)
 		{

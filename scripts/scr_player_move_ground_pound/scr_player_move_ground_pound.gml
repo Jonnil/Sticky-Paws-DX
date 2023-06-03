@@ -3,27 +3,27 @@ function scr_player_move_ground_pound()
 	
 	#region /* Ground Pound */
 	if (allow_ground_pound == true)
-	and (can_move == true)
-	and (global.pause == false)
-	and (can_ground_pound == true)
-	and (takendamage <= takendamage_freezetime)
-	and (dive == false)
-	and (burnt == false)
-	and (crouch == false)
-	and (climb == false)
-	and (ledge_grab == false)
-	and (horizontal_rope_climb == false)
+	&& (can_move == true)
+	&& (global.pause == false)
+	&& (can_ground_pound == true)
+	&& (takendamage <= takendamage_freezetime)
+	&& (dive == false)
+	&& (burnt == false)
+	&& (crouch == false)
+	&& (climb == false)
+	&& (ledge_grab == false)
+	&& (horizontal_rope_climb == false)
 	{
 		if (key_crouch_pressed)
-		and (joystick_can_ground_pound == true)
-		or (down_and_jump_to_groundpound == true)
-		and (key_down)
-		and (key_jump)
+		&& (joystick_can_ground_pound == true)
+		|| (down_and_jump_to_groundpound == true)
+		&& (key_down)
+		&& (key_jump)
 		{
 			if (!place_meeting(x, y + 8, obj_wall))
-			and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				if (ground_pound != true)
 				{
@@ -62,12 +62,12 @@ function scr_player_move_ground_pound()
 		if (ground_pound == true)
 		{
 			if (ground_pound_cooldown > 0)
-			and (!key_crouch_hold)
+			&& (!key_crouch_hold)
 			{
 				ground_pound_cooldown -= 0.5;
 			}
 			if (key_crouch_pressed)
-			and (ground_pound_cooldown == 0)
+			&& (ground_pound_cooldown == 0)
 			{
 				image_index = image_number - 1;
 				image_speed = 0;
@@ -92,12 +92,12 @@ function scr_player_move_ground_pound()
 				
 				#region /* Continuesly break blocks underneath you, if they are breakable */
 				if (key_crouch_hold)
-				and (place_meeting(x, y + 1, obj_question_block))
-				and (instance_nearest(x, y + 1, obj_question_block).item_inside == "none")
-				and (instance_nearest(x, y + 1, obj_question_block).block_type == "brick_block")
-				or (key_crouch_hold)
-				and (place_meeting(x, y + 1, obj_question_block))
-				and (instance_nearest(x, y + 1, obj_question_block).can_break_this_block)
+				&& (place_meeting(x, y + 1, obj_question_block))
+				&& (instance_nearest(x, y + 1, obj_question_block).item_inside == "none")
+				&& (instance_nearest(x, y + 1, obj_question_block).block_type == "brick_block")
+				|| (key_crouch_hold)
+				&& (place_meeting(x, y + 1, obj_question_block))
+				&& (instance_nearest(x, y + 1, obj_question_block).can_break_this_block)
 				{
 					ground_pound = 1;
 					speed_max = 0;
@@ -120,10 +120,10 @@ function scr_player_move_ground_pound()
 	
 			else
 			if (key_up)
-			and (vspeed >4)
-			or (key_dive_pressed)
-			and (vspeed >4)
-			or (vspeed <-4)
+			&& (vspeed >4)
+			|| (key_dive_pressed)
+			&& (vspeed >4)
+			|| (vspeed <-4)
 			{
 				image_index = 0;
 				ground_pound = false;
@@ -139,7 +139,7 @@ function scr_player_move_ground_pound()
 				speed_max = 0;
 				hspeed = 0;
 				if (allow_ground_pound_jump == true)
-				and (key_jump_hold)
+				&& (key_jump_hold)
 				{
 					can_ground_pound = true;
 					effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
@@ -176,14 +176,14 @@ function scr_player_move_ground_pound()
 				speed_max = 4;
 			}
 			if (image_index > image_number - 1)
-			or (vspeed > 0)
+			|| (vspeed > 0)
 			{
 				ground_pound = false;
 			}
 		}
 	}
 	if (can_ground_pound == false)
-	and (!key_down)
+	&& (!key_down)
 	{
 		can_ground_pound = true;
 	}
@@ -192,17 +192,17 @@ function scr_player_move_ground_pound()
 
 	#region /* You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true */
 	if (joystick_can_ground_pound == false)
-	and (gamepad_axis_value(global.player1_slot, gp_axislv) <= 0)
-	and (player <= 1)
-	or (joystick_can_ground_pound == false)
-	and (gamepad_axis_value(global.player2_slot, gp_axislv) <= 0)
-	and (player <= 2)
-	or (joystick_can_ground_pound == false)
-	and (gamepad_axis_value(global.player3_slot, gp_axislv) <= 0)
-	and (player <= 3)
-	or (joystick_can_ground_pound == false)
-	and (gamepad_axis_value(global.player4_slot, gp_axislv) <= 0)
-	and (player <= 4)
+	&& (gamepad_axis_value(global.player1_slot, gp_axislv) <= 0)
+	&& (player <= 1)
+	|| (joystick_can_ground_pound == false)
+	&& (gamepad_axis_value(global.player2_slot, gp_axislv) <= 0)
+	&& (player <= 2)
+	|| (joystick_can_ground_pound == false)
+	&& (gamepad_axis_value(global.player3_slot, gp_axislv) <= 0)
+	&& (player <= 3)
+	|| (joystick_can_ground_pound == false)
+	&& (gamepad_axis_value(global.player4_slot, gp_axislv) <= 0)
+	&& (player <= 4)
 	{
 		joystick_can_ground_pound = true;
 	}
@@ -210,17 +210,17 @@ function scr_player_move_ground_pound()
 
 	#region /* You must have this code after the previous code otherwise the joystick_can_ground_pound is always set to true */
 	if (joystick_can_ground_pound == true)
-	and (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
-	and (player <= 1)
-	or (joystick_can_ground_pound == true)
-	and (gamepad_axis_value(global.player2_slot, gp_axislv) > 0)
-	and (player <= 2)
-	or (joystick_can_ground_pound == true)
-	and (gamepad_axis_value(global.player3_slot, gp_axislv) > 0)
-	and (player <= 3)
-	or (joystick_can_ground_pound = true)
-	and (gamepad_axis_value(global.player4_slot, gp_axislv) > 0)
-	and (player <= 4)
+	&& (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
+	&& (player <= 1)
+	|| (joystick_can_ground_pound == true)
+	&& (gamepad_axis_value(global.player2_slot, gp_axislv) > 0)
+	&& (player <= 2)
+	|| (joystick_can_ground_pound == true)
+	&& (gamepad_axis_value(global.player3_slot, gp_axislv) > 0)
+	&& (player <= 3)
+	|| (joystick_can_ground_pound = true)
+	&& (gamepad_axis_value(global.player4_slot, gp_axislv) > 0)
+	&& (player <= 4)
 	{
 		joystick_can_ground_pound = false;
 	}

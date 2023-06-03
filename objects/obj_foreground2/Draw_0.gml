@@ -11,7 +11,7 @@ else
 
 #region /* Destroy this object if it ever appears in the wrong room */
 if (asset_get_type("room_title") == asset_room)
-and (room == room_title)
+&& (room == room_title)
 {
 	instance_destroy();
 }
@@ -24,10 +24,10 @@ instance_activate_object(self);
 
 #region /* Update Foreground2 */
 if (global.custom_foreground2 > noone)
-and (global.enable_foreground_layer2)
-and (global.full_level_map_screenshot == false)
-and (asset_get_type("room_leveleditor") == asset_room)
-and (room == room_leveleditor)
+&& (global.enable_foreground_layer2)
+&& (global.full_level_map_screenshot == false)
+&& (asset_get_type("room_leveleditor") == asset_room)
+&& (room == room_leveleditor)
 {
 	if (sprite_exists(global.custom_foreground2))
 	{

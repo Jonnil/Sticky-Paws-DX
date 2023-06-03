@@ -3,7 +3,7 @@ if (die == false)
 {
 	if (die_volting == false)
 	{
-		global.enemy_counter += 1;
+		global.enemy_counter ++;
 		if (other.x < x)
 		{
 			vspeed = - 8;
@@ -18,7 +18,7 @@ if (die == false)
 		}
 		effect_create_above(ef_smoke, x, y, 2, c_white);
 		if (asset_get_type("obj_player") == asset_object)
-		and (instance_exists(obj_player))
+		&& (instance_exists(obj_player))
 		{
 			scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.5, 10);
 		}

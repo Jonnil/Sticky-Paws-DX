@@ -2,7 +2,7 @@
 // @description initialize_custom_character_sprite(sprite_name, sprite_variable);
 // @arg sprite_name
 
-function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = noone)
+function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = noone, use_character_folder = character_folder)
 {
 	var saved_file_exists = false;
 	var unused_x_origin_point = noone;
@@ -16,7 +16,7 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 		string(sprite_name) + "_strip",
 		string(sprite_name)
 	];
-	var sprite_folders = string(character_folder) + "/sprites" + string(skin_folder);
+	var sprite_folders = string(use_character_folder) + "/sprites" + string(skin_folder);
 	
 	/* This loop goes through all possible combinations of sprite names and folders. */
 	/* sprite_names and sprite_folders are arrays that contain the names of the sprites and folders to search through. */
@@ -37,7 +37,7 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 		
 		/*If the file exists, add the sprite to the game and set sprite_found to true. */
 		if (file_exists(sprite_filename)) 
-		and (sprite_number != "")
+		&& (sprite_number != "")
 		{
 			sprite_variable = sprite_add(sprite_filename, sprite_number, false, false, 0, 0);
 			sprite_found = true;
@@ -62,7 +62,7 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 	
 	#region /* Origin points */
 	if (sprite_variable != noone)
-	and (saved_file_exists)
+	&& (saved_file_exists)
 	{
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/sprite_origin_point.ini"))
 		{
@@ -96,7 +96,7 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 		sprite_set_offset(sprite_variable, spr_origin_x, spr_origin_y);
 		#endregion /* x and y origin points END */
 		
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* Origin points END */
 	

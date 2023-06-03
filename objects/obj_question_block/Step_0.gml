@@ -5,20 +5,20 @@ if (empty)
 }
 
 if (can_break_this_block)
-and (break_this_block)
-and (asset_get_type("obj_player") == asset_object)
-and (asset_get_type("obj_wall") == asset_object)
+&& (break_this_block)
+&& (asset_get_type("obj_player") == asset_object)
+&& (asset_get_type("obj_wall") == asset_object)
 {
 	if (place_meeting(x, y + 1, obj_player))
-	and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-	or (place_meeting(bbox_left - 4, y, obj_player))
-	and (!place_meeting(x - 4, y, obj_wall))
-	and (variable_instance_exists(obj_player, "dive"))
-	and (instance_nearest(x, y, obj_player).dive)
-	or (place_meeting(bbox_right + 4, y, obj_player))
-	and (!place_meeting(x + 4, y, obj_wall))
-	and (variable_instance_exists(obj_player, "dive"))
-	and (instance_nearest(x, y, obj_player).dive)
+	&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
+	|| (place_meeting(bbox_left - 4, y, obj_player))
+	&& (!place_meeting(x - 4, y, obj_wall))
+	&& (variable_instance_exists(obj_player, "dive"))
+	&& (instance_nearest(x, y, obj_player).dive)
+	|| (place_meeting(bbox_right + 4, y, obj_player))
+	&& (!place_meeting(x + 4, y, obj_wall))
+	&& (variable_instance_exists(obj_player, "dive"))
+	&& (instance_nearest(x, y, obj_player).dive)
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
@@ -84,7 +84,7 @@ and (asset_get_type("obj_wall") == asset_object)
 		}
 	}
 	if (show_score_up)
-	and (asset_get_type("obj_score_up") == asset_object)
+	&& (asset_get_type("obj_score_up") == asset_object)
 	{
 		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
@@ -131,13 +131,13 @@ if (bounce_up)
 		if (empty)
 		{
 			if (block_type = "question_block")
-			and (asset_get_type("spr_question_block_empty") == asset_sprite)
+			&& (asset_get_type("spr_question_block_empty") == asset_sprite)
 			{
 				sprite_index = spr_question_block_empty;
 			}
 			else
 			if (block_type = "brick_block")
-			and (asset_get_type("spr_brick_block_empty") == asset_sprite)
+			&& (asset_get_type("spr_brick_block_empty") == asset_sprite)
 			{
 				sprite_index = spr_brick_block_empty;
 			}
@@ -152,45 +152,45 @@ if (bounce_up)
 
 #region /* Collision Event with player */
 if (instance_exists(obj_player))
-and (distance_to_object(obj_player) < 32)
+&& (distance_to_object(obj_player) < 32)
 {
 	if (bounce_up == false)
-	and (asset_get_type("obj_player") == asset_object)
-	and (asset_get_type("obj_wall") == asset_object)
+	&& (asset_get_type("obj_player") == asset_object)
+	&& (asset_get_type("obj_wall") == asset_object)
 	{
 	
 		if (place_meeting(x, y - 4, obj_player)) /* If player is ground pounding this block */
-		and (!place_meeting(x, y - 1, obj_wall))
-		and (variable_instance_exists(obj_player, "ground_pound"))
-		and (instance_nearest(x, y, obj_player).ground_pound)
-		and (can_be_ground_pounded)
+		&& (!place_meeting(x, y - 1, obj_wall))
+		&& (variable_instance_exists(obj_player, "ground_pound"))
+		&& (instance_nearest(x, y, obj_player).ground_pound)
+		&& (can_be_ground_pounded)
 	
-		or (position_meeting(x, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
-		and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-		and (can_be_hit_from_below)
+		|| (position_meeting(x, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
+		&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
+		&& (can_be_hit_from_below)
 	
-		or (position_meeting(bbox_left + 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
-		and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-		and (can_be_hit_from_below)
+		|| (position_meeting(bbox_left + 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
+		&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
+		&& (can_be_hit_from_below)
 	
-		or (position_meeting(bbox_right - 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
-		and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-		and (can_be_hit_from_below)
+		|| (position_meeting(bbox_right - 9, bbox_bottom + 1, obj_player)) /* Has to be position_meeting, otherwise there are specific situations where you can break a block from above just by crouching */
+		&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
+		&& (can_be_hit_from_below)
 	
-		or (place_meeting(bbox_left - 4, y, obj_player))
-		and (!place_meeting(x - 4, y, obj_wall))
-		and (variable_instance_exists(obj_player, "dive"))
-		and (instance_nearest(x, y, obj_player).dive)
+		|| (place_meeting(bbox_left - 4, y, obj_player))
+		&& (!place_meeting(x - 4, y, obj_wall))
+		&& (variable_instance_exists(obj_player, "dive"))
+		&& (instance_nearest(x, y, obj_player).dive)
 	
-		or (place_meeting(bbox_right + 4, y, obj_player))
-		and (!place_meeting(x + 4, y, obj_wall))
-		and (variable_instance_exists(obj_player, "dive"))
-		and (instance_nearest(x, y, obj_player).dive)
+		|| (place_meeting(bbox_right + 4, y, obj_player))
+		&& (!place_meeting(x + 4, y, obj_wall))
+		&& (variable_instance_exists(obj_player, "dive"))
+		&& (instance_nearest(x, y, obj_player).dive)
 		{
 			if (empty == false)
 			{
 				if (instance_exists(obj_player))
-				and (asset_get_type("scr_gamepad_vibration") == asset_script)
+				&& (asset_get_type("scr_gamepad_vibration") == asset_script)
 				{
 					scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
 				}
@@ -211,21 +211,21 @@ and (distance_to_object(obj_player) < 32)
 
 #region /* Collision Event with enemy bowlingball */
 if (instance_exists(obj_enemy_bowlingball))
-and (distance_to_object(obj_enemy_bowlingball) < 32)
+&& (distance_to_object(obj_enemy_bowlingball) < 32)
 {
 	if (bounce_up == false)
-	and (asset_get_type("obj_player") == asset_object)
-	and (asset_get_type("obj_wall") == asset_object)
+	&& (asset_get_type("obj_player") == asset_object)
+	&& (asset_get_type("obj_wall") == asset_object)
 	{
 		if (place_meeting(x - 10, y, obj_enemy_bowlingball))
-		and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
+		&& (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
 		
-		or (place_meeting(x + 10, y, obj_enemy_bowlingball))
-		and (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
+		|| (place_meeting(x + 10, y, obj_enemy_bowlingball))
+		&& (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
 		
-		or (place_meeting(x, y + 1, obj_enemy_bowlingball))
-		and (instance_nearest(x, y, obj_enemy_bowlingball).vspeed <= 0)
-		and (can_be_hit_from_below)
+		|| (place_meeting(x, y + 1, obj_enemy_bowlingball))
+		&& (instance_nearest(x, y, obj_enemy_bowlingball).vspeed <= 0)
+		&& (can_be_hit_from_below)
 		{
 			if (empty == false)
 			{
@@ -263,7 +263,7 @@ and (distance_to_object(obj_enemy_bowlingball) < 32)
 			if (empty == false)
 			{
 				if (instance_exists(obj_player))
-				and (asset_get_type("scr_gamepad_vibration") == asset_script)
+				&& (asset_get_type("scr_gamepad_vibration") == asset_script)
 				{
 					scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
 				}

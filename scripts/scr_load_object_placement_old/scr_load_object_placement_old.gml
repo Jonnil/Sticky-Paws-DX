@@ -12,7 +12,7 @@ function scr_load_object_placement_old()
 			#region /* Object Placement */
 			var file, str, str_pos, str_temp, val, num;
 			if (global.level_name != "")
-			and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"))
+			&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"))
 			{
 				file = file_text_open_read(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt");
 			}
@@ -36,12 +36,12 @@ function scr_load_object_placement_old()
 					while (string_char_at(str, str_pos) != "|")
 					{
 						str_temp += string_char_at(str, str_pos);
-						str_pos += 1;
+						str_pos ++;
 					}
 					val[num] = string(str_temp);
 					str_temp = "";
-					str_pos += 1;
-					num += 1;
+					str_pos ++;
+					num ++;
 					if (num == 6)
 					/* Number of variables to check for.
 					val[0] = object,
@@ -69,7 +69,7 @@ function scr_load_object_placement_old()
 			#region /* Object With Rotation Placement */
 			var file, str, str_pos, str_temp, val, num;
 			if (global.level_name != "")
-			and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt"))
+			&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt"))
 			{
 				file = file_text_open_read(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt");
 			}
@@ -93,12 +93,12 @@ function scr_load_object_placement_old()
 					while (string_char_at(str, str_pos) != "|")
 					{
 						str_temp += string_char_at(str, str_pos);
-						str_pos += 1;
+						str_pos ++;
 					}
 					val[num] = string(str_temp);
 					str_temp = "";
-					str_pos += 1;
-					num += 1;
+					str_pos ++;
+					num ++;
 					if (num == 8) /* Number of variables to check for.
 					val[0] = object,
 					val[1] = x position,

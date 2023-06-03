@@ -4,17 +4,17 @@ uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_
 var level_name = string(uppercase_level_name);
 
 if (distance_to_point(other.x, other.y) < 3)
-and (other.clear_rate != "clear")
-and (other.level != come_from_level)
-and (delay == 0)
+&& (other.clear_rate != "clear")
+&& (other.level != come_from_level)
+&& (delay == 0)
 {
 	other.clear_rate = "enter";
 	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 	ini_write_string(level_name, "clear_rate", "enter");
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 //if (distance_to_point(other.x, other.y) < 3)
-//and (other.level != come_from_level)
+//&& (other.level != come_from_level)
 //{
 //	instance_destroy();
 //}

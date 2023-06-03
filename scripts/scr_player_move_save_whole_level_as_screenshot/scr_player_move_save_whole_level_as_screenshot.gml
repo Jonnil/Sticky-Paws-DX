@@ -3,14 +3,14 @@ function scr_player_move_save_whole_level_as_screenshot()
 	
 	#region /* Save whole level as screenshot png file */
 	if (global.full_level_map_screenshot)
-	and (full_level_map_screenshot_timer <= 0)
+	&& (full_level_map_screenshot_timer <= 0)
 	{
 		can_move = false; /* Make it so you can't move while game is generating a full level map screenshot, so you can't mess with the screenshot */
 		instance_activate_all();
 	
 		#region /* Delete some objects so it doesn't show up in the screenshot */
 		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
+		&& (instance_exists(obj_camera))
 		{
 			instance_destroy(obj_camera);
 		}
@@ -26,16 +26,16 @@ function scr_player_move_save_whole_level_as_screenshot()
 	}
 	if (full_level_map_screenshot_timer >= 1)
 	{
-		full_level_map_screenshot_timer += 1;
+		full_level_map_screenshot_timer ++;
 	}
 	if (full_level_map_screenshot_timer == 15)
 	{
 		var custom_level_map_sprite;
 		custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, room_width, room_height, false, false, 0, 0);
 		if (global.character_select_in_this_menu == "level_editor")
-		and (global.select_level_index <= 0)
-		or (global.character_select_in_this_menu == "level_editor")
-		and (global.create_level_from_template >= 2)
+		&& (global.select_level_index <= 0)
+		|| (global.character_select_in_this_menu == "level_editor")
+		&& (global.create_level_from_template >= 2)
 		{
 			sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/full_level_map.png");
 		}

@@ -1,11 +1,11 @@
 depth = +20;
 mask_index = spr_wall;
 if (!instance_exists(obj_boss))
-and (instance_exists(obj_boss_defeated))
+&& (instance_exists(obj_boss_defeated))
 {
 	if (!place_meeting(x, y - 1, obj_boss_barrier))
 	{
-		time += 1;
+		time ++;
 		if (time > 5)
 		{
 			if (asset_get_type("obj_brick_particle") == asset_object)

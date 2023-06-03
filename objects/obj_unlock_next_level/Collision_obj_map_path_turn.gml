@@ -8,7 +8,7 @@ left down = 3
  */
 
 if (distance_to_point(other.x, other.y) < 3)
-and (delay == 0)
+&& (delay == 0)
 {
 	
 	#region /* Touch Map Turn Right Down */

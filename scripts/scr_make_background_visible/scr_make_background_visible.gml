@@ -5,7 +5,7 @@ function scr_make_background_visible()
 	if (room == room_leveleditor)
 	{
 		if (global.custom_background1 > noone)
-		and (global.full_level_map_screenshot == false)
+		&& (global.full_level_map_screenshot == false)
 		{
 			layer_background_visible(layer_background_get_id(layer_get_id("Background")), true)
 		}
@@ -15,7 +15,7 @@ function scr_make_background_visible()
 		}
 		
 		if (global.custom_background2 > noone)
-		and (global.full_level_map_screenshot == false)
+		&& (global.full_level_map_screenshot == false)
 		{
 			layer_background_visible(layer_background_get_id(layer_get_id("Background_2")), true)
 		}
@@ -25,7 +25,7 @@ function scr_make_background_visible()
 		}
 		
 		if (global.custom_background3 > noone)
-		and (global.full_level_map_screenshot == false)
+		&& (global.full_level_map_screenshot == false)
 		{
 			layer_background_visible(layer_background_get_id(layer_get_id("Background_3")), true)
 		}
@@ -35,7 +35,7 @@ function scr_make_background_visible()
 		}
 		
 		if (global.custom_background4 > noone)
-		and (global.full_level_map_screenshot == false)
+		&& (global.full_level_map_screenshot == false)
 		{
 			layer_background_visible(layer_background_get_id(layer_get_id("Background_4")), true)
 		}

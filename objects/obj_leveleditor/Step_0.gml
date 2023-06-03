@@ -6,14 +6,14 @@ if (global.actually_play_edited_level == false)
 	var cam_height = camera_get_view_height(view_camera[view_current]);
 	
 	#region /* Deactivate instances outside view. Run this code at start of Step Event */
-	deactivate_timer += 1;
+	deactivate_timer ++;
 	if (deactivate_timer >= 5)
 	&& (pressing_play_timer == 0)
 	&& (pause <= 1)
 	{
 		if (startup_loading_timer <= 3)
 		{
-			startup_loading_timer += 1;
+			startup_loading_timer ++;
 		}
 		
 		if (quit_level_editor == 0)
@@ -32,7 +32,7 @@ if (global.actually_play_edited_level == false)
 		instance_activate_object(obj_level_player1_start);
 		instance_activate_object(obj_level_player2_start);
 		instance_activate_object(obj_level_player3_start);
-		instance_activate_object(obj_level_player_4_start);
+		instance_activate_object(obj_level_player4_start);
 		instance_activate_object(obj_level_end);
 		instance_activate_object(obj_level_height);
 		instance_activate_object(obj_level_width);
@@ -132,7 +132,7 @@ if (global.actually_play_edited_level == false)
 		{
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "selected_level_editing_music", global.selected_level_editing_music);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 	}
 	
@@ -195,7 +195,7 @@ if (global.actually_play_edited_level == false)
 		if (pause == false)
 		&& (pressing_play_timer >= 1)
 		{
-			pressing_play_timer += 1;
+			pressing_play_timer ++;
 		}
 	}
 	#endregion /* Holding the play key down END */
@@ -298,7 +298,7 @@ if (global.actually_play_edited_level == false)
 						ini_write_real(string(global.level_name), "checkpoint_second", 0);
 						ini_write_real(string(global.level_name), "checkpoint_minute", 0);
 						ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						
 						#region /* Save Level Thumbnail */
 						var thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, cam_width, cam_height, false, true, 0, 0);
@@ -363,7 +363,7 @@ if (global.actually_play_edited_level == false)
 	if (global.create_level_from_template)
 	&& (create_level_from_template_save_delay < 10)
 	{
-		create_level_from_template_save_delay += 1;
+		create_level_from_template_save_delay ++;
 	}
 	else
 	if (global.create_level_from_template)
@@ -438,7 +438,7 @@ if (global.actually_play_edited_level == false)
 		ini_write_real(string(global.level_name), "checkpoint_second", 0);
 		ini_write_real(string(global.level_name), "checkpoint_minute", 0);
 		ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	
 		#region /* Save Thumbnail */
 		var thumbnail_sprite;
@@ -460,7 +460,7 @@ if (global.actually_play_edited_level == false)
 		global.actually_play_edited_level = false;
 		global.play_edited_level = false; /* Set this to false so you don't playtest the level */
 		global.character_select_in_this_menu = "level_editor";
-		create_level_from_template_save_delay += 1; /* Stop saving template level */
+		create_level_from_template_save_delay ++; /* Stop saving template level */
 	}
 	
 	#region /* Menu cursor image speed */
@@ -708,7 +708,7 @@ if (global.actually_play_edited_level == false)
 			&& (!place_meeting(x, y, obj_level_player1_start))
 			&& (!place_meeting(x, y, obj_level_player2_start))
 			&& (!place_meeting(x, y, obj_level_player3_start))
-			&& (!place_meeting(x, y, obj_level_player_4_start))
+			&& (!place_meeting(x, y, obj_level_player4_start))
 			&& (!position_meeting(x, y, obj_level_height))
 			&& (!position_meeting(x, y, obj_level_width))
 			&& (!position_meeting(x, y, obj_water_level_height))
@@ -744,7 +744,7 @@ if (global.actually_play_edited_level == false)
 						{
 							if (place_object_delay_timer < 3)
 							{
-								place_object_delay_timer += 1;
+								place_object_delay_timer ++;
 							}
 							if (place_object_delay_timer >= 3)
 							{
@@ -811,7 +811,7 @@ if (global.actually_play_edited_level == false)
 								{
 									ini_write_real("Unlock Placable Objects", place_object, 2); /* Set that the unlockable object isn't recently unlocked and "New" anymore */
 								}
-								ini_close();
+								ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 									
 								#region /* Reset Level Editor Checkpoint */
 								if (room == room_leveleditor)
@@ -826,7 +826,7 @@ if (global.actually_play_edited_level == false)
 									ini_key_delete(global.level_name, "checkpoint_minute");
 									ini_key_delete(global.level_name, "checkpoint_realmillisecond");
 									ini_key_delete(global.level_name, "checkpoint_direction");
-									ini_close();
+									ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 								}
 								#endregion /* Reset Level Editor Checkpoint END */
 									
@@ -847,7 +847,7 @@ if (global.actually_play_edited_level == false)
 									#endregion /* Reset Fastest Time END */
 										
 									ini_key_delete("rank", "rank_level_score");
-									ini_close();
+									ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 								}
 								#endregion /* Reset ranking highscore to actual custom level when placing objects END */
 									
@@ -1034,7 +1034,7 @@ if (global.actually_play_edited_level == false)
 		{
 			if (place_brush_size > 0)
 			{
-				place_brush_size -= 1;
+				place_brush_size --;
 			}
 		}
 		else
@@ -1042,7 +1042,7 @@ if (global.actually_play_edited_level == false)
 		{
 			if (place_brush_size < 5)
 			{
-				place_brush_size += 1;
+				place_brush_size ++;
 			}
 		}
 	}
@@ -1057,7 +1057,7 @@ if (global.actually_play_edited_level == false)
 			fill_mode = false;
 			if (erase_brush_size > 0)
 			{
-				erase_brush_size -= 1;
+				erase_brush_size --;
 			}
 		}
 		else
@@ -1066,7 +1066,7 @@ if (global.actually_play_edited_level == false)
 			fill_mode = false;
 			if (erase_brush_size < 5)
 			{
-				erase_brush_size += 1;
+				erase_brush_size ++;
 			}
 		}
 	}
@@ -1106,8 +1106,8 @@ if (global.actually_play_edited_level == false)
 		if (global.grid_hsnap > 1)
 		|| (global.grid_vsnap > 1)
 		{
-			global.grid_hsnap -= 1;
-			global.grid_vsnap -= 1;
+			global.grid_hsnap --;
+			global.grid_vsnap --;
 		}
 	}
 	else
@@ -1117,8 +1117,8 @@ if (global.actually_play_edited_level == false)
 	&& (pause == false)
 	{
 		show_grid = true;
-		global.grid_hsnap += 1;
-		global.grid_vsnap += 1;
+		global.grid_hsnap ++;
+		global.grid_vsnap ++;
 	}
 	#endregion /* Grid hotkeys END */
 
@@ -1299,7 +1299,7 @@ if (global.actually_play_edited_level == false)
 	&& (!place_meeting(x, y, obj_level_player1_start))
 	&& (!place_meeting(x, y, obj_level_player2_start))
 	&& (!place_meeting(x, y, obj_level_player3_start))
-	&& (!place_meeting(x, y, obj_level_player_4_start))
+	&& (!place_meeting(x, y, obj_level_player4_start))
 	&& (!place_meeting(x, y, obj_level_end))
 	{
 		if (asset_get_type("spr_cursor_fill") == asset_sprite)
@@ -1381,7 +1381,7 @@ if (global.actually_play_edited_level == false)
 		#region /* When pressing left click, increase current undo value */
 		if (mouse_check_button_pressed(mb_left))
 		{
-			current_undo_value += 1;
+			current_undo_value ++;
 		}
 		#endregion /* When pressing left click, increase current undo value END */
 	
@@ -1456,7 +1456,7 @@ if (global.actually_play_edited_level == false)
 				scr_audio_play(snd_leveleditor_cycle_item_left, volume_source.sound);
 				if (selected_object > 0)
 				{
-					selected_object -= 1;
+					selected_object --;
 					selected_object_menu_x += 64;
 				}
 				else
@@ -1485,7 +1485,7 @@ if (global.actually_play_edited_level == false)
 				scr_audio_play(snd_leveleditor_cycle_item_right, volume_source.sound);
 				if (selected_object < total_number_of_objects)
 				{
-					selected_object += 1;
+					selected_object ++;
 					selected_object_menu_x -= 64;
 				}
 				else
@@ -1505,7 +1505,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Menu Navigation Delay */
 	if (menu_delay > 0)
 	{
-		menu_delay -= 1;
+		menu_delay --;
 	}
 	if (menu_delay < 0)
 	{
@@ -1523,7 +1523,7 @@ if (global.actually_play_edited_level == false)
 	#region /* End Game */
 	if (quit_level_editor >= true)
 	{
-		quit_level_editor += 1;
+		quit_level_editor ++;
 		instance_activate_all(); /* Activate all instances before saving the custom level */
 		
 		#region /* Save Level */
@@ -1559,7 +1559,7 @@ if (global.actually_play_edited_level == false)
 			ini_write_real(string(global.level_name), "checkpoint_second", 0);
 			ini_write_real(string(global.level_name), "checkpoint_minute", 0);
 			ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			
 			global.checkpoint_x = 0;
 			global.checkpoint_y = 0;
@@ -1605,6 +1605,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Press Pause Button */
 	if (quit_level_editor == false)
 	&& (pause == false)
+	&& (menu_delay == 0)
 	{
 		if (keyboard_check_pressed(vk_escape))
 		|| (gamepad_button_check_pressed(global.player1_slot, gp_start))
@@ -1613,13 +1614,15 @@ if (global.actually_play_edited_level == false)
 		|| (gamepad_button_check_pressed(global.player4_slot, gp_start))
 		|| (gamepad_button_check_pressed(4, gp_start))
 		{
+			menu_delay = 3;
 			pause = 2;
 		}
 	}
 	if (pause >= 2)
 	{
 		instance_activate_all();
-		pause += 1;
+		menu_delay = 3;
+		pause ++;
 	}
 	
 	if (pause == 4)

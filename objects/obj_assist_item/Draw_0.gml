@@ -6,7 +6,7 @@ visible = true;
 draw_self();
 
 #region /* Expanding Ring Effect */
-effect_time += 1;
+effect_time ++;
 if (effect_time > 60)
 {
 	effect_time = 0;

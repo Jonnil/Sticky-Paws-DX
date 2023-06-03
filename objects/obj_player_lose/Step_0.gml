@@ -8,14 +8,14 @@ if (menu_cursor_index > 4)
 
 if (menu_delay > 0)
 {
-	menu_delay -= 1;
+	menu_delay --;
 }
 
-count += 1;
+count ++;
 
 #region /* Check if the last player just died */
 if (count == 1)
-and (!instance_exists(obj_player))
+&& (!instance_exists(obj_player))
 {
 	last_player = true;
 }
@@ -29,7 +29,7 @@ if (count = 50)
 	vspeed = - 10;
 	image_speed = 0.3;
 	if (asset_get_type("obj_lava") == asset_object)
-	and (place_meeting(x, y, obj_lava))
+	&& (place_meeting(x, y, obj_lava))
 	{
 		if (asset_get_type("spr_player_burnt") == asset_sprite)
 		{
@@ -48,7 +48,7 @@ if (count = 50)
 
 #region /* If the player is burned, have black smoke coming out */
 if (asset_get_type("spr_player_burnt") == asset_sprite)
-and (sprite_index = spr_player_burnt)
+&& (sprite_index = spr_player_burnt)
 {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
 }
@@ -56,8 +56,8 @@ and (sprite_index = spr_player_burnt)
 
 #region /* Play death melody */
 if (!instance_exists(obj_player))
-and (count = 50)
-and (last_player)
+&& (count = 50)
+&& (last_player)
 {
 	scr_audio_play(player_lose_melody, volume_source.melody);
 }
@@ -71,8 +71,8 @@ if (vspeed >+ 32)
 #endregion /* Limit the vertical speed END */
 
 if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-and (!instance_exists(obj_player))
-and (iris_xscale <= 0.001)
+&& (!instance_exists(obj_player))
+&& (iris_xscale <= 0.001)
 {
 	global.time_countdown = 500; /* Reset countdown back to default value */
 	global.time_countdown_bonus = 500; /* Reset countdown bonus back to default value */
@@ -90,7 +90,7 @@ and (iris_xscale <= 0.001)
 			
 			#region /* Go to level editor if you die in level editor */
 			if (asset_get_type("room_leveleditor") == asset_room)
-			and (room == room_leveleditor)
+			&& (room == room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();
@@ -110,7 +110,7 @@ and (iris_xscale <= 0.001)
 		
 			#region /* Go to level editor if you die in level editor */
 			if (asset_get_type("room_leveleditor") == asset_room)
-			and (room == room_leveleditor)
+			&& (room == room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();
@@ -124,14 +124,14 @@ else
 if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 {
 	if (lives >= 1)
-	and (instance_exists(obj_player))
+	&& (instance_exists(obj_player))
 	{
 		
 		#region /* Disable the players for the camera */
 		
 		#region /* Disable player 1 */
 		if (player == 1)
-		and (instance_exists(obj_camera))
+		&& (instance_exists(obj_camera))
 		{
 			obj_camera.player1 = noone;
 			obj_camera.can_spawn_player1 = true;
@@ -140,7 +140,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 		
 		#region /* Disable player 2 */
 		if (player == 2)
-		and (instance_exists(obj_camera))
+		&& (instance_exists(obj_camera))
 		{
 			obj_camera.player2 = noone;
 			obj_camera.can_spawn_player2 = true;
@@ -149,7 +149,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 		
 		#region /* Disable player 3 */
 		if (player == 3)
-		and (instance_exists(obj_camera))
+		&& (instance_exists(obj_camera))
 		{
 			obj_camera.player3 = noone;
 			obj_camera.can_spawn_player3 = true;
@@ -158,7 +158,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 		
 		#region /* Disable player 4 */
 		if (player == 4)
-		and (instance_exists(obj_camera))
+		&& (instance_exists(obj_camera))
 		{
 			obj_camera.player4 = noone;
 			obj_camera.can_spawn_player4 = true;
@@ -172,7 +172,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 }
 
 if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-and (continue_falling == false)
+&& (continue_falling == false)
 {
 	y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 1;
 	sprite_index = noone;
@@ -238,7 +238,7 @@ if (bubble)
 		move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 128);
 	}
 	if (!position_meeting(x, y, obj_wall))
-	and (place_meeting(x, y, obj_player))
+	&& (place_meeting(x, y, obj_player))
 	{
 		vspeed = - 11.5;
 		bubble = false;

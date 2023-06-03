@@ -37,10 +37,10 @@ function scr_different_items_inside()
 	if (item_inside = "10_basic_collectibles")
 	{
 		if (hit <= 4)
-		and (empty == false)
+		&& (empty == false)
 		{
 			bounce_up = true;
-			hit += 1;
+			hit ++;
 			with(instance_create_depth(x, y - 32, 0, obj_block_break))
 			{
 				image_yscale = 0.1;

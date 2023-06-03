@@ -1,5 +1,5 @@
 if (place_meeting(x, y + 8, obj_player))
-and (instance_nearest(x, y, obj_player).vspeed < 0)
+&& (instance_nearest(x, y, obj_player).vspeed < 0)
 {
 	draw_xscale = 0.9;
 	draw_yscale = 1.1;

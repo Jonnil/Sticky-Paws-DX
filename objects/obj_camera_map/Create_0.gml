@@ -26,7 +26,7 @@ reset_game_if_no_interactivity_second_countdown_timer = 0;
 reset_game_if_no_interactivity_second_countdown = 60;
 
 if (asset_get_type("obj_player_map") == asset_object)
-and (instance_exists(obj_player_map))
+&& (instance_exists(obj_player_map))
 {
 	x = obj_player_map.x;
 	y = obj_player_map.y;

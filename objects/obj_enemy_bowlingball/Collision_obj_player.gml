@@ -1,6 +1,6 @@
 /* Collision Event with player object */
 if (die == false)
-and (stomped_delay == 0)
+&& (stomped_delay == 0)
 {
 	if (other.vspeed >= 0)
 	{
@@ -26,7 +26,7 @@ and (stomped_delay == 0)
 			with(instance_nearest(x, y, obj_player))
 			{
 				dive = false;
-				chain_reaction += 1;
+				chain_reaction ++;
 				midair_jumps_left = number_of_jumps - 1;
 				can_dive = true;
 			}
@@ -54,15 +54,15 @@ and (stomped_delay == 0)
 	if (die_volting == false)
 	{
 		if (other.vspeed > 0)
-		or (other.climb == false)
-		and (other.vspeed < 0)
-		or (other.bbox_bottom < y)
+		|| (other.climb == false)
+		&& (other.vspeed < 0)
+		|| (other.bbox_bottom < y)
 		{
 			if (other.ground_pound == false)
 			{
 				if (abs(other.hspeed) > 7)
 				{
-					other.jump += 1;
+					other.jump ++;
 					if (other.jump > 2)
 					{
 						if (other.image_xscale > 0)
@@ -78,7 +78,7 @@ and (stomped_delay == 0)
 				with(instance_nearest(x, y, obj_player))
 				{
 					dive = false;
-					chain_reaction += 1;
+					chain_reaction ++;
 					midair_jumps_left = number_of_jumps - 1;
 					can_dive = true;
 				}
@@ -111,11 +111,11 @@ and (stomped_delay == 0)
 					if (stomped_delay == 0)
 					{
 						if (instance_exists(obj_player))
-						and (place_meeting(x, y, obj_player))
-						and (instance_nearest(x, y, obj_player).hspeed >= + 8)
-						and (instance_nearest(x, y, obj_player).x < x)
-						and (sliding_along_ground == 0)
-						and (flat)
+						&& (place_meeting(x, y, obj_player))
+						&& (instance_nearest(x, y, obj_player).hspeed >= + 8)
+						&& (instance_nearest(x, y, obj_player).x < x)
+						&& (sliding_along_ground == 0)
+						&& (flat)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
@@ -123,10 +123,10 @@ and (stomped_delay == 0)
 						}
 						else
 						if (instance_exists(obj_player))
-						and (place_meeting(x, y, obj_player))
-						and (instance_nearest(x, y, obj_player).hspeed <= -8)
-						and (sliding_along_ground == 0)
-						and (flat)
+						&& (place_meeting(x, y, obj_player))
+						&& (instance_nearest(x, y, obj_player).hspeed <= -8)
+						&& (sliding_along_ground == 0)
+						&& (flat)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
@@ -134,10 +134,10 @@ and (stomped_delay == 0)
 						}
 						else
 						if (instance_exists(obj_player))
-						and (place_meeting(x, y, obj_player))
-						and (instance_nearest(x, y, obj_player).x < x)
-						and (sliding_along_ground == 0)
-						and (flat)
+						&& (place_meeting(x, y, obj_player))
+						&& (instance_nearest(x, y, obj_player).x < x)
+						&& (sliding_along_ground == 0)
+						&& (flat)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = 8;
@@ -145,9 +145,9 @@ and (stomped_delay == 0)
 						}
 						else
 						if (instance_exists(obj_player))
-						and (place_meeting(x, y, obj_player))
-						and (sliding_along_ground == 0)
-						and (flat)
+						&& (place_meeting(x, y, obj_player))
+						&& (sliding_along_ground == 0)
+						&& (flat)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = 8;
@@ -155,7 +155,7 @@ and (stomped_delay == 0)
 						}
 						else
 						if (sliding_along_ground < 0)
-						or (sliding_along_ground > 0)
+						|| (sliding_along_ground > 0)
 						{
 							sliding_along_ground = 0;
 							stomped_delay = 5;
@@ -175,11 +175,11 @@ and (stomped_delay == 0)
 					if (stomped_delay == 0)
 					{
 						if (instance_exists(obj_player))
-						and (place_meeting(x, y, obj_player))
-						and (instance_nearest(x, y, obj_player).hspeed >= + 8)
-						and (instance_nearest(x, y, obj_player).x < x)
-						and (sliding_along_ground == 0)
-						and (flat)
+						&& (place_meeting(x, y, obj_player))
+						&& (instance_nearest(x, y, obj_player).hspeed >= + 8)
+						&& (instance_nearest(x, y, obj_player).x < x)
+						&& (sliding_along_ground == 0)
+						&& (flat)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
@@ -187,10 +187,10 @@ and (stomped_delay == 0)
 						}
 						else
 						if (instance_exists(obj_player))
-						and (place_meeting(x, y, obj_player))
-						and (instance_nearest(x, y, obj_player).hspeed <= -8)
-						and (sliding_along_ground == 0)
-						and (flat)
+						&& (place_meeting(x, y, obj_player))
+						&& (instance_nearest(x, y, obj_player).hspeed <= -8)
+						&& (sliding_along_ground == 0)
+						&& (flat)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
@@ -198,10 +198,10 @@ and (stomped_delay == 0)
 						}
 						else
 						if (instance_exists(obj_player))
-						and (place_meeting(x, y, obj_player))
-						and (instance_nearest(x, y, obj_player).x < x)
-						and (sliding_along_ground == 0)
-						and (flat)
+						&& (place_meeting(x, y, obj_player))
+						&& (instance_nearest(x, y, obj_player).x < x)
+						&& (sliding_along_ground == 0)
+						&& (flat)
 						{
 							sliding_along_ground = +1;
 							sliding_along_ground_speed = 8;
@@ -209,9 +209,9 @@ and (stomped_delay == 0)
 						}
 						else
 						if (instance_exists(obj_player))
-						and (place_meeting(x, y, obj_player))
-						and (sliding_along_ground == 0)
-						and (flat)
+						&& (place_meeting(x, y, obj_player))
+						&& (sliding_along_ground == 0)
+						&& (flat)
 						{
 							sliding_along_ground = -1;
 							sliding_along_ground_speed = 8;
@@ -219,7 +219,7 @@ and (stomped_delay == 0)
 						}
 						else
 						if (sliding_along_ground < 0)
-						or (sliding_along_ground > 0)
+						|| (sliding_along_ground > 0)
 						{
 							sliding_along_ground = 0;
 							stomped_delay = 5;
@@ -230,7 +230,7 @@ and (stomped_delay == 0)
 				{
 					coil_spring = false;
 					stomped_delay = 5;
-					global.enemy_counter += 1;
+					global.enemy_counter ++;
 					if (vspeed < 0)
 					{
 						vspeed = +1;
@@ -240,7 +240,7 @@ and (stomped_delay == 0)
 				{
 					flat = true;
 					stomped_delay = 5;
-					global.enemy_counter += 1;
+					global.enemy_counter ++;
 				}
 				image_index = 0;
 			}
@@ -248,11 +248,11 @@ and (stomped_delay == 0)
 			if (other.ground_pound)
 			{
 				die = true;
-				global.enemy_counter += 1;
+				global.enemy_counter ++;
 				with(instance_nearest(x, y, obj_player))
 				{
 					dive = false;
-					chain_reaction += 1;
+					chain_reaction ++;
 					midair_jumps_left = number_of_jumps - 1;
 					can_dive = true;
 				}
@@ -281,19 +281,19 @@ and (stomped_delay == 0)
 		else
 		
 		if (stomped_delay == 0)
-		and (die == false)
-		and (flat == false)
-		or (sliding_along_ground < 0)
-		and (stomped_delay == 0)
-		and (die == false)
-		and (flat)
-		or (sliding_along_ground > 0)
-		and (stomped_delay == 0)
-		and (die == false)
-		and (flat)
+		&& (die == false)
+		&& (flat == false)
+		|| (sliding_along_ground < 0)
+		&& (stomped_delay == 0)
+		&& (die == false)
+		&& (flat)
+		|| (sliding_along_ground > 0)
+		&& (stomped_delay == 0)
+		&& (die == false)
+		&& (flat)
 		{
 			if (other.takendamage <= 0)
-			and (other.assist_invincible == false)
+			&& (other.assist_invincible == false)
 			{
 				if (other.have_heart_balloon)
 				{
@@ -304,32 +304,32 @@ and (stomped_delay == 0)
 					{
 						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real("Player", "player1_have_heart_balloon", false);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					if (other.player = 2)
 					{
 						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real("Player", "player2_have_heart_balloon", false);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					if (other.player = 3)
 					{
 						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real("Player", "player3_have_heart_balloon", false);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					if (other.player = 4)
 					{
 						ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 						ini_write_real("Player", "player4_have_heart_balloon", false);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					#endregion /* Save heart balloon to be false END */
 					
 				}
 				else
 				{
-					other.hp -= 1;
+					other.hp --;
 				}
 				other.takendamage = 100;
 				scr_gamepad_vibration(other.player, 1, 10);

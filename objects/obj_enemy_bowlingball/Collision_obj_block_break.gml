@@ -1,8 +1,8 @@
 /* Collision Event with player object */
 if (die == false)
-and (die_volting == false)
-and (vspeed >= 0)
-and (stomped_delay == 0)
+&& (die_volting == false)
+&& (vspeed >= 0)
+&& (stomped_delay == 0)
 {
 	flat = true;
 	coil_spring = false;
@@ -29,7 +29,7 @@ and (stomped_delay == 0)
 	#region /* Rewards */
 	if (number_of_times_stomped < 10)
 	{
-		number_of_times_stomped += 1;
+		number_of_times_stomped ++;
 		
 		#region /* 1 Coin */
 		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))

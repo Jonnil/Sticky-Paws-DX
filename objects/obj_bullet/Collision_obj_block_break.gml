@@ -19,7 +19,7 @@ if (die == false)
 				image_xscale = -1;
 			}
 		}
-		global.enemy_counter += 1;
+		global.enemy_counter ++;
 		if (other.x < x)
 		{
 			vspeed = - 8;

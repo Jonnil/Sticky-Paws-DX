@@ -1,6 +1,6 @@
 if (!instance_exists(obj_player))
-and (count > 49)
-and (last_player)
+&& (count > 49)
+&& (last_player)
 {
 	if (iris_zoom == 0)
 	{
@@ -17,10 +17,10 @@ and (last_player)
 		iris_zoom = 1;
 	}
 	if (asset_get_type("obj_player_lose") == asset_object)
-	and (instance_exists(obj_player_lose))
+	&& (instance_exists(obj_player_lose))
 	{
 		if (iris_xscale < 16)
-		and (global.enable_transitions)
+		&& (global.enable_transitions)
 		{
 			if (asset_get_type("spr_iris_dead") == asset_sprite)
 			{
@@ -61,8 +61,8 @@ if (bubble)
 
 #region /* Display Player Number and Name */
 if (global.playergame > 0)
-and (y < room_height)
-and (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+&& (y < room_height)
+&& (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);

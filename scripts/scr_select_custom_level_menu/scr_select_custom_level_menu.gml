@@ -12,7 +12,7 @@ function scr_select_custom_level_menu()
 	}
 	
 	if (global.select_level_index >= 1)
-	and (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
+	&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
 	{
 		if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 		{
@@ -58,21 +58,21 @@ function scr_select_custom_level_menu()
 	
 	#region /* Key Up */
 	if (key_up)
-	and (menu_delay == 0)
-	or (mouse_wheel_up())
+	&& (menu_delay == 0)
+	|| (mouse_wheel_up())
 	{
 		if (can_input_level_name == false)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
-		and (open_sub_menu == false)
-		and (menu != "back_from_level_editor")
-		and (menu != "open_custom_levels_folder")
-		and (menu != "online_level_list")
-		and (menu != "search_level_id")
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay <= 0)
+		&& (open_sub_menu == false)
+		&& (menu != "back_from_level_editor")
+		&& (menu != "open_custom_levels_folder")
+		&& (menu != "online_level_list")
+		&& (menu != "search_level_id")
 		{
 			if (global.select_level_index - row < 0)
-			and (global.controls_used_for_menu_navigation != "mouse")
-			and (show_level_editor_corner_menu)
+			&& (global.controls_used_for_menu_navigation != "mouse")
+			&& (show_level_editor_corner_menu)
 			{
 				menu_delay = 3;
 				menu = "search_level_id";
@@ -100,21 +100,21 @@ function scr_select_custom_level_menu()
 	
 	#region /* Key Down */
 	if (key_down)
-	and (menu_delay == 0)
-	or (mouse_wheel_down())
+	&& (menu_delay == 0)
+	|| (mouse_wheel_down())
 	{
 		if (can_input_level_name == false)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
-		and (open_sub_menu == false)
-		and (menu != "back_from_level_editor")
-		and (menu != "open_custom_levels_folder")
-		and (menu != "online_level_list")
-		and (menu != "search_level_id")
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay <= 0)
+		&& (open_sub_menu == false)
+		&& (menu != "back_from_level_editor")
+		&& (menu != "open_custom_levels_folder")
+		&& (menu != "online_level_list")
+		&& (menu != "search_level_id")
 		{
 			if (global.select_level_index + row > ds_list_size(global.thumbnail_sprite) - 1)
-			and (global.controls_used_for_menu_navigation != "mouse")
-			and (show_level_editor_corner_menu)
+			&& (global.controls_used_for_menu_navigation != "mouse")
+			&& (show_level_editor_corner_menu)
 			{
 				menu_delay = 3;
 				menu = "back_from_level_editor";
@@ -142,14 +142,14 @@ function scr_select_custom_level_menu()
 	
 	#region /* Key Left */
 	if (key_left)
-	and (can_input_level_name == false)
-	and (menu_delay == 0)
-	and (menu_joystick_delay <= 0)
-	and (open_sub_menu == false)
-	and (menu != "back_from_level_editor")
-	and (menu != "open_custom_levels_folder")
-	and (menu != "online_level_list")
-	and (menu != "search_level_id")
+	&& (can_input_level_name == false)
+	&& (menu_delay == 0)
+	&& (menu_joystick_delay <= 0)
+	&& (open_sub_menu == false)
+	&& (menu != "back_from_level_editor")
+	&& (menu != "open_custom_levels_folder")
+	&& (menu != "online_level_list")
+	&& (menu != "search_level_id")
 	{
 		if (global.select_level_index - 1 < 0)
 		{
@@ -157,7 +157,7 @@ function scr_select_custom_level_menu()
 		}
 		else
 		{
-			global.select_level_index -= 1;
+			global.select_level_index --;
 		}
 		menu_delay = 3;
 		scroll_to = floor(global.select_level_index / row);
@@ -169,14 +169,14 @@ function scr_select_custom_level_menu()
 	
 	#region /* Key Right */
 	if (key_right)
-	and (can_input_level_name == false)
-	and (menu_delay == 0)
-	and (menu_joystick_delay <= 0)
-	and (open_sub_menu == false)
-	and (menu != "back_from_level_editor")
-	and (menu != "open_custom_levels_folder")
-	and (menu != "online_level_list")
-	and (menu != "search_level_id")
+	&& (can_input_level_name == false)
+	&& (menu_delay == 0)
+	&& (menu_joystick_delay <= 0)
+	&& (open_sub_menu == false)
+	&& (menu != "back_from_level_editor")
+	&& (menu != "open_custom_levels_folder")
+	&& (menu != "online_level_list")
+	&& (menu != "search_level_id")
 	{
 		if (global.select_level_index + 1 > ds_list_size(global.thumbnail_sprite) - 1)
 		{
@@ -184,7 +184,7 @@ function scr_select_custom_level_menu()
 		}
 		else
 		{
-			global.select_level_index += 1;
+			global.select_level_index ++;
 		}
 		menu_delay = 3;
 		scroll_to = floor(global.select_level_index / row);
@@ -196,20 +196,20 @@ function scr_select_custom_level_menu()
 	
 	#region /* Key A pressed */
 	if (key_a_pressed)
-	or (mouse_check_button_released(mb_left))
+	|| (mouse_check_button_released(mb_left))
 	{
 		if (can_input_level_name == false)
-		and (open_sub_menu == false)
-		and (menu_delay == 0)
-		and (menu != "back_from_level_editor")
-		and (menu != "open_custom_levels_folder")
-		and (menu != "online_level_list")
-		and (menu != "search_level_id")
+		&& (open_sub_menu == false)
+		&& (menu_delay == 0)
+		&& (menu != "back_from_level_editor")
+		&& (menu != "open_custom_levels_folder")
+		&& (menu != "online_level_list")
+		&& (menu != "search_level_id")
 		{
 			
 			#region /* Create New Level */
 			if (global.select_level_index == 0)
-			and (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
+			&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
 			{
 				
 				#region /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch */
@@ -225,7 +225,7 @@ function scr_select_custom_level_menu()
 					{
 						can_create_level_from_scratch = false;
 					}
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				{
@@ -245,7 +245,7 @@ function scr_select_custom_level_menu()
 			
 			#region /* Open sub menu for levels */
 			if (global.select_level_index >= 1)
-			and (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
+			&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
 			{
 				if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 				{
@@ -268,9 +268,9 @@ function scr_select_custom_level_menu()
 	
 	#region /* Key B Pressed */
 	if (key_b_pressed)
-	and (can_input_level_name == false)
-	and (menu_delay == 0)
-	and (show_level_editor_corner_menu)
+	&& (can_input_level_name == false)
+	&& (menu_delay == 0)
+	&& (show_level_editor_corner_menu)
 	{
 		if (open_sub_menu)
 		{
@@ -293,25 +293,25 @@ function scr_select_custom_level_menu()
 	
 	#region /* Corner menu: Back button, Open custom levels folder, Search button */
 	if (menu != "load_custom_level")
-	and (menu != "load_characters")
-	and (menu != "load_official_level_template")
-	and (show_level_editor_corner_menu)
+	&& (menu != "load_characters")
+	&& (menu != "load_official_level_template")
+	&& (show_level_editor_corner_menu)
 	{
 		
 		#region /* Back Button */
 		draw_menu_button(0, 0, l10n_text("Back"), "back_from_level_editor", "back_from_level_editor");
 		draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 		if (menu == "back_from_level_editor")
-		and (key_a_pressed)
-		and (menu_delay == 0)
-		and (open_sub_menu == false)
-		and (can_input_level_name == false)
-		or (key_b_pressed)
-		and (menu_delay == 0)
-		and (open_sub_menu == false)
-		and (can_input_level_name == false)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 320, 42))
-		and (mouse_check_button_released(mb_left))
+		&& (key_a_pressed)
+		&& (menu_delay == 0)
+		&& (open_sub_menu == false)
+		&& (can_input_level_name == false)
+		|| (key_b_pressed)
+		&& (menu_delay == 0)
+		&& (open_sub_menu == false)
+		&& (can_input_level_name == false)
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 320, 42))
+		&& (mouse_check_button_released(mb_left))
 		{
 			can_input_level_name = false;
 			menu_delay = 3;
@@ -326,9 +326,9 @@ function scr_select_custom_level_menu()
 			menu = "level_editor";
 		}
 		if (menu == "back_from_level_editor")
-		and (key_up)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
+		&& (key_up)
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -342,10 +342,10 @@ function scr_select_custom_level_menu()
 			lerp_on = true;
 		}
 		if (menu == "back_from_level_editor")
-		and (key_down)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
-		and (show_level_editor_corner_menu)
+		&& (key_down)
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay <= 0)
+		&& (show_level_editor_corner_menu)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -373,20 +373,20 @@ function scr_select_custom_level_menu()
 		draw_menu_button(0, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
 		draw_sprite_ext(spr_icons_folder, 0, 16, 42 + 21, 1, 1, 0, c_white, 1);
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_open_custom_levels_folder_y + 2, 370, draw_open_custom_levels_folder_y + 41))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_released(mb_left))
-		and (menu_delay == 0)
-		or (menu == "open_custom_levels_folder")
-		and (key_a_pressed)
-		and (menu_delay == 0)
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (menu == "open_custom_levels_folder")
+		&& (key_a_pressed)
+		&& (menu_delay == 0)
 		{
 			scr_open_folder(game_save_id + "\custom_levels")
 		}
 		if (menu == "open_custom_levels_folder")
-		and (key_up)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
-		and (show_level_editor_corner_menu)
+		&& (key_up)
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay <= 0)
+		&& (show_level_editor_corner_menu)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -395,9 +395,9 @@ function scr_select_custom_level_menu()
 			lerp_on = true;
 		}
 		if (menu == "open_custom_levels_folder")
-		and (key_down)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
+		&& (key_down)
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -424,12 +424,12 @@ function scr_select_custom_level_menu()
 		}
 		draw_menu_button(0, draw_online_level_list_y, l10n_text("Online Level List"), "online_level_list", "online_level_list");
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_level_list_y + 2, 370, draw_online_level_list_y + 41))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (mouse_check_button_released(mb_left))
-		and (menu_delay == 0)
-		or (menu == "online_level_list")
-		and (key_a_pressed)
-		and (menu_delay == 0)
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (menu == "online_level_list")
+		&& (key_a_pressed)
+		&& (menu_delay == 0)
 		{
 			/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
 			select_custom_level_menu_open = false;
@@ -438,10 +438,10 @@ function scr_select_custom_level_menu()
 			menu = "online_download_list_load";
 		}
 		if (menu == "online_level_list")
-		and (key_up)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
-		and (show_level_editor_corner_menu)
+		&& (key_up)
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay <= 0)
+		&& (show_level_editor_corner_menu)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -458,9 +458,9 @@ function scr_select_custom_level_menu()
 		}
 		else
 		if (menu == "online_level_list")
-		and (key_down)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
+		&& (key_down)
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -489,26 +489,26 @@ function scr_select_custom_level_menu()
 		
 		#region /* Draw Search Key */
 		if (gamepad_is_connected(global.player1_slot))
-		and (global.controls_used_for_menu_navigation == "controller")
-		or (global.always_show_gamepad_buttons)
+		&& (global.controls_used_for_menu_navigation == "controller")
+		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);
 		}
 		#endregion /* Draw Search key END */
 		
 		if (can_input_level_name == false)
-		and (menu_delay == 0)
-		and (open_sub_menu == false)
+		&& (menu_delay == 0)
+		&& (open_sub_menu == false)
 		{
 			if (menu == "search_level_id")
-			and (key_a_pressed)
-			or (gamepad_button_check_pressed(global.player1_slot, gp_face4))
-			or (gamepad_button_check_pressed(global.player2_slot, gp_face4))
-			or (gamepad_button_check_pressed(global.player3_slot, gp_face4))
-			or (gamepad_button_check_pressed(global.player4_slot, gp_face4))
-			or (gamepad_button_check_pressed(4, gp_face4))
-			or (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_search_id_y + 2, 370, draw_search_id_y + 41))
-			and (mouse_check_button_released(mb_left))
+			&& (key_a_pressed)
+			|| (gamepad_button_check_pressed(global.player1_slot, gp_face4))
+			|| (gamepad_button_check_pressed(global.player2_slot, gp_face4))
+			|| (gamepad_button_check_pressed(global.player3_slot, gp_face4))
+			|| (gamepad_button_check_pressed(global.player4_slot, gp_face4))
+			|| (gamepad_button_check_pressed(4, gp_face4))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_search_id_y + 2, 370, draw_search_id_y + 41))
+			&& (mouse_check_button_released(mb_left))
 			{
 				keyboard_string = "";
 				search_id = "";
@@ -519,9 +519,9 @@ function scr_select_custom_level_menu()
 			}
 		}
 		if (menu == "search_level_id")
-		and (key_up)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
+		&& (key_up)
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay <= 0)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -530,10 +530,10 @@ function scr_select_custom_level_menu()
 			lerp_on = true;
 		}
 		if (menu == "search_level_id")
-		and (key_down)
-		and (menu_delay == 0)
-		and (menu_joystick_delay <= 0)
-		and (show_level_editor_corner_menu)
+		&& (key_down)
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay <= 0)
+		&& (show_level_editor_corner_menu)
 		{
 			menu_delay = 3;
 			can_navigate = true;
@@ -557,7 +557,7 @@ function scr_select_custom_level_menu()
 	
 	#region /* Draw Level Description */
 	if (global.select_level_index >= 1)
-	and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+	&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 	{
 		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		if (ini_key_exists("info", "level_description"))
@@ -566,7 +566,7 @@ function scr_select_custom_level_menu()
 			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 74, string(ini_read_string("info", "level_description", "")), global.default_text_size * 1.25, c_black, c_white, 1);
 		}
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* Draw Level Description END */
 	
@@ -579,14 +579,14 @@ function scr_select_custom_level_menu()
 		{
 			scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
 		}
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* Draw who made the level END */
 	
 	#region /* Show the path of the custom level on the bottom of the screen */
 	if (global.select_level_index >= 1)
-	and (global.enable_options_for_pc)
-	and (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only show path that isn't undefined */
+	&& (global.enable_options_for_pc)
+	&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only show path that isn't undefined */
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
@@ -607,10 +607,10 @@ function scr_select_custom_level_menu()
 	
 	#region /* Input Level Name */
 	if (menu == "level_editor_enter_name_ok")
-	or (menu == "level_editor_enter_name_cancel")
+	|| (menu == "level_editor_enter_name_cancel")
 	{
 		if (keyboard_virtual_status())
-		and (keyboard_virtual_height() != 0)
+		&& (keyboard_virtual_height() != 0)
 		{
 			var draw_name_input_screen_y = display_get_gui_height() - keyboard_virtual_height() - 160;
 		}
@@ -627,28 +627,28 @@ function scr_select_custom_level_menu()
 		
 		#region /* Press Enter to make new level from scratch */
 		if (can_input_level_name)
-		and (menu_delay == 0)
-		and (keyboard_string != "")
-		and (global.level_name != undefined)
+		&& (menu_delay == 0)
+		&& (keyboard_string != "")
+		&& (global.level_name != undefined)
 		{
 			if (keyboard_check_pressed(vk_enter))
-			and (menu != "level_editor_enter_name_ok")
-			and (menu != "level_editor_enter_name_cancel")
-			or (keyboard_check_pressed(vk_enter))
-			and (menu == "level_editor_enter_name_ok")
-			or (point_in_rectangle(mouse_get_x, mouse_get_y,
+			&& (menu != "level_editor_enter_name_ok")
+			&& (menu != "level_editor_enter_name_cancel")
+			|| (keyboard_check_pressed(vk_enter))
+			&& (menu == "level_editor_enter_name_ok")
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y,
 			394 * (global.select_level_index - column * row) + 300 - 185 + thumbnail_x_offset,
 			draw_name_input_screen_y + 54,
 			394 * (global.select_level_index - column * row) + 300 - 185 + 370 + thumbnail_x_offset,
 			draw_name_input_screen_y + 54 + 42))
-			and (mouse_check_button_released(mb_left))
-			or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-			or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
-			or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
-			or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+			&& (mouse_check_button_released(mb_left))
+			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
 			{
 				if (level_editor_edit_name)
-				and (global.level_name != old_level_name)
+				&& (global.level_name != old_level_name)
 				{
 					can_navigate = true;
 					menu_delay = 3;
@@ -660,12 +660,12 @@ function scr_select_custom_level_menu()
 					{
 						ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "level_name", global.level_name);
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 				}
 				else
 				if (level_editor_edit_name)
-				and (global.level_name == old_level_name)
+				&& (global.level_name == old_level_name)
 				{
 					menu = "level_editor_edit_name";
 					level_editor_edit_name = false;
@@ -693,35 +693,35 @@ function scr_select_custom_level_menu()
 		
 		#region /* Press Escape to back out from level from scratch menu */
 		if (keyboard_check_pressed(vk_enter))
-		and (menu == "level_editor_enter_name_cancel")
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (keyboard_check_pressed(vk_escape))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y,
+		&& (menu == "level_editor_enter_name_cancel")
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (keyboard_check_pressed(vk_escape))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y,
 		394 * (global.select_level_index - column * row) + 300 - 185 + thumbnail_x_offset,
 		draw_name_input_screen_y + 54 + 42,
 		394 * (global.select_level_index - column * row) + 300 - 185 + 370 + thumbnail_x_offset,
 		draw_name_input_screen_y + 54 + 42 + 42))
-		and (mouse_check_button_released(mb_left))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (mouse_check_button_released(mb_right))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back]))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
-		and (can_input_level_name)
-		and (menu_delay == 0)
+		&& (mouse_check_button_released(mb_left))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (mouse_check_button_released(mb_right))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back]))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
 		{
 			menu_delay = 3;
 			if (instance_exists(obj_camera))
@@ -749,10 +749,10 @@ function scr_select_custom_level_menu()
 	
 	#region /* Edit level description */
 	if (menu == "level_editor_enter_description_ok")
-	or (menu == "level_editor_enter_description_cancel")
+	|| (menu == "level_editor_enter_description_cancel")
 	{
 		if (keyboard_virtual_status())
-		and (keyboard_virtual_height() != 0)
+		&& (keyboard_virtual_height() != 0)
 		{
 			var draw_description_input_screen_y = display_get_gui_height() - keyboard_virtual_height() - 160;
 		}
@@ -773,28 +773,28 @@ function scr_select_custom_level_menu()
 		
 		#region /* Press Enter to make new level from scratch */
 		if (can_input_level_name)
-		and (menu_delay == 0)
-		and (keyboard_string != "")
-		and (global.level_description != undefined)
+		&& (menu_delay == 0)
+		&& (keyboard_string != "")
+		&& (global.level_description != undefined)
 		{
 			if (keyboard_check_pressed(vk_enter))
-			and (menu != "level_editor_enter_description_ok")
-			and (menu != "level_editor_enter_description_cancel")
-			or (keyboard_check_pressed(vk_enter))
-			and (menu == "level_editor_enter_description_ok")
-			or (point_in_rectangle(mouse_get_x, mouse_get_y,
+			&& (menu != "level_editor_enter_description_ok")
+			&& (menu != "level_editor_enter_description_cancel")
+			|| (keyboard_check_pressed(vk_enter))
+			&& (menu == "level_editor_enter_description_ok")
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y,
 			get_window_width * 0.5 - 185,
 			draw_description_input_screen_y + 54,
 			get_window_width * 0.5 - 185 + 370,
 			draw_description_input_screen_y + 54 + 42))
-			and (mouse_check_button_released(mb_left))
-			or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-			or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
-			or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
-			or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+			&& (mouse_check_button_released(mb_left))
+			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
 			{
 				if (level_editor_edit_name)
-				and (global.level_description != old_level_description)
+				&& (global.level_description != old_level_description)
 				{
 					can_navigate = true;
 					menu_delay = 3;
@@ -802,14 +802,14 @@ function scr_select_custom_level_menu()
 					/* Save description to level_information.ini */
 					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					ini_write_string("info", "level_description", string(global.level_description));
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
 					menu = "level_editor_enter_description";
 					level_editor_edit_name = false;
 				}
 				else
 				if (level_editor_edit_name)
-				and (global.level_description == old_level_description)
+				&& (global.level_description == old_level_description)
 				{
 					menu = "level_editor_enter_description";
 					level_editor_edit_name = false;
@@ -837,35 +837,35 @@ function scr_select_custom_level_menu()
 		
 		#region /* Press Escape to back out from level from scratch menu */
 		if (keyboard_check_pressed(vk_enter))
-		and (menu == "level_editor_enter_description_cancel")
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (keyboard_check_pressed(vk_escape))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y,
+		&& (menu == "level_editor_enter_description_cancel")
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (keyboard_check_pressed(vk_escape))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y,
 		get_window_width * 0.5 - 185,
 		draw_description_input_screen_y + 54 + 42,
 		get_window_width * 0.5 - 185 + 370,
 		draw_description_input_screen_y + 54 + 42 + 42))
-		and (mouse_check_button_released(mb_left))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (mouse_check_button_released(mb_right))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back]))
-		and (can_input_level_name)
-		and (menu_delay == 0)
-		or (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
-		and (can_input_level_name)
-		and (menu_delay == 0)
+		&& (mouse_check_button_released(mb_left))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (mouse_check_button_released(mb_right))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back]))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
+		|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
+		&& (can_input_level_name)
+		&& (menu_delay == 0)
 		{
 			menu_delay = 3;
 			if (instance_exists(obj_camera))

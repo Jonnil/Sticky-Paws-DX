@@ -23,9 +23,9 @@ if (bounce_up)
 			object_camera.hud_show_score_timer = global.hud_hide_time * 60;
 			with(instance_nearest(x, y, obj_player))
 			{
-				basic_collectibles += 1;
+				basic_collectibles ++;
 			}
-			global.basic_collectibles += 1;
+			global.basic_collectibles ++;
 			
 			get_1up_when_collect_basic_collectibles();
 			
@@ -36,7 +36,7 @@ if (bounce_up)
 	}
 	else
 	{
-		delay += 1;
+		delay ++;
 		visible = false;
 		y = ystart;
 	}
@@ -58,8 +58,8 @@ if (bounce_up == false && distance_to_object(instance_nearest(x, y, obj_player))
 {
 	effect_create_above(ef_ring, x, y, 0, c_white);
 	score += 200;
-	global.basic_collectibles += 1;
-	instance_nearest(x, y, obj_player).basic_collectibles += 1;
+	global.basic_collectibles ++;
+	instance_nearest(x, y, obj_player).basic_collectibles ++;
 	get_1up_when_collect_basic_collectibles();
 	object_camera.hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 	object_camera.hud_show_score_timer = global.hud_hide_time * 60;

@@ -1,4 +1,5 @@
 menu = "";
+open_dropdown = false;
 menu_cursor_index = 0;
 menu_delay = 0;
 image_alpha = 0;
@@ -128,7 +129,7 @@ if (file_exists(working_directory + "/save_files/file" + string(global.file) + "
 	levela_big_collectible4 = ini_read_real(level_name, "big_collectible4", 0);
 	levela_big_collectible5 = ini_read_real(level_name, "big_collectible5", 0);
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 else
 {

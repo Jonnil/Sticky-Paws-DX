@@ -39,31 +39,31 @@ if (instance_exists(obj_player))
 if (door_xscale > 0)
 {
 	if (instance_exists(obj_player))
-	and (gamepad_is_connected(instance_nearest(x, y, obj_player).player - 1))
-	and (global.controls_used_for_menu_navigation == "controller")
-	and (player_gamepad_button_up > noone)
-	or (global.always_show_gamepad_buttons)
+	&& (gamepad_is_connected(instance_nearest(x, y, obj_player).player - 1))
+	&& (global.controls_used_for_menu_navigation == "controller")
+	&& (player_gamepad_button_up > noone)
+	|| (global.always_show_gamepad_buttons)
 	{
 		scr_draw_gamepad_buttons(player_gamepad_button_up, x + door_x, y, 0.4, c_white, 0.5, door_xscale, 1);
 	}
 	else
 	if (instance_exists(obj_player))
-	and (gamepad_is_connected(instance_nearest(x, y, obj_player).player - 1))
-	and (global.controls_used_for_menu_navigation == "controller")
-	and (player_gamepad_button2_up > noone)
-	or (global.always_show_gamepad_buttons)
+	&& (gamepad_is_connected(instance_nearest(x, y, obj_player).player - 1))
+	&& (global.controls_used_for_menu_navigation == "controller")
+	&& (player_gamepad_button2_up > noone)
+	|| (global.always_show_gamepad_buttons)
 	{
 		scr_draw_gamepad_buttons(player_gamepad_button2_up, x + door_x, y, 0.4, c_white, 0.5, door_xscale, 1);
 	}
 	else
 	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-	and (player_key_up > noone)
+	&& (player_key_up > noone)
 	{
 		draw_sprite_ext(spr_keyboard_keys, player_key_up, x + door_x, y, 0.4 * door_xscale, 0.4, 0, c_white, 0.5);
 	}
 	else
 	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-	and (player_key2_up > noone)
+	&& (player_key2_up > noone)
 	{
 		draw_sprite_ext(spr_keyboard_keys, player_key2_up, x + door_x, y, 0.4 * door_xscale, 0.4, 0, c_white, 0.5);
 	}

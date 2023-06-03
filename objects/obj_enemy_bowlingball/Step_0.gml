@@ -1,6 +1,6 @@
 #region /* If enemies are disabled, destroy this object */
 if (global.assist_enable)
-and (global.assist_enable_enemies == false)
+&& (global.assist_enable_enemies == false)
 {
 	instance_destroy();
 }
@@ -8,11 +8,11 @@ and (global.assist_enable_enemies == false)
 
 if (stomped_delay > 0)
 {
-	stomped_delay -= 1;
+	stomped_delay --;
 }
 
 if (die_volting = -1)
-or (die_volting = +1)
+|| (die_volting = +1)
 {
 	depth = -900;
 	if (die_volting = - 1)
@@ -37,13 +37,13 @@ else
 	#region /* Set the gravity */
 	gravity_direction = 270; /* Direction of the gravity */
 	if (asset_get_type("obj_wall") == asset_object)
-	and (!place_meeting(x, y + 1, obj_wall))
-	and (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	and (x - 32 < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	and (x + 32 > camera_get_view_x(view_camera[view_current]))
+	&& (!place_meeting(x, y + 1, obj_wall))
+	&& (asset_get_type("obj_semisolid_platform") == asset_object)
+	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	&& (x - 32 < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	&& (x + 32 > camera_get_view_x(view_camera[view_current]))
 	{
 		gravity = 0.5; /* The gravity */
 	}
@@ -70,11 +70,11 @@ else
 		if (stomped_delay == 0)
 		{
 			if (instance_exists(obj_player))
-			and (sliding_along_ground == 0)
-			and (instance_nearest(x, y, obj_player).hold_item_in_hands = "")
-			and (instance_nearest(x, y, obj_player).key_dive_hold)
-			and (instance_nearest(x, y, obj_player).horizontal_rope_climb == false)
-			and (instance_nearest(x, y, obj_player).ground_pound == false)
+			&& (sliding_along_ground == 0)
+			&& (instance_nearest(x, y, obj_player).hold_item_in_hands = "")
+			&& (instance_nearest(x, y, obj_player).key_dive_hold)
+			&& (instance_nearest(x, y, obj_player).horizontal_rope_climb == false)
+			&& (instance_nearest(x, y, obj_player).ground_pound == false)
 			{
 				if (distance_to_object(instance_nearest(x, y, obj_player)) < 16)
 				{
@@ -86,11 +86,11 @@ else
 			}
 			else
 			if (instance_exists(obj_player))
-			and (position_meeting(bbox_left - 1, y, obj_player))
-			and (instance_nearest(x, y, obj_player).hspeed >= + 8)
-			and (instance_nearest(x, y, obj_player).x < x)
-			and (sliding_along_ground == 0)
-			and (flat)
+			&& (position_meeting(bbox_left - 1, y, obj_player))
+			&& (instance_nearest(x, y, obj_player).hspeed >= + 8)
+			&& (instance_nearest(x, y, obj_player).x < x)
+			&& (sliding_along_ground == 0)
+			&& (flat)
 			{
 				instance_nearest(x, y, obj_player).dive = false;
 				sliding_along_ground = +1;
@@ -99,7 +99,7 @@ else
 				
 				if (number_of_times_stomped < 10)
 				{
-					number_of_times_stomped += 1;
+					number_of_times_stomped ++;
 					
 					#region /* 1 Coin */
 					if (asset_get_type("obj_basic_collectible") == asset_object)
@@ -143,10 +143,10 @@ else
 			}
 			else
 			if (instance_exists(obj_player))
-			and (position_meeting(bbox_right + 1, y, obj_player))
-			and (instance_nearest(x, y, obj_player).hspeed <= -8)
-			and (sliding_along_ground == 0)
-			and (flat)
+			&& (position_meeting(bbox_right + 1, y, obj_player))
+			&& (instance_nearest(x, y, obj_player).hspeed <= -8)
+			&& (sliding_along_ground == 0)
+			&& (flat)
 			{
 				sliding_along_ground = -1;
 				sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
@@ -154,7 +154,7 @@ else
 				
 				if (number_of_times_stomped < 10)
 				{
-					number_of_times_stomped += 1;
+					number_of_times_stomped ++;
 					
 					#region /* 1 Coin */
 					if (asset_get_type("obj_basic_collectible") == asset_object)
@@ -198,10 +198,10 @@ else
 			}
 			else
 			if (instance_exists(obj_player))
-			and (position_meeting(bbox_left - 1, y, obj_player))
-			and (instance_nearest(x, y, obj_player).x < x)
-			and (sliding_along_ground == 0)
-			and (flat)
+			&& (position_meeting(bbox_left - 1, y, obj_player))
+			&& (instance_nearest(x, y, obj_player).x < x)
+			&& (sliding_along_ground == 0)
+			&& (flat)
 			{
 				sliding_along_ground = +1;
 				sliding_along_ground_speed = 8;
@@ -209,7 +209,7 @@ else
 				
 				if (number_of_times_stomped < 10)
 				{
-					number_of_times_stomped += 1;
+					number_of_times_stomped ++;
 					
 					#region /* 1 Coin */
 					if (asset_get_type("obj_basic_collectible") == asset_object)
@@ -254,9 +254,9 @@ else
 			}
 			else
 			if (instance_exists(obj_player))
-			and (position_meeting(bbox_right + 1, y, obj_player))
-			and (sliding_along_ground == 0)
-			and (flat)
+			&& (position_meeting(bbox_right + 1, y, obj_player))
+			&& (sliding_along_ground == 0)
+			&& (flat)
 			{
 				sliding_along_ground = -1;
 				sliding_along_ground_speed = 8;
@@ -264,7 +264,7 @@ else
 				
 				if (number_of_times_stomped < 10)
 				{
-					number_of_times_stomped += 1;
+					number_of_times_stomped ++;
 					
 					#region /* 1 Coin */
 					if (asset_get_type("obj_basic_collectible") == asset_object)
@@ -323,12 +323,12 @@ if (flat == false)
 	
 	#region /* Turn around */
 	if (place_meeting(x - 2, y, obj_wall))
-	and (flat == false)
+	&& (flat == false)
 	{
 		image_xscale = +1;
 	}
 	if (place_meeting(x + 2, y, obj_wall))
-	and (flat == false)
+	&& (flat == false)
 	{
 		image_xscale = -1;
 	}
@@ -348,39 +348,39 @@ if (flat == false)
 }
 
 if (blind == false)
-and (place_meeting(x, y + 1, obj_wall))
-or (blind == false)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+&& (place_meeting(x, y + 1, obj_wall))
+|| (blind == false)
+&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (!place_meeting(x + 5, y + 1, obj_wall))
-	and (!position_meeting(x + 5, bbox_bottom + 1, obj_semisolid_platform))
+	&& (!position_meeting(x + 5, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		image_xscale = -1;
 	}
 	else
 	if (!place_meeting(x - 5, y + 1, obj_wall))
-	and (!position_meeting(x - 5, bbox_bottom + 1, obj_semisolid_platform))
+	&& (!position_meeting(x - 5, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		image_xscale = +1;
 	}
 }
 
 if (coil_spring)
-and (die == false)
-and (place_meeting(x, y + 1, obj_wall))
-or (coil_spring)
-and (die == false)
-and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+&& (die == false)
+&& (place_meeting(x, y + 1, obj_wall))
+|| (coil_spring)
+&& (die == false)
+&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (instance_exists(obj_foreground_secret))
-	and (place_meeting(x, y, obj_foreground_secret))
-	and (obj_foreground_secret.image_alpha < 0.5)
-	or (instance_exists(obj_foreground_secret))
-	and (!place_meeting(x, y, obj_foreground_secret))
+	&& (place_meeting(x, y, obj_foreground_secret))
+	&& (obj_foreground_secret.image_alpha < 0.5)
+	|| (instance_exists(obj_foreground_secret))
+	&& (!place_meeting(x, y, obj_foreground_secret))
 	{
 		if (asset_get_type("obj_camera") == asset_object)
-		and (instance_exists(obj_camera))
-		and (obj_camera.iris_xscale > 1)
+		&& (instance_exists(obj_camera))
+		&& (obj_camera.iris_xscale > 1)
 		{
 			effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
 			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
@@ -398,21 +398,21 @@ and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 }
 
 if (sliding_along_ground == -1)
-and (flat)
-and (die == false)
+&& (flat)
+&& (die == false)
 {
 	draw_angle += 10;
 	if (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
-	or (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
-	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
+	&& (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
+	|| (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
+	&& (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
+	|| (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
+	&& (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
+	|| (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
+	&& (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (!position_meeting(x, bbox_bottom + 1, obj_wall))
-		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			hspeed = -0.5;
 			y += 10;
@@ -430,21 +430,21 @@ and (die == false)
 }
 else
 if (sliding_along_ground == +1)
-and (flat)
-and (die == false)
+&& (flat)
+&& (die == false)
 {
 	draw_angle -= 10;
 	if (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
-	or (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
-	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
-	or (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
-	and (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
+	&& (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
+	|| (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
+	&& (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
+	|| (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
+	&& (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_semisolid_platform))
+	|| (position_meeting(bbox_right + 32, bbox_bottom + 1, obj_wall))
+	&& (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		if (!position_meeting(x, bbox_bottom + 1, obj_wall))
-		and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		{
 			hspeed = +0.5;
 			y += 10;
@@ -462,18 +462,18 @@ and (die == false)
 }
 else
 if (sliding_along_ground == 0)
-and (flat)
-and (die == false)
+&& (flat)
+&& (die == false)
 {
 	friction = 0.05;
 }
 
 #region /* Kill enemy if it's inside the wall */
 if (position_meeting(x, y, obj_wall))
-and (die == false)
-and (draw_xscale >= 0.8)
+&& (die == false)
+&& (draw_xscale >= 0.8)
 {
-	stuck_in_wall_counter += 1;
+	stuck_in_wall_counter ++;
 	if (stuck_in_wall_counter >= 3)
 	{
 		flat = false;
@@ -485,7 +485,7 @@ else
 {
 	if (stuck_in_wall_counter > 0)
 	{
-		stuck_in_wall_counter -= 1;
+		stuck_in_wall_counter --;
 	}
 }
 #endregion /* Kill enemy if it's inside the wall END */

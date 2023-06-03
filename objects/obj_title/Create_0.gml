@@ -169,7 +169,7 @@ repeat(50)
 		}
 		file_delete(working_directory + "file" + string(index_file_copy) + ".ini");
 	}
-	index_file_copy += 1;
+	index_file_copy ++;
 }
 #endregion /* Any save file outside the save_files folder should copy over to that folder and then delete the save file outside the folder END */
 
@@ -199,10 +199,10 @@ if (variable_instance_exists(self, "title_screen_background"))
 #endregion /* Custom Title Screen Background */
 
 #region /* Character select Accept Selection */
-player1_accept_selection = - 1;
-player2_accept_selection = - 1;
-player3_accept_selection = - 1;
-player4_accept_selection = - 1;
+player1_accept_selection = -1;
+player2_accept_selection = -1;
+player3_accept_selection = -1;
+player4_accept_selection = -1;
 player1_automatically_join = false;
 player2_automatically_join = false;
 player3_automatically_join = false;
@@ -265,7 +265,7 @@ scr_config_load(); /* Load Config */
 if (file_exists("localization.csv"))
 {
 	if (global.language_localization > ds_grid_width(global.language_local_data))
-	or (global.language_localization < 0)
+	|| (global.language_localization < 0)
 	{
 		scr_set_default_language();
 	}
@@ -282,7 +282,7 @@ if (global.character_select_in_this_menu == "level_editor")
 	can_input_player3_name = false;
 	can_input_player4_name = false;
 	can_navigate = true;
-	menu_delay = 30;
+	menu_delay = 60;
 	open_sub_menu = false;
 	player1_accept_selection = false;
 	player2_accept_selection = false;
@@ -328,14 +328,18 @@ menu_specific_joystick_delay[2] = 3;
 menu_specific_joystick_delay[3] = 3;
 menu_specific_joystick_delay[4] = 3;
 black_screen_at_start_delay = 0;
-player1_display_x = 0;
-player2_display_x = 0;
-player3_display_x = 0;
-player4_display_x = 0;
+player_display_x[1] = 0;
+player_display_x[2] = 0;
+player_display_x[3] = 0;
+player_display_x[4] = 0;
 xx[1] = 0;
 xx[2] = 0;
 xx[3] = 0;
 xx[4] = 0;
+xx_delay[1] = 0;
+xx_delay[2] = 0;
+xx_delay[3] = 0;
+xx_delay[4] = 0;
 remap_y_pos = 0;
 version_y_pos = 0;
 menu_cursor_index = 0;
@@ -455,7 +459,7 @@ if (global.reset_level_zoom_when_going_back_to_map)
 	global.zoom_level = global.default_zoom_level;
 	ini_open("config.ini");
 	ini_write_real("config", "zoom_level", global.default_zoom_level);
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 #endregion /* Reset level zoom END */
 
@@ -465,7 +469,7 @@ if (global.reset_world_map_zoom_when_going_back_to_map)
 	global.zoom_world_map = global.default_zoom_world_map;
 	ini_open("config.ini");
 	ini_write_real("config", "zoom_world_map", global.default_zoom_world_map);
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 #endregion /* Reset world map zoom END */
 

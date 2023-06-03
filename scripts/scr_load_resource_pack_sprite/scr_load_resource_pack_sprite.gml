@@ -3,6 +3,14 @@
 
 function scr_load_resource_pack_sprite()
 {
+	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
+	{
+		resource_pack_folder = "resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack));
+	}
+	else
+	{
+		resource_pack_folder = working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack));
+	}
 	
 	#region /* Delete sprites before loading new sprites */
 	if (room != room_splash_screen)
@@ -64,7 +72,7 @@ function scr_load_resource_pack_sprite()
 	#endregion /* Delete sprites before loading new sprites END */
 	
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
-	or (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
+	|| (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 	{
 		if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 		{
@@ -128,6 +136,6 @@ function scr_load_resource_pack_sprite()
 		global.resource_pack_sprite_buttons_nintendoswitch = scr_initialize_resource_pack_sprite("buttons_nintendoswitch", global.resource_pack_sprite_buttons_nintendoswitch);
 		global.resource_pack_sprite_buttons_playstation4 = scr_initialize_resource_pack_sprite("buttons_playstation4", global.resource_pack_sprite_buttons_playstation4);
 		global.resource_pack_sprite_buttons_playstation5 = scr_initialize_resource_pack_sprite("buttons_playstation5", global.resource_pack_sprite_buttons_playstation5);
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 }

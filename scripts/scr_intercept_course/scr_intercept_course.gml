@@ -1,10 +1,10 @@
 /// scr_intercept_course(origin,target,speed)
 //
 //  Returns the course direction required to hit a moving target
-//  at a given projectile speed, or (-1) if no solution is found.
+//  at a given projectile speed, || (-1) if no solution is found.
 //
 //      origin      instance with position (x,y), real
-//      target      instance with position (x,y) and (speed), real
+//      target      instance with position (x,y) && (speed), real
 //      speed       speed of the projectile, real
 //
 /// GMLscripts.com/license

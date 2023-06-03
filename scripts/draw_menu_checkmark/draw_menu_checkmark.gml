@@ -21,9 +21,9 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	if (variable_to_check == false)
 	{
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (input_key == false)
-		and (open_dropdown == false)
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (input_key == false)
+		&& (open_dropdown == false)
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset, c_white, c_white, c_white, c_white, false);
@@ -40,16 +40,16 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	else
 	{
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (input_key == false)
-		and (open_dropdown == false)
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (input_key == false)
+		&& (open_dropdown == false)
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			draw_sprite_ext(spr_menu_checkmark, 1, x_position + 42, y_position, 1, 1, 0, c_lime, 1);
 			if (input_key == false)
-			and (open_dropdown == false)
+			&& (open_dropdown == false)
 			{
 				menu = menu_index;
 				can_navigate_settings_sidebar = false;
@@ -74,16 +74,16 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	
 	#region /* Clicking the menu button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-	and (mouse_check_button_released(mb_left))
-	and (global.controls_used_for_menu_navigation == "mouse")
-	and (input_key == false)
-	and (open_dropdown == false)
-	and (menu_delay == 0)
-	or (key_a_pressed)
-	and (menu == menu_index)
-	and (input_key == false)
-	and (open_dropdown == false)
-	and (menu_delay == 0)
+	&& (mouse_check_button_released(mb_left))
+	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (input_key == false)
+	&& (open_dropdown == false)
+	&& (menu_delay == 0)
+	|| (key_a_pressed)
+	&& (menu == menu_index)
+	&& (input_key == false)
+	&& (open_dropdown == false)
+	&& (menu_delay == 0)
 	{
 		if (variable_to_check)
 		{

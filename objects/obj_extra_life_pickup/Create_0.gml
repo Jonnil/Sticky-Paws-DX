@@ -3,7 +3,7 @@ dir = +1;
 mask_index = spr_wall;
 
 if (instance_exists(obj_camera))
-and (obj_camera.sprite_lives_icon > noone)
+&& (obj_camera.sprite_lives_icon > noone)
 {
 	sprite_index = obj_camera.sprite_lives_icon;
 }

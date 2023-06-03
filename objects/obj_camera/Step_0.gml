@@ -6,7 +6,7 @@ scr_deactivate_objects_outside_view();
 
 if (menu_delay > 0)
 {
-	menu_delay -= 1;
+	menu_delay --;
 }
 
 if (keyboard_check_pressed(vk_rcontrol))
@@ -19,54 +19,54 @@ scr_make_background_visible();
 
 #region /* Timer Countup */
 if (instance_exists(obj_goal))
-and (obj_goal.goal == false)
-and (instance_exists(obj_player))
-and (obj_player.allow_timeattack)
-and (global.pause == false)
+&& (obj_goal.goal == false)
+&& (instance_exists(obj_player))
+&& (obj_player.allow_timeattack)
+&& (global.pause == false)
 {
 	if (instance_exists(obj_player))
 	{
-		global.timeattack_millisecond += 1;
+		global.timeattack_millisecond ++;
 	}
 
-	global.timeattack_realmillisecond += 1;
+	global.timeattack_realmillisecond ++;
 	if (global.timeattack_millisecond > 60)
 	{
 		global.timeattack_millisecond = 0;
-		global.timeattack_second += 1;
+		global.timeattack_second ++;
 	}
 	if (global.timeattack_second > 59)
 	{
 		global.timeattack_millisecond = 0;
 		global.timeattack_second = 0;
-		global.timeattack_minute += 1;
+		global.timeattack_minute ++;
 	}
 }
 else
 if (global.pause == false)
 {
 	if (instance_exists(obj_goal))
-	and (obj_goal.goal == false)
-	or (!instance_exists(obj_goal))
+	&& (obj_goal.goal == false)
+	|| (!instance_exists(obj_goal))
 	{
 		if (instance_exists(obj_player))
-		and (obj_player.allow_timeattack)
+		&& (obj_player.allow_timeattack)
 		{
 			if (instance_exists(obj_player))
 			{
-				global.timeattack_millisecond += 1;
+				global.timeattack_millisecond ++;
 			}
-			global.timeattack_realmillisecond += 1;
+			global.timeattack_realmillisecond ++;
 			if (global.timeattack_millisecond > 60)
 			{
 				global.timeattack_millisecond = 0;
-				global.timeattack_second += 1;
+				global.timeattack_second ++;
 			}
 			if (global.timeattack_second > 59)
 			{
 				global.timeattack_millisecond = 0;
 				global.timeattack_second = 0;
-				global.timeattack_minute += 1;
+				global.timeattack_minute ++;
 			}
 		}
 	}
@@ -75,21 +75,21 @@ if (global.pause == false)
 
 #region /* Time Countdown */
 if (instance_exists(obj_player))
-and (global.pause == false)
+&& (global.pause == false)
 {
 	if (instance_exists(obj_goal))
-	and (obj_goal.goal == false)
-	or (!instance_exists(obj_goal))
+	&& (obj_goal.goal == false)
+	|| (!instance_exists(obj_goal))
 	{
-		time_second += 1;
+		time_second ++;
 		if (time_second > room_speed)
 		{
 			time_second = 0;
-			global.time_countdown_bonus -= 1;
+			global.time_countdown_bonus --;
 			if (obj_player.allow_timeup)
-			and (global.enable_time_countdown)
+			&& (global.enable_time_countdown)
 			{
-				global.time_countdown -= 1;
+				global.time_countdown --;
 			}
 		}
 	}
@@ -97,7 +97,7 @@ and (global.pause == false)
 #endregion /* Time Countdown END */
 
 room_speed = global.max_fps; /* Room Speed is max fps */
-global.spikes_emerge_time += 1;
+global.spikes_emerge_time ++;
 if (global.spikes_emerge_time >= room_speed * 4)
 {
 	global.spikes_emerge_time = 0;
@@ -105,7 +105,7 @@ if (global.spikes_emerge_time >= room_speed * 4)
 
 #region /* Stop the screen from scrolling left if scrolling left isn't allowed */
 if (instance_exists(obj_player))
-and (obj_player.stop_screen_from_scrolling_left)
+&& (obj_player.stop_screen_from_scrolling_left)
 {
 	if (x > scrolling_left)
 	{
@@ -132,25 +132,25 @@ if (global.rain)
 
 #region /* Player 1 Show Controls HUD timer */
 if (player1 >= 1)
-and (instance_exists(player1))
-and (iris_xscale >= 10)
+&& (instance_exists(player1))
+&& (iris_xscale >= 10)
 {
 	if (global.player1_show_controls == 0)
-	or (obj_player.can_move == false)
+	|| (obj_player.can_move == false)
 	{
 		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
 	}
 	else
 	if (global.player1_show_controls >= 1)
-	and (global.player1_show_controls <= 9)
+	&& (global.player1_show_controls <= 9)
 	{
 		if (player1_show_controls_timer >= 1)
 		{
 			player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
-			player1_show_controls_timer -= 1;
+			player1_show_controls_timer --;
 		}
 		if (player1_show_controls_timer <= 0)
-		and (player1.speed == 0)
+		&& (player1.speed == 0)
 		{
 			player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 1, 0.1);
 		}
@@ -180,25 +180,25 @@ else
 
 #region /* Player 2 Show Controls HUD timer */
 if (player2 >= 1)
-and (instance_exists(player2))
-and (iris_xscale >= 10)
+&& (instance_exists(player2))
+&& (iris_xscale >= 10)
 {
 	if (global.player2_show_controls == 0)
-	or (obj_player.can_move == false)
+	|| (obj_player.can_move == false)
 	{
 		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
 	}
 	else
 	if (global.player2_show_controls >= 1)
-	and (global.player2_show_controls <= 9)
+	&& (global.player2_show_controls <= 9)
 	{
 		if (player2_show_controls_timer >= 1)
 		{
 			player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
-			player2_show_controls_timer -= 1;
+			player2_show_controls_timer --;
 		}
 		if (player2_show_controls_timer <= 0)
-		and (player2.speed == 0)
+		&& (player2.speed == 0)
 		{
 			player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
 		}
@@ -228,25 +228,25 @@ else
 
 #region /* Player 3 Show Controls HUD timer */
 if (player3 >= 1)
-and (instance_exists(player3))
-and (iris_xscale >= 10)
+&& (instance_exists(player3))
+&& (iris_xscale >= 10)
 {
 	if (global.player3_show_controls == 0)
-	or (obj_player.can_move == false)
+	|| (obj_player.can_move == false)
 	{
 		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
 	}
 	else
 	if (global.player3_show_controls >= 1)
-	and (global.player3_show_controls <= 9)
+	&& (global.player3_show_controls <= 9)
 	{
 		if (player3_show_controls_timer >= 1)
 		{
 			player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
-			player3_show_controls_timer -= 1;
+			player3_show_controls_timer --;
 		}
 		if (player3_show_controls_timer <= 0)
-		and (player3.speed == 0)
+		&& (player3.speed == 0)
 		{
 			player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.1);
 		}
@@ -276,25 +276,25 @@ else
 
 #region /* Player 4 Show Controls HUD timer */
 if (player4 >= 1)
-and (instance_exists(player4))
-and (iris_xscale >= 10)
+&& (instance_exists(player4))
+&& (iris_xscale >= 10)
 {
 	if (global.player4_show_controls == 0)
-	or (obj_player.can_move == false)
+	|| (obj_player.can_move == false)
 	{
 		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
 	}
 	else
 	if (global.player4_show_controls >= 1)
-	and (global.player4_show_controls <= 9)
+	&& (global.player4_show_controls <= 9)
 	{
 		if (player4_show_controls_timer >= 1)
 		{
 			player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
-			player4_show_controls_timer -= 1;
+			player4_show_controls_timer --;
 		}
 		if (player4_show_controls_timer <= 0)
-		and (player4.speed == 0)
+		&& (player4.speed == 0)
 		{
 			player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
 		}
@@ -327,7 +327,7 @@ else
 #region /* Arcade Credit Increase */
 if (mouse_wheel_up())
 {
-	global.arcade_credit += 1;
+	global.arcade_credit ++;
 }
 #endregion /* Arcade Credit Increase END */
 
@@ -376,16 +376,16 @@ if (lives < 0)
 
 #region /* Spawn Players in multiplayer */
 if (instance_exists(obj_player))
-and (global.pause == false)
-and (global.goal_active == false)
+&& (global.pause == false)
+&& (global.goal_active == false)
 {
 	if (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-	or (keyboard_check_pressed(global.player_[inp.key][1][1][action.jump]))
-	or (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
+	|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.jump]))
+	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
 	{
 		if (player1 <= 0)
-		and (can_spawn_player1)
-		and (lives > 0)
+		&& (can_spawn_player1)
+		&& (lives > 0)
 		{
 			if (global.player1_can_play == false)
 			{
@@ -407,12 +407,12 @@ and (global.goal_active == false)
 		}
 	}
 	if (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
-	or (keyboard_check_pressed(global.player_[inp.key][2][1][action.jump]))
-	or (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
+	|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.jump]))
+	|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
 	{
 		if (player2 <= 0)
-		and (can_spawn_player2)
-		and (lives > 0)
+		&& (can_spawn_player2)
+		&& (lives > 0)
 		{
 			if (global.player2_can_play == false)
 			{
@@ -434,12 +434,12 @@ and (global.goal_active == false)
 		}
 	}
 	if (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
-	or (keyboard_check_pressed(global.player_[inp.key][3][1][action.jump]))
-	or (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
+	|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.jump]))
+	|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
 	{
 		if (player3 <= 0)
-		and (can_spawn_player3)
-		and (lives > 0)
+		&& (can_spawn_player3)
+		&& (lives > 0)
 		{
 			if (global.player3_can_play == false)
 			{
@@ -461,12 +461,12 @@ and (global.goal_active == false)
 		}
 	}
 	if (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
-	or (keyboard_check_pressed(global.player_[inp.key][4][1][action.jump]))
-	or (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
+	|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.jump]))
+	|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
 	{
 		if (player4 <= 0)
-		and (can_spawn_player4)
-		and (lives > 0)
+		&& (can_spawn_player4)
+		&& (lives > 0)
 		{
 			if (global.player4_can_play == false)
 			{
@@ -504,15 +504,15 @@ if (save_level_as_png == false)
 	
 	#region /* Boss Battle Camera */
 	if (instance_exists(obj_player))
-	and (instance_exists(obj_boss))
-	and (distance_to_object(obj_boss) < 500)
+	&& (instance_exists(obj_boss))
+	&& (distance_to_object(obj_boss) < 500)
 	{
 		
 		view_wview_lerp = lerp(0, 0, 0.05);
 		view_hview_lerp = lerp(0, 0, 0.05);
 		
 		if (player1 > 0)
-		and (instance_exists(player1))
+		&& (instance_exists(player1))
 		{
 			if (player1.partner_character == false)
 			{
@@ -522,7 +522,7 @@ if (save_level_as_png == false)
 		}
 		else
 		if (player2 > 0)
-		and (instance_exists(player2))
+		&& (instance_exists(player2))
 		{
 			if (player2.partner_character == false)
 			{
@@ -532,7 +532,7 @@ if (save_level_as_png == false)
 		}
 		else
 		if (player3 > 0)
-		and (instance_exists(player3))
+		&& (instance_exists(player3))
 		{
 			if (player3.partner_character == false)
 			{
@@ -542,7 +542,7 @@ if (save_level_as_png == false)
 		}
 		else
 		if (player4 > 0)
-		and (instance_exists(player4))
+		&& (instance_exists(player4))
 		{
 			if (player4.partner_character == false)
 			{
@@ -563,17 +563,17 @@ if (save_level_as_png == false)
 		
 		/* 1, 2, 3, 4 */
 		if (player1 > 0)
-		and (instance_exists(player1))
-		and (player1.partner_character == false)
-		and (player2 > 0)
-		and (instance_exists(player2))
-		and (player2.partner_character == false)
-		and (player3 > 0)
-		and (instance_exists(player3))
-		and (player3.partner_character == false)
-		and (player4 > 0)
-		and (instance_exists(player4))
-		and (player4.partner_character == false)
+		&& (instance_exists(player1))
+		&& (player1.partner_character == false)
+		&& (player2 > 0)
+		&& (instance_exists(player2))
+		&& (player2.partner_character == false)
+		&& (player3 > 0)
+		&& (instance_exists(player3))
+		&& (player3.partner_character == false)
+		&& (player4 > 0)
+		&& (instance_exists(player4))
+		&& (player4.partner_character == false)
 		{
 			xx = mean(player1.x, player2.x, player3.x, player4.x);
 			yy = mean(player1.y, player2.y, player3.y, player4.y);
@@ -583,14 +583,14 @@ if (save_level_as_png == false)
 		
 		/* 1, 2, 3 */
 		if (player1 > 0)
-		and (instance_exists(player1))
-		and (player1.partner_character == false)
-		and (player2 > 0)
-		and (instance_exists(player2))
-		and (player2.partner_character == false)
-		and (player3 > 0)
-		and (instance_exists(player3))
-		and (player3.partner_character == false)
+		&& (instance_exists(player1))
+		&& (player1.partner_character == false)
+		&& (player2 > 0)
+		&& (instance_exists(player2))
+		&& (player2.partner_character == false)
+		&& (player3 > 0)
+		&& (instance_exists(player3))
+		&& (player3.partner_character == false)
 		{
 			xx = mean(player1.x, player2.x, player3.x);
 			yy = mean(player1.y, player2.y, player3.y);
@@ -600,11 +600,11 @@ if (save_level_as_png == false)
 		
 		/* 1, 2 */
 		if (player1 > 0)
-		and (instance_exists(player1))
-		and (player1.partner_character == false)
-		and (player2 > 0)
-		and (instance_exists(player2))
-		and (player2.partner_character == false)
+		&& (instance_exists(player1))
+		&& (player1.partner_character == false)
+		&& (player2 > 0)
+		&& (instance_exists(player2))
+		&& (player2.partner_character == false)
 		{
 			xx = mean(player1.x, player2.x);
 			yy = mean(player1.y, player2.y);
@@ -614,11 +614,11 @@ if (save_level_as_png == false)
 		
 		/* 1, 3 */
 		if (player1 > 0)
-		and (instance_exists(player1))
-		and (player1.partner_character == false)
-		and (player3 > 0)
-		and (instance_exists(player3))
-		and (player3.partner_character == false)
+		&& (instance_exists(player1))
+		&& (player1.partner_character == false)
+		&& (player3 > 0)
+		&& (instance_exists(player3))
+		&& (player3.partner_character == false)
 		{
 			xx = mean(player1.x, player3.x);
 			yy = mean(player1.y, player3.y);
@@ -628,11 +628,11 @@ if (save_level_as_png == false)
 		
 		/* 1, 4 */
 		if (player1 > 0)
-		and (instance_exists(player1))
-		and (player1.partner_character == false)
-		and (player4 > 0)
-		and (instance_exists(player4))
-		and (player4.partner_character == false)
+		&& (instance_exists(player1))
+		&& (player1.partner_character == false)
+		&& (player4 > 0)
+		&& (instance_exists(player4))
+		&& (player4.partner_character == false)
 		{
 			xx = mean(player1.x, player4.x);
 			yy = mean(player1.y, player4.y);
@@ -642,11 +642,11 @@ if (save_level_as_png == false)
 		
 		/* 2, 3 */
 		if (player2 > 0)
-		and (instance_exists(player2))
-		and (player2.partner_character == false)
-		and (player3 > 0)
-		and (instance_exists(player3))
-		and (player3.partner_character == false)
+		&& (instance_exists(player2))
+		&& (player2.partner_character == false)
+		&& (player3 > 0)
+		&& (instance_exists(player3))
+		&& (player3.partner_character == false)
 		{
 			xx = mean(player2.x, player3.x);
 			yy = mean(player2.y, player3.y);
@@ -656,11 +656,11 @@ if (save_level_as_png == false)
 		
 		/* 2, 4 */
 		if (player1 > 0)
-		and (instance_exists(player2))
-		and (player2.partner_character == false)
-		and (player4 > 0)
-		and (instance_exists(player4))
-		and (player4.partner_character == false)
+		&& (instance_exists(player2))
+		&& (player2.partner_character == false)
+		&& (player4 > 0)
+		&& (instance_exists(player4))
+		&& (player4.partner_character == false)
 		{
 			xx = mean(player2.x, player4.x);
 			yy = mean(player2.y, player4.y);
@@ -670,11 +670,11 @@ if (save_level_as_png == false)
 		
 		/* 3, 4 */
 		if (player3 > 0)
-		and (instance_exists(player3))
-		and (player3.partner_character == false)
-		and (player4 > 0)
-		and (instance_exists(player4))
-		and (player4.partner_character == false)
+		&& (instance_exists(player3))
+		&& (player3.partner_character == false)
+		&& (player4 > 0)
+		&& (instance_exists(player4))
+		&& (player4.partner_character == false)
 		{
 			xx = mean(player3.x, player4.x);
 			yy = mean(player3.y, player4.y);
@@ -686,8 +686,8 @@ if (save_level_as_png == false)
 		#region /* Follow one player. In case something goes wrong, camera will always follow one player */
 		/* 1 */
 		if (player1 > 0)
-		and (instance_exists(player1))
-		and (player1.partner_character == false)
+		&& (instance_exists(player1))
+		&& (player1.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -695,7 +695,7 @@ if (save_level_as_png == false)
 			#region /* Tries to be a bit ahead of player */
 			xx = player1.x + player1.hspeed * 15;
 			if (player1.on_ground)
-			and (player1.vspeed >= 0)
+			&& (player1.vspeed >= 0)
 			{
 				yy = player1.y
 			}
@@ -705,7 +705,7 @@ if (save_level_as_png == false)
 				yy -= abs(player1.vspeed);
 			}
 			if (player1.wall_jump)
-			or (player1.climb)
+			|| (player1.climb)
 			{
 				yy = player1.y
 			}
@@ -717,10 +717,10 @@ if (save_level_as_png == false)
 			
 			#region /* Follow Player in y position when doing specific things */
 			if (player1.in_water)
-			or (player1.stick_to_wall)
-			or (player1.spring)
-			or (player1.climb)
-			or (player1.horizontal_rope_climb)
+			|| (player1.stick_to_wall)
+			|| (player1.spring)
+			|| (player1.climb)
+			|| (player1.horizontal_rope_climb)
 			{
 				if (player1.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
@@ -739,8 +739,8 @@ if (save_level_as_png == false)
 		
 		/* 2 */
 		if (player2 > 0)
-		and (instance_exists(player2))
-		and (player2.partner_character == false)
+		&& (instance_exists(player2))
+		&& (player2.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -748,7 +748,7 @@ if (save_level_as_png == false)
 			#region /* Tries to be a bit ahead of player */
 			xx = player2.x + player2.hspeed * 15;
 			if (player2.on_ground)
-			and (player2.vspeed >= 0)
+			&& (player2.vspeed >= 0)
 			{
 				yy = player2.y
 			}
@@ -758,7 +758,7 @@ if (save_level_as_png == false)
 				yy -= abs(player2.vspeed);
 			}
 			if (player2.wall_jump)
-			or (player2.climb)
+			|| (player2.climb)
 			{
 				yy = player2.y
 			}
@@ -770,10 +770,10 @@ if (save_level_as_png == false)
 			
 			#region /* Follow Player in y position when doing specific things */
 			if (player2.in_water)
-			or (player2.stick_to_wall)
-			or (player2.spring)
-			or (player2.climb)
-			or (player2.horizontal_rope_climb)
+			|| (player2.stick_to_wall)
+			|| (player2.spring)
+			|| (player2.climb)
+			|| (player2.horizontal_rope_climb)
 			{
 				if (player2.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
@@ -792,8 +792,8 @@ if (save_level_as_png == false)
 		
 		/* 3 */
 		if (player3 > 0)
-		and (instance_exists(player3))
-		and (player3.partner_character == false)
+		&& (instance_exists(player3))
+		&& (player3.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -801,7 +801,7 @@ if (save_level_as_png == false)
 			#region /* Tries to be a bit ahead of player */
 			xx = player3.x + player3.hspeed * 15;
 			if (player3.on_ground)
-			and (player3.vspeed >= 0)
+			&& (player3.vspeed >= 0)
 			{
 				yy = player3.y
 			}
@@ -811,7 +811,7 @@ if (save_level_as_png == false)
 				yy -= abs(player3.vspeed);
 			}
 			if (player3.wall_jump)
-			or (player3.climb)
+			|| (player3.climb)
 			{
 				yy = player3.y
 			}
@@ -823,10 +823,10 @@ if (save_level_as_png == false)
 			
 			#region /* Follow Player in y position when doing specific things */
 			if (player3.in_water)
-			or (player3.stick_to_wall)
-			or (player3.spring)
-			or (player3.climb)
-			or (player3.horizontal_rope_climb)
+			|| (player3.stick_to_wall)
+			|| (player3.spring)
+			|| (player3.climb)
+			|| (player3.horizontal_rope_climb)
 			{
 				if (player3.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
@@ -845,8 +845,8 @@ if (save_level_as_png == false)
 		
 		/* 4 */
 		if (player4 > 0)
-		and (instance_exists(player4))
-		and (player4.partner_character == false)
+		&& (instance_exists(player4))
+		&& (player4.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -854,7 +854,7 @@ if (save_level_as_png == false)
 			#region /* Tries to be a bit ahead of player */
 			xx = player4.x + player4.hspeed * 15;
 			if (player4.on_ground)
-			and (player4.vspeed >= 0)
+			&& (player4.vspeed >= 0)
 			{
 				yy = player4.y
 			}
@@ -864,7 +864,7 @@ if (save_level_as_png == false)
 				yy -= abs(player4.vspeed);
 			}
 			if (player4.wall_jump)
-			or (player4.climb)
+			|| (player4.climb)
 			{
 				yy = player4.y
 			}
@@ -876,10 +876,10 @@ if (save_level_as_png == false)
 			
 			#region /* Follow Player in y position when doing specific things */
 			if (player4.in_water)
-			or (player4.stick_to_wall)
-			or (player4.spring)
-			or (player4.climb)
-			or (player4.horizontal_rope_climb)
+			|| (player4.stick_to_wall)
+			|| (player4.spring)
+			|| (player4.climb)
+			|| (player4.horizontal_rope_climb)
 			{
 				if (player4.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
@@ -905,18 +905,18 @@ if (save_level_as_png == false)
 		
 		#region /* Zoom out the view when players are going outside view */
 		if (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
-		and (fps >= global.max_fps)
-		or (instance_nearest(x, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
-		and (fps >= global.max_fps)
-		or (instance_nearest(0, room_height * 0.5, obj_player).x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 - 320)
-		and (instance_nearest(room_width, room_height * 0.5, obj_player).x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + 320)
-		and (fps >= global.max_fps)
-		or (instance_nearest(room_width * 0.5, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 - 320)
-		and (instance_nearest(room_width * 0.5, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 + 320)
-		and (fps >= global.max_fps)
+		&& (fps >= global.max_fps)
+		|| (instance_nearest(x, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
+		&& (fps >= global.max_fps)
+		|| (instance_nearest(0, room_height * 0.5, obj_player).x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 - 320)
+		&& (instance_nearest(room_width, room_height * 0.5, obj_player).x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + 320)
+		&& (fps >= global.max_fps)
+		|| (instance_nearest(room_width * 0.5, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 - 320)
+		&& (instance_nearest(room_width * 0.5, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 + 320)
+		&& (fps >= global.max_fps)
 		{
 			if (camera_get_view_height(view_camera[view_current]) < room_height)
-			and (camera_get_view_width(view_camera[view_current]) < room_width)
+			&& (camera_get_view_width(view_camera[view_current]) < room_width)
 			{
 				view_wview_lerp = lerp(view_wview_lerp, 10, 0.005);
 				view_hview_lerp = lerp(view_hview_lerp, 10, 0.005);
@@ -943,10 +943,10 @@ if (save_level_as_png == false)
 		
 		#region /* Zoom In */
 		if (instance_exists(obj_player))
-		and (instance_nearest(room_width, y, obj_player).goal)
-		and (global.time_countdown_bonus <= 0)
+		&& (instance_nearest(room_width, y, obj_player).goal)
+		&& (global.time_countdown_bonus <= 0)
 		
-		or (global.iris_zoom_in) /* Zoom In Global Switch */
+		|| (global.iris_zoom_in) /* Zoom In Global Switch */
 		{
 			if (iris_zoom == 1)
 			{
@@ -1004,7 +1004,7 @@ key_player3_sprint_toggle_pressed = scr_key_initialize(key_player3_sprint_toggle
 key_player4_sprint_toggle_pressed = scr_key_initialize(key_player4_sprint_toggle_pressed, 1, 4, action.sprint_toggle);
 
 if (key_player1_sprint_toggle_pressed)
-and (!instance_exists(obj_pause))
+&& (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 100;
 	show_sprint_toggle_for_player2 = 0;
@@ -1020,7 +1020,7 @@ and (!instance_exists(obj_pause))
 	}
 }
 if (key_player2_sprint_toggle_pressed)
-and (!instance_exists(obj_pause))
+&& (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
 	show_sprint_toggle_for_player2 = 100;
@@ -1036,7 +1036,7 @@ and (!instance_exists(obj_pause))
 	}
 }
 if (key_player3_sprint_toggle_pressed)
-and (!instance_exists(obj_pause))
+&& (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
 	show_sprint_toggle_for_player2 = 0;
@@ -1052,7 +1052,7 @@ and (!instance_exists(obj_pause))
 	}
 }
 if (key_player4_sprint_toggle_pressed)
-and (!instance_exists(obj_pause))
+&& (!instance_exists(obj_pause))
 {
 	show_sprint_toggle_for_player1 = 0;
 	show_sprint_toggle_for_player2 = 0;
@@ -1072,12 +1072,12 @@ and (!instance_exists(obj_pause))
 #region /* Step Convention Mode */
 if (global.convention_mode)
 {
-	reset_game_if_no_interactivity += 1;
-	reset_game_if_no_interactivity_second_countdown_timer += 1;
+	reset_game_if_no_interactivity ++;
+	reset_game_if_no_interactivity_second_countdown_timer ++;
 	if (reset_game_if_no_interactivity_second_countdown_timer >= 60)
 	{
 		reset_game_if_no_interactivity_second_countdown_timer = 0;
-		reset_game_if_no_interactivity_second_countdown -= 1;
+		reset_game_if_no_interactivity_second_countdown --;
 	}
 	if (reset_game_if_no_interactivity >= 3600)
 	{
@@ -1090,7 +1090,7 @@ if (global.convention_mode)
 
 #region /* If HUD show timer is set to always hide */
 if (global.hud_hide_time <= 0)
-or (show_letterbox > 0)
+|| (show_letterbox > 0)
 {
 	hud_show_lives_timer = false;
 	hud_show_deaths_timer = false;
@@ -1130,19 +1130,19 @@ else
 {
 	if (hud_show_lives_timer > 0)
 	{
-		hud_show_lives_timer -= 1;
+		hud_show_lives_timer --;
 	}
 	if (hud_show_deaths_timer > 0)
 	{
-		hud_show_deaths_timer -= 1;
+		hud_show_deaths_timer --;
 	}
 	if (hud_show_big_collectibles_timer > 0)
 	{
-		hud_show_big_collectibles_timer -= 1;
+		hud_show_big_collectibles_timer --;
 	}
 	if (hud_show_score_timer > 0)
 	{
-		hud_show_score_timer -= 1;
+		hud_show_score_timer --;
 	}
 }
 
@@ -1177,7 +1177,7 @@ if (global.hud_hide_time > 0)
 	
 	#region /* Show Deaths y position */
 	if (hud_show_deaths_timer > 0)
-	and (global.show_deaths_counter)
+	&& (global.show_deaths_counter)
 	{
 		if (hud_show_lives_y > 0)
 		{
@@ -1198,7 +1198,7 @@ if (global.hud_hide_time > 0)
 	if (hud_show_big_collectibles_timer > 0) /* Make sure it says BIG collectibles */
 	{
 		if (hud_show_lives_y > 0)
-		and (hud_show_deaths_y > 0)
+		&& (hud_show_deaths_y > 0)
 		{
 			hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 110, 0.1);
 		}
@@ -1221,37 +1221,37 @@ if (global.hud_hide_time > 0)
 	#region /* Show Basic Collectible y position */
 	if (hud_show_basic_collectibles_timer > 0) /* Make sure it says BASIC collectibles */
 	{
-		hud_show_basic_collectibles_timer -= 1;
+		hud_show_basic_collectibles_timer --;
 		
 		if (hud_show_lives_y > 0)
-		and (hud_show_deaths_y > 0)
-		and (hud_show_big_collectibles_y > 0)
+		&& (hud_show_deaths_y > 0)
+		&& (hud_show_big_collectibles_y > 0)
 		{
 			hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 150, 0.1);
 		}
 		else
 		if (hud_show_lives_y < 0)
-		and (hud_show_deaths_y > 0)
-		and (hud_show_big_collectibles_y > 0)
+		&& (hud_show_deaths_y > 0)
+		&& (hud_show_big_collectibles_y > 0)
 		or(hud_show_lives_y > 0)
-		and (hud_show_deaths_y < 0)
-		and (hud_show_big_collectibles_y > 0)
+		&& (hud_show_deaths_y < 0)
+		&& (hud_show_big_collectibles_y > 0)
 		or(hud_show_lives_y > 0)
-		and (hud_show_deaths_y > 0)
-		and (hud_show_big_collectibles_y < 0)
+		&& (hud_show_deaths_y > 0)
+		&& (hud_show_big_collectibles_y < 0)
 		{
 			hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 110, 0.1);
 		}
 		else
 		if (hud_show_lives_y > 0)
-		and (hud_show_deaths_y < 0)
-		and (hud_show_big_collectibles_y < 0)
+		&& (hud_show_deaths_y < 0)
+		&& (hud_show_big_collectibles_y < 0)
 		or(hud_show_lives_y < 0)
-		and (hud_show_deaths_y > 0)
-		and (hud_show_big_collectibles_y < 0)
+		&& (hud_show_deaths_y > 0)
+		&& (hud_show_big_collectibles_y < 0)
 		or(hud_show_lives_y < 0)
-		and (hud_show_deaths_y < 0)
-		and (hud_show_big_collectibles_y > 0)
+		&& (hud_show_deaths_y < 0)
+		&& (hud_show_big_collectibles_y > 0)
 		{
 			hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 64, 0.1);
 		}
@@ -1284,17 +1284,17 @@ if (global.hud_hide_time > 0)
 
 #region /* Show Controls */
 if (os_type != os_ios)
-and (os_type != os_android)
-and (!instance_exists(obj_pause))
+&& (os_type != os_android)
+&& (!instance_exists(obj_pause))
 {
 	
 	#region /* Show Multiplayer Controls */
 	
 	#region /* Y position of show controls for each player */
 	if (player_show_controls_alpha[1] > 0)
-	and (player_show_controls_alpha[2] <= 0)
-	and (player_show_controls_alpha[3] <= 0)
-	and (player_show_controls_alpha[4] <= 0)
+	&& (player_show_controls_alpha[2] <= 0)
+	&& (player_show_controls_alpha[3] <= 0)
+	&& (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, 32, 0.1);
 		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
@@ -1303,9 +1303,9 @@ and (!instance_exists(obj_pause))
 	}
 	else
 	if (player_show_controls_alpha[1] <= 0)
-	and (player_show_controls_alpha[2] > 0)
-	and (player_show_controls_alpha[3] <= 0)
-	and (player_show_controls_alpha[4] <= 0)
+	&& (player_show_controls_alpha[2] > 0)
+	&& (player_show_controls_alpha[3] <= 0)
+	&& (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 		show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
@@ -1314,9 +1314,9 @@ and (!instance_exists(obj_pause))
 	}
 	else
 	if (player_show_controls_alpha[1] <= 0)
-	and (player_show_controls_alpha[2] <= 0)
-	and (player_show_controls_alpha[3] > 0)
-	and (player_show_controls_alpha[4] <= 0)
+	&& (player_show_controls_alpha[2] <= 0)
+	&& (player_show_controls_alpha[3] > 0)
+	&& (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
@@ -1325,9 +1325,9 @@ and (!instance_exists(obj_pause))
 	}
 	else
 	if (player_show_controls_alpha[1] <= 0)
-	and (player_show_controls_alpha[2] <= 0)
-	and (player_show_controls_alpha[3] <= 0)
-	and (player_show_controls_alpha[4] > 0)
+	&& (player_show_controls_alpha[2] <= 0)
+	&& (player_show_controls_alpha[3] <= 0)
+	&& (player_show_controls_alpha[4] > 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
@@ -1336,9 +1336,9 @@ and (!instance_exists(obj_pause))
 	}
 	else
 	if (player_show_controls_alpha[1] > 0)
-	and (player_show_controls_alpha[2] > 0)
-	and (player_show_controls_alpha[3] <= 0)
-	and (player_show_controls_alpha[4] <= 0)
+	&& (player_show_controls_alpha[2] > 0)
+	&& (player_show_controls_alpha[3] <= 0)
+	&& (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
 		show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
@@ -1347,9 +1347,9 @@ and (!instance_exists(obj_pause))
 	}
 	else
 	if (player_show_controls_alpha[1] > 0)
-	and (player_show_controls_alpha[2] > 0)
-	and (player_show_controls_alpha[3] > 0)
-	and (player_show_controls_alpha[4] <= 0)
+	&& (player_show_controls_alpha[2] > 0)
+	&& (player_show_controls_alpha[3] > 0)
+	&& (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, 116, 0.1);
 		show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
@@ -1358,9 +1358,9 @@ and (!instance_exists(obj_pause))
 	}
 	else
 	if (player_show_controls_alpha[1] > 0)
-	and (player_show_controls_alpha[2] <= 0)
-	and (player_show_controls_alpha[3] > 0)
-	and (player_show_controls_alpha[4] <= 0)
+	&& (player_show_controls_alpha[2] <= 0)
+	&& (player_show_controls_alpha[3] > 0)
+	&& (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
 		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
@@ -1369,9 +1369,9 @@ and (!instance_exists(obj_pause))
 	}
 	else
 	if (player_show_controls_alpha[1] <= 0)
-	and (player_show_controls_alpha[2] > 0)
-	and (player_show_controls_alpha[3] > 0)
-	and (player_show_controls_alpha[4] <= 0)
+	&& (player_show_controls_alpha[2] > 0)
+	&& (player_show_controls_alpha[3] > 0)
+	&& (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 		show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
@@ -1380,9 +1380,9 @@ and (!instance_exists(obj_pause))
 	}
 	else
 	if (player_show_controls_alpha[1] <= 0)
-	and (player_show_controls_alpha[2] <= 0)
-	and (player_show_controls_alpha[3] <= 0)
-	and (player_show_controls_alpha[4] <= 0)
+	&& (player_show_controls_alpha[2] <= 0)
+	&& (player_show_controls_alpha[3] <= 0)
+	&& (player_show_controls_alpha[4] <= 0)
 	{
 		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
 		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
@@ -1406,7 +1406,7 @@ and (!instance_exists(obj_pause))
 #region /* Show what input is used */
 if (show_controller_input_change_prompt > 0)
 {
-	show_controller_input_change_prompt -= 1;
+	show_controller_input_change_prompt --;
 	show_keyboard_and_mouse_input_change_prompt = 0;
 	show_controller_input_change_prompt_y = lerp(show_controller_input_change_prompt_y, -400, 0.1);
 }
@@ -1417,7 +1417,7 @@ else
 
 if (show_keyboard_and_mouse_input_change_prompt > 0)
 {
-	show_keyboard_and_mouse_input_change_prompt -= 1;
+	show_keyboard_and_mouse_input_change_prompt --;
 	show_controller_input_change_prompt = 0;
 	show_keyboard_and_mouse_input_change_prompt_y = lerp(show_keyboard_and_mouse_input_change_prompt_y, -400, 0.1);
 }
@@ -1429,8 +1429,8 @@ else
 
 #region /* Letterboxing during cutscenes (when the player object is absent) */
 if (!instance_exists(obj_player))
-or (instance_exists(obj_player))
-and (obj_player.can_move == false)
+|| (instance_exists(obj_player))
+&& (obj_player.can_move == false)
 {
 	letterbox_top_y = lerp(letterbox_top_y, + 64, 0.1);
 	letterbox_bottom_y = lerp(letterbox_bottom_y, display_get_gui_height() - 64, 0.1);
@@ -1442,19 +1442,19 @@ else
 	letterbox_bottom_y = lerp(letterbox_bottom_y, display_get_gui_height(), 0.1);
 	if (show_letterbox > 0)
 	{
-		show_letterbox -= 1;
+		show_letterbox --;
 	}
 }
 #endregion /* Letterboxing during cutscenes (when the player object is absent) END */
 
 #region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
 if (iris_xscale <= 1)
-and (iris_zoom != 0)
-and (delay <= 1)
-or (instance_exists(obj_player_lose))
-and (obj_player_lose.iris_xscale <= 1)
-and (obj_player_lose.iris_zoom != 0)
-and (delay <= 1)
+&& (iris_zoom != 0)
+&& (delay <= 1)
+|| (instance_exists(obj_player_lose))
+&& (obj_player_lose.iris_xscale <= 1)
+&& (obj_player_lose.iris_zoom != 0)
+&& (delay <= 1)
 {
 	black_screen_gui_alpha = lerp(black_screen_gui_alpha, 1, 0.1);
 }

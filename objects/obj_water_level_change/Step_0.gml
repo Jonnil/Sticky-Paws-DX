@@ -14,12 +14,12 @@ if (water_level_change_speed = 2)
 }
 
 if (asset_get_type("obj_player") == asset_object)
-and (asset_get_type("obj_water_level") == asset_object)
-and (asset_get_type("obj_water_level_change") == asset_object)
-and (instance_exists(obj_player))
-and (instance_exists(obj_water_level))
-and (instance_exists(obj_water_level_change))
-and (place_meeting(x, y, obj_player))
+&& (asset_get_type("obj_water_level") == asset_object)
+&& (asset_get_type("obj_water_level_change") == asset_object)
+&& (instance_exists(obj_player))
+&& (instance_exists(obj_water_level))
+&& (instance_exists(obj_water_level_change))
+&& (place_meeting(x, y, obj_player))
 {
 	with (obj_water_level)
 	{

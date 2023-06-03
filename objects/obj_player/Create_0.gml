@@ -10,7 +10,7 @@ can_create_follow_mouse = true;
 
 #region /* Create object that always follows mouse */
 if (can_create_follow_mouse)
-and (!instance_exists(obj_follow_mouse))
+&& (!instance_exists(obj_follow_mouse))
 {
 	instance_create_depth(mouse_x, mouse_y, 0, obj_follow_mouse);
 }
@@ -32,25 +32,25 @@ partner_character = false;
 if (instance_exists(obj_camera))
 {
 	if (variable_instance_exists(obj_camera, "player1"))
-	and (instance_exists(obj_camera.player1))
+	&& (instance_exists(obj_camera.player1))
 	{
 		partner_follow_player = obj_camera.player1;
 	}
 	else
 	if (variable_instance_exists(obj_camera, "player2"))
-	and (instance_exists(obj_camera.player2))
+	&& (instance_exists(obj_camera.player2))
 	{
 		partner_follow_player = obj_camera.player2;
 	}
 	else
 	if (variable_instance_exists(obj_camera, "player3"))
-	and (instance_exists(obj_camera.player3))
+	&& (instance_exists(obj_camera.player3))
 	{
 		partner_follow_player = obj_camera.player3;
 	}
 	else
 	if (variable_instance_exists(obj_camera, "player4"))
-	and (instance_exists(obj_camera.player4))
+	&& (instance_exists(obj_camera.player4))
 	{
 		partner_follow_player = obj_camera.player4;
 	}
@@ -538,23 +538,23 @@ have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You
 
 #region /* Custom Music */
 if (asset_get_type("room_title") == asset_room)
-and (room != room_title)
+&& (room != room_title)
 {
 	
 	#region /* Update Level Clear Melody */
 	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
-	and (global.character_select_in_this_menu == "main_game")
-	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
-	and (global.character_select_in_this_menu == "level_editor")
-	and (global.create_level_from_template)
+	&& (global.character_select_in_this_menu == "main_game")
+	|| (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
+	&& (global.character_select_in_this_menu == "level_editor")
+	&& (global.create_level_from_template)
 	{
 		level_clear_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg");
 	}
 	else
 	/* OGG small letter File */
 	if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg"))
-	and (global.character_select_in_this_menu == "level_editor")
+	&& (global.character_select_in_this_menu == "level_editor")
 	{
 		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
 	}
@@ -577,17 +577,17 @@ and (room != room_title)
 	#region /* Update Player Lose Melody */
 	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg"))
-	and (global.character_select_in_this_menu == "main_game")
-	or (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg"))
-	and (global.character_select_in_this_menu == "level_editor")
-	and (global.create_level_from_template)
+	&& (global.character_select_in_this_menu == "main_game")
+	|| (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg"))
+	&& (global.character_select_in_this_menu == "level_editor")
+	&& (global.create_level_from_template)
 	{
 		player_lose_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg");
 	}
 	else
 	/* OGG small letter File */
 	if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/lose_melody.ogg"))
-	and (global.character_select_in_this_menu == "level_editor")
+	&& (global.character_select_in_this_menu == "level_editor")
 	{
 		player_lose_melody = audio_create_stream(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
 	}
@@ -743,8 +743,8 @@ active_jump = false;
 
 #region /* Load Checkpoint Direction */
 if (asset_get_type("room_leveleditor") == asset_room)
-and (room == room_leveleditor)
-and (global.character_select_in_this_menu == "main_game")
+&& (room == room_leveleditor)
+&& (global.character_select_in_this_menu == "main_game")
 {
 	var uppercase_level_name;
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -753,12 +753,12 @@ and (global.character_select_in_this_menu == "main_game")
 	
 	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 else
 if (asset_get_type("room_leveleditor") == asset_room)
-and (room == room_leveleditor)
-and (global.character_select_in_this_menu == "level_editor")
+&& (room == room_leveleditor)
+&& (global.character_select_in_this_menu == "level_editor")
 {
 	
 	var uppercase_level_name;
@@ -768,6 +768,6 @@ and (global.character_select_in_this_menu == "level_editor")
 	
 	ini_open(working_directory + "/save_files/custom_level_save.ini");
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 #endregion /* Load Checkpoint Direction END */

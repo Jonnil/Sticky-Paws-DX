@@ -7,7 +7,7 @@ function scr_load_custom_level_initializing()
 	
 	first_level = string(file_find_first(working_directory + "/custom_levels/*", fa_directory))
 	if (directory_exists(working_directory + "/custom_levels/" + first_level))
-	and (file_exists(working_directory + "/custom_levels/" + first_level + "/data/level_information.ini"))
+	&& (file_exists(working_directory + "/custom_levels/" + first_level + "/data/level_information.ini"))
 	{
 		
 		#region /* Update Thumbnail */

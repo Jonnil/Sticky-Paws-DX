@@ -2,13 +2,13 @@ x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_ca
 
 #region /* Drag Object */
 if (instance_exists(obj_leveleditor))
-and (obj_leveleditor.pause == false)
+&& (obj_leveleditor.pause == false)
 {
 	if (!keyboard_check(vk_space))
-	and (!mouse_check_button(mb_middle))
+	&& (!mouse_check_button(mb_middle))
 	{
 		if (mouse_check_button_pressed(mb_left))
-		or (obj_leveleditor.key_a_pressed)
+		|| (obj_leveleditor.key_a_pressed)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
@@ -29,7 +29,7 @@ and (obj_leveleditor.pause == false)
 	
 	#region /* Release the object */
 	if (mouse_check_button_released(mb_left))
-	or (obj_leveleditor.key_a_released)
+	|| (obj_leveleditor.key_a_released)
 	{
 		if (drag_object)
 		{
@@ -45,7 +45,7 @@ and (obj_leveleditor.pause == false)
 
 if drag_release_timer > 0
 {
-	drag_release_timer -= 1;
+	drag_release_timer --;
 }
 else
 {
@@ -63,16 +63,16 @@ if (y > room_height)
 #endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */
 
 if (global.play_edited_level)
-or (global.actually_play_edited_level)
+|| (global.actually_play_edited_level)
 {
 	instance_create_depth(x, y, 0, obj_water_level);
 	instance_destroy();
 }
 
 if (instance_exists(obj_level_height))
-and (drag_object == false)
-and (obj_level_height.drag_object == false)
-and (obj_level_height.y = y)
+&& (drag_object == false)
+&& (obj_level_height.drag_object == false)
+&& (obj_level_height.y = y)
 {
 	y += 32;
 }

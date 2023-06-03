@@ -1,13 +1,13 @@
 /* Draw Self */
 draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
-redblinktimer += 1;
+redblinktimer ++;
 if (redblinktimer > 60)
 {
 	redblinktimer = 0;
 }
 if (redblinktimer > 55)
-and (hp <= 1)
+&& (hp <= 1)
 {
 	draw_sprite_ext(sprite_index, image_index, x + random_range(- 8, + 8), y + random_range(- 8, + 8), draw_xscale * sign(image_xscale), draw_yscale, angle, c_red, image_alpha);
 }
@@ -45,7 +45,7 @@ else
 	}
 }
 if (asset_get_type("spr_arrow_sign") == asset_sprite)
-and (can_jump_on_head)
+&& (can_jump_on_head)
 {
 	arrow_xscale = scr_wave(1, 0, 1, 0);
 	draw_sprite_ext(spr_arrow_sign, image_index, x, y - 32, 1, arrow_xscale, 270, image_blend, 1);

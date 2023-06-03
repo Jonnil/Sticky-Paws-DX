@@ -1,28 +1,14 @@
 function scr_character_manage_menu_draw()
 {
-	var uppercase_character_name;
-	uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])), 1));
-	uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))) - 1);
-	var character_name = string(uppercase_character_name);
-	
-	var skin0_required = false;
-	if (!directory_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin0"))
-	and (skin0_required)
-	{
-		var skin0_warning = true;
-	}
-	else
-	{
-		var skin0_warning = false;
-	}
+	var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]));
 	
 	if (menu == "click_copy_character")
-	or (menu == "click_delete_character")
-	or (menu == "click_delete_character_no")
-	or (menu == "click_delete_character_yes")
-	or (menu == "click_upload_character")
-	or (menu == "open_folder_copy_character")
-	or (menu == "back_from_copy_character")
+	|| (menu == "click_delete_character")
+	|| (menu == "click_delete_character_no")
+	|| (menu == "click_delete_character_yes")
+	|| (menu == "click_upload_character")
+	|| (menu == "open_folder_copy_character")
+	|| (menu == "back_from_copy_character")
 	{
 		
 		#region /* Draw Character Portrait for Player 1 */
@@ -36,38 +22,38 @@ function scr_character_manage_menu_draw()
 	
 		#region /* Key Left */
 		if (global.character_index[0] > 0)
-		and (can_navigate)
-		and (menu != "click_delete_character_no")
-		and (menu != "click_delete_character_yes")
+		&& (can_navigate)
+		&& (menu != "click_delete_character_no")
+		&& (menu != "click_delete_character_yes")
 		{
 			if (gamepad_is_connected(global.player1_slot))
-			and (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "controller")
 			{
-				scr_draw_gamepad_buttons(gp_padl, display_get_gui_width() * 0.5 + player1_display_x - arrow_offset, display_get_gui_height() * 0.5, 0.5, c_white, 1);
+				scr_draw_gamepad_buttons(gp_padl, display_get_gui_width() * 0.5 + player_display_x[1] - arrow_offset, display_get_gui_height() * 0.5, 0.5, c_white, 1);
 			}
 			else
 			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
 				if (global.player_[inp.key][1][1][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.left], display_get_gui_width() * 0.5 + player1_display_x - arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.left], display_get_gui_width() * 0.5 + player_display_x[1] - arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
 				if (global.player_[inp.key][1][2][action.left] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.left], display_get_gui_width() * 0.5 + player1_display_x - arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.left], display_get_gui_width() * 0.5 + player_display_x[1] - arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_keyboard_keys_none, 0, display_get_gui_width() * 0.5 + player1_display_x - arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys_none, 0, display_get_gui_width() * 0.5 + player_display_x[1] - arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
 				}
 			}
 		
-			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 + player1_display_x - arrow_offset - 16, display_get_gui_height() * 0.5 - 16, display_get_gui_width() * 0.5 + player1_display_x - arrow_offset + 16, display_get_gui_height() * 0.5 + 16))
-			and (global.controls_used_for_menu_navigation == "mouse")
+			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 + player_display_x[1] - arrow_offset - 16, display_get_gui_height() * 0.5 - 16, display_get_gui_width() * 0.5 + player_display_x[1] - arrow_offset + 16, display_get_gui_height() * 0.5 + 16))
+			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
 				draw_set_alpha(0.5);
-				draw_rectangle_color(display_get_gui_width() * 0.5 + player1_display_x - arrow_offset - 16, display_get_gui_height() * 0.5 - 16, display_get_gui_width() * 0.5 + player1_display_x - arrow_offset + 16, display_get_gui_height() * 0.5 + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(display_get_gui_width() * 0.5 + player_display_x[1] - arrow_offset - 16, display_get_gui_height() * 0.5 - 16, display_get_gui_width() * 0.5 + player_display_x[1] - arrow_offset + 16, display_get_gui_height() * 0.5 + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
@@ -75,38 +61,38 @@ function scr_character_manage_menu_draw()
 	
 		#region /* Key Right */
 		if (global.character_index[0] < ds_list_size(global.all_loaded_characters) - 1)
-		and (can_navigate)
-		and (menu != "click_delete_character_no")
-		and (menu != "click_delete_character_yes")
+		&& (can_navigate)
+		&& (menu != "click_delete_character_no")
+		&& (menu != "click_delete_character_yes")
 		{
 			if (gamepad_is_connected(global.player1_slot))
-			and (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "controller")
 			{
-				scr_draw_gamepad_buttons(gp_padr, display_get_gui_width() * 0.5 + player1_display_x + arrow_offset, display_get_gui_height() * 0.5, 0.5, c_white, 1);
+				scr_draw_gamepad_buttons(gp_padr, display_get_gui_width() * 0.5 + player_display_x[1] + arrow_offset, display_get_gui_height() * 0.5, 0.5, c_white, 1);
 			}
 			else
 			if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 			{
 				if (global.player_[inp.key][1][1][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.right], display_get_gui_width() * 0.5 + player1_display_x + arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.right], display_get_gui_width() * 0.5 + player_display_x[1] + arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
 				if (global.player_[inp.key][1][2][action.right] > noone)
 				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.right], display_get_gui_width() * 0.5 + player1_display_x + arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.right], display_get_gui_width() * 0.5 + player_display_x[1] + arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_keyboard_keys_none, 0, display_get_gui_width() * 0.5 + player1_display_x + arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys_none, 0, display_get_gui_width() * 0.5 + player_display_x[1] + arrow_offset, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
 				}
 			}
 		
-			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 + player1_display_x + arrow_offset - 16, display_get_gui_height() * 0.5 - 16, display_get_gui_width() * 0.5 + player1_display_x + arrow_offset + 16, display_get_gui_height() * 0.5 + 16))
-			and (global.controls_used_for_menu_navigation == "mouse")
+			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 + player_display_x[1] + arrow_offset - 16, display_get_gui_height() * 0.5 - 16, display_get_gui_width() * 0.5 + player_display_x[1] + arrow_offset + 16, display_get_gui_height() * 0.5 + 16))
+			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
 				draw_set_alpha(0.5);
-				draw_rectangle_color(display_get_gui_width() * 0.5 + player1_display_x + arrow_offset - 16, display_get_gui_height() * 0.5 - 16, display_get_gui_width() * 0.5 + player1_display_x + arrow_offset + 16, display_get_gui_height() * 0.5 + 16, c_white, c_white, c_white, c_white, false);
+				draw_rectangle_color(display_get_gui_width() * 0.5 + player_display_x[1] + arrow_offset - 16, display_get_gui_height() * 0.5 - 16, display_get_gui_width() * 0.5 + player_display_x[1] + arrow_offset + 16, display_get_gui_height() * 0.5 + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
@@ -163,31 +149,28 @@ function scr_character_manage_menu_draw()
 		if string_ends_with(string(character_name), " - Copy")
 		{
 			/* Show that the character is a copy */
-			scr_draw_text_outlined(display_get_gui_width() * 0.5 + player1_display_x, character_name_y + scr_wave(0, 2, 0.5, 0), string(character_name), global.default_text_size, c_menu_outline, c_lime, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 + player_display_x[1], character_name_y + scr_wave(0, 2, 0.5, 0), string(character_name), global.default_text_size, c_menu_outline, c_lime, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5 + player1_display_x, character_name_y, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 + player_display_x[1], character_name_y, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 		
 		if (can_navigate)
 		{
 			if (menu == "click_copy_character")
-			or (menu == "click_delete_character")
-			or (menu == "click_upload_character")
-			or (menu == "open_folder_copy_character")
-			or (menu == "back_from_copy_character")
+			|| (menu == "click_delete_character")
+			|| (menu == "click_upload_character")
+			|| (menu == "open_folder_copy_character")
+			|| (menu == "back_from_copy_character")
 			{
 				draw_menu_button(display_get_gui_width() * 0.5 - 185, copy_character_y, l10n_text("Copy Character"), "click_copy_character", "click_copy_character"); /* Copy Characters */
 				if (selecting_official_character == false)
 				{
 					draw_menu_button(display_get_gui_width() * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no"); /* Copy Characters */
 					draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, delete_character_y + 21, 1, 1, 0, c_white, 1);
-					if (skin0_warning == false)
-					{
-						draw_menu_button(display_get_gui_width() * 0.5 - 185, upload_character_y, l10n_text("Upload Character"), "click_upload_character", "click_upload_character"); /* Copy Characters */
-						draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 - 185 + 16, upload_character_y + 21, 1, 1, 0, c_white, 1);
-					}
+					draw_menu_button(display_get_gui_width() * 0.5 - 185, upload_character_y, l10n_text("Upload Character"), "click_upload_character", "click_upload_character"); /* Copy Characters */
+					draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 - 185 + 16, upload_character_y + 21, 1, 1, 0, c_white, 1);
 				}
 				
 				#region /* Open Character Folder */
@@ -212,30 +195,14 @@ function scr_character_manage_menu_draw()
 					{
 						scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
 					}
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				#endregion /* Draw who made the character END */
-				
-				#region /* Draw error message if character doesn't have a "Skin" folder */
-				if (skin0_warning)
-				and (selecting_official_character == false)
-				{
-					draw_set_alpha(0.5);
-					draw_rectangle_color(display_get_gui_width() * 0.5 - 520, 128 + 16, display_get_gui_width() * 0.5 + 520, 128 + (32 * 5), c_black, c_black, c_black, c_black, false);
-					draw_set_alpha(1);
-					draw_set_halign(fa_center);
-					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 1), l10n_text("There is no skin0 folder in sprites folder for this character!"), global.default_text_size, c_black, c_white, 1);
-					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 1), l10n_text("There is no skin0 folder in sprites folder for this character!"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
-					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 2), l10n_text("To optimize the sprite loading,"), global.default_text_size, c_black, c_white, 1);
-					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 3), l10n_text("all character sprites need to be in skin folders,"), global.default_text_size, c_black, c_white, 1);
-					scr_draw_text_outlined(display_get_gui_width() * 0.5, 128 + (32 * 4), l10n_text("even if you only have 1 set of sprites"), global.default_text_size, c_black, c_white, 1);
-				}
-				#endregion /* Draw error message if character doesn't have a "Skin" folder END */
 				
 			}
 			else
 			if (menu == "click_delete_character_no")
-			or (menu == "click_delete_character_yes")
+			|| (menu == "click_delete_character_yes")
 			{
 				var delete_character_no_y = display_get_gui_height() - (42 * 3);
 				var delete_character_yes_y = display_get_gui_height() - (42 * 2);
@@ -267,7 +234,7 @@ function scr_character_manage_menu_draw()
 	
 	#region /* Upload Character Menu */
 	if (menu == "upload_yes_character")
-	or (menu == "upload_no_character")
+	|| (menu == "upload_no_character")
 	{
 		var upload_name_question_y = 432;
 		var upload_character_no_y = 532;
@@ -293,7 +260,7 @@ function scr_character_manage_menu_draw()
 		
 		#region /* Upload Character No */
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, upload_character_no_y - 42, display_get_gui_width() * 0.5 + 370, upload_character_no_y + 42))
-		and (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (menu_delay == 0)
 			{
@@ -308,9 +275,9 @@ function scr_character_manage_menu_draw()
 		else
 		{
 			if (menu == "upload_no_character")
-			and (global.controls_used_for_menu_navigation == "keyboard")
-			or (menu == "upload_no_character")
-			and (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "keyboard")
+			|| (menu == "upload_no_character")
+			&& (global.controls_used_for_menu_navigation == "controller")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 - 370 - 32, upload_character_no_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 + 370 + 32, upload_character_no_y, 1, 1, 180, c_white, 1);
@@ -331,7 +298,7 @@ function scr_character_manage_menu_draw()
 		if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
 		{
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, upload_character_yes_y - 42, display_get_gui_width() * 0.5 + 370, upload_character_yes_y + 42))
-			and (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
 				if (menu_delay == 0)
 				{
@@ -346,9 +313,9 @@ function scr_character_manage_menu_draw()
 			else
 			{
 				if (menu == "upload_yes_character")
-				and (global.controls_used_for_menu_navigation == "keyboard")
-				or (menu == "upload_yes_character")
-				and (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "keyboard")
+				|| (menu == "upload_yes_character")
+				&& (global.controls_used_for_menu_navigation == "controller")
 				{
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 - 370 - 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 + 370 + 32, upload_character_yes_y, 1, 1, 180, c_white, 1);
@@ -373,7 +340,7 @@ function scr_character_manage_menu_draw()
 		
 		#region /* Return to game */
 		if (key_b_pressed)
-		and (menu_delay == 0)
+		&& (menu_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "click_upload_character"; /* Return to previous menu */
@@ -384,10 +351,10 @@ function scr_character_manage_menu_draw()
 		if (menu == "upload_no_character")
 		{
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, upload_character_no_y - 42, display_get_gui_width() * 0.5 + 370, upload_character_no_y + 42))
-			and (mouse_check_button_released(mb_left))
-			and (menu_delay == 0)
-			or (key_a_pressed)
-			and (menu_delay == 0)
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0)
+			|| (key_a_pressed)
+			&& (menu_delay == 0)
 			{
 				menu_delay = 3;
 				menu = "click_upload_character"; /* Return to previous menu */
@@ -397,10 +364,10 @@ function scr_character_manage_menu_draw()
 		if (menu == "upload_yes_character")
 		{
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, upload_character_yes_y - 42, display_get_gui_width() * 0.5 + 370, upload_character_yes_y + 42))
-			and (mouse_check_button_released(mb_left))
-			and (menu_delay == 0)
-			or (key_a_pressed)
-			and (menu_delay == 0)
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0)
+			|| (key_a_pressed)
+			&& (menu_delay == 0)
 			{
 				if (global.username != "") /* Check if there is an username or not */
 				{
@@ -443,7 +410,7 @@ function scr_character_manage_menu_draw()
 	
 	#region /* Draw enter username screen */
 	if (menu == "upload_character_edit_username_ok")
-	or (menu == "upload_character_edit_username_cancel")
+	|| (menu == "upload_character_edit_username_cancel")
 	{
 		draw_set_alpha(0.9);
 		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
@@ -456,28 +423,28 @@ function scr_character_manage_menu_draw()
 		
 		#region /* Change username */
 		if (menu == "upload_character_edit_username_ok")
-		or (menu == "upload_character_edit_username_cancel")
+		|| (menu == "upload_character_edit_username_cancel")
 		{
 			global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_character_edit_username_ok", "upload_character_edit_username_cancel", false);
 			
 			#region /* Pressing Change Username OK */
 			if (key_a_pressed)
-			and (menu = "upload_character_edit_username_ok")
-			and (global.username != "")
-			or (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), change_username_x - 185, change_username_y + 22 + 52, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42))
-			and (global.username != "")
-			and (global.controls_used_for_menu_navigation == "mouse")
-			and (mouse_check_button_released(mb_left))
+			&& (menu = "upload_character_edit_username_ok")
+			&& (global.username != "")
+			|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), change_username_x - 185, change_username_y + 22 + 52, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42))
+			&& (global.username != "")
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (mouse_check_button_released(mb_left))
 			{
 				if (!keyboard_check_pressed(ord("Z")))
-				and (!keyboard_check_pressed(ord("X")))
-				and (!keyboard_check_pressed(vk_backspace))
-				and (menu_delay == 0)
+				&& (!keyboard_check_pressed(ord("X")))
+				&& (!keyboard_check_pressed(vk_backspace))
+				&& (menu_delay == 0)
 				{
 					/* Save username to config file */
 					ini_open(working_directory + "config.ini");
 					ini_write_string("config", "username", string(global.username));
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
 					menu_delay = 3;
 					input_key = false;
@@ -497,22 +464,22 @@ function scr_character_manage_menu_draw()
 			
 			#region /* Pressing Change Username Cancel */
 			if (key_a_pressed)
-			and (menu = "upload_character_edit_username_cancel")
-			or (key_b_pressed)
-			or (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), change_username_x - 185, change_username_y + 22 + 52 + 42, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42 + 42))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			and (mouse_check_button_released(mb_left))
+			&& (menu = "upload_character_edit_username_cancel")
+			|| (key_b_pressed)
+			|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), change_username_x - 185, change_username_y + 22 + 52 + 42, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42 + 42))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (mouse_check_button_released(mb_left))
 			{
 				if (!keyboard_check_pressed(ord("Z")))
-				and (!keyboard_check_pressed(ord("X")))
-				and (!keyboard_check_pressed(vk_backspace))
-				and (!keyboard_check_pressed(vk_space))
-				and (menu_delay == 0)
+				&& (!keyboard_check_pressed(ord("X")))
+				&& (!keyboard_check_pressed(vk_backspace))
+				&& (!keyboard_check_pressed(vk_space))
+				&& (menu_delay == 0)
 				{
 					/* Save username as blank to config file, then go back */
 					ini_open(working_directory + "config.ini");
 					ini_write_string("config", "username", "");
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					global.username = "";
 					keyboard_string = "";
 					menu_delay = 3;
@@ -581,7 +548,7 @@ function scr_character_manage_menu_draw()
 			ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 			ini_write_string("info", "character_id", string(character_id)); /* Save the character ID in the character_config.ini file, so that it can be referenced later */
 			ini_write_string("info", "username", string(global.username)); /* Save the username in the level character_config.ini file, so that it can be referenced later */
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		#endregion /* Generate Character ID END */
 		
@@ -594,7 +561,7 @@ function scr_character_manage_menu_draw()
 		
 		#region /* Send Zip File to the Server */
 		if (menu_delay <= 0)
-		and (file_exists(working_directory + string(character_id) + ".zip"))
+		&& (file_exists(working_directory + string(character_id) + ".zip"))
 		{
 			
 			#region /* Actually upload the character to the server */
@@ -686,7 +653,7 @@ function scr_character_manage_menu_draw()
 		
 		#region /* Character Uploaded OK */
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, ok_y - 42, display_get_gui_width() * 0.5 + 370, ok_y + 42))
-		and (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (menu_delay == 0)
 			{
@@ -701,9 +668,9 @@ function scr_character_manage_menu_draw()
 		else
 		{
 			if (menu == "character_uploaded")
-			and (global.controls_used_for_menu_navigation == "keyboard")
-			or (menu == "character_uploaded")
-			and (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "keyboard")
+			|| (menu == "character_uploaded")
+			&& (global.controls_used_for_menu_navigation == "controller")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
@@ -722,14 +689,14 @@ function scr_character_manage_menu_draw()
 		
 		#region /* Return to game */
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, ok_y - 42, display_get_gui_width() * 0.5 + 370, ok_y + 42))
-		and (mouse_check_button_released(mb_left))
-		and (menu_delay == 0)
-		or (mouse_check_button_released(mb_right))
-		and (menu_delay == 0)
-		or (key_a_pressed)
-		and (menu_delay == 0)
-		or (key_b_pressed)
-		and (menu_delay == 0)
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (mouse_check_button_released(mb_right))
+		&& (menu_delay == 0)
+		|| (key_a_pressed)
+		&& (menu_delay == 0)
+		|| (key_b_pressed)
+		&& (menu_delay == 0)
 		{
 			scr_load_character_initializing();
 			menu = "load_characters";
@@ -757,7 +724,7 @@ function scr_character_manage_menu_draw()
 		
 		#region /* Character Uploaded OK */
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, ok_y - 42, display_get_gui_width() * 0.5 + 370, ok_y + 42))
-		and (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (menu_delay == 0)
 			{
@@ -772,9 +739,9 @@ function scr_character_manage_menu_draw()
 		else
 		{
 			if (menu == "no_internet_character")
-			and (global.controls_used_for_menu_navigation == "keyboard")
-			or (menu == "no_internet_character")
-			and (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "keyboard")
+			|| (menu == "no_internet_character")
+			&& (global.controls_used_for_menu_navigation == "controller")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
@@ -793,12 +760,12 @@ function scr_character_manage_menu_draw()
 		
 		#region /* Return to game */
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, ok_y - 42, display_get_gui_width() * 0.5 + 370, ok_y + 42))
-		and (mouse_check_button_released(mb_left))
-		and (menu_delay == 0)
-		or (key_a_pressed)
-		and (menu_delay == 0)
-		or (key_b_pressed)
-		and (menu_delay == 0)
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (key_a_pressed)
+		&& (menu_delay == 0)
+		|| (key_b_pressed)
+		&& (menu_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "search_character_id";

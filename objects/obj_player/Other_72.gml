@@ -18,7 +18,7 @@ else if (ident == global.loadid)
 		...
 	*/
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	buffer_delete(global.loadbuff);
 	show_debug_message("read string from buffer " + buffstring);
 }

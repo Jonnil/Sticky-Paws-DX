@@ -1,4 +1,4 @@
-function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true)
+function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true, only_big_letter = false)
 {
 	
 	#region /* Never draw x too far off screen */
@@ -15,7 +15,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	
 	#region /* Never draw y too low on screen so it shows up underneath the screen */
 	if (keyboard_virtual_status())
-	and (keyboard_virtual_height() != 0)
+	&& (keyboard_virtual_height() != 0)
 	{
 		/* Set name input screen to always be above the virtual keyboard */
 		yy = display_get_gui_height() - keyboard_virtual_height() - 160;
@@ -38,9 +38,11 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	
 	if (global.keyboard_virtual_timer < 2)
 	{
-		global.keyboard_virtual_timer += 1;
+		global.keyboard_virtual_timer ++;
 	}
 	if (global.keyboard_virtual_timer == 1)
+	|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx - width, yy - 16, xx + width, yy + 16))
+	&& (mouse_check_button_released(mb_left))
 	{
 		keyboard_virtual_show(kbv_type_default, kbv_returnkey_default, kbv_autocapitalize_characters, false);
 	}
@@ -66,24 +68,38 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	var name_entering_blink = scr_wave(0, 1, 1, 0);
 	if (name_entering_blink > 0.5)
 	{
-		scr_draw_text_outlined(xx + 6, yy, string(keyboard_string) + "|", global.default_text_size, c_black, c_white, 1);
+		if (only_big_letter)
+		{
+			scr_draw_text_outlined(xx + 6, yy, string_upper(keyboard_string) + "|", global.default_text_size, c_black, c_white, 1);
+		}
+		else
+		{
+			scr_draw_text_outlined(xx + 6, yy, string(keyboard_string) + "|", global.default_text_size, c_black, c_white, 1);
+		}
 	}
 	else
 	{
-		scr_draw_text_outlined(xx, yy, string(keyboard_string), global.default_text_size, c_black, c_white, 1);
+		if (only_big_letter)
+		{
+			scr_draw_text_outlined(xx, yy, string_upper(keyboard_string), global.default_text_size, c_black, c_white, 1);
+		}
+		else
+		{
+			scr_draw_text_outlined(xx, yy, string(keyboard_string), global.default_text_size, c_black, c_white, 1);
+		}
 	}
 	#endregion /* Draw the inputed text END */
 	
 	#region /* A file name can't contain any of these characters */
 	if (ord(keyboard_lastchar) != ord("\\"))
-	and (ord(keyboard_lastchar) != ord("/"))
-	and (ord(keyboard_lastchar) != ord(":"))
-	and (ord(keyboard_lastchar) != ord("*"))
-	and (ord(keyboard_lastchar) != ord("?"))
-	and (ord(keyboard_lastchar) != ord("\""))
-	and (ord(keyboard_lastchar) != ord("<"))
-	and (ord(keyboard_lastchar) != ord(">"))
-	and (ord(keyboard_lastchar) != ord("|"))
+	&& (ord(keyboard_lastchar) != ord("/"))
+	&& (ord(keyboard_lastchar) != ord(":"))
+	&& (ord(keyboard_lastchar) != ord("*"))
+	&& (ord(keyboard_lastchar) != ord("?"))
+	&& (ord(keyboard_lastchar) != ord("\""))
+	&& (ord(keyboard_lastchar) != ord("<"))
+	&& (ord(keyboard_lastchar) != ord(">"))
+	&& (ord(keyboard_lastchar) != ord("|"))
 	{
 		what_string_to_edit = keyboard_string;
 	}
@@ -95,7 +111,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	
 	#region /* When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that */
 	if (keyboard_string = "\u007f") /* This is the unicode for DEL character */
-	and (string_length(keyboard_string) <= 1)
+	&& (string_length(keyboard_string) <= 1)
 	{
 		keyboard_string = "";
 		what_string_to_edit = "";
@@ -104,8 +120,8 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	
 	#region /* Can paste text from clipboard */
 	if (keyboard_check(vk_control))
-	and (keyboard_check_pressed(ord("V")))
-	and (clipboard_has_text())
+	&& (keyboard_check_pressed(ord("V")))
+	&& (clipboard_has_text())
 	{
 		keyboard_string = clipboard_get_text();
 	    what_string_to_edit = clipboard_get_text();
@@ -130,18 +146,18 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	var buttons_ok_y = +54;
 	var buttons_cancel_y = buttons_ok_y + 42;
 	if (can_press_ok_when_input_empty == false)
-	and (keyboard_string != "")
-	or (can_press_ok_when_input_empty)
+	&& (keyboard_string != "")
+	|| (can_press_ok_when_input_empty)
 	{
 		if (max_characters_needed) /* On some code input screens, you want to fill all the characters to the max before you can continue */
-		and (string_length(what_string_to_edit) == max_characters)
-		or (max_characters_needed == false)
+		&& (string_length(what_string_to_edit) == max_characters)
+		|| (max_characters_needed == false)
 		{
 			draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
 			if (menu == ok_menu_string)
 			{
 				if (gamepad_is_connected(global.player1_slot))
-				and (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "controller")
 				{
 					scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, c_white, 1);
 				}
@@ -154,8 +170,8 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			
 			#region /* Clicking the OK button */
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
-			and (mouse_check_button_released(mb_left))
-			and (menu_delay == 0)
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0)
 			{
 				menu_delay = 3;
 				can_input_player1_name = false;
@@ -173,10 +189,10 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	
 	#region /* Clicking the Cancel button */
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
-	and (mouse_check_button_released(mb_left))
-	and (menu_delay == 0)
-	or (keyboard_check_pressed(vk_escape))
-	and (menu_delay == 0)
+	&& (mouse_check_button_released(mb_left))
+	&& (menu_delay == 0)
+	|| (keyboard_check_pressed(vk_escape))
+	&& (menu_delay == 0)
 	{
 		menu_delay = 3;
 		can_input_player1_name = false;
@@ -192,7 +208,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	if (menu != cancel_menu_string)
 	{
 		if (gamepad_is_connected(global.player1_slot))
-		and (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "controller")
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
 		}
@@ -205,7 +221,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	if (menu == cancel_menu_string)
 	{
 		if (gamepad_is_connected(global.player1_slot))
-		and (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "controller")
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
 		}
@@ -227,23 +243,31 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	
 	if (menu_delay == 0)
-	and (menu_joystick_delay == 0)
-	and (use_script_navigation_code)
+	&& (menu_joystick_delay == 0)
+	&& (use_script_navigation_code)
 	{
 		if (keyboard_check_pressed(vk_up))
-		or (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-		or (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+		|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
+		|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
 		{
 			menu = ok_menu_string;
 		}
 		else
 		if (keyboard_check_pressed(vk_down))
-		or (gamepad_button_check_pressed(global.player1_slot, gp_padd))
-		or (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
+		|| (gamepad_button_check_pressed(global.player1_slot, gp_padd))
+		|| (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
 		{
 			menu = cancel_menu_string;
 		}
 	}
 	
-	return(what_string_to_edit);
+	if (only_big_letter)
+	{
+		return(string_upper(what_string_to_edit));
+	}
+	else
+	if (only_big_letter)
+	{
+		return(string(what_string_to_edit));
+	}
 }

@@ -9,13 +9,13 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	#region /* Draw Left Key */
 	draw_sprite_ext(spr_keyboard_keys, vk_left, left_right_buttons_x - 32, 20 + (left_right_buttons_y), 0.5, 0.5, 0, c_white, 1);
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x - 32 + 16 + size_of_button_offset, 20 + (left_right_buttons_y) + 16))
-	and (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_menu_navigation == "mouse")
 	{
 		if (left_right_buttons_can_go_below_0)
-		and (open_dropdown == false)
-		or (left_right_buttons_can_go_below_0 == false)
-		and (left_right_buttons_variable_to_change > 0)
-		and (open_dropdown == false)
+		&& (open_dropdown == false)
+		|| (left_right_buttons_can_go_below_0 == false)
+		&& (left_right_buttons_variable_to_change > 0)
+		&& (open_dropdown == false)
 		{
 			menu = string(left_right_buttons_menu);
 			menu_cursor_y_position = left_right_buttons_y;
@@ -30,8 +30,8 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	#region /* Draw Right Key */
 	draw_sprite_ext(spr_keyboard_keys, vk_right, left_right_buttons_x + left_right_buttons_right_arrow_x, 20 + (left_right_buttons_y), 0.5, 0.5, 0, c_white, 1);
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x + left_right_buttons_right_arrow_x - 16 - size_of_button_offset, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16))
-	and (global.controls_used_for_menu_navigation == "mouse")
-	and (open_dropdown == false)
+	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (open_dropdown == false)
 	{
 		menu = string(left_right_buttons_menu);
 		menu_cursor_y_position = left_right_buttons_y;
@@ -49,8 +49,8 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	#endregion /* Draw Text END */
 	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16))
-	and (global.controls_used_for_menu_navigation == "mouse")
-	and (open_dropdown == false)
+	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (open_dropdown == false)
 	{
 		menu = string(left_right_buttons_menu);
 		menu_cursor_y_position = left_right_buttons_y;
@@ -61,31 +61,31 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 		draw_sprite(spr_menu_cursor, menu_cursor_index, left_right_buttons_x - 32 - 32, 20 + (left_right_buttons_y));
 	}
 	if (key_left)
-	and (menu == string(left_right_buttons_menu))
-	or (mouse_check_button_released(mb_left))
-	and (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x - 32 + 16 + size_of_button_offset, 20 + (left_right_buttons_y) + 16))
+	&& (menu == string(left_right_buttons_menu))
+	|| (mouse_check_button_released(mb_left))
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x - 32 + 16 + size_of_button_offset, 20 + (left_right_buttons_y) + 16))
 	{
 		if (left_right_buttons_can_go_below_0)
-		and (open_dropdown == false)
-		or (left_right_buttons_can_go_below_0 == false)
-		and (left_right_buttons_variable_to_change > 0)
-		and (open_dropdown == false)
+		&& (open_dropdown == false)
+		|| (left_right_buttons_can_go_below_0 == false)
+		&& (left_right_buttons_variable_to_change > 0)
+		&& (open_dropdown == false)
 		{
 			menu = string(left_right_buttons_menu);
 			
 			if (keyboard_check(vk_control))
-			and (menu_delay == 0)
-			and (can_navigate_settings_sidebar == false)
-			or (gamepad_button_check(global.player1_slot, gp_face3))
-			and (menu_delay == 0)
-			and (can_navigate_settings_sidebar == false)
+			&& (menu_delay == 0)
+			&& (can_navigate_settings_sidebar == false)
+			|| (gamepad_button_check(global.player1_slot, gp_face3))
+			&& (menu_delay == 0)
+			&& (can_navigate_settings_sidebar == false)
 			{
 				left_right_buttons_variable_to_change -= (scale_increment * 10);
 				menu_delay = 3;
 			}
 			else
 			if (menu_delay == 0)
-			and (can_navigate_settings_sidebar == false)
+			&& (can_navigate_settings_sidebar == false)
 			{
 				left_right_buttons_variable_to_change -= scale_increment;
 				menu_delay = 3;
@@ -93,27 +93,27 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 		}
 	}
 	if (key_right)
-	and (menu == string(left_right_buttons_menu))
-	and (open_dropdown == false)
-	or (mouse_check_button_released(mb_left))
-	and (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x + left_right_buttons_right_arrow_x - 16 - size_of_button_offset, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16))
-	and (open_dropdown == false)
+	&& (menu == string(left_right_buttons_menu))
+	&& (open_dropdown == false)
+	|| (mouse_check_button_released(mb_left))
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x + left_right_buttons_right_arrow_x - 16 - size_of_button_offset, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16))
+	&& (open_dropdown == false)
 	{
 		menu = string(left_right_buttons_menu);
 			
 		if (keyboard_check(vk_control))
-		and (menu_delay == 0)
-		and (can_navigate_settings_sidebar == false)
-		or (gamepad_button_check(global.player1_slot, gp_face3))
-		and (menu_delay == 0)
-		and (can_navigate_settings_sidebar == false)
+		&& (menu_delay == 0)
+		&& (can_navigate_settings_sidebar == false)
+		|| (gamepad_button_check(global.player1_slot, gp_face3))
+		&& (menu_delay == 0)
+		&& (can_navigate_settings_sidebar == false)
 		{
 			left_right_buttons_variable_to_change += (scale_increment * 10);
 			menu_delay = 3;
 		}
 		else
 		if (menu_delay == 0)
-		and (can_navigate_settings_sidebar == false)
+		&& (can_navigate_settings_sidebar == false)
 		{
 			left_right_buttons_variable_to_change += scale_increment;
 			menu_delay = 3;

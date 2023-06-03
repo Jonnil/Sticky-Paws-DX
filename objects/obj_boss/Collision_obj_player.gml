@@ -1,6 +1,6 @@
 if (other.vspeed > 0)
-or (other.bbox_bottom < y)
-or (other.dive)
+|| (other.bbox_bottom < y)
+|| (other.dive)
 {
 	if (can_jump_on_head)
 	{
@@ -16,7 +16,7 @@ or (other.dive)
 		}
 		else
 		{
-			hp -= 1;
+			hp --;
 			other.ground_pound = false;
 			other.can_ground_pound = false;
 			draw_xscale = 1.25;
@@ -118,10 +118,10 @@ if (can_jump_on_head)
 else
 {
 	if (hp > 0)
-	and (takendamage == 0)
+	&& (takendamage == 0)
 	{
 		if (other.takendamage <= 0)
-		and (other.assist_invincible == false)
+		&& (other.assist_invincible == false)
 		{
 			if (other.have_heart_balloon)
 			{
@@ -132,32 +132,32 @@ else
 				{
 					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player1_have_heart_balloon", false);
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				if (other.player = 2)
 				{
 					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player2_have_heart_balloon", false);
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				if (other.player = 3)
 				{
 					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player3_have_heart_balloon", false);
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				if (other.player = 4)
 				{
 					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player4_have_heart_balloon", false);
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				#endregion /* Save heart balloon to be false END */
 				
 			}
 			else
 			{
-				other.hp -= 1;
+				other.hp --;
 			}
 			other.takendamage = 100;
 			scr_gamepad_vibration(other.player, 1, 10);
@@ -166,7 +166,7 @@ else
 }
 
 if (other.invincible_timer > 0)
-and (hp > 0)
+&& (hp > 0)
 {
 	hp = 0;
 	takendamage = 100;

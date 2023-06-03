@@ -43,7 +43,7 @@ if (menu_cursor_index > 4)
 
 if (menu_delay > 0)
 {
-	menu_delay -= 1;
+	menu_delay --;
 }
 
 if (lerp_on)
@@ -87,7 +87,7 @@ if (menu == "load_characters")
 	
 	/* Load custom character data */
 	
-	file_load_timer += 1;
+	file_load_timer ++;
 	
 	if (file_load_timer > 1)
 	{
@@ -96,7 +96,7 @@ if (menu == "load_characters")
 		if (file_found == "")
 		{
 			file_find_close();
-			scr_load_all_character_portraits();
+			
 			if (player_menu[1] == "click_copy_character")
 			{
 				with(instance_create_depth(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 0, obj_score_up))
@@ -107,7 +107,7 @@ if (menu == "load_characters")
 				#region /* After copying character, show the copied character */
 				global.character_index[0] = ds_list_find_index(global.all_loaded_characters, ds_list_find_value(global.all_loaded_characters, global.character_index[0]) + " - Copy");
 				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
-				xx[1] = player1_display_x + 32;
+				xx[1] = player_display_x[1] + 32;
 				#endregion /* After copying character, show the copied character END */
 				
 				menu = "click_copy_character";
@@ -131,19 +131,11 @@ if (menu == "load_characters")
 					#region /* Player 1 character select portrait sprite */
 					global.skin_for_player[1] = global.actual_skin_for_player[1]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 					global.sprite_select_player[1] = spr_noone;
-					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player[1], 0, global.skin_for_player[1]);
-					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player[1], 0, global.skin_for_player[1]);
 					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
 					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
 					#endregion /* Player 1 character select portrait sprite END */
 					
 				}
-				
-				character_portrait_for_player_update_directory[1] = true;
-				character_portrait_for_player_update_directory[2] = true;
-				character_portrait_for_player_update_directory[3] = true;
-				character_portrait_for_player_update_directory[4] = true;
-				alarm[0] = 1;
 				
 				menu = "select_character"; /* Default menu to go to after loading all characters */
 				player_menu[1] = "select_character"; /* Set this to be "select character" so it's not on wrong menu unintentionally */
@@ -166,7 +158,7 @@ if (menu == "load_custom_level")
 {
 	/* Load custom level data */
 	
-	file_load_timer += 1;
+	file_load_timer ++;
 	
 	if (file_load_timer > 1)
 	{
@@ -249,12 +241,12 @@ if (menu == "load_official_level_template")
 {
 	/* Load official level data */
 	
-	file_load_timer += 1;
+	file_load_timer ++;
 	
 	if (file_load_timer > 1)
 	{
 		file_found = ds_list_find_value(global.all_loaded_main_levels, level_find_pos)
-		level_find_pos += 1;
+		level_find_pos ++;
 		
 		if (file_found = ds_list_find_value(global.all_loaded_main_levels, ds_list_size(global.all_loaded_main_levels) - 1))
 		{

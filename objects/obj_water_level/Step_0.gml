@@ -13,12 +13,12 @@ if (water_level_change_speed == 0)
 {
 	if (y < water_level_change_new_y)
 	{
-		y += 1;
+		y ++;
 	}
 	else
 	if (y > water_level_change_new_y)
 	{
-		y -= 1;
+		y --;
 	}
 }
 else

@@ -1,5 +1,5 @@
 if (asset_get_type("obj_background_brightness_gameplay") == asset_object)
-and (instance_exists(obj_background_brightness_gameplay))
+&& (instance_exists(obj_background_brightness_gameplay))
 {
 	depth = obj_background_brightness_gameplay.depth - 1; /* Always put the depth above obj_background_brightness_gameplay */
 }

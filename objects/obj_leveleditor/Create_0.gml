@@ -193,7 +193,7 @@ if (global.actually_play_edited_level == false)
 	unlocked_object[level_object_id.id_ring] = ini_read_real("Unlock Placable Objects", level_object_id.id_ring, false);
 	#endregion /* Special Items END */
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* Unlock placable objects END */
 	
 	#region /* Load custom sprites */
@@ -411,7 +411,7 @@ if (global.actually_play_edited_level == false)
 			global.selected_level_editing_music = 1;
 			previous_selected_level_editing_music = 1;
 		}
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	else
 	{
@@ -430,28 +430,28 @@ if (global.actually_play_edited_level == false)
 		previous_selected_level_editing_music = -1;
 	}
 	if (global.selected_level_editing_music == 2)
-	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg"))
+	&& (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg"))
 	{
 		level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_1.ogg");
 		previous_selected_level_editing_music = 2;
 	}
 	else
 	if (global.selected_level_editing_music == 3)
-	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg"))
+	&& (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg"))
 	{
 		level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_2.ogg");
 		previous_selected_level_editing_music = 3;
 	}
 	else
 	if (global.selected_level_editing_music == 4)
-	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg"))
+	&& (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg"))
 	{
 		level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_3.ogg");
 		previous_selected_level_editing_music = 4;
 	}
 	else
 	if (global.selected_level_editing_music == 5)
-	and (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_4.ogg"))
+	&& (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_4.ogg"))
 	{
 		level_editing_music = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/level_editor_music_4.ogg");
 		previous_selected_level_editing_music = 5;
@@ -616,7 +616,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Character Name */
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
-	or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+	|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 	{
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 		{
@@ -634,7 +634,7 @@ if (global.actually_play_edited_level == false)
 		narrator_name = string(uppercase_narrator_name);
 		#endregion /* Character Name END */
 		
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	else
 	{

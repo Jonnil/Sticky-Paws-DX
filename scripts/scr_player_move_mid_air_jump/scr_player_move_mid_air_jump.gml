@@ -4,33 +4,33 @@ function scr_player_move_mid_air_jump()
 	#region /* Mid-Air / Double Jumping */
 	if (can_mid_air_jump > 0)
 	{
-		can_mid_air_jump -= 1;
+		can_mid_air_jump --;
 	}
 
 	if (key_double_jump)
-	and (can_move)
-	and (global.pause == false)
-	and (global.equipped_upgrade_double_jump)
-	and (ground_pound == false)
-	and (climb == false)
-	and (horizontal_rope_climb == false)
-	and (stick_to_wall == false)
-	and (asset_get_type("obj_wall") == asset_object)
-	and (!place_meeting(x, y + 1, obj_wall))
-	and (asset_get_type("obj_semisolid_platform") == asset_object)
-	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	and (in_water == false)
-	and (can_mid_air_jump == 0)
+	&& (can_move)
+	&& (global.pause == false)
+	&& (global.equipped_upgrade_double_jump)
+	&& (ground_pound == false)
+	&& (climb == false)
+	&& (horizontal_rope_climb == false)
+	&& (stick_to_wall == false)
+	&& (asset_get_type("obj_wall") == asset_object)
+	&& (!place_meeting(x, y + 1, obj_wall))
+	&& (asset_get_type("obj_semisolid_platform") == asset_object)
+	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	&& (in_water == false)
+	&& (can_mid_air_jump == 0)
 	{
 		if (spring)
-		and (vspeed > - 20)
-		or (spring == false)
+		&& (vspeed > - 20)
+		|| (spring == false)
 		{
 			if (number_of_jumps >= 2)
-			and (midair_jumps_left > 0)
-			or (number_of_jumps <= -1)
+			&& (midair_jumps_left > 0)
+			|| (number_of_jumps <= -1)
 			{
 				buffer_jump = 0;
 				dive = false;
@@ -54,11 +54,11 @@ function scr_player_move_mid_air_jump()
 				image_index = 0;
 		
 				if (number_of_jumps > - 1)
-				and (midair_jumps_left != number_of_jumps)
+				&& (midair_jumps_left != number_of_jumps)
 				{
 					midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 					if (number_of_jumps >= 3)
-					and (midair_jumps_left < number_of_jumps)
+					&& (midair_jumps_left < number_of_jumps)
 					{
 						with(instance_create_depth(x, bbox_bottom, 0, obj_score_up))
 						{
@@ -72,7 +72,7 @@ function scr_player_move_mid_air_jump()
 				{
 					midair_jumps_left = clamp(midair_jumps_left - 2, 0, number_of_jumps);
 					if (number_of_jumps >= 3)
-					and (midair_jumps_left < number_of_jumps)
+					&& (midair_jumps_left < number_of_jumps)
 					{
 						with(instance_create_depth(x, bbox_bottom, 0, obj_score_up))
 						{
@@ -85,8 +85,8 @@ function scr_player_move_mid_air_jump()
 		
 				#region /* Mid-air flip animation */
 				if (midair_jumps_left >= midair_jump_flip_animation)
-				or (number_of_jumps = 2)
-				and (midair_jump_flip_animation >= 2)
+				|| (number_of_jumps = 2)
+				&& (midair_jump_flip_animation >= 2)
 				{
 					if (image_xscale > 0)
 					{

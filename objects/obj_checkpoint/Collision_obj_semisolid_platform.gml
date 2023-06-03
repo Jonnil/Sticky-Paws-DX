@@ -1,40 +1,40 @@
 /* Collision Event with a solid object */
 
 if (position_meeting(x, bbox_bottom + 1, other))
-or (position_meeting(x, bbox_bottom + 2, other))
-or (position_meeting(x, bbox_bottom + 3, other))
-or (position_meeting(x, bbox_bottom + 4, other))
-or (position_meeting(bbox_left, bbox_bottom + 1, other))
-or (position_meeting(bbox_left, bbox_bottom + 2, other))
-or (position_meeting(bbox_left, bbox_bottom + 3, other))
-or (position_meeting(bbox_left, bbox_bottom + 4, other))
-or (position_meeting(bbox_right, bbox_bottom + 1, other))
-or (position_meeting(bbox_right, bbox_bottom + 2, other))
-or (position_meeting(bbox_right, bbox_bottom + 3, other))
-or (position_meeting(bbox_right, bbox_bottom + 4, other))
+|| (position_meeting(x, bbox_bottom + 2, other))
+|| (position_meeting(x, bbox_bottom + 3, other))
+|| (position_meeting(x, bbox_bottom + 4, other))
+|| (position_meeting(bbox_left, bbox_bottom + 1, other))
+|| (position_meeting(bbox_left, bbox_bottom + 2, other))
+|| (position_meeting(bbox_left, bbox_bottom + 3, other))
+|| (position_meeting(bbox_left, bbox_bottom + 4, other))
+|| (position_meeting(bbox_right, bbox_bottom + 1, other))
+|| (position_meeting(bbox_right, bbox_bottom + 2, other))
+|| (position_meeting(bbox_right, bbox_bottom + 3, other))
+|| (position_meeting(bbox_right, bbox_bottom + 4, other))
 {
 	if (vspeed >= 0)
 	{
-		y -= 1;
+		y --;
 	}
 }
 
 #region /* Landing on solid object */
 if (position_meeting(x, bbox_bottom + 1, other))
-or (position_meeting(bbox_left, bbox_bottom + 1, other))
-or (position_meeting(bbox_right, bbox_bottom + 1, other))
+|| (position_meeting(bbox_left, bbox_bottom + 1, other))
+|| (position_meeting(bbox_right, bbox_bottom + 1, other))
 {
 	
 	#region /* Smoke Landing Effect */
 	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
-	and (obj_camera.iris_xscale > 1)
+	&& (instance_exists(obj_camera))
+	&& (obj_camera.iris_xscale > 1)
 	{
 		if (instance_exists(obj_foreground_secret))
-		and (place_meeting(x, y, obj_foreground_secret))
-		and (obj_foreground_secret.image_alpha < 0.5)
-		or (instance_exists(obj_foreground_secret))
-		and (!place_meeting(x, y, obj_foreground_secret))
+		&& (place_meeting(x, y, obj_foreground_secret))
+		&& (obj_foreground_secret.image_alpha < 0.5)
+		|| (instance_exists(obj_foreground_secret))
+		&& (!place_meeting(x, y, obj_foreground_secret))
 		{
 			if (vspeed > 2)
 			{

@@ -1,7 +1,7 @@
 if (place_meeting(bbox_left - 8, y, obj_boss))
-and (!collision_line(x, y, other.x, other.y, obj_wall, false, true))
-or (place_meeting(bbox_right + 8, y, obj_boss))
-and (!collision_line(x, y, other.x, other.y, obj_wall, false, true))
+&& (!collision_line(x, y, other.x, other.y, obj_wall, false, true))
+|| (place_meeting(bbox_right + 8, y, obj_boss))
+&& (!collision_line(x, y, other.x, other.y, obj_wall, false, true))
 {
 	if (asset_get_type("obj_block_break") == asset_object)
 	{
@@ -36,7 +36,7 @@ and (!collision_line(x, y, other.x, other.y, obj_wall, false, true))
 	}
 	score += 50;
 	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
+	&& (instance_exists(obj_camera))
 	{
 		with(obj_camera)
 		{
@@ -46,9 +46,9 @@ and (!collision_line(x, y, other.x, other.y, obj_wall, false, true))
 	
 	#region /* Only do the breaking smoke effect and sound effect if it's inside the view */
 	if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	and (x > camera_get_view_x(view_camera[view_current]))
-	and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-	and (y > camera_get_view_y(view_camera[view_current]))
+	&& (x > camera_get_view_x(view_camera[view_current]))
+	&& (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+	&& (y > camera_get_view_y(view_camera[view_current]))
 	{
 		effect_create_above(ef_smoke, x, y, 1, c_dkgray);
 		scr_audio_play(snd_blockbreak, volume_source.sound);

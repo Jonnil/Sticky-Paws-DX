@@ -11,9 +11,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Navigate Sub Menu */
 		if (key_up)
-		and (menu_delay == 0)
-		and (can_input_level_name == false)
-		and (menu_joystick_delay <= 0)
+		&& (menu_delay == 0)
+		&& (can_input_level_name == false)
+		&& (menu_joystick_delay <= 0)
 		{
 			if (menu == "level_editor_play")
 			{
@@ -85,9 +85,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		}
 		else
 		if (key_down)
-		and (menu_delay == 0)
-		and (can_input_level_name == false)
-		and (menu_joystick_delay <= 0)
+		&& (menu_delay == 0)
+		&& (can_input_level_name == false)
+		&& (menu_joystick_delay <= 0)
 		{
 			if (menu == "level_editor_play")
 			{
@@ -186,12 +186,12 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		if (can_input_level_name == false)
 		{
 			if (menu == "level_editor_play")
-			or (menu == "level_editor_make")
-			or (menu == "level_editor_upload")
-			or (menu == "level_editor_edit_name")
-			or (menu == "level_editor_enter_description")
-			or (menu == "level_editor_delete")
-			or (menu == "level_editor_selected_back")
+			|| (menu == "level_editor_make")
+			|| (menu == "level_editor_upload")
+			|| (menu == "level_editor_edit_name")
+			|| (menu == "level_editor_enter_description")
+			|| (menu == "level_editor_delete")
+			|| (menu == "level_editor_selected_back")
 			{
 				show_level_editor_corner_menu = true;
 				lerp_on = true;
@@ -219,8 +219,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			}
 			else
 			if (menu == "level_editor_create_from_scratch")
-			or (menu == "level_editor_create_from_template")
-			or (menu == "level_editor_create_from_back")
+			|| (menu == "level_editor_create_from_template")
+			|| (menu == "level_editor_create_from_back")
 			{
 				scroll_to = floor(global.select_level_index / row) + 0.1; /* Scroll the view to fit all the buttons */
 				draw_rectangle_color(xx, 226 * (column - scroll) + 455 - 3, xx + 384, 226 * (column - scroll) + 408 + 216 + 3, c_white, c_white, c_white, c_white, false);
@@ -238,7 +238,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			}
 			else
 			if (menu == "level_editor_delete_no")
-			or (menu == "level_editor_delete_yes")
+			|| (menu == "level_editor_delete_yes")
 			{
 				scroll_to = floor(global.select_level_index / row) + 0.1; /* Scroll the view to fit all the buttons */
 				draw_rectangle_color(xx, 226 * (column - scroll) + 455 - 3, xx + 384, 226 * (column - scroll) + 408 + 216 + 3, c_red, c_red, c_red, c_red, false);
@@ -255,16 +255,16 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Create from Scratch button */
 		if (menu == "level_editor_create_from_scratch")
-		and (can_input_level_name == false)
-		and (menu_delay == 0)
+		&& (can_input_level_name == false)
+		&& (menu_delay == 0)
 		{
 			show_level_editor_corner_menu = true;
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 - 3, xx + 8 + 370, 226 * (column - scroll) + 475 - 3 + 42))
-			and (mouse_check_button_released(mb_left))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			and (can_create_level_from_scratch)
-			or (key_a_pressed)
-			and (can_create_level_from_scratch)
+			&& (mouse_check_button_released(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (can_create_level_from_scratch)
+			|| (key_a_pressed)
+			&& (can_create_level_from_scratch)
 			{
 				menu = "level_editor_enter_name_ok";
 				menu_delay = 3;
@@ -276,14 +276,14 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Create from Back button */
 		if (menu == "level_editor_create_from_back")
-		and (can_input_level_name == false)
-		and (menu_delay == 0)
+		&& (can_input_level_name == false)
+		&& (menu_delay == 0)
 		{
 			show_level_editor_corner_menu = true;
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 370, 226 * (column - scroll) + 569 - 3 + 42))
-			and (mouse_check_button_released(mb_left))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			or (key_a_pressed)
+			&& (mouse_check_button_released(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			|| (key_a_pressed)
 			{
 				menu_delay = 3;
 				open_sub_menu = false;
@@ -296,14 +296,14 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Back button when selecting level */
 		if (menu == "level_editor_selected_back")
-		and (can_input_level_name == false)
-		and (menu_delay == 0)
+		&& (can_input_level_name == false)
+		&& (menu_delay == 0)
 		{
 			show_level_editor_corner_menu = true;
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (back_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (back_y) - 3 + 42))
-			and (mouse_check_button_released(mb_left))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			or (key_a_pressed)
+			&& (mouse_check_button_released(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			|| (key_a_pressed)
 			{
 				menu_delay = 3;
 				open_sub_menu = false;
@@ -316,13 +316,13 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Play button */
 		if (menu == "level_editor_play")
-		and (can_input_level_name == false)
-		and (menu_delay == 0)
+		&& (can_input_level_name == false)
+		&& (menu_delay == 0)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (play_y)- 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (play_y)- 3 + 42))
-			and (mouse_check_button_released(mb_left))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			or (key_a_pressed)
+			&& (mouse_check_button_released(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			|| (key_a_pressed)
 			{
 				global.doing_clear_check = false;
 				global.actually_play_edited_level = true; /* Even before going to the level, set this variable to true */
@@ -337,9 +337,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		if (menu == "level_editor_make")
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (make_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (make_y) - 3 + 42))
-			and (mouse_check_button_released(mb_left))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			or (key_a_pressed)
+			&& (mouse_check_button_released(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			|| (key_a_pressed)
 			{
 				global.doing_clear_check = false;
 				global.actually_play_edited_level = false;
@@ -354,11 +354,11 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		if (menu == "level_editor_edit_name")
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (edit_name_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (edit_name_y) - 3 + 42))
-			and (mouse_check_button_released(mb_left))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			and (level_editor_edit_name == false)
-			or (key_a_pressed)
-			and (level_editor_edit_name == false)
+			&& (mouse_check_button_released(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (level_editor_edit_name == false)
+			|| (key_a_pressed)
+			&& (level_editor_edit_name == false)
 			{
 				level_editor_edit_name = true;
 				can_input_level_name = true;
@@ -382,11 +382,11 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		if (menu == "level_editor_enter_description")
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (edit_description_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (edit_description_y) - 3 + 42))
-			and (mouse_check_button_released(mb_left))
-			and (global.controls_used_for_menu_navigation == "mouse")
-			and (level_editor_edit_name == false)
-			or (key_a_pressed)
-			and (level_editor_edit_name == false)
+			&& (mouse_check_button_released(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (level_editor_edit_name == false)
+			|| (key_a_pressed)
+			&& (level_editor_edit_name == false)
 			{
 				level_editor_edit_name = true;
 				can_input_level_name = true;
@@ -399,7 +399,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					keyboard_string = ini_read_string("info", "level_description", "");
 					global.level_description = ini_read_string("info", "level_description", "");
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				{
@@ -417,13 +417,13 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Key A pressed */
 		if (key_a_pressed)
-		and (can_input_level_name == false)
-		and (menu_delay == 0)
+		&& (can_input_level_name == false)
+		&& (menu_delay == 0)
 		{
 			
 			#region /* Pressing the Delete button */
 			if (menu == "level_editor_delete")
-			and (show_delete_button)
+			&& (show_delete_button)
 			{
 				menu_delay = 3;
 				menu = "level_editor_delete_no";
@@ -452,13 +452,13 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Create from Template button */
 		if (key_a_pressed)
-		and (can_input_level_name == false)
-		and (menu_delay == 0)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 522 - 3, xx + 8 + 320, 226 * (column - scroll) + 522 - 3 + 42))
-		and (mouse_check_button_released(mb_left))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (can_input_level_name == false)
-		and (menu_delay == 0)
+		&& (can_input_level_name == false)
+		&& (menu_delay == 0)
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 522 - 3, xx + 8 + 320, 226 * (column - scroll) + 522 - 3 + 42))
+		&& (mouse_check_button_released(mb_left))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (can_input_level_name == false)
+		&& (menu_delay == 0)
 		{
 			if (menu == "level_editor_create_from_template")
 			{
@@ -474,13 +474,13 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Yes Delete button */
 		if (key_a_pressed)
-		and (can_input_level_name == false)
-		and (menu_delay == 0)
-		or (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 320, 226 * (column - scroll) + 569 - 3 + 42))
-		and (mouse_check_button_released(mb_left))
-		and (global.controls_used_for_menu_navigation == "mouse")
-		and (can_input_level_name == false)
-		and (menu_delay == 0)
+		&& (can_input_level_name == false)
+		&& (menu_delay == 0)
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 320, 226 * (column - scroll) + 569 - 3 + 42))
+		&& (mouse_check_button_released(mb_left))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (can_input_level_name == false)
+		&& (menu_delay == 0)
 		{
 			if (menu == "level_editor_delete_yes")
 			{
@@ -488,7 +488,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				{
 					directory_destroy(working_directory + "/custom_levels/" + string(global.level_name));
 				}
-				global.select_level_index -= 1; /* Decrease the "select level index" so that the cursor isn't selecting a level that no longer exists */
+				global.select_level_index --; /* Decrease the "select level index" so that the cursor isn't selecting a level that no longer exists */
 				scr_load_custom_level_initializing();
 				can_input_player1_name = false;
 				can_input_player2_name = false;

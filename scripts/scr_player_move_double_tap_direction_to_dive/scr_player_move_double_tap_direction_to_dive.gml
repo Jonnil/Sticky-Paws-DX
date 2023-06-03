@@ -47,24 +47,24 @@ function scr_player_move_double_tap_direction_to_dive()
 	
 		else
 		if (!key_left_hold)
-		and (!key_right_hold)
+		&& (!key_right_hold)
 		{
 			if (double_tap_left_dive)
-			and (double_tap_dive_timer <= 28)
+			&& (double_tap_dive_timer <= 28)
 			{
 				double_tap_dive = false;
 				double_tap_left_dive = 2;
 			}
 			else
 			if (double_tap_right_dive)
-			and (double_tap_dive_timer <= 28)
+			&& (double_tap_dive_timer <= 28)
 			{
 				double_tap_dive = false;
 				double_tap_right_dive = 2;
 			}
 			else
 			if (double_tap_left_dive >= 3)
-			or (double_tap_right_dive >= 3)
+			|| (double_tap_right_dive >= 3)
 			{
 				double_tap_dive = false;
 				double_tap_dive_timer = 0;
@@ -76,7 +76,7 @@ function scr_player_move_double_tap_direction_to_dive()
 	}
 	if (double_tap_dive_timer > 0)
 	{
-		double_tap_dive_timer -= 1;
+		double_tap_dive_timer --;
 	}
 	if (double_tap_dive_timer <= 0)
 	{

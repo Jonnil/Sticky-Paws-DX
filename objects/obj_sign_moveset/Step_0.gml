@@ -1,6 +1,6 @@
 if (!place_meeting(x, y + 1, obj_wall))
-and (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-and (stop_gravity == false)
+&& (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+&& (stop_gravity == false)
 {
 	gravity = 0.5;
 }
@@ -13,7 +13,7 @@ else
 }
 
 if (global.show_tutorial_signs)
-and (global.full_level_map_screenshot == false)
+&& (global.full_level_map_screenshot == false)
 {
 	visible = true;
 }

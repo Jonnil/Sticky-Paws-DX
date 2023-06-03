@@ -23,7 +23,7 @@ if (instance_number(obj_camera_map) > 1)
 
 #region /* World Map Camera */
 if (asset_get_type("obj_player_map") == asset_object)
-and (instance_exists(obj_player_map))
+&& (instance_exists(obj_player_map))
 {
 	xx = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player_map).x;
 	yy = instance_nearest(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), y, obj_player_map).y;

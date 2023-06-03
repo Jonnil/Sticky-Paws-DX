@@ -20,14 +20,14 @@ if (die == false)
 		draw_yscale = 0.75;
 	}
 	if (position_meeting(bbox_left - 1, bbox_bottom - 8, other))
-	or (position_meeting(bbox_left - 1, bbox_top + 8, other))
+	|| (position_meeting(bbox_left - 1, bbox_top + 8, other))
 	{
 		hspeed = 0;
 		draw_xscale = 0.75;
 		draw_yscale = 1.25;
 	}
 	if (position_meeting(bbox_right + 1, bbox_bottom - 8, other))
-	or (position_meeting(bbox_right + 1, bbox_top + 8, other))
+	|| (position_meeting(bbox_right + 1, bbox_top + 8, other))
 	{
 		hspeed = 0;
 		draw_xscale = 0.75;
@@ -41,8 +41,8 @@ if (sprite_index == spr_boss_fall)
 }
 
 if (place_meeting(x, y + 1, obj_wall))
-and (vspeed >= 0)
-and (flying_back == 1)
+&& (vspeed >= 0)
+&& (flying_back == 1)
 {
 	hspeed = 0;
 	vspeed = 0;

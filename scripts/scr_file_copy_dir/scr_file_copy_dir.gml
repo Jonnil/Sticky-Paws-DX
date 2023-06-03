@@ -25,7 +25,7 @@ function scr_file_copy_dir(source, target, attributes = fa_directory)
 		}
 		/* Push file into array */
 		file[files] = fname;
-		files += 1;
+		files ++;
 	}
 	file_find_close()
 	/* Process found files: */
@@ -33,7 +33,7 @@ function scr_file_copy_dir(source, target, attributes = fa_directory)
 	repeat (files)
 	{
 		fname = file[i];
-		i += 1;
+		i ++;
 		from = source + "/" + fname;
 		to = target + "/" + fname;
 		if (file_attributes(from, fa_directory))

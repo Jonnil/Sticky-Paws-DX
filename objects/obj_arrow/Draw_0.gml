@@ -3,7 +3,7 @@ depth = -bbox_bottom* 0.1;
 
 #region /* If enemies are disabled, destroy this object */
 if (global.assist_enable)
-and (global.assist_enable_enemies == false)
+&& (global.assist_enable_enemies == false)
 {
 	instance_destroy();
 }
@@ -60,9 +60,9 @@ else
 	hspeed = + 8;
 }
 if (x < camera_get_view_x(view_camera[view_current]) + sprite_width)
-and (image_xscale < 0)
-or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
-and (image_xscale > 0)
+&& (image_xscale < 0)
+|| (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
+&& (image_xscale > 0)
 {
 	instance_destroy();
 }
@@ -88,19 +88,19 @@ if (draw_xscale >= 0.8)
 }
 
 if (image_xscale == -1)
-and (x < camera_get_view_x(view_camera[view_current]))
-or (image_xscale = +1)
-and (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+&& (x < camera_get_view_x(view_camera[view_current]))
+|| (image_xscale = +1)
+&& (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 {
 	instance_destroy();
 }
 
 #region /* Kill enemy if it's inside the wall */
 if (position_meeting(x, y, obj_wall))
-and (die == false)
-and (draw_xscale >= 0.8)
+&& (die == false)
+&& (draw_xscale >= 0.8)
 {
-	stuck_in_wall_counter += 1;
+	stuck_in_wall_counter ++;
 	if (stuck_in_wall_counter >= 3)
 	{
 		flat = false;
@@ -112,7 +112,7 @@ else
 {
 	if (stuck_in_wall_counter > 0)
 	{
-		stuck_in_wall_counter -= 1;
+		stuck_in_wall_counter --;
 	}
 }
 #endregion /* Kill enemy if it's inside the wall END */

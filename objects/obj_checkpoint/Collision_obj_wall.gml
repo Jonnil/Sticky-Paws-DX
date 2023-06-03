@@ -9,13 +9,13 @@ while (place_meeting(x, y, other))
 
 #region /* Landing on solid object */
 if (place_meeting(x, y + 1, other))
-and (vspeed >= 0)
+&& (vspeed >= 0)
 {
 	
 	#region /* Smoke Landing Effect */
 	if (asset_get_type("obj_camera") == asset_object)
-	and (instance_exists(obj_camera))
-	and (obj_camera.iris_xscale > 1)
+	&& (instance_exists(obj_camera))
+	&& (obj_camera.iris_xscale > 1)
 	{
 		if (position_meeting(x - 24, bbox_bottom + 2, other))
 		{
@@ -59,8 +59,8 @@ if (position_meeting(x, bbox_top - 1, other))
 
 #region /* Hitting wall to your left */
 if (position_meeting(bbox_left - 1, bbox_bottom - 8, other))
-or (position_meeting(bbox_left - 1, bbox_top + 8, other))
-or (position_meeting(bbox_left - 1, y, other))
+|| (position_meeting(bbox_left - 1, bbox_top + 8, other))
+|| (position_meeting(bbox_left - 1, y, other))
 {
 	if (hspeed <= 0)
 	{
@@ -71,8 +71,8 @@ or (position_meeting(bbox_left - 1, y, other))
 
 #region /* Hitting wall to your right */
 if (position_meeting(bbox_right + 1, bbox_bottom - 8, other))
-or (position_meeting(bbox_right + 1, bbox_top + 8, other))
-or (position_meeting(bbox_right + 1, y, other))
+|| (position_meeting(bbox_right + 1, bbox_top + 8, other))
+|| (position_meeting(bbox_right + 1, y, other))
 {
 	if (hspeed >= 0)
 	{

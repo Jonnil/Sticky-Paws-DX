@@ -29,7 +29,7 @@ else
 	image_xscale = lerp(image_xscale, 1, 0.1);
 	image_yscale = lerp(image_yscale, 1, 0.1);
 }
-time += 1;
+time ++;
 if (time > room_speed)
 {
 	image_alpha = lerp(image_alpha, 0, 0.1);

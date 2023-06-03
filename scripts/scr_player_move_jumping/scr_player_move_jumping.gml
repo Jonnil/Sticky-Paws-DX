@@ -3,37 +3,37 @@ function scr_player_move_jumping()
 	
 	#region /* Jumping */
 	if (key_jump)
-	and (number_of_jumps >= 1)
-	or (key_jump)
-	and (number_of_jumps <= -1)
+	&& (number_of_jumps >= 1)
+	|| (key_jump)
+	&& (number_of_jumps <= -1)
 	{
 		buffer_jump = 10;
 	}
 
 	if (buffer_jump > 0)
 	{
-		buffer_jump -= 1;
+		buffer_jump --;
 	}
 
 	if (buffer_jump > 0)
-	and (can_move)
-	and (global.pause == false)
-	and (key_jump_hold)
+	&& (can_move)
+	&& (global.pause == false)
+	&& (key_jump_hold)
 	{
 	
 		#region /* Drop down below semisolid platform */
 		if (key_crouch_hold)
-		and (ground_pound == false)
-		and (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		and (asset_get_type("obj_wall") == asset_object)
-		and (!place_meeting(x, y + 1, obj_wall))
-		or (key_down)
-		and (ground_pound == false)
-		and (asset_get_type("obj_semisolid_platform") == asset_object)
-		and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		and (asset_get_type("obj_wall") == asset_object)
-		and (!place_meeting(x, y + 1, obj_wall))
+		&& (ground_pound == false)
+		&& (asset_get_type("obj_semisolid_platform") == asset_object)
+		&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		&& (asset_get_type("obj_wall") == asset_object)
+		&& (!place_meeting(x, y + 1, obj_wall))
+		|| (key_down)
+		&& (ground_pound == false)
+		&& (asset_get_type("obj_semisolid_platform") == asset_object)
+		&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		&& (asset_get_type("obj_wall") == asset_object)
+		&& (!place_meeting(x, y + 1, obj_wall))
 		{
 			can_ground_pound = false;
 			can_mid_air_jump = 10;
@@ -46,28 +46,28 @@ function scr_player_move_jumping()
 		if (ground_pound == 0)
 		{
 			if (asset_get_type("obj_wall") == asset_object)
-			and (place_meeting(x, y + 1, obj_wall))
-			and (crouch == false)
+			&& (place_meeting(x, y + 1, obj_wall))
+			&& (crouch == false)
 		
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (place_meeting(x, y + 1, obj_semisolid_platform))
-			and (crouch == false)
-			and (vspeed == 0)
+			|| (asset_get_type("obj_semisolid_platform") == asset_object)
+			&& (place_meeting(x, y + 1, obj_semisolid_platform))
+			&& (crouch == false)
+			&& (vspeed == 0)
 		
-			or (asset_get_type("obj_wall") == asset_object)
-			and (place_meeting(x, y + 1, obj_wall))
+			|| (asset_get_type("obj_wall") == asset_object)
+			&& (place_meeting(x, y + 1, obj_wall))
 			and!(place_meeting(x, y - 1, obj_wall))
-			and (crouch)
-			and (vspeed == 0)
+			&& (crouch)
+			&& (vspeed == 0)
 		
-			or (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (place_meeting(x, y + 1, obj_semisolid_platform))
+			|| (asset_get_type("obj_semisolid_platform") == asset_object)
+			&& (place_meeting(x, y + 1, obj_semisolid_platform))
 			and!(place_meeting(x, y - 1, obj_semisolid_platform))
-			and (crouch)
-			and (vspeed == 0)
+			&& (crouch)
+			&& (vspeed == 0)
 			{
 				if (abs(hspeed) > (speed_max_run -1))
-				and (jump = 2)
+				&& (jump = 2)
 				{
 					jump = 3; /* If running, and doing 2nd jump, do triple jump */
 				}
@@ -86,10 +86,10 @@ function scr_player_move_jumping()
 				glide = false;
 				triplejumpdelay = 12;
 				if (abs(hspeed) > (speed_max_walk - 1))
-				or (key_up)
+				|| (key_up)
 				{
 					if (abs(hspeed) > (speed_max_run - 1))
-					and (jump >= 3)
+					&& (jump >= 3)
 					{
 						if (!place_meeting(x, y - 8, obj_wall))
 						{
@@ -135,20 +135,20 @@ function scr_player_move_jumping()
 			
 				#region /* Smoke effect under player when jumping */
 				if (position_meeting(x - 16, bbox_bottom + 1, obj_wall))
-				or (asset_get_type("obj_semisolid_platform") == asset_object)
-				and (position_meeting(x - 16, bbox_bottom + 1, obj_semisolid_platform))
+				|| (asset_get_type("obj_semisolid_platform") == asset_object)
+				&& (position_meeting(x - 16, bbox_bottom + 1, obj_semisolid_platform))
 				{
 					effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
 				}
 				if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-				or (asset_get_type("obj_semisolid_platform") == asset_object)
-				and (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+				|| (asset_get_type("obj_semisolid_platform") == asset_object)
+				&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 				{
 					effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 				}
 				if (position_meeting(x + 16, bbox_bottom + 1, obj_wall))
-				or (asset_get_type("obj_semisolid_platform") == asset_object)
-				and (position_meeting(x + 16, bbox_bottom + 1, obj_semisolid_platform))
+				|| (asset_get_type("obj_semisolid_platform") == asset_object)
+				&& (position_meeting(x + 16, bbox_bottom + 1, obj_semisolid_platform))
 				{
 					effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
 				}
@@ -158,8 +158,8 @@ function scr_player_move_jumping()
 			
 				#region /* Jump sound sfx */
 				if (jump >= 3)
-				and (hold_item_in_hands == "")
-				and (abs(hspeed) > (speed_max_run -1))
+				&& (hold_item_in_hands == "")
+				&& (abs(hspeed) > (speed_max_run -1))
 				{
 					scr_audio_play(snd_3rdjump, volume_source.sound);
 				}
@@ -168,7 +168,7 @@ function scr_player_move_jumping()
 					scr_audio_play(snd_jump, volume_source.sound);
 				}
 				if (jump >= 3)
-				and (abs(hspeed) > (speed_max_run - 1))
+				&& (abs(hspeed) > (speed_max_run - 1))
 				{
 					scr_audio_play(voice_jump3rd, volume_source.voice);
 				}

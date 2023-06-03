@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_load_all_character_portraits",
+  "name": "scr_sync_saving_create",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

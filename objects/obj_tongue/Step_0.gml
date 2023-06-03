@@ -1,12 +1,12 @@
 if (asset_get_type("obj_player") == asset_object)
-and (instance_exists(obj_player))
+&& (instance_exists(obj_player))
 {
-	timer += 1;
+	timer ++;
 	
 	if (timer > 10)
 	{
 		if (place_meeting(x, y, obj_player))
-		and (instance_nearest(x, y, obj_player).rope_swing == false)
+		&& (instance_nearest(x, y, obj_player).rope_swing == false)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{
@@ -27,9 +27,9 @@ and (instance_exists(obj_player))
 	
 	#region /* Make tongue homing toward closest object */
 	if (timer < 25)
-	and (asset_get_type("obj_ring") == asset_object)
-	and (instance_exists(obj_ring))
-	and (distance_to_object(instance_nearest(mouse_x, mouse_y, obj_ring)) < 64)
+	&& (asset_get_type("obj_ring") == asset_object)
+	&& (instance_exists(obj_ring))
+	&& (distance_to_object(instance_nearest(mouse_x, mouse_y, obj_ring)) < 64)
 	{
 		move_towards_point(instance_nearest(x, y, obj_ring).x, instance_nearest(x, y, obj_ring).y, speed);
 	}
@@ -49,14 +49,14 @@ and (instance_exists(obj_player))
 		
 		#region /* Can't interact with black wall */
 		if (asset_get_type("obj_black_wall") == asset_object)
-		and (position_meeting(x, y, obj_black_wall))
+		&& (position_meeting(x, y, obj_black_wall))
 		{
 			if (timer < 15)
 			{
 				timer = 15;
 				speed = 0;
 			}
-			timer += 1;
+			timer ++;
 		}
 		#endregion /* Can't interact with black wall END */
 		
@@ -64,7 +64,7 @@ and (instance_exists(obj_player))
 		
 		#region /* rope_swing on things */
 		if (position_meeting(x, y, obj_wall))
-		or (position_meeting(x, y, obj_ring))
+		|| (position_meeting(x, y, obj_ring))
 		{
 			speed = 0;
 			timer = 15;
@@ -79,11 +79,11 @@ and (instance_exists(obj_player))
 		
 		#region /* Fly toward enemy */
 		if (asset_get_type("obj_enemy") == asset_object)
-		and (instance_number(obj_enemy) > 0)
-		and (place_meeting(x, y, obj_enemy))
+		&& (instance_number(obj_enemy) > 0)
+		&& (place_meeting(x, y, obj_enemy))
 		{
 			if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-			and (timer < 35)
+			&& (timer < 35)
 			{
 				speed = 0;
 			}
@@ -104,7 +104,7 @@ and (instance_exists(obj_player))
 	}
 	
 	if (instance_nearest(x, y, obj_player).climb)
-	or (instance_nearest(x, y, obj_player).horizontal_rope_climb)
+	|| (instance_nearest(x, y, obj_player).horizontal_rope_climb)
 	{
 		move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 32);
 		obj_player.rope_swing = false;

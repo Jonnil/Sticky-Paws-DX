@@ -1,39 +1,39 @@
 #region /* Load correct sprite when you get the checkpoint */
 if (global.checkpoint_x == xstart)
-and (global.checkpoint_y == ystart)
+&& (global.checkpoint_y == ystart)
 {
 	checkpoint_activated = true;
 	if (instance_exists(obj_camera))
-	and (instance_exists(obj_player))
+	&& (instance_exists(obj_player))
 	{
 		if (checkpoint_which_player == 1)
-		and (obj_camera.player1 > 0)
-		and (instance_exists(obj_camera.player1))
-		and (obj_camera.player1.sprite_checkpoint_activated > 0)
+		&& (obj_camera.player1 > 0)
+		&& (instance_exists(obj_camera.player1))
+		&& (obj_camera.player1.sprite_checkpoint_activated > 0)
 		{
 			sprite_index = obj_camera.player1.sprite_checkpoint_activated;
 		}
 		else
 		if (checkpoint_which_player = 2)
-		and (obj_camera.player2 > 0)
-		and (instance_exists(obj_camera.player2))
-		and (obj_camera.player2.sprite_checkpoint_activated > 0)
+		&& (obj_camera.player2 > 0)
+		&& (instance_exists(obj_camera.player2))
+		&& (obj_camera.player2.sprite_checkpoint_activated > 0)
 		{
 			sprite_index = obj_camera.player2.sprite_checkpoint_activated;
 		}
 		else
 		if (checkpoint_which_player = 3)
-		and (obj_camera.player3 > 0)
-		and (instance_exists(obj_camera.player3))
-		and (obj_camera.player3.sprite_checkpoint_activated > 0)
+		&& (obj_camera.player3 > 0)
+		&& (instance_exists(obj_camera.player3))
+		&& (obj_camera.player3.sprite_checkpoint_activated > 0)
 		{
 			sprite_index = obj_camera.player3.sprite_checkpoint_activated;
 		}
 		else
 		if (checkpoint_which_player = 4)
-		and (obj_camera.player4 > 0)
-		and (instance_exists(obj_camera.player4))
-		and (obj_camera.player4.sprite_checkpoint_activated > 0)
+		&& (obj_camera.player4 > 0)
+		&& (instance_exists(obj_camera.player4))
+		&& (obj_camera.player4.sprite_checkpoint_activated > 0)
 		{
 			sprite_index = obj_camera.player4.sprite_checkpoint_activated;
 		}

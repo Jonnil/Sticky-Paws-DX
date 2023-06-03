@@ -1,17 +1,17 @@
 move_snap(global.grid_hsnap, global.grid_vsnap);
-delay += 1;
+delay ++;
 if (delay > 1)
 {
 	if (instance_exists(obj_level_player1_start))
-	and (place_meeting(x, y, obj_level_player1_start))
-	or (instance_exists(obj_level_player2_start))
-	and (place_meeting(x, y, obj_level_player2_start))
-	or (instance_exists(obj_level_player3_start))
-	and (place_meeting(x, y, obj_level_player3_start))
-	or (instance_exists(obj_level_player4_start))
-	and (place_meeting(x, y, obj_level_player4_start))
-	or (x < camera_get_view_x(view_camera[view_current]))
-	or (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	&& (place_meeting(x, y, obj_level_player1_start))
+	|| (instance_exists(obj_level_player2_start))
+	&& (place_meeting(x, y, obj_level_player2_start))
+	|| (instance_exists(obj_level_player3_start))
+	&& (place_meeting(x, y, obj_level_player3_start))
+	|| (instance_exists(obj_level_player4_start))
+	&& (place_meeting(x, y, obj_level_player4_start))
+	|| (x < camera_get_view_x(view_camera[view_current]))
+	|| (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	{
 		instance_destroy();
 	}
@@ -20,7 +20,7 @@ if (delay > 1)
 		if (fill_mode_type == "fill")
 		{
 			if (free_down)
-			and (delay == 2)
+			&& (delay == 2)
 			{
 				with(instance_create_depth(x, y + 32, 0, obj_leveleditor_fill))
 				{
@@ -29,7 +29,7 @@ if (delay > 1)
 			}
 			else
 			if (free_left)
-			and (delay == 3)
+			&& (delay == 3)
 			{
 				with(instance_create_depth(x - 32, y, 0, obj_leveleditor_fill))
 				{
@@ -38,7 +38,7 @@ if (delay > 1)
 			}
 			else
 			if (free_right)
-			and (delay == 4)
+			&& (delay == 4)
 			{
 				with(instance_create_depth(x + 32, y, 0, obj_leveleditor_fill))
 				{
@@ -47,7 +47,7 @@ if (delay > 1)
 			}
 			else
 			if (free_up)
-			and (delay == 5)
+			&& (delay == 5)
 			{
 				with(instance_create_depth(x, y - 32, 0, obj_leveleditor_fill))
 				{
@@ -100,13 +100,13 @@ if (delay > 1)
 			}
 		}
 		if (fill_mode_type == "fill")
-		and (delay >= 5)
+		&& (delay >= 5)
 		{
 			instance_destroy();
 		}
 		else
 		if (fill_mode_type != "fill")
-		and (delay >= 1)
+		&& (delay >= 1)
 		{
 			instance_destroy();
 		}

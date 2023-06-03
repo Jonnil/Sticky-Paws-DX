@@ -55,20 +55,20 @@ function scr_player_move_double_tap_direction_to_run()
 		
 			else
 			if (!key_left_hold)
-			and (!key_right_hold)
+			&& (!key_right_hold)
 			{
 				if (double_tap_left)
-				and (double_tap_run_timer <= 28)
+				&& (double_tap_run_timer <= 28)
 				{
 					double_tap_left = 2;
 				}
 				else
 				if (double_tap_right)
-				and (double_tap_run_timer <= 28)
+				&& (double_tap_run_timer <= 28)
 				{
 					double_tap_right = 2;
 				}
-				double_tap_run_timer -= 1;
+				double_tap_run_timer --;
 			}
 		}
 		else

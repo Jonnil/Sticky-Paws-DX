@@ -41,7 +41,7 @@ if (global.character_select_in_this_menu == "main_game")
 	
 	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 	ini_write_real(level_name, "number_of_deaths", ini_read_real(level_name, "number_of_deaths", 0) + 1);
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 else
 if (global.character_select_in_this_menu == "level_editor")
@@ -53,19 +53,19 @@ if (global.character_select_in_this_menu == "level_editor")
 	
 	ini_open(working_directory + "/save_files/custom_level_save.ini");
 	ini_write_real(level_name, "number_of_deaths", ini_read_real(level_name, "number_of_deaths", 0) + 1);
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 #endregion /* Save how many times you have died END */
 
 bubble = false;
 if (bubble == false)
 {
-	lives -= 1;
-	global.lives_until_assist += 1;
+	lives --;
+	global.lives_until_assist ++;
 }
 player = 1;
 if (asset_get_type("obj_camera") == asset_object)
-and (instance_exists(obj_camera))
+&& (instance_exists(obj_camera))
 {
 	with(obj_camera)
 	{
@@ -73,7 +73,7 @@ and (instance_exists(obj_camera))
 	}
 }
 if (asset_get_type("obj_camera") == asset_object)
-and (instance_exists(obj_camera))
+&& (instance_exists(obj_camera))
 {
 	with(obj_camera)
 	{

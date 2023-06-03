@@ -143,7 +143,7 @@ hide_menu_for_clean_screenshots_timer = 0;
 
 #region /* Character Name */
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
-or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 {
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 	{
@@ -161,7 +161,7 @@ or (file_exists(working_directory + "custom_characters/" + string(ds_list_find_v
 	narrator_name = string(uppercase_narrator_name);
 	#endregion /* Character Name END */
 						
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 else
 {
@@ -178,7 +178,7 @@ audio_pause_all(); /* Pause sound effects and music */
 
 #region /* Save Level Editor Checkpoint */
 if (room == room_leveleditor)
-and (global.character_select_in_this_menu == "main_game")
+&& (global.character_select_in_this_menu == "main_game")
 {
 	var uppercase_level_name;
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
@@ -194,11 +194,11 @@ and (global.character_select_in_this_menu == "main_game")
 	ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
 	ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 else
 if (room == room_leveleditor)
-and (global.character_select_in_this_menu == "level_editor")
+&& (global.character_select_in_this_menu == "level_editor")
 {
 	var uppercase_level_name;
 	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
@@ -214,6 +214,6 @@ and (global.character_select_in_this_menu == "level_editor")
 	ini_write_real(level_name, "checkpoint_minute", global.timeattack_minute);
 	ini_write_real(level_name, "checkpoint_realmillisecond", global.timeattack_realmillisecond);
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 #endregion /* Save Level Editor Checkpoint END */

@@ -140,12 +140,12 @@ scr_buffer_async_load("save_files", "file" + string(global.file) + ".ini");
 	
 //	#region /* Load Player Position */
 //	if (ini_read_real("Player", "player_x", 0) > 0)
-//	and (ini_read_real("Player", "player_y", 0) > 0)
+//	&& (ini_read_real("Player", "player_y", 0) > 0)
 //	{
 //		x = ini_read_real("Player", "player_x", 0);
 //		y = ini_read_real("Player", "player_y", 0);
 //		if (instance_exists(obj_level))
-//		and (!position_meeting(x, y, obj_level))
+//		&& (!position_meeting(x, y, obj_level))
 //		{
 //			x = instance_nearest(x, y, obj_level).x;
 //			y = instance_nearest(x, y, obj_level).y;
@@ -209,14 +209,14 @@ scr_buffer_async_load("save_files", "file" + string(global.file) + ".ini");
 //	}
 //	#endregion /* Have Heart Balloon END */
 	
-//	ini_close();
+//	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 //	move_snap(32, 32);
 //}
 //else
 //{
 //	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 //	ini_write_real("Player", "brand_new_file", true);
-//	ini_close();
+//	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 //	brand_new_file = true;
 //	xx_heart = x;
 //	yy_heart = y - 64;
@@ -249,7 +249,7 @@ scr_config_load(); /* Load Config only once in create event, or it will mess up 
 if (file_exists("localization.csv"))
 {
 	if (global.language_localization > ds_grid_width(global.language_local_data))
-	or (global.language_localization < 0)
+	|| (global.language_localization < 0)
 	{
 		scr_set_default_language();
 	}
@@ -261,7 +261,7 @@ if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)
 {
 	ini_write_real("Player", "number_of_levels_cleared", 1)
 }
-ini_close();
+ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 
 #region /* Reset level zoom */
 if (global.reset_level_zoom_when_going_back_to_map)
@@ -269,7 +269,7 @@ if (global.reset_level_zoom_when_going_back_to_map)
 	global.zoom_level = global.default_zoom_level;
 	ini_open("config.ini");
 	ini_write_real("config", "zoom_level", global.default_zoom_level);
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 #endregion /* Reset level zoom END */
 
@@ -281,7 +281,7 @@ if (global.reset_world_map_zoom_when_going_back_to_map)
 	zoom_border_lerp = 0;
 	ini_open("config.ini");
 	ini_write_real("config", "zoom_world_map", global.default_zoom_world_map);
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 #endregion /* Reset world map zoom END */
 

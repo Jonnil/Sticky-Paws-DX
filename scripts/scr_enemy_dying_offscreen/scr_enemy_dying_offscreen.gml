@@ -12,9 +12,9 @@ function scr_enemy_dying_offscreen()
 	}
 	
 	if (bbox_left > view_right + 16)
-	or (bbox_right < view_left - 16)
-	or (bbox_top > view_bottom + 16)
-	or (bbox_bottom < view_top - 16)
+	|| (bbox_right < view_left - 16)
+	|| (bbox_top > view_bottom + 16)
+	|| (bbox_bottom < view_top - 16)
 	{
 		if (die)
 		{

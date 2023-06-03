@@ -5,7 +5,7 @@ function scr_update_all_backgrounds()
 	#endregion /* Debug toggles END */
 	
 	if (global.can_load_official_and_custom_resources)
-	and (can_update_all_backgrounds)
+	&& (can_update_all_backgrounds)
 	{
 		
 		#region /* Update All Backgrounds */
@@ -242,13 +242,13 @@ function scr_update_all_backgrounds()
 		#region /* Load Level Tileset File */
 		scr_delete_sprite_properly(global.custom_tileset);
 		if (global.character_select_in_this_menu == "main_game")
-		and (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png"))
+		&& (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png"))
 		{
 			global.custom_tileset = sprite_add("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
 		}
 		else
 		if (global.character_select_in_this_menu == "level_editor")
-		and (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png"))
+		&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png"))
 		{
 			global.custom_tileset = sprite_add(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
 		}

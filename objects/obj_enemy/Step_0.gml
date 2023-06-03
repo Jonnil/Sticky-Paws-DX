@@ -8,7 +8,7 @@ if (place_meeting(x, y, obj_water))
 
 if (stomped_delay > 0)
 {
-	stomped_delay -= 1;
+	stomped_delay --;
 }
 
 draw_xscale = lerp(draw_xscale, 1, 0.1);

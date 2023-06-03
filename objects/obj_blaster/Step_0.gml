@@ -5,15 +5,15 @@ var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_v
 
 #region /* Gravity */
 if (asset_get_type("obj_wall") == asset_object)
-and (!position_meeting(x, bbox_bottom + 1, obj_wall))
-and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-and (asset_get_type("obj_camera") == asset_object)
-and (instance_exists(obj_camera))
-and (x < view_right)
-and (x > view_left)
-and (y < view_bottom)
-and (y > view_top)
-and (stop_gravity == false)
+&& (!position_meeting(x, bbox_bottom + 1, obj_wall))
+&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+&& (asset_get_type("obj_camera") == asset_object)
+&& (instance_exists(obj_camera))
+&& (x < view_right)
+&& (x > view_left)
+&& (y < view_bottom)
+&& (y > view_top)
+&& (stop_gravity == false)
 {
 	gravity = 0.5;
 }
@@ -32,31 +32,31 @@ if (vspeed >= 16)
 
 #region /* Stop firing if enemies are disabled */
 if (global.assist_enable)
-and (global.assist_enable_enemies == false)
+&& (global.assist_enable_enemies == false)
 {
 	time = 0;
 }
 #endregion /* Stop firing if enemies are disabled END */
 
 if (asset_get_type("obj_player") == asset_object)
-and (asset_get_type("obj_wall") == asset_object)
-and (instance_exists(obj_player))
+&& (asset_get_type("obj_wall") == asset_object)
+&& (instance_exists(obj_player))
 {
 	if (!place_meeting(x - 64, y, obj_player))
-	and (!place_meeting(x - 32, y, obj_player))
-	and (!place_meeting(x - 16, y, obj_player))
-	and (!place_meeting(x - 8, y, obj_player))
-	and (!place_meeting(x + 64, y, obj_player))
-	and (!place_meeting(x + 32, y, obj_player))
-	and (!place_meeting(x + 16, y, obj_player))
-	and (!place_meeting(x + 8, y, obj_player))
+	&& (!place_meeting(x - 32, y, obj_player))
+	&& (!place_meeting(x - 16, y, obj_player))
+	&& (!place_meeting(x - 8, y, obj_player))
+	&& (!place_meeting(x + 64, y, obj_player))
+	&& (!place_meeting(x + 32, y, obj_player))
+	&& (!place_meeting(x + 16, y, obj_player))
+	&& (!place_meeting(x + 8, y, obj_player))
 	{
 		yy = lerp(yy, y, 0.5);
 		draw_xscale = lerp(draw_xscale, image_xscale, 0.5);
 		draw_yscale = lerp(draw_yscale, image_yscale, 0.5);
 		if (time < 201)
 		{
-			time += 1;
+			time ++;
 		}
 	}
 	else
@@ -82,7 +82,7 @@ if (time > 200)
 	if (asset_get_type("obj_bullet") == asset_object)
 	{
 		if (x < instance_nearest(x, y, obj_player).x)
-		and (!position_meeting(x + 32, y, obj_wall))
+		&& (!position_meeting(x + 32, y, obj_wall))
 		{
 			if (give_rewards > 0)
 			{
@@ -102,7 +102,7 @@ if (time > 200)
 		}
 		else
 		if (x > instance_nearest(x, y, obj_player).x)
-		and (!position_meeting(x - 32, y, obj_wall))
+		&& (!position_meeting(x - 32, y, obj_wall))
 		{
 			if (give_rewards > 0)
 			{

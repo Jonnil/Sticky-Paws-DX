@@ -5,7 +5,7 @@ function scr_save_objects_with_rotation_placement()
 	instance_activate_all();
 	var file, str;
 	if (global.select_level_index >= 1)
-	and (global.create_level_from_template == false)
+	&& (global.create_level_from_template == false)
 	{
 		file = file_text_open_write(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/data/object_rotation_placement.txt"); /* Open file for writing */
 	}
@@ -20,12 +20,12 @@ function scr_save_objects_with_rotation_placement()
 	with(obj_leveleditor_placed_object)
 	{
 		if (object == 62)
-		or (object == 64)
-		or (object == 65)
-		or (object == 732)
-		or (object == 733)
-		or (object == 734)
-		or (object == 73)
+		|| (object == 64)
+		|| (object == 65)
+		|| (object == 732)
+		|| (object == 733)
+		|| (object == 734)
+		|| (object == 73)
 		{
 			/* | = chr("124") */
 			/* } = chr("125") */

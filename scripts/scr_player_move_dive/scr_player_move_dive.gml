@@ -3,30 +3,30 @@ function scr_player_move_dive()
 	
 	#region /* Dive */
 	if (allow_dive)
-	and (can_move)
-	and (hold_item_in_hands == "")
-	and (global.pause == false)
-	and (can_dive)
-	and (drop_off_wall_climb == 0)
-	and (in_water == false)
+	&& (can_move)
+	&& (hold_item_in_hands == "")
+	&& (global.pause == false)
+	&& (can_dive)
+	&& (drop_off_wall_climb == 0)
+	&& (in_water == false)
 	{
 		if (dive == false)
-		and (burnt == false)
-		and (stick_to_wall == false)
-		and (ledge_grab == false)
-		and (climb == false)
-		and (horizontal_rope_climb == false)
-		and (takendamage <= takendamage_freezetime)
-		and (key_dive_pressed) /* Pressing the dive pressed key */
-		or (dive == false)
-		and (burnt == false)
-		and (stick_to_wall == false)
-		and (ledge_grab == false)
-		and (climb == false)
-		and (horizontal_rope_climb == false)
-		and (takendamage <= takendamage_freezetime)
-		and (double_tap_to_dive) /* If you are allowed to double-tap direction to dive */
-		and (double_tap_dive) /* If you double tapped direction to dive */
+		&& (burnt == false)
+		&& (stick_to_wall == false)
+		&& (ledge_grab == false)
+		&& (climb == false)
+		&& (horizontal_rope_climb == false)
+		&& (takendamage <= takendamage_freezetime)
+		&& (key_dive_pressed) /* Pressing the dive pressed key */
+		|| (dive == false)
+		&& (burnt == false)
+		&& (stick_to_wall == false)
+		&& (ledge_grab == false)
+		&& (climb == false)
+		&& (horizontal_rope_climb == false)
+		&& (takendamage <= takendamage_freezetime)
+		&& (double_tap_to_dive) /* If you are allowed to double-tap direction to dive */
+		&& (double_tap_dive) /* If you double tapped direction to dive */
 		{
 			if (rope_swing)
 			{
@@ -61,13 +61,13 @@ function scr_player_move_dive()
 					
 			#region /* Choose direction to dive */
 			if (key_left_hold)
-			and (!key_right_hold)
-			or (image_xscale < 0)
+			&& (!key_right_hold)
+			|| (image_xscale < 0)
 			{
 				if (hspeed >- 10)
 				{
 					if (asset_get_type("obj_wall") == asset_object)
-					and (!place_meeting(x - 4, y, obj_wall))
+					&& (!place_meeting(x - 4, y, obj_wall))
 					{
 						hspeed = - 10;
 					}
@@ -76,13 +76,13 @@ function scr_player_move_dive()
 			}
 			else
 			if (key_right_hold)
-			and (!key_left_hold)
-			or (image_xscale > 0)
+			&& (!key_left_hold)
+			|| (image_xscale > 0)
 			{
 				if (hspeed <+ 10)
 				{
 					if (asset_get_type("obj_wall") == asset_object)
-					and (!place_meeting(x + 4, y, obj_wall))
+					&& (!place_meeting(x + 4, y, obj_wall))
 					{
 						hspeed = +10;
 					}
@@ -101,11 +101,11 @@ function scr_player_move_dive()
 			spring = false;
 			move_towards_spring_endpoint = false;
 			if (asset_get_type("obj_wall") == asset_object)
-			and (!place_meeting(x, y + 1, obj_wall))
-			and (asset_get_type("obj_semisolid_platform") == asset_object)
-			and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			and (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			and (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!place_meeting(x, y + 1, obj_wall))
+			&& (asset_get_type("obj_semisolid_platform") == asset_object)
+			&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+			&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 			{
 				crouch = false;
 			}
@@ -119,11 +119,11 @@ function scr_player_move_dive()
 		if (dive)
 		{
 			if (key_left_hold)
-			and (asset_get_type("obj_wall") == asset_object)
-			and (place_meeting(x + 1, y, obj_wall))
-			or (key_right_hold)
-			and (asset_get_type("obj_wall") == asset_object)
-			and (place_meeting(x - 1, y, obj_wall))
+			&& (asset_get_type("obj_wall") == asset_object)
+			&& (place_meeting(x + 1, y, obj_wall))
+			|| (key_right_hold)
+			&& (asset_get_type("obj_wall") == asset_object)
+			&& (place_meeting(x - 1, y, obj_wall))
 			{
 				hspeed = 0;
 			}
@@ -134,13 +134,13 @@ function scr_player_move_dive()
 				if (hspeed >-4)
 				{
 					if (asset_get_type("obj_wall") == asset_object)
-					and (!place_meeting(x - 4, y, obj_wall))
+					&& (!place_meeting(x - 4, y, obj_wall))
 					{
 						hspeed = -4;
 					}
 					else
 					if (asset_get_type("obj_wall") == asset_object)
-					and (!place_meeting(x - 1, y, obj_wall))
+					&& (!place_meeting(x - 1, y, obj_wall))
 					{
 						hspeed = - 1;
 					}
@@ -152,13 +152,13 @@ function scr_player_move_dive()
 				if (hspeed <+ 4)
 				{
 					if (asset_get_type("obj_wall") == asset_object)
-					and (!place_meeting(x + 4, y, obj_wall))
+					&& (!place_meeting(x + 4, y, obj_wall))
 					{
 						hspeed = +4;
 					}
 					else
 					if (asset_get_type("obj_wall") == asset_object)
-					and (!place_meeting(x + 1, y, obj_wall))
+					&& (!place_meeting(x + 1, y, obj_wall))
 					{
 						hspeed = +1;
 					}
@@ -193,7 +193,7 @@ function scr_player_move_dive()
 			if (cancel_dive_by_pressing_jump_or_dive_button)
 			{
 				if (key_jump)
-				or (key_dive_pressed)
+				|| (key_dive_pressed)
 				{
 					dive = false;
 					can_dive = false;
@@ -202,9 +202,9 @@ function scr_player_move_dive()
 			if (cancel_dive_by_pressing_opposite_direction)
 			{
 				if (hspeed < 0)
-				and (key_right_hold)
-				or (hspeed > 0)
-				and (key_left_hold)
+				&& (key_right_hold)
+				|| (hspeed > 0)
+				&& (key_left_hold)
 				{
 					dive = false;
 					can_dive = false;

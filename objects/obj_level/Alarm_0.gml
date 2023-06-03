@@ -32,7 +32,7 @@ if (file_exists(working_directory + "/save_files/file" + string(global.file) + "
 	timeattack_realmillisecond = ini_read_real(level_name, "timeattack_realmillisecond", 999999999);
 	level_score = ini_read_real(level_name, "level_score", 0);
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	
 }
 else
@@ -61,7 +61,7 @@ else
 #endregion /* Level Load END */
 
 if (always_open)
-and (clear_rate = "closed")
+&& (clear_rate = "closed")
 {
 	clear_rate = "enter";
 }

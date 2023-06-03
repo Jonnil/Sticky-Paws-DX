@@ -9,7 +9,7 @@ audio_stop_sound(snd_music_boss);
 #region /* Update Music */
 /* OGG small letter File */
 if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg"))
-and (global.character_select_in_this_menu == "main_game")
+&& (global.character_select_in_this_menu == "main_game")
 {
 	global.music = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music.ogg");
 }
@@ -28,7 +28,7 @@ else
 #region /* Update Music Underwater */
 /* OGG small letter File */
 if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg"))
-and (global.character_select_in_this_menu == "main_game")
+&& (global.character_select_in_this_menu == "main_game")
 {
 	global.music_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/music_underwater.ogg");
 }

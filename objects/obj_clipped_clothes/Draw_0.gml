@@ -1,14 +1,14 @@
 draw_self();
 image_speed = 0.1;
 if (place_meeting(x, y, obj_player))
-and (fall == false)
+&& (fall == false)
 {
 	fall = true;
 	
 	#region /* If it's a clipped shirt, turn into the shirt falling */
 	if (asset_get_type("spr_clipped_shirt") == asset_sprite)
-	and (sprite_index = spr_clipped_shirt)
-	and (asset_get_type("spr_shirt") == asset_sprite)
+	&& (sprite_index = spr_clipped_shirt)
+	&& (asset_get_type("spr_shirt") == asset_sprite)
 	{
 		sprite_index = spr_shirt;
 	}
@@ -16,8 +16,8 @@ and (fall == false)
 	
 	#region /* If it's clipped pants, turn into the pants falling */
 	if (asset_get_type("spr_clipped_pants") == asset_sprite)
-	and (sprite_index = spr_clipped_pants)
-	and (asset_get_type("spr_pants") == asset_sprite)
+	&& (sprite_index = spr_clipped_pants)
+	&& (asset_get_type("spr_pants") == asset_sprite)
 	{
 		sprite_index = spr_pants;
 	}
@@ -25,8 +25,8 @@ and (fall == false)
 	
 	#region /* If it's a clipped sock, turn into the sock falling */
 	if (asset_get_type("spr_clipped_sock") == asset_sprite)
-	and (sprite_index = spr_clipped_sock)
-	and (asset_get_type("spr_sock") == asset_sprite)
+	&& (sprite_index = spr_clipped_sock)
+	&& (asset_get_type("spr_sock") == asset_sprite)
 	{
 		sprite_index = spr_sock;
 	}
@@ -48,7 +48,7 @@ and (fall == false)
 	if (asset_get_type("obj_clipper") == asset_object)
 	{
 		if (asset_get_type("spr_sock") == asset_sprite)
-		and (sprite_index = spr_sock)
+		&& (sprite_index = spr_sock)
 		{
 			with(instance_create_depth(x, y - 16, 0, obj_clipper))
 			{
@@ -72,9 +72,9 @@ and (fall == false)
 if (fall)
 {
 	if (!position_meeting(x, bbox_bottom + 1, obj_wall))
-	and (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	and (x > camera_get_view_x(view_camera[view_current]))
-	and (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	&& (x > camera_get_view_x(view_camera[view_current]))
+	&& (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	{
 		gravity = 0.5;
 		if (vspeed <+ 1)

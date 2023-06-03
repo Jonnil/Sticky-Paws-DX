@@ -25,15 +25,15 @@ function scr_player_move_pause()
 	
 	#region /* Pause */	
 	if (keyboard_check_pressed(vk_escape))
-	or (keyboard_check(vk_tab))
-	and (keyboard_check(vk_lshift))
-	or (gamepad_button_check_pressed(player_gamepad_slot, gp_start))
-	or (gamepad_button_check_pressed(player_gamepad_slot, gp_select))
-	or (!gamepad_is_connected(player_gamepad_slot))
-	and (controller_connected)
-	or (global.actually_play_edited_level)
-	and (!window_has_focus())
-	and (global.automatically_pause_when_window_is_unfocused)
+	|| (keyboard_check(vk_tab))
+	&& (keyboard_check(vk_lshift))
+	|| (gamepad_button_check_pressed(player_gamepad_slot, gp_start))
+	|| (gamepad_button_check_pressed(player_gamepad_slot, gp_select))
+	|| (!gamepad_is_connected(player_gamepad_slot))
+	&& (controller_connected)
+	|| (global.actually_play_edited_level)
+	&& (!window_has_focus())
+	&& (global.automatically_pause_when_window_is_unfocused)
 	{
 		
 		#region /* Show all HUD elements */
@@ -52,8 +52,8 @@ function scr_player_move_pause()
 		
 		controller_connected = false;
 		if (global.play_edited_level)
-		and (global.actually_play_edited_level == false)
-		and (global.character_select_in_this_menu == "level_editor")
+		&& (global.actually_play_edited_level == false)
+		&& (global.character_select_in_this_menu == "level_editor")
 		{
 			global.play_edited_level = false;
 			global.actually_play_edited_level = false;
@@ -61,12 +61,12 @@ function scr_player_move_pause()
 			
 			#region /* Save Level Information when in level editor */
 			if (global.character_select_in_this_menu == "level_editor")
-			and (global.level_name != "")
+			&& (global.level_name != "")
 			{
 				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
 				ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
-				ini_close();
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 			#endregion /* Save Level Information when in level editor END */
 			
@@ -77,7 +77,7 @@ function scr_player_move_pause()
 			
 			#region /* What player should control the pause menu */
 			if (gamepad_button_check_pressed(player_gamepad_slot, gp_start))
-			or (gamepad_button_check_pressed(player_gamepad_slot, gp_select))
+			|| (gamepad_button_check_pressed(player_gamepad_slot, gp_select))
 			{
 				global.pause_player = player - 1;
 			}

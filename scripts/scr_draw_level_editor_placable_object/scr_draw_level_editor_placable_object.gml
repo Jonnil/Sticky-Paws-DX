@@ -23,7 +23,7 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 		}
 		//if (unlocked_object[unlock_index])
 		if (unlocked_object[var_place_object_id])
-		and (global.show_new_items_notification)
+		&& (global.show_new_items_notification)
 		{
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + var_scroll_x * var_selected_object,

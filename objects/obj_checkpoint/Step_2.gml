@@ -5,12 +5,12 @@ var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_v
 
 #region /* Gravity */
 if (asset_get_type("obj_wall") == asset_object)
-and (!place_meeting(x, y + 1, obj_wall))
-and (!place_meeting(x, y + 1, obj_semisolid_platform))
-and (x < view_right)
-and (x > view_left)
-and (y < view_bottom)
-and (y > view_top)
+&& (!place_meeting(x, y + 1, obj_wall))
+&& (!place_meeting(x, y + 1, obj_semisolid_platform))
+&& (x < view_right)
+&& (x > view_left)
+&& (y < view_bottom)
+&& (y > view_top)
 {
 	gravity = 0.5;
 }
