@@ -488,6 +488,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				{
 					directory_destroy(working_directory + "/custom_levels/" + string(global.level_name));
 				}
+				ini_open(working_directory + "/save_files/custom_level_save.ini");
+				ini_section_delete(string(global.level_name));
+				ini_close();
 				global.select_level_index --; /* Decrease the "select level index" so that the cursor isn't selecting a level that no longer exists */
 				scr_load_custom_level_initializing();
 				can_input_player1_name = 2;

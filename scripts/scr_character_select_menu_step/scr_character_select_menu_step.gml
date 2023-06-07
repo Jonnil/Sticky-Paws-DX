@@ -107,7 +107,6 @@ function scr_character_select_menu_step()
 	
 	if (menu == "select_character")
 	|| (menu == "back_from_character_select")
-	|| (menu == "open_custom_characters_folder")
 	|| (menu == "manage_character")
 	|| (menu == "search_character_id")
 	|| (menu == "input_name_ok")
@@ -121,7 +120,6 @@ function scr_character_select_menu_step()
 		&& (player4_accept_selection != 0)
 		&& (player1_key_a_pressed)
 		&& (player_menu[1] != "back_from_character_select")
-		&& (player_menu[1] != "open_custom_characters_folder")
 		&& (player_menu[1] != "manage_character")
 		&& (player_menu[1] != "search_character_id")
 		
@@ -298,41 +296,6 @@ function scr_character_select_menu_step()
 			
 			#region /* The buttons in the top left corner of character select screen */
 			
-			#region /* Click Open Custom Levels Folder */
-			if (global.enable_open_custom_folder)
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 42 + 2, 371, 42 + 41))
-			&& (global.controls_used_for_menu_navigation == "mouse")
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0)
-			|| (global.enable_open_custom_folder)
-			&& (menu == "open_custom_characters_folder")
-			&& (player1_key_a_pressed)
-			&& (menu_delay == 0)
-			{
-				scr_open_folder(game_save_id + "\custom_characters")
-			}
-			#endregion /* Click Open Custom Levels Folder END */
-			
-			else
-			
-			#region /* Click Manage Characters */
-			if (global.enable_manage_characters)
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 42 + 2 + 42, 371, 42 + 41 + 42))
-			&& (global.controls_used_for_menu_navigation == "mouse")
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0)
-			|| (global.enable_manage_characters)
-			&& (menu == "manage_character")
-			&& (player1_key_a_pressed)
-			&& (menu_delay == 0)
-			{
-				menu_delay = 6;
-				file_load_timer = 0;
-				load_ok = 0;
-				menu = "click_copy_character";
-			}
-			#endregion /* Click Manage Characters END */
-			
 			#region /* Key Up */
 			if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
 			|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
@@ -343,30 +306,13 @@ function scr_character_select_menu_step()
 				if (menu_delay == 0)
 				&& (menu_joystick_delay <= 0)
 				{
-					if (global.enable_open_custom_folder)
-					&& (menu == "open_custom_characters_folder") /* Open Custom Characters Folder */
-					{
-						menu_delay = 3;
-						can_navigate = true;
-						player_menu[1] = "back_from_character_select";
-						menu = "back_from_character_select";
-					}
-					else
 					if (global.enable_manage_characters)
 					&& (menu == "manage_character") /* Copy Character */
 					{
 						menu_delay = 3;
 						can_navigate = true;
-						if (global.enable_open_custom_folder)
-						{
-							player_menu[1] = "open_custom_characters_folder";
-							menu = "open_custom_characters_folder";
-						}
-						else
-						{
-							player_menu[1] = "back_from_character_select";
-							menu = "back_from_character_select";
-						}
+						player_menu[1] = "back_from_character_select";
+						menu = "back_from_character_select";
 					}
 					else
 					if (menu == "search_character_id") /* Search Character ID */
@@ -377,12 +323,6 @@ function scr_character_select_menu_step()
 						{
 							player_menu[1] = "manage_character";
 							menu = "manage_character";
-						}
-						else
-						if (global.enable_open_custom_folder)
-						{
-							player_menu[1] = "open_custom_characters_folder";
-							menu = "open_custom_characters_folder";
 						}
 						else
 						{
@@ -409,12 +349,6 @@ function scr_character_select_menu_step()
 					if (menu == "back_from_character_select")
 					{
 						menu_delay = 3;
-						if (global.enable_open_custom_folder)
-						{
-							player_menu[1] = "open_custom_characters_folder"
-							menu = "open_custom_characters_folder"
-						}
-						else
 						if (global.enable_manage_characters)
 						{
 							player_menu[1] = "manage_character";
@@ -424,23 +358,6 @@ function scr_character_select_menu_step()
 						{
 							player_menu[1] = "search_character_id";
 							menu = "search_character_id";
-						}
-					}
-					else
-					if (global.enable_open_custom_folder)
-					&& (menu == "open_custom_characters_folder") /* Open Custom Characters Folder */
-					{
-						menu_delay = 3;
-						can_navigate = true;
-						if (global.enable_manage_characters)
-						{
-							player_menu[1] = "manage_character";
-							menu = "manage_character";
-						}
-						else
-						{
-							player_menu[1] = "select_character";
-							menu = "select_character";
 						}
 					}
 					else
@@ -1176,8 +1093,6 @@ function scr_character_select_menu_step()
 					if (menu_delay == 0)
 					&& (menu != "back_from_character_select")
 					&& (player_menu[1] != "back_from_character_select")
-					&& (menu != "open_custom_characters_folder")
-					&& (player_menu[1] != "open_custom_characters_folder")
 					&& (menu != "manage_character")
 					&& (player_menu[1] != "manage_character")
 					&& (menu != "search_character_id")

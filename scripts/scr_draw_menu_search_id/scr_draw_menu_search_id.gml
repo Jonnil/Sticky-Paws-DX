@@ -572,6 +572,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (directory_exists(working_directory + "/custom_levels/" + string(global.level_name)))
 				{
 					directory_destroy(working_directory + "/custom_levels/" + string(global.level_name));
+					ini_open(working_directory + "/save_files/custom_level_save.ini");
+					ini_section_delete(string(global.level_name));
+					ini_close();
 					global.select_level_index = 0;
 					global.level_name = "";
 				}

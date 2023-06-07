@@ -4,6 +4,7 @@ if (global.actually_play_edited_level == false)
 	var cam_y = camera_get_view_y(view_camera[view_current]);
 	var cam_width = camera_get_view_width(view_camera[view_current]);
 	var cam_height = camera_get_view_height(view_camera[view_current]);
+	surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
 	
 	#region /* Deactivate instances outside view. Run this code at start of Step Event */
 	deactivate_timer ++;

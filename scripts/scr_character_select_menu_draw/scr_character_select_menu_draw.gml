@@ -19,7 +19,6 @@ function scr_character_select_menu_draw()
 	
 	if (menu == "select_character")
 	|| (menu == "back_from_character_select")
-	|| (menu == "open_custom_characters_folder")
 	|| (menu == "manage_character")
 	|| (menu == "search_character_id")
 	|| (menu == "input_name_ok")
@@ -30,7 +29,7 @@ function scr_character_select_menu_draw()
 		player_display_x[1] = -465;
 		player_display_x[2] = -155;
 		player_display_x[3] = +155;
-		player4_display_x = +465;
+		player_display_x[4] = +465;
 		player1_scale = 0.85;
 		player2_scale = 0.85;
 		player3_scale = 0.85;
@@ -52,7 +51,7 @@ function scr_character_select_menu_draw()
 		}
 		if (player4_accept_selection)
 		{
-			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player4_display_x, get_window_height * 0.5, player4_scale, player4_scale, 0, global.player4_color, 1);
+			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[4], get_window_height * 0.5, player4_scale, player4_scale, 0, global.player4_color, 1);
 		}
 		#endregion /* Give feedback that you have selected a character, run this before the character portrait code END */
 		
@@ -235,7 +234,7 @@ function scr_character_select_menu_draw()
 		xx[1] = lerp(xx[1], player_display_x[1], 0.1);
 		xx[2] = lerp(xx[2], player_display_x[2], 0.1);
 		xx[3] = lerp(xx[3], player_display_x[3], 0.1);
-		xx[4] = lerp(xx[4], player4_display_x, 0.1);
+		xx[4] = lerp(xx[4], player_display_x[4], 0.1);
 		
 		#region /* All code before menu navigation code */
 		
@@ -252,51 +251,9 @@ function scr_character_select_menu_draw()
 		}
 		#endregion /* Select your character text END */
 		
-		#region /* Show Back key when you can go back to main menu */
-		if (global.character_select_in_this_menu == "main_game")
-		{
-			draw_menu_button(0, 0, l10n_text("Back"), "back_from_character_select", "main_game");
-		}
-		else
-		{
-			draw_menu_button(0, 0, l10n_text("Back"), "back_from_character_select", "level_editor");
-		}
-		draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
-		#endregion /* Show Back key when you can go back to main menu END */
-		
-		#region /* Open Custom Levels Folder */
-		if (global.enable_open_custom_folder)
-		{
-			draw_menu_button(0, 42, l10n_text("Open Character Folder"), "open_custom_characters_folder", "open_custom_characters_folder");
-			draw_sprite_ext(spr_icons_folder, 0, 16, 42 + 21, 1, 1, 0, c_white, 1);
-		}
-		#endregion /* Open Custom Levels Folder END */
-		
-		#region /* Manage Characters */
+		var back_y = 0;
+		var manage_characters_y = 42;
 		if (global.enable_manage_characters)
-		{
-			if (global.enable_open_custom_folder)
-			{
-				draw_menu_button(0, 42 + 42, l10n_text("Manage Characters"), "manage_character", "click_copy_character");
-			}
-			else
-			{
-				draw_menu_button(0, 42, l10n_text("Manage Characters"), "manage_character", "click_copy_character");
-			}
-		}
-		#endregion /* Manage Characters END */
-		
-		#region /* Search Character ID Button */
-		if (global.enable_open_custom_folder)
-		&& (global.enable_manage_characters)
-		{
-			var draw_search_id_y = 42 * 3;
-		}
-		else
-		if (global.enable_open_custom_folder)
-		&& (global.enable_manage_characters == false)
-		|| (global.enable_open_custom_folder == false)
-		&& (global.enable_manage_characters)
 		{
 			var draw_search_id_y = 42 * 2;
 		}
@@ -304,7 +261,28 @@ function scr_character_select_menu_draw()
 		{
 			var draw_search_id_y = 42 * 1;
 		}
-		draw_menu_button(0, draw_search_id_y, l10n_text("Search Character ID"), "search_character_id", "search_character_id");
+		
+		#region /* Show Back key when you can go back to main menu */
+		if (global.character_select_in_this_menu == "main_game")
+		{
+			draw_menu_button(-32, back_y, l10n_text("Back"), "back_from_character_select", "main_game");
+		}
+		else
+		{
+			draw_menu_button(-32, back_y, l10n_text("Back"), "back_from_character_select", "level_editor");
+		}
+		draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
+		#endregion /* Show Back key when you can go back to main menu END */
+		
+		#region /* Manage Characters */
+		if (global.enable_manage_characters)
+		{
+			draw_menu_button(-32, manage_characters_y, l10n_text("Manage Characters"), "manage_character", "click_copy_character");
+		}
+		#endregion /* Manage Characters END */
+		
+		#region /* Search Character ID Button */
+		draw_menu_button(-32, draw_search_id_y, l10n_text("Search Character ID"), "search_character_id", "search_character_id");
 		
 		#region /* Draw Search Key */
 		if (gamepad_is_connected(global.player1_slot))
@@ -549,7 +527,7 @@ function scr_character_select_menu_draw()
 			#region /* Player 4 Join Text */
 			if (player4_accept_selection <= -1 && !player4_automatically_join && (global.playergame >= 3 || global.skip_how_many_people_are_playing_screen))
 			{
-				var player_join_x = window_width_half + player4_display_x;
+				var player_join_x = window_width_half + player_display_x[4];
 				var player_join_y = window_height_half + 32;
 				draw_set_halign(fa_right);
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_menu_navigation == "mouse")

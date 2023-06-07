@@ -23,7 +23,9 @@ function scr_player_move_pause()
 	}
 	#endregion /* Set correct controller ports END */
 	
-	#region /* Pause */	
+	#region /* Pause */
+	surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
+	
 	if (keyboard_check_pressed(vk_escape))
 	|| (keyboard_check(vk_tab))
 	&& (keyboard_check(vk_lshift))

@@ -645,6 +645,9 @@ function scr_select_custom_level_menu()
 				{
 					can_navigate = true;
 					menu_delay = 3;
+					ini_open(working_directory + "/save_files/custom_level_save.ini");
+					ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
+					ini_close();
 					scr_copy_move_files(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "/custom_levels/" + string(global.level_name), true);
 					scr_load_custom_level_initializing();
 					menu = "load_custom_level";
