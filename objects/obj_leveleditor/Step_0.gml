@@ -1509,7 +1509,7 @@ if (global.actually_play_edited_level == false)
 	}
 	if (menu_delay < 0)
 	{
-		menu_delay = 0;
+		menu_delay = 2;
 	}
 	#endregion /* Menu Navigation Delay END */
 	

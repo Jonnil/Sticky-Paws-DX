@@ -4266,24 +4266,58 @@ function scr_options_menu()
 			//}
 			//#endregion /* Drop down menu END */
 			
-			if (menu == "assist_invincible") && (menu_delay == 0){if (global.assist_invincible){global.assist_invincible = false;}else{global.assist_invincible = true;}menu_delay = 3;}
-			if (menu == "assist_breathe_underwater") && (menu_delay == 0){if (global.assist_breathe_underwater){global.assist_breathe_underwater = false;}else{global.assist_breathe_underwater = true;}menu_delay = 3;}
-			if (menu == "assist_guiding_arrows") && (menu_delay == 0){if (global.assist_guiding_arrows){global.assist_guiding_arrows = false;}else{global.assist_guiding_arrows = true;}menu_delay = 3;}
-			if (menu == "assist_normal_arrows") && (menu_delay == 0){if (global.assist_normal_arrows){global.assist_normal_arrows = false;}else{global.assist_normal_arrows = true;}menu_delay = 3;}
-			if (menu == "assist_enable_enemies") && (menu_delay == 0) && (global.assist_enable){if (global.assist_enable_enemies){global.assist_enable_enemies = false;}else{global.assist_enable_enemies = true;}menu_delay = 3;}
-			if (menu == "assist_enable_spikes") && (menu_delay == 0) && (global.assist_enable){if (global.assist_enable_spikes){global.assist_enable_spikes = false;}else{global.assist_enable_spikes = true;}menu_delay = 3;}
-			if (menu == "assist_show_assist_mode_text") && (menu_delay == 0){if (global.assist_show_assist_mode_text){global.assist_show_assist_mode_text = false;}else{global.assist_show_assist_mode_text = true;}menu_delay = 3;}
+			if (menu == "assist_invincible") && (menu_delay == 0){if (global.assist_invincible){global.assist_invincible = false;}else{global.assist_invincible = true;}
+			menu_delay = 3;
+			}
+			if (menu == "assist_breathe_underwater") && (menu_delay == 0){if (global.assist_breathe_underwater){global.assist_breathe_underwater = false;}else{global.assist_breathe_underwater = true;}
+			menu_delay = 3;
+			}
+			if (menu == "assist_guiding_arrows") && (menu_delay == 0){if (global.assist_guiding_arrows){global.assist_guiding_arrows = false;}else{global.assist_guiding_arrows = true;}
+			menu_delay = 3;
+			}
+			if (menu == "assist_normal_arrows") && (menu_delay == 0){if (global.assist_normal_arrows){global.assist_normal_arrows = false;}else{global.assist_normal_arrows = true;}
+			menu_delay = 3;
+			}
+			if (menu == "assist_enable_enemies") && (menu_delay == 0) && (global.assist_enable){if (global.assist_enable_enemies){global.assist_enable_enemies = false;}else{global.assist_enable_enemies = true;}
+			menu_delay = 3;
+			}
+			if (menu == "assist_enable_spikes") && (menu_delay == 0) && (global.assist_enable){if (global.assist_enable_spikes){global.assist_enable_spikes = false;}else{global.assist_enable_spikes = true;}
+			menu_delay = 3;
+			}
+			if (menu == "assist_show_assist_mode_text") && (menu_delay == 0){if (global.assist_show_assist_mode_text){global.assist_show_assist_mode_text = false;}else{global.assist_show_assist_mode_text = true;}
+			menu_delay = 3;
+			}
 			
-			if (menu == "automatically_pause_when_window_is_unfocused_settings") && (menu_delay == 0){if (global.automatically_pause_when_window_is_unfocused){global.automatically_pause_when_window_is_unfocused = false;}else{global.automatically_pause_when_window_is_unfocused = true;}menu_delay = 3;}
-			if (menu == "enable_attract_demo") && (menu_delay == 0){if (global.enable_attract_demo){global.enable_attract_demo = false;}else{global.enable_attract_demo = true;}menu_delay = 3;}
-			if (menu == "enable_links_at_title_screen") && (menu_delay == 0){if (global.enable_links){global.enable_links = false;}else{global.enable_links = true;}menu_delay = 3;}
-			if (menu == "show_timer_settings") && (menu_delay == 0){if (global.show_timer){global.show_timer = false;}else{global.show_timer = true;}menu_delay = 3;}
-			if (menu == "show_deaths_counter_settings") && (menu_delay == 0){if (global.show_deaths_counter){global.show_deaths_counter = false;}else{global.show_deaths_counter = true;}menu_delay = 3;}
-			if (menu == "show_ranks_settings") && (menu_delay == 0){if (global.show_ranks){global.show_ranks = false;}else{global.show_ranks = true;}menu_delay = 3;}
-			if (menu == "show_tutorial_signs") && (menu_delay == 0){if (global.show_tutorial_signs){global.show_tutorial_signs = false;}else{global.show_tutorial_signs = true;}menu_delay = 3;}
-			if (menu == "show_new_items_notification") && (menu_delay == 0){if (global.show_new_items_notification){global.show_new_items_notification = false;}else{global.show_new_items_notification = true;}menu_delay = 3;}
-			if (menu == "players_can_collide") && (menu_delay == 0){if (global.players_can_collide){global.players_can_collide = false;}else{global.players_can_collide = true;}menu_delay = 3;}
-			if (menu == "convention_mode") && (menu_delay == 0){if (global.convention_mode){global.convention_mode = false;}else{global.convention_mode = true;}menu_delay = 3;}
+			if (menu == "automatically_pause_when_window_is_unfocused_settings") && (menu_delay == 0){if (global.automatically_pause_when_window_is_unfocused){global.automatically_pause_when_window_is_unfocused = false;}else{global.automatically_pause_when_window_is_unfocused = true;}
+			menu_delay = 3;
+			}
+			if (menu == "enable_attract_demo") && (menu_delay == 0){if (global.enable_attract_demo){global.enable_attract_demo = false;}else{global.enable_attract_demo = true;}
+			menu_delay = 3;
+			}
+			if (menu == "enable_links_at_title_screen") && (menu_delay == 0){if (global.enable_links){global.enable_links = false;}else{global.enable_links = true;}
+			menu_delay = 3;
+			}
+			if (menu == "show_timer_settings") && (menu_delay == 0){if (global.show_timer){global.show_timer = false;}else{global.show_timer = true;}
+			menu_delay = 3;
+			}
+			if (menu == "show_deaths_counter_settings") && (menu_delay == 0){if (global.show_deaths_counter){global.show_deaths_counter = false;}else{global.show_deaths_counter = true;}
+			menu_delay = 3;
+			}
+			if (menu == "show_ranks_settings") && (menu_delay == 0){if (global.show_ranks){global.show_ranks = false;}else{global.show_ranks = true;}
+			menu_delay = 3;
+			}
+			if (menu == "show_tutorial_signs") && (menu_delay == 0){if (global.show_tutorial_signs){global.show_tutorial_signs = false;}else{global.show_tutorial_signs = true;}
+			menu_delay = 3;
+			}
+			if (menu == "show_new_items_notification") && (menu_delay == 0){if (global.show_new_items_notification){global.show_new_items_notification = false;}else{global.show_new_items_notification = true;}
+			menu_delay = 3;
+			}
+			if (menu == "players_can_collide") && (menu_delay == 0){if (global.players_can_collide){global.players_can_collide = false;}else{global.players_can_collide = true;}
+			menu_delay = 3;
+			}
+			if (menu == "convention_mode") && (menu_delay == 0){if (global.convention_mode){global.convention_mode = false;}else{global.convention_mode = true;}
+			menu_delay = 3;
+			}
 		}
 		#endregion /* Accept END */
 
@@ -4293,7 +4327,7 @@ function scr_options_menu()
 		}
 		if (menu_delay < 0)
 		{
-			menu_delay = 0;
+			menu_delay = 2;
 		}
 		
 		scr_menu_navigation_with_joystick_delay();

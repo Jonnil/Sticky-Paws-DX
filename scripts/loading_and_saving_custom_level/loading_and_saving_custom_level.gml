@@ -321,6 +321,8 @@ function scr_save_custom_level_json()
 		file_text_close(file);
 		#endregion /* Save object placement END */
 		
+		get_string_async("Save Custom Level!!!", "")
+		
 		scr_save_level_information(); /* At the very end when saving a custom level, save the level information */
 	}
 	#endregion /* Save Custom Level END */

@@ -622,23 +622,57 @@ function scr_options_graphics()
 		|| (mouse_check_button_released(mb_left))
 		&& (mouse_get_x > 370)
 		{
-			if (menu == "fullscreen_mode") && (menu_delay == 0){if (window_get_fullscreen()){window_set_fullscreen(false);}else{window_set_fullscreen(true);}menu_delay = 3;}
-			if (menu == "interpolate") && (menu_delay == 0){if (global.interpolate){global.interpolate = false;gpu_set_texfilter(false);}else{global.interpolate = true;gpu_set_texfilter(true);}menu_delay = 3;}
-			if (menu == "show_fps") && (menu_delay == 0){if (global.show_fps){global.show_fps = false;}else{global.show_fps = true;}menu_delay = 3;}
-			if (menu == "show_fps_real") && (menu_delay == 0){if (global.show_fps_real){global.show_fps_real = false;}else{global.show_fps_real = true;}menu_delay = 3;}
-			if (menu == "show_instance_count") && (menu_delay == 0){if (global.show_instance_count){global.show_instance_count = false;}else{global.show_instance_count = true;}menu_delay = 3;}
-			if (menu == "show_collision_mask") && (menu_delay == 0){if (global.show_collision_mask){global.show_collision_mask = false;}else{global.show_collision_mask = true;}menu_delay = 3;}
-			if (menu == "enable_transitions") && (menu_delay == 0){if (global.enable_transitions){global.enable_transitions = false;}else{global.enable_transitions = true;}menu_delay = 3;}
-			if (menu == "enable_background_layer1") && (menu_delay == 0){if (global.enable_background_layer1){global.enable_background_layer1 = false;}else{global.enable_background_layer1 = true;}menu_delay = 3;}
-			if (menu == "enable_background_layer2") && (menu_delay == 0){if (global.enable_background_layer2){global.enable_background_layer2 = false;}else{global.enable_background_layer2 = true;}menu_delay = 3;}
-			if (menu == "enable_background_layer3") && (menu_delay == 0){if (global.enable_background_layer3){global.enable_background_layer3 = false;}else{global.enable_background_layer3 = true;}menu_delay = 3;}
-			if (menu == "enable_background_layer4") && (menu_delay == 0){if (global.enable_background_layer4){global.enable_background_layer4 = false;}else{global.enable_background_layer4 = true;}menu_delay = 3;}
-			if (menu == "enable_foreground_layer1") && (menu_delay == 0){if (global.enable_foreground_layer1){global.enable_foreground_layer1 = false;}else{global.enable_foreground_layer1 = true;}menu_delay = 3;}
-			if (menu == "enable_foreground_layer_above_static_objects") && (menu_delay == 0){if (global.enable_foreground_layer_above_static_objects){global.enable_foreground_layer_above_static_objects = false;}else{global.enable_foreground_layer_above_static_objects = true;}menu_delay = 3;}
-			if (menu == "enable_foreground_layer2") && (menu_delay == 0){if (global.enable_foreground_layer2){global.enable_foreground_layer2 = false;}else{global.enable_foreground_layer2 = true;}menu_delay = 3;}
-			if (menu == "enable_foreground_layer_secret") && (menu_delay == 0){if (global.enable_foreground_layer_secret){global.enable_foreground_layer_secret = false;}else{global.enable_foreground_layer_secret = true;}menu_delay = 3;}
-			if (menu == "reset_level_zoom_when_going_back_to_map") && (menu_delay == 0){if (global.reset_level_zoom_when_going_back_to_map){global.reset_level_zoom_when_going_back_to_map = false;}else{global.reset_level_zoom_when_going_back_to_map = true;}menu_delay = 3;}
-			if (menu == "reset_world_map_zoom_when_going_back_to_map") && (menu_delay == 0){if (global.reset_world_map_zoom_when_going_back_to_map){global.reset_world_map_zoom_when_going_back_to_map = false;}else{global.reset_world_map_zoom_when_going_back_to_map = true;}menu_delay = 3;}
+			if (menu == "fullscreen_mode") && (menu_delay == 0){if (window_get_fullscreen()){window_set_fullscreen(false);}else{window_set_fullscreen(true);}
+			menu_delay = 3;
+			}
+			if (menu == "interpolate") && (menu_delay == 0){if (global.interpolate){global.interpolate = false;gpu_set_texfilter(false);}else{global.interpolate = true;gpu_set_texfilter(true);}
+			menu_delay = 3;
+			}
+			if (menu == "show_fps") && (menu_delay == 0){if (global.show_fps){global.show_fps = false;}else{global.show_fps = true;}
+			menu_delay = 3;
+			}
+			if (menu == "show_fps_real") && (menu_delay == 0){if (global.show_fps_real){global.show_fps_real = false;}else{global.show_fps_real = true;}
+			menu_delay = 3;
+			}
+			if (menu == "show_instance_count") && (menu_delay == 0){if (global.show_instance_count){global.show_instance_count = false;}else{global.show_instance_count = true;}
+			menu_delay = 3;
+			}
+			if (menu == "show_collision_mask") && (menu_delay == 0){if (global.show_collision_mask){global.show_collision_mask = false;}else{global.show_collision_mask = true;}
+			menu_delay = 3;
+			}
+			if (menu == "enable_transitions") && (menu_delay == 0){if (global.enable_transitions){global.enable_transitions = false;}else{global.enable_transitions = true;}
+			menu_delay = 3;
+			}
+			if (menu == "enable_background_layer1") && (menu_delay == 0){if (global.enable_background_layer1){global.enable_background_layer1 = false;}else{global.enable_background_layer1 = true;}
+			menu_delay = 3;
+			}
+			if (menu == "enable_background_layer2") && (menu_delay == 0){if (global.enable_background_layer2){global.enable_background_layer2 = false;}else{global.enable_background_layer2 = true;}
+			menu_delay = 3;
+			}
+			if (menu == "enable_background_layer3") && (menu_delay == 0){if (global.enable_background_layer3){global.enable_background_layer3 = false;}else{global.enable_background_layer3 = true;}
+			menu_delay = 3;
+			}
+			if (menu == "enable_background_layer4") && (menu_delay == 0){if (global.enable_background_layer4){global.enable_background_layer4 = false;}else{global.enable_background_layer4 = true;}
+			menu_delay = 3;
+			}
+			if (menu == "enable_foreground_layer1") && (menu_delay == 0){if (global.enable_foreground_layer1){global.enable_foreground_layer1 = false;}else{global.enable_foreground_layer1 = true;}
+			menu_delay = 3;
+			}
+			if (menu == "enable_foreground_layer_above_static_objects") && (menu_delay == 0){if (global.enable_foreground_layer_above_static_objects){global.enable_foreground_layer_above_static_objects = false;}else{global.enable_foreground_layer_above_static_objects = true;}
+			menu_delay = 3;
+			}
+			if (menu == "enable_foreground_layer2") && (menu_delay == 0){if (global.enable_foreground_layer2){global.enable_foreground_layer2 = false;}else{global.enable_foreground_layer2 = true;}
+			menu_delay = 3;
+			}
+			if (menu == "enable_foreground_layer_secret") && (menu_delay == 0){if (global.enable_foreground_layer_secret){global.enable_foreground_layer_secret = false;}else{global.enable_foreground_layer_secret = true;}
+			menu_delay = 3;
+			}
+			if (menu == "reset_level_zoom_when_going_back_to_map") && (menu_delay == 0){if (global.reset_level_zoom_when_going_back_to_map){global.reset_level_zoom_when_going_back_to_map = false;}else{global.reset_level_zoom_when_going_back_to_map = true;}
+			menu_delay = 3;
+			}
+			if (menu == "reset_world_map_zoom_when_going_back_to_map") && (menu_delay == 0){if (global.reset_world_map_zoom_when_going_back_to_map){global.reset_world_map_zoom_when_going_back_to_map = false;}else{global.reset_world_map_zoom_when_going_back_to_map = true;}
+			menu_delay = 3;
+			}
 			if (menu == "gui_scale_modifier")
 			&& (menu_delay == 0)
 			&& (open_dropdown == false)

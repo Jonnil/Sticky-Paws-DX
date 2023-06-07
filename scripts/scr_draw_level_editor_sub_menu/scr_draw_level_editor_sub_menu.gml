@@ -490,10 +490,10 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				}
 				global.select_level_index --; /* Decrease the "select level index" so that the cursor isn't selecting a level that no longer exists */
 				scr_load_custom_level_initializing();
-				can_input_player1_name = false;
-				can_input_player2_name = false;
-				can_input_player3_name = false;
-				can_input_player4_name = false;
+				can_input_player1_name = 2;
+				can_input_player2_name = 2;
+				can_input_player3_name = 2;
+				can_input_player4_name = 2;
 				can_navigate = true;
 				menu_delay = 3;
 				open_sub_menu = false;

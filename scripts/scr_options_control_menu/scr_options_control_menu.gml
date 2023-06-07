@@ -5372,72 +5372,131 @@ function scr_options_control_menu()
 		|| (mouse_check_button_released(mb_left))
 		&& (mouse_get_x > 370)
 		{
-			
-			//#region /* Drop down menu */
-			//if (menu == "remap_select_player")
-			//|| (menu == "remap_select_profile")
-			//|| (menu == "wall_jump_setting")
-			//|| (menu == "drop_from_rope")
-			//|| (menu == "show_controls")
-			//|| (menu == "chosen_controller_used")
-			//{
-			//	if (menu_delay == 0)
-			//	&& (open_dropdown == false)
-			//	{
-			//		open_dropdown = true;
-			//		menu_delay = 3;
-			//	}
-			//	else
-			//	if (menu_delay == 0)
-			//	&& (open_dropdown)
-			//	{
-			//		open_dropdown = false;
-			//		menu_delay = 3;
-			//	}
-			//}
-			//#endregion /* Drop down menu END */
-			
 			if (menu == "up_is_also_jump") && (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_up_is_also_jump){global.player1_up_is_also_jump = false;}else{global.player1_up_is_also_jump = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_up_is_also_jump){global.player2_up_is_also_jump = false;}else{global.player2_up_is_also_jump = true;}menu_delay = 3;}else
-			if (remapping_player == 2){if (global.player3_up_is_also_jump){global.player3_up_is_also_jump = false;}else{global.player3_up_is_also_jump = true;}menu_delay = 3;}else
-			if (remapping_player == 3){if (global.player4_up_is_also_jump){global.player4_up_is_also_jump = false;}else{global.player4_up_is_also_jump = true;}menu_delay = 3;}}
+			if (remapping_player == 0){if (global.player1_up_is_also_jump){global.player1_up_is_also_jump = false;}else{global.player1_up_is_also_jump = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 1){if (global.player2_up_is_also_jump){global.player2_up_is_also_jump = false;}else{global.player2_up_is_also_jump = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 2){if (global.player3_up_is_also_jump){global.player3_up_is_also_jump = false;}else{global.player3_up_is_also_jump = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 3){if (global.player4_up_is_also_jump){global.player4_up_is_also_jump = false;}else{global.player4_up_is_also_jump = true;}
+			menu_delay = 3;
+			}
+			}
 			
 			if (menu == "double_tap_to_run") && (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_double_tap_to_run){global.player1_double_tap_to_run = false;}else{global.player1_double_tap_to_run = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_double_tap_to_run){global.player2_double_tap_to_run = false;}else{global.player2_double_tap_to_run = true;}menu_delay = 3;}else
-			if (remapping_player == 2){if (global.player3_double_tap_to_run){global.player3_double_tap_to_run = false;}else{global.player3_double_tap_to_run = true;}menu_delay = 3;}else
-			if (remapping_player == 3){if (global.player4_double_tap_to_run){global.player4_double_tap_to_run = false;}else{global.player4_double_tap_to_run = true;}menu_delay = 3;}}
+			if (remapping_player == 0){if (global.player1_double_tap_to_run){global.player1_double_tap_to_run = false;}else{global.player1_double_tap_to_run = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 1){if (global.player2_double_tap_to_run){global.player2_double_tap_to_run = false;}else{global.player2_double_tap_to_run = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 2){if (global.player3_double_tap_to_run){global.player3_double_tap_to_run = false;}else{global.player3_double_tap_to_run = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 3){if (global.player4_double_tap_to_run){global.player4_double_tap_to_run = false;}else{global.player4_double_tap_to_run = true;}
+			menu_delay = 3;
+			}
+			}
 			
 			if (menu == "always_run") && (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_sprint_toggle){global.player1_sprint_toggle = false;}else{global.player1_sprint_toggle = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_sprint_toggle){global.player2_sprint_toggle = false;}else{global.player2_sprint_toggle = true;}menu_delay = 3;}else
-			if (remapping_player == 2){if (global.player3_sprint_toggle){global.player3_sprint_toggle = false;}else{global.player3_sprint_toggle = true;}menu_delay = 3;}else
-			if (remapping_player == 3){if (global.player4_sprint_toggle){global.player4_sprint_toggle = false;}else{global.player4_sprint_toggle = true;}menu_delay = 3;}}
+			if (remapping_player == 0){if (global.player1_sprint_toggle){global.player1_sprint_toggle = false;}else{global.player1_sprint_toggle = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 1){if (global.player2_sprint_toggle){global.player2_sprint_toggle = false;}else{global.player2_sprint_toggle = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 2){if (global.player3_sprint_toggle){global.player3_sprint_toggle = false;}else{global.player3_sprint_toggle = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 3){if (global.player4_sprint_toggle){global.player4_sprint_toggle = false;}else{global.player4_sprint_toggle = true;}
+			menu_delay = 3;
+			}
+			}
 			
 			if (menu == "double_tap_to_dive") && (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_double_tap_to_dive){global.player1_double_tap_to_dive = false;}else{global.player1_double_tap_to_dive = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_double_tap_to_dive){global.player2_double_tap_to_dive = false;}else{global.player2_double_tap_to_dive = true;}menu_delay = 3;}else
-			if (remapping_player == 2){if (global.player3_double_tap_to_dive){global.player3_double_tap_to_dive = false;}else{global.player3_double_tap_to_dive = true;}menu_delay = 3;}else
-			if (remapping_player == 3){if (global.player4_double_tap_to_dive){global.player4_double_tap_to_dive = false;}else{global.player4_double_tap_to_dive = true;}menu_delay = 3;}}
+			if (remapping_player == 0){if (global.player1_double_tap_to_dive){global.player1_double_tap_to_dive = false;}else{global.player1_double_tap_to_dive = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 1){if (global.player2_double_tap_to_dive){global.player2_double_tap_to_dive = false;}else{global.player2_double_tap_to_dive = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 2){if (global.player3_double_tap_to_dive){global.player3_double_tap_to_dive = false;}else{global.player3_double_tap_to_dive = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 3){if (global.player4_double_tap_to_dive){global.player4_double_tap_to_dive = false;}else{global.player4_double_tap_to_dive = true;}
+			menu_delay = 3;
+			}
+			}
 			
 			if (menu == "cancel_dive_by_pressing_jump_or_dive_button") && (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_cancel_dive_by_pressing_jump_or_dive_button){global.player1_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player1_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_cancel_dive_by_pressing_jump_or_dive_button){global.player2_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player2_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}else
-			if (remapping_player == 2){if (global.player3_cancel_dive_by_pressing_jump_or_dive_button){global.player3_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player3_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}else
-			if (remapping_player == 3){if (global.player4_cancel_dive_by_pressing_jump_or_dive_button){global.player4_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player4_cancel_dive_by_pressing_jump_or_dive_button = true;}menu_delay = 3;}}
+			if (remapping_player == 0){if (global.player1_cancel_dive_by_pressing_jump_or_dive_button){global.player1_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player1_cancel_dive_by_pressing_jump_or_dive_button = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 1){if (global.player2_cancel_dive_by_pressing_jump_or_dive_button){global.player2_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player2_cancel_dive_by_pressing_jump_or_dive_button = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 2){if (global.player3_cancel_dive_by_pressing_jump_or_dive_button){global.player3_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player3_cancel_dive_by_pressing_jump_or_dive_button = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 3){if (global.player4_cancel_dive_by_pressing_jump_or_dive_button){global.player4_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player4_cancel_dive_by_pressing_jump_or_dive_button = true;}
+			menu_delay = 3;
+			}
+			}
 			
 			if (menu == "cancel_dive_by_pressing_opposite_direction") && (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_cancel_dive_by_pressing_opposite_direction){global.player1_cancel_dive_by_pressing_opposite_direction = false;}else{global.player1_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_cancel_dive_by_pressing_opposite_direction){global.player2_cancel_dive_by_pressing_opposite_direction = false;}else{global.player2_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}else
-			if (remapping_player == 2){if (global.player3_cancel_dive_by_pressing_opposite_direction){global.player3_cancel_dive_by_pressing_opposite_direction = false;}else{global.player3_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}else
-			if (remapping_player == 3){if (global.player4_cancel_dive_by_pressing_opposite_direction){global.player4_cancel_dive_by_pressing_opposite_direction = false;}else{global.player4_cancel_dive_by_pressing_opposite_direction = true;}menu_delay = 3;}}
+			if (remapping_player == 0){if (global.player1_cancel_dive_by_pressing_opposite_direction){global.player1_cancel_dive_by_pressing_opposite_direction = false;}else{global.player1_cancel_dive_by_pressing_opposite_direction = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 1){if (global.player2_cancel_dive_by_pressing_opposite_direction){global.player2_cancel_dive_by_pressing_opposite_direction = false;}else{global.player2_cancel_dive_by_pressing_opposite_direction = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 2){if (global.player3_cancel_dive_by_pressing_opposite_direction){global.player3_cancel_dive_by_pressing_opposite_direction = false;}else{global.player3_cancel_dive_by_pressing_opposite_direction = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 3){if (global.player4_cancel_dive_by_pressing_opposite_direction){global.player4_cancel_dive_by_pressing_opposite_direction = false;}else{global.player4_cancel_dive_by_pressing_opposite_direction = true;}
+			menu_delay = 3;
+			}
+			}
 			
 			if (menu == "down_and_jump_to_groundpound") && (menu_delay == 0){
-			if (remapping_player == 0){if (global.player1_down_and_jump_to_groundpound){global.player1_down_and_jump_to_groundpound = false;}else{global.player1_down_and_jump_to_groundpound = true;}menu_delay = 3;}else
-			if (remapping_player == 1){if (global.player2_down_and_jump_to_groundpound){global.player2_down_and_jump_to_groundpound = false;}else{global.player2_down_and_jump_to_groundpound = true;}menu_delay = 3;}else
-			if (remapping_player == 2){if (global.player3_down_and_jump_to_groundpound){global.player3_down_and_jump_to_groundpound = false;}else{global.player3_down_and_jump_to_groundpound = true;}menu_delay = 3;}else
-			if (remapping_player == 3){if (global.player4_down_and_jump_to_groundpound){global.player4_down_and_jump_to_groundpound = false;}else{global.player4_down_and_jump_to_groundpound = true;}menu_delay = 3;}}
+			if (remapping_player == 0){if (global.player1_down_and_jump_to_groundpound){global.player1_down_and_jump_to_groundpound = false;}else{global.player1_down_and_jump_to_groundpound = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 1){if (global.player2_down_and_jump_to_groundpound){global.player2_down_and_jump_to_groundpound = false;}else{global.player2_down_and_jump_to_groundpound = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 2){if (global.player3_down_and_jump_to_groundpound){global.player3_down_and_jump_to_groundpound = false;}else{global.player3_down_and_jump_to_groundpound = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 3){if (global.player4_down_and_jump_to_groundpound){global.player4_down_and_jump_to_groundpound = false;}else{global.player4_down_and_jump_to_groundpound = true;}
+			menu_delay = 3;
+			}
+			}
 			
 			if (menu == "show_prompt_when_changing_controller")
 			&& (menu_delay == 0)

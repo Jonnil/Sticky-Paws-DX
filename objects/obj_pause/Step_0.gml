@@ -7,6 +7,8 @@ scr_set_menu_font_color();
 scr_set_controls_used_to_navigate();
 scr_menu_navigation_initialization(1);
 
+fade_in_pause_alpha = lerp(fade_in_pause_alpha, 1, 0.1);
+
 if (menu_delay > 0)
 {
 	menu_delay --;

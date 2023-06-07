@@ -1,5 +1,14 @@
 function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true, only_big_letter = false)
 {
+	var buttons_x = -185;
+	var buttons_ok_y = +54;
+	var buttons_cancel_y = buttons_ok_y + 42;
+	
+	#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */
+	draw_set_alpha(0.9);
+	draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+	draw_set_alpha(1);
+	#endregion /* Opaque transparent black rectangle over whole screen, but underneath name input screen END */
 	
 	#region /* Never draw x too far off screen */
 	if (xx < 200)
@@ -36,22 +45,20 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		var width = string_width(what_string_to_edit) * 0.5;
 	}
 	
-	if (global.keyboard_virtual_timer < 2)
+	if (global.keyboard_virtual_timer < 3)
 	{
 		global.keyboard_virtual_timer ++;
 	}
-	if (global.keyboard_virtual_timer == 1)
+	if (global.keyboard_virtual_timer == 2)
 	|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx - width, yy - 16, xx + width, yy + 16))
 	&& (mouse_check_button_released(mb_left))
 	{
+		if (os_type == os_switch)
+		{
+			what_string_to_edit_async = get_string_async("", "");
+		}
 		keyboard_virtual_show(kbv_type_default, kbv_returnkey_default, kbv_autocapitalize_characters, false);
 	}
-	
-	#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */
-	draw_set_alpha(0.9);
-	draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
-	draw_set_alpha(1);
-	#endregion /* Opaque transparent black rectangle over whole screen, but underneath name input screen END */
 	
 	#region /* Box where name is written on */
 	draw_rectangle_color(xx - width, yy - 16, xx + width, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
@@ -91,21 +98,24 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	#endregion /* Draw the inputed text END */
 	
 	#region /* A file name can't contain any of these characters */
-	if (ord(keyboard_lastchar) != ord("\\"))
-	&& (ord(keyboard_lastchar) != ord("/"))
-	&& (ord(keyboard_lastchar) != ord(":"))
-	&& (ord(keyboard_lastchar) != ord("*"))
-	&& (ord(keyboard_lastchar) != ord("?"))
-	&& (ord(keyboard_lastchar) != ord("\""))
-	&& (ord(keyboard_lastchar) != ord("<"))
-	&& (ord(keyboard_lastchar) != ord(">"))
-	&& (ord(keyboard_lastchar) != ord("|"))
+	if (os_type == os_switch)
 	{
-		what_string_to_edit = keyboard_string;
-	}
-	else
-	{
-		keyboard_string = string_copy(what_string_to_edit, 1, max_characters);
+		if (ord(keyboard_lastchar) != ord("\\"))
+		&& (ord(keyboard_lastchar) != ord("/"))
+		&& (ord(keyboard_lastchar) != ord(":"))
+		&& (ord(keyboard_lastchar) != ord("*"))
+		&& (ord(keyboard_lastchar) != ord("?"))
+		&& (ord(keyboard_lastchar) != ord("\""))
+		&& (ord(keyboard_lastchar) != ord("<"))
+		&& (ord(keyboard_lastchar) != ord(">"))
+		&& (ord(keyboard_lastchar) != ord("|"))
+		{
+			what_string_to_edit = keyboard_string;
+		}
+		else
+		{
+			keyboard_string = string_copy(what_string_to_edit, 1, max_characters);
+		}
 	}
 	#endregion /* A file name can't contain any of these characters END */
 	
@@ -141,10 +151,20 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	#endregion /* Show how many characters a name has and what the max amount of characters is END */
 	
+	#region /* Clicking the Cancel button */
+	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
+	&& (mouse_check_button_released(mb_left))
+	&& (menu_delay == 0)
+	|| (keyboard_check_pressed(vk_escape))
+	&& (menu_delay == 0)
+	{
+		what_string_to_edit_async = "";
+		global.keyboard_virtual_timer = 0;
+		keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
+	}
+	#endregion /* Clicking the Cancel button END */
+	
 	#region /* OK and Cancel buttons under name input */
-	var buttons_x = -185;
-	var buttons_ok_y = +54;
-	var buttons_cancel_y = buttons_ok_y + 42;
 	if (can_press_ok_when_input_empty == false)
 	&& (keyboard_string != "")
 	|| (can_press_ok_when_input_empty)
@@ -172,12 +192,11 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0)
+			|| (menu == ok_menu_string)
+			&& (keyboard_check_pressed(vk_enter))
+			&& (menu_delay == 0)
 			{
-				menu_delay = 3;
-				can_input_player1_name = false;
-				can_input_player2_name = false;
-				can_input_player3_name = false;
-				can_input_player4_name = false;
+				what_string_to_edit_async = "";
 				global.keyboard_virtual_timer = 0;
 				keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking OK */
 			}
@@ -186,23 +205,6 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		}
 	}
 	draw_menu_button(xx + buttons_x, yy + buttons_cancel_y, l10n_text("Cancel"), cancel_menu_string, cancel_menu_string);
-	
-	#region /* Clicking the Cancel button */
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
-	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0)
-	|| (keyboard_check_pressed(vk_escape))
-	&& (menu_delay == 0)
-	{
-		menu_delay = 3;
-		can_input_player1_name = false;
-		can_input_player2_name = false;
-		can_input_player3_name = false;
-		can_input_player4_name = false;
-		global.keyboard_virtual_timer = 0;
-		keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
-	}
-	#endregion /* Clicking the Cancel button END */
 	
 	draw_sprite_ext(spr_icons_back, 0, xx + buttons_x + 55, yy + buttons_cancel_y + 21, 1, 1, 0, c_white, 1);
 	if (menu != cancel_menu_string)
@@ -261,13 +263,5 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		}
 	}
 	
-	if (only_big_letter)
-	{
-		return(string_upper(what_string_to_edit));
-	}
-	else
-	if (only_big_letter)
-	{
-		return(string(what_string_to_edit));
-	}
+	return(what_string_to_edit);
 }

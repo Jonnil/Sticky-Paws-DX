@@ -632,15 +632,8 @@ function scr_select_custom_level_menu()
 		&& (global.level_name != undefined)
 		{
 			if (keyboard_check_pressed(vk_enter))
-			&& (menu != "level_editor_enter_name_ok")
-			&& (menu != "level_editor_enter_name_cancel")
-			|| (keyboard_check_pressed(vk_enter))
 			&& (menu == "level_editor_enter_name_ok")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y,
-			394 * (global.select_level_index - column * row) + 300 - 185 + thumbnail_x_offset,
-			draw_name_input_screen_y + 54,
-			394 * (global.select_level_index - column * row) + 300 - 185 + 370 + thumbnail_x_offset,
-			draw_name_input_screen_y + 54 + 42))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 300 - 185 + thumbnail_x_offset, draw_name_input_screen_y + 54, 394 * (global.select_level_index - column * row) + 300 - 185 + 370 + thumbnail_x_offset, draw_name_input_screen_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
 			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
@@ -771,22 +764,15 @@ function scr_select_custom_level_menu()
 		
 		#region /* Input Level Description */
 		
-		#region /* Press Enter to make new level from scratch */
+		#region /* Press Enter to make new description */
 		if (can_input_level_name)
 		&& (menu_delay == 0)
 		&& (keyboard_string != "")
 		&& (global.level_description != undefined)
 		{
 			if (keyboard_check_pressed(vk_enter))
-			&& (menu != "level_editor_enter_description_ok")
-			&& (menu != "level_editor_enter_description_cancel")
-			|| (keyboard_check_pressed(vk_enter))
 			&& (menu == "level_editor_enter_description_ok")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y,
-			get_window_width * 0.5 - 185,
-			draw_description_input_screen_y + 54,
-			get_window_width * 0.5 - 185 + 370,
-			draw_description_input_screen_y + 54 + 42))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_input_screen_y + 54, get_window_width * 0.5 - 185 + 370, draw_description_input_screen_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
 			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
@@ -833,7 +819,7 @@ function scr_select_custom_level_menu()
 				can_input_level_name = false;
 			}
 		}
-		#endregion /* Press Enter to make new level from scratch END */
+		#endregion /* Press Enter to make new description END */
 		
 		#region /* Press Escape to back out from level from scratch menu */
 		if (keyboard_check_pressed(vk_enter))
@@ -843,11 +829,7 @@ function scr_select_custom_level_menu()
 		|| (keyboard_check_pressed(vk_escape))
 		&& (can_input_level_name)
 		&& (menu_delay == 0)
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y,
-		get_window_width * 0.5 - 185,
-		draw_description_input_screen_y + 54 + 42,
-		get_window_width * 0.5 - 185 + 370,
-		draw_description_input_screen_y + 54 + 42 + 42))
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_input_screen_y + 54 + 42, get_window_width * 0.5 - 185 + 370, draw_description_input_screen_y + 54 + 42 + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (can_input_level_name)
 		&& (menu_delay == 0)

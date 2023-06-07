@@ -3,6 +3,8 @@ scr_set_screen_size();
 scr_character_select_menu_step();
 scr_set_menu_font_color();
 
+global.keyboard_virtual_timer = clamp(global.keyboard_virtual_timer - 0.5, 0, 4);
+
 scr_menu_navigation_initialization(1, true); /* Keyboard Controls END */
 
 #region /* Play title screen music */

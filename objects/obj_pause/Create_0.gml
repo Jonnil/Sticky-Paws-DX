@@ -117,6 +117,7 @@ background_brightness_menu_lerp = 0;
 language_index = global.language_localization + 1;
 language_mouse_scroll = 0;
 
+fade_in_pause_alpha = 0.001;
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
 accessibility_settings_y = 40;

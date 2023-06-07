@@ -295,7 +295,7 @@ function scr_draw_upload_level_menu()
 				if (room == room_leveleditor)
 				{
 					pause = false;
-					menu_delay = 0;
+					menu_delay = 2;
 					global.character_select_in_this_menu = "level_editor";
 					room_restart();
 				}
@@ -802,11 +802,7 @@ function scr_draw_upload_level_menu()
 			&& (menu != "upload_enter_name_cancel")
 			|| (keyboard_check_pressed(vk_enter))
 			&& (menu == "upload_enter_name_ok")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y,
-			get_window_width * 0.5 - 185,
-			draw_name_y + 54,
-			get_window_width * 0.5 - 185 + 370,
-			draw_name_y + 54 + 42))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_name_y + 54, get_window_width * 0.5 - 185 + 370, draw_name_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
 			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
@@ -869,11 +865,7 @@ function scr_draw_upload_level_menu()
 			if (keyboard_check_pressed(vk_enter))
 			&& (menu == "upload_enter_name_cancel")
 			|| (keyboard_check_pressed(vk_escape))
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y,
-			get_window_width * 0.5 - 185,
-			draw_name_y + 54 + 42,
-			get_window_width * 0.5 - 185 + 370,
-			draw_name_y + 54 + 42 + 42))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_name_y + 54 + 42, get_window_width * 0.5 - 185 + 370, draw_name_y + 54 + 42 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (mouse_check_button_released(mb_right))
 			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
@@ -948,11 +940,7 @@ function scr_draw_upload_level_menu()
 			&& (menu != "upload_enter_description_cancel")
 			|| (keyboard_check_pressed(vk_enter))
 			&& (menu == "upload_enter_description_ok")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y,
-			get_window_width * 0.5 - 185,
-			draw_description_y + 54,
-			get_window_width * 0.5 - 185 + 370,
-			draw_description_y + 54 + 42))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_y + 54, get_window_width * 0.5 - 185 + 370, draw_description_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
 			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
@@ -1012,11 +1000,7 @@ function scr_draw_upload_level_menu()
 			if (keyboard_check_pressed(vk_enter))
 			&& (menu == "upload_enter_description_cancel")
 			|| (keyboard_check_pressed(vk_escape))
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y,
-			get_window_width * 0.5 - 185,
-			draw_description_y + 54 + 42,
-			get_window_width * 0.5 - 185 + 370,
-			draw_description_y + 54 + 42 + 42))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_y + 54 + 42, get_window_width * 0.5 - 185 + 370, draw_description_y + 54 + 42 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (mouse_check_button_released(mb_right))
 			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
@@ -1122,6 +1106,7 @@ function scr_draw_upload_level_menu()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("Tags") + ": " + l10n_text("None"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
 		}
 		else
+		if (how_may_tags <= 3)
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("Tags") + ": " +
 			string(tag_art_text) +
@@ -1140,10 +1125,12 @@ function scr_draw_upload_level_menu()
 			string(tag_glitch_showcase_text)
 			, global.default_text_size, c_black, c_white, 1);
 		}
+		else
 		if (how_may_tags > 3)
 		{
 			/* If you have more than 3 tags, show message that you can only have 3 tags max */
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42 * 2, string("A level can only have three tags!"), global.default_text_size, c_black, c_red, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, string("A level can only have three tags!"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, string("A level can only have three tags!"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
 		}
 		#endregion /* Tell player what tags are selected at top of tags END */
 		
@@ -1321,7 +1308,7 @@ function scr_draw_upload_level_menu()
 			}
 		}
 		#endregion /* Upload Level No END */
-	
+		
 		#region /* Upload Level Yes */
 		if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 		{
@@ -1730,15 +1717,20 @@ function scr_draw_upload_level_menu()
 		{
 			audio_stop_sound(title_music);
 		}
-		if (asset_get_type("room_leveleditor") == asset_room)
-		{
-			scr_delete_sprite_properly(title_screen_background);
-			
-			scr_update_all_backgrounds();
-			
-			room_goto(room_leveleditor);
-		}
+		scr_delete_sprite_properly(title_screen_background);
+		scr_update_all_backgrounds();
+		room_goto(room_leveleditor);
 	}
 	#endregion /* Enter Custom Level END */
 	
+	if (open_dropdown)
+	&& (menu_delay == 0)
+	{
+		if (key_a_pressed)
+		|| (key_b_pressed)
+		{
+			menu_delay = 3;
+			open_dropdown = false;
+		}
+	}
 }

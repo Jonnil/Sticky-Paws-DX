@@ -122,7 +122,7 @@ default_yscale = 1;
 show_demo_over_message = false;
 menu = noone;
 menu_cursor_index = 0;
-menu_delay = 0;
+menu_delay = 2;
 
 brand_new_file = -1;
 xx_heart = x;

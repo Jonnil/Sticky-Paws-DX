@@ -8,7 +8,7 @@ if (sprite_exists(global.pause_screenshot))
 #region /* Darker Background */
 if (hide_menu_for_clean_screenshots == false)
 {
-	draw_set_alpha(0.5);
+	draw_set_alpha(0.5 * fade_in_pause_alpha);
 	draw_rectangle_color(0, 0, room_width, room_height, c_red, c_blue, c_blue, c_red, false);
 	draw_rectangle_color(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);

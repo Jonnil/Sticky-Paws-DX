@@ -218,9 +218,9 @@ player_menu[4] = "select_character";
 #endregion /* Color Select for CharacterSelect END */
 
 #region /* What player can enter a name */
-can_input_player1_name = false;
-can_input_player2_name = false;
-can_input_player3_name = false;
+can_input_player1_name = 2;
+can_input_player2_name = 2;
+can_input_player3_name = 2;
 can_input_player4_name = false;
 can_input_level_name = false;
 #endregion /* What player can enter a name END */
@@ -277,12 +277,11 @@ lives = 5; /* Starting lives */
 if (global.character_select_in_this_menu == "level_editor")
 {
 	scr_load_custom_level_initializing();
-	can_input_player1_name = false;
-	can_input_player2_name = false;
-	can_input_player3_name = false;
+	can_input_player1_name = 2;
+	can_input_player2_name = 2;
+	can_input_player3_name = 2;
 	can_input_player4_name = false;
 	can_navigate = true;
-	menu_delay = 60;
 	open_sub_menu = false;
 	player1_accept_selection = false;
 	player2_accept_selection = false;
@@ -321,7 +320,7 @@ allow_player4_dive = scr_initialize_custom_character_abilities(3, "allow_dive", 
 #endregion /* Remapping options variables END */
 
 open_dropdown = false;
-menu_delay = 3;
+menu_delay = 60;
 menu_joystick_delay = 3;
 menu_specific_joystick_delay[1] = 3;
 menu_specific_joystick_delay[2] = 3;

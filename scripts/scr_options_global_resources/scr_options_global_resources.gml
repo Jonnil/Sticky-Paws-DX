@@ -134,7 +134,7 @@ function scr_options_global_resources()
 			{
 				menu = "title_logos";
 			}
-			menu_delay = 0;
+			menu_delay = 2;
 		}
 		else
 		if (key_down)
@@ -222,7 +222,7 @@ function scr_options_global_resources()
 					menu = "title_backgrounds";
 				}
 			}
-			menu_delay = 0;
+			menu_delay = 2;
 		}
 		
 		#region /* Custom Resource Packs */

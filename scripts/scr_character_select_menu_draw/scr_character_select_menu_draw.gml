@@ -17,50 +17,6 @@ function scr_character_select_menu_draw()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
-	#region /* "How many people are playing?" menu */
-	if (menu == "how_many_people_back")
-	|| (menu == "how_many_people_1player")
-	|| (menu == "how_many_people_2player")
-	|| (menu == "how_many_people_3player")
-	|| (menu == "how_many_people_4player")
-	{
-		if (global.skip_how_many_people_are_playing_screen == false)
-		{
-			
-			#region /* "How many people are playing?" text */
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(get_window_width * 0.5, 70, l10n_text("How many people are playing?"), global.default_text_size * 2, c_black, c_white, 1);
-			#endregion /* "How many people are playing?" text END */
-			
-			#region /* Show Back key when you can go back to main menu */
-			if (global.character_select_in_this_menu == "main_game")
-			{
-				draw_menu_button(0, 0, l10n_text("Back"), "how_many_people_back", "main_game");
-			}
-			else
-			{
-				draw_menu_button(0, 0, l10n_text("Back"), "how_many_people_back", "level_editor");
-			}
-			draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
-			#endregion /* Show Back key when you can go back to main menu END */
-			
-			#region /* How many players buttons */
-			var menu_button_1player_x = get_window_width * 0.5 - 340 - 84;
-			var menu_button_2player_x = get_window_width * 0.5 - 116 - 84;
-			var menu_button_3player_x = get_window_width * 0.5 + 116 - 84;
-			var menu_button_4player_x = get_window_width * 0.5 + 340 - 84;
-			
-			draw_menu_button_sprite(global.resource_pack_sprite_menu_button_1player, menu_button_1player_x, get_window_height * 0.5 - 84, 84, 84 - 16, 1, 1, 169, 169, "", "how_many_people_1player", "load_characters", true);
-			draw_menu_button_sprite(global.resource_pack_sprite_menu_button_2player, menu_button_2player_x, get_window_height * 0.5 - 84, 84, 84 - 16, 1, 1, 169, 169, "", "how_many_people_2player", "load_characters", true);
-			draw_menu_button_sprite(global.resource_pack_sprite_menu_button_3player, menu_button_3player_x, get_window_height * 0.5 - 84, 84, 84 - 16, 1, 1, 169, 169, "", "how_many_people_3player", "load_characters", true);
-			draw_menu_button_sprite(global.resource_pack_sprite_menu_button_4player, menu_button_4player_x, get_window_height * 0.5 - 84, 84, 84 - 16, 1, 1, 169, 169, "", "how_many_people_4player", "load_characters", true);
-			#endregion /* How many players buttons END */
-			
-		}
-	}
-	#endregion /* "How many people are playing?" menu END */
-	
 	if (menu == "select_character")
 	|| (menu == "back_from_character_select")
 	|| (menu == "open_custom_characters_folder")

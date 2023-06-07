@@ -47,7 +47,7 @@ if (os_type == os_ios)
 else
 
 #region /* If playing on Keyboard */
-if (global.controls_used_for_menu_navigation = "keyboard")
+if (global.controls_used_for_menu_navigation == "keyboard")
 || (global.controls_used_for_menu_navigation = "mouse")
 {
 	draw_menu_button(get_window_width - 370, 0, l10n_text("Skip") + ": " + l10n_text("Hold"), "skip", "skip");
