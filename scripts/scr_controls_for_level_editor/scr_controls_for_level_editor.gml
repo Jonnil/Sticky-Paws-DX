@@ -62,10 +62,10 @@ function scr_controls_for_level_editor()
 	|| (keyboard_check(vk_control))
 	
 	/* Player 1 Keyboard Shortcut Draw */ key_draw = ord("D")
-	/* Player 1 Gamepad Shortcut Draw */ button_draw = gp_shoulderr;
+	/* Player 1 Gamepad Shortcut Draw */ button_draw = global.player_[inp.gp][1][1][action.accept];
 	
 	/* Player 1 Keyboard Shortcut Erase */ key_erase = ord("E")
-	/* Player 1 Gamepad Shortcut Erase */ button_erase = gp_shoulderl;
+	/* Player 1 Gamepad Shortcut Erase */ button_erase = global.player_[inp.gp][1][1][action.back];
 	
 	/* Player 1 Keyboard Shortcut Fill */ key_fill = ord("F")
 	/* Player 1 Gamepad Shortcut Fill */ button_fill = gp_shoulderlb;

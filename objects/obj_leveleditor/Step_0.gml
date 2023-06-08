@@ -4,6 +4,12 @@ if (global.actually_play_edited_level == false)
 	var cam_y = camera_get_view_y(view_camera[view_current]);
 	var cam_width = camera_get_view_width(view_camera[view_current]);
 	var cam_height = camera_get_view_height(view_camera[view_current]);
+	var get_window_height = display_get_gui_height();
+	var get_window_width = display_get_gui_width();
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
+	var view_center_x = cam_x + cam_width * 0.5;
+	var view_center_y = cam_y + cam_height * 0.5;
 	surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
 	
 	#region /* Deactivate instances outside view. Run this code at start of Step Event */
@@ -44,13 +50,6 @@ if (global.actually_play_edited_level == false)
 		deactivate_timer = 0;
 	}
 	#endregion /* Deactivate instances outside view. Run this code at start of Step Event END */
-	
-	var get_window_height = display_get_gui_height();
-	var get_window_width = display_get_gui_width();
-	var mouse_get_x = device_mouse_x_to_gui(0);
-	var mouse_get_y = device_mouse_y_to_gui(0);
-	var view_center_x = cam_x + cam_width * 0.5;
-	var view_center_y = cam_y + cam_height * 0.5;
 	
 	grid_button_x = display_get_gui_width() - 224;
 	
