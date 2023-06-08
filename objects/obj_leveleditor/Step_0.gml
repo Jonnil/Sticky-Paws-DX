@@ -194,9 +194,14 @@ if (global.actually_play_edited_level == false)
 	{
 		if (pause == false)
 		&& (pressing_play_timer >= 1)
+		&& (!key_b_hold)
 		{
 			pressing_play_timer ++;
 		}
+	}
+	if (key_b_pressed)
+	{
+		pressing_play_timer = 0;
 	}
 	#endregion /* Holding the play key down END */
 	
@@ -209,7 +214,7 @@ if (global.actually_play_edited_level == false)
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 		&& (mouse_check_button_released(mb_left))
 		|| (global.full_level_map_screenshot)
-		|| (pressing_play_timer > 60)
+		|| (pressing_play_timer > frames_until_playtest_from_start)
 		{
 			if (pause == false)
 			&& (menu_delay == 0)
@@ -311,7 +316,7 @@ if (global.actually_play_edited_level == false)
 						
 						scr_save_custom_level();
 						
-						if (pressing_play_timer >= 60 || global.full_level_map_screenshot)
+						if (pressing_play_timer >= frames_until_playtest_from_start || global.full_level_map_screenshot)
 						{
 							if (!instance_exists(obj_camera))
 							{
@@ -439,14 +444,10 @@ if (global.actually_play_edited_level == false)
 		ini_write_real(string(global.level_name), "checkpoint_minute", 0);
 		ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-	
+		
 		#region /* Save Thumbnail */
 		var thumbnail_sprite;
-		thumbnail_sprite = sprite_create_from_surface(application_surface,
-		cam_x,
-		cam_y,
-		cam_width,
-		cam_height, false, true, 0, 0);
+		thumbnail_sprite = sprite_create_from_surface(application_surface, cam_x, cam_y, cam_width, cam_height, false, true, 0, 0);
 		if (global.level_name != "")
 		{
 			sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
@@ -903,31 +904,37 @@ if (global.actually_play_edited_level == false)
 			if (place_brush_size == 0)
 			{
 				place_brush_size = 1;
+				erase_brush_size = 1;
 			}
 			else
 			if (place_brush_size == 1)
 			{
 				place_brush_size = 2;
+				erase_brush_size = 2;
 			}
 			else
 			if (place_brush_size == 2)
 			{
 				place_brush_size = 3;
+				erase_brush_size = 3;
 			}
 			else
 			if (place_brush_size == 3)
 			{
 				place_brush_size = 4;
+				erase_brush_size = 4;
 			}
 			else
 			if (place_brush_size == 4)
 			{
 				place_brush_size = 5;
+				erase_brush_size = 5;
 			}
 			else
 			if (place_brush_size == 5)
 			{
 				place_brush_size = 0;
+				erase_brush_size = 0;
 			}
 		}
 		else
@@ -956,31 +963,37 @@ if (global.actually_play_edited_level == false)
 			if (erase_brush_size == 0)
 			{
 				erase_brush_size = 1;
+				place_brush_size = 1;
 			}
 			else
 			if (erase_brush_size == 1)
 			{
 				erase_brush_size = 2;
+				place_brush_size = 2;
 			}
 			else
 			if (erase_brush_size == 2)
 			{
 				erase_brush_size = 3;
+				place_brush_size = 3;
 			}
 			else
 			if (erase_brush_size == 3)
 			{
 				erase_brush_size = 4;
+				place_brush_size = 4;
 			}
 			else
 			if (erase_brush_size == 4)
 			{
 				erase_brush_size = 5;
+				place_brush_size = 5;
 			}
 			else
 			if (erase_brush_size == 5)
 			{
 				erase_brush_size = 0;
+				place_brush_size = 0;
 			}
 		}
 	}

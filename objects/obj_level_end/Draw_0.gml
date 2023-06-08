@@ -33,6 +33,7 @@ if (instance_number(obj_leveleditor) > 0)
 	}
 	#region /* Drag the object */
 	if (drag_object)
+	&& (instance_exists(obj_leveleditor))
 	{
 		x = obj_leveleditor.x;
 		y = obj_leveleditor.y;

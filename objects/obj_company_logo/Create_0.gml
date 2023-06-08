@@ -348,6 +348,11 @@ global.big_collectible2 = false; /* If you have Big Collectible 2 or not */
 global.big_collectible3 = false; /* If you have Big Collectible 3 or not */
 global.big_collectible4 = false; /* If you have Big Collectible 4 or not */
 global.big_collectible5 = false; /* If you have Big Collectible 5 or not */
+global.big_collectible1_already_collected = false;
+global.big_collectible2_already_collected = false;
+global.big_collectible3_already_collected = false;
+global.big_collectible4_already_collected = false;
+global.big_collectible5_already_collected = false;
 global.lives_until_assist = 0;
 
 #region /* Assist Settings */

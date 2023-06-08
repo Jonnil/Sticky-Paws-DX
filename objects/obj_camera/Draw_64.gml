@@ -70,7 +70,7 @@ if (!instance_exists(obj_pause))
 		}
 		else
 		if (global.big_collectible1)
-		&& (big_collectible1_already_collected == false)
+		&& (global.big_collectible1_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -87,7 +87,7 @@ if (!instance_exists(obj_pause))
 		}
 		else
 		if (global.big_collectible2)
-		&& (big_collectible2_already_collected == false)
+		&& (global.big_collectible2_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -104,7 +104,7 @@ if (!instance_exists(obj_pause))
 		}
 		else
 		if (global.big_collectible3)
-		&& (big_collectible3_already_collected == false)
+		&& (global.big_collectible3_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -121,7 +121,7 @@ if (!instance_exists(obj_pause))
 		}
 		else
 		if (global.big_collectible4)
-		&& (big_collectible4_already_collected == false)
+		&& (global.big_collectible4_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -138,7 +138,7 @@ if (!instance_exists(obj_pause))
 		}
 		else
 		if (global.big_collectible5)
-		&& (big_collectible5_already_collected == false)
+		&& (global.big_collectible5_already_collected == false)
 		{
 			draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 		}
@@ -535,8 +535,14 @@ if (global.play_edited_level) /* When playtesting the level */
 	
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
 	{
+		if (mouse_check_button_pressed(mb_left))
+		{
+			can_click_on_pause_key = true;
+		}
 		if (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0)
+		&& (can_click_on_pause_key)
+		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
 		{
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
@@ -545,6 +551,12 @@ if (global.play_edited_level) /* When playtesting the level */
 		draw_set_alpha(0.5);
 		draw_rectangle_color(32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
 		draw_set_alpha(1);
+	}
+	else
+	if (mouse_check_button_released(mb_left))
+	&& (can_click_on_pause_key)
+	{
+		can_click_on_pause_key = false;
 	}
 }
 #endregion /* Play Level Button END */

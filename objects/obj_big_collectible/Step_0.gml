@@ -79,7 +79,7 @@ if (follow_player)
 		{
 			with(instance_nearest(x, y, obj_camera))
 			{
-				big_collectible1_already_collected = true;
+				global.big_collectible1_already_collected = true;
 			}
 		}
 		if (global.character_select_in_this_menu == "main_game")
@@ -113,7 +113,7 @@ if (follow_player)
 		{
 			with(instance_nearest(x, y, obj_camera))
 			{
-				big_collectible2_already_collected = true;
+				global.big_collectible2_already_collected = true;
 			}
 		}
 		if (global.character_select_in_this_menu == "main_game")
@@ -147,7 +147,7 @@ if (follow_player)
 		{
 			with(instance_nearest(x, y, obj_camera))
 			{
-				big_collectible3_already_collected = true;
+				global.big_collectible3_already_collected = true;
 			}
 		}
 		if (global.character_select_in_this_menu == "main_game")
@@ -181,7 +181,7 @@ if (follow_player)
 		{
 			with(instance_nearest(x, y, obj_camera))
 			{
-				big_collectible4_already_collected = true;
+				global.big_collectible4_already_collected = true;
 			}
 		}
 		if (global.character_select_in_this_menu == "main_game")
@@ -215,7 +215,7 @@ if (follow_player)
 		{
 			with(instance_nearest(x, y, obj_camera))
 			{
-				big_collectible5_already_collected = true;
+				global.big_collectible5_already_collected = true;
 			}
 		}
 		if (global.character_select_in_this_menu == "main_game")
@@ -348,7 +348,7 @@ if (bounce_up)
 				{
 					with(instance_nearest(x, y, obj_camera))
 					{
-						big_collectible1_already_collected = true;
+						global.big_collectible1_already_collected = true;
 					}
 					if (global.character_select_in_this_menu == "main_game")
 					{
@@ -382,7 +382,7 @@ if (bounce_up)
 				{
 					with(instance_nearest(x, y, obj_camera))
 					{
-						big_collectible2_already_collected = true;
+						global.big_collectible2_already_collected = true;
 					}
 					if (global.character_select_in_this_menu == "main_game")
 					{
@@ -416,7 +416,7 @@ if (bounce_up)
 				{
 					with(instance_nearest(x, y, obj_camera))
 					{
-						big_collectible3_already_collected = true;
+						global.big_collectible3_already_collected = true;
 					}
 					if (global.character_select_in_this_menu == "main_game")
 					{
@@ -450,7 +450,7 @@ if (bounce_up)
 				{
 					with(instance_nearest(x, y, obj_camera))
 					{
-						big_collectible4_already_collected = true;
+						global.big_collectible4_already_collected = true;
 					}
 					if (global.character_select_in_this_menu == "main_game")
 					{
@@ -484,7 +484,7 @@ if (bounce_up)
 				{
 					with(instance_nearest(x, y, obj_camera))
 					{
-						big_collectible5_already_collected = true;
+						global.big_collectible5_already_collected = true;
 					}
 					if (global.character_select_in_this_menu == "main_game")
 					{

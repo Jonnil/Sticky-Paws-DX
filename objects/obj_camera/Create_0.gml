@@ -66,12 +66,7 @@ show_keyboard_and_mouse_input_change_prompt_y = 0;
 
 delay = 0;
 menu_delay = 3;
-
-big_collectible1_already_collected = false;
-big_collectible2_already_collected = false;
-big_collectible3_already_collected = false;
-big_collectible4_already_collected = false;
-big_collectible5_already_collected = false;
+can_click_on_pause_key = false;
 
 if (global.character_select_in_this_menu == "main_game")
 && (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))

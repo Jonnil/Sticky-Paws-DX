@@ -1,1 +1,0 @@
-sprite_collision_mask(global.custom_foreground_secret, true, 1, 0, 0, 0, 0, bboxkind_precise, 254); /* bboxmode needs to be 1 for this to work */

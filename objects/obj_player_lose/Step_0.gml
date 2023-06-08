@@ -89,8 +89,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 			audio_stop_all();
 			
 			#region /* Go to level editor if you die in level editor */
-			if (asset_get_type("room_leveleditor") == asset_room)
-			&& (room == room_leveleditor)
+			if (room == room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();
@@ -107,10 +106,9 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 			score = 0;
 			scr_save_level();
 			audio_stop_all();
-		
+			
 			#region /* Go to level editor if you die in level editor */
-			if (asset_get_type("room_leveleditor") == asset_room)
-			&& (room == room_leveleditor)
+			if (room == room_leveleditor)
 			{
 				global.play_edited_level = false;
 				room_restart();

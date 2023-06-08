@@ -9,6 +9,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Actually drag the object */
 	if (drag_object)
+	&& (instance_exists(obj_leveleditor))
 	{
 		x = obj_leveleditor.x;
 		y = obj_leveleditor.y;

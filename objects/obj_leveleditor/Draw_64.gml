@@ -495,14 +495,14 @@ if (global.actually_play_edited_level == false)
 					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192, l10n_text("A map of the whole level will be generated and saved"), global.default_text_size, c_black, c_white, 1);
 				}
 				#endregion /* Draw the path for saving full level map END */
-			
+				
 				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 64, l10n_text("With this map, you can then use it in a drawing program,"), global.default_text_size, c_black, c_white, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 96, l10n_text("as the base to make the background and foreground layers."), global.default_text_size, c_black, c_white, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 160, l10n_text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
-			
+				
 				#region /* If menu is on generate level map yes */
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Yes"), "generate_level_map_yes", "generate_level_map_yes");
-			
+				
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42))
 				&& (mouse_check_button_pressed(mb_left))
 				&& (menu_delay == 0)
@@ -834,7 +834,8 @@ if (global.actually_play_edited_level == false)
 		
 		if (pressing_play_timer > 0)
 		{
-			scr_draw_circular_bar(play_level_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, pressing_play_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding play key */
+			scr_draw_circular_bar(play_level_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, pressing_play_timer, frames_until_playtest_from_start, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding play key */
+			scr_draw_circular_bar(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, pressing_play_timer, frames_until_playtest_from_start, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding play key */
 		}
 		
 		if (point_in_rectangle(cursor_x, cursor_y, play_level_icon_x - 32 + 1, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64 - 1))
@@ -974,6 +975,7 @@ if (global.actually_play_edited_level == false)
 					&& (erase_mode == false)
 					{
 						place_brush_size = 1;
+						erase_brush_size = 1;
 					}
 					else
 					if (place_brush_size == 1)
@@ -981,6 +983,7 @@ if (global.actually_play_edited_level == false)
 					&& (erase_mode == false)
 					{
 						place_brush_size = 2;
+						erase_brush_size = 2;
 					}
 					else
 					if (place_brush_size == 2)
@@ -988,6 +991,7 @@ if (global.actually_play_edited_level == false)
 					&& (erase_mode == false)
 					{
 						place_brush_size = 3;
+						erase_brush_size = 3;
 					}
 					else
 					if (place_brush_size == 3)
@@ -995,6 +999,7 @@ if (global.actually_play_edited_level == false)
 					&& (erase_mode == false)
 					{
 						place_brush_size = 4;
+						erase_brush_size = 4;
 					}
 					else
 					if (place_brush_size == 4)
@@ -1002,6 +1007,7 @@ if (global.actually_play_edited_level == false)
 					&& (erase_mode == false)
 					{
 						place_brush_size = 5;
+						erase_brush_size = 5;
 					}
 					else
 					if (place_brush_size == 5)
@@ -1009,11 +1015,13 @@ if (global.actually_play_edited_level == false)
 					&& (erase_mode == false)
 					{
 						place_brush_size = 0;
+						erase_brush_size = 0;
 					}
 					else
 					if (place_brush_size == 0)
 					{
 						place_brush_size = 0;
+						erase_brush_size = 0;
 						fill_mode = false;
 						erase_mode = false;
 					}
@@ -1021,6 +1029,7 @@ if (global.actually_play_edited_level == false)
 					if (place_brush_size == 1)
 					{
 						place_brush_size = 1;
+						erase_brush_size = 1;
 						fill_mode = false;
 						erase_mode = false;
 					}
@@ -1028,6 +1037,7 @@ if (global.actually_play_edited_level == false)
 					if (place_brush_size == 2)
 					{
 						place_brush_size = 2;
+						erase_brush_size = 2;
 						fill_mode = false;
 						erase_mode = false;
 					}
@@ -1035,6 +1045,7 @@ if (global.actually_play_edited_level == false)
 					if (place_brush_size == 3)
 					{
 						place_brush_size = 3;
+						erase_brush_size = 3;
 						fill_mode = false;
 						erase_mode = false;
 					}
@@ -1042,6 +1053,7 @@ if (global.actually_play_edited_level == false)
 					if (place_brush_size == 4)
 					{
 						place_brush_size = 4;
+						erase_brush_size = 4;
 						fill_mode = false;
 						erase_mode = false;
 					}
@@ -1049,12 +1061,14 @@ if (global.actually_play_edited_level == false)
 					if (place_brush_size == 5)
 					{
 						place_brush_size = 5;
+						erase_brush_size = 5;
 						fill_mode = false;
 						erase_mode = false;
 					}
 					else
 					{
 						place_brush_size = 0;
+						erase_brush_size = 0;
 						fill_mode = false;
 						erase_mode = false;
 					}
@@ -1164,6 +1178,7 @@ if (global.actually_play_edited_level == false)
 					if (erase_brush_size == 0)
 					{
 						erase_brush_size = 1;
+						place_brush_size = 1;
 						fill_mode = false;
 						erase_mode = true;
 					}
@@ -1171,6 +1186,7 @@ if (global.actually_play_edited_level == false)
 					if (erase_brush_size == 1)
 					{
 						erase_brush_size = 2;
+						place_brush_size = 2;
 						fill_mode = false;
 						erase_mode = true;
 					}
@@ -1178,6 +1194,7 @@ if (global.actually_play_edited_level == false)
 					if (erase_brush_size == 2)
 					{
 						erase_brush_size = 3;
+						place_brush_size = 3;
 						fill_mode = false;
 						erase_mode = true;
 					}
@@ -1185,6 +1202,7 @@ if (global.actually_play_edited_level == false)
 					if (erase_brush_size == 3)
 					{
 						erase_brush_size = 4;
+						place_brush_size = 4;
 						fill_mode = false;
 						erase_mode = true;
 					}
@@ -1192,6 +1210,7 @@ if (global.actually_play_edited_level == false)
 					if (erase_brush_size == 4)
 					{
 						erase_brush_size = 5;
+						place_brush_size = 5;
 						fill_mode = false;
 						erase_mode = true;
 					}
@@ -1199,6 +1218,7 @@ if (global.actually_play_edited_level == false)
 					if (erase_brush_size == 5)
 					{
 						erase_brush_size = 0;
+						place_brush_size = 0;
 						fill_mode = false;
 						erase_mode = true;
 					}

@@ -25,7 +25,7 @@ if (global.actually_play_edited_level == false)
 		else
 		if (instance_exists(obj_level_player4_start))
 		{
-			draw_sprite_ext(sprite_player4, 0, obj_level_player4_start.x, obj_level_player4_start.y, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(sprite_player4, 0, obj_level_player4_start.x, obj_level_player4_start.y, 1, 1, 0, c_white, 0.5);
 		}
 	}
 	if (sprite_player3 > 0) /* Display Player 3 on top of Player 4 */
@@ -39,7 +39,7 @@ if (global.actually_play_edited_level == false)
 		else
 		if (instance_exists(obj_level_player3_start))
 		{
-			draw_sprite_ext(sprite_player3, 0, obj_level_player3_start.x, obj_level_player3_start.y, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(sprite_player3, 0, obj_level_player3_start.x, obj_level_player3_start.y, 1, 1, 0, c_white, 0.5);
 		}
 	}
 	if (sprite_player2 > 0) /* Display Player 2 on top of Player 3 */
@@ -53,7 +53,7 @@ if (global.actually_play_edited_level == false)
 		else
 		if (instance_exists(obj_level_player2_start))
 		{
-			draw_sprite_ext(sprite_player2, 0, obj_level_player2_start.x, obj_level_player2_start.y, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(sprite_player2, 0, obj_level_player2_start.x, obj_level_player2_start.y, 1, 1, 0, c_white, 0.5);
 		}
 	}
 	if (sprite_player1 > 0) /* Display Player 1 on top of Player 2 */
@@ -67,7 +67,7 @@ if (global.actually_play_edited_level == false)
 		else
 		if (instance_exists(obj_level_player1_start))
 		{
-			draw_sprite_ext(sprite_player1, 0, obj_level_player1_start.x, obj_level_player1_start.y, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(sprite_player1, 0, obj_level_player1_start.x, obj_level_player1_start.y, 1, 1, 0, c_white, 0.5);
 		}
 	}
 	#endregion /* Draw where player will do playtesting from END */
