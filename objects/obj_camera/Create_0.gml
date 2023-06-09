@@ -153,14 +153,7 @@ else
 	camera_selected_skin = global.skin_for_player[1];
 }
 
-if (asset_get_type("spr_1up") == asset_sprite)
-{
-	sprite_lives_icon = spr_1up;
-}
-else
-{
-	sprite_lives_icon = noone;
-}
+sprite_lives_icon = spr_1up;
 alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
 #endregion /* Lives Icon END */
 
@@ -361,8 +354,7 @@ if (can_spawn_players)
 	{
 		player4 = noone;
 	}
-	if (asset_get_type("room_leveleditor") == asset_room)
-	&& (room == room_leveleditor)
+	if (room == room_leveleditor)
 	&& (global.actually_play_edited_level)
 	{
 		player_has_spawned = true;

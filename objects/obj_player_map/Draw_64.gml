@@ -6,7 +6,6 @@ var clear_prompt_x = 164;
 if (can_move)
 && (can_enter_level >= 30)
 && (point_distance(xx, yy, x, y) < 30)
-&& (asset_get_type("obj_level") == asset_object)
 && (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 && (speed == 0)
 && (instance_nearest(x, y, obj_level).clear_rate != "closed")
@@ -22,58 +21,55 @@ if (can_move)
 		scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], 32, get_window_height - 28, 0.5, c_white, 1);
 	}
 	else
-	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+	if (global.player1_can_play)
 	{
-		if (global.player1_can_play)
+		if (global.player_[inp.key][1][1][action.accept] > noone)
 		{
-			if (global.player_[inp.key][1][1][action.accept] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-			}
-			else
-			if (global.player_[inp.key][1][2][action.accept] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-			}
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
 		}
 		else
-		if (global.player2_can_play)
+		if (global.player_[inp.key][1][2][action.accept] > noone)
 		{
-			if (global.player_[inp.key][2][1][action.accept] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-			}
-			else
-			if (global.player_[inp.key][2][2][action.accept] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-			}
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
+		}
+	}
+	else
+	if (global.player2_can_play)
+	{
+		if (global.player_[inp.key][2][1][action.accept] > noone)
+		{
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
 		}
 		else
-		if (global.player3_can_play)
+		if (global.player_[inp.key][2][2][action.accept] > noone)
 		{
-			if (global.player_[inp.key][3][1][action.accept] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-			}
-			else
-			if (global.player_[inp.key][3][2][action.accept] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-			}
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
+		}
+	}
+	else
+	if (global.player3_can_play)
+	{
+		if (global.player_[inp.key][3][1][action.accept] > noone)
+		{
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
 		}
 		else
-		if (global.player4_can_play)
+		if (global.player_[inp.key][3][2][action.accept] > noone)
 		{
-			if (global.player_[inp.key][4][1][action.accept] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-			}
-			else
-			if (global.player_[inp.key][4][2][action.accept] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-			}
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
+		}
+	}
+	else
+	if (global.player4_can_play)
+	{
+		if (global.player_[inp.key][4][1][action.accept] > noone)
+		{
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
+		}
+		else
+		if (global.player_[inp.key][4][2][action.accept] > noone)
+		{
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.accept], 32, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
 		}
 	}
 }
@@ -84,7 +80,6 @@ if (global.debug_screen)
 {
 	if (can_move)
 	&& (can_enter_level >= 30)
-	&& (asset_get_type("obj_level") == asset_object)
 	&& (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 	&& (speed == 0)
 	&& (instance_nearest(x, y, obj_level).clear_rate = "enter")
@@ -99,58 +94,55 @@ if (global.debug_screen)
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, c_white, 1);
 		}
 		else
-		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
+		if (global.player1_can_play)
 		{
-			if (global.player1_can_play)
+			if (global.player_[inp.key][1][1][action.back] > noone)
 			{
-				if (global.player_[inp.key][1][1][action.back] > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player_[inp.key][1][2][action.back] > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-				}
+				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 			else
-			if (global.player2_can_play)
+			if (global.player_[inp.key][1][2][action.back] > noone)
 			{
-				if (global.player_[inp.key][2][1][action.back] > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player_[inp.key][2][2][action.back] > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-				}
+				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
+			}
+		}
+		else
+		if (global.player2_can_play)
+		{
+			if (global.player_[inp.key][2][1][action.back] > noone)
+			{
+				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 			else
-			if (global.player3_can_play)
+			if (global.player_[inp.key][2][2][action.back] > noone)
 			{
-				if (global.player_[inp.key][3][1][action.back] > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player_[inp.key][3][2][action.back] > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-				}
+				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
+			}
+		}
+		else
+		if (global.player3_can_play)
+		{
+			if (global.player_[inp.key][3][1][action.back] > noone)
+			{
+				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 			else
-			if (global.player4_can_play)
+			if (global.player_[inp.key][3][2][action.back] > noone)
 			{
-				if (global.player_[inp.key][4][1][action.back] > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player_[inp.key][4][2][action.back] > noone)
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
-				}
+				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
+			}
+		}
+		else
+		if (global.player4_can_play)
+		{
+			if (global.player_[inp.key][4][1][action.back] > noone)
+			{
+				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
+			}
+			else
+			if (global.player_[inp.key][4][2][action.back] > noone)
+			{
+				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.back], clear_prompt_x, get_window_height - 28, 0.5, 0.5, 0, c_white, 1);
 			}
 		}
 	}

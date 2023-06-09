@@ -15,10 +15,7 @@ if (global.enable_transitions)
 	if (iris_xscale < 31)
 	&& (instance_exists(obj_player))
 	{
-		if (asset_get_type("spr_iris") == asset_sprite)
-		{
-			draw_sprite_ext(spr_iris, 0, instance_nearest(room_width, y, obj_player).x, instance_nearest(room_width, y, obj_player).y, iris_xscale, iris_yscale, 0, c_black, 1);
-		}
+		draw_sprite_ext(spr_iris, 0, instance_nearest(room_width, y, obj_player).x, instance_nearest(room_width, y, obj_player).y, iris_xscale, iris_yscale, 0, c_black, 1);
 		draw_rectangle_color(0, 0, room_width * 2, instance_nearest(room_width, y, obj_player).y - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(0, 0, instance_nearest(room_width, y, obj_player).x - iris_xscale * 128, room_height * 2, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(instance_nearest(room_width, y, obj_player).x + iris_xscale * 128 - 1, 0, room_width * 2, room_height * 2, c_black, c_black, c_black, c_black, false);
@@ -27,10 +24,7 @@ if (global.enable_transitions)
 	else
 	if (iris_xscale < 15)
 	{
-		if (asset_get_type("spr_iris") == asset_sprite)
-		{
-			draw_sprite_ext(spr_iris, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, iris_xscale, iris_yscale, 0, c_black, 1);
-		}
+		draw_sprite_ext(spr_iris, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, iris_xscale, iris_yscale, 0, c_black, 1);
 		draw_rectangle_color(0, 0, room_width * 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(0, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 - iris_xscale * 128, room_height * 2, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + iris_xscale * 128 - 1, 0, room_width * 2, room_height * 2, c_black, c_black, c_black, c_black, false);

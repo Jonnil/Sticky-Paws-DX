@@ -9,8 +9,7 @@ function scr_player_move_save_whole_level_as_screenshot()
 		instance_activate_all();
 	
 		#region /* Delete some objects so it doesn't show up in the screenshot */
-		if (asset_get_type("obj_camera") == asset_object)
-		&& (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		{
 			instance_destroy(obj_camera);
 		}

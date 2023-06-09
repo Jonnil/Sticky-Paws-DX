@@ -634,12 +634,7 @@ enum volume_source
 	voice = 6
 }
 
-#region /* Load Config */
-if (asset_get_type("scr_config_load") == asset_script)
-{
-	scr_config_load();
-}
-#endregion /* Load Config END */
+scr_config_load(); /* Load Config */
 
 #region /* Set these global variables after loading config file */
 global.skin_for_player[1] = global.actual_skin_for_player[1]; /* In case the player selected a character that doesn't have skins, use this variable */

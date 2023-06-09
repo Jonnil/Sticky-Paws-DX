@@ -92,8 +92,7 @@ if (sprite_walk > noone)
 #endregion /* Initialize Custom Character END */
 
 #region /* Make sure you spawn on top of a level one last time before playing */
-if (asset_get_type("obj_level") == asset_object)
-&& (instance_exists(obj_level))
+if (instance_exists(obj_level))
 && (!position_meeting(x, y, obj_level))
 {
 	x = instance_nearest(x, y, obj_level).x;

@@ -196,6 +196,10 @@ if (global.actually_play_edited_level == false)
 		&& (pressing_play_timer >= 1)
 		&& (!key_b_hold)
 		{
+			if (!audio_is_playing(snd_charge_up))
+			{
+				scr_audio_play(snd_charge_up, volume_source.sound);
+			}
 			pressing_play_timer ++;
 		}
 	}
@@ -358,6 +362,8 @@ if (global.actually_play_edited_level == false)
 					scr_scale_background();
 					global.actually_play_edited_level = false;
 					global.play_edited_level = true;
+					audio_stop_sound(snd_charge_up);
+					scr_audio_play(snd_click, volume_source.sound);
 					instance_destroy();
 				}
 			}
@@ -1048,6 +1054,7 @@ if (global.actually_play_edited_level == false)
 			if (place_brush_size > 0)
 			{
 				place_brush_size --;
+				erase_brush_size --;
 			}
 		}
 		else
@@ -1056,6 +1063,7 @@ if (global.actually_play_edited_level == false)
 			if (place_brush_size < 5)
 			{
 				place_brush_size ++;
+				erase_brush_size ++;
 			}
 		}
 	}
@@ -1071,6 +1079,7 @@ if (global.actually_play_edited_level == false)
 			if (erase_brush_size > 0)
 			{
 				erase_brush_size --;
+				place_brush_size --;
 			}
 		}
 		else
@@ -1080,6 +1089,7 @@ if (global.actually_play_edited_level == false)
 			if (erase_brush_size < 5)
 			{
 				erase_brush_size ++;
+				place_brush_size ++;
 			}
 		}
 	}
@@ -1421,30 +1431,37 @@ if (global.actually_play_edited_level == false)
 		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom buttons */
 		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
 		{
-			if (!place_meeting(x, y, obj_leveleditor_placed_object))
-			&& (!place_meeting(x, y, obj_leveleditor_fill))
+			if (place_object_delay_timer < 3)
 			{
-				if (fill_mode_type == "fill")
+				place_object_delay_timer ++;
+			}
+			if (place_object_delay_timer >= 3)
+			{
+				if (!place_meeting(x, y, obj_leveleditor_placed_object))
+				&& (!place_meeting(x, y, obj_leveleditor_fill))
 				{
-					with (instance_create_depth(x, y, 0, obj_leveleditor_fill))
+					if (fill_mode_type == "fill")
 					{
-						fill_mode_type = "fill";
+						with (instance_create_depth(x, y, 0, obj_leveleditor_fill))
+						{
+							fill_mode_type = "fill";
+						}
 					}
-				}
-				else
-				if (fill_mode_type == "horizontal")
-				{
-					with (instance_create_depth(x, y, 0, obj_leveleditor_fill))
+					else
+					if (fill_mode_type == "horizontal")
 					{
-						fill_mode_type = "horizontal";
+						with (instance_create_depth(x, y, 0, obj_leveleditor_fill))
+						{
+							fill_mode_type = "horizontal";
+						}
 					}
-				}
-				else
-				if (fill_mode_type == "vertical")
-				{
-					with (instance_create_depth(x, y, 0, obj_leveleditor_fill))
+					else
+					if (fill_mode_type == "vertical")
 					{
-						fill_mode_type = "vertical";
+						with (instance_create_depth(x, y, 0, obj_leveleditor_fill))
+						{
+							fill_mode_type = "vertical";
+						}
 					}
 				}
 			}
@@ -1460,7 +1477,7 @@ if (global.actually_play_edited_level == false)
 		&& (!mouse_check_button(mb_left))
 		&& (erase_mode == false)
 		&& (pause == false)
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padl))
+		|| (gamepad_button_check_pressed(global.player1_slot, button_scroll_object_left))
 		&& (erase_mode == false)
 		&& (pause == false)
 		{
@@ -1489,7 +1506,7 @@ if (global.actually_play_edited_level == false)
 		&& (!mouse_check_button(mb_left))
 		&& (erase_mode == false)
 		&& (pause == false)
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padr))
+		|| (gamepad_button_check_pressed(global.player1_slot, button_scroll_object_right))
 		&& (erase_mode == false)
 		&& (pause == false)
 		{

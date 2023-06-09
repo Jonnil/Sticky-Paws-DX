@@ -342,7 +342,7 @@ function scr_options_menu()
 					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +account_settings_y, 1, 1, 0, c_gray, 1);
 				}
 				draw_sprite_ext(spr_settings_icons, 7, left_sidebar_x + 20 + icon_x_offset, 20 +account_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
-				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +account_settings_y, l10n_text("Profile"), global.default_text_size * 1.05, c_black, c_white, 1);
+				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +account_settings_y, l10n_text("Account"), global.default_text_size * 1.05, c_black, c_white, 1);
 			}
 			else
 			{
@@ -356,7 +356,7 @@ function scr_options_menu()
 					draw_sprite_ext(spr_menu_button, 0, left_sidebar_x, 20 +account_settings_y, 1, 1, 0, c_white, 1);
 				}
 				draw_sprite_ext(spr_settings_icons, 7, left_sidebar_x + 20 + icon_x_offset, 20 +account_settings_y, 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
-				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +account_settings_y, l10n_text("Profile"), global.default_text_size, c_white, c_black, 1);
+				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 +account_settings_y, l10n_text("Account"), global.default_text_size, c_white, c_black, 1);
 			}
 		}
 		#endregion /* Account Settings END */

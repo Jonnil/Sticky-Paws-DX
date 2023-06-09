@@ -182,7 +182,6 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 					scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, c_white, 1);
 				}
 				else
-				if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 				{
 					draw_sprite_ext(spr_keyboard_keys, vk_enter, xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, 0.5, 0, c_white, 1);
 				}
@@ -228,7 +227,6 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
 		}
 		else
-		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_enter, xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, 0.5, 0, c_white, 1);
 		}

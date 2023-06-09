@@ -234,31 +234,34 @@ if (global.actually_play_edited_level == false)
 	if (quit_level_editor <= 0)
 	{
 		total_number_of_objects = 6; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
-		if (selected_object == 0){place_object = world_object_id.id_wall;can_make_place_brush_size_bigger = true; if (asset_get_type("spr_wall") == asset_sprite){sprite_index = spr_wall;}mask_index = spr_wall;}
+		if (selected_object == 0)
+		{
+			place_object = world_object_id.id_wall;
+			can_make_place_brush_size_bigger = true;
+			sprite_index = spr_wall;
+			mask_index = spr_wall;
+		}
 		if (selected_object == 1)
 		{
 			place_object = world_object_id.id_level;
 			can_make_place_brush_size_bigger = false;
-			if (asset_get_type("spr_level_ring") == asset_sprite)
-			{
-				draw_sprite_ext(spr_level_ring, 0, x, y, 1, 1, 0, c_yellow, 0.5);
-			}
-			if (asset_get_type("spr_level") == asset_sprite)
-			{
-				draw_sprite_ext(spr_level, 0, x, y, 1, 1, 0, c_black, 0.5);
-			}
+			draw_sprite_ext(spr_level_ring, 0, x, y, 1, 1, 0, c_yellow, 0.5);
+			draw_sprite_ext(spr_level, 0, x, y, 1, 1, 0, c_black, 0.5);
 			sprite_index = spr_noone; 
 			mask_index = spr_wall;
 		}
-		if (selected_object == 2){place_object = world_object_id.id_exit;can_make_place_brush_size_bigger = false; if (asset_get_type("spr_map_exit") == asset_sprite){sprite_index = spr_map_exit;}mask_index = spr_wall;}
+		if (selected_object == 2)
+		{
+			place_object = world_object_id.id_exit;
+			can_make_place_brush_size_bigger = false;
+			sprite_index = spr_map_exit;
+			mask_index = spr_wall;
+		}
 		if (selected_object == 3)
 		{
 			place_object = world_object_id.id_right_down;
 			can_make_place_brush_size_bigger = false;
-			if (asset_get_type("spr_map_turn_right_down") == asset_sprite)
-			{
-				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 0, c_white, 0.5);
-			}
+			draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 0, c_white, 0.5);
 			sprite_index = spr_noone;
 			mask_index = spr_wall;
 		}
@@ -266,10 +269,7 @@ if (global.actually_play_edited_level == false)
 		{
 			place_object = world_object_id.id_up_right;
 			can_make_place_brush_size_bigger = false;
-			if (asset_get_type("spr_map_turn_right_down") == asset_sprite)
-			{
-				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 90, c_white, 0.5);
-			}
+			draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 90, c_white, 0.5);
 			sprite_index = spr_noone;
 			mask_index = spr_wall;
 		}
@@ -277,10 +277,7 @@ if (global.actually_play_edited_level == false)
 		{
 			place_object = world_object_id.id_up_left;
 			can_make_place_brush_size_bigger = false;
-			if (asset_get_type("spr_map_turn_right_down") == asset_sprite)
-			{
-				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 180, c_white, 0.5);
-			}
+			draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 180, c_white, 0.5);
 			sprite_index = spr_noone;
 			mask_index = spr_wall;
 		}
@@ -288,10 +285,7 @@ if (global.actually_play_edited_level == false)
 		{
 			place_object = world_object_id.id_left_down;
 			can_make_place_brush_size_bigger = false;
-			if (asset_get_type("spr_map_turn_right_down") == asset_sprite)
-			{
-				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 270, c_white, 0.5);
-			}
+			draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 270, c_white, 0.5);
 			sprite_index = spr_noone;
 			mask_index = spr_wall;
 		}
@@ -306,7 +300,7 @@ if (global.actually_play_edited_level == false)
 
 	if (quit_level_editor <= 0)
 	{
-	
+		
 		#region /* Draw Horizontal Line in the Grid */
 		for(var i = 0; i < room_width; i += global.grid_hsnap)
 		{
@@ -316,7 +310,7 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		#endregion /* Draw Horizontal Line in the Grid END */
-	
+		
 		#region /* Draw Vertical Line in the Grid */
 		for(var i = 0; i < room_height; i += global.grid_vsnap)
 		{
@@ -326,7 +320,7 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		#endregion /* Draw Vertical Line in the Grid END */
-	
+		
 		#region /* Draw Horizontal Line in the Grid for indicating rooms */
 		for(var i = 0; i < room_width; i += global.grid_hsnap * 24)
 		{
@@ -336,7 +330,7 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		#endregion /* Draw Horizontal Line in the Grid for indicating rooms END */
-	
+		
 		#region /* Draw Vertical Line in the Grid for indicating rooms */
 		for(var i = 0; i < room_height; i += global.grid_vsnap * 13)
 		{
@@ -346,7 +340,7 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		#endregion /* Draw Vertical Line in the Grid for indicating rooms END */
-	
+		
 		if (instance_exists(obj_level_height))
 		{
 			draw_line_width_color(0, obj_level_height.y* 0.5, room_width, obj_level_height.y* 0.5, grid_width + 1, c_purple, c_purple); /* Draw Horizontal Line in the middle of the level */
@@ -410,14 +404,14 @@ if (global.actually_play_edited_level == false)
 	{
 		if (global.world_editor)
 		{
-			if (asset_get_type("spr_wall") == asset_sprite){draw_sprite_ext(spr_wall, 0,											camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);}
-			if (asset_get_type("spr_level_ring") == asset_sprite){draw_sprite_ext(spr_level_ring, 0,								camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_yellow, selected_menu_alpha);}
-			if (asset_get_type("spr_level") == asset_sprite){draw_sprite_ext(spr_level, 0,											camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_black, selected_menu_alpha);}
-			if (asset_get_type("spr_map_exit") == asset_sprite){draw_sprite_ext(spr_map_exit, 0,									camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64 * 2, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);}
-			if (asset_get_type("spr_map_turn_right_down") == asset_sprite){draw_sprite_ext(spr_map_turn_right_down, 0,				camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64 * 3, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);}
-			if (asset_get_type("spr_map_turn_right_down") == asset_sprite){draw_sprite_ext(spr_map_turn_right_down, 0,				camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64 * 4, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 90, c_white, selected_menu_alpha);}
-			if (asset_get_type("spr_map_turn_right_down") == asset_sprite){draw_sprite_ext(spr_map_turn_right_down, 0,				camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64 * 5, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 180, c_white, selected_menu_alpha);}
-			if (asset_get_type("spr_map_turn_right_down") == asset_sprite){draw_sprite_ext(spr_map_turn_right_down, 0,				camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64 * 6, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 270, c_white, selected_menu_alpha);}
+			draw_sprite_ext(spr_wall, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_level_ring, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_yellow, selected_menu_alpha);
+			draw_sprite_ext(spr_level, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_black, selected_menu_alpha);
+			draw_sprite_ext(spr_map_exit, 0, camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64 * 2, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64 * 3, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 0, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64 * 4, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 90, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64 * 5, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 180, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + selected_object_menu_x + 64 * 6, camera_get_view_y(view_camera[view_current]) + 64, 1, 1, 270, c_white, selected_menu_alpha);
 		}
 	
 		#region /* Draw an arrow pointing to currently selected object */

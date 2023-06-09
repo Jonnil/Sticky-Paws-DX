@@ -57,24 +57,31 @@ function scr_controls_for_level_editor()
 	
 	/* Player 1 Key Move Faster */ key_move_faster = (gamepad_button_check(global.player1_slot, gp_face3))
 	|| (gamepad_button_check(global.player1_slot, gp_face4))
+	|| (gamepad_button_check(global.player1_slot, gp_shoulderrb))
 	|| (gamepad_button_check(global.player1_slot, gp_stickl))
 	|| (gamepad_button_check(global.player1_slot, gp_stickr))
 	|| (keyboard_check(vk_control))
 	
-	/* Player 1 Keyboard Shortcut Draw */ key_draw = ord("D")
+	/* Player 1 Keyboard Shortcut Draw */ key_draw = ord("D");
 	/* Player 1 Gamepad Shortcut Draw */ button_draw = global.player_[inp.gp][1][1][action.accept];
 	
-	/* Player 1 Keyboard Shortcut Erase */ key_erase = ord("E")
+	/* Player 1 Keyboard Shortcut Erase */ key_erase = ord("E");
 	/* Player 1 Gamepad Shortcut Erase */ button_erase = global.player_[inp.gp][1][1][action.back];
 	
-	/* Player 1 Keyboard Shortcut Fill */ key_fill = ord("F")
-	/* Player 1 Gamepad Shortcut Fill */ button_fill = gp_shoulderlb;
+	/* Player 1 Keyboard Shortcut Fill */ key_fill = ord("F");
+	/* Player 1 Gamepad Shortcut Fill */ button_fill = gp_face4;
 	
-	/* Player 1 Keyboard Shortcut Grid */ key_grid = ord("G")
+	/* Player 1 Keyboard Shortcut Grid */ key_grid = ord("G");
 	/* Player 1 Gamepad Shortcut Grid */ button_grid = noone;
 	
-	/* Player 1 Keyboard Shortcut Play */ key_play = vk_enter
+	/* Player 1 Keyboard Shortcut Play */ key_play = vk_enter;
 	/* Player 1 Gamepad Shortcut Play */ button_play = gp_select;
+	
+	/* Player 1 Keyboard Shortcut Scroll Object Left */ key_scroll_object_left = noone;
+	/* Player 1 Gamepad Shortcut Scroll Object Left */ button_scroll_object_left = gp_shoulderl;
+	
+	/* Player 1 Keyboard Shortcut Scroll Object Right */ key_scroll_object_right = noone;
+	/* Player 1 Gamepad Shortcut Scroll Object Right */ button_scroll_object_right = gp_shoulderr;
 	
 	#endregion /* Controls for level editor END */
 	

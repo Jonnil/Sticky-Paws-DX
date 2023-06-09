@@ -88,10 +88,7 @@ allow_free_movement = false; /* Turn this to true to move freely on the map inst
 global.pause_room = noone;
 depth = -100;
 
-if (asset_get_type("spr_wall") == asset_sprite)
-{
-	mask_index = spr_wall; /* Mask index should be set to the size of a wall, only in Create Event */
-}
+mask_index = spr_wall; /* Mask index should be set to the size of a wall, only in Create Event */
 global.player_has_entered_goal = false;
 global.quit_level = false;
 global.quit_to_map = false;

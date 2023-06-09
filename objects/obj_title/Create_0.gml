@@ -394,14 +394,8 @@ c_menu_fill = c_black;
 
 #region /* Stop certain sounds from playing on the title screen */
 audio_stop_all();
-if (asset_get_type("snd_slip") == asset_sound)
-{
-	audio_stop_sound(snd_skidding);
-}
-if (asset_get_type("snd_slip_ice") == asset_sound)
-{
-	audio_stop_sound(snd_skidding_ice);
-}
+audio_stop_sound(snd_skidding);
+audio_stop_sound(snd_skidding_ice);
 #endregion /* Stop certain sounds from playing on the title screen END */
 
 #region /* Update Music */
