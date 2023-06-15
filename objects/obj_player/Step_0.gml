@@ -902,9 +902,9 @@ if (in_water == false)
 #endregion /* Interaction with other players END */
 
 #region /* Health Handeling */
-if (takendamage > 0)
+if (taken_damage > 0)
 {
-	takendamage -= 0.5;
+	taken_damage -= 0.5;
 }
 
 #region /* Make the player die if you have 0 HP */
@@ -946,7 +946,7 @@ if (asset_get_type("obj_lava") == asset_object)
 		stick_to_wall = false;
 		crouch = false;
 		speed_max = 8;
-		takendamage = 100;
+		taken_damage = 100;
 		if (invincible_timer <= false)
 		{
 			scr_audio_play(voice_burned, volume_source.voice);
@@ -1002,7 +1002,7 @@ if (instance_exists(obj_spikes))
 	|| (place_meeting(x, y - 1, obj_spikes))
 	|| (place_meeting(x, y + 1, obj_spikes))
 	{
-		if (takendamage < 1)
+		if (taken_damage < 1)
 		&& (assist_invincible == false)
 		&& (invincible_timer <= false)
 		{
@@ -1042,7 +1042,7 @@ if (instance_exists(obj_spikes))
 			{
 				hp --;
 			}
-			takendamage = 100;
+			taken_damage = 100;
 		}
 	}
 }
@@ -1494,7 +1494,7 @@ if (place_meeting(x, y, obj_horizontal_rope))
 		&& (!key_right_hold)
 		&& (!place_meeting(x - 1, y, obj_wall))
 		&& (!place_meeting(x - 10, y, obj_spikes))
-		&& (takendamage <= takendamage_freezetime)
+		&& (taken_damage <= taken_damage_freezetime)
 		{
 			image_xscale = -1;
 			if (place_meeting(x - 32, y, obj_horizontal_rope))
@@ -1535,7 +1535,7 @@ if (place_meeting(x, y, obj_horizontal_rope))
 		&& (!key_left_hold)
 		&& (!place_meeting(x + 1, y, obj_wall))
 		&& (!place_meeting(x + 10, y, obj_spikes))
-		&& (takendamage <= takendamage_freezetime)
+		&& (taken_damage <= taken_damage_freezetime)
 		{
 			image_xscale = +1;
 			if (place_meeting(x + 32, y, obj_horizontal_rope))
@@ -1634,7 +1634,7 @@ if (place_meeting(x, y, obj_horizontal_rope))
 			}
 			if (key_left_hold)
 			&& (!key_right_hold)
-			&& (takendamage <= takendamage_freezetime)
+			&& (taken_damage <= taken_damage_freezetime)
 			{
 				image_xscale = -1;
 				if (!audio_is_playing(snd_bump))
@@ -1658,7 +1658,7 @@ if (place_meeting(x, y, obj_horizontal_rope))
 			}
 			if (key_right_hold)
 			&& (!key_left_hold)
-			&& (takendamage <= takendamage_freezetime)
+			&& (taken_damage <= taken_damage_freezetime)
 			{
 				image_xscale = +1;
 				if (!audio_is_playing(snd_bump))
@@ -1714,7 +1714,7 @@ if (place_meeting(x, y, obj_vine))
 		if (key_up)
 		&& (!key_down)
 		&& (place_meeting(x, bbox_top - 1, obj_vine))
-		&& (takendamage <= takendamage_freezetime)
+		&& (taken_damage <= taken_damage_freezetime)
 		{
 			if (x < instance_nearest(x, y, obj_vine).x)
 			{
@@ -1755,7 +1755,7 @@ if (place_meeting(x, y, obj_vine))
 		else
 		if (key_down)
 		&& (!key_up)
-		&& (takendamage <= takendamage_freezetime)
+		&& (taken_damage <= taken_damage_freezetime)
 		{
 			if (x < instance_nearest(x, y, obj_vine).x)
 			{
@@ -1794,7 +1794,7 @@ if (place_meeting(x, y, obj_vine))
 		&& (!key_up)
 		&& (!key_down)
 		&& (!position_meeting(bbox_left - 1, y, obj_wall))
-		&& (takendamage <= takendamage_freezetime)
+		&& (taken_damage <= taken_damage_freezetime)
 		{
 			image_xscale = -1;
 			if (sprite_vine_climb> noone){sprite_index = sprite_vine_climb;}else
@@ -1822,7 +1822,7 @@ if (place_meeting(x, y, obj_vine))
 		&& (!key_up)
 		&& (!key_down)
 		&& (position_meeting(bbox_left - 1, y, obj_wall))
-		&& (takendamage <= takendamage_freezetime)
+		&& (taken_damage <= taken_damage_freezetime)
 		{
 			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
@@ -1840,7 +1840,7 @@ if (place_meeting(x, y, obj_vine))
 		&& (!key_up)
 		&& (!key_down)
 		&& (!position_meeting(bbox_right + 1, y, obj_wall))
-		&& (takendamage <= takendamage_freezetime)
+		&& (taken_damage <= taken_damage_freezetime)
 		{
 			image_xscale = +1;
 			if (sprite_vine_climb> noone){sprite_index = sprite_vine_climb;}else
@@ -1868,7 +1868,7 @@ if (place_meeting(x, y, obj_vine))
 		&& (!key_up)
 		&& (!key_down)
 		&& (position_meeting(bbox_right + 1, y, obj_wall))
-		&& (takendamage <= takendamage_freezetime)
+		&& (taken_damage <= taken_damage_freezetime)
 		{
 			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else

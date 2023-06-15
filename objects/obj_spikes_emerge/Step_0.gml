@@ -147,7 +147,7 @@ if (image_angle == 0)
 && (!place_meeting(x, y + 1, instance_nearest(x, y, obj_player)))
 && (instance_nearest(x, y, obj_player).hspeed <= 0)
 {
-	if (instance_nearest(x, y, obj_player).takendamage < 1)
+	if (instance_nearest(x, y, obj_player).taken_damage < 1)
 	&& (instance_nearest(x, y, obj_player).assist_invincible == false)
 	&& (asset_get_type("spr_spikes_emerge") == asset_sprite)
 	&& (sprite_index = spr_spikes_emerge)
@@ -192,7 +192,7 @@ if (image_angle == 0)
 				{
 					hp --;
 				}
-				takendamage = 100;
+				taken_damage = 100;
 			}
 		}
 	}

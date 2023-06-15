@@ -1,55 +1,46 @@
 if (place_meeting(x, y, obj_water))
 {
-	if (vspeed > +1)
+	if (vspeed > 1)
 	{
-		vspeed = +1;
+		vspeed = 1;
 	}
 }
 
 draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
 
-if (instance_exists(obj_camera))
-&& (distance_to_object(obj_camera) < 500)
-&& (asset_get_type("snd_music_boss") == asset_sound)
-&& (global.music != snd_music_boss)
-&& (has_seen_player)
+var nearest_player = instance_nearest(x, y, obj_player);
+
+if (instance_exists(obj_camera) && distance_to_object(obj_camera) < 500 && global.music != snd_music_boss && has_seen_player)
 {
 	audio_stop_sound(global.music);
 	audio_stop_sound(global.music_underwater);
 	global.music = snd_music_boss;
 }
 
-if (instance_exists(obj_player))
-&& (distance_to_object(obj_player) < 500)
-&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, true, true))
-&& (has_seen_player == false)
+if (instance_exists(obj_player) && distance_to_object(obj_player) < 500 && !collision_line(x, y, nearest_player.x, nearest_player.y, obj_wall, true, true) && !has_seen_player)
 {
 	has_seen_player = true; /* Only see player if player is close and in line of sight */
 }
 
-#region /* If enemies are disabled, destroy this object */
-if (global.assist_enable)
-&& (global.assist_enable_enemies == false)
+if (global.assist_enable && !global.assist_enable_enemies)
 {
 	instance_destroy();
 }
-#endregion /* If enemies are disabled, destroy this object END */
 
 #region /* Set the gravity */
-gravity_direction = 270; /* Direction of the gravity */
-if (!place_meeting(x, y + 1, obj_wall))
-&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+var view_x = camera_get_view_x(view_camera[view_current]);
+var view_y = camera_get_view_y(view_camera[view_current]);
+var view_width = camera_get_view_width(view_camera[view_current]);
+var view_height = camera_get_view_height(view_camera[view_current]);
+
+if (!place_meeting(x, y + 1, obj_wall) &&
+	!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) &&
+	!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform) &&
+	!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform) &&
+	x < view_x + view_width && x > view_x && y < view_y + view_height && y > view_y)
 {
-	if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	&& (x > camera_get_view_x(view_camera[view_current]))
-	&& (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-	&& (y > camera_get_view_y(view_camera[view_current]))
-	{
-		gravity = 0.5; /* The gravity */
-	}
+	gravity = 0.5; /* The gravity */
 }
 else
 {
@@ -58,33 +49,20 @@ else
 #endregion /* Set the gravity END */
 
 /* Put at right angle */
-if (angle < -360)
-{
-	angle += 16;
-}
-else
-if (angle > +360)
-{
-	angle -= 16;
-}
-else
-{
+if (angle < -360 || angle > 360) {
+	angle += 16 * sign(angle);
+} else {
 	angle = lerp(angle, 0, 0.1);
 }
 
-if (has_seen_player)
-{
-	time ++;
+if (has_seen_player) {
+	time++;
 }
 
-if (takendamage > 0)
-{
-	takendamage --;
-}
-if (time == room_speed * 3)
-{
-	if (can_jump_on_head)
-	{
+taken_damage = max(0, taken_damage - 1);
+
+if (time == room_speed * 3) {
+	if (can_jump_on_head) {
 		can_jump_on_head = false;
 		scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 	}
@@ -488,7 +466,7 @@ if (sprite_index == spr_boss_throw)
 if (hp <= 0)
 {
 	if (time == room_speed * 3 - 1)
-	|| (takendamage == 0)
+	|| (taken_damage == 0)
 	{
 		effect_create_above(ef_smoke, x - 32, y, 2, c_white);
 		effect_create_above(ef_smoke, x - 42, y + 32, 2, c_white);
@@ -520,7 +498,7 @@ if (hp <= 0)
 	}
 }
 
-if (takendamage == 50)
+if (taken_damage == 50)
 {
 	scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 }

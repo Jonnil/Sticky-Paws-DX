@@ -19,7 +19,7 @@ function scr_player_move_drowning()
 			frames_until_drowning = clamp(frames_until_drowning- 1, -60, seconds_until_drowning* 60);
 			if (frames_until_drowning <= -60)
 			&& (goal == false)
-			if (takendamage <= 0)
+			if (taken_damage <= 0)
 			&& (assist_invincible == false)
 			{
 				if (have_heart_balloon)
@@ -58,7 +58,7 @@ function scr_player_move_drowning()
 				{
 					hp --;
 				}
-				takendamage = 100;
+				taken_damage = 100;
 				scr_gamepad_vibration(player, 1, 10);
 			}
 		}

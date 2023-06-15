@@ -292,7 +292,7 @@ if (die == false)
 		&& (die == false)
 		&& (flat)
 		{
-			if (other.takendamage <= 0)
+			if (other.taken_damage <= 0)
 			&& (other.assist_invincible == false)
 			{
 				if (other.have_heart_balloon)
@@ -331,7 +331,7 @@ if (die == false)
 				{
 					other.hp --;
 				}
-				other.takendamage = 100;
+				other.taken_damage = 100;
 				scr_gamepad_vibration(other.player, 1, 10);
 			}
 		}

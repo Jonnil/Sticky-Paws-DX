@@ -6,19 +6,19 @@ function scr_player_move_wall_jump_and_wall_climb()
 	&& (can_wall_jump)
 	&& (can_move)
 	&& (global.pause == false)
-	&& (takendamage <= takendamage_freezetime)
+	&& (taken_damage <= taken_damage_freezetime)
 	&& (wall_jump_setting >= 1)
 	&& (hold_item_in_hands == "")
 	
 	|| (can_move)
 	&& (global.pause == false)
-	&& (takendamage <= takendamage_freezetime)
+	&& (taken_damage <= taken_damage_freezetime)
 	&& (place_meeting(x, y, obj_wall_jump_panel))
 	&& (hold_item_in_hands == "")
 	
 	|| (can_move)
 	&& (global.pause == false)
-	&& (takendamage <= takendamage_freezetime)
+	&& (taken_damage <= taken_damage_freezetime)
 	&& (place_meeting(x, y, obj_wall_climb_panel))
 	&& (hold_item_in_hands == "")
 	{
@@ -189,7 +189,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 				last_standing_y = y;
 				if (key_down)
 				&& (!key_up)
-				&& (takendamage <= takendamage_freezetime)
+				&& (taken_damage <= taken_damage_freezetime)
 				{
 					if (!audio_is_playing(snd_move_ivy))
 					{
@@ -212,7 +212,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 				&& (!key_left_hold)
 				{
 					if (bbox_bottom> 0)
-					&& (takendamage <= takendamage_freezetime)
+					&& (taken_damage <= taken_damage_freezetime)
 					{
 						if (!place_meeting(x, y - 16, obj_wall))
 						{

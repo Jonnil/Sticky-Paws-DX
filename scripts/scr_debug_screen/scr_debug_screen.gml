@@ -335,12 +335,10 @@ function scr_debug_screen()
 				scr_draw_text_outlined(32, 460, "menu_delay: " + string(menu_delay), global.default_text_size, c_black, c_red);
 			}
 		}
-		scr_draw_text_outlined(32, 490, "global.player_name[1]: " + string(global.player_name[1]), global.default_text_size, c_black, c_white);
 		if (variable_instance_exists(self, "what_string_to_edit_async"))
 		{
 			scr_draw_text_outlined(32, 520, "what_string_to_edit_async: " + string(what_string_to_edit_async), global.default_text_size, c_black, c_white);
 		}
-		scr_draw_text_outlined(32, 550, "global.keyboard_virtual_timer: " + string(global.keyboard_virtual_timer), global.default_text_size, c_black, c_white);
 		
 		draw_set_halign(fa_center);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)), global.default_text_size, c_black, c_white);

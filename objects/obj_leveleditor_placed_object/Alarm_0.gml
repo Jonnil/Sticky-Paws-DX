@@ -13,6 +13,7 @@ if (global.actually_play_edited_level == false)
 				draw_yscale = ds_grid_get(global.object_grid, 4, i);
 				draw_angle = ds_grid_get(global.object_grid, 5, i);
 				image_blend = ds_grid_get(global.object_grid, 6, i);
+				default_blend = ds_grid_get(global.object_grid, 6, i);
 				image_alpha = ds_grid_get(global.object_grid, 7, i);
 			}
 		}
@@ -36,48 +37,53 @@ if (global.actually_play_edited_level == false)
 	}
 	else
 	{
-		if (object == 1){if (asset_get_type("spr_wall") == asset_sprite){sprite_index = spr_wall;}mask_index = spr_wall;}
+		if (object == 1){sprite_index = spr_wall;mask_index = spr_wall;}
 		if (object == 2){sprite_index = spr_noone; mask_index = spr_wall;}
-		if (object == 3){if (asset_get_type("spr_map_exit") == asset_sprite){sprite_index = spr_map_exit;}mask_index = spr_wall;}
+		if (object == 3){sprite_index = spr_map_exit;mask_index = spr_wall;}
 		if (object == 4){sprite_index = spr_noone; mask_index = spr_wall;}
 		if (object == 5){sprite_index = spr_noone; mask_index = spr_wall;}
 		if (object == 6){sprite_index = spr_noone; mask_index = spr_wall;}
 		if (object == 7){sprite_index = spr_noone; mask_index = spr_wall;}
 	}
-	scr_make_sprite_transparent_setting_difficulty_levels();
+	//scr_make_sprite_transparent_setting_difficulty_levels();
 }
 #endregion /* Initialize Object END */
 
 #region /* Big collectible uses old ID's, need to update them so old levels are compatible */
-if (object == 35)
-|| (object == 36)
-|| (object == 37)
-|| (object == 38)
-{
-	object = 34;
-}
-else
-if (object == 351)
-|| (object == 361)
-|| (object == 371)
-|| (object == 381)
-{
-	object = 341;
-}
-else
-if (object == 49)
-|| (object == 50)
-|| (object == 51)
-|| (object == 52)
-{
-	object = 48;
-}
-else
-if (object == 84)
-|| (object == 85)
-|| (object == 86)
-|| (object == 87)
-{
-	object = 83;
-}
+//if (object == 35)
+//|| (object == 36)
+//|| (object == 37)
+//|| (object == 38)
+//{
+//	object = 34;
+//}
+//else
+//if (object == 351)
+//|| (object == 361)
+//|| (object == 371)
+//|| (object == 381)
+//{
+//	object = 341;
+//}
+//else
+//if (object == 49)
+//|| (object == 50)
+//|| (object == 51)
+//|| (object == 52)
+//{
+//	object = 48;
+//}
+//else
+//if (object == 84)
+//|| (object == 85)
+//|| (object == 86)
+//|| (object == 87)
+//{
+//	object = 83;
+//}
 #endregion /* Big collectible uses old ID's, need to update them so old levels are compatible END */
+
+if (!other.easy && !other.normal && !other.hard)
+{
+	instance_destroy();
+}

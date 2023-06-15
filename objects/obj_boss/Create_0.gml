@@ -9,16 +9,17 @@ hp = 3;
 flat = false;
 stomped_delay = 0;
 flying_back = false;
-takendamage = 0;
+taken_damage = 0;
 draw_xscale = 0;
 draw_yscale = 0;
-redblinktimer = 0;
+red_blink_timer = 0;
 has_seen_player = false; /* If boss hasn't seen player, then don't activate the fight yet. */
 arrow_xscale = 0;
 stuck_in_wall_counter = 0;
 sliding_along_ground = 0;
 can_die_from_spikes = false;
 give_rewards = true;
+gravity_direction = 270; /* Direction of the gravity */
 
 if (asset_get_type("snd_enemyvoice_defeated") == asset_sound)
 {

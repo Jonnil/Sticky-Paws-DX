@@ -45,7 +45,7 @@ if (other.vspeed > 0)
 		}
 		image_index = 0;
 		effect_create_below(ef_ring, other.x, other.bbox_bottom, 0, c_white);
-		takendamage = 100;
+		taken_damage = 100;
 		can_jump_on_head = false;
 		time = room_speed * 2
 	}
@@ -118,9 +118,9 @@ if (can_jump_on_head)
 else
 {
 	if (hp > 0)
-	&& (takendamage == 0)
+	&& (taken_damage == 0)
 	{
-		if (other.takendamage <= 0)
+		if (other.taken_damage <= 0)
 		&& (other.assist_invincible == false)
 		{
 			if (other.have_heart_balloon)
@@ -159,7 +159,7 @@ else
 			{
 				other.hp --;
 			}
-			other.takendamage = 100;
+			other.taken_damage = 100;
 			scr_gamepad_vibration(other.player, 1, 10);
 		}
 	}
@@ -169,7 +169,7 @@ if (other.invincible_timer > 0)
 && (hp > 0)
 {
 	hp = 0;
-	takendamage = 100;
+	taken_damage = 100;
 	hspeed = 0;
 	vspeed = 0;
 	mask_index = spr_boss_vulnerable;

@@ -55,12 +55,19 @@ function scr_controls_for_level_editor()
 	
 	#endregion /* Player 1 Key Back END */
 	
-	/* Player 1 Key Move Faster */ key_move_faster = (gamepad_button_check(global.player1_slot, gp_face3))
-	|| (gamepad_button_check(global.player1_slot, gp_face4))
-	|| (gamepad_button_check(global.player1_slot, gp_shoulderrb))
+	/* Player 1 Key Move Faster */ key_move_faster = (gamepad_button_check(global.player1_slot, gp_shoulderrb))
 	|| (gamepad_button_check(global.player1_slot, gp_stickl))
 	|| (gamepad_button_check(global.player1_slot, gp_stickr))
 	|| (keyboard_check(vk_control))
+	
+	/* Player 1 Keyboard Shortcut Change Draw Size */ key_change_draw_size = ord("D");
+	/* Player 1 Gamepad Shortcut Change Draw Size */ button_change_draw_size = gp_face3;
+	
+	/* Player 1 Keyboard Shortcut Change Erase Size */ key_change_erase_size = ord("E");
+	/* Player 1 Gamepad Shortcut Change Erase Size */ button_change_erase_size = gp_face3;
+	
+	/* Player 1 Keyboard Shortcut Change Fill Type */ key_change_fill_type = ord("F");
+	/* Player 1 Gamepad Shortcut Change Fill Type */ button_change_fill_type = gp_face3;
 	
 	/* Player 1 Keyboard Shortcut Draw */ key_draw = ord("D");
 	/* Player 1 Gamepad Shortcut Draw */ button_draw = global.player_[inp.gp][1][1][action.accept];

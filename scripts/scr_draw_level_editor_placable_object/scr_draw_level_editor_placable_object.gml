@@ -22,7 +22,7 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 			camera_get_view_y(view_camera[view_current]) + 64 + var_scroll_y, var_scale, var_scale, var_rotation, var_color, selected_menu_alpha * alpha_offset);
 		}
 		//if (unlocked_object[unlock_index])
-		if (unlocked_object[var_place_object_id])
+		if (unlocked_object[var_place_object_id] == 1)
 		&& (global.show_new_items_notification)
 		{
 			draw_set_halign(fa_center);

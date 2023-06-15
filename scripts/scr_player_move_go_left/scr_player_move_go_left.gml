@@ -11,7 +11,7 @@ function scr_player_move_go_left()
 		&& (stick_to_wall == false)
 		&& (climb == false)
 		&& (horizontal_rope_climb == false)
-		&& (takendamage <= takendamage_freezetime)
+		&& (taken_damage <= taken_damage_freezetime)
 		{
 			if (dive == false)
 			{

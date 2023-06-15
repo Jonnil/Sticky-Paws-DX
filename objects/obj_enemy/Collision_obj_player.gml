@@ -11,7 +11,7 @@ if (other.vspeed >= 0)
 if (stomped_delay <= 0)
 {
 	if (other.invincible_timer > 0)
-	|| (other.takendamage > 0)
+	|| (other.taken_damage > 0)
 	|| (other.dive)
 	|| (other.can_attack_after_dive_on_ground > 0)
 	{
@@ -211,7 +211,7 @@ else
 
 
 else
-if (other.takendamage <= 0)
+if (other.taken_damage <= 0)
 && (other.assist_invincible == false)
 {
 	if (other.have_heart_balloon)
@@ -250,7 +250,7 @@ if (other.takendamage <= 0)
 	{
 		other.hp --;
 	}
-	other.takendamage = 100;
+	other.taken_damage = 100;
 	scr_gamepad_vibration(other.player, 1, 10);
 }
 }

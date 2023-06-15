@@ -61,7 +61,7 @@ if (asset_get_type("spr_heart") == asset_sprite)
 		xx_heart = lerp(xx_heart, x, 0.1);
 		yy_heart = lerp(yy_heart, y + 32, 0.1);
 	}
-	if (takendamage %2 == 0)
+	if (taken_damage %2 == 0)
 	{
 		draw_set_alpha(image_alpha);
 		draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
@@ -229,7 +229,7 @@ if (intro_animation != "")
 #endregion /* Draw intro animation sprites (cutscene) if intro is playing END */
 
 #region /* Make it obvious if you take damage */
-if (takendamage >= takendamage_freezetime)
+if (taken_damage >= taken_damage_freezetime)
 {
 	dive = false;
 	gravity = 0;
@@ -256,7 +256,7 @@ if (takendamage >= takendamage_freezetime)
 		image_speed = 0.5;
 	}
 }
-if (takendamage >= 100)
+if (taken_damage >= 100)
 && (die == false)
 && (hp >= 1)
 {
@@ -266,10 +266,10 @@ if (takendamage >= 100)
 #endregion /* Make it obvious if you take damage END */
 
 #region /* Red blink timer */
-redblinktimer ++;
-if (redblinktimer > 30)
+red_blink_timer ++;
+if (red_blink_timer > 30)
 {
-	redblinktimer = 0;
+	red_blink_timer = 0;
 }
 if (midair_jumps_left == 0)
 && (number_of_jumps > 1)
@@ -287,7 +287,7 @@ else
 #endregion /* Red blink timer END */
 
 #region /* Blink red when only having 1 HP left and no heart balloon */
-if (redblinktimer > 25)
+if (red_blink_timer > 25)
 && (have_heart_balloon == false)
 && (hp <= 1)
 && (max_hp >= 2)
@@ -298,7 +298,7 @@ if (redblinktimer > 25)
 	draw_sprite_ext(sprite_index, image_index, xx + random_range(- 8, + 8), yy + random_range(- 8, + 8), draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha * collision_mask_alpha);
 }
 else
-if (takendamage%2 == 0)
+if (taken_damage%2 == 0)
 && (sprite_index > 0)
 && (intro_animation = "")
 {

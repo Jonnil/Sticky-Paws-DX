@@ -16,7 +16,7 @@ function scr_player_move_dive()
 		&& (ledge_grab == false)
 		&& (climb == false)
 		&& (horizontal_rope_climb == false)
-		&& (takendamage <= takendamage_freezetime)
+		&& (taken_damage <= taken_damage_freezetime)
 		&& (key_dive_pressed) /* Pressing the dive pressed key */
 		|| (dive == false)
 		&& (burnt == false)
@@ -24,7 +24,7 @@ function scr_player_move_dive()
 		&& (ledge_grab == false)
 		&& (climb == false)
 		&& (horizontal_rope_climb == false)
-		&& (takendamage <= takendamage_freezetime)
+		&& (taken_damage <= taken_damage_freezetime)
 		&& (double_tap_to_dive) /* If you are allowed to double-tap direction to dive */
 		&& (double_tap_dive) /* If you double tapped direction to dive */
 		{

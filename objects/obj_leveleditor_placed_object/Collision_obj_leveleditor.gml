@@ -7,14 +7,14 @@
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	/* Insert code that checks if view is moving, only then should the transparency difficulty layers be updated. For now just have it be in step event */
-	scr_make_sprite_transparent_setting_difficulty_levels();
-		
+	//scr_make_sprite_transparent_setting_difficulty_levels();
+	
 	#region /* Drag Object */
 	if (instance_exists(obj_leveleditor))
 	&& (obj_leveleditor.set_difficulty_mode == false)
 	&& (delay > 1)
 	{
-			
+		
 		#region /* Click on object to start drag */
 		if (mouse_check_button_pressed(mb_left) || obj_leveleditor.key_a_pressed) {
 			var can_drag_object = !keyboard_check(vk_space)
@@ -38,17 +38,17 @@
 			    && position_meeting(obj_leveleditor.x, obj_leveleditor.y, id)
 			    && !point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2)
 			    && !point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 256, - 64, get_window_width, + 64);
-				
+			
 			if (can_drag_object) {
 			    var can_place_difficulty_button = obj_leveleditor.set_difficulty_mode
 			        ? !point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 256, get_window_height - 64, get_window_width, room_height * 2) /* Can't place objects when clicking the bottom right buttons */
 			        : !point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height - 64, get_window_width, room_height * 2) /* Can't place objects when clicking the bottom right buttons */;
-
+				
 			    if (can_place_difficulty_button) {
 			        var can_place_up_down_button = obj_leveleditor.show_grid
 			            ? !point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - 32, 80 + 32 + 16 - 32, get_window_width + 64, 80 + 32 + 16 + 32) /* Up and down buttons when grid is on */
 			            : true;
-
+					
 			        if (can_place_up_down_button) {
 			            effect_create_above(ef_ring, x, y, 0, c_white);
 			            depth = -300;
@@ -61,7 +61,7 @@
 			}
 		}
 		#endregion /* Click on object to start drag END */
-			
+		
 		#region /* Release the object */
 		if (mouse_check_button_released(mb_left))
 		|| (obj_leveleditor.key_a_released)
@@ -108,6 +108,5 @@
 		dragged_from_original_place = true;
 	}
 	#endregion /* Drag Object END */
-		
-//}
+	
 #endregion /* Only run this code if the placed object is close to the level editor cursor, so that there isn't that much code running in step event END */

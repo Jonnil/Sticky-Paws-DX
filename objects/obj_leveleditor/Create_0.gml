@@ -76,6 +76,10 @@ scr_load_object_placement_txt();
 if (global.actually_play_edited_level)
 {
 	global.play_edited_level = true;
+	with(obj_leveleditor_placed_object)
+	{
+		scr_spawn_objects_when_starting_room(); /* Only spawn objects AFTER saving custom level */
+	}
 	instance_destroy();
 }
 #endregion /* If actually playing level, set play_edited_level to true and delete itself. Have this code after the "doing clear check = true" END */
@@ -207,7 +211,7 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Load custom sprites END */
 	
 	#region /* Grid Initialization */
-	global.object_grid = ds_grid_create(12,0);
+	global.object_grid = ds_grid_create(12, 0);
 	add_object(level_object_id.id_wall, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(level_object_id.id_wall_dirt, spr_wall_dirt, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(level_object_id.id_wall_glass, spr_wall_glass, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -334,8 +338,8 @@ if (global.actually_play_edited_level == false)
 	add_object(level_object_id.id_blaster, spr_blaster, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(level_object_id.id_spring, spr_spring, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(level_object_id.id_ladder, spr_ladder, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(level_object_id.id_arrow_sign, noone, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
-	add_object(level_object_id.id_arrow_sign_small, noone, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(level_object_id.id_arrow_sign, spr_arrow_sign, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(level_object_id.id_arrow_sign_small, spr_arrow_sign_small, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(level_object_id.id_checkpoint, spr_checkpoint, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	
 	#region /* Spikes Emerge Block */

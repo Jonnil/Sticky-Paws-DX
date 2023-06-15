@@ -2688,7 +2688,14 @@ function scr_options_menu()
 			
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(file_select_x, file_y, l10n_text("File") + ": " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			if (global.how_many_files > 1)
+			{
+				scr_draw_text_outlined(file_select_x, file_y, l10n_text("File") + ": " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			}
+			else
+			{
+				scr_draw_text_outlined(file_select_x, file_y, l10n_text("Save File"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			}
 			
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
@@ -2796,12 +2803,12 @@ function scr_options_menu()
 					}
 				}
 			}
-		
+			
 			if (global.file < 1)
 			{
 				global.file = 1; /* Don't let file go less than 1 */
 			}
-		
+			
 			if (global.file > 1)
 			&& (menu != "file_delete_no")
 			&& (menu != "file_delete_yes")
@@ -2816,17 +2823,21 @@ function scr_options_menu()
 					draw_set_alpha(1);
 				}
 			}
-			if (menu != "file_delete_no")
-			&& (menu != "file_delete_yes")
+			if (global.how_many_files > global.file)
+			|| (global.how_many_files = -1)
 			{
-				draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, file_y, 0.5, 0.5, 0, c_white, 1);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				if (menu != "file_delete_no")
+				&& (menu != "file_delete_yes")
 				{
-					menu = "file_delete";
-					draw_set_alpha(0.5);
-					draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16, c_white, c_white, c_white, c_white, false);
-					draw_set_alpha(1);
+					draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, file_y, 0.5, 0.5, 0, c_white, 1);
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16))
+					&& (global.controls_used_for_menu_navigation == "mouse")
+					{
+						menu = "file_delete";
+						draw_set_alpha(0.5);
+						draw_rectangle_color(file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16, c_white, c_white, c_white, c_white, false);
+						draw_set_alpha(1);
+					}
 				}
 			}
 		
@@ -2991,9 +3002,13 @@ function scr_options_menu()
 				if (menu_delay == 0)
 				&& (menu_joystick_delay == 0)
 				{
-					global.file ++;
-					menu_delay = 3;
-					menu_joystick_delay = 30;
+					if (global.how_many_files > global.file)
+					|| (global.how_many_files = -1)
+					{
+						global.file ++;
+						menu_delay = 3;
+						menu_joystick_delay = 30;
+					}
 				}
 			}
 		}

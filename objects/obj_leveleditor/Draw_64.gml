@@ -950,11 +950,27 @@ if (global.actually_play_edited_level == false)
 			&& (global.controls_used_for_menu_navigation == "controller")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(button_draw, place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
+				if (fill_mode == false)
+				&& (erase_mode == false)
+				{
+					scr_draw_gamepad_buttons(button_change_draw_size, place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
+				}
+				else
+				{
+					scr_draw_gamepad_buttons(button_draw, place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
+				}
 			}
 			else
 			{
-				draw_sprite_ext(spr_keyboard_keys, key_draw, place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				if (fill_mode == false)
+				&& (erase_mode == false)
+				{
+					draw_sprite_ext(spr_keyboard_keys, key_change_draw_size, place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_keyboard_keys, key_draw, place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				}
 			}
 			#endregion /* Draw Brush key END */
 			
@@ -1149,11 +1165,25 @@ if (global.actually_play_edited_level == false)
 			&& (global.controls_used_for_menu_navigation == "controller")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(button_erase, erase_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
+				if (erase_mode)
+				{
+					scr_draw_gamepad_buttons(button_change_erase_size, erase_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
+				}
+				else
+				{
+					scr_draw_gamepad_buttons(button_erase, erase_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
+				}
 			}
 			else
 			{
-				draw_sprite_ext(spr_keyboard_keys, key_erase, erase_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				if (erase_mode)
+				{
+					draw_sprite_ext(spr_keyboard_keys, key_change_erase_size, erase_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_keyboard_keys, key_erase, erase_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				}
 			}
 			#endregion /* Draw Eraser key END */
 			
@@ -1271,11 +1301,25 @@ if (global.actually_play_edited_level == false)
 			&& (global.controls_used_for_menu_navigation == "controller")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(button_fill, fill_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
+				if (fill_mode)
+				{
+					scr_draw_gamepad_buttons(button_change_fill_type, fill_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
+				}
+				else
+				{
+					scr_draw_gamepad_buttons(button_fill, fill_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
+				}
 			}
 			else
 			{
-				draw_sprite_ext(spr_keyboard_keys, key_fill, fill_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				if (fill_mode)
+				{
+					draw_sprite_ext(spr_keyboard_keys, key_change_fill_type, fill_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_keyboard_keys, key_fill, fill_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
+				}
 			}
 			#endregion /* Draw Eraser key END */
 			

@@ -54,7 +54,7 @@ function scr_player_move_lose()
 				}
 			}
 			speed = 0;
-			takendamage = 0;
+			taken_damage = 0;
 			invincible_timer = false;
 			scr_audio_play(snd_lose, volume_source.sound);
 			

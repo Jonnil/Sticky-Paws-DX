@@ -32,7 +32,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_noone",
+    "path": "sprites/spr_noone/spr_noone.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

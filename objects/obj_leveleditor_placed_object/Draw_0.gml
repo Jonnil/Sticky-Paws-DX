@@ -1,31 +1,35 @@
-if (global.actually_play_edited_level == false && x > camera_get_view_x(view_camera[view_current]) - 12 && x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 12 && y > camera_get_view_y(view_camera[view_current]) - 12 && y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 12)
+var view_x = camera_get_view_x(view_camera[view_current]);
+var view_y = camera_get_view_y(view_camera[view_current]);
+var view_width = camera_get_view_width(view_camera[view_current]);
+var view_height = camera_get_view_height(view_camera[view_current]);
+
+if (global.actually_play_edited_level == false && x > view_x - 32 && x < view_x + view_width + 32 && y > view_y - 32 && y < view_y + view_height + 32)
 {
-	if (sprite_exists(sprite_index)) draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, image_blend, image_alpha);
+	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, image_blend, image_alpha);
 	if (draw_rotate_arrow) draw_sprite_ext(spr_rotate_arrow, image_index, x, y, scr_wave(draw_xscale * 0.3, draw_xscale * 0.2, 0.5, 0), scr_wave(draw_yscale * 0.3, draw_yscale * 0.2, 0.5, 0), draw_angle, image_blend, image_alpha);
 	
-	switch (object) 
+	switch (object)
 	{
 		case level_object_id.id_spring:
 		case level_object_id.id_door:
-			draw_line_width_color(x, y, second_x, second_y, 4, c_black, c_black);
-			draw_line_width_color(x, y, second_x, second_y, 2, image_blend, image_blend);
-			draw_set_color(c_black);
-			draw_arrow(x, y, second_x, second_y, 23);
+			draw_line_width_color(x, y, second_x, second_y, 2, c_black, image_blend);
 			draw_set_color(image_blend);
 			draw_arrow(x, y, second_x, second_y, 20);
-			draw_set_color(c_white);
-			if (object == level_object_id.id_spring) draw_angle = point_direction(x, y, second_x, second_y) - 90;
 			break;
 		case level_object_id.id_water_level_change_slow:
 		case level_object_id.id_water_level_change_fast:
 		case level_object_id.id_water_level_change_faster:
-			draw_line_width_color(x, y, x, second_y, 4, c_black, c_black);
-			draw_line_width_color(x, y, x, second_y, 2, image_blend, image_blend);
-			draw_angle = point_direction(x, y, x, second_y) - 90;
+			draw_line_width_color(x, y, x, second_y, 2, c_black, image_blend);
 			break;
 		case level_object_id.id_arrow_sign:
 		case level_object_id.id_arrow_sign_small:
-			draw_angle = point_direction(x, y, second_x, second_y);
+			if (drag_object)
+			|| (place_object_angle)
+			{
+				draw_line_width_color(x, y, second_x, second_y, 2, c_black, image_blend);
+				draw_set_color(image_blend);
+				draw_arrow(x, y, second_x, second_y, 20);
+			}
 			break;
 		case level_object_id.id_water:
 			draw_set_alpha(0.5);
