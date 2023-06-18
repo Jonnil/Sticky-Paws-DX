@@ -33,22 +33,25 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	&& (open_dropdown == false)
 	{
 		menu = menu_index;
-		if (spr_index >= 0)
+		if (menu == menu_index)
 		{
-			draw_sprite_ext(spr_index, 0, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, highlight_color, 1);
-		}
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(x_position + (spr_width * 0.5), y_position + (spr_height * 0.5), string(string_text), global.default_text_size, c_black, c_white, 1); /* White text inside the menu button */
-		if (show_arrows)
-		{
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position - 24, y_position + (spr_height * 0.5), 1, 1, 0, c_white, 1);
-			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + spr_width + 24, y_position + (spr_height * 0.5), 1, 1, 180, c_white, 1);
+			if (sprite_exists(spr_index))
+			{
+				draw_sprite_ext(spr_index, 0, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, highlight_color, 1);
+			}
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_middle);
+			scr_draw_text_outlined(x_position + (spr_width * 0.5), y_position + (spr_height * 0.5), string(string_text), global.default_text_size, c_black, c_white, 1); /* White text inside the menu button */
+			if (show_arrows)
+			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position - 24, y_position + (spr_height * 0.5), 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + spr_width + 24, y_position + (spr_height * 0.5), 1, 1, 180, c_white, 1);
+			}
 		}
 	}
 	else
 	{
-		if (spr_index >= 0)
+		if (sprite_exists(spr_index))
 		{
 			draw_sprite_ext(spr_index, 0, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, c_white, 1);
 			if (highlight_color != c_lime)

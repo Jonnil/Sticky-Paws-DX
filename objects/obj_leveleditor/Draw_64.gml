@@ -1,7 +1,5 @@
 if (global.actually_play_edited_level == false)
 {
-	var get_window_height = display_get_gui_height();
-	var get_window_width = display_get_gui_width();
 	
 	if (quit_level_editor == false)
 	{

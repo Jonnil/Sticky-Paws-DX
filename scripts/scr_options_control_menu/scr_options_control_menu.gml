@@ -4389,7 +4389,9 @@ function scr_options_control_menu()
 			draw_menu_dropdown(390, menu_y_show_controls+ menu_y_offset, l10n_text("Show Controls"), "show_controls", global_show_controls, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 		}
 		draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
-		draw_menu_dropdown(390, menu_y_wall_jump_setting+ menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
+		draw_menu_dropdown(390, menu_y_wall_jump_setting + menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
+		scr_draw_text_outlined(590, menu_y_wall_jump_setting + menu_y_offset, "global.player1_wall_jump_setting: " + string(global.player1_wall_jump_setting));
+		scr_draw_text_outlined(1190, menu_y_wall_jump_setting + menu_y_offset, "global_wall_jump_setting: " + string(global_wall_jump_setting));
 		#endregion /* Controls checkmarks and dropdown menu settings END */
 		
 		#region /* Menu cursor y position */
@@ -4608,38 +4610,50 @@ function scr_options_control_menu()
 				&& (menu_delay == 0)
 				&& (open_dropdown)
 				{
+					scr_config_save();
+					ini_open(working_directory + "config.ini");
 					if (remapping_player == 0)
 					&& (global.player1_profile > 0)
 					{
 						global.player1_profile --;
+						if (!ini_section_exists("player1_profile" + string(remapping_profile)))
+						{
+							scr_set_default_remapping_player1_gamepad(true);
+							scr_set_default_remapping_player1_keyboard(true);
+						}
 					}
 					else
 					if (remapping_player == 1)
 					&& (global.player2_profile > 0)
 					{
 						global.player2_profile --;
+						if (!ini_section_exists("player2_profile" + string(remapping_profile)))
+						{
+							scr_set_default_remapping_player2_gamepad(true);
+							scr_set_default_remapping_player2_keyboard(true);
+						}
 					}
 					else
 					if (remapping_player == 2)
 					&& (global.player3_profile > 0)
 					{
 						global.player3_profile --;
+						if (!ini_section_exists("player3_profile" + string(remapping_profile)))
+						{
+							scr_set_default_remapping_player3_gamepad(true);
+							scr_set_default_remapping_player3_keyboard(true);
+						}
 					}
 					else
 					if (remapping_player == 3)
 					&& (global.player4_profile > 0)
 					{
 						global.player4_profile --;
-					}
-					ini_open(working_directory + "config.ini");
-					if (!ini_section_exists("player1_profile" + string(remapping_profile)))
-					{
-						scr_set_default_remapping_player1_gamepad(true);
-						scr_set_default_remapping_player1_keyboard(true);
-					}
-					else
-					{
-						scr_config_save();
+						if (!ini_section_exists("player4_profile" + string(remapping_profile)))
+						{
+							scr_set_default_remapping_player4_gamepad(true);
+							scr_set_default_remapping_player4_keyboard(true);
+						}
 					}
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					menu_delay = 3;
@@ -4650,38 +4664,50 @@ function scr_options_control_menu()
 				&& (menu_delay == 0)
 				&& (open_dropdown)
 				{
+					scr_config_save();
+					ini_open(working_directory + "config.ini");
 					if (remapping_player == 0)
 					&& (global.player1_profile < 3)
 					{
 						global.player1_profile ++;
+						if (!ini_section_exists("player1_profile" + string(remapping_profile)))
+						{
+							scr_set_default_remapping_player1_gamepad(true);
+							scr_set_default_remapping_player1_keyboard(true);
+						}
 					}
 					else
 					if (remapping_player == 1)
 					&& (global.player2_profile < 3)
 					{
 						global.player2_profile ++;
+						if (!ini_section_exists("player2_profile" + string(remapping_profile)))
+						{
+							scr_set_default_remapping_player2_gamepad(true);
+							scr_set_default_remapping_player2_keyboard(true);
+						}
 					}
 					else
 					if (remapping_player == 2)
 					&& (global.player3_profile < 3)
 					{
 						global.player3_profile ++;
+						if (!ini_section_exists("player3_profile" + string(remapping_profile)))
+						{
+							scr_set_default_remapping_player3_gamepad(true);
+							scr_set_default_remapping_player3_keyboard(true);
+						}
 					}
 					else
 					if (remapping_player == 3)
 					&& (global.player4_profile < 3)
 					{
 						global.player4_profile ++;
-					}
-					ini_open(working_directory + "config.ini");
-					if (!ini_section_exists("player1_profile" + string(remapping_profile)))
-					{
-						scr_set_default_remapping_player1_gamepad(true);
-						scr_set_default_remapping_player1_keyboard(true);
-					}
-					else
-					{
-						scr_config_save();
+						if (!ini_section_exists("player4_profile" + string(remapping_profile)))
+						{
+							scr_set_default_remapping_player4_gamepad(true);
+							scr_set_default_remapping_player4_keyboard(true);
+						}
 					}
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					menu_delay = 3;

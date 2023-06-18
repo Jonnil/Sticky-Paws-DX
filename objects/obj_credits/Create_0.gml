@@ -32,3 +32,5 @@ else
 	sprite_index = spr_noone;
 }
 #endregion /* Show Title Logo first during credits END */
+
+alarm[0] = 3;

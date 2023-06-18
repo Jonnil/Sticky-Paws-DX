@@ -26,16 +26,13 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	if (menu == "remap_select_profile")
 	&& (variable_to_change = global.player1_profile)
 	{
+		scr_config_save();
 		global.player1_profile = change_to_value;
 		ini_open(working_directory + "config.ini");
 		if (!ini_section_exists("player1_profile" + string(change_to_value)))
 		{
 			scr_set_default_remapping_player1_gamepad(true);
 			scr_set_default_remapping_player1_keyboard(true);
-		}
-		else
-		{
-			scr_config_save();
 		}
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		scr_config_load();
@@ -44,16 +41,13 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	if (menu == "remap_select_profile")
 	&& (variable_to_change = global.player2_profile)
 	{
+		scr_config_save();
 		global.player2_profile = change_to_value;
 		ini_open(working_directory + "config.ini");
 		if (!ini_section_exists("player2_profile" + string(change_to_value)))
 		{
 			scr_set_default_remapping_player2_gamepad(true);
 			scr_set_default_remapping_player2_keyboard(true);
-		}
-		else
-		{
-			scr_config_save();
 		}
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		scr_config_load();
@@ -62,16 +56,13 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	if (menu == "remap_select_profile")
 	&& (variable_to_change = global.player3_profile)
 	{
+		scr_config_save();
 		global.player3_profile = change_to_value;
 		ini_open(working_directory + "config.ini");
 		if (!ini_section_exists("player3_profile" + string(change_to_value)))
 		{
 			scr_set_default_remapping_player3_gamepad(true);
 			scr_set_default_remapping_player3_keyboard(true);
-		}
-		else
-		{
-			scr_config_save();
 		}
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		scr_config_load();
@@ -80,16 +71,13 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	if (menu == "remap_select_profile")
 	&& (variable_to_change = global.player4_profile)
 	{
+		scr_config_save();
 		global.player4_profile = change_to_value;
 		ini_open(working_directory + "config.ini");
 		if (!ini_section_exists("player4_profile" + string(change_to_value)))
 		{
 			scr_set_default_remapping_player4_gamepad(true);
 			scr_set_default_remapping_player4_keyboard(true);
-		}
-		else
-		{
-			scr_config_save();
 		}
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		scr_config_load();

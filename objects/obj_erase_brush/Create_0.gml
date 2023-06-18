@@ -1,5 +1,5 @@
 erase_brush_size = obj_leveleditor.erase_brush_size;
-visible = true;
+visible = false;
 
 if (erase_brush_size == 0)
 {

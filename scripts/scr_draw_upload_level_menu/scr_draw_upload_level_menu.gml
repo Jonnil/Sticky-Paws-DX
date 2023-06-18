@@ -507,7 +507,7 @@ function scr_draw_upload_level_menu()
 			{
 				scr_draw_text_outlined(get_window_width * 0.5, draw_description_y, string(ini_read_string("info", "level_description", "")), global.default_text_size * 1.25, c_black, c_white, 1);
 			}
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			ini_close();
 		}
 		#endregion /* Draw Level Description END */
 		
@@ -627,7 +627,7 @@ function scr_draw_upload_level_menu()
 				{
 					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					keyboard_string = ini_read_string("info", "level_description", "");
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					ini_close();
 				}
 				else
 				{
@@ -964,6 +964,8 @@ function scr_draw_upload_level_menu()
 					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					ini_write_string("info", "level_description", string(global.level_description));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					
+					thumbnail_level_description[global.select_level_index] = string(global.level_description);
 					
 					menu = "upload_edit_description";
 					level_editor_edit_name = false;

@@ -992,8 +992,6 @@ if (burnt == 2)
 }
 #endregion /* Burnt END */
 
-scr_player_move_lose();
-
 #region /* If you touch spikes, take damage */
 if (instance_exists(obj_spikes))
 {
@@ -3957,3 +3955,30 @@ if (line_hit.instance != noone)
 	}
 }
 #endregion /* Predicting where player will end up at high speeds and stopping the player from going inside a wall END */
+
+#region /* Debug teleport character with mouse */
+if (keyboard_check(vk_f3))
+&& (mouse_check_button(mb_left))
+{
+	with(obj_camera)
+	{
+		hspeed = 0;
+		vspeed = 0;
+		x = xprevious;
+		y = yprevious;
+		if (!mouse_check_button(mb_right))
+		{
+			xx = xprevious;
+			yy = yprevious;
+		}
+	}
+	hspeed = 0;
+	vspeed = 0;
+	x = mouse_x;
+	y = mouse_y;
+	die = false;
+	stuck_in_wall_counter = 0;
+}
+#endregion /* Debug teleport character with mouse END */
+
+scr_player_move_lose(); /* Have the losing script at the end of Step Event */

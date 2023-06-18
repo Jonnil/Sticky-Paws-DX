@@ -23,7 +23,7 @@ if (instance_exists(obj_player))
 if (die_volting = -1)
 || (die_volting = +1)
 {
-	image_blend = c_gray;
+	image_blend = c_ltgray;
 	image_speed = 0;
 	image_index = 1;
 	if (die_volting = -1)

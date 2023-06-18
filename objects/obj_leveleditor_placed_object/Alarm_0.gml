@@ -12,28 +12,101 @@ if (global.actually_play_edited_level == false)
 				draw_xscale = ds_grid_get(global.object_grid, 4, i);
 				draw_yscale = ds_grid_get(global.object_grid, 4, i);
 				draw_angle = ds_grid_get(global.object_grid, 5, i);
+				image_angle = draw_angle;
 				image_blend = ds_grid_get(global.object_grid, 6, i);
 				default_blend = ds_grid_get(global.object_grid, 6, i);
 				image_alpha = ds_grid_get(global.object_grid, 7, i);
 			}
 		}
 		
-		if (object == level_object_id.id_basic_collectible)
-		|| (object == level_object_id.id_basic_collectible_2)
-		|| (object == level_object_id.id_basic_collectible_3)
-		|| (object == level_object_id.id_basic_collectible_4)
-		|| (object == level_object_id.id_basic_collectible_5)
-		|| (object == level_object_id.id_basic_collectible_6)
-		|| (object == level_object_id.id_basic_collectible_7)
-		|| (object == level_object_id.id_basic_collectible_8)
-		|| (object == level_object_id.id_oneway)
-		|| (object == level_object_id.id_oneway2)
-		|| (object == level_object_id.id_oneway3)
-		|| (object == level_object_id.id_oneway4)
-		{
-			draw_rotate_arrow = true;
-		}
+		draw_item_on_top = noone;
+		draw_item_with_spring = false;
 		
+		switch (object)
+		{
+			case level_object_id.id_basic_collectible:
+			case level_object_id.id_basic_collectible_2:
+			case level_object_id.id_basic_collectible_3:
+			case level_object_id.id_basic_collectible_4:
+			case level_object_id.id_basic_collectible_5:
+			case level_object_id.id_basic_collectible_6:
+			case level_object_id.id_basic_collectible_7:
+			case level_object_id.id_basic_collectible_8:
+			case level_object_id.id_oneway:
+			case level_object_id.id_oneway2:
+			case level_object_id.id_oneway3:
+			case level_object_id.id_oneway4:
+			{
+				draw_rotate_arrow = true;
+			}
+			case level_object_id.id_brick_block_10_basic_collectibles:
+			case level_object_id.id_question_block_10_basic_collectibles:
+			case level_object_id.id_melon_block_10_basic_collectibles:
+			case level_object_id.id_bump_in_ground_8_basic_collectibles:
+			case level_object_id.id_invisible_bump_in_ground_8_basic_collectibles:
+				draw_item_on_top = global.resource_pack_sprite_basic_collectible;
+				break;
+				
+			case level_object_id.id_brick_block_heart_balloon:
+			case level_object_id.id_question_block_heart_balloon:
+			case level_object_id.id_bump_in_ground_heart_balloon:
+			case level_object_id.id_invisible_bump_in_ground_heart_balloon:
+				draw_item_on_top = spr_heart;
+				break;
+				
+			case level_object_id.id_brick_block_one_up:
+			case level_object_id.id_question_block_one_up:
+			case level_object_id.id_bump_in_ground_one_up:
+			case level_object_id.id_invisible_bump_in_ground_one_up:
+				draw_item_on_top = spr_1up;
+				break;
+				
+			case level_object_id.id_brick_block_two_up:
+			case level_object_id.id_question_block_two_up:
+			case level_object_id.id_bump_in_ground_two_up:
+			case level_object_id.id_invisible_bump_in_ground_two_up:
+				draw_item_on_top = spr_2up;
+				break;
+				
+			case level_object_id.id_brick_block_three_up:
+			case level_object_id.id_question_block_three_up:
+			case level_object_id.id_bump_in_ground_three_up:
+			case level_object_id.id_invisible_bump_in_ground_three_up:
+				draw_item_on_top = spr_3up;
+				break;
+				
+			case level_object_id.id_bump_in_ground_big_collectible:
+			case level_object_id.id_invisible_bump_in_ground_big_collectible:
+				draw_item_on_top = global.resource_pack_sprite_big_collectible;
+				break;
+				
+			case level_object_id.id_brick_block_invincibility_powerup:
+			case level_object_id.id_question_block_invincibility_powerup:
+			case level_object_id.id_bump_in_ground_invincibility_powerup:
+			case level_object_id.id_invisible_bump_in_ground_invincibility_powerup:
+				draw_item_on_top = global.resource_pack_sprite_invincibility_powerup;
+				break;
+				
+			case level_object_id.id_brick_block_invincibility_powerup_coil_spring:
+			case level_object_id.id_question_block_invincibility_powerup_coil_spring:
+			case level_object_id.id_bump_in_ground_invincibility_powerup_coil_spring:
+			case level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring:
+				draw_item_with_spring = true;
+				draw_item_on_top = global.resource_pack_sprite_invincibility_powerup;
+				break;
+			case level_object_id.id_spring:
+				draw_angle = point_direction(x, y, second_x, second_y) - 90;
+				break;
+			case level_object_id.id_water_level_change_slow:
+			case level_object_id.id_water_level_change_fast:
+			case level_object_id.id_water_level_change_faster:
+				draw_angle = point_direction(x, y, x, second_y) - 90;
+				break;
+			case level_object_id.id_arrow_sign:
+			case level_object_id.id_arrow_sign_small:
+				draw_angle = point_direction(x, y, second_x, second_y);
+				break;
+		}
 	}
 	else
 	{
@@ -45,7 +118,6 @@ if (global.actually_play_edited_level == false)
 		if (object == 6){sprite_index = spr_noone; mask_index = spr_wall;}
 		if (object == 7){sprite_index = spr_noone; mask_index = spr_wall;}
 	}
-	//scr_make_sprite_transparent_setting_difficulty_levels();
 }
 #endregion /* Initialize Object END */
 
@@ -82,8 +154,3 @@ if (global.actually_play_edited_level == false)
 //	object = 83;
 //}
 #endregion /* Big collectible uses old ID's, need to update them so old levels are compatible END */
-
-if (!other.easy && !other.normal && !other.hard)
-{
-	instance_destroy();
-}

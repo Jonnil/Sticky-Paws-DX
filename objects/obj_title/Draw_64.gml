@@ -525,9 +525,7 @@ else
 #endregion /* Hide Fullscreen and Version text / Set certain variables to default value END */
 
 #region /* Draw Title Screen */
-if (global.title_logo_index >= 0)
-&& (global.title_logo_index != undefined)
-&& (global.title_logo_index != "")
+if (sprite_exists(global.title_logo_index))
 {
 	draw_sprite_ext(global.title_logo_index, image_index, display_get_gui_width() * 0.5 + title_x, display_get_gui_height() * 0.5 - 100 + title_y, 402 / sprite_get_height(global.title_logo_index) * title_xscale, 402 / sprite_get_height(global.title_logo_index) * title_yscale, 0, c_white, title_alpha);
 }

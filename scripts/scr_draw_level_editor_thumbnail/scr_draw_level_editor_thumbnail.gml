@@ -12,12 +12,6 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	&& (menu != "open_custom_levels_folder")
 	&& (menu != "online_level_list")
 	&& (menu != "search_level_id")
-	&& (menu_delay <= 0)
-	|| (menu != "back_from_level_editor")
-	&& (menu != "open_custom_levels_folder")
-	&& (menu != "online_level_list")
-	&& (menu != "search_level_id")
-	&& (open_sub_menu)
 	{
 		var custom_level_select_blinking = scr_wave(1, 0, 2, 0);
 		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_red, c_red, c_red, c_red, false);
@@ -50,38 +44,43 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 			/* Draw level name on top of level thumbnail */ scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 250 + 184, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 1.2, c_white, c_black, 1);
 			
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
-			if (level_editor_template_select == false)
+			if (!level_editor_template_select && i >= 1)
 			{
-				if (i >= 1)
+				var clear_check = thumbnail_clear_check[i];
+				var var_level_id = thumbnail_level_id[i];
+				var current_text = "";
+				
+				if (clear_check && var_level_id != "")
 				{
-					ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, i)) + "/data/level_information.ini");
-					
-					var clear_check = ini_read_string("info", "clear_check", false);
-					
-					if (clear_check)
-					&& (ini_key_exists("info", "level_id"))
+					if (global.select_level_index == i)
 					{
-						draw_set_halign(fa_left);
-						draw_set_valign(fa_middle);
-						if (global.select_level_index == i)
-						{
-							scr_draw_text_outlined(394 * (i - column * row) + 140 + thumbnail_x_offset, 226 * (column - scroll) + 274, string(ini_read_string("info", "level_id", "")), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
-						}
-						draw_sprite_ext(spr_icons_upload, 1, 394 * (i - column * row) + 120 + thumbnail_x_offset, 226 * (column - scroll) + 274, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
+						current_text = string(var_level_id);
 					}
-					else
-					if (clear_check)
-					&& (ini_key_exists("info", "clear_check"))
+					
+					var current_icon = spr_icons_upload;
+					var icon_scale = scr_wave(0.9, 1, 1, 0);
+				}
+				else if (clear_check)
+				{
+					if (global.select_level_index == i)
 					{
-						draw_set_halign(fa_left);
-						draw_set_valign(fa_middle);
-						if (global.select_level_index == i)
-						{
-							scr_draw_text_outlined(394 * (i - column * row) + 140 + thumbnail_x_offset, 226 * (column - scroll) + 274, string(l10n_text("Clear Checked")), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
-						}
-						draw_sprite_ext(spr_checkpoint, 1, 394 * (i - column * row) + 120 + thumbnail_x_offset, 226 * (column - scroll) + 274, scr_wave(0.4, 0.5, 1, 0), scr_wave(0.4, 0.5, 1, 0), 0, c_white, 1);
+						current_text = string(l10n_text("Clear Checked"));
 					}
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					
+					var current_icon = spr_checkpoint;
+					var icon_scale = scr_wave(0.4, 0.5, 1, 0);
+				}
+				
+				if (clear_check)
+				{
+					var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
+					var draw_y = 226 * (column - scroll) + 274;
+					var text_size = global.default_text_size * scr_wave(1, 1.1, 1, 0);
+					
+					draw_set_halign(fa_left);
+					draw_set_valign(fa_middle);
+					scr_draw_text_outlined(draw_x, draw_y, current_text, text_size, c_white, c_black, 1);
+					draw_sprite_ext(current_icon, 1, draw_x - 20, draw_y, icon_scale, icon_scale, 0, c_white, 1);
 				}
 			}
 			#endregion /* Draw if level have been Clear Checked on top of level thumbnail END */
@@ -95,105 +94,42 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	&& (menu != "open_custom_levels_folder")
 	&& (menu != "online_level_list")
 	&& (menu != "search_level_id")
-	&& (menu_delay <= 0)
-	|| (menu != "back_from_level_editor")
-	&& (menu != "open_custom_levels_folder")
-	&& (menu != "online_level_list")
-	&& (menu != "search_level_id")
-	&& (open_sub_menu)
 	{
 		var custom_level_select_arrows_moving = scr_wave(10, 0, 1, 0);
+		var top_left_x_offset = top_left_of_thumbnail_x - custom_level_select_arrows_moving;
+		var top_left_y_offset = top_left_of_thumbnail_y - custom_level_select_arrows_moving;
+		var bottom_right_x_offset = bottom_right_of_thumbnail_x + custom_level_select_arrows_moving;
+		var bottom_right_y_offset = bottom_right_of_thumbnail_y + custom_level_select_arrows_moving;
+		var triangle_size = 32 - custom_level_select_arrows_moving;
 		
-		#region /* Red Triangles */
+		/* Draw red triangles */
+		draw_triangle_color(top_left_x_offset, top_left_y_offset, top_left_x_offset + triangle_size, top_left_y_offset,
+			top_left_x_offset, top_left_y_offset + triangle_size, c_red, c_red, c_red, false);
 		
-		#region /* Top Left Red Triangle */
-		draw_triangle_color(
-		/* x1 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/* y1 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/* x2 */ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
-		/* y2 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/* x3 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/* y3 */ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
-		#endregion /* Top Left Red Triangle END */
+		draw_triangle_color(bottom_right_x_offset, bottom_right_y_offset, bottom_right_x_offset - triangle_size, bottom_right_y_offset,
+			bottom_right_x_offset, bottom_right_y_offset - triangle_size, c_red, c_red, c_red, false);
 		
-		#region /* Bottom Right Red Triangle */
-		draw_triangle_color(
-		/* x1 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/* y1 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/* x2 */ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
-		/* y2 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/* x3 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/* y3 */ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
-		#endregion /* Bottom Right Red Triangle END */
+		draw_triangle_color(bottom_right_x_offset, top_left_y_offset, bottom_right_x_offset - triangle_size, top_left_y_offset,
+			bottom_right_x_offset, top_left_y_offset + triangle_size, c_red, c_red, c_red, false);
 		
-		#region /* Top Right Red Triangle */
-		draw_triangle_color(
-		/* x1 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/* y1 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/* x2 */ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
-		/* y2 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/* x3 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/* y3 */ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
-		#endregion /* Top Right Red Triangle END */
-		
-		#region /* Bottom Left Red Triangle */
-		draw_triangle_color(
-		/* x1 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/* y1 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/* x2 */ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
-		/* y2 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/* x3 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/* y3 */ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_red, c_red, c_red, false);
-		#endregion /* Bottom Left Red Triangle END */
-		
-		#endregion /* Red Triangles END */
-		
+		draw_triangle_color(top_left_x_offset, bottom_right_y_offset, top_left_x_offset + triangle_size, bottom_right_y_offset,
+			top_left_x_offset, bottom_right_y_offset - triangle_size, c_red, c_red, c_red, false);
+			
 		draw_set_alpha(custom_level_select_blinking);
 		
-		#region /* Yellow Triangles */
-		
-		#region /* Top Left Yellow Triangle */
-		draw_triangle_color(
-		/* x1 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/* y1 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/* x2 */ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
-		/* y2 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/* x3 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/* y3 */ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
-		#endregion /* Top Left Yellow Triangle END */
-		
-		#region /* Bottom Right Yellow Triangle */
-		draw_triangle_color(
-		/* x1 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/* y1 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/* x2 */ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
-		/* y2 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/* x3 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/* y3 */ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
-		#endregion /* Bottom Right Yellow Triangle END */
-		
-		#region /* Top Right Yellow Triangle */
-		draw_triangle_color(
-		/* x1 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/* y1 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/* x2 */ bottom_right_of_thumbnail_x - 32 + (custom_level_select_arrows_moving),
-		/* y2 */ top_left_of_thumbnail_y - (custom_level_select_arrows_moving),
-		/* x3 */ bottom_right_of_thumbnail_x + (custom_level_select_arrows_moving),
-		/* y3 */ top_left_of_thumbnail_y + 32 - (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
-		#endregion /* Top Right Yellow Triangle END */
-		
-		#region /* Bottom Left Yellow Triangle */
-		draw_triangle_color(
-		/* x1 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/* y1 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/* x2 */ top_left_of_thumbnail_x + 32 - (custom_level_select_arrows_moving),
-		/* y2 */ bottom_right_of_thumbnail_y + (custom_level_select_arrows_moving),
-		/* x3 */ top_left_of_thumbnail_x - (custom_level_select_arrows_moving),
-		/* y3 */ bottom_right_of_thumbnail_y - 32 + (custom_level_select_arrows_moving), c_yellow, c_yellow, c_yellow, false);
-		#endregion /* Bottom Left Yellow Triangle END */
-		
-		#endregion /* Yellow Triangles END */
-		
+		/* Draw yellow triangles */
+		draw_triangle_color(top_left_x_offset, top_left_y_offset, top_left_x_offset + triangle_size, top_left_y_offset,
+			top_left_x_offset, top_left_y_offset + triangle_size, c_yellow, c_yellow, c_yellow, false);
+			
+		draw_triangle_color(bottom_right_x_offset, bottom_right_y_offset, bottom_right_x_offset - triangle_size, bottom_right_y_offset,
+			bottom_right_x_offset, bottom_right_y_offset - triangle_size, c_yellow, c_yellow, c_yellow, false);
+			
+		draw_triangle_color(bottom_right_x_offset, top_left_y_offset, bottom_right_x_offset - triangle_size, top_left_y_offset,
+			bottom_right_x_offset, top_left_y_offset + triangle_size, c_yellow, c_yellow, c_yellow, false);
+			
+		draw_triangle_color(top_left_x_offset, bottom_right_y_offset, top_left_x_offset + triangle_size, bottom_right_y_offset,
+			top_left_x_offset, bottom_right_y_offset - triangle_size, c_yellow, c_yellow, c_yellow, false);
+			
 		draw_set_alpha(1);
 	}
 	#endregion /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting END */

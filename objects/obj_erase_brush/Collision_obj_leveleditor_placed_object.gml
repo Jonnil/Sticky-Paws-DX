@@ -13,7 +13,7 @@ if (instance_exists(obj_leveleditor))
 		other.easy = false;
 		with(other)
 		{
-			alarm[0] = 1;
+			alarm[2] = 1;
 		}
 	}
 	else
@@ -23,7 +23,7 @@ if (instance_exists(obj_leveleditor))
 		other.normal = false;
 		with(other)
 		{
-			alarm[0] = 1;
+			alarm[2] = 1;
 		}
 	}
 	else
@@ -33,7 +33,7 @@ if (instance_exists(obj_leveleditor))
 		other.hard = false;
 		with(other)
 		{
-			alarm[0] = 1;
+			alarm[2] = 1;
 		}
 	}
 }
@@ -80,6 +80,7 @@ if (instance_exists(obj_leveleditor))
 			{
 				easy = true;
 				placed_for_the_first_time = true;
+				alarm[2] = 1;
 			}
 		}
 		else
@@ -90,6 +91,7 @@ if (instance_exists(obj_leveleditor))
 			{
 				normal = true;
 				placed_for_the_first_time = true;
+				alarm[2] = 1;
 			}
 		}
 		else
@@ -100,9 +102,9 @@ if (instance_exists(obj_leveleditor))
 			{
 				hard = true;
 				placed_for_the_first_time = true;
+				alarm[2] = 1;
 			}
 		}
-		alarm[0] = 1;
 	}
 }
 #endregion /* Set to appear on difficulty level END */
@@ -128,14 +130,17 @@ if (!keyboard_check(vk_escape))
 			if (other.easy)
 			{
 				other.easy = false;
+				other.alarm[2] = 1;
 			}
 			if (other.normal)
 			{
 				other.normal = false;
+				other.alarm[2] = 1;
 			}
 			if (other.hard)
 			{
 				other.hard = false;
+				other.alarm[2] = 1;
 			}
 		}
 		else
@@ -145,6 +150,7 @@ if (!keyboard_check(vk_escape))
 			if (other.easy)
 			{
 				other.easy = false;
+				other.alarm[2] = 1;
 			}
 		}
 		else
@@ -154,6 +160,7 @@ if (!keyboard_check(vk_escape))
 			if (other.normal)
 			{
 				other.normal = false;
+				other.alarm[2] = 1;
 			}
 		}
 		else
@@ -163,12 +170,8 @@ if (!keyboard_check(vk_escape))
 			if (other.hard)
 			{
 				other.hard = false;
+				other.alarm[2] = 1;
 			}
-		}
-		
-		with(other)
-		{
-			alarm[0] = 1;
 		}
 	}
 }

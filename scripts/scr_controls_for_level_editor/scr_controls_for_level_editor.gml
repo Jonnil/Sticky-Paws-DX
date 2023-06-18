@@ -1,9 +1,5 @@
 function scr_controls_for_level_editor()
 {
-	key_up = noone;
-	key_left = noone;
-	key_right = noone;
-	key_down = noone;
 	
 	#region /* Controls for level editor */
 	key_up = scr_key_initialize(key_up, 0, 1, action.up) || (gamepad_axis_value(global.player1_slot, gp_axislv) < 0) && (menu_joystick_delay <= 0);
@@ -47,11 +43,11 @@ function scr_controls_for_level_editor()
 	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.back]))
 	|| (keyboard_check_pressed(vk_escape));
 	
-	/* Player 1 Key Back Released */ key_b_released = (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
-	|| (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
-	|| (keyboard_check_released(global.player_[inp.key][1][1][action.back]))
-	|| (keyboard_check_released(global.player_[inp.key][1][2][action.back]))
-	|| (keyboard_check_released(vk_escape));
+	///* Player 1 Key Back Released */ key_b_released = (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
+	//|| (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
+	//|| (keyboard_check_released(global.player_[inp.key][1][1][action.back]))
+	//|| (keyboard_check_released(global.player_[inp.key][1][2][action.back]))
+	//|| (keyboard_check_released(vk_escape));
 	
 	#endregion /* Player 1 Key Back END */
 	
@@ -84,10 +80,10 @@ function scr_controls_for_level_editor()
 	/* Player 1 Keyboard Shortcut Play */ key_play = vk_enter;
 	/* Player 1 Gamepad Shortcut Play */ button_play = gp_select;
 	
-	/* Player 1 Keyboard Shortcut Scroll Object Left */ key_scroll_object_left = noone;
+	///* Player 1 Keyboard Shortcut Scroll Object Left */ key_scroll_object_left = noone;
 	/* Player 1 Gamepad Shortcut Scroll Object Left */ button_scroll_object_left = gp_shoulderl;
 	
-	/* Player 1 Keyboard Shortcut Scroll Object Right */ key_scroll_object_right = noone;
+	///* Player 1 Keyboard Shortcut Scroll Object Right */ key_scroll_object_right = noone;
 	/* Player 1 Gamepad Shortcut Scroll Object Right */ button_scroll_object_right = gp_shoulderr;
 	
 	#endregion /* Controls for level editor END */

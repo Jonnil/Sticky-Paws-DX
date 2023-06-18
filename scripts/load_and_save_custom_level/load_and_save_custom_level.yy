@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_save_os_infot_ini",
+  "name": "load_and_save_custom_level",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Other",
-    "path": "folders/Scripts/Other.yy",
+    "name": "Level Editor",
+    "path": "folders/Scripts/Level Editor.yy",
   },
 }

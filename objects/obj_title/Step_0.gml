@@ -169,6 +169,40 @@ if (menu == "load_custom_level")
 		if (file_found == "")
 		{
 			file_find_close();
+			
+			#region /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch */
+			/* Check this before going to create level from scratch */
+			if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+			{
+				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+				if (ini_section_exists("Unlock Placable Objects"))
+				{
+					can_create_level_from_scratch = true;
+				}
+				else
+				{
+					can_create_level_from_scratch = false;
+				}
+				ini_close();
+			}
+			else
+			{
+				can_create_level_from_scratch = false;
+			}
+			#endregion /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch END */
+			
+			#region /* Get clear check and level ID information */
+			for(i = 1; i < ds_list_size(global.thumbnail_sprite); i += 1)
+			{
+				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, i)) + "/data/level_information.ini");
+				thumbnail_clear_check[i] = ini_read_string("info", "clear_check", false);
+				thumbnail_level_id[i] = string(ini_read_string("info", "level_id", ""));
+				thumbnail_level_description[i] = string(ini_read_string("info", "level_description", ""));
+				thumbnail_level_username[i] = string(ini_read_string("info", "username", ""));
+				ini_close();
+			}
+			#endregion /* Get clear check and level ID information END */
+			
 			if (global.level_name != "")
 			{
 				global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, string(global.level_name)); /* "Select level index" should be set to where the new custom level is saved */

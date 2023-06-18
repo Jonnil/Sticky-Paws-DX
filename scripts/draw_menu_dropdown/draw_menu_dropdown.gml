@@ -97,6 +97,11 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		&& (input_key == false)
 		&& (open_dropdown)
 		&& (menu_delay == 0)
+		|| (key_a_pressed)
+		&& (menu == menu_index)
+		&& (input_key == false)
+		&& (open_dropdown)
+		&& (menu_delay == 0)
 		{
 			menu = menu_index;
 			open_dropdown = false;

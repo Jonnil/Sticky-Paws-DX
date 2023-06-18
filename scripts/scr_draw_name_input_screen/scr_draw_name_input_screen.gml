@@ -98,7 +98,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	#endregion /* Draw the inputed text END */
 	
 	#region /* A file name can't contain any of these characters */
-	if (os_type == os_switch)
+	if (os_type != os_switch)
 	{
 		if (ord(keyboard_lastchar) != ord("\\"))
 		&& (ord(keyboard_lastchar) != ord("/"))

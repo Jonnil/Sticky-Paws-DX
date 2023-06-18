@@ -4,6 +4,8 @@ function scr_debug_screen()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
+	show_debug_message(global.player1_wall_jump_setting)
+	
 	var version_y = 32;
 	var fps_y = 64;
 	var fps_real_y = 96;
@@ -335,10 +337,8 @@ function scr_debug_screen()
 				scr_draw_text_outlined(32, 460, "menu_delay: " + string(menu_delay), global.default_text_size, c_black, c_red);
 			}
 		}
-		if (variable_instance_exists(self, "what_string_to_edit_async"))
-		{
-			scr_draw_text_outlined(32, 520, "what_string_to_edit_async: " + string(what_string_to_edit_async), global.default_text_size, c_black, c_white);
-		}
+		scr_draw_text_outlined(32, 520, "keyboard_string: " + string(keyboard_string), global.default_text_size, c_black, c_white);
+		scr_draw_text_outlined(32, 540, "global.level_description: " + string(global.level_description), global.default_text_size, c_black, c_white);
 		
 		draw_set_halign(fa_center);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)), global.default_text_size, c_black, c_white);

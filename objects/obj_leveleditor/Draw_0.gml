@@ -1,19 +1,16 @@
 if (global.actually_play_edited_level == false)
 {
-	var view_x = camera_get_view_x(view_camera[view_current]);
-	var view_y = camera_get_view_y(view_camera[view_current]);
-	var view_width = camera_get_view_width(view_camera[view_current]);
-	var view_height = camera_get_view_height(view_camera[view_current]);
-	var view_center_x = view_x + view_width * 0.5;
-	var view_center_y = view_y + view_height * 0.5;
+	if (place_meeting(x, y, obj_leveleditor_placed_object))
+	&& (instance_nearest(x, y, obj_leveleditor_placed_object).draw_rotate_arrow == true)
+	{
+		var draw_rotate_arrow_scale = scr_wave(0.5, 0.4, 0.5, 0);
+		draw_sprite_ext(spr_rotate_arrow, image_index, x, y, draw_rotate_arrow_scale, draw_rotate_arrow_scale, instance_nearest(x, y, obj_leveleditor_placed_object).draw_angle, image_blend, image_alpha);
+	}
 	
 	#region /* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is */
 	if (quit_level_editor == false)
 	{
-		draw_set_alpha(0.5);
-		draw_circle_color(view_center_x, view_center_y, 3, c_black, c_black, true);
-		draw_circle_color(view_center_x, view_center_y, 4, c_white, c_white, true);
-		draw_set_alpha(1);
+		draw_circle_color(view_center_x, view_center_y, 3, c_black, c_white, false);
 	}
 	#endregion /* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is END */
 	
@@ -27,7 +24,6 @@ if (global.actually_play_edited_level == false)
 			draw_sprite_ext(sprite_player4, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
 		}
 		else
-		if (instance_exists(obj_level_player4_start))
 		{
 			draw_sprite_ext(sprite_player4, 0, obj_level_player4_start.x, obj_level_player4_start.y, 1, 1, 0, c_white, 0.5);
 		}
@@ -41,7 +37,6 @@ if (global.actually_play_edited_level == false)
 			draw_sprite_ext(sprite_player3, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
 		}
 		else
-		if (instance_exists(obj_level_player3_start))
 		{
 			draw_sprite_ext(sprite_player3, 0, obj_level_player3_start.x, obj_level_player3_start.y, 1, 1, 0, c_white, 0.5);
 		}
@@ -55,7 +50,6 @@ if (global.actually_play_edited_level == false)
 			draw_sprite_ext(sprite_player2, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
 		}
 		else
-		if (instance_exists(obj_level_player2_start))
 		{
 			draw_sprite_ext(sprite_player2, 0, obj_level_player2_start.x, obj_level_player2_start.y, 1, 1, 0, c_white, 0.5);
 		}
@@ -69,7 +63,6 @@ if (global.actually_play_edited_level == false)
 			draw_sprite_ext(sprite_player1, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
 		}
 		else
-		if (instance_exists(obj_level_player1_start))
 		{
 			draw_sprite_ext(sprite_player1, 0, obj_level_player1_start.x, obj_level_player1_start.y, 1, 1, 0, c_white, 0.5);
 		}
@@ -77,45 +70,26 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Draw where player will do playtesting from END */
 	
 	draw_set_alpha(0.5);
-	draw_rectangle_color(camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), 0, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
-	draw_rectangle_color(1, camera_get_view_y(view_camera[0]), camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), 0, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(cam_x - 32, cam_y - 32, 0, cam_y + cam_height, c_black, c_black, c_black, c_black, false); /* Left Black Rectangle */
+	draw_rectangle_color(1, cam_y - 32, cam_x + cam_width + 32, 0, c_black, c_black, c_black, c_black, false);  /* Top Black Rectangle */
 	draw_set_alpha(1);
 	
 	if (quit_level_editor <= 0)
 	{
-		//var cagetgory_x_terrain = view_x + view_width * 0.5 + selected_object_menu_x + 64 *	16	+ 32;
-		//var cagetgory_x_items = view_x + view_width * 0.5 + selected_object_menu_x + 64 *		21	+ 32;
-		//var cagetgory_x_enemies = view_x + view_width * 0.5 + selected_object_menu_x + 64 *	25	+ 32;
-		//var cagetgory_x_gizmos = view_x + view_width * 0.5 + selected_object_menu_x + 64 *	36	+ 32;
-		
 		draw_set_alpha(selected_menu_alpha);
-		draw_rectangle_color(view_x, view_y, view_x + view_width, view_y + 128, c_black, c_black, c_black, c_black, false);
-		//draw_set_alpha(selected_menu_alpha * 0.1);
-		//draw_rectangle_color(view_x, view_y, cagetgory_x_terrain, view_y + 128, c_aqua, c_aqua, c_aqua, c_aqua, false);
-		//draw_rectangle_color(cagetgory_x_terrain, view_y, cagetgory_x_items, view_y + 128, c_purple, c_purple, c_purple, c_purple, false);
-		//draw_rectangle_color(cagetgory_x_items, view_y, cagetgory_x_enemies, view_y + 128, c_lime, c_lime, c_lime, c_lime, false);
-		//draw_rectangle_color(cagetgory_x_enemies, view_y, cagetgory_x_gizmos, view_y + 128, c_yellow, c_yellow, c_yellow, c_yellow, false);
-		//draw_rectangle_color(cagetgory_x_gizmos, view_y, view_x + view_width, view_y + 128, c_red, c_red, c_red, c_red, false);
-		
-		//draw_set_alpha(selected_menu_alpha);
-		//draw_rectangle_color(view_x, view_y, cagetgory_x_terrain, view_y + 3, c_aqua, c_aqua, c_aqua, c_aqua, false);
-		//draw_rectangle_color(cagetgory_x_terrain, view_y, cagetgory_x_items, view_y + 3, c_purple, c_purple, c_purple, c_purple, false);
-		//draw_rectangle_color(cagetgory_x_items, view_y, cagetgory_x_enemies, view_y + 3, c_lime, c_lime, c_lime, c_lime, false);
-		//draw_rectangle_color(cagetgory_x_enemies, view_y, cagetgory_x_gizmos, view_y + 3, c_yellow, c_yellow, c_yellow, c_yellow, false);
-		//draw_rectangle_color(cagetgory_x_gizmos, view_y, view_x + view_width, view_y + 3, c_red, c_red, c_red, c_red, false);
+		draw_rectangle_color(cam_x, cam_y, cam_x + cam_width, cam_y + 128, c_black, c_black, c_black, c_black, false);
 	}
 	
 	#region /* List of Placable Objects */
 	if (global.world_editor == false)
 	&& (quit_level_editor <= 0)
+	&& (selected_menu_alpha > 0)
 	{
-		//scr_draw_level_editor_placable_object(0, ds_grid_get(global.object_grid, 0, 0), ds_grid_get(global.object_grid, 10, 0), ds_grid_get(global.object_grid, 1, 0), ds_grid_get(global.object_grid, 3, 0), 0 * 64 + ds_grid_get(global.object_grid, 11, 0), ds_grid_get(global.object_grid, 4, 0), ds_grid_get(global.object_grid, 5, 0), ds_grid_get(global.object_grid, 6, 0));
-		
 		order_index = 0;
 		unlock_index = 0;
 		
 		#region /* Terrain Objects */
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall, true, spr_wall, spr_wall, 0, 1, 0, c_white);
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall, true, spr_wall, spr_wall, 0, 1, 0, c_white,,,,,"Default Wall");
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_dirt, true, spr_wall_dirt, spr_wall, + 64, 1, 0, c_white,,,,,"Dirt");
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_glass, true, spr_wall_glass, spr_wall, + 64, 1, 0, c_white,,,,,"Glass");
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_wall_grass, true, spr_wall_grass, spr_wall, + 64, 1, 0, c_white,,,,,"Grass");
@@ -187,10 +161,14 @@ if (global.actually_play_edited_level == false)
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_ring, false, spr_ring, spr_wall, + 64, 1, 0, c_white,,,,,"Ring - Swing with long tongue on this ring");
 		#endregion /* Special Items END */
 		
+		scr_draw_text_outlined(view_center_x, cam_y + 114, l10n_text(current_object_description), global.default_text_size * 0.75, noone, c_white, selected_menu_alpha);
+		
 		total_number_of_objects = order_index - 1; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
 	}
 	else
-	if (quit_level_editor <= 0)
+	if (global.world_editor == false)
+	&& (quit_level_editor <= 0)
+	&& (selected_menu_alpha > 0)
 	{
 		total_number_of_objects = 6; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
 		if (selected_object == 0)
@@ -258,14 +236,14 @@ if (global.actually_play_edited_level == false)
 		draw_set_alpha(grid_alpha);
 		
 		#region /* Draw Horizontal Line in the Grid */
-		for(var i = 0; i < view_x + view_width; i += global.grid_hsnap)
+		for(var i = 0; i < cam_x + cam_width; i += global.grid_hsnap)
 		{
 			draw_line_color(i + grid_offset, - 16 + grid_offset, i + grid_offset, room_height + 16 + grid_offset, c_white, c_white);
 		}
 		#endregion /* Draw Horizontal Line in the Grid END */
 		
 		#region /* Draw Vertical Line in the Grid */
-		for(var i = 0; i < view_y + view_height; i += global.grid_vsnap)
+		for(var i = 0; i < cam_y + cam_height; i += global.grid_vsnap)
 		{
 			draw_line_color(- 16 + grid_offset, i + grid_offset, room_width + 16 + grid_offset, i + grid_offset, c_white, c_white);
 		}
@@ -283,17 +261,17 @@ if (global.actually_play_edited_level == false)
 		#region /* Zoom Out */
 		if (zoom_out)
 		{
-			if (view_width < room_width)
-			&& (view_height < room_height)
+			if (cam_width < room_width)
+			&& (cam_height < room_height)
 			{
 				
 			}
 			else
 			{
-				draw_rectangle_color(0, 0, view_x + 8, room_height, c_red, c_red, c_red, c_red, false);
-				draw_rectangle_color(view_x + view_width - 8, 0, room_width, room_height, c_red, c_red, c_red, c_red, false);
-				draw_rectangle_color(0, 0, room_width, view_y + 8, c_red, c_red, c_red, c_red, false);
-				draw_rectangle_color(0, view_y + view_height - 8, room_width, room_height, c_red, c_red, c_red, c_red, false);
+				draw_rectangle_color(0, 0, cam_x + 8, room_height, c_red, c_red, c_red, c_red, false);
+				draw_rectangle_color(cam_x + cam_width - 8, 0, room_width, room_height, c_red, c_red, c_red, c_red, false);
+				draw_rectangle_color(0, 0, room_width, cam_y + 8, c_red, c_red, c_red, c_red, false);
+				draw_rectangle_color(0, cam_y + cam_height - 8, room_width, room_height, c_red, c_red, c_red, c_red, false);
 			}
 		}
 		#endregion /* Zoom Out END */
@@ -303,17 +281,17 @@ if (global.actually_play_edited_level == false)
 		#region /* Zoom In */
 		if (zoom_in)
 		{
-			if (view_width > 696)
-			&& (view_height > 368)
+			if (cam_width > 696)
+			&& (cam_height > 368)
 			{
 				
 			}
 			else
 			{
-				draw_rectangle_color(0, 0, view_x + 1, room_height, c_red, c_red, c_red, c_red, false);
-				draw_rectangle_color(view_x + view_width - 1, 0, room_width, room_height, c_red, c_red, c_red, c_red, false);
-				draw_rectangle_color(0, 0, room_width, view_y + 1, c_red, c_red, c_red, c_red, false);
-				draw_rectangle_color(0, view_y + view_height - 1, room_width, room_height, c_red, c_red, c_red, c_red, false);
+				draw_rectangle_color(0, 0, cam_x + 1, room_height, c_red, c_red, c_red, c_red, false);
+				draw_rectangle_color(cam_x + cam_width - 1, 0, room_width, room_height, c_red, c_red, c_red, c_red, false);
+				draw_rectangle_color(0, 0, room_width, cam_y + 1, c_red, c_red, c_red, c_red, false);
+				draw_rectangle_color(0, cam_y + cam_height - 1, room_width, room_height, c_red, c_red, c_red, c_red, false);
 			}
 		}
 		#endregion /* Zoom In END */
@@ -326,29 +304,29 @@ if (global.actually_play_edited_level == false)
 	{
 		if (global.world_editor)
 		{
-			draw_sprite_ext(spr_wall, 0, view_x + view_width * 0.5 + selected_object_menu_x, view_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_level_ring, 0, view_x + view_width * 0.5 + selected_object_menu_x + 64, view_y + 64, 1, 1, 0, c_yellow, selected_menu_alpha);
-			draw_sprite_ext(spr_level, 0, view_x + view_width * 0.5 + selected_object_menu_x + 64, view_y + 64, 1, 1, 0, c_black, selected_menu_alpha);
-			draw_sprite_ext(spr_map_exit, 0, view_x + view_width * 0.5 + selected_object_menu_x + 64 * 2, view_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_x + view_width * 0.5 + selected_object_menu_x + 64 * 3, view_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_x + view_width * 0.5 + selected_object_menu_x + 64 * 4, view_y + 64, 1, 1, 90, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_x + view_width * 0.5 + selected_object_menu_x + 64 * 5, view_y + 64, 1, 1, 180, c_white, selected_menu_alpha);
-			draw_sprite_ext(spr_map_turn_right_down, 0,	view_x + view_width * 0.5 + selected_object_menu_x + 64 * 6, view_y + 64, 1, 1, 270, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_wall, 0, view_center_x + selected_object_menu_x, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_level_ring, 0, view_center_x + selected_object_menu_x + 64, cam_y + 64, 1, 1, 0, c_yellow, selected_menu_alpha);
+			draw_sprite_ext(spr_level, 0, view_center_x + selected_object_menu_x + 64, cam_y + 64, 1, 1, 0, c_black, selected_menu_alpha);
+			draw_sprite_ext(spr_map_exit, 0, view_center_x + selected_object_menu_x + 64 * 2, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + selected_object_menu_x + 64 * 3, cam_y + 64, 1, 1, 0, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + selected_object_menu_x + 64 * 4, cam_y + 64, 1, 1, 90, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + selected_object_menu_x + 64 * 5, cam_y + 64, 1, 1, 180, c_white, selected_menu_alpha);
+			draw_sprite_ext(spr_map_turn_right_down, 0,	view_center_x + selected_object_menu_x + 64 * 6, cam_y + 64, 1, 1, 270, c_white, selected_menu_alpha);
 		}
-	
+		
 		#region /* Draw an arrow pointing to currently selected object */
 		draw_set_color(c_black);
 		draw_set_alpha(selected_menu_alpha);
-		draw_arrow(view_x + view_width * 0.5, view_y + 16 - 8, view_x + view_width * 0.5, view_y + 16 + 8, 40);
+		draw_arrow(view_center_x, cam_y + 16 - 8, view_center_x, cam_y + 16 + 8, 40);
 		draw_set_color(c_white);
-		draw_arrow(view_x + view_width * 0.5, view_y + 16 - 8, view_x + view_width * 0.5, view_y + 16 + 8, 30);
+		draw_arrow(view_center_x, cam_y + 16 - 8, view_center_x, cam_y + 16 + 8, 30);
 		draw_set_color(c_black);
-		draw_arrow(view_x + view_width * 0.5, view_y + 110 - 16 + 8, view_x + view_width * 0.5, view_y + 110 - 16 - 8, 40);
+		draw_arrow(view_center_x, cam_y + 110 - 16 + 8, view_center_x, cam_y + 110 - 16 - 8, 40);
 		draw_set_color(c_white);
-		draw_arrow(view_x + view_width * 0.5, view_y + 110 - 16 + 8, view_x + view_width * 0.5, view_y + 110 - 16 - 8, 30);
+		draw_arrow(view_center_x, cam_y + 110 - 16 + 8, view_center_x, cam_y + 110 - 16 - 8, 30);
 		draw_set_alpha(1);
 		#endregion /* Draw an arrow pointing to currently selected object END */
-	
+		
 	}
 	#endregion /* Select Object Menu END */
 	
@@ -536,11 +514,11 @@ if (global.actually_play_edited_level == false)
 		virtual_key_add(1100 - 128, 0, 400, 128, vk_escape); /* Pause virtual key */
 		if (keyboard_check(vk_escape))
 		{
-			draw_sprite_ext(spr_virtual_key_pause, 0, view_x + 1100 - 64, view_y + 32, 0.9, 0.9, 0, c_gray, 0.5);
+			draw_sprite_ext(spr_virtual_key_pause, 0, cam_x + 1100 - 64, cam_y + 32, 0.9, 0.9, 0, c_gray, 0.5);
 		}
 		else
 		{
-			draw_sprite_ext(spr_virtual_key_pause, 0, view_x + 1100 - 64, view_y + 32, 1, 1, 0, c_white, 0.5);
+			draw_sprite_ext(spr_virtual_key_pause, 0, cam_x + 1100 - 64, cam_y + 32, 1, 1, 0, c_white, 0.5);
 		}
 	}
 	#endregion /* Pause virtual key END */

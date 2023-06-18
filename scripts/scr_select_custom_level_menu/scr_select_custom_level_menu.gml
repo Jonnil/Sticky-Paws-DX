@@ -211,28 +211,6 @@ function scr_select_custom_level_menu()
 			if (global.select_level_index == 0)
 			&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
 			{
-				
-				#region /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch */
-				/* Check this before going to create level from scratch */
-				if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
-				{
-					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
-					if (ini_section_exists("Unlock Placable Objects"))
-					{
-						can_create_level_from_scratch = true;
-					}
-					else
-					{
-						can_create_level_from_scratch = false;
-					}
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-				}
-				else
-				{
-					can_create_level_from_scratch = false;
-				}
-				#endregion /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch END */
-				
 				scroll_to = floor(global.select_level_index / row);
 				lerp_on = true;
 				menu = "level_editor_create_from_scratch";
@@ -555,33 +533,16 @@ function scr_select_custom_level_menu()
 	
 	#region /* Show level information at bottom of screen */
 	
-	#region /* Draw Level Description */
+	#region /* Draw Level Description and Creator*/
 	if (global.select_level_index >= 1)
-	&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 	{
-		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-		if (ini_key_exists("info", "level_description"))
-		{
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 74, string(ini_read_string("info", "level_description", "")), global.default_text_size * 1.25, c_black, c_white, 1);
-		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 74, thumbnail_level_description[global.select_level_index], global.default_text_size * 1.25, c_black, c_white, 1);
+		draw_set_halign(fa_right);
+		scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + thumbnail_level_username[global.select_level_index], global.default_text_size, c_black, c_white, 1);
 	}
-	#endregion /* Draw Level Description END */
-	
-	#region /* Draw who made the level */
-	draw_set_halign(fa_right);
-	if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-	{
-		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-		if (ini_key_exists("info", "username"))
-		{
-			scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
-		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-	}
-	#endregion /* Draw who made the level END */
+	#endregion /* Draw Level Description and Creator END */
 	
 	#region /* Show the path of the custom level on the bottom of the screen */
 	if (global.select_level_index >= 1)
@@ -647,7 +608,7 @@ function scr_select_custom_level_menu()
 					menu_delay = 3;
 					ini_open(working_directory + "/save_files/custom_level_save.ini");
 					ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					scr_copy_move_files(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "/custom_levels/" + string(global.level_name), true);
 					scr_load_custom_level_initializing();
 					menu = "load_custom_level";
@@ -792,6 +753,8 @@ function scr_select_custom_level_menu()
 					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					ini_write_string("info", "level_description", string(global.level_description));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					
+					thumbnail_level_description[global.select_level_index] = string(global.level_description);
 					
 					menu = "level_editor_enter_description";
 					level_editor_edit_name = false;

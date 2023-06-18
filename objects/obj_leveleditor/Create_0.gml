@@ -69,7 +69,7 @@ if (global.doing_clear_check)
 
 #region /* Load Level */
 scr_load_object_placement_json();
-scr_load_object_placement_txt();
+//scr_load_object_placement_txt();
 #endregion /* Load Level END */
 
 #region /* If actually playing level, set play_edited_level to true and delete itself. Have this code after the "doing clear check = true" */
@@ -78,7 +78,7 @@ if (global.actually_play_edited_level)
 	global.play_edited_level = true;
 	with(obj_leveleditor_placed_object)
 	{
-		scr_spawn_objects_when_starting_room(); /* Only spawn objects AFTER saving custom level */
+		alarm[1] = 1;
 	}
 	instance_destroy();
 }
@@ -93,11 +93,30 @@ if (global.actually_play_edited_level)
 
 
 
-
+key_a_pressed = noone;
+key_a_released = noone;
 
 #region /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level */
 if (global.actually_play_edited_level == false)
 {
+	key_up = noone;
+	key_left = noone;
+	key_right = noone;
+	key_down = noone;
+	cam_x = camera_get_view_x(view_camera[view_current]);
+	cam_y = camera_get_view_y(view_camera[view_current]);
+	cam_width = camera_get_view_width(view_camera[view_current]);
+	cam_height = camera_get_view_height(view_camera[view_current]);
+	get_window_height = display_get_gui_height();
+	get_window_width = display_get_gui_width();
+	mouse_get_x = device_mouse_x_to_gui(0);
+	mouse_get_y = device_mouse_y_to_gui(0);
+	view_center_x = cam_x + cam_width * 0.5;
+	view_center_y = cam_y + cam_height * 0.5;
+	
+	current_object_description = "";
+	placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
+	
 	scr_initialize_level_information_ini();
 	
 	scr_controls_for_level_editor();
@@ -197,7 +216,7 @@ if (global.actually_play_edited_level == false)
 	unlocked_object[level_object_id.id_ring] = ini_read_real("Unlock Placable Objects", level_object_id.id_ring, false);
 	#endregion /* Special Items END */
 	
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close();
 	#endregion /* Unlock placable objects END */
 	
 	#region /* Load custom sprites */
@@ -288,15 +307,15 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Bump in Ground END */
 	
 	#region /* Invisible Bump in Ground */
-	add_object(level_object_id.id_invisible_bump_in_ground, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_8_basic_collectibles, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_heart_balloon, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_one_up, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_two_up, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_three_up, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_big_collectible, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_invincibility_powerup, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
-	add_object(level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring, noone, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+	add_object(level_object_id.id_invisible_bump_in_ground, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+	add_object(level_object_id.id_invisible_bump_in_ground_8_basic_collectibles, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+	add_object(level_object_id.id_invisible_bump_in_ground_heart_balloon, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+	add_object(level_object_id.id_invisible_bump_in_ground_one_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+	add_object(level_object_id.id_invisible_bump_in_ground_two_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+	add_object(level_object_id.id_invisible_bump_in_ground_three_up, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+	add_object(level_object_id.id_invisible_bump_in_ground_big_collectible, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+	add_object(level_object_id.id_invisible_bump_in_ground_invincibility_powerup, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
+	add_object(level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring, spr_bump_in_ground, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, true, 0);
 	#endregion /* Invisible Bump in Ground END */
 	
 	#region /* Basic Collectible */
@@ -415,7 +434,7 @@ if (global.actually_play_edited_level == false)
 			global.selected_level_editing_music = 1;
 			previous_selected_level_editing_music = 1;
 		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close();
 	}
 	else
 	{
@@ -639,7 +658,7 @@ if (global.actually_play_edited_level == false)
 		narrator_name = string(uppercase_narrator_name);
 		#endregion /* Character Name END */
 		
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ini_close();
 	}
 	else
 	{

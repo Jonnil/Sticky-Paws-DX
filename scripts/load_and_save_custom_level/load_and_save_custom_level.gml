@@ -448,13 +448,13 @@ function scr_save_level_information()
 			ini_write_real("info", player_start[1] + "_x", player_start[0].x);
 			ini_write_real("info", player_start[1] + "_y", player_start[0].y);
 		}
-			
+		
 		ini_write_real("info", "level_end_x", obj_level_end.x);
 		ini_write_real("info", "level_end_y", obj_level_end.y);
 		ini_write_real("info", "level_height", obj_level_height.y);
 		ini_write_real("info", "level_width", obj_level_width.x);
 		ini_write_real("info", "water_level_height", obj_water_level_height.y);
-			
+		
 		ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
 		ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
 		ini_write_real("info", "default_view_height", global.default_view_height);
@@ -463,9 +463,17 @@ function scr_save_level_information()
 		ini_write_real("info", "rain", global.rain);
 		ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
 		ini_write_real("info", "time_countdown", global.time_countdown);
-			
+		
+		#region /* Reset Fastest Time and Score */
+		ini_key_delete("rank", "rank_timeattack_millisecond");
+		ini_key_delete("rank", "rank_timeattack_second");
+		ini_key_delete("rank", "rank_timeattack_minute");
+		ini_key_delete("rank", "rank_timeattack_realmillisecond");
+		ini_key_delete("rank", "rank_level_score");
+		#endregion /* Reset Fastest Time and Score END */
+		
 		#region /* Save Custom Background Settings */
-			
+		
 		#region /* Save Custom Backgrounds Offset */
 		ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", custom_background_1_x_offset);
 		ini_write_real("Custom Backgrounds", "custom_background_1_y_offset", custom_background_1_y_offset);
@@ -484,7 +492,7 @@ function scr_save_level_information()
 		ini_write_real("Custom Backgrounds", "custom_foreground_secret_x_offset", obj_foreground_secret.x);
 		ini_write_real("Custom Backgrounds", "custom_foreground_secret_y_offset", obj_foreground_secret.y);
 		#endregion /* Save Custom Backgrounds Offset END */
-			
+		
 		#region /* Save Custom Backgrounds Parallax */
 		ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", custom_background_1_x_parallax);
 		ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", custom_background_1_y_parallax);
@@ -495,7 +503,7 @@ function scr_save_level_information()
 		ini_write_real("Custom Backgrounds", "custom_background_4_x_parallax", custom_background_4_x_parallax);
 		ini_write_real("Custom Backgrounds", "custom_background_4_y_parallax", custom_background_4_y_parallax);
 		#endregion /* Save Custom Backgrounds Parallax END */
-			
+		
 		#region /* Save Custom Backgrounds Scale */
 		ini_write_real("Custom Backgrounds", "custom_background_1_x_scale", custom_background_1_x_scale);
 		ini_write_real("Custom Backgrounds", "custom_background_1_y_scale", custom_background_1_y_scale);
@@ -506,7 +514,7 @@ function scr_save_level_information()
 		ini_write_real("Custom Backgrounds", "custom_background_4_x_scale", custom_background_4_x_scale);
 		ini_write_real("Custom Backgrounds", "custom_background_4_y_scale", custom_background_4_y_scale);
 		#endregion /* Save Custom Backgrounds Scale END */
-			
+		
 		#region /* Save Custom Backgrounds Tiled */
 		ini_write_real("Custom Backgrounds", "custom_background_1_htiled", custom_background_1_htiled);
 		ini_write_real("Custom Backgrounds", "custom_background_1_vtiled", custom_background_1_vtiled);
@@ -517,10 +525,38 @@ function scr_save_level_information()
 		ini_write_real("Custom Backgrounds", "custom_background_4_htiled", custom_background_4_htiled);
 		ini_write_real("Custom Backgrounds", "custom_background_4_vtiled", custom_background_4_vtiled);
 		#endregion /* Save Custom Backgrounds Tiled END */
-			
+		
 		#endregion /* Save Custom Background Settings END */
-			
+		
+		ini_close();
+		
+		/* Update custom level save data */
+		ini_open(working_directory + "/save_files/custom_level_save.ini");
+		ini_key_delete(global.level_name, "checkpoint_x");
+		ini_key_delete(global.level_name, "checkpoint_y");
+		ini_key_delete(global.level_name, "checkpoint_millisecond");
+		ini_key_delete(global.level_name, "checkpoint_second");
+		ini_key_delete(global.level_name, "checkpoint_minute");
+		ini_key_delete(global.level_name, "checkpoint_realmillisecond");
+		ini_key_delete(global.level_name, "checkpoint_direction");
+		ini_close();
+		
+		#region /* Unlocked objects should be set as not recently unlocked anymore */
+		/* Open the INI file */
+		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		
+		/* Iterate over the ds_list and write each element to the INI file */
+		for (var i = 0; i < ds_list_size(placed_objects_list); i++) {
+			var value = ds_list_find_value(placed_objects_list, i);
+			ini_write_real("Unlock Placable Objects", value, 2);
+		}
+		
+		/* Close the INI file */
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		ds_list_destroy(placed_objects_list);
+		placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
+		#endregion /* Unlocked objects should be set as not recently unlocked anymore END */
+		
 	}
 	#endregion /* Save Level Information END */
 	

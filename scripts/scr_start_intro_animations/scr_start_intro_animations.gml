@@ -83,7 +83,7 @@ function scr_start_intro_animations()
 		if (intro_animation = "ending")
 		&& (instance_exists(obj_camera))
 		&& (obj_camera.intro_animation_play_only_once == false)
-		or(intro_animation = "ending")
+		|| (intro_animation = "ending")
 		&& (instance_exists(obj_camera))
 		&& (obj_camera.intro_animation_play_only_once)
 		&& (global.current_level_clear_rate = "enter")
@@ -186,9 +186,6 @@ function scr_start_intro_animations()
 				{
 					instance_create_depth(x, y, 0, obj_credits);
 				}
-				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
-				ini_write_real("Player", "beat_last_level", true);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_sitting_eating;}else
 				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
 				intro_animation = "ending_chair_eating";

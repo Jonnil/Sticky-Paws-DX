@@ -491,14 +491,14 @@ enum inp
 	gp = 1
 }
 
-scr_set_default_remapping_player1_keyboard(true);
-scr_set_default_remapping_player1_gamepad(true);
-scr_set_default_remapping_player2_keyboard(true);
-scr_set_default_remapping_player2_gamepad(true);
-scr_set_default_remapping_player3_keyboard(true);
-scr_set_default_remapping_player3_gamepad(true);
-scr_set_default_remapping_player4_keyboard(true);
-scr_set_default_remapping_player4_gamepad(true);
+scr_set_default_remapping_player1_keyboard(false);
+scr_set_default_remapping_player1_gamepad(false);
+scr_set_default_remapping_player2_keyboard(false);
+scr_set_default_remapping_player2_gamepad(false);
+scr_set_default_remapping_player3_keyboard(false);
+scr_set_default_remapping_player3_gamepad(false);
+scr_set_default_remapping_player4_keyboard(false);
+scr_set_default_remapping_player4_gamepad(false);
 #endregion /* Set controls END */
 
 #region /* Set default language */
@@ -512,7 +512,7 @@ if (file_exists("localization.csv"))
 }
 #endregion /* Set default language END */
 
-#region /* Resource Packs (put this code after the scr_config_load so the right sprites can load) */
+#region /* Resource Packs (put this code after the "scr config load" so the right sprites can load) */
 global.resource_pack_sprite_logo_discord = spr_noone;
 global.resource_pack_sprite_logo_gamebanana = spr_noone;
 global.resource_pack_sprite_logo_instagram = spr_noone;
@@ -635,7 +635,7 @@ enum volume_source
 	voice = 6
 }
 
-scr_config_load(); /* Load Config */
+alarm[0] = 3;
 
 #region /* Set these global variables after loading config file */
 global.skin_for_player[1] = global.actual_skin_for_player[1]; /* In case the player selected a character that doesn't have skins, use this variable */

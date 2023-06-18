@@ -7,6 +7,9 @@ scr_delete_sprite_properly(global.custom_foreground_above_static_objects);
 scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
 
+thumbnail_clear_check[0] = noone;
+thumbnail_level_id[0] = "";
+
 directory_destroy(working_directory + "/levels");
 
 character_portrait_for_player_update_directory[1] = false;

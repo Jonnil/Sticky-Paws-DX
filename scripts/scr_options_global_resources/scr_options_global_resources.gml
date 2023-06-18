@@ -5,9 +5,7 @@ function scr_options_global_resources()
 	
 	if (global.settings_sidebar_menu == "global_resources_settings")
 	{
-		if (global.title_logo_index >= 0)
-		&& (global.title_logo_index != undefined)
-		&& (global.title_logo_index != "")
+		if (sprite_exists(global.title_logo_index))
 		{
 			draw_sprite_ext(global.title_logo_index, image_index, display_get_gui_width() - 350, display_get_gui_height() - 250, (402 / sprite_get_height(global.title_logo_index)), (402 / sprite_get_height(global.title_logo_index)), 0, c_white, 1);
 		}
@@ -42,6 +40,7 @@ function scr_options_global_resources()
 		if (key_up)
 		&& (can_navigate_settings_sidebar == false)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			if (menu == "resource_pack")
 			{
@@ -140,6 +139,7 @@ function scr_options_global_resources()
 		if (key_down)
 		&& (can_navigate_settings_sidebar == false)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			if (menu == "resource_pack")
 			{
@@ -293,6 +293,7 @@ function scr_options_global_resources()
 			{
 				menu = "resource_pack";
 				if (menu_delay == 0)
+				&& (menu_joystick_delay == 0)
 				&& (can_navigate_settings_sidebar == false)
 				&& (global.selected_resource_pack > 0)
 				&& (global.pause_room != room_leveleditor)
@@ -314,6 +315,7 @@ function scr_options_global_resources()
 			{
 				menu = "resource_pack";
 				if (menu_delay == 0)
+				&& (menu_joystick_delay == 0)
 				&& (can_navigate_settings_sidebar == false)
 				&& (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack + 1)) + "/data/sprite_origin_point.ini"))
 				&& (global.pause_room != room_leveleditor)
@@ -392,6 +394,7 @@ function scr_options_global_resources()
 		{
 			menu = "title_backgrounds";
 			if (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			&& (global.selected_title_background > 0)
 			{
@@ -456,11 +459,13 @@ function scr_options_global_resources()
 		{
 			menu = "title_backgrounds";
 			if (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			&& (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != "")
 			|| (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			&& (file_exists(working_directory + "/custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
@@ -564,6 +569,7 @@ function scr_options_global_resources()
 		{
 			menu = "title_background_scale";
 			if (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			&& (global.title_background_scale > scale_increment)
 			{
@@ -589,6 +595,7 @@ function scr_options_global_resources()
 		{
 			menu = "title_background_scale";
 			if (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			{
 				if (keyboard_check(vk_control))
@@ -657,6 +664,7 @@ function scr_options_global_resources()
 		{
 			menu = "background_layer_x_scroll";
 			if (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			&& (global.background_layer_x_scroll > - 10)
 			{
@@ -679,6 +687,7 @@ function scr_options_global_resources()
 		{
 			menu = "background_layer_x_scroll";
 			if (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			&& (global.background_layer_x_scroll < + 10)
 			{
@@ -741,6 +750,7 @@ function scr_options_global_resources()
 		{
 			menu = "background_layer_y_scroll";
 			if (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			&& (global.background_layer_y_scroll > - 10)
 			{
@@ -763,6 +773,7 @@ function scr_options_global_resources()
 		{
 			menu = "background_layer_y_scroll";
 			if (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			&& (global.background_layer_y_scroll < + 10)
 			{
@@ -869,6 +880,7 @@ function scr_options_global_resources()
 		{
 			menu = "title_logos";
 			if (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			&& (global.selected_title_logo > -1)
 			{
@@ -906,11 +918,13 @@ function scr_options_global_resources()
 		{
 			menu = "title_logos";
 			if (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			&& (file_exists("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != undefined)
 			&& (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != "")
 			|| (menu_delay == 0)
+			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			&& (file_exists(working_directory + "/custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo + 1) != undefined)
@@ -955,9 +969,11 @@ function scr_options_global_resources()
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		|| (menu == "open_resource_pack_folder")
 		&& (key_a_pressed)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			scr_open_folder(game_save_id + "\custom_resource_pack")
 		}
@@ -966,9 +982,11 @@ function scr_options_global_resources()
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		|| (menu == "open_title_background_folder")
 		&& (key_a_pressed)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			scr_open_folder(game_save_id + "\custom_title_backgrounds")
 		}
@@ -977,9 +995,11 @@ function scr_options_global_resources()
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		|| (menu == "open_title_logo_folder")
 		&& (key_a_pressed)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			scr_open_folder(game_save_id + "\custom_title_logos")
 		}
