@@ -371,20 +371,16 @@ if (hide_menu_for_clean_screenshots == false)
 	#region /* Show loading icon and reset level */
 	if (show_loading_icon)
 	{
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, 1 * fade_in_pause_alpha);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1 * fade_in_pause_alpha);
+		scr_draw_loading(1 * fade_in_pause_alpha);
 	}
 	#endregion /* Show loading icon and reset level END */
 	
 	scr_options_menu(); /* Options */
 	
+	scr_quit_to_desktop_menu("quit_to_desktop");
+	scr_debug_screen();
+	scr_draw_darken_screen_when_window_is_unfocused();
+	scr_draw_cursor_mouse();
 	scr_menu_navigation_with_joystick_delay();
 	
 }
-
-scr_quit_to_desktop_menu("quit_to_desktop");
-scr_debug_screen();
-scr_draw_darken_screen_when_window_is_unfocused();
-scr_draw_cursor_mouse();

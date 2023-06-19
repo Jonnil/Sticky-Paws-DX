@@ -36,9 +36,8 @@ if (global.actually_play_edited_level == false)
 			case level_object_id.id_oneway2:
 			case level_object_id.id_oneway3:
 			case level_object_id.id_oneway4:
-			{
 				draw_rotate_arrow = true;
-			}
+				break;
 			case level_object_id.id_brick_block_10_basic_collectibles:
 			case level_object_id.id_question_block_10_basic_collectibles:
 			case level_object_id.id_melon_block_10_basic_collectibles:

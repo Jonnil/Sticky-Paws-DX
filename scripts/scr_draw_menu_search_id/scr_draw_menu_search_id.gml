@@ -434,6 +434,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					if (ini_key_exists("info", "username"))
+					and (ini_read_string("info", "username", "") != "")
 					{
 						draw_set_halign(fa_right);
 						scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
@@ -468,6 +469,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					ini_open(working_directory + "/custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini");
 					if (ini_key_exists("info", "username"))
+					and (ini_read_string("info", "username", "") != "")
 					{
 						draw_set_halign(fa_right);
 						scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);

@@ -558,6 +558,7 @@ function scr_draw_upload_level_menu()
 		{
 			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			if (ini_key_exists("info", "username"))
+			and (ini_read_string("info", "username", "") != "")
 			{
 				scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
 			}

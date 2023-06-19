@@ -540,7 +540,10 @@ function scr_select_custom_level_menu()
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 74, thumbnail_level_description[global.select_level_index], global.default_text_size * 1.25, c_black, c_white, 1);
 		draw_set_halign(fa_right);
-		scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + thumbnail_level_username[global.select_level_index], global.default_text_size, c_black, c_white, 1);
+		if (thumbnail_level_username[global.select_level_index] != "")
+		{
+			scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + thumbnail_level_username[global.select_level_index], global.default_text_size, c_black, c_white, 1);
+		}
 	}
 	#endregion /* Draw Level Description and Creator END */
 	

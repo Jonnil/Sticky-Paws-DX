@@ -10,7 +10,11 @@ if (global.actually_play_edited_level == false)
 	mouse_get_y = device_mouse_y_to_gui(0);
 	view_center_x = cam_x + cam_width * 0.5;
 	view_center_y = cam_y + cam_height * 0.5;
-	surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
+	if (display_get_gui_width() > 0)
+	&& (display_get_gui_height() > 0)
+	{
+		surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
+	}
 	
 	global.leveleditor_x = x;
 	global.leveleditor_y = y;

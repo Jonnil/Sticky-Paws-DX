@@ -24,7 +24,11 @@ function scr_player_move_pause()
 	#endregion /* Set correct controller ports END */
 	
 	#region /* Pause */
-	surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
+	if (display_get_gui_width() > 0)
+	&& (display_get_gui_height() > 0)
+	{
+		surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
+	}
 	
 	if (keyboard_check_pressed(vk_escape))
 	|| (keyboard_check(vk_tab))
@@ -57,13 +61,14 @@ function scr_player_move_pause()
 		&& (global.actually_play_edited_level == false)
 		&& (global.character_select_in_this_menu == "level_editor")
 		{
-			global.play_edited_level = false;
+			obj_camera.pause_playtest = true;
+			obj_camera.black_screen_gui_alpha = 1;
 			global.actually_play_edited_level = false;
+			global.play_edited_level = false;
 			score = 0;
 			
 			#region /* Save Level Information when in level editor */
-			if (global.character_select_in_this_menu == "level_editor")
-			&& (global.level_name != "")
+			if (global.level_name != "")
 			{
 				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
@@ -72,7 +77,12 @@ function scr_player_move_pause()
 			}
 			#endregion /* Save Level Information when in level editor END */
 			
-			room_restart();
+			var time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+			{
+				room_restart();
+			}
+			, [], 1);
+			time_source_start(time_source);
 		}
 		else
 		{

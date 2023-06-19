@@ -316,6 +316,7 @@
     {"name":"spr_sign_reset","order":83,"path":"sprites/spr_sign_reset/spr_sign_reset.yy",},
     {"name":"spr_thumbnail_missing","order":11,"path":"sprites/spr_thumbnail_missing/spr_thumbnail_missing.yy",},
     {"name":"spr_menu_button_short","order":121,"path":"sprites/spr_menu_button_short/spr_menu_button_short.yy",},
+    {"name":"scr_draw_loading","order":79,"path":"scripts/scr_draw_loading/scr_draw_loading.yy",},
     {"name":"scr_select_official_level_menu","order":7,"path":"scripts/scr_select_official_level_menu/scr_select_official_level_menu.yy",},
     {"name":"spr_artwork_collection","order":49,"path":"sprites/spr_artwork_collection/spr_artwork_collection.yy",},
     {"name":"scr_player_move_homing_attack","order":24,"path":"scripts/scr_player_move_homing_attack/scr_player_move_homing_attack.yy",},

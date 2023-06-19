@@ -2689,6 +2689,7 @@ function scr_options_menu()
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			if (global.how_many_files > 1)
+			|| (global.how_many_files == -1)
 			{
 				scr_draw_text_outlined(file_select_x, file_y, l10n_text("File") + ": " + string(global.file), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 			}
@@ -2824,7 +2825,7 @@ function scr_options_menu()
 				}
 			}
 			if (global.how_many_files > global.file)
-			|| (global.how_many_files = -1)
+			|| (global.how_many_files == -1)
 			{
 				if (menu != "file_delete_no")
 				&& (menu != "file_delete_yes")
@@ -3003,7 +3004,7 @@ function scr_options_menu()
 				&& (menu_joystick_delay == 0)
 				{
 					if (global.how_many_files > global.file)
-					|| (global.how_many_files = -1)
+					|| (global.how_many_files == -1)
 					{
 						global.file ++;
 						menu_delay = 3;

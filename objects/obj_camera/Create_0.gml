@@ -10,6 +10,7 @@ mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
 black_screen_gui_alpha = 1;
+pause_playtest = false;
 
 key_player1_sprint_toggle_pressed = noone;
 key_player2_sprint_toggle_pressed = noone;

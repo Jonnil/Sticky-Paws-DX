@@ -544,9 +544,28 @@ if (global.play_edited_level) /* When playtesting the level */
 		&& (can_click_on_pause_key)
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
 		{
+			pause_playtest = true;
+			black_screen_gui_alpha = 1;
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
-			room_restart();
+			score = 0;
+			
+			#region /* Save Level Information when in level editor */
+			if (global.level_name != "")
+			{
+				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
+				ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			}
+			#endregion /* Save Level Information when in level editor END */
+			
+			var time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
+			{
+				room_restart();
+			}
+			, [], 1);
+			time_source_start(time_source);
 		}
 		draw_set_alpha(0.5);
 		draw_rectangle_color(32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
@@ -559,14 +578,16 @@ if (global.play_edited_level) /* When playtesting the level */
 		can_click_on_pause_key = false;
 	}
 }
-#endregion /* Play Level Button END */
+#endregion /* Pause Level Button END */
 
 scr_draw_cursor_mouse();
 
 #region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
 if (black_screen_gui_alpha > 0.2)
+|| (pause_playtest)
 {
 	if (global.enable_transitions)
+	&& (pause_playtest == false)
 	{
 		draw_set_alpha(black_screen_gui_alpha);
 		draw_rectangle_color(0, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);
@@ -575,12 +596,9 @@ if (black_screen_gui_alpha > 0.2)
 	
 	#region /* Draw loading screen when transitioning to other rooms */
 	if (lives >= 1)
+	|| (pause_playtest)
 	{
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		global.loading_spinning_angle -= 10;
-		draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, black_screen_gui_alpha);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, black_screen_gui_alpha);
+		scr_draw_loading(black_screen_gui_alpha);
 	}
 	#endregion /* Draw loading screen when transitioning to other rooms END */
 	

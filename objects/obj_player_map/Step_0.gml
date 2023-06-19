@@ -76,7 +76,12 @@ draw_yscale = lerp(draw_yscale, 1, 0.1);
 #endregion /* Lerp the player position and scale to make the player move smoothly END */
 
 #region /* Pause */
-surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
+
+if (display_get_gui_width() > 0)
+&& (display_get_gui_height() > 0)
+{
+	surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
+}
 
 if (keyboard_check_pressed(vk_escape) ||
 	gamepad_button_check_pressed(global.player1_slot, gp_select) ||

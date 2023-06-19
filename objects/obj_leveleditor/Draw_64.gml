@@ -1874,3 +1874,8 @@ if (global.actually_play_edited_level == false)
 }
 
 scr_debug_screen();
+
+if (pause)
+{
+	scr_draw_cursor_mouse();
+}
