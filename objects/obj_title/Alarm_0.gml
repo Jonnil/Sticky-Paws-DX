@@ -22,43 +22,44 @@ if (character_portrait_for_player_update_directory[1])
 	
 	if (file_exists(character_folder[what_player] + "/sprites/skin1/mask.png"))
 	{
-		character_portrait_for_player_directory_exists_1[what_player] = true;
+		character_portrait_for_player_dir_exists_1[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_1[what_player] = false;
+		character_portrait_for_player_dir_exists_1[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sprites/skin" + string(global.skin_for_player[what_player] + 1) + "/mask.png"))
 	{
-		character_portrait_for_player_directory_exists_2[what_player] = true;
+		character_portrait_for_player_dir_exists_2[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_2[what_player] = false;
+		character_portrait_for_player_dir_exists_2[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sound/voicepack1/jump.ogg"))
 	{
-		character_portrait_for_player_directory_exists_3[what_player] = true;
+		character_portrait_for_player_dir_exists_3[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_3[what_player] = false;
+		character_portrait_for_player_dir_exists_3[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sound/voicepack" + string(global.voicepack_for_player[what_player] + 1) + "/jump.ogg"))
 	{
-		character_portrait_for_player_directory_exists_4[what_player] = true;
+		character_portrait_for_player_dir_exists_4[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_4[what_player] = false;
+		character_portrait_for_player_dir_exists_4[what_player] = false;
 	}
 	
 	#region /* Player character select portrait sprite */
 	global.sprite_select_player[what_player] = spr_noone;
 	global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("stand", global.sprite_select_player[what_player], character_folder[what_player]);
+	global.sprite_player_stand[what_player] = global.sprite_select_player[what_player];
 	global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
 	#endregion /* Player character select portrait sprite END */
 	
@@ -99,43 +100,44 @@ if (character_portrait_for_player_update_directory[2])
 	
 	if (file_exists(character_folder[what_player] + "/sprites/skin1/mask.png"))
 	{
-		character_portrait_for_player_directory_exists_1[what_player] = true;
+		character_portrait_for_player_dir_exists_1[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_1[what_player] = false;
+		character_portrait_for_player_dir_exists_1[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sprites/skin" + string(global.skin_for_player[what_player] + 1) + "/mask.png"))
 	{
-		character_portrait_for_player_directory_exists_2[what_player] = true;
+		character_portrait_for_player_dir_exists_2[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_2[what_player] = false;
+		character_portrait_for_player_dir_exists_2[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sound/voicepack1/jump.ogg"))
 	{
-		character_portrait_for_player_directory_exists_3[what_player] = true;
+		character_portrait_for_player_dir_exists_3[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_3[what_player] = false;
+		character_portrait_for_player_dir_exists_3[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sound/voicepack" + string(global.voicepack_for_player[what_player] + 1) + "/jump.ogg"))
 	{
-		character_portrait_for_player_directory_exists_4[what_player] = true;
+		character_portrait_for_player_dir_exists_4[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_4[what_player] = false;
+		character_portrait_for_player_dir_exists_4[what_player] = false;
 	}
 	
 	#region /* Player character select portrait sprite */
 	global.sprite_select_player[what_player] = spr_noone;
 	global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("stand", global.sprite_select_player[what_player], character_folder[what_player]);
+	global.sprite_player_stand[what_player] = global.sprite_select_player[what_player];
 	global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
 	#endregion /* Player character select portrait sprite END */
 	
@@ -176,43 +178,44 @@ if (character_portrait_for_player_update_directory[3])
 	
 	if (file_exists(character_folder[what_player] + "/sprites/skin1/mask.png"))
 	{
-		character_portrait_for_player_directory_exists_1[what_player] = true;
+		character_portrait_for_player_dir_exists_1[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_1[what_player] = false;
+		character_portrait_for_player_dir_exists_1[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sprites/skin" + string(global.skin_for_player[what_player] + 1) + "/mask.png"))
 	{
-		character_portrait_for_player_directory_exists_2[what_player] = true;
+		character_portrait_for_player_dir_exists_2[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_2[what_player] = false;
+		character_portrait_for_player_dir_exists_2[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sound/voicepack1/jump.ogg"))
 	{
-		character_portrait_for_player_directory_exists_3[what_player] = true;
+		character_portrait_for_player_dir_exists_3[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_3[what_player] = false;
+		character_portrait_for_player_dir_exists_3[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sound/voicepack" + string(global.voicepack_for_player[what_player] + 1) + "/jump.ogg"))
 	{
-		character_portrait_for_player_directory_exists_4[what_player] = true;
+		character_portrait_for_player_dir_exists_4[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_4[what_player] = false;
+		character_portrait_for_player_dir_exists_4[what_player] = false;
 	}
 	
 	#region /* Player character select portrait sprite */
 	global.sprite_select_player[what_player] = spr_noone;
 	global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("stand", global.sprite_select_player[what_player], character_folder[what_player]);
+	global.sprite_player_stand[what_player] = global.sprite_select_player[what_player];
 	global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
 	#endregion /* Player character select portrait sprite END */
 	
@@ -253,43 +256,44 @@ if (character_portrait_for_player_update_directory[4])
 	
 	if (file_exists(character_folder[what_player] + "/sprites/skin1/mask.png"))
 	{
-		character_portrait_for_player_directory_exists_1[what_player] = true;
+		character_portrait_for_player_dir_exists_1[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_1[what_player] = false;
+		character_portrait_for_player_dir_exists_1[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sprites/skin" + string(global.skin_for_player[what_player] + 1) + "/mask.png"))
 	{
-		character_portrait_for_player_directory_exists_2[what_player] = true;
+		character_portrait_for_player_dir_exists_2[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_2[what_player] = false;
+		character_portrait_for_player_dir_exists_2[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sound/voicepack1/jump.ogg"))
 	{
-		character_portrait_for_player_directory_exists_3[what_player] = true;
+		character_portrait_for_player_dir_exists_3[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_3[what_player] = false;
+		character_portrait_for_player_dir_exists_3[what_player] = false;
 	}
 	
 	if (file_exists(character_folder[what_player] + "/sound/voicepack" + string(global.voicepack_for_player[what_player] + 1) + "/jump.ogg"))
 	{
-		character_portrait_for_player_directory_exists_4[what_player] = true;
+		character_portrait_for_player_dir_exists_4[what_player] = true;
 	}
 	else
 	{
-		character_portrait_for_player_directory_exists_4[what_player] = false;
+		character_portrait_for_player_dir_exists_4[what_player] = false;
 	}
 	
 	#region /* Player character select portrait sprite */
 	global.sprite_select_player[what_player] = spr_noone;
 	global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("stand", global.sprite_select_player[what_player], character_folder[what_player]);
+	global.sprite_player_stand[what_player] = global.sprite_select_player[what_player];
 	global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
 	#endregion /* Player character select portrait sprite END */
 	

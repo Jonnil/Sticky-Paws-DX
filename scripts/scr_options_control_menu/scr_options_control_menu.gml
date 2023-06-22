@@ -4390,8 +4390,6 @@ function scr_options_control_menu()
 		}
 		draw_menu_dropdown(390, menu_y_drop_down_from_rope + menu_y_offset, l10n_text("Drop down from rope"), "drop_from_rope", global_drop_from_rope, l10n_text("Release Jump"), l10n_text("Down or Jump"), l10n_text("Only Down"), l10n_text("Only Jump"), l10n_text("Down + Jump"));
 		draw_menu_dropdown(390, menu_y_wall_jump_setting + menu_y_offset, l10n_text("Wall Jump"), "wall_jump_setting", global_wall_jump_setting, l10n_text("Off"), l10n_text("When touching wall"), l10n_text("When holding towards the wall"));
-		scr_draw_text_outlined(590, menu_y_wall_jump_setting + menu_y_offset, "global.player1_wall_jump_setting: " + string(global.player1_wall_jump_setting));
-		scr_draw_text_outlined(1190, menu_y_wall_jump_setting + menu_y_offset, "global_wall_jump_setting: " + string(global_wall_jump_setting));
 		#endregion /* Controls checkmarks and dropdown menu settings END */
 		
 		#region /* Menu cursor y position */

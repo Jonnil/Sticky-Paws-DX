@@ -270,13 +270,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
 				if (file_exists(working_directory + "/custom_levels/" + string(downloaded_file_name) + "/thumbnail.png"))
 				{
-					downloaded_thumbnail_sprite = sprite_add(working_directory + "/custom_levels/" + string(downloaded_file_name) + "/thumbnail.png", 0, false, true, 0, 0);
+					downloaded_thumbnail_sprite = sprite_add(working_directory + "/custom_levels/" + string(downloaded_file_name) + "/thumbnail.png", 0, false, false, 0, 0);
 					sprite_set_offset(downloaded_thumbnail_sprite, sprite_get_width(downloaded_thumbnail_sprite) * 0.5, 0);
 				}
 				else
 				if (file_exists(working_directory + "/custom_levels/" + string(downloaded_file_name) + "/automatic_thumbnail.png"))
 				{
-					downloaded_thumbnail_sprite = sprite_add(working_directory + "/custom_levels/" + string(downloaded_file_name) + "/automatic_thumbnail.png", 0, false, true, 0, 0);
+					downloaded_thumbnail_sprite = sprite_add(working_directory + "/custom_levels/" + string(downloaded_file_name) + "/automatic_thumbnail.png", 0, false, false, 0, 0);
 					sprite_set_offset(downloaded_thumbnail_sprite, sprite_get_width(downloaded_thumbnail_sprite) * 0.5, 0);
 				}
 				if (file_exists(working_directory + "/custom_levels/" + string(downloaded_file_name) + "/data/level_information.ini"))
@@ -325,8 +325,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Downloading" + " " + l10n_text(string(what_kind_of_id)) + "..."), global.default_text_size * 2, c_black, c_white, 1)
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 64, string(global.search_id), global.default_text_size, c_black, c_white, 1)
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Downloading" + " " + l10n_text(string(what_kind_of_id)) + "..."), global.default_text_size * 2, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 64, string(global.search_id), global.default_text_size, c_black, c_white, 1);
+		//scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, string(global.online_download_list), global.default_text_size, c_black, c_ltgray, 1);
 		
 		#region /* Draw loading icon when waiting for download */
 		draw_set_halign(fa_center);
@@ -917,7 +918,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0)
-		|| (menu == "searched_file_downloaded_back")
+		|| (menu == "searched_file_downloaded_failed")
 		&& (key_a_pressed)
 		&& (menu_delay == 0)
 		{

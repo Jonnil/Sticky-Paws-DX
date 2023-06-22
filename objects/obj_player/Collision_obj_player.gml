@@ -42,3 +42,38 @@ if (global.players_can_collide)
 		hspeed = +1;
 	}
 }
+
+#region /* Interaction with other players */
+if (in_water == false)
+{
+			
+	#region /* Jump on other players heads */
+	if (position_meeting(x, bbox_bottom + 1, other))
+	&& (!place_meeting(x, y - 1, obj_wall))
+	&& (vspeed > 0)
+	&& (ground_pound == false)
+	&& (stick_to_wall == false)
+	{
+		ground_pound = false;
+		dive = false;
+		midair_jumps_left = number_of_jumps;
+		draw_xscale = 0.75;
+		draw_yscale = 1.5;
+		if (key_jump_hold)
+		{
+			vspeed = -higher_jump_height;
+		}
+		else
+		{
+			vspeed = - 8;
+		}
+		with(other)
+		{
+			draw_xscale = 1.5;
+			draw_yscale = 0.75;
+		}
+	}
+	#endregion /* Jump on other players heads END */
+	
+}
+#endregion /* Interaction with other players END */

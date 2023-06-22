@@ -484,7 +484,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		{
 			if (menu == "level_editor_delete_yes")
 			{
-				if (directory_exists(working_directory + "/custom_levels/" + string(global.level_name)))
+				if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				{
 					directory_destroy(working_directory + "/custom_levels/" + string(global.level_name));
 				}

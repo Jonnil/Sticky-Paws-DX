@@ -15,57 +15,69 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is END */
 	
 	#region /* Draw where player will do playtesting from */
-	if (sprite_player4 > 0) /* Display Player 4 behind Player 3 */
+	if (global.sprite_player_stand[4] > 0) /* Display Player 4 behind Player 3 */
 	&& (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
 		&& (global.player4_can_play)
 		{
-			draw_sprite_ext(sprite_player4, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
+			var sprite_player_stand_x = view_center_x;
+			var sprite_player_stand_y = view_center_y;
 		}
 		else
 		{
-			draw_sprite_ext(sprite_player4, 0, obj_level_player4_start.x, obj_level_player4_start.y, 1, 1, 0, c_white, 0.5);
+			var sprite_player_stand_x = obj_level_player4_start.x;
+			var sprite_player_stand_y = obj_level_player4_start.y;
 		}
+		draw_sprite_ext(global.sprite_player_stand[4], 0, obj_level_player4_start.x, obj_level_player4_start.y, 1, 1, 0, c_white, 0.5);
 	}
-	if (sprite_player3 > 0) /* Display Player 3 on top of Player 4 */
+	if (global.sprite_player_stand[3] > 0) /* Display Player 3 on top of Player 4 */
 	&& (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
 		&& (global.player3_can_play)
 		{
-			draw_sprite_ext(sprite_player3, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
+			var sprite_player_stand_x = view_center_x;
+			var sprite_player_stand_y = view_center_y;
 		}
 		else
 		{
-			draw_sprite_ext(sprite_player3, 0, obj_level_player3_start.x, obj_level_player3_start.y, 1, 1, 0, c_white, 0.5);
+			var sprite_player_stand_x = obj_level_player3_start.x;
+			var sprite_player_stand_y = obj_level_player3_start.y;
 		}
+		draw_sprite_ext(global.sprite_player_stand[3], 0, obj_level_player3_start.x, obj_level_player3_start.y, 1, 1, 0, c_white, 0.5);
 	}
-	if (sprite_player2 > 0) /* Display Player 2 on top of Player 3 */
+	if (global.sprite_player_stand[2] > 0) /* Display Player 2 on top of Player 3 */
 	&& (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
 		&& (global.player2_can_play)
 		{
-			draw_sprite_ext(sprite_player2, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
+			var sprite_player_stand_x = view_center_x;
+			var sprite_player_stand_y = view_center_y;
 		}
 		else
 		{
-			draw_sprite_ext(sprite_player2, 0, obj_level_player2_start.x, obj_level_player2_start.y, 1, 1, 0, c_white, 0.5);
+			var sprite_player_stand_x = obj_level_player2_start.x;
+			var sprite_player_stand_y = obj_level_player2_start.y;
 		}
+		draw_sprite_ext(global.sprite_player_stand[2], 0, obj_level_player2_start.x, obj_level_player2_start.y, 1, 1, 0, c_white, 0.5);
 	}
-	if (sprite_player1 > 0) /* Display Player 1 on top of Player 2 */
+	if (global.sprite_player_stand[1] > 0) /* Display Player 1 on top of Player 2 */
 	&& (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
 		&& (global.player1_can_play)
 		{
-			draw_sprite_ext(sprite_player1, 0, view_center_x, view_center_y, 1, 1, 0, c_white, 1);
+			var sprite_player_stand_x = view_center_x;
+			var sprite_player_stand_y = view_center_y;
 		}
 		else
 		{
-			draw_sprite_ext(sprite_player1, 0, obj_level_player1_start.x, obj_level_player1_start.y, 1, 1, 0, c_white, 0.5);
+			var sprite_player_stand_x = obj_level_player1_start.x;
+			var sprite_player_stand_y = obj_level_player1_start.y;
 		}
+		draw_sprite_ext(global.sprite_player_stand[1], 0, sprite_player_stand_x, sprite_player_stand_y, 1, 1, 0, c_white, 0.5);
 	}
 	#endregion /* Draw where player will do playtesting from END */
 	

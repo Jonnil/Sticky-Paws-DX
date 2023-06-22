@@ -32,6 +32,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 		/* Don't update "actual skin for player" here, because it will save what skin you're supposed to have with other characters, so it doesn't change unintentinally for the player */
 		global.sprite_select_player[what_player] = spr_noone;
 		global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("stand", global.sprite_select_player[what_player], character_folder[what_player]);
+		global.sprite_player_stand[what_player] = global.sprite_select_player[what_player];
 		global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
 	}
 	else
@@ -75,6 +76,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 		/* Don't update "actual skin for player" here, because it will save what skin you're supposed to have with other characters, so it doesn't change unintentinally for the player */
 		global.sprite_select_player[what_player] = spr_noone;
 		global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("stand", global.sprite_select_player[what_player], character_folder[what_player]);
+		global.sprite_player_stand[what_player] = global.sprite_select_player[what_player];
 		global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
 	}
 	else
@@ -118,6 +120,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 		/* Don't update "actual skin for player" here, because it will save what skin you're supposed to have with other characters, so it doesn't change unintentinally for the player */
 		global.sprite_select_player[what_player] = spr_noone;
 		global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("stand", global.sprite_select_player[what_player], character_folder[what_player]);
+		global.sprite_player_stand[what_player] = global.sprite_select_player[what_player];
 		global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
 	}
 	else
@@ -161,6 +164,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 		/* Don't update "actual skin for player" here, because it will save what skin you're supposed to have with other characters, so it doesn't change unintentinally for the player */
 		global.sprite_select_player[what_player] = spr_noone;
 		global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("stand", global.sprite_select_player[what_player], character_folder[what_player]);
+		global.sprite_player_stand[what_player] = global.sprite_select_player[what_player];
 		global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
 	}
 	else

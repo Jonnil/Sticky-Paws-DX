@@ -177,7 +177,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	{
 		
 		#region /* Player Select Skin */
-		if (character_portrait_for_player_directory_exists_1[what_player])
+		if (character_portrait_for_player_dir_exists_1[what_player])
 		{
 			if (player_menu[what_player] == "select_skin")
 			|| (global.controls_used_for_menu_navigation == "mouse")
@@ -225,7 +225,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					&& (global.controls_used_for_menu_navigation == "mouse")
 					{
 						if (menu_delay == 0)
-						&& (character_portrait_for_player_directory_exists_2[what_player])
+						&& (character_portrait_for_player_dir_exists_2[what_player])
 						{
 							menu_delay = 3;
 							
@@ -269,7 +269,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						if (menu_delay == 0)
 						{
 							menu_delay = 3;
-							if (character_portrait_for_player_directory_exists_3[what_player])
+							if (character_portrait_for_player_dir_exists_3[what_player])
 							{
 								menu_specific_joystick_delay[what_player] = 60;
 								player_menu[what_player] = "select_voicepack";
@@ -294,7 +294,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					#endregion /* Show left key for character skin select END */
 					
 					#region /* Show right key for character skin select */
-					if (character_portrait_for_player_directory_exists_2[what_player])
+					if (character_portrait_for_player_dir_exists_2[what_player])
 					{
 						if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
 						&& (global.controls_used_for_menu_navigation == "mouse")
@@ -320,7 +320,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	{
 		
 		#region /* Player Select Voice Pack */
-		if (character_portrait_for_player_directory_exists_3[what_player])
+		if (character_portrait_for_player_dir_exists_3[what_player])
 		{
 			if (player_menu[what_player] = "select_voicepack")
 			|| (global.controls_used_for_menu_navigation = "mouse")
@@ -363,7 +363,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					{
 						if (menu_delay == 0)
 						{
-							if (character_portrait_for_player_directory_exists_4[what_player])
+							if (character_portrait_for_player_dir_exists_4[what_player])
 							{
 								menu_delay = 3;
 								global.voicepack_for_player[what_player] ++;
@@ -386,7 +386,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						if (menu_delay == 0)
 						{
 							menu_delay = 3;
-							if (character_portrait_for_player_directory_exists_1[what_player])
+							if (character_portrait_for_player_dir_exists_1[what_player])
 							{
 								
 								#region /* Go from selecting voicepack to selecting skin */
@@ -436,7 +436,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					#endregion /* Show left key for character voicepack select END */
 					
 					#region /* Show right key for character voicepack select */
-					if (character_portrait_for_player_directory_exists_4[what_player])
+					if (character_portrait_for_player_dir_exists_4[what_player])
 					{
 						if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
 						&& (global.controls_used_for_menu_navigation == "mouse")

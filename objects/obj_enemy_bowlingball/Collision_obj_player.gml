@@ -58,7 +58,7 @@ if (die == false)
 		&& (other.vspeed < 0)
 		|| (other.bbox_bottom < y)
 		{
-			if (other.ground_pound == false)
+			if (other.ground_pound != true)
 			{
 				if (abs(other.hspeed) > 7)
 				{

@@ -2459,6 +2459,7 @@
     {"id":{"name":"spr_level_height","path":"sprites/spr_level_height/spr_level_height.yy",},},
     {"id":{"name":"obj_water","path":"objects/obj_water/obj_water.yy",},},
     {"id":{"name":"obj_foreground2","path":"objects/obj_foreground2/obj_foreground2.yy",},},
+    {"id":{"name":"spr_made_with_gamemaker","path":"sprites/spr_made_with_gamemaker/spr_made_with_gamemaker.yy",},},
     {"id":{"name":"draw_menu_checkmark","path":"scripts/draw_menu_checkmark/draw_menu_checkmark.yy",},},
     {"id":{"name":"snd_footstep_gravel_right","path":"sounds/snd_footstep_gravel_right/snd_footstep_gravel_right.yy",},},
     {"id":{"name":"snd_water_getout","path":"sounds/snd_water_getout/snd_water_getout.yy",},},

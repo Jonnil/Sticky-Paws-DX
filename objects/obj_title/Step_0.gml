@@ -230,33 +230,33 @@ if (menu == "load_custom_level")
 				#region /* Update Thumbnail */
 				/* BMP Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.bmp"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.bmp", 0, false, true, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.bmp", 0, false, false, 0, 0));
 				}
 				else
 				/* PNG Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.png"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.png", 0, false, true, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.png", 0, false, false, 0, 0));
 				}
 				else
 				/* GIF Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.gif"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.gif", 0, false, true, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.gif", 0, false, false, 0, 0));
 				}
 				else
 				/* JPG Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.jpg"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.jpg", 0, false, true, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.jpg", 0, false, false, 0, 0));
 				}
 				else
 				/* PNG Automatic Thumbnail */
 				if (file_exists(working_directory + "/custom_levels/" + file_found + "/automatic_thumbnail.png"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/automatic_thumbnail.png", 0, false, true, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/automatic_thumbnail.png", 0, false, false, 0, 0));
 				}
 				else
 				if (file_exists(working_directory + "/custom_levels/" + file_found + "/Automatic Thumbnail.png"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Automatic Thumbnail.png", 0, false, true, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Automatic Thumbnail.png", 0, false, false, 0, 0));
 				}
 				else
 				{
@@ -293,36 +293,36 @@ if (menu == "load_official_level_template")
 			/* BMP Official Thumbnail */
 			if (file_exists("levels/" + file_found + "/Thumbnail.bmp"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.bmp", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.bmp", 0, false, false, 0, 0));
 			}
 			else
 			/* PNG Official Thumbnail */
 			if (file_exists("levels/" + file_found + "/Thumbnail.png"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.png", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.png", 0, false, false, 0, 0));
 			}
 			else
 			/* GIF Official Thumbnail */
 			if (file_exists("levels/" + file_found + "/Thumbnail.gif"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.gif", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.gif", 0, false, false, 0, 0));
 			}
 			else
 			/* JPG Official Thumbnail */
 			if (file_exists("levels/" + file_found + "/Thumbnail.jpg"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.jpg", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.jpg", 0, false, false, 0, 0));
 			}
 			else
 			/* PNG Automatic Thumbnail */
 			if (file_exists("levels/" + file_found + "/automatic_thumbnail.png"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/automatic_thumbnail.png", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/automatic_thumbnail.png", 0, false, false, 0, 0));
 			}
 			else
 			if (file_exists("levels/" + file_found + "/Automatic Thumbnail.png"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Automatic Thumbnail.png", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Automatic Thumbnail.png", 0, false, false, 0, 0));
 			}
 			else
 			{
@@ -341,36 +341,36 @@ if (menu == "load_official_level_template")
 			/* BMP Official Thumbnail */
 			if (file_exists("levels/" + file_found + "/Thumbnail.bmp"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.bmp", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.bmp", 0, false, false, 0, 0));
 			}
 			else
 			/* PNG Official Thumbnail */
 			if (file_exists("levels/" + file_found + "/Thumbnail.png"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.png", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.png", 0, false, false, 0, 0));
 			}
 			else
 			/* GIF Official Thumbnail */
 			if (file_exists("levels/" + file_found + "/Thumbnail.gif"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.gif", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.gif", 0, false, false, 0, 0));
 			}
 			else
 			/* JPG Official Thumbnail */
 			if (file_exists("levels/" + file_found + "/Thumbnail.jpg"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.jpg", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.jpg", 0, false, false, 0, 0));
 			}
 			else
 			/* PNG Automatic Thumbnail */
 			if (file_exists("levels/" + file_found + "/automatic_thumbnail.png"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/automatic_thumbnail.png", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/automatic_thumbnail.png", 0, false, false, 0, 0));
 			}
 			else
 			if (file_exists("levels/" + file_found + "/Automatic Thumbnail.png"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Automatic Thumbnail.png", 0, false, true, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Automatic Thumbnail.png", 0, false, false, 0, 0));
 			}
 			else
 			{

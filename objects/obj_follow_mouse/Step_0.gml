@@ -1,10 +1,8 @@
-x = mouse_x;
-y = mouse_y;
+var viewCamera = view_camera[view_current];
+var viewX = camera_get_view_x(viewCamera);
+var viewY = camera_get_view_y(viewCamera);
+var viewWidth = camera_get_view_width(viewCamera);
+var viewHeight = camera_get_view_height(viewCamera);
 
-#region /* Clamp mouse cursor so it's always within view */
-if (instance_exists(obj_camera))
-{
-	x = clamp(x, camera_get_view_x(obj_camera.camera), camera_get_view_x(obj_camera.camera) + camera_get_view_width(obj_camera.camera));
-	y = clamp(y, camera_get_view_y(obj_camera.camera), camera_get_view_y(obj_camera.camera) + camera_get_view_height(obj_camera.camera));
-}
-#endregion /* Clamp mouse cursor so it's always within view END */
+x = clamp(mouse_x, viewX, viewX + viewWidth);
+y = clamp(mouse_y, viewY, viewY + viewHeight);

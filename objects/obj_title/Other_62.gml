@@ -22,6 +22,10 @@ if (async_load[? "id"] == global.http_request_id)
 			&& (in_online_download_list_load_menu == false)
 			{
 				var file_save_location = working_directory + "/downloaded_level/" + string(response_json[? "name"]) + ".zip";
+				if (response_json[? "name"] == undefined)
+				{
+					menu = "searched_file_downloaded_failed";
+				}
 			}
 			else
 			{
@@ -37,6 +41,10 @@ if (async_load[? "id"] == global.http_request_id)
 			&& (in_online_download_list_load_menu == false)
 			{
 				var file_save_location = working_directory + "/downloaded_character/" + string(response_json[? "name"]) + ".zip";
+				if (response_json[? "name"] == undefined)
+				{
+					menu = "searched_file_downloaded_failed";
+				}
 			}
 			else
 			{

@@ -115,7 +115,7 @@ function scr_player_move_pause()
 			}
 			#endregion /* What player should control the pause menu END */
 			
-			global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
+			global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 0, 0, 0);
 			room_persistent = true; /* Turn ON Room Persistency */
 			global.pause_room = room;
 			audio_pause_all();

@@ -334,6 +334,7 @@
     {"name":"spr_level_height","order":26,"path":"sprites/spr_level_height/spr_level_height.yy",},
     {"name":"obj_water","order":9,"path":"objects/obj_water/obj_water.yy",},
     {"name":"obj_foreground2","order":24,"path":"objects/obj_foreground2/obj_foreground2.yy",},
+    {"name":"spr_made_with_gamemaker","order":152,"path":"sprites/spr_made_with_gamemaker/spr_made_with_gamemaker.yy",},
     {"name":"draw_menu_checkmark","order":1,"path":"scripts/draw_menu_checkmark/draw_menu_checkmark.yy",},
     {"name":"snd_footstep_gravel_right","order":47,"path":"sounds/snd_footstep_gravel_right/snd_footstep_gravel_right.yy",},
     {"name":"snd_water_getout","order":141,"path":"sounds/snd_water_getout/snd_water_getout.yy",},

@@ -390,9 +390,7 @@ function scr_character_select_menu_step()
 		if (player_start_game) /* Make sure that the "start game" button isn't overlapping the "name input" buttons */
 		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, play_the_game_text_y_lerp - 32, get_window_width, play_the_game_text_y_lerp + 32))
 		&& (global.controls_used_for_menu_navigation == "mouse")
-		//&& (menu_delay == 0)
 		|| (player_start_game == false)
-		//&& (menu_delay == 0)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[1] - 150, get_window_height * 0.5 + name_y - 16, get_window_width * 0.5 + player_display_x[1] + 150, get_window_height * 0.5 + name_y + 16))
 			&& (mouse_check_button_released(mb_left))

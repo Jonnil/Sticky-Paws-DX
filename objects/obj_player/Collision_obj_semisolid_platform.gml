@@ -14,7 +14,7 @@ if (position_meeting(x, bbox_bottom + 1, other))
 || (position_meeting(bbox_right, bbox_bottom + 4, other))
 {
 	if (dive)
-	&& (vspeed >= -4)
+	&& (vspeed >= -5)
 	{
 		dive = false;
 		dive_on_ground = 10;

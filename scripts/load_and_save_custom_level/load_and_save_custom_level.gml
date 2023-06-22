@@ -256,7 +256,7 @@ function scr_save_custom_level_json()
 	{
 		
 		/* Create directory for saving custom levels */
-		if (global.level_name != "" && !directory_exists(working_directory + "/custom_levels/" + string(global.level_name))) directory_create(working_directory + "/custom_levels/" + string(global.level_name));
+		if (global.level_name != "" && !file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini")) directory_create(working_directory + "/custom_levels/" + string(global.level_name));
 		
 		#region /* Save object placement */
 		if (global.level_name != "")
@@ -265,6 +265,7 @@ function scr_save_custom_level_json()
 		}
 		
 		var data = [];
+		global.max_length_iterations = room_width div 32;
 		
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
@@ -345,7 +346,7 @@ function scr_save_custom_level_txt()
 	{
 		
 		/* Create directory for saving custom levels */
-		if (global.level_name != "" && !directory_exists(working_directory + "/custom_levels/" + string(global.level_name))) directory_create(working_directory + "/custom_levels/" + string(global.level_name));
+		if (global.level_name != "" && !file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini")) directory_create(working_directory + "/custom_levels/" + string(global.level_name));
 		
 		#region /* Save object placement */
 		var file, str;
@@ -354,6 +355,7 @@ function scr_save_custom_level_txt()
 			file = file_text_open_write(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt"); /* Open file for writing */
 		}
 		str = ""; /* Reset string var */
+		global.max_length_iterations = room_width div 32;
 		
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)

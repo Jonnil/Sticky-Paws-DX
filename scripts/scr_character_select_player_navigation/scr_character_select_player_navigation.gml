@@ -197,12 +197,12 @@ function scr_character_select_player_navigation(what_player = 1)
 				menu_delay = 3;
 				menu_specific_joystick_delay[what_player] = 30;
 				player_accept_selection = 0;
-				if (character_portrait_for_player_directory_exists_1[what_player])
+				if (character_portrait_for_player_dir_exists_1[what_player])
 				{
 					player_menu[what_player] = "select_skin";
 				}
 				else
-				if (character_portrait_for_player_directory_exists_3[what_player])
+				if (character_portrait_for_player_dir_exists_3[what_player])
 				{
 					player_menu[what_player] = "select_voicepack";
 				}
@@ -229,12 +229,12 @@ function scr_character_select_player_navigation(what_player = 1)
 			{
 				menu_delay = 3;
 				menu_specific_joystick_delay[what_player] = 30;
-				if (character_portrait_for_player_directory_exists_3[what_player])
+				if (character_portrait_for_player_dir_exists_3[what_player])
 				{
 					player_menu[what_player] = "select_voicepack";
 				}
 				else
-				if (character_portrait_for_player_directory_exists_1[what_player])
+				if (character_portrait_for_player_dir_exists_1[what_player])
 				{
 					player_menu[what_player] = "select_skin";
 				}

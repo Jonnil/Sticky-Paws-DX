@@ -226,7 +226,6 @@ if (global.actually_play_edited_level == false)
 	sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;
 	sprite_enemy_bowlingball_blind = global.resource_pack_sprite_enemy_bowlingball_blind_walk;
 	sprite_big_stationary_enemy = global.resource_pack_sprite_big_stationary_enemy;
-	sprite_lives_icon = scr_initialize_custom_character_select_sprite("lives_icon", sprite_lives_icon, camera_player, camera_selected_skin);
 	#endregion /* Load custom sprites END */
 	
 	#region /* Grid Initialization */
@@ -497,19 +496,6 @@ if (global.actually_play_edited_level == false)
 	my = mouse_y;
 	
 	selected_skin = global.skin_for_player[1];
-	
-	sprite_player1 = noone;
-	sprite_player1 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 0, global.skin_for_player[1]);
-	sprite_player1 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 0, global.skin_for_player[1]);
-	sprite_player2 = noone;
-	sprite_player2 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 1, global.skin_for_player[2]);
-	sprite_player2 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 1, global.skin_for_player[2]);
-	sprite_player3 = noone;
-	sprite_player3 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 2, global.skin_for_player[3]);
-	sprite_player3 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 2, global.skin_for_player[3]);
-	sprite_player4 = noone;
-	sprite_player4 = scr_initialize_custom_character_select_sprite("idle", sprite_player1, 3, global.skin_for_player[4]);
-	sprite_player4 = scr_initialize_custom_character_select_sprite("stand", sprite_player1, 3, global.skin_for_player[4]);
 	
 	audio_stop_all();
 	pressing_play_timer = 0; /* You have to hold down the play button for some time before you play the level from the beginning */

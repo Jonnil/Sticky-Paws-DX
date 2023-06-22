@@ -218,6 +218,7 @@ else
 {
 	global.gui_scale_modifier = 3;
 }
+global.max_length_iterations = 0;
 global.gui_width = window_get_width();
 global.gui_height = window_get_height();
 global.doing_clear_check = false; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
@@ -278,6 +279,10 @@ global.sprite_select_player[1] = noone;
 global.sprite_select_player[2] = noone;
 global.sprite_select_player[3] = noone;
 global.sprite_select_player[4] = noone;
+global.sprite_player_stand[1] = noone;
+global.sprite_player_stand[2] = noone;
+global.sprite_player_stand[3] = noone;
+global.sprite_player_stand[4] = noone;
 global.thumbnail_sprite = ds_list_create();
 global.title_background_scale = 1;
 global.title_logo_index = spr_noone;

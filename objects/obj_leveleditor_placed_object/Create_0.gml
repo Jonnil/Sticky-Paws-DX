@@ -1,4 +1,8 @@
 repeat_length = 0;
+easy = 1;
+normal = 1;
+hard = 1;
+object = 0;
 
 if (global.actually_play_edited_level == false)
 {
@@ -9,10 +13,6 @@ if (global.actually_play_edited_level == false)
 	drag_xstart = x;
 	drag_ystart = y;
 	drag_release_timer = 0;
-	object = 0;
-	easy = 1;
-	normal = 1;
-	hard = 1;
 	delay = 0;
 	undo_value = 0;
 	i = 0;

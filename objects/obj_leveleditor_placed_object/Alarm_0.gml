@@ -3,20 +3,29 @@ if (global.actually_play_edited_level == false)
 {
 	if (global.world_editor == false)
 	{
-		for(i = 0; i < ds_grid_height(global.object_grid)-1; i += 1)
+		var grid = global.object_grid;
+		var grid_height = ds_grid_height(grid) - 1;
+		
+		var grid_object_index = -1;
+		for (var i = 0; i < grid_height; i++)
 		{
-			if (object == ds_grid_get(global.object_grid, 0, i))
+			if (object == grid[# 0, i])
 			{
-				sprite_index = ds_grid_get(global.object_grid, 1, i);
-				mask_index = ds_grid_get(global.object_grid, 3, i);
-				draw_xscale = ds_grid_get(global.object_grid, 4, i);
-				draw_yscale = ds_grid_get(global.object_grid, 4, i);
-				draw_angle = ds_grid_get(global.object_grid, 5, i);
-				image_angle = draw_angle;
-				image_blend = ds_grid_get(global.object_grid, 6, i);
-				default_blend = ds_grid_get(global.object_grid, 6, i);
-				image_alpha = ds_grid_get(global.object_grid, 7, i);
+				grid_object_index = i;
+				break;
 			}
+		}
+		
+		if (grid_object_index != -1)
+		{
+			sprite_index = grid[# 1, grid_object_index];
+			mask_index = grid[# 3, grid_object_index];
+			draw_xscale = grid[# 4, grid_object_index];
+			draw_yscale = draw_xscale;
+			draw_angle = grid[# 5, grid_object_index];
+			image_blend = grid[# 6, grid_object_index];
+			default_blend = image_blend;
+			image_alpha = grid[# 7, grid_object_index];
 		}
 		
 		draw_item_on_top = noone;
@@ -119,37 +128,3 @@ if (global.actually_play_edited_level == false)
 	}
 }
 #endregion /* Initialize Object END */
-
-#region /* Big collectible uses old ID's, need to update them so old levels are compatible */
-//if (object == 35)
-//|| (object == 36)
-//|| (object == 37)
-//|| (object == 38)
-//{
-//	object = 34;
-//}
-//else
-//if (object == 351)
-//|| (object == 361)
-//|| (object == 371)
-//|| (object == 381)
-//{
-//	object = 341;
-//}
-//else
-//if (object == 49)
-//|| (object == 50)
-//|| (object == 51)
-//|| (object == 52)
-//{
-//	object = 48;
-//}
-//else
-//if (object == 84)
-//|| (object == 85)
-//|| (object == 86)
-//|| (object == 87)
-//{
-//	object = 83;
-//}
-#endregion /* Big collectible uses old ID's, need to update them so old levels are compatible END */

@@ -85,6 +85,11 @@ if (gamepad_button_check_pressed(global.player1_slot, gp_face1))
 			skip_key = vk_escape;
 		}
 		else
+		if (keyboard_check_pressed(vk_space))
+		{
+			skip_key = vk_space;
+		}
+		else
 		if (keyboard_check_pressed(ord("X")))
 		{
 			skip_key = ord("X");
@@ -104,18 +109,37 @@ if (gamepad_button_check_pressed(global.player1_slot, gp_face1))
 }
 #endregion /* Skip company logo screen when pressing skip button END */
 
-#region /* Go to the title screen automatically when company logos and controller prompt is done showing */
+#region /* Go to "made with gamemaker" when company logo is done showing */
 if (image_index > image_number - 2)
-&& (sprite_index = spr_company_logo)
+&& (sprite_index == spr_company_logo)
 {
-	if (!gamepad_is_connected(global.player1_slot)) /* If there are no controllers connected to the game, then show a controller prompt to let players know they can use controllers */
-	&& (!gamepad_is_connected(global.player2_slot))
-	&& (!gamepad_is_connected(global.player3_slot))
-	&& (!gamepad_is_connected(global.player4_slot))
+	sprite_index = spr_made_with_gamemaker;
+	image_index = 0;
+	time = 0;
+}
+#endregion /* Go to "made with gamemaker" when company logo is done showing END */
+
+#region /* Go to the title screen automatically when "made with gamemaker" and controller prompt is done showing */
+if (sprite_index == spr_made_with_gamemaker)
+{
+	time ++;
+	if (time > 200)
 	{
-		if (global.resource_pack_sprite_splash_controller >= 0) /* Check if the controller splash sprite exists before trying to switch sprite to it */
+		if (!gamepad_is_connected(global.player1_slot)) /* If there are no controllers connected to the game, then show a controller prompt to let players know they can use controllers */
+		&& (!gamepad_is_connected(global.player2_slot))
+		&& (!gamepad_is_connected(global.player3_slot))
+		&& (!gamepad_is_connected(global.player4_slot))
 		{
-			sprite_index = global.resource_pack_sprite_splash_controller;
+			if (global.resource_pack_sprite_splash_controller >= 0) /* Check if the controller splash sprite exists before trying to switch sprite to it */
+			{
+				time = 0;
+				sprite_index = global.resource_pack_sprite_splash_controller;
+			}
+			else
+			if (can_navigate) /* Can only go to the title screen when everything is loaded */
+			{
+				goto_title_screen = true;
+			}
 		}
 		else
 		if (can_navigate) /* Can only go to the title screen when everything is loaded */
@@ -123,14 +147,9 @@ if (image_index > image_number - 2)
 			goto_title_screen = true;
 		}
 	}
-	else
-	if (can_navigate) /* Can only go to the title screen when everything is loaded */
-	{
-		goto_title_screen = true;
-	}
-	image_index = image_number - 2;
+	image_speed = 0.2;
 }
-#endregion /* Go to the title screen automatically when company logos and controller prompt is done showing END */
+#endregion /* Go to the title screen automatically when "made with gamemaker" and controller prompt is done showing END */
 
 #region /* If controller splash sprite is currently used, then go to the title screen after a couple of seconds */
 if (global.resource_pack_sprite_splash_controller > noone)
@@ -159,6 +178,7 @@ if (image_index == 20) /* If company splash sound exists, and is currently not p
 if (time == 10) /* If controller splash sound exists, and is currently not playing, then play controller splash sound */
 && (controller_splash > noone)
 && (!audio_is_playing(controller_splash))
+&& (sprite_index == global.resource_pack_sprite_splash_controller)
 {
 	scr_audio_play(controller_splash, volume_source.voice);
 }

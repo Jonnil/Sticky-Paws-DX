@@ -265,16 +265,6 @@ if (global.actually_play_edited_level == false)
 					
 					if (!global.world_editor)
 					{
-						
-						#region /* Save Level Thumbnail */
-						if (global.level_name != "")
-						{
-							var thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-							sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
-							scr_delete_sprite_properly(thumbnail_sprite);
-						}
-						#endregion /* Save Level Thumbnail END */
-						
 						scr_save_custom_level();
 						with(obj_leveleditor_placed_object)
 						{
@@ -294,14 +284,6 @@ if (global.actually_play_edited_level == false)
 					}
 					else
 					{
-						/* Save World Thumbnail */
-						var thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-						if (global.level_name != "")
-						{
-							sprite_save(thumbnail_sprite, 0, working_directory + "/custom_worlds/" + string(global.level_name) + "/automatic_thumbnail.png");
-						}
-						scr_delete_sprite_properly(thumbnail_sprite);
-						
 						scr_save_custom_world();
 						
 						if (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64) || global.full_level_map_screenshot)
@@ -314,6 +296,7 @@ if (global.actually_play_edited_level == false)
 							instance_create_depth(level_instance ? level_instance.x : x, level_instance ? level_instance.y : y, 0, obj_player_map);
 						}
 					}
+					
 					scr_scale_background();
 					global.actually_play_edited_level = false;
 					global.play_edited_level = true;
@@ -377,16 +360,6 @@ if (global.actually_play_edited_level == false)
 		ini_write_real(string(global.level_name), "checkpoint_minute", 0);
 		ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		
-		#region /* Save Thumbnail */
-		var thumbnail_sprite;
-		thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-		if (global.level_name != "")
-		{
-			sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
-		}
-		scr_delete_sprite_properly(thumbnail_sprite);
-		#endregion /* Save Thumbnail END */
 		
 		menu_delay = 10; /* Disable all menu control */
 		lives = 5;
@@ -1446,13 +1419,11 @@ if (global.actually_play_edited_level == false)
 		if (quit_level_editor == 4)
 		&& (global.level_name != "")
 		{
-			var thumbnail_sprite = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 1, 0, 0);
-			sprite_save(thumbnail_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
-			scr_delete_sprite_properly(thumbnail_sprite);
+			alarm[0] = 1;
 		}
 		#endregion /* Save Thumbnail a little bit after saving level END */
 		
-		if (quit_level_editor > 5)
+		if (quit_level_editor > 6)
 		{
 			global.create_level_from_template = false; /* Disable global.create_level_from_template after loading everything and quitting the level editor, to let every object have time to load and save */
 			room_goto(room_title);

@@ -89,7 +89,7 @@ if (die_volting == false)
 	&& (other.vspeed < 0)
 	|| (other.bbox_bottom < y)
 	{
-		if (other.ground_pound == false)
+		if (other.ground_pound != true)
 		&& (flat == false)
 		{
 			if (abs(other.hspeed) > 7)

@@ -212,7 +212,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	{
 		
 		#region /* Player Select Skin */
-		if (character_portrait_for_player_directory_exists_1[what_player])
+		if (character_portrait_for_player_dir_exists_1[what_player])
 		{
 			if (player_accept_selection == false)
 			{
@@ -261,7 +261,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					#endregion /* Show left key for character skin select END */
 					
 					#region /* Show right key for character skin select */
-					if (character_portrait_for_player_directory_exists_2[what_player])
+					if (character_portrait_for_player_dir_exists_2[what_player])
 					{
 						if (gamepad_is_connected(player_gamepad_slot))
 						&& (global.controls_used_for_menu_navigation == "controller")
@@ -309,7 +309,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	{
 		
 		#region /* Player Select Voice Pack */
-		if (character_portrait_for_player_directory_exists_3[what_player])
+		if (character_portrait_for_player_dir_exists_3[what_player])
 		{
 			if (player_accept_selection == false)
 			{
@@ -359,7 +359,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					#endregion /* Show left key for character voicepack select END */
 					
 					#region /* Show right key for character voicepack select */
-					if (character_portrait_for_player_directory_exists_4[what_player])
+					if (character_portrait_for_player_dir_exists_4[what_player])
 					{
 						if (gamepad_is_connected(player_gamepad_slot))
 						&& (global.controls_used_for_menu_navigation == "controller")
