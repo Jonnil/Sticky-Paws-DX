@@ -24,42 +24,10 @@ else
 
 #region /* Play as Custom Character */
 
-if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
-|| (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
-{
-	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
-	{
-		ini_open("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini");
-	}
-	else
-	if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
-	{
-		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini");
-	}
-	
-	#region /* Default Xscale */
-	if (ini_key_exists("values", "default_xscale"))
-	{
-		default_xscale = ini_read_real("values", "default_xscale", 1);
-	}
-	else
-	{
-		default_xscale = 1;
-	}
-	#endregion /* Default Xscale END */
-	
-	#region /* Default Yscale */
-	if (ini_key_exists("values", "default_yscale"))
-	{
-		default_yscale = ini_read_real("values", "default_yscale", 1);
-	}
-	else
-	{
-		default_yscale = 1;
-	}
-	#endregion /* Default Yscale END */
-	
-}
+ini_open(string(character_folder) + "/data/character_config.ini");
+default_xscale = ini_read_real("values", "default_xscale", 1);
+default_yscale = ini_read_real("values", "default_yscale", 1);
+ini_close();
 
 #region /* Sprite variables */
 

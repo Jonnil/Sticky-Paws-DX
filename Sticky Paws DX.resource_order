@@ -408,6 +408,7 @@
     {"name":"scr_save_os_info_ini","order":77,"path":"scripts/scr_save_os_info_ini/scr_save_os_info_ini.yy",},
     {"name":"snd_skiddingvertical","order":127,"path":"sounds/snd_skiddingvertical/snd_skiddingvertical.yy",},
     {"name":"scr_load_object_placement_old","order":13,"path":"scripts/scr_load_object_placement_old/scr_load_object_placement_old.yy",},
+    {"name":"scr_draw_debug_movement_variables","order":80,"path":"scripts/scr_draw_debug_movement_variables/scr_draw_debug_movement_variables.yy",},
     {"name":"scr_load_custom_level_initializing","order":3,"path":"scripts/scr_load_custom_level_initializing/scr_load_custom_level_initializing.yy",},
     {"name":"obj_spikes","order":13,"path":"objects/obj_spikes/obj_spikes.yy",},
     {"name":"obj_camera_map","order":7,"path":"objects/obj_camera_map/obj_camera_map.yy",},

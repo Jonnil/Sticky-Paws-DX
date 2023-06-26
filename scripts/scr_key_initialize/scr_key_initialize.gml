@@ -1,8 +1,3 @@
-/// @description scr_key_initialize(key, hold0_press1_release2, which_player, this_player_key);
-/// @param key
-/// @param hold0_press1_release2
-/// @param which_player
-/// @param this_player_key
 function scr_key_initialize(key, hold0_press1_release2, which_player, this_player_key = action.jump)
 {
 	
@@ -240,7 +235,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	|| (hold0_press1_release2 = 2)
 	&& (gamepad_button_check_released(player_gamepad_slot, global.player_[inp.gp][which_player][2][this_player_key]));
 	
-	key = key_mouse || key2_mouse || joy_1 || joy_2 || key_other;
+	var return_key = key_mouse || key2_mouse || joy_1 || joy_2 || key_other;
 	
-	return (key);
+	return (return_key);
 }

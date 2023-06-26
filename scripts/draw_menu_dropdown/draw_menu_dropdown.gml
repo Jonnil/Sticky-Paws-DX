@@ -1,16 +1,3 @@
-/// @function draw_menu_dropdown(x, y, string, menu_index, variable_to_change, string_item1, string_item2, string_item3, ...)
-/// @description draw_menu_dropdown(x, y, string, menu_index, variable_to_change, string_item1, string_item2, string_item3, ...)
-/// @param x
-/// @param y
-/// @param string
-/// @param menu_index
-/// @param variable_to_change
-/// @param string_item1
-/// @param string_item2
-/// @param string_item3
-/// ...
-
-/* If you put "= default value" after an argument, then that becomes a optional argument, so no warning will show up when using this script */
 function draw_menu_dropdown(x_position, y_position, string_text, menu_index, variable_to_change, string_text_item1 = "", string_text_item2 = "", string_text_item3 = "", string_text_item4 = "", string_text_item5 = "", string_text_item6 = "", string_text_item7 = "", string_text_item8 = "", string_text_item9 = "", string_text_item10 = "", string_text_item11 = "")
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);

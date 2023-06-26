@@ -51,32 +51,6 @@ function scr_options_level_editor()
 		var custom_background_4_htiled_y = (50 * 9);
 		var custom_background_4_vtiled_y = (50 * 10);
 		
-		#region /* Accept drop down menu */
-		if (key_a_pressed)
-		{
-			
-			//#region /* Drop down menu */
-			//if (menu == "selected_level_editing_music")
-			//{
-			//	if (menu_delay == 0)
-			//	&& (open_dropdown == false)
-			//	{
-			//		open_dropdown = true;
-			//		menu_delay = 3;
-			//	}
-			//	else
-			//	if (menu_delay == 0)
-			//	&& (open_dropdown)
-			//	{
-			//		open_dropdown = false;
-			//		menu_delay = 3;
-			//	}
-			//}
-			//#endregion /* Drop down menu END */
-			
-		}
-		#endregion /* Accept drop down menu END */
-		
 		scr_scroll_menu();
 	
 		if (menu == "back_level_editor_options")

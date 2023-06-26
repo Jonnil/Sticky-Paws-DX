@@ -1,10 +1,3 @@
-/// @description scr_draw_remap_key(menu_string, name_string, remapping_player_key, remapping_player_key2, key_x, menu_y_remap_key);
-/// @param menu_string
-/// @param name_string
-/// @param remapping_player_key
-/// @param remapping_player_key2
-/// @param key_x
-/// @param menu_y_remap_key
 function scr_draw_remap_key(menu_string, name_string, remapping_player_key, remapping_player_key2, key_x, menu_y_remap_key)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);

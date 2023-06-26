@@ -258,8 +258,6 @@ function scr_options_control_menu()
 			var remapping_other1_player_key_tongue = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.tongue];
 			var remapping_other1_player_key_zoom_in = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.zoom_in];
 			var remapping_other1_player_key_zoom_out = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.zoom_out];
-			//var remapping_other1_player_key_accept = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.accept];
-			//var remapping_other1_player_key_back = global.player_[keyboard_or_gamepad][other1_remapping_player][1][action.back];
 			
 			var remapping_other1_player_key2_dive = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.dive];
 			var remapping_other1_player_key2_jump = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.jump];
@@ -275,8 +273,6 @@ function scr_options_control_menu()
 			var remapping_other1_player_key2_tongue = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.tongue];
 			var remapping_other1_player_key2_zoom_in = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.zoom_in];
 			var remapping_other1_player_key2_zoom_out = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.zoom_out];
-			//var remapping_other1_player_key2_accept = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.accept];
-			//var remapping_other1_player_key2_back = global.player_[keyboard_or_gamepad][other1_remapping_player][2][action.back];
 			
 			var remapping_other2_player_key_dive = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.dive];
 			var remapping_other2_player_key_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.jump];
@@ -292,8 +288,6 @@ function scr_options_control_menu()
 			var remapping_other2_player_key_tongue = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.tongue];
 			var remapping_other2_player_key_zoom_in = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.zoom_in];
 			var remapping_other2_player_key_zoom_out = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.zoom_out];
-			//var remapping_other2_player_key_accept = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.accept];
-			//var remapping_other2_player_key_back = global.player_[keyboard_or_gamepad][other2_remapping_player][1][action.back];
 			
 			var remapping_other2_player_key2_dive = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.dive];
 			var remapping_other2_player_key2_jump = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.jump];
@@ -309,8 +303,6 @@ function scr_options_control_menu()
 			var remapping_other2_player_key2_tongue = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.tongue];
 			var remapping_other2_player_key2_zoom_in = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.zoom_in];
 			var remapping_other2_player_key2_zoom_out = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.zoom_out];
-			//var remapping_other2_player_key2_accept = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.accept];
-			//var remapping_other2_player_key2_back = global.player_[keyboard_or_gamepad][other2_remapping_player][2][action.back];
 			
 			var remapping_other3_player_key_dive = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.dive];
 			var remapping_other3_player_key_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.jump];
@@ -326,8 +318,6 @@ function scr_options_control_menu()
 			var remapping_other3_player_key_tongue = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.tongue];
 			var remapping_other3_player_key_zoom_in = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.zoom_in];
 			var remapping_other3_player_key_zoom_out = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.zoom_out];
-			//var remapping_other3_player_key_accept = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.accept];
-			//var remapping_other3_player_key_back = global.player_[keyboard_or_gamepad][other3_remapping_player][1][action.back];
 			
 			var remapping_other3_player_key2_dive = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.dive];
 			var remapping_other3_player_key2_jump = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.jump];
@@ -343,8 +333,6 @@ function scr_options_control_menu()
 			var remapping_other3_player_key2_tongue = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.tongue];
 			var remapping_other3_player_key2_zoom_in = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.zoom_in];
 			var remapping_other3_player_key2_zoom_out = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.zoom_out];
-			//var remapping_other3_player_key2_accept = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.accept];
-			//var remapping_other3_player_key2_back = global.player_[keyboard_or_gamepad][other3_remapping_player][2][action.back];
 			#endregion /* Other player's keys END */
 			
 			#endregion /* Remapping Player Key Variables END */

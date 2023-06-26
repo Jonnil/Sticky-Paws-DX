@@ -751,27 +751,9 @@ if (can_enter_level_automatically)
 		y = instance_nearest(x, y, obj_level).y;
 		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
 		
-//		buffer_async_group_begin("save_files");
-//buffer_async_group_option("savepadindex", 0); //The number you pass in is the pad number of the user who is saving/loading.
-//buffer_async_group_option("showdialog",0);    // Stop platform dialogues appearing for this auto-save 
-//                                              // (if you do this your player won't be able to select a slot manually)
-//buffer_async_group_option("slottitle","SaveForMyGame");    // Set the title of the slot we're going to save into
-//buffer_async_group_option("subtitle","Save file for my awesome game");   // Set a subtitle that's visible in the PS4 UI
-
-//global.savebuff = buffer_create(1,buffer_grow,1);
-
-//ini_open_from_string("");
-		
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_write_real("Player", "brand_new_file", false);
-		
-//		var inistring = ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-//buffer_write(global.savebuff,buffer_string,inistring);
-
-//buffer_save_async(global.savebuff,"file" + string(global.file) + ".ini",0,buffer_get_size(global.savebuff));    // Pass the data to be saved
-//global.saveid = buffer_async_group_end();     // Start the save process
-
 		
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Save Player Position END */

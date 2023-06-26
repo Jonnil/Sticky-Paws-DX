@@ -1,7 +1,3 @@
-// @desc scr_initialize_resource_pack_sprite(sprite_name, sprite_variable);
-// @description scr_initialize_resource_pack_sprite(sprite_name, sprite_variable);
-// @arg sprite_name
-
 function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = noone)
 {
 	var saved_file_exists = false;
@@ -111,12 +107,14 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = noon
 		if (sprite_variable == noone && !saved_file_exists && file_exists(char_data_dir + "sprite_origin_point.ini")) {
 			
 			/* Open the sprite origin point INI file and delete the x and y origin point keys for this sprite */
+			
 			with (ini_open(char_data_dir + "sprite_origin_point.ini")) {
 				ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_xorig");
 				ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_yorig");
 			}
 			
 			/* Open the unused sprite origin point INI file */
+			
 			with (ini_open(char_data_dir + "unused_sprite_origin_point.ini")) {
 				
 				/* Read the x and y origin point keys for this sprite, if they exist */

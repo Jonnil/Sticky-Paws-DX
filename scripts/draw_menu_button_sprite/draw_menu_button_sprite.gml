@@ -1,19 +1,3 @@
-/// @function draw_menu_button_sprite(sprite_index, x, y, x_origin_offset, y_origin_offset, xscale, yscale, width, height, string, menu_index, menu_takes_you_to, show_arrows)
-/// @description draw_menu_button_sprite(sprite_index, x, y, x_origin_offset, y_origin_offset, xscale, yscale, width, height, string, menu_index, menu_takes_you_to, show_arrows)
-/// @param sprite_index
-/// @param x
-/// @param y
-/// @param x_origin_offset
-/// @param y_origin_offset
-/// @param xscale
-/// @param yscale
-/// @param width
-/// @param height
-/// @param string
-/// @param menu_index
-/// @param menu_takes_you_to
-/// @param show_arrows
-
 function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_offset, y_origin_offset, xscale, yscale, spr_width, spr_height, string_text, menu_index, menu_takes_you_to, show_arrows = true, highlight_color = c_lime)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);

@@ -1,9 +1,3 @@
-/// @desc scr_wave(from, to, duration, offset)
-/// @arg from
-/// @arg to
-/// @arg duration
-/// @arg offset
-
 // Returns a value that will scr_wave back and forth between [from-to] over [duration] seconds
 // Examples
 //		image_angle = scr_wave(-45, 45, 1, 0)  -> rock back and forth 90 degrees in a second

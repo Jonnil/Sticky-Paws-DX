@@ -1,12 +1,3 @@
-/// @desc scr_draw_pie(x , y , value, max, colour, radius, transparency)
-/// @arg x
-/// @arg y
-/// @arg value
-/// @arg max
-/// @arg colour
-/// @arg radius
-/// @arg transparency
-
 function scr_draw_pie(xx, yy, value, max_value, colour, radius, transparency)
 {
 	if (value > 0)

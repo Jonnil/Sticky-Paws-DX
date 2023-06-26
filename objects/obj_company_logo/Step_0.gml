@@ -165,6 +165,7 @@ if (global.resource_pack_sprite_splash_controller > noone)
 	{
 		goto_title_screen = true;
 	}
+	image_speed = 0.2;
 }
 #endregion /* If controller splash sprite is currently used, then go to the title screen after a couple of seconds END */
 

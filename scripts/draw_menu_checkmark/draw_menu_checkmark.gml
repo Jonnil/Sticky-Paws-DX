@@ -1,10 +1,3 @@
-/// @description draw_menu_checkmark(x, y, string, menu_index, variable_to_check);
-/// @param x
-/// @param y
-/// @param string
-/// @param menu_index
-/// @param variable_to_check
-
 function draw_menu_checkmark(x_position, y_position, string_text, menu_index, variable_to_check)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);

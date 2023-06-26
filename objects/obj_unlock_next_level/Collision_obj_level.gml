@@ -13,8 +13,3 @@ if (distance_to_point(other.x, other.y) < 3)
 	ini_write_string(level_name, "clear_rate", "enter");
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
-//if (distance_to_point(other.x, other.y) < 3)
-//&& (other.level != come_from_level)
-//{
-//	instance_destroy();
-//}

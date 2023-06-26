@@ -1,13 +1,3 @@
-/// @function draw_menu_slider(x, y, string, menu_index, menu_takes_you_to, variable_to_change)
-/// @description draw_menu_button(x, y, string, menu_index, variable_to_change)
-/// @param x
-/// @param y
-/// @param string
-/// @param menu_index
-/// @param variable_to_change
-/// @param bar_color
-/// @param variable_to_change
-
 function draw_menu_slider(x_position, y_position, string_text, menu_index, variable_to_change, bar_color)
 {
 	var length_variable = 320;

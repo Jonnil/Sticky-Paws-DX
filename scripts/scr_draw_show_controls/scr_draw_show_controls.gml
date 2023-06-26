@@ -108,7 +108,6 @@ function scr_draw_show_controls(what_player = 1)
 		if (player_instance > 0)
 		&& (instance_exists(player_instance))
 		&& (player_instance.partner_character == false)
-		//&& (instance_exists(obj_player))
 		&& (player_show_controls >= true)
 		&& (player_can_play)
 		{

@@ -1,9 +1,3 @@
-/// @description draw_menu_checkmark(x, y, string, menu_index);
-/// @param x
-/// @param y
-/// @param string
-/// @param menu_index
-
 function draw_language_checkmark(x_position, y_position, string_text, menu_index)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);

@@ -1,10 +1,3 @@
-/// @desc initialize_custom_character_select_sprite(sprite_name, sprite_variable, what_player, what_selected_skin);
-/// @description initialize_custom_character_select_sprite(sprite_name, sprite_variable, what_player, what_selected_skin);
-/// @arg sprite_name
-/// @arg sprite_variable
-/// @arg what_player
-/// @arg what_selected_skin
-
 function scr_initialize_custom_character_select_sprite(sprite_name, sprite_variable, what_player = player, what_selected_skin = selected_skin, where_to_look_for_sprite = string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player])))
 {
 	/* sprite_name. Sprite name. The name of the file */

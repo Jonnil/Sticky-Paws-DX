@@ -1,11 +1,3 @@
-/// @function draw_menu_dropdown_item(string_text_item, x_position, y_position, variable_to_change, item_number)
-/// @description draw_menu_dropdown_item(string_text_item, x_position, y_position, variable_to_change, item_number)
-/// @param string_text_item
-/// @param x_position
-/// @param y_position
-/// @param variable_to_change
-/// @param item_number
-
 function draw_menu_dropdown_item(string_text_item, x_position, y_position, variable_to_change, item_number)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
