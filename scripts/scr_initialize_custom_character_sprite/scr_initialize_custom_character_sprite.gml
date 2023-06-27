@@ -62,7 +62,7 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 	if (sprite_variable != noone)
 	&& (saved_file_exists)
 	{
-		ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+		ini_open(string(use_character_folder) + "/data/sprite_origin_point.ini");
 		
 		#region /* x and y origin points */
 		/* Read the x and y origin points for the sprite from the config file */

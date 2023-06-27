@@ -7,6 +7,13 @@ scr_delete_sprite_properly(global.custom_foreground_above_static_objects);
 scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
 
+key_a_pressed = noone;
+key_b_pressed = noone;
+key_up = noone;
+key_down = noone;
+key_left = noone;
+key_right = noone;
+
 thumbnail_clear_check[0] = noone;
 thumbnail_level_id[0] = "";
 
