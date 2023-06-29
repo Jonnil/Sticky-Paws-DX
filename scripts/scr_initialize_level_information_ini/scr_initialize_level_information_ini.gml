@@ -4,7 +4,7 @@ function scr_initialize_level_information_ini()
 	#region /* Initialize level_information.ini */
 	var main_level_index = ds_list_find_value(global.all_loaded_main_levels, global.select_level_index);
 	if ((global.character_select_in_this_menu == "main_game" and file_exists("levels/" + string(main_level_index) + "/data/level_information.ini")) or 
-	(global.character_select_in_this_menu == "level_editor" and file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini")))
+	(global.character_select_in_this_menu == "level_editor" and file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini")))
 	{
 		can_save_to_level_information = false;
 		if (global.create_level_from_template)
@@ -14,7 +14,7 @@ function scr_initialize_level_information_ini()
 		}
 		else if (global.character_select_in_this_menu == "level_editor")
 		{
-			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			can_save_to_level_information = true;
 		}
 		

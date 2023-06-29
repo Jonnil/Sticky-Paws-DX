@@ -35,7 +35,7 @@ if (global.actually_play_edited_level == false)
 				if (room == room_leveleditor)
 				&& (global.character_select_in_this_menu == "level_editor")
 				{
-					ini_open(working_directory + "/save_files/custom_level_save.ini");
+					ini_open(working_directory + "save_files/custom_level_save.ini");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_x");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_y");
 					ini_key_delete(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index), "checkpoint_millisecond");

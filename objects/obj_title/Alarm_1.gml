@@ -1,6 +1,6 @@
 #region /* If a unavailable skin is selected, then go to the last selectable skin for each player */
 if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player[1]) + "/mask.png"))
-&& (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player[1]) + "/mask.png"))
+&& (!file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player[1]) + "/mask.png"))
 && (global.skin_for_player[1] > 0)
 {
 	var what_player = 1;
@@ -10,7 +10,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 	
 	#region /* Player 1 character select portrait sprite */
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player[1]) + "/mask.png"))
-	|| (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player[1]) + "/mask.png"))
+	|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(global.skin_for_player[1]) + "/mask.png"))
 	{
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/data/character_config.ini"))
 		{
@@ -18,7 +18,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 		}
 		else
 		{
-			character_folder[what_player] = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
+			character_folder[what_player] = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
 		}
 	
 		if (file_exists(string(character_folder[what_player]) + "/sprites/skin" + string(global.skin_for_player[what_player]) + "/mask.png"))
@@ -44,7 +44,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 }
 
 if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin" + string(global.skin_for_player[2]) + "/mask.png"))
-&& (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin" + string(global.skin_for_player[2]) + "/mask.png"))
+&& (!file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin" + string(global.skin_for_player[2]) + "/mask.png"))
 && (global.skin_for_player[2] > 0)
 {
 	var what_player = 2;
@@ -54,7 +54,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 	
 	#region /* Player 2 character select portrait sprite */
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin" + string(global.skin_for_player[2]) + "/mask.png"))
-	|| (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin" + string(global.skin_for_player[2]) + "/mask.png"))
+	|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sprites/skin" + string(global.skin_for_player[2]) + "/mask.png"))
 	{
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/data/character_config.ini"))
 		{
@@ -62,7 +62,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 		}
 		else
 		{
-			character_folder[what_player] = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
+			character_folder[what_player] = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
 		}
 		
 		if (file_exists(string(character_folder[what_player]) + "/sprites/skin" + string(global.skin_for_player[what_player]) + "/mask.png"))
@@ -88,7 +88,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 }
 
 if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin" + string(global.skin_for_player[3]) + "/mask.png"))
-&& (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin" + string(global.skin_for_player[3]) + "/mask.png"))
+&& (!file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin" + string(global.skin_for_player[3]) + "/mask.png"))
 && (global.skin_for_player[3] > 0)
 {
 	var what_player = 3;
@@ -98,7 +98,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 	
 	#region /* Player 3 character select portrait sprite */
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin" + string(global.skin_for_player[3]) + "/mask.png"))
-	|| (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin" + string(global.skin_for_player[3]) + "/mask.png"))
+	|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sprites/skin" + string(global.skin_for_player[3]) + "/mask.png"))
 	{
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/data/character_config.ini"))
 		{
@@ -106,7 +106,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 		}
 		else
 		{
-			character_folder[what_player] = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
+			character_folder[what_player] = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
 		}
 		
 		if (file_exists(string(character_folder[what_player]) + "/sprites/skin" + string(global.skin_for_player[what_player]) + "/mask.png"))
@@ -132,7 +132,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 }
 
 if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin" + string(global.skin_for_player[4]) + "/mask.png"))
-&& (!file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin" + string(global.skin_for_player[4]) + "/mask.png"))
+&& (!file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin" + string(global.skin_for_player[4]) + "/mask.png"))
 && (global.skin_for_player[4] > 0)
 {
 	var what_player = 4;
@@ -142,7 +142,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 	
 	#region /* Player 4 character select portrait sprite */
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin" + string(global.skin_for_player[4]) + "/mask.png"))
-	|| (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin" + string(global.skin_for_player[4]) + "/mask.png"))
+	|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sprites/skin" + string(global.skin_for_player[4]) + "/mask.png"))
 	{
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])) + "/data/character_config.ini"))
 		{
@@ -150,7 +150,7 @@ if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_cha
 		}
 		else
 		{
-			character_folder[what_player] = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
+			character_folder[what_player] = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
 		}
 		
 		if (file_exists(string(character_folder[what_player]) + "/sprites/skin" + string(global.skin_for_player[what_player]) + "/mask.png"))
@@ -192,7 +192,7 @@ for (var i = 0; i < player_count; i++)
 	voicepack_variable = voicepack_array[i];
 	
 	var file_path = "characters/" + string(ds_list_find_value(global.all_loaded_characters, character_index)) + "/sound/voicepack" + string(voicepack_variable) + "/jump.ogg";
-	var custom_file_path = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, character_index)) + "/sound/voicepack" + string(voicepack_variable) + "/jump.ogg";
+	var custom_file_path = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, character_index)) + "/sound/voicepack" + string(voicepack_variable) + "/jump.ogg";
 	
 	if (!file_exists(file_path) && !file_exists(custom_file_path) && voicepack_variable > 0)
 	{

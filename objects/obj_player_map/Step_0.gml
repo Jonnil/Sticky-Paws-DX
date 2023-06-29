@@ -23,7 +23,7 @@ if (global.quit_level)
 	#region /* Save Player Position */
 	if (speed == 0)
 	{
-		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -749,7 +749,7 @@ if (can_enter_level_automatically)
 		#region /* Save Player Position */
 		x = instance_nearest(x, y, obj_level).x;
 		y = instance_nearest(x, y, obj_level).y;
-		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		
 		ini_write_real("Player", "player_x", x);
 		ini_write_real("Player", "player_y", y);
@@ -823,7 +823,7 @@ if (key_b_pressed)
 	#region /* Save Player Position */
 	x = instance_nearest(x, y, obj_level).x;
 	y = instance_nearest(x, y, obj_level).y;
-	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	ini_write_real("Player", "player_x", x);
 	ini_write_real("Player", "player_y", y);
 	ini_write_real("Player", "brand_new_file", false);
@@ -837,7 +837,7 @@ if (key_b_pressed)
 		uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 		var level_name = string(uppercase_level_name);
 		
-		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}

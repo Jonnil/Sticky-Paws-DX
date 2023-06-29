@@ -400,7 +400,7 @@ if (global.enable_ranks)
 	&& (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 	
 	|| (global.character_select_in_this_menu == "level_editor")
-	&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+	&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 	{
 		if (global.character_select_in_this_menu == "main_game")
 		{
@@ -409,7 +409,7 @@ if (global.enable_ranks)
 		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		}
 		
 		if (ini_key_exists("rank", "rank_level_score"))
@@ -553,7 +553,7 @@ if (global.play_edited_level) /* When playtesting the level */
 			#region /* Save Level Information when in level editor */
 			if (global.level_name != "")
 			{
-				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
 				ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

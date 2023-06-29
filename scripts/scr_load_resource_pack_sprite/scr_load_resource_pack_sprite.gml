@@ -9,7 +9,7 @@ function scr_load_resource_pack_sprite()
 	}
 	else
 	{
-		resource_pack_folder = working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack));
+		resource_pack_folder = working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack));
 	}
 	
 	#region /* Delete sprites before loading new sprites */
@@ -72,16 +72,16 @@ function scr_load_resource_pack_sprite()
 	#endregion /* Delete sprites before loading new sprites END */
 	
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
-	|| (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
+	|| (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 	{
 		if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 		{
 			ini_open("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
 		}
 		else
-		if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
+		if (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 		{
-			ini_open(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
+			ini_open(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
 		}
 		global.resource_pack_sprite_logo_discord = scr_initialize_resource_pack_sprite("logo_discord", global.resource_pack_sprite_logo_discord);
 		global.resource_pack_sprite_logo_gamebanana = scr_initialize_resource_pack_sprite("logo_gamebanana", global.resource_pack_sprite_logo_gamebanana);

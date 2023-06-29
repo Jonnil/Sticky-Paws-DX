@@ -26,7 +26,7 @@ function scr_update_all_backgrounds()
 		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			var path = working_directory + "/custom_levels/" + string(global.level_name) + "/backgrounds/";
+			var path = working_directory + "custom_levels/" + string(global.level_name) + "/backgrounds/";
 		}
 		
 		#region /* Update Background1 */
@@ -248,9 +248,9 @@ function scr_update_all_backgrounds()
 		}
 		else
 		if (global.character_select_in_this_menu == "level_editor")
-		&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png"))
+		&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png"))
 		{
-			global.custom_tileset = sprite_add(working_directory + "/custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
+			global.custom_tileset = sprite_add(working_directory + "custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png", 0, false, false, 0, 0);
 		}
 		else
 		{

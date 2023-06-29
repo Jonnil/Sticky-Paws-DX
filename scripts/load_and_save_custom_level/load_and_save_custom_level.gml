@@ -1,7 +1,6 @@
 /* THIS IS LOADING JSON FILE */
 function scr_load_object_placement_json()
 {
-	
 	if (global.character_select_in_this_menu == "main_game" || global.create_level_from_template)
 		load_main_game_level = true;
 	else
@@ -12,7 +11,7 @@ function scr_load_object_placement_json()
 			var directories = ["backgrounds", "data", "sound", "tilesets"];
 			for (var i = 0; i < array_length_1d(directories); i++)
 			{
-				var dir_path = working_directory + "/custom_levels/" + string(global.level_name) + "/" + directories[i];
+				var dir_path = working_directory + "custom_levels/" + string(global.level_name) + "/" + directories[i];
 				if (!directory_exists(dir_path))
 					directory_create(dir_path);
 			}
@@ -23,7 +22,7 @@ function scr_load_object_placement_json()
 	if (load_main_game_level)
 		file_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.json";
 	else if (global.level_name != "")
-		file_path = working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.json";
+		file_path = working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json";
 	
 	if (file_exists(file_path))
 	{
@@ -77,7 +76,7 @@ function scr_load_object_placement_json()
 		
 		#region /* Save unlockable objects, only if the file exists */
 		/* Open the INI file */
-		unlocked = ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		unlocked = ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		
 		/* Iterate over the ds_list and write each element to the INI file */
 		for (var i = 0; i < ds_list_size(placed_objects_list); i++) {
@@ -119,7 +118,7 @@ function scr_load_object_placement_txt()
 			var directories = ["backgrounds", "data", "sound", "tilesets"];
 			for (var i = 0; i < array_length_1d(directories); i++)
 			{
-				var dir_path = working_directory + "/custom_levels/" + string(global.level_name) + "/" + directories[i];
+				var dir_path = working_directory + "custom_levels/" + string(global.level_name) + "/" + directories[i];
 				if (!directory_exists(dir_path))
 					directory_create(dir_path);
 			}
@@ -130,7 +129,7 @@ function scr_load_object_placement_txt()
 	if (load_main_game_level)
 		file_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.txt";
 	else if (global.level_name != "")
-		file_path = working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt";
+		file_path = working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt";
 	
 	var file = file_exists(file_path) ? file_text_open_read(file_path) : -1;
 	
@@ -195,7 +194,7 @@ function scr_load_object_placement_txt()
 		
 		#region /* Save unlockable objects, only if the file exists */
 		/* Open the INI file */
-		unlocked = ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		unlocked = ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		
 		/* Iterate over the ds_list and write each element to the INI file */
 		for (var i = 0; i < ds_list_size(placed_objects_list); i++) {
@@ -256,12 +255,12 @@ function scr_save_custom_level_json()
 	{
 		
 		/* Create directory for saving custom levels */
-		if (global.level_name != "" && !file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini")) directory_create(working_directory + "/custom_levels/" + string(global.level_name));
+		if (global.level_name != "" && !file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini")) directory_create(working_directory + "custom_levels/" + string(global.level_name));
 		
 		#region /* Save object placement */
 		if (global.level_name != "")
 		{
-			var file = file_text_open_write(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.json"); /* Open file for writing */
+			var file = file_text_open_write(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json"); /* Open file for writing */
 		}
 		
 		var data = [];
@@ -346,13 +345,13 @@ function scr_save_custom_level_txt()
 	{
 		
 		/* Create directory for saving custom levels */
-		if (global.level_name != "" && !file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini")) directory_create(working_directory + "/custom_levels/" + string(global.level_name));
+		if (global.level_name != "" && !file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini")) directory_create(working_directory + "custom_levels/" + string(global.level_name));
 		
 		#region /* Save object placement */
 		var file, str;
 		if (global.level_name != "")
 		{
-			file = file_text_open_write(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt"); /* Open file for writing */
+			file = file_text_open_write(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt"); /* Open file for writing */
 		}
 		str = ""; /* Reset string var */
 		global.max_length_iterations = room_width div 32;
@@ -429,7 +428,7 @@ function scr_save_level_information()
 	#region /* Save Level Information */
 	if (global.level_name != "")
 	{
-		ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		if (!ini_key_exists("info", "first_created_on_version"))
 		{
 			ini_write_string("info", "first_created_on_version", "v" + string(scr_get_build_date()));
@@ -533,7 +532,7 @@ function scr_save_level_information()
 		ini_close();
 		
 		/* Update custom level save data */
-		ini_open(working_directory + "/save_files/custom_level_save.ini");
+		ini_open(working_directory + "save_files/custom_level_save.ini");
 		ini_key_delete(global.level_name, "checkpoint_x");
 		ini_key_delete(global.level_name, "checkpoint_y");
 		ini_key_delete(global.level_name, "checkpoint_millisecond");
@@ -545,7 +544,7 @@ function scr_save_level_information()
 		
 		#region /* Unlocked objects should be set as not recently unlocked anymore */
 		/* Open the INI file */
-		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		
 		/* Iterate over the ds_list and write each element to the INI file */
 		for (var i = 0; i < ds_list_size(placed_objects_list); i++) {

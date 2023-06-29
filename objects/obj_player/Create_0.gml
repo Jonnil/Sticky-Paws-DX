@@ -553,10 +553,10 @@ if (asset_get_type("room_title") == asset_room)
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg"))
+	if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
-		level_clear_melody = audio_create_stream(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
+		level_clear_melody = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
 	}
 	else
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
@@ -564,9 +564,9 @@ if (asset_get_type("room_title") == asset_room)
 		level_clear_melody = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
 	}
 	else
-	if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
+	if (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
 	{
-		level_clear_melody = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
+		level_clear_melody = audio_create_stream(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
 	}
 	else
 	{
@@ -586,10 +586,10 @@ if (asset_get_type("room_title") == asset_room)
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/lose_melody.ogg"))
+	if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/lose_melody.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
-		player_lose_melody = audio_create_stream(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
+		player_lose_melody = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
 	}
 	else
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg"))
@@ -597,9 +597,9 @@ if (asset_get_type("room_title") == asset_room)
 		player_lose_melody = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg");
 	}
 	else
-	if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg"))
+	if (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg"))
 	{
-		player_lose_melody = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg");
+		player_lose_melody = audio_create_stream(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg");
 	}
 	else
 	{
@@ -612,9 +612,9 @@ if (asset_get_type("room_title") == asset_room)
 		music_invincible = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg");
 	}
 	else
-	if (file_exists(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg"))
+	if (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg"))
 	{
-		music_invincible = audio_create_stream(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg");
+		music_invincible = audio_create_stream(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_invincible.ogg");
 	}
 	else
 	{
@@ -751,7 +751,7 @@ if (asset_get_type("room_leveleditor") == asset_room)
 	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 	var level_name = string(uppercase_level_name);
 	
-	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
@@ -766,7 +766,7 @@ if (asset_get_type("room_leveleditor") == asset_room)
 	uppercase_level_name += string_copy(string(global.level_name), 2, string_length(string(global.level_name)) - 1);
 	var level_name = string(uppercase_level_name);
 	
-	ini_open(working_directory + "/save_files/custom_level_save.ini");
+	ini_open(working_directory + "save_files/custom_level_save.ini");
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }

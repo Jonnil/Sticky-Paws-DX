@@ -188,9 +188,9 @@ function scr_character_manage_menu_draw()
 				
 				#region /* Draw who made the character */
 				draw_set_halign(fa_right);
-				if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+				if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
 				{
-					ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
+					ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 					if (ini_key_exists("info", "username"))
 					and (ini_read_string("info", "username", "") != "")
 					{
@@ -296,7 +296,7 @@ function scr_character_manage_menu_draw()
 		#endregion /* Upload Character No END */
 	
 		#region /* Upload Character Yes */
-		if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+		if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
 		{
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 370, upload_character_yes_y - 42, display_get_gui_width() * 0.5 + 370, upload_character_yes_y + 42))
 			&& (global.controls_used_for_menu_navigation == "mouse")
@@ -374,7 +374,7 @@ function scr_character_manage_menu_draw()
 				{
 					if (os_is_network_connected())
 					{
-						if (file_exists(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
 						{
 							/* Essential files does exist, so upload now */
 							menu = "uploading_character"; /* Go to uploading character loading screen */
@@ -546,7 +546,7 @@ function scr_character_manage_menu_draw()
 			character_id_8 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
 			character_id_9 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
 			character_id = string(character_id_1) + string(character_id_2) + string(character_id_3) + string(character_id_4) + string(character_id_5) + string(character_id_6) + string(character_id_7) + string(character_id_8) + string(character_id_9);
-			ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
+			ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 			ini_write_string("info", "character_id", string(character_id)); /* Save the character ID in the character_config.ini file, so that it can be referenced later */
 			ini_write_string("info", "username", string(global.username)); /* Save the username in the level character_config.ini file, so that it can be referenced later */
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

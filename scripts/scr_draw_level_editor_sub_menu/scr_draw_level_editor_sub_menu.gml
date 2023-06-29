@@ -394,9 +394,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				global.doing_clear_check = false;
 				global.actually_play_edited_level = false;
 				
-				if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				{
-					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					keyboard_string = ini_read_string("info", "level_description", "");
 					global.level_description = ini_read_string("info", "level_description", "");
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -484,11 +484,11 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		{
 			if (menu == "level_editor_delete_yes")
 			{
-				if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				{
-					directory_destroy(working_directory + "/custom_levels/" + string(global.level_name));
+					directory_destroy(working_directory + "custom_levels/" + string(global.level_name));
 				}
-				ini_open(working_directory + "/save_files/custom_level_save.ini");
+				ini_open(working_directory + "save_files/custom_level_save.ini");
 				ini_section_delete(string(global.level_name));
 				ini_close();
 				global.select_level_index --; /* Decrease the "select level index" so that the cursor isn't selecting a level that no longer exists */

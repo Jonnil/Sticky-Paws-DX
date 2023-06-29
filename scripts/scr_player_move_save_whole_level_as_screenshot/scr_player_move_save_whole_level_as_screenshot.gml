@@ -36,12 +36,12 @@ function scr_player_move_save_whole_level_as_screenshot()
 		|| (global.character_select_in_this_menu == "level_editor")
 		&& (global.create_level_from_template >= 2)
 		{
-			sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(global.level_name) + "/full_level_map.png");
+			sprite_save(custom_level_map_sprite, 0, working_directory + "custom_levels/" + string(global.level_name) + "/full_level_map.png");
 		}
 		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			sprite_save(custom_level_map_sprite, 0, working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
+			sprite_save(custom_level_map_sprite, 0, working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map.png");
 		}
 		scr_delete_sprite_properly(custom_level_map_sprite);
 	}

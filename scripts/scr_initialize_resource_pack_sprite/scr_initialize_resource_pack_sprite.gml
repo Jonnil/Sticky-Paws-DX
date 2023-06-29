@@ -67,7 +67,7 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = noon
 		}
 		else
 		{
-			ini_open(working_directory + "/custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
+			ini_open(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
 			var can_save_to_config = true; /* You can save values to local appdata */
 		}
 		

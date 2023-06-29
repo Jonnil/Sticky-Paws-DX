@@ -18,9 +18,9 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 			var saved_file_exists = true;
 		}
 		else
-		if (file_exists(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png"))
+		if (file_exists(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png"))
 		{
-			sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, what_player, what_selected_skin);
+			sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, what_player, what_selected_skin);
 			var saved_file_exists = true;
 		}
 		else
@@ -30,9 +30,9 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 			var saved_file_exists = true;
 		}
 		else
-		if (file_exists(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png"))
+		if (file_exists(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png"))
 		{
-			sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, what_player, what_selected_skin);
+			sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, what_player, what_selected_skin);
 			var saved_file_exists = true;
 		}
 		index ++;
@@ -43,9 +43,9 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		var saved_file_exists = true;
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + ".png"))
+	if (file_exists(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + ".png"))
 	{
-		sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + ".png", 1, false, false, what_player, what_selected_skin);
+		sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + ".png", 1, false, false, what_player, what_selected_skin);
 		var saved_file_exists = true;
 	}
 	else
@@ -55,9 +55,9 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		var saved_file_exists = true;
 	}
 	else
-	if (file_exists(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + ".png"))
+	if (file_exists(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + ".png"))
 	{
-		sprite_variable = sprite_add(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, what_player, what_selected_skin);
+		sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, what_player, what_selected_skin);
 		var saved_file_exists = true;
 	}
 	#endregion /* Add sprite END */
@@ -72,7 +72,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		}
 		else
 		{
-			ini_open(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini");
+			ini_open(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini");
 			can_save_to_character_config = true; /* You can save values to local appdata */
 		}
 		
@@ -127,9 +127,9 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 	
 	#region /* If the sprite doesn't exist, but there are still origin points saved for that sprite, then delete those origin points from sprite_origin_point.ini, but save the unused origin points in unused_sprite_origin_point.ini */
 	if (saved_file_exists == false)
-	&& (file_exists(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini"))
+	&& (file_exists(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini"))
 	{
-		ini_open(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini");
+		ini_open(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini");
 		
 		#region /* Delete x and y origin points if the sprite doesn't even exist */
 		if (ini_key_exists("sprite origin points", "sprite_" + string(sprite_name) + "_xorig"))
@@ -144,7 +144,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 		}
 		#endregion /* Delete x and y origin points if the sprite doesn't even exist END */
 		
-		ini_open(working_directory + "/custom_characters/" + string(where_to_look_for_sprite) + "/data/unused_sprite_origin_point.ini");
+		ini_open(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/data/unused_sprite_origin_point.ini");
 		
 		#region /* Save unused x and y origin points just in case it's still useful for something */
 		if (unused_x_origin_point > noone)

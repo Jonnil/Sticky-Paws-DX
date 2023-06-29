@@ -81,7 +81,7 @@ if (cutscene == 1) /* When placed in level, use this cutscene value */
 {
 	if (global.character_select_in_this_menu == "main_game")
 	{
-		ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		if (ini_read_real("Player", "beat_last_level", false))
 		{
 			instance_destroy();

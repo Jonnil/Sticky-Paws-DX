@@ -12,9 +12,9 @@ function scr_load_object_placement_old()
 			#region /* Object Placement */
 			var file, str, str_pos, str_temp, val, num;
 			if (global.level_name != "")
-			&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt"))
+			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement.txt"))
 			{
-				file = file_text_open_read(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_placement.txt");
+				file = file_text_open_read(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement.txt");
 			}
 			else
 			{
@@ -69,9 +69,9 @@ function scr_load_object_placement_old()
 			#region /* Object With Rotation Placement */
 			var file, str, str_pos, str_temp, val, num;
 			if (global.level_name != "")
-			&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt"))
+			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt"))
 			{
-				file = file_text_open_read(working_directory + "/custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt");
+				file = file_text_open_read(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_rotation_placement.txt");
 			}
 			else
 			{

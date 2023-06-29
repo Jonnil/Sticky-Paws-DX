@@ -11,9 +11,9 @@ if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_lev
 }
 else
 /* OGG small letter File */
-if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/music.ogg"))
+if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/music.ogg"))
 {
-	global.music = audio_create_stream(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/music.ogg");
+	global.music = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/music.ogg");
 }
 else
 {
@@ -30,9 +30,9 @@ if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_lev
 }
 else
 /* OGG small letter File */
-if (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/music_underwater.ogg"))
+if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/music_underwater.ogg"))
 {
-	global.music_underwater = audio_create_stream(working_directory + "/custom_levels/" + string(global.level_name) + "/sound/music_underwater.ogg");
+	global.music_underwater = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/music_underwater.ogg");
 }
 else
 {

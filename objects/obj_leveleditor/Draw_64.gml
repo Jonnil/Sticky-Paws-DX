@@ -64,7 +64,7 @@ if (global.actually_play_edited_level == false)
 				/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
 				if (global.level_name != "")
 				{
-					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				}
 				if (ini_key_exists("info", "first_created_on_version"))
 				{
@@ -85,7 +85,7 @@ if (global.actually_play_edited_level == false)
 				#endregion /* Show what version of the game the level was first created in END */
 			
 				#region /* Draw if level have been Clear Checked on top of screen */
-				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				
 				var clear_check = ini_read_string("info", "clear_check", false);
 				

@@ -381,7 +381,7 @@ if (global.actually_play_edited_level == false)
 		global.checkpoint_minute = 0;
 		global.checkpoint_realmillisecond = 0;
 		
-		ini_open(working_directory + "/save_files/custom_level_save.ini");
+		ini_open(working_directory + "save_files/custom_level_save.ini");
 		ini_write_real(string(global.level_name), "checkpoint_x", 0);
 		ini_write_real(string(global.level_name), "checkpoint_y", 0);
 		ini_write_real(string(global.level_name), "checkpoint_millisecond", 0);
@@ -1351,7 +1351,7 @@ if (global.actually_play_edited_level == false)
 			
 			#endregion /* Limit so view and cursor can't go outside room END */
 			
-			ini_open(working_directory + "/save_files/custom_level_save.ini");
+			ini_open(working_directory + "save_files/custom_level_save.ini");
 			ini_write_real(string(global.level_name), "checkpoint_x", 0);
 			ini_write_real(string(global.level_name), "checkpoint_y", 0);
 			ini_write_real(string(global.level_name), "checkpoint_millisecond", 0);

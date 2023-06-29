@@ -74,25 +74,25 @@ if (instance_exists(obj_player))
 				#region /* Save heart balloon to be true */
 				if (player == 1)
 				{
-					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player1_have_heart_balloon", true);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				if (player == 2)
 				{
-					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player2_have_heart_balloon", true);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				if (player == 3)
 				{
-					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player3_have_heart_balloon", true);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				if (player == 4)
 				{
-					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 					ini_write_real("Player", "player4_have_heart_balloon", true);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}

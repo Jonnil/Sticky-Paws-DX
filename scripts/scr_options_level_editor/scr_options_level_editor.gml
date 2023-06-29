@@ -83,9 +83,9 @@ function scr_options_level_editor()
 				
 				#region /* Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
-				&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				{
-					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					ini_write_real("info", "default_view_height", global.default_view_height);
 					ini_write_real("info", "default_view_width", global.default_view_width);
 					ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
@@ -99,9 +99,9 @@ function scr_options_level_editor()
 				
 				#region /* Save config.ini */
 				if (global.character_select_in_this_menu == "level_editor")
-				&& (file_exists(working_directory + "/config.ini"))
+				&& (file_exists(working_directory + "config.ini"))
 				{
-					ini_open(working_directory + "/config.ini");
+					ini_open(working_directory + "config.ini");
 					ini_write_real("config", "show_new_items_notification_level_editor", global.show_new_items_notification);
 					ini_write_real("config", "selected_level_editing_music", global.selected_level_editing_music);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -729,9 +729,9 @@ function scr_options_level_editor()
 				
 				#region /* Background Offset Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
-				&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				{
-					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					ini_write_real("Custom Backgrounds", "custom_background_1_x_offset", custom_background_1_x_offset);
 					ini_write_real("Custom Backgrounds", "custom_background_1_y_offset", custom_background_1_y_offset);
 					ini_write_real("Custom Backgrounds", "custom_background_2_x_offset", custom_background_2_x_offset);
@@ -1153,9 +1153,9 @@ function scr_options_level_editor()
 				
 				#region /* Background Parallax Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
-				&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				{
-					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					ini_write_real("Custom Backgrounds", "custom_background_1_x_parallax", custom_background_1_x_parallax);
 					ini_write_real("Custom Backgrounds", "custom_background_1_y_parallax", custom_background_1_y_parallax);
 					ini_write_real("Custom Backgrounds", "custom_background_2_x_parallax", custom_background_2_x_parallax);
@@ -1562,9 +1562,9 @@ function scr_options_level_editor()
 			
 			#region /* Background Scale Save level_information.ini */
 			if (global.character_select_in_this_menu == "level_editor")
-			&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 			{
-				ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 				ini_write_real("Custom Backgrounds", "custom_background_1_x_scale", custom_background_1_x_scale);
 				ini_write_real("Custom Backgrounds", "custom_background_1_y_scale", custom_background_1_y_scale);
 				ini_write_real("Custom Backgrounds", "custom_background_2_x_scale", custom_background_2_x_scale);
@@ -1633,9 +1633,9 @@ function scr_options_level_editor()
 				
 				#region /* Background Tiled Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
-				&& (file_exists(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 				{
-					ini_open(working_directory + "/custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					ini_write_real("Custom Backgrounds", "custom_background_1_htiled", custom_background_1_htiled);
 					ini_write_real("Custom Backgrounds", "custom_background_1_vtiled", custom_background_1_vtiled);
 					ini_write_real("Custom Backgrounds", "custom_background_2_htiled", custom_background_2_htiled);

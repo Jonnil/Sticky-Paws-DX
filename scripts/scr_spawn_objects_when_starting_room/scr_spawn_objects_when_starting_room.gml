@@ -1,6 +1,5 @@
 function scr_spawn_objects_when_starting_room()
 {
-	
 	#region /* Spawn objects when starting room */
 	if (global.world_editor == false)
 	{
@@ -380,7 +379,7 @@ function scr_spawn_objects_when_starting_room()
 					uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
 					uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
 					var level_name = string(uppercase_level_name);
-					ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 					if (global.character_select_in_this_menu == "main_game")
 					&& (ini_read_string(level_name, "clear_rate", "closed") != "clear")
 					|| (global.character_select_in_this_menu == "level_editor")
@@ -444,8 +443,7 @@ function scr_spawn_objects_when_starting_room()
 		        break;
 		}
 	}
-	instance_destroy(); /* Last thing to do is delete itself */
-	
 	#endregion /* Spawn objects when starting room END */
 	
+	instance_destroy(); /* Last thing to do is delete itself */
 }

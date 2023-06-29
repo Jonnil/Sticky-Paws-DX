@@ -7,7 +7,7 @@ if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_char
 }
 else
 {
-	character_folder = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]));
+	character_folder = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]));
 	can_save_to_character_config = true; /* You can save values to local appdata */
 }
 

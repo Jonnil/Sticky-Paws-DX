@@ -172,9 +172,9 @@ if (menu == "load_custom_level")
 			
 			#region /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch */
 			/* Check this before going to create level from scratch */
-			if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+			if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 			{
-				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 				if (ini_section_exists("Unlock Placable Objects"))
 				{
 					can_create_level_from_scratch = true;
@@ -194,7 +194,7 @@ if (menu == "load_custom_level")
 			#region /* Get clear check and level ID information */
 			for(i = 1; i < ds_list_size(global.thumbnail_sprite); i += 1)
 			{
-				ini_open(working_directory + "/custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, i)) + "/data/level_information.ini");
+				ini_open(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, i)) + "/data/level_information.ini");
 				thumbnail_clear_check[i] = ini_read_string("info", "clear_check", false);
 				thumbnail_level_id[i] = string(ini_read_string("info", "level_id", ""));
 				thumbnail_level_description[i] = string(ini_read_string("info", "level_description", ""));
@@ -223,40 +223,40 @@ if (menu == "load_custom_level")
 		}
 		else
 		{
-			if (file_exists(working_directory + "/custom_levels/" + file_found + "/data/level_information.ini"))
+			if (file_exists(working_directory + "custom_levels/" + file_found + "/data/level_information.ini"))
 			{
 				ds_list_add(global.all_loaded_custom_levels, file_found)
 				
 				#region /* Update Thumbnail */
-				/* BMP Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.bmp"))
+				/* BMP Custom Thumbnail */if (file_exists(working_directory + "custom_levels/" + file_found + "/Thumbnail.bmp"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.bmp", 0, false, false, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/Thumbnail.bmp", 0, false, false, 0, 0));
 				}
 				else
-				/* PNG Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.png"))
+				/* PNG Custom Thumbnail */if (file_exists(working_directory + "custom_levels/" + file_found + "/Thumbnail.png"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.png", 0, false, false, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/Thumbnail.png", 0, false, false, 0, 0));
 				}
 				else
-				/* GIF Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.gif"))
+				/* GIF Custom Thumbnail */if (file_exists(working_directory + "custom_levels/" + file_found + "/Thumbnail.gif"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.gif", 0, false, false, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/Thumbnail.gif", 0, false, false, 0, 0));
 				}
 				else
-				/* JPG Custom Thumbnail */if (file_exists(working_directory + "/custom_levels/" + file_found + "/Thumbnail.jpg"))
+				/* JPG Custom Thumbnail */if (file_exists(working_directory + "custom_levels/" + file_found + "/Thumbnail.jpg"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Thumbnail.jpg", 0, false, false, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/Thumbnail.jpg", 0, false, false, 0, 0));
 				}
 				else
 				/* PNG Automatic Thumbnail */
-				if (file_exists(working_directory + "/custom_levels/" + file_found + "/automatic_thumbnail.png"))
+				if (file_exists(working_directory + "custom_levels/" + file_found + "/automatic_thumbnail.png"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/automatic_thumbnail.png", 0, false, false, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/automatic_thumbnail.png", 0, false, false, 0, 0));
 				}
 				else
-				if (file_exists(working_directory + "/custom_levels/" + file_found + "/Automatic Thumbnail.png"))
+				if (file_exists(working_directory + "custom_levels/" + file_found + "/Automatic Thumbnail.png"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "/custom_levels/" + file_found + "/Automatic Thumbnail.png", 0, false, false, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/Automatic Thumbnail.png", 0, false, false, 0, 0));
 				}
 				else
 				{

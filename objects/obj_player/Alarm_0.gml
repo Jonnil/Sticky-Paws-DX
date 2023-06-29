@@ -6,7 +6,7 @@ if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_char
 }
 else
 {
-	character_folder = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]));
+	character_folder = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]));
 }
 
 if (file_exists(string(character_folder) + "/sprites/skin" + string(selected_skin) + "/mask.png"))
@@ -208,7 +208,7 @@ if (can_initialize_custom_character)
 	{
 		var character_name = string(global.all_loaded_characters[| global.character_index[player - 1]]);
 		var sound_dir = "sound/voicepack" + string(selected_voice_pack);
-		var custom_sound_dir = working_directory + "/custom_characters/" + character_name + "/" + sound_dir;
+		var custom_sound_dir = working_directory + "custom_characters/" + character_name + "/" + sound_dir;
 		
 		var voice = noone;
 		for (var i = 0, len = array_length(sound_names); i < len && voice == noone; i++)
@@ -457,7 +457,7 @@ if (can_initialize_custom_character)
 var character = ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]);
 var character_path = file_exists("characters/" + string(character) + "/data/character_config.ini") ?
 "characters/" + string(character) + "/data/character_config.ini" :
-working_directory + "/custom_characters/" + string(character) + "/data/character_config.ini";
+working_directory + "custom_characters/" + string(character) + "/data/character_config.ini";
 ini_open(character_path);
 
 /* Acceleration on ground */
@@ -517,9 +517,9 @@ ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 
 #region /* Have Heart Balloon */
 /* Check if the save file exists and read the value for the corresponding player */
-if (global.character_select_in_this_menu == "main_game" && file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+if (global.character_select_in_this_menu == "main_game" && file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 {
-	ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	
 	switch (player)
 	{

@@ -10,7 +10,7 @@ function scr_initialize_custom_character_abilities(what_player, ability_string, 
 	}
 	else
 	{
-		ini_open(working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player])) + "/data/character_config.ini");
+		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player])) + "/data/character_config.ini");
 		var can_save_to_character_config = true; /* You can save values to local appdata */
 	}
 	

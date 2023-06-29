@@ -2706,9 +2706,9 @@ function scr_options_menu()
 			}
 			
 			#region /* Display save file data */
-			if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+			if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 			{
-				ini_open(working_directory + "/save_files/file" + string(global.file) + ".ini");
+				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 				
 				if (ini_key_exists("Player", "current_month"))
 				&& (ini_key_exists("Player", "current_day"))
@@ -2748,7 +2748,7 @@ function scr_options_menu()
 			if (menu != "file_delete_yes")
 			&& (menu != "file_delete_no")
 			{
-				if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+				if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 				{
 					draw_menu_button(450, delete_file_y, l10n_text("Delete File"), "file_delete", "file_delete_no");
 					draw_sprite_ext(spr_icons_delete, 0, 450 + 16, delete_file_y + 21, 1, 1, 0, c_white, 1);
@@ -2878,7 +2878,7 @@ function scr_options_menu()
 			{
 				can_navigate_settings_sidebar = false;
 				menu = "file_select";
-				file_delete(working_directory + "/save_files/file" + string(global.file) + ".ini");
+				file_delete(working_directory + "save_files/file" + string(global.file) + ".ini");
 				menu_delay = 10;
 			}
 		
@@ -2908,7 +2908,7 @@ function scr_options_menu()
 				else
 				if (menu == "open_save_file_folder")
 				{
-					if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+					if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 					{
 						menu = "file_delete";
 					}
@@ -2928,7 +2928,7 @@ function scr_options_menu()
 				menu_joystick_delay = 10;
 				if (menu == "file_select")
 				{
-					if (file_exists(working_directory + "/save_files/file" + string(global.file) + ".ini"))
+					if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 					{
 						menu = "file_delete";
 					}

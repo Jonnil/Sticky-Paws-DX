@@ -19,7 +19,7 @@ function scr_player_move_lose()
 		&& (global.actually_play_edited_level)
 		&& (global.character_select_in_this_menu == "level_editor")
 		{
-			ini_open(working_directory + "/save_files/custom_level_save.ini");
+			ini_open(working_directory + "save_files/custom_level_save.ini");
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_millisecond", global.timeattack_millisecond);
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_second", global.timeattack_second);
 			ini_write_real(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), "checkpoint_minute", global.timeattack_minute);

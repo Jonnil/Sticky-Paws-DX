@@ -8,7 +8,7 @@ if (character_portrait_for_player_update_directory[1])
 	}
 	else
 	{
-		character_folder[what_player] = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
+		character_folder[what_player] = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
 	}
 	
 	if (file_exists(string(character_folder[what_player]) + "/sprites/skin" + string(global.skin_for_player[what_player]) + "/mask.png"))
@@ -86,7 +86,7 @@ if (character_portrait_for_player_update_directory[2])
 	}
 	else
 	{
-		character_folder[what_player] = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
+		character_folder[what_player] = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
 	}
 	
 	if (file_exists(string(character_folder[what_player]) + "/sprites/skin" + string(global.skin_for_player[what_player]) + "/mask.png"))
@@ -164,7 +164,7 @@ if (character_portrait_for_player_update_directory[3])
 	}
 	else
 	{
-		character_folder[what_player] = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
+		character_folder[what_player] = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
 	}
 	
 	if (file_exists(string(character_folder[what_player]) + "/sprites/skin" + string(global.skin_for_player[what_player]) + "/mask.png"))
@@ -242,7 +242,7 @@ if (character_portrait_for_player_update_directory[4])
 	}
 	else
 	{
-		character_folder[what_player] = working_directory + "/custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
+		character_folder[what_player] = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
 	}
 	
 	if (file_exists(string(character_folder[what_player]) + "/sprites/skin" + string(global.skin_for_player[what_player]) + "/mask.png"))
