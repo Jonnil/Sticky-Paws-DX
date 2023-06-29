@@ -69,7 +69,6 @@ if (global.doing_clear_check)
 
 #region /* Load Level */
 scr_load_object_placement_json();
-//scr_load_object_placement_txt();
 #endregion /* Load Level END */
 
 #region /* If actually playing level, set play_edited_level to true and delete itself. Have this code after the "doing clear check = true" */
@@ -523,13 +522,14 @@ if (global.actually_play_edited_level == false)
 	show_tooltip = 0;
 	show_grid = false; /* Grid should be false when you start level editor */
 	grid_alpha = 0;
+	hovering_over_icons = false; /* If your mouse cursor is */
 	zoom_in = false; /* When this is true, zoom in */
 	zoom_reset = false; /* When this is true, reset zoom */
 	zoom_out = false; /* When this is true, zoom out */
 	difficulty_layer = 0; /* 0 = All, 1 = Easy, 2 = Normal, 3 = Hard */
 	level_editor_edit_name = false;
 	set_difficulty_mode = false; /* Toggle so you get a pen that can select what object appear in what difficulty */
-	place_object = noone;
+	place_object = 1;
 	placing_object = 0; /* If you are currently placing any object or not. This check is used for when modifying other objects, it shouldn't happen when currently placing any object */
 	show_icons_at_bottom = false;
 	show_icons_at_top = false;
@@ -538,8 +538,6 @@ if (global.actually_play_edited_level == false)
 	undo_redo_icons_y = +200; /* Undo and redo buttons y postition */
 	current_undo_value = 0; /* Every time you place down items, this value increases. When you undo, this value decreases. */
 	icons_at_top_y = - 100;
-	selected_object = 0;
-	selected_object_menu_x = 0;
 	selected_menu_alpha = 0;
 	total_number_of_objects = 0;
 	drag_object = false;
@@ -684,5 +682,9 @@ if (global.actually_play_edited_level == false)
 	player1_show_controls_timer = 0;
 	player_show_controls_alpha[1] = 0;
 	
+	selected_object = 0;
+	selected_object_menu_x = 0;
+	sprite_index = spr_wall;
+	mask_index = spr_wall;
 }
 #endregion /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level END */

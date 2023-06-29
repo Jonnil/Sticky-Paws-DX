@@ -2665,7 +2665,7 @@ function scr_options_menu()
 		#region /* Language Options */
 		if (global.settings_sidebar_menu == "language_settings")
 		{
-			scr_language_menu();
+			scr_options_language_menu();
 		}
 		#endregion /* Language Options END */
 	

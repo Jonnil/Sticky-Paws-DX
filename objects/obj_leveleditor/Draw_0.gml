@@ -86,6 +86,8 @@ if (global.actually_play_edited_level == false)
 	draw_rectangle_color(1, cam_y - 32, cam_x + cam_width + 32, 0, c_black, c_black, c_black, c_black, false);  /* Top Black Rectangle */
 	draw_set_alpha(1);
 	
+	draw_rectangle_color(0, 0, obj_level_width.x, obj_level_height.y, c_red, c_red, c_red, c_red, true);  /* Border around entire level */
+	
 	if (quit_level_editor <= 0)
 	{
 		draw_set_alpha(selected_menu_alpha);

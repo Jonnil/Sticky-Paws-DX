@@ -1717,11 +1717,7 @@ if (menu == "load_custom_level")
 || (menu == "load_characters")
 || (menu == "load_official_level_template")
 {
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_middle);
-	global.loading_spinning_angle -= 10;
-	draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, 1);
-	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 64, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
+	scr_draw_loading(1);
 	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 64 + 32, string(file_found), global.default_text_size, c_white, c_black, 1);
 }
 #endregion /* Loading Screen END */
@@ -1730,14 +1726,16 @@ if (global.enable_transitions)
 {
 	if (iris_xscale < 15)
 	{
-		if (asset_get_type("spr_iris") == asset_sprite)
-		{
-			draw_sprite_ext(spr_iris, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, iris_xscale, iris_yscale, 0, c_black, 1);
-		}
+		draw_sprite_ext(spr_iris, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, iris_xscale, iris_yscale, 0, c_black, 1);
 		draw_rectangle_color(0, 0, display_get_gui_width()* 2, display_get_gui_height() * 0.5 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(0, 0, display_get_gui_width() * 0.5 - iris_xscale * 128, display_get_gui_height()* 2, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(display_get_gui_width() * 0.5 + iris_xscale * 128 - 1, 0, display_get_gui_width()* 2, display_get_gui_height()* 2, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(0, display_get_gui_height() * 0.5 + iris_yscale * 128, display_get_gui_width()* 2, display_get_gui_height()* 2, c_black, c_black, c_black, c_black, false);
+		if (iris_xscale < 0.5)
+		&& (menu_delay > 999)
+		{
+			scr_draw_loading(1);
+		}
 	}
 }
 #endregion /* Draw Iris Transitions END */

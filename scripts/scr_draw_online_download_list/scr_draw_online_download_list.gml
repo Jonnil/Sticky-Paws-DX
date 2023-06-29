@@ -19,7 +19,7 @@ function scr_draw_online_download_list()
 		ds_map_add(map, "User-Agent", "gmdownloader");
 		
 		/* Send the HTTP GET request to the /level endpoint */
-		global.http_request_id = http_request("http://" + global.base_url + "/" + string(content_type) + "s", "GET", map, "");
+		global.http_request_id = http_request("https://" + global.base_url + "/" + string(content_type) + "s", "GET", map, "");
 		ds_map_destroy(map);
 		#endregion /* Get Online Download List END */
 		
@@ -233,7 +233,7 @@ function scr_draw_online_download_list()
 				old_currently_selected_id = currently_selected_id;
 				info_data = noone;
 				global.online_download_list_info = "";
-				global.http_request_info = http_request("http://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id), "GET", map, "");
+				global.http_request_info = http_request("https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id), "GET", map, "");
 			}
 			
 			if (info_data == noone)

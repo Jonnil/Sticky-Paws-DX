@@ -2677,7 +2677,7 @@
     {"id":{"name":"obj_arrow","path":"objects/obj_arrow/obj_arrow.yy",},},
     {"id":{"name":"scr_player_move_dive_ground_boost","path":"scripts/scr_player_move_dive_ground_boost/scr_player_move_dive_ground_boost.yy",},},
     {"id":{"name":"room_title","path":"rooms/room_title/room_title.yy",},},
-    {"id":{"name":"scr_language_menu","path":"scripts/scr_language_menu/scr_language_menu.yy",},},
+    {"id":{"name":"scr_options_language_menu","path":"scripts/scr_options_language_menu/scr_options_language_menu.yy",},},
     {"id":{"name":"obj_erase_brush","path":"objects/obj_erase_brush/obj_erase_brush.yy",},},
     {"id":{"name":"spr_virtual_key_down","path":"sprites/spr_virtual_key_down/spr_virtual_key_down.yy",},},
     {"id":{"name":"spr_blaster","path":"sprites/spr_blaster/spr_blaster.yy",},},

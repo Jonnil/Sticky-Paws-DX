@@ -10,6 +10,35 @@ if (global.actually_play_edited_level == false)
 	mouse_get_y = device_mouse_y_to_gui(0);
 	view_center_x = cam_x + cam_width * 0.5;
 	view_center_y = cam_y + cam_height * 0.5;
+	
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
+	|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
+	|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32)) /* Can't place objects when clicking the play button */
+	|| (show_grid)
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up and down buttons when grid is on */
+	|| (global.enable_difficulty_selection_settings)
+	&& (global.enable_difficutly_layers_in_level_editor)
+	&& (set_difficulty_mode)
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
+	|| (global.enable_difficulty_selection_settings)
+	&& (global.enable_difficutly_layers_in_level_editor)
+	&& (set_difficulty_mode == false)
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
+	{
+		if (global.controls_used_for_menu_navigation == "mouse")
+		{
+			hovering_over_icons = true;
+		}
+		else
+		{
+			hovering_over_icons = false;
+		}
+	}
+	else
+	{
+		hovering_over_icons = false;
+	}
+	
 	if (display_get_gui_width() > 0)
 	&& (display_get_gui_height() > 0)
 	{
@@ -599,101 +628,82 @@ if (global.actually_play_edited_level == false)
 			&& (!position_meeting(x, y, obj_level_height))
 			&& (!position_meeting(x, y, obj_level_width))
 			&& (!position_meeting(x, y, obj_water_level_height))
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32)) /* Can't place objects when clicking the play button */
+			&& (!hovering_over_icons)
 			{
-				if (show_grid)
-				&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up && down buttons when grid is on */
-				|| (show_grid == false)
+				if (x > -16) /* Can only place objects within the level */
+				&& (y > -16)
+				&& (obj_level_width.drag_object == false)
+				&& (obj_level_width.drag_release_timer == 0)
+				&& (x < obj_level_width.x + 16)
+				&& (obj_level_height.drag_object == false)
+				&& (obj_level_height.drag_release_timer == 0)
+				&& (y < obj_level_height.y + 16)
 				{
-					if (global.enable_difficulty_selection_settings)
-					&& (global.enable_difficutly_layers_in_level_editor)
-					&& (set_difficulty_mode)
-					&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
-					|| (global.enable_difficulty_selection_settings)
-					&& (global.enable_difficutly_layers_in_level_editor)
-					&& (set_difficulty_mode == false)
-					&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
-					|| (global.enable_difficulty_selection_settings == false)
-					|| (global.enable_difficutly_layers_in_level_editor == false)
+					if (place_object_delay_timer < 2)
+					&& (can_make_place_brush_size_bigger)
 					{
-						if (x > -16) /* Can only place objects within the level */
-						&& (y > -16)
-						&& (obj_level_width.drag_object == false)
-						&& (obj_level_width.drag_release_timer == 0)
-						&& (x < obj_level_width.x + 16)
-						&& (obj_level_height.drag_object == false)
-						&& (obj_level_height.drag_release_timer == 0)
-						&& (y < obj_level_height.y + 16)
-						{
-							if (place_object_delay_timer < 2)
-							&& (can_make_place_brush_size_bigger)
-							{
-								place_object_delay_timer ++;
-							}
-							if (place_object_delay_timer >= 2)
-							|| (can_make_place_brush_size_bigger == false)
-							{
-								drag_object = false;
+						place_object_delay_timer ++;
+					}
+					if (place_object_delay_timer >= 2)
+					|| (can_make_place_brush_size_bigger == false)
+					{
+						drag_object = false;
 								
-								#region /* Brush size 1 */
-								scr_brush_size_place_object(   0,    0, 1, true);
-								#endregion /* Brush size 1 END */
+						#region /* Brush size 1 */
+						scr_brush_size_place_object(   0,    0, 1, true);
+						#endregion /* Brush size 1 END */
 								
-								#region /* Brush size 2 */
-								scr_brush_size_place_object(   0, + 32, 2, false);
-								scr_brush_size_place_object(+ 32,    0, 2, false);
-								scr_brush_size_place_object(+ 32, + 32, 2, false);
-								#endregion /* Brush size 2 END */
+						#region /* Brush size 2 */
+						scr_brush_size_place_object(   0, + 32, 2, false);
+						scr_brush_size_place_object(+ 32,    0, 2, false);
+						scr_brush_size_place_object(+ 32, + 32, 2, false);
+						#endregion /* Brush size 2 END */
 								
-								#region /* Brush size 3 */
-								scr_brush_size_place_object(   0, - 32, 3, false);
-								scr_brush_size_place_object(+ 32, - 32, 3, false);
-								scr_brush_size_place_object(- 32,    0, 3, false);
-								scr_brush_size_place_object(- 32, + 32, 3, false);
-								scr_brush_size_place_object(- 32, - 32, 3, false);
-								#endregion /* Brush size 3 END */
+						#region /* Brush size 3 */
+						scr_brush_size_place_object(   0, - 32, 3, false);
+						scr_brush_size_place_object(+ 32, - 32, 3, false);
+						scr_brush_size_place_object(- 32,    0, 3, false);
+						scr_brush_size_place_object(- 32, + 32, 3, false);
+						scr_brush_size_place_object(- 32, - 32, 3, false);
+						#endregion /* Brush size 3 END */
 								
-								#region /* Brush size 4 */
-								scr_brush_size_place_object(   0, + 64, 4, false);
-								scr_brush_size_place_object(+ 32, + 64, 4, false);
-								scr_brush_size_place_object(+ 64,    0, 4, false);
-								scr_brush_size_place_object(+ 64, + 32, 4, false);
-								scr_brush_size_place_object(+ 64, + 64, 4, false);
-								scr_brush_size_place_object(+ 64, - 32, 4, false);
-								scr_brush_size_place_object(- 32, + 64, 4, false);
-								#endregion /* Brush size 4 END */
+						#region /* Brush size 4 */
+						scr_brush_size_place_object(   0, + 64, 4, false);
+						scr_brush_size_place_object(+ 32, + 64, 4, false);
+						scr_brush_size_place_object(+ 64,    0, 4, false);
+						scr_brush_size_place_object(+ 64, + 32, 4, false);
+						scr_brush_size_place_object(+ 64, + 64, 4, false);
+						scr_brush_size_place_object(+ 64, - 32, 4, false);
+						scr_brush_size_place_object(- 32, + 64, 4, false);
+						#endregion /* Brush size 4 END */
 								
-								#region /* Brush size 5 */
-								scr_brush_size_place_object(   0, - 64, 5, false);
-								scr_brush_size_place_object(+ 32, - 64, 5, false);
-								scr_brush_size_place_object(+ 64, - 64, 5, false);
-								scr_brush_size_place_object(- 32, - 64, 5, false);
-								scr_brush_size_place_object(- 64,    0, 5, false);
-								scr_brush_size_place_object(- 64, + 32, 5, false);
-								scr_brush_size_place_object(- 64, + 64, 5, false);
-								scr_brush_size_place_object(- 64, - 32, 5, false);
-								scr_brush_size_place_object(- 64, - 64, 5, false);
-								#endregion /* Brush size 5 END */
+						#region /* Brush size 5 */
+						scr_brush_size_place_object(   0, - 64, 5, false);
+						scr_brush_size_place_object(+ 32, - 64, 5, false);
+						scr_brush_size_place_object(+ 64, - 64, 5, false);
+						scr_brush_size_place_object(- 32, - 64, 5, false);
+						scr_brush_size_place_object(- 64,    0, 5, false);
+						scr_brush_size_place_object(- 64, + 32, 5, false);
+						scr_brush_size_place_object(- 64, + 64, 5, false);
+						scr_brush_size_place_object(- 64, - 32, 5, false);
+						scr_brush_size_place_object(- 64, - 64, 5, false);
+						#endregion /* Brush size 5 END */
 								
-								#region /* Brush size 6 */
-								scr_brush_size_place_object(   0, + 96, 6, false);
-								scr_brush_size_place_object(+ 32, + 96, 6, false);
-								scr_brush_size_place_object(+ 64, + 96, 6, false);
-								scr_brush_size_place_object(+ 96,    0, 6, false);
-								scr_brush_size_place_object(+ 96, + 32, 6, false);
-								scr_brush_size_place_object(+ 96, + 64, 6, false);
-								scr_brush_size_place_object(+ 96, + 96, 6, false);
-								scr_brush_size_place_object(+ 96, - 32, 6, false);
-								scr_brush_size_place_object(+ 96, - 64, 6, false);
-								scr_brush_size_place_object(- 32, + 96, 6, false);
-								scr_brush_size_place_object(- 64, + 96, 6, false);
-								#endregion /* Brush size 6 END */
+						#region /* Brush size 6 */
+						scr_brush_size_place_object(   0, + 96, 6, false);
+						scr_brush_size_place_object(+ 32, + 96, 6, false);
+						scr_brush_size_place_object(+ 64, + 96, 6, false);
+						scr_brush_size_place_object(+ 96,    0, 6, false);
+						scr_brush_size_place_object(+ 96, + 32, 6, false);
+						scr_brush_size_place_object(+ 96, + 64, 6, false);
+						scr_brush_size_place_object(+ 96, + 96, 6, false);
+						scr_brush_size_place_object(+ 96, - 32, 6, false);
+						scr_brush_size_place_object(+ 96, - 64, 6, false);
+						scr_brush_size_place_object(- 32, + 96, 6, false);
+						scr_brush_size_place_object(- 64, + 96, 6, false);
+						#endregion /* Brush size 6 END */
 								
-								ds_list_add(placed_objects_list, place_object);
-							}
-						}
+						ds_list_add(placed_objects_list, place_object);
 					}
 				}
 			}
@@ -704,8 +714,7 @@ if (global.actually_play_edited_level == false)
 		if (difficulty_layer > 0)
 		&& (drag_object == false)
 		&& (pause == false)
-		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 256, get_window_height - 64, get_window_width, room_height * 2))
+		&& (!hovering_over_icons)
 		&& (!keyboard_check(vk_space))
 		&& (!mouse_check_button(mb_middle))
 		{
@@ -727,24 +736,17 @@ if (global.actually_play_edited_level == false)
 		&& (erase_mode)
 		&& (scroll_view == false)
 		&& (pause == false)
-		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 256, - 64, get_window_width, + 64))
+		&& (!hovering_over_icons)
 		&& (!keyboard_check(vk_space))
 		&& (!keyboard_check(vk_escape))
 		&& (!mouse_check_button(mb_middle))
 		{
-			if (set_difficulty_mode)
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 256, get_window_height - 64, get_window_width, room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
-			|| (set_difficulty_mode == false)
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height - 64, get_window_width, room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
+			if (mouse_check_button(mb_right))
+			|| (mouse_check_button(mb_left))
+			|| (key_a_hold)
+			|| (key_b_hold)
 			{
-				if (mouse_check_button(mb_right))
-				|| (mouse_check_button(mb_left))
-				|| (key_a_hold)
-				|| (key_b_hold)
-				{
-					instance_create_depth(x, y, 0, obj_erase_brush);
-				}
+				instance_create_depth(x, y, 0, obj_erase_brush);
 			}
 		}
 		#endregion /* Delete / Erase Objects END */
@@ -753,16 +755,14 @@ if (global.actually_play_edited_level == false)
 		if (difficulty_layer > 0)
 		{
 			if (!mouse_check_button(mb_right))
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2))
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 256, get_window_height - 64, get_window_width, room_height * 2))
+			&& (!hovering_over_icons)
 			&& (mouse_check_button(mb_left))
 			&& (obj_leveleditor.drag_object == false)
 			&& (obj_leveleditor.erase_mode == false)
 			&& (obj_leveleditor.pause == false)
 			
 			|| (!obj_leveleditor.key_b_hold)
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2))
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 256, get_window_height - 64, get_window_width, room_height * 2))
+			&& (!hovering_over_icons)
 			&& (obj_leveleditor.drag_object == false)
 			&& (obj_leveleditor.erase_mode == false)
 			&& (obj_leveleditor.key_a_hold)
@@ -778,14 +778,12 @@ if (global.actually_play_edited_level == false)
 		&& (!keyboard_check(vk_escape))
 		{
 			if (!mouse_check_button(mb_left))
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2))
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 256, get_window_height - 64, get_window_width, room_height * 2))
+			&& (!hovering_over_icons)
 			&& (mouse_check_button(mb_right))
 			&& (obj_leveleditor.pause == false)
 			
 			|| (!obj_leveleditor.key_a_hold)
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 64, obj_leveleditor.always_show_level_editor_buttons_x + 32, room_height * 2))
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 256, get_window_height - 64, get_window_width, room_height * 2))
+			&& (!hovering_over_icons)
 			&& (obj_leveleditor.key_b_hold)
 			&& (obj_leveleditor.pause == false)
 			{
@@ -967,52 +965,28 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Scroll mouse wheel to change erase tool size in level editor END */
 	
 	#region /* Grid hotkeys */
-	if (keyboard_check(vk_control))
-	&& (keyboard_check(vk_shift))
-	&& (keyboard_check_pressed(ord("A")))
-	&& (pause == false)
+	if (keyboard_check(vk_control) && !pause)
 	{
-		show_grid = true;
-		if (global.grid_hsnap > 16)
-		|| (global.grid_vsnap > 16)
+		if (keyboard_check(vk_shift))
 		{
-			global.grid_hsnap -= 16;
-			global.grid_vsnap -= 16;
+			var grid_snap_how_much = 16;
 		}
-	}
-	else
-	if (keyboard_check(vk_control))
-	&& (keyboard_check(vk_shift))
-	&& (keyboard_check_pressed(ord("S")))
-	&& (pause == false)
-	{
-		show_grid = true;
-		global.grid_hsnap += 16;
-		global.grid_vsnap += 16;
-	}
-	else
-	if (keyboard_check(vk_control))
-	&& (!keyboard_check(vk_shift))
-	&& (keyboard_check_pressed(ord("A")))
-	&& (pause == false)
-	{
-		show_grid = true;
-		if (global.grid_hsnap > 1)
-		|| (global.grid_vsnap > 1)
+		else
 		{
-			global.grid_hsnap --;
-			global.grid_vsnap --;
+			var grid_snap_how_much = 1;
 		}
-	}
-	else
-	if (keyboard_check(vk_control))
-	&& (!keyboard_check(vk_shift))
-	&& (keyboard_check_pressed(ord("S")))
-	&& (pause == false)
-	{
-		show_grid = true;
-		global.grid_hsnap ++;
-		global.grid_vsnap ++;
+		if (keyboard_check_pressed(ord("A")) && global.grid_hsnap > grid_snap_how_much && global.grid_vsnap > grid_snap_how_much)
+		{
+			show_grid = true;
+			global.grid_hsnap -= grid_snap_how_much;
+			global.grid_vsnap -= grid_snap_how_much;
+		}
+		else if (keyboard_check_pressed(ord("S")) && global.grid_hsnap < 160 && global.grid_vsnap < 160)
+		{
+			show_grid = true;
+			global.grid_hsnap += grid_snap_how_much;
+			global.grid_vsnap += grid_snap_how_much;
+		}
 	}
 	#endregion /* Grid hotkeys END */
 	
@@ -1024,14 +998,7 @@ if (global.actually_play_edited_level == false)
 	|| (gamepad_button_check_pressed(global.player1_slot, button_grid))
 	&& (pause == false)
 	{
-		if (show_grid == false)
-		{
-			show_grid = true;
-		}
-		else
-		{
-			show_grid = false;
-		}
+		show_grid = not show_grid;
 	}
 	#endregion /* Show or hide grid hotkey END */
 	
@@ -1130,18 +1097,14 @@ if (global.actually_play_edited_level == false)
 	if (keyboard_check(vk_space))
 	&& (mouse_check_button(mb_left))
 	|| (mouse_check_button(mb_middle))
-	{
-		mouse_sprite = spr_cursor_scroll;
-	}
-	else
-	if (keyboard_check(vk_space))
+	|| (keyboard_check(vk_space))
 	{
 		mouse_sprite = spr_cursor_scroll;
 	}
 	#endregion /* Scroll Cursor END */
-
+	
 	else
-
+	
 	#region /* Fill Cursor */
 	if (fill_mode)
 	&& (erase_mode == false)
@@ -1222,9 +1185,7 @@ if (global.actually_play_edited_level == false)
 		if (fill_mode)
 		{
 			if (mouse_check_button(mb_left))
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom buttons */
-			&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
+			&& (!hovering_over_icons)
 			|| (keyboard_check(key_fill))
 			&& (key_fill != key_change_fill_type)
 			|| (gamepad_button_check(global.player1_slot, button_fill))
@@ -1416,8 +1377,7 @@ if (global.actually_play_edited_level == false)
 		#endregion /* Save Level END */
 		
 		#region /* Save Thumbnail a little bit after saving level */
-		if (quit_level_editor == 4)
-		&& (global.level_name != "")
+		if (quit_level_editor == 4 && global.level_name != "")
 		{
 			alarm[0] = 1;
 		}

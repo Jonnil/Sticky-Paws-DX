@@ -45,6 +45,14 @@ if (global.actually_play_edited_level == false)
 			case level_object_id.id_oneway2:
 			case level_object_id.id_oneway3:
 			case level_object_id.id_oneway4:
+			case level_object_id.id_spikes_emerge_block:
+			case level_object_id.id_spikes_emerge_block_offset_time:
+			case level_object_id.id_spikes_emerge_block_down:
+			case level_object_id.id_spikes_emerge_block_down_offset_time:
+			case level_object_id.id_spikes_emerge_block_left:
+			case level_object_id.id_spikes_emerge_block_left_offset_time:
+			case level_object_id.id_spikes_emerge_block_right:
+			case level_object_id.id_spikes_emerge_block_right_offset_time:
 				draw_rotate_arrow = true;
 				break;
 			case level_object_id.id_brick_block_10_basic_collectibles:

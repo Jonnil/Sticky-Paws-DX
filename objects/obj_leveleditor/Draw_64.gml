@@ -1769,14 +1769,7 @@ if (global.actually_play_edited_level == false)
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			{
-				if (show_grid == false)
-				{
-					show_grid = true;
-				}
-				else
-				{
-					show_grid = false;
-				}
+				show_grid = not show_grid;
 			}
 		}
 		#endregion /* Toggle Grid END */
