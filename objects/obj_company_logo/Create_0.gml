@@ -205,9 +205,15 @@ view_wview_lerp = 0;
 goto_title_screen = false; /* If game is allowed to go to title screen yet or not. Need to load everything before going to title screen */
 global.saveid = noone;
 global.savebuff = noone;
-global.username = environment_get_variable("USERNAME"); /* Account name for when you upload levels, you enter an username in account settings, and the levels uploaded will be credited under this name */
+if (os_type == os_switch)
+{
+	global.username = switch_accounts_get_nickname(0);
+}
+else
+{
+	global.username = environment_get_variable("USERNAME"); /* Account name for when you upload levels, you enter an username in account settings, and the levels uploaded will be credited under this name */
+}
 global.keyboard_virtual_timer = 0; /* Delay for when virtual keyboard can show up */
-global.every_player_can_navigate_menu = true; /* To make menu navigation easier with multiple different gamepads that can be connected and isn't neccesarely connected as player 1, make it so you can toggle on or off if every player can navigate menus. By default have this true */
 global.selected_level_editing_music = 0;
 global.gui_scale = -1;
 if (os_type == os_android || os_type == os_ios)
@@ -218,6 +224,8 @@ else
 {
 	global.gui_scale_modifier = 3;
 }
+global.clicking_cancel_input_screen = false;
+global.clicking_ok_input_screen = false;
 global.max_length_iterations = 0;
 global.gui_width = window_get_width();
 global.gui_height = window_get_height();
@@ -535,7 +543,7 @@ global.resource_pack_sprite_big_collectible_outline = spr_noone;
 global.resource_pack_sprite_big_stationary_enemy = spr_noone;
 global.resource_pack_sprite_big_stationary_enemy_flattened = spr_noone;
 global.resource_pack_sprite_blaster = spr_noone;
-global.resource_pack_sprite_block_only_when_player_is_near = spr_noone;
+global.resource_pack_sprite_eye_block = spr_noone;
 global.resource_pack_sprite_bowlingball = spr_noone;
 global.resource_pack_sprite_bowlingball_shine = spr_noone;
 global.resource_pack_sprite_bullet = spr_noone;

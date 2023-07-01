@@ -3,8 +3,7 @@ if (get_rewards_cooldown > 0)
 	get_rewards_cooldown --;
 }
 
-if (asset_get_type("obj_player") == asset_object)
-&& (instance_exists(obj_player))
+if (instance_exists(obj_player))
 {
 	if (global.checkpoint_x != x)
 	|| (global.checkpoint_y != y)
@@ -14,8 +13,7 @@ if (asset_get_type("obj_player") == asset_object)
 		&& (instance_nearest(x, y, obj_player).y < y)
 		|| (place_meeting(x, y, instance_nearest(x, y, obj_player)))
 		{
-			if (asset_get_type("obj_wall") == asset_object)
-			&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+			if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 			&& (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_player).x + 1, instance_nearest(x, y, obj_player).y + 1, obj_wall, false, true))
 			{
 				if (checkpoint_activated == false)
@@ -142,8 +140,7 @@ if (asset_get_type("obj_player") == asset_object)
 						global.checkpoint_realmillisecond = global.timeattack_realmillisecond;
 						
 						#region /* Save Level Editor Checkpoint */
-						if (asset_get_type("room_leveleditor") == asset_room)
-						&& (room == room_leveleditor)
+						if (room == room_leveleditor)
 						&& (global.character_select_in_this_menu == "main_game")
 						&& (global.actually_play_edited_level)
 						{
@@ -171,8 +168,7 @@ if (asset_get_type("obj_player") == asset_object)
 							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						}
 						else
-						if (asset_get_type("room_leveleditor") == asset_room)
-						&& (room == room_leveleditor)
+						if (room == room_leveleditor)
 						&& (global.character_select_in_this_menu == "level_editor")
 						&& (global.actually_play_edited_level)
 						{
@@ -204,8 +200,7 @@ if (asset_get_type("obj_player") == asset_object)
 					}
 					
 					#region /* Load correct sprite when you get the checkpoint */
-					if (global.checkpoint_x == xstart)
-					&& (global.checkpoint_y == ystart)
+					if (checkpoint_activated)
 					{
 						if (instance_exists(obj_camera))
 						&& (instance_exists(obj_player))

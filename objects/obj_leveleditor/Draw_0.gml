@@ -170,7 +170,7 @@ if (global.actually_play_edited_level == false)
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_boss_barrier, true, spr_boss_barrier, spr_wall, + 64, 1, 0, c_white,,,,,"Boss Barrier - This block dissapears when Mousette is defeated");
 		var num_cake_stealing_enemy = order_index; scr_draw_level_editor_placable_object(num_cake_stealing_enemy, level_object_id.id_cake_stealing_enemy, false, global.resource_pack_sprite_cake, spr_wall, + 64, 1, 0, c_white, -16, 0, 1, 0, "Cake Stealing Rat");scr_draw_level_editor_placable_object(num_cake_stealing_enemy, level_object_id.id_cake_stealing_enemy, false, sprite_basic_enemy, spr_wall, + 64, 1, 0, c_white);
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_artwork_collection, false, spr_artwork_collection, spr_wall, + 64, 1, 0, c_white,,,,,"Artwork Collection");
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_block_only_when_player_is_near, true, global.resource_pack_sprite_block_only_when_player_is_near, spr_wall, + 64, 1, 0, c_white,,,,,"Eye Block");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_eye_block, true, global.resource_pack_sprite_eye_block, spr_wall, + 64, 1, 0, c_white,,,,,"Eye Block");
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_npc, false, spr_npc, spr_wall, + 64, 1, 0, c_white,,,,,"NPC - This object is unfinished!!!");
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_ring, false, spr_ring, spr_wall, + 64, 1, 0, c_white,,,,,"Ring - Swing with long tongue on this ring");
 		#endregion /* Special Items END */

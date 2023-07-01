@@ -131,8 +131,8 @@ function scr_spawn_objects_when_starting_room()
 			        break;
 			    case level_object_id.id_hard_block_2x2:
 			        with(instance_create_depth(x, y, 0, obj_hard_block)) {
-			            mask_index = spr_hard_block_2x2;
 			            sprite_index = spr_hard_block_2x2;
+						mask_index = sprite_index;
 			        }
 			        break;
 			    case level_object_id.id_falling_block:
@@ -142,10 +142,16 @@ function scr_spawn_objects_when_starting_room()
 			        instance_create_depth(x, y, 0, obj_falling_block_solid);
 			        break;
 			    case level_object_id.id_falling_block_long:
-			        instance_create_depth(x, y, 0, obj_falling_block_long);
+			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
+						sprite_index = spr_falling_block_long;
+						mask_index = sprite_index;
+					}
 			        break;
 			    case level_object_id.id_falling_block_long_solid:
-			        instance_create_depth(x, y, 0, obj_falling_block_long_solid);
+			        with(instance_create_depth(x, y, 0, obj_falling_block_solid)) {
+						sprite_index = spr_falling_block_long_solid;
+						mask_index = sprite_index;
+					}
 			        break;
 			    case level_object_id.id_cloud_block:
 			        instance_create_depth(x, y, 0, obj_cloud_block);
@@ -394,7 +400,7 @@ function scr_spawn_objects_when_starting_room()
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					break;
 				case level_object_id.id_artwork_collection: instance_create_depth(x, y, 0, obj_artwork_collection);break;
-				case level_object_id.id_block_only_when_player_is_near: instance_create_depth(x, y, 0, obj_block_only_when_player_is_near_spawner);break;
+				case level_object_id.id_eye_block: instance_create_depth(x, y, 0, obj_eye_block_spawner);break;
 				case level_object_id.id_door: with(instance_create_depth(x, y, 0, obj_door)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case level_object_id.id_npc: instance_create_depth(x, y, 0, obj_npc);break;
 				case level_object_id.id_black_wall: instance_create_depth(x, y, 0, obj_black_wall);break;

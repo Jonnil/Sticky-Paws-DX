@@ -170,7 +170,7 @@ function scr_initialize_object_id_enums()
 		id_boss_barrier = 96,
 		id_cake_stealing_enemy = 961,
 		id_artwork_collection = 97,
-		id_block_only_when_player_is_near = 98,
+		id_eye_block = 98,
 		id_door = 99,
 		id_npc = 100,
 		id_black_wall = 101,
