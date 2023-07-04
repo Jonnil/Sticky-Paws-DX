@@ -139,18 +139,18 @@ function scr_spawn_objects_when_starting_room()
 			        instance_create_depth(x, y, 0, obj_falling_block);
 			        break;
 			    case level_object_id.id_falling_block_solid:
-			        instance_create_depth(x, y, 0, obj_falling_block_solid);
+			        instance_create_depth(x, y, 0, obj_falling_block_solid_spawner);
 			        break;
 			    case level_object_id.id_falling_block_long:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
+						falling_block_long = true;
 						sprite_index = spr_falling_block_long;
-						mask_index = sprite_index;
 					}
 			        break;
 			    case level_object_id.id_falling_block_long_solid:
-			        with(instance_create_depth(x, y, 0, obj_falling_block_solid)) {
+			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
+						falling_block_long = true;
 						sprite_index = spr_falling_block_long_solid;
-						mask_index = sprite_index;
 					}
 			        break;
 			    case level_object_id.id_cloud_block:
@@ -401,6 +401,8 @@ function scr_spawn_objects_when_starting_room()
 					break;
 				case level_object_id.id_artwork_collection: instance_create_depth(x, y, 0, obj_artwork_collection);break;
 				case level_object_id.id_eye_block: instance_create_depth(x, y, 0, obj_eye_block_spawner);break;
+				case level_object_id.id_eye_block_enemy: with(instance_create_depth(x, y, 0, obj_eye_block_spawner)){sprite_index = global.resource_pack_sprite_eye_block_enemy;}break;
+				case level_object_id.id_eye_block_enemy_player: with(instance_create_depth(x, y, 0, obj_eye_block_spawner)){sprite_index = global.resource_pack_sprite_eye_block_enemy_player;}break;
 				case level_object_id.id_door: with(instance_create_depth(x, y, 0, obj_door)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case level_object_id.id_npc: instance_create_depth(x, y, 0, obj_npc);break;
 				case level_object_id.id_black_wall: instance_create_depth(x, y, 0, obj_black_wall);break;

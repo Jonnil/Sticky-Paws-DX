@@ -211,6 +211,8 @@ if (global.actually_play_edited_level == false)
 	unlocked_object[level_object_id.id_cake_stealing_enemy] = ini_read_real("Unlock Placable Objects", level_object_id.id_cake_stealing_enemy, false);
 	unlocked_object[level_object_id.id_artwork_collection] = ini_read_real("Unlock Placable Objects", level_object_id.id_artwork_collection, false);
 	unlocked_object[level_object_id.id_eye_block] = ini_read_real("Unlock Placable Objects", level_object_id.id_eye_block, false);
+	unlocked_object[level_object_id.id_eye_block_enemy] = ini_read_real("Unlock Placable Objects", level_object_id.id_eye_block_enemy, false);
+	unlocked_object[level_object_id.id_eye_block_enemy_player] = ini_read_real("Unlock Placable Objects", level_object_id.id_eye_block_enemy_player, false);
 	unlocked_object[level_object_id.id_npc] = ini_read_real("Unlock Placable Objects", level_object_id.id_npc, false);
 	unlocked_object[level_object_id.id_ring] = ini_read_real("Unlock Placable Objects", level_object_id.id_ring, false);
 	#endregion /* Special Items END */
@@ -405,6 +407,8 @@ if (global.actually_play_edited_level == false)
 	add_object(level_object_id.id_cake_stealing_enemy, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(level_object_id.id_artwork_collection, spr_artwork_collection, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(level_object_id.id_eye_block, global.resource_pack_sprite_eye_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(level_object_id.id_eye_block_enemy, global.resource_pack_sprite_eye_block_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(level_object_id.id_eye_block_enemy_player, global.resource_pack_sprite_eye_block_enemy_player, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(level_object_id.id_door, spr_door, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(level_object_id.id_npc, spr_npc, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(level_object_id.id_black_wall, spr_black_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);

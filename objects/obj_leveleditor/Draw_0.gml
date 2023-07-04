@@ -4,7 +4,21 @@ if (global.actually_play_edited_level == false)
 	&& (instance_nearest(x, y, obj_leveleditor_placed_object).draw_rotate_arrow == true)
 	{
 		var draw_rotate_arrow_scale = scr_wave(0.5, 0.4, 0.5, 0);
-		draw_sprite_ext(spr_rotate_arrow, image_index, x, y, draw_rotate_arrow_scale, draw_rotate_arrow_scale, instance_nearest(x, y, obj_leveleditor_placed_object).draw_angle, image_blend, image_alpha);
+		switch(instance_nearest(x, y, obj_leveleditor_placed_object).object)
+		{
+			case level_object_id.id_spikes_emerge_block:
+			case level_object_id.id_spikes_emerge_block_offset_time:
+			case level_object_id.id_spikes_emerge_block_down:
+			case level_object_id.id_spikes_emerge_block_down_offset_time:
+			case level_object_id.id_spikes_emerge_block_left:
+			case level_object_id.id_spikes_emerge_block_left_offset_time:
+			case level_object_id.id_spikes_emerge_block_right:
+			case level_object_id.id_spikes_emerge_block_right_offset_time:
+				draw_sprite_ext(spr_rotate_arrow, image_index, x, y, draw_rotate_arrow_scale, draw_rotate_arrow_scale, instance_nearest(x, y, obj_leveleditor_placed_object).draw_angle + 90, image_blend, image_alpha);
+				break;
+			default:
+				draw_sprite_ext(spr_rotate_arrow, image_index, x, y, draw_rotate_arrow_scale, draw_rotate_arrow_scale, instance_nearest(x, y, obj_leveleditor_placed_object).draw_angle, image_blend, image_alpha);
+		}
 	}
 	
 	#region /* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is */

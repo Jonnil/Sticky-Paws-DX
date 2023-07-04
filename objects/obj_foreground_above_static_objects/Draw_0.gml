@@ -9,30 +9,11 @@ else
 }
 #endregion /* When editing a level, make the foreground transparent END */
 
-#region /* Destroy this object if it ever appears in the wrong room */
-if (asset_get_type("room_title") == asset_room)
-&& (room == room_title)
-{
-	instance_destroy();
-}
-#endregion /* Destroy this object if it ever appears in the wrong room END */
-
-x = 0;
-y = 0;
-draw_set_alpha(image_alpha);
-instance_activate_object(self);
-
-#region /* Update Foreground above static objects */
+#region /* Update Foreground Above Static Objects */
 if (global.custom_foreground_above_static_objects > noone)
 && (global.enable_foreground_layer_above_static_objects)
 && (global.full_level_map_screenshot == false)
-&& (asset_get_type("room_leveleditor") == asset_room)
-&& (room == room_leveleditor)
 {
-	if (sprite_exists(global.custom_foreground_above_static_objects))
-	{
-		draw_sprite(global.custom_foreground_above_static_objects, image_index, x_offset, y_offset);
-	}
+	draw_sprite_ext(global.custom_foreground_above_static_objects, image_index, x_offset, y_offset, 1, 1, 0, c_white, image_alpha);
 }
-#endregion /* Update Foreground above static objects END */
-draw_set_alpha(1);
+#endregion /* Update Foreground1 END */

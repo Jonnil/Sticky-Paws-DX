@@ -9,12 +9,6 @@ if (menu_delay > 0)
 	menu_delay --;
 }
 
-if (keyboard_check_pressed(vk_rcontrol))
-{
-	draw_flush();
-	draw_texture_flush();
-}
-
 scr_make_background_visible();
 
 #region /* Timer Countup */

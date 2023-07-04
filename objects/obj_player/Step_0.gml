@@ -3305,43 +3305,52 @@ if (on_ground && speed > 0 && !crouch)
 {
 	if ((hspeed < 0 && !key_right_hold) || (hspeed > 0 && !key_left_hold))
 	{
-		var ground = instance_nearest(x, bbox_bottom, obj_ground);
-		var ground_surface = ground.ground_surface;
-		var ground_meeting = place_meeting(x, y + 1, obj_ground);
+		if (instance_exists(obj_ground))
+		{
+			var ground = instance_nearest(x, bbox_bottom, obj_ground);
+			var ground_surface = ground.ground_surface;
+			var ground_meeting = place_meeting(x, y + 1, obj_ground);
+		}
+		else
+		{
+			var ground = false;
+			var ground_surface = false;
+			var ground_meeting = false;
+		}
 		
 		if (image_index < 1)
 		{
 			switch (ground_surface)
 			{
-				case 1: // Dirt Footstep Left
+				case 1: /* Dirt Footstep Left */
 					if (ground_meeting && ground_surface == 1 && !audio_is_playing(snd_footstep_dirt_left))
 						scr_audio_play(snd_footstep_dirt_left, volume_source.footstep);
 					break;
-				case 2: // Glass Footstep Left
+				case 2: /* Glass Footstep Left */
 					if (ground_meeting && ground_surface == 2 && !audio_is_playing(snd_footstep_glass_left))
 						scr_audio_play(snd_footstep_glass_left, volume_source.footstep);
 					break;
-				case 3: // Grass Footstep Left
+				case 3: /* Grass Footstep Left */
 					if (ground_meeting && ground_surface == 3 && !audio_is_playing(snd_footstep_grass_left))
 						scr_audio_play(snd_footstep_grass_left, volume_source.footstep);
 					break;
-				case 4: // Gravel Footstep Left
+				case 4: /* Gravel Footstep Left */
 					if (ground_meeting && ground_surface == 4 && !audio_is_playing(snd_footstep_gravel_left))
 						scr_audio_play(snd_footstep_gravel_left, volume_source.footstep);
 					break;
-				case 5: // Metal Footstep Left
+				case 5: /* Metal Footstep Left */
 					if (ground_meeting && ground_surface == 5 && !audio_is_playing(snd_footstep_metal_left))
 						scr_audio_play(snd_footstep_metal_left, volume_source.footstep);
 					break;
-				case 6: // Stone Footstep Left
+				case 6: /* Stone Footstep Left */
 					if (ground_meeting && ground_surface == 6 && !audio_is_playing(snd_footstep_stone_left))
 						scr_audio_play(snd_footstep_stone_left, volume_source.footstep);
 					break;
-				case 7: // Wood Footstep Left
+				case 7: /* Wood Footstep Left */
 					if (ground_meeting && ground_surface == 7 && !audio_is_playing(snd_footstep_wood_left))
 						scr_audio_play(snd_footstep_wood_left, volume_source.footstep);
 					break;
-				default: // Default Footstep Left
+				default: /* Default Footstep Left */
 					if (!audio_is_playing(snd_footstep_default_left))
 						scr_audio_play(snd_footstep_default_left, volume_source.footstep);
 					break;
@@ -3351,35 +3360,35 @@ if (on_ground && speed > 0 && !crouch)
 		{
 			switch (ground_surface)
 			{
-				case 1: // Dirt Footstep Right
+				case 1: /* Dirt Footstep Right */
 					if (ground_meeting && ground_surface == 1 && !audio_is_playing(snd_footstep_dirt_right))
 						scr_audio_play(snd_footstep_dirt_right, volume_source.footstep);
 					break;
-				case 2: // Glass Footstep Right
+				case 2: /* Glass Footstep Right */
 					if (ground_meeting && ground_surface == 2 && !audio_is_playing(snd_footstep_glass_right))
 						scr_audio_play(snd_footstep_glass_right, volume_source.footstep);
 					break;
-				case 3: // Grass Footstep Right
+				case 3: /* Grass Footstep Right */
 					if (ground_meeting && ground_surface == 3 && !audio_is_playing(snd_footstep_grass_right))
 						scr_audio_play(snd_footstep_grass_right, volume_source.footstep);
 					break;
-				case 4: // Gravel Footstep Right
+				case 4: /* Gravel Footstep Right */
 					if (ground_meeting && ground_surface == 4 && !audio_is_playing(snd_footstep_gravel_right))
 						scr_audio_play(snd_footstep_gravel_right, volume_source.footstep);
 					break;
-				case 5: // Metal Footstep Right
+				case 5: /* Metal Footstep Right */
 					if (ground_meeting && ground_surface == 5 && !audio_is_playing(snd_footstep_metal_right))
 						scr_audio_play(snd_footstep_metal_right, volume_source.footstep);
 					break;
-				case 6: // Stone Footstep Right
+				case 6: /* Stone Footstep Right */
 					if (ground_meeting && ground_surface == 6 && !audio_is_playing(snd_footstep_stone_right))
 						scr_audio_play(snd_footstep_stone_right, volume_source.footstep);
 					break;
-				case 7: // Wood Footstep Right
+				case 7: /* Wood Footstep Right */
 					if (ground_meeting && ground_surface == 7 && !audio_is_playing(snd_footstep_wood_right))
 						scr_audio_play(snd_footstep_wood_right, volume_source.footstep);
 					break;
-				default: // Default Footstep Right
+				default: /* Default Footstep Right */
 					if (!audio_is_playing(snd_footstep_default_right))
 						scr_audio_play(snd_footstep_default_right, volume_source.footstep);
 					break;

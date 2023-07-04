@@ -1,178 +1,95 @@
-if (place_meeting(x, y - 1, obj_player))
-{
-	draw_xscale = lerp(draw_xscale, 1.1, 0.3);
-	draw_yscale = lerp(draw_yscale, 0.9, 0.3);
-}
-else
-{
-	draw_xscale = lerp(draw_xscale, 1, 0.3);
-	draw_yscale = lerp(draw_yscale, 1, 0.3);
-}
+var view_camera_current = view_camera[view_current];
+var view_left = camera_get_view_x(view_camera_current);
+var view_right = view_left + camera_get_view_width(view_camera_current);
+var view_top = camera_get_view_y(view_camera_current);
+var view_bottom = view_top + camera_get_view_height(view_camera_current);
 
-#region /* Collision with player */
-if (instance_exists(obj_player))
-&& (distance_to_object(obj_player) < 32)
+var player_nearest = instance_nearest(x, y, obj_player);
+var enemy_bowlingball_nearest = instance_nearest(x, y, obj_enemy_bowlingball);
+
+if (distance_to_object(obj_player) < 32 && !collision_line(x, y, player_nearest.x, player_nearest.y, obj_wall, false, true))
 {
-	if (place_meeting(x, bbox_bottom, obj_player))
-	&& (instance_nearest(x, y, obj_player).vspeed < 0)
-	|| (place_meeting(x, y - 32, obj_player)) /* You should always break the cardboard box before landing on it when doing a cardboard box, so it's effortless to break */
-	&& (instance_nearest(x, y, obj_player).vspeed > 0) /* Only break cardboard with groundpound when traveling down */
-	&& (instance_nearest(x, y, obj_player).ground_pound)
-	|| (place_meeting(bbox_left - 8, y, obj_player))
-	&& (instance_nearest(x, y, obj_player).dive)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-	|| (place_meeting(bbox_right + 8, y, obj_player))
-	&& (instance_nearest(x, y, obj_player).dive)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-	|| (place_meeting(bbox_left - 1, y, obj_player))
-	&& (instance_nearest(x, y, obj_player).wall_jump > 0)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-	|| (place_meeting(bbox_right + 1, y, obj_player))
-	&& (instance_nearest(x, y, obj_player).wall_jump > 0)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-
-	|| (place_meeting(bbox_left - 8, y, obj_player))
-	&& (instance_nearest(x, y, obj_player).move_towards_spring_endpoint)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-	|| (place_meeting(bbox_right + 8, y, obj_player))
-	&& (instance_nearest(x, y, obj_player).move_towards_spring_endpoint)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-	|| (place_meeting(x, bbox_top - 8, obj_player))
-	&& (instance_nearest(x, y, obj_player).move_towards_spring_endpoint)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-	|| (place_meeting(x, bbox_bottom + 8, obj_player))
-	&& (instance_nearest(x, y, obj_player).move_towards_spring_endpoint)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-
-	|| (place_meeting(bbox_left - 8, y, obj_player))
-	&& (instance_nearest(x, y, obj_player).speed > 30)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-	|| (place_meeting(bbox_right + 8, y, obj_player))
-	&& (instance_nearest(x, y, obj_player).speed > 30)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-	|| (place_meeting(x, bbox_top - 8, obj_player))
-	&& (instance_nearest(x, y, obj_player).speed > 30)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-	|| (place_meeting(x, bbox_bottom + 8, obj_player))
-	&& (instance_nearest(x, y, obj_player).speed > 30)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
+	if (place_meeting(x, y + 8, obj_player) &&
+		player_nearest.vspeed < 0 ||
+		place_meeting(x, y - 32, obj_player) && player_nearest.vspeed > 0 && player_nearest.ground_pound ||
+		player_nearest.dive ||
+		player_nearest.wall_jump > 0 ||
+		player_nearest.move_towards_spring_endpoint ||
+		player_nearest.speed > 30)
 	{
-		instance_create_depth(x, y - 32, 0, obj_block_break);
-		if (instance_nearest(x, y, obj_player).x < x)
-		{
-			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
-			new_instance.sprite_index = sprite_index;
-			with(new_instance)
-			{
-				if (instance_exists(obj_player))
-				{
-					motion_set(random_range(13, 77), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
-				}
-			}
-		}
-		else
-		{
-			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
-			new_instance.sprite_index = sprite_index;
-			with(new_instance)
-			{
-				if (instance_exists(obj_player))
-				{
-					motion_set(random_range(103, 135 + 32), random_range(5, 10) + instance_nearest(x, y, obj_player).speed * 0.5);
-				}
-			}
-		}
-		score += 50;
-		if (instance_exists(obj_camera))
-		{
-			
-			#region /* Only do the breaking smoke effect and sound effect if it's inside the view */
-			if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-			&& (x > camera_get_view_x(view_camera[view_current]))
-			&& (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-			&& (y > camera_get_view_y(view_camera[view_current]))
-			{
-				effect_create_above(ef_smoke, x, y, 1, c_dkgray);
-				scr_audio_play(snd_blockbreak, volume_source.sound);
-			}
-			#endregion /* Only do the breaking smoke effect and sound effect if it's inside the view END */
-			
-			with(obj_camera)
-			{
-				hud_show_score_timer = global.hud_hide_time * 60;
-			}
-		}
-		
-		scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
-		instance_destroy();
-	}
-}
-#endregion /* Collision with player END */
-
-#region /* Collision with bowlingball enemy */
-if (instance_exists(obj_enemy_bowlingball))
-&& (distance_to_object(obj_enemy_bowlingball) < 32)
-{
-	if (position_meeting(bbox_left - 10, y, obj_enemy_bowlingball))
-	&& (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
-	|| (position_meeting(bbox_right + 10, y, obj_enemy_bowlingball))
-	&& (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_enemy_bowlingball).x, instance_nearest(x, y, obj_enemy_bowlingball).y, obj_wall, false, true))
-	|| (place_meeting(x, bbox_bottom + 8, obj_enemy))
-	&& (instance_nearest(x, y, obj_enemy).vspeed < 0)
-	&& (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
-	{
-		instance_create_depth(x, y - 32, 0, obj_block_break);
-		if (instance_nearest(x, y, obj_enemy_bowlingball).x < x)
-		{
-			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
-			new_instance.sprite_index = sprite_index;
-			with(new_instance)
-			{
-				if (instance_exists(obj_enemy_bowlingball))
-				{
-					motion_set(random_range(13, 77), random_range(5, 10) + instance_nearest(x, y, obj_enemy_bowlingball).speed * 0.5);
-				}
-			}
-		}
-		else
-		{
-			var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
-			new_instance.sprite_index = sprite_index;
-			with(new_instance)
-			{
-				if (instance_exists(obj_enemy_bowlingball))
-				{
-					motion_set(random_range(103, 135 + 32), random_range(5, 10) + instance_nearest(x, y, obj_enemy_bowlingball).speed * 0.5);
-				}
-			}
-		}
-		score += 50;
-		if (instance_exists(obj_camera))
-		{
-			with(obj_camera)
-			{
-				hud_show_score_timer = global.hud_hide_time * 60;
-			}
-		}
-	
-		#region /* Only do the breaking smoke effect and sound effect if it's inside the view */
-		if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-		&& (x > camera_get_view_x(view_camera[view_current]))
-		&& (bbox_bottom < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-		&& (y > camera_get_view_y(view_camera[view_current]))
-		{
-			effect_create_above(ef_smoke, x, y, 1, c_dkgray);
-			scr_audio_play(snd_blockbreak, volume_source.sound);
-		}
-		#endregion /* Only do the breaking smoke effect and sound effect if it's inside the view END */
-	
+		break_cardboard = true;
 		if (instance_exists(obj_player))
 		{
-			scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
+			break_cardboard_source_x = player_nearest.x;
+			break_cardboard_source_speed = player_nearest.speed;
 		}
-		instance_destroy();
+	}
+	
+}
+
+if (distance_to_object(obj_enemy_bowlingball) < 32 && !collision_line(x, y, enemy_bowlingball_nearest.x, enemy_bowlingball_nearest.y, obj_wall, false, true))
+{
+	if (enemy_bowlingball_nearest.sliding_along_ground != 0 || enemy_bowlingball_nearest.vspeed < 0)
+	{
+		break_cardboard = true;
+		if (instance_exists(obj_enemy_bowlingball))
+		{
+			break_cardboard_source_x = enemy_bowlingball_nearest.x;
+			break_cardboard_source_speed = enemy_bowlingball_nearest.speed;
+		}
 	}
 }
-#endregion /* Collision with bowlingball enemy END */
+var check_margin = 3; /* Adjust this value to set the margin from the corners */
+var check_left = bbox_left + check_margin;
+var check_right = bbox_right - check_margin;
+var check_bottom = bbox_bottom + check_margin;
+if (!collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_wall, false, true) &&
+    !collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_semisolid_platform, false, true))
+{
+	if (bbox_left < view_right + 8 &&
+		bbox_right > view_left - 8 &&
+		bbox_top < view_bottom + 8 &&
+		bbox_bottom > view_top - 8)
+	{
+		break_cardboard = true;
+		if (instance_exists(obj_player))
+		{
+			break_cardboard_source_x = player_nearest.x;
+			break_cardboard_source_speed = player_nearest.speed;
+		}
+	}
+}
+if (break_cardboard)
+{
+	instance_create_depth(x, y - 32, 0, obj_block_break);
+	score += 50;
+	if (break_cardboard_source_x < x)
+	{
+		var break_cardboard_direction = random_range(13, 77);
+	}
+	else
+	{
+		var break_cardboard_direction = random_range(103, 167);
+	}
+	var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
+	new_instance.sprite_index = sprite_index;
+	with(new_instance)
+	{
+		new_instance.direction = break_cardboard_direction;
+		new_instance.speed = random_range(5, 10) + instance_nearest(x, y, obj_cardboard).break_cardboard_source_speed * 0.5;
+	}
+	if (x < view_right && x > view_left && y < view_bottom && y > view_top)
+	{
+		effect_create_above(ef_smoke, x, y, 1, c_dkgray);
+		scr_audio_play(snd_blockbreak, volume_source.sound);
+	}
+	with (obj_camera)
+	{
+		hud_show_score_timer = global.hud_hide_time * 60;
+	}
+	if (instance_exists(obj_player))
+	{
+		scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
+	}
+	instance_destroy();
+}
