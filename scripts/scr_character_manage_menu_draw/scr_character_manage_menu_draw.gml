@@ -615,6 +615,7 @@ function scr_character_manage_menu_draw()
 			
 			if (os_is_network_connected())
 			{
+				search_for_id_still = false;
 				menu = "character_uploaded";
 			}
 			else
@@ -658,6 +659,7 @@ function scr_character_manage_menu_draw()
 		{
 			if (menu_delay == 0)
 			{
+				search_for_id_still = false;
 				menu = "character_uploaded";
 			}
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
@@ -699,6 +701,7 @@ function scr_character_manage_menu_draw()
 		|| (key_b_pressed)
 		&& (menu_delay == 0)
 		{
+			search_for_id_still = true;
 			scr_load_character_initializing();
 			menu = "load_characters";
 			player_menu[1] = "select_character"; /* Go back to this menu after reloading all characters */

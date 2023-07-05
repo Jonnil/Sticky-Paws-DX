@@ -94,7 +94,7 @@ if (menu == "load_characters")
 	if (file_load_timer > 1)
 	{
 		file_found = file_find_next()
-	
+		
 		if (file_found == "")
 		{
 			file_find_close();

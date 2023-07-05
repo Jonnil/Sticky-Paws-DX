@@ -278,6 +278,12 @@ function scr_character_select_menu_draw()
 		if (global.enable_manage_characters)
 		{
 			draw_menu_button(-32, manage_characters_y, l10n_text("Manage Characters"), "manage_character", "click_copy_character");
+			if (key_a_pressed)
+			&& (menu == "manage_character")
+			{
+				menu = "click_copy_character";
+				menu_delay = 3;
+			}
 		}
 		#endregion /* Manage Characters END */
 		

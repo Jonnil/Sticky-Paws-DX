@@ -184,7 +184,6 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		
 		return file;
 		
-		/* When trying to open the created zip file manually, it says that the files are corrupted, but when doing a simple zip_unzip() of that zip file within GameMaker, it opens these files flawlessly */
 		#endregion /* Finally save the zip file END */
 		
 	}
@@ -328,7 +327,6 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		
 		return file;
 		
-		/* When trying to open the created zip file manually, it says that the files are corrupted, but when doing a simple zip_unzip() of that zip file within GameMaker, it opens these files flawlessly */
 		#endregion /* Finally save the zip file END */
 		
 	}

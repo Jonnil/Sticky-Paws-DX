@@ -2502,7 +2502,6 @@
     {"id":{"name":"scr_player_move_drowning","path":"scripts/scr_player_move_drowning/scr_player_move_drowning.yy",},},
     {"id":{"name":"scr_draw_circular_bar","path":"scripts/scr_draw_circular_bar/scr_draw_circular_bar.yy",},},
     {"id":{"name":"spr_water_level","path":"sprites/spr_water_level/spr_water_level.yy",},},
-    {"id":{"name":"ZipWriter","path":"scripts/ZipWriter/ZipWriter.yy",},},
     {"id":{"name":"obj_ring","path":"objects/obj_ring/obj_ring.yy",},},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
     {"id":{"name":"spr_arrow_sign","path":"sprites/spr_arrow_sign/spr_arrow_sign.yy",},},

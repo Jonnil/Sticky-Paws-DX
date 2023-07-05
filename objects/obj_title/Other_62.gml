@@ -23,8 +23,9 @@ if (async_load[? "id"] == global.http_request_id)
 			{
 				var file_save_location = working_directory + "downloaded_level/" + string(response_json[? "name"]) + ".zip";
 				if (response_json[? "name"] == undefined)
+				&& (search_for_id_still)
 				{
-					menu = "searched_file_downloaded_failed";
+					menu = "searched_file_downloaded_failed"; show_message("searched_file_downloaded_failed");
 				}
 			}
 			else
@@ -42,8 +43,9 @@ if (async_load[? "id"] == global.http_request_id)
 			{
 				var file_save_location = working_directory + "downloaded_character/" + string(response_json[? "name"]) + ".zip";
 				if (response_json[? "name"] == undefined)
+				&& (search_for_id_still)
 				{
-					menu = "searched_file_downloaded_failed";
+					menu = "searched_file_downloaded_failed"; show_message("searched_file_downloaded_failed");
 				}
 			}
 			else

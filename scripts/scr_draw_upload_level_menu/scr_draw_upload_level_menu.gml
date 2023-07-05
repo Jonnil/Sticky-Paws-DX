@@ -2,8 +2,8 @@ function scr_draw_upload_level_menu()
 {
 	
 	#region /* Debug toggles */
-	var destroy_zip_after_uploading = false; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
-	var skip_clear_check = true;
+	var destroy_zip_after_uploading = true; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
+	var skip_clear_check = false;
 	#endregion /* Debug toggles END */
 	
 	var upload_y = 42 * 2;
