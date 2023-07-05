@@ -172,9 +172,4 @@ function scr_save_level()
 	ini_write_real("config", "zoom_level", global.zoom_level);
 	ini_write_real("config", "zoom_world_map", global.zoom_world_map);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-	
-	//var inistring = ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-	//buffer_write(global.savebuff, buffer_string, inistring);
-	//buffer_save_async(global.savebuff, "file" + string(global.file) + ".ini", 0, buffer_get_size(global.savebuff)); /* Pass the data to be saved */
-	//global.saveid = buffer_async_group_end(); /* Start the save process */
 }
