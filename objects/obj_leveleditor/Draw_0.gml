@@ -96,11 +96,11 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Draw where player will do playtesting from END */
 	
 	draw_set_alpha(0.5);
-	draw_rectangle_color(cam_x - 32, cam_y - 32, 0, cam_y + cam_height, c_black, c_black, c_black, c_black, false); /* Left Black Rectangle */
-	draw_rectangle_color(1, cam_y - 32, cam_x + cam_width + 32, 0, c_black, c_black, c_black, c_black, false);  /* Top Black Rectangle */
+	draw_rectangle_color(cam_x - 999, cam_y - 999, 0, cam_y + cam_height, c_black, c_black, c_black, c_black, false); /* Left Black Rectangle */
+	draw_rectangle_color(1, cam_y - 999, cam_x + cam_width + 999, 0, c_black, c_black, c_black, c_black, false);  /* Top Black Rectangle */
 	draw_set_alpha(1);
 	
-	draw_rectangle_color(0, 0, obj_level_width.x, obj_level_height.y, c_red, c_red, c_red, c_red, true);  /* Border around entire level */
+	draw_rectangle_color(0, 0, obj_level_width.x - 16, obj_level_height.y -16, c_red, c_red, c_red, c_red, true);  /* Border around entire level */
 	
 	if (quit_level_editor <= 0)
 	{
@@ -129,7 +129,7 @@ if (global.actually_play_edited_level == false)
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_spikes, true, spr_spikes, spr_wall, + 64, 1, 0, c_white,,,,,"Spikes");
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_semisolid_platform, true, spr_semisolid_platform, spr_wall, + 64, 1, 0, c_white,,,,,"Semisolid Platform");
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_brick_block, true, spr_brick_block, spr_wall, + 64, 1, 0, c_white,,,,,"Lamp Block");
-		scr_draw_level_editor_placable_object(order_index, level_object_id.id_question_block, true, spr_question_block, spr_wall, + 64, 1, 0, c_white,,,,,"? Cardboard");
+		scr_draw_level_editor_placable_object(order_index, level_object_id.id_question_block, true, spr_question_block, spr_wall, + 64, 1, 0, c_white,,,,,"? Block");
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_hard_block, true, spr_hard_block, spr_wall, + 64, 1, 0, c_white,,,,,"Hard Block");
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_falling_block, true, spr_falling_block, spr_wall, + 64, 1, 0, c_white,,,,,"Falling Block");
 		scr_draw_level_editor_placable_object(order_index, level_object_id.id_falling_block_long, true, spr_falling_block_long, spr_cardboard, + 64, 1, 0, c_white, 0, -16,,,"Falling Block Long");

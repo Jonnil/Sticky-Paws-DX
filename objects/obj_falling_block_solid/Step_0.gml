@@ -1,15 +1,15 @@
-if (fall < 100) {
+if (fall < 60) {
 	if (place_meeting(x, y - 1, obj_player)) {
 		fall ++;
 		image_blend = c_red;
 		
-		if fall > 75 {
+		if fall > 45 {
 			var random_x = 2.5;
 			var random_y = 4;
-		} else if fall > 50 {
+		} else if fall > 30 {
 			var random_x = 2;
 			var random_y = 3;
-		} else if fall > 25 {
+		} else if fall > 15 {
 			var random_x = 1.5;
 			var random_y = 2;
 		} else {
@@ -32,7 +32,7 @@ if (fall < 100) {
 	gravity = 0.5;
 	image_blend = c_red;
 	xx = random_range(x - 2.5, x + 2.5);
-	yy = xx;
+	yy = random_range(y - 2.5, y + 2.5);
 }
 
 #region /* Falling Block falling outside of view */

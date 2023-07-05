@@ -336,35 +336,32 @@ function scr_debug_screen()
 			}
 		}
 		
-		scr_draw_text_outlined(32, 500, "clicking_ok_input_screen: " + string(global.clicking_ok_input_screen), global.default_text_size, c_black, c_white);
-		scr_draw_text_outlined(32, 520, "search_for_id_still: " + string(search_for_id_still), global.default_text_size, c_black, c_white);
-		
 		draw_set_halign(fa_center);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)), global.default_text_size, c_black, c_white);
 	}
 	
-	if (global.debug_screen)
-	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 32))
-	&& (global.controls_used_for_menu_navigation == "mouse")
-	{
-		draw_set_alpha(0.5);
-		draw_rectangle_color(0, 0, 370, 32, c_white, c_white, c_white, c_white, false);
-		draw_set_alpha(1);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, display_get_gui_width(), 64 + (32 * 12), c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(8, 64, l10n_text("This bar is split into sections, with each section being 1/60th of a second. As you can see, the bar is made up of various colours:"), global.default_text_size, c_black, c_white, 1);
-		scr_draw_text_outlined(8, 64 + (32 * 3), l10n_text("Green - Input / Output processing (ie: keyboard, mouse, gamepad, networking etc...)"), global.default_text_size, noone, c_lime, 1);
-		scr_draw_text_outlined(8, 64 + (32 * 4), l10n_text("Red - The update speed of the step event"), global.default_text_size, noone, c_red, 1);
-		scr_draw_text_outlined(8, 64 + (32 * 5), l10n_text("Yellow - The time required for the draw event"), global.default_text_size, noone, c_yellow, 1);
-		scr_draw_text_outlined(8, 64 + (32 * 6), l10n_text("Orange - Debug update time, which is only normally visible when you use the debug module"), global.default_text_size, noone, c_orange, 1);
-		scr_draw_text_outlined(8, 64 + (32 * 7), l10n_text("White - GPU left over time, which is the time spent waiting for the GPU to finish the rendering of the frame before the next one can start"), global.default_text_size, c_black, c_white, 1);
-		scr_draw_text_outlined(8, 64 + (32 * 8), l10n_text("Cyan - The text rendering time"), global.default_text_size, noone, c_aqua, 1);
-		scr_draw_text_outlined(8, 64 + (32 * 9), l10n_text("Grey - The time required to clear screen each draw step"), global.default_text_size, noone, c_grey, 1);
-		scr_draw_text_outlined(8, 64 + (32 * 10), l10n_text("Blue - The time required for the Garbage Collector to run"), global.default_text_size, noone, c_blue, 1);
-		scr_draw_text_outlined(8, 64 + (32 * 11), l10n_text("Dark Red - The GPU flush, which is how long the GPU takes to clear images from memory"), global.default_text_size, noone, c_maroon, 1);
-	}
+	//if (global.debug_screen)
+	//&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 32))
+	//&& (global.controls_used_for_menu_navigation == "mouse")
+	//{
+	//	draw_set_alpha(0.5);
+	//	draw_rectangle_color(0, 0, 370, 32, c_white, c_white, c_white, c_white, false);
+	//	draw_set_alpha(1);
+	//	draw_set_alpha(0.9);
+	//	draw_rectangle_color(0, 0, display_get_gui_width(), 64 + (32 * 12), c_black, c_black, c_black, c_black, false);
+	//	draw_set_alpha(1);
+	//	draw_set_halign(fa_left);
+	//	draw_set_valign(fa_middle);
+	//	scr_draw_text_outlined(8, 64, l10n_text("This bar is split into sections, with each section being 1/60th of a second. As you can see, the bar is made up of various colours:"), global.default_text_size, c_black, c_white, 1);
+	//	scr_draw_text_outlined(8, 64 + (32 * 3), l10n_text("Green - Input / Output processing (ie: keyboard, mouse, gamepad, networking etc...)"), global.default_text_size, noone, c_lime, 1);
+	//	scr_draw_text_outlined(8, 64 + (32 * 4), l10n_text("Red - The update speed of the step event"), global.default_text_size, noone, c_red, 1);
+	//	scr_draw_text_outlined(8, 64 + (32 * 5), l10n_text("Yellow - The time required for the draw event"), global.default_text_size, noone, c_yellow, 1);
+	//	scr_draw_text_outlined(8, 64 + (32 * 6), l10n_text("Orange - Debug update time, which is only normally visible when you use the debug module"), global.default_text_size, noone, c_orange, 1);
+	//	scr_draw_text_outlined(8, 64 + (32 * 7), l10n_text("White - GPU left over time, which is the time spent waiting for the GPU to finish the rendering of the frame before the next one can start"), global.default_text_size, c_black, c_white, 1);
+	//	scr_draw_text_outlined(8, 64 + (32 * 8), l10n_text("Cyan - The text rendering time"), global.default_text_size, noone, c_aqua, 1);
+	//	scr_draw_text_outlined(8, 64 + (32 * 9), l10n_text("Grey - The time required to clear screen each draw step"), global.default_text_size, noone, c_grey, 1);
+	//	scr_draw_text_outlined(8, 64 + (32 * 10), l10n_text("Blue - The time required for the Garbage Collector to run"), global.default_text_size, noone, c_blue, 1);
+	//	scr_draw_text_outlined(8, 64 + (32 * 11), l10n_text("Dark Red - The GPU flush, which is how long the GPU takes to clear images from memory"), global.default_text_size, noone, c_maroon, 1);
+	//}
 	
 }

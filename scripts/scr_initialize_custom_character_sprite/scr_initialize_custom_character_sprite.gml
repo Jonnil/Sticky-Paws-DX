@@ -1,8 +1,6 @@
 function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = noone, use_character_folder = character_folder)
 {
 	var saved_file_exists = false;
-	var unused_x_origin_point = noone;
-	var unused_y_origin_point = noone;
 	
 	#region /* Add sprite */
 	var sprite_found = false;

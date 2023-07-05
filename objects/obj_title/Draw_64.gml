@@ -923,9 +923,9 @@ if ((global.play_attract_demo == false) && (global.arcade_mode == false) && (in_
 		{
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, options_and_quit_y, l10n_text("Options"), "options", "options");
 		}
-	
+		
 		draw_menu_button_sprite(spr_noone, display_get_gui_width() - 370, display_get_gui_height() - 42, 0, 0, 1, 1, 370, 42, l10n_text("Made by") + " " + (global.company_name), "credits", "play_credits", true);
-	
+		
 		if (global.show_language_shortcut)
 		&& (global.convention_mode == false)
 		{

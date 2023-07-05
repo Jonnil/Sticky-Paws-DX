@@ -264,7 +264,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		    }
 		}
 		
-		#region /* When pressing the jump button, a direction and besides the wall, do the wall jump even if you still haven't started the wall jump liding down state */
+		#region /* When pressing the jump button, a direction and besides the wall, do the wall jump even if you still haven't started the wall cling state */
 		if ((key_down && !key_left_hold && !key_right_hold && key_sprint_pressed && stick_to_wall)
 		    || (key_down && !key_left_hold && !key_right_hold && key_dive_pressed && stick_to_wall)
 		    || (pressing_opposite_direction_to_drop_off_from_wall >= 10))
@@ -286,7 +286,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		    stick_to_wall = false;
 		    crouch = false;
 		}
-		else if (key_jump)
+		else if (key_jump && !on_ground)
 		{
 		    var wallJumpSetting = wall_jump_setting;
 		    var wallCollision = false;
@@ -386,7 +386,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		        }
 		    }
 		}
-		#endregion /* When pressing the jump button, a direction and besides the wall, do the wall jump even if you still haven't started the wall jump liding down state */
+		#endregion /* When pressing the jump button, a direction and besides the wall, do the wall jump even if you still haven't started the wall cling state */
 	
 	}
 	else

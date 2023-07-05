@@ -29,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_falling_block_solid",
-    "path": "sprites/spr_falling_block_solid/spr_falling_block_solid.yy",
+    "name": "spr_falling_block_long_solid",
+    "path": "sprites/spr_falling_block_long_solid/spr_falling_block_long_solid.yy",
   },
   "spriteMaskId": null,
   "visible": true,

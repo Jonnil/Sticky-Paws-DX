@@ -4,6 +4,7 @@ function scr_draw_upload_level_menu()
 	#region /* Debug toggles */
 	var destroy_zip_after_uploading = true; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
 	var skip_clear_check = false;
+	var max_megabytes = 32;
 	#endregion /* Debug toggles END */
 	
 	var upload_y = 42 * 2;
@@ -1505,62 +1506,158 @@ function scr_draw_upload_level_menu()
 		if (menu_delay <= 0)
 		&& (file_exists(working_directory + string(level_id) + ".zip"))
 		{
+			var zip_file = file_bin_open(working_directory + string(level_id) + ".zip", 0);
+			var zip_size = file_bin_size(zip_file);
+			file_bin_close(zip_file);
+			zip_megabytes = zip_size / 1024 / 1024;
 			
-			#region /* Actually upload the level to the server */
-			content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
-			
-			/* User is prompted for a file to upload */
-			file_name = filename_name(file);
-			
-			/* Create DS Map to hold the HTTP Header info */
-			map = ds_map_create();
-			
-			/* Add to the header DS Map */
-			ds_map_add(map, "Host", global.base_url);
-			var boundary = "----GMBoundary";
-			ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
-			ds_map_add(map, "User-Agent", "gmuploader");
-			ds_map_add(map, "X-API-Key", global.api_key);
-			
-			/* Loads the file into a buffer */
-			send_buffer = buffer_create(1, buffer_grow, 1);
-			buffer_load_ext(send_buffer, file, 0);
-			
-			/* Encodes the data as base64 */
-			data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
-			
-			/* Post the data to the upload script */
-			var post_data = "--" + boundary + "\r\n";
-			post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
-			post_data += file_name + "\r\n";
-			post_data += "--" + boundary + "\r\n";
-			post_data += "Content-Disposition: form-data; name=\"content_type\"\r\n\r\n";
-			post_data += "levels" + "\r\n";
-			post_data += "--" + boundary + "\r\n";
-			post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
-			post_data += data_send + "\r\n";
-			post_data += "--" + boundary + "--";
-			
-			/* Add the Content-Length header to the map */
-			ds_map_add(map, "Content-Length", string(string_length(post_data)));
-			global.http_request_id = http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
-			
-			/* Cleans up! */
-			buffer_delete(send_buffer);
-			ds_map_destroy(map);
-			#endregion /* Actually upload the level to the server END */
-			
-			/* Delete some leftover files and folders */
-			if (destroy_zip_after_uploading)
+			if (zip_megabytes > max_megabytes)
 			{
-				file_delete(file);
+				if (destroy_zip_after_uploading)
+				{
+					file_delete(file);
+				}
+				menu = "error_level_too_big";
 			}
-			menu = "level_uploaded";
+			else
+			{
+				
+				#region /* Actually upload the level to the server */
+				content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
+				
+				/* User is prompted for a file to upload */
+				file_name = filename_name(file);
+				
+				/* Create DS Map to hold the HTTP Header info */
+				map = ds_map_create();
+				
+				/* Add to the header DS Map */
+				ds_map_add(map, "Host", global.base_url);
+				var boundary = "----GMBoundary";
+				ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
+				ds_map_add(map, "User-Agent", "gmuploader");
+				ds_map_add(map, "X-API-Key", global.api_key);
+				
+				/* Loads the file into a buffer */
+				send_buffer = buffer_create(1, buffer_grow, 1);
+				buffer_load_ext(send_buffer, file, 0);
+				
+				/* Encodes the data as base64 */
+				data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
+				
+				/* Post the data to the upload script */
+				var post_data = "--" + boundary + "\r\n";
+				post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
+				post_data += file_name + "\r\n";
+				post_data += "--" + boundary + "\r\n";
+				post_data += "Content-Disposition: form-data; name=\"content_type\"\r\n\r\n";
+				post_data += "levels" + "\r\n";
+				post_data += "--" + boundary + "\r\n";
+				post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
+				post_data += data_send + "\r\n";
+				post_data += "--" + boundary + "--";
+				
+				/* Add the Content-Length header to the map */
+				ds_map_add(map, "Content-Length", string(string_length(post_data)));
+				global.http_request_id = http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
+				
+				/* Cleans up! */
+				buffer_delete(send_buffer);
+				ds_map_destroy(map);
+				#endregion /* Actually upload the level to the server END */
+				
+				/* Delete some leftover files and folders */
+				if (destroy_zip_after_uploading)
+				{
+					file_delete(file);
+				}
+				if (os_is_network_connected())
+				{
+					menu = "level_uploaded";
+				}
+				else
+				{
+					menu = "no_internet_level"
+				}
+			}
 		}
 		#endregion /* Send Zip File to the Server END */
 		
 	}
 	#endregion /* Uploading Level END */
+	
+	#region /* Error Level Too Big */
+	if (menu == "error_level_too_big")
+	{
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		draw_set_alpha(0.9);
+		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 42, l10n_text("Level Too Big"), global.default_text_size * 2, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(zip_megabytes) + " MB / " + string(max_megabytes) + " MB", global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(zip_megabytes) + " MB / " + string(max_megabytes) + " MB", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 32, l10n_text("There is a max upload size, please make it smaller"), global.default_text_size, c_black, c_white, 1);
+		
+		var ok_y = get_window_height * 0.5 + 42 + 42 + 42;
+		
+		#region /* OK Button */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		{
+			if (menu_delay == 0)
+			{
+				menu = "error_level_too_big";
+			}
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
+			draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_black, c_white, 1);
+			draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
+		}
+		else
+		{
+			if (menu == "error_level_too_big")
+			&& (global.controls_used_for_menu_navigation == "keyboard")
+			|| (menu == "error_level_too_big")
+			&& (global.controls_used_for_menu_navigation == "controller")
+			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
+				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_black, c_white, 1);
+				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_white, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_white, c_black, 1);
+				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
+			}
+		}
+		#endregion /* OK Button END */
+		
+		#region /* Return to game */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (key_a_pressed)
+		&& (menu_delay == 0)
+		|| (key_b_pressed)
+		&& (level_editor_edit_name == false)
+		&& (menu_delay == 0)
+		{
+			menu_delay = 3;
+			menu = "level_editor_upload"; /* Return to previous menu */
+			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+			{
+				show_level_editor_corner_menu = true;
+			}
+		}
+		#endregion /* Return to game END */
+		
+	}
+	#endregion /* Error Level Too Big END */
 	
 	#region /* Level Uploaded */
 	if (menu == "level_uploaded")
@@ -1656,7 +1753,7 @@ function scr_draw_upload_level_menu()
 		
 		var ok_y = get_window_height * 0.5 + 42 + 42 + 42;
 		
-		#region /* Level Uploaded OK */
+		#region /* OK Button */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
@@ -1690,7 +1787,7 @@ function scr_draw_upload_level_menu()
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
 			}
 		}
-		#endregion /* Level Uploaded OK END */
+		#endregion /* OK Button END */
 		
 		#region /* Return to game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
