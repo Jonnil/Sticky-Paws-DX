@@ -2,6 +2,7 @@ var view_left = camera_get_view_x(view_camera[view_current]) - 42;
 var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 42;
 var view_top = camera_get_view_y(view_camera[view_current]) - 42;
 var view_bottom = (camera_get_view_y(view_camera[view_current])) + (camera_get_view_height(view_camera[view_current])) + 42;
+var get_room_speed = room_speed;
 
 if (x > view_right)
 && (hspeed > 0)
@@ -59,7 +60,7 @@ if (asset_get_type("obj_semisolid_platform") == asset_object)
 if (cutscene == 0)
 {
 	time ++;
-	if (time >= room_speed* 2.3)
+	if (time >= get_room_speed * 2.3)
 	{
 		if (place_meeting(x + 1, y, obj_wall))
 		{
@@ -122,7 +123,7 @@ if (cutscene = 2)
 		image_xscale = -1;
 	}
 	else
-	if (time >= room_speed* 2)
+	if (time >= get_room_speed * 2)
 	&& (!place_meeting(x + 1, y, obj_wall))
 	{
 		sprite_index = global.resource_pack_sprite_basic_enemy_angry;

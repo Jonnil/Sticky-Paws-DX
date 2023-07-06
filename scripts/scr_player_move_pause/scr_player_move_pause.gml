@@ -120,7 +120,7 @@ function scr_player_move_pause()
 			global.pause_room = room;
 			audio_pause_all();
 			global.pause = true;
-			room_goto(room_pause);
+			room_goto(rm_pause);
 		}
 	}
 	else

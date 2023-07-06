@@ -4,6 +4,8 @@ scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_deactivate_objects_outside_view();
 
+var get_room_speed = room_speed;
+
 if (menu_delay > 0)
 {
 	menu_delay --;
@@ -76,7 +78,7 @@ if (instance_exists(obj_player))
 	|| (!instance_exists(obj_goal))
 	{
 		time_second ++;
-		if (time_second > room_speed)
+		if (time_second > get_room_speed)
 		{
 			time_second = 0;
 			global.time_countdown_bonus --;
@@ -90,9 +92,8 @@ if (instance_exists(obj_player))
 }
 #endregion /* Time Countdown END */
 
-room_speed = global.max_fps; /* Room Speed is max fps */
 global.spikes_emerge_time ++;
-if (global.spikes_emerge_time >= room_speed * 4)
+if (global.spikes_emerge_time >= get_room_speed * 4)
 {
 	global.spikes_emerge_time = 0;
 }
@@ -157,7 +158,7 @@ if (player1 >= 1)
 	
 	if (player1.speed > 0)
 	{
-		player1_show_controls_timer = room_speed * global.player1_show_controls;
+		player1_show_controls_timer = get_room_speed * global.player1_show_controls;
 	}
 }
 else
@@ -168,7 +169,7 @@ if (global.player1_can_play)
 else
 {
 	player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
-	player1_show_controls_timer = room_speed * global.player1_show_controls;
+	player1_show_controls_timer = get_room_speed * global.player1_show_controls;
 }
 #endregion /* Player 1 Show Controls HUD timer */
 
@@ -205,7 +206,7 @@ if (player2 >= 1)
 	
 	if (player2.speed > 0)
 	{
-		player2_show_controls_timer = room_speed * global.player2_show_controls;
+		player2_show_controls_timer = get_room_speed * global.player2_show_controls;
 	}
 }
 else
@@ -216,7 +217,7 @@ if (global.player2_can_play)
 else
 {
 	player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
-	player2_show_controls_timer = room_speed * global.player2_show_controls;
+	player2_show_controls_timer = get_room_speed * global.player2_show_controls;
 }
 #endregion /* Player 2 Show Controls HUD timer */
 
@@ -253,7 +254,7 @@ if (player3 >= 1)
 	
 	if (player3.speed > 0)
 	{
-		player3_show_controls_timer = room_speed * global.player3_show_controls;
+		player3_show_controls_timer = get_room_speed * global.player3_show_controls;
 	}
 }
 else
@@ -264,7 +265,7 @@ if (global.player3_can_play)
 else
 {
 	player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
-	player3_show_controls_timer = room_speed * global.player3_show_controls;
+	player3_show_controls_timer = get_room_speed * global.player3_show_controls;
 }
 #endregion /* Player 3 Show Controls HUD timer */
 
@@ -301,7 +302,7 @@ if (player4 >= 1)
 	
 	if (player4.speed > 0)
 	{
-		player4_show_controls_timer = room_speed * global.player4_show_controls;
+		player4_show_controls_timer = get_room_speed * global.player4_show_controls;
 	}
 }
 else
@@ -312,7 +313,7 @@ if (global.player4_can_play)
 else
 {
 	player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
-	player4_show_controls_timer = room_speed * global.player4_show_controls;
+	player4_show_controls_timer = get_room_speed * global.player4_show_controls;
 }
 #endregion /* Player 4 Show Controls HUD timer */
 
@@ -1152,7 +1153,7 @@ if (global.hud_hide_time > 0)
 	*/
 	
 	#region /* Show Lives y position */
-	if (room == room_world_map)
+	if (room == rm_world_map)
 	{
 		hud_show_lives_y = 32;
 	}

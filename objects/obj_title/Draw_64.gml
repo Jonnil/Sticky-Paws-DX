@@ -688,8 +688,7 @@ if ((global.play_attract_demo == false) && (global.arcade_mode == false) && (in_
 			in_settings = false;
 		
 			#region /* Select Level Editor */
-			if (asset_get_type("room_leveleditor") == asset_room)
-			&& (menu == "level_editor")
+			if (menu == "level_editor")
 			&& (menu_delay == 0)
 			&& (global.demo == false)
 			{
@@ -895,8 +894,7 @@ if ((global.play_attract_demo == false) && (global.arcade_mode == false) && (in_
 			global.character_select_in_this_menu = "main_game";
 		}
 	
-		if (asset_get_type("room_leveleditor") == asset_room)
-		&& (menu == "level_editor")
+		if (menu == "level_editor")
 		{
 			if (global.level_editor_level > 0)
 			{
@@ -1558,19 +1556,16 @@ if (iris_xscale <= 0.001)
 				audio_stop_sound(title_music);
 			}
 		}
-		if (asset_get_type("room_leveleditor") == asset_room)
+		scr_delete_sprite_properly(title_screen_background);
+		if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
+		&& (global.create_level_from_template == false)
+		&& (global.select_level_index > 0) /* Don't update if you're selecting "create from scratch" */
 		{
-			scr_delete_sprite_properly(title_screen_background);
-			if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
-			&& (global.create_level_from_template == false)
-			&& (global.select_level_index > 0) /* Don't update if you're selecting "create from scratch" */
-			{
-				/* Update the "global level name" before updating all backgrounds and going to the level editor */
-				global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
-			}
-			scr_update_all_backgrounds();
-			room_goto(room_leveleditor);
+			/* Update the "global level name" before updating all backgrounds and going to the level editor */
+			global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
 		}
+		scr_update_all_backgrounds();
+		room_goto(rm_leveleditor);
 		/* The variables "doing clear check", "actually play edited level", and "play edited level" should be set before doing "menu delay = 9999" to zoom the iris xscale */
 	}
 	#endregion /* Play or Make Level Editor END */
@@ -1588,12 +1583,9 @@ if (iris_xscale <= 0.001)
 				audio_stop_sound(title_music);
 			}
 		}
-		if (asset_get_type("room_world_map") == asset_room)
-		{
-			scr_delete_sprite_properly(title_screen_background);
-			scr_config_save();
-			room_goto(room_world_map);
-		}
+		scr_delete_sprite_properly(title_screen_background);
+		scr_config_save();
+		room_goto(rm_world_map);
 	}
 	#endregion /* Load File END */
 

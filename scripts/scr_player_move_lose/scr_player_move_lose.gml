@@ -15,7 +15,7 @@ function scr_player_move_lose()
 		#endregion /* Update Checkpoint Time END */
 		
 		#region /* Update Level Editor Checkpoint Time */
-		if (room == room_leveleditor)
+		if (room == rm_leveleditor)
 		&& (global.actually_play_edited_level)
 		&& (global.character_select_in_this_menu == "level_editor")
 		{

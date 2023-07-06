@@ -79,9 +79,9 @@ if (global.quit_level == true)
 		global.quit_level = false;
 		
 		if (global.quit_to_map)
-			room_goto(room_world_map);
+			room_goto(rm_world_map);
 		else
-			room_goto(room_title);
+			room_goto(rm_title);
 		
 		/* Only set these to false after going to room */
 		global.quit_to_map = false;
@@ -213,7 +213,7 @@ if (!place_meeting(x, y, obj_checkpoint))
 					{
 						global.player4_can_play = false;
 					}
-					room_goto(room_title);
+					room_goto(rm_title);
 				}
 				else
 				if (obj_camera.after_goal_go_to_this_level >= 0)
@@ -236,7 +236,7 @@ if (!place_meeting(x, y, obj_checkpoint))
 					{
 						global.player4_can_play = false;
 					}
-					room_goto(room_leveleditor);
+					room_goto(rm_leveleditor);
 				}
 				else
 				{
@@ -256,7 +256,7 @@ if (!place_meeting(x, y, obj_checkpoint))
 					{
 						global.player4_can_play = false;
 					}
-					room_goto(room_world_map);
+					room_goto(rm_world_map);
 				}
 			}
 			else

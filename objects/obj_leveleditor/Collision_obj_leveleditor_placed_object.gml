@@ -32,7 +32,7 @@ if (global.actually_play_edited_level == false)
 			{
 				
 				#region /* Reset Level Editor Checkpoint */
-				if (room == room_leveleditor)
+				if (room == rm_leveleditor)
 				&& (global.character_select_in_this_menu == "level_editor")
 				{
 					ini_open(working_directory + "save_files/custom_level_save.ini");

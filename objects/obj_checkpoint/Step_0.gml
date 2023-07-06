@@ -140,7 +140,7 @@ if (instance_exists(obj_player))
 						global.checkpoint_realmillisecond = global.timeattack_realmillisecond;
 						
 						#region /* Save Level Editor Checkpoint */
-						if (room == room_leveleditor)
+						if (room == rm_leveleditor)
 						&& (global.character_select_in_this_menu == "main_game")
 						&& (global.actually_play_edited_level)
 						{
@@ -168,7 +168,7 @@ if (instance_exists(obj_player))
 							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						}
 						else
-						if (room == room_leveleditor)
+						if (room == rm_leveleditor)
 						&& (global.character_select_in_this_menu == "level_editor")
 						&& (global.actually_play_edited_level)
 						{

@@ -1,13 +1,13 @@
 {
   "resourceType": "GMRoom",
   "resourceVersion": "1.0",
-  "name": "room_splash_screen",
+  "name": "rm_splash_screen",
   "creationCodeFile": "",
   "inheritCode": false,
   "inheritCreationOrder": false,
   "inheritLayers": false,
   "instanceCreationOrder": [
-    {"name":"inst_47370E50","path":"rooms/room_splash_screen/room_splash_screen.yy",},
+    {"name":"inst_47370E50","path":"rooms/rm_splash_screen/rm_splash_screen.yy",},
   ],
   "isDnd": false,
   "layers": [

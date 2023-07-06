@@ -1,13 +1,13 @@
 {
   "resourceType": "GMRoom",
   "resourceVersion": "1.0",
-  "name": "room_pause",
+  "name": "rm_pause",
   "creationCodeFile": "",
   "inheritCode": false,
   "inheritCreationOrder": false,
   "inheritLayers": false,
   "instanceCreationOrder": [
-    {"name":"inst_7979E207","path":"rooms/room_pause/room_pause.yy",},
+    {"name":"inst_7979E207","path":"rooms/rm_pause/rm_pause.yy",},
   ],
   "isDnd": false,
   "layers": [

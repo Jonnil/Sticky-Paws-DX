@@ -679,7 +679,7 @@ function scr_options_menu()
 		&& (input_gamepad_button == false)
 		{
 			scr_config_save(); /* Save Config */
-			if (global.pause_room != room_leveleditor)
+			if (global.pause_room != rm_leveleditor)
 			&& (global.selected_resource_pack != old_selected_resource_pack)
 			{
 				scr_load_resource_pack_sprite(); /* Load new sprites from resource pack */
@@ -802,7 +802,7 @@ function scr_options_menu()
 		&& (menu_delay == 0)
 		{
 			scr_config_save(); /* Save Config */
-			if (global.pause_room != room_leveleditor)
+			if (global.pause_room != rm_leveleditor)
 			&& (global.selected_resource_pack != old_selected_resource_pack)
 			{
 				scr_load_resource_pack_sprite(); /* Load new sprites from resource pack */

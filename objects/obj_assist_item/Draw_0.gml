@@ -14,7 +14,7 @@ if (effect_time > 60)
 }
 #endregion /* Expanding Ring Effect END */
 
-if (instance_number(obj_player)= 1)
+if (instance_number(obj_player) == 1)
 {
 	if (obj_player.assist_invincible)
 	{
@@ -22,21 +22,3 @@ if (instance_number(obj_player)= 1)
 		instance_destroy();
 	}
 }
-
-#region /* Destroy Assist Item if appearing in rooms it's not meant to be in */
-if (asset_get_type("room_title") == asset_room)
-{
-	if (room == room_title)
-	{
-		instance_destroy();
-	}
-}
-else
-if (asset_get_type("room_world_map") == asset_room)
-{
-	if (room == room_world_map)
-	{
-		instance_destroy();
-	}
-}
-#endregion /* Destroy Assist Item if appearing in rooms it's not meant to be in END */

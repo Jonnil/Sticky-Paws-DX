@@ -248,7 +248,7 @@ function scr_options_global_resources()
 			/* Draw text of what the file is called */ scr_draw_text_outlined(resource_pack_x, 20 + (resource_pack_y + 40), string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)), global.default_text_size * 1.1, c_menu_outline, c_dkgray, 1);
 			
 			if (global.selected_resource_pack > 0)
-			&& (global.pause_room != room_leveleditor)
+			&& (global.pause_room != rm_leveleditor)
 			{
 				draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (resource_pack_y), 0.5, 0.5, 0, c_white, 1);
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (resource_pack_y) - 16, resource_pack_x - 32 + 16, 20 + (resource_pack_y) + 16))
@@ -263,9 +263,9 @@ function scr_options_global_resources()
 			}
 			
 			if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack + 1)) + "/data/sprite_origin_point.ini"))
-			&& (global.pause_room != room_leveleditor)
+			&& (global.pause_room != rm_leveleditor)
 			|| (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack + 1)) + "/data/sprite_origin_point.ini"))
-			&& (global.pause_room != room_leveleditor)
+			&& (global.pause_room != rm_leveleditor)
 			{
 				draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (resource_pack_y), 0.5, 0.5, 0, c_white, 1);
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (resource_pack_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (resource_pack_y) + 16))
@@ -296,7 +296,7 @@ function scr_options_global_resources()
 				&& (menu_joystick_delay == 0)
 				&& (can_navigate_settings_sidebar == false)
 				&& (global.selected_resource_pack > 0)
-				&& (global.pause_room != room_leveleditor)
+				&& (global.pause_room != rm_leveleditor)
 				{
 					global.selected_resource_pack --;
 					ini_open(working_directory + "config.ini");
@@ -318,7 +318,7 @@ function scr_options_global_resources()
 				&& (menu_joystick_delay == 0)
 				&& (can_navigate_settings_sidebar == false)
 				&& (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack + 1)) + "/data/sprite_origin_point.ini"))
-				&& (global.pause_room != room_leveleditor)
+				&& (global.pause_room != rm_leveleditor)
 				{
 					global.selected_resource_pack ++;
 					ini_open(working_directory + "config.ini");
@@ -444,8 +444,7 @@ function scr_options_global_resources()
 			if (variable_instance_exists(self, "title_screen_background"))
 			{
 				if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-				&& (asset_get_type("room_title") == asset_room)
-				&& (room == room_title)
+				&& (room == rm_title)
 				{
 					layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
 				}
@@ -519,8 +518,7 @@ function scr_options_global_resources()
 			if (variable_instance_exists(self, "title_screen_background"))
 			{
 				if (layer_background_get_sprite(layer_background_get_id(layer_get_id("Background"))) != title_screen_background)
-				&& (asset_get_type("room_title") == asset_room)
-				&& (room == room_title)
+				&& (room == rm_title)
 				{
 					layer_background_sprite(layer_background_get_id(layer_get_id("Background")), title_screen_background);
 				}

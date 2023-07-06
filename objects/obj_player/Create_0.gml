@@ -537,8 +537,7 @@ double_tap_right_dive = false;
 have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 
 #region /* Custom Music */
-if (asset_get_type("room_title") == asset_room)
-&& (room != room_title)
+if (room != rm_title)
 {
 	
 	#region /* Update Level Clear Melody */
@@ -742,8 +741,7 @@ active_jump = false;
 #endregion /* Initialize the controls END */
 
 #region /* Load Checkpoint Direction */
-if (asset_get_type("room_leveleditor") == asset_room)
-&& (room == room_leveleditor)
+if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "main_game")
 {
 	var uppercase_level_name;
@@ -756,8 +754,7 @@ if (asset_get_type("room_leveleditor") == asset_room)
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 else
-if (asset_get_type("room_leveleditor") == asset_room)
-&& (room == room_leveleditor)
+if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "level_editor")
 {
 	

@@ -17,7 +17,7 @@ if (goto_title_screen)
 	//		sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) * 0.5, sprite_get_height(global.title_logo_index) * 0.5);
 	//	}
 	//}
-	room_goto(room_title);
+	room_goto(rm_title);
 }
 
 #region /* Skip company logo screen when pressing skip button */

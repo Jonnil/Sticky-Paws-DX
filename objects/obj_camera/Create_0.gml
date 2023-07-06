@@ -2,6 +2,8 @@
 can_spawn_players = true;
 #endregion /* Debug toggles END */
 
+room_speed = global.max_fps; /* Room Speed is max fps */
+
 scr_initialize_camera();
 
 global.player_has_entered_goal = false;
@@ -356,7 +358,7 @@ if (can_spawn_players)
 	{
 		player4 = noone;
 	}
-	if (room == room_leveleditor)
+	if (room == rm_leveleditor)
 	&& (global.actually_play_edited_level)
 	{
 		player_has_spawned = true;

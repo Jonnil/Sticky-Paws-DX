@@ -13,7 +13,7 @@ function scr_load_resource_pack_sprite()
 	}
 	
 	#region /* Delete sprites before loading new sprites */
-	if (room != room_splash_screen)
+	if (room != rm_splash_screen)
 	{
 		if (global.resource_pack_sprite_logo_discord > 0){global.resource_pack_sprite_logo_discord = spr_noone;}
 		if (global.resource_pack_sprite_logo_gamebanana > 0){global.resource_pack_sprite_logo_gamebanana = spr_noone;}

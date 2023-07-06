@@ -189,6 +189,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		
 		#region /* If game is retrieving a level ID over id_max_length, then show download failed and why */
 		if (automatically_search_for_id)
+		&& (search_for_id_still)
 		{
 			if (string_length(search_id) < id_max_length)
 			|| (string_length(search_id) > id_max_length)

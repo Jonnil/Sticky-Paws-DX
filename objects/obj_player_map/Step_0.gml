@@ -32,7 +32,7 @@ if (global.quit_level)
 	
 	global.quit_level = false;
 	room_persistent = false; /* Turn OFF Room Persistency. Whenever you quit the game, you need to turn off room persistent */
-	room_goto(room_title);
+	room_goto(rm_title);
 }
 #endregion /* Quit Game END */
 
@@ -108,7 +108,7 @@ if (keyboard_check_pressed(vk_escape) ||
 	room_persistent = true; /* Turn ON Room Persistency */
 	global.pause_room = room;
 	audio_pause_all();
-	room_goto(room_pause);
+	room_goto(rm_pause);
 }
 #endregion /* Pause END */
 
@@ -558,7 +558,7 @@ if (can_move == false)
 	
 	global.actually_play_edited_level = true;
 	global.play_edited_level = true;
-	room_goto(room_leveleditor);
+	room_goto(rm_leveleditor);
 }
 #endregion /* After pressing enter level, the iris should shrink and then start the level END */
 

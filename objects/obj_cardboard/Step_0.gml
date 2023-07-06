@@ -63,21 +63,15 @@ if (break_cardboard)
 {
 	instance_create_depth(x, y - 32, 0, obj_block_break);
 	score += 50;
+	var break_cardboard_direction = random_range(103, 167);
 	if (break_cardboard_source_x < x)
 	{
-		var break_cardboard_direction = random_range(13, 77);
-	}
-	else
-	{
-		var break_cardboard_direction = random_range(103, 167);
+		break_cardboard_direction = random_range(13, 77);
 	}
 	var new_instance = instance_create_depth(x, y, 0, obj_cardboard_particle);
 	new_instance.sprite_index = sprite_index;
-	with(new_instance)
-	{
-		new_instance.direction = break_cardboard_direction;
-		new_instance.speed = random_range(5, 10) + instance_nearest(x, y, obj_cardboard).break_cardboard_source_speed * 0.5;
-	}
+	new_instance.direction = break_cardboard_direction;
+	new_instance.speed = random_range(5, 10) + instance_nearest(x, y, obj_cardboard).break_cardboard_source_speed * 0.5;
 	if (x < view_right && x > view_left && y < view_bottom && y > view_top)
 	{
 		effect_create_above(ef_smoke, x, y, 1, c_dkgray);

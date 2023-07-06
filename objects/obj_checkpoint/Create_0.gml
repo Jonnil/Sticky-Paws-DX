@@ -15,8 +15,7 @@ else
 }
 
 #region /* Load Level Editor Checkpoint */
-if (asset_get_type("room_leveleditor") == asset_room)
-&& (room == room_leveleditor)
+if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "main_game")
 && (global.actually_play_edited_level)
 {
@@ -30,8 +29,7 @@ if (asset_get_type("room_leveleditor") == asset_room)
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 else
-if (asset_get_type("room_leveleditor") == asset_room)
-&& (room == room_leveleditor)
+if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "level_editor")
 && (global.actually_play_edited_level)
 {

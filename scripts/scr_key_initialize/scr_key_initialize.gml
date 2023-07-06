@@ -1,12 +1,13 @@
 function scr_key_initialize(key, hold0_press1_release2, which_player, this_player_key = action.jump)
 {
+	var player_gamepad_slot;
 	
 	#region /* Set correct controller ports */
 	switch(which_player) {
-		case 1: var player_gamepad_slot = global.player1_slot; break;
-		case 2: var player_gamepad_slot = global.player2_slot; break;
-		case 3: var player_gamepad_slot = global.player3_slot; break;
-		case 4: var player_gamepad_slot = global.player4_slot; break;
+		case 1: player_gamepad_slot = global.player1_slot; break;
+		case 2: player_gamepad_slot = global.player2_slot; break;
+		case 3: player_gamepad_slot = global.player3_slot; break;
+		case 4: player_gamepad_slot = global.player4_slot; break;
 	}
 	#endregion /* Set correct controller ports END */
 	
@@ -53,7 +54,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	
 	#region /* Mouse 2 */
 	var key2_mouse = noone;
-	var button_value = global.player_[inp.key][which_player][2][this_player_key];
+	button_value = global.player_[inp.key][which_player][2][this_player_key];
 	
 	switch (button_value) {
 		case mouse_button_value.mb_left:
@@ -98,7 +99,7 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	
 	#region /* Joystick 1 */
 	var joy_1 = noone;
-	var button_value = global.player_[inp.gp][which_player][1][this_player_key];
+	button_value = global.player_[inp.gp][which_player][1][this_player_key];
 	
 	switch (button_value) {
 		case joystick_value.joyleft_left:

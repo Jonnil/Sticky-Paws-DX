@@ -1,4 +1,4 @@
-function scr_audio_play(sound_id = noone, what_volume_source = volume_source.sound, volume_modifier = 1) /* This script is to simplify code when wanting to add sound effects to the game */
+function scr_audio_play(sound_id, what_volume_source = volume_source.sound, volume_modifier = 1) /* This script is to simplify code when wanting to add sound effects to the game */
 {
 	if (sound_id >= 0) /* Check if the sound even exists, otherwise the game can crash */
 	{

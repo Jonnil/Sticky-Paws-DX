@@ -76,8 +76,7 @@ function scr_player_move_goal()
 				#endregion /* Stop Music END */
 				
 				#region /* Save Checkpoint */
-				if (asset_get_type("room_leveleditor") == asset_room)
-				&& (room == room_leveleditor)
+				if (room == rm_leveleditor)
 				&& (global.character_select_in_this_menu == "main_game")
 				{
 					global.checkpoint_x = 0;
@@ -103,8 +102,7 @@ function scr_player_move_goal()
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (asset_get_type("room_leveleditor") == asset_room)
-				&& (room == room_leveleditor)
+				if (room == rm_leveleditor)
 				&& (global.character_select_in_this_menu == "level_editor")
 				{
 					global.checkpoint_x = 0;

@@ -9,7 +9,7 @@ draw_set_valign(fa_middle);
 hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 160, 0.1);
 
 #region /* Big Collectibles */
-if (global.pause_room == room_leveleditor)
+if (global.pause_room == rm_leveleditor)
 and (hide_menu_for_clean_screenshots == false)
 {
 	
@@ -200,13 +200,13 @@ if (hide_menu_for_clean_screenshots == false)
 	#endregion /* Pause Text END */
 
 	/* PAUSE LEVEL SELECT / LEVEL EDITOR MENU */
-	if (room == room_world_map)
+	if (room == rm_world_map)
 	&& (show_loading_icon == false)
-	|| (room == room_leveleditor)
+	|| (room == rm_leveleditor)
 	&& (show_loading_icon == false)
-	|| (global.pause_room == room_world_map)
+	|| (global.pause_room == rm_world_map)
 	&& (show_loading_icon == false)
-	|| (global.pause_room == room_leveleditor)
+	|| (global.pause_room == rm_leveleditor)
 	&& (show_loading_icon == false)
 	{
 		if (menu == "continue")
@@ -217,8 +217,8 @@ if (hide_menu_for_clean_screenshots == false)
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Continue"), "continue", "continue", c_lime, fade_in_pause_alpha);
 			draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 			
-			if (room == room_leveleditor)
-			|| (global.pause_room == room_leveleditor)
+			if (room == rm_leveleditor)
+			|| (global.pause_room == rm_leveleditor)
 			{
 				if (global.convention_mode == false)
 				{
@@ -290,16 +290,16 @@ if (hide_menu_for_clean_screenshots == false)
 			draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 		}
 		else
-		if (global.pause_room == room_leveleditor)
+		if (global.pause_room == rm_leveleditor)
 		&& (global.character_select_in_this_menu == "main_game")
 		&& (menu == "quit_to_map")
-		|| (global.pause_room == room_leveleditor)
+		|| (global.pause_room == rm_leveleditor)
 		&& (global.character_select_in_this_menu == "main_game")
 		&& (menu == "quit_to_title")
-		|| (global.pause_room == room_leveleditor)
+		|| (global.pause_room == rm_leveleditor)
 		&& (global.character_select_in_this_menu == "main_game")
 		&& (menu == "quit_to_desktop")
-		|| (global.pause_room == room_leveleditor)
+		|| (global.pause_room == rm_leveleditor)
 		&& (global.character_select_in_this_menu == "main_game")
 		&& (menu == "quit_nevermind")
 		{
@@ -319,13 +319,13 @@ if (hide_menu_for_clean_screenshots == false)
 			}
 		}
 		else
-		if (global.pause_room == room_leveleditor)
+		if (global.pause_room == rm_leveleditor)
 		&& (global.character_select_in_this_menu == "level_editor")
 		&& (menu == "quit_to_title")
-		|| (global.pause_room == room_leveleditor)
+		|| (global.pause_room == rm_leveleditor)
 		&& (global.character_select_in_this_menu == "level_editor")
 		&& (menu == "quit_to_desktop")
-		|| (global.pause_room == room_leveleditor)
+		|| (global.pause_room == rm_leveleditor)
 		&& (global.character_select_in_this_menu == "level_editor")
 		&& (menu == "quit_nevermind")
 		{
@@ -344,11 +344,11 @@ if (hide_menu_for_clean_screenshots == false)
 			}
 		}
 		else
-		if (global.pause_room == room_world_map)
+		if (global.pause_room == rm_world_map)
 		&& (menu == "quit_to_title")
-		|| (global.pause_room == room_world_map)
+		|| (global.pause_room == rm_world_map)
 		&& (menu == "quit_to_desktop")
-		|| (global.pause_room == room_world_map)
+		|| (global.pause_room == rm_world_map)
 		&& (menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);

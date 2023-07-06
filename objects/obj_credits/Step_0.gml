@@ -52,25 +52,25 @@ if (image_index <= 1 && end_credits && sprite_index == spr_credits)
 
 if (iris_xscale <= 0.01)
 {
-    if (room == room_title)
+    if (room == rm_title)
     {
         global.character_select_in_this_menu = "main_game";
         room_restart();
     }
-    else if (room == room_leveleditor && global.character_select_in_this_menu == "level_editor" && global.actually_play_edited_level && global.play_edited_level)
+    else if (room == rm_leveleditor && global.character_select_in_this_menu == "level_editor" && global.actually_play_edited_level && global.play_edited_level)
     {
         global.actually_play_edited_level = false;
         global.play_edited_level = false;
-        room_goto(room_title);
+        room_goto(rm_title);
     }
-    else if (room == room_leveleditor && global.character_select_in_this_menu == "level_editor" && !global.actually_play_edited_level && global.play_edited_level)
+    else if (room == rm_leveleditor && global.character_select_in_this_menu == "level_editor" && !global.actually_play_edited_level && global.play_edited_level)
     {
         global.play_edited_level = false;
         room_restart();
     }
     else
     {
-        room_goto(room_world_map);
+        room_goto(rm_world_map);
     }
 }
 

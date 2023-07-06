@@ -1386,7 +1386,7 @@ if (global.actually_play_edited_level == false)
 		if (quit_level_editor > 6)
 		{
 			global.create_level_from_template = false; /* Disable global.create_level_from_template after loading everything and quitting the level editor, to let every object have time to load and save */
-			room_goto(room_title);
+			room_goto(rm_title);
 		}
 	}
 	#endregion /* End Game END */
@@ -1420,7 +1420,7 @@ if (global.actually_play_edited_level == false)
 	}
 	if (pause == 5)
 	{
-		global.pause_room = room_leveleditor;
+		global.pause_room = rm_leveleditor;
 		quit_level_editor = false;
 		can_input_level_name = false;
 		input_key = false;

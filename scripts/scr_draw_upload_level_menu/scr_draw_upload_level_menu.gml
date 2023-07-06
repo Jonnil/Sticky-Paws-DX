@@ -40,11 +40,11 @@ function scr_draw_upload_level_menu()
 			show_level_editor_corner_menu = true;
 		}
 		can_input_level_name = false;
-		if (room == room_title)
+		if (room == rm_title)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (upload_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (upload_y) - 3 + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (global.controls_used_for_menu_navigation == "mouse")
-		|| (room = room_leveleditor)
+		|| (room = rm_leveleditor)
 		&& (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (global.controls_used_for_menu_navigation == "mouse")
@@ -293,7 +293,7 @@ function scr_draw_upload_level_menu()
 				global.actually_play_edited_level = true;
 				global.play_edited_level = true;
 				can_navigate = false;
-				if (room == room_leveleditor)
+				if (room == rm_leveleditor)
 				{
 					pause = false;
 					menu_delay = 2;
@@ -465,7 +465,7 @@ function scr_draw_upload_level_menu()
 		}
 		open_sub_menu = true;
 		lerp_on = true;
-		if (room == room_title)
+		if (room == rm_title)
 		{
 			if (get_window_height <= 720)
 			{
@@ -1573,6 +1573,7 @@ function scr_draw_upload_level_menu()
 				}
 				if (os_is_network_connected())
 				{
+					search_for_id_still = false;
 					menu = "level_uploaded";
 				}
 				else
@@ -1728,6 +1729,7 @@ function scr_draw_upload_level_menu()
 		|| (key_b_pressed)
 		&& (menu_delay == 0)
 		{
+			search_for_id_still = true;
 			menu_delay = 3;
 			menu = "level_editor_upload"; /* Return to previous menu */
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
@@ -1812,7 +1814,7 @@ function scr_draw_upload_level_menu()
 	#endregion /* No Internet END */
 	
 	#region /* Enter Custom Level */
-	if (room == room_title)
+	if (room == rm_title)
 	&& (iris_xscale <= 0.001)
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
@@ -1822,7 +1824,7 @@ function scr_draw_upload_level_menu()
 		}
 		scr_delete_sprite_properly(title_screen_background);
 		scr_update_all_backgrounds();
-		room_goto(room_leveleditor);
+		room_goto(rm_leveleditor);
 	}
 	#endregion /* Enter Custom Level END */
 	
