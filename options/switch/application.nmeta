@@ -26,8 +26,8 @@
     <SupportedLanguage>AmericanEnglish</SupportedLanguage>
     <Screenshot>Allow</Screenshot>
     <DataLossConfirmation>None</DataLossConfirmation>
-    <UserAccountSaveDataSize>0x0000000000400000</UserAccountSaveDataSize>
-    <UserAccountSaveDataJournalSize>0x0000000000400000</UserAccountSaveDataJournalSize>
+    <UserAccountSaveDataSize>0x0000000002000000</UserAccountSaveDataSize>
+    <UserAccountSaveDataJournalSize>0x0000000002000000</UserAccountSaveDataJournalSize>
     <LogoType>LicensedByNintendo</LogoType>
     <LogoHandling>Auto</LogoHandling>
     <VideoCapture>Enable</VideoCapture>
