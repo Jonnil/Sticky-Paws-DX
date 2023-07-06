@@ -99,8 +99,6 @@ if (global.play_edited_level)
 {
 	if (global.actually_play_edited_level)
 	{
-		view_xview = x - view_wview * 0.5;
-		view_yview = y - view_hview * 0.5;
 		if (!instance_exists(obj_camera))
 		{
 			

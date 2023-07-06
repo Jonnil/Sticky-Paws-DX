@@ -72,33 +72,22 @@ if (can_break_this_block)
 		}
 	}
 	score += 50;
-	if (asset_get_type("obj_camera") == asset_object)
 	if (instance_exists(obj_camera))
 	{
 		with(obj_camera)
 		{
-			if (variable_instance_exists(self, "hud_show_score_timer"))
-			{
-				hud_show_score_timer = global.hud_hide_time * 60;
-			}
+			hud_show_score_timer = global.hud_hide_time * 60;
 		}
 	}
 	if (show_score_up)
-	&& (asset_get_type("obj_score_up") == asset_object)
 	{
 		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			if (variable_instance_exists(self, "score_up"))
-			{
-				score_up = 50;
-			}
+			score_up = 50;
 		}
 	}
 	effect_create_above(ef_smoke, x, y, 1, c_dkgray);
-	if (asset_get_type("scr_audio_play") == asset_script)
-	{
-		scr_audio_play(snd_blockbreak, volume_source.sound);
-	}
+	scr_audio_play(snd_blockbreak, volume_source.sound);
 	instance_destroy();
 }
 #endregion /* Break this Block END */

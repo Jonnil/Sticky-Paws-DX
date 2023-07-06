@@ -136,20 +136,22 @@ function scr_spawn_objects_when_starting_room()
 			        }
 			        break;
 			    case level_object_id.id_falling_block:
-			        instance_create_depth(x, y, 0, obj_falling_block);
+			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
+						sprite_index = spr_falling_block;
+					}
 			        break;
 			    case level_object_id.id_falling_block_solid:
-			        instance_create_depth(x, y, 0, obj_falling_block_solid_spawner);
-			        break;
+			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
+						sprite_index = spr_falling_block_solid;
+					}
+					break;
 			    case level_object_id.id_falling_block_long:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
-						falling_block_long = true;
 						sprite_index = spr_falling_block_long;
 					}
 			        break;
 			    case level_object_id.id_falling_block_long_solid:
 			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
-						falling_block_long = true;
 						sprite_index = spr_falling_block_long_solid;
 					}
 			        break;

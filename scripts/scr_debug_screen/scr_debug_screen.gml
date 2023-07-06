@@ -29,7 +29,10 @@ function scr_debug_screen()
 	gamepad_button_check(4, gp_stickr) && gamepad_button_check_pressed(3, gp_stickl))
 	{
 		global.debug_screen = !global.debug_screen;
-		show_debug_overlay(global.debug_screen);
+		if (keyboard_check(ord("O")))
+		{
+			show_debug_overlay(global.debug_screen);
+		}
 	}
 	
 	if (global.debug_screen && keyboard_check_pressed(vk_f2))

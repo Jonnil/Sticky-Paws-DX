@@ -418,8 +418,7 @@ function scr_select_official_level_menu()
 			}
 			#endregion /* Copy files from official levels to level editor END */
 			
-			if (asset_get_type("obj_camera") == asset_object)
-			&& (instance_exists(obj_camera))
+			if (instance_exists(obj_camera))
 			{
 				with(obj_camera)
 				{
@@ -455,8 +454,7 @@ function scr_select_official_level_menu()
 		&& (menu_delay == 0)
 		{
 			menu_delay = 3;
-			if (asset_get_type("obj_camera") == asset_object)
-			&& (instance_exists(obj_camera))
+			if (instance_exists(obj_camera))
 			{
 				with(obj_camera)
 				{

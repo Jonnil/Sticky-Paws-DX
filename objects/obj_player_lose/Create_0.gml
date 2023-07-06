@@ -64,16 +64,14 @@ if (bubble == false)
 	global.lives_until_assist ++;
 }
 player = 1;
-if (asset_get_type("obj_camera") == asset_object)
-&& (instance_exists(obj_camera))
+if (instance_exists(obj_camera))
 {
 	with(obj_camera)
 	{
 		hud_show_lives_timer = global.hud_hide_time * 60;
 	}
 }
-if (asset_get_type("obj_camera") == asset_object)
-&& (instance_exists(obj_camera))
+if (instance_exists(obj_camera))
 {
 	with(obj_camera)
 	{
