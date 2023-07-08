@@ -36,9 +36,7 @@ else
 	
 	#region /* Set the gravity */
 	gravity_direction = 270; /* Direction of the gravity */
-	if (asset_get_type("obj_wall") == asset_object)
-	&& (!place_meeting(x, y + 1, obj_wall))
-	&& (asset_get_type("obj_semisolid_platform") == asset_object)
+	if (!place_meeting(x, y + 1, obj_wall))
 	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -150,8 +148,7 @@ if (coil_spring)
 	|| (instance_exists(obj_foreground_secret))
 	&& (!place_meeting(x, y, obj_foreground_secret))
 	{
-		if (asset_get_type("obj_camera") == asset_object)
-		&& (instance_exists(obj_camera))
+		if (instance_exists(obj_camera))
 		&& (obj_camera.iris_xscale > 1)
 		{
 			effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);

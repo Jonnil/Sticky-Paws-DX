@@ -24,15 +24,11 @@ function scr_player_move_jumping()
 		#region /* Drop down below semisolid platform */
 		if (key_crouch_hold)
 		&& (ground_pound == false)
-		&& (asset_get_type("obj_semisolid_platform") == asset_object)
 		&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		&& (asset_get_type("obj_wall") == asset_object)
 		&& (!place_meeting(x, y + 1, obj_wall))
 		|| (key_down)
 		&& (ground_pound == false)
-		&& (asset_get_type("obj_semisolid_platform") == asset_object)
 		&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		&& (asset_get_type("obj_wall") == asset_object)
 		&& (!place_meeting(x, y + 1, obj_wall))
 		{
 			can_ground_pound = false;
@@ -45,24 +41,20 @@ function scr_player_move_jumping()
 		else
 		if (ground_pound == 0)
 		{
-			if (asset_get_type("obj_wall") == asset_object)
-			&& (place_meeting(x, y + 1, obj_wall))
+			if (place_meeting(x, y + 1, obj_wall))
 			&& (crouch == false)
-		
-			|| (asset_get_type("obj_semisolid_platform") == asset_object)
-			&& (place_meeting(x, y + 1, obj_semisolid_platform))
+			
+			|| (place_meeting(x, y + 1, obj_semisolid_platform))
 			&& (crouch == false)
 			&& (vspeed == 0)
-		
-			|| (asset_get_type("obj_wall") == asset_object)
-			&& (place_meeting(x, y + 1, obj_wall))
-			and!(place_meeting(x, y - 1, obj_wall))
+			
+			|| (place_meeting(x, y + 1, obj_wall))
+			&& (!place_meeting(x, y - 1, obj_wall))
 			&& (crouch)
 			&& (vspeed == 0)
-		
-			|| (asset_get_type("obj_semisolid_platform") == asset_object)
-			&& (place_meeting(x, y + 1, obj_semisolid_platform))
-			and!(place_meeting(x, y - 1, obj_semisolid_platform))
+			
+			|| (place_meeting(x, y + 1, obj_semisolid_platform))
+			&& (!place_meeting(x, y - 1, obj_semisolid_platform))
 			&& (crouch)
 			&& (vspeed == 0)
 			{
@@ -135,20 +127,17 @@ function scr_player_move_jumping()
 			
 				#region /* Smoke effect under player when jumping */
 				if (position_meeting(x - 16, bbox_bottom + 1, obj_wall))
-				|| (asset_get_type("obj_semisolid_platform") == asset_object)
-				&& (position_meeting(x - 16, bbox_bottom + 1, obj_semisolid_platform))
+				|| (position_meeting(x - 16, bbox_bottom + 1, obj_semisolid_platform))
 				{
 					effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
 				}
 				if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-				|| (asset_get_type("obj_semisolid_platform") == asset_object)
-				&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+				|| (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 				{
 					effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
 				}
 				if (position_meeting(x + 16, bbox_bottom + 1, obj_wall))
-				|| (asset_get_type("obj_semisolid_platform") == asset_object)
-				&& (position_meeting(x + 16, bbox_bottom + 1, obj_semisolid_platform))
+				|| (position_meeting(x + 16, bbox_bottom + 1, obj_semisolid_platform))
 				{
 					effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
 				}

@@ -13,9 +13,7 @@ if (place_meeting(x, y + 1, other))
 {
 	
 	#region /* Smoke Landing Effect */
-	if (asset_get_type("obj_wall") == asset_object)
-	&& (asset_get_type("obj_camera") == asset_object)
-	&& (instance_exists(obj_camera))
+	if (instance_exists(obj_camera))
 	&& (obj_camera.iris_xscale > 1)
 	{
 		if (position_meeting(x - 24, bbox_bottom + 2, obj_wall))

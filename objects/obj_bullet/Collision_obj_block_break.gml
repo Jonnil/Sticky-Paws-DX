@@ -41,25 +41,19 @@ if (die == false)
 		#region /* Rewards */
 		
 		#region /* 1 Coin */
-		if (asset_get_type("obj_basic_collectible") == asset_object)
+		with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 		{
-			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-			{
-				image_speed = 1;
-				motion_set(90, 10);
-				bounce_up = true;
-			}
+			image_speed = 1;
+			motion_set(90, 10);
+			bounce_up = true;
 		}
 		#endregion /* 1 Coin END */
 		
 		#region /* 200 Score */
 		score += 200;
-		if (asset_get_type("obj_score_up") == asset_object)
+		with(instance_create_depth(x, y, 0, obj_score_up))
 		{
-			with(instance_create_depth(x, y, 0, obj_score_up))
-			{
-				score_up = 200;
-			}
+			score_up = 200;
 		}
 		#endregion /* 200 Score END */
 		

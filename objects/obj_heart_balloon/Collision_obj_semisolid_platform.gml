@@ -9,8 +9,7 @@ if (position_meeting(x, bbox_bottom + 1, other))
 if (position_meeting(x, bbox_bottom + 1, other))
 && (vspeed >= 0)
 {
-	if (asset_get_type("obj_camera") == asset_object)
-	&& (instance_exists(obj_camera))
+	if (instance_exists(obj_camera))
 	&& (obj_camera.iris_xscale > 1)
 	{
 		effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);

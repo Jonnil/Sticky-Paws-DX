@@ -68,13 +68,11 @@ else
 var view_left = camera_get_view_x(view_camera[view_current]) - 22;
 var view_right = (camera_get_view_x(view_camera[view_current])) + (camera_get_view_width(view_camera[view_current])) + 22;
 
-if (asset_get_type("obj_camera") == asset_object)
-&& (instance_exists(obj_camera))
+if (instance_exists(obj_camera))
 && (x < view_left)
 && (image_xscale < 0)
 && (draw_xscale >= 0.8)
-|| (asset_get_type("obj_camera") == asset_object)
-&& (instance_exists(obj_camera))
+|| (instance_exists(obj_camera))
 && (x > view_right)
 && (image_xscale > 0)
 && (draw_xscale >= 0.8)
@@ -89,7 +87,6 @@ draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * sign(image_xscale
 
 #region /* Kill enemy if it's inside the wall */
 if (draw_xscale >= 0.8)
-&& (asset_get_type("obj_wall") == asset_object)
 {
 	if (position_meeting(bbox_left, y, obj_wall))
 	&& (hspeed <= 0)

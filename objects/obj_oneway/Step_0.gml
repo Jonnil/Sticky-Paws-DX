@@ -3,10 +3,8 @@ if (distance_to_object(obj_player) < 32)
 	if (image_angle == 0)
 	|| (image_angle = 360)
 	{
-		if (asset_get_type("obj_player") == asset_object)
-		&& (instance_exists(obj_player))
+		if (instance_exists(obj_player))
 		&& (place_meeting(x - 1, y, obj_player))
-		&& (asset_get_type("obj_wall") == asset_object)
 		&& (!position_meeting(bbox_right + 1, instance_nearest(bbox_left, y, obj_player).y, obj_wall))
 		&& (!position_meeting(bbox_right + 8, instance_nearest(bbox_left, y, obj_player).y, obj_wall))
 		{
@@ -23,7 +21,6 @@ if (distance_to_object(obj_player) < 32)
 	&& (asset_get_type("obj_player") == asset_object)
 	&& (instance_exists(obj_player))
 	&& (place_meeting(x, y + 1, obj_player))
-	&& (asset_get_type("obj_wall") == asset_object)
 	&& (!place_meeting(x, y - 1, obj_wall))
 	&& (!place_meeting(x, y - 8, obj_wall))
 	{
@@ -35,10 +32,8 @@ if (distance_to_object(obj_player) < 32)
 	}
 	else
 	if (image_angle = 180)
-	&& (asset_get_type("obj_player") == asset_object)
 	&& (instance_exists(obj_player))
 	&& (place_meeting(x + 1, y, obj_player))
-	&& (asset_get_type("obj_wall") == asset_object)
 	&& (!position_meeting(bbox_left - 1, instance_nearest(bbox_left, y, obj_player).y, obj_wall))
 	&& (!position_meeting(bbox_left - 8, instance_nearest(bbox_left, y, obj_player).y, obj_wall))
 	{
@@ -51,10 +46,8 @@ if (distance_to_object(obj_player) < 32)
 	}
 	else
 	if (image_angle = 270)
-	&& (asset_get_type("obj_player") == asset_object)
 	&& (instance_exists(obj_player))
 	&& (place_meeting(x, y - 1, obj_player))
-	&& (asset_get_type("obj_wall") == asset_object)
 	&& (!place_meeting(x, y + 1, obj_wall))
 	&& (!place_meeting(x, y + 8, obj_wall))
 	{

@@ -434,16 +434,13 @@ if (allow_homing_attack)
 {
 	
 	#region /* Homing Enemy */
-	if (asset_get_type("obj_wall") == asset_object)
-	&& (!place_meeting(x, y + 1, obj_wall))
-	&& (asset_get_type("obj_semisolid_platform") == asset_object)
+	if (!place_meeting(x, y + 1, obj_wall))
 	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	&& (stick_to_wall == false)
 	&& (climb == false)
 	&& (horizontal_rope_climb == false)
-	&& (asset_get_type("obj_enemy") == asset_object)
 	&& (instance_exists(obj_enemy))
 	&& (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
 	&& (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_enemy).x + 1, instance_nearest(x, y, obj_enemy).y + 1, obj_wall, false, true))
@@ -452,30 +449,20 @@ if (allow_homing_attack)
 	&& (instance_nearest(x, y, obj_enemy).die == false)
 	{
 		aim_image_index ++;
-		if (asset_get_type("spr_aim") == asset_sprite)
-		{
-			draw_sprite_ext(spr_aim, aim_image_index, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 1, 1, 0, c_white, 1);
-		}
-		else
-		{
-			draw_circle_color(instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 32, c_lime, c_lime, true);
-		}
+		draw_sprite_ext(spr_aim, aim_image_index, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Homing Enemy END */
 	
 	else
 	
 	#region /* Homing Spring */
-	if (asset_get_type("obj_wall") == asset_object)
-	&& (asset_get_type("obj_semisolid_platform") == asset_object)
-	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	if (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	&& (!place_meeting(x, y + 1, obj_wall))
 	&& (stick_to_wall == false)
 	&& (climb == false)
 	&& (horizontal_rope_climb == false)
-	&& (asset_get_type("obj_spring") == asset_object)
 	&& (instance_exists(obj_spring))
 	&& (!collision_line(x, y, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, obj_wall, false, true))
 	&& (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_spring).x + 1, instance_nearest(x, y, obj_spring).y + 1, obj_wall, false, true))
@@ -483,14 +470,7 @@ if (allow_homing_attack)
 	&& (instance_nearest(x, y, obj_spring).bbox_bottom > y)
 	{
 		aim_image_index ++;
-		if (asset_get_type("spr_aim") == asset_sprite)
-		{
-			draw_sprite_ext(spr_aim, aim_image_index, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 1, 1, 0, c_white, 1);
-		}
-		else
-		{
-			draw_circle_color(instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 32, c_lime, c_lime, true);
-		}
+		draw_sprite_ext(spr_aim, aim_image_index, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Homing Spring END */
 

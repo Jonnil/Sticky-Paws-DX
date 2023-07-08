@@ -56,14 +56,12 @@ if (door_xscale > 0)
 		scr_draw_gamepad_buttons(player_gamepad_button2_up, x + door_x, y, 0.4, c_white, 0.5, door_xscale, 1);
 	}
 	else
-	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-	&& (player_key_up > noone)
+	if (player_key_up > noone)
 	{
 		draw_sprite_ext(spr_keyboard_keys, player_key_up, x + door_x, y, 0.4 * door_xscale, 0.4, 0, c_white, 0.5);
 	}
 	else
-	if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-	&& (player_key2_up > noone)
+	if (player_key2_up > noone)
 	{
 		draw_sprite_ext(spr_keyboard_keys, player_key2_up, x + door_x, y, 0.4 * door_xscale, 0.4, 0, c_white, 0.5);
 	}

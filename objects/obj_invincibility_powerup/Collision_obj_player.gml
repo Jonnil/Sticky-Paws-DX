@@ -4,20 +4,16 @@ if (bounce_up == false)
 	audio_sound_gain(global.music, 0, 0);
 	audio_sound_gain(global.music_underwater, 0, 0);
 	score += 1000;
-	if (asset_get_type("obj_camera") == asset_object)
-	&& (instance_exists(obj_camera))
+	if (instance_exists(obj_camera))
 	{
 		with(obj_camera)
 		{
 			hud_show_score_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (asset_get_type("obj_score_up") == asset_object)
+	with(instance_create_depth(x, y, 0, obj_score_up))
 	{
-		with(instance_create_depth(x, y, 0, obj_score_up))
-		{
-			score_up = 1000;
-		}
+		score_up = 1000;
 	}
 	with(other)
 	{

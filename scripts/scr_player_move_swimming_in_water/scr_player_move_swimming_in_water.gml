@@ -45,9 +45,7 @@ function scr_player_move_swimming_in_water()
 			wall_jump = false;
 			spring = false;
 		
-			if (asset_get_type("obj_wall") == asset_object)
-			&& (!place_meeting(x, y + 1, obj_wall))
-			&& (asset_get_type("obj_semisolid_platform") == asset_object)
+			if (!place_meeting(x, y + 1, obj_wall))
 			&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 			&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -82,9 +80,7 @@ function scr_player_move_swimming_in_water()
 		
 			#region /* Set the gravity underwater */
 			gravity_direction = 270; /* Direction of the gravity */
-			if (asset_get_type("obj_wall") == asset_object)
-			&& (!place_meeting(x, y + 1, obj_wall))
-			&& (asset_get_type("obj_semisolid_platform") == asset_object)
+			if (!place_meeting(x, y + 1, obj_wall))
 			&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 			&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))

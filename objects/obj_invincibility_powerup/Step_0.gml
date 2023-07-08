@@ -3,9 +3,7 @@ draw_yscale = lerp(draw_yscale, 1, 0.1);
 
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
-if (asset_get_type("obj_wall") == asset_object)
-&& (!place_meeting(x, y + 1, obj_wall))
-&& (asset_get_type("obj_semisolid_platform") == asset_object)
+if (!place_meeting(x, y + 1, obj_wall))
 && (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 && (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 && (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -58,25 +56,19 @@ if (coil_spring)
 	{
 		hspeed = -2;
 	}
-	if (asset_get_type("obj_wall") == asset_object)
-	&& (place_meeting(x - 1, y, obj_wall))
+	if (place_meeting(x - 1, y, obj_wall))
 	{
 		hspeed = +2;
 	}
 	else
-	if (asset_get_type("obj_wall") == asset_object)
-	&& (place_meeting(x + 1, y, obj_wall))
+	if (place_meeting(x + 1, y, obj_wall))
 	{
 		hspeed = -2;
 	}
-	if (asset_get_type("obj_wall") == asset_object)
-	&& (place_meeting(x, y + 1, obj_wall))
-	|| (asset_get_type("obj_semisolid_platform") == asset_object)
-	&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	|| (asset_get_type("obj_semisolid_platform") == asset_object)
-	&& (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	|| (asset_get_type("obj_semisolid_platform") == asset_object)
-	&& (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (place_meeting(x, y + 1, obj_wall))
+	|| (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	|| (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	|| (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		scr_audio_play(snd_star_bound, volume_source.sound);
 		vspeed = -10;

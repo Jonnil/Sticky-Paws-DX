@@ -162,8 +162,7 @@ function scr_options_control_menu()
 		#region /* Remap Keyboard and Mouse or Gamepad */
 		
 		#region /* Show what key is used */
-		if (asset_get_type("spr_keyboard_keys") == asset_sprite)
-		{
+		
 			image_speed = 0;
 			key1_x = 800;
 			key2_x = 1000;
@@ -3748,7 +3747,6 @@ function scr_options_control_menu()
 			
 			#endregion /* Show the keys for every player END */
 			
-		}
 		#endregion /* Show what key is used END */
 		
 		scr_options_reset_controls_to_default_settings(430, menu_y_remap_reset);

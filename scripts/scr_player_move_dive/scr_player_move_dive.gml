@@ -66,8 +66,7 @@ function scr_player_move_dive()
 			{
 				if (hspeed >- 10)
 				{
-					if (asset_get_type("obj_wall") == asset_object)
-					&& (!place_meeting(x - 4, y, obj_wall))
+					if (!place_meeting(x - 4, y, obj_wall))
 					{
 						hspeed = - 10;
 					}
@@ -81,8 +80,7 @@ function scr_player_move_dive()
 			{
 				if (hspeed <+ 10)
 				{
-					if (asset_get_type("obj_wall") == asset_object)
-					&& (!place_meeting(x + 4, y, obj_wall))
+					if (!place_meeting(x + 4, y, obj_wall))
 					{
 						hspeed = +10;
 					}
@@ -100,9 +98,7 @@ function scr_player_move_dive()
 			jump = 0;
 			spring = false;
 			move_towards_spring_endpoint = false;
-			if (asset_get_type("obj_wall") == asset_object)
-			&& (!place_meeting(x, y + 1, obj_wall))
-			&& (asset_get_type("obj_semisolid_platform") == asset_object)
+			if (!place_meeting(x, y + 1, obj_wall))
 			&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 			&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 			&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
@@ -119,10 +115,8 @@ function scr_player_move_dive()
 		if (dive)
 		{
 			if (key_left_hold)
-			&& (asset_get_type("obj_wall") == asset_object)
 			&& (place_meeting(x + 1, y, obj_wall))
 			|| (key_right_hold)
-			&& (asset_get_type("obj_wall") == asset_object)
 			&& (place_meeting(x - 1, y, obj_wall))
 			{
 				hspeed = 0;
@@ -133,14 +127,12 @@ function scr_player_move_dive()
 			{
 				if (hspeed >-4)
 				{
-					if (asset_get_type("obj_wall") == asset_object)
-					&& (!place_meeting(x - 4, y, obj_wall))
+					if (!place_meeting(x - 4, y, obj_wall))
 					{
 						hspeed = -4;
 					}
 					else
-					if (asset_get_type("obj_wall") == asset_object)
-					&& (!place_meeting(x - 1, y, obj_wall))
+					if (!place_meeting(x - 1, y, obj_wall))
 					{
 						hspeed = - 1;
 					}
@@ -151,14 +143,12 @@ function scr_player_move_dive()
 			{
 				if (hspeed <+ 4)
 				{
-					if (asset_get_type("obj_wall") == asset_object)
-					&& (!place_meeting(x + 4, y, obj_wall))
+					if (!place_meeting(x + 4, y, obj_wall))
 					{
 						hspeed = +4;
 					}
 					else
-					if (asset_get_type("obj_wall") == asset_object)
-					&& (!place_meeting(x + 1, y, obj_wall))
+					if (!place_meeting(x + 1, y, obj_wall))
 					{
 						hspeed = +1;
 					}

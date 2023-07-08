@@ -30,105 +30,96 @@ if (instance_exists(obj_player))
 						effect_create_below(ef_ring, x, y, 2, c_white);
 						
 						#region /* Collect 10 basic collectibles */
-						if (asset_get_type("obj_basic_collectible") == asset_object)
+						scr_audio_play(snd_basic_collectible, volume_source.sound);
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 						{
-							scr_audio_play(snd_basic_collectible, volume_source.sound);
-							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-							{
-								image_speed = 1;
-								motion_set(90, 10);
-								bounce_up = true;
-							}
-							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-							{
-								image_speed = 1;
-								motion_set(90, 10);
-								bounce_up = true;
-								delay_time = 10;
-							}
-							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-							{
-								image_speed = 1;
-								motion_set(90, 10);
-								bounce_up = true;
-								delay_time = 20;
-							}
-							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-							{
-								image_speed = 1;
-								motion_set(90, 10);
-								bounce_up = true;
-								delay_time = 30;
-							}
-							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-							{
-								image_speed = 1;
-								motion_set(90, 10);
-								bounce_up = true;
-								delay_time = 40;
-							}
-							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-							{
-								image_speed = 1;
-								motion_set(90, 10);
-								bounce_up = true;
-								delay_time = 50;
-							}
-							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-							{
-								image_speed = 1;
-								motion_set(90, 10);
-								bounce_up = true;
-								delay_time = 60;
-							}
-							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-							{
-								image_speed = 1;
-								motion_set(90, 10);
-								bounce_up = true;
-								delay_time = 70;
-							}
-							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-							{
-								image_speed = 1;
-								motion_set(90, 10);
-								bounce_up = true;
-								delay_time = 80;
-							}
-							with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-							{
-								image_speed = 1;
-								motion_set(90, 10);
-								bounce_up = true;
-								delay_time = 90;
-							}
-					
-							#region /* 2000 Score */
-							score += 2000;
-							if (asset_get_type("obj_score_up") == asset_object)
-							{
-								with(instance_create_depth(x, y, 0, obj_score_up))
-								{
-									score_up = 2000;
-								}
-							}
-							#endregion /* 2000 Score END */
-							
-							#region /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint */
-							if (asset_get_type("obj_score_up") == asset_object)
-							{
-								with(instance_create_depth(x, y - 20, 0, obj_score_up))
-								{
-									checkpoint_number = instance_nearest(x, y, obj_checkpoint).checkpoint_number;
-									checkpoint_number_max = instance_nearest(x, y, obj_checkpoint).checkpoint_number_max;
-									score_up = "checkpoint";
-								}
-							}
-							#endregion /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint END */
+							image_speed = 1;
+							motion_set(90, 10);
+							bounce_up = true;
 						}
-						#endregion /* Collect 10 basic collectibles END */
-						
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounce_up = true;
+							delay_time = 10;
+						}
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounce_up = true;
+							delay_time = 20;
+						}
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounce_up = true;
+							delay_time = 30;
+						}
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounce_up = true;
+							delay_time = 40;
+						}
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounce_up = true;
+							delay_time = 50;
+						}
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounce_up = true;
+							delay_time = 60;
+						}
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounce_up = true;
+							delay_time = 70;
+						}
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounce_up = true;
+							delay_time = 80;
+						}
+						with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
+						{
+							image_speed = 1;
+							motion_set(90, 10);
+							bounce_up = true;
+							delay_time = 90;
+						}
+					
+						#region /* 2000 Score */
+						score += 2000;
+						with(instance_create_depth(x, y, 0, obj_score_up))
+						{
+							score_up = 2000;
+						}
+						#endregion /* 2000 Score END */
+							
+						#region /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint */
+						with(instance_create_depth(x, y - 20, 0, obj_score_up))
+						{
+							checkpoint_number = instance_nearest(x, y, obj_checkpoint).checkpoint_number;
+							checkpoint_number_max = instance_nearest(x, y, obj_checkpoint).checkpoint_number_max;
+							score_up = "checkpoint";
+						}
+						#endregion /* Checkpoint text when touching the checkpoint, so everybody knows that this is a checkpoint END */
 					}
+					#endregion /* Collect 10 basic collectibles END */
+					
 					
 					if (global.doing_clear_check == false) /* Don't save these things if you're doing a clear check. You need to restart from the very start if you lose, regardless if you hit checkpoints */
 					{

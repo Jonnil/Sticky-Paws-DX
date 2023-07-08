@@ -1,14 +1,8 @@
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 
-if (asset_get_type("spr_goal") == asset_sprite)
-{
-	draw_sprite_ext(spr_goal, 0, x, y - 256, 1, 1, 0, c_white, 1);
-}
-if (asset_get_type("spr_level_end") == asset_sprite)
-{
-	draw_sprite_ext(spr_level_end, 0, x, y, 1, 1, 0, c_white, 0.5);
-}
+draw_sprite_ext(spr_goal, 0, x, y - 256, 1, 1, 0, c_white, 1);
+draw_sprite_ext(spr_level_end, 0, x, y, 1, 1, 0, c_white, 0.5);
 
 #region /* Drag Object */
 if (instance_number(obj_leveleditor) > 0)

@@ -196,7 +196,6 @@ if (gamepad_is_connected(global.player1_slot))
 	scr_draw_gamepad_buttons(gp_padr, get_window_width - 128, get_window_height * 0.5, 1, c_white, 1);
 }
 else
-if (asset_get_type("spr_keyboard_keys") == asset_sprite)
 {
 	draw_sprite_ext(spr_keyboard_keys, vk_left, 128, get_window_height * 0.5, 1, 1, 0, c_white, 1);
 	draw_sprite_ext(spr_keyboard_keys, vk_right, get_window_width - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1);

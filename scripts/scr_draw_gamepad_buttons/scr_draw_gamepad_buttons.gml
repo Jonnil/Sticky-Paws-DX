@@ -1,4 +1,4 @@
-function scr_draw_gamepad_buttons(what_button, xx, yy, overall_scale = 1, color = c_white, alpha = 1, xscale = 1, yscale = 1)
+function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale = 1, color = c_white, alpha = 1, xscale = 1, yscale = 1)
 {
 	if (global.chosen_controller_used == 0)
 	&& (global.resource_pack_sprite_buttons_xboxone > noone)
@@ -35,7 +35,6 @@ function scr_draw_gamepad_buttons(what_button, xx, yy, overall_scale = 1, color 
 	}
 	
 	if (what_button == noone)
-	&& (asset_get_type("spr_keyboard_keys") == asset_sprite)
 	{
 		draw_sprite_ext(spr_keyboard_keys_none, 0, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
 	}

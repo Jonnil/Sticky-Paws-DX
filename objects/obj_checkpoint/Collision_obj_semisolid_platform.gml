@@ -26,8 +26,7 @@ if (position_meeting(x, bbox_bottom + 1, other))
 {
 	
 	#region /* Smoke Landing Effect */
-	if (asset_get_type("obj_camera") == asset_object)
-	&& (instance_exists(obj_camera))
+	if (instance_exists(obj_camera))
 	&& (obj_camera.iris_xscale > 1)
 	{
 		if (instance_exists(obj_foreground_secret))

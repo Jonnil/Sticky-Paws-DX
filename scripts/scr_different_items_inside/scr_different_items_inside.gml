@@ -9,18 +9,12 @@ function scr_different_items_inside()
 		empty = true;
 		if (block_type = "question_block")
 		{
-			if (asset_get_type("scr_audio_play") == asset_script)
-			{
-				scr_audio_play(snd_basic_collectible, volume_source.sound);
-			}
+			scr_audio_play(snd_basic_collectible, volume_source.sound);
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				if (variable_instance_exists(self, "bounce_up"))
-				{
-					bounce_up = true;
-				}
+				bounce_up = true;
 			}
 			can_break_this_block = false;
 		}
@@ -47,31 +41,19 @@ function scr_different_items_inside()
 			}
 			
 			#region /* 2 Basic Collectibles per hit */
-			if (asset_get_type("scr_audio_play") == asset_script)
+			scr_audio_play(snd_basic_collectible, volume_source.sound);
+			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
-				scr_audio_play(snd_basic_collectible, volume_source.sound);
+				image_speed = 1;
+				motion_set(90, 10);
+				bounce_up = true;
 			}
 			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				if (variable_instance_exists(self, "bounce_up"))
-				{
-					bounce_up = true;
-				}
-			}
-			with(instance_create_depth(x, bbox_top, 0, obj_basic_collectible))
-			{
-				image_speed = 1;
-				motion_set(90, 10);
-				if (variable_instance_exists(self, "bounce_up"))
-				{
-					bounce_up = true;
-				}
-				if (variable_instance_exists(self, "delay_time"))
-				{
-					delay_time = 10;
-				}
+				bounce_up = true;
+				delay_time = 10;
 			}
 			if (hit >= 5)
 			{
@@ -92,10 +74,7 @@ function scr_different_items_inside()
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				if (variable_instance_exists(self, "bounce_up"))
-				{
-					bounce_up = true;
-				}
+				bounce_up = true;
 			}
 		}
 		empty = true;
@@ -111,14 +90,8 @@ function scr_different_items_inside()
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				if (variable_instance_exists(self, "bounce_up"))
-				{
-					bounce_up = true;
-				}
-				if (variable_instance_exists(self, "number_of_extra_lives"))
-				{
-					number_of_extra_lives = 1;
-				}
+				bounce_up = true;
+				number_of_extra_lives = 1;
 			}
 		}
 		empty = true;
@@ -134,14 +107,8 @@ function scr_different_items_inside()
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				if (variable_instance_exists(self, "bounce_up"))
-				{
-					bounce_up = true;
-				}
-				if (variable_instance_exists(self, "number_of_extra_lives"))
-				{
-					number_of_extra_lives = 2;
-				}
+				bounce_up = true;
+				number_of_extra_lives = 2;
 			}
 		}
 		empty = true;
@@ -157,14 +124,8 @@ function scr_different_items_inside()
 			{
 				image_speed = 1;
 				motion_set(90, 10);
-				if (variable_instance_exists(self, "bounce_up"))
-				{
-					bounce_up = true;
-				}
-				if (variable_instance_exists(self, "number_of_extra_lives"))
-				{
-					number_of_extra_lives = 3;
-				}
+				bounce_up = true;
+				number_of_extra_lives = 3;
 			}
 		}
 		empty = true;
@@ -181,14 +142,8 @@ function scr_different_items_inside()
 				hspeed = +2;
 				image_speed = 1;
 				motion_set(90, 10);
-				if (variable_instance_exists(self, "bounce_up"))
-				{
-					bounce_up = true;
-				}
-				if (variable_instance_exists(self, "coil_spring"))
-				{
-					coil_spring = false;
-				}
+				bounce_up = true;
+				coil_spring = false;
 			}
 		}
 		empty = true;
@@ -205,14 +160,8 @@ function scr_different_items_inside()
 				hspeed = +2;
 				image_speed = 1;
 				motion_set(90, 10);
-				if (variable_instance_exists(self, "bounce_up"))
-				{
-					bounce_up = true;
-				}
-				if (variable_instance_exists(self, "coil_spring"))
-				{
-					coil_spring = true;
-				}
+				bounce_up = true;
+				coil_spring = true;
 			}
 		}
 		empty = true;

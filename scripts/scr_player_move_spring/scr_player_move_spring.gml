@@ -15,12 +15,9 @@ function scr_player_move_spring()
 			image_index = 0;
 			ground_pound = false;
 			speed_max = 4;
-			if (asset_get_type("obj_camera") == asset_object)
+			with(instance_nearest(x, y, obj_camera))
 			{
-				with(instance_nearest(x, y, obj_camera))
-				{
-					shake = 10;
-				}
+				shake = 10;
 			}
 			scr_audio_play(snd_hipattack, volume_source.sound);
 		}
@@ -85,8 +82,7 @@ function scr_player_move_spring()
 			spring_endpoint_x = 0;
 			spring_endpoint_y = 0;
 		}
-		if (asset_get_type("obj_wall") == asset_object)
-		&& (instance_exists(obj_wall))
+		if (instance_exists(obj_wall))
 		{
 			if (place_meeting(x - 4, y, obj_wall))
 			&& (hspeed < 0)
