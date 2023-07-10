@@ -4,7 +4,7 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 	{
 		if (selected_object == var_selected_object)
 		{
-			place_object = var_place_object_id; /* The Object ID, as example this enum: level_object_id.id_wall */
+			place_object = var_place_object_id; /* The Object ID, as example this enum: LEVEL_OBJECT_ID.id_wall */
 			can_make_place_brush_size_bigger = var_can_make_place_brush_size_bigger;
 			sprite_index = var_sprite_index; /* This changes the obj_leveleditor sprite, so you see it underneath the cursor */
 			mask_index = var_mask_index; /* This changes the obj_leveleditor mask. Object mask when placing it, so it doesn't get placed over other objects */

@@ -41,27 +41,6 @@ can_die_from_spikes = true;
 coil_spring = false;
 number_of_times_stomped = 0;
 give_rewards = true;
-if asset_get_type("snd_enemyvoice_defeated") == asset_sound
-{
-	enemyvoice_defeated1 = noone;
-}
-else
-{
-	enemyvoice_defeated1 = noone;
-}
-if asset_get_type("snd_enemyvoice_defeated2") == asset_sound
-{
-	enemyvoice_defeated2 = noone;
-}
-else
-{
-	enemyvoice_defeated2 = noone;
-}
-if asset_get_type("snd_enemyvoice_defeated3") == asset_sound
-{
-	enemyvoice_defeated3 = noone;
-}
-else
-{
-	enemyvoice_defeated3 = noone;
-}
+enemyvoice_defeated1 = noone;
+enemyvoice_defeated2 = noone;
+enemyvoice_defeated3 = noone;

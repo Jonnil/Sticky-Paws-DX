@@ -34,6 +34,7 @@ global.enable_language_settings = true; /* Enable Language settings */
 global.enable_broadcast_settings = false; /* Enable Broadcast settings */
 global.enable_add_ons_settings = false; /* Enable Add-ons settings */
 global.enable_ranks = false; /* Enable the option to show ranks in the game */
+global.enable_manage_characters = true; /* Enable the option to copy characters in the game */
 global.enable_difficulty_selection_settings = true; /* Enable the option to change difficulty in the game */
 global.enable_difficutly_layers_in_level_editor = false; /* If you can change difficulty layers in level editor. You need to unlock this feature first by using the difficulty settings */
 global.how_many_files = -1;
@@ -58,7 +59,6 @@ if (os_type == os_switch)
 	global.show_prompt_when_changing_to_gamepad = false;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = false;	
 	global.enable_open_custom_folder = false; /* Enable the option to open custom folders in the game */
-	global.enable_manage_characters = false; /* Enable the option to copy characters in the game */
 	global.enable_options_for_pc = false; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
 	global.enable_keyboard_and_mouse_settings = false; /* Enable Keyboard and Mouse settings */
 }
@@ -69,7 +69,6 @@ else
 	global.show_prompt_when_changing_to_gamepad = true;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = true;
 	global.enable_open_custom_folder = true; /* Enable the option to open custom folders in the game */
-	global.enable_manage_characters = true; /* Enable the option to copy characters in the game */
 	global.enable_options_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
 	global.enable_keyboard_and_mouse_settings = true; /* Enable Keyboard and Mouse settings */
 }

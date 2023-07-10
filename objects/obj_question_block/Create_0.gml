@@ -18,10 +18,4 @@ xx = x;
 yy = y;
 
 alarm[0] = 1; /* Needs to initialize some more things in alarm event, one frame after spawning */
-
-#region /* Mask */
-if (asset_get_type("spr_wall") == asset_sprite)
-{
-	mask_index = spr_wall;
-}
-#endregion /* Mask END */
+mask_index = spr_wall;

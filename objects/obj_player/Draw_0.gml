@@ -45,11 +45,9 @@ if (hold_item_in_hands != "")
 #endregion /* Draw Raycasts END */
 
 #region /* Heart above head */
-if (asset_get_type("spr_heart") == asset_sprite)
-&& (have_heart_balloon)
+if (have_heart_balloon)
 {
-	if (asset_get_type("obj_horizontal_rope") == asset_object)
-	&& (place_meeting(x, y - 1, obj_horizontal_rope))
+	if (place_meeting(x, y - 1, obj_horizontal_rope))
 	&& (horizontal_rope_climb)
 	&& (key_up)
 	&& (!key_down)
@@ -79,7 +77,6 @@ if (asset_get_type("spr_heart") == asset_sprite)
 }
 
 if (have_heart_balloon == false)
-&& (asset_get_type("obj_heart_balloon") == asset_object)
 && (instance_exists(obj_heart_balloon))
 && (distance_to_object(obj_heart_balloon) < 32)
 {
@@ -351,7 +348,6 @@ if (effect_turnaround_subimg < 10)
 {
 	if (climb == false)
 	&& (horizontal_rope_climb == false)
-	&& (asset_get_type("spr_effect_turnaround") == asset_sprite)
 	{
 		draw_sprite_ext(spr_effect_turnaround, effect_turnaround_subimg, xx, yy, image_xscale, 1, angle, c_white, 0.5);
 	}
@@ -368,7 +364,6 @@ if (effect_speedspark_subimg < 4)
 	{
 		if (climb == false)
 		&& (horizontal_rope_climb == false)
-		&& (asset_get_type("spr_speedspark") == asset_sprite)
 		{
 			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, 0, c_white, 0.5);
 		}

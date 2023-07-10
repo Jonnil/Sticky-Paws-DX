@@ -295,6 +295,7 @@ function scr_draw_upload_level_menu()
 				can_navigate = false;
 				if (room == rm_leveleditor)
 				{
+					audio_stop_sound(level_editing_music);
 					pause = false;
 					menu_delay = 2;
 					global.character_select_in_this_menu = "level_editor";

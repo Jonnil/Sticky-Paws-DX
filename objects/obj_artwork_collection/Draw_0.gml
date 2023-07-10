@@ -1,7 +1,4 @@
-if (asset_get_type("spr_artwork_collection") == asset_sprite)
-{
-	draw_sprite_ext(spr_artwork_collection, image_index, x, yy, 1, 1, 0, c_white, image_alpha);
-}
+draw_sprite_ext(spr_artwork_collection, image_index, x, yy, 1, 1, 0, c_white, image_alpha);
 if (instance_exists(obj_player))
 && (point_distance(x, y, obj_player.x, obj_player.y) < 64)
 && (instance_nearest(x, y, obj_player).vspeed == 0)

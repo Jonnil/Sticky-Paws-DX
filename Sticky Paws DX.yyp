@@ -30,7 +30,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Level Editor","folderPath":"folders/Scripts/Level Editor.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Menus","folderPath":"folders/Scripts/Menus.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Other","folderPath":"folders/Scripts/Other.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Player Scripths","folderPath":"folders/Scripts/Player Scripths.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Player Scripts","folderPath":"folders/Scripts/Player Scripts.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Server Scripts","folderPath":"folders/Scripts/Server Scripts.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sequences","folderPath":"folders/Sequences.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Shaders","folderPath":"folders/Shaders.yy",},

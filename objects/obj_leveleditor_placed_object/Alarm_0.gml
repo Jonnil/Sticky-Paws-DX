@@ -33,98 +33,103 @@ if (global.actually_play_edited_level == false)
 		
 		switch (object)
 		{
-			case level_object_id.id_basic_collectible:
-			case level_object_id.id_basic_collectible_2:
-			case level_object_id.id_basic_collectible_3:
-			case level_object_id.id_basic_collectible_4:
-			case level_object_id.id_basic_collectible_5:
-			case level_object_id.id_basic_collectible_6:
-			case level_object_id.id_basic_collectible_7:
-			case level_object_id.id_basic_collectible_8:
-			case level_object_id.id_oneway:
-			case level_object_id.id_oneway2:
-			case level_object_id.id_oneway3:
-			case level_object_id.id_oneway4:
-			case level_object_id.id_spikes_emerge_block:
-			case level_object_id.id_spikes_emerge_block_offset_time:
-			case level_object_id.id_spikes_emerge_block_down:
-			case level_object_id.id_spikes_emerge_block_down_offset_time:
-			case level_object_id.id_spikes_emerge_block_left:
-			case level_object_id.id_spikes_emerge_block_left_offset_time:
-			case level_object_id.id_spikes_emerge_block_right:
-			case level_object_id.id_spikes_emerge_block_right_offset_time:
+			case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE:
+			case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_2:
+			case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_3:
+			case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_4:
+			case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_5:
+			case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_6:
+			case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_7:
+			case LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE_8:
+			case LEVEL_OBJECT_ID.ID_ONEWAY:
+			case LEVEL_OBJECT_ID.ID_ONEWAY2:
+			case LEVEL_OBJECT_ID.ID_ONEWAY3:
+			case LEVEL_OBJECT_ID.ID_ONEWAY4:
+			case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK:
+			case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_OFFSET_TIME:
+			case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_DOWN:
+			case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_DOWN_OFFSET_TIME:
+			case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_LEFT:
+			case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_LEFT_OFFSET_TIME:
+			case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_RIGHT:
+			case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_RIGHT_OFFSET_TIME:
 				draw_rotate_arrow = true;
 				break;
-			case level_object_id.id_brick_block_10_basic_collectibles:
-			case level_object_id.id_question_block_10_basic_collectibles:
-			case level_object_id.id_melon_block_10_basic_collectibles:
-			case level_object_id.id_bump_in_ground_8_basic_collectibles:
-			case level_object_id.id_invisible_bump_in_ground_8_basic_collectibles:
-			case level_object_id.id_bucket_8_basic_collectibles:
+			case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_10_BASIC_COLLECTIBLES:
+			case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES:
+			case LEVEL_OBJECT_ID.ID_MELON_BLOCK_10_BASIC_COLLECTIBLES:
+			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES:
+			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES:
+			case LEVEL_OBJECT_ID.ID_BUCKET_8_BASIC_COLLECTIBLES:
 				draw_item_on_top = global.resource_pack_sprite_basic_collectible;
 				break;
-			case level_object_id.id_brick_block_heart_balloon:
-			case level_object_id.id_question_block_heart_balloon:
-			case level_object_id.id_bump_in_ground_heart_balloon:
-			case level_object_id.id_invisible_bump_in_ground_heart_balloon:
-			case level_object_id.id_bucket_heart_balloon:
+			case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_HEART_BALLOON:
+			case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_HEART_BALLOON:
+			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_HEART_BALLOON:
+			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_HEART_BALLOON:
+			case LEVEL_OBJECT_ID.ID_BUCKET_HEART_BALLOON:
 				draw_item_on_top = spr_heart;
 				break;
 				
-			case level_object_id.id_brick_block_one_up:
-			case level_object_id.id_question_block_one_up:
-			case level_object_id.id_bump_in_ground_one_up:
-			case level_object_id.id_invisible_bump_in_ground_one_up:
-			case level_object_id.id_bucket_one_up:
+			case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_ONE_UP:
+			case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_ONE_UP:
+			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_ONE_UP:
+			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_ONE_UP:
+			case LEVEL_OBJECT_ID.ID_BUCKET_ONE_UP:
 				draw_item_on_top = spr_1up;
 				break;
 				
-			case level_object_id.id_brick_block_two_up:
-			case level_object_id.id_question_block_two_up:
-			case level_object_id.id_bump_in_ground_two_up:
-			case level_object_id.id_invisible_bump_in_ground_two_up:
-			case level_object_id.id_bucket_two_up:
+			case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_TWO_UP:
+			case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_TWO_UP:
+			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_TWO_UP:
+			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_TWO_UP:
+			case LEVEL_OBJECT_ID.ID_BUCKET_TWO_UP:
 				draw_item_on_top = spr_2up;
 				break;
-			case level_object_id.id_brick_block_three_up:
-			case level_object_id.id_question_block_three_up:
-			case level_object_id.id_bump_in_ground_three_up:
-			case level_object_id.id_invisible_bump_in_ground_three_up:
-			case level_object_id.id_bucket_three_up:
+			case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_THREE_UP:
+			case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_THREE_UP:
+			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_THREE_UP:
+			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_THREE_UP:
+			case LEVEL_OBJECT_ID.ID_BUCKET_THREE_UP:
 				draw_item_on_top = spr_3up;
 				break;
-			case level_object_id.id_bump_in_ground_big_collectible:
-			case level_object_id.id_invisible_bump_in_ground_big_collectible:
-			case level_object_id.id_bucket_big_collectible:
+			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_BIG_COLLECTIBLE:
+			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_BIG_COLLECTIBLE:
+			case LEVEL_OBJECT_ID.ID_BUCKET_BIG_COLLECTIBLE:
 				draw_item_on_top = global.resource_pack_sprite_big_collectible;
 				break;
-			case level_object_id.id_brick_block_invincibility_powerup:
-			case level_object_id.id_question_block_invincibility_powerup:
-			case level_object_id.id_bump_in_ground_invincibility_powerup:
-			case level_object_id.id_invisible_bump_in_ground_invincibility_powerup:
-			case level_object_id.id_bucket_invincibility_powerup:
+			case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_INVINCIBILITY_POWERUP:
+			case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP:
+			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP:
+			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP:
+			case LEVEL_OBJECT_ID.ID_BUCKET_INVINCIBILITY_POWERUP:
 				draw_item_on_top = global.resource_pack_sprite_invincibility_powerup;
 				break;
-			case level_object_id.id_brick_block_invincibility_powerup_coil_spring:
-			case level_object_id.id_question_block_invincibility_powerup_coil_spring:
-			case level_object_id.id_bump_in_ground_invincibility_powerup_coil_spring:
-			case level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring:
-			case level_object_id.id_bucket_invincibility_powerup_coil_spring:
+			case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING:
+			case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING:
+			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING:
+			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING:
+			case LEVEL_OBJECT_ID.ID_BUCKET_INVINCIBILITY_POWERUP_COIL_SPRING:
 				draw_item_with_spring = true;
 				draw_item_on_top = global.resource_pack_sprite_invincibility_powerup;
 				break;
-			case level_object_id.id_spring:
+			case LEVEL_OBJECT_ID.ID_SPRING:
 				draw_angle = point_direction(x, y, second_x, second_y) - 90;
+				draw_leveleditor_arrow = true;
 				break;
-			case level_object_id.id_water_level_change_slow:
-			case level_object_id.id_water_level_change_fast:
-			case level_object_id.id_water_level_change_faster:
+			case LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW:
+			case LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST:
+			case LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER:
 				draw_angle = point_direction(x, y, x, second_y) - 90;
+				draw_leveleditor_arrow = true;
 				break;
-			case level_object_id.id_arrow_sign:
-			case level_object_id.id_arrow_sign_small:
+			case LEVEL_OBJECT_ID.ID_ARROW_SIGN:
+			case LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL:
 				draw_angle = point_direction(x, y, second_x, second_y);
+				draw_leveleditor_arrow = true;
 				break;
+			case LEVEL_OBJECT_ID.ID_DOOR:
+				draw_leveleditor_arrow = true;
 		}
 	}
 	else

@@ -13,182 +13,182 @@ function scr_spawn_objects_when_starting_room()
 		&& (hard)
 		{
 			switch (object) {
-			    case level_object_id.id_wall:
+			    case LEVEL_OBJECT_ID.ID_WALL:
 			        instance_create_depth(x, y, 0, obj_ground);
 			        break;
-			    case level_object_id.id_wall_dirt:
+			    case LEVEL_OBJECT_ID.ID_WALL_DIRT:
 			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 1;
 			        break;
-			    case level_object_id.id_wall_glass:
+			    case LEVEL_OBJECT_ID.ID_WALL_GLASS:
 			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 2;
 			        break;
-			    case level_object_id.id_wall_grass:
+			    case LEVEL_OBJECT_ID.ID_WALL_GRASS:
 			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 3;
 			        break;
-			    case level_object_id.id_wall_gravel:
+			    case LEVEL_OBJECT_ID.ID_WALL_GRAVEL:
 			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 4;
 			        break;
-			    case level_object_id.id_wall_metal:
+			    case LEVEL_OBJECT_ID.ID_WALL_METAL:
 			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 5;
 			        break;
-			    case level_object_id.id_wall_stone:
+			    case LEVEL_OBJECT_ID.ID_WALL_STONE:
 			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 6;
 			        break;
-			    case level_object_id.id_wall_wood:
+			    case LEVEL_OBJECT_ID.ID_WALL_WOOD:
 			        with(instance_create_depth(x, y, 0, obj_ground)) ground_surface = 7;
 			        break;
-			    case level_object_id.id_wall_jump_panel:
+			    case LEVEL_OBJECT_ID.ID_WALL_JUMP_PANEL:
 			        instance_create_depth(x, y, 0, obj_wall_jump_panel);
 			        break;
-			    case level_object_id.id_wall_climb_panel:
+			    case LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL:
 			        instance_create_depth(x, y, 0, obj_wall_climb_panel);
 			        break;
-			    case level_object_id.id_spikes:
+			    case LEVEL_OBJECT_ID.ID_SPIKES:
 			        instance_create_depth(x, y, 0, obj_spikes);
 			        break;
-			    case level_object_id.id_semisolid_platform:
+			    case LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM:
 			        instance_create_depth(x, y, 0, obj_semisolid_platform);
 			        break;
-				case level_object_id.id_brick_block:
+				case LEVEL_OBJECT_ID.ID_BRICK_BLOCK:
 			        with(instance_create_depth(x, y, 0, obj_question_block)) {block_type = "brick_block";}
 			        break;
-				case level_object_id.id_brick_block_10_basic_collectibles:
+				case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_10_BASIC_COLLECTIBLES:
 			        with(instance_create_depth(x, y, 0, obj_question_block)) {block_type = "brick_block";item_inside = "10_basic_collectibles";}
 			        break;
-			    case level_object_id.id_brick_block_heart_balloon:
+			    case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_HEART_BALLOON:
 			        with(instance_create_depth(x, y, 0, obj_question_block)) {block_type = "brick_block";item_inside = "heart_balloon";}
 			        break;
-			    case level_object_id.id_brick_block_one_up:
+			    case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_ONE_UP:
 			        with(instance_create_depth(x, y, 0, obj_question_block)) {block_type = "brick_block";item_inside = "1-up";}
 			        break;
-			    case level_object_id.id_brick_block_two_up:
+			    case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_TWO_UP:
 			        with(instance_create_depth(x, y, 0, obj_question_block)) {block_type = "brick_block";item_inside = "2-up";}
 			        break;
-			    case level_object_id.id_brick_block_three_up:
+			    case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_THREE_UP:
 			        with(instance_create_depth(x, y, 0, obj_question_block)) {block_type = "brick_block";item_inside = "3-up";}
 			        break;
-			    case level_object_id.id_brick_block_invincibility_powerup:
+			    case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_INVINCIBILITY_POWERUP:
 			        with(instance_create_depth(x, y, 0, obj_question_block)) {block_type = "brick_block";item_inside = "invincibility_powerup";}
 			        break;
-			    case level_object_id.id_brick_block_invincibility_powerup_coil_spring:
+			    case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING:
 			        with(instance_create_depth(x, y, 0, obj_question_block)) {block_type = "brick_block";item_inside = "invincibility_powerup_coil_spring";}
 			        break;
-				case level_object_id.id_question_block:
+				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "question_block";}
 					break;
-				case level_object_id.id_question_block_10_basic_collectibles:
+				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_10_BASIC_COLLECTIBLES:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "question_block";item_inside = "10_basic_collectibles";}
 					break;
-				case level_object_id.id_question_block_heart_balloon:
+				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_HEART_BALLOON:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "question_block";item_inside = "heart_balloon";}
 					break;
-				case level_object_id.id_question_block_one_up:
+				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_ONE_UP:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "question_block";item_inside = "1-up";}
 					break;
-				case level_object_id.id_question_block_two_up:
+				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_TWO_UP:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "question_block";item_inside = "2-up";}
 					break;
-				case level_object_id.id_question_block_three_up:
+				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_THREE_UP:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "question_block";item_inside = "3-up";}
 					break;
-				case level_object_id.id_question_block_invincibility_powerup:
+				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "question_block";item_inside = "invincibility_powerup";}
 					break;
-				case level_object_id.id_question_block_invincibility_powerup_coil_spring:
+				case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "question_block";item_inside = "invincibility_powerup_coil_spring";}
 					break;
-				case level_object_id.id_melon_block:
+				case LEVEL_OBJECT_ID.ID_MELON_BLOCK:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "melon_block";}
 					break;
-				case level_object_id.id_melon_block_10_basic_collectibles:
+				case LEVEL_OBJECT_ID.ID_MELON_BLOCK_10_BASIC_COLLECTIBLES:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "melon_block";item_inside = "10_basic_collectibles";}
 					break;
-				case level_object_id.id_melon_block_heart_balloon:
+				case LEVEL_OBJECT_ID.ID_MELON_BLOCK_HEART_BALLOON:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "melon_block";item_inside = "heart_balloon";}
 					break;
-				case level_object_id.id_melon_block_one_up:
+				case LEVEL_OBJECT_ID.ID_MELON_BLOCK_ONE_UP:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "melon_block";item_inside = "1-up";}
 					break;
-				case level_object_id.id_melon_block_two_up:
+				case LEVEL_OBJECT_ID.ID_MELON_BLOCK_TWO_UP:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "melon_block";item_inside = "2-up";}
 					break;
-				case level_object_id.id_melon_block_three_up:
+				case LEVEL_OBJECT_ID.ID_MELON_BLOCK_THREE_UP:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "melon_block";item_inside = "3-up";}
 					break;
-				case level_object_id.id_melon_block_invincibility_powerup:
+				case LEVEL_OBJECT_ID.ID_MELON_BLOCK_INVINCIBILITY_POWERUP:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "melon_block";item_inside = "invincibility_powerup";}
 					break;
-				case level_object_id.id_melon_block_invincibility_powerup_coil_spring:
+				case LEVEL_OBJECT_ID.ID_MELON_BLOCK_INVINCIBILITY_POWERUP_COIL_SPRING:
 					with (instance_create_depth(x, y, 0, obj_question_block)) {block_type = "melon_block";item_inside = "invincibility_powerup_coil_spring";}
 					break;
-				case level_object_id.id_hard_block:
+				case LEVEL_OBJECT_ID.ID_HARD_BLOCK:
 			        instance_create_depth(x, y, 0, obj_hard_block);
 			        break;
-			    case level_object_id.id_hard_block_alternate:
+			    case LEVEL_OBJECT_ID.ID_HARD_BLOCK_ALTERNATE:
 			        with(instance_create_depth(x, y, 0, obj_hard_block)) {
 			            sprite_index = spr_hard_block_alternate;
 			        }
 			        break;
-			    case level_object_id.id_hard_block_2x2:
+			    case LEVEL_OBJECT_ID.ID_HARD_BLOCK_2X2:
 			        with(instance_create_depth(x, y, 0, obj_hard_block)) {
 			            sprite_index = spr_hard_block_2x2;
 						mask_index = sprite_index;
 			        }
 			        break;
-			    case level_object_id.id_falling_block:
+			    case LEVEL_OBJECT_ID.ID_FALLING_BLOCK:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
 						sprite_index = spr_falling_block;
 					}
 			        break;
-			    case level_object_id.id_falling_block_solid:
+			    case LEVEL_OBJECT_ID.ID_FALLING_BLOCK_SOLID:
 			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
 						sprite_index = spr_falling_block_solid;
 					}
 					break;
-			    case level_object_id.id_falling_block_long:
+			    case LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG:
 			        with(instance_create_depth(x, y, 0, obj_falling_block)) {
 						sprite_index = spr_falling_block_long;
 					}
 			        break;
-			    case level_object_id.id_falling_block_long_solid:
+			    case LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG_SOLID:
 			        with(instance_create_depth(x, y, 0, obj_falling_block_solid_spawner)) {
 						sprite_index = spr_falling_block_long_solid;
 					}
 			        break;
-			    case level_object_id.id_cloud_block:
+			    case LEVEL_OBJECT_ID.ID_CLOUD_BLOCK:
 			        instance_create_depth(x, y, 0, obj_cloud_block);
 			        break;
-			    case level_object_id.id_ice_block:
+			    case LEVEL_OBJECT_ID.ID_ICE_BLOCK:
 			        instance_create_depth(x, y, 0, obj_ice_block);
 			        break;
-			    case level_object_id.id_cardboard_block:
+			    case LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK:
 					with(instance_create_depth(x, y, 0, obj_cardboard)) {length = 1;}
 					break;
-			    case level_object_id.id_cardboard:
+			    case LEVEL_OBJECT_ID.ID_CARDBOARD:
 					with(instance_create_depth(x, y, 0, obj_cardboard)) {length = 2;}
 					break;
-				case level_object_id.id_cardboard_long:
+				case LEVEL_OBJECT_ID.ID_CARDBOARD_LONG:
 			        with(instance_create_depth(x, y, 0, obj_cardboard)) {length = 3;}
 			        break;
-			    case level_object_id.id_bump_in_ground:
+			    case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND:
 					instance_create_depth(x, y, 0, obj_bump_in_ground);
 					break;
-				case level_object_id.id_bump_in_ground_8_basic_collectibles:
+				case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_8_BASIC_COLLECTIBLES:
 					with(instance_create_depth(x, y, 0, obj_bump_in_ground)) {type_of_bump = "8_basic_collectibles";}
 					break;
-			    case level_object_id.id_bump_in_ground_heart_balloon:
+			    case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_HEART_BALLOON:
 					with(instance_create_depth(x, y, 0, obj_bump_in_ground)) {type_of_bump = "heart_balloon";}
 					break;
-			    case level_object_id.id_bump_in_ground_one_up:
+			    case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_ONE_UP:
 					with(instance_create_depth(x, y, 0, obj_bump_in_ground)) {type_of_bump = "1-up";}
 					break;
-			    case level_object_id.id_bump_in_ground_two_up:
+			    case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_TWO_UP:
 					with(instance_create_depth(x, y, 0, obj_bump_in_ground)) {type_of_bump = "2-up";}
 					break;
-			    case level_object_id.id_bump_in_ground_three_up:
+			    case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_THREE_UP:
 			        with(instance_create_depth(x, y, 0, obj_bump_in_ground)) {type_of_bump = "3-up";}
 					break;
-			    case level_object_id.id_bump_in_ground_big_collectible:
+			    case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_BIG_COLLECTIBLE:
 			        with(instance_create_depth(x, y, 0, obj_bump_in_ground)) {
 			            type_of_bump = "big_collectible";
 			        }
@@ -199,15 +199,15 @@ function scr_spawn_objects_when_starting_room()
 			            }
 			        }
 			        break;
-				case level_object_id.id_bump_in_ground_invincibility_powerup: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup";}break;
-				case level_object_id.id_bump_in_ground_invincibility_powerup_coil_spring: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup_coil_spring";}break;
+				case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup";}break;
+				case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup_coil_spring";}break;
 				case 281: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){visible = false;}break;
 				case 291: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "8_basic_collectibles";visible = false;}break;
 				case 301: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "heart_balloon";visible = false;}break;
 				case 311: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "1-up";visible = false;}break;
 				case 321: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "2-up";visible = false;}break;
 				case 331: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "3-up";visible = false;}break;
-				case level_object_id.id_invisible_bump_in_ground_big_collectible:
+				case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_BIG_COLLECTIBLE:
 					with(instance_create_depth(x, y, 0, obj_bump_in_ground))
 					{
 						type_of_bump = "big_collectible";
@@ -226,8 +226,8 @@ function scr_spawn_objects_when_starting_room()
 					#endregion /* Tell the player how many big collectibles exist in the level END */
 				
 				break;
-				case level_object_id.id_invisible_bump_in_ground_invincibility_powerup: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup";visible = false;}break;
-				case level_object_id.id_invisible_bump_in_ground_invincibility_powerup_coil_spring: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup_coil_spring";visible = false;}break;
+				case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup";visible = false;}break;
+				case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_INVINCIBILITY_POWERUP_COIL_SPRING: with(instance_create_depth(x, y, 0, obj_bump_in_ground)){type_of_bump = "invincibility_powerup_coil_spring";visible = false;}break;
 				case 40: instance_create_depth(x, y, 0, obj_basic_collectible);break;
 				case 41: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 315;}break;
 				case 42: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 270;}break;
@@ -236,7 +236,7 @@ function scr_spawn_objects_when_starting_room()
 				case 45: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 135; image_yscale = -1;}break;
 				case 46: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 90;}break;
 				case 47: with(instance_create_depth(x, y, 0, obj_basic_collectible)){image_angle = 45;}break;
-				case level_object_id.id_big_collectible:
+				case LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE:
 					instance_create_depth(x, y, 0, obj_big_collectible);
 					instance_create_depth(x, y, 0, obj_big_collectible_number);
 				
@@ -270,12 +270,12 @@ function scr_spawn_objects_when_starting_room()
 				case 5912: with(instance_create_depth(x, y, 0, obj_enemy_bowlingball)){blind = true;coil_spring = true;}break;
 				case 60: instance_create_depth(x, y, 0, obj_big_stationary_enemy);break;
 				case 601: with(instance_create_depth(x, y, 0, obj_big_stationary_enemy)){coil_spring = true;}break;
-				case level_object_id.id_blaster: instance_create_depth(x, y, 0, obj_blaster);break;
-				case level_object_id.id_spring: with(instance_create_depth(x, y, 0, obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
-				case level_object_id.id_ladder: instance_create_depth(x, y, 0, obj_vine);break;
+				case LEVEL_OBJECT_ID.ID_BLASTER: instance_create_depth(x, y, 0, obj_blaster);break;
+				case LEVEL_OBJECT_ID.ID_SPRING: with(instance_create_depth(x, y, 0, obj_spring)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
+				case LEVEL_OBJECT_ID.ID_LADDER: instance_create_depth(x, y, 0, obj_vine);break;
 				case 64: with(instance_create_depth(x, y, 0, obj_arrow_sign)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case 65: with(instance_create_depth(x, y, 0, obj_arrow_sign_small)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
-				case level_object_id.id_checkpoint:
+				case LEVEL_OBJECT_ID.ID_CHECKPOINT:
 					instance_create_depth(x, y, 0, obj_checkpoint);
 				
 					#region /* Tell the player how many checkpoints exist in the level */
@@ -289,73 +289,59 @@ function scr_spawn_objects_when_starting_room()
 					#endregion /* Tell the player how many checkpoints exist in the level END */
 				
 				break;
-				case level_object_id.id_spikes_emerge_block: instance_create_depth(x, y + 16, 0, obj_spikes_emerge);break;
-				case level_object_id.id_spikes_emerge_block_left: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15;}break;
-				case level_object_id.id_spikes_emerge_block_down: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 180; y -= 30;}break;
-				case level_object_id.id_spikes_emerge_block_right: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 270; x -= 20; y -= 15;}break;
-				case level_object_id.id_spikes_emerge_block_offset_time: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 0; timer_offset = true;}break;
-				case level_object_id.id_spikes_emerge_block_left_offset_time: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15; timer_offset = true;}break;
-				case level_object_id.id_spikes_emerge_block_down_offset_time: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 180; y -= 30; timer_offset = true;}break;
-				case level_object_id.id_spikes_emerge_block_right_offset_time: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 270; x -= 20; y -= 15; timer_offset = true;}break;
+				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK: instance_create_depth(x, y + 16, 0, obj_spikes_emerge);break;
+				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_LEFT: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15;}break;
+				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_DOWN: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 180; y -= 30;}break;
+				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_RIGHT: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 270; x -= 20; y -= 15;}break;
+				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_OFFSET_TIME: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 0; timer_offset = true;}break;
+				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_LEFT_OFFSET_TIME: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 90; x += 20; y -= 15; timer_offset = true;}break;
+				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_DOWN_OFFSET_TIME: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 180; y -= 30; timer_offset = true;}break;
+				case LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK_RIGHT_OFFSET_TIME: with(instance_create_depth(x, y + 16, 0, obj_spikes_emerge)){image_angle = 270; x -= 20; y -= 15; timer_offset = true;}break;
 				case 68: instance_create_depth(x, y, 0, obj_oneway);break;
 				case 69: with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 90;}break;
 				case 70: with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 180;}break;
 				case 71: with(instance_create_depth(x, y, 0, obj_oneway)){image_angle = 270;}break;
-				case level_object_id.id_horizontal_rope: instance_create_depth(x, y, 0, obj_horizontal_rope);break;
-				case level_object_id.id_water:
+				case LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE: instance_create_depth(x, y, 0, obj_horizontal_rope);break;
+				case LEVEL_OBJECT_ID.ID_WATER:
 					with(instance_create_depth(x, y, 0, obj_water))
 					{
 						breathable_water = false;
 						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
 						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
-						if (asset_get_type("spr_water") == asset_sprite)
-						{
-							sprite_index = spr_water;
-						}
+						sprite_index = spr_water;
 					}
 					break;
-				case level_object_id.id_breathable_water:
+				case LEVEL_OBJECT_ID.ID_BREATHABLE_WATER:
 					with(instance_create_depth(x, y, 0, obj_water))
 					{
 						breathable_water = true;
 						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
 						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
-						if (asset_get_type("spr_water") == asset_sprite)
-						{
-							sprite_index = spr_water;
-						}
+						sprite_index = spr_water;
 					}
 					break;
-				case level_object_id.id_water_surface:
+				case LEVEL_OBJECT_ID.ID_WATER_SURFACE:
 					with(instance_create_depth(x, y, 0, obj_water))
 					{
 						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
 						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
-						if (asset_get_type("spr_water_surface") == asset_sprite)
-						{
-							sprite_index = spr_water_surface;
-						}
-						else
-						if (asset_get_type("spr_water") == asset_sprite)
-						{
-							sprite_index = spr_water;
-						}
+						sprite_index = spr_water_surface;
 					}
 					break;
-				case level_object_id.id_air_bubbles_spawner: instance_create_depth(x, y, 0, obj_air_bubbles_spawner);break;
-				case level_object_id.id_water_level_change_slow: with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 0; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
-				case level_object_id.id_water_level_change_fast: with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 1; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
-				case level_object_id.id_water_level_change_faster: with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 2; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
-				case level_object_id.id_clipped_shirt: with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_shirt;}break;
-				case level_object_id.id_clipped_pants: with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_pants;}break;
-				case level_object_id.id_clipped_sock: with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_sock;}break;
-				case level_object_id.id_bucket: instance_create_depth(x, y, 0, obj_bucket);break;
-				case level_object_id.id_bucket_8_basic_collectibles: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "8_basic_collectibles";}break;
-				case level_object_id.id_bucket_heart_balloon: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "heart_balloon";}break;
-				case level_object_id.id_bucket_one_up: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "1-up";}break;
-				case level_object_id.id_bucket_two_up: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "2-up";}break;
-				case level_object_id.id_bucket_three_up: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "3-up";}break;
-				case level_object_id.id_bucket_big_collectible:
+				case LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER: instance_create_depth(x, y, 0, obj_air_bubbles_spawner);break;
+				case LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW: with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 0; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
+				case LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST: with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 1; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
+				case LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER: with(instance_create_depth(x, y, 0, obj_water_level_change)){water_level_change_speed = 2; if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
+				case LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT: with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_shirt;}break;
+				case LEVEL_OBJECT_ID.ID_CLIPPED_PANTS: with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_pants;}break;
+				case LEVEL_OBJECT_ID.ID_CLIPPED_SOCK: with(instance_create_depth(x, y, 0, obj_clipped_clothes)){sprite_index = spr_clipped_sock;}break;
+				case LEVEL_OBJECT_ID.ID_BUCKET: instance_create_depth(x, y, 0, obj_bucket);break;
+				case LEVEL_OBJECT_ID.ID_BUCKET_8_BASIC_COLLECTIBLES: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "8_basic_collectibles";}break;
+				case LEVEL_OBJECT_ID.ID_BUCKET_HEART_BALLOON: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "heart_balloon";}break;
+				case LEVEL_OBJECT_ID.ID_BUCKET_ONE_UP: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "1-up";}break;
+				case LEVEL_OBJECT_ID.ID_BUCKET_TWO_UP: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "2-up";}break;
+				case LEVEL_OBJECT_ID.ID_BUCKET_THREE_UP: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "3-up";}break;
+				case LEVEL_OBJECT_ID.ID_BUCKET_BIG_COLLECTIBLE:
 					with(instance_create_depth(x, y, 0, obj_bucket))
 					{
 						item_inside = "big_collectible";
@@ -372,17 +358,17 @@ function scr_spawn_objects_when_starting_room()
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
 					break;
-				case level_object_id.id_bucket_invincibility_powerup: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup";}break;
-				case level_object_id.id_bucket_invincibility_powerup_coil_spring: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup_coil_spring";}break;
-				case level_object_id.id_bird: instance_create_depth(x, y, 0, obj_bird);break;
+				case LEVEL_OBJECT_ID.ID_BUCKET_INVINCIBILITY_POWERUP: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup";}break;
+				case LEVEL_OBJECT_ID.ID_BUCKET_INVINCIBILITY_POWERUP_COIL_SPRING: with(instance_create_depth(x, y, 0, obj_bucket)){item_inside = "invincibility_powerup_coil_spring";}break;
+				case LEVEL_OBJECT_ID.ID_BIRD: instance_create_depth(x, y, 0, obj_bird);break;
 				case 90: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_crouch; sprite_sign = spr_sign_crouch;}break;
 				case 91: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_dive; sprite_sign = spr_sign_dive;}break;
 				case 92: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_ground_pound; sprite_sign = spr_sign_ground_pound;}break;
 				case 93: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_rope_spin; sprite_sign = spr_sign_rope_spin;}break;
 				case 94: with(instance_create_depth(x, y, 0, obj_sign_moveset)){sprite_index = spr_sign_wall_jump; sprite_sign = spr_sign_wall_jump;}break;
-				case level_object_id.id_boss: instance_create_depth(x, y, 0, obj_boss);break;
-				case level_object_id.id_boss_barrier: instance_create_depth(x, y, 0, obj_boss_barrier);break;
-				case level_object_id.id_cake_stealing_enemy:
+				case LEVEL_OBJECT_ID.ID_BOSS: instance_create_depth(x, y, 0, obj_boss);break;
+				case LEVEL_OBJECT_ID.ID_BOSS_BARRIER: instance_create_depth(x, y, 0, obj_boss_barrier);break;
+				case LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY:
 					var uppercase_level_name;
 					uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
 					uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
@@ -401,14 +387,14 @@ function scr_spawn_objects_when_starting_room()
 					}
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					break;
-				case level_object_id.id_artwork_collection: instance_create_depth(x, y, 0, obj_artwork_collection);break;
-				case level_object_id.id_eye_block: instance_create_depth(x, y, 0, obj_eye_block_spawner);break;
-				case level_object_id.id_eye_block_enemy: with(instance_create_depth(x, y, 0, obj_eye_block_spawner)){sprite_index = global.resource_pack_sprite_eye_block_enemy;}break;
-				case level_object_id.id_eye_block_enemy_player: with(instance_create_depth(x, y, 0, obj_eye_block_spawner)){sprite_index = global.resource_pack_sprite_eye_block_enemy_player;}break;
-				case level_object_id.id_door: with(instance_create_depth(x, y, 0, obj_door)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
-				case level_object_id.id_npc: instance_create_depth(x, y, 0, obj_npc);break;
-				case level_object_id.id_black_wall: instance_create_depth(x, y, 0, obj_black_wall);break;
-				case level_object_id.id_ring: instance_create_depth(x, y, 0, obj_ring);
+				case LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION: instance_create_depth(x, y, 0, obj_artwork_collection);break;
+				case LEVEL_OBJECT_ID.ID_EYE_BLOCK: instance_create_depth(x, y, 0, obj_eye_block_spawner);break;
+				case LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY: with(instance_create_depth(x, y, 0, obj_eye_block_spawner)){sprite_index = global.resource_pack_sprite_eye_block_enemy;}break;
+				case LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER: with(instance_create_depth(x, y, 0, obj_eye_block_spawner)){sprite_index = global.resource_pack_sprite_eye_block_enemy_player;}break;
+				case LEVEL_OBJECT_ID.ID_DOOR: with(instance_create_depth(x, y, 0, obj_door)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
+				case LEVEL_OBJECT_ID.ID_NPC: instance_create_depth(x, y, 0, obj_npc);break;
+				case LEVEL_OBJECT_ID.ID_BLACK_WALL: instance_create_depth(x, y, 0, obj_black_wall);break;
+				case LEVEL_OBJECT_ID.id_ring: instance_create_depth(x, y, 0, obj_ring);
 			}
 		}
 		#endregion /* Only spawn objects according to difficulty settings END */

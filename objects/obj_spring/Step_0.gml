@@ -1,9 +1,6 @@
 image_angle = point_direction(x, y, second_x, second_y) -90;
 
-if (asset_get_type("spr_wall") == asset_sprite)
-{
-	mask_index = spr_wall;
-}
+mask_index = spr_wall;
 
 if (can_bounce > 0)
 {
@@ -11,16 +8,12 @@ if (can_bounce > 0)
 }
 
 #region /* Make player spring */
-if (asset_get_type("obj_player") == asset_object)
-&& (place_meeting(x, y, instance_nearest(x, y, obj_player)))
+if (place_meeting(x, y, instance_nearest(x, y, obj_player)))
 && (instance_exists(obj_player))
 && (can_bounce == 0)
 {
-	if (asset_get_type("snd_spring") == asset_sound)
-	{
-		audio_sound_pitch(snd_spring, 1);
-		scr_audio_play(snd_spring, volume_source.sound);
-	}
+	audio_sound_pitch(snd_spring, 1);
+	scr_audio_play(snd_spring, volume_source.sound);
 	if (instance_nearest(x, y, obj_player).horizontal_rope_climb == false)
 	{
 		image_index = 1;

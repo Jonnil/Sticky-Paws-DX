@@ -81,7 +81,7 @@ if (global.actually_play_edited_level == false)
 					}
 					scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, l10n_text("First created on version") + ": " + ini_read_string("info", "first_created_on_version", "v" + string(scr_get_build_date())), global.default_text_size, c_black, c_white, 1);
 				}
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close();
 				#endregion /* Show what version of the game the level was first created in END */
 			
 				#region /* Draw if level have been Clear Checked on top of screen */
@@ -97,7 +97,7 @@ if (global.actually_play_edited_level == false)
 					scr_draw_text_outlined(64, 32, string(l10n_text("Clear Checked")), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
 					draw_sprite_ext(spr_checkpoint, 1, 32, 32, scr_wave(0.4, 0.5, 1, 0), scr_wave(0.4, 0.5, 1, 0), 0, c_white, 1);
 				}
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				ini_close();
 				#endregion /* Draw if level have been Clear Checked on top of screen END */
 				
 				in_settings = false;

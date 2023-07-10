@@ -194,6 +194,7 @@ hud_show_score_y = -64;
 hud_show_score_timer = 0;
 time_countup_y = 32; /* What y position the countup timer should be at */
 hurry_up_message_timer = 0; /* How long the hurry up message should stay on screen */
+set_all_big_collectible = 0;
 #endregion /* Hud Variables END */
 
 #region /* Checkpoint */

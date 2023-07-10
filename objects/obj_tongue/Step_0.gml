@@ -1,5 +1,4 @@
-if (asset_get_type("obj_player") == asset_object)
-&& (instance_exists(obj_player))
+if (instance_exists(obj_player))
 {
 	timer ++;
 	
@@ -27,7 +26,6 @@ if (asset_get_type("obj_player") == asset_object)
 	
 	#region /* Make tongue homing toward closest object */
 	if (timer < 25)
-	&& (asset_get_type("obj_ring") == asset_object)
 	&& (instance_exists(obj_ring))
 	&& (distance_to_object(instance_nearest(mouse_x, mouse_y, obj_ring)) < 64)
 	{
@@ -48,8 +46,7 @@ if (asset_get_type("obj_player") == asset_object)
 	{
 		
 		#region /* Can't interact with black wall */
-		if (asset_get_type("obj_black_wall") == asset_object)
-		&& (position_meeting(x, y, obj_black_wall))
+		if (position_meeting(x, y, obj_black_wall))
 		{
 			if (timer < 15)
 			{
@@ -78,8 +75,7 @@ if (asset_get_type("obj_player") == asset_object)
 		else
 		
 		#region /* Fly toward enemy */
-		if (asset_get_type("obj_enemy") == asset_object)
-		&& (instance_number(obj_enemy) > 0)
+		if (instance_number(obj_enemy) > 0)
 		&& (place_meeting(x, y, obj_enemy))
 		{
 			if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))

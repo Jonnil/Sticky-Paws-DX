@@ -1,10 +1,7 @@
-if (asset_get_type("spr_bucket") == asset_sprite)
-&& (sprite_index = spr_bucket)
+if (sprite_index = spr_bucket)
 {
-	if (asset_get_type("spr_bucket_clothes") == asset_sprite)
-	{
-		sprite_index = spr_bucket_clothes;
-	}
+	sprite_index = spr_bucket_clothes;
+	
 	#region /* 1 Basic Collectible */
 	if (item_inside = "none")
 	{

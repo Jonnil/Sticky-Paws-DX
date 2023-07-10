@@ -16,21 +16,12 @@ if (!instance_exists(obj_player))
 	{
 		iris_zoom = 1;
 	}
-	if (asset_get_type("obj_player_lose") == asset_object)
-	&& (instance_exists(obj_player_lose))
+	if (instance_exists(obj_player_lose))
 	{
 		if (iris_xscale < 16)
 		&& (global.enable_transitions)
 		{
-			if (asset_get_type("spr_iris_dead") == asset_sprite)
-			{
-				draw_sprite_ext(spr_iris_dead, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
-			}
-			else
-			if (asset_get_type("spr_iris") == asset_sprite)
-			{
-				draw_sprite_ext(spr_iris, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
-			}
+			draw_sprite_ext(spr_iris_dead, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
 			draw_rectangle_color(0, 0, room_width * 3, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
 			draw_rectangle_color(0, 0, xx - iris_xscale * 128, room_height * 3, c_black, c_black, c_black, c_black, false);
 			draw_rectangle_color(xx + iris_xscale * 128, 0, room_width * 3, room_height * 3, c_black, c_black, c_black, c_black, false);

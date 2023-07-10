@@ -19,12 +19,14 @@ else
 }
 
 #region /* Set big collectible numbers for every big collectible */
-for(var big_collectible = 0;big_collectible < instance_number(obj_big_collectible_number) + 1;big_collectible += 1)
+for(set_all_big_collectible = 0; set_all_big_collectible < instance_number(obj_big_collectible_number) + 1; set_all_big_collectible += 1)
 {
-	if (instance_number(obj_big_collectible_number) >= big_collectible)
+	if (instance_number(obj_big_collectible_number) >= set_all_big_collectible)
 	{
-		var obj = instance_nth_nearest(global.level_player1_start_x, global.level_player1_start_y, obj_big_collectible_number, big_collectible)
-		obj.big_collectible = big_collectible;
+		with (instance_nth_nearest(global.level_player1_start_x, global.level_player1_start_y, obj_big_collectible_number, set_all_big_collectible))
+		{
+			big_collectible = obj_camera.set_all_big_collectible;
+		}
 	}
 }
 #endregion /* Set big collectible numbers for every big collectible END */

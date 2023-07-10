@@ -22,19 +22,15 @@ if (hspeed < - 2)
 {
 	hspeed = -2;
 }
-if (asset_get_type("obj_water") == asset_object)
-if (asset_get_type("obj_water_level") == asset_object)
+if (!position_meeting(x, bbox_top, obj_water))
+&& (instance_exists(obj_water_level))
+&& (y < obj_water_level.y)
 {
-	if (!position_meeting(x, bbox_top, obj_water))
-	&& (instance_exists(obj_water_level))
-	&& (y < obj_water_level.y)
+	image_alpha = lerp(image_alpha, 0, 0.3);
+	gravity = 0;
+	vspeed = 0;
+	if (image_alpha <= 0)
 	{
-		image_alpha = lerp(image_alpha, 0, 0.3);
-		gravity = 0;
-		vspeed = 0;
-		if (image_alpha <= 0)
-		{
-			instance_destroy();
-		}
+		instance_destroy();
 	}
 }

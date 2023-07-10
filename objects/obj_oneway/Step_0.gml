@@ -18,7 +18,6 @@ if (distance_to_object(obj_player) < 32)
 	}
 	else
 	if (image_angle = 90)
-	&& (asset_get_type("obj_player") == asset_object)
 	&& (instance_exists(obj_player))
 	&& (place_meeting(x, y + 1, obj_player))
 	&& (!place_meeting(x, y - 1, obj_wall))

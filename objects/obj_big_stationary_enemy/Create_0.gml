@@ -11,30 +11,9 @@ coil_spring = false;
 can_die_from_spikes = true;
 number_of_times_stomped = 0;
 give_rewards = true;
-if (asset_get_type("snd_enemyvoice_big_defeated") == asset_sound)
-{
-	enemyvoice_defeated1 = snd_enemyvoice_big_defeated;
-}
-else
-{
-	enemyvoice_defeated1 = noone;
-}
-if (asset_get_type("snd_enemyvoice_big_defeated2") == asset_sound)
-{
-	enemyvoice_defeated2 = snd_enemyvoice_big_defeated2;
-}
-else
-{
-	enemyvoice_defeated2 = noone;
-}
-if (asset_get_type("snd_enemyvoice_big_defeated3") == asset_sound)
-{
-	enemyvoice_defeated3 = snd_enemyvoice_big_defeated3;
-}
-else
-{
-	enemyvoice_defeated3 = noone;
-}
+enemyvoice_defeated1 = snd_enemyvoice_big_defeated;
+enemyvoice_defeated2 = snd_enemyvoice_big_defeated2;
+enemyvoice_defeated3 = snd_enemyvoice_big_defeated3;
 
 sprite_used = "stand";
 stuck_in_wall_counter = 0;

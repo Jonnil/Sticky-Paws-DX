@@ -265,11 +265,11 @@ function scr_character_select_menu_draw()
 		#region /* Show Back key when you can go back to main menu */
 		if (global.character_select_in_this_menu == "main_game")
 		{
-			draw_menu_button(-32, back_y, l10n_text("Back"), "back_from_character_select", "main_game");
+			draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select", "main_game");
 		}
 		else
 		{
-			draw_menu_button(-32, back_y, l10n_text("Back"), "back_from_character_select", "level_editor");
+			draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select", "level_editor");
 		}
 		draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 		#endregion /* Show Back key when you can go back to main menu END */
@@ -277,7 +277,7 @@ function scr_character_select_menu_draw()
 		#region /* Manage Characters */
 		if (global.enable_manage_characters)
 		{
-			draw_menu_button(-32, manage_characters_y, l10n_text("Manage Characters"), "manage_character", "click_copy_character");
+			draw_menu_button(0, manage_characters_y, l10n_text("Manage Characters"), "manage_character", "click_copy_character");
 			if (key_a_pressed)
 			&& (menu == "manage_character")
 			{
@@ -288,7 +288,7 @@ function scr_character_select_menu_draw()
 		#endregion /* Manage Characters END */
 		
 		#region /* Search Character ID Button */
-		draw_menu_button(-32, draw_search_id_y, l10n_text("Search Character ID"), "search_character_id", "search_character_id");
+		draw_menu_button(0, draw_search_id_y, l10n_text("Search Character ID"), "search_character_id", "search_character_id");
 		
 		#region /* Draw Search Key */
 		if (gamepad_is_connected(global.player1_slot))

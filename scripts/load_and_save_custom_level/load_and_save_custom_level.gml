@@ -150,15 +150,15 @@ function scr_save_custom_level_json()
 			    if (!hard) obj_data.H = string(hard);
 				
 				var obj_ids = ds_list_create();
-				ds_list_add(obj_ids, level_object_id.id_spring);
-				ds_list_add(obj_ids, level_object_id.id_door);
-				ds_list_add(obj_ids, level_object_id.id_water_level_change_slow);
-				ds_list_add(obj_ids, level_object_id.id_water_level_change_fast);
-				ds_list_add(obj_ids, level_object_id.id_water_level_change_faster);
-				ds_list_add(obj_ids, level_object_id.id_arrow_sign);
-				ds_list_add(obj_ids, level_object_id.id_arrow_sign_small);
-				ds_list_add(obj_ids, level_object_id.id_water);
-				ds_list_add(obj_ids, level_object_id.id_breathable_water);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_SPRING);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_DOOR);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_ARROW_SIGN);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_WATER);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BREATHABLE_WATER);
 				
 				if (ds_list_find_index(obj_ids, object) != -1)
 				{

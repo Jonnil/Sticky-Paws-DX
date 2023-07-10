@@ -2,8 +2,7 @@ function scr_draw_cursor_mouse()
 {
 	
 	#region /* Tongue aim should always be above everything, it represents the mouse cursor */
-	if (asset_get_type("obj_player") == asset_object)
-	&& (instance_exists(obj_player))
+	if (instance_exists(obj_player))
 	&& (instance_exists(obj_camera))
 	&& (obj_camera.player1 >= 1)
 	&& (obj_camera.can_spawn_player1)

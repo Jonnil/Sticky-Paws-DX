@@ -61,17 +61,6 @@ function scr_draw_online_download_list()
 		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
-		draw_menu_button(0, 0, "Back", "download_online_back", "download_online_back");
-		if (content_type == "character")
-		{
-			draw_menu_button(0, 42, "Search Character ID", "download_online_search_id", "download_online_search_id");
-		}
-		else
-		if (content_type == "level")
-		{
-			draw_menu_button(0, 42, "Search Level ID", "download_online_search_id", "download_online_search_id");
-		}
-		
 		#region /* Pressing the Back button */
 		if (key_b_pressed)
 		|| (menu = "download_online_back")
@@ -109,6 +98,7 @@ function scr_draw_online_download_list()
 		|| (menu = "download_online_search_id")
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42, 370, 42 + 42))
 		&& (mouse_check_button_released(mb_left))
+		|| (gamepad_button_check_pressed(global.player1_slot, gp_face4))
 		{
 			in_online_download_list_menu = false; /* Get out of the online download list menu */
 			automatically_search_for_id = false; /* Manual search ID */
@@ -292,6 +282,7 @@ function scr_draw_online_download_list()
 			{
 				if (key_up)
 				&& (menu_delay == 0)
+				&& (menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(num_items);
@@ -299,6 +290,7 @@ function scr_draw_online_download_list()
 				else
 				if (key_down)
 				&& (menu_delay == 0)
+				&& (menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_search_id";
@@ -309,6 +301,7 @@ function scr_draw_online_download_list()
 			{
 				if (key_up)
 				&& (menu_delay == 0)
+				&& (menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_back";
@@ -316,6 +309,7 @@ function scr_draw_online_download_list()
 				else
 				if (key_down)
 				&& (menu_delay == 0)
+				&& (menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_1";
@@ -326,6 +320,7 @@ function scr_draw_online_download_list()
 			{
 				if (key_up)
 				&& (menu_delay == 0)
+				&& (menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_search_id";
@@ -333,6 +328,7 @@ function scr_draw_online_download_list()
 				else
 				if (key_down)
 				&& (menu_delay == 0)
+				&& (menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					if (num_items >= 2)
@@ -350,6 +346,7 @@ function scr_draw_online_download_list()
 			{
 				if (key_up)
 				&& (menu_delay == 0)
+				&& (menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(selected_online_download_index - 1);
@@ -357,6 +354,7 @@ function scr_draw_online_download_list()
 				else
 				if (key_down)
 				&& (menu_delay == 0)
+				&& (menu_joystick_delay == 0)
 				&& (selected_online_download_index < num_items)
 				{
 					menu_delay = 3;
@@ -365,6 +363,7 @@ function scr_draw_online_download_list()
 				else
 				if (key_down)
 				&& (menu_delay == 0)
+				&& (menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_back";
@@ -391,5 +390,33 @@ function scr_draw_online_download_list()
 				menu = "no_internet_level";
 			}
 		}
+		
+		#region /* Draw the Back and Search ID buttons on top of everything */
+		draw_menu_button(0, 0, "Back", "download_online_back", "download_online_back");
+		draw_sprite_ext(spr_icons_back, 0, 20, 21, 1, 1, 0, c_white, 1);
+		
+		var draw_search_id_y = 42;
+		
+		if (content_type == "character")
+		{
+			draw_menu_button(0, draw_search_id_y, "Search Character ID", "download_online_search_id", "download_online_search_id");
+		}
+		else
+		if (content_type == "level")
+		{
+			draw_menu_button(0, draw_search_id_y, "Search Level ID", "download_online_search_id", "download_online_search_id");
+		}
+		
+		#region /* Draw Search Key */
+		if (gamepad_is_connected(global.player1_slot))
+		&& (global.controls_used_for_menu_navigation == "controller")
+		|| (global.always_show_gamepad_buttons)
+		{
+			scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);
+		}
+		#endregion /* Draw Search key END */
+		
+		#endregion /* Draw the Back and Search ID buttons on top of everything END */
+		
 	}
 }

@@ -2,8 +2,7 @@ function scr_player_move_goal()
 {
 	
 	#region /* Goal */
-	if (asset_get_type("obj_goal") == asset_object)
-	&& (instance_exists(obj_goal))
+	if (instance_exists(obj_goal))
 	{
 		if (distance_to_object(obj_goal) < 1920)
 		{

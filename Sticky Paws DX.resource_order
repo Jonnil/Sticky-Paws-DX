@@ -17,7 +17,7 @@
     {"name":"Level Editor","order":2,"path":"folders/Scripts/Level Editor.yy",},
     {"name":"Menus","order":1,"path":"folders/Scripts/Menus.yy",},
     {"name":"Other","order":3,"path":"folders/Scripts/Other.yy",},
-    {"name":"Player Scripths","order":4,"path":"folders/Scripts/Player Scripths.yy",},
+    {"name":"Player Scripts","order":4,"path":"folders/Scripts/Player Scripts.yy",},
     {"name":"Server Scripts","order":5,"path":"folders/Scripts/Server Scripts.yy",},
     {"name":"Sequences","order":1,"path":"folders/Sequences.yy",},
     {"name":"Shaders","order":7,"path":"folders/Shaders.yy",},

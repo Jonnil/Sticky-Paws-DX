@@ -32,8 +32,7 @@ function scr_player_move_go_left()
 			{
 				if (!place_meeting(x - 1, y, obj_wall))
 				{
-					if (asset_get_type("obj_ice_block") == asset_object)
-					&& (place_meeting(x, y + 1, obj_ice_block))
+					if (place_meeting(x, y + 1, obj_ice_block))
 					{
 						hspeed -= acceleration_on_ice;
 					}

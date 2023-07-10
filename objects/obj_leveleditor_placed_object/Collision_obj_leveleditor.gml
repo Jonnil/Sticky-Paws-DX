@@ -74,9 +74,9 @@
 				dragged_from_original_place = false;
 				
 				#region /* Reset depth to normal when releasing object */
-				if (object == level_object_id.id_water)
-				|| (object == level_object_id.id_breathable_water)
-				|| (object == level_object_id.id_water_surface)
+				if (object == LEVEL_OBJECT_ID.ID_WATER)
+				|| (object == LEVEL_OBJECT_ID.ID_BREATHABLE_WATER)
+				|| (object == LEVEL_OBJECT_ID.ID_WATER_SURFACE)
 				{
 					depth = -20;
 				}

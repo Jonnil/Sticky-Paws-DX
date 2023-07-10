@@ -17,37 +17,11 @@ coil_spring = false;
 blind = false;
 can_die_from_spikes = true;
 give_rewards = true;
-if (asset_get_type("snd_enemyvoice_defeated") == asset_sound)
-{
-	enemyvoice_defeated1 = snd_enemyvoice_defeated;
-}
-else
-{
-	enemyvoice_defeated1 = noone;
-}
-if (asset_get_type("snd_enemyvoice_defeated2") == asset_sound)
-{
-	enemyvoice_defeated2 = snd_enemyvoice_defeated2;
-}
-else
-{
-	enemyvoice_defeated2 = noone;
-}
-if (asset_get_type("snd_enemyvoice_defeated3") == asset_sound)
-{
-	enemyvoice_defeated3 = snd_enemyvoice_defeated3;
-}
-else
-{
-	enemyvoice_defeated3 = noone;
-}
+enemyvoice_defeated1 = snd_enemyvoice_defeated;
+enemyvoice_defeated2 = snd_enemyvoice_defeated2;
+enemyvoice_defeated3 = snd_enemyvoice_defeated3;
 
-#region /* Mask */
-if (asset_get_type("spr_small_mask") == asset_sprite)
-{
-	mask_index = spr_small_mask;
-}
-#endregion /* Mask END */
+mask_index = spr_small_mask;
 
 sprite_used = "stand";
 

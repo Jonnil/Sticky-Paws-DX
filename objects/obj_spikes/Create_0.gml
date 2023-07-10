@@ -5,9 +5,6 @@ image_index = random(10);
 if (global.assist_enable)
 && (global.assist_enable_spikes == false)
 {
-	if (asset_get_type("obj_ground") == asset_object)
-	{
-		instance_change(obj_ground, true);
-	}
+	instance_change(obj_ground, true);
 }
 #endregion /* If enemies are disabled, replace this object with ground object END */

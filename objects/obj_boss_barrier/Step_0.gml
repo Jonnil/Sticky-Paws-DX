@@ -8,32 +8,29 @@ if (!instance_exists(obj_boss))
 		time ++;
 		if (time > 5)
 		{
-			if (asset_get_type("obj_brick_particle") == asset_object)
+			with(instance_create_depth(x, y, 0, obj_brick_particle))
 			{
-				with(instance_create_depth(x, y, 0, obj_brick_particle))
-				{
-					sprite_index = spr_boss_barrier;
-					motion_set(45, random_range(5, 10));
-					brick_particle = true;
-				}
-				with(instance_create_depth(x, y, 0, obj_brick_particle))
-				{
-					sprite_index = spr_boss_barrier;
-					motion_set(135, random_range(5, 10));
-					brick_particle = true;
-				}
-				with(instance_create_depth(x, y, 0, obj_brick_particle))
-				{
-					sprite_index = spr_boss_barrier;
-					motion_set(225, random_range(5, 10));
-					brick_particle = true;
-				}
-				with(instance_create_depth(x, y, 0, obj_brick_particle))
-				{
-					sprite_index = spr_boss_barrier;
-					motion_set(315, random_range(5, 10));
-					brick_particle = true;
-				}
+				sprite_index = spr_boss_barrier;
+				motion_set(45, random_range(5, 10));
+				brick_particle = true;
+			}
+			with(instance_create_depth(x, y, 0, obj_brick_particle))
+			{
+				sprite_index = spr_boss_barrier;
+				motion_set(135, random_range(5, 10));
+				brick_particle = true;
+			}
+			with(instance_create_depth(x, y, 0, obj_brick_particle))
+			{
+				sprite_index = spr_boss_barrier;
+				motion_set(225, random_range(5, 10));
+				brick_particle = true;
+			}
+			with(instance_create_depth(x, y, 0, obj_brick_particle))
+			{
+				sprite_index = spr_boss_barrier;
+				motion_set(315, random_range(5, 10));
+				brick_particle = true;
 			}
 			effect_create_above(ef_smoke, x, y, 1, c_white);
 			

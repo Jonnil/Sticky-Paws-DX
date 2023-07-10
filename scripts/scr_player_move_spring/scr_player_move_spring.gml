@@ -2,8 +2,7 @@ function scr_player_move_spring()
 {
 	
 	#region /* Spring */
-	if (asset_get_type("obj_spring") == asset_object)
-	&& (instance_exists(obj_spring))
+	if (instance_exists(obj_spring))
 	&& (place_meeting(x, y, obj_spring))
 	&& (instance_nearest(x, y, obj_spring).can_bounce == 0)
 	{
@@ -47,8 +46,7 @@ function scr_player_move_spring()
 		speed_max = 4;
 		spring = true;
 		move_towards_spring_endpoint = true;
-		if (asset_get_type("obj_spring") == asset_object)
-		&& (instance_exists(obj_spring))
+		if (instance_exists(obj_spring))
 		{
 			spring_endpoint_x = instance_nearest(x, y, obj_spring).second_x;
 			spring_endpoint_y = instance_nearest(x, y, obj_spring).second_y;
@@ -60,13 +58,12 @@ function scr_player_move_spring()
 		instance_nearest(x, y, obj_spring).image_index = 1;
 		instance_nearest(x, y, obj_spring).image_speed = 1;
 	}
-
+	
 	if (move_towards_spring_endpoint)
 	{
 		move_towards_point(spring_endpoint_x, spring_endpoint_y, 20);
-	
-		if (asset_get_type("obj_spring") == asset_object)
-		&& (instance_exists(obj_spring))
+		
+		if (instance_exists(obj_spring))
 		&& (point_distance(
 		spring_endpoint_x,
 		spring_endpoint_y,

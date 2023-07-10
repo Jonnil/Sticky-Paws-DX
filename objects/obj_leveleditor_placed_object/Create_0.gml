@@ -22,6 +22,7 @@ if (global.actually_play_edited_level == false)
 	draw_rotate_arrow = false;
 	draw_item_on_top = noone;
 	draw_item_with_spring = false;
+	draw_leveleditor_arrow = noone;
 	
 	second_x = x;
 	second_y = y;
