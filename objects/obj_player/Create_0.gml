@@ -730,8 +730,6 @@ key_down_hold_temp = noone;
 key_tongue = noone;
 key_tongue_pressed = noone;
 key_tongue_released = noone;
-key_spin = noone;
-key_spin_pressed = noone;
 
 active_left = false;
 active_right = false;
@@ -744,10 +742,7 @@ active_jump = false;
 if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "main_game")
 {
-	var uppercase_level_name;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
-	var level_name = string(uppercase_level_name);
+	var level_name = string(global.level_name);
 	
 	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
@@ -757,11 +752,7 @@ else
 if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "level_editor")
 {
-	
-	var uppercase_level_name;
-	uppercase_level_name = string_upper(string_char_at(string(global.level_name), 1));
-	uppercase_level_name += string_copy(string(global.level_name), 2, string_length(string(global.level_name)) - 1);
-	var level_name = string(uppercase_level_name);
+	var level_name = string(global.level_name);
 	
 	ini_open(working_directory + "save_files/custom_level_save.ini");
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);

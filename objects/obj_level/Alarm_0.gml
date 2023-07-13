@@ -4,10 +4,7 @@
 /* So it doesn't know what level data to load there */
 if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
 {
-	var uppercase_level_name;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, level)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level))) - 1);
-	var level_name = string(uppercase_level_name);
+	var level_name = string(ds_list_find_value(global.all_loaded_main_levels, level));
 	
 	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	
@@ -32,7 +29,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	timeattack_realmillisecond = ini_read_real(level_name, "timeattack_realmillisecond", 999999999);
 	level_score = ini_read_real(level_name, "level_score", 0);
 	
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_close();
 	
 }
 else

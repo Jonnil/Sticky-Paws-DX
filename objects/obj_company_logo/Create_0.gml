@@ -54,6 +54,7 @@ else
 #region /* If you're playing on console, then some things should not show up that is for PC */
 if (os_type == os_switch)
 {
+	global.free_communication_available = switch_free_communication_available(); /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = switch_free_communication_available when done debugging */
 	global.chosen_controller_used = 2; /* What controller buttons to use for button prompts */
 	/* 0 = xboxone, 1 = xboxseriesxs, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5 */
 	global.show_prompt_when_changing_to_gamepad = false;
@@ -64,6 +65,7 @@ if (os_type == os_switch)
 }
 else
 {
+	global.free_communication_available = true; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = true when done debugging */
 	global.chosen_controller_used = 0; /* What controller buttons to use for button prompts */
 	/* 0 = xboxone, 1 = xboxseriesxs, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5 */
 	global.show_prompt_when_changing_to_gamepad = true;
@@ -202,6 +204,13 @@ sprite_splash_easteregg_yoffset = +228;
 view_hview_lerp = 0;
 view_wview_lerp = 0;
 goto_title_screen = false; /* If game is allowed to go to title screen yet or not. Need to load everything before going to title screen */
+
+var switch_controller_style = switch_controller_handheld | switch_controller_joycon_left | switch_controller_joycon_right | switch_controller_pro_controller | switch_controller_joycon_dual;
+switch_controller_set_supported_styles(switch_controller_style);
+switch_controller_support_set_singleplayer_only(false);
+switch_controller_support_set_player_min(1);
+switch_controller_support_set_player_max(4);
+
 global.saveid = noone;
 global.savebuff = noone;
 if (os_type == os_switch)
@@ -456,6 +465,7 @@ global.player4_down_and_jump_to_groundpound = false;
 global.fullscreen_key = vk_f11;
 
 global.level_name = ""; /* In the level editor, the name of the currently selected level will be stored here */
+global.level_name = ""; /* The actual level path name will be store here, without being censored */
 global.level_description = ""; /* In the level editor, the description of the currently selected level will be stored here */
 
 global.player_name[1] = "";

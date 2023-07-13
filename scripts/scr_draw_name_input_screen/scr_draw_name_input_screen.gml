@@ -158,6 +158,15 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	|| (keyboard_check_pressed(vk_escape))
 	&& (menu_delay == 0)
 	{
+		keyboard_string = string_replace_all(keyboard_string, "\\", "");
+		keyboard_string = string_replace_all(keyboard_string, "/", "");
+		keyboard_string = string_replace_all(keyboard_string, ":", "");
+		keyboard_string = string_replace_all(keyboard_string, "*", "");
+		keyboard_string = string_replace_all(keyboard_string, "?", "");
+		keyboard_string = string_replace_all(keyboard_string, "\"", "");
+		keyboard_string = string_replace_all(keyboard_string, "<", "");
+		keyboard_string = string_replace_all(keyboard_string, ">", "");
+		keyboard_string = string_replace_all(keyboard_string, "|", "");
 		what_string_to_edit_async = "";
 		global.keyboard_virtual_timer = 0;
 		keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
@@ -197,6 +206,15 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			&& (keyboard_check_pressed(vk_enter))
 			&& (menu_delay == 0)
 			{
+				keyboard_string = string_replace_all(keyboard_string, "\\", "");
+				keyboard_string = string_replace_all(keyboard_string, "/", "");
+				keyboard_string = string_replace_all(keyboard_string, ":", "");
+				keyboard_string = string_replace_all(keyboard_string, "*", "");
+				keyboard_string = string_replace_all(keyboard_string, "?", "");
+				keyboard_string = string_replace_all(keyboard_string, "\"", "");
+				keyboard_string = string_replace_all(keyboard_string, "<", "");
+				keyboard_string = string_replace_all(keyboard_string, ">", "");
+				keyboard_string = string_replace_all(keyboard_string, "|", "");
 				what_string_to_edit_async = "";
 				global.keyboard_virtual_timer = 0;
 				keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking OK */
@@ -264,6 +282,11 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		{
 			menu = cancel_menu_string;
 		}
+	}
+	
+	if (switch_check_profanity(keyboard_string))
+	{
+		keyboard_string = switch_mask_profanity(keyboard_string);
 	}
 	
 	return(keyboard_string);

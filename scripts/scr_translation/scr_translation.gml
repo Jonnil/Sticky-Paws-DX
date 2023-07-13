@@ -93,5 +93,6 @@ function l10n_text(key = "") /* The common abbreviation for localization is l10n
             text = key;
         }
     }
+	
     return text;
 }

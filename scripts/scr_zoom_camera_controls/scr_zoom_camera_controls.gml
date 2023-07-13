@@ -1,6 +1,6 @@
 function scr_zoom_camera_controls()
 {
-	var key_hold = [
+	var key_in_hold = [
 		scr_key_initialize(key_player1_zoom_in_hold, 0, 1, action.zoom_in),
 		scr_key_initialize(key_player2_zoom_in_hold, 0, 2, action.zoom_in),
 		scr_key_initialize(key_player3_zoom_in_hold, 0, 3, action.zoom_in),
@@ -48,10 +48,10 @@ function scr_zoom_camera_controls()
 	if (room != rm_title)
 	{
 		if (
-			(key_hold[0] && !key_out_hold[0]) ||
-			(key_hold[1] && !key_out_hold[1]) ||
-			(key_hold[2] && !key_out_hold[2]) ||
-			(key_hold[3] && !key_out_hold[3])
+			(key_in_hold[0] && !key_out_hold[0]) ||
+			(key_in_hold[1] && !key_out_hold[1]) ||
+			(key_in_hold[2] && !key_out_hold[2]) ||
+			(key_in_hold[3] && !key_out_hold[3])
 		)
 		{
 			if (zoom_variable > zoom_minimum)
@@ -72,10 +72,10 @@ function scr_zoom_camera_controls()
 		}
 
 		if (
-			(key_out_hold[0] && !key_hold[0]) ||
-			(key_out_hold[1] && !key_hold[1]) ||
-			(key_out_hold[2] && !key_hold[2]) ||
-			(key_out_hold[3] && !key_hold[3])
+			(key_out_hold[0] && !key_in_hold[0]) ||
+			(key_out_hold[1] && !key_in_hold[1]) ||
+			(key_out_hold[2] && !key_in_hold[2]) ||
+			(key_out_hold[3] && !key_in_hold[3])
 		)
 		{
 			if (

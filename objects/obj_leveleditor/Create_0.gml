@@ -640,10 +640,7 @@ if (global.actually_play_edited_level == false)
 		}
 		
 		#region /* Character Name */
-		var uppercase_narrator_name;
-		uppercase_narrator_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 1));
-		uppercase_narrator_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.narrator)), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.narrator))) - 1);
-		narrator_name = string(uppercase_narrator_name);
+		narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator));
 		#endregion /* Character Name END */
 		
 		ini_close();

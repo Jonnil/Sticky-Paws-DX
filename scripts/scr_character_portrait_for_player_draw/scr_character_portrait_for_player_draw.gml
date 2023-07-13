@@ -184,10 +184,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		}
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		var uppercase_character_name;
-		uppercase_character_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])), 1));
-		uppercase_character_name += string_copy(string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])), 2, string_length(string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]))) - 1);
-		var character_name = string(uppercase_character_name);
+		var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
 		
 		#region /* Display Character Name */
 		if (player_menu[what_player] != "select_name")

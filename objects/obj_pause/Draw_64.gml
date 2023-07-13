@@ -144,25 +144,24 @@ if (hide_menu_for_clean_screenshots == false)
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		if (global.playergame >= 1)
-		&& (global.pause_player == 0)
+		if (global.pause_player == 0)
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, 100, "PLAYER 1 IS CONTROLING THE MENU", global.default_text_size * 2, c_black, c_aqua, fade_in_pause_alpha);
+			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 1 IS CONTROLING THE MENU", global.default_text_size, c_black, c_aqua, fade_in_pause_alpha);
 		}
 		else
 		if (global.pause_player == 1)
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, 100, "PLAYER 2 IS CONTROLING THE MENU", global.default_text_size * 2, c_black, c_red, fade_in_pause_alpha);
+			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 2 IS CONTROLING THE MENU", global.default_text_size, c_black, c_red, fade_in_pause_alpha);
 		}
 		else
 		if (global.pause_player = 2)
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, 100, "PLAYER 3 IS CONTROLING THE MENU", global.default_text_size * 2, c_black, c_lime, fade_in_pause_alpha);
+			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 3 IS CONTROLING THE MENU", global.default_text_size, c_black, c_lime, fade_in_pause_alpha);
 		}
 		else
 		if (global.pause_player = 3)
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, 100, "PLAYER 4 IS CONTROLING THE MENU", global.default_text_size * 2, c_black, c_yellow, fade_in_pause_alpha);
+			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 4 IS CONTROLING THE MENU", global.default_text_size, c_black, c_yellow, fade_in_pause_alpha);
 		}
 	}
 	#endregion /* Which player is controling the pause menu? END */

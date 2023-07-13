@@ -50,54 +50,67 @@ function scr_draw_upload_level_menu()
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		|| (key_a_pressed)
 		{
-			global.actually_play_edited_level = false;
-			global.play_edited_level = false;
-			menu_delay = 10;
-			ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-			if (ini_key_exists("info", "clear_check"))
-			&& (skip_clear_check == false)
-			|| (skip_clear_check)
+			if (global.free_communication_available)
 			{
-				if (ini_read_real("info", "clear_check", false))
+				global.actually_play_edited_level = false;
+				global.play_edited_level = false;
+				menu_delay = 10;
+				ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				if (ini_key_exists("info", "clear_check"))
 				&& (skip_clear_check == false)
 				|| (skip_clear_check)
 				{
-					if (global.username != "") /* Check if there is an username or not */
+					if (ini_read_real("info", "clear_check", false))
+					&& (skip_clear_check == false)
+					|| (skip_clear_check)
 					{
-						if (os_is_network_connected()) /* Check if you're even connected to the internet */
+						if (global.username != "") /* Check if there is an username or not */
 						{
-							
-							#region /* loads tags from level_information.ini */
-							ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-							tag_art = ini_read_real("tags", "tag_art", false);
-							tag_boss_battle = ini_read_real("tags", "tag_boss_battle", false);
-							tag_dont_move = ini_read_real("tags", "tag_dont_move", false);
-							tag_kaizo = ini_read_real("tags", "tag_kaizo", false);
-							tag_multiplayer = ini_read_real("tags", "tag_multiplayer", false);
-							tag_music = ini_read_real("tags", "tag_music", false);
-							tag_puzzle_solving = ini_read_real("tags", "tag_puzzle_solving", false);
-							tag_short_and_sweet = ini_read_real("tags", "tag_short_and_sweet", false);
-							tag_singleplayer = ini_read_real("tags", "tag_singleplayer", false);
-							tag_speedrun = ini_read_real("tags", "tag_speedrun", false);
-							tag_standard = ini_read_real("tags", "tag_standard", false);
-							tag_technical = ini_read_real("tags", "tag_technical", false);
-							tag_themed = ini_read_real("tags", "tag_themed", false);
-							tag_glitch_showcase = ini_read_real("tags", "glitch_showcase", false);
-							intended_level_difficulty = ini_read_real("info", "intended_level_difficulty", 1);
-							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-							#endregion /* loads tags from level_information.ini END */
-							
-							menu_delay = 3;
-							menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
-							if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+							if (os_is_network_connected()) /* Check if you're even connected to the internet */
 							{
-								show_level_editor_corner_menu = false;
+							
+								#region /* loads tags from level_information.ini */
+								ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+								tag_art = ini_read_real("tags", "tag_art", false);
+								tag_boss_battle = ini_read_real("tags", "tag_boss_battle", false);
+								tag_dont_move = ini_read_real("tags", "tag_dont_move", false);
+								tag_kaizo = ini_read_real("tags", "tag_kaizo", false);
+								tag_multiplayer = ini_read_real("tags", "tag_multiplayer", false);
+								tag_music = ini_read_real("tags", "tag_music", false);
+								tag_puzzle_solving = ini_read_real("tags", "tag_puzzle_solving", false);
+								tag_short_and_sweet = ini_read_real("tags", "tag_short_and_sweet", false);
+								tag_singleplayer = ini_read_real("tags", "tag_singleplayer", false);
+								tag_speedrun = ini_read_real("tags", "tag_speedrun", false);
+								tag_standard = ini_read_real("tags", "tag_standard", false);
+								tag_technical = ini_read_real("tags", "tag_technical", false);
+								tag_themed = ini_read_real("tags", "tag_themed", false);
+								tag_glitch_showcase = ini_read_real("tags", "glitch_showcase", false);
+								intended_level_difficulty = ini_read_real("info", "intended_level_difficulty", 1);
+								ini_close();
+								#endregion /* loads tags from level_information.ini END */
+							
+								menu_delay = 3;
+								menu = "upload_edit_name"; /* Go to the menu where you can edit things about the custom level before uploading it*/
+								if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+								{
+									show_level_editor_corner_menu = false;
+								}
+							}
+							else
+							{
+								menu_delay = 3;
+								menu = "no_internet_level"; /* If you're not connected to the internet, tell the player that */
+								if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+								{
+									show_level_editor_corner_menu = false;
+								}
 							}
 						}
 						else
 						{
+							keyboard_string = "";
 							menu_delay = 3;
-							menu = "no_internet_level"; /* If you're not connected to the internet, tell the player that */
+							menu = "upload_edit_username_ok"; /* If there isn't an username, have the player make an username */
 							if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 							{
 								show_level_editor_corner_menu = false;
@@ -106,9 +119,8 @@ function scr_draw_upload_level_menu()
 					}
 					else
 					{
-						keyboard_string = "";
 						menu_delay = 3;
-						menu = "upload_edit_username_ok"; /* If there isn't an username, have the player make an username */
+						menu = "clear_check_yes";
 						if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 						{
 							show_level_editor_corner_menu = false;
@@ -124,17 +136,8 @@ function scr_draw_upload_level_menu()
 						show_level_editor_corner_menu = false;
 					}
 				}
+				ini_close();
 			}
-			else
-			{
-				menu_delay = 3;
-				menu = "clear_check_yes";
-				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-				{
-					show_level_editor_corner_menu = false;
-				}
-			}
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 	}
 	#endregion /* Pressing the Upload button END */

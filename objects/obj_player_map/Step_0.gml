@@ -538,6 +538,8 @@ if (can_move == false)
 && (iris_yscale <= 0.001)
 && (global.quit_level == false)
 {
+	global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the level name to the level you're entering */
+	
 	room_persistent = false; /* Turn OFF Room Persistency. Whenever you enter a level, you need to turn off room persistent */
 	/* Otherwise when trying to win or quit a level, you'll get back to a world map that saved when you were entering a level, making you loop to enter a level over and over again */
 	
@@ -832,10 +834,7 @@ if (key_b_pressed)
 	
 	if (global.character_select_in_this_menu == "main_game")
 	{
-		var uppercase_level_name;
-		uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
-		uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
-		var level_name = string(uppercase_level_name);
+		var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 		
 		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */

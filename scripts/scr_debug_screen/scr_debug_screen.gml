@@ -270,8 +270,7 @@ function scr_debug_screen()
 	#region /* Controller ports */
 	if (os_type == os_switch)
 	{
-		if (gamepad_get_description(0) == "Handheld" && gamepad_get_description(1) != "")
-		|| (gamepad_get_description(0) == "" && gamepad_get_description(1) != "")
+		if (!gamepad_is_connected(0))
 		{
 			global.player1_slot = 1;
 			global.player2_slot = 2;
@@ -300,45 +299,75 @@ function scr_debug_screen()
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
 		
+		var debug_text_y = 320;
+		
 		if (gamepad_get_description(0) != "")
 		{
-			scr_draw_text_outlined(32, 320, "gamepad(0): " + string(gamepad_get_description(0)), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "gamepad(0): " + string(gamepad_get_description(0)), global.default_text_size, c_black, c_white);
 		}
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(0): " + string(switch_controller_joycon_left_connected(0)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(0): " + string(switch_controller_joycon_right_connected(0)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
 		if (gamepad_get_description(1) != "")
 		{
-			scr_draw_text_outlined(32, 340, "gamepad(1): " + string(gamepad_get_description(1)), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "gamepad(1): " + string(gamepad_get_description(1)), global.default_text_size, c_black, c_white);
 		}
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(1): " + string(switch_controller_joycon_left_connected(1)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(1): " + string(switch_controller_joycon_right_connected(1)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
 		if (gamepad_get_description(2) != "")
 		{
-			scr_draw_text_outlined(32, 360, "gamepad(2): " + string(gamepad_get_description(2)), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "gamepad(2): " + string(gamepad_get_description(2)), global.default_text_size, c_black, c_white);
 		}
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(2): " + string(switch_controller_joycon_left_connected(2)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(2): " + string(switch_controller_joycon_right_connected(2)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
 		if (gamepad_get_description(3) != "")
 		{
-			scr_draw_text_outlined(32, 380, "gamepad(3): " + string(gamepad_get_description(3)), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "gamepad(3): " + string(gamepad_get_description(3)), global.default_text_size, c_black, c_white);
 		}
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(3): " + string(switch_controller_joycon_left_connected(3)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(3): " + string(switch_controller_joycon_right_connected(3)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
 		if (gamepad_get_description(4) != "")
 		{
-			scr_draw_text_outlined(32, 400, "gamepad(4): " + string(gamepad_get_description(4)), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "gamepad(4): " + string(gamepad_get_description(4)), global.default_text_size, c_black, c_white);
 		}
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(4): " + string(switch_controller_joycon_left_connected(4)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(4): " + string(switch_controller_joycon_right_connected(4)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
 		
-		scr_draw_text_outlined(32, 420, "player slots: " + string(global.player1_slot) + ", " + string(global.player2_slot) + ", " + string(global.player3_slot) + ", " + string(global.player4_slot), global.default_text_size, c_black, c_white);
+		scr_draw_text_outlined(32, debug_text_y, "player slots: " + string(global.player1_slot) + ", " + string(global.player2_slot) + ", " + string(global.player3_slot) + ", " + string(global.player4_slot), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
 		
 		if (variable_instance_exists(self, "menu"))
 		{
-			scr_draw_text_outlined(32, 440, "menu: " + string(menu), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "menu: " + string(menu), global.default_text_size, c_black, c_white);
 		}
+		debug_text_y += 20;
 		if (variable_instance_exists(self, "menu_delay"))
 		{
 			if (menu_delay == 0)
 			{
-				scr_draw_text_outlined(32, 460, "menu_delay: " + string(menu_delay), global.default_text_size, c_black, c_white);
+				scr_draw_text_outlined(32, debug_text_y, "menu_delay: " + string(menu_delay), global.default_text_size, c_black, c_white);
 			}
 			else
 			{
-				scr_draw_text_outlined(32, 460, "menu_delay: " + string(menu_delay), global.default_text_size, c_black, c_red);
+				scr_draw_text_outlined(32, debug_text_y, "menu_delay: " + string(menu_delay), global.default_text_size, c_black, c_red);
 			}
 		}
 		
+		/* Draw the name of the current room at the bottom middle of the screen */
 		draw_set_halign(fa_center);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)), global.default_text_size, c_black, c_white);
 	}

@@ -636,6 +636,7 @@ function scr_character_manage_menu_step()
 			menu_delay = 3;
 			can_navigate = true;
 			if (selecting_official_character == false)
+			&& (global.free_communication_available)
 			{
 				player_menu[1] = "click_upload_character";
 				menu = "click_upload_character";
@@ -693,6 +694,7 @@ function scr_character_manage_menu_step()
 		&& (can_navigate)
 		{
 			if (selecting_official_character == false)
+			&& (global.free_communication_available)
 			{
 				menu_delay = 3;
 				menu = "upload_yes_character"
@@ -784,9 +786,16 @@ function scr_character_manage_menu_step()
 				menu_delay = 3;
 				can_navigate = true;
 				if (selecting_official_character == false)
+				&& (global.free_communication_available)
 				{
 					player_menu[1] = "click_upload_character";
 					menu = "click_upload_character";
+				}
+				else
+				if (selecting_official_character == false)
+				{
+					player_menu[1] = "click_delete_character";
+					menu = "click_delete_character";
 				}
 				else
 				{

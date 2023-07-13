@@ -49,11 +49,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		{
 			var draw_online_level_list_y = draw_name_input_screen_y + 42 + 42 + 42 + 42;
 			if (what_kind_of_id == "level")
+			&& (global.free_communication_available)
 			{
 				draw_menu_button(display_get_gui_width() * 0.5 - 185, draw_online_level_list_y, l10n_text("Online Level List"), "search_online_list", "search_online_list");
 			}
 			else
 			if (what_kind_of_id == "character")
+			&& (global.free_communication_available)
 			{
 				draw_menu_button(display_get_gui_width() * 0.5 - 185, draw_online_level_list_y, l10n_text("Online Character List"), "search_online_list", "search_online_list");
 			}
@@ -65,10 +67,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (key_a_pressed)
 			&& (menu_delay == 0)
 			{
-				/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
-				select_custom_level_menu_open = false;
-				selected_online_download_index = 1;
-				menu = "online_download_list_load";
+				if (global.free_communication_available)
+				{
+					/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+					select_custom_level_menu_open = false;
+					selected_online_download_index = 1;
+					menu = "online_download_list_load";
+				}
 			}
 			
 			#region /* Online List Button Navigation */

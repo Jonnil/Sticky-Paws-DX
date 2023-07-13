@@ -103,44 +103,44 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	
 	switch (button_value) {
 		case joystick_value.joyleft_left:
-			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(which_player - 1, gp_axislh) < 0;
-			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(which_player - 1, gp_axislh) < 0;
-			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(which_player - 1, gp_axislh) < 0;
+			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0;
+			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0;
+			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0;
 			break;
 		case joystick_value.joyleft_right:
-			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(which_player - 1, gp_axislh) > 0;
-			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(which_player - 1, gp_axislh) > 0;
-			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(which_player - 1, gp_axislh) > 0;
+			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0;
+			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0;
+			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0;
 			break;
 		case joystick_value.joyleft_down:
-			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(which_player - 1, gp_axislv) > 0;
-			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(which_player - 1, gp_axislv) > 0;
-			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(which_player - 1, gp_axislv) > 0;
+			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0;
+			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0;
+			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0;
 			break;
 		case joystick_value.joyleft_up:
-			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(which_player - 1, gp_axislv) < 0;
-			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(which_player - 1, gp_axislv) < 0;
-			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(which_player - 1, gp_axislv) < 0;
+			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0;
+			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0;
+			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0;
 			break;
 		case joystick_value.joyright_left:
-			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(which_player - 1, gp_axisrh) < 0;
-			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(which_player - 1, gp_axisrh) < 0;
-			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(which_player - 1, gp_axisrh) < 0;
+			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axisrh) < 0;
+			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axisrh) < 0;
+			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(player_gamepad_slot, gp_axisrh) < 0;
 			break;
 		case joystick_value.joyright_right:
-			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(which_player - 1, gp_axisrh) > 0;
-			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(which_player - 1, gp_axisrh) > 0;
-			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(which_player - 1, gp_axisrh) > 0;
+			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axisrh) > 0;
+			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axisrh) > 0;
+			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(player_gamepad_slot, gp_axisrh) > 0;
 			break;
 		case joystick_value.joyright_down:
-			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(which_player - 1, gp_axisrv) > 0;
-			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(which_player - 1, gp_axisrv) > 0;
-			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(which_player - 1, gp_axisrv) > 0;
+			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axisrv) > 0;
+			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axisrv) > 0;
+			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(player_gamepad_slot, gp_axisrv) > 0;
 			break;
 		case joystick_value.joyright_up:
-			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(which_player - 1, gp_axisrv) < 0;
-			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(which_player - 1, gp_axisrv) < 0;
-			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(which_player - 1, gp_axisrv) < 0;
+			if (hold0_press1_release2 == 0) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axisrv) < 0;
+			else if (hold0_press1_release2 == 1) joy_1 = gamepad_axis_value(player_gamepad_slot, gp_axisrv) < 0;
+			else if (hold0_press1_release2 == 2) joy_1 = !gamepad_axis_value(player_gamepad_slot, gp_axisrv) < 0;
 			break;
 		default:
 			break;
@@ -153,44 +153,44 @@ function scr_key_initialize(key, hold0_press1_release2, which_player, this_playe
 	
 	switch (button_value) {
 		case joystick_value.joyleft_left:
-			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(which_player - 1, gp_axislh) < 0;
-			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(which_player - 1, gp_axislh) < 0;
-			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(which_player - 1, gp_axislh) < 0;
+			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0;
+			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0;
+			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(player_gamepad_slot, gp_axislh) < 0;
 			break;
 		case joystick_value.joyleft_right:
-			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(which_player - 1, gp_axislh) > 0;
-			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(which_player - 1, gp_axislh) > 0;
-			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(which_player - 1, gp_axislh) > 0;
+			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0;
+			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0;
+			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(player_gamepad_slot, gp_axislh) > 0;
 			break;
 		case joystick_value.joyleft_down:
-			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(which_player - 1, gp_axislv) > 0;
-			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(which_player - 1, gp_axislv) > 0;
-			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(which_player - 1, gp_axislv) > 0;
+			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0;
+			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0;
+			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0;
 			break;
 		case joystick_value.joyleft_up:
-			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(which_player - 1, gp_axislv) < 0;
-			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(which_player - 1, gp_axislv) < 0;
-			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(which_player - 1, gp_axislv) < 0;
+			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0;
+			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0;
+			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0;
 			break;
 		case joystick_value.joyright_left:
-			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(which_player - 1, gp_axisrh) < 0;
-			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(which_player - 1, gp_axisrh) < 0;
-			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(which_player - 1, gp_axisrh) < 0;
+			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axisrh) < 0;
+			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axisrh) < 0;
+			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(player_gamepad_slot, gp_axisrh) < 0;
 			break;
 		case joystick_value.joyright_right:
-			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(which_player - 1, gp_axisrh) > 0;
-			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(which_player - 1, gp_axisrh) > 0;
-			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(which_player - 1, gp_axisrh) > 0;
+			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axisrh) > 0;
+			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axisrh) > 0;
+			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(player_gamepad_slot, gp_axisrh) > 0;
 			break;
 		case joystick_value.joyright_down:
-			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(which_player - 1, gp_axisrv) > 0;
-			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(which_player - 1, gp_axisrv) > 0;
-			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(which_player - 1, gp_axisrv) > 0;
+			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axisrv) > 0;
+			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axisrv) > 0;
+			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(player_gamepad_slot, gp_axisrv) > 0;
 			break;
 		case joystick_value.joyright_up:
-			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(which_player - 1, gp_axisrv) < 0;
-			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(which_player - 1, gp_axisrv) < 0;
-			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(which_player - 1, gp_axisrv) < 0;
+			if (hold0_press1_release2 == 0) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axisrv) < 0;
+			else if (hold0_press1_release2 == 1) joy_2 = gamepad_axis_value(player_gamepad_slot, gp_axisrv) < 0;
+			else if (hold0_press1_release2 == 2) joy_2 = !gamepad_axis_value(player_gamepad_slot, gp_axisrv) < 0;
 			break;
 		default:
 			break;

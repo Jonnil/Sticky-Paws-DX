@@ -20,9 +20,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	
 	level_number = 1;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level_number))) - 1);
-	level_name = string(uppercase_level_name);
+	level_name = string(ds_list_find_value(global.all_loaded_main_levels, level_number));
 	
 	level1_big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
 	level1_big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);
@@ -31,9 +29,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	level1_big_collectible5 = ini_read_real(level_name, "big_collectible5", 0);
 	
 	level_number = 2;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level_number))) - 1);
-	level_name = string(uppercase_level_name);
+	level_name = string(ds_list_find_value(global.all_loaded_main_levels, level_number));
 	
 	level2_big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
 	level2_big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);
@@ -42,9 +38,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	level2_big_collectible5 = ini_read_real(level_name, "big_collectible5", 0);
 	
 	level_number = 3;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level_number))) - 1);
-	level_name = string(uppercase_level_name);
+	level_name = string(ds_list_find_value(global.all_loaded_main_levels, level_number));
 	
 	level3_big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
 	level3_big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);
@@ -53,9 +47,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	level3_big_collectible5 = ini_read_real(level_name, "big_collectible5", 0);
 	
 	level_number = 4;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level_number))) - 1);
-	level_name = string(uppercase_level_name);
+	level_name = string(ds_list_find_value(global.all_loaded_main_levels, level_number));
 	
 	level4_big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
 	level4_big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);
@@ -64,9 +56,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	level4_big_collectible5 = ini_read_real(level_name, "big_collectible5", 0);
 	
 	level_number = 5;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level_number))) - 1);
-	level_name = string(uppercase_level_name);
+	level_name = string(ds_list_find_value(global.all_loaded_main_levels, level_number));
 	
 	level5_big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
 	level5_big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);
@@ -75,9 +65,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	level5_big_collectible5 = ini_read_real(level_name, "big_collectible5", 0);
 	
 	level_number = 6;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level_number))) - 1);
-	level_name = string(uppercase_level_name);
+	level_name = string(ds_list_find_value(global.all_loaded_main_levels, level_number));
 	
 	level6_big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
 	level6_big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);
@@ -86,9 +74,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	level6_big_collectible5 = ini_read_real(level_name, "big_collectible5", 0);
 	
 	level_number = 7;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level_number))) - 1);
-	level_name = string(uppercase_level_name);
+	level_name = string(ds_list_find_value(global.all_loaded_main_levels, level_number));
 	
 	level7_big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
 	level7_big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);
@@ -97,9 +83,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	level7_big_collectible5 = ini_read_real(level_name, "big_collectible5", 0);
 	
 	level_number = 8;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level_number))) - 1);
-	level_name = string(uppercase_level_name);
+	level_name = string(ds_list_find_value(global.all_loaded_main_levels, level_number));
 	
 	level8_big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
 	level8_big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);
@@ -108,9 +92,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	level8_big_collectible5 = ini_read_real(level_name, "big_collectible5", 0);
 	
 	level_number = 10;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level_number))) - 1);
-	level_name = string(uppercase_level_name);
+	level_name = string(ds_list_find_value(global.all_loaded_main_levels, level_number));
 	
 	level9_big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
 	level9_big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);
@@ -119,9 +101,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	level9_big_collectible5 = ini_read_real(level_name, "big_collectible5", 0);
 	
 	level_number = 11;
-	uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 1));
-	uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, level_number)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, level_number))) - 1);
-	level_name = string(uppercase_level_name);
+	level_name = string(ds_list_find_value(global.all_loaded_main_levels, level_number));
 	
 	levela_big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
 	levela_big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);

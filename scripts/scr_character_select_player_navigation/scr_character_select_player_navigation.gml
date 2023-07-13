@@ -177,9 +177,23 @@ function scr_character_select_player_navigation(what_player = 1)
 			{
 				menu_delay = 3;
 				menu_specific_joystick_delay[what_player] = 30;
-						
-				player_menu[what_player] = "search_character_id";
-				menu = "search_character_id";
+				
+				if (global.free_communication_available)
+				{
+					player_menu[what_player] = "search_character_id";
+					menu = "search_character_id";
+				}
+				else
+				if (global.enable_manage_characters)
+				{
+					player_menu[what_player] = "manage_character";
+					menu = "manage_character";
+				}
+				else
+				{
+					player_menu[what_player] = "back_from_character_select";
+					menu = "back_from_character_select";
+				}
 			}
 		}
 		#endregion /* Player key up END */

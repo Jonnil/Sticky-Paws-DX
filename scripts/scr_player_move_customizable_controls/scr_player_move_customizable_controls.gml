@@ -1,208 +1,56 @@
 function scr_player_move_customizable_controls()
 {
 	
-	#region /* Set correct controller ports */
-	if (player == 1)
-	{
-		var player_gamepad_slot = global.player1_slot;
-	}
-	else
-	if (player == 2)
-	{
-		var player_gamepad_slot = global.player2_slot;
-	}
-	else
-	if (player == 3)
-	{
-		var player_gamepad_slot = global.player3_slot;
-	}
-	else
-	if (player == 4)
-	{
-		var player_gamepad_slot = global.player4_slot;
-	}
-	#endregion /* Set correct controller ports END */
-	
 	#region /* Customizable Controls */
 	
 	#region /* Set values from the Input Settings */
-	
-	#region /* Up Key Is Jump Key */
 	if (player == 1)
 	{
 		up_is_also_jump = global.player1_up_is_also_jump;
-	}
-	else
-	if (player == 2)
-	{
-		up_is_also_jump = global.player2_up_is_also_jump;
-	}
-	else
-	if (player == 3)
-	{
-		up_is_also_jump = global.player3_up_is_also_jump;
-	}
-	else
-	if (player == 4)
-	{
-		up_is_also_jump = global.player4_up_is_also_jump;
-	}
-	#endregion /* Up Key Is Jump Key END */
-	
-	#region /* Double-tap direction to run */
-	if (player == 1)
-	{
 		double_tap_to_run = global.player1_double_tap_to_run;
-	}
-	else
-	if (player == 2)
-	{
-		double_tap_to_run = global.player2_double_tap_to_run;
-	}
-	else
-	if (player == 3)
-	{
-		double_tap_to_run = global.player3_double_tap_to_run;
-	}
-	else
-	if (player == 4)
-	{
-		double_tap_to_run = global.player4_double_tap_to_run;
-	}
-	#endregion /* Double-tap direction to run END */
-	
-	#region /* Double-tap direction to dive */
-	if (player == 1)
-	{
 		double_tap_to_dive = global.player1_double_tap_to_dive;
-	}
-	else
-	if (player == 2)
-	{
-		double_tap_to_dive = global.player2_double_tap_to_dive;
-	}
-	else
-	if (player == 3)
-	{
-		double_tap_to_dive = global.player3_double_tap_to_dive;
-	}
-	else
-	if (player == 4)
-	{
-		double_tap_to_dive = global.player4_double_tap_to_dive;
-	}
-	#endregion /* Double-tap direction to run END */
-	
-	#region /* Cancel dive by pressing the jump or dive key */
-	if (player == 1)
-	{
 		cancel_dive_by_pressing_jump_or_dive_button = global.player1_cancel_dive_by_pressing_jump_or_dive_button;
-	}
-	else
-	if (player == 2)
-	{
-		cancel_dive_by_pressing_jump_or_dive_button = global.player2_cancel_dive_by_pressing_jump_or_dive_button;
-	}
-	else
-	if (player == 3)
-	{
-		cancel_dive_by_pressing_jump_or_dive_button = global.player3_cancel_dive_by_pressing_jump_or_dive_button;
-	}
-	else
-	if (player == 4)
-	{
-		cancel_dive_by_pressing_jump_or_dive_button = global.player4_cancel_dive_by_pressing_jump_or_dive_button;
-	}
-	#endregion /* Cancel dive by pressing the jump or dive key END */
-	
-	#region /* Cancel dive by pressing the opposite direction */
-	if (player == 1)
-	{
 		cancel_dive_by_pressing_opposite_direction = global.player1_cancel_dive_by_pressing_opposite_direction;
-	}
-	else
-	if (player == 2)
-	{
-		cancel_dive_by_pressing_opposite_direction = global.player2_cancel_dive_by_pressing_opposite_direction;
-	}
-	else
-	if (player == 3)
-	{
-		cancel_dive_by_pressing_opposite_direction = global.player3_cancel_dive_by_pressing_opposite_direction;
-	}
-	else
-	if (player == 4)
-	{
-		cancel_dive_by_pressing_opposite_direction = global.player4_cancel_dive_by_pressing_opposite_direction;
-	}
-	#endregion /* Cancel dive by pressing the opposite direction END */
-	
-	#region /* Down + Jump to Ground Pound */
-	if (player == 1)
-	{
 		down_and_jump_to_groundpound = global.player1_down_and_jump_to_groundpound;
-	}
-	else
-	if (player == 2)
-	{
-		down_and_jump_to_groundpound = global.player2_down_and_jump_to_groundpound;
-	}
-	else
-	if (player == 3)
-	{
-		down_and_jump_to_groundpound = global.player3_down_and_jump_to_groundpound;
-	}
-	else
-	if (player == 4)
-	{
-		down_and_jump_to_groundpound = global.player4_down_and_jump_to_groundpound;
-	}
-	#endregion /* Down + Jump to Ground Pound END */
-	
-	#region /* Hold Direction Wall jump */
-	if (player == 1)
-	{
 		wall_jump_setting = global.player1_wall_jump_setting;
-	}
-	else
-	if (player == 2)
-	{
-		wall_jump_setting = global.player2_wall_jump_setting;
-	}
-	else
-	if (player == 3)
-	{
-		wall_jump_setting = global.player3_wall_jump_setting;
-	}
-	else
-	if (player == 4)
-	{
-		wall_jump_setting = global.player4_wall_jump_setting;
-	}
-	#endregion /* Hold Direction Wall jump END */
-	
-	#region /* Drop down form Horizontal Rope */
-	if (player == 1)
-	{
 		drop_from_rope = global.player1_drop_from_rope;
 	}
 	else
 	if (player == 2)
 	{
+		up_is_also_jump = global.player2_up_is_also_jump;
+		double_tap_to_run = global.player2_double_tap_to_run;
+		double_tap_to_dive = global.player2_double_tap_to_dive;
+		cancel_dive_by_pressing_jump_or_dive_button = global.player2_cancel_dive_by_pressing_jump_or_dive_button;
+		cancel_dive_by_pressing_opposite_direction = global.player2_cancel_dive_by_pressing_opposite_direction;
+		down_and_jump_to_groundpound = global.player2_down_and_jump_to_groundpound;
+		wall_jump_setting = global.player2_wall_jump_setting;
 		drop_from_rope = global.player2_drop_from_rope;
 	}
 	else
 	if (player == 3)
 	{
+		up_is_also_jump = global.player3_up_is_also_jump;
+		double_tap_to_run = global.player3_double_tap_to_run;
+		double_tap_to_dive = global.player3_double_tap_to_dive;
+		cancel_dive_by_pressing_jump_or_dive_button = global.player3_cancel_dive_by_pressing_jump_or_dive_button;
+		cancel_dive_by_pressing_opposite_direction = global.player3_cancel_dive_by_pressing_opposite_direction;
+		down_and_jump_to_groundpound = global.player3_down_and_jump_to_groundpound;
+		wall_jump_setting = global.player3_wall_jump_setting;
 		drop_from_rope = global.player3_drop_from_rope;
 	}
 	else
 	if (player == 4)
 	{
+		up_is_also_jump = global.player4_up_is_also_jump;
+		double_tap_to_run = global.player4_double_tap_to_run;
+		double_tap_to_dive = global.player4_double_tap_to_dive;
+		cancel_dive_by_pressing_jump_or_dive_button = global.player4_cancel_dive_by_pressing_jump_or_dive_button;
+		cancel_dive_by_pressing_opposite_direction = global.player4_cancel_dive_by_pressing_opposite_direction;
+		down_and_jump_to_groundpound = global.player4_down_and_jump_to_groundpound;
+		wall_jump_setting = global.player4_wall_jump_setting;
 		drop_from_rope = global.player4_drop_from_rope;
 	}
-	#endregion /* Drop down form Horizontal Rope END */
-	
 	#endregion /* Set values from the Input Settings END */
 	
 	#region /* Crouch Toggling */
@@ -324,8 +172,7 @@ function scr_player_move_customizable_controls()
 	
 	key_jump =
 	(key_jump_pressed_temp)
-	|| (variable_instance_exists(self, "up_is_also_jump"))
-	&& (up_is_also_jump)
+	|| (up_is_also_jump)
 	&& (key_up_pressed)
 	|| (active_jump);
 	#endregion /* Key Jump Pressed END */
@@ -335,8 +182,7 @@ function scr_player_move_customizable_controls()
 	
 	key_jump_hold =
 	(key_jump_hold_temp)
-	|| (variable_instance_exists(self, "up_is_also_jump"))
-	&& (up_is_also_jump)
+	|| (up_is_also_jump)
 	&& (key_up)
 	|| (active_jump);
 	#endregion /* Key Jump Hold END */
@@ -346,8 +192,7 @@ function scr_player_move_customizable_controls()
 	
 	key_jump_released =
 	(key_jump_released_temp)
-	|| (variable_instance_exists(self, "up_is_also_jump"))
-	&& (up_is_also_jump)
+	|| (up_is_also_jump)
 	&& (key_up_released_temp)
 	#endregion /* Key Jump Released END */
 	
@@ -394,22 +239,6 @@ function scr_player_move_customizable_controls()
 	
 	key_sprint_pressed = scr_key_initialize(key_sprint_pressed, 1, player, action.sprint);
 	key_sprint_released = scr_key_initialize(key_sprint_released, 2, player, action.sprint);
-	
-	#region /* Key Spin Hold */
-	key_spin =
-	(gamepad_button_check(player_gamepad_slot, gp_shoulderl))
-	|| (gamepad_button_check(player_gamepad_slot, gp_shoulderlb))
-	|| (gamepad_button_check(player_gamepad_slot, gp_shoulderr))
-	|| (gamepad_button_check(player_gamepad_slot, gp_shoulderrb));
-	#endregion /* Key Spin Hold */
-	
-	#region /* Key Spin Pressed */
-	key_spin_pressed =
-	(gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderl))
-	|| (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderlb))
-	|| (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderr))
-	|| (gamepad_button_check_pressed(player_gamepad_slot, gp_shoulderrb));
-	#endregion /* Key Spin Pressed END */
 	
 	#region /* Key Always Do Full Jump */
 	key_always_do_full_jump = false;

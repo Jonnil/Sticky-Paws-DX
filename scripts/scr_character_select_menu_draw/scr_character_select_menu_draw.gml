@@ -288,16 +288,20 @@ function scr_character_select_menu_draw()
 		#endregion /* Manage Characters END */
 		
 		#region /* Search Character ID Button */
-		draw_menu_button(0, draw_search_id_y, l10n_text("Search Character ID"), "search_character_id", "search_character_id");
-		
-		#region /* Draw Search Key */
-		if (gamepad_is_connected(global.player1_slot))
-		&& (global.controls_used_for_menu_navigation == "controller")
-		|| (global.always_show_gamepad_buttons)
+		if (global.free_communication_available)
 		{
-			scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);
+			draw_menu_button(0, draw_search_id_y, l10n_text("Search Character ID"), "search_character_id", "search_character_id");
+			
+			#region /* Draw Search Key */
+			if (gamepad_is_connected(global.player1_slot))
+			&& (global.controls_used_for_menu_navigation == "controller")
+			|| (global.always_show_gamepad_buttons)
+			{
+				scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);
+			}
+			#endregion /* Draw Search key END */
+			
 		}
-		#endregion /* Draw Search key END */
 		
 		if (can_input_player1_name == false)
 		&& (can_input_player2_name == false)
@@ -305,6 +309,7 @@ function scr_character_select_menu_draw()
 		&& (can_input_player4_name == false)
 		&& (menu_delay == 0)
 		&& (open_sub_menu == false)
+		&& (global.free_communication_available)
 		{
 			if (menu == "search_character_id")
 			&& (key_a_pressed)
@@ -332,7 +337,15 @@ function scr_character_select_menu_draw()
 			menu_delay = 3;
 			can_navigate = true;
 			select_custom_level_menu_open = true;
-			menu = "online_level_list";
+			if (global.free_communication_available)
+			{
+				menu = "online_level_list";
+			}
+			else
+			{
+				menu = "level_editor_play";
+				scroll_to = floor(global.select_level_index / row);
+			}
 			lerp_on = true;
 		}
 		if (menu == "search_level_id")

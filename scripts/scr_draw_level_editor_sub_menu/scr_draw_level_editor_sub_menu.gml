@@ -32,7 +32,14 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			else
 			if (menu == "level_editor_edit_name")
 			{
-				menu = "level_editor_upload";
+				if (global.free_communication_available)
+				{
+					menu = "level_editor_upload";
+				}
+				else
+				{
+					menu = "level_editor_make";
+				}
 			}
 			else
 			if (menu == "level_editor_enter_description")
@@ -96,7 +103,14 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			else
 			if (menu == "level_editor_make")
 			{
-				menu = "level_editor_upload";
+				if (global.free_communication_available)
+				{
+					menu = "level_editor_upload";
+				}
+				else
+				{
+					menu = "level_editor_edit_name";
+				}
 			}
 			else
 			if (menu == "level_editor_upload")
@@ -164,21 +178,43 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		{
 			var play_y = 0;
 			var make_y = 42;
-			var upload_y = 42 * 2;
-			var edit_name_y = 42 * 3;
-			var edit_description_y = 42 * 4;
-			var delete_y = 42 * 5;
-			var back_y = 42 * 6;
+			if (global.free_communication_available)
+			{
+				var upload_y = 42 * 2;
+				var edit_name_y = 42 * 3;
+				var edit_description_y = 42 * 4;
+				var delete_y = 42 * 5;
+				var back_y = 42 * 6;
+			}
+			else
+			{
+				var upload_y = -99999;
+				var edit_name_y = 42 * 2;
+				var edit_description_y = 42 * 3;
+				var delete_y = 42 * 4;
+				var back_y = 42 * 5;
+			}
 		}
 		else
 		{
 			var play_y = 0;
 			var make_y = 42;
-			var upload_y = 42 * 2;
-			var edit_name_y = 42 * 3;
-			var edit_description_y = 42 * 4;
-			var delete_y = -99999;
-			var back_y = 42 * 5;
+			if (global.free_communication_available)
+			{
+				var upload_y = 42 * 2;
+				var edit_name_y = 42 * 3;
+				var edit_description_y = 42 * 4;
+				var delete_y = -99999;
+				var back_y = 42 * 5;
+			}
+			else
+			{
+				var upload_y = -99999;
+				var edit_name_y = 42 * 2;
+				var edit_description_y = 42 * 3;
+				var delete_y = -99999;
+				var back_y = 42 * 4;
+			}
 		}
 		#endregion /* Button Y Positions END */
 		
@@ -206,14 +242,20 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				draw_rectangle_color(xx, 226 * (column - scroll) + 455 - 3, xx + 384, 226 * (column - scroll) + 475 + back_y + 47 + 3, c_white, c_white, c_white, c_white, false);
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 475 + (play_y) - 3, l10n_text("Play"), "level_editor_play", "level_editor_play");
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 475 + (make_y) - 3, l10n_text("Make"), "level_editor_make", "level_editor_make");
-				draw_menu_button(xx + 8, 226 * (column - scroll) + 475 + (upload_y) - 3, l10n_text("Upload"), "level_editor_upload", "level_editor_upload");
-				draw_sprite_ext(spr_icons_upload, 0, xx + 8 + 16, 226 * (column - scroll) + 475 + (upload_y) - 3 + 21, 1, 1, 0, c_white, 1);
+				if (global.free_communication_available)
+				{
+					draw_menu_button(xx + 8, 226 * (column - scroll) + 475 + (upload_y) - 3, l10n_text("Upload"), "level_editor_upload", "level_editor_upload");
+					draw_sprite_ext(spr_icons_upload, 0, xx + 8 + 16, 226 * (column - scroll) + 475 + (upload_y) - 3 + 21, 1, 1, 0, c_white, 1);
+				}
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 475 + (edit_name_y) - 3, l10n_text("Edit Name"), "level_editor_edit_name", "level_editor_edit_name");
 				draw_sprite_ext(spr_icons_pen, 0, xx + 8 + 20, 226 * (column - scroll) + 475 + (edit_name_y) - 3 + 21, 1, 1, 0, c_white, 1);
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 475 + (edit_description_y) - 3, l10n_text("Edit Description"), "level_editor_enter_description", "level_editor_enter_description");
 				draw_sprite_ext(spr_icons_pen, 0, xx + 8 + 20, 226 * (column - scroll) + 475 + (edit_description_y) - 3 + 21, 1, 1, 0, c_white, 1);
-				draw_menu_button(xx + 8, 226 * (column - scroll) + 475 + (delete_y) - 3, l10n_text("Delete"), "level_editor_delete", "level_editor_delete_no");
-				draw_sprite_ext(spr_icons_delete, 0, xx + 8 + 16, 226 * (column - scroll) + 475 + (delete_y) - 3 + 21, 1, 1, 0, c_white, 1);
+				if (show_delete_button)
+				{
+					draw_menu_button(xx + 8, 226 * (column - scroll) + 475 + (delete_y) - 3, l10n_text("Delete"), "level_editor_delete", "level_editor_delete_no");
+					draw_sprite_ext(spr_icons_delete, 0, xx + 8 + 16, 226 * (column - scroll) + 475 + (delete_y) - 3 + 21, 1, 1, 0, c_white, 1);
+				}
 				draw_menu_button(xx + 8, 226 * (column - scroll) + 475 + (back_y) - 3, l10n_text("Back"), "level_editor_selected_back", "level_editor_selected_back");
 				draw_sprite_ext(spr_icons_back, 0, xx + 8 + 20, 226 * (column - scroll) + 475 + (back_y) - 3 + 21, 1, 1, 0, c_white, 1);
 			}

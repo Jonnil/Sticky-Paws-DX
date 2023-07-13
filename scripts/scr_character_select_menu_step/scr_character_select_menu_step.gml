@@ -370,8 +370,16 @@ function scr_character_select_menu_step()
 					{
 						menu_delay = 3;
 						can_navigate = true;
-						player_menu[1] = "search_character_id";
-						menu = "search_character_id";
+						if (global.free_communication_available)
+						{
+							player_menu[1] = "search_character_id";
+							menu = "search_character_id";
+						}
+						else
+						{
+							player_menu[1] = "select_character";
+							menu = "select_character";
+						}
 					}
 					else
 					if (menu == "search_character_id") /* Search Character ID */

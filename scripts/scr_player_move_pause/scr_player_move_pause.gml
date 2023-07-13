@@ -42,6 +42,32 @@ function scr_player_move_pause()
 	&& (global.automatically_pause_when_window_is_unfocused)
 	{
 		
+		if (!gamepad_is_connected(player_gamepad_slot))
+		&& (controller_connected)
+		{
+			if (player == 1)
+			&& (!gamepad_is_connected(global.player1_slot))
+			{
+				instance_destroy();
+			}
+			if (player == 2)
+			&& (!gamepad_is_connected(global.player2_slot))
+			{
+				instance_destroy();
+			}
+			if (player == 3)
+			&& (!gamepad_is_connected(global.player3_slot))
+			{
+				instance_destroy();
+			}
+			if (player == 4)
+			&& (!gamepad_is_connected(global.player4_slot))
+			{
+				instance_destroy();
+			}
+			switch_controller_support_show();
+		}
+		
 		#region /* Show all HUD elements */
 		if (instance_exists(obj_camera))
 		{

@@ -369,23 +369,12 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_BOSS: instance_create_depth(x, y, 0, obj_boss);break;
 				case LEVEL_OBJECT_ID.ID_BOSS_BARRIER: instance_create_depth(x, y, 0, obj_boss_barrier);break;
 				case LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY:
-					var uppercase_level_name;
-					uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
-					uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
-					var level_name = string(uppercase_level_name);
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-					if (global.character_select_in_this_menu == "main_game")
-					&& (ini_read_string(level_name, "clear_rate", "closed") != "clear")
-					|| (global.character_select_in_this_menu == "level_editor")
+					with(instance_create_depth(x, y, 0, obj_cake_stealing_enemy))
 					{
-						with(instance_create_depth(x, y, 0, obj_cake_stealing_enemy))
-						{
-							cutscene = 1;
-							image_xscale = -1;
-							visible = true;
-						}
+						cutscene = 1;
+						image_xscale = -1;
+						visible = true;
 					}
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					break;
 				case LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION: instance_create_depth(x, y, 0, obj_artwork_collection);break;
 				case LEVEL_OBJECT_ID.ID_EYE_BLOCK: instance_create_depth(x, y, 0, obj_eye_block_spawner);break;
@@ -394,7 +383,7 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_DOOR: with(instance_create_depth(x, y, 0, obj_door)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
 				case LEVEL_OBJECT_ID.ID_NPC: instance_create_depth(x, y, 0, obj_npc);break;
 				case LEVEL_OBJECT_ID.ID_BLACK_WALL: instance_create_depth(x, y, 0, obj_black_wall);break;
-				case LEVEL_OBJECT_ID.id_ring: instance_create_depth(x, y, 0, obj_ring);
+				case LEVEL_OBJECT_ID.ID_RING: instance_create_depth(x, y, 0, obj_ring);
 			}
 		}
 		#endregion /* Only spawn objects according to difficulty settings END */

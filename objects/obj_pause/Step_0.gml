@@ -158,10 +158,7 @@ if (show_loading_icon)
 		
 		if (global.character_select_in_this_menu == "main_game")
 		{
-			var uppercase_level_name;
-			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
-			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
-			var level_name = string(uppercase_level_name);
+			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 			
 			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 			ini_key_delete(level_name, "checkpoint_x");
@@ -172,10 +169,7 @@ if (show_loading_icon)
 		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			var uppercase_level_name;
-			uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 1));
-			uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index))) - 1);
-			var level_name = string(uppercase_level_name);
+			var level_name = string(global.level_name);
 			
 			ini_open(working_directory + "save_files/custom_level_save.ini");
 			ini_key_delete(level_name, "checkpoint_x");

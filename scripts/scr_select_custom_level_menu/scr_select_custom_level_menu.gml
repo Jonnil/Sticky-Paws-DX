@@ -75,7 +75,19 @@ function scr_select_custom_level_menu()
 			&& (show_level_editor_corner_menu)
 			{
 				menu_delay = 3;
-				menu = "search_level_id";
+				if (global.free_communication_available)
+				{
+					menu = "search_level_id";
+				}
+				else
+				if (global.enable_open_custom_folder)
+				{
+					menu = "open_custom_levels_folder";
+				}
+				else
+				{
+					menu = "back_from_level_editor";
+				}
 			}
 			else
 			if (global.select_level_index - row > - 1)
@@ -333,8 +345,13 @@ function scr_select_custom_level_menu()
 				menu = "open_custom_levels_folder";
 			}
 			else
+			if (global.free_communication_available)
 			{
 				menu = "online_level_list";
+			}
+			else
+			{
+				menu = "level_editor_play";
 			}
 			lerp_on = true;
 		}
@@ -380,7 +397,15 @@ function scr_select_custom_level_menu()
 			menu_delay = 3;
 			can_navigate = true;
 			select_custom_level_menu_open = true;
-			menu = "online_level_list";
+			if (global.free_communication_available)
+			{
+				menu = "online_level_list";
+			}
+			else
+			{
+				menu = "level_editor_play";
+				scroll_to = floor(global.select_level_index / row);
+			}
 			lerp_on = true;
 		}
 		if (menu == "open_custom_levels_folder")
@@ -400,20 +425,23 @@ function scr_select_custom_level_menu()
 		{
 			var draw_online_level_list_y = 42;
 		}
-		draw_menu_button(0, draw_online_level_list_y, l10n_text("Online Level List"), "online_level_list", "online_level_list");
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_level_list_y + 2, 370, draw_online_level_list_y + 41))
-		&& (global.controls_used_for_menu_navigation == "mouse")
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
-		|| (menu == "online_level_list")
-		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		if (global.free_communication_available)
 		{
-			/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
-			select_custom_level_menu_open = false;
-			content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-			selected_online_download_index = 1;
-			menu = "online_download_list_load";
+			draw_menu_button(0, draw_online_level_list_y, l10n_text("Online Level List"), "online_level_list", "online_level_list");
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_level_list_y + 2, 370, draw_online_level_list_y + 41))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0)
+			|| (menu == "online_level_list")
+			&& (key_a_pressed)
+			&& (menu_delay == 0)
+			{
+				/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+				select_custom_level_menu_open = false;
+				content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+				selected_online_download_index = 1;
+				menu = "online_download_list_load";
+			}
 		}
 		if (menu == "online_level_list")
 		&& (key_up)
@@ -443,7 +471,15 @@ function scr_select_custom_level_menu()
 			menu_delay = 3;
 			can_navigate = true;
 			select_custom_level_menu_open = true;
-			menu = "search_level_id";
+			if (global.free_communication_available)
+			{
+				menu = "search_level_id";
+			}
+			else
+			{
+				menu = "level_editor_play";
+				scroll_to = floor(global.select_level_index / row);
+			}
 			lerp_on = true;
 		}
 		if (menu == "open_custom_levels_folder")
@@ -463,20 +499,25 @@ function scr_select_custom_level_menu()
 		{
 			var draw_search_id_y = 42 * 2;
 		}
-		draw_menu_button(0, draw_search_id_y, l10n_text("Search Level ID"), "search_level_id", "search_level_id");
-		
-		#region /* Draw Search Key */
-		if (gamepad_is_connected(global.player1_slot))
-		&& (global.controls_used_for_menu_navigation == "controller")
-		|| (global.always_show_gamepad_buttons)
+		if (global.free_communication_available)
 		{
-			scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);
+			draw_menu_button(0, draw_search_id_y, l10n_text("Search Level ID"), "search_level_id", "search_level_id");
+			
+			#region /* Draw Search Key */
+			if (gamepad_is_connected(global.player1_slot))
+			&& (global.controls_used_for_menu_navigation == "controller")
+			|| (global.always_show_gamepad_buttons)
+			{
+				scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);
+			}
+			#endregion /* Draw Search key END */
+			
 		}
-		#endregion /* Draw Search key END */
 		
 		if (can_input_level_name == false)
 		&& (menu_delay == 0)
 		&& (open_sub_menu == false)
+		&& (global.free_communication_available)
 		{
 			if (menu == "search_level_id")
 			&& (key_a_pressed)
@@ -504,7 +545,19 @@ function scr_select_custom_level_menu()
 			menu_delay = 3;
 			can_navigate = true;
 			select_custom_level_menu_open = true;
-			menu = "online_level_list";
+			if (global.free_communication_available)
+			{
+				menu = "online_level_list";
+			}
+			else
+			if (global.enable_open_custom_folder)
+			{
+				menu = "open_custom_levels_folder";
+			}
+			else
+			{
+				menu = "back_from_level_editor";
+			}
 			lerp_on = true;
 		}
 		if (menu == "search_level_id")

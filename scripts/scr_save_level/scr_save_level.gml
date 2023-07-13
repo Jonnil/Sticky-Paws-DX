@@ -15,10 +15,7 @@ function scr_save_level()
 	if (global.character_select_in_this_menu == "main_game")
 	&& (global.actually_play_edited_level)
 	{
-		var uppercase_level_name;
-		uppercase_level_name = string_upper(string_char_at(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 1));
-		uppercase_level_name += string_copy(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)), 2, string_length(string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index))) - 1);
-		var level_name = string(uppercase_level_name);
+		var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 		
 		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		
@@ -77,10 +74,7 @@ function scr_save_level()
 	if (global.character_select_in_this_menu == "level_editor")
 	&& (global.actually_play_edited_level)
 	{
-		var uppercase_level_name;
-		uppercase_level_name = string_upper(string_char_at(string(global.level_name), 1));
-		uppercase_level_name += string_copy(string(global.level_name), 2, string_length(string(global.level_name)) - 1);
-		var level_name = string(uppercase_level_name);
+		var level_name = string(global.level_name);
 		
 		#region /* Save to custom level save file */
 		ini_open(working_directory + "save_files/custom_level_save.ini");
