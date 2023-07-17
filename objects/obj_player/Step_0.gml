@@ -1331,8 +1331,6 @@ if (place_meeting(x, y, obj_horizontal_rope))
 				
 				#region /* Jump from rope spin */
 				if (key_jump)
-				|| (up_is_also_jump == true)
-				&& (!key_up)
 				{
 					scr_audio_play(snd_jump, volume_source.sound);
 					scr_gamepad_vibration(player, 0.4, 10);

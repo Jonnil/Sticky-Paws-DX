@@ -53,6 +53,7 @@ else if (sprite_index > 0)
 /* Draw Iris Transitions */
 if (global.enable_transitions && iris_xscale < 15)
 {
+	draw_set_alpha(1);
     draw_sprite_ext(spr_iris, 0, get_window_width * 0.5, get_window_height * 0.5, iris_xscale, iris_yscale, 0, c_black, 1);
     draw_rectangle_color(0, 0, get_window_width * 2, get_window_height * 0.5 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
     draw_rectangle_color(0, 0, get_window_width * 0.5 - iris_xscale * 128, get_window_height * 2, c_black, c_black, c_black, c_black, false);

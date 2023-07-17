@@ -501,6 +501,7 @@ if (global.actually_play_edited_level == false)
 	selected_skin = global.skin_for_player[1];
 	
 	audio_stop_all();
+	caution_online_do_not_show = false;
 	pressing_play_timer = 0; /* You have to hold down the play button for some time before you play the level from the beginning */
 	frames_until_playtest_from_start = 50;
 	room_speed = global.max_fps; /* Set correct fps */

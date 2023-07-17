@@ -232,6 +232,9 @@ else
 {
 	global.gui_scale_modifier = 3;
 }
+global.online_enabled = false;
+global.report_reason = "";
+global.report_comment = "";
 global.clicking_cancel_input_screen = false;
 global.clicking_ok_input_screen = false;
 global.max_length_iterations = 0;

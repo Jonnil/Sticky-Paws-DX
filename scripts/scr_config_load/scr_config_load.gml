@@ -3,6 +3,8 @@ function scr_config_load()
 	if (file_exists(working_directory + "config.ini")) /* Check if config.ini exists before loading any settings */
 	{
 		ini_open(working_directory + "config.ini");
+		
+		if (ini_key_exists("config", "caution_online_do_not_show")){global.online_enabled = ini_read_real("config", "caution_online_do_not_show", false);}
 		if (ini_key_exists("config", "always_show_level_editor_buttons")){global.always_show_level_editor_buttons = ini_read_real("config", "always_show_level_editor_buttons", true);}
 		if (ini_key_exists("config", "current_file")){global.file = ini_read_real("config", "current_file", 0);}
 		if (ini_key_exists("config", "difficulty")){global.difficulty = ini_read_real("config", "difficulty", 0);}

@@ -552,11 +552,11 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				#endregion /* If menu is on generate level map yes END */
-			
+				
 				#region /* If menu is on generate level map no */
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("No"), "generate_level_map_no", "generate_level_map");
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1);
-			
+				
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42))
 				&& (mouse_check_button_pressed(mb_left))
 				&& (menu_delay == 0)
@@ -1860,6 +1860,13 @@ if (global.actually_play_edited_level == false)
 			scr_draw_mouse_cursor_sprite();
 		}
 	}
+}
+
+if (menu == "caution_online_back")
+|| (menu == "caution_online_do_not_show")
+|| (menu == "caution_online_proceed")
+{
+	scr_draw_caution_online();
 }
 
 scr_debug_screen();

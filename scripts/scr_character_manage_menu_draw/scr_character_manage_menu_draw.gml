@@ -465,6 +465,7 @@ function scr_character_manage_menu_draw()
 				if (!keyboard_check_pressed(ord("Z")))
 				&& (!keyboard_check_pressed(ord("X")))
 				&& (!keyboard_check_pressed(vk_backspace))
+				&& (!keyboard_check_pressed(vk_space))
 				&& (menu_delay == 0)
 				{
 					/* Save username to config file */

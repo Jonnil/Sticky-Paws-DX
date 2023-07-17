@@ -696,8 +696,18 @@ function scr_character_manage_menu_step()
 			if (selecting_official_character == false)
 			&& (global.free_communication_available)
 			{
-				menu_delay = 3;
-				menu = "upload_yes_character"
+				if (global.online_enabled)
+				{
+					menu_delay = 3;
+					menu = "upload_yes_character";
+				}
+				else
+				{
+					caution_online_takes_you_to = "upload_yes_character";
+					caution_online_takes_you_back_to = "click_upload_character";
+					menu = "caution_online_proceed";
+					menu_delay = 3;
+				}
 			}
 		}
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))

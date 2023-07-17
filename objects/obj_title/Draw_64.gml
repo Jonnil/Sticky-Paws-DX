@@ -1054,12 +1054,41 @@ if (menu == "search_id_ok")
 || (menu == "searched_file_downloaded_delete")
 || (menu == "searched_file_downloaded_back_to_list")
 || (menu == "searched_file_downloaded_back")
+|| (menu == "searched_file_downloaded_report")
 || (menu == "searched_file_downloaded_failed")
 || (menu == "searched_file_downloaded_deleted_back_to_list")
 || (menu == "searched_file_downloaded_deleted")
 || (menu == "searching_for_id_back")
 {
 	scr_draw_menu_search_id(content_type); /* Display the search for ID screen */
+}
+if (menu == "report_back")
+|| (menu == "report_next")
+|| (menu == "report_reason_back")
+|| (menu == "report_intrusion_of_privacy")
+|| (menu == "report_violence_physical_harm")
+|| (menu == "report_abusive_harassing_bullying")
+|| (menu == "report_hateful_discriminatory")
+|| (menu == "report_advertising_spam")
+|| (menu == "report_sexually_explicit")
+|| (menu == "report_asking_for_likes")
+|| (menu == "report_uses_a_bug")
+|| (menu == "report_blatant_copying")
+|| (menu == "report_phony_world_record")
+|| (menu == "report_other_inappropriate_content")
+|| (menu == "report_comment_ok")
+|| (menu == "report_comment_back")
+|| (menu == "report_send_back")
+|| (menu == "report_send_confirm")
+{
+	scr_draw_report();
+}
+
+if (menu == "caution_online_back")
+|| (menu == "caution_online_do_not_show")
+|| (menu == "caution_online_proceed")
+{
+	scr_draw_caution_online();
 }
 
 scr_character_select_menu_draw();
@@ -1712,6 +1741,7 @@ if (global.enable_transitions)
 {
 	if (iris_xscale < 15)
 	{
+		draw_set_alpha(1);
 		draw_sprite_ext(spr_iris, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, iris_xscale, iris_yscale, 0, c_black, 1);
 		draw_rectangle_color(0, 0, display_get_gui_width()* 2, display_get_gui_height() * 0.5 - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(0, 0, display_get_gui_width() * 0.5 - iris_xscale * 128, display_get_gui_height()* 2, c_black, c_black, c_black, c_black, false);

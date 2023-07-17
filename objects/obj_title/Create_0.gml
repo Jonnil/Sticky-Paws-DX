@@ -63,6 +63,8 @@ intended_level_difficulty = 1; /* Easy = 0. Normal = 1. Hard = 2. Super Hard = 3
 
 scr_unzip_all() /* Unzip any .zip folder found in AppData */
 
+caution_online_do_not_show = false;
+report_back_to_menu = "";
 search_id = "";
 search_for_id_still = true;
 content_type = "level"; /* What kind of ID you are searching for. Either "level" or "character" */

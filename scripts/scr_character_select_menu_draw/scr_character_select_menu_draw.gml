@@ -321,12 +321,25 @@ function scr_character_select_menu_draw()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_search_id_y + 2, 370, draw_search_id_y + 41))
 			&& (mouse_check_button_released(mb_left))
 			{
-				keyboard_string = "";
-				search_id = "";
-				content_type = "character";
-				menu = "search_id_ok";
-				select_custom_level_menu_open = false;
-				menu_delay = 3;
+				if (global.online_enabled)
+				{
+					keyboard_string = "";
+					search_id = "";
+					content_type = "character";
+					menu = "search_id_ok";
+					select_custom_level_menu_open = false;
+					menu_delay = 3;
+				}
+				else
+				{
+					keyboard_string = "";
+					search_id = "";
+					content_type = "character";
+					caution_online_takes_you_to = "search_id_ok";
+					caution_online_takes_you_back_to = "search_character_id";
+					menu = "caution_online_proceed";
+					menu_delay = 3;
+				}
 			}
 		}
 		if (menu == "search_level_id")

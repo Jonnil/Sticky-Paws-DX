@@ -305,46 +305,30 @@ function scr_debug_screen()
 		{
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(0): " + string(gamepad_get_description(0)), global.default_text_size, c_black, c_white);
 		}
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(0): " + string(switch_controller_joycon_left_connected(0)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(0): " + string(switch_controller_joycon_right_connected(0)), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(0): " + string(switch_controller_joycon_left_connected(0)), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(0): " + string(switch_controller_joycon_right_connected(0)), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
 		if (gamepad_get_description(1) != "")
 		{
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(1): " + string(gamepad_get_description(1)), global.default_text_size, c_black, c_white);
 		}
 		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(1): " + string(switch_controller_joycon_left_connected(1)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(1): " + string(switch_controller_joycon_right_connected(1)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
 		if (gamepad_get_description(2) != "")
 		{
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(2): " + string(gamepad_get_description(2)), global.default_text_size, c_black, c_white);
 		}
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(2): " + string(switch_controller_joycon_left_connected(2)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(2): " + string(switch_controller_joycon_right_connected(2)), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
 		if (gamepad_get_description(3) != "")
 		{
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(3): " + string(gamepad_get_description(3)), global.default_text_size, c_black, c_white);
 		}
 		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(3): " + string(switch_controller_joycon_left_connected(3)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(3): " + string(switch_controller_joycon_right_connected(3)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
 		if (gamepad_get_description(4) != "")
 		{
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(4): " + string(gamepad_get_description(4)), global.default_text_size, c_black, c_white);
 		}
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(4): " + string(switch_controller_joycon_left_connected(4)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(4): " + string(switch_controller_joycon_right_connected(4)), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
 		
 		scr_draw_text_outlined(32, debug_text_y, "player slots: " + string(global.player1_slot) + ", " + string(global.player2_slot) + ", " + string(global.player3_slot) + ", " + string(global.player4_slot), global.default_text_size, c_black, c_white);

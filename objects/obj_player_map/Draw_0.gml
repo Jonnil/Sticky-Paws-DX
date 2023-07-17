@@ -436,6 +436,7 @@ if (global.enable_transitions)
 {
 	if (iris_xscale < 15)
 	{
+		draw_set_alpha(1);
 		draw_sprite_ext(spr_iris, image_index, xx, yy, iris_xscale, iris_yscale, image_angle, image_blend, image_alpha);
 		draw_rectangle_color(-32, -32, room_width, yy - iris_yscale * 128, c_black, c_black, c_black, c_black, false);
 		draw_rectangle_color(-32, -32, xx - iris_xscale * 128, room_height, c_black, c_black, c_black, c_black, false);
