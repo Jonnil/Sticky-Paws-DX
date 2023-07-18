@@ -13,8 +13,9 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	{
 		menu = menu_index;
 		
-		if (mouse_check_button_released(mb_left) && menu_takes_you_to != false && menu_takes_you_to != noone && menu_takes_you_to != "" && menu_takes_you_to != menu_index)
+		if (mouse_check_button_released(mb_left) && menu_takes_you_to != false && menu_takes_you_to != noone && menu_takes_you_to != "" && menu_takes_you_to != menu_index && menu_delay == 0)
 		{
+			menu_delay = 3;
 			menu = menu_takes_you_to;
 		}
 		

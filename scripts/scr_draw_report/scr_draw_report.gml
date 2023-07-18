@@ -1,5 +1,8 @@
 function scr_draw_report()
 {
+	var report_back_y = 0;
+	var mouse_get_x = device_mouse_x_to_gui(0);
+	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Send report information to the server */
 	if (menu == "report_send_to_server")
@@ -11,9 +14,112 @@ function scr_draw_report()
 		draw_set_alpha(1);
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 		
-		
+		menu = "report_complete_delete";
 	}
 	#endregion /* Send report information to the server END */
+	
+	#region /* Report Complete */
+	if (menu == "report_complete_delete")
+	|| (menu == "report_complete_back_to_online_list")
+	|| (menu == "report_complete_back_to_select")
+	{
+		
+		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
+		draw_set_alpha(0.9);
+		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
+		
+		var report_sent_message_y = display_get_gui_height() * 0.5;
+		
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y - 64, l10n_text("Report has been sent"), global.default_text_size * 2, c_black, c_white, 1);
+		if (content_type == "level")
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y, l10n_text("You can delete the reported level if you want to"), global.default_text_size, c_black, c_white, 1);
+			var searched_file_downloaded_delete_y = report_sent_message_y + 50 + (42 * 2);
+			var back_to_list_y = report_sent_message_y + 50 + (42 * 3);
+			var back_to_list_text = l10n_text("Back to online level list");
+			var searched_file_downloaded_back_y = report_sent_message_y + 50 + (42 * 4);
+			var searched_file_downloaded_back_text = l10n_text("Back to custom level select");
+		}
+		else
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y, l10n_text("You can delete the reported character if you want to"), global.default_text_size, c_black, c_white, 1);
+			var searched_file_downloaded_delete_y = report_sent_message_y + 50 + (42 * 2);
+			var back_to_list_y = report_sent_message_y + 50 + (42 * 3);
+			var back_to_list_text = l10n_text("Back to online character list");
+			var searched_file_downloaded_back_y = report_sent_message_y + 50 + (42 * 4);
+			var searched_file_downloaded_back_text = l10n_text("Back to character select");
+		}
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "report_complete_delete", "report_complete_delete");
+		draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, back_to_list_y, back_to_list_text, "report_complete_back_to_online_list", "report_complete_back_to_online_list");
+		draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, searched_file_downloaded_back_text, "report_complete_back_to_select", "report_complete_back_to_select");
+		draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_back_y + 20, 1, 1, 0, c_white, 1);
+		
+		#region /* Click Delete */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_delete_y + 41))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (menu == "report_complete_delete_delete")
+		&& (key_a_pressed)
+		&& (menu_delay == 0)
+		{
+			if (content_type == "level")
+			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			{
+				directory_destroy(working_directory + "custom_levels/" + string(global.level_name));
+				ini_open(working_directory + "save_files/custom_level_save.ini");
+				ini_section_delete(string(global.level_name));
+				ini_close();
+				global.select_level_index = 0;
+				global.level_name = "";
+			}
+			else
+			if (content_type == "character")
+			&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+			{
+				directory_destroy(working_directory + "custom_characters/" + string(downloaded_character_name));
+				global.character_index[0] = 0;
+			}
+			menu = "searched_file_downloaded_deleted_back_to_list";
+			menu_delay = 3;
+		}
+		#endregion /* Click Delete END */
+		
+		#region /* Click back to online level list */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, back_to_list_y, display_get_gui_width() * 0.5 + 185, back_to_list_y + 41))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (menu == "report_complete_back_to_online_list")
+		&& (key_a_pressed)
+		&& (menu_delay == 0)
+		{
+			/* Don't set the "select level index" or "level name" here, because we want it saved still */
+			menu = "online_download_list_load"; /* Go back to online level list */
+			menu_delay = 3;
+		}
+		#endregion /* Click back to online level list END */
+		
+		#region /* Click back to custom level select */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_back_y + 41))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (menu == "report_complete_back_to_select")
+		&& (key_a_pressed)
+		&& (menu_delay == 0)
+		{
+			menu = "searching_for_id_back";
+			menu_delay = 3;
+		}
+		#endregion /* Click back to custom level select END */
+		
+	}
+	#endregion /* Report Complete END */
 	
 	#region /* Fill information about report before sending to server */
 	
@@ -30,23 +136,33 @@ function scr_draw_report()
 		
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("This report will be sent to") + ": " + string(global.company_name), global.default_text_size, c_black, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("Not the user who posted the content"), global.default_text_size, c_black, c_white, 1);
-		draw_menu_button(0, 0, l10n_text("Back"), "report_back", report_back_to_menu);
-		draw_sprite_ext(spr_icons_back, 0, 16, 21, 1, 1, 0, c_white, 1);
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() * 0.5 + 106, l10n_text("Next"), "report_next", "report_next");
-		draw_sprite_ext(spr_icons_report, 0, display_get_gui_width() * 0.5 - 185 + 16, display_get_gui_height() * 0.5 + 106 + 21, 1, 1, 0, c_white, 1);
+		draw_menu_button(0, report_back_y, l10n_text("Back"), "report_back", report_back_to_menu);
+		draw_sprite_ext(spr_icons_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
+		var report_next_y = display_get_gui_height() * 0.5 + 106;
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_next_y, l10n_text("Next"), "report_next", "report_next");
+		draw_sprite_ext(spr_icons_report, 0, display_get_gui_width() * 0.5 - 185 + 16, report_next_y + 21, 1, 1, 0, c_white, 1);
 		
-		if (key_a_pressed)
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (menu == "report_back")
+		&& (key_a_pressed)
 		&& (menu_delay == 0)
 		{
-			if (menu == "report_back")
-			{
-				menu = report_back_to_menu;
-			}
-			else
-			if (menu == "report_next")
-			{
-				menu = "report_intrusion_of_privacy";
-			}
+			menu = report_back_to_menu;
+			menu_delay = 3;
+		}
+		
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_next_y, display_get_gui_width() * 0.5 - 185 + 370, report_next_y + 41))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (menu == "report_next")
+		&& (key_a_pressed)
+		&& (menu_delay == 0)
+		{
+			menu = "report_intrusion_of_privacy";
 			menu_delay = 3;
 		}
 		
@@ -90,6 +206,9 @@ function scr_draw_report()
 	|| (menu == "report_phony_world_record")
 	|| (menu == "report_other_inappropriate_content")
 	{
+		global.report_comment = "";
+		keyboard_string = "";
+		
 		var report_intrusion_of_privacy_y = 42 * 3;
 		var report_violence_physical_harm_y = 42 * 4;
 		var report_abusive_harassing_bullying = 42 * 5;
@@ -110,29 +229,103 @@ function scr_draw_report()
 		
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Please select the reason for this report"), global.default_text_size, c_black, c_white, 1);
 		
-		draw_menu_button(0, 0, l10n_text("Back"), "report_reason_back", report_back_to_menu);
-		draw_sprite_ext(spr_icons_back, 0, 16, 21, 1, 1, 0, c_white, 1);
+		draw_menu_button(0, report_back_y, l10n_text("Back"), "report_reason_back", report_back_to_menu);
+		draw_sprite_ext(spr_icons_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
 		
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_intrusion_of_privacy_y, l10n_text("Intrusion of Privacy"), "report_intrusion_of_privacy", "report_intrusion_of_privacy");
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_violence_physical_harm_y, l10n_text("Violence/Physical Harm"), "report_violence_physical_harm", "report_violence_physical_harm");
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_abusive_harassing_bullying, l10n_text("Abusive/Harassing/Bullying"), "report_abusive_harassing_bullying", "report_abusive_harassing_bullying");
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_hateful_discriminatory_y, l10n_text("Hateful/Discriminatory"), "report_hateful_discriminatory", "report_hateful_discriminatory");
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_advertising_spam_y, l10n_text("Advertising/Spam"), "report_advertising_spam", "report_advertising_spam");
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_sexually_explicit_y, l10n_text("Sexually Explicit"), "report_sexually_explicit", "report_sexually_explicit");
-		//draw_menu_button(display_get_gui_width() * 0.5 - 185, report_asking_for_likes_y, l10n_text("Asking for Likes"), "report_asking_for_likes", "report_asking_for_likes");
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_uses_a_bug_y, l10n_text("Uses a Bug"), "report_uses_a_bug", "report_uses_a_bug");
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_blatant_copying_y, l10n_text("Blatant Copying"), "report_blatant_copying", "report_blatant_copying");
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_other_inappropriate_content_y, l10n_text("Other Inappropriate Content"), "report_other_inappropriate_content", "report_other_inappropriate_content");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_intrusion_of_privacy_y, l10n_text("Intrusion of Privacy"), "report_intrusion_of_privacy", "report_comment_ok");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_violence_physical_harm_y, l10n_text("Violence/Physical Harm"), "report_violence_physical_harm", "report_comment_ok");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_abusive_harassing_bullying, l10n_text("Abusive/Harassing/Bullying"), "report_abusive_harassing_bullying", "report_comment_ok");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_hateful_discriminatory_y, l10n_text("Hateful/Discriminatory"), "report_hateful_discriminatory", "report_comment_ok");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_advertising_spam_y, l10n_text("Advertising/Spam"), "report_advertising_spam", "report_comment_ok");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_sexually_explicit_y, l10n_text("Sexually Explicit"), "report_sexually_explicit", "report_comment_ok");
+		//draw_menu_button(display_get_gui_width() * 0.5 - 185, report_asking_for_likes_y, l10n_text("Asking for Likes"), "report_asking_for_likes", "report_comment_ok");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_uses_a_bug_y, l10n_text("Uses a Bug"), "report_uses_a_bug", "report_comment_ok");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_blatant_copying_y, l10n_text("Blatant Copying"), "report_blatant_copying", "report_comment_ok");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_other_inappropriate_content_y, l10n_text("Other Inappropriate Content"), "report_other_inappropriate_content", "report_comment_ok");
+		
+		#region /* What report reason to use when hovering over different buttons */
+		if (menu == "report_intrusion_of_privacy")
+		{
+			global.report_reason = "report_intrusion_of_privacy";
+			report_reason_text = l10n_text("Intrusion of Privacy");
+		}
+		else
+		if (menu == "report_violence_physical_harm")
+		{
+			global.report_reason = "report_violence_physical_harm";
+			report_reason_text = l10n_text("Violence/Physical Harm");
+		}
+		else
+		if (menu == "report_abusive_harassing_bullying")
+		{
+			global.report_reason = "report_abusive_harassing_bullying";
+			report_reason_text = l10n_text("Abusive/Harassing/Bullying");
+		}
+		else
+		if (menu == "report_hateful_discriminatory")
+		{
+			global.report_reason = "report_hateful_discriminatory";
+			report_reason_text = l10n_text("Hateful/Discriminatory");
+		}
+		else
+		if (menu == "report_advertising_spam")
+		{
+			global.report_reason = "report_advertising_spam";
+			report_reason_text = l10n_text("Advertising/Spam");
+		}
+		else
+		if (menu == "report_sexually_explicit")
+		{
+			global.report_reason = "report_sexually_explicit";
+			report_reason_text = l10n_text("Sexually Explicit");
+		}
+		else
+		if (menu == "report_asking_for_likes")
+		{
+			global.report_reason = "report_asking_for_likes";
+			report_reason_text = l10n_text("Asking for Likes");
+		}
+		else
+		if (menu == "report_uses_a_bug")
+		{
+			global.report_reason = "report_uses_a_bug";
+			report_reason_text = l10n_text("Uses a Bug");
+		}
+		else
+		if (menu == "report_blatant_copying")
+		{
+			global.report_reason = "report_blatant_copying";
+			report_reason_text = l10n_text("Blatant Copying");
+		}
+		else
+		if (menu == "report_phony_world_record")
+		{
+			global.report_reason = "report_phony_world_record";
+			report_reason_text = l10n_text("Phony World Record");
+		}
+		else
+		if (menu == "report_other_inappropriate_content")
+		{
+			global.report_reason = "report_other_inappropriate_content";
+			report_reason_text = l10n_text("Other Inappropriate Content");
+		}
+		#endregion /* What report reason to use when hovering over different buttons END */
 		
 		#region /* Report Reason Accept */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (menu == "report_reason_back")
+		&& (key_a_pressed)
+		&& (menu_delay == 0)
+		{
+			menu = report_back_to_menu;
+		}
+		else
 		if (key_a_pressed)
 		&& (menu_delay == 0)
 		{
-			if (menu == "report_reason_back")
-			{
-				menu = report_back_to_menu;
-			}
-			else
 			if (menu == "report_intrusion_of_privacy")
 			{
 				global.report_reason = "report_intrusion_of_privacy";
@@ -349,8 +542,6 @@ function scr_draw_report()
 	if (menu == "report_comment_ok")
 	|| (menu == "report_comment_back")
 	{
-		var mouse_get_x = device_mouse_x_to_gui(0);
-		var mouse_get_y = device_mouse_y_to_gui(0);
 		var report_comment_x = display_get_gui_width() * 0.5;
 		var report_comment_y = display_get_gui_height() * 0.5;
 		
@@ -362,7 +553,7 @@ function scr_draw_report()
 		if (key_a_pressed)
 		&& (menu = "report_comment_ok")
 		&& (global.report_comment != "")
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y, report_comment_x - 185, report_comment_y + 22 + 52, report_comment_x - 185 + 370, report_comment_y + 22 + 52 + 42))
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, report_comment_x - 185, report_comment_y + 52, report_comment_x - 185 + 370, report_comment_y + 52 + 42))
 		&& (global.report_comment != "")
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
@@ -401,7 +592,7 @@ function scr_draw_report()
 		if (key_a_pressed)
 		&& (menu = "report_comment_back")
 		|| (key_b_pressed)
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y, report_comment_x - 185, report_comment_y + 22 + 52 + 42, report_comment_x - 185 + 370, report_comment_y + 22 + 52 + 42 + 42))
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, report_comment_x - 185, report_comment_y + 52 + 42, report_comment_x - 185 + 370, report_comment_y + 52 + 42 + 42))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		{
@@ -438,24 +629,34 @@ function scr_draw_report()
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 32, string(report_reason_text), global.default_text_size, c_black, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, string(global.report_comment), global.default_text_size, c_black, c_white, 1);
 		
-		draw_menu_button(0, 0, l10n_text("Back"), "report_send_back", global.report_reason);
-		draw_sprite_ext(spr_icons_back, 0, 16, 21, 1, 1, 0, c_white, 1);
+		draw_menu_button(0, report_back_y, l10n_text("Back"), "report_send_back", global.report_reason);
+		draw_sprite_ext(spr_icons_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
 		
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() * 0.5 + 96, l10n_text("Report"), "report_send_confirm", "report_send_to_server");
-		draw_sprite_ext(spr_icons_report, 0, display_get_gui_width() * 0.5 - 185 + 16, display_get_gui_height() * 0.5 + 96 + 21, 1, 1, 0, c_white, 1);
+		var report_send_confirm_y = display_get_gui_height() * 0.5 + 96;
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_send_confirm_y, l10n_text("Report"), "report_send_confirm", "report_send_to_server");
+		draw_sprite_ext(spr_icons_report, 0, display_get_gui_width() * 0.5 - 185 + 16, report_send_confirm_y + 21, 1, 1, 0, c_white, 1);
 		
-		if (key_a_pressed)
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (menu == "report_send_back")
+		&& (key_a_pressed)
 		&& (menu_delay == 0)
 		{
-			if (menu == "report_send_back")
-			{
-				menu = global.report_reason;
-			}
-			else
-			if (menu == "report_send_confirm")
-			{
-				menu = "report_send_to_server";
-			}
+			menu = global.report_reason;
+			menu_delay = 3;
+		}
+		
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_send_confirm_y, display_get_gui_width() * 0.5 - 185 + 370, report_send_confirm_y + 41))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0)
+		|| (menu == "report_send_confirm")
+		&& (key_a_pressed)
+		&& (menu_delay == 0)
+		{
+			menu = "report_send_to_server";
 			menu_delay = 3;
 		}
 		

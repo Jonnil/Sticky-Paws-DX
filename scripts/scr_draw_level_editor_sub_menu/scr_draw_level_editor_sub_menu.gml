@@ -1,12 +1,14 @@
 function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - column * row) + 100 - 3 + thumbnail_x_offset, yy)
 {
 	var get_window_height = display_get_gui_height();
-	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	#region /* Draw sub menu (code must be here to be above everything else) */
 	if (open_sub_menu)
+	&& (menu != "caution_online_back")
+	&& (menu != "caution_online_do_not_show")
+	&& (menu != "caution_online_proceed")
 	{
 		
 		#region /* Navigate Sub Menu */

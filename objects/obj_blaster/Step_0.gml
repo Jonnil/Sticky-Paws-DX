@@ -7,7 +7,6 @@ if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 }
 else
 {
-	move_snap(16, 16);
 	hspeed = 0;
 	vspeed = 0;
 	gravity = 0;

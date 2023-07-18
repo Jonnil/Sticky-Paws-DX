@@ -12,6 +12,9 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	&& (menu != "open_custom_levels_folder")
 	&& (menu != "online_level_list")
 	&& (menu != "search_level_id")
+	&& (menu != "caution_online_back")
+	&& (menu != "caution_online_do_not_show")
+	&& (menu != "caution_online_proceed")
 	{
 		var custom_level_select_blinking = scr_wave(1, 0, 2, 0);
 		draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_red, c_red, c_red, c_red, false);
@@ -94,6 +97,9 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 	&& (menu != "open_custom_levels_folder")
 	&& (menu != "online_level_list")
 	&& (menu != "search_level_id")
+	&& (menu != "caution_online_back")
+	&& (menu != "caution_online_do_not_show")
+	&& (menu != "caution_online_proceed")
 	{
 		var custom_level_select_arrows_moving = scr_wave(10, 0, 1, 0);
 		var top_left_x_offset = top_left_of_thumbnail_x - custom_level_select_arrows_moving;

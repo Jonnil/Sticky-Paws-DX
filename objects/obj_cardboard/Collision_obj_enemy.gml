@@ -1,4 +1,4 @@
-if (place_meeting(x, bbox_bottom + 8, obj_enemy))
+if (place_meeting(x, y + 1, obj_enemy))
 && (other.vspeed < 0)
 && (!collision_line(x, y, other.x, other.y, obj_wall, false, true))
 {

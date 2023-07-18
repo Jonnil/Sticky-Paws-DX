@@ -1056,6 +1056,7 @@ if (menu == "search_id_ok")
 || (menu == "searched_file_downloaded_back")
 || (menu == "searched_file_downloaded_report")
 || (menu == "searched_file_downloaded_failed")
+|| (menu == "searched_file_downloaded_deleted_download_again")
 || (menu == "searched_file_downloaded_deleted_back_to_list")
 || (menu == "searched_file_downloaded_deleted")
 || (menu == "searching_for_id_back")
@@ -1080,6 +1081,10 @@ if (menu == "report_back")
 || (menu == "report_comment_back")
 || (menu == "report_send_back")
 || (menu == "report_send_confirm")
+|| (menu == "report_send_to_server")
+|| (menu == "report_complete_delete")
+|| (menu == "report_complete_back_to_online_list")
+|| (menu == "report_complete_back_to_select")
 {
 	scr_draw_report();
 }

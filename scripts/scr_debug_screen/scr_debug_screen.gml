@@ -350,6 +350,8 @@ function scr_debug_screen()
 				scr_draw_text_outlined(32, debug_text_y, "menu_delay: " + string(menu_delay), global.default_text_size, c_black, c_red);
 			}
 		}
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "online_enabled: " + string(global.online_enabled), global.default_text_size, c_black, c_white);
 		
 		/* Draw the name of the current room at the bottom middle of the screen */
 		draw_set_halign(fa_center);

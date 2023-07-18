@@ -7,13 +7,18 @@ function scr_draw_caution_online()
 		var mouse_get_x = device_mouse_x_to_gui(0);
 		var mouse_get_y = device_mouse_y_to_gui(0);
 		
+		if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+		{
+			show_level_editor_corner_menu = false;
+		}
+		
 		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
 		draw_set_alpha(0.9);
 		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 		
-		draw_menu_button(0, 0, l10n_text("Back"), "caution_online_back", caution_online_takes_you_back_to);
+		draw_menu_button(0, 0, l10n_text("Back"), "caution_online_back", "caution_online_back");
 		draw_sprite_ext(spr_icons_back, 0, 16, 21, 1, 1, 0, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 128, l10n_text("Caution: Online Communication"), global.default_text_size * 2, c_black, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 64, l10n_text("Online communication is offered by official servers that are owned, operated, and supervised by") + ": " + string(global.company_name), global.default_text_size, c_black, c_white, 1);
@@ -57,9 +62,13 @@ function scr_draw_caution_online()
 			menu_delay = 3;
 		}
 		
-		if (key_a_pressed)
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 0 + 370, 0 + 41))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0)
-		&& (menu == "caution_online_back")
+		|| (menu == "caution_online_back")
+		&& (key_a_pressed)
+		&& (menu_delay == 0)
 		|| (key_b_pressed)
 		&& (menu_delay == 0)
 		{
@@ -67,8 +76,8 @@ function scr_draw_caution_online()
 			{
 				show_level_editor_corner_menu = true;
 			}
-			menu = caution_online_takes_you_back_to;
 			menu_delay = 3;
+			menu = caution_online_takes_you_back_to;
 		}
 		
 		if (key_up)

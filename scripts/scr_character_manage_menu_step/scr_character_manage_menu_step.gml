@@ -574,8 +574,7 @@ function scr_character_manage_menu_step()
 			}
 		}
 		else
-		if (menu == "click_delete_character_yes")
-		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, delete_character_yes_y + 2, display_get_gui_width() * 0.5 - 185 + 371, delete_character_yes_y + 42))
+		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, delete_character_yes_y + 2, display_get_gui_width() * 0.5 - 185 + 371, delete_character_yes_y + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0)
 		&& (can_navigate)
@@ -596,12 +595,14 @@ function scr_character_manage_menu_step()
 				}
 				
 				#region /* After deleting character, go to previous character, so you don't accidentally go to a undefined character */
-				if (global.character_index[0] > 0)
-				{
-					global.character_index[0] = clamp(global.character_index[0] - 1, 0, ds_list_size(global.all_loaded_characters) - 1);
-					global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
-					xx_delay[1] = -1;
-				}
+				global.character_index[0] = clamp(global.character_index[0] - 1, 0, ds_list_size(global.all_loaded_characters) - 1);
+				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
+				xx_delay[1] = -1;
+				
+				/* Update the player sprite */
+				global.sprite_select_player[1] = spr_noone;
+				global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+				global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
 				#endregion /* After deleting character, go to previous character, so you don't accidentally go to a undefined character END */
 				
 				scr_load_character_initializing();

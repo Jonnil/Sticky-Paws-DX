@@ -52,7 +52,6 @@ function scr_draw_upload_level_menu()
 		{
 			if (global.free_communication_available)
 			{
-				
 				if (global.online_enabled)
 				{
 					menu = "level_editor_upload_pressed";

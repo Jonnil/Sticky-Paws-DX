@@ -63,7 +63,7 @@ function scr_draw_online_download_list()
 		
 		#region /* Pressing the Back button */
 		if (key_b_pressed)
-		|| (menu = "download_online_back")
+		|| (menu == "download_online_back")
 		&& (key_a_pressed)
 		|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 0, 370, 42))
 		&& (mouse_check_button_released(mb_left))
@@ -78,6 +78,10 @@ function scr_draw_online_download_list()
 				keyboard_string = "";
 				if (content_type == "level")
 				{
+					if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+					{
+						show_level_editor_corner_menu = true;
+					}
 					menu = "online_download_list";
 					select_custom_level_menu_open = true;
 				}
@@ -95,7 +99,7 @@ function scr_draw_online_download_list()
 		#region /* Pressing the Search ID button */
 		if (menu = "download_online_search_id")
 		&& (key_a_pressed)
-		|| (menu = "download_online_search_id")
+		|| (menu == "download_online_search_id")
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42, 370, 42 + 42))
 		&& (mouse_check_button_released(mb_left))
 		|| (gamepad_button_check_pressed(global.player1_slot, gp_face4))

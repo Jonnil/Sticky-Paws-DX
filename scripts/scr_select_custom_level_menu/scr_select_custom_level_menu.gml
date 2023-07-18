@@ -69,6 +69,9 @@ function scr_select_custom_level_menu()
 		&& (menu != "open_custom_levels_folder")
 		&& (menu != "online_level_list")
 		&& (menu != "search_level_id")
+		&& (menu != "caution_online_back")
+		&& (menu != "caution_online_do_not_show")
+		&& (menu != "caution_online_proceed")
 		{
 			if (global.select_level_index - row < 0)
 			&& (global.controls_used_for_menu_navigation != "mouse")
@@ -123,6 +126,9 @@ function scr_select_custom_level_menu()
 		&& (menu != "open_custom_levels_folder")
 		&& (menu != "online_level_list")
 		&& (menu != "search_level_id")
+		&& (menu != "caution_online_back")
+		&& (menu != "caution_online_do_not_show")
+		&& (menu != "caution_online_proceed")
 		{
 			if (global.select_level_index + row > ds_list_size(global.thumbnail_sprite) - 1)
 			&& (global.controls_used_for_menu_navigation != "mouse")
@@ -162,6 +168,9 @@ function scr_select_custom_level_menu()
 	&& (menu != "open_custom_levels_folder")
 	&& (menu != "online_level_list")
 	&& (menu != "search_level_id")
+	&& (menu != "caution_online_back")
+	&& (menu != "caution_online_do_not_show")
+	&& (menu != "caution_online_proceed")
 	{
 		if (global.select_level_index - 1 < 0)
 		{
@@ -189,6 +198,9 @@ function scr_select_custom_level_menu()
 	&& (menu != "open_custom_levels_folder")
 	&& (menu != "online_level_list")
 	&& (menu != "search_level_id")
+	&& (menu != "caution_online_back")
+	&& (menu != "caution_online_do_not_show")
+	&& (menu != "caution_online_proceed")
 	{
 		if (global.select_level_index + 1 > ds_list_size(global.thumbnail_sprite) - 1)
 		{
@@ -217,6 +229,9 @@ function scr_select_custom_level_menu()
 		&& (menu != "open_custom_levels_folder")
 		&& (menu != "online_level_list")
 		&& (menu != "search_level_id")
+		&& (menu != "caution_online_back")
+		&& (menu != "caution_online_do_not_show")
+		&& (menu != "caution_online_proceed")
 		{
 			
 			#region /* Create New Level */
@@ -285,6 +300,9 @@ function scr_select_custom_level_menu()
 	if (menu != "load_custom_level")
 	&& (menu != "load_characters")
 	&& (menu != "load_official_level_template")
+	&& (menu != "caution_online_back")
+	&& (menu != "caution_online_do_not_show")
+	&& (menu != "caution_online_proceed")
 	&& (show_level_editor_corner_menu)
 	{
 		
@@ -436,11 +454,22 @@ function scr_select_custom_level_menu()
 			&& (key_a_pressed)
 			&& (menu_delay == 0)
 			{
-				/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
-				select_custom_level_menu_open = false;
-				content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
-				selected_online_download_index = 1;
-				menu = "online_download_list_load";
+				if (global.online_enabled)
+				{
+					/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+					select_custom_level_menu_open = false;
+					content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+					selected_online_download_index = 1;
+					menu = "online_download_list_load";
+				}
+				else
+				{
+					content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+					caution_online_takes_you_to = "online_download_list_load";
+					caution_online_takes_you_back_to = "online_level_list";
+					menu = "caution_online_proceed";
+					menu_delay = 3;
+				}
 			}
 		}
 		if (menu == "online_level_list")

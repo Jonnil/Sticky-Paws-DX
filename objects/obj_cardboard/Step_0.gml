@@ -29,7 +29,7 @@ if (distance_to_object(obj_player) < 32 && !collision_line(x, y, player_nearest.
 
 if (distance_to_object(obj_enemy_bowlingball) < 32 && !collision_line(x, y, enemy_bowlingball_nearest.x, enemy_bowlingball_nearest.y, obj_wall, false, true))
 {
-	if (enemy_bowlingball_nearest.sliding_along_ground != 0 || enemy_bowlingball_nearest.vspeed < 0)
+	if (enemy_bowlingball_nearest.sliding_along_ground != 0 || place_meeting(x, y + 1, obj_enemy_bowlingball) && enemy_bowlingball_nearest.vspeed < 0)
 	{
 		break_cardboard = true;
 		if (instance_exists(obj_enemy_bowlingball))
