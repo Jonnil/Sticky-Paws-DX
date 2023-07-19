@@ -1526,21 +1526,8 @@ function scr_draw_upload_level_menu()
 		#region /* Generate Level ID */
 		if (menu_delay = 50)
 		{
-			/* Certain characters is not used as they look too similar to other characters in certain fonts. It's easier to just not include those letters in the Level ID */
-			level_id_1 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			level_id_2 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			level_id_3 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			level_id_4 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			level_id_5 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			level_id_6 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			level_id_7 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			level_id_8 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			level_id_9 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			level_id = string(level_id_1) + string(level_id_2) + string(level_id_3) + string(level_id_4) + string(level_id_5) + string(level_id_6) + string(level_id_7) + string(level_id_8) + string(level_id_9);
-			ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-			ini_write_string("info", "level_id", string(level_id)); /* Save the level ID in the level information.ini file, so that it can be referenced later */
-			ini_write_string("info", "username", string(global.username)); /* Save the username in the level information.ini file, so that it can be referenced later */
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			scr_generate_id("level");
+			thumbnail_level_id[global.select_level_index] = string(level_id);
 		}
 		#endregion /* Generate Level ID END */
 		
@@ -1778,7 +1765,7 @@ function scr_draw_upload_level_menu()
 		|| (key_b_pressed)
 		&& (menu_delay == 0)
 		{
-			search_for_id_still = true;
+			search_for_id_still = false;
 			menu_delay = 3;
 			menu = "level_editor_upload"; /* Return to previous menu */
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))

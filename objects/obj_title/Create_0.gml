@@ -66,7 +66,7 @@ scr_unzip_all() /* Unzip any .zip folder found in AppData */
 caution_online_do_not_show = false;
 report_back_to_menu = "";
 search_id = "";
-search_for_id_still = true;
+search_for_id_still = false;
 content_type = "level"; /* What kind of ID you are searching for. Either "level" or "character" */
 downloaded_character_name = ""; /* After loading the downloaded custom character, save the character name for later use */
 global.online_download_list = ""; /* Get the uploaded online levels as a list */

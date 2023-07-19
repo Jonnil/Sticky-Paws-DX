@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_draw_level_editor_thumbnail",
+  "name": "scr_generate_id",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Menus",
-    "path": "folders/Scripts/Menus.yy",
+    "name": "Server Scripts",
+    "path": "folders/Scripts/Server Scripts.yy",
   },
 }

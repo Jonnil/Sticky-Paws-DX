@@ -197,8 +197,30 @@ if (menu == "load_custom_level")
 				ini_open(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, i)) + "/data/level_information.ini");
 				thumbnail_clear_check[i] = ini_read_string("info", "clear_check", false);
 				thumbnail_level_id[i] = string(ini_read_string("info", "level_id", ""));
-				thumbnail_level_description[i] = string(ini_read_string("info", "level_description", ""));
-				thumbnail_level_username[i] = string(ini_read_string("info", "username", ""));
+				if (switch_check_profanity(string(ini_read_string("info", "level_name", ""))))
+				{
+					thumbnail_level_name[i] = string(switch_mask_profanity(ini_read_string("info", "level_name", "")));
+				}
+				else
+				{
+					thumbnail_level_name[i] = string(ini_read_string("info", "level_name", ""));
+				}
+				if (switch_check_profanity(string(ini_read_string("info", "level_description", ""))))
+				{
+					thumbnail_level_description[i] = string(switch_mask_profanity(ini_read_string("info", "level_description", "")));
+				}
+				else
+				{
+					thumbnail_level_description[i] = string(ini_read_string("info", "level_description", ""));
+				}
+				if (switch_check_profanity(string(ini_read_string("info", "username", ""))))
+				{
+					thumbnail_level_username[i] = string(switch_mask_profanity(ini_read_string("info", "username", "")));
+				}
+				else
+				{
+					thumbnail_level_username[i] = string(ini_read_string("info", "username", ""));
+				}
 				ini_close();
 			}
 			#endregion /* Get clear check and level ID information END */

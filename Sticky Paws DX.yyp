@@ -2430,6 +2430,7 @@
     {"id":{"name":"spr_hard_block","path":"sprites/spr_hard_block/spr_hard_block.yy",},},
     {"id":{"name":"snd_arrow","path":"sounds/snd_arrow/snd_arrow.yy",},},
     {"id":{"name":"spr_aim","path":"sprites/spr_aim/spr_aim.yy",},},
+    {"id":{"name":"scr_generate_id","path":"scripts/scr_generate_id/scr_generate_id.yy",},},
     {"id":{"name":"obj_basic_enemy","path":"objects/obj_basic_enemy/obj_basic_enemy.yy",},},
     {"id":{"name":"snd_footstep_grass_right","path":"sounds/snd_footstep_grass_right/snd_footstep_grass_right.yy",},},
     {"id":{"name":"spr_xbox_buttons","path":"sprites/spr_xbox_buttons/spr_xbox_buttons.yy",},},

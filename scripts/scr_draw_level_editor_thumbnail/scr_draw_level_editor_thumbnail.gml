@@ -1,4 +1,4 @@
-function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_name)
+function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_custom_levels, show_first_thumbnail_name = false)
 {
 	var custom_level_select_blinking = 0;
 	
@@ -44,7 +44,16 @@ function scr_draw_level_editor_thumbnail(load_what_levels, show_first_thumbnail_
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			/* Draw level name on top of level thumbnail */ scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 250 + 184, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 1.2, c_white, c_black, 1);
+			/* Draw level name on top of level thumbnail */
+			if (load_what_levels == global.all_loaded_custom_levels)
+			{
+				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(thumbnail_level_name[i]), global.default_text_size * 0.8, c_white, c_black, 1);
+			}
+			else
+			if (load_what_levels == global.all_loaded_main_levels)
+			{
+				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 0.8, c_white, c_black, 1);
+			}
 			
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
 			if (!level_editor_template_select && i >= 1)

@@ -63,7 +63,7 @@ function scr_draw_report()
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0)
-		|| (menu == "report_complete_delete_delete")
+		|| (menu == "report_complete_delete")
 		&& (key_a_pressed)
 		&& (menu_delay == 0)
 		{
@@ -409,13 +409,14 @@ function scr_draw_report()
 		if (key_b_pressed)
 		&& (menu_delay == 0)
 		{
-			menu = report_back_to_menu;
 			menu_delay = 3;
+			menu = report_back_to_menu;
 		}
 		
 		if (key_up)
 		&& (menu_delay == 0)
 		{
+			menu_delay = 3;
 			if (menu == "report_reason_back")
 			{
 				menu = "report_other_inappropriate_content";
@@ -471,11 +472,12 @@ function scr_draw_report()
 			{
 				menu = "report_blatant_copying";
 			}
-			menu_delay = 3;
 		}
+		else
 		if (key_down)
 		&& (menu_delay == 0)
 		{
+			menu_delay = 3;
 			if (menu == "report_reason_back")
 			{
 				menu = "report_intrusion_of_privacy";
@@ -533,7 +535,6 @@ function scr_draw_report()
 			}
 			global.report_comment = "";
 			keyboard_string = "";
-			menu_delay = 3;
 		}
 	}
 	#endregion /* Report Reason END */
@@ -602,9 +603,9 @@ function scr_draw_report()
 			&& (!keyboard_check_pressed(vk_space))
 			&& (menu_delay == 0)
 			{
+				menu_delay = 3;
 				global.report_comment = "";
 				keyboard_string = "";
-				menu_delay = 3;
 				input_key = false;
 				menu = global.report_reason;
 			}
@@ -644,8 +645,8 @@ function scr_draw_report()
 		&& (key_a_pressed)
 		&& (menu_delay == 0)
 		{
-			menu = global.report_reason;
 			menu_delay = 3;
+			menu = global.report_reason;
 		}
 		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_send_confirm_y, display_get_gui_width() * 0.5 - 185 + 370, report_send_confirm_y + 41))
@@ -656,15 +657,15 @@ function scr_draw_report()
 		&& (key_a_pressed)
 		&& (menu_delay == 0)
 		{
-			menu = "report_send_to_server";
 			menu_delay = 3;
+			menu = "report_send_to_server";
 		}
 		
 		if (key_b_pressed)
 		&& (menu_delay == 0)
 		{
-			menu = global.report_reason;
 			menu_delay = 3;
+			menu = global.report_reason;
 		}
 		
 		if (key_up)
@@ -672,6 +673,7 @@ function scr_draw_report()
 		|| (key_down)
 		&& (menu_delay == 0)
 		{
+			menu_delay = 3;
 			if (menu == "report_send_back")
 			{
 				menu = "report_send_confirm";
@@ -681,7 +683,6 @@ function scr_draw_report()
 			{
 				menu = "report_send_back";
 			}
-			menu_delay = 3;
 		}
 	}
 	#endregion /* Confirm report before sending it to server END */

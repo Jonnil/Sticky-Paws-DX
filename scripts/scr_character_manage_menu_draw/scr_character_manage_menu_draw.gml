@@ -561,21 +561,7 @@ function scr_character_manage_menu_draw()
 		#region /* Generate Character ID */
 		if (menu_delay = 50)
 		{
-			/* Certain characters is not used as they look too similar to other characters in certain fonts. It's easier to just not include those letters in the Character ID */
-			character_id_1 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			character_id_2 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			character_id_3 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			character_id_4 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			character_id_5 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			character_id_6 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			character_id_7 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			character_id_8 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			character_id_9 = choose("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y");
-			character_id = string(character_id_1) + string(character_id_2) + string(character_id_3) + string(character_id_4) + string(character_id_5) + string(character_id_6) + string(character_id_7) + string(character_id_8) + string(character_id_9);
-			ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
-			ini_write_string("info", "character_id", string(character_id)); /* Save the character ID in the character_config.ini file, so that it can be referenced later */
-			ini_write_string("info", "username", string(global.username)); /* Save the username in the level character_config.ini file, so that it can be referenced later */
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			scr_generate_id("character");
 		}
 		#endregion /* Generate Character ID END */
 		
@@ -809,7 +795,7 @@ function scr_character_manage_menu_draw()
 		|| (key_b_pressed)
 		&& (menu_delay == 0)
 		{
-			search_for_id_still = true;
+			search_for_id_still = false;
 			scr_load_character_initializing();
 			menu = "load_characters";
 			player_menu[1] = "select_character"; /* Go back to this menu after reloading all characters */
