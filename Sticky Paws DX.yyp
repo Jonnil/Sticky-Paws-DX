@@ -2323,6 +2323,7 @@
     {"id":{"name":"spr_checkbox","path":"sprites/spr_checkbox/spr_checkbox.yy",},},
     {"id":{"name":"scr_character_select_player_navigation","path":"scripts/scr_character_select_player_navigation/scr_character_select_player_navigation.yy",},},
     {"id":{"name":"obj_wall_climb_panel","path":"objects/obj_wall_climb_panel/obj_wall_climb_panel.yy",},},
+    {"id":{"name":"scr_draw_upload_character_menu","path":"scripts/scr_draw_upload_character_menu/scr_draw_upload_character_menu.yy",},},
     {"id":{"name":"scr_player_move_jumping","path":"scripts/scr_player_move_jumping/scr_player_move_jumping.yy",},},
     {"id":{"name":"scr_player_move_save_whole_level_as_screenshot","path":"scripts/scr_player_move_save_whole_level_as_screenshot/scr_player_move_save_whole_level_as_screenshot.yy",},},
     {"id":{"name":"spr_goal","path":"sprites/spr_goal/spr_goal.yy",},},

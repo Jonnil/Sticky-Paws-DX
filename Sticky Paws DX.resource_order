@@ -179,6 +179,7 @@
     {"name":"spr_checkbox","order":7,"path":"sprites/spr_checkbox/spr_checkbox.yy",},
     {"name":"scr_character_select_player_navigation","order":24,"path":"scripts/scr_character_select_player_navigation/scr_character_select_player_navigation.yy",},
     {"name":"obj_wall_climb_panel","order":16,"path":"objects/obj_wall_climb_panel/obj_wall_climb_panel.yy",},
+    {"name":"scr_draw_upload_character_menu","order":8,"path":"scripts/scr_draw_upload_character_menu/scr_draw_upload_character_menu.yy",},
     {"name":"scr_player_move_jumping","order":1,"path":"scripts/scr_player_move_jumping/scr_player_move_jumping.yy",},
     {"name":"scr_player_move_save_whole_level_as_screenshot","order":12,"path":"scripts/scr_player_move_save_whole_level_as_screenshot/scr_player_move_save_whole_level_as_screenshot.yy",},
     {"name":"spr_goal","order":111,"path":"sprites/spr_goal/spr_goal.yy",},

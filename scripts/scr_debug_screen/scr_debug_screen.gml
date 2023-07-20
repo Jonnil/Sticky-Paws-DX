@@ -352,6 +352,11 @@ function scr_debug_screen()
 		}
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "online_enabled: " + string(global.online_enabled), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		if (variable_instance_exists(self, "file_found"))
+		{
+			scr_draw_text_outlined(32, debug_text_y, "file_found: " + string(file_found), global.default_text_size, c_black, c_white);
+		}
 		
 		/* Draw the name of the current room at the bottom middle of the screen */
 		draw_set_halign(fa_center);

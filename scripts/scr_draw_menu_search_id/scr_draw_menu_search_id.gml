@@ -313,10 +313,15 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					global.level_description = ini_read_string("info", "level_description", "");
+					masked_username = ini_read_string("info", "username", "");
 					ini_close();
 					if (switch_check_profanity(global.level_description))
 					{
 						global.level_description = string(switch_mask_profanity(global.level_description));
+					}
+					if (switch_check_profanity(masked_username))
+					{
+						masked_username = string(switch_mask_profanity(masked_username));
 					}
 				}
 				menu = "searched_file_downloaded_play"; /* Go to the screen where you see the file has been downloaded */
@@ -346,10 +351,15 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					ini_open(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini");
 					global.level_description = ini_read_string("info", "character_description", "");
+					masked_username = ini_read_string("info", "username", "");
 					ini_close();
 					if (switch_check_profanity(global.level_description))
 					{
 						global.level_description = string(switch_mask_profanity(global.level_description));
+					}
+					if (switch_check_profanity(masked_username))
+					{
+						masked_username = string(switch_mask_profanity(masked_username));
 					}
 				}
 				menu = "searched_file_downloaded_back_to_list"; /* Go to the screen where you see the file has been downloaded */
@@ -466,20 +476,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 				#endregion /* Draw Level Thumbnail END */
 				
-				#region /* Draw who made the level */
-				if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-					if (ini_key_exists("info", "username"))
-					and (ini_read_string("info", "username", "") != "")
-					{
-						draw_set_halign(fa_right);
-						scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
-					}
-					ini_close(); /* Remember to commit the save data! */
-				}
-				#endregion /* Draw who made the level END */
-				
 			}
 			else
 			if (what_kind_of_id == "character")
@@ -501,25 +497,19 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 				#endregion /* Draw Character Thumbnail END */
 				
-				#region /* Draw who made the character */
-				if (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
-				{
-					ini_open(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini");
-					if (ini_key_exists("info", "username"))
-					and (ini_read_string("info", "username", "") != "")
-					{
-						draw_set_halign(fa_right);
-						scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
-					}
-					ini_close(); /* Remember to commit the save data! */
-				}
-				#endregion /* Draw who made the character END */
-				
 			}
 			
 			draw_set_halign(fa_center);
 			/* Draw Level Description */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y, string(global.level_description), global.default_text_size * 1.25, c_black, c_white, 1);
 			/* Draw ID */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y + 50, l10n_text(string(what_kind_of_id)) + " " + l10n_text("ID") + ": " + string(search_id), global.default_text_size * 1.25, c_black, c_white, 1);
+			
+			#region /* Draw who made the level */
+			if (masked_username != "")
+			{
+				draw_set_halign(fa_right);
+				scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(masked_username), global.default_text_size, c_black, c_white, 1);
+			}
+			#endregion /* Draw who made the level END */
 			
 			var downloaded_message_y = draw_description_y + 90;
 			draw_set_halign(fa_center);

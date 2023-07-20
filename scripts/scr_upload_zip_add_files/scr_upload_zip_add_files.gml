@@ -180,8 +180,6 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 			zip_save(z, string(file)); /* Save it as string(file) so it's consistent */
 		}
 		
-		//zip_destroy(z); /* Last thing you do is close the zip file creation */
-		
 		return file;
 		
 		#endregion /* Finally save the zip file END */
@@ -194,6 +192,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 	#region /* Character */
 	if (what_kind_of_file == "character")
 	{
+		
 		var z = zip_create();
 		var character_name = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
 		var file_name = ""; /* In case there is no file found, set the "file name" to nothing here */
@@ -246,28 +245,6 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		file_find_close();
 		#endregion /* Ogg files in sound folder END */
 		
-		#region /* Voicepack folders in sound folder */
-		var files = [];
-		var folder_name = "sound";
-		var file_name = file_find_first(string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/*", fa_directory);
-		if (file_name != "")
-		{
-			zip_add_file(z, string(character_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/" + string(file_name));
-		}
-		while (file_name != "")
-		{
-			array_push(files, file_name);
-			
-			file_name = file_find_next();
-			
-			if (file_name != "")
-			{
-				zip_add_file(z, string(character_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/" + string(file_name));
-			}
-		}
-		file_find_close();
-		#endregion /* Voicepack folders in sound folder END */
-		
 		#region /* Png files in sprites folder */
 		var files = [];
 		var folder_name = "sprites";
@@ -291,25 +268,63 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		file_find_close();
 		#endregion /* Png files in sprites folder END */
 		
+		#region /* Voicepack folders in sound folder */
+		var files = [];
+		var folder_name = "sound";
+		var voicepack_folder_number = 0;
+		var voicepack_folder_path = "";
+		var file_name = file_find_first(string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/voicepack" + string(voicepack_folder_number) + "/*", 0);
+		
+		while (file_name != "")
+		{
+			/* Save the path to the current voicepack folder */
+			voicepack_folder_path = string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/voicepack" + string(voicepack_folder_number) + "/";
+			
+			/* Process the current file */
+			zip_add_file(z, string(character_name) + "/" + string(folder_name) + "/voicepack" + string(voicepack_folder_number) + "/" + string(file_name), voicepack_folder_path + string(file_name));
+			array_push(files, file_name);
+			
+			/* Move to the next file */
+			file_name = file_find_next();
+			
+			/* If no more files found, try the next voicepack folder */
+			if (file_name == "")
+			{
+				voicepack_folder_number++;
+				file_name = file_find_first(string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/voicepack" + string(voicepack_folder_number) + "/*", 0);
+			}
+		}
+		
+		file_find_close();
+		#endregion /* Voicepack folders in sound folder END */
+		
 		#region /* Skin folders in sprites folder */
 		var files = [];
 		var folder_name = "sprites";
-		var file_name = file_find_first(string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/*", fa_directory);
-		if (file_name != "")
-		{
-			zip_add_file(z, string(character_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/" + string(file_name));
-		}
+		var skin_folder_number = 0;
+		var skin_folder_path = "";
+		var file_name = file_find_first(string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/skin" + string(skin_folder_number) + "/*", 0);
+		
 		while (file_name != "")
 		{
+			/* Save the path to the current skin folder */
+			skin_folder_path = string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/skin" + string(skin_folder_number) + "/";
+			
+			/* Process the current file */
+			zip_add_file(z, string(character_name) + "/" + string(folder_name) + "/skin" + string(skin_folder_number) + "/" + string(file_name), skin_folder_path + string(file_name));
 			array_push(files, file_name);
 			
+			/* Move to the next file */
 			file_name = file_find_next();
 			
-			if (file_name != "")
+			/* If no more files found, try the next skin folder */
+			if (file_name == "")
 			{
-				zip_add_file(z, string(character_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/" + string(file_name));
+				skin_folder_number++;
+				file_name = file_find_first(string(working_directory) + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/skin" + string(skin_folder_number) + "/*", 0);
 			}
 		}
+		
 		file_find_close();
 		#endregion /* Skin folders in sprites folder END */
 		
@@ -322,8 +337,6 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 			file = string(character_id) + ".zip"; /* Before closing the zip file creation, save the file to this variable. Save it as string(character_id) + ".zip" */
 			zip_save(z, string(file)); /* Save it as string(file) so it's consistent */
 		}
-		
-		//zip_destroy(z); /* Last thing you do is close the zip file creation */
 		
 		return file;
 		
