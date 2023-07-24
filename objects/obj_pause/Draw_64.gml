@@ -1,7 +1,7 @@
 var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
 
-#region /* Which player is controling the pause menu? */
+#region /* Which player is controlling the pause menu? */
 draw_set_alpha(fade_in_pause_alpha);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
@@ -146,25 +146,25 @@ if (hide_menu_for_clean_screenshots == false)
 		draw_set_valign(fa_middle);
 		if (global.pause_player == 0)
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 1 IS CONTROLING THE MENU", global.default_text_size, c_black, c_aqua, fade_in_pause_alpha);
+			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 1 IS CONTROLLING THE MENU", global.default_text_size, c_black, c_aqua, fade_in_pause_alpha);
 		}
 		else
 		if (global.pause_player == 1)
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 2 IS CONTROLING THE MENU", global.default_text_size, c_black, c_red, fade_in_pause_alpha);
+			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 2 IS CONTROLLING THE MENU", global.default_text_size, c_black, c_red, fade_in_pause_alpha);
 		}
 		else
 		if (global.pause_player = 2)
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 3 IS CONTROLING THE MENU", global.default_text_size, c_black, c_lime, fade_in_pause_alpha);
+			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 3 IS CONTROLLING THE MENU", global.default_text_size, c_black, c_lime, fade_in_pause_alpha);
 		}
 		else
 		if (global.pause_player = 3)
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 4 IS CONTROLING THE MENU", global.default_text_size, c_black, c_yellow, fade_in_pause_alpha);
+			scr_draw_text_outlined(get_window_width * 0.5, 32, "PLAYER 4 IS CONTROLLING THE MENU", global.default_text_size, c_black, c_yellow, fade_in_pause_alpha);
 		}
 	}
-	#endregion /* Which player is controling the pause menu? END */
+	#endregion /* Which player is controlling the pause menu? END */
 	
 	#region /* Pause Text blink effect */
 	if (pause_text_lerp <= 0)

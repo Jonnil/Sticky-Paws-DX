@@ -542,5 +542,3 @@ if (flying_back > 1)
 {
 	flying_back --;
 }
-
-scr_enemy_dying_offscreen();

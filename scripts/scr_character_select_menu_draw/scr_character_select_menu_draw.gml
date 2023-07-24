@@ -20,6 +20,7 @@ function scr_character_select_menu_draw()
 	if (menu == "select_character")
 	|| (menu == "back_from_character_select")
 	|| (menu == "manage_character")
+	|| (menu == "online_character_list")
 	|| (menu == "search_character_id")
 	|| (menu == "input_name_ok")
 	|| (menu == "input_name_cancel")
@@ -255,11 +256,13 @@ function scr_character_select_menu_draw()
 		var manage_characters_y = 42;
 		if (global.enable_manage_characters)
 		{
-			var draw_search_id_y = 42 * 2;
+			var draw_online_character_list_y = 42 * 2;
+			var draw_search_id_y = 42 * 3;
 		}
 		else
 		{
-			var draw_search_id_y = 42 * 1;
+			var draw_online_character_list_y = 42 * 1;
+			var draw_search_id_y = 42 * 2;
 		}
 		
 		#region /* Show Back key when you can go back to main menu */
@@ -277,15 +280,67 @@ function scr_character_select_menu_draw()
 		#region /* Manage Characters */
 		if (global.enable_manage_characters)
 		{
-			draw_menu_button(0, manage_characters_y, l10n_text("Manage Characters"), "manage_character", "click_copy_character");
-			if (key_a_pressed)
+			draw_menu_button(0, manage_characters_y, l10n_text("Manage Characters"), "manage_character", "manage_character");
+			if (menu == "manage_character")
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, manage_characters_y + 2, 370, manage_characters_y + 41))
+			&& (mouse_check_button_released(mb_left))
+			|| (key_a_pressed)
 			&& (menu == "manage_character")
 			{
+				if (global.sprite_select_player[1] < 0)
+				|| (global.sprite_select_player[1] == spr_noone)
+				{
+					global.sprite_select_player[1] = spr_noone;
+					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+				}
+				
 				menu = "click_copy_character";
 				menu_delay = 3;
 			}
 		}
 		#endregion /* Manage Characters END */
+		
+		#region /* Online Character List Button */
+		if (global.free_communication_available)
+		{
+			draw_menu_button(0, draw_online_character_list_y, l10n_text("Online Character List"), "online_character_list", "online_character_list");
+			
+			if (can_input_player1_name == false)
+			&& (can_input_player2_name == false)
+			&& (can_input_player3_name == false)
+			&& (can_input_player4_name == false)
+			&& (menu_delay == 0)
+			&& (open_sub_menu == false)
+			{
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_character_list_y + 2, 370, draw_online_character_list_y + 41))
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0)
+				|| (menu == "online_character_list")
+				&& (key_a_pressed)
+				&& (menu_delay == 0)
+				{
+					if (global.online_enabled)
+					{
+						/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
+						select_custom_level_menu_open = false;
+						content_type = "character"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+						selected_online_download_index = 1;
+						menu = "online_download_list_load";
+					}
+					else
+					{
+						content_type = "character"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
+						caution_online_takes_you_to = "online_download_list_load";
+						caution_online_takes_you_back_to = "online_character_list";
+						menu = "caution_online_proceed";
+						menu_delay = 3;
+					}
+				}
+			}
+		}
+		#endregion /* Online Character List Button END */
 		
 		#region /* Search Character ID Button */
 		if (global.free_communication_available)
@@ -319,6 +374,7 @@ function scr_character_select_menu_draw()
 			|| (gamepad_button_check_pressed(global.player4_slot, gp_face4))
 			|| (gamepad_button_check_pressed(4, gp_face4))
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_search_id_y + 2, 370, draw_search_id_y + 41))
+			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			{
 				if (global.online_enabled)
@@ -342,44 +398,44 @@ function scr_character_select_menu_draw()
 				}
 			}
 		}
-		if (menu == "search_level_id")
-		&& (key_up)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay <= 0)
-		{
-			menu_delay = 3;
-			can_navigate = true;
-			select_custom_level_menu_open = true;
-			if (global.free_communication_available)
-			{
-				menu = "online_level_list";
-			}
-			else
-			{
-				menu = "level_editor_play";
-				scroll_to = floor(global.select_level_index / row);
-			}
-			lerp_on = true;
-		}
-		if (menu == "search_level_id")
-		&& (key_down)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay <= 0)
-		&& (show_level_editor_corner_menu)
-		{
-			menu_delay = 3;
-			can_navigate = true;
-			select_custom_level_menu_open = true;
-			menu = "level_editor_play";
-			scroll_to = floor(global.select_level_index / row);
-			lerp_on = true;
-		}
-		if (menu == "search_level_id")
-		{
-			open_sub_menu = false;
-			show_level_editor_corner_menu = true;
-			scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
-		}
+		//if (menu == "search_level_id")
+		//&& (key_up)
+		//&& (menu_delay == 0)
+		//&& (menu_joystick_delay <= 0)
+		//{
+		//	menu_delay = 3;
+		//	can_navigate = true;
+		//	select_custom_level_menu_open = true;
+		//	if (global.free_communication_available)
+		//	{
+		//		menu = "online_level_list";
+		//	}
+		//	else
+		//	{
+		//		menu = "level_editor_play";
+		//		scroll_to = floor(global.select_level_index / row);
+		//	}
+		//	lerp_on = true;
+		//}
+		//if (menu == "search_level_id")
+		//&& (key_down)
+		//&& (menu_delay == 0)
+		//&& (menu_joystick_delay <= 0)
+		//&& (show_level_editor_corner_menu)
+		//{
+		//	menu_delay = 3;
+		//	can_navigate = true;
+		//	select_custom_level_menu_open = true;
+		//	menu = "level_editor_play";
+		//	scroll_to = floor(global.select_level_index / row);
+		//	lerp_on = true;
+		//}
+		//if (menu == "search_level_id")
+		//{
+		//	open_sub_menu = false;
+		//	show_level_editor_corner_menu = true;
+		//	scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
+		//}
 		#endregion /* Search Character ID Button END */
 		
 		#endregion /* All code before menu navigation code END */

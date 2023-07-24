@@ -2164,7 +2164,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.6.0.89",
+    "IDEVersion": "2023.6.0.92",
   },
   "resources": [
     {"id":{"name":"spr_player_stand","path":"sprites/spr_player_stand/spr_player_stand.yy",},},
@@ -2359,6 +2359,7 @@
     {"id":{"name":"spr_sign_crouch","path":"sprites/spr_sign_crouch/spr_sign_crouch.yy",},},
     {"id":{"name":"spr_icons_pen","path":"sprites/spr_icons_pen/spr_icons_pen.yy",},},
     {"id":{"name":"obj_cake","path":"objects/obj_cake/obj_cake.yy",},},
+    {"id":{"name":"scr_character_manage_copy","path":"scripts/scr_character_manage_copy/scr_character_manage_copy.yy",},},
     {"id":{"name":"snd_footstep_gravel_left","path":"sounds/snd_footstep_gravel_left/snd_footstep_gravel_left.yy",},},
     {"id":{"name":"spr_clipped_sock","path":"sprites/spr_clipped_sock/spr_clipped_sock.yy",},},
     {"id":{"name":"scr_player_move_dive","path":"scripts/scr_player_move_dive/scr_player_move_dive.yy",},},

@@ -18,9 +18,12 @@ arrow_xscale = 0;
 stuck_in_wall_counter = 0;
 sliding_along_ground = 0;
 can_die_from_spikes = false;
+can_turn_around_at_wall = false;
 give_rewards = true;
 gravity_direction = 270; /* Direction of the gravity */
 
 enemyvoice_defeated1 = snd_enemyvoice_defeated;
 enemyvoice_defeated2 = snd_enemyvoice_defeated2;
 enemyvoice_defeated3 = snd_enemyvoice_defeated3;
+
+on_ground = false;

@@ -31,12 +31,12 @@ if (die == false)
 				if (instance_exists(obj_camera))
 				&& (obj_camera.iris_xscale > 1)
 				{
-					effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
+					effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
 					effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-					effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
-					effect_create_above(ef_smoke, x - 16 - 8,bbox_bottom- 8, 0, c_white);
+					effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
+					effect_create_above(ef_smoke, x - 16 - 8, bbox_bottom- 8, 0, c_white);
 					effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
-					effect_create_above(ef_smoke, x + 16 + 8,bbox_bottom- 8, 0, c_white);
+					effect_create_above(ef_smoke, x + 16 + 8, bbox_bottom- 8, 0, c_white);
 				}
 			}
 			draw_xscale = 1.25;
@@ -67,6 +67,21 @@ if (die == false)
 		}
 	}
 	#endregion /* Kill enemy if it's inside the wall END */
+	
+	#region /* Turn around at wall */
+	if (can_turn_around_at_wall)
+	{
+		if (position_meeting(bbox_left - 1, y, obj_wall))
+		{
+			image_xscale = +1;
+		}
+		else
+		if (position_meeting(bbox_right + 1, y, obj_wall))
+		{
+			image_xscale = -1;
+		}
+	}
+	#endregion /* Turn around at wall END */
 	
 }
 #endregion /* Landing on solid object END */

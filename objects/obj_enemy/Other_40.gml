@@ -1,0 +1,1 @@
+scr_enemy_dying_offscreen();

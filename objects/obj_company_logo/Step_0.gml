@@ -358,7 +358,7 @@ if (can_navigate == false)
 					ds_list_add(global.all_loaded_characters, file_found);
 				}
 				
-				file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
+				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 			}
 		}
 		#endregion /* Load Characters END */
@@ -406,7 +406,7 @@ if (can_navigate == false)
 					ds_list_add(global.all_loaded_resource_pack, file_found)
 				}
 			
-				file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
+				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 			}
 		}
 		#endregion /* Load Resource Packs END */
@@ -415,7 +415,7 @@ if (can_navigate == false)
 		
 		#region /* Load Title Backgrounds */
 		if (file_load_timer > 1)
-		&& (load_ok = 2)
+		&& (load_ok == 2)
 		{
 			if (initialized_title_backgrounds == false)
 			{
@@ -435,7 +435,7 @@ if (can_navigate == false)
 					ds_list_add(global.all_loaded_title_backgrounds, file_found)
 				}
 			
-				file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
+				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 			}
 		}
 		#endregion /* Load Title Background END */
@@ -444,7 +444,7 @@ if (can_navigate == false)
 		
 		#region /* Load Title Logo */
 		if (file_load_timer > 1)
-		&& (load_ok = 3)
+		&& (load_ok == 3)
 		{
 			if (initialized_title_logos == false)
 			{
@@ -479,7 +479,7 @@ if (can_navigate == false)
 					ds_list_add(global.all_loaded_title_logos, file_found)
 				}
 			
-				file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
+				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 			}
 		}
 		#endregion /* Load Title Logo END */

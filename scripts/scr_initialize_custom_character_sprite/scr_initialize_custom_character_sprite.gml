@@ -23,7 +23,7 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 		/* Concatenate the sprite folder and name to create a full sprite path. */
 		var sprite_path = sprite_folders + sprite_names[i];
 		
-		/* Get the first sprite number in the specified path by using the "file_find_first" function */
+		/* Get the first sprite number in the specified path by using the "file find first" function */
 		/* and extract all the digits from it using the "string_digits" function */
 		var sprite_number = string_digits(file_find_first(sprite_path + "*.png", fa_none));
 		/* Convert the extracted sprite number to a string using the "string" function and concatenate it with the sprite path and file extension to form the full filename */

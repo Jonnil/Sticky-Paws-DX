@@ -1,6 +1,6 @@
 function scr_draw_online_download_list()
 {
-	if (menu = "online_download_list_load")
+	if (menu == "online_download_list_load")
 	{
 		draw_set_alpha(0.5);
 		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
@@ -70,12 +70,6 @@ function scr_draw_online_download_list()
 		{
 			if (menu_delay == 0)
 			{
-				global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
-				data = noone; /* Reset "data" so you can reload online download list next time you go to this menu */
-				automatically_search_for_id = false;
-				in_online_download_list_menu = false;
-				in_online_download_list_load_menu = false;
-				keyboard_string = "";
 				if (content_type == "level")
 				{
 					if (variable_instance_exists(self, "show_level_editor_corner_menu"))
@@ -86,10 +80,15 @@ function scr_draw_online_download_list()
 					select_custom_level_menu_open = true;
 				}
 				else
-				if (content_type == "character")
 				{
 					menu = "search_character_id";
 				}
+				global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
+				data = noone; /* Reset "data" so you can reload online download list next time you go to this menu */
+				automatically_search_for_id = false;
+				in_online_download_list_menu = false;
+				in_online_download_list_load_menu = false;
+				keyboard_string = "";
 				menu_delay = 3;
 				search_id = "";
 			}
@@ -97,7 +96,7 @@ function scr_draw_online_download_list()
 		#endregion /* Pressing the Back button END*/
 		
 		#region /* Pressing the Search ID button */
-		if (menu = "download_online_search_id")
+		if (menu == "download_online_search_id")
 		&& (key_a_pressed)
 		|| (menu == "download_online_search_id")
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42, 370, 42 + 42))
@@ -427,4 +426,39 @@ function scr_draw_online_download_list()
 		#endregion /* Draw the Back and Search ID buttons on top of everything END */
 		
 	}
+	else
+	
+	#region /* If you are no longer in "online download list menu", but somehow still in a menu selection only appearing in this menu, force you out of the menu */
+	if (in_online_download_list_menu == false)
+	{
+		if (menu == "download_online_back")
+		|| (menu == "download_online_search_id")
+		|| (menu == "download_online_1")
+		|| (menu == "download_online_" + string(selected_online_download_index))
+		{
+			if (content_type == "level")
+			{
+				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+				{
+					show_level_editor_corner_menu = true;
+				}
+				menu = "online_download_list";
+				select_custom_level_menu_open = true;
+			}
+			else
+			{
+				menu = "search_character_id";
+			}
+			global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
+			data = noone; /* Reset "data" so you can reload online download list next time you go to this menu */
+			automatically_search_for_id = false;
+			in_online_download_list_menu = false;
+			in_online_download_list_load_menu = false;
+			keyboard_string = "";
+			menu_delay = 3;
+			search_id = "";
+		}
+	}
+	#endregion /* If you are no longer in "online download list menu", but somehow still in a menu selection only appearing in this menu, force you out of the menu END */
+	
 }

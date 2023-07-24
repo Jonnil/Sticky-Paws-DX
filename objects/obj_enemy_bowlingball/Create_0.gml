@@ -16,10 +16,12 @@ stuck_in_wall_counter = 0;
 coil_spring = false;
 blind = false;
 can_die_from_spikes = true;
+can_turn_around_at_wall = false;
 give_rewards = true;
 enemyvoice_defeated1 = snd_enemyvoice_defeated;
 enemyvoice_defeated2 = snd_enemyvoice_defeated2;
 enemyvoice_defeated3 = snd_enemyvoice_defeated3;
+on_ground = false;
 
 mask_index = spr_small_mask;
 

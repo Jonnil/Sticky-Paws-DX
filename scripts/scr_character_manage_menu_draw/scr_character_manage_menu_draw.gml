@@ -103,7 +103,7 @@ function scr_character_manage_menu_draw()
 	
 		#endregion /* Left and Right Keys END */
 		
-		scr_draw_text_outlined(get_window_width * 0.5, 128, l10n_text("Manage Characters"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, 48, l10n_text("Manage Characters"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 		
 		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
 		{
@@ -249,9 +249,9 @@ function scr_character_manage_menu_draw()
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			draw_sprite_ext(spr_loading, 0, get_window_width * 0.5, get_window_height - 32 - (32 * 6), 1, 1, global.loading_spinning_angle, c_white, 1);
-			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32 - (32 * 5), l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
-			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32 - (32 * 4), string(file_found), global.default_text_size, c_white, c_black, 1);
+			
+			scr_draw_loading(1, get_window_width * 0.5, get_window_height - 32 - (32 * 5));
+			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32 - (32 * 3), string(file_found), global.default_text_size, c_white, c_black, 1);
 		}
 	}
 	

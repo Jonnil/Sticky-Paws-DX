@@ -97,6 +97,7 @@ selected_skin = 0;
 background_layer_x = 0;
 background_layer_y = 0;
 
+copied_character_name = ""; /* When you have copied a character, get the name for later use */
 downloaded_thumbnail_sprite = noone; /* When downloading a level, you want to show a thumbnail temporarely */
 level_editor_edit_name = false; /* If you are editing an already made level's name or not */
 old_level_name = ""; /* Need to remember original name of level, so that renaming level doesn't actually happen if you haven't edited the name */

@@ -82,6 +82,7 @@ function scr_draw_caution_online()
 		
 		if (key_up)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			if (menu == "caution_online_back")
 			{
@@ -101,6 +102,7 @@ function scr_draw_caution_online()
 		}
 		if (key_down)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			if (menu == "caution_online_back")
 			{

@@ -337,8 +337,8 @@ function scr_debug_screen()
 		if (variable_instance_exists(self, "menu"))
 		{
 			scr_draw_text_outlined(32, debug_text_y, "menu: " + string(menu), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
 		}
-		debug_text_y += 20;
 		if (variable_instance_exists(self, "menu_delay"))
 		{
 			if (menu_delay == 0)
@@ -349,14 +349,23 @@ function scr_debug_screen()
 			{
 				scr_draw_text_outlined(32, debug_text_y, "menu_delay: " + string(menu_delay), global.default_text_size, c_black, c_red);
 			}
+			debug_text_y += 20;
 		}
-		debug_text_y += 20;
+		if (variable_instance_exists(self, "menu_joystick_delay"))
+		&& (gamepad_is_connected(0))
+		{
+			if (menu_joystick_delay == 0)
+			{
+				scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_white);
+			}
+			else
+			{
+				scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_red);
+			}
+			debug_text_y += 20;
+		}
 		scr_draw_text_outlined(32, debug_text_y, "online_enabled: " + string(global.online_enabled), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
-		if (variable_instance_exists(self, "file_found"))
-		{
-			scr_draw_text_outlined(32, debug_text_y, "file_found: " + string(file_found), global.default_text_size, c_black, c_white);
-		}
 		
 		/* Draw the name of the current room at the bottom middle of the screen */
 		draw_set_halign(fa_center);

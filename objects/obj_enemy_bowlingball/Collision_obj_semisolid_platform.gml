@@ -22,12 +22,12 @@ if (die_volting == false)
 			if (instance_exists(obj_camera))
 			&& (obj_camera.iris_xscale > 1)
 			{
-				effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
+				effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
 				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-				effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
-				effect_create_above(ef_smoke, x - 16 - 8,bbox_bottom- 8, 0, c_white);
+				effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
+				effect_create_above(ef_smoke, x - 16 - 8, bbox_bottom- 8, 0, c_white);
 				effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
-				effect_create_above(ef_smoke, x + 16 + 8,bbox_bottom- 8, 0, c_white);
+				effect_create_above(ef_smoke, x + 16 + 8, bbox_bottom- 8, 0, c_white);
 			}
 		}
 		vspeed = 0;

@@ -118,6 +118,48 @@ function scr_draw_report()
 		}
 		#endregion /* Click back to custom level select END */
 		
+		if (key_up)
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			if (menu == "report_complete_delete")
+			{
+				menu = "report_complete_back_to_select";
+			}
+			else
+			if (menu == "report_complete_back_to_online_list")
+			{
+				menu = "report_complete_delete";
+			}
+			else
+			if (menu == "report_complete_back_to_select")
+			{
+				menu = "report_complete_back_to_online_list";
+			}
+		}
+		else
+		if (key_down)
+		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			if (menu == "report_complete_delete")
+			{
+				menu = "report_complete_back_to_online_list";
+			}
+			else
+			if (menu == "report_complete_back_to_online_list")
+			{
+				menu = "report_complete_back_to_select";
+			}
+			else
+			if (menu == "report_complete_back_to_select")
+			{
+				menu = "report_complete_delete";
+			}
+		}
+		
 	}
 	#endregion /* Report Complete END */
 	
@@ -175,8 +217,10 @@ function scr_draw_report()
 		
 		if (key_up)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		|| (key_down)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			if (menu == "report_back")
 			{
@@ -415,6 +459,7 @@ function scr_draw_report()
 		
 		if (key_up)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			if (menu == "report_reason_back")
@@ -476,6 +521,7 @@ function scr_draw_report()
 		else
 		if (key_down)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			if (menu == "report_reason_back")
@@ -670,8 +716,10 @@ function scr_draw_report()
 		
 		if (key_up)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		|| (key_down)
 		&& (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			if (menu == "report_send_back")

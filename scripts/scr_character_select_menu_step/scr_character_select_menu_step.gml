@@ -108,6 +108,7 @@ function scr_character_select_menu_step()
 	if (menu == "select_character")
 	|| (menu == "back_from_character_select")
 	|| (menu == "manage_character")
+	|| (menu == "online_character_list")
 	|| (menu == "search_character_id")
 	|| (menu == "input_name_ok")
 	|| (menu == "input_name_cancel")
@@ -121,6 +122,7 @@ function scr_character_select_menu_step()
 		&& (player1_key_a_pressed)
 		&& (player_menu[1] != "back_from_character_select")
 		&& (player_menu[1] != "manage_character")
+		&& (player_menu[1] != "online_character_list")
 		&& (player_menu[1] != "search_character_id")
 		
 		|| (player1_accept_selection == -1)
@@ -311,7 +313,7 @@ function scr_character_select_menu_step()
 				&& (menu_joystick_delay <= 0)
 				{
 					if (global.enable_manage_characters)
-					&& (menu == "manage_character") /* Copy Character */
+					&& (menu == "manage_character") /* Manage Character */
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -319,10 +321,8 @@ function scr_character_select_menu_step()
 						menu = "back_from_character_select";
 					}
 					else
-					if (menu == "search_character_id") /* Search Character ID */
+					if (menu == "online_character_list") /* Online Character List */
 					{
-						menu_delay = 3;
-						can_navigate = true;
 						if (global.enable_manage_characters)
 						{
 							player_menu[1] = "manage_character";
@@ -333,6 +333,14 @@ function scr_character_select_menu_step()
 							player_menu[1] = "back_from_character_select";
 							menu = "back_from_character_select";
 						}
+					}
+					else
+					if (menu == "search_character_id") /* Search Character ID */
+					{
+						menu_delay = 3;
+						can_navigate = true;
+						player_menu[1] = "online_character_list";
+						menu = "online_character_list";
 					}
 				}
 			}
@@ -367,6 +375,22 @@ function scr_character_select_menu_step()
 					else
 					if (global.enable_manage_characters)
 					&& (menu == "manage_character") /* Manage Characters */
+					{
+						menu_delay = 3;
+						can_navigate = true;
+						if (global.free_communication_available)
+						{
+							player_menu[1] = "online_character_list";
+							menu = "online_character_list";
+						}
+						else
+						{
+							player_menu[1] = "select_character";
+							menu = "select_character";
+						}
+					}
+					else
+					if (menu == "online_character_list") /* Online Character List */
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -1105,6 +1129,8 @@ function scr_character_select_menu_step()
 					&& (player_menu[1] != "back_from_character_select")
 					&& (menu != "manage_character")
 					&& (player_menu[1] != "manage_character")
+					&& (menu != "online_character_list")
+					&& (player_menu[1] != "online_character_list")
 					&& (menu != "search_character_id")
 					&& (player_menu[1] != "search_character_id")
 					{

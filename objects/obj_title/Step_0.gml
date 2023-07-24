@@ -58,6 +58,7 @@ if (lerp_on)
 }
 
 if (menu == "load_characters")
+and (menu_delay == 0)
 {
 	
 	#region /* Player Automatically Join */
@@ -93,7 +94,7 @@ if (menu == "load_characters")
 	
 	if (file_load_timer > 1)
 	{
-		file_found = file_find_next()
+		file_found = file_find_next();
 		
 		if (file_found == "")
 		{
@@ -101,18 +102,21 @@ if (menu == "load_characters")
 			
 			if (player_menu[1] == "click_copy_character")
 			{
-				with(instance_create_depth(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 0, obj_score_up))
-				{
-					score_up = "Copied"; /* Show that you have copied the character */
-				}
 				
 				#region /* After copying character, show the copied character */
-				global.character_index[0] = ds_list_find_index(global.all_loaded_characters, ds_list_find_value(global.all_loaded_characters, global.character_index[0]) + " - Copy");
-				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
-				xx[1] = player_display_x[1] + 32;
+				global.character_index[0] = ds_list_find_index(global.all_loaded_characters, copied_character_name);
+				global.character_for_player[1] = ds_list_find_index(global.all_loaded_characters, global.character_index[0]);
 				#endregion /* After copying character, show the copied character END */
 				
+				#region /* Player 1 character select portrait sprite */
+				global.skin_for_player[1] = global.actual_skin_for_player[1]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
+				global.sprite_select_player[1] = spr_noone;
+				global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1], copied_character_name);
+				global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1], copied_character_name);
+				#endregion /* Player 1 character select portrait sprite END */
+				
 				menu = "click_copy_character";
+				player_menu[1] = "click_copy_character";
 			}
 			else
 			if (player_menu[1] == "click_delete_character")
@@ -150,7 +154,7 @@ if (menu == "load_characters")
 				ds_list_add(global.all_loaded_characters, file_found);
 			}
 			
-			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
+			file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 		}
 	}
 }
@@ -288,7 +292,7 @@ if (menu == "load_custom_level")
 				
 			}
 			
-			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
+			file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 		}
 	}
 }
@@ -400,7 +404,7 @@ if (menu == "load_official_level_template")
 			}
 			#endregion /* Update Thumbnail END */
 			
-			file_load_timer = 0; /* 0 not 1. So it doesn't do the file_find_first code which it does at 1 */
+			file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 		}
 	}
 }

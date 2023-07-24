@@ -3,6 +3,18 @@ if (stomped_delay > 0)
 	stomped_delay --;
 }
 
+if (place_meeting(x, y + 1, obj_wall))
+|| (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+|| (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+|| (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+{
+	on_ground = true;
+}
+else
+{
+	on_ground = false;
+}
+
 #region /* If enemies are disabled, destroy this object */
 if (global.assist_enable)
 && (global.assist_enable_enemies == false)
@@ -11,11 +23,11 @@ if (global.assist_enable)
 }
 #endregion /* If enemies are disabled, destroy this object END */
 
-if (die_volting = - 1)
+if (die_volting = -1)
 || (die_volting = +1)
 {
 	depth = -900;
-	if (die_volting = - 1)
+	if (die_volting = -1)
 	{
 		image_angle -= 20;
 		hspeed = +4;
@@ -25,10 +37,9 @@ if (die_volting = - 1)
 		image_angle += 20;
 		hspeed = -4;
 	}
-	#region /* Set the gravity */
+	
 	gravity_direction = 270; /* Direction of the gravity */
 	gravity = 0.5; /* The gravity */
-	#endregion /* Set the gravity END */
 	
 }
 else
@@ -36,10 +47,7 @@ else
 	
 	#region /* Set the gravity */
 	gravity_direction = 270; /* Direction of the gravity */
-	if (!place_meeting(x, y + 1, obj_wall))
-	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (!on_ground)
 	&& (x - 32 < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	&& (x + 32 > camera_get_view_x(view_camera[view_current]))
 	{
@@ -105,21 +113,10 @@ if (flat == false)
 	}
 }
 
-#region /* Turn around */
-if (position_meeting(bbox_left - 1, y, obj_wall))
-{
-	image_xscale = +1;
-}
-if (position_meeting(bbox_right + 1, y, obj_wall))
-{
-	image_xscale = -1;
-}
-#endregion /* Turn around END */
-
+#region /* Turn around at pit */
 if (blind == false)
-&& (place_meeting(x, y + 1, obj_wall))
-|| (blind == false)
-&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+&& (coil_spring == false)
+&& (on_ground)
 {
 	if (!place_meeting(x + 5, y + 1, obj_wall))
 	&& (!position_meeting(x + 5, bbox_bottom + 1, obj_semisolid_platform))
@@ -133,33 +130,24 @@ if (blind == false)
 		image_xscale = +1;
 	}
 }
+#endregion /* Turn around at pit END */
 
 #region /* Coil spring bouncing code */
 if (coil_spring)
 && (die == false)
-&& (place_meeting(x, y + 1, obj_wall))
-|| (coil_spring)
-&& (die == false)
-&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+&& (on_ground)
 {
-	if (instance_exists(obj_foreground_secret))
-	&& (place_meeting(x, y, obj_foreground_secret))
-	&& (obj_foreground_secret.image_alpha < 0.5)
-	|| (instance_exists(obj_foreground_secret))
-	&& (!place_meeting(x, y, obj_foreground_secret))
+	if (instance_exists(obj_camera))
+	&& (obj_camera.iris_xscale > 1)
 	{
-		if (instance_exists(obj_camera))
-		&& (obj_camera.iris_xscale > 1)
-		{
-			effect_create_above(ef_smoke, x - 16,bbox_bottom, 0, c_white);
-			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-			effect_create_above(ef_smoke, x + 16,bbox_bottom, 0, c_white);
-			effect_create_above(ef_smoke, x - 16 - 8,bbox_bottom- 8, 0, c_white);
-			effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
-			effect_create_above(ef_smoke, x + 16 + 8,bbox_bottom- 8, 0, c_white);
-		}
-		scr_audio_play(snd_spring, volume_source.sound, 0.1);
+		effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
+		effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+		effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
+		effect_create_above(ef_smoke, x - 16 - 8, bbox_bottom- 8, 0, c_white);
+		effect_create_above(ef_smoke, x, bbox_bottom- 8, 0, c_white);
+		effect_create_above(ef_smoke, x + 16 + 8, bbox_bottom- 8, 0, c_white);
 	}
+	scr_audio_play(snd_spring, volume_source.sound, 0.1);
 	vspeed = -15;
 	gravity = 0;
 	draw_xscale = 1.25;
@@ -188,5 +176,3 @@ else
 	}
 }
 #endregion /* Kill enemy if it's inside the wall END */
-
-scr_enemy_dying_offscreen();

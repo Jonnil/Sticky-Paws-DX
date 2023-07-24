@@ -215,6 +215,7 @@
     {"name":"spr_sign_crouch","order":24,"path":"sprites/spr_sign_crouch/spr_sign_crouch.yy",},
     {"name":"spr_icons_pen","order":23,"path":"sprites/spr_icons_pen/spr_icons_pen.yy",},
     {"name":"obj_cake","order":7,"path":"objects/obj_cake/obj_cake.yy",},
+    {"name":"scr_character_manage_copy","order":26,"path":"scripts/scr_character_manage_copy/scr_character_manage_copy.yy",},
     {"name":"snd_footstep_gravel_left","order":46,"path":"sounds/snd_footstep_gravel_left/snd_footstep_gravel_left.yy",},
     {"name":"spr_clipped_sock","order":14,"path":"sprites/spr_clipped_sock/spr_clipped_sock.yy",},
     {"name":"scr_player_move_dive","order":16,"path":"scripts/scr_player_move_dive/scr_player_move_dive.yy",},

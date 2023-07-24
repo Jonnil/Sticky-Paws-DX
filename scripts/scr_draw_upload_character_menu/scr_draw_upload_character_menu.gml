@@ -174,6 +174,7 @@ function scr_draw_upload_character_menu()
 		}
 		if (key_up)
 		and (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "upload_no_character";
@@ -181,6 +182,7 @@ function scr_draw_upload_character_menu()
 		else
 		if (key_down)
 		and (menu_delay == 0)
+		&& (menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "upload_yes_character";
