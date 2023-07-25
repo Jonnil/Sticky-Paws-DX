@@ -20,3 +20,11 @@ sprite_used = "stand";
 stuck_in_wall_counter = 0;
 sliding_along_ground = 0;
 on_ground = false;
+
+#region /* If enemies are disabled, destroy this object */
+if (global.assist_enable)
+&& (global.assist_enable_enemies == false)
+{
+	instance_destroy();
+}
+#endregion /* If enemies are disabled, destroy this object END */

@@ -37,3 +37,11 @@ else
 	if (global.resource_pack_sprite_enemy_bowlingball_walk > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_walk;}else
 	if (global.resource_pack_sprite_enemy_bowlingball_blind_walk > noone){sprite_index = global.resource_pack_sprite_enemy_bowlingball_blind_walk;}
 }
+
+#region /* If enemies are disabled, destroy this object */
+if (global.assist_enable)
+&& (global.assist_enable_enemies == false)
+{
+	instance_destroy();
+}
+#endregion /* If enemies are disabled, destroy this object END */

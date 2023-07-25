@@ -77,11 +77,12 @@ if (have_heart_balloon)
 }
 
 if (have_heart_balloon == false)
-&& (instance_exists(obj_heart_balloon))
-&& (distance_to_object(obj_heart_balloon) < 32)
 {
-	xx_heart = lerp(xx_heart, instance_nearest(x, y, obj_heart_balloon).x, 1);
-	yy_heart = lerp(yy_heart, instance_nearest(x, y, obj_heart_balloon).y, 1);
+	if (instance_exists(obj_heart_balloon))
+	{
+		xx_heart = instance_nearest(x, y, obj_heart_balloon).x;
+		yy_heart = instance_nearest(x, y, obj_heart_balloon).y;
+	}
 }
 else
 {

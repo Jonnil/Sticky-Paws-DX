@@ -1,7 +1,7 @@
 if (global.actually_play_edited_level == false)
 {
 	if (place_meeting(x, y, obj_leveleditor_placed_object))
-	&& (instance_nearest(x, y, obj_leveleditor_placed_object).draw_rotate_arrow == true)
+	&& (instance_nearest(x, y, obj_leveleditor_placed_object).draw_rotate_arrow)
 	{
 		var draw_rotate_arrow_scale = scr_wave(0.5, 0.4, 0.5, 0);
 		switch(instance_nearest(x, y, obj_leveleditor_placed_object).object)

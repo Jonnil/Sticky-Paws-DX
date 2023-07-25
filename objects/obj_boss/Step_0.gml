@@ -25,11 +25,6 @@ if (instance_exists(obj_player) && distance_to_object(obj_player) < 500 && !coll
 	has_seen_player = true; /* Only see player if player is close and in line of sight */
 }
 
-if (global.assist_enable && !global.assist_enable_enemies)
-{
-	instance_destroy();
-}
-
 #region /* Set the gravity */
 var view_x = camera_get_view_x(view_camera[view_current]);
 var view_y = camera_get_view_y(view_camera[view_current]);

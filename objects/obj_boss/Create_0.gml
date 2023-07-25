@@ -27,3 +27,11 @@ enemyvoice_defeated2 = snd_enemyvoice_defeated2;
 enemyvoice_defeated3 = snd_enemyvoice_defeated3;
 
 on_ground = false;
+
+#region /* If enemies are disabled, destroy this object */
+if (global.assist_enable)
+&& (global.assist_enable_enemies == false)
+{
+	instance_destroy();
+}
+#endregion /* If enemies are disabled, destroy this object END */

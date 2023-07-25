@@ -17,3 +17,11 @@ can_die_from_spikes = true;
 can_turn_around_at_wall = true;
 give_rewards = true;
 on_ground = false;
+
+#region /* If enemies are disabled, destroy this object */
+if (global.assist_enable)
+&& (global.assist_enable_enemies == false)
+{
+	instance_destroy();
+}
+#endregion /* If enemies are disabled, destroy this object END */

@@ -232,6 +232,7 @@ else
 {
 	global.gui_scale_modifier = 3;
 }
+global.collectible_image_index = 0; /* Make all collectibles animate in sync */
 global.online_enabled = false;
 global.report_reason = "";
 global.report_comment = "";

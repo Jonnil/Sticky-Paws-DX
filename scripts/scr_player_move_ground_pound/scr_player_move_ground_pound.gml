@@ -2,10 +2,10 @@ function scr_player_move_ground_pound()
 {
 	
 	#region /* Ground Pound */
-	if (allow_ground_pound == true)
-	&& (can_move == true)
+	if (allow_ground_pound)
+	&& (can_move)
 	&& (global.pause == false)
-	&& (can_ground_pound == true)
+	&& (can_ground_pound)
 	&& (taken_damage <= taken_damage_freezetime)
 	&& (dive == false)
 	&& (burnt == false)
@@ -15,8 +15,8 @@ function scr_player_move_ground_pound()
 	&& (horizontal_rope_climb == false)
 	{
 		if (key_crouch_pressed)
-		&& (joystick_can_ground_pound == true)
-		|| (down_and_jump_to_groundpound == true)
+		&& (joystick_can_ground_pound)
+		|| (down_and_jump_to_groundpound)
 		&& (key_down)
 		&& (key_jump)
 		{
@@ -59,7 +59,7 @@ function scr_player_move_ground_pound()
 				}
 			}
 		}
-		if (ground_pound == true)
+		if (ground_pound)
 		{
 			if (ground_pound_cooldown > 0)
 			&& (!key_crouch_hold)
@@ -138,7 +138,7 @@ function scr_player_move_ground_pound()
 			{
 				speed_max = 0;
 				hspeed = 0;
-				if (allow_ground_pound_jump == true)
+				if (allow_ground_pound_jump)
 				&& (key_jump_hold)
 				{
 					can_ground_pound = true;
@@ -209,13 +209,13 @@ function scr_player_move_ground_pound()
 	#endregion /* You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true END */
 
 	#region /* You must have this code after the previous code otherwise the joystick_can_ground_pound is always set to true */
-	if (joystick_can_ground_pound == true)
+	if (joystick_can_ground_pound)
 	&& (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
 	&& (player <= 1)
-	|| (joystick_can_ground_pound == true)
+	|| (joystick_can_ground_pound)
 	&& (gamepad_axis_value(global.player2_slot, gp_axislv) > 0)
 	&& (player <= 2)
-	|| (joystick_can_ground_pound == true)
+	|| (joystick_can_ground_pound)
 	&& (gamepad_axis_value(global.player3_slot, gp_axislv) > 0)
 	&& (player <= 3)
 	|| (joystick_can_ground_pound = true)

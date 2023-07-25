@@ -1,14 +1,6 @@
 /* Step Event */
 depth = -bbox_bottom* 0.1;
 
-#region /* If enemies are disabled, destroy this object */
-if (global.assist_enable)
-&& (global.assist_enable_enemies == false)
-{
-	instance_destroy();
-}
-#endregion /* If enemies are disabled, destroy this object END */
-
 if die_volting = -1 or die_volting = +1
 {
 	if die_volting = -1

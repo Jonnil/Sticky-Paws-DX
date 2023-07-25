@@ -23,3 +23,8 @@ mask_index = spr_small_mask;
 sprite_used = "stand";
 stuck_in_wall_counter = 0;
 on_ground = false;
+
+if (global.assist_enable && !global.assist_enable_enemies)
+{
+    instance_destroy();
+}

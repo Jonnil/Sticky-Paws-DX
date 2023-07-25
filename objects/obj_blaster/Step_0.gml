@@ -16,14 +16,14 @@ if (vspeed >= 16)
 }
 #endregion /* Gravity END */
 
-#region /* Stop firing if enemies are disabled */
+#region /* Stop firing if enemies are disabled, or you have finished the level */
 if (global.assist_enable)
 && (global.assist_enable_enemies == false)
 || (global.goal_active)
 {
 	time = 0;
 }
-#endregion /* Stop firing if enemies are disabled END */
+#endregion /* Stop firing if enemies are disabled, or you have finished the level END */
 
 if (!place_meeting(x - 8, y, obj_player))
 && (!place_meeting(x + 8, y, obj_player))

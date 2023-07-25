@@ -1,9 +1,6 @@
 if (bounce_up == false)
 {
-	if (instance_exists(obj_camera))
-	{
-		image_index = obj_camera.image_index;
-	}
+	image_index = global.collectible_image_index;
 }
 if (bounce_up == false)
 && (instance_exists(obj_player))

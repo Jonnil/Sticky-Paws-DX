@@ -5,6 +5,7 @@ scr_toggle_fullscreen();
 scr_deactivate_objects_outside_view();
 
 var get_room_speed = room_speed;
+global.collectible_image_index = image_index;
 
 if (menu_delay > 0)
 {
