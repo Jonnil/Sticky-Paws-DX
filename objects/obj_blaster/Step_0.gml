@@ -1,7 +1,6 @@
 #region /* Gravity */
 if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 && (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-&& (stop_gravity == false)
 {
 	gravity = 0.5;
 }
@@ -20,6 +19,7 @@ if (vspeed >= 16)
 #region /* Stop firing if enemies are disabled */
 if (global.assist_enable)
 && (global.assist_enable_enemies == false)
+|| (global.goal_active)
 {
 	time = 0;
 }

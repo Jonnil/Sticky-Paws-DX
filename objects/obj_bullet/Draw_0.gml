@@ -84,27 +84,3 @@ if (instance_exists(obj_camera))
 draw_xscale = lerp(draw_xscale, 1, 0.05);
 draw_yscale = lerp(draw_yscale, 1, 0.05);
 draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * sign(image_xscale), draw_yscale, image_angle, image_blend, image_alpha);
-
-#region /* Kill enemy if it's inside the wall */
-if (draw_xscale >= 0.8)
-{
-	if (position_meeting(bbox_left, y, obj_wall))
-	&& (hspeed <= 0)
-	|| (position_meeting(bbox_right, y, obj_wall))
-	&& (hspeed >= 0)
-	{
-		stuck_in_wall_counter ++;
-		if (stuck_in_wall_counter >= 3)
-		{
-			flat = false;
-			die = true;
-			die_volting = true;
-		}
-	}
-	else
-	if (stuck_in_wall_counter > 0)
-	{
-		stuck_in_wall_counter --;
-	}
-}
-#endregion /* Kill enemy if it's inside the wall END */

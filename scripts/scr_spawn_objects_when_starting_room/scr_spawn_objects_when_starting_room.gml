@@ -12,7 +12,8 @@ function scr_spawn_objects_when_starting_room()
 		|| (global.difficulty >= 2)
 		&& (hard)
 		{
-			switch (object) {
+			switch (object)
+			{
 			    case LEVEL_OBJECT_ID.ID_WALL:
 			        instance_create_depth(x, y, 0, obj_ground);
 			        break;

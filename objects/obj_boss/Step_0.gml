@@ -505,26 +505,6 @@ if (taken_damage == 50)
 	scr_audio_play(snd_boss_invulnerable, volume_source.sound);
 }
 
-#region /* Kill enemy if it's inside the wall */
-if (position_meeting(x, y, obj_wall))
-&& (die == false)
-&& (draw_xscale >= 0.8)
-{
-	stuck_in_wall_counter ++;
-	if (stuck_in_wall_counter >= 3)
-	{
-		flat = false;
-		die = true;
-		die_volting = true;
-	}
-}
-else
-if (stuck_in_wall_counter > 0)
-{
-	stuck_in_wall_counter --;
-}
-#endregion /* Kill enemy if it's inside the wall END */
-
 if (flying_back > 2)
 {
 	if (hspeed < 0)
