@@ -59,50 +59,22 @@ function scr_player_move_customizable_controls()
 	{
 		if (player <= 1)
 		{
-			if (global.player1_crouch_toggle == false)
-			{
-				global.player1_crouch_toggle = true;
-			}
-			else
-			{
-				global.player1_crouch_toggle = false;
-			}
+			global.player1_crouch_toggle = !global.player1_crouch_toggle;
 		}
 		else
 		if (player == 2)
 		{
-			if (global.player2_crouch_toggle == false)
-			{
-				global.player2_crouch_toggle = true;
-			}
-			else
-			{
-				global.player2_crouch_toggle = false;
-			}
+			global.player2_crouch_toggle = !global.player2_crouch_toggle;
 		}
 		else
 		if (player == 3)
 		{
-			if (global.player3_crouch_toggle == false)
-			{
-				global.player3_crouch_toggle = true;
-			}
-			else
-			{
-				global.player3_crouch_toggle = false;
-			}
+			global.player3_crouch_toggle = !global.player3_crouch_toggle;
 		}
 		else
 		if (player == 4)
 		{
-			if (global.player4_crouch_toggle == false)
-			{
-				global.player4_crouch_toggle = true;
-			}
-			else
-			{
-				global.player4_crouch_toggle = false;
-			}
+			global.player4_crouch_toggle = !global.player4_crouch_toggle;
 		}
 	}
 	#endregion /* Crouch Toggling END */

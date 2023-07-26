@@ -1,134 +1,72 @@
+/* Script functions */
 scr_set_screen_size();
 scr_set_controls_used_to_navigate();
 scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_deactivate_objects_outside_view();
-
-var get_room_speed = room_speed;
-global.collectible_image_index = image_index;
-
-if (menu_delay > 0)
-{
-	menu_delay --;
-}
-
 scr_make_background_visible();
 
-#region /* Timer Countup */
-if (instance_exists(obj_goal))
-&& (obj_goal.goal == false)
-&& (instance_exists(obj_player))
-&& (obj_player.allow_timeattack)
-&& (global.pause == false)
-{
-	if (instance_exists(obj_player))
-	{
-		global.timeattack_millisecond ++;
-	}
+var get_room_speed = room_speed;
 
-	global.timeattack_realmillisecond ++;
-	if (global.timeattack_millisecond > 60)
-	{
-		global.timeattack_millisecond = 0;
-		global.timeattack_second ++;
-	}
-	if (global.timeattack_second > 59)
-	{
-		global.timeattack_millisecond = 0;
-		global.timeattack_second = 0;
-		global.timeattack_minute ++;
-	}
+/* Timer Countup */
+if (instance_exists(obj_goal) && !obj_goal.goal && instance_exists(obj_player) && obj_player.allow_timeattack && !global.pause) {
+    global.timeattack_millisecond++;
+    global.timeattack_realmillisecond++;
+    if (global.timeattack_millisecond > 60) {
+        global.timeattack_millisecond = 0;
+        global.timeattack_second++;
+        if (global.timeattack_second > 59) {
+            global.timeattack_second = 0;
+            global.timeattack_minute++;
+        }
+    }
 }
-else
-if (global.pause == false)
-{
-	if (instance_exists(obj_goal))
-	&& (obj_goal.goal == false)
-	|| (!instance_exists(obj_goal))
-	{
-		if (instance_exists(obj_player))
-		&& (obj_player.allow_timeattack)
-		{
-			if (instance_exists(obj_player))
-			{
-				global.timeattack_millisecond ++;
-			}
-			global.timeattack_realmillisecond ++;
-			if (global.timeattack_millisecond > 60)
-			{
-				global.timeattack_millisecond = 0;
-				global.timeattack_second ++;
-			}
-			if (global.timeattack_second > 59)
-			{
-				global.timeattack_millisecond = 0;
-				global.timeattack_second = 0;
-				global.timeattack_minute ++;
-			}
-		}
-	}
-}
-#endregion /* Timer Countup */
-
-#region /* Time Countdown */
-if (instance_exists(obj_player))
-&& (global.pause == false)
-{
-	if (instance_exists(obj_goal))
-	&& (obj_goal.goal == false)
-	|| (!instance_exists(obj_goal))
-	{
-		time_second ++;
-		if (time_second > get_room_speed)
-		{
-			time_second = 0;
-			global.time_countdown_bonus --;
-			if (obj_player.allow_timeup)
-			&& (global.enable_time_countdown)
-			{
-				global.time_countdown --;
-			}
-		}
-	}
-}
-#endregion /* Time Countdown END */
-
-global.spikes_emerge_time ++;
-if (global.spikes_emerge_time >= get_room_speed * 4)
-{
-	global.spikes_emerge_time = 0;
+else if (!global.pause) {
+    if ((!instance_exists(obj_goal) || !obj_goal.goal) && instance_exists(obj_player) && obj_player.allow_timeattack) {
+        global.timeattack_millisecond++;
+        global.timeattack_realmillisecond++;
+        if (global.timeattack_millisecond > 60) {
+            global.timeattack_millisecond = 0;
+            global.timeattack_second++;
+            if (global.timeattack_second > 59) {
+                global.timeattack_second = 0;
+                global.timeattack_minute++;
+            }
+        }
+    }
 }
 
-#region /* Stop the screen from scrolling left if scrolling left isn't allowed */
-if (instance_exists(obj_player))
-&& (obj_player.stop_screen_from_scrolling_left)
-{
-	if (x > scrolling_left)
-	{
-		scrolling_left = x;
-	}
-	if (x < scrolling_left)
-	{
-		x = scrolling_left;
-	}
+/* Time Countdown */
+if (instance_exists(obj_player) && !global.pause && (!instance_exists(obj_goal) || !obj_goal.goal)) {
+    time_second++;
+    if (time_second > get_room_speed) {
+        time_second = 0;
+        global.time_countdown_bonus--;
+        if (obj_player.allow_timeup && global.enable_time_countdown) {
+            global.time_countdown--;
+        }
+    }
 }
-#endregion /* Stop the screen from scrolling left if scrolling left isn't allowed END */
 
-#region /* Rain Effect */
+/* global.spikes_emerge_time increment */
+global.spikes_emerge_time++;
+if (global.spikes_emerge_time >= get_room_speed * 4) {
+    global.spikes_emerge_time = 0;
+}
+
+/* Rain Effect */
 if (global.rain)
 {
-	if (floor(random(10 - 1)) == 0)
+	if (irandom(9) == 0) /* Reduce the frequency of raindrops. irandom generates a random integer between 0 and 9 */
 	{
 		effect_create_above(ef_rain, x, y, 2, c_white);
 	}
 }
-#endregion /* Rain Effect END */
 
 #region /* Multiplayer - Has pressed keys */
 
 #region /* Player 1 Show Controls HUD timer */
 if (player1 >= 1)
-&& (instance_exists(player1))
 && (iris_xscale >= 10)
 {
 	if (global.player1_show_controls == 0)
@@ -176,7 +114,6 @@ else
 
 #region /* Player 2 Show Controls HUD timer */
 if (player2 >= 1)
-&& (instance_exists(player2))
 && (iris_xscale >= 10)
 {
 	if (global.player2_show_controls == 0)
@@ -224,7 +161,6 @@ else
 
 #region /* Player 3 Show Controls HUD timer */
 if (player3 >= 1)
-&& (instance_exists(player3))
 && (iris_xscale >= 10)
 {
 	if (global.player3_show_controls == 0)
@@ -272,7 +208,6 @@ else
 
 #region /* Player 4 Show Controls HUD timer */
 if (player4 >= 1)
-&& (instance_exists(player4))
 && (iris_xscale >= 10)
 {
 	if (global.player4_show_controls == 0)
@@ -320,13 +255,6 @@ else
 
 #endregion /* Multiplayer - Has pressed keys END */
 
-#region /* Arcade Credit Increase */
-if (mouse_wheel_up())
-{
-	global.arcade_credit ++;
-}
-#endregion /* Arcade Credit Increase END */
-
 #region /* Stop gamepad vibration for different players */
 
 #region /* Stop gamepad vibration for player 1 */
@@ -334,7 +262,7 @@ if (player1_vibration_active == false)
 {
 	player1_motor_speed = lerp(player1_motor_speed, 0, 0.1);
 }
-gamepad_set_vibration(0, player1_motor_speed, player1_motor_speed);
+gamepad_set_vibration(global.player1_slot, player1_motor_speed, player1_motor_speed);
 #endregion /* Stop gamepad vibration for player 1 END */
 
 #region /* Stop gamepad vibration for player 2 */
@@ -342,7 +270,7 @@ if (player2_vibration_active == false)
 {
 	player2_motor_speed = lerp(player2_motor_speed, 0, 0.1);
 }
-gamepad_set_vibration(1, player2_motor_speed, player2_motor_speed);
+gamepad_set_vibration(global.player2_slot, player2_motor_speed, player2_motor_speed);
 #endregion /* Stop gamepad vibration for player 2 END */
 
 #region /* Stop gamepad vibration for player 3 */
@@ -350,7 +278,7 @@ if (player3_vibration_active == false)
 {
 	player3_motor_speed = lerp(player3_motor_speed, 0, 0.1);
 }
-gamepad_set_vibration(2, player3_motor_speed, player3_motor_speed);
+gamepad_set_vibration(global.player3_slot, player3_motor_speed, player3_motor_speed);
 #endregion /* Stop gamepad vibration for player 3 END */
 
 #region /* Stop gamepad vibration for player 4 */
@@ -358,17 +286,10 @@ if (player4_vibration_active == false)
 {
 	player4_motor_speed = lerp(player4_motor_speed, 0, 0.1);
 }
-gamepad_set_vibration(3, player4_motor_speed, player4_motor_speed);
+gamepad_set_vibration(global.player4_slot, player4_motor_speed, player4_motor_speed);
 #endregion /* Stop gamepad vibration for player 4 END */
 
 #endregion /* Stop gamepad vibration for different players END */
-
-#region /* Make sure the lives counter never goes below 0 */
-if (lives < 0)
-{
-	lives = 0;
-}
-#endregion /* Make sure the lives counter never goes below 0 END */
 
 #region /* Spawn Players in multiplayer */
 if (instance_exists(obj_player))
@@ -490,8 +411,8 @@ if (save_level_as_png == false)
 {
 	if (shake > 0)
 	{
-		x = x + random_range(-shake, + shake);
-		y = y + random_range(-shake, + shake);
+		x = x + random_range(-shake, +shake);
+		y = y + random_range(-shake, +shake);
 		shake = lerp(shake, 0, 0.1);
 	}
 	
@@ -508,43 +429,27 @@ if (save_level_as_png == false)
 		view_hview_lerp = lerp(0, 0, 0.05);
 		
 		if (player1 > 0)
-		&& (instance_exists(player1))
 		{
-			if (player1.partner_character == false)
-			{
-				xx = mean(player1.x, obj_boss.x);
-				yy = mean(player1.y, obj_boss.y);
-			}
+			xx = mean(player1.x, obj_boss.x);
+			yy = mean(player1.y, obj_boss.y);
 		}
 		else
 		if (player2 > 0)
-		&& (instance_exists(player2))
 		{
-			if (player2.partner_character == false)
-			{
-				xx = mean(player2.x, obj_boss.x);
-				yy = mean(player2.y, obj_boss.y);
-			}
+			xx = mean(player2.x, obj_boss.x);
+			yy = mean(player2.y, obj_boss.y);
 		}
 		else
 		if (player3 > 0)
-		&& (instance_exists(player3))
 		{
-			if (player3.partner_character == false)
-			{
-				xx = mean(player3.x, obj_boss.x);
-				yy = mean(player3.y, obj_boss.y);
-			}
+			xx = mean(player3.x, obj_boss.x);
+			yy = mean(player3.y, obj_boss.y);
 		}
 		else
 		if (player4 > 0)
-		&& (instance_exists(player4))
 		{
-			if (player4.partner_character == false)
-			{
-				xx = mean(player4.x, obj_boss.x);
-				yy = mean(player4.y, obj_boss.y);
-			}
+			xx = mean(player4.x, obj_boss.x);
+			yy = mean(player4.y, obj_boss.y);
 		}
 	}
 	#endregion /* Boss Battle Camera END */
@@ -559,17 +464,9 @@ if (save_level_as_png == false)
 		
 		/* 1, 2, 3, 4 */
 		if (player1 > 0)
-		&& (instance_exists(player1))
-		&& (player1.partner_character == false)
 		&& (player2 > 0)
-		&& (instance_exists(player2))
-		&& (player2.partner_character == false)
 		&& (player3 > 0)
-		&& (instance_exists(player3))
-		&& (player3.partner_character == false)
 		&& (player4 > 0)
-		&& (instance_exists(player4))
-		&& (player4.partner_character == false)
 		{
 			xx = mean(player1.x, player2.x, player3.x, player4.x);
 			yy = mean(player1.y, player2.y, player3.y, player4.y);
@@ -579,14 +476,8 @@ if (save_level_as_png == false)
 		
 		/* 1, 2, 3 */
 		if (player1 > 0)
-		&& (instance_exists(player1))
-		&& (player1.partner_character == false)
 		&& (player2 > 0)
-		&& (instance_exists(player2))
-		&& (player2.partner_character == false)
 		&& (player3 > 0)
-		&& (instance_exists(player3))
-		&& (player3.partner_character == false)
 		{
 			xx = mean(player1.x, player2.x, player3.x);
 			yy = mean(player1.y, player2.y, player3.y);
@@ -596,11 +487,7 @@ if (save_level_as_png == false)
 		
 		/* 1, 2 */
 		if (player1 > 0)
-		&& (instance_exists(player1))
-		&& (player1.partner_character == false)
 		&& (player2 > 0)
-		&& (instance_exists(player2))
-		&& (player2.partner_character == false)
 		{
 			xx = mean(player1.x, player2.x);
 			yy = mean(player1.y, player2.y);
@@ -610,11 +497,7 @@ if (save_level_as_png == false)
 		
 		/* 1, 3 */
 		if (player1 > 0)
-		&& (instance_exists(player1))
-		&& (player1.partner_character == false)
 		&& (player3 > 0)
-		&& (instance_exists(player3))
-		&& (player3.partner_character == false)
 		{
 			xx = mean(player1.x, player3.x);
 			yy = mean(player1.y, player3.y);
@@ -624,11 +507,7 @@ if (save_level_as_png == false)
 		
 		/* 1, 4 */
 		if (player1 > 0)
-		&& (instance_exists(player1))
-		&& (player1.partner_character == false)
 		&& (player4 > 0)
-		&& (instance_exists(player4))
-		&& (player4.partner_character == false)
 		{
 			xx = mean(player1.x, player4.x);
 			yy = mean(player1.y, player4.y);
@@ -638,11 +517,7 @@ if (save_level_as_png == false)
 		
 		/* 2, 3 */
 		if (player2 > 0)
-		&& (instance_exists(player2))
-		&& (player2.partner_character == false)
 		&& (player3 > 0)
-		&& (instance_exists(player3))
-		&& (player3.partner_character == false)
 		{
 			xx = mean(player2.x, player3.x);
 			yy = mean(player2.y, player3.y);
@@ -652,11 +527,7 @@ if (save_level_as_png == false)
 		
 		/* 2, 4 */
 		if (player1 > 0)
-		&& (instance_exists(player2))
-		&& (player2.partner_character == false)
 		&& (player4 > 0)
-		&& (instance_exists(player4))
-		&& (player4.partner_character == false)
 		{
 			xx = mean(player2.x, player4.x);
 			yy = mean(player2.y, player4.y);
@@ -666,11 +537,7 @@ if (save_level_as_png == false)
 		
 		/* 3, 4 */
 		if (player3 > 0)
-		&& (instance_exists(player3))
-		&& (player3.partner_character == false)
 		&& (player4 > 0)
-		&& (instance_exists(player4))
-		&& (player4.partner_character == false)
 		{
 			xx = mean(player3.x, player4.x);
 			yy = mean(player3.y, player4.y);
@@ -682,8 +549,6 @@ if (save_level_as_png == false)
 		#region /* Follow one player. In case something goes wrong, camera will always follow one player */
 		/* 1 */
 		if (player1 > 0)
-		&& (instance_exists(player1))
-		&& (player1.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -735,8 +600,6 @@ if (save_level_as_png == false)
 		
 		/* 2 */
 		if (player2 > 0)
-		&& (instance_exists(player2))
-		&& (player2.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -788,8 +651,6 @@ if (save_level_as_png == false)
 		
 		/* 3 */
 		if (player3 > 0)
-		&& (instance_exists(player3))
-		&& (player3.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -841,8 +702,6 @@ if (save_level_as_png == false)
 		
 		/* 4 */
 		if (player4 > 0)
-		&& (instance_exists(player4))
-		&& (player4.partner_character == false)
 		{
 			
 			#region /* ONE PLAYER CAMERA */

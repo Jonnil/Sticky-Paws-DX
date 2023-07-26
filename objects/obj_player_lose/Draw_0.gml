@@ -35,22 +35,6 @@ if (sprite_index > 0)
 	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale * default_xscale, image_yscale * default_yscale, image_angle, image_blend, image_alpha);
 }
 
-#region /* Bubble */
-if (bubble)
-{
-	
-	#region /* Bubble */
-	draw_self();
-	draw_circle_color(x, y, 52, c_black, c_black, true);
-	draw_circle_color(x, y, 53, c_white, c_white, true);
-	draw_circle_color(x, y, 54, c_white, c_white, true);
-	draw_circle_color(x, y, 55, c_white, c_white, true);
-	draw_circle_color(x, y, 56, c_black, c_black, true);
-	#endregion /* Bubble END */
-	
-}
-#endregion /* Bubble END */
-
 #region /* Display Player Number and Name */
 if (global.playergame > 0)
 && (y < room_height)

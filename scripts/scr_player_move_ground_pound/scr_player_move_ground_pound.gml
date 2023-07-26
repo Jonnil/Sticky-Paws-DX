@@ -59,7 +59,7 @@ function scr_player_move_ground_pound()
 				}
 			}
 		}
-		if (ground_pound)
+		if (ground_pound == 1)
 		{
 			if (ground_pound_cooldown > 0)
 			&& (!key_crouch_hold)

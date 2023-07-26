@@ -114,7 +114,7 @@ if (global.time_countdown < 100)
 	audio_sound_pitch(global.music, music_pitch + 0.3);
 	audio_sound_pitch(global.music_underwater, music_pitch + 0.3);
 	if (crouch)
-	|| (ground_pound)
+	|| (ground_pound == 1)
 	&& (place_meeting(x, y + sprite_height, obj_wall))
 	{
 		music_pitch = lerp(music_pitch, 0.95, 0.001);
@@ -129,7 +129,7 @@ else
 	audio_sound_pitch(global.music, music_pitch);
 	audio_sound_pitch(global.music_underwater, music_pitch);
 	if (crouch)
-	|| (ground_pound)
+	|| (ground_pound == 1)
 	&& (place_meeting(x, y + sprite_height, obj_wall))
 	{
 		music_pitch = lerp(music_pitch, 0.95, 0.001);
@@ -600,7 +600,7 @@ if (place_meeting(x, y + 32, obj_semisolid_platform))
 }
 else
 {
-	if (ground_pound)
+	if (ground_pound == 1)
 	{
 		if (vspeed > 30)
 		{
@@ -718,7 +718,7 @@ if (angle >+ 360)
 	angle -= 16;
 }
 else
-if (ground_pound)
+if (ground_pound == 1)
 {
 	angle = lerp(angle, 0, 0.2);
 }
@@ -2424,7 +2424,7 @@ if (crouch)
 	}
 }
 else
-if (ground_pound)
+if (ground_pound == 1)
 {
 	if (sprite_ground_pound > noone){sprite_index = sprite_ground_pound;}else
 	if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
@@ -3382,7 +3382,7 @@ if (glide)
 	|| (stick_to_wall)
 	|| (climb)
 	|| (horizontal_rope_climb)
-	|| (ground_pound)
+	|| (ground_pound == 1)
 	{
 		glide = false;
 		can_glide = 3;

@@ -129,7 +129,7 @@ xx_heart = x;
 yy_heart = y - 64;
 have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 
-scr_buffer_async_load("save_files", "file" + string(global.file) + ".ini");
+//scr_buffer_async_load("save_files", "file" + string(global.file) + ".ini");
 
 //#region /* Load Game */
 //if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))

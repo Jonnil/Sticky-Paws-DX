@@ -585,7 +585,6 @@ else
 #endregion /* Custom Music END */
 
 shake = false;
-scrolling_left = 0;
 
 #region /* Assist Item */
 if (global.assist_enable)

@@ -457,7 +457,6 @@ view_wview_lerp = 0;
 allow_timeup = true;
 allow_timeattack = true;
 simple_controls = false; /* Simple Controls, used for testing if a level can be completed with limitations. All levels should be able to be finished, not 100% completed, with this option set to true. This option should be false by default when creating executable */
-stop_screen_from_scrolling_left = false; /* Stop the screen from being able to screoll left */
 full_level_map_screenshot_timer = 0;
 
 #region /* Intro Animation Variables */
@@ -685,7 +684,6 @@ stuck_in_wall_counter = 0;
 taken_damage = 0;
 taken_damage_freezetime = 80;
 time = 600;
-time_second = 0;
 triplejumpdelay = 0;
 voice = noone;
 xx = x;

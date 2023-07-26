@@ -51,8 +51,7 @@ if (global.character_select_in_this_menu == "level_editor")
 }
 #endregion /* Save how many times you have died END */
 
-bubble = false;
-if (bubble == false)
+if (lives > 0)
 {
 	lives --;
 	global.lives_until_assist ++;
