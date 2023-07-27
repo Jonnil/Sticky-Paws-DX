@@ -131,98 +131,98 @@ have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You
 
 //scr_buffer_async_load("save_files", "file" + string(global.file) + ".ini");
 
-//#region /* Load Game */
-//if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
-//{
-//	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+#region /* Load Game */
+if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+{
+	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	
-//	brand_new_file = ini_read_real("Player", "brand_new_file", true);
+	brand_new_file = ini_read_real("Player", "brand_new_file", true);
 	
-//	#region /* Load Player Position */
-//	if (ini_read_real("Player", "player_x", 0) > 0)
-//	&& (ini_read_real("Player", "player_y", 0) > 0)
-//	{
-//		x = ini_read_real("Player", "player_x", 0);
-//		y = ini_read_real("Player", "player_y", 0);
-//		if (instance_exists(obj_level))
-//		&& (!position_meeting(x, y, obj_level))
-//		{
-//			x = instance_nearest(x, y, obj_level).x;
-//			y = instance_nearest(x, y, obj_level).y;
-//			xx = instance_nearest(x, y, obj_level).x;
-//			yy = instance_nearest(x, y, obj_level).y;
-//		}
-//	}
-//	#endregion /* Load Player Position END */
+	#region /* Load Player Position */
+	if (ini_read_real("Player", "player_x", 0) > 0)
+	&& (ini_read_real("Player", "player_y", 0) > 0)
+	{
+		x = ini_read_real("Player", "player_x", 0);
+		y = ini_read_real("Player", "player_y", 0);
+		if (instance_exists(obj_level))
+		&& (!position_meeting(x, y, obj_level))
+		{
+			x = instance_nearest(x, y, obj_level).x;
+			y = instance_nearest(x, y, obj_level).y;
+			xx = instance_nearest(x, y, obj_level).x;
+			yy = instance_nearest(x, y, obj_level).y;
+		}
+	}
+	#endregion /* Load Player Position END */
 	
-//	xx_heart = x;
-//	yy_heart = y - 64;
+	xx_heart = x;
+	yy_heart = y - 64;
 	
-//	#region /* Have Heart Balloon */
-//	if (player == 1)
-//	{
-//		if (ini_key_exists("Player", "player1_have_heart_balloon"))
-//		{
-//			have_heart_balloon = ini_read_real("Player", "player1_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
-//		}
-//		else
-//		{
-//			ini_write_real("Player", "player1_have_heart_balloon", false);
-//			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
-//		}
-//	}
-//	if (player == 2)
-//	{
-//		if (ini_key_exists("Player", "player2_have_heart_balloon"))
-//		{
-//			have_heart_balloon = ini_read_real("Player", "player2_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
-//		}
-//		else
-//		{
-//			ini_write_real("Player", "player2_have_heart_balloon", false);
-//			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
-//		}
-//	}
-//	if (player == 3)
-//	{
-//		if (ini_key_exists("Player", "player3_have_heart_balloon"))
-//		{
-//			have_heart_balloon = ini_read_real("Player", "player3_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
-//		}
-//		else
-//		{
-//			ini_write_real("Player", "player3_have_heart_balloon", false);
-//			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
-//		}
-//	}
-//	if (player == 4)
-//	{
-//		if (ini_key_exists("Player", "player4_have_heart_balloon"))
-//		{
-//			have_heart_balloon = ini_read_real("Player", "player4_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
-//		}
-//		else
-//		{
-//			ini_write_real("Player", "player4_have_heart_balloon", false);
-//			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
-//		}
-//	}
-//	#endregion /* Have Heart Balloon END */
+	#region /* Have Heart Balloon */
+	if (player == 1)
+	{
+		if (ini_key_exists("Player", "player1_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player1_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
+		}
+		else
+		{
+			ini_write_real("Player", "player1_have_heart_balloon", false);
+			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
+		}
+	}
+	if (player == 2)
+	{
+		if (ini_key_exists("Player", "player2_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player2_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
+		}
+		else
+		{
+			ini_write_real("Player", "player2_have_heart_balloon", false);
+			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
+		}
+	}
+	if (player == 3)
+	{
+		if (ini_key_exists("Player", "player3_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player3_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
+		}
+		else
+		{
+			ini_write_real("Player", "player3_have_heart_balloon", false);
+			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
+		}
+	}
+	if (player == 4)
+	{
+		if (ini_key_exists("Player", "player4_have_heart_balloon"))
+		{
+			have_heart_balloon = ini_read_real("Player", "player4_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
+		}
+		else
+		{
+			ini_write_real("Player", "player4_have_heart_balloon", false);
+			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
+		}
+	}
+	#endregion /* Have Heart Balloon END */
 	
-//	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-//	move_snap(32, 32);
-//}
-//else
-//{
-//	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-//	ini_write_real("Player", "brand_new_file", true);
-//	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-//	brand_new_file = true;
-//	xx_heart = x;
-//	yy_heart = y - 64;
-//	have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
-//}
-//#endregion /* Load Game END */
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	move_snap(32, 32);
+}
+else
+{
+	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_write_real("Player", "brand_new_file", true);
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	brand_new_file = true;
+	xx_heart = x;
+	yy_heart = y - 64;
+	have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
+}
+#endregion /* Load Game END */
 
 xx = x;
 yy = y;

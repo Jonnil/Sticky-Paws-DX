@@ -49,6 +49,10 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	{
 		global.keyboard_virtual_timer ++;
 	}
+	if (global.keyboard_virtual_timer == 1)
+	{
+		steam_utils_enable_callbacks();
+	}
 	if (global.keyboard_virtual_timer == 2)
 	|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx - width, yy - 16, xx + width, yy + 16))
 	&& (mouse_check_button_released(mb_left))
@@ -58,6 +62,8 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			what_string_to_edit_async = get_string_async("", "");
 		}
 		keyboard_virtual_show(kbv_type_default, kbv_returnkey_default, kbv_autocapitalize_characters, false);
+		
+		steam_show_floating_gamepad_text_input(steam_floating_gamepad_text_input_mode_single_line, window_get_x(), window_get_y() * 0.5, window_get_width(), window_get_height() * 0.5);
 	}
 	
 	#region /* Box where name is written on */

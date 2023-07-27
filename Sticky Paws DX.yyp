@@ -2655,6 +2655,7 @@
     {"id":{"name":"scr_player_move_throw_items_in_hands","path":"scripts/scr_player_move_throw_items_in_hands/scr_player_move_throw_items_in_hands.yy",},},
     {"id":{"name":"obj_basic_collectible","path":"objects/obj_basic_collectible/obj_basic_collectible.yy",},},
     {"id":{"name":"scr_wave","path":"scripts/scr_wave/scr_wave.yy",},},
+    {"id":{"name":"Steamworks","path":"extensions/Steamworks/Steamworks.yy",},},
     {"id":{"name":"snd_footstep_metal_right","path":"sounds/snd_footstep_metal_right/snd_footstep_metal_right.yy",},},
     {"id":{"name":"obj_level_player1_start","path":"objects/obj_level_player1_start/obj_level_player1_start.yy",},},
     {"id":{"name":"snd_rolling","path":"sounds/snd_rolling/snd_rolling.yy",},},

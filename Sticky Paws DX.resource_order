@@ -498,6 +498,7 @@
     {"name":"scr_player_move_throw_items_in_hands","order":17,"path":"scripts/scr_player_move_throw_items_in_hands/scr_player_move_throw_items_in_hands.yy",},
     {"name":"obj_basic_collectible","order":3,"path":"objects/obj_basic_collectible/obj_basic_collectible.yy",},
     {"name":"scr_wave","order":48,"path":"scripts/scr_wave/scr_wave.yy",},
+    {"name":"Steamworks","order":1,"path":"extensions/Steamworks/Steamworks.yy",},
     {"name":"snd_footstep_metal_right","order":49,"path":"sounds/snd_footstep_metal_right/snd_footstep_metal_right.yy",},
     {"name":"obj_level_player1_start","order":5,"path":"objects/obj_level_player1_start/obj_level_player1_start.yy",},
     {"name":"snd_rolling","order":121,"path":"sounds/snd_rolling/snd_rolling.yy",},
