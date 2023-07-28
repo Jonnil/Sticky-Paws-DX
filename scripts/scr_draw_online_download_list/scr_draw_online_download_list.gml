@@ -152,6 +152,9 @@ function scr_draw_online_download_list()
 			/* Check if it's an array */
 			if (is_array(data))
 			{
+				/* Explain what the code IDs are */
+				scr_draw_text_outlined(910, 76 + 44 + menu_y_offset - 32, string_upper(content_type) + " " + l10n_text("ID") + ":", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				
 				/* Get the number of items in the JSON array */
 				var num_items = array_length(data);
 				var online_download_index = 0;

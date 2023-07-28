@@ -412,14 +412,39 @@ if (global.actually_play_edited_level == false)
 	{
 		
 		#region /* Controller Input Changes */
-		if (global.controls_used_for_menu_navigation != "controller")
+		if (global.controls_used_for_menu_navigation == "keyboard")
+		&& (!navigate_camera_with_arrowkeys)
+		&& (pause == false)
 		{
-			x = mouse_x;
-			y = mouse_y;
-			cursor_x = mouse_get_x;
-			cursor_y = mouse_get_y;
-			controller_x = mouse_get_x;
-			controller_y = mouse_get_y;
+			if (keyboard_check(global.player_[inp.key][1][1][action.up]))
+			|| (keyboard_check(vk_up))
+			|| (keyboard_check(global.player_[inp.key][1][1][action.down]))
+			|| (keyboard_check(vk_down))
+			|| (keyboard_check(global.player_[inp.key][1][1][action.left]))
+			|| (keyboard_check(vk_left))
+			|| (keyboard_check(global.player_[inp.key][1][1][action.right]))
+			|| (keyboard_check(vk_right))
+			{
+				navigate_camera_with_arrowkeys = true;
+			}
+		}
+		else
+		if (global.controls_used_for_menu_navigation == "mouse")
+		&& (navigate_camera_with_arrowkeys)
+		{
+			navigate_camera_with_arrowkeys = false;
+		}
+		
+		if (global.controls_used_for_menu_navigation != "controller")
+		&& (navigate_camera_with_arrowkeys)
+		{
+			/* If you are controlling the cursor with arrow keys, make the cursor appear in the middle of the screen */
+			x = view_center_x;
+			y = view_center_y;
+			cursor_x = x;
+			cursor_y = y;
+			controller_x = x;
+			controller_y = y;
 			
 			#region /* Move view with keyboard */
 			if (keyboard_check(vk_control))
@@ -476,8 +501,21 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 			camera_set_view_pos(view_camera[view_current], cam_x + view_x_direction, cam_y + view_y_direction); /* Move actual camera */
-			#endregion /* Move view with gamepad END */
+			#endregion /* Move view with keyboard END */
 			
+		}
+		else
+		if (global.controls_used_for_menu_navigation == "mouse")
+		{
+			navigate_camera_with_arrowkeys = false;
+			x = mouse_x;
+			y = mouse_y;
+			cursor_x = mouse_get_x;
+			cursor_y = mouse_get_y;
+			controller_x = mouse_x;
+			controller_y = mouse_y;
+			
+			camera_set_view_pos(view_camera[view_current], cam_x, cam_y); /* Move actual camera */
 		}
 		else
 		if (global.controls_used_for_menu_navigation == "controller")
@@ -595,6 +633,7 @@ if (global.actually_play_edited_level == false)
 					controller_x += controller_view_speed;
 				}
 			}
+			
 			camera_set_view_pos(view_camera[view_current], cam_x + view_x_direction, cam_y + view_y_direction); /* Move actual camera */
 			#endregion /* Move view with gamepad END */
 			
@@ -724,6 +763,7 @@ if (global.actually_play_edited_level == false)
 			|| (erase_mode)
 			&& (key_a_hold)
 			|| (key_b_hold)
+			|| (keyboard_check(key_erase_object))
 			{
 				instance_create_depth(x, y, 0, obj_erase_brush);
 			}
@@ -745,6 +785,7 @@ if (global.actually_play_edited_level == false)
 			|| (mouse_check_button(mb_left))
 			|| (key_a_hold)
 			|| (key_b_hold)
+			|| (keyboard_check(key_erase_object))
 			{
 				instance_create_depth(x, y, 0, obj_erase_brush);
 			}
@@ -762,6 +803,13 @@ if (global.actually_play_edited_level == false)
 			&& (obj_leveleditor.pause == false)
 			
 			|| (!obj_leveleditor.key_b_hold)
+			&& (!hovering_over_icons)
+			&& (obj_leveleditor.drag_object == false)
+			&& (obj_leveleditor.erase_mode == false)
+			&& (obj_leveleditor.key_a_hold)
+			&& (obj_leveleditor.pause == false)
+			
+			|| (keyboard_check(obj_leveleditor.key_erase_object))
 			&& (!hovering_over_icons)
 			&& (obj_leveleditor.drag_object == false)
 			&& (obj_leveleditor.erase_mode == false)
@@ -785,6 +833,11 @@ if (global.actually_play_edited_level == false)
 			|| (!obj_leveleditor.key_a_hold)
 			&& (!hovering_over_icons)
 			&& (obj_leveleditor.key_b_hold)
+			&& (obj_leveleditor.pause == false)
+			
+			|| (!obj_leveleditor.key_a_hold)
+			&& (!hovering_over_icons)
+			&& (keyboard_check(obj_leveleditor.key_erase_object))
 			&& (obj_leveleditor.pause == false)
 			{
 				instance_create_depth(x, y, 0, obj_erase_brush);
@@ -810,6 +863,8 @@ if (global.actually_play_edited_level == false)
 	#endregion /* If you haven't yet quit the level editor, then run this code END */
 	
 	if (mouse_check_button_released(mb_left))
+	|| (key_a_released)
+	|| (gamepad_button_check_released(global.player1_slot, button_draw))
 	{
 		placing_object -= 0.2;
 	}
@@ -834,6 +889,8 @@ if (global.actually_play_edited_level == false)
 		&& (erase_mode)
 		|| (gamepad_button_check_pressed(global.player1_slot, button_draw))
 		&& (erase_mode)
+		|| (keyboard_check_released(key_erase_object))
+		&& (erase_mode)
 		{
 			fill_mode = false;
 			erase_mode = false;
@@ -856,6 +913,8 @@ if (global.actually_play_edited_level == false)
 	if (pause == false)
 	{
 		if (keyboard_check_pressed(key_erase))
+		&& (erase_mode == false)
+		|| (keyboard_check_pressed(key_erase_object))
 		&& (erase_mode == false)
 		|| (gamepad_button_check_pressed(global.player1_slot, button_erase))
 		&& (erase_mode == false)

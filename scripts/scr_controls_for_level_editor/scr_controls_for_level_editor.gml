@@ -71,6 +71,8 @@ function scr_controls_for_level_editor()
 	/* Player 1 Keyboard Shortcut Erase */ key_erase = ord("E");
 	/* Player 1 Gamepad Shortcut Erase */ button_erase = global.player_[inp.gp][1][1][action.back];
 	
+	/* Player 1 Keyboard Erase Objects */ key_erase_object = ord("X");
+	
 	/* Player 1 Keyboard Shortcut Fill */ key_fill = ord("F");
 	/* Player 1 Gamepad Shortcut Fill */ button_fill = gp_face4;
 	
