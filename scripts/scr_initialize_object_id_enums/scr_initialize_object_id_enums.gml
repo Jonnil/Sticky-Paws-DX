@@ -59,6 +59,7 @@ function scr_initialize_object_id_enums()
 		ID_FALLING_BLOCK_LONG_SOLID = 22,
 		ID_CLOUD_BLOCK = 23,
 		ID_ICE_BLOCK = 24,
+		ID_ENEMY_ONLY_WALL = 241,
 		ID_CARDBOARD_BLOCK = 25,
 		ID_CARDBOARD = 26,
 		ID_CARDBOARD_LONG = 27,

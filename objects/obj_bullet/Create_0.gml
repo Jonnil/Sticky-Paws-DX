@@ -20,6 +20,7 @@ number_of_times_stomped = 0;
 enemyvoice_defeated1 = snd_enemyvoice_defeated;
 enemyvoice_defeated2 = snd_enemyvoice_defeated2;
 enemyvoice_defeated3 = snd_enemyvoice_defeated3;
+blind = false;
 
 on_ground = false;
 

@@ -2,6 +2,7 @@
 if (coil_spring)
 {
 	if (place_meeting(x, y + 1, obj_wall))
+	|| (place_meeting(x, y + 1, obj_enemy_only_wall))
 	|| (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 	|| (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	|| (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))

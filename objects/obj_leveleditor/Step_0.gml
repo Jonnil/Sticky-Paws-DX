@@ -1432,6 +1432,7 @@ if (global.actually_play_edited_level == false)
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false; /* Set this to false so you don't playtest the level */
 			global.character_select_in_this_menu = "level_editor";
+			scr_save_custom_level(); /* Save level when quitting level */
 		}
 		#endregion /* Save Level END */
 		
@@ -1462,32 +1463,15 @@ if (global.actually_play_edited_level == false)
 		|| (gamepad_button_check_pressed(global.player4_slot, gp_start))
 		|| (gamepad_button_check_pressed(4, gp_start))
 		{
-			menu_delay = 3;
-			pause = 2;
+			global.pause_room = rm_leveleditor;
+			quit_level_editor = false;
+			can_input_level_name = false;
+			input_key = false;
+			menu = "continue";
+			pause = true;
+			menu_delay = 10;
 		}
 	}
-	if (pause >= 2)
-	{
-		instance_activate_all();
-		menu_delay = 3;
-		pause ++;
-	}
-	
-	if (pause == 4)
-	{
-		scr_save_custom_level(); /* Save level before going to the pause menu */
-	}
-	if (pause == 5)
-	{
-		global.pause_room = rm_leveleditor;
-		quit_level_editor = false;
-		can_input_level_name = false;
-		input_key = false;
-		menu = "continue";
-		pause = true;
-		menu_delay = 10;
-	}
-	
 	#endregion /* Press Pause Button END */
 	
 	#region /* Keep view within the level */

@@ -22,6 +22,7 @@ enemyvoice_defeated1 = snd_enemyvoice_defeated;
 enemyvoice_defeated2 = snd_enemyvoice_defeated2;
 enemyvoice_defeated3 = snd_enemyvoice_defeated3;
 on_ground = false;
+blind = false;
 
 mask_index = spr_small_mask;
 

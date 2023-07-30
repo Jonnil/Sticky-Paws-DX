@@ -1,8 +1,4 @@
-if (!position_meeting(x, bbox_bottom + 1, obj_wall))
-{
-	gravity = 0.5;
-}
-else
+if (position_meeting(x, bbox_bottom + 1, obj_wall))
 {
 	hspeed = 0;
 	vspeed = 0;

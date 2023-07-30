@@ -162,6 +162,9 @@ function scr_spawn_objects_when_starting_room()
 			    case LEVEL_OBJECT_ID.ID_ICE_BLOCK:
 			        instance_create_depth(x, y, 0, obj_ice_block);
 			        break;
+				case LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL:
+					instance_create_depth(x, y, 0, obj_enemy_only_wall);
+					break;
 			    case LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK:
 					with(instance_create_depth(x, y, 0, obj_cardboard)) {length = 1;}
 					break;

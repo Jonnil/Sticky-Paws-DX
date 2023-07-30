@@ -135,6 +135,7 @@ if (global.actually_play_edited_level == false)
 		scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 64, 1, 0, c_white, 0, -16,,,"Falling Block Long");
 		scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, true, spr_cloud_block, spr_wall, + 64, 1, 0, c_white,,,,,"Cloud Block");
 		scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ICE_BLOCK, true, spr_ice_block, spr_wall, + 64, 1, 0, c_white,,,,,"Ice Block");
+		scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL, true, spr_enemy_only_wall, spr_wall, + 64, 1, 0, c_white,,,,,"Enemy Only Wall - Only enemies can collide with this wall. Player will pass trough");
 		#endregion /* Terrain Objects END */
 		
 		#region /* Item Objects */
