@@ -63,6 +63,7 @@ intended_level_difficulty = 1; /* Easy = 0. Normal = 1. Hard = 2. Super Hard = 3
 
 scr_unzip_all() /* Unzip any .zip folder found in AppData */
 
+remember_keyboard_string = ""; /* In case you want to click "Cancel", revert back to whatever was already written before entering name input screen */
 what_is_loading_text = ""; /* Shew the player while they are downloading/uploading, what is actually happening, in case game just stops at any moment, you can see where it stopped */
 caution_online_do_not_show = false;
 report_back_to_menu = "";

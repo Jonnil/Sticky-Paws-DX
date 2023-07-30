@@ -17,6 +17,7 @@ can_die_from_spikes = true;
 can_turn_around_at_wall = true;
 give_rewards = true;
 on_ground = false;
+coil_spring = false;
 
 #region /* If enemies are disabled, destroy this object */
 if (global.assist_enable)

@@ -46,7 +46,7 @@ enemyvoice_defeated1 = noone;
 enemyvoice_defeated2 = noone;
 enemyvoice_defeated3 = noone;
 on_ground = false;
-blind = false;
+blind = true;
 
 #region /* If enemies are disabled, destroy this object */
 if (global.assist_enable)

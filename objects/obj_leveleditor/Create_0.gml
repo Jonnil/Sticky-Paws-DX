@@ -137,7 +137,7 @@ if (global.actually_play_edited_level == false)
 	intended_level_difficulty = 1; /* Easy = 0. Normal = 1. Hard = 2. Super Hard = 3 */
 	
 	#region /* Unlock placable objects */
-	var debug_unlock_all = true;
+	var debug_unlock_all = false;
 	if (debug_unlock_all == false)
 	{
 		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");

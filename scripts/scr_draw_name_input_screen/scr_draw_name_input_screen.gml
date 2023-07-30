@@ -30,6 +30,11 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		yy = display_get_gui_height() - keyboard_virtual_height() - 160;
 	}
 	else
+	if (steam_utils_is_steam_running_on_steam_deck())
+	{
+		yy = (display_get_gui_height() * 0.5) - 160;
+	}
+	else
 	if (yy > display_get_gui_height() - 160)
 	{
 		yy = display_get_gui_height() - 160;
@@ -52,10 +57,15 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	if (global.keyboard_virtual_timer == 1)
 	{
 		steam_utils_enable_callbacks();
+		if (variable_instance_exists(self, "remember_keyboard_string"))
+		{
+			remember_keyboard_string = string(what_string_to_edit); /* In case you want to click "Cancel", revert back to whatever was already written before entering name input screen */
+		}
 	}
 	if (global.keyboard_virtual_timer == 2)
 	|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx - width, yy - 16, xx + width, yy + 16))
 	&& (mouse_check_button_released(mb_left))
+	|| (gamepad_button_check_pressed(global.player1_slot, gp_face4))
 	{
 		if (os_type == os_switch)
 		{
@@ -157,6 +167,13 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	#endregion /* Show how many characters a name has and what the max amount of characters is END */
 	
+	if (os_type == os_switch)
+	|| (steam_utils_is_steam_running_on_steam_deck())
+	{
+		scr_draw_gamepad_buttons(gp_face4, xx + 200, yy + 32, 0.5, c_white, 1);
+		scr_draw_text_outlined(xx + 280, yy + 32, l10n_text("Edit"), global.default_text_size, c_black, c_ltgray, 1);
+	}
+	
 	#region /* Clicking the Cancel button */
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
 	&& (mouse_check_button_released(mb_left))
@@ -164,6 +181,11 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	|| (keyboard_check_pressed(vk_escape))
 	&& (menu_delay == 0)
 	{
+		if (variable_instance_exists(self, "remember_keyboard_string"))
+		{
+			what_string_to_edit = remember_keyboard_string;
+			keyboard_string = remember_keyboard_string; /* Revert back to whatever was already written before entering name input screen */
+		}
 		keyboard_string = string_replace_all(keyboard_string, "\\", "");
 		keyboard_string = string_replace_all(keyboard_string, "/", "");
 		keyboard_string = string_replace_all(keyboard_string, ":", "");

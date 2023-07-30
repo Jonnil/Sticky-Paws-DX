@@ -21,7 +21,8 @@ can_die_from_spikes = false;
 can_turn_around_at_wall = false;
 give_rewards = true;
 gravity_direction = 270; /* Direction of the gravity */
-blind = false;
+blind = true;
+coil_spring = false;
 
 enemyvoice_defeated1 = snd_enemyvoice_defeated;
 enemyvoice_defeated2 = snd_enemyvoice_defeated2;
