@@ -83,9 +83,6 @@ currently_selected_id = ""; /* In the online list, what level/character are you 
 old_currently_selected_id = ""; /* this is just to compare to "currently selected id" once it changes, so that information about that specific id only have to load once */
 spr_download_list_thumbnail = noone;
 
-global.play_attract_demo = false;
-play_attract_demo_time = 0;
-
 load_from_where = "characters";
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
 
@@ -244,7 +241,6 @@ global.doing_clear_check = false;
 global.actually_play_edited_level = false;
 global.play_edited_level = false;
 global.basic_collectibles = 0;
-global.level_clear_rate = noone;
 global.big_collectible1 = false;
 global.big_collectible2 = false;
 global.big_collectible3 = false;
@@ -332,6 +328,7 @@ allow_player3_dive = scr_initialize_custom_character_abilities(2, "allow_dive", 
 allow_player4_dive = scr_initialize_custom_character_abilities(3, "allow_dive", false);
 #endregion /* Remapping options variables END */
 
+custom_levels_folder_megabytes = 0; /* Display how big the custom levels folder is */
 open_dropdown = false;
 menu_delay = 60;
 menu_joystick_delay = 3;

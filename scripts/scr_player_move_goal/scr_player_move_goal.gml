@@ -51,6 +51,7 @@ function scr_player_move_goal()
 				{
 					global.player4_can_play = false;
 				}
+				global.level_clear_rate = "clear";
 				global.goal_active = true;
 				global.player_has_entered_goal = true;
 				global.quit_level = false;

@@ -135,7 +135,12 @@ if (lives <= 0)
 			{
 				lives = 20;
 			}
-				
+			if (global.character_select_in_this_menu == "main_game")
+			{
+				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+				ini_write_real("Player", "lives", lives);
+				ini_close();
+			}
 			if (menu == "quit")
 			{
 				global.quit_level = true; /* Quit level and go to map screen */

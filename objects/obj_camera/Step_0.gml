@@ -68,6 +68,7 @@ if (global.rain)
 #region /* Player 1 Show Controls HUD timer */
 if (player1 >= 1)
 && (instance_exists(obj_player))
+&& (instance_exists(player1))
 && (iris_xscale >= 10)
 {
 	if (global.player1_show_controls == 0)
@@ -116,6 +117,7 @@ else
 #region /* Player 2 Show Controls HUD timer */
 if (player2 >= 1)
 && (instance_exists(obj_player))
+&& (instance_exists(player2))
 && (iris_xscale >= 10)
 {
 	if (global.player2_show_controls == 0)
@@ -164,6 +166,7 @@ else
 #region /* Player 3 Show Controls HUD timer */
 if (player3 >= 1)
 && (instance_exists(obj_player))
+&& (instance_exists(player3))
 && (iris_xscale >= 10)
 {
 	if (global.player3_show_controls == 0)
@@ -212,6 +215,7 @@ else
 #region /* Player 4 Show Controls HUD timer */
 if (player4 >= 1)
 && (instance_exists(obj_player))
+&& (instance_exists(player4))
 && (iris_xscale >= 10)
 {
 	if (global.player4_show_controls == 0)

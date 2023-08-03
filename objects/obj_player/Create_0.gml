@@ -6,6 +6,7 @@ can_create_speed_lines = true;
 can_create_follow_mouse = true;
 #endregion /* Debug toggles END */
 
+room_speed = global.max_fps; /* Room Speed */
 /*direction = point_direction(scr_x_to_gui(x), scr_y_to_gui(y), device_mouse_x_to_gui(0), device_mouse_y_to_gui(0));*/
 
 #region /* Create object that always follows mouse */
@@ -22,7 +23,6 @@ audio_listener_position(x, y, 0); /* Audio listener should start on top of the p
 can_collide_with_wall = true; /* For debug purposes, you can disable collision with walls */
 
 raycast_info = noone;
-line_hit = noone;
 
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
 

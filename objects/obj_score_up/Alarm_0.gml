@@ -12,6 +12,12 @@ if (score_up == "1-up")
 		lives ++;
 		audio_sound_pitch(snd_1up, 1);
 		scr_audio_play(snd_1up, volume_source.sound);
+		if (global.character_select_in_this_menu == "main_game")
+		{
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_write_real("Player", "lives", lives);
+			ini_close();
+		}
 	}
 	, [], 1);
 	time_source_start(time_source);
@@ -39,6 +45,12 @@ if (score_up == "2-up")
 		lives ++;
 		audio_sound_pitch(snd_1up, 1.1);
 		scr_audio_play(snd_1up, volume_source.sound);
+		if (global.character_select_in_this_menu == "main_game")
+		{
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_write_real("Player", "lives", lives);
+			ini_close();
+		}
 	}
 	, [], 1);
 	time_source_start(time_source);
@@ -74,6 +86,12 @@ if (score_up == "3-up")
 		lives ++;
 		audio_sound_pitch(snd_1up, 1.2);
 		scr_audio_play(snd_1up, volume_source.sound);
+		if (global.character_select_in_this_menu == "main_game")
+		{
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_write_real("Player", "lives", lives);
+			ini_close();
+		}
 	}
 	, [], 1);
 	time_source_start(time_source);

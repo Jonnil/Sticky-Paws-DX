@@ -1860,6 +1860,8 @@ function scr_draw_upload_level_menu()
 		}
 		scr_delete_sprite_properly(title_screen_background);
 		scr_update_all_backgrounds();
+		global.part_limit = 0; /* How many objects are currently placed in the level editor */
+		global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
 		room_goto(rm_leveleditor);
 	}
 	#endregion /* Enter Custom Level END */

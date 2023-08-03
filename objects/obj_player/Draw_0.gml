@@ -335,7 +335,6 @@ if (global.show_collision_mask)
 	}
 	draw_rectangle_color(x - 2, y, x + 2, y, c_red, c_red, c_red, c_red, false);
 	draw_rectangle_color(x, y - 2, x, y + 2, c_red, c_red, c_red, c_red, false);
-	draw_line_width_color( x, y, scr_line_trace( x, y, x + hspeed, y + vspeed, 1).x_hit, scr_line_trace( x, y, x + hspeed, y + vspeed, 1).y_hit, 5, c_aqua, c_red);
 	collision_mask_alpha = lerp(collision_mask_alpha, 0.5, 0.01);
 }
 else

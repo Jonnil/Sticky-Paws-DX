@@ -1,4 +1,4 @@
-function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = noone)
+function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = spr_noone)
 {
 	var saved_file_exists = false;
 	var unused_x_origin_point = noone;
@@ -141,6 +141,6 @@ function scr_initialize_resource_pack_sprite(sprite_name, sprite_variable = noon
 	}
 	else
 	{
-		return noone;
+		return spr_noone;
 	}
 }

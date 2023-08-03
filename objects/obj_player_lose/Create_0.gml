@@ -55,6 +55,12 @@ if (lives > 0)
 {
 	lives --;
 	global.lives_until_assist ++;
+	if (global.character_select_in_this_menu == "main_game")
+	{
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		ini_write_real("Player", "lives", lives);
+		ini_close();
+	}
 }
 player = 1;
 if (instance_exists(obj_camera))

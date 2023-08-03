@@ -16,18 +16,18 @@ function scr_zoom_camera_controls()
 	
 	var zoom_speed = 0.015;
 	var zoom_minimum = 0.5;
-	var zoom_maximum = 1.1;
-
+	var zoom_maximum = 1.0;
+	
 	var zoom_variable = room == rm_world_map ? global.zoom_world_map : global.zoom_level;
-
+	
 	zoom_lerp = room == rm_title ? 1 : lerp(zoom_lerp, zoom_variable, 0.1);
 	zoom_variable = clamp(zoom_variable, zoom_minimum, zoom_maximum);
-
+	
 	zoom_border_lerp = lerp(zoom_border_lerp, 0, 0.1);
 	
 	var new_width = camera_get_view_width(view_camera[view_current]) * zoom_lerp;
 	var new_height = camera_get_view_height(view_camera[view_current]) * zoom_lerp;
-
+	
 	if (new_width > room_width && new_height > room_height)
 	{
 		camera_set_view_size(view_camera[view_current], room_width, room_height);
@@ -44,7 +44,7 @@ function scr_zoom_camera_controls()
 	{
 		camera_set_view_size(view_camera[view_current], new_width, new_height);
 	}
-
+	
 	if (room != rm_title)
 	{
 		if (
@@ -70,7 +70,7 @@ function scr_zoom_camera_controls()
 				zoom_border_lerp = 1;
 			}
 		}
-
+		
 		if (
 			(key_out_hold[0] && !key_in_hold[0]) ||
 			(key_out_hold[1] && !key_in_hold[1]) ||

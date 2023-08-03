@@ -27,20 +27,10 @@ function scr_options_menu()
 	#endregion /* Black Background behind sidebar END */
 	
 	#region /* Set Font */
-	//if (global.language_localization = localization.ar_sa)
-	//{
-	//	var text_x_offset = 290;
-	//	var icon_x_offset = 330;
-	//	draw_set_halign(fa_right);
-	//	draw_set_valign(fa_middle);
-	//}
-	//else
-	//{
-		var text_x_offset = 0;
-		var icon_x_offset = 0;
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_middle);
-	//}
+	var text_x_offset = 0;
+	var icon_x_offset = 0;
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
 	#endregion /* Set Font END */
 	
 	#region /* Tabs Graphics */
@@ -2122,7 +2112,6 @@ function scr_options_menu()
 				automatically_pause_when_window_is_unfocused_settings_y = 164;
 			}
 			automatically_pause_when_window_is_unfocused_settings_y = 164;
-			enable_attract_demo_y = 164 + (48);
 			enable_links_demo_y = 164 + (48 * 2);
 			show_timer_settings_y = 164 + (48 * 3);
 			show_deaths_counter_settings_y = 164 + (48 * 4);
@@ -2146,7 +2135,6 @@ function scr_options_menu()
 			draw_set_valign(fa_middle);
 		
 			draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, l10n_text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused); /* Automatically Pause When Window Is Unfocused */
-			draw_menu_checkmark(380, enable_attract_demo_y, l10n_text("Enable Attract Demo"), "enable_attract_demo", global.enable_attract_demo);
 			draw_menu_checkmark(380, enable_links_demo_y, l10n_text("Enable Links at Title Screen"), "enable_links_at_title_screen", global.enable_links);
 			draw_menu_checkmark(380, show_timer_settings_y, l10n_text("Show Timer"), "show_timer_settings", global.show_timer); /* Show Timer */
 			draw_menu_checkmark(380, show_deaths_counter_settings_y, l10n_text("Show Deaths Counter"), "show_deaths_counter_settings", global.show_deaths_counter); /* Show Deaths Counter */
@@ -2162,7 +2150,14 @@ function scr_options_menu()
 				global.hud_hide_time = 3;
 			}
 			
-			draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "selected_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic"));
+			if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
+			{
+				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "selected_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font")); /* Doesn't include Open Dyslexic, as some languages are not supported */
+			}
+			else
+			{
+				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "selected_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic")); /* Includes Open Dyslexic */
+			}
 			draw_menu_dropdown(380, hud_hide_time_y, l10n_text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			
 			if (global.enable_difficulty_selection_settings)
@@ -2278,7 +2273,15 @@ function scr_options_menu()
 				{
 					score_up = "Copied"; /* Show that you have copied the device username */
 				}
-				global.username = environment_get_variable("USERNAME");
+				if (os_type == os_switch)
+				{
+					global.username = switch_accounts_get_nickname(0);
+				}
+				else
+				{
+					global.username = environment_get_variable("USERNAME");
+				}
+				
 				/* Save username to config file */
 				ini_open(working_directory + "config.ini");
 				ini_write_string("config", "username", string(environment_get_variable("USERNAME")));
@@ -3096,25 +3099,6 @@ function scr_options_menu()
 				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "enable_attract_demo";
-				}
-			}
-			else
-			if (menu == "enable_attract_demo")
-			{
-				if (key_up)
-				&& (open_dropdown == false)
-				&& (menu_delay == 0)
-				{
-					menu_delay = 3;
-					menu = "automatically_pause_when_window_is_unfocused_settings";
-				}
-				else
-				if (key_down)
-				&& (open_dropdown == false)
-				&& (menu_delay == 0)
-				{
-					menu_delay = 3;
 					menu = "enable_links_at_title_screen";
 				}
 			}
@@ -3126,7 +3110,7 @@ function scr_options_menu()
 				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "enable_attract_demo";
+					menu = "automatically_pause_when_window_is_unfocused_settings";
 				}
 				else
 				if (key_down)
@@ -3145,7 +3129,7 @@ function scr_options_menu()
 				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "enable_attract_demo";
+					menu = "enable_links_at_title_screen";
 				}
 				else
 				if (key_down)
@@ -3299,11 +3283,16 @@ function scr_options_menu()
 				if (key_down)
 				&& (open_dropdown)
 				&& (menu_delay == 0)
-				&& (global.selected_font < 2)
 				{
-					menu_delay = 3;
-					global.selected_font ++;
-					scr_set_font();
+					if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
+					&& (global.selected_font < 1)
+					|| (global.language_localization != 2)
+					&& (global.selected_font < 2)
+					{
+						menu_delay = 3;
+						global.selected_font ++;
+						scr_set_font();
+					}
 				}
 				else
 				if (key_up)
@@ -4299,9 +4288,6 @@ function scr_options_menu()
 			}
 			
 			if (menu == "automatically_pause_when_window_is_unfocused_settings") && (menu_delay == 0){if (global.automatically_pause_when_window_is_unfocused){global.automatically_pause_when_window_is_unfocused = false;}else{global.automatically_pause_when_window_is_unfocused = true;}
-			menu_delay = 3;
-			}
-			if (menu == "enable_attract_demo") && (menu_delay == 0){if (global.enable_attract_demo){global.enable_attract_demo = false;}else{global.enable_attract_demo = true;}
 			menu_delay = 3;
 			}
 			if (menu == "enable_links_at_title_screen") && (menu_delay == 0){if (global.enable_links){global.enable_links = false;}else{global.enable_links = true;}

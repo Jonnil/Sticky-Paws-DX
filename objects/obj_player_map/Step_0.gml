@@ -560,6 +560,8 @@ if (can_move == false)
 	
 	global.actually_play_edited_level = true;
 	global.play_edited_level = true;
+	global.part_limit = 0; /* How many objects are currently placed in the level editor */
+	global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
 	room_goto(rm_leveleditor);
 }
 #endregion /* After pressing enter level, the iris should shrink and then start the level END */
@@ -654,6 +656,12 @@ if (lives <= 0)
 	if (global.playergame >= 3)
 	{
 		lives = 20;
+	}
+	if (global.character_select_in_this_menu == "main_game")
+	{
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		ini_write_real("Player", "lives", lives);
+		ini_close();
 	}
 }
 #endregion /* Give the player lives if they get a game over END */

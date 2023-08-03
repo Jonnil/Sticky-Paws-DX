@@ -38,10 +38,10 @@ else
 	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
 	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	{
-		if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-		&& (x > camera_get_view_x(view_camera[view_current]))
-		&& (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-		&& (y > camera_get_view_y(view_camera[view_current]))
+		if (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
+		&& (x > camera_get_view_x(view_camera[view_current]) - sprite_width)
+		&& (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + sprite_height)
+		&& (y > camera_get_view_y(view_camera[view_current]) - sprite_height)
 		{
 			gravity = 0.5; /* The gravity */
 		}

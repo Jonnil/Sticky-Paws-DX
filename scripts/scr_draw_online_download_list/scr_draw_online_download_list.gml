@@ -17,6 +17,7 @@ function scr_draw_online_download_list()
 		ds_map_add(map, "Host", global.base_url);
 		ds_map_add(map, "Content-Type", "application/json");
 		ds_map_add(map, "User-Agent", "gmdownloader");
+		ds_map_add(map, "X-API-Key", global.api_key);
 		
 		/* Send the HTTP GET request to the /level endpoint */
 		global.http_request_id = http_request("https://" + global.base_url + "/" + string(content_type) + "s", "GET", map, "");
@@ -153,7 +154,7 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			{
 				/* Explain what the code IDs are */
-				scr_draw_text_outlined(910, 76 + 44 + menu_y_offset - 32, string_upper(content_type) + " " + l10n_text("ID") + ":", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(510, 76 + 44 + menu_y_offset - 32, string_upper(content_type) + " " + l10n_text("ID") + ":", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 				
 				/* Get the number of items in the JSON array */
 				var num_items = array_length(data);
@@ -214,7 +215,7 @@ function scr_draw_online_download_list()
 					scr_draw_text_outlined(32, 86 + download_online_y + menu_y_offset, string(online_download_index), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
 					
 					/* Write the ID */
-					scr_draw_text_outlined(510, 76 + download_online_y + menu_y_offset, string_upper(content_type) + " " + l10n_text("ID") + ": " + string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					scr_draw_text_outlined(510, 76 + download_online_y + menu_y_offset, string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
 					
 					/* Write date of upload */
 					scr_draw_text_outlined(510, 96 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.5, c_menu_outline, selected_download_c_menu_fill, 1);

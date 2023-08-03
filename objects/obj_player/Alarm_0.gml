@@ -445,6 +445,8 @@ if (can_initialize_custom_character)
 	voice_scream_10 = getVoice(["scream_10.ogg", "scream10.ogg"]);
 	#endregion /* Get voices for scream 1 through 10 END */
 	
+	scr_player_move_choose_voice_clips(); /* Run this code in obj player alarm 0 event first, so every voice variable get assigned something at start */
+	
 	#endregion /* Voices END */
 	
 	#endregion /* Play as Custom character END */

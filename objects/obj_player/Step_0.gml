@@ -18,10 +18,6 @@ if (current_file != global.file)
 
 scr_player_move_save_whole_level_as_screenshot();
 
-scr_player_move_choose_voice_clips();
-
-room_speed = global.max_fps; /* Room Speed */
-
 scr_start_intro_animations();
 
 #region /* Restart Level */
@@ -64,26 +60,14 @@ if (global.quit_level)
 	
 	if (global.quit_to_map || global.quit_to_title)
 	{
-		if (!instance_exists(obj_camera.player1))
-			global.player1_can_play = false;
-		
-		if (!instance_exists(obj_camera.player2))
-			global.player2_can_play = false;
-		
-		if (!instance_exists(obj_camera.player3))
-			global.player3_can_play = false;
-		
-		if (!instance_exists(obj_camera.player4))
-			global.player4_can_play = false;
+		/* Player availability check (assuming these variables control player availability) */
+		global.player1_can_play = !instance_exists(obj_camera.player1);
+		global.player2_can_play = !instance_exists(obj_camera.player2);
+		global.player3_can_play = !instance_exists(obj_camera.player3);
+		global.player4_can_play = !instance_exists(obj_camera.player4);
 		
 		global.quit_level = false;
-		
-		if (global.quit_to_map)
-			room_goto(rm_world_map);
-		else
-			room_goto(rm_title);
-		
-		/* Only set these to false after going to room */
+		room_goto(global.quit_to_map ? rm_world_map : rm_title);
 		global.quit_to_map = false;
 		global.quit_to_title = false;
 	}
@@ -107,282 +91,120 @@ if (!audio_is_playing(global.ambience_underwater))
 #endregion /* Play Underwater Ambience END */
 
 #region /* Music Pitch */
-if (global.time_countdown < 100)
-&& (global.enable_time_countdown)
-&& (allow_timeup)
+if ((global.time_countdown < 100) && (global.enable_time_countdown) && (allow_timeup))
 {
 	audio_sound_pitch(global.music, music_pitch + 0.3);
 	audio_sound_pitch(global.music_underwater, music_pitch + 0.3);
-	if (crouch)
-	|| (ground_pound == 1)
-	&& (place_meeting(x, y + sprite_height, obj_wall))
-	{
-		music_pitch = lerp(music_pitch, 0.95, 0.001);
-	}
-	else
-	{
-		music_pitch = lerp(music_pitch, 1, 0.01);
-	}
 }
 else
 {
 	audio_sound_pitch(global.music, music_pitch);
 	audio_sound_pitch(global.music_underwater, music_pitch);
-	if (crouch)
-	|| (ground_pound == 1)
-	&& (place_meeting(x, y + sprite_height, obj_wall))
-	{
-		music_pitch = lerp(music_pitch, 0.95, 0.001);
-	}
-	else
-	{
-		music_pitch = lerp(music_pitch, 1, 0.01);
-	}
 }
 #endregion /* Music Pitch END */
 
-#region /* Make sure the heart stays on the character if you spawn from a checkpoint */
-if (instance_exists(obj_checkpoint))
-&& (place_meeting(x, y, obj_checkpoint))
-&& (instance_exists(obj_camera))
-&& (place_meeting(x, y, obj_camera))
-{
-	if (obj_camera.iris_xscale < 0.3)
-	|| (obj_camera.iris_yscale < 0.3)
-	{
-			
-		xx_heart = x;
-		yy_heart = y;
-	}
-}
-#endregion /* Make sure the heart stays on the character if you spawn from a checkpoint END */
-
 #region /* Winning the level and transitioning to the next area */
-if (!place_meeting(x, y, obj_checkpoint))
-&& (instance_exists(obj_camera))
-&& (obj_camera.iris_xscale < 3)
+var intro_anim_done = intro_animation == "";
+var goal_clear_rate = goal && global.time_countdown_bonus <= 0;
+
+if (obj_camera.iris_xscale < 3)
 {
-	
-	#region /* Don't go outside view boundary */
-	if (goal)
-	&& (global.time_countdown_bonus <= 0)
+	if (goal_clear_rate && obj_camera.iris_xscale <= 0.01 && obj_camera.iris_yscale <= 0.001)
 	{
-		global.level_clear_rate = "clear"; /* Set the level_clear_rate to clear as soon as you get the goal */
-		if (instance_exists(obj_camera))
-		&& (obj_camera.iris_xscale <= 0.01)
+		audio_stop_all();
+		global.checkpoint_x = 0;
+		global.checkpoint_y = 0;
+		global.checkpoint_millisecond = 0;
+		global.checkpoint_second = 0;
+		global.checkpoint_minute = 0;
+		global.checkpoint_realmillisecond = 0;
+		global.lives_until_assist = 0;
+		scr_save_level(); /* Important that you save all level information here, before going back to the map screen, but after setting level_clear_rate to clear */
+
+		if (global.actually_play_edited_level == false && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
 		{
-			if (obj_camera.iris_yscale <= 0.001)
-			{
-				audio_stop_all();
-				global.checkpoint_x = 0;
-				global.checkpoint_y = 0;
-				global.checkpoint_millisecond = 0;
-				global.checkpoint_second = 0;
-				global.checkpoint_minute = 0;
-				global.checkpoint_realmillisecond = 0;
-				global.lives_until_assist = 0;
-				scr_save_level(); /* Important that you save all level information here, before going back to map screen, but after setting level_clear_rate to clear */
-				if (global.actually_play_edited_level == false)
-				&& (global.play_edited_level)
-				&& (global.character_select_in_this_menu == "level_editor")
-				{
-					global.actually_play_edited_level = false;
-					global.play_edited_level = false;
-					room_restart();
-				}
-				else
-				if (global.actually_play_edited_level)
-				&& (global.play_edited_level)
-				&& (global.character_select_in_this_menu == "level_editor")
-				{
-					global.actually_play_edited_level = false;
-					global.play_edited_level = false;
-					if (!instance_exists(obj_camera.player1))
-					{
-						global.player1_can_play = false;
-					}
-					if (!instance_exists(obj_camera.player2))
-					{
-						global.player2_can_play = false;
-					}
-					if (!instance_exists(obj_camera.player3))
-					{
-						global.player3_can_play = false;
-					}
-					if (!instance_exists(obj_camera.player4))
-					{
-						global.player4_can_play = false;
-					}
-					room_goto(rm_title);
-				}
-				else
-				if (obj_camera.after_goal_go_to_this_level >= 0)
-				{
-					global.select_level_index = obj_camera.after_goal_go_to_this_level;
-					scr_update_all_backgrounds();
-					if (!instance_exists(obj_camera.player1))
-					{
-						global.player1_can_play = false;
-					}
-					if (!instance_exists(obj_camera.player2))
-					{
-						global.player2_can_play = false;
-					}
-					if (!instance_exists(obj_camera.player3))
-					{
-						global.player3_can_play = false;
-					}
-					if (!instance_exists(obj_camera.player4))
-					{
-						global.player4_can_play = false;
-					}
-					room_goto(rm_leveleditor);
-				}
-				else
-				{
-					if (!instance_exists(obj_camera.player1))
-					{
-						global.player1_can_play = false;
-					}
-					if (!instance_exists(obj_camera.player2))
-					{
-						global.player2_can_play = false;
-					}
-					if (!instance_exists(obj_camera.player3))
-					{
-						global.player3_can_play = false;
-					}
-					if (!instance_exists(obj_camera.player4))
-					{
-						global.player4_can_play = false;
-					}
-					room_goto(rm_world_map);
-				}
-			}
-			else
-			{
-				if (x > room_width + 32)
-				{
-					x = room_width + 32;
-					hspeed = 0;
-					vspeed = 0;
-					friction = 500;
-					visible = false;
-				}
-			}
+			global.actually_play_edited_level = false;
+			global.play_edited_level = false;
+			room_restart();
 		}
-	}
-	#endregion /* Don't go outside view boundary END */
-	
-	else
-	{
-		
-		#region /* Don't go outside view */
-		if (x < camera_get_view_x(view_camera[view_current]))
-		&& (instance_number(obj_player) >= 2)
-		&& (intro_animation = "")
+		else if (global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
 		{
-			x = camera_get_view_x(view_camera[view_current]);
+			global.actually_play_edited_level = false;
+			global.play_edited_level = false;
+			if (!instance_exists(obj_camera.player1))
+				global.player1_can_play = false;
+			if (!instance_exists(obj_camera.player2))
+				global.player2_can_play = false;
+			if (!instance_exists(obj_camera.player3))
+				global.player3_can_play = false;
+			if (!instance_exists(obj_camera.player4))
+				global.player4_can_play = false;
+			room_goto(rm_title);
 		}
-		if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-		&& (instance_number(obj_player) >= 2)
-		&& (intro_animation = "")
+		else if (obj_camera.after_goal_go_to_this_level >= 0)
 		{
-			x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
+			global.select_level_index = obj_camera.after_goal_go_to_this_level;
+			scr_update_all_backgrounds();
+			if (!instance_exists(obj_camera.player1))
+				global.player1_can_play = false;
+			if (!instance_exists(obj_camera.player2))
+				global.player2_can_play = false;
+			if (!instance_exists(obj_camera.player3))
+				global.player3_can_play = false;
+			if (!instance_exists(obj_camera.player4))
+				global.player4_can_play = false;
+			global.part_limit = 0; /* How many objects are currently placed in the level editor */
+			global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
+			room_goto(rm_leveleditor);
 		}
-		#endregion /* Don't go outside view END */
-		
-		#region /* Don't go outside room */
-		if (intro_animation = "")
+		else
 		{
-			if (x < 0)
-			{
-				x = 0;
-			}
-			if (x > room_width)
-			{
-				x = room_width;
-			}
-			if (y < - 64)
-			{
-				y = -64;
-			}
+			if (!instance_exists(obj_camera.player1))
+				global.player1_can_play = false;
+			if (!instance_exists(obj_camera.player2))
+				global.player2_can_play = false;
+			if (!instance_exists(obj_camera.player3))
+				global.player3_can_play = false;
+			if (!instance_exists(obj_camera.player4))
+				global.player4_can_play = false;
+			room_goto(rm_world_map);
 		}
-		#endregion /* Don't go outside room END */
-		
 	}
 }
 else
+if (intro_anim_done)
 {
-	
-	#region /* Don't go outside view */
-	if (x < camera_get_view_x(view_camera[view_current]))
-	&& (instance_number(obj_player) >= 2)
-	&& (intro_animation = "")
-	&& (global.player_can_go_outside_view == false)
-	{
-		x = camera_get_view_x(view_camera[view_current]);
-	}
-	if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	&& (instance_number(obj_player) >= 2)
-	&& (intro_animation = "")
-	&& (global.player_can_go_outside_view == false)
-	{
-		x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]);
-	}
-	#endregion /* Don't go outside view END */
-	
-	#region /* Don't go outside room */
-	if (intro_animation = "")
-	{
-		if (x < 0)
-		{
-			x = 0;
-		}
-		if (x > room_width)
-		{
-			x = room_width;
-		}
-		if (y < - 64)
-		{
-			y = -64;
-		}
-	}
-	#endregion /* Don't go outside room END */
-	
+	var view_x = camera_get_view_x(view_camera[view_current]);
+	var view_y = camera_get_view_y(view_camera[view_current]);
+	var view_width = camera_get_view_width(view_camera[view_current]);
+	var view_height = camera_get_view_height(view_camera[view_current]);
+	var x_min = view_x;
+	var x_max = view_x + view_width;
+	var y_min = view_y - 64;
+	var y_max = view_y + view_height + 32;
+	x = clamp(x, x_min, x_max);
+	y = clamp(y, y_min, y_max);
 }
 #endregion /* Winning the level and transitioning to the next area END */
 
 #region /* Don't let the player outside the view too much when winning */
 if (goal)
 {
-	if (x < camera_get_view_x(view_camera[view_current]) - 32)
+	var view_x = camera_get_view_x(view_camera[view_current]);
+	var view_y = camera_get_view_y(view_camera[view_current]);
+	var view_width = camera_get_view_width(view_camera[view_current]);
+	var view_height = camera_get_view_height(view_camera[view_current]);
+	var y_max = view_y + view_height + 32;
+	
+	if (x <= view_x && hspeed < 0)
+		hspeed = 0;
+	else if (x >= view_x + view_width && hspeed > 0)
+		hspeed = 0;
+	
+	if (y >= view_y + view_height + 32)
 	{
-		x = camera_get_view_x(view_camera[view_current]) - 32;
-		if (hspeed < 0)
-		{
-			hspeed = 0;
-		}
-	}
-	if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32)
-	{
-		x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + 32;
-		if (hspeed > 0)
-		{
-			hspeed = 0;
-		}
-	}
-	if (y <- 64)
-	{
-		y = - 64;
-	}
-	if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32)
-	{
-		y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + 32;
-		if (vspeed > 0)
-		{
-			vspeed = 0;
-		}
+		y = y_max;
+		vspeed = 0;
 		gravity = 0;
 	}
 }
@@ -406,10 +228,7 @@ if (assist_invincible)
 	audio_stop_sound(music_invincible);
 	if (key_jump_hold)
 	{
-		if (!place_meeting(x, y + 1, obj_wall))
-		&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		if (!on_ground)
 		&& (dive == false)
 		&& (ground_pound == false)
 		&& (crouch == false)
@@ -485,7 +304,6 @@ if (goal)
 	{
 		hspeed += 0.3;
 	}
-	//can_move = false;
 	if (hspeed > 0)
 	{
 		image_xscale = +1;
@@ -565,10 +383,7 @@ if (vspeed > 0)
 
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
-if (!place_meeting(x, y + 1, obj_wall))
-&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+if (!on_ground)
 && (climb == false)
 && (horizontal_rope_climb == false)
 {
@@ -724,10 +539,7 @@ if (ground_pound == 1)
 }
 else
 {
-	if (!place_meeting(x, y + 1, obj_wall))
-	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (!on_ground)
 	&& (vspeed > 0)
 	{
 		if (key_left_hold)
@@ -1160,433 +972,429 @@ if (can_climb_horizontal_rope_cooldown > 0)
 	can_climb_horizontal_rope_cooldown --;
 }
 
-if (place_meeting(x, y, obj_horizontal_rope))
+#region /* Climb Horizontal Rope */
+var nearest_horizontal_rope = instance_nearest(x, y, obj_horizontal_rope);
+if (instance_place(x, y, obj_horizontal_rope))
+&& (!instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 64, obj_wall)) /*If there is no wall underneath the horizontal rope, then it's safe to grab onto the horizontal rope*/
+&& (!instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 32, obj_wall))
+&& (!instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 16, obj_wall))
+&& (!on_ground)
+&& (in_water == false)
+&& (hold_item_in_hands == "")
 {
-	var nearest_horizontal_rope = instance_nearest(x, y, obj_horizontal_rope);
-	if (!instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 64, obj_wall)) /*If there is no wall underneath the horizontal rope, then it's safe to grab onto the horizontal rope*/
-	&& (!instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 32, obj_wall))
-	&& (!instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 16, obj_wall))
-	&& (!place_meeting(x, y + 1, obj_wall))
-	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	&& (in_water == false)
-	&& (hold_item_in_hands == "")
+	if (horizontal_rope_climb == false)
+	&& (can_climb_horizontal_rope_cooldown <= 0)
 	{
-		if (horizontal_rope_climb == false)
-		&& (can_climb_horizontal_rope_cooldown <= 0)
+		midair_jumps_left = number_of_jumps;
+		horizontal_rope_climb = true;
+		jump_transition_to_fall_animation = 0;
+		climb = false;
+		jump = 0;
+		spring = false;
+		scr_audio_play(snd_catch_ivy, volume_source.sound); /* Make a sound effect that you have started cimbing */
+		scr_audio_play(voice_rope_catch, volume_source.voice);
+	}
+	if (horizontal_rope_climb)
+	{
+		if (!place_meeting(x - 32, y, obj_horizontal_rope))
+		&& (hspeed < 0)
+		|| (!place_meeting(x + 32, y, obj_horizontal_rope))
+		&& (hspeed > 0)
 		{
-			midair_jumps_left = number_of_jumps;
-			horizontal_rope_climb = true;
-			jump_transition_to_fall_animation = 0;
-			climb = false;
-			jump = 0;
-			spring = false;
-			scr_audio_play(snd_catch_ivy, volume_source.sound); /* Make a sound effect that you have started cimbing */
-			scr_audio_play(voice_rope_catch, volume_source.voice);
+			hspeed = 0;
 		}
-		if (horizontal_rope_climb)
+		angle = 0;
+		midair_jumps_left = number_of_jumps;
+		can_ground_pound = false;
+		can_dive = true;
+		chain_reaction = 0;
+		dive = false;
+		gravity = 0;
+		ground_pound = false;
+		last_standing_x = x;
+		last_standing_y = y;
+		ledge_grab_jump = false;
+		speed_max = 4;
+		spring = false;
+		stick_to_wall = false;
+		crouch = false;
+		vspeed = 0;
+		if (key_left_hold)
+		|| (key_right_hold)
 		{
-			if (!place_meeting(x - 32, y, obj_horizontal_rope))
-			&& (hspeed < 0)
-			|| (!place_meeting(x + 32, y, obj_horizontal_rope))
-			&& (hspeed > 0)
+			friction = 0.2;
+		}
+		else
+		{
+			friction = 0.5;
+		}
+		y = nearest_horizontal_rope.y + climb_under_y_offset;
+		
+		#region /* Spinning on horizontal rope */
+		if (key_up)
+		&& (!key_down)
+		&& (!place_meeting(x, y - 16, obj_wall))
+		&& (!place_meeting(x, y - 32, obj_wall))
+		&& (!place_meeting(x, y - 48, obj_wall))
+		&& (!place_meeting(x, y - 64, obj_wall))
+		&& (simple_controls == false)
+		{
+			friction = 0.5; /* Make the character stop horizontal movement sooner when spinning on horizontal rope */
+				
+			#region /* Start spinning on rope */
+			if (place_meeting(x - 1, y, obj_wall))
+			|| (place_meeting(x - 4, y - 16, obj_wall))
+			|| (place_meeting(x - 4, y - 32, obj_wall))
+			|| (place_meeting(x - 4, y - 48, obj_wall))
+			|| (place_meeting(x - 4, y - 64, obj_wall))
 			{
+				x ++;
 				hspeed = 0;
 			}
-			angle = 0;
-			midair_jumps_left = number_of_jumps;
-			can_ground_pound = false;
-			can_dive = true;
-			chain_reaction = 0;
-			dive = false;
-			gravity = 0;
-			ground_pound = false;
-			last_standing_x = x;
-			last_standing_y = y;
-			ledge_grab_jump = false;
-			speed_max = 4;
-			spring = false;
-			stick_to_wall = false;
-			crouch = false;
-			vspeed = 0;
-			if (key_left_hold)
-			|| (key_right_hold)
+			else
+			if (place_meeting(x + 1, y, obj_wall))
+			|| (place_meeting(x + 4, y - 16, obj_wall))
+			|| (place_meeting(x + 4, y - 32, obj_wall))
+			|| (place_meeting(x + 4, y - 48, obj_wall))
+			|| (place_meeting(x + 4, y - 64, obj_wall))
 			{
-				friction = 0.2;
+				x --;
+				hspeed = 0;
+			}
+			if (image_index <= 5)
+			&& (image_speed > 0.3)
+			{
+				instance_create_depth(x, y, 0, obj_block_break);
+				instance_create_depth(x, y + 32, 0, obj_block_break);
+				instance_create_depth(x, y + 64, 0, obj_block_break);
+			}
+			else
+			if (image_index >= 5)
+			&& (image_speed > 0.3)
+			{
+				instance_create_depth(x, y, 0, obj_block_break);
+				instance_create_depth(x, y - 32, 0, obj_block_break);
+				instance_create_depth(x, y - 64, 0, obj_block_break);
+			}
+			if (image_speed < 1)
+			{
+				if (sprite_climb_under_spin > noone){sprite_index = sprite_climb_under_spin;}else
+				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 			}
 			else
 			{
-				friction = 0.5;
+				if (sprite_climb_under_spin_fast> noone){sprite_index = sprite_climb_under_spin_fast;}else
+				if (sprite_climb_under_spin > noone){sprite_index = sprite_climb_under_spin;}else
+				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 			}
-			y = nearest_horizontal_rope.y + climb_under_y_offset;
+			if (image_index >= image_number - 1)
+			&& (image_number > 1)
+			{
+				scr_gamepad_vibration(player, 0.2, 10);
+				scr_audio_play(snd_swing, volume_source.sound);
+				image_index = 0;
+			}
+			image_speed += 0.02;
+			if (image_speed > 1)
+			{
+				image_speed = 1;
+			}
+			#endregion /* Start spinning on rope END */
+				
+			#region /* Jump from rope spin */
+			if (key_jump)
+			{
+				scr_audio_play(snd_jump, volume_source.sound);
+				scr_gamepad_vibration(player, 0.4, 10);
+				can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 35;
+				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
+				y -= 64;
+				climb = false;
+				horizontal_rope_climb = false;
+				spring_animation = 0;
+				spring = true;
+				
+				#region /* Do a charged upward jump depending on how fast you spin */
+				if (image_speed >= 1)
+				{
+					vspeed = -triple_jump_height * 1.25;
+					scr_audio_play(voice_jump_rope, volume_source.voice);
+				}
+				else
+				if (image_speed >= 0.9)
+				{
+					vspeed = -triple_jump_height * 1.125;
+				}
+				else
+				if (image_speed >= 0.7)
+				{
+					vspeed = -triple_jump_height;
+				}
+				else
+				{
+					vspeed = -normal_jump_height; /* Do the normal upward jump, when you haven't spinned fast enough */
+				}
+				#endregion /* Do a charged upward jump depending on how fast you spin END */
+				
+			}
+			#endregion /* Jump from rope spin END */
+				
+		}
+		#endregion /* Spinning on horizontal rope END */
 		
-			#region /* Spinning on horizontal rope */
-			if (key_up)
-			&& (!key_down)
-			&& (!place_meeting(x, y - 16, obj_wall))
+		else
+		
+		#region /* Jump upward normally from rope spin if drop down from rope doesn't use jump */
+		if (drop_from_rope == 0) /* Drop down from rope: Release Jump */
+		&& (key_jump)
+		|| (drop_from_rope == 2) /* Drop down from rope: Only Down */
+		&& (key_jump)
+		|| (drop_from_rope == 4) /* Drop down from rope: Down + Jump */
+		&& (key_jump)
+		&& (!key_down)
+		{
+			if (!place_meeting(x, y - 16, obj_wall))
 			&& (!place_meeting(x, y - 32, obj_wall))
 			&& (!place_meeting(x, y - 48, obj_wall))
 			&& (!place_meeting(x, y - 64, obj_wall))
-			&& (simple_controls == false)
 			{
-				friction = 0.5; /* Make the character stop horizontal movement sooner when spinning on horizontal rope */
-				
-				#region /* Start spinning on rope */
+				scr_audio_play(snd_jump, volume_source.sound);
+				can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 35;
+				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
+				y -= 64;
+				climb = false;
+				horizontal_rope_climb = false;
+				spring_animation = 0;
+				spring = true;
+				vspeed = -normal_jump_height; /* Do the normal upward jump, no chargeup */
+			}
+		}
+		#endregion /* Jump upward normally from rope spin if drop down from rope doesn't use jump END */
+		
+		else
+		
+		#region /* Drop down from rope */
+		if (drop_from_rope == 0) /* Drop down from rope: Release Jump */
+		&& (!key_jump_hold)
+		|| (drop_from_rope == 1) /* Drop down from rope: Down or Jump */
+		&& (key_down)
+		|| (drop_from_rope == 1) /* Drop down from rope: Down or Jump */
+		&& (key_jump)
+		|| (drop_from_rope == 2) /* Drop down from rope: Only Down */
+		&& (key_down)
+		|| (drop_from_rope == 3) /* Drop down from rope: Only Jump */
+		&& (key_jump)
+		|| (drop_from_rope == 4) /* Drop down from rope: Down + Jump */
+		&& (key_down)
+		&& (key_jump)
+		{
+			if (!key_up)
+			{
 				if (place_meeting(x - 1, y, obj_wall))
-				|| (place_meeting(x - 4, y - 16, obj_wall))
-				|| (place_meeting(x - 4, y - 32, obj_wall))
-				|| (place_meeting(x - 4, y - 48, obj_wall))
-				|| (place_meeting(x - 4, y - 64, obj_wall))
 				{
 					x ++;
-					hspeed = 0;
 				}
 				else
 				if (place_meeting(x + 1, y, obj_wall))
-				|| (place_meeting(x + 4, y - 16, obj_wall))
-				|| (place_meeting(x + 4, y - 32, obj_wall))
-				|| (place_meeting(x + 4, y - 48, obj_wall))
-				|| (place_meeting(x + 4, y - 64, obj_wall))
 				{
 					x --;
-					hspeed = 0;
 				}
-				if (image_index <= 5)
-				&& (image_speed > 0.3)
-				{
-					instance_create_depth(x, y, 0, obj_block_break);
-					instance_create_depth(x, y + 32, 0, obj_block_break);
-					instance_create_depth(x, y + 64, 0, obj_block_break);
-				}
-				else
-				if (image_index >= 5)
-				&& (image_speed > 0.3)
-				{
-					instance_create_depth(x, y, 0, obj_block_break);
-					instance_create_depth(x, y - 32, 0, obj_block_break);
-					instance_create_depth(x, y - 64, 0, obj_block_break);
-				}
-				if (image_speed < 1)
-				{
-					if (sprite_climb_under_spin > noone){sprite_index = sprite_climb_under_spin;}else
-					if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-				}
-				else
-				{
-					if (sprite_climb_under_spin_fast> noone){sprite_index = sprite_climb_under_spin_fast;}else
-					if (sprite_climb_under_spin > noone){sprite_index = sprite_climb_under_spin;}else
-					if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-				}
-				if (image_index >= image_number - 1)
-				&& (image_number > 1)
-				{
-					scr_gamepad_vibration(player, 0.2, 10);
-					scr_audio_play(snd_swing, volume_source.sound);
-					image_index = 0;
-				}
-				image_speed += 0.02;
-				if (image_speed > 1)
-				{
-					image_speed = 1;
-				}
-				#endregion /* Start spinning on rope END */
-				
-				#region /* Jump from rope spin */
-				if (key_jump)
-				{
-					scr_audio_play(snd_jump, volume_source.sound);
-					scr_gamepad_vibration(player, 0.4, 10);
-					can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 35;
-					midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
-					y -= 64;
-					climb = false;
-					horizontal_rope_climb = false;
-					spring_animation = 0;
-					spring = true;
-				
-					#region /* Do a charged upward jump depending on how fast you spin */
-					if (image_speed >= 1)
-					{
-						vspeed = -triple_jump_height * 1.25;
-						scr_audio_play(voice_jump_rope, volume_source.voice);
-					}
-					else
-					if (image_speed >= 0.9)
-					{
-						vspeed = -triple_jump_height * 1.125;
-					}
-					else
-					if (image_speed >= 0.7)
-					{
-						vspeed = -triple_jump_height;
-					}
-					else
-					{
-						vspeed = -normal_jump_height; /* Do the normal upward jump, when you haven't spinned fast enough */
-					}
-					#endregion /* Do a charged upward jump depending on how fast you spin END */
-				
-				}
-				#endregion /* Jump from rope spin END */
-				
-			}
-			#endregion /* Spinning on horizontal rope END */
-		
-			else
-		
-			#region /* Jump upward normally from rope spin if drop down from rope doesn't use jump */
-			if (drop_from_rope == 0) /* Drop down from rope: Release Jump */
-			&& (key_jump)
-			|| (drop_from_rope == 2) /* Drop down from rope: Only Down */
-			&& (key_jump)
-			|| (drop_from_rope == 4) /* Drop down from rope: Down + Jump */
-			&& (key_jump)
-			&& (!key_down)
-			{
-				if (!place_meeting(x, y - 16, obj_wall))
-				&& (!place_meeting(x, y - 32, obj_wall))
-				&& (!place_meeting(x, y - 48, obj_wall))
-				&& (!place_meeting(x, y - 64, obj_wall))
-				{
-					scr_audio_play(snd_jump, volume_source.sound);
-					can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 35;
-					midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
-					y -= 64;
-					climb = false;
-					horizontal_rope_climb = false;
-					spring_animation = 0;
-					spring = true;
-					vspeed = -normal_jump_height; /* Do the normal upward jump, no chargeup */
-				}
-			}
-			#endregion /* Jump upward normally from rope spin if drop down from rope doesn't use jump END */
-		
-			else
-		
-			#region /* Drop down from rope */
-			if (drop_from_rope == 0) /* Drop down from rope: Release Jump */
-			&& (!key_jump_hold)
-			|| (drop_from_rope == 1) /* Drop down from rope: Down or Jump */
-			&& (key_down)
-			|| (drop_from_rope == 1) /* Drop down from rope: Down or Jump */
-			&& (key_jump)
-			|| (drop_from_rope == 2) /* Drop down from rope: Only Down */
-			&& (key_down)
-			|| (drop_from_rope == 3) /* Drop down from rope: Only Jump */
-			&& (key_jump)
-			|| (drop_from_rope == 4) /* Drop down from rope: Down + Jump */
-			&& (key_down)
-			&& (key_jump)
-			{
-				if (!key_up)
-				{
-					if (place_meeting(x - 1, y, obj_wall))
-					{
-						x ++;
-					}
-					else
-					if (place_meeting(x + 1, y, obj_wall))
-					{
-						x --;
-					}
-					can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 9; /* Cooldown timer before you can start climbing again. The deviding number should be high enough so you grab a rope below you but not grabbing the same rope you were just on */
-					can_ground_pound = false;
-					climb = false;
-					horizontal_rope_climb = false;
-					stomp_spin = false;
-					midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
-				}
-			}
-			#endregion /* Drop down from rope END */
-		
-			else
-		
-			#region /* Climb left on horizontal rope */
-			if (key_left_hold)
-			&& (!key_right_hold)
-			&& (!place_meeting(x - 1, y, obj_wall))
-			&& (!place_meeting(x - 10, y, obj_spikes))
-			&& (taken_damage <= taken_damage_freezetime)
-			{
-				image_xscale = -1;
-				if (place_meeting(x - 32, y, obj_horizontal_rope))
-				{
-					if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
-					if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-					if (key_sprint)
-					|| (double_tap_left == 3)
-					{
-						hspeed -= 0.5;
-						speed_max = speed_max_run;
-						image_speed = speed / 10 + 0.1;
-					}
-					else
-					{
-						hspeed -= 0.5;
-						speed_max = speed_max_walk;
-						image_speed = speed / 10 + 0.1;
-					}
-					if (!audio_is_playing(snd_move_ivy))
-					{
-						scr_audio_play(snd_move_ivy, volume_source.sound);
-					}
-				}
-				else
-				{
-					hspeed = 0;
-				}
-			}
-			#endregion /* Climb left on horizontal rope END */
-		
-			else
-		
-			#region /* Climb right on horizontal rope */
-			if (key_right_hold)
-			&& (!key_left_hold)
-			&& (!place_meeting(x + 1, y, obj_wall))
-			&& (!place_meeting(x + 10, y, obj_spikes))
-			&& (taken_damage <= taken_damage_freezetime)
-			{
-				image_xscale = +1;
-				if (place_meeting(x + 32, y, obj_horizontal_rope))
-				{
-					if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
-					if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-					if (key_sprint)
-					|| (double_tap_right == 3)
-					{
-						hspeed += 0.5;
-						speed_max = speed_max_run;
-						image_speed = speed / 10 + 0.1;
-					}
-					else
-					{
-						hspeed += 0.5;
-						speed_max = speed_max_walk;
-						image_speed = speed / 10 + 0.1;
-					}
-					if (!audio_is_playing(snd_move_ivy))
-					{
-						scr_audio_play(snd_move_ivy, volume_source.sound);
-					}
-				}
-				else
-				{
-					hspeed = 0;
-				}
-			}
-			#endregion /* Climb right on horizontal rope END */
-		
-			else
-		
-			#region /* Look up when on horizontal rope */
-			if (key_up)
-			{
-				if (speed > 0)
-				{
-					if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
-					if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-				}
-				else
-				{
-					if (sprite_climb_under_look_up > noone){sprite_index = sprite_climb_under_look_up;}else
-					if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-				}
-				image_speed = 0.5;
-			}
-			#endregion /* Look up when on horizontal rope END */
-
-			else
-			{
-				if (speed > 0)
-				{
-					if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
-					if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-				}
-				else
-				if (sprite_climb_under_still > noone)
-				{
-					sprite_index = sprite_climb_under_still;
-				}
-				else
-				{
-					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-				}
-			}
-			if (instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 64, obj_wall)) /*If there is a wall underneath the horizontal rope, then release grab from horizontal rope*/
-			|| (instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 32, obj_wall))
-			|| (instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 16, obj_wall))
-			{
-				can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 10;
+				can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 9; /* Cooldown timer before you can start climbing again. The deviding number should be high enough so you grab a rope below you but not grabbing the same rope you were just on */
 				can_ground_pound = false;
 				climb = false;
 				horizontal_rope_climb = false;
 				stomp_spin = false;
+				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 			}
-		
-			#region /* Bump into wall on left side when climbing horizontal rope */
-			if (place_meeting(x - 1, y, obj_wall))
-			|| (place_meeting(x - 10, y, obj_spikes))
-			|| (!place_meeting(x - 1, y, obj_horizontal_rope))
-			{
-				if (hspeed < 0)
-				{
-					hspeed = 0;
-				}
-				if (key_left_hold)
-				&& (!key_right_hold)
-				&& (taken_damage <= taken_damage_freezetime)
-				{
-					image_xscale = -1;
-					if (!audio_is_playing(snd_bump))
-					{
-						scr_audio_play(snd_bump, volume_source.sound);
-					}
-				}
-			}
-			#endregion /* Bump into wall on left side when climbing horizontal rope END */
-		
-			else
-		
-			#region /* Bump into wall on right side when climbing horizontal rope */
-			if (place_meeting(x + 1, y, obj_wall))
-			|| (place_meeting(x + 10, y, obj_spikes))
-			|| (!place_meeting(x + 1, y, obj_horizontal_rope))
-			{
-				if (hspeed > 0)
-				{
-					hspeed = 0;
-				}
-				if (key_right_hold)
-				&& (!key_left_hold)
-				&& (taken_damage <= taken_damage_freezetime)
-				{
-					image_xscale = +1;
-					if (!audio_is_playing(snd_bump))
-					{
-						scr_audio_play(snd_bump, volume_source.sound);
-					}
-				}
-			}
-			#endregion /* Bump into wall on right side when climbing horizontal rope END */
-		
 		}
+		#endregion /* Drop down from rope END */
+		
+		else
+		
+		#region /* Climb left on horizontal rope */
+		if (key_left_hold)
+		&& (!key_right_hold)
+		&& (!place_meeting(x - 1, y, obj_wall))
+		&& (!place_meeting(x - 10, y, obj_spikes))
+		&& (taken_damage <= taken_damage_freezetime)
+		{
+			image_xscale = -1;
+			if (place_meeting(x - 32, y, obj_horizontal_rope))
+			{
+				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
+				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (key_sprint)
+				|| (double_tap_left == 3)
+				{
+					hspeed -= 0.5;
+					speed_max = speed_max_run;
+					image_speed = speed / 10 + 0.1;
+				}
+				else
+				{
+					hspeed -= 0.5;
+					speed_max = speed_max_walk;
+					image_speed = speed / 10 + 0.1;
+				}
+				if (!audio_is_playing(snd_move_ivy))
+				{
+					scr_audio_play(snd_move_ivy, volume_source.sound);
+				}
+			}
+			else
+			{
+				hspeed = 0;
+			}
+		}
+		#endregion /* Climb left on horizontal rope END */
+		
+		else
+		
+		#region /* Climb right on horizontal rope */
+		if (key_right_hold)
+		&& (!key_left_hold)
+		&& (!place_meeting(x + 1, y, obj_wall))
+		&& (!place_meeting(x + 10, y, obj_spikes))
+		&& (taken_damage <= taken_damage_freezetime)
+		{
+			image_xscale = +1;
+			if (place_meeting(x + 32, y, obj_horizontal_rope))
+			{
+				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
+				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (key_sprint)
+				|| (double_tap_right == 3)
+				{
+					hspeed += 0.5;
+					speed_max = speed_max_run;
+					image_speed = speed / 10 + 0.1;
+				}
+				else
+				{
+					hspeed += 0.5;
+					speed_max = speed_max_walk;
+					image_speed = speed / 10 + 0.1;
+				}
+				if (!audio_is_playing(snd_move_ivy))
+				{
+					scr_audio_play(snd_move_ivy, volume_source.sound);
+				}
+			}
+			else
+			{
+				hspeed = 0;
+			}
+		}
+		#endregion /* Climb right on horizontal rope END */
+		
+		else
+		
+		#region /* Look up when on horizontal rope */
+		if (key_up)
+		{
+			if (speed > 0)
+			{
+				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
+				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+			}
+			else
+			{
+				if (sprite_climb_under_look_up > noone){sprite_index = sprite_climb_under_look_up;}else
+				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+			}
+			image_speed = 0.5;
+		}
+		#endregion /* Look up when on horizontal rope END */
+
+		else
+		{
+			if (speed > 0)
+			{
+				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
+				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+			}
+			else
+			if (sprite_climb_under_still > noone)
+			{
+				sprite_index = sprite_climb_under_still;
+			}
+			else
+			{
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+			}
+		}
+		if (instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 64, obj_wall)) /*If there is a wall underneath the horizontal rope, then release grab from horizontal rope*/
+		|| (instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 32, obj_wall))
+		|| (instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 16, obj_wall))
+		{
+			can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 10;
+			can_ground_pound = false;
+			climb = false;
+			horizontal_rope_climb = false;
+			stomp_spin = false;
+		}
+		
+		#region /* Bump into wall on left side when climbing horizontal rope */
+		if (place_meeting(x - 1, y, obj_wall))
+		|| (place_meeting(x - 10, y, obj_spikes))
+		|| (!place_meeting(x - 1, y, obj_horizontal_rope))
+		{
+			if (hspeed < 0)
+			{
+				hspeed = 0;
+			}
+			if (key_left_hold)
+			&& (!key_right_hold)
+			&& (taken_damage <= taken_damage_freezetime)
+			{
+				image_xscale = -1;
+				if (!audio_is_playing(snd_bump))
+				{
+					scr_audio_play(snd_bump, volume_source.sound);
+				}
+			}
+		}
+		#endregion /* Bump into wall on left side when climbing horizontal rope END */
+		
+		else
+		
+		#region /* Bump into wall on right side when climbing horizontal rope */
+		if (place_meeting(x + 1, y, obj_wall))
+		|| (place_meeting(x + 10, y, obj_spikes))
+		|| (!place_meeting(x + 1, y, obj_horizontal_rope))
+		{
+			if (hspeed > 0)
+			{
+				hspeed = 0;
+			}
+			if (key_right_hold)
+			&& (!key_left_hold)
+			&& (taken_damage <= taken_damage_freezetime)
+			{
+				image_xscale = +1;
+				if (!audio_is_playing(snd_bump))
+				{
+					scr_audio_play(snd_bump, volume_source.sound);
+				}
+			}
+		}
+		#endregion /* Bump into wall on right side when climbing horizontal rope END */
+		
 	}
 }
 #endregion /* Climb Horizontal Rope END */
@@ -1835,84 +1643,22 @@ if (in_water)
 {
 	can_ground_pound = false;
 	chain_reaction = 0;
-
-#region /* Crouch Underwater */
-if (key_crouch_hold) /* Holding the crouch button */
-&& (allow_crouch) /* Can crouch */
-&& (crouch == false) /* Not currently crouching */
-&& (can_move)
-&& (ground_pound == false)
-&& (dive == false)
-&& (on_ground)
-{
-	crouch = true;
-	stick_to_wall = false;
-	y += 16;
-	if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-	if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-	if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-	if (sprite_mask_crouch >= 0)
-	{
-		mask_index = sprite_mask_crouch;
-	}
-	else
-	{
-		mask_index = spr_player_stand;
-	}
-	scr_audio_play(snd_squat, volume_source.sound);
-}
-#endregion /* Crouch Underwater END */
-
-else
-
-#region /* Don't Crouch Underwater */
-if (!key_crouch_hold)
-&& (!place_meeting(x, y - 8, obj_wall))
-&& (crouch)
-{
-	if (vspeed >= 0)
-	{
-		crouch = false;
-		y -= 16;
-		draw_xscale = 0.75;
-		draw_yscale = 1.25;
-		if (sprite_mask >= 0)
-		{
-			mask_index = sprite_mask;
-		}
-		else
-		{
-			mask_index = spr_player_stand;
-		}
-		scr_audio_play(snd_rise, volume_source.sound);
-	}
-}
-#endregion /* Don't Crouch Underwater END */
-
-if (crouch)
-{
-	stick_to_wall = false;
-	if (on_ground)
-	{
-		if (abs(hspeed) > 3)
-		{
-			if (!audio_is_playing(snd_skidding))
-			{
-				scr_audio_play(snd_skidding, volume_source.sound);
-			}
-			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-		}
-		else
-		{
-			if (audio_is_playing(snd_skidding))
-			{
-				audio_stop_sound(snd_skidding);
-			}
-		}
-	}
-	if (abs(hspeed) >= 2.5)
+	
+	#region /* Crouch Underwater */
+	if (key_crouch_hold) /* Holding the crouch button */
+	&& (allow_crouch) /* Can crouch */
+	&& (crouch == false) /* Not currently crouching */
+	&& (can_move)
+	&& (ground_pound == false)
+	&& (dive == false)
 	&& (on_ground)
 	{
+		crouch = true;
+		stick_to_wall = false;
+		y += 16;
+		if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
+		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+		if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 		if (sprite_mask_crouch >= 0)
 		{
 			mask_index = sprite_mask_crouch;
@@ -1921,28 +1667,69 @@ if (crouch)
 		{
 			mask_index = spr_player_stand;
 		}
-		if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
-		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-		if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-		if (image_index > image_number - 1)
+		scr_audio_play(snd_squat, volume_source.sound);
+	}
+	#endregion /* Crouch Underwater END */
+	
+	else
+	
+	#region /* Don't Crouch Underwater */
+	if (!key_crouch_hold)
+	&& (!place_meeting(x, y - 8, obj_wall))
+	&& (crouch)
+	{
+		if (vspeed >= 0)
 		{
-			image_speed = 0;
-		}
-		else
-		{
-			image_speed = 0.5;
+			crouch = false;
+			y -= 16;
+			draw_xscale = 0.75;
+			draw_yscale = 1.25;
+			if (sprite_mask >= 0)
+			{
+				mask_index = sprite_mask;
+			}
+			else
+			{
+				mask_index = spr_player_stand;
+			}
+			scr_audio_play(snd_rise, volume_source.sound);
 		}
 	}
-	else
-	if (on_ground)
+	#endregion /* Don't Crouch Underwater END */
+	
+	if (crouch)
 	{
-		
-		#region /* Crouch Stand */
-		if (speed == 0)
-		&& (!key_left_hold)
-		&& (!key_right_hold)
+		stick_to_wall = false;
+		if (on_ground)
 		{
-			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
+			if (abs(hspeed) > 3)
+			{
+				if (!audio_is_playing(snd_skidding))
+				{
+					scr_audio_play(snd_skidding, volume_source.sound);
+				}
+				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+			}
+			else
+			{
+				if (audio_is_playing(snd_skidding))
+				{
+					audio_stop_sound(snd_skidding);
+				}
+			}
+		}
+		if (abs(hspeed) >= 2.5)
+		&& (on_ground)
+		{
+			if (sprite_mask_crouch >= 0)
+			{
+				mask_index = sprite_mask_crouch;
+			}
+			else
+			{
+				mask_index = spr_player_stand;
+			}
+			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
 			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
 			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 			if (image_index > image_number - 1)
@@ -1954,29 +1741,200 @@ if (crouch)
 				image_speed = 0.5;
 			}
 		}
-		#endregion /* Crouch Stand END */
-		
 		else
-		
-		#region /* Crouch Crawl */
-		if (key_left_hold)
-		|| (key_right_hold)
+		if (on_ground)
 		{
-			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
-			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-			image_speed = 0.5;
-		}
-		#endregion /* Crouch Crawl END */
 		
+			#region /* Crouch Stand */
+			if (speed == 0)
+			&& (!key_left_hold)
+			&& (!key_right_hold)
+			{
+				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (image_index > image_number - 1)
+				{
+					image_speed = 0;
+				}
+				else
+				{
+					image_speed = 0.5;
+				}
+			}
+			#endregion /* Crouch Stand END */
+		
+			else
+		
+			#region /* Crouch Crawl */
+			if (key_left_hold)
+			|| (key_right_hold)
+			{
+				if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
+				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				image_speed = 0.5;
+			}
+			#endregion /* Crouch Crawl END */
+		
+		}
+		else
+		if (!place_meeting(x, y + 1, obj_wall))
+		|| (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+		|| (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		|| (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		{
+			if (key_jump)
+			{
+				image_index = 0;
+			}
+			if (image_index > image_number - 1)
+			{
+				image_speed = 0;
+			}
+			else
+			{
+				image_speed = 0.3;
+			}
+			if (vspeed > 0)
+			{
+				if (sprite_swim_fall > noone){sprite_index = sprite_swim_fall;}else
+				if (sprite_swim > noone){sprite_index = sprite_swim;}else
+				if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+			}
+			else
+			{
+				if (sprite_swim > noone){sprite_index = sprite_swim;}else
+				if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+			}
+		}
 	}
 	else
-	if (!place_meeting(x, y + 1, obj_wall))
-	|| (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	|| (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	|| (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	if (on_ground)
 	{
+	
+		#region /* Skidding */
+		if (hspeed < 0)
+		&& (key_right_hold)
+		|| (hspeed > 0)
+		&& (key_left_hold)
+		{
+			if (!audio_is_playing(snd_skidding))
+			{
+				scr_audio_play(snd_skidding, volume_source.sound);
+			}
+			if (sprite_swim > noone){sprite_index = sprite_swim;}else
+			if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
+			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+			effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
+			if (image_index > image_number - 1)
+			{
+				image_speed = 0;
+			}
+			else
+			{
+				image_speed = 0.5;
+			}
+		}
+		#endregion /* Skidding END */
+	
+		else
+	
+		#region /* Run in Water */
+		if (hspeed <+ 0.1)
+		|| (hspeed >- 0.1)
+		{
+			if (hold_item_in_hands != "")
+			{
+				if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
+				if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
+				if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+			}
+			else
+			if (speed_dash)
+			{
+				if (sprite_swim > noone){sprite_index = sprite_swim;}else
+				if (sprite_run > noone){sprite_index = sprite_run;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+			}
+			else
+			if (abs(speed) >= 6)
+			{
+				if (sprite_swim > noone){sprite_index = sprite_swim;}else
+				if (sprite_run > noone){sprite_index = sprite_run;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+			}
+			/* Against Wall */
+			else
+			{
+				if (place_meeting(x - 1, y, obj_wall))
+				|| (place_meeting(x + 1, y, obj_wall))
+				{
+					if (sprite_swim > noone){sprite_index = sprite_swim;}else
+					if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				}
+				/* Walk */
+				else
+				{
+					if (sprite_swim > noone){sprite_index = sprite_swim;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
+					if (sprite_run > noone){sprite_index = sprite_run;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+				}
+			}
+			image_speed = speed / 13.5 +0.1;
+		}
+		#endregion /* Run in Water END */
+	
+		else
+	
+		#region /* Stand Underwater */
+		if (hspeed == 0)
+		&& (!key_left_hold)
+		&& (!key_right_hold)
+		{
+			if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
+			if (sprite_swim > noone){sprite_index = sprite_swim;}else
+			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+			if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = 0;}
+			image_speed = 0.1;
+		}
+		#endregion /* Stand Underwater END */
+	
+		#region /* Mask */
+		if (sprite_mask >= 0)
+		{
+			mask_index = sprite_mask;
+		}
+		else
+		{
+			mask_index = spr_player_stand;
+		}
+		#endregion /* Mask END */
+	
+	}
+	else
+	
+	#region /* Swimming Sprites */
+	if (!place_meeting(x, y + 1, obj_wall))
+	and(!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+	and(!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	{
+		/* Don't have skidding animations underwater */
+	
+		/* Single Swim */
 		if (key_jump)
 		{
 			image_index = 0;
@@ -2004,269 +1962,39 @@ if (crouch)
 			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
 			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 		}
-	}
-}
-else
-if (on_ground)
-{
-	
-	#region /* Skidding */
-	if (hspeed < 0)
-	&& (key_right_hold)
-	|| (hspeed > 0)
-	&& (key_left_hold)
-	{
-		if (!audio_is_playing(snd_skidding))
+		if (sprite_mask >= 0)
 		{
-			scr_audio_play(snd_skidding, volume_source.sound);
-		}
-		if (sprite_swim > noone){sprite_index = sprite_swim;}else
-		if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
-		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-		if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-		effect_create_above(ef_smoke, x, bbox_bottom, 1, c_white);
-		if (image_index > image_number - 1)
-		{
-			image_speed = 0;
+			mask_index = sprite_mask;
 		}
 		else
 		{
-			image_speed = 0.5;
+			mask_index = spr_player_stand;
 		}
 	}
-	#endregion /* Skidding END */
+	#endregion /* Swimming Sprites END */
 	
-	else
-	
-	#region /* Run in Water */
-	if (hspeed <+ 0.1)
-	|| (hspeed >- 0.1)
-	{
-		if (hold_item_in_hands != "")
-		{
-			if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
-			if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
-			if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-		}
-		else
-		if (speed_dash)
-		{
-			if (sprite_swim > noone){sprite_index = sprite_swim;}else
-			if (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
-			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-		}
-		else
-		if (abs(speed) >= 6)
-		{
-			if (sprite_swim > noone){sprite_index = sprite_swim;}else
-			if (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
-			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-		}
-		/* Against Wall */
-		else
-		{
-			if (place_meeting(x - 1, y, obj_wall))
-			|| (place_meeting(x + 1, y, obj_wall))
-			{
-				if (sprite_swim > noone){sprite_index = sprite_swim;}else
-				if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-			}
-			/* Walk */
-			else
-			{
-				if (sprite_swim > noone){sprite_index = sprite_swim;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
-				if (sprite_run > noone){sprite_index = sprite_run;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-			}
-		}
-		image_speed = speed / 13.5 +0.1;
-	}
-	#endregion /* Run in Water END */
-	
-	else
-	
-	#region /* Stand Underwater */
-	if (hspeed == 0)
-	&& (!key_left_hold)
-	&& (!key_right_hold)
-	{
-		if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
-		if (sprite_swim > noone){sprite_index = sprite_swim;}else
-		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-		if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = 0;}
-		image_speed = 0.1;
-	}
-	#endregion /* Stand Underwater END */
-	
-	#region /* Mask */
-	if (sprite_mask >= 0)
-	{
-		mask_index = sprite_mask;
-	}
-	else
-	{
-		mask_index = spr_player_stand;
-	}
-	#endregion /* Mask END */
-	
-}
-else
-
-#region /* Swimming Sprites */
-if (!place_meeting(x, y + 1, obj_wall))
-and(!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-and(!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-{
-	/* Don't have skidding animations underwater */
-	
-	/* Single Swim */
-	if (key_jump)
-	{
-		image_index = 0;
-	}
-	if (image_index > image_number - 1)
-	{
-		image_speed = 0;
-	}
-	else
-	{
-		image_speed = 0.3;
-	}
-	if (vspeed > 0)
-	{
-		if (sprite_swim_fall > noone){sprite_index = sprite_swim_fall;}else
-		if (sprite_swim > noone){sprite_index = sprite_swim;}else
-		if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
-		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-		if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-	}
-	else
-	{
-		if (sprite_swim > noone){sprite_index = sprite_swim;}else
-		if (sprite_swim_stand > noone){sprite_index = sprite_swim_stand;}else
-		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-		if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-	}
-	if (sprite_mask >= 0)
-	{
-		mask_index = sprite_mask;
-	}
-	else
-	{
-		mask_index = spr_player_stand;
-	}
-}
-#endregion /* Swimming Sprites END */
-
 }
 #endregion /* In Water Animations END */
 
 else
 {
-
-#region /* Crouch */
-if (key_crouch_hold) /* Holding the crouch button */
-&& (allow_crouch) /* Can crouch */
-&& (crouch == false) /* Not currently crouching */
-&& (can_move)
-&& (ground_pound == false)
-&& (dive == false)
-&& (on_ground)
-{
-	crouch = true;
-	draw_xscale = 1.5;
-	draw_yscale = 0.5;
-	if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-	if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-	if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 	
-	if (sprite_mask_crouch >= 0)
-	{
-		mask_index = sprite_mask_crouch;
-	}
-	else
-	{
-		mask_index = spr_player_stand;
-	}
-	if (!place_meeting(x, y + 16, obj_wall))
-	|| (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	|| (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	|| (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	{
-		y += 32;
-	}
-	scr_audio_play(snd_squat, volume_source.sound);
-}
-#endregion /* Crouch END */
-
-else
-
-#region /* Don't crouch */
-if (!key_crouch_hold)
-&& (!place_meeting(x, y - 8, obj_wall))
-&& (crouch)
-&& (vspeed >= 0)
-{
-	crouch = false;
-	y -= 16;
-	draw_xscale = 0.75;
-	draw_yscale = 1.25;
-	if (sprite_mask >= 0)
-	{
-		mask_index = sprite_mask;
-	}
-	else
-	{
-		mask_index = spr_player_stand;
-	}
-	scr_audio_play(snd_rise, volume_source.sound);
-}
-#endregion /* Don't crouch END */
-
-/* Roll moveset removed for now, until properly implemented */
-
-if (crouch)
-{
-	
-	#region /* Destroy blocks above you when you jump while crouching */
-	if (key_jump)
-	{
-		with (instance_create_depth(x, bbox_top, 0, obj_block_break))
-		{
-			can_break_other_blocks = true;
-			image_xscale = 0.75;
-			image_yscale = 0.75;
-		}
-	}
-	#endregion /* Destroy blocks above you when you jump while crouching END */
-	
-	if (on_ground)
-	{
-		if (abs(hspeed) > 3)
-		{
-			if (!audio_is_playing(snd_skidding))
-			{
-				scr_audio_play(snd_skidding, volume_source.sound);
-			}
-			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-			scr_gamepad_vibration(player, 0.1, 10);
-		}
-		else
-		if (audio_is_playing(snd_skidding))
-		{
-			audio_stop_sound(snd_skidding);
-		}
-	}
-	if (abs(hspeed) >= 2.5)
+	#region /* Crouch */
+	if (key_crouch_hold) /* Holding the crouch button */
+	&& (allow_crouch) /* Can crouch */
+	&& (crouch == false) /* Not currently crouching */
+	&& (can_move)
+	&& (ground_pound == false)
+	&& (dive == false)
 	&& (on_ground)
 	{
+		crouch = true;
+		draw_xscale = 1.5;
+		draw_yscale = 0.5;
+		if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
+		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+		if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+	
 		if (sprite_mask_crouch >= 0)
 		{
 			mask_index = sprite_mask_crouch;
@@ -2275,79 +2003,90 @@ if (crouch)
 		{
 			mask_index = spr_player_stand;
 		}
-		if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
-		if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-		if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-		if (image_index > image_number - 1)
+		if (!place_meeting(x, y + 16, obj_wall))
+		|| (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+		|| (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		|| (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		{
-			image_speed = 0;
+			y += 32;
+		}
+		scr_audio_play(snd_squat, volume_source.sound);
+	}
+	#endregion /* Crouch END */
+	
+	else
+	
+	#region /* Don't crouch */
+	if (!key_crouch_hold)
+	&& (!place_meeting(x, y - 8, obj_wall))
+	&& (crouch)
+	&& (vspeed >= 0)
+	{
+		crouch = false;
+		y -= 16;
+		draw_xscale = 0.75;
+		draw_yscale = 1.25;
+		if (sprite_mask >= 0)
+		{
+			mask_index = sprite_mask;
 		}
 		else
 		{
-			image_speed = 0.5;
+			mask_index = spr_player_stand;
 		}
+		scr_audio_play(snd_rise, volume_source.sound);
 	}
-	else
-	if (on_ground)
+	#endregion /* Don't crouch END */
+	
+	/* Roll moveset removed for now, until properly implemented */
+	
+	if (crouch)
 	{
-		
-		#region /* Crouch Still */
-		if (speed == 0)
-		&& (!key_left_hold)
-		&& (!key_right_hold)
+	
+		#region /* Destroy blocks above you when you jump while crouching */
+		if (key_jump)
 		{
-			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-			if (image_index > image_number - 1)
+			with (instance_create_depth(x, bbox_top, 0, obj_block_break))
 			{
-				image_speed = 0;
+				can_break_other_blocks = true;
+				image_xscale = 0.75;
+				image_yscale = 0.75;
+			}
+		}
+		#endregion /* Destroy blocks above you when you jump while crouching END */
+	
+		if (on_ground)
+		{
+			if (abs(hspeed) > 3)
+			{
+				if (!audio_is_playing(snd_skidding))
+				{
+					scr_audio_play(snd_skidding, volume_source.sound);
+				}
+				effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+				scr_gamepad_vibration(player, 0.1, 10);
+			}
+			else
+			if (audio_is_playing(snd_skidding))
+			{
+				audio_stop_sound(snd_skidding);
+			}
+		}
+		if (abs(hspeed) >= 2.5)
+		&& (on_ground)
+		{
+			if (sprite_mask_crouch >= 0)
+			{
+				mask_index = sprite_mask_crouch;
 			}
 			else
 			{
-				image_speed = 0.5;
+				mask_index = spr_player_stand;
 			}
-		}
-		#endregion /* Crouch Still END */
-		
-		else
-		
-		#region /* Crouch Crawl */
-		if (key_left_hold)
-		|| (key_right_hold)
-		{
 			if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
 			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
 			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
 			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-			image_speed = 0.5;
-		}
-		#endregion /* Crouch Crawl END */
-		
-	}
-
-	else
-	if (!place_meeting(x, y + 1, obj_wall))
-	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	{
-		
-		#region /* Crouch Jump */
-		if (vspeed < 0)
-		{
-			jump_transition_to_fall_animation = 0;
-			if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
-			if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
-			if (sprite_jump > noone) && (vspeed <= 0){sprite_index = sprite_jump;}else
-			if (sprite_fall_slower > noone) && (vspeed > 0) && (key_jump_hold){sprite_index = sprite_fall_slower;}else
-			if (sprite_fall > noone) && (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
-			if (sprite_jump > noone){sprite_index = sprite_jump;}else
-			if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
-			if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 			if (image_index > image_number - 1)
 			{
 				image_speed = 0;
@@ -2357,41 +2096,58 @@ if (crouch)
 				image_speed = 0.5;
 			}
 		}
-		#endregion /* Crouch Jump END */
-		
 		else
-		if (vspeed > 0)
-		&& (stick_to_wall == false)
+		if (on_ground)
 		{
-			
-			#region /* Crouch Fall sprites */
-			if (jump_transition_to_fall_animation == 0)
+		
+			#region /* Crouch Still */
+			if (speed == 0)
+			&& (!key_left_hold)
+			&& (!key_right_hold)
 			{
-				image_index = 0;
-				jump_transition_to_fall_animation = 1
-			}
-			if (jump_transition_to_fall_animation == 1)
-			{
-				image_speed = 0.5;
-				if (sprite_crouch_jump_transition_to_fall > noone)
+				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (image_index > image_number - 1)
 				{
-					sprite_index = sprite_crouch_jump_transition_to_fall;
+					image_speed = 0;
 				}
 				else
 				{
-					jump_transition_to_fall_animation = 2;
-				}
-				if (image_index > image_number - 1)
-				{
-					image_index = 0;
-					jump_transition_to_fall_animation = 2;
+					image_speed = 0.5;
 				}
 			}
-			if (jump_transition_to_fall_animation == 2)
+			#endregion /* Crouch Still END */
+		
+			else
+		
+			#region /* Crouch Crawl */
+			if (key_left_hold)
+			|| (key_right_hold)
 			{
-				if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
-				if (sprite_crouch_jump_transition_to_fall > noone){sprite_index = sprite_crouch_jump_transition_to_fall; image_index = image_number - 1;}else
+				if (sprite_crouch_crawl > noone){sprite_index = sprite_crouch_crawl;}else
+				if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				image_speed = 0.5;
+			}
+			#endregion /* Crouch Crawl END */
+		
+		}
+
+		else
+		if (!place_meeting(x, y + 1, obj_wall))
+		&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
+		&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		{
+		
+			#region /* Crouch Jump */
+			if (vspeed < 0)
+			{
+				jump_transition_to_fall_animation = 0;
 				if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
+				if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
 				if (sprite_jump > noone) && (vspeed <= 0){sprite_index = sprite_jump;}else
 				if (sprite_fall_slower > noone) && (vspeed > 0) && (key_jump_hold){sprite_index = sprite_fall_slower;}else
 				if (sprite_fall > noone) && (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
@@ -2409,85 +2165,182 @@ if (crouch)
 					image_speed = 0.5;
 				}
 			}
-			#endregion /* Crouch Fall sprites END */
+			#endregion /* Crouch Jump END */
+		
+			else
+			if (vspeed > 0)
+			&& (stick_to_wall == false)
+			{
 			
+				#region /* Crouch Fall sprites */
+				if (jump_transition_to_fall_animation == 0)
+				{
+					image_index = 0;
+					jump_transition_to_fall_animation = 1
+				}
+				if (jump_transition_to_fall_animation == 1)
+				{
+					image_speed = 0.5;
+					if (sprite_crouch_jump_transition_to_fall > noone)
+					{
+						sprite_index = sprite_crouch_jump_transition_to_fall;
+					}
+					else
+					{
+						jump_transition_to_fall_animation = 2;
+					}
+					if (image_index > image_number - 1)
+					{
+						image_index = 0;
+						jump_transition_to_fall_animation = 2;
+					}
+				}
+				if (jump_transition_to_fall_animation == 2)
+				{
+					if (sprite_crouch_fall > noone){sprite_index = sprite_crouch_fall;}else
+					if (sprite_crouch_jump_transition_to_fall > noone){sprite_index = sprite_crouch_jump_transition_to_fall; image_index = image_number - 1;}else
+					if (sprite_crouch_jump > noone){sprite_index = sprite_crouch_jump;}else
+					if (sprite_jump > noone) && (vspeed <= 0){sprite_index = sprite_jump;}else
+					if (sprite_fall_slower > noone) && (vspeed > 0) && (key_jump_hold){sprite_index = sprite_fall_slower;}else
+					if (sprite_fall > noone) && (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
+					if (sprite_jump > noone){sprite_index = sprite_jump;}else
+					if (sprite_crouch > noone){sprite_index = sprite_crouch;}else
+					if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+					if (image_index > image_number - 1)
+					{
+						image_speed = 0;
+					}
+					else
+					{
+						image_speed = 0.5;
+					}
+				}
+				#endregion /* Crouch Fall sprites END */
+			
+			}
+		}
+		jump = 0;
+		if (sprite_mask_crouch >= 0)
+		{
+			mask_index = sprite_mask_crouch;
+		}
+		else
+		{
+			mask_index = spr_player_stand;
 		}
 	}
-	jump = 0;
-	if (sprite_mask_crouch >= 0)
+	else
+	if (ground_pound == 1)
 	{
-		mask_index = sprite_mask_crouch;
+		if (sprite_ground_pound > noone){sprite_index = sprite_ground_pound;}else
+		if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
+		if (sprite_jump > noone){sprite_index = sprite_jump;}else
+		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+		if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 	}
 	else
+	if (ground_pound == 2)
 	{
-		mask_index = spr_player_stand;
-	}
-}
-else
-if (ground_pound == 1)
-{
-	if (sprite_ground_pound > noone){sprite_index = sprite_ground_pound;}else
-	if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-	if (sprite_jump > noone){sprite_index = sprite_jump;}else
-	if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-	if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-}
-else
-if (ground_pound == 2)
-{
-	if (sprite_ground_pound_get_up > noone){sprite_index = sprite_ground_pound_get_up;}else
-	{
-		if (image_index > 0)
+		if (sprite_ground_pound_get_up > noone){sprite_index = sprite_ground_pound_get_up;}else
+		{
+			if (image_index > 0)
+			{
+				image_speed = 0;
+				ground_pound = false;
+			}
+		}
+		if (image_index > image_number - 1)
 		{
 			image_speed = 0;
 			ground_pound = false;
 		}
-	}
-	if (image_index > image_number - 1)
-	{
-		image_speed = 0;
-		ground_pound = false;
-	}
-	else
-	{
-		image_speed = 0.5;
-	}
-}
-else
-if (ground_pound == 3)
-{
-	if (sprite_stomp_spin > noone){sprite_index = sprite_stomp_spin;}else
-	if (sprite_jump > noone){sprite_index = sprite_jump;}else
-	if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-	if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-	if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-}
-else
-if (on_ground)
-&& (vspeed == 0)
-{
-	
-	#region /* Skidding */
-	if (hspeed < 0)
-	&& (key_right_hold)
-	|| (hspeed > 0)
-	&& (key_left_hold)
-	{
-		if (place_meeting(x, y + 1, obj_ice_block))
-		{
-			if (!audio_is_playing(snd_skidding_ice))
-			{
-				scr_audio_play(snd_skidding_ice, volume_source.sound);
-			}
-		}
 		else
 		{
-			if (!audio_is_playing(snd_skidding))
-			{
-				scr_audio_play(snd_skidding, volume_source.sound);
-			}
+			image_speed = 0.5;
 		}
-		if (place_meeting(x, y + 1, obj_ice_block))
+	}
+	else
+	if (ground_pound == 3)
+	{
+		if (sprite_stomp_spin > noone){sprite_index = sprite_stomp_spin;}else
+		if (sprite_jump > noone){sprite_index = sprite_jump;}else
+		if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
+		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+		if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+	}
+	else
+	if (on_ground)
+	&& (vspeed == 0)
+	{
+	
+		#region /* Skidding */
+		if (hspeed < 0)
+		&& (key_right_hold)
+		|| (hspeed > 0)
+		&& (key_left_hold)
+		{
+			if (place_meeting(x, y + 1, obj_ice_block))
+			{
+				if (!audio_is_playing(snd_skidding_ice))
+				{
+					scr_audio_play(snd_skidding_ice, volume_source.sound);
+				}
+			}
+			else
+			{
+				if (!audio_is_playing(snd_skidding))
+				{
+					scr_audio_play(snd_skidding, volume_source.sound);
+				}
+			}
+			if (place_meeting(x, y + 1, obj_ice_block))
+			{
+				if (hold_item_in_hands != "")
+				{
+					if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_speed = speed / 10 + 0.1;}else
+					if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front; image_speed = speed / 10 + 0.1;}else
+					if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = speed / 10 + 0.1;}else
+					if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand; image_speed = 0.5;}
+				}
+				else
+				if (sprite_skidding_ice > noone){sprite_index = sprite_skidding_ice; image_speed = 0.5;}else
+				if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
+				if (sprite_run > noone){sprite_index = sprite_run;}else
+				if (sprite_walk > noone) && (hspeed <> 0){sprite_index = sprite_walk;}else
+				if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+			}
+			else
+			{
+				if (hold_item_in_hands != "")
+				{
+					if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_speed = speed / 10 + 0.1;}else
+					if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front; image_speed = speed / 10 + 0.1;}else
+					if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = speed / 10 + 0.1;}else
+					if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand; image_speed = 0.5;}
+				}
+				else
+				if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
+				if (abs(hspeed) > 20) && (sprite_run4 > noone){sprite_index = sprite_run4;}else
+				if (abs(hspeed) > 15) && (sprite_run3 > noone){sprite_index = sprite_run3;}else
+				if (abs(hspeed) > 10) && (sprite_run2 > noone){sprite_index = sprite_run2;}else
+				if (abs(hspeed) > 5) && (sprite_run > noone){sprite_index = sprite_run;}else
+				if (sprite_walk >  noone) && (hspeed <> 0){sprite_index = sprite_walk;}else
+				if (sprite_run > noone) && (hspeed <> 0){sprite_index = sprite_run;}else
+				if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+			}
+			effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
+		}
+		#endregion /* Skidding END */
+	
+		else
+	
+		#region /* Skidding Stop */
+		if (hspeed < 0)
+		&& (!key_left_hold)
+		|| (hspeed > 0)
+		&& (!key_right_hold)
 		{
 			if (hold_item_in_hands != "")
 			{
@@ -2497,89 +2350,503 @@ if (on_ground)
 				if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand; image_speed = 0.5;}
 			}
 			else
-			if (sprite_skidding_ice > noone){sprite_index = sprite_skidding_ice; image_speed = 0.5;}else
-			if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
-			if (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_walk > noone) && (hspeed <> 0){sprite_index = sprite_walk;}else
-			if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-		}
-		else
-		{
-			if (hold_item_in_hands != "")
-			{
-				if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_speed = speed / 10 + 0.1;}else
-				if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front; image_speed = speed / 10 + 0.1;}else
-				if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = speed / 10 + 0.1;}else
-				if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand; image_speed = 0.5;}
-			}
-			else
-			if (sprite_skidding> noone){sprite_index = sprite_skidding; image_speed = 0.5;}else
-			if (abs(hspeed) > 20) && (sprite_run4 > noone){sprite_index = sprite_run4;}else
-			if (abs(hspeed) > 15) && (sprite_run3 > noone){sprite_index = sprite_run3;}else
-			if (abs(hspeed) > 10) && (sprite_run2 > noone){sprite_index = sprite_run2;}else
-			if (abs(hspeed) > 5) && (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_walk >  noone) && (hspeed <> 0){sprite_index = sprite_walk;}else
-			if (sprite_run > noone) && (hspeed <> 0){sprite_index = sprite_run;}else
-			if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-		}
-		effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-	}
-	#endregion /* Skidding END */
-	
-	else
-	
-	#region /* Skidding Stop */
-	if (hspeed < 0)
-	&& (!key_left_hold)
-	|| (hspeed > 0)
-	&& (!key_right_hold)
-	{
-		if (hold_item_in_hands != "")
-		{
-			if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front; image_speed = speed / 10 + 0.1;}else
-			if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front; image_speed = speed / 10 + 0.1;}else
-			if (sprite_walk > noone){sprite_index = sprite_walk; image_speed = speed / 10 + 0.1;}else
+			if (sprite_skidding_stop > noone){sprite_index = sprite_skidding_stop; image_speed = 0.5;}else
+			if (abs(hspeed) > 20) && (sprite_run4 > noone){sprite_index = sprite_run4; image_speed = speed / 10 + 0.1;}else
+			if (abs(hspeed) > 15) && (sprite_run3 > noone){sprite_index = sprite_run3; image_speed = speed / 10 + 0.1;}else
+			if (abs(hspeed) > 10) && (sprite_run2 > noone){sprite_index = sprite_run2; image_speed = speed / 10 + 0.1;}else
+			if (abs(hspeed) > 5) && (sprite_run > noone){sprite_index = sprite_run; image_speed = speed / 10 + 0.1;}else
+			if (sprite_walk > noone) && (hspeed <> 0){sprite_index = sprite_walk; image_speed = speed / 10 + 0.1;}else
+			if (sprite_run > noone) && (hspeed <> 0){sprite_index = sprite_run; image_speed = speed / 10 + 0.1;}else
 			if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand; image_speed = 0.5;}
 		}
-		else
-		if (sprite_skidding_stop > noone){sprite_index = sprite_skidding_stop; image_speed = 0.5;}else
-		if (abs(hspeed) > 20) && (sprite_run4 > noone){sprite_index = sprite_run4; image_speed = speed / 10 + 0.1;}else
-		if (abs(hspeed) > 15) && (sprite_run3 > noone){sprite_index = sprite_run3; image_speed = speed / 10 + 0.1;}else
-		if (abs(hspeed) > 10) && (sprite_run2 > noone){sprite_index = sprite_run2; image_speed = speed / 10 + 0.1;}else
-		if (abs(hspeed) > 5) && (sprite_run > noone){sprite_index = sprite_run; image_speed = speed / 10 + 0.1;}else
-		if (sprite_walk > noone) && (hspeed <> 0){sprite_index = sprite_walk; image_speed = speed / 10 + 0.1;}else
-		if (sprite_run > noone) && (hspeed <> 0){sprite_index = sprite_run; image_speed = speed / 10 + 0.1;}else
-		if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand; image_speed = 0.5;}
-	}
-	#endregion /* Skidding Stop END */
+		#endregion /* Skidding Stop END */
 	
+		else
+	
+		#region /* Look Up */
+		if (hspeed == 0)
+		&& (key_up)
+		&& (!key_down)
+		{
+			if (look_up_start_animation)
+			{
+				if (sprite_look_up_start> noone){sprite_index = sprite_look_up_start;}else
+				if (sprite_look_up > noone){sprite_index = sprite_look_up;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+			}
+			else
+			{
+				if (sprite_look_up > noone){sprite_index = sprite_look_up;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+			}
+			if (image_index > image_number - 1)
+			&& (look_up_start_animation)
+			{
+				image_index = 1;
+				look_up_start_animation = false;
+			}
+			image_speed = 0.3;
+			if (sprite_mask >= 0)
+			{
+				mask_index = sprite_mask;
+			}
+			else
+			{
+				mask_index = spr_player_stand;
+			}
+		}
+		#endregion /* Look Up END */
+	
+		else
+	
+		#region /* Run */
+		if (abs(hspeed) > 0)
+		{
+			look_up_start_animation = true;
+			against_wall_animation = 0;
+			if (hold_item_in_hands != "")
+			{
+				if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
+				if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
+				if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+			}
+			else
+			if (abs(hspeed) >= 20)
+			{
+				if (sprite_run4 > noone){sprite_index = sprite_run4;}else
+				if (sprite_run3 > noone){sprite_index = sprite_run3;}else
+				if (sprite_run2 > noone){sprite_index = sprite_run2;}else
+				if (sprite_run > noone){sprite_index = sprite_run;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
+				if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+			}
+			else
+			if (abs(hspeed) >= 15)
+			{
+				if (sprite_run3 > noone){sprite_index = sprite_run3;}else
+				if (sprite_run2 > noone){sprite_index = sprite_run2;}else
+				if (sprite_run > noone){sprite_index = sprite_run;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
+				if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+			}
+			else
+			if (abs(hspeed) >= 10)
+			{
+				if (sprite_run2 > noone){sprite_index = sprite_run2;}else
+				if (sprite_run > noone){sprite_index = sprite_run;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
+				if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+			}
+			else
+			if (abs(hspeed) >= 5)
+			{
+				if (sprite_run > noone){sprite_index = sprite_run;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
+				if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+			}
+			else
+			{
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;} /* Walk */ else
+				if (sprite_run > noone){sprite_index = sprite_run;} /* If no walk sprite, use run sprite */ else
+				if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
+			}
+			if (place_meeting(x, y + 1, obj_ice_block))
+			{
+				image_speed = 0.5;
+			}
+			else
+			{
+				image_speed = speed / 10 + 0.1;
+			}
+		}
+		#endregion /* Run END */
+	
+		else
+	
+		#region /* Against Wall */
+		if (place_meeting(x - 1, y, obj_wall))
+		&& (on_ground)
+		&& (key_left_hold)
+		|| (place_meeting(x + 1, y, obj_wall))
+		&& (on_ground)
+		&& (key_right_hold)
+		{
+			if (crouch == false)
+			{
+				if (against_wall_animation == 0)
+				{
+					image_index = 0;
+					if (sprite_against_wall_start > noone){sprite_index = sprite_against_wall_start; image_speed = 0.5;}else
+					if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+					against_wall_animation = 1;
+				}
+				else
+				if (against_wall_animation == 1)
+				{
+					if (sprite_against_wall_start > noone){sprite_index = sprite_against_wall_start; image_speed = 0.5;}else
+					if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+					if (image_index >= image_number - 1)
+					{
+						against_wall_animation = 2;
+					}
+				}
+				else
+				if (against_wall_animation = 2)
+				{
+					if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				}
+			}
+			if (!audio_is_playing(snd_bump))
+			{
+				scr_audio_play(snd_bump, volume_source.sound);
+			}
+		}
+		#endregion /* Against Wall END */
+	
+		else
+	
+		#region /* Stand */
+		if (hspeed == 0)
+		&& (!key_left_hold)
+		&& (!key_right_hold)
+		&& (climb == false)
+		{
+			look_up_start_animation = true;
+			against_wall_animation = 0;
+			if (place_meeting(x, y + 1, obj_bump_in_ground))
+			&& (sprite_standing_on_something > noone)
+			{
+				sprite_index = sprite_standing_on_something;
+			}
+			else
+			if (have_heart_balloon == false)
+			&& (hp <= 1)
+			&& (max_hp >= 2)
+			&& (invincible_timer <= false)
+			&& (sprite_panting > noone)
+			{
+				sprite_index = sprite_panting;
+				image_speed = 0.3;
+			}
+			else
+			if (instance_exists(obj_camera))
+			&& (global.rain)
+			&& (sprite_stand_cold > noone)
+			{
+				sprite_index = sprite_stand_cold;
+				image_speed = 1;
+			}
+			else
+			{
+				if (image_index >= image_number - 1)
+				{
+					image_index = 0;
+					idle_animtaion = choose(0, 0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+				}
+				if (idle_animtaion == 1)
+				&& (sprite_stand_blink > noone)
+				{
+					sprite_index = sprite_stand_blink;
+				}
+				else
+				if (idle_animtaion = 2)
+				&& (sprite_idle_animation1 > noone)
+				{
+					sprite_index = sprite_idle_animation1;
+				}
+				else
+				if (idle_animtaion = 3)
+				&& (sprite_idle_animation2 > noone)
+				{
+					sprite_index = sprite_idle_animation2;
+				}
+				else
+				if (idle_animtaion = 4)
+				&& (sprite_idle_animation3 > noone)
+				{
+					sprite_index = sprite_idle_animation3;
+				}
+				else
+				if (idle_animtaion == 5)
+				&& (sprite_idle_animation4 > noone)
+				{
+					sprite_index = sprite_idle_animation4;
+				}
+				else
+				if (idle_animtaion == 6)
+				&& (sprite_idle_animation5 > noone)
+				{
+					sprite_index = sprite_idle_animation5;
+				}
+				else
+				if (idle_animtaion == 7)
+				&& (sprite_idle_animation6 > noone)
+				{
+					sprite_index = sprite_idle_animation6;
+				}
+				else
+				if (idle_animtaion == 8)
+				&& (sprite_idle_animation7 > noone)
+				{
+					sprite_index = sprite_idle_animation7;
+				}
+				else
+				if (idle_animtaion = 9)
+				&& (sprite_idle_animation8 > noone)
+				{
+					sprite_index = sprite_idle_animation8;
+				}
+				else
+				if (idle_animtaion = 10)
+				&& (sprite_idle_animation9 > noone)
+				{
+					sprite_index = sprite_idle_animation9;
+				}
+				else
+				if (sprite_stand > noone)
+				{
+					sprite_index = sprite_stand;
+				}
+			
+				#region /* If there isn't any stand or idle animation existing, then just use walk sprite */
+				else
+				if (sprite_walk > noone)
+				{
+					sprite_index = sprite_walk;
+					image_speed = 0;
+				}
+				#endregion /* If there isn't any stand or idle animation existing, then just use walk sprite END */
+			
+				image_speed = 0.3;
+			}
+		}
+		else
+		{
+			idle_animtaion = 0;
+		}
+		#endregion /* Stand END */
+	
+		#region /* Mask */
+		if (sprite_mask >= 0)
+		{
+			mask_index = sprite_mask;
+		}
+		else
+		{
+			mask_index = spr_player_stand;
+		}
+		#endregion /* Maske END */
+	
+	}
 	else
 	
-	#region /* Look Up */
-	if (hspeed == 0)
-	&& (key_up)
-	&& (!key_down)
+	#region /* Jumping Sprites */
+	if (!on_ground)
 	{
-		if (look_up_start_animation)
+		if (burnt> 0)
 		{
-			if (sprite_look_up_start> noone){sprite_index = sprite_look_up_start;}else
-			if (sprite_look_up > noone){sprite_index = sprite_look_up;}else
+			if (sprite_burnt > noone){sprite_index = sprite_burnt;}else
+			if (sprite_die > noone){sprite_index = sprite_die;}else
+			if (sprite_jump > noone) && (vspeed <= 0){sprite_index = sprite_jump;}else
+			if (sprite_fall_slower > noone) && (vspeed > 0) && (key_jump_hold){sprite_index = sprite_fall_slower;}else
+			if (sprite_fall > noone) && (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
+			if (sprite_jump > noone){sprite_index = sprite_jump;}else
+			if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
 			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
 			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 		}
 		else
+		if (dive)
 		{
-			if (sprite_look_up > noone){sprite_index = sprite_look_up;}else
+			if (sprite_dive > noone){sprite_index = sprite_dive;if (image_index > image_number - 1){image_speed = 0;}else{image_speed = 0.5;}}else
+			if (sprite_jump > noone) && (vspeed <= 0){sprite_index = sprite_jump;}else
+			if (sprite_fall_slower > noone) && (vspeed > 0) && (key_jump_hold){sprite_index = sprite_fall_slower;}else
+			if (sprite_fall > noone) && (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
+			if (sprite_jump > noone){sprite_index = sprite_jump;}else
+			if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
 			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
 			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
 		}
-		if (image_index > image_number - 1)
-		&& (look_up_start_animation)
+		else
+		
+		#region /* Wall slide down */
+		if (stick_to_wall)
+		&& (vspeed >= 0)
 		{
-			image_index = 1;
-			look_up_start_animation = false;
+			if (crouch == false)
+			&& (ground_pound == false)
+			&& (ledge_grab == false)
+			{
+				if (vspeed > 0)
+				{
+					if (sprite_wall_slide_down > noone){sprite_index = sprite_wall_slide_down;}else
+					if (sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				}
+				else
+				{
+					if (sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				}
+				image_speed = 0.5;
+			}
 		}
-		image_speed = 0.3;
+		#endregion /* Wall slide down END */
+		
+		else
+		if (vspeed < 0)
+		{
+			if (stomp_spin)
+			{
+				if (sprite_stomp_spin > noone){sprite_index = sprite_stomp_spin;if (image_index > image_number - 1){image_speed = 0;}else{image_speed = 0.5;}}else
+				if (sprite_jump > noone){sprite_index = sprite_jump;}else
+				if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
+				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+			}
+			else
+			if (spring >= 2)
+			{
+				sprite_index = sprite_stomp_spin;
+				if (image_index > image_number - 1)
+				{
+					image_speed = 0;
+				}
+				else
+				{
+					image_speed = 0.5;
+				}
+			}
+			else
+			/* Make it look natural when climbing wall */
+			/* Run up wall / wall_slide up */
+			if (stick_to_wall)
+			{
+				if (crouch == false)
+				&& (ground_pound == false)
+				&& (ledge_grab == false)
+				{
+					if (sprite_wall_slide_up > noone){sprite_index = sprite_wall_slide_up;}else
+					if (sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+					image_speed = 0.5;
+				}
+			}
+			else
+		
+			#region /* Jump sprites */
+			{
+			
+				#region /* Single Jump */
+				if (jump <= 1)
+				{
+					if (spring == false)
+					{
+						if (sprite_jump > noone){sprite_index = sprite_jump;}else
+						if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
+						if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+						if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+					}
+				}
+				#endregion /* Single Jump END */
+		
+				else
+		
+				#region /* Double Jump */
+				if (jump = 2)
+				{
+					if (sprite_double_jump > noone){sprite_index = sprite_double_jump;}else
+					if (sprite_jump > noone){sprite_index = sprite_jump;}else
+					if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+					image_speed = 0.5;
+				}
+				#endregion /* Double Jump END */
+
+				else
+
+				#region /* Triple Jump */
+				if (jump >= 3)
+				{
+					if (sprite_triple_jump > noone){sprite_index = sprite_triple_jump;}else
+					if (sprite_jump > noone){sprite_index = sprite_jump;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				}
+				#endregion /* Triple Jump */
+
+				if (image_index > image_number - 1)
+				{
+					image_speed = 0;
+				}
+				else
+				{
+					image_speed = 0.5;
+				}
+			}
+			#endregion /* Jump sprites END */
+		
+		}
+		else
+		if (vspeed > 0)
+		&& (stick_to_wall == false)
+		&& (spring == false)
+		{
+		
+			#region /* Fall sprites */
+			if (jump_transition_to_fall_animation == 0)
+			{
+				image_index = 0;
+				jump_transition_to_fall_animation = 1
+			}
+			if (jump_transition_to_fall_animation == 1)
+			{
+				image_speed = 0.5;
+				if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall;}else
+				{jump_transition_to_fall_animation = 2;}
+				if (image_index > image_number - 1)
+				{
+					image_index = 0;
+					jump_transition_to_fall_animation = 2;
+				}
+			}
+			if (jump_transition_to_fall_animation == 2)
+			{
+				if (key_jump_hold)
+				{
+					if (sprite_fall_slower > noone){sprite_index = sprite_fall_slower;}else
+					if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
+					if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall; image_index = image_number - 1;}else
+					if (sprite_jump > noone){sprite_index = sprite_jump; image_index = image_number - 1;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				}
+				else
+				{
+					if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
+					if (sprite_fall_slower > noone){sprite_index = sprite_fall_slower;}else
+					if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall; image_index = image_number - 1;}else
+					if (sprite_jump > noone){sprite_index = sprite_jump; image_index = image_number - 1;}else
+					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				}
+			}
+			#endregion /* Fall sprites END */
+		
+		}
 		if (sprite_mask >= 0)
 		{
 			mask_index = sprite_mask;
@@ -2589,470 +2856,8 @@ if (on_ground)
 			mask_index = spr_player_stand;
 		}
 	}
-	#endregion /* Look Up END */
+	#endregion /* Jumping Sprites END */
 	
-	else
-	
-	#region /* Run */
-	if (abs(hspeed) > 0)
-	{
-		look_up_start_animation = true;
-		against_wall_animation = 0;
-		if (hold_item_in_hands != "")
-		{
-			if (sprite_walking_with_item_in_front > noone){sprite_index = sprite_walking_with_item_in_front;}else
-			if (sprite_standing_with_item_in_front > noone){sprite_index = sprite_standing_with_item_in_front;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
-			if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-		}
-		else
-		if (abs(hspeed) >= 20)
-		{
-			if (sprite_run4 > noone){sprite_index = sprite_run4;}else
-			if (sprite_run3 > noone){sprite_index = sprite_run3;}else
-			if (sprite_run2 > noone){sprite_index = sprite_run2;}else
-			if (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
-			if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-		}
-		else
-		if (abs(hspeed) >= 15)
-		{
-			if (sprite_run3 > noone){sprite_index = sprite_run3;}else
-			if (sprite_run2 > noone){sprite_index = sprite_run2;}else
-			if (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
-			if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-		}
-		else
-		if (abs(hspeed) >= 10)
-		{
-			if (sprite_run2 > noone){sprite_index = sprite_run2;}else
-			if (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
-			if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-		}
-		else
-		if (abs(hspeed) >= 5)
-		{
-			if (sprite_run > noone){sprite_index = sprite_run;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}else
-			if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-		}
-		else
-		{
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;} /* Walk */ else
-			if (sprite_run > noone){sprite_index = sprite_run;} /* If no walk sprite, use run sprite */ else
-			if (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}
-		}
-		if (place_meeting(x, y + 1, obj_ice_block))
-		{
-			image_speed = 0.5;
-		}
-		else
-		{
-			image_speed = speed / 10 + 0.1;
-		}
-	}
-	#endregion /* Run END */
-	
-	else
-	
-	#region /* Against Wall */
-	if (place_meeting(x - 1, y, obj_wall))
-	&& (on_ground)
-	&& (key_left_hold)
-	|| (place_meeting(x + 1, y, obj_wall))
-	&& (on_ground)
-	&& (key_right_hold)
-	{
-		if (crouch == false)
-		{
-			if (against_wall_animation == 0)
-			{
-				image_index = 0;
-				if (sprite_against_wall_start > noone){sprite_index = sprite_against_wall_start; image_speed = 0.5;}else
-				if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-				against_wall_animation = 1;
-			}
-			else
-			if (against_wall_animation == 1)
-			{
-				if (sprite_against_wall_start > noone){sprite_index = sprite_against_wall_start; image_speed = 0.5;}else
-				if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-				if (image_index >= image_number - 1)
-				{
-					against_wall_animation = 2;
-				}
-			}
-			else
-			if (against_wall_animation = 2)
-			{
-				if (sprite_against_wall > noone){sprite_index = sprite_against_wall; image_speed = 0.5;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-			}
-		}
-		if (!audio_is_playing(snd_bump))
-		{
-			scr_audio_play(snd_bump, volume_source.sound);
-		}
-	}
-	#endregion /* Against Wall END */
-	
-	else
-	
-	#region /* Stand */
-	if (hspeed == 0)
-	&& (!key_left_hold)
-	&& (!key_right_hold)
-	&& (climb == false)
-	{
-		look_up_start_animation = true;
-		against_wall_animation = 0;
-		if (place_meeting(x, y + 1, obj_bump_in_ground))
-		&& (sprite_standing_on_something > noone)
-		{
-			sprite_index = sprite_standing_on_something;
-		}
-		else
-		if (have_heart_balloon == false)
-		&& (hp <= 1)
-		&& (max_hp >= 2)
-		&& (invincible_timer <= false)
-		&& (sprite_panting > noone)
-		{
-			sprite_index = sprite_panting;
-			image_speed = 0.3;
-		}
-		else
-		if (instance_exists(obj_camera))
-		&& (global.rain)
-		&& (sprite_stand_cold > noone)
-		{
-			sprite_index = sprite_stand_cold;
-			image_speed = 1;
-		}
-		else
-		{
-			if (image_index >= image_number - 1)
-			{
-				image_index = 0;
-				idle_animtaion = choose(0, 0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-			}
-			if (idle_animtaion == 1)
-			&& (sprite_stand_blink > noone)
-			{
-				sprite_index = sprite_stand_blink;
-			}
-			else
-			if (idle_animtaion = 2)
-			&& (sprite_idle_animation1 > noone)
-			{
-				sprite_index = sprite_idle_animation1;
-			}
-			else
-			if (idle_animtaion = 3)
-			&& (sprite_idle_animation2 > noone)
-			{
-				sprite_index = sprite_idle_animation2;
-			}
-			else
-			if (idle_animtaion = 4)
-			&& (sprite_idle_animation3 > noone)
-			{
-				sprite_index = sprite_idle_animation3;
-			}
-			else
-			if (idle_animtaion == 5)
-			&& (sprite_idle_animation4 > noone)
-			{
-				sprite_index = sprite_idle_animation4;
-			}
-			else
-			if (idle_animtaion == 6)
-			&& (sprite_idle_animation5 > noone)
-			{
-				sprite_index = sprite_idle_animation5;
-			}
-			else
-			if (idle_animtaion == 7)
-			&& (sprite_idle_animation6 > noone)
-			{
-				sprite_index = sprite_idle_animation6;
-			}
-			else
-			if (idle_animtaion == 8)
-			&& (sprite_idle_animation7 > noone)
-			{
-				sprite_index = sprite_idle_animation7;
-			}
-			else
-			if (idle_animtaion = 9)
-			&& (sprite_idle_animation8 > noone)
-			{
-				sprite_index = sprite_idle_animation8;
-			}
-			else
-			if (idle_animtaion = 10)
-			&& (sprite_idle_animation9 > noone)
-			{
-				sprite_index = sprite_idle_animation9;
-			}
-			else
-			if (sprite_stand > noone)
-			{
-				sprite_index = sprite_stand;
-			}
-			
-			#region /* If there isn't any stand or idle animation existing, then just use walk sprite */
-			else
-			if (sprite_walk > noone)
-			{
-				sprite_index = sprite_walk;
-				image_speed = 0;
-			}
-			#endregion /* If there isn't any stand or idle animation existing, then just use walk sprite END */
-			
-			image_speed = 0.3;
-		}
-	}
-	else
-	{
-		idle_animtaion = 0;
-	}
-	#endregion /* Stand END */
-	
-	#region /* Mask */
-	if (sprite_mask >= 0)
-	{
-		mask_index = sprite_mask;
-	}
-	else
-	{
-		mask_index = spr_player_stand;
-	}
-	#endregion /* Maske END */
-	
-}
-else
-
-#region /* Jumping Sprites */
-if (!place_meeting(x, y + 1, obj_wall))
-&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-{
-	if (burnt> 0)
-	{
-		if (sprite_burnt > noone){sprite_index = sprite_burnt;}else
-		if (sprite_die > noone){sprite_index = sprite_die;}else
-		if (sprite_jump > noone) && (vspeed <= 0){sprite_index = sprite_jump;}else
-		if (sprite_fall_slower > noone) && (vspeed > 0) && (key_jump_hold){sprite_index = sprite_fall_slower;}else
-		if (sprite_fall > noone) && (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
-		if (sprite_jump > noone){sprite_index = sprite_jump;}else
-		if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-		if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-	}
-	else
-	if (dive)
-	{
-		if (sprite_dive > noone){sprite_index = sprite_dive;if (image_index > image_number - 1){image_speed = 0;}else{image_speed = 0.5;}}else
-		if (sprite_jump > noone) && (vspeed <= 0){sprite_index = sprite_jump;}else
-		if (sprite_fall_slower > noone) && (vspeed > 0) && (key_jump_hold){sprite_index = sprite_fall_slower;}else
-		if (sprite_fall > noone) && (vspeed > 0){sprite_index = sprite_fall; image_speed = 0.5;}else
-		if (sprite_jump > noone){sprite_index = sprite_jump;}else
-		if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-		if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-		if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-	}
-	else
-	
-	#region /* Wall slide down */
-	if (stick_to_wall)
-	&& (vspeed >= 0)
-	{
-		if (crouch == false)
-		&& (ground_pound == false)
-		&& (ledge_grab == false)
-		{
-			if (vspeed > 0)
-			{
-				if (sprite_wall_slide_down > noone){sprite_index = sprite_wall_slide_down;}else
-				if (sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-			}
-			else
-			{
-				if (sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-			}
-			image_speed = 0.5;
-		}
-	}
-	#endregion /* Wall slide down END */
-	
-	else
-	if (vspeed < 0)
-	{
-		if (stomp_spin)
-		{
-			if (sprite_stomp_spin > noone){sprite_index = sprite_stomp_spin;if (image_index > image_number - 1){image_speed = 0;}else{image_speed = 0.5;}}else
-			if (sprite_jump > noone){sprite_index = sprite_jump;}else
-			if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-			if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-		}
-		else
-		if (spring >= 2)
-		{
-			sprite_index = sprite_stomp_spin;
-			if (image_index > image_number - 1)
-			{
-				image_speed = 0;
-			}
-			else
-			{
-				image_speed = 0.5;
-			}
-		}
-		else
-		/* Make it look natural when climbing wall */
-		/* Run up wall / wall_slide up */
-		if (stick_to_wall)
-		{
-			if (crouch == false)
-			&& (ground_pound == false)
-			&& (ledge_grab == false)
-			{
-				if (sprite_wall_slide_up > noone){sprite_index = sprite_wall_slide_up;}else
-				if (sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-				image_speed = 0.5;
-			}
-		}
-		else
-		
-		#region /* Jump sprites */
-		{
-			
-			#region /* Single Jump */
-			if (jump <= 1)
-			{
-				if (spring == false)
-				{
-					if (sprite_jump > noone){sprite_index = sprite_jump;}else
-					if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-					if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-					if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-				}
-			}
-			#endregion /* Single Jump END */
-		
-			else
-		
-			#region /* Double Jump */
-			if (jump = 2)
-			{
-				if (sprite_double_jump > noone){sprite_index = sprite_double_jump;}else
-				if (sprite_jump > noone){sprite_index = sprite_jump;}else
-				if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-				image_speed = 0.5;
-			}
-			#endregion /* Double Jump END */
-
-			else
-
-			#region /* Triple Jump */
-			if (jump >= 3)
-			{
-				if (sprite_triple_jump > noone){sprite_index = sprite_triple_jump;}else
-				if (sprite_jump > noone){sprite_index = sprite_jump;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-			}
-			#endregion /* Triple Jump */
-
-			if (image_index > image_number - 1)
-			{
-				image_speed = 0;
-			}
-			else
-			{
-				image_speed = 0.5;
-			}
-		}
-		#endregion /* Jump sprites END */
-		
-	}
-	else
-	if (vspeed > 0)
-	&& (stick_to_wall == false)
-	&& (spring == false)
-	{
-		
-		#region /* Fall sprites */
-		if (jump_transition_to_fall_animation == 0)
-		{
-			image_index = 0;
-			jump_transition_to_fall_animation = 1
-		}
-		if (jump_transition_to_fall_animation == 1)
-		{
-			image_speed = 0.5;
-			if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall;}else
-			{jump_transition_to_fall_animation = 2;}
-			if (image_index > image_number - 1)
-			{
-				image_index = 0;
-				jump_transition_to_fall_animation = 2;
-			}
-		}
-		if (jump_transition_to_fall_animation == 2)
-		{
-			if (key_jump_hold)
-			{
-				if (sprite_fall_slower > noone){sprite_index = sprite_fall_slower;}else
-				if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-				if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall; image_index = image_number - 1;}else
-				if (sprite_jump > noone){sprite_index = sprite_jump; image_index = image_number - 1;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-			}
-			else
-			{
-				if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
-				if (sprite_fall_slower > noone){sprite_index = sprite_fall_slower;}else
-				if (sprite_jump_transition_to_fall > noone){sprite_index = sprite_jump_transition_to_fall; image_index = image_number - 1;}else
-				if (sprite_jump > noone){sprite_index = sprite_jump; image_index = image_number - 1;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
-			}
-		}
-		#endregion /* Fall sprites END */
-		
-	}
-	if (sprite_mask >= 0)
-	{
-		mask_index = sprite_mask;
-	}
-	else
-	{
-		mask_index = spr_player_stand;
-	}
-}
-#endregion /* Jumping Sprites END */
-
 }
 
 #region/* Stop skidding ice sound */
@@ -3269,7 +3074,6 @@ if (can_create_speed_lines)
 {
 	if (invincible_timer >= true)
 	&& (assist_invincible == false)
-	&& (instance_exists(obj_player))
 	|| (vspeed < 0)
 	|| (vspeed > 0)
 	{
@@ -3392,197 +3196,21 @@ if (glide)
 
 #endregion /* ________________________________Handling the sprites and sounds in the step event________________________________END */
 
-#region /* Partner Character Code */
-if (partner_character)
-{
-	
-	#region /* What player to follow */
-	if (player == 1)
-	{
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player4))
-		{
-			partner_follow_player = obj_camera.player4;
-		}
-		else
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player3))
-		{
-			partner_follow_player = obj_camera.player3;
-		}
-		else
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player2))
-		{
-			partner_follow_player = obj_camera.player2;
-		}
-	}
-	else
-	if (player == 2)
-	{
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player1))
-		{
-			partner_follow_player = obj_camera.player1;
-		}
-		else
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player4))
-		{
-			partner_follow_player = obj_camera.player4;
-		}
-		else
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player3))
-		{
-			partner_follow_player = obj_camera.player3;
-		}
-	}
-	else
-	if (player == 3)
-	{
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player2))
-		{
-			partner_follow_player = obj_camera.player2;
-		}
-		else
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player1))
-		{
-			partner_follow_player = obj_camera.player1;
-		}
-		else
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player4))
-		{
-			partner_follow_player = obj_camera.player4;
-		}
-	}
-	else
-	if (player == 4)
-	{
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player3))
-		{
-			partner_follow_player = obj_camera.player3;
-		}
-		else
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player2))
-		{
-			partner_follow_player = obj_camera.player2;
-		}
-		else
-		if (instance_exists(obj_camera))
-		&& (instance_exists(obj_camera.player1))
-		{
-			partner_follow_player = obj_camera.player1;
-		}
-	}
-	#endregion /* What player to follow END */
-	
-	if (instance_exists(obj_camera))
-	&& (instance_exists(partner_follow_player))
-	&& (distance_to_object(partner_follow_player) > 100)
-	&& (x < partner_follow_player.x - 100)
-	{
-		active_right = true;
-		if (invincible_timer >= true)
-		&& (assist_invincible == false)
-		{
-			speed_max = lerp(speed_max, 10, 0.1);
-		}
-		else
-		{
-			if (speed_max < speed_max_run)
-			{
-				speed_max = lerp(speed_max, speed_max_run, 0.1);
-			}
-		}
-	}
-	else
-	{
-		active_right = false;
-	}
-	if (instance_exists(obj_camera))
-	&& (instance_exists(partner_follow_player))
-	&& (distance_to_object(partner_follow_player) > 100)
-	&& (x > partner_follow_player.x + 100)
-	{
-		active_left = true;
-		if (invincible_timer >= true)
-		&& (assist_invincible == false)
-		{
-			speed_max = lerp(speed_max, 10, 0.1);
-		}
-		else
-		{
-			if (speed_max < speed_max_run)
-			{
-				speed_max = lerp(speed_max, speed_max_run, 0.1);
-			}
-		}
-	}
-	else
-	{
-		active_left = false;
-	}
-	if (instance_exists(obj_camera))
-	&& (instance_exists(partner_follow_player))
-	&& (distance_to_object(partner_follow_player) > 100)
-	&& (y > partner_follow_player.y + 100)
-	&& (on_ground)
-	|| (instance_exists(obj_camera))
-	&& (instance_exists(partner_follow_player))
-	&& (distance_to_object(partner_follow_player) > 100)
-	&& (place_meeting(x - 1, y, obj_wall))
-	&& (x > partner_follow_player.x + 100)
-	&& (on_ground)
-	|| (instance_exists(obj_camera))
-	&& (instance_exists(partner_follow_player))
-	&& (distance_to_object(partner_follow_player) > 100)
-	&& (place_meeting(x + 1, y, obj_wall))
-	&& (x < partner_follow_player.x - 100)
-	&& (on_ground)
-	{
-		active_jump = true;
-		active_up = true;
-	}
-	else
-	{
-		active_jump = false;
-		active_up = false;
-	}
-	if (instance_exists(obj_camera))
-	&& (instance_exists(partner_follow_player))
-	&& (distance_to_object(partner_follow_player) > 100)
-	&& (y < partner_follow_player.y - 100)
-	{
-		active_down = true;
-	}
-	else
-	{
-		active_down = false;
-	}
-}
-#endregion /* Partner Character Code */
-
 #region /* Predicting where player will end up at high speeds and stopping the player from going inside a wall */
-line_hit = scr_line_trace( x, y, x + hspeed, y + vspeed, 1);
-if (line_hit.instance != noone)
-{
-	if (abs(hspeed) > abs(vspeed)) /* If hspeed is more than vspeed, that's when x position is updated, so y position isn't unecessarely being changed and character jitters */
-	&& (hspeed <> 0)
-	{
-		x = line_hit.x_hit;
-	}
-	if (abs(vspeed) > abs(hspeed)) /* If vspeed is more than hspeed, that's when y position is updated, so z position isn't unecessarely being changed and character jitters */
-	&& (vspeed <> 0)
-	{
-		y = line_hit.y_hit;
-	}
-}
+//line_hit = scr_line_trace( x, y, x + hspeed, y + vspeed, 1);
+//if (line_hit.instance != noone)
+//{
+//	if (abs(hspeed) > abs(vspeed)) /* If hspeed is more than vspeed, that's when x position is updated, so y position isn't unecessarely being changed and character jitters */
+//	&& (hspeed <> 0)
+//	{
+//		x = line_hit.x_hit;
+//	}
+//	if (abs(vspeed) > abs(hspeed)) /* If vspeed is more than hspeed, that's when y position is updated, so z position isn't unecessarely being changed and character jitters */
+//	&& (vspeed <> 0)
+//	{
+//		y = line_hit.y_hit;
+//	}
+//}
 #endregion /* Predicting where player will end up at high speeds and stopping the player from going inside a wall END */
 
 #region /* Debug teleport character with mouse */

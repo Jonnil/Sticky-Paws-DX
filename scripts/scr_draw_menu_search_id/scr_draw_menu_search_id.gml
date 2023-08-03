@@ -246,6 +246,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				ds_map_add(map, "Host", global.base_url);
 				ds_map_add(map, "Content-Type", "application/json");
 				ds_map_add(map, "User-Agent", "gmdownloader");
+				ds_map_add(map, "X-API-Key", global.api_key);
 				
 				/* Send the HTTP GET request to the /download endpoint */
 				global.search_id = string_upper(search_id);

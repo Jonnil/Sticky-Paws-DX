@@ -1,7 +1,6 @@
 function scr_player_move_customizable_controls()
 {
-	
-	#region /* Customizable Controls */
+	/* Customizable Controls */
 	
 	#region /* Set values from the Input Settings */
 	if (player == 1)
@@ -215,7 +214,5 @@ function scr_player_move_customizable_controls()
 	#region /* Key Always Do Full Jump */
 	key_always_do_full_jump = false;
 	#endregion /* Key Always Do Full Jump END */
-	
-	#endregion /* Customizable Controls END */
 	
 }

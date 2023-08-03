@@ -8,13 +8,14 @@ global.character_for_player[1] = "sticky"; /* Player 1 Select Character 1 */
 global.character_for_player[2] = "catlyn"; /* Player 2 Select Character 2 */
 global.character_for_player[3] = "sticky"; /* Player 3 Select Character 3 */
 global.character_for_player[4] = "catlyn"; /* Player 4 Select Character 4 */
-global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws/";
+global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws";
 global.link_to_discord = "https://discord.com/invite/fGCy36x";
 global.link_to_gamebanana = "https://gamebanana.com/games/7722";
-global.link_to_instagram = "https://www.instagram.com/jonnilll/";
-global.link_to_reddit = "https://www.reddit.com/r/Jonnil/";
+global.link_to_instagram = "https://www.instagram.com/jonnilll";
+global.link_to_reddit = "https://www.reddit.com/r/Jonnil";
 global.link_to_twitter = "https://twitter.com/jonnilll";
 global.link_to_wiki = "https://stickypedia.miraheze.org/wiki/Main_Page";
+global.link_to_bug_report_form = "https://forms.gle/h1KopsAAZb1fx2Hk7";
 
 leveleditor_readme = noone; /* Readme textfile for how to use the level editor */
 
@@ -232,10 +233,17 @@ else
 {
 	global.gui_scale_modifier = 3;
 }
+
+
+global.part_limit_text_alpha = 0; /* The text showing part limit should fade out when you aren't placing or erasing objects */
+global.part_limit = 0; /* How many objects are currently placed in the level editor */
+global.part_limit_entety = 0; /* How many enteties are currently placed in the level editor. Enteties are object that have a lot of step events, so they can lag the game the most */
+global.part_limit_entity_text_alpha = 0; /* The text showing entity limit should fade out when you aren't placing or erasing enteties */
+
 global.collectible_image_index = 0; /* Make all collectibles animate in sync */
 global.online_enabled = false;
 global.report_reason = "";
-global.report_comment = "";
+global.report_message = "";
 global.clicking_cancel_input_screen = false;
 global.clicking_ok_input_screen = false;
 global.max_length_iterations = 0;
@@ -358,7 +366,6 @@ scr_set_default_language();
 global.settings_sidebar_menu = "accessibility_settings"; /* Settings sidebar */
 global.show_tutorial_signs = true;
 global.show_new_items_notification = true; /* In level editor, items you haven't used before show a "New" notification on top of the item, but you should be able to set this to not show up */
-global.enable_attract_demo = true; /* If the attract demo can play or not */
 global.enable_links = true; /* If links to websites should show up on the title screen or not */
 global.players_can_collide = false;
 global.player_has_entered_goal = false;

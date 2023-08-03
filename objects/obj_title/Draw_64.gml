@@ -2,77 +2,6 @@ var main_game_y = display_get_gui_height() * 0.5 + 100 + 40;
 var level_editor_y = display_get_gui_height() * 0.5 + 100 + 80;
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
-var attract_demo_exists = false;
-
-#region /* Play Attract Demo */
-if (global.play_attract_demo == false)
-&& (global.enable_attract_demo)
-{
-	if (attract_demo_exists)
-	{
-		play_attract_demo_time ++;
-	}
-	if (menu == "main_game")
-	|| (menu == "level_editor")
-	|| (menu == "options")
-	|| (menu == "language_shortcut")
-	|| (menu == "accessibility_shortcut")
-	|| (menu == "profile_shortcut")
-	|| (menu == "credits")
-	|| (menu == "quit")
-	|| (menu == "link_discord")
-	|| (menu == "link_gamebanana")
-	|| (menu == "link_instagram")
-	|| (menu == "link_reddit")
-	|| (menu == "link_twitter")
-	|| (menu == "link_wiki")
-	{
-		if (play_attract_demo_time >= 960)
-		&& (attract_demo_exists)
-		{
-			in_settings = false;
-			video_seek_to(0);
-			global.play_attract_demo = true;
-		}
-	}
-	else
-	{
-		if (play_attract_demo_time >= 3600)
-		&& (global.convention_mode)
-		&& (attract_demo_exists)
-		{
-			in_settings = false;
-			menu = "main_game";
-			video_seek_to(0);
-			global.play_attract_demo = true;
-		}
-	}
-}
-if (global.play_attract_demo)
-{
-	video_open("video/trailer.mp4");
-	video_resume();
-	scr_audio_play(trailer_sound, volume_source.music);
-	global.play_attract_demo = 2;
-}
-if (global.play_attract_demo = 2)
-{
-	menu_delay = 3;
-	audio_sound_gain(trailer_sound, global.volume_music * global.volume_main, 0);
-	var trailer_video = video_draw();
-	if (trailer_video[0] == 0)
-	{
-		draw_surface_ext(trailer_video[1], 0, 0, 1.5, 1.47, 0, c_white, 1);
-	}
-	if (video_get_position() >= video_get_duration() - 2000)
-	{
-		play_attract_demo_time = 0;
-		global.play_attract_demo = false;
-		audio_stop_sound(trailer_sound);
-		video_pause();
-	}
-}
-#endregion /* Play Attract Demo END */
 
 if (menu == "main_game")
 || (menu == "options")
@@ -476,8 +405,7 @@ if (menu == "main_game")
 || (menu == "link_twitter")
 || (menu == "link_wiki")
 {
-	if (global.play_attract_demo == false)
-	&& (in_settings == false)
+	if (in_settings == false)
 	{
 		
 		#region /* Character select Accept Selection */
@@ -538,21 +466,12 @@ if (menu != "select_custom_level")
 	title_yscale = lerp(title_yscale, 1, 0.1);
 }
 else
-if (global.play_attract_demo == false)
 {
 	title_x = lerp(title_x, 0, 0.1);
 	title_y = lerp(title_y, - 800, 0.1);
 	title_alpha = lerp(title_alpha, 0, 0.1);
 	title_xscale = lerp(title_xscale, 1, 0.1);
 	title_yscale = lerp(title_yscale, 1, 0.1);
-}
-else
-{
-	title_x = lerp(title_x, - 800, 0.1);
-	title_y = lerp(title_y, scr_sin_oscillate(-200, -240, 4.5), 0.1);
-	title_alpha = lerp(title_alpha, 0.5, 0.1);
-	title_xscale = lerp(title_xscale, 0.5, 0.1);
-	title_yscale = lerp(title_yscale, 0.5, 0.1);
 }
 #endregion /* Draw Title Screen END */
 
@@ -594,7 +513,7 @@ if (global.arcade_mode)
 #endregion /* Arcade Mode Menu END */
 
 #region /* Main Menu */
-if ((global.play_attract_demo == false) && (global.arcade_mode == false) && (in_settings == false))
+if (global.arcade_mode == false && in_settings == false)
 {
     if (menu == "main_game" || menu == "level_editor" || menu == "options" || menu == "language_shortcut" ||
         menu == "accessibility_shortcut" || menu == "profile_shortcut" || menu == "credits" ||
@@ -984,7 +903,6 @@ scr_quit_to_desktop_menu("quit");
 
 #region /* Select Custom Level Menu */
 if (level_editor_template_select)
-&& (global.play_attract_demo == false)
 {
 	select_custom_level_menu_open = false;
 	scr_select_official_level_menu();
@@ -1033,7 +951,6 @@ if (level_editor_template_select)
 }
 else
 if (select_custom_level_menu_open)
-&& (global.play_attract_demo == false)
 {
 	level_editor_template_select = false;
 	if (menu != "no_internet_level")
@@ -1077,8 +994,8 @@ if (menu == "report_back")
 || (menu == "report_blatant_copying")
 || (menu == "report_phony_world_record")
 || (menu == "report_other_inappropriate_content")
-|| (menu == "report_comment_ok")
-|| (menu == "report_comment_back")
+|| (menu == "report_message_ok")
+|| (menu == "report_message_back")
 || (menu == "report_send_back")
 || (menu == "report_send_confirm")
 || (menu == "report_send_to_server")
@@ -1593,6 +1510,8 @@ if (iris_xscale <= 0.001)
 			global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
 		}
 		scr_update_all_backgrounds();
+		global.part_limit = 0; /* How many objects are currently placed in the level editor */
+		global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
 		room_goto(rm_leveleditor);
 		/* The variables "doing clear check", "actually play edited level", and "play edited level" should be set before doing "menu delay = 9999" to zoom the iris xscale */
 	}
@@ -1613,6 +1532,9 @@ if (iris_xscale <= 0.001)
 		}
 		scr_delete_sprite_properly(title_screen_background);
 		scr_config_save();
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		lives = ini_read_real("Player", "lives", 5);
+		ini_close();
 		room_goto(rm_world_map);
 	}
 	#endregion /* Load File END */

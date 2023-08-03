@@ -57,6 +57,10 @@ function scr_audio_play(sound_id, what_volume_source = volume_source.sound, volu
 		else
 		if (what_volume_source == volume_source.voice)
 		{
+			if (object_index == obj_player)
+			{
+				scr_player_move_choose_voice_clips(); /* If "obj player" is running this "scr audio play" script, then choose random voice clip */
+			}
 			audio_sound_gain(sound_id, global.volume_voice * volume_modifier * global.volume_main, 0);
 			audio_stop_sound(sound_id); /* Stop same sound effects from playing before playing another of the same sound effect */
 			if (variable_instance_exists(self, "default_voice_pitch"))

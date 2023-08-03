@@ -11,14 +11,7 @@ scr_menu_navigation_initialization(1, true); /* Keyboard Controls END */
 if (title_music > noone)
 {
 	audio_sound_gain(title_music, global.volume_music * global.volume_main * title_music_lerp, 0);
-	if (global.play_attract_demo >= true)
-	{
-		title_music_lerp = lerp(title_music_lerp, 0, 0.01);
-	}
-	else
-	{
-		title_music_lerp = lerp(title_music_lerp, 1, 0.01);
-	}
+	title_music_lerp = lerp(title_music_lerp, 1, 0.01);
 }
 #endregion /* Play title screen music END */
 
@@ -241,10 +234,24 @@ if (menu == "load_custom_level")
 			}
 			else
 			{
+				
+				#region /* Go to the custom level select menu */
+				
+				/* Get the size of the custom level directory in MB, so you can display this information */
+				var custom_levels_folder = file_bin_open(working_directory + "custom_levels", 0);
+				if (custom_levels_folder > 0)
+				{
+					var custom_levels_folder_size = file_bin_size(custom_levels_folder);
+					file_bin_close(custom_levels_folder);
+					custom_levels_folder_megabytes = custom_levels_folder_size / 1024 / 1024;
+				}
+				
 				can_navigate = true;
 				file_load_timer = 0;
 				menu = "level_editor_play";
 				menu_delay = 3;
+				#endregion /* Go to the custom level select menu END */
+				
 			}
 		}
 		else

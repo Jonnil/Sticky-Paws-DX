@@ -3,6 +3,46 @@ if (global.actually_play_edited_level == false)
 	
 	if (quit_level_editor == false)
 	{
+		
+		if (selected_menu_alpha < 0.1)
+		{
+			
+			#region /* At top of screen, show part limit */
+			if (global.part_limit >= 4000)
+			{
+				draw_set_halign(fa_middle);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Part Limit: " + string(global.part_limit), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Part Limit: " + string(global.part_limit), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1));
+			}
+			else
+			{
+				global.part_limit_text_alpha = lerp(global.part_limit_text_alpha, 0, 0.01);
+				draw_set_halign(fa_middle);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Part Limit: " + string(global.part_limit), global.default_text_size, c_black, c_white, global.part_limit_text_alpha);
+			}
+			#endregion /* At top of screen, show part limit END */
+			
+			#region /* At top of screen, show entity limit */
+			if (global.part_limit_entity >= 100)
+			{
+				draw_set_halign(fa_middle);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, "Entity Limit: " + string(global.part_limit_entity), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, "Entity Limit: " + string(global.part_limit_entity), global.default_text_size, c_black, c_red, scr_wave(0, 1, 1));
+			}
+			else
+			{
+				global.part_limit_entity_text_alpha = lerp(global.part_limit_entity_text_alpha, 0, 0.01);
+				draw_set_halign(fa_middle);
+				draw_set_valign(fa_middle);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, "Entity Limit: " + string(global.part_limit_entity), global.default_text_size, c_black, c_white, global.part_limit_entity_text_alpha);
+			}
+			#endregion /* At top of screen, show entity limit END */
+			
+		}
+		
 		if (erase_mode)
 		{
 			var width = 10;
@@ -879,10 +919,7 @@ if (global.actually_play_edited_level == false)
 			
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_middle);
-			draw_set_alpha(0.5);
-			draw_rectangle_color(display_get_gui_width() - (level_name_x_offset * 0.5) - string_width(global.level_name) - 32, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
-			draw_set_alpha(1);
-			scr_draw_text_outlined(display_get_gui_width() - level_name_x_offset, display_get_gui_height() - 16, string(global.level_name), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - level_name_x_offset, display_get_gui_height() - 16, string(level_name_masked), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing END */
 		

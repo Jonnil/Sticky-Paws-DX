@@ -668,6 +668,7 @@ if (global.actually_play_edited_level == false)
 			&& (!position_meeting(x, y, obj_level_width))
 			&& (!position_meeting(x, y, obj_water_level_height))
 			&& (!hovering_over_icons)
+			&& (global.part_limit < 4000)
 			{
 				if (x > -16) /* Can only place objects within the level */
 				&& (y > -16)
@@ -1323,6 +1324,7 @@ if (global.actually_play_edited_level == false)
 					selected_object = total_number_of_objects;
 					selected_object_menu_x =- 64 *total_number_of_objects;
 				}
+				global.part_limit_text_alpha = 0;
 				selected_menu_alpha = 2;
 			}
 		}
@@ -1351,6 +1353,7 @@ if (global.actually_play_edited_level == false)
 					selected_object = 0;
 					selected_object_menu_x = 0;
 				}
+				global.part_limit_text_alpha = 0;
 				selected_menu_alpha = 2;
 			}
 		}

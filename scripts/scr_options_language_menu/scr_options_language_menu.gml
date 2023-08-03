@@ -61,7 +61,7 @@ function scr_options_language_menu()
 	#region /* Language Menu Navigation */
 	if (menu_joystick_delay <= 0)
 	&& (can_navigate)
-	and global.settings_sidebar_menu = "language_settings"
+	&& (global.settings_sidebar_menu = "language_settings")
 	{
 		if (global.controls_used_for_menu_navigation != "mouse")
 		{
@@ -92,6 +92,12 @@ function scr_options_language_menu()
 				global.language_localization = language_index - 1;
 				calculate_translation_completion();
 				menu_delay = 3;
+				if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
+				&& (global.selected_font == 2) /* Open Dyslexic font didn't work with Japanese language */
+				{
+					global.selected_font = 1; /* The next best font if you can't use open dyslexic is "Normal font", as it could be more readable than the "Game font" */
+					scr_set_font();
+				}
 			}
 		}
 		else

@@ -695,6 +695,17 @@ if (global.actually_play_edited_level == false)
 	always_show_level_editor_buttons_x = 288;
 	grid_button_x = display_get_gui_width() - 224;
 	
+	#region /* Name displayed masked if includes profanity */
+	if (switch_check_profanity(global.level_name))
+	{
+		level_name_masked = switch_mask_profanity(global.level_name);
+	}
+	else
+	{
+		level_name_masked = global.level_name;
+	}
+	#endregion /* Name displayed masked if includes profanity END */
+	
 	#region /* Options */
 	can_navigate = false;
 	menu_y_offset_real = 0;
