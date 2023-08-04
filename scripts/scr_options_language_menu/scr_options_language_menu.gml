@@ -98,6 +98,12 @@ function scr_options_language_menu()
 					global.selected_font = 1; /* The next best font if you can't use open dyslexic is "Normal font", as it could be more readable than the "Game font" */
 					scr_set_font();
 				}
+				if (global.language_localization == 2) /* If you have selected Japanese language, and Game font isn't finished */
+				&& (global.selected_font == 0) /* Game font isn't finsihed with Japanese language */
+				{
+					global.selected_font = 1; /* The next best font if you can't use open dyslexic is "Normal font", as it could be more readable than the "Game font" */
+					scr_set_font();
+				}
 			}
 		}
 		else

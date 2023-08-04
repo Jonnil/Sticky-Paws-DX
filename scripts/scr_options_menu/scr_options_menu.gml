@@ -2152,11 +2152,14 @@ function scr_options_menu()
 			
 			if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
 			{
-				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "selected_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font")); /* Doesn't include Open Dyslexic, as some languages are not supported */
+				/* Only include Game Font and Normal Font for Japanese language, as these are the only supported ones*/
+				//draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "selected_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font")); /* Doesn't include Open Dyslexic, as some languages are not supported */
+				var can_select_font = false;
 			}
 			else
 			{
 				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "selected_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic")); /* Includes Open Dyslexic */
+				var can_select_font = true;
 			}
 			draw_menu_dropdown(380, hud_hide_time_y, l10n_text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			
@@ -3061,7 +3064,14 @@ function scr_options_menu()
 				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "selected_font";
+					if (can_select_font)
+					{
+						menu = "selected_font";
+					}
+					else
+					{
+						menu = "hud_hide_time";
+					}
 				}
 				else
 				if (key_down)
@@ -3089,8 +3099,13 @@ function scr_options_menu()
 						menu = "difficulty_settings";
 					}
 					else
+					if (can_select_font)
 					{
 						menu = "selected_font";
+					}
+					else
+					{
+						menu = "hud_hide_time";
 					}
 				}
 				else
@@ -3264,7 +3279,19 @@ function scr_options_menu()
 				&& (menu_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "selected_font";
+					if (can_select_font)
+					{
+						menu = "selected_font";
+					}
+					else
+					if (global.enable_difficulty_selection_settings)
+					{
+						menu = "difficulty_settings";
+					}
+					else
+					{
+						menu = "automatically_pause_when_window_is_unfocused_settings";
+					}
 				}
 			}
 			else
@@ -3274,6 +3301,7 @@ function scr_options_menu()
 				&& (open_dropdown)
 				&& (menu_delay == 0)
 				&& (global.selected_font > 0)
+				&& (can_select_font)
 				{
 					menu_delay = 3;
 					global.selected_font --;
@@ -3284,14 +3312,17 @@ function scr_options_menu()
 				&& (open_dropdown)
 				&& (menu_delay == 0)
 				{
-					if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
-					&& (global.selected_font < 1)
-					|| (global.language_localization != 2)
-					&& (global.selected_font < 2)
+					if (can_select_font)
 					{
-						menu_delay = 3;
-						global.selected_font ++;
-						scr_set_font();
+						if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
+						&& (global.selected_font < 1) /* If "Global Selected Font" checks for less than 1 here, then you can only select Game font and Normal font */
+						|| (global.language_localization != 2)
+						&& (global.selected_font < 2)
+						{
+							menu_delay = 3;
+							global.selected_font ++;
+							scr_set_font();
+						}
 					}
 				}
 				else
