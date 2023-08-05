@@ -331,9 +331,6 @@ function scr_debug_screen()
 		}
 		debug_text_y += 20;
 		
-		scr_draw_text_outlined(32, debug_text_y, "player slots: " + string(global.player1_slot) + ", " + string(global.player2_slot) + ", " + string(global.player3_slot) + ", " + string(global.player4_slot), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		
 		if (variable_instance_exists(self, "menu"))
 		{
 			scr_draw_text_outlined(32, debug_text_y, "menu: " + string(menu), global.default_text_size, c_black, c_white);
@@ -364,12 +361,10 @@ function scr_debug_screen()
 			}
 			debug_text_y += 20;
 		}
-		scr_draw_text_outlined(32, debug_text_y, "online_enabled: " + string(global.online_enabled), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
 		
 		/* Draw the name of the current room at the bottom middle of the screen */
 		draw_set_halign(fa_center);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)), global.default_text_size, c_black, c_white);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)) + " " + string(room_width) + "x" + string(room_height), global.default_text_size, c_black, c_white);
 	}
 	
 	//if (global.debug_screen)

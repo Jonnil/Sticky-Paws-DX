@@ -181,7 +181,7 @@ if (intro_anim_done)
 	var x_min = view_x;
 	var x_max = view_x + view_width;
 	var y_min = view_y - 64;
-	var y_max = view_y + view_height + 32;
+	var y_max = view_y + view_height + 232;
 	x = clamp(x, x_min, x_max);
 	y = clamp(y, y_min, y_max);
 }

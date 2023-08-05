@@ -140,7 +140,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "background_offset";
+					menu = "change_entire_theme";
 					menu_delay = 3;
 				}
 				else
@@ -469,7 +469,7 @@ function scr_options_level_editor()
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);
-			draw_menu_button(level_editor_options_x, level_theme_y, l10n_text("Level Theme"), "level_theme", "back_background_offset");
+			draw_menu_button(level_editor_options_x, level_theme_y, l10n_text("Level Theme"), "level_theme", "change_entire_theme");
 			global.default_view_height = draw_menu_left_right_buttons(level_editor_options_x, default_view_height_y, options_level_editor_right_arrow_x, "Default view height", global.default_view_height, "default_view_height", 1, false);
 			global.default_view_width = draw_menu_left_right_buttons(level_editor_options_x, default_view_width_y, options_level_editor_right_arrow_x, "Default view width", global.default_view_width, "default_view_width", 1, false);
 			draw_menu_checkmark(level_editor_options_x - 90, make_every_tileset_into_default_tileset_y, l10n_text("Make every tileset into default tileset"), "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
@@ -565,18 +565,27 @@ function scr_options_level_editor()
 		
 		#region /* Level Theme Menu */
 		if (menu == "back_level_theme")
+		|| (menu == "change_entire_theme")
+		|| (menu == "change_background")
+		|| (menu == "change_music")
 		|| (menu == "background_offset")
 		|| (menu == "background_parallax")
 		|| (menu == "background_scale")
 		|| (menu == "background_tiled")
 		{
-			var background_offset_y = 47 * 1;
-			var background_parallax_y = 47 * 2;
-			var background_scale_y = 47 * 3;
-			var background_tiled_y = 47 * 4;
+			var change_entire_theme_y = 47 * 1;
+			var change_background_y = 47 * 2;
+			var change_music_y = 47 * 3;
+			var background_offset_y = 47 * 4;
+			var background_parallax_y = 47 * 5;
+			var background_scale_y = 47 * 6;
+			var background_tiled_y = 47 * 7;
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_theme", "level_theme");
 			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);
+			draw_menu_button(level_editor_options_x, change_entire_theme_y, l10n_text("Change Entire Theme"), "change_entire_theme", "back_change_entire_theme");
+			draw_menu_button(level_editor_options_x, change_background_y, l10n_text("Change Background"), "change_background", "back_change_background");
+			draw_menu_button(level_editor_options_x, change_music_y, l10n_text("Change Music"), "change_music", "back_change_music");
 			draw_menu_button(level_editor_options_x, background_offset_y, l10n_text("BG Offset"), "background_offset", "back_background_offset");
 			draw_menu_button(level_editor_options_x, background_parallax_y, l10n_text("BG Parallax"), "background_parallax", "back_background_parallax");
 			draw_menu_button(level_editor_options_x, background_scale_y, l10n_text("BG Scale"), "background_scale", "back_background_scale");
@@ -608,6 +617,87 @@ function scr_options_level_editor()
 				&& (menu_delay == 0)
 				&& (open_dropdown == false)
 				{
+					menu = "change_entire_theme";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "change_entire_theme")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "back_background_offset";
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "back_level_theme";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_background";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "change_background")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "back_background_offset";
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_entire_theme";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_music";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "change_music")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "back_background_offset";
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_background";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
 					menu = "background_offset";
 					menu_delay = 3;
 				}
@@ -627,7 +717,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "back_level_theme";
+					menu = "change_music";
 					menu_delay = 3;
 				}
 				else
@@ -722,6 +812,264 @@ function scr_options_level_editor()
 			}
 		}
 		#endregion /* Level Theme Menu END */
+		
+		else
+		
+		#region /* Change Background Menu */
+		if (menu == "back_change_background")
+		|| (menu == "change_all_backgrounds")
+		|| (menu == "change_background_1")
+		|| (menu == "change_background_2")
+		|| (menu == "change_background_3")
+		|| (menu == "change_background_4")
+		|| (menu == "change_foreground_1")
+		|| (menu == "change_foreground_above_static_objects")
+		|| (menu == "change_foreground_2")
+		|| (menu == "change_foreground_secret")
+		{
+			var change_all_backgrounds_y = 47 * 1;
+			var change_background_1_y = 47 * 2;
+			var change_background_2_y = 47 * 3;
+			var change_background_3_y = 47 * 4;
+			var change_background_4_y = 47 * 5;
+			var change_foreground_1_y = 47 * 6;
+			var change_foreground_above_static_objects_y = 47 * 7;
+			var change_foreground_2_y = 47 * 8;
+			var change_foreground_secret_y = 47 * 9;
+			
+			draw_menu_button(0, 0, l10n_text("Back"), "back_change_background", "change_background");
+			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);
+			draw_menu_button(level_editor_options_x, change_all_backgrounds_y, l10n_text("Change All Backgrounds"), "change_all_backgrounds", "change_all_backgrounds");
+			draw_menu_button(level_editor_options_x, change_background_1_y, l10n_text("Change Background 1"), "change_background_1", "change_background_1");
+			draw_menu_button(level_editor_options_x, change_background_2_y, l10n_text("Change Background 2"), "change_background_2", "change_background_2");
+			draw_menu_button(level_editor_options_x, change_background_3_y, l10n_text("Change Background 3"), "change_background_3", "change_background_3");
+			draw_menu_button(level_editor_options_x, change_background_4_y, l10n_text("Change Background 4"), "change_background_4", "change_background_4");
+			draw_menu_button(level_editor_options_x, change_foreground_1_y, l10n_text("Change Foreground 1"), "change_foreground_1", "change_foreground_1");
+			draw_menu_button(level_editor_options_x, change_foreground_above_static_objects_y, l10n_text("Change Foreground 1.5"), "change_foreground_above_static_objects", "change_foreground_above_static_objects");
+			draw_menu_button(level_editor_options_x, change_foreground_2_y, l10n_text("Change Foreground 2"), "change_foreground_2", "change_foreground_2");
+			draw_menu_button(level_editor_options_x, change_foreground_secret_y, l10n_text("Change Foreground Secret"), "change_foreground_secret", "change_foreground_secret");
+			
+			if (key_b_pressed)
+			&& (!keyboard_check(vk_control))
+			&& (menu_delay == 0)
+			&& (open_dropdown == false)
+			|| (menu == "back_change_backgrounds")
+			&& (key_a_pressed)
+			&& (menu_delay == 0)
+			&& (open_dropdown == false)
+			{
+				menu = "change_backgrounds";
+				menu_delay = 3;
+			}
+			if (menu == "back_change_backgrounds")
+			{
+				if (key_up)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_foreground_secret";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_all_backgrounds";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "change_all_backgrounds")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "back_change_backgrounds";
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "back_change_backgrounds";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_background_1";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "change_background_1")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "back_background_offset";
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_all_backgrounds";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_background_2";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "change_background_2")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "back_background_offset";
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_background_1";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_background_3";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "change_background_3")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "back_background_offset";
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_background_2";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_background_4";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "change_background_4")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "back_background_parallax";
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_background_3";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_foreground_1";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "change_foreground_1")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "back_background_scale";
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_background_4";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_foreground_above_static_objects";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (menu == "change_foreground_above_static_objects")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_foreground_1";
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_foreground_1";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0)
+				&& (open_dropdown == false)
+				{
+					menu = "change_foreground_2";
+					menu_delay = 3;
+				}
+			}
+		}
+		#endregion /* Change Background Menu END */
 		
 		else
 		
