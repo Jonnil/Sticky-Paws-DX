@@ -254,7 +254,7 @@ if (global.actually_play_edited_level == false)
 			
 				#region /* If menu is on level editor options */
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 -42, l10n_text("Level Options"), "level_editor_options", "back_level_editor_options");
-			
+				
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 -42, get_window_width * 0.5 + 185, get_window_height * 0.5))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
@@ -269,7 +269,7 @@ if (global.actually_play_edited_level == false)
 					menu = "back_level_editor_options";
 					menu_delay = 3;
 				}
-			
+				
 				if (menu == "level_editor_options")
 				&& (can_input_level_name == false)
 				{
@@ -1948,5 +1948,3 @@ if (pause)
 {
 	scr_draw_cursor_mouse();
 }
-
-scr_draw_text_outlined(100, 100, "navigate_camera_with_arrowkeys: " + string(navigate_camera_with_arrowkeys))

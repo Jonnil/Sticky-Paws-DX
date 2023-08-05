@@ -15,8 +15,9 @@ if (global.character_select_in_this_menu == "main_game")
 		ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 	}
 	
-	#region /* Custom Foreground x and y offset points */
-	#region /* Custom Foreground Above Static Objects y offset point */
+	#region /* Custom Foreground 1.5 x and y offset points */
+	
+	#region /* Custom Foreground 1.5 y offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_foreground_above_static_objects_y_offset"))
 	{
 		y_offset = ini_read_real("Custom Backgrounds", "custom_foreground_above_static_objects_y_offset", 0);
@@ -29,9 +30,9 @@ if (global.character_select_in_this_menu == "main_game")
 		}
 		y_offset = 0;
 	}
-	#endregion /* Custom Foreground Above Static Objects y offset point END */
+	#endregion /* Custom Foreground 1.5 y offset point END */
 	
-	#region /* Custom Foreground Above Static Objects x offset point */
+	#region /* Custom Foreground 1.5 x offset point */
 	if (ini_key_exists("Custom Backgrounds", "custom_foreground_above_static_objects_x_offset"))
 	{
 		x_offset = ini_read_real("Custom Backgrounds", "custom_foreground_above_static_objects_x_offset", 0);
@@ -44,10 +45,11 @@ if (global.character_select_in_this_menu == "main_game")
 		}
 		x_offset = 0;
 	}
-	#endregion /* Custom Foreground Above Static Objects x offset point END */
-	#endregion /* Custom Foreground Above Static Objects x and y offset points END */
+	#endregion /* Custom Foreground 1.5 x offset point END */
 	
-	#region /* Custom Foreground Above Static Objects depth */
+	#endregion /* Custom Foreground 1.5 x and y offset points END */
+	
+	#region /* Custom Foreground 1.5 depth */
 	if (ini_key_exists("Custom Backgrounds", "custom_foreground_above_static_objects_depth"))
 	{
 		depth = ini_read_real("Custom Backgrounds", "custom_foreground_above_static_objects_depth", +12);
@@ -60,7 +62,7 @@ if (global.character_select_in_this_menu == "main_game")
 		}
 		depth = +12;
 	}
-	#endregion /* Custom Foreground Above Static Objects depth END */
+	#endregion /* Custom Foreground 1.5 depth END */
 	
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }

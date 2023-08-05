@@ -82,7 +82,7 @@ function scr_options_graphics()
 		
 		draw_menu_checkmark(386, enable_foreground_layer1_y + menu_y_offset, l10n_text("Enable Foreground Layer 1"), "enable_foreground_layer1", global.enable_foreground_layer1);
 		
-		draw_menu_checkmark(386, enable_foreground_layer_above_static_objects_y + menu_y_offset, l10n_text("Enable Foreground Layer Above Static Objects"), "enable_foreground_layer_above_static_objects", global.enable_foreground_layer_above_static_objects);
+		draw_menu_checkmark(386, enable_foreground_layer_above_static_objects_y + menu_y_offset, l10n_text("Enable Foreground Layer 1.5"), "enable_foreground_layer_above_static_objects", global.enable_foreground_layer_above_static_objects);
 		
 		draw_menu_checkmark(386, enable_foreground_layer2_y + menu_y_offset, l10n_text("Enable Foreground Layer 2"), "enable_foreground_layer2", global.enable_foreground_layer2);
 		

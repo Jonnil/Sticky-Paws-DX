@@ -159,7 +159,7 @@ function scr_update_all_backgrounds()
 		}	
 		#endregion /* Update Foreround1 END */
 		
-		#region /* Update Foreground above static objects official */
+		#region /* Update Foreground 1.5 official */
 		/* PNG small letter File */ if (file_exists(string(path) + "foreground_above_static_objects.png"))
 		{
 			global.custom_foreground_above_static_objects = sprite_add(string(path) + "foreground_above_static_objects.png", 0, false, false, 0, 0);
@@ -183,7 +183,7 @@ function scr_update_all_backgrounds()
 		{
 			global.custom_foreground_above_static_objects = noone;
 		}
-		#endregion /* Update Foreround1 END */
+		#endregion /* Update Foreround 1.5 END */
 		
 		#region /* Update Foreground2 */
 		/* PNG small letter File */ if (file_exists(string(path) + "foreground2.png"))
@@ -209,7 +209,7 @@ function scr_update_all_backgrounds()
 		{
 			global.custom_foreground2 = noone;
 		}	
-		#endregion /* Update Foreround1 END */
+		#endregion /* Update Foreround2 END */
 		
 		#region /* Update Foreground secret */
 		/* PNG small letter File */ if (file_exists(string(path) + "foreground_secret.png"))

@@ -930,8 +930,10 @@ function scr_select_custom_level_menu()
 	#endregion /* Edit level description END */
 	
 	/* Display the total custom level folder size in MB */
-	if (custom_levels_folder_megabytes > 0)
+	if (custom_levels_folder_megabytes > 1)
 	{
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Custom level folder size: " + string(custom_levels_folder_megabytes) + " MB", global.default_text_size, c_menu_fill, c_menu_outline, 1);
 	}
 	

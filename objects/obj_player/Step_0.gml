@@ -909,7 +909,7 @@ scr_player_move_spring();
 #endregion /* ________________________________MORE MOVES________________________________ */
 
 /* Platformer Player Part 2 */
-#region /* ________________________________Handling the sprites and sounds in the step event________________________________ */
+/* ________________________________Handling the sprites and sounds in the step event________________________________ */
 draw_xscale = lerp(draw_xscale, 1, 0.2); /* Make horizontal stretching slowly reset back to 1 */
 draw_yscale = lerp(draw_yscale, 1, 0.2); /* Make vertical stretching slowly reset back to 1 */
 

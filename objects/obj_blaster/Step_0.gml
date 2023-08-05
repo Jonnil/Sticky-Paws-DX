@@ -1,6 +1,10 @@
 #region /* Gravity */
 if (!position_meeting(x, bbox_bottom + 1, obj_wall))
 && (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+&& (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) + sprite_width)
+&& (x > camera_get_view_x(view_camera[view_current]) - sprite_width)
+&& (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) + sprite_height)
+&& (y > camera_get_view_y(view_camera[view_current]) - sprite_height)
 {
 	gravity = 0.5;
 }
