@@ -215,7 +215,14 @@ function scr_select_official_level_menu()
 		global.select_level_index = 0;
 		scroll_to = floor(global.select_level_index / row);
 		lerp_on = true;
-		menu = "load_custom_level";
+		if (room == rm_title)
+		{
+			menu = "load_custom_level";
+		}
+		else
+		{
+			menu = level_editor_options_back_to_menu;
+		}
 	}
 	if (menu == "back_from_level_editor")
 	&& (key_up)
@@ -225,7 +232,14 @@ function scr_select_official_level_menu()
 		menu_delay = 3;
 		can_navigate = true;
 		select_custom_level_menu_open = true;
-		menu = "level_editor_play";
+		if (room == rm_title)
+		{
+			menu = "level_editor_play";
+		}
+		else
+		{
+			menu = "choose_official_level_to_take_from";
+		}
 		if (global.select_level_index - row < 0)
 		{
 			global.select_level_index = ds_list_size(global.thumbnail_sprite) - 1;
@@ -241,7 +255,14 @@ function scr_select_official_level_menu()
 		menu_delay = 3;
 		can_navigate = true;
 		select_custom_level_menu_open = true;
-		menu = "level_editor_play";
+		if (room = rm_title)
+		{
+			menu = "level_editor_play";
+		}
+		else
+		{
+			menu = "choose_official_level_to_take_from";
+		}
 		global.select_level_index = 0;
 		scroll_to = floor(global.select_level_index / row);
 		lerp_on = true;

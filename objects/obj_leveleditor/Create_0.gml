@@ -597,6 +597,11 @@ if (global.actually_play_edited_level == false)
 	selected_skin = global.skin_for_player[1];
 	
 	audio_stop_all();
+	level_editor_options_back_to_menu = ""; /* Save what menu you came from, to use later */
+	level_editor_template_select = false;
+	scroll = 0;
+	thumbnail_x_offset = 0; /* Level thumbnail x offset, for when windows size is too small to fit every thumbnail, you need to shift the x position a bit to fit everything */
+	show_delete_button = true; /* If delete custom level buttons should show up or not. Sometimes you don't want it to show up when the feature is unavailable */
 	navigate_camera_with_arrowkeys = false;
 	caution_online_do_not_show = false;
 	pressing_play_timer = 0; /* You have to hold down the play button for some time before you play the level from the beginning */

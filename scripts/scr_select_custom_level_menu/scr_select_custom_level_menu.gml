@@ -23,7 +23,7 @@ function scr_select_custom_level_menu()
 	
 	if (os_type == os_linux)
 	{
-		show_delete_button = false;
+		show_delete_button = false; /* If delete custom level buttons should show up or not. Sometimes you don't want it to show up when the feature is unavailable */
 	}
 	else
 	{
@@ -707,6 +707,7 @@ function scr_select_custom_level_menu()
 						
 						thumbnail_level_name[global.select_level_index] = string(global.level_name);
 					}
+					global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name); /* After renaming a level, make sure "select level index" is updated */
 				}
 				else
 				if (level_editor_edit_name)

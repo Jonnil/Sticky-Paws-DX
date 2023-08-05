@@ -56,7 +56,8 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			}
 			
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
-			if (!level_editor_template_select && i >= 1)
+			if (variable_instance_exists(self, "thumbnail_clear_check"))
+			&& (!level_editor_template_select && i >= 1)
 			{
 				var clear_check = thumbnail_clear_check[i];
 				var var_level_id = thumbnail_level_id[i];
