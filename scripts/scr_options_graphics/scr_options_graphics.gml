@@ -24,8 +24,8 @@ function scr_options_graphics()
 		var enable_background_layer3_y = enable_background_layer2_y + 48;
 		var enable_background_layer4_y = enable_background_layer3_y + 48;
 		var enable_foreground_layer1_y = enable_background_layer4_y + 48;
-		var enable_foreground_layer_above_static_objects_y = enable_foreground_layer1_y + 48;
-		var enable_foreground_layer2_y = enable_foreground_layer_above_static_objects_y + 48;
+		var enable_foreground_layer_1_5_y = enable_foreground_layer1_y + 48;
+		var enable_foreground_layer2_y = enable_foreground_layer_1_5_y + 48;
 		var enable_foreground_layer_secret_y = enable_foreground_layer2_y + 48;
 		var background_brightness_gameplay_y = enable_foreground_layer_secret_y + 48 * 2;
 		var background_brightness_menu_y = background_brightness_gameplay_y + 68;
@@ -82,7 +82,7 @@ function scr_options_graphics()
 		
 		draw_menu_checkmark(386, enable_foreground_layer1_y + menu_y_offset, l10n_text("Enable Foreground Layer 1"), "enable_foreground_layer1", global.enable_foreground_layer1);
 		
-		draw_menu_checkmark(386, enable_foreground_layer_above_static_objects_y + menu_y_offset, l10n_text("Enable Foreground Layer 1.5"), "enable_foreground_layer_above_static_objects", global.enable_foreground_layer_above_static_objects);
+		draw_menu_checkmark(386, enable_foreground_layer_1_5_y + menu_y_offset, l10n_text("Enable Foreground Layer 1.5"), "enable_foreground_layer_1_5", global.enable_foreground_layer_1_5);
 		
 		draw_menu_checkmark(386, enable_foreground_layer2_y + menu_y_offset, l10n_text("Enable Foreground Layer 2"), "enable_foreground_layer2", global.enable_foreground_layer2);
 		
@@ -359,15 +359,15 @@ function scr_options_graphics()
 			if (key_down)
 			&& (menu_delay == 0)
 			{
-				menu = "enable_foreground_layer_above_static_objects";
+				menu = "enable_foreground_layer_1_5";
 				menu_delay = 3;
 			}
 		}
 		else
-		if (menu == "enable_foreground_layer_above_static_objects")
+		if (menu == "enable_foreground_layer_1_5")
 		&& (open_dropdown == false)
 		{
-			menu_cursor_y_position = enable_foreground_layer_above_static_objects_y;
+			menu_cursor_y_position = enable_foreground_layer_1_5_y;
 			if (key_up)
 			&& (menu_delay == 0)
 			{
@@ -390,7 +390,7 @@ function scr_options_graphics()
 			if (key_up)
 			&& (menu_delay == 0)
 			{
-				menu = "enable_foreground_layer_above_static_objects";
+				menu = "enable_foreground_layer_1_5";
 				menu_delay = 3;
 			}
 			else
@@ -656,7 +656,7 @@ function scr_options_graphics()
 			if (menu == "enable_foreground_layer1") && (menu_delay == 0){if (global.enable_foreground_layer1){global.enable_foreground_layer1 = false;}else{global.enable_foreground_layer1 = true;}
 			menu_delay = 3;
 			}
-			if (menu == "enable_foreground_layer_above_static_objects") && (menu_delay == 0){if (global.enable_foreground_layer_above_static_objects){global.enable_foreground_layer_above_static_objects = false;}else{global.enable_foreground_layer_above_static_objects = true;}
+			if (menu == "enable_foreground_layer_1_5") && (menu_delay == 0){if (global.enable_foreground_layer_1_5){global.enable_foreground_layer_1_5 = false;}else{global.enable_foreground_layer_1_5 = true;}
 			menu_delay = 3;
 			}
 			if (menu == "enable_foreground_layer2") && (menu_delay == 0){if (global.enable_foreground_layer2){global.enable_foreground_layer2 = false;}else{global.enable_foreground_layer2 = true;}

@@ -126,10 +126,10 @@ function scr_player_move_goal()
 				scr_audio_play(voice_enter_goal, volume_source.voice);
 				
 				#region /* Level Clear Melody */
-				if (level_clear_melody > noone)
-				&& (!audio_is_playing(level_clear_melody))
+				if (global.level_clear_melody > noone)
+				&& (!audio_is_playing(global.level_clear_melody))
 				{
-					scr_audio_play(level_clear_melody, volume_source.melody);
+					scr_audio_play(global.level_clear_melody, volume_source.melody);
 				}
 				#endregion /* Level Clear Melody END */
 				

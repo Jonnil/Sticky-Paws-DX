@@ -37,7 +37,7 @@ else
 
 #region /* Create Foreground */
 instance_create_depth(0, 0, 0, obj_foreground1);
-instance_create_depth(0, 0, 0, obj_foreground_above_static_objects);
+instance_create_depth(0, 0, 0, obj_foreground1_5);
 instance_create_depth(0, 0, 0, obj_foreground2);
 instance_create_depth(0, 0, 0, obj_foreground_secret);
 instance_create_depth(x, y, 0, obj_background_brightness_gameplay); /* Create Background Brightness in Gameplay */
@@ -598,8 +598,11 @@ if (global.actually_play_edited_level == false)
 	
 	audio_stop_all();
 	level_editor_options_back_to_menu = ""; /* Save what menu you came from, to use later */
+	level_editor_options_select_level_index = global.select_level_index;
 	level_editor_template_select = false;
 	scroll = 0;
+	row = 0;
+	open_sub_menu = false;
 	thumbnail_x_offset = 0; /* Level thumbnail x offset, for when windows size is too small to fit every thumbnail, you need to shift the x position a bit to fit everything */
 	show_delete_button = true; /* If delete custom level buttons should show up or not. Sometimes you don't want it to show up when the feature is unavailable */
 	navigate_camera_with_arrowkeys = false;

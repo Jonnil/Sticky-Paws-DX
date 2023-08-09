@@ -8,7 +8,7 @@ function scr_copy_move_files(source, target, delete_original_folder = false)
 		if (content_type == "level")
 		{
 			scr_file_copy_dir(source, target);
-			scr_file_copy_dir(source + "/backgrounds", target + "/backgrounds");
+			scr_file_copy_dir(source + "/background", target + "/background");
 			scr_file_copy_dir(source + "/data", target + "/data");
 			scr_file_copy_dir(source + "/sound", target + "/sound");
 		}

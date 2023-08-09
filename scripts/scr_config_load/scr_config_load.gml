@@ -59,7 +59,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "enable_background_layer3")){global.enable_background_layer3 = ini_read_real("config", "enable_background_layer3", 0);}
 		if (ini_key_exists("config", "enable_background_layer4")){global.enable_background_layer4 = ini_read_real("config", "enable_background_layer4", 0);}
 		if (ini_key_exists("config", "enable_foreground_layer1")){global.enable_foreground_layer1 = ini_read_real("config", "enable_foreground_layer1", 0);}
-		if (ini_key_exists("config", "enable_foreground_layer_above_static_objects")){global.enable_foreground_layer_above_static_objects = ini_read_real("config", "enable_foreground_layer_above_static_objects", 0);}
+		if (ini_key_exists("config", "enable_foreground_layer_1_5")){global.enable_foreground_layer_1_5 = ini_read_real("config", "enable_foreground_layer_1_5", 0);}
 		if (ini_key_exists("config", "enable_foreground_layer2")){global.enable_foreground_layer2 = ini_read_real("config", "enable_foreground_layer2", 0);}
 		if (ini_key_exists("config", "enable_foreground_layer_secret")){global.enable_foreground_layer_secret = ini_read_real("config", "enable_foreground_layer_secret", 0);}
 		if (ini_key_exists("config", "enable_transitions")){global.enable_transitions = ini_read_real("config", "enable_transitions", 0);}

@@ -430,7 +430,7 @@ if (can_navigate == false)
 			}
 			else
 			{
-				if (file_exists(working_directory + "custom_title_backgrounds/" + file_found))
+				if (file_exists(working_directory + "custom_title_background/" + file_found))
 				{
 					ds_list_add(global.all_loaded_title_backgrounds, file_found)
 				}

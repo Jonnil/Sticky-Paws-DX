@@ -764,7 +764,7 @@ function scr_options_menu()
 				}
 				else
 				{
-					menu = "title_backgrounds";
+					menu = "title_background";
 				}
 			}
 			if (global.settings_sidebar_menu == "storage_settings"){menu = "file_select";}
@@ -1158,7 +1158,7 @@ function scr_options_menu()
 				}
 				else
 				{
-					menu = "title_backgrounds";
+					menu = "title_background";
 				}
 			}
 			#endregion /* Click Global Resources END */

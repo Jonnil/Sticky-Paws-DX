@@ -539,39 +539,6 @@ have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You
 if (room != rm_title)
 {
 	
-	#region /* Update Level Clear Melody */
-	/* OGG small letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
-	&& (global.character_select_in_this_menu == "main_game")
-	|| (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	&& (global.create_level_from_template)
-	{
-		level_clear_melody = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/clear_melody.ogg");
-	}
-	else
-	/* OGG small letter File */
-	if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg"))
-	&& (global.character_select_in_this_menu == "level_editor")
-	{
-		level_clear_melody = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
-	}
-	else
-	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
-	{
-		level_clear_melody = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
-	}
-	else
-	if (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
-	{
-		level_clear_melody = audio_create_stream(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
-	}
-	else
-	{
-		level_clear_melody = noone;
-	}
-	#endregion /* Update Level Clear Melody END */
-	
 	#region /* Update Player Lose Melody */
 	/* OGG small letter File */
 	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/lose_melody.ogg"))
@@ -622,7 +589,6 @@ if (room != rm_title)
 }
 else
 {
-	level_clear_melody = noone;
 	player_lose_melody = noone;
 	music_invincible = noone;
 }

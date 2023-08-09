@@ -956,7 +956,7 @@ if (select_custom_level_menu_open)
 	if (menu != "no_internet_level")
 	{
 		scr_select_custom_level_menu();
-		scr_custom_level_select_with_the_mouse()
+		scr_custom_level_select_with_the_mouse(global.all_loaded_custom_levels);
 	}
 	scr_draw_upload_level_menu(); /* Draw upload level menu above everything */
 }

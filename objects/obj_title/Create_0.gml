@@ -3,7 +3,7 @@ scr_delete_sprite_properly(global.custom_background2);
 scr_delete_sprite_properly(global.custom_background3);
 scr_delete_sprite_properly(global.custom_background4);
 scr_delete_sprite_properly(global.custom_foreground1);
-scr_delete_sprite_properly(global.custom_foreground_above_static_objects);
+scr_delete_sprite_properly(global.custom_foreground1_5);
 scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
 
@@ -145,9 +145,9 @@ if (!directory_exists(working_directory + "custom_resource_pack"))
 #endregion /* Create directory for saving custom resource_pack END */
 
 #region /* Create directory for saving custom title backgrounds */
-if (!directory_exists(working_directory + "custom_title_backgrounds"))
+if (!directory_exists(working_directory + "custom_title_background"))
 {
-	directory_create(working_directory + "custom_title_backgrounds");
+	directory_create(working_directory + "custom_title_background");
 }
 #endregion /* Create directory for saving custom title backgrounds END */
 
@@ -184,14 +184,14 @@ repeat(50)
 #endregion /* Any save file outside the save_files folder should copy over to that folder and then delete the save file outside the folder END */
 
 #region /* Custom Title Screen Background */
-if (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
+if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 {
-	title_screen_background = sprite_add("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
+	title_screen_background = sprite_add("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 }
 else
-if (file_exists(working_directory + "custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
+if (file_exists(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 {
-	title_screen_background = sprite_add(working_directory + "custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
+	title_screen_background = sprite_add(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 }
 else
 {

@@ -32,7 +32,7 @@ function scr_deactivate_objects_outside_view()
 		obj_player,
 		obj_player_lose,
 		obj_foreground1,
-		obj_foreground_above_static_objects,
+		obj_foreground1_5,
 		obj_foreground2,
 		obj_foreground_secret,
 		obj_water_level];

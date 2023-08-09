@@ -361,6 +361,8 @@ function scr_debug_screen()
 			}
 			debug_text_y += 20;
 		}
+		scr_draw_text_outlined(32, debug_text_y, "select_level_index: " + string(global.select_level_index), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
 		
 		/* Draw the name of the current room at the bottom middle of the screen */
 		draw_set_halign(fa_center);

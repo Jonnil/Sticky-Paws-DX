@@ -12,7 +12,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		
 		#region /* Background */
 		var files = [];
-		var folder_name = "backgrounds";
+		var folder_name = "background";
 		var file_type = "png";
 		var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
 		if (file_name != "")

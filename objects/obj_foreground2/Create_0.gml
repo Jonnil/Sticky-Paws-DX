@@ -18,30 +18,30 @@ if (global.character_select_in_this_menu == "main_game")
 	
 	#region /* Custom Foreground x and y offset points */
 	#region /* Custom Foreground 2 y offset point */
-	if (ini_key_exists("Custom Backgrounds", "custom_foreground_2_y_offset"))
+	if (ini_key_exists("Custom Backgrounds", "custom_foreground2_y_offset"))
 	{
-		y_offset = ini_read_real("Custom Backgrounds", "custom_foreground_2_y_offset", 0);
+		y_offset = ini_read_real("Custom Backgrounds", "custom_foreground2_y_offset", 0);
 	}
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			ini_write_real("Custom Backgrounds", "custom_foreground_2_y_offset", 0);
+			ini_write_real("Custom Backgrounds", "custom_foreground2_y_offset", 0);
 		}
 		y_offset = 0;
 	}
 	#endregion /* Custom Foreground 2 y offset point END */
 	
 	#region /* Custom Foreground 2 x offset point */
-	if (ini_key_exists("Custom Backgrounds", "custom_foreground_2_x_offset"))
+	if (ini_key_exists("Custom Backgrounds", "custom_foreground2_x_offset"))
 	{
-		x_offset = ini_read_real("Custom Backgrounds", "custom_foreground_2_x_offset", 0);
+		x_offset = ini_read_real("Custom Backgrounds", "custom_foreground2_x_offset", 0);
 	}
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			ini_write_real("Custom Backgrounds", "custom_foreground_2_x_offset", 0);
+			ini_write_real("Custom Backgrounds", "custom_foreground2_x_offset", 0);
 		}
 		x_offset = 0;
 	}
@@ -49,15 +49,15 @@ if (global.character_select_in_this_menu == "main_game")
 	#endregion /* Custom Foreground 2 x and y offset points END */
 	
 	#region /* Custom Foreground 2 depth */
-	if (ini_key_exists("Custom Backgrounds", "custom_foreground_2_depth"))
+	if (ini_key_exists("Custom Backgrounds", "custom_foreground2_depth"))
 	{
-		depth = ini_read_real("Custom Backgrounds", "custom_foreground_2_depth", -10);
+		depth = ini_read_real("Custom Backgrounds", "custom_foreground2_depth", -10);
 	}
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			ini_write_real("Custom Backgrounds", "custom_foreground_2_depth", -10);
+			ini_write_real("Custom Backgrounds", "custom_foreground2_depth", -10);
 		}
 		depth = -10;
 	}

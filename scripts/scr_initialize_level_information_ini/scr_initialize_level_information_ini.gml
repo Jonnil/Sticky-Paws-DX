@@ -18,41 +18,41 @@ function scr_initialize_level_information_ini()
 			can_save_to_level_information = true;
 		}
 		
-		custom_background_4_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background_4_y_offset", 0);
-		custom_background_4_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background_4_x_offset", 0);
-		custom_background_3_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background_3_y_offset", 0);
-		custom_background_3_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background_3_x_offset", 0);
-		custom_background_2_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background_2_y_offset", 0);
-		custom_background_2_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background_2_x_offset", 0);
-		custom_background_1_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background_1_y_offset", 0);
-		custom_background_1_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background_1_x_offset", 0);
+		custom_background4_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background4_y_offset", 0);
+		custom_background4_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background4_x_offset", 0);
+		custom_background3_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background3_y_offset", 0);
+		custom_background3_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background3_x_offset", 0);
+		custom_background2_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background2_y_offset", 0);
+		custom_background2_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background2_x_offset", 0);
+		custom_background1_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background1_y_offset", 0);
+		custom_background1_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background1_x_offset", 0);
 		
-		custom_background_4_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background_4_y_parallax", 9);
-		custom_background_4_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background_4_x_parallax", 9);
-		custom_background_3_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background_3_y_parallax", 7);
-		custom_background_3_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background_3_x_parallax", 7);
-		custom_background_2_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background_2_y_parallax", 5);
-		custom_background_2_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background_2_x_parallax", 5);
-		custom_background_1_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background_1_y_parallax", 3);
-		custom_background_1_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background_1_x_parallax", 3);
+		custom_background4_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background4_y_parallax", 9);
+		custom_background4_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background4_x_parallax", 9);
+		custom_background3_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background3_y_parallax", 7);
+		custom_background3_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background3_x_parallax", 7);
+		custom_background2_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background2_y_parallax", 5);
+		custom_background2_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background2_x_parallax", 5);
+		custom_background1_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background1_y_parallax", 3);
+		custom_background1_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background1_x_parallax", 3);
 		
-		custom_background_4_y_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background_4_y_scale", 1);
-		custom_background_4_x_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background_4_x_scale", 1);
-		custom_background_3_y_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background_3_y_scale", 1);
-		custom_background_3_x_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background_3_x_scale", 1);
-		custom_background_2_y_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background_2_y_scale", 1);
-		custom_background_2_x_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background_2_x_scale", 1);
-		custom_background_1_y_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background_1_y_scale", 1);
-		custom_background_1_x_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background_1_x_scale", 1);
+		custom_background4_y_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background4_y_scale", 1);
+		custom_background4_x_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background4_x_scale", 1);
+		custom_background3_y_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background3_y_scale", 1);
+		custom_background3_x_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background3_x_scale", 1);
+		custom_background2_y_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background2_y_scale", 1);
+		custom_background2_x_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background2_x_scale", 1);
+		custom_background1_y_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background1_y_scale", 1);
+		custom_background1_x_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background1_x_scale", 1);
 		
-		custom_background_4_vtiled = get_custom_level_information_real("Custom Backgrounds", "custom_background_4_vtiled", 1);
-		custom_background_4_htiled = get_custom_level_information_real("Custom Backgrounds", "custom_background_4_htiled", 1);
-		custom_background_3_vtiled = get_custom_level_information_real("Custom Backgrounds", "custom_background_3_vtiled", 1);
-		custom_background_3_htiled = get_custom_level_information_real("Custom Backgrounds", "custom_background_3_htiled", 1);
-		custom_background_2_vtiled = get_custom_level_information_real("Custom Backgrounds", "custom_background_2_vtiled", 1);
-		custom_background_2_htiled = get_custom_level_information_real("Custom Backgrounds", "custom_background_2_htiled", 1);
-		custom_background_1_vtiled = get_custom_level_information_real("Custom Backgrounds", "custom_background_1_vtiled", 1);
-		custom_background_1_htiled = get_custom_level_information_real("Custom Backgrounds", "custom_background_1_htiled", 1);
+		custom_background4_vtiled = get_custom_level_information_real("Custom Backgrounds", "custom_background4_vtiled", 1);
+		custom_background4_htiled = get_custom_level_information_real("Custom Backgrounds", "custom_background4_htiled", 1);
+		custom_background3_vtiled = get_custom_level_information_real("Custom Backgrounds", "custom_background3_vtiled", 1);
+		custom_background3_htiled = get_custom_level_information_real("Custom Backgrounds", "custom_background3_htiled", 1);
+		custom_background2_vtiled = get_custom_level_information_real("Custom Backgrounds", "custom_background2_vtiled", 1);
+		custom_background2_htiled = get_custom_level_information_real("Custom Backgrounds", "custom_background2_htiled", 1);
+		custom_background1_vtiled = get_custom_level_information_real("Custom Backgrounds", "custom_background1_vtiled", 1);
+		custom_background1_htiled = get_custom_level_information_real("Custom Backgrounds", "custom_background1_htiled", 1);
 		
 		global.make_every_tileset_into_default_tileset = get_custom_level_information_real("info", "make_every_tileset_into_default_tileset", false);
 		global.enable_time_countdown = get_custom_level_information_real("info", "enable_time_countdown", false);
@@ -78,38 +78,38 @@ function scr_initialize_level_information_ini()
 	}
 	else
 	{
-		custom_background_1_x_offset = 0;
-		custom_background_1_y_offset = 0;
-		custom_background_2_x_offset = 0;
-		custom_background_2_y_offset = 0;
-		custom_background_3_x_offset = 0;
-		custom_background_3_y_offset = 0;
-		custom_background_4_x_offset = 0;
-		custom_background_4_y_offset = 0;
-		custom_background_1_x_parallax = 3;
-		custom_background_1_y_parallax = 3;
-		custom_background_2_x_parallax = 5;
-		custom_background_2_y_parallax = 5;
-		custom_background_3_x_parallax = 7;
-		custom_background_3_y_parallax = 7;
-		custom_background_4_x_parallax = 9;
-		custom_background_4_y_parallax = 9;
-		custom_background_1_x_scale = 1;
-		custom_background_1_y_scale = 1;
-		custom_background_2_x_scale = 1;
-		custom_background_2_y_scale = 1;
-		custom_background_3_x_scale = 1;
-		custom_background_3_y_scale = 1;
-		custom_background_4_x_scale = 1;
-		custom_background_4_y_scale = 1;
-		custom_background_1_htiled = 1;
-		custom_background_1_vtiled = 1;
-		custom_background_2_htiled = 1;
-		custom_background_2_vtiled = 1;
-		custom_background_3_htiled = 1;
-		custom_background_3_vtiled = 1;
-		custom_background_4_htiled = 1;
-		custom_background_4_vtiled = 1;
+		custom_background1_x_offset = 0;
+		custom_background1_y_offset = 0;
+		custom_background2_x_offset = 0;
+		custom_background2_y_offset = 0;
+		custom_background3_x_offset = 0;
+		custom_background3_y_offset = 0;
+		custom_background4_x_offset = 0;
+		custom_background4_y_offset = 0;
+		custom_background1_x_parallax = 3;
+		custom_background1_y_parallax = 3;
+		custom_background2_x_parallax = 5;
+		custom_background2_y_parallax = 5;
+		custom_background3_x_parallax = 7;
+		custom_background3_y_parallax = 7;
+		custom_background4_x_parallax = 9;
+		custom_background4_y_parallax = 9;
+		custom_background1_x_scale = 1;
+		custom_background1_y_scale = 1;
+		custom_background2_x_scale = 1;
+		custom_background2_y_scale = 1;
+		custom_background3_x_scale = 1;
+		custom_background3_y_scale = 1;
+		custom_background4_x_scale = 1;
+		custom_background4_y_scale = 1;
+		custom_background1_htiled = 1;
+		custom_background1_vtiled = 1;
+		custom_background2_htiled = 1;
+		custom_background2_vtiled = 1;
+		custom_background3_htiled = 1;
+		custom_background3_vtiled = 1;
+		custom_background4_htiled = 1;
+		custom_background4_vtiled = 1;
 		global.enable_time_countdown = false;
 		global.time_countdown = 500;
 		global.make_every_tileset_into_default_tileset = false;
@@ -121,14 +121,14 @@ function scr_initialize_level_information_ini()
 	#endregion /* Initialize level_information.ini END */
 	
 	#region /* Set if background is horizontally or vertically tiled */
-	layer_background_htiled(layer_background_get_id(layer_get_id("Background")), custom_background_1_htiled);
-	layer_background_vtiled(layer_background_get_id(layer_get_id("Background")), custom_background_1_vtiled);
-	layer_background_htiled(layer_background_get_id(layer_get_id("Background_2")), custom_background_2_htiled);
-	layer_background_vtiled(layer_background_get_id(layer_get_id("Background_2")), custom_background_2_vtiled);
-	layer_background_htiled(layer_background_get_id(layer_get_id("Background_3")), custom_background_3_htiled);
-	layer_background_vtiled(layer_background_get_id(layer_get_id("Background_3")), custom_background_3_vtiled);
-	layer_background_htiled(layer_background_get_id(layer_get_id("Background_4")), custom_background_4_htiled);
-	layer_background_vtiled(layer_background_get_id(layer_get_id("Background_4")), custom_background_4_vtiled);
+	layer_background_htiled(layer_background_get_id(layer_get_id("Background")), custom_background1_htiled);
+	layer_background_vtiled(layer_background_get_id(layer_get_id("Background")), custom_background1_vtiled);
+	layer_background_htiled(layer_background_get_id(layer_get_id("Background_2")), custom_background2_htiled);
+	layer_background_vtiled(layer_background_get_id(layer_get_id("Background_2")), custom_background2_vtiled);
+	layer_background_htiled(layer_background_get_id(layer_get_id("Background_3")), custom_background3_htiled);
+	layer_background_vtiled(layer_background_get_id(layer_get_id("Background_3")), custom_background3_vtiled);
+	layer_background_htiled(layer_background_get_id(layer_get_id("Background_4")), custom_background4_htiled);
+	layer_background_vtiled(layer_background_get_id(layer_get_id("Background_4")), custom_background4_vtiled);
 	#endregion /* Set if background is horizontally or vertically tiled END */
 	
 	scr_scale_background();

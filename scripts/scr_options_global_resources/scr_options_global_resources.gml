@@ -73,7 +73,7 @@ function scr_options_global_resources()
 				}
 			}
 			else
-			if (menu == "title_backgrounds")
+			if (menu == "title_background")
 			{
 				if (global.enable_open_custom_folder)
 				{
@@ -99,7 +99,7 @@ function scr_options_global_resources()
 			else
 			if (menu == "title_background_scale")
 			{
-				menu = "title_backgrounds";
+				menu = "title_background";
 			}
 			else
 			if (menu == "background_layer_x_scroll")
@@ -149,16 +149,16 @@ function scr_options_global_resources()
 				}
 				else
 				{
-					menu = "title_backgrounds";
+					menu = "title_background";
 				}
 			}
 			else
 			if (menu == "open_resource_pack_folder")
 			{
-				menu = "title_backgrounds";
+				menu = "title_background";
 			}
 			else
-			if (menu == "title_backgrounds")
+			if (menu == "title_background")
 			{
 				menu = "title_background_scale";
 			}
@@ -205,7 +205,7 @@ function scr_options_global_resources()
 				}
 				else
 				{
-					menu = "title_backgrounds";
+					menu = "title_background";
 				}
 			}
 			else
@@ -219,7 +219,7 @@ function scr_options_global_resources()
 				}
 				else
 				{
-					menu = "title_backgrounds";
+					menu = "title_background";
 				}
 			}
 			menu_delay = 2;
@@ -357,17 +357,17 @@ function scr_options_global_resources()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_background_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_background_y) + 16))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
-				menu = "title_backgrounds";
+				menu = "title_background";
 				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x - 32 - 16, 20 + (custom_title_background_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_background_y) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
-		if (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
+		if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
 		&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 		&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != "")
-		|| (file_exists(working_directory + "custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
+		|| (file_exists(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
 		&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 		&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != "")
 		{
@@ -375,24 +375,24 @@ function scr_options_global_resources()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_background_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_background_y) + 16))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
-				menu = "title_backgrounds";
+				menu = "title_background";
 				can_navigate_settings_sidebar = false;
 				draw_set_alpha(0.5);
 				draw_rectangle_color(resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_background_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_background_y) + 16, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 		}
-		if (menu == "title_backgrounds")
+		if (menu == "title_background")
 		{
 			draw_sprite(spr_menu_cursor, menu_cursor_index, resource_pack_x - 32 - 32, 20 + (custom_title_background_y));
 		}
 		if (key_left)
-		&& (menu == "title_backgrounds")
+		&& (menu == "title_background")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_background_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_background_y) + 16))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
-			menu = "title_backgrounds";
+			menu = "title_background";
 			if (menu_delay == 0)
 			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
@@ -417,21 +417,21 @@ function scr_options_global_resources()
 				ini_open(working_directory + "config.ini");
 				ini_write_real("config", "selected_title_background", global.selected_title_background);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-				if (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
+				if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 				{
 					if (variable_instance_exists(self, "title_screen_background"))
 					{
 						scr_delete_sprite_properly(title_screen_background);
-						title_screen_background = sprite_add("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
+						title_screen_background = sprite_add("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 					}
 				}
 				else
-				if (file_exists(working_directory + "custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
+				if (file_exists(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 				{
 					if (variable_instance_exists(self, "title_screen_background"))
 					{
 						scr_delete_sprite_properly(title_screen_background);
-						title_screen_background = sprite_add(working_directory + "custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
+						title_screen_background = sprite_add(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 					}
 				}
 				else
@@ -451,22 +451,22 @@ function scr_options_global_resources()
 			}
 		}
 		if (key_right)
-		&& (menu == "title_backgrounds")
+		&& (menu == "title_background")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_background_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_background_y) + 16))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
-			menu = "title_backgrounds";
+			menu = "title_background";
 			if (menu_delay == 0)
 			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
-			&& (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
+			&& (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != "")
 			|| (menu_delay == 0)
 			&& (menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
-			&& (file_exists(working_directory + "custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
+			&& (file_exists(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != undefined)
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background + 1) != "")
 			{
@@ -491,21 +491,21 @@ function scr_options_global_resources()
 				ini_open(working_directory + "config.ini");
 				ini_write_real("config", "selected_title_background", global.selected_title_background);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-				if (file_exists("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
+				if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 				{
 					if (variable_instance_exists(self, "title_screen_background"))
 					{
 						scr_delete_sprite_properly(title_screen_background);
-						title_screen_background = sprite_add("title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
+						title_screen_background = sprite_add("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 					}
 				}
 				else
-				if (file_exists(working_directory + "custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
+				if (file_exists(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
 				{
 					if (variable_instance_exists(self, "title_screen_background"))
 					{
 						scr_delete_sprite_properly(title_screen_background);
-						title_screen_background = sprite_add(working_directory + "custom_title_backgrounds/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
+						title_screen_background = sprite_add(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), 0, false, false, 0, 0);
 					}
 				}
 				else
@@ -986,7 +986,7 @@ function scr_options_global_resources()
 		&& (menu_delay == 0)
 		&& (menu_joystick_delay == 0)
 		{
-			scr_open_folder(game_save_id + "\custom_title_backgrounds")
+			scr_open_folder(game_save_id + "\custom_title_background")
 		}
 		else
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x, 20 + (custom_title_logo_open_y) + 2, resource_pack_x + 371, 20 + (custom_title_logo_open_y) + 41))

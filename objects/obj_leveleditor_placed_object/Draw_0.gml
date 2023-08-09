@@ -29,4 +29,9 @@ if (!global.actually_play_edited_level)
 		}
 		draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, image_blend, image_alpha);
 	}
+	else
+	if (draw_item_with_spring)
+	{
+		draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, 1, 1, 0, image_blend, image_alpha);
+	}
 }

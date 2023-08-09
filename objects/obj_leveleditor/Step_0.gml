@@ -81,7 +81,7 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Activate objects that always should be active */
 		instance_activate_object(obj_foreground1);
-		instance_activate_object(obj_foreground_above_static_objects);
+		instance_activate_object(obj_foreground1_5);
 		instance_activate_object(obj_foreground2);
 		instance_activate_object(obj_foreground_secret);
 		instance_activate_object(obj_level_player1_start);

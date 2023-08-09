@@ -28,8 +28,8 @@
     <SupportedLanguage>Japanese</SupportedLanguage>
     <Screenshot>Allow</Screenshot>
     <DataLossConfirmation>None</DataLossConfirmation>
-    <UserAccountSaveDataSize>0x0000000004000000</UserAccountSaveDataSize>
-    <UserAccountSaveDataJournalSize>0x0000000004000000</UserAccountSaveDataJournalSize>
+    <UserAccountSaveDataSize>0x0000000003400000</UserAccountSaveDataSize>
+    <UserAccountSaveDataJournalSize>0x0000000000c00000</UserAccountSaveDataJournalSize>
     <LogoType>LicensedByNintendo</LogoType>
     <LogoHandling>Auto</LogoHandling>
     <Rating>
