@@ -1965,6 +1965,7 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"bowlingball.png","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"bullet_flattened_strip16.png","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"bullet_strip4.png","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"buttons_nintendoswitch_solo_horizontal_grip_strip24.png","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"buttons_nintendoswitch_strip24.png","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"buttons_playstation4_strip24.png","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"buttons_playstation5_strip24.png","CopyToMask":-1,"filePath":"datafiles/resource_pack/resource_pack0/sprites",},

@@ -16,6 +16,7 @@ global.link_to_reddit = "https://www.reddit.com/r/Jonnil";
 global.link_to_twitter = "https://twitter.com/jonnilll";
 global.link_to_wiki = "https://stickypedia.miraheze.org/wiki/Main_Page";
 global.link_to_bug_report_form = "https://forms.gle/h1KopsAAZb1fx2Hk7";
+global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle */
 
 leveleditor_readme = noone; /* Readme textfile for how to use the level editor */
 
@@ -237,7 +238,7 @@ else
 
 global.part_limit_text_alpha = 0; /* The text showing part limit should fade out when you aren't placing or erasing objects */
 global.part_limit = 0; /* How many objects are currently placed in the level editor */
-global.part_limit_entety = 0; /* How many enteties are currently placed in the level editor. Enteties are object that have a lot of step events, so they can lag the game the most */
+global.part_limit_entity = 0; /* How many enteties are currently placed in the level editor. Enteties are object that have a lot of step events, so they can lag the game the most */
 global.part_limit_entity_text_alpha = 0; /* The text showing entity limit should fade out when you aren't placing or erasing enteties */
 
 global.collectible_image_index = 0; /* Make all collectibles animate in sync */

@@ -15,9 +15,18 @@
       <Name>Sticky Paws</Name>
       <Publisher>Jonnil</Publisher>
     </Title>
+    <Title>
+      <Language>Japanese</Language>
+      <Name>スティッキー・パース</Name>
+      <Publisher>Jonnil</Publisher>
+    </Title>
     <Icon>
       <Language>AmericanEnglish</Language>
-      <IconPath>AmericanEnglish.bmp</IconPath>
+      <IconPath>..\..\..\..\..\Desktop\Files\sketch-1691663975377.bmp</IconPath>
+    </Icon>
+    <Icon>
+      <Language>Japanese</Language>
+      <IconPath>..\..\..\..\..\Desktop\Files\sketch-1691663978374.bmp</IconPath>
     </Icon>
     <ReleaseVersion>0</ReleaseVersion>
     <DisplayVersion>1.0.0</DisplayVersion>
@@ -28,8 +37,8 @@
     <SupportedLanguage>Japanese</SupportedLanguage>
     <Screenshot>Allow</Screenshot>
     <DataLossConfirmation>None</DataLossConfirmation>
-    <UserAccountSaveDataSize>0x0000000003400000</UserAccountSaveDataSize>
-    <UserAccountSaveDataJournalSize>0x0000000000c00000</UserAccountSaveDataJournalSize>
+    <UserAccountSaveDataSize>0x0000000003000000</UserAccountSaveDataSize>
+    <UserAccountSaveDataJournalSize>0x0000000001000000</UserAccountSaveDataJournalSize>
     <LogoType>LicensedByNintendo</LogoType>
     <LogoHandling>Auto</LogoHandling>
     <Rating>

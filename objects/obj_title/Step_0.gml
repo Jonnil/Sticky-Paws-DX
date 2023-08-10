@@ -365,6 +365,8 @@ if (menu == "load_official_level_template")
 			
 			select_custom_level_menu_open = false;
 			level_editor_template_select = true;
+			file_load_timer = 0; /* Important that you reset this value back to 0, otherwise the menu will not work properly as it still thinks game is loading levels */
+			open_sub_menu = false; /* Return this variable to false */
 			menu = "level_editor_play";
 		}
 		else

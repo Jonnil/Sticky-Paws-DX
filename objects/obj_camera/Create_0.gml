@@ -179,15 +179,15 @@ view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_
 view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) * 0.5);
 
 #region /* Hud Variables */
-hud_show_lives_y = -32;
+hud_show_lives_y = -64;
 hud_show_lives_timer = global.hud_hide_time * 60;
-hud_show_deaths_y = -32;
+hud_show_deaths_y = -64;
 hud_show_deaths_timer = global.hud_hide_time * 60;
-hud_show_basic_collectibles_y = -32;
+hud_show_basic_collectibles_y = -64;
 hud_show_basic_collectibles_timer = 0;
-hud_show_big_collectibles_y = -32;
+hud_show_big_collectibles_y = -64;
 hud_show_big_collectibles_timer = 0;
-hud_show_score_y = -64;
+hud_show_score_y = -128;
 hud_show_score_timer = 0;
 time_countup_y = 32; /* What y position the countup timer should be at */
 hurry_up_message_timer = 0; /* How long the hurry up message should stay on screen */

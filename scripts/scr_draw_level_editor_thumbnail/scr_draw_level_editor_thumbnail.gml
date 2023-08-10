@@ -6,7 +6,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 	var top_left_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 - 3 + thumbnail_x_offset;
 	var top_left_of_thumbnail_y = 226 * (column - scroll) + 250 - 3;
 	var bottom_right_of_thumbnail_x = 394 * (global.select_level_index - column * row) + 100 + 384 + 3 + thumbnail_x_offset;
-	var bottom_right_of_thumbnail_y = 226 * (column - scroll) + 250 + 216 + 3;
+	var bottom_right_of_thumbnail_y = 226 * (column - scroll) + 466 + 3;
 	
 	if (menu != "back_from_level_editor")
 	&& (menu != "open_custom_levels_folder")

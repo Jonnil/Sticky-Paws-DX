@@ -4,7 +4,6 @@ function scr_draw_upload_level_menu()
 	#region /* Debug toggles */
 	var destroy_zip_after_uploading = true; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
 	var skip_clear_check = false;
-	var max_megabytes = 32;
 	#endregion /* Debug toggles END */
 	
 	var upload_y = 42 * 2;
@@ -1547,7 +1546,7 @@ function scr_draw_upload_level_menu()
 			file_bin_close(zip_file);
 			zip_megabytes = zip_size / 1024 / 1024;
 			
-			if (zip_megabytes > max_megabytes)
+			if (zip_megabytes > global.max_file_upload_megabytes)
 			{
 				if (destroy_zip_after_uploading)
 				{
@@ -1632,8 +1631,8 @@ function scr_draw_upload_level_menu()
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 42, l10n_text("Level Too Big"), global.default_text_size * 2, c_black, c_white, 1);
-		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(zip_megabytes) + " MB / " + string(max_megabytes) + " MB", global.default_text_size, c_black, c_white, 1);
-		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(zip_megabytes) + " MB / " + string(max_megabytes) + " MB", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(zip_megabytes) + " MB / " + string(global.max_file_upload_megabytes) + " MB", global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(zip_megabytes) + " MB / " + string(global.max_file_upload_megabytes) + " MB", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
 		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 32, l10n_text("There is a max upload size, please make it smaller"), global.default_text_size, c_black, c_white, 1);
 		
 		var ok_y = get_window_height * 0.5 + 42 + 42 + 42;

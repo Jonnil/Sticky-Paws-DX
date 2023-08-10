@@ -183,6 +183,7 @@ function scr_select_official_level_menu()
 			
 			if (take_from_official_level != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 			&& (global.level_name != undefined)
+			&& (variable_instance_exists(self, "level_editor_options_back_to_menu"))
 			{
 				if (level_editor_options_back_to_menu == "change_entire_theme")
 				{
@@ -213,7 +214,7 @@ function scr_select_official_level_menu()
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "remove_all_foreground")
+				if (level_editor_options_back_to_menu == "change_all_foreground")
 				{
 					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 					ini_write_string("info", "default_foreground1", take_from_official_level);
@@ -360,6 +361,7 @@ function scr_select_official_level_menu()
 		scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
+	if (variable_instance_exists(self, "level_editor_options_back_to_menu"))
 	{
 		if (window_get_width() <= 1350)
 		{
@@ -485,6 +487,7 @@ function scr_select_official_level_menu()
 			menu = "load_custom_level";
 		}
 		else
+		if (variable_instance_exists(self, "level_editor_options_back_to_menu"))
 		{
 			global.select_level_index = level_editor_options_select_level_index; /* Return "select level index" to what it was before */
 			menu = level_editor_options_back_to_menu;

@@ -1033,7 +1033,7 @@ if (global.hud_hide_time > 0)
 		}
 		else
 		{
-			hud_show_lives_y = lerp(hud_show_lives_y, -32, 0.1);
+			hud_show_lives_y = lerp(hud_show_lives_y, -64, 0.1);
 		}
 	}
 	#endregion /* Show Lives y position END */
@@ -1053,7 +1053,7 @@ if (global.hud_hide_time > 0)
 	}
 	else
 	{
-		hud_show_deaths_y = lerp(hud_show_deaths_y, -32, 0.1);
+		hud_show_deaths_y = lerp(hud_show_deaths_y, -64, 0.1);
 	}
 	#endregion /* Show Deaths y position END */
 	
@@ -1077,7 +1077,7 @@ if (global.hud_hide_time > 0)
 	}
 	else
 	{
-		hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, -32, 0.1);
+		hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, -64, 0.1);
 	}
 	#endregion /* Show Big Collectibles y position END */
 	
@@ -1125,7 +1125,7 @@ if (global.hud_hide_time > 0)
 	}
 	else
 	{
-		hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, -32, 0.1);
+		hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, -64, 0.1);
 	}
 	#endregion /* Show Basic Collectible y position END */
 	
@@ -1136,7 +1136,7 @@ if (global.hud_hide_time > 0)
 	}
 	else
 	{
-		hud_show_score_y = lerp(hud_show_score_y, -64, 0.1);
+		hud_show_score_y = lerp(hud_show_score_y, -128, 0.1);
 	}
 	#endregion /* Show Score y position END */
 	

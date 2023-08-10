@@ -8,7 +8,7 @@
   "option_linux_display_name": "Sticky Paws",
   "option_linux_display_splash": false,
   "option_linux_enable_steam": false,
-  "option_linux_homepage": "http://www.jonnil.com",
+  "option_linux_homepage": "http://www.jonnil.games",
   "option_linux_icon": "icons/64.png",
   "option_linux_interpolate_pixels": true,
   "option_linux_long_desc": "",

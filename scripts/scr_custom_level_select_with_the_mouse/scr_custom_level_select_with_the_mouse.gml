@@ -17,7 +17,7 @@ function scr_custom_level_select_with_the_mouse(all_loaded_what = global.all_loa
 			i += 1)
 			{
 				column = floor(i / row);
-				if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 394 * (i - column * row) + 100 - 3 + thumbnail_x_offset, 226 * (column - scroll) + 250 - 3, 394 * (i - column * row) + 100 + 384 + 3 + thumbnail_x_offset, 226 * (column - scroll) + 250 + 216 + 3))
+				if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 394 * (i - column * row) + 100 - 3 + thumbnail_x_offset, 226 * (column - scroll) + 250 - 3, 394 * (i - column * row) + 100 + 384 + 3 + thumbnail_x_offset, 226 * (column - scroll) + 466 + 3))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				{
 					if (room == rm_title)

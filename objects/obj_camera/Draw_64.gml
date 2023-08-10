@@ -24,7 +24,7 @@ if (!instance_exists(obj_pause))
 {
 	
 	#region /* Lives */
-	if (hud_show_lives_y != -32)
+	if (hud_show_lives_y != -64)
 	{
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
@@ -44,7 +44,7 @@ if (!instance_exists(obj_pause))
 	#endregion /* Lives END */
 	
 	#region /* Death Counter */
-	if (hud_show_deaths_y != -32)
+	if (hud_show_deaths_y != -64)
 	{
 		if (global.show_deaths_counter)
 		{
@@ -60,7 +60,7 @@ if (!instance_exists(obj_pause))
 	#endregion /* Death Counter END */
 	
 	#region /* Big Collectibles */
-	if (hud_show_big_collectibles_y != -32)
+	if (hud_show_big_collectibles_y != -64)
 	{
 		
 		#region /* Big Collectible 1 */
@@ -152,7 +152,7 @@ if (!instance_exists(obj_pause))
 	#endregion /* Big Collectibles */
 	
 	#region /* Basic Collectible */
-	if (hud_show_basic_collectibles_y != -32)
+	if (hud_show_basic_collectibles_y != -64)
 	{
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
@@ -162,7 +162,7 @@ if (!instance_exists(obj_pause))
 	#endregion /* Basic Collectible END */
 	
 	#region /* Score */
-	if (hud_show_score_y != -32)
+	if (hud_show_score_y != -64)
 	{
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);

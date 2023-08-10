@@ -804,5 +804,6 @@ if (global.actually_play_edited_level == false)
 	selected_object_menu_x = 0;
 	sprite_index = spr_wall;
 	mask_index = spr_wall;
+	alarm[1] = 2;
 }
 #endregion /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level END */

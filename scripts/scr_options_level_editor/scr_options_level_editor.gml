@@ -3462,7 +3462,9 @@ function scr_options_level_editor()
 					
 					select_custom_level_menu_open = false;
 					level_editor_template_select = true;
-					global.select_level_index = 1; /* Cursor should start at level 1 */
+					global.select_level_index = 1; /* Cursor should start at level 1, as level 1 is the default level to choose from */
+					file_load_timer = 0; /* Important that you reset this value back to 0, otherwise the menu will not work properly as it still thinks game is loading levels */
+					open_sub_menu = false; /* Return this variable to false */
 					menu = "choose_official_level_to_take_from";
 				}
 				else
