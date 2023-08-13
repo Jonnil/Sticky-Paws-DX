@@ -338,7 +338,7 @@ function scr_debug_screen()
 		}
 		if (variable_instance_exists(self, "menu_delay"))
 		{
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				scr_draw_text_outlined(32, debug_text_y, "menu_delay: " + string(menu_delay), global.default_text_size, c_black, c_white);
 			}
@@ -363,10 +363,24 @@ function scr_debug_screen()
 		}
 		scr_draw_text_outlined(32, debug_text_y, "select_level_index: " + string(global.select_level_index), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "player1_can_play: " + string(global.player1_can_play), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "player2_can_play: " + string(global.player2_can_play), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "player3_can_play: " + string(global.player3_can_play), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "player4_can_play: " + string(global.player4_can_play), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
 		
 		/* Draw the name of the current room at the bottom middle of the screen */
 		draw_set_halign(fa_center);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)) + " " + string(room_width) + "x" + string(room_height), global.default_text_size, c_black, c_white);
+		
+		if (keyboard_check_pressed(ord("1")))
+		{
+			global.menu_button_subimg ++;
+		}
+		
 	}
 	
 	//if (global.debug_screen)

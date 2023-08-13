@@ -380,6 +380,5 @@ if (hide_menu_for_clean_screenshots == false)
 	scr_debug_screen();
 	scr_draw_darken_screen_when_window_is_unfocused();
 	scr_draw_cursor_mouse();
-	scr_menu_navigation_with_joystick_delay();
 	
 }

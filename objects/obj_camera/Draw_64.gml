@@ -500,10 +500,19 @@ if (show_letterbox > 0)
 #endregion /* Letterboxing during cutscenes (when the player object is absent) END */
 
 if (global.doing_clear_check)
+|| (global.doing_clear_check_character)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("Clear from the start"), global.default_text_size, c_white, c_black, 1);
+	if (global.doing_clear_check)
+	{
+		scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("Clear from the start"), global.default_text_size, c_white, c_black, 1);
+	}
+	else
+	if (global.doing_clear_check_character)
+	{
+		scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("Clear level 1 before upload"), global.default_text_size, c_white, c_black, 1);
+	}
 	global.checkpoint_x = 0;
 	global.checkpoint_y = 0;
 	global.checkpoint_millisecond = 0;
@@ -539,7 +548,7 @@ if (global.play_edited_level) /* When playtesting the level */
 			can_click_on_pause_key = true;
 		}
 		if (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_click_on_pause_key)
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
 		{

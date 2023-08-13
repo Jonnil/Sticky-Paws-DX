@@ -1,5 +1,14 @@
 function scr_character_manage_menu_draw()
 {
+	if (os_type == os_switch)
+	{
+		var enable_copy_character = false;
+	}
+	else
+	{
+		var enable_copy_character = true;
+	}
+	
 	var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]));
 	
 	var get_window_height = display_get_gui_height();
@@ -114,58 +123,31 @@ function scr_character_manage_menu_draw()
 			var selecting_official_character = false;
 		}
 		
-		if (global.enable_open_custom_folder)
-		{
-			var character_name_y = get_window_height - (42 * 6);
-			if (selecting_official_character == false)
-			{
-				if (global.free_communication_available)
-				{
-					var copy_character_y = get_window_height - (42 * 5);
-					var delete_character_y = get_window_height - (42 * 4);
-					var upload_character_y = get_window_height - (42 * 3);
-				}
-				else
-				{
-					var copy_character_y = get_window_height - (42 * 4);
-					var delete_character_y = get_window_height - (42 * 3);
-					var upload_character_y = get_window_height -9999;
-				}
-			}
-			else
-			{
-				var copy_character_y = get_window_height - (42 * 3);
-				var delete_character_y = -9999;
-				var upload_character_y = -9999;
-			}
-			var open_character_folder_y = get_window_height - 42 - 42;
+		var character_name_y, copy_character_y, delete_character_y, upload_character_y, open_character_folder_y;
+
+		if (global.enable_open_custom_folder) {
+		    character_name_y = get_window_height - (42 * 6);
+		    open_character_folder_y = get_window_height - 42;
+		} else {
+		    character_name_y = get_window_height - (42 * 5);
+		    open_character_folder_y = -9999;
 		}
-		else
-		{
-			if (selecting_official_character == false)
-			{
-				if (global.free_communication_available)
-				{
-					var copy_character_y = get_window_height - (42 * 4);
-					var delete_character_y = get_window_height - (42 * 3);
-					var upload_character_y = get_window_height - (42 * 2);
-				}
-				else
-				{
-					var copy_character_y = get_window_height - (42 * 3);
-					var delete_character_y = get_window_height - (42 * 2);
-					var upload_character_y = get_window_height -9999;
-				}
-			}
-			else
-			{
-				var copy_character_y = get_window_height - (42 * 2);
-				var delete_character_y = -9999;
-				var upload_character_y = -9999;
-			}
-			var open_character_folder_y = -9999;
+
+		if (!selecting_official_character) {
+		    if (global.free_communication_available) {
+		        copy_character_y = enable_copy_character ? get_window_height - (42 * 4) : -9999;
+		        delete_character_y = get_window_height - (42 * 3);
+		        upload_character_y = enable_copy_character ? get_window_height - (42 * 2) : -9999;
+		    } else {
+		        copy_character_y = enable_copy_character ? get_window_height - (42 * 3) : -9999;
+		        delete_character_y = get_window_height - (42 * 2);
+		        upload_character_y = -9999;
+		    }
+		} else {
+		    copy_character_y = enable_copy_character ? get_window_height - (42 * 2) : -9999;
+		    delete_character_y = -9999;
+		    upload_character_y = -9999;
 		}
-		var back_y = get_window_height - 42;
 		
 		if string_ends_with(string(character_name), " - Copy")
 		{
@@ -188,7 +170,7 @@ function scr_character_manage_menu_draw()
 				draw_menu_button(get_window_width * 0.5 - 185, copy_character_y, l10n_text("Copy Character"), "click_copy_character", "click_copy_character"); /* Copy Characters */
 				if (selecting_official_character == false)
 				{
-					draw_menu_button(get_window_width * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no"); /* Delete Characters */
+					draw_menu_button(get_window_width * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no", c_red); /* Delete Characters */
 					draw_sprite_ext(spr_icons_delete, 0, get_window_width * 0.5 - 185 + 16, delete_character_y + 21, 1, 1, 0, c_white, 1);
 					if (global.free_communication_available)
 					{
@@ -206,8 +188,8 @@ function scr_character_manage_menu_draw()
 				#endregion /* Open Character Folder END */
 				
 				#region /* Back from Copy Characters */
-				draw_menu_button(get_window_width * 0.5 - 185, back_y, l10n_text("Back"), "back_from_copy_character", "manage_character");
-				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 20, back_y + 21, 1, 1, 0, c_white, 1);
+				draw_menu_button(0, 0, l10n_text("Back"), "back_from_copy_character", "manage_character");
+				draw_sprite_ext(spr_icons_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 				#endregion /* Back from Copy Characters END */
 				
 				#region /* Draw who made the character */
@@ -239,7 +221,7 @@ function scr_character_manage_menu_draw()
 				scr_draw_text_outlined(delete_x + 200, delete_character_no_y - 21, l10n_text("Delete Character") + "?", global.default_text_size * 1.2, c_white, c_black, 1);
 				draw_menu_button(delete_x + 8, delete_character_no_y, l10n_text("No"), "click_delete_character_no", "click_delete_character"); /* + 47 on y */
 				draw_sprite_ext(spr_icons_back, 0, delete_x + 8 + 20, delete_character_no_y + 21, 1, 1, 0, c_white, 1);
-				draw_menu_button(delete_x + 8, delete_character_yes_y, l10n_text("Yes"), "click_delete_character_yes", "click_delete_character_yes");
+				draw_menu_button(delete_x + 8, delete_character_yes_y, l10n_text("Yes"), "click_delete_character_yes", "click_delete_character_yes", c_red);
 				draw_sprite_ext(spr_icons_delete, 0, delete_x + 8 + 16, delete_character_yes_y + 21, 1, 1, 0, c_white, 1);
 			}
 			

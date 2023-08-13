@@ -121,7 +121,7 @@ if (menu == "back_open_folder_text")
 #endregion /* Navigate menu up and down END */
 
 if (show_copy_to_clipboard_button)
-&& (menu_delay == 0)
+&& (menu_delay == 0 && menu_joystick_delay == 0)
 {
 	if (instance_exists(obj_title))
 	&& (obj_title.key_a_pressed)
@@ -184,7 +184,7 @@ if (keyboard_check_pressed(ord("X")))
 && (global.controls_used_for_menu_navigation == "mouse")
 && (mouse_check_button_released(mb_left))
 {
-	if (menu_delay == 0)
+	if (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu_delay = 3;
 		close = true;
@@ -208,15 +208,15 @@ else
 #region /* Make it so you can't click on any other button while open folder text exists */
 if (instance_exists(obj_title))
 {
-	obj_title.menu_delay = 10;
+	obj_title.menu_delay = 3;
 }
 if (instance_exists(obj_pause))
 {
-	obj_pause.menu_delay = 10;
+	obj_pause.menu_delay = 3;
 }
 if (instance_exists(obj_leveleditor))
 {
-	obj_leveleditor.menu_delay = 10;
+	obj_leveleditor.menu_delay = 3;
 }
 #endregion /* Make it so you can't click on any other button while open folder text exists END */
 

@@ -245,7 +245,7 @@ if (global.actually_play_edited_level == false)
 		|| (pressing_play_timer > frames_until_playtest_from_start)
 		{
 			if (pause == false)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.character_select_in_this_menu == "level_editor")
 			{
 				if (!instance_exists(obj_camera))
@@ -390,7 +390,7 @@ if (global.actually_play_edited_level == false)
 		ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		
-		menu_delay = 10; /* Disable all menu control */
+		menu_delay = 3; /* Disable all menu control */
 		lives = 5;
 		global.lives_until_assist = 0;
 		global.actually_play_edited_level = false;
@@ -659,7 +659,7 @@ if (global.actually_play_edited_level == false)
 			&& (fill_mode == false)
 			&& (erase_mode == false)
 			&& (pause == false)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!place_meeting(x, y, obj_level_player1_start))
 			&& (!place_meeting(x, y, obj_level_player2_start))
 			&& (!place_meeting(x, y, obj_level_player3_start))
@@ -1209,7 +1209,7 @@ if (global.actually_play_edited_level == false)
 	if (mouse_check_button_pressed(mb_right))
 	{
 		if (pause == false)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			erase_mode = true;
 		}
@@ -1217,7 +1217,7 @@ if (global.actually_play_edited_level == false)
 	if (mouse_check_button_released(mb_right))
 	{
 		if (pause == false)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			erase_mode = false;
 		}
@@ -1258,7 +1258,7 @@ if (global.actually_play_edited_level == false)
 				&& (drag_object == false)
 				&& (erase_mode == false)
 				&& (pause == false)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (place_object_delay_timer < 2)
 					{
@@ -1368,10 +1368,6 @@ if (global.actually_play_edited_level == false)
 	{
 		menu_delay --;
 	}
-	if (menu_delay < 0)
-	{
-		menu_delay = 2;
-	}
 	#endregion /* Menu Navigation Delay END */
 	
 	#region /* Pause virtual key */
@@ -1457,7 +1453,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Press Pause Button */
 	if (quit_level_editor == false)
 	&& (pause == false)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		if (keyboard_check_pressed(vk_escape))
 		|| (gamepad_button_check_pressed(global.player1_slot, gp_start))
@@ -1472,7 +1468,7 @@ if (global.actually_play_edited_level == false)
 			input_key = false;
 			menu = "continue";
 			pause = true;
-			menu_delay = 10;
+			menu_delay = 3;
 		}
 	}
 	#endregion /* Press Pause Button END */

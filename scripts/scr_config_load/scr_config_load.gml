@@ -63,6 +63,11 @@ function scr_config_load()
 		if (ini_key_exists("config", "enable_foreground_layer2")){global.enable_foreground_layer2 = ini_read_real("config", "enable_foreground_layer2", 0);}
 		if (ini_key_exists("config", "enable_foreground_layer_secret")){global.enable_foreground_layer_secret = ini_read_real("config", "enable_foreground_layer_secret", 0);}
 		if (ini_key_exists("config", "enable_transitions")){global.enable_transitions = ini_read_real("config", "enable_transitions", 0);}
+		if (ini_key_exists("config", "button_design_color")){global.button_design_color = ini_read_real("config", "button_design_color", 2);}
+		if (ini_key_exists("config", "button_design_shape")){global.button_design_shape = ini_read_real("config", "button_design_shape", 1);}
+		if (ini_key_exists("config", "button_design_transparency")){global.button_design_transparency = ini_read_real("config", "button_design_transparency", 0);}
+		if (ini_key_exists("config", "menu_button_subimg")){global.menu_button_subimg = ini_read_real("config", "menu_button_subimg", 16);}
+		
 		if (ini_key_exists("config", "selected_resource_pack")){global.selected_resource_pack = ini_read_real("config", "selected_resource_pack", 0);}
 		if (ini_key_exists("config", "selected_title_background")){global.selected_title_background = ini_read_real("config", "selected_title_background", 0);}
 		if (ini_key_exists("config", "title_background_scale")){global.title_background_scale = ini_read_real("config", "title_background_scale", 1);}

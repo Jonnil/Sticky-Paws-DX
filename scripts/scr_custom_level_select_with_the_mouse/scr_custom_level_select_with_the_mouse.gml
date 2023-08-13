@@ -22,13 +22,13 @@ function scr_custom_level_select_with_the_mouse(all_loaded_what = global.all_loa
 				{
 					if (room == rm_title)
 					&& (menu != "level_editor_play")
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu = "level_editor_play";
 					}
 					else
 					if (menu != "choose_official_level_to_take_from")
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu = "choose_official_level_to_take_from";
 					}

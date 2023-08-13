@@ -309,7 +309,7 @@ function scr_character_manage_copy()
 					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1], copied_character_name);
 					#endregion /* Player 1 character select portrait sprite END */
 					
-					menu_delay = 30;
+					menu_delay = 3;
 					load_specific_folder = 0; /* Set this variable to 0 before going to the next loading code */
 					can_navigate = true;
 					file_load_timer = 0;

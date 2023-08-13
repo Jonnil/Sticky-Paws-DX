@@ -74,17 +74,17 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 			menu = string(left_right_buttons_menu);
 			
 			if (keyboard_check(vk_control))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			|| (gamepad_button_check(global.player1_slot, gp_face3))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			{
 				left_right_buttons_variable_to_change -= (scale_increment * 10);
 				menu_delay = 3;
 			}
 			else
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate_settings_sidebar == false)
 			{
 				left_right_buttons_variable_to_change -= scale_increment;
@@ -102,17 +102,17 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 		menu = string(left_right_buttons_menu);
 			
 		if (keyboard_check(vk_control))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate_settings_sidebar == false)
 		|| (gamepad_button_check(global.player1_slot, gp_face3))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate_settings_sidebar == false)
 		{
 			left_right_buttons_variable_to_change += (scale_increment * 10);
 			menu_delay = 3;
 		}
 		else
-		if (menu_delay == 0)
+		if (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate_settings_sidebar == false)
 		{
 			left_right_buttons_variable_to_change += scale_increment;

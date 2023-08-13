@@ -3,6 +3,10 @@ function scr_options_graphics()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	
 	if (global.settings_sidebar_menu == "video_settings")
+	&& (menu != "customize_button_design_color_back")
+	&& (menu != "customize_button_design_color")
+	&& (menu != "customize_button_design_shape")
+	&& (menu != "customize_button_design_transparency")
 	{
 		if (global.enable_options_for_pc)
 		{
@@ -32,6 +36,7 @@ function scr_options_graphics()
 		var reset_level_zoom_when_going_back_to_map_y = background_brightness_menu_y + 48;
 		var reset_world_map_zoom_when_going_back_to_map_y = reset_level_zoom_when_going_back_to_map_y + 48;
 		var gui_scale_modifier_y = reset_world_map_zoom_when_going_back_to_map_y + 48 + 10;
+		var customize_button_design_y = gui_scale_modifier_y + 48 + 10;
 		
 		#region /* Fullscreen toggle */
 		if (os_type != os_ios)
@@ -105,6 +110,8 @@ function scr_options_graphics()
 		
 		draw_menu_dropdown(420, gui_scale_modifier_y + menu_y_offset, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, "*0.7", "*0.8", "*0.9", "*1", "*1.1", "*1.2", "*1.3");
 		
+		draw_menu_button(420, customize_button_design_y + menu_y_offset, l10n_text("Customize Button Design"), "customize_button_design", "customize_button_design_color");
+		
 		#region /* Navigate */
 			
 		#region /* Navigate Fullscreen Mode */
@@ -113,14 +120,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = fullscreen_mode_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				menu = "gui_scale_modifier";
+				menu = "customize_button_design";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "interpolate";
 				menu_delay = 3;
@@ -136,7 +143,7 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = interpolate_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (os_type != os_ios)
 				&& (os_type != os_android)
@@ -159,7 +166,7 @@ function scr_options_graphics()
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "show_fps";
 				menu_delay = 3;
@@ -251,14 +258,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = enable_transitions_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "show_collision_mask";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_background_layer1";
 				menu_delay = 3;
@@ -274,14 +281,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = enable_background_layer1_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_transitions";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_background_layer2";
 				menu_delay = 3;
@@ -293,14 +300,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = enable_background_layer2_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_background_layer1";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_background_layer3";
 				menu_delay = 3;
@@ -312,14 +319,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = enable_background_layer3_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_background_layer2";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_background_layer4";
 				menu_delay = 3;
@@ -331,14 +338,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = enable_background_layer4_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_background_layer3";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_foreground_layer1";
 				menu_delay = 3;
@@ -350,14 +357,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = enable_foreground_layer1_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_background_layer4";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_foreground_layer_1_5";
 				menu_delay = 3;
@@ -369,14 +376,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = enable_foreground_layer_1_5_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_foreground_layer1";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_foreground_layer2";
 				menu_delay = 3;
@@ -388,14 +395,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = enable_foreground_layer2_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_foreground_layer_1_5";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_foreground_layer_secret";
 				menu_delay = 3;
@@ -407,14 +414,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = enable_foreground_layer_secret_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_foreground_layer2";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "background_brightness_gameplay";
 				menu_delay = 3;
@@ -438,7 +445,7 @@ function scr_options_graphics()
 				global.background_brightness_gameplay = +1;
 			}
 			if (key_left)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.background_brightness_gameplay > - 1)
 			{
 				global.background_brightness_gameplay -= 0.1;
@@ -446,7 +453,7 @@ function scr_options_graphics()
 			}
 			else
 			if (key_right)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.background_brightness_gameplay < + 1)
 			{
 				global.background_brightness_gameplay += 0.1;
@@ -454,14 +461,14 @@ function scr_options_graphics()
 			}
 			else
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "enable_foreground_layer_secret";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 					menu = "background_brightness_menu";
 					menu_delay = 3;
@@ -485,7 +492,7 @@ function scr_options_graphics()
 				global.background_brightness_menu = +1;
 			}
 			if (key_left)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.background_brightness_menu >- 1)
 			{
 				global.background_brightness_menu-= 0.1;
@@ -493,7 +500,7 @@ function scr_options_graphics()
 			}
 			else
 			if (key_right)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.background_brightness_menu<+ 1)
 			{
 				global.background_brightness_menu+= 0.1;
@@ -501,14 +508,14 @@ function scr_options_graphics()
 			}
 			else
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "background_brightness_gameplay";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "reset_level_zoom_when_going_back_to_map";
 				menu_delay = 3;
@@ -524,14 +531,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = reset_level_zoom_when_going_back_to_map_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "background_brightness_menu";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "reset_world_map_zoom_when_going_back_to_map";
 				menu_delay = 3;
@@ -547,14 +554,14 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = reset_world_map_zoom_when_going_back_to_map_y;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "reset_level_zoom_when_going_back_to_map";
 				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "gui_scale_modifier";
 				menu_delay = 3;
@@ -569,7 +576,7 @@ function scr_options_graphics()
 		{
 			menu_cursor_y_position = gui_scale_modifier_y + 100;
 			if (key_up)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown == false)
 			{
 				menu = "reset_world_map_zoom_when_going_back_to_map";
@@ -577,8 +584,45 @@ function scr_options_graphics()
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown == false)
+			{
+				menu = "customize_button_design";
+				menu_delay = 3;
+			}
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.gui_scale_modifier > 0)
+			{
+				global.gui_scale_modifier --;
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.gui_scale_modifier < 6)
+			{
+				global.gui_scale_modifier ++;
+				menu_delay = 3;
+			}
+		}
+		#endregion /* GUI Scale Modifyer END */
+		
+		if (menu == "customize_button_design")
+		&& (open_dropdown == false)
+		{
+			menu_cursor_y_position = customize_button_design_y;
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu = "gui_scale_modifier";
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (os_type != os_ios)
 				&& (os_type != os_android)
@@ -593,25 +637,7 @@ function scr_options_graphics()
 					menu_delay = 3;
 				}
 			}
-			if (key_up)
-			&& (menu_delay == 0)
-			&& (open_dropdown)
-			&& (global.gui_scale_modifier > 0)
-			{
-				global.gui_scale_modifier --;
-				menu_delay = 3;
-			}
-			else
-			if (key_down)
-			&& (menu_delay == 0)
-			&& (open_dropdown)
-			&& (global.gui_scale_modifier < 6)
-			{
-				global.gui_scale_modifier ++;
-				menu_delay = 3;
-			}
 		}
-		#endregion /* Reset world map zoom when going back to map END */
 		
 		#endregion /* Navigate END */
 		
@@ -620,66 +646,269 @@ function scr_options_graphics()
 		|| (mouse_check_button_released(mb_left))
 		&& (mouse_get_x > 370)
 		{
-			if (menu == "fullscreen_mode") && (menu_delay == 0){if (window_get_fullscreen()){window_set_fullscreen(false);}else{window_set_fullscreen(true);}
+			if (menu == "fullscreen_mode") && (menu_delay == 0 && menu_joystick_delay == 0){if (window_get_fullscreen()){window_set_fullscreen(false);}else{window_set_fullscreen(true);}
 			menu_delay = 3;
 			}
-			if (menu == "interpolate") && (menu_delay == 0){if (global.interpolate){global.interpolate = false;gpu_set_texfilter(false);}else{global.interpolate = true;gpu_set_texfilter(true);}
+			if (menu == "interpolate") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.interpolate){global.interpolate = false;gpu_set_texfilter(false);}else{global.interpolate = true;gpu_set_texfilter(true);}
 			menu_delay = 3;
 			}
-			if (menu == "show_fps") && (menu_delay == 0){if (global.show_fps){global.show_fps = false;}else{global.show_fps = true;}
+			if (menu == "show_fps") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.show_fps){global.show_fps = false;}else{global.show_fps = true;}
 			menu_delay = 3;
 			}
-			if (menu == "show_fps_real") && (menu_delay == 0){if (global.show_fps_real){global.show_fps_real = false;}else{global.show_fps_real = true;}
+			if (menu == "show_fps_real") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.show_fps_real){global.show_fps_real = false;}else{global.show_fps_real = true;}
 			menu_delay = 3;
 			}
-			if (menu == "show_instance_count") && (menu_delay == 0){if (global.show_instance_count){global.show_instance_count = false;}else{global.show_instance_count = true;}
+			if (menu == "show_instance_count") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.show_instance_count){global.show_instance_count = false;}else{global.show_instance_count = true;}
 			menu_delay = 3;
 			}
-			if (menu == "show_collision_mask") && (menu_delay == 0){if (global.show_collision_mask){global.show_collision_mask = false;}else{global.show_collision_mask = true;}
+			if (menu == "show_collision_mask") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.show_collision_mask){global.show_collision_mask = false;}else{global.show_collision_mask = true;}
 			menu_delay = 3;
 			}
-			if (menu == "enable_transitions") && (menu_delay == 0){if (global.enable_transitions){global.enable_transitions = false;}else{global.enable_transitions = true;}
+			if (menu == "enable_transitions") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_transitions){global.enable_transitions = false;}else{global.enable_transitions = true;}
 			menu_delay = 3;
 			}
-			if (menu == "enable_background_layer1") && (menu_delay == 0){if (global.enable_background_layer1){global.enable_background_layer1 = false;}else{global.enable_background_layer1 = true;}
+			if (menu == "enable_background_layer1") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_background_layer1){global.enable_background_layer1 = false;}else{global.enable_background_layer1 = true;}
 			menu_delay = 3;
 			}
-			if (menu == "enable_background_layer2") && (menu_delay == 0){if (global.enable_background_layer2){global.enable_background_layer2 = false;}else{global.enable_background_layer2 = true;}
+			if (menu == "enable_background_layer2") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_background_layer2){global.enable_background_layer2 = false;}else{global.enable_background_layer2 = true;}
 			menu_delay = 3;
 			}
-			if (menu == "enable_background_layer3") && (menu_delay == 0){if (global.enable_background_layer3){global.enable_background_layer3 = false;}else{global.enable_background_layer3 = true;}
+			if (menu == "enable_background_layer3") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_background_layer3){global.enable_background_layer3 = false;}else{global.enable_background_layer3 = true;}
 			menu_delay = 3;
 			}
-			if (menu == "enable_background_layer4") && (menu_delay == 0){if (global.enable_background_layer4){global.enable_background_layer4 = false;}else{global.enable_background_layer4 = true;}
+			if (menu == "enable_background_layer4") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_background_layer4){global.enable_background_layer4 = false;}else{global.enable_background_layer4 = true;}
 			menu_delay = 3;
 			}
-			if (menu == "enable_foreground_layer1") && (menu_delay == 0){if (global.enable_foreground_layer1){global.enable_foreground_layer1 = false;}else{global.enable_foreground_layer1 = true;}
+			if (menu == "enable_foreground_layer1") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_foreground_layer1){global.enable_foreground_layer1 = false;}else{global.enable_foreground_layer1 = true;}
 			menu_delay = 3;
 			}
-			if (menu == "enable_foreground_layer_1_5") && (menu_delay == 0){if (global.enable_foreground_layer_1_5){global.enable_foreground_layer_1_5 = false;}else{global.enable_foreground_layer_1_5 = true;}
+			if (menu == "enable_foreground_layer_1_5") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_foreground_layer_1_5){global.enable_foreground_layer_1_5 = false;}else{global.enable_foreground_layer_1_5 = true;}
 			menu_delay = 3;
 			}
-			if (menu == "enable_foreground_layer2") && (menu_delay == 0){if (global.enable_foreground_layer2){global.enable_foreground_layer2 = false;}else{global.enable_foreground_layer2 = true;}
+			if (menu == "enable_foreground_layer2") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_foreground_layer2){global.enable_foreground_layer2 = false;}else{global.enable_foreground_layer2 = true;}
 			menu_delay = 3;
 			}
-			if (menu == "enable_foreground_layer_secret") && (menu_delay == 0){if (global.enable_foreground_layer_secret){global.enable_foreground_layer_secret = false;}else{global.enable_foreground_layer_secret = true;}
+			if (menu == "enable_foreground_layer_secret") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_foreground_layer_secret){global.enable_foreground_layer_secret = false;}else{global.enable_foreground_layer_secret = true;}
 			menu_delay = 3;
 			}
-			if (menu == "reset_level_zoom_when_going_back_to_map") && (menu_delay == 0){if (global.reset_level_zoom_when_going_back_to_map){global.reset_level_zoom_when_going_back_to_map = false;}else{global.reset_level_zoom_when_going_back_to_map = true;}
+			if (menu == "reset_level_zoom_when_going_back_to_map") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.reset_level_zoom_when_going_back_to_map){global.reset_level_zoom_when_going_back_to_map = false;}else{global.reset_level_zoom_when_going_back_to_map = true;}
 			menu_delay = 3;
 			}
-			if (menu == "reset_world_map_zoom_when_going_back_to_map") && (menu_delay == 0){if (global.reset_world_map_zoom_when_going_back_to_map){global.reset_world_map_zoom_when_going_back_to_map = false;}else{global.reset_world_map_zoom_when_going_back_to_map = true;}
+			if (menu == "reset_world_map_zoom_when_going_back_to_map") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.reset_world_map_zoom_when_going_back_to_map){global.reset_world_map_zoom_when_going_back_to_map = false;}else{global.reset_world_map_zoom_when_going_back_to_map = true;}
 			menu_delay = 3;
 			}
 			if (menu == "gui_scale_modifier")
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown == false)
 			{
 				open_dropdown = true;
 				menu_delay = 3;
 			}
+			if (menu == "customize_button_design")
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown == false)
+			{
+				menu = "customize_button_design_color";
+				menu_delay = 3;
+			}
 		}
 		#endregion /* Accept END */
+		
+	}
+	else
+	if (global.settings_sidebar_menu == "video_settings")
+	{
+		draw_menu_button(450, 48, l10n_text("Back"), "customize_button_design_color_back", "customize_button_design");
+		draw_menu_dropdown(420, 68 * 4, l10n_text("Transparency"), "customize_button_design_transparency", global.button_design_transparency, "Opaque", "See Through", "Outlines Only", "Invisible");
+		draw_menu_dropdown(420, 68 * 3, l10n_text("Shape"), "customize_button_design_shape", global.button_design_shape, "Rectangle", "Round");
+		draw_menu_dropdown(420, 68 * 2, l10n_text("Color"), "customize_button_design_color", global.button_design_color, "Gray", "Black", "Pink", "Blue");
+		
+		if (menu == "customize_button_design_color_back")
+		&& (key_b_pressed)
+		&& (open_dropdown == false)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu = "customize_button_design";
+		}
+		
+		if (menu == "customize_button_design_color_back")
+		&& (open_dropdown == false)
+		{
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu = "customize_button_design_transparency";
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu = "customize_button_design_color";
+				menu_delay = 3;
+			}
+		}
+		else
+		if (menu == "customize_button_design_color")
+		{
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown == false)
+			{
+				menu = "customize_button_design_color_back";
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown == false)
+			{
+				menu = "customize_button_design_shape";
+				menu_delay = 3;
+			}
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.button_design_color > 0)
+			{
+				global.button_design_color --;
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.button_design_color < 3)
+			{
+				global.button_design_color ++;
+				menu_delay = 3;
+			}
+		}
+		else
+		if (menu == "customize_button_design_shape")
+		{
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown == false)
+			{
+				menu = "customize_button_design_color";
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown == false)
+			{
+				menu = "customize_button_design_transparency";
+				menu_delay = 3;
+			}
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.button_design_shape > 0)
+			{
+				global.button_design_shape --;
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.button_design_shape < 1)
+			{
+				global.button_design_shape ++;
+				menu_delay = 3;
+			}
+		}
+		else
+		if (menu == "customize_button_design_transparency")
+		{
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown == false)
+			{
+				menu = "customize_button_design_shape";
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown == false)
+			{
+				menu = "customize_button_design_color_back";
+				menu_delay = 3;
+			}
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.button_design_transparency > 0)
+			{
+				global.button_design_transparency --;
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.button_design_transparency < 3)
+			{
+				global.button_design_transparency ++;
+				menu_delay = 3;
+			}
+		}
+		
+		/* button_design_color, 0 = gray, 1 = black, 2 = pink, 3 = blue */
+		/* button_design_shape, 0 = rectangle, 1 = round, */
+		/* button_design_transparency, 0 = Opaque, 1 = See Through, 2 = Outlines Only, 3 = Invisible */
+		var color_gray = 0;
+		var color_black = 1;
+		var color_pink = 2;
+		var color_blue = 3;
+		
+		var shape_rectangle = 0;
+		var shape_round = 1;
+		
+		var transp_opaque = 0;
+		var transp_see_trough = 1;
+		var transp_outlines_only = 2;
+		var transp_invisible = 3;
+		
+		if (global.button_design_color == color_gray) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_opaque){global.menu_button_subimg = 0;}else
+		if (global.button_design_color == color_gray) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_see_trough){global.menu_button_subimg = 1;}else
+		if (global.button_design_color == color_gray) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_outlines_only){global.menu_button_subimg = 2;}else
+		
+		if (global.button_design_color == color_black) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_opaque){global.menu_button_subimg = 3;}else
+		if (global.button_design_color == color_black) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_see_trough){global.menu_button_subimg = 4;}else
+		if (global.button_design_color == color_black) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_outlines_only){global.menu_button_subimg = 5;}else
+		
+		if (global.button_design_color == color_gray) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_opaque){global.menu_button_subimg = 6;}else
+		if (global.button_design_color == color_gray) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_see_trough){global.menu_button_subimg = 7;}else
+		if (global.button_design_color == color_gray) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_outlines_only){global.menu_button_subimg = 8;}else
+		
+		if (global.button_design_color == color_black) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_opaque){global.menu_button_subimg = 9;}else
+		if (global.button_design_color == color_black) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_see_trough){global.menu_button_subimg = 10;}else
+		if (global.button_design_color == color_black) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_outlines_only){global.menu_button_subimg = 11;}else
+		
+		
+		
+		
+		if (global.button_design_color == color_pink) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_opaque){global.menu_button_subimg = 12;}else
+		if (global.button_design_color == color_pink) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_see_trough){global.menu_button_subimg = 13;}else
+		if (global.button_design_color == color_pink) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_outlines_only){global.menu_button_subimg = 2;}else
+		
+		if (global.button_design_color == color_blue) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_opaque){global.menu_button_subimg = 14;}else
+		if (global.button_design_color == color_blue) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_see_trough){global.menu_button_subimg = 15;}else
+		if (global.button_design_color == color_blue) && (global.button_design_shape == shape_rectangle) && (global.button_design_transparency == transp_outlines_only){global.menu_button_subimg = 5;}else
+		
+		if (global.button_design_color == color_pink) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_opaque){global.menu_button_subimg = 16;}else
+		if (global.button_design_color == color_pink) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_see_trough){global.menu_button_subimg = 17;}else
+		if (global.button_design_color == color_pink) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_outlines_only){global.menu_button_subimg = 8;}else
+		
+		if (global.button_design_color == color_blue) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_opaque){global.menu_button_subimg = 18;}else
+		if (global.button_design_color == color_blue) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_see_trough){global.menu_button_subimg = 19;}else
+		if (global.button_design_color == color_blue) && (global.button_design_shape == shape_round) && (global.button_design_transparency == transp_outlines_only){global.menu_button_subimg = 11;}else
+		
+		/* If button design transparency is set to invisible, then always set menu button subimg to this value */ if (global.button_design_transparency == transp_invisible){global.menu_button_subimg = 20;}
 		
 	}
 }

@@ -177,9 +177,9 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	#region /* Clicking the Cancel button */
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
 	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	|| (keyboard_check_pressed(vk_escape))
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		if (variable_instance_exists(self, "remember_keyboard_string"))
 		{
@@ -229,10 +229,10 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			#region /* Clicking the OK button */
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
 			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == ok_menu_string)
 			&& (keyboard_check_pressed(vk_enter))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				keyboard_string = string_replace_all(keyboard_string, "\\", "");
 				keyboard_string = string_replace_all(keyboard_string, "/", "");
@@ -293,8 +293,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		keyboard_string = string_copy(what_string_to_edit, 1, max_characters);
 	}
 	
-	if (menu_delay == 0)
-	&& (menu_joystick_delay == 0)
+	if (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (use_script_navigation_code)
 	{
 		if (keyboard_check_pressed(vk_up))

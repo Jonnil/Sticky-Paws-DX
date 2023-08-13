@@ -801,7 +801,7 @@ if (global.demo)
 && (key_a_pressed)
 && (can_move)
 && (show_demo_over_message == false)
-&& (menu_delay == 0)
+&& (menu_delay == 0 && menu_joystick_delay == 0)
 && (can_enter_level >= 30)
 && (instance_exists(obj_level))
 && (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
@@ -867,10 +867,10 @@ if (menu_delay > 0)
 if (menu == "purchase_now")
 {
 	if (key_a_pressed)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 64, get_window_width * 0.5 - 185 + 370, get_window_height * 0.5 + 64 + 42))
 	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		url_open(string(global.link_to_steam_page));
 		menu = noone;
@@ -878,14 +878,14 @@ if (menu == "purchase_now")
 		menu_delay = 3;
 	}
 	if (key_b_pressed)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu = noone;
 		show_demo_over_message = false;
 		menu_delay = 3;
 	}
 	if (key_down)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu = "continue_playing";
 		menu_delay = 3;
@@ -895,24 +895,24 @@ else
 if (menu == "continue_playing")
 {
 	if (key_a_pressed)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 106, get_window_width * 0.5 - 185 + 370, get_window_height * 0.5 + 106 + 42))
 	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu = noone;
 		show_demo_over_message = false;
 		menu_delay = 3;
 	}
 	if (key_b_pressed)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu = noone;
 		show_demo_over_message = false;
 		menu_delay = 3;
 	}
 	if (key_up)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu = "purchase_now";
 		menu_delay = 3;

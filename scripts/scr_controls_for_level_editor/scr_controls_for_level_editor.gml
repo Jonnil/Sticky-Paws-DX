@@ -2,10 +2,10 @@ function scr_controls_for_level_editor()
 {
 	
 	#region /* Controls for level editor */
-	key_up = scr_key_initialize(key_up, 0, 1, action.up) || (gamepad_axis_value(global.player1_slot, gp_axislv) < 0) && (menu_joystick_delay <= 0);
-	key_left = scr_key_initialize(key_left, 0, 1, action.left) || (gamepad_axis_value(global.player1_slot, gp_axislh) < 0) && (menu_joystick_delay <= 0);
-	key_right = scr_key_initialize(key_right, 0, 1, action.right) || (gamepad_axis_value(global.player1_slot, gp_axislh) > 0) && (menu_joystick_delay <= 0);
-	key_down = scr_key_initialize(key_down, 0, 1, action.down) || (gamepad_axis_value(global.player1_slot, gp_axislv) > 0) && (menu_joystick_delay <= 0);
+	key_up = scr_key_initialize(key_up, 0, 1, action.up) || (gamepad_axis_value(global.player1_slot, gp_axislv) < 0) && (menu_joystick_delay == 0);
+	key_left = scr_key_initialize(key_left, 0, 1, action.left) || (gamepad_axis_value(global.player1_slot, gp_axislh) < 0) && (menu_joystick_delay == 0);
+	key_right = scr_key_initialize(key_right, 0, 1, action.right) || (gamepad_axis_value(global.player1_slot, gp_axislh) > 0) && (menu_joystick_delay == 0);
+	key_down = scr_key_initialize(key_down, 0, 1, action.down) || (gamepad_axis_value(global.player1_slot, gp_axislv) > 0) && (menu_joystick_delay == 0);
 	
 	#region /* Player 1 Key Accept */
 	

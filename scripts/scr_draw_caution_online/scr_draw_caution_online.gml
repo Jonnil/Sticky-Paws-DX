@@ -31,10 +31,10 @@ function scr_draw_caution_online()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, display_get_gui_height() * 0.5 + 138, display_get_gui_width() * 0.5 - 185 + 370, display_get_gui_height() * 0.5 + 138 + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "caution_online_proceed")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (caution_online_takes_you_to == "online_download_list_load")
 			{
@@ -65,12 +65,12 @@ function scr_draw_caution_online()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 0 + 370, 0 + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "caution_online_back")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_b_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 			{
@@ -81,8 +81,7 @@ function scr_draw_caution_online()
 		}
 		
 		if (key_up)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "caution_online_back")
 			{
@@ -101,8 +100,7 @@ function scr_draw_caution_online()
 			menu_delay = 3;
 		}
 		if (key_down)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "caution_online_back")
 			{

@@ -19,7 +19,7 @@ function scr_menu_navigation_with_joystick_delay()
 	|| (gamepad_axis_value(global.player4_slot, gp_axislh) < 0)
 	|| (gamepad_axis_value(global.player4_slot, gp_axislh) > 0)
 	{
-		if (menu_joystick_delay == 0)
+		if (menu_delay >= 1 && menu_joystick_delay == 0)
 		{
 			menu_joystick_delay = 15;
 		}

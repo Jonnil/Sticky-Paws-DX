@@ -73,6 +73,7 @@ if (player1 >= 1)
 {
 	if (global.player1_show_controls == 0)
 	|| (obj_player.can_move == false)
+	|| (global.goal_active)
 	{
 		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
 	}
@@ -122,6 +123,7 @@ if (player2 >= 1)
 {
 	if (global.player2_show_controls == 0)
 	|| (obj_player.can_move == false)
+	|| (global.goal_active)
 	{
 		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
 	}
@@ -171,6 +173,7 @@ if (player3 >= 1)
 {
 	if (global.player3_show_controls == 0)
 	|| (obj_player.can_move == false)
+	|| (global.goal_active)
 	{
 		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
 	}
@@ -220,6 +223,7 @@ if (player4 >= 1)
 {
 	if (global.player4_show_controls == 0)
 	|| (obj_player.can_move == false)
+	|| (global.goal_active)
 	{
 		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
 	}

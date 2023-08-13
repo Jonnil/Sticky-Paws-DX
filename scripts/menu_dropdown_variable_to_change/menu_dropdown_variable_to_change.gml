@@ -188,4 +188,22 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 		global.selected_font = change_to_value;
 		scr_set_font();
 	}
+	else
+	if (menu == "customize_button_design_transparency")
+	&& (variable_to_change = global.button_design_transparency)
+	{
+		global.button_design_transparency = change_to_value;
+	}
+	else
+	if (menu == "customize_button_design_shape")
+	&& (variable_to_change = global.button_design_shape)
+	{
+		global.button_design_shape = change_to_value;
+	}
+	else
+	if (menu == "customize_button_design_color")
+	&& (variable_to_change = global.button_design_color)
+	{
+		global.button_design_color = change_to_value;
+	}
 }

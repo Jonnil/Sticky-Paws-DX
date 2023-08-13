@@ -97,7 +97,7 @@ function scr_character_select_player_navigation(what_player = 1)
 			&& (mouse_check_button_released(mb_left))
 			{
 				
-				if (menu_delay == 0)
+				if (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (global.character_index[what_player - 1] > 0)
 				{
 					menu_delay = 3;
@@ -138,7 +138,7 @@ function scr_character_select_player_navigation(what_player = 1)
 			&& (mouse_check_button_released(mb_left))
 			{
 				
-				if (menu_delay == 0)
+				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu_specific_joystick_delay[what_player] = 30;
@@ -173,7 +173,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		|| (gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0)
 		&& (menu_specific_joystick_delay[what_player] <= 0)
 		{
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
 				menu_specific_joystick_delay[what_player] = 30;
@@ -205,7 +205,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		|| (gamepad_axis_value(player_gamepad_slot, gp_axislv) > 0)
 		&& (menu_specific_joystick_delay[what_player] <= 0)
 		{
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (player_accept_selection == 0)
 			{
 				menu_delay = 3;
@@ -239,7 +239,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		|| (gamepad_axis_value(player_gamepad_slot, gp_axislv) < 0)
 		&& (menu_specific_joystick_delay[what_player] <= 0)
 		{
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
 				menu_specific_joystick_delay[what_player] = 30;
@@ -262,7 +262,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		
 		if (!can_input_player_name && !can_input_player_name2 && !can_input_player_name3 && !can_input_player_name4)
 		{
-			if (player_key_a_pressed && menu_delay == 0)
+			if (player_key_a_pressed && menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
 				keyboard_string = global.player_name[what_player];

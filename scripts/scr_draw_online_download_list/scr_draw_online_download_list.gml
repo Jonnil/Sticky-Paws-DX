@@ -69,7 +69,7 @@ function scr_draw_online_download_list()
 		|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 0, 370, 42))
 		&& (mouse_check_button_released(mb_left))
 		{
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (content_type == "level")
 				{
@@ -188,7 +188,7 @@ function scr_draw_online_download_list()
 						|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x, 64 + download_online_y + menu_y_offset, download_online_x + 370, 64 + download_online_y + menu_y_offset + 41))
 						&& (mouse_check_button_released(mb_left))
 						{
-							if (menu_delay == 0)
+							if (menu_delay == 0 && menu_joystick_delay == 0)
 							{
 								
 								#region /* Go to download menu */
@@ -288,16 +288,14 @@ function scr_draw_online_download_list()
 			if (menu == "download_online_back")
 			{
 				if (key_up)
-				&& (menu_delay == 0)
-				&& (menu_joystick_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(num_items);
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
-				&& (menu_joystick_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_search_id";
@@ -307,16 +305,14 @@ function scr_draw_online_download_list()
 			if (menu == "download_online_search_id")
 			{
 				if (key_up)
-				&& (menu_delay == 0)
-				&& (menu_joystick_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_back";
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
-				&& (menu_joystick_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_1";
@@ -326,16 +322,14 @@ function scr_draw_online_download_list()
 			if (menu == "download_online_1")
 			{
 				if (key_up)
-				&& (menu_delay == 0)
-				&& (menu_joystick_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_search_id";
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
-				&& (menu_joystick_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					if (num_items >= 2)
@@ -352,16 +346,14 @@ function scr_draw_online_download_list()
 			if (menu == "download_online_" + string(selected_online_download_index))
 			{
 				if (key_up)
-				&& (menu_delay == 0)
-				&& (menu_joystick_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(selected_online_download_index - 1);
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
-				&& (menu_joystick_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (selected_online_download_index < num_items)
 				{
 					menu_delay = 3;
@@ -369,8 +361,7 @@ function scr_draw_online_download_list()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
-				&& (menu_joystick_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_back";

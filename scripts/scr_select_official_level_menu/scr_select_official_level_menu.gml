@@ -32,8 +32,7 @@ function scr_select_official_level_menu()
 	|| (mouse_wheel_up())
 	{
 		if (can_input_level_name == false)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay <= 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (menu != "back_from_level_editor")
 		{
 			if (global.select_level_index - row < 0)
@@ -70,8 +69,7 @@ function scr_select_official_level_menu()
 	|| (mouse_wheel_down())
 	{
 		if (can_input_level_name == false)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay <= 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (menu != "back_from_level_editor")
 		{
 			if (global.select_level_index + row > ds_list_size(global.thumbnail_sprite) - 1)
@@ -106,10 +104,10 @@ function scr_select_official_level_menu()
 	#region /* Key Left */
 	if (key_left)
 	&& (can_input_level_name == false)
-	&& (menu_delay == 0)
-	&& (menu_joystick_delay <= 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (menu != "back_from_level_editor")
 	{
+		menu_delay = 3;
 		if (global.select_level_index - 1 < 0)
 		{
 			global.select_level_index = ds_list_size(global.thumbnail_sprite) - 1;
@@ -118,7 +116,6 @@ function scr_select_official_level_menu()
 		{
 			global.select_level_index --;
 		}
-		menu_delay = 3;
 		scroll_to = floor(global.select_level_index / row);
 		lerp_on = true;
 	}
@@ -129,10 +126,10 @@ function scr_select_official_level_menu()
 	#region /* Key Right */
 	if (key_right)
 	&& (can_input_level_name == false)
-	&& (menu_delay == 0)
-	&& (menu_joystick_delay <= 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (menu != "back_from_level_editor")
 	{
+		menu_delay = 3;
 		if (global.select_level_index + 1 > ds_list_size(global.thumbnail_sprite) - 1)
 		{
 			global.select_level_index = 0;
@@ -141,7 +138,6 @@ function scr_select_official_level_menu()
 		{
 			global.select_level_index ++;
 		}
-		menu_delay = 3;
 		scroll_to = floor(global.select_level_index / row);
 		lerp_on = true;
 	}
@@ -155,7 +151,7 @@ function scr_select_official_level_menu()
 		#region /* If pressing accept in title screen */
 		if (menu == "level_editor_play")
 		&& (can_input_level_name == false)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			scroll_to = floor(global.select_level_index / row);
 			lerp_on = true;
@@ -175,7 +171,7 @@ function scr_select_official_level_menu()
 		#region /* If pressing accept in level editor options */
 		if (menu == "choose_official_level_to_take_from")
 		&& (can_input_level_name == false)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			scroll_to = floor(global.select_level_index / row);
 			lerp_on = true;
@@ -464,10 +460,10 @@ function scr_select_official_level_menu()
 	
 	if (menu == "back_from_level_editor")
 	&& (key_a_pressed)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (can_input_level_name == false)
 	|| (key_b_pressed)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (can_input_level_name == false)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 320, 42))
 	&& (mouse_check_button_released(mb_left))
@@ -495,8 +491,7 @@ function scr_select_official_level_menu()
 	}
 	if (menu == "back_from_level_editor")
 	&& (key_up)
-	&& (menu_delay == 0)
-	&& (menu_joystick_delay <= 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu_delay = 3;
 		can_navigate = true;
@@ -518,8 +513,7 @@ function scr_select_official_level_menu()
 	}
 	if (menu == "back_from_level_editor")
 	&& (key_down)
-	&& (menu_delay == 0)
-	&& (menu_joystick_delay <= 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu_delay = 3;
 		can_navigate = true;
@@ -561,7 +555,7 @@ function scr_select_official_level_menu()
 	
 	#region /* Press Enter to make new level from template */
 	if (can_input_level_name)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (keyboard_string != "")
 	&& (global.level_name != undefined)
 	&& (room == rm_title)
@@ -677,7 +671,7 @@ function scr_select_official_level_menu()
 	|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.back]))
 	{
 		if (can_input_level_name)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			if (instance_exists(obj_camera))

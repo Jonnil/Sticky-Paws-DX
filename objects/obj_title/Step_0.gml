@@ -51,7 +51,7 @@ if (lerp_on)
 }
 
 if (menu == "load_characters")
-and (menu_delay == 0)
+and (menu_delay == 0 && menu_joystick_delay == 0)
 {
 	
 	#region /* Player Automatically Join */

@@ -67,18 +67,18 @@ if (lives <= 0)
 		|| (gamepad_button_check_pressed(global.player4_slot, gp_padr))
 		|| (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
 		{
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (menu == "continue")
 				{
 					menu = "quit";
-					menu_delay = 10;
+					menu_delay = 3;
 				}
 				else
 				if (menu == "quit")
 				{
 					menu = "continue";
-					menu_delay = 10;
+					menu_delay = 3;
 				}
 			}
 		}

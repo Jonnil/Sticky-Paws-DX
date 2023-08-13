@@ -59,39 +59,36 @@ function scr_options_language_menu()
 	scr_draw_text_outlined(get_window_width - 32, get_window_height - 32, l10n_text("Language translations may not be 100% accurate"), global.default_text_size * 0.75, c_menu_outline, c_gray, 1);
 	
 	#region /* Language Menu Navigation */
-	if (menu_joystick_delay <= 0)
+	if (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (can_navigate)
 	&& (global.settings_sidebar_menu = "language_settings")
 	{
 		if (global.controls_used_for_menu_navigation != "mouse")
 		{
 			if (key_up)
-			&& (menu_delay == 0)
 			&& (open_dropdown == false)
 			{
+				menu_delay = 3;
 				language_index = max(language_index - 1, 1)
 				menu = "Language" + string(language_index);
 				menu_cursor_y_position = language_index * 50;
-				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
 			&& (open_dropdown == false)
 			{
+				menu_delay = 3;
 				language_index = min(language_index + 1, ds_grid_width(global.language_local_data) - 1)
 				menu = "Language" + string(language_index);
 				menu_cursor_y_position = language_index * 50;
-				menu_delay = 3;
 			}
 			else
 			if (key_a_pressed)
-			&& (menu_delay == 0)
 			&& (open_dropdown == false)
 			{
+				menu_delay = 3;
 				global.language_localization = language_index - 1;
 				calculate_translation_completion();
-				menu_delay = 3;
 				if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
 				&& (global.selected_font == 2) /* Open Dyslexic font didn't work with Japanese language */
 				{
@@ -109,21 +106,19 @@ function scr_options_language_menu()
 		else
 		{
 			if (key_up)
-			&& (menu_delay == 0)
 			&& (open_dropdown == false)
 			{
+				menu_delay = 3;
 				language_mouse_scroll = max(language_mouse_scroll - 10, 1)
 				menu_cursor_y_position = language_mouse_scroll * 50;
-				menu_delay = 3;
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
 			&& (open_dropdown == false)
 			{
+				menu_delay = 3;
 				language_mouse_scroll = min(language_mouse_scroll + 10, ds_grid_width(global.language_local_data) - 1)
 				menu_cursor_y_position = language_mouse_scroll * 50;
-				menu_delay = 3;
 			}
 		}
 	}

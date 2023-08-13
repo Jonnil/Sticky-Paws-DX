@@ -93,7 +93,7 @@ if (global.actually_play_edited_level == false)
 				|| (key_b_pressed)
 				{
 					if (input_key == false)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
 						quit_level_editor = false;
@@ -154,7 +154,7 @@ if (global.actually_play_edited_level == false)
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 - 126, get_window_width * 0.5 + 185, get_window_height * 0.5 -84))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					quit_level_editor = false;
@@ -165,24 +165,22 @@ if (global.actually_play_edited_level == false)
 				&& (can_input_level_name == false)
 				{
 					if (key_up)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "quit";
 					}
 					else
 					if (key_down)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "options";
 					}
 					if (key_a_pressed)
 					|| (keyboard_check_pressed(vk_enter))
 					{
-						if (menu_delay == 0)
+						if (menu_delay == 0 && menu_joystick_delay == 0)
 						{
 							menu_delay = 3;
 							quit_level_editor = false;
@@ -200,7 +198,7 @@ if (global.actually_play_edited_level == false)
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 -84, get_window_width * 0.5 + 185, get_window_height * 0.5 - 42))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					quit_level_editor = false;
 					can_input_level_name = false;
@@ -216,24 +214,22 @@ if (global.actually_play_edited_level == false)
 				&& (can_input_level_name == false)
 				{
 					if (key_up)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "continue";
 					}
 					else
 					if (key_down)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "level_editor_options";
 					}
 					if (key_a_pressed)
 					|| (keyboard_check_pressed(vk_enter))
 					{
-						if (menu_delay == 0)
+						if (menu_delay == 0 && menu_joystick_delay == 0)
 						{
 							quit_level_editor = false;
 							can_input_level_name = false;
@@ -246,7 +242,7 @@ if (global.actually_play_edited_level == false)
 						}
 					}
 					if (key_b_pressed)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
 						quit_level_editor = false;
@@ -263,7 +259,7 @@ if (global.actually_play_edited_level == false)
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 -42, get_window_width * 0.5 + 185, get_window_height * 0.5))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					quit_level_editor = false;
 					can_input_level_name = false;
@@ -279,18 +275,16 @@ if (global.actually_play_edited_level == false)
 				&& (can_input_level_name == false)
 				{
 					if (key_up)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "options";
 					}
 					else
 					if (key_down)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						if (global.enable_options_for_pc)
 						{
 							menu = "generate_level_map";
@@ -303,7 +297,7 @@ if (global.actually_play_edited_level == false)
 					if (key_a_pressed)
 					|| (keyboard_check_pressed(vk_enter))
 					{
-						if (menu_delay == 0)
+						if (menu_delay == 0 && menu_joystick_delay == 0)
 						{
 							quit_level_editor = false;
 							can_input_level_name = false;
@@ -316,7 +310,7 @@ if (global.actually_play_edited_level == false)
 						}
 					}
 					if (key_b_pressed)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
 						quit_level_editor = false;
@@ -335,7 +329,7 @@ if (global.actually_play_edited_level == false)
 					if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42))
 					&& (global.controls_used_for_menu_navigation == "mouse")
 					&& (mouse_check_button_pressed(mb_left))
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
 						quit_level_editor = false;
@@ -347,25 +341,23 @@ if (global.actually_play_edited_level == false)
 					&& (can_input_level_name == false)
 					{
 						if (key_up)
-						&& (menu_joystick_delay == 0)
-						&& (menu_delay == 0)
+						&& (menu_delay == 0 && menu_joystick_delay == 0)
 						{
-							menu_delay = 1;
+							menu_delay = 3;
 							menu = "level_editor_options";
 						}
 						else
 						if (key_down)
-						&& (menu_joystick_delay == 0)
-						&& (menu_delay == 0)
+						&& (menu_delay == 0 && menu_joystick_delay == 0)
 						&& (show_level_editor_corner_menu)
 						{
-							menu_delay = 1;
+							menu_delay = 3;
 							menu = "open_custom_levels_folder";
 						}
 						if (key_a_pressed)
 						|| (keyboard_check_pressed(vk_enter))
 						{
-							if (menu_delay == 0)
+							if (menu_delay == 0 && menu_joystick_delay == 0)
 							{
 								menu_delay = 3;
 								quit_level_editor = false;
@@ -375,7 +367,7 @@ if (global.actually_play_edited_level == false)
 							}
 						}
 						if (key_b_pressed)
-						&& (menu_delay == 0)
+						&& (menu_delay == 0 && menu_joystick_delay == 0)
 						{
 							menu_delay = 3;
 							quit_level_editor = false;
@@ -395,10 +387,10 @@ if (global.actually_play_edited_level == false)
 					if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, get_window_width * 0.5 - 185 + 371, get_window_height * 0.5 + 42 + 41))
 					&& (global.controls_used_for_menu_navigation == "mouse")
 					&& (mouse_check_button_released(mb_left))
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					|| (menu == "open_custom_levels_folder")
 					&& (key_a_pressed)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						if (global.level_name != "")
 						{
@@ -407,8 +399,7 @@ if (global.actually_play_edited_level == false)
 					}
 					if (menu == "open_custom_levels_folder")
 					&& (key_up)
-					&& (menu_delay == 0)
-					&& (menu_joystick_delay <= 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -416,8 +407,7 @@ if (global.actually_play_edited_level == false)
 					}
 					if (menu == "open_custom_levels_folder")
 					&& (key_down)
-					&& (menu_delay == 0)
-					&& (menu_joystick_delay <= 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -433,11 +423,10 @@ if (global.actually_play_edited_level == false)
 				&& (can_input_level_name == false)
 				{
 					if (key_up)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					&& (show_level_editor_corner_menu)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						if (global.enable_options_for_pc)
 						{
 							menu = "open_custom_levels_folder";
@@ -449,14 +438,13 @@ if (global.actually_play_edited_level == false)
 					}
 					else
 					if (key_down)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "quit";
 					}
 					if (key_b_pressed)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
 						quit_level_editor = false;
@@ -472,15 +460,15 @@ if (global.actually_play_edited_level == false)
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42 + 42))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (key_a_pressed)
 				&& (menu == "quit")
 				&& (can_input_level_name == false)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (keyboard_check_pressed(vk_enter))
 				&& (menu == "quit")
 				&& (can_input_level_name == false)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					quit_level_editor = true;
@@ -491,22 +479,20 @@ if (global.actually_play_edited_level == false)
 				&& (can_input_level_name == false)
 				{
 					if (key_up)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "level_editor_upload";
 					}
 					else
 					if (key_down)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "continue";
 					}
 					if (key_b_pressed)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
 						quit_level_editor = false;
@@ -554,7 +540,7 @@ if (global.actually_play_edited_level == false)
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					quit_level_editor = false;
@@ -566,24 +552,22 @@ if (global.actually_play_edited_level == false)
 				&& (can_input_level_name == false)
 				{
 					if (key_up)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "generate_level_map_no";
 					}
 					else
 					if (key_down)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "generate_level_map_no";
 					}
 					if (key_a_pressed)
 					|| (keyboard_check_pressed(vk_enter))
 					{
-						if (menu_delay == 0)
+						if (menu_delay == 0 && menu_joystick_delay == 0)
 						{
 							menu_delay = 3;
 							quit_level_editor = false;
@@ -593,7 +577,7 @@ if (global.actually_play_edited_level == false)
 						}
 					}
 					if (key_b_pressed)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
 						quit_level_editor = false;
@@ -611,7 +595,7 @@ if (global.actually_play_edited_level == false)
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					quit_level_editor = false;
@@ -623,24 +607,22 @@ if (global.actually_play_edited_level == false)
 				&& (can_input_level_name == false)
 				{
 					if (key_up)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "generate_level_map_yes";
 					}
 					else
 					if (key_down)
-					&& (menu_joystick_delay == 0)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						menu_delay = 1;
+						menu_delay = 3;
 						menu = "generate_level_map_yes";
 					}
 					if (key_a_pressed)
 					|| (keyboard_check_pressed(vk_enter))
 					{
-						if (menu_delay == 0)
+						if (menu_delay == 0 && menu_joystick_delay == 0)
 						{
 							menu_delay = 3;
 							quit_level_editor = false;
@@ -650,7 +632,7 @@ if (global.actually_play_edited_level == false)
 						}
 					}
 					if (key_b_pressed)
-					&& (menu_delay == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
 						quit_level_editor = false;
@@ -675,7 +657,7 @@ if (global.actually_play_edited_level == false)
 				if (keyboard_check_pressed(vk_enter))
 				|| (gamepad_button_check_pressed(global.player1_slot, gp_start))
 				{
-					if (menu_delay == 0)
+					if (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
 						can_input_level_name = false;
@@ -1929,8 +1911,6 @@ if (global.actually_play_edited_level == false)
 		#endregion /* Zoom In END */
 		
 		#endregion /* Click icons at top of screen END */
-		
-		scr_menu_navigation_with_joystick_delay();
 		
 		if (global.controls_used_for_menu_navigation != "controller")
 		&& (!navigate_camera_with_arrowkeys)

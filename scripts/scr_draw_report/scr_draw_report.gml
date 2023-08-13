@@ -123,7 +123,7 @@ function scr_draw_report()
 			var searched_file_downloaded_back_y = report_sent_message_y + 50 + (42 * 4);
 			var searched_file_downloaded_back_text = l10n_text("Back to character select");
 		}
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "report_complete_delete", "report_complete_delete");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "report_complete_delete", "report_complete_delete", c_red);
 		draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, back_to_list_y, back_to_list_text, "report_complete_back_to_online_list", "report_complete_back_to_online_list");
 		draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
@@ -134,10 +134,10 @@ function scr_draw_report()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_delete_y + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "report_complete_delete")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (content_type == "level")
 			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -165,10 +165,10 @@ function scr_draw_report()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, back_to_list_y, display_get_gui_width() * 0.5 + 185, back_to_list_y + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "report_complete_back_to_online_list")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			/* Don't set the "select level index" or "level name" here, because we want it saved still */
 			menu = "online_download_list_load"; /* Go back to online level list */
@@ -180,10 +180,10 @@ function scr_draw_report()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_back_y + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "report_complete_back_to_select")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = "searching_for_id_back";
 			menu_delay = 3;
@@ -191,8 +191,7 @@ function scr_draw_report()
 		#endregion /* Click back to custom level select END */
 		
 		if (key_up)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			if (menu == "report_complete_delete")
@@ -212,8 +211,7 @@ function scr_draw_report()
 		}
 		else
 		if (key_down)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			if (menu == "report_complete_delete")
@@ -252,10 +250,10 @@ function scr_draw_report()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "report_back")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = report_back_to_menu;
 			menu_delay = 3;
@@ -264,28 +262,26 @@ function scr_draw_report()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_next_y, display_get_gui_width() * 0.5 - 185 + 370, report_next_y + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "report_next")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = "report_intrusion_of_privacy";
 			menu_delay = 3;
 		}
 		
 		if (key_b_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = report_back_to_menu;
 			menu_delay = 3;
 		}
 		
 		if (key_up)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_down)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "report_back")
 			{
@@ -418,16 +414,16 @@ function scr_draw_report()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "report_reason_back")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = report_back_to_menu;
 		}
 		else
 		if (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "report_intrusion_of_privacy")
 			{
@@ -510,15 +506,14 @@ function scr_draw_report()
 		#endregion /* Report Reason Accept END */
 		
 		if (key_b_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = report_back_to_menu;
 		}
 		
 		if (key_up)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			if (menu == "report_reason_back")
@@ -579,8 +574,7 @@ function scr_draw_report()
 		}
 		else
 		if (key_down)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			if (menu == "report_reason_back")
@@ -668,7 +662,7 @@ function scr_draw_report()
 			&& (!keyboard_check_pressed(ord("X")))
 			&& (!keyboard_check_pressed(vk_backspace))
 			&& (!keyboard_check_pressed(vk_space))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
 				input_key = false;
@@ -706,7 +700,7 @@ function scr_draw_report()
 			&& (!keyboard_check_pressed(ord("X")))
 			&& (!keyboard_check_pressed(vk_backspace))
 			&& (!keyboard_check_pressed(vk_space))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
 				global.report_message = "";
@@ -738,10 +732,10 @@ function scr_draw_report()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "report_send_back")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = global.report_reason;
@@ -750,28 +744,26 @@ function scr_draw_report()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_send_confirm_y, display_get_gui_width() * 0.5 - 185 + 370, report_send_confirm_y + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "report_send_confirm")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "report_send_to_server";
 		}
 		
 		if (key_b_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = global.report_reason;
 		}
 		
 		if (key_up)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_down)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			if (menu == "report_send_back")

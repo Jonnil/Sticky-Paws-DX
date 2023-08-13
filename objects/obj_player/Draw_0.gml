@@ -557,4 +557,12 @@ if (hp > 0)
 }
 #endregion /* If player has more hp, show that END */
 
+if (global.debug_screen)
+&& (!on_ground)
+&& (climb == false)
+&& (horizontal_rope_climb == false)
+{
+	draw_sprite_ext(spr_arrow_sign_small, 0, x, bbox_top - 32, 0.3, 0.3, 270, c_white, 1);
+}
+
 #endregion /* Draw things on top of the player END */

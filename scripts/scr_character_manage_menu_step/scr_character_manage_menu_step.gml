@@ -1,5 +1,16 @@
 function scr_character_manage_menu_step()
 {
+	if (os_type == os_switch)
+	{
+		var enable_copy_character = false;
+	}
+	else
+	{
+		var enable_copy_character = true;
+	}
+	
+	var get_window_height = display_get_gui_height();
+	
 	if (menu == "click_copy_character")
 	|| (menu == "click_delete_character")
 	|| (menu == "click_delete_character_no")
@@ -34,7 +45,7 @@ function scr_character_manage_menu_step()
 		{
 			if (menu != "click_delete_character_no")
 			&& (menu != "click_delete_character_no")
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate)
 			&& (global.character_index[0] > 0)
 			{
@@ -78,7 +89,7 @@ function scr_character_manage_menu_step()
 		{
 			if (menu != "click_delete_character_no")
 			&& (menu != "click_delete_character_no")
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate)
 			{
 				menu_delay = 3;
@@ -137,108 +148,104 @@ function scr_character_manage_menu_step()
 			var selecting_official_character = false;
 		}
 		
-		if (global.enable_open_custom_folder)
-		{
-			if (selecting_official_character == false)
-			{
-				var copy_character_y = display_get_gui_height() - (42 * 5);
-				var delete_character_y = display_get_gui_height() - (42 * 4);
-				var upload_character_y = display_get_gui_height() - (42 * 3);
-			}
-			else
-			{
-				var copy_character_y = display_get_gui_height() - (42 * 3);
-				var delete_character_y = -9999;
-				var upload_character_y = -9999;
-			}
-			var open_character_folder_y = display_get_gui_height() - 42 - 42;
+		var character_name_y, copy_character_y, delete_character_y, upload_character_y, open_character_folder_y;
+
+		if (global.enable_open_custom_folder) {
+		    character_name_y = get_window_height - (42 * 6);
+		    open_character_folder_y = get_window_height - 42;
+		} else {
+		    character_name_y = get_window_height - (42 * 5);
+		    open_character_folder_y = -9999;
 		}
-		else
-		{
-			if (selecting_official_character == false)
-			{
-				var copy_character_y = display_get_gui_height() - (42 * 4);
-				var delete_character_y = display_get_gui_height() - (42 * 3);
-				var upload_character_y = display_get_gui_height() - (42 * 2);
-			}
-			else
-			{
-				var copy_character_y = display_get_gui_height() - (42 * 2);
-				var delete_character_y = -9999;
-				var upload_character_y = -9999;
-			}
-			var open_character_folder_y = -9999;
+
+		if (!selecting_official_character) {
+		    if (global.free_communication_available) {
+		        copy_character_y = enable_copy_character ? get_window_height - (42 * 4) : -9999;
+		        delete_character_y = get_window_height - (42 * 3);
+		        upload_character_y = enable_copy_character ? get_window_height - (42 * 2) : -9999;
+		    } else {
+		        copy_character_y = enable_copy_character ? get_window_height - (42 * 3) : -9999;
+		        delete_character_y = get_window_height - (42 * 2);
+		        upload_character_y = -9999;
+		    }
+		} else {
+		    copy_character_y = enable_copy_character ? get_window_height - (42 * 2) : -9999;
+		    delete_character_y = -9999;
+		    upload_character_y = -9999;
 		}
-		var back_y = display_get_gui_height() - 42;
+		
 		var delete_character_no_y = display_get_gui_height() - (42 * 3);
 		var delete_character_yes_y = display_get_gui_height() - (42 * 2);
 		
 		#region /* Copy Characters */
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, copy_character_y + 2, display_get_gui_width() * 0.5 - 185 + 371, copy_character_y + 42))
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
-		&& (can_navigate)
-		&& (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
-		|| (menu == "click_copy_character")
-		&& (key_a_pressed)
-		&& (menu_delay == 0)
-		&& (can_navigate)
-		&& (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
+		if (enable_copy_character)
 		{
-			menu_delay = 3;
-			can_navigate = false;
-			load_ok = 0;
-			load_specific_folder = 0;
-			first_copy_file = "";
-			
-			#region /* Copy character files to new character folder */
-			
-			if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy"))
+			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, copy_character_y + 2, display_get_gui_width() * 0.5 - 185 + 371, copy_character_y + 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (can_navigate)
+			&& (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
+			|| (menu == "click_copy_character")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (can_navigate)
+			&& (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
 			{
-				directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy")
+				menu_delay = 3;
+				can_navigate = false;
+				load_ok = 0;
+				load_specific_folder = 0;
+				first_copy_file = "";
+				
+				#region /* Copy character files to new character folder */
+				
+				if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy"))
+				{
+					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy")
+				}
+				if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data"))
+				{
+					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data")
+				}
+				if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound"))
+				{
+					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound")
+				}
+				if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites"))
+				{
+					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites")
+				}
+				
+				#region /* Copy files from selected character to custom character copy */
+				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+				{
+					file_copy(
+					"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini",
+					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/character_config.ini");
+				}
+				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
+				{
+					file_copy(
+					"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini",
+					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/sprite_origin_point.ini");
+				}
+				if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+				{
+					file_copy(
+					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini",
+					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/character_config.ini");
+				}
+				if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
+				{
+					file_copy(
+					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini",
+					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/sprite_origin_point.ini");
+				}
+				#endregion /* Copy files from selected character to custom character copy END */
+				
+				#endregion /* Copy character files to new character folder END */
+				
 			}
-			if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data"))
-			{
-				directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data")
-			}
-			if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound"))
-			{
-				directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sound")
-			}
-			if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites"))
-			{
-				directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/sprites")
-			}
-			
-			#region /* Copy files from selected character to custom character copy */
-			if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
-			{
-				file_copy(
-				"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini",
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/character_config.ini");
-			}
-			if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
-			{
-				file_copy(
-				"characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini",
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/sprite_origin_point.ini");
-			}
-			if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
-			{
-				file_copy(
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini",
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/character_config.ini");
-			}
-			if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini"))
-			{
-				file_copy(
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/sprite_origin_point.ini",
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + " - Copy/data/sprite_origin_point.ini");
-			}
-			#endregion /* Copy files from selected character to custom character copy END */
-			
-			#endregion /* Copy character files to new character folder END */
-			
 		}
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
@@ -247,7 +254,7 @@ function scr_character_manage_menu_step()
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "click_copy_character")
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate)
 			{
 				menu_delay = 3;
@@ -258,7 +265,7 @@ function scr_character_manage_menu_step()
 		}
 		if (menu == "click_copy_character")
 		&& (key_down)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		&& (can_navigate)
 		{
@@ -284,19 +291,20 @@ function scr_character_manage_menu_step()
 		if (menu == "click_delete_character")
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, delete_character_y + 2, display_get_gui_width() * 0.5 - 185 + 371, delete_character_y + 42))
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (menu == "click_delete_character")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (player_menu[1] = "click_delete_character")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
 			if (selecting_official_character == false)
 			{
+				menu_delay = 3;
 				menu = "click_delete_character_no";
 				player_menu[1] = "click_delete_character_no";
 			}
@@ -305,19 +313,28 @@ function scr_character_manage_menu_step()
 		if (menu == "click_delete_character_no")
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, delete_character_no_y + 2, display_get_gui_width() * 0.5 - 185 + 371, delete_character_no_y + 42))
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (menu == "click_delete_character_no")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (player_menu[1] = "click_delete_character_no")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (can_navigate)
+		|| (menu == "click_delete_character_no")
+		&& (key_b_pressed)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (can_navigate)
+		|| (menu == "click_delete_character_yes")
+		&& (key_b_pressed)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
 			if (selecting_official_character == false)
 			{
+				menu_delay = 3;
 				menu = "click_delete_character";
 				player_menu[1] = "click_delete_character";
 			}
@@ -326,15 +343,15 @@ function scr_character_manage_menu_step()
 		if (menu == "click_delete_character_yes")
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, delete_character_yes_y + 2, display_get_gui_width() * 0.5 - 185 + 371, delete_character_yes_y + 42))
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (menu == "click_delete_character_yes")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (player_menu[1] = "click_delete_character_yes")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
 			if (selecting_official_character == false)
@@ -356,9 +373,9 @@ function scr_character_manage_menu_step()
 				#endregion /* After deleting character, go to previous character, so you don't accidentally go to a undefined character END */
 				
 				scr_load_character_initializing();
+				menu_delay = 3;
 				menu = "load_characters";
 				player_menu[1] = "click_delete_character"; /* Go back to this menu after reloading all characters */
-				menu_delay = 3;
 			}
 		}
 		
@@ -369,18 +386,21 @@ function scr_character_manage_menu_step()
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "click_delete_character")
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate)
 			{
 				menu_delay = 3;
 				can_navigate = true;
-				player_menu[1] = "click_copy_character";
-				menu = "click_copy_character";
+				if (enable_copy_character)
+				{
+					player_menu[1] = "click_copy_character";
+					menu = "click_copy_character";
+				}
 			}
 		}
 		if (menu == "click_delete_character")
 		&& (key_down)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		&& (can_navigate)
 		{
@@ -412,7 +432,7 @@ function scr_character_manage_menu_step()
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "click_delete_character_yes")
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate)
 			{
 				menu_delay = 3;
@@ -423,7 +443,7 @@ function scr_character_manage_menu_step()
 		}
 		if (menu == "click_delete_character_no")
 		&& (key_down)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		&& (can_navigate)
 		{
@@ -437,27 +457,42 @@ function scr_character_manage_menu_step()
 		#region /* Upload Characters */
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, upload_character_y + 2, display_get_gui_width() * 0.5 - 185 + 371, upload_character_y + 42))
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (menu == "click_upload_character")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
 			if (selecting_official_character == false)
 			&& (global.free_communication_available)
 			{
+				menu_delay = 3;
 				if (global.online_enabled)
 				{
-					menu_delay = 3;
-					menu = "upload_yes_character";
+					ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
+					if (ini_key_exists("info", "clear_check_character"))
+					{
+						if (ini_read_real("info", "clear_check_character", false))
+						{
+							menu = "upload_yes_character";
+						}
+						else
+						{
+							menu = "clear_check_character_yes";
+						}
+					}
+					else
+					{
+						menu = "clear_check_character_yes";
+					}
+					ini_close();
 				}
 				else
 				{
 					caution_online_takes_you_to = "upload_yes_character";
 					caution_online_takes_you_back_to = "click_upload_character";
 					menu = "caution_online_proceed";
-					menu_delay = 3;
 				}
 			}
 		}
@@ -468,7 +503,7 @@ function scr_character_manage_menu_step()
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "click_upload_character")
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate)
 			{
 				menu_delay = 3;
@@ -479,6 +514,7 @@ function scr_character_manage_menu_step()
 					menu = "click_delete_character";
 				}
 				else
+				if (enable_copy_character)
 				{
 					player_menu[1] = "click_copy_character";
 					menu = "click_copy_character";
@@ -487,7 +523,7 @@ function scr_character_manage_menu_step()
 		}
 		if (menu == "click_upload_character")
 		&& (key_down)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		&& (can_navigate)
 		{
@@ -509,15 +545,15 @@ function scr_character_manage_menu_step()
 		#region /* Open Character Folder */
 		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, open_character_folder_y + 2, display_get_gui_width() * 0.5 - 185 + 371, open_character_folder_y + 42))
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (menu == "open_folder_copy_character")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (player_menu[1] = "open_folder_copy_character")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
 			menu_delay = 3;
@@ -541,7 +577,7 @@ function scr_character_manage_menu_step()
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "open_folder_copy_character")
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate)
 			{
 				menu_delay = 3;
@@ -559,6 +595,7 @@ function scr_character_manage_menu_step()
 					menu = "click_delete_character";
 				}
 				else
+				if (enable_copy_character)
 				{
 					player_menu[1] = "click_copy_character";
 					menu = "click_copy_character";
@@ -567,7 +604,7 @@ function scr_character_manage_menu_step()
 		}
 		if (menu == "open_folder_copy_character")
 		&& (key_down)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		&& (can_navigate)
 		{
@@ -579,27 +616,31 @@ function scr_character_manage_menu_step()
 		#endregion /* Open Character Folder END */
 		
 		#region /* Back from Copy Characters */
-		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, back_y + 2, display_get_gui_width() * 0.5 - 185 + 371, back_y + 42))
+		if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() * 0.5 - 185, 0, display_get_gui_width() * 0.5 - 185 + 371, 42))
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (menu == "back_from_copy_character")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (player_menu[1] = "back_from_copy_character")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		|| (key_b_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
-			character_portrait_for_player_update_directory[1] = true;
-			alarm[0] = 1;
-			menu = "manage_character";
-			player_menu[1] = "manage_character"; /* When going back to previous menu from "manage character", you have to set this to "manage character" */
-			menu_delay = 3;
+			if (menu != "click_delete_character_no")
+			&& (menu != "click_delete_character_yes")
+			{
+				character_portrait_for_player_update_directory[1] = true;
+				alarm[0] = 1;
+				menu = "manage_character";
+				player_menu[1] = "manage_character"; /* When going back to previous menu from "manage character", you have to set this to "manage character" */
+				menu_delay = 3;
+			}
 		}
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
@@ -608,7 +649,7 @@ function scr_character_manage_menu_step()
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "back_from_copy_character")
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate)
 			{
 				menu_delay = 3;
@@ -619,6 +660,7 @@ function scr_character_manage_menu_step()
 					menu = "open_folder_copy_character";
 				}
 				else
+				if (enable_copy_character)
 				{
 					player_menu[1] = "click_copy_character";
 					menu = "click_copy_character";
@@ -627,14 +669,17 @@ function scr_character_manage_menu_step()
 		}
 		if (menu == "back_from_copy_character")
 		&& (key_down)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		&& (can_navigate)
 		{
 			menu_delay = 3;
 			can_navigate = true;
-			player_menu[1] = "click_copy_character";
-			menu = "click_copy_character";
+			if (enable_copy_character)
+			{
+				player_menu[1] = "click_copy_character";
+				menu = "click_copy_character";
+			}
 		}
 		#endregion /* Back from Copy Characters END */
 		

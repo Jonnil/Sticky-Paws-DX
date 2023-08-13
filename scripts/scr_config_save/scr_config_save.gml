@@ -59,6 +59,10 @@ function scr_config_save()
 	ini_write_real("config", "enable_foreground_layer2", global.enable_foreground_layer2);
 	ini_write_real("config", "enable_foreground_layer_secret", global.enable_foreground_layer_secret);
 	ini_write_real("config", "enable_transitions", global.enable_transitions);
+	ini_write_real("config", "button_design_color", global.button_design_color);
+	ini_write_real("config", "button_design_shape", global.button_design_shape);
+	ini_write_real("config", "button_design_transparency", global.button_design_transparency);
+	ini_write_real("config", "menu_button_subimg", global.menu_button_subimg);
 	if (global.selected_resource_pack <= -1)
 	{
 		global.selected_resource_pack = 0;

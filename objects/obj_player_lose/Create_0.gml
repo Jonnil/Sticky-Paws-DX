@@ -10,7 +10,7 @@ menu = "continue";
 menu_cursor_index = 0;
 game_over_menu_y = 64;
 game_over_menu_seperation_distance = 64;
-menu_delay = 2;
+menu_delay = 3;
 open_dropdown = false;
 if (bbox_top >= room_height)
 {

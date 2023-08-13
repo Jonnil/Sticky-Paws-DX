@@ -22,11 +22,11 @@
     </Title>
     <Icon>
       <Language>AmericanEnglish</Language>
-      <IconPath>..\..\..\..\..\Desktop\Files\sketch-1691663975377.bmp</IconPath>
+      <IconPath>AmericanEnglish.bmp</IconPath>
     </Icon>
     <Icon>
       <Language>Japanese</Language>
-      <IconPath>..\..\..\..\..\Desktop\Files\sketch-1691663978374.bmp</IconPath>
+      <IconPath>Japanese.bmp</IconPath>
     </Icon>
     <ReleaseVersion>0</ReleaseVersion>
     <DisplayVersion>1.0.0</DisplayVersion>

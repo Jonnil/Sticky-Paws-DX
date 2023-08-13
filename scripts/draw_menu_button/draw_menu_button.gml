@@ -13,7 +13,7 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	{
 		menu = menu_index;
 		
-		if (mouse_check_button_released(mb_left) && menu_takes_you_to != false && menu_takes_you_to != noone && menu_takes_you_to != "" && menu_takes_you_to != menu_index && menu_delay == 0)
+		if (mouse_check_button_released(mb_left) && menu_takes_you_to != false && menu_takes_you_to != noone && menu_takes_you_to != "" && menu_takes_you_to != menu_index && menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = menu_takes_you_to;
@@ -34,10 +34,10 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	
 	var text_scale = (string_width(string_text) >= 360) ? 0.7 : 1;
 	
-	draw_sprite_ext(spr_menu_button, 0, x_position, y_position + 21, 1, 1, 0, actual_highlight_color, alpha);
+	draw_sprite_ext(spr_menu_button, global.menu_button_subimg, x_position, y_position + 21, 1, 1, 0, actual_highlight_color, alpha);
 	if (highlight_color != c_lime && actual_highlight_color == c_white)
 	{
-		draw_sprite_ext(spr_menu_button, 0, x_position, y_position + 21, 1, 1, 0, highlight_color, 0.1 * alpha);
+		draw_sprite_ext(spr_menu_button, global.menu_button_subimg, x_position, y_position + 21, 1, 1, 0, highlight_color, 0.1 * alpha);
 	}
 	
 	draw_set_halign(fa_center);

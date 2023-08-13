@@ -665,7 +665,7 @@ if (global.actually_play_edited_level == false)
 	menu = "continue";
 	open_dropdown = false;
 	name_enter_blink = 0;
-	menu_delay = 10;
+	menu_delay = 3;
 	startup_loading_timer = 0;
 	deactivate_timer = 0; /* Don't deactivate all the objects every frame */
 	background_brightness_lerp = 0;

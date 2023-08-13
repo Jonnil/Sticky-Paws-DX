@@ -79,20 +79,23 @@ function scr_load_object_placement_json()
 		
 		#region /* Save unlockable objects, only if the file exists */
 		/* Open the INI file */
-		unlocked = ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-		
-		/* Iterate over the ds_list and write each element to the INI file */
-		for (var i = 0; i < ds_list_size(placed_objects_list); i++) {
-			var value = ds_list_find_value(placed_objects_list, i);
-			if (!ini_key_exists("Unlock Placable Objects", value))
-			{
-				/* Only write to the INI file if it exists and the object is not already unlocked */
-				ini_write_real("Unlock Placable Objects", value, true);
+		if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini")) /* Check if the file even exists before opening, otherwise game doesn't function properly */
+		{
+			unlocked = ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			
+			/* Iterate over the ds_list and write each element to the INI file */
+			for (var i = 0; i < ds_list_size(placed_objects_list); i++) {
+				var value = ds_list_find_value(placed_objects_list, i);
+				if (!ini_key_exists("Unlock Placable Objects", value))
+				{
+					/* Only write to the INI file if it exists and the object is not already unlocked */
+					ini_write_real("Unlock Placable Objects", value, true);
+				}
 			}
+			
+			/* Close the INI file */
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
-		
-		/* Close the INI file */
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		ds_list_destroy(placed_objects_list);
 		#endregion /* Save unlockable objects, only if the file exists END */
 		

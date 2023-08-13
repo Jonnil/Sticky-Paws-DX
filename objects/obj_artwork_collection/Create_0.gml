@@ -1,7 +1,7 @@
 menu = "";
 open_dropdown = false;
 menu_cursor_index = 0;
-menu_delay = 2;
+menu_delay = 3;
 image_alpha = 0;
 sprite_index = global.resource_pack_sprite_artwork_collection;
 max_artwork = 50; /* The number of artworks corresponds with the total amount of big collectibles in the game */

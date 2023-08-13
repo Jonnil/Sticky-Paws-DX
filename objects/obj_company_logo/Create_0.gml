@@ -217,7 +217,7 @@ global.saveid = noone;
 global.savebuff = noone;
 if (os_type == os_switch)
 {
-	global.username = switch_accounts_get_nickname(0);
+	global.username = "";
 }
 else
 {
@@ -241,6 +241,10 @@ global.part_limit = 0; /* How many objects are currently placed in the level edi
 global.part_limit_entity = 0; /* How many enteties are currently placed in the level editor. Enteties are object that have a lot of step events, so they can lag the game the most */
 global.part_limit_entity_text_alpha = 0; /* The text showing entity limit should fade out when you aren't placing or erasing enteties */
 
+global.button_design_color = 2;
+global.button_design_shape = 1;
+global.button_design_transparency = 0;
+global.menu_button_subimg = 16; /* In the menu button sprites are several sub-images, each with its own design that the button can use */
 global.collectible_image_index = 0; /* Make all collectibles animate in sync */
 global.online_enabled = false;
 global.report_reason = "";
@@ -251,6 +255,7 @@ global.max_length_iterations = 0;
 global.gui_width = window_get_width();
 global.gui_height = window_get_height();
 global.doing_clear_check = false; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
+global.doing_clear_check_character = false; /* When uploading a character, the character should at least be able to complete level 1 before it can be uploaded */
 global.actually_play_edited_level = false; /* Actually playing finished edited level */
 global.all_loaded_characters = ds_list_create();
 global.all_loaded_custom_levels = ds_list_create(); /* The level editor will load every custom level folder */

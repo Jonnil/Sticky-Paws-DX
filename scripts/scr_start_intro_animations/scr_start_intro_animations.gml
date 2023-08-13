@@ -153,7 +153,6 @@ function scr_start_intro_animations()
 			{
 				x = instance_nearest(x, y, obj_chair_and_table).x;
 			}
-			vspeed = 0;
 			if (!place_meeting(x, y + 1, obj_wall))
 			{
 				y ++;
@@ -171,7 +170,6 @@ function scr_start_intro_animations()
 					if (instance_exists(obj_chair_and_table))
 					{
 						x = instance_nearest(x, y, obj_chair_and_table).x + 23;
-						y = instance_nearest(x, y, obj_chair_and_table).y - 16;
 					}
 				}
 			}
@@ -199,7 +197,6 @@ function scr_start_intro_animations()
 			{
 				x = instance_nearest(x, y, obj_chair_and_table).x;
 			}
-			vspeed = 0;
 			if (!place_meeting(x, y + 1, obj_wall))
 			{
 				y ++;
@@ -216,7 +213,6 @@ function scr_start_intro_animations()
 					if (instance_exists(obj_chair_and_table))
 					{
 						x = instance_nearest(x, y, obj_chair_and_table).x + 23;
-						y = instance_nearest(x, y, obj_chair_and_table).y - 16;
 					}
 				}
 			}

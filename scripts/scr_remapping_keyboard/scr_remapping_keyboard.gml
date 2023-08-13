@@ -272,7 +272,7 @@ function scr_remapping_keyboard()
 		}
 		can_remap_key = false;
 		input_key = false;
-		menu_delay = 10;
+		menu_delay = 3;
 	}
 	#endregion /* Remapping Keyboard END */
 	

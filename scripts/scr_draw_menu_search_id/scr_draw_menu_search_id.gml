@@ -63,10 +63,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, draw_online_level_list_y + 2, display_get_gui_width() * 0.5 - 185 + 370, draw_online_level_list_y + 41))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "search_online_list")
 			&& (key_a_pressed)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (global.free_communication_available)
 				{
@@ -89,8 +89,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			
 			#region /* Online List Button Navigation */
-			if (menu_delay == 0)
-			&& (menu_joystick_delay <= 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (menu == "search_id_ok")
 				{
@@ -218,7 +217,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		#endregion /* If game is retrieving a level ID over id_max_length, then show download failed and why */
 		
 		#region /* Press Enter to search for the inputted ID */
-		if (menu_delay == 0)
+		if (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (keyboard_string != "")
 		&& (string_length(search_id) == id_max_length)
 		&& (search_id != undefined)
@@ -437,10 +436,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, cancel_button_y, display_get_gui_width() * 0.5 + 185, cancel_button_y + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "searching_for_id")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = "searching_for_id_back";
 		}
@@ -592,7 +591,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			draw_set_halign(fa_center);
 			/* Draw Description */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y, string(global.level_description), global.default_text_size * 1.25, c_black, c_white, 1);
 			/* Draw ID */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_id_y, l10n_text(string(what_kind_of_id)) + " " + l10n_text("ID") + ": " + string(search_id), global.default_text_size * 1.25, c_black, c_white, 1);
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "searched_file_downloaded_delete", "searched_file_downloaded_delete");
+			draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "searched_file_downloaded_delete", "searched_file_downloaded_delete", c_red);
 			draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, back_to_list_y, back_to_list_text, "searched_file_downloaded_back_to_list", "searched_file_downloaded_back_to_list");
 			draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
@@ -606,7 +605,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#region /* Play, Make, Delete, Back Navigation */
 			
 			#region /* Click Play */
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "level")
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_play_y, display_get_gui_width() * 0.5 + 185, searched_file_play_y + 41))
@@ -626,7 +625,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* Click Play END */
 			
 			#region /* Click Make */
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "level")
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_make_y, display_get_gui_width() * 0.5 + 185, searched_file_make_y + 41))
@@ -649,10 +648,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_delete_y + 41))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "searched_file_downloaded_delete")
 			&& (key_a_pressed)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (what_kind_of_id == "level")
 				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -694,10 +693,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, back_to_list_y, display_get_gui_width() * 0.5 + 185, back_to_list_y + 41))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "searched_file_downloaded_back_to_list")
 			&& (key_a_pressed)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				select_custom_level_menu_open = false;
 				/* Don't set the "select level index" or "level name" here, because we want it saved still */
@@ -710,10 +709,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_back_y + 41))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "searched_file_downloaded_back")
 			&& (key_a_pressed)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "searching_for_id_back";
 				menu_delay = 3;
@@ -724,10 +723,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 42, 370, display_get_gui_height()))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "searched_file_downloaded_report")
 			&& (key_a_pressed)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				report_back_to_menu = "searched_file_downloaded_report";
 				menu = "report_next";
@@ -736,8 +735,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* Click Report END */
 			
 			if (key_down)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "level")
 			{
 				menu_delay = 3;
@@ -773,8 +771,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			else
 			if (key_up)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "level")
 			{
 				menu_delay = 3;
@@ -810,8 +807,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "character")
 			{
 				menu_delay = 3;
@@ -837,8 +833,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			else
 			if (key_up)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "character")
 			{
 				menu_delay = 3;
@@ -891,10 +886,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, display_get_gui_height() * 0.5 + 50, display_get_gui_width() * 0.5 + 185, display_get_gui_height() * 0.5 + 50 + 41))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "searched_file_downloaded_play")
 			&& (key_a_pressed)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "searching_for_id_back";
 			}
@@ -952,17 +947,17 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_back_to_list_y + 50, display_get_gui_width() * 0.5 + 185, deleted_back_to_list_y + 50 + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "searched_file_downloaded_deleted_back_to_list")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_back_to_level_select_y + 50, display_get_gui_width() * 0.5 + 185, deleted_back_to_level_select_y + 50 + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "searched_file_downloaded_deleted")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			
 			#region /* If any "character index" is set to undefined, reset it to 0 */
@@ -991,10 +986,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_download_again_y + 50, display_get_gui_width() * 0.5 + 185, deleted_download_again_y + 50 + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "searched_file_downloaded_deleted_download_again")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			/* Begin downloading again */
 			automatically_search_for_id = true;
@@ -1009,10 +1004,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_back_to_list_y + 50, display_get_gui_width() * 0.5 + 185, deleted_back_to_list_y + 50 + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "searched_file_downloaded_deleted_back_to_list")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			select_custom_level_menu_open = false;
 			/* Don't set the "select level index" or "level name" here, because we want it saved still */
@@ -1026,10 +1021,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, deleted_back_to_level_select_y + 50, display_get_gui_width() * 0.5 + 185, deleted_back_to_level_select_y + 50 + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "searched_file_downloaded_deleted")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			global.select_level_index = 0;
 			global.level_name = "";
@@ -1039,8 +1034,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		#endregion /* Click back to custom level select END */
 		
 		if (key_down)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "searched_file_downloaded_deleted_download_again")
 			{
@@ -1060,8 +1054,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		}
 		else
 		if (key_up)
-		&& (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "searched_file_downloaded_deleted_download_again")
 			{
@@ -1113,10 +1106,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, downloaded_message_y + 50, display_get_gui_width() * 0.5 + 185, downloaded_message_y + 50 + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "searched_file_downloaded_failed")
 		&& (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = "searching_for_id_back";
 		}

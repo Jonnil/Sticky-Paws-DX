@@ -3752,15 +3752,14 @@ function scr_options_control_menu()
 		scr_options_reset_controls_to_default_settings(430, menu_y_remap_reset);
 		
 		#region /* Keyboards Controls Remapping Navigation */
-		if (menu_joystick_delay <= 0)
+		if (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			
 			#region /* Remap key dive */
 			if (menu == "remap_key_dive")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3789,8 +3788,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_jump")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3853,8 +3851,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_double_jump")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3876,8 +3873,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_crouch")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3921,8 +3917,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_crouch_toggle")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3944,8 +3939,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_sprint")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3967,8 +3961,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_sprint_toggle")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -3990,8 +3983,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_left")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4013,8 +4005,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_right")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4036,8 +4027,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_down")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4059,8 +4049,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_up")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4096,8 +4085,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_tongue")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4119,8 +4107,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_zoom_in")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4156,8 +4143,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_zoom_out")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4179,8 +4165,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_accept")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4202,8 +4187,7 @@ function scr_options_control_menu()
 			if (menu == "remap_key_back")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4225,8 +4209,7 @@ function scr_options_control_menu()
 			if (menu == "remap_reset")
 			&& (can_remap_key == false)
 			&& (input_key == false)
-			&& (menu_delay == 0)
-			&& (menu_joystick_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
 				{
@@ -4263,13 +4246,11 @@ function scr_options_control_menu()
 				if (key_left)
 				&& (can_remap_key == false)
 				&& (input_key == false)
-				&& (menu_delay == 0)
-				&& (menu_joystick_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (key_right)
 				&& (can_remap_key == false)
 				&& (input_key == false)
-				&& (menu_delay == 0)
-				&& (menu_joystick_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (menu_remap_key_number == 0)
 					{
@@ -4468,7 +4449,7 @@ function scr_options_control_menu()
 		#endregion /* Show the player when they can input a gamepad button to remap controls END */
 		
 		#region /* Menu Navigation */
-		if (menu_joystick_delay <= 0)
+		if (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
 			
@@ -4477,7 +4458,7 @@ function scr_options_control_menu()
 			{
 				menu_cursor_y_position = 0;
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					if (global.settings_sidebar_menu == "controller_settings")
@@ -4498,7 +4479,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					if (can_change_profile)
@@ -4525,7 +4506,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player > 0)
 				{
@@ -4539,7 +4520,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player < 3)
 				{
@@ -4561,7 +4542,7 @@ function scr_options_control_menu()
 			{
 				menu_cursor_y_position = 0;
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					menu = "remap_select_player";
@@ -4569,7 +4550,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					if (remapping_player == 0)
@@ -4591,7 +4572,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				{
 					scr_config_save();
@@ -4645,7 +4626,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				{
 					scr_config_save();
@@ -4707,14 +4688,14 @@ function scr_options_control_menu()
 			{
 				menu_cursor_y_position = menu_y_up_is_also_jump;
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu = "remap_reset";
 					menu_delay = 3;
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu = "double_tap_to_run";
 					menu_delay = 3;
@@ -4729,14 +4710,14 @@ function scr_options_control_menu()
 			{
 				menu_cursor_y_position = menu_y_double_tap_direction_to_run;
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu = "up_is_also_jump";
 					menu_delay = 3;
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu = "always_run";
 					menu_delay = 3;
@@ -4751,14 +4732,14 @@ function scr_options_control_menu()
 			{
 				menu_cursor_y_position = menu_y_always_run;
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu = "double_tap_to_run";
 					menu_delay = 3;
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (remapping_player == 0)
 					&& (allow_player1_dive)
@@ -4787,14 +4768,14 @@ function scr_options_control_menu()
 			{
 				menu_cursor_y_position = menu_y_double_tap_direction_to_dive;
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu = "always_run";
 					menu_delay = 3;
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (remapping_player == 0)
 					&& (allow_player1_dive)
@@ -4823,7 +4804,7 @@ function scr_options_control_menu()
 			{
 				menu_cursor_y_position = menu_y_cancel_dive_by_pressing_jump_or_dive_button;
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (remapping_player == 0)
 					&& (allow_player1_dive)
@@ -4844,7 +4825,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (remapping_player == 0)
 					&& (allow_player1_dive)
@@ -4873,7 +4854,7 @@ function scr_options_control_menu()
 			{
 				menu_cursor_y_position = menu_y_cancel_dive_by_pressing_opposite_direction;
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (remapping_player == 0)
 					&& (allow_player1_dive)
@@ -4894,7 +4875,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu = "down_and_jump_to_groundpound";
 					menu_delay = 3;
@@ -4909,7 +4890,7 @@ function scr_options_control_menu()
 			{
 				menu_cursor_y_position = menu_y_down_and_jump_to_groundpound;
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (remapping_player == 0)
 					&& (allow_player1_dive)
@@ -4930,7 +4911,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu = "wall_jump_setting";
 					menu_delay = 3;
@@ -4944,7 +4925,7 @@ function scr_options_control_menu()
 			if (menu == "wall_jump_setting")
 			{
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					menu = "down_and_jump_to_groundpound";
@@ -4952,7 +4933,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					menu = "drop_from_rope";
@@ -4960,7 +4941,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 0)
 				&& (global.player1_wall_jump_setting> 0)
@@ -4970,7 +4951,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 0)
 				&& (global.player1_wall_jump_setting<2)
@@ -4980,7 +4961,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 1)
 				&& (global.player2_wall_jump_setting> 0)
@@ -4990,7 +4971,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 1)
 				&& (global.player2_wall_jump_setting<2)
@@ -5000,7 +4981,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 2)
 				&& (global.player3_wall_jump_setting> 0)
@@ -5010,7 +4991,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 2)
 				&& (global.player3_wall_jump_setting<2)
@@ -5020,7 +5001,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 3)
 				&& (global.player4_wall_jump_setting> 0)
@@ -5030,7 +5011,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 3)
 				&& (global.player4_wall_jump_setting<2)
@@ -5047,7 +5028,7 @@ function scr_options_control_menu()
 			if (menu == "drop_from_rope")
 			{
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					menu = "wall_jump_setting";
@@ -5055,7 +5036,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					menu = "show_controls";
@@ -5063,7 +5044,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 0)
 				&& (global.player1_drop_from_rope > 0)
@@ -5073,7 +5054,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 0)
 				&& (global.player1_drop_from_rope < 4)
@@ -5083,7 +5064,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 1)
 				&& (global.player2_drop_from_rope > 0)
@@ -5093,7 +5074,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 1)
 				&& (global.player2_drop_from_rope < 4)
@@ -5103,7 +5084,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 2)
 				&& (global.player3_drop_from_rope > 0)
@@ -5113,7 +5094,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 2)
 				&& (global.player3_drop_from_rope < 4)
@@ -5123,7 +5104,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 3)
 				&& (global.player4_drop_from_rope > 0)
@@ -5133,7 +5114,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 3)
 				&& (global.player4_drop_from_rope < 4)
@@ -5150,7 +5131,7 @@ function scr_options_control_menu()
 			if (menu == "show_controls")
 			{
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					menu = "drop_from_rope";
@@ -5158,7 +5139,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					if (global.enable_options_for_pc)
@@ -5173,7 +5154,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 0)
 				&& (global.player1_show_controls> 0)
@@ -5183,7 +5164,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 0)
 				&& (global.player1_show_controls< 10)
@@ -5193,7 +5174,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 1)
 				&& (global.player2_show_controls> 0)
@@ -5203,7 +5184,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 1)
 				&& (global.player2_show_controls< 10)
@@ -5213,7 +5194,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 2)
 				&& (global.player3_show_controls> 0)
@@ -5223,7 +5204,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 2)
 				&& (global.player3_show_controls< 10)
@@ -5233,7 +5214,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 3)
 				&& (global.player4_show_controls> 0)
@@ -5243,7 +5224,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 3)
 				&& (global.player4_show_controls< 10)
@@ -5261,14 +5242,14 @@ function scr_options_control_menu()
 			{
 				menu_cursor_y_position = menu_y_show_prompt_when_changing_controller;
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu = "show_controls";
 					menu_delay = 3;
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (global.settings_sidebar_menu == "controller_settings")
 					&& (global.enable_options_for_pc)
@@ -5291,7 +5272,7 @@ function scr_options_control_menu()
 			{
 				menu_cursor_y_position = menu_y_always_show_gamepad_buttons;
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (global.enable_options_for_pc)
 					{
@@ -5305,7 +5286,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (global.settings_sidebar_menu == "controller_settings")
 					&& (global.enable_options_for_pc)
@@ -5327,7 +5308,7 @@ function scr_options_control_menu()
 			if (menu == "chosen_controller_used")
 			{
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					if (global.settings_sidebar_menu == "controller_settings")
@@ -5348,7 +5329,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
 					menu = "remap_select_player";
@@ -5356,7 +5337,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_up)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (global.chosen_controller_used > 0)
 				{
@@ -5365,7 +5346,7 @@ function scr_options_control_menu()
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (global.chosen_controller_used < 4)
 				{
@@ -5382,7 +5363,7 @@ function scr_options_control_menu()
 		|| (mouse_check_button_released(mb_left))
 		&& (mouse_get_x > 370)
 		{
-			if (menu == "up_is_also_jump") && (menu_delay == 0){
+			if (menu == "up_is_also_jump") && (menu_delay == 0 && menu_joystick_delay == 0){
 			if (remapping_player == 0){if (global.player1_up_is_also_jump){global.player1_up_is_also_jump = false;}else{global.player1_up_is_also_jump = true;}
 			menu_delay = 3;
 			}
@@ -5400,7 +5381,7 @@ function scr_options_control_menu()
 			}
 			}
 			
-			if (menu == "double_tap_to_run") && (menu_delay == 0){
+			if (menu == "double_tap_to_run") && (menu_delay == 0 && menu_joystick_delay == 0){
 			if (remapping_player == 0){if (global.player1_double_tap_to_run){global.player1_double_tap_to_run = false;}else{global.player1_double_tap_to_run = true;}
 			menu_delay = 3;
 			}
@@ -5418,7 +5399,7 @@ function scr_options_control_menu()
 			}
 			}
 			
-			if (menu == "always_run") && (menu_delay == 0){
+			if (menu == "always_run") && (menu_delay == 0 && menu_joystick_delay == 0){
 			if (remapping_player == 0){if (global.player1_sprint_toggle){global.player1_sprint_toggle = false;}else{global.player1_sprint_toggle = true;}
 			menu_delay = 3;
 			}
@@ -5436,7 +5417,7 @@ function scr_options_control_menu()
 			}
 			}
 			
-			if (menu == "double_tap_to_dive") && (menu_delay == 0){
+			if (menu == "double_tap_to_dive") && (menu_delay == 0 && menu_joystick_delay == 0){
 			if (remapping_player == 0){if (global.player1_double_tap_to_dive){global.player1_double_tap_to_dive = false;}else{global.player1_double_tap_to_dive = true;}
 			menu_delay = 3;
 			}
@@ -5454,7 +5435,7 @@ function scr_options_control_menu()
 			}
 			}
 			
-			if (menu == "cancel_dive_by_pressing_jump_or_dive_button") && (menu_delay == 0){
+			if (menu == "cancel_dive_by_pressing_jump_or_dive_button") && (menu_delay == 0 && menu_joystick_delay == 0){
 			if (remapping_player == 0){if (global.player1_cancel_dive_by_pressing_jump_or_dive_button){global.player1_cancel_dive_by_pressing_jump_or_dive_button = false;}else{global.player1_cancel_dive_by_pressing_jump_or_dive_button = true;}
 			menu_delay = 3;
 			}
@@ -5472,7 +5453,7 @@ function scr_options_control_menu()
 			}
 			}
 			
-			if (menu == "cancel_dive_by_pressing_opposite_direction") && (menu_delay == 0){
+			if (menu == "cancel_dive_by_pressing_opposite_direction") && (menu_delay == 0 && menu_joystick_delay == 0){
 			if (remapping_player == 0){if (global.player1_cancel_dive_by_pressing_opposite_direction){global.player1_cancel_dive_by_pressing_opposite_direction = false;}else{global.player1_cancel_dive_by_pressing_opposite_direction = true;}
 			menu_delay = 3;
 			}
@@ -5490,7 +5471,7 @@ function scr_options_control_menu()
 			}
 			}
 			
-			if (menu == "down_and_jump_to_groundpound") && (menu_delay == 0){
+			if (menu == "down_and_jump_to_groundpound") && (menu_delay == 0 && menu_joystick_delay == 0){
 			if (remapping_player == 0){if (global.player1_down_and_jump_to_groundpound){global.player1_down_and_jump_to_groundpound = false;}else{global.player1_down_and_jump_to_groundpound = true;}
 			menu_delay = 3;
 			}
@@ -5509,7 +5490,7 @@ function scr_options_control_menu()
 			}
 			
 			if (menu == "show_prompt_when_changing_controller")
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (global.settings_sidebar_menu == "controller_settings")
 				{
@@ -5537,7 +5518,7 @@ function scr_options_control_menu()
 			}
 			
 			if (menu == "always_show_gamepad_buttons")
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (global.always_show_gamepad_buttons)
 				{

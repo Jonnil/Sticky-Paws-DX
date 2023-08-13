@@ -60,11 +60,26 @@ if (global.quit_level)
 	
 	if (global.quit_to_map || global.quit_to_title)
 	{
-		/* Player availability check (assuming these variables control player availability) */
-		global.player1_can_play = !instance_exists(obj_camera.player1);
-		global.player2_can_play = !instance_exists(obj_camera.player2);
-		global.player3_can_play = !instance_exists(obj_camera.player3);
-		global.player4_can_play = !instance_exists(obj_camera.player4);
+		
+		#region /* Player availability check. These variables control player availability */
+		/* If certain players are not playing the level anymore, make them disconnect until they join manually again */
+		if (!instance_exists(obj_camera.player1))
+		{
+			global.player1_can_play = false;
+		}
+		if (!instance_exists(obj_camera.player2))
+		{
+			global.player2_can_play = false;
+		}
+		if (!instance_exists(obj_camera.player3))
+		{
+			global.player3_can_play = false;
+		}
+		if (!instance_exists(obj_camera.player4))
+		{
+			global.player4_can_play = false;
+		}
+		#endregion /* Player availability check. These variables control player availability END */
 		
 		global.quit_level = false;
 		room_goto(global.quit_to_map ? rm_world_map : rm_title);
@@ -269,25 +284,25 @@ if (player == 1)
 }
 #endregion /* If controller gets disconnected during gameplay, pause the game END */
 
+#region /* Save to variable when on ground */
+if (place_meeting(x, y + 1, obj_wall) /* If there is wall underneath */)
+|| (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
+|| (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
+|| (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
+{
+	on_ground = true;
+}
+else
+{
+	on_ground = false;
+}
+#endregion /* Save to variable when on ground */
+
 #region /* If player is allowed to move */
 if (can_move)
 {
 	
 	scr_player_move_pause();
-	
-	#region /* Save to variable when on ground */
-	if (place_meeting(x, y + 1, obj_wall) /* If there is wall underneath */)
-	|| (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
-	|| (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
-	|| (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
-	{
-		on_ground = true;
-	}
-	else
-	{
-		on_ground = false;
-	}
-	#endregion /* Save to variable when on ground */
 	
 	scr_player_move_go_left();
 	

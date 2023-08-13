@@ -19,7 +19,7 @@ iris_xscale = 32;
 iris_yscale = 32;
 iris_zoom = 0;
 menu = "";
-menu_delay = 2;
+menu_delay = 3;
 menu_cursor_index = 0;
 
 #region /* Show Title Logo first during credits */

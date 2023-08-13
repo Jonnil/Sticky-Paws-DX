@@ -39,13 +39,13 @@ function scr_draw_upload_character_menu()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_no_y - 42, get_window_width * 0.5 + 370, upload_character_no_y + 42))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "upload_no_character";
 			}
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_character_no_y, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_character_no_y, 1, 1, 180, c_white, 1);
-			draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_character_no_y, 2, 2, 0, c_lime, 1);
+			draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, upload_character_no_y, 2, 2, 0, c_lime, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, upload_character_no_y, l10n_text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
 			draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, upload_character_no_y, 1, 1, 0, c_white, 1);
 		}
@@ -58,13 +58,13 @@ function scr_draw_upload_character_menu()
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_character_no_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_character_no_y, 1, 1, 180, c_white, 1);
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_character_no_y, 2, 2, 0, c_lime, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, upload_character_no_y, 2, 2, 0, c_lime, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, upload_character_no_y, l10n_text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, upload_character_no_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_character_no_y, 2, 2, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, upload_character_no_y, 2, 2, 0, c_white, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, upload_character_no_y, l10n_text("NO"), global.default_text_size * 2.3, c_white, c_black, 1);
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, upload_character_no_y, 1, 1, 0, c_white, 1);
 			}
@@ -77,13 +77,13 @@ function scr_draw_upload_character_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_yes_y - 42, get_window_width * 0.5 + 370, upload_character_yes_y + 42))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
-				if (menu_delay == 0)
+				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu = "upload_yes_character";
 				}
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_character_yes_y, 1, 1, 180, c_white, 1);
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_lime, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_lime, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, upload_character_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
 				draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
 			}
@@ -96,13 +96,13 @@ function scr_draw_upload_character_menu()
 				{
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_character_yes_y, 1, 1, 180, c_white, 1);
-					draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_lime, 1);
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_lime, 1);
 					scr_draw_text_outlined(get_window_width * 0.5, upload_character_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
 					draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_white, 1);
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, upload_character_yes_y, 2, 2, 0, c_white, 1);
 					scr_draw_text_outlined(get_window_width * 0.5, upload_character_yes_y, l10n_text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
 					draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 370 + 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
 				}
@@ -117,7 +117,7 @@ function scr_draw_upload_character_menu()
 		
 		#region /* Return to game */
 		if (key_b_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "click_upload_character"; /* Return to previous menu */
@@ -129,9 +129,9 @@ function scr_draw_upload_character_menu()
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_no_y - 42, get_window_width * 0.5 + 370, upload_character_no_y + 42))
 			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (key_a_pressed)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
 				menu = "click_upload_character"; /* Return to previous menu */
@@ -142,46 +142,62 @@ function scr_draw_upload_character_menu()
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_yes_y - 42, get_window_width * 0.5 + 370, upload_character_yes_y + 42))
 			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (key_a_pressed)
-			&& (menu_delay == 0)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				if (global.username != "") /* Check if there is an username or not */
+				ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+				if (ini_key_exists("info", "clear_check_character"))
 				{
-					if (os_is_network_connected())
+					if (ini_read_real("info", "clear_check_character", false))
 					{
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+						if (global.username != "") /* Check if there is an username or not */
 						{
-							/* Essential files does exist, so upload now */
-							menu = "uploading_character"; /* Go to uploading character loading screen */
-							menu_delay = 60 * 3;
+							if (os_is_network_connected())
+							{
+								if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+								{
+									/* Essential files does exist, so upload now */
+									menu = "uploading_character"; /* Go to uploading character loading screen */
+									menu_delay = 60 * 3;
+								}
+							}
+							else
+							{
+								menu_delay = 3;
+								menu = "no_internet_character";
+							}
+						}
+						else
+						{
+							keyboard_string = "";
+							menu_delay = 3;
+							menu = "upload_character_edit_username_ok"; /* If there isn't an username, have the player make an username */
 						}
 					}
 					else
 					{
 						menu_delay = 3;
-						menu = "no_internet_character";
+						menu = "clear_check_character_yes";
 					}
 				}
 				else
 				{
-					keyboard_string = "";
 					menu_delay = 3;
-					menu = "upload_character_edit_username_ok"; /* If there isn't an username, have the player make an username */
+					menu = "clear_check_character_yes";
 				}
+				ini_close();
 			}
 		}
 		if (key_up)
-		and (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		and (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "upload_no_character";
 		}
 		else
 		if (key_down)
-		and (menu_delay == 0)
-		&& (menu_joystick_delay == 0)
+		and (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "upload_yes_character";
@@ -190,6 +206,199 @@ function scr_draw_upload_character_menu()
 		
 	}
 	#endregion /* Upload Character Menu END */
+	
+	else
+	
+	#region /* Draw clear check character menu */
+	if (menu == "clear_check_character_no")
+	|| (menu == "clear_check_character_yes")
+	{
+		var do_a_clear_check_character_y = 432;
+		var do_a_clear_check_character_no_y = 532;
+		var do_a_clear_check_character_yes_y = 532;
+		if (global.doing_clear_check_character == false)
+		{
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_middle);
+			draw_set_alpha(0.9);
+			draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+			
+			#region /* Draw Character Portrait */
+			if (global.sprite_select_player[1] > 0)
+			{
+				draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
+			}
+			#endregion /* Draw Character Portrait END */
+			
+			draw_set_alpha(0.9);
+			draw_rectangle_color(get_window_width * 0.5 - message_x_offset - 74, do_a_clear_check_character_y - 48, get_window_width * 0.5 + message_x_offset + 74, do_a_clear_check_character_y + 64, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+			scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_y - 16, l10n_text("Do a clear check?"), global.default_text_size * 1.9, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_y + 30, l10n_text("Custom character needs to be able to clear level 1 before upload"), global.default_text_size, c_black, c_white, 1);
+			
+			#region /* Clear Check No */
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_character_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_character_no_y + 42))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			{
+				if (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu = "clear_check_character_no";
+				}
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_character_no_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_character_no_y, 1, 1, 180, c_white, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, do_a_clear_check_character_no_y, 2, 2, 0, c_lime, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_no_y, l10n_text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
+				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, do_a_clear_check_character_no_y, 1, 1, 0, c_white, 1);
+			}
+			else
+			{
+				if (menu == "clear_check_character_no")
+				&& (global.controls_used_for_menu_navigation == "keyboard")
+				|| (menu == "clear_check_character_no")
+				&& (global.controls_used_for_menu_navigation == "controller")
+				{
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_character_no_y, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_character_no_y, 1, 1, 180, c_white, 1);
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, do_a_clear_check_character_no_y, 2, 2, 0, c_lime, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_no_y, l10n_text("NO"), global.default_text_size * 2.3, c_black, c_white, 1);
+					draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, do_a_clear_check_character_no_y, 1, 1, 0, c_white, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, do_a_clear_check_character_no_y, 2, 2, 0, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_no_y, l10n_text("NO"), global.default_text_size * 2.3, c_white, c_black, 1);
+					draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, do_a_clear_check_character_no_y, 1, 1, 0, c_white, 1);
+				}
+			}
+			#endregion /* Clear Check No END */
+			
+			#region /* Clear Check Yes */
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_character_yes_y + 84 - 42, get_window_width * 0.5 + 370, do_a_clear_check_character_yes_y + 84 + 42))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			{
+				if (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu = "clear_check_character_yes";
+				}
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_character_yes_y + 84, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_character_yes_y + 84, 1, 1, 180, c_white, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, do_a_clear_check_character_yes_y + 84, 2, 2, 0, c_lime, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_yes_y + 84, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
+			}
+			else
+			{
+				if (menu == "clear_check_character_yes")
+				&& (global.controls_used_for_menu_navigation == "keyboard")
+				|| (menu == "clear_check_character_yes")
+				&& (global.controls_used_for_menu_navigation == "controller")
+				{
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_character_yes_y + 84, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_character_yes_y + 84, 1, 1, 180, c_white, 1);
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, do_a_clear_check_character_yes_y + 84, 2, 2, 0, c_lime, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_yes_y + 84, l10n_text("YES"), global.default_text_size * 2.3, c_black, c_white, 1);
+				}
+				else
+				{
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, do_a_clear_check_character_yes_y + 84, 2, 2, 0, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_yes_y + 84, l10n_text("YES"), global.default_text_size * 2.3, c_white, c_black, 1);
+				}
+			}
+			#endregion /* Clear Check Yes END */
+			
+			#region /* Return to game */
+			if (key_b_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "click_upload_character"; /* Return to previous menu */
+			}
+			#endregion /* Return to game END */
+			
+		}
+		
+		#region /* Clear Check Menu Navigation */
+		if (menu == "clear_check_character_no")
+		{
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_character_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_character_no_y + 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "click_upload_character"; /* Return to previous menu */
+			}
+		}
+		else
+		if (menu == "clear_check_character_yes")
+		{
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_character_yes_y + 84 - 42, get_window_width * 0.5 + 370, do_a_clear_check_character_yes_y + 84 + 42))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				
+				#region /* Set clear_check_character to false whenever you agree to do a clear check for the first time, just in case it's already not */
+				if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
+				{
+					if (character_name != "")
+					{
+						ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+					}
+					ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false when you click on "clear check yes" just in case it isn't already false when doing a "clear check" */
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				}
+				#endregion /* Set clear_check_character to false whenever you agree to do a clear check for the first time, just in case it's already not END */
+				
+				global.select_level_index = 1; /* When doing clear check for character, they have to complete level 1 */
+				scr_update_all_backgrounds(); /* After setting "level index", then update backgrounds and music */
+				scr_update_all_music();
+				global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
+				if (global.player1_can_play == false)
+				&& (global.player2_can_play == false)
+				&& (global.player3_can_play == false)
+				&& (global.player4_can_play == false)
+				{
+					global.player1_can_play = true; /* If there are no players joined, make it so player 1 is joined */
+				}
+				global.doing_clear_check_character = true; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
+				global.actually_play_edited_level = true;
+				global.play_edited_level = true;
+				can_navigate = false;
+				menu_delay = 9999;
+				if (instance_exists(obj_camera))
+				{
+					with(obj_camera)
+					{
+						iris_zoom = 0;
+					}
+				}
+			}
+			if (iris_xscale < 0.1)
+			{
+				room_goto(rm_leveleditor);
+			}
+		}
+		if (key_up)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			menu = "clear_check_character_no";
+		}
+		if (key_down)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			menu = "clear_check_character_yes";
+		}
+		#endregion /* Clear Check Character Menu Navigation END */
+		
+	}
+	#endregion /* Draw clear check character menu END */
+	
+	else
 	
 	#region /* Draw enter username screen */
 	if (menu == "upload_character_edit_username_ok")
@@ -223,7 +432,7 @@ function scr_draw_upload_character_menu()
 				&& (!keyboard_check_pressed(ord("X")))
 				&& (!keyboard_check_pressed(vk_backspace))
 				&& (!keyboard_check_pressed(vk_space))
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					/* Save username to config file */
 					ini_open(working_directory + "config.ini");
@@ -258,7 +467,7 @@ function scr_draw_upload_character_menu()
 				&& (!keyboard_check_pressed(ord("X")))
 				&& (!keyboard_check_pressed(vk_backspace))
 				&& (!keyboard_check_pressed(vk_space))
-				&& (menu_delay == 0)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					/* Save username as blank to config file, then go back */
 					ini_open(working_directory + "config.ini");
@@ -317,7 +526,7 @@ function scr_draw_upload_character_menu()
 		/* What is loading? */ scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 100, l10n_text(what_is_loading_text), global.default_text_size * 1, c_black, c_white, 1);
 		
 		#region /* Generate Character ID */
-		if (menu_delay = 50)
+		if (menu_delay == 50)
 		{
 			what_is_loading_text = l10n_text("Generating character ID");
 			scr_generate_id("character");
@@ -325,7 +534,7 @@ function scr_draw_upload_character_menu()
 		#endregion /* Generate Character ID END */
 		
 		#region /* Create Zip File */
-		if (menu_delay = 40)
+		if (menu_delay == 40)
 		{
 			what_is_loading_text = l10n_text("Creating zip file");
 			file = scr_upload_zip_add_files("character"); /* Add all the character files to a new zip file */
@@ -333,7 +542,7 @@ function scr_draw_upload_character_menu()
 		#endregion /* Create Zip File END */
 		
 		#region /* Send Zip File to the Server */
-		if (menu_delay <= 0)
+		if (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (file_exists(working_directory + string(character_id) + ".zip"))
 		{
 			var zip_file = file_bin_open(working_directory + string(character_id) + ".zip", 0);
@@ -441,13 +650,13 @@ function scr_draw_upload_character_menu()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "error_character_too_big";
 			}
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
-			draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
+			draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_black, c_white, 1);
 			draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
 		}
@@ -460,13 +669,13 @@ function scr_draw_upload_character_menu()
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_black, c_white, 1);
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_white, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_white, c_black, 1);
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
 			}
@@ -476,12 +685,12 @@ function scr_draw_upload_character_menu()
 		#region /* Return to game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_b_pressed)
 		&& (level_editor_edit_name == false)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "click_upload_character"; /* Return to previous menu */
@@ -520,14 +729,14 @@ function scr_draw_upload_character_menu()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				search_for_id_still = false;
 				menu = "character_uploaded";
 			}
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
-			draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
+			draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_black, c_white, 1);
 			draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
 		}
@@ -540,13 +749,13 @@ function scr_draw_upload_character_menu()
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_black, c_white, 1);
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_white, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_white, c_black, 1);
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
 			}
@@ -556,13 +765,13 @@ function scr_draw_upload_character_menu()
 		#region /* Return to game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (mouse_check_button_released(mb_right))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_b_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			search_for_id_still = false;
 			scr_load_character_initializing();
@@ -593,13 +802,13 @@ function scr_draw_upload_character_menu()
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
-			if (menu_delay == 0)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu = "no_internet_character";
 			}
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
-			draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
+			draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_black, c_white, 1);
 			draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
 		}
@@ -612,13 +821,13 @@ function scr_draw_upload_character_menu()
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_lime, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_black, c_white, 1);
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_menu_button, 0, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_white, 1);
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 370, ok_y, 2, 2, 0, c_white, 1);
 				scr_draw_text_outlined(get_window_width * 0.5, ok_y, l10n_text("OK"), global.default_text_size * 2.3, c_white, c_black, 1);
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 370 + 32, ok_y, 1, 1, 0, c_white, 1);
 			}
@@ -628,11 +837,11 @@ function scr_draw_upload_character_menu()
 		#region /* Return to game */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
 		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_a_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_b_pressed)
-		&& (menu_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "search_character_id";

@@ -71,7 +71,7 @@ if (global.narrator >= 0)
 pause_text_alpha = 0;
 pause_text_lerp = 1;
 menu = "continue";
-menu_delay = 10;
+menu_delay = 3;
 last_key = noone;
 
 #region /* Remapping options variables */

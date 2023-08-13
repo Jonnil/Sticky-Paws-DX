@@ -71,12 +71,12 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	&& (global.controls_used_for_menu_navigation == "mouse")
 	&& (input_key == false)
 	&& (open_dropdown == false)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	|| (key_a_pressed)
 	&& (menu == menu_index)
 	&& (input_key == false)
 	&& (open_dropdown == false)
-	&& (menu_delay == 0)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		if (variable_to_check)
 		{
