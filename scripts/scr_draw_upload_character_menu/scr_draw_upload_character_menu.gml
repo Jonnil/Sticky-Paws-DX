@@ -9,13 +9,29 @@ function scr_draw_upload_character_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
+	if (menu == "upload_clear_check_character_again")
+	{
+		if (iris_xscale < 0.1)
+		{
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "character_index_player1", global.character_index[0]);
+			ini_close();
+			scr_update_all_backgrounds(); /* After setting "level index", then update backgrounds and music */
+			scr_update_all_music();
+			
+			room_goto(rm_leveleditor); /* Go to level 1 for character clear check, when clicking clear check character again button */
+		}
+	}
+	
 	#region /* Upload Character Menu */
 	if (menu == "upload_yes_character")
 	|| (menu == "upload_no_character")
+	|| (menu == "upload_clear_check_character_again")
 	{
-		var upload_name_question_y = 432;
-		var upload_character_no_y = 532;
-		var upload_character_yes_y = 532 + 84;
+		var upload_name_question_y = window_get_height() * 0.5;
+		var upload_character_no_y = (window_get_height() * 0.5) + 100;
+		var upload_character_yes_y = (window_get_height() * 0.5) + 184;
+		var upload_clear_check_character_again_y = (window_get_height() * 0.5) + 184 + 84;
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
@@ -70,7 +86,7 @@ function scr_draw_upload_character_menu()
 			}
 		}
 		#endregion /* Upload Character No END */
-	
+		
 		#region /* Upload Character Yes */
 		if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
 		{
@@ -115,6 +131,53 @@ function scr_draw_upload_character_menu()
 		}
 		#endregion /* Upload Character Yes END */
 		
+		draw_menu_button(get_window_width * 0.5 - 185, upload_clear_check_character_again_y, "Clear Check Again", "upload_clear_check_character_again", "upload_clear_check_character_again");
+		
+		#region /* Click Character Clear Check Again */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, upload_clear_check_character_again_y - 21, get_window_width * 0.5 + 185, upload_clear_check_character_again_y + 21))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu == "upload_clear_check_character_again")
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (key_a_pressed)
+		&& (menu == "upload_clear_check_character_again")
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			
+			#region /* Set clear_check_character to false whenever you agree to do a clear check for the first time, just in case it's already not */
+			if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
+			&& (character_name != "")
+			{
+				ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+				ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false when you click on "clear check yes" just in case it isn't already false when doing a "clear check" */
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			}
+			#endregion /* Set clear_check_character to false whenever you agree to do a clear check for the first time, just in case it's already not END */
+			
+			global.select_level_index = 1; /* When doing clear check for character, they have to complete level 1 */
+			global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
+			if (global.player1_can_play == false)
+			&& (global.player2_can_play == false)
+			&& (global.player3_can_play == false)
+			&& (global.player4_can_play == false)
+			{
+				global.player1_can_play = true; /* If there are no players joined, make it so player 1 is joined */
+			}
+			global.doing_clear_check_character = true; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
+			global.actually_play_edited_level = true;
+			global.play_edited_level = true;
+			can_navigate = false;
+			menu_delay = 9999;
+			if (instance_exists(obj_camera))
+			{
+				with(obj_camera)
+				{
+					iris_zoom = 0;
+				}
+			}
+		}
+		#endregion /* Click Character Clear Check Again END */
+		
 		#region /* Return to game */
 		if (key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -143,8 +206,10 @@ function scr_draw_upload_character_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_yes_y - 42, get_window_width * 0.5 + 370, upload_character_yes_y + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
 			|| (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
 			{
 				ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 				if (ini_key_exists("info", "clear_check_character"))
@@ -190,17 +255,43 @@ function scr_draw_upload_character_menu()
 			}
 		}
 		if (key_up)
-		and (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			menu = "upload_no_character";
+			if (menu == "upload_no_character")
+			{
+				menu = "upload_clear_check_character_again";
+			}
+			else
+			if (menu == "upload_yes_character")
+			{
+				menu = "upload_no_character";
+			}
+			else
+			if (menu == "upload_clear_check_character_again")
+			{
+				menu = "upload_yes_character";
+			}
 		}
 		else
 		if (key_down)
-		and (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			menu = "upload_yes_character";
+			if (menu == "upload_no_character")
+			{
+				menu = "upload_yes_character";
+			}
+			else
+			if (menu == "upload_yes_character")
+			{
+				menu = "upload_clear_check_character_again";
+			}
+			else
+			if (menu == "upload_clear_check_character_again")
+			{
+				menu = "upload_no_character";
+			}
 		}
 		#endregion /* Upload Character Menu Navigation END */
 		
@@ -342,19 +433,15 @@ function scr_draw_upload_character_menu()
 				
 				#region /* Set clear_check_character to false whenever you agree to do a clear check for the first time, just in case it's already not */
 				if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
+				&& (character_name != "")
 				{
-					if (character_name != "")
-					{
-						ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
-					}
+					ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 					ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false when you click on "clear check yes" just in case it isn't already false when doing a "clear check" */
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				#endregion /* Set clear_check_character to false whenever you agree to do a clear check for the first time, just in case it's already not END */
 				
 				global.select_level_index = 1; /* When doing clear check for character, they have to complete level 1 */
-				scr_update_all_backgrounds(); /* After setting "level index", then update backgrounds and music */
-				scr_update_all_music();
 				global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
 				if (global.player1_can_play == false)
 				&& (global.player2_can_play == false)
@@ -375,10 +462,6 @@ function scr_draw_upload_character_menu()
 						iris_zoom = 0;
 					}
 				}
-			}
-			if (iris_xscale < 0.1)
-			{
-				room_goto(rm_leveleditor);
 			}
 		}
 		if (key_up)

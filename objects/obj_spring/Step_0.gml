@@ -20,7 +20,7 @@ if (place_meeting(x, y, instance_nearest(x, y, obj_player)))
 		image_speed = 1;
 		with(instance_nearest(x, y, obj_player))
 		{
-			can_climb_horizontal_rope_cooldown = 10;
+			can_climb_horizontal_rope_cooldown = 3;
 			midair_jumps_left = number_of_jumps;
 			can_ground_pound = false;
 			chain_reaction = 0;

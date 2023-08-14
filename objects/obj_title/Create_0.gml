@@ -7,6 +7,8 @@ scr_delete_sprite_properly(global.custom_foreground1_5);
 scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
 
+menu = "";
+
 key_a_pressed = noone;
 key_b_pressed = noone;
 key_up = noone;

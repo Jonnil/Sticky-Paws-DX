@@ -20,16 +20,13 @@ function scr_player_move_ground_pound()
 		&& (key_down)
 		&& (key_jump)
 		{
-			if (!place_meeting(x, y + 8, obj_wall))
-			&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-			&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-			&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+			if (!on_ground)
 			{
 				if (ground_pound != true)
 				{
 					ground_pound_cooldown = 1;
 					spring_twist_sprite = false;
-					can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 6;
+					can_climb_horizontal_rope_cooldown = 3;
 					ground_pound = true;
 					stick_to_wall = false;
 					move_towards_spring_endpoint = false;

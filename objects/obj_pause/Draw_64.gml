@@ -10,7 +10,7 @@ hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 160, 0.1);
 
 #region /* Big Collectibles */
 if (global.pause_room == rm_leveleditor)
-and (hide_menu_for_clean_screenshots == false)
+&& (hide_menu_for_clean_screenshots == false)
 {
 	
 	#region /* Big Collectible 1 */

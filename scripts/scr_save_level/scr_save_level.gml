@@ -9,8 +9,17 @@ function scr_save_level()
 	//global.savebuff = buffer_create(1, buffer_grow, 1);
 	//ini_open_from_string("");
 	
-	
-	
+	#region /* If doing a character clear check, and winning the level, then add in character config that you have done a clear check */
+	if (global.level_clear_rate == "clear")
+	&& (global.doing_clear_check_character)
+	{
+		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
+		ini_write_real("info", "clear_check_character", true);
+		ini_close();
+		global.go_to_menu_when_going_back_to_title = "upload_yes_character";
+		global.level_clear_rate = noone;
+	}
+	#endregion /* If doing a character clear check, and winning the level, then add in charcter config that you have done a clear check END */
 	
 	if (global.character_select_in_this_menu == "main_game")
 	&& (global.actually_play_edited_level)
@@ -20,6 +29,7 @@ function scr_save_level()
 		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 		
 		if (global.level_clear_rate == "clear")
+		&& (global.doing_clear_check_character == false)
 		{
 			ini_write_real(level_name, "number_of_clears", ini_read_real(level_name, "number_of_clears", 0) + 1); /* Increase how many times you've played this specific level */
 			if (global.increase_number_of_levels_cleared)
@@ -32,6 +42,7 @@ function scr_save_level()
 			global.level_clear_rate = noone;
 		}
 		else
+		if (global.doing_clear_check_character == false)
 		{
 			global.level_clear_rate = noone;
 		}
@@ -116,15 +127,15 @@ function scr_save_level()
 				ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			}
 			
-			#region /* If doing a clear check, and winning the level, then add in level information that you have done a clear check */
+			#region /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
 			if (global.level_clear_rate == "clear")
 			&& (global.doing_clear_check)
 			{
 				ini_write_real("info", "clear_check", true);
-				global.go_to_menu_after_loading_custom_levels = "upload_edit_name";
+				global.go_to_menu_when_going_back_to_title = "upload_edit_name";
 				global.level_clear_rate = noone;
 			}
-			#endregion /* If doing a clear check, and winning the level, then add in level information that you have done a clear check END */
+			#endregion /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check END */
 			
 			#region /* Save Fastest Time */
 			if (global.timeattack_realmillisecond > 2)
@@ -150,6 +161,7 @@ function scr_save_level()
 			
 		}
 	}
+	
 	global.big_collectible1_already_collected = false;
 	global.big_collectible2_already_collected = false;
 	global.big_collectible3_already_collected = false;

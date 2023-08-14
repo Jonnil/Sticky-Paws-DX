@@ -198,7 +198,7 @@ function scr_character_manage_menu_draw()
 				{
 					ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 					if (ini_key_exists("info", "username"))
-					and (ini_read_string("info", "username", "") != "")
+					&& (ini_read_string("info", "username", "") != "")
 					{
 						scr_draw_text_outlined(get_window_width - 32, get_window_height - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
 					}

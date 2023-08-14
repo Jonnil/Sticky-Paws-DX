@@ -562,7 +562,8 @@ if (can_move == false)
 	global.play_edited_level = true;
 	global.part_limit = 0; /* How many objects are currently placed in the level editor */
 	global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
-	room_goto(rm_leveleditor);
+	
+	room_goto(rm_leveleditor); /* Start the level from world map */
 }
 #endregion /* After pressing enter level, the iris should shrink and then start the level END */
 

@@ -44,6 +44,8 @@ if (global.restart_level)
 #region /* Quit Level */
 if (global.quit_level)
 {
+	global.doing_clear_check = false; /* If you exit the level manually , you no longer are doing level clear check */
+	global.doing_clear_check_character = false; /* If you exit the level manually , you no longer are doing character clear check */
 	audio_stop_all();
 	room_persistent = false; /* Turn OFF Room Persistency */
 	
@@ -82,7 +84,7 @@ if (global.quit_level)
 		#endregion /* Player availability check. These variables control player availability END */
 		
 		global.quit_level = false;
-		room_goto(global.quit_to_map ? rm_world_map : rm_title);
+		room_goto(global.quit_to_map ? rm_world_map : rm_title); /* If player chose to quit to map, then go to world map, otherwise go to title screen */
 		global.quit_to_map = false;
 		global.quit_to_title = false;
 	}
@@ -135,54 +137,50 @@ if (obj_camera.iris_xscale < 3)
 		global.checkpoint_realmillisecond = 0;
 		global.lives_until_assist = 0;
 		scr_save_level(); /* Important that you save all level information here, before going back to the map screen, but after setting level_clear_rate to clear */
-
+		
+		/* If certain player is no longer playing, make them dissapear from the game until they manually join the game again */
+		if (!instance_exists(obj_camera.player1))
+			global.player1_can_play = false;
+		if (!instance_exists(obj_camera.player2))
+			global.player2_can_play = false;
+		if (!instance_exists(obj_camera.player3))
+			global.player3_can_play = false;
+		if (!instance_exists(obj_camera.player4))
+			global.player4_can_play = false;
+		
 		if (global.actually_play_edited_level == false && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
 		{
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
-			room_restart();
+			room_restart(); /* Reset the room if you complete custom level in playtest mode */
 		}
 		else if (global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
 		{
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
-			if (!instance_exists(obj_camera.player1))
-				global.player1_can_play = false;
-			if (!instance_exists(obj_camera.player2))
-				global.player2_can_play = false;
-			if (!instance_exists(obj_camera.player3))
-				global.player3_can_play = false;
-			if (!instance_exists(obj_camera.player4))
-				global.player4_can_play = false;
-			room_goto(rm_title);
+			
+			room_goto(rm_title); /* Go back to title screen after completing a custom level normally */
 		}
 		else if (obj_camera.after_goal_go_to_this_level >= 0)
 		{
 			global.select_level_index = obj_camera.after_goal_go_to_this_level;
 			scr_update_all_backgrounds();
-			if (!instance_exists(obj_camera.player1))
-				global.player1_can_play = false;
-			if (!instance_exists(obj_camera.player2))
-				global.player2_can_play = false;
-			if (!instance_exists(obj_camera.player3))
-				global.player3_can_play = false;
-			if (!instance_exists(obj_camera.player4))
-				global.player4_can_play = false;
 			global.part_limit = 0; /* How many objects are currently placed in the level editor */
 			global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
-			room_goto(rm_leveleditor);
+			
+			room_goto(rm_leveleditor); /* Go to another level if you're supposed to go to other levels after completion */
 		}
 		else
 		{
-			if (!instance_exists(obj_camera.player1))
-				global.player1_can_play = false;
-			if (!instance_exists(obj_camera.player2))
-				global.player2_can_play = false;
-			if (!instance_exists(obj_camera.player3))
-				global.player3_can_play = false;
-			if (!instance_exists(obj_camera.player4))
-				global.player4_can_play = false;
-			room_goto(rm_world_map);
+			/* Go back to title screen if doing character clear check, otherwise go back to world map when playing normally */
+			if (global.doing_clear_check_character)
+			{
+				room_goto(rm_title); /* Go back to title screen if finishing the level and doing character clear check */
+			}
+			else
+			{
+				room_goto(rm_world_map); /* Go back to world map if finishing the level and playing normally */
+			}
 		}
 	}
 }
@@ -984,7 +982,10 @@ if (!place_meeting(x, y, obj_horizontal_rope))
 #region /* Climb Horizontal Rope */
 if (can_climb_horizontal_rope_cooldown > 0)
 {
-	can_climb_horizontal_rope_cooldown --;
+	if (!place_meeting(x, y, obj_horizontal_rope))
+	{
+		can_climb_horizontal_rope_cooldown --;
+	}
 }
 
 #region /* Climb Horizontal Rope */
@@ -998,7 +999,7 @@ if (instance_place(x, y, obj_horizontal_rope))
 && (hold_item_in_hands == "")
 {
 	if (horizontal_rope_climb == false)
-	&& (can_climb_horizontal_rope_cooldown <= 0)
+	&& (can_climb_horizontal_rope_cooldown == 0)
 	{
 		midair_jumps_left = number_of_jumps;
 		horizontal_rope_climb = true;
@@ -1125,7 +1126,7 @@ if (instance_place(x, y, obj_horizontal_rope))
 			{
 				scr_audio_play(snd_jump, volume_source.sound);
 				scr_gamepad_vibration(player, 0.4, 10);
-				can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 35;
+				can_climb_horizontal_rope_cooldown = 3;
 				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 				y -= 64;
 				climb = false;
@@ -1178,7 +1179,7 @@ if (instance_place(x, y, obj_horizontal_rope))
 			&& (!place_meeting(x, y - 64, obj_wall))
 			{
 				scr_audio_play(snd_jump, volume_source.sound);
-				can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 35;
+				can_climb_horizontal_rope_cooldown = 3;
 				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 				y -= 64;
 				climb = false;
@@ -1218,7 +1219,7 @@ if (instance_place(x, y, obj_horizontal_rope))
 				{
 					x --;
 				}
-				can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 9; /* Cooldown timer before you can start climbing again. The deviding number should be high enough so you grab a rope below you but not grabbing the same rope you were just on */
+				can_climb_horizontal_rope_cooldown = 3; /* Cooldown timer before you can start climbing again. You should grab a rope below you but not grabbing the same rope you were just on */
 				can_ground_pound = false;
 				climb = false;
 				horizontal_rope_climb = false;
@@ -1357,7 +1358,7 @@ if (instance_place(x, y, obj_horizontal_rope))
 		|| (instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 32, obj_wall))
 		|| (instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 16, obj_wall))
 		{
-			can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 10;
+			can_climb_horizontal_rope_cooldown = 3;
 			can_ground_pound = false;
 			climb = false;
 			horizontal_rope_climb = false;

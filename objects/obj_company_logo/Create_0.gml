@@ -325,7 +325,7 @@ global.voicepack_for_player[2] = 0; /* Player 2 Select Voicepack */
 global.voicepack_for_player[3] = 0; /* Player 3 Select Voicepack */
 global.voicepack_for_player[4] = 0; /* Player 4 Select Voicepack */
 global.world_editor = false; /* If you're editing world or not */
-global.go_to_menu_after_loading_custom_levels = ""; /* Sometimes you want to go to another menu after loading custom levels, instead of the default */
+global.go_to_menu_when_going_back_to_title = ""; /* Sometimes you want to go to another menu after loading custom levels, instead of the default */
 device_mouse_dbclick_enable(false); /* Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled */
 ds_list_add(global.all_loaded_custom_levels, "");
 font_add_enable_aa(false);

@@ -33,7 +33,7 @@ function scr_player_move_spring()
 		{
 			image_xscale = +1;
 		}
-		can_climb_horizontal_rope_cooldown = sprite_get_height(mask_index) / 10;
+		can_climb_horizontal_rope_cooldown = 3;
 		midair_jumps_left = number_of_jumps;
 		can_ground_pound = false;
 		can_dive = true; /* Can dive when you jump out of a spring still */

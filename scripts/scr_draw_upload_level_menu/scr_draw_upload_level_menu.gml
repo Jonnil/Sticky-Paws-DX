@@ -607,7 +607,7 @@ function scr_draw_upload_level_menu()
 		{
 			ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 			if (ini_key_exists("info", "username"))
-			and (ini_read_string("info", "username", "") != "")
+			&& (ini_read_string("info", "username", "") != "")
 			{
 				scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(ini_read_string("info", "username", "")), global.default_text_size, c_black, c_white, 1);
 			}
@@ -873,7 +873,7 @@ function scr_draw_upload_level_menu()
 					ini_close();
 					scr_copy_move_files(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "custom_levels/" + string(global.level_name), true);
 					scr_load_custom_level_initializing();
-					global.go_to_menu_after_loading_custom_levels = "upload_edit_name";
+					global.go_to_menu_when_going_back_to_title = "upload_edit_name";
 					menu = "load_custom_level";
 					level_editor_edit_name = false;
 					if (global.level_name != "")
@@ -1861,7 +1861,8 @@ function scr_draw_upload_level_menu()
 		scr_update_all_backgrounds();
 		global.part_limit = 0; /* How many objects are currently placed in the level editor */
 		global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
-		room_goto(rm_leveleditor);
+		
+		room_goto(rm_leveleditor); /* Enter level editor from upload level menu */
 	}
 	#endregion /* Enter Custom Level END */
 	

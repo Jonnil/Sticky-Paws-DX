@@ -3,6 +3,20 @@ scr_set_screen_size();
 scr_character_select_menu_step();
 scr_set_menu_font_color();
 
+if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")
+{
+	if (global.sprite_select_player[1] < 0)
+	|| (global.sprite_select_player[1] == spr_noone)
+	{
+		global.sprite_select_player[1] = spr_noone;
+		global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+		global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+	}
+	menu = "upload_yes_character";
+	global.go_to_menu_when_going_back_to_title = "";
+	global.doing_clear_check_character = false;
+}
+
 global.keyboard_virtual_timer = clamp(global.keyboard_virtual_timer - 0.5, 0, 4);
 
 scr_menu_navigation_initialization(1, true); /* Keyboard Controls END */
@@ -51,7 +65,7 @@ if (lerp_on)
 }
 
 if (menu == "load_characters")
-and (menu_delay == 0 && menu_joystick_delay == 0)
+&& (menu_delay == 0 && menu_joystick_delay == 0)
 {
 	
 	#region /* Player Automatically Join */
@@ -82,7 +96,6 @@ and (menu_delay == 0 && menu_joystick_delay == 0)
 	#endregion /* Player Automatically Join END */
 	
 	/* Load custom character data */
-	
 	file_load_timer ++;
 	
 	if (file_load_timer > 1)
@@ -227,10 +240,10 @@ if (menu == "load_custom_level")
 				global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, string(global.level_name)); /* "Select level index" should be set to where the new custom level is saved */
 			}
 			select_custom_level_menu_open = true;
-			if (global.go_to_menu_after_loading_custom_levels != "")
+			if (global.go_to_menu_when_going_back_to_title != "")
 			{
-				menu = global.go_to_menu_after_loading_custom_levels; /* Go to specific menu if this is assigned to something */
-				global.go_to_menu_after_loading_custom_levels = "";
+				menu = global.go_to_menu_when_going_back_to_title; /* Go to specific menu if this is assigned to something */
+				global.go_to_menu_when_going_back_to_title = "";
 			}
 			else
 			{

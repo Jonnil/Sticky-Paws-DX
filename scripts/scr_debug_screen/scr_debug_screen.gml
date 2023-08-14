@@ -363,13 +363,7 @@ function scr_debug_screen()
 		}
 		scr_draw_text_outlined(32, debug_text_y, "select_level_index: " + string(global.select_level_index), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "player1_can_play: " + string(global.player1_can_play), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "player2_can_play: " + string(global.player2_can_play), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "player3_can_play: " + string(global.player3_can_play), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "player4_can_play: " + string(global.player4_can_play), global.default_text_size, c_black, c_white);
+		scr_draw_text_outlined(32, debug_text_y, "character_index: " + string(global.character_index), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
 		
 		/* Draw the name of the current room at the bottom middle of the screen */

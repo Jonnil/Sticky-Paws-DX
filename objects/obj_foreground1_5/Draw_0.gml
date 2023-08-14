@@ -10,7 +10,7 @@ else
 #endregion /* When editing a level, make the foreground transparent END */
 
 #region /* Update Foreground 1.5 */
-if (global.custom_foreground1_5 > noone)
+if (sprite_exists(global.custom_foreground1_5))
 && (global.enable_foreground_layer_1_5)
 && (global.full_level_map_screenshot == false)
 {

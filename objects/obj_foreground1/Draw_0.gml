@@ -1,5 +1,5 @@
 #region /* Update Foreground1 */
-if (global.custom_foreground1 > noone)
+if (sprite_exists(global.custom_foreground1))
 && (global.enable_foreground_layer1)
 && (global.full_level_map_screenshot == false)
 {

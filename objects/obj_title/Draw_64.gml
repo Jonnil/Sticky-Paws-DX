@@ -1413,7 +1413,8 @@ if (iris_xscale <= 0.001)
 		scr_update_all_backgrounds();
 		global.part_limit = 0; /* How many objects are currently placed in the level editor */
 		global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
-		room_goto(rm_leveleditor);
+		
+		room_goto(rm_leveleditor); /* Go to level editor, either in editing mode or to play normally */
 		/* The variables "doing clear check", "actually play edited level", and "play edited level" should be set before doing "menu delay = 9999" to zoom the iris xscale */
 	}
 	#endregion /* Play or Make Level Editor END */
