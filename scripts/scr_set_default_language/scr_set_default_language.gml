@@ -2,6 +2,7 @@ function scr_set_default_language()
 {
 	if (file_exists("localization.csv"))
 	{
+		var switch_languages = switch_language_get_desired_language();
 		for (i = 1; i < ds_grid_width(global.language_local_data); i++;)
 		{
 			if (os_get_language() == "en")
@@ -13,6 +14,7 @@ function scr_set_default_language()
 			else
 			if (os_get_language() == "ja")
 			&& (global.language_local_data[# i + 1, 0] == "日本語")
+			|| (switch_languages == "ja")
 			{
 				global.language_localization = i;
 				break;
@@ -40,7 +42,7 @@ function scr_set_default_language()
 			}
 			else
 			{
-				global.language_localization = 0; /* Set the default language to 0 if no language is recognized */
+				global.language_localization = 0; /* Set the default language to 0 (English) if no language is recognized */
 			}
 		}
 	}

@@ -338,7 +338,7 @@ function scr_draw_report()
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_advertising_spam_y, l10n_text("Advertising/Spam"), "report_advertising_spam", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_sexually_explicit_y, l10n_text("Sexually Explicit"), "report_sexually_explicit", "report_message_ok");
 		//draw_menu_button(display_get_gui_width() * 0.5 - 185, report_asking_for_likes_y, l10n_text("Asking for Likes"), "report_asking_for_likes", "report_message_ok");
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_uses_a_bug_y, l10n_text("Uses a Bug"), "report_uses_a_bug", "report_message_ok");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_uses_a_bug_y, l10n_text("Uses a Bug without Bug tag"), "report_uses_a_bug", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_blatant_copying_y, l10n_text("Blatant Copying"), "report_blatant_copying", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_other_inappropriate_content_y, l10n_text("Other Inappropriate Content"), "report_other_inappropriate_content", "report_message_ok");
 		
@@ -477,7 +477,7 @@ function scr_draw_report()
 			if (menu == "report_uses_a_bug")
 			{
 				global.report_reason = "report_uses_a_bug";
-				report_reason_text = l10n_text("Uses a Bug");
+				report_reason_text = l10n_text("Uses a Bug without Bug tag");
 				menu = "report_message_ok";
 			}
 			else

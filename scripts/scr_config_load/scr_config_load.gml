@@ -4,6 +4,10 @@ function scr_config_load()
 	{
 		ini_open(working_directory + "config.ini");
 		
+		variable_instance_exists(self, "inform_about_report_feature")
+		{
+			if (ini_key_exists("config", "inform_about_report_feature")){inform_about_report_feature = ini_read_real("config", "inform_about_report_feature", true);}
+		}
 		if (ini_key_exists("config", "caution_online_do_not_show")){global.online_enabled = ini_read_real("config", "caution_online_do_not_show", false);}
 		if (ini_key_exists("config", "always_show_level_editor_buttons")){global.always_show_level_editor_buttons = ini_read_real("config", "always_show_level_editor_buttons", true);}
 		if (ini_key_exists("config", "current_file")){global.file = ini_read_real("config", "current_file", 0);}

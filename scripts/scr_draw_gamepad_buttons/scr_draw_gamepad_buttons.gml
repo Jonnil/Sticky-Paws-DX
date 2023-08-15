@@ -1,9 +1,26 @@
-function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale = 1, color = c_white, alpha = 1, xscale = 1, yscale = 1)
+function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale = 1, color = c_white, alpha = 1, xscale = 1, yscale = 1, what_player)
 {
 	switch (global.chosen_controller_used) {
 		case 0: var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxone; break;
 		case 1: var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxseriesxs; break;
-		case 2: var what_sprites_to_use = global.resource_pack_sprite_buttons_nintendoswitch; break;
+		case 2:
+		if (os_type == os_switch)
+		{
+			if (switch_controller_joycon_left_connected(1))
+			&& (switch_controller_joycon_right_connected(1))
+			{
+				var what_sprites_to_use = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
+			}
+			else
+			{
+				var what_sprites_to_use = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
+			}
+		}
+		else
+		{
+			var what_sprites_to_use = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
+		}
+		break;
 		case 3: var what_sprites_to_use = global.resource_pack_sprite_buttons_playstation4; break;
 		case 4: var what_sprites_to_use = global.resource_pack_sprite_buttons_playstation5; break;
 		default: var what_sprites_to_use = spr_noone; break;

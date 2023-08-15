@@ -474,6 +474,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	|| (menu == "searched_file_downloaded_back_to_list")
 	|| (menu == "searched_file_downloaded_back")
 	|| (menu == "searched_file_downloaded_report")
+	|| (menu == "searched_file_downloaded_i_understand")
 	{
 		
 		#region /* Opaque transparent black rectangle over whole screen, but underneath text */
@@ -571,6 +572,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			{
 				/* Level is downloaded, so you get a choice if you want to play, make, or go back to custom level select*/
 				if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				&& (inform_about_report_feature == false)
 				{
 					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "searched_file_downloaded_play", "searched_file_downloaded_play");
 					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_make_y, l10n_text("Make"), "searched_file_downloaded_make", "searched_file_downloaded_make");
@@ -581,6 +583,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				var searched_file_downloaded_back_text = l10n_text("Back to custom level select");
 			}
 			else
+			if (inform_about_report_feature == false)
 			{
 				var draw_description_y = display_get_gui_height() - (42 * 6);
 				var draw_id_y = display_get_gui_height() - (42 * 5);
@@ -591,12 +594,61 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			draw_set_halign(fa_center);
 			/* Draw Description */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y, string(global.level_description), global.default_text_size * 1.25, c_black, c_white, 1);
 			/* Draw ID */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_id_y, l10n_text(string(what_kind_of_id)) + " " + l10n_text("ID") + ": " + string(search_id), global.default_text_size * 1.25, c_black, c_white, 1);
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "searched_file_downloaded_delete", "searched_file_downloaded_delete", c_red);
-			draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, back_to_list_y, back_to_list_text, "searched_file_downloaded_back_to_list", "searched_file_downloaded_back_to_list");
-			draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, searched_file_downloaded_back_text, "searched_file_downloaded_back", "searched_file_downloaded_back");
-			draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_back_y + 20, 1, 1, 0, c_white, 1);
+			
+			if (inform_about_report_feature == false)
+			{
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "searched_file_downloaded_delete", "searched_file_downloaded_delete", c_red);
+				draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, back_to_list_y, back_to_list_text, "searched_file_downloaded_back_to_list", "searched_file_downloaded_back_to_list");
+				draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_back_y, searched_file_downloaded_back_text, "searched_file_downloaded_back", "searched_file_downloaded_back");
+				draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_back_y + 20, 1, 1, 0, c_white, 1);
+			}
+			
+			#region /* Inform about report feature. Needs to be above all other buttons */
+			if (inform_about_report_feature)
+			{
+				inform_about_report_feature_alpha = lerp(inform_about_report_feature_alpha, 1, 0.05);
+				
+				/* Darken background behind report button even more when giving information about the report button */
+				draw_set_alpha(inform_about_report_feature_alpha * 0.9);
+				draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
+				draw_set_alpha(inform_about_report_feature_alpha * 1);
+				
+				draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, 164, display_get_gui_height() - 132 + scr_wave(0, 16, 1), 1, 1, 0, c_white, inform_about_report_feature_alpha);
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(264, display_get_gui_height() - 196, l10n_text("If you see any inappropriate content when downloading user generated content online"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
+				scr_draw_text_outlined(264, display_get_gui_height() - 164, l10n_text("Please report it by clicking this button"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
+				draw_set_halign(fa_center);
+				draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() - 64, l10n_text("I understand"), "searched_file_downloaded_i_understand", "searched_file_downloaded_i_understand", c_lime, inform_about_report_feature_alpha);
+				menu = "searched_file_downloaded_i_understand";
+				
+				if (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, display_get_gui_height() - 64, display_get_gui_width() * 0.5 + 185, display_get_gui_height() - 64 + 41))
+				&& (menu == "searched_file_downloaded_i_understand")
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (mouse_check_button_released(mb_left))
+				|| (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (menu == "searched_file_downloaded_i_understand")
+				&& (key_a_pressed)
+				{
+					menu_delay = 3;
+					ini_open(working_directory + "config.ini");
+					ini_write_real("config", "inform_about_report_feature", false);
+					ini_close();switch_save_data_commit();
+					inform_about_report_feature = false;
+					if (what_kind_of_id == "level")
+					{
+						menu = "searched_file_downloaded_play"; /* Go to the screen where you see the file has been downloaded */
+					}
+					else
+					{
+						menu = "searched_file_downloaded_back_to_list"; /* Go to the screen where you see the file has been downloaded */
+					}
+				}
+				draw_set_alpha(1);
+			}
+			#endregion /* Inform about report feature. Needs to be above all other buttons END */
 			
 			/* Report Button in bottom left corner */
 			draw_menu_button(0, display_get_gui_height() - 42, l10n_text("Report"), "searched_file_downloaded_report", "searched_file_downloaded_report");
@@ -607,6 +659,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#region /* Click Play */
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "level")
+			&& (inform_about_report_feature == false)
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_play_y, display_get_gui_width() * 0.5 + 185, searched_file_play_y + 41))
 				&& (global.controls_used_for_menu_navigation == "mouse")
@@ -627,6 +680,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#region /* Click Make */
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "level")
+			&& (inform_about_report_feature == false)
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_make_y, display_get_gui_width() * 0.5 + 185, searched_file_make_y + 41))
 				&& (global.controls_used_for_menu_navigation == "mouse")
@@ -649,9 +703,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (inform_about_report_feature == false)
 			|| (menu == "searched_file_downloaded_delete")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (inform_about_report_feature == false)
 			{
 				if (what_kind_of_id == "level")
 				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -694,9 +750,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (inform_about_report_feature == false)
 			|| (menu == "searched_file_downloaded_back_to_list")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (inform_about_report_feature == false)
 			{
 				select_custom_level_menu_open = false;
 				/* Don't set the "select level index" or "level name" here, because we want it saved still */
@@ -710,9 +768,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (inform_about_report_feature == false)
 			|| (menu == "searched_file_downloaded_back")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (inform_about_report_feature == false)
 			{
 				menu = "searching_for_id_back";
 				menu_delay = 3;
@@ -724,9 +784,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (inform_about_report_feature == false)
 			|| (menu == "searched_file_downloaded_report")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (inform_about_report_feature == false)
 			{
 				report_back_to_menu = "searched_file_downloaded_report";
 				menu = "report_next";
@@ -737,6 +799,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "level")
+			&& (inform_about_report_feature == false)
 			{
 				menu_delay = 3;
 				if (menu == "searched_file_downloaded_play")
@@ -773,6 +836,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "level")
+			&& (inform_about_report_feature == false)
 			{
 				menu_delay = 3;
 				if (menu == "searched_file_downloaded_play")
@@ -809,6 +873,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "character")
+			&& (inform_about_report_feature == false)
 			{
 				menu_delay = 3;
 				if (menu == "searched_file_downloaded_delete")
@@ -835,6 +900,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "character")
+			&& (inform_about_report_feature == false)
 			{
 				menu_delay = 3;
 				if (menu == "searched_file_downloaded_delete")

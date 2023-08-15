@@ -605,7 +605,8 @@ global.resource_pack_sprite_tileset_stone = spr_noone;
 global.resource_pack_sprite_tileset_wood = spr_noone;
 global.resource_pack_sprite_buttons_xboxone = spr_noone;
 global.resource_pack_sprite_buttons_xboxseriesxs = spr_noone;
-global.resource_pack_sprite_buttons_nintendoswitch = spr_noone;
+global.resource_pack_sprite_buttons_nintendoswitch_horizontal = spr_noone;
+global.resource_pack_sprite_buttons_nintendoswitch_vertical = spr_noone;
 global.resource_pack_sprite_buttons_playstation4 = spr_noone;
 global.resource_pack_sprite_buttons_playstation5 = spr_noone;
 #endregion /* Resource Packs END */

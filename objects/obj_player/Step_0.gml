@@ -982,7 +982,7 @@ if (!place_meeting(x, y, obj_horizontal_rope))
 #region /* Climb Horizontal Rope */
 if (can_climb_horizontal_rope_cooldown > 0)
 {
-	if (!place_meeting(x, y, obj_horizontal_rope))
+	if (!collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_top + abs(vspeed), obj_horizontal_rope, false, true))
 	{
 		can_climb_horizontal_rope_cooldown --;
 	}
@@ -1000,6 +1000,8 @@ if (instance_place(x, y, obj_horizontal_rope))
 {
 	if (horizontal_rope_climb == false)
 	&& (can_climb_horizontal_rope_cooldown == 0)
+	&& (collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_top + abs(vspeed), obj_horizontal_rope, false, true))
+	&& (!key_down)
 	{
 		midair_jumps_left = number_of_jumps;
 		horizontal_rope_climb = true;
@@ -3232,6 +3234,8 @@ if (glide)
 #region /* Debug teleport character with mouse */
 if (keyboard_check(vk_f3))
 && (mouse_check_button(mb_left))
+&& (global.doing_clear_check == false)
+&& (global.doing_clear_check_character == false)
 {
 	with(obj_camera)
 	{

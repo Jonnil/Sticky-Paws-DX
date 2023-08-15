@@ -1,6 +1,6 @@
 function scr_draw_upload_character_menu()
 {
-	var destroy_zip_after_uploading = false; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
+	var destroy_zip_after_uploading = true; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
 	var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]));
 	var message_x_offset = 400;
 	
