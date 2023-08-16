@@ -9,6 +9,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 	&& (menu != "caution_online_back")
 	&& (menu != "caution_online_do_not_show")
 	&& (menu != "caution_online_proceed")
+	&& (menu != "upload_rules_back")
+	&& (menu != "upload_rules_do_not_show")
+	&& (menu != "upload_rules")
 	{
 		
 		#region /* Navigate Sub Menu */

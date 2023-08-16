@@ -3,6 +3,7 @@ easy = 1;
 normal = 1;
 hard = 1;
 object = 0;
+menu_joystick_delay = 0;
 
 if (global.actually_play_edited_level == false)
 {

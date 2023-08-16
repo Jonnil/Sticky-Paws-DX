@@ -916,6 +916,13 @@ if (menu == "caution_online_back")
 	scr_draw_caution_online();
 }
 
+if (menu == "upload_rules_back")
+|| (menu == "upload_rules_do_not_show")
+|| (menu == "upload_rules")
+{
+	scr_draw_upload_rules();
+}
+
 scr_character_select_menu_draw();
 
 scr_draw_online_download_list();

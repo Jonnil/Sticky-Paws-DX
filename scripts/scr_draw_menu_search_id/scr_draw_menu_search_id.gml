@@ -617,7 +617,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				
 				draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, 164, display_get_gui_height() - 132 + scr_wave(0, 16, 1), 1, 1, 0, c_white, inform_about_report_feature_alpha);
 				draw_set_halign(fa_left);
-				scr_draw_text_outlined(264, display_get_gui_height() - 196, l10n_text("If you see any inappropriate content when downloading user generated content online"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
+				scr_draw_text_outlined(264, display_get_gui_height() - 196, l10n_text("If you see any inappropriate content when downloading user-generated content online"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
 				scr_draw_text_outlined(264, display_get_gui_height() - 164, l10n_text("Please report it by clicking this button"), global.default_text_size, c_black, c_white, inform_about_report_feature_alpha);
 				draw_set_halign(fa_center);
 				draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() - 64, l10n_text("I understand"), "searched_file_downloaded_i_understand", "searched_file_downloaded_i_understand", c_lime, inform_about_report_feature_alpha);

@@ -99,9 +99,9 @@ function scr_player_move_ledge_grab()
 					sprite_index = sprite_stand;
 				}
 				if (key_left_hold)
-				&& (image_xscale = -1)
+				&& (image_xscale == -1)
 				|| (key_right_hold)
-				&& (image_xscale = +1)
+				&& (image_xscale == +1)
 				{
 					if (ledge_grab_delay == 10) /* Can only climb up ledge after grabbing ledge for 10 frames */
 					{
@@ -147,9 +147,9 @@ function scr_player_move_ledge_grab()
 					wall_jump = 0;
 				}
 				if (key_left_hold) /* If you press left while looking right, then drop down from ledge */
-				&& (image_xscale = +1)
+				&& (image_xscale == +1)
 				|| (key_right_hold) /* If you press right while looking left, then drop down from ledge */
-				&& (image_xscale = -1)
+				&& (image_xscale == -1)
 				|| (key_down)
 				{
 					if (ledge_grab_delay >= 10) /* Can only drop down from ledge after grabbing ledge for 10 frames */

@@ -1001,7 +1001,6 @@ if (instance_place(x, y, obj_horizontal_rope))
 	if (horizontal_rope_climb == false)
 	&& (can_climb_horizontal_rope_cooldown == 0)
 	&& (collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_top + abs(vspeed), obj_horizontal_rope, false, true))
-	&& (!key_down)
 	{
 		midair_jumps_left = number_of_jumps;
 		horizontal_rope_climb = true;

@@ -2429,6 +2429,7 @@
     {"id":{"name":"spr_heart","path":"sprites/spr_heart/spr_heart.yy",},},
     {"id":{"name":"obj_arrow_sign_small","path":"objects/obj_arrow_sign_small/obj_arrow_sign_small.yy",},},
     {"id":{"name":"spr_water_splash","path":"sprites/spr_water_splash/spr_water_splash.yy",},},
+    {"id":{"name":"scr_draw_upload_rules","path":"scripts/scr_draw_upload_rules/scr_draw_upload_rules.yy",},},
     {"id":{"name":"scr_key_initialize","path":"scripts/scr_key_initialize/scr_key_initialize.yy",},},
     {"id":{"name":"obj_semisolid_platform","path":"objects/obj_semisolid_platform/obj_semisolid_platform.yy",},},
     {"id":{"name":"scr_draw_cursor_tongue","path":"scripts/scr_draw_cursor_tongue/scr_draw_cursor_tongue.yy",},},

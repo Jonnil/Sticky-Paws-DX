@@ -1,4 +1,5 @@
 if (die == false)
+&& (die_volting == false)
 {
 	if (position_meeting(x, bbox_top - 1, other))
 	&& (die == false)

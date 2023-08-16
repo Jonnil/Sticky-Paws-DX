@@ -426,6 +426,7 @@
     {"name":"spr_heart","order":68,"path":"sprites/spr_heart/spr_heart.yy",},
     {"name":"obj_arrow_sign_small","order":23,"path":"objects/obj_arrow_sign_small/obj_arrow_sign_small.yy",},
     {"name":"spr_water_splash","order":34,"path":"sprites/spr_water_splash/spr_water_splash.yy",},
+    {"name":"scr_draw_upload_rules","order":9,"path":"scripts/scr_draw_upload_rules/scr_draw_upload_rules.yy",},
     {"name":"scr_key_initialize","order":71,"path":"scripts/scr_key_initialize/scr_key_initialize.yy",},
     {"name":"obj_semisolid_platform","order":1,"path":"objects/obj_semisolid_platform/obj_semisolid_platform.yy",},
     {"name":"scr_draw_cursor_tongue","order":55,"path":"scripts/scr_draw_cursor_tongue/scr_draw_cursor_tongue.yy",},

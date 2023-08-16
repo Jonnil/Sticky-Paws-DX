@@ -3,6 +3,9 @@ function scr_custom_level_select_with_the_mouse(all_loaded_what = global.all_loa
 	if (menu != "caution_online_back")
 	&& (menu != "caution_online_do_not_show")
 	&& (menu != "caution_online_proceed")
+	&& (menu != "upload_rules_back")
+	&& (menu != "upload_rules_do_not_show")
+	&& (menu != "upload_rules")
 	{
 		
 		/* Don't set the "row" or "thumbnail_x_offset" variables in here, those variables are set in "scr select custom level menu" */

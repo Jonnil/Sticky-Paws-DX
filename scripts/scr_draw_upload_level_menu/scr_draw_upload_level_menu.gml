@@ -53,8 +53,23 @@ function scr_draw_upload_level_menu()
 			{
 				if (global.online_enabled)
 				{
-					menu = "level_editor_upload_pressed";
-					menu_delay = 3;
+					if (upload_rules_do_not_show_level)
+					{
+						menu = "level_editor_upload_pressed";
+						menu_delay = 3;
+					}
+					else
+					{
+						if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+						{
+							show_level_editor_corner_menu = false;
+						}
+						caution_online_takes_you_to = "level_editor_upload_pressed";
+						caution_online_takes_you_back_to = "level_editor_upload";
+						content_type = "level";
+						menu = "upload_rules";
+						menu_delay = 3;
+					}
 				}
 				else
 				{

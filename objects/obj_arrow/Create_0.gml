@@ -1,34 +1,7 @@
 scr_audio_play(snd_arrow, volume_source.sound);
 image_speed = 0.3;
-if instance_exists(obj_player)
-{
-	if instance_nearest(x, y, obj_player).x < x
-	{
-		image_xscale = -1;
-	}
-	else
-	if instance_nearest(x, y, obj_player).x > x
-	{
-		image_xscale = +1;
-	}
-}
-else
-if instance_exists(obj_player_lose)
-{
-	if instance_nearest(x, y, obj_player_lose).x < x
-	{
-		image_xscale = -1;
-	}
-	else
-	if instance_nearest(x, y, obj_player_lose).x > x
-	{
-		image_xscale = +1;
-	}
-}
-else
-{
-	instance_destroy();
-}
+mask_index = spr_wall;
+
 draw_xscale = 0;
 draw_yscale = 1;
 flat = false;
@@ -55,3 +28,9 @@ if (global.assist_enable)
 	instance_destroy();
 }
 #endregion /* If enemies are disabled, destroy this object END */
+
+if (instance_exists(obj_player))
+{
+	move_towards_point(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 8);
+	image_angle = point_direction(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y);
+}
