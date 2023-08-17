@@ -110,12 +110,13 @@ function scr_draw_show_controls(what_player = 1)
 		&& (player_instance.partner_character == false)
 		&& (player_show_controls >= true)
 		&& (player_can_play)
+		&& (global.goal_active == false)
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			
 			#region /* Show Player Dive Key */
-			if (global.controls_used_for_menu_navigation == "controller" and gamepad_player_is_connected) || (global.always_show_gamepad_buttons) {
+			if (global.controls_used_for_menu_navigation == "controller" && gamepad_player_is_connected) || (global.always_show_gamepad_buttons) {
 				var dive_button = max(player_gamepad_button_dive, player_gamepad_button2_dive);
 				if (dive_button != noone) {
 					draw_text_dive = true;
@@ -135,7 +136,7 @@ function scr_draw_show_controls(what_player = 1)
 			#endregion /* Show Player Dive Key END */
 			
 			#region /* Show Player Jump Key */
-			if (global.controls_used_for_menu_navigation == "controller" and gamepad_player_is_connected) || (global.always_show_gamepad_buttons) {
+			if (global.controls_used_for_menu_navigation == "controller" && gamepad_player_is_connected) || (global.always_show_gamepad_buttons) {
 				var jump_button = max(player_gamepad_button_jump, player_gamepad_button2_jump);
 				if (jump_button != noone) {
 					draw_text_jump = true;
@@ -435,6 +436,7 @@ function scr_draw_show_controls(what_player = 1)
 			
 		}
 		else
+		if (global.goal_active == false)
 		{
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);

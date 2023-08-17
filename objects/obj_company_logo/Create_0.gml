@@ -688,4 +688,53 @@ global.skin_for_player[4] = global.actual_skin_for_player[4]; /* In case the pla
 scr_set_font();
 #endregion /* Set these global variables after loading config file END */
 
+#region /* Nintendo Switch Save Data Handling Debug */
+
+#region /* switch_save_data_get_size() Function */
+var sizes = switch_save_data_get_max_size();
+if (array_length_1d(sizes) == 2)
+{
+	var max_save_data_size = sizes[0];
+	var max_journal_size = sizes[1];
+	show_debug_message("Max Save Data Size: " + string(max_save_data_size) + " bytes");
+	show_debug_message("Max Journal Size: " + string(max_journal_size) + " bytes");
+}
+else
+{
+	show_debug_message("Failed to retrieve max save data sizes.");
+}
+#endregion /* switch_save_data_get_size() Function END */
+
+#region /* switch_save_data_get_max_size() Function */
+var sizes = switch_save_data_get_max_size();
+if (array_length_1d(sizes) == 2)
+{
+	var max_save_data_size = sizes[0];
+	var max_journal_size = sizes[1];
+	show_message("Max Save Data Size: " + string(max_save_data_size) + " bytes");
+	show_message("Max Journal Size: " + string(max_journal_size) + " bytes");
+}
+else
+{
+	show_message("Failed to retrieve max save data sizes.");
+}
+#endregion /* switch_save_data_get_max_size() Function END */
+
+#region /* switch_save_data_set_size() Function */
+var account_idx = 0; /* Account index */
+var save_data_size = 2097152; /* 2 MiB (in bytes) */
+var save_data_journal_size = 1048576; /* 1 MiB (in bytes) */
+var success = switch_save_data_set_size(account_idx, save_data_size, save_data_journal_size);
+if (success)
+{
+	show_message("Save data size expanded successfully.");
+}
+else
+{
+	show_message("Failed to expand save data size.");
+}
+#endregion /* switch_save_data_set_size() Function END */
+
+#endregion /* Nintendo Switch Save Data Handling Debug END */
+
 #endregion /* Things you shouldn't change, warning, don't change any of these options or you might break the game! END */

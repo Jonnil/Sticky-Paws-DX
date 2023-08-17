@@ -37,10 +37,6 @@ function scr_debug_screen()
 	
 	if (global.debug_screen && keyboard_check_pressed(vk_f2))
 	{
-		with(instance_create_depth(x, y, 0, obj_score_up))
-		{
-			score_up = "Save OS information to os_info.ini";
-		}
 		scr_save_os_info_ini();
 	}
 	
@@ -301,14 +297,39 @@ function scr_debug_screen()
 		
 		var debug_text_y = 320;
 		
+		if (instance_exists(obj_camera))
+		{
+			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player1: " + string(obj_camera.player1), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player2: " + string(obj_camera.player2), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player3: " + string(obj_camera.player3), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player4: " + string(obj_camera.player4), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
+		
 		if (gamepad_get_description(0) != "")
 		{
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(0): " + string(gamepad_get_description(0)), global.default_text_size, c_black, c_white);
 		}
-		//debug_text_y += 20;
-		//scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(0): " + string(switch_controller_joycon_left_connected(0)), global.default_text_size, c_black, c_white);
-		//debug_text_y += 20;
-		//scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(0): " + string(switch_controller_joycon_right_connected(0)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(0): " + string(switch_controller_joycon_left_connected(0)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(0): " + string(switch_controller_joycon_right_connected(0)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(1): " + string(switch_controller_joycon_left_connected(1)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(1): " + string(switch_controller_joycon_right_connected(1)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(2): " + string(switch_controller_joycon_left_connected(2)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(2): " + string(switch_controller_joycon_right_connected(2)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(3): " + string(switch_controller_joycon_left_connected(3)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(3): " + string(switch_controller_joycon_right_connected(3)), global.default_text_size, c_black, c_white);
+		
 		debug_text_y += 20;
 		if (gamepad_get_description(1) != "")
 		{
@@ -369,36 +390,5 @@ function scr_debug_screen()
 		/* Draw the name of the current room at the bottom middle of the screen */
 		draw_set_halign(fa_center);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)) + " " + string(room_width) + "x" + string(room_height), global.default_text_size, c_black, c_white);
-		
-		if (keyboard_check_pressed(ord("1")))
-		{
-			global.menu_button_subimg ++;
-		}
-		
 	}
-	
-	//if (global.debug_screen)
-	//&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 32))
-	//&& (global.controls_used_for_menu_navigation == "mouse")
-	//{
-	//	draw_set_alpha(0.5);
-	//	draw_rectangle_color(0, 0, 370, 32, c_white, c_white, c_white, c_white, false);
-	//	draw_set_alpha(1);
-	//	draw_set_alpha(0.9);
-	//	draw_rectangle_color(0, 0, display_get_gui_width(), 64 + (32 * 12), c_black, c_black, c_black, c_black, false);
-	//	draw_set_alpha(1);
-	//	draw_set_halign(fa_left);
-	//	draw_set_valign(fa_middle);
-	//	scr_draw_text_outlined(8, 64, l10n_text("This bar is split into sections, with each section being 1/60th of a second. As you can see, the bar is made up of various colours:"), global.default_text_size, c_black, c_white, 1);
-	//	scr_draw_text_outlined(8, 64 + (32 * 3), l10n_text("Green - Input / Output processing (ie: keyboard, mouse, gamepad, networking etc...)"), global.default_text_size, noone, c_lime, 1);
-	//	scr_draw_text_outlined(8, 64 + (32 * 4), l10n_text("Red - The update speed of the step event"), global.default_text_size, noone, c_red, 1);
-	//	scr_draw_text_outlined(8, 64 + (32 * 5), l10n_text("Yellow - The time required for the draw event"), global.default_text_size, noone, c_yellow, 1);
-	//	scr_draw_text_outlined(8, 64 + (32 * 6), l10n_text("Orange - Debug update time, which is only normally visible when you use the debug module"), global.default_text_size, noone, c_orange, 1);
-	//	scr_draw_text_outlined(8, 64 + (32 * 7), l10n_text("White - GPU left over time, which is the time spent waiting for the GPU to finish the rendering of the frame before the next one can start"), global.default_text_size, c_black, c_white, 1);
-	//	scr_draw_text_outlined(8, 64 + (32 * 8), l10n_text("Cyan - The text rendering time"), global.default_text_size, noone, c_aqua, 1);
-	//	scr_draw_text_outlined(8, 64 + (32 * 9), l10n_text("Grey - The time required to clear screen each draw step"), global.default_text_size, noone, c_grey, 1);
-	//	scr_draw_text_outlined(8, 64 + (32 * 10), l10n_text("Blue - The time required for the Garbage Collector to run"), global.default_text_size, noone, c_blue, 1);
-	//	scr_draw_text_outlined(8, 64 + (32 * 11), l10n_text("Dark Red - The GPU flush, which is how long the GPU takes to clear images from memory"), global.default_text_size, noone, c_maroon, 1);
-	//}
-	
 }

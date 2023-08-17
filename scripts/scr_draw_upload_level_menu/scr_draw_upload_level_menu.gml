@@ -39,14 +39,8 @@ function scr_draw_upload_level_menu()
 			show_level_editor_corner_menu = true;
 		}
 		can_input_level_name = false;
-		if (room == rm_title)
-		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (upload_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (upload_y) - 3 + 42))
-		&& (mouse_check_button_released(mb_left))
-		&& (global.controls_used_for_menu_navigation == "mouse")
-		|| (room = rm_leveleditor)
-		&& (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42))
-		&& (mouse_check_button_released(mb_left))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		if (room == rm_title && point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (upload_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (upload_y) - 3 + 42) && mouse_check_button_released(mb_left) && global.controls_used_for_menu_navigation == "mouse")
+		|| (room = rm_leveleditor && point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42) && mouse_check_button_released(mb_left) && global.controls_used_for_menu_navigation == "mouse")
 		|| (key_a_pressed)
 		{
 			if (global.free_communication_available)
@@ -108,12 +102,10 @@ function scr_draw_upload_level_menu()
 					global.play_edited_level = false;
 					menu_delay = 3;
 					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-					if (ini_key_exists("info", "clear_check"))
-					&& (skip_clear_check == false)
+					if (ini_key_exists("info", "clear_check") && skip_clear_check == false)
 					|| (skip_clear_check)
 					{
-						if (ini_read_real("info", "clear_check", false))
-						&& (skip_clear_check == false)
+						if (ini_read_real("info", "clear_check", false) && skip_clear_check == false)
 						|| (skip_clear_check)
 						{
 							if (global.username != "") /* Check if there is an username or not */
@@ -227,8 +219,7 @@ function scr_draw_upload_level_menu()
 			scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_y, l10n_text("Do a clear check?"), global.default_text_size * 1.9, c_black, c_white, 1);
 			
 			#region /* Clear Check No */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_no_y + 42))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_no_y + 42) && global.controls_used_for_menu_navigation == "mouse")
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
@@ -242,10 +233,8 @@ function scr_draw_upload_level_menu()
 			}
 			else
 			{
-				if (menu == "clear_check_no")
-				&& (global.controls_used_for_menu_navigation == "keyboard")
-				|| (menu == "clear_check_no")
-				&& (global.controls_used_for_menu_navigation == "controller")
+				if (menu == "clear_check_no" && global.controls_used_for_menu_navigation == "keyboard")
+				|| (menu == "clear_check_no" && global.controls_used_for_menu_navigation == "controller")
 				{
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_no_y, 1, 1, 0, c_white, 1);
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_no_y, 1, 1, 180, c_white, 1);
@@ -263,8 +252,7 @@ function scr_draw_upload_level_menu()
 			#endregion /* Clear Check No END */
 			
 			#region /* Clear Check Yes */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_yes_y + 84 - 42, get_window_width * 0.5 + 370, do_a_clear_check_yes_y + 84 + 42))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_yes_y + 84 - 42, get_window_width * 0.5 + 370, do_a_clear_check_yes_y + 84 + 42) && global.controls_used_for_menu_navigation == "mouse")
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
@@ -277,10 +265,8 @@ function scr_draw_upload_level_menu()
 			}
 			else
 			{
-				if (menu == "clear_check_yes")
-				&& (global.controls_used_for_menu_navigation == "keyboard")
-				|| (menu == "clear_check_yes")
-				&& (global.controls_used_for_menu_navigation == "controller")
+				if (menu == "clear_check_yes" && global.controls_used_for_menu_navigation == "keyboard")
+				|| (menu == "clear_check_yes" && global.controls_used_for_menu_navigation == "controller")
 				{
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_yes_y + 84, 1, 1, 0, c_white, 1);
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_yes_y + 84, 1, 1, 180, c_white, 1);
@@ -296,9 +282,7 @@ function scr_draw_upload_level_menu()
 			#endregion /* Clear Check Yes END */
 			
 			#region /* Return to game */
-			if (key_b_pressed)
-			&& (level_editor_edit_name == false)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			if (key_b_pressed && level_editor_edit_name == false && menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
 				menu = "level_editor_upload"; /* Return to previous menu */
@@ -314,11 +298,8 @@ function scr_draw_upload_level_menu()
 		#region /* Clear Check Menu Navigation */
 		if (menu == "clear_check_no")
 		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_no_y + 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_no_y - 42, get_window_width * 0.5 + 370, do_a_clear_check_no_y + 42) && mouse_check_button_released(mb_left) && menu_delay == 0 && menu_joystick_delay == 0)
+			|| (key_a_pressed && menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
 				menu = "level_editor_upload"; /* Return to previous menu */
@@ -331,11 +312,8 @@ function scr_draw_upload_level_menu()
 		else
 		if (menu == "clear_check_yes")
 		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_yes_y + 84 - 42, get_window_width * 0.5 + 370, do_a_clear_check_yes_y + 84 + 42))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, do_a_clear_check_yes_y + 84 - 42, get_window_width * 0.5 + 370, do_a_clear_check_yes_y + 84 + 42) && mouse_check_button_released(mb_left) && menu_delay == 0 && menu_joystick_delay == 0)
+			|| (key_a_pressed && menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				
 				#region /* Set clear_check to false whenever you agree to do a clear check for the first time, just in case it's already not */

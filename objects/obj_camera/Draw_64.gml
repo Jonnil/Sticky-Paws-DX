@@ -350,7 +350,6 @@ if (global.assist_enable)
 #region /* Show Controls */
 if (os_type != os_ios)
 && (os_type != os_android)
-&& (!instance_exists(obj_pause))
 {
 	scr_draw_show_controls(1);
 	scr_draw_show_controls(2);

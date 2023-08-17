@@ -63,65 +63,37 @@ if (lives > 0)
 	}
 }
 player = 1;
-if (instance_exists(obj_camera))
-{
-	with(obj_camera)
-	{
-		hud_show_lives_timer = global.hud_hide_time * 60;
-	}
-}
-if (instance_exists(obj_camera))
-{
-	with(obj_camera)
-	{
-		hud_show_deaths_timer = global.hud_hide_time * 60;
-	}
-}
 
 voice_damage = noone;
 voice_burned_die = noone;
 player_lose_melody = noone;
 
-#region /* Disable the players for the camera */
-
-#region /* Disable player 1 */
-if (player == 1)
+if (instance_exists(obj_camera))
 {
-	with(obj_camera)
+	obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
+	obj_camera.hud_show_deaths_timer = global.hud_hide_time * 60;
+	
+	#region /* Disable the players for the camera */
+	if (player == 1) /* Disable player 1 */
 	{
-		can_spawn_player1 = false;
+		obj_camera.player1 = noone;
+		obj_camera.can_spawn_player1 = false;
 	}
-}
-#endregion /* Disable player 1 END */
-
-#region /* Disable player 2 */
-if (player == 2)
-{
-	with(obj_camera)
+	if (player == 2) /* Disable player 2 */
 	{
-		can_spawn_player2 = false;
+		obj_camera.player2 = noone;
+		obj_camera.can_spawn_player2 = false;
 	}
-}
-#endregion /* Disable player 2 END */
-
-#region /* Disable player 3 */
-if (player == 3)
-{
-	with(obj_camera)
+	if (player == 3) /* Disable player 3 */
 	{
-		can_spawn_player3 = false;
+		obj_camera.player3 = noone;
+		obj_camera.can_spawn_player3 = false;
 	}
-}
-#endregion /* Disable player 3 END */
-
-#region /* Disable player 4 */
-if (player == 4)
-{
-	with(obj_camera)
+	if (player == 4) /* Disable player 4 */
 	{
-		can_spawn_player4 = false;
+		obj_camera.player4 = noone;
+		obj_camera.can_spawn_player4 = false;
 	}
+	#endregion /* Disable the players for the camera END */
+	
 }
-#endregion /* Disable player 4 END */
-
-#endregion /* Disable the players for the camera END */

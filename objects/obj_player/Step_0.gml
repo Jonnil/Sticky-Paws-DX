@@ -66,21 +66,13 @@ if (global.quit_level)
 		#region /* Player availability check. These variables control player availability */
 		/* If certain players are not playing the level anymore, make them disconnect until they join manually again */
 		if (!instance_exists(obj_camera.player1))
-		{
 			global.player1_can_play = false;
-		}
 		if (!instance_exists(obj_camera.player2))
-		{
 			global.player2_can_play = false;
-		}
 		if (!instance_exists(obj_camera.player3))
-		{
 			global.player3_can_play = false;
-		}
 		if (!instance_exists(obj_camera.player4))
-		{
 			global.player4_can_play = false;
-		}
 		#endregion /* Player availability check. These variables control player availability END */
 		
 		global.quit_level = false;

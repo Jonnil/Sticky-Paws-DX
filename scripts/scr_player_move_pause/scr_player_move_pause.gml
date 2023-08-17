@@ -45,26 +45,7 @@ function scr_player_move_pause()
 		if (!gamepad_is_connected(player_gamepad_slot))
 		&& (controller_connected)
 		{
-			if (player == 1)
-			&& (!gamepad_is_connected(global.player1_slot))
-			{
-				instance_destroy();
-			}
-			if (player == 2)
-			&& (!gamepad_is_connected(global.player2_slot))
-			{
-				instance_destroy();
-			}
-			if (player == 3)
-			&& (!gamepad_is_connected(global.player3_slot))
-			{
-				instance_destroy();
-			}
-			if (player == 4)
-			&& (!gamepad_is_connected(global.player4_slot))
-			{
-				instance_destroy();
-			}
+			/* On Nintendo Switch, when you disconnect any controllers, show the system menu where you can change controllers and players */
 			switch_controller_support_show();
 		}
 		

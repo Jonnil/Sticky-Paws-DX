@@ -304,8 +304,7 @@ gamepad_set_vibration(global.player4_slot, player4_motor_speed, player4_motor_sp
 #endregion /* Stop gamepad vibration for different players END */
 
 #region /* Spawn Players in multiplayer */
-if (instance_exists(obj_player))
-&& (global.pause == false)
+if (global.pause == false)
 && (global.goal_active == false)
 {
 	if (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
@@ -320,7 +319,14 @@ if (instance_exists(obj_player))
 			{
 				global.player1_can_play = true;
 			}
-			player1 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+			if (instance_exists(obj_player))
+			{
+				player1 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+			}
+			else
+			{
+				player1 = instance_create_depth(x, y, 0, obj_player);
+			}
 			with(player1)
 			{
 				custom_character = global.character_for_player[1];
@@ -347,7 +353,14 @@ if (instance_exists(obj_player))
 			{
 				global.player2_can_play = true;
 			}
-			player2 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
+			if (instance_exists(obj_player))
+			{
+				player2 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+			}
+			else
+			{
+				player2 = instance_create_depth(x, y, 0, obj_player);
+			}
 			with(player2)
 			{
 				custom_character = global.character_for_player[2];
@@ -374,7 +387,14 @@ if (instance_exists(obj_player))
 			{
 				global.player3_can_play = true;
 			}
-			player3 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
+			if (instance_exists(obj_player))
+			{
+				player3 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+			}
+			else
+			{
+				player3 = instance_create_depth(x, y, 0, obj_player);
+			}
 			with(player3)
 			{
 				custom_character = global.character_for_player[3];
@@ -401,7 +421,14 @@ if (instance_exists(obj_player))
 			{
 				global.player4_can_play = true;
 			}
-			player4 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player)
+			if (instance_exists(obj_player))
+			{
+				player4 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+			}
+			else
+			{
+				player4 = instance_create_depth(x, y, 0, obj_player);
+			}
 			with(player4)
 			{
 				custom_character = global.character_for_player[4];
@@ -469,7 +496,7 @@ if (save_level_as_png == false)
 	else
 	
 	#region /* MULTIPLAYER CAMERA */
-	if (instance_number(obj_player) >= 1)
+	if (instance_number(obj_player) > 1) /* If there are 2 or more players (>1) then use multiplayer camera */
 	{
 		
 		#region /* Camera should follow multiple players */
@@ -556,7 +583,14 @@ if (save_level_as_png == false)
 		}
 		#endregion /* Camera should follow multiple players END */
 		
-		else
+	}
+	#endregion /* MULTIPLAYER CAMERA */
+	
+	else
+	
+	#region /* SINGLEPLAYER CAMERA */
+	if (instance_number(obj_player) == 1) /* If there are only 1 player (==1) then use singleplayer camera */
+	{
 		
 		#region /* Follow one player. In case something goes wrong, camera will always follow one player */
 		/* 1 */
@@ -770,39 +804,8 @@ if (save_level_as_png == false)
 		}
 		#endregion /* Follow one player. In case something goes wrong, camera will always follow one player END */
 		
-		#region /* Zoom out the view when players are going outside view */
-		if (instance_nearest(x, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + 32)
-		&& (fps >= global.max_fps)
-		|| (instance_nearest(x, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32)
-		&& (fps >= global.max_fps)
-		|| (instance_nearest(0, room_height * 0.5, obj_player).x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 - 320)
-		&& (instance_nearest(room_width, room_height * 0.5, obj_player).x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 + 320)
-		&& (fps >= global.max_fps)
-		|| (instance_nearest(room_width * 0.5, 0, obj_player).y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 - 320)
-		&& (instance_nearest(room_width * 0.5, room_height, obj_player).y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 + 320)
-		&& (fps >= global.max_fps)
-		{
-			if (camera_get_view_height(view_camera[view_current]) < room_height)
-			&& (camera_get_view_width(view_camera[view_current]) < room_width)
-			{
-				view_wview_lerp = lerp(view_wview_lerp, 10, 0.005);
-				view_hview_lerp = lerp(view_hview_lerp, 10, 0.005);
-			}
-			else
-			{
-				view_wview_lerp = lerp(view_wview_lerp, 0, 0.005);
-				view_hview_lerp = lerp(view_hview_lerp, 0, 0.005);
-			}
-		}
-		else
-		{
-			view_wview_lerp = lerp(view_wview_lerp, 0, 0.005);
-			view_hview_lerp = lerp(view_hview_lerp, 0, 0.005);
-		}
-		#endregion /* Zoom out the view when players are going outside view END */
-		
 	}
-	#endregion /* MULTIPLAYER CAMERA */
+	#endregion /* SINGLEPLAYER CAMERA */
 	
 	#region /* Iris */
 	if (allow_iris)
