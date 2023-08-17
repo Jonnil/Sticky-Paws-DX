@@ -974,7 +974,7 @@ if (!place_meeting(x, y, obj_horizontal_rope))
 #region /* Climb Horizontal Rope */
 if (can_climb_horizontal_rope_cooldown > 0)
 {
-	if (!collision_rectangle(bbox_left, bbox_top, bbox_right, bbox_top + abs(vspeed), obj_horizontal_rope, false, true))
+	if (!collision_rectangle(bbox_left, bbox_top, bbox_right, y, obj_horizontal_rope, false, true))
 	{
 		can_climb_horizontal_rope_cooldown --;
 	}

@@ -3,10 +3,12 @@ function scr_character_manage_menu_step()
 	if (os_type == os_switch)
 	{
 		var enable_copy_character = false;
+		var enable_upload_character = false;
 	}
 	else
 	{
 		var enable_copy_character = true;
+		var enable_upload_character = true;
 	}
 	
 	var get_window_height = display_get_gui_height();
@@ -396,6 +398,11 @@ function scr_character_manage_menu_step()
 					player_menu[1] = "click_copy_character";
 					menu = "click_copy_character";
 				}
+				else
+				{
+					player_menu[1] = "back_from_copy_character";
+					menu = "back_from_copy_character";
+				}
 			}
 		}
 		if (menu == "click_delete_character")
@@ -408,6 +415,7 @@ function scr_character_manage_menu_step()
 			can_navigate = true;
 			if (selecting_official_character == false)
 			&& (global.free_communication_available)
+			&& (enable_upload_character)
 			{
 				player_menu[1] = "click_upload_character";
 				menu = "click_upload_character";
@@ -459,10 +467,12 @@ function scr_character_manage_menu_step()
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
+		&& (enable_upload_character)
 		|| (menu == "click_upload_character")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
+		&& (enable_upload_character)
 		{
 			if (selecting_official_character == false)
 			&& (global.free_communication_available)
@@ -595,6 +605,7 @@ function scr_character_manage_menu_step()
 				can_navigate = true;
 				if (selecting_official_character == false)
 				&& (global.free_communication_available)
+				&& (enable_upload_character)
 				{
 					player_menu[1] = "click_upload_character";
 					menu = "click_upload_character";
@@ -676,6 +687,12 @@ function scr_character_manage_menu_step()
 					player_menu[1] = "click_copy_character";
 					menu = "click_copy_character";
 				}
+				else
+				if (selecting_official_character == false)
+				{
+					player_menu[1] = "click_delete_character";
+					menu = "click_delete_character";
+				}
 			}
 		}
 		if (menu == "back_from_copy_character")
@@ -690,6 +707,12 @@ function scr_character_manage_menu_step()
 			{
 				player_menu[1] = "click_copy_character";
 				menu = "click_copy_character";
+			}
+			else
+			if (selecting_official_character == false)
+			{
+				player_menu[1] = "click_delete_character";
+				menu = "click_delete_character";
 			}
 		}
 		#endregion /* Back from Copy Characters END */

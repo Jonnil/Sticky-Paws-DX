@@ -307,7 +307,7 @@ gamepad_set_vibration(global.player4_slot, player4_motor_speed, player4_motor_sp
 if (global.pause == false)
 && (global.goal_active == false)
 {
-	if (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+	if (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]) && gamepad_is_connected(global.player1_slot))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
 	{
@@ -341,7 +341,7 @@ if (global.pause == false)
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+	if (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]) && gamepad_is_connected(global.player2_slot))
 	|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
 	{
@@ -375,7 +375,7 @@ if (global.pause == false)
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+	if (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]) && gamepad_is_connected(global.player3_slot))
 	|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
 	{
@@ -409,7 +409,7 @@ if (global.pause == false)
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+	if (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]) && gamepad_is_connected(global.player4_slot))
 	|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
 	{

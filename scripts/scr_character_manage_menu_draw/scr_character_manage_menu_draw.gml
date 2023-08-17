@@ -3,10 +3,12 @@ function scr_character_manage_menu_draw()
 	if (os_type == os_switch)
 	{
 		var enable_copy_character = false;
+		var enable_upload_character = false;
 	}
 	else
 	{
 		var enable_copy_character = true;
+		var enable_upload_character = true;
 	}
 	
 	var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]));
@@ -172,7 +174,7 @@ function scr_character_manage_menu_draw()
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no", c_red); /* Delete Characters */
 					draw_sprite_ext(spr_icons_delete, 0, get_window_width * 0.5 - 185 + 16, delete_character_y + 21, 1, 1, 0, c_white, 1);
-					if (global.free_communication_available)
+					if (global.free_communication_available && enable_upload_character)
 					{
 						draw_menu_button(get_window_width * 0.5 - 185, upload_character_y, l10n_text("Upload Character"), "click_upload_character", "click_upload_character"); /* Upload Characters */
 						draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 185 + 16, upload_character_y + 21, 1, 1, 0, c_white, 1);
