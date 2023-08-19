@@ -223,7 +223,7 @@ function scr_draw_online_download_list()
 				}
 			}
 			
-			//#region /* Get information about currently selected ID. If there is information data, then show info about currently selected ID */
+			#region /* Get information about currently selected ID. If there is information data, then show info about currently selected ID */
 			//if (old_currently_selected_id != currently_selected_id)
 			//{
 			//	/* Get level information. The level info should be retrieved only once you select a new ID */
@@ -245,17 +245,12 @@ function scr_draw_online_download_list()
 			//	}
 			//}
 			
-			////if (info_data != noone)
-			////&& (menu != "search_id_ok")
+			//if (info_data != noone)
+			//&& (menu != "search_id_ok")
 			//{
 			//	/* Check if it's an array */
-			//	//if (is_array(info_data))
+			//	if (is_array(info_data))
 			//	{
-			//		//draw_text(32, 320 + (32 * 2), "debug online download list info");
-			//		//draw_text(32, 320 + (32 * 4), "data: " + string(data));
-			//		//draw_text(32, 320 + (32 * 5), "info_data: " + string(info_data));
-			//		//draw_text(32, 320 + (32 * 6), "global.online_download_list_info: " + string(global.online_download_list_info));
-					
 			//		/* Get the number of items in the JSON array */
 			//		var num_info_items = array_length(info_data);
 			//		for (var i = 0; i < num_info_items; i++;)
@@ -282,7 +277,7 @@ function scr_draw_online_download_list()
 			//		}
 			//	}
 			//}
-			//#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
+			#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
 			
 			#region /* Online download List Menu Navigation */
 			if (menu == "download_online_back")
@@ -455,5 +450,11 @@ function scr_draw_online_download_list()
 		}
 	}
 	#endregion /* If you are no longer in "online download list menu", but somehow still in a menu selection only appearing in this menu, force you out of the menu END */
+	
+	//draw_set_halign(fa_left);
+	//draw_text(32, 320 + (32 * 2), "debug online download list info");
+	//draw_text(32, 320 + (32 * 4), "data: " + string(data));
+	//draw_text(32, 320 + (32 * 5), "info_data: " + string(info_data));
+	//draw_text(32, 320 + (32 * 6), "global.online_download_list_info: " + string(global.online_download_list_info));
 	
 }

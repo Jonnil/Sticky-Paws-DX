@@ -252,7 +252,7 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				#endregion /* If menu is on options END */
-			
+				
 				#region /* If menu is on level editor options */
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 -42, l10n_text("Level Options"), "level_editor_options", "back_level_editor_options");
 				
@@ -320,7 +320,7 @@ if (global.actually_play_edited_level == false)
 					}
 				}
 				#endregion /* If menu is on level editor options END */
-			
+				
 				#region /* If menu is on generate level map */
 				if (global.enable_options_for_pc)
 				{

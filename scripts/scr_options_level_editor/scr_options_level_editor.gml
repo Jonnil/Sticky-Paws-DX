@@ -54,6 +54,7 @@ function scr_options_level_editor()
 		scr_scroll_menu();
 	
 		if (menu == "back_level_editor_options")
+		|| (menu == "quick_level_theme")
 		|| (menu == "level_theme")
 		|| (menu == "default_view_height")
 		|| (menu == "default_view_width")
@@ -129,7 +130,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "level_theme";
+					menu = "quick_level_theme";
 					menu_delay = 3;
 				}
 			}
@@ -167,7 +168,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "level_theme";
+					menu = "quick_level_theme";
 					menu_delay = 3;
 				}
 				else
@@ -469,7 +470,7 @@ function scr_options_level_editor()
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);
-			draw_menu_button(level_editor_options_x, level_theme_y, l10n_text("Level Theme"), "level_theme", "change_entire_theme");
+			draw_menu_button(level_editor_options_x + 400, level_theme_y, l10n_text("Detailed Level Theme"), "level_theme", "change_entire_theme");
 			global.default_view_height = draw_menu_left_right_buttons(level_editor_options_x, default_view_height_y, options_level_editor_right_arrow_x, "Default view height", global.default_view_height, "default_view_height", 1, false);
 			global.default_view_width = draw_menu_left_right_buttons(level_editor_options_x, default_view_width_y, options_level_editor_right_arrow_x, "Default view width", global.default_view_width, "default_view_width", 1, false);
 			draw_menu_checkmark(level_editor_options_x - 90, make_every_tileset_into_default_tileset_y, l10n_text("Make every tileset into default tileset"), "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
@@ -1834,7 +1835,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_clear_melody";
+					menu = "change_overworld_ambience";
 					menu_delay = 3;
 				}
 				else
@@ -2048,7 +2049,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_clear_melody";
+					menu = "remove_overworld_ambience";
 					menu_delay = 3;
 				}
 				else

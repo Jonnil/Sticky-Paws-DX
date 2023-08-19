@@ -91,7 +91,7 @@ global.default_view_width = 1920; /* Default = 1920 */
 global.default_view_height = 1080; /* Default = 1080 */
 
 global.demo = false; /* When making a demo version of the game, turn this to true, otherwise turn this to false for the full version */
-global.demo_max_levels = 3; /* Set how many levels the demo version have unlocked */
+global.demo_max_levels = 3; /* Set how many levels the demo version have available */
 
 global.number_of_chain_kills_for_1up = 8; /* How many chain reaction kills you need to get 1-ups. Default is 8 */
 
@@ -241,6 +241,7 @@ global.part_limit = 0; /* How many objects are currently placed in the level edi
 global.part_limit_entity = 0; /* How many enteties are currently placed in the level editor. Enteties are object that have a lot of step events, so they can lag the game the most */
 global.part_limit_entity_text_alpha = 0; /* The text showing entity limit should fade out when you aren't placing or erasing enteties */
 
+global.unlocked = noone; /* Save what objects are unlocked in level editor */
 global.button_design_color = 2;
 global.button_design_shape = 1;
 global.button_design_transparency = 0;
