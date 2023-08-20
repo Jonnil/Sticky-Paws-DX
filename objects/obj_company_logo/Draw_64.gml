@@ -96,3 +96,10 @@ if (show_skip_button)
 scr_draw_darken_screen_when_window_is_unfocused();
 
 scr_draw_cursor_mouse();
+
+draw_set_halign(fa_center);
+scr_draw_text_outlined(display_get_width() * 0.5, 32 * 1, switch_save_data_message[0], global.default_text_size, c_black, c_white);
+scr_draw_text_outlined(display_get_width() * 0.5, 32 * 2, switch_save_data_message[1], global.default_text_size, c_black, c_white);
+scr_draw_text_outlined(display_get_width() * 0.5, 32 * 3, switch_save_data_message[2], global.default_text_size, c_black, c_white);
+scr_draw_text_outlined(display_get_width() * 0.5, 32 * 4, switch_save_data_message[3], global.default_text_size, c_black, c_white);
+scr_draw_text_outlined(display_get_width() * 0.5, 32 * 5, switch_save_data_message[4], global.default_text_size, c_black, c_white);

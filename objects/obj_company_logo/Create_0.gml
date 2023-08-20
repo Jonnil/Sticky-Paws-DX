@@ -689,55 +689,69 @@ global.skin_for_player[4] = global.actual_skin_for_player[4]; /* In case the pla
 scr_set_font();
 #endregion /* Set these global variables after loading config file END */
 
+switch_save_data_message[0] = "";
+switch_save_data_message[1] = "";
+switch_save_data_message[2] = "";
+switch_save_data_message[3] = "";
+switch_save_data_message[4] = "";
+
 #region /* Nintendo Switch Save Data Handling Debug */
 if (os_type == os_switch)
 {
 	
-	//#region /* switch save data get size Function */
-	//var account_idx = 0; /* Account index */
-	//var sizes = switch_save_data_get_size(account_idx);
-	//if (array_length_1d(sizes) == 2)
-	//{
-	//	var save_data_size = sizes[0];
-	//	var journal_size = sizes[1];
-	//	show_message("Save Data Size: " + string(save_data_size) + " bytes");
-	//	show_message("Journal Size: " + string(journal_size) + " bytes");
-	//}
-	//else
-	//{
-	//	show_message("Failed to retrieve save data sizes.");
-	//}
-	//#endregion /* switch save data get size Function END */
+	#region /* switch save data get size Function */
+	var account_idx = 0; /* Account index */
+	var sizes = switch_save_data_get_size(account_idx);
+	if (array_length_1d(sizes) == 2)
+	{
+		var save_data_size = sizes[0];
+		var journal_size = sizes[1];
+		show_message("Save Data Size: " + string(save_data_size) + " bytes");
+		show_message("Journal Size: " + string(journal_size) + " bytes");
+		switch_save_data_message[0] = "Save Data Size: " + string(save_data_size) + " bytes";
+		switch_save_data_message[1] = "Journal Size: " + string(journal_size) + " bytes";
+	}
+	else
+	{
+		show_message("Failed to retrieve save data sizes");
+		switch_save_data_message[0] = "Failed to retrieve save data sizes";
+	}
+	#endregion /* switch save data get size Function END */
 	
-	//#region /* switch save data get max size Function */
-	//var sizes = switch_save_data_get_max_size();
-	//if (array_length_1d(sizes) == 2)
-	//{
-	//	var max_save_data_size = sizes[0];
-	//	var max_journal_size = sizes[1];
-	//	show_message("Max Save Data Size: " + string(max_save_data_size) + " bytes");
-	//	show_message("Max Journal Size: " + string(max_journal_size) + " bytes");
-	//}
-	//else
-	//{
-	//	show_message("Failed to retrieve max save data sizes");
-	//}
-	//#endregion /* switch save data get max size Function END */
+	#region /* switch save data get max size Function */
+	var sizes = switch_save_data_get_max_size();
+	if (array_length_1d(sizes) == 2)
+	{
+		var max_save_data_size = sizes[0];
+		var max_journal_size = sizes[1];
+		show_message("Max Save Data Size: " + string(max_save_data_size) + " bytes");
+		show_message("Max Journal Size: " + string(max_journal_size) + " bytes");
+		switch_save_data_message[2] = "Max Save Data Size: " + string(max_save_data_size) + " bytes";
+		switch_save_data_message[3] = "Max Journal Size: " + string(max_journal_size) + " bytes";
+	}
+	else
+	{
+		show_message("Failed to retrieve max save data sizes");
+		switch_save_data_message[2] = "Failed to retrieve max save data sizes";
+	}
+	#endregion /* switch save data get max size Function END */
 	
-	//#region /* switch save data set size Function */
-	//var account_idx = 0; /* Account index */
-	//var save_data_size = 2097152; /* 2 MiB (in bytes) */
-	//var save_data_journal_size = 1048576; /* 1 MiB (in bytes) */
-	//var success = switch_save_data_set_size(account_idx, save_data_size, save_data_journal_size);
-	//if (success)
-	//{
-	//	show_message("Save data size expanded successfully");
-	//}
-	//else
-	//{
-	//	show_message("Failed to expand save data size");
-	//}
-	//#endregion /* switch save data set size Function END */
+	#region /* switch save data set size Function */
+	var account_idx = 0; /* Account index */
+	var save_data_size = 2097152; /* 2 MiB (in bytes) */
+	var save_data_journal_size = 1048576; /* 1 MiB (in bytes) */
+	var success = switch_save_data_set_size(account_idx, save_data_size, save_data_journal_size);
+	if (success)
+	{
+		show_message("Save data size expanded successfully");
+		switch_save_data_message[4] = "Save data size expanded successfully";
+	}
+	else
+	{
+		show_message("Failed to expand save data size");
+		switch_save_data_message[4] = "Failed to expand save data size";
+	}
+	#endregion /* switch save data set size Function END */
 	
 }
 #endregion /* Nintendo Switch Save Data Handling Debug END */
