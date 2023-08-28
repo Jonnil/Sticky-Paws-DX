@@ -8,6 +8,7 @@ function scr_key_initialize(key, hold0_press1_release2, what_player = 1, this_pl
 	
 	#region /* Mouse */
 	if (mouse_check_button(mb_any))
+	|| (mouse_check_button_released(mb_any))
 	{
 		
 		#region /* Mouse 1 */
@@ -123,33 +124,33 @@ function scr_key_initialize(key, hold0_press1_release2, what_player = 1, this_pl
 		
 		if (hold0_press1_release2 == 0)
 		{
-			gp_other = (gamepad_button_check(global.player_slot[what_player], global.player_[inp.gp][what_player][1][this_player_key]) || gamepad_button_check(global.player_slot[what_player], global.player_[inp.gp][what_player][2][this_player_key]));
+			gp_other = gamepad_button_check(global.player_slot[what_player], global.player_[inp.gp][what_player][1][this_player_key]) || gamepad_button_check(global.player_slot[what_player], global.player_[inp.gp][what_player][2][this_player_key]);
 		}
 		else
 		if (hold0_press1_release2 == 1)
 		{
-			gp_other = (gamepad_button_check_pressed(global.player_slot[what_player], global.player_[inp.gp][what_player][1][this_player_key]) || gamepad_button_check_pressed(global.player_slot[what_player], global.player_[inp.gp][what_player][2][this_player_key]));
+			gp_other = gamepad_button_check_pressed(global.player_slot[what_player], global.player_[inp.gp][what_player][1][this_player_key]) || gamepad_button_check_pressed(global.player_slot[what_player], global.player_[inp.gp][what_player][2][this_player_key]);
 		}
 		else
 		if (hold0_press1_release2 == 2)
 		{
-			gp_other = (gamepad_button_check_released(global.player_slot[what_player], global.player_[inp.gp][what_player][1][this_player_key]) || gamepad_button_check_released(global.player_slot[what_player], global.player_[inp.gp][what_player][2][this_player_key]));
+			gp_other = gamepad_button_check_released(global.player_slot[what_player], global.player_[inp.gp][what_player][1][this_player_key]) || gamepad_button_check_released(global.player_slot[what_player], global.player_[inp.gp][what_player][2][this_player_key]);
 		}
 	}
 	
 	if (hold0_press1_release2 == 0)
 	{
-		var key_other = (keyboard_check(global.player_[inp.key][what_player][1][this_player_key]) || keyboard_check(global.player_[inp.key][what_player][2][this_player_key]));
+		var key_other = keyboard_check(global.player_[inp.key][what_player][1][this_player_key]) || keyboard_check(global.player_[inp.key][what_player][2][this_player_key]);
 	}
 	else
 	if (hold0_press1_release2 == 1)
 	{
-		var key_other = (keyboard_check_pressed(global.player_[inp.key][what_player][1][this_player_key]) || keyboard_check_pressed(global.player_[inp.key][what_player][2][this_player_key]));
+		var key_other = keyboard_check_pressed(global.player_[inp.key][what_player][1][this_player_key]) || keyboard_check_pressed(global.player_[inp.key][what_player][2][this_player_key]);
 	}
 	else
 	if (hold0_press1_release2 == 2)
 	{
-		var key_other = (keyboard_check_released(global.player_[inp.key][what_player][1][this_player_key]) || keyboard_check_released(global.player_[inp.key][what_player][2][this_player_key]));
+		var key_other = keyboard_check_released(global.player_[inp.key][what_player][1][this_player_key]) || keyboard_check_released(global.player_[inp.key][what_player][2][this_player_key]);
 	}
 	
 	var return_key = key_mouse || key2_mouse || joy_1 || joy_2 || key_other || gp_other;

@@ -41,15 +41,15 @@ var check_bottom = bbox_bottom + check_margin;
 if (!collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_wall, false, true) &&
     !collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_semisolid_platform, false, true))
 {
-	var view_camera_current = view_camera[view_current];
-	var view_left = camera_get_view_x(view_camera_current);
-	var view_right = view_left + camera_get_view_width(view_camera_current);
-	var view_top = camera_get_view_y(view_camera_current);
-	var view_bottom = view_top + camera_get_view_height(view_camera_current);
-	if (bbox_left < view_right + 8 &&
-		bbox_right > view_left - 8 &&
-		bbox_top < view_bottom + 8 &&
-		bbox_bottom > view_top - 8)
+	var view_left = camera_get_view_x(view_camera[view_current]);
+	var view_top = camera_get_view_y(view_camera[view_current]);
+	var view_right = view_left + camera_get_view_width(view_camera[view_current]);
+	var view_bottom = view_top + camera_get_view_height(view_camera[view_current]);
+	
+	if (bbox_left < view_right - 1 &&
+		bbox_right > view_left + 1 &&
+		bbox_top < view_bottom - 1 &&
+		bbox_bottom > view_top + 1)
 	{
 		alarm[1] = 1; /* Break cardboard */
 		if (instance_exists(obj_player))

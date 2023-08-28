@@ -1,39 +1,34 @@
 function scr_virtual_keys()
 {
-	var get_window_height = display_get_gui_height();
-	var get_window_width = display_get_gui_width();
-	
-	var enable_joystick = false;
-	
-	var mobile_key_up_x = 228;
-	var mobile_key_up_y = get_window_height -356;
-	
-	var mobile_key_down_x = 228;
-	var mobile_key_down_y = get_window_height - 100;
-	
-	var mobile_key_left_x = 100;
-	var mobile_key_left_y = get_window_height -228;
-	
-	var mobile_key_right_x = 356;
-	var mobile_key_right_y = get_window_height -228;
-	
-	var mobile_key_jump_x = get_window_width - 200;
-	var mobile_key_jump_y = get_window_height - 200;
-	var mobile_key_crouch_x = get_window_width - 200;
-	var mobile_key_crouch_y = get_window_height - 500;
-	var mobile_key_sprint_x = get_window_width - 500;
-	var mobile_key_sprint_y = get_window_height - 200;
-	var mobile_key_pause_x = get_window_width * 0.5;
-	var mobile_key_pause_y = + 100;
-	var mobile_key_zoom_out_x = get_window_width * 0.5 + 200;
-	var mobile_key_zoom_out_y = + 100;
-	var mobile_key_zoom_in_x = get_window_width * 0.5 + 400;
-	var mobile_key_zoom_in_y = + 100;
-	var mobile_key_extra_deadzone = 50;
 	
 	#region /* Virtual Key, iOS and Android */
 	if (global.show_virtual_controls)
 	{
+		var get_window_height = display_get_gui_height();
+		var get_window_width = display_get_gui_width();
+		var enable_joystick = false;
+		var mobile_key_up_x = 228;
+		var mobile_key_up_y = get_window_height -356;
+		var mobile_key_down_x = 228;
+		var mobile_key_down_y = get_window_height - 100;
+		var mobile_key_left_x = 100;
+		var mobile_key_left_y = get_window_height -228;
+		var mobile_key_right_x = 356;
+		var mobile_key_right_y = get_window_height -228;
+		var mobile_key_jump_x = get_window_width - 200;
+		var mobile_key_jump_y = get_window_height - 200;
+		var mobile_key_crouch_x = get_window_width - 200;
+		var mobile_key_crouch_y = get_window_height - 500;
+		var mobile_key_sprint_x = get_window_width - 500;
+		var mobile_key_sprint_y = get_window_height - 200;
+		var mobile_key_pause_x = get_window_width * 0.5;
+		var mobile_key_pause_y = + 100;
+		var mobile_key_zoom_out_x = get_window_width * 0.5 + 200;
+		var mobile_key_zoom_out_y = + 100;
+		var mobile_key_zoom_in_x = get_window_width * 0.5 + 400;
+		var mobile_key_zoom_in_y = + 100;
+		var mobile_key_extra_deadzone = 50;
+		
 		if (instance_exists(obj_player_map))
 		&& (obj_player_map.iris_xscale > 0.25)
 		&& (obj_player_map.iris_yscale > 0.25)

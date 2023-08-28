@@ -2,77 +2,27 @@
 
 #region /* Draw things underneath the player */
 
-#region /* Draw Raycasts */
-if (hold_item_in_hands != "")
-&& (key_up)
-{
-	if (instance_exists(obj_wall))
-	{
-		if (!position_meeting(xx + 32 * image_xscale, yy, obj_wall))
-		{
-			raycast_info = scr_raycast(xx + 32 * image_xscale, yy, 90, 380, 16, obj_wall);
-		}
-		else
-		{
-			raycast_info = scr_raycast(xx, yy, 90, 380, 16, obj_wall);
-		}
-	}
-	if (raycast_info == noone)
-	{
-		return;
-	}
-	if (raycast_info.type != rc_type.nothing)
-	{
-		draw_set_color(c_red);
-		draw_circle(raycast_info.x, raycast_info.y, 2, false);
-		draw_set_color(c_lime);
-	}
-	else
-	{
-		draw_set_color(c_yellow);
-	}
-	if (!position_meeting(xx + 32 * image_xscale, yy, obj_wall))
-	{
-		draw_set_alpha(0.1);
-		draw_line_width(xx + 32 * image_xscale, yy, raycast_info.x, raycast_info.y, 2);
-	}
-	else
-	{
-		draw_set_alpha(0.1);
-		draw_line_width(xx, yy, raycast_info.x, raycast_info.y, 2);
-	}
-}
-#endregion /* Draw Raycasts END */
-
 #region /* Heart above head */
 if (have_heart_balloon)
 {
-	if (place_meeting(x, y - 1, obj_horizontal_rope))
-	&& (horizontal_rope_climb)
+	if (horizontal_rope_climb)
 	&& (key_up)
 	&& (!key_down)
-	&& (!place_meeting(x, y - 16, obj_wall))
-	&& (!place_meeting(x, y - 32, obj_wall))
-	&& (!place_meeting(x, y - 48, obj_wall))
-	&& (!place_meeting(x, y - 64, obj_wall))
 	{
 		xx_heart = lerp(xx_heart, x, 0.1);
 		yy_heart = lerp(yy_heart, y + 32, 0.1);
 	}
-	if (taken_damage %2 == 0)
+	draw_set_alpha(image_alpha);
+	draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
+	draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
+	if (taken_damage % 2 == 0)
 	{
-		draw_set_alpha(image_alpha);
-		draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
-		draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
-		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, image_alpha);
+	    draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, image_alpha);
 	}
 	else
 	{
-		draw_set_alpha(image_alpha * 0.3);
-		draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
-		draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
-		draw_set_alpha(image_alpha);
-		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, image_alpha * 0.3);
+	    draw_set_alpha(image_alpha * 0.3);
+	    draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, image_alpha * 0.3);
 	}
 }
 
@@ -359,14 +309,11 @@ if (effect_turnaround_subimg < 10)
 if (effect_speedspark_subimg < 4)
 && (hold_item_in_hands == "")
 {
-	if (place_meeting(x, y + 1, obj_wall))
-	|| (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	if (on_ground)
+	&& (climb == false)
+	&& (horizontal_rope_climb == false)
 	{
-		if (climb == false)
-		&& (horizontal_rope_climb == false)
-		{
-			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, 0, c_white, 0.5);
-		}
+		draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, 0, c_white, 0.5);
 	}
 	effect_speedspark_subimg += 0.5;
 }
@@ -429,10 +376,7 @@ if (allow_homing_attack)
 {
 	
 	#region /* Homing Enemy */
-	if (!place_meeting(x, y + 1, obj_wall))
-	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+	if (!on_ground)
 	&& (stick_to_wall == false)
 	&& (climb == false)
 	&& (horizontal_rope_climb == false)
@@ -451,10 +395,7 @@ if (allow_homing_attack)
 	else
 	
 	#region /* Homing Spring */
-	if (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!place_meeting(x, y + 1, obj_wall))
+	if (!on_ground)
 	&& (stick_to_wall == false)
 	&& (climb == false)
 	&& (horizontal_rope_climb == false)
@@ -492,49 +433,13 @@ if (global.player1_can_play)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	if (player == 1)
+	if (global.player_name[1] = "")
 	{
-		if (global.player_name[1] = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P1", global.default_text_size, c_black, global.player1_color, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player_name[1]), global.default_text_size, c_black, global.player1_color, 1);
-		}
+		scr_draw_text_outlined(x, y - 64, "P" + string(player), global.default_text_size, c_black, global.player_color[player], 1);
 	}
-	if (player == 2)
+	else
 	{
-		if (global.player_name[2] = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P2", global.default_text_size, c_black, global.player2_color, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player_name[2]), global.default_text_size, c_black, global.player2_color, 1);
-		}
-	}
-	if (player == 3)
-	{
-		if (global.player_name[3] = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P3", global.default_text_size, c_black, global.player3_color, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player_name[3]), global.default_text_size, c_black, global.player3_color, 1);
-		}
-	}
-	if (player == 4)
-	{
-		if (global.player_name[4] = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P4", global.default_text_size, c_black, global.player4_color, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player_name[4]), global.default_text_size, c_black, global.player4_color, 1);
-		}
+		scr_draw_text_outlined(x, y - 64, string(global.player_name[player]), global.default_text_size, c_black, global.player_color[player], 1);
 	}
 }
 #endregion /* Display Player Number and Name END */
@@ -556,13 +461,5 @@ if (hp > 0)
 	}
 }
 #endregion /* If player has more hp, show that END */
-
-if (global.debug_screen)
-&& (!on_ground)
-&& (climb == false)
-&& (horizontal_rope_climb == false)
-{
-	draw_sprite_ext(spr_arrow_sign_small, 0, x, bbox_top - 32, 0.3, 0.3, 270, c_white, 1);
-}
 
 #endregion /* Draw things on top of the player END */

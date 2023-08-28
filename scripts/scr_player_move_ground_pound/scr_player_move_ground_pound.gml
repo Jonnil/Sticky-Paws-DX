@@ -114,7 +114,7 @@ function scr_player_move_ground_pound()
 				scr_audio_play(snd_hipattack, volume_source.sound);
 			}
 			#endregion /* If touching the ground when doing a ground pound END */
-	
+			
 			else
 			if (key_up)
 			&& (vspeed >4)
@@ -178,53 +178,27 @@ function scr_player_move_ground_pound()
 				ground_pound = false;
 			}
 		}
+		
+		#region /* joystick_can_ground_pound makes sure that when ground pounding using the joystick doesn't make the cahracter ground pound on every frame */
+		if (joystick_can_ground_pound == false) /* You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true */
+		&& (gamepad_axis_value(global.player_slot[player], gp_axislv) <= 0)
+		{
+			joystick_can_ground_pound = true;
+		}
+		else
+		if (joystick_can_ground_pound) /* You must have this code after the previous code otherwise the joystick_can_ground_pound is always set to true */
+		&& (gamepad_axis_value(global.player_slot[player], gp_axislv) > 0)
+		{
+			joystick_can_ground_pound = false;
+		}
+		#endregion /* joystick_can_ground_pound makes sure that when ground pounding using the joystick doesn't make the cahracter ground pound on every frame END */
+		
 	}
 	if (can_ground_pound == false)
 	&& (!key_down)
 	{
 		can_ground_pound = true;
 	}
-
-	#region /* joystick_can_ground_pound makes sure that when ground pounding using the joystick doesn't make the cahracter ground pound on every frame */
-
-	#region /* You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true */
-	if (joystick_can_ground_pound == false)
-	&& (gamepad_axis_value(global.player_slot[1], gp_axislv) <= 0)
-	&& (player <= 1)
-	|| (joystick_can_ground_pound == false)
-	&& (gamepad_axis_value(global.player_slot[2], gp_axislv) <= 0)
-	&& (player <= 2)
-	|| (joystick_can_ground_pound == false)
-	&& (gamepad_axis_value(global.player_slot[3], gp_axislv) <= 0)
-	&& (player <= 3)
-	|| (joystick_can_ground_pound == false)
-	&& (gamepad_axis_value(global.player_slot[4], gp_axislv) <= 0)
-	&& (player <= 4)
-	{
-		joystick_can_ground_pound = true;
-	}
-	#endregion /* You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true END */
-
-	#region /* You must have this code after the previous code otherwise the joystick_can_ground_pound is always set to true */
-	if (joystick_can_ground_pound)
-	&& (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
-	&& (player <= 1)
-	|| (joystick_can_ground_pound)
-	&& (gamepad_axis_value(global.player_slot[2], gp_axislv) > 0)
-	&& (player <= 2)
-	|| (joystick_can_ground_pound)
-	&& (gamepad_axis_value(global.player_slot[3], gp_axislv) > 0)
-	&& (player <= 3)
-	|| (joystick_can_ground_pound = true)
-	&& (gamepad_axis_value(global.player_slot[4], gp_axislv) > 0)
-	&& (player <= 4)
-	{
-		joystick_can_ground_pound = false;
-	}
-	#endregion /* You must have this code after the previous code otherwise the joystick_can_ground_pound is always set to true END */
-
-	#endregion /* joystick_can_ground_pound makes sure that when ground pounding using the joystick doesn't make the cahracter ground pound on every frame END */
-
 	#endregion /* Ground Pound END */
 	
 }

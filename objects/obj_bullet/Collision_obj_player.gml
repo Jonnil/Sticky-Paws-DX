@@ -231,30 +231,9 @@ if (other.taken_damage <= 0)
 		other.have_heart_balloon = false;
 		
 		#region /* Save heart balloon to be false */
-		if (other.player == 1)
-		{
-			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-			ini_write_real("Player", "player1_have_heart_balloon", false);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-		if (other.player = 2)
-		{
-			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-			ini_write_real("Player", "player2_have_heart_balloon", false);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-		if (other.player = 3)
-		{
-			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-			ini_write_real("Player", "player3_have_heart_balloon", false);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-		if (other.player = 4)
-		{
-			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-			ini_write_real("Player", "player4_have_heart_balloon", false);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		ini_write_real("Player", "player" + string(other.player) + "_have_heart_balloon", false);
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Save heart balloon to be false END */
 		
 	}

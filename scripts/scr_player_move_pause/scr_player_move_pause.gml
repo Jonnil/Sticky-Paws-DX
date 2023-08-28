@@ -2,7 +2,8 @@ function scr_player_move_pause()
 {
 	
 	#region /* Pause */
-	if (display_get_gui_width() > 0 && display_get_gui_height() > 0)
+	if (display_get_gui_width() > 0)
+	&& (display_get_gui_height() > 0)
 	{
 		surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
 	}
@@ -11,8 +12,8 @@ function scr_player_move_pause()
 	|| (keyboard_check(vk_tab))
 	&& (keyboard_check(vk_lshift))
 	|| (gamepad_button_check_pressed(global.player_slot[player], gp_start))
-	|| (!gamepad_is_connected(global.player_slot[player]))
-	&& (controller_connected)
+	|| (controller_connected)
+	&& (!gamepad_is_connected(global.player_slot[player]))
 	|| (global.actually_play_edited_level)
 	&& (global.automatically_pause_when_window_is_unfocused)
 	&& (!window_has_focus())
@@ -24,17 +25,11 @@ function scr_player_move_pause()
 		}
 		
 		#region /* Show all HUD elements */
-		if (instance_exists(obj_camera))
-		{
-			with(obj_camera)
-			{
-				hud_show_lives_timer = global.hud_hide_time * 60;
-				hud_show_deaths_timer = global.hud_hide_time * 60;
-				hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
-				hud_show_big_collectibles_timer = global.hud_hide_time * 60;
-				hud_show_score_timer = global.hud_hide_time * 60;
-			}
-		}
+		obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
+		obj_camera.hud_show_deaths_timer = global.hud_hide_time * 60;
+		obj_camera.hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
+		obj_camera.hud_show_big_collectibles_timer = global.hud_hide_time * 60;
+		obj_camera.hud_show_score_timer = global.hud_hide_time * 60;
 		#endregion /* Show all HUD elements END */
 		
 		controller_connected = false;

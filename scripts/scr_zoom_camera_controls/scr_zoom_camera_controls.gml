@@ -9,54 +9,28 @@ function scr_zoom_camera_controls()
 	var key_in_hold_player4 = noone;
 	var key_out_hold_player4 = noone;
 	
-	if (room != rm_world_map)
+	if (global.player1_can_play == true)
 	{
-		if (player1 > 0)
-		{
-			var key_in_hold_player1 = scr_key_initialize(key_player1_zoom_in_hold, 0, 1, action.zoom_in);
-			var key_out_hold_player1 = scr_key_initialize(key_player1_zoom_out_hold, 0, 1, action.zoom_out);
-		}
-		if (player2 > 0)
-		{
-			var key_in_hold_player2 = scr_key_initialize(key_player2_zoom_in_hold, 0, 2, action.zoom_in);
-			var key_out_hold_player2 = scr_key_initialize(key_player2_zoom_out_hold, 0, 2, action.zoom_out);
-		}
-		if (player3 > 0)
-		{
-			var key_in_hold_player3 = scr_key_initialize(key_player3_zoom_in_hold, 0, 3, action.zoom_in);
-			var key_out_hold_player3 = scr_key_initialize(key_player3_zoom_out_hold, 0, 3, action.zoom_out);
-		}
-		if (player4 > 0)
-		{
-			var key_in_hold_player4 = scr_key_initialize(key_player4_zoom_in_hold, 0, 4, action.zoom_in);
-			var key_out_hold_player4 = scr_key_initialize(key_player4_zoom_out_hold, 0, 4, action.zoom_out);
-		}
+		var key_in_hold_player1 = scr_key_initialize(key_player1_zoom_in_hold, 0, 1, action.zoom_in);
+		var key_out_hold_player1 = scr_key_initialize(key_player1_zoom_out_hold, 0, 1, action.zoom_out);
 	}
 	else
+	if (global.player2_can_play == true)
 	{
-		if (global.player1_can_play == true)
-		{
-			var key_in_hold_player1 = scr_key_initialize(key_player1_zoom_in_hold, 0, 1, action.zoom_in);
-			var key_out_hold_player1 = scr_key_initialize(key_player1_zoom_out_hold, 0, 1, action.zoom_out);
-		}
-		else
-		if (global.player2_can_play == true)
-		{
-			var key_in_hold_player2 = scr_key_initialize(key_player2_zoom_in_hold, 0, 2, action.zoom_in);
-			var key_out_hold_player2 = scr_key_initialize(key_player2_zoom_out_hold, 0, 2, action.zoom_out);
-		}
-		else
-		if (global.player3_can_play == true)
-		{
-			var key_in_hold_player3 = scr_key_initialize(key_player3_zoom_in_hold, 0, 3, action.zoom_in);
-			var key_out_hold_player3 = scr_key_initialize(key_player3_zoom_out_hold, 0, 3, action.zoom_out);
-		}
-		else
-		if (global.player4_can_play == true)
-		{
-			var key_in_hold_player4 = scr_key_initialize(key_player4_zoom_in_hold, 0, 4, action.zoom_in);
-			var key_out_hold_player4 = scr_key_initialize(key_player4_zoom_out_hold, 0, 4, action.zoom_out);
-		}
+		var key_in_hold_player2 = scr_key_initialize(key_player2_zoom_in_hold, 0, 2, action.zoom_in);
+		var key_out_hold_player2 = scr_key_initialize(key_player2_zoom_out_hold, 0, 2, action.zoom_out);
+	}
+	else
+	if (global.player3_can_play == true)
+	{
+		var key_in_hold_player3 = scr_key_initialize(key_player3_zoom_in_hold, 0, 3, action.zoom_in);
+		var key_out_hold_player3 = scr_key_initialize(key_player3_zoom_out_hold, 0, 3, action.zoom_out);
+	}
+	else
+	if (global.player4_can_play == true)
+	{
+		var key_in_hold_player4 = scr_key_initialize(key_player4_zoom_in_hold, 0, 4, action.zoom_in);
+		var key_out_hold_player4 = scr_key_initialize(key_player4_zoom_out_hold, 0, 4, action.zoom_out);
 	}
 	
 	var key_in_hold = [
@@ -86,7 +60,6 @@ function scr_zoom_camera_controls()
 	
 	var new_width = camera_get_view_width(view_camera[view_current]) * zoom_lerp;
 	var new_height = camera_get_view_height(view_camera[view_current]) * zoom_lerp;
-	
 	if (new_width > room_width && new_height > room_height)
 	{
 		camera_set_view_size(view_camera[view_current], room_width, room_height);

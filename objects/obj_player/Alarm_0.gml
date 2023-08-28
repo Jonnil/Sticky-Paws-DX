@@ -529,39 +529,11 @@ if (global.character_select_in_this_menu == "main_game" && file_exists(working_d
 && (global.doing_clear_check_character == false)
 {
 	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-	
-	switch (player)
+	have_heart_balloon = ini_read_real("Player", "player" + string(player) + "_have_heart_balloon", false);
+	if (!ini_key_exists("Player", "player" + string(player) + "_have_heart_balloon"))
 	{
-		case 1:
-		have_heart_balloon = ini_read_real("Player", "player1_have_heart_balloon", false);
-		if (!ini_key_exists("Player", "player1_have_heart_balloon"))
-		{
-			ini_write_real("Player", "player1_have_heart_balloon", false);
-		}
-		break;
-		case 2:
-		have_heart_balloon = ini_read_real("Player", "player2_have_heart_balloon", false);
-		if (!ini_key_exists("Player", "player2_have_heart_balloon"))
-		{
-			ini_write_real("Player", "player2_have_heart_balloon", false);
-		}
-		break;
-		case 3:
-		have_heart_balloon = ini_read_real("Player", "player3_have_heart_balloon", false);
-		if (!ini_key_exists("Player", "player3_have_heart_balloon"))
-		{
-			ini_write_real("Player", "player3_have_heart_balloon", false);
-		}
-		break;
-		case 4:
-		have_heart_balloon = ini_read_real("Player", "player4_have_heart_balloon", false);
-		if (!ini_key_exists("Player", "player4_have_heart_balloon"))
-		{
-			ini_write_real("Player", "player4_have_heart_balloon", false);
-		}
-		break;
+		ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", false);
 	}
-	
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 else

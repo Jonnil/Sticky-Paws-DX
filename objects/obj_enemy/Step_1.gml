@@ -26,3 +26,37 @@ if (!blind && !coil_spring && on_ground)
         image_xscale = 1;
     }
 }
+
+var view_left = camera_get_view_x(view_camera[view_current]);
+var view_top = camera_get_view_y(view_camera[view_current]);
+var view_right = view_left + camera_get_view_width(view_camera[view_current]);
+var view_bottom = view_top + camera_get_view_height(view_camera[view_current]);
+
+#region /* Don't move outside view */
+if (die == false)
+{
+	if (bbox_right < view_left - 16)
+	&& (hspeed < 0)
+	|| (bbox_left > view_right + 16)
+	&& (hspeed > 0)
+	|| (bbox_bottom < view_top - 16)
+	&& (vspeed < 0)
+	|| (bbox_top > view_bottom + 16)
+	&& (hspeed > 0)
+	{
+		hspeed = 0;
+		vspeed = 0;
+		speed = 0;
+		gravity = 0;
+		friction = 500;
+	}
+	else
+	{
+		friction = 0;
+	}
+}
+else
+{
+	friction = 0;
+}
+#endregion /* Don't move outside view END */

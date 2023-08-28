@@ -5,10 +5,18 @@ scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_deactivate_objects_outside_view();
 
-var get_room_speed = room_speed;
+if (current_file != global.file)
+{
+	current_file = global.file;
+	room_persistent = false; /* Turn OFF Room Persistency */
+	global.quit_level = true;
+	global.quit_to_map = true;
+}
+
+var get_room_speed = 60;
 
 /* Timer Countup */
-if (instance_exists(obj_goal) && !obj_goal.goal && instance_exists(obj_player) && obj_player.allow_timeattack && !global.pause) {
+if (!global.goal_active && instance_exists(obj_player) && obj_player.allow_timeattack && !global.pause) {
     global.timeattack_millisecond++;
     global.timeattack_realmillisecond++;
     if (global.timeattack_millisecond > 60) {
@@ -21,7 +29,7 @@ if (instance_exists(obj_goal) && !obj_goal.goal && instance_exists(obj_player) &
     }
 }
 else if (!global.pause) {
-    if ((!instance_exists(obj_goal) || !obj_goal.goal) && instance_exists(obj_player) && obj_player.allow_timeattack) {
+    if ((!global.goal_active) && instance_exists(obj_player) && obj_player.allow_timeattack) {
         global.timeattack_millisecond++;
         global.timeattack_realmillisecond++;
         if (global.timeattack_millisecond > 60) {
@@ -36,7 +44,7 @@ else if (!global.pause) {
 }
 
 /* Time Countdown */
-if (instance_exists(obj_player) && !global.pause && (!instance_exists(obj_goal) || !obj_goal.goal)) {
+if (instance_exists(obj_player) && !global.pause && (!global.goal_active)) {
     time_second++;
     if (time_second > get_room_speed) {
         time_second = 0;
@@ -458,11 +466,10 @@ if (save_level_as_png == false)
 	y = lerp(y, yy, 0.15);
 	
 	#region /* Boss Battle Camera */
-	if (instance_exists(obj_player))
-	&& (instance_exists(obj_boss))
+	if (instance_exists(obj_boss))
+	&& (instance_exists(obj_player))
 	&& (distance_to_object(obj_boss) < 500)
 	{
-		
 		view_wview_lerp = lerp(0, 0, 0.05);
 		view_hview_lerp = lerp(0, 0, 0.05);
 		
@@ -811,8 +818,7 @@ if (save_level_as_png == false)
 	{
 		
 		#region /* Zoom In */
-		if (instance_exists(obj_player))
-		&& (instance_nearest(room_width, y, obj_player).goal)
+		if (global.player_has_entered_goal)
 		&& (global.time_countdown_bonus <= 0)
 		
 		|| (global.iris_zoom_in) /* Zoom In Global Switch */

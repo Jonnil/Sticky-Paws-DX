@@ -96,6 +96,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		    if (on_ground)
 		    {
 		        stick_to_wall = false;
+				audio_stop_sound(snd_skiddingvertical);
 		    }
     
 		    if (!crouch && !ground_pound && !ledge_grab)
@@ -124,10 +125,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		            (!place_meeting(x + 1, y, obj_wall) && image_xscale > 0))
 		        {
 		            stick_to_wall = false;
-		            if (audio_is_playing(snd_skiddingvertical))
-		            {
-		                audio_stop_sound(snd_skiddingvertical);
-		            }
+		            audio_stop_sound(snd_skiddingvertical);
 		        }
 		    }
     
@@ -227,6 +225,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		            wall_jump = wall_jump_time;
 		            crouch = false;
 		            stick_to_wall = false;
+					audio_stop_sound(snd_skiddingvertical);
 		            ledge_grab_jump = false;
 		            speed_max = 8;
 		            vspeed = -normal_jump_height;
@@ -248,6 +247,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		    if (vspeed >= 0)
 		    {
 		        stick_to_wall = false;
+				audio_stop_sound(snd_skiddingvertical);
 		    }
 		    else if (vspeed < 0)
 		    {
@@ -284,6 +284,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		    vspeed = 1;
 		    midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 		    stick_to_wall = false;
+			audio_stop_sound(snd_skiddingvertical);
 		    crouch = false;
 		}
 		else if (key_jump && !on_ground)
@@ -375,6 +376,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		            wall_jump = wall_jump_time;
 		            crouch = false;
 		            stick_to_wall = false;
+					audio_stop_sound(snd_skiddingvertical);
 		            ledge_grab_jump = false;
 		            speed_max = 8;
 		            glide = false;
@@ -392,11 +394,6 @@ function scr_player_move_wall_jump_and_wall_climb()
 	else
 	{
 		stick_to_wall = false;
-	}
-	if (stick_to_wall == false)
-	&& (audio_is_playing(snd_skiddingvertical))
-	{
-		audio_stop_sound(snd_skiddingvertical);
 	}
 	if (drop_off_wall_climb > 0)
 	{

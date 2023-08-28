@@ -8,14 +8,6 @@ if (speed > 0)
 }
 #endregion /* Only update audio listener position and velocity when the player is moving END */
 
-if (current_file != global.file)
-{
-	current_file = global.file;
-	room_persistent = false; /* Turn OFF Room Persistency */
-	global.quit_level = true;
-	global.quit_to_map = true;
-}
-
 scr_player_move_save_whole_level_as_screenshot();
 
 scr_start_intro_animations();
@@ -269,10 +261,8 @@ scr_player_move_customizable_controls();
 /* Sets up what the buttons do */
 
 #region /* Save to variable when on ground */
-if (place_meeting(x, y + 1, obj_wall) /* If there is wall underneath */)
-|| (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
-|| (position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
-|| (position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
+if (place_meeting(x, y + 1, obj_wall)) /* If there is wall underneath */
+|| (collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 1, obj_semisolid_platform, false, true)) /* If there is semisolid platform underneath */
 {
 	on_ground = true;
 }
@@ -462,31 +452,35 @@ if (bbox_top > room_height + 200)
 }
 #endregion /* Bottomless Pit END */
 
-#region /* Stuck inside a wall */
-if (position_meeting(x, y, obj_wall))
-&& (can_collide_with_wall)
+#region /* If you touch spikes, take damage */
+if (place_meeting(x + 1, y, obj_spikes))
+|| (place_meeting(x - 1, y, obj_spikes))
+|| (place_meeting(x, y + 1, obj_spikes))
+|| (place_meeting(x, y - 1, obj_spikes))
 {
-	stuck_in_wall_counter ++;
-	if (stuck_in_wall_counter > 6)
-	&& (global.goal_active == false)
+	if (taken_damage < 1)
+	&& (assist_invincible == false)
+	&& (invincible_timer <= false)
 	{
-		die = true;
+		if (have_heart_balloon)
+		{
+			have_heart_balloon = false;
+			
+			#region /* Save heart balloon to be false */
+			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", false);
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			#endregion /* Save heart balloon to be false END */
+			
+		}
+		else
+		{
+			hp --;
+		}
+		taken_damage = 100;
 	}
 }
-else
-{
-	if (stuck_in_wall_counter > 0)
-	{
-		stuck_in_wall_counter --;
-	}
-}
-
-if (position_meeting(x, bbox_top + 8, obj_wall))
-&& (position_meeting(x, bbox_bottom - 8, obj_wall))
-{
-	die = true; /* If there is solid ground above and underneath you, you are probably getting flattened */
-}
-#endregion /* Stuck inside a wall END */
+#endregion /* If you touch spikes, take damage END */
 
 #region /* ________________________________MORE MOVES________________________________ */
 
@@ -736,60 +730,6 @@ if (burnt == 2)
 	}
 }
 #endregion /* Burnt END */
-
-#region /* If you touch spikes, take damage */
-if (instance_exists(obj_spikes))
-{
-	if (place_meeting(x - 1, y, obj_spikes))
-	|| (place_meeting(x + 1, y, obj_spikes))
-	|| (place_meeting(x, y - 1, obj_spikes))
-	|| (place_meeting(x, y + 1, obj_spikes))
-	{
-		if (taken_damage < 1)
-		&& (assist_invincible == false)
-		&& (invincible_timer <= false)
-		{
-			if (have_heart_balloon)
-			{
-				have_heart_balloon = false;
-				
-				#region /* Save heart balloon to be false */
-				if (player == 1)
-				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-					ini_write_real("Player", "player1_have_heart_balloon", false);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-				}
-				if (player == 2)
-				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-					ini_write_real("Player", "player2_have_heart_balloon", false);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-				}
-				if (player == 3)
-				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-					ini_write_real("Player", "player3_have_heart_balloon", false);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-				}
-				if (player == 4)
-				{
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
-					ini_write_real("Player", "player4_have_heart_balloon", false);
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-				}
-				#endregion /* Save heart balloon to be false END */
-				
-			}
-			else
-			{
-				hp --;
-			}
-			taken_damage = 100;
-		}
-	}
-}
-#endregion /* If you touch spikes, take damage END */
 
 #region /* Invincible Music */
 if (invincible_timer >= true)
@@ -1796,10 +1736,7 @@ if (in_water)
 		
 		}
 		else
-		if (!place_meeting(x, y + 1, obj_wall))
-		|| (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		|| (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-		|| (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		if (!on_ground)
 		{
 			if (key_jump)
 			{
@@ -1943,10 +1880,7 @@ if (in_water)
 	else
 	
 	#region /* Swimming Sprites */
-	if (!place_meeting(x, y + 1, obj_wall))
-	and(!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	and(!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	and(!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+	if (!on_ground)
 	{
 		/* Don't have skidding animations underwater */
 	
@@ -2020,9 +1954,7 @@ else
 			mask_index = spr_player_stand;
 		}
 		if (!place_meeting(x, y + 16, obj_wall))
-		|| (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		|| (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-		|| (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+		|| (!collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 1, obj_semisolid_platform, false, true))
 		{
 			y += 32;
 		}
@@ -2152,10 +2084,7 @@ else
 		}
 
 		else
-		if (!place_meeting(x, y + 1, obj_wall))
-		&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		if (!on_ground)
 		{
 		
 			#region /* Crouch Jump */

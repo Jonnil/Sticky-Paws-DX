@@ -1,32 +1,13 @@
 function scr_debug_screen()
 {
-	/* Debug information should show up on pause screen and tite screen, so you can optimize those screens too */
-	var mouse_get_x = device_mouse_x_to_gui(0);
-	var mouse_get_y = device_mouse_y_to_gui(0);
-	
-	var version_y = 32;
+	var fps_real_target = (os_type == os_switch) ? 60 : 250;
+	var instance_count_target = 200;
 	var fps_y = 64;
 	var fps_real_y = 96;
 	var instance_count_y = 128;
-	var all_instance_count_y = 160;
-	var player_xy_y = 160;
-	var display_y = 32
-	var d3d11_y = 64;
 	
-	var fps_real_target = (os_type == os_switch) ? 60 : 250;
-	var instance_count_target = 200;
-	
-	if (keyboard_check_pressed(vk_f3) ||
-	gamepad_button_check(0, gp_stickl) && gamepad_button_check_pressed(0, gp_stickr) ||
-	gamepad_button_check(0, gp_stickr) && gamepad_button_check_pressed(0, gp_stickl) ||
-	gamepad_button_check(1, gp_stickl) && gamepad_button_check_pressed(1, gp_stickr) ||
-	gamepad_button_check(1, gp_stickr) && gamepad_button_check_pressed(1, gp_stickl) ||
-	gamepad_button_check(2, gp_stickl) && gamepad_button_check_pressed(2, gp_stickr) ||
-	gamepad_button_check(2, gp_stickr) && gamepad_button_check_pressed(2, gp_stickl) ||
-	gamepad_button_check(3, gp_stickl) && gamepad_button_check_pressed(3, gp_stickr) ||
-	gamepad_button_check(3, gp_stickr) && gamepad_button_check_pressed(3, gp_stickl) ||
-	gamepad_button_check(4, gp_stickl) && gamepad_button_check_pressed(4, gp_stickr) ||
-	gamepad_button_check(4, gp_stickr) && gamepad_button_check_pressed(4, gp_stickl))
+	/* Debug information should show up on pause screen and tite screen, so you can optimize those screens too */
+	if (keyboard_check_pressed(vk_f3))
 	{
 		global.debug_screen = !global.debug_screen;
 		if (keyboard_check(ord("O")))
@@ -35,13 +16,20 @@ function scr_debug_screen()
 		}
 	}
 	
-	if (global.debug_screen && keyboard_check_pressed(vk_f2))
-	{
-		scr_save_os_info_ini();
-	}
-	
 	if (global.debug_screen)
 	{
+		if (keyboard_check_pressed(vk_f2))
+		{
+			scr_save_os_info_ini();
+		}
+		
+		var mouse_get_x = device_mouse_x_to_gui(0);
+		var mouse_get_y = device_mouse_y_to_gui(0);
+		var version_y = 32;
+		var all_instance_count_y = 160;
+		var player_xy_y = 160;
+		var display_y = 32
+		var d3d11_y = 64;
 		
 		#region /* Click on FPS to toggle if it should stay on screen even after you close debug screen */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_y - 15, 370, fps_y + 15) && global.controls_used_for_menu_navigation == "mouse")
@@ -106,14 +94,7 @@ function scr_debug_screen()
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		if (global.controls_used_for_menu_navigation == "controller")
-		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press both sticks to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press F3 to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
-		}
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press F3 to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + string(scr_get_build_date()), global.default_text_size, c_black, c_white, 1);

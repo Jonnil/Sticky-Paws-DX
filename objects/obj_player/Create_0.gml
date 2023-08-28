@@ -22,8 +22,6 @@ audio_listener_position(x, y, 0); /* Audio listener should start on top of the p
 
 can_collide_with_wall = true; /* For debug purposes, you can disable collision with walls */
 
-raycast_info = noone;
-
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
 loading_assets = false;
 
@@ -480,7 +478,6 @@ can_tongue = true;
 tongue_move_player_toward_wall = false; /* If the player flies toward the tongue or not */
 tongue_move_player_toward_wall_timer = 0; /* If enought time has passed, then cancel the fly toward the tongue move */
 can_wall_jump = true;
-current_file = global.file;
 dive = false;
 dive_on_ground = 0;
 double_jump_depleted_blink = 0;

@@ -160,53 +160,14 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	yy_heart = y - 64;
 	
 	#region /* Have Heart Balloon */
-	if (player == 1)
+	if (ini_key_exists("Player", "player" + string(player) + "_have_heart_balloon"))
 	{
-		if (ini_key_exists("Player", "player1_have_heart_balloon"))
-		{
-			have_heart_balloon = ini_read_real("Player", "player1_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
-		}
-		else
-		{
-			ini_write_real("Player", "player1_have_heart_balloon", false);
-			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
-		}
+		have_heart_balloon = ini_read_real("Player", "player" + string(player) + "_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
 	}
-	if (player == 2)
+	else
 	{
-		if (ini_key_exists("Player", "player2_have_heart_balloon"))
-		{
-			have_heart_balloon = ini_read_real("Player", "player2_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
-		}
-		else
-		{
-			ini_write_real("Player", "player2_have_heart_balloon", false);
-			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
-		}
-	}
-	if (player == 3)
-	{
-		if (ini_key_exists("Player", "player3_have_heart_balloon"))
-		{
-			have_heart_balloon = ini_read_real("Player", "player3_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
-		}
-		else
-		{
-			ini_write_real("Player", "player3_have_heart_balloon", false);
-			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
-		}
-	}
-	if (player == 4)
-	{
-		if (ini_key_exists("Player", "player4_have_heart_balloon"))
-		{
-			have_heart_balloon = ini_read_real("Player", "player4_have_heart_balloon", false); /* If you have the heart balloon upgrade or not */
-		}
-		else
-		{
-			ini_write_real("Player", "player4_have_heart_balloon", false);
-			have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
-		}
+		ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", false);
+		have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 	}
 	#endregion /* Have Heart Balloon END */
 	

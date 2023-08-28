@@ -44,6 +44,8 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#endregion /* Make character portraits smaller if screen size is too small to fit them END */
 	
 	#region /* Set correct variables for players */
+	var player_name = global.player_name[what_player];
+	var player_color = global.player_color[what_player];
 	
 	#region /* If player is player 1, set all the variables to Player variables */
 	if (what_player == 1)
@@ -68,8 +70,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button_accept = global.player_[inp.gp][1][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][1][2][action.accept];
 		var can_input_player_name = can_input_player1_name;
-		var player_name = global.player_name[1];
-		var player_color = global.player1_color;
 	}
 	#endregion /* If player is player 1, set all the variables to Player variables END */
 	
@@ -98,8 +98,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button_accept = global.player_[inp.gp][2][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][2][2][action.accept];
 		var can_input_player_name = can_input_player2_name;
-		var player_name = global.player_name[2];
-		var player_color = global.player2_color;
 	}
 	#endregion /* If player is player 2, set all the variables to player 2 variables END */
 	
@@ -128,8 +126,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button_accept = global.player_[inp.gp][3][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][3][2][action.accept];
 		var can_input_player_name = can_input_player3_name;
-		var player_name = global.player_name[3];
-		var player_color = global.player3_color;
 	}
 	#endregion /* If player is player 3, set all the variables to player 3 variables END */
 	
@@ -158,8 +154,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button_accept = global.player_[inp.gp][4][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][4][2][action.accept];
 		var can_input_player_name = can_input_player4_name;
-		var player_name = global.player_name[4];
-		var player_color = global.player4_color;
 	}
 	#endregion /* If player is player 4, set all the variables to player 4 variables END */
 	

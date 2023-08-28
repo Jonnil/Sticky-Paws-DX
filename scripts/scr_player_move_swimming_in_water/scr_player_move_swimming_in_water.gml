@@ -3,8 +3,7 @@ function scr_player_move_swimming_in_water()
 	
 	#region /* Swimming In Water */
 	if (position_meeting(x, y, obj_water))
-	|| (instance_exists(obj_water_level))
-	&& (y > obj_water_level.y)
+	|| (y > obj_water_level.y)
 	&& (obj_water_level.y < room_height)
 	{
 		dive = false;
@@ -12,14 +11,12 @@ function scr_player_move_swimming_in_water()
 		{
 			in_water = true;
 		}
-		if (position_meeting(x, y, obj_water))
-		&& (instance_nearest(x, y, obj_water).breathable_water)
+		if (instance_nearest(x, y, obj_water).breathable_water)
 		{
 			in_breathable_water = true;
 		}
 		else
-		if (instance_exists(obj_water_level))
-		&& (y > obj_water_level.y)
+		if (y > obj_water_level.y)
 		&& (obj_water_level.y < room_height)
 		&& (instance_nearest(x, y, obj_water_level).breathable_water)
 		{
@@ -41,10 +38,7 @@ function scr_player_move_swimming_in_water()
 		wall_jump = false;
 		spring = false;
 		
-		if (!place_meeting(x, y + 1, obj_wall))
-		&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		if (!on_ground)
 		{
 			if (key_up)
 			&& (!key_down)
@@ -76,10 +70,7 @@ function scr_player_move_swimming_in_water()
 		
 		#region /* Set the gravity underwater */
 		gravity_direction = 270; /* Direction of the gravity */
-		if (!place_meeting(x, y + 1, obj_wall))
-		&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-		&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
+		if (!on_ground)
 		{
 			gravity = 0.1; /* Set gravity */
 		}
