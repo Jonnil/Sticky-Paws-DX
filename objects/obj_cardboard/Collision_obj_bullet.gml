@@ -7,7 +7,7 @@ if (instance_exists(obj_bullet))
 	|| (place_meeting(x - 5, y, obj_bullet))
 	|| (place_meeting(x + 5, y, obj_bullet))
 	{
-		break_cardboard = true;
+		alarm[1] = 1; /* Break cardboard */
 		break_cardboard_source_x = other.x;
 		break_cardboard_source_speed = other.speed;
 		

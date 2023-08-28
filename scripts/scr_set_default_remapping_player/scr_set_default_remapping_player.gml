@@ -60,7 +60,7 @@ function scr_set_default_remapping_player1_gamepad(save_default_controls_to_conf
 	global.player1_down_and_jump_to_groundpound = false;
 	global.player1_wall_jump_setting = 1;
 	global.player1_drop_from_rope = 1;
-	global.player1_show_controls = 1;
+	global.player_show_controls[1] = 0;
 	#endregion /* Player 1 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
@@ -109,7 +109,7 @@ function scr_set_default_remapping_player1_gamepad(save_default_controls_to_conf
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_wall_jump_setting", global.player1_wall_jump_setting);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_drop_from_rope", global.player1_drop_from_rope);
-		ini_write_real("player1_profile" + string(global.player1_profile), "player1_show_controls", global.player1_show_controls);
+		ini_write_real("player1_profile" + string(global.player1_profile), "player1_show_controls", global.player_show_controls[1]);
 	}
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* After setting the gamepad controls back to default, save these settings in config END */
@@ -170,7 +170,7 @@ function scr_set_default_remapping_player1_keyboard(save_default_controls_to_con
 	global.player1_down_and_jump_to_groundpound = false;
 	global.player1_wall_jump_setting = 1;
 	global.player1_drop_from_rope = 1;
-	global.player1_show_controls = 1;
+	global.player_show_controls[1] = 0;
 	#endregion /* Player 1 Keyboard Remapping END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
@@ -219,7 +219,7 @@ function scr_set_default_remapping_player1_keyboard(save_default_controls_to_con
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_wall_jump_setting", global.player1_wall_jump_setting);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_drop_from_rope", global.player1_drop_from_rope);
-		ini_write_real("player1_profile" + string(global.player1_profile), "player1_show_controls", global.player1_show_controls);
+		ini_write_real("player1_profile" + string(global.player1_profile), "player1_show_controls", global.player_show_controls[1]);
 	}
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* After setting the keyboard controls back to default, save these settings in config END */
@@ -288,7 +288,7 @@ function scr_set_default_remapping_player2_gamepad(save_default_controls_to_conf
 	global.player2_down_and_jump_to_groundpound = false;
 	global.player2_wall_jump_setting = 1;
 	global.player2_drop_from_rope = 1;
-	global.player2_show_controls = 1;
+	global.player_show_controls[2] = 0;
 	#endregion /* Player 2 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
@@ -337,7 +337,7 @@ function scr_set_default_remapping_player2_gamepad(save_default_controls_to_conf
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_wall_jump_setting", global.player2_wall_jump_setting);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_drop_from_rope", global.player2_drop_from_rope);
-		ini_write_real("player2_profile" + string(global.player2_profile), "player2_show_controls", global.player2_show_controls);
+		ini_write_real("player2_profile" + string(global.player2_profile), "player2_show_controls", global.player_show_controls[2]);
 	}
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* After setting the gamepad controls back to default, save these settings in config END */
@@ -398,7 +398,7 @@ function scr_set_default_remapping_player2_keyboard(save_default_controls_to_con
 	global.player2_down_and_jump_to_groundpound = false;
 	global.player2_wall_jump_setting = 1;
 	global.player2_drop_from_rope = 1;
-	global.player2_show_controls = 1;
+	global.player_show_controls[2] = 0;
 	#endregion /* Player 2 Keyboard Remapping (everything should be set to noone) END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
@@ -447,7 +447,7 @@ function scr_set_default_remapping_player2_keyboard(save_default_controls_to_con
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_wall_jump_setting", global.player2_wall_jump_setting);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_drop_from_rope", global.player2_drop_from_rope);
-		ini_write_real("player2_profile" + string(global.player2_profile), "player2_show_controls", global.player2_show_controls);
+		ini_write_real("player2_profile" + string(global.player2_profile), "player2_show_controls", global.player_show_controls[2]);
 	}
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* After setting the keyboard controls back to default, save these settings in config END */
@@ -516,7 +516,7 @@ function scr_set_default_remapping_player3_gamepad(save_default_controls_to_conf
 	global.player3_down_and_jump_to_groundpound = false;
 	global.player3_wall_jump_setting = 1;
 	global.player3_drop_from_rope = 1;
-	global.player3_show_controls = 1;
+	global.player_show_controls[3] = 0;
 	#endregion /* Player 3 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
@@ -565,7 +565,7 @@ function scr_set_default_remapping_player3_gamepad(save_default_controls_to_conf
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_wall_jump_setting", global.player3_wall_jump_setting);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_drop_from_rope", global.player3_drop_from_rope);
-		ini_write_real("player3_profile" + string(global.player3_profile), "player3_show_controls", global.player3_show_controls);
+		ini_write_real("player3_profile" + string(global.player3_profile), "player3_show_controls", global.player_show_controls[3]);
 	}
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* After setting the gamepad controls back to default, save these settings in config END */
@@ -626,7 +626,7 @@ function scr_set_default_remapping_player3_keyboard(save_default_controls_to_con
 	global.player3_down_and_jump_to_groundpound = false;
 	global.player3_wall_jump_setting = 1;
 	global.player3_drop_from_rope = 1;
-	global.player3_show_controls = 1;
+	global.player_show_controls[3] = 0;
 	#endregion /* Player 3 Keyboard Remapping (everything should be set to noone) END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
@@ -675,7 +675,7 @@ function scr_set_default_remapping_player3_keyboard(save_default_controls_to_con
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_wall_jump_setting", global.player3_wall_jump_setting);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_drop_from_rope", global.player3_drop_from_rope);
-		ini_write_real("player3_profile" + string(global.player3_profile), "player3_show_controls", global.player3_show_controls);
+		ini_write_real("player3_profile" + string(global.player3_profile), "player3_show_controls", global.player_show_controls[3]);
 	}
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* After setting the keyboard controls back to default, save these settings in config END */
@@ -744,7 +744,7 @@ function scr_set_default_remapping_player4_gamepad(save_default_controls_to_conf
 	global.player4_down_and_jump_to_groundpound = false;
 	global.player4_wall_jump_setting = 1;
 	global.player4_drop_from_rope = 1;
-	global.player4_show_controls = 1;
+	global.player_show_controls[4] = 0;
 	#endregion /* Player 4 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
@@ -793,7 +793,7 @@ function scr_set_default_remapping_player4_gamepad(save_default_controls_to_conf
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_wall_jump_setting", global.player4_wall_jump_setting);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_drop_from_rope", global.player4_drop_from_rope);
-		ini_write_real("player4_profile" + string(global.player4_profile), "player4_show_controls", global.player4_show_controls);
+		ini_write_real("player4_profile" + string(global.player4_profile), "player4_show_controls", global.player_show_controls[4]);
 	}
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* After setting the gamepad controls back to default, save these settings in config END */
@@ -854,7 +854,7 @@ function scr_set_default_remapping_player4_keyboard(save_default_controls_to_con
 	global.player4_down_and_jump_to_groundpound = false;
 	global.player4_wall_jump_setting = 1;
 	global.player4_drop_from_rope = 1;
-	global.player4_show_controls = 1;
+	global.player_show_controls[4] = 0;
 	#endregion /* Player 4 Keyboard Remapping (everything should be set to noone) END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
@@ -903,7 +903,7 @@ function scr_set_default_remapping_player4_keyboard(save_default_controls_to_con
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_down_and_jump_to_groundpound", global.player4_down_and_jump_to_groundpound);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_wall_jump_setting", global.player4_wall_jump_setting);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_drop_from_rope", global.player4_drop_from_rope);
-		ini_write_real("player4_profile" + string(global.player4_profile), "player4_show_controls", global.player4_show_controls);
+		ini_write_real("player4_profile" + string(global.player4_profile), "player4_show_controls", global.player_show_controls[4]);
 	}
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* After setting the keyboard controls back to default, save these settings in config END */

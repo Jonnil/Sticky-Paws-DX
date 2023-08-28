@@ -5,6 +5,7 @@ mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
 depth = -20;
+room_speed = global.max_fps;
 
 show_loading_icon = false;
 

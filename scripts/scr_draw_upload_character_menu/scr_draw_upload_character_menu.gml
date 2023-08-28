@@ -12,6 +12,7 @@ function scr_draw_upload_character_menu()
 	if (menu == "upload_clear_check_character_again")
 	{
 		if (iris_xscale < 0.1)
+		&& (menu_delay == false)
 		{
 			ini_open(working_directory + "config.ini");
 			ini_write_real("config", "character_index_player1", global.character_index[0]);
@@ -19,7 +20,12 @@ function scr_draw_upload_character_menu()
 			scr_update_all_backgrounds(); /* After setting "level index", then update backgrounds and music */
 			scr_update_all_music();
 			
-			room_goto(rm_leveleditor); /* Go to level 1 for character clear check, when clicking clear check character again button */
+			var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
+				room_goto(rm_leveleditor); /* Go to level 1 for character clear check, when clicking clear check character again button */
+			}, [], 1);
+			time_source_start(time_source);
+			
+			loading_assets = true;
 		}
 	}
 	
@@ -643,69 +649,73 @@ function scr_draw_upload_character_menu()
 			}
 			else
 			{
-				what_is_loading_text = l10n_text("Uploading character to server");
-				
-				#region /* Actually upload the character to the server */
-				
-				content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
-				
-				/* User is prompted for a file to upload */
-				file_name = filename_name(file);
-				
-				/* Create DS Map to hold the HTTP Header info */
-				map = ds_map_create();
-				
-				/* Add to the header DS Map */
-				ds_map_add(map, "Host", global.base_url);
-				var boundary = "----GMBoundary";
-				ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
-				ds_map_add(map, "User-Agent", "gmuploader");
-				ds_map_add(map, "X-API-Key", global.api_key);
-				
-				/* Loads the file into a buffer */
-				send_buffer = buffer_create(1, buffer_grow, 1);
-				buffer_load_ext(send_buffer, file, 0);
-				
-				/* Encodes the data as base64 */
-				data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
-				
-				/* Post the data to the upload script */
-				var post_data = "--" + boundary + "\r\n";
-				post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
-				post_data += file_name + "\r\n";
-				post_data += "--" + boundary + "\r\n";
-				post_data += "Content-Disposition: form-data; name=\"content_type\"\r\n\r\n";
-				post_data += "characters" + "\r\n";
-				post_data += "--" + boundary + "\r\n";
-				post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
-				post_data += data_send + "\r\n";
-				post_data += "--" + boundary + "--";
-				
-				/* Add the Content-Length header to the map */
-				ds_map_add(map, "Content-Length", string(string_length(post_data)));
-				global.http_request_id = http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
-				
-				/* Cleans up! */
-				buffer_delete(send_buffer);
-				ds_map_destroy(map);
-				
-				#endregion /* Actually upload the character to the server END */
-				
-				if (destroy_zip_after_uploading)
+				scr_switch_expand_save_data(); /* Expand the save data before upload */
+				if (global.save_data_size_is_sufficient)
 				{
-					file_delete(file); /* Delete some leftover files and folders */
-				}
-				
-				if (os_is_network_connected())
-				{
-					menu_delay = 3;
-					search_for_id_still = false;
-					menu = "character_uploaded";
-				}
-				else
-				{
-					menu_delay = 3;
-					menu = "no_internet_character";
+					what_is_loading_text = l10n_text("Uploading character to server");
+					
+					#region /* Actually upload the character to the server */
+					
+					content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
+					
+					/* User is prompted for a file to upload */
+					file_name = filename_name(file);
+					
+					/* Create DS Map to hold the HTTP Header info */
+					map = ds_map_create();
+					
+					/* Add to the header DS Map */
+					ds_map_add(map, "Host", global.base_url);
+					var boundary = "----GMBoundary";
+					ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
+					ds_map_add(map, "User-Agent", "gmuploader");
+					ds_map_add(map, "X-API-Key", global.api_key);
+					
+					/* Loads the file into a buffer */
+					send_buffer = buffer_create(1, buffer_grow, 1);
+					buffer_load_ext(send_buffer, file, 0);
+					
+					/* Encodes the data as base64 */
+					data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
+					
+					/* Post the data to the upload script */
+					var post_data = "--" + boundary + "\r\n";
+					post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
+					post_data += file_name + "\r\n";
+					post_data += "--" + boundary + "\r\n";
+					post_data += "Content-Disposition: form-data; name=\"content_type\"\r\n\r\n";
+					post_data += "characters" + "\r\n";
+					post_data += "--" + boundary + "\r\n";
+					post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
+					post_data += data_send + "\r\n";
+					post_data += "--" + boundary + "--";
+					
+					/* Add the Content-Length header to the map */
+					ds_map_add(map, "Content-Length", string(string_length(post_data)));
+					global.http_request_id = http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
+					
+					/* Cleans up! */
+					buffer_delete(send_buffer);
+					ds_map_destroy(map);
+					
+					#endregion /* Actually upload the character to the server END */
+					
+					if (destroy_zip_after_uploading)
+					{
+						file_delete(file); /* Delete some leftover files and folders */
+					}
+					
+					if (os_is_network_connected())
+					{
+						menu_delay = 3;
+						search_for_id_still = false;
+						menu = "character_uploaded";
+					}
+					else
+					{
+						menu_delay = 3;
+						menu = "no_internet_character";
+					}
 				}
 			}
 		}

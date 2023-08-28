@@ -116,7 +116,8 @@ else
 var intro_anim_done = intro_animation == "";
 var goal_clear_rate = goal && global.time_countdown_bonus <= 0;
 
-if (obj_camera.iris_xscale < 3)
+if (instance_exists(obj_camera))
+&& (obj_camera.iris_xscale < 3)
 {
 	if (goal_clear_rate && obj_camera.iris_xscale <= 0.01 && obj_camera.iris_yscale <= 0.001)
 	{
@@ -154,15 +155,22 @@ if (obj_camera.iris_xscale < 3)
 			room_goto(rm_title); /* Go back to title screen after completing a custom level normally */
 		}
 		else if (obj_camera.after_goal_go_to_this_level >= 0)
+		&& (loading_assets == false)
 		{
 			global.select_level_index = obj_camera.after_goal_go_to_this_level;
 			scr_update_all_backgrounds();
 			global.part_limit = 0; /* How many objects are currently placed in the level editor */
 			global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
 			
-			room_goto(rm_leveleditor); /* Go to another level if you're supposed to go to other levels after completion */
+			var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
+				room_goto(rm_leveleditor); /* Go to another level if you're supposed to go to other levels after completion */
+			}, [], 1);
+			time_source_start(time_source);
+			
+			loading_assets = true;
 		}
 		else
+		if (loading_assets == false)
 		{
 			/* Go back to title screen if doing character clear check, otherwise go back to world map when playing normally */
 			if (global.doing_clear_check_character)
@@ -260,20 +268,6 @@ scr_player_move_customizable_controls();
 
 /* Sets up what the buttons do */
 
-#region /* If controller gets disconnected during gameplay, pause the game */
-if (player == 1)
-&& (gamepad_is_connected(global.player1_slot))
-|| (player == 2)
-&& (gamepad_is_connected(global.player2_slot))
-|| (player == 3)
-&& (gamepad_is_connected(global.player3_slot))
-|| (player == 4)
-&& (gamepad_is_connected(global.player4_slot))
-{
-	controller_connected = true;
-}
-#endregion /* If controller gets disconnected during gameplay, pause the game END */
-
 #region /* Save to variable when on ground */
 if (place_meeting(x, y + 1, obj_wall) /* If there is wall underneath */)
 || (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) /* If there is semisolid platform underneath */)
@@ -287,6 +281,20 @@ else
 	on_ground = false;
 }
 #endregion /* Save to variable when on ground */
+
+#region /* If controller gets disconnected during gameplay, pause the game */
+if (player == 1)
+&& (gamepad_is_connected(global.player_slot[1]))
+|| (player == 2)
+&& (gamepad_is_connected(global.player_slot[2]))
+|| (player == 3)
+&& (gamepad_is_connected(global.player_slot[3]))
+|| (player == 4)
+&& (gamepad_is_connected(global.player_slot[4]))
+{
+	controller_connected = true;
+}
+#endregion /* If controller gets disconnected during gameplay, pause the game END */
 
 #region /* If player is allowed to move */
 if (can_move)
@@ -369,7 +377,6 @@ scr_player_move_mid_air_jump();
 
 #region /* Do a small jump when releasing the jump button */
 if (key_jump_released)
-&& (!key_always_do_full_jump)
 && (spring == false)
 {
 	if (vspeed < 0) /* When still traveling up */

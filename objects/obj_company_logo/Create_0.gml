@@ -241,6 +241,8 @@ global.part_limit = 0; /* How many objects are currently placed in the level edi
 global.part_limit_entity = 0; /* How many enteties are currently placed in the level editor. Enteties are object that have a lot of step events, so they can lag the game the most */
 global.part_limit_entity_text_alpha = 0; /* The text showing entity limit should fade out when you aren't placing or erasing enteties */
 
+global.save_data_size_is_sufficient = true; /* If you don't have enough save data size, then tell the player that save data is not sufficient and they should delete save data */
+global.search_id = ""; /* The online ID you are searching for */
 global.unlocked = noone; /* Save what objects are unlocked in level editor */
 global.button_design_color = 2;
 global.button_design_shape = 1;
@@ -493,10 +495,10 @@ global.player_name[3] = "";
 global.player_name[4] = "";
 
 #region /* Controller ports */
-global.player1_slot = 0;
-global.player2_slot = 1;
-global.player3_slot = 2;
-global.player4_slot = 3;
+global.player_slot[1] = 0;
+global.player_slot[2] = 1;
+global.player_slot[3] = 2;
+global.player_slot[4] = 3;
 #endregion /* Controller ports END */
 
 #region /* Remap Profiles */
@@ -694,66 +696,4 @@ switch_save_data_message[1] = "";
 switch_save_data_message[2] = "";
 switch_save_data_message[3] = "";
 switch_save_data_message[4] = "";
-
-#region /* Nintendo Switch Save Data Handling Debug */
-if (os_type == os_switch)
-{
-	
-	#region /* switch save data get size Function */
-	var account_idx = 0; /* Account index */
-	var sizes = switch_save_data_get_size(account_idx);
-	if (array_length_1d(sizes) == 2)
-	{
-		var save_data_size = sizes[0];
-		var journal_size = sizes[1];
-		show_message("Save Data Size: " + string(save_data_size) + " bytes");
-		show_message("Journal Size: " + string(journal_size) + " bytes");
-		switch_save_data_message[0] = "Save Data Size: " + string(save_data_size) + " bytes";
-		switch_save_data_message[1] = "Journal Size: " + string(journal_size) + " bytes";
-	}
-	else
-	{
-		show_message("Failed to retrieve save data sizes");
-		switch_save_data_message[0] = "Failed to retrieve save data sizes";
-	}
-	#endregion /* switch save data get size Function END */
-	
-	#region /* switch save data get max size Function */
-	var sizes = switch_save_data_get_max_size();
-	if (array_length_1d(sizes) == 2)
-	{
-		var max_save_data_size = sizes[0];
-		var max_journal_size = sizes[1];
-		show_message("Max Save Data Size: " + string(max_save_data_size) + " bytes");
-		show_message("Max Journal Size: " + string(max_journal_size) + " bytes");
-		switch_save_data_message[2] = "Max Save Data Size: " + string(max_save_data_size) + " bytes";
-		switch_save_data_message[3] = "Max Journal Size: " + string(max_journal_size) + " bytes";
-	}
-	else
-	{
-		show_message("Failed to retrieve max save data sizes");
-		switch_save_data_message[2] = "Failed to retrieve max save data sizes";
-	}
-	#endregion /* switch save data get max size Function END */
-	
-	#region /* switch save data set size Function */
-	var account_idx = 0; /* Account index */
-	var save_data_size = 2097152; /* 2 MiB (in bytes) */
-	var save_data_journal_size = 1048576; /* 1 MiB (in bytes) */
-	var success = switch_save_data_set_size(account_idx, save_data_size, save_data_journal_size);
-	if (success)
-	{
-		show_message("Save data size expanded successfully");
-		switch_save_data_message[4] = "Save data size expanded successfully";
-	}
-	else
-	{
-		show_message("Failed to expand save data size");
-		switch_save_data_message[4] = "Failed to expand save data size";
-	}
-	#endregion /* switch save data set size Function END */
-	
-}
-#endregion /* Nintendo Switch Save Data Handling Debug END */
-
 #endregion /* Things you shouldn't change, warning, don't change any of these options or you might break the game! END */

@@ -54,7 +54,6 @@ function scr_options_level_editor()
 		scr_scroll_menu();
 	
 		if (menu == "back_level_editor_options")
-		|| (menu == "quick_level_theme")
 		|| (menu == "level_theme")
 		|| (menu == "default_view_height")
 		|| (menu == "default_view_width")
@@ -130,7 +129,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "quick_level_theme";
+					menu = "level_theme";
 					menu_delay = 3;
 				}
 			}
@@ -168,7 +167,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "quick_level_theme";
+					menu = "level_theme";
 					menu_delay = 3;
 				}
 				else
@@ -470,7 +469,7 @@ function scr_options_level_editor()
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);
-			draw_menu_button(level_editor_options_x + 400, level_theme_y, l10n_text("Detailed Level Theme"), "level_theme", "change_entire_theme");
+			draw_menu_button(level_editor_options_x, level_theme_y, l10n_text("Level Theme"), "level_theme", "change_entire_theme");
 			global.default_view_height = draw_menu_left_right_buttons(level_editor_options_x, default_view_height_y, options_level_editor_right_arrow_x, "Default view height", global.default_view_height, "default_view_height", 1, false);
 			global.default_view_width = draw_menu_left_right_buttons(level_editor_options_x, default_view_width_y, options_level_editor_right_arrow_x, "Default view width", global.default_view_width, "default_view_width", 1, false);
 			draw_menu_checkmark(level_editor_options_x - 90, make_every_tileset_into_default_tileset_y, l10n_text("Make every tileset into default tileset"), "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
@@ -1673,40 +1672,40 @@ function scr_options_level_editor()
 		#region /* Change Music Menu */
 		if (menu == "back_change_music")
 		|| (menu == "change_all_music")
-		|| (menu == "change_overworld_music")
-		|| (menu == "change_underwater_music")
-		|| (menu == "change_overworld_ambience")
-		|| (menu == "change_underwater_ambience")
+		|| (menu == "change_music_overworld")
+		|| (menu == "change_music_underwater")
+		|| (menu == "change_ambience_overworld")
+		|| (menu == "change_ambience_underwater")
 		|| (menu == "change_clear_melody")
 		|| (menu == "remove_all_music")
-		|| (menu == "remove_overworld_music")
-		|| (menu == "remove_underwater_music")
-		|| (menu == "remove_overworld_ambience")
-		|| (menu == "remove_underwater_ambience")
+		|| (menu == "remove_music_overworld")
+		|| (menu == "remove_music_underwater")
+		|| (menu == "remove_ambience_overworld")
+		|| (menu == "remove_ambience_underwater")
 		|| (menu == "remove_clear_melody")
 		{
 			level_editor_options_back_to_menu = menu; /* Save what menu you came from, to use later */
 			level_editor_options_select_level_index = global.select_level_index;
 			
 			var change_all_music_y = 47 * 1;
-			var change_overworld_music_y = 47 * 2;
-			var change_underwater_music_y = 47 * 3;
-			var change_overworld_ambience_y = 47 * 4;
-			var change_underwater_ambience_y = 47 * 5;
+			var change_music_overworld_y = 47 * 2;
+			var change_music_underwater_y = 47 * 3;
+			var change_ambience_overworld_y = 47 * 4;
+			var change_ambience_underwater_y = 47 * 5;
 			var change_clear_melody_y = 47 * 6;
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_change_music", "change_music");
 			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(level_editor_options_x, change_all_music_y, l10n_text("Change All Music"), "change_all_music", "load_official_level_to_take_from");
 			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_all_music_y, 16, 0, 1, 1, 32, 32, "", "remove_all_music", "remove_theme_are_you_sure_no");
-			draw_menu_button(level_editor_options_x, change_overworld_music_y, l10n_text("Change Overworld Music"), "change_overworld_music", "load_official_level_to_take_from");
-			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_overworld_music_y, 16, 0, 1, 1, 32, 32, "", "remove_overworld_music", "remove_theme_are_you_sure_no");
-			draw_menu_button(level_editor_options_x, change_underwater_music_y, l10n_text("Change Underwater Music"), "change_underwater_music", "load_official_level_to_take_from");
-			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_underwater_music_y, 16, 0, 1, 1, 32, 32, "", "remove_underwater_music", "remove_theme_are_you_sure_no");
-			draw_menu_button(level_editor_options_x, change_overworld_ambience_y, l10n_text("Change Overworld Ambience"), "change_overworld_ambience", "load_official_level_to_take_from");
-			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_overworld_ambience_y, 16, 0, 1, 1, 32, 32, "", "remove_overworld_ambience", "remove_theme_are_you_sure_no");
-			draw_menu_button(level_editor_options_x, change_underwater_ambience_y, l10n_text("Change Underwater Ambience"), "change_underwater_ambience", "load_official_level_to_take_from");
-			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_underwater_ambience_y, 16, 0, 1, 1, 32, 32, "", "remove_underwater_ambience", "remove_theme_are_you_sure_no");
+			draw_menu_button(level_editor_options_x, change_music_overworld_y, l10n_text("Change Overworld Music"), "change_music_overworld", "load_official_level_to_take_from");
+			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_music_overworld_y, 16, 0, 1, 1, 32, 32, "", "remove_music_overworld", "remove_theme_are_you_sure_no");
+			draw_menu_button(level_editor_options_x, change_music_underwater_y, l10n_text("Change Underwater Music"), "change_music_underwater", "load_official_level_to_take_from");
+			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_music_underwater_y, 16, 0, 1, 1, 32, 32, "", "remove_music_underwater", "remove_theme_are_you_sure_no");
+			draw_menu_button(level_editor_options_x, change_ambience_overworld_y, l10n_text("Change Overworld Ambience"), "change_ambience_overworld", "load_official_level_to_take_from");
+			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_ambience_overworld_y, 16, 0, 1, 1, 32, 32, "", "remove_ambience_overworld", "remove_theme_are_you_sure_no");
+			draw_menu_button(level_editor_options_x, change_ambience_underwater_y, l10n_text("Change Underwater Ambience"), "change_ambience_underwater", "load_official_level_to_take_from");
+			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_ambience_underwater_y, 16, 0, 1, 1, 32, 32, "", "remove_ambience_underwater", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_clear_melody_y, l10n_text("Change Clear Melody"), "change_clear_meldoy", "load_official_level_to_take_from");
 			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_clear_melody_y, 16, 0, 1, 1, 32, 32, "", "remove_clear_meldoy", "remove_theme_are_you_sure_no");
 			
@@ -1765,7 +1764,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_overworld_music";
+					menu = "change_music_overworld";
 					menu_delay = 3;
 				}
 				else
@@ -1778,7 +1777,7 @@ function scr_options_level_editor()
 				}
 			}
 			else
-			if (menu == "change_overworld_music")
+			if (menu == "change_music_overworld")
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1800,7 +1799,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_underwater_music";
+					menu = "change_music_underwater";
 					menu_delay = 3;
 				}
 				else
@@ -1808,12 +1807,12 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_overworld_music";
+					menu = "remove_music_overworld";
 					menu_delay = 3;
 				}
 			}
 			else
-			if (menu == "change_underwater_music")
+			if (menu == "change_music_underwater")
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1827,7 +1826,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_overworld_music";
+					menu = "change_music_overworld";
 					menu_delay = 3;
 				}
 				else
@@ -1835,7 +1834,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_overworld_ambience";
+					menu = "change_ambience_overworld";
 					menu_delay = 3;
 				}
 				else
@@ -1843,12 +1842,12 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_underwater_music";
+					menu = "remove_music_underwater";
 					menu_delay = 3;
 				}
 			}
 			else
-			if (menu == "change_overworld_ambience")
+			if (menu == "change_ambience_overworld")
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1862,7 +1861,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_underwater_music";
+					menu = "change_music_underwater";
 					menu_delay = 3;
 				}
 				else
@@ -1870,7 +1869,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_underwater_ambience";
+					menu = "change_ambience_underwater";
 					menu_delay = 3;
 				}
 				else
@@ -1878,12 +1877,12 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_overworld_ambience";
+					menu = "remove_ambience_overworld";
 					menu_delay = 3;
 				}
 			}
 			else
-			if (menu == "change_underwater_ambience")
+			if (menu == "change_ambience_underwater")
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1897,7 +1896,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_overworld_ambience";
+					menu = "change_ambience_overworld";
 					menu_delay = 3;
 				}
 				else
@@ -1913,7 +1912,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_underwater_ambience";
+					menu = "remove_ambience_underwater";
 					menu_delay = 3;
 				}
 			}
@@ -1932,7 +1931,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_underwater_ambience";
+					menu = "change_ambience_underwater";
 					menu_delay = 3;
 				}
 				else
@@ -1979,7 +1978,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_overworld_music";
+					menu = "remove_music_overworld";
 					menu_delay = 3;
 				}
 				else
@@ -1992,7 +1991,7 @@ function scr_options_level_editor()
 				}
 			}
 			else
-			if (menu == "remove_overworld_music")
+			if (menu == "remove_music_overworld")
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2014,7 +2013,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_underwater_music";
+					menu = "remove_music_underwater";
 					menu_delay = 3;
 				}
 				else
@@ -2022,12 +2021,12 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_overworld_music";
+					menu = "change_music_overworld";
 					menu_delay = 3;
 				}
 			}
 			else
-			if (menu == "remove_underwater_music")
+			if (menu == "remove_music_underwater")
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2041,7 +2040,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_overworld_music";
+					menu = "remove_music_overworld";
 					menu_delay = 3;
 				}
 				else
@@ -2049,7 +2048,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_overworld_ambience";
+					menu = "remove_ambience_overworld";
 					menu_delay = 3;
 				}
 				else
@@ -2057,12 +2056,12 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_underwater_music";
+					menu = "change_music_underwater";
 					menu_delay = 3;
 				}
 			}
 			else
-			if (menu == "remove_overworld_ambience")
+			if (menu == "remove_ambience_overworld")
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2076,7 +2075,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_underwater_music";
+					menu = "remove_music_underwater";
 					menu_delay = 3;
 				}
 				else
@@ -2084,7 +2083,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_underwater_ambience";
+					menu = "remove_ambience_underwater";
 					menu_delay = 3;
 				}
 				else
@@ -2092,12 +2091,12 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_overworld_ambience";
+					menu = "change_ambience_overworld";
 					menu_delay = 3;
 				}
 			}
 			else
-			if (menu == "remove_underwater_ambience")
+			if (menu == "remove_ambience_underwater")
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2111,7 +2110,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_overworld_ambience";
+					menu = "remove_ambience_overworld";
 					menu_delay = 3;
 				}
 				else
@@ -2127,7 +2126,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_underwater_ambience";
+					menu = "change_ambience_underwater";
 					menu_delay = 3;
 				}
 			}
@@ -2146,7 +2145,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "remove_underwater_ambience";
+					menu = "remove_ambience_underwater";
 					menu_delay = 3;
 				}
 				else
@@ -3421,39 +3420,16 @@ function scr_options_level_editor()
 					
 					#region /* Update Thumbnail */
 					
-					/* BMP Official Thumbnail */
-					if (file_exists("levels/" + file_found + "/Thumbnail.bmp"))
-					{
-						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.bmp", 0, false, false, 0, 0));
-					}
-					else
 					/* PNG Official Thumbnail */
-					if (file_exists("levels/" + file_found + "/Thumbnail.png"))
+					if (file_exists("levels/" + file_found + "/thumbnail.png"))
 					{
-						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.png", 0, false, false, 0, 0));
-					}
-					else
-					/* GIF Official Thumbnail */
-					if (file_exists("levels/" + file_found + "/Thumbnail.gif"))
-					{
-						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.gif", 0, false, false, 0, 0));
-					}
-					else
-					/* JPG Official Thumbnail */
-					if (file_exists("levels/" + file_found + "/Thumbnail.jpg"))
-					{
-						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.jpg", 0, false, false, 0, 0));
+						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/thumbnail.png", 0, false, false, 0, 0));
 					}
 					else
 					/* PNG Automatic Thumbnail */
 					if (file_exists("levels/" + file_found + "/automatic_thumbnail.png"))
 					{
 						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/automatic_thumbnail.png", 0, false, false, 0, 0));
-					}
-					else
-					if (file_exists("levels/" + file_found + "/Automatic Thumbnail.png"))
-					{
-						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Automatic Thumbnail.png", 0, false, false, 0, 0));
 					}
 					else
 					{
@@ -3472,39 +3448,16 @@ function scr_options_level_editor()
 				{
 					
 					#region /* Update Thumbnail */
-					/* BMP Official Thumbnail */
-					if (file_exists("levels/" + file_found + "/Thumbnail.bmp"))
-					{
-						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.bmp", 0, false, false, 0, 0));
-					}
-					else
 					/* PNG Official Thumbnail */
-					if (file_exists("levels/" + file_found + "/Thumbnail.png"))
+					if (file_exists("levels/" + file_found + "/thumbnail.png"))
 					{
-						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.png", 0, false, false, 0, 0));
-					}
-					else
-					/* GIF Official Thumbnail */
-					if (file_exists("levels/" + file_found + "/Thumbnail.gif"))
-					{
-						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.gif", 0, false, false, 0, 0));
-					}
-					else
-					/* JPG Official Thumbnail */
-					if (file_exists("levels/" + file_found + "/Thumbnail.jpg"))
-					{
-						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.jpg", 0, false, false, 0, 0));
+						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/thumbnail.png", 0, false, false, 0, 0));
 					}
 					else
 					/* PNG Automatic Thumbnail */
 					if (file_exists("levels/" + file_found + "/automatic_thumbnail.png"))
 					{
 						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/automatic_thumbnail.png", 0, false, false, 0, 0));
-					}
-					else
-					if (file_exists("levels/" + file_found + "/Automatic Thumbnail.png"))
-					{
-						ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Automatic Thumbnail.png", 0, false, false, 0, 0));
 					}
 					else
 					{
@@ -3582,19 +3535,19 @@ function scr_options_level_editor()
 			{
 				var remove_text_question = "Remove all music?";
 			}
-			if (level_editor_options_back_to_menu == "remove_overworld_music")
+			if (level_editor_options_back_to_menu == "remove_music_overworld")
 			{
 				var remove_text_question = "Remove overworld music?";
 			}
-			if (level_editor_options_back_to_menu == "remove_underwater_music")
+			if (level_editor_options_back_to_menu == "remove_music_underwater")
 			{
 				var remove_text_question = "Remove underwater music?";
 			}
-			if (level_editor_options_back_to_menu == "remove_overworld_ambience")
+			if (level_editor_options_back_to_menu == "remove_ambience_overworld")
 			{
 				var remove_text_question = "Remove overworld ambience?";
 			}
-			if (level_editor_options_back_to_menu == "remove_underwater_ambience")
+			if (level_editor_options_back_to_menu == "remove_ambience_underwater")
 			{
 				var remove_text_question = "Remove underwater ambience?";
 			}
@@ -3643,17 +3596,21 @@ function scr_options_level_editor()
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background")), spr_noone);
 						ini_write_string("info", "default_background2", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), spr_noone);
 						ini_write_string("info", "default_background3", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), spr_noone);
 						ini_write_string("info", "default_background4", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), spr_noone);
 						ini_write_string("info", "default_foreground1", "");
 						ini_write_string("info", "default_foreground1_5", "");
 						ini_write_string("info", "default_foreground2", "");
 						ini_write_string("info", "default_foreground_secret", "");
-						ini_write_string("info", "default_overworld_music", "");
-						ini_write_string("info", "default_underwater_music", "");
-						ini_write_string("info", "default_overworld_ambience", "");
-						ini_write_string("info", "default_underwater_ambience", "");
+						ini_write_string("info", "default_music_overworld", "");
+						ini_write_string("info", "default_music_underwater", "");
+						ini_write_string("info", "default_ambience_overworld", "");
+						ini_write_string("info", "default_ambience_underwater", "");
 						ini_write_string("info", "default_clear_melody", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
@@ -3662,9 +3619,13 @@ function scr_options_level_editor()
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background")), spr_noone);
 						ini_write_string("info", "default_background2", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), spr_noone);
 						ini_write_string("info", "default_background3", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), spr_noone);
 						ini_write_string("info", "default_background4", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), spr_noone);
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
@@ -3682,6 +3643,7 @@ function scr_options_level_editor()
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background")), spr_noone);
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
@@ -3689,6 +3651,7 @@ function scr_options_level_editor()
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_background2", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), spr_noone);
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
@@ -3696,6 +3659,7 @@ function scr_options_level_editor()
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_background3", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), spr_noone);
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
@@ -3703,6 +3667,7 @@ function scr_options_level_editor()
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_background4", "");
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), spr_noone);
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
@@ -3737,36 +3702,36 @@ function scr_options_level_editor()
 					if (level_editor_options_back_to_menu == "remove_all_music")
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-						ini_write_string("info", "default_overworld_music", "");
-						ini_write_string("info", "default_underwater_music", "");
-						ini_write_string("info", "default_overworld_ambience", "");
-						ini_write_string("info", "default_underwater_ambience", "");
+						ini_write_string("info", "default_music_overworld", "");
+						ini_write_string("info", "default_music_underwater", "");
+						ini_write_string("info", "default_ambience_overworld", "");
+						ini_write_string("info", "default_ambience_underwater", "");
 						ini_write_string("info", "default_clear_melody", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
-					if (level_editor_options_back_to_menu == "remove_overworld_music")
+					if (level_editor_options_back_to_menu == "remove_music_overworld")
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-						ini_write_string("info", "default_overworld_music", "");
+						ini_write_string("info", "default_music_overworld", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
-					if (level_editor_options_back_to_menu == "remove_underwater_music")
+					if (level_editor_options_back_to_menu == "remove_music_underwater")
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-						ini_write_string("info", "default_underwater_music", "");
+						ini_write_string("info", "default_music_underwater", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
-					if (level_editor_options_back_to_menu == "remove_overworld_ambience")
+					if (level_editor_options_back_to_menu == "remove_ambience_overworld")
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_ambience_music", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
-					if (level_editor_options_back_to_menu == "remove_underwater_ambience")
+					if (level_editor_options_back_to_menu == "remove_ambience_underwater")
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 						ini_write_string("info", "default_ambience_music", "");

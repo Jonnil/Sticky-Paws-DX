@@ -268,25 +268,25 @@ function scr_debug_screen()
 	{
 		if (!gamepad_is_connected(0))
 		{
-			global.player1_slot = 1;
-			global.player2_slot = 2;
-			global.player3_slot = 3;
-			global.player4_slot = 4;
+			global.player_slot[1] = 1;
+			global.player_slot[2] = 2;
+			global.player_slot[3] = 3;
+			global.player_slot[4] = 4;
 		}
 		else
 		{
-			global.player1_slot = 0;
-			global.player2_slot = 1;
-			global.player3_slot = 2;
-			global.player4_slot = 3;
+			global.player_slot[1] = 0;
+			global.player_slot[2] = 1;
+			global.player_slot[3] = 2;
+			global.player_slot[4] = 3;
 		}
 	}
 	else
 	{
-		global.player1_slot = 0;
-		global.player2_slot = 1;
-		global.player3_slot = 2;
-		global.player4_slot = 3;
+		global.player_slot[1] = 0;
+		global.player_slot[2] = 1;
+		global.player_slot[3] = 2;
+		global.player_slot[4] = 3;
 	}
 	#endregion /* Controller ports END */
 	
@@ -385,6 +385,8 @@ function scr_debug_screen()
 		scr_draw_text_outlined(32, debug_text_y, "select_level_index: " + string(global.select_level_index), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "character_index: " + string(global.character_index), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "search_id: " + string(global.search_id), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
 		
 		/* Draw the name of the current room at the bottom middle of the screen */

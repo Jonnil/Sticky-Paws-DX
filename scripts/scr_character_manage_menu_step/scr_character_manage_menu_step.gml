@@ -1,5 +1,15 @@
 function scr_character_manage_menu_step()
 {
+	var max_custom_characters = 120; /* You should be able to only store 120 custom characters that you've made yourself, so stop the copy feature if limit is reached */
+	if (ds_list_size(global.all_loaded_characters) >= max_custom_characters)
+	{
+		var max_custom_characters_reached = true;
+	}
+	else
+	{
+		var max_custom_characters_reached = false;
+	}
+	
 	if (os_type == os_switch)
 	{
 		var enable_copy_character = false;
@@ -35,8 +45,8 @@ function scr_character_manage_menu_step()
 		#region /* Player 1 Key Left (change portrait sprites) */
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.left]))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padl))
-		|| (gamepad_axis_value(global.player1_slot, gp_axislh) < 0)
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padl))
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
 		display_get_gui_width() * 0.5 + player_display_x[1] - arrow_offset - 16,
@@ -79,8 +89,8 @@ function scr_character_manage_menu_step()
 		#region /* Player 1 Key Right (change portrait sprites) */
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.right]))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.right]))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padr))
-		|| (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padr))
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
 		display_get_gui_width() * 0.5 + player_display_x[1] + arrow_offset - 16,
@@ -187,11 +197,13 @@ function scr_character_manage_menu_step()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate)
 			&& (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
+			&& (!max_custom_characters_reached)
 			|| (menu == "click_copy_character")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (can_navigate)
 			&& (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
+			&& (!max_custom_characters_reached)
 			{
 				menu_delay = 3;
 				can_navigate = false;
@@ -251,8 +263,8 @@ function scr_character_manage_menu_step()
 		}
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-		|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "click_copy_character")
@@ -383,8 +395,8 @@ function scr_character_manage_menu_step()
 		
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-		|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "click_delete_character")
@@ -435,8 +447,8 @@ function scr_character_manage_menu_step()
 		
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-		|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "click_delete_character_yes")
@@ -519,8 +531,8 @@ function scr_character_manage_menu_step()
 		}
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-		|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "click_upload_character")
@@ -593,8 +605,8 @@ function scr_character_manage_menu_step()
 		}
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-		|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "open_folder_copy_character")
@@ -666,8 +678,8 @@ function scr_character_manage_menu_step()
 		}
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-		|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		{
 			if (menu == "back_from_copy_character")

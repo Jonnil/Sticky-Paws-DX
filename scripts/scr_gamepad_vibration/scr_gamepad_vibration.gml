@@ -1,6 +1,6 @@
-function scr_gamepad_vibration(which_player = 1, motor_speed = 0.5, duration = 10)
+function scr_gamepad_vibration(what_player = 1, motor_speed = 0.5, duration = 10)
 {
-	if (which_player == 1)
+	if (what_player == 1)
 	&& (instance_exists(obj_camera))
 	&& (instance_exists(obj_player))
 	&& (global.controls_used_for_menu_navigation == "controller")
@@ -11,7 +11,7 @@ function scr_gamepad_vibration(which_player = 1, motor_speed = 0.5, duration = 1
 		obj_camera.alarm[1] = duration;
 	}
 	else
-	if (which_player = 2)
+	if (what_player = 2)
 	&& (instance_exists(obj_camera))
 	&& (instance_exists(obj_player))
 	&& (global.controls_used_for_menu_navigation == "controller")
@@ -22,7 +22,7 @@ function scr_gamepad_vibration(which_player = 1, motor_speed = 0.5, duration = 1
 		obj_camera.alarm[2] = duration;
 	}
 	else
-	if (which_player = 3)
+	if (what_player = 3)
 	&& (instance_exists(obj_camera))
 	&& (instance_exists(obj_player))
 	&& (global.controls_used_for_menu_navigation == "controller")
@@ -33,7 +33,7 @@ function scr_gamepad_vibration(which_player = 1, motor_speed = 0.5, duration = 1
 		obj_camera.alarm[3] = duration;
 	}
 	else
-	if (which_player = 4)
+	if (what_player = 4)
 	&& (instance_exists(obj_camera))
 	&& (instance_exists(obj_player))
 	&& (global.controls_used_for_menu_navigation == "controller")

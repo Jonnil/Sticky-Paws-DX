@@ -2,19 +2,19 @@
 /* But don't run this code before the pause happens, do it when you return from pause */
 /* Otherwise when returning from pause menu, players that are still connected with new controller dissapear prematurely */
 /* You only want to run this code in a Room Start Event */
-if (player == 1 && !gamepad_is_connected(global.player1_slot))
+if (player == 1 && controller_connected && !gamepad_is_connected(global.player_slot[1]))
 {
 	instance_destroy();
 }
-if (player == 2 && !gamepad_is_connected(global.player2_slot))
+if (player == 2 && controller_connected && !gamepad_is_connected(global.player_slot[2]))
 {
 	instance_destroy();
 }
-if (player == 3 && !gamepad_is_connected(global.player3_slot))
+if (player == 3 && controller_connected && !gamepad_is_connected(global.player_slot[3]))
 {
 	instance_destroy();
 }
-if (player == 4 && !gamepad_is_connected(global.player4_slot))
+if (player == 4 && controller_connected && !gamepad_is_connected(global.player_slot[4]))
 {
 	instance_destroy();
 }

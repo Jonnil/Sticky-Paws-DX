@@ -6,6 +6,7 @@ function scr_custom_level_select_with_the_mouse(all_loaded_what = global.all_loa
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
+	&& (menu != "load_custom_level")
 	{
 		
 		/* Don't set the "row" or "thumbnail_x_offset" variables in here, those variables are set in "scr select custom level menu" */
@@ -30,6 +31,7 @@ function scr_custom_level_select_with_the_mouse(all_loaded_what = global.all_loa
 						menu = "level_editor_play";
 					}
 					else
+					if (room == rm_leveleditor)
 					if (menu != "choose_official_level_to_take_from")
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{

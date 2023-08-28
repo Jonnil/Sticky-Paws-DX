@@ -30,13 +30,7 @@ function scr_draw_online_download_list()
 		in_online_download_list_menu = true;
 		menu_delay = 3;
 		
-		#region /* Draw loading screen when loading download list */
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		global.loading_spinning_angle -= 10;
-		draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
-		#endregion /* Draw loading screen when loading download list END */
+		scr_draw_loading(1); /* Draw loading screen when loading download list END */
 		
 		if (!os_is_network_connected())
 		{
@@ -102,7 +96,7 @@ function scr_draw_online_download_list()
 		|| (menu == "download_online_search_id")
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42, 370, 42 + 42))
 		&& (mouse_check_button_released(mb_left))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_face4))
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
 		{
 			in_online_download_list_menu = false; /* Get out of the online download list menu */
 			automatically_search_for_id = false; /* Manual search ID */
@@ -403,7 +397,7 @@ function scr_draw_online_download_list()
 			}
 			
 			#region /* Draw Search Key */
-			if (gamepad_is_connected(global.player1_slot))
+			if (gamepad_is_connected(global.player_slot[1]))
 			&& (global.controls_used_for_menu_navigation == "controller")
 			|| (global.always_show_gamepad_buttons)
 			{

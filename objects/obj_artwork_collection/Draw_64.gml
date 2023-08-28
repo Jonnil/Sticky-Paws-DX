@@ -6,25 +6,25 @@ var mouse_get_y = device_mouse_y_to_gui(0);
 #region /* Keyboard Controls */
 var key_left = (keyboard_check_pressed(vk_left))
 || (keyboard_check_pressed(ord("A")))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_padl))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_padl))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_padl))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_padl))
-|| (gamepad_axis_value(global.player1_slot, gp_axislh) < 0)
-|| (gamepad_axis_value(global.player2_slot, gp_axislh) < 0)
-|| (gamepad_axis_value(global.player3_slot, gp_axislh) < 0)
-|| (gamepad_axis_value(global.player4_slot, gp_axislh) < 0);
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_padl))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_padl))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_padl))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_padl))
+|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < 0)
+|| (gamepad_axis_value(global.player_slot[2], gp_axislh) < 0)
+|| (gamepad_axis_value(global.player_slot[3], gp_axislh) < 0)
+|| (gamepad_axis_value(global.player_slot[4], gp_axislh) < 0);
 
 var key_right = (keyboard_check_pressed(vk_right))
 || (keyboard_check_pressed(ord("D")))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_padr))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_padr))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_padr))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_padr))
-|| (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
-|| (gamepad_axis_value(global.player2_slot, gp_axislh) > 0)
-|| (gamepad_axis_value(global.player3_slot, gp_axislh) > 0)
-|| (gamepad_axis_value(global.player4_slot, gp_axislh) > 0);
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_padr))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_padr))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_padr))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_padr))
+|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > 0)
+|| (gamepad_axis_value(global.player_slot[2], gp_axislh) > 0)
+|| (gamepad_axis_value(global.player_slot[3], gp_axislh) > 0)
+|| (gamepad_axis_value(global.player_slot[4], gp_axislh) > 0);
 #endregion /* Keyboard Controls END */
 
 xx = lerp(xx, get_window_width * 0.5, 0.1);
@@ -188,7 +188,7 @@ draw_set_valign(fa_middle);
 scr_draw_text_outlined(+ 32, get_window_height - 32, "< " + l10n_text("Artwork") + " " + string(image_index + 1) + "/" + string(image_number) + " >", global.default_text_size * 2, c_black, c_white, 1);
 #endregion /* Draw what artwork is selected END */
 
-if (gamepad_is_connected(global.player1_slot))
+if (gamepad_is_connected(global.player_slot[1]))
 && (global.controls_used_for_menu_navigation == "controller")
 || (global.always_show_gamepad_buttons)
 {
@@ -261,7 +261,7 @@ draw_menu_button(get_window_width - 370, get_window_height - 42, l10n_text("Back
 draw_sprite_ext(spr_icons_back, 0, get_window_width - 370 + 20, get_window_height - 42 + 21, 1, 1, 0, c_white, 1);
 
 #region /* Draw Back Key */
-if (gamepad_is_connected(global.player1_slot))
+if (gamepad_is_connected(global.player_slot[1]))
 && (global.controls_used_for_menu_navigation == "controller")
 || (global.always_show_gamepad_buttons)
 {

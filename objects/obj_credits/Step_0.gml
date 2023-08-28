@@ -13,10 +13,10 @@ if (global.controls_used_for_menu_navigation == "mouse")
 
 /* Update Skip and Menu Delay */
 var skip_increment = (keyboard_check(vk_escape)
-    || gamepad_button_check(global.player1_slot, gp_start)
-    || gamepad_button_check(global.player2_slot, gp_start)
-    || gamepad_button_check(global.player3_slot, gp_start)
-    || gamepad_button_check(global.player4_slot, gp_start)
+    || gamepad_button_check(global.player_slot[1], gp_start)
+    || gamepad_button_check(global.player_slot[2], gp_start)
+    || gamepad_button_check(global.player_slot[3], gp_start)
+    || gamepad_button_check(global.player_slot[4], gp_start)
     || (os_type == os_ios || os_type == os_android) && mouse_check_button(mb_left)) ? 1 : 0;
 
 if (skip_increment > 0)
@@ -77,10 +77,10 @@ if (iris_xscale <= 0.01)
 /* Handle Time, Animation, and Input */
 var action_accept = global.player_[inp.gp];
 if (keyboard_check(vk_space)
-    || gamepad_button_check(global.player1_slot, action_accept[1][1][action.accept])
-    || gamepad_button_check(global.player2_slot, action_accept[2][1][action.accept])
-    || gamepad_button_check(global.player3_slot, action_accept[3][1][action.accept])
-    || gamepad_button_check(global.player4_slot, action_accept[4][1][action.accept]))
+    || gamepad_button_check(global.player_slot[1], action_accept[1][1][action.accept])
+    || gamepad_button_check(global.player_slot[2], action_accept[2][1][action.accept])
+    || gamepad_button_check(global.player_slot[3], action_accept[3][1][action.accept])
+    || gamepad_button_check(global.player_slot[4], action_accept[4][1][action.accept]))
 {
     time += 10;
     y = lerp(y, yy, 0.75);

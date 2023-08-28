@@ -14,7 +14,7 @@ if (can_move)
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(64, get_window_height - 28, l10n_text("Play"), global.default_text_size, c_black, c_white, 1);
-	if (gamepad_is_connected(global.player1_slot))
+	if (gamepad_is_connected(global.player_slot[1]))
 	&& (global.controls_used_for_menu_navigation == "controller")
 	|| (global.always_show_gamepad_buttons)
 	{
@@ -88,7 +88,7 @@ if (global.debug_screen)
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(clear_prompt_x + 32, get_window_height - 28, l10n_text("Clear"), global.default_text_size, c_black, c_white, 1);
-		if (gamepad_is_connected(global.player1_slot))
+		if (gamepad_is_connected(global.player_slot[1]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, c_white, 1);
@@ -198,13 +198,7 @@ if (iris_yscale <= 0.002)
 		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 	}
 	
-	#region /* Draw loading screen when transitioning to other rooms */
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_middle);
-	global.loading_spinning_angle -= 10;
-	draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 1, 1, global.loading_spinning_angle, c_white, 1);
-	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, l10n_text("Loading"), global.default_text_size, c_white, c_black, 1);
-	#endregion /* Draw loading screen when transitioning to other rooms END */
+	scr_draw_loading(1); /* Draw loading screen when transitioning to other rooms */
 	
 }
 #endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */

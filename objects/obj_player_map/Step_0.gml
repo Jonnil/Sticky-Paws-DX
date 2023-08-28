@@ -84,23 +84,23 @@ if (display_get_gui_width() > 0)
 }
 
 if (keyboard_check_pressed(vk_escape) ||
-	gamepad_button_check_pressed(global.player1_slot, gp_select) ||
-	gamepad_button_check_pressed(global.player1_slot, gp_start) ||
-	gamepad_button_check_pressed(global.player2_slot, gp_select) ||
-	gamepad_button_check_pressed(global.player2_slot, gp_start) ||
-	gamepad_button_check_pressed(global.player3_slot, gp_select) ||
-	gamepad_button_check_pressed(global.player3_slot, gp_start) ||
-	gamepad_button_check_pressed(global.player4_slot, gp_select) ||
-	gamepad_button_check_pressed(global.player4_slot, gp_start) ||
+	gamepad_button_check_pressed(global.player_slot[1], gp_select) ||
+	gamepad_button_check_pressed(global.player_slot[1], gp_start) ||
+	gamepad_button_check_pressed(global.player_slot[2], gp_select) ||
+	gamepad_button_check_pressed(global.player_slot[2], gp_start) ||
+	gamepad_button_check_pressed(global.player_slot[3], gp_select) ||
+	gamepad_button_check_pressed(global.player_slot[3], gp_start) ||
+	gamepad_button_check_pressed(global.player_slot[4], gp_select) ||
+	gamepad_button_check_pressed(global.player_slot[4], gp_start) ||
 	(!window_has_focus() && global.automatically_pause_when_window_is_unfocused)
 	)
 {
 	var pause_player = 0;
-	if (gamepad_button_check_pressed(global.player2_slot, gp_select) || gamepad_button_check_pressed(global.player2_slot, gp_start))
+	if (gamepad_button_check_pressed(global.player_slot[2], gp_select) || gamepad_button_check_pressed(global.player_slot[2], gp_start))
 		pause_player = 1;
-	else if (gamepad_button_check_pressed(global.player3_slot, gp_select) || gamepad_button_check_pressed(global.player3_slot, gp_start))
+	else if (gamepad_button_check_pressed(global.player_slot[3], gp_select) || gamepad_button_check_pressed(global.player_slot[3], gp_start))
 		pause_player = 2;
-	else if (gamepad_button_check_pressed(global.player4_slot, gp_select) || gamepad_button_check_pressed(global.player4_slot, gp_start))
+	else if (gamepad_button_check_pressed(global.player_slot[4], gp_select) || gamepad_button_check_pressed(global.player_slot[4], gp_start))
 		pause_player = 3;
 	
 	global.pause_player = pause_player;
@@ -287,7 +287,7 @@ if (can_move)
 			{
 				
 				#region /* Key Right */
-				if (gamepad_is_connected(global.player1_slot))
+				if (gamepad_is_connected(global.player_slot[1]))
 				&& (global.controls_used_for_menu_navigation == "controller")
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -353,7 +353,7 @@ if (can_move)
 			{
 				
 				#region /* Key Left */
-				if (gamepad_is_connected(global.player1_slot))
+				if (gamepad_is_connected(global.player_slot[1]))
 				&& (global.controls_used_for_menu_navigation == "controller")
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -422,7 +422,7 @@ if (can_move)
 			{
 				
 				#region /* Key Down */
-				if (gamepad_is_connected(global.player1_slot))
+				if (gamepad_is_connected(global.player_slot[1]))
 				&& (global.controls_used_for_menu_navigation == "controller")
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -456,7 +456,7 @@ if (can_move)
 			{
 				
 				#region /* Key Up */
-				if (gamepad_is_connected(global.player1_slot))
+				if (gamepad_is_connected(global.player_slot[1]))
 				&& (global.controls_used_for_menu_navigation == "controller")
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -537,6 +537,7 @@ if (can_move == false)
 && (delay >= 60)
 && (iris_yscale <= 0.001)
 && (global.quit_level == false)
+&& (loading_assets == false)
 {
 	global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the level name to the level you're entering */
 	
@@ -563,7 +564,13 @@ if (can_move == false)
 	global.part_limit = 0; /* How many objects are currently placed in the level editor */
 	global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
 	
-	room_goto(rm_leveleditor); /* Start the level from world map */
+	var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
+		audio_stop_sound(music_map); /* Stop any world map music when playing a level */
+		room_goto(rm_leveleditor); /* Start the level from world map */
+	}, [], 1);
+	time_source_start(time_source);
+	
+	loading_assets = true;
 }
 #endregion /* After pressing enter level, the iris should shrink and then start the level END */
 

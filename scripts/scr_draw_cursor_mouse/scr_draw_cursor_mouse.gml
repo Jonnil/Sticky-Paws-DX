@@ -7,6 +7,7 @@ function scr_draw_cursor_mouse()
 	&& (obj_camera.player1 >= 1)
 	&& (obj_camera.can_spawn_player1)
 	&& (obj_camera.player1.allow_tongue)
+	&& (global.play_edited_level)
 	{
 		/* Do not show normal cursor */
 	}

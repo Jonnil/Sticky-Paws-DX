@@ -40,10 +40,11 @@ function scr_draw_upload_level_menu()
 		}
 		can_input_level_name = false;
 		if (room == rm_title && point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (upload_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (upload_y) - 3 + 42) && mouse_check_button_released(mb_left) && global.controls_used_for_menu_navigation == "mouse")
-		|| (room = rm_leveleditor && point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42) && mouse_check_button_released(mb_left) && global.controls_used_for_menu_navigation == "mouse")
+		|| (room == rm_leveleditor && point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42) && mouse_check_button_released(mb_left) && global.controls_used_for_menu_navigation == "mouse")
 		|| (key_a_pressed)
 		{
 			if (global.free_communication_available)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (global.online_enabled)
 				{
@@ -847,33 +848,37 @@ function scr_draw_upload_level_menu()
 			&& (menu == "upload_enter_name_ok")
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_name_y + 54, get_window_width * 0.5 - 185 + 370, draw_name_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]))
 			{
 				if (level_editor_edit_name)
 				&& (global.level_name != old_level_name)
 				{
-					can_navigate = true;
-					menu_delay = 3;
-					ini_open(working_directory + "save_files/custom_level_save.ini");
-					ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
-					ini_close();
-					scr_copy_move_files(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "custom_levels/" + string(global.level_name), true);
-					scr_load_custom_level_initializing();
-					global.go_to_menu_when_going_back_to_title = "upload_edit_name";
-					menu = "load_custom_level";
-					level_editor_edit_name = false;
-					if (global.level_name != "")
+					scr_switch_expand_save_data(); /* Expand the save data before editing level name */
+					if (global.save_data_size_is_sufficient)
 					{
-						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-						ini_write_string("info", "level_name", global.level_name);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						can_navigate = true;
+						menu_delay = 3;
+						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
+						ini_close();
+						scr_copy_move_files(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "custom_levels/" + string(global.level_name), true);
+						scr_load_custom_level_initializing();
+						global.go_to_menu_when_going_back_to_title = "upload_edit_name";
+						menu = "load_custom_level";
+						level_editor_edit_name = false;
+						if (global.level_name != "")
+						{
+							ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+							ini_write_string("info", "level_name", global.level_name);
+							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						}
 					}
 				}
 				else
@@ -914,14 +919,14 @@ function scr_draw_upload_level_menu()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_name_y + 54 + 42, get_window_width * 0.5 - 185 + 370, draw_name_y + 54 + 42 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (mouse_check_button_released(mb_right))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back]))
 			{
 				menu_delay = 3;
 				if (instance_exists(obj_camera))
@@ -988,14 +993,14 @@ function scr_draw_upload_level_menu()
 			&& (menu == "upload_enter_description_ok")
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_y + 54, get_window_width * 0.5 - 185 + 370, draw_description_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]))
 			{
 				if (level_editor_edit_name)
 				&& (global.level_description != old_level_description)
@@ -1051,14 +1056,14 @@ function scr_draw_upload_level_menu()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_y + 54 + 42, get_window_width * 0.5 - 185 + 370, draw_description_y + 54 + 42 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (mouse_check_button_released(mb_right))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back]))
 			{
 				menu_delay = 3;
 				if (instance_exists(obj_camera))
@@ -1549,64 +1554,68 @@ function scr_draw_upload_level_menu()
 			}
 			else
 			{
-				
-				#region /* Actually upload the level to the server */
-				content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
-				
-				/* User is prompted for a file to upload */
-				file_name = filename_name(file);
-				
-				/* Create DS Map to hold the HTTP Header info */
-				map = ds_map_create();
-				
-				/* Add to the header DS Map */
-				ds_map_add(map, "Host", global.base_url);
-				var boundary = "----GMBoundary";
-				ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
-				ds_map_add(map, "User-Agent", "gmuploader");
-				ds_map_add(map, "X-API-Key", global.api_key);
-				
-				/* Loads the file into a buffer */
-				send_buffer = buffer_create(1, buffer_grow, 1);
-				buffer_load_ext(send_buffer, file, 0);
-				
-				/* Encodes the data as base64 */
-				data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
-				
-				/* Post the data to the upload script */
-				var post_data = "--" + boundary + "\r\n";
-				post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
-				post_data += file_name + "\r\n";
-				post_data += "--" + boundary + "\r\n";
-				post_data += "Content-Disposition: form-data; name=\"content_type\"\r\n\r\n";
-				post_data += "levels" + "\r\n";
-				post_data += "--" + boundary + "\r\n";
-				post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
-				post_data += data_send + "\r\n";
-				post_data += "--" + boundary + "--";
-				
-				/* Add the Content-Length header to the map */
-				ds_map_add(map, "Content-Length", string(string_length(post_data)));
-				global.http_request_id = http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
-				
-				/* Cleans up! */
-				buffer_delete(send_buffer);
-				ds_map_destroy(map);
-				#endregion /* Actually upload the level to the server END */
-				
-				/* Delete some leftover files and folders */
-				if (destroy_zip_after_uploading)
+				scr_switch_expand_save_data(); /* Expand the save data before upload */
+				if (global.save_data_size_is_sufficient)
 				{
-					file_delete(file);
-				}
-				if (os_is_network_connected())
-				{
-					search_for_id_still = false;
-					menu = "level_uploaded";
-				}
-				else
-				{
-					menu = "no_internet_level"
+					
+					#region /* Actually upload the level to the server */
+					content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
+					
+					/* User is prompted for a file to upload */
+					file_name = filename_name(file);
+					
+					/* Create DS Map to hold the HTTP Header info */
+					map = ds_map_create();
+					
+					/* Add to the header DS Map */
+					ds_map_add(map, "Host", global.base_url);
+					var boundary = "----GMBoundary";
+					ds_map_add(map, "Content-Type", "multipart/form-data; boundary=" + boundary);
+					ds_map_add(map, "User-Agent", "gmuploader");
+					ds_map_add(map, "X-API-Key", global.api_key);
+					
+					/* Loads the file into a buffer */
+					send_buffer = buffer_create(1, buffer_grow, 1);
+					buffer_load_ext(send_buffer, file, 0);
+					
+					/* Encodes the data as base64 */
+					data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
+					
+					/* Post the data to the upload script */
+					var post_data = "--" + boundary + "\r\n";
+					post_data += "Content-Disposition: form-data; name=\"name\"\r\n\r\n";
+					post_data += file_name + "\r\n";
+					post_data += "--" + boundary + "\r\n";
+					post_data += "Content-Disposition: form-data; name=\"content_type\"\r\n\r\n";
+					post_data += "levels" + "\r\n";
+					post_data += "--" + boundary + "\r\n";
+					post_data += "Content-Disposition: form-data; name=\"data\"\r\n\r\n";
+					post_data += data_send + "\r\n";
+					post_data += "--" + boundary + "--";
+					
+					/* Add the Content-Length header to the map */
+					ds_map_add(map, "Content-Length", string(string_length(post_data)));
+					global.http_request_id = http_request("https://" + global.base_url + global.upload_endpoint, "POST", map, post_data);
+					
+					/* Cleans up! */
+					buffer_delete(send_buffer);
+					ds_map_destroy(map);
+					#endregion /* Actually upload the level to the server END */
+					
+					/* Delete some leftover files and folders */
+					if (destroy_zip_after_uploading)
+					{
+						file_delete(file);
+					}
+					if (os_is_network_connected())
+					{
+						search_for_id_still = false;
+						menu = "level_uploaded";
+					}
+					else
+					{
+						menu = "no_internet_level";
+					}
 				}
 			}
 		}
@@ -1845,6 +1854,7 @@ function scr_draw_upload_level_menu()
 	if (room == rm_title)
 	&& (iris_xscale <= 0.001)
 	&& (global.character_select_in_this_menu == "level_editor")
+	&& (loading_assets == false)
 	{
 		if (audio_is_playing(title_music))
 		{
@@ -1855,7 +1865,12 @@ function scr_draw_upload_level_menu()
 		global.part_limit = 0; /* How many objects are currently placed in the level editor */
 		global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
 		
-		room_goto(rm_leveleditor); /* Enter level editor from upload level menu */
+		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
+			room_goto(rm_leveleditor); /* Enter level editor from upload level menu */
+		}, [], 1);
+		time_source_start(time_source);
+		
+		loading_assets = true;
 	}
 	#endregion /* Enter Custom Level END */
 	

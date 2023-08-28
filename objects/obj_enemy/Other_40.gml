@@ -39,4 +39,20 @@ else
 }
 #endregion /* Don't move outside view END */
 
-scr_enemy_dying_offscreen();
+if (bbox_top > room_height + 16)
+{
+	y = room_height * 2
+	instance_destroy();
+}
+
+if (bbox_left > view_right + 16)
+|| (bbox_right < view_left - 16)
+|| (bbox_top > view_bottom + 16)
+|| (bbox_bottom < view_top - 16)
+{
+	if (die)
+	{
+		y = room_height * 2
+		instance_destroy();
+	}
+}

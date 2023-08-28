@@ -1,5 +1,15 @@
 function scr_character_manage_menu_draw()
 {
+	var max_custom_characters = 120; /* You should be able to only store 120 custom characters that you've made yourself, so stop the copy feature if limit is reached */
+	if (ds_list_size(global.all_loaded_characters) >= max_custom_characters)
+	{
+		var max_custom_characters_reached = true;
+	}
+	else
+	{
+		var max_custom_characters_reached = false;
+	}
+	
 	if (os_type == os_switch)
 	{
 		var enable_copy_character = false;
@@ -42,7 +52,7 @@ function scr_character_manage_menu_draw()
 		&& (menu != "click_delete_character_no")
 		&& (menu != "click_delete_character_yes")
 		{
-			if (gamepad_is_connected(global.player1_slot))
+			if (gamepad_is_connected(global.player_slot[1]))
 			&& (global.controls_used_for_menu_navigation == "controller")
 			{
 				scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[1] - arrow_offset, get_window_height * 0.5, 0.5, c_white, 1);
@@ -80,7 +90,7 @@ function scr_character_manage_menu_draw()
 		&& (menu != "click_delete_character_no")
 		&& (menu != "click_delete_character_yes")
 		{
-			if (gamepad_is_connected(global.player1_slot))
+			if (gamepad_is_connected(global.player_slot[1]))
 			&& (global.controls_used_for_menu_navigation == "controller")
 			{
 				scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[1] + arrow_offset, get_window_height * 0.5, 0.5, c_white, 1);
@@ -114,7 +124,7 @@ function scr_character_manage_menu_draw()
 	
 		#endregion /* Left and Right Keys END */
 		
-		scr_draw_text_outlined(get_window_width * 0.5, 48, l10n_text("Manage Characters"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
+		//scr_draw_text_outlined(get_window_width * 0.5, 48, l10n_text("Manage Characters"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 		
 		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
 		{
@@ -170,6 +180,11 @@ function scr_character_manage_menu_draw()
 			|| (menu == "back_from_copy_character")
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, copy_character_y, l10n_text("Copy Character"), "click_copy_character", "click_copy_character"); /* Copy Characters */
+				if (max_custom_characters_reached)
+				{
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 185, copy_character_y + 21, 1, 1, 0, c_dkgray, 0.5);
+					draw_sprite_ext(spr_lock_icon, 0, get_window_width * 0.5 - 185 + 16, copy_character_y + 21, 1, 1, 0, c_white, 1);
+				}
 				if (selecting_official_character == false)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no", c_red); /* Delete Characters */
@@ -237,7 +252,20 @@ function scr_character_manage_menu_draw()
 			scr_draw_loading(1, get_window_width * 0.5, get_window_height - 32 - (32 * 5));
 			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32 - (32 * 3), string(file_found), global.default_text_size, c_white, c_black, 1);
 		}
+		
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_center);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 16, string(ds_list_size(global.all_loaded_characters)) + " " + l10n_text("Characters"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		if (ds_list_size(global.all_loaded_characters) >= 120) /* If there are more than 120 characters stored, warn player about there being too many characters */
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("There are too many characters stored"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 3, l10n_text("Delete some characters"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("There are too many characters stored"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 3, l10n_text("Delete some characters"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+		}
+		
 	}
 	
 	scr_draw_upload_character_menu();
+	
 }

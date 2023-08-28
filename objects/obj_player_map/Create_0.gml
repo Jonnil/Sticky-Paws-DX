@@ -6,6 +6,7 @@ room_speed = global.max_fps;
 character_folder = "";
 skin_folder = "";
 can_save_to_character_config = false;
+loading_assets = false;
 
 scr_delete_sprite_properly(global.custom_background1);
 scr_delete_sprite_properly(global.custom_background2);

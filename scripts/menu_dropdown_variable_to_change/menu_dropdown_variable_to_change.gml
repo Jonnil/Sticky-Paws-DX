@@ -112,24 +112,24 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	}
 	else
 	if (menu == "show_controls")
-	&& (variable_to_change = global.player1_show_controls)
+	&& (variable_to_change = global.player_show_controls[1])
 	&& (remapping_player == 0)
 	{
-		global.player1_show_controls = change_to_value;
+		global.player_show_controls[1] = change_to_value;
 	}
 	else
 	if (menu == "show_controls")
-	&& (variable_to_change = global.player2_show_controls)
+	&& (variable_to_change = global.player_show_controls[2])
 	&& (remapping_player == 1)
 	{
-		global.player2_show_controls = change_to_value;
+		global.player_show_controls[2] = change_to_value;
 	}
 	else
 	if (menu == "show_controls")
-	&& (variable_to_change = global.player3_show_controls)
+	&& (variable_to_change = global.player_show_controls[3])
 	&& (remapping_player == 2)
 	{
-		global.player3_show_controls = change_to_value;
+		global.player_show_controls[3] = change_to_value;
 	}
 	else
 	if (menu == "show_controls")

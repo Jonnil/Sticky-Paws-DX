@@ -528,7 +528,7 @@ if (global.play_edited_level) /* When playtesting the level */
 	draw_sprite_ext(spr_menu_button_pause, 0, 32, display_get_gui_height() - 32, 1, 1, 0, c_white, 1);
 	
 	#region /* Draw Pause Key */
-	if (gamepad_is_connected(global.player1_slot))
+	if (gamepad_is_connected(global.player_slot[1]))
 	&& (global.controls_used_for_menu_navigation == "controller")
 	|| (global.always_show_gamepad_buttons)
 	{

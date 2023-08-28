@@ -6,6 +6,8 @@ scr_delete_sprite_properly(global.custom_foreground1);
 scr_delete_sprite_properly(global.custom_foreground1_5);
 scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
+loading_assets = false;
+allowed_to_load_template_level = false;
 
 menu = "";
 

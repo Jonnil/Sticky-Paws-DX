@@ -2,6 +2,15 @@
 can_spawn_players = true;
 #endregion /* Debug toggles END */
 
+#region /* Set Backgrounds */
+layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);
+layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);
+layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), global.custom_background3);
+layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), global.custom_background4);
+#endregion /* Set Backgrounds END */
+
+scr_make_background_visible();
+
 room_speed = global.max_fps; /* Room Speed is max fps */
 
 scr_initialize_camera();

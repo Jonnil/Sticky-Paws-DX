@@ -70,10 +70,10 @@ if (menu == "load_characters")
 	
 	#region /* Player Automatically Join */
 	/* When going to the character select menu, game should remember what player entered the menu, and therefore should automatically join the game, as the game should already know for certain that player is already joining the game */
-	/* Player 1 Key Accept Hold */ player1_key_a_hold = (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.accept])) || (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][2][action.accept])) || (keyboard_check(global.player_[inp.key][1][1][action.accept])) || (keyboard_check(global.player_[inp.key][1][2][action.accept])) || (keyboard_check(vk_space));
-	/* Player 2 Key Accept Hold */ player2_key_a_hold = (gamepad_button_check(global.player2_slot, global.player_[inp.gp][2][1][action.accept])) || (gamepad_button_check(global.player2_slot, global.player_[inp.gp][2][2][action.accept])) || (keyboard_check(global.player_[inp.key][2][1][action.accept])) || (keyboard_check(global.player_[inp.key][2][2][action.accept]));
-	/* Player 3 Key Accept Hold */ player3_key_a_hold = (gamepad_button_check(global.player3_slot, global.player_[inp.gp][3][1][action.accept])) || (gamepad_button_check(global.player3_slot, global.player_[inp.gp][3][2][action.accept])) || (keyboard_check(global.player_[inp.key][3][1][action.accept])) || (keyboard_check(global.player_[inp.key][3][2][action.accept]));
-	/* Player 4 Key Accept Hold */ player4_key_a_hold = (gamepad_button_check(global.player4_slot, global.player_[inp.gp][4][1][action.accept])) || (gamepad_button_check(global.player4_slot, global.player_[inp.gp][4][2][action.accept])) || (keyboard_check(global.player_[inp.key][4][1][action.accept])) || (keyboard_check(global.player_[inp.key][4][2][action.accept]));
+	/* Player 1 Key Accept Hold */ player1_key_a_hold = (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][1][action.accept])) || (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][2][action.accept])) || (keyboard_check(global.player_[inp.key][1][1][action.accept])) || (keyboard_check(global.player_[inp.key][1][2][action.accept])) || (keyboard_check(vk_space));
+	/* Player 2 Key Accept Hold */ player2_key_a_hold = (gamepad_button_check(global.player_slot[2], global.player_[inp.gp][2][1][action.accept])) || (gamepad_button_check(global.player_slot[2], global.player_[inp.gp][2][2][action.accept])) || (keyboard_check(global.player_[inp.key][2][1][action.accept])) || (keyboard_check(global.player_[inp.key][2][2][action.accept]));
+	/* Player 3 Key Accept Hold */ player3_key_a_hold = (gamepad_button_check(global.player_slot[3], global.player_[inp.gp][3][1][action.accept])) || (gamepad_button_check(global.player_slot[3], global.player_[inp.gp][3][2][action.accept])) || (keyboard_check(global.player_[inp.key][3][1][action.accept])) || (keyboard_check(global.player_[inp.key][3][2][action.accept]));
+	/* Player 4 Key Accept Hold */ player4_key_a_hold = (gamepad_button_check(global.player_slot[4], global.player_[inp.gp][4][1][action.accept])) || (gamepad_button_check(global.player_slot[4], global.player_[inp.gp][4][2][action.accept])) || (keyboard_check(global.player_[inp.key][4][1][action.accept])) || (keyboard_check(global.player_[inp.key][4][2][action.accept]));
 	if (player1_key_a_hold)
 	{
 		player1_automatically_join = true;
@@ -264,35 +264,15 @@ if (menu == "load_custom_level")
 				ds_list_add(global.all_loaded_custom_levels, file_found)
 				
 				#region /* Update Thumbnail */
-				/* BMP Custom Thumbnail */if (file_exists(working_directory + "custom_levels/" + file_found + "/Thumbnail.bmp"))
+				/* PNG Custom Thumbnail */if (file_exists(working_directory + "custom_levels/" + file_found + "/thumbnail.png"))
 				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/Thumbnail.bmp", 0, false, false, 0, 0));
-				}
-				else
-				/* PNG Custom Thumbnail */if (file_exists(working_directory + "custom_levels/" + file_found + "/Thumbnail.png"))
-				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/Thumbnail.png", 0, false, false, 0, 0));
-				}
-				else
-				/* GIF Custom Thumbnail */if (file_exists(working_directory + "custom_levels/" + file_found + "/Thumbnail.gif"))
-				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/Thumbnail.gif", 0, false, false, 0, 0));
-				}
-				else
-				/* JPG Custom Thumbnail */if (file_exists(working_directory + "custom_levels/" + file_found + "/Thumbnail.jpg"))
-				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/Thumbnail.jpg", 0, false, false, 0, 0));
+					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/thumbnail.png", 0, false, false, 0, 0));
 				}
 				else
 				/* PNG Automatic Thumbnail */
 				if (file_exists(working_directory + "custom_levels/" + file_found + "/automatic_thumbnail.png"))
 				{
 					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/automatic_thumbnail.png", 0, false, false, 0, 0));
-				}
-				else
-				if (file_exists(working_directory + "custom_levels/" + file_found + "/Automatic Thumbnail.png"))
-				{
-					ds_list_add(global.thumbnail_sprite, sprite_add(working_directory + "custom_levels/" + file_found + "/Automatic Thumbnail.png", 0, false, false, 0, 0));
 				}
 				else
 				{
@@ -326,39 +306,16 @@ if (menu == "load_official_level_template")
 			
 			#region /* Update Thumbnail */
 			
-			/* BMP Official Thumbnail */
-			if (file_exists("levels/" + file_found + "/Thumbnail.bmp"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.bmp", 0, false, false, 0, 0));
-			}
-			else
 			/* PNG Official Thumbnail */
-			if (file_exists("levels/" + file_found + "/Thumbnail.png"))
+			if (file_exists("levels/" + file_found + "/thumbnail.png"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.png", 0, false, false, 0, 0));
-			}
-			else
-			/* GIF Official Thumbnail */
-			if (file_exists("levels/" + file_found + "/Thumbnail.gif"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.gif", 0, false, false, 0, 0));
-			}
-			else
-			/* JPG Official Thumbnail */
-			if (file_exists("levels/" + file_found + "/Thumbnail.jpg"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.jpg", 0, false, false, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/thumbnail.png", 0, false, false, 0, 0));
 			}
 			else
 			/* PNG Automatic Thumbnail */
 			if (file_exists("levels/" + file_found + "/automatic_thumbnail.png"))
 			{
 				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/automatic_thumbnail.png", 0, false, false, 0, 0));
-			}
-			else
-			if (file_exists("levels/" + file_found + "/Automatic Thumbnail.png"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Automatic Thumbnail.png", 0, false, false, 0, 0));
 			}
 			else
 			{
@@ -376,39 +333,16 @@ if (menu == "load_official_level_template")
 		{
 			
 			#region /* Update Thumbnail */
-			/* BMP Official Thumbnail */
-			if (file_exists("levels/" + file_found + "/Thumbnail.bmp"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.bmp", 0, false, false, 0, 0));
-			}
-			else
 			/* PNG Official Thumbnail */
-			if (file_exists("levels/" + file_found + "/Thumbnail.png"))
+			if (file_exists("levels/" + file_found + "/thumbnail.png"))
 			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.png", 0, false, false, 0, 0));
-			}
-			else
-			/* GIF Official Thumbnail */
-			if (file_exists("levels/" + file_found + "/Thumbnail.gif"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.gif", 0, false, false, 0, 0));
-			}
-			else
-			/* JPG Official Thumbnail */
-			if (file_exists("levels/" + file_found + "/Thumbnail.jpg"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Thumbnail.jpg", 0, false, false, 0, 0));
+				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/thumbnail.png", 0, false, false, 0, 0));
 			}
 			else
 			/* PNG Automatic Thumbnail */
 			if (file_exists("levels/" + file_found + "/automatic_thumbnail.png"))
 			{
 				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/automatic_thumbnail.png", 0, false, false, 0, 0));
-			}
-			else
-			if (file_exists("levels/" + file_found + "/Automatic Thumbnail.png"))
-			{
-				ds_list_add(global.thumbnail_sprite, sprite_add("levels/" + file_found + "/Automatic Thumbnail.png", 0, false, false, 0, 0));
 			}
 			else
 			{
@@ -421,3 +355,81 @@ if (menu == "load_official_level_template")
 	}
 }
 #endregion /* Load Official Level Template END */
+
+#region /* Start Game */
+if (iris_xscale <= 0.001)
+&& (menu_delay > 999) /* Make sure you can only start the game when the menu delay is set to over 999, as that's when the iris xscale is set to zoom in */
+{
+	
+	#region /* Play or Make Level Editor */
+	if (menu != "select_character")
+	&& (menu != "back_from_character_select")
+	&& (global.character_select_in_this_menu == "level_editor")
+	&& (loading_assets == false)
+	{
+		if (global.create_level_from_template)
+		&& (allowed_to_load_template_level)
+		|| (global.create_level_from_template == false)
+		{
+			if (title_music > noone)
+			{
+				if (audio_is_playing(title_music))
+				{
+					audio_stop_sound(title_music);
+				}
+			}
+			scr_delete_sprite_properly(title_screen_background);
+			if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
+			&& (global.create_level_from_template == false)
+			&& (global.select_level_index > 0) /* Don't update if you're selecting "create from scratch" */
+			{
+				/* Update the "global level name" before updating all backgrounds and going to the level editor */
+				global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
+			}
+			scr_update_all_backgrounds();
+			global.part_limit = 0; /* How many objects are currently placed in the level editor */
+			global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
+			
+			var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
+				room_goto(rm_leveleditor); /* Go to level editor, either in editing mode or to play normally */
+			}, [], 1);
+			time_source_start(time_source);
+			
+			/* The variables "doing clear check", "actually play edited level", and "play edited level" should be set before doing "menu delay = 9999" to zoom the iris xscale */
+			
+			loading_assets = true;
+		}
+	}
+	#endregion /* Play or Make Level Editor END */
+	
+	else
+	
+	#region /* Load File */
+	if (menu == "select_character")
+	|| (menu == "back_from_character_select")
+	{
+		if (title_music > noone)
+		{
+			if (audio_is_playing(title_music))
+			{
+				audio_stop_sound(title_music);
+			}
+		}
+		scr_delete_sprite_properly(title_screen_background);
+		scr_config_save();
+		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		lives = ini_read_real("Player", "lives", 5);
+		ini_close();
+		room_goto(rm_world_map);
+	}
+	#endregion /* Load File END */
+
+}
+#endregion /* Start Game END */
+
+#region /* Menu Navigation Delay */
+if (menu_delay > 0)
+{
+	menu_delay --;
+}
+#endregion /* Menu Navigation Delay END */

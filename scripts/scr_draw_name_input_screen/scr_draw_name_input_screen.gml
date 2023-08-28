@@ -65,7 +65,9 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	if (global.keyboard_virtual_timer == 2)
 	|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx - width, yy - 16, xx + width, yy + 16))
 	&& (mouse_check_button_released(mb_left))
-	|| (gamepad_button_check_pressed(global.player1_slot, gp_face4))
+	&& (global.keyboard_virtual_timer == 3)
+	|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
+	&& (global.keyboard_virtual_timer == 3)
 	{
 		if (os_type == os_switch)
 		{
@@ -212,9 +214,9 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		|| (max_characters_needed == false)
 		{
 			draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
-			if (menu == ok_menu_string)
+			if (menu != cancel_menu_string)
 			{
-				if (gamepad_is_connected(global.player1_slot))
+				if (gamepad_is_connected(global.player_slot[1]))
 				&& (global.controls_used_for_menu_navigation == "controller")
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -257,7 +259,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	draw_sprite_ext(spr_icons_back, 0, xx + buttons_x + 55, yy + buttons_cancel_y + 21, 1, 1, 0, c_white, 1);
 	if (menu != cancel_menu_string)
 	{
-		if (gamepad_is_connected(global.player1_slot))
+		if (gamepad_is_connected(global.player_slot[1]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{
@@ -271,7 +273,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	else
 	if (menu == cancel_menu_string)
 	{
-		if (gamepad_is_connected(global.player1_slot))
+		if (gamepad_is_connected(global.player_slot[1]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{
@@ -297,15 +299,15 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	&& (use_script_navigation_code)
 	{
 		if (keyboard_check_pressed(vk_up))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-		|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
 		{
 			menu = ok_menu_string;
 		}
 		else
 		if (keyboard_check_pressed(vk_down))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_padd))
-		|| (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
 		{
 			menu = cancel_menu_string;
 		}

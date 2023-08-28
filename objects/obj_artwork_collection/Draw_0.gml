@@ -8,7 +8,7 @@ if (instance_exists(obj_player))
 {
 	
 	#region /* Draw Enter Gallery Key */
-	if (gamepad_is_connected(global.player1_slot))
+	if (gamepad_is_connected(global.player_slot[1]))
 	&& (global.controls_used_for_menu_navigation == "controller")
 	|| (global.always_show_gamepad_buttons)
 	{

@@ -1,31 +1,8 @@
 function scr_player_move_pause()
 {
 	
-	#region /* Set correct controller ports */
-	if (player == 1)
-	{
-		var player_gamepad_slot = global.player1_slot;
-	}
-	else
-	if (player == 2)
-	{
-		var player_gamepad_slot = global.player2_slot;
-	}
-	else
-	if (player == 3)
-	{
-		var player_gamepad_slot = global.player3_slot;
-	}
-	else
-	if (player == 4)
-	{
-		var player_gamepad_slot = global.player4_slot;
-	}
-	#endregion /* Set correct controller ports END */
-	
 	#region /* Pause */
-	if (display_get_gui_width() > 0)
-	&& (display_get_gui_height() > 0)
+	if (display_get_gui_width() > 0 && display_get_gui_height() > 0)
 	{
 		surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
 	}
@@ -33,20 +10,17 @@ function scr_player_move_pause()
 	if (keyboard_check_pressed(vk_escape))
 	|| (keyboard_check(vk_tab))
 	&& (keyboard_check(vk_lshift))
-	|| (gamepad_button_check_pressed(player_gamepad_slot, gp_start))
-	|| (gamepad_button_check_pressed(player_gamepad_slot, gp_select))
-	|| (!gamepad_is_connected(player_gamepad_slot))
+	|| (gamepad_button_check_pressed(global.player_slot[player], gp_start))
+	|| (!gamepad_is_connected(global.player_slot[player]))
 	&& (controller_connected)
 	|| (global.actually_play_edited_level)
-	&& (!window_has_focus())
 	&& (global.automatically_pause_when_window_is_unfocused)
+	&& (!window_has_focus())
 	{
-		
-		if (!gamepad_is_connected(player_gamepad_slot))
+		if (!gamepad_is_connected(global.player_slot[player]))
 		&& (controller_connected)
 		{
-			/* On Nintendo Switch, when you disconnect any controllers, show the system menu where you can change controllers and players */
-			switch_controller_support_show();
+			switch_controller_support_show(); /* On Nintendo Switch, when you disconnect any controllers, show the system menu where you can change controllers and players */
 		}
 		
 		#region /* Show all HUD elements */
@@ -95,8 +69,7 @@ function scr_player_move_pause()
 		{
 			
 			#region /* What player should control the pause menu */
-			if (gamepad_button_check_pressed(player_gamepad_slot, gp_start))
-			|| (gamepad_button_check_pressed(player_gamepad_slot, gp_select))
+			if (gamepad_button_check_pressed(global.player_slot[player], gp_start))
 			{
 				global.pause_player = player - 1;
 			}

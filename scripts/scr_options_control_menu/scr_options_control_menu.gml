@@ -4283,7 +4283,7 @@ function scr_options_control_menu()
 			var global_cancel_dive_by_pressing_jump_or_dive_button = global.player1_cancel_dive_by_pressing_jump_or_dive_button;
 			var global_cancel_dive_by_pressing_opposite_direction = global.player1_cancel_dive_by_pressing_opposite_direction;
 			var global_down_and_jump_to_groundpound = global.player1_down_and_jump_to_groundpound;
-			var global_show_controls = global.player1_show_controls;
+			var global_show_controls = global.player_show_controls[1];
 			var global_drop_from_rope = global.player1_drop_from_rope;
 			var global_wall_jump_setting = global.player1_wall_jump_setting;
 		}
@@ -4297,7 +4297,7 @@ function scr_options_control_menu()
 			var global_cancel_dive_by_pressing_jump_or_dive_button = global.player2_cancel_dive_by_pressing_jump_or_dive_button;
 			var global_cancel_dive_by_pressing_opposite_direction = global.player2_cancel_dive_by_pressing_opposite_direction;
 			var global_down_and_jump_to_groundpound = global.player2_down_and_jump_to_groundpound;
-			var global_show_controls = global.player2_show_controls;
+			var global_show_controls = global.player_show_controls[2];
 			var global_drop_from_rope = global.player2_drop_from_rope;
 			var global_wall_jump_setting = global.player2_wall_jump_setting;
 		}
@@ -4311,7 +4311,7 @@ function scr_options_control_menu()
 			var global_cancel_dive_by_pressing_jump_or_dive_button = global.player3_cancel_dive_by_pressing_jump_or_dive_button;
 			var global_cancel_dive_by_pressing_opposite_direction = global.player3_cancel_dive_by_pressing_opposite_direction;
 			var global_down_and_jump_to_groundpound = global.player3_down_and_jump_to_groundpound;
-			var global_show_controls = global.player3_show_controls;
+			var global_show_controls = global.player_show_controls[3];
 			var global_drop_from_rope = global.player3_drop_from_rope;
 			var global_wall_jump_setting = global.player3_wall_jump_setting;
 		}
@@ -5157,9 +5157,9 @@ function scr_options_control_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 0)
-				&& (global.player1_show_controls> 0)
+				&& (global.player_show_controls[1]> 0)
 				{
-					global.player1_show_controls --;
+					global.player_show_controls[1] --;
 					menu_delay = 3;
 				}
 				else
@@ -5167,9 +5167,9 @@ function scr_options_control_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 0)
-				&& (global.player1_show_controls< 10)
+				&& (global.player_show_controls[1]< 10)
 				{
-					global.player1_show_controls++;
+					global.player_show_controls[1]++;
 					menu_delay = 3;
 				}
 				else
@@ -5177,9 +5177,9 @@ function scr_options_control_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 1)
-				&& (global.player2_show_controls> 0)
+				&& (global.player_show_controls[2]> 0)
 				{
-					global.player2_show_controls --;
+					global.player_show_controls[2] --;
 					menu_delay = 3;
 				}
 				else
@@ -5187,9 +5187,9 @@ function scr_options_control_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 1)
-				&& (global.player2_show_controls< 10)
+				&& (global.player_show_controls[2]< 10)
 				{
-					global.player2_show_controls++;
+					global.player_show_controls[2]++;
 					menu_delay = 3;
 				}
 				else
@@ -5197,9 +5197,9 @@ function scr_options_control_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 2)
-				&& (global.player3_show_controls> 0)
+				&& (global.player_show_controls[3]> 0)
 				{
-					global.player3_show_controls --;
+					global.player_show_controls[3] --;
 					menu_delay = 3;
 				}
 				else
@@ -5207,9 +5207,9 @@ function scr_options_control_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
 				&& (remapping_player == 2)
-				&& (global.player3_show_controls< 10)
+				&& (global.player_show_controls[3]< 10)
 				{
-					global.player3_show_controls++;
+					global.player_show_controls[3]++;
 					menu_delay = 3;
 				}
 				else

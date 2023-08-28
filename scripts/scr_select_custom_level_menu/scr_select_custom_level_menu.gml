@@ -4,6 +4,15 @@ function scr_select_custom_level_menu()
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
+	var max_custom_levels = 180; /* You should be able to store 180 custom levels, these are both levels you have made, and levels you have downloaded */
+	if (ds_list_size(global.all_loaded_custom_levels) - 1 >= max_custom_levels)
+	{
+		var max_custom_levels_reached = true;
+	}
+	else
+	{
+		var max_custom_levels_reached = false;
+	}
 	
 	/* Never have the select level index under 0, if it does, set it to 0 */
 	if (global.select_level_index <= -1)
@@ -97,7 +106,7 @@ function scr_select_custom_level_menu()
 			else
 			if (global.select_level_index - row > - 1)
 			{
-				global.select_level_index -= clamp(row, 0, ds_list_size(global.all_loaded_custom_levels - 2 / row));
+				global.select_level_index -= clamp(row, 0, ds_list_size(global.all_loaded_custom_levels));
 				if (mouse_wheel_up())
 				{
 					scroll_to = scroll - 1;
@@ -143,7 +152,7 @@ function scr_select_custom_level_menu()
 			else
 			if (global.select_level_index + row < ds_list_size(global.thumbnail_sprite))
 			{
-				global.select_level_index += clamp(row, 0, ds_list_size(global.all_loaded_custom_levels - 2 / row));
+				global.select_level_index += clamp(row, 0, ds_list_size(global.all_loaded_custom_levels));
 				if (mouse_wheel_down())
 				{
 					scroll_to = scroll + 1
@@ -246,6 +255,7 @@ function scr_select_custom_level_menu()
 			#region /* Create New Level */
 			if (global.select_level_index == 0)
 			&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
+			&& (ds_list_size(global.all_loaded_custom_levels) - 1 < 120) /* You should only be able to make 120 levels, but can still download more levels */
 			{
 				menu_delay = 3;
 				scroll_to = floor(global.select_level_index / row);
@@ -454,13 +464,21 @@ function scr_select_custom_level_menu()
 		if (global.free_communication_available)
 		{
 			draw_menu_button(0, draw_online_level_list_y, l10n_text("Online Level List"), "online_level_list", "online_level_list");
+			if (max_custom_levels_reached)
+			{
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, 0, draw_online_level_list_y + 21, 1, 1, 0, c_dkgray, 0.5);
+				draw_sprite_ext(spr_lock_icon, 0, 16, draw_online_level_list_y + 21, 1, 1, 0, c_white, 1);
+			}
+			
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_level_list_y + 2, 370, draw_online_level_list_y + 41))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!max_custom_levels_reached)
 			|| (menu == "online_level_list")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!max_custom_levels_reached)
 			{
 				if (global.online_enabled)
 				{
@@ -537,11 +555,18 @@ function scr_select_custom_level_menu()
 		if (global.free_communication_available)
 		{
 			draw_menu_button(0, draw_search_id_y, l10n_text("Search Level ID"), "search_level_id", "search_level_id");
+			if (max_custom_levels_reached)
+			{
+				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, 0, draw_search_id_y + 21, 1, 1, 0, c_dkgray, 0.5);
+				draw_sprite_ext(spr_lock_icon, 0, 16, draw_search_id_y + 21, 1, 1, 0, c_white, 1);
+			}
 			
 			#region /* Draw Search Key */
-			if (gamepad_is_connected(global.player1_slot))
+			if (gamepad_is_connected(global.player_slot[1]))
 			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (!max_custom_levels_reached)
 			|| (global.always_show_gamepad_buttons)
+			&& (!max_custom_levels_reached)
 			{
 				scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);
 			}
@@ -553,13 +578,14 @@ function scr_select_custom_level_menu()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (open_sub_menu == false)
 		&& (global.free_communication_available)
+		&& (!max_custom_levels_reached)
 		{
 			if (menu == "search_level_id")
 			&& (key_a_pressed)
-			|| (gamepad_button_check_pressed(global.player1_slot, gp_face4))
-			|| (gamepad_button_check_pressed(global.player2_slot, gp_face4))
-			|| (gamepad_button_check_pressed(global.player3_slot, gp_face4))
-			|| (gamepad_button_check_pressed(global.player4_slot, gp_face4))
+			|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
+			|| (gamepad_button_check_pressed(global.player_slot[2], gp_face4))
+			|| (gamepad_button_check_pressed(global.player_slot[3], gp_face4))
+			|| (gamepad_button_check_pressed(global.player_slot[4], gp_face4))
 			|| (gamepad_button_check_pressed(4, gp_face4))
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_search_id_y + 2, 370, draw_search_id_y + 41))
 			&& (mouse_check_button_released(mb_left))
@@ -686,32 +712,35 @@ function scr_select_custom_level_menu()
 			&& (menu == "level_editor_enter_name_ok")
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 300 - 185 + thumbnail_x_offset, draw_name_input_screen_y + 54, 394 * (global.select_level_index - column * row) + 300 - 185 + 370 + thumbnail_x_offset, draw_name_input_screen_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
 			{
 				if (level_editor_edit_name)
 				&& (global.level_name != old_level_name)
 				{
-					can_navigate = true;
-					menu_delay = 3;
-					ini_open(working_directory + "save_files/custom_level_save.ini");
-					ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					scr_copy_move_files(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "custom_levels/" + string(global.level_name), true);
-					scr_load_custom_level_initializing();
-					menu = "load_custom_level";
-					level_editor_edit_name = false;
-					if (global.level_name != "")
+					scr_switch_expand_save_data(); /* Expand the save data before editing level name */
+					if (global.save_data_size_is_sufficient)
 					{
-						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-						ini_write_string("info", "level_name", global.level_name);
+						can_navigate = true;
+						menu_delay = 3;
+						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-						
-						thumbnail_level_name[global.select_level_index] = string(global.level_name);
+						scr_copy_move_files(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "custom_levels/" + string(global.level_name), true);
+						scr_load_custom_level_initializing();
+						menu = "load_custom_level";
+						level_editor_edit_name = false;
+						if (global.level_name != "")
+						{
+							ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+							ini_write_string("info", "level_name", global.level_name);
+							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+							thumbnail_level_name[global.select_level_index] = string(global.level_name);
+						}
+						global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name); /* After renaming a level, make sure "select level index" is updated */
 					}
-					global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name); /* After renaming a level, make sure "select level index" is updated */
 				}
 				else
 				if (level_editor_edit_name)
@@ -760,16 +789,16 @@ function scr_select_custom_level_menu()
 		|| (mouse_check_button_released(mb_right))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back]))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back]))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back]))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -831,10 +860,10 @@ function scr_select_custom_level_menu()
 			&& (menu == "level_editor_enter_description_ok")
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_input_screen_y + 54, get_window_width * 0.5 - 185 + 370, draw_description_input_screen_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
 			{
 				if (level_editor_edit_name)
 				&& (global.level_description != old_level_description)
@@ -895,16 +924,16 @@ function scr_select_custom_level_menu()
 		|| (mouse_check_button_released(mb_right))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back]))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back]))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back]))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -934,12 +963,23 @@ function scr_select_custom_level_menu()
 	}
 	#endregion /* Edit level description END */
 	
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_center);
+	scr_draw_text_outlined(display_get_gui_width() * 0.5, 16, string(ds_list_size(global.all_loaded_custom_levels) - 1) + " " + l10n_text("Custom Levels"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+	if (ds_list_size(global.all_loaded_custom_levels) - 1 >= 120)
+	{
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("There are too many levels stored"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 3, l10n_text("Delete some levels"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("There are too many levels stored"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 3, l10n_text("Delete some levels"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+	}
+	
 	/* Display the total custom level folder size in MB */
 	if (custom_levels_folder_megabytes > 1)
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_center);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Custom level folder size: " + string(custom_levels_folder_megabytes) + " MB", global.default_text_size, c_menu_fill, c_menu_outline, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Custom level folder size: " + string(custom_levels_folder_megabytes) + " MB", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
 	
 	#endregion /* Draw above everything else END */

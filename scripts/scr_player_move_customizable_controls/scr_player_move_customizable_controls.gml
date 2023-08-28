@@ -210,9 +210,4 @@ function scr_player_move_customizable_controls()
 	
 	key_sprint_pressed = scr_key_initialize(key_sprint_pressed, 1, player, action.sprint);
 	key_sprint_released = scr_key_initialize(key_sprint_released, 2, player, action.sprint);
-	
-	#region /* Key Always Do Full Jump */
-	key_always_do_full_jump = false;
-	#endregion /* Key Always Do Full Jump END */
-	
 }

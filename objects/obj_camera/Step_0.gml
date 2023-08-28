@@ -4,7 +4,6 @@ scr_set_controls_used_to_navigate();
 scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_deactivate_objects_outside_view();
-scr_make_background_visible();
 
 var get_room_speed = room_speed;
 
@@ -71,15 +70,15 @@ if (player1 >= 1)
 && (instance_exists(player1))
 && (iris_xscale >= 10)
 {
-	if (global.player1_show_controls == 0)
+	if (global.player_show_controls[1] == 0)
 	|| (obj_player.can_move == false)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
 	}
 	else
-	if (global.player1_show_controls >= 1)
-	&& (global.player1_show_controls <= 9)
+	if (global.player_show_controls[1] >= 1)
+	&& (global.player_show_controls[1] <= 9)
 	{
 		if (player1_show_controls_timer >= 1)
 		{
@@ -93,14 +92,14 @@ if (player1 >= 1)
 		}
 	}
 	else
-	if (global.player1_show_controls == 10)
+	if (global.player_show_controls[1] == 10)
 	{
 		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 1, 0.1);
 	}
 	
 	if (player1.speed > 0)
 	{
-		player1_show_controls_timer = get_room_speed * global.player1_show_controls;
+		player1_show_controls_timer = get_room_speed * global.player_show_controls[1];
 	}
 }
 else
@@ -111,7 +110,7 @@ if (global.player1_can_play)
 else
 {
 	player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
-	player1_show_controls_timer = get_room_speed * global.player1_show_controls;
+	player1_show_controls_timer = get_room_speed * global.player_show_controls[1];
 }
 #endregion /* Player 1 Show Controls HUD timer */
 
@@ -121,15 +120,15 @@ if (player2 >= 1)
 && (instance_exists(player2))
 && (iris_xscale >= 10)
 {
-	if (global.player2_show_controls == 0)
+	if (global.player_show_controls[2] == 0)
 	|| (obj_player.can_move == false)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
 	}
 	else
-	if (global.player2_show_controls >= 1)
-	&& (global.player2_show_controls <= 9)
+	if (global.player_show_controls[2] >= 1)
+	&& (global.player_show_controls[2] <= 9)
 	{
 		if (player2_show_controls_timer >= 1)
 		{
@@ -143,14 +142,14 @@ if (player2 >= 1)
 		}
 	}
 	else
-	if (global.player2_show_controls = 10)
+	if (global.player_show_controls[2] = 10)
 	{
 		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
 	}
 	
 	if (player2.speed > 0)
 	{
-		player2_show_controls_timer = get_room_speed * global.player2_show_controls;
+		player2_show_controls_timer = get_room_speed * global.player_show_controls[2];
 	}
 }
 else
@@ -161,7 +160,7 @@ if (global.player2_can_play)
 else
 {
 	player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
-	player2_show_controls_timer = get_room_speed * global.player2_show_controls;
+	player2_show_controls_timer = get_room_speed * global.player_show_controls[2];
 }
 #endregion /* Player 2 Show Controls HUD timer */
 
@@ -171,15 +170,15 @@ if (player3 >= 1)
 && (instance_exists(player3))
 && (iris_xscale >= 10)
 {
-	if (global.player3_show_controls == 0)
+	if (global.player_show_controls[3] == 0)
 	|| (obj_player.can_move == false)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
 	}
 	else
-	if (global.player3_show_controls >= 1)
-	&& (global.player3_show_controls <= 9)
+	if (global.player_show_controls[3] >= 1)
+	&& (global.player_show_controls[3] <= 9)
 	{
 		if (player3_show_controls_timer >= 1)
 		{
@@ -193,14 +192,14 @@ if (player3 >= 1)
 		}
 	}
 	else
-	if (global.player3_show_controls = 10)
+	if (global.player_show_controls[3] = 10)
 	{
 		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.2);
 	}
 	
 	if (player3.speed > 0)
 	{
-		player3_show_controls_timer = get_room_speed * global.player3_show_controls;
+		player3_show_controls_timer = get_room_speed * global.player_show_controls[3];
 	}
 }
 else
@@ -211,7 +210,7 @@ if (global.player3_can_play)
 else
 {
 	player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
-	player3_show_controls_timer = get_room_speed * global.player3_show_controls;
+	player3_show_controls_timer = get_room_speed * global.player_show_controls[3];
 }
 #endregion /* Player 3 Show Controls HUD timer */
 
@@ -221,15 +220,15 @@ if (player4 >= 1)
 && (instance_exists(player4))
 && (iris_xscale >= 10)
 {
-	if (global.player4_show_controls == 0)
+	if (global.player_show_controls[4] == 0)
 	|| (obj_player.can_move == false)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
 	}
 	else
-	if (global.player4_show_controls >= 1)
-	&& (global.player4_show_controls <= 9)
+	if (global.player_show_controls[4] >= 1)
+	&& (global.player_show_controls[4] <= 9)
 	{
 		if (player4_show_controls_timer >= 1)
 		{
@@ -243,14 +242,14 @@ if (player4 >= 1)
 		}
 	}
 	else
-	if (global.player4_show_controls = 10)
+	if (global.player_show_controls[4] = 10)
 	{
 		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
 	}
 	
 	if (player4.speed > 0)
 	{
-		player4_show_controls_timer = get_room_speed * global.player4_show_controls;
+		player4_show_controls_timer = get_room_speed * global.player_show_controls[4];
 	}
 }
 else
@@ -261,7 +260,7 @@ if (global.player4_can_play)
 else
 {
 	player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
-	player4_show_controls_timer = get_room_speed * global.player4_show_controls;
+	player4_show_controls_timer = get_room_speed * global.player_show_controls[4];
 }
 #endregion /* Player 4 Show Controls HUD timer */
 
@@ -274,7 +273,7 @@ if (player1_vibration_active == false)
 {
 	player1_motor_speed = lerp(player1_motor_speed, 0, 0.1);
 }
-gamepad_set_vibration(global.player1_slot, player1_motor_speed, player1_motor_speed);
+gamepad_set_vibration(global.player_slot[1], player1_motor_speed, player1_motor_speed);
 #endregion /* Stop gamepad vibration for player 1 END */
 
 #region /* Stop gamepad vibration for player 2 */
@@ -282,7 +281,7 @@ if (player2_vibration_active == false)
 {
 	player2_motor_speed = lerp(player2_motor_speed, 0, 0.1);
 }
-gamepad_set_vibration(global.player2_slot, player2_motor_speed, player2_motor_speed);
+gamepad_set_vibration(global.player_slot[2], player2_motor_speed, player2_motor_speed);
 #endregion /* Stop gamepad vibration for player 2 END */
 
 #region /* Stop gamepad vibration for player 3 */
@@ -290,7 +289,7 @@ if (player3_vibration_active == false)
 {
 	player3_motor_speed = lerp(player3_motor_speed, 0, 0.1);
 }
-gamepad_set_vibration(global.player3_slot, player3_motor_speed, player3_motor_speed);
+gamepad_set_vibration(global.player_slot[3], player3_motor_speed, player3_motor_speed);
 #endregion /* Stop gamepad vibration for player 3 END */
 
 #region /* Stop gamepad vibration for player 4 */
@@ -298,7 +297,7 @@ if (player4_vibration_active == false)
 {
 	player4_motor_speed = lerp(player4_motor_speed, 0, 0.1);
 }
-gamepad_set_vibration(global.player4_slot, player4_motor_speed, player4_motor_speed);
+gamepad_set_vibration(global.player_slot[4], player4_motor_speed, player4_motor_speed);
 #endregion /* Stop gamepad vibration for player 4 END */
 
 #endregion /* Stop gamepad vibration for different players END */
@@ -307,7 +306,7 @@ gamepad_set_vibration(global.player4_slot, player4_motor_speed, player4_motor_sp
 if (global.pause == false)
 && (global.goal_active == false)
 {
-	if (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]) && gamepad_is_connected(global.player1_slot))
+	if (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]) && gamepad_is_connected(global.player_slot[1]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
 	{
@@ -341,7 +340,7 @@ if (global.pause == false)
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]) && gamepad_is_connected(global.player2_slot))
+	if (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]) && gamepad_is_connected(global.player_slot[2]))
 	|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
 	{
@@ -375,7 +374,7 @@ if (global.pause == false)
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]) && gamepad_is_connected(global.player3_slot))
+	if (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]) && gamepad_is_connected(global.player_slot[3]))
 	|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
 	{
@@ -409,7 +408,7 @@ if (global.pause == false)
 			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
-	if (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]) && gamepad_is_connected(global.player4_slot))
+	if (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]) && gamepad_is_connected(global.player_slot[4]))
 	|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
 	{
@@ -938,23 +937,6 @@ if (key_player4_sprint_toggle_pressed)
 	}
 }
 #endregion /* Step Sprint Toggling END */
-
-#region /* Step Convention Mode */
-if (global.convention_mode)
-{
-	reset_game_if_no_interactivity ++;
-	reset_game_if_no_interactivity_second_countdown_timer ++;
-	if (reset_game_if_no_interactivity_second_countdown_timer >= 60)
-	{
-		reset_game_if_no_interactivity_second_countdown_timer = 0;
-		reset_game_if_no_interactivity_second_countdown --;
-	}
-	if (reset_game_if_no_interactivity >= 3600)
-	{
-		game_restart();
-	}
-}
-#endregion /* Step Convention Mode END */
 
 #region /* Show HUD timers */
 

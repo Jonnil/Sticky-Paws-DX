@@ -2,27 +2,27 @@ function scr_controls_for_level_editor()
 {
 	
 	#region /* Controls for level editor */
-	key_up = scr_key_initialize(key_up, 0, 1, action.up) || (gamepad_axis_value(global.player1_slot, gp_axislv) < 0) && (menu_joystick_delay == 0);
-	key_left = scr_key_initialize(key_left, 0, 1, action.left) || (gamepad_axis_value(global.player1_slot, gp_axislh) < 0) && (menu_joystick_delay == 0);
-	key_right = scr_key_initialize(key_right, 0, 1, action.right) || (gamepad_axis_value(global.player1_slot, gp_axislh) > 0) && (menu_joystick_delay == 0);
-	key_down = scr_key_initialize(key_down, 0, 1, action.down) || (gamepad_axis_value(global.player1_slot, gp_axislv) > 0) && (menu_joystick_delay == 0);
+	key_up = scr_key_initialize(key_up, 0, 1, action.up) || (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0) && (menu_joystick_delay == 0);
+	key_left = scr_key_initialize(key_left, 0, 1, action.left) || (gamepad_axis_value(global.player_slot[1], gp_axislh) < 0) && (menu_joystick_delay == 0);
+	key_right = scr_key_initialize(key_right, 0, 1, action.right) || (gamepad_axis_value(global.player_slot[1], gp_axislh) > 0) && (menu_joystick_delay == 0);
+	key_down = scr_key_initialize(key_down, 0, 1, action.down) || (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0) && (menu_joystick_delay == 0);
 	
 	#region /* Player 1 Key Accept */
 	
-	/* Player 1 Key Accept Hold */ key_a_hold = (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-	|| (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
+	/* Player 1 Key Accept Hold */ key_a_hold = (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+	|| (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
 	|| (keyboard_check(global.player_[inp.key][1][1][action.accept]))
 	|| (keyboard_check(global.player_[inp.key][1][2][action.accept]))
 	|| (keyboard_check(vk_space));
 	
-	/* Player 1 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-	|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
+	/* Player 1 Key Accept Pressed */ key_a_pressed = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+	|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.accept]))
 	|| (keyboard_check_pressed(vk_space));
 	
-	/* Player 1 Key Accept Released */ key_a_released = (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-	|| (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
+	/* Player 1 Key Accept Released */ key_a_released = (gamepad_button_check_released(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+	|| (gamepad_button_check_released(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
 	|| (keyboard_check_released(global.player_[inp.key][1][1][action.accept]))
 	|| (keyboard_check_released(global.player_[inp.key][1][2][action.accept]))
 	|| (keyboard_check_released(vk_space));
@@ -31,29 +31,29 @@ function scr_controls_for_level_editor()
 	
 	#region /* Player 1 Key Back */
 	
-	/* Player 1 Key Back Hold */ key_b_hold = (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
-	|| (gamepad_button_check(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
+	/* Player 1 Key Back Hold */ key_b_hold = (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
+	|| (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
 	|| (keyboard_check(global.player_[inp.key][1][1][action.back]))
 	|| (keyboard_check(global.player_[inp.key][1][2][action.back]))
 	|| (keyboard_check(vk_escape));
 	
-	/* Player 1 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
-	|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
+	/* Player 1 Key Back Pressed */ key_b_pressed = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
+	|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.back]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.back]))
 	|| (keyboard_check_pressed(vk_escape));
 	
-	///* Player 1 Key Back Released */ key_b_released = (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
-	//|| (gamepad_button_check_released(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
+	///* Player 1 Key Back Released */ key_b_released = (gamepad_button_check_released(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
+	//|| (gamepad_button_check_released(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
 	//|| (keyboard_check_released(global.player_[inp.key][1][1][action.back]))
 	//|| (keyboard_check_released(global.player_[inp.key][1][2][action.back]))
 	//|| (keyboard_check_released(vk_escape));
 	
 	#endregion /* Player 1 Key Back END */
 	
-	/* Player 1 Key Move Faster */ key_move_faster = (gamepad_button_check(global.player1_slot, gp_shoulderrb))
-	|| (gamepad_button_check(global.player1_slot, gp_stickl))
-	|| (gamepad_button_check(global.player1_slot, gp_stickr))
+	/* Player 1 Key Move Faster */ key_move_faster = (gamepad_button_check(global.player_slot[1], gp_shoulderrb))
+	|| (gamepad_button_check(global.player_slot[1], gp_stickl))
+	|| (gamepad_button_check(global.player_slot[1], gp_stickr))
 	|| (keyboard_check(vk_control))
 	
 	/* Player 1 Keyboard Shortcut Change Draw Size */ key_change_draw_size = ord("D");

@@ -461,6 +461,10 @@ var character_path = file_exists("characters/" + string(character) + "/data/char
 working_directory + "custom_characters/" + string(character) + "/data/character_config.ini";
 ini_open(character_path);
 
+/* Default xscale and yscale for sprites */
+default_xscale = ini_read_real("values", "default_xscale", 1);
+default_yscale = ini_read_real("values", "default_yscale", 1);
+
 /* Acceleration on ground */
 acceleration_on_ground = ini_read_real("values", "acceleration_on_ground", 0.3) * 0.01;
 
@@ -500,6 +504,8 @@ else
 if (can_save_to_character_config == true && character != undefined && !file_exists(character_path))
 {
 	ini_open(character_path);
+	ini_write_real("values", "default_xscale", 1);
+	ini_write_real("values", "default_yscale", 1);
 	ini_write_real("values", "acceleration_on_ground", 30);
 	ini_write_real("values", "acceleration_in_air", 30);
 	ini_write_real("values", "acceleration_on_ice", 5);

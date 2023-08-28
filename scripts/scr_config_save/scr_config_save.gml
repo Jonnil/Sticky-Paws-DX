@@ -107,7 +107,7 @@ function scr_config_save()
 	ini_write_real("player1_profile" + string(global.player1_profile), "player1_down_and_jump_to_groundpound", global.player1_down_and_jump_to_groundpound);
 	ini_write_real("player1_profile" + string(global.player1_profile), "player1_wall_jump_setting", global.player1_wall_jump_setting);
 	ini_write_real("player1_profile" + string(global.player1_profile), "player1_drop_from_rope", global.player1_drop_from_rope);
-	ini_write_real("player1_profile" + string(global.player1_profile), "player1_show_controls", global.player1_show_controls);
+	ini_write_real("player1_profile" + string(global.player1_profile), "player1_show_controls", global.player_show_controls[1]);
 	#endregion /* Save Player 1 Keyboard Remapping END */
 	
 	#region /* Save Player 2 Keyboard Remapping */
@@ -123,7 +123,7 @@ function scr_config_save()
 	ini_write_real("player2_profile" + string(global.player2_profile), "player2_down_and_jump_to_groundpound", global.player2_down_and_jump_to_groundpound);
 	ini_write_real("player2_profile" + string(global.player2_profile), "player2_wall_jump_setting", global.player2_wall_jump_setting);
 	ini_write_real("player2_profile" + string(global.player2_profile), "player2_drop_from_rope", global.player2_drop_from_rope);
-	ini_write_real("player2_profile" + string(global.player2_profile), "player2_show_controls", global.player2_show_controls);
+	ini_write_real("player2_profile" + string(global.player2_profile), "player2_show_controls", global.player_show_controls[2]);
 	#endregion /* Save Player 2 Keyboard Remapping END */
 	
 	#region /* Save Player 3 Keyboard Remapping */
@@ -139,7 +139,7 @@ function scr_config_save()
 	ini_write_real("player3_profile" + string(global.player3_profile), "player3_down_and_jump_to_groundpound", global.player3_down_and_jump_to_groundpound);
 	ini_write_real("player3_profile" + string(global.player3_profile), "player3_wall_jump_setting", global.player3_wall_jump_setting);
 	ini_write_real("player3_profile" + string(global.player3_profile), "player3_drop_from_rope", global.player3_drop_from_rope);
-	ini_write_real("player3_profile" + string(global.player3_profile), "player3_show_controls", global.player3_show_controls);
+	ini_write_real("player3_profile" + string(global.player3_profile), "player3_show_controls", global.player_show_controls[3]);
 	#endregion /* Save Player 3 Keyboard Remapping END */
 	
 	#region /* Save Player 4 Keyboard Remapping */

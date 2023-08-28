@@ -2,7 +2,6 @@ depth = 12;
 image_speed = 0.1;
 
 brick_particle = false;
-break_cardboard = false;
 break_cardboard_source_x = x;
 break_cardboard_source_speed = 1;
 draw_xscale = 1;

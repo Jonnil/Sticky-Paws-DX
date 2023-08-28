@@ -35,3 +35,12 @@ if (instance_exists(obj_camera))
 	}
 }
 #endregion /* Make wall jump panel invisible if there are only players that have wall jump ability END */
+
+if (position_meeting(bbox_left - 1, y, obj_wall))
+{
+	image_xscale = +1;
+}
+else
+{
+	image_xscale = -1;
+}

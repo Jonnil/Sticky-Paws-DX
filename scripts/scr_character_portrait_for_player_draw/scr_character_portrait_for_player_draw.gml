@@ -48,7 +48,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#region /* If player is player 1, set all the variables to Player variables */
 	if (what_player == 1)
 	{
-		var player_gamepad_slot = global.player1_slot;
 		var sprite_select_player = global.sprite_select_player[1];
 		var player_accept_selection = player1_accept_selection;
 		var hex_color_for_player = global.hex_color_for_player1;
@@ -79,7 +78,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#region /* If player is player 2, set all the variables to player 2 variables */
 	if (what_player == 2)
 	{
-		var player_gamepad_slot = global.player2_slot;
 		var sprite_select_player = global.sprite_select_player[2];
 		var player_accept_selection = player2_accept_selection;
 		var hex_color_for_player = global.hex_color_for_player2;
@@ -110,7 +108,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#region /* If player is player 3, set all the variables to player 3 variables */
 	if (what_player == 3)
 	{
-		var player_gamepad_slot = global.player3_slot;
 		var sprite_select_player = global.sprite_select_player[3];
 		var player_accept_selection = player3_accept_selection;
 		var hex_color_for_player = global.hex_color_for_player3;
@@ -141,7 +138,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#region /* If player is player 4, set all the variables to player 4 variables */
 	if (what_player == 4)
 	{
-		var player_gamepad_slot = global.player4_slot;
 		var sprite_select_player = global.sprite_select_player[4];
 		var player_accept_selection = player4_accept_selection;
 		var hex_color_for_player = global.hex_color_for_player4;
@@ -227,7 +223,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					#region /* Show left key for character skin select */
 					if (global.skin_for_player[what_player] > 0)
 					{
-						if (gamepad_is_connected(player_gamepad_slot))
+						if (gamepad_is_connected(global.player_slot[what_player]))
 						&& (global.controls_used_for_menu_navigation == "controller")
 						|| (global.always_show_gamepad_buttons)
 						{
@@ -260,7 +256,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					#region /* Show right key for character skin select */
 					if (character_portrait_for_player_dir_exists_2[what_player])
 					{
-						if (gamepad_is_connected(player_gamepad_slot))
+						if (gamepad_is_connected(global.player_slot[what_player]))
 						&& (global.controls_used_for_menu_navigation == "controller")
 						|| (global.always_show_gamepad_buttons)
 						{
@@ -324,7 +320,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					#region /* Show left key for character voicepack select */
 					if (global.voicepack_for_player[what_player] > 0)
 					{
-						if (gamepad_is_connected(player_gamepad_slot))
+						if (gamepad_is_connected(global.player_slot[what_player]))
 						&& (global.controls_used_for_menu_navigation == "controller")
 						|| (global.always_show_gamepad_buttons)
 						{
@@ -358,7 +354,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					#region /* Show right key for character voicepack select */
 					if (character_portrait_for_player_dir_exists_4[what_player])
 					{
-						if (gamepad_is_connected(player_gamepad_slot))
+						if (gamepad_is_connected(global.player_slot[what_player]))
 						&& (global.controls_used_for_menu_navigation == "controller")
 						|| (global.always_show_gamepad_buttons)
 						{
@@ -414,7 +410,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				#region /* Key Left */
 				if (global.character_index[what_player - 1] > 0)
 				{
-					if (gamepad_is_connected(player_gamepad_slot))
+					if (gamepad_is_connected(global.player_slot[what_player]))
 					&& (global.controls_used_for_menu_navigation == "controller")
 					|| (global.always_show_gamepad_buttons)
 					{
@@ -448,7 +444,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				#region /* Key Right */
 				if (global.character_index[what_player - 1] < ds_list_size(global.all_loaded_characters) - 1)
 				{
-					if (gamepad_is_connected(player_gamepad_slot))
+					if (gamepad_is_connected(global.player_slot[what_player]))
 					&& (global.controls_used_for_menu_navigation == "controller")
 					|| (global.always_show_gamepad_buttons)
 					{
@@ -557,7 +553,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			#endregion /* Accept Text END */
 			
 			#region /* Key A */
-			if (gamepad_is_connected(player_gamepad_slot))
+			if (gamepad_is_connected(global.player_slot[what_player]))
 			&& (global.controls_used_for_menu_navigation == "controller")
 			|| (global.always_show_gamepad_buttons)
 			{
@@ -601,7 +597,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			#endregion /* Cancel Text END */
 			
 			#region /* Key B */
-			if (gamepad_is_connected(player_gamepad_slot))
+			if (gamepad_is_connected(global.player_slot[what_player]))
 			&& (global.controls_used_for_menu_navigation == "controller")
 			|| (global.always_show_gamepad_buttons)
 			{
@@ -643,7 +639,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player] + 60, name_input_y + 35, l10n_text("Enter name") + ": ", global.default_text_size, c_black, c_white, 1); /* Accept Text */
 		
 		#region /* Key A */
-		if (gamepad_is_connected(player_gamepad_slot))
+		if (gamepad_is_connected(global.player_slot[what_player]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{

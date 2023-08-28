@@ -1,5 +1,14 @@
 #region /* Essential code that needs to be initialized */
 
+#region /* Set Backgrounds */
+layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);
+layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);
+layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), global.custom_background3);
+layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), global.custom_background4);
+#endregion /* Set Backgrounds END */
+
+scr_make_background_visible();
+
 #region /* Essential variables */
 global.time_countdown_bonus = 500;
 pause = false;
@@ -50,13 +59,6 @@ instance_create_depth(0, obj_level_height.y + 32, 0, obj_water_level_height);
 #endregion /* Create level height and level width objects END */
 
 #endregion /* Create essential objects so levels can function END */
-
-#region /* Backgrounds */
-layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);
-layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);
-layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), global.custom_background3);
-layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), global.custom_background4);
-#endregion /* Backgrounds END */
 
 #region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
 if (global.doing_clear_check)
@@ -597,6 +599,7 @@ if (global.actually_play_edited_level == false)
 	selected_skin = global.skin_for_player[1];
 	
 	audio_stop_all();
+	upload_rules_do_not_show_level = false;
 	level_editor_options_back_to_menu = ""; /* Save what menu you came from, to use later */
 	level_editor_options_select_level_index = global.select_level_index;
 	level_editor_template_select = false;

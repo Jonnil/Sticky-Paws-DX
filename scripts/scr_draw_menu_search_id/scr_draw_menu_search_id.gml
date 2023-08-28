@@ -94,8 +94,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (menu == "search_id_ok")
 				{
 					if (keyboard_check_pressed(vk_up))
-					|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-					|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -103,8 +103,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					else
 					if (keyboard_check_pressed(vk_down))
-					|| (gamepad_button_check_pressed(global.player1_slot, gp_padd))
-					|| (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
+					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
+					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -115,8 +115,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (menu == "search_id_cancel")
 				{
 					if (keyboard_check_pressed(vk_up))
-					|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-					|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -124,8 +124,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					else
 					if (keyboard_check_pressed(vk_down))
-					|| (gamepad_button_check_pressed(global.player1_slot, gp_padd))
-					|| (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
+					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
+					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -136,8 +136,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (menu == "search_online_list")
 				{
 					if (keyboard_check_pressed(vk_up))
-					|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-					|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -145,8 +145,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					else
 					if (keyboard_check_pressed(vk_down))
-					|| (gamepad_button_check_pressed(global.player1_slot, gp_padd))
-					|| (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
+					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
+					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -166,32 +166,33 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, draw_name_input_screen_y + 54 + 42, display_get_gui_width() * 0.5 - 185 + 370, draw_name_input_screen_y + 54 + 42 + 42))
 		&& (mouse_check_button_released(mb_left))
 		|| (mouse_check_button_released(mb_right))
-		|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
-		|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
-		|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back]))
-		|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.back]))
-		|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back]))
-		|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.back]))
-		|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back]))
-		|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back]))
 		
-		|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
 		&& (menu == "search_id_cancel")
-		|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
 		&& (menu == "search_id_cancel")
-		|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
 		&& (menu == "search_id_cancel")
-		|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept]))
 		&& (menu == "search_id_cancel")
-		|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
 		&& (menu == "search_id_cancel")
-		|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept]))
 		&& (menu == "search_id_cancel")
-		|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
 		&& (menu == "search_id_cancel")
-		|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]))
 		&& (menu == "search_id_cancel")
 		{
+			show_level_editor_corner_menu = true;
 			search_for_id_still = false;
 			search_id = "";
 			if (what_kind_of_id == "level")
@@ -226,38 +227,42 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (menu == "search_id_ok")
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, draw_name_input_screen_y + 54, display_get_gui_width() * 0.5 - 185 + 370, draw_name_input_screen_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]))
 			|| (automatically_search_for_id) /* If you enter this menu from "online level list menu", automatically enter the search ID and search for the level */
 			{
-				search_for_id_still = true; /* Turn this on when you want to search for ID */
-				
-				/* Create DS Map to hold the HTTP Header info */
-				map = ds_map_create();
-				
-				/* Add to the header DS Map */
-				ds_map_add(map, "Host", global.base_url);
-				ds_map_add(map, "Content-Type", "application/json");
-				ds_map_add(map, "User-Agent", "gmdownloader");
-				ds_map_add(map, "X-API-Key", global.api_key);
-				
-				/* Send the HTTP GET request to the /download endpoint */
-				global.search_id = string_upper(search_id);
-				global.http_request_id = http_request("https://" + global.base_url + global.download_endpoint + string(content_type_add_s) + "/" + global.search_id, "GET", map, "")
-				ds_map_destroy(map);
-				
-				automatically_search_for_id = false;
-				in_online_download_list_menu = false;
-				global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
-				data = noone; /* Reset "data" so you can reload online level list next time you go to this menu */
-				menu = "searching_for_id";
-				menu_delay = 3;
+				scr_switch_expand_save_data(); /* Expand the save data before download */
+				if (global.save_data_size_is_sufficient)
+				{
+					search_for_id_still = true; /* Turn this on when you want to search for ID */
+					
+					/* Create DS Map to hold the HTTP Header info */
+					map = ds_map_create();
+					
+					/* Add to the header DS Map */
+					ds_map_add(map, "Host", global.base_url);
+					ds_map_add(map, "Content-Type", "application/json");
+					ds_map_add(map, "User-Agent", "gmdownloader");
+					ds_map_add(map, "X-API-Key", global.api_key);
+					
+					/* Send the HTTP GET request to the /download endpoint */
+					global.search_id = string_upper(search_id);
+					global.http_request_id = http_request("https://" + global.base_url + global.download_endpoint + string(content_type_add_s) + "/" + global.search_id, "GET", map, "")
+					ds_map_destroy(map);
+					
+					automatically_search_for_id = false;
+					in_online_download_list_menu = false;
+					global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
+					data = noone; /* Reset "data" so you can reload online level list next time you go to this menu */
+					menu = "searching_for_id";
+					menu_delay = 3;
+				}
 			}
 		}
 		#endregion /* Press Enter to search for the inputted ID END */
@@ -291,114 +296,118 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		#region /* Download file */
 		if (file_exists(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip")) /* Find if a new .zip file has been downloaded */
 		{
-			zip_unzip(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", working_directory + "downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
-			/* Must delete downloaded .zip file first, before game can properly recognize the unzipped folder */
-			file_delete(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
-			var downloaded_file_name = string(file_find_first(working_directory + "downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
-			
-			/* Copy the downloaded file lastly */
-			scr_copy_move_files(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), working_directory + "custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
-			
-			#region /* Get downloaded level info */
-			if (what_kind_of_id == "level")
+			scr_switch_expand_save_data(); /* Expand the save data before unzipping file */
+			if (global.save_data_size_is_sufficient)
 			{
-				global.level_name = downloaded_file_name;
+				zip_unzip(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", working_directory + "downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
+				/* Must delete downloaded .zip file first, before game can properly recognize the unzipped folder */
+				file_delete(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
+				var downloaded_file_name = string(file_find_first(working_directory + "downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
 				
-				if (switch_check_profanity(downloaded_file_name))
-				{
-					masked_level_name = string(switch_mask_profanity(downloaded_file_name));
-				}
-				else
-				{
-					masked_level_name = string(downloaded_file_name);
-				}
+				/* Copy the downloaded file lastly */
+				scr_copy_move_files(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), working_directory + "custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
 				
-				global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, string(global.level_name)); /* "Select level index" should be set to where the downloaded custom level is saved */
-				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
-				downloaded_thumbnail_sprite = noone;
-				if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/thumbnail.png"))
+				#region /* Get downloaded level info */
+				if (what_kind_of_id == "level")
 				{
-					downloaded_thumbnail_sprite = sprite_add(working_directory + "custom_levels/" + string(global.level_name) + "/thumbnail.png", 0, false, false, 0, 0);
+					global.level_name = downloaded_file_name;
+					
+					if (switch_check_profanity(downloaded_file_name))
+					{
+						masked_level_name = string(switch_mask_profanity(downloaded_file_name));
+					}
+					else
+					{
+						masked_level_name = string(downloaded_file_name);
+					}
+					
+					global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, string(global.level_name)); /* "Select level index" should be set to where the downloaded custom level is saved */
+					scr_delete_sprite_properly(downloaded_thumbnail_sprite);
+					downloaded_thumbnail_sprite = noone;
+					if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/thumbnail.png"))
+					{
+						downloaded_thumbnail_sprite = sprite_add(working_directory + "custom_levels/" + string(global.level_name) + "/thumbnail.png", 0, false, false, 0, 0);
+					}
+					else
+					if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png"))
+					{
+						downloaded_thumbnail_sprite = sprite_add(working_directory + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png", 0, false, false, 0, 0);
+					}
+					sprite_set_offset(downloaded_thumbnail_sprite, sprite_get_width(downloaded_thumbnail_sprite) * 0.5, 0);
+					if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+					{
+						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						global.level_description = ini_read_string("info", "level_description", "");
+						masked_username = ini_read_string("info", "username", "");
+						ini_close();
+						if (switch_check_profanity(global.level_description))
+						{
+							global.level_description = string(switch_mask_profanity(global.level_description));
+						}
+						if (switch_check_profanity(masked_username))
+						{
+							masked_username = string(switch_mask_profanity(masked_username));
+						}
+					}
+					with(instance_create_depth(room_width * 0.5, room_height * 0.5, obj_title.depth - 100, obj_score_up))
+					{
+						/* Tell the player briefly that the thing has finished downloading */
+						above_gui = true;
+						score_up = l10n_text(string(what_kind_of_id)) + " " + l10n_text("downloaded");
+					}
+					menu = "searched_file_downloaded_play"; /* Go to the screen where you see the file has been downloaded */
 				}
+				#endregion /* Get downloaded level info END */
+				
 				else
-				if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png"))
+				
+				#region /* Get downloaded character info */
+				if (what_kind_of_id == "character")
 				{
-					downloaded_thumbnail_sprite = sprite_add(working_directory + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png", 0, false, false, 0, 0);
-				}
-				sprite_set_offset(downloaded_thumbnail_sprite, sprite_get_width(downloaded_thumbnail_sprite) * 0.5, 0);
-				if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-					global.level_description = ini_read_string("info", "level_description", "");
-					masked_username = ini_read_string("info", "username", "");
-					ini_close();
-					if (switch_check_profanity(global.level_description))
+					downloaded_character_name = string(downloaded_file_name);
+					
+					if (switch_check_profanity(downloaded_file_name))
 					{
-						global.level_description = string(switch_mask_profanity(global.level_description));
+						masked_character_name = string(switch_mask_profanity(downloaded_file_name));
 					}
-					if (switch_check_profanity(masked_username))
+					else
 					{
-						masked_username = string(switch_mask_profanity(masked_username));
+						masked_character_name = string(downloaded_file_name);
 					}
+					
+					scr_delete_sprite_properly(downloaded_thumbnail_sprite);
+					downloaded_thumbnail_sprite = noone;
+					
+					downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("stand", downloaded_thumbnail_sprite, 0, 0, string(downloaded_character_name));
+					downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("character_select_portrait", downloaded_thumbnail_sprite, 0, 0, string(downloaded_character_name));
+					
+					if (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+					{
+						ini_open(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini");
+						global.level_description = ini_read_string("info", "character_description", "");
+						masked_username = ini_read_string("info", "username", "");
+						ini_close();
+						if (switch_check_profanity(global.level_description))
+						{
+							global.level_description = string(switch_mask_profanity(global.level_description));
+						}
+						if (switch_check_profanity(masked_username))
+						{
+							masked_username = string(switch_mask_profanity(masked_username));
+						}
+					}
+					with(instance_create_depth(room_width * 0.5, room_height * 0.5, obj_title.depth - 100, obj_score_up))
+					{
+						/* Tell the player briefly that the thing has finished downloading */
+						above_gui = true;
+						score_up = l10n_text(string(what_kind_of_id)) + " " + l10n_text("downloaded");
+					}
+					menu = "searched_file_downloaded_back_to_list"; /* Go to the screen where you see the file has been downloaded */
 				}
-				with(instance_create_depth(room_width * 0.5, room_height * 0.5, obj_title.depth - 100, obj_score_up))
-				{
-					/* Tell the player briefly that the thing has finished downloading */
-					above_gui = true;
-					score_up = l10n_text(string(what_kind_of_id)) + " " + l10n_text("downloaded");
-				}
-				menu = "searched_file_downloaded_play"; /* Go to the screen where you see the file has been downloaded */
+				#endregion /* Get downloaded character info END */
+				
+				menu_delay = 3;
 			}
-			#endregion /* Get downloaded level info END */
-			
-			else
-			
-			#region /* Get downloaded character info */
-			if (what_kind_of_id == "character")
-			{
-				downloaded_character_name = string(downloaded_file_name);
-				
-				if (switch_check_profanity(downloaded_file_name))
-				{
-					masked_character_name = string(switch_mask_profanity(downloaded_file_name));
-				}
-				else
-				{
-					masked_character_name = string(downloaded_file_name);
-				}
-				
-				scr_delete_sprite_properly(downloaded_thumbnail_sprite);
-				downloaded_thumbnail_sprite = noone;
-				
-				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("stand", downloaded_thumbnail_sprite, 0, 0, string(downloaded_character_name));
-				downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("character_select_portrait", downloaded_thumbnail_sprite, 0, 0, string(downloaded_character_name));
-				
-				if (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
-				{
-					ini_open(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini");
-					global.level_description = ini_read_string("info", "character_description", "");
-					masked_username = ini_read_string("info", "username", "");
-					ini_close();
-					if (switch_check_profanity(global.level_description))
-					{
-						global.level_description = string(switch_mask_profanity(global.level_description));
-					}
-					if (switch_check_profanity(masked_username))
-					{
-						masked_username = string(switch_mask_profanity(masked_username));
-					}
-				}
-				with(instance_create_depth(room_width * 0.5, room_height * 0.5, obj_title.depth - 100, obj_score_up))
-				{
-					/* Tell the player briefly that the thing has finished downloading */
-					above_gui = true;
-					score_up = l10n_text(string(what_kind_of_id)) + " " + l10n_text("downloaded");
-				}
-				menu = "searched_file_downloaded_back_to_list"; /* Go to the screen where you see the file has been downloaded */
-			}
-			#endregion /* Get downloaded character info END */
-			
-			menu_delay = 3;
 		}
 		#endregion /* Download file END */
 		
@@ -1177,6 +1186,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
+			file_delete(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy any leftover files in temporary folder */
+			directory_destroy(working_directory + "downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
 			menu = "searching_for_id_back";
 		}
 	}

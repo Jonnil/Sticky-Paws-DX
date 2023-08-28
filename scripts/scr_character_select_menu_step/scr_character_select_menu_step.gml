@@ -1,13 +1,13 @@
 function scr_character_select_menu_step()
 {
-	/* Player 1 Key Accept Pressed */ player1_key_a_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept])) || (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.accept])) || (keyboard_check_pressed(vk_space));
-	/* Player 1 Key Back Pressed */ player1_key_b_pressed = (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back])) || (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.back])) || (keyboard_check_pressed(vk_escape));
-	/* Player 2 Key Accept Pressed */ player2_key_a_pressed = (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept])) || (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.accept]));
-	/* Player 2 Key Back Pressed */ player2_key_b_pressed = (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.back])) || (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.back]));
-	/* Player 3 Key Accept Pressed */ player3_key_a_pressed = (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept])) || (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.accept]));
-	/* Player 3 Key Back Pressed */ player3_key_b_pressed = (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.back])) || (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.back]));
-	/* Player 4 Key Accept Pressed */ player4_key_a_pressed = (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept])) || (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.accept]));
-	/* Player 4 Key Back Pressed */ player4_key_b_pressed = (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.back])) || (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.back]));
+	/* Player 1 Key Accept Pressed */ player1_key_a_pressed = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.accept])) || (keyboard_check_pressed(vk_space));
+	/* Player 1 Key Back Pressed */ player1_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.back])) || (keyboard_check_pressed(vk_escape));
+	/* Player 2 Key Accept Pressed */ player2_key_a_pressed = (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.accept]));
+	/* Player 2 Key Back Pressed */ player2_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.back]));
+	/* Player 3 Key Accept Pressed */ player3_key_a_pressed = (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.accept]));
+	/* Player 3 Key Back Pressed */ player3_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.back]));
+	/* Player 4 Key Accept Pressed */ player4_key_a_pressed = (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.accept]));
+	/* Player 4 Key Back Pressed */ player4_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.back]));
 	
 	if (can_input_player1_name == 2)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -251,22 +251,22 @@ function scr_character_select_menu_step()
 			if (keyboard_check_pressed(vk_enter))
 			|| (keyboard_check_pressed(vk_escape))
 			
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][2][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][3][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][4][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][1][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][1][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][1][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player1_slot, global.player_[inp.gp][1][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player2_slot, global.player_[inp.gp][1][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player3_slot, global.player_[inp.gp][1][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player4_slot, global.player_[inp.gp][1][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][1][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][1][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][1][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][1][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][1][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][1][2][action.back]))
 			|| (global.clicking_ok_input_screen)
 			|| (global.clicking_cancel_input_screen)
 			{
@@ -305,8 +305,8 @@ function scr_character_select_menu_step()
 			#region /* Key Up */
 			if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
 			|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
-			|| (gamepad_button_check_pressed(global.player1_slot, gp_padu))
-			|| (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
+			|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+			|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
 			&& (menu_specific_joystick_delay[1] <= 0)
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -350,8 +350,8 @@ function scr_character_select_menu_step()
 			#region /* Key Down */
 			if (keyboard_check_pressed(global.player_[inp.key][1][1][action.down]))
 			|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.down]))
-			|| (gamepad_button_check_pressed(global.player1_slot, gp_padd))
-			|| (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
+			|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
+			|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
 			&& (menu_specific_joystick_delay[1] <= 0)
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1022,63 +1022,63 @@ function scr_character_select_menu_step()
 		menu_delay = clamp(menu_delay - 1, 0, +infinity);
 		
 		#region /* Menu navigation with joystick */
-		if (gamepad_axis_value(global.player1_slot, gp_axislv) < 0)
-		|| (gamepad_axis_value(global.player1_slot, gp_axislv) > 0)
-		|| (gamepad_axis_value(global.player1_slot, gp_axislh) < 0)
-		|| (gamepad_axis_value(global.player1_slot, gp_axislh) > 0)
+		if (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < 0)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > 0)
 		{
 			if (menu_specific_joystick_delay[1] == 0)
 			{
 				menu_specific_joystick_delay[1] = 30;
 			}
 		}
-		if (gamepad_axis_value(global.player2_slot, gp_axislv) < 0)
-		|| (gamepad_axis_value(global.player2_slot, gp_axislv) > 0)
-		|| (gamepad_axis_value(global.player2_slot, gp_axislh) < 0)
-		|| (gamepad_axis_value(global.player2_slot, gp_axislh) > 0)
+		if (gamepad_axis_value(global.player_slot[2], gp_axislv) < 0)
+		|| (gamepad_axis_value(global.player_slot[2], gp_axislv) > 0)
+		|| (gamepad_axis_value(global.player_slot[2], gp_axislh) < 0)
+		|| (gamepad_axis_value(global.player_slot[2], gp_axislh) > 0)
 		{
 			if (menu_specific_joystick_delay[2] == 0)
 			{
 				menu_specific_joystick_delay[2] = 30;
 			}
 		}
-		if (gamepad_axis_value(global.player3_slot, gp_axislv) < 0)
-		|| (gamepad_axis_value(global.player3_slot, gp_axislv) > 0)
-		|| (gamepad_axis_value(global.player3_slot, gp_axislh) < 0)
-		|| (gamepad_axis_value(global.player3_slot, gp_axislh) > 0)
+		if (gamepad_axis_value(global.player_slot[3], gp_axislv) < 0)
+		|| (gamepad_axis_value(global.player_slot[3], gp_axislv) > 0)
+		|| (gamepad_axis_value(global.player_slot[3], gp_axislh) < 0)
+		|| (gamepad_axis_value(global.player_slot[3], gp_axislh) > 0)
 		{
 			if (menu_specific_joystick_delay[3] == 0)
 			{
 				menu_specific_joystick_delay[3] = 30;
 			}
 		}
-		if (gamepad_axis_value(global.player4_slot, gp_axislv) < 0)
-		|| (gamepad_axis_value(global.player4_slot, gp_axislv) > 0)
-		|| (gamepad_axis_value(global.player4_slot, gp_axislh) < 0)
-		|| (gamepad_axis_value(global.player4_slot, gp_axislh) > 0)
+		if (gamepad_axis_value(global.player_slot[4], gp_axislv) < 0)
+		|| (gamepad_axis_value(global.player_slot[4], gp_axislv) > 0)
+		|| (gamepad_axis_value(global.player_slot[4], gp_axislh) < 0)
+		|| (gamepad_axis_value(global.player_slot[4], gp_axislh) > 0)
 		{
 			if (menu_specific_joystick_delay[4] == 0)
 			{
 				menu_specific_joystick_delay[4] = 30;
 			}
 		}
-		if (gamepad_axis_value(global.player1_slot, gp_axislv)= 0)
-		&& (gamepad_axis_value(global.player1_slot, gp_axislh)= 0)
+		if (gamepad_axis_value(global.player_slot[1], gp_axislv)= 0)
+		&& (gamepad_axis_value(global.player_slot[1], gp_axislh)= 0)
 		{
 			menu_specific_joystick_delay[1] = 0;
 		}
-		if (gamepad_axis_value(global.player2_slot, gp_axislv)= 0)
-		&& (gamepad_axis_value(global.player2_slot, gp_axislh)= 0)
+		if (gamepad_axis_value(global.player_slot[2], gp_axislv)= 0)
+		&& (gamepad_axis_value(global.player_slot[2], gp_axislh)= 0)
 		{
 			menu_specific_joystick_delay[2] = 0;
 		}
-		if (gamepad_axis_value(global.player3_slot, gp_axislv)= 0)
-		&& (gamepad_axis_value(global.player3_slot, gp_axislh)= 0)
+		if (gamepad_axis_value(global.player_slot[3], gp_axislv)= 0)
+		&& (gamepad_axis_value(global.player_slot[3], gp_axislh)= 0)
 		{
 			menu_specific_joystick_delay[3] = 0;
 		}
-		if (gamepad_axis_value(global.player4_slot, gp_axislv)= 0)
-		&& (gamepad_axis_value(global.player4_slot, gp_axislh)= 0)
+		if (gamepad_axis_value(global.player_slot[4], gp_axislv)= 0)
+		&& (gamepad_axis_value(global.player_slot[4], gp_axislh)= 0)
 		{
 			menu_specific_joystick_delay[4] = 0;
 		}

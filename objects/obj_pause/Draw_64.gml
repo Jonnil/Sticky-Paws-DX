@@ -107,18 +107,27 @@ if (hide_menu_for_clean_screenshots == false)
 && (os_type != os_ios)
 && (os_type != os_android)
 {
-	if (global.controls_used_for_menu_navigation == "gamepad")
-	|| (global.always_show_gamepad_buttons)
+	if (global.character_select_in_this_menu == "level_editor")
+	&& (global.search_id != "")
 	{
-		scr_draw_gamepad_buttons(gp_face4, 32, get_window_height - 32, 0.75, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
+		var hide_menu_for_clean_screenshots_y = get_window_height - 64;
 	}
 	else
 	{
-		draw_sprite_ext(spr_keyboard_keys, ord("Y"), 32, get_window_height - 32, 0.75, 0.75, 0, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
+		var hide_menu_for_clean_screenshots_y = get_window_height - 32;
+	}
+	if (global.controls_used_for_menu_navigation == "gamepad")
+	|| (global.always_show_gamepad_buttons)
+	{
+		scr_draw_gamepad_buttons(gp_face4, 32, hide_menu_for_clean_screenshots_y, 0.75, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
+	}
+	else
+	{
+		draw_sprite_ext(spr_keyboard_keys, ord("Y"), 32, hide_menu_for_clean_screenshots_y, 0.75, 0.75, 0, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
 	}
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(64, get_window_height - 32, ": " + l10n_text("Hide menu for clean screenshots"), global.default_text_size, c_black, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
+	scr_draw_text_outlined(64, hide_menu_for_clean_screenshots_y, ": " + l10n_text("Hide menu for clean screenshots"), global.default_text_size, c_black, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
 }
 #endregion /* Hide menu for clean screenshots text END */
 
@@ -212,6 +221,7 @@ if (hide_menu_for_clean_screenshots == false)
 		|| (menu == "options")
 		|| (menu == "restart")
 		|| (menu == "quit")
+		|| (menu == "report")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Continue"), "continue", "continue", c_lime, fade_in_pause_alpha);
 			draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
@@ -266,6 +276,13 @@ if (hide_menu_for_clean_screenshots == false)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit"), "quit", "quit", c_red, fade_in_pause_alpha);
 				}
+			}
+			/* Report Button in bottom left corner */
+			if (global.character_select_in_this_menu == "level_editor")
+			&& (global.search_id != "")
+			{
+				draw_menu_button(0, display_get_gui_height() - 42, l10n_text("Report"), "report", "report");
+				draw_sprite_ext(spr_icons_report, 0, 16, display_get_gui_height() - 42 + 20, 1, 1, 0, c_white, 1);
 			}
 		}
 		else
@@ -363,6 +380,31 @@ if (hide_menu_for_clean_screenshots == false)
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
 				draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 			}
+		}
+		if (menu == "report_back")
+		|| (menu == "report_next")
+		|| (menu == "report_reason_back")
+		|| (menu == "report_intrusion_of_privacy")
+		|| (menu == "report_violence_physical_harm")
+		|| (menu == "report_abusive_harassing_bullying")
+		|| (menu == "report_hateful_discriminatory")
+		|| (menu == "report_advertising_spam")
+		|| (menu == "report_sexually_explicit")
+		|| (menu == "report_asking_for_likes")
+		|| (menu == "report_uses_a_bug")
+		|| (menu == "report_blatant_copying")
+		|| (menu == "report_phony_world_record")
+		|| (menu == "report_other_inappropriate_content")
+		|| (menu == "report_message_ok")
+		|| (menu == "report_message_back")
+		|| (menu == "report_send_back")
+		|| (menu == "report_send_confirm")
+		|| (menu == "report_send_to_server")
+		|| (menu == "report_complete_delete")
+		|| (menu == "report_complete_back_to_online_list")
+		|| (menu == "report_complete_back_to_select")
+		{
+			scr_draw_report();
 		}
 	}
 	/* PAUSE LEVEL EDITOR MENU */

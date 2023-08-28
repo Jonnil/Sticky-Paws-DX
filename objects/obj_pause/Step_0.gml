@@ -25,8 +25,6 @@ if (global.narrator >= 0)
 	voice_options = noone;
 }
 
-room_speed = global.max_fps;
-
 #region /* Hide menu for clean screenshots */
 if (hide_menu_for_clean_screenshots_timer < 60 * 3)
 {
@@ -45,10 +43,10 @@ if (in_settings)
 }
 
 if (keyboard_check_pressed(ord("Y")))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_face4))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_face4))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_face4))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_face4))
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_face4))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_face4))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_face4))
 {
 	if (hide_menu_for_clean_screenshots == false)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -64,22 +62,22 @@ if (keyboard_check_pressed(ord("Y")))
 if (keyboard_check_pressed(vk_anykey))
 || (mouse_check_button_released(mb_middle))
 || (mouse_check_button_released(mb_right))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_face1))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_face2))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_face3))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_face4))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_face1))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_face2))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_face3))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_face4))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_face1))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_face2))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_face3))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_face4))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_face1))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_face2))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_face3))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_face4))
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_face2))
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_face3))
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_face1))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_face2))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_face3))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_face4))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_face1))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_face2))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_face3))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_face4))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_face1))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_face2))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_face3))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_face4))
 {
 	if (hide_menu_for_clean_screenshots)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -120,7 +118,7 @@ if (menu_cursor_index > 4)
 if (unpause)
 {
 	scr_delete_sprite_properly(global.pause_screenshot);
-	room = global.pause_room;
+	room_goto(global.pause_room); /* Go back to room where you paused. You want to use room_goto, not room = global.pause_room, as that makes it go to incorrect rooms */
 }
 
 #region /* Show loading icon and reset level */
@@ -184,7 +182,6 @@ if (show_loading_icon)
 		global.restart_level = true;
 		audio_stop_all();
 		global.pause = false;
-		instance_activate_region(camera_get_view_x(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, get_window_width + 32, get_window_height + 32, true);
 		unpause = true;
 		#endregion /* Restart Level END */
 			
@@ -194,14 +191,14 @@ if (show_loading_icon)
 
 #region /* Return to game */
 if (keyboard_check_pressed(vk_escape))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_start))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_start))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_start))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_start))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_select))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_select))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_select))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_select))
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_start))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_start))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_start))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_start))
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_select))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_select))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_select))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_select))
 {
 	if (can_remap_key == false)
 	&& (input_key == false)
@@ -249,7 +246,6 @@ if (hide_menu_for_clean_screenshots == false)
 				audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
 				audio_sound_gain(global.ambience_underwater, 0, 0);
 				global.pause = false;
-				instance_activate_region(camera_get_view_x(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, get_window_width + 32, get_window_height + 32, true);
 				unpause = true;
 				#endregion /* Return to game END */
 			
@@ -259,6 +255,12 @@ if (hide_menu_for_clean_screenshots == false)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
+				if (global.character_select_in_this_menu == "level_editor")
+				&& (global.search_id != "")
+				{
+					menu = "report";
+				}
+				else
 				if (global.goal_active == false)
 				{
 					menu = "quit";
@@ -636,10 +638,60 @@ if (hide_menu_for_clean_screenshots == false)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "continue";
+				if (global.character_select_in_this_menu == "level_editor")
+				&& (global.search_id != "")
+				{
+					menu = "report";
+				}
+				else
+				{
+					menu = "continue";
+				}
 			}
 		}
 		#endregion /* Quit END */
+		
+		else
+		
+		#region /* Report */
+		if (menu == "report")
+		&& (global.character_select_in_this_menu == "level_editor")
+		&& (global.search_id != "")
+		{
+			if (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 42, get_window_width + 370, get_window_height))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				report_back_to_menu = "report";
+				menu = "report_next";
+			}
+			if (key_up)
+			&& (!key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				if (global.goal_active == false)
+				{
+					menu = "quit";
+				}
+				else
+				{
+					menu = "options";
+				}
+			}
+			else
+			if (key_down)
+			&& (!key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "continue";
+			}
+		}
+		#endregion /* Report END */
 		
 		else
 		
@@ -716,24 +768,22 @@ if (hide_menu_for_clean_screenshots == false)
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-			
+				
 				#region /* Return to Title */
-			
-				#region /* Reset timer back to zero */
+				
+				/* Reset timer back to zero */
 				global.timeattack_realmillisecond = 0;
 				global.timeattack_millisecond = 0;
 				global.timeattack_second = 0;
 				global.timeattack_minute = 0;
-				#endregion /* Reset timer back to zero END */
-			
+				
 				global.quit_level = true;
 				global.quit_to_title = true;
 				audio_stop_all();
 				global.pause = false;
-				instance_activate_region(camera_get_view_x(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, get_window_width + 32, get_window_height + 32, true);
 				unpause = true;
 				#endregion /* Return to Title END */
-			
+				
 			}
 			if (key_up)
 			&& (!key_down)

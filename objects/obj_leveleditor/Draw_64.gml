@@ -85,10 +85,10 @@ if (global.actually_play_edited_level == false)
 				
 				#region /* Only quit the pause menu when you're in the first pause menu */
 				if (keyboard_check_pressed(vk_escape))
-				|| (gamepad_button_check_pressed(global.player1_slot, gp_start))
-				|| (gamepad_button_check_pressed(global.player2_slot, gp_start))
-				|| (gamepad_button_check_pressed(global.player3_slot, gp_start))
-				|| (gamepad_button_check_pressed(global.player4_slot, gp_start))
+				|| (gamepad_button_check_pressed(global.player_slot[1], gp_start))
+				|| (gamepad_button_check_pressed(global.player_slot[2], gp_start))
+				|| (gamepad_button_check_pressed(global.player_slot[3], gp_start))
+				|| (gamepad_button_check_pressed(global.player_slot[4], gp_start))
 				|| (gamepad_button_check_pressed(4, gp_start))
 				|| (key_b_pressed)
 				{
@@ -517,11 +517,11 @@ if (global.actually_play_edited_level == false)
 					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192, l10n_text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
 					if (get_window_width <= 1350)
 					{
-						scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size * 0.75, c_black, c_white, 1);
+						scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map_" + string(global.level_name) + ".png", "\\", "/"), global.default_text_size * 0.75, c_black, c_white, 1);
 					}
 					else
 					{
-						scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map.png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
+						scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 192 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map_" + string(global.level_name) + ".png", "\\", "/"), global.default_text_size, c_black, c_white, 1);
 					}
 				}
 				else
@@ -569,6 +569,11 @@ if (global.actually_play_edited_level == false)
 					{
 						if (menu_delay == 0 && menu_joystick_delay == 0)
 						{
+							/* Disable the backgrounds when getting full level map */
+							layer_background_visible(layer_background_get_id("Background"), false);
+							layer_background_visible(layer_background_get_id("Background_2"), false);
+							layer_background_visible(layer_background_get_id("Background_3"), false);
+							layer_background_visible(layer_background_get_id("Background_4"), false);
 							menu_delay = 3;
 							quit_level_editor = false;
 							can_input_level_name = false;
@@ -655,7 +660,7 @@ if (global.actually_play_edited_level == false)
 				
 				#region /* Press enter when done typing */
 				if (keyboard_check_pressed(vk_enter))
-				|| (gamepad_button_check_pressed(global.player1_slot, gp_start))
+				|| (gamepad_button_check_pressed(global.player_slot[1], gp_start))
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
 					{
@@ -860,7 +865,7 @@ if (global.actually_play_edited_level == false)
 		draw_sprite_ext(spr_menu_button_play, 0, play_level_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		
 		#region /* Draw Play Key */
-		if (gamepad_is_connected(global.player1_slot))
+		if (gamepad_is_connected(global.player_slot[1]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{
@@ -981,7 +986,7 @@ if (global.actually_play_edited_level == false)
 		}
 		
 		#region /* Draw Brush Key */
-		if (gamepad_is_connected(global.player1_slot))
+		if (gamepad_is_connected(global.player_slot[1]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{
@@ -1197,7 +1202,7 @@ if (global.actually_play_edited_level == false)
 		}
 		
 		#region /* Draw Eraser Key */
-		if (gamepad_is_connected(global.player1_slot))
+		if (gamepad_is_connected(global.player_slot[1]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{
@@ -1334,7 +1339,7 @@ if (global.actually_play_edited_level == false)
 		}
 		
 		#region /* Draw Eraser Key */
-		if (gamepad_is_connected(global.player1_slot))
+		if (gamepad_is_connected(global.player_slot[1]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{

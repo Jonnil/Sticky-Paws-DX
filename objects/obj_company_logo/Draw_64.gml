@@ -25,11 +25,7 @@ else
 
 if (can_navigate == false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
 {
-	global.loading_spinning_angle -= 10;
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_middle);
-	draw_sprite_ext(spr_loading, 0, display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 6), 1, 1, global.loading_spinning_angle, c_white, 1);
-	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 5), l10n_text("Loading"), global.default_text_size, c_black, c_white, 1);
+	scr_draw_loading(1, display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 6));
 	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 4), string(file_found), global.default_text_size, c_black, c_white, 1);
 	if (load_ok <= 0)
 	{
@@ -75,7 +71,7 @@ if (show_skip_button)
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, l10n_text("Press on Screen"), global.default_text_size, c_black, c_white, show_skip_button_alpha);
 	}
 	else
-	if (gamepad_is_connected(global.player1_slot))
+	if (gamepad_is_connected(global.player_slot[1]))
 	&& (global.controls_used_for_menu_navigation == "controller")
 	|| (global.always_show_gamepad_buttons)
 	{
@@ -96,10 +92,3 @@ if (show_skip_button)
 scr_draw_darken_screen_when_window_is_unfocused();
 
 scr_draw_cursor_mouse();
-
-draw_set_halign(fa_center);
-scr_draw_text_outlined(display_get_width() * 0.5, 32 * 1, switch_save_data_message[0], global.default_text_size, c_black, c_white);
-scr_draw_text_outlined(display_get_width() * 0.5, 32 * 2, switch_save_data_message[1], global.default_text_size, c_black, c_white);
-scr_draw_text_outlined(display_get_width() * 0.5, 32 * 3, switch_save_data_message[2], global.default_text_size, c_black, c_white);
-scr_draw_text_outlined(display_get_width() * 0.5, 32 * 4, switch_save_data_message[3], global.default_text_size, c_black, c_white);
-scr_draw_text_outlined(display_get_width() * 0.5, 32 * 5, switch_save_data_message[4], global.default_text_size, c_black, c_white);

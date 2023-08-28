@@ -35,7 +35,7 @@ function scr_modify_objects_in_level_editor()
 		&& (dragged_from_original_place == false)
 		&& (placed_for_the_first_time == false)
 		|| (instance_exists(obj_leveleditor))
-		&& (gamepad_button_check_released(global.player1_slot, obj_leveleditor.button_draw))
+		&& (gamepad_button_check_released(global.player_slot[1], obj_leveleditor.button_draw))
 		&& (dragged_from_original_place == false)
 		&& (placed_for_the_first_time == false)
 		{

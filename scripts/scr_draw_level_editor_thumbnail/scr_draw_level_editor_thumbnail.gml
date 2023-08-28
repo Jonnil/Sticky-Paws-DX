@@ -71,6 +71,10 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					if (global.select_level_index == i)
 					{
 						current_text = string(var_level_id);
+						if (room == rm_title)
+						{
+							global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
+						}
 					}
 					
 					var current_icon = spr_icons_upload;
@@ -81,10 +85,19 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 					if (global.select_level_index == i)
 					{
 						current_text = string(l10n_text("Clear Checked"));
+						if (room == rm_title)
+						{
+							global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
+						}
 					}
 					
 					var current_icon = spr_checkpoint;
 					var icon_scale = scr_wave(0.4, 0.5, 1, 0);
+				}
+				else
+				if (room == rm_title)
+				{
+					global.search_id = ""; /* Reset the global search id so it's blank */
 				}
 				
 				if (clear_check)
@@ -101,6 +114,16 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			}
 			#endregion /* Draw if level have been Clear Checked on top of level thumbnail END */
 			
+		}
+		
+		var max_custom_levels = 120;
+		if (i == 0)
+		&& (ds_list_size(global.all_loaded_custom_levels) - 1 >= max_custom_levels)
+		{
+			var draw_x = 394 * (i - column * row) + 292 + thumbnail_x_offset;
+			var draw_y = 226 * (column - scroll) + 358;
+			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394 * (i - column * row) + 100 + thumbnail_x_offset, 226 * (column - scroll) + 250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_dkgray, 1);
+			draw_sprite_ext(spr_lock_icon, 0, draw_x, draw_y, 1, 1, 0, c_white, 1);
 		}
 	}
 	#endregion /* Draw Thumbnail END */

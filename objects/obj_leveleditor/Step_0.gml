@@ -201,7 +201,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Holding the play key down */
 	if (keyboard_check_pressed(key_play))
-	|| (gamepad_button_check_pressed(global.player1_slot, button_play))
+	|| (gamepad_button_check_pressed(global.player_slot[1], button_play))
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 	&& (mouse_check_button_pressed(mb_left))
 	{
@@ -211,7 +211,7 @@ if (global.actually_play_edited_level == false)
 		}
 	}
 	if (keyboard_check(key_play))
-	|| (gamepad_button_check(global.player1_slot, button_play))
+	|| (gamepad_button_check(global.player_slot[1], button_play))
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 	&& (mouse_check_button(mb_left))
 	|| (pressing_play_timer < 3)
@@ -235,10 +235,11 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Play Level when releasing Enter Key */
 	if (pressing_play_timer >= 1)
+	|| (global.full_level_map_screenshot)
 	{
 		instance_activate_all(); /* Activate all instances before saving the custom level. You need this code right here otherwise the game crashes */
 		if (keyboard_check_released(key_play))
-		|| (gamepad_button_check_released(global.player1_slot, button_play))
+		|| (gamepad_button_check_released(global.player_slot[1], button_play))
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 		&& (mouse_check_button_released(mb_left))
 		|| (global.full_level_map_screenshot)
@@ -251,7 +252,6 @@ if (global.actually_play_edited_level == false)
 				if (!instance_exists(obj_camera))
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32))
 				&& (!instance_exists(obj_camera))
-				|| (global.full_level_map_screenshot)
 				{
 					
 					#region /* Limit so cursor and view can't go outside room */
@@ -593,7 +593,7 @@ if (global.actually_play_edited_level == false)
 			}
 			var view_x_direction = 0;
 			var view_y_direction = 0;
-			if (gamepad_axis_value(global.player1_slot, gp_axisrv) < 0)
+			if (gamepad_axis_value(global.player_slot[1], gp_axisrv) < 0)
 			|| (key_up)
 			&& (controller_y <= cam_y)
 			{
@@ -603,7 +603,7 @@ if (global.actually_play_edited_level == false)
 					controller_y -= controller_view_speed;
 				}
 			}
-			if (gamepad_axis_value(global.player1_slot, gp_axisrv) > 0)
+			if (gamepad_axis_value(global.player_slot[1], gp_axisrv) > 0)
 			|| (key_down)
 			&& (controller_y >= cam_y + cam_height)
 			{
@@ -613,7 +613,7 @@ if (global.actually_play_edited_level == false)
 					controller_y += controller_view_speed;
 				}
 			}
-			if (gamepad_axis_value(global.player1_slot, gp_axisrh) < 0)
+			if (gamepad_axis_value(global.player_slot[1], gp_axisrh) < 0)
 			|| (key_left)
 			&& (controller_x <= cam_x)
 			{
@@ -623,7 +623,7 @@ if (global.actually_play_edited_level == false)
 					controller_x -= controller_view_speed;
 				}
 			}
-			if (gamepad_axis_value(global.player1_slot, gp_axisrh) > 0)
+			if (gamepad_axis_value(global.player_slot[1], gp_axisrh) > 0)
 			|| (key_right)
 			&& (controller_x >= cam_x + cam_width)
 			{
@@ -648,7 +648,7 @@ if (global.actually_play_edited_level == false)
 		|| (can_make_place_brush_size_bigger && key_a_hold)
 		|| (key_a_pressed)
 		{
-			if (!gamepad_button_check(global.player1_slot, button_play))
+			if (!gamepad_button_check(global.player_slot[1], button_play))
 			&& (!keyboard_check(key_play))
 			&& (!keyboard_check(vk_space))
 			&& (!mouse_check_button(mb_middle))
@@ -865,7 +865,7 @@ if (global.actually_play_edited_level == false)
 	
 	if (mouse_check_button_released(mb_left))
 	|| (key_a_released)
-	|| (gamepad_button_check_released(global.player1_slot, button_draw))
+	|| (gamepad_button_check_released(global.player_slot[1], button_draw))
 	{
 		placing_object -= 0.2;
 	}
@@ -875,8 +875,6 @@ if (global.actually_play_edited_level == false)
 		placing_object -= 0.2;	
 	}
 	
-	scr_make_background_visible();
-	
 	#region /* Keyboard Shortcuts */
 	
 	#region /* Press D key to change to drawing tool in level editor */
@@ -884,11 +882,11 @@ if (global.actually_play_edited_level == false)
 	{
 		if (keyboard_check_pressed(key_draw))
 		&& (fill_mode)
-		|| (gamepad_button_check_pressed(global.player1_slot, button_draw))
+		|| (gamepad_button_check_pressed(global.player_slot[1], button_draw))
 		&& (fill_mode)
 		|| (keyboard_check_pressed(key_draw))
 		&& (erase_mode)
-		|| (gamepad_button_check_pressed(global.player1_slot, button_draw))
+		|| (gamepad_button_check_pressed(global.player_slot[1], button_draw))
 		&& (erase_mode)
 		|| (keyboard_check_released(key_erase_object))
 		&& (erase_mode)
@@ -900,7 +898,7 @@ if (global.actually_play_edited_level == false)
 		if (keyboard_check_pressed(key_change_draw_size))
 		&& (fill_mode == false)
 		&& (erase_mode == false)
-		|| (gamepad_button_check_pressed(global.player1_slot, button_change_draw_size))
+		|| (gamepad_button_check_pressed(global.player_slot[1], button_change_draw_size))
 		&& (fill_mode == false)
 		&& (erase_mode == false)
 		{
@@ -917,7 +915,7 @@ if (global.actually_play_edited_level == false)
 		&& (erase_mode == false)
 		|| (keyboard_check_pressed(key_erase_object))
 		&& (erase_mode == false)
-		|| (gamepad_button_check_pressed(global.player1_slot, button_erase))
+		|| (gamepad_button_check_pressed(global.player_slot[1], button_erase))
 		&& (erase_mode == false)
 		{
 			erase_mode = true;
@@ -926,7 +924,7 @@ if (global.actually_play_edited_level == false)
 		else
 		if (keyboard_check_pressed(key_change_erase_size))
 		&& (erase_mode)
-		|| (gamepad_button_check_pressed(global.player1_slot, button_change_erase_size))
+		|| (gamepad_button_check_pressed(global.player_slot[1], button_change_erase_size))
 		&& (erase_mode)
 		{
 			erase_brush_size = (erase_brush_size + 1) % 6;
@@ -940,7 +938,7 @@ if (global.actually_play_edited_level == false)
 	{
 		if (keyboard_check_released(key_fill))
 		&& (fill_mode == false)
-		|| (gamepad_button_check_released(global.player1_slot, button_fill))
+		|| (gamepad_button_check_released(global.player_slot[1], button_fill))
 		&& (fill_mode == false)
 		{
 			erase_mode = false;
@@ -948,7 +946,7 @@ if (global.actually_play_edited_level == false)
 		}
 		else
 		if (keyboard_check_pressed(key_change_fill_type))
-		|| (gamepad_button_check_pressed(global.player1_slot, button_change_fill_type))
+		|| (gamepad_button_check_pressed(global.player_slot[1], button_change_fill_type))
 		{
 			if (!erase_mode && fill_mode)
 			{
@@ -1055,7 +1053,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Show or hide grid hotkey */
 	if (keyboard_check_pressed(key_grid))
 	&& (pause == false)
-	|| (gamepad_button_check_pressed(global.player1_slot, button_grid))
+	|| (gamepad_button_check_pressed(global.player_slot[1], button_grid))
 	&& (pause == false)
 	{
 		show_grid = not show_grid;
@@ -1248,7 +1246,7 @@ if (global.actually_play_edited_level == false)
 			&& (!hovering_over_icons)
 			|| (keyboard_check(key_fill))
 			&& (key_fill != key_change_fill_type)
-			|| (gamepad_button_check(global.player1_slot, button_fill))
+			|| (gamepad_button_check(global.player_slot[1], button_fill))
 			&& (button_fill != button_change_fill_type)
 			{
 				if (!keyboard_check(vk_space))
@@ -1308,7 +1306,7 @@ if (global.actually_play_edited_level == false)
 		&& (!mouse_check_button(mb_left))
 		&& (erase_mode == false)
 		&& (pause == false)
-		|| (gamepad_button_check_pressed(global.player1_slot, button_scroll_object_left))
+		|| (gamepad_button_check_pressed(global.player_slot[1], button_scroll_object_left))
 		&& (pause == false)
 		{
 			if (!instance_exists(obj_leveleditor_fill))
@@ -1337,7 +1335,7 @@ if (global.actually_play_edited_level == false)
 		&& (!mouse_check_button(mb_left))
 		&& (erase_mode == false)
 		&& (pause == false)
-		|| (gamepad_button_check_pressed(global.player1_slot, button_scroll_object_right))
+		|| (gamepad_button_check_pressed(global.player_slot[1], button_scroll_object_right))
 		&& (pause == false)
 		{
 			if (!instance_exists(obj_leveleditor_fill))
@@ -1456,10 +1454,10 @@ if (global.actually_play_edited_level == false)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		if (keyboard_check_pressed(vk_escape))
-		|| (gamepad_button_check_pressed(global.player1_slot, gp_start))
-		|| (gamepad_button_check_pressed(global.player2_slot, gp_start))
-		|| (gamepad_button_check_pressed(global.player3_slot, gp_start))
-		|| (gamepad_button_check_pressed(global.player4_slot, gp_start))
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_start))
+		|| (gamepad_button_check_pressed(global.player_slot[2], gp_start))
+		|| (gamepad_button_check_pressed(global.player_slot[3], gp_start))
+		|| (gamepad_button_check_pressed(global.player_slot[4], gp_start))
 		|| (gamepad_button_check_pressed(4, gp_start))
 		{
 			global.pause_room = rm_leveleditor;

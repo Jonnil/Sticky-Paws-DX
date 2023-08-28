@@ -26,7 +26,7 @@ if (can_move)
 	#region /* Can go up */
 	if (!place_meeting(x, y - 1, obj_wall))
 	{
-		if (gamepad_is_connected(global.player1_slot))
+		if (gamepad_is_connected(global.player_slot[1]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{
@@ -90,7 +90,7 @@ if (can_move)
 	#region /* Can go down */
 	if (!place_meeting(x, y + 1, obj_wall))
 	{
-		if (gamepad_is_connected(global.player1_slot))
+		if (gamepad_is_connected(global.player_slot[1]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{
@@ -154,7 +154,7 @@ if (can_move)
 	#region /* Can go left */
 	if (!place_meeting(x - 1, y, obj_wall))
 	{
-		if (gamepad_is_connected(global.player1_slot))
+		if (gamepad_is_connected(global.player_slot[1]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{
@@ -218,7 +218,7 @@ if (can_move)
 	#region /* Can go right */
 	if (!place_meeting(x + 1, y, obj_wall))
 	{
-		if (gamepad_is_connected(global.player1_slot))
+		if (gamepad_is_connected(global.player_slot[1]))
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{

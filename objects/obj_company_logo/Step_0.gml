@@ -21,22 +21,22 @@ if (goto_title_screen)
 }
 
 #region /* Skip company logo screen when pressing skip button */
-if (gamepad_button_check_pressed(global.player1_slot, gp_face1))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_face2))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_start))
-|| (gamepad_button_check_pressed(global.player1_slot, gp_select))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_face1))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_face2))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_start))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_select))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_face1))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_face2))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_start))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_select))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_face1))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_face2))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_start))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_select))
+if (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_face2))
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_start))
+|| (gamepad_button_check_pressed(global.player_slot[1], gp_select))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_face1))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_face2))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_start))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_select))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_face1))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_face2))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_start))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_select))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_face1))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_face2))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_start))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_select))
 || (keyboard_check_pressed(vk_anykey))
 || (window_has_focus())
 && (mouse_check_button_released(mb_any))
@@ -44,33 +44,33 @@ if (gamepad_button_check_pressed(global.player1_slot, gp_face1))
 	if (can_navigate)
 	&& (show_skip_button == false)
 	{
-		if (gamepad_button_check_pressed(global.player1_slot, gp_face1))
-		|| (gamepad_button_check_pressed(global.player2_slot, gp_face1))
-		|| (gamepad_button_check_pressed(global.player3_slot, gp_face1))
-		|| (gamepad_button_check_pressed(global.player4_slot, gp_face1))
+		if (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
+		|| (gamepad_button_check_pressed(global.player_slot[2], gp_face1))
+		|| (gamepad_button_check_pressed(global.player_slot[3], gp_face1))
+		|| (gamepad_button_check_pressed(global.player_slot[4], gp_face1))
 		{
 			skip_button = gp_face1;
 		}
 		else
-		if (gamepad_button_check_pressed(global.player1_slot, gp_face2))
-		|| (gamepad_button_check_pressed(global.player2_slot, gp_face2))
-		|| (gamepad_button_check_pressed(global.player3_slot, gp_face2))
-		|| (gamepad_button_check_pressed(global.player4_slot, gp_face2))
+		if (gamepad_button_check_pressed(global.player_slot[1], gp_face2))
+		|| (gamepad_button_check_pressed(global.player_slot[2], gp_face2))
+		|| (gamepad_button_check_pressed(global.player_slot[3], gp_face2))
+		|| (gamepad_button_check_pressed(global.player_slot[4], gp_face2))
 		{
 			skip_button = gp_face2;
 		}
-		if (gamepad_button_check_pressed(global.player1_slot, gp_start))
-		|| (gamepad_button_check_pressed(global.player2_slot, gp_start))
-		|| (gamepad_button_check_pressed(global.player3_slot, gp_start))
-		|| (gamepad_button_check_pressed(global.player4_slot, gp_start))
+		if (gamepad_button_check_pressed(global.player_slot[1], gp_start))
+		|| (gamepad_button_check_pressed(global.player_slot[2], gp_start))
+		|| (gamepad_button_check_pressed(global.player_slot[3], gp_start))
+		|| (gamepad_button_check_pressed(global.player_slot[4], gp_start))
 		{
 			skip_button = gp_start;
 		}
 		else
-		if (gamepad_button_check_pressed(global.player1_slot, gp_select))
-		|| (gamepad_button_check_pressed(global.player2_slot, gp_select))
-		|| (gamepad_button_check_pressed(global.player3_slot, gp_select))
-		|| (gamepad_button_check_pressed(global.player4_slot, gp_select))
+		if (gamepad_button_check_pressed(global.player_slot[1], gp_select))
+		|| (gamepad_button_check_pressed(global.player_slot[2], gp_select))
+		|| (gamepad_button_check_pressed(global.player_slot[3], gp_select))
+		|| (gamepad_button_check_pressed(global.player_slot[4], gp_select))
 		{
 			skip_button = gp_select;
 		}
@@ -125,10 +125,10 @@ if (sprite_index == spr_made_with_gamemaker)
 	time ++;
 	if (time > 200)
 	{
-		if (!gamepad_is_connected(global.player1_slot)) /* If there are no controllers connected to the game, then show a controller prompt to let players know they can use controllers */
-		&& (!gamepad_is_connected(global.player2_slot))
-		&& (!gamepad_is_connected(global.player3_slot))
-		&& (!gamepad_is_connected(global.player4_slot))
+		if (!gamepad_is_connected(global.player_slot[1])) /* If there are no controllers connected to the game, then show a controller prompt to let players know they can use controllers */
+		&& (!gamepad_is_connected(global.player_slot[2]))
+		&& (!gamepad_is_connected(global.player_slot[3]))
+		&& (!gamepad_is_connected(global.player_slot[4]))
 		{
 			if (global.resource_pack_sprite_splash_controller >= 0) /* Check if the controller splash sprite exists before trying to switch sprite to it */
 			{
@@ -523,10 +523,10 @@ if (load_ok >= 4)
 }
 
 #region /* Show easter egg on company logo screen when pressing specific button */
-if (gamepad_button_check_pressed(global.player1_slot, gp_face4))
-|| (gamepad_button_check_pressed(global.player2_slot, gp_face4))
-|| (gamepad_button_check_pressed(global.player3_slot, gp_face4))
-|| (gamepad_button_check_pressed(global.player4_slot, gp_face4))
+if (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
+|| (gamepad_button_check_pressed(global.player_slot[2], gp_face4))
+|| (gamepad_button_check_pressed(global.player_slot[3], gp_face4))
+|| (gamepad_button_check_pressed(global.player_slot[4], gp_face4))
 || (keyboard_check_pressed(ord("Y")))
 {
 	sprite_splash_easteregg_yoffset = +127;
