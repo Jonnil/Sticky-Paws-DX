@@ -1,15 +1,15 @@
-//Developed by Eray Zesen (c) 2020-2021 erayzesen.itch.io
+/* Developed by Eray Zesen (c) 2020-2021 erayzesen.itch.io
 
-///@function scr_raycast(xx, yy, dir, length, per_pixel, object, tilemap_layer_name, precise_mode)
-///@param {int} xx	 start position x
-///@param {int} yy	 start position y
-///@param {int} dir		 angle of the ray
-///@param {int} [lenght = 100]	 length of the ray
-///@param {int} [per_pixel = 16]	 check per pixel
-///@param [object]	 target object or objects array
-///@param {string} [tilemap_layer_name]	target tilemap layer name
-///@param {bool} [precise_mode] for the precise mask collisions(slow)
-///@return {raycast_data}
+@function scr_raycast(xx, yy, dir, length, per_pixel, object, tilemap_layer_name, precise_mode)
+@param {int} xx	 start position x
+@param {int} yy	 start position y
+@param {int} dir		 angle of the ray
+@param {int} [lenght = 100]	 length of the ray
+@param {int} [per_pixel = 16]	 check per pixel
+@param [object]	 target object or objects array
+@param {string} [tilemap_layer_name]	target tilemap layer name
+@param {bool} [precise_mode] for the precise mask collisions(slow)
+@return {raycast_data} */
 
 function scr_raycast(xx = x, yy = y, dir = 90, length = 380, per_pixel = 16, object = obj_wall, tilemap_layer_name = "", precise_mode = false)
 {

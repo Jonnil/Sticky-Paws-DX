@@ -1,13 +1,3 @@
-/// @desc scr_draw_circular_bar(x, y, value, max, colour, radius, transparency, width)
-/// @arg x
-/// @arg y
-/// @arg value
-/// @arg max
-/// @arg colour
-/// @arg radius
-/// @arg transparency
-/// @arg width
-
 function scr_draw_circular_bar(xx, yy, value, max_value, colour = c_black, radius = 20, transparency = 0.8, width = 6)
 {
 	if (value > 0)

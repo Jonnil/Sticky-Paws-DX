@@ -74,7 +74,6 @@ function scr_draw_report()
 		global.http_request_id = http_request("https://" + global.base_url + "/report/" + string(content_type) + "s/" + string(search_id), "POST", map, post_data);
 		
 		/* Cleans up! */
-		//buffer_delete(send_buffer);
 		ds_map_destroy(map);
 		#endregion /* Actually upload the level to the server END */
 		
@@ -320,10 +319,10 @@ function scr_draw_report()
 		var report_hateful_discriminatory_y = 42 * 6;
 		var report_advertising_spam_y = 42 * 7;
 		var report_sexually_explicit_y = 42 * 8;
-		//var report_asking_for_likes_y = 42 * 8;
+		/* var report_asking_for_likes_y = 42 * 8; */
 		var report_uses_a_bug_y = 42 * 9;
 		var report_blatant_copying_y = 42 * 10;
-		//var report_phony_world_record_y = 42 * 11;
+		/* var report_phony_world_record_y = 42 * 11; */
 		var report_other_inappropriate_content_y = 42 * 11;
 		
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Please select the reason for this report"), global.default_text_size, c_black, c_white, 1);
@@ -337,7 +336,7 @@ function scr_draw_report()
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_hateful_discriminatory_y, l10n_text("Hateful/Discriminatory"), "report_hateful_discriminatory", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_advertising_spam_y, l10n_text("Advertising/Spam"), "report_advertising_spam", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_sexually_explicit_y, l10n_text("Sexually Explicit"), "report_sexually_explicit", "report_message_ok");
-		//draw_menu_button(display_get_gui_width() * 0.5 - 185, report_asking_for_likes_y, l10n_text("Asking for Likes"), "report_asking_for_likes", "report_message_ok");
+		/* draw_menu_button(display_get_gui_width() * 0.5 - 185, report_asking_for_likes_y, l10n_text("Asking for Likes"), "report_asking_for_likes", "report_message_ok"); */
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_uses_a_bug_y, l10n_text("Uses a Bug without Bug tag"), "report_uses_a_bug", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_blatant_copying_y, l10n_text("Blatant Copying"), "report_blatant_copying", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_other_inappropriate_content_y, l10n_text("Other Inappropriate Content"), "report_other_inappropriate_content", "report_message_ok");
@@ -558,7 +557,7 @@ function scr_draw_report()
 			else
 			if (menu == "report_uses_a_bug")
 			{
-				//menu = "report_asking_for_likes";
+				/* menu = "report_asking_for_likes"; */
 				menu = "report_sexually_explicit";
 			}
 			else
@@ -609,7 +608,7 @@ function scr_draw_report()
 			else
 			if (menu == "report_sexually_explicit")
 			{
-				//menu = "report_asking_for_likes";
+				/* menu = "report_asking_for_likes"; */
 				menu = "report_uses_a_bug";
 			}
 			else

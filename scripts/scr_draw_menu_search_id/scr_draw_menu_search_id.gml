@@ -425,8 +425,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 64, string(global.search_id), global.default_text_size, c_black, c_white, 1);
 		
 		/* If we could show the player the growing http buffer, that would be great feedback that the files are downloading */
-		//var growing_http_buffer = buffer_get_size(global.http_request_id)
-		//scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 128, "Growing http buffer to: " + string(growing_http_buffer), global.default_text_size, c_black, c_white, 1)
+		/* var growing_http_buffer = buffer_get_size(global.http_request_id) */
+		/* scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 128, "Growing http buffer to: " + string(growing_http_buffer), global.default_text_size, c_black, c_white, 1) */
 		
 		#region /* Draw loading icon when waiting for download */
 		draw_set_halign(fa_center);

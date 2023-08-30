@@ -457,15 +457,15 @@ function scr_options_level_editor()
 			}
 			
 			var level_theme_y = 47 * 1;
-			var default_view_height_y = 47 * 2;// + menu_y_offset;
-			var default_view_width_y = 47 * 3;// + menu_y_offset;
-			var make_every_tileset_into_default_tileset_y = 47 * 4;// + menu_y_offset;
-			var rain_y = 47 * 5;// + menu_y_offset;
-			var enable_time_countdown_y = 47 * 6;// + menu_y_offset;
-			var time_countdown_y = 46 * 7;// + menu_y_offset;
-			var show_new_items_notification_y = 46 * 8;// + menu_y_offset;
-			var selected_level_editing_music_y = 46 * 10 - 16;// + menu_y_offset;
-			var delete_all_objects_y = 46 * 11 + 20 - 16;// + menu_y_offset;
+			var default_view_height_y = 47 * 2;
+			var default_view_width_y = 47 * 3;
+			var make_every_tileset_into_default_tileset_y = 47 * 4;
+			var rain_y = 47 * 5;
+			var enable_time_countdown_y = 47 * 6;
+			var time_countdown_y = 46 * 7;
+			var show_new_items_notification_y = 46 * 8;
+			var selected_level_editing_music_y = 46 * 10 - 16;
+			var delete_all_objects_y = 46 * 11 + 20 - 16;
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);

@@ -139,7 +139,7 @@ else
 	image_alpha = lerp(image_alpha, 1, 0.3);
 }
 
-#region /* Make it so you can't click on any other button while open folder text exists */
+#region /* Make it so you can't click on any other button when "open folder text" exists */
 if (instance_exists(obj_title))
 {
 	obj_title.menu_delay = 3;
@@ -152,7 +152,7 @@ if (instance_exists(obj_leveleditor))
 {
 	obj_leveleditor.menu_delay = 3;
 }
-#endregion /* Make it so you can't click on any other button while open folder text exists END */
+#endregion /* Make it so you can't click on any other button when "open folder text" exists END */
 
 if (menu_delay > 0)
 {

@@ -1,13 +1,3 @@
-//#region /* Black screen when starting level */
-//if (save_level_as_png == false)
-//&& (allow_iris)
-//&& (delay <= 1)
-//{
-//	/* Makes the screen black when starting a level so you don't see the level loading in. Also make sure this black rectangle is bigger than the level, in case the level is smaller than the view size */
-//	draw_rectangle_color(-32, -32, room_width * 3, room_height * 3, c_black, c_black, c_black, c_black, false);
-//}
-//#endregion /* Black screen when starting level END */
-
 #region /* Draw Iris Transitions */
 if (global.enable_transitions)
 && (global.actually_play_edited_level)

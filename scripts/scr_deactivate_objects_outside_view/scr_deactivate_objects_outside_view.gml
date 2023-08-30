@@ -8,16 +8,7 @@ function scr_deactivate_objects_outside_view()
 	deactivate_timer++;
 	if (deactivate_timer > 60)
 	{
-		/* Deactivate instances outside view */
-		//var view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) * 0.5);
-		//var view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) * 0.5);
-		//var view_distance_from_center = 1074;
-		//var region_x = view_x_center - view_distance_from_center;
-		//var region_y = view_y_center - view_distance_from_center;
-		//var region_width = view_distance_from_center * 2;
-		//var region_height = view_distance_from_center * 2;
-		
-		instance_deactivate_region(view_left, view_top, view_width, view_height, false, true); /* Deactivate first */
+		instance_deactivate_region(view_left, view_top, view_width, view_height, false, true); /* Deactivate instances outside view first */
 		
 		/* Activate objects that always should be active */
 		instance_activate_object(obj_player);
