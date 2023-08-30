@@ -45,10 +45,10 @@ if (show_sprint_toggle_for_player1 > 0)
 	show_sprint_toggle_for_player2 = 0;
 	show_sprint_toggle_for_player3 = 0;
 	show_sprint_toggle_for_player4 = 0;
-	if (global.player1_can_play)
-	&& (global.player2_can_play == false)
-	&& (global.player3_can_play == false)
-	&& (global.player4_can_play == false)
+	if (global.player_can_play[1])
+	&& (global.player_can_play[2] == false)
+	&& (global.player_can_play[3] == false)
+	&& (global.player_can_play[4] == false)
 	{
 		if (global.player1_sprint_toggle)
 		{

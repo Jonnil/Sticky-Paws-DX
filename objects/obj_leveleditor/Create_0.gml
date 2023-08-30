@@ -12,25 +12,25 @@ scr_make_background_visible();
 #region /* Essential variables */
 global.time_countdown_bonus = 500;
 pause = false;
-if (global.player1_can_play)
+if (global.player_can_play[1])
 {
 	camera_player = 0;
 	camera_selected_skin = global.skin_for_player[1];
 }
 else
-if (global.player2_can_play)
+if (global.player_can_play[2])
 {
 	camera_player = 1;
 	camera_selected_skin = global.skin_for_player[2];
 }
 else
-if (global.player3_can_play)
+if (global.player_can_play[3])
 {
 	camera_player = 2;
 	camera_selected_skin = global.skin_for_player[3];
 }
 else
-if (global.player4_can_play)
+if (global.player_can_play[4])
 {
 	camera_player = 3;
 	camera_selected_skin = global.skin_for_player[4];

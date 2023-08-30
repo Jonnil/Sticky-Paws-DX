@@ -1,42 +1,26 @@
-function scr_player_move_pause()
-{
+function scr_player_move_pause() {
+	var pause_condition =
+		(controller_connected && (!gamepad_is_connected(global.player_slot[player]) || gamepad_button_check_pressed(global.player_slot[player], gp_start))) ||
+		(global.automatically_pause_when_window_is_unfocused && !window_has_focus()) ||
+		(keyboard_check_pressed(vk_escape)) ||
+		(keyboard_check(vk_tab) && keyboard_check(vk_lshift));
 	
-	#region /* Pause */
-	if (display_get_gui_width() > 0)
-	&& (display_get_gui_height() > 0)
-	{
-		surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
-	}
-	
-	if (keyboard_check_pressed(vk_escape))
-	|| (keyboard_check(vk_tab))
-	&& (keyboard_check(vk_lshift))
-	|| (gamepad_button_check_pressed(global.player_slot[player], gp_start))
-	|| (controller_connected)
-	&& (!gamepad_is_connected(global.player_slot[player]))
-	|| (global.actually_play_edited_level)
-	&& (global.automatically_pause_when_window_is_unfocused)
-	&& (!window_has_focus())
-	{
-		if (!gamepad_is_connected(global.player_slot[player]))
-		&& (controller_connected)
-		{
-			switch_controller_support_show(); /* On Nintendo Switch, when you disconnect any controllers, show the system menu where you can change controllers and players */
+	if (pause_condition) {
+		if (controller_connected && !gamepad_is_connected(global.player_slot[player])) {
+			switch_controller_support_show();
 		}
 		
-		#region /* Show all HUD elements */
+		/* Show HUD elements */
 		obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
 		obj_camera.hud_show_deaths_timer = global.hud_hide_time * 60;
 		obj_camera.hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 		obj_camera.hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 		obj_camera.hud_show_score_timer = global.hud_hide_time * 60;
-		#endregion /* Show all HUD elements END */
 		
 		controller_connected = false;
-		if (global.play_edited_level)
-		&& (global.actually_play_edited_level == false)
-		&& (global.character_select_in_this_menu == "level_editor")
-		{
+		
+		if (global.character_select_in_this_menu == "level_editor" && !global.actually_play_edited_level && global.play_edited_level) {
+			/* Handle level editor pause logic */
 			obj_camera.pause_playtest = true;
 			obj_camera.black_screen_gui_alpha = 1;
 			global.actually_play_edited_level = false;
@@ -53,38 +37,33 @@ function scr_player_move_pause()
 			}
 			#endregion /* Save Level Information when in level editor END */
 			
-			var time_source = time_source_create(time_source_game, 1, time_source_units_frames, function()
-			{
-				room_restart();
-			}
-			, [], 1);
-			time_source_start(time_source);
-		}
-		else
-		{
+			room_restart();
+		} else {
+			/* Handle normal pause logic */
 			
 			#region /* What player should control the pause menu */
-			if (gamepad_button_check_pressed(global.player_slot[player], gp_start))
+			if (controller_connected)
+			&& (gamepad_button_check_pressed(global.player_slot[player], gp_start))
 			{
 				global.pause_player = player - 1;
 			}
 			else
-			if (global.player1_can_play)
+			if (global.player_can_play[1]) /* If player 1 is playing, then always let player 1 control pause menu first */
 			{
 				global.pause_player = 0;
 			}
 			else
-			if (global.player2_can_play)
+			if (global.player_can_play[2])
 			{
 				global.pause_player = 1;
 			}
 			else
-			if (global.player3_can_play)
+			if (global.player_can_play[3])
 			{
 				global.pause_player = 2;
 			}
 			else
-			if (global.player4_can_play)
+			if (global.player_can_play[4])
 			{
 				global.pause_player = 3;
 			}
@@ -97,11 +76,7 @@ function scr_player_move_pause()
 			global.pause = true;
 			room_goto(rm_pause);
 		}
-	}
-	else
-	{
+	} else {
 		room_persistent = false; /* Turn OFF Room Persistency */
 	}
-	#endregion /* Pause END */
-	
 }

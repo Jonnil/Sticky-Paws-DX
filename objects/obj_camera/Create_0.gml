@@ -17,6 +17,8 @@ scr_initialize_camera();
 
 global.player_has_entered_goal = false;
 
+prev_display_width = display_get_gui_width();
+prev_display_height = display_get_gui_height();
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
@@ -134,25 +136,25 @@ else
 }
 
 #region /* Lives Icon */
-if (global.player1_can_play)
+if (global.player_can_play[1])
 {
 	camera_player = 0;
 	camera_selected_skin = global.skin_for_player[1];
 }
 else
-if (global.player2_can_play)
+if (global.player_can_play[2])
 {
 	camera_player = 1;
 	camera_selected_skin = global.skin_for_player[2];
 }
 else
-if (global.player3_can_play)
+if (global.player_can_play[3])
 {
 	camera_player = 2;
 	camera_selected_skin = global.skin_for_player[3];
 }
 else
-if (global.player4_can_play)
+if (global.player_can_play[4])
 {
 	camera_player = 3;
 	camera_selected_skin = global.skin_for_player[4];
@@ -237,7 +239,7 @@ scr_initialize_level_information_ini();
 #region /* Spawn Players */
 if (can_spawn_players)
 {
-	if (global.player1_can_play)
+	if (global.player_can_play[1])
 	{
 		if (global.checkpoint_x > 0)
 		&& (global.actually_play_edited_level)
@@ -269,7 +271,7 @@ if (can_spawn_players)
 	{
 		player1 = noone;
 	}
-	if (global.player2_can_play)
+	if (global.player_can_play[2])
 	{
 		if (global.checkpoint_x > 0)
 		&& (global.actually_play_edited_level)
@@ -301,7 +303,7 @@ if (can_spawn_players)
 	{
 		player2 = noone;
 	}
-	if (global.player3_can_play)
+	if (global.player_can_play[3])
 	{
 		if (global.checkpoint_x > 0)
 		&& (global.actually_play_edited_level)
@@ -333,7 +335,7 @@ if (can_spawn_players)
 	{
 		player3 = noone;
 	}
-	if (global.player4_can_play)
+	if (global.player_can_play[4])
 	{
 		if (global.checkpoint_x > 0)
 		&& (global.actually_play_edited_level)

@@ -267,8 +267,6 @@ if (os_type != os_ios)
 }
 #endregion /* Fullscreen toggle END */
 
-scr_toggle_fullscreen();
-
 #region /* Build Date and Version */
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
@@ -492,10 +490,10 @@ if (global.arcade_mode)
 	&& (menu != "load_characters")
 	&& (menu != "select_character")
 	{
-		global.player1_can_play = false;
-		global.player2_can_play = false;
-		global.player3_can_play = false;
-		global.player4_can_play = false;
+		global.player_can_play[1] = false;
+		global.player_can_play[2] = false;
+		global.player_can_play[3] = false;
+		global.player_can_play[4] = false;
 		player1_accept_selection = - 1;
 		player2_accept_selection = - 1;
 		player3_accept_selection = - 1;
@@ -552,10 +550,10 @@ if (global.arcade_mode == false && in_settings == false)
 			{
 				player1_automatically_join = true; /* Player 1 joins if you click Main Game */
 			}
-			global.player1_can_play = false;
-			global.player2_can_play = false;
-			global.player3_can_play = false;
-			global.player4_can_play = false;
+			global.player_can_play[1] = false;
+			global.player_can_play[2] = false;
+			global.player_can_play[3] = false;
+			global.player_can_play[4] = false;
 			player1_accept_selection = - 1;
 			player2_accept_selection = - 1;
 			player3_accept_selection = - 1;
@@ -590,10 +588,10 @@ if (global.arcade_mode == false && in_settings == false)
 			{
 				player1_automatically_join = true; /* Player 1 joins if you click Level Editor */
 			}
-			global.player1_can_play = false;
-			global.player2_can_play = false;
-			global.player3_can_play = false;
-			global.player4_can_play = false;
+			global.player_can_play[1] = false;
+			global.player_can_play[2] = false;
+			global.player_can_play[3] = false;
+			global.player_can_play[4] = false;
 			player1_accept_selection = - 1;
 			player2_accept_selection = - 1;
 			player3_accept_selection = - 1;

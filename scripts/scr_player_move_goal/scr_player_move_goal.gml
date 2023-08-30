@@ -37,19 +37,19 @@ function scr_player_move_goal()
 			{
 				if (!instance_exists(obj_camera.player1))
 				{
-					global.player1_can_play = false;
+					global.player_can_play[1] = false;
 				}
 				if (!instance_exists(obj_camera.player2))
 				{
-					global.player2_can_play = false;
+					global.player_can_play[2] = false;
 				}
 				if (!instance_exists(obj_camera.player3))
 				{
-					global.player3_can_play = false;
+					global.player_can_play[3] = false;
 				}
 				if (!instance_exists(obj_camera.player4))
 				{
-					global.player4_can_play = false;
+					global.player_can_play[4] = false;
 				}
 				global.level_clear_rate = "clear";
 				global.goal_active = true;

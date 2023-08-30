@@ -418,18 +418,18 @@ if (allow_homing_attack)
 #endregion /* Homing Attack END */
 
 #region /* Display Player Number and Name */
-if (global.player1_can_play)
-&& (global.player2_can_play)
-|| (global.player1_can_play)
-&& (global.player3_can_play)
-|| (global.player1_can_play)
-&& (global.player4_can_play)
-|| (global.player2_can_play)
-&& (global.player3_can_play)
-|| (global.player2_can_play)
-&& (global.player4_can_play)
-|| (global.player3_can_play)
-&& (global.player4_can_play)
+if (global.player_can_play[1])
+&& (global.player_can_play[2])
+|| (global.player_can_play[1])
+&& (global.player_can_play[3])
+|| (global.player_can_play[1])
+&& (global.player_can_play[4])
+|| (global.player_can_play[2])
+&& (global.player_can_play[3])
+|| (global.player_can_play[2])
+&& (global.player_can_play[4])
+|| (global.player_can_play[3])
+&& (global.player_can_play[4])
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);

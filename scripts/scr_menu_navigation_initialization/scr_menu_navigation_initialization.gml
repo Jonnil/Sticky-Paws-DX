@@ -14,7 +14,7 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 	
 	#region /* Player 1 */
 	if (global.pause_player == 0)
-	|| (global.player1_can_play)
+	|| (global.player_can_play[1])
 	|| (only_player1_can_navigate)
 	{
 		var what_player = 1;
@@ -26,7 +26,7 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 	
 	#region /* Player 2 */
 	if (global.pause_player == 1)
-	|| (global.player2_can_play)
+	|| (global.player_can_play[2])
 	{
 		var what_player = 2;
 		var player_slot = global.player_slot[2];
@@ -37,7 +37,7 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 	
 	#region /* Player 3 */
 	if (global.pause_player == 2)
-	|| (global.player3_can_play)
+	|| (global.player_can_play[3])
 	{
 		var what_player = 3;
 		var player_slot = global.player_slot[3];
@@ -48,7 +48,7 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 	
 	#region /* Player 4 */
 	if (global.pause_player == 3)
-	|| (global.player4_can_play)
+	|| (global.player_can_play[4])
 	{
 		var what_player = 4;
 		var player_slot = global.player_slot[4];

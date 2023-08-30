@@ -1,6 +1,6 @@
 function scr_debug_screen()
 {
-	var fps_real_target = (os_type == os_switch) ? 60 : 250;
+	var fps_real_target = (os_type == os_switch) ? 60 : 1000;
 	var instance_count_target = 200;
 	var fps_y = 64;
 	var fps_real_y = 96;

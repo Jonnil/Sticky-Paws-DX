@@ -1,7 +1,3 @@
-scr_toggle_fullscreen();
-
-scr_set_controls_used_to_navigate();
-
 #region /* Heart above head */
 if (have_heart_balloon)
 {
@@ -33,7 +29,7 @@ if (can_move)
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.up], x, y - 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
-		if (global.player1_can_play)
+		if (global.player_can_play[1])
 		{
 			if (global.player_[inp.key][1][1][action.up] > noone)
 			{
@@ -46,7 +42,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player2_can_play)
+		if (global.player_can_play[2])
 		{
 			if (global.player_[inp.key][2][1][action.up] > noone)
 			{
@@ -59,7 +55,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player3_can_play)
+		if (global.player_can_play[3])
 		{
 			if (global.player_[inp.key][3][1][action.up] > noone)
 			{
@@ -72,7 +68,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player4_can_play)
+		if (global.player_can_play[4])
 		{
 			if (global.player_[inp.key][4][1][action.up] > noone)
 			{
@@ -97,7 +93,7 @@ if (can_move)
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.down], x, y + 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
-		if (global.player1_can_play)
+		if (global.player_can_play[1])
 		{
 			if (global.player_[inp.key][1][1][action.down] > noone)
 			{
@@ -110,7 +106,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player2_can_play)
+		if (global.player_can_play[2])
 		{
 			if (global.player_[inp.key][2][1][action.down] > noone)
 			{
@@ -123,7 +119,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player3_can_play)
+		if (global.player_can_play[3])
 		{
 			if (global.player_[inp.key][3][1][action.down] > noone)
 			{
@@ -136,7 +132,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player4_can_play)
+		if (global.player_can_play[4])
 		{
 			if (global.player_[inp.key][4][1][action.down] > noone)
 			{
@@ -161,7 +157,7 @@ if (can_move)
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.left], x - 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
-		if (global.player1_can_play)
+		if (global.player_can_play[1])
 		{
 			if (global.player_[inp.key][1][1][action.left] > noone)
 			{
@@ -174,7 +170,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player2_can_play)
+		if (global.player_can_play[2])
 		{
 			if (global.player_[inp.key][2][1][action.left] > noone)
 			{
@@ -187,7 +183,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player3_can_play)
+		if (global.player_can_play[3])
 		{
 			if (global.player_[inp.key][3][1][action.left] > noone)
 			{
@@ -200,7 +196,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player4_can_play)
+		if (global.player_can_play[4])
 		{
 			if (global.player_[inp.key][4][1][action.left] > noone)
 			{
@@ -225,7 +221,7 @@ if (can_move)
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.right], x + 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
 		}
 		else
-		if (global.player1_can_play)
+		if (global.player_can_play[1])
 		{
 			if (global.player_[inp.key][1][1][action.right] > noone)
 			{
@@ -238,7 +234,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player2_can_play)
+		if (global.player_can_play[2])
 		{
 			if (global.player_[inp.key][2][1][action.right] > noone)
 			{
@@ -251,7 +247,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player3_can_play)
+		if (global.player_can_play[3])
 		{
 			if (global.player_[inp.key][3][1][action.right] > noone)
 			{
@@ -264,7 +260,7 @@ if (can_move)
 			}
 		}
 		else
-		if (global.player4_can_play)
+		if (global.player_can_play[4])
 		{
 			if (global.player_[inp.key][4][1][action.right] > noone)
 			{

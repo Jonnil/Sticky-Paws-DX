@@ -46,6 +46,7 @@
     {"name":"snd_footstep_default_left","order":38,"path":"sounds/snd_footstep_default_left/snd_footstep_default_left.yy",},
     {"name":"obj_black_wall","order":19,"path":"objects/obj_black_wall/obj_black_wall.yy",},
     {"name":"spr_skid_dust","order":131,"path":"sprites/spr_skid_dust/spr_skid_dust.yy",},
+    {"name":"scr_resize_application_surface","order":74,"path":"scripts/scr_resize_application_surface/scr_resize_application_surface.yy",},
     {"name":"spr_company_logo","order":65,"path":"sprites/spr_company_logo/spr_company_logo.yy",},
     {"name":"spr_bump_in_ground","order":12,"path":"sprites/spr_bump_in_ground/spr_bump_in_ground.yy",},
     {"name":"spr_tongue_tip","order":87,"path":"sprites/spr_tongue_tip/spr_tongue_tip.yy",},

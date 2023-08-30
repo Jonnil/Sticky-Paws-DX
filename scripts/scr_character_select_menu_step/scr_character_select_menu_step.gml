@@ -527,7 +527,7 @@ function scr_character_select_menu_step()
 					menu_delay = 3;
 					player1_accept_selection = true;
 					player1_automatically_join = false;
-					global.player1_can_play = true;
+					global.player_can_play[1] = true;
 					
 					#region /* When selecting character, make the character say their own name */
 					audio_stop_sound(voice_select_character);
@@ -600,7 +600,7 @@ function scr_character_select_menu_step()
 					menu_delay = 3;
 					player2_accept_selection = true;
 					player2_automatically_join = false;
-					global.player2_can_play = true;
+					global.player_can_play[2] = true;
 					
 					#region /* When selecting character, make the character say their own name */
 					audio_stop_sound(voice_select_character);
@@ -673,7 +673,7 @@ function scr_character_select_menu_step()
 					menu_delay = 3;
 					player3_accept_selection = true;
 					player3_automatically_join = false;
-					global.player3_can_play = true;
+					global.player_can_play[3] = true;
 					
 					#region /* When selecting character, make the character say their own name */
 					audio_stop_sound(voice_select_character);
@@ -746,7 +746,7 @@ function scr_character_select_menu_step()
 					menu_delay = 3;
 					player4_accept_selection = true;
 					player4_automatically_join = false;
-					global.player4_can_play = true;
+					global.player_can_play[4] = true;
 					
 					#region /* When selecting character, make the character say their own name */
 					audio_stop_sound(voice_select_character);
@@ -856,7 +856,7 @@ function scr_character_select_menu_step()
 				{
 					menu_delay = 3;
 					player1_accept_selection = false;
-					global.player1_can_play = false;
+					global.player_can_play[1] = false;
 					can_navigate = true;
 				}
 			}
@@ -872,7 +872,7 @@ function scr_character_select_menu_step()
 				{
 					menu_delay = 3;
 					player2_accept_selection = false;
-					global.player2_can_play = false;
+					global.player_can_play[2] = false;
 					can_navigate = true;
 				}
 			}
@@ -888,7 +888,7 @@ function scr_character_select_menu_step()
 				{
 					menu_delay = 3;
 					player3_accept_selection = false;
-					global.player3_can_play = false;
+					global.player_can_play[3] = false;
 					can_navigate = true;
 				}
 			}
@@ -904,7 +904,7 @@ function scr_character_select_menu_step()
 				{
 					menu_delay = 3;
 					player4_accept_selection = false;
-					global.player4_can_play = false;
+					global.player_can_play[4] = false;
 					can_navigate = true;
 				}
 			}
@@ -990,10 +990,10 @@ function scr_character_select_menu_step()
 					player2_accept_selection = -1;
 					player3_accept_selection = -1;
 					player4_accept_selection = -1;
-					global.player1_can_play = false;
-					global.player2_can_play = false;
-					global.player3_can_play = false;
-					global.player4_can_play = false;
+					global.player_can_play[1] = false;
+					global.player_can_play[2] = false;
+					global.player_can_play[3] = false;
+					global.player_can_play[4] = false;
 					player_menu[1] = "select_character";
 					player_menu[2] = "select_character";
 					player_menu[3] = "select_character";

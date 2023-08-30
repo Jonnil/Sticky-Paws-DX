@@ -29,7 +29,7 @@ function scr_draw_show_controls(what_player = 1)
 			var player_show_right_key_x = [	player1_show_right_key_x,	player2_show_right_key_x,	player3_show_right_key_x,	player4_show_right_key_x];
 			var player_show_down_key_x = [	player1_show_down_key_x,	player2_show_down_key_x,	player3_show_down_key_x,	player4_show_down_key_x];
 			var player_show_up_key_x = [	player1_show_up_key_x,	player2_show_up_key_x,	player3_show_up_key_x,	player4_show_up_key_x];
-			var player_can_play = [	global.player1_can_play,	global.player2_can_play,	global.player3_can_play,	global.player4_can_play];
+			var player_can_play = [	global.player_can_play[1],	global.player_can_play[2],	global.player_can_play[3],	global.player_can_play[4]];
 			
 			/* Use the what_player variable to index into the arrays */
 			var player_instance = players[what_player - 1];

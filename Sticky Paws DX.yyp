@@ -2036,6 +2036,7 @@
     {"id":{"name":"snd_footstep_default_left","path":"sounds/snd_footstep_default_left/snd_footstep_default_left.yy",},},
     {"id":{"name":"obj_black_wall","path":"objects/obj_black_wall/obj_black_wall.yy",},},
     {"id":{"name":"spr_skid_dust","path":"sprites/spr_skid_dust/spr_skid_dust.yy",},},
+    {"id":{"name":"scr_resize_application_surface","path":"scripts/scr_resize_application_surface/scr_resize_application_surface.yy",},},
     {"id":{"name":"spr_wall","path":"sprites/spr_wall/spr_wall.yy",},},
     {"id":{"name":"spr_company_logo","path":"sprites/spr_company_logo/spr_company_logo.yy",},},
     {"id":{"name":"spr_bump_in_ground","path":"sprites/spr_bump_in_ground/spr_bump_in_ground.yy",},},

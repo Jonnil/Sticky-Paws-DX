@@ -9,25 +9,25 @@ function scr_zoom_camera_controls()
 	var key_in_hold_player4 = noone;
 	var key_out_hold_player4 = noone;
 	
-	if (global.player1_can_play == true)
+	if (global.player_can_play[1] == true)
 	{
 		var key_in_hold_player1 = scr_key_initialize(key_player1_zoom_in_hold, 0, 1, action.zoom_in);
 		var key_out_hold_player1 = scr_key_initialize(key_player1_zoom_out_hold, 0, 1, action.zoom_out);
 	}
 	else
-	if (global.player2_can_play == true)
+	if (global.player_can_play[2] == true)
 	{
 		var key_in_hold_player2 = scr_key_initialize(key_player2_zoom_in_hold, 0, 2, action.zoom_in);
 		var key_out_hold_player2 = scr_key_initialize(key_player2_zoom_out_hold, 0, 2, action.zoom_out);
 	}
 	else
-	if (global.player3_can_play == true)
+	if (global.player_can_play[3] == true)
 	{
 		var key_in_hold_player3 = scr_key_initialize(key_player3_zoom_in_hold, 0, 3, action.zoom_in);
 		var key_out_hold_player3 = scr_key_initialize(key_player3_zoom_out_hold, 0, 3, action.zoom_out);
 	}
 	else
-	if (global.player4_can_play == true)
+	if (global.player_can_play[4] == true)
 	{
 		var key_in_hold_player4 = scr_key_initialize(key_player4_zoom_in_hold, 0, 4, action.zoom_in);
 		var key_out_hold_player4 = scr_key_initialize(key_player4_zoom_out_hold, 0, 4, action.zoom_out);

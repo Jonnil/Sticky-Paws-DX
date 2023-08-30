@@ -1,8 +1,4 @@
 if (bounce_up == false)
-{
-	image_index = global.collectible_image_index;
-}
-if (bounce_up == false)
 && (instance_exists(obj_player))
 {
 	if (place_meeting(bbox_left, y, obj_player))

@@ -2,6 +2,7 @@ scr_set_controls_used_to_navigate();
 scr_set_screen_size();
 scr_character_select_menu_step();
 scr_set_menu_font_color();
+scr_toggle_fullscreen();
 
 if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")
 {

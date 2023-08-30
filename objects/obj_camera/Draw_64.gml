@@ -305,22 +305,22 @@ if (os_type != os_ios)
 #endregion /* Show Controls END */
 
 #region /* Show what input is used */
-if (global.player1_can_play >= 1) /* Only show controller input change if there is only one player in the game */
-&& (global.player2_can_play <= 0)
-&& (global.player3_can_play <= 0)
-&& (global.player4_can_play <= 0)
-|| (global.player1_can_play <= 0)
-&& (global.player2_can_play >= 1)
-&& (global.player3_can_play <= 0)
-&& (global.player4_can_play <= 0)
-|| (global.player1_can_play <= 0)
-&& (global.player2_can_play <= 0)
-&& (global.player3_can_play >= 1)
-&& (global.player4_can_play <= 0)
-|| (global.player1_can_play <= 0)
-&& (global.player2_can_play <= 0)
-&& (global.player3_can_play <= 0)
-&& (global.player4_can_play >= 1)
+if (global.player_can_play[1] >= 1) /* Only show controller input change if there is only one player in the game */
+&& (global.player_can_play[2] <= 0)
+&& (global.player_can_play[3] <= 0)
+&& (global.player_can_play[4] <= 0)
+|| (global.player_can_play[1] <= 0)
+&& (global.player_can_play[2] >= 1)
+&& (global.player_can_play[3] <= 0)
+&& (global.player_can_play[4] <= 0)
+|| (global.player_can_play[1] <= 0)
+&& (global.player_can_play[2] <= 0)
+&& (global.player_can_play[3] >= 1)
+&& (global.player_can_play[4] <= 0)
+|| (global.player_can_play[1] <= 0)
+&& (global.player_can_play[2] <= 0)
+&& (global.player_can_play[3] <= 0)
+&& (global.player_can_play[4] >= 1)
 {
 	if (global.show_prompt_when_changing_to_gamepad)
 	{

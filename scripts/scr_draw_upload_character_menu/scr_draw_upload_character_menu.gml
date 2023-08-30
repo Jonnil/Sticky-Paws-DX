@@ -162,12 +162,12 @@ function scr_draw_upload_character_menu()
 			
 			global.select_level_index = 1; /* When doing clear check for character, they have to complete level 1 */
 			global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
-			if (global.player1_can_play == false)
-			&& (global.player2_can_play == false)
-			&& (global.player3_can_play == false)
-			&& (global.player4_can_play == false)
+			if (global.player_can_play[1] == false)
+			&& (global.player_can_play[2] == false)
+			&& (global.player_can_play[3] == false)
+			&& (global.player_can_play[4] == false)
 			{
-				global.player1_can_play = true; /* If there are no players joined, make it so player 1 is joined */
+				global.player_can_play[1] = true; /* If there are no players joined, make it so player 1 is joined */
 			}
 			global.doing_clear_check_character = true; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
 			global.actually_play_edited_level = true;
@@ -449,12 +449,12 @@ function scr_draw_upload_character_menu()
 				
 				global.select_level_index = 1; /* When doing clear check for character, they have to complete level 1 */
 				global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
-				if (global.player1_can_play == false)
-				&& (global.player2_can_play == false)
-				&& (global.player3_can_play == false)
-				&& (global.player4_can_play == false)
+				if (global.player_can_play[1] == false)
+				&& (global.player_can_play[2] == false)
+				&& (global.player_can_play[3] == false)
+				&& (global.player_can_play[4] == false)
 				{
-					global.player1_can_play = true; /* If there are no players joined, make it so player 1 is joined */
+					global.player_can_play[1] = true; /* If there are no players joined, make it so player 1 is joined */
 				}
 				global.doing_clear_check_character = true; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
 				global.actually_play_edited_level = true;

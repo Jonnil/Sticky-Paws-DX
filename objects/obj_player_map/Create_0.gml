@@ -49,28 +49,28 @@ else
 }
 
 #region /* Play as custom character */
-if (global.player1_can_play)
+if (global.player_can_play[1])
 {
 	player = 1;
 	selected_voice_pack = global.voicepack_for_player[1];
 	selected_skin = global.skin_for_player[1];
 }
 else
-if (global.player2_can_play)
+if (global.player_can_play[2])
 {
 	player = 2;
 	selected_voice_pack = global.voicepack_for_player[2];
 	selected_skin = global.skin_for_player[2];
 }
 else
-if (global.player3_can_play)
+if (global.player_can_play[3])
 {
 	player = 3;
 	selected_voice_pack = global.voicepack_for_player[3];
 	selected_skin = global.skin_for_player[3];
 }
 else
-if (global.player4_can_play)
+if (global.player_can_play[4])
 {
 	player = 4;
 	selected_voice_pack = global.voicepack_for_player[4];

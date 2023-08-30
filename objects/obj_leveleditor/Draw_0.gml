@@ -33,7 +33,7 @@ if (global.actually_play_edited_level == false)
 	&& (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
-		&& (global.player4_can_play)
+		&& (global.player_can_play[4])
 		{
 			var sprite_player_stand_x = view_center_x;
 			var sprite_player_stand_y = view_center_y;
@@ -49,7 +49,7 @@ if (global.actually_play_edited_level == false)
 	&& (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
-		&& (global.player3_can_play)
+		&& (global.player_can_play[3])
 		{
 			var sprite_player_stand_x = view_center_x;
 			var sprite_player_stand_y = view_center_y;
@@ -65,7 +65,7 @@ if (global.actually_play_edited_level == false)
 	&& (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
-		&& (global.player2_can_play)
+		&& (global.player_can_play[2])
 		{
 			var sprite_player_stand_x = view_center_x;
 			var sprite_player_stand_y = view_center_y;
@@ -81,7 +81,7 @@ if (global.actually_play_edited_level == false)
 	&& (quit_level_editor == false)
 	{
 		if (pressing_play_timer > 0)
-		&& (global.player1_can_play)
+		&& (global.player_can_play[1])
 		{
 			var sprite_player_stand_x = view_center_x;
 			var sprite_player_stand_y = view_center_y;

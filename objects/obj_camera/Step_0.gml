@@ -4,6 +4,9 @@ scr_set_controls_used_to_navigate();
 scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_deactivate_objects_outside_view();
+scr_resize_application_surface();
+
+image_index = global.collectible_image_index;
 
 if (current_file != global.file)
 {
@@ -16,7 +19,7 @@ if (current_file != global.file)
 var get_room_speed = 60;
 
 /* Timer Countup */
-if (!global.goal_active && instance_exists(obj_player) && obj_player.allow_timeattack && !global.pause) {
+if (!global.goal_active && !global.pause) {
     global.timeattack_millisecond++;
     global.timeattack_realmillisecond++;
     if (global.timeattack_millisecond > 60) {
@@ -29,7 +32,7 @@ if (!global.goal_active && instance_exists(obj_player) && obj_player.allow_timea
     }
 }
 else if (!global.pause) {
-    if ((!global.goal_active) && instance_exists(obj_player) && obj_player.allow_timeattack) {
+    if (!global.goal_active) {
         global.timeattack_millisecond++;
         global.timeattack_realmillisecond++;
         if (global.timeattack_millisecond > 60) {
@@ -44,15 +47,18 @@ else if (!global.pause) {
 }
 
 /* Time Countdown */
-if (instance_exists(obj_player) && !global.pause && (!global.goal_active)) {
-    time_second++;
-    if (time_second > get_room_speed) {
-        time_second = 0;
-        global.time_countdown_bonus--;
-        if (obj_player.allow_timeup && global.enable_time_countdown) {
-            global.time_countdown--;
-        }
-    }
+if (!global.pause && !global.goal_active)
+{
+	time_second++;
+	if (time_second > get_room_speed)
+	{
+		time_second = 0;
+		global.time_countdown_bonus--;
+		if (global.enable_time_countdown)
+		{
+			global.time_countdown--;
+		}
+	}
 }
 
 /* global.spikes_emerge_time increment */
@@ -74,12 +80,11 @@ if (global.rain)
 
 #region /* Player 1 Show Controls HUD timer */
 if (player1 >= 1)
-&& (instance_exists(obj_player))
 && (instance_exists(player1))
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[1] == 0)
-	|| (obj_player.can_move == false)
+	|| (player1.can_move == false)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
@@ -111,7 +116,7 @@ if (player1 >= 1)
 	}
 }
 else
-if (global.player1_can_play)
+if (global.player_can_play[1])
 {
 	player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 1, 0.1);
 }
@@ -124,12 +129,11 @@ else
 
 #region /* Player 2 Show Controls HUD timer */
 if (player2 >= 1)
-&& (instance_exists(obj_player))
 && (instance_exists(player2))
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[2] == 0)
-	|| (obj_player.can_move == false)
+	|| (player1.can_move == false)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
@@ -161,7 +165,7 @@ if (player2 >= 1)
 	}
 }
 else
-if (global.player2_can_play)
+if (global.player_can_play[2])
 {
 	player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
 }
@@ -174,12 +178,11 @@ else
 
 #region /* Player 3 Show Controls HUD timer */
 if (player3 >= 1)
-&& (instance_exists(obj_player))
 && (instance_exists(player3))
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[3] == 0)
-	|| (obj_player.can_move == false)
+	|| (player1.can_move == false)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
@@ -211,7 +214,7 @@ if (player3 >= 1)
 	}
 }
 else
-if (global.player3_can_play)
+if (global.player_can_play[3])
 {
 	player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.1);
 }
@@ -224,12 +227,11 @@ else
 
 #region /* Player 4 Show Controls HUD timer */
 if (player4 >= 1)
-&& (instance_exists(obj_player))
 && (instance_exists(player4))
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[4] == 0)
-	|| (obj_player.can_move == false)
+	|| (player1.can_move == false)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
@@ -261,7 +263,7 @@ if (player4 >= 1)
 	}
 }
 else
-if (global.player4_can_play)
+if (global.player_can_play[4])
 {
 	player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
 }
@@ -322,9 +324,9 @@ if (global.pause == false)
 		&& (can_spawn_player1)
 		&& (lives > 0)
 		{
-			if (global.player1_can_play == false)
+			if (global.player_can_play[1] == false)
 			{
-				global.player1_can_play = true;
+				global.player_can_play[1] = true;
 			}
 			if (instance_exists(obj_player))
 			{
@@ -356,9 +358,9 @@ if (global.pause == false)
 		&& (can_spawn_player2)
 		&& (lives > 0)
 		{
-			if (global.player2_can_play == false)
+			if (global.player_can_play[2] == false)
 			{
-				global.player2_can_play = true;
+				global.player_can_play[2] = true;
 			}
 			if (instance_exists(obj_player))
 			{
@@ -390,9 +392,9 @@ if (global.pause == false)
 		&& (can_spawn_player3)
 		&& (lives > 0)
 		{
-			if (global.player3_can_play == false)
+			if (global.player_can_play[3] == false)
 			{
-				global.player3_can_play = true;
+				global.player_can_play[3] = true;
 			}
 			if (instance_exists(obj_player))
 			{
@@ -424,9 +426,9 @@ if (global.pause == false)
 		&& (can_spawn_player4)
 		&& (lives > 0)
 		{
-			if (global.player4_can_play == false)
+			if (global.player_can_play[4] == false)
 			{
-				global.player4_can_play = true;
+				global.player_can_play[4] = true;
 			}
 			if (instance_exists(obj_player))
 			{

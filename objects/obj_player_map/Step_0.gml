@@ -7,6 +7,9 @@ var view_y = camera_get_view_y(view_camera[view_current]);
 var view_width = camera_get_view_width(view_camera[view_current]);
 var view_height = camera_get_view_height(view_camera[view_current]);
 
+scr_toggle_fullscreen();
+scr_set_controls_used_to_navigate();
+
 #region /* When changing file, you should restart the room so the right save data can load */
 if (current_file != global.file)
 {
@@ -294,7 +297,7 @@ if (can_move)
 					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, c_white, 1);
 				}
 				else
-				if (global.player1_can_play)
+				if (global.player_can_play[1])
 				{
 					if (global.player_[inp.key][1][1][action.right] > noone)
 					{
@@ -307,7 +310,7 @@ if (can_move)
 					}
 				}
 				else
-				if (global.player2_can_play)
+				if (global.player_can_play[2])
 				{
 					if (global.player_[inp.key][2][1][action.right] > noone)
 					{
@@ -320,7 +323,7 @@ if (can_move)
 					}
 				}
 				else
-				if (global.player3_can_play)
+				if (global.player_can_play[3])
 				{
 					if (global.player_[inp.key][3][1][action.right] > noone)
 					{
@@ -333,7 +336,7 @@ if (can_move)
 					}
 				}
 				else
-				if (global.player4_can_play)
+				if (global.player_can_play[4])
 				{
 					if (global.player_[inp.key][4][1][action.right] > noone)
 					{
@@ -362,7 +365,7 @@ if (can_move)
 				else
 				
 				{
-					if (global.player1_can_play)
+					if (global.player_can_play[1])
 					{
 						if (global.player_[inp.key][1][1][action.left] > noone)
 						{
@@ -375,7 +378,7 @@ if (can_move)
 						}
 					}
 					else
-					if (global.player2_can_play)
+					if (global.player_can_play[2])
 					{
 						if (global.player_[inp.key][2][1][action.left] > noone)
 						{
@@ -388,7 +391,7 @@ if (can_move)
 						}
 					}
 					else
-					if (global.player3_can_play)
+					if (global.player_can_play[3])
 					{
 						if (global.player_[inp.key][3][1][action.left] > noone)
 						{
@@ -401,7 +404,7 @@ if (can_move)
 						}
 					}
 					else
-					if (global.player4_can_play)
+					if (global.player_can_play[4])
 					{
 						if (global.player_[inp.key][4][1][action.left] > noone)
 						{
@@ -429,22 +432,22 @@ if (can_move)
 					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, c_white, 1);
 				}
 				else
-				if (global.player1_can_play)
+				if (global.player_can_play[1])
 				{
 					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
-				if (global.player2_can_play)
+				if (global.player_can_play[2])
 				{
 					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
-				if (global.player3_can_play)
+				if (global.player_can_play[3])
 				{
 					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
-				if (global.player4_can_play)
+				if (global.player_can_play[4])
 				{
 					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
 				}
@@ -463,22 +466,22 @@ if (can_move)
 					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);
 				}
 				else
-				if (global.player1_can_play)
+				if (global.player_can_play[1])
 				{
 					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
-				if (global.player2_can_play)
+				if (global.player_can_play[2])
 				{
 					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
-				if (global.player3_can_play)
+				if (global.player_can_play[3])
 				{
 					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
-				if (global.player4_can_play)
+				if (global.player_can_play[4])
 				{
 					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
 				}

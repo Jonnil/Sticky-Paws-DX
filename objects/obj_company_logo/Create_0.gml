@@ -294,13 +294,13 @@ global.level_editor_level = 0; /* What level is selected in the custom level edi
 global.narrator = 0; /* Select Narrator */
 global.pause = false; /* If game is paused or not */
 global.play_edited_level = false; /* Playtest edited level */
-global.player1_can_play = false; /* Player 1 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
+global.player_can_play[1] = false; /* Player 1 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
 global.player_color[1] = c_aqua; /* Player 1 Color, default:aqua */
-global.player2_can_play = false; /* Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
+global.player_can_play[2] = false; /* Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
 global.player_color[2] = c_red; /* Player 1 Color, default:red */
-global.player3_can_play = false; /* Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
+global.player_can_play[3] = false; /* Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
 global.player_color[3] = c_lime; /* Player 1 Color, default:lime */
-global.player4_can_play = false; /* Player 4 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
+global.player_can_play[4] = false; /* Player 4 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
 global.player_color[4] = c_yellow; /* Player 1 Color, default:yellow */
 global.select_level_index = 0; /* What level is selected in the custom level editor */
 global.selected_resource_pack = 0; /* 0 = default */

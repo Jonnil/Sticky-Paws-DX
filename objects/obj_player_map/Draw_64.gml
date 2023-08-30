@@ -21,7 +21,7 @@ if (can_move)
 		scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], 32, get_window_height - 28, 0.5, c_white, 1);
 	}
 	else
-	if (global.player1_can_play)
+	if (global.player_can_play[1])
 	{
 		if (global.player_[inp.key][1][1][action.accept] > noone)
 		{
@@ -34,7 +34,7 @@ if (can_move)
 		}
 	}
 	else
-	if (global.player2_can_play)
+	if (global.player_can_play[2])
 	{
 		if (global.player_[inp.key][2][1][action.accept] > noone)
 		{
@@ -47,7 +47,7 @@ if (can_move)
 		}
 	}
 	else
-	if (global.player3_can_play)
+	if (global.player_can_play[3])
 	{
 		if (global.player_[inp.key][3][1][action.accept] > noone)
 		{
@@ -60,7 +60,7 @@ if (can_move)
 		}
 	}
 	else
-	if (global.player4_can_play)
+	if (global.player_can_play[4])
 	{
 		if (global.player_[inp.key][4][1][action.accept] > noone)
 		{
@@ -94,7 +94,7 @@ if (global.debug_screen)
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, c_white, 1);
 		}
 		else
-		if (global.player1_can_play)
+		if (global.player_can_play[1])
 		{
 			if (global.player_[inp.key][1][1][action.back] > noone)
 			{
@@ -107,7 +107,7 @@ if (global.debug_screen)
 			}
 		}
 		else
-		if (global.player2_can_play)
+		if (global.player_can_play[2])
 		{
 			if (global.player_[inp.key][2][1][action.back] > noone)
 			{
@@ -120,7 +120,7 @@ if (global.debug_screen)
 			}
 		}
 		else
-		if (global.player3_can_play)
+		if (global.player_can_play[3])
 		{
 			if (global.player_[inp.key][3][1][action.back] > noone)
 			{
@@ -133,7 +133,7 @@ if (global.debug_screen)
 			}
 		}
 		else
-		if (global.player4_can_play)
+		if (global.player_can_play[4])
 		{
 			if (global.player_[inp.key][4][1][action.back] > noone)
 			{
