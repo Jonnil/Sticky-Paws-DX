@@ -42,13 +42,6 @@ function scr_controls_for_level_editor()
 	|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.back]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.back]))
 	|| (keyboard_check_pressed(vk_escape));
-	
-	///* Player 1 Key Back Released */ key_b_released = (gamepad_button_check_released(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
-	//|| (gamepad_button_check_released(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
-	//|| (keyboard_check_released(global.player_[inp.key][1][1][action.back]))
-	//|| (keyboard_check_released(global.player_[inp.key][1][2][action.back]))
-	//|| (keyboard_check_released(vk_escape));
-	
 	#endregion /* Player 1 Key Back END */
 	
 	/* Player 1 Key Move Faster */ key_move_faster = (gamepad_button_check(global.player_slot[1], gp_shoulderrb))
@@ -82,10 +75,8 @@ function scr_controls_for_level_editor()
 	/* Player 1 Keyboard Shortcut Play */ key_play = vk_enter;
 	/* Player 1 Gamepad Shortcut Play */ button_play = gp_select;
 	
-	///* Player 1 Keyboard Shortcut Scroll Object Left */ key_scroll_object_left = noone;
 	/* Player 1 Gamepad Shortcut Scroll Object Left */ button_scroll_object_left = gp_shoulderl;
 	
-	///* Player 1 Keyboard Shortcut Scroll Object Right */ key_scroll_object_right = noone;
 	/* Player 1 Gamepad Shortcut Scroll Object Right */ button_scroll_object_right = gp_shoulderr;
 	
 	#endregion /* Controls for level editor END */

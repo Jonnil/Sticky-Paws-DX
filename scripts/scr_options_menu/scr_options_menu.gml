@@ -2156,7 +2156,7 @@ function scr_options_menu()
 			if (global.language_localization == 2) /* If you have selected Japanese language, you can't use Open Dyslexic, as it isn't supported */
 			{
 				/* Only include Game Font and Normal Font for Japanese language, as these are the only supported ones*/
-				//draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "selected_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font")); /* Doesn't include Open Dyslexic, as some languages are not supported */
+				/* Doesn't include Open Dyslexic, as some languages are not supported */
 				var can_select_font = false;
 			}
 			else

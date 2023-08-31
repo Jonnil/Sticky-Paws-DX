@@ -10,27 +10,6 @@ for (var i = 0; i < 10; i += 1)
 	}
 }
 
-/* if (temp_joystick == -1)
-{
-	for (var i = 0; i < 10; i += 1)
-	{
-		if (device_mouse_check_button_pressed(i, mb_any))
-		{
-			//if (point_distance(x, y, device_mouse_x(temp_joystick), device_mouse_y(temp_joystick)) < (base_size * 2) * var_screen_size)
-			//{
-				temp_joystick = i;
-			//}
-		}
-	}
-}
-else
-{
-	if (device_mouse_check_button_released(temp_joystick, mb_any))
-	{
-		temp_joystick = -1;
-	}
-} */
-
 if (instance_exists(obj_finger_indicator))
 {
 	temp_joystick = instance_nearest(x, y, obj_finger_indicator).my_touch;

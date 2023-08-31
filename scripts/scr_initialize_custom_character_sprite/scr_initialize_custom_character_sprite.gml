@@ -87,48 +87,6 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 	}
 	#endregion /* Origin points END */
 	
-	//else
-	
-	//#region /* If the sprite doesn't exist, but there are still origin points saved for that sprite, then delete those origin points from sprite_origin_point.ini, but save the unused origin points in unused_sprite_origin_point.ini */
-	//{
-	//	/* Construct the path to the character's data directory */
-	//	var char_data_dir = "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/";
-		
-	//	/* If the sprite variable is undefined and there is no saved file, and the sprite origin point INI file exists */
-	//	if (sprite_variable == noone && !saved_file_exists)
-	//	{
-		
-	//		/* Open the sprite origin point INI file and delete the x and y origin point keys for this sprite */
-	//		with (ini_open(char_data_dir + "sprite_origin_point.ini")) {
-	//			ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_xorig");
-	//			ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_yorig");
-	//		}
-			
-	//		/* Open the unused sprite origin point INI file */
-	//		with (ini_open(char_data_dir + "unused_sprite_origin_point.ini")) {
-				
-	//			/* Read the x and y origin point keys for this sprite, if they exist */
-	//			var unused_x_origin_point = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_xorig", noone);
-	//			var unused_y_origin_point = ini_read_real("sprite origin points", "sprite_" + string(sprite_name) + "_yorig", noone);
-				
-	//			/* If an x origin point was found, write it to the unused sprite origin point INI file */
-	//			if (unused_x_origin_point > noone) ini_write_real("unused sprite origin points", "sprite_" + string(sprite_name) + "_xorig", unused_x_origin_point);
-				
-	//			/* If a y origin point was found, write it to the unused sprite origin point INI file */
-	//			if (unused_y_origin_point > noone) ini_write_real("unused sprite origin points", "sprite_" + string(sprite_name) + "_yorig", unused_y_origin_point);
-				
-	//			/* Delete the x and y origin point keys for this sprite */
-	//			ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_xorig");
-	//			ini_key_delete("sprite origin points", "sprite_" + string(sprite_name) + "_yorig");
-	//		}
-	//	}
-	//}
-	//#endregion /* If the sprite doesn't exist, but there are still origin points saved for that sprite, then delete those origin points from sprite_origin_point.ini, but save the unused origin points in unused_sprite_origin_point.ini END */
-	
-	if (sprite_variable != noone)
-	{
-		return (sprite_variable);
-	}
 	else
 	{
 		return noone;

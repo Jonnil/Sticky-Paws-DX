@@ -10,5 +10,5 @@ if (instance_number(obj_player) > 0)
 	draw_self();
 }
 
-//scr_draw_text_outlined(xx, yy, "1");
-//scr_draw_text_outlined(xx[2], yy2, "2");
+/* scr_draw_text_outlined(xx, yy, "1");
+scr_draw_text_outlined(xx[2], yy2, "2"); */

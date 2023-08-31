@@ -146,7 +146,7 @@ function scr_config_load()
 		if (ini_key_exists("player1_profile" + string(global.player1_profile), "player1_down_and_jump_to_groundpound")){global.player1_down_and_jump_to_groundpound = ini_read_real("player1_profile" + string(global.player1_profile), "player1_down_and_jump_to_groundpound", 0);}
 		if (ini_key_exists("player1_profile" + string(global.player1_profile), "player1_wall_jump_setting")){global.player1_wall_jump_setting = ini_read_real("player1_profile" + string(global.player1_profile), "player1_wall_jump_setting", 0);}
 		if (ini_key_exists("player1_profile" + string(global.player1_profile), "player1_drop_from_rope")){global.player1_drop_from_rope = ini_read_real("player1_profile" + string(global.player1_profile), "player1_drop_from_rope", 0);}
-		if (ini_key_exists("player1_profile" + string(global.player1_profile), "player1_show_controls")){global.player_show_controls[1] = ini_read_real("player1_profile" + string(global.player1_profile), "player1_show_controls", 0);}//Load Player 1 Keyboard Remapping End
+		if (ini_key_exists("player1_profile" + string(global.player1_profile), "player1_show_controls")){global.player_show_controls[1] = ini_read_real("player1_profile" + string(global.player1_profile), "player1_show_controls", 0);}
 		#endregion /* Load Player 1 Keyboard Remapping END */
 		
 		#region /* Load Player 2 Keyboard Remapping */
@@ -196,7 +196,7 @@ function scr_config_load()
 		if (ini_key_exists("player2_profile" + string(global.player2_profile), "player2_down_and_jump_to_groundpound")){global.player2_down_and_jump_to_groundpound = ini_read_real("player2_profile" + string(global.player2_profile), "player2_down_and_jump_to_groundpound", 0);}
 		if (ini_key_exists("player2_profile" + string(global.player2_profile), "player2_wall_jump_setting")){global.player2_wall_jump_setting = ini_read_real("player2_profile" + string(global.player2_profile), "player2_wall_jump_setting", 0);}
 		if (ini_key_exists("player2_profile" + string(global.player2_profile), "player2_drop_from_rope")){global.player2_drop_from_rope = ini_read_real("player2_profile" + string(global.player2_profile), "player2_drop_from_rope", 0);}
-		if (ini_key_exists("player2_profile" + string(global.player2_profile), "player2_show_controls")){global.player_show_controls[2] = ini_read_real("player2_profile" + string(global.player2_profile), "player2_show_controls", 0);}//Load Player 2 Keyboard Remapping End
+		if (ini_key_exists("player2_profile" + string(global.player2_profile), "player2_show_controls")){global.player_show_controls[2] = ini_read_real("player2_profile" + string(global.player2_profile), "player2_show_controls", 0);}
 		#endregion /* Load Player 2 Keyboard Remapping END */
 		
 		#region /* Load Player 3 Keyboard Remapping */
@@ -246,7 +246,7 @@ function scr_config_load()
 		if (ini_key_exists("player3_profile" + string(global.player3_profile), "player3_down_and_jump_to_groundpound")){global.player3_down_and_jump_to_groundpound = ini_read_real("player3_profile" + string(global.player3_profile), "player3_down_and_jump_to_groundpound", 0);}
 		if (ini_key_exists("player3_profile" + string(global.player3_profile), "player3_wall_jump_setting")){global.player3_wall_jump_setting = ini_read_real("player3_profile" + string(global.player3_profile), "player3_wall_jump_setting", 0);}
 		if (ini_key_exists("player3_profile" + string(global.player3_profile), "player3_drop_from_rope")){global.player3_drop_from_rope = ini_read_real("player3_profile" + string(global.player3_profile), "player3_drop_from_rope", 0);}
-		if (ini_key_exists("player3_profile" + string(global.player3_profile), "player3_show_controls")){global.player_show_controls[3] = ini_read_real("player3_profile" + string(global.player3_profile), "player3_show_controls", 0);}//Load Player 3 Keyboard Remapping End
+		if (ini_key_exists("player3_profile" + string(global.player3_profile), "player3_show_controls")){global.player_show_controls[3] = ini_read_real("player3_profile" + string(global.player3_profile), "player3_show_controls", 0);}
 		#endregion /* Load Player 3 Keyboard Remapping END */
 		
 		#region /* Load Player 4 Keyboard Remapping */
@@ -296,7 +296,7 @@ function scr_config_load()
 		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_down_and_jump_to_groundpound")){global.player4_down_and_jump_to_groundpound = ini_read_real("player4_profile" + string(global.player4_profile), "player4_down_and_jump_to_groundpound", 0);}
 		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_wall_jump_setting")){global.player4_wall_jump_setting = ini_read_real("player4_profile" + string(global.player4_profile), "player4_wall_jump_setting", 0);}
 		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_drop_from_rope")){global.player4_drop_from_rope = ini_read_real("player4_profile" + string(global.player4_profile), "player4_drop_from_rope", 0);}
-		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_show_controls")){global.player4_show_controls = ini_read_real("player4_profile" + string(global.player4_profile), "player4_show_controls", 0);}//Load Player 4 Keyboard Remapping End
+		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_show_controls")){global.player4_show_controls = ini_read_real("player4_profile" + string(global.player4_profile), "player4_show_controls", 0);}
 		#endregion /* Load Player 4 Keyboard Remapping END */
 		
 		#region /* Load Player 1 Gamepad Remapping */

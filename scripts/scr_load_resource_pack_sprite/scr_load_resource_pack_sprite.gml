@@ -1,6 +1,3 @@
-/// @function scr_load_resource_pack_sprite()
-/// @description scr_load_resource_pack_sprite()
-
 function scr_load_resource_pack_sprite()
 {
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))

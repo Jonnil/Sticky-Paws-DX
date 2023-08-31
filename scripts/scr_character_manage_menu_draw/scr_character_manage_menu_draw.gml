@@ -124,8 +124,6 @@ function scr_character_manage_menu_draw()
 	
 		#endregion /* Left and Right Keys END */
 		
-		//scr_draw_text_outlined(get_window_width * 0.5, 48, l10n_text("Manage Characters"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
-		
 		if (directory_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
 		{
 			var selecting_official_character = true;

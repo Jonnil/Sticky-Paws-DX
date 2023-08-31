@@ -516,7 +516,7 @@ if (can_save_to_character_config == true && character != undefined && !file_exis
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 
-// Close the character config file
+/* Close the character config file */
 ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #endregion /* Character Values Handeling END */
 

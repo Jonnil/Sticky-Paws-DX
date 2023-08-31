@@ -1,15 +1,15 @@
 function instance_nth_nearest(argument0, argument1, argument2, argument3)
 {
-	/// instance_nth_nearest(x,y,obj,n)
-	//
-	//  Returns the id of the nth nearest instance of an object
-	//  to a given point or noone if none is found.
-	//
-	//      x,y       point coordinates, real
-	//      obj       object index (or all), real
-	//      n         proximity, real
-	//
-	/// GMLscripts.com/license
+	/* instance_nth_nearest(x,y,obj,n)
+	
+	Returns the id of the nth nearest instance of an object
+	to a given point or noone if none is found.
+	
+		x,y		point coordinates, real
+		obj		object index (or all), real
+		n		proximity, real
+	
+	GMLscripts.com/license */
 	{
 	    var pointx,pointy,object,n,list,nearest;
 	    pointx = argument0;

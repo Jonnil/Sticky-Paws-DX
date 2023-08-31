@@ -53,7 +53,7 @@ function scr_player_move_tongue()
 				
 				else
 				
-				#region /* Key tongue pressed while moving left stick */
+				#region /* Key tongue pressed moving left stick */
 				if (gamepad_axis_value(player - 1, gp_axislh) != 0)
 				|| (gamepad_axis_value(player - 1, gp_axislv) != 0)
 				{
@@ -67,7 +67,7 @@ function scr_player_move_tongue()
 					}
 				
 				}
-				#endregion /* Key tongue pressed while moving left stick END */
+				#endregion /* Key tongue pressed moving left stick END */
 				
 				else
 				

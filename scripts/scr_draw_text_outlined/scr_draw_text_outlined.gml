@@ -5,6 +5,7 @@ function scr_draw_text_outlined(x_position = x, y_position = y, string_text = ""
 	/* Draw outline of text */
 	if (outline_color != noone)
 	{
+		/* Making the text have a dropshadow (less functions than having a complete outline this way) */
 		//draw_text_transformed_color(x_position - text_size_adjusted, y_position, string_text, text_size_adjusted, text_size_adjusted, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
 		draw_text_transformed_color(x_position + text_size_adjusted, y_position, string_text, text_size_adjusted, text_size_adjusted, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
 		//draw_text_transformed_color(x_position, y_position - text_size_adjusted, string_text, text_size_adjusted, text_size_adjusted, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);

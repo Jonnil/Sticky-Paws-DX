@@ -4,19 +4,6 @@ scr_set_controls_used_to_navigate();
 
 if (goto_title_screen)
 {
-	//if (current_month == 12)
-	//{
-	//	var christmas_logo_index = 4;
-	//	global.selected_title_logo = christmas_logo_index; /* Set the selected title logo to use Christmas logo */
-	//	ini_open(working_directory + "config.ini");
-	//	ini_write_real("config", "selected_title_logo", christmas_logo_index); /* Save in config that game should be using Christmas logo, otherwise it will load the previously saved logo when going to title screen */
-	//	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-	//	if (file_exists("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, christmas_logo_index))))
-	//	{
-	//		global.title_logo_index = sprite_add("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, christmas_logo_index)), 1, false, false, 0, 0);
-	//		sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) * 0.5, sprite_get_height(global.title_logo_index) * 0.5);
-	//	}
-	//}
 	room_goto(rm_title);
 }
 

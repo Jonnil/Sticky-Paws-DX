@@ -2706,48 +2706,4 @@ if (glide)
 
 #endregion /* ________________________________Handling the sprites and sounds in the step event________________________________END */
 
-#region /* Predicting where player will end up at high speeds and stopping the player from going inside a wall */
-//line_hit = scr_line_trace( x, y, x + hspeed, y + vspeed, 1);
-//if (line_hit.instance != noone)
-//{
-//	if (abs(hspeed) > abs(vspeed)) /* If hspeed is more than vspeed, that's when x position is updated, so y position isn't unecessarely being changed and character jitters */
-//	&& (hspeed <> 0)
-//	{
-//		x = line_hit.x_hit;
-//	}
-//	if (abs(vspeed) > abs(hspeed)) /* If vspeed is more than hspeed, that's when y position is updated, so z position isn't unecessarely being changed and character jitters */
-//	&& (vspeed <> 0)
-//	{
-//		y = line_hit.y_hit;
-//	}
-//}
-#endregion /* Predicting where player will end up at high speeds and stopping the player from going inside a wall END */
-
-#region /* Debug teleport character with mouse */
-if (keyboard_check(vk_f3))
-&& (mouse_check_button(mb_left))
-&& (global.doing_clear_check == false)
-&& (global.doing_clear_check_character == false)
-{
-	with(obj_camera)
-	{
-		hspeed = 0;
-		vspeed = 0;
-		x = xprevious;
-		y = yprevious;
-		if (!mouse_check_button(mb_right))
-		{
-			xx = xprevious;
-			yy = yprevious;
-		}
-	}
-	hspeed = 0;
-	vspeed = 0;
-	x = mouse_x;
-	y = mouse_y;
-	die = false;
-	stuck_in_wall_counter = 0;
-}
-#endregion /* Debug teleport character with mouse END */
-
 scr_player_move_lose(); /* Have the losing script at the end of Step Event */

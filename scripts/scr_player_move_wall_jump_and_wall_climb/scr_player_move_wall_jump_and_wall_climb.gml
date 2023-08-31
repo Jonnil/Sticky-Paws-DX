@@ -80,7 +80,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		}
 		if (stick_to_wall)
 		{
-		    // Pressing opposite direction to drop off from wall
+		    /* Pressing opposite direction to drop off from wall */
 		    if ((key_left_hold && !key_right_hold && image_xscale == +1) ||
 		        (key_right_hold && !key_left_hold && image_xscale == -1))
 		    {
@@ -92,7 +92,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		        pressing_opposite_direction_to_drop_off_from_wall--;
 		    }
     
-		    // If there is ground under you while trying to go down, then stop wall climbing
+		    /* If there is ground under you when trying to go down, then stop wall climbing */
 		    if (on_ground)
 		    {
 		        stick_to_wall = false;
@@ -118,9 +118,9 @@ function scr_player_move_wall_jump_and_wall_climb()
 		            }
 		        }
         
-		        vspeed = clamp(vspeed, -4, 4); // Limit the vspeed between -4 and 4
+		        vspeed = clamp(vspeed, -4, 4); /* Limit the vspeed between -4 and 4 */
         
-		        // If there is no wall beside when climbing, then stop climbing
+		        /* If there is no wall beside when climbing, then stop climbing */
 		        if ((!place_meeting(x - 1, y, obj_wall) && image_xscale < 0) ||
 		            (!place_meeting(x + 1, y, obj_wall) && image_xscale > 0))
 		        {
@@ -128,8 +128,8 @@ function scr_player_move_wall_jump_and_wall_climb()
 		            audio_stop_sound(snd_skiddingvertical);
 		        }
 		    }
-    
-		    // Wall Climb
+			
+		    /* Wall Climb */
 		    if (allow_wall_climb || place_meeting(x, y, obj_wall_climb_panel))
 		    {
 		        dive = false;
@@ -188,7 +188,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		        }
 		    }
     
-		    // When pressing the jump button and besides the wall, do the wall jump
+		    /* When pressing the jump button and besides the wall, do the wall jump */
 		    if ((key_jump && place_meeting(x + 1, y, obj_wall) && !place_meeting(x, y + 1, obj_wall) &&
 		         !position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) &&
 		         !position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform) &&
