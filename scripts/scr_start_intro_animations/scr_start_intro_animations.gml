@@ -7,7 +7,7 @@ function scr_start_intro_animations()
 	{
 		
 		#region /* This intro animation is called "cake_stolen", more intros can be added here */
-		if (intro_animation = "cake_stolen")
+		if (intro_animation == "cake_stolen")
 		&& (instance_exists(obj_camera))
 		&& (obj_camera.intro_animation_play_only_once == false)
 		|| (intro_animation = "cake_stolen")
@@ -80,7 +80,7 @@ function scr_start_intro_animations()
 		else
 		
 		#region /* This intro animation is called "ending", more intros can be added here */
-		if (intro_animation = "ending")
+		if (intro_animation == "ending")
 		&& (instance_exists(obj_camera))
 		&& (obj_camera.intro_animation_play_only_once == false)
 		|| (intro_animation = "ending")
@@ -147,7 +147,7 @@ function scr_start_intro_animations()
 		#endregion /* This intro animation is called "cake_stolen", more intros can be added here END */
 		
 		else
-		if (intro_animation = "ending_chair")
+		if (intro_animation == "ending_chair")
 		{
 			if (instance_exists(obj_chair_and_table))
 			{
@@ -191,7 +191,7 @@ function scr_start_intro_animations()
 		}
 		
 		else
-		if (intro_animation = "ending_chair_eating")
+		if (intro_animation == "ending_chair_eating")
 		{
 			if (instance_exists(obj_chair_and_table))
 			{

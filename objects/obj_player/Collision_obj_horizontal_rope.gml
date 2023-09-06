@@ -106,7 +106,7 @@ if (!on_ground)
 				if (sprite_climb_under_spin > noone){sprite_index = sprite_climb_under_spin;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 			else
 			{
@@ -114,7 +114,7 @@ if (!on_ground)
 				if (sprite_climb_under_spin > noone){sprite_index = sprite_climb_under_spin;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 			if (image_index >= image_number - 1)
 			&& (image_number > 1)
@@ -253,7 +253,7 @@ if (!on_ground)
 				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
 				if (key_sprint)
 				|| (double_tap_left == 3)
 				{
@@ -294,7 +294,7 @@ if (!on_ground)
 				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
 				if (key_sprint)
 				|| (double_tap_right == 3)
 				{
@@ -330,14 +330,14 @@ if (!on_ground)
 				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 			else
 			{
 				if (sprite_climb_under_look_up > noone){sprite_index = sprite_climb_under_look_up;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 			image_speed = 0.5;
 		}
@@ -350,7 +350,7 @@ if (!on_ground)
 				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 			else
 			if (sprite_climb_under_still > noone)
@@ -360,7 +360,7 @@ if (!on_ground)
 			else
 			{
 				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
-				if (sprite_exists(sprite_walk)){sprite_index = sprite_walk;}
+				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 		}
 		if (instance_position(nearest_horizontal_rope.x, nearest_horizontal_rope.y + 64, obj_wall)) /*If there is a wall underneath the horizontal rope, then release grab from horizontal rope*/

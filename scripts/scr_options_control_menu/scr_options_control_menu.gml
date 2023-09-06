@@ -134,25 +134,9 @@ function scr_options_control_menu()
 	{
 		
 		#region /* Show sprite of the character you have currently selected for current player you are remapping */
-		if (remapping_player == 0)
-		&& (sprite_exists(global.sprite_select_player[1]))
+		if (global.sprite_select_player[remapping_player + 1] > noone)
 		{
-			draw_sprite_ext(global.sprite_select_player[1], 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player[1]), 100 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
-		}
-		if (remapping_player == 1)
-		&& (sprite_exists(global.sprite_select_player[2]))
-		{
-			draw_sprite_ext(global.sprite_select_player[2], 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player[2]), 100 / sprite_get_width(global.sprite_select_player[2]), 0, global.hex_color_for_player2, 1);
-		}
-		if (remapping_player == 2)
-		&& (sprite_exists(global.sprite_select_player[3]))
-		{
-			draw_sprite_ext(global.sprite_select_player[3], 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player[3]), 100 / sprite_get_width(global.sprite_select_player[3]), 0, global.hex_color_for_player3, 1);
-		}
-		if (remapping_player == 3)
-		&& (sprite_exists(global.sprite_select_player[4]))
-		{
-			draw_sprite_ext(global.sprite_select_player[4], 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player[4]), 100 / sprite_get_width(global.sprite_select_player[4]), 0, global.hex_color_for_player4, 1);
+			draw_sprite_ext(global.sprite_select_player[remapping_player + 1], 0, window_get_width() - 100, 100, 100 / sprite_get_width(global.sprite_select_player[remapping_player + 1]), 100 / sprite_get_width(global.sprite_select_player[remapping_player + 1]), 0, c_white, 1);
 		}
 		#endregion /* Show sprite of the character you have currently selected for current player you are remapping END */
 		

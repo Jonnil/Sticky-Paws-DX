@@ -185,15 +185,15 @@ if (taken_damage >= taken_damage_freezetime)
 	vspeed = 0;
 	speed = 0;
 	if (sprite_die > noone)
-	&& (intro_animation = "")
+	&& (intro_animation == "")
 	{
 		sprite_index = sprite_die;
 	}
 	else
-	if (intro_animation = "")
+	if (intro_animation == "")
 	{
 		if (sprite_stand > noone){sprite_index = sprite_stand;}else
-		{sprite_index = sprite_walk;}
+		if (sprite_walk > noone){sprite_index = sprite_walk;}
 	}
 	if (image_index > image_number - 1)
 	{
@@ -240,7 +240,7 @@ if (red_blink_timer > 25)
 && (hp <= 1)
 && (max_hp >= 2)
 && (sprite_index > 0)
-&& (intro_animation = "")
+&& (intro_animation == "")
 && (invincible_timer <= false)
 {
 	draw_sprite_ext(sprite_index, image_index, xx + random_range(- 8, + 8), yy + random_range(- 8, + 8), draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha * collision_mask_alpha);
@@ -248,7 +248,7 @@ if (red_blink_timer > 25)
 else
 if (taken_damage%2 == 0)
 && (sprite_index > 0)
-&& (intro_animation = "")
+&& (intro_animation == "")
 {
 	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha * collision_mask_alpha);
 	if (hp <= 1)
@@ -260,7 +260,7 @@ if (taken_damage%2 == 0)
 }
 else
 if (sprite_index > 0)
-&& (intro_animation = "")
+&& (intro_animation == "")
 {
 	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, 0.5);
 }
