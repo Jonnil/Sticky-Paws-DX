@@ -105,13 +105,11 @@ else
 #endregion /* Music Pitch END */
 
 #region /* Winning the level and transitioning to the next area */
-var intro_anim_done = intro_animation == "";
-var goal_clear_rate = goal && global.time_countdown_bonus <= 0;
-
-if (instance_exists(obj_camera))
+if (goal && global.time_countdown_bonus <= 0)
+&& (instance_exists(obj_camera))
 && (obj_camera.iris_xscale < 3)
 {
-	if (goal_clear_rate && obj_camera.iris_xscale <= 0.01 && obj_camera.iris_yscale <= 0.001)
+	if (obj_camera.iris_xscale <= 0.01 && obj_camera.iris_yscale <= 0.001)
 	{
 		audio_stop_all();
 		global.checkpoint_x = 0;
@@ -133,7 +131,7 @@ if (instance_exists(obj_camera))
 		if (!instance_exists(obj_camera.player4))
 			global.player_can_play[4] = false;
 		
-		if (global.actually_play_edited_level == false && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
+		if (!global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
 		{
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
@@ -147,7 +145,7 @@ if (instance_exists(obj_camera))
 			room_goto(rm_title); /* Go back to title screen after completing a custom level normally */
 		}
 		else if (obj_camera.after_goal_go_to_this_level >= 0)
-		&& (loading_assets == false)
+		&& (!loading_assets)
 		{
 			global.select_level_index = obj_camera.after_goal_go_to_this_level;
 			scr_update_all_backgrounds();
@@ -162,7 +160,7 @@ if (instance_exists(obj_camera))
 			loading_assets = true;
 		}
 		else
-		if (loading_assets == false)
+		if (!loading_assets)
 		{
 			/* Go back to title screen if doing character clear check, otherwise go back to world map when playing normally */
 			if (global.doing_clear_check_character)
@@ -177,7 +175,7 @@ if (instance_exists(obj_camera))
 	}
 }
 else
-if (intro_anim_done)
+if (intro_animation == "")
 {
 	var view_x = camera_get_view_x(view_camera[view_current]);
 	var view_y = camera_get_view_y(view_camera[view_current]);
@@ -191,29 +189,6 @@ if (intro_anim_done)
 	y = clamp(y, y_min, y_max);
 }
 #endregion /* Winning the level and transitioning to the next area END */
-
-#region /* Don't let the player outside the view too much when winning */
-if (goal)
-{
-	var view_x = camera_get_view_x(view_camera[view_current]);
-	var view_y = camera_get_view_y(view_camera[view_current]);
-	var view_width = camera_get_view_width(view_camera[view_current]);
-	var view_height = camera_get_view_height(view_camera[view_current]);
-	var y_max = view_y + view_height + 32;
-	
-	if (x <= view_x && hspeed < 0)
-		hspeed = 0;
-	else if (x >= view_x + view_width && hspeed > 0)
-		hspeed = 0;
-	
-	if (y >= view_y + view_height + 32)
-	{
-		y = y_max;
-		vspeed = 0;
-		gravity = 0;
-	}
-}
-#endregion /* Don't let the player outside the view too much when winning END */
 
 if (hspeed != 0)
 {
@@ -232,9 +207,9 @@ if (assist_invincible)
 	if (key_jump_hold)
 	{
 		if (!on_ground)
-		&& (dive == false)
-		&& (ground_pound == false)
-		&& (crouch == false)
+		&& (!dive)
+		&& (!ground_pound)
+		&& (!crouch)
 		&& (vspeed > 1)
 		{
 			vspeed = +1;
@@ -254,9 +229,7 @@ if (global.assist_enable)
 }
 #endregion /* If Assist delault hp is invincible, stay invincible END */
 
-scr_player_move_customizable_controls();
-
-/* Sets up what the buttons do */
+scr_player_move_customizable_controls(); /* Sets up what the buttons do */
 
 #region /* Save to variable when on ground */
 if (place_meeting(x, y + 1, obj_wall)) /* If there is wall underneath */
@@ -271,14 +244,7 @@ else
 #endregion /* Save to variable when on ground */
 
 #region /* If controller gets disconnected during gameplay, pause the game */
-if (player == 1)
-&& (gamepad_is_connected(global.player_slot[1]))
-|| (player == 2)
-&& (gamepad_is_connected(global.player_slot[2]))
-|| (player == 3)
-&& (gamepad_is_connected(global.player_slot[3]))
-|| (player == 4)
-&& (gamepad_is_connected(global.player_slot[4]))
+if (gamepad_is_connected(global.player_slot[player]))
 {
 	controller_connected = true;
 }
@@ -364,7 +330,7 @@ scr_player_move_mid_air_jump();
 
 #region /* Do a small jump when releasing the jump button */
 if (key_jump_released)
-&& (spring == false)
+&& (!spring)
 {
 	if (vspeed < 0) /* When still traveling up */
 	{
@@ -383,8 +349,8 @@ if (vspeed > 0)
 #region /* Set the gravity */
 gravity_direction = 270; /* Direction of the gravity */
 if (!on_ground)
-&& (climb == false)
-&& (horizontal_rope_climb == false)
+&& (!climb)
+&& (!horizontal_rope_climb)
 {
 	gravity = 0.5; /* The gravity */
 }
@@ -439,9 +405,9 @@ else
 
 #region /* Bottomless Pit */
 /* Don't stop horizontal speed, as it feels awkward when falling down */
-if (bbox_top > room_height + 200)
-&& (goal == false)
-&& (global.goal_active == false)
+if (bbox_top > room_height)
+&& (!goal)
+&& (!global.goal_active)
 {
 	die = true;
 }
@@ -451,7 +417,7 @@ if (bbox_top > room_height + 200)
 if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes, false, true))
 {
 	if (taken_damage < 1)
-	&& (assist_invincible == false)
+	&& (!assist_invincible)
 	&& (invincible_timer <= false)
 	{
 		if (have_heart_balloon)
@@ -612,7 +578,7 @@ if (in_water != old_in_water)
 	
 	#region /* Jump out of water */
 	if (key_jump_hold)
-	&& (in_water == false)
+	&& (!in_water)
 	&& (vspeed > -normal_jump_height)
 	{
 		vspeed = -normal_jump_height;
@@ -673,27 +639,11 @@ if (taken_damage > 0)
 
 #region /* Make the player die if you have 0 HP */
 if (hp <= 0)
-&& (global.goal_active == false)
+&& (!global.goal_active)
 {
 	die = true;
 }
 #endregion /* Make the player die if you have 0 HP END */
-
-#region /* Don't gain more HP than your max HP */
-if (hp > max_hp)
-{
-	if (allow_overflow_hp)
-	{
-		overflow_hp ++;
-		if (overflow_hp >= max_overflow_hp)
-		{
-			max_hp ++;
-			overflow_hp = 0;
-		}
-	}
-	hp = max_hp;
-}
-#endregion /* Don't gain more HP than your max HP END */
 
 #endregion /* Health Handeling END */
 
@@ -725,7 +675,7 @@ if (burnt == 2)
 
 #region /* Invincible Music */
 if (invincible_timer >= true)
-&& (assist_invincible == false)
+&& (!assist_invincible)
 {
 	invincible_timer --;
 	if (!audio_is_playing(music_invincible))
@@ -774,12 +724,12 @@ else
 #endregion /* Invincible Music END */
 
 #region /* Time */
-if (goal == false)
+if (!goal)
 {
 	if (global.time_countdown == 0)
 	&& (global.enable_time_countdown)
-	&& (global.player_has_entered_goal == false)
-	&& (global.goal_active == false)
+	&& (!global.player_has_entered_goal)
+	&& (!global.goal_active)
 	{
 		die = true;
 	}
@@ -852,7 +802,7 @@ scr_player_move_spring();
 #endregion /* ________________________________MORE MOVES________________________________ */
 
 /* Platformer Player Part 2 */
-/* ________________________________Handling the sprites and sounds in the step event________________________________ */
+#region /* ________________________________ Handling the sprites and sounds in the step event ________________________________ */
 draw_xscale = lerp(draw_xscale, 1, 0.2); /* Make horizontal stretching slowly reset back to 1 */
 draw_yscale = lerp(draw_yscale, 1, 0.2); /* Make vertical stretching slowly reset back to 1 */
 
@@ -921,6 +871,8 @@ if (can_climb_horizontal_rope_cooldown > 0)
 		can_climb_horizontal_rope_cooldown --;
 	}
 }
+scr_player_move_horizontal_rope();
+#endregion /* Climb Horizontal Rope END */
 
 #region /* Climb Vine / Ladder */
 if (place_meeting(x, y, obj_vine))
@@ -931,7 +883,7 @@ if (place_meeting(x, y, obj_vine))
 	|| (key_up_pressed)
 	&& (hold_item_in_hands == "")
 	{
-		if (climb == false)
+		if (!climb)
 		{
 			climb = true;
 			horizontal_rope_climb = false;
@@ -1160,7 +1112,7 @@ if (place_meeting(x, y, obj_vine))
 
 #region /* In Water Animations */
 if (in_water)
-&& (climb == false)
+&& (!climb)
 {
 	can_ground_pound = false;
 	chain_reaction = 0;
@@ -1168,10 +1120,10 @@ if (in_water)
 	#region /* Crouch Underwater */
 	if (key_crouch_hold) /* Holding the crouch button */
 	&& (allow_crouch) /* Can crouch */
-	&& (crouch == false) /* Not currently crouching */
+	&& (!crouch) /* Not currently crouching */
 	&& (can_move)
-	&& (ground_pound == false)
-	&& (dive == false)
+	&& (!ground_pound)
+	&& (!dive)
 	&& (on_ground)
 	{
 		crouch = true;
@@ -1497,10 +1449,10 @@ else
 	#region /* Crouch */
 	if (key_crouch_hold) /* Holding the crouch button */
 	&& (allow_crouch) /* Can crouch */
-	&& (crouch == false) /* Not currently crouching */
+	&& (!crouch) /* Not currently crouching */
 	&& (can_move)
-	&& (ground_pound == false)
-	&& (dive == false)
+	&& (!ground_pound)
+	&& (!dive)
 	&& (on_ground)
 	{
 		crouch = true;
@@ -1679,14 +1631,14 @@ else
 		
 			else
 			if (vspeed > 0)
-			&& (stick_to_wall == false)
+			&& (!stick_to_wall)
 			{
 			
 				#region /* Crouch Fall sprites */
 				if (jump_transition_to_fall_animation == 0)
 				{
 					image_index = 0;
-					jump_transition_to_fall_animation = 1
+					jump_transition_to_fall_animation = 1;
 				}
 				if (jump_transition_to_fall_animation == 1)
 				{
@@ -1984,7 +1936,7 @@ else
 		&& (on_ground)
 		&& (key_right_hold)
 		{
-			if (crouch == false)
+			if (!crouch)
 			{
 				if (against_wall_animation == 0)
 				{
@@ -2028,7 +1980,7 @@ else
 		if (hspeed == 0)
 		&& (!key_left_hold)
 		&& (!key_right_hold)
-		&& (climb == false)
+		&& (!climb)
 		{
 			look_up_start_animation = true;
 			against_wall_animation = 0;
@@ -2038,7 +1990,7 @@ else
 				sprite_index = sprite_standing_on_something;
 			}
 			else
-			if (have_heart_balloon == false)
+			if (!have_heart_balloon)
 			&& (hp <= 1)
 			&& (max_hp >= 2)
 			&& (invincible_timer <= false)
@@ -2192,9 +2144,9 @@ else
 		if (stick_to_wall)
 		&& (vspeed >= 0)
 		{
-			if (crouch == false)
-			&& (ground_pound == false)
-			&& (ledge_grab == false)
+			if (!crouch)
+			&& (!ground_pound)
+			&& (!ledge_grab)
 			{
 				if (vspeed > 0)
 				{
@@ -2243,9 +2195,9 @@ else
 			/* Run up wall / wall_slide up */
 			if (stick_to_wall)
 			{
-				if (crouch == false)
-				&& (ground_pound == false)
-				&& (ledge_grab == false)
+				if (!crouch)
+				&& (!ground_pound)
+				&& (!ledge_grab)
 				{
 					if (sprite_wall_slide_up > noone){sprite_index = sprite_wall_slide_up;}else
 					if (sprite_wall_slide > noone){sprite_index = sprite_wall_slide;}else
@@ -2262,7 +2214,7 @@ else
 				#region /* Single Jump */
 				if (jump <= 1)
 				{
-					if (spring == false)
+					if (!spring)
 					{
 						if (sprite_jump > noone){sprite_index = sprite_jump;}else
 						if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
@@ -2312,8 +2264,8 @@ else
 		}
 		else
 		if (vspeed > 0)
-		&& (stick_to_wall == false)
-		&& (spring == false)
+		&& (!stick_to_wall)
+		&& (!spring)
 		{
 		
 			#region /* Fall sprites */
@@ -2371,7 +2323,7 @@ else
 }
 
 #region/* Stop skidding ice sound */
-if (crouch == false)
+if (!crouch)
 {
 	if (speed < 2)
 	|| (hspeed > 0)
@@ -2400,7 +2352,7 @@ if (!place_meeting(x, y + 1, obj_ice_block))
 #endregion /* Stop skidding ice sound END */
 
 #region /* Stop skidding sound */
-if (crouch == false)
+if (!crouch)
 {
 	if (speed < 2)
 	|| (hspeed > 0)
@@ -2532,11 +2484,11 @@ if (on_ground)
 {
 	if (abs(hspeed) > speed_max_walk + 1)
 	{
-		if (spark1_effect == false)
+		if (!spark1_effect)
 		{
 			if (abs(hspeed) < 7)
 			&& (key_sprint)
-			&& (stick_to_wall == false)
+			&& (!stick_to_wall)
 			&& (wall_jump == 0)
 			{
 				scr_audio_play(voice_startdash, volume_source.voice);
@@ -2551,11 +2503,11 @@ if (on_ground)
 	}
 	if (abs(hspeed) > 7)
 	{
-		if (spark2_effect == false)
+		if (!spark2_effect)
 		{
 			if (abs(hspeed) < 7.5)
 			&& (key_sprint)
-			&& (stick_to_wall == false)
+			&& (!stick_to_wall)
 			&& (wall_jump == 0)
 			{
 				scr_audio_play(snd_speed_dash, volume_source.sound);
@@ -2583,7 +2535,7 @@ else
 if (can_create_speed_lines)
 {
 	if (invincible_timer >= true)
-	&& (assist_invincible == false)
+	&& (!assist_invincible)
 	|| (vspeed < 0)
 	|| (vspeed > 0)
 	{
@@ -2600,7 +2552,7 @@ if (on_ground)
 #region /* Sprite standing with item in front */
 if (hold_item_in_hands != "")
 && (speed > 0)
-&& (crouch == false)
+&& (!crouch)
 && (sprite_index != sprite_vine_climb)
 && (sprite_index != sprite_vine_stay)
 {
@@ -2611,7 +2563,7 @@ if (hold_item_in_hands != "")
 }
 else
 if (hold_item_in_hands != "")
-&& (crouch == false)
+&& (!crouch)
 && (sprite_index != sprite_vine_climb)
 && (sprite_index != sprite_vine_stay)
 {
@@ -2644,14 +2596,14 @@ if (allow_glide)
 	{
 		can_glide --;
 	}
-	if (on_ground == false)
+	if (!on_ground)
 	&& (!place_meeting(x, y + 32, obj_wall))
 	&& (key_jump)
-	&& (rope_swing == false)
-	&& (stick_to_wall == false)
-	&& (climb == false)
-	&& (horizontal_rope_climb == false)
-	&& (ledge_grab == false)
+	&& (!rope_swing)
+	&& (!stick_to_wall)
+	&& (!climb)
+	&& (!horizontal_rope_climb)
+	&& (!ledge_grab)
 	&& (can_glide == 0)
 	{
 		glide = true;
@@ -2704,6 +2656,6 @@ if (glide)
 }
 #endregion /* Glide END */
 
-#endregion /* ________________________________Handling the sprites and sounds in the step event________________________________END */
+#endregion /* ________________________________ Handling the sprites and sounds in the step event ________________________________END */
 
 scr_player_move_lose(); /* Have the losing script at the end of Step Event */

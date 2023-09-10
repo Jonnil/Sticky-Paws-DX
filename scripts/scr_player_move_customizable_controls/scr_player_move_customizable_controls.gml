@@ -56,7 +56,7 @@ function scr_player_move_customizable_controls()
 	key_crouch_toggle = scr_key_initialize(key_crouch_toggle, 1, player, action.crouch_toggle);
 	if (key_crouch_toggle)
 	{
-		if (player <= 1)
+		if (player == 1)
 		{
 			global.player1_crouch_toggle = !global.player1_crouch_toggle;
 		}
@@ -176,7 +176,7 @@ function scr_player_move_customizable_controls()
 	
 	key_crouch_hold =
 	(key_crouch_hold_temp)
-	|| (player <= 1)
+	|| (player == 1)
 	&& (global.player1_crouch_toggle)
 	|| (player == 2)
 	&& (global.player2_crouch_toggle)
@@ -198,7 +198,7 @@ function scr_player_move_customizable_controls()
 	
 	key_sprint =
 	(key_sprint_hold_temp)
-	|| (player <= 1)
+	|| (player == 1)
 	&& (global.player1_sprint_toggle)
 	|| (player == 2)
 	&& (global.player2_sprint_toggle)

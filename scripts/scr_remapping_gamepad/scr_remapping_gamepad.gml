@@ -216,7 +216,7 @@ function scr_remapping_gamepad()
 	|| (remapping_player == 3)
 	&& (gamepad_axis_value(global.player_slot[4], gp_axislv) < 0)
 	{
-		last_key = joystick_value.joyleft_up;
+		last_key = JOYSTICK_VALUE.JOYLEFT_UP;
 		can_remap_key = true;
 	}
 	else
@@ -229,7 +229,7 @@ function scr_remapping_gamepad()
 	|| (remapping_player == 3)
 	&& (gamepad_axis_value(global.player_slot[4], gp_axislv) > 0)
 	{
-		last_key = joystick_value.joyleft_down;
+		last_key = JOYSTICK_VALUE.JOYLEFT_DOWN;
 		can_remap_key = true;
 	}
 	else
@@ -242,7 +242,7 @@ function scr_remapping_gamepad()
 	|| (remapping_player == 3)
 	&& (gamepad_axis_value(global.player_slot[4], gp_axislh) < 0)
 	{
-		last_key = joystick_value.joyleft_left;
+		last_key = JOYSTICK_VALUE.JOYLEFT_LEFT;
 		can_remap_key = true;
 	}
 	else
@@ -255,7 +255,7 @@ function scr_remapping_gamepad()
 	|| (remapping_player == 3)
 	&& (gamepad_axis_value(global.player_slot[4], gp_axislh) > 0)
 	{
-		last_key = joystick_value.joyleft_right;
+		last_key = JOYSTICK_VALUE.JOYLEFT_RIGHT;
 		can_remap_key = true;
 	}
 	else
@@ -268,7 +268,7 @@ function scr_remapping_gamepad()
 	|| (remapping_player == 3)
 	&& (gamepad_axis_value(global.player_slot[4], gp_axisrv) < 0)
 	{
-		last_key = joystick_value.joyright_up;
+		last_key = JOYSTICK_VALUE.JOYRIGHT_UP;
 		can_remap_key = true;
 	}
 	else
@@ -281,7 +281,7 @@ function scr_remapping_gamepad()
 	|| (remapping_player == 3)
 	&& (gamepad_axis_value(global.player_slot[4], gp_axisrv) > 0)
 	{
-		last_key = joystick_value.joyright_down;
+		last_key = JOYSTICK_VALUE.JOYRIGHT_DOWN;
 		can_remap_key = true;
 	}
 	else
@@ -294,7 +294,7 @@ function scr_remapping_gamepad()
 	|| (remapping_player == 3)
 	&& (gamepad_axis_value(global.player_slot[4], gp_axisrh) < 0)
 	{
-		last_key = joystick_value.joyright_left;
+		last_key = JOYSTICK_VALUE.JOYRIGHT_LEFT;
 		can_remap_key = true;
 	}
 	else
@@ -307,7 +307,7 @@ function scr_remapping_gamepad()
 	|| (remapping_player == 3)
 	&& (gamepad_axis_value(global.player_slot[4], gp_axisrh) > 0)
 	{
-		last_key = joystick_value.joyright_right;
+		last_key = JOYSTICK_VALUE.JOYRIGHT_RIGHT;
 		can_remap_key = true;
 	}
 	#endregion /* Check for player 1 button presses END */

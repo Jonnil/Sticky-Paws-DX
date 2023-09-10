@@ -1,10 +1,11 @@
 function scr_debug_screen()
 {
-	var fps_real_target = (os_type == os_switch) ? 60 : 1000;
+	var fps_real_target = (os_type == os_switch) ? 60 : 600;
 	var instance_count_target = 200;
 	var fps_y = 64;
 	var fps_real_y = 96;
 	var instance_count_y = 128;
+	var all_instance_count_y = 160;
 	
 	/* Debug information should show up on pause screen and tite screen, so you can optimize those screens too */
 	if (keyboard_check_pressed(vk_f3))
@@ -16,6 +17,122 @@ function scr_debug_screen()
 		}
 	}
 	
+	#region /* FPS */
+	if (global.show_fps || global.debug_screen)
+	{
+		if (global.show_fps && global.debug_screen)
+		{
+			draw_sprite_ext(spr_lock_icon, 0, 16, fps_y, 1, 1, 0, c_white, 1);
+		}
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_middle);
+		
+		if (fps >= global.max_fps)
+		{
+			draw_text_color(32, fps_y, "FPS: " + string(fps) + "/" + string(global.max_fps), c_lime, c_lime, c_lime, c_lime, 1);
+		}
+		else
+		{
+			var fps_color = make_color_hsv(50 / global.max_fps * fps, 255, 255)
+			draw_text_color(32, fps_y, "FPS: " + string(fps) + "/" + string(global.max_fps), fps_color, fps_color, fps_color, fps_color, 1);
+		}
+	}
+	#endregion /* FPS END */
+	
+	#region /* FPS Real */
+	if (global.show_fps_real || global.debug_screen)
+	{
+		if (global.show_fps_real && global.debug_screen)
+		{
+			draw_sprite_ext(spr_lock_icon, 0, 16, fps_real_y, 1, 1, 0, c_white, 1);
+		}
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_middle);
+		
+		#region /* FPS Real Rating */
+		if (fps_real >= fps_real_target)
+		{
+			draw_text_color(32, fps_real_y, "FPS Real: " + string(fps_real), c_lime, c_lime, c_lime, c_lime, 1);
+			draw_text_color(350, fps_real_y + scr_wave(-3, +3, 0.5), "GOOD >" + string(fps_real_target) , c_lime, c_lime, c_lime, c_lime, 1);
+		}
+		else
+		{
+			var fps_real_color = make_color_hsv(50 / fps_real_target * fps_real, 255, 255);
+			draw_text_color(32, fps_real_y, "FPS Real: " + string(fps_real), fps_real_color, fps_real_color, fps_real_color, fps_real_color, 1);
+			draw_text_color(350, fps_real_y, "BAD <" + string(fps_real_target), fps_real_color, fps_real_color, fps_real_color, fps_real_color, 1);
+		}
+		#endregion /* FPS Real Rating END */
+		
+	}
+	#endregion /* FPS Real END */
+	
+	#region /* Instance Count */
+	if (global.show_instance_count || global.debug_screen)
+	{
+		if (global.show_instance_count && global.debug_screen)
+		{
+			draw_sprite_ext(spr_lock_icon, 0, 16, instance_count_y, 1, 1, 0, c_white, 1);
+		}
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_middle);
+		draw_text_color(32, instance_count_y, "Instance Count: " + string(instance_count), c_white, c_white, c_white, c_white, 1);
+	}
+	#endregion /* Instance Count END */
+	
+	#region /* All Instance Count */
+	if (global.show_all_instance_count)
+	{
+		if (global.show_all_instance_count && global.debug_screen)
+		{
+			draw_sprite_ext(spr_lock_icon, 0, 16, all_instance_count_y, 1, 1, 0, c_white, 1);
+		}
+		
+		#region /* Show what objects are currently in the room */
+		for (var i = 0; i < 100; ++i;)
+		{
+			var all_instance_count_color = make_color_hsv(instance_number(i), 255, 255)
+			if (instance_exists(i) && instance_number(i) >= instance_count_target)
+			{
+				draw_text_color(32, all_instance_count_y + (8 * i) + scr_wave(-3, +3, 0.5), string(object_get_name(i)) + ": " + string(instance_number(i)), all_instance_count_color, all_instance_count_color, all_instance_count_color, all_instance_count_color, 1);
+			}
+			else
+			if (instance_exists(i))
+			{
+				draw_text_color(32, all_instance_count_y + (8 * i), string(object_get_name(i)) + ": " + string(instance_number(i)), all_instance_count_color, all_instance_count_color, all_instance_count_color, all_instance_count_color, 1);
+			}
+		}
+		#endregion /* Show what objects are currently in the room END */
+		
+	}
+	#endregion /* All Instance Count END */
+	
+	#region /* Controller ports */
+	if (os_type == os_switch)
+	{
+		if (!gamepad_is_connected(0))
+		{
+			global.player_slot[1] = 1;
+			global.player_slot[2] = 2;
+			global.player_slot[3] = 3;
+			global.player_slot[4] = 4;
+		}
+		else
+		{
+			global.player_slot[1] = 0;
+			global.player_slot[2] = 1;
+			global.player_slot[3] = 2;
+			global.player_slot[4] = 3;
+		}
+	}
+	else
+	{
+		global.player_slot[1] = 0;
+		global.player_slot[2] = 1;
+		global.player_slot[3] = 2;
+		global.player_slot[4] = 3;
+	}
+	#endregion /* Controller ports END */
+	
 	if (global.debug_screen)
 	{
 		if (keyboard_check_pressed(vk_f2))
@@ -26,7 +143,6 @@ function scr_debug_screen()
 		var mouse_get_x = device_mouse_x_to_gui(0);
 		var mouse_get_y = device_mouse_y_to_gui(0);
 		var version_y = 32;
-		var all_instance_count_y = 160;
 		var player_xy_y = 160;
 		var display_y = 32
 		var d3d11_y = 64;
@@ -94,103 +210,12 @@ function scr_debug_screen()
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Press F3 to toggle debug screen"), global.default_text_size * 0.75, c_black, c_white, 1);
+		draw_text_color(display_get_gui_width() * 0.5, 32, "Press F3 to toggle debug screen", c_white, c_white, c_white, c_white, 1);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + string(scr_get_build_date()), global.default_text_size, c_black, c_white, 1);
-	}
-	
-	#region /* FPS */
-	if (global.show_fps || global.debug_screen)
-	{
-		if (global.show_fps && global.debug_screen)
-		{
-			draw_sprite_ext(spr_lock_icon, 0, 16, fps_y, 1, 1, 0, c_white, 1);
-		}
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_middle);
+		draw_text_color(32, version_y, string(global.game_name) + " v" + string(scr_get_build_date()), c_white, c_white, c_white, c_white, 1);
 		
-		if (fps >= global.max_fps)
-		{
-			scr_draw_text_outlined(32, fps_y, l10n_text("FPS") + ": " + string(fps) + "/" + string(global.max_fps), global.default_text_size, c_black, c_lime, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(32, fps_y, l10n_text("FPS") + ": " + string(fps) + "/" + string(global.max_fps), global.default_text_size, c_black, make_color_hsv(50 / global.max_fps * fps, 255, 255), 1);
-		}
-	}
-	#endregion /* FPS END */
-	
-	#region /* FPS Real */
-	if (global.show_fps_real || global.debug_screen)
-	{
-		if (global.show_fps_real && global.debug_screen)
-		{
-			draw_sprite_ext(spr_lock_icon, 0, 16, fps_real_y, 1, 1, 0, c_white, 1);
-		}
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_middle);
-		
-		#region /* FPS Real Rating */
-		if (fps_real >= fps_real_target)
-		{
-			scr_draw_text_outlined(32, fps_real_y, l10n_text("FPS Real") + ": " + string(fps_real), global.default_text_size, c_black, c_lime, 1);
-			scr_draw_text_outlined(320, fps_real_y + scr_wave(-3, +3, 0.5), l10n_text("GOOD"), global.default_text_size, c_black, c_lime, 1);
-			scr_draw_text_outlined(420, fps_real_y + scr_wave(-3, +3, 0.5), ">" + string(fps_real_target), global.default_text_size * 0.5, c_black, c_lime, 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(32, fps_real_y, l10n_text("FPS Real") + ": " + string(fps_real), global.default_text_size, c_black, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
-			scr_draw_text_outlined(320, fps_real_y, l10n_text("BAD"), global.default_text_size, c_black, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
-			scr_draw_text_outlined(420, fps_real_y, "<" + string(fps_real_target), global.default_text_size * 0.5, c_black, make_color_hsv(50 / fps_real_target * fps_real, 255, 255), 1);
-		}
-		#endregion /* FPS Real Rating END */
-		
-	}
-	#endregion /* FPS Real END */
-	
-	#region /* Instance Count */
-	if (global.show_instance_count || global.debug_screen)
-	{
-		if (global.show_instance_count && global.debug_screen)
-		{
-			draw_sprite_ext(spr_lock_icon, 0, 16, instance_count_y, 1, 1, 0, c_white, 1);
-		}
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(32, instance_count_y, l10n_text("Instance Count") + ": " + string(instance_count), global.default_text_size, c_black, c_white, 1);
-	}
-	#endregion /* Instance Count END */
-	
-	#region /* All Instance Count */
-	if (global.show_all_instance_count)
-	{
-		if (global.show_all_instance_count && global.debug_screen)
-		{
-			draw_sprite_ext(spr_lock_icon, 0, 16, all_instance_count_y, 1, 1, 0, c_white, 1);
-		}
-		
-		#region /* Show what objects are currently in the room */
-		for (var i = 0; i < 100; ++i;)
-		{
-			if (instance_exists(i) && instance_number(i) >= instance_count_target)
-			{
-				scr_draw_text_outlined(32, all_instance_count_y + (8 * i) + scr_wave(-3, +3, 0.5), string(object_get_name(i)) + ": " + string(instance_number(i)), global.default_text_size, noone, make_color_hsv(instance_number(i), 255, 255), 1);
-			}
-			else
-			if (instance_exists(i))
-			{
-				scr_draw_text_outlined(32, all_instance_count_y + (8 * i), string(object_get_name(i)) + ": " + string(instance_number(i)), global.default_text_size, noone, make_color_hsv(instance_number(i), 255, 255), 1);
-			}
-		}
-		#endregion /* Show what objects are currently in the room END */
-		
-	}
-	#endregion /* All Instance Count END */
-	
-	#region /* X and Y position of player */
-	if (global.debug_screen)
-	{
+		#region /* X and Y position of player */
 		if (instance_exists(obj_camera))
 		&& (instance_exists(obj_camera.player1))
 		{
@@ -229,11 +254,8 @@ function scr_debug_screen()
 			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(32, player_xy_y, "X: " + string(get_player.x) + " Y: " + string(get_player.y), global.default_text_size, c_black, c_white, 1);
 		}
-	}
-	#endregion /* X and Y position of player END */
+		#endregion /* X and Y position of player END */
 	
-	if (global.debug_screen)
-	{
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
 		var _info = os_get_info();
@@ -242,34 +264,11 @@ function scr_debug_screen()
 		{
 			scr_draw_text_outlined(display_get_gui_width() - 32, d3d11_y, string(_info[? "video_adapter_description"]), global.default_text_size, c_black, c_white, 1);
 		}
+		
+		/* Draw the name of the current room at the bottom middle of the screen */
+		draw_set_halign(fa_center);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)) + " " + string(room_width) + "x" + string(room_height), global.default_text_size, c_black, c_white);
 	}
-	
-	#region /* Controller ports */
-	if (os_type == os_switch)
-	{
-		if (!gamepad_is_connected(0))
-		{
-			global.player_slot[1] = 1;
-			global.player_slot[2] = 2;
-			global.player_slot[3] = 3;
-			global.player_slot[4] = 4;
-		}
-		else
-		{
-			global.player_slot[1] = 0;
-			global.player_slot[2] = 1;
-			global.player_slot[3] = 2;
-			global.player_slot[4] = 3;
-		}
-	}
-	else
-	{
-		global.player_slot[1] = 0;
-		global.player_slot[2] = 1;
-		global.player_slot[3] = 2;
-		global.player_slot[4] = 3;
-	}
-	#endregion /* Controller ports END */
 	
 	if (global.debug_screen)
 	{
@@ -369,9 +368,5 @@ function scr_debug_screen()
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "search_id: " + string(global.search_id), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
-		
-		/* Draw the name of the current room at the bottom middle of the screen */
-		draw_set_halign(fa_center);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(room_get_name(room)) + " " + string(room_width) + "x" + string(room_height), global.default_text_size, c_black, c_white);
 	}
 }

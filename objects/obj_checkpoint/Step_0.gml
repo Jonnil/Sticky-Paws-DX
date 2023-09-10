@@ -26,6 +26,23 @@ if (instance_exists(obj_player))
 						with(instance_nearest(x, y, obj_player))
 						{
 							hp ++;
+							
+							#region /* Don't gain more HP than your max HP */
+							if (hp > max_hp)
+							{
+								if (allow_overflow_hp)
+								{
+									overflow_hp ++;
+									if (overflow_hp >= max_overflow_hp)
+									{
+										max_hp ++;
+										overflow_hp = 0;
+									}
+								}
+								hp = max_hp;
+							}
+							#endregion /* Don't gain more HP than your max HP END */
+							
 						}
 						effect_create_below(ef_ring, x, y, 2, c_white);
 						

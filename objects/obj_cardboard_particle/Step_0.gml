@@ -1,21 +1,9 @@
-draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, image_angle, image_blend, image_alpha);
-
 if (brick_particle)
 {
 	#region /* Set the gravity */
 	gravity_direction = 270;
 	gravity = 0.5;
 	#endregion /* Set the gravity END */
-	
-	#region /* Destroy outside view */
-	if (x < camera_get_view_x(view_camera[view_current]))
-	|| (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-	or(y < camera_get_view_y(view_camera[view_current]))
-	or(y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
-	{
-		instance_destroy();
-	}
-	#endregion /* Destroy outside view END */
 	
 	if (hspeed < 0)
 	{
@@ -26,7 +14,7 @@ if (brick_particle)
 		image_angle -= 10;
 	}
 }
-if (brick_particle == false)
+if (!brick_particle)
 {
 	if (position_meeting(bbox_left + 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))
 	|| (position_meeting(bbox_right - 3, bbox_bottom + 1, instance_nearest(x, y, obj_player)))

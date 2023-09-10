@@ -112,6 +112,7 @@ function scr_draw_upload_rules()
 				ini_write_string("config", "upload_rules_do_not_show_level", true);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
+			else
 			if (upload_rules_do_not_show_character)
 			{
 				ini_open(working_directory + "config.ini");

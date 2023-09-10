@@ -87,8 +87,5 @@ function scr_initialize_custom_character_sprite(sprite_name, sprite_variable = n
 	}
 	#endregion /* Origin points END */
 	
-	else
-	{
-		return noone;
-	}
+	return (sprite_variable);
 }

@@ -1205,6 +1205,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			/* Go back to select custom level menu */
 			can_navigate = false;
 			select_custom_level_menu_open = true;
+			show_level_editor_corner_menu = true;
 			scr_load_custom_level_initializing();
 			menu = "load_custom_level";
 		}

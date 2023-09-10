@@ -600,6 +600,7 @@ if (global.actually_play_edited_level == false)
 	
 	audio_stop_all();
 	upload_rules_do_not_show_level = false;
+	upload_rules_do_not_show_character = false;
 	level_editor_options_back_to_menu = ""; /* Save what menu you came from, to use later */
 	level_editor_options_select_level_index = global.select_level_index;
 	level_editor_template_select = false;
@@ -670,7 +671,7 @@ if (global.actually_play_edited_level == false)
 	name_enter_blink = 0;
 	menu_delay = 3;
 	startup_loading_timer = 0;
-	deactivate_timer = 0; /* Don't deactivate all the objects every frame */
+	global.deactivate_timer = 999; /* Don't deactivate all the objects every frame */
 	background_brightness_lerp = 0;
 	background_brightness_menu_lerp = 0;
 	language_index = global.language_localization + 1;

@@ -3024,7 +3024,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.6.0.92",
+    "IDEVersion": "2023.800.0.406",
   },
   "resources": [
     {"id":{"name":"spr_player_stand","path":"sprites/spr_player_stand/spr_player_stand.yy",},},
@@ -3085,6 +3085,7 @@
     {"id":{"name":"spr_erase_brush_size_2","path":"sprites/spr_erase_brush_size_2/spr_erase_brush_size_2.yy",},},
     {"id":{"name":"scr_audio_play","path":"scripts/scr_audio_play/scr_audio_play.yy",},},
     {"id":{"name":"scr_switch_expand_save_data","path":"scripts/scr_switch_expand_save_data/scr_switch_expand_save_data.yy",},},
+    {"id":{"name":"scr_player_move_horizontal_rope","path":"scripts/scr_player_move_horizontal_rope/scr_player_move_horizontal_rope.yy",},},
     {"id":{"name":"spr_virtual_key_sprint","path":"sprites/spr_virtual_key_sprint/spr_virtual_key_sprint.yy",},},
     {"id":{"name":"scr_draw_report","path":"scripts/scr_draw_report/scr_draw_report.yy",},},
     {"id":{"name":"scr_draw_show_controls","path":"scripts/scr_draw_show_controls/scr_draw_show_controls.yy",},},
@@ -3594,6 +3595,7 @@
     {"roomId":{"name":"rm_pause","path":"rooms/rm_pause/rm_pause.yy",},},
     {"roomId":{"name":"rm_world_map","path":"rooms/rm_world_map/rm_world_map.yy",},},
   ],
+  "templateType": null,
   "TextureGroups": [
     {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},
   ],

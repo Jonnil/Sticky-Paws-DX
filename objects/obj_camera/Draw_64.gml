@@ -19,8 +19,8 @@ if (hud_show_lives_y != -64)
 #endregion /* Lives END */
 
 #region /* Death Counter */
-if (global.show_deaths_counter)
-&& (hud_show_deaths_y != -64)
+if (hud_show_deaths_y != -64)
+&& (global.show_deaths_counter)
 {
 	if (sprite_lives_icon > noone)
 	{
@@ -305,22 +305,12 @@ if (os_type != os_ios)
 #endregion /* Show Controls END */
 
 #region /* Show what input is used */
-if (global.player_can_play[1] >= 1) /* Only show controller input change if there is only one player in the game */
-&& (global.player_can_play[2] <= 0)
-&& (global.player_can_play[3] <= 0)
-&& (global.player_can_play[4] <= 0)
-|| (global.player_can_play[1] <= 0)
-&& (global.player_can_play[2] >= 1)
-&& (global.player_can_play[3] <= 0)
-&& (global.player_can_play[4] <= 0)
-|| (global.player_can_play[1] <= 0)
-&& (global.player_can_play[2] <= 0)
-&& (global.player_can_play[3] >= 1)
-&& (global.player_can_play[4] <= 0)
-|| (global.player_can_play[1] <= 0)
-&& (global.player_can_play[2] <= 0)
-&& (global.player_can_play[3] <= 0)
-&& (global.player_can_play[4] >= 1)
+if ( /* Only show controller input change if there is only one player in the game */
+	(global.player_can_play[1] == 1 && global.player_can_play[2] == 0 && global.player_can_play[3] == 0 && global.player_can_play[4] == 0) ||
+	(global.player_can_play[1] == 0 && global.player_can_play[2] == 1 && global.player_can_play[3] == 0 && global.player_can_play[4] == 0) ||
+	(global.player_can_play[1] == 0 && global.player_can_play[2] == 0 && global.player_can_play[3] == 1 && global.player_can_play[4] == 0) ||
+	(global.player_can_play[1] == 0 && global.player_can_play[2] == 0 && global.player_can_play[3] == 0 && global.player_can_play[4] == 1)
+)
 {
 	if (global.show_prompt_when_changing_to_gamepad)
 	{
@@ -334,107 +324,6 @@ if (global.player_can_play[1] >= 1) /* Only show controller input change if ther
 #endregion /* Show what input is used END */
 
 scr_virtual_keys();
-
-#region /* Display Rank */
-if (global.enable_ranks)
-&& (global.show_ranks)
-&& (global.goal_active)
-{
-	if (global.character_select_in_this_menu == "main_game")
-	&& (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
-	
-	|| (global.character_select_in_this_menu == "level_editor")
-	&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-	{
-		if (global.character_select_in_this_menu == "main_game")
-		{
-			ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
-		}
-		else
-		if (global.character_select_in_this_menu == "level_editor")
-		{
-			ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-		}
-		
-		if (ini_key_exists("rank", "rank_level_score"))
-		{
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(get_window_width * 0.5 - 128, get_window_height * 0.5 - 74, l10n_text("Score"), global.default_text_size, c_black, c_white, 1);
-			draw_set_halign(fa_right);
-			scr_draw_text_outlined(get_window_width * 0.5 - 32, get_window_height * 0.5 + 74, l10n_text("S Rank Score") + ": " + string(ini_read_real("rank", "rank_level_score", 0)), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(get_window_width * 0.5 - 32, get_window_height * 0.5 + 74 + 32, l10n_text("Your Score") + ": " + string(score), global.default_text_size, c_black, c_white, 1);
-			if (score >= ini_read_real("rank", "rank_level_score", 0))
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank S */
-			}
-			else
-			if (score >= ini_read_real("rank", "rank_level_score", 0) - 10000)
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank A */
-			}
-			else
-			if (score >= ini_read_real("rank", "rank_level_score", 0) - 50000)
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank B */
-			}
-			else
-			if (score >= ini_read_real("rank", "rank_level_score", 0) - 80000)
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank C */
-			}
-			else
-			if (score >= ini_read_real("rank", "rank_level_score", 0) - 100000)
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank D */
-			}
-			else
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, get_window_width * 0.5 - 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank E */
-			}
-		}
-		if (ini_key_exists("rank", "rank_timeattack_realmillisecond"))
-		{
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(get_window_width * 0.5 + 128, get_window_height * 0.5 - 74, l10n_text("Time"), global.default_text_size, c_black, c_white, 1);
-			draw_set_halign(fa_right)
-			scr_draw_text_outlined(get_window_width * 0.5 + 328, get_window_height * 0.5 + 74, l10n_text("S Rank Time") + ": " + string(ini_read_real("rank", "rank_timeattack_minute", 0)) + ":" + string(ini_read_real("rank", "rank_timeattack_second", 0)) + "." + string(string_replace_all(string_format(ini_read_real("rank", "rank_timeattack_millisecond", 0), 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(get_window_width * 0.5 + 328, get_window_height * 0.5 + 74 + 32, l10n_text("Your Time") + ": " + string(global.timeattack_minute) + ":" + string(global.timeattack_second) + "." + string(string_replace_all(string_format(global.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
-			
-			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0))
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 0, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank S */
-			}
-			else
-			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 1000)
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 1, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank A */
-			}
-			else
-			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 5000)
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 2, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank B */
-			}
-			else
-			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 8000)
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 3, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank C */
-			}
-			else
-			if (global.timeattack_realmillisecond <= ini_read_real("rank", "rank_timeattack_realmillisecond", 0) + 10000)
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 4, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank D */
-			}
-			else
-			{
-				draw_sprite_ext(global.resource_pack_sprite_ranks, 5, get_window_width * 0.5 + 128, get_window_height * 0.5, 1, 1, 0, c_white, 1); /* Rank E */
-			}
-		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-	}
-}
-#endregion /* Display Rank END */
 
 #region /* Letterboxing during cutscenes (when the player object is absent) */
 if (show_letterbox > 0)

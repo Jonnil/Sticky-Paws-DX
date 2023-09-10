@@ -2,7 +2,7 @@ if (hspeed < 0)
 {
 	image_angle += 10;
 }
-else
+if (hspeed > 0)
 {
 	image_angle -= 10;
 }

@@ -15,7 +15,11 @@ function scr_set_screen_size()
 		case 6: global.gui_width = window_width * 1.3; global.gui_height = window_height * 1.3; break;
 		default: break;
 	}
-	display_set_gui_size(global.gui_width, global.gui_height);
+	if (display_get_gui_width() != global.gui_width)
+	|| (display_get_gui_height() != global.gui_height)
+	{
+		display_set_gui_size(global.gui_width, global.gui_height);
+	}
 	#endregion /* Set GUI size END */
 	
 	if (global.gui_scale != -1)
@@ -25,7 +29,11 @@ function scr_set_screen_size()
 	
 	#region /* Set screen size */
 	var current_camera = view_camera[view_current];
-	camera_set_view_border(current_camera, camera_get_view_width(current_camera), camera_get_view_height(current_camera));
+	if (camera_get_view_border_x(current_camera) != camera_get_view_width(current_camera))
+	|| (camera_get_view_border_y(current_camera) != camera_get_view_height(current_camera))
+	{
+		camera_set_view_border(current_camera, camera_get_view_width(current_camera), camera_get_view_height(current_camera));
+	}
 	
 	if (window_width <= global.default_view_width && window_height <= global.default_view_height)
 	{
@@ -53,7 +61,7 @@ function scr_set_screen_size()
 		camera_set_view_speed(current_camera, 0, 0);
 	}
 	
-	camera_set_view_target(current_camera, self);
+	if (camera_get_view_target(current_camera) != self){camera_set_view_target(current_camera, self);}
 	#endregion /* Set screen size END */
 	
 }

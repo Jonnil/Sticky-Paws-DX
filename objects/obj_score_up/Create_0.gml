@@ -9,3 +9,4 @@ checkpoint_number_max = 1;
 above_gui = false;
 image_xscale = 0;
 image_yscale = 0;
+sprite_index = spr_noone;

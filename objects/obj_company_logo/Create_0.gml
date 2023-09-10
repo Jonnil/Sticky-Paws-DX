@@ -416,6 +416,7 @@ global.enable_time_countdown = false; /* If timer should be enabled in specific 
 global.time_countdown = 500; /* Countdown timer before you get a Time Over, default should be "500" in case there is a countdown */
 global.time_countdown_bonus = 500; /* Bonus countdown timer that gives extra points if you finish a level quickly, default should be "500" so you get bonus points if you win a level less than 8 minutes */
 global.rain = false;
+global.deactivate_timer = 999; /* A timer that counts up, and determines when certain "activate" and "deactivate" functions will run. Running these functions every time will slow the game down. Only run these functions when absolutely necessary */
 global.deactivate_objects_from_most_zoomed_out = false; /* In some levels, you want to deactivate objects from most zoomed out state, so objects are working outside view */
 global.make_every_tileset_into_default_tileset = false;
 global.timeattack_millisecond = 0;
@@ -650,26 +651,26 @@ sprite_index = spr_company_logo;
 
 calculate_translation_completion();
 
-enum mouse_button_value
+enum MOUSE_BUTTON_VALUE
 {
-	mb_left = 132125620,
-	mb_middle = 13213944125,
-	mb_right = 1321897820,
-	mb_side1 = 1321994515145,
-	mb_side2 = 13219945202315,
-	mwheel_down = 13234,
-	mwheel_up = 132321
+	MOUSEB_LEFT = 132125620,
+	MOUSEB_MIDDLE = 13213944125,
+	MOUSEB_RIGHT = 1321897820,
+	MOUSEB_SIDE1 = 1321994515145,
+	MOUSEB_SIDE2 = 13219945202315,
+	MOUSEWHEEL_DOWN = 13234,
+	MOUSEWHEEL_UP = 132321
 }
-enum joystick_value
+enum JOYSTICK_VALUE
 {
-	joyleft_left = 1000,
-	joyleft_right = 1001,
-	joyleft_down = 1002,
-	joyleft_up = 1003,
-	joyright_left = 1004,
-	joyright_right = 1005,
-	joyright_down = 1006,
-	joyright_up = 1007,
+	JOYLEFT_LEFT = 1000,
+	JOYLEFT_RIGHT = 1001,
+	JOYLEFT_DOWN = 1002,
+	JOYLEFT_UP = 1003,
+	JOYRIGHT_LEFT = 1004,
+	JOYRIGHT_RIGHT = 1005,
+	JOYRIGHT_DOWN = 1006,
+	JOYRIGHT_UP = 1007,
 }
 enum volume_source
 {

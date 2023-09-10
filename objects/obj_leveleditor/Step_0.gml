@@ -61,8 +61,8 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Need to set the controls early in the step event END */
 	
 	#region /* Deactivate instances outside view. Run this code at start of Step Event */
-	deactivate_timer ++;
-	if (deactivate_timer >= 5)
+	global.deactivate_timer ++;
+	if (global.deactivate_timer >= 5)
 	&& (pressing_play_timer == 0)
 	&& (pause <= 1)
 	{
@@ -95,7 +95,7 @@ if (global.actually_play_edited_level == false)
 		instance_activate_object(obj_background_brightness_gameplay);
 		#endregion /* Activate objects that always should be active END */
 		
-		deactivate_timer = 0;
+		global.deactivate_timer = 0; /* Reset the deactivate timer */
 	}
 	#endregion /* Deactivate instances outside view. Run this code at start of Step Event END */
 	

@@ -1,3 +1,5 @@
+image_index = global.collectible_image_index;
+
 #region /* Bounce up */
 if (bounce_up)
 {
@@ -20,9 +22,9 @@ if (bounce_up)
 	}
 	else
 	{
-		delay ++;
 		visible = false;
 		y = ystart;
 	}
+	delay ++;
 }
 #endregion /* Bounce up END */

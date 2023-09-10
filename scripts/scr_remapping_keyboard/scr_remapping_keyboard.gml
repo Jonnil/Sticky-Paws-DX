@@ -29,43 +29,43 @@ function scr_remapping_keyboard()
 	else
 	if (mouse_check_button_pressed(mb_left))
 	{
-		last_key = mouse_button_value.mb_left;
+		last_key = MOUSE_BUTTON_VALUE.MOUSEB_LEFT;
 		can_remap_key = true;
 	}
 	else
 	if (mouse_check_button_pressed(mb_middle))
 	{
-		last_key = mouse_button_value.mb_middle;
+		last_key = MOUSE_BUTTON_VALUE.MOUSEB_MIDDLE;
 		can_remap_key = true;
 	}
 	else
 	if (mouse_check_button_pressed(mb_right))
 	{
-		last_key = mouse_button_value.mb_right;
+		last_key = MOUSE_BUTTON_VALUE.MOUSEB_RIGHT;
 		can_remap_key = true;
 	}
 	else
 	if (mouse_check_button_pressed(mb_side1))
 	{
-		last_key = mouse_button_value.mb_side1;
+		last_key = MOUSE_BUTTON_VALUE.MOUSEB_SIDE1;
 		can_remap_key = true;
 	}
 	else
 	if (mouse_check_button_pressed(mb_side2))
 	{
-		last_key = mouse_button_value.mb_side2;
+		last_key = MOUSE_BUTTON_VALUE.MOUSEB_SIDE2;
 		can_remap_key = true;
 	}
 	else
 	if (mouse_wheel_down())
 	{
-		last_key = mouse_button_value.mwheel_down;
+		last_key = MOUSE_BUTTON_VALUE.MOUSEWHEEL_DOWN;
 		can_remap_key = true;
 	}
 	else
 	if (mouse_wheel_up())
 	{
-		last_key = mouse_button_value.mwheel_up;
+		last_key = MOUSE_BUTTON_VALUE.MOUSEWHEEL_UP;
 		can_remap_key = true;
 	}
 	else

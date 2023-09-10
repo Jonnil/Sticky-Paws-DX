@@ -1,3 +1,5 @@
+image_index = global.collectible_image_index;
+
 if (bounce_up == false)
 && (instance_exists(obj_player))
 {
@@ -453,22 +455,10 @@ if (bounce_up)
 	}
 	else
 	{
-		delay ++;
 		visible = false;
 		y = ystart;
 	}
-	
-	#region /* Don't go outside view boundary */
-	if (x < camera_get_view_x(view_camera[view_current]) + 32)
-	{
-		x = camera_get_view_x(view_camera[view_current]) + 32;
-	}
-	if (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 32)
-	{
-		x = camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) - 32;
-	}
-	#endregion /* Don't go outside view boundary END */
-	
+	delay ++;
 }
 
 #region /* Expanding Ring Effect */

@@ -50,6 +50,7 @@ if (!collision_rectangle(check_left, check_bottom, check_right, check_bottom, ob
 		bbox_right > view_left + 1 &&
 		bbox_top < view_bottom - 1 &&
 		bbox_bottom > view_top + 1)
+	&& (global.deactivate_timer % 7 == 0)
 	{
 		alarm[1] = 1; /* Break cardboard */
 		if (instance_exists(obj_player))

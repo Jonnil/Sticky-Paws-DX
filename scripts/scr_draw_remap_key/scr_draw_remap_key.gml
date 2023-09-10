@@ -78,37 +78,37 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 				draw_sprite_ext(spr_keyboard_keys_none, 0, key_x, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 0.5);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mb_left)
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEB_LEFT)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 1, key_x, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mb_middle)
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEB_MIDDLE)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 2, key_x, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mb_right)
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEB_RIGHT)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 3, key_x, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mb_side1)
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEB_SIDE1)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 4, key_x, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mb_side2)
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEB_SIDE2)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 5, key_x, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mwheel_down) /* Mouse Wheel Down */
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEWHEEL_DOWN) /* Mouse Wheel Down */
 			{
 				draw_sprite_ext(spr_mouse_buttons, 6, key_x, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mwheel_up) /* Mouse Wheel Up */
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEWHEEL_UP) /* Mouse Wheel Up */
 			{
 				draw_sprite_ext(spr_mouse_buttons, 7, key_x, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
@@ -130,37 +130,37 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 				draw_sprite_ext(spr_keyboard_keys_none, 0, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.45);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mb_left)
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEB_LEFT)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 1, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mb_middle)
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEB_MIDDLE)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 2, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mb_right)
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEB_RIGHT)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 3, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mb_side1)
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEB_SIDE1)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 4, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mb_side2)
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEB_SIDE2)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 5, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mwheel_down) /* Mouse Wheel Down */
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEWHEEL_DOWN) /* Mouse Wheel Down */
 			{
 				draw_sprite_ext(spr_mouse_buttons, 6, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key = mouse_button_value.mwheel_up) /* Mouse Wheel Up */
+			if (remapping_player_key = MOUSE_BUTTON_VALUE.MOUSEWHEEL_UP) /* Mouse Wheel Up */
 			{
 				draw_sprite_ext(spr_mouse_buttons, 7, key_x, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
@@ -187,37 +187,37 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 				draw_sprite_ext(spr_keyboard_keys_none, 0, key_x + 200, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 0.5);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mb_left)
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEB_LEFT)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 1, key_x + 200, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mb_middle)
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEB_MIDDLE)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 2, key_x + 200, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mb_right)
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEB_RIGHT)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 3, key_x + 200, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mb_side1)
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEB_SIDE1)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 4, key_x + 200, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mb_side2)
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEB_SIDE2)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 5, key_x + 200, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mwheel_down) /* Mouse Wheel Down */
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEWHEEL_DOWN) /* Mouse Wheel Down */
 			{
 				draw_sprite_ext(spr_mouse_buttons, 6, key_x + 200, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mwheel_up) /* Mouse Wheel Up */
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEWHEEL_UP) /* Mouse Wheel Up */
 			{
 				draw_sprite_ext(spr_mouse_buttons, 7, key_x + 200, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			}
@@ -239,37 +239,37 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 				draw_sprite_ext(spr_keyboard_keys_none, 0, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.45);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mb_left)
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEB_LEFT)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 1, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mb_middle)
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEB_MIDDLE)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 2, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mb_right)
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEB_RIGHT)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 3, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mb_side1)
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEB_SIDE1)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 4, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mb_side2)
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEB_SIDE2)
 			{
 				draw_sprite_ext(spr_mouse_buttons, 5, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mwheel_down) /* Mouse Wheel Down */
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEWHEEL_DOWN) /* Mouse Wheel Down */
 			{
 				draw_sprite_ext(spr_mouse_buttons, 6, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}
 			else
-			if (remapping_player_key2 = mouse_button_value.mwheel_up) /* Mouse Wheel Up */
+			if (remapping_player_key2 = MOUSE_BUTTON_VALUE.MOUSEWHEEL_UP) /* Mouse Wheel Up */
 			{
 				draw_sprite_ext(spr_mouse_buttons, 7, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, 0.9, 0, c_gray, 0.9);
 			}

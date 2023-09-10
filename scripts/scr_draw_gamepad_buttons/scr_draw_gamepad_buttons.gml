@@ -46,14 +46,14 @@ function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale 
         case gp_padd: what_button_to_display = 13; break;
         case gp_padl: what_button_to_display = 14; break;
         case gp_padr: what_button_to_display = 15; break;
-        case joystick_value.joyleft_left: what_button_to_display = 16; break;
-        case joystick_value.joyleft_right: what_button_to_display = 17; break;
-        case joystick_value.joyleft_down: what_button_to_display = 18; break;
-        case joystick_value.joyleft_up: what_button_to_display = 19; break;
-        case joystick_value.joyright_left: what_button_to_display = 20; break;
-        case joystick_value.joyright_right: what_button_to_display = 21; break;
-        case joystick_value.joyright_down: what_button_to_display = 22; break;
-        case joystick_value.joyright_up: what_button_to_display = 23; break;
+        case JOYSTICK_VALUE.JOYLEFT_LEFT: what_button_to_display = 16; break;
+        case JOYSTICK_VALUE.JOYLEFT_RIGHT: what_button_to_display = 17; break;
+        case JOYSTICK_VALUE.JOYLEFT_DOWN: what_button_to_display = 18; break;
+        case JOYSTICK_VALUE.JOYLEFT_UP: what_button_to_display = 19; break;
+        case JOYSTICK_VALUE.JOYRIGHT_LEFT: what_button_to_display = 20; break;
+        case JOYSTICK_VALUE.JOYRIGHT_RIGHT: what_button_to_display = 21; break;
+        case JOYSTICK_VALUE.JOYRIGHT_DOWN: what_button_to_display = 22; break;
+        case JOYSTICK_VALUE.JOYRIGHT_UP: what_button_to_display = 23; break;
     }
 	draw_sprite_ext(what_sprites_to_use, what_button_to_display, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
 }

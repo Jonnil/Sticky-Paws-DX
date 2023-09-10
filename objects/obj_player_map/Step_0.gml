@@ -54,21 +54,6 @@ global.ambience_underwater = noone;
 scr_audio_play(music_map, volume_source.music); /* Play the map screen music */
 #endregion /* Make sure level music stops playing, and play the map screen music END */
 
-#region /* Keep the game at 60 FPS */
-
-#region /* Deactivate instances outside view */
-instance_activate_all();
-instance_deactivate_region(view_x - 64, view_y - 64, view_x + view_width + 64, view_y + view_height + 64, false, true);
-instance_activate_object(obj_camera_map);
-instance_activate_object(obj_level);
-instance_activate_object(obj_unlock_next_level);
-instance_activate_object(obj_path);
-instance_activate_object(obj_map_path_turn);
-instance_activate_object(obj_map_exit);
-#endregion /* Deactivate instances outside view END */
-
-#endregion /* Keep the game at 60 FPS END */
-
 scr_menu_navigation_initialization();
 
 #region /* Lerp the player position and scale to make the player move smoothly */
@@ -1078,3 +1063,5 @@ if (place_meeting(x, y, obj_map_path_turn))
 #endregion /* Touch Map Turn Left Down END */
 
 #endregion /* Path Turning END */
+
+scr_deactivate_objects_outside_view(); /* This function needs to be at the very end of the step event */

@@ -3,7 +3,6 @@ scr_set_screen_size();
 scr_set_controls_used_to_navigate();
 scr_zoom_camera_controls();
 scr_toggle_fullscreen();
-scr_deactivate_objects_outside_view();
 scr_resize_application_surface();
 
 image_index = global.collectible_image_index;
@@ -1323,3 +1322,5 @@ else
 	black_screen_gui_alpha = lerp(black_screen_gui_alpha, 0, 0.1);
 }
 #endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */
+
+scr_deactivate_objects_outside_view(); /* This function needs to be at the very end of the step event */

@@ -17,8 +17,8 @@ function scr_set_default_remapping_player1_gamepad(save_default_controls_to_conf
 	global.player_[inp.gp][1][1][action.down] = gp_padd;
 	global.player_[inp.gp][1][1][action.up] = gp_padu;
 	global.player_[inp.gp][1][1][action.tongue] = noone;
-	global.player_[inp.gp][1][1][action.zoom_in] = joystick_value.joyright_up;
-	global.player_[inp.gp][1][1][action.zoom_out] = joystick_value.joyright_down;
+	global.player_[inp.gp][1][1][action.zoom_in] = JOYSTICK_VALUE.JOYRIGHT_UP;
+	global.player_[inp.gp][1][1][action.zoom_out] = JOYSTICK_VALUE.JOYRIGHT_DOWN;
 	if (os_type == os_switch)
 	{
 		global.player_[inp.gp][1][1][action.accept] = gp_face2;
@@ -36,14 +36,14 @@ function scr_set_default_remapping_player1_gamepad(save_default_controls_to_conf
 	global.player_[inp.gp][1][2][action.dive] = noone;
 	global.player_[inp.gp][1][2][action.jump] = noone;
 	global.player_[inp.gp][1][2][action.double_jump] = noone;
-	global.player_[inp.gp][1][2][action.crouch] = joystick_value.joyleft_down;
+	global.player_[inp.gp][1][2][action.crouch] = JOYSTICK_VALUE.JOYLEFT_DOWN;
 	global.player_[inp.gp][1][2][action.crouch_toggle] = noone;
 	global.player_[inp.gp][1][2][action.sprint] = gp_shoulderrb;
 	global.player_[inp.gp][1][2][action.sprint_toggle] = noone;
-	global.player_[inp.gp][1][2][action.left] = joystick_value.joyleft_left;
-	global.player_[inp.gp][1][2][action.right] = joystick_value.joyleft_right;
-	global.player_[inp.gp][1][2][action.down] = joystick_value.joyleft_down;
-	global.player_[inp.gp][1][2][action.up] = joystick_value.joyleft_up;
+	global.player_[inp.gp][1][2][action.left] = JOYSTICK_VALUE.JOYLEFT_LEFT;
+	global.player_[inp.gp][1][2][action.right] = JOYSTICK_VALUE.JOYLEFT_RIGHT;
+	global.player_[inp.gp][1][2][action.down] = JOYSTICK_VALUE.JOYLEFT_DOWN;
+	global.player_[inp.gp][1][2][action.up] = JOYSTICK_VALUE.JOYLEFT_UP;
 	global.player_[inp.gp][1][2][action.tongue] = noone;
 	global.player_[inp.gp][1][2][action.zoom_in] = noone;
 	global.player_[inp.gp][1][2][action.zoom_out] = noone;
@@ -245,8 +245,8 @@ function scr_set_default_remapping_player2_gamepad(save_default_controls_to_conf
 	global.player_[inp.gp][2][1][action.down] = gp_padd;
 	global.player_[inp.gp][2][1][action.up] = gp_padu;
 	global.player_[inp.gp][2][1][action.tongue] = noone;
-	global.player_[inp.gp][2][1][action.zoom_in] = joystick_value.joyright_up;
-	global.player_[inp.gp][2][1][action.zoom_out] = joystick_value.joyright_down;
+	global.player_[inp.gp][2][1][action.zoom_in] = JOYSTICK_VALUE.JOYRIGHT_UP;
+	global.player_[inp.gp][2][1][action.zoom_out] = JOYSTICK_VALUE.JOYRIGHT_DOWN;
 	if (os_type == os_switch)
 	{
 		global.player_[inp.gp][2][1][action.accept] = gp_face2;
@@ -264,14 +264,14 @@ function scr_set_default_remapping_player2_gamepad(save_default_controls_to_conf
 	global.player_[inp.gp][2][2][action.dive] = noone;
 	global.player_[inp.gp][2][2][action.jump] = noone;
 	global.player_[inp.gp][2][2][action.double_jump] = noone;
-	global.player_[inp.gp][2][2][action.crouch] = joystick_value.joyleft_down;
+	global.player_[inp.gp][2][2][action.crouch] = JOYSTICK_VALUE.JOYLEFT_DOWN;
 	global.player_[inp.gp][2][2][action.crouch_toggle] = noone;
 	global.player_[inp.gp][2][2][action.sprint] = gp_shoulderrb;
 	global.player_[inp.gp][2][2][action.sprint_toggle] = noone;
-	global.player_[inp.gp][2][2][action.left] = joystick_value.joyleft_left;
-	global.player_[inp.gp][2][2][action.right] = joystick_value.joyleft_right;
-	global.player_[inp.gp][2][2][action.down] = joystick_value.joyleft_down;
-	global.player_[inp.gp][2][2][action.up] = joystick_value.joyleft_up;
+	global.player_[inp.gp][2][2][action.left] = JOYSTICK_VALUE.JOYLEFT_LEFT;
+	global.player_[inp.gp][2][2][action.right] = JOYSTICK_VALUE.JOYLEFT_RIGHT;
+	global.player_[inp.gp][2][2][action.down] = JOYSTICK_VALUE.JOYLEFT_DOWN;
+	global.player_[inp.gp][2][2][action.up] = JOYSTICK_VALUE.JOYLEFT_UP;
 	global.player_[inp.gp][2][2][action.tongue] = noone;
 	global.player_[inp.gp][2][2][action.zoom_in] = noone;
 	global.player_[inp.gp][2][2][action.zoom_out] = noone;
@@ -473,8 +473,8 @@ function scr_set_default_remapping_player3_gamepad(save_default_controls_to_conf
 	global.player_[inp.gp][3][1][action.down] = gp_padd;
 	global.player_[inp.gp][3][1][action.up] = gp_padu;
 	global.player_[inp.gp][3][1][action.tongue] = noone;
-	global.player_[inp.gp][3][1][action.zoom_in] = joystick_value.joyright_up;
-	global.player_[inp.gp][3][1][action.zoom_out] = joystick_value.joyright_down;
+	global.player_[inp.gp][3][1][action.zoom_in] = JOYSTICK_VALUE.JOYRIGHT_UP;
+	global.player_[inp.gp][3][1][action.zoom_out] = JOYSTICK_VALUE.JOYRIGHT_DOWN;
 	if (os_type == os_switch)
 	{
 		global.player_[inp.gp][3][1][action.accept] = gp_face2;
@@ -492,14 +492,14 @@ function scr_set_default_remapping_player3_gamepad(save_default_controls_to_conf
 	global.player_[inp.gp][3][2][action.dive] = noone;
 	global.player_[inp.gp][3][2][action.jump] = noone;
 	global.player_[inp.gp][3][2][action.double_jump] = noone;
-	global.player_[inp.gp][3][2][action.crouch] = joystick_value.joyleft_down;
+	global.player_[inp.gp][3][2][action.crouch] = JOYSTICK_VALUE.JOYLEFT_DOWN;
 	global.player_[inp.gp][3][2][action.crouch_toggle] = noone;
 	global.player_[inp.gp][3][2][action.sprint] = gp_shoulderrb;
 	global.player_[inp.gp][3][2][action.sprint_toggle] = noone;
-	global.player_[inp.gp][3][2][action.left] = joystick_value.joyleft_left;
-	global.player_[inp.gp][3][2][action.right] = joystick_value.joyleft_right;
-	global.player_[inp.gp][3][2][action.down] = joystick_value.joyleft_down;
-	global.player_[inp.gp][3][2][action.up] = joystick_value.joyleft_up;
+	global.player_[inp.gp][3][2][action.left] = JOYSTICK_VALUE.JOYLEFT_LEFT;
+	global.player_[inp.gp][3][2][action.right] = JOYSTICK_VALUE.JOYLEFT_RIGHT;
+	global.player_[inp.gp][3][2][action.down] = JOYSTICK_VALUE.JOYLEFT_DOWN;
+	global.player_[inp.gp][3][2][action.up] = JOYSTICK_VALUE.JOYLEFT_UP;
 	global.player_[inp.gp][3][2][action.tongue] = noone;
 	global.player_[inp.gp][3][2][action.zoom_in] = noone;
 	global.player_[inp.gp][3][2][action.zoom_out] = noone;
@@ -701,8 +701,8 @@ function scr_set_default_remapping_player4_gamepad(save_default_controls_to_conf
 	global.player_[inp.gp][4][1][action.down] = gp_padd;
 	global.player_[inp.gp][4][1][action.up] = gp_padu;
 	global.player_[inp.gp][4][1][action.tongue] = noone;
-	global.player_[inp.gp][4][1][action.zoom_in] = joystick_value.joyright_up;
-	global.player_[inp.gp][4][1][action.zoom_out] = joystick_value.joyright_down;
+	global.player_[inp.gp][4][1][action.zoom_in] = JOYSTICK_VALUE.JOYRIGHT_UP;
+	global.player_[inp.gp][4][1][action.zoom_out] = JOYSTICK_VALUE.JOYRIGHT_DOWN;
 	if (os_type == os_switch)
 	{
 		global.player_[inp.gp][4][1][action.accept] = gp_face2;
@@ -720,14 +720,14 @@ function scr_set_default_remapping_player4_gamepad(save_default_controls_to_conf
 	global.player_[inp.gp][4][2][action.dive] = noone;
 	global.player_[inp.gp][4][2][action.jump] = noone;
 	global.player_[inp.gp][4][2][action.double_jump] = noone;
-	global.player_[inp.gp][4][2][action.crouch] = joystick_value.joyleft_down;
+	global.player_[inp.gp][4][2][action.crouch] = JOYSTICK_VALUE.JOYLEFT_DOWN;
 	global.player_[inp.gp][4][2][action.crouch_toggle] = noone;
 	global.player_[inp.gp][4][2][action.sprint] = gp_shoulderrb;
 	global.player_[inp.gp][4][2][action.sprint_toggle] = noone;
-	global.player_[inp.gp][4][2][action.left] = joystick_value.joyleft_left;
-	global.player_[inp.gp][4][2][action.right] = joystick_value.joyleft_right;
-	global.player_[inp.gp][4][2][action.down] = joystick_value.joyleft_down;
-	global.player_[inp.gp][4][2][action.up] = joystick_value.joyleft_up;
+	global.player_[inp.gp][4][2][action.left] = JOYSTICK_VALUE.JOYLEFT_LEFT;
+	global.player_[inp.gp][4][2][action.right] = JOYSTICK_VALUE.JOYLEFT_RIGHT;
+	global.player_[inp.gp][4][2][action.down] = JOYSTICK_VALUE.JOYLEFT_DOWN;
+	global.player_[inp.gp][4][2][action.up] = JOYSTICK_VALUE.JOYLEFT_UP;
 	global.player_[inp.gp][4][2][action.tongue] = noone;
 	global.player_[inp.gp][4][2][action.zoom_in] = noone;
 	global.player_[inp.gp][4][2][action.zoom_out] = noone;

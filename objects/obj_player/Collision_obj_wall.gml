@@ -5,18 +5,19 @@ if (can_collide_with_wall)
 	
 	#region /* Stuck inside a wall */
 	if (position_meeting(x, y, obj_wall))
+	|| (position_meeting(x, bbox_top + 1, obj_wall)) /* If there is solid ground above and underneath you, you are probably getting flattened */
+	&& (position_meeting(x, bbox_bottom - 1, obj_wall))
 	{
 		stuck_in_wall_counter ++;
-		if (stuck_in_wall_counter > 6)
+		if (stuck_in_wall_counter > 6) /* Make sure you are actually being crushed if player is stuck inside a wall for a certain time */
 		&& (global.goal_active == false)
 		{
 			die = true;
 		}
-		if (position_meeting(x, bbox_top + 8, obj_wall))
-		&& (position_meeting(x, bbox_bottom - 8, obj_wall))
-		{
-			die = true; /* If there is solid ground above and underneath you, you are probably getting flattened */
-		}
+	}
+	else
+	{
+		stuck_in_wall_counter --;
 	}
 	#endregion /* Stuck inside a wall END */
 	
