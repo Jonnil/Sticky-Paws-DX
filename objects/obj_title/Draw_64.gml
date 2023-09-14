@@ -298,7 +298,10 @@ if (global.enable_links)
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_instagram, link_instagram_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_instagram", "link_instagram", false);
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_reddit, link_reddit_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_reddit", "link_reddit", false);
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_twitter, link_twitter_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_twitter", "link_twitter", false);
-	draw_menu_button_sprite(global.resource_pack_sprite_logo_wiki, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_wiki", "link_wiki", false);
+	if (global.link_to_wiki != "")
+	{
+		draw_menu_button_sprite(global.resource_pack_sprite_logo_wiki, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_wiki", "link_wiki", false);
+	}
 	
 	if (menu == "link_discord")
 	|| (menu == "link_gamebanana")
@@ -374,10 +377,12 @@ if (global.enable_links)
 		menu_delay = 3;
 	}
 	else
-	if (key_a_pressed)
+	if (global.link_to_wiki != "")
+	&& (key_a_pressed)
 	&& (menu == "link_wiki")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	|| (point_in_rectangle(mouse_get_x, mouse_get_y, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, link_wiki_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
+	|| (global.link_to_wiki != "")
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, link_wiki_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
 	&& (mouse_check_button_released(mb_left))
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
@@ -472,43 +477,6 @@ else
 	title_yscale = lerp(title_yscale, 1, 0.1);
 }
 #endregion /* Draw Title Screen END */
-
-#region /* Arcade Mode Menu */
-if (global.arcade_mode)
-{
-	if (menu != "load_characters")
-	&& (menu != "select_character")
-	{
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 100 + 80, l10n_text("Insert Coin"), global.default_text_size * 2, c_black, c_white, scr_wave(1, 0, 1, 0));
-	}
-	draw_set_halign(fa_right);
-	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("Credit") + " " + string(global.arcade_credit), global.default_text_size * 2, c_black, c_white, 1);
-	if (global.arcade_credit >= 1)
-	&& (menu != "load_characters")
-	&& (menu != "select_character")
-	{
-		global.player_can_play[1] = false;
-		global.player_can_play[2] = false;
-		global.player_can_play[3] = false;
-		global.player_can_play[4] = false;
-		player1_accept_selection = - 1;
-		player2_accept_selection = - 1;
-		player3_accept_selection = - 1;
-		player4_accept_selection = - 1;
-		global.character_select_in_this_menu = "main_game";
-		in_settings = false;
-		global.doing_clear_check = false;
-		global.actually_play_edited_level = false;
-		global.play_edited_level = false;
-		scr_load_character_initializing();
-		menu = "load_characters";
-		menu_delay = 3;
-	}
-}
-#endregion /* Arcade Mode Menu END */
 
 #region /* Main Menu */
 if (global.arcade_mode == false && in_settings == false)
@@ -1146,7 +1114,14 @@ if (input_key == false)
 		&& (global.enable_links)
 		{
 			menu_delay = 3;
-			menu = "link_wiki";
+			if (global.link_to_wiki != "")
+			{
+				menu = "link_wiki";
+			}
+			else
+			{
+				menu = "link_twitter";
+			}
 		}
 		else
 		if (key_right)
@@ -1224,7 +1199,14 @@ if (input_key == false)
 		&& (global.enable_links)
 		{
 			menu_delay = 3;
-			menu = "link_wiki";
+			if (global.link_to_wiki != "")
+			{
+				menu = "link_wiki";
+			}
+			else
+			{
+				menu = "credits";
+			}
 		}
 	}
 	else

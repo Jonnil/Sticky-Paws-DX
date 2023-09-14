@@ -95,11 +95,6 @@ if (global.actually_play_edited_level == false)
 	}
 	#endregion /* Draw where player will do playtesting from END */
 	
-	draw_set_alpha(0.5);
-	draw_rectangle_color(cam_x - 999, cam_y - 999, 0, cam_y + cam_height, c_black, c_black, c_black, c_black, false); /* Left Black Rectangle */
-	draw_rectangle_color(1, cam_y - 999, cam_x + cam_width + 999, 0, c_black, c_black, c_black, c_black, false);  /* Top Black Rectangle */
-	draw_set_alpha(1);
-	
 	draw_rectangle_color(0, 0, obj_level_width.x - 16, obj_level_height.y -16, c_red, c_red, c_red, c_red, true);  /* Border around entire level */
 	
 	if (quit_level_editor <= 0)

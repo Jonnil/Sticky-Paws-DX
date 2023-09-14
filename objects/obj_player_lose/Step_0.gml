@@ -21,7 +21,7 @@ if (count == 1)
 }
 #endregion /* Check if the last player just died END */
 
-#region /* Start death animation, falling off screen */
+#region /* Start defeat animation, falling off screen */
 if (count = 50)
 {
 	gravity_direction = 270;
@@ -44,7 +44,7 @@ if (count = 50)
 		scr_audio_play(voice_damage, volume_source.voice);
 	}
 }
-#endregion /* Start death animation, falling off screen END */
+#endregion /* Start defeat animation, falling off screen END */
 
 #region /* If the player is burned, have black smoke coming out */
 if (asset_get_type("spr_player_burnt") == asset_sprite)
@@ -54,14 +54,14 @@ if (asset_get_type("spr_player_burnt") == asset_sprite)
 }
 #endregion /* If the player is burned, have black smoke coming out END */
 
-#region /* Play death melody */
+#region /* Play defeat melody */
 if (!instance_exists(obj_player))
 && (count = 50)
 && (last_player)
 {
 	scr_audio_play(player_lose_melody, volume_source.melody);
 }
-#endregion /* Play death melody END */
+#endregion /* Play defeat melody END */
 
 #region /* Limit the vertical speed */
 if (vspeed >+ 32)

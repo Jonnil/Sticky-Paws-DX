@@ -9,35 +9,17 @@ function scr_draw_upload_character_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
-	if (menu == "upload_clear_check_character_again")
-	{
-		if (iris_xscale < 0.1)
-		&& (menu_delay == false)
-		{
-			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "character_index_player1", global.character_index[0]);
-			ini_close();
-			scr_update_all_backgrounds(); /* After setting "level index", then update backgrounds and music */
-			scr_update_all_music();
-			
-			var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
-				room_goto(rm_leveleditor); /* Go to level 1 for character clear check, when clicking clear check character again button */
-			}, [], 1);
-			time_source_start(time_source);
-			
-			loading_assets = true;
-		}
-	}
-	
 	#region /* Upload Character Menu */
 	if (menu == "upload_yes_character")
 	|| (menu == "upload_no_character")
 	|| (menu == "upload_clear_check_character_again")
+	|| (menu == "upload_clear_check_character_open_character_folder")
 	{
 		var upload_name_question_y = window_get_height() * 0.5;
 		var upload_character_no_y = (window_get_height() * 0.5) + 100;
 		var upload_character_yes_y = (window_get_height() * 0.5) + 184;
 		var upload_clear_check_character_again_y = (window_get_height() * 0.5) + 184 + 84;
+		var upload_clear_check_character_open_character_folder_y = (window_get_height() * 0.5) + 184 + 84 + 42;
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
@@ -94,7 +76,7 @@ function scr_draw_upload_character_menu()
 		#endregion /* Upload Character No END */
 		
 		#region /* Upload Character Yes */
-		if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+		if (file_exists(working_directory + "custom_characters/" + character_name + "/data/character_config.ini"))
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_yes_y - 42, get_window_width * 0.5 + 370, upload_character_yes_y + 42))
 			&& (global.controls_used_for_menu_navigation == "mouse")
@@ -138,6 +120,12 @@ function scr_draw_upload_character_menu()
 		#endregion /* Upload Character Yes END */
 		
 		draw_menu_button(get_window_width * 0.5 - 185, upload_clear_check_character_again_y, "Clear Check Again", "upload_clear_check_character_again", "upload_clear_check_character_again");
+		
+		if (global.enable_open_custom_folder)
+		{
+			draw_menu_button(get_window_width * 0.5 - 185, upload_clear_check_character_open_character_folder_y, "Open Character Folder", "upload_clear_check_character_open_character_folder", "upload_clear_check_character_open_character_folder");
+			draw_sprite_ext(spr_icons_folder, 0, get_window_width * 0.5 - 185 + 16, upload_clear_check_character_open_character_folder_y + 21, 1, 1, 0, c_white, 1);
+		}
 		
 		#region /* Click Character Clear Check Again */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, upload_clear_check_character_again_y - 21, get_window_width * 0.5 + 185, upload_clear_check_character_again_y + 21))
@@ -184,10 +172,47 @@ function scr_draw_upload_character_menu()
 		}
 		#endregion /* Click Character Clear Check Again END */
 		
+		#region /* Click Character Clear Check Open Character Folder */
+		if (global.enable_open_custom_folder)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, upload_clear_check_character_open_character_folder_y - 21, get_window_width * 0.5 + 185, upload_clear_check_character_open_character_folder_y + 21))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu == "upload_clear_check_character_open_character_folder")
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (global.enable_open_custom_folder)
+		&& (key_a_pressed)
+		&& (menu == "upload_clear_check_character_open_character_folder")
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			menu = "upload_clear_check_character_open_character_folder";
+			
+			if (directory_exists("characters\\" + character_name))
+			{
+				scr_open_folder(game_save_id + "\custom_characters\\");
+			}
+			else
+			if (directory_exists(game_save_id + "\custom_characters\\" + character_name))
+			{
+				scr_open_folder(game_save_id + "\custom_characters\\" + character_name);
+			}
+		}
+		#endregion /* Click Character Clear Check Open Character Folder END */
+		
 		#region /* Return to game */
 		if (key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
+			
+			#region /* Set clear_check_character to false whenever you back out from uploading custom character, in case you edit the custom character later */
+			if (character_name != "")
+			{
+				ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+				ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false */
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			}
+			#endregion /* Set clear_check_character to false whenever you back out from uploading custom character, in case you edit the custom character later END */
+			
 			menu_delay = 3;
 			menu = "click_upload_character"; /* Return to previous menu */
 		}
@@ -202,6 +227,16 @@ function scr_draw_upload_character_menu()
 			|| (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
+				
+				#region /* Set clear_check_character to false whenever you back out from uploading custom character, in case you edit the custom character later */
+				if (character_name != "")
+				{
+					ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+					ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false */
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				}
+				#endregion /* Set clear_check_character to false whenever you back out from uploading custom character, in case you edit the custom character later END */
+				
 				menu_delay = 3;
 				menu = "click_upload_character"; /* Return to previous menu */
 			}
@@ -212,10 +247,10 @@ function scr_draw_upload_character_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_yes_y - 42, get_window_width * 0.5 + 370, upload_character_yes_y + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+			&& (file_exists(working_directory + "custom_characters/" + character_name + "/data/character_config.ini"))
 			|| (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+			&& (file_exists(working_directory + "custom_characters/" + character_name + "/data/character_config.ini"))
 			{
 				ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 				if (ini_key_exists("info", "clear_check_character"))
@@ -226,7 +261,7 @@ function scr_draw_upload_character_menu()
 						{
 							if (os_is_network_connected())
 							{
-								if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+								if (file_exists(working_directory + "custom_characters/" + character_name + "/data/character_config.ini"))
 								{
 									/* Essential files does exist, so upload now */
 									menu = "uploading_character"; /* Go to uploading character loading screen */
@@ -266,7 +301,14 @@ function scr_draw_upload_character_menu()
 			menu_delay = 3;
 			if (menu == "upload_no_character")
 			{
-				menu = "upload_clear_check_character_again";
+				if (global.enable_open_custom_folder)
+				{
+					menu = "upload_clear_check_character_open_character_folder";
+				}
+				else
+				{
+					menu = "upload_clear_check_character_again";
+				}
 			}
 			else
 			if (menu == "upload_yes_character")
@@ -277,6 +319,11 @@ function scr_draw_upload_character_menu()
 			if (menu == "upload_clear_check_character_again")
 			{
 				menu = "upload_yes_character";
+			}
+			else
+			if (menu == "upload_clear_check_character_open_character_folder")
+			{
+				menu = "upload_clear_check_character_again";
 			}
 		}
 		else
@@ -295,6 +342,18 @@ function scr_draw_upload_character_menu()
 			}
 			else
 			if (menu == "upload_clear_check_character_again")
+			{
+				if (global.enable_open_custom_folder)
+				{
+					menu = "upload_clear_check_character_open_character_folder";
+				}
+				else
+				{
+					menu = "upload_no_character";
+				}
+			}
+			else
+			if (menu == "upload_clear_check_character_open_character_folder")
 			{
 				menu = "upload_no_character";
 			}
@@ -461,13 +520,8 @@ function scr_draw_upload_character_menu()
 				global.play_edited_level = true;
 				can_navigate = false;
 				menu_delay = 9999;
-				if (instance_exists(obj_camera))
-				{
-					with(obj_camera)
-					{
-						iris_zoom = 0;
-					}
-				}
+				iris_zoom = 0;
+				loading_assets = false;
 			}
 		}
 		if (key_up)
@@ -612,12 +666,10 @@ function scr_draw_upload_character_menu()
 		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, uploading_character_message_y - 32, get_window_width * 0.5 + message_x_offset, uploading_character_message_y + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y, l10n_text("Uploading") + " " + string(character_name) + "...", global.default_text_size * 1.9, c_black, c_white, 1);
-		/* What is loading? */ scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 100, l10n_text(what_is_loading_text), global.default_text_size * 1, c_black, c_white, 1);
 		
 		#region /* Generate Character ID */
 		if (menu_delay == 50)
 		{
-			what_is_loading_text = l10n_text("Generating character ID");
 			scr_generate_id("character");
 		}
 		#endregion /* Generate Character ID END */
@@ -625,7 +677,6 @@ function scr_draw_upload_character_menu()
 		#region /* Create Zip File */
 		if (menu_delay == 40)
 		{
-			what_is_loading_text = l10n_text("Creating zip file");
 			file = scr_upload_zip_add_files("character"); /* Add all the character files to a new zip file */
 		}
 		#endregion /* Create Zip File END */
@@ -652,8 +703,6 @@ function scr_draw_upload_character_menu()
 				scr_switch_expand_save_data(); /* Expand the save data before upload */
 				if (global.save_data_size_is_sufficient)
 				{
-					what_is_loading_text = l10n_text("Uploading character to server");
-					
 					#region /* Actually upload the character to the server */
 					
 					content_type = "character"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */

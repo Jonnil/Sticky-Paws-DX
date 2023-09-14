@@ -192,8 +192,8 @@ view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_
 #region /* Hud Variables */
 hud_show_lives_y = -64;
 hud_show_lives_timer = global.hud_hide_time * 60;
-hud_show_deaths_y = -64;
-hud_show_deaths_timer = global.hud_hide_time * 60;
+hud_show_defeats_y = -64;
+hud_show_defeats_timer = global.hud_hide_time * 60;
 hud_show_basic_collectibles_y = -64;
 hud_show_basic_collectibles_timer = 0;
 hud_show_big_collectibles_y = -64;

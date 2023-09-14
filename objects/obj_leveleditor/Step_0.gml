@@ -1,5 +1,22 @@
 if (global.actually_play_edited_level == false)
 {
+	
+	#region /* Autosave */
+	autosave_timer++;
+	if (autosave_timer > 18000 - 1) /* Activate all objects 1 frame before saving level, just to make sure everything gets saved */
+	{
+		startup_loading_timer = 0;
+		instance_activate_all();
+	}
+	if (autosave_timer > 18000) /* After 5 minutes, autosave. 5 minutes = 300 seconds. 60 fps: 300 seconds = 18000 frames */
+	{
+		startup_loading_timer = 0;
+		instance_activate_all();
+		scr_save_custom_level();
+		autosave_timer = 0;
+	}
+	#endregion /* Autosave END */
+	
 	cam_x = camera_get_view_x(view_camera[view_current]);
 	cam_y = camera_get_view_y(view_camera[view_current]);
 	cam_width = camera_get_view_width(view_camera[view_current]);
@@ -272,9 +289,9 @@ if (global.actually_play_edited_level == false)
 					y = clamp(y, cam_y, cam_y + cam_height);
 					#endregion /* Limit x and y inside room END */
 					
-					#region /* Limit view inside room */
+					#region /* Limit view inside room when playing level */
 					camera_set_view_pos(view_camera[view_current], max(0, min(cam_x, room_width - cam_width)), max(0, min(cam_y, room_height - cam_height)));
-					#endregion /* Limit view inside room END */
+					#endregion /* Limit view inside room when playing level END */
 					
 					#endregion /* Limit so view and cursor can't go outside room END */
 					
@@ -366,11 +383,11 @@ if (global.actually_play_edited_level == false)
 		y = clamp(y, cam_y, cam_y + cam_height);
 		#endregion /* Limit x and y inside room END */
 		
-		#region /* Limit view inside room */
+		#region /* Limit view inside room when creating level from template */
 		camera_set_view_pos(view_camera[view_current],
 		max(0, min(cam_x, room_width - cam_width)),
 		max(0, min(cam_y, room_height - cam_height)));
-		#endregion /* Limit view inside room END */
+		#endregion /* Limit view inside room when creating level from template END */
 		
 		#endregion /* Limit so view and cursor can't go outside room END */
 		
@@ -411,6 +428,18 @@ if (global.actually_play_edited_level == false)
 	if (quit_level_editor <= 0)
 	{
 		
+		#region /* Set view speed here before setting other view speed code */
+		if (key_move_faster)
+		|| (keyboard_check(vk_control))
+		{
+			controller_view_speed = 24;
+		}
+		else
+		{
+			controller_view_speed = 8;
+		}
+		#endregion /* Set view speed here before setting other view speed code END */
+		
 		#region /* Controller Input Changes */
 		if (global.controls_used_for_menu_navigation == "keyboard")
 		&& (!navigate_camera_with_arrowkeys)
@@ -445,64 +474,6 @@ if (global.actually_play_edited_level == false)
 			cursor_y = y;
 			controller_x = x;
 			controller_y = y;
-			
-			#region /* Move view with keyboard */
-			if (keyboard_check(vk_control))
-			{
-				controller_view_speed = 16;
-			}
-			else
-			{
-				controller_view_speed = 8;
-			}
-			var view_x_direction = 0;
-			var view_y_direction = 0;
-			if (pause == false)
-			{
-				if (keyboard_check(global.player_[inp.key][1][1][action.up]))
-				&& (!keyboard_check(global.player_[inp.key][1][1][action.down]))
-				|| (keyboard_check(vk_up))
-				&& (!keyboard_check(vk_down))
-				{
-					if (view_center_y > 0)
-					{
-						view_y_direction = -controller_view_speed; /* Move camera up */
-					}
-				}
-				if (keyboard_check(global.player_[inp.key][1][1][action.down]))
-				&& (!keyboard_check(global.player_[inp.key][1][1][action.up]))
-				|| (keyboard_check(vk_down))
-				&& (!keyboard_check(vk_up))
-				{
-					if (view_center_y < obj_level_height.y)
-					{
-						view_y_direction = +controller_view_speed; /* Move camera down */
-					}
-				}
-				if (keyboard_check(global.player_[inp.key][1][1][action.left]))
-				&& (!keyboard_check(global.player_[inp.key][1][1][action.right]))
-				|| (keyboard_check(vk_left))
-				&& (!keyboard_check(vk_right))
-				{
-					if (view_center_x > 0)
-					{
-						view_x_direction = -controller_view_speed; /* Move camera left */
-					}
-				}
-				if (keyboard_check(global.player_[inp.key][1][1][action.right]))
-				&& (!keyboard_check(global.player_[inp.key][1][1][action.left]))
-				|| (keyboard_check(vk_right))
-				&& (!keyboard_check(vk_left))
-				{
-					if (view_center_x < obj_level_width.x)
-					{
-						view_x_direction = +controller_view_speed; /* Move camera right */
-					}
-				}
-			}
-			camera_set_view_pos(view_camera[view_current], cam_x + view_x_direction, cam_y + view_y_direction); /* Move actual camera */
-			#endregion /* Move view with keyboard END */
-			
 		}
 		else
 		if (global.controls_used_for_menu_navigation == "mouse")
@@ -537,10 +508,18 @@ if (global.actually_play_edited_level == false)
 				{
 					if (key_move_faster)
 					{
+						if (gamepad_axis_value(global.player_slot[1], gp_axisrv) == 0)
+						{
+							controller_view_speed = 12;
+						}
 						controller_y -= 12;
 					}
 					else
 					{
+						if (gamepad_axis_value(global.player_slot[1], gp_axisrv) == 0)
+						{
+							controller_view_speed = 4;
+						}
 						controller_y -= 4;
 					}
 				}
@@ -549,10 +528,18 @@ if (global.actually_play_edited_level == false)
 				{
 					if (key_move_faster)
 					{
+						if (gamepad_axis_value(global.player_slot[1], gp_axisrv) == 0)
+						{
+							controller_view_speed = 12;
+						}
 						controller_y += 12;
 					}
 					else
 					{
+						if (gamepad_axis_value(global.player_slot[1], gp_axisrv) == 0)
+						{
+							controller_view_speed = 4;
+						}
 						controller_y += 4;
 					}
 				}
@@ -561,10 +548,18 @@ if (global.actually_play_edited_level == false)
 				{
 					if (key_move_faster)
 					{
+						if (gamepad_axis_value(global.player_slot[1], gp_axisrh) == 0)
+						{
+							controller_view_speed = 12;
+						}
 						controller_x -= 12;
 					}
 					else
 					{
+						if (gamepad_axis_value(global.player_slot[1], gp_axisrh) == 0)
+						{
+							controller_view_speed = 4;
+						}
 						controller_x -= 4;
 					}
 				}
@@ -573,72 +568,93 @@ if (global.actually_play_edited_level == false)
 				{
 					if (key_move_faster)
 					{
+						if (gamepad_axis_value(global.player_slot[1], gp_axisrh) == 0)
+						{
+							controller_view_speed = 12;
+						}
 						controller_x += 12;
 					}
 					else
 					{
+						if (gamepad_axis_value(global.player_slot[1], gp_axisrh) == 0)
+						{
+							controller_view_speed = 4;
+						}
 						controller_x += 4;
 					}
 				}
 			}
-			
-			#region /* Move view with gamepad */
-			if (key_move_faster)
-			{
-				controller_view_speed = 24;
-			}
-			else
-			{
-				controller_view_speed = 8;
-			}
-			var view_x_direction = 0;
-			var view_y_direction = 0;
+		}
+		#endregion /* Controller Input Changes END */
+		
+		#region /* Move view with keyboard or gamepad*/
+		var view_x_direction = 0;
+		var view_y_direction = 0;
+		if (pause == false)
+		{
 			if (gamepad_axis_value(global.player_slot[1], gp_axisrv) < 0)
+			|| (global.controls_used_for_menu_navigation != "controller")
+			&& (key_up)
+			&& (!key_down)
+			&& (pause == false)
 			|| (key_up)
-			&& (controller_y <= cam_y)
+			&& (y <= cam_y + (controller_view_speed * 2))
+			&& (pause == false)
 			{
-				view_y_direction = -controller_view_speed; /* Move camera up */
-				if (controller_y > cam_y)
+				if (view_center_y > -cam_height)
 				{
+					view_y_direction = -controller_view_speed; /* Move camera up */
 					controller_y -= controller_view_speed;
 				}
 			}
 			if (gamepad_axis_value(global.player_slot[1], gp_axisrv) > 0)
+			|| (global.controls_used_for_menu_navigation != "controller")
+			&& (key_down)
+			&& (!key_up)
+			&& (pause == false)
 			|| (key_down)
-			&& (controller_y >= cam_y + cam_height)
+			&& (y >= cam_y + cam_height - (controller_view_speed * 2))
+			&& (pause == false)
 			{
-				view_y_direction = +controller_view_speed; /* Move camera down */
-				if (controller_y < cam_y + cam_height)
+				if (view_center_y < obj_level_height.y + cam_height)
 				{
+					view_y_direction = +controller_view_speed; /* Move camera down */
 					controller_y += controller_view_speed;
 				}
 			}
 			if (gamepad_axis_value(global.player_slot[1], gp_axisrh) < 0)
+			|| (global.controls_used_for_menu_navigation != "controller")
+			&& (key_left)
+			&& (!key_right)
+			&& (pause == false)
 			|| (key_left)
-			&& (controller_x <= cam_x)
+			&& (x <= cam_x + (controller_view_speed * 2))
+			&& (pause == false)
 			{
-				view_x_direction = -controller_view_speed; /* Move camera left */
-				if (controller_x > cam_x)
+				if (view_center_x > -cam_width)
 				{
+					view_x_direction = -controller_view_speed; /* Move camera left */
 					controller_x -= controller_view_speed;
 				}
 			}
 			if (gamepad_axis_value(global.player_slot[1], gp_axisrh) > 0)
+			|| (global.controls_used_for_menu_navigation != "controller")
+			&& (key_right)
+			&& (!key_left)
+			&& (pause == false)
 			|| (key_right)
-			&& (controller_x >= cam_x + cam_width)
+			&& (x >= cam_x + cam_width - (controller_view_speed * 2))
+			&& (pause == false)
 			{
-				view_x_direction = +controller_view_speed; /* Move camera right */
-				if (controller_x < cam_x + cam_width)
+				if (view_center_x < obj_level_width.x + cam_width)
 				{
+					view_x_direction = +controller_view_speed; /* Move camera right */
 					controller_x += controller_view_speed;
 				}
 			}
-			
-			camera_set_view_pos(view_camera[view_current], cam_x + view_x_direction, cam_y + view_y_direction); /* Move actual camera */
-			#endregion /* Move view with gamepad END */
-			
 		}
-		#endregion /* Controller Input Changes END */
+		camera_set_view_pos(view_camera[view_current], cam_x + view_x_direction, cam_y + view_y_direction); /* Move actual camera */
+		#endregion /* Move view with keyboard or gamepad END */
 		
 		move_snap(global.grid_hsnap, global.grid_vsnap); /* Make sure to always move snap */
 		
@@ -670,14 +686,10 @@ if (global.actually_play_edited_level == false)
 			&& (!hovering_over_icons)
 			&& (global.part_limit < 4000)
 			{
-				if (x > -16) /* Can only place objects within the level */
-				&& (y > -16)
-				&& (obj_level_width.drag_object == false)
+				if (obj_level_width.drag_object == false)
 				&& (obj_level_width.drag_release_timer == 0)
-				&& (x < obj_level_width.x + 16)
 				&& (obj_level_height.drag_object == false)
 				&& (obj_level_height.drag_release_timer == 0)
-				&& (y < obj_level_height.y + 16)
 				{
 					if (place_object_delay_timer < 2)
 					&& (can_make_place_brush_size_bigger)
@@ -1106,11 +1118,11 @@ if (global.actually_play_edited_level == false)
 			y = clamp(y, cam_y, cam_y + cam_height);
 			#endregion /* Limit x and y inside room END */
 			
-			#region /* Limit view inside room */
+			#region /* Limit view inside room when reseting camera zoom */
 			camera_set_view_pos(view_camera[view_current],
 			max(0, min(cam_x, room_width - cam_width)),
 			max(0, min(cam_y, room_height - cam_height)));
-			#endregion /* Limit view inside room END */
+			#endregion /* Limit view inside room when reseting camera zoom END */
 		
 			#endregion /* Limit so view and cursor can't go outside room END */
 		
@@ -1392,10 +1404,10 @@ if (global.actually_play_edited_level == false)
 			}
 			scr_set_screen_size();
 			
-			/* Limit view inside room */
-			var view_x = max(0, min(cam_x, room_width - cam_width));
-			var view_y = max(0, min(cam_y, room_height - cam_height));
-			camera_set_view_pos(view_camera[view_current], view_x, view_y);
+			/* Limit view inside room when saving and quitting */
+			camera_set_view_pos(view_camera[view_current],
+			max(0, min(cam_x, room_width - cam_width)),
+			max(0, min(cam_y, room_height - cam_height)));
 			
 			/* Limit controller x and y inside room */
 			controller_x = clamp(controller_x, cam_x, cam_x + cam_width);
@@ -1472,29 +1484,29 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Press Pause Button END */
 	
 	#region /* Keep view within the level */
-	if (view_center_x < 0)
+	if (view_center_x < -(cam_width * 0.5))
 	&& (scroll_view == false)
 	{
-		camera_set_view_pos(view_camera[view_current], 0 - cam_width * 0.5, cam_y);
+		camera_set_view_pos(view_camera[view_current], -cam_width, cam_y);
 	}
-	if (view_center_y < 0)
+	if (view_center_y < -(cam_height * 0.5))
 	&& (scroll_view == false)
 	{
-		camera_set_view_pos(view_camera[view_current], cam_x, 0 - cam_height * 0.5);
+		camera_set_view_pos(view_camera[view_current], cam_x, -cam_height);
 	}
 	if (obj_level_width.drag_object == false)
 	&& (obj_level_width.drag_release_timer == 0)
-	&& (view_center_x > obj_level_width.x)
+	&& (view_center_x > obj_level_width.x +(cam_width * 0.5))
 	&& (scroll_view == false)
 	{
-		camera_set_view_pos(view_camera[view_current], obj_level_width.x - cam_width * 0.5, cam_y);
+		camera_set_view_pos(view_camera[view_current], obj_level_width.x, cam_y);
 	}
 	if (obj_level_height.drag_object == false)
 	&& (obj_level_height.drag_release_timer == 0)
-	&& (view_center_y > obj_level_height.y)
+	&& (view_center_y > obj_level_height.y +(cam_height * 0.5))
 	&& (scroll_view == false)
 	{
-		camera_set_view_pos(view_camera[view_current], cam_x, obj_level_height.y - cam_height * 0.5);
+		camera_set_view_pos(view_camera[view_current], cam_x, obj_level_height.y);
 	}
 	#endregion /* Keep view within the level END */
 	

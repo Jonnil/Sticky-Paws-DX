@@ -537,9 +537,12 @@ if (can_move == false)
 	/* Doing this code here will make the iris zoom out a bit before properly entering the level */
 	audio_stop_sound(music_map); /* Stop any world map music when playing a level */
 	audio_stop_all(); /* Stop all sound from playing so nothing is playing at the loading screen first */
-	if (!audio_is_playing(global.loading_music)) /* Then after stopping all sound, play the loading music */
+	if (global.loading_music > 0)
 	{
-		audio_play_sound(global.loading_music, 0, true, global.volume_melody * global.volume_main);
+		if (!audio_is_playing(global.loading_music)) /* Then after stopping all sound, play the loading music */
+		{
+			audio_play_sound(global.loading_music, 0, true, global.volume_melody * global.volume_main);
+		}
 	}
 	global.trigger_demo_ending = 0;
 	global.pause = false;
@@ -746,9 +749,12 @@ if (can_enter_level_automatically)
 		{
 			audio_sound_gain(music_map, 0, 0);
 			audio_stop_all(); /* Stop all sound from playing whenever a brand new file is loaded, so nothing is playing at the loading screen first */
-			if (!audio_is_playing(global.loading_music)) /* Then after stopping all sound, play the loading music */
+			if (global.loading_music > 0)
 			{
-				audio_play_sound(global.loading_music, 0, true, global.volume_melody * global.volume_main);
+				if (!audio_is_playing(global.loading_music)) /* Then after stopping all sound, play the loading music */
+				{
+					audio_play_sound(global.loading_music, 0, true, global.volume_melody * global.volume_main);
+				}
 			}
 		}
 		

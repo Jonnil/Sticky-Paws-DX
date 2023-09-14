@@ -46,10 +46,10 @@ if (!collision_rectangle(check_left, check_bottom, check_right, check_bottom, ob
 	var view_right = view_left + camera_get_view_width(view_camera[view_current]);
 	var view_bottom = view_top + camera_get_view_height(view_camera[view_current]);
 	
-	if (bbox_left < view_right - 1 &&
-		bbox_right > view_left + 1 &&
-		bbox_top < view_bottom - 1 &&
-		bbox_bottom > view_top + 1)
+	if (bbox_left < view_right + sprite_width &&
+		bbox_right > view_left - sprite_width &&
+		bbox_top < view_bottom + sprite_height &&
+		bbox_bottom > view_top - sprite_height)
 	&& (global.deactivate_timer % 7 == 0)
 	{
 		alarm[1] = 1; /* Break cardboard */

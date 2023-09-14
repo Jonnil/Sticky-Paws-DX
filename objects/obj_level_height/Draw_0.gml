@@ -1,8 +1,14 @@
 if (global.actually_play_edited_level == false)
 && (global.play_edited_level == false)
 {
-	draw_set_alpha(0.5);
-	draw_rectangle_color(0, y - 16, obj_level_width.x - 16, camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
+	var cam_x = camera_get_view_x(view_camera[0]);
+	var cam_y = camera_get_view_y(view_camera[0]);
+	var cam_width = camera_get_view_width(view_camera[0]);
+	var cam_height = camera_get_view_height(view_camera[0]);
+	draw_set_alpha(0.99);
+	draw_rectangle_color(cam_x - 999, cam_y - 999, 0, cam_y + cam_height, c_black, c_black, c_black, c_black, false); /* Left Black Rectangle */
+	draw_rectangle_color(1, cam_y - 999, cam_x + cam_width + 999, 0, c_black, c_black, c_black, c_black, false);  /* Top Black Rectangle */
+	draw_rectangle_color(0, y - 16, obj_level_width.x - 16, cam_y + cam_height, c_black, c_black, c_black, c_black, false); /* Bottom Black Rectangle */
 	draw_set_alpha(1);
 	draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_white, 1);
 }

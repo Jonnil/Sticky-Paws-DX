@@ -17,7 +17,7 @@ if (global.actually_play_edited_level == false)
 			}
 			else
 			{
-				global.part_limit_text_alpha = lerp(global.part_limit_text_alpha, 0, 0.01);
+				global.part_limit_text_alpha = lerp(global.part_limit_text_alpha, 0, 0.05);
 				draw_set_halign(fa_middle);
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Part Limit: " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_white, global.part_limit_text_alpha);
@@ -34,7 +34,7 @@ if (global.actually_play_edited_level == false)
 			}
 			else
 			{
-				global.part_limit_entity_text_alpha = lerp(global.part_limit_entity_text_alpha, 0, 0.01);
+				global.part_limit_entity_text_alpha = lerp(global.part_limit_entity_text_alpha, 0, 0.05);
 				draw_set_halign(fa_middle);
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, "Entity Limit: " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_white, global.part_limit_entity_text_alpha);
@@ -1916,6 +1916,29 @@ if (global.actually_play_edited_level == false)
 		#endregion /* Zoom In END */
 		
 		#endregion /* Click icons at top of screen END */
+		
+		#region /* Autosave Warning Text */
+		draw_set_halign(fa_center);
+		var autosave_text = "";
+		var autosave_text_color = c_white;
+		if (autosave_timer < (60 * 3))
+		{
+			var autosave_text_color = c_lime;
+			autosave_text = l10n_text("Autosaved!"); /* After game has autosaved, tell player that the autosave was successful */
+		}
+		else
+		if (autosave_timer >= 18000 - 1)
+		{
+			autosave_text = l10n_text("Autosaving..."); /* Game will probably stutter when autosaving, so display text that the game is currently autosaving */
+		}
+		else
+		if (autosave_timer > 18000 - (60 * 10)) /* Warn player that there will be a autosave by counting down from 10 */
+		{
+			var autosave_countdown = ceil((autosave_timer - 18000) / -60);
+			autosave_text = l10n_text("Autosave in " + string(autosave_countdown));
+		}
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, autosave_text, global.default_text_size * 2, c_black, autosave_text_color, 1);
+		#endregion /* Autosave Warning Text END */
 		
 		if (global.controls_used_for_menu_navigation != "controller")
 		&& (!navigate_camera_with_arrowkeys)

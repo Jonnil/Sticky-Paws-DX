@@ -72,7 +72,6 @@ upload_rules_do_not_show_character = false;
 inform_about_report_feature = true; /* When you download user-generated content for the first time, inform the player about the report feature */
 inform_about_report_feature_alpha = -3; /* Fade in the inform report feature menu */
 remember_keyboard_string = ""; /* In case you want to click "Cancel", revert back to whatever was already written before entering name input screen */
-what_is_loading_text = ""; /* Show the player what they are downloading/uploading, what is actually happening, in case game just stops at any moment, you can see where it stopped */
 caution_online_do_not_show = false;
 report_back_to_menu = "";
 search_id = "";

@@ -296,10 +296,10 @@ if (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		
-		if (global.show_deaths_counter)
-		&& (instance_nearest(x, y, obj_level).number_of_deaths > 0)
+		if (global.show_defeats_counter)
+		&& (instance_nearest(x, y, obj_level).number_of_defeats > 0)
 		{
-			total_deaths_y = -64;
+			total_defeats_y = -64;
 			times_cleared_y = -96;
 			best_score_y = -128;
 			best_time_y = -160;
@@ -307,15 +307,15 @@ if (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 		}
 		else
 		{
-			total_deaths_y = 0;
+			total_defeats_y = 0;
 			times_cleared_y = -64;
 			best_score_y = -96;
 			best_time_y = -128;
 			show_big_collectibles_y = -160;
 		}
 		
-		if (global.show_deaths_counter)
-		&& (instance_nearest(x, y, obj_level).number_of_deaths > 0)
+		if (global.show_defeats_counter)
+		&& (instance_nearest(x, y, obj_level).number_of_defeats > 0)
 		|| (instance_nearest(x, y, obj_level).number_of_clears > 0)
 		|| (instance_nearest(x, y, obj_level).level_score > 0)
 		|| (instance_nearest(x, y, obj_level).timeattack_realmillisecond < 999999999)
@@ -331,13 +331,13 @@ if (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 			draw_set_alpha(1);
 		}
 		
-		#region /* Total number of deaths */
-		if (global.show_deaths_counter)
-		&& (instance_nearest(x, y, obj_level).number_of_deaths > 0)
+		#region /* Total number of defeats */
+		if (global.show_defeats_counter)
+		&& (instance_nearest(x, y, obj_level).number_of_defeats > 0)
 		{
-			scr_draw_text_outlined(x, y + total_deaths_y, l10n_text("Total Deaths") + ": " + string(instance_nearest(x, y, obj_level).number_of_deaths), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(x, y + total_defeats_y, l10n_text("Total Defeats") + ": " + string(instance_nearest(x, y, obj_level).number_of_defeats), global.default_text_size, c_black, c_white, 1);
 		}
-		#endregion /* Total number of deaths END */
+		#endregion /* Total number of defeats END */
 		
 		#region /* Number of times played */
 		if (instance_nearest(x, y, obj_level).number_of_clears > 0)

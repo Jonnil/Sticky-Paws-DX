@@ -403,16 +403,6 @@ else
 }
 #endregion /* Limits the vertical speed END */
 
-#region /* Bottomless Pit */
-/* Don't stop horizontal speed, as it feels awkward when falling down */
-if (bbox_top > room_height)
-&& (!goal)
-&& (!global.goal_active)
-{
-	die = true;
-}
-#endregion /* Bottomless Pit END */
-
 #region /* If you touch spikes, take damage */
 if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes, false, true))
 {

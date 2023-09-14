@@ -3,34 +3,7 @@ var get_window_width = display_get_gui_width();
 
 scr_zoom_camera_draw_gui(10);
 
-#region /* Lives, Deaths, Big Collectibles, Basic Collectibles, Score and Timer */
-
-#region /* Lives */
-if (hud_show_lives_y != -64)
-{
-	draw_set_halign(fa_left);
-	draw_set_valign(fa_middle);
-	if (sprite_lives_icon > noone)
-	{
-		draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_lives_y, 1, 1, 0, c_white, 1);
-	}
-	scr_draw_text_outlined(64, hud_show_lives_y, lives, global.default_text_size, c_black, c_white, 1);
-}
-#endregion /* Lives END */
-
-#region /* Death Counter */
-if (hud_show_deaths_y != -64)
-&& (global.show_deaths_counter)
-{
-	if (sprite_lives_icon > noone)
-	{
-		draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_deaths_y, 0.75, 0.75, 0, c_gray, 1);
-	}
-	draw_line_width_color(32 - 16, hud_show_deaths_y - 16, 32 + 16, hud_show_deaths_y + 16, 3, c_red, c_red);
-	draw_line_width_color(32 - 16, hud_show_deaths_y + 16, 32 + 16, hud_show_deaths_y - 16, 3, c_red, c_red);
-	scr_draw_text_outlined(64, hud_show_deaths_y, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
-}
-#endregion /* Death Counter END */
+#region /* Big Collectibles, Basic Collectibles, Score and Timer */
 
 #region /* Big Collectibles */
 if (hud_show_big_collectibles_y != -64)
@@ -149,7 +122,7 @@ if (global.enable_time_countdown)
 	time_countup_y = 94;
 	
 	#region /* Time is running out message */
-	if (global.player_has_entered_goal == false)
+	if (!global.player_has_entered_goal)
 	{
 		if (global.time_countdown <= 99)
 		&& (hurry_up_message_timer <= 300) /* Make the hurry up message stay on screen for 5 seconds (which is 300 frames) */
@@ -160,25 +133,26 @@ if (global.enable_time_countdown)
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("HURRY UP!"), global.default_text_size, c_black, c_orange, 1);
 			draw_text_transformed_color(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("HURRY UP!"), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 		}
+		
+		#region /* Time Over Message */
+		if (global.time_countdown == 0)
+		{
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_middle);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("TIME OVER"), global.default_text_size * 5, c_black, c_white, 1);
+		}
+		#endregion /* Time Over Message END */
+		
 	}
 	#endregion /* Time is running out message END */
 	
-	#region /* Time Over Message */
-	if (global.time_countdown == 0)
-	&& (global.player_has_entered_goal == false)
-	{
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("TIME OVER"), global.default_text_size * 5, c_black, c_white, 1);
-	}
-	#endregion /* Time Over Message END */
-	
+	#region /* Show the Time Countdown */
 	if (global.hud_hide_time > 0)
 	if (global.time_countdown >= 0)
 	{
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
-		if (global.player_has_entered_goal == false)
+		if (!global.player_has_entered_goal)
 		{
 			if (global.time_countdown == 0)
 			{
@@ -211,6 +185,8 @@ if (global.enable_time_countdown)
 			scr_draw_text_outlined(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
 		}
 	}
+	#endregion /* Show the Time Countdown END */
+	
 }
 else
 {
@@ -279,7 +255,7 @@ if (global.show_timer)
 }
 #endregion /* Time countup in Minutes, Seconds and Milliseconds END */
 
-#endregion /* Lives, Deaths, Big Collectibles, Basic Collectibles, Score and Timer END */
+#endregion /* Big Collectibles, Basic Collectibles, Score and Timer END */
 
 scr_debug_screen();
 
@@ -376,6 +352,7 @@ if (global.play_edited_level) /* When playtesting the level */
 	#endregion /* Draw Pause key END */
 	
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
+	|| (gamepad_button_check_pressed(global.player_slot[1], gp_select))
 	{
 		if (mouse_check_button_pressed(mb_left))
 		{
@@ -385,6 +362,7 @@ if (global.play_edited_level) /* When playtesting the level */
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_click_on_pause_key)
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_select))
 		{
 			pause_playtest = true;
 			black_screen_gui_alpha = 1;
@@ -421,6 +399,33 @@ if (global.play_edited_level) /* When playtesting the level */
 	}
 }
 #endregion /* Pause Level Button END */
+
+#region /* Defeat Counter */
+if (hud_show_defeats_y != -64)
+&& (global.show_defeats_counter)
+{
+	if (sprite_lives_icon > noone)
+	{
+		draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_defeats_y, 0.75, 0.75, 0, c_gray, 1);
+	}
+	draw_line_width_color(32 - 16, hud_show_defeats_y - 16, 32 + 16, hud_show_defeats_y + 16, 3, c_red, c_red);
+	draw_line_width_color(32 - 16, hud_show_defeats_y + 16, 32 + 16, hud_show_defeats_y - 16, 3, c_red, c_red);
+	scr_draw_text_outlined(64, hud_show_defeats_y, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
+}
+#endregion /* Defeat Counter END */
+
+#region /* Lives Counter (Show above defeat counter) */
+if (hud_show_lives_y != -64)
+{
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
+	if (sprite_lives_icon > noone)
+	{
+		draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_lives_y, 1, 1, 0, c_white, 1);
+	}
+	scr_draw_text_outlined(64, hud_show_lives_y, lives, global.default_text_size, c_black, c_white, 1);
+}
+#endregion /* Lives Counter (Show above defeat counter) END */
 
 scr_draw_cursor_mouse();
 

@@ -293,22 +293,6 @@ function scr_debug_screen()
 		{
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(0): " + string(gamepad_get_description(0)), global.default_text_size, c_black, c_white);
 		}
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(0): " + string(switch_controller_joycon_left_connected(0)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(0): " + string(switch_controller_joycon_right_connected(0)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(1): " + string(switch_controller_joycon_left_connected(1)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(1): " + string(switch_controller_joycon_right_connected(1)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(2): " + string(switch_controller_joycon_left_connected(2)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(2): " + string(switch_controller_joycon_right_connected(2)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_left_connected(3): " + string(switch_controller_joycon_left_connected(3)), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "switch_controller_joycon_right_connected(3): " + string(switch_controller_joycon_right_connected(3)), global.default_text_size, c_black, c_white);
 		
 		debug_text_y += 20;
 		if (gamepad_get_description(1) != "")
@@ -368,5 +352,10 @@ function scr_debug_screen()
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "search_id: " + string(global.search_id), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
+		if (instance_exists(obj_camera))
+		{
+			scr_draw_text_outlined(32, debug_text_y, "obj_camera.hud_show_lives_timer: " + string(obj_camera.hud_show_lives_timer), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
 	}
 }

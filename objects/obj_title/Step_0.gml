@@ -367,11 +367,20 @@ if (iris_xscale <= 0.001)
 	&& (menu != "back_from_character_select")
 	&& (global.character_select_in_this_menu == "level_editor")
 	&& (loading_assets == false)
+	|| (global.doing_clear_check_character == true)
 	{
 		if (global.create_level_from_template)
 		&& (allowed_to_load_template_level)
 		|| (global.create_level_from_template == false)
 		{
+			/* Save what characters are selected */
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "character_index_player1", global.character_index[0]);
+			ini_write_real("config", "character_index_player2", global.character_index[1]);
+			ini_write_real("config", "character_index_player3", global.character_index[2]);
+			ini_write_real("config", "character_index_player4", global.character_index[3]);
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			
 			if (title_music > noone)
 			{
 				if (audio_is_playing(title_music))
@@ -409,6 +418,14 @@ if (iris_xscale <= 0.001)
 	if (menu == "select_character")
 	|| (menu == "back_from_character_select")
 	{
+		/* Save what characters are selected */
+		ini_open(working_directory + "config.ini");
+		ini_write_real("config", "character_index_player1", global.character_index[0]);
+		ini_write_real("config", "character_index_player2", global.character_index[1]);
+		ini_write_real("config", "character_index_player3", global.character_index[2]);
+		ini_write_real("config", "character_index_player4", global.character_index[3]);
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		
 		if (title_music > noone)
 		{
 			if (audio_is_playing(title_music))

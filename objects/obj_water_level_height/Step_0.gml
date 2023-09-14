@@ -10,7 +10,7 @@ if (instance_exists(obj_leveleditor))
 		if (mouse_check_button_pressed(mb_left))
 		|| (obj_leveleditor.key_a_pressed)
 		{
-			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
+			if (place_meeting(x, y, obj_leveleditor))
 			{
 				if (drag_object < true)
 				{

@@ -33,7 +33,7 @@ if (can_navigate == false) /* When game is loading in assets, display a detailed
 	}
 	else
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 3), string(ds_list_size(global.all_loaded_characters)) + " " + l10n_text("Loaded Characters") + " " + l10n_text("OK"), global.default_text_size, c_black, c_lime, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 3), string(ds_list_size(global.all_loaded_characters)) + " " + l10n_text("Loaded Characters OK"), global.default_text_size, c_black, c_lime, 1);
 	}
 	if (load_ok <= 1)
 	{
@@ -41,7 +41,7 @@ if (can_navigate == false) /* When game is loading in assets, display a detailed
 	}
 	else
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 2), string(ds_list_size(global.all_loaded_resource_pack)) + " " + l10n_text("Loaded Resource Packs") + " " + l10n_text("OK"), global.default_text_size, c_black, c_lime, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 2), string(ds_list_size(global.all_loaded_resource_pack)) + " " + l10n_text("Loaded Resource Packs OK"), global.default_text_size, c_black, c_lime, 1);
 	}
 	if (load_ok <= 2)
 	{
@@ -49,7 +49,7 @@ if (can_navigate == false) /* When game is loading in assets, display a detailed
 	}
 	else
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32), string(ds_list_size(global.all_loaded_title_backgrounds)) + " " + l10n_text("Loaded Title Backgrounds") + " " + l10n_text("OK"), global.default_text_size, c_black, c_lime, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32), string(ds_list_size(global.all_loaded_title_backgrounds)) + " " + l10n_text("Loaded Title Backgrounds OK"), global.default_text_size, c_black, c_lime, 1);
 	}
 	if (load_ok <= 3)
 	{
@@ -57,7 +57,7 @@ if (can_navigate == false) /* When game is loading in assets, display a detailed
 	}
 	else
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_title_logos)) + " " + l10n_text("Loaded Title Logos") + " " + l10n_text("OK"), global.default_text_size, c_black, c_lime, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_title_logos)) + " " + l10n_text("Loaded Title Logos OK"), global.default_text_size, c_black, c_lime, 1);
 	}
 }
 else

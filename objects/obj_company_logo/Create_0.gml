@@ -14,7 +14,7 @@ global.link_to_gamebanana = "https://gamebanana.com/games/7722";
 global.link_to_instagram = "https://www.instagram.com/jonnilll";
 global.link_to_reddit = "https://www.reddit.com/r/Jonnil";
 global.link_to_twitter = "https://twitter.com/jonnilll";
-global.link_to_wiki = "https://stickypedia.miraheze.org/wiki/Main_Page";
+global.link_to_wiki = ""; //"https://stickypedia.miraheze.org/wiki/Main_Page";
 global.link_to_bug_report_form = "https://forms.gle/h1KopsAAZb1fx2Hk7";
 global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle */
 
@@ -305,7 +305,7 @@ global.player_color[4] = c_yellow; /* Player 1 Color, default:yellow */
 global.select_level_index = 0; /* What level is selected in the custom level editor */
 global.selected_resource_pack = 0; /* 0 = default */
 global.selected_title_background = 0; /* 0 = default */
-global.show_deaths_counter = false; /* Show a deaths counter or not */
+global.show_defeats_counter = false; /* Show a defeats counter or not */
 global.show_ranks = false; /* Show ranks you get at the end of the level */
 global.show_timer = false; /* Show a countup timer or not */
 global.actual_skin_for_player[1] = 0; /* Player 1 Select Skin, make default skin 1 */

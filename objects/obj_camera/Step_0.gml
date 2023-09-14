@@ -949,13 +949,20 @@ if (key_player4_sprint_toggle_pressed)
 
 #region /* If HUD show timer is set to always hide */
 if (global.hud_hide_time <= 0)
-|| (show_letterbox > 0)
 {
-	hud_show_lives_timer = false;
-	hud_show_deaths_timer = false;
-	hud_show_basic_collectibles_timer = false;
-	hud_show_big_collectibles_timer = false;
-	hud_show_score_timer = false;
+	hud_show_lives_timer = 0;
+	hud_show_defeats_timer = 0;
+	hud_show_basic_collectibles_timer = 0;
+	hud_show_big_collectibles_timer = 0;
+	hud_show_score_timer = 0;
+}
+else
+if (show_letterbox > 0)
+{
+	/* Even when there is letterbox, like after you lose, you should still be able to see how many lives you have */
+	hud_show_basic_collectibles_timer = 0;
+	hud_show_big_collectibles_timer = 0;
+	hud_show_score_timer = 0;
 }
 #endregion /* If HUD show timer is set to always hide */
 
@@ -963,9 +970,9 @@ if (global.hud_hide_time <= 0)
 if (global.hud_hide_time >= 10)
 {
 	hud_show_lives_timer = global.hud_hide_time * 60;
-	if (global.show_deaths_counter)
+	if (global.show_defeats_counter)
 	{
-		hud_show_deaths_timer = global.hud_hide_time * 60;
+		hud_show_defeats_timer = global.hud_hide_time * 60;
 	}
 	hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 	hud_show_big_collectibles_timer = global.hud_hide_time * 60;
@@ -975,12 +982,12 @@ if (global.hud_hide_time >= 10)
 
 if (global.hud_hide_time >= 10)
 {
-	if (global.show_deaths_counter)
+	if (global.show_defeats_counter)
 	{
-		hud_show_deaths_timer = global.hud_hide_time * 60;
+		hud_show_defeats_timer = global.hud_hide_time * 60;
 	}
 	hud_show_lives_timer = global.hud_hide_time * 60;
-	hud_show_deaths_timer = global.hud_hide_time * 60;
+	hud_show_defeats_timer = global.hud_hide_time * 60;
 	hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
 	hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 	hud_show_score_timer = global.hud_hide_time * 60;
@@ -991,9 +998,9 @@ else
 	{
 		hud_show_lives_timer --;
 	}
-	if (hud_show_deaths_timer > 0)
+	if (hud_show_defeats_timer > 0)
 	{
-		hud_show_deaths_timer --;
+		hud_show_defeats_timer --;
 	}
 	if (hud_show_big_collectibles_timer > 0)
 	{
@@ -1011,7 +1018,7 @@ if (global.hud_hide_time > 0)
 	/*
 	Show these in right order:
 	Lives
-	Deaths
+	Defeats
 	Big Collectibles
 	Basic Collectibles
 	*/
@@ -1034,30 +1041,30 @@ if (global.hud_hide_time > 0)
 	}
 	#endregion /* Show Lives y position END */
 	
-	#region /* Show Deaths y position */
-	if (hud_show_deaths_timer > 0)
-	&& (global.show_deaths_counter)
+	#region /* Show Defeats y position */
+	if (hud_show_defeats_timer > 0)
+	&& (global.show_defeats_counter)
 	{
 		if (hud_show_lives_y > 0)
 		{
-			hud_show_deaths_y = lerp(hud_show_deaths_y, 70, 0.1);
+			hud_show_defeats_y = lerp(hud_show_defeats_y, 70, 0.1);
 		}
 		else
 		{
-			hud_show_deaths_y = lerp(hud_show_deaths_y, 32, 0.1);
+			hud_show_defeats_y = lerp(hud_show_defeats_y, 32, 0.1);
 		}
 	}
 	else
 	{
-		hud_show_deaths_y = lerp(hud_show_deaths_y, -64, 0.1);
+		hud_show_defeats_y = lerp(hud_show_defeats_y, -64, 0.1);
 	}
-	#endregion /* Show Deaths y position END */
+	#endregion /* Show Defeats y position END */
 	
 	#region /* Show Big Collectibles y position */
 	if (hud_show_big_collectibles_timer > 0) /* Make sure it says BIG collectibles */
 	{
 		if (hud_show_lives_y > 0)
-		&& (hud_show_deaths_y > 0)
+		&& (hud_show_defeats_y > 0)
 		{
 			hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 110, 0.1);
 		}
@@ -1083,33 +1090,33 @@ if (global.hud_hide_time > 0)
 		hud_show_basic_collectibles_timer --;
 		
 		if (hud_show_lives_y > 0)
-		&& (hud_show_deaths_y > 0)
+		&& (hud_show_defeats_y > 0)
 		&& (hud_show_big_collectibles_y > 0)
 		{
 			hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 150, 0.1);
 		}
 		else
 		if (hud_show_lives_y < 0)
-		&& (hud_show_deaths_y > 0)
+		&& (hud_show_defeats_y > 0)
 		&& (hud_show_big_collectibles_y > 0)
 		or(hud_show_lives_y > 0)
-		&& (hud_show_deaths_y < 0)
+		&& (hud_show_defeats_y < 0)
 		&& (hud_show_big_collectibles_y > 0)
 		or(hud_show_lives_y > 0)
-		&& (hud_show_deaths_y > 0)
+		&& (hud_show_defeats_y > 0)
 		&& (hud_show_big_collectibles_y < 0)
 		{
 			hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 110, 0.1);
 		}
 		else
 		if (hud_show_lives_y > 0)
-		&& (hud_show_deaths_y < 0)
+		&& (hud_show_defeats_y < 0)
 		&& (hud_show_big_collectibles_y < 0)
 		or(hud_show_lives_y < 0)
-		&& (hud_show_deaths_y > 0)
+		&& (hud_show_defeats_y > 0)
 		&& (hud_show_big_collectibles_y < 0)
 		or(hud_show_lives_y < 0)
-		&& (hud_show_deaths_y < 0)
+		&& (hud_show_defeats_y < 0)
 		&& (hud_show_big_collectibles_y > 0)
 		{
 			hud_show_basic_collectibles_y = lerp(hud_show_basic_collectibles_y, 64, 0.1);

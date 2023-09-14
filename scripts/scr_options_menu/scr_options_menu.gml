@@ -2064,15 +2064,15 @@ function scr_options_menu()
 			#region /* Assist item appear */
 			draw_menu_dropdown(450, 182, l10n_text("Assist Item"), "assist_item_appear", global.assist_item_appear,
 			l10n_text("Always Appear"),
-			l10n_text("Appear after 1 death on a level"),
-			l10n_text("Appear after 2 deaths on a level"),
-			l10n_text("Appear after 3 deaths on a level"),
-			l10n_text("Appear after 4 deaths on a level"),
-			l10n_text("Appear after 5 deaths on a level"),
-			l10n_text("Appear after 6 deaths on a level"),
-			l10n_text("Appear after 7 deaths on a level"),
-			l10n_text("Appear after 8 deaths on a level"),
-			l10n_text("Appear after 9 deaths on a level"),
+			l10n_text("Appear after 1 defeat on a level"),
+			l10n_text("Appear after 2 defeats on a level"),
+			l10n_text("Appear after 3 defeats on a level"),
+			l10n_text("Appear after 4 defeats on a level"),
+			l10n_text("Appear after 5 defeats on a level"),
+			l10n_text("Appear after 6 defeats on a level"),
+			l10n_text("Appear after 7 defeats on a level"),
+			l10n_text("Appear after 8 defeats on a level"),
+			l10n_text("Appear after 9 defeats on a level"),
 			l10n_text("Never Appear"));
 			#endregion /* Assist item appear END */
 			
@@ -2117,7 +2117,7 @@ function scr_options_menu()
 			automatically_pause_when_window_is_unfocused_settings_y = 164;
 			enable_links_demo_y = 164 + (48 * 2);
 			show_timer_settings_y = 164 + (48 * 3);
-			show_deaths_counter_settings_y = 164 + (48 * 4);
+			show_defeats_counter_settings_y = 164 + (48 * 4);
 			if (global.enable_ranks)
 			{
 				show_ranks_settings_y = 164 + (48 * 5);
@@ -2140,7 +2140,7 @@ function scr_options_menu()
 			draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, l10n_text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused); /* Automatically Pause When Window Is Unfocused */
 			draw_menu_checkmark(380, enable_links_demo_y, l10n_text("Enable Links at Title Screen"), "enable_links_at_title_screen", global.enable_links);
 			draw_menu_checkmark(380, show_timer_settings_y, l10n_text("Show Timer"), "show_timer_settings", global.show_timer); /* Show Timer */
-			draw_menu_checkmark(380, show_deaths_counter_settings_y, l10n_text("Show Deaths Counter"), "show_deaths_counter_settings", global.show_deaths_counter); /* Show Deaths Counter */
+			draw_menu_checkmark(380, show_defeats_counter_settings_y, l10n_text("Show Defeats Counter"), "show_defeats_counter_settings", global.show_defeats_counter); /* Show Defeats Counter */
 			if (global.enable_ranks)
 			{
 				draw_menu_checkmark(380, show_ranks_settings_y, l10n_text("Show Ranks"), "show_ranks_settings", global.show_ranks); /* Show Ranks */
@@ -3151,11 +3151,11 @@ function scr_options_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "show_deaths_counter_settings";
+					menu = "show_defeats_counter_settings";
 				}
 			}
 			else
-			if (menu == "show_deaths_counter_settings")
+			if (menu == "show_defeats_counter_settings")
 			{
 				if (key_up)
 				&& (open_dropdown == false)
@@ -3188,7 +3188,7 @@ function scr_options_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "show_deaths_counter_settings";
+					menu = "show_defeats_counter_settings";
 				}
 				else
 				if (key_down)
@@ -3213,7 +3213,7 @@ function scr_options_menu()
 					}
 					else
 					{
-						menu = "show_deaths_counter_settings";
+						menu = "show_defeats_counter_settings";
 					}
 				}
 				else
@@ -4294,8 +4294,8 @@ function scr_options_menu()
 					case "show_timer_settings":
 						global.show_timer = !global.show_timer;
 						break;
-					case "show_deaths_counter_settings":
-						global.show_deaths_counter = !global.show_deaths_counter;
+					case "show_defeats_counter_settings":
+						global.show_defeats_counter = !global.show_defeats_counter;
 						break;
 					case "show_ranks_settings":
 						global.show_ranks = !global.show_ranks;

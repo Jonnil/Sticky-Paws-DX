@@ -6,3 +6,14 @@ var view_height = camera_get_view_height(view_camera[view_current]);
 x = clamp(x, view_x - sprite_width, view_x + view_width + sprite_width);
 y = clamp(y, view_y - sprite_height, view_y + view_height + (sprite_height * 2));
 #endregion /* Don't let the player outside the view END */
+
+#region /* Bottomless Pit */
+/* This code needs to be in Outside View event, Outside Room event only runs code only one time when moved outside the room */
+/* Don't stop horizontal speed, as it feels awkward when falling down */
+if (bbox_top >= room_height + sprite_height)
+&& (!goal)
+&& (!global.goal_active)
+{
+	die = true;
+}
+#endregion /* Bottomless Pit END */

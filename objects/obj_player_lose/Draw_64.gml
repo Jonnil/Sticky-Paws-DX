@@ -34,7 +34,7 @@ if (lives <= 0)
 	if (game_over_text_y >= get_window_height * 0.5 - 190)
 	{
 		draw_menu_button(get_window_width * 0.5 - 370 - game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Continue"), "continue", "continue");
-		draw_menu_button(get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Quit"), "quit", "quit", c_red);
+		draw_menu_button(get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Quit to Map"), "quit", "quit", c_red);
 		
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
 		|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.left]))
@@ -44,8 +44,6 @@ if (lives <= 0)
 		|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.left]))
 		|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.left]))
 		|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.left]))
-		|| (keyboard_check_pressed(ord("A")))
-		|| (keyboard_check_pressed(vk_left))
 		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padl))
 		|| (gamepad_button_check_pressed(global.player_slot[2], gp_padl))
 		|| (gamepad_button_check_pressed(global.player_slot[3], gp_padl))
@@ -59,8 +57,6 @@ if (lives <= 0)
 		|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.right]))
 		|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.right]))
 		|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.right]))
-		|| (keyboard_check_pressed(ord("D")))
-		|| (keyboard_check_pressed(vk_right))
 		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padr))
 		|| (gamepad_button_check_pressed(global.player_slot[2], gp_padr))
 		|| (gamepad_button_check_pressed(global.player_slot[3], gp_padr))
@@ -83,38 +79,27 @@ if (lives <= 0)
 			}
 		}
 		
-		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.jump]))
-		|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.jump]))
-		|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.jump]))
-		|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.jump]))
-		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
-		|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
-		|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
-		|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
-		|| (keyboard_check_pressed(ord("Z")))
-		|| (keyboard_check_pressed(vk_space))
-		|| (keyboard_check_pressed(vk_enter))
+		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept]))
+		|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.accept]))
+		|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.accept]))
+		|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.accept]))
+		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.accept]))
+		|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.accept]))
+		|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.accept]))
+		|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.accept]))
 		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
 		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
 		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
 		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]))
 		|| (menu == "continue")
-		&& (point_in_rectangle(
-		mouse_get_x,
-		mouse_get_y,
-		get_window_width * 0.5 - 370 - game_over_menu_seperation_distance,
-		get_window_height - game_over_menu_y + 2,
-		get_window_width * 0.5 - 370 + 370 - game_over_menu_seperation_distance,
-		get_window_height - game_over_menu_y + 41))
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370 - game_over_menu_seperation_distance, get_window_height - game_over_menu_y + 2, get_window_width * 0.5 - 370 + 370 - game_over_menu_seperation_distance, get_window_height - game_over_menu_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		|| (menu == "quit")
-		&& (point_in_rectangle(
-		mouse_get_x,
-		mouse_get_y,
-		get_window_width * 0.5 + game_over_menu_seperation_distance,
-		get_window_height - game_over_menu_y + 2,
-		get_window_width * 0.5 + 370 + game_over_menu_seperation_distance,
-		get_window_height - game_over_menu_y + 41))
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y + 2, get_window_width * 0.5 + 370 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		{
 			
@@ -123,43 +108,53 @@ if (lives <= 0)
 			{
 				lives = 5;
 			}
+			else
 			if (global.playergame == 1)
 			{
 				lives = 10;
 			}
+			else
 			if (global.playergame == 2)
 			{
 				lives = 15;
 			}
+			else
 			if (global.playergame == 3)
 			{
 				lives = 20;
 			}
+			
 			if (global.character_select_in_this_menu == "main_game")
 			{
 				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 				ini_write_real("Player", "lives", lives);
 				ini_close();
 			}
-			if (menu == "quit")
-			{
-				global.quit_level = true; /* Quit level and go to map screen */
-			}
-				
+			
 			#region /* Reset Level */
 			global.timeattack_realmillisecond = 0;
 			score = 0;
 			scr_save_level();
 			audio_stop_all();
-				
+			
 			#region /* Go to level editor if you die in level editor */
-			if (room == rm_leveleditor)
+			if (global.character_select_in_this_menu == "level_editor")
 			{
 				global.play_edited_level = false;
-				room_restart();
 			}
 			#endregion /* Go to level editor if you die in level editor END */
-				
+			
+			if (menu == "quit")
+			{
+				room_persistent = false; /* Turn OFF Room Persistency */
+				global.quit_level = true; /* Quit level and go to map screen */
+				room_goto(rm_world_map);
+			}
+			else
+			{
+				room_restart();
+			}
+			
 			#endregion /* Reset Level END */
 			
 			#endregion /* Click Menu END */

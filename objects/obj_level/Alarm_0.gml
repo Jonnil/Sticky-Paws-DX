@@ -9,7 +9,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
 	
 	clear_rate = ini_read_string(level_name, "clear_rate", "closed");
-	number_of_deaths = ini_read_real(level_name, "number_of_deaths", 0);
+	number_of_defeats = ini_read_real(level_name, "number_of_defeats", 0);
 	number_of_clears = ini_read_real(level_name, "number_of_clears", 0);
 	big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
 	big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);
@@ -35,7 +35,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 else
 {
 	clear_rate = "closed";
-	number_of_deaths = 0;
+	number_of_defeats = 0;
 	number_of_clears = 0;
 	big_collectible1 = false;
 	big_collectible2 = false;
