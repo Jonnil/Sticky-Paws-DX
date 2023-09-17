@@ -54,12 +54,12 @@ function scr_draw_upload_rules()
 		
 		if (content_type == "level")
 		{
-			upload_rules_do_not_show_level = draw_menu_checkmark(display_get_gui_width() * 0.5 - 280, display_get_gui_height() - 84, "Do not show this screen again", "upload_rules_do_not_show", upload_rules_do_not_show_level);
+			upload_rules_do_not_show_level = draw_menu_checkmark(display_get_gui_width() * 0.5 - 280, display_get_gui_height() - 84, l10n_text("Do not show this screen again"), "upload_rules_do_not_show", upload_rules_do_not_show_level);
 		}
 		else
 		if (content_type == "character")
 		{
-			upload_rules_do_not_show_character = draw_menu_checkmark(display_get_gui_width() * 0.5 - 280, display_get_gui_height() - 84, "Do not show this screen again", "upload_rules_do_not_show", upload_rules_do_not_show_character);
+			upload_rules_do_not_show_character = draw_menu_checkmark(display_get_gui_width() * 0.5 - 280, display_get_gui_height() - 84, l10n_text("Do not show this screen again"), "upload_rules_do_not_show", upload_rules_do_not_show_character);
 		}
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() - 42, l10n_text("I agree"), "upload_rules", "upload_rules");
 		

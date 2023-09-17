@@ -66,6 +66,7 @@ if (async_load[? "id"] == global.http_request_id)
 		}
 		if (file_save_location != "")
 		{
+			show_debug_message("file_save_location: " + string(file_save_location));
 			buffer_save(buffer, file_save_location);
 		}
 		

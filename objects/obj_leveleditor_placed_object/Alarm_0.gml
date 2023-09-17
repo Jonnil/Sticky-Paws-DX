@@ -168,7 +168,5 @@ if (global.actually_play_edited_level == false)
 		if (object == 6){sprite_index = spr_noone; mask_index = spr_wall;}
 		if (object == 7){sprite_index = spr_noone; mask_index = spr_wall;}
 	}
-	global.part_limit ++;
-	global.part_limit_text_alpha = 1;
 }
 #endregion /* Initialize Object END */

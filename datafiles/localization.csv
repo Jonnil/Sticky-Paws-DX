@@ -22,19 +22,19 @@ How to Play,How to Play,Hur man spelar,遊び方,Como Jugar,Jak grać
 Add-Ons,Add-Ons,Tillägg,アドオン,Modificaciones,Dodatki
 Resource Packs,Resource Packs,Resurspaket,リソースパック,Paquetes de recursos,Paczki rozszerzeń
 Behavior Packs,Behavior Packs,Beteendepaket,ビヘイビアパック,Paquete de functionamentos,Paczki zachowań
-Checkpoint,CHECKPOINT,ÅTERVÄNDSPUNKT,チェックポイント,Punto Seguro,Punkt kontrolny
+Checkpoint,Checkpoint,Återvändspunkt,チェックポイント,Punto Seguro,Punkt kontrolny
 Main Game,Main Game,Huvudspel,アドベンチャー,Juego Principal,Gra główna
 Level Editor,Level Editor,Nivåredigerare,レベル作り,Editor de nivel,Edytor poziomów
 Options,Options,Alternativ,設定,Opciones,Opcje
 Quit,Quit,Avsluta,終了,Salir,Wyjdź
 Fullscreen,Fullscreen,Fullskärm,フルスクリーン,Pantalla Completa,Pełny ekran
-Made by,Made by,Tillverkad av,,Hecho por,Zrobione przez
+Made by,Made by,Tillverkad av, ,Hecho por,Zrobione przez
 Loading,Loading,Läser in,ローディング中,Cargando,Wczytywanie
 Select your character!,Select your character!,Välj din karaktär!,キャラクターを選択してください!,Escoge tu Personaje!,Wybierz postać!
-Player 1 Join,Player 1 Join,Spelare 1 Gå med,プレイアー1が参加する,Jugador 1 Unir,Dołącz jako gracz 1
-Player 2 Join,Player 2 Join,Spelare 2 Gå med,プレイアー２が参加する,Jugador 2 Unir,Dołącz jako gracz 2
-Player 3 Join,Player 3 Join,Spelare 3 Gå med,プレイアー３が参加する,Jugador 3 Unir,Dołącz jako gracz 3
-Player 4 Join,Player 4 Join,Spelare 4 Gå med,プレイアー４が参加する,Jugador 4 Unir,Dołącz jako gracz 4
+Player 1 Join,Player 1 Join,Spelare 1 Gå med,プレイヤー1が参加する,Jugador 1 Unir,Dołącz jako gracz 1
+Player 2 Join,Player 2 Join,Spelare 2 Gå med,プレイヤー２が参加する,Jugador 2 Unir,Dołącz jako gracz 2
+Player 3 Join,Player 3 Join,Spelare 3 Gå med,プレイヤー３が参加する,Jugador 3 Unir,Dołącz jako gracz 3
+Player 4 Join,Player 4 Join,Spelare 4 Gå med,プレイヤー４が参加する,Jugador 4 Unir,Dołącz jako gracz 4
 Accept,Accept,Acceptera,アクセプト,Aceptar,Akceptuj
 Cancel,Cancel,Avbryt,キャンセル,Cancelar,Anuluj
 Skin,Skin,Utseende,スキン,Traje,Skórka
@@ -45,13 +45,13 @@ Player 3,Player 3,Spelare 3,プレイヤー３,Jugador 3,Gracz 3
 Player 4,Player 4,Spelare 4,プレイヤー４,Jugador 4,Gracz 4
 Play the game!,Play the game!,Spela spelet!,プレー,Jugar el juego!,Zagraj
 Play level,Play level,Spela nivå,レベルスタート,Juega nivel,Zagraj poziom
-Player 1 starts the game,Player 1 starts the game,Spelare 1 startar spelet,プレイアー１がゲームをスタートする,Jugador 1 empieza el juego,Gracz 1 dołącza do gry
-Player 2 starts the game,Player 2 starts the game,Spelare 2 startar spelet,プレイアー２がゲームをスタートする,Jugador 2 empieza el juego,Gracz 2 dołącza do gry
-Player 3 starts the game,Player 3 starts the game,Spelare 3 startar spelet,プレイアー３がゲームをスタートする,Jugador 3 empieza el juego,Gracz 3 dołąćza do gry
-Player 4 starts the game,Player 4 starts the game,Spelare 4 startar spelet,プレイアー４がゲームをスタートする,Jugador 4 empieza el juego,Gracz 4 dołącza do gry
+Player 1 starts the game,Player 1 starts the game,Spelare 1 startar spelet,プレイヤー１がゲームをスタートする,Jugador 1 empieza el juego,Gracz 1 dołącza do gry
+Player 2 starts the game,Player 2 starts the game,Spelare 2 startar spelet,プレイヤー２がゲームをスタートする,Jugador 2 empieza el juego,Gracz 2 dołącza do gry
+Player 3 starts the game,Player 3 starts the game,Spelare 3 startar spelet,プレイヤー３がゲームをスタートする,Jugador 3 empieza el juego,Gracz 3 dołąćza do gry
+Player 4 starts the game,Player 4 starts the game,Spelare 4 startar spelet,プレイヤー４がゲームをスタートする,Jugador 4 empieza el juego,Gracz 4 dołącza do gry
 Create from Scratch,Create from Scratch,Skapa från grunden,最初から作る,Crear de cero,Stwórz samemu
 Create from Template,Create from Template,Skapa från mall,テンプレートから作る,Crear con modelo,Stwórz z szablonu
-OK,OK,OK,わかった,OK,OK
+OK,OK,OK,OK,OK,OK
 Select Template Level,Select Template Level,Välj Mallnivå,テンプレート レベルを選択,Elige nivel modelo,Wybierz szablon poziomu
 These are official levels from the game. Learn how these levels were made!,These are official levels from the game. Learn how these levels were made!,Det här är officiella nivåer från spelet. Lär dig hur dessa nivåer gjordes!,これらはゲームの公式レベルです。 どのように作られたかを学びましょう!,Esto son niveles oficiales del juego. Aprende como esto niveles estan hecho!,"Oficjalne poziomy z gry - dowiedz się, jak zostały zbudowane!"
 Play,Play,Spela,プレー,Jugar,Graj
@@ -62,8 +62,8 @@ Erase tool,Erase tool,Radera verktyg,消しごみ,Borrar,Gumka
 Fill tool,Fill tool,Fyllningsverktyg,塗りつぶしツール,Llenar,Wypełnienie
 Hide buttons,Hide buttons,Dölj knappar,ボタンを見せない,Esconder botón,Ukryj przyciski
 Lock buttons,Lock buttons,Lås knappar,ロックボタン,,Zablokuj przyciski
-"Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - När en karaktär inte har förmågan att hoppa från väggar, låter även dessa karaktärer vägghoppa",カベキックパネル - キャラクターがカベキック能力を持っていない場合、そのキャラクターでもカベキックができるようになります,,
-"Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb","Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb","Wall Climb Panel - När en karaktär inte har förmågan att klättra på väggar, låter även dessa karaktärer klättra på väggar",壁登りパネル - キャラクターが壁登り能力を持っていない場合、そのキャラクターでも壁登りができるようになります,,
+Wall Jump Panel - When a character doesn't have the wall jump ability lets even these characters wall jump,"Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - När en karaktär inte har förmågan att hoppa från väggar, låter även dessa karaktärer vägghoppa",カベキックパネル - キャラクターがカベキック能力を持っていない場合、そのキャラクターでもカベキックができるようになります,,
+Wall Climb Panel - When a character doesn't have the wall climb ability lets even these characters wall climb,"Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb","Wall Climb Panel - När en karaktär inte har förmågan att klättra på väggar, låter även dessa karaktärer klättra på väggar",壁登りパネル - キャラクターが壁登り能力を持っていない場合、そのキャラクターでも壁登りができるようになります,,
 Continue,Continue,Fortsätt,続く,,Kontynuuj
 Generate Level Map,Generate Level Map,Generera nivåkarta,レベル マップを生成する,,Generuj mapę poziomu
 Save and Quit,Save and Quit,Spara och avsluta,セーブと終了,,Zapisz i wyjdź
@@ -77,7 +77,7 @@ ARE YOU SURE YOU WANT TO QUIT?,ARE YOU SURE YOU WANT TO QUIT?,ÄR DU SÄKER PÅ 
 YES,YES,JA,はい,SI,TAK
 NO,NO,NEJ,いいえ,NO,NIE
 Enable Assist Mode,Enable Assist Mode,Aktivera hjälpläge,アシストモードをオンにする,,Aktywuj tryb asysty
-The game is meant to be played without Assist Mode.,The game is meant to be played without Assist Mode.,Spelet är tänkt att spelas utan hjälpläge.,,Este juego estaba hecho para jugar sin Modo de Asistencia,
+The game is meant to be played without Assist Mode.,The game is meant to be played without Assist Mode.,Spelet är tänkt att spelas utan hjälpläge.,.,Este juego estaba hecho para jugar sin Modo de Asistencia,
 Only if you are unable to enjoy the game without extra help should you enable this.,Only if you are unable to enjoy the game without extra help should you enable this.,Endast om du inte kan njuta av spelet utan extra hjälp bör du aktivera detta.,,Solo si no puedes disfrutar el juego deberias aprender el Modo de Asistencia,"Jeśli nie jesteś w stanie przejść gry bez dodatkowej pomocy, możesz to aktywować"
 Assist Item,Assist Item,Assist objekt,アシストアイテム,,Przedmiot asysty
 Always Appear,Always Appear,Visas alltid,いつも見せる,,
@@ -135,7 +135,7 @@ Tongue,Tongue,Tunga,舌,,Język
 Default Settings,Default Settings,Standardinställningar,規定設定,,Ustawienia domyślne
 Up is also jump,Up is also jump,Upp är också hoppa,上もジャンプ,,Góra jako klawisz skoku
 Double-tap direction to run,Double-tap direction to run,Dubbeltryck i riktning för att springa,走る方向をダブルタップ,,Podwójne naciśnięcie strzałki aktywuje bieg
-Double-tap direction to dive,Double-tap direction to pounce,Dubbeltryck i riktning för att dyka,方向をダブルタップして飛びかかる,,
+Double-tap direction to dive,Double-tap direction to pounce,Dubbeltryck i riktning för att dyka,方向をダブルタップしてボディーアタック,,
 Always run,Always run,Spring alltid,いつも走る,,Auto-bieg
 Player 1 always run,Player 1 always run,Spelare 1 spring alltid,プレイヤー１がいつも走る,,Auto-bieg dla gracza 1
 Player 2 always run,Player 2 always run,Spelare 2 spring alltid,プレイヤー２がいつも走る,,Auto-bieg dla gracza 2
@@ -163,9 +163,9 @@ Restart,Restart,Omstart,リスタート,,Restart
 Reset from Checkpoint,Reset from Checkpoint,Återställ från återvändspunkt,チェックポイントからリセット,,Rozpocznij od punktu kontrolnego
 Reset from Start,Reset from Start,Återställ från start,最初からリセット,,Rozpocznij od początku
 Nevermind,Nevermind,Glöm det,もう結構,,Jednak nie
-Quit to Map,Quit to Map,Avsluta till kartan,終了してマップへ,,Wyjdź do mapy
-Quit to Title,Quit to Title,Avsluta till titel,終了してタイトルへ,,Wyjdź do menu głównego
-Quit to Desktop,Quit to Desktop,Avsluta till skrivbordet,終了してデスクトップへ,,Wyjdź do pulpitu
+Quit to Map,Quit to Map,Avsluta till kartan,マップへ終了して,,Wyjdź do mapy
+Quit to Title,Quit to Title,Avsluta till titel,タイトルへ終了して,,Wyjdź do menu głównego
+Quit to Desktop,Quit to Desktop,Avsluta till skrivbordet,デスクトップへ終了して,,Wyjdź do pulpitu
 Score,Score,Poäng,スコア,,Wynik
 Enter into level,Enter into level,Gå in på nivå,レベルに入る,,Graj w poziom
 Best Time,Best Time,Bästa tid,ベストタイム,,Najlepszy czas
@@ -212,13 +212,13 @@ INPUT KEY NOW FOR PLAYER 1,INPUT KEY NOW FOR PLAYER 1,INMATA KNAPP NU FÖR SPELA
 INPUT KEY NOW FOR PLAYER 2,INPUT KEY NOW FOR PLAYER 2,INMATA KNAPP NU FÖR SPELARE 2,プレーヤー 2 のキーを入力してください,,WPROWADŹ KLAWISZ TERAZ DLA GRACZA 2
 INPUT KEY NOW FOR PLAYER 3,INPUT KEY NOW FOR PLAYER 3,INMATA KNAPP NU FÖR SPELARE 3,プレーヤー 3 のキーを入力してください,,WPROWADŹ KLAWISZ TERAZ DLA GRACZA 3
 INPUT KEY NOW FOR PLAYER 4,INPUT KEY NOW FOR PLAYER 4,INMATA KNAPP NU FÖR SPELARE 4,プレーヤー 4 のキーを入力してください,,WPROWADŹ KLAWISZ TERAZ DLA GRACZA 4
-Buttons can be disabled using,Buttons can be disabled using,Knappar kan inaktiveras med,ボタンを使用して無効にすることができます,,Przyciski mogą być wyłączone za pomocą
+Buttons can be disabled using,Buttons can be disabled using,Knappar kan inaktiveras med,.,,Przyciski mogą być wyłączone za pomocą
 Add Custom Resource Packs in Local Appdata,Add Custom Resource Packs in Local Appdata,Lägg till anpassade resurspaket i lokal appdata,ローカル Appdataにカスタム リソース パックを追加する,,Dodaj paczki rozszerzeń w folderze konfiguracyjnym gry
 and it will appear here!,and it will appear here!,och det kommer att dyka upp här!,そしてここに現れる！,,ia pojawią się tutaj
 Enter name,Enter name,Skriv namn,名前を書いて,,Podaj imię
 Assist Mode,Assist Mode,Assist läge,アシストモード,,Tryb asysty
-Hold Start,Hold Start,Håll Start,ホールドスタート,,Przytrzymaj start
-Press and Hold Screen,Press and Hold Screen,Tryck och håll ned skärmen,画面を押し続く,,Dotknij i przytrzymaj ekran
+Hold Start,Hold Start,Håll Start,スタート押したまま,,Przytrzymaj start
+Press and Hold Screen,Press and Hold Screen,Tryck och håll ned skärmen,画面を押したまま,,Dotknij i przytrzymaj ekran
 Delete Level,Delete Level,Ta bort nivå,レベルデリート,,Usuń poziom
 Height,Height,Höjd,高さ,,Wysokość
 Width,Width,Bredd,幅,,Szerokość
@@ -233,16 +233,15 @@ View width,View width,Vy bredd,ビュー幅,,Pokaż
 View height,View height,Vy höjd,ビュー高さ,,Pokaż
 Warning! Level height shorter than normal,Warning! Level height shorter than normal,Varning! Nivåhöjd kortare än normalt,注意、レベルは普通より高い,,Uwaga! Wysokość poziomu krótsza niż normalna
 Warning! Level width shorter than normal,Warning! Level width shorter than normal,Varning! Nivåbredd kortare än normalt,注意、レベルは普通より広い,,Uwaga! Szerokość poziomu krótsza niż normalna
-Can put objects above other objects: True,Can put objects above other objects: True,Kan sätta objekt över andra objekt: Sant,オブジェクトを他のオブジェクトの上に置くことができます: True,,
 Artwork,Artwork,Konstverk,アートワーク,,Ilustracja
 Artist,Artist,Konstnär,アーティスト,,Artysta
 To unlock this artwork,To unlock this artwork,För att låsa upp det här konstverket,このアートワークのロックを解除するには,,Aby odblokować tą ilustrację
-Get big fish,Get big fish,Skaffa stor fisk,大きな魚を手に入れる,,zdobądź wielką rybę
-in level,in level,i nivå,レベル,,w poziomie
+Get big fish,Get big fish,Skaffa stor fisk,大きな魚をゲットするのは:,,zdobądź wielką rybę
+in level,in level,i nivå,レベル:,,w poziomie
 Pounce,Pounce,Dyka,ボディーアタック,,Sus
-Join Game,Join Game,Gå med i spel,ゲームに参加します,,Rozpocznij grę
-Date modified,Date modified,Datum ändrat,日付が変更されました,,Data modyfikacji
-Last played today!,Last played today!,Spelades senast idag!,今日ラストプレイ！,,Ostatnio grano dzisiaj!
+Join Game,Join Game,Gå med i spel,ゲームに参加する,,Rozpocznij grę
+Date modified,Date modified,Datum ändrat,変更日,,Data modyfikacji
+Last played today!,Last played today!,Spelades senast idag!,今日最後にプレイされました ,,Ostatnio grano dzisiaj!
 Open Resource Pack Folder,Open Resource Pack Folder,Öppna resurspaketmappen,リソースパックフォルダを開く,,Otwórz folder z paczkami rozszerzeń
 Open Background Folder,Open Background Folder,Öppna bakgrundsmappen,背景フォルダを開く,,Otwórz folder z tłami
 Open Title Logo Folder,Open Title Logo Folder,Öppna titellogotyp mappen,タイトルロゴフォルダを開く,,Otwórz folder logo tytułowego
@@ -250,30 +249,30 @@ Open Character Folder,Open Character Folder,Öppna karaktär mappen,キャラク
 Demo,Demo,Demo,デモ,,Demo
 Play Demo,Play Demo,Spela demo,プレーデモ,,Zagraj w demo
 The demo is over,The demo is over,Demot är över,デモは終了しました,,Wersja demo dobiegła końca
-Buy the full version of,Buy the full version of,Köp den fullständiga versionen av,,,Kup pełną wersję
+Buy the full version of,Buy the full version of,Köp den fullständiga versionen av,.,,Kup pełną wersję
 Purchase now!,Purchase now!,Köp nu!,買う,,Kup Teraz!
 Continue playing!,Continue playing!,Fortsätt spela!,プレイを続ける！,,Kontynuuj grę!
 Background Scale,Background Scale,Bakgrundsskala,背景スケール,,Skala tła
 Background Scroll X,Background Scroll X,Bakgrund Scroll X,背景スクロール X,,Skala przewijania X
 Background Scroll Y,Background Scroll Y,Bakgrund Scroll Y,背景スクロール Y,,Skala przewijania Y
-Hold down to change the value faster,Hold down to change the value faster,Håll intryckt för att ändra värdet snabbare,値を速く変更するには長押しします,,Przytrzymaj by zmienić wartość szybciej
+Hold down to change the value faster,Hold down to change the value faster,Håll intryckt för att ändra värdet snabbare,押したままと値が速く変更されます,,Przytrzymaj by zmienić wartość szybciej
 BG Offset and Parallax,BG Offset and Parallax,BG Offset och Parallax,BG オフセットとパララックス,,Offset i paralax tła
 Open Custom Levels Folder,Open Custom Levels Folder,Öppna egna nivåer,カスタムレベルフォルダを開く,,Otwórz folder z własnymi poziomami
 TIME OVER,TIME OVER,TID ÖVER,時間切れ,,CZAS MINĄŁ
 HURRY UP!,HURRY UP!,SKYNDA DIG!,急げ！,,POŚPIESZ SIĘ
-Add custom things in Local Appdata,Add custom things in Local Appdata,Lägg till anpassade saker i Local Appdata,ローカル Appdata にカスタムのものを追加する,,
-Then type,Then type,Skriv sedan,次に、入力,,Potem wpisz
+Add custom things in Local Appdata,Add custom things in Local Appdata,Lägg till anpassade saker i Local Appdata,Local Appdata にカスタムのものを追加する,,
+Then type path name,Then type path name,Skriv sedan,次に、パス名を入力て,,Potem wpisz
 Copy Characters,Copy Characters,Kopiera karaktärer,キャラクターをコピー,,Kopiuj postacie
 Copy Character,Copy Character,Kopiera karaktär,キャラクターをコピー,,Skopiuj postać
 Copy to Clipboard,Copy to Clipboard,Kopiera till Urklipp,クリップボードにコピー,,Skopiuj do schowka
 Enable Attract Demo,Enable Attract Demo,Aktivera Attract Demo,Attract Demo をオンにする,,Aktywuj Attract Demo
-Enable Links at Title Screen,Enable Links at Title Screen,Aktivera länkar på titelskärmen,タイトル画面でリンクを有効にする,,Pokazuj hiperlinki na ekranie tytułowym
-Open Save File Folder,Open Save File Folder,Öppna sparade filer mappen,保存ファイルフォルダを開く,,Otwórz folder z zapisem
-INPUT BUTTON NOW FOR PLAYER 1,INPUT BUTTON NOW FOR PLAYER 1,TRYCK KNAPP NU FÖR SPELARE 1,プレイヤー 1 の入力ボタン,,
-INPUT BUTTON NOW FOR PLAYER 2,INPUT BUTTON NOW FOR PLAYER 2,TRYCK KNAPP NU FÖR SPELARE 2,プレイヤー 2 の入力ボタン,,
-INPUT BUTTON NOW FOR PLAYER 3,INPUT BUTTON NOW FOR PLAYER 3,TRYCK KNAPP NU FÖR SPELARE 3,プレイヤー 3 の入力ボタン,,
-INPUT BUTTON NOW FOR PLAYER 4,INPUT BUTTON NOW FOR PLAYER 4,TRYCK KNAPP NU FÖR SPELARE 4,プレイヤー 4 の入力ボタン,,
-Chosen Controller Used,Chosen Controller Used,Vald kontroll använd,選択したコントローラーを使用,,
+Enable Links at Title Screen,Enable Links at Title Screen,Aktivera länkar på titelskärmen,タイトル画面でリンクをオンにする,,Pokazuj hiperlinki na ekranie tytułowym
+Open Save File Folder,Open Save File Folder,Öppna sparade filer mappen,セーブファイルフォルダを開く,,Otwórz folder z zapisem
+INPUT BUTTON NOW FOR PLAYER 1,INPUT BUTTON NOW FOR PLAYER 1,TRYCK KNAPP NU FÖR SPELARE 1,プレイヤー 1 、ボタンを押して,,
+INPUT BUTTON NOW FOR PLAYER 2,INPUT BUTTON NOW FOR PLAYER 2,TRYCK KNAPP NU FÖR SPELARE 2,プレイヤー 2 、ボタンを押して,,
+INPUT BUTTON NOW FOR PLAYER 3,INPUT BUTTON NOW FOR PLAYER 3,TRYCK KNAPP NU FÖR SPELARE 3,プレイヤー 3 、ボタンを押して,,
+INPUT BUTTON NOW FOR PLAYER 4,INPUT BUTTON NOW FOR PLAYER 4,TRYCK KNAPP NU FÖR SPELARE 4,プレイヤー 4 、ボタンを押して,,
+Chosen Controller Used,Chosen Controller Used,Vald kontroll använd,選んだコントローラー,,
 Drop down from rope,Drop down from rope,Släpp ner från rep,ロープから降りる,,
 Xbox One,Xbox One,Xbox One,Xbox One,,Xbox One
 Xbox Series X/S,Xbox Series X/S,Xbox Series X/S,Xbox Series X/S,,Xbox Series X/S
@@ -284,49 +283,118 @@ Zoom In,Zoom In,Zooma in,ズームイン,,Powiększ
 Zoom Out,Zoom Out,Zooma ut,ズームアウト,,Pomniejsz
 Level Options,Level Options,Nivå alternativ,レベル 設定,,Opcje poziomu
 First created on version,First created on version,Först skapad på version,最初に作成されたバージョン,,Stworzone w wersji
-Default view height,Default view height,Standard vyhöjd,デフォルトのビューの高さ,,Domyślna wysokość widoku
-Default view width,Default view width,Standard vybredd,デフォルトのビュー幅,,Domyślna szerokość widoku
+Default view height,Default view height,Standard vyhöjd,デフォルトビューの高さ,,Domyślna wysokość widoku
+Default view width,Default view width,Standard vybredd,デフォルトビューの幅,,Domyślna szerokość widoku
 Time Countdown,Time Countdown,Tidsnedräkning,タイムカウントダウン,,
 Translation completion,Translation completion,Översättning komplett,翻訳の完成,,Kompletność tłumaczenia
-Show prompt when changing to keyboard and mouse,Show prompt when changing to keyboard and mouse,Visa uppmaning när du byter till tangentbord och mus,キーボードとマウスに変更するときにプロンプトを表示する,,
-Show prompt when changing to gamepad,Show prompt when changing to gamepad,Visa uppmaning när du byter till gamepad,ゲームパッドへの変更時にプロンプトを表示,,
-Always Show Gamepad Buttons,Always Show Gamepad Buttons,Visa alltid Gamepad-knappar,ゲームパッドのボタンを常に表示する,,Zawsze pokazujj klawisze kontrolera
+Show prompt when changing to keyboard and mouse,Show prompt when changing to keyboard and mouse,Visa uppmaning när du byter till tangentbord och mus,キーボードとマウスへの変更時にプロンプトを表示する,,
+Show prompt when changing to gamepad,Show prompt when changing to gamepad,Visa uppmaning när du byter till gamepad,ゲームパッドへの変更時にプロンプトを表示する,,
+Always Show Gamepad Buttons,Always Show Gamepad Buttons,Visa alltid Gamepad-knappar,いつもゲームパッドのボタンを表示する,,Zawsze pokazujj klawisze kontrolera
 Show FPS,Show FPS,Visa FPS,FPS を表示する,,Pokaż FPS
 Show FPS Real,Show FPS Real,Visa FPS Real,FPS Real を表示する,,Pokaż FPS Real
-GUI Scale Modifier,GUI Scale Modifier,GUI Skala Modifierare,GUI スケール修飾子,,
+GUI Scale Modifier,GUI Scale Modifier,GUI Skala Modifierare,GUI スケールモディファイア,,
 Automatic,Automatic,Automatisk,自動,,Automatyczny
 Final,Final,Sista,最後の,,
 Search ID,Search ID,Sök ID,IDを検索する,,Szukaj ID
-Please enter a,Please enter a,Vänligen ange en,入力してください,,Proszę wprowadź
+Please enter a,Please enter a,Vänligen ange en,.,,Proszę wprowadź
 Upload,Upload,Ladda upp,アップロード,,Wyślij
 Edit Name,Edit Name,Redigera namn,名前を編集,,Edytuj nazwę
 Edit Description,Edit Description,Redigera beskrivning,説明を編集,,Edytuj opis
 BG Offset,BG Offset,BG Offset,BG オフセット,,Offset tla
-BG Parallax,BG Parallax,BG Parallax,BG視差,,Paralaksa tła
+BG Parallax,BG Parallax,BG Parallax,BGパララックス,,Paralaksa tła
 BG Scale,BG Scale,BG Skala,BGスケール,,Skala tla
 BG Tiled,BG Tiled,BG Kaklat,BGタイル,,
 Make every tileset into default tileset,Make every tileset into default tileset,Gör varje tileset till standard tileset,すべてのタイルセットをデフォルトのタイルセットにする,,
-Deactivate objects from most zoomed out,Deactivate objects from most zoomed out,Inaktivera objekt från de mest utzoomade,最もズームアウトしたオブジェクトを非アクティブ化,,
 Rain,Rain,Regn,雨,,Deszcz
-Enable Time Countdown,Enable Time Countdown,Aktivera tidsnedräkning,タイムカウントダウンを有効にする,,
-Level Editing Music,Level Editing Music,Nivåredigering musik,レベル編集音楽,,Muzyka edycji poziomów
+Enable Time Countdown,Enable Time Countdown,Aktivera tidsnedräkning,タイムカウントダウンをオンにする,,
+Level Editing Music,Level Editing Music,Nivåredigering musik,レベルエディタ音楽,,Muzyka edycji poziomów
 Music 1,Music 1,Musik 1,音楽 1,,Muzyka 1
 Music 2,Music 2,Musik 2,音楽 2,,Muzyka 2
 Music 3,Music 3,Musik 3,音楽 3,,Muzyka 3
-Delete All Objects,Delete All Objects,Ta bort alla objekt,すべてのオブジェクトを削除,,Skasuj wszystkie obiekty
+Delete All Objects,Delete All Objects,Ta bort alla objekt,すべてのオブジェクトを削除する,,Skasuj wszystkie obiekty
 Are you sure you want to delete every object in the level?,Are you sure you want to delete every object in the level?,Är du säker på att du vill ta bort alla objekt i nivån?,レベル内のすべてのオブジェクトを削除してもよろしいですか?,,
 Water Height,Water Height,Vattenhöjd,水の高さ,,Wysokość wody
 Do a clear check?,Do a clear check?,"Gör en ""spelbar"" kontroll?",クレアチェックをしますか,,
 Clear from the start,Clear from the start,Klara från början,最初からクリア,,
-TIME,TIME,TID,時間,,
+TIME,TIME,TID,タイム,,
 Uploading,Uploading,Laddar upp,アップロード中,,Wysyłanie
 Uploaded,Uploaded,Uppladdad,アップロードした,,Wysłano
-Level ID,Level ID,Nivå ID,レベル ID,,ID poziomu
+Level ID,Level ID,Nivå-ID,レベル ID,,ID poziomu
+Character ID,Character ID,Karaktärs-ID,キャラクター ID,,
 Clear Checked,Clear Checked,Är spelbar,クリアチェックした,,
 Are you sure you want to delete file,Are you sure you want to delete file,Är du säker på att du vill ta bort filen,ファイルを削除するのは本気ですか,,"Czy jesteś pewien, że chcesz usunąć ten plik"
-Please enter a level ID,Please enter a level ID,,レベルIDを入力してください,,Proszę wprowadzić ID poziomu
-Please enter a character ID,Please enter a character ID,,キャラクターIDを入力してください,,Proszę wprowadzić ID postaci
-Failed to download level,Failed to download level,,,,
-Failed to download character,Failed to download character,,,,
+Please enter a level ID,Please enter a level ID,Vänligen ange ett nivå-ID,レベルIDを入力してください,,Proszę wprowadzić ID poziomu
+Please enter a character ID,Please enter a character ID,Vänligen ange en karaktärs-ID,キャラクターIDを入力してください,,Proszę wprowadzić ID postaci
+Failed to download level,Failed to download level,Det gick inte att ladda ner nivån,レベルダウンロードが失敗しました,,
+Failed to download character,Failed to download character,Det gick inte att ladda ner karaktären,キャラクターダウンロードが失敗しました,,
 Account,Account,Konto,アカウント,,Konto
-Character ID,,,,,
+Caution: Online Communication,Caution: Online Communication,Varning: Onlinekommunikation,注意: オンラインコミュニケーション,,
+Online communication is offered by official servers that are owned operated and supervised by us,"Online communication is offered by official servers that are owned, operated, and supervised by us","Onlinekommunikation erbjuds av officiella servrar som ägs, drivs och övervakas av oss",,,
+We are moderating user-generated content as much as we can but we might not catch everything,"We are moderating user-generated content as much as we can, but we might not catch everything","Vi modererar användargenererat innehåll så mycket vi kan, men vi kanske inte fångar allt",,,
+You may be exposed to unmoderated user-generated content that may not be suitable for everyone,You may be exposed to unmoderated user-generated content that may not be suitable for everyone,Du kan exponeras för omodererat användargenererat innehåll som kanske inte passar alla,,,
+If you find inappropriate content please report it,"If you find inappropriate content, please report it","Om du hittar olämpligt innehåll, rapportera det",,,
+Do not show this screen again,Do not show this screen again,Visa inte den här skärmen igen,今後この注意を表示しない,,
+Proceed,Proceed,Fortsätt,続く,,
+Customize Button Design,Customize Button Design,Anpassa knappdesign,ボタンのデザインをカスタマイズする,,
+Color,Color,Färg,カラー,,
+Gray,Gray,Grå,グレー,,
+Black,Black,Svart,ブラック,,
+Pink,Pink,Rosa,ピンク,,
+Blue,Blue,Blå,ブルー,,
+Shape,Shape,Form,形,,
+Rectangle,Rectangle,Rektangel,矩形,,
+Round,Round,Rund,丸い,,
+Transparency,Transparency,Genomskinlighet,トランスペアレンシー,,
+Opaque,Opaque,Ogenomskinlig,オペーク,,
+See Through,See Through,Se igenom,シースルー,,
+Outlines Only,Outlines Only,Endast konturer,アウトラインだけ,,
+Invisible,Invisible,Osynlig,見えない,,
+Remap This Profile,Remap This Profile,Mappa om den här profilen,このプロフィールをリマップする,,
+Profile 1,Profile 1,Profil 1,プロフィール 1,,
+Profile 2,Profile 2,Profil 2,プロフィール 2,,
+Profile 3,Profile 3,Profil 3,プロフィール 3,,
+Profile 4,Profile 4,Profil 4,プロフィール 4,,
+Show New Items Notification,Show New Items Notification,Visa meddelande om nya objekt,新しいアイテムの通知を表示する,,
+Manage Characters,Manage Characters,Hantera karaktärer,キャラクターを管理する,,
+Online Character List,Online Character List,Karaktärslista online,オンラインキャラクターリスト,,
+Search Character ID,Search Character ID,Sök karaktärs-ID,キャラクターIDを検索する,,
+Delete Character,Delete Character,Ta bort karaktär,キャラクターデリート,,
+Upload Character,Upload Character,Ladda upp karaktär,キャラクターアップロード,,
+Download,Download,Ladda ner,ダウンロード,,
+Online Level List,Online Level List,Onlinenivålista,オンラインレベルリスト,,
+Search Level ID,Search Level ID,Sök nivå-ID,レベルIDを検索する,,
+Custom Levels,Custom Levels,Egna nivåer,カスタムレベル,,
+Levels,Levels,Nivåer,,,
+Part Limit,Part Limit,Part gräns,オブジェクト限界,,
+Entity Limit,Entity Limit,Entity gräns,,,
+Grass,Grass,Gräs,草,,
+Stone,Stone,Sten,石,,
+Wood,Wood,Trä,木,,
+Semisolid Platform,Semisolid Platform,Halvsolid plattform,半当たり地形,,
+Lamp Block,Lamp Block,Lampblock,ランプブロック,,
+Falling Block,Falling Block,Fallande block,落ちるブロック,,
+Falling Block Long,Falling Block Long,Fallande block lång,長い落ちるブロック,,
+Cloud Block,Cloud Block,Molnblock,曇ブロック,,
+Fish,Fish,Fisk,サカナ,,
+Big Fish,Big Fish,Stor fisk,大きなサカナ,,
+Rat,Rat,Råtta,ラット,,
+Big Rat,Big Rat,Stor råtta,大きなラット,,
+Rat Blaster,Rat Blaster,Råttblaster,ラットブラスター,,
+Ladder,Ladder,Stege,はしご,,
+Arrow Sign,Arrow Sign,Pilskylt,矢印看板,,
+One-Way Wall,One-Way Wall,Envägsvägg,一方通行カベ,,
+Cardboard Block,Cardboard Block,Kartongblock,ダンボールブロック,,
+Cardboard,Cardboard,Kartong,ダンボール,,
+Bump in Ground,Bump in Ground,Bump i marken,もぐらの丘,,
+Horizontal Rope,Horizontal Rope,Horisontellt rep,水平ロープ,,
+Tutorial Signs,Tutorial Signs,Handledning skylt,チュートリアル看板,,
+Cake Rat,Cake Rat,Tårtråtta,ケーキラット,,
+PLAYER 1 IS CONTROLLING THE MENU,PLAYER 1 IS CONTROLLING THE MENU,SPELARE 1 STYR MENYN,プレイヤー 1 はメニューをコントロールしている,,
+PLAYER 2 IS CONTROLLING THE MENU,PLAYER 2 IS CONTROLLING THE MENU,SPELARE 2 STYR MENYN,プレイヤー 2 はメニューをコントロールしている,,
+PLAYER 3 IS CONTROLLING THE MENU,PLAYER 3 IS CONTROLLING THE MENU,SPELARE 3 STYR MENYN,プレイヤー 3 はメニューをコントロールしている,,
+PLAYER 4 IS CONTROLLING THE MENU,PLAYER 4 IS CONTROLLING THE MENU,SPELARE 4 STYR MENYN,プレイヤー 4 はメニューをコントロールしている,,
+Setup your Account here,Setup your Account here,Konfigurera ditt konto här,,,
+This is used for uploading levels,This is used for uploading levels,Detta används för att ladda upp nivåer,,,
+Account name,Account name,Kontonamn,,,
+Change Username,Change Username,Ändra användarnamn,,,
+Get Device Username,Get Device Username,Få enhetens användarnamn,,,

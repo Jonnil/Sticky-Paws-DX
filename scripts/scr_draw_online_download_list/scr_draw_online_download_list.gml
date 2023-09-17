@@ -148,7 +148,17 @@ function scr_draw_online_download_list()
 			if (is_array(data))
 			{
 				/* Explain what the code IDs are */
-				scr_draw_text_outlined(580, 76 + 24 + menu_y_offset - 32, string_upper(content_type) + " " + l10n_text("ID") + ":", global.default_text_size, c_menu_outline, c_gray, 1);
+				var content_type_id_text = "";
+				if (content_type == "level")
+				{
+					var content_type_id_text = l10n_text("Level ID");
+				}
+				else
+				if (content_type == "character")
+				{
+					var content_type_id_text = l10n_text("Character ID");
+				}
+				scr_draw_text_outlined(580, 76 + 24 + menu_y_offset - 32, string(content_type_id_text) + ":", global.default_text_size, c_menu_outline, c_gray, 1);
 				
 				/* Get the number of items in the JSON array */
 				var num_items = array_length(data);
@@ -158,7 +168,7 @@ function scr_draw_online_download_list()
 					online_download_index ++;
 					var download_online_x = 100;
 					var download_online_y = 32 + (44 * i);
-					draw_menu_button(download_online_x, 64 + download_online_y + menu_y_offset, "Download", "download_online_" + string(online_download_index), "download_online_" + string(online_download_index));
+					draw_menu_button(download_online_x, 64 + download_online_y + menu_y_offset, l10n_text("Download"), "download_online_" + string(online_download_index), "download_online_" + string(online_download_index));
 					
 					/* Fetch the "name" and "time_created" properties from the JSON object */
 					var item = data[i];
@@ -379,7 +389,7 @@ function scr_draw_online_download_list()
 		}
 		
 		#region /* Draw the Back and Search ID buttons on top of everything */
-		draw_menu_button(0, 0, "Back", "download_online_back", "download_online_back");
+		draw_menu_button(0, 0, l10n_text("Back"), "download_online_back", "download_online_back");
 		draw_sprite_ext(spr_icons_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 		
 		var draw_search_id_y = 42;
@@ -388,12 +398,12 @@ function scr_draw_online_download_list()
 		{
 			if (content_type == "character")
 			{
-				draw_menu_button(0, draw_search_id_y, "Search Character ID", "download_online_search_id", "download_online_search_id");
+				draw_menu_button(0, draw_search_id_y, l10n_text("Search Character ID"), "download_online_search_id", "download_online_search_id");
 			}
 			else
 			if (content_type == "level")
 			{
-				draw_menu_button(0, draw_search_id_y, "Search Level ID", "download_online_search_id", "download_online_search_id");
+				draw_menu_button(0, draw_search_id_y, l10n_text("Search Level ID"), "download_online_search_id", "download_online_search_id");
 			}
 			
 			#region /* Draw Search Key */

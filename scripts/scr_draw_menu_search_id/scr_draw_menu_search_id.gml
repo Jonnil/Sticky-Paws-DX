@@ -303,18 +303,18 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	{
 		
 		#region /* Download file */
-		if (file_exists(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip")) /* Find if a new .zip file has been downloaded */
+		if (file_exists(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip")) /* Find if a new .zip file has been downloaded */
 		{
 			scr_switch_expand_save_data(); /* Expand the save data before unzipping file */
 			if (global.save_data_size_is_sufficient)
 			{
-				zip_unzip(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", working_directory + "downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
+				zip_unzip(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", working_directory + "\\downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
 				/* Must delete downloaded .zip file first, before game can properly recognize the unzipped folder */
-				file_delete(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
-				var downloaded_file_name = string(file_find_first(working_directory + "downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
+				file_delete(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
+				var downloaded_file_name = string(file_find_first(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
 				
 				/* Copy the downloaded file lastly */
-				scr_copy_move_files(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), working_directory + "custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
+				scr_copy_move_files(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), working_directory + "custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
 				
 				#region /* Get downloaded level info */
 				if (what_kind_of_id == "level")
@@ -1004,8 +1004,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		#region /* The level have been successfully downloaded, so delete temporary folders and zip files now */
 		if (delete_file_after_download)
 		{
-			file_delete(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy the unzipped file first */
-			directory_destroy(working_directory + "downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
+			file_delete(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy the unzipped file first */
+			directory_destroy(working_directory + "\\downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
 		}
 		#endregion /* The level have been successfully downloaded, so delete temporary folders and zip files now END */
 		
@@ -1225,8 +1225,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			file_delete(working_directory + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy any leftover files in temporary folder */
-			directory_destroy(working_directory + "downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
+			file_delete(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy any leftover files in temporary folder */
+			directory_destroy(working_directory + "\\downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
 			menu = "searching_for_id_back";
 		}
 	}

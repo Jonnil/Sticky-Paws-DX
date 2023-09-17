@@ -12,15 +12,15 @@ if (global.actually_play_edited_level == false)
 			{
 				draw_set_halign(fa_middle);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Part Limit: " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_white, 1);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Part Limit: " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1));
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Part Limit") + ": " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Part Limit") + ": " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1));
 			}
 			else
 			{
 				global.part_limit_text_alpha = lerp(global.part_limit_text_alpha, 0, 0.05);
 				draw_set_halign(fa_middle);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Part Limit: " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_white, global.part_limit_text_alpha);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Part Limit") + ": " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_white, global.part_limit_text_alpha);
 			}
 			#endregion /* At top of screen, show part limit END */
 			
@@ -29,15 +29,15 @@ if (global.actually_play_edited_level == false)
 			{
 				draw_set_halign(fa_middle);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, "Entity Limit: " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_white, 1);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, "Entity Limit: " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1));
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Entity Limit") + ": " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Entity Limit") + ": " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1));
 			}
 			else
 			{
 				global.part_limit_entity_text_alpha = lerp(global.part_limit_entity_text_alpha, 0, 0.05);
 				draw_set_halign(fa_middle);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, "Entity Limit: " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_white, global.part_limit_entity_text_alpha);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Entity Limit") + ": " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_white, global.part_limit_entity_text_alpha);
 			}
 			#endregion /* At top of screen, show entity limit END */
 			

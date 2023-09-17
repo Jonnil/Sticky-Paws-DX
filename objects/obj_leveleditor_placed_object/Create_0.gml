@@ -39,4 +39,6 @@ if (global.actually_play_edited_level == false)
 	image_index = 0;
 	
 	alarm[0] = 1;
+	global.part_limit ++;
+	global.part_limit_text_alpha = 1;
 }

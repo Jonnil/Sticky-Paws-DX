@@ -1190,7 +1190,7 @@ function scr_draw_upload_level_menu()
 		#region /* Draw back button at top of screen if you have 3 or less tags */
 		if (how_may_tags <= 3)
 		{
-			draw_menu_button(0, 0, "Back", "upload_edit_tags_ok", "upload_edit_tags_ok");
+			draw_menu_button(0, 0, l10n_text("Back"), "upload_edit_tags_ok", "upload_edit_tags_ok");
 		}
 		#endregion /* Draw back button at top of screen if you have 3 or less tags END*/
 		

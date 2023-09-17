@@ -1706,8 +1706,8 @@ function scr_options_level_editor()
 			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_ambience_overworld_y, 16, 0, 1, 1, 32, 32, "", "remove_ambience_overworld", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_ambience_underwater_y, l10n_text("Change Underwater Ambience"), "change_ambience_underwater", "load_official_level_to_take_from");
 			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_ambience_underwater_y, 16, 0, 1, 1, 32, 32, "", "remove_ambience_underwater", "remove_theme_are_you_sure_no");
-			draw_menu_button(level_editor_options_x, change_clear_melody_y, l10n_text("Change Clear Melody"), "change_clear_meldoy", "load_official_level_to_take_from");
-			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_clear_melody_y, 16, 0, 1, 1, 32, 32, "", "remove_clear_meldoy", "remove_theme_are_you_sure_no");
+			draw_menu_button(level_editor_options_x, change_clear_melody_y, l10n_text("Change Clear Melody"), "change_clear_melody", "load_official_level_to_take_from");
+			draw_menu_button_sprite(spr_icons_delete, level_editor_options_x + 432, change_clear_melody_y, 16, 0, 1, 1, 32, 32, "", "remove_clear_melody", "remove_theme_are_you_sure_no");
 			
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
@@ -1727,7 +1727,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown == false)
 				{
-					menu = "change_clear_meldoy";
+					menu = "change_clear_melody";
 					menu_delay = 3;
 				}
 				else
