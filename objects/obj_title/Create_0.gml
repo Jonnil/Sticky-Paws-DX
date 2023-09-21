@@ -85,7 +85,6 @@ info_data = noone; /* The uploaded online levels information will be json parsed
 automatically_search_for_id = false; /* When downloading from online download list, you want to automatically search for the selected ID */
 in_online_download_list_menu = false; /* If you are in the online download list menu or not */
 in_online_download_list_load_menu = false; /* If you are loading online download list or not */
-selected_online_download_index = 1;
 currently_selected_id = ""; /* In the online list, what level/character are you currently selecting? */
 old_currently_selected_id = ""; /* this is just to compare to "currently selected id" once it changes, so that information about that specific id only have to load once */
 spr_download_list_thumbnail = noone;
@@ -290,12 +289,18 @@ if (file_exists("localization.csv"))
 lives = 5; /* Starting lives */
 
 #region /* If title screen should start at the level editor menu or the main menu */
+if (global.automatically_play_downloaded_level)
+{
+	directory_destroy(working_directory + "custom_levels/" + string(global.level_name));
+	menu = "online_download_list_load";
+}
+else
 if (global.character_select_in_this_menu == "level_editor")
 {
 	scr_load_custom_level_initializing();
-	can_input_player1_name = 2;
-	can_input_player2_name = 2;
-	can_input_player3_name = 2;
+	can_input_player1_name = false;
+	can_input_player2_name = false;
+	can_input_player3_name = false;
 	can_input_player4_name = false;
 	can_navigate = true;
 	open_sub_menu = false;

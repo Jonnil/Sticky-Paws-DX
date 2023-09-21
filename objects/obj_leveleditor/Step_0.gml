@@ -56,11 +56,7 @@ if (global.actually_play_edited_level == false)
 		hovering_over_icons = false;
 	}
 	
-	if (display_get_gui_width() > 0)
-	&& (display_get_gui_height() > 0)
-	{
-		surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
-	}
+	scr_resize_application_surface();
 	
 	global.leveleditor_x = x;
 	global.leveleditor_y = y;

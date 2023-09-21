@@ -266,6 +266,7 @@ global.all_loaded_resource_pack = ds_list_create();
 global.all_loaded_title_backgrounds = ds_list_create();
 global.all_loaded_title_logos = ds_list_create();
 global.automatically_pause_when_window_is_unfocused = true; /* Whenever you unfocus the window by clicking off the window, the game pauses by itself */
+global.automatically_play_downloaded_level = false; /* If the player wants to immediately play the downloaded level, then set this variable to true */
 global.background_layer_x_scroll = 1;
 global.background_layer_y_scroll = 1;
 global.character_select_in_this_menu = "main_game"; /* In what menu character select is going to appear in */
@@ -281,6 +282,7 @@ global.custom_foreground1_5 = noone;
 global.custom_foreground_secret = noone;
 global.custom_tileset = noone;
 global.selected_font = 0;
+global.selected_online_download_index = 1; /* Game should remember what file you have selected in Online List for later use */
 global.difficulty = 1; /* Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard */
 global.grid_hsnap = 32; /* Horizontal grid snapping */
 global.grid_vsnap = 32; /* Vertical grid snapping */

@@ -10,6 +10,8 @@ layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), g
 scr_make_background_visible();
 
 #region /* Essential variables */
+prev_display_width = display_get_gui_width();
+prev_display_height = display_get_gui_height();
 global.time_countdown_bonus = 500;
 pause = false;
 if (global.player_can_play[1])

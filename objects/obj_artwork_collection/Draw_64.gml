@@ -344,7 +344,7 @@ if (image_index == 28){current_comment = l10n_text("Artist") + ": William Karlss
 if (image_index == 29){current_comment = l10n_text("Artist") + ": TheOneTrueEgg08 - Just a cat...";}
 if (image_index == 30){current_comment = l10n_text("Artist") + ": FarexBoi - Sticky Peace";}
 if (image_index == 31){current_comment = l10n_text("Artist") + ": Sayo - Sticky Vibe Check";}
-if (image_index == 32){current_comment = l10n_text("Artist") + ": Lil Wild Card Banny - Sticky upside -down OK sign";}
+if (image_index == 32){current_comment = l10n_text("Artist") + ": Lil Wild Card Banny - Sticky upside-down OK sign";}
 if (image_index == 33){current_comment = l10n_text("Artist") + ": Sayo - More Normal Sticky";}
 if (image_index == 34){current_comment = l10n_text("Artist") + ": Sayo - Crazy Sticky";}
 if (image_index == 35){current_comment = l10n_text("Artist") + ": SSgt Myers - Sticky Ball";}

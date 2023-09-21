@@ -8,6 +8,9 @@ skin_folder = "";
 can_save_to_character_config = false;
 loading_assets = false;
 
+prev_display_width = display_get_gui_width();
+prev_display_height = display_get_gui_height();
+
 scr_delete_sprite_properly(global.custom_background1);
 scr_delete_sprite_properly(global.custom_background2);
 scr_delete_sprite_properly(global.custom_background3);

@@ -1,6 +1,7 @@
 /* Save Level Information like if you have cleared the level or if you have a checkpoint */
 function scr_save_level()
 {
+	var level_id = "";
 	
 	#region /* If doing a character clear check, and winning the level, then add in character config that you have done a clear check */
 	if (global.level_clear_rate == "clear")
@@ -80,45 +81,12 @@ function scr_save_level()
 	{
 		var level_name = string(global.level_name);
 		
-		#region /* Save to custom level save file */
-		ini_open(working_directory + "save_files/custom_level_save.ini");
-		ini_write_real(level_name, "lives_until_assist", global.lives_until_assist);
-		ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
-		ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);
-		ini_write_real(level_name, "checkpoint_millisecond", global.checkpoint_millisecond);
-		ini_write_real(level_name, "checkpoint_second", global.checkpoint_second);
-		ini_write_real(level_name, "checkpoint_minute", global.checkpoint_minute);
-		ini_write_real(level_name, "checkpoint_realmillisecond", global.checkpoint_realmillisecond);
-		if (global.timeattack_realmillisecond > 2)
-		{
-			
-			#region /* Save Fastest Time */
-			if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
-			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond))
-			{
-				ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
-				ini_write_real(level_name, "timeattack_second", global.timeattack_second);
-				ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);
-				ini_write_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond);
-			}
-			#endregion /* Save Fastest Time END */
-			
-		}
-		if (score > ini_read_real(level_name, "level_score", false))
-		{
-			ini_write_real(level_name, "level_score", score);
-		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		#endregion /* Save to custom level save file END */
-		
 		#region /* Update ranking highscore to actual custom level */
-		if (global.character_select_in_this_menu == "level_editor")
-		&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 		{
-			if (global.character_select_in_this_menu == "level_editor")
-			{
-				ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-			}
+			ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			
+			var level_id = ini_read_string("info", "level_id", "");
 			
 			#region /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
 			if (global.level_clear_rate == "clear")
@@ -150,9 +118,46 @@ function scr_save_level()
 			}
 			
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-			#endregion /* Update ranking highscore to actual custom level END */
+		}
+		#endregion /* Update ranking highscore to actual custom level END */
+		
+		#region /* Save to custom level save file */
+		ini_open(working_directory + "save_files/custom_level_save.ini");
+		
+		if (level_id != "") /* Update a list of downloaded levels that you have finished */
+		{
+			ini_write_real("finished_downloaded_levels", string(level_id), true);
+		}
+		
+		ini_write_real(level_name, "lives_until_assist", global.lives_until_assist);
+		ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
+		ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);
+		ini_write_real(level_name, "checkpoint_millisecond", global.checkpoint_millisecond);
+		ini_write_real(level_name, "checkpoint_second", global.checkpoint_second);
+		ini_write_real(level_name, "checkpoint_minute", global.checkpoint_minute);
+		ini_write_real(level_name, "checkpoint_realmillisecond", global.checkpoint_realmillisecond);
+		if (global.timeattack_realmillisecond > 2)
+		{
+			
+			#region /* Save Fastest Time */
+			if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
+			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond))
+			{
+				ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
+				ini_write_real(level_name, "timeattack_second", global.timeattack_second);
+				ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);
+				ini_write_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond);
+			}
+			#endregion /* Save Fastest Time END */
 			
 		}
+		if (score > ini_read_real(level_name, "level_score", false))
+		{
+			ini_write_real(level_name, "level_score", score);
+		}
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		#endregion /* Save to custom level save file END */
+		
 	}
 	
 	global.big_collectible1_already_collected = false;

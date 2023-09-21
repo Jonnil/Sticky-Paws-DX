@@ -75,7 +75,7 @@ function scr_draw_upload_rules()
 			{
 				/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
 				select_custom_level_menu_open = false;
-				selected_online_download_index = 1;
+				global.selected_online_download_index = 1;
 			}
 			if (caution_online_takes_you_to == "search_id_ok")
 			{

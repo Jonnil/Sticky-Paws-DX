@@ -9,6 +9,7 @@ var view_height = camera_get_view_height(view_camera[view_current]);
 
 scr_toggle_fullscreen();
 scr_set_controls_used_to_navigate();
+scr_resize_application_surface();
 
 #region /* When changing file, you should restart the room so the right save data can load */
 if (current_file != global.file)
@@ -64,13 +65,6 @@ draw_yscale = lerp(draw_yscale, 1, 0.1);
 #endregion /* Lerp the player position and scale to make the player move smoothly END */
 
 #region /* Pause */
-
-if (display_get_gui_width() > 0)
-&& (display_get_gui_height() > 0)
-{
-	surface_resize(application_surface, display_get_gui_width(), display_get_gui_height());
-}
-
 if (keyboard_check_pressed(vk_escape) ||
 	gamepad_button_check_pressed(global.player_slot[1], gp_select) ||
 	gamepad_button_check_pressed(global.player_slot[1], gp_start) ||

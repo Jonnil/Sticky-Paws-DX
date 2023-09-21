@@ -5,7 +5,7 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	
 	#region /* Button */
 	
-	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + x_origin_offset, y_position + y_origin_offset + 2, x_position + x_origin_offset + spr_width - 1, y_position + y_origin_offset + spr_height))
 	&& (global.controls_used_for_menu_navigation == "mouse")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (open_dropdown == false)
@@ -49,7 +49,7 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	}
 
 	#region /* Clicking the menu button */
-	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + x_origin_offset, y_position + y_origin_offset + 2, x_position + x_origin_offset + spr_width - 1, y_position + y_origin_offset + spr_height))
 	{
 		if (menu_takes_you_to != false)
 		|| (menu_takes_you_to != noone)

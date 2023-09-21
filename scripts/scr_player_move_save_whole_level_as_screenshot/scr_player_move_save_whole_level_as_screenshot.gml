@@ -20,7 +20,11 @@ function scr_player_move_save_whole_level_as_screenshot()
 			camera_set_view_pos(view_camera[view_current], 0, 0); /* Set camera position in top left corner when taking full level map screenshots */
 			camera_set_view_size(view_camera[view_current], room_width, room_height);
 			display_set_gui_size(room_width, room_height);
-			surface_resize(application_surface, room_width, room_height);
+			if (room_width > 0) /* Check if the dimensions are valid (greater than 0) */
+			&& (room_height > 0) /* In the case where dimensions are not valid, then don't resize the surface, otherwise game will crash */
+			{
+				surface_resize(application_surface, room_width, room_height);
+			}
 			window_set_rectangle(0, 0, room_width, room_height);
 			full_level_map_screenshot_timer = 1;
 		}

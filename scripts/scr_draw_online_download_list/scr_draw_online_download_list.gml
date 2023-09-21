@@ -24,7 +24,14 @@ function scr_draw_online_download_list()
 		ds_map_destroy(map);
 		#endregion /* Get Online Download List END */
 		
-		menu = "download_online_" + string(selected_online_download_index);
+		if (content_type == "level")
+		{
+			menu = "play_online_" + string(global.selected_online_download_index);
+		}
+		else
+		{
+			menu = "download_online_" + string(global.selected_online_download_index);
+		}
 		
 		automatically_search_for_id = false;
 		in_online_download_list_menu = true;
@@ -71,8 +78,17 @@ function scr_draw_online_download_list()
 					{
 						show_level_editor_corner_menu = true;
 					}
-					menu = "online_download_list";
-					select_custom_level_menu_open = true;
+					if (global.automatically_play_downloaded_level)
+					{
+						global.automatically_play_downloaded_level = false;
+						menu = "level_editor";
+						select_custom_level_menu_open = false;
+					}
+					else
+					{
+						menu = "online_download_list";
+						select_custom_level_menu_open = true;
+					}
 				}
 				else
 				{
@@ -167,8 +183,19 @@ function scr_draw_online_download_list()
 				{
 					online_download_index ++;
 					var download_online_x = 100;
+					var play_online_x = download_online_x + 230;
 					var download_online_y = 32 + (44 * i);
-					draw_menu_button(download_online_x, 64 + download_online_y + menu_y_offset, l10n_text("Download"), "download_online_" + string(online_download_index), "download_online_" + string(online_download_index));
+					
+					draw_menu_button_sprite(spr_menu_button, download_online_x, 64 + download_online_y + menu_y_offset, 0, 0, 0.5, 1, 185, 42, l10n_text("Download"), "download_online_" + string(online_download_index), "download_online_" + string(online_download_index));
+					if (content_type == "level")
+					{
+						var id_and_date_x = play_online_x + 410
+						draw_menu_button(play_online_x, 64 + download_online_y + menu_y_offset, l10n_text("Play"), "play_online_" + string(online_download_index), "play_online_" + string(online_download_index));
+					}
+					else
+					{
+						var id_and_date_x = download_online_x + 410
+					}
 					
 					/* Fetch the "name" and "time_created" properties from the JSON object */
 					var item = data[i];
@@ -178,6 +205,7 @@ function scr_draw_online_download_list()
 					var draw_download_time = string_replace(item.time_created, "T", " ");
 					draw_download_time = string_replace(draw_download_time, "Z", "");
 					
+					#region /* If you are hovering on download button */
 					if (menu == "download_online_" + string(online_download_index))
 					{
 						currently_selected_id = draw_download_id;
@@ -185,7 +213,7 @@ function scr_draw_online_download_list()
 						menu_cursor_y_position = 64 + download_online_y;
 						var selected_download_c_menu_fill = c_lime;
 						/* Highlight the text in lime green so the player knows they are selecting this download */
-						selected_online_download_index = online_download_index;
+						global.selected_online_download_index = online_download_index;
 						
 						#region /* Download selected file when pressing A */
 						if (key_a_pressed)
@@ -196,6 +224,7 @@ function scr_draw_online_download_list()
 							{
 								
 								#region /* Go to download menu */
+								global.automatically_play_downloaded_level = false; /* You will be taken to a menu showing you different options what you want to do with the downloaded file */
 								global.search_id = string_upper(draw_download_id);
 								keyboard_string = string_upper(draw_download_id);
 								search_id = string_upper(draw_download_id); /* Then need to set search ID */
@@ -209,20 +238,60 @@ function scr_draw_online_download_list()
 						#endregion /* Download selected file when pressing A END */
 						
 					}
-					else
+					#endregion /* If you are hovering on download button END */
+					
+					#region /* If you are hovering on play button */
+					if (menu == "play_online_" + string(online_download_index))
+					&& (content_type == "level")
+					{
+						currently_selected_id = draw_download_id;
+						
+						menu_cursor_y_position = 64 + download_online_y;
+						var selected_download_c_menu_fill = c_lime;
+						/* Highlight the text in lime green so the player knows they are selecting this download */
+						global.selected_online_download_index = online_download_index;
+						
+						#region /* Play selected level when pressing A */
+						if (key_a_pressed)
+						|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), play_online_x, 64 + download_online_y + menu_y_offset, play_online_x + 370, 64 + download_online_y + menu_y_offset + 41))
+						&& (mouse_check_button_released(mb_left))
+						{
+							if (menu_delay == 0 && menu_joystick_delay == 0)
+							{
+								
+								#region /* Go download the level and immediately play */
+								global.automatically_play_downloaded_level = true; /* You will play the level as soon as it's been downloaded */
+								global.search_id = string_upper(draw_download_id);
+								keyboard_string = string_upper(draw_download_id);
+								search_id = string_upper(draw_download_id); /* Then need to set search ID */
+								automatically_search_for_id = true; /* Don't set this variable to false yet, it's used in "scr_draw_menu_search_id" to automatically enter the search ID. We need to do the HTTP Request in that script */
+								in_online_download_list_menu = false; /* We are not supposed to show the online download list menu when going to search ID menu */
+								menu = "search_id_ok";
+								#endregion /* Go download the level and immediately play END */
+								
+							}
+						}
+						#endregion /* Play selected level when pressing A END */
+						
+					}
+					#endregion /* If you are hovering on play button END */
+					
+					if (menu != "download_online_" + string(online_download_index))
+					&& (menu != "play_online_" + string(online_download_index))
 					{
 						var selected_download_c_menu_fill = c_menu_fill;
 					}
+					
 					draw_set_halign(fa_left);
 					
 					/* Write the list index to the left of download button */
 					scr_draw_text_outlined(32, 86 + download_online_y + menu_y_offset, string(online_download_index), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
 					
 					/* Write the ID */
-					scr_draw_text_outlined(510, 76 + download_online_y + menu_y_offset, string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					scr_draw_text_outlined(id_and_date_x, 76 + download_online_y + menu_y_offset, string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
 					
 					/* Write date of upload */
-					scr_draw_text_outlined(510, 96 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.5, c_menu_outline, selected_download_c_menu_fill, 1);
+					scr_draw_text_outlined(id_and_date_x, 96 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.5, c_menu_outline, selected_download_c_menu_fill, 1);
 					
 				}
 			}
@@ -290,7 +359,14 @@ function scr_draw_online_download_list()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "download_online_" + string(num_items);
+					if (content_type == "level")
+					{
+						menu = "play_online_" + string(num_items);
+					}
+					else
+					{
+						menu = "download_online_" + string(num_items);
+					}
 				}
 				else
 				if (key_down)
@@ -314,12 +390,28 @@ function scr_draw_online_download_list()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "download_online_1";
+					if (content_type == "level")
+					{
+						menu = "play_online_1";
+					}
+					else
+					{
+						menu = "download_online_1";
+					}
 				}
 			}
 			else
 			if (menu == "download_online_1")
 			{
+				if (key_right)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					if (content_type == "level")
+					{
+						menu = "play_online_1";
+					}
+				}
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
@@ -342,21 +434,94 @@ function scr_draw_online_download_list()
 				}
 			}
 			else
-			if (menu == "download_online_" + string(selected_online_download_index))
+			if (menu == "download_online_" + string(global.selected_online_download_index))
 			{
+				if (key_right)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					if (content_type == "level")
+					{
+						menu = "play_online_" + string(global.selected_online_download_index);
+					}
+				}
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "download_online_" + string(selected_online_download_index - 1);
+					menu = "download_online_" + string(global.selected_online_download_index - 1);
 				}
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (selected_online_download_index < num_items)
+				&& (global.selected_online_download_index < num_items)
 				{
 					menu_delay = 3;
-					menu = "download_online_" + string(selected_online_download_index + 1);
+					menu = "download_online_" + string(global.selected_online_download_index + 1);
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "download_online_back";
+				}
+			}
+			else
+			if (menu == "play_online_1")
+			{
+				if (key_left)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "download_online_1";
+				}
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "download_online_search_id";
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					if (num_items >= 2)
+					&& (content_type == "level")
+					{
+						menu = "play_online_2";
+					}
+					else
+					{
+						menu = "download_online_back";
+					}
+				}
+			}
+			else
+			if (menu == "play_online_" + string(global.selected_online_download_index))
+			{
+				if (key_left)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "download_online_" + string(global.selected_online_download_index);
+				}
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (content_type == "level")
+				{
+					menu_delay = 3;
+					menu = "play_online_" + string(global.selected_online_download_index - 1);
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (global.selected_online_download_index < num_items)
+				&& (content_type == "level")
+				{
+					menu_delay = 3;
+					menu = "play_online_" + string(global.selected_online_download_index + 1);
 				}
 				else
 				if (key_down)
@@ -428,7 +593,7 @@ function scr_draw_online_download_list()
 		if (menu == "download_online_back")
 		|| (menu == "download_online_search_id")
 		|| (menu == "download_online_1")
-		|| (menu == "download_online_" + string(selected_online_download_index))
+		|| (menu == "download_online_" + string(global.selected_online_download_index))
 		{
 			if (content_type == "level")
 			{

@@ -60,14 +60,10 @@ if (draw_xscale >= 0.8)
 	}
 }
 
-if (hspeed < 0)
-&& (x < camera_get_view_x(view_camera[view_current]))
-|| (hspeed > 0)
-&& (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
-if (vspeed < 0)
-&& (y < camera_get_view_y(view_camera[view_current]))
-|| (vspeed > 0)
-&& (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
+if (x < camera_get_view_x(view_camera[view_current]))
+|| (x > camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
+|| (y < camera_get_view_y(view_camera[view_current]))
+|| (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 {
 	instance_destroy();
 }
