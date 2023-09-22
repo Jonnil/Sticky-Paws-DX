@@ -7,6 +7,11 @@ function scr_controls_for_level_editor()
 	key_right = scr_key_initialize(key_right, 0, 1, action.right) || (gamepad_axis_value(global.player_slot[1], gp_axislh) > 0) && (menu_joystick_delay == 0);
 	key_down = scr_key_initialize(key_down, 0, 1, action.down) || (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0) && (menu_joystick_delay == 0);
 	
+	key_up_pressed = scr_key_initialize(key_up, 1, 1, action.up);
+	key_left_pressed = scr_key_initialize(key_left, 1, 1, action.left);
+	key_right_pressed = scr_key_initialize(key_right, 1, 1, action.right);
+	key_down_pressed = scr_key_initialize(key_down, 1, 1, action.down);
+	
 	#region /* Player 1 Key Accept */
 	
 	/* Player 1 Key Accept Hold */ key_a_hold = (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
@@ -48,6 +53,7 @@ function scr_controls_for_level_editor()
 	|| (gamepad_button_check(global.player_slot[1], gp_stickl))
 	|| (gamepad_button_check(global.player_slot[1], gp_stickr))
 	|| (keyboard_check(vk_control))
+	|| (double_tap_move_camera_faster)
 	
 	/* Player 1 Keyboard Shortcut Change Draw Size */ key_change_draw_size = ord("D");
 	/* Player 1 Gamepad Shortcut Change Draw Size */ button_change_draw_size = gp_face3;

@@ -1556,10 +1556,10 @@ if (global.actually_play_edited_level == false)
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(display_get_gui_width() - 80, 80 + icons_at_top_y, l10n_text("Grid X") + ": " + string(global.grid_hsnap), global.default_text_size, c_black, c_white, 1);
 				scr_draw_text_outlined(display_get_gui_width() - 80, 110 + icons_at_top_y, l10n_text("Grid Y") + ": " + string(global.grid_vsnap), global.default_text_size, c_black, c_white, 1);
-				if (global.grid_hsnap == 32)
-				&& (global.grid_hsnap == 32)
+				if (global.grid_hsnap != 32)
+				&& (global.grid_hsnap != 32)
 				{
-					scr_draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, l10n_text("Default grid size!"), global.default_text_size * 0.5, c_black, c_white, 1);
+					scr_draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, l10n_text("Not default grid size!"), global.default_text_size * 0.5, c_black, c_white, 1);
 				}
 				draw_sprite_ext(spr_menu_button_up_down, 0, display_get_gui_width() - 32, 80 + icons_at_top_y + 16, 1, 1, 0, c_white, 1);
 				if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32 + 2, display_get_gui_width() + 64, 80 + icons_at_top_y + 16))

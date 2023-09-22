@@ -17,6 +17,59 @@ if (global.actually_play_edited_level == false)
 	}
 	#endregion /* Autosave END */
 	
+	#region /* Check if keys are double-tapped */
+	if (key_up_pressed)
+	|| (key_down_pressed)
+	|| (key_left_pressed)
+	|| (key_right_pressed)
+	{
+		if key_double_tap_timer <= 0 {
+			if (key_up_pressed)
+			{
+				key_double_tap_direction = "up";
+			}
+			else
+			if (key_down_pressed)
+			{
+				key_double_tap_direction = "down";
+			}
+			else
+			if (key_left_pressed)
+			{
+				key_double_tap_direction = "left";
+			}
+			else
+			if (key_right_pressed)
+			{
+				key_double_tap_direction = "right";
+			}
+			double_tap_move_camera_faster = false;
+			key_double_tap_timer = room_speed * 0.2; /* Set a time window for the double-tap */
+		} else {
+			if (key_up_pressed)
+			&& (key_double_tap_direction == "up")
+			|| (key_down_pressed)
+			&& (key_double_tap_direction == "down")
+			|| (key_left_pressed)
+			&& (key_double_tap_direction == "left")
+			|| (key_right_pressed)
+			&& (key_double_tap_direction == "right")
+			{
+				double_tap_move_camera_faster = true;
+			}
+		}
+	}
+	if (!key_up)
+	&& (!key_down)
+	&& (!key_left)
+	&& (!key_right)
+	{
+		if key_double_tap_timer > 0 {
+			key_double_tap_timer -= 1;
+		}
+	}
+	#endregion /* Check if keys are double-tapped END */
+	
 	cam_x = camera_get_view_x(view_camera[view_current]);
 	cam_y = camera_get_view_y(view_camera[view_current]);
 	cam_width = camera_get_view_width(view_camera[view_current]);

@@ -2,10 +2,8 @@ function scr_initialize_level_information_ini()
 {
 	
 	#region /* Initialize level_information.ini */
-	var main_level_index = ds_list_find_value(global.all_loaded_main_levels, global.select_level_index);
-	
 	if (global.character_select_in_this_menu == "main_game")
-	&& (file_exists("levels/" + string(main_level_index) + "/data/level_information.ini"))
+	&& (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))
 	|| (global.character_select_in_this_menu == "level_editor")
 	&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 	{
@@ -61,7 +59,6 @@ function scr_initialize_level_information_ini()
 		global.enable_time_countdown = get_custom_level_information_real("info", "enable_time_countdown", false);
 		global.time_countdown = get_custom_level_information_real("info", "time_countdown", 500);
 		global.rain = get_custom_level_information_real("info", "rain", false);
-		global.deactivate_objects_from_most_zoomed_out = get_custom_level_information_real("info", "deactivate_objects_from_most_zoomed_out", false);
 		
 		intro_animation = get_custom_level_information_string("info", "intro_animation", "");
 		intro_animation_play_only_once = get_custom_level_information_real("info", "intro_animation_play_only_once", false);
@@ -69,9 +66,7 @@ function scr_initialize_level_information_ini()
 		global.default_view_width = get_custom_level_information_real("info", "default_view_width", 1920);
 		global.default_view_height = get_custom_level_information_real("info", "default_view_height", 1080);
 		
-		if (global.play_edited_level == false)
-		&& (global.actually_play_edited_level == false)
-		&& (object_index == obj_leveleditor)
+		if (object_index == obj_leveleditor)
 		{
 			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), ini_read_real("info", "view_yview", 0)); /* Set camera position on the last positions you had the camera when doing level editing */
 			x = ini_read_real("info", "view_xview", 0);

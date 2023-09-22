@@ -979,7 +979,7 @@ function scr_character_select_menu_step()
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					menu_delay = 3;
+					menu_delay = 6;
 					image_alpha = 1;
 					player_start_game = false;
 					can_input_player1_name = 2;

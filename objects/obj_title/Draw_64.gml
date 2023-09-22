@@ -506,6 +506,7 @@ if (global.arcade_mode == false && in_settings == false)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (in_settings == false)
 		{
+			menu_delay = 3;
 			if (mouse_check_button_released(mb_left))
 			{
 				player1_automatically_join = true; /* Player 1 joins if you click Main Game */
@@ -525,12 +526,11 @@ if (global.arcade_mode == false && in_settings == false)
 			global.play_edited_level = false;
 			scr_load_character_initializing();
 			menu = "load_characters";
-			menu_delay = 3;
 		}
 		#endregion /* Click Main Game END */
-	
+		
 		else
-	
+		
 		#region /* Click Level Editor */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, level_editor_y, display_get_gui_width() * 0.5 + 185, level_editor_y + 42))
 		&& (mouse_check_button_released(mb_left))
@@ -563,6 +563,7 @@ if (global.arcade_mode == false && in_settings == false)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.demo == false)
 			{
+				menu_delay = 3;
 				scr_audio_play(menuvoice_leveleditor, volume_source.voice);
 				global.doing_clear_check = false;
 				global.actually_play_edited_level = false;
@@ -570,7 +571,6 @@ if (global.arcade_mode == false && in_settings == false)
 				global.character_select_in_this_menu = "level_editor";
 				scr_load_character_initializing();
 				menu = "load_characters";
-				menu_delay = 3;
 				global.level_editor_level = 1;
 			}
 			#endregion /* Select Level Editor END */

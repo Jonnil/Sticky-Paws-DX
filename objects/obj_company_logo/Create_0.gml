@@ -419,7 +419,6 @@ global.time_countdown = 500; /* Countdown timer before you get a Time Over, defa
 global.time_countdown_bonus = 500; /* Bonus countdown timer that gives extra points if you finish a level quickly, default should be "500" so you get bonus points if you win a level less than 8 minutes */
 global.rain = false;
 global.deactivate_timer = 999; /* A timer that counts up, and determines when certain "activate" and "deactivate" functions will run. Running these functions every time will slow the game down. Only run these functions when absolutely necessary */
-global.deactivate_objects_from_most_zoomed_out = false; /* In some levels, you want to deactivate objects from most zoomed out state, so objects are working outside view */
 global.make_every_tileset_into_default_tileset = false;
 global.timeattack_millisecond = 0;
 global.timeattack_second = 0;

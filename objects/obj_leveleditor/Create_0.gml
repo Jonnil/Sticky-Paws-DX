@@ -104,6 +104,9 @@ if (global.actually_play_edited_level == false)
 {
 	autosave_timer = (60 * 3) + 1;
 	
+	key_double_tap_timer = 0;
+	key_double_tap_direction = "";
+	double_tap_move_camera_faster = false;
 	key_up = noone;
 	key_left = noone;
 	key_right = noone;

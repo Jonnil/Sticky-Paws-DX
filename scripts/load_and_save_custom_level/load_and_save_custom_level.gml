@@ -231,7 +231,6 @@ function scr_save_level_information()
 		ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
 		ini_write_real("info", "default_view_height", global.default_view_height);
 		ini_write_real("info", "default_view_width", global.default_view_width);
-		ini_write_real("info", "deactivate_objects_from_most_zoomed_out", global.deactivate_objects_from_most_zoomed_out);
 		ini_write_real("info", "rain", global.rain);
 		ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
 		ini_write_real("info", "time_countdown", global.time_countdown);
