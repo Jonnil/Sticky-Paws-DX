@@ -359,7 +359,6 @@ if (global.play_edited_level) /* When playtesting the level */
 			can_click_on_pause_key = true;
 		}
 		if (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_click_on_pause_key)
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
 		|| (gamepad_button_check_pressed(global.player_slot[1], gp_select))

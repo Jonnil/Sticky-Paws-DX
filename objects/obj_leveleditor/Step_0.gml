@@ -23,7 +23,8 @@ if (global.actually_play_edited_level == false)
 	|| (key_left_pressed)
 	|| (key_right_pressed)
 	{
-		if key_double_tap_timer <= 0 {
+		if key_double_tap_timer <= 0
+		{
 			if (key_up_pressed)
 			{
 				key_double_tap_direction = "up";
@@ -43,9 +44,10 @@ if (global.actually_play_edited_level == false)
 			{
 				key_double_tap_direction = "right";
 			}
-			double_tap_move_camera_faster = false;
 			key_double_tap_timer = room_speed * 0.2; /* Set a time window for the double-tap */
-		} else {
+		}
+		else
+		{
 			if (key_up_pressed)
 			&& (key_double_tap_direction == "up")
 			|| (key_down_pressed)
@@ -57,6 +59,10 @@ if (global.actually_play_edited_level == false)
 			{
 				double_tap_move_camera_faster = true;
 			}
+			else
+			{
+				key_double_tap_timer = 0;
+			}
 		}
 	}
 	if (!key_up)
@@ -64,8 +70,13 @@ if (global.actually_play_edited_level == false)
 	&& (!key_left)
 	&& (!key_right)
 	{
-		if key_double_tap_timer > 0 {
+		if key_double_tap_timer > 0
+		{
 			key_double_tap_timer -= 1;
+			if key_double_tap_timer <= 0
+			{
+				double_tap_move_camera_faster = false;
+			}
 		}
 	}
 	#endregion /* Check if keys are double-tapped END */

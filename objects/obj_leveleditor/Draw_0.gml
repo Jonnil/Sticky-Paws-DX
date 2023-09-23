@@ -21,13 +21,6 @@ if (global.actually_play_edited_level == false)
 		}
 	}
 	
-	#region /* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is */
-	if (quit_level_editor == false)
-	{
-		draw_circle_color(view_center_x, view_center_y, 3, c_black, c_white, false);
-	}
-	#endregion /* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is END */
-	
 	#region /* Draw where player will do playtesting from */
 	if (global.sprite_player_stand[4] > 0) /* Display Player 4 behind Player 3 */
 	&& (quit_level_editor == false)
