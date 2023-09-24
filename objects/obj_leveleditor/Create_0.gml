@@ -124,6 +124,7 @@ if (global.actually_play_edited_level == false)
 	
 	current_object_description = "";
 	placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
+	current_object_category = "terrain"; /* Seperate objects into different categories, to make objects easier to find */
 	
 	scr_initialize_level_information_ini();
 	

@@ -1826,6 +1826,72 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Click icons at top of screen */
 		
+		#region /* Object Categories Icons */
+		var icons_object_category_terrain_x = display_get_gui_width() * 0.5 - 64;
+		var icons_object_category_item_x = display_get_gui_width() * 0.5;
+		var icons_object_category_enemy_x = display_get_gui_width() * 0.5 + 64;
+		if (current_object_category == "terrain")
+		{
+			draw_sprite_ext(spr_icons_object_categories, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(spr_icons_object_categories, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_gray, 1);
+		}
+		if (current_object_category == "item")
+		{
+			draw_sprite_ext(spr_icons_object_categories, 1, icons_object_category_item_x, 32, 1, 1, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(spr_icons_object_categories, 1, icons_object_category_item_x, 32, 1, 1, 0, c_gray, 1);
+		}
+		if (current_object_category == "enemy")
+		{
+			draw_sprite_ext(spr_icons_object_categories, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(spr_icons_object_categories, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_gray, 1);
+		}
+		
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_terrain_x - 32, 0, icons_object_category_terrain_x + 32, + 64))
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(icons_object_category_terrain_x - 32, 0, icons_object_category_terrain_x + 32, 64, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
+			if (mouse_check_button_pressed(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			{	
+				current_object_category = "terrain";
+			}
+		}
+		else
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_item_x - 32, 0, icons_object_category_item_x + 32, + 64))
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(icons_object_category_item_x - 32, 0, icons_object_category_item_x + 32, 64, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
+			if (mouse_check_button_pressed(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			{
+				current_object_category = "item";
+			}
+		}
+		else
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_enemy_x - 32, 0, icons_object_category_enemy_x + 32, + 64))
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(icons_object_category_enemy_x - 32, 0, icons_object_category_enemy_x + 32, 64, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
+			if (mouse_check_button_pressed(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			{
+				current_object_category = "enemy";
+			}
+		}
+		#endregion /* Object Categories Icons END */
+		
 		#region /* Toggle Grid */
 		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, - 64, display_get_gui_width() - 192, + 64))
 		&& (global.controls_used_for_menu_navigation == "mouse")
