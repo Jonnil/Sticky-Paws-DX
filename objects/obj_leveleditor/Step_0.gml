@@ -105,6 +105,7 @@ if (global.actually_play_edited_level == false)
 	&& (global.enable_difficutly_layers_in_level_editor)
 	&& (set_difficulty_mode == false)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
+	|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 64 - 64 - 32, 0, display_get_gui_width() * 0.5 + 64 + 64 + 32, 64)) /* Can't place objects when clicking the object category buttons */
 	{
 		if (global.controls_used_for_menu_navigation == "mouse")
 		{
@@ -1208,6 +1209,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Select Object Menu */
 	if (mouse_check_button(mb_any))
+	&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 64 - 64 - 32, 0, display_get_gui_width() * 0.5 + 64 + 64 + 32, 64)) /* Can't make menu fade away quicker when clicking the object category buttons */
 	|| (keyboard_check(vk_anykey))
 	|| (key_a_hold)
 	{

@@ -1827,9 +1827,11 @@ if (global.actually_play_edited_level == false)
 		#region /* Click icons at top of screen */
 		
 		#region /* Object Categories Icons */
-		var icons_object_category_terrain_x = display_get_gui_width() * 0.5 - 64;
+		var icons_object_category_terrain_x = display_get_gui_width() * 0.5 - 64 - 64;
+		var icons_object_category_decoration_x = display_get_gui_width() * 0.5 - 64;
 		var icons_object_category_item_x = display_get_gui_width() * 0.5;
 		var icons_object_category_enemy_x = display_get_gui_width() * 0.5 + 64;
+		var icons_object_category_gizmo_x = display_get_gui_width() * 0.5 + 64 + 64;
 		if (current_object_category == "terrain")
 		{
 			draw_sprite_ext(spr_icons_object_categories, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_white, 1);
@@ -1837,6 +1839,14 @@ if (global.actually_play_edited_level == false)
 		else
 		{
 			draw_sprite_ext(spr_icons_object_categories, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_gray, 1);
+		}
+		if (current_object_category == "decoration")
+		{
+			draw_sprite_ext(spr_icons_object_categories, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(spr_icons_object_categories, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_gray, 1);
 		}
 		if (current_object_category == "item")
 		{
@@ -1854,6 +1864,14 @@ if (global.actually_play_edited_level == false)
 		{
 			draw_sprite_ext(spr_icons_object_categories, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_gray, 1);
 		}
+		if (current_object_category == "gizmo")
+		{
+			draw_sprite_ext(spr_icons_object_categories, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(spr_icons_object_categories, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_gray, 1);
+		}
 		
 		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_terrain_x - 32, 0, icons_object_category_terrain_x + 32, + 64))
 		{
@@ -1862,8 +1880,22 @@ if (global.actually_play_edited_level == false)
 			draw_set_alpha(1);
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
-			{	
+			{
+				selected_menu_alpha = 2;
 				current_object_category = "terrain";
+			}
+		}
+		else
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_decoration_x - 32, 0, icons_object_category_decoration_x + 32, + 64))
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(icons_object_category_decoration_x - 32, 0, icons_object_category_decoration_x + 32, 64, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
+			if (mouse_check_button_pressed(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			{
+				selected_menu_alpha = 2;
+				current_object_category = "decoration";
 			}
 		}
 		else
@@ -1875,6 +1907,7 @@ if (global.actually_play_edited_level == false)
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
+				selected_menu_alpha = 2;
 				current_object_category = "item";
 			}
 		}
@@ -1887,7 +1920,21 @@ if (global.actually_play_edited_level == false)
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
+				selected_menu_alpha = 2;
 				current_object_category = "enemy";
+			}
+		}
+		else
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_gizmo_x - 32, 0, icons_object_category_gizmo_x + 32, + 64))
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(icons_object_category_gizmo_x - 32, 0, icons_object_category_gizmo_x + 32, 64, c_white, c_white, c_white, c_white, false);
+			draw_set_alpha(1);
+			if (mouse_check_button_pressed(mb_left))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			{
+				selected_menu_alpha = 2;
+				current_object_category = "gizmo";
 			}
 		}
 		#endregion /* Object Categories Icons END */

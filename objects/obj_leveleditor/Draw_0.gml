@@ -93,7 +93,7 @@ if (global.actually_play_edited_level == false)
 	if (quit_level_editor <= 0)
 	{
 		draw_set_alpha(selected_menu_alpha);
-		draw_rectangle_color(cam_x, cam_y, cam_x + cam_width, cam_y + 128, c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(cam_x, cam_y, cam_x + cam_width, cam_y + 128 + 64, c_black, c_black, c_black, c_black, false);
 	}
 	
 	#region /* List of Placable Objects */
@@ -129,6 +129,15 @@ if (global.actually_play_edited_level == false)
 		}
 		#endregion /* Terrain Objects END */
 		
+		#region /* Decoration Objects */
+		if (current_object_category == "decoration")
+		{
+			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARROW_SIGN, false, spr_arrow_sign, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Arrow Sign"));
+			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIRD, true, spr_bird, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Bird"));
+			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SIGN_CROUCH, true, spr_sign_crouch, spr_wall, + 64, 0.5, 0, c_white,,,,,l10n_text("Tutorial Signs"));
+		}
+		#endregion /* Decoration Objects END */
+		
 		#region /* Item Objects */
 		if (current_object_category == "item")
 		{
@@ -157,16 +166,9 @@ if (global.actually_play_edited_level == false)
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_DOOR, false, spr_door, spr_wall, + 64, 1, 0, c_white, -16,,,,l10n_text("Door"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPRING, false, spr_spring, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Spring"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_LADDER, true, spr_ladder, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Ladder"));
-			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARROW_SIGN, false, spr_arrow_sign, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Arrow Sign"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CHECKPOINT, false, spr_checkpoint, spr_wall, + 64, 1, 0, c_white, -32,,,,l10n_text("Checkpoint"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK, true, spr_spikes_emerge_block, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Emerging Spikes"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ONEWAY, false, spr_oneway, spr_wall, + 64, 1, 0, c_white, -16,,,,l10n_text("One-Way Wall"));
-		}
-		#endregion /* Gizmo Objects END */
-		
-		#region /* Special Items */
-		if (current_object_category == "special")
-		{
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK, true, spr_cardboard_block, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Carbdoard Block"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD, true, spr_cardboard, spr_cardboard, + 64, 0.75, 0, c_white, 0, -8,,,l10n_text("Cardboard"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD_LONG, true, spr_cardboard_long, spr_cardboard_long, + 64, 0.5, 0, c_white, 0, -16,,,l10n_text("Long Cardboard"));
@@ -182,8 +184,6 @@ if (global.actually_play_edited_level == false)
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER, false, spr_water_level_change_faster, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Change Water LEvel Faster"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, true, spr_clipped_shirt, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Clipped Clothes"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUCKET, true, spr_bucket, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Bucket - Let clothes drop into the bucket to get rewards"));
-			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIRD, true, spr_bird, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Bird"));
-			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SIGN_CROUCH, true, spr_sign_crouch, spr_wall, + 64, 0.5, 0, c_white,,,,,l10n_text("Tutorial Signs"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BOSS_BARRIER, true, spr_boss_barrier, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Boss Barrier - This block dissapears when Mousette is defeated"));
 			var num_cake_stealing_enemy = order_index; scr_draw_level_editor_placable_object(num_cake_stealing_enemy, LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false, global.resource_pack_sprite_cake, spr_wall, + 64, 1, 0, c_white, -16, 0, 1, 0, l10n_text("Cake Rat"));
 			//scr_draw_level_editor_placable_object(num_cake_stealing_enemy, LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false, sprite_basic_enemy, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Cake Rat"));
@@ -192,9 +192,9 @@ if (global.actually_play_edited_level == false)
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_NPC, false, spr_npc, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("NPC - This object is unfinished!!!"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_RING, false, spr_ring, spr_wall, + 64, 1, 0, c_white,,,,,l10n_text("Ring - Swing with long tongue on this ring"));
 		}
-		#endregion /* Special Items END */
+		#endregion /* Gizmo Objects END */
 		
-		scr_draw_text_outlined(view_center_x, cam_y + 114, l10n_text(current_object_description), global.default_text_size * 0.75, noone, c_white, selected_menu_alpha);
+		scr_draw_text_outlined(view_center_x, cam_y + 114 + 64, l10n_text(current_object_description), global.default_text_size * 0.75, noone, c_white, selected_menu_alpha);
 		
 		total_number_of_objects = order_index - 1; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
 	}
@@ -350,13 +350,13 @@ if (global.actually_play_edited_level == false)
 		#region /* Draw an arrow pointing to currently selected object */
 		draw_set_color(c_black);
 		draw_set_alpha(selected_menu_alpha);
-		draw_arrow(view_center_x, cam_y + 16 - 8, view_center_x, cam_y + 16 + 8, 40);
+		draw_arrow(view_center_x, cam_y + 16 - 8 + 32, view_center_x, cam_y + 16 + 8 + 32, 40);
 		draw_set_color(c_white);
-		draw_arrow(view_center_x, cam_y + 16 - 8, view_center_x, cam_y + 16 + 8, 30);
+		draw_arrow(view_center_x, cam_y + 16 - 8 + 32, view_center_x, cam_y + 16 + 8 + 32, 30);
 		draw_set_color(c_black);
-		draw_arrow(view_center_x, cam_y + 110 - 16 + 8, view_center_x, cam_y + 110 - 16 - 8, 40);
+		draw_arrow(view_center_x, cam_y + 110 - 16 + 8 + 32, view_center_x, cam_y + 110 - 16 - 8 + 32, 40);
 		draw_set_color(c_white);
-		draw_arrow(view_center_x, cam_y + 110 - 16 + 8, view_center_x, cam_y + 110 - 16 - 8, 30);
+		draw_arrow(view_center_x, cam_y + 110 - 16 + 8 + 32, view_center_x, cam_y + 110 - 16 - 8 + 32, 30);
 		draw_set_alpha(1);
 		#endregion /* Draw an arrow pointing to currently selected object END */
 		
