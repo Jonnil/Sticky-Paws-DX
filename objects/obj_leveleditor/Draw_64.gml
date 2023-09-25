@@ -17,15 +17,15 @@ if (global.actually_play_edited_level == false)
 			{
 				draw_set_halign(fa_middle);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Part Limit") + ": " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_white, 1);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Part Limit") + ": " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1));
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 80, l10n_text("Part Limit") + ": " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 80, l10n_text("Part Limit") + ": " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1));
 			}
 			else
 			{
 				global.part_limit_text_alpha = lerp(global.part_limit_text_alpha, 0, 0.05);
 				draw_set_halign(fa_middle);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Part Limit") + ": " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_white, global.part_limit_text_alpha);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 80, l10n_text("Part Limit") + ": " + string(global.part_limit) + "/4000", global.default_text_size, c_black, c_white, global.part_limit_text_alpha);
 			}
 			#endregion /* At top of screen, show part limit END */
 			
@@ -34,15 +34,15 @@ if (global.actually_play_edited_level == false)
 			{
 				draw_set_halign(fa_middle);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Entity Limit") + ": " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_white, 1);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Entity Limit") + ": " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1));
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 112, l10n_text("Entity Limit") + ": " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 112, l10n_text("Entity Limit") + ": " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1));
 			}
 			else
 			{
 				global.part_limit_entity_text_alpha = lerp(global.part_limit_entity_text_alpha, 0, 0.05);
 				draw_set_halign(fa_middle);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Entity Limit") + ": " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_white, global.part_limit_entity_text_alpha);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 112, l10n_text("Entity Limit") + ": " + string(global.part_limit_entity) + "/100", global.default_text_size, c_black, c_white, global.part_limit_entity_text_alpha);
 			}
 			#endregion /* At top of screen, show entity limit END */
 			
@@ -2084,6 +2084,32 @@ if (global.actually_play_edited_level == false)
 		}
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, autosave_text, global.default_text_size * 2, c_black, autosave_text_color, 1);
 		#endregion /* Autosave Warning Text END */
+		
+		#region /* Welcome to Level Editor screen */
+		if (welcome_to_level_editor)
+		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(display_get_gui_width() * 0.5 - 300, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 300, display_get_gui_height() * 0.5 + 200, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+			draw_set_halign(fa_center);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 42, l10n_text("Welcome to the level editor!"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.left], display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.up], display_get_gui_width() * 0.5 - 42 - 42 - 42, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.right], display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.down], display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5, 0.50, 0.5, 0, c_white, 1);
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, ": " + l10n_text("Move Around"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 7, display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5 + 42, 0.50, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 6, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, ": " + l10n_text("Scroll Toolbar"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 1, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42 + 42, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, ": " + l10n_text("Place Objects"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 3, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42 + 42 + 42, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42 + 42, ": " + l10n_text("Delete Objects"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 3, display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42 - 42 + 16, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42, l10n_text("on objects") + " : " + l10n_text("Change object property"), global.default_text_size, c_black, c_white, 1);
+		}
+		#endregion /* Welcome to Level Editor screen END */
 		
 		if (global.controls_used_for_menu_navigation != "controller")
 		&& (!navigate_camera_with_arrowkeys)

@@ -932,7 +932,7 @@ if (global.actually_play_edited_level == false)
 		with(instance_nearest(x, y, obj_leveleditor_placed_object))
 		{
 			
-			scr_modify_objects_in_level_editor();
+			scr_modify_objects_in_level_editor(); /* Change object when you click on it */
 			
 		}
 		#endregion /* Nearest Placed Object Code END */
@@ -1605,5 +1605,5 @@ if (global.actually_play_edited_level == false)
 	}
 	#endregion /* Scroll View. Need to have this code at the bottom of the Step Event END */
 	
-	selected_object_menu_x = lerp(selected_object_menu_x, selected_object_menu_actual_x, 0.1); /* Lerp the object selection scrolling */
+	selected_object_menu_x = lerp(selected_object_menu_x, selected_object_menu_actual_x, 0.3); /* Lerp the object selection scrolling */
 }

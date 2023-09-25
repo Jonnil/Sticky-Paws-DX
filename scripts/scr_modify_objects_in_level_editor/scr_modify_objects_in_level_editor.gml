@@ -613,25 +613,25 @@ function scr_modify_objects_in_level_editor()
 					else
 					
 					#region /* Change Clipped Clothing on Rope */
-					if (object == 74)
+					if (object == LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT)
 					{
-						object = 75;
+						object = LEVEL_OBJECT_ID.ID_CLIPPED_PANTS;
 					}
 					else
-					if (object == 75)
+					if (object == LEVEL_OBJECT_ID.ID_CLIPPED_PANTS)
 					{
-						object = 76;
+						object = LEVEL_OBJECT_ID.ID_CLIPPED_SOCK;
 					}
 					else
-					if (object == 76)
+					if (object == LEVEL_OBJECT_ID.ID_CLIPPED_SOCK)
 					{
-						object = 74;
+						object = LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT;
 					}
 					#endregion /* Change Clipped Clothing on Rope END */
 					
 					else
 					
-					#region /* Change bucket to it's different forms */
+					#region /* Change bucket to its different forms */
 					if (object == LEVEL_OBJECT_ID.ID_BUCKET)
 					{
 						object = LEVEL_OBJECT_ID.ID_BUCKET_8_BASIC_COLLECTIBLES;
@@ -676,7 +676,7 @@ function scr_modify_objects_in_level_editor()
 					{
 						object = LEVEL_OBJECT_ID.ID_BUCKET;
 					}
-					#endregion /* Change bucket to it's different forms END */
+					#endregion /* Change bucket to its different forms END */
 					
 					else
 					
@@ -707,7 +707,6 @@ function scr_modify_objects_in_level_editor()
 					}
 					#endregion /* Change Moveset Signs END */
 					
-					
 					else
 					
 					#region /* Change Eye Block */
@@ -726,6 +725,25 @@ function scr_modify_objects_in_level_editor()
 						object = LEVEL_OBJECT_ID.ID_EYE_BLOCK;
 					}
 					#endregion /* Change Eye Block END */
+					
+					else
+					
+					#region /* Change Water Level Change */
+					if (object == LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW)
+					{
+						object = LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST)
+					{
+						object = LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER)
+					{
+						object = LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW;
+					}
+					#endregion /* Change Water Level Change END */
 					
 					#region /* Update variables */
 					if (global.actually_play_edited_level == false)
