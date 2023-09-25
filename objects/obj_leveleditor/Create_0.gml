@@ -510,7 +510,7 @@ if (global.actually_play_edited_level == false)
 	
 	add_object(LEVEL_OBJECT_ID.ID_BOSS, spr_boss_stand, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BOSS_BARRIER, spr_boss_barrier, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, sprite_basic_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, global.resource_pack_sprite_cake, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, spr_artwork_collection, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_EYE_BLOCK, global.resource_pack_sprite_eye_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY, global.resource_pack_sprite_eye_block_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
@@ -814,6 +814,7 @@ if (global.actually_play_edited_level == false)
 	
 	selected_object = 0;
 	selected_object_menu_x = 0;
+	selected_object_menu_actual_x = 0;
 	sprite_index = spr_wall;
 	mask_index = spr_wall;
 	alarm[1] = 2;

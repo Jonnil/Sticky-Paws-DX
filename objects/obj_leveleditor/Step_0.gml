@@ -70,6 +70,10 @@ if (global.actually_play_edited_level == false)
 	&& (!key_left)
 	&& (!key_right)
 	{
+		if (double_tap_move_camera_faster)
+		{
+			double_tap_move_camera_faster = false;
+		}
 		if key_double_tap_timer > 0
 		{
 			key_double_tap_timer -= 1;
@@ -1389,12 +1393,12 @@ if (global.actually_play_edited_level == false)
 				if (selected_object > 0)
 				{
 					selected_object --;
-					selected_object_menu_x += 100;
+					selected_object_menu_actual_x += 100;
 				}
 				else
 				{
 					selected_object = total_number_of_objects;
-					selected_object_menu_x =- 100 *total_number_of_objects;
+					selected_object_menu_actual_x =- 100 *total_number_of_objects;
 				}
 				global.part_limit_text_alpha = 0;
 				selected_menu_alpha = 2;
@@ -1418,12 +1422,12 @@ if (global.actually_play_edited_level == false)
 				if (selected_object < total_number_of_objects)
 				{
 					selected_object ++;
-					selected_object_menu_x -= 100;
+					selected_object_menu_actual_x -= 100;
 				}
 				else
 				{
 					selected_object = 0;
-					selected_object_menu_x = 0;
+					selected_object_menu_actual_x = 0;
 				}
 				global.part_limit_text_alpha = 0;
 				selected_menu_alpha = 2;
@@ -1601,4 +1605,5 @@ if (global.actually_play_edited_level == false)
 	}
 	#endregion /* Scroll View. Need to have this code at the bottom of the Step Event END */
 	
+	selected_object_menu_x = lerp(selected_object_menu_x, selected_object_menu_actual_x, 0.1); /* Lerp the object selection scrolling */
 }

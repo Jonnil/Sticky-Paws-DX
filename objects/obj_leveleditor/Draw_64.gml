@@ -1832,10 +1832,12 @@ if (global.actually_play_edited_level == false)
 		var icons_object_category_item_x = display_get_gui_width() * 0.5;
 		var icons_object_category_enemy_x = display_get_gui_width() * 0.5 + 64;
 		var icons_object_category_gizmo_x = display_get_gui_width() * 0.5 + 64 + 64;
+		
 		if (current_object_category == "terrain")
 		{
 			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_white, 1);
+			var category_title = l10n_text("Terrain");
 		}
 		else
 		{
@@ -1846,6 +1848,7 @@ if (global.actually_play_edited_level == false)
 		{
 			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(spr_arrow_sign, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_white, 1);
+			var category_title = l10n_text("Decoration");
 		}
 		else
 		{
@@ -1856,6 +1859,7 @@ if (global.actually_play_edited_level == false)
 		{
 			draw_sprite_ext(spr_leveleditor_icons_empty, 1, icons_object_category_item_x, 32, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icons_object_category_item_x, 32, 1, 1, 0, c_white, 1);
+			var category_title = l10n_text("Item");
 		}
 		else
 		{
@@ -1866,6 +1870,7 @@ if (global.actually_play_edited_level == false)
 		{
 			draw_sprite_ext(spr_leveleditor_icons_empty, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_white, 1);
+			var category_title = l10n_text("Enemy");
 		}
 		else
 		{
@@ -1876,11 +1881,18 @@ if (global.actually_play_edited_level == false)
 		{
 			draw_sprite_ext(spr_leveleditor_icons_empty, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_white, 1);
 			draw_sprite_ext(spr_spring, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_white, 1);
+			var category_title = l10n_text("Gizmo");
 		}
 		else
 		{
 			draw_sprite_ext(spr_leveleditor_icons_empty, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_gray, 1);
 			draw_sprite_ext(spr_spring, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_gray, 1);
+		}
+		
+		if (selected_menu_alpha > 0)
+		{
+			draw_set_halign(fa_right);
+			scr_draw_text_outlined(icons_object_category_terrain_x - 42, 32, category_title, global.default_text_size, c_black, c_white, selected_menu_alpha);
 		}
 		
 		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_terrain_x - 32, 0, icons_object_category_terrain_x + 32, + 64))

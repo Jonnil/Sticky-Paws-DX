@@ -142,7 +142,7 @@ if (global.actually_play_edited_level == false)
 		if (current_object_category == "item")
 		{
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, true, global.resource_pack_sprite_basic_collectible, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Fish"));
-			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, false, global.resource_pack_sprite_big_collectible, spr_wall, 64, 1, 0, c_white,,,,,l10n_text("Big Fish"));
+			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, false, global.resource_pack_sprite_big_collectible, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Big Fish"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HEART, true, spr_heart, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Heart Balloon - Gives you one extra hit"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP, true, global.resource_pack_sprite_invincibility_powerup, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Invincibility"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ONE_UP, true, sprite_lives_icon, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Extra Life"));
@@ -185,17 +185,22 @@ if (global.actually_play_edited_level == false)
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, true, spr_clipped_shirt, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Clipped Clothes"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUCKET, true, spr_bucket, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Bucket - Let clothes drop into the bucket to get rewards"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BOSS_BARRIER, true, spr_boss_barrier, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Boss Barrier - This block dissapears when Mousette is defeated"));
-			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false, global.resource_pack_sprite_cake, spr_wall, + 100, 1, 0, c_white, -16, 0, 1, 0, l10n_text("Cake Rat"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, false, spr_artwork_collection, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Artwork Collection"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_EYE_BLOCK, true, global.resource_pack_sprite_eye_block, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Eye Block"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_NPC, false, spr_npc, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("NPC - This object is unfinished!!!"));
 			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_RING, false, spr_ring, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Ring - Swing with long tongue on this ring"));
+			scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false, global.resource_pack_sprite_cake, spr_wall, + 100, 1, 0, c_white,,,,, l10n_text("Cake Rat"));
 		}
 		#endregion /* Gizmo Objects END */
 		
 		scr_draw_text_outlined(view_center_x, cam_y + 114 + 64, l10n_text(current_object_description), global.default_text_size * 0.75, noone, c_white, selected_menu_alpha);
 		
 		total_number_of_objects = order_index - 1; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
+		if (selected_object > total_number_of_objects)
+		{
+			selected_object = total_number_of_objects;
+			selected_object_menu_actual_x =- 100 *total_number_of_objects;
+		}
 	}
 	else
 	if (global.world_editor == false)
