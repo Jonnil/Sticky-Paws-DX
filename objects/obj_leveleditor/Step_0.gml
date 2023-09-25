@@ -1389,12 +1389,12 @@ if (global.actually_play_edited_level == false)
 				if (selected_object > 0)
 				{
 					selected_object --;
-					selected_object_menu_x += 64;
+					selected_object_menu_x += 100;
 				}
 				else
 				{
 					selected_object = total_number_of_objects;
-					selected_object_menu_x =- 64 *total_number_of_objects;
+					selected_object_menu_x =- 100 *total_number_of_objects;
 				}
 				global.part_limit_text_alpha = 0;
 				selected_menu_alpha = 2;
@@ -1418,7 +1418,7 @@ if (global.actually_play_edited_level == false)
 				if (selected_object < total_number_of_objects)
 				{
 					selected_object ++;
-					selected_object_menu_x -= 64;
+					selected_object_menu_x -= 100;
 				}
 				else
 				{

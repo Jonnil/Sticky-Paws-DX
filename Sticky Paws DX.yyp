@@ -3083,7 +3083,7 @@
     {"id":{"name":"spr_background","path":"sprites/spr_background/spr_background.yy",},},
     {"id":{"name":"spr_door","path":"sprites/spr_door/spr_door.yy",},},
     {"id":{"name":"spr_erase_brush_size_2","path":"sprites/spr_erase_brush_size_2/spr_erase_brush_size_2.yy",},},
-    {"id":{"name":"spr_icons_object_categories","path":"sprites/spr_icons_object_categories/spr_icons_object_categories.yy",},},
+    {"id":{"name":"spr_leveleditor_icons_empty","path":"sprites/spr_leveleditor_icons_empty/spr_leveleditor_icons_empty.yy",},},
     {"id":{"name":"scr_audio_play","path":"scripts/scr_audio_play/scr_audio_play.yy",},},
     {"id":{"name":"scr_switch_expand_save_data","path":"scripts/scr_switch_expand_save_data/scr_switch_expand_save_data.yy",},},
     {"id":{"name":"scr_player_move_horizontal_rope","path":"scripts/scr_player_move_horizontal_rope/scr_player_move_horizontal_rope.yy",},},

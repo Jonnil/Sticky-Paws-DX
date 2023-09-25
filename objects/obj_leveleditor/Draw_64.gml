@@ -1834,43 +1834,53 @@ if (global.actually_play_edited_level == false)
 		var icons_object_category_gizmo_x = display_get_gui_width() * 0.5 + 64 + 64;
 		if (current_object_category == "terrain")
 		{
-			draw_sprite_ext(spr_icons_object_categories, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
-			draw_sprite_ext(spr_icons_object_categories, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_gray, 1);
 		}
 		if (current_object_category == "decoration")
 		{
-			draw_sprite_ext(spr_icons_object_categories, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_arrow_sign, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
-			draw_sprite_ext(spr_icons_object_categories, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_arrow_sign, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_gray, 1);
 		}
 		if (current_object_category == "item")
 		{
-			draw_sprite_ext(spr_icons_object_categories, 1, icons_object_category_item_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 1, icons_object_category_item_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icons_object_category_item_x, 32, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
-			draw_sprite_ext(spr_icons_object_categories, 1, icons_object_category_item_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 1, icons_object_category_item_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icons_object_category_item_x, 32, 1, 1, 0, c_gray, 1);
 		}
 		if (current_object_category == "enemy")
 		{
-			draw_sprite_ext(spr_icons_object_categories, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
-			draw_sprite_ext(spr_icons_object_categories, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_gray, 1);
 		}
 		if (current_object_category == "gizmo")
 		{
-			draw_sprite_ext(spr_icons_object_categories, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_spring, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_white, 1);
 		}
 		else
 		{
-			draw_sprite_ext(spr_icons_object_categories, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_spring, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_gray, 1);
 		}
 		
 		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_terrain_x - 32, 0, icons_object_category_terrain_x + 32, + 64))
