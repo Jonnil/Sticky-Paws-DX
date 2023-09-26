@@ -1896,6 +1896,7 @@ if (global.actually_play_edited_level == false)
 		}
 		
 		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_terrain_x - 32, 0, icons_object_category_terrain_x + 32, + 64))
+		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(icons_object_category_terrain_x - 32, 0, icons_object_category_terrain_x + 32, 64, c_white, c_white, c_white, c_white, false);
@@ -1909,6 +1910,7 @@ if (global.actually_play_edited_level == false)
 		}
 		else
 		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_decoration_x - 32, 0, icons_object_category_decoration_x + 32, + 64))
+		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(icons_object_category_decoration_x - 32, 0, icons_object_category_decoration_x + 32, 64, c_white, c_white, c_white, c_white, false);
@@ -1922,6 +1924,7 @@ if (global.actually_play_edited_level == false)
 		}
 		else
 		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_item_x - 32, 0, icons_object_category_item_x + 32, + 64))
+		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(icons_object_category_item_x - 32, 0, icons_object_category_item_x + 32, 64, c_white, c_white, c_white, c_white, false);
@@ -1935,6 +1938,7 @@ if (global.actually_play_edited_level == false)
 		}
 		else
 		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_enemy_x - 32, 0, icons_object_category_enemy_x + 32, + 64))
+		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(icons_object_category_enemy_x - 32, 0, icons_object_category_enemy_x + 32, 64, c_white, c_white, c_white, c_white, false);
@@ -1948,6 +1952,7 @@ if (global.actually_play_edited_level == false)
 		}
 		else
 		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_gizmo_x - 32, 0, icons_object_category_gizmo_x + 32, + 64))
+		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(icons_object_category_gizmo_x - 32, 0, icons_object_category_gizmo_x + 32, 64, c_white, c_white, c_white, c_white, false);
@@ -2088,26 +2093,30 @@ if (global.actually_play_edited_level == false)
 		#region /* Welcome to Level Editor screen */
 		if (welcome_to_level_editor)
 		{
-			draw_set_alpha(0.5);
-			draw_rectangle_color(display_get_gui_width() * 0.5 - 300, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 300, display_get_gui_height() * 0.5 + 200, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(0.9);
+			draw_rectangle_color(display_get_gui_width() * 0.5 - 350, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 350, display_get_gui_height() * 0.5 + 200, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			draw_set_halign(fa_center);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 42, l10n_text("Welcome to the level editor!"), global.default_text_size, c_black, c_white, 1);
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.left], display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.up], display_get_gui_width() * 0.5 - 42 - 42 - 42, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.right], display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5, 0.5, 0.5, 0, c_white, 1);
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.down], display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 42 - 126, l10n_text("Welcome to the level editor!"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.left], display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.up], display_get_gui_width() * 0.5 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.right], display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.down], display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 - 126, 0.50, 0.5, 0, c_white, 1);
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, ": " + l10n_text("Move Around"), global.default_text_size, c_black, c_white, 1);
-			draw_sprite_ext(spr_mouse_buttons, 7, display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5 + 42, 0.50, 0.5, 0, c_white, 1);
-			draw_sprite_ext(spr_mouse_buttons, 6, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42, 0.50, 0.5, 0, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42, ": " + l10n_text("Scroll Toolbar"), global.default_text_size, c_black, c_white, 1);
-			draw_sprite_ext(spr_mouse_buttons, 1, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42 + 42, 0.50, 0.5, 0, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42, ": " + l10n_text("Place Objects"), global.default_text_size, c_black, c_white, 1);
-			draw_sprite_ext(spr_mouse_buttons, 3, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42 + 42 + 42, 0.50, 0.5, 0, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42 + 42, ": " + l10n_text("Delete Objects"), global.default_text_size, c_black, c_white, 1);
-			draw_sprite_ext(spr_mouse_buttons, 3, display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42 - 42 + 16, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42, 0.50, 0.5, 0, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42, l10n_text("on objects") + " : " + l10n_text("Change object property"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 126, ": " + l10n_text("Move Around"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 7, display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 6, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 - 126, ": " + l10n_text("Scroll Toolbar"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 1, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42 - 126, ": " + l10n_text("Place Objects"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 3, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42 + 42 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42 + 42 - 126, ": " + l10n_text("Delete Objects"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 3, display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42 - 42 + 16, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 - 126, l10n_text("on objects") + " : " + l10n_text("Change object property"), global.default_text_size, c_black, c_white, 1);
+			draw_set_halign(fa_center);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 - 126, l10n_text("Select objects from toolbar and start making!"), global.default_text_size, c_black, c_white, 1);
+			draw_menu_button(display_get_gui_width() * 0.5 - 290, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, l10n_text("Shortcuts"), "welcome_screen_take_you_to_shortcuts", "welcome_screen_shortcuts");
+			draw_menu_button(display_get_gui_width() * 0.5 + 90, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, l10n_text("Close"), "welcome_screen_close", "welcome_screen_close");
 		}
 		#endregion /* Welcome to Level Editor screen END */
 		
