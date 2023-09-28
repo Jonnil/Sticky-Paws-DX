@@ -104,7 +104,7 @@ if (global.actually_play_edited_level == false)
 {
 	autosave_timer = (60 * 3) + 1;
 	
-	welcome_to_level_editor = true;
+	welcome_to_level_editor = false;
 	
 	key_double_tap_timer = 0;
 	key_double_tap_direction = "";
@@ -645,7 +645,6 @@ if (global.actually_play_edited_level == false)
 	tooltip = "";
 	show_tooltip = 0;
 	show_grid = false; /* Grid should be false when you start level editor */
-	grid_alpha = 0;
 	hovering_over_icons = false; /* If your mouse cursor is */
 	zoom_in = false; /* When this is true, zoom in */
 	zoom_reset = false; /* When this is true, reset zoom */
@@ -715,7 +714,7 @@ if (global.actually_play_edited_level == false)
 	erase_icon_x = 160;
 	fill_icon_x = 224;
 	always_show_level_editor_buttons_x = 288;
-	grid_button_x = display_get_gui_width() - 224;
+	grid_button_x = display_get_gui_width() - 288;
 	
 	#region /* Name displayed masked if includes profanity */
 	if (switch_check_profanity(global.level_name))

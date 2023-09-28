@@ -181,8 +181,6 @@ if (global.actually_play_edited_level == false)
 	}
 	#endregion /* Deactivate instances outside view. Run this code at start of Step Event END */
 	
-	grid_button_x = display_get_gui_width() - 224;
-	
 	scr_audio_play(level_editing_music, volume_source.music);
 	
 	if (global.selected_level_editing_music != previous_selected_level_editing_music)
@@ -288,6 +286,7 @@ if (global.actually_play_edited_level == false)
 	&& (mouse_check_button_pressed(mb_left))
 	{
 		if (pause == false)
+		&& (welcome_to_level_editor == false)
 		{
 			pressing_play_timer = 1;
 		}
@@ -301,6 +300,7 @@ if (global.actually_play_edited_level == false)
 		if (pause == false)
 		&& (pressing_play_timer >= 1)
 		&& (!key_b_hold)
+		&& (welcome_to_level_editor == false)
 		{
 			if (!audio_is_playing(snd_charge_up))
 			{
@@ -330,6 +330,7 @@ if (global.actually_play_edited_level == false)
 			if (pause == false)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.character_select_in_this_menu == "level_editor")
+			&& (welcome_to_level_editor == false)
 			{
 				if (!instance_exists(obj_camera))
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32))
@@ -858,6 +859,7 @@ if (global.actually_play_edited_level == false)
 		&& (!keyboard_check(vk_space))
 		&& (!keyboard_check(vk_escape))
 		&& (!mouse_check_button(mb_middle))
+		&& (welcome_to_level_editor == false)
 		{
 			if (mouse_check_button(mb_right))
 			|| (mouse_check_button(mb_left))
@@ -872,6 +874,7 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Set to appear on difficulty level */
 		if (difficulty_layer > 0)
+		&& (welcome_to_level_editor == false)
 		{
 			if (!mouse_check_button(mb_right))
 			&& (!hovering_over_icons)
@@ -902,6 +905,7 @@ if (global.actually_play_edited_level == false)
 		#region /* Set to dissapear on difficulty level */
 		if (difficulty_layer > 0)
 		&& (!keyboard_check(vk_escape))
+		&& (welcome_to_level_editor == false)
 		{
 			if (!mouse_check_button(mb_left))
 			&& (!hovering_over_icons)
@@ -1136,17 +1140,6 @@ if (global.actually_play_edited_level == false)
 		show_grid = not show_grid;
 	}
 	#endregion /* Show or hide grid hotkey END */
-	
-	#region /* Fade grid in and out when toggeling */
-	if (show_grid)
-	{
-		grid_alpha = lerp(grid_alpha, 0.25, 0.1);
-	}
-	else
-	{
-		grid_alpha = lerp(grid_alpha, 0, 0.1);
-	}
-	#endregion /* Fade grid in and out when toggeling END */
 	
 	#region /* Zoom In and Out (Draw red rectangles around the screen when you can't zoom any more) */
 	if (pause == false)

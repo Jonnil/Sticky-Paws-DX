@@ -3,7 +3,197 @@ if (global.actually_play_edited_level == false)
 	
 	if (quit_level_editor == false)
 	{
+		
+		#region /* List of Placable Objects */
+		if (quit_level_editor <= 0)
+		{
+			draw_set_alpha(selected_menu_alpha);
+			draw_rectangle_color(0, 0, display_get_gui_width(), 128 + 64, c_black, c_black, c_black, c_black, false);
+		}
+		
+		if (global.world_editor == false)
+		&& (quit_level_editor <= 0)
+		&& (selected_menu_alpha > 0)
+		{
+			order_index = 0;
+			unlock_index = 0;
+			
+			#region /* Terrain Objects */
+			if (current_object_category == "terrain")
+			{
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL, true, spr_wall, spr_wall, 0, 1, 0, c_white,,,,,l10n_text("Default Wall"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_DIRT, true, spr_wall_dirt, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Dirt"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GLASS, true, spr_wall_glass, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Glass"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GRASS, true, spr_wall_grass, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Grass"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_GRAVEL, true, spr_wall_gravel, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Gravel"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_METAL, true, spr_wall_metal, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Metal"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_STONE, true, spr_wall_stone, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Stone"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_WOOD, true, spr_wall_wood, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Wood"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BLACK_WALL, true, spr_black_wall, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Black Wall"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPIKES, true, spr_spikes, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Spikes"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM, true, spr_semisolid_platform, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Semisolid Platform"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BRICK_BLOCK, true, spr_brick_block, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Lamp Block"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_QUESTION_BLOCK, true, spr_question_block, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("? Block"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HARD_BLOCK, true, spr_hard_block, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Hard Block"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Falling Block"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,l10n_text("Falling Block Long"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, true, spr_cloud_block, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Cloud Block"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ICE_BLOCK, true, spr_ice_block, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Ice Block"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL, true, spr_enemy_only_wall, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Enemy Only Wall - Only enemies can collide with this wall. Player will pass trough"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK, true, spr_cardboard_block, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Carbdoard Block"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD, true, spr_cardboard, spr_cardboard, + 100, 0.75, 0, c_white, 0, -8,,,l10n_text("Cardboard"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CARDBOARD_LONG, true, spr_cardboard_long, spr_cardboard_long, + 100, 0.5, 0, c_white, 0, -16,,,l10n_text("Long Cardboard"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_MELON_BLOCK, true, spr_melon_block, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Melon Block"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BOSS_BARRIER, true, spr_boss_barrier, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Boss Barrier - This block dissapears when Mousette is defeated"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_EYE_BLOCK, true, global.resource_pack_sprite_eye_block, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Eye Block"));
+			}
+			#endregion /* Terrain Objects END */
+			
+			#region /* Decoration Objects */
+			if (current_object_category == "decoration")
+			{
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARROW_SIGN, false, spr_arrow_sign, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Arrow Sign"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIRD, true, spr_bird, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Bird"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SIGN_CROUCH, true, spr_sign_crouch, spr_wall, + 100, 0.5, 0, c_white,,,,,l10n_text("Tutorial Signs"));
+			}
+			#endregion /* Decoration Objects END */
+			
+			#region /* Item Objects */
+			if (current_object_category == "item")
+			{
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, true, global.resource_pack_sprite_basic_collectible, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Fish"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, false, global.resource_pack_sprite_big_collectible, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Big Fish"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HEART, true, spr_heart, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Heart Balloon - Gives you one extra hit"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP, true, global.resource_pack_sprite_invincibility_powerup, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Invincibility"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ONE_UP, true, sprite_lives_icon, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Extra Life"));
+			}
+			#endregion /* Item Objects END */
+			
+			#region /* Enemy Objects */
+			if (current_object_category == "enemy")
+			{
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BASIC_ENEMY, true, sprite_basic_enemy, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Rat"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL, true, sprite_enemy_bowlingball, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Bowlingball Rat"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY, true, sprite_big_stationary_enemy, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Big Rat"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BOSS, false, spr_boss_stand, spr_wall, + 100, 0.5, 0, c_white,,,,,l10n_text("Mousette"));
+			}
+			#endregion /* Enemy Objects END */
+			
+			#region /* Gizmo Objects */
+			if (current_object_category == "gizmo")
+			{
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BLASTER, true, global.resource_pack_sprite_blaster, spr_wall, + 100, 1, 0, c_white, -16,,,,l10n_text("Rat Blaster"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_DOOR, false, spr_door, spr_wall, + 100, 1, 0, c_white, -16,,,,l10n_text("Door"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPRING, false, spr_spring, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Spring"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_LADDER, true, spr_ladder, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Ladder"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CHECKPOINT, false, spr_checkpoint, spr_wall, + 100, 1, 0, c_white, -32,,,,l10n_text("Checkpoint"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK, true, spr_spikes_emerge_block, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Emerging Spikes"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ONEWAY, false, spr_oneway, spr_wall, + 100, 1, 0, c_white, -16,,,,l10n_text("One-Way Wall"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND, true, spr_bump_in_ground, spr_wall, + 100, 1, 0, c_white, -16,,,,l10n_text("Bump in Ground"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_JUMP_PANEL, true, spr_wall_jump_panel, spr_wall, + 100, 1.5, 0, c_white, 0, +16,,,l10n_text("Wall Jump Panel - When a character doesn't have the wall jump ability lets even these characters wall jump"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL, true, spr_wall_climb_panel, spr_wall, + 100, 1.5, 0, c_white, 0, +16,,,l10n_text("Wall Climb Panel - When a character doesn't have the wall climb ability lets even these characters wall climb"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE, true, spr_horizontal_rope, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Horizontal Rope"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER, false, spr_water_surface, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Water"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER, true, spr_air_bubbles_spawner, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Air Bubbles - Some characters needs air when swimming underwater"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW, false, spr_water_level_change_slow, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Change Water Level Slow"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST, false, spr_water_level_change_fast, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Change Water Level Fast"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER, false, spr_water_level_change_faster, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Change Water LEvel Faster"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, true, spr_clipped_shirt, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Clipped Clothes"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUCKET, true, spr_bucket, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Bucket - Let clothes drop into the bucket to get rewards"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, false, spr_artwork_collection, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Artwork Collection"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_NPC, false, spr_npc, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("NPC - This object is unfinished!!!"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_RING, false, spr_ring, spr_wall, + 100, 1, 0, c_white,,,,,l10n_text("Ring - Swing with long tongue on this ring"));
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false, global.resource_pack_sprite_cake, spr_wall, + 100, 1, 0, c_white,,,,, l10n_text("Cake Rat"));
+			}
+			#endregion /* Gizmo Objects END */
+			
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 114 + 64, l10n_text(current_object_description), global.default_text_size * 0.75, noone, c_white, selected_menu_alpha);
+			
+			total_number_of_objects = order_index - 1; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
+			if (selected_object > total_number_of_objects)
+			{
+				selected_object = total_number_of_objects;
+				selected_object_menu_actual_x =- 100 *total_number_of_objects;
+			}
+		}
+		else
+		if (global.world_editor == false)
+		&& (quit_level_editor <= 0)
+		&& (selected_menu_alpha > 0)
+		{
+			total_number_of_objects = 6; /* This is the total number of objects you have in the list to let the level editor know (0 is counted as object number 1) */
+			if (selected_object == 0)
+			{
+				place_object = WORLD_OBJECT_ID.ID_WALL;
+				can_make_place_brush_size_bigger = true;
+				sprite_index = spr_wall;
+				mask_index = spr_wall;
+			}
+			if (selected_object == 1)
+			{
+				place_object = WORLD_OBJECT_ID.ID_LEVEL;
+				can_make_place_brush_size_bigger = false;
+				draw_sprite_ext(spr_level_ring, 0, x, y, 1, 1, 0, c_yellow, 0.5);
+				draw_sprite_ext(spr_level, 0, x, y, 1, 1, 0, c_black, 0.5);
+				sprite_index = spr_noone; 
+				mask_index = spr_wall;
+			}
+			if (selected_object == 2)
+			{
+				place_object = WORLD_OBJECT_ID.ID_EXIT;
+				can_make_place_brush_size_bigger = false;
+				sprite_index = spr_map_exit;
+				mask_index = spr_wall;
+			}
+			if (selected_object == 3)
+			{
+				place_object = WORLD_OBJECT_ID.ID_RIGHT_DOWN;
+				can_make_place_brush_size_bigger = false;
+				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 0, c_white, 0.5);
+				sprite_index = spr_noone;
+				mask_index = spr_wall;
+			}
+			if (selected_object == 4)
+			{
+				place_object = WORLD_OBJECT_ID.ID_UP_RIGHT;
+				can_make_place_brush_size_bigger = false;
+				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 90, c_white, 0.5);
+				sprite_index = spr_noone;
+				mask_index = spr_wall;
+			}
+			if (selected_object == 5)
+			{
+				place_object = WORLD_OBJECT_ID.ID_UP_LEFT;
+				can_make_place_brush_size_bigger = false;
+				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 180, c_white, 0.5);
+				sprite_index = spr_noone;
+				mask_index = spr_wall;
+			}
+			if (selected_object == 6)
+			{
+				place_object = WORLD_OBJECT_ID.ID_LEFT_DOWN;
+				can_make_place_brush_size_bigger = false;
+				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 270, c_white, 0.5);
+				sprite_index = spr_noone;
+				mask_index = spr_wall;
+			}
+		}
+		
+		#region /* Draw an arrow pointing to currently selected object */
+		if (selected_menu_alpha > 0)
+		{
+			draw_set_alpha(selected_menu_alpha);
+			draw_set_color(c_white);
+			draw_arrow(display_get_gui_width() * 0.5, 16 - 8 + 64 + scr_wave(0, -8, 1), display_get_gui_width() * 0.5, 16 + 8 + 64 + scr_wave(0, -8, 1), 30);
+			draw_arrow(display_get_gui_width() * 0.5, 110 - 16 + 8 + 64 + scr_wave(0, 8, 1), display_get_gui_width() * 0.5, 110 - 16 - 8 + 64 + scr_wave(0, 8, 1), 30);
+			draw_set_alpha(1);
+		}
+		#endregion /* Draw an arrow pointing to currently selected object END */
+		
+		#endregion /* List of Placable Objects END */
+		
 		draw_set_halign(fa_left);
+		draw_set_alpha(1);
 		scr_draw_text_outlined(16, 32, l10n_text("View X") + ": " + string(round(camera_get_view_x(view_camera[0]))) + "\n" + l10n_text("View Y") + ": " + string(round(camera_get_view_y(view_camera[0]))), global.default_text_size, c_black, c_white, 1);
 		
 		/* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is */
@@ -1550,6 +1740,12 @@ if (global.actually_play_edited_level == false)
 			icons_at_top_y = lerp(icons_at_top_y, - 100, 0.1);
 		}
 		
+		grid_button_x = display_get_gui_width() - 288;
+		var zoom_out_button_x = display_get_gui_width() - 224;
+		var zoom_reset_button_x = display_get_gui_width() - 160;
+		var zoom_in_button_x = display_get_gui_width() - 96;
+		var help_button_x = display_get_gui_width() - 32;
+		
 		if (pause == false)
 		{
 			
@@ -1604,35 +1800,50 @@ if (global.actually_play_edited_level == false)
 			#region /* Zoom Out */
 			if (zoom_out)
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 14, display_get_gui_width() - 160, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 14, zoom_out_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 14, display_get_gui_width() - 160, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 14, zoom_out_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
 			}
 			#endregion /* Zoom Out END */
 			
 			#region /* Zoom Reset */
 			if (zoom_reset)
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 15, display_get_gui_width() - 96, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 15, zoom_reset_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 15, display_get_gui_width() - 96, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 15, zoom_reset_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
 			}
 			#endregion /* Zoom Reset END */
 			
 			#region /* Zoom In */
 			if (zoom_in)
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 16, display_get_gui_width() - 32, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 16, zoom_in_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 16, display_get_gui_width() - 32, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+				draw_sprite_ext(spr_leveleditor_icons, 16, zoom_in_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
 			}
 			#endregion /* Zoom In END */
+			
+			#region /* Help Button */
+			if (welcome_to_level_editor > 0)
+			{
+				draw_sprite_ext(spr_leveleditor_icons_empty, 0, help_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+				draw_set_halign(fa_center);
+				scr_draw_text_outlined(help_button_x, + 32 + icons_at_top_y, "?", global.default_text_size * 2, c_black, c_red, 1);
+			}
+			else
+			{
+				draw_sprite_ext(spr_leveleditor_icons_empty, 0, help_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+				draw_set_halign(fa_center);
+				scr_draw_text_outlined(help_button_x, + 32 + icons_at_top_y, "?", global.default_text_size * 2, c_black, c_red, 1);
+			}
+			#endregion /* Help Button END */
 			
 		}
 		
@@ -1668,7 +1879,7 @@ if (global.actually_play_edited_level == false)
 			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
-				tooltip = "Undo (CTRL + Z)";
+				tooltip = "Undo";
 				show_tooltip += 2;
 				if (mouse_check_button_pressed(mb_left))
 				{
@@ -1683,7 +1894,7 @@ if (global.actually_play_edited_level == false)
 			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
-				tooltip = "Redo (CTRL + Y)";
+				tooltip = "Redo";
 				show_tooltip += 2;
 				if (mouse_check_button_pressed(mb_left))
 				{
@@ -1966,22 +2177,22 @@ if (global.actually_play_edited_level == false)
 		}
 		#endregion /* Object Categories Icons END */
 		
-		#region /* Toggle Grid */
-		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, - 64, display_get_gui_width() - 192, + 64))
+		#region /* Click Toggle Grid */
+		if (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, - 64, grid_button_x + 32, + 64))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_top)
 		&& (pause == false)
 		{
-			tooltip = "Toggle Grid (G)";
+			tooltip = "Toggle Grid";
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			{
 				show_grid = not show_grid;
 			}
 		}
-		#endregion /* Toggle Grid END */
+		#endregion /* Click Toggle Grid END */
 		
-		#region /* Zoom Out */
+		#region /* Click Zoom Out */
 		if (keyboard_check(global.player_[inp.key][1][1][action.zoom_out]))
 		&& (!keyboard_check(global.player_[inp.key][1][1][action.zoom_in]))
 		|| (keyboard_check(global.player_[inp.key][2][1][action.zoom_out]))
@@ -1998,7 +2209,7 @@ if (global.actually_play_edited_level == false)
 		&& (!keyboard_check(global.player_[inp.key][3][2][action.zoom_in]))
 		|| (keyboard_check(global.player_[inp.key][4][2][action.zoom_out]))
 		&& (!keyboard_check(global.player_[inp.key][4][2][action.zoom_in]))
-		|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 192, - 64, display_get_gui_width() - 128, + 64))
+		|| (point_in_rectangle(cursor_x, cursor_y, zoom_out_button_x - 32, - 64, zoom_out_button_x + 32, + 64))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_top)
 		&& (mouse_check_button(mb_left))
@@ -2011,14 +2222,14 @@ if (global.actually_play_edited_level == false)
 		{
 			zoom_out = false;
 		}
-		#endregion /* Zoom Out END */
+		#endregion /* Click Zoom Out END */
 		
-		#region /* Reset Zoom */
+		#region /* Click Reset Zoom */
 		if (keyboard_check(vk_control))
 		&& (keyboard_check(vk_enter))
 		&& (!keyboard_check(187))
 		&& (!keyboard_check(189))
-		|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, - 64, display_get_gui_width() - 64, + 64))
+		|| (point_in_rectangle(cursor_x, cursor_y, zoom_reset_button_x - 32, - 64, zoom_reset_button_x + 32, + 64))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_top)
 		&& (mouse_check_button(mb_left))
@@ -2031,9 +2242,9 @@ if (global.actually_play_edited_level == false)
 		{
 			zoom_reset = false;
 		}
-		#endregion /* Reset Zoom END */
+		#endregion /* Click Reset Zoom END */
 		
-		#region /* Zoom In */
+		#region /* Click Zoom In */
 		if (keyboard_check(global.player_[inp.key][1][1][action.zoom_in]))
 		&& (!keyboard_check(global.player_[inp.key][1][1][action.zoom_out]))
 		|| (keyboard_check(global.player_[inp.key][2][1][action.zoom_in]))
@@ -2050,7 +2261,7 @@ if (global.actually_play_edited_level == false)
 		&& (!keyboard_check(global.player_[inp.key][3][2][action.zoom_out]))
 		|| (keyboard_check(global.player_[inp.key][4][2][action.zoom_in]))
 		&& (!keyboard_check(global.player_[inp.key][4][2][action.zoom_out]))
-		|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, - 64, display_get_gui_width(), + 64))
+		|| (point_in_rectangle(cursor_x, cursor_y, zoom_in_button_x - 32, - 64, zoom_in_button_x + 32, + 64))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_top)
 		&& (mouse_check_button(mb_left))
@@ -2063,7 +2274,22 @@ if (global.actually_play_edited_level == false)
 		{
 			zoom_in = false;
 		}
-		#endregion /* Zoom In END */
+		#endregion /* Click Zoom In END */
+		
+		#region /* Click Help Button */
+		if (point_in_rectangle(cursor_x, cursor_y, help_button_x - 32, - 64, help_button_x + 32, + 64))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (show_icons_at_top)
+		&& (pause == false)
+		{
+			tooltip = "Help";
+			show_tooltip += 2;
+			if (mouse_check_button_pressed(mb_left))
+			{
+				welcome_to_level_editor = not welcome_to_level_editor;
+			}
+		}
+		#endregion /* Click Help Button END */
 		
 		#endregion /* Click icons at top of screen END */
 		
@@ -2079,6 +2305,9 @@ if (global.actually_play_edited_level == false)
 		else
 		if (autosave_timer >= 18000 - 1)
 		{
+			draw_set_alpha(0.5);
+			draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
 			autosave_text = l10n_text("Autosaving..."); /* Game will probably stutter when autosaving, so display text that the game is currently autosaving */
 		}
 		else
@@ -2087,36 +2316,168 @@ if (global.actually_play_edited_level == false)
 			var autosave_countdown = ceil((autosave_timer - 18000) / -60);
 			autosave_text = l10n_text("Autosave in " + string(autosave_countdown));
 		}
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, autosave_text, global.default_text_size * 2, c_black, autosave_text_color, 1);
+		if (autosave_text != "")
+		{
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, autosave_text, global.default_text_size * 2, c_black, autosave_text_color, 1);
+			if (autosave_text == l10n_text("Autosave in " + string(autosave_countdown)))
+			{
+				draw_sprite_ext(spr_keyboard_keys, vk_escape, display_get_gui_width() * 0.5 - 32, 164, 0.75, 0.75, 0, c_white, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 164, ": " + l10n_text("Cancel Autosave"), global.default_text_size, c_black, autosave_text_color, 1);
+				if (keyboard_check_pressed(vk_escape))
+				{
+					autosave_timer = 60 * 3 + 1;
+				}
+			}
+		}
 		#endregion /* Autosave Warning Text END */
 		
 		#region /* Welcome to Level Editor screen */
-		if (welcome_to_level_editor)
+		if (welcome_to_level_editor == 1)
 		{
+			place_object_delay_timer = -10;
+			if (menu != "welcome_screen_shortcuts")
+			&& (menu != "welcome_screen_close")
+			{
+				menu = "welcome_screen_close";
+			}
 			draw_set_alpha(0.9);
 			draw_rectangle_color(display_get_gui_width() * 0.5 - 350, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 350, display_get_gui_height() * 0.5 + 200, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 42 - 126, l10n_text("Welcome to the level editor!"), global.default_text_size, c_black, c_white, 1);
+			draw_set_halign(fa_left);
 			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.left], display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, 0.5, 0, c_white, 1);
 			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.up], display_get_gui_width() * 0.5 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, 0.5, 0, c_white, 1);
 			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.right], display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, 0.5, 0, c_white, 1);
 			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.down], display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 - 126, 0.50, 0.5, 0, c_white, 1);
-			draw_set_halign(fa_left);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 126, ": " + l10n_text("Move Around"), global.default_text_size, c_black, c_white, 1);
-			draw_sprite_ext(spr_mouse_buttons, 7, display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
-			draw_sprite_ext(spr_mouse_buttons, 6, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 - 126, ": " + l10n_text("Scroll Toolbar"), global.default_text_size, c_black, c_white, 1);
-			draw_sprite_ext(spr_mouse_buttons, 1, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42 - 126, ": " + l10n_text("Place Objects"), global.default_text_size, c_black, c_white, 1);
-			draw_sprite_ext(spr_mouse_buttons, 3, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 + 42 + 42 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42 + 42 - 126, ": " + l10n_text("Delete Objects"), global.default_text_size, c_black, c_white, 1);
-			draw_sprite_ext(spr_mouse_buttons, 3, display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42 - 42 + 16, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 - 126, l10n_text("on objects") + " : " + l10n_text("Change object property"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 7, display_get_gui_width() * 0.5 - 42 - 42 - 84, display_get_gui_height() * 0.5 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 6, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 + 42 - 126, ": " + l10n_text("Scroll Toolbar"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 1, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 + 42 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 + 42 + 42 - 126, ": " + l10n_text("Place Objects"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 3, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 + 42 + 42 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 + 42 + 42 + 42 - 126, ": " + l10n_text("Delete Objects"), global.default_text_size, c_black, c_white, 1);
+			draw_sprite_ext(spr_mouse_buttons, 1, display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42 - 42 + 16 - 84, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 - 126, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 - 126, l10n_text("on objects") + " : " + l10n_text("Change object property"), global.default_text_size, c_black, c_white, 1);
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 - 126, l10n_text("Select objects from toolbar and start making!"), global.default_text_size, c_black, c_white, 1);
-			draw_menu_button(display_get_gui_width() * 0.5 - 290, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, l10n_text("Shortcuts"), "welcome_screen_take_you_to_shortcuts", "welcome_screen_shortcuts");
-			draw_menu_button(display_get_gui_width() * 0.5 + 90, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, l10n_text("Close"), "welcome_screen_close", "welcome_screen_close");
+			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 290, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Shortcuts"), "welcome_screen_shortcuts", "welcome_screen_shortcuts");
+			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 + 90, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Close"), "welcome_screen_close", "welcome_screen_close");
+			if (menu == "welcome_screen_shortcuts")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() * 0.5 - 290, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, display_get_gui_width() * 0.5 - 290 + 185, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126 + 42))
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (mouse_check_button_pressed(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					welcome_to_level_editor = 2;
+				}
+				if (key_right)
+				{
+					menu = "welcome_screen_close";
+				}
+			}
+			else
+			if (menu == "welcome_screen_close")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() * 0.5 + 90, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, display_get_gui_width() * 0.5 + 90 + 185, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126 + 42))
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (mouse_check_button_pressed(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					welcome_to_level_editor = false;
+				}
+				if (key_left)
+				{
+					menu = "welcome_screen_shortcuts";
+				}
+			}
+		}
+		else
+		if (welcome_to_level_editor == 2)
+		{
+			place_object_delay_timer = -10;
+			if (menu != "welcome_screen_shortcuts")
+			&& (menu != "welcome_screen_close")
+			{
+				menu = "welcome_screen_close";
+			}
+			var line_y = 0;
+			draw_set_alpha(0.9);
+			draw_rectangle_color(display_get_gui_width() * 0.5 - 350, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 350, display_get_gui_height() * 0.5 + 200, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(1);
+			draw_set_halign(fa_center);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 42 - 126, l10n_text("Editor Shortcuts"), global.default_text_size, c_black, c_white, 1);
+			draw_set_halign(fa_left);
+			
+			draw_sprite_ext(spr_keyboard_keys, ord("L"), display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Switch Layers"), global.default_text_size, c_black, c_white, 1);
+			line_y += 42;
+			
+			draw_sprite_ext(spr_keyboard_keys, ord("G"), display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Toggle Grid"), global.default_text_size, c_black, c_white, 1);
+			line_y += 42;
+			
+			draw_sprite_ext(spr_keyboard_keys, ord("T"), display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Hide/Show Toolbar"), global.default_text_size, c_black, c_white, 1);
+			line_y += 42;
+			
+			draw_sprite_ext(spr_keyboard_keys, vk_shift, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Slow Scroll"), global.default_text_size, c_black, c_white, 1);
+			line_y += 42;
+			
+			draw_sprite_ext(spr_keyboard_keys, ord("B"), display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Hide/Show Backgrounds"), global.default_text_size, c_black, c_white, 1);
+			line_y += 42;
+			
+			draw_sprite_ext(spr_keyboard_keys, ord("E"), display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 - 126 + line_y, 0.50, 0.5, 0, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 84, display_get_gui_height() * 0.5 - 126 + line_y, ": " + l10n_text("Change to erase tool"), global.default_text_size, c_black, c_white, 1);
+			
+			/* Back and Close buttons */
+			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 290, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Back"), "welcome_screen_shortcuts", "welcome_screen_shortcuts");
+			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 + 90, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Close"), "welcome_screen_close", "welcome_screen_close");
+			if (menu == "welcome_screen_shortcuts")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() * 0.5 - 290, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, display_get_gui_width() * 0.5 - 290 + 185, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126 + 42))
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (mouse_check_button_pressed(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					welcome_to_level_editor = 1;
+				}
+				if (key_right)
+				{
+					menu = "welcome_screen_close";
+				}
+			}
+			else
+			if (menu == "welcome_screen_close")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() * 0.5 + 90, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, display_get_gui_width() * 0.5 + 90 + 185, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126 + 42))
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (mouse_check_button_pressed(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					welcome_to_level_editor = false;
+				}
+				if (key_left)
+				{
+					menu = "welcome_screen_shortcuts";
+				}
+			}
 		}
 		#endregion /* Welcome to Level Editor screen END */
 		
