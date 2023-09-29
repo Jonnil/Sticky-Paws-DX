@@ -3,170 +3,8 @@ var level_editor_y = display_get_gui_height() * 0.5 + 100 + 80;
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 
-if (menu == "main_game")
-|| (menu == "options")
-|| (menu == "quit")
-|| (menu == "quit_game_no")
-|| (menu == "quit_game_yes")
-|| (menu == "link_discord")
-|| (menu == "link_gamebanana")
-|| (menu == "link_instagram")
-|| (menu == "link_reddit")
-|| (menu == "link_twitter")
-|| (menu == "link_wiki")
-{
-	
-	#region /* Enable convention mode via cheat code, type "conventionmode" on your keyboard */
-	if (keyboard_check_pressed(ord("C")))
-	&& (keyboard_string != "arc")
-	&& (can_input_level_name == false)
-	&& (can_input_player1_name == false)
-	&& (can_input_player2_name == false)
-	&& (can_input_player3_name == false)
-	&& (can_input_player4_name == false)
-	{
-		keyboard_string = "c";
-	}
-	
-	if (keyboard_string = "conventionmode")
-	|| (keyboard_string = "convention mode")
-	{
-		if (can_input_level_name == false)
-		&& (can_input_player1_name == false)
-		&& (can_input_player2_name == false)
-		&& (can_input_player3_name == false)
-		&& (can_input_player4_name == false)
-		{
-			if (global.convention_mode == false)
-			{
-				global.arcade_mode = false;
-				global.convention_mode = true;
-				if (menu == "options")
-				|| (menu == "quit")
-				|| (menu == "quit_game_no")
-				|| (menu == "quit_game_yes")
-				|| (menu == "link_discord")
-				|| (menu == "link_gamebanana")
-				|| (menu == "link_instagram")
-				|| (menu == "link_reddit")
-				|| (menu == "link_twitter")
-				|| (menu == "link_wiki")
-				|| (in_settings)
-				{
-					menu = "main_game";
-					in_settings = false;
-				}
-				keyboard_string = "";
-				show_convention_mode_enable_text = 180;
-			}
-			else
-			{
-				global.arcade_mode = false;
-				global.convention_mode = false;
-				keyboard_string = "";
-				show_convention_mode_enable_text = 180;
-			}
-			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "convention_mode", global.convention_mode);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-	}
-	#endregion /* Enable convention mode via cheat code, type "conventionmode" on your keyboard END */
-	
-	#region /* Enable arcade mode via cheat code, type "arcademode" on your keyboard */
-	if (keyboard_check_pressed(ord("A")))
-	&& (keyboard_string != "arca")
-	&& (can_input_level_name == false)
-	&& (can_input_player1_name == false)
-	&& (can_input_player2_name == false)
-	&& (can_input_player3_name == false)
-	&& (can_input_player4_name == false)
-	{
-		keyboard_string = "a";
-	}
-	
-	if (keyboard_string = "arcademode")
-	|| (keyboard_string = "arcade mode")
-	{
-		if (can_input_level_name == false)
-		&& (can_input_player1_name == false)
-		&& (can_input_player2_name == false)
-		&& (can_input_player3_name == false)
-		&& (can_input_player4_name == false)
-		{
-			if (global.arcade_mode == false)
-			{
-				global.arcade_mode = true;
-				global.convention_mode = false;
-				if (menu == "options")
-				|| (menu == "quit")
-				|| (menu == "quit_game_no")
-				|| (menu == "quit_game_yes")
-				|| (menu == "link_discord")
-				|| (menu == "link_gamebanana")
-				|| (menu == "link_instagram")
-				|| (menu == "link_reddit")
-				|| (menu == "link_twitter")
-				|| (menu == "link_wiki")
-				|| (in_settings)
-				{
-					menu = "main_game";
-					in_settings = false;
-				}
-				keyboard_string = "";
-				show_arcade_mode_enable_text = 180;
-			}
-			else
-			{
-				global.arcade_mode = false;
-				global.convention_mode = false;
-				keyboard_string = "";
-				show_arcade_mode_enable_text = 180;
-			}
-			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "arcade_mode", global.arcade_mode);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-	}
-	#endregion /* Enable arcade mode via cheat code, type "arcademode" on your keyboard END */
-	
-}
-
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
-if (global.convention_mode)
-&& (show_convention_mode_enable_text > 0)
-{
-	show_convention_mode_enable_text --;
-	scr_draw_text_outlined(64, 32, l10n_text("Convention mode"), global.default_text_size, c_white, c_black, 1);
-	draw_sprite_ext(spr_checkbox, true, 32, 32, 0.5, 0.5, 0, c_white, 1);
-}
-else
-if (global.convention_mode == false)
-&& (show_convention_mode_enable_text > 0)
-{
-	show_convention_mode_enable_text --;
-	scr_draw_text_outlined(64, 32, l10n_text("Convention mode"), global.default_text_size, c_white, c_black, 1);
-	draw_sprite_ext(spr_checkbox, false, 32, 32, 0.5, 0.5, 0, c_white, 1);
-}
-
-draw_set_halign(fa_left);
-draw_set_valign(fa_middle);
-if (global.arcade_mode)
-&& (show_arcade_mode_enable_text > 0)
-{
-	show_arcade_mode_enable_text --;
-	scr_draw_text_outlined(64, 32, l10n_text("Arcade mode"), global.default_text_size, c_white, c_black, 1);
-	draw_sprite_ext(spr_checkbox, true, 32, 32, 0.5, 0.5, 0, c_white, 1);
-}
-else
-if (global.arcade_mode == false)
-&& (show_arcade_mode_enable_text > 0)
-{
-	show_arcade_mode_enable_text --;
-	scr_draw_text_outlined(64, 32, l10n_text("Arcade mode"), global.default_text_size, c_white, c_black, 1);
-	draw_sprite_ext(spr_checkbox, false, 32, 32, 0.5, 0.5, 0, c_white, 1);
-}
 
 /* Title Screen */
 
@@ -201,7 +39,7 @@ if (global.convention_mode == false)
 	if (menu == "main_game")
 	|| (menu == "level_editor")
 	|| (menu == "options")
-	|| (menu == "credits")
+	|| (menu == "information")
 	|| (menu == "quit")
 	{
 		if (keyboard_check_pressed(vk_escape))
@@ -274,7 +112,6 @@ scr_draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v
 draw_set_halign(fa_center);
 #endregion /* Build Date and Version END */
 
-var link_discord_x = 16;
 var link_gamebanana_x = 56;
 var link_instagram_x = 96;
 var link_reddit_x = 136;
@@ -285,7 +122,6 @@ var link_wiki_x = 216;
 /* Put links underneath build date and version */
 if (global.enable_links)
 {
-	draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, link_discord_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_gamebanana, link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_gamebanana", "link_gamebanana", false);
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_instagram, link_instagram_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_instagram", "link_instagram", false);
 	draw_menu_button_sprite(global.resource_pack_sprite_logo_reddit, link_reddit_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_reddit", "link_reddit", false);
@@ -295,36 +131,13 @@ if (global.enable_links)
 		draw_menu_button_sprite(global.resource_pack_sprite_logo_wiki, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_wiki", "link_wiki", false);
 	}
 	
-	if (menu == "link_discord")
-	|| (menu == "link_gamebanana")
-	|| (menu == "link_instagram")
-	|| (menu == "link_reddit")
-	|| (menu == "link_twitter")
-	|| (menu == "link_wiki")
-	{
-		draw_set_alpha(0.95);
-		draw_rectangle_color(0, display_get_gui_height() - 80, 700, display_get_gui_height() - 64 + 20, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-	}
 	draw_set_halign(fa_left);
-	if (menu == "link_discord"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_discord), global.default_text_size, c_black, c_white, 1);}
 	if (menu == "link_gamebanana"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_gamebanana), global.default_text_size, c_black, c_white, 1);}
 	if (menu == "link_instagram"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_instagram), global.default_text_size, c_black, c_white, 1);}
 	if (menu == "link_reddit"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_reddit), global.default_text_size, c_black, c_white, 1);}
 	if (menu == "link_twitter"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_twitter), global.default_text_size, c_black, c_white, 1);}
 	if (menu == "link_wiki"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_wiki), global.default_text_size, c_black, c_white, 1);}
 	
-	if (key_a_pressed)
-	&& (menu == "link_discord")
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	|| (point_in_rectangle(mouse_get_x, mouse_get_y, link_discord_x, display_get_gui_height() + 8 + version_y_pos, link_discord_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		url_open(string(global.link_to_discord));
-		menu_delay = 3;
-	}
-	else
 	if (key_a_pressed)
 	&& (menu == "link_gamebanana")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -388,12 +201,12 @@ if (global.enable_links)
 if (menu == "main_game")
 || (menu == "level_editor")
 || (menu == "options")
-|| (menu == "language_shortcut")
-|| (menu == "accessibility_shortcut")
-|| (menu == "profile_shortcut")
-|| (menu == "credits")
 || (menu == "quit")
+|| (menu == "information")
+|| (menu == "mailbox")
+|| (menu == "public_update_schedule")
 || (menu == "link_discord")
+|| (menu == "link_youtube")
 || (menu == "link_gamebanana")
 || (menu == "link_instagram")
 || (menu == "link_reddit")
@@ -473,10 +286,21 @@ else
 #region /* Main Menu */
 if (global.arcade_mode == false && in_settings == false)
 {
-    if (menu == "main_game" || menu == "level_editor" || menu == "options" || menu == "language_shortcut" ||
-        menu == "accessibility_shortcut" || menu == "profile_shortcut" || menu == "credits" ||
-        menu == "quit" || menu == "link_discord" || menu == "link_gamebanana" ||
-        menu == "link_instagram" || menu == "link_reddit" || menu == "link_twitter" || menu == "link_wiki")
+    if (menu == "main_game" ||
+		menu == "level_editor" ||
+		menu == "options" ||
+        menu == "information" ||
+        menu == "quit" ||
+		menu == "information" ||
+		menu == "mailbox" ||
+		menu == "public_update_schedule" ||
+		menu == "link_discord" ||
+		menu == "link_youtube" ||
+		menu == "link_gamebanana" ||
+        menu == "link_instagram" ||
+		menu == "link_reddit" ||
+		menu == "link_twitter" ||
+		menu == "link_wiki")
     {
 		
 		if (global.demo == false)
@@ -611,133 +435,9 @@ if (global.arcade_mode == false && in_settings == false)
 			menu_delay = 3;
 		}
 		#endregion /* Click Options END */
-	
+		
 		else
-
-		#region /* Click Language Shortcut */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 250, display_get_gui_height() * 0.5 + 100 + 140 - 20, display_get_gui_width() * 0.5 - 208, display_get_gui_height() * 0.5 + 100 + 140 + 19))
-		&& (menu == "language_shortcut")
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (global.show_language_shortcut)
-		&& (in_settings == false)
-		|| (menu == "language_shortcut")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (global.show_language_shortcut)
-		&& (in_settings == false)
-		{
-			menu_delay = 3;
-			in_settings = true;
-			can_navigate_settings_sidebar = false;
-			global.settings_sidebar_menu = "language_settings";
-			menu = "Language" + string(global.language_localization);
-		}
-		#endregion /* Click Language Shortcut END */
-	
-		else
-	
-		#region /* Language Shortcut */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 250, display_get_gui_height() * 0.5 + 100 + 140 - 20, display_get_gui_width() * 0.5 - 208, display_get_gui_height() * 0.5 + 100 + 140 + 19))
-		&& (mouse_check_button(mb_left))
-		&& (global.show_language_shortcut)
-		{
-			menu = "language_shortcut";
-		}
-		#endregion /* Language Shortcut END */
-	
-		else
-
-		#region /* Click Accessibility Shortcut */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 + 208, display_get_gui_height() * 0.5 + 100 + 140 - 20, display_get_gui_width() * 0.5 + 250, display_get_gui_height() * 0.5 + 100 + 140 + 19))
-		&& (menu == "accessibility_shortcut")
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (global.show_accessibility_shortcut)
-	
-		|| (menu == "accessibility_shortcut")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (global.show_accessibility_shortcut)
-		{
-			menu_delay = 3;
-			in_settings = true;
-			can_navigate_settings_sidebar = false;
-			global.settings_sidebar_menu = "accessibility_settings";
-			menu = noone;
-		}
-		#endregion /* Click Accessibility Shortcut END */
-	
-		else
-	
-		#region /* Accessibility Shortcut */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 + 208, display_get_gui_height() * 0.5 + 100 + 140 - 20, display_get_gui_width() * 0.5 + 250, display_get_gui_height() * 0.5 + 100 + 140 + 19))
-		&& (mouse_check_button(mb_left))
-		&& (global.show_accessibility_shortcut)
-		{
-			menu = "accessibility_shortcut";
-		}
-		#endregion /* Accessibility Shortcut END */
-	
-		else
-
-		#region /* Click Account Shortcut */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 + 208+ 50, display_get_gui_height() * 0.5 + 100 + 140 - 20, display_get_gui_width() * 0.5 + 250 + 50, display_get_gui_height() * 0.5 + 100 + 140 + 19))
-		&& (menu == "profile_shortcut")
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (global.show_profile_shortcut)
-		&& (in_settings == false)
-		|| (menu == "profile_shortcut")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (global.show_profile_shortcut)
-		&& (in_settings == false)
-		{
-			menu_delay = 3;
-			in_settings = true;
-			can_navigate_settings_sidebar = false;
-			global.settings_sidebar_menu = "account_settings";
-			menu = noone;
-		}
-		#endregion /* Click Account Shortcut END */
-	
-		else
-	
-		#region /* Profile Shortcut */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 + 208+ 50, display_get_gui_height() * 0.5 + 100 + 140 - 20, display_get_gui_width() * 0.5 + 250 + 50, display_get_gui_height() * 0.5 + 100 + 140 + 19))
-		&& (mouse_check_button(mb_left))
-		&& (global.show_profile_shortcut)
-		{
-			menu = "profile_shortcut";
-		}
-		#endregion /* Profile Shortcut END */
-	
-		else
-	
-		#region /* Click Credits */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
-		|| (menu == "credits")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
-		{
-			if (!instance_exists(obj_credits))
-			{
-				instance_create_depth(x, y, 0, obj_credits);
-			}
-			in_settings = false;
-			menu = "play_credits";
-			menu_delay = 3;
-			can_navigate_settings_sidebar = false;
-		}
-		#endregion /* Click Credits END */
-	
-		else
-	
+		
 		#region /* Click Quit */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5, options_and_quit_y + 2, display_get_gui_width() * 0.5 + 185, options_and_quit_y + 42))
 		&& (mouse_check_button_released(mb_left))
@@ -792,11 +492,271 @@ if (global.arcade_mode == false && in_settings == false)
 		}
 		draw_sprite_ext(spr_icons_cogwheel, 0, display_get_gui_width() * 0.5 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
 		
-		draw_menu_button_sprite(spr_noone, display_get_gui_width() - 370, display_get_gui_height() - 42, 0, 0, 1, 1, 370, 42, l10n_text("Made by") + " " + (global.company_name), "credits", "play_credits", true);
+		/* Information button */
+		draw_menu_button_sprite(spr_wall, display_get_gui_width() - 32, display_get_gui_height() - 32, 16, 0, 1, 1, 32, 32, "", "information", "information", false);
+		if (menu == "information")
+		{
+			draw_set_halign(fa_right);
+			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, l10n_text("Information"), global.default_text_size, c_black, c_white, 1);
+			
+			if (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32, display_get_gui_height() - 32, display_get_gui_width(), display_get_gui_height()))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				information_menu_open = true;
+				menu = "about";
+				menu_delay = 3;
+			}
+		}
+		
+		/* Mailbox button */
+		draw_menu_button_sprite(spr_wall, display_get_gui_width() - 64, display_get_gui_height() - 32, 16, 0, 1, 1, 32, 32, "", "mailbox", "mailbox", false);
+		if (menu == "mailbox")
+		{
+			draw_set_halign(fa_right);
+			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, l10n_text("Mailbox"), global.default_text_size, c_black, c_white, 1);
+		}
+		
+		/* Discord button */
+		draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, display_get_gui_width() - (32 * 3), display_get_gui_height() - 32, 16, 0, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
+		if (menu == "link_discord")
+		{
+			draw_set_halign(fa_right);
+			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64 - 32, l10n_text("Join our Discord!"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, string(global.link_to_discord), global.default_text_size, c_black, c_white, 1);
+			
+			if (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 3), display_get_gui_height() - 32, display_get_gui_width() - (32 * 3) + 32, display_get_gui_height()))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				url_open(string(global.link_to_discord));
+				menu_delay = 3;
+			}
+		}
+		
+		/* YouTube button */
+		draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, display_get_gui_width() - (32 * 4), display_get_gui_height() - 32, 16, 0, 0.25, 0.25, 32, 32, "", "link_youtube", "link_youtube", false);
+		if (menu == "link_youtube")
+		{
+			draw_set_halign(fa_right);
+			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64 - 32, l10n_text("Subscribe to our YouTube Channel!"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, string(global.link_to_discord), global.default_text_size, c_black, c_white, 1);
+			
+			if (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 4), display_get_gui_height() - 32, display_get_gui_width() - (32 * 4) + 32, display_get_gui_height()))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				url_open(string(global.link_to_discord));
+				menu_delay = 3;
+			}
+		}
+		
+		/* Public Update Schedule button */
+		draw_menu_button_sprite(spr_wall, display_get_gui_width() - (32 * 5), display_get_gui_height() - 32, 16, 0, 1, 1, 32, 32, "", "public_update_schedule", "public_update_schedule", false);
+		if (menu == "public_update_schedule")
+		{
+			draw_set_halign(fa_right);
+			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, l10n_text("Public Update Schedule"), global.default_text_size, c_black, c_white, 1);
+		}
 		
 	}
 }
 #endregion /* Main Menu END */
+
+#region /* Information menu */
+if (information_menu_open > 0)
+{
+	draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+	
+	/* About tab button */
+	draw_menu_button_sprite(spr_menu_button, 0, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("About"), "about", "about", false);
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 185, 42))
+	&& (mouse_check_button_released(mb_left))
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	|| (menu == "about")
+	&& (key_a_pressed)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	{
+		information_menu_open = 1;
+		menu_delay = 3;
+	}
+	
+	/* What's New tab button */
+	draw_menu_button_sprite(spr_menu_button, 185, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false);
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, 185, 0, 185 * 2, 42))
+	&& (mouse_check_button_released(mb_left))
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	|| (menu == "whats_new")
+	&& (key_a_pressed)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	{
+		information_menu_open = 2;
+		menu_delay = 3;
+	}
+	
+	/* Backups tab button */
+	draw_menu_button_sprite(spr_menu_button, 185 * 2, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Backups"), "backups", "backups", false);
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 2, 0, 185 * 3, 42))
+	&& (mouse_check_button_released(mb_left))
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	|| (menu == "backups")
+	&& (key_a_pressed)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	{
+		information_menu_open = 3;
+		menu_delay = 3;
+	}
+	
+	/* Credits tab button */
+	draw_menu_button_sprite(spr_menu_button, 185 * 3, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("Credits"), "credits", "credits", false);
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, 185 * 3, 0, 185 * 4, 42))
+	&& (mouse_check_button_released(mb_left))
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	|| (menu == "credits")
+	&& (key_a_pressed)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	{
+		information_menu_open = 4;
+		menu_delay = 3;
+	}
+	
+	/* Back from Information Menu */
+	draw_menu_button_sprite(spr_wall, display_get_gui_width() - 32, display_get_gui_height() - 32, 16, 0, 1, 1, 32, 32, "", "information_back", "information", false);
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32, display_get_gui_height() - 32, display_get_gui_width(), display_get_gui_height()))
+	&& (mouse_check_button_released(mb_left))
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	|| (menu == "information_back")
+	&& (key_a_pressed)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	{
+		information_menu_open = false;
+		menu = "information";
+		menu_delay = 3;
+	}
+	
+	if (information_menu_open == 1) /* About tab */
+	{
+		draw_set_halign(fa_left);
+		scr_draw_text_outlined(32, 32 * 2, l10n_text("Welcome to " + string(global.game_name) + "!"), global.default_text_size, c_black, c_white, 1);
+		
+		scr_draw_text_outlined(32, 32 * 4, l10n_text("This is a game that allows you to create your own levels"), global.default_text_size, c_black, c_white, 1);
+		
+		scr_draw_text_outlined(32, 32 * 6, l10n_text("To share levels press the Upload button in level editor"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(32, 32 * 7, l10n_text("To browse levels press the Online Level List button in level editor"), global.default_text_size, c_black, c_white, 1);
+		draw_menu_button(32, 32 * 8, "Online Level List", "about_online_level_list", "about_online_level_list");
+		
+		if (global.link_to_website != "")
+		{
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(32, 32 * 10, l10n_text("Check out our website") + ":", global.default_text_size, c_black, c_white, 1);
+			draw_menu_button(32, 32 * 11, string(global.link_to_website), "about_link_to_website", "about_link_to_website");
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, 32 * 11, 32 + 370, 32 * 12))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "about_link_to_website")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				url_open(global.link_to_website);
+				menu_delay = 3;
+			}
+		}
+		
+		if (global.link_to_website_guide != "")
+		{
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(32, 32 * 13, l10n_text("Check out the guide for " + string(global.game_name)) + ":", global.default_text_size, c_black, c_white, 1);
+			draw_menu_button_sprite(spr_menu_button, 32, 32 * 14, 0, 0, 2, 1, 370 * 2, 42, string(global.link_to_website_guide), "about_link_to_website_guide", "about_link_to_website_guide");
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, 32 * 14, 32 + (370 * 2), 32 * 15))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "about_link_to_website_guide")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				url_open(global.link_to_website_guide);
+				menu_delay = 3;
+			}
+		}
+		
+		draw_set_halign(fa_left);
+		draw_sprite_ext(spr_heart, 0, 48, 32 * 16, 1, 1, 0, c_white, 1);
+		scr_draw_text_outlined(48 + 16 + 8, 32 * 16, l10n_text("This is a game made with love"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(32, 32 * 17, l10n_text("Check out credits for more info"), global.default_text_size, c_black, c_white, 1);
+	}
+	else
+	if (information_menu_open == 2) /* What's New tab */
+	{
+		draw_set_halign(fa_center);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("Build ver") + ": " + string(scr_get_build_date()) + " " + l10n_text("is here!"), global.default_text_size, c_black, c_white, 1);
+		
+		if (global.link_to_changelog_history != "")
+		{
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(32, 32 * 3, l10n_text("Changelog History") + ":", global.default_text_size, c_black, c_white, 1);
+			draw_menu_button_sprite(spr_menu_button, 32, 32 * 4, 0, 0, 3, 1, 370 * 3, 42, string(global.link_to_changelog_history), "changelog_history", "changelog_history");
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, 32 * 5, 32 + (370 * 4), 32 * 5))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "changelog_history")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				url_open(global.link_to_changelog_history);
+				menu_delay = 3;
+			}
+		}
+		
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_top);
+		scr_draw_text_outlined(32, 32 * 6, global.whats_new, global.default_text_size, c_black, c_white, 1);
+		draw_set_valign(fa_middle);
+	}
+	else
+	if (information_menu_open == 3) /* Backups tab */
+	{
+		draw_set_halign(fa_center);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("Keep your levels safe!"), global.default_text_size, c_black, c_white, 1);
+		
+		draw_set_halign(fa_left);
+		scr_draw_text_outlined(32, 32 * 4, l10n_text("To prevent losing your levels you should upload levels and then save your level IDs somewhere safe"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(32, 32 * 6, l10n_text("The game includes an autosave feature that automatically saves your level every 5 minutes"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(32, 32 * 7, l10n_text("It also saves your level every time you playtest"), global.default_text_size, c_black, c_white, 1);
+	}
+	else
+	if (information_menu_open == 4) /* Credits tab */ 
+	{
+		
+		#region /* Click Credits */
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (in_settings == false)
+		|| (menu == "credits")
+		&& (key_a_pressed)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (in_settings == false)
+		{
+			if (!instance_exists(obj_credits))
+			{
+				instance_create_depth(x, y, 0, obj_credits);
+			}
+			in_settings = false;
+			menu = "play_credits";
+			menu_delay = 3;
+			can_navigate_settings_sidebar = false;
+		}
+		#endregion /* Click Credits END */
+		
+	}
+}
+#endregion /* Information menu END */
 
 scr_options_menu(); /* Options */
 
@@ -903,7 +863,7 @@ if (input_key == false)
 		if (key_up)
 		{
 			menu_delay = 3;
-			menu = "credits";
+			menu = "information";
 		}
 		else
 		if (key_down)
@@ -924,7 +884,7 @@ if (input_key == false)
 		&& (global.convention_mode)
 		{
 			menu_delay = 3;
-			menu = "credits";
+			menu = "information";
 		}
 	}
 	else
@@ -947,23 +907,14 @@ if (input_key == false)
 		&& (global.convention_mode)
 		{
 			menu_delay = 3;
-			menu = "credits";
+			menu = "information";
 		}
 	}
 	else
 	if (menu == "options")
 	{
-		if (key_left)
-		&& (global.show_language_shortcut)
-		&& (global.convention_mode == false)
-		{
-			menu_delay = 3;
-			menu = "language_shortcut";
-		}
-		else
 		if (key_right)
 		|| (key_left)
-		&& (global.show_language_shortcut == false)
 		{
 			menu_delay = 3;
 			if (global.convention_mode == false)
@@ -993,50 +944,7 @@ if (input_key == false)
 		if (key_down)
 		{
 			menu_delay = 3;
-			menu = "credits";
-		}
-	}
-	else
-	if (menu == "language_shortcut")
-	{
-		if (key_right)
-		{
-			menu_delay = 3;
-			menu = "options";
-		}
-	}
-	else
-	if (menu == "accessibility_shortcut")
-	{
-		if (key_left)
-		{
-			menu_delay = 3;
-			if (global.convention_mode == false)
-			&& (global.enable_options_for_pc)
-			{
-				menu = "quit";
-			}
-			else
-			{
-				menu = "main_game";
-			}
-		}
-		else
-		if (key_right)
-		&& (global.show_profile_shortcut)
-		&& (global.convention_mode == false)
-		{
-			menu_delay = 3;
-			menu = "profile_shortcut";
-		}
-	}
-	else
-	if (menu == "profile_shortcut")
-	{
-		if (key_left)
-		{
-			menu_delay = 3;
-			menu = "accessibility_shortcut";
+			menu = "information";
 		}
 	}
 	else
@@ -1045,19 +953,10 @@ if (input_key == false)
 		if (key_left)
 		&& (global.convention_mode == false)
 		|| (key_right)
-		&& (global.show_accessibility_shortcut == false)
 		&& (global.convention_mode == false)
 		{
 			menu_delay = 3;
 			menu = "options";
-		}
-		else
-		if (key_right)
-		&& (global.show_accessibility_shortcut)
-		&& (global.convention_mode == false)
-		{
-			menu_delay = 3;
-			menu = "accessibility_shortcut";
 		}
 		else
 		if (key_up)
@@ -1076,11 +975,11 @@ if (input_key == false)
 		if (key_down)
 		{
 			menu_delay = 3;
-			menu = "credits";
+			menu = "information";
 		}
 	}
 	else
-	if (menu == "credits")
+	if (menu == "information")
 	{
 		if (key_up)
 		{
@@ -1155,7 +1054,7 @@ if (input_key == false)
 		if (key_right)
 		{
 			menu_delay = 3;
-			menu = "credits";
+			menu = "information";
 		}
 	}
 	else
@@ -1197,7 +1096,7 @@ if (input_key == false)
 			}
 			else
 			{
-				menu = "credits";
+				menu = "information";
 			}
 		}
 	}
@@ -1334,7 +1233,7 @@ if (input_key == false)
 		if (key_left)
 		{
 			menu_delay = 3;
-			menu = "credits";
+			menu = "information";
 		}
 		else
 		if (key_right)

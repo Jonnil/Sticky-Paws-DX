@@ -16,16 +16,19 @@ global.link_to_reddit = "https://www.reddit.com/r/Jonnil";
 global.link_to_twitter = "https://twitter.com/jonnilll";
 global.link_to_wiki = ""; //"https://stickypedia.miraheze.org/wiki/Main_Page";
 global.link_to_bug_report_form = "https://forms.gle/h1KopsAAZb1fx2Hk7";
+global.link_to_website = "https://www.jonnil.games/";
+global.link_to_website_guide = "https://www.jonnil.games/sticky-paws-guide";
+global.link_to_changelog_history = "https://www.jonnil.games/sticky-paws-changelog-history"
+
+global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Nintendo Switch, \n and now it's finally out. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil"; /* Update this text explaining what is new in each update */
+
 global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle */
 
 leveleditor_readme = noone; /* Readme textfile for how to use the level editor */
 
 #region /* Change how menus look and function */
 global.skip_how_many_people_are_playing_screen = true; /* If the game should skip the "How many people are playing?" screen */
-global.show_language_shortcut = false; /* If a shortcut for the language options should appear in the main menu to the left of the settings menu */
-global.show_accessibility_shortcut = false; /* If a shortcut for the accessibility options should appear in the main menu to the right of the settings menu */
 global.enable_how_to_play_settings = false; /* Enable How to play settings */
-global.show_profile_shortcut = false; /* If a shortcut for the profile options should appear in the main menu to the right of the settings menu */
 global.enable_multiplayer_settings = false; /* Enable Multiplayer settings */
 global.enable_controller_settings = true; /* Enable Controller settings */
 global.enable_touch_settings = false; /* Enable Touch settings */

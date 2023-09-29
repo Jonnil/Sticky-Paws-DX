@@ -9,6 +9,8 @@ scr_delete_sprite_properly(global.custom_foreground_secret);
 loading_assets = false;
 allowed_to_load_template_level = false;
 
+information_menu_open = false; /* If the information menu is opened or not */
+
 menu = "";
 
 key_a_pressed = noone;
