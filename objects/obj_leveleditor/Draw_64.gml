@@ -931,10 +931,8 @@ if (global.actually_play_edited_level == false)
 		&& (instance_exists(obj_level_end))
 		&& (obj_level_end.drag_object == false)
 		{
-			if (point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height()))
-			&& (global.controls_used_for_menu_navigation == "mouse")
-			|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height()))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			if (point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64))
+			|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
 			|| (global.always_show_level_editor_buttons)
 			{
 				if (show_icons_at_bottom == false)
@@ -943,10 +941,8 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 			else
-			if (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height()))
-			&& (global.controls_used_for_menu_navigation == "mouse")
-			&& (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height()))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			if (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64))
+			&& (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
 			&& (global.always_show_level_editor_buttons == false)
 			{
 				if (show_icons_at_bottom)
@@ -1004,8 +1000,7 @@ if (global.actually_play_edited_level == false)
 		&& (instance_exists(obj_level_end))
 		&& (obj_level_end.drag_object == false)
 		{
-			if (point_in_rectangle(cursor_x, cursor_y, - 32, - 32, display_get_gui_width() + 32, + 8))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			if (point_in_rectangle(cursor_x, cursor_y, - 32, - 64, display_get_gui_width() + 32, + 64))
 			|| (global.always_show_level_editor_buttons)
 			{
 				if (show_icons_at_top == false)
@@ -1014,8 +1009,7 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 			else
-			if (point_in_rectangle(cursor_x, cursor_y, - 32, + 64, display_get_gui_width() + 32, display_get_gui_height() + 32))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			if (point_in_rectangle(cursor_x, cursor_y, - 32, + 64, display_get_gui_width() + 32, display_get_gui_height() + 64))
 			{
 				if (show_icons_at_top)
 				{
@@ -1605,7 +1599,7 @@ if (global.actually_play_edited_level == false)
 		
 		#endregion /* Fill icon END */
 		
-		#region /* Always show level editor buttons toggle */
+		#region /* Hide Buttons - Always show level editor buttons toggle */
 		if (global.always_show_level_editor_buttons == false)
 		{
 			draw_sprite_ext(spr_menu_cursor, 0, always_show_level_editor_buttons_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 270, c_white, 1);
@@ -1614,6 +1608,10 @@ if (global.actually_play_edited_level == false)
 		if (global.always_show_level_editor_buttons)
 		{
 			draw_sprite_ext(spr_menu_cursor, 0, always_show_level_editor_buttons_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 90, c_white, 1);
+		}
+		if (global.controls_used_for_menu_navigation != "controller")
+		{
+			draw_sprite_ext(spr_keyboard_keys, ord("T"), always_show_level_editor_buttons_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
 		}
 		if (point_in_rectangle(cursor_x, cursor_y, always_show_level_editor_buttons_x - 32 + 1, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64 - 1))
 		&& (global.controls_used_for_menu_navigation == "mouse")
@@ -1633,25 +1631,18 @@ if (global.actually_play_edited_level == false)
 				tooltip = l10n_text("Lock buttons");
 			}
 			show_tooltip += 2;
-			if (mouse_check_button_pressed(mb_left))
-			&& (global.always_show_level_editor_buttons == false)
-			{
-				global.always_show_level_editor_buttons = true;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "always_show_level_editor_buttons", true);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-			}
-			else
-			if (mouse_check_button_pressed(mb_left))
-			&& (global.always_show_level_editor_buttons)
-			{
-				global.always_show_level_editor_buttons = false;
-				ini_open(working_directory + "config.ini");
-				ini_write_real("config", "always_show_level_editor_buttons", false);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-			}
 		}
-		#endregion /* Always show level editor buttons toggle END */
+		if (mouse_check_button_pressed(mb_left))
+		&& (point_in_rectangle(cursor_x, cursor_y, always_show_level_editor_buttons_x - 32 + 1, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64 - 1))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		|| (keyboard_check_pressed(ord("T")))
+		{
+			global.always_show_level_editor_buttons = not global.always_show_level_editor_buttons;
+			ini_open(working_directory + "config.ini");
+			ini_write_real("config", "always_show_level_editor_buttons", global.always_show_level_editor_buttons);
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		}
+		#endregion /* Hide Buttons - Always show level editor buttons toggle END */
 		
 		#region /* Show Undo icon */
 		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
@@ -1732,6 +1723,7 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Show icons at top of screen */
 		if (show_icons_at_top)
+		&& (pause == false)
 		{
 			icons_at_top_y = lerp(icons_at_top_y, - 1, 0.1);
 		}
@@ -1746,106 +1738,105 @@ if (global.actually_play_edited_level == false)
 		var zoom_in_button_x = display_get_gui_width() - 96;
 		var help_button_x = display_get_gui_width() - 32;
 		
-		if (pause == false)
+		#region /* Show Grid */
+		if (show_grid)
 		{
-			
-			#region /* Show Grid */
-			if (show_grid)
+			draw_sprite_ext(spr_leveleditor_icons, 13, grid_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			draw_set_halign(fa_right);
+			draw_set_valign(fa_middle);
+			scr_draw_text_outlined(display_get_gui_width() - 80, 80 + icons_at_top_y, l10n_text("Grid X") + ": " + string(global.grid_hsnap), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 80, 110 + icons_at_top_y, l10n_text("Grid Y") + ": " + string(global.grid_vsnap), global.default_text_size, c_black, c_white, 1);
+			if (global.grid_hsnap < 32)
+			&& (global.grid_vsnap < 32)
 			{
-				draw_sprite_ext(spr_leveleditor_icons, 13, grid_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
-				draw_set_halign(fa_right);
-				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(display_get_gui_width() - 80, 80 + icons_at_top_y, l10n_text("Grid X") + ": " + string(global.grid_hsnap), global.default_text_size, c_black, c_white, 1);
-				scr_draw_text_outlined(display_get_gui_width() - 80, 110 + icons_at_top_y, l10n_text("Grid Y") + ": " + string(global.grid_vsnap), global.default_text_size, c_black, c_white, 1);
-				if (global.grid_hsnap < 32)
-				&& (global.grid_vsnap < 32)
+				scr_draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, l10n_text("Under default grid size!"), global.default_text_size, c_black, c_white, 1);
+			}
+			else
+			if (global.grid_hsnap > 32)
+			&& (global.grid_vsnap > 32)
+			{
+				scr_draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, l10n_text("Above default grid size!"), global.default_text_size, c_black, c_white, 1);
+			}
+			draw_sprite_ext(spr_menu_button_up_down, 0, display_get_gui_width() - 32, 80 + icons_at_top_y + 16, 1, 1, 0, c_white, 1);
+			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32 + 2, display_get_gui_width() + 64, 80 + icons_at_top_y + 16))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (mouse_check_button_pressed(mb_left))
+			{
+				global.grid_hsnap ++;
+				global.grid_vsnap ++;
+			}
+			else
+			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (mouse_check_button_pressed(mb_left))
+			{
+				if (global.grid_hsnap > 1)
+				|| (global.grid_vsnap > 1)
 				{
-					scr_draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, l10n_text("Under default grid size!"), global.default_text_size, c_black, c_white, 1);
+					global.grid_hsnap --;
+					global.grid_vsnap --;
 				}
-				else
-				if (global.grid_hsnap > 32)
-				&& (global.grid_vsnap > 32)
-				{
-					scr_draw_text_outlined(display_get_gui_width() - 80, 135 + icons_at_top_y, l10n_text("Above default grid size!"), global.default_text_size, c_black, c_white, 1);
-				}
-				draw_sprite_ext(spr_menu_button_up_down, 0, display_get_gui_width() - 32, 80 + icons_at_top_y + 16, 1, 1, 0, c_white, 1);
-				if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32 + 2, display_get_gui_width() + 64, 80 + icons_at_top_y + 16))
-				&& (global.controls_used_for_menu_navigation == "mouse")
-				&& (mouse_check_button_pressed(mb_left))
-				{
-					global.grid_hsnap ++;
-					global.grid_vsnap ++;
-				}
-				else
-				if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32))
-				&& (global.controls_used_for_menu_navigation == "mouse")
-				&& (mouse_check_button_pressed(mb_left))
-				{
-					if (global.grid_hsnap > 1)
-					|| (global.grid_vsnap > 1)
-					{
-						global.grid_hsnap --;
-						global.grid_vsnap --;
-					}
-				}
-				scr_draw_text_outlined(display_get_gui_width() - 16, 32 + 140 + icons_at_top_y, l10n_text("X") + ": " + string(x) + " " + l10n_text("Y") + ": " + string(y), global.default_text_size, c_black, c_white, 1);
-				scr_draw_text_outlined(display_get_gui_width() - 16, 32 + 190 + icons_at_top_y, l10n_text("View width") + ": " + string(camera_get_view_width(view_camera[0])) + " " + l10n_text("View height") + ": " + string(camera_get_view_height(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
 			}
-			else
-			{
-				draw_sprite_ext(spr_leveleditor_icons, 13, grid_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
-			}
-			#endregion /* Show Grid END */
-			
-			#region /* Zoom Out */
-			if (zoom_out)
-			{
-				draw_sprite_ext(spr_leveleditor_icons, 14, zoom_out_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_leveleditor_icons, 14, zoom_out_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
-			}
-			#endregion /* Zoom Out END */
-			
-			#region /* Zoom Reset */
-			if (zoom_reset)
-			{
-				draw_sprite_ext(spr_leveleditor_icons, 15, zoom_reset_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_leveleditor_icons, 15, zoom_reset_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
-			}
-			#endregion /* Zoom Reset END */
-			
-			#region /* Zoom In */
-			if (zoom_in)
-			{
-				draw_sprite_ext(spr_leveleditor_icons, 16, zoom_in_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_leveleditor_icons, 16, zoom_in_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
-			}
-			#endregion /* Zoom In END */
-			
-			#region /* Help Button */
-			if (welcome_to_level_editor > 0)
-			{
-				draw_sprite_ext(spr_leveleditor_icons_empty, 0, help_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
-				draw_set_halign(fa_center);
-				scr_draw_text_outlined(help_button_x, + 32 + icons_at_top_y, "?", global.default_text_size * 2, c_black, c_red, 1);
-			}
-			else
-			{
-				draw_sprite_ext(spr_leveleditor_icons_empty, 0, help_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
-				draw_set_halign(fa_center);
-				scr_draw_text_outlined(help_button_x, + 32 + icons_at_top_y, "?", global.default_text_size * 2, c_black, c_red, 1);
-			}
-			#endregion /* Help Button END */
-			
+			scr_draw_text_outlined(display_get_gui_width() - 16, 32 + 140 + icons_at_top_y, l10n_text("X") + ": " + string(x) + " " + l10n_text("Y") + ": " + string(y), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 16, 32 + 190 + icons_at_top_y, l10n_text("View width") + ": " + string(camera_get_view_width(view_camera[0])) + " " + l10n_text("View height") + ": " + string(camera_get_view_height(view_camera[0])), global.default_text_size * 0.5, c_black, c_white, 1);
 		}
+		else
+		{
+			draw_sprite_ext(spr_leveleditor_icons, 13, grid_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+		}
+		if (global.controls_used_for_menu_navigation != "controller")
+		{
+			draw_sprite_ext(spr_keyboard_keys, ord("G"), grid_button_x + 20, + 32 + icons_at_top_y + 20, 0.4, 0.4, 0, c_white, 1);
+		}
+		#endregion /* Show Grid END */
+		
+		#region /* Zoom Out */
+		if (zoom_out)
+		{
+			draw_sprite_ext(spr_leveleditor_icons, 14, zoom_out_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(spr_leveleditor_icons, 14, zoom_out_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+		}
+		#endregion /* Zoom Out END */
+		
+		#region /* Zoom Reset */
+		if (zoom_reset)
+		{
+			draw_sprite_ext(spr_leveleditor_icons, 15, zoom_reset_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(spr_leveleditor_icons, 15, zoom_reset_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+		}
+		#endregion /* Zoom Reset END */
+		
+		#region /* Zoom In */
+		if (zoom_in)
+		{
+			draw_sprite_ext(spr_leveleditor_icons, 16, zoom_in_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+		}
+		else
+		{
+			draw_sprite_ext(spr_leveleditor_icons, 16, zoom_in_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+		}
+		#endregion /* Zoom In END */
+		
+		#region /* Help Button */
+		if (welcome_to_level_editor > 0)
+		{
+			draw_sprite_ext(spr_leveleditor_icons_empty, 0, help_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			draw_set_halign(fa_center);
+			scr_draw_text_outlined(help_button_x, + 32 + icons_at_top_y, "?", global.default_text_size * 2, c_black, c_red, 1);
+		}
+		else
+		{
+			draw_sprite_ext(spr_leveleditor_icons_empty, 0, help_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_dkgray, 1);
+			draw_set_halign(fa_center);
+			scr_draw_text_outlined(help_button_x, + 32 + icons_at_top_y, "?", global.default_text_size * 2, c_black, c_red, 1);
+		}
+		#endregion /* Help Button END */
 		
 		#endregion /* Show icons at top of screen END */
 		
@@ -2046,58 +2037,58 @@ if (global.actually_play_edited_level == false)
 		
 		if (current_object_category == "terrain")
 		{
-			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_terrain_x, 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icons_object_category_terrain_x, 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
 			var category_title = l10n_text("Terrain");
 		}
 		else
 		{
-			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_gray, 1);
-			draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icons_object_category_terrain_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_terrain_x, 32 + icons_at_top_y, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(global.resource_pack_sprite_tileset_default, 0, icons_object_category_terrain_x, 32 + icons_at_top_y, 1, 1, 0, c_gray, 1);
 		}
 		if (current_object_category == "decoration")
 		{
-			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(spr_arrow_sign, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_decoration_x, 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_arrow_sign, 0, icons_object_category_decoration_x, 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
 			var category_title = l10n_text("Decoration");
 		}
 		else
 		{
-			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_gray, 1);
-			draw_sprite_ext(spr_arrow_sign, 0, icons_object_category_decoration_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 0, icons_object_category_decoration_x, 32 + icons_at_top_y, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_arrow_sign, 0, icons_object_category_decoration_x, 32 + icons_at_top_y, 1, 1, 0, c_gray, 1);
 		}
 		if (current_object_category == "item")
 		{
-			draw_sprite_ext(spr_leveleditor_icons_empty, 1, icons_object_category_item_x, 32, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icons_object_category_item_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 1, icons_object_category_item_x, 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icons_object_category_item_x, 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
 			var category_title = l10n_text("Item");
 		}
 		else
 		{
-			draw_sprite_ext(spr_leveleditor_icons_empty, 1, icons_object_category_item_x, 32, 1, 1, 0, c_gray, 1);
-			draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icons_object_category_item_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 1, icons_object_category_item_x, 32 + icons_at_top_y, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(global.resource_pack_sprite_basic_collectible, 1, icons_object_category_item_x, 32 + icons_at_top_y, 1, 1, 0, c_gray, 1);
 		}
 		if (current_object_category == "enemy")
 		{
-			draw_sprite_ext(spr_leveleditor_icons_empty, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 2, icons_object_category_enemy_x, 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icons_object_category_enemy_x, 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
 			var category_title = l10n_text("Enemy");
 		}
 		else
 		{
-			draw_sprite_ext(spr_leveleditor_icons_empty, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_gray, 1);
-			draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icons_object_category_enemy_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 2, icons_object_category_enemy_x, 32 + icons_at_top_y, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(global.resource_pack_sprite_basic_enemy, 2, icons_object_category_enemy_x, 32 + icons_at_top_y, 1, 1, 0, c_gray, 1);
 		}
 		if (current_object_category == "gizmo")
 		{
-			draw_sprite_ext(spr_leveleditor_icons_empty, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_white, 1);
-			draw_sprite_ext(spr_spring, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 3, icons_object_category_gizmo_x, 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_spring, 3, icons_object_category_gizmo_x, 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
 			var category_title = l10n_text("Gizmo");
 		}
 		else
 		{
-			draw_sprite_ext(spr_leveleditor_icons_empty, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_gray, 1);
-			draw_sprite_ext(spr_spring, 3, icons_object_category_gizmo_x, 32, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_leveleditor_icons_empty, 3, icons_object_category_gizmo_x, 32 + icons_at_top_y, 1, 1, 0, c_gray, 1);
+			draw_sprite_ext(spr_spring, 3, icons_object_category_gizmo_x, 32 + icons_at_top_y, 1, 1, 0, c_gray, 1);
 		}
 		
 		if (selected_menu_alpha > 0)
@@ -2106,11 +2097,11 @@ if (global.actually_play_edited_level == false)
 			scr_draw_text_outlined(icons_object_category_terrain_x - 42, 32, category_title, global.default_text_size, c_black, c_white, selected_menu_alpha);
 		}
 		
-		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_terrain_x - 32, 0, icons_object_category_terrain_x + 32, + 64))
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_terrain_x - 32, 0 + icons_at_top_y, icons_object_category_terrain_x + 32, + 64 + icons_at_top_y))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
-			draw_rectangle_color(icons_object_category_terrain_x - 32, 0, icons_object_category_terrain_x + 32, 64, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color(icons_object_category_terrain_x - 32, 0 + icons_at_top_y, icons_object_category_terrain_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
@@ -2120,11 +2111,11 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_decoration_x - 32, 0, icons_object_category_decoration_x + 32, + 64))
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_decoration_x - 32, 0 + icons_at_top_y, icons_object_category_decoration_x + 32, + 64 + icons_at_top_y))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
-			draw_rectangle_color(icons_object_category_decoration_x - 32, 0, icons_object_category_decoration_x + 32, 64, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color(icons_object_category_decoration_x - 32, 0 + icons_at_top_y, icons_object_category_decoration_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
@@ -2134,11 +2125,11 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_item_x - 32, 0, icons_object_category_item_x + 32, + 64))
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_item_x - 32, 0 + icons_at_top_y, icons_object_category_item_x + 32, + 64 + icons_at_top_y))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
-			draw_rectangle_color(icons_object_category_item_x - 32, 0, icons_object_category_item_x + 32, 64, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color(icons_object_category_item_x - 32, 0 + icons_at_top_y, icons_object_category_item_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
@@ -2148,11 +2139,11 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_enemy_x - 32, 0, icons_object_category_enemy_x + 32, + 64))
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_enemy_x - 32, 0 + icons_at_top_y, icons_object_category_enemy_x + 32, + 64 + icons_at_top_y))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
-			draw_rectangle_color(icons_object_category_enemy_x - 32, 0, icons_object_category_enemy_x + 32, 64, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color(icons_object_category_enemy_x - 32, 0 + icons_at_top_y, icons_object_category_enemy_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
@@ -2162,11 +2153,11 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_gizmo_x - 32, 0, icons_object_category_gizmo_x + 32, + 64))
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_gizmo_x - 32, 0 + icons_at_top_y, icons_object_category_gizmo_x + 32, + 64 + icons_at_top_y))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		{
 			draw_set_alpha(0.5);
-			draw_rectangle_color(icons_object_category_gizmo_x - 32, 0, icons_object_category_gizmo_x + 32, 64, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color(icons_object_category_gizmo_x - 32, 0 + icons_at_top_y, icons_object_category_gizmo_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")

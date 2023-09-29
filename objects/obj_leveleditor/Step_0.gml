@@ -97,7 +97,7 @@ if (global.actually_play_edited_level == false)
 	view_center_y = cam_y + cam_height * 0.5;
 	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)) /* Can't place objects when clicking the bottom buttons */
-	|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
+	|| (point_in_rectangle(mouse_get_x, mouse_get_y, grid_button_x - 32, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32)) /* Can't place objects when clicking the play button */
 	|| (show_grid)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up and down buttons when grid is on */
@@ -722,7 +722,10 @@ if (global.actually_play_edited_level == false)
 		camera_set_view_pos(view_camera[view_current], cam_x + view_x_direction, cam_y + view_y_direction); /* Move actual camera */
 		#endregion /* Move view with keyboard or gamepad END */
 		
-		move_snap(global.grid_hsnap, global.grid_vsnap); /* Make sure to always move snap */
+		if (!keyboard_check(vk_alt)) /* If you hold down the Alt key when placing objects, you ignore the grid and can place freely */
+		{
+			move_snap(global.grid_hsnap, global.grid_vsnap); /* Make sure to always move snap */
+		}
 		
 		#region /* Place Object */
 		if (can_make_place_brush_size_bigger && mouse_check_button(mb_left))

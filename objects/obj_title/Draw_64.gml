@@ -572,6 +572,12 @@ if (global.arcade_mode == false && in_settings == false)
 #region /* Information menu */
 if (information_menu_open > 0)
 {
+	if (information_menu_open != 4)
+	&& (instance_exists(obj_credits))
+	{
+		instance_destroy(obj_credits);
+	}
+	
 	draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 	
 	/* About tab button */
@@ -635,6 +641,10 @@ if (information_menu_open > 0)
 	&& (key_a_pressed)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
+		if (instance_exists(obj_credits))
+		{
+			instance_destroy(obj_credits);
+		}
 		information_menu_open = false;
 		menu = "information";
 		menu_delay = 3;
@@ -733,26 +743,12 @@ if (information_menu_open > 0)
 	if (information_menu_open == 4) /* Credits tab */ 
 	{
 		
-		#region /* Click Credits */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 370, display_get_gui_height() - 42, display_get_gui_width(), display_get_gui_height()))
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
-		|| (menu == "credits")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
+		#region /* Play Credits */
+		if (!instance_exists(obj_credits))
 		{
-			if (!instance_exists(obj_credits))
-			{
-				instance_create_depth(x, y, 0, obj_credits);
-			}
-			in_settings = false;
-			menu = "play_credits";
-			menu_delay = 3;
-			can_navigate_settings_sidebar = false;
+			instance_create_depth(x, y, 0, obj_credits);
 		}
-		#endregion /* Click Credits END */
+		#endregion /* Play Credits END */
 		
 	}
 }
