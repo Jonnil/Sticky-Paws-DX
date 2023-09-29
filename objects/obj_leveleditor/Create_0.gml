@@ -124,7 +124,7 @@ if (global.actually_play_edited_level == false)
 	view_center_x = cam_x + cam_width * 0.5;
 	view_center_y = cam_y + cam_height * 0.5;
 	
-	current_object_description = "";
+	current_object_name = "";
 	placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
 	current_object_category = "terrain"; /* Seperate objects into different categories, to make objects easier to find */
 	
@@ -662,7 +662,8 @@ if (global.actually_play_edited_level == false)
 	current_undo_value = 0; /* Every time you place down items, this value increases. When you undo, this value decreases. */
 	icons_at_top_y = - 100;
 	selected_menu_alpha = 0;
-	total_number_of_objects = 0;
+	total_number_of_objects = 9999;
+	object_help_description = "";
 	drag_object = false;
 	erase_mode = false; /* When erasing, this turns true */
 	fill_mode = false; /* When filling, this turns true */

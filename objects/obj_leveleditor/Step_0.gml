@@ -1,6 +1,21 @@
 if (global.actually_play_edited_level == false)
 {
 	
+	#region /* Hide/Show Backgrounds */
+	if (keyboard_check_pressed(ord("B")))
+	{
+		global.enable_background_layer1 = not global.enable_background_layer1;
+		global.enable_background_layer2 = not global.enable_background_layer2;
+		global.enable_background_layer3 = not global.enable_background_layer3;
+		global.enable_background_layer4 = not global.enable_background_layer4;
+		global.enable_foreground_layer1 = not global.enable_foreground_layer1;
+		global.enable_foreground_layer_1_5 = not global.enable_foreground_layer_1_5;
+		global.enable_foreground_layer2 = not global.enable_foreground_layer2;
+		global.enable_foreground_layer_secret = not global.enable_foreground_layer_secret;
+		scr_make_background_visible();
+	}
+	#endregion /* Hide/Show Backgrounds END */
+	
 	#region /* Autosave */
 	autosave_timer++;
 	if (autosave_timer > 18000 - 1) /* Activate all objects 1 frame before saving level, just to make sure everything gets saved */
@@ -110,6 +125,8 @@ if (global.actually_play_edited_level == false)
 	&& (set_difficulty_mode == false)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 64 - 64 - 32, 0, display_get_gui_width() * 0.5 + 64 + 64 + 32, 64)) /* Can't place objects when clicking the object category buttons */
+	|| (welcome_to_level_editor > 0) /* Can't click on objects behind the help menu */
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 350, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 350, display_get_gui_height() * 0.5 + 200))
 	{
 		if (global.controls_used_for_menu_navigation == "mouse")
 		{
@@ -281,18 +298,21 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Holding the play key down */
 	if (keyboard_check_pressed(key_play))
+	&& (welcome_to_level_editor == false)
 	|| (gamepad_button_check_pressed(global.player_slot[1], button_play))
+	&& (welcome_to_level_editor == false)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 	&& (mouse_check_button_pressed(mb_left))
 	{
 		if (pause == false)
-		&& (welcome_to_level_editor == false)
 		{
 			pressing_play_timer = 1;
 		}
 	}
 	if (keyboard_check(key_play))
+	&& (welcome_to_level_editor == false)
 	|| (gamepad_button_check(global.player_slot[1], button_play))
+	&& (welcome_to_level_editor == false)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 	&& (mouse_check_button(mb_left))
 	|| (pressing_play_timer < 3)
@@ -300,7 +320,6 @@ if (global.actually_play_edited_level == false)
 		if (pause == false)
 		&& (pressing_play_timer >= 1)
 		&& (!key_b_hold)
-		&& (welcome_to_level_editor == false)
 		{
 			if (!audio_is_playing(snd_charge_up))
 			{
@@ -330,7 +349,6 @@ if (global.actually_play_edited_level == false)
 			if (pause == false)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.character_select_in_this_menu == "level_editor")
-			&& (welcome_to_level_editor == false)
 			{
 				if (!instance_exists(obj_camera))
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32))
@@ -862,7 +880,6 @@ if (global.actually_play_edited_level == false)
 		&& (!keyboard_check(vk_space))
 		&& (!keyboard_check(vk_escape))
 		&& (!mouse_check_button(mb_middle))
-		&& (welcome_to_level_editor == false)
 		{
 			if (mouse_check_button(mb_right))
 			|| (mouse_check_button(mb_left))
@@ -877,7 +894,6 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Set to appear on difficulty level */
 		if (difficulty_layer > 0)
-		&& (welcome_to_level_editor == false)
 		{
 			if (!mouse_check_button(mb_right))
 			&& (!hovering_over_icons)
@@ -908,7 +924,6 @@ if (global.actually_play_edited_level == false)
 		#region /* Set to dissapear on difficulty level */
 		if (difficulty_layer > 0)
 		&& (!keyboard_check(vk_escape))
-		&& (welcome_to_level_editor == false)
 		{
 			if (!mouse_check_button(mb_left))
 			&& (!hovering_over_icons)
@@ -1393,8 +1408,31 @@ if (global.actually_play_edited_level == false)
 				}
 				else
 				{
-					selected_object = total_number_of_objects;
-					selected_object_menu_actual_x =- 100 *total_number_of_objects;
+					if (current_object_category == "terrain")
+					{
+						current_object_category = "gizmo";
+					}
+					else
+					if (current_object_category == "decoration")
+					{
+						current_object_category = "terrain";
+					}
+					else
+					if (current_object_category == "item")
+					{
+						current_object_category = "decoration";
+					}
+					else
+					if (current_object_category == "enemy")
+					{
+						current_object_category = "item";
+					}
+					else
+					if (current_object_category == "gizmo")
+					{
+						current_object_category = "enemy";
+					}
+					selected_object = 9999;
 				}
 				global.part_limit_text_alpha = 0;
 				selected_menu_alpha = 2;
@@ -1422,6 +1460,30 @@ if (global.actually_play_edited_level == false)
 				}
 				else
 				{
+					if (current_object_category == "terrain")
+					{
+						current_object_category = "decoration";
+					}
+					else
+					if (current_object_category == "decoration")
+					{
+						current_object_category = "item";
+					}
+					else
+					if (current_object_category == "item")
+					{
+						current_object_category = "enemy";
+					}
+					else
+					if (current_object_category == "enemy")
+					{
+						current_object_category = "gizmo";
+					}
+					else
+					if (current_object_category == "gizmo")
+					{
+						current_object_category = "terrain";
+					}
 					selected_object = 0;
 					selected_object_menu_actual_x = 0;
 				}

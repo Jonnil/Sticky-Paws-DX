@@ -1,4 +1,4 @@
-function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale = 1, color = c_white, alpha = 1, xscale = 1, yscale = 1, what_player)
+function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale = 1, color = c_white, alpha = 1, xscale = 1, yscale = 1, what_player = global.player_slot[1])
 {
 	switch (global.chosen_controller_used) {
 		case 0: var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxone; break;
