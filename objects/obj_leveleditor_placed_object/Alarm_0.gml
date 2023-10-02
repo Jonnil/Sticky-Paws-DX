@@ -19,6 +19,7 @@ if (global.actually_play_edited_level == false)
 		if (grid_object_index != -1)
 		{
 			sprite_index = grid[# 1, grid_object_index];
+			image_index = grid[# 2, grid_object_index];
 			mask_index = grid[# 3, grid_object_index];
 			draw_xscale = grid[# 4, grid_object_index];
 			draw_yscale = draw_xscale;

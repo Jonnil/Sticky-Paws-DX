@@ -173,6 +173,12 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_HARD_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_HARD_BLOCK, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_FALLING_BLOCK, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_CLOUD_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_ICE_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ICE_BLOCK, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL, false);
@@ -383,9 +389,30 @@ if (global.actually_play_edited_level == false)
 	#region /* Falling Block */
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK, spr_falling_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK_SOLID, spr_falling_block_solid, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	
+	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK, spr_falling_block, 1, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_SOLID, spr_falling_block_solid, 1, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	
+	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK, spr_falling_block, 2, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_SOLID, spr_falling_block_solid, 2, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	
+	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK, spr_falling_block, 3, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_SOLID, spr_falling_block_solid, 3, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	#endregion /* Falling Block END */
+	
+	#region /* Falling Block Long */
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, spr_falling_block_long, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG_SOLID, spr_falling_block_long_solid, 0, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
-	#endregion /* Falling Block END */
+	
+	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG, spr_falling_block_long, 1, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG_SOLID, spr_falling_block_long_solid, 1, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	
+	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG, spr_falling_block_long, 2, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG_SOLID, spr_falling_block_long_solid, 2, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	
+	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG, spr_falling_block_long, 3, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG_SOLID, spr_falling_block_long_solid, 3, spr_mask_block_long, 1, 0, c_white, 1, "", noone, true, 0);
+	#endregion /* Falling Block Long END */
 	
 	add_object(LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, spr_cloud_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ICE_BLOCK, spr_ice_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);

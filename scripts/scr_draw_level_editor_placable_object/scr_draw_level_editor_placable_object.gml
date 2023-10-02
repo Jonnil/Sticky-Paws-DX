@@ -1,4 +1,4 @@
-function scr_draw_level_editor_placable_object(var_selected_object, var_place_object_id, var_can_make_place_brush_size_bigger, var_sprite_index, var_mask_index, var_scroll_x, var_scale, var_rotation, var_color, var_scroll_y = 0, var_x_offset = 0, alpha_offset = 1, add_order_index = 1, object_name = "", object_description = "")
+function scr_draw_level_editor_placable_object(var_selected_object, var_place_object_id, var_can_make_place_brush_size_bigger, var_sprite_index, var_mask_index, var_scroll_x, var_scale, var_rotation, var_color, var_scroll_y = 0, var_x_offset = 0, alpha_offset = 1, add_order_index = 1, object_name = "", object_description = "", var_image_index = 0)
 {
 	var y_offset = 128;
 	if (unlocked_object[var_place_object_id] >= true)
@@ -8,6 +8,7 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 			place_object = var_place_object_id; /* The Object ID, as example this enum: LEVEL_OBJECT_ID.id_wall */
 			can_make_place_brush_size_bigger = var_can_make_place_brush_size_bigger;
 			sprite_index = var_sprite_index; /* This changes the obj_leveleditor sprite, so you see it underneath the cursor */
+			image_index = var_image_index; /* This changes the obj_leveleditor image index, so you see objects that use image index */
 			mask_index = var_mask_index; /* This changes the obj_leveleditor mask. Object mask when placing it, so it doesn't get placed over other objects */
 			
 			var var_scale_modify = 1.25;
@@ -18,7 +19,7 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 		{
 			var var_scale_modify = 1;
 		}
-		draw_sprite_ext(var_sprite_index, 0, (display_get_gui_width() * 0.5) + selected_object_menu_x + var_scroll_x * var_selected_object + var_x_offset, y_offset + var_scroll_y, var_scale * var_scale_modify, var_scale * var_scale_modify, var_rotation, var_color, selected_menu_alpha * alpha_offset);
+		draw_sprite_ext(var_sprite_index, var_image_index, (display_get_gui_width() * 0.5) + selected_object_menu_x + var_scroll_x * var_selected_object + var_x_offset, y_offset + var_scroll_y, var_scale * var_scale_modify, var_scale * var_scale_modify, var_rotation, var_color, selected_menu_alpha * alpha_offset);
 		if (unlocked_object[var_place_object_id] == 1)
 		&& (global.show_new_items_notification)
 		{

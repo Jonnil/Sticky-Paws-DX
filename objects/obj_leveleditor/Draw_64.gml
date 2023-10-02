@@ -37,6 +37,12 @@ if (global.actually_play_edited_level == false)
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HARD_BLOCK, true, spr_hard_block, spr_wall, + 100, 1, 0, c_white,,,,,"Hard Block");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Falling Block", "Falls shortly after you stand on them for too long");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Falling Block Long", "Falls shortly after you stand on them for too long");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Instant Falling Block", "Falls shortly after you stand on them for too long", 1);
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Instant Falling Block Long", "Falls shortly after you stand on them for too long", 1);
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Wood Falling Block", "Falls shortly after you stand on them for too long", 2);
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Wood Falling Block Long", "Falls shortly after you stand on them for too long", 2);
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK, true, spr_falling_block, spr_wall, + 100, 1, 0, c_white,,,,,"Stone Falling Block", "Falls shortly after you stand on them for too long", 3);
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG, true, spr_falling_block_long, spr_cardboard, + 100, 1, 0, c_white, 0, -16,,,"Stone Falling Block Long", "Falls shortly after you stand on them for too long", 3);
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, true, spr_cloud_block, spr_wall, + 100, 1, 0, c_white,,,,,"Cloud Block");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ICE_BLOCK, true, spr_ice_block, spr_wall, + 100, 1, 0, c_white,,,,,"Ice Block");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL, true, spr_enemy_only_wall, spr_wall, + 100, 1, 0, c_white,,,,,"Enemy Only Wall", "Only enemies can collide with this wall. Player will pass trough");
@@ -261,7 +267,7 @@ if (global.actually_play_edited_level == false)
 			welcome_to_level_editor = 0; /* Close the help menu when pausing the game */
 			
 			#region /* Make Background Darker */
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.5);
 			draw_rectangle_color(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(1);
 			#endregion /* Make Background Darker END */
@@ -870,7 +876,7 @@ if (global.actually_play_edited_level == false)
 				#endregion /* Press enter when done typing END */
 				
 				#region /* Make Background Darker */
-				draw_set_alpha(0.9);
+				draw_set_alpha(0.5);
 				draw_rectangle_color(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(1);
 				#endregion /* Make Background Darker END */
@@ -2353,7 +2359,7 @@ if (global.actually_play_edited_level == false)
 			{
 				menu = "welcome_screen_close";
 			}
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.5);
 			draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 350, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 350, display_get_gui_height() * 0.5 + 200, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
 			draw_set_halign(fa_center);
@@ -2424,7 +2430,7 @@ if (global.actually_play_edited_level == false)
 				menu = "welcome_screen_close";
 			}
 			var line_y = 0;
-			draw_set_alpha(0.9);
+			draw_set_alpha(0.5);
 			draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 350, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 350, display_get_gui_height() * 0.5 + 200, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
 			draw_set_halign(fa_center);
@@ -2497,22 +2503,19 @@ if (global.actually_play_edited_level == false)
 		}
 		
 		#region /* Object Specific Help */
-		if (welcome_to_level_editor > 0)
+		/* At the bottom of the screen, you can view help for specific objects that you have currently selected */
+		if (object_help_description != "")
+		&& (welcome_to_level_editor > 0)
 		{
-			/* At the bottom of the screen, when you are in the help menu, you can view help for specific objects that you have currently selected */
-			if (object_help_description != "")
-			{
-				draw_set_alpha(0.9);
-				draw_roundrect_color_ext(display_get_gui_width() * 0.5 - (string_width(object_help_description) * 0.41), display_get_gui_height() - 34 - string_height(l10n_text(object_help_description)), display_get_gui_width() * 0.5 + (string_width(object_help_description) * 0.41), display_get_gui_height() - 4, 50, 50, c_black, c_black, false);
-				draw_set_alpha(1);
-				
-				draw_set_halign(fa_center);
-				draw_set_valign(fa_top);
-				draw_set_alpha(1);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 28 - string_height(l10n_text(object_help_description)), l10n_text(current_object_name) + ":", global.default_text_size * 0.9, c_black, c_white, 1);
-				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - string_height(l10n_text(object_help_description)), l10n_text(object_help_description), global.default_text_size, c_black, c_white, 1);
-				draw_set_valign(fa_middle);
-			}
+			draw_set_alpha(0.5);
+			draw_roundrect_color_ext(display_get_gui_width() * 0.5 - (string_width(object_help_description) * 0.41), display_get_gui_height() - 34 - string_height(l10n_text(object_help_description)), display_get_gui_width() * 0.5 + (string_width(object_help_description) * 0.41), display_get_gui_height() - 4, 50, 50, c_black, c_black, false);
+			draw_set_alpha(1);
+			
+			draw_set_halign(fa_center);
+			draw_set_valign(fa_top);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 28 - string_height(l10n_text(object_help_description)), l10n_text(current_object_name) + ":", global.default_text_size * 0.9, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - string_height(l10n_text(object_help_description)), l10n_text(object_help_description), global.default_text_size, c_black, c_white, 1);
+			draw_set_valign(fa_middle);
 		}
 		#endregion /* Object Specific Help END */
 		

@@ -30,17 +30,17 @@ if (y < 1080 + 16)
 && (global.actually_play_edited_level == false)
 && (global.play_edited_level == false)
 {
-	draw_set_halign(fa_center);
+	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(x, y + 32, l10n_text("Height") + ": " + string(bbox_top), global.default_text_size, c_black, c_red, 1);
-	scr_draw_text_outlined(x, y + 64, l10n_text("Warning! Level height shorter than normal"), global.default_text_size * 0.75, c_black, c_red, 1);
+	scr_draw_text_outlined(x - 32, y, l10n_text("Warning! Level height shorter than normal") + ": " + string(bbox_top), global.default_text_size, c_black, c_red, 1);
 }
 else
 if (global.actually_play_edited_level == false)
 && (global.play_edited_level == false)
 {
-	draw_set_halign(fa_center);
+	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(x, y + 32, l10n_text("Height") + ": " + string(bbox_top), global.default_text_size, c_black, c_white, 1);
+	scr_draw_text_outlined(x - 32, y, l10n_text("Height") + ": " + string(bbox_top), global.default_text_size, c_black, c_white, 1);
 }
+draw_set_halign(fa_center);
 #endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */

@@ -81,8 +81,10 @@ function scr_controls_for_level_editor()
 	/* Player 1 Keyboard Shortcut Play */ key_play = vk_enter;
 	/* Player 1 Gamepad Shortcut Play */ button_play = gp_select;
 	
+	/* Player 1 Keyboard Shortcut Scroll Object Left */ key_scroll_object_left = ord("1");
 	/* Player 1 Gamepad Shortcut Scroll Object Left */ button_scroll_object_left = gp_shoulderl;
 	
+	/* Player 1 Keyboard Shortcut Scroll Object Right */ key_scroll_object_right = ord("2");
 	/* Player 1 Gamepad Shortcut Scroll Object Right */ button_scroll_object_right = gp_shoulderr;
 	
 	#endregion /* Controls for level editor END */

@@ -5,6 +5,17 @@ if (x < 0)
 
 y = camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5;
 
+if (y < 16)
+{
+	y = 16;
+}
+
+if (instance_exists(obj_level_height))
+&& (y > obj_level_height.y)
+{
+	y = obj_level_height.y;
+}
+
 #region /* Drag Object */
 if (instance_exists(obj_leveleditor))
 && (obj_leveleditor.pause == false)

@@ -28,7 +28,7 @@ Level Editor,Level Editor,Nivåredigerare,レベル作り,Editor de nivel,Edytor
 Options,Options,Alternativ,設定,Opciones,Opcje
 Quit,Quit,Avsluta,終了,Salir,Wyjdź
 Fullscreen,Fullscreen,Fullskärm,フルスクリーン,Pantalla Completa,Pełny ekran
-Made by,Made by,Tillverkad av, ,Hecho por,Zrobione przez
+Made by,Made by,Tillverkad av,,Hecho por,Zrobione przez
 Loading,Loading,Läser in,ローディング中,Cargando,Wczytywanie
 Select your character!,Select your character!,Välj din karaktär!,キャラクターを選択してください!,Escoge tu Personaje!,Wybierz postać!
 Player 1 Join,Player 1 Join,Spelare 1 Gå med,プレイヤー1が参加する,Jugador 1 Unir,Dołącz jako gracz 1
@@ -80,16 +80,16 @@ Enable Assist Mode,Enable Assist Mode,Aktivera hjälpläge,アシストモード
 The game is meant to be played without Assist Mode.,The game is meant to be played without Assist Mode.,Spelet är tänkt att spelas utan hjälpläge.,.,Este juego estaba hecho para jugar sin Modo de Asistencia,
 Only if you are unable to enjoy the game without extra help should you enable this.,Only if you are unable to enjoy the game without extra help should you enable this.,Endast om du inte kan njuta av spelet utan extra hjälp bör du aktivera detta.,,Solo si no puedes disfrutar el juego deberias aprender el Modo de Asistencia,"Jeśli nie jesteś w stanie przejść gry bez dodatkowej pomocy, możesz to aktywować"
 Assist Item,Assist Item,Assist objekt,アシストアイテム,,Przedmiot asysty
-Always Appear,Always Appear,Visas alltid,いつも見せる,,
-Appear after 1 defeat on a level,Appear after 1 defeat on a level,Visas efter 1 död på en nivå,レベルで１死の後を表示する,,
-Appear after 2 defeats on a level,Appear after 2 defeats on a level,Visas efter 2 dödsfall på en nivå,レベルで２死の後を表示する,,
-Appear after 3 defeats on a level,Appear after 3 defeats on a level,Visas efter 3 dödsfall på en nivå,レベルで３死の後を表示する,,
-Appear after 4 defeats on a level,Appear after 4 defeats on a level,Visas efter 4 dödsfall på en nivå,レベルで４死の後を表示する,,
-Appear after 5 defeats on a level,Appear after 5 defeats on a level,Visas efter 5 dödsfall på en nivå,レベルで５死の後を表示する,,
-Appear after 6 defeats on a level,Appear after 6 defeats on a level,Visas efter 6 dödsfall på en nivå,レベルで６死の後を表示する,,
-Appear after 7 defeats on a level,Appear after 7 defeats on a level,Visas efter 7 dödsfall på en nivå,レベルで７死の後を表示する,,
-Appear after 8 defeats on a level,Appear after 8 defeats on a level,Visas efter 8 dödsfall på en nivå,レベルで８死の後を表示する,,
-Appear after 9 defeats on a level,Appear after 9 defeats on a level,Visas efter 9 dödsfall på en nivå,レベルで９死の後を表示する,,
+Always Appear,Always Appear,Visas alltid,いつも見せる,,Zawsze pokazuj
+Appear after 1 defeat on a level,Appear after 1 defeat on a level,Visas efter 1 död på en nivå,レベルで１死の後を表示する,,Pokaż po jednej porażce na poziom
+Appear after 2 defeats on a level,Appear after 2 defeats on a level,Visas efter 2 dödsfall på en nivå,レベルで２死の後を表示する,,Pokaż po dwóch porażkach na poziom
+Appear after 3 defeats on a level,Appear after 3 defeats on a level,Visas efter 3 dödsfall på en nivå,レベルで３死の後を表示する,,Pokaż po trzech porażkach na poziom
+Appear after 4 defeats on a level,Appear after 4 defeats on a level,Visas efter 4 dödsfall på en nivå,レベルで４死の後を表示する,,Pokaż po czterech porażce na poziom
+Appear after 5 defeats on a level,Appear after 5 defeats on a level,Visas efter 5 dödsfall på en nivå,レベルで５死の後を表示する,,Pokaż po pięciu porażkach na poziom
+Appear after 6 defeats on a level,Appear after 6 defeats on a level,Visas efter 6 dödsfall på en nivå,レベルで６死の後を表示する,,Pokaż po sześciu porażkach na poziom
+Appear after 7 defeats on a level,Appear after 7 defeats on a level,Visas efter 7 dödsfall på en nivå,レベルで７死の後を表示する,,Pokaż po siedmiu porażkach na poziom
+Appear after 8 defeats on a level,Appear after 8 defeats on a level,Visas efter 8 dödsfall på en nivå,レベルで８死の後を表示する,,Pokaż po ośmiu porażkach na poziom
+Appear after 9 defeats on a level,Appear after 9 defeats on a level,Visas efter 9 dödsfall på en nivå,レベルで９死の後を表示する,,Pokaż po dziewięciu porażkach na poziom
 Never Appear,Never Appear,Visas aldrig,表示しません,,Nigdy nie pokazuj
 Extra Health Points,Extra Health Points,Extra hälsopoäng,エクストラヘルスポイント,,Dodatkowe punkty zdrowia
 None,None,Ingen,無し,,Brak
@@ -124,9 +124,9 @@ Remap This Player,Remap This Player,Mappa om denna spelare,このプレーヤー
 Dive,Pounce,Dyka,ボディーアタック,,Sus
 Jump,Jump,Hoppa,ジャンプ,,Skok
 Crouch,Crouch,Huka,しゃがむ,,Kucanie
-Crouch Toggle,Crouch Toggle,Huka växling,しゃがむトグル,,
-Sprint,Sprint,Sprinta,走る,,Sprint
-Sprint Toggle,Sprint Toggle,Sprint växling,走るトグル,,
+Crouch Toggle,Crouch Toggle,Huka växling,しゃがむトグル,,Przełącznik kucania
+Sprint,Sprint,Sprinta,走る,,Bieg
+Sprint Toggle,Sprint Toggle,Sprint växling,走るトグル,,Przełącznik biegu
 Left,Left,Vänster,左,,Lewo
 Right,Right,Höger,右,,Prawo
 Down,Down,Ner,下,,Dół
@@ -135,7 +135,7 @@ Tongue,Tongue,Tunga,舌,,Język
 Default Settings,Default Settings,Standardinställningar,規定設定,,Ustawienia domyślne
 Up is also jump,Up is also jump,Upp är också hoppa,上もジャンプ,,Góra jako klawisz skoku
 Double-tap direction to run,Double-tap direction to run,Dubbeltryck i riktning för att springa,走る方向をダブルタップ,,Podwójne naciśnięcie strzałki aktywuje bieg
-Double-tap direction to dive,Double-tap direction to pounce,Dubbeltryck i riktning för att dyka,方向をダブルタップしてボディーアタック,,
+Double-tap direction to dive,Double-tap direction to pounce,Dubbeltryck i riktning för att dyka,方向をダブルタップしてボディーアタック,,Podwójne naciśnięcie strzałki aktywuje nur
 Always run,Always run,Spring alltid,いつも走る,,Auto-bieg
 Player 1 always run,Player 1 always run,Spelare 1 spring alltid,プレイヤー１がいつも走る,,Auto-bieg dla gracza 1
 Player 2 always run,Player 2 always run,Spelare 2 spring alltid,プレイヤー２がいつも走る,,Auto-bieg dla gracza 2
@@ -149,7 +149,7 @@ Off,Off,Av,オフ,,Wyłączone
 When touching wall,When touching wall,Vid beröring av vägg,カベを触るとき,,Dotykając ściany
 When holding towards the wall,When holding towards the wall,När man håller mot väggen,壁を押しつけるとき,,Opierając się o ścianę
 Drop down from the rope,Drop down from the rope,Släpp ner från repet,ロープから降りる,,Zeskakując z liny
-Release Jump,Release Jump,Släpp hopp,ジャンプボタンを放します,,
+Release Jump,Release Jump,Släpp hopp,ジャンプボタンを放します,,Puść skok
 Down or Jump,Down or Jump,Ner eller hoppa,下かジャンプ,,Dół lub skok
 Only Down,Only Down,Bara ner,下だけ,,Tylko dół
 Only Jump,Only Jump,Bara hoppa,ジャンプだけ,,Tylko skok
@@ -158,7 +158,7 @@ Show Controls,Show Controls,Visa kontroller,コントロールを表示する,,P
 Interpolation,Interpolation,Interpolering,画素補間,,Interpolacja
 Show Instance Count,Show Instance Count,Visa antal instanser,インスタンスの数を表示する,,Pokaż licznik instancji
 Instance Count,Instance Count,Antal instanser,インスタンスの数,,Licznik instancji
-Hide menu for clean screenshots,Hide menu for clean screenshots,Dölj menyn för rena skärmdumpar,メニューを非表示する,,
+Hide menu for clean screenshots,Hide menu for clean screenshots,Dölj menyn för rena skärmdumpar,メニューを非表示する,,Schowaj HUD do zrzutów ekranu
 Restart,Restart,Omstart,リスタート,,Restart
 Reset from Checkpoint,Reset from Checkpoint,Återställ från återvändspunkt,チェックポイントからリセット,,Rozpocznij od punktu kontrolnego
 Reset from Start,Reset from Start,Återställ från start,最初からリセット,,Rozpocznij od początku
@@ -268,12 +268,12 @@ Copy to Clipboard,Copy to Clipboard,Kopiera till Urklipp,クリップボード�
 Enable Attract Demo,Enable Attract Demo,Aktivera Attract Demo,Attract Demo をオンにする,,Aktywuj Attract Demo
 Enable Links at Title Screen,Enable Links at Title Screen,Aktivera länkar på titelskärmen,タイトル画面でリンクをオンにする,,Pokazuj hiperlinki na ekranie tytułowym
 Open Save File Folder,Open Save File Folder,Öppna sparade filer mappen,セーブファイルフォルダを開く,,Otwórz folder z zapisem
-INPUT BUTTON NOW FOR PLAYER 1,INPUT BUTTON NOW FOR PLAYER 1,TRYCK KNAPP NU FÖR SPELARE 1,プレイヤー 1 、ボタンを押して,,
-INPUT BUTTON NOW FOR PLAYER 2,INPUT BUTTON NOW FOR PLAYER 2,TRYCK KNAPP NU FÖR SPELARE 2,プレイヤー 2 、ボタンを押して,,
-INPUT BUTTON NOW FOR PLAYER 3,INPUT BUTTON NOW FOR PLAYER 3,TRYCK KNAPP NU FÖR SPELARE 3,プレイヤー 3 、ボタンを押して,,
-INPUT BUTTON NOW FOR PLAYER 4,INPUT BUTTON NOW FOR PLAYER 4,TRYCK KNAPP NU FÖR SPELARE 4,プレイヤー 4 、ボタンを押して,,
-Chosen Controller Used,Chosen Controller Used,Vald kontroll använd,選んだコントローラー,,
-Drop down from rope,Drop down from rope,Släpp ner från rep,ロープから降りる,,
+INPUT BUTTON NOW FOR PLAYER 1,INPUT BUTTON NOW FOR PLAYER 1,TRYCK KNAPP NU FÖR SPELARE 1,プレイヤー 1 、ボタンを押して,,NACIŚNIJ PRZYCISK DLA GRACZA 1
+INPUT BUTTON NOW FOR PLAYER 2,INPUT BUTTON NOW FOR PLAYER 2,TRYCK KNAPP NU FÖR SPELARE 2,プレイヤー 2 、ボタンを押して,,NACIŚNIJ PRZYCISK DLA GRACZA 2
+INPUT BUTTON NOW FOR PLAYER 3,INPUT BUTTON NOW FOR PLAYER 3,TRYCK KNAPP NU FÖR SPELARE 3,プレイヤー 3 、ボタンを押して,,NACIŚNIJ PRZYCISK DLA GRACZA 3
+INPUT BUTTON NOW FOR PLAYER 4,INPUT BUTTON NOW FOR PLAYER 4,TRYCK KNAPP NU FÖR SPELARE 4,プレイヤー 4 、ボタンを押して,,NACIŚNIJ PRZYCISK DLA GRACZA 4
+Chosen Controller Used,Chosen Controller Used,Vald kontroll använd,選んだコントローラー,,Użyto wybranego kontrolera
+Drop down from rope,Drop down from rope,Släpp ner från rep,ロープから降りる,,Zeskocz z liny
 Xbox One,Xbox One,Xbox One,Xbox One,,Xbox One
 Xbox Series X/S,Xbox Series X/S,Xbox Series X/S,Xbox Series X/S,,Xbox Series X/S
 Nintendo Switch,Nintendo Switch,Nintendo Switch,ニンテンドースイッチ,,Nintendo Switch
@@ -285,14 +285,14 @@ Level Options,Level Options,Nivå alternativ,レベル 設定,,Opcje poziomu
 First created on version,First created on version,Först skapad på version,最初に作成されたバージョン,,Stworzone w wersji
 Default view height,Default view height,Standard vyhöjd,デフォルトビューの高さ,,Domyślna wysokość widoku
 Default view width,Default view width,Standard vybredd,デフォルトビューの幅,,Domyślna szerokość widoku
-Time Countdown,Time Countdown,Tidsnedräkning,タイムカウントダウン,,
+Time Countdown,Time Countdown,Tidsnedräkning,タイムカウントダウン,,Odliczanie czasu
 Translation completion,Translation completion,Översättning komplett,翻訳の完成,,Kompletność tłumaczenia
 Show prompt when changing to keyboard and mouse,Show prompt when changing to keyboard and mouse,Visa uppmaning när du byter till tangentbord och mus,キーボードとマウスへの変更時にプロンプトを表示する,,
 Show prompt when changing to gamepad,Show prompt when changing to gamepad,Visa uppmaning när du byter till gamepad,ゲームパッドへの変更時にプロンプトを表示する,,
 Always Show Gamepad Buttons,Always Show Gamepad Buttons,Visa alltid Gamepad-knappar,いつもゲームパッドのボタンを表示する,,Zawsze pokazujj klawisze kontrolera
 Show FPS,Show FPS,Visa FPS,FPS を表示する,,Pokaż FPS
 Show FPS Real,Show FPS Real,Visa FPS Real,FPS Real を表示する,,Pokaż FPS Real
-GUI Scale Modifier,GUI Scale Modifier,GUI Skala Modifierare,GUI スケールモディファイア,,
+GUI Scale Modifier,GUI Scale Modifier,GUI Skala Modifierare,GUI スケールモディファイア,,Skaia interfejsu
 Automatic,Automatic,Automatisk,自動,,Automatyczny
 Final,Final,Sista,最後の,,
 Search ID,Search ID,Sök ID,IDを検索する,,Szukaj ID
@@ -303,98 +303,184 @@ Edit Description,Edit Description,Redigera beskrivning,説明を編集,,Edytuj o
 BG Offset,BG Offset,BG Offset,BG オフセット,,Offset tla
 BG Parallax,BG Parallax,BG Parallax,BGパララックス,,Paralaksa tła
 BG Scale,BG Scale,BG Skala,BGスケール,,Skala tla
-BG Tiled,BG Tiled,BG Kaklat,BGタイル,,
+BG Tiled,BG Tiled,BG Kaklat,BGタイル,,Tło kafelkowe
 Make every tileset into default tileset,Make every tileset into default tileset,Gör varje tileset till standard tileset,すべてのタイルセットをデフォルトのタイルセットにする,,
 Rain,Rain,Regn,雨,,Deszcz
-Enable Time Countdown,Enable Time Countdown,Aktivera tidsnedräkning,タイムカウントダウンをオンにする,,
+Enable Time Countdown,Enable Time Countdown,Aktivera tidsnedräkning,タイムカウントダウンをオンにする,,Aktywuj odliczanie czasu
 Level Editing Music,Level Editing Music,Nivåredigering musik,レベルエディタ音楽,,Muzyka edycji poziomów
 Music 1,Music 1,Musik 1,音楽 1,,Muzyka 1
 Music 2,Music 2,Musik 2,音楽 2,,Muzyka 2
 Music 3,Music 3,Musik 3,音楽 3,,Muzyka 3
 Delete All Objects,Delete All Objects,Ta bort alla objekt,すべてのオブジェクトを削除する,,Skasuj wszystkie obiekty
-Are you sure you want to delete every object in the level?,Are you sure you want to delete every object in the level?,Är du säker på att du vill ta bort alla objekt i nivån?,レベル内のすべてのオブジェクトを削除してもよろしいですか?,,
+Are you sure you want to delete every object in the level?,Are you sure you want to delete every object in the level?,Är du säker på att du vill ta bort alla objekt i nivån?,レベル内のすべてのオブジェクトを削除してもよろしいですか?,,"Czy jesteś pewien, że chcesz usunąć każdy obiekt w poziomie?"
 Water Height,Water Height,Vattenhöjd,水の高さ,,Wysokość wody
 Do a clear check?,Do a clear check?,"Gör en ""spelbar"" kontroll?",クレアチェックをしますか,,
 Clear from the start,Clear from the start,Klara från början,最初からクリア,,
-TIME,TIME,TID,タイム,,
+TIME,TIME,TID,タイム,,CZAS
 Uploading,Uploading,Laddar upp,アップロード中,,Wysyłanie
 Uploaded,Uploaded,Uppladdad,アップロードした,,Wysłano
 Level ID,Level ID,Nivå-ID,レベル ID,,ID poziomu
-Character ID,Character ID,Karaktärs-ID,キャラクター ID,,
+Character ID,Character ID,Karaktärs-ID,キャラクター ID,,ID postaci
 Clear Checked,Clear Checked,Är spelbar,クリアチェックした,,
 Are you sure you want to delete file,Are you sure you want to delete file,Är du säker på att du vill ta bort filen,ファイルを削除するのは本気ですか,,"Czy jesteś pewien, że chcesz usunąć ten plik"
 Please enter a level ID,Please enter a level ID,Vänligen ange ett nivå-ID,レベルIDを入力してください,,Proszę wprowadzić ID poziomu
 Please enter a character ID,Please enter a character ID,Vänligen ange en karaktärs-ID,キャラクターIDを入力してください,,Proszę wprowadzić ID postaci
-Failed to download level,Failed to download level,Det gick inte att ladda ner nivån,レベルダウンロードが失敗しました,,
-Failed to download character,Failed to download character,Det gick inte att ladda ner karaktären,キャラクターダウンロードが失敗しました,,
+Failed to download level,Failed to download level,Det gick inte att ladda ner nivån,レベルダウンロードが失敗しました,,Pobieranie poziomu nieudane
+Failed to download character,Failed to download character,Det gick inte att ladda ner karaktären,キャラクターダウンロードが失敗しました,,Pobieranie postaci nieudane
 Account,Account,Konto,アカウント,,Konto
-Caution: Online Communication,Caution: Online Communication,Varning: Onlinekommunikation,注意: オンラインコミュニケーション,,
-Online communication is offered by official servers that are owned operated and supervised by us,"Online communication is offered by official servers that are owned, operated, and supervised by us","Onlinekommunikation erbjuds av officiella servrar som ägs, drivs och övervakas av oss",,,
-We are moderating user-generated content as much as we can but we might not catch everything,"We are moderating user-generated content as much as we can, but we might not catch everything","Vi modererar användargenererat innehåll så mycket vi kan, men vi kanske inte fångar allt",,,
-You may be exposed to unmoderated user-generated content that may not be suitable for everyone,You may be exposed to unmoderated user-generated content that may not be suitable for everyone,Du kan exponeras för omodererat användargenererat innehåll som kanske inte passar alla,,,
-If you find inappropriate content please report it,"If you find inappropriate content, please report it","Om du hittar olämpligt innehåll, rapportera det",,,
-Do not show this screen again,Do not show this screen again,Visa inte den här skärmen igen,今後この注意を表示しない,,
-Proceed,Proceed,Fortsätt,続く,,
-Customize Button Design,Customize Button Design,Anpassa knappdesign,ボタンのデザインをカスタマイズする,,
-Color,Color,Färg,カラー,,
-Gray,Gray,Grå,グレー,,
-Black,Black,Svart,ブラック,,
-Pink,Pink,Rosa,ピンク,,
-Blue,Blue,Blå,ブルー,,
-Shape,Shape,Form,形,,
-Rectangle,Rectangle,Rektangel,矩形,,
-Round,Round,Rund,丸い,,
-Transparency,Transparency,Genomskinlighet,トランスペアレンシー,,
-Opaque,Opaque,Ogenomskinlig,オペーク,,
-See Through,See Through,Se igenom,シースルー,,
-Outlines Only,Outlines Only,Endast konturer,アウトラインだけ,,
-Invisible,Invisible,Osynlig,見えない,,
-Remap This Profile,Remap This Profile,Mappa om den här profilen,このプロフィールをリマップする,,
-Profile 1,Profile 1,Profil 1,プロフィール 1,,
-Profile 2,Profile 2,Profil 2,プロフィール 2,,
-Profile 3,Profile 3,Profil 3,プロフィール 3,,
-Profile 4,Profile 4,Profil 4,プロフィール 4,,
-Show New Items Notification,Show New Items Notification,Visa meddelande om nya objekt,新しいアイテムの通知を表示する,,
-Manage Characters,Manage Characters,Hantera karaktärer,キャラクターを管理する,,
-Online Character List,Online Character List,Karaktärslista online,オンラインキャラクターリスト,,
-Search Character ID,Search Character ID,Sök karaktärs-ID,キャラクターIDを検索する,,
-Delete Character,Delete Character,Ta bort karaktär,キャラクターデリート,,
-Upload Character,Upload Character,Ladda upp karaktär,キャラクターアップロード,,
-Download,Download,Ladda ner,ダウンロード,,
-Online Level List,Online Level List,Onlinenivålista,オンラインレベルリスト,,
-Search Level ID,Search Level ID,Sök nivå-ID,レベルIDを検索する,,
-Custom Levels,Custom Levels,Egna nivåer,カスタムレベル,,
-Levels,Levels,Nivåer,,,
+Caution: Online Communication,Caution: Online Communication,Varning: Onlinekommunikation,注意: オンラインコミュニケーション,,Uwaga: Komunikacja internetowa
+Online communication is offered by official servers that are owned operated and supervised by us,"Online communication is offered by official servers that are owned, operated, and supervised by us","Onlinekommunikation erbjuds av officiella servrar som ägs, drivs och övervakas av oss",,,Komunikacja internetowa jest oferowana przez oficjalne serwery operowane i moderowane przez nas
+We are moderating user-generated content as much as we can but we might not catch everything,"We are moderating user-generated content as much as we can, but we might not catch everything","Vi modererar användargenererat innehåll så mycket vi kan, men vi kanske inte fångar allt",,,Sprawdzamy twórczość użytkowników jak tylko się da ale nie jesteśmy w stanie wychwycić wszystkiego
+You may be exposed to unmoderated user-generated content that may not be suitable for everyone,You may be exposed to unmoderated user-generated content that may not be suitable for everyone,Du kan exponeras för omodererat användargenererat innehåll som kanske inte passar alla,,,Możesz być narażony na treści niewłaściwe dla wszystkich
+If you find inappropriate content please report it,"If you find inappropriate content, please report it","Om du hittar olämpligt innehåll, rapportera det",,,Jeśli znajdziesz coś niezgodnego z zasadami proszę zgłoś to
+Do not show this screen again,Do not show this screen again,Visa inte den här skärmen igen,今後この注意を表示しない,,Nie pokazuj tego ekranu ponownie
+Proceed,Proceed,Fortsätt,続く,,Kontynuuj
+Customize Button Design,Customize Button Design,Anpassa knappdesign,ボタンのデザインをカスタマイズする,,Zmień wygląd przycisków
+Color,Color,Färg,カラー,,Kolor
+Gray,Gray,Grå,グレー,,szary
+Black,Black,Svart,ブラック,,czarny
+Pink,Pink,Rosa,ピンク,,różowy
+Blue,Blue,Blå,ブルー,,niebieski
+Shape,Shape,Form,形,,Kształt
+Rectangle,Rectangle,Rektangel,矩形,,kwadratowy
+Round,Round,Rund,丸い,,okrągły
+Transparency,Transparency,Genomskinlighet,トランスペアレンシー,,Przeźroczystość
+Opaque,Opaque,Ogenomskinlig,オペーク,,nie
+See Through,See Through,Se igenom,シースルー,,przejrzysta
+Outlines Only,Outlines Only,Endast konturer,アウトラインだけ,,bez obwódek
+Invisible,Invisible,Osynlig,見えない,,mocna
+Remap This Profile,Remap This Profile,Mappa om den här profilen,このプロフィールをリマップする,,Przemapuj ten profil
+Profile 1,Profile 1,Profil 1,プロフィール 1,,Profil 1
+Profile 2,Profile 2,Profil 2,プロフィール 2,,Profil 2
+Profile 3,Profile 3,Profil 3,プロフィール 3,,Profil 3
+Profile 4,Profile 4,Profil 4,プロフィール 4,,Profil 4
+Show New Items Notification,Show New Items Notification,Visa meddelande om nya objekt,新しいアイテムの通知を表示する,,Pokaż powiadomienia o nowościach
+Manage Characters,Manage Characters,Hantera karaktärer,キャラクターを管理する,,Zarządzaj postaciami
+Online Character List,Online Character List,Karaktärslista online,オンラインキャラクターリスト,,Lista postaci online
+Search Character ID,Search Character ID,Sök karaktärs-ID,キャラクターIDを検索する,,Szukaj ID postaci
+Delete Character,Delete Character,Ta bort karaktär,キャラクターデリート,,Skasuj postać
+Upload Character,Upload Character,Ladda upp karaktär,キャラクターアップロード,,Wyślij postać
+Download,Download,Ladda ner,ダウンロード,,Pobierz
+Online Level List,Online Level List,Onlinenivålista,オンラインレベルリスト,,Lista poziomów online
+Search Level ID,Search Level ID,Sök nivå-ID,レベルIDを検索する,,Szukaj ID poziomu
+Custom Levels,Custom Levels,Egna nivåer,カスタムレベル,,Własne poziomy
+Levels,Levels,Nivåer,,,Poziomy
 Part Limit,Part Limit,Part gräns,オブジェクト限界,,
 Entity Limit,Entity Limit,Entity gräns,,,
-Grass,Grass,Gräs,草,,
-Stone,Stone,Sten,石,,
-Wood,Wood,Trä,木,,
+Grass,Grass,Gräs,草,,Trawa
+Stone,Stone,Sten,石,,Kamień
+Wood,Wood,Trä,木,,Drewno
 Semisolid Platform,Semisolid Platform,Halvsolid plattform,半当たり地形,,
-Lamp Block,Lamp Block,Lampblock,ランプブロック,,
+Lamp Block,Lamp Block,Lampblock,ランプブロック,,Lampokostka
 Falling Block,Falling Block,Fallande block,落ちるブロック,,
 Falling Block Long,Falling Block Long,Fallande block lång,長い落ちるブロック,,
-Cloud Block,Cloud Block,Molnblock,曇ブロック,,
-Fish,Fish,Fisk,サカナ,,
-Big Fish,Big Fish,Stor fisk,大きなサカナ,,
-Rat,Rat,Råtta,ラット,,
-Big Rat,Big Rat,Stor råtta,大きなラット,,
-Rat Blaster,Rat Blaster,Råttblaster,ラットブラスター,,
-Ladder,Ladder,Stege,はしご,,
-Arrow Sign,Arrow Sign,Pilskylt,矢印看板,,
-One-Way Wall,One-Way Wall,Envägsvägg,一方通行カベ,,
-Cardboard Block,Cardboard Block,Kartongblock,ダンボールブロック,,
-Cardboard,Cardboard,Kartong,ダンボール,,
+Cloud Block,Cloud Block,Molnblock,曇ブロック,,Chmurka
+Fish,Fish,Fisk,サカナ,,Ryba
+Big Fish,Big Fish,Stor fisk,大きなサカナ,,Megaryba
+Rat,Rat,Råtta,ラット,,Szczur
+Big Rat,Big Rat,Stor råtta,大きなラット,,Wielki szczur
+Rat Blaster,Rat Blaster,Råttblaster,ラットブラスター,,Miotacz szczurów
+Ladder,Ladder,Stege,はしご,,Drabina
+Arrow Sign,Arrow Sign,Pilskylt,矢印看板,,Strzalka
+One-Way Wall,One-Way Wall,Envägsvägg,一方通行カベ,,Ściana bez powrotu
+Cardboard Block,Cardboard Block,Kartongblock,ダンボールブロック,,Megakarton
+Cardboard,Cardboard,Kartong,ダンボール,,Minikarton
 Bump in Ground,Bump in Ground,Bump i marken,もぐらの丘,,
 Horizontal Rope,Horizontal Rope,Horisontellt rep,水平ロープ,,
-Tutorial Signs,Tutorial Signs,Handledning skylt,チュートリアル看板,,
-Cake Rat,Cake Rat,Tårtråtta,ケーキラット,,
-PLAYER 1 IS CONTROLLING THE MENU,PLAYER 1 IS CONTROLLING THE MENU,SPELARE 1 STYR MENYN,プレイヤー 1 はメニューをコントロールしている,,
-PLAYER 2 IS CONTROLLING THE MENU,PLAYER 2 IS CONTROLLING THE MENU,SPELARE 2 STYR MENYN,プレイヤー 2 はメニューをコントロールしている,,
-PLAYER 3 IS CONTROLLING THE MENU,PLAYER 3 IS CONTROLLING THE MENU,SPELARE 3 STYR MENYN,プレイヤー 3 はメニューをコントロールしている,,
-PLAYER 4 IS CONTROLLING THE MENU,PLAYER 4 IS CONTROLLING THE MENU,SPELARE 4 STYR MENYN,プレイヤー 4 はメニューをコントロールしている,,
-Setup your Account here,Setup your Account here,Konfigurera ditt konto här,,,
-This is used for uploading levels,This is used for uploading levels,Detta används för att ladda upp nivåer,,,
-Account name,Account name,Kontonamn,,,
-Change Username,Change Username,Ändra användarnamn,,,
+Tutorial Signs,Tutorial Signs,Handledning skylt,チュートリアル看板,,Znaki samouczka
+Cake Rat,Cake Rat,Tårtråtta,ケーキラット,,Szczur amator ciasta
+PLAYER 1 IS CONTROLLING THE MENU,PLAYER 1 IS CONTROLLING THE MENU,SPELARE 1 STYR MENYN,プレイヤー 1 はメニューをコントロールしている,,GRACZ 1 KONTROLUJE MENU
+PLAYER 2 IS CONTROLLING THE MENU,PLAYER 2 IS CONTROLLING THE MENU,SPELARE 2 STYR MENYN,プレイヤー 2 はメニューをコントロールしている,,GRACZ 2 KONTROLUJE MENU
+PLAYER 3 IS CONTROLLING THE MENU,PLAYER 3 IS CONTROLLING THE MENU,SPELARE 3 STYR MENYN,プレイヤー 3 はメニューをコントロールしている,,GRACZ 3 KONTROLUJE MENU
+PLAYER 4 IS CONTROLLING THE MENU,PLAYER 4 IS CONTROLLING THE MENU,SPELARE 4 STYR MENYN,プレイヤー 4 はメニューをコントロールしている,,GRACZ 4 KONTROLUJE MENU
+Setup your Account here,Setup your Account here,Konfigurera ditt konto här,,,Skonfiguruj swoje kónto tutaj
+This is used for uploading levels,This is used for uploading levels,Detta används för att ladda upp nivåer,,,Tego używa się to wysyłania poziomów
+Account name,Account name,Kontonamn,,,Nazwa użytkownika
+Change Username,Change Username,Ändra användarnamn,,,Zmień nazwę użytkownika
 Get Device Username,Get Device Username,Få enhetens användarnamn,,,
+Public Update Schedule,Public Update Schedule,Offentligt uppdateringsschema,,,
+Subscribe to our YouTube Channel!,Subscribe to our YouTube Channel!,Prenumerera på vår YouTube-kanal!,,,
+Join our Discord!,Join our Discord!,Gå med i vår Discord!,,,
+Mailbox,Mailbox,Brevlåda,,,
+Information,Information,Information,,,
+About,About,Om sidan,,,
+What's New?,What's New?,Vad är nytt?,,,
+Backups,Backups,Säkerhetskopieringar,,,
+Credits,Credits,Krediter,,,
+Welcome to Sticky Paws!,Welcome to Sticky Paws!,Välkommen till Sticky Paws!,,,
+This is a game that allows you to create your own levels,This is a game that allows you to create your own levels,Detta är ett spel som låter dig skapa dina egna nivåer,,,
+To share levels press the Upload button in level editor,To share levels press the Upload button in level editor,"För att dela nivåer, tryck på knappen Ladda upp i nivåredigeraren",,,
+To browse levels press the Online Level List button in level editor,To browse levels press the Online Level List button in level editor,"För att bläddra i nivåer, tryck på knappen Online Level List i nivåredigeraren",,,
+Check out our website,Check out our website,Kolla in vår hemsida,,,
+Check out the guide for Sticky Paws,Check out the guide for Sticky Paws,Kolla in guiden för Sticky Paws,,,
+This is a game made with love,This is a game made with love,Detta är ett spel gjort med kärlek,,,
+Check out credits for more info,Check out credits for more info,Kolla in krediter för mer information,,,
+Build ver,Build ver,Bygg ver,,,
+is here!,is here!,är här!,,,
+Changelog History,Changelog History,Ändringslogghistorik,,,
+Keep your levels safe!,Keep your levels safe!,Håll dina nivåer säkra!,,,
+To prevent losing your levels you should upload levels and then save your level IDs somewhere safe,To prevent losing your levels you should upload levels and then save your level IDs somewhere safe,För att förhindra att du tappar dina nivåer bör du ladda upp nivåer och sedan spara dina nivå-ID på ett säkert ställe,,,
+The game includes an autosave feature that automatically saves your levels every 5 minutes,The game includes an autosave feature that automatically saves your levels every 5 minutes,Spelet innehåller en autospara-funktion som automatiskt sparar dina nivåer var 5:e minut,,,
+It also saves your level every time you playtest,It also saves your level every time you playtest,Det sparar också din nivå varje gång du testar,,,
+By,By,Av,,,
+Welcome to the level editor!,Welcome to the level editor!,Välkommen till nivåredigeraren!,,,
+Move Around,Move Around,Flytta runt,,,
+Scroll Toolbar,Scroll Toolbar,Skrolla Verktygsfält,,,
+Place Objects,Place Objects,Placera objekt,,,
+Delete Objects,Delete Objects,Ta bort objekt,,,
+on objects,on objects,på objekt,,,
+Change object property,Change object property,Ändra objektegenskap,,,
+Select objects from toolbar and start making!,Select objects from toolbar and start making!,Välj objekt från verktygsfältet och börja skapa!,,,
+Shortcuts,Shortcuts,Genvägar,,,
+Close,Close,Stäng,,,
+Editor Shortcuts,Editor Shortcuts,Redigeringsgenvägar,,,
+Toggle Grid,Toggle Grid,Växla Grid,,,
+Hide/Show Toolbar,Hide/Show Toolbar,Dölj/visa verktygsfält,,,
+Slow Scroll,Slow Scroll,Långsam skrolla,,,
+Hide/Show Backgrounds,Hide/Show Backgrounds,Dölj/visa bakgrunder,,,
+Change to erase tool,Change to erase tool,Byt till raderingsverktyg,,,
+Terrain,Terrain,Terräng,,,
+Decoration,Decoration,Dekoration,,,
+Item,Item,Objekt,,,
+Enemy,Enemy,Fiende,,,
+Gizmo,Gizmo,Manick,,,
+Default Wall,Default Wall,Standardvägg,,,
+Dirt,Dirt,Jord,,,
+Glass,Glass,Glas,,,
+Spikes,Spikes,Spikar,,,
+New,New,Ny,,,
+? Block,? Block,? Block,,,
+Hard Block,Hard Block,Hårt block,,,
+Autosave in,Autosave in,Autospara om,,,
+Autosaving...,Autosaving...,Sparar automatiskt...,,,
+Autosaved!,Autosaved!,Autosparad!,,,
+Cancel Autosave,Cancel Autosave,Avbryt Autospara,,,
+Cardboard Block,Cardboard Block,Kartongblock,,,
+Long Cardboard,Long Cardboard,Lång kartong,,,
+Boss Barrier,Boss Barrier,Boss Barriär,,,
+Eye Block,Eye Block,Ögonblock,,,
+Bird,Bird,Fågel,,,
+Bowlingball Rat,Bowlingball Rat,Bowlingboll råtta,,,
+Mousette,Mousette,Mousette,,,
+Spring,Spring,Spring,,,
+Emerging Spikes,Emerging Spikes,Framväxande spikar,,,
+Wall Jump Panel,Wall Jump Panel,Vägghopppanel,,,
+Wall Climb Panel,Wall Climb Panel,Väggklättringspanel,,,
+Water,Water,Vatten,,,
+Air Bubbles,Air Bubbles,Luftbubblor,,,
+Clipped Clothes,Clipped Clothes,Kläder som torkar,,,
+Bucket,Bucket,Hink,,,
+Artwork Collection,Artwork Collection,Konstverk samling,,,
+Can be destroyed by the player jumping underneath them if there is no items inside\nClick on a placed Lamp Block to set its item!,Can be destroyed by the player jumping underneath them if there is no items inside\nClick on a placed Lamp Block to set its item!,Kan förstöras av spelaren som hoppar under dem om det inte finns några föremål inuti\nKlicka på ett placerat lampblock för att ställa in dess föremål!,,,
+Can't be destroyed by player jumping underneath them\nClick on a placed ? Block to set its item!,Can't be destroyed by player jumping underneath them\nClick on a placed ? Block to set its item!,Kan inte förstöras av spelare som hoppar under dem\nKlicka på en placerad ? Block för att ställa in dess objekt!,,,
+Falls shortly after you stand on them for too long,Falls shortly after you stand on them for too long,Faller kort efter att du stått på dem för länge,,,
+This block dissapears when Mousette is defeated,This block dissapears when Mousette is defeated,Detta block försvinner när Mousette besegras,,,
+This block is only solid when it can see its prey,This block is only solid when it can see its prey,Detta block är bara solid när det kan se sitt byte,,,
+Teach the player what abilities they have,Teach the player what abilities they have,Lär spelaren vilka förmågor de har,,,
+"One of the most fundemental objects to include in a level!\nFish usually come in small groups, and can also be used to indicate a path","One of the most fundemental objects to include in a level!\nFish usually come in small groups, and can also be used to indicate a path","Ett av de mest grundläggande objekten att inkludera i en nivå!\Fisk kommer vanligtvis i små grupper, och kan också användas för att visa en väg",,,
+A collectible that can be a good way to make your level more fun,A collectible that can be a good way to make your level more fun,Ett samlarobjekt som kan vara ett bra sätt att göra din nivå roligare,,,
+When a character doesn't have the wall jump ability lets even these characters wall jump,When a character doesn't have the wall jump ability lets even these characters wall jump,När en karaktär inte har förmågan att vägghoppa kan även dessa karaktärer vägghoppa,,,
+When a character doesn't have the wall climb ability lets even these characters wall climb,When a character doesn't have the wall climb ability lets even these characters wall climb,När en karaktär inte har förmågan att väggklättra kan även dessa karaktärer väggklättra,,,
+Some characters needs air when swimming underwater,Some characters needs air when swimming underwater,Vissa karaktärer behöver luft när de simmar under vattnet,,,
+Let clothes drop into the bucket to get rewards,Let clothes drop into the bucket to get rewards,Låt kläderna falla ner i hinken för att få belöningar,,,
+This rat stole your cake! Let the player try to catch them before the end of the level\nThe player will chase this rat until the very end of the game,This rat stole your cake! Let the player try to catch them before the end of the level\nThe player will chase this rat until the very end of the game,Den här råttan stal din tårta! Låt spelaren försöka fånga dem innan nivån är slut\nSpelaren kommer att jaga denna råtta till slutet av spelet,,,

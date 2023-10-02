@@ -39,6 +39,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"buttons","folderPath":"folders/Sprites/buttons.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"mobile buttons","folderPath":"folders/Sprites/buttons/mobile buttons.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"enemies","folderPath":"folders/Sprites/enemies.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Falling Block Sprites","folderPath":"folders/Sprites/Falling Block Sprites.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ground","folderPath":"folders/Sprites/ground.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprite Masks","folderPath":"folders/Sprites/Sprite Masks.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},

@@ -240,9 +240,41 @@ function scr_modify_objects_in_level_editor()
 					else
 					if (object == LEVEL_OBJECT_ID.ID_FALLING_BLOCK_SOLID)
 					{
-						object = LEVEL_OBJECT_ID.ID_FALLING_BLOCK;
+						object = LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK;
 					}
 					else
+					if (object == LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK)
+					{
+						object = LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_SOLID;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_SOLID)
+					{
+						object = LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK)
+					{
+						object = LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_SOLID;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_SOLID)
+					{
+						object = LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK)
+					{
+						object = LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_SOLID;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_SOLID)
+					{
+						object = LEVEL_OBJECT_ID.ID_FALLING_BLOCK;
+					}
+					#endregion /* Falling Block END */
+					
+					#region /* Falling Block Long */
 					if (object == LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG)
 					{
 						object = LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG_SOLID;
@@ -250,9 +282,39 @@ function scr_modify_objects_in_level_editor()
 					else
 					if (object == LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG_SOLID)
 					{
+						object = LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG)
+					{
+						object = LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG_SOLID;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG_SOLID)
+					{
+						object = LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG)
+					{
+						object = LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG_SOLID;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG_SOLID)
+					{
+						object = LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG)
+					{
+						object = LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG_SOLID;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG_SOLID)
+					{
 						object = LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG;
 					}
-					#endregion /* Falling Block END */
+					#endregion /* Falling Block Long END */
 					
 					else
 					
@@ -753,6 +815,7 @@ function scr_modify_objects_in_level_editor()
 							if (object == ds_grid_get(global.object_grid, 0, i))
 							{
 								sprite_index = ds_grid_get(global.object_grid, 1, i);
+								image_index = ds_grid_get(global.object_grid, 2, i);
 								mask_index = ds_grid_get(global.object_grid, 3, i);
 								draw_xscale = ds_grid_get(global.object_grid, 4, i);
 								draw_yscale = ds_grid_get(global.object_grid, 4, i);
