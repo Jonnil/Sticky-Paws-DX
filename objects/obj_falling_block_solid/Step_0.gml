@@ -1,5 +1,20 @@
-if (fall < 60) {
-	if (place_meeting(x, y - 1, obj_player)) {
+if (image_index == 1)
+|| (image_index == 3)
+{
+	var fall_max = 30;
+}
+else
+{
+	var fall_max = 60;
+}
+
+if (fall < fall_max) {
+	if (place_meeting(x, y - 1, obj_player))
+	|| (image_index == 1)
+	&& (fall >= 1)
+	|| (image_index == 3)
+	&& (fall >= 1)
+	{
 		fall ++;
 		image_blend = c_red;
 		
