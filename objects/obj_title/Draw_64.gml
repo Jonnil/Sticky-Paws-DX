@@ -580,6 +580,109 @@ if (information_menu_open > 0)
 	
 	draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 	
+	if (key_left)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	{
+		if (menu == "about")
+		{
+			menu_delay = 3;
+			menu = "credits";
+			information_menu_open = 4;
+		}
+		else
+		if (menu == "whats_new")
+		{
+			menu_delay = 3;
+			menu = "about";
+			information_menu_open = 1;
+		}
+		else
+		if (menu == "backups")
+		{
+			menu_delay = 3;
+			menu = "whats_new";
+			information_menu_open = 2;
+		}
+		else
+		if (menu == "credits")
+		{
+			menu_delay = 3;
+			menu = "backups";
+			information_menu_open = 3;
+		}
+	}
+	if (key_right)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	{
+		if (menu == "about")
+		{
+			menu_delay = 3;
+			menu = "whats_new";
+			information_menu_open = 2;
+		}
+		else
+		if (menu == "whats_new")
+		{
+			menu_delay = 3;
+			menu = "backups";
+			information_menu_open = 3;
+		}
+		else
+		if (menu == "backups")
+		{
+			menu_delay = 3;
+			menu = "credits";
+			information_menu_open = 4;
+		}
+		else
+		if (menu == "credits")
+		{
+			menu_delay = 3;
+			menu = "about";
+			information_menu_open = 1;
+		}
+	}
+	if (key_up)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	{
+		if (menu == "about")
+		|| (menu == "whats_new")
+		|| (menu == "backups")
+		|| (menu == "credits")
+		{
+			menu_delay = 3;
+			menu = "information_back";
+		}
+	}
+	if (key_down)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	{
+		if (menu == "information_back")
+		{
+			menu_delay = 3;
+			if (information_menu_open == 1)
+			{
+				menu = "about";
+			}
+			else
+			if (information_menu_open == 2)
+			{
+				menu = "whats_new";
+			}
+			else
+			if (information_menu_open == 3)
+			{
+				menu = "backup";
+			}
+			else
+			if (information_menu_open == 4)
+			{
+				menu = "credits";
+			}
+		}
+		
+	}
+	
 	/* About tab button */
 	draw_menu_button_sprite(spr_menu_button, 0, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("About"), "about", "about", false);
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 185, 42))
@@ -639,6 +742,8 @@ if (information_menu_open > 0)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	|| (menu == "information_back")
 	&& (key_a_pressed)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	&& (key_b_pressed)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		if (instance_exists(obj_credits))
