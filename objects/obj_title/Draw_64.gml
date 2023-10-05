@@ -204,7 +204,6 @@ if (menu == "main_game")
 || (menu == "quit")
 || (menu == "information")
 || (menu == "mailbox")
-|| (menu == "public_update_schedule")
 || (menu == "link_discord")
 || (menu == "link_youtube")
 || (menu == "link_gamebanana")
@@ -293,7 +292,6 @@ if (global.arcade_mode == false && in_settings == false)
         menu == "quit" ||
 		menu == "information" ||
 		menu == "mailbox" ||
-		menu == "public_update_schedule" ||
 		menu == "link_discord" ||
 		menu == "link_youtube" ||
 		menu == "link_gamebanana" ||
@@ -556,15 +554,6 @@ if (global.arcade_mode == false && in_settings == false)
 				menu_delay = 3;
 			}
 		}
-		
-		/* Public Update Schedule button */
-		draw_menu_button_sprite(spr_wall, display_get_gui_width() - (32 * 5), display_get_gui_height() - 32, 16, 0, 1, 1, 32, 32, "", "public_update_schedule", "public_update_schedule", false);
-		if (menu == "public_update_schedule")
-		{
-			draw_set_halign(fa_right);
-			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, l10n_text("Public Update Schedule"), global.default_text_size, c_black, c_white, 1);
-		}
-		
 	}
 }
 #endregion /* Main Menu END */
@@ -769,9 +758,9 @@ if (information_menu_open > 0)
 		if (global.link_to_website != "")
 		{
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(32, 32 * 10, l10n_text("Check out our website") + ":", global.default_text_size, c_black, c_white, 1);
-			draw_menu_button(32, 32 * 11, string(global.link_to_website), "about_link_to_website", "about_link_to_website");
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, 32 * 11, 32 + 370, 32 * 12))
+			scr_draw_text_outlined(32, 32 * 10 + 20, l10n_text("Check out our website") + ":", global.default_text_size, c_black, c_white, 1);
+			draw_menu_button(string_width(l10n_text("Check out our website") + ":"), 32 * 10, string(global.link_to_website), "about_link_to_website", "about_link_to_website");
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, string_width(l10n_text("Check out our website") + ":"), 32 * 10, 370 + string_width(l10n_text("Check out our website") + ":"), 32 * 11))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "about_link_to_website")
@@ -786,9 +775,9 @@ if (information_menu_open > 0)
 		if (global.link_to_website_guide != "")
 		{
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(32, 32 * 13, l10n_text("Check out the guide for " + string(global.game_name)) + ":", global.default_text_size, c_black, c_white, 1);
-			draw_menu_button_sprite(spr_menu_button, 32, 32 * 14, 0, 0, 2, 1, 370 * 2, 42, string(global.link_to_website_guide), "about_link_to_website_guide", "about_link_to_website_guide");
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, 32 * 14, 32 + (370 * 2), 32 * 15))
+			scr_draw_text_outlined(32, 32 * 12, l10n_text("Check out the guide for " + string(global.game_name)) + ":", global.default_text_size, c_black, c_white, 1);
+			draw_menu_button_sprite(spr_menu_button, 32, 32 * 13, 0, 0, 2, 1, 370 * 2, 42, string(global.link_to_website_guide), "about_link_to_website_guide", "about_link_to_website_guide");
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, 32 * 13, 32 + (370 * 2), 32 * 14))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "about_link_to_website_guide")
@@ -800,10 +789,27 @@ if (information_menu_open > 0)
 			}
 		}
 		
+		if (global.link_to_update_schedule != "")
+		{
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(32, 32 * 15, l10n_text("Check out the update schedule") + ":", global.default_text_size, c_black, c_white, 1);
+			draw_menu_button_sprite(spr_menu_button, 32, 32 * 16, 0, 0, 2.1, 1, 370 * 2.1, 42, string(global.link_to_update_schedule), "about_link_to_update_schedule", "about_link_to_update_schedule");
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, 32 * 16, 32 + (370 * 2.1), 32 * 17))
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "about_link_to_update_schedule")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				url_open(global.link_to_update_schedule);
+				menu_delay = 3;
+			}
+		}
+		
 		draw_set_halign(fa_left);
-		draw_sprite_ext(spr_heart, 0, 48, 32 * 16, 1, 1, 0, c_white, 1);
-		scr_draw_text_outlined(48 + 16 + 8, 32 * 16, l10n_text("This is a game made with love"), global.default_text_size, c_black, c_white, 1);
-		scr_draw_text_outlined(32, 32 * 17, l10n_text("Check out credits for more info"), global.default_text_size, c_black, c_white, 1);
+		draw_sprite_ext(spr_heart, 0, 48, display_get_gui_height() - 64, 1, 1, 0, c_white, 1);
+		scr_draw_text_outlined(48 + 16 + 8, display_get_gui_height() - 64, l10n_text("This is a game made with love"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(32, display_get_gui_height() - 32, l10n_text("Check out credits for more info"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	if (information_menu_open == 2) /* What's New tab */
@@ -814,9 +820,9 @@ if (information_menu_open > 0)
 		if (global.link_to_changelog_history != "")
 		{
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(32, 32 * 3, l10n_text("Changelog History") + ":", global.default_text_size, c_black, c_white, 1);
-			draw_menu_button_sprite(spr_menu_button, 32, 32 * 4, 0, 0, 3, 1, 370 * 3, 42, string(global.link_to_changelog_history), "changelog_history", "changelog_history");
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, 32 * 5, 32 + (370 * 4), 32 * 5))
+			scr_draw_text_outlined(32, 32 * 3 + 10, l10n_text("Changelog History") + ":", global.default_text_size, c_black, c_white, 1);
+			draw_menu_button_sprite(spr_menu_button, 12 + string_width(l10n_text("Changelog History") + ":"), 32 * 3 - 8, 0, 0, 2.2, 1, 370 * 2.2, 42, string(global.link_to_changelog_history), "changelog_history", "changelog_history");
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 12 + string_width(l10n_text("Changelog History") + ":"), 32 * 3 - 8, 12 + string_width(l10n_text("Changelog History") + ":") + (370 * 4), 32 * 4 - 8))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "changelog_history")
