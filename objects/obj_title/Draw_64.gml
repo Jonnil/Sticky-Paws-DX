@@ -815,7 +815,7 @@ if (information_menu_open > 0)
 	if (information_menu_open == 2) /* What's New tab */
 	{
 		draw_set_halign(fa_center);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("Build ver") + ": " + string(scr_get_build_date()) + " " + l10n_text("is here!"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("Build version") + ": v" + string(scr_get_build_date()) + " " + l10n_text("is here!"), global.default_text_size, c_black, c_white, 1);
 		
 		if (global.link_to_changelog_history != "")
 		{

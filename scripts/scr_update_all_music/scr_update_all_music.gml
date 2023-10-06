@@ -126,20 +126,20 @@ function scr_update_all_music()
 	
 	#region /* Update Ambience Underwater */
 	/* OGG small letter File */
-	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg"))
+	if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience_underwater.ogg"))
 	&& (global.character_select_in_this_menu == "main_game")
-	|| (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg"))
+	|| (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience_underwater.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	&& (global.create_level_from_template >= true)
 	{
-		global.ambience_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience/ambience_underwater.ogg");
+		global.ambience_underwater = audio_create_stream("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/sound/ambience_underwater.ogg");
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/ambience/ambience_underwater.ogg"))
+	if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/ambience_underwater.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
-		global.ambience_underwater = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/ambience/ambience_underwater.ogg");
+		global.ambience_underwater = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/ambience_underwater.ogg");
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor" && default_ambience_underwater != noone)
