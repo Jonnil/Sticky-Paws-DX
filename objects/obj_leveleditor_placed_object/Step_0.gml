@@ -35,6 +35,7 @@ if (global.actually_play_edited_level == false)
 		{
 			case LEVEL_OBJECT_ID.ID_SPRING:
 			case LEVEL_OBJECT_ID.ID_DOOR:
+			case LEVEL_OBJECT_ID.ID_WARP_BOX:
 			case LEVEL_OBJECT_ID.ID_ARROW_SIGN:
 			case LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL:
 			case LEVEL_OBJECT_ID.ID_WATER:

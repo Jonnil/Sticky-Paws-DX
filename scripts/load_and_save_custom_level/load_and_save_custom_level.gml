@@ -155,6 +155,7 @@ function scr_save_custom_level_json()
 				var obj_ids = ds_list_create();
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_SPRING);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_DOOR);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_WARP_BOX);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER);

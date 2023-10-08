@@ -1,30 +1,31 @@
-if (instance_exists(obj_player))
-&& (instance_nearest(x, y, obj_player).key_up_pressed)
-&& (instance_nearest(x, y, obj_player).on_ground)
-&& (place_meeting(x, y, obj_player))
-&& (open_door == false)
-&& (door_xscale >= 0.9)
+if (sprite_index == spr_warp_box)
 {
-	/* The door must sit on ground too before a player can enter */
-	if (position_meeting(x, bbox_bottom + 1, obj_wall))
-	|| (position_meeting(bbox_left - 1, bbox_bottom + 1, obj_wall))
-	|| (position_meeting(bbox_right + 1, bbox_bottom + 1, obj_wall))
-	|| (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	|| (position_meeting(bbox_left - 1, bbox_bottom + 1, obj_semisolid_platform))
-	|| (position_meeting(bbox_right + 1, bbox_bottom + 1, obj_semisolid_platform))
-	{
-		open_door = true;
-	}
+	image_blend = make_color_hsv((current_time * 0.37) mod 255, 127, 255);
 }
+
 if (open_door)
 {
 	global.iris_zoom_in = true;
 	with(instance_nearest(x, y, obj_player))
 	{
 		can_move = false;
+		ground_pound = 0;
+		dive = false;
 		hspeed = 0;
+		vspeed = 0;
+		gravity = 0;
 		x = instance_nearest(x, y, obj_door).x;
+		if (instance_nearest(x, y, obj_door).door_need_to_be_on_ground_to_enter == false)
+		{
+			y = instance_nearest(x, y, obj_door).y;
+		}
+		if (instance_nearest(x, y, obj_door).sprite_index == spr_warp_box)
+		{
+			image_alpha = 0;
+		}
 	}
+	instance_nearest(x, y, obj_camera).xx = x;
+	instance_nearest(x, y, obj_camera).yy = y;
 	door_x = lerp(door_x, +32, 0.05);
 	door_xscale = lerp(door_xscale, -1, 0.05);
 	if (obj_camera.iris_xscale <= 0.02)
@@ -38,6 +39,8 @@ if (open_door)
 		global.iris_zoom_in = false;
 		instance_nearest(x, y, obj_camera).x = second_x;
 		instance_nearest(x, y, obj_camera).y = second_y;
+		instance_nearest(x, y, obj_camera).xx = second_x;
+		instance_nearest(x, y, obj_camera).yy = second_y;
 		instance_nearest(x, y, obj_player).can_move = true;
 		instance_nearest(x, y, obj_player).image_alpha = 1;
 		instance_nearest(x, y, obj_player).x = second_x;
@@ -59,6 +62,10 @@ if (open_door)
 				door_xscale = -1;
 				open_door = false;
 			}
+		}
+		if (sprite_index == spr_warp_box)
+		{
+			instance_destroy(); /* Warp Bloxs gets destroyed after one use */
 		}
 	}
 }

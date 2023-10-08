@@ -3453,6 +3453,7 @@
     {"id":{"name":"obj_ice_block","path":"objects/obj_ice_block/obj_ice_block.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_big_collectible_outline","path":"objects/obj_big_collectible_outline/obj_big_collectible_outline.yy",},},
+    {"id":{"name":"spr_warp_box","path":"sprites/spr_warp_box/spr_warp_box.yy",},},
     {"id":{"name":"obj_blaster_reward_decrease_mask","path":"objects/obj_blaster_reward_decrease_mask/obj_blaster_reward_decrease_mask.yy",},},
     {"id":{"name":"spr_game_over_text","path":"sprites/spr_game_over_text/spr_game_over_text.yy",},},
     {"id":{"name":"spr_arrow_swirly","path":"sprites/spr_arrow_swirly/spr_arrow_swirly.yy",},},

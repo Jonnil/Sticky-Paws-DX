@@ -89,7 +89,8 @@ if (global.actually_play_edited_level == false)
 			if (current_object_category == "gizmo")
 			{
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BLASTER, true, global.resource_pack_sprite_blaster, spr_wall, + 100, 1, 0, c_white, -16,,,,"Rat Blaster");
-				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_DOOR, false, spr_door, spr_wall, + 100, 1, 0, c_white, -16,,,,"Door");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_DOOR, false, spr_door, spr_wall, + 100, 1, 0, c_white, -16,,,,"Door", "Teleports you to another area when player enters door");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WARP_BOX, false, spr_warp_box, spr_wall, + 100, 1, 0, c_white,,,,,"Warp Box", "Instantly teleports you to another area\nDissapears after one use");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPRING, false, spr_spring, spr_wall, + 100, 1, 0, c_white,,,,,"Spring");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_LADDER, true, spr_ladder, spr_wall, + 100, 1, 0, c_white,,,,,"Ladder");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CHECKPOINT, false, spr_checkpoint, spr_wall, + 100, 1, 0, c_white, -32,,,,"Checkpoint");
@@ -2501,25 +2502,32 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 		}
+		#endregion /* Welcome to Level Editor screen END */
 		
 		#region /* Object Specific Help */
 		/* At the bottom of the screen, you can view help for specific objects that you have currently selected */
 		if (object_help_description != "")
-		&& (welcome_to_level_editor > 0)
+		|| (welcome_to_level_editor > 0)
 		{
-			draw_set_alpha(0.5);
+			if (welcome_to_level_editor > 0)
+			{
+				object_help_description_alpha = 1;
+			}
+			else
+			{
+				object_help_description_alpha = clamp(selected_menu_alpha, 0, 1);
+			}
+			draw_set_alpha(object_help_description_alpha * 0.5);
 			draw_roundrect_color_ext(display_get_gui_width() * 0.5 - (string_width(object_help_description) * 0.41), display_get_gui_height() - 34 - string_height(l10n_text(object_help_description)), display_get_gui_width() * 0.5 + (string_width(object_help_description) * 0.41), display_get_gui_height() - 4, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
 			
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_top);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 28 - string_height(l10n_text(object_help_description)), l10n_text(current_object_name) + ":", global.default_text_size * 0.9, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - string_height(l10n_text(object_help_description)), l10n_text(object_help_description), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 28 - string_height(l10n_text(object_help_description)), l10n_text(current_object_name) + ":", global.default_text_size * 0.9, c_black, c_white, object_help_description_alpha);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - string_height(l10n_text(object_help_description)), l10n_text(object_help_description), global.default_text_size, c_black, c_white, object_help_description_alpha);
 			draw_set_valign(fa_middle);
 		}
 		#endregion /* Object Specific Help END */
-		
-		#endregion /* Welcome to Level Editor screen END */
 		
 		if (global.controls_used_for_menu_navigation != "controller")
 		&& (!navigate_camera_with_arrowkeys)

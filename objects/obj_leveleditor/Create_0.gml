@@ -149,7 +149,7 @@ if (global.actually_play_edited_level == false)
 	intended_level_difficulty = 1; /* Easy = 0. Normal = 1. Hard = 2. Super Hard = 3 */
 	
 	#region /* Unlock placable objects */
-	var debug_unlock_all = false;
+	var debug_unlock_all = true;
 	if (debug_unlock_all == false)
 	{
 		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
@@ -202,6 +202,7 @@ if (global.actually_play_edited_level == false)
 		#region /* Gizmo Objects */
 		unlocked_object[LEVEL_OBJECT_ID.ID_BLASTER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BLASTER, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_DOOR] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_DOOR, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_WARP_BOX] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WARP_BOX, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_SPRING] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SPRING, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_LADDER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_LADDER, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_ARROW_SIGN] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ARROW_SIGN, false);
@@ -285,6 +286,7 @@ if (global.actually_play_edited_level == false)
 		#region /* Gizmo Objects */
 		unlocked_object[LEVEL_OBJECT_ID.ID_BLASTER] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_DOOR] = 2;
+		unlocked_object[LEVEL_OBJECT_ID.ID_WARP_BOX] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_SPRING] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_LADDER] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_ARROW_SIGN] = 2;
@@ -545,6 +547,7 @@ if (global.actually_play_edited_level == false)
 	add_object(LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY, global.resource_pack_sprite_eye_block_enemy, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER, global.resource_pack_sprite_eye_block_enemy_player, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_DOOR, spr_door, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_WARP_BOX, spr_warp_box, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_NPC, spr_npc, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BLACK_WALL, spr_black_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_RING, spr_ring, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);

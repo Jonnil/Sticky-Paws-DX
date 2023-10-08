@@ -4,6 +4,7 @@ if (!global.actually_play_edited_level)
 	
 	if (draw_leveleditor_arrow)
 	{
+		draw_set_color(image_blend);
 		draw_line_width_color(x, y, second_x, second_y, 2, c_black, image_blend);
 		draw_arrow(x, y, second_x, second_y, 20);
 	}

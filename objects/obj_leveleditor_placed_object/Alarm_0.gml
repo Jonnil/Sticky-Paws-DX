@@ -130,6 +130,7 @@ if (global.actually_play_edited_level == false)
 				draw_leveleditor_arrow = true;
 				break;
 			case LEVEL_OBJECT_ID.ID_DOOR:
+			case LEVEL_OBJECT_ID.ID_WARP_BOX:
 				draw_leveleditor_arrow = true;
 			case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL:
 			case LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL_BLIND:

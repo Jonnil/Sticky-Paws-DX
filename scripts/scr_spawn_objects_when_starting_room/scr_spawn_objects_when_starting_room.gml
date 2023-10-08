@@ -473,7 +473,28 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_EYE_BLOCK: instance_create_depth(x, y, 0, obj_eye_block_spawner);break;
 				case LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY: with(instance_create_depth(x, y, 0, obj_eye_block_spawner)){sprite_index = global.resource_pack_sprite_eye_block_enemy;}break;
 				case LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER: with(instance_create_depth(x, y, 0, obj_eye_block_spawner)){sprite_index = global.resource_pack_sprite_eye_block_enemy_player;}break;
-				case LEVEL_OBJECT_ID.ID_DOOR: with(instance_create_depth(x, y, 0, obj_door)){if (instance_exists(obj_leveleditor_placed_object)){second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;}}break;
+				case LEVEL_OBJECT_ID.ID_DOOR: with(instance_create_depth(x, y, 0, obj_door))
+				{
+					if (instance_exists(obj_leveleditor_placed_object))
+					{
+						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
+						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
+					}
+				}
+				break;
+				case LEVEL_OBJECT_ID.ID_WARP_BOX: with(instance_create_depth(x, y, 0, obj_door))
+				{
+					player_need_to_be_on_ground_to_enter = false;
+					door_need_to_be_on_ground_to_enter = false;
+					need_to_press_up_to_enter = false;
+					sprite_index = spr_warp_box;
+					if (instance_exists(obj_leveleditor_placed_object))
+					{
+						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
+						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
+					}
+				}
+				break;
 				case LEVEL_OBJECT_ID.ID_NPC: instance_create_depth(x, y, 0, obj_npc);break;
 				case LEVEL_OBJECT_ID.ID_BLACK_WALL: instance_create_depth(x, y, 0, obj_black_wall);break;
 				case LEVEL_OBJECT_ID.ID_RING: instance_create_depth(x, y, 0, obj_ring);

@@ -1,8 +1,6 @@
 #region /* Collect Invincibility Powerup */
 if (bounce_up == false)
 {
-	audio_sound_gain(global.music, 0, 0);
-	audio_sound_gain(global.music_underwater, 0, 0);
 	score += 1000;
 	if (instance_exists(obj_camera))
 	{

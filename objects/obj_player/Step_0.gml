@@ -519,42 +519,45 @@ else
 }
 #endregion /* Put sprite angle at right angle */
 
-if (in_water)
+if (invincible_timer <= 0)
 {
-	if (global.music_underwater > 0)
+	if (in_water)
 	{
-		audio_sound_gain(global.music, 0, 0);
-		audio_sound_gain(global.music_underwater, global.volume_music * global.volume_main, 0);
+		if (global.music_underwater > 0)
+		{
+			audio_sound_gain(global.music, 0, 0);
+			audio_sound_gain(global.music_underwater, global.volume_music * global.volume_main, 0);
+		}
+		else
+		if (global.music > 0)
+		{
+			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
+			audio_sound_gain(global.music_underwater, 0, 0);
+		}
+		if (global.ambience_underwater > 0)
+		{
+			audio_sound_gain(global.ambience, 0, 0);
+			audio_sound_gain(global.ambience_underwater, global.volume_ambient * global.volume_main, 0);
+		}
+		else
+		if (global.ambience > 0)
+		{
+			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
+			audio_sound_gain(global.ambience_underwater, 0, 0);
+		}
 	}
 	else
-	if (global.music > 0)
 	{
-		audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
-		audio_sound_gain(global.music_underwater, 0, 0);
-	}
-	if (global.ambience_underwater > 0)
-	{
-		audio_sound_gain(global.ambience, 0, 0);
-		audio_sound_gain(global.ambience_underwater, global.volume_ambient * global.volume_main, 0);
-	}
-	else
-	if (global.ambience > 0)
-	{
-		audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
-		audio_sound_gain(global.ambience_underwater, 0, 0);
-	}
-}
-else
-{
-	if (global.music > 0)
-	{
-		audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
-		audio_sound_gain(global.music_underwater, 0, 0);
-	}
-	if (global.ambience > 0)
-	{
-		audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
-		audio_sound_gain(global.ambience_underwater, 0, 0);
+		if (global.music > 0)
+		{
+			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
+			audio_sound_gain(global.music_underwater, 0, 0);
+		}
+		if (global.ambience > 0)
+		{
+			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
+			audio_sound_gain(global.ambience_underwater, 0, 0);
+		}
 	}
 }
 
@@ -671,14 +674,6 @@ if (invincible_timer >= true)
 	if (!audio_is_playing(music_invincible))
 	{
 		scr_audio_play(music_invincible, volume_source.music);
-		audio_sound_gain(global.music, 0, 0);
-		audio_sound_gain(global.music_underwater, 0, 0);
-	}
-	else
-	if (audio_is_playing(music_invincible))
-	{
-		audio_sound_gain(global.music, 0, 0);
-		audio_sound_gain(global.music_underwater, 0, 0);
 	}
 }
 else
@@ -710,6 +705,25 @@ else
 			}
 		}
 	}
+}
+if (invincible_timer > 0)
+&& (!assist_invincible)
+{
+	if (invincible_timer == 60)
+	{
+		scr_audio_play(snd_star_bound, volume_source.sound, 3);
+	}
+	if (invincible_timer == 70)
+	{
+		scr_audio_play(snd_star_bound, volume_source.sound, 2);
+	}
+	if (invincible_timer == 80)
+	{
+		scr_audio_play(snd_star_bound, volume_source.sound);
+	}
+	/* Stop the main music so it can restart from beginning when invincibility wears off */
+	audio_stop_sound(global.music);
+	audio_stop_sound(global.music_underwater);
 }
 #endregion /* Invincible Music END */
 
@@ -2523,6 +2537,7 @@ else
 
 #region /* Speedlines Effect */
 if (can_create_speed_lines)
+&& (image_alpha > 0)
 {
 	if (invincible_timer >= true)
 	&& (!assist_invincible)

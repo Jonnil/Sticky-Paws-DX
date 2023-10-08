@@ -198,6 +198,7 @@ function scr_initialize_object_id_enums()
 		ID_EYE_BLOCK_ENEMY = 981,
 		ID_EYE_BLOCK_ENEMY_PLAYER = 982,
 		ID_DOOR = 99,
+		ID_WARP_BOX = 991,
 		ID_NPC = 100,
 		ID_BLACK_WALL = 101,
 		ID_RING = 102,

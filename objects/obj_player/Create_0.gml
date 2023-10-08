@@ -548,7 +548,7 @@ if (room != rm_title)
 	if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/lose_melody.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
-		player_lose_melody = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
+		player_lose_melody = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/lose_melody.ogg");
 	}
 	else
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg"))
@@ -621,6 +621,7 @@ horizontal_rope_climb = false;
 in_water = false; /* If the player is in water or not, instead of checking for the actual obj_water, check for this variable instead */
 in_breathable_water = false; /* If the water is breathable or not */
 invincible_timer = 0;
+invincible_blend = c_white; /* When invincible, player should cycles through the colors of the rainbow, and the after images need to take from this variable */
 jump = 0;
 jump_transition_to_fall_animation = 0;
 last_standing_x = x;

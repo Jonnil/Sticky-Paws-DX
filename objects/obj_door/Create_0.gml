@@ -8,3 +8,9 @@ player_gamepad_button_up = noone;
 player_gamepad_button2_up = noone;
 player_key_up = noone;
 player_key2_up = noone;
+
+need_to_press_up_to_enter = true;
+player_need_to_be_on_ground_to_enter = true;
+door_need_to_be_on_ground_to_enter = true;
+
+image_speed = 0.5;
