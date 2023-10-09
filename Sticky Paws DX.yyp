@@ -3392,6 +3392,7 @@
     {"id":{"name":"scr_draw_circular_bar","path":"scripts/scr_draw_circular_bar/scr_draw_circular_bar.yy",},},
     {"id":{"name":"spr_water_level","path":"sprites/spr_water_level/spr_water_level.yy",},},
     {"id":{"name":"obj_ring","path":"objects/obj_ring/obj_ring.yy",},},
+    {"id":{"name":"spr_appear_block","path":"sprites/spr_appear_block/spr_appear_block.yy",},},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
     {"id":{"name":"spr_arrow_sign","path":"sprites/spr_arrow_sign/spr_arrow_sign.yy",},},
     {"id":{"name":"spr_virtual_key_pause","path":"sprites/spr_virtual_key_pause/spr_virtual_key_pause.yy",},},
