@@ -238,6 +238,11 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_NPC] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_NPC, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_RING] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_RING, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, false);
 		#endregion /* Special Items END */
 		
 		ini_close();
@@ -322,6 +327,11 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_NPC] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_RING] = 2;
+		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1] = 2;
+		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2] = 2;
+		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3] = 2;
+		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4] = 2;
+		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5] = 2;
 		#endregion /* Special Items END */
 		
 	}
@@ -551,6 +561,11 @@ if (global.actually_play_edited_level == false)
 	add_object(LEVEL_OBJECT_ID.ID_NPC, spr_npc, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BLACK_WALL, spr_black_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_RING, spr_ring, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, spr_appear_block, 43, spr_wall, 1, 0, c_yellow, 1, "1", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2, spr_appear_block, 43, spr_wall, 1, 0, c_aqua, 1, "2", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, spr_appear_block, 43, spr_wall, 1, 0, c_red, 1, "3", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, spr_appear_block, 43, spr_wall, 1, 0, c_purple, 1, "4", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, spr_appear_block, 43, spr_wall, 1, 0, c_lime, 1, "5", noone, false, 0);
 	/* This is a dummy object, to make sure every object gets added to the list */ add_object(LEVEL_OBJECT_ID.ID_LAST_OBJECT_DUMMY, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0); /* This dummy object is just here so the last object actually appears */
 	#endregion /* Grid Initialization END */
 	

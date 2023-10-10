@@ -5,6 +5,12 @@ scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_resize_application_surface();
 
+global.appear_block_timer ++;
+if (global.appear_block_timer > 60 * 5)
+{
+	global.appear_block_timer = 0;
+}
+
 image_index = global.collectible_image_index;
 
 if (current_file != global.file)

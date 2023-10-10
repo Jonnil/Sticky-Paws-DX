@@ -82,6 +82,7 @@ delay = 0;
 menu_delay = 3;
 can_click_on_pause_key = false;
 global.deactivate_timer = 999;
+global.appear_block_timer = 0;
 
 if (global.character_select_in_this_menu == "main_game")
 && (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))

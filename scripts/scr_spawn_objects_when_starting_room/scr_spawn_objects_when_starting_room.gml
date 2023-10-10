@@ -498,6 +498,11 @@ function scr_spawn_objects_when_starting_room()
 				case LEVEL_OBJECT_ID.ID_NPC: instance_create_depth(x, y, 0, obj_npc);break;
 				case LEVEL_OBJECT_ID.ID_BLACK_WALL: instance_create_depth(x, y, 0, obj_black_wall);break;
 				case LEVEL_OBJECT_ID.ID_RING: instance_create_depth(x, y, 0, obj_ring);
+				case LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1: with(instance_create_depth(x, y, 0, obj_appear_block_spawner)){appear_cycle = 1;image_blend = c_yellow;}break;
+				case LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2: with(instance_create_depth(x, y, 0, obj_appear_block_spawner)){appear_cycle = 2;image_blend = c_aqua;}break;
+				case LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3: with(instance_create_depth(x, y, 0, obj_appear_block_spawner)){appear_cycle = 3;image_blend = c_red;}break;
+				case LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4: with(instance_create_depth(x, y, 0, obj_appear_block_spawner)){appear_cycle = 4;image_blend = c_purple;}break;
+				case LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5: with(instance_create_depth(x, y, 0, obj_appear_block_spawner)){appear_cycle = 5;image_blend = c_lime;}break;
 			}
 		}
 		#endregion /* Only spawn objects according to difficulty settings END */

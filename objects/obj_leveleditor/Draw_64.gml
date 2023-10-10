@@ -52,6 +52,11 @@ if (global.actually_play_edited_level == false)
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_MELON_BLOCK, true, spr_melon_block, spr_wall, + 100, 1, 0, c_white,,,,,"Melon Block", "Can only be destroyed with a ground-pound");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BOSS_BARRIER, true, spr_boss_barrier, spr_wall, + 100, 1, 0, c_white,,,,,"Boss Barrier", "This block dissapears when Mousette is defeated");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_EYE_BLOCK, true, global.resource_pack_sprite_eye_block, spr_wall, + 100, 1, 0, c_white,,,,,"Eye Block", "This block is only solid when it can see its prey");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, true, spr_appear_block, spr_wall, + 100, 1, 0, c_yellow,,,,,"Appear Block 1", "This block appears and disappears in cycles");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2, true, spr_appear_block, spr_wall, + 100, 1, 0, c_aqua,,,,,"Appear Block 2", "This block appears and disappears in cycles");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, true, spr_appear_block, spr_wall, + 100, 1, 0, c_red,,,,,"Appear Block 3", "This block appears and disappears in cycles");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, true, spr_appear_block, spr_wall, + 100, 1, 0, c_purple,,,,,"Appear Block 4", "This block appears and disappears in cycles");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, true, spr_appear_block, spr_wall, + 100, 1, 0, c_lime,,,,,"Appear Block 5", "This block appears and disappears in cycles");
 			}
 			#endregion /* Terrain Objects END */
 			
