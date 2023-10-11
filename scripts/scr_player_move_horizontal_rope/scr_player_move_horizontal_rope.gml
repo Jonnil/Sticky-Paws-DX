@@ -195,7 +195,7 @@ function scr_player_move_horizontal_rope()
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				if (key_sprint)
+				if (key_run)
 				|| (double_tap_left == 3)
 				{
 					hspeed -= 0.5;
@@ -236,7 +236,7 @@ function scr_player_move_horizontal_rope()
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
 				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				if (key_sprint)
+				if (key_run)
 				|| (double_tap_right == 3)
 				{
 					hspeed += 0.5;

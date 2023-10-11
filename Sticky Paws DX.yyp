@@ -3157,7 +3157,7 @@
     {"id":{"name":"scr_draw_pie","path":"scripts/scr_draw_pie/scr_draw_pie.yy",},},
     {"id":{"name":"scr_deactivate_objects_outside_view","path":"scripts/scr_deactivate_objects_outside_view/scr_deactivate_objects_outside_view.yy",},},
     {"id":{"name":"snd_enemyvoice_big_defeated2","path":"sounds/snd_enemyvoice_big_defeated2/snd_enemyvoice_big_defeated2.yy",},},
-    {"id":{"name":"scr_calculate_language_completion","path":"scripts/scr_calculate_language_completion/scr_calculate_language_completion.yy",},},
+    {"id":{"name":"scr_calculate_translation_completion","path":"scripts/scr_calculate_translation_completion/scr_calculate_translation_completion.yy",},},
     {"id":{"name":"snd_footstep_glass_left","path":"sounds/snd_footstep_glass_left/snd_footstep_glass_left.yy",},},
     {"id":{"name":"obj_path","path":"objects/obj_path/obj_path.yy",},},
     {"id":{"name":"load_and_save_custom_level","path":"scripts/load_and_save_custom_level/load_and_save_custom_level.yy",},},

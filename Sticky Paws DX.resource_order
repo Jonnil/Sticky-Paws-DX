@@ -154,7 +154,7 @@
     {"name":"scr_draw_pie","order":9,"path":"scripts/scr_draw_pie/scr_draw_pie.yy",},
     {"name":"scr_deactivate_objects_outside_view","order":51,"path":"scripts/scr_deactivate_objects_outside_view/scr_deactivate_objects_outside_view.yy",},
     {"name":"snd_enemyvoice_big_defeated2","order":29,"path":"sounds/snd_enemyvoice_big_defeated2/snd_enemyvoice_big_defeated2.yy",},
-    {"name":"scr_calculate_language_completion","order":1,"path":"scripts/scr_calculate_language_completion/scr_calculate_language_completion.yy",},
+    {"name":"scr_calculate_translation_completion","order":1,"path":"scripts/scr_calculate_translation_completion/scr_calculate_translation_completion.yy",},
     {"name":"snd_footstep_glass_left","order":42,"path":"sounds/snd_footstep_glass_left/snd_footstep_glass_left.yy",},
     {"name":"obj_path","order":8,"path":"objects/obj_path/obj_path.yy",},
     {"name":"load_and_save_custom_level","order":7,"path":"scripts/load_and_save_custom_level/load_and_save_custom_level.yy",},

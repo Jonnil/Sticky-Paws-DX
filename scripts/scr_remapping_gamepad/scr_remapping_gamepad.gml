@@ -419,19 +419,19 @@ function scr_remapping_gamepad()
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		else
-		if (menu == "remap_key_sprint")
+		if (menu == "remap_key_run")
 		{
-			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.sprint] = last_key;
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.run] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_sprint", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_run", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		else
-		if (menu == "remap_key_sprint_toggle")
+		if (menu == "remap_key_run_toggle")
 		{
-			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.sprint_toggle] = last_key;
+			global.player_[inp.gp][remapping_player + 1][remap_key_number][action.run_toggle] = last_key;
 			ini_open(working_directory + "config.ini");
-			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_sprint_toggle", last_key);
+			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile), "player" + string(remapping_player + 1) + "_gamepad_button" + string(remap_key_number_string) + "_run_toggle", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		else

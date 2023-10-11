@@ -275,7 +275,7 @@ if (goal)
 }
 #endregion /* If player has finished the level, make the player run off to the right off screen, and disable player control END */
 
-scr_player_move_sprint();
+scr_player_move_run();
 
 scr_player_move_double_tap_direction_to_run();
 
@@ -945,7 +945,7 @@ if (place_meeting(x, y, obj_vine))
 				if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
-				if (key_sprint)
+				if (key_run)
 				{
 					y -= 4;
 					image_speed = 0.4;
@@ -979,7 +979,7 @@ if (place_meeting(x, y, obj_vine))
 			
 			if (!on_ground)
 			{
-				if (key_sprint)
+				if (key_run)
 				{
 					y += 5;
 					image_speed = -0.4;
@@ -1013,7 +1013,7 @@ if (place_meeting(x, y, obj_vine))
 			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
-			if (key_sprint)
+			if (key_run)
 			{
 				x -= 4;
 				image_speed = 0.4;
@@ -1059,7 +1059,7 @@ if (place_meeting(x, y, obj_vine))
 			if (sprite_vine_stay > noone){sprite_index = sprite_vine_stay;}else
 			if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
 			if (sprite_walk > noone){sprite_index = sprite_walk;}
-			if (key_sprint)
+			if (key_run)
 			{
 				x += 4;
 				image_speed = 0.4;
@@ -2491,7 +2491,7 @@ if (on_ground)
 		if (!spark1_effect)
 		{
 			if (abs(hspeed) < 7)
-			&& (key_sprint)
+			&& (key_run)
 			&& (!stick_to_wall)
 			&& (wall_jump == 0)
 			{
@@ -2510,7 +2510,7 @@ if (on_ground)
 		if (!spark2_effect)
 		{
 			if (abs(hspeed) < 7.5)
-			&& (key_sprint)
+			&& (key_run)
 			&& (!stick_to_wall)
 			&& (wall_jump == 0)
 			{
@@ -2645,7 +2645,7 @@ if (glide)
 	if (sprite_fall > noone){sprite_index = sprite_fall; image_speed = 0.5;}else
 	if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
 	if (sprite_walk > noone){sprite_index = sprite_walk;}
-	if (key_sprint_pressed)
+	if (key_run_pressed)
 	|| (key_crouch_pressed)
 	|| (on_ground)
 	&& (vspeed >= 0)

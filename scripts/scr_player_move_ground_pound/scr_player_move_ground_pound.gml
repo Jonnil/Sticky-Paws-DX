@@ -164,7 +164,7 @@ function scr_player_move_ground_pound()
 		else
 		if (ground_pound == 3)
 		{
-			if (key_sprint)
+			if (key_run)
 			{
 				speed_max = 8;
 			}

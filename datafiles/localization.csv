@@ -125,8 +125,8 @@ Dive,Pounce,Dyka,ボディーアタック,,Sus
 Jump,Jump,Hoppa,ジャンプ,,Skok
 Crouch,Crouch,Huka,しゃがむ,,Kucanie
 Crouch Toggle,Crouch Toggle,Huka växling,しゃがむトグル,,Przełącznik kucania
-Sprint,Sprint,Sprinta,走る,,Bieg
-Sprint Toggle,Sprint Toggle,Sprint växling,走るトグル,,Przełącznik biegu
+Run,Run,Springa,走る,,Bieg
+Run Toggle,Run Toggle,Spring växling,走るトグル,,Przełącznik biegu
 Left,Left,Vänster,左,,Lewo
 Right,Right,Höger,右,,Prawo
 Down,Down,Ner,下,,Dół
@@ -364,7 +364,7 @@ Download,Download,Ladda ner,ダウンロード,,Pobierz
 Online Level List,Online Level List,Onlinenivålista,オンラインレベルリスト,,Lista poziomów online
 Search Level ID,Search Level ID,Sök nivå-ID,レベルIDを検索する,,Szukaj ID poziomu
 Custom Levels,Custom Levels,Egna nivåer,カスタムレベル,,Własne poziomy
-Levels,Levels,Nivåer,,,Poziomy
+Levels,Levels,Nivåer,レベル,,Poziomy
 Part Limit,Part Limit,Part gräns,オブジェクト限界,,
 Entity Limit,Entity Limit,Entity gräns,,,
 Grass,Grass,Gräs,草,,Trawa

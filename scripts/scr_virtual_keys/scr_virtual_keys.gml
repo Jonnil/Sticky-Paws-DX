@@ -19,8 +19,8 @@ function scr_virtual_keys()
 		var mobile_key_jump_y = get_window_height - 200;
 		var mobile_key_crouch_x = get_window_width - 200;
 		var mobile_key_crouch_y = get_window_height - 500;
-		var mobile_key_sprint_x = get_window_width - 500;
-		var mobile_key_sprint_y = get_window_height - 200;
+		var mobile_key_run_x = get_window_width - 500;
+		var mobile_key_run_y = get_window_height - 200;
 		var mobile_key_pause_x = get_window_width * 0.5;
 		var mobile_key_pause_y = + 100;
 		var mobile_key_zoom_out_x = get_window_width * 0.5 + 200;
@@ -112,8 +112,8 @@ function scr_virtual_keys()
 				#region /* Virtual key add */
 				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.jump], global.player_[inp.key][1][2][action.jump], mobile_key_jump_x, mobile_key_jump_y, spr_virtual_key_jump, mobile_key_extra_deadzone);
 				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.crouch], global.player_[inp.key][1][2][action.crouch], mobile_key_crouch_x, mobile_key_crouch_y, spr_virtual_key_crouch, mobile_key_extra_deadzone);
-				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.sprint], global.player_[inp.key][1][2][action.sprint], mobile_key_sprint_x, mobile_key_sprint_y, spr_noone, mobile_key_extra_deadzone);
-				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.dive], global.player_[inp.key][1][2][action.dive], mobile_key_sprint_x, mobile_key_sprint_y, spr_virtual_key_sprint, mobile_key_extra_deadzone);
+				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.run], global.player_[inp.key][1][2][action.run], mobile_key_run_x, mobile_key_run_y, spr_noone, mobile_key_extra_deadzone);
+				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.dive], global.player_[inp.key][1][2][action.dive], mobile_key_run_x, mobile_key_run_y, spr_virtual_key_run, mobile_key_extra_deadzone);
 				#endregion /* Virtual key add END */
 				
 				#region /* Pause virtual key */

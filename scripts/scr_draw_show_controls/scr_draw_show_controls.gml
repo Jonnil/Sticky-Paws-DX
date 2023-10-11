@@ -7,7 +7,7 @@ function scr_draw_show_controls(what_player = 1)
 			var draw_text_dive = false;
 			var draw_text_jump = false;
 			var draw_text_crouch = false;
-			var draw_text_sprint = false;
+			var draw_text_run = false;
 			var draw_text_left = false;
 			var draw_text_right = false;
 			var draw_text_down = false;
@@ -24,7 +24,7 @@ function scr_draw_show_controls(what_player = 1)
 			var player_show_dive_key_x = [	player1_show_dive_key_x,	player2_show_dive_key_x,	player3_show_dive_key_x,	player4_show_dive_key_x];
 			var player_show_jump_key_x = [	player1_show_jump_key_x,	player2_show_jump_key_x,	player3_show_jump_key_x,	player4_show_jump_key_x];
 			var player_show_crouch_key_x = [	player1_show_crouch_key_x,	player2_show_crouch_key_x,	player3_show_crouch_key_x,	player4_show_crouch_key_x];
-			var player_show_sprint_key_x = [	player1_show_sprint_key_x,	player2_show_sprint_key_x,	player3_show_sprint_key_x,	player4_show_sprint_key_x];
+			var player_show_run_key_x = [	player1_show_run_key_x,	player2_show_run_key_x,	player3_show_run_key_x,	player4_show_run_key_x];
 			var player_show_left_key_x = [	player1_show_left_key_x,	player2_show_left_key_x,	player3_show_left_key_x,	player4_show_left_key_x];
 			var player_show_right_key_x = [	player1_show_right_key_x,	player2_show_right_key_x,	player3_show_right_key_x,	player4_show_right_key_x];
 			var player_show_down_key_x = [	player1_show_down_key_x,	player2_show_down_key_x,	player3_show_down_key_x,	player4_show_down_key_x];
@@ -38,7 +38,7 @@ function scr_draw_show_controls(what_player = 1)
 			var player_show_dive_key_x = player_show_dive_key_x[what_player - 1];
 			var player_show_jump_key_x = player_show_jump_key_x[what_player - 1];
 			var player_show_crouch_key_x = player_show_crouch_key_x[what_player - 1];
-			var player_show_sprint_key_x = player_show_sprint_key_x[what_player - 1];
+			var player_show_run_key_x = player_show_run_key_x[what_player - 1];
 			var player_show_left_key_x = player_show_left_key_x[what_player - 1];
 			var player_show_right_key_x = player_show_right_key_x[what_player - 1];
 			var player_show_down_key_x = player_show_down_key_x[what_player - 1];
@@ -70,16 +70,16 @@ function scr_draw_show_controls(what_player = 1)
 			var player_key_crouch_toggle = global.player_[inp.key][what_player][1][action.crouch_toggle];
 			var player_key2_crouch_toggle = global.player_[inp.key][what_player][2][action.crouch_toggle];
 			
-			var player_gamepad_button_sprint = global.player_[inp.gp][what_player][1][action.sprint];
-			var player_gamepad_button2_sprint = global.player_[inp.gp][what_player][2][action.sprint];
-			var player_key_sprint = global.player_[inp.key][what_player][1][action.sprint];
-			var player_key2_sprint = global.player_[inp.key][what_player][2][action.sprint];
+			var player_gamepad_button_run = global.player_[inp.gp][what_player][1][action.run];
+			var player_gamepad_button2_run = global.player_[inp.gp][what_player][2][action.run];
+			var player_key_run = global.player_[inp.key][what_player][1][action.run];
+			var player_key2_run = global.player_[inp.key][what_player][2][action.run];
 			
-			var player_sprint_toggle = global.player1_sprint_toggle;
-			var player_gamepad_button_sprint_toggle = global.player_[inp.gp][what_player][1][action.sprint_toggle];
-			var player_gamepad_button2_sprint_toggle = global.player_[inp.gp][what_player][2][action.sprint_toggle];
-			var player_key_sprint_toggle = global.player_[inp.key][what_player][1][action.sprint_toggle];
-			var player_key2_sprint_toggle = global.player_[inp.key][what_player][2][action.sprint_toggle];
+			var player_run_toggle = global.player1_run_toggle;
+			var player_gamepad_button_run_toggle = global.player_[inp.gp][what_player][1][action.run_toggle];
+			var player_gamepad_button2_run_toggle = global.player_[inp.gp][what_player][2][action.run_toggle];
+			var player_key_run_toggle = global.player_[inp.key][what_player][1][action.run_toggle];
+			var player_key2_run_toggle = global.player_[inp.key][what_player][2][action.run_toggle];
 			
 			var player_gamepad_button_left = global.player_[inp.gp][what_player][1][action.left];
 			var player_gamepad_button2_left = global.player_[inp.gp][what_player][2][action.left];
@@ -218,74 +218,74 @@ function scr_draw_show_controls(what_player = 1)
 				}
 				#endregion /* Show Player Crouch Key END */
 				
-				#region /* Show Player Sprint Key */
-				if (player_sprint_toggle == false)
+				#region /* Show Player Run Key */
+				if (player_run_toggle == false)
 				{
 					if (gamepad_player_is_connected)
 					&& (global.controls_used_for_menu_navigation == "controller")
-					&& (player_gamepad_button_sprint > noone)
+					&& (player_gamepad_button_run > noone)
 					|| (global.always_show_gamepad_buttons)
 					{
-						draw_text_sprint = true;
-						scr_draw_gamepad_buttons(player_gamepad_button_sprint, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha[what_player]);
+						draw_text_run = true;
+						scr_draw_gamepad_buttons(player_gamepad_button_run, player_show_run_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha[what_player]);
 					}
 					else
 					if (gamepad_player_is_connected)
 					&& (global.controls_used_for_menu_navigation == "controller")
-					&& (player_gamepad_button2_sprint > noone)
+					&& (player_gamepad_button2_run > noone)
 					|| (global.always_show_gamepad_buttons)
 					{
-						draw_text_sprint = true;
-						scr_draw_gamepad_buttons(player_gamepad_button2_sprint, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha[what_player]);
+						draw_text_run = true;
+						scr_draw_gamepad_buttons(player_gamepad_button2_run, player_show_run_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha[what_player]);
 					}
 					else
 					if (gamepad_player_is_connected)
 					&& (global.controls_used_for_menu_navigation == "controller")
-					&& (player_gamepad_button_sprint_toggle > noone)
+					&& (player_gamepad_button_run_toggle > noone)
 					|| (global.always_show_gamepad_buttons)
 					{
-						draw_text_sprint = true;
-						scr_draw_gamepad_buttons(player_gamepad_button_sprint_toggle, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha[what_player]);
+						draw_text_run = true;
+						scr_draw_gamepad_buttons(player_gamepad_button_run_toggle, player_show_run_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha[what_player]);
 					}
 					else
 					if (gamepad_player_is_connected)
 					&& (global.controls_used_for_menu_navigation == "controller")
-					&& (player_gamepad_button2_sprint_toggle > noone)
+					&& (player_gamepad_button2_run_toggle > noone)
 					|| (global.always_show_gamepad_buttons)
 					{
-						draw_text_sprint = true;
-						scr_draw_gamepad_buttons(player_gamepad_button2_sprint_toggle, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha[what_player]);
+						draw_text_run = true;
+						scr_draw_gamepad_buttons(player_gamepad_button2_run_toggle, player_show_run_key_x, get_window_height - show_player_controls_y, 0.5, c_white, player_show_controls_alpha[what_player]);
 					}
 					else
-					if (player_key_sprint > noone)
+					if (player_key_run > noone)
 					{
-						draw_text_sprint = true;
-						draw_sprite_ext(spr_keyboard_keys, player_key_sprint, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha[what_player]);
+						draw_text_run = true;
+						draw_sprite_ext(spr_keyboard_keys, player_key_run, player_show_run_key_x, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha[what_player]);
 					}
 					else
-					if (player_key2_sprint > noone)
+					if (player_key2_run > noone)
 					{
-						draw_text_sprint = true;
-						draw_sprite_ext(spr_keyboard_keys, player_key2_sprint, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha[what_player]);
+						draw_text_run = true;
+						draw_sprite_ext(spr_keyboard_keys, player_key2_run, player_show_run_key_x, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha[what_player]);
 					}
 					else
-					if (player_key_sprint_toggle > noone)
+					if (player_key_run_toggle > noone)
 					{
-						draw_text_sprint = true;
-						draw_sprite_ext(spr_keyboard_keys, player_key_sprint_toggle, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha[what_player]);
+						draw_text_run = true;
+						draw_sprite_ext(spr_keyboard_keys, player_key_run_toggle, player_show_run_key_x, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha[what_player]);
 					}
 					else
-					if (player_key2_sprint_toggle > noone)
+					if (player_key2_run_toggle > noone)
 					{
-						draw_text_sprint = true;
-						draw_sprite_ext(spr_keyboard_keys, player_key2_sprint_toggle, player_show_sprint_key_x, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha[what_player]);
+						draw_text_run = true;
+						draw_sprite_ext(spr_keyboard_keys, player_key2_run_toggle, player_show_run_key_x, get_window_height - show_player_controls_y, 0.5, 0.5, 0, c_white, player_show_controls_alpha[what_player]);
 					}
 				}
-				if (draw_text_sprint)
+				if (draw_text_run)
 				{
-					scr_draw_text_outlined(player_show_sprint_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Sprint"), global.default_text_size, c_black, global.player_color[what_player], player_show_controls_alpha[what_player]);
+					scr_draw_text_outlined(player_show_run_key_x + 22, get_window_height - show_player_controls_y, l10n_text("Run"), global.default_text_size, c_black, global.player_color[what_player], player_show_controls_alpha[what_player]);
 				}
-				#endregion /* Show Player Sprint Key END */
+				#endregion /* Show Player Run Key END */
 				
 				#region /* Show Player Left Key */
 				if (gamepad_player_is_connected)

@@ -4,7 +4,7 @@ function scr_player_move_double_tap_direction_to_run()
 	#region /* Double-tap direction to run */
 	if (double_tap_to_run)
 	{
-		if (!key_sprint)
+		if (!key_run)
 		{
 			
 			#region /* Double tap left direction to run */

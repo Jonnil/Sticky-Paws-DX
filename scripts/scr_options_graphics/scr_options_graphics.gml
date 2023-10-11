@@ -11,12 +11,14 @@ function scr_options_graphics()
 		if (global.enable_options_for_pc)
 		{
 			var fullscreen_mode_y = 48;
-			var interpolate_y = fullscreen_mode_y + 48;
+			var resolution_setting_y = fullscreen_mode_y + 48;
+			var interpolate_y = resolution_setting_y + 48;
 		}
 		else
 		{
 			var fullscreen_mode_y = -999;
-			var interpolate_y = 48;
+			var resolution_setting_y = 48;
+			var interpolate_y = resolution_setting_y + 48;
 		}
 		var show_fps_y = interpolate_y + 48;
 		var show_fps_real_y = show_fps_y + 48;
@@ -109,6 +111,8 @@ function scr_options_graphics()
 		draw_menu_checkmark(386, reset_world_map_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset World Map Zoom When Going Back To Map"), "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map);
 		
 		draw_menu_dropdown(420, gui_scale_modifier_y + menu_y_offset, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, "*0.7", "*0.8", "*0.9", "*1", "*1.1", "*1.2", "*1.3");
+		var resolution_setting_var = 0;
+		draw_menu_dropdown(420, resolution_setting_y + menu_y_offset, l10n_text("Resolution"), "resolution_setting", resolution_setting_var, "480 x 270", "960 x 540", "1024 x 576", "1280 x 720", "1600 x 900", "1920 x 1080");
 		
 		draw_menu_button(420, customize_button_design_y + menu_y_offset, l10n_text("Customize Button Design"), "customize_button_design", "customize_button_design_color");
 		

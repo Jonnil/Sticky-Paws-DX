@@ -561,11 +561,11 @@ if (global.actually_play_edited_level == false)
 	add_object(LEVEL_OBJECT_ID.ID_NPC, spr_npc, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BLACK_WALL, spr_black_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_RING, spr_ring, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
-	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, spr_appear_block, 43, spr_wall, 1, 0, c_yellow, 1, "1", noone, false, 0);
-	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2, spr_appear_block, 43, spr_wall, 1, 0, c_aqua, 1, "2", noone, false, 0);
-	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, spr_appear_block, 43, spr_wall, 1, 0, c_red, 1, "3", noone, false, 0);
-	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, spr_appear_block, 43, spr_wall, 1, 0, c_purple, 1, "4", noone, false, 0);
-	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, spr_appear_block, 43, spr_wall, 1, 0, c_lime, 1, "5", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, spr_appear_block, 44, spr_wall, 1, 0, c_yellow, 1, "1", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2, spr_appear_block, 44, spr_wall, 1, 0, c_aqua, 1, "2", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, spr_appear_block, 44, spr_wall, 1, 0, c_red, 1, "3", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, spr_appear_block, 44, spr_wall, 1, 0, c_purple, 1, "4", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, spr_appear_block, 44, spr_wall, 1, 0, c_lime, 1, "5", noone, false, 0);
 	/* This is a dummy object, to make sure every object gets added to the list */ add_object(LEVEL_OBJECT_ID.ID_LAST_OBJECT_DUMMY, spr_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0); /* This dummy object is just here so the last object actually appears */
 	#endregion /* Grid Initialization END */
 	

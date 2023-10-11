@@ -100,7 +100,7 @@ function scr_config_save()
 	ini_write_string("config", "player1_name", global.player_name[1]);
 	ini_write_real("player1_profile" + string(global.player1_profile), "player1_up_is_also_jump", global.player1_up_is_also_jump);
 	ini_write_real("player1_profile" + string(global.player1_profile), "player1_double_tap_to_run", global.player1_double_tap_to_run);
-	ini_write_real("player1_profile" + string(global.player1_profile), "player1_sprint_toggle", global.player1_sprint_toggle);
+	ini_write_real("player1_profile" + string(global.player1_profile), "player1_run_toggle", global.player1_run_toggle);
 	ini_write_real("player1_profile" + string(global.player1_profile), "player1_double_tap_to_dive", global.player1_double_tap_to_dive);
 	ini_write_real("player1_profile" + string(global.player1_profile), "player1_cancel_dive_by_pressing_jump_or_dive_button", global.player1_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("player1_profile" + string(global.player1_profile), "player1_cancel_dive_by_pressing_opposite_direction", global.player1_cancel_dive_by_pressing_opposite_direction);
@@ -116,7 +116,7 @@ function scr_config_save()
 	ini_write_string("config", "player2_name", global.player_name[2]);
 	ini_write_real("player2_profile" + string(global.player2_profile), "player2_up_is_also_jump", global.player2_up_is_also_jump);
 	ini_write_real("player2_profile" + string(global.player2_profile), "player2_double_tap_to_run", global.player2_double_tap_to_run);
-	ini_write_real("player2_profile" + string(global.player2_profile), "player2_sprint_toggle", global.player2_sprint_toggle);
+	ini_write_real("player2_profile" + string(global.player2_profile), "player2_run_toggle", global.player2_run_toggle);
 	ini_write_real("player2_profile" + string(global.player2_profile), "player2_double_tap_to_dive", global.player2_double_tap_to_dive);
 	ini_write_real("player2_profile" + string(global.player2_profile), "player2_cancel_dive_by_pressing_jump_or_dive_button", global.player2_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("player2_profile" + string(global.player2_profile), "player2_cancel_dive_by_pressing_opposite_direction", global.player2_cancel_dive_by_pressing_opposite_direction);
@@ -132,7 +132,7 @@ function scr_config_save()
 	ini_write_string("config", "player3_name", global.player_name[3]);
 	ini_write_real("player3_profile" + string(global.player3_profile), "player3_up_is_also_jump", global.player3_up_is_also_jump);
 	ini_write_real("player3_profile" + string(global.player3_profile), "player3_double_tap_to_run", global.player3_double_tap_to_run);
-	ini_write_real("player3_profile" + string(global.player3_profile), "player3_sprint_toggle", global.player3_sprint_toggle);
+	ini_write_real("player3_profile" + string(global.player3_profile), "player3_run_toggle", global.player3_run_toggle);
 	ini_write_real("player3_profile" + string(global.player3_profile), "player3_double_tap_to_dive", global.player3_double_tap_to_dive);
 	ini_write_real("player3_profile" + string(global.player3_profile), "player3_cancel_dive_by_pressing_jump_or_dive_button", global.player3_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("player3_profile" + string(global.player3_profile), "player3_cancel_dive_by_pressing_opposite_direction", global.player3_cancel_dive_by_pressing_opposite_direction);
@@ -148,7 +148,7 @@ function scr_config_save()
 	ini_write_string("config", "player4_name", global.player_name[4]);
 	ini_write_real("player4_profile" + string(global.player4_profile), "player4_up_is_also_jump", global.player4_up_is_also_jump);
 	ini_write_real("player4_profile" + string(global.player4_profile), "player4_double_tap_to_run", global.player4_double_tap_to_run);
-	ini_write_real("player4_profile" + string(global.player4_profile), "player4_sprint_toggle", global.player4_sprint_toggle);
+	ini_write_real("player4_profile" + string(global.player4_profile), "player4_run_toggle", global.player4_run_toggle);
 	ini_write_real("player4_profile" + string(global.player4_profile), "player4_double_tap_to_dive", global.player4_double_tap_to_dive);
 	ini_write_real("player4_profile" + string(global.player4_profile), "player4_cancel_dive_by_pressing_jump_or_dive_button", global.player4_cancel_dive_by_pressing_jump_or_dive_button);
 	ini_write_real("player4_profile" + string(global.player4_profile), "player4_cancel_dive_by_pressing_opposite_direction", global.player4_cancel_dive_by_pressing_opposite_direction);

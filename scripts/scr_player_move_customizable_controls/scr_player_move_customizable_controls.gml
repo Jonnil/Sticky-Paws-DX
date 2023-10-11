@@ -193,21 +193,21 @@ function scr_player_move_customizable_controls()
 	(key_crouch_pressed_temp)
 	#endregion /* Key Crouch Pressed END */
 	
-	#region /* Key Sprint Hold */
-	key_sprint_hold_temp = scr_key_initialize(key_sprint_hold_temp, 0, player, action.sprint);
+	#region /* Key Run Hold */
+	key_run_hold_temp = scr_key_initialize(key_run_hold_temp, 0, player, action.run);
 	
-	key_sprint =
-	(key_sprint_hold_temp)
+	key_run =
+	(key_run_hold_temp)
 	|| (player == 1)
-	&& (global.player1_sprint_toggle)
+	&& (global.player1_run_toggle)
 	|| (player == 2)
-	&& (global.player2_sprint_toggle)
+	&& (global.player2_run_toggle)
 	|| (player == 3)
-	&& (global.player3_sprint_toggle)
+	&& (global.player3_run_toggle)
 	|| (player >= 4)
-	&& (global.player4_sprint_toggle);
-	#endregion /* Key Sprint Hold END */
+	&& (global.player4_run_toggle);
+	#endregion /* Key Run Hold END */
 	
-	key_sprint_pressed = scr_key_initialize(key_sprint_pressed, 1, player, action.sprint);
-	key_sprint_released = scr_key_initialize(key_sprint_released, 2, player, action.sprint);
+	key_run_pressed = scr_key_initialize(key_run_pressed, 1, player, action.run);
+	key_run_released = scr_key_initialize(key_run_released, 2, player, action.run);
 }

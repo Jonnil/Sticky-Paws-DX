@@ -469,10 +469,10 @@ global.player2_crouch_toggle = false; /* If crouch toggle for player 2 is true o
 global.player3_crouch_toggle = false; /* If crouch toggle for player 3 is true or false (false by default) */
 global.player4_crouch_toggle = false; /* If crouch toggle for player 4 is true or false (false by default) */
 
-global.player1_sprint_toggle = false; /* If sprint toggle for player 1 is true or false (false by default) */
-global.player2_sprint_toggle = false; /* If sprint toggle for player 2 is true or false (false by default) */
-global.player3_sprint_toggle = false; /* If sprint toggle for player 3 is true or false (false by default) */
-global.player4_sprint_toggle = false; /* If sprint toggle for player 4 is true or false (false by default) */
+global.player1_run_toggle = false; /* If run toggle for player 1 is true or false (false by default) */
+global.player2_run_toggle = false; /* If run toggle for player 2 is true or false (false by default) */
+global.player3_run_toggle = false; /* If run toggle for player 3 is true or false (false by default) */
+global.player4_run_toggle = false; /* If run toggle for player 4 is true or false (false by default) */
 
 global.player1_cancel_dive_by_pressing_jump_or_dive_button = false;
 global.player2_cancel_dive_by_pressing_jump_or_dive_button = false;
@@ -522,8 +522,8 @@ enum action
 	double_jump = 15,
 	crouch = 2,
 	crouch_toggle = 3,
-	sprint = 4,
-	sprint_toggle = 5,
+	run = 4,
+	run_toggle = 5,
 	left = 6,
 	right = 7,
 	down = 8,
@@ -653,8 +653,6 @@ file_load_timer = 0;
 file_found = "";
 time = 0;
 sprite_index = spr_company_logo;
-
-calculate_translation_completion();
 
 enum MOUSE_BUTTON_VALUE
 {

@@ -4,6 +4,7 @@ scr_set_controls_used_to_navigate();
 
 if (goto_title_screen)
 {
+	calculate_translation_completion(); /* Set the translation completion when going to title screen, so that selected language can have time to load and the translation completion can be taken from the currently selected language */
 	room_goto(rm_title);
 }
 

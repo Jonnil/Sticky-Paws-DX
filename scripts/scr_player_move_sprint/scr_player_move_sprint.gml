@@ -1,7 +1,7 @@
-function scr_player_move_sprint()
+function scr_player_move_run()
 {
 	
-	#region /* Sprint */
+	#region /* Run */
 	if (goal)
 	&& (global.time_countdown_bonus <= 0)
 	{
@@ -23,7 +23,7 @@ function scr_player_move_sprint()
 			}
 		}
 		else
-		if (key_sprint)
+		if (key_run)
 		&& (allow_run)
 		|| (double_tap_left == 3)
 		&& (allow_run)
@@ -65,6 +65,6 @@ function scr_player_move_sprint()
 			}
 		}
 	}
-	#endregion /* Sprint END */
+	#endregion /* Run END */
 	
 }

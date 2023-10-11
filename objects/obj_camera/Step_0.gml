@@ -879,77 +879,77 @@ if (save_level_as_png == false)
 	
 }
 
-#region /* Step Sprint Toggling */
-key_player1_sprint_toggle_pressed = scr_key_initialize(key_player1_sprint_toggle_pressed, 1, 1, action.sprint_toggle);
-key_player2_sprint_toggle_pressed = scr_key_initialize(key_player2_sprint_toggle_pressed, 1, 2, action.sprint_toggle);
-key_player3_sprint_toggle_pressed = scr_key_initialize(key_player3_sprint_toggle_pressed, 1, 3, action.sprint_toggle);
-key_player4_sprint_toggle_pressed = scr_key_initialize(key_player4_sprint_toggle_pressed, 1, 4, action.sprint_toggle);
+#region /* Step Run Toggling */
+key_player1_run_toggle_pressed = scr_key_initialize(key_player1_run_toggle_pressed, 1, 1, action.run_toggle);
+key_player2_run_toggle_pressed = scr_key_initialize(key_player2_run_toggle_pressed, 1, 2, action.run_toggle);
+key_player3_run_toggle_pressed = scr_key_initialize(key_player3_run_toggle_pressed, 1, 3, action.run_toggle);
+key_player4_run_toggle_pressed = scr_key_initialize(key_player4_run_toggle_pressed, 1, 4, action.run_toggle);
 
-if (key_player1_sprint_toggle_pressed)
+if (key_player1_run_toggle_pressed)
 && (!instance_exists(obj_pause))
 {
-	show_sprint_toggle_for_player1 = 100;
-	show_sprint_toggle_for_player2 = 0;
-	show_sprint_toggle_for_player3 = 0;
-	show_sprint_toggle_for_player4 = 0;
-	if (global.player1_sprint_toggle == false)
+	show_run_toggle_for_player1 = 100;
+	show_run_toggle_for_player2 = 0;
+	show_run_toggle_for_player3 = 0;
+	show_run_toggle_for_player4 = 0;
+	if (global.player1_run_toggle == false)
 	{
-		global.player1_sprint_toggle = true;
+		global.player1_run_toggle = true;
 	}
 	else
 	{
-		global.player1_sprint_toggle = false;
+		global.player1_run_toggle = false;
 	}
 }
-if (key_player2_sprint_toggle_pressed)
+if (key_player2_run_toggle_pressed)
 && (!instance_exists(obj_pause))
 {
-	show_sprint_toggle_for_player1 = 0;
-	show_sprint_toggle_for_player2 = 100;
-	show_sprint_toggle_for_player3 = 0;
-	show_sprint_toggle_for_player4 = 0;
-	if (global.player2_sprint_toggle == false)
+	show_run_toggle_for_player1 = 0;
+	show_run_toggle_for_player2 = 100;
+	show_run_toggle_for_player3 = 0;
+	show_run_toggle_for_player4 = 0;
+	if (global.player2_run_toggle == false)
 	{
-		global.player2_sprint_toggle = true;
+		global.player2_run_toggle = true;
 	}
 	else
 	{
-		global.player2_sprint_toggle = false;
+		global.player2_run_toggle = false;
 	}
 }
-if (key_player3_sprint_toggle_pressed)
+if (key_player3_run_toggle_pressed)
 && (!instance_exists(obj_pause))
 {
-	show_sprint_toggle_for_player1 = 0;
-	show_sprint_toggle_for_player2 = 0;
-	show_sprint_toggle_for_player3 = 100;
-	show_sprint_toggle_for_player4 = 0;
-	if (global.player3_sprint_toggle == false)
+	show_run_toggle_for_player1 = 0;
+	show_run_toggle_for_player2 = 0;
+	show_run_toggle_for_player3 = 100;
+	show_run_toggle_for_player4 = 0;
+	if (global.player3_run_toggle == false)
 	{
-		global.player3_sprint_toggle = true;
+		global.player3_run_toggle = true;
 	}
 	else
 	{
-		global.player3_sprint_toggle = false;
+		global.player3_run_toggle = false;
 	}
 }
-if (key_player4_sprint_toggle_pressed)
+if (key_player4_run_toggle_pressed)
 && (!instance_exists(obj_pause))
 {
-	show_sprint_toggle_for_player1 = 0;
-	show_sprint_toggle_for_player2 = 0;
-	show_sprint_toggle_for_player3 = 0;
-	show_sprint_toggle_for_player4 = 100;
-	if (global.player4_sprint_toggle == false)
+	show_run_toggle_for_player1 = 0;
+	show_run_toggle_for_player2 = 0;
+	show_run_toggle_for_player3 = 0;
+	show_run_toggle_for_player4 = 100;
+	if (global.player4_run_toggle == false)
 	{
-		global.player4_sprint_toggle = true;
+		global.player4_run_toggle = true;
 	}
 	else
 	{
-		global.player4_sprint_toggle = false;
+		global.player4_run_toggle = false;
 	}
 }
-#endregion /* Step Sprint Toggling END */
+#endregion /* Step Run Toggling END */
 
 #region /* Show HUD timers */
 
