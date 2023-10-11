@@ -85,6 +85,7 @@ function scr_config_save()
 	ini_write_real("config", "zoom_world_map", global.zoom_world_map);
 	ini_write_real("config", "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map);
 	ini_write_real("config", "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map);
+	ini_write_real("config", "resolution_setting", global.resolution_setting);
 	ini_write_real("config", "gui_scale_modifier", global.gui_scale_modifier);
 	ini_write_real("config", "language_localization", global.language_localization);
 	ini_write_real("config", "convention_mode", global.convention_mode);

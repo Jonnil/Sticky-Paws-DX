@@ -236,9 +236,10 @@ if (os_type == os_android || os_type == os_ios)
 }
 else
 {
-	global.gui_scale_modifier = 3;
+	global.gui_scale_modifier = 4;
 }
 
+global.resolution_setting = 0; /* Preset resolution settings. 0 = Custom, 1 = 480x270, 2 = 960x540, 3 = 1024x576, 4 = 1280x720, 5 = 1600x900, 6 = 1920x1080 */
 
 global.part_limit_text_alpha = 0; /* The text showing part limit should fade out when you aren't placing or erasing objects */
 global.part_limit = 0; /* How many objects are currently placed in the level editor */

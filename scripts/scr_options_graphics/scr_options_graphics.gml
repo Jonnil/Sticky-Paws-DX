@@ -12,13 +12,15 @@ function scr_options_graphics()
 		{
 			var fullscreen_mode_y = 48;
 			var resolution_setting_y = fullscreen_mode_y + 48;
-			var interpolate_y = resolution_setting_y + 48;
+			var gui_scale_modifier_y = resolution_setting_y + 48 + 20;
+			var interpolate_y = gui_scale_modifier_y + 48 + 10;
 		}
 		else
 		{
 			var fullscreen_mode_y = -999;
 			var resolution_setting_y = 48;
-			var interpolate_y = resolution_setting_y + 48;
+			var gui_scale_modifier_y = resolution_setting_y + 48 + 20;
+			var interpolate_y = gui_scale_modifier_y + 48 + 10;
 		}
 		var show_fps_y = interpolate_y + 48;
 		var show_fps_real_y = show_fps_y + 48;
@@ -37,8 +39,7 @@ function scr_options_graphics()
 		var background_brightness_menu_y = background_brightness_gameplay_y + 68;
 		var reset_level_zoom_when_going_back_to_map_y = background_brightness_menu_y + 48;
 		var reset_world_map_zoom_when_going_back_to_map_y = reset_level_zoom_when_going_back_to_map_y + 48;
-		var gui_scale_modifier_y = reset_world_map_zoom_when_going_back_to_map_y + 48 + 10;
-		var customize_button_design_y = gui_scale_modifier_y + 48 + 10;
+		var customize_button_design_y = reset_world_map_zoom_when_going_back_to_map_y + 48 + 10;
 		
 		#region /* Fullscreen toggle */
 		if (os_type != os_ios)
@@ -109,12 +110,44 @@ function scr_options_graphics()
 		
 		draw_menu_checkmark(386, reset_level_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset Level Zoom When Going Back To Map"), "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map);
 		draw_menu_checkmark(386, reset_world_map_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset World Map Zoom When Going Back To Map"), "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map);
-		
-		draw_menu_dropdown(420, gui_scale_modifier_y + menu_y_offset, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, "*0.7", "*0.8", "*0.9", "*1", "*1.1", "*1.2", "*1.3");
-		var resolution_setting_var = 0;
-		draw_menu_dropdown(420, resolution_setting_y + menu_y_offset, l10n_text("Resolution"), "resolution_setting", resolution_setting_var, "480 x 270", "960 x 540", "1024 x 576", "1280 x 720", "1600 x 900", "1920 x 1080");
-		
 		draw_menu_button(420, customize_button_design_y + menu_y_offset, l10n_text("Customize Button Design"), "customize_button_design", "customize_button_design_color");
+		
+		draw_menu_dropdown(420, gui_scale_modifier_y + menu_y_offset, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, "*0.6", "*0.7", "*0.8", "*0.9", "*1", "*1.1", "*1.2", "*1.3", "*1.4", "*2.5");
+		
+		if (menu == "resolution_setting")
+		&& (window_get_fullscreen() == false)
+		{
+			if (key_a_pressed)
+			|| (key_b_pressed)
+			{
+				if (global.resolution_setting == 1){global.gui_scale_modifier = 9;display_set_gui_size(480, 270);window_set_size(480, 270);}else
+				if (global.resolution_setting == 2){global.gui_scale_modifier = 8;display_set_gui_size(960, 540);window_set_size(960, 540);}else
+				if (global.resolution_setting == 3){global.gui_scale_modifier = 7;display_set_gui_size(1024, 576);window_set_size(1024, 576);}else
+				if (global.resolution_setting == 4){global.gui_scale_modifier = 6;display_set_gui_size(1280, 720);window_set_size(1280, 720);}else
+				if (global.resolution_setting == 5){global.gui_scale_modifier = 5;display_set_gui_size(1600, 900);window_set_size(1600, 900);}else
+				if (global.resolution_setting == 6){global.gui_scale_modifier = 4;display_set_gui_size(1920, 1080);window_set_size(1920, 1080);}
+			}
+		}
+		if (open_dropdown == false)
+		{
+			if (window_get_width() == 480 && window_get_height() == 270){global.resolution_setting = 1;}else
+			if (window_get_width() == 960 && window_get_height() == 540){global.resolution_setting = 2;}else
+			if (window_get_width() == 1024 && window_get_height() == 576){global.resolution_setting = 3;}else
+			if (window_get_width() == 1280 && window_get_height() == 720){global.resolution_setting = 4;}else
+			if (window_get_width() == 1600 && window_get_height() == 900){global.resolution_setting = 5;}else
+			if (window_get_width() == 1920 && window_get_height() == 1080){global.resolution_setting = 6;}else
+			{global.resolution_setting = 0;}
+		}
+		if (window_get_fullscreen() == false)
+		{
+			draw_menu_dropdown(420, resolution_setting_y + menu_y_offset, l10n_text("Resolution"), "resolution_setting", global.resolution_setting, l10n_text("Custom") + " " + string(window_get_width()) + "x" + string(window_get_height()), "480x270", "960x540", "1024x576", "1280x720", "1600x900", "1920x1080");
+		}
+		else
+		{
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_center);
+			scr_draw_text_outlined(500, resolution_setting_y + menu_y_offset + 20, l10n_text("Fullscreen Resolution") + ": " + string(window_get_width()) + "x" + string(window_get_height()), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		}
 		
 		#region /* Navigate */
 			
@@ -133,11 +166,128 @@ function scr_options_graphics()
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				menu = "interpolate";
+				if (window_get_fullscreen() == false)
+				{
+					menu = "resolution_setting";
+				}
+				else
+				{
+					menu = "gui_scale_modifier";
+				}
 				menu_delay = 3;
 			}
 		}
 		#endregion /* Navigate Fullscreen Mode END */
+		
+		else
+		
+		#region /* Navigate Resolution Setting */
+		if (menu == "resolution_setting")
+		{
+			menu_cursor_y_position = resolution_setting_y;
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown == false)
+			{
+				if (os_type != os_ios)
+				&& (os_type != os_android)
+				{
+					if (global.enable_options_for_pc)
+					{
+						menu = "fullscreen_mode";
+					}
+					else
+					{
+						menu = "customize_button_design";
+					}
+					menu_delay = 3;
+				}
+				else
+				{
+					menu = "background_brightness_gameplay";
+					menu_delay = 3;
+				}
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown == false)
+			{
+				menu = "gui_scale_modifier";
+				menu_delay = 3;
+			}
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.resolution_setting > 0)
+			{
+				global.resolution_setting --;
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.resolution_setting < 6)
+			{
+				global.resolution_setting ++;
+				menu_delay = 3;
+			}
+		}
+		#endregion /* Navigate Resolution Setting END */
+		
+		else
+		
+		#region /* GUI Scale Modifier */
+		if (menu == "gui_scale_modifier")
+		{
+			menu_cursor_y_position = gui_scale_modifier_y + 100;
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown == false)
+			{
+				if (window_get_fullscreen() == false)
+				{
+					menu = "resolution_setting";
+				}
+				else
+				if (global.enable_options_for_pc)
+				{
+					menu = "fullscreen_mode";
+				}
+				else
+				{
+					menu = "customize_button_design";
+				}
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown == false)
+			{
+				menu = "interpolate";
+				menu_delay = 3;
+			}
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.gui_scale_modifier > 0)
+			{
+				global.gui_scale_modifier --;
+				menu_delay = 3;
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (open_dropdown)
+			&& (global.gui_scale_modifier < 9)
+			{
+				global.gui_scale_modifier ++;
+				menu_delay = 3;
+			}
+		}
+		#endregion /* GUI Scale Modifyer END */
 		
 		else
 		
@@ -149,24 +299,8 @@ function scr_options_graphics()
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				if (os_type != os_ios)
-				&& (os_type != os_android)
-				{
-					if (global.enable_options_for_pc)
-					{
-						menu = "fullscreen_mode";
-					}
-					else
-					{
-						menu = "reset_world_map_zoom_when_going_back_to_map";
-					}
-					menu_delay = 3;
-				}
-				else
-				{
-					menu = "background_brightness_gameplay";
-					menu_delay = 3;
-				}
+				menu = "gui_scale_modifier";
+				menu_delay = 3;
 			}
 			else
 			if (key_down)
@@ -567,52 +701,13 @@ function scr_options_graphics()
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				menu = "gui_scale_modifier";
+				menu = "customize_button_design";
 				menu_delay = 3;
 			}
 		}
 		#endregion /* Reset world map zoom when going back to map END */
 			
 		else
-			
-		#region /* GUI Scale Modifier */
-		if (menu == "gui_scale_modifier")
-		{
-			menu_cursor_y_position = gui_scale_modifier_y + 100;
-			if (key_up)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
-			{
-				menu = "reset_world_map_zoom_when_going_back_to_map";
-				menu_delay = 3;
-			}
-			else
-			if (key_down)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
-			{
-				menu = "customize_button_design";
-				menu_delay = 3;
-			}
-			if (key_up)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown)
-			&& (global.gui_scale_modifier > 0)
-			{
-				global.gui_scale_modifier --;
-				menu_delay = 3;
-			}
-			else
-			if (key_down)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown)
-			&& (global.gui_scale_modifier < 6)
-			{
-				global.gui_scale_modifier ++;
-				menu_delay = 3;
-			}
-		}
-		#endregion /* GUI Scale Modifyer END */
 		
 		if (menu == "customize_button_design")
 		&& (open_dropdown == false)
@@ -621,7 +716,7 @@ function scr_options_graphics()
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				menu = "gui_scale_modifier";
+				menu = "reset_world_map_zoom_when_going_back_to_map";
 				menu_delay = 3;
 			}
 			else
