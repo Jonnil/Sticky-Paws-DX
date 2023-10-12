@@ -1,4 +1,5 @@
 if (sprite_index == spr_warp_box)
+|| (sprite_index == spr_warp_box_one_use)
 {
 	image_blend = make_color_hsv((current_time * 0.37) mod 255, 127, 255);
 }
@@ -20,14 +21,15 @@ if (open_door)
 			y = instance_nearest(x, y, obj_door).y;
 		}
 		if (instance_nearest(x, y, obj_door).sprite_index == spr_warp_box)
+		|| (instance_nearest(x, y, obj_door).sprite_index == spr_warp_box_one_use)
 		{
-			image_alpha = 0;
+			image_alpha = lerp(image_alpha, 0, 0.3);
 		}
 	}
 	instance_nearest(x, y, obj_camera).xx = x;
 	instance_nearest(x, y, obj_camera).yy = y;
-	door_x = lerp(door_x, +32, 0.05);
-	door_xscale = lerp(door_xscale, -1, 0.05);
+	door_x = lerp(door_x, +32, 0.1);
+	door_xscale = lerp(door_xscale, -1, 0.1);
 	if (obj_camera.iris_xscale <= 0.02)
 	{
 		global.player_can_go_outside_view = true;
@@ -42,11 +44,11 @@ if (open_door)
 		instance_nearest(x, y, obj_camera).xx = second_x;
 		instance_nearest(x, y, obj_camera).yy = second_y;
 		instance_nearest(x, y, obj_player).can_move = true;
-		instance_nearest(x, y, obj_player).image_alpha = 1;
 		instance_nearest(x, y, obj_player).x = second_x;
 		instance_nearest(x, y, obj_player).y = second_y;
 		instance_nearest(x, y, obj_player).xx_heart = second_x;
 		instance_nearest(x, y, obj_player).yy_heart = second_y;
+		instance_nearest(x, y, obj_player).image_alpha = 1;
 		open_door = false;
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{
@@ -63,7 +65,7 @@ if (open_door)
 				open_door = false;
 			}
 		}
-		if (sprite_index == spr_warp_box)
+		if (destroy_door_after_use)
 		{
 			instance_destroy(); /* Warp Bloxs gets destroyed after one use */
 		}
@@ -71,6 +73,6 @@ if (open_door)
 }
 else
 {
-	door_x = lerp(door_x, 0, 0.05);
-	door_xscale = lerp(door_xscale, 1, 0.05);
+	door_x = lerp(door_x, 0, 0.1);
+	door_xscale = lerp(door_xscale, 1, 0.1);
 }

@@ -11,7 +11,7 @@ if (show_remaining_jumps == false)
 		}
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{
-			lives ++;
+			lives = clamp(lives ++, 0, 99);
 			audio_sound_pitch(snd_1up, 1);
 			scr_audio_play(snd_1up, volume_source.sound);
 			if (global.character_select_in_this_menu == "main_game")
@@ -36,7 +36,7 @@ if (show_remaining_jumps == false)
 		}
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{
-			lives ++;
+			lives = clamp(lives ++, 0, 99);
 			audio_sound_pitch(snd_1up, 1);
 			scr_audio_play(snd_1up, volume_source.sound);
 		}
@@ -44,7 +44,7 @@ if (show_remaining_jumps == false)
 		time_source_start(time_source);
 		var time_source = time_source_create(time_source_game, 20, time_source_units_frames, function()
 		{
-			lives ++;
+			lives = clamp(lives ++, 0, 99);
 			audio_sound_pitch(snd_1up, 1.1);
 			scr_audio_play(snd_1up, volume_source.sound);
 			if (global.character_select_in_this_menu == "main_game")
@@ -69,7 +69,7 @@ if (show_remaining_jumps == false)
 		}
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{
-			lives ++;
+			lives = clamp(lives ++, 0, 99);
 			audio_sound_pitch(snd_1up, 1);
 			scr_audio_play(snd_1up, volume_source.sound);
 		}
@@ -77,7 +77,7 @@ if (show_remaining_jumps == false)
 		time_source_start(time_source);
 		var time_source = time_source_create(time_source_game, 20, time_source_units_frames, function()
 		{
-			lives ++;
+			lives = clamp(lives ++, 0, 99);
 			audio_sound_pitch(snd_1up, 1.1);
 			scr_audio_play(snd_1up, volume_source.sound);
 		}
@@ -85,7 +85,7 @@ if (show_remaining_jumps == false)
 		time_source_start(time_source);
 		var time_source = time_source_create(time_source_game, 30, time_source_units_frames, function()
 		{
-			lives ++;
+			lives = clamp(lives ++, 0, 99);
 			audio_sound_pitch(snd_1up, 1.2);
 			scr_audio_play(snd_1up, volume_source.sound);
 			if (global.character_select_in_this_menu == "main_game")

@@ -1,4 +1,5 @@
 if (sprite_index == spr_warp_box)
+|| (sprite_index == spr_warp_box_one_use)
 {
 	draw_self();
 }

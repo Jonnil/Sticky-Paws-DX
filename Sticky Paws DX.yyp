@@ -3210,6 +3210,7 @@
     {"id":{"name":"scr_player_move_triple_jump","path":"scripts/scr_player_move_triple_jump/scr_player_move_triple_jump.yy",},},
     {"id":{"name":"spr_cloud_block","path":"sprites/spr_cloud_block/spr_cloud_block.yy",},},
     {"id":{"name":"obj_hp_pickup","path":"objects/obj_hp_pickup/obj_hp_pickup.yy",},},
+    {"id":{"name":"spr_warp_box_one_use","path":"sprites/spr_warp_box_one_use/spr_warp_box_one_use.yy",},},
     {"id":{"name":"scr_x_to_gui","path":"scripts/scr_x_to_gui/scr_x_to_gui.yy",},},
     {"id":{"name":"scr_options_graphics","path":"scripts/scr_options_graphics/scr_options_graphics.yy",},},
     {"id":{"name":"scr_retriggerable_delay","path":"scripts/scr_retriggerable_delay/scr_retriggerable_delay.yy",},},

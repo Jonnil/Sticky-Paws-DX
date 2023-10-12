@@ -5,7 +5,7 @@ if (have_heart_balloon)
 	yy_heart = lerp(yy_heart, y - 64, 0.05);
 	draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
 	draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
-	draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, point_direction(xx_heart, yy_heart, xx, yy) + 90, c_white, 1);
 }
 #endregion /* Heart above head END */
 

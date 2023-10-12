@@ -10,7 +10,7 @@ y = clamp(y, view_y - sprite_height, view_y + view_height + (sprite_height * 2))
 #region /* Bottomless Pit */
 /* This code needs to be in Outside View event, Outside Room event only runs code only one time when moved outside the room */
 /* Don't stop horizontal speed, as it feels awkward when falling down */
-if (bbox_top >= room_height + sprite_height)
+if (bbox_top >= room_height + 10)
 && (!goal)
 && (!global.goal_active)
 {

@@ -807,6 +807,20 @@ function scr_modify_objects_in_level_editor()
 					}
 					#endregion /* Change Water Level Change END */
 					
+					else
+					
+					#region /* Change Warp Box */
+					if (object == LEVEL_OBJECT_ID.ID_WARP_BOX)
+					{
+						object = LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE)
+					{
+						object = LEVEL_OBJECT_ID.ID_WARP_BOX;
+					}
+					#endregion /* Change Warp Box END */
+					
 					#region /* Update variables */
 					if (global.actually_play_edited_level == false)
 					{

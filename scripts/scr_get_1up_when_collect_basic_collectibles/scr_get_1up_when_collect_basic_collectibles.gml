@@ -10,7 +10,7 @@ function get_1up_when_collect_basic_collectibles()
 {
 	
 	#region /* Get 1-up if you get 100 basic collectibles */
-	var basic_collectible_threshold = 100;
+	var basic_collectible_threshold = 99;
 	if (global.basic_collectibles >= basic_collectible_threshold)
 	{
 		global.basic_collectibles = 0;

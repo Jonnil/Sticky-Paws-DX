@@ -18,12 +18,12 @@ if (image_alpha > 0)
 		draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
 		if (taken_damage % 2 == 0)
 		{
-		    draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, image_alpha);
+		    draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, point_direction(xx_heart, yy_heart, xx, yy) + 90, c_white, image_alpha);
 		}
 		else
 		{
 		    draw_set_alpha(image_alpha * 0.3);
-		    draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, 0, c_white, image_alpha * 0.3);
+		    draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, point_direction(xx_heart, yy_heart, xx, yy) + 90, c_white, image_alpha * 0.3);
 		}
 	}
 	
