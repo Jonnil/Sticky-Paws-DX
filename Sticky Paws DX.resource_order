@@ -313,6 +313,7 @@
     {"name":"scr_config_load","order":3,"path":"scripts/scr_config_load/scr_config_load.yy",},
     {"name":"snd_boss_invulnerable","order":11,"path":"sounds/snd_boss_invulnerable/snd_boss_invulnerable.yy",},
     {"name":"scr_y_to_gui","order":50,"path":"scripts/scr_y_to_gui/scr_y_to_gui.yy",},
+    {"name":"scr_draw_information_menu","order":27,"path":"scripts/scr_draw_information_menu/scr_draw_information_menu.yy",},
     {"name":"obj_finger_indicator","order":15,"path":"objects/obj_finger_indicator/obj_finger_indicator.yy",},
     {"name":"spr_credits","order":105,"path":"sprites/spr_credits/spr_credits.yy",},
     {"name":"scr_intercept_course","order":47,"path":"scripts/scr_intercept_course/scr_intercept_course.yy",},

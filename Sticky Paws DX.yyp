@@ -3318,6 +3318,7 @@
     {"id":{"name":"scr_config_load","path":"scripts/scr_config_load/scr_config_load.yy",},},
     {"id":{"name":"snd_boss_invulnerable","path":"sounds/snd_boss_invulnerable/snd_boss_invulnerable.yy",},},
     {"id":{"name":"scr_y_to_gui","path":"scripts/scr_y_to_gui/scr_y_to_gui.yy",},},
+    {"id":{"name":"scr_draw_information_menu","path":"scripts/scr_draw_information_menu/scr_draw_information_menu.yy",},},
     {"id":{"name":"obj_finger_indicator","path":"objects/obj_finger_indicator/obj_finger_indicator.yy",},},
     {"id":{"name":"spr_credits","path":"sprites/spr_credits/spr_credits.yy",},},
     {"id":{"name":"scr_intercept_course","path":"scripts/scr_intercept_course/scr_intercept_course.yy",},},

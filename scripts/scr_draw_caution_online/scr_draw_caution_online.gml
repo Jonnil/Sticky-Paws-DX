@@ -58,6 +58,14 @@ function scr_draw_caution_online()
 				ini_write_string("config", "caution_online_do_not_show", true);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
+			if (global.player_can_play[1] == false)
+			&& (global.player_can_play[2] == false)
+			&& (global.player_can_play[3] == false)
+			&& (global.player_can_play[4] == false)
+			{
+				global.player_can_play[1] = true;
+			}
+			information_menu_open = 0;
 			menu = caution_online_takes_you_to;
 			menu_delay = 3;
 		}

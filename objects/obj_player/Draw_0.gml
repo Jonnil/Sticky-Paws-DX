@@ -339,7 +339,7 @@ if (image_alpha > 0)
 			{
 				if (invincible_timer > 80)
 				{
-					invincible_blend = make_color_hsv((current_time * 0.37) mod 255, 127, 255);
+					invincible_blend = make_color_hsv((current_time * 0.1) mod 255, 127, 255);
 				}
 				else
 				{

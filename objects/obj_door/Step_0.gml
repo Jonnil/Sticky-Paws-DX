@@ -1,7 +1,7 @@
 if (sprite_index == spr_warp_box)
 || (sprite_index == spr_warp_box_one_use)
 {
-	image_blend = make_color_hsv((current_time * 0.37) mod 255, 127, 255);
+	image_blend = make_color_hsv((current_time * 0.1) mod 255, 127, 255);
 }
 
 if (open_door)
