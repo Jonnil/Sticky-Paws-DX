@@ -12,11 +12,12 @@ function scr_draw_information_menu()
 			instance_destroy(obj_credits);
 		}
 		
-		draw_set_alpha(0.9);
+		draw_set_alpha(0.5);
 		var information_background_color = make_color_hsv((current_time * 0.01) mod 255, 127, 255);
-		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height() * 0.5, information_background_color, information_background_color, c_black, c_black, false);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, display_get_gui_height() * 0.5 + 1, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height() * 0.75, information_background_color, information_background_color, c_black, c_black, false);
+		draw_set_alpha(0.5);
+		draw_rectangle_color(0, display_get_gui_height() * 0.75 + 1, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
 		if (key_left)

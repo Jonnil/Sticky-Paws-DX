@@ -15,6 +15,21 @@ function scr_select_custom_level_menu()
 		var max_custom_levels_reached = false;
 	}
 	
+	/* If there isn't any thumbnails loaded at all, then that is a mistake, so go back so you could reload the custom levels and the thumbnails should be corrected */
+	if (ds_list_size(global.thumbnail_sprite) <= 0)
+	{
+		can_input_level_name = false;
+		menu_delay = 3;
+		open_sub_menu = false;
+		show_level_editor_corner_menu = true;
+		can_navigate = true;
+		select_custom_level_menu_open = false;
+		level_editor_template_select = false;
+		global.select_level_index = 0;
+		lerp_on = true;
+		menu = "level_editor";
+	}
+	
 	/* Never have the select level index under 0, if it does, set it to 0 */
 	if (global.select_level_index <= -1)
 	{
