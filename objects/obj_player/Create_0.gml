@@ -496,6 +496,7 @@ pressing_opposite_direction_to_drop_off_from_wall = 0;
 roll = false;
 star_image_index = 0;
 stick_to_wall = false;
+wall_climb_slippy = 0; /* How much you slip off Ice Blocks when you climb them */
 wall_jump = false;
 wall_jump_setting = 1;
 wall_jump_time = 10;

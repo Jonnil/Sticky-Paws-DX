@@ -537,12 +537,12 @@ if (global.arcade_mode == false && in_settings == false)
 		}
 		
 		/* YouTube button */
-		draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, display_get_gui_width() - (32 * 4), display_get_gui_height() - 32, 16, 0, 0.25, 0.25, 32, 32, "", "link_youtube", "link_youtube", false);
+		draw_menu_button_sprite(global.resource_pack_sprite_logo_youtube, display_get_gui_width() - (32 * 4), display_get_gui_height() - 32, 16, 0, 0.25, 0.25, 32, 32, "", "link_youtube", "link_youtube", false);
 		if (menu == "link_youtube")
 		{
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64 - 32, l10n_text("Subscribe to our YouTube Channel!"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, string(global.link_to_discord), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, string(global.link_to_youtube), global.default_text_size, c_black, c_white, 1);
 			
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -550,7 +550,7 @@ if (global.arcade_mode == false && in_settings == false)
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				url_open(string(global.link_to_discord));
+				url_open(string(global.link_to_youtube));
 				menu_delay = 3;
 			}
 		}

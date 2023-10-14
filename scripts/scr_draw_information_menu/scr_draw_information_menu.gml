@@ -137,6 +137,19 @@ function scr_draw_information_menu()
 				menu_delay = 3;
 				menu = "whats_new";
 			}
+			else
+			if (menu == "information_back")
+			&& (information_menu_open == 3)
+			{
+				menu_delay = 3;
+				menu = "backup_open_custom_levels_folder";
+			}
+			else
+			if (menu == "backup_open_custom_levels_folder")
+			{
+				menu_delay = 3;
+				menu = "backups";
+			}
 		}
 		if (key_down)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -202,6 +215,18 @@ function scr_draw_information_menu()
 			}
 			else
 			if (menu == "changelog_history")
+			{
+				menu_delay = 3;
+				menu = "information_back";
+			}
+			else
+			if (menu == "backups")
+			{
+				menu_delay = 3;
+				menu = "backup_open_custom_levels_folder";
+			}
+			else
+			if (menu == "backup_open_custom_levels_folder")
 			{
 				menu_delay = 3;
 				menu = "information_back";
@@ -401,15 +426,38 @@ function scr_draw_information_menu()
 		else
 		if (information_menu_open == 2) /* What's New tab */
 		{
+			var build_version_y = 32 * 2;
+			var whats_new_date_y = 32 * 3;
+			var changelog_history_y = 32 * 4;
+			var whats_new_text_y = 32 * 5;
+			
 			draw_set_halign(fa_center);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("Build version") + ": v" + string(scr_get_build_date()) + " " + l10n_text("is here!"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, build_version_y, l10n_text("Build version") + ": v" + string(scr_get_build_date()) + " " + l10n_text("is here!"), global.default_text_size, c_black, c_white, 1);
+			var day = date_get_day(GM_build_date);
+			var month_number = date_get_month(GM_build_date);
+			if (month_number == 1){var month = l10n_text("January");}else
+			if (month_number == 2){var month = l10n_text("February");}else
+			if (month_number == 3){var month = l10n_text("March");}else
+			if (month_number == 4){var month = l10n_text("April");}else
+			if (month_number == 5){var month = l10n_text("May");}else
+			if (month_number == 6){var month = l10n_text("June");}else
+			if (month_number == 7){var month = l10n_text("July");}else
+			if (month_number == 8){var month = l10n_text("August");}else
+			if (month_number == 9){var month = l10n_text("September");}else
+			if (month_number == 10){var month = l10n_text("October");}else
+			if (month_number == 11){var month = l10n_text("November");}else
+			if (month_number == 12){var month = l10n_text("December");}
+			var year = date_get_year(GM_build_date);
+			var hour = date_get_hour(GM_build_date);
+			var minute = date_get_minute(GM_build_date);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, whats_new_date_y, string(day) + "/" + string(month) + "/" + string(year) + " (" + string(hour) + ":" + string(minute) + ")", global.default_text_size, c_black, c_white, 1);
 			
 			if (global.link_to_changelog_history != "")
 			{
-				draw_menu_button_sprite(spr_menu_button, string_width(l10n_text("Changelog History") + ":"), 32 * 3 - 8, 0, 0, 1.9, 1, 370 * 1.9, 42, string(global.link_to_changelog_history), "changelog_history", "changelog_history");
+				draw_menu_button_sprite(spr_menu_button, string_width(l10n_text("Changelog History") + ":"), changelog_history_y - 8, 0, 0, 1.9, 1, 370 * 1.9, 42, string(global.link_to_changelog_history), "changelog_history", "changelog_history");
 				draw_set_halign(fa_left);
-				scr_draw_text_outlined(32, 32 * 3 + 10, l10n_text("Changelog History") + ":", global.default_text_size, c_black, c_white, 1);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, string_width(l10n_text("Changelog History") + ":"), 32 * 3 - 8, string_width(l10n_text("Changelog History") + ":") + (370 * 1.9), 32 * 4 - 8))
+				scr_draw_text_outlined(32, changelog_history_y + 10, l10n_text("Changelog History") + ":", global.default_text_size, c_black, c_white, 1);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, string_width(l10n_text("Changelog History") + ":"), changelog_history_y - 8, string_width(l10n_text("Changelog History") + ":") + (370 * 1.9), changelog_history_y + 42 - 8))
 				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (menu == "changelog_history")
@@ -423,7 +471,7 @@ function scr_draw_information_menu()
 			
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_top);
-			scr_draw_text_outlined(32, 32 * 5, global.whats_new, global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, whats_new_text_y, global.whats_new, global.default_text_size, c_black, c_white, 1);
 			draw_set_valign(fa_middle);
 		}
 		else
@@ -436,6 +484,27 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(32, 32 * 4, l10n_text("To prevent losing your levels you should upload levels and then save\nyour level IDs somewhere safe"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 7, l10n_text("The game includes an autosave feature that automatically saves your level every 5 minutes"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 8, l10n_text("It also saves your level every time you playtest"), global.default_text_size, c_black, c_white, 1);
+			if (global.enable_options_for_pc)
+			{
+				scr_draw_text_outlined(32, 32 * 10, l10n_text("Your levels are saved in this folder") + ":", global.default_text_size, c_black, c_white, 1);
+				
+				#region /* Open Custom Levels Folder */
+				var draw_open_custom_levels_folder_y = 32 * 11;
+				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "backup_open_custom_levels_folder", "backup_open_custom_levels_folder");
+				draw_sprite_ext(spr_icons_folder, 0, 32 + 16, draw_open_custom_levels_folder_y + 21, 1, 1, 0, c_white, 1);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, draw_open_custom_levels_folder_y + 2, 32 + 370, draw_open_custom_levels_folder_y + 41))
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (menu == "backup_open_custom_levels_folder")
+				&& (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					scr_open_folder(game_save_id + "\custom_levels")
+				}
+				#endregion /* Open Custom Levels Folder END */
+				
+			}
 		}
 		else
 		if (information_menu_open == 4) /* Credits tab */ 

@@ -12,6 +12,7 @@ function scr_load_resource_pack_sprite()
 	#region /* Delete sprites before loading new sprites */
 	if (room != rm_splash_screen)
 	{
+		if (global.resource_pack_sprite_logo_youtube > 0){global.resource_pack_sprite_logo_youtube = spr_noone;}
 		if (global.resource_pack_sprite_logo_discord > 0){global.resource_pack_sprite_logo_discord = spr_noone;}
 		if (global.resource_pack_sprite_logo_gamebanana > 0){global.resource_pack_sprite_logo_gamebanana = spr_noone;}
 		if (global.resource_pack_sprite_logo_instagram > 0){global.resource_pack_sprite_logo_instagram = spr_noone;}
@@ -83,6 +84,7 @@ function scr_load_resource_pack_sprite()
 		{
 			ini_open(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
 		}
+		global.resource_pack_sprite_logo_youtube = scr_initialize_resource_pack_sprite("logo_youtube", global.resource_pack_sprite_logo_youtube);
 		global.resource_pack_sprite_logo_discord = scr_initialize_resource_pack_sprite("logo_discord", global.resource_pack_sprite_logo_discord);
 		global.resource_pack_sprite_logo_gamebanana = scr_initialize_resource_pack_sprite("logo_gamebanana", global.resource_pack_sprite_logo_gamebanana);
 		global.resource_pack_sprite_logo_instagram = scr_initialize_resource_pack_sprite("logo_instagram", global.resource_pack_sprite_logo_instagram);

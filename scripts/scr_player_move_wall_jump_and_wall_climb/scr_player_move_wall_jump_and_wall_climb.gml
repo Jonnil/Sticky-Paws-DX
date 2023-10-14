@@ -96,9 +96,10 @@ function scr_player_move_wall_jump_and_wall_climb()
 		    if (on_ground)
 		    {
 		        stick_to_wall = false;
+				wall_climb_slippy = 0;
 				audio_stop_sound(snd_skiddingvertical);
 		    }
-    
+			
 		    if (!crouch && !ground_pound && !ledge_grab)
 		    {
 		        if (vspeed > 0 && position_meeting(x + 18 * image_xscale, bbox_top, obj_wall))
@@ -125,16 +126,17 @@ function scr_player_move_wall_jump_and_wall_climb()
 		            (!place_meeting(x + 1, y, obj_wall) && image_xscale > 0))
 		        {
 		            stick_to_wall = false;
+					wall_climb_slippy = 0;
 		            audio_stop_sound(snd_skiddingvertical);
 		        }
 		    }
 			
-		    /* Wall Climb */
+		    #region /* Wall Climb */
 		    if (allow_wall_climb || place_meeting(x, y, obj_wall_climb_panel))
 		    {
 		        dive = false;
 		        last_standing_y = y;
-        
+				
 		        if (key_down && !key_up && taken_damage <= taken_damage_freezetime)
 		        {
 		            if (!audio_is_playing(snd_move_ivy))
@@ -186,8 +188,24 @@ function scr_player_move_wall_jump_and_wall_climb()
 		            vspeed = 0;
 		            gravity = 0;
 		        }
+				
+				#region /* Climbing Ice Blocks makes you slip off */
+				if (place_meeting(x - 1, y, obj_ice_block))
+				&& (image_xscale < 0)
+				|| (place_meeting(x + 1, y, obj_ice_block))
+				&& (image_xscale > 0)
+				{
+					if (wall_climb_slippy < 16)
+					{
+						wall_climb_slippy += 0.1;
+					}
+					vspeed += wall_climb_slippy;
+				}
+				#endregion /* Climbing Ice Blocks makes you slip off END */
+				
 		    }
-    
+			#endregion /* Wall Climb END */
+			
 		    /* When pressing the jump button and besides the wall, do the wall jump */
 		    if ((key_jump && place_meeting(x + 1, y, obj_wall) && !place_meeting(x, y + 1, obj_wall) &&
 		         !position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) &&
@@ -225,6 +243,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		            wall_jump = wall_jump_time;
 		            crouch = false;
 		            stick_to_wall = false;
+					wall_climb_slippy = 0;
 					audio_stop_sound(snd_skiddingvertical);
 		            ledge_grab_jump = false;
 		            speed_max = 8;
@@ -247,6 +266,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		    if (vspeed >= 0)
 		    {
 		        stick_to_wall = false;
+				wall_climb_slippy = 0;
 				audio_stop_sound(snd_skiddingvertical);
 		    }
 		    else if (vspeed < 0)
@@ -284,6 +304,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		    vspeed = 1;
 		    midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 		    stick_to_wall = false;
+			wall_climb_slippy = 0;
 			audio_stop_sound(snd_skiddingvertical);
 		    crouch = false;
 		}
@@ -376,6 +397,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		            wall_jump = wall_jump_time;
 		            crouch = false;
 		            stick_to_wall = false;
+					wall_climb_slippy = 0;
 					audio_stop_sound(snd_skiddingvertical);
 		            ledge_grab_jump = false;
 		            speed_max = 8;
@@ -394,6 +416,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 	else
 	{
 		stick_to_wall = false;
+		wall_climb_slippy = 0;
 	}
 	if (drop_off_wall_climb > 0)
 	{
