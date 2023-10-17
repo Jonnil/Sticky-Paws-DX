@@ -49,6 +49,7 @@ if (global.actually_play_edited_level == false)
 			case LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER:
 				second_x = x;
 				second_y = global.leveleditor_y;
+				break;
 			default:
 				second_x = 0;
 				second_y = 0;

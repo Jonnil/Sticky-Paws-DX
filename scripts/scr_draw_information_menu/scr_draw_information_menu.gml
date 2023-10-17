@@ -427,12 +427,13 @@ function scr_draw_information_menu()
 		if (information_menu_open == 2) /* What's New tab */
 		{
 			var build_version_y = 32 * 2;
-			var whats_new_date_y = 32 * 3;
-			var changelog_history_y = 32 * 4;
+			var whats_new_date_y = 32 * 2;
+			var changelog_history_y = 32 * 3;
 			var whats_new_text_y = 32 * 5;
 			
-			draw_set_halign(fa_center);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, build_version_y, l10n_text("Build version") + ": v" + string(scr_get_build_date()) + " " + l10n_text("is here!"), global.default_text_size, c_black, c_white, 1);
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(8, build_version_y, l10n_text("Build version") + ": v" + string(scr_get_build_date()) + " " + l10n_text("is here!"), global.default_text_size, c_black, c_white, 1);
+			
 			var day = date_get_day(GM_build_date);
 			var month_number = date_get_month(GM_build_date);
 			if (month_number == 1){var month = l10n_text("January");}else
@@ -450,7 +451,8 @@ function scr_draw_information_menu()
 			var year = date_get_year(GM_build_date);
 			var hour = date_get_hour(GM_build_date);
 			var minute = date_get_minute(GM_build_date);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, whats_new_date_y, string(day) + "/" + string(month) + "/" + string(year) + " (" + string(hour) + ":" + string(minute) + ")", global.default_text_size, c_black, c_white, 1);
+			draw_set_halign(fa_right);
+			scr_draw_text_outlined(display_get_gui_width() - 8, whats_new_date_y, string(day) + "/" + string(month) + "/" + string(year) + " (" + string(hour) + ":" + string(minute) + ")", global.default_text_size, c_black, c_white, 1);
 			
 			if (global.link_to_changelog_history != "")
 			{

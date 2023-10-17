@@ -1,4 +1,4 @@
-function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true, only_big_letter = false)
+function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true, only_big_letter = false, can_enter_illegal_charcters = false)
 {
 	var buttons_x = -185;
 	var buttons_ok_y = +54;
@@ -118,21 +118,24 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	#region /* A file name can't contain any of these characters */
 	if (os_type != os_switch)
 	{
-		if (ord(keyboard_lastchar) != ord("\\"))
-		&& (ord(keyboard_lastchar) != ord("/"))
-		&& (ord(keyboard_lastchar) != ord(":"))
-		&& (ord(keyboard_lastchar) != ord("*"))
-		&& (ord(keyboard_lastchar) != ord("?"))
-		&& (ord(keyboard_lastchar) != ord("\""))
-		&& (ord(keyboard_lastchar) != ord("<"))
-		&& (ord(keyboard_lastchar) != ord(">"))
-		&& (ord(keyboard_lastchar) != ord("|"))
+		if (can_enter_illegal_charcters == false)
 		{
-			what_string_to_edit = keyboard_string;
-		}
-		else
-		{
-			keyboard_string = string_copy(what_string_to_edit, 1, max_characters);
+			if (ord(keyboard_lastchar) != ord("\\"))
+			&& (ord(keyboard_lastchar) != ord("/"))
+			&& (ord(keyboard_lastchar) != ord(":"))
+			&& (ord(keyboard_lastchar) != ord("*"))
+			&& (ord(keyboard_lastchar) != ord("?"))
+			&& (ord(keyboard_lastchar) != ord("\""))
+			&& (ord(keyboard_lastchar) != ord("<"))
+			&& (ord(keyboard_lastchar) != ord(">"))
+			&& (ord(keyboard_lastchar) != ord("|"))
+			{
+				what_string_to_edit = keyboard_string;
+			}
+			else
+			{
+				keyboard_string = string_copy(what_string_to_edit, 1, max_characters);
+			}
 		}
 	}
 	#endregion /* A file name can't contain any of these characters END */
@@ -188,15 +191,18 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			what_string_to_edit = remember_keyboard_string;
 			keyboard_string = remember_keyboard_string; /* Revert back to whatever was already written before entering name input screen */
 		}
-		keyboard_string = string_replace_all(keyboard_string, "\\", "");
-		keyboard_string = string_replace_all(keyboard_string, "/", "");
-		keyboard_string = string_replace_all(keyboard_string, ":", "");
-		keyboard_string = string_replace_all(keyboard_string, "*", "");
-		keyboard_string = string_replace_all(keyboard_string, "?", "");
-		keyboard_string = string_replace_all(keyboard_string, "\"", "");
-		keyboard_string = string_replace_all(keyboard_string, "<", "");
-		keyboard_string = string_replace_all(keyboard_string, ">", "");
-		keyboard_string = string_replace_all(keyboard_string, "|", "");
+		if (can_enter_illegal_charcters == false)
+		{
+			keyboard_string = string_replace_all(keyboard_string, "\\", "");
+			keyboard_string = string_replace_all(keyboard_string, "/", "");
+			keyboard_string = string_replace_all(keyboard_string, ":", "");
+			keyboard_string = string_replace_all(keyboard_string, "*", "");
+			keyboard_string = string_replace_all(keyboard_string, "?", "");
+			keyboard_string = string_replace_all(keyboard_string, "\"", "");
+			keyboard_string = string_replace_all(keyboard_string, "<", "");
+			keyboard_string = string_replace_all(keyboard_string, ">", "");
+			keyboard_string = string_replace_all(keyboard_string, "|", "");
+		}
 		what_string_to_edit_async = "";
 		global.keyboard_virtual_timer = 0;
 		keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
@@ -236,15 +242,18 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			&& (keyboard_check_pressed(vk_enter))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				keyboard_string = string_replace_all(keyboard_string, "\\", "");
-				keyboard_string = string_replace_all(keyboard_string, "/", "");
-				keyboard_string = string_replace_all(keyboard_string, ":", "");
-				keyboard_string = string_replace_all(keyboard_string, "*", "");
-				keyboard_string = string_replace_all(keyboard_string, "?", "");
-				keyboard_string = string_replace_all(keyboard_string, "\"", "");
-				keyboard_string = string_replace_all(keyboard_string, "<", "");
-				keyboard_string = string_replace_all(keyboard_string, ">", "");
-				keyboard_string = string_replace_all(keyboard_string, "|", "");
+				if (can_enter_illegal_charcters == false)
+				{
+					keyboard_string = string_replace_all(keyboard_string, "\\", "");
+					keyboard_string = string_replace_all(keyboard_string, "/", "");
+					keyboard_string = string_replace_all(keyboard_string, ":", "");
+					keyboard_string = string_replace_all(keyboard_string, "*", "");
+					keyboard_string = string_replace_all(keyboard_string, "?", "");
+					keyboard_string = string_replace_all(keyboard_string, "\"", "");
+					keyboard_string = string_replace_all(keyboard_string, "<", "");
+					keyboard_string = string_replace_all(keyboard_string, ">", "");
+					keyboard_string = string_replace_all(keyboard_string, "|", "");
+				}
 				what_string_to_edit_async = "";
 				global.keyboard_virtual_timer = 0;
 				keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking OK */

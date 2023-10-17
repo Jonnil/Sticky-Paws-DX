@@ -821,6 +821,18 @@ function scr_modify_objects_in_level_editor()
 					}
 					#endregion /* Change Warp Box END */
 					
+					else
+					
+					#region /* Readable Sign */
+					if (object == LEVEL_OBJECT_ID.ID_SIGN_READABLE)
+					{
+						if (!instance_exists(obj_leveleditor_modify_object_menu))
+						{
+							instance_create_depth(x, y, 0, obj_leveleditor_modify_object_menu);
+						}
+					}
+					#endregion /* Readable Sign END */
+					
 					#region /* Update variables */
 					if (global.actually_play_edited_level == false)
 					{

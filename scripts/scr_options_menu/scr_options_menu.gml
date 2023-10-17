@@ -2115,7 +2115,6 @@ function scr_options_menu()
 				automatically_pause_when_window_is_unfocused_settings_y = 164;
 			}
 			automatically_pause_when_window_is_unfocused_settings_y = 164;
-			enable_links_demo_y = 164 + (48 * 2);
 			show_timer_settings_y = 164 + (48 * 3);
 			show_defeats_counter_settings_y = 164 + (48 * 4);
 			if (global.enable_ranks)
@@ -2138,7 +2137,6 @@ function scr_options_menu()
 			draw_set_valign(fa_middle);
 		
 			draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, l10n_text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused); /* Automatically Pause When Window Is Unfocused */
-			draw_menu_checkmark(380, enable_links_demo_y, l10n_text("Enable Links at Title Screen"), "enable_links_at_title_screen", global.enable_links);
 			draw_menu_checkmark(380, show_timer_settings_y, l10n_text("Show Timer"), "show_timer_settings", global.show_timer); /* Show Timer */
 			draw_menu_checkmark(380, show_defeats_counter_settings_y, l10n_text("Show Defeats Counter"), "show_defeats_counter_settings", global.show_defeats_counter); /* Show Defeats Counter */
 			if (global.enable_ranks)
@@ -3113,25 +3111,6 @@ function scr_options_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "enable_links_at_title_screen";
-				}
-			}
-			else
-			if (menu == "enable_links_at_title_screen")
-			{
-				if (key_up)
-				&& (open_dropdown == false)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					menu_delay = 3;
-					menu = "automatically_pause_when_window_is_unfocused_settings";
-				}
-				else
-				if (key_down)
-				&& (open_dropdown == false)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					menu_delay = 3;
 					menu = "show_timer_settings";
 				}
 			}
@@ -3143,7 +3122,7 @@ function scr_options_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "enable_links_at_title_screen";
+					menu = "automatically_pause_when_window_is_unfocused_settings";
 				}
 				else
 				if (key_down)
@@ -4287,9 +4266,6 @@ function scr_options_menu()
 		                break;
 					case "automatically_pause_when_window_is_unfocused_settings":
 						global.automatically_pause_when_window_is_unfocused = !global.automatically_pause_when_window_is_unfocused;
-						break;
-					case "enable_links_at_title_screen":
-						global.enable_links = !global.enable_links;
 						break;
 					case "show_timer_settings":
 						global.show_timer = !global.show_timer;

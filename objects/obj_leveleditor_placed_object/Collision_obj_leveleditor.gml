@@ -3,10 +3,15 @@ var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
+if (instance_exists(obj_leveleditor))
+{
+	var modify_object_menu = obj_leveleditor.modify_object_menu;
+}
 
 #region /* Drag Object */
 if (other.set_difficulty_mode == false)
 && (delay > 1)
+&& (modify_object_menu == false)
 {
 	
 	#region /* Click on object to start drag */
@@ -57,34 +62,35 @@ if (other.set_difficulty_mode == false)
 	}
 	#endregion /* Click on object to start drag END */
 	
-	#region /* Release the object */
-	if (mouse_check_button_released(mb_left))
-	|| (other.key_a_released)
-	{
-		if (drag_object)
-		{
-			drag_release_timer = 3;
-			drag_object = 0.5;
-			other.drag_object = false;
-			dragged_from_original_place = false;
-			
-			#region /* Reset depth to normal when releasing object */
-			if (object == LEVEL_OBJECT_ID.ID_WATER)
-			|| (object == LEVEL_OBJECT_ID.ID_BREATHABLE_WATER)
-			|| (object == LEVEL_OBJECT_ID.ID_WATER_SURFACE)
-			{
-				depth = -20;
-			}
-			else
-			{
-				depth = -19;
-			}
-			#endregion /* Reset depth to normal when releasing object END */
-			
-		}
-	}
-	#endregion /* Release the object END */
 }
+
+#region /* Release the object */
+if (mouse_check_button_released(mb_left))
+|| (other.key_a_released)
+{
+	if (drag_object)
+	{
+		drag_release_timer = 3;
+		drag_object = 0.5;
+		other.drag_object = false;
+		dragged_from_original_place = false;
+		
+		#region /* Reset depth to normal when releasing object */
+		if (object == LEVEL_OBJECT_ID.ID_WATER)
+		|| (object == LEVEL_OBJECT_ID.ID_BREATHABLE_WATER)
+		|| (object == LEVEL_OBJECT_ID.ID_WATER_SURFACE)
+		{
+			depth = -20;
+		}
+		else
+		{
+			depth = -19;
+		}
+		#endregion /* Reset depth to normal when releasing object END */
+		
+	}
+}
+#endregion /* Release the object END */
 
 if (drag_release_timer > 0)
 {

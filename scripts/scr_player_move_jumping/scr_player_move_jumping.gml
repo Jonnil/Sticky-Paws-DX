@@ -49,12 +49,10 @@ function scr_player_move_jumping()
 			&& (vspeed == 0)
 			
 			|| (place_meeting(x, y + 1, obj_wall))
-			&& (!place_meeting(x, y - 1, obj_wall))
 			&& (crouch)
 			&& (vspeed == 0)
 			
 			|| (place_meeting(x, y + 1, obj_semisolid_platform))
-			&& (!place_meeting(x, y - 1, obj_semisolid_platform))
 			&& (crouch)
 			&& (vspeed == 0)
 			{
@@ -113,7 +111,6 @@ function scr_player_move_jumping()
 					}
 				}
 				else
-				if (!place_meeting(x, y - 8, obj_wall))
 				{
 					if (!place_meeting(x, y - 8, obj_wall))
 					{

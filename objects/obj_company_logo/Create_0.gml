@@ -383,7 +383,6 @@ scr_set_default_language();
 global.settings_sidebar_menu = "accessibility_settings"; /* Settings sidebar */
 global.show_tutorial_signs = true;
 global.show_new_items_notification = true; /* In level editor, items you haven't used before show a "New" notification on top of the item, but you should be able to set this to not show up */
-global.enable_links = true; /* If links to websites should show up on the title screen or not */
 global.players_can_collide = false;
 global.player_has_entered_goal = false;
 global.pause_room = noone;
@@ -465,6 +464,7 @@ global.quit_to_map = false;
 global.quit_to_title = false;
 global.trigger_demo_ending = 0;
 global.full_level_map_screenshot = false;
+global.appear_block_timer = 0;
 
 global.player1_crouch_toggle = false; /* If crouch toggle for player 1 is true or false (false by default) */
 global.player2_crouch_toggle = false; /* If crouch toggle for player 2 is true or false (false by default) */

@@ -200,7 +200,7 @@ function scr_initialize_object_id_enums()
 		ID_DOOR = 99,
 		ID_WARP_BOX = 991,
 		ID_WARP_BOX_ONE_USE = 992,
-		ID_NPC = 100,
+		ID_SIGN_READABLE = 100,
 		ID_BLACK_WALL = 101,
 		ID_RING = 102,
 		ID_APPEAR_BLOCK_1 = 103,

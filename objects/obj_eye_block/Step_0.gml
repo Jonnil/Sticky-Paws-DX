@@ -12,7 +12,7 @@ else
 
 image_alpha = lerp(image_alpha, image_alpha_lerp, 0.3);
 
-if (image_alpha <= 0)
+if (image_alpha <= 0.1)
 {
 	instance_destroy();
 }

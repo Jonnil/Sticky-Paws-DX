@@ -30,6 +30,17 @@ function scr_load_object_placement_json()
 	if (file_exists(file_path))
 	{
 		var var_struct = {X : 0, Y : 0, O : 0, E : 1, N : 1, H : 1, Q : 0, W : 0, L : 0};
+		/*
+			X = x position
+			Y = y position
+			O = object
+			E = easy difficulty layer
+			N = normal difficulty layer
+			H = hard difficulty layer
+			Q = custom value 1
+			W = custom value 2
+			L = length repetition
+		*/
 		var placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
 		var file = file_text_open_read(file_path)
 		var json_string = file_text_read_string(file);
@@ -164,6 +175,7 @@ function scr_save_custom_level_json()
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_WATER);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BREATHABLE_WATER);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_SIGN_READABLE);
 				
 				if (ds_list_find_index(obj_ids, object) != -1)
 				{

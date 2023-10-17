@@ -510,7 +510,14 @@ function scr_spawn_objects_when_starting_room()
 					}
 				}
 				break;
-				case LEVEL_OBJECT_ID.ID_NPC: instance_create_depth(x, y, 0, obj_npc);break;
+				case LEVEL_OBJECT_ID.ID_SIGN_READABLE: with(instance_create_depth(x, y, 0, obj_sign_readable))
+				{
+					if (instance_exists(obj_leveleditor_placed_object))
+					{
+						sign_text = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
+					}
+				}
+				break;
 				case LEVEL_OBJECT_ID.ID_BLACK_WALL: instance_create_depth(x, y, 0, obj_black_wall);break;
 				case LEVEL_OBJECT_ID.ID_RING: instance_create_depth(x, y, 0, obj_ring);
 				case LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1: with(instance_create_depth(x, y, 0, obj_appear_block_spawner)){appear_cycle = 1;image_blend = c_yellow;}break;

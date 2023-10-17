@@ -1,5 +1,13 @@
 var main_game_y = display_get_gui_height() * 0.5 + 100 + 40;
-var level_editor_y = display_get_gui_height() * 0.5 + 100 + 80;
+var level_editor_y = display_get_gui_height() * 0.5 + 100 + 80 + 2;
+if (global.demo == false)
+{
+	var options_and_quit_y = display_get_gui_height() * 0.5 + 100 + 120 + 1 + 4;
+}
+else
+{
+	var options_and_quit_y = display_get_gui_height() * 0.5 + 100 + 120 - 42 + 1 + 4;
+}
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 
@@ -112,98 +120,12 @@ scr_draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v
 draw_set_halign(fa_center);
 #endregion /* Build Date and Version END */
 
-var link_gamebanana_x = 56;
-var link_instagram_x = 96;
-var link_reddit_x = 136;
-var link_twitter_x = 176;
-var link_wiki_x = 216;
-
-#region /* Links */
-/* Put links underneath build date and version */
-if (global.enable_links)
-{
-	draw_menu_button_sprite(global.resource_pack_sprite_logo_gamebanana, link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_gamebanana", "link_gamebanana", false);
-	draw_menu_button_sprite(global.resource_pack_sprite_logo_instagram, link_instagram_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_instagram", "link_instagram", false);
-	draw_menu_button_sprite(global.resource_pack_sprite_logo_reddit, link_reddit_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_reddit", "link_reddit", false);
-	draw_menu_button_sprite(global.resource_pack_sprite_logo_twitter, link_twitter_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_twitter", "link_twitter", false);
-	if (global.link_to_wiki != "")
-	{
-		draw_menu_button_sprite(global.resource_pack_sprite_logo_wiki, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, +16, -8, 0.25, 0.25, 32, 32, "", "link_wiki", "link_wiki", false);
-	}
-	
-	draw_set_halign(fa_left);
-	if (menu == "link_gamebanana"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_gamebanana), global.default_text_size, c_black, c_white, 1);}
-	if (menu == "link_instagram"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_instagram), global.default_text_size, c_black, c_white, 1);}
-	if (menu == "link_reddit"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_reddit), global.default_text_size, c_black, c_white, 1);}
-	if (menu == "link_twitter"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_twitter), global.default_text_size, c_black, c_white, 1);}
-	if (menu == "link_wiki"){scr_draw_text_outlined(8, display_get_gui_height() - 96 + 34, string(global.link_to_wiki), global.default_text_size, c_black, c_white, 1);}
-	
-	if (key_a_pressed)
-	&& (menu == "link_gamebanana")
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	|| (point_in_rectangle(mouse_get_x, mouse_get_y, link_gamebanana_x, display_get_gui_height() + 8 + version_y_pos, link_gamebanana_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		url_open(string(global.link_to_gamebanana));
-		menu_delay = 3;
-	}
-	else
-	if (key_a_pressed)
-	&& (menu == "link_instagram")
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	|| (point_in_rectangle(mouse_get_x, mouse_get_y, link_instagram_x, display_get_gui_height() + 8 + version_y_pos, link_instagram_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		url_open(string(global.link_to_instagram));
-		menu_delay = 3;
-	}
-	else
-	if (key_a_pressed)
-	&& (menu == "link_reddit")
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	|| (point_in_rectangle(mouse_get_x, mouse_get_y, link_reddit_x, display_get_gui_height() + 8 + version_y_pos, link_reddit_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		url_open(string(global.link_to_reddit));
-		menu_delay = 3;
-	}
-	else
-	if (key_a_pressed)
-	&& (menu == "link_twitter")
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	|| (point_in_rectangle(mouse_get_x, mouse_get_y, link_twitter_x, display_get_gui_height() + 8 + version_y_pos, link_twitter_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		url_open(string(global.link_to_twitter));
-		menu_delay = 3;
-	}
-	else
-	if (global.link_to_wiki != "")
-	&& (key_a_pressed)
-	&& (menu == "link_wiki")
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	|| (global.link_to_wiki != "")
-	&& (point_in_rectangle(mouse_get_x, mouse_get_y, link_wiki_x, display_get_gui_height() + 8 + version_y_pos, link_wiki_x + 32, display_get_gui_height() + 8 + version_y_pos + 32))
-	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		url_open(string(global.link_to_wiki));
-		menu_delay = 3;
-	}
-}
-#endregion /* Links END */
-
 #region /* Hide Fullscreen and Version text / Set certain variables to default value */
 if (menu == "main_game")
 || (menu == "level_editor")
 || (menu == "options")
 || (menu == "quit")
 || (menu == "information")
-|| (menu == "mailbox")
 || (menu == "link_discord")
 || (menu == "link_youtube")
 || (menu == "link_gamebanana")
@@ -231,14 +153,7 @@ if (menu == "main_game")
 		#endregion /* What player can enter a name END */
 		
 		show_title_logo = true;
-		if (global.enable_links)
-		{
-			version_y_pos = lerp(version_y_pos, -32 - 8, 0.1);
-		}
-		else
-		{
-			version_y_pos = lerp(version_y_pos, 0, 0.1);
-		}
+		version_y_pos = lerp(version_y_pos, 0, 0.1);
 	}
 	else
 	{
@@ -291,7 +206,6 @@ if (global.arcade_mode == false && in_settings == false)
         menu == "information" ||
         menu == "quit" ||
 		menu == "information" ||
-		menu == "mailbox" ||
 		menu == "link_discord" ||
 		menu == "link_youtube" ||
 		menu == "link_gamebanana" ||
@@ -305,12 +219,10 @@ if (global.arcade_mode == false && in_settings == false)
 		{
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, main_game_y, l10n_text("Main Game"), "main_game", "main_game");
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, level_editor_y, l10n_text("Level Editor"), "level_editor", "level_editor");
-			var options_and_quit_y = display_get_gui_height() * 0.5 + 100 + 120 + 1;
 		}
 		else
 		{
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, main_game_y, l10n_text("Play Demo"), "main_game", "main_game");
-			var options_and_quit_y = display_get_gui_height() * 0.5 + 100 + 120 - 42 + 1;
 		}
 		
 		select_custom_level_menu_open = false;
@@ -319,7 +231,7 @@ if (global.arcade_mode == false && in_settings == false)
 		#region /* Click on menu buttons */
 		
 		#region /* Click Main Game */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, main_game_y, display_get_gui_width() * 0.5 + 185, main_game_y + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, main_game_y, display_get_gui_width() * 0.5 + 185, main_game_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (in_settings == false)
@@ -354,7 +266,7 @@ if (global.arcade_mode == false && in_settings == false)
 		else
 		
 		#region /* Click Level Editor */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, level_editor_y, display_get_gui_width() * 0.5 + 185, level_editor_y + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, level_editor_y, display_get_gui_width() * 0.5 + 185, level_editor_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu == "level_editor")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -404,12 +316,12 @@ if (global.arcade_mode == false && in_settings == false)
 	
 		#region /* Click Options */
 		if (global.enable_options_for_pc)
-		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, options_and_quit_y + 2, display_get_gui_width() * 0.5, options_and_quit_y + 42))
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, options_and_quit_y + 2, display_get_gui_width() * 0.5, options_and_quit_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (in_settings == false)
 		|| (global.enable_options_for_pc == false)
-		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, options_and_quit_y + 2, display_get_gui_width() * 0.5 + 185, options_and_quit_y + 42))
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, options_and_quit_y + 2, display_get_gui_width() * 0.5 + 185, options_and_quit_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (in_settings == false)
@@ -509,16 +421,8 @@ if (global.arcade_mode == false && in_settings == false)
 			}
 		}
 		
-		/* Mailbox button */
-		draw_menu_button_sprite(spr_wall, display_get_gui_width() - 64, display_get_gui_height() - 32, 16, 0, 1, 1, 32, 32, "", "mailbox", "mailbox", false);
-		if (menu == "mailbox")
-		{
-			draw_set_halign(fa_right);
-			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, l10n_text("Mailbox"), global.default_text_size, c_black, c_white, 1);
-		}
-		
 		/* Discord button */
-		draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, display_get_gui_width() - (32 * 3), display_get_gui_height() - 32, 16, 0, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
+		draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, display_get_gui_width() - (32 * 2), display_get_gui_height() - 32, 16, 0, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
 		if (menu == "link_discord")
 		{
 			draw_set_halign(fa_right);
@@ -527,7 +431,7 @@ if (global.arcade_mode == false && in_settings == false)
 			
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 3), display_get_gui_height() - 32, display_get_gui_width() - (32 * 3) + 32, display_get_gui_height()))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 2), display_get_gui_height() - 32, display_get_gui_width() - (32 * 2) + 32, display_get_gui_height()))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
@@ -537,7 +441,7 @@ if (global.arcade_mode == false && in_settings == false)
 		}
 		
 		/* YouTube button */
-		draw_menu_button_sprite(global.resource_pack_sprite_logo_youtube, display_get_gui_width() - (32 * 4), display_get_gui_height() - 32, 16, 0, 0.25, 0.25, 32, 32, "", "link_youtube", "link_youtube", false);
+		draw_menu_button_sprite(global.resource_pack_sprite_logo_youtube, display_get_gui_width() - (32 * 3), display_get_gui_height() - 32, 16, 0, 0.25, 0.25, 32, 32, "", "link_youtube", "link_youtube", false);
 		if (menu == "link_youtube")
 		{
 			draw_set_halign(fa_right);
@@ -546,7 +450,7 @@ if (global.arcade_mode == false && in_settings == false)
 			
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 4), display_get_gui_height() - 32, display_get_gui_width() - (32 * 4) + 32, display_get_gui_height()))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 3), display_get_gui_height() - 32, display_get_gui_width() - (32 * 3) + 32, display_get_gui_height()))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
@@ -804,24 +708,31 @@ if (input_key == false)
 		}
 		else
 		if (key_left)
-		&& (global.enable_links)
 		{
 			menu_delay = 3;
-			if (global.link_to_wiki != "")
+			if (global.link_to_discord != "")
 			{
-				menu = "link_wiki";
+				menu = "link_discord";
 			}
 			else
+			if (global.link_to_youtube != "")
 			{
-				menu = "link_twitter";
+				menu = "link_youtube";
 			}
 		}
 		else
 		if (key_right)
-		&& (global.enable_links)
 		{
 			menu_delay = 3;
-			menu = "link_discord";
+			if (global.link_to_youtube != "")
+			{
+				menu = "link_youtube";
+			}
+			else
+			if (global.link_to_discord != "")
+			{
+				menu = "link_discord";
+			}
 		}
 	}
 	else
@@ -847,7 +758,6 @@ if (input_key == false)
 		}
 		else
 		if (key_left)
-		&& (global.enable_links)
 		{
 			menu_delay = 3;
 			menu = "link_twitter";
@@ -882,14 +792,12 @@ if (input_key == false)
 		}
 		else
 		if (key_left)
-		&& (global.enable_links)
 		{
 			menu_delay = 3;
 			menu = "link_reddit";
 		}
 		else
 		if (key_right)
-		&& (global.enable_links)
 		{
 			menu_delay = 3;
 			if (global.link_to_wiki != "")
@@ -925,14 +833,12 @@ if (input_key == false)
 		}
 		else
 		if (key_left)
-		&& (global.enable_links)
 		{
 			menu_delay = 3;
 			menu = "link_instagram";
 		}
 		else
 		if (key_right)
-		&& (global.enable_links)
 		{
 			menu_delay = 3;
 			menu = "link_twitter";
@@ -961,14 +867,12 @@ if (input_key == false)
 		}
 		else
 		if (key_left)
-		&& (global.enable_links)
 		{
 			menu_delay = 3;
 			menu = "link_gamebanana";
 		}
 		else
 		if (key_right)
-		&& (global.enable_links)
 		{
 			menu_delay = 3;
 			menu = "link_reddit";
@@ -997,14 +901,12 @@ if (input_key == false)
 		}
 		else
 		if (key_left)
-		&& (global.enable_links)
 		{
 			menu_delay = 3;
 			menu = "link_discord";
 		}
 		else
 		if (key_right)
-		&& (global.enable_links)
 		{
 			menu_delay = 3;
 			menu = "link_instagram";
@@ -1035,14 +937,60 @@ if (input_key == false)
 		if (key_left)
 		{
 			menu_delay = 3;
+			if (global.link_to_youtube != "")
+			{
+				menu = "link_youtube";
+			}
+			else
+			{
+				menu = "information";
+			}
+		}
+		else
+		if (key_right)
+		{
+			menu_delay = 3;
+			menu = "information";
+		}
+	}
+	else
+	if (menu == "link_youtube")
+	{
+		if (key_up)
+		{
+			menu_delay = 3;
+			if (global.convention_mode == false)
+			{
+				menu = "options";
+			}
+			else
+			{
+				menu = "level_editor";
+			}
+		}
+		else
+		if (key_down)
+		{
+			menu_delay = 3;
+			menu = "main_game";
+		}
+		else
+		if (key_left)
+		{
+			menu_delay = 3;
 			menu = "information";
 		}
 		else
 		if (key_right)
-		&& (global.enable_links)
 		{
-			menu_delay = 3;
-			menu = "link_gamebanana";
+			if (global.link_to_discord != "")
+			{
+				menu = "link_discord";
+			}
+			else
+			{
+				menu = "information";
+			}
 		}
 	}
 	#endregion /* Navigate Main Menu END */

@@ -10,6 +10,8 @@ layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), g
 scr_make_background_visible();
 
 #region /* Essential variables */
+modify_object_menu = false;
+
 prev_display_width = display_get_gui_width();
 prev_display_height = display_get_gui_height();
 global.time_countdown_bonus = 500;
@@ -237,7 +239,7 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_EYE_BLOCK, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_NPC] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_NPC, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_SIGN_READABLE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SIGN_READABLE, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_RING] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_RING, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2, false);
@@ -327,7 +329,7 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_NPC] = 2;
+		unlocked_object[LEVEL_OBJECT_ID.ID_SIGN_READABLE] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_RING] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2] = 2;
@@ -561,7 +563,7 @@ if (global.actually_play_edited_level == false)
 	add_object(LEVEL_OBJECT_ID.ID_DOOR, spr_door, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_WARP_BOX, spr_warp_box, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE, spr_warp_box_one_use, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
-	add_object(LEVEL_OBJECT_ID.ID_NPC, spr_npc, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_SIGN_READABLE, spr_sign_readable, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BLACK_WALL, spr_black_wall, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_RING, spr_ring, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, spr_appear_block, 44, spr_wall, 1, 0, c_yellow, 1, "1", noone, false, 0);

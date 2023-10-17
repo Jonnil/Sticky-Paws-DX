@@ -1,4 +1,5 @@
 if (global.actually_play_edited_level == false)
+&& (modify_object_menu == false)
 {
 	
 	#region /* Hide/Show Backgrounds */
@@ -39,6 +40,8 @@ if (global.actually_play_edited_level == false)
 	|| (key_right_pressed)
 	{
 		if key_double_tap_timer <= 0
+		&& (gamepad_axis_value(global.player_slot[1], gp_axislh) == 0)
+		&& (gamepad_axis_value(global.player_slot[1], gp_axislv) == 0)
 		{
 			if (key_up_pressed)
 			{
@@ -62,6 +65,8 @@ if (global.actually_play_edited_level == false)
 			key_double_tap_timer = room_speed * 0.2; /* Set a time window for the double-tap */
 		}
 		else
+		if (gamepad_axis_value(global.player_slot[1], gp_axislh) == 0)
+		&& (gamepad_axis_value(global.player_slot[1], gp_axislv) == 0)
 		{
 			if (key_up_pressed)
 			&& (key_double_tap_direction == "up")
@@ -1311,6 +1316,7 @@ if (global.actually_play_edited_level == false)
 		}
 	}
 	if (mouse_check_button_released(mb_right))
+	|| (gamepad_button_check_released(global.player_slot[1], button_erase))
 	{
 		if (pause == false)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)

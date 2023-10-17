@@ -36,3 +36,8 @@ if (!global.actually_play_edited_level)
 		draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, 1, 1, 0, image_blend, image_alpha);
 	}
 }
+
+if (object == LEVEL_OBJECT_ID.ID_SIGN_READABLE)
+{
+	scr_draw_text_outlined(x, y - 64, string(second_x), global.default_text_size, c_black, c_white, 1);
+}

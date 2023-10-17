@@ -113,7 +113,7 @@ if (global.actually_play_edited_level == false)
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, true, spr_clipped_shirt, spr_wall, + 100, 1, 0, c_white,,,,,"Clipped Clothes");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUCKET, true, spr_bucket, spr_wall, + 100, 1, 0, c_white,,,,,"Bucket", "Let clothes drop into the bucket to get rewards");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, false, spr_artwork_collection, spr_wall, + 100, 1, 0, c_white,,,,,"Artwork Collection");
-				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_NPC, false, spr_npc, spr_wall, + 100, 1, 0, c_white,,,,,"NPC", "This object is unfinished!!!");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SIGN_READABLE, false, spr_sign_readable, spr_wall, + 100, 1, 0, c_white,,,,,"Readable Sign", "Click on the placed sign in the editor to edit what it should say!");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_RING, false, spr_ring, spr_wall, + 100, 1, 0, c_white,,,,,"Ring", "Swing with long tongue on this ring");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false, global.resource_pack_sprite_cake, spr_wall, + 100, 1, 0, c_white,,,,, "Cake Rat", "This rat stole your cake! Let the player try to catch them before the end of the level\nThe player will chase this rat until the very end of the game");
 			}
@@ -209,7 +209,10 @@ if (global.actually_play_edited_level == false)
 		scr_draw_text_outlined(16, 32, l10n_text("View X") + ": " + string(round(camera_get_view_x(view_camera[0]))) + "\n" + l10n_text("View Y") + ": " + string(round(camera_get_view_y(view_camera[0]))), global.default_text_size, c_black, c_white, 1);
 		
 		/* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is */
-		draw_circle_color(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 3, c_black, c_white, false);
+		if (modify_object_menu == false)
+		{
+			draw_circle_color(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 3, c_black, c_white, false);
+		}
 		
 		if (selected_menu_alpha < 0.1)
 		{
@@ -2290,9 +2293,12 @@ if (global.actually_play_edited_level == false)
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_top)
 		&& (pause == false)
+		&& (modify_object_menu == false)
 		|| (keyboard_check_pressed(ord("H")))
 		&& (pause == false)
+		&& (modify_object_menu == false)
 		{
+			modify_object_menu = false;
 			tooltip = "Help";
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
@@ -2306,10 +2312,6 @@ if (global.actually_play_edited_level == false)
 		#endregion /* Click icons at top of screen END */
 		
 		#region /* Autosave Warning Text */
-		if (keyboard_check_pressed(ord("U")))
-		{
-			autosave_timer = 18000 - (60 * 11);
-		}
 		draw_set_halign(fa_center);
 		var autosave_text = "";
 		var autosave_text_color = c_white;
@@ -2536,6 +2538,7 @@ if (global.actually_play_edited_level == false)
 		
 		if (global.controls_used_for_menu_navigation != "controller")
 		&& (!navigate_camera_with_arrowkeys)
+		&& (modify_object_menu == false)
 		{
 			scr_draw_mouse_cursor_sprite();
 		}

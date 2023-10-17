@@ -10,7 +10,6 @@ function scr_config_save()
 		ini_write_real("config", "enable_difficutly_layers_in_level_editor", true);
 	}
 	ini_write_real("config", "automatically_pause_when_window_is_unfocused", global.automatically_pause_when_window_is_unfocused);
-	ini_write_real("config", "enable_links", global.enable_links);
 	ini_write_real("config", "show_timer", global.show_timer);
 	ini_write_real("config", "show_defeats_counter", global.show_defeats_counter);
 	ini_write_real("config", "show_ranks", global.show_ranks);
