@@ -48,145 +48,40 @@ function scr_player_move_lose()
 			scr_audio_play(snd_lose, volume_source.sound);
 			
 			#region /* Turn into obj_player_lose */
-			
-			#region /* Player 1 Die */
-			if (player == 1)
+			with(instance_create_depth(x, y, 0, obj_player_lose))
 			{
-				with(instance_create_depth(x, y, 0, obj_player_lose))
+				player = instance_nearest(x, y, obj_player).player;
+				if (instance_nearest(x, y, obj_player).burnt >= 1)
+				&& (instance_nearest(x, y, obj_player).sprite_burnt > noone)
 				{
-					player = 1;
-					if (instance_nearest(x, y, obj_player).sprite_die > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_die;
-					}
-					else
-					if (instance_nearest(x, y, obj_player).sprite_stand > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_stand;
-					}
-					else
-					if (instance_nearest(x, y, obj_player).sprite_walk > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_walk;
-					}
-					if (instance_nearest(x, y, obj_player).sprite_game_over_character_portrait > noone)
-					{
-						sprite_game_over_character_portrait = instance_nearest(x, y, obj_player).sprite_game_over_character_portrait;
-					}
-					player_lose_melody = instance_nearest(x, y, obj_player).player_lose_melody;
-					voice_damage = instance_nearest(x, y, obj_player).voice_damage;
-					default_voice_pitch = instance_nearest(x, y, obj_player).default_voice_pitch;
-					default_xscale = instance_nearest(x, y, obj_player).default_xscale;
-					default_yscale = instance_nearest(x, y, obj_player).default_yscale;
+					burnt = true;
+					sprite_index = instance_nearest(x, y, obj_player).sprite_burnt;
 				}
-			}
-			#endregion /* Player 1 Die END */
-				
-			else
-				
-			#region /* Player 2 Die */
-			if (player == 2)
-			{
-				with(instance_create_depth(x, y, 0, obj_player_lose))
+				else
+				if (instance_nearest(x, y, obj_player).sprite_die > noone)
 				{
-					player = 2;
-					if (instance_nearest(x, y, obj_player).sprite_die > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_die;
-					}
-					else
-					if (instance_nearest(x, y, obj_player).sprite_stand > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_stand;
-					}
-					else
-					if (instance_nearest(x, y, obj_player).sprite_walk > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_walk;
-					}
-					if (instance_nearest(x, y, obj_player).sprite_game_over_character_portrait > noone)
-					{
-						sprite_game_over_character_portrait = instance_nearest(x, y, obj_player).sprite_game_over_character_portrait;
-					}
-					player_lose_melody = instance_nearest(x, y, obj_player).player_lose_melody;
-					voice_damage = instance_nearest(x, y, obj_player).voice_damage;
-					default_voice_pitch = instance_nearest(x, y, obj_player).default_voice_pitch;
-					default_xscale = instance_nearest(x, y, obj_player).default_xscale;
-					default_yscale = instance_nearest(x, y, obj_player).default_yscale;
+					sprite_index = instance_nearest(x, y, obj_player).sprite_die;
 				}
-			}
-			#endregion /* Player 2 Die END */
-				
-			else
-				
-			#region /* Player 3 Die */
-			if (player == 3)
-			{
-				with(instance_create_depth(x, y, 0, obj_player_lose))
+				else
+				if (instance_nearest(x, y, obj_player).sprite_stand > noone)
 				{
-					player = 3;
-					if (instance_nearest(x, y, obj_player).sprite_die > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_die;
-					}
-					else
-					if (instance_nearest(x, y, obj_player).sprite_stand > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_stand;
-					}
-					else
-					if (instance_nearest(x, y, obj_player).sprite_walk > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_walk;
-					}
-					if (instance_nearest(x, y, obj_player).sprite_game_over_character_portrait > noone)
-					{
-						sprite_game_over_character_portrait = instance_nearest(x, y, obj_player).sprite_game_over_character_portrait;
-					}
-					player_lose_melody = instance_nearest(x, y, obj_player).player_lose_melody;
-					voice_damage = instance_nearest(x, y, obj_player).voice_damage;
-					default_voice_pitch = instance_nearest(x, y, obj_player).default_voice_pitch;
-					default_xscale = instance_nearest(x, y, obj_player).default_xscale;
-					default_yscale = instance_nearest(x, y, obj_player).default_yscale;
+					sprite_index = instance_nearest(x, y, obj_player).sprite_stand;
 				}
-			}
-			#endregion /* Player 3 Die END */
-				
-			else
-				
-			#region /* Player 4 Die */
-			if (player == 4)
-			{
-				with(instance_create_depth(x, y, 0, obj_player_lose))
+				else
+				if (instance_nearest(x, y, obj_player).sprite_walk > noone)
 				{
-					player = 4;
-					if (instance_nearest(x, y, obj_player).sprite_die > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_die;
-					}
-					else
-					if (instance_nearest(x, y, obj_player).sprite_stand > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_stand;
-					}
-					else
-					if (instance_nearest(x, y, obj_player).sprite_walk > noone)
-					{
-						sprite_index = instance_nearest(x, y, obj_player).sprite_walk;
-					}
-					if (instance_nearest(x, y, obj_player).sprite_game_over_character_portrait > noone)
-					{
-						sprite_game_over_character_portrait = instance_nearest(x, y, obj_player).sprite_game_over_character_portrait;
-					}
-					player_lose_melody = instance_nearest(x, y, obj_player).player_lose_melody;
-					voice_damage = instance_nearest(x, y, obj_player).voice_damage;
-					default_voice_pitch = instance_nearest(x, y, obj_player).default_voice_pitch;
-					default_xscale = instance_nearest(x, y, obj_player).default_xscale;
-					default_yscale = instance_nearest(x, y, obj_player).default_yscale;
+					sprite_index = instance_nearest(x, y, obj_player).sprite_walk;
 				}
+				if (instance_nearest(x, y, obj_player).sprite_game_over_character_portrait > noone)
+				{
+					sprite_game_over_character_portrait = instance_nearest(x, y, obj_player).sprite_game_over_character_portrait;
+				}
+				player_lose_melody = instance_nearest(x, y, obj_player).player_lose_melody;
+				voice_damage = instance_nearest(x, y, obj_player).voice_damage;
+				default_voice_pitch = instance_nearest(x, y, obj_player).default_voice_pitch;
+				default_xscale = instance_nearest(x, y, obj_player).default_xscale;
+				default_yscale = instance_nearest(x, y, obj_player).default_yscale;
 			}
-			#endregion /* Player 4 Die END */
-				
 			#endregion /* Turn into obj_player_lose END */
 			
 			#region /* Stop invincibility music if you're the last player dying */

@@ -1,5 +1,5 @@
 /* Collision Event with player object */
-if (die == false)
+if (!die)
 && (stomped_delay == 0)
 {
 	if (other.vspeed >= 0)
@@ -281,15 +281,15 @@ if (die == false)
 		else
 		
 		if (stomped_delay == 0)
-		&& (die == false)
+		&& (!die)
 		&& (flat == false)
 		|| (sliding_along_ground < 0)
 		&& (stomped_delay == 0)
-		&& (die == false)
+		&& (!die)
 		&& (flat)
 		|| (sliding_along_ground > 0)
 		&& (stomped_delay == 0)
-		&& (die == false)
+		&& (!die)
 		&& (flat)
 		{
 			if (other.taken_damage <= 0)

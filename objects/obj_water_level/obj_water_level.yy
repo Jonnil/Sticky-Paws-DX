@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Level Objects",
-    "path": "folders/Objects/Level Objects.yy",
+    "name": "Liquids",
+    "path": "folders/Objects/Level Objects/Liquids.yy",
   },
   "parentObjectId": null,
   "persistent": false,

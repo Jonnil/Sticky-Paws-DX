@@ -24,19 +24,17 @@ if (instance_exists(obj_spikes_emerge))
 	&& (hspeed <= 0)
 	{
 		if (x < instance_nearest(x, y, obj_spikes_emerge).x)
-		&& (die == false)
+		&& (!die)
 		{
-			vspeed = - 8;
 			die_volting = -1;
-			die = true;
 		}
 		else
-		if (die == false)
+		if (!die)
 		{
-			vspeed = - 8;
 			die_volting = +1;
-			die = true;
 		}
+		vspeed = - 8;
+		die = true;
 	}
 }
 #endregion /* Enemy touching emerging spikes END */

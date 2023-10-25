@@ -79,11 +79,19 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	
 	#region /* Box where name is written on */
-	draw_rectangle_color(xx - width, yy - 16, xx + width, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
+	if (string_width(keyboard_string) > 2000)
+	{
+		var extra_height = string_height(keyboard_string) - 10;
+	}
+	else
+	{
+		var extra_height = 0;
+	}
+	draw_rectangle_color(xx - width, yy - 16 - extra_height, xx + width, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
 	draw_set_alpha(black_rectangle_alpha);
-	draw_rectangle_color(xx - width, yy - 16, xx + width, yy + 16, c_black, c_black, c_black, c_black, false); /* Black transparent rectangle where text is written on */
+	draw_rectangle_color(xx - width, yy - 16 - extra_height, xx + width, yy + 16, c_black, c_black, c_black, c_black, false); /* Black transparent rectangle where text is written on */
 	draw_set_alpha(1);
-	draw_rectangle_color(xx - width, yy - 16, xx + width, yy + 16, c_white, c_white, c_white, c_white, true); /* White outline */
+	draw_rectangle_color(xx - width, yy - 16 - extra_height, xx + width, yy + 16, c_white, c_white, c_white, c_white, true); /* White outline */
 	#endregion /* Box where name is written on END */
 	
 	#region /* Draw the inputed text */
@@ -95,24 +103,28 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	{
 		if (only_big_letter)
 		{
-			scr_draw_text_outlined(xx + 6, yy, string_upper(keyboard_string) + "|", global.default_text_size, c_black, c_white, 1);
+			var string_text = string_upper(keyboard_string) + "|";
 		}
 		else
 		{
-			scr_draw_text_outlined(xx + 6, yy, string(keyboard_string) + "|", global.default_text_size, c_black, c_white, 1);
+			var string_text = string(keyboard_string) + "|";
 		}
 	}
 	else
 	{
 		if (only_big_letter)
 		{
-			scr_draw_text_outlined(xx, yy, string_upper(keyboard_string), global.default_text_size, c_black, c_white, 1);
+			var string_text = string_upper(keyboard_string);
 		}
 		else
 		{
-			scr_draw_text_outlined(xx, yy, string(keyboard_string), global.default_text_size, c_black, c_white, 1);
+			var string_text = string(keyboard_string);
 		}
 	}
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_bottom);
+	draw_text_ext_transformed_color(xx, yy + 15, string_text, 40, 2000, global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+	
 	#endregion /* Draw the inputed text END */
 	
 	#region /* A file name can't contain any of these characters */

@@ -1,5 +1,5 @@
 if (die_volting == false)
-|| (die == false)
+|| (!die)
 {
 	if (sliding_along_ground == -1)
 	&& (flat)
@@ -20,7 +20,7 @@ if (die_volting == false)
 	}
 	
 	if (position_meeting(x, bbox_top - 1, obj_wall))
-	&& (die == false)
+	&& (!die)
 	&& (vspeed < 0)
 	{
 		vspeed = 0;

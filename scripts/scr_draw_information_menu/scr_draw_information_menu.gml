@@ -288,8 +288,8 @@ function scr_draw_information_menu()
 		}
 		
 		/* Back from Information Menu */
-		draw_menu_button_sprite(spr_wall, display_get_gui_width() - 32, display_get_gui_height() - 32, 16, 0, 1, 1, 32, 32, "", "information_back", "information", false);
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32, display_get_gui_height() - 32, display_get_gui_width(), display_get_gui_height()))
+		draw_menu_button_sprite(spr_icons_back, display_get_gui_width() - 32, display_get_gui_height() - 35, 16, 0, 1, 1, 32, 32, "", "information_back", "information_back", false);
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32, display_get_gui_height() - 35, display_get_gui_width(), display_get_gui_height()))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "information_back")

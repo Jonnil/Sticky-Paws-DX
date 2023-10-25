@@ -106,6 +106,7 @@ if (global.actually_play_edited_level == false)
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL, true, spr_wall_climb_panel, spr_wall, + 100, 1.5, 0, c_white, 0, +16,,,"Wall Climb Panel", "When a character doesn't have the wall climb ability lets even these characters wall climb");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE, true, spr_horizontal_rope, spr_wall, + 100, 1, 0, c_white,,,,,"Horizontal Rope");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER, false, spr_water_surface, spr_wall, + 100, 1, 0, c_white,,,,,"Water");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_LAVA, false, spr_lava_surface, spr_wall, + 100, 1, 0, c_white,,,,,"Lava");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER, true, spr_air_bubbles_spawner, spr_wall, + 100, 1, 0, c_white,,,,,"Air Bubbles", "Some characters needs air when swimming underwater");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW, false, spr_water_level_change_slow, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water Level Slow");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST, false, spr_water_level_change_fast, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water Level Fast");

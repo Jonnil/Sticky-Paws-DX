@@ -40,6 +40,7 @@ if (global.actually_play_edited_level == false)
 			case LEVEL_OBJECT_ID.ID_ARROW_SIGN:
 			case LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL:
 			case LEVEL_OBJECT_ID.ID_WATER:
+			case LEVEL_OBJECT_ID.ID_LAVA:
 			case LEVEL_OBJECT_ID.ID_BREATHABLE_WATER:
 				second_x = global.leveleditor_x;
 				second_y = global.leveleditor_y;

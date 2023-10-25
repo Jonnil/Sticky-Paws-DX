@@ -13,16 +13,39 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"3e94cca4-20e6-48d8-85ab-f2ebe70843d3",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"8afd286a-a1da-4e2f-953b-a325b98afced",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 32,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"b0957d8c-8fd4-4137-989a-ca1e7475fb0c","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"a55a50d6-a7f6-454e-b403-ab5ef9579699","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
-  "nineSlice": null,
+  "nineSlice": {
+    "resourceType": "GMNineSliceData",
+    "resourceVersion": "1.0",
+    "bottom": 8,
+    "enabled": true,
+    "guideColour": [
+      4294902015,
+      4294902015,
+      4294902015,
+      4294902015,
+    ],
+    "highlightColour": 1728023040,
+    "highlightStyle": 0,
+    "left": 8,
+    "right": 8,
+    "tileMode": [
+      1,
+      1,
+      1,
+      1,
+      0,
+    ],
+    "top": 8,
+  },
   "origin": 4,
   "parent": {
     "name": "Sprites",
@@ -54,7 +77,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"3e94cca4-20e6-48d8-85ab-f2ebe70843d3","path":"sprites/spr_water/spr_water.yy",},},},"Disabled":false,"id":"6eca9629-d716-4061-af78-8593f128641d","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"8afd286a-a1da-4e2f-953b-a325b98afced","path":"sprites/spr_water/spr_water.yy",},},},"Disabled":false,"id":"c696de56-d2a4-4c59-8f66-4976685f8c88","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

@@ -1,5 +1,5 @@
 #region /* Turn around */
-if (die == false)
+if (!die)
 && (sliding_along_ground == 0)
 && (other.die == false)
 {
@@ -29,12 +29,12 @@ if (die == false)
 
 if (sliding_along_ground == +1)
 && (other.die == false)
-&& (die == false)
+&& (!die)
 && (die_volting == false)
 && (other.die_volting == false)
 || (sliding_along_ground == -1)
 && (other.die == false)
-&& (die == false)
+&& (!die)
 && (die_volting == false)
 && (other.die_volting == false)
 {
@@ -68,7 +68,7 @@ if (sliding_along_ground == +1)
 	}
 }
 
-if (die == false)
+if (!die)
 && (die_volting == false)
 && (other.die_volting == false)
 && (other.speed > speed)

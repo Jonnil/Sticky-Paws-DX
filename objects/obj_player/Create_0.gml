@@ -130,6 +130,7 @@ sprite_mask = spr_player_stand; /* Mask Index END */
 sprite_mask_crouch = spr_player_stand; /* Mask Crouch Index END */
 sprite_against_wall = noone;
 sprite_against_wall_start = noone;
+sprite_burnt = noone;
 sprite_checkpoint_activated = noone;
 sprite_climb_under = noone;
 sprite_climb_under_look_up = noone;

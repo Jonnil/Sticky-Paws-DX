@@ -1,5 +1,5 @@
 /* Collision Event with player object */
-if (die == false)
+if (!die)
 {
 
 if (other.vspeed >= 0)

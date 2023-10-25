@@ -320,10 +320,10 @@ if (blind == false)
 }
 
 if (coil_spring)
-&& (die == false)
+&& (!die)
 && (place_meeting(x, y + 1, obj_wall))
 || (coil_spring)
-&& (die == false)
+&& (!die)
 && (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (instance_exists(obj_foreground_secret))
@@ -352,7 +352,7 @@ if (coil_spring)
 
 if (sliding_along_ground == -1)
 && (flat)
-&& (die == false)
+&& (!die)
 {
 	draw_angle += 10;
 	if (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
@@ -384,7 +384,7 @@ if (sliding_along_ground == -1)
 else
 if (sliding_along_ground == +1)
 && (flat)
-&& (die == false)
+&& (!die)
 {
 	draw_angle -= 10;
 	if (position_meeting(bbox_left - 32, bbox_bottom + 1, obj_wall))
@@ -416,7 +416,7 @@ if (sliding_along_ground == +1)
 else
 if (sliding_along_ground == 0)
 && (flat)
-&& (die == false)
+&& (!die)
 {
 	friction = 0.05;
 }

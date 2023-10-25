@@ -403,7 +403,7 @@ if (global.arcade_mode == false && in_settings == false)
 		draw_sprite_ext(spr_icons_cogwheel, 0, display_get_gui_width() * 0.5 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
 		
 		/* Information button */
-		draw_menu_button_sprite(spr_wall, display_get_gui_width() - 32, display_get_gui_height() - 32, 16, 0, 1, 1, 32, 32, "", "information", "information", false);
+		draw_menu_button_sprite(spr_icons_exclamation, display_get_gui_width() - 32, display_get_gui_height() - 35, 16, 0, 1, 1, 32, 32, "", "information", "information", false);
 		if (menu == "information")
 		{
 			draw_set_halign(fa_right);
@@ -411,7 +411,7 @@ if (global.arcade_mode == false && in_settings == false)
 			
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32, display_get_gui_height() - 32, display_get_gui_width(), display_get_gui_height()))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32, display_get_gui_height() - 35, display_get_gui_width(), display_get_gui_height()))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
@@ -422,7 +422,7 @@ if (global.arcade_mode == false && in_settings == false)
 		}
 		
 		/* Discord button */
-		draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, display_get_gui_width() - (32 * 2), display_get_gui_height() - 32, 16, 0, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
+		draw_menu_button_sprite(global.resource_pack_sprite_logo_discord, display_get_gui_width() - (32 * 2), display_get_gui_height() - 35, 16, 0, 0.25, 0.25, 32, 32, "", "link_discord", "link_discord", false);
 		if (menu == "link_discord")
 		{
 			draw_set_halign(fa_right);
@@ -431,7 +431,7 @@ if (global.arcade_mode == false && in_settings == false)
 			
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 2), display_get_gui_height() - 32, display_get_gui_width() - (32 * 2) + 32, display_get_gui_height()))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 2), display_get_gui_height() - 35, display_get_gui_width() - (32 * 2) + 32, display_get_gui_height()))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
@@ -441,7 +441,7 @@ if (global.arcade_mode == false && in_settings == false)
 		}
 		
 		/* YouTube button */
-		draw_menu_button_sprite(global.resource_pack_sprite_logo_youtube, display_get_gui_width() - (32 * 3), display_get_gui_height() - 32, 16, 0, 0.25, 0.25, 32, 32, "", "link_youtube", "link_youtube", false);
+		draw_menu_button_sprite(global.resource_pack_sprite_logo_youtube, display_get_gui_width() - (32 * 3), display_get_gui_height() - 35, 16, 0, 0.25, 0.25, 32, 32, "", "link_youtube", "link_youtube", false);
 		if (menu == "link_youtube")
 		{
 			draw_set_halign(fa_right);
@@ -450,7 +450,7 @@ if (global.arcade_mode == false && in_settings == false)
 			
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 3), display_get_gui_height() - 32, display_get_gui_width() - (32 * 3) + 32, display_get_gui_height()))
+			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - (32 * 3), display_get_gui_height() - 35, display_get_gui_width() - (32 * 3) + 32, display_get_gui_height()))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{

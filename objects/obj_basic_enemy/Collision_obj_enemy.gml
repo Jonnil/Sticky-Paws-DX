@@ -1,5 +1,5 @@
 #region /* Turn around */
-if (die == false)
+if (!die)
 && (other.die == false)
 {
 	if (!place_meeting(x, y, obj_bullet))

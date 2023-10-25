@@ -81,10 +81,10 @@ mask_index = mask;
 
 #region /* Coil spring bouncing code */
 if (coil_spring)
-&& (die == false)
+&& (!die)
 && (place_meeting(x, y + 1, obj_wall))
 || (coil_spring)
-&& (die == false)
+&& (!die)
 && (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (instance_exists(obj_foreground_secret))
@@ -114,7 +114,7 @@ if (coil_spring)
 
 if (instance_number(obj_player) > 0)
 {
-	if (die == false)
+	if (!die)
 	{
 		if (instance_nearest(x, y, obj_player).x < x)
 		{

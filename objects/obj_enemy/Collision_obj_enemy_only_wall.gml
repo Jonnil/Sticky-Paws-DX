@@ -1,7 +1,7 @@
-if (die == false)
+if (!die)
 {
 	if (position_meeting(x, bbox_top - 1, other))
-	&& (die == false)
+	&& (!die)
 	&& (vspeed < 0)
 	{
 		vspeed = 0;
@@ -48,7 +48,7 @@ if (die == false)
 	
 	#region /* Kill enemy if it's inside the wall */
 	if (position_meeting(x, y, other))
-	&& (die == false)
+	&& (!die)
 	&& (draw_xscale >= 0.8)
 	{
 		stuck_in_wall_counter ++;

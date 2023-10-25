@@ -3,6 +3,8 @@ with(other)
 {
 	if (allow_survive_lava)
 	&& (hp > 0)
+	&& (!burnt)
+	&& (!global.goal_active)
 	{
 		burnt = true;
 		dive = false;
@@ -11,15 +13,10 @@ with(other)
 		crouch = false;
 		speed_max = 8;
 		taken_damage = 100;
+		scr_audio_play(voice_burned, volume_source.voice);
 		if (invincible_timer <= false)
 		{
-			scr_audio_play(voice_burned, volume_source.voice);
 			hp --;
-		}
-		else
-		if (invincible_timer >= true)
-		{
-			scr_audio_play(voice_burned, volume_source.voice);
 		}
 		if (vspeed > 0)
 		{
@@ -27,8 +24,10 @@ with(other)
 		}
 	}
 	else
-	if (global.goal_active == false)
+	if (!global.goal_active)
 	{
+		burnt = true;
+		invincible_timer = 0;
 		die = true;
 	}
 }

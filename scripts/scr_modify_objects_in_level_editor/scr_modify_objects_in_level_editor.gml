@@ -668,6 +668,11 @@ function scr_modify_objects_in_level_editor()
 					else
 					if (object == LEVEL_OBJECT_ID.ID_BREATHABLE_WATER)
 					{
+						object = LEVEL_OBJECT_ID.ID_LAVA;
+					}
+					else
+					if (object == LEVEL_OBJECT_ID.ID_LAVA)
+					{
 						object = LEVEL_OBJECT_ID.ID_WATER;
 					}
 					#endregion /* Change Water END */

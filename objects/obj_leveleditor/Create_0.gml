@@ -224,6 +224,7 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_MELON_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_MELON_BLOCK, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_WATER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WATER, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_LAVA] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_LAVA, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_BREATHABLE_WATER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BREATHABLE_WATER, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW, false);
@@ -314,6 +315,7 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_MELON_BLOCK] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_WATER] = 2;
+		unlocked_object[LEVEL_OBJECT_ID.ID_LAVA] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_BREATHABLE_WATER] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW] = 2;
@@ -524,9 +526,9 @@ if (global.actually_play_edited_level == false)
 	#endregion /* One Way END */
 	
 	add_object(LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE, spr_horizontal_rope, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
-	add_object(LEVEL_OBJECT_ID.ID_WATER, spr_water, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
-	add_object(LEVEL_OBJECT_ID.ID_BREATHABLE_WATER, spr_water, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, false, 0);
-	add_object(LEVEL_OBJECT_ID.ID_WATER_SURFACE, spr_water_surface, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_WATER, spr_water_surface, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_LAVA, spr_lava_surface, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_BREATHABLE_WATER, spr_water_surface, 0, spr_wall, 1, 0, c_white, 0.5, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER, spr_air_bubbles_spawner, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW, spr_water_level_change_slow, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST, spr_water_level_change_fast, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);

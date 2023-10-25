@@ -3,21 +3,21 @@ if (fall == false)
 	fall = true;
 	
 	#region /* If it's a clipped shirt, turn into the shirt falling */
-	if (sprite_index = spr_clipped_shirt)
+	if (sprite_index == spr_clipped_shirt)
 	{
 		sprite_index = spr_shirt;
 	}
 	#endregion /* If it's a clipped shirt, turn into the shirt falling END */
 	
 	#region /* If it's clipped pants, turn into the pants falling */
-	if (sprite_index = spr_clipped_pants)
+	if (sprite_index == spr_clipped_pants)
 	{
 		sprite_index = spr_pants;
 	}
 	#endregion /* If it's clipped pants, turn into the pants falling END */
 	
 	#region /* If it's a clipped sock, turn into the sock falling */
-	if (sprite_index = spr_clipped_sock)
+	if (sprite_index == spr_clipped_sock)
 	{
 		sprite_index = spr_sock;
 	}
@@ -33,7 +33,7 @@ if (fall == false)
 	#endregion /* 1 Basic Collectible END */
 	
 	#region /* Make clippers fly out */
-	if (sprite_index = spr_sock)
+	if (sprite_index == spr_sock)
 	{
 		with(instance_create_depth(x, y - 16, 0, obj_clipper))
 		{

@@ -401,7 +401,13 @@ function scr_spawn_objects_when_starting_room()
 						breathable_water = false;
 						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
 						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
-						sprite_index = spr_water;
+					}
+					break;
+				case LEVEL_OBJECT_ID.ID_LAVA:
+					with(instance_create_depth(x, y, 0, obj_lava))
+					{
+						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
+						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
 					}
 					break;
 				case LEVEL_OBJECT_ID.ID_BREATHABLE_WATER:
@@ -410,15 +416,6 @@ function scr_spawn_objects_when_starting_room()
 						breathable_water = true;
 						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
 						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
-						sprite_index = spr_water;
-					}
-					break;
-				case LEVEL_OBJECT_ID.ID_WATER_SURFACE:
-					with(instance_create_depth(x, y, 0, obj_water))
-					{
-						second_x = instance_nearest(x, y, obj_leveleditor_placed_object).second_x;
-						second_y = instance_nearest(x, y, obj_leveleditor_placed_object).second_y;
-						sprite_index = spr_water_surface;
 					}
 					break;
 				case LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER: instance_create_depth(x, y, 0, obj_air_bubbles_spawner);break;

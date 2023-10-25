@@ -78,9 +78,13 @@ if (mouse_check_button_released(mb_left))
 		#region /* Reset depth to normal when releasing object */
 		if (object == LEVEL_OBJECT_ID.ID_WATER)
 		|| (object == LEVEL_OBJECT_ID.ID_BREATHABLE_WATER)
-		|| (object == LEVEL_OBJECT_ID.ID_WATER_SURFACE)
 		{
 			depth = -20;
+		}
+		else
+		if (object == LEVEL_OBJECT_ID.ID_LAVA)
+		{
+			depth = -18;
 		}
 		else
 		{

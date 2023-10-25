@@ -174,6 +174,7 @@ function scr_save_custom_level_json()
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_ARROW_SIGN);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_WATER);
+				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_LAVA);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BREATHABLE_WATER);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_SIGN_READABLE);
 				

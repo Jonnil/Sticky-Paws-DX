@@ -1,4 +1,4 @@
-if (sprite_index = spr_bucket)
+if (sprite_index == spr_bucket)
 {
 	sprite_index = spr_bucket_clothes;
 	

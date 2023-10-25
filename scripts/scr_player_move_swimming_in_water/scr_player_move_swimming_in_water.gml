@@ -11,12 +11,14 @@ function scr_player_move_swimming_in_water()
 		{
 			in_water = true;
 		}
-		if (instance_nearest(x, y, obj_water).breathable_water)
+		if (instance_exists(obj_water))
+		&& (instance_nearest(x, y, obj_water).breathable_water)
 		{
 			in_breathable_water = true;
 		}
 		else
-		if (y > obj_water_level.y)
+		if (instance_exists(obj_water_level))
+		&& (y > obj_water_level.y)
 		&& (obj_water_level.y < room_height)
 		&& (instance_nearest(x, y, obj_water_level).breathable_water)
 		{

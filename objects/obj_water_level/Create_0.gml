@@ -6,6 +6,7 @@ water_bob_speed = 5;
 
 depth = -500;
 image_alpha = 0.5;
+image_speed = 0.1;
 
 water_level_change_new_y = y;
 water_level_change_new_y_lerp = y;

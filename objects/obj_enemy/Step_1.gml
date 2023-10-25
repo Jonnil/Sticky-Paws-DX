@@ -33,7 +33,7 @@ var view_right = view_left + camera_get_view_width(view_camera[view_current]);
 var view_bottom = view_top + camera_get_view_height(view_camera[view_current]);
 
 #region /* Don't move outside view */
-if (die == false)
+if (!die)
 {
 	if (bbox_right < view_left - 16)
 	&& (hspeed < 0)

@@ -54,7 +54,7 @@ if (can_initialize_custom_character)
 	allow_roll = scr_initialize_custom_character_abilities(player - 1, "allow_roll", false);
 	allow_run = scr_initialize_custom_character_abilities(player - 1, "allow_run", true);
 	allow_stop_after_landing_triple_jump = scr_initialize_custom_character_abilities(player - 1, "allow_stop_after_landing_triple_jump", false);
-	allow_survive_lava = scr_initialize_custom_character_abilities(player - 1, "allow_survive_lava", true);
+	allow_survive_lava = scr_initialize_custom_character_abilities(player - 1, "allow_survive_lava", false);
 	allow_tongue = scr_initialize_custom_character_abilities(player - 1, "allow_tongue", false);
 	allow_wall_climb = scr_initialize_custom_character_abilities(player - 1, "allow_wall_climb", true);
 	allow_wall_jump = scr_initialize_custom_character_abilities(player - 1, "allow_wall_jump", true);
@@ -93,6 +93,7 @@ if (can_initialize_custom_character)
 	sprite_against_wall = scr_initialize_custom_character_sprite("againstwall", sprite_against_wall);
 	sprite_against_wall_start = scr_initialize_custom_character_sprite("against_wall_start", sprite_against_wall_start);
 	sprite_against_wall_start = scr_initialize_custom_character_sprite("againstwall_start", sprite_against_wall_start);
+	sprite_burnt = scr_initialize_custom_character_sprite("burnt", sprite_burnt);
 	sprite_checkpoint_activated = scr_initialize_custom_character_sprite("checkpoint_activated", sprite_checkpoint_activated);
 	sprite_climb_under = scr_initialize_custom_character_sprite("climb_under", sprite_climb_under);
 	sprite_climb_under = scr_initialize_custom_character_sprite("climbunder", sprite_climb_under);

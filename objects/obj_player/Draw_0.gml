@@ -206,7 +206,7 @@ if (image_alpha > 0)
 		}
 	}
 	if (taken_damage >= 100)
-	&& (die == false)
+	&& (!die)
 	&& (hp >= 1)
 	{
 		audio_sound_pitch(voice_damage, default_voice_pitch);
