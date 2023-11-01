@@ -73,7 +73,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (menu == "search_online_list")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -105,7 +104,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					if (keyboard_check_pressed(vk_up))
 					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
+					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -126,7 +125,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					if (keyboard_check_pressed(vk_up))
 					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
+					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -147,7 +146,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				{
 					if (keyboard_check_pressed(vk_up))
 					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
+					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -304,18 +303,26 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	{
 		
 		#region /* Download file */
-		if (file_exists(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip")) /* Find if a new .zip file has been downloaded */
+		if (file_exists(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip")) /* Find if a new .zip file has been downloaded */
 		{
 			scr_switch_expand_save_data(); /* Expand the save data before unzipping file */
 			if (global.save_data_size_is_sufficient)
 			{
-				zip_unzip(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", working_directory + "\\downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
+				zip_unzip(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
 				/* Must delete downloaded .zip file first, before game can properly recognize the unzipped folder */
-				file_delete(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
-				var downloaded_file_name = string(file_find_first(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
+				file_delete(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
+				var downloaded_file_name = string(file_find_first(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
 				
 				/* Copy the downloaded file lastly */
-				scr_copy_move_files(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), working_directory + "custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
+				if (global.automatically_play_downloaded_level)
+				{
+					global.use_cache_or_working = cache_directory;
+				}
+				else
+				{
+					global.use_cache_or_working = working_directory;
+				}
+				scr_copy_move_files(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), global.use_cache_or_working + "custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
 				
 				#region /* Get downloaded level info */
 				if (what_kind_of_id == "level")
@@ -343,7 +350,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					{
 						downloaded_thumbnail_sprite = sprite_add(working_directory + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png", 0, false, false, 0, 0);
 					}
-					sprite_set_offset(downloaded_thumbnail_sprite, sprite_get_width(downloaded_thumbnail_sprite) * 0.5, 0);
+					if (downloaded_thumbnail_sprite > 0)
+					{
+						sprite_set_offset(downloaded_thumbnail_sprite, sprite_get_width(downloaded_thumbnail_sprite) * 0.5, 0);
+					}
 					if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 					{
 						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
@@ -505,7 +515,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		var draw_name_y = + 32;
 		
 		#region /* If level existed and is downloaded, show this menu */
-		if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		if (file_exists(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 		|| (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 		{
 			
@@ -779,6 +789,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{
 					directory_destroy(working_directory + "custom_characters/" + string(downloaded_character_name));
+					directory_destroy(cache_directory + "custom_characters/" + string(downloaded_character_name));
 					
 					#region /* After deleting character, go to previous character, so you don't accidentally go to a undefined character */
 					global.character_index[0] = clamp(global.character_index[0] - 1, 0, ds_list_size(global.all_loaded_characters) - 1);
@@ -1027,8 +1038,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		#region /* The level have been successfully downloaded, so delete temporary folders and zip files now */
 		if (delete_file_after_download)
 		{
-			file_delete(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy the unzipped file first */
-			directory_destroy(working_directory + "\\downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
+			file_delete(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy the unzipped file first */
+			directory_destroy(cache_directory + "\\downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
 		}
 		#endregion /* The level have been successfully downloaded, so delete temporary folders and zip files now END */
 		
@@ -1248,15 +1259,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			file_delete(working_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy any leftover files in temporary folder */
-			directory_destroy(working_directory + "\\downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
+			file_delete(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy any leftover files in temporary folder */
+			directory_destroy(cache_directory + "\\downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
 			menu = "searching_for_id_back";
 		}
 	}
 	#endregion /* Show Download Failed message END */
 	
 	else
-	
 	if (menu == "searching_for_id_back")
 	{
 		search_for_id_still = false;

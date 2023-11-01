@@ -705,7 +705,7 @@ if (global.actually_play_edited_level == false)
 					controller_y -= controller_view_speed;
 				}
 			}
-			if (gamepad_axis_value(global.player_slot[1], gp_axisrv) > 0)
+			if (gamepad_axis_value(global.player_slot[1], gp_axisrv) > +0.3)
 			|| (global.controls_used_for_menu_navigation != "controller")
 			&& (key_down)
 			&& (!key_up)
@@ -720,7 +720,7 @@ if (global.actually_play_edited_level == false)
 					controller_y += controller_view_speed;
 				}
 			}
-			if (gamepad_axis_value(global.player_slot[1], gp_axisrh) < 0)
+			if (gamepad_axis_value(global.player_slot[1], gp_axisrh) < -0.3)
 			|| (global.controls_used_for_menu_navigation != "controller")
 			&& (key_left)
 			&& (!key_right)
@@ -735,7 +735,7 @@ if (global.actually_play_edited_level == false)
 					controller_x -= controller_view_speed;
 				}
 			}
-			if (gamepad_axis_value(global.player_slot[1], gp_axisrh) > 0)
+			if (gamepad_axis_value(global.player_slot[1], gp_axisrh) > +0.3)
 			|| (global.controls_used_for_menu_navigation != "controller")
 			&& (key_right)
 			&& (!key_left)

@@ -321,14 +321,14 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	{
 		if (keyboard_check_pressed(vk_up))
 		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
 		{
 			menu = ok_menu_string;
 		}
 		else
 		if (keyboard_check_pressed(vk_down))
 		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
 		{
 			menu = cancel_menu_string;
 		}

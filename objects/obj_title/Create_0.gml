@@ -8,6 +8,13 @@ scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
 loading_assets = false;
 allowed_to_load_template_level = false;
+masked_username = "";
+masked_character_name = "";
+masked_level_name = "";
+thumbnail_level_name = "";
+thumbnail_level_description = "";
+thumbnail_level_id = "";
+thumbnail_level_username = "";
 
 information_menu_open = false; /* If the information menu is opened or not */
 
@@ -22,8 +29,6 @@ key_right = noone;
 
 thumbnail_clear_check[0] = noone;
 thumbnail_level_id[0] = "";
-
-directory_destroy(working_directory + "levels");
 
 character_portrait_for_player_update_directory[1] = false;
 character_portrait_for_player_update_directory[2] = false;
@@ -293,7 +298,12 @@ lives = 5; /* Starting lives */
 #region /* If title screen should start at the level editor menu or the main menu */
 if (global.automatically_play_downloaded_level)
 {
-	directory_destroy(working_directory + "custom_levels/" + string(global.level_name));
+	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/background");
+	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/data");
+	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/sound");
+	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/tilesets");
+	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name));
+	global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
 	menu = "online_download_list_load";
 }
 else

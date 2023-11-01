@@ -2,7 +2,6 @@ function scr_set_controls_used_to_navigate()
 {
 	
 	#region /* Set what controls are used to navigate the game */
-	
 	if (global.controls_used_for_menu_navigation != "keyboard")
 	{
 		if (keyboard_check(vk_anykey)) /* If pressing keyboard keys, then set "keyboard" as the navigation method */
@@ -72,10 +71,14 @@ function scr_set_controls_used_to_navigate()
 			|| (gamepad_button_check(global.player_slot[1], gp_start))
 			|| (gamepad_button_check(global.player_slot[1], gp_stickl))
 			|| (gamepad_button_check(global.player_slot[1], gp_stickr))
-			|| (gamepad_axis_value(global.player_slot[1], gp_axislh) <> 0)
-			|| (gamepad_axis_value(global.player_slot[1], gp_axislv) <> 0)
-			|| (gamepad_axis_value(global.player_slot[1], gp_axisrh) <> 0)
-			|| (gamepad_axis_value(global.player_slot[1], gp_axisrv) <> 0)
+			|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < -0.3)
+			|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
+			|| (gamepad_axis_value(global.player_slot[1], gp_axisrh) < -0.3)
+			|| (gamepad_axis_value(global.player_slot[1], gp_axisrv) < -0.3)
+			|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > +0.3)
+			|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
+			|| (gamepad_axis_value(global.player_slot[1], gp_axisrh) > +0.3)
+			|| (gamepad_axis_value(global.player_slot[1], gp_axisrv) > +0.3)
 			{
 				if (instance_exists(obj_camera))
 				{
@@ -93,7 +96,6 @@ function scr_set_controls_used_to_navigate()
 			}
 		}
 	}
-	
 	#endregion /* Set what controls are used to navigate the game END */
 	
 }

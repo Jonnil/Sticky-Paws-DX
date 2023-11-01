@@ -5,7 +5,7 @@ function scr_select_custom_level_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var max_custom_levels = 180; /* You should be able to store 180 custom levels, these are both levels you have made, and levels you have downloaded */
-	var separate_created_and_downloaded_levels = false;
+	var separate_created_and_downloaded_level = false;
 	if (ds_list_size(global.all_loaded_custom_levels) - 1 >= max_custom_levels)
 	{
 		var max_custom_levels_reached = true;
@@ -99,7 +99,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "upload_rules_back")
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
-		&& (menu != "level_editor_downloaded_levels")
+		&& (menu != "level_editor_downloaded_level")
 		{
 			menu_delay = 3;
 			if (global.select_level_index - row < 0)
@@ -158,7 +158,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "upload_rules_back")
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
-		&& (menu != "level_editor_downloaded_levels")
+		&& (menu != "level_editor_downloaded_level")
 		{
 			menu_delay = 3;
 			if (global.select_level_index + row > ds_list_size(global.thumbnail_sprite) - 1)
@@ -202,7 +202,7 @@ function scr_select_custom_level_menu()
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
-	&& (menu != "level_editor_downloaded_levels")
+	&& (menu != "level_editor_downloaded_level")
 	{
 		menu_delay = 3;
 		if (global.select_level_index - 1 < 0)
@@ -235,7 +235,7 @@ function scr_select_custom_level_menu()
 	&& (menu != "upload_rules_back")
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
-	&& (menu != "level_editor_downloaded_levels")
+	&& (menu != "level_editor_downloaded_level")
 	{
 		menu_delay = 3;
 		if (global.select_level_index + 1 > ds_list_size(global.thumbnail_sprite) - 1)
@@ -270,7 +270,7 @@ function scr_select_custom_level_menu()
 		&& (menu != "upload_rules_back")
 		&& (menu != "upload_rules_do_not_show")
 		&& (menu != "upload_rules")
-		&& (menu != "level_editor_downloaded_levels")
+		&& (menu != "level_editor_downloaded_level")
 		{
 			
 			#region /* Create New Level */
@@ -350,11 +350,11 @@ function scr_select_custom_level_menu()
 	{
 		
 		#region /* Downloaded Levels Button */
-		if (separate_created_and_downloaded_levels)
+		if (separate_created_and_downloaded_level)
 		{
-			draw_menu_button(display_get_gui_width() * 0.5, 0, l10n_text("Downloaded Levels"), "level_editor_downloaded_levels", "level_editor_downloaded_levels");
+			draw_menu_button(display_get_gui_width() * 0.5, 0, l10n_text("Downloaded Levels"), "level_editor_downloaded_level", "level_editor_downloaded_level");
 			draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 + 20, + 21, 1, 1, 0, c_white, 1);
-			if (menu == "level_editor_downloaded_levels")
+			if (menu == "level_editor_downloaded_level")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_sub_menu == false)
@@ -376,9 +376,9 @@ function scr_select_custom_level_menu()
 				level_editor_template_select = false;
 				global.select_level_index = 0;
 				lerp_on = true;
-				menu = "level_editor_downloaded_levels";
+				menu = "level_editor_downloaded_level";
 			}
-			if (menu == "level_editor_downloaded_levels")
+			if (menu == "level_editor_downloaded_level")
 			&& (key_left)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
@@ -399,12 +399,12 @@ function scr_select_custom_level_menu()
 					menu_delay = 3;
 					can_navigate = true;
 					select_custom_level_menu_open = true;
-					menu = "level_editor_downloaded_levels";
+					menu = "level_editor_downloaded_level";
 					scroll_to = floor(global.select_level_index / row);
 					lerp_on = true;
 				}
 			}
-			if (menu == "level_editor_downloaded_levels")
+			if (menu == "level_editor_downloaded_level")
 			&& (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
@@ -419,7 +419,7 @@ function scr_select_custom_level_menu()
 				scroll_to = floor(global.select_level_index / row);
 				lerp_on = true;
 			}
-			if (menu == "level_editor_downloaded_levels")
+			if (menu == "level_editor_downloaded_level")
 			&& (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (show_level_editor_corner_menu)
@@ -431,7 +431,7 @@ function scr_select_custom_level_menu()
 				scroll_to = floor(global.select_level_index / row);
 				lerp_on = true;
 			}
-			if (menu == "level_editor_downloaded_levels")
+			if (menu == "level_editor_downloaded_level")
 			{
 				open_sub_menu = false;
 				show_level_editor_corner_menu = true;

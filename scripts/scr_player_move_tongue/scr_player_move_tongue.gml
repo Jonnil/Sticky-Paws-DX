@@ -30,9 +30,9 @@ function scr_player_move_tongue()
 					{
 						xx = instance_nearest(x, y, obj_player).x;
 						yy = instance_nearest(x, y, obj_player).y;
-						xx[2] = instance_nearest(x, y, obj_follow_mouse).x;
+						xx2 = instance_nearest(x, y, obj_follow_mouse).x;
 						yy2 = instance_nearest(x, y, obj_follow_mouse).y;
-						direction = point_direction(xx, yy, xx[2], yy2);
+						direction = point_direction(xx, yy, xx2, yy2);
 					}
 				}
 				#endregion /* Use tongue with mouse click END */

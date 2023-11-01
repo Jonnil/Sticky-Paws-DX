@@ -126,7 +126,7 @@ function scr_save_level()
 		
 		if (level_id != "") /* Update a list of downloaded levels that you have finished */
 		{
-			ini_write_real("finished_downloaded_levels", string(level_id), true);
+			ini_write_real("finished_downloaded_level", string(level_id), true);
 		}
 		
 		ini_write_real(level_name, "lives_until_assist", global.lives_until_assist);

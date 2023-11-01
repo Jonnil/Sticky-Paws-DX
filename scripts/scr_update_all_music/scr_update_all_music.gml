@@ -4,7 +4,7 @@ function scr_update_all_music()
 	#region /* Get default music if they exist */
 	if (global.character_select_in_this_menu == "level_editor")
 	{
-		ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_open(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		var default_music_overworld = ini_read_string("info", "default_music_overworld", "level1");
 		var default_music_underwater = ini_read_string("info", "default_music_underwater", "level1");
 		var default_ambience_overworld = ini_read_string("info", "default_ambience_overworld", "level1");
@@ -49,10 +49,10 @@ function scr_update_all_music()
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/music.ogg"))
+	if (file_exists(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/music.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
-		global.music = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/music.ogg");
+		global.music = audio_create_stream(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/music.ogg");
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor" && default_music_overworld != noone)
@@ -78,10 +78,10 @@ function scr_update_all_music()
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/music_underwater.ogg"))
+	if (file_exists(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/music_underwater.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
-		global.music_underwater = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/music_underwater.ogg");
+		global.music_underwater = audio_create_stream(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/music_underwater.ogg");
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor" && default_music_underwater != noone)
@@ -107,10 +107,10 @@ function scr_update_all_music()
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/ambience.ogg"))
+	if (file_exists(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/ambience.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
-		global.ambience = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/ambience.ogg");
+		global.ambience = audio_create_stream(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/ambience.ogg");
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor" && default_ambience_overworld != noone)
@@ -136,10 +136,10 @@ function scr_update_all_music()
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/ambience_underwater.ogg"))
+	if (file_exists(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/ambience_underwater.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
-		global.ambience_underwater = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/ambience_underwater.ogg");
+		global.ambience_underwater = audio_create_stream(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/ambience_underwater.ogg");
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor" && default_ambience_underwater != noone)
@@ -165,10 +165,10 @@ function scr_update_all_music()
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg"))
+	if (file_exists(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
-		global.level_clear_melody = audio_create_stream(working_directory + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
+		global.level_clear_melody = audio_create_stream(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/clear_melody.ogg");
 	}
 	else
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
@@ -176,9 +176,9 @@ function scr_update_all_music()
 		global.level_clear_melody = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
 	}
 	else
-	if (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
+	if (file_exists(global.use_cache_or_working + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg"))
 	{
-		global.level_clear_melody = audio_create_stream(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
+		global.level_clear_melody = audio_create_stream(global.use_cache_or_working + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/clear_melody.ogg");
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor" && default_clear_melody != noone)

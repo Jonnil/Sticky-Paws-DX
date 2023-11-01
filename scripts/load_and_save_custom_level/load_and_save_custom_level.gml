@@ -14,7 +14,7 @@ function scr_load_object_placement_json()
 			var directories = ["background", "data", "sound", "tilesets"];
 			for (var i = 0; i < array_length_1d(directories); i++)
 			{
-				var dir_path = working_directory + "custom_levels/" + string(global.level_name) + "/" + directories[i];
+				var dir_path = global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/" + directories[i];
 				if (!directory_exists(dir_path))
 					directory_create(dir_path);
 			}
@@ -25,7 +25,7 @@ function scr_load_object_placement_json()
 	if (load_main_game_level)
 		file_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.json";
 	else if (global.level_name != "")
-		file_path = working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json";
+		file_path = global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json";
 	
 	if (file_exists(file_path))
 	{
@@ -129,7 +129,7 @@ function scr_save_custom_level_json()
 	{
 		
 		/* Create directory for saving custom levels */
-		if (global.level_name != "" && !file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini")) directory_create(working_directory + "custom_levels/" + string(global.level_name));
+		if (!global.automatically_play_downloaded_level && global.level_name != "" && !file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini")) directory_create(working_directory + "custom_levels/" + string(global.level_name));
 		
 		var file
 		

@@ -10,10 +10,10 @@ var key_left = (keyboard_check_pressed(vk_left))
 || (gamepad_button_check_pressed(global.player_slot[2], gp_padl))
 || (gamepad_button_check_pressed(global.player_slot[3], gp_padl))
 || (gamepad_button_check_pressed(global.player_slot[4], gp_padl))
-|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < 0)
-|| (gamepad_axis_value(global.player_slot[2], gp_axislh) < 0)
-|| (gamepad_axis_value(global.player_slot[3], gp_axislh) < 0)
-|| (gamepad_axis_value(global.player_slot[4], gp_axislh) < 0);
+|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < -0.3)
+|| (gamepad_axis_value(global.player_slot[2], gp_axislh) < -0.3)
+|| (gamepad_axis_value(global.player_slot[3], gp_axislh) < -0.3)
+|| (gamepad_axis_value(global.player_slot[4], gp_axislh) < -0.3);
 
 var key_right = (keyboard_check_pressed(vk_right))
 || (keyboard_check_pressed(ord("D")))
@@ -21,10 +21,10 @@ var key_right = (keyboard_check_pressed(vk_right))
 || (gamepad_button_check_pressed(global.player_slot[2], gp_padr))
 || (gamepad_button_check_pressed(global.player_slot[3], gp_padr))
 || (gamepad_button_check_pressed(global.player_slot[4], gp_padr))
-|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > 0)
-|| (gamepad_axis_value(global.player_slot[2], gp_axislh) > 0)
-|| (gamepad_axis_value(global.player_slot[3], gp_axislh) > 0)
-|| (gamepad_axis_value(global.player_slot[4], gp_axislh) > 0);
+|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > +0.3)
+|| (gamepad_axis_value(global.player_slot[2], gp_axislh) > +0.3)
+|| (gamepad_axis_value(global.player_slot[3], gp_axislh) > +0.3)
+|| (gamepad_axis_value(global.player_slot[4], gp_axislh) > +0.3);
 #endregion /* Keyboard Controls END */
 
 xx = lerp(xx, get_window_width * 0.5, 0.1);

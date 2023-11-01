@@ -12,6 +12,7 @@ function scr_draw_upload_level_menu()
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
+	var upload_level_path = working_directory + "custom_levels/" + string(global.level_name); /* Path will be used many times, and I don't want it to come up too many times in search, it will only check in working directory */
 	
 	#region /* How many tags */
 	var how_may_tags = 0;
@@ -102,7 +103,7 @@ function scr_draw_upload_level_menu()
 					global.actually_play_edited_level = false;
 					global.play_edited_level = false;
 					menu_delay = 3;
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(upload_level_path + "/data/level_information.ini");
 					if (ini_key_exists("info", "clear_check") && skip_clear_check == false)
 					|| (skip_clear_check)
 					{
@@ -115,7 +116,7 @@ function scr_draw_upload_level_menu()
 								{
 							
 									#region /* loads tags from level_information.ini */
-									ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+									ini_open(upload_level_path + "/data/level_information.ini");
 									tag_art = ini_read_real("tags", "tag_art", false);
 									tag_boss_battle = ini_read_real("tags", "tag_boss_battle", false);
 									tag_dont_move = ini_read_real("tags", "tag_dont_move", false);
@@ -322,7 +323,7 @@ function scr_draw_upload_level_menu()
 				{
 					if (global.level_name != "")
 					{
-						ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						ini_open(upload_level_path + "/data/level_information.ini");
 					}
 					ini_write_real("info", "clear_check", false); /* Set "clear check" to false when you click on "clear check yes" just in case it isn't already false when doing a "clear check" */
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -543,9 +544,9 @@ function scr_draw_upload_level_menu()
 		/* Draw Level Name */ scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, string(global.level_name), global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Draw Level Description */
-		if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		if (file_exists(upload_level_path + "/data/level_information.ini"))
 		{
-			ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_open(upload_level_path + "/data/level_information.ini");
 			if (ini_key_exists("info", "level_description"))
 			{
 				scr_draw_text_outlined(get_window_width * 0.5, draw_description_y, string(ini_read_string("info", "level_description", "")), global.default_text_size * 1.25, c_black, c_white, 1);
@@ -597,9 +598,9 @@ function scr_draw_upload_level_menu()
 		
 		#region /* Draw who made the level */
 		draw_set_halign(fa_right);
-		if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		if (file_exists(upload_level_path + "/data/level_information.ini"))
 		{
-			ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_open(upload_level_path + "/data/level_information.ini");
 			if (ini_key_exists("info", "username"))
 			&& (ini_read_string("info", "username", "") != "")
 			{
@@ -667,9 +668,9 @@ function scr_draw_upload_level_menu()
 				global.actually_play_edited_level = false;
 				global.level_description = string(global.level_name);
 				
-				if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				if (file_exists(upload_level_path + "/data/level_information.ini"))
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(upload_level_path + "/data/level_information.ini");
 					keyboard_string = ini_read_string("info", "level_description", "");
 					ini_close();
 				}
@@ -772,7 +773,7 @@ function scr_draw_upload_level_menu()
 		{
 			
 			#region /* If at any point the game checks that the level isn't clear checked, then go to the clear check menu */
-			ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_open(upload_level_path + "/data/level_information.ini");
 			if (ini_read_real("info", "clear_check", false) == false)
 			&& (skip_clear_check == false)
 			{
@@ -868,14 +869,14 @@ function scr_draw_upload_level_menu()
 						ini_open(working_directory + "save_files/custom_level_save.ini");
 						ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
 						ini_close();
-						scr_copy_move_files(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "custom_levels/" + string(global.level_name), true);
+						scr_copy_move_files(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), upload_level_path, true);
 						scr_load_custom_level_initializing();
 						global.go_to_menu_when_going_back_to_title = "upload_edit_name";
 						menu = "load_custom_level";
 						level_editor_edit_name = false;
 						if (global.level_name != "")
 						{
-							ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+							ini_open(upload_level_path + "/data/level_information.ini");
 							ini_write_string("info", "level_name", global.level_name);
 							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						}
@@ -1009,7 +1010,7 @@ function scr_draw_upload_level_menu()
 					menu_delay = 3;
 					
 					/* Save description to level_information.ini */
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(upload_level_path + "/data/level_information.ini");
 					ini_write_string("info", "level_description", string(global.level_description));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
@@ -1206,7 +1207,7 @@ function scr_draw_upload_level_menu()
 			&& (open_dropdown == false)
 			{
 				/* Save tags to level_information.ini */
-				ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_open(upload_level_path + "/data/level_information.ini");
 				if (ini_section_exists("tags"))
 				{
 					ini_section_delete("tags"); /* Delete every tag before saving tags, so there doesn't have to be a bunch of tags not used */
@@ -1363,13 +1364,12 @@ function scr_draw_upload_level_menu()
 		#endregion /* Upload Level No END */
 		
 		#region /* Upload Level Yes */
-		if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		if (file_exists(upload_level_path + "/data/level_information.ini"))
 		{
-			if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json"))
-			|| (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt"))
+			if (file_exists(upload_level_path + "/data/object_placement_all.json"))
 			{
-				if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/thumbnail.png"))
-				|| (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png"))
+				if (file_exists(upload_level_path + "/thumbnail.png"))
+				|| (file_exists(upload_level_path + "/automatic_thumbnail.png"))
 				{
 					/* Essential files does exist, so upload now */
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_yes_y - 42, get_window_width * 0.5 + 370, upload_level_yes_y + 42))
@@ -1408,19 +1408,18 @@ function scr_draw_upload_level_menu()
 				}
 			}
 		}
-		if (!file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		if (!file_exists(upload_level_path + "/data/level_information.ini"))
 		{
 			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("level_information.ini is missing"), global.default_text_size * 1.5, c_black, c_white, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y, l10n_text("level_information.ini is missing"), global.default_text_size * 1.5, c_black, c_red, scr_wave(0, 1, 1, 0));
 		}
-		if (!file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json"))
-		&& (!file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt"))
+		if (!file_exists(upload_level_path + "/data/object_placement_all.json"))
 		{
 			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y + 42, l10n_text("object_placement_all.json is missing"), global.default_text_size * 1.5, c_black, c_white, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y + 42, l10n_text("object_placement_all.json is missing"), global.default_text_size * 1.5, c_black, c_red, scr_wave(0, 1, 1, 0));
 		}
-		if (!file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/thumbnail.png"))
-		&& (!file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png"))
+		if (!file_exists(upload_level_path + "/thumbnail.png"))
+		&& (!file_exists(upload_level_path + "/automatic_thumbnail.png"))
 		{
 			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y + 42 + 42, l10n_text("thumbnail.png is missing"), global.default_text_size * 1.5, c_black, c_white, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, upload_level_yes_y + 42 + 42, l10n_text("thumbnail.png is missing"), global.default_text_size * 1.5, c_black, c_red, scr_wave(0, 1, 1, 0));
@@ -1468,13 +1467,12 @@ function scr_draw_upload_level_menu()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				/* Check if essential files exists or not */
-				if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				if (file_exists(upload_level_path + "/data/level_information.ini"))
 				{
-					if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json"))
-					|| (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.txt"))
+					if (file_exists(upload_level_path + "/data/object_placement_all.json"))
 					{
-						if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/thumbnail.png"))
-						|| (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png"))
+						if (file_exists(upload_level_path + "/thumbnail.png"))
+						|| (file_exists(upload_level_path + "/automatic_thumbnail.png"))
 						{
 							/* Essential files does exist, so upload now */
 							menu = "uploading_level"; /* Go to uploading level loading screen */

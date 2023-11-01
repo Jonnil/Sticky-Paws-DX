@@ -306,7 +306,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			}
 			
 			if (player_menu[what_player] = "select_voicepack")
-			|| (global.controls_used_for_menu_navigation = "mouse")
+			|| (global.controls_used_for_menu_navigation == "mouse")
 			{
 				if (player_accept_selection == false)
 				{
@@ -396,7 +396,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		
 		#region /* Player Show left and right arrows when selecting character */
 		if (player_menu[what_player] = "select_character")
-		|| (global.controls_used_for_menu_navigation = "mouse")
+		|| (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (player_accept_selection == false)
 			{
@@ -517,7 +517,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	&& (can_input_player2_name == false)
 	&& (can_input_player3_name == false)
 	&& (can_input_player4_name == false)
-	|| (global.controls_used_for_menu_navigation = "mouse")
+	|| (global.controls_used_for_menu_navigation == "mouse")
 	&& (can_input_player1_name == false)
 	&& (can_input_player2_name == false)
 	&& (can_input_player3_name == false)

@@ -81,6 +81,7 @@ function scr_draw_online_download_list()
 					if (global.automatically_play_downloaded_level)
 					{
 						global.automatically_play_downloaded_level = false;
+						global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
 						menu = "level_editor";
 						select_custom_level_menu_open = false;
 					}
@@ -225,6 +226,7 @@ function scr_draw_online_download_list()
 								
 								#region /* Go to download menu */
 								global.automatically_play_downloaded_level = false; /* You will be taken to a menu showing you different options what you want to do with the downloaded file */
+								global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
 								global.search_id = string_upper(draw_download_id);
 								keyboard_string = string_upper(draw_download_id);
 								search_id = string_upper(draw_download_id); /* Then need to set search ID */

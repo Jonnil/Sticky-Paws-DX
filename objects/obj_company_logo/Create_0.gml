@@ -22,7 +22,7 @@ global.link_to_website_guide = "https://www.jonnil.games/sticky-paws-guide";
 global.link_to_changelog_history = "https://www.jonnil.games/sticky-paws-changelog"
 global.link_to_update_schedule = "https://www.jonnil.games/sticky-paws-update-schedule";
 
-global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Nintendo Switch, \n and now it's finally out. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil"; /* Update this text explaining what is new in each update */
+global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Nintendo Switch, \n but there is still more to be done. \n This is just the latest snapshot version. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil"; /* Update this text explaining what is new in each update */
 
 global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle */
 
@@ -273,6 +273,7 @@ global.all_loaded_title_backgrounds = ds_list_create();
 global.all_loaded_title_logos = ds_list_create();
 global.automatically_pause_when_window_is_unfocused = true; /* Whenever you unfocus the window by clicking off the window, the game pauses by itself */
 global.automatically_play_downloaded_level = false; /* If the player wants to immediately play the downloaded level, then set this variable to true */
+global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
 global.background_layer_x_scroll = 1;
 global.background_layer_y_scroll = 1;
 global.character_select_in_this_menu = "main_game"; /* In what menu character select is going to appear in */
@@ -340,10 +341,11 @@ global.go_to_menu_when_going_back_to_title = ""; /* Sometimes you want to go to 
 device_mouse_dbclick_enable(false); /* Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled */
 ds_list_add(global.all_loaded_custom_levels, "");
 font_add_enable_aa(false);
-gamepad_set_axis_deadzone(0, 0.50);
-gamepad_set_axis_deadzone(1, 0.50);
-gamepad_set_axis_deadzone(2, 0.50);
-gamepad_set_axis_deadzone(3, 0.50);
+gamepad_set_axis_deadzone(0, 0.5);
+gamepad_set_axis_deadzone(1, 0.5);
+gamepad_set_axis_deadzone(2, 0.5);
+gamepad_set_axis_deadzone(3, 0.5);
+gamepad_set_axis_deadzone(4, 0.5);
 window_set_cursor(cr_none);
 
 #region /* Set Max Players */

@@ -19,7 +19,7 @@
   "exportToGame": true,
   "extensionVersion": "1.4.5",
   "files": [
-    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"Steamworks.dll","constants":[
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"ov_friends","hidden":false,"value":"0",},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"ov_community","hidden":false,"value":"1",},
         {"resourceType":"GMExtensionConstant","resourceVersion":"1.0","name":"ov_players","hidden":false,"value":"2",},
@@ -1144,7 +1144,7 @@
         {"resourceType":"GMProxyFile","resourceVersion":"1.0","name":"Steamworks.so","TargetMask":7,},
         {"resourceType":"GMProxyFile","resourceVersion":"1.0","name":"Steamworks_x64.dll","TargetMask":6,},
       ],"uncompress":false,"usesRunnerInterface":true,},
-    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":2,"filename":"libsteam_api.dylib","final":"","functions":[],"init":"","kind":4,"order":[],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"libsteam_api.dylib","constants":[],"copyToTargets":2,"filename":"libsteam_api.dylib","final":"","functions":[],"init":"","kind":4,"order":[],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
   ],
   "gradleinject": "",
   "hasConvertedCodeInjection": true,

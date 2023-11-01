@@ -357,8 +357,16 @@ function scr_debug_screen()
 		//	scr_draw_text_outlined(32, debug_text_y, "obj_camera.hud_show_lives_timer: " + string(obj_camera.hud_show_lives_timer), global.default_text_size, c_black, c_white);
 		//	debug_text_y += 20;
 		//}
-		//scr_draw_text_outlined(32, debug_text_y, "temp_directory: " + string(temp_directory + global.game_name_appdata), global.default_text_size, c_black, c_white);
-		//debug_text_y += 20;
-		
+		scr_draw_text_outlined(32, debug_text_y, "controls_used_for_menu_navigation: " + string(global.controls_used_for_menu_navigation), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "temp_directory: " + string(temp_directory), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "cache_directory: " + string(cache_directory), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		if (global.use_cache_or_working == cache_directory)
+		{
+			scr_draw_text_outlined(32, debug_text_y, "use_cache_or_working: cache_directory", global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
 	}
 }

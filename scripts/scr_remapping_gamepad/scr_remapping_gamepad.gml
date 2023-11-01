@@ -208,104 +208,104 @@ function scr_remapping_gamepad()
 	}
 	else
 	if (remapping_player == 0)
-	&& (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
+	&& (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
 	|| (remapping_player == 1)
-	&& (gamepad_axis_value(global.player_slot[2], gp_axislv) < 0)
+	&& (gamepad_axis_value(global.player_slot[2], gp_axislv) < -0.3)
 	|| (remapping_player == 2)
-	&& (gamepad_axis_value(global.player_slot[3], gp_axislv) < 0)
+	&& (gamepad_axis_value(global.player_slot[3], gp_axislv) < -0.3)
 	|| (remapping_player == 3)
-	&& (gamepad_axis_value(global.player_slot[4], gp_axislv) < 0)
+	&& (gamepad_axis_value(global.player_slot[4], gp_axislv) < -0.3)
 	{
 		last_key = JOYSTICK_VALUE.JOYLEFT_UP;
 		can_remap_key = true;
 	}
 	else
 	if (remapping_player == 0)
-	&& (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
+	&& (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
 	|| (remapping_player == 1)
-	&& (gamepad_axis_value(global.player_slot[2], gp_axislv) > 0)
+	&& (gamepad_axis_value(global.player_slot[2], gp_axislv) > +0.3)
 	|| (remapping_player == 2)
-	&& (gamepad_axis_value(global.player_slot[3], gp_axislv) > 0)
+	&& (gamepad_axis_value(global.player_slot[3], gp_axislv) > +0.3)
 	|| (remapping_player == 3)
-	&& (gamepad_axis_value(global.player_slot[4], gp_axislv) > 0)
+	&& (gamepad_axis_value(global.player_slot[4], gp_axislv) > +0.3)
 	{
 		last_key = JOYSTICK_VALUE.JOYLEFT_DOWN;
 		can_remap_key = true;
 	}
 	else
 	if (remapping_player == 0)
-	&& (gamepad_axis_value(global.player_slot[1], gp_axislh) < 0)
+	&& (gamepad_axis_value(global.player_slot[1], gp_axislh) < -0.3)
 	|| (remapping_player == 1)
-	&& (gamepad_axis_value(global.player_slot[2], gp_axislh) < 0)
+	&& (gamepad_axis_value(global.player_slot[2], gp_axislh) < -0.3)
 	|| (remapping_player == 2)
-	&& (gamepad_axis_value(global.player_slot[3], gp_axislh) < 0)
+	&& (gamepad_axis_value(global.player_slot[3], gp_axislh) < -0.3)
 	|| (remapping_player == 3)
-	&& (gamepad_axis_value(global.player_slot[4], gp_axislh) < 0)
+	&& (gamepad_axis_value(global.player_slot[4], gp_axislh) < -0.3)
 	{
 		last_key = JOYSTICK_VALUE.JOYLEFT_LEFT;
 		can_remap_key = true;
 	}
 	else
 	if (remapping_player == 0)
-	&& (gamepad_axis_value(global.player_slot[1], gp_axislh) > 0)
+	&& (gamepad_axis_value(global.player_slot[1], gp_axislh) > +0.3)
 	|| (remapping_player == 1)
-	&& (gamepad_axis_value(global.player_slot[2], gp_axislh) > 0)
+	&& (gamepad_axis_value(global.player_slot[2], gp_axislh) > +0.3)
 	|| (remapping_player == 2)
-	&& (gamepad_axis_value(global.player_slot[3], gp_axislh) > 0)
+	&& (gamepad_axis_value(global.player_slot[3], gp_axislh) > +0.3)
 	|| (remapping_player == 3)
-	&& (gamepad_axis_value(global.player_slot[4], gp_axislh) > 0)
+	&& (gamepad_axis_value(global.player_slot[4], gp_axislh) > +0.3)
 	{
 		last_key = JOYSTICK_VALUE.JOYLEFT_RIGHT;
 		can_remap_key = true;
 	}
 	else
 	if (remapping_player == 0)
-	&& (gamepad_axis_value(global.player_slot[1], gp_axisrv) < 0)
+	&& (gamepad_axis_value(global.player_slot[1], gp_axisrv) < -0.3)
 	|| (remapping_player == 1)
-	&& (gamepad_axis_value(global.player_slot[2], gp_axisrv) < 0)
+	&& (gamepad_axis_value(global.player_slot[2], gp_axisrv) < -0.3)
 	|| (remapping_player == 2)
-	&& (gamepad_axis_value(global.player_slot[3], gp_axisrv) < 0)
+	&& (gamepad_axis_value(global.player_slot[3], gp_axisrv) < -0.3)
 	|| (remapping_player == 3)
-	&& (gamepad_axis_value(global.player_slot[4], gp_axisrv) < 0)
+	&& (gamepad_axis_value(global.player_slot[4], gp_axisrv) < -0.3)
 	{
 		last_key = JOYSTICK_VALUE.JOYRIGHT_UP;
 		can_remap_key = true;
 	}
 	else
 	if (remapping_player == 0)
-	&& (gamepad_axis_value(global.player_slot[1], gp_axisrv) > 0)
+	&& (gamepad_axis_value(global.player_slot[1], gp_axisrv) > +0.3)
 	|| (remapping_player == 1)
-	&& (gamepad_axis_value(global.player_slot[2], gp_axisrv) > 0)
+	&& (gamepad_axis_value(global.player_slot[2], gp_axisrv) > +0.3)
 	|| (remapping_player == 2)
-	&& (gamepad_axis_value(global.player_slot[3], gp_axisrv) > 0)
+	&& (gamepad_axis_value(global.player_slot[3], gp_axisrv) > +0.3)
 	|| (remapping_player == 3)
-	&& (gamepad_axis_value(global.player_slot[4], gp_axisrv) > 0)
+	&& (gamepad_axis_value(global.player_slot[4], gp_axisrv) > +0.3)
 	{
 		last_key = JOYSTICK_VALUE.JOYRIGHT_DOWN;
 		can_remap_key = true;
 	}
 	else
 	if (remapping_player == 0)
-	&& (gamepad_axis_value(global.player_slot[1], gp_axisrh) < 0)
+	&& (gamepad_axis_value(global.player_slot[1], gp_axisrh) < -0.3)
 	|| (remapping_player == 1)
-	&& (gamepad_axis_value(global.player_slot[2], gp_axisrh) < 0)
+	&& (gamepad_axis_value(global.player_slot[2], gp_axisrh) < -0.3)
 	|| (remapping_player == 2)
-	&& (gamepad_axis_value(global.player_slot[3], gp_axisrh) < 0)
+	&& (gamepad_axis_value(global.player_slot[3], gp_axisrh) < -0.3)
 	|| (remapping_player == 3)
-	&& (gamepad_axis_value(global.player_slot[4], gp_axisrh) < 0)
+	&& (gamepad_axis_value(global.player_slot[4], gp_axisrh) < -0.3)
 	{
 		last_key = JOYSTICK_VALUE.JOYRIGHT_LEFT;
 		can_remap_key = true;
 	}
 	else
 	if (remapping_player == 0)
-	&& (gamepad_axis_value(global.player_slot[1], gp_axisrh) > 0)
+	&& (gamepad_axis_value(global.player_slot[1], gp_axisrh) > +0.3)
 	|| (remapping_player == 1)
-	&& (gamepad_axis_value(global.player_slot[2], gp_axisrh) > 0)
+	&& (gamepad_axis_value(global.player_slot[2], gp_axisrh) > +0.3)
 	|| (remapping_player == 2)
-	&& (gamepad_axis_value(global.player_slot[3], gp_axisrh) > 0)
+	&& (gamepad_axis_value(global.player_slot[3], gp_axisrh) > +0.3)
 	|| (remapping_player == 3)
-	&& (gamepad_axis_value(global.player_slot[4], gp_axisrh) > 0)
+	&& (gamepad_axis_value(global.player_slot[4], gp_axisrh) > +0.3)
 	{
 		last_key = JOYSTICK_VALUE.JOYRIGHT_RIGHT;
 		can_remap_key = true;

@@ -34,7 +34,14 @@ if (lives <= 0)
 	if (game_over_text_y >= get_window_height * 0.5 - 190)
 	{
 		draw_menu_button(get_window_width * 0.5 - 370 - game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Continue"), "continue", "continue");
-		draw_menu_button(get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Quit to Map"), "quit", "quit", c_red);
+		if (global.character_select_in_this_menu == "level_editor")
+		{
+			draw_menu_button(get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Quit to Title"), "quit", "quit", c_red);
+		}
+		else
+		{
+			draw_menu_button(get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Quit to Map"), "quit", "quit", c_red);
+		}
 		
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
 		|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.left]))
@@ -61,7 +68,7 @@ if (lives <= 0)
 		|| (gamepad_button_check_pressed(global.player_slot[2], gp_padr))
 		|| (gamepad_button_check_pressed(global.player_slot[3], gp_padr))
 		|| (gamepad_button_check_pressed(global.player_slot[4], gp_padr))
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > 0)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > +0.3)
 		{
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
@@ -147,8 +154,15 @@ if (lives <= 0)
 			if (menu == "quit")
 			{
 				room_persistent = false; /* Turn OFF Room Persistency */
-				global.quit_level = true; /* Quit level and go to map screen */
-				room_goto(rm_world_map);
+				if (global.character_select_in_this_menu == "level_editor")
+				{
+					room_goto(rm_title);
+				}
+				else
+				{
+					global.quit_level = true; /* Quit level and go to map screen */
+					room_goto(rm_world_map);
+				}
 			}
 			else
 			{

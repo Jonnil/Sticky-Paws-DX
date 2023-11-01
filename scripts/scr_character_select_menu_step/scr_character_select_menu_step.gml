@@ -306,7 +306,7 @@ function scr_character_select_menu_step()
 			if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
 			|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
 			|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-			|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
+			|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
 			&& (menu_specific_joystick_delay[1] <= 0)
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -351,7 +351,7 @@ function scr_character_select_menu_step()
 			if (keyboard_check_pressed(global.player_[inp.key][1][1][action.down]))
 			|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.down]))
 			|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
-			|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
+			|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
 			&& (menu_specific_joystick_delay[1] <= 0)
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1022,62 +1022,62 @@ function scr_character_select_menu_step()
 		menu_delay = clamp(menu_delay - 1, 0, +infinity);
 		
 		#region /* Menu navigation with joystick */
-		if (gamepad_axis_value(global.player_slot[1], gp_axislv) < 0)
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < 0)
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > 0)
+		if (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < -0.3)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > +0.3)
 		{
 			if (menu_specific_joystick_delay[1] == 0)
 			{
 				menu_specific_joystick_delay[1] = 30;
 			}
 		}
-		if (gamepad_axis_value(global.player_slot[2], gp_axislv) < 0)
-		|| (gamepad_axis_value(global.player_slot[2], gp_axislv) > 0)
-		|| (gamepad_axis_value(global.player_slot[2], gp_axislh) < 0)
-		|| (gamepad_axis_value(global.player_slot[2], gp_axislh) > 0)
+		if (gamepad_axis_value(global.player_slot[2], gp_axislv) < -0.3)
+		|| (gamepad_axis_value(global.player_slot[2], gp_axislv) > +0.3)
+		|| (gamepad_axis_value(global.player_slot[2], gp_axislh) < -0.3)
+		|| (gamepad_axis_value(global.player_slot[2], gp_axislh) > +0.3)
 		{
 			if (menu_specific_joystick_delay[2] == 0)
 			{
 				menu_specific_joystick_delay[2] = 30;
 			}
 		}
-		if (gamepad_axis_value(global.player_slot[3], gp_axislv) < 0)
-		|| (gamepad_axis_value(global.player_slot[3], gp_axislv) > 0)
-		|| (gamepad_axis_value(global.player_slot[3], gp_axislh) < 0)
-		|| (gamepad_axis_value(global.player_slot[3], gp_axislh) > 0)
+		if (gamepad_axis_value(global.player_slot[3], gp_axislv) < -0.3)
+		|| (gamepad_axis_value(global.player_slot[3], gp_axislv) > +0.3)
+		|| (gamepad_axis_value(global.player_slot[3], gp_axislh) < -0.3)
+		|| (gamepad_axis_value(global.player_slot[3], gp_axislh) > +0.3)
 		{
 			if (menu_specific_joystick_delay[3] == 0)
 			{
 				menu_specific_joystick_delay[3] = 30;
 			}
 		}
-		if (gamepad_axis_value(global.player_slot[4], gp_axislv) < 0)
-		|| (gamepad_axis_value(global.player_slot[4], gp_axislv) > 0)
-		|| (gamepad_axis_value(global.player_slot[4], gp_axislh) < 0)
-		|| (gamepad_axis_value(global.player_slot[4], gp_axislh) > 0)
+		if (gamepad_axis_value(global.player_slot[4], gp_axislv) < -0.3)
+		|| (gamepad_axis_value(global.player_slot[4], gp_axislv) > +0.3)
+		|| (gamepad_axis_value(global.player_slot[4], gp_axislh) < -0.3)
+		|| (gamepad_axis_value(global.player_slot[4], gp_axislh) > +0.3)
 		{
 			if (menu_specific_joystick_delay[4] == 0)
 			{
 				menu_specific_joystick_delay[4] = 30;
 			}
 		}
-		if (gamepad_axis_value(global.player_slot[1], gp_axislv)= 0)
+		if (gamepad_axis_value(global.player_slot[1], gp_axislv) == 0)
 		&& (gamepad_axis_value(global.player_slot[1], gp_axislh)= 0)
 		{
 			menu_specific_joystick_delay[1] = 0;
 		}
-		if (gamepad_axis_value(global.player_slot[2], gp_axislv)= 0)
+		if (gamepad_axis_value(global.player_slot[2], gp_axislv) == 0)
 		&& (gamepad_axis_value(global.player_slot[2], gp_axislh)= 0)
 		{
 			menu_specific_joystick_delay[2] = 0;
 		}
-		if (gamepad_axis_value(global.player_slot[3], gp_axislv)= 0)
+		if (gamepad_axis_value(global.player_slot[3], gp_axislv) == 0)
 		&& (gamepad_axis_value(global.player_slot[3], gp_axislh)= 0)
 		{
 			menu_specific_joystick_delay[3] = 0;
 		}
-		if (gamepad_axis_value(global.player_slot[4], gp_axislv)= 0)
+		if (gamepad_axis_value(global.player_slot[4], gp_axislv) == 0)
 		&& (gamepad_axis_value(global.player_slot[4], gp_axislh)= 0)
 		{
 			menu_specific_joystick_delay[4] = 0;

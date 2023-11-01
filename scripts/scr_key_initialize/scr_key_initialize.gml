@@ -103,25 +103,13 @@ function scr_key_initialize(key, hold0_press1_release2 = 0, what_player = 1, thi
 		}
 		if (axis_index != noone)
 		{
-			switch (gp_button_value1) {
-				case JOYSTICK_VALUE.JOYLEFT_LEFT:
-				case JOYSTICK_VALUE.JOYLEFT_RIGHT:
-				case JOYSTICK_VALUE.JOYLEFT_DOWN:
-				case JOYSTICK_VALUE.JOYLEFT_UP:
-				case JOYSTICK_VALUE.JOYRIGHT_LEFT:
-				case JOYSTICK_VALUE.JOYRIGHT_RIGHT:
-				case JOYSTICK_VALUE.JOYRIGHT_DOWN:
-				case JOYSTICK_VALUE.JOYRIGHT_UP:
-					if (axis_direction == -1)
-					{
-						joy_1 = gamepad_axis_value(global.player_slot[what_player], axis_index) < 0;
-					}
-					else
-					if (axis_direction == +1)
-					{
-						joy_1 = gamepad_axis_value(global.player_slot[what_player], axis_index) > 0;
-					}
-					break;
+			if (axis_direction == -1)
+			{
+				joy_1 = gamepad_axis_value(global.player_slot[what_player], axis_index) < -0.3;
+			}
+			else
+			{
+				joy_1 = gamepad_axis_value(global.player_slot[what_player], axis_index) > +0.3;
 			}
 		}
 	}
@@ -141,24 +129,13 @@ function scr_key_initialize(key, hold0_press1_release2 = 0, what_player = 1, thi
 		}
 		if (axis_index != noone)
 		{
-			switch (gp_button_value2) {
-				case JOYSTICK_VALUE.JOYLEFT_LEFT:
-				case JOYSTICK_VALUE.JOYLEFT_RIGHT:
-				case JOYSTICK_VALUE.JOYLEFT_DOWN:
-				case JOYSTICK_VALUE.JOYLEFT_UP:
-				case JOYSTICK_VALUE.JOYRIGHT_LEFT:
-				case JOYSTICK_VALUE.JOYRIGHT_RIGHT:
-				case JOYSTICK_VALUE.JOYRIGHT_DOWN:
-				case JOYSTICK_VALUE.JOYRIGHT_UP:
-					if (axis_direction == -1)
-					{
-						joy_2 = gamepad_axis_value(global.player_slot[what_player], axis_index) < 0;
-					}
-					else
-					if (axis_direction == +1)
-					{
-						joy_2 = gamepad_axis_value(global.player_slot[what_player], axis_index) > 0;
-					}
+			if (axis_direction == -1)
+			{
+				joy_2 = gamepad_axis_value(global.player_slot[what_player], axis_index) < -0.3;
+			}
+			else
+			{
+				joy_2 = gamepad_axis_value(global.player_slot[what_player], axis_index) > +0.3;
 			}
 		}
 	}

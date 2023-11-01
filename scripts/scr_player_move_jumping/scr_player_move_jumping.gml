@@ -9,51 +9,40 @@ function scr_player_move_jumping()
 	{
 		buffer_jump = 10;
 	}
-
+	
 	if (buffer_jump > 0)
 	{
 		buffer_jump --;
 	}
-
+	
 	if (buffer_jump > 0)
 	&& (can_move)
 	&& (global.pause == false)
 	&& (key_jump_hold)
 	{
-	
+		
 		#region /* Drop down below semisolid platform */
 		if (key_crouch_hold)
-		&& (ground_pound == false)
+		&& (ground_pound == 0)
 		&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		&& (!place_meeting(x, y + 1, obj_wall))
 		|| (key_down)
-		&& (ground_pound == false)
+		&& (ground_pound == 0)
 		&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		&& (!place_meeting(x, y + 1, obj_wall))
 		{
+			on_ground = false;
 			can_ground_pound = false;
 			can_mid_air_jump = 10;
-			vspeed = 0;
-			y += 7;
+			vspeed = 0.01;
+			y += 8;
 		}
 		#endregion /* Drop down below semisolid platform END */
-	
+		
 		else
 		if (ground_pound == 0)
 		{
-			if (place_meeting(x, y + 1, obj_wall))
-			&& (crouch == false)
-			
-			|| (place_meeting(x, y + 1, obj_semisolid_platform))
-			&& (crouch == false)
-			&& (vspeed == 0)
-			
-			|| (place_meeting(x, y + 1, obj_wall))
-			&& (crouch)
-			&& (vspeed == 0)
-			
-			|| (place_meeting(x, y + 1, obj_semisolid_platform))
-			&& (crouch)
+			if (on_ground)
 			&& (vspeed == 0)
 			{
 				if (abs(hspeed) > (speed_max_run -1))
@@ -121,27 +110,18 @@ function scr_player_move_jumping()
 						vspeed = -1;
 					}
 				}
-			
+				
 				#region /* Smoke effect under player when jumping */
-				if (position_meeting(x - 16, bbox_bottom + 1, obj_wall))
-				|| (position_meeting(x - 16, bbox_bottom + 1, obj_semisolid_platform))
+				if (on_ground)
 				{
 					effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
-				}
-				if (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-				|| (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-				{
 					effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
-				}
-				if (position_meeting(x + 16, bbox_bottom + 1, obj_wall))
-				|| (position_meeting(x + 16, bbox_bottom + 1, obj_semisolid_platform))
-				{
 					effect_create_above(ef_smoke, x + 16, bbox_bottom, 0, c_white);
 				}
 				#endregion /* Smoke effect under player when jumping END */
-			
+				
 				image_index = 0;
-			
+				
 				#region /* Jump sound sfx */
 				if (jump >= 3)
 				&& (hold_item_in_hands == "")

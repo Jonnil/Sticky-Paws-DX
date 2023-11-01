@@ -72,7 +72,7 @@ if (global.actually_play_edited_level == false)
 			#region /* Item Objects */
 			if (current_object_category == "item")
 			{
-				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, true, global.resource_pack_sprite_basic_collectible, spr_wall, + 100, 1, 0, c_white,,,,,"Fish", "One of the most fundemental objects to include in a level!\nFish usually come in small groups, and can also be used to indicate a path");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, true, global.resource_pack_sprite_basic_collectible, spr_wall, + 100, 1, 0, c_white,,,,,"Fish", "One of the most fundemental objects to include in a level!\nFish usually come in small groups and can also be used to indicate a path");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, false, global.resource_pack_sprite_big_collectible, spr_wall, + 100, 1, 0, c_white,,,,,"Big Fish", "A collectible that can be a good way to make your level more fun");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_HEART, true, spr_heart, spr_wall, + 100, 1, 0, c_white,,,,,"Heart Balloon", "Gives you one extra hit");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP, true, global.resource_pack_sprite_invincibility_powerup, spr_wall, + 100, 1, 0, c_white,,,,,"Invincibility", "Temporarily turns you invincible.\nDuring the power-up's duration you become invulnerable to enemy attacks\nand will defeat almost any enemy you collide with!");

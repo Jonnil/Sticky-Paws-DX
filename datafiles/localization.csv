@@ -28,7 +28,7 @@ Level Editor,Level Editor,Nivåredigerare,レベル作り,Editor de nivel,Edytor
 Options,Options,Alternativ,設定,Opciones,Opcje
 Quit,Quit,Avsluta,終了,Salir,Wyjdź
 Fullscreen,Fullscreen,Fullskärm,フルスクリーン,Pantalla Completa,Pełny ekran
-Made by,Made by,Tillverkad av,,Hecho por,Zrobione przez
+Made by,Made by,Tillverkad av,.,Hecho por,Zrobione przez
 Loading,Loading,Läser in,ローディング中,Cargando,Wczytywanie
 Select your character!,Select your character!,Välj din karaktär!,キャラクターを選択してください!,Escoge tu Personaje!,Wybierz postać!
 Player 1 Join,Player 1 Join,Spelare 1 Gå med,プレイヤー1が参加する,Jugador 1 Unir,Dołącz jako gracz 1
@@ -63,7 +63,7 @@ Fill tool,Fill tool,Fyllningsverktyg,塗りつぶしツール,Llenar,Wypełnieni
 Hide buttons,Hide buttons,Dölj knappar,ボタンを見せない,Esconder botón,Ukryj przyciski
 Lock buttons,Lock buttons,Lås knappar,ロックボタン,,Zablokuj przyciski
 Wall Jump Panel - When a character doesn't have the wall jump ability lets even these characters wall jump,"Wall Jump Panel - When a character doesn't have the wall jump ability, lets even these characters wall jump","Wall Jump Panel - När en karaktär inte har förmågan att hoppa från väggar, låter även dessa karaktärer vägghoppa",カベキックパネル - キャラクターがカベキック能力を持っていない場合、そのキャラクターでもカベキックができるようになります,,
-Wall Climb Panel - When a character doesn't have the wall climb ability lets even these characters wall climb,"Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb","Wall Climb Panel - När en karaktär inte har förmågan att klättra på väggar, låter även dessa karaktärer klättra på väggar",壁登りパネル - キャラクターが壁登り能力を持っていない場合、そのキャラクターでも壁登りができるようになります,,
+Wall Climb Panel - When a character doesn't have the wall climb ability lets even these characters wall climb,"Wall Climb Panel - When a character doesn't have the wall climb ability, lets even these characters wall climb","Wall Climb Panel - När en karaktär inte har förmågan att klättra på väggar, låter även dessa karaktärer klättra på väggar",かべ登りパネル - キャラクターが壁登り能力を持っていない場合、そのキャラクターでも壁登りができるようになります,,
 Continue,Continue,Fortsätt,続く,,Kontynuuj
 Generate Level Map,Generate Level Map,Generera nivåkarta,レベル マップを生成する,,Generuj mapę poziomu
 Save and Quit,Save and Quit,Spara och avsluta,セーブと終了,,Zapisz i wyjdź
@@ -78,7 +78,7 @@ YES,YES,JA,はい,SI,TAK
 NO,NO,NEJ,いいえ,NO,NIE
 Enable Assist Mode,Enable Assist Mode,Aktivera hjälpläge,アシストモードをオンにする,,Aktywuj tryb asysty
 The game is meant to be played without Assist Mode.,The game is meant to be played without Assist Mode.,Spelet är tänkt att spelas utan hjälpläge.,.,Este juego estaba hecho para jugar sin Modo de Asistencia,
-Only if you are unable to enjoy the game without extra help should you enable this.,Only if you are unable to enjoy the game without extra help should you enable this.,Endast om du inte kan njuta av spelet utan extra hjälp bör du aktivera detta.,,Solo si no puedes disfrutar el juego deberias aprender el Modo de Asistencia,"Jeśli nie jesteś w stanie przejść gry bez dodatkowej pomocy, możesz to aktywować"
+Only if you are unable to enjoy the game without extra help should you enable this.,Only if you are unable to enjoy the game without extra help should you enable this.,Endast om du inte kan njuta av spelet utan extra hjälp bör du aktivera detta.,.,Solo si no puedes disfrutar el juego deberias aprender el Modo de Asistencia,"Jeśli nie jesteś w stanie przejść gry bez dodatkowej pomocy, możesz to aktywować"
 Assist Item,Assist Item,Assist objekt,アシストアイテム,,Przedmiot asysty
 Always Appear,Always Appear,Visas alltid,いつも見せる,,Zawsze pokazuj
 Appear after 1 defeat on a level,Appear after 1 defeat on a level,Visas efter 1 död på en nivå,レベルで１死の後を表示する,,Pokaż po jednej porażce na poziom
@@ -136,18 +136,18 @@ Default Settings,Default Settings,Standardinställningar,規定設定,,Ustawieni
 Up is also jump,Up is also jump,Upp är också hoppa,上もジャンプ,,Góra jako klawisz skoku
 Double-tap direction to run,Double-tap direction to run,Dubbeltryck i riktning för att springa,走る方向をダブルタップ,,Podwójne naciśnięcie strzałki aktywuje bieg
 Double-tap direction to dive,Double-tap direction to pounce,Dubbeltryck i riktning för att dyka,方向をダブルタップしてボディーアタック,,Podwójne naciśnięcie strzałki aktywuje nur
-Always run,Always run,Spring alltid,いつも走る,,Auto-bieg
-Player 1 always run,Player 1 always run,Spelare 1 spring alltid,プレイヤー１がいつも走る,,Auto-bieg dla gracza 1
-Player 2 always run,Player 2 always run,Spelare 2 spring alltid,プレイヤー２がいつも走る,,Auto-bieg dla gracza 2
-Player 3 always run,Player 3 always run,Spelare 3 spring alltid,プレイヤー３がいつも走る,,Auto-bieg dla gracza 3
-Player 4 always run,Player 4 always run,Spelare 4 spring alltid,プレイヤー４がいつも走る,,Auto-bieg dla gracza 4
+Always run,Always run,Spring alltid,いつも走る,,Zawsze biegaj
+Player 1 always runs,Player 1 always runs,Spelare 1 springer alltid,プレイヤー１がいつも走る,,Gracz 1 zawsze biega
+Player 2 always runs,Player 2 always runs,Spelare 2 springer alltid,プレイヤー２がいつも走る,,Gracz 2 zawsze biega
+Player 3 always runs,Player 3 always runs,Spelare 3 springer alltid,プレイヤー３がいつも走る,,Gracz 3 zawsze biega
+Player 4 always runs,Player 4 always runs,Spelare 4 springer alltid,プレイヤー４がいつも走る,,Gracz 4 zawsze biega
 Cancel dive by pressing the jump or dive key,Cancel pounce by pressing the jump or pounce key,Avbryt dyket genom att trycka på hopp- eller dykknappen,ジャンプボタンかパウンスボタンを押してボディーアタックをキャンセルする,,Anuluj sus przyciskając przycisk skoku lub susa
 Cancel dive by pressing the opposite direction,Cancel pounce by pressing the opposite direction,Avbryt dyket genom att trycka i motsatt riktning,反対方向を押すと、ボディーアタックをキャンセルします,,Anuluj sus naciskając przeciwny kierunek
 Down + Jump to Ground Pound,Down + Jump to Ground Pound,Ner + Hoppa för att Ground Pound,下 + ジャンプ = グラウンド ポンド,,
 Wall Jump,Wall Jump,Vägghopp,カベキック,,Walljump
 Off,Off,Av,オフ,,Wyłączone
 When touching wall,When touching wall,Vid beröring av vägg,カベを触るとき,,Dotykając ściany
-When holding towards the wall,When holding towards the wall,När man håller mot väggen,壁を押しつけるとき,,Opierając się o ścianę
+When holding towards the wall,When holding towards the wall,När man håller mot väggen,カベを押しつけるとき,,Opierając się o ścianę
 Drop down from the rope,Drop down from the rope,Släpp ner från repet,ロープから降りる,,Zeskakując z liny
 Release Jump,Release Jump,Släpp hopp,ジャンプボタンを放します,,Puść skok
 Down or Jump,Down or Jump,Ner eller hoppa,下かジャンプ,,Dół lub skok
@@ -256,7 +256,7 @@ Background Scale,Background Scale,Bakgrundsskala,背景スケール,,Skala tła
 Background Scroll X,Background Scroll X,Bakgrund Scroll X,背景スクロール X,,Skala przewijania X
 Background Scroll Y,Background Scroll Y,Bakgrund Scroll Y,背景スクロール Y,,Skala przewijania Y
 Hold down to change the value faster,Hold down to change the value faster,Håll intryckt för att ändra värdet snabbare,押したままと値が速く変更されます,,Przytrzymaj by zmienić wartość szybciej
-BG Offset and Parallax,BG Offset and Parallax,BG Offset och Parallax,BG オフセットとパララックス,,Offset i paralax tła
+BG Offset and Parallax,BG Offset and Parallax,BG Offset och Parallax,BGオフセットとパララックス,,Offset i paralax tła
 Open Custom Levels Folder,Open Custom Levels Folder,Öppna egna nivåer,カスタムレベルフォルダを開く,,Otwórz folder z własnymi poziomami
 TIME OVER,TIME OVER,TID ÖVER,時間切れ,,CZAS MINĄŁ
 HURRY UP!,HURRY UP!,SKYNDA DIG!,急げ！,,POŚPIESZ SIĘ
@@ -300,7 +300,7 @@ Please enter a,Please enter a,Vänligen ange en,.,,Proszę wprowadź
 Upload,Upload,Ladda upp,アップロード,,Wyślij
 Edit Name,Edit Name,Redigera namn,名前を編集,,Edytuj nazwę
 Edit Description,Edit Description,Redigera beskrivning,説明を編集,,Edytuj opis
-BG Offset,BG Offset,BG Offset,BG オフセット,,Offset tla
+BG Offset,BG Offset,BG Offset,BGオフセット,,Offset tla
 BG Parallax,BG Parallax,BG Parallax,BGパララックス,,Paralaksa tła
 BG Scale,BG Scale,BG Skala,BGスケール,,Skala tla
 BG Tiled,BG Tiled,BG Kaklat,BGタイル,,Tło kafelkowe
@@ -366,7 +366,7 @@ Search Level ID,Search Level ID,Sök nivå-ID,レベルIDを検索する,,Szukaj
 Custom Levels,Custom Levels,Egna nivåer,カスタムレベル,,Własne poziomy
 Levels,Levels,Nivåer,レベル,,Poziomy
 Part Limit,Part Limit,Part gräns,オブジェクト限界,,
-Entity Limit,Entity Limit,Entity gräns,,,
+Entity Limit,Entity Limit,Entity gräns,エンティティ限界,,
 Grass,Grass,Gräs,草,,Trawa
 Stone,Stone,Sten,石,,Kamień
 Wood,Wood,Trä,木,,Drewno
@@ -378,7 +378,7 @@ Cloud Block,Cloud Block,Molnblock,曇ブロック,,Chmurka
 Fish,Fish,Fisk,サカナ,,Ryba
 Big Fish,Big Fish,Stor fisk,大きなサカナ,,Megaryba
 Rat,Rat,Råtta,ラット,,Szczur
-Big Rat,Big Rat,Stor råtta,大きなラット,,Wielki szczur
+Big Rat,Big Rat,Stor råtta,ビッグラット,,Wielki szczur
 Rat Blaster,Rat Blaster,Råttblaster,ラットブラスター,,Miotacz szczurów
 Ladder,Ladder,Stege,はしご,,Drabina
 Arrow Sign,Arrow Sign,Pilskylt,矢印看板,,Strzalka
@@ -386,44 +386,44 @@ One-Way Wall,One-Way Wall,Envägsvägg,一方通行カベ,,Ściana bez powrotu
 Cardboard Block,Cardboard Block,Kartongblock,ダンボールブロック,,Megakarton
 Cardboard,Cardboard,Kartong,ダンボール,,Minikarton
 Bump in Ground,Bump in Ground,Bump i marken,もぐらの丘,,
-Horizontal Rope,Horizontal Rope,Horisontellt rep,水平ロープ,,
+Horizontal Rope,Horizontal Rope,Horisontellt rep,水平ロープ,,Pozioma lina
 Tutorial Signs,Tutorial Signs,Handledning skylt,チュートリアル看板,,Znaki samouczka
 Cake Rat,Cake Rat,Tårtråtta,ケーキラット,,Szczur amator ciasta
 PLAYER 1 IS CONTROLLING THE MENU,PLAYER 1 IS CONTROLLING THE MENU,SPELARE 1 STYR MENYN,プレイヤー 1 はメニューをコントロールしている,,GRACZ 1 KONTROLUJE MENU
 PLAYER 2 IS CONTROLLING THE MENU,PLAYER 2 IS CONTROLLING THE MENU,SPELARE 2 STYR MENYN,プレイヤー 2 はメニューをコントロールしている,,GRACZ 2 KONTROLUJE MENU
 PLAYER 3 IS CONTROLLING THE MENU,PLAYER 3 IS CONTROLLING THE MENU,SPELARE 3 STYR MENYN,プレイヤー 3 はメニューをコントロールしている,,GRACZ 3 KONTROLUJE MENU
 PLAYER 4 IS CONTROLLING THE MENU,PLAYER 4 IS CONTROLLING THE MENU,SPELARE 4 STYR MENYN,プレイヤー 4 はメニューをコントロールしている,,GRACZ 4 KONTROLUJE MENU
-Setup your Account here,Setup your Account here,Konfigurera ditt konto här,,,Skonfiguruj swoje kónto tutaj
-This is used for uploading levels,This is used for uploading levels,Detta används för att ladda upp nivåer,,,Tego używa się to wysyłania poziomów
-Account name,Account name,Kontonamn,,,Nazwa użytkownika
-Change Username,Change Username,Ändra användarnamn,,,Zmień nazwę użytkownika
-Get Device Username,Get Device Username,Få enhetens användarnamn,,,
-Public Update Schedule,Public Update Schedule,Offentligt uppdateringsschema,,,
-Subscribe to our YouTube Channel!,Subscribe to our YouTube Channel!,Prenumerera på vår YouTube-kanal!,,,
-Join our Discord!,Join our Discord!,Gå med i vår Discord!,,,
-Mailbox,Mailbox,Brevlåda,,,
-Information,Information,Information,,,
-About,About,Om sidan,,,
-What's New?,What's New?,Vad är nytt?,,,
-Backups,Backups,Säkerhetskopieringar,,,
-Credits,Credits,Krediter,,,
-Welcome to Sticky Paws!,Welcome to Sticky Paws!,Välkommen till Sticky Paws!,,,
-This is a game that allows you to create your own levels,This is a game that allows you to create your own levels,Detta är ett spel som låter dig skapa dina egna nivåer,,,
-To share levels press the Upload button in level editor,To share levels press the Upload button in level editor,"För att dela nivåer, tryck på knappen Ladda upp i nivåredigeraren",,,
-To browse levels press the Online Level List button in level editor,To browse levels press the Online Level List button in level editor,"För att bläddra i nivåer, tryck på knappen Online Level List i nivåredigeraren",,,
-Check out our website,Check out our website,Kolla in vår hemsida,,,
-Check out the guide for Sticky Paws,Check out the guide for Sticky Paws,Kolla in guiden för Sticky Paws,,,
-This is a game made with love,This is a game made with love,Detta är ett spel gjort med kärlek,,,
+Setup your Account here,Setup your Account here,Konfigurera ditt konto här,アカウントセットアップ,,Skonfiguruj swoje kónto tutaj
+This is used for uploading levels,This is used for uploading levels,Detta används för att ladda upp nivåer,レベルアップロード,,Tego używa się to wysyłania poziomów
+Account name,Account name,Kontonamn,アカウント名,,Nazwa użytkownika
+Change Username,Change Username,Ändra användarnamn,ユーザー名を変更する,,Zmień nazwę użytkownika
+Get Device Username,Get Device Username,Få enhetens användarnamn,デバイスのユーザー名を取る,,
+Public Update Schedule,Public Update Schedule,Offentligt uppdateringsschema,公開アップデートスケジュール,,
+Subscribe to our YouTube Channel!,Subscribe to our YouTube Channel!,Prenumerera på vår YouTube-kanal!,ユーチューブチャネルをサブスクライブして！,,Subskrybuj nasz kanał na YouTube
+Join our Discord!,Join our Discord!,Gå med i vår Discord!,ディスコードサーバーに参加して！,,
+Mailbox,Mailbox,Brevlåda,メールボックス,,
+Information,Information,Information,情報,,
+About,About,Om sidan,アバウト,,
+What's New?,What's New?,Vad är nytt?,何が新しい?,,
+Backups,Backups,Säkerhetskopieringar,バックアップ,,Kopie zapasowe
+Credits,Credits,Krediter,クレジット,,Autorzy
+Welcome to Sticky Paws!,Welcome to Sticky Paws!,Välkommen till Sticky Paws!,スティッキーパースへようこそ！,,Witamy w Sticky Paws
+This is a game that allows you to create your own levels,This is a game that allows you to create your own levels,Detta är ett spel som låter dig skapa dina egna nivåer,レベルを作れるゲームです。,,
+To share levels press the Upload button in level editor,To share levels press the Upload button in level editor,"För att dela nivåer, tryck på knappen Ladda upp i nivåredigeraren",オンラインでレベルを共有したいなら、レベルエディターの「アップロード」ボタンを押す。,,
+To browse levels press the Online Level List button in level editor,To browse levels press the Online Level List button in level editor,"För att bläddra i nivåer, tryck på knappen Online Level List i nivåredigeraren",レベルを参照するには、レベル エディターの [オンライン レベル リスト] ボタンを押す。,,
+Check out our website,Check out our website,Kolla in vår hemsida,ウェブサイトを確認して,,
+Check out the guide for Sticky Paws,Check out the guide for Sticky Paws,Kolla in guiden för Sticky Paws,スティッキーパースのガイドを確認して,,
+This is a game made with love,This is a game made with love,Detta är ett spel gjort med kärlek,愛で作ったゲームです。,,
 Check out credits for more info,Check out credits for more info,Kolla in krediter för mer information,,,
-Build ver,Build ver,Bygg ver,,,
-is here!,is here!,är här!,,,
-Changelog History,Changelog History,Ändringslogghistorik,,,
+Build ver,Build ver,Bygg ver,バージョン,,
+is here!,is here!,är här!,が来た！,,jest tu!
+Changelog History,Changelog History,Ändringslogghistorik,更新履歴ログ,,Lista zmian
 Keep your levels safe!,Keep your levels safe!,Håll dina nivåer säkra!,,,
 To prevent losing your levels you should upload levels and then save your level IDs somewhere safe,To prevent losing your levels you should upload levels and then save your level IDs somewhere safe,För att förhindra att du tappar dina nivåer bör du ladda upp nivåer och sedan spara dina nivå-ID på ett säkert ställe,,,
 The game includes an autosave feature that automatically saves your levels every 5 minutes,The game includes an autosave feature that automatically saves your levels every 5 minutes,Spelet innehåller en autospara-funktion som automatiskt sparar dina nivåer var 5:e minut,,,
 It also saves your level every time you playtest,It also saves your level every time you playtest,Det sparar också din nivå varje gång du testar,,,
-By,By,Av,,,
-Welcome to the level editor!,Welcome to the level editor!,Välkommen till nivåredigeraren!,,,
+By,By,Av,クリエイター:,,Przez
+Welcome to the level editor!,Welcome to the level editor!,Välkommen till nivåredigeraren!,レベルエディターへようこそ！,,Witamy w edytorze poziomów!
 Move Around,Move Around,Flytta runt,,,
 Scroll Toolbar,Scroll Toolbar,Skrolla Verktygsfält,,,
 Place Objects,Place Objects,Placera objekt,,,
@@ -431,53 +431,53 @@ Delete Objects,Delete Objects,Ta bort objekt,,,
 on objects,on objects,på objekt,,,
 Change object property,Change object property,Ändra objektegenskap,,,
 Select objects from toolbar and start making!,Select objects from toolbar and start making!,Välj objekt från verktygsfältet och börja skapa!,,,
-Shortcuts,Shortcuts,Genvägar,,,
-Close,Close,Stäng,,,
-Editor Shortcuts,Editor Shortcuts,Redigeringsgenvägar,,,
-Toggle Grid,Toggle Grid,Växla Grid,,,
-Hide/Show Toolbar,Hide/Show Toolbar,Dölj/visa verktygsfält,,,
-Slow Scroll,Slow Scroll,Långsam skrolla,,,
-Hide/Show Backgrounds,Hide/Show Backgrounds,Dölj/visa bakgrunder,,,
+Shortcuts,Shortcuts,Genvägar,ショートカット,,
+Close,Close,Stäng,閉じる,,
+Editor Shortcuts,Editor Shortcuts,Redigeringsgenvägar,エディターショートカット,,
+Toggle Grid,Toggle Grid,Växla Grid,グリッドトグル,,
+Hide/Show Toolbar,Hide/Show Toolbar,Dölj/visa verktygsfält,ツールバー表示/非表示,,
+Slow Scroll,Slow Scroll,Långsam skrolla,ゆっくりスクロール,,
+Hide/Show Backgrounds,Hide/Show Backgrounds,Dölj/visa bakgrunder,BG表示/非表示,,
 Change to erase tool,Change to erase tool,Byt till raderingsverktyg,,,
-Terrain,Terrain,Terräng,,,
-Decoration,Decoration,Dekoration,,,
-Item,Item,Objekt,,,
-Enemy,Enemy,Fiende,,,
-Gizmo,Gizmo,Manick,,,
-Default Wall,Default Wall,Standardvägg,,,
-Dirt,Dirt,Jord,,,
-Glass,Glass,Glas,,,
-Spikes,Spikes,Spikar,,,
-New,New,Ny,,,
-? Block,? Block,? Block,,,
-Hard Block,Hard Block,Hårt block,,,
-Autosave in,Autosave in,Autospara om,,,
-Autosaving...,Autosaving...,Sparar automatiskt...,,,
-Autosaved!,Autosaved!,Autosparad!,,,
-Cancel Autosave,Cancel Autosave,Avbryt Autospara,,,
-Cardboard Block,Cardboard Block,Kartongblock,,,
-Long Cardboard,Long Cardboard,Lång kartong,,,
-Boss Barrier,Boss Barrier,Boss Barriär,,,
-Eye Block,Eye Block,Ögonblock,,,
-Bird,Bird,Fågel,,,
-Bowlingball Rat,Bowlingball Rat,Bowlingboll råtta,,,
-Mousette,Mousette,Mousette,,,
-Spring,Spring,Spring,,,
+Terrain,Terrain,Terräng,地形,,
+Decoration,Decoration,Dekoration,飾り物,,
+Item,Item,Objekt,アイテム,,
+Enemy,Enemy,Fiende,敵,,
+Gizmo,Gizmo,Manick,ギズモ,,
+Default Wall,Default Wall,Standardvägg,普通なカベ,,
+Dirt,Dirt,Jord,土,,
+Glass,Glass,Glas,グラス,,
+Spikes,Spikes,Spikar,スパイク,,
+New,New,Ny,新しい,,
+? Block,? Block,? Block,ふしぎブロック,,
+Hard Block,Hard Block,Hårt block,かたいブロック,,
+Autosave in,Autosave in,Autospara om,オートセーブ,,
+Autosaving...,Autosaving...,Sparar automatiskt...,オートセーブ中,,
+Autosaved!,Autosaved!,Autosparad!,オートセーブした！,,
+Cancel Autosave,Cancel Autosave,Avbryt Autospara,オートセーブをキャンセルする,,
+Cardboard Block,Cardboard Block,Kartongblock,ダンボールブロック,,
+Long Cardboard,Long Cardboard,Lång kartong,ダンボーーールブロック,,
+Boss Barrier,Boss Barrier,Boss Barriär,ボスバリア,,
+Eye Block,Eye Block,Ögonblock,目ブロック,,
+Bird,Bird,Fågel,鳥,,
+Bowlingball Rat,Bowlingball Rat,Bowlingboll råtta,ボウリングボールラット,,
+Mousette,Mousette,Mousette,ラッタリー,,
+Spring,Spring,Spring,ばね,,
 Emerging Spikes,Emerging Spikes,Framväxande spikar,,,
-Wall Jump Panel,Wall Jump Panel,Vägghopppanel,,,
-Wall Climb Panel,Wall Climb Panel,Väggklättringspanel,,,
-Water,Water,Vatten,,,
-Air Bubbles,Air Bubbles,Luftbubblor,,,
-Clipped Clothes,Clipped Clothes,Kläder som torkar,,,
-Bucket,Bucket,Hink,,,
-Artwork Collection,Artwork Collection,Konstverk samling,,,
+Wall Jump Panel,Wall Jump Panel,Vägghopppanel,カベキックパネル,,
+Wall Climb Panel,Wall Climb Panel,Väggklättringspanel,カベ登りパネル,,
+Water,Water,Vatten,水,,
+Air Bubbles,Air Bubbles,Luftbubblor,エアバブル,,
+Clipped Clothes,Clipped Clothes,Kläder som torkar,掛けている服,,
+Bucket,Bucket,Hink,バケツ,,
+Artwork Collection,Artwork Collection,Konstverk samling,アートワークコレクション,,
 Can be destroyed by the player jumping underneath them if there is no items inside\nClick on a placed Lamp Block to set its item!,Can be destroyed by the player jumping underneath them if there is no items inside\nClick on a placed Lamp Block to set its item!,Kan förstöras av spelaren som hoppar under dem om det inte finns några föremål inuti\nKlicka på ett placerat lampblock för att ställa in dess föremål!,,,
 Can't be destroyed by player jumping underneath them\nClick on a placed ? Block to set its item!,Can't be destroyed by player jumping underneath them\nClick on a placed ? Block to set its item!,Kan inte förstöras av spelare som hoppar under dem\nKlicka på en placerad ? Block för att ställa in dess objekt!,,,
 Falls shortly after you stand on them for too long,Falls shortly after you stand on them for too long,Faller kort efter att du stått på dem för länge,,,
 This block dissapears when Mousette is defeated,This block dissapears when Mousette is defeated,Detta block försvinner när Mousette besegras,,,
 This block is only solid when it can see its prey,This block is only solid when it can see its prey,Detta block är bara solid när det kan se sitt byte,,,
 Teach the player what abilities they have,Teach the player what abilities they have,Lär spelaren vilka förmågor de har,,,
-"One of the most fundemental objects to include in a level!\nFish usually come in small groups, and can also be used to indicate a path","One of the most fundemental objects to include in a level!\nFish usually come in small groups, and can also be used to indicate a path","Ett av de mest grundläggande objekten att inkludera i en nivå!\Fisk kommer vanligtvis i små grupper, och kan också användas för att visa en väg",,,
+One of the most fundemental objects to include in a level!\nFish usually come in small groups and can also be used to indicate a path,"One of the most fundemental objects to include in a level!\nFish usually come in small groups, and can also be used to indicate a path","Ett av de mest grundläggande objekten att inkludera i en nivå!\Fisk kommer vanligtvis i små grupper, och kan också användas för att visa en väg",,,
 A collectible that can be a good way to make your level more fun,A collectible that can be a good way to make your level more fun,Ett samlarobjekt som kan vara ett bra sätt att göra din nivå roligare,,,
 When a character doesn't have the wall jump ability lets even these characters wall jump,When a character doesn't have the wall jump ability lets even these characters wall jump,När en karaktär inte har förmågan att vägghoppa kan även dessa karaktärer vägghoppa,,,
 When a character doesn't have the wall climb ability lets even these characters wall climb,When a character doesn't have the wall climb ability lets even these characters wall climb,När en karaktär inte har förmågan att väggklättra kan även dessa karaktärer väggklättra,,,
