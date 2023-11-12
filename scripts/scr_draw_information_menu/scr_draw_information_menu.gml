@@ -249,7 +249,15 @@ function scr_draw_information_menu()
 		}
 		
 		/* What's New tab button */
-		draw_menu_button_sprite(spr_menu_button, 185, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false);
+		if (!latest_whats_new_read)
+		{
+			var whats_new_alpha = scr_wave(0, 1, 1);
+		}
+		else
+		{
+			var whats_new_alpha = 1;
+		}
+		draw_menu_button_sprite(spr_menu_button, 185, 0, 0, 0, 0.5, 1, 185, 42, l10n_text("What's New?"), "whats_new", "whats_new", false,,whats_new_alpha);
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 185, 0, 185 * 2, 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -426,6 +434,17 @@ function scr_draw_information_menu()
 		else
 		if (information_menu_open == 2) /* What's New tab */
 		{
+			
+			/* Update config file so the game knows that you've read the latest what's new tab */
+			if (menu_delay == 1)
+			{
+				latest_whats_new_read = true;
+				ini_open(working_directory + "config.ini");
+				ini_write_string("config", "latest_whats_new_version", "v" + string(scr_get_build_date()));
+				ini_write_string("config", "latest_whats_new_text", string(global.whats_new));
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			}
+			
 			var build_version_y = 32 * 2;
 			var whats_new_date_y = 32 * 2;
 			var changelog_history_y = 32 * 3;
@@ -452,7 +471,7 @@ function scr_draw_information_menu()
 			var hour = date_get_hour(GM_build_date);
 			var minute = date_get_minute(GM_build_date);
 			draw_set_halign(fa_right);
-			scr_draw_text_outlined(display_get_gui_width() - 8, whats_new_date_y, string(day) + "/" + string(month) + "/" + string(year) + " (" + string(hour) + ":" + string(minute) + ")", global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 8, whats_new_date_y, string(year) + "-" + string(month) + "-" + string(day) + " (" + string(hour) + ":" + string(minute) + ")", global.default_text_size, c_black, c_white, 1);
 			
 			if (global.link_to_changelog_history != "")
 			{

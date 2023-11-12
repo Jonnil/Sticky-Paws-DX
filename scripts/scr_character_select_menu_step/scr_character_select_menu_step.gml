@@ -109,7 +109,6 @@ function scr_character_select_menu_step()
 	|| (menu == "back_from_character_select")
 	|| (menu == "manage_character")
 	|| (menu == "online_character_list")
-	|| (menu == "search_character_id")
 	|| (menu == "input_name_ok")
 	|| (menu == "input_name_cancel")
 	{
@@ -123,7 +122,6 @@ function scr_character_select_menu_step()
 		&& (player_menu[1] != "back_from_character_select")
 		&& (player_menu[1] != "manage_character")
 		&& (player_menu[1] != "online_character_list")
-		&& (player_menu[1] != "search_character_id")
 		
 		|| (player1_accept_selection == -1)
 		&& (player2_accept_selection)
@@ -333,14 +331,6 @@ function scr_character_select_menu_step()
 							menu = "back_from_character_select";
 						}
 					}
-					else
-					if (menu == "search_character_id") /* Search Character ID */
-					{
-						menu_delay = 3;
-						can_navigate = true;
-						player_menu[1] = "online_character_list";
-						menu = "online_character_list";
-					}
 				}
 			}
 			#endregion /* Key Up END */
@@ -364,11 +354,6 @@ function scr_character_select_menu_step()
 							player_menu[1] = "manage_character";
 							menu = "manage_character";
 						}
-						else
-						{
-							player_menu[1] = "search_character_id";
-							menu = "search_character_id";
-						}
 					}
 					else
 					if (global.enable_manage_characters)
@@ -389,22 +374,6 @@ function scr_character_select_menu_step()
 					}
 					else
 					if (menu == "online_character_list") /* Online Character List */
-					{
-						menu_delay = 3;
-						can_navigate = true;
-						if (global.free_communication_available)
-						{
-							player_menu[1] = "search_character_id";
-							menu = "search_character_id";
-						}
-						else
-						{
-							player_menu[1] = "select_character";
-							menu = "select_character";
-						}
-					}
-					else
-					if (menu == "search_character_id") /* Search Character ID */
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -1129,8 +1098,6 @@ function scr_character_select_menu_step()
 					&& (player_menu[1] != "manage_character")
 					&& (menu != "online_character_list")
 					&& (player_menu[1] != "online_character_list")
-					&& (menu != "search_character_id")
-					&& (player_menu[1] != "search_character_id")
 					{
 						character_portrait_for_player_update_directory[1] = true;
 						alarm[0] = 1;

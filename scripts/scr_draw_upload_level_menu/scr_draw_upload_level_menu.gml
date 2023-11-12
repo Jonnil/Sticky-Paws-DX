@@ -1850,7 +1850,7 @@ function scr_draw_upload_level_menu()
 	
 	#region /* Enter Custom Level */
 	if (room == rm_title)
-	&& (iris_xscale <= 0.001)
+	&& (iris_xscale <= 0.01)
 	&& (global.character_select_in_this_menu == "level_editor")
 	&& (loading_assets == false)
 	{

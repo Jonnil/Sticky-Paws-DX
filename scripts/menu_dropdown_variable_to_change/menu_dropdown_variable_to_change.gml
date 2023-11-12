@@ -163,7 +163,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 		global.number_of_audio_channels = change_to_value;
 	}
 	else
-	if (menu == "selected_level_editing_music")
+	if (menu == "select_level_editing_music")
 	&& (variable_to_change = global.selected_level_editing_music)
 	{
 		global.selected_level_editing_music = change_to_value;
@@ -182,7 +182,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 		intended_level_difficulty = change_to_value;
 	}
 	else
-	if (menu == "selected_font")
+	if (menu == "select_font")
 	&& (variable_to_change = global.selected_font)
 	{
 		global.selected_font = change_to_value;

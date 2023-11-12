@@ -10,7 +10,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	#region /* Search ID menu */
 	if (menu == "search_id_ok")
 	|| (menu == "search_id_cancel")
-	|| (menu == "search_online_list")
 	{
 		
 		#region /* Set name input screen to always be above the virtual keyboard */
@@ -53,120 +52,40 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			
 		}
 		
-		#region /* Online List */
-		if (in_online_download_list_menu == false)
-		&& (automatically_search_for_id == false)
+		#region /* Search ID Button Navigation */
+		if (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			var draw_online_level_list_y = draw_name_input_screen_y + 42 + 42 + 42 + 42;
-			if (what_kind_of_id == "level")
-			&& (global.free_communication_available)
+			if (menu == "search_id_ok")
 			{
-				draw_menu_button(display_get_gui_width() * 0.5 - 185, draw_online_level_list_y, l10n_text("Online Level List"), "search_online_list", "search_online_list");
+				if (keyboard_check_pressed(vk_up))
+				|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+				|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
+				|| (keyboard_check_pressed(vk_down))
+				|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
+				|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
+				{
+					menu_delay = 3;
+					can_navigate = true;
+					menu = "search_id_cancel";
+				}
 			}
 			else
-			if (what_kind_of_id == "character")
-			&& (global.free_communication_available)
+			if (menu == "search_id_cancel")
 			{
-				draw_menu_button(display_get_gui_width() * 0.5 - 185, draw_online_level_list_y, l10n_text("Online Character List"), "search_online_list", "search_online_list");
-			}
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, draw_online_level_list_y + 2, display_get_gui_width() * 0.5 - 185 + 370, draw_online_level_list_y + 41))
-			&& (global.controls_used_for_menu_navigation == "mouse")
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (menu == "search_online_list")
-			&& (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				if (global.free_communication_available)
+				if (keyboard_check_pressed(vk_up))
+				|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
+				|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
+				|| (keyboard_check_pressed(vk_down))
+				|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
+				|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
 				{
-					if (global.online_enabled)
-					{
-						/* Go to online level list, so you can browse all uploaded levels, instead of just searching for specific levels */
-						select_custom_level_menu_open = false;
-						global.selected_online_download_index = 1;
-						menu = "online_download_list_load";
-						menu_delay = 3;
-					}
-					else
-					{
-						caution_online_takes_you_to = "online_download_list_load";
-						caution_online_takes_you_back_to = "search_online_list";
-						menu = "caution_online_proceed";
-						menu_delay = 3;
-					}
+					menu_delay = 3;
+					can_navigate = true;
+					menu = "search_id_ok";
 				}
 			}
-			
-			#region /* Online List Button Navigation */
-			if (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				if (menu == "search_id_ok")
-				{
-					if (keyboard_check_pressed(vk_up))
-					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
-					{
-						menu_delay = 3;
-						can_navigate = true;
-						menu = "search_online_list";
-					}
-					else
-					if (keyboard_check_pressed(vk_down))
-					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
-					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
-					{
-						menu_delay = 3;
-						can_navigate = true;
-						menu = "search_id_cancel";
-					}
-				}
-				else
-				if (menu == "search_id_cancel")
-				{
-					if (keyboard_check_pressed(vk_up))
-					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
-					{
-						menu_delay = 3;
-						can_navigate = true;
-						menu = "search_id_ok";
-					}
-					else
-					if (keyboard_check_pressed(vk_down))
-					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
-					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
-					{
-						menu_delay = 3;
-						can_navigate = true;
-						menu = "search_online_list";
-					}
-				}
-				else
-				if (menu == "search_online_list")
-				{
-					if (keyboard_check_pressed(vk_up))
-					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
-					{
-						menu_delay = 3;
-						can_navigate = true;
-						menu = "search_id_cancel";
-					}
-					else
-					if (keyboard_check_pressed(vk_down))
-					|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
-					|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > 0)
-					{
-						menu_delay = 3;
-						can_navigate = true;
-						menu = "search_id_ok";
-					}
-				}
-			}
-			#endregion /* Online List Button Navigation END */
-			
 		}
-		#endregion /* Online List END */
+		#endregion /* Search ID Button Navigation END */
 		
 		#region /* Press Escape to back out from Search ID menu */
 		if (keyboard_check_pressed(vk_enter))
@@ -204,11 +123,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			show_level_editor_corner_menu = true;
 			search_for_id_still = false;
 			search_id = "";
-			if (what_kind_of_id == "level")
-			{
-				select_custom_level_menu_open = true;
-			}
-			menu = "search_" + string(what_kind_of_id) + "_id";
+			select_custom_level_menu_open = false;
+			menu = "online_download_list_load";
 			menu_delay = 3;
 		}
 		#endregion /* Press Escape to back out from Search ID menu END */

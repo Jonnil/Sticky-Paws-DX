@@ -330,6 +330,7 @@
     {"name":"spr_sign_reset","order":83,"path":"sprites/spr_sign_reset/spr_sign_reset.yy",},
     {"name":"spr_thumbnail_missing","order":8,"path":"sprites/spr_thumbnail_missing/spr_thumbnail_missing.yy",},
     {"name":"spr_menu_button_short","order":27,"path":"sprites/spr_menu_button_short/spr_menu_button_short.yy",},
+    {"name":"scr_get_relative_timestamp","order":75,"path":"scripts/scr_get_relative_timestamp/scr_get_relative_timestamp.yy",},
     {"name":"scr_draw_loading","order":70,"path":"scripts/scr_draw_loading/scr_draw_loading.yy",},
     {"name":"scr_select_official_level_menu","order":26,"path":"scripts/scr_select_official_level_menu/scr_select_official_level_menu.yy",},
     {"name":"obj_falling_block_solid_spawner","order":20,"path":"objects/obj_falling_block_solid_spawner/obj_falling_block_solid_spawner.yy",},

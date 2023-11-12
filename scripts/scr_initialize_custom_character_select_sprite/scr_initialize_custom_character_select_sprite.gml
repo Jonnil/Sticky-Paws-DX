@@ -3,7 +3,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 	/* sprite_name. Sprite name. The name of the file */
 	/* sprite_variable. Sprite variable. The name of the variable */
 	/* what_player. Player variable, ususally type "player" */
-	/* what_selected_skin. Selected skin variable, ususally type "selected_skin" */
+	/* what_selected_skin. Selected skin variable, ususally type "select_skin" */
 	var saved_file_exists = false;
 	var unused_x_origin_point = noone;
 	var unused_y_origin_point = noone;

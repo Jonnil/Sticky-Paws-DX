@@ -154,137 +154,96 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	&& (can_input_player2_name == false)
 	&& (can_input_player3_name == false)
 	&& (can_input_player4_name == false)
+	&& (character_portrait_for_player_dir_exists_1[what_player])
 	{
-		
-		#region /* Player Select Skin */
-		if (character_portrait_for_player_dir_exists_1[what_player])
+		if (player_menu[what_player] == "select_skin")
+		|| (global.controls_used_for_menu_navigation == "mouse")
 		{
-			if (player_menu[what_player] == "select_skin")
-			|| (global.controls_used_for_menu_navigation == "mouse")
+			if (player_accept_selection == false)
 			{
-				if (player_accept_selection == false)
+				
+				#region /* Player key left Skin */
+				if (keyboard_check_pressed(player_key_left))
+				|| (keyboard_check_pressed(player_key2_left))
+				|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padl))
+				|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) < -0.3)
+				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
+				&& (mouse_check_button_released(mb_left))
+				&& (global.controls_used_for_menu_navigation == "mouse")
 				{
-					
-					#region /* Player key left Skin */
-					if (keyboard_check_pressed(player_key_left))
-					|| (keyboard_check_pressed(player_key2_left))
-					|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padl))
-					|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) < -0.3)
-					|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
-					&& (mouse_check_button_released(mb_left))
-					&& (global.controls_used_for_menu_navigation == "mouse")
+					if (menu_delay == 0 && menu_joystick_delay == 0)
+					&& (global.skin_for_player[what_player] > 0)
 					{
-						if (menu_delay == 0 && menu_joystick_delay == 0)
-						&& (global.skin_for_player[what_player] > 0)
-						{
-							menu_delay = 3;
+						menu_delay = 3;
 							
-							#region /* Player character select portrait sprite */
-							global.skin_for_player[what_player] --;
-							global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-							menu_specific_joystick_delay[what_player] = 60;
-							xx_delay[what_player] = -1;
-							#endregion /* Player character select portrait sprite END */
+						#region /* Player character select portrait sprite */
+						global.skin_for_player[what_player] --;
+						global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
+						menu_specific_joystick_delay[what_player] = 30;
+						xx_delay[what_player] = -1;
+						#endregion /* Player character select portrait sprite END */
 							
-							character_portrait_for_player_update_directory[what_player] = true;
-							alarm[0] = 1;
-							alarm[1] = 1;
-						}
+						character_portrait_for_player_update_directory[what_player] = true;
+						alarm[0] = 1;
+						alarm[1] = 1;
 					}
-					#endregion /* Player key left Skin END */
-					
-					#region /* Player key right Skin */
-					if (keyboard_check_pressed(player_key_right))
-					|| (keyboard_check_pressed(player_key2_right))
-					|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padr))
-					|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) > +0.3)
-					|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
-					&& (mouse_check_button_released(mb_left))
-					&& (global.controls_used_for_menu_navigation == "mouse")
-					{
-						if (menu_delay == 0 && menu_joystick_delay == 0)
-						&& (character_portrait_for_player_dir_exists_2[what_player])
-						{
-							menu_delay = 3;
-							
-							#region /* Player character select portrait sprite */
-							global.skin_for_player[what_player] ++;
-							global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
-							menu_specific_joystick_delay[what_player] = 60;
-							xx_delay[what_player] = +1;
-							#endregion /* Player character select portrait sprite END */
-							
-							character_portrait_for_player_update_directory[what_player] = true;
-							alarm[0] = 1;
-							alarm[1] = 1;
-						}
-					}
-					#endregion /* Player key right Skin END */
-					
-					#region /* Player key up Skin */
-					if (keyboard_check_pressed(player_key_up))
-					|| (keyboard_check_pressed(player_key2_up))
-					|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padu))
-					|| (gamepad_axis_value(global.player_slot[what_player], gp_axislv) < -0.3)
-					{
-						if (menu_delay == 0 && menu_joystick_delay == 0)
-						{
-							menu_delay = 3;
-							menu_specific_joystick_delay[what_player] = 60;
-							player_menu[what_player] = "select_character";
-						}
-					}
-					#endregion /* Player key up Skin END */
-					
-					#region /* Player key down Skin */
-					if (keyboard_check_pressed(player_key_down))
-					|| (keyboard_check_pressed(player_key2_down))
-					|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padd))
-					|| (gamepad_axis_value(global.player_slot[what_player], gp_axislv) > +0.3)
-					{
-						if (menu_delay == 0 && menu_joystick_delay == 0)
-						{
-							menu_delay = 3;
-							if (character_portrait_for_player_dir_exists_3[what_player])
-							{
-								menu_specific_joystick_delay[what_player] = 60;
-								player_menu[what_player] = "select_voicepack";
-							}
-							else
-							{
-								player_menu[what_player] = "select_name";
-							}
-						}
-					}
-					#endregion /* Player key down Skin END */
-					
-					#region /* Show left key for character skin select */
-					if (global.skin_for_player[what_player] > 0)
-					{
-						if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
-						&& (global.controls_used_for_menu_navigation == "mouse")
-						{
-							player_menu[what_player] = "select_skin";
-						}
-					}
-					#endregion /* Show left key for character skin select END */
-					
-					#region /* Show right key for character skin select */
-					if (character_portrait_for_player_dir_exists_2[what_player])
-					{
-						if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
-						&& (global.controls_used_for_menu_navigation == "mouse")
-						{
-							player_menu[what_player] = "select_skin";
-						}
-					}
-					#endregion /* Show right key for character skin select END */
-					
 				}
+				#endregion /* Player key left Skin END */
+				
+				else
+				
+				#region /* Player key right Skin */
+				if (keyboard_check_pressed(player_key_right))
+				|| (keyboard_check_pressed(player_key2_right))
+				|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padr))
+				|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) > +0.3)
+				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
+				&& (mouse_check_button_released(mb_left))
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				{
+					if (menu_delay == 0 && menu_joystick_delay == 0)
+					&& (character_portrait_for_player_dir_exists_2[what_player])
+					{
+						menu_delay = 3;
+							
+						#region /* Player character select portrait sprite */
+						global.skin_for_player[what_player] ++;
+						global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
+						menu_specific_joystick_delay[what_player] = 30;
+						xx_delay[what_player] = +1;
+						#endregion /* Player character select portrait sprite END */
+							
+						character_portrait_for_player_update_directory[what_player] = true;
+						alarm[0] = 1;
+						alarm[1] = 1;
+					}
+				}
+				#endregion /* Player key right Skin END */
+				
+				#region /* Show left key for character skin select */
+				if (global.skin_for_player[what_player] > 0)
+				{
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
+					&& (global.controls_used_for_menu_navigation == "mouse")
+					{
+						player_menu[what_player] = "select_skin";
+					}
+				}
+				#endregion /* Show left key for character skin select END */
+				
+				#region /* Show right key for character skin select */
+				if (character_portrait_for_player_dir_exists_2[what_player])
+				{
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
+					&& (global.controls_used_for_menu_navigation == "mouse")
+					{
+						player_menu[what_player] = "select_skin";
+					}
+				}
+				#endregion /* Show right key for character skin select END */
+				
 			}
 		}
-		#endregion /* Player Select Skin END */
-		
 	}
 	#endregion /* Display Selected Skin if skins are available END */
 	
@@ -293,136 +252,86 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	&& (can_input_player2_name == false)
 	&& (can_input_player3_name == false)
 	&& (can_input_player4_name == false)
+	&& (character_portrait_for_player_dir_exists_3[what_player])
 	{
-		
-		#region /* Player Select Voice Pack */
-		if (character_portrait_for_player_dir_exists_3[what_player])
+		if (player_menu[what_player] == "select_voicepack")
+		|| (global.controls_used_for_menu_navigation == "mouse")
 		{
-			if (player_menu[what_player] = "select_voicepack")
-			|| (global.controls_used_for_menu_navigation == "mouse")
+			if (player_accept_selection == false)
 			{
-				if (player_accept_selection == false)
+				
+				#region /* Player key left Voice Pack */
+				if (keyboard_check_pressed(player_key_left))
+				|| (keyboard_check_pressed(player_key2_left))
+				|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padl))
+				|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) < -0.3)
+				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
+				&& (mouse_check_button_released(mb_left))
+				&& (global.controls_used_for_menu_navigation == "mouse")
 				{
-					
-					#region /* Player key left Voice Pack */
-					if (keyboard_check_pressed(player_key_left))
-					|| (keyboard_check_pressed(player_key2_left))
-					|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padl))
-					|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) < -0.3)
-					|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
-					&& (mouse_check_button_released(mb_left))
-					&& (global.controls_used_for_menu_navigation == "mouse")
+					if (menu_delay == 0 && menu_joystick_delay == 0)
+					&& (global.voicepack_for_player[what_player] > 0)
 					{
-						if (menu_delay == 0 && menu_joystick_delay == 0)
-						&& (global.voicepack_for_player[what_player] > 0)
+						menu_delay = 3;
+						global.voicepack_for_player[what_player] --;
+						menu_specific_joystick_delay[what_player] = 30;
+						xx[what_player] = player_display_x[what_player] -32;
+						character_portrait_for_player_update_directory[what_player] = true;
+						alarm[0] = 1;
+					}
+				}
+				#endregion /* Player key left Voice Pack END */
+				
+				else
+				
+				#region /* Player key right Voice Pack */
+				if (keyboard_check_pressed(player_key_right))
+				|| (keyboard_check_pressed(player_key2_right))
+				|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padr))
+				|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) > +0.3)
+				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
+				&& (mouse_check_button_released(mb_left))
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				{
+					if (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						if (character_portrait_for_player_dir_exists_4[what_player])
 						{
 							menu_delay = 3;
-							global.voicepack_for_player[what_player] --;
-							menu_specific_joystick_delay[what_player] = 60;
-							xx[what_player] = player_display_x[what_player] -32;
+							global.voicepack_for_player[what_player] ++;
+							menu_specific_joystick_delay[what_player] = 30;
+							xx[what_player] = player_display_x[what_player] +32;
 							character_portrait_for_player_update_directory[what_player] = true;
 							alarm[0] = 1;
 						}
 					}
-					#endregion /* Player key left Voice Pack END */
-					
-					#region /* Player key right Voice Pack */
-					if (keyboard_check_pressed(player_key_right))
-					|| (keyboard_check_pressed(player_key2_right))
-					|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padr))
-					|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) > +0.3)
-					|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
-					&& (mouse_check_button_released(mb_left))
+				}
+				#endregion /* Player key right Voice Pack END */
+				
+				#region /* Show left key for character voicepack select */
+				if (global.voicepack_for_player[what_player] > 0)
+				{
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
 					&& (global.controls_used_for_menu_navigation == "mouse")
 					{
-						if (menu_delay == 0 && menu_joystick_delay == 0)
-						{
-							if (character_portrait_for_player_dir_exists_4[what_player])
-							{
-								menu_delay = 3;
-								global.voicepack_for_player[what_player] ++;
-								menu_specific_joystick_delay[what_player] = 60;
-								xx[what_player] = player_display_x[what_player] +32;
-								character_portrait_for_player_update_directory[what_player] = true;
-								alarm[0] = 1;
-							}
-						}
+						player_menu[what_player] = "select_voicepack";
 					}
-					#endregion /* Player key right Voice Pack END */
-					
-					#region /* Player key up Voice Pack */
-					if (keyboard_check_pressed(player_key_up))
-					|| (keyboard_check_pressed(player_key2_up))
-					|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padu))
-					|| (gamepad_axis_value(global.player_slot[what_player], gp_axislv) < -0.3)
-					{
-						if (menu_delay == 0 && menu_joystick_delay == 0)
-						{
-							menu_delay = 3;
-							if (character_portrait_for_player_dir_exists_1[what_player])
-							{
-								
-								#region /* Go from selecting voicepack to selecting skin */
-								menu_specific_joystick_delay[what_player] = 60;
-								player_menu[what_player] = "select_skin";
-								#endregion /* Go from selecting voicepack to selecting skin END */
-								
-							}
-							else
-							{
-								
-								#region /* Go from selecting voicepack to selecting character */
-								menu_specific_joystick_delay[what_player] = 60;
-								player_menu[what_player] = "select_character";
-								#endregion /* Go from selecting voicepack to selecting character END */
-								
-							}
-						}
-					}
-					#endregion /* Player key up Voice Pack END */
-					
-					#region /* Player key down Voice Pack */
-					if (keyboard_check_pressed(player_key_down))
-					|| (keyboard_check_pressed(player_key2_down))
-					|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padd))
-					|| (gamepad_axis_value(global.player_slot[what_player], gp_axislv) > +0.3)
-					{
-						if (menu_delay == 0 && menu_joystick_delay == 0)
-						{
-							menu_delay = 3;
-							menu_specific_joystick_delay[what_player] = 60;
-							player_menu[what_player] = "select_name";
-						}
-					}
-					#endregion /* Player key down Voice Pack END */
-					
-					#region /* Show left key for character voicepack select */
-					if (global.voicepack_for_player[what_player] > 0)
-					{
-						if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
-						&& (global.controls_used_for_menu_navigation == "mouse")
-						{
-							player_menu[what_player] = "select_voicepack";
-						}
-					}
-					#endregion /* Show left key for character voicepack select END */
-					
-					#region /* Show right key for character voicepack select */
-					if (character_portrait_for_player_dir_exists_4[what_player])
-					{
-						if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
-						&& (global.controls_used_for_menu_navigation == "mouse")
-						{
-							player_menu[what_player] = "select_voicepack";
-						}
-					}
-					#endregion /* Show right key for character voicepack select END */
-					
 				}
+				#endregion /* Show left key for character voicepack select END */
+				
+				#region /* Show right key for character voicepack select */
+				if (character_portrait_for_player_dir_exists_4[what_player])
+				{
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
+					&& (global.controls_used_for_menu_navigation == "mouse")
+					{
+						player_menu[what_player] = "select_voicepack";
+					}
+				}
+				#endregion /* Show right key for character voicepack select END */
+				
 			}
 		}
-		#endregion /* Player Select Voice Pack END */
-	
 	}
 	#endregion /* Display Selected Voice Pack if voice packs are available END */
 	
@@ -498,7 +407,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 		}
 		
 		#region /* Player Show left and right arrows when selecting character */
-		if (player_menu[what_player] = "select_character")
+		if (player_menu[what_player] == "select_character")
 		|| (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (player_accept_selection == false)
@@ -534,7 +443,6 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	#endregion /* Show left and right arrows when selecting character END */
 	
 	#region /* Tell the player the inputed name */
-	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - 150, name_input_y - 16, get_window_width * 0.5 + player_display_x[what_player] + 150, name_input_y + 16))
 	&& (global.controls_used_for_menu_navigation == "mouse")
 	&& (player_accept_selection >= 0)
@@ -552,7 +460,6 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	&& (player_menu[what_player] != "open_custom_characters_folder")
 	&& (player_menu[what_player] != "manage_character")
 	&& (player_menu[what_player] != "online_character_list")
-	&& (player_menu[what_player] != "search_character_id")
 	&& (can_input_player1_name == false)
 	&& (can_input_player2_name == false)
 	&& (can_input_player3_name == false)
@@ -585,4 +492,114 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	
 	#endregion /* Tell the players what buttons to push END */
 	
+	if (player_menu[what_player] == "select_character")
+	|| (player_menu[what_player] == "select_skin")
+	|| (player_menu[what_player] == "select_voicepack")
+	{
+		
+		#region /* Player key up Skin or Voicepack */
+		if (keyboard_check_pressed(player_key_up))
+		|| (keyboard_check_pressed(player_key2_up))
+		|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padu))
+		|| (gamepad_axis_value(global.player_slot[what_player], gp_axislv) < -0.3)
+		{
+			if (menu_delay == 0 && menu_joystick_delay == 0 && menu_specific_joystick_delay[what_player] == 0)
+			{
+				menu_delay = 3;
+				menu_specific_joystick_delay[what_player] = 30;
+				if (player_menu[what_player] == "select_character")
+				{
+					if (global.free_communication_available)
+					{
+						player_menu[what_player] = "online_character_list";
+						menu = "online_character_list";
+					}
+					else
+					if (global.enable_manage_characters)
+					{
+						player_menu[what_player] = "manage_character";
+						menu = "manage_character";
+					}
+					else
+					{
+						player_menu[what_player] = "back_from_character_select";
+						menu = "back_from_character_select";
+					}
+				}
+				else
+				if (player_menu[what_player] = "select_skin")
+				{
+					player_menu[what_player] = "select_character";
+				}
+				else
+				if (player_menu[what_player] = "select_voicepack")
+				{
+					if (character_portrait_for_player_dir_exists_1[what_player])
+					{
+						/* Go from selecting voicepack to selecting skin */
+						menu_specific_joystick_delay[what_player] = 30;
+						player_menu[what_player] = "select_skin";
+					}
+					else
+					{
+						/* Go from selecting voicepack to selecting character */
+						menu_specific_joystick_delay[what_player] = 30;
+						player_menu[what_player] = "select_character";
+					}
+				}
+			}
+		}
+		#endregion /* Player key up Skin or Voicepack END */
+		
+		else
+		
+		#region /* Player key down Skin or Voicepack */
+		if (keyboard_check_pressed(player_key_down))
+		|| (keyboard_check_pressed(player_key2_down))
+		|| (gamepad_button_check_pressed(global.player_slot[what_player], gp_padd))
+		|| (gamepad_axis_value(global.player_slot[what_player], gp_axislv) > +0.3)
+		{
+			if (menu_delay == 0 && menu_joystick_delay == 0 && menu_specific_joystick_delay[what_player] == 0)
+			{
+				menu_delay = 3;
+				menu_specific_joystick_delay[what_player] = 30;
+				if (player_menu[what_player] == "select_character")
+				{
+					if (character_portrait_for_player_dir_exists_1[what_player])
+					{
+						player_menu[what_player] = "select_skin";
+					}
+					else
+					if (character_portrait_for_player_dir_exists_3[what_player])
+					{
+						player_menu[what_player] = "select_voicepack";
+					}
+					else
+					{
+						player_menu[what_player] = "select_name";
+					}
+				}
+				else
+				if (player_menu[what_player] = "select_skin")
+				{
+					if (character_portrait_for_player_dir_exists_3[what_player])
+					{
+						menu_specific_joystick_delay[what_player] = 30;
+						player_menu[what_player] = "select_voicepack";
+					}
+					else
+					{
+						player_menu[what_player] = "select_name";
+					}
+				}
+				else
+				if (player_menu[what_player] = "select_voicepack")
+				{
+					player_menu[what_player] = "select_name";
+				}
+			}
+		}
+		#endregion /* Player key down Skin or Voicepack END */
+		
+	}
 }

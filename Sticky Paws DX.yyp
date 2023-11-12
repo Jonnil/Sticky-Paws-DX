@@ -3349,6 +3349,7 @@
     {"id":{"name":"spr_sign_reset","path":"sprites/spr_sign_reset/spr_sign_reset.yy",},},
     {"id":{"name":"spr_thumbnail_missing","path":"sprites/spr_thumbnail_missing/spr_thumbnail_missing.yy",},},
     {"id":{"name":"spr_menu_button_short","path":"sprites/spr_menu_button_short/spr_menu_button_short.yy",},},
+    {"id":{"name":"scr_get_relative_timestamp","path":"scripts/scr_get_relative_timestamp/scr_get_relative_timestamp.yy",},},
     {"id":{"name":"scr_draw_loading","path":"scripts/scr_draw_loading/scr_draw_loading.yy",},},
     {"id":{"name":"scr_select_official_level_menu","path":"scripts/scr_select_official_level_menu/scr_select_official_level_menu.yy",},},
     {"id":{"name":"obj_falling_block_solid_spawner","path":"objects/obj_falling_block_solid_spawner/obj_falling_block_solid_spawner.yy",},},

@@ -67,7 +67,7 @@ if (vspeed >+ 32)
 
 if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 && (!instance_exists(obj_player))
-&& (iris_xscale <= 0.001)
+&& (iris_xscale <= 0.01)
 {
 	global.time_countdown = 500; /* Reset countdown back to default value */
 	global.time_countdown_bonus = 500; /* Reset countdown bonus back to default value */

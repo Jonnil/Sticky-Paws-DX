@@ -488,21 +488,21 @@ if (load_ok >= 4)
 	{
 		global.selected_resource_pack = ds_list_size(global.all_loaded_resource_pack) - 1;
 		ini_open(working_directory + "config.ini");
-		ini_write_real("config", "selected_resource_pack", global.selected_resource_pack);
+		ini_write_real("config", "select_resource_pack", global.selected_resource_pack);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	if (global.selected_title_background > ds_list_size(global.all_loaded_title_backgrounds) - 1)
 	{
 		global.selected_title_background = ds_list_size(global.all_loaded_title_backgrounds) - 1;
 		ini_open(working_directory + "config.ini");
-		ini_write_real("config", "selected_title_background", global.selected_title_background);
+		ini_write_real("config", "select_title_background", global.selected_title_background);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	if (global.selected_title_logo > ds_list_size(global.all_loaded_title_logos) - 1)
 	{
 		global.selected_title_logo = ds_list_size(global.all_loaded_title_logos) - 1;
 		ini_open(working_directory + "config.ini");
-		ini_write_real("config", "selected_title_logo", global.selected_title_logo);
+		ini_write_real("config", "select_title_logo", global.selected_title_logo);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* Set so custom assets can't go above what it finds END */

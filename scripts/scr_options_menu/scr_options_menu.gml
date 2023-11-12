@@ -2159,7 +2159,7 @@ function scr_options_menu()
 			}
 			else
 			{
-				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "selected_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic")); /* Includes Open Dyslexic */
+				draw_menu_dropdown(380, selected_font_y, l10n_text("Selected Font"), "select_font", global.selected_font, l10n_text("Game Font"), l10n_text("Normal Font"), l10n_text("Open Dyslexic")); /* Includes Open Dyslexic */
 				var can_select_font = true;
 			}
 			draw_menu_dropdown(380, hud_hide_time_y, l10n_text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
@@ -3063,7 +3063,7 @@ function scr_options_menu()
 					menu_delay = 3;
 					if (can_select_font)
 					{
-						menu = "selected_font";
+						menu = "select_font";
 					}
 					else
 					{
@@ -3098,7 +3098,7 @@ function scr_options_menu()
 					else
 					if (can_select_font)
 					{
-						menu = "selected_font";
+						menu = "select_font";
 					}
 					else
 					{
@@ -3259,7 +3259,7 @@ function scr_options_menu()
 					menu_delay = 3;
 					if (can_select_font)
 					{
-						menu = "selected_font";
+						menu = "select_font";
 					}
 					else
 					if (global.enable_difficulty_selection_settings)
@@ -3273,7 +3273,7 @@ function scr_options_menu()
 				}
 			}
 			else
-			if (menu == "selected_font")
+			if (menu == "select_font")
 			{
 				if (key_up)
 				&& (open_dropdown)

@@ -305,7 +305,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player], get_window_height * 0.5 + voicepack_y, l10n_text("Voice Pack") + ": " + string(global.voicepack_for_player[what_player] + 1), global.default_text_size, c_black, c_white, 1);
 			}
 			
-			if (player_menu[what_player] = "select_voicepack")
+			if (player_menu[what_player] == "select_voicepack")
 			|| (global.controls_used_for_menu_navigation == "mouse")
 			{
 				if (player_accept_selection == false)
@@ -395,7 +395,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	{
 		
 		#region /* Player Show left and right arrows when selecting character */
-		if (player_menu[what_player] = "select_character")
+		if (player_menu[what_player] == "select_character")
 		|| (global.controls_used_for_menu_navigation == "mouse")
 		{
 			if (player_accept_selection == false)
@@ -512,7 +512,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	&& (player_menu[what_player] != "open_custom_characters_folder")
 	&& (player_menu[what_player] != "manage_character")
 	&& (player_menu[what_player] != "online_character_list")
-	&& (player_menu[what_player] != "search_character_id")
 	&& (can_input_player1_name == false)
 	&& (can_input_player2_name == false)
 	&& (can_input_player3_name == false)

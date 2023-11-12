@@ -31,7 +31,6 @@ function scr_character_select_menu_draw()
 	|| (menu == "back_from_character_select")
 	|| (menu == "manage_character")
 	|| (menu == "online_character_list")
-	|| (menu == "search_character_id")
 	|| (menu == "input_name_ok")
 	|| (menu == "input_name_cancel")
 	{
@@ -358,72 +357,6 @@ function scr_character_select_menu_draw()
 			}
 		}
 		#endregion /* Online Character List Button END */
-		
-		#region /* Search Character ID Button */
-		if (global.free_communication_available)
-		{
-			draw_menu_button(0, draw_search_id_y, l10n_text("Search Character ID"), "search_character_id", "search_character_id");
-			if (max_custom_characters_reached)
-			{
-				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, 0, draw_search_id_y + 21, 1, 1, 0, c_dkgray, 0.5);
-				draw_sprite_ext(spr_lock_icon, 0, 16, draw_search_id_y+ 21, 1, 1, 0, c_white, 1);
-			}
-			
-			#region /* Draw Search Key */
-			if (gamepad_is_connected(global.player_slot[1]))
-			&& (global.controls_used_for_menu_navigation == "controller")
-			&& (!max_custom_characters_reached)
-			|| (global.always_show_gamepad_buttons)
-			&& (!max_custom_characters_reached)
-			{
-				scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);
-			}
-			#endregion /* Draw Search key END */
-			
-		}
-		
-		if (can_input_player1_name == false)
-		&& (can_input_player2_name == false)
-		&& (can_input_player3_name == false)
-		&& (can_input_player4_name == false)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (open_sub_menu == false)
-		&& (global.free_communication_available)
-		&& (!max_custom_characters_reached)
-		{
-			if (menu == "search_character_id")
-			&& (key_a_pressed)
-			|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
-			|| (gamepad_button_check_pressed(global.player_slot[2], gp_face4))
-			|| (gamepad_button_check_pressed(global.player_slot[3], gp_face4))
-			|| (gamepad_button_check_pressed(global.player_slot[4], gp_face4))
-			|| (gamepad_button_check_pressed(4, gp_face4))
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_search_id_y + 2, 370, draw_search_id_y + 41))
-			&& (global.controls_used_for_menu_navigation == "mouse")
-			&& (mouse_check_button_released(mb_left))
-			{
-				if (global.online_enabled)
-				{
-					keyboard_string = "";
-					search_id = "";
-					content_type = "character";
-					menu = "search_id_ok";
-					select_custom_level_menu_open = false;
-					menu_delay = 3;
-				}
-				else
-				{
-					keyboard_string = "";
-					search_id = "";
-					content_type = "character";
-					caution_online_takes_you_to = "search_id_ok";
-					caution_online_takes_you_back_to = "search_character_id";
-					menu = "caution_online_proceed";
-					menu_delay = 3;
-				}
-			}
-		}
-		#endregion /* Search Character ID Button END */
 		
 		#endregion /* All code before menu navigation code END */
 		

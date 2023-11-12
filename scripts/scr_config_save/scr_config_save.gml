@@ -20,7 +20,7 @@ function scr_config_save()
 	ini_write_real("config", "show_tutorial_signs", global.show_tutorial_signs);
 	ini_write_real("config", "show_new_items_notification", global.show_new_items_notification);
 	ini_write_real("config", "hud_hide_time", global.hud_hide_time);
-	ini_write_real("config", "selected_font", global.selected_font);
+	ini_write_real("config", "select_font", global.selected_font);
 	ini_write_real("config", "players_can_collide", global.players_can_collide);
 	
 	#region /* Assist Settings */
@@ -66,12 +66,12 @@ function scr_config_save()
 	{
 		global.selected_resource_pack = 0;
 	}
-	ini_write_real("config", "selected_resource_pack", global.selected_resource_pack);
+	ini_write_real("config", "select_resource_pack", global.selected_resource_pack);
 	if (global.selected_title_background <= -2)
 	{
 		global.selected_title_background = -1;
 	}
-	ini_write_real("config", "selected_title_background", global.selected_title_background);
+	ini_write_real("config", "select_title_background", global.selected_title_background);
 	ini_write_real("config", "title_background_scale", global.title_background_scale);
 	ini_write_real("config", "background_layer_x_scroll", global.background_layer_x_scroll);
 	ini_write_real("config", "background_layer_y_scroll", global.background_layer_y_scroll);
@@ -79,7 +79,7 @@ function scr_config_save()
 	{
 		global.selected_title_logo = 0;
 	}
-	ini_write_real("config", "selected_title_logo", global.selected_title_logo);
+	ini_write_real("config", "select_title_logo", global.selected_title_logo);
 	ini_write_real("config", "zoom_level", global.zoom_level);
 	ini_write_real("config", "zoom_world_map", global.zoom_world_map);
 	ini_write_real("config", "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map);

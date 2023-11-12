@@ -358,7 +358,7 @@ if (menu == "load_official_level_template")
 #endregion /* Load Official Level Template END */
 
 #region /* Start Game */
-if (iris_xscale <= 0.001)
+if (iris_xscale <= 0.01)
 && (menu_delay > 999) /* Make sure you can only start the game when the menu delay is set to over 999, as that's when the iris xscale is set to zoom in */
 {
 	

@@ -92,7 +92,6 @@ function scr_select_custom_level_menu()
 		&& (menu != "back_from_level_editor")
 		&& (menu != "open_custom_levels_folder")
 		&& (menu != "online_level_list")
-		&& (menu != "search_level_id")
 		&& (menu != "caution_online_back")
 		&& (menu != "caution_online_do_not_show")
 		&& (menu != "caution_online_proceed")
@@ -108,7 +107,7 @@ function scr_select_custom_level_menu()
 			{
 				if (global.free_communication_available)
 				{
-					menu = "search_level_id";
+					menu = "online_level_list";
 				}
 				else
 				if (global.enable_open_custom_folder)
@@ -151,7 +150,6 @@ function scr_select_custom_level_menu()
 		&& (menu != "back_from_level_editor")
 		&& (menu != "open_custom_levels_folder")
 		&& (menu != "online_level_list")
-		&& (menu != "search_level_id")
 		&& (menu != "caution_online_back")
 		&& (menu != "caution_online_do_not_show")
 		&& (menu != "caution_online_proceed")
@@ -195,7 +193,6 @@ function scr_select_custom_level_menu()
 	&& (menu != "back_from_level_editor")
 	&& (menu != "open_custom_levels_folder")
 	&& (menu != "online_level_list")
-	&& (menu != "search_level_id")
 	&& (menu != "caution_online_back")
 	&& (menu != "caution_online_do_not_show")
 	&& (menu != "caution_online_proceed")
@@ -228,7 +225,6 @@ function scr_select_custom_level_menu()
 	&& (menu != "back_from_level_editor")
 	&& (menu != "open_custom_levels_folder")
 	&& (menu != "online_level_list")
-	&& (menu != "search_level_id")
 	&& (menu != "caution_online_back")
 	&& (menu != "caution_online_do_not_show")
 	&& (menu != "caution_online_proceed")
@@ -263,7 +259,6 @@ function scr_select_custom_level_menu()
 		&& (menu != "back_from_level_editor")
 		&& (menu != "open_custom_levels_folder")
 		&& (menu != "online_level_list")
-		&& (menu != "search_level_id")
 		&& (menu != "caution_online_back")
 		&& (menu != "caution_online_do_not_show")
 		&& (menu != "caution_online_proceed")
@@ -392,7 +387,6 @@ function scr_select_custom_level_menu()
 			if (menu == "back_from_level_editor")
 			|| (menu == "open_custom_levels_folder")
 			|| (menu == "online_level_list")
-			|| (menu == "search_level_id")
 			{
 				if (key_right && menu_delay == 0 && menu_joystick_delay == 0)
 				{
@@ -636,15 +630,8 @@ function scr_select_custom_level_menu()
 			menu_delay = 3;
 			can_navigate = true;
 			select_custom_level_menu_open = true;
-			if (global.free_communication_available)
-			{
-				menu = "search_level_id";
-			}
-			else
-			{
-				menu = "level_editor_play";
-				scroll_to = floor(global.select_level_index / row);
-			}
+			menu = "level_editor_play";
+			scroll_to = floor(global.select_level_index / row);
 			lerp_on = true;
 		}
 		if (menu == "open_custom_levels_folder")
@@ -654,103 +641,6 @@ function scr_select_custom_level_menu()
 			scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
 		}
 		#endregion /* Online Level List END */
-		
-		#region /* Search Level ID Button */
-		if (global.enable_open_custom_folder)
-		{
-			var draw_search_id_y = 42 * 3;
-		}
-		else
-		{
-			var draw_search_id_y = 42 * 2;
-		}
-		if (global.free_communication_available)
-		{
-			draw_menu_button(0, draw_search_id_y, l10n_text("Search Level ID"), "search_level_id", "search_level_id");
-			if (max_custom_levels_reached)
-			{
-				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, 0, draw_search_id_y + 21, 1, 1, 0, c_dkgray, 0.5);
-				draw_sprite_ext(spr_lock_icon, 0, 16, draw_search_id_y + 21, 1, 1, 0, c_white, 1);
-			}
-			
-			#region /* Draw Search Key */
-			if (gamepad_is_connected(global.player_slot[1]))
-			&& (global.controls_used_for_menu_navigation == "controller")
-			&& (!max_custom_levels_reached)
-			|| (global.always_show_gamepad_buttons)
-			&& (!max_custom_levels_reached)
-			{
-				scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);
-			}
-			#endregion /* Draw Search key END */
-			
-		}
-		
-		if (can_input_level_name == false)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (open_sub_menu == false)
-		&& (global.free_communication_available)
-		&& (!max_custom_levels_reached)
-		{
-			if (menu == "search_level_id")
-			&& (key_a_pressed)
-			|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
-			|| (gamepad_button_check_pressed(global.player_slot[2], gp_face4))
-			|| (gamepad_button_check_pressed(global.player_slot[3], gp_face4))
-			|| (gamepad_button_check_pressed(global.player_slot[4], gp_face4))
-			|| (gamepad_button_check_pressed(4, gp_face4))
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_search_id_y + 2, 370, draw_search_id_y + 41))
-			&& (mouse_check_button_released(mb_left))
-			{
-				keyboard_string = "";
-				search_id = "";
-				content_type = "level";
-				menu = "search_id_ok";
-				select_custom_level_menu_open = false;
-				menu_delay = 3;
-			}
-		}
-		if (menu == "search_level_id")
-		&& (key_up)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		{
-			menu_delay = 3;
-			can_navigate = true;
-			select_custom_level_menu_open = true;
-			if (global.free_communication_available)
-			{
-				menu = "online_level_list";
-			}
-			else
-			if (global.enable_open_custom_folder)
-			{
-				menu = "open_custom_levels_folder";
-			}
-			else
-			{
-				menu = "back_from_level_editor";
-			}
-			lerp_on = true;
-		}
-		if (menu == "search_level_id")
-		&& (key_down)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (show_level_editor_corner_menu)
-		{
-			menu_delay = 3;
-			can_navigate = true;
-			select_custom_level_menu_open = true;
-			menu = "level_editor_play";
-			scroll_to = floor(global.select_level_index / row);
-			lerp_on = true;
-		}
-		if (menu == "search_level_id")
-		{
-			open_sub_menu = false;
-			show_level_editor_corner_menu = true;
-			scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
-		}
-		#endregion /* Search Level ID Button END */
 		
 	}
 	#endregion /* Corner menu: Back button, Open custom levels folder, Search button END */

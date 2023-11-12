@@ -500,6 +500,20 @@ if (global.reset_world_map_zoom_when_going_back_to_map)
 }
 #endregion /* Reset world map zoom END */
 
+ini_open(working_directory + "config.ini");
+var latest_whats_new_version = ini_read_string("config", "latest_whats_new_version", "");
+var latest_whats_new_text = ini_read_string("config", "latest_whats_new_text", "");
+ini_close();
+
+if (latest_whats_new_version != "v" + string(scr_get_build_date()) && latest_whats_new_text != global.whats_new)
+{
+	latest_whats_new_read = false; /* The player have not read the latest what's new tab */
+}
+else
+{
+	latest_whats_new_read = true;
+}
+
 #region /* Narrator Voice variable handeling */
 
 menuvoice_1player = noone;

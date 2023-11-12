@@ -9,8 +9,6 @@ function scr_debug_screen()
 	
 	/* Debug information should show up on pause screen and tite screen, so you can optimize those screens too */
 	if keyboard_check_pressed(vk_f3)
-	|| keyboard_check(ord("F"))
-	&& keyboard_check_pressed(ord("3"))
 	{
 		global.debug_screen = !global.debug_screen;
 		if (keyboard_check(ord("O")))
@@ -323,6 +321,11 @@ function scr_debug_screen()
 			scr_draw_text_outlined(32, debug_text_y, "menu: " + string(menu), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
 		}
+		if (variable_instance_exists(self, "player_menu"))
+		{
+			scr_draw_text_outlined(32, debug_text_y, "player_menu[1]: " + string(player_menu[1]), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
 		if (variable_instance_exists(self, "menu_delay"))
 		{
 			if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -335,28 +338,41 @@ function scr_debug_screen()
 			}
 			debug_text_y += 20;
 		}
-		//if (variable_instance_exists(self, "menu_joystick_delay"))
-		//&& (gamepad_is_connected(0))
-		//{
-		//	if (menu_joystick_delay == 0)
-		//	{
-		//		scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_white);
-		//	}
-		//	else
-		//	{
-		//		scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_red);
-		//	}
-		//	debug_text_y += 20;
-		//}
-		//scr_draw_text_outlined(32, debug_text_y, "character_index: " + string(global.character_index), global.default_text_size, c_black, c_white);
-		//debug_text_y += 20;
-		//scr_draw_text_outlined(32, debug_text_y, "search_id: " + string(global.search_id), global.default_text_size, c_black, c_white);
-		//debug_text_y += 20;
-		//if (instance_exists(obj_camera))
-		//{
-		//	scr_draw_text_outlined(32, debug_text_y, "obj_camera.hud_show_lives_timer: " + string(obj_camera.hud_show_lives_timer), global.default_text_size, c_black, c_white);
-		//	debug_text_y += 20;
-		//}
+		if (variable_instance_exists(self, "menu_joystick_delay"))
+		&& (gamepad_is_connected(0))
+		{
+			if (menu_joystick_delay == 0)
+			{
+				scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_white);
+			}
+			else
+			{
+				scr_draw_text_outlined(32, debug_text_y, "menu_joystick_delay: " + string(menu_joystick_delay), global.default_text_size, c_black, c_red);
+			}
+			debug_text_y += 20;
+		}
+		if (variable_instance_exists(self, "menu_specific_joystick_delay"))
+		&& (gamepad_is_connected(0))
+		{
+			if (menu_specific_joystick_delay[0] == 0)
+			{
+				scr_draw_text_outlined(32, debug_text_y, "menu_specific_joystick_delay[0]: " + string(menu_specific_joystick_delay[0]), global.default_text_size, c_black, c_white);
+			}
+			else
+			{
+				scr_draw_text_outlined(32, debug_text_y, "menu_specific_joystick_delay[0]: " + string(menu_specific_joystick_delay[0]), global.default_text_size, c_black, c_red);
+			}
+			debug_text_y += 20;
+		}
+		scr_draw_text_outlined(32, debug_text_y, "character_index: " + string(global.character_index), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "search_id: " + string(global.search_id), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		if (instance_exists(obj_camera))
+		{
+			scr_draw_text_outlined(32, debug_text_y, "obj_camera.hud_show_lives_timer: " + string(obj_camera.hud_show_lives_timer), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
 		scr_draw_text_outlined(32, debug_text_y, "controls_used_for_menu_navigation: " + string(global.controls_used_for_menu_navigation), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "temp_directory: " + string(temp_directory), global.default_text_size, c_black, c_white);
@@ -368,5 +384,11 @@ function scr_debug_screen()
 			scr_draw_text_outlined(32, debug_text_y, "use_cache_or_working: cache_directory", global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
 		}
+		scr_draw_text_outlined(32, debug_text_y, "gp_axislh: " + string(gamepad_axis_value(0, gp_axislh)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "gp_axislv: " + string(gamepad_axis_value(0, gp_axislv)), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "current_datetime: " + string(date_datetime_string(date_current_datetime())), global.default_text_size, c_black, c_white);
 	}
 }

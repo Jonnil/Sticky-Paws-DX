@@ -46,7 +46,7 @@ function scr_character_manage_menu_step()
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
 		|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.left]))
 		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padl))
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < 0)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < -0.3)
 		&& (menu_specific_joystick_delay[1] <= 0)
 		|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
 		display_get_gui_width() * 0.5 + player_display_x[1] - arrow_offset - 16,

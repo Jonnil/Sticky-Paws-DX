@@ -55,7 +55,7 @@ if (lives <= 0)
 		|| (gamepad_button_check_pressed(global.player_slot[2], gp_padl))
 		|| (gamepad_button_check_pressed(global.player_slot[3], gp_padl))
 		|| (gamepad_button_check_pressed(global.player_slot[4], gp_padl))
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < 0)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < -0.3)
 		|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.right]))
 		|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.right]))
 		|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.right]))
@@ -181,7 +181,7 @@ if (lives <= 0)
 #endregion /* Game Over END */
 
 #region /* Draw loading screen when reloading level */
-if (iris_xscale <= 0.001)
+if (iris_xscale <= 0.01)
 && (lives >= 1)
 {
 	if (global.enable_transitions)

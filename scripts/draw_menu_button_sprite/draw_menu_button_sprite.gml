@@ -1,4 +1,4 @@
-function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_offset, y_origin_offset, xscale, yscale, spr_width, spr_height, string_text, menu_index, menu_takes_you_to, show_arrows = true, highlight_color = c_lime)
+function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_offset, y_origin_offset, xscale, yscale, spr_width, spr_height, string_text, menu_index, menu_takes_you_to, show_arrows = true, highlight_color = c_lime, alpha = 1)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
@@ -21,7 +21,7 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 		{
 			if (sprite_exists(spr_index))
 			{
-				draw_sprite_ext(spr_index, global.menu_button_subimg, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, highlight_color, 1);
+				draw_sprite_ext(spr_index, global.menu_button_subimg, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, highlight_color, alpha);
 			}
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
@@ -37,7 +37,7 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	{
 		if (sprite_exists(spr_index))
 		{
-			draw_sprite_ext(spr_index, global.menu_button_subimg, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, c_white, 1);
+			draw_sprite_ext(spr_index, global.menu_button_subimg, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, c_white, alpha);
 			if (highlight_color != c_lime)
 			{
 				draw_sprite_ext(spr_index, global.menu_button_subimg, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, highlight_color, 0.1);

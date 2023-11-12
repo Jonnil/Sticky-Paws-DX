@@ -32,7 +32,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "show_tutorial_signs")){global.show_tutorial_signs = ini_read_real("config", "show_tutorial_signs", 0);}
 		if (ini_key_exists("config", "show_new_items_notification")){global.show_new_items_notification = ini_read_real("config", "show_new_items_notification", 0);}
 		if (ini_key_exists("config", "hud_hide_time")){global.hud_hide_time = ini_read_real("config", "hud_hide_time", 0);}
-		if (ini_key_exists("config", "selected_font")){global.selected_font = ini_read_real("config", "selected_font", 0);scr_set_font();}
+		if (ini_key_exists("config", "select_font")){global.selected_font = ini_read_real("config", "select_font", 0);scr_set_font();}
 		if (ini_key_exists("config", "players_can_collide")){global.players_can_collide = ini_read_real("config", "players_can_collide", 0);}
 		
 		#region /* Assist Settings */
@@ -79,12 +79,12 @@ function scr_config_load()
 		if (ini_key_exists("config", "button_design_transparency")){global.button_design_transparency = ini_read_real("config", "button_design_transparency", 0);}
 		if (ini_key_exists("config", "menu_button_subimg")){global.menu_button_subimg = ini_read_real("config", "menu_button_subimg", 16);}
 		
-		if (ini_key_exists("config", "selected_resource_pack")){global.selected_resource_pack = ini_read_real("config", "selected_resource_pack", 0);}
-		if (ini_key_exists("config", "selected_title_background")){global.selected_title_background = ini_read_real("config", "selected_title_background", 0);}
+		if (ini_key_exists("config", "select_resource_pack")){global.selected_resource_pack = ini_read_real("config", "select_resource_pack", 0);}
+		if (ini_key_exists("config", "select_title_background")){global.selected_title_background = ini_read_real("config", "select_title_background", 0);}
 		if (ini_key_exists("config", "title_background_scale")){global.title_background_scale = ini_read_real("config", "title_background_scale", 1);}
 		if (ini_key_exists("config", "background_layer_x_scroll")){global.background_layer_x_scroll = ini_read_real("config", "background_layer_x_scroll", 1);}
 		if (ini_key_exists("config", "background_layer_y_scroll")){global.background_layer_y_scroll = ini_read_real("config", "background_layer_y_scroll", 1);}
-		if (ini_key_exists("config", "selected_title_logo")){global.selected_title_logo = ini_read_real("config", "selected_title_logo", 0);}
+		if (ini_key_exists("config", "select_title_logo")){global.selected_title_logo = ini_read_real("config", "select_title_logo", 0);}
 		if (ini_key_exists("config", "zoom_level")){global.zoom_level = ini_read_real("config", "zoom_level", 1);}
 		if (ini_key_exists("config", "zoom_world_map")){global.zoom_world_map = ini_read_real("config", "zoom_world_map", 1);}
 		if (ini_key_exists("config", "reset_level_zoom_when_going_back_to_map")){global.reset_level_zoom_when_going_back_to_map = ini_read_real("config", "reset_level_zoom_when_going_back_to_map", 0);}

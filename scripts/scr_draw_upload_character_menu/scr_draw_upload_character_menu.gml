@@ -986,7 +986,7 @@ function scr_draw_upload_character_menu()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			menu = "search_character_id";
+			menu = "download_online_search_id";
 		}
 		#endregion /* Return to game END */
 		

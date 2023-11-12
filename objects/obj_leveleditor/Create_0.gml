@@ -586,10 +586,10 @@ if (global.actually_play_edited_level == false)
 	if (file_exists("config.ini"))
 	{
 		ini_open(working_directory + "config.ini");
-		if (ini_key_exists("config", "selected_level_editing_music"))
+		if (ini_key_exists("config", "select_level_editing_music"))
 		{
-			global.selected_level_editing_music = ini_read_real("config", "selected_level_editing_music", 1); /* The selected background music when editing in the level editor */
-			previous_selected_level_editing_music = ini_read_real("config", "selected_level_editing_music", 1); /* When changing the editing music, you want to compare it to this variable */
+			global.selected_level_editing_music = ini_read_real("config", "select_level_editing_music", 1); /* The selected background music when editing in the level editor */
+			previous_selected_level_editing_music = ini_read_real("config", "select_level_editing_music", 1); /* When changing the editing music, you want to compare it to this variable */
 		}
 		else
 		{

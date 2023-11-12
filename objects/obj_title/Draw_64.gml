@@ -203,7 +203,6 @@ if (global.arcade_mode == false && in_settings == false)
     if (menu == "main_game" ||
 		menu == "level_editor" ||
 		menu == "options" ||
-        menu == "information" ||
         menu == "quit" ||
 		menu == "information" ||
 		menu == "link_discord" ||
@@ -403,12 +402,19 @@ if (global.arcade_mode == false && in_settings == false)
 		draw_sprite_ext(spr_icons_cogwheel, 0, display_get_gui_width() * 0.5 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
 		
 		/* Information button */
-		draw_menu_button_sprite(spr_icons_exclamation, display_get_gui_width() - 32, display_get_gui_height() - 35, 16, 0, 1, 1, 32, 32, "", "information", "information", false);
+		if (!latest_whats_new_read)
+		{
+			var information_alpha = scr_wave(0, 1, 1);
+		}
+		else
+		{
+			var information_alpha = 1;
+		}
+		draw_menu_button_sprite(spr_icons_exclamation, display_get_gui_width() - 32, display_get_gui_height() - 35, 16, 0, 1, 1, 32, 32, "", "information", "information", false,,information_alpha);
 		if (menu == "information")
 		{
 			draw_set_halign(fa_right);
 			scr_draw_text_outlined(display_get_gui_width() - 8, display_get_gui_height() - 64, l10n_text("Information"), global.default_text_size, c_black, c_white, 1);
-			
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32, display_get_gui_height() - 35, display_get_gui_width(), display_get_gui_height()))

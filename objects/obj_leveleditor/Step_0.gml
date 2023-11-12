@@ -285,7 +285,7 @@ if (global.actually_play_edited_level == false)
 		if (file_exists("config.ini"))
 		{
 			ini_open(working_directory + "config.ini");
-			ini_write_real("config", "selected_level_editing_music", global.selected_level_editing_music);
+			ini_write_real("config", "select_level_editing_music", global.selected_level_editing_music);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 	}
