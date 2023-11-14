@@ -86,7 +86,9 @@ if (lives <= 0)
 			}
 		}
 		
-		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept]))
+		if (keyboard_check_pressed(vk_enter))
+		|| (keyboard_check_pressed(vk_space))
+		|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept]))
 		|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.accept]))
 		|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.accept]))
 		|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.accept]))

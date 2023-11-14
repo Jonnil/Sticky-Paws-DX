@@ -364,59 +364,59 @@ function scr_draw_online_download_list()
 			}
 			
 			#region /* Get information about currently selected ID. If there is information data, then show info about currently selected ID */
-			//if (old_currently_selected_id != currently_selected_id)
-			//{
-			//	/* Get level information. The level info should be retrieved only once you select a new ID */
-			//	old_currently_selected_id = currently_selected_id;
-			//	info_data = noone;
-			//	global.online_download_list_info = "";
-			//	global.http_request_info = http_request("https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id), "GET", map, "");
-			//}
+			if (old_currently_selected_id != currently_selected_id)
+			{
+				/* Get level information. The level info should be retrieved only once you select a new ID */
+				old_currently_selected_id = currently_selected_id;
+				info_data = noone;
+				global.online_download_list_info = "";
+				global.http_request_info = http_request("https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id), "GET", map, "");
+			}
 			
-			//if (info_data == noone)
-			//&& (in_online_download_list_menu)
-			//{
-			//	/* If there is an online download list information loaded, interpret that as a struct using "json parse" */
-			//	if (global.online_download_list_info != "")
-			//	&& (global.online_download_list_info != "HTTP request exception")
-			//	&& (global.online_download_list_info != "Unauthorized")
-			//	{
-			//		info_data = json_parse(global.online_download_list_info); /* When there is data here, then go to the online downloads menu */
-			//	}
-			//}
+			if (info_data == noone)
+			&& (in_online_download_list_menu)
+			{
+				/* If there is an online download list information loaded, interpret that as a struct using "json parse" */
+				if (global.online_download_list_info != "")
+				&& (global.online_download_list_info != "HTTP request exception")
+				&& (global.online_download_list_info != "Unauthorized")
+				{
+					info_data = json_parse(global.online_download_list_info); /* When there is data here, then go to the online downloads menu */
+				}
+			}
 			
-			//if (info_data != noone)
-			//&& (menu != "search_id_ok")
-			//{
-			//	/* Check if it's an array */
-			//	if (is_array(info_data))
-			//	{
-			//		/* Get the number of items in the JSON array */
-			//		var num_info_items = array_length(info_data);
-			//		for (var i = 0; i < num_info_items; i++;)
-			//		{
-			//			/* Fetch the "name" and "thumbnail" properties from the JSON object */
-			//			var item = info_data[i];
-			//			var draw_download_name = item.name;
-			//			var draw_download_thumbnail = item.thumbnail;
+			if (info_data != noone)
+			&& (menu != "search_id_ok")
+			{
+				/* Check if it's an array */
+				if (is_array(info_data))
+				{
+					/* Get the number of items in the JSON array */
+					var num_info_items = array_length(info_data);
+					for (var i = 0; i < num_info_items; i++;)
+					{
+						/* Fetch the "name" and "thumbnail" properties from the JSON object */
+						var item = info_data[i];
+						var draw_download_name = item.name;
+						var draw_download_thumbnail = item.thumbnail;
 						
-			//			scr_delete_sprite_properly(spr_download_list_thumbnail);
-			//			spr_download_list_thumbnail = sprite_add(draw_download_thumbnail, 0, false, true, 0, 0);
+						scr_delete_sprite_properly(spr_download_list_thumbnail);
+						spr_download_list_thumbnail = sprite_add(draw_download_thumbnail, 0, false, true, 0, 0);
 						
-			//			draw_set_halign(fa_center);
+						draw_set_halign(fa_center);
 						
-			//			/* Write the name associated with the ID */
-			//			scr_draw_text_outlined(1000, 128, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+						/* Write the name associated with the ID */
+						scr_draw_text_outlined(1000, 128, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 						
-			//			/* Draw the thumbnail */
-			//			if (sprite_exists(spr_download_list_thumbnail))
-			//			{
-			//				draw_sprite_ext(spr_download_list_thumbnail, 1, 1000, 256, 1, 1, 0, c_white, 1);
-			//			}
+						/* Draw the thumbnail */
+						if (sprite_exists(spr_download_list_thumbnail))
+						{
+							draw_sprite_ext(spr_download_list_thumbnail, 1, 1000, 256, 1, 1, 0, c_white, 1);
+						}
 						
-			//		}
-			//	}
-			//}
+					}
+				}
+			}
 			#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
 			
 			#region /* Online download list menu navigation when there is data */
