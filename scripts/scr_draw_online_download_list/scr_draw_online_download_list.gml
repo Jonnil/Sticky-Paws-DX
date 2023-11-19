@@ -381,6 +381,7 @@ function scr_draw_online_download_list()
 				&& (global.online_download_list_info != "Unauthorized")
 				{
 					info_data = json_parse(global.online_download_list_info); /* When there is data here, then go to the online downloads menu */
+					info_data = array_create(1, info_data);
 				}
 				//show_message(string(info_data));
 			}
@@ -388,29 +389,29 @@ function scr_draw_online_download_list()
 			/* Check if it's an array */
 			//if (is_array(info_data))
 			//{
-			//	/* Get the number of items in the JSON array */
-			//	var num_info_items = array_length(info_data);
-			//	for (var i = 0; i < num_info_items; i++;)
-			//	{
-			//		/* Fetch the "name" and "thumbnail" properties from the JSON object */
-			//		var item = info_data[i];
-			//		var draw_download_name = item.name;
-			//		var draw_download_thumbnail = item.thumbnail;
+				/* Get the number of items in the JSON array */
+				var num_info_items = array_length(info_data);
+				for (var i = 0; i < num_info_items; i++;)
+				{
+					/* Fetch the "name" and "thumbnail" properties from the JSON object */
+					var item = info_data[i];
+					var draw_download_name = item.name;
+					var draw_download_thumbnail = item.thumbnail;
 					
-			//		scr_delete_sprite_properly(spr_download_list_thumbnail);
-			//		spr_download_list_thumbnail = sprite_add(draw_download_thumbnail, 0, false, true, 0, 0);
+					//scr_delete_sprite_properly(spr_download_list_thumbnail);
+					//spr_download_list_thumbnail = sprite_add(draw_download_thumbnail, 0, false, true, 0, 0);
 					
-			//		draw_set_halign(fa_center);
+					//draw_set_halign(fa_center);
 					
-			//		/* Write the name associated with the ID */
-			//		scr_draw_text_outlined(1000, 128, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+					/* Write the name associated with the ID */
+					scr_draw_text_outlined(1000, 128, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 					
-			//		/* Draw the thumbnail */
-			//		if (sprite_exists(spr_download_list_thumbnail))
-			//		{
-			//			draw_sprite_ext(spr_download_list_thumbnail, 1, 1000, 256, 1, 1, 0, c_white, 1);
-			//		}
-			//	}
+					///* Draw the thumbnail */
+					//if (sprite_exists(spr_download_list_thumbnail))
+					//{
+					//	draw_sprite_ext(spr_download_list_thumbnail, 1, 1000, 256, 1, 1, 0, c_white, 1);
+					//}
+				}
 			//}
 			#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
 			
