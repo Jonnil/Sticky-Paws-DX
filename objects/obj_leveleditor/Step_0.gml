@@ -544,12 +544,16 @@ if (global.actually_play_edited_level == false)
 		&& (pause == false)
 		{
 			if (keyboard_check(global.player_[inp.key][1][1][action.up]))
+			|| (keyboard_check(global.player_[inp.key][1][2][action.up]))
 			|| (keyboard_check(vk_up))
 			|| (keyboard_check(global.player_[inp.key][1][1][action.down]))
+			|| (keyboard_check(global.player_[inp.key][1][2][action.down]))
 			|| (keyboard_check(vk_down))
 			|| (keyboard_check(global.player_[inp.key][1][1][action.left]))
+			|| (keyboard_check(global.player_[inp.key][1][2][action.left]))
 			|| (keyboard_check(vk_left))
 			|| (keyboard_check(global.player_[inp.key][1][1][action.right]))
+			|| (keyboard_check(global.player_[inp.key][1][2][action.right]))
 			|| (keyboard_check(vk_right))
 			{
 				navigate_camera_with_arrowkeys = true;
@@ -1136,7 +1140,7 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Scroll mouse wheel to change erase tool size in level editor END */
 	
 	#region /* Grid hotkeys */
-	if (keyboard_check(vk_control) && !pause)
+	if (show_grid && keyboard_check(vk_control) && !pause)
 	{
 		if (keyboard_check(vk_shift))
 		{

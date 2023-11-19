@@ -357,6 +357,7 @@
     {"name":"snd_water_getout","order":141,"path":"sounds/snd_water_getout/snd_water_getout.yy",},
     {"name":"obj_map_path_turn","order":1,"path":"objects/obj_map_path_turn/obj_map_path_turn.yy",},
     {"name":"snd_music_boss","order":92,"path":"sounds/snd_music_boss/snd_music_boss.yy",},
+    {"name":"scr_draw_welcome_to_level_editor_menu","order":28,"path":"scripts/scr_draw_welcome_to_level_editor_menu/scr_draw_welcome_to_level_editor_menu.yy",},
     {"name":"obj_follow_mouse","order":2,"path":"objects/obj_follow_mouse/obj_follow_mouse.yy",},
     {"name":"spr_spikes_emerge_block","order":133,"path":"sprites/spr_spikes_emerge_block/spr_spikes_emerge_block.yy",},
     {"name":"snd_footstep_wood_right","order":55,"path":"sounds/snd_footstep_wood_right/snd_footstep_wood_right.yy",},

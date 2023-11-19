@@ -55,7 +55,7 @@ function scr_controls_for_level_editor()
 	|| (keyboard_check(vk_control))
 	|| (double_tap_move_camera_faster)
 	
-	/* Player 1 Keyboard Shortcut Change Draw Size */ key_change_draw_size = ord("D");
+	/* Player 1 Keyboard Shortcut Change Draw Size */ key_change_draw_size = ord("P");
 	/* Player 1 Gamepad Shortcut Change Draw Size */ button_change_draw_size = gp_face3;
 	
 	/* Player 1 Keyboard Shortcut Change Erase Size */ key_change_erase_size = ord("E");
@@ -64,7 +64,7 @@ function scr_controls_for_level_editor()
 	/* Player 1 Keyboard Shortcut Change Fill Type */ key_change_fill_type = ord("F");
 	/* Player 1 Gamepad Shortcut Change Fill Type */ button_change_fill_type = gp_face3;
 	
-	/* Player 1 Keyboard Shortcut Draw */ key_draw = ord("D");
+	/* Player 1 Keyboard Shortcut Draw */ key_draw = ord("P");
 	/* Player 1 Gamepad Shortcut Draw */ button_draw = global.player_[inp.gp][1][1][action.accept];
 	
 	/* Player 1 Keyboard Shortcut Erase */ key_erase = ord("E");

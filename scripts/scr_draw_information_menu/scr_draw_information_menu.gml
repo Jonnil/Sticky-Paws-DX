@@ -142,13 +142,33 @@ function scr_draw_information_menu()
 			&& (information_menu_open == 3)
 			{
 				menu_delay = 3;
-				menu = "backup_open_custom_levels_folder";
+				if (global.enable_options_for_pc)
+				{
+					menu = "backup_open_custom_character_folder";
+				}
+				else
+				{
+					menu = "backups";
+				}
 			}
 			else
 			if (menu == "backup_open_custom_levels_folder")
 			{
 				menu_delay = 3;
 				menu = "backups";
+			}
+			else
+			if (menu == "backup_open_custom_character_folder")
+			{
+				menu_delay = 3;
+				if (global.enable_options_for_pc)
+				{
+					menu = "backup_open_custom_levels_folder";
+				}
+				else
+				{
+					menu = "backups";
+				}
 			}
 		}
 		if (key_down)
@@ -223,10 +243,30 @@ function scr_draw_information_menu()
 			if (menu == "backups")
 			{
 				menu_delay = 3;
-				menu = "backup_open_custom_levels_folder";
+				if (global.enable_options_for_pc)
+				{
+					menu = "backup_open_custom_levels_folder";
+				}
+				else
+				{
+					menu = "information_back";
+				}
 			}
 			else
 			if (menu == "backup_open_custom_levels_folder")
+			{
+				menu_delay = 3;
+				if (global.enable_options_for_pc)
+				{
+					menu = "backup_open_custom_character_folder";
+				}
+				else
+				{
+					menu = "information_back";
+				}
+			}
+			else
+			if (menu == "backup_open_custom_character_folder")
 			{
 				menu_delay = 3;
 				menu = "information_back";
@@ -502,12 +542,12 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("Keep your levels safe!"), global.default_text_size, c_black, c_white, 1);
 			
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(32, 32 * 4, l10n_text("To prevent losing your levels you should upload levels and then save\nyour level IDs somewhere safe"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 32 * 4, l10n_text("To prevent losing your custom levels and custom characters you should upload levels and then save\nyour level IDs and character IDs somewhere safe"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 7, l10n_text("The game includes an autosave feature that automatically saves your level every 5 minutes"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 8, l10n_text("It also saves your level every time you playtest"), global.default_text_size, c_black, c_white, 1);
 			if (global.enable_options_for_pc)
 			{
-				scr_draw_text_outlined(32, 32 * 10, l10n_text("Your levels are saved in this folder") + ":", global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(32, 32 * 10, l10n_text("Your custom levels are saved in this folder") + ":", global.default_text_size, c_black, c_white, 1);
 				
 				#region /* Open Custom Levels Folder */
 				var draw_open_custom_levels_folder_y = 32 * 11;
@@ -522,6 +562,25 @@ function scr_draw_information_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					scr_open_folder(game_save_id + "\custom_levels")
+				}
+				#endregion /* Open Custom Levels Folder END */
+				
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(32, 32 * 13, l10n_text("Your custom characters are saved in this folder") + ":", global.default_text_size, c_black, c_white, 1);
+				
+				#region /* Open Custom Levels Folder */
+				var draw_open_custom_levels_folder_y = 32 * 14;
+				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Character Folder"), "backup_open_custom_character_folder", "backup_open_custom_character_folder");
+				draw_sprite_ext(spr_icons_folder, 0, 32 + 16, draw_open_custom_levels_folder_y + 21, 1, 1, 0, c_white, 1);
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, draw_open_custom_levels_folder_y + 2, 32 + 370, draw_open_custom_levels_folder_y + 41))
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (menu == "backup_open_custom_character_folder")
+				&& (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					scr_open_folder(game_save_id + "\custom_characters")
 				}
 				#endregion /* Open Custom Levels Folder END */
 				

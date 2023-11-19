@@ -3039,7 +3039,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.425",
+    "IDEVersion": "2023.1100.0.441",
   },
   "resources": [
     {"id":{"name":"spr_player_stand","path":"sprites/spr_player_stand/spr_player_stand.yy",},},
@@ -3376,6 +3376,7 @@
     {"id":{"name":"snd_water_getout","path":"sounds/snd_water_getout/snd_water_getout.yy",},},
     {"id":{"name":"obj_map_path_turn","path":"objects/obj_map_path_turn/obj_map_path_turn.yy",},},
     {"id":{"name":"snd_music_boss","path":"sounds/snd_music_boss/snd_music_boss.yy",},},
+    {"id":{"name":"scr_draw_welcome_to_level_editor_menu","path":"scripts/scr_draw_welcome_to_level_editor_menu/scr_draw_welcome_to_level_editor_menu.yy",},},
     {"id":{"name":"obj_follow_mouse","path":"objects/obj_follow_mouse/obj_follow_mouse.yy",},},
     {"id":{"name":"spr_spikes_emerge_block","path":"sprites/spr_spikes_emerge_block/spr_spikes_emerge_block.yy",},},
     {"id":{"name":"snd_footstep_wood_right","path":"sounds/snd_footstep_wood_right/snd_footstep_wood_right.yy",},},

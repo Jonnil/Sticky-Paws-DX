@@ -139,8 +139,11 @@ if (global.actually_play_edited_level == false)
 			case LEVEL_OBJECT_ID.ID_BASIC_ENEMY_BLIND:
 			case LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY:
 			case LEVEL_OBJECT_ID.ID_BOSS:
-				global.part_limit_entity ++;
-				global.part_limit_entity_text_alpha = 1;
+				if (!first_created)
+				{
+					global.part_limit_entity ++;
+					global.part_limit_entity_text_alpha = 1;
+				}
 				if (global.part_limit_entity > 100)
 				{
 					instance_destroy();
@@ -152,8 +155,11 @@ if (global.actually_play_edited_level == false)
 			case LEVEL_OBJECT_ID.ID_BASIC_ENEMY_COIL_SPRING:
 			case LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY_COIL_SPRING:
 				draw_item_with_spring = true;
-				global.part_limit_entity ++;
-				global.part_limit_entity_text_alpha = 1;
+				if (!first_created)
+				{
+					global.part_limit_entity ++;
+					global.part_limit_entity_text_alpha = 1;
+				}
 				if (global.part_limit_entity > 100)
 				{
 					instance_destroy();
@@ -173,3 +179,5 @@ if (global.actually_play_edited_level == false)
 	}
 }
 #endregion /* Initialize Object END */
+
+first_created = true;
