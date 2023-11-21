@@ -1,5 +1,7 @@
 function scr_draw_online_download_list()
 {
+	var download_online_x = display_get_gui_width() * 0.5 - 300;
+	
 	if (menu == "online_download_list_load")
 	{
 		draw_set_alpha(0.5);
@@ -166,7 +168,6 @@ function scr_draw_online_download_list()
 			/* Check if it's an array */
 			if (is_array(data))
 			{
-				var download_online_x = display_get_gui_width() * 0.5 - 300;
 				var play_online_x = download_online_x + 230;
 				
 				
@@ -191,7 +192,7 @@ function scr_draw_online_download_list()
 					{
 						var custom_level_select_arrows_moving = scr_wave(10, 0, 1, 0);
 						var top_left_of_thumbnail_x = download_online_x + 100 - 4;
-						var top_left_of_thumbnail_y = download_online_y + menu_y_offset - 4;
+						top_left_of_thumbnail_y = download_online_y + menu_y_offset - 4;
 						var bottom_right_of_thumbnail_x = download_online_x + 484 + 4;
 						var bottom_right_of_thumbnail_y = download_online_y + menu_y_offset + 216 + 4;
 						var top_left_x_offset = top_left_of_thumbnail_x - custom_level_select_arrows_moving;
@@ -207,7 +208,7 @@ function scr_draw_online_download_list()
 						draw_set_alpha(1);
 					}
 					
-					draw_sprite_ext(spr_thumbnail_missing, 0, download_online_x + 100, download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+					/* Draw a placeholder thumbnail if the real thumbnail is not loaded */ draw_sprite_ext(spr_thumbnail_missing, 0, download_online_x + 100, download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
 					
 					#region /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting */
 					if (menu == "download_online_" + string(online_download_index))
@@ -340,9 +341,7 @@ function scr_draw_online_download_list()
 					draw_set_halign(fa_right);
 					scr_draw_text_outlined(download_online_x + 90, 110 + download_online_y + menu_y_offset, string(online_download_index), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
 					
-					/* Write the ID */
-					draw_set_halign(fa_left);
-					scr_draw_text_outlined(download_online_x + 108, 20 + download_online_y + menu_y_offset, string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					/* Write the ID */ draw_set_halign(fa_left);scr_draw_text_outlined(download_online_x + 108, 20 + download_online_y + menu_y_offset, string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
 					
 					/* Write date of upload */
 					scr_draw_text_outlined(download_online_x + 108, 230 + download_online_y + menu_y_offset, string(get_relative_timezone(draw_download_time)), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
@@ -383,33 +382,31 @@ function scr_draw_online_download_list()
 					info_data = json_parse(global.online_download_list_info); /* When there is data here, then go to the online downloads menu */
 					info_data = array_create(1, info_data);
 				}
-				//show_message(string(info_data));
-			}
-			
-			/* Check if it's an array */
-			//if (is_array(info_data))
-			//{
-				/* Get the number of items in the JSON array */
-				var num_info_items = array_length(info_data);
-				for (var i = 0; i < num_info_items; i++;)
+				
+				/* Check if it's an array */
+				if (is_array(info_data))
 				{
-					/* Fetch the "name" and "thumbnail" properties from the JSON object */
-					var item = info_data[i];
-					var draw_download_name = item.name;
-					var draw_download_thumbnail = item.thumbnail;
-					
-					/* Write the name associated with the ID */
-                    draw_set_halign(fa_center); scr_draw_text_outlined(display_get_gui_width() * 0.5, download_online_y + menu_y_offset + 32, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-					
-					/* Draw the thumbnail */
-					var buffer = buffer_base64_decode(draw_download_thumbnail);
-					buffer_save(buffer, cache_directory+"thumbnail.png");
-					spr_download_list_thumbnail = sprite_add(cache_directory+"thumbnail.png", 0, false, true, 0, 0);
-					if (sprite_exists(spr_download_list_thumbnail)) {
-						draw_sprite_ext(spr_download_list_thumbnail, 1, 1000, 256, 1, 1, 0, c_white, 1);
+					/* Get the number of items in the JSON array */
+					var num_info_items = array_length(info_data);
+					for (var i = 0; i < num_info_items; i++;)
+					{
+						/* Fetch the "name" and "thumbnail" properties from the JSON object */
+						var item = info_data[i];
+						draw_download_name = item.name;
+						
+						/* Get the thumbnail data */
+						var buffer = buffer_base64_decode(item.thumbnail);
+						buffer_save(buffer, cache_directory + "thumbnail.png");
+						spr_download_list_thumbnail = sprite_add(cache_directory + "thumbnail.png", 0, false, true, 0, 0);
 					}
 				}
-			//}
+			}
+			
+			if (info_data == noone){scr_draw_loading(1, download_online_x + 300, top_left_of_thumbnail_y + 100);}
+			/* Draw the thumbnail */ if (sprite_exists(spr_download_list_thumbnail) && info_data != noone){draw_sprite_ext(spr_download_list_thumbnail, 0, download_online_x + 100, top_left_of_thumbnail_y + 4, 384 / sprite_get_width(spr_download_list_thumbnail), 216 / sprite_get_height(spr_download_list_thumbnail), 0, c_white, 1);}
+			/* Draw the name associated with the ID */ if (info_data != noone){draw_set_halign(fa_center);draw_set_valign(fa_center);scr_draw_text_outlined(download_online_x + 300, top_left_of_thumbnail_y + 200, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			/* Write the ID for currently selected level */ draw_set_halign(fa_left);scr_draw_text_outlined(download_online_x + 108, 20 + top_left_of_thumbnail_y + 4, string(currently_selected_id), global.default_text_size, c_menu_outline, c_lime, 1);
+			
 			#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
 			
 			#region /* Online download list menu navigation when there is data */
@@ -596,10 +593,10 @@ function scr_draw_online_download_list()
 	}
 	#endregion /* Online download list menu navigation even when there isn't any data END */
 	
-	draw_set_halign(fa_left);
-	scr_draw_text_outlined(32, 320 + (32 * 2), "debug online download list info");
-	scr_draw_text_outlined(32, 320 + (32 * 4), "data: " + string(data));
-	scr_draw_text_outlined(32, 320 + (32 * 5), "info_data: " + string(info_data));
+	//draw_set_halign(fa_left);
+	//scr_draw_text_outlined(32, 320 + (32 * 2), "debug online download list info");
+	//scr_draw_text_outlined(32, 320 + (32 * 4), "data: " + string(data));
+	//scr_draw_text_outlined(32, 320 + (32 * 5), "info_data: " + string(info_data));
 	//scr_draw_text_outlined(32, 320 + (32 * 6), "global.online_download_list_info: " + string(global.online_download_list_info));
 	
 }

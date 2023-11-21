@@ -15,6 +15,9 @@ thumbnail_level_name = "";
 thumbnail_level_description = "";
 thumbnail_level_id = "";
 thumbnail_level_username = "";
+draw_download_name = "";
+spr_download_list_thumbnail = noone;
+top_left_of_thumbnail_y = 0;
 
 information_menu_open = false; /* If the information menu is opened or not */
 
