@@ -293,9 +293,7 @@ if (menu == "load_custom_level")
 if (menu == "load_official_level_template")
 {
 	/* Load official level data */
-	
 	file_load_timer ++;
-	
 	if (file_load_timer > 1)
 	{
 		file_found = ds_list_find_value(global.all_loaded_main_levels, level_find_pos)

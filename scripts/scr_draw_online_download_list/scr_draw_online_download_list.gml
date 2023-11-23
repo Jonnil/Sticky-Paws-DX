@@ -100,7 +100,7 @@ function scr_draw_online_download_list()
 					menu = "online_character_list";
 				}
 				global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
-				data = noone; /* Reset "data" so you can reload online download list next time you go to this menu */
+				data = undefined; /* Reset "data" so you can reload online download list next time you go to this menu */
 				automatically_search_for_id = false;
 				in_online_download_list_menu = false;
 				in_online_download_list_load_menu = false;
@@ -130,7 +130,7 @@ function scr_draw_online_download_list()
 		#endregion /* Pressing the Search ID button END */
 		
 		#region /* If there is no data, then apply the retrieved download data to it */
-		if (data == noone)
+		if (data == undefined)
 		&& (in_online_download_list_menu)
 		{
 			scr_draw_loading(1); /* Draw loading screen when loading download list */
@@ -140,7 +140,10 @@ function scr_draw_online_download_list()
 			&& (global.online_download_list != "HTTP request exception")
 			&& (global.online_download_list != "Unauthorized")
 			{
-				data = json_parse(global.online_download_list); /* When there is data here, then go to the online downloads menu */
+				try
+				{
+					data = json_parse(global.online_download_list); /* When there is data here, then go to the online downloads menu */
+				}
 			}
 			else
 			if (global.online_download_list == "HTTP request exception")
@@ -160,7 +163,7 @@ function scr_draw_online_download_list()
 		#endregion /* If there is no data, then apply the retrieved download data to it END */
 		
 		#region /* If there is data, then show an online downloads menu */
-		if (data != noone)
+		if (data != undefined)
 		&& (menu != "search_id_ok")
 		{
 			scr_scroll_menu();
@@ -366,12 +369,12 @@ function scr_draw_online_download_list()
 			{
 				/* Get level information. The level info should be retrieved only once you select a new ID */
 				old_currently_selected_id = currently_selected_id;
-				info_data = noone;
+				info_data = undefined;
 				global.online_download_list_info = "";
 				global.http_request_info = http_request("https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id), "GET", map, "");
 			}
 			
-			if (info_data == noone)
+			if (info_data == undefined)
 			&& (in_online_download_list_menu)
 			{
 				/* If there is an online download list information loaded, interpret that as a struct using "json parse" */
@@ -379,8 +382,17 @@ function scr_draw_online_download_list()
 				&& (global.online_download_list_info != "HTTP request exception")
 				&& (global.online_download_list_info != "Unauthorized")
 				{
-					info_data = json_parse(global.online_download_list_info); /* When there is data here, then go to the online downloads menu */
-					info_data = array_create(1, info_data);
+					/* Handle potential JSON parsing error */
+					try
+					{
+						info_data = json_parse(global.online_download_list_info); /* When there is data here, then go to the online downloads menu */
+						info_data = array_create(1, info_data);
+					}
+					catch (e)
+					{
+						show_debug_message("Invalid JSON format: " + global.online_download_list_info);
+						info_data = undefined; /* Handle the error as needed, and set "info data" to a default value */
+					}
 				}
 				
 				/* Check if it's an array */
@@ -402,9 +414,9 @@ function scr_draw_online_download_list()
 				}
 			}
 			
-			if (info_data == noone){scr_draw_loading(1, download_online_x + 300, top_left_of_thumbnail_y + 100);}
-			/* Draw the thumbnail */ if (sprite_exists(spr_download_list_thumbnail) && info_data != noone){draw_sprite_ext(spr_download_list_thumbnail, 0, download_online_x + 100, top_left_of_thumbnail_y + 4, 384 / sprite_get_width(spr_download_list_thumbnail), 216 / sprite_get_height(spr_download_list_thumbnail), 0, c_white, 1);}
-			/* Draw the name associated with the ID */ if (info_data != noone){draw_set_halign(fa_center);draw_set_valign(fa_center);scr_draw_text_outlined(download_online_x + 300, top_left_of_thumbnail_y + 200, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			if (info_data == undefined){scr_draw_loading(1, download_online_x + 300, top_left_of_thumbnail_y + 100);}
+			/* Draw the thumbnail */ if (sprite_exists(spr_download_list_thumbnail) && info_data != undefined){draw_sprite_ext(spr_download_list_thumbnail, 0, download_online_x + 100, top_left_of_thumbnail_y + 4, 384 / sprite_get_width(spr_download_list_thumbnail), 216 / sprite_get_height(spr_download_list_thumbnail), 0, c_white, 1);}
+			/* Draw the name associated with the ID */ if (info_data != undefined){draw_set_halign(fa_center);draw_set_valign(fa_center);scr_draw_text_outlined(download_online_x + 300, top_left_of_thumbnail_y + 200, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
 			/* Write the ID for currently selected level */ draw_set_halign(fa_left);scr_draw_text_outlined(download_online_x + 108, 20 + top_left_of_thumbnail_y + 4, string(currently_selected_id), global.default_text_size, c_menu_outline, c_lime, 1);
 			
 			#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
@@ -536,7 +548,7 @@ function scr_draw_online_download_list()
 				menu = "online_character_list";
 			}
 			global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
-			data = noone; /* Reset "data" so you can reload online download list next time you go to this menu */
+			data = undefined; /* Reset "data" so you can reload online download list next time you go to this menu */
 			automatically_search_for_id = false;
 			in_online_download_list_menu = false;
 			in_online_download_list_load_menu = false;

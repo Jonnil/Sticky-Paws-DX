@@ -113,13 +113,6 @@ function scr_load_object_placement_json()
 	}
 }
 
-/* THIS IS DECIDING IF SAVING LEVEL AS .JSON FILE OR .TXT FILE, FOR COMPATIBILITY */
-function scr_save_custom_level()
-{
-	/* .json files can load faster than .txt files */
-	scr_save_custom_level_json();
-}
-
 /* THIS IS SAVING .JSON FILE */
 function scr_save_custom_level_json()
 {

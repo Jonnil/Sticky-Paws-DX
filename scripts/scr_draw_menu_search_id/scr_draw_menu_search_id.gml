@@ -184,7 +184,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					automatically_search_for_id = false;
 					in_online_download_list_menu = false;
 					global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
-					data = noone; /* Reset "data" so you can reload online level list next time you go to this menu */
+					data = undefined; /* Reset "data" so you can reload online level list next time you go to this menu */
 					menu = "searching_for_id";
 					menu_delay = 3;
 				}

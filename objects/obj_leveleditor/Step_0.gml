@@ -28,7 +28,7 @@ if (global.actually_play_edited_level == false)
 	{
 		startup_loading_timer = 0;
 		instance_activate_all();
-		scr_save_custom_level();
+		scr_save_custom_level_json();
 		autosave_timer = 0;
 	}
 	#endregion /* Autosave END */
@@ -404,7 +404,7 @@ if (global.actually_play_edited_level == false)
 					
 					if (!global.world_editor)
 					{
-						scr_save_custom_level();
+						scr_save_custom_level_json();
 						with(obj_leveleditor_placed_object)
 						{
 							alarm[1] = 1;
@@ -1588,7 +1588,7 @@ if (global.actually_play_edited_level == false)
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false; /* Set this to false so you don't playtest the level */
 			global.character_select_in_this_menu = "level_editor";
-			scr_save_custom_level(); /* Save level when quitting level */
+			scr_save_custom_level_json(); /* Save level when quitting level */
 		}
 		#endregion /* Save Level END */
 		

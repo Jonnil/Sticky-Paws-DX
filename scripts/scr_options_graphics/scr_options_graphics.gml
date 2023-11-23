@@ -112,7 +112,7 @@ function scr_options_graphics()
 		draw_menu_checkmark(386, reset_world_map_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset World Map Zoom When Going Back To Map"), "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map);
 		draw_menu_button(420, customize_button_design_y + menu_y_offset, l10n_text("Customize Button Design"), "customize_button_design", "customize_button_design_color");
 		
-		draw_menu_dropdown(420, gui_scale_modifier_y + menu_y_offset, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, "*0.6", "*0.7", "*0.8", "*0.9", "*1", "*1.1", "*1.2", "*1.3", "*1.4", "*2.5");
+		draw_menu_dropdown(420, gui_scale_modifier_y + menu_y_offset, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, l10n_text("Auto"), "*0.6", "*0.7", "*0.8", "*0.9", "*1", "*1.1", "*1.2", "*1.3", "*1.4", "*2.5");
 		
 		if (menu == "resolution_setting")
 		&& (window_get_fullscreen() == false)
@@ -120,27 +120,35 @@ function scr_options_graphics()
 			if (key_a_pressed)
 			|| (key_b_pressed)
 			{
-				if (global.resolution_setting == 1){global.gui_scale_modifier = 9;display_set_gui_size(480, 270);window_set_size(480, 270);}else
-				if (global.resolution_setting == 2){global.gui_scale_modifier = 8;display_set_gui_size(960, 540);window_set_size(960, 540);}else
-				if (global.resolution_setting == 3){global.gui_scale_modifier = 7;display_set_gui_size(1024, 576);window_set_size(1024, 576);}else
-				if (global.resolution_setting == 4){global.gui_scale_modifier = 6;display_set_gui_size(1280, 720);window_set_size(1280, 720);}else
-				if (global.resolution_setting == 5){global.gui_scale_modifier = 5;display_set_gui_size(1600, 900);window_set_size(1600, 900);}else
-				if (global.resolution_setting == 6){global.gui_scale_modifier = 4;display_set_gui_size(1920, 1080);window_set_size(1920, 1080);}
+				/* Resolution Current Display Size */ if (global.resolution_setting == 0){display_set_gui_size(display_get_width(), display_get_height());window_set_size(display_get_width(), display_get_height());}else
+				if (global.resolution_setting == 1){display_set_gui_size(1920, 1080);window_set_size(1920, 1080);}else
+				if (global.resolution_setting == 2){display_set_gui_size(1600, 900);window_set_size(1600, 900);}else
+				if (global.resolution_setting == 3){display_set_gui_size(1280, 720);window_set_size(1280, 720);}else
+				if (global.resolution_setting == 4){display_set_gui_size(1024, 576);window_set_size(1024, 576);}else
+				if (global.resolution_setting == 5){display_set_gui_size(960, 540);window_set_size(960, 540);}else
+				if (global.resolution_setting == 6){display_set_gui_size(480, 270);window_set_size(480, 270);}
 			}
 		}
 		if (open_dropdown == false)
 		{
-			if (window_get_width() == 480 && window_get_height() == 270){global.resolution_setting = 1;}else
-			if (window_get_width() == 960 && window_get_height() == 540){global.resolution_setting = 2;}else
-			if (window_get_width() == 1024 && window_get_height() == 576){global.resolution_setting = 3;}else
-			if (window_get_width() == 1280 && window_get_height() == 720){global.resolution_setting = 4;}else
-			if (window_get_width() == 1600 && window_get_height() == 900){global.resolution_setting = 5;}else
-			if (window_get_width() == 1920 && window_get_height() == 1080){global.resolution_setting = 6;}else
+			if (window_get_width() == 1920 && window_get_height() == 1080){global.resolution_setting = 1;}else
+			if (window_get_width() == 1600 && window_get_height() == 900){global.resolution_setting = 2;}else
+			if (window_get_width() == 1280 && window_get_height() == 720){global.resolution_setting = 3;}else
+			if (window_get_width() == 1024 && window_get_height() == 576){global.resolution_setting = 4;}else
+			if (window_get_width() == 960 && window_get_height() == 540){global.resolution_setting = 5;}else
+			if (window_get_width() == 480 && window_get_height() == 270){global.resolution_setting = 6;}else
 			{global.resolution_setting = 0;}
 		}
 		if (window_get_fullscreen() == false)
 		{
-			draw_menu_dropdown(420, resolution_setting_y + menu_y_offset, l10n_text("Resolution"), "resolution_setting", global.resolution_setting, l10n_text("Custom") + " " + string(window_get_width()) + "x" + string(window_get_height()), "480x270", "960x540", "1024x576", "1280x720", "1600x900", "1920x1080");
+			draw_menu_dropdown(420, resolution_setting_y + menu_y_offset, l10n_text("Resolution"), "resolution_setting", global.resolution_setting,
+			l10n_text("Current") + " " + string(window_get_width()) + "x" + string(window_get_height()),
+			"1920x1080",
+			"1600x900",
+			"1280x720",
+			"1024x576",
+			"960x540",
+			"480x270");
 		}
 		else
 		{
@@ -281,7 +289,7 @@ function scr_options_graphics()
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown)
-			&& (global.gui_scale_modifier < 9)
+			&& (global.gui_scale_modifier < 10)
 			{
 				global.gui_scale_modifier ++;
 				menu_delay = 3;

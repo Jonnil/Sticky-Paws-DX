@@ -212,11 +212,12 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	{
 		global.resolution_setting = change_to_value;
 		
-		if (global.resolution_setting == 1){global.gui_scale_modifier = 9;display_set_gui_size(480, 270);window_set_size(480, 270);}else
-		if (global.resolution_setting == 2){global.gui_scale_modifier = 8;display_set_gui_size(960, 540);window_set_size(960, 540);}else
-		if (global.resolution_setting == 3){global.gui_scale_modifier = 7;display_set_gui_size(1024, 576);window_set_size(1024, 576);}else
-		if (global.resolution_setting == 4){global.gui_scale_modifier = 6;display_set_gui_size(1280, 720);window_set_size(1280, 720);}else
-		if (global.resolution_setting == 5){global.gui_scale_modifier = 5;display_set_gui_size(1600, 900);window_set_size(1600, 900);}else
-		if (global.resolution_setting == 6){global.gui_scale_modifier = 4;display_set_gui_size(1920, 1080);window_set_size(1920, 1080);}
+		/* Resolution Current Display Size */ if (global.resolution_setting == 0){display_set_gui_size(display_get_width(), display_get_height());window_set_size(display_get_width(), display_get_height());}else
+		if (global.resolution_setting == 1){display_set_gui_size(1920, 1080);window_set_size(1920, 1080);}else
+		if (global.resolution_setting == 2){display_set_gui_size(1600, 900);window_set_size(1600, 900);}else
+		if (global.resolution_setting == 3){display_set_gui_size(1280, 720);window_set_size(1280, 720);}else
+		if (global.resolution_setting == 4){display_set_gui_size(1024, 576);window_set_size(1024, 576);}else
+		if (global.resolution_setting == 5){display_set_gui_size(960, 540);window_set_size(960, 540);}else
+		if (global.resolution_setting == 6){display_set_gui_size(480, 270);window_set_size(480, 270);}
 	}
 }

@@ -6,16 +6,28 @@ function scr_set_screen_size()
 	#region /* Set GUI size */
 	switch (global.gui_scale_modifier)
 	{
-		case 0: global.gui_width = window_width * 0.6; global.gui_height = window_height * 0.6; break;
-		case 1: global.gui_width = window_width * 0.7; global.gui_height = window_height * 0.7; break;
-		case 2: global.gui_width = window_width * 0.8; global.gui_height = window_height * 0.8; break;
-		case 3: global.gui_width = window_width * 0.9; global.gui_height = window_height * 0.9; break;
-		case 4: global.gui_width = window_width; global.gui_height = window_height; break;
-		case 5: global.gui_width = window_width * 1.1; global.gui_height = window_height * 1.1; break;
-		case 6: global.gui_width = window_width * 1.2; global.gui_height = window_height * 1.2; break;
-		case 7: global.gui_width = window_width * 1.3; global.gui_height = window_height * 1.3; break;
-		case 8: global.gui_width = window_width * 1.4; global.gui_height = window_height * 1.4; break;
-		case 9: global.gui_width = window_width * 2.5; global.gui_height = window_height * 2.5; break;
+		/* GUI Scale Auto */ case 0:
+			/* 3840 x 2160 */ if (window_get_width() >= 3840 - 20 && window_get_height() >= 2160 - 20){global.gui_width = window_width * 0.7; global.gui_height = window_height * 0.7; break;}else
+			/* 3440 x 1440 */ if (window_get_width() >= 3440 - 20 && window_get_height() >= 1440 - 20){global.gui_width = window_width * 0.8; global.gui_height = window_height * 0.8; break;}else
+			/* 2560 x 1440 */ if (window_get_width() >= 2560 - 20 && window_get_height() >= 1440 - 20){global.gui_width = window_width * 0.9; global.gui_height = window_height * 0.9; break;}else
+			/* 1920 x 1080 */ if (window_get_width() >= 1920 - 20 && window_get_height() >= 1080 - 20){global.gui_width = window_width; global.gui_height = window_height; break;}else
+			/* 1600 x 900 */ if (window_get_width() >= 1600 - 20 && window_get_height() >= 900 - 20){global.gui_width = window_width * 1.1; global.gui_height = window_height * 1.1; break;}else
+			/* 1280 x 720 */ if (window_get_width() >= 1280 - 20 && window_get_height() >= 720 - 20){global.gui_width = window_width * 1.2; global.gui_height = window_height * 1.2; break;}else
+			/* 1024 x 576 */ if (window_get_width() >= 1024 - 20 && window_get_height() >= 576 - 20){global.gui_width = window_width * 1.3; global.gui_height = window_height * 1.4; break;}else
+			/* 960 x 540 */ if (window_get_width() >= 960 - 20 && window_get_height() >= 540 - 20){global.gui_width = window_width * 1.4; global.gui_height = window_height * 1.4; break;}else
+			/* Lower than 540p, like 480 x 270 */ {global.gui_width = window_width * 2.5; global.gui_height = window_height * 2.5; break;}
+		
+		/* GUI Scale Fixed */
+		case 1: global.gui_width = window_width * 0.6; global.gui_height = window_height * 0.6; break;
+		case 2: global.gui_width = window_width * 0.7; global.gui_height = window_height * 0.7; break;
+		case 3: global.gui_width = window_width * 0.8; global.gui_height = window_height * 0.8; break;
+		case 4: global.gui_width = window_width * 0.9; global.gui_height = window_height * 0.9; break;
+		case 5: global.gui_width = window_width; global.gui_height = window_height; break;
+		case 6: global.gui_width = window_width * 1.1; global.gui_height = window_height * 1.1; break;
+		case 7: global.gui_width = window_width * 1.2; global.gui_height = window_height * 1.2; break;
+		case 8: global.gui_width = window_width * 1.3; global.gui_height = window_height * 1.3; break;
+		case 9: global.gui_width = window_width * 1.4; global.gui_height = window_height * 1.4; break;
+		case 10: global.gui_width = window_width * 2.5; global.gui_height = window_height * 2.5; break;
 		default: break;
 	}
 	if (display_get_gui_width() != global.gui_width)
