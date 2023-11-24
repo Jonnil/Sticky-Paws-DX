@@ -278,7 +278,7 @@ if (can_move)
 }
 #endregion /* Show arrows where you can walk END*/
 
-if (sprite_index > 0)
+if (sprite_exists(sprite_index))
 {
 	draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale, draw_yscale * default_yscale, 0, image_blend, 1);
 }

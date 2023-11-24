@@ -30,7 +30,7 @@ if (!instance_exists(obj_player))
 		}
 	}
 }
-if (sprite_index > 0)
+if (sprite_exists(sprite_index))
 {
 	draw_sprite_ext(sprite_index, image_index, x, y, image_xscale * default_xscale, image_yscale * default_yscale, image_angle, image_blend, image_alpha);
 }

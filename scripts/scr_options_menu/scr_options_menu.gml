@@ -742,15 +742,13 @@ function scr_options_menu()
 			if (global.settings_sidebar_menu == "account_settings"){menu = "change_username";}
 			if (global.settings_sidebar_menu == "video_settings")
 			{
-				if (os_type != os_ios)
-				&& (os_type != os_android)
-				&& (global.enable_options_for_pc)
+				if (window_get_fullscreen() == false)
 				{
-					menu = "fullscreen_mode";
+					menu = "resolution_setting";
 				}
 				else
 				{
-					menu = "interpolate";
+					menu = "gui_scale_modifier";
 				}
 			}
 			if (global.settings_sidebar_menu == "audio_settings"){menu = "volume_main";}
@@ -1084,15 +1082,13 @@ function scr_options_menu()
 			menu_delay = 3;
 			input_key = false;
 			can_navigate_settings_sidebar = false;
-			if (os_type != os_ios)
-			&& (os_type != os_android)
-			&& (global.enable_options_for_pc)
+			if (window_get_fullscreen() == false)
 			{
-				menu = "fullscreen_mode";
+				menu = "resolution_setting";
 			}
 			else
 			{
-				menu = "interpolate";
+				menu = "gui_scale_modifier";
 			}
 		}
 		#endregion /* Click Video END */
@@ -2035,8 +2031,8 @@ function scr_options_menu()
 		if (global.settings_sidebar_menu == "accessibility_settings")
 		{
 			draw_menu_checkmark(450, 50, l10n_text("Enable Assist Mode"), "assist_enable", global.assist_enable);
-			scr_draw_text_outlined(384, 100, l10n_text("The game is meant to be played without Assist Mode."), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(384, 132, l10n_text("Only if you are unable to enjoy the game without extra help should you enable this."), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(450, 100, l10n_text("The game is meant to be played without Assist Mode."), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(450, 132, l10n_text("Only if you are unable to enjoy the game without extra help should you enable this."), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 			
 			draw_menu_checkmark(450, 332, l10n_text("Invincible"), "assist_invincible", global.assist_invincible);
 			draw_menu_checkmark(450, 382, l10n_text("Breathe Underwater"), "assist_breathe_underwater", global.assist_breathe_underwater);

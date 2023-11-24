@@ -16,7 +16,7 @@ if (coil_spring)
 }
 #endregion /* Draw coil spring underneath enemy, so run this code first END */
 
-if (sprite_index > 0)
+if (sprite_exists(sprite_index))
 {
 	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * image_xscale, draw_yscale, image_angle, image_blend, image_alpha);
 }

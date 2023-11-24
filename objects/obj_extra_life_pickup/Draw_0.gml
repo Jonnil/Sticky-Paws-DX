@@ -26,7 +26,7 @@ text_alpha = lerp(text_alpha, scr_wave(0, 1, 3, 0), 0.1);
 #region /* Color the extra live pickup differently if it grants you different amounts of lives */
 if (number_of_extra_lives = 3)
 {
-	if (sprite_index > 0)
+	if (sprite_exists(sprite_index))
 	{
 		draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_blue, 1);
 	}
@@ -34,14 +34,14 @@ if (number_of_extra_lives = 3)
 else
 if (number_of_extra_lives = 2)
 {
-	if (sprite_index > 0)
+	if (sprite_exists(sprite_index))
 	{
 		draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_lime, 1);
 	}
 }
 else
 {
-	if (sprite_index > 0)
+	if (sprite_exists(sprite_index))
 	{
 		draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 1);
 	}

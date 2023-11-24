@@ -45,7 +45,7 @@ if (sprite_index == global.title_logo_index && global.title_logo_index >= 0)
 {
     draw_sprite_ext(sprite_index, image_index, get_window_width * 0.5, y, 402 / sprite_get_height(global.title_logo_index), 402 / sprite_get_height(global.title_logo_index), 0, c_white, image_alpha);
 }
-else if (sprite_index > 0)
+else if (sprite_exists(sprite_index))
 {
     draw_sprite_ext(sprite_index, image_index, get_window_width * 0.5, y, 1, 1, 0, c_white, image_alpha);
 }

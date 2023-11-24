@@ -50,37 +50,39 @@ function scr_player_move_lose()
 			#region /* Turn into obj_player_lose */
 			with(instance_create_depth(x, y, 0, obj_player_lose))
 			{
-				player = instance_nearest(x, y, obj_player).player;
-				if (instance_nearest(x, y, obj_player).burnt >= 1)
-				&& (instance_nearest(x, y, obj_player).sprite_burnt > noone)
+				var instance_nearest_player = instance_nearest(x, y, obj_player);
+				player = instance_nearest_player.player;
+				if (instance_nearest_player.burnt >= 1)
+				&& (instance_nearest_player.sprite_burnt > noone)
 				{
 					burnt = true;
-					sprite_index = instance_nearest(x, y, obj_player).sprite_burnt;
+					sprite_index = instance_nearest_player.sprite_burnt;
 				}
 				else
-				if (instance_nearest(x, y, obj_player).sprite_die > noone)
+				if (instance_nearest_player.sprite_die > noone)
 				{
-					sprite_index = instance_nearest(x, y, obj_player).sprite_die;
+					sprite_index = instance_nearest_player.sprite_die;
 				}
 				else
-				if (instance_nearest(x, y, obj_player).sprite_stand > noone)
+				if (instance_nearest_player.sprite_stand > noone)
 				{
-					sprite_index = instance_nearest(x, y, obj_player).sprite_stand;
+					sprite_index = instance_nearest_player.sprite_stand;
 				}
 				else
-				if (instance_nearest(x, y, obj_player).sprite_walk > noone)
+				if (instance_nearest_player.sprite_walk > noone)
 				{
-					sprite_index = instance_nearest(x, y, obj_player).sprite_walk;
+					sprite_index = instance_nearest_player.sprite_walk;
 				}
-				if (instance_nearest(x, y, obj_player).sprite_game_over_character_portrait > noone)
+				if (instance_nearest_player.sprite_game_over_character_portrait > noone)
 				{
-					sprite_game_over_character_portrait = instance_nearest(x, y, obj_player).sprite_game_over_character_portrait;
+					sprite_game_over_character_portrait = instance_nearest_player.sprite_game_over_character_portrait;
 				}
-				player_lose_melody = instance_nearest(x, y, obj_player).player_lose_melody;
-				voice_damage = instance_nearest(x, y, obj_player).voice_damage;
-				default_voice_pitch = instance_nearest(x, y, obj_player).default_voice_pitch;
-				default_xscale = instance_nearest(x, y, obj_player).default_xscale;
-				default_yscale = instance_nearest(x, y, obj_player).default_yscale;
+				player_lose_melody = instance_nearest_player.player_lose_melody;
+				voice_damage = instance_nearest_player.voice_damage;
+				default_voice_pitch = instance_nearest_player.default_voice_pitch;
+				default_xscale = instance_nearest_player.default_xscale;
+				default_yscale = instance_nearest_player.default_yscale;
+				image_xscale = instance_nearest_player.image_xscale;
 			}
 			#endregion /* Turn into obj_player_lose END */
 			

@@ -361,6 +361,46 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		}
 		#endregion /* Pressing the Back button when selecting level END */
 		
+		#region /* Clicking outside of the sub menu should close the sub menu */
+		if (open_sub_menu)
+		&& (can_input_level_name == false)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			if (menu == "level_editor_play")
+			|| (menu == "level_editor_make")
+			|| (menu == "level_editor_upload")
+			|| (menu == "level_editor_edit_name")
+			|| (menu == "level_editor_enter_description")
+			|| (menu == "level_editor_delete")
+			|| (menu == "level_editor_selected_back")
+			{
+				if (!point_in_rectangle(mouse_get_x, mouse_get_y, xx, 226 * (column - scroll) + 455 - 3 + 10, xx + 384, 226 * (column - scroll) + 475 + back_y + 47 + 3))
+				&& (mouse_check_button_released(mb_left))
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				{
+					menu_delay = 3;
+					open_sub_menu = false;
+					show_level_editor_corner_menu = true;
+					scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
+					menu = "level_editor_play";
+				}
+			}
+			else
+			{
+				if (!point_in_rectangle(mouse_get_x, mouse_get_y, xx, 226 * (column - scroll) + 455 - 3 + 10, xx + 384, 226 * (column - scroll) + 408 + 216 + 3))
+				&& (mouse_check_button_released(mb_left))
+				&& (global.controls_used_for_menu_navigation == "mouse")
+				{
+					menu_delay = 3;
+					open_sub_menu = false;
+					show_level_editor_corner_menu = true;
+					scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
+					menu = "level_editor_play";
+				}
+			}
+		}
+		#endregion /* Clicking outside of the sub menu should close the sub menu END */
+		
 		#region /* Pressing the Play button */
 		if (menu == "level_editor_play")
 		&& (can_input_level_name == false)

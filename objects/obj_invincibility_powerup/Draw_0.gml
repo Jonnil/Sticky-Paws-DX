@@ -12,7 +12,7 @@ if (coil_spring)
 		draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 32, draw_xscale, draw_yscale, 0, image_blend, image_alpha);
 	}
 }
-if (sprite_index > 0)
+if (sprite_exists(sprite_index))
 {
 	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale * image_xscale, draw_yscale, image_angle, image_blend, image_alpha);
 }

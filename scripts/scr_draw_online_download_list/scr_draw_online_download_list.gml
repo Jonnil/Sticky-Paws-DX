@@ -195,19 +195,19 @@ function scr_draw_online_download_list()
 					{
 						var custom_level_select_arrows_moving = scr_wave(10, 0, 1, 0);
 						var top_left_of_thumbnail_x = download_online_x + 100 - 4;
-						top_left_of_thumbnail_y = download_online_y + menu_y_offset - 4;
+						top_left_of_thumbnail_y = download_online_y - 4;
 						var bottom_right_of_thumbnail_x = download_online_x + 484 + 4;
 						var bottom_right_of_thumbnail_y = download_online_y + menu_y_offset + 216 + 4;
 						var top_left_x_offset = top_left_of_thumbnail_x - custom_level_select_arrows_moving;
-						var top_left_y_offset = top_left_of_thumbnail_y - custom_level_select_arrows_moving;
+						var top_left_y_offset = top_left_of_thumbnail_y + menu_y_offset - custom_level_select_arrows_moving;
 						var bottom_right_x_offset = bottom_right_of_thumbnail_x + custom_level_select_arrows_moving;
 						var bottom_right_y_offset = bottom_right_of_thumbnail_y + custom_level_select_arrows_moving;
 						var triangle_size = 32 - custom_level_select_arrows_moving;
 						var thumbnail_select_blinking = scr_wave(1, 0, 2, 0);
 						
-						draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_red, c_red, c_red, c_red, false);
+						draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y + menu_y_offset, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_red, c_red, c_red, c_red, false);
 						draw_set_alpha(thumbnail_select_blinking);
-						draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
+						draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y + menu_y_offset, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
 						draw_set_alpha(1);
 					}
 					
@@ -414,10 +414,10 @@ function scr_draw_online_download_list()
 				}
 			}
 			
-			if (info_data == undefined){scr_draw_loading(1, download_online_x + 300, top_left_of_thumbnail_y + 100);}
-			/* Draw the thumbnail */ if (sprite_exists(spr_download_list_thumbnail) && info_data != undefined){draw_sprite_ext(spr_download_list_thumbnail, 0, download_online_x + 100, top_left_of_thumbnail_y + 4, 384 / sprite_get_width(spr_download_list_thumbnail), 216 / sprite_get_height(spr_download_list_thumbnail), 0, c_white, 1);}
-			/* Draw the name associated with the ID */ if (info_data != undefined){draw_set_halign(fa_center);draw_set_valign(fa_center);scr_draw_text_outlined(download_online_x + 300, top_left_of_thumbnail_y + 200, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
-			/* Write the ID for currently selected level */ draw_set_halign(fa_left);scr_draw_text_outlined(download_online_x + 108, 20 + top_left_of_thumbnail_y + 4, string(currently_selected_id), global.default_text_size, c_menu_outline, c_lime, 1);
+			if (info_data == undefined){scr_draw_loading(1, download_online_x + 300, top_left_of_thumbnail_y + menu_y_offset + 100);}
+			/* Draw the thumbnail */ if (sprite_exists(spr_download_list_thumbnail) && info_data != undefined){draw_sprite_ext(spr_download_list_thumbnail, 0, download_online_x + 100, top_left_of_thumbnail_y + menu_y_offset + 4, 384 / sprite_get_width(spr_download_list_thumbnail), 216 / sprite_get_height(spr_download_list_thumbnail), 0, c_white, 1);}
+			/* Draw the name associated with the ID */ if (info_data != undefined){draw_set_halign(fa_center);draw_set_valign(fa_center);scr_draw_text_outlined(download_online_x + 300, top_left_of_thumbnail_y + menu_y_offset + 200, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
+			/* Write the ID for currently selected level */ draw_set_halign(fa_left);scr_draw_text_outlined(download_online_x + 108, 20 + top_left_of_thumbnail_y + menu_y_offset + 4, string(currently_selected_id), global.default_text_size, c_menu_outline, c_lime, 1);
 			
 			#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
 			
@@ -426,12 +426,16 @@ function scr_draw_online_download_list()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_wheel_up())
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_search_id";
 				}
 				else
 				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_wheel_down())
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -450,6 +454,8 @@ function scr_draw_online_download_list()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_wheel_up())
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(global.selected_online_download_index - 1);
@@ -458,12 +464,17 @@ function scr_draw_online_download_list()
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (global.selected_online_download_index < num_items)
+				|| (mouse_wheel_down())
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (global.selected_online_download_index < num_items)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(global.selected_online_download_index + 1);
 				}
 				else
 				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (mouse_wheel_down())
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -564,12 +575,16 @@ function scr_draw_online_download_list()
 	{
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (mouse_wheel_up())
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "download_online_" + string(num_items);
 		}
 		else
 		if (key_down)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (mouse_wheel_down())
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
@@ -581,12 +596,16 @@ function scr_draw_online_download_list()
 	{
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (mouse_wheel_up())
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "download_online_back";
 		}
 		else
 		if (key_down)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (mouse_wheel_down())
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
@@ -597,6 +616,8 @@ function scr_draw_online_download_list()
 	if (menu == "download_online_1")
 	{
 		if (key_up)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (mouse_wheel_up())
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
