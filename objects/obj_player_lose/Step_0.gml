@@ -26,7 +26,7 @@ if (count = 50)
 {
 	gravity_direction = 270;
 	gravity = 0.5;
-	vspeed = - 10;
+	vspeed = -10;
 	image_speed = 0.3;
 	if (place_meeting(x, y, obj_lava))
 	{

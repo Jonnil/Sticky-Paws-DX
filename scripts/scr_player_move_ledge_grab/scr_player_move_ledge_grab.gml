@@ -117,7 +117,7 @@ function scr_player_move_ledge_grab()
 						{
 							scr_audio_play(snd_pull_up, volume_source.sound);
 						}
-						vspeed = - 8;
+						vspeed = -8;
 						ledge_grab_delay = 11; /* Start ledge grab delay so you can't immediately grab another ledge by accident */
 						ledge_grab_jump = true; /* Make the player move forward when climbing up from a ledge grab */
 						stick_to_wall = false;

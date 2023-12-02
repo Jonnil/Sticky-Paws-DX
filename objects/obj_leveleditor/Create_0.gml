@@ -11,6 +11,7 @@ scr_make_background_visible();
 
 #region /* Essential variables */
 modify_object_menu = false;
+changing_level_theme_menu = false;
 
 prev_display_width = display_get_gui_width();
 prev_display_height = display_get_gui_height();
@@ -693,7 +694,7 @@ if (global.actually_play_edited_level == false)
 	erase_brush_size = 0; /* The size of the brush when erasing */
 	can_make_place_brush_size_bigger = true; /* If you can make the brush size bigger for certain objects */
 	mouse_sprite = spr_cursor; /* Sets what cursor sprite to use */
-	undo_and_redo_buttons_enabled = false; /* If undo and redo buttons should appear or not */
+	undo_and_redo_buttons_enabled = true; /* If undo and redo buttons should appear or not */
 	tooltip = "";
 	show_tooltip = 0;
 	show_grid = false; /* Grid should be false when you start level editor */
@@ -709,9 +710,10 @@ if (global.actually_play_edited_level == false)
 	show_icons_at_bottom = false;
 	show_icons_at_top = false;
 	icons_at_bottom_y = +100;
-	show_undo_redo_icons = false; /* If the undo and redo buttons should show */
+	show_undo_redo_icons = true; /* If the undo and redo buttons should show */
 	undo_redo_icons_y = +200; /* Undo and redo buttons y postition */
 	current_undo_value = 0; /* Every time you place down items, this value increases. When you undo, this value decreases. */
+	max_undo_value = 0; /* What the max redo you can do */
 	icons_at_top_y = - 100;
 	selected_menu_alpha = 0;
 	total_number_of_objects = 9999;

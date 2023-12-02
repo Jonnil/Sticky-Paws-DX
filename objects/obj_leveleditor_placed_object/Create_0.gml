@@ -15,7 +15,6 @@ if (global.actually_play_edited_level == false)
 	drag_ystart = y;
 	drag_release_timer = 0;
 	delay = 0;
-	undo_value = 0;
 	i = 0;
 	default_blend = c_white;
 	

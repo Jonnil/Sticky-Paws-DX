@@ -40,7 +40,7 @@ if (distance_to_point(other.x, other.y) < 3)
 		if (abs(hspeed) > 0)
 		{
 			hspeed = 0;
-			vspeed = - move_speed;
+			vspeed = -move_speed;
 			x = other.x;
 			y = other.y;
 		}
@@ -63,7 +63,7 @@ if (distance_to_point(other.x, other.y) < 3)
 		if (abs(hspeed) > 0)
 		{
 			hspeed = 0;
-			vspeed = - move_speed;
+			vspeed = -move_speed;
 			x = other.x;
 			y = other.y;
 		}

@@ -70,7 +70,7 @@ function scr_start_intro_animations()
 			if (cutscene_time > 60 * 5.2)
 			{
 				hspeed = + 8;
-				vspeed = - 8;
+				vspeed = -8;
 				can_move = true;
 				intro_animation = "";
 			}

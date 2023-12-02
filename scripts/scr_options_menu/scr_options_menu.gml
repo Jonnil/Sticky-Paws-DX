@@ -4295,6 +4295,7 @@ function scr_options_menu()
 			menu_delay --;
 		}
 		
+		scr_draw_darken_screen_when_window_is_unfocused();
 		scr_draw_cursor_mouse();
 		
 	}

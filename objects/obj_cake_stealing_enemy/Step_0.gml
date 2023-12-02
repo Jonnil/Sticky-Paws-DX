@@ -155,19 +155,12 @@ if (instance_exists(obj_player))
 	{
 		with(instance_nearest(x, y, obj_player))
 		{
-			if (simple_controls == false)
-			{
-				vspeed = -triple_jump_height;
-			}
-			else
-			{
-				vspeed = - 8;
-			}
+			vspeed = -triple_jump_height;
 		}
 	}
 	else
 	{
-		instance_nearest(x, y, obj_player).vspeed = - 8;
+		instance_nearest(x, y, obj_player).vspeed = -8;
 	}
 	
 	instance_destroy();

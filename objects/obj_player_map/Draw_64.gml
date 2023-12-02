@@ -166,6 +166,7 @@ if (menu == noone)
 	show_demo_over_message = false;
 }
 
+scr_draw_darken_screen_when_window_is_unfocused();
 scr_draw_cursor_mouse();
 
 #region /* Have a black screen at the first frame so transitions look natural */

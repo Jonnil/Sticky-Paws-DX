@@ -23,6 +23,7 @@ give_rewards = true;
 gravity_direction = 270; /* Direction of the gravity */
 blind = true;
 coil_spring = false;
+spawn_blaster_reward_decrease_mask = false;
 
 enemyvoice_defeated1 = snd_enemyvoice_defeated;
 enemyvoice_defeated2 = snd_enemyvoice_defeated2;

@@ -14,6 +14,7 @@ sliding_along_ground_speed = 8;
 number_of_times_stomped = 0;
 stuck_in_wall_counter = 0;
 coil_spring = false;
+spawn_blaster_reward_decrease_mask = false;
 blind = false;
 can_die_from_spikes = true;
 can_turn_around_at_wall = false;

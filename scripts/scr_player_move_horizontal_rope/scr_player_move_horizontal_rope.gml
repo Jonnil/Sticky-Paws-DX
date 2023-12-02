@@ -25,7 +25,6 @@ function scr_player_move_horizontal_rope()
 		if (key_up)
 		&& (!key_down)
 		&& (!collision_rectangle(bbox_left, bbox_top - 64, bbox_right, bbox_bottom, obj_wall, false, true))
-		&& (simple_controls == false)
 		{
 			friction = 0.5; /* Make the character stop horizontal movement sooner when spinning on horizontal rope */
 			
@@ -186,7 +185,7 @@ function scr_player_move_horizontal_rope()
 		&& (!key_right_hold)
 		&& (taken_damage <= taken_damage_freezetime)
 		&& (!place_meeting(x - 1, y, obj_wall))
-		&& (!place_meeting(x - 10, y, obj_spikes))
+		&& (!place_meeting(x - 20, y, obj_spikes))
 		{
 			image_xscale = -1;
 			if (place_meeting(x - 32, y, obj_horizontal_rope))
@@ -227,7 +226,7 @@ function scr_player_move_horizontal_rope()
 		&& (!key_left_hold)
 		&& (taken_damage <= taken_damage_freezetime)
 		&& (!place_meeting(x + 1, y, obj_wall))
-		&& (!place_meeting(x + 10, y, obj_spikes))
+		&& (!place_meeting(x + 20, y, obj_spikes))
 		{
 			image_xscale = +1;
 			if (place_meeting(x + 32, y, obj_horizontal_rope))
@@ -308,7 +307,7 @@ function scr_player_move_horizontal_rope()
 		#region /* Bump into wall on left side when climbing horizontal rope */
 		if (key_left_hold)
 		&& (!key_right_hold && taken_damage <= taken_damage_freezetime)
-		&& (place_meeting(x - 1, y, obj_wall) || place_meeting(x - 10, y, obj_spikes) || !place_meeting(x - 1, y, obj_horizontal_rope))
+		&& (place_meeting(x - 1, y, obj_wall) || place_meeting(x - 20, y, obj_spikes) || !place_meeting(x - 1, y, obj_horizontal_rope))
 		{
 			if (hspeed < 0)
 			{
@@ -327,7 +326,7 @@ function scr_player_move_horizontal_rope()
 		#region /* Bump into wall on right side when climbing horizontal rope */
 		if (key_right_hold)
 		&& (!key_left_hold && taken_damage <= taken_damage_freezetime)
-		&& (place_meeting(x + 1, y, obj_wall) || place_meeting(x + 10, y, obj_spikes) || !place_meeting(x + 1, y, obj_horizontal_rope))
+		&& (place_meeting(x + 1, y, obj_wall) || place_meeting(x + 20, y, obj_spikes) || !place_meeting(x + 1, y, obj_horizontal_rope))
 		{
 			if (hspeed > 0)
 			{

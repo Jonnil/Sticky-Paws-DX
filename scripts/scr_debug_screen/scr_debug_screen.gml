@@ -53,13 +53,11 @@ function scr_debug_screen()
 		if (fps_real >= fps_real_target)
 		{
 			scr_draw_text_outlined(32, fps_real_y, "FPS Real: " + string(fps_real),,, c_lime);
-			scr_draw_text_outlined(350, fps_real_y + scr_wave(-3, +3, 0.5), "GOOD >" + string(fps_real_target),,, c_lime);
 		}
 		else
 		{
 			var fps_real_color = make_color_hsv(50 / fps_real_target * fps_real, 255, 255);
 			scr_draw_text_outlined(32, fps_real_y, "FPS Real: " + string(fps_real),,, fps_real_color);
-			scr_draw_text_outlined(350, fps_real_y, "BAD <" + string(fps_real_target),,, fps_real_color);
 		}
 		#endregion /* FPS Real Rating END */
 		
@@ -75,7 +73,7 @@ function scr_debug_screen()
 		}
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(32, instance_count_y, "Instance Count: " + string(instance_count));
+		scr_draw_text_outlined(32, instance_count_y, "Instance Count: " + string(instance_count), global.default_text_size, c_black, c_white, 1);
 	}
 	#endregion /* Instance Count END */
 	
@@ -210,10 +208,10 @@ function scr_debug_screen()
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "F3 to toggle debug screen");
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "F3 to toggle debug screen", global.default_text_size, c_black, c_white, 1);
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + string(scr_get_build_date()));
+		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + string(scr_get_build_date()), global.default_text_size, c_black, c_white, 1);
 		
 		#region /* X and Y position of player */
 		if (instance_exists(obj_camera))

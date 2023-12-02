@@ -3039,7 +3039,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.441",
+    "IDEVersion": "2023.1100.0.444",
   },
   "resources": [
     {"id":{"name":"spr_player_stand","path":"sprites/spr_player_stand/spr_player_stand.yy",},},
@@ -3094,6 +3094,7 @@
     {"id":{"name":"spr_ring","path":"sprites/spr_ring/spr_ring.yy",},},
     {"id":{"name":"obj_leveleditor_modify_object_menu","path":"objects/obj_leveleditor_modify_object_menu/obj_leveleditor_modify_object_menu.yy",},},
     {"id":{"name":"spr_cardboard_long","path":"sprites/spr_cardboard_long/spr_cardboard_long.yy",},},
+    {"id":{"name":"shd_greyscale","path":"shaders/shd_greyscale/shd_greyscale.yy",},},
     {"id":{"name":"spr_sign_wall_jump","path":"sprites/spr_sign_wall_jump/spr_sign_wall_jump.yy",},},
     {"id":{"name":"snd_footstep_stone_right","path":"sounds/snd_footstep_stone_right/snd_footstep_stone_right.yy",},},
     {"id":{"name":"spr_background","path":"sprites/spr_background/spr_background.yy",},},
@@ -3130,7 +3131,9 @@
     {"id":{"name":"spr_effect_turnaround","path":"sprites/spr_effect_turnaround/spr_effect_turnaround.yy",},},
     {"id":{"name":"scr_buffer_async_load","path":"scripts/scr_buffer_async_load/scr_buffer_async_load.yy",},},
     {"id":{"name":"scr_character_manage_menu_step","path":"scripts/scr_character_manage_menu_step/scr_character_manage_menu_step.yy",},},
+    {"id":{"name":"spr_leveleditor_icon_wipe","path":"sprites/spr_leveleditor_icon_wipe/spr_leveleditor_icon_wipe.yy",},},
     {"id":{"name":"obj_wall_jump_panel","path":"objects/obj_wall_jump_panel/obj_wall_jump_panel.yy",},},
+    {"id":{"name":"obj_grayscale","path":"objects/obj_grayscale/obj_grayscale.yy",},},
     {"id":{"name":"scr_options_level_editor","path":"scripts/scr_options_level_editor/scr_options_level_editor.yy",},},
     {"id":{"name":"obj_spring","path":"objects/obj_spring/obj_spring.yy",},},
     {"id":{"name":"spr_big_stationary_enemy","path":"sprites/spr_big_stationary_enemy/spr_big_stationary_enemy.yy",},},

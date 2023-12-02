@@ -8,6 +8,7 @@ die = false;
 die_volting = false;
 mask = spr_big_stationary_enemy;
 coil_spring = false;
+spawn_blaster_reward_decrease_mask = false;
 can_die_from_spikes = true;
 can_turn_around_at_wall = false;
 number_of_times_stomped = 0;

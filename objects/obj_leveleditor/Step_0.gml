@@ -128,14 +128,15 @@ if (global.actually_play_edited_level == false)
 	|| (global.enable_difficulty_selection_settings)
 	&& (global.enable_difficutly_layers_in_level_editor)
 	&& (set_difficulty_mode)
-	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256 - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 	|| (global.enable_difficulty_selection_settings)
 	&& (global.enable_difficutly_layers_in_level_editor)
 	&& (set_difficulty_mode == false)
-	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64 - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 64 - 64 - 32, 0, display_get_gui_width() * 0.5 + 64 + 64 + 32, 64)) /* Can't place objects when clicking the object category buttons */
 	|| (welcome_to_level_editor > 0) /* Can't click on objects behind the help menu */
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 350, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 350, display_get_gui_height() * 0.5 + 200))
+	|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64)) /* Can't place objects when clicking the undo and redo buttons */
 	{
 		if (global.controls_used_for_menu_navigation == "mouse")
 		{
@@ -1329,17 +1330,19 @@ if (global.actually_play_edited_level == false)
 		}
 	}
 	#endregion /* Change modes END */
-
+	
 	if (quit_level_editor <= 0)
 	{
-	
+		
 		#region /* When pressing left click, increase current undo value */
-		if (mouse_check_button_pressed(mb_left))
+		if (mouse_check_button_released(mb_left))
+		|| (mouse_check_button_released(mb_right))
 		{
 			current_undo_value ++;
+			max_undo_value = current_undo_value;
 		}
 		#endregion /* When pressing left click, increase current undo value END */
-	
+		
 		#region /* Minimum undo value */
 		if (current_undo_value <= 0)
 		{

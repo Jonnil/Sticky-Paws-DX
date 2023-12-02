@@ -970,7 +970,7 @@ if (place_meeting(x, y, obj_map_path_turn))
 	&& (instance_nearest(x, y, obj_map_path_turn).delay == 0)
 	{
 		hspeed = 0;
-		vspeed = - move_speed;
+		vspeed = -move_speed;
 		x = instance_nearest(x, y, obj_map_path_turn).x;
 		y = instance_nearest(x, y, obj_map_path_turn).y - move_speed;
 		with(instance_nearest(x, y, obj_map_path_turn))
@@ -1004,7 +1004,7 @@ if (place_meeting(x, y, obj_map_path_turn))
 	&& (instance_nearest(x, y, obj_map_path_turn).delay == 0)
 	{
 		hspeed = 0;
-		vspeed = - move_speed;
+		vspeed = -move_speed;
 		x = instance_nearest(x, y, obj_map_path_turn).x;
 		y = instance_nearest(x, y, obj_map_path_turn).y - move_speed;
 		with(instance_nearest(x, y, obj_map_path_turn))

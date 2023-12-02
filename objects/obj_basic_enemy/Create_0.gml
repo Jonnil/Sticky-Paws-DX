@@ -12,6 +12,7 @@ die_volting = false;
 sliding_along_ground = 0;
 blind = false;
 coil_spring = false;
+spawn_blaster_reward_decrease_mask = false;
 can_die_from_spikes = true;
 can_turn_around_at_wall = true;
 number_of_times_stomped = 0;

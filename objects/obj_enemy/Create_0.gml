@@ -18,6 +18,7 @@ can_turn_around_at_wall = true;
 give_rewards = true;
 on_ground = false;
 coil_spring = false;
+spawn_blaster_reward_decrease_mask = false;
 
 #region /* If enemies are disabled, destroy this object */
 if (global.assist_enable)

@@ -127,6 +127,7 @@ global.http_request_info = noone;
 scr_sync_saving_create();
 randomize(); /* You need to get random level ID codes when you upload a new level */
 
+made_with_gamemaker_alpha = 0;
 skip_button = gp_start;
 skip_key = vk_escape;
 show_skip_button = false;

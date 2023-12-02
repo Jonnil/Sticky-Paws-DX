@@ -13,6 +13,7 @@ sliding_along_ground = 0;
 can_die_from_spikes = true;
 can_turn_around_at_wall = false;
 coil_spring = false;
+spawn_blaster_reward_decrease_mask = false;
 number_of_times_stomped = 0;
 give_rewards = true;
 enemyvoice_defeated1 = noone;

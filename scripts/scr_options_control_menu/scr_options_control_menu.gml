@@ -4423,11 +4423,11 @@ function scr_options_control_menu()
 			if (global.controls_used_for_menu_navigation == "controller")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(gp_start, window_get_width() * 0.5 + (string_width(l10n_text("Buttons can be disabled using")) * 0.5) - 32, 64, 0.50, c_white, 1);
+				scr_draw_gamepad_buttons(gp_start, window_get_width() * 0.5 + (string_width(l10n_text("Buttons can be disabled using")) * 0.5) - 32, 64, 0.5, c_white, 1);
 			}
 			else
 			{
-				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() * 0.5 + (string_width(l10n_text("Buttons can be disabled using")) * 0.5) - 32, 64, 0.50, 0.50, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() * 0.5 + (string_width(l10n_text("Buttons can be disabled using")) * 0.5) - 32, 64, 0.5, 0.5, 0, c_white, 1);
 			}
 		}
 		#endregion /* Show the player when they can input a gamepad button to remap controls END */

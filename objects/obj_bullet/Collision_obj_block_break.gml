@@ -4,30 +4,16 @@ if (!die)
 	if (die_volting == false)
 	{
 		die = true;
-		if (image_xscale < 0)
-		{
-			with(instance_create_depth(x, y, 0, obj_blaster_reward_decrease_mask))
-			{
-				image_xscale = +1;
-			}
-		}
-		else
-		if (image_xscale > 0)
-		{
-			with(instance_create_depth(x, y, 0, obj_blaster_reward_decrease_mask))
-			{
-				image_xscale = -1;
-			}
-		}
+		instance_create_depth(xstart, ystart, 0, obj_blaster_reward_decrease_mask);
 		global.enemy_counter ++;
 		if (other.x < x)
 		{
-			vspeed = - 8;
+			vspeed = -8;
 			die_volting = -1;
 		}
 		else
 		{
-			vspeed = - 8;
+			vspeed = -8;
 			die_volting = +1;
 		}
 		effect_create_above(ef_smoke, x, y, 2, c_white);

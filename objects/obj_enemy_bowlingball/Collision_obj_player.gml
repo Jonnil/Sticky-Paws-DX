@@ -15,10 +15,7 @@ if (!die)
 			with(other)
 			{
 				dive = false;
-				if (simple_controls == false)
-				{
-					vspeed = -triple_jump_height;
-				}
+				vspeed = -triple_jump_height;
 			}
 		}
 		if (die_volting == false)
@@ -32,13 +29,13 @@ if (!die)
 			}
 			if (other.x < x)
 			{
-				vspeed = - 8;
+				vspeed = -8;
 				die = true;
 				die_volting = -1;
 			}
 			else
 			{
-				vspeed = - 8;
+				vspeed = -8;
 				die = true;
 				die_volting = +1;
 			}
@@ -99,13 +96,8 @@ if (!die)
 							vspeed = -4;
 						}
 						else
-						if (simple_controls == false)
 						{
 							vspeed = -triple_jump_height;
-						}
-						else
-						{
-							vspeed = - 8;
 						}
 					}
 					if (stomped_delay == 0)
@@ -170,7 +162,7 @@ if (!die)
 					}
 					else
 					{
-						other.vspeed = - 8;
+						other.vspeed = -8;
 					}
 					if (stomped_delay == 0)
 					{
@@ -267,12 +259,12 @@ if (!die)
 				image_index = 0;
 				if (other.x < x)
 				{
-					vspeed = - 8;
+					vspeed = -8;
 					die_volting = -1;
 				}
 				else
 				{
-					vspeed = - 8;
+					vspeed = -8;
 					die_volting = +1;
 				}
 			}

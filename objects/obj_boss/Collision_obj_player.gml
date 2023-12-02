@@ -29,19 +29,12 @@ if (other.vspeed > 0)
 		{
 			with(other)
 			{
-				if (simple_controls == false)
-				{
-					vspeed = -triple_jump_height;
-				}
-				else
-				{
-					vspeed = - 8;
-				}
+				vspeed = -triple_jump_height;
 			}
 		}
 		else
 		{
-			other.vspeed = - 8;
+			other.vspeed = -8;
 		}
 		image_index = 0;
 		effect_create_below(ef_ring, other.x, other.bbox_bottom, 0, c_white);
@@ -66,19 +59,12 @@ if (other.vspeed > 0)
 		{
 			with(other)
 			{
-				if (simple_controls == false)
-				{
-					vspeed = -triple_jump_height;
-				}
-				else
-				{
-					vspeed = - 8;
-				}
+				vspeed = -triple_jump_height;
 			}
 		}
 		else
 		{
-			other.vspeed = - 8;
+			other.vspeed = -8;
 		}
 	}
 }
@@ -100,19 +86,12 @@ if (can_jump_on_head)
 	{
 		with(other)
 		{
-			if (simple_controls == false)
-			{
-				vspeed = -triple_jump_height;
-			}
-			else
-			{
-				vspeed = - 8;
-			}
+			vspeed = -triple_jump_height;
 		}
 	}
 	else
 	{
-		other.vspeed = - 8;
+		other.vspeed = -8;
 	}
 }
 else

@@ -116,6 +116,7 @@ function scr_load_object_placement_json()
 /* THIS IS SAVING .JSON FILE */
 function scr_save_custom_level_json()
 {
+	global.create_level_from_template = false; /* Set this variable to false, so that the level can properly save and load after you have loaded a template level */
 	
 	#region /* Save Custom Level */
 	if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */

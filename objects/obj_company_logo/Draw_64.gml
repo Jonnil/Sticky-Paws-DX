@@ -4,6 +4,12 @@ var get_window_width = display_get_gui_width();
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
+if (sprite_index == spr_company_logo)
+{
+	draw_sprite_ext(sprite_index, image_index, get_window_width * 0.5, get_window_height * 0.5 - 228, 1, 1, 0, c_white, 1); /* Show the Company Logo above the "Made with GameMaker" logo */
+	draw_sprite_ext(spr_made_with_gamemaker, image_index, get_window_width * 0.5, get_window_height * 0.5 + 128, 1, 1, 0, c_white, made_with_gamemaker_alpha); /* Show that the game was made with GameMaker underneath the Company Logo */
+}
+else
 if (sprite_index >= 0)
 {
 	draw_sprite_ext(sprite_index, image_index, get_window_width * 0.5, get_window_height * 0.5, 1, 1, 0, c_white, 1);
@@ -25,39 +31,26 @@ else
 
 if (can_navigate == false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
 {
-	scr_draw_loading(1, display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 6));
-	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 4), string(file_found), global.default_text_size, c_black, c_white, 1);
-	if (load_ok <= 0)
-	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 3), string(ds_list_size(global.all_loaded_characters)) + " " + l10n_text("Loaded Characters"), global.default_text_size, c_black, c_white, 1);
-	}
-	else
-	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 3), string(ds_list_size(global.all_loaded_characters)) + " " + l10n_text("Loaded Characters OK"), global.default_text_size, c_black, c_lime, 1);
-	}
+	scr_draw_loading(1, display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 3));
+	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32), string(file_found), global.default_text_size, c_black, c_white, 1);
 	if (load_ok <= 1)
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 2), string(ds_list_size(global.all_loaded_resource_pack)) + " " + l10n_text("Loaded Resource Packs"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_characters)) + " " + l10n_text("Loaded Characters"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
-	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 2), string(ds_list_size(global.all_loaded_resource_pack)) + " " + l10n_text("Loaded Resource Packs OK"), global.default_text_size, c_black, c_lime, 1);
-	}
 	if (load_ok <= 2)
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32), string(ds_list_size(global.all_loaded_title_backgrounds)) + " " + l10n_text("Loaded Title Backgrounds"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_resource_pack)) + " " + l10n_text("Loaded Resource Packs"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
-	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32), string(ds_list_size(global.all_loaded_title_backgrounds)) + " " + l10n_text("Loaded Title Backgrounds OK"), global.default_text_size, c_black, c_lime, 1);
-	}
 	if (load_ok <= 3)
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_title_logos)) + " " + l10n_text("Loaded Title Logos"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_title_backgrounds)) + " " + l10n_text("Loaded Title Backgrounds"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
+	if (load_ok <= 4)
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_title_logos)) + " " + l10n_text("Loaded Title Logos OK"), global.default_text_size, c_black, c_lime, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_title_logos)) + " " + l10n_text("Loaded Title Logos"), global.default_text_size, c_black, c_white, 1);
 	}
 }
 else
@@ -90,5 +83,4 @@ if (show_skip_button)
 }
 
 scr_draw_darken_screen_when_window_is_unfocused();
-
 scr_draw_cursor_mouse();

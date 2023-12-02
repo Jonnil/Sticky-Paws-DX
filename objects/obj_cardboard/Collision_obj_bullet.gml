@@ -16,7 +16,7 @@ if (instance_exists(obj_bullet))
 			with(other)
 			{
 				die = true;
-				vspeed = - 8;
+				vspeed = -8;
 				die_volting = - 1;
 			}
 		}
@@ -25,7 +25,7 @@ if (instance_exists(obj_bullet))
 			with(other)
 			{
 				die = true;
-				vspeed = - 8;
+				vspeed = -8;
 				die_volting = +1;
 			}
 		}

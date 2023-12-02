@@ -65,6 +65,11 @@ function scr_options_level_editor()
 		|| (menu == "select_level_editing_music")
 		|| (menu == "delete_all_objects")
 		{
+			if (level_editor_options_back_to_menu == "delete_all_objects_button")
+			{
+				pause = false;
+			}
+			changing_level_theme_menu = false;
 			
 			#region /* Menu Navigation */
 			
@@ -488,8 +493,8 @@ function scr_options_level_editor()
 		if (menu == "delete_all_objects_yes")
 		|| (menu == "delete_all_objects_no")
 		{
-			draw_set_alpha(0.9);
-			draw_rectangle_color(0, 0, get_window_width* 3, get_window_height* 3, c_black, c_black, c_black, c_black, false);
+			draw_set_alpha(0.1);
+			draw_rectangle_color(0, 0, get_window_width * 3, get_window_height * 3, c_black, c_black, c_black, c_black, false);
 			draw_set_alpha(0.1);
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
@@ -511,7 +516,14 @@ function scr_options_level_editor()
 			{
 				if (menu == "delete_all_objects_no")
 				{
-					menu = "delete_all_objects";
+					if (level_editor_options_back_to_menu == "delete_all_objects_button")
+					{
+						pause = false;
+					}
+					else
+					{
+						menu = "delete_all_objects";
+					}
 					menu_delay = 3;
 				}
 				else
@@ -559,7 +571,14 @@ function scr_options_level_editor()
 					instance_destroy()
 				}
 			}
-			menu = "delete_all_objects";
+			if (level_editor_options_back_to_menu == "delete_all_objects_button")
+			{
+				pause = false;
+			}
+			else
+			{
+				menu = "delete_all_objects";
+			}
 		}
 		else
 		
@@ -574,6 +593,7 @@ function scr_options_level_editor()
 		|| (menu == "background_scale")
 		|| (menu == "background_tiled")
 		{
+			changing_level_theme_menu = true;
 			level_editor_options_back_to_menu = menu; /* Save what menu you came from, to use later */
 			level_editor_options_select_level_index = global.select_level_index;
 			

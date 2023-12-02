@@ -2,6 +2,8 @@
 can_spawn_players = true;
 #endregion /* Debug toggles END */
 
+//instance_create_depth(x, y, 0, obj_grayscale);
+
 #region /* Set Backgrounds */
 layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);
 layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);

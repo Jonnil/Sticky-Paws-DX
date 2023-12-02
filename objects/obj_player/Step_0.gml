@@ -2118,7 +2118,7 @@ else
 	#region /* Jumping Sprites */
 	if (!on_ground)
 	{
-		if (burnt> 0)
+		if (burnt > 0)
 		{
 			if (sprite_burnt > noone){sprite_index = sprite_burnt;}else
 			if (sprite_die > noone){sprite_index = sprite_die;}else

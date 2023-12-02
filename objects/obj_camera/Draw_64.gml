@@ -426,6 +426,7 @@ if (hud_show_lives_y != -64)
 }
 #endregion /* Lives Counter (Show above defeat counter) END */
 
+scr_draw_darken_screen_when_window_is_unfocused();
 scr_draw_cursor_mouse();
 
 #region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */

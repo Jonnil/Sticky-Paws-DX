@@ -82,13 +82,13 @@ if (!die)
 		global.enemy_counter ++;
 		if (other.x < x)
 		{
-			vspeed = - 8;
+			vspeed = -8;
 			die_volting = -1;
 			die = true;
 		}
 		else
 		{
-			vspeed = - 8;
+			vspeed = -8;
 			die_volting = +1;
 			die = true;
 		}

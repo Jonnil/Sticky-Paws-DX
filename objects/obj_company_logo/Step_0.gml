@@ -97,37 +97,23 @@ if (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
 }
 #endregion /* Skip company logo screen when pressing skip button END */
 
-#region /* Go to "made with gamemaker" when company logo is done showing */
+made_with_gamemaker_alpha = lerp(made_with_gamemaker_alpha, 1, 0.03);
+
+#region /* Go to the title screen automatically when "made with gamemaker" and controller prompt is done showing */
 if (image_index > image_number - 2)
 && (sprite_index == spr_company_logo)
 {
-	sprite_index = spr_made_with_gamemaker;
 	image_index = 0;
 	time = 0;
-}
-#endregion /* Go to "made with gamemaker" when company logo is done showing END */
-
-#region /* Go to the title screen automatically when "made with gamemaker" and controller prompt is done showing */
-if (sprite_index == spr_made_with_gamemaker)
-{
-	time ++;
-	if (time > 200)
+	if (!gamepad_is_connected(global.player_slot[1])) /* If there are no controllers connected to the game, then show a controller prompt to let players know they can use controllers */
+	&& (!gamepad_is_connected(global.player_slot[2]))
+	&& (!gamepad_is_connected(global.player_slot[3]))
+	&& (!gamepad_is_connected(global.player_slot[4]))
 	{
-		if (!gamepad_is_connected(global.player_slot[1])) /* If there are no controllers connected to the game, then show a controller prompt to let players know they can use controllers */
-		&& (!gamepad_is_connected(global.player_slot[2]))
-		&& (!gamepad_is_connected(global.player_slot[3]))
-		&& (!gamepad_is_connected(global.player_slot[4]))
+		if (global.resource_pack_sprite_splash_controller >= 0) /* Check if the controller splash sprite exists before trying to switch sprite to it */
 		{
-			if (global.resource_pack_sprite_splash_controller >= 0) /* Check if the controller splash sprite exists before trying to switch sprite to it */
-			{
-				time = 0;
-				sprite_index = global.resource_pack_sprite_splash_controller;
-			}
-			else
-			if (can_navigate) /* Can only go to the title screen when everything is loaded */
-			{
-				goto_title_screen = true;
-			}
+			time = 0;
+			sprite_index = global.resource_pack_sprite_splash_controller;
 		}
 		else
 		if (can_navigate) /* Can only go to the title screen when everything is loaded */
@@ -135,7 +121,11 @@ if (sprite_index == spr_made_with_gamemaker)
 			goto_title_screen = true;
 		}
 	}
-	image_speed = 0.2;
+	else
+	if (can_navigate) /* Can only go to the title screen when everything is loaded */
+	{
+		goto_title_screen = true;
+	}
 }
 #endregion /* Go to the title screen automatically when "made with gamemaker" and controller prompt is done showing END */
 

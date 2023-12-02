@@ -18,6 +18,7 @@ thumbnail_level_username = "";
 draw_download_name = "";
 spr_download_list_thumbnail = noone;
 top_left_of_thumbnail_y = 0;
+load_ok = 0;
 
 information_menu_open = false; /* If the information menu is opened or not */
 
@@ -57,7 +58,7 @@ character_portrait_for_player_dir_exists_4[4] = false;
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
 
-play_the_game_text_y_lerp = -100;
+play_the_game_text_y_lerp = display_get_gui_height() + 100;
 
 tag_art = false;
 tag_boss_battle = false;

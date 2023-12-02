@@ -62,4 +62,5 @@ if (close == false)
 	draw_sprite_ext(spr_icons_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 }
 
+scr_draw_darken_screen_when_window_is_unfocused();
 scr_draw_cursor_mouse();

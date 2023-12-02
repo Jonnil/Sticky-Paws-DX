@@ -65,7 +65,7 @@ if (in_water == false)
 		}
 		else
 		{
-			vspeed = - 8;
+			vspeed = -8;
 		}
 		with(other)
 		{
