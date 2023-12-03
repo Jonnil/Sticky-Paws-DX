@@ -5,6 +5,7 @@ scr_set_menu_font_color();
 scr_toggle_fullscreen();
 
 if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")
+&& (menu_delay == 0)
 {
 	if (global.sprite_select_player[1] < 0)
 	|| (global.sprite_select_player[1] == spr_noone)
@@ -13,9 +14,27 @@ if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")
 		global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
 		global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
 	}
+	select_custom_level_menu_open = false;
 	menu = "upload_yes_character";
 	global.go_to_menu_when_going_back_to_title = "";
 	global.doing_clear_check_character = false;
+}
+else
+if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
+&& (menu_delay == 0)
+|| (global.automatically_play_downloaded_level)
+&& (menu_delay == 0)
+{
+	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/background");
+	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/data");
+	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/sound");
+	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/tilesets");
+	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name));
+	global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
+	select_custom_level_menu_open = false;
+	menu = "online_download_list_load";
+	global.go_to_menu_when_going_back_to_title = "";
+	global.automatically_play_downloaded_level = false;
 }
 
 global.keyboard_virtual_timer = clamp(global.keyboard_virtual_timer - 0.5, 0, 4);
@@ -240,7 +259,11 @@ if (menu == "load_custom_level")
 			{
 				global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, string(global.level_name)); /* "Select level index" should be set to where the new custom level is saved */
 			}
-			select_custom_level_menu_open = true;
+			if (global.go_to_menu_when_going_back_to_title != "online_download_list_load")
+			&& (!global.automatically_play_downloaded_level)
+			{
+				select_custom_level_menu_open = true;
+			}
 			if (global.go_to_menu_when_going_back_to_title != "")
 			{
 				menu = global.go_to_menu_when_going_back_to_title; /* Go to specific menu if this is assigned to something */

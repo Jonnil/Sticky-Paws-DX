@@ -284,17 +284,6 @@ if (file_exists("localization.csv"))
 lives = 5; /* Starting lives */
 
 #region /* If title screen should start at the level editor menu or the main menu */
-if (global.automatically_play_downloaded_level)
-{
-	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/background");
-	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/data");
-	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/sound");
-	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name) + "/tilesets");
-	directory_destroy(cache_directory + "custom_levels/" + string(global.level_name));
-	global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
-	menu = "online_download_list_load";
-}
-else
 if (global.character_select_in_this_menu == "level_editor")
 {
 	scr_load_custom_level_initializing();

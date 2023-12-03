@@ -230,14 +230,6 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				var downloaded_file_name = string(file_find_first(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
 				
 				/* Copy the downloaded file lastly */
-				//if (global.automatically_play_downloaded_level)
-				//{
-				//	global.use_cache_or_working = cache_directory;
-				//}
-				//else
-				//{
-				//	global.use_cache_or_working = working_directory;
-				//}
 				if (what_kind_of_id == "level")
 				{
 					scr_copy_move_files(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), cache_directory + "custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
@@ -607,7 +599,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					inform_about_report_feature = false;
 					if (what_kind_of_id == "level")
 					{
-						menu = "searched_file_downloaded_play"; /* Go to the screen where you see the file has been downloaded */
+						if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+						{
+							menu = "searched_file_downloaded_play"; /* Go to the screen where you play or make a level from the working directory */
+						}
+						else
+						{
+							menu = "play_from_cache_directory"; /* Go to the screen where you get so choose if you want to play from cache directory, or download to working directory */
+						}
 					}
 					else
 					{
@@ -641,6 +640,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					global.doing_clear_check = false;
 					global.actually_play_edited_level = true; /* Even before going to the level, set this variable to true */
 					global.play_edited_level = true;
+					global.go_to_menu_when_going_back_to_title = "online_download_list_load"; /* If you are playing from Online Level List, game needs to remember this so that you go back to Online Level List after exiting level */
 					can_navigate = false;
 					menu_delay = 9999;
 					if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
@@ -875,7 +875,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				else
 				if (menu == "play_from_cache_directory")
 				{
-					menu = "searched_file_downloaded_report";
+					menu = "searched_file_downloaded_back_to_list";
 				}
 				else
 				if (menu == "download_to_working_directory")
