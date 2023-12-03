@@ -332,8 +332,16 @@ function scr_options_global_resources()
 			draw_sprite_ext(spr_icons_folder, 0, resource_pack_x + 16, 20 + (open_resource_pack_y) + 21, 1, 1, 0, c_white, 1);
 		}
 		
-		#region /* Custom Title Background */
+		if (os_type == os_macosx)
+		{
+			var add_number = -1; /* For some reason I need to do this for Mac to make the numbers correct on both Mac and PC */
+		}
+		else
+		{
+			var add_number = 0;
+		}
 		
+		#region /* Custom Title Background */
 		if (global.selected_title_background > ds_list_size(global.all_loaded_title_backgrounds) - 1)
 		{
 			global.selected_title_background = ds_list_size(global.all_loaded_title_backgrounds) - 1;
@@ -344,7 +352,7 @@ function scr_options_global_resources()
 		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_background_y), l10n_text("Title Background") + ": " + string(global.selected_title_background + 1) + "/" + string(ds_list_size(global.all_loaded_title_backgrounds) - 1), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_background_y), l10n_text("Title Background") + ": " + string(global.selected_title_background + 1) + "/" + string(ds_list_size(global.all_loaded_title_backgrounds) + add_number), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		/* Draw text of what the file is called */ scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_background_y + 40), string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background)), global.default_text_size * 1.1, c_menu_outline, c_dkgray, 1);
 		
 		if (global.selected_title_background > 0)
@@ -814,7 +822,7 @@ function scr_options_global_resources()
 		draw_set_valign(fa_middle);
 		if (global.selected_title_logo >= 0)
 		{
-			scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_logo_y), l10n_text("Title Logo") + ": " + string(global.selected_title_logo + 1) + "/" + string(ds_list_size(global.all_loaded_title_logo) - 1), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_logo_y), l10n_text("Title Logo") + ": " + string(global.selected_title_logo + 1) + "/" + string(ds_list_size(global.all_loaded_title_logo) + add_number), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 			/* Draw text of what the file is called */ scr_draw_text_outlined(resource_pack_x, 20 + (custom_title_logo_y + 40), string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo)), global.default_text_size * 1.1, c_menu_outline, c_dkgray, 1);
 		}
 		else

@@ -97,7 +97,16 @@ if (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
 }
 #endregion /* Skip company logo screen when pressing skip button END */
 
-made_with_gamemaker_alpha = lerp(made_with_gamemaker_alpha, 1, 0.03);
+if (can_navigate)
+&& (sprite_index == spr_company_logo)
+&& (image_index > image_number - 12)
+{
+	made_with_gamemaker_alpha = lerp(made_with_gamemaker_alpha, 0, 0.1);
+}
+else
+{
+	made_with_gamemaker_alpha = lerp(made_with_gamemaker_alpha, 1, 0.03);
+}
 
 #region /* Go to the title screen automatically when "made with gamemaker" and controller prompt is done showing */
 if (image_index > image_number - 2)

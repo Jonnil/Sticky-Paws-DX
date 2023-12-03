@@ -7,7 +7,7 @@ draw_set_valign(fa_middle);
 if (sprite_index == spr_company_logo)
 {
 	draw_sprite_ext(sprite_index, image_index, get_window_width * 0.5, get_window_height * 0.5 - 228, 1, 1, 0, c_white, 1); /* Show the Company Logo above the "Made with GameMaker" logo */
-	draw_sprite_ext(spr_made_with_gamemaker, image_index, get_window_width * 0.5, get_window_height * 0.5 + 128, 1, 1, 0, c_white, made_with_gamemaker_alpha); /* Show that the game was made with GameMaker underneath the Company Logo */
+	draw_sprite_ext(spr_made_with_gamemaker, image_index, get_window_width * 0.5, get_window_height * 0.5 + 138, 1, 1, 0, c_white, made_with_gamemaker_alpha); /* Show that the game was made with GameMaker underneath the Company Logo */
 }
 else
 if (sprite_index >= 0)

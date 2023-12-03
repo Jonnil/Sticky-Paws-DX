@@ -126,7 +126,7 @@ window_set_caption(string(global.game_name) + " v" + string(scr_get_build_date()
 scr_sync_saving_create();
 randomize(); /* You need to get random level ID codes when you upload a new level */
 
-made_with_gamemaker_alpha = 0;
+made_with_gamemaker_alpha = -6;
 skip_button = gp_start;
 skip_key = vk_escape;
 show_skip_button = false;

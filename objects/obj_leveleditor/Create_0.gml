@@ -694,7 +694,7 @@ if (global.actually_play_edited_level == false)
 	erase_brush_size = 0; /* The size of the brush when erasing */
 	can_make_place_brush_size_bigger = true; /* If you can make the brush size bigger for certain objects */
 	mouse_sprite = spr_cursor; /* Sets what cursor sprite to use */
-	undo_and_redo_buttons_enabled = true; /* If undo and redo buttons should appear or not */
+	undo_and_redo_buttons_enabled = false; /* If undo and redo buttons should appear or not */
 	tooltip = "";
 	show_tooltip = 0;
 	show_grid = false; /* Grid should be false when you start level editor */
