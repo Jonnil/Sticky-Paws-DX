@@ -139,7 +139,7 @@ function scr_draw_report()
 			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 			{
 				directory_destroy(working_directory + "custom_levels/" + string(global.level_name));
-				ini_open(working_directory + "save_files/custom_level_save.ini");
+				ini_open(working_directory + "save_file/custom_level_save.ini");
 				ini_section_delete(string(global.level_name));
 				ini_close();
 				global.select_level_index = 0;

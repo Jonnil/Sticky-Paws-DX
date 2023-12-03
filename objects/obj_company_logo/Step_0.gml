@@ -424,24 +424,24 @@ if (can_navigate == false)
 		if (file_load_timer > 1)
 		&& (load_ok == 3)
 		{
-			if (initialized_title_logos == false)
+			if (initialized_title_logo == false)
 			{
 				scr_load_title_logo_initializing();
-				initialized_title_logos = true;
+				initialized_title_logo = true;
 			}
 			file_found = file_find_next()
 			if (file_found == "")
 			{
 				file_find_close();
-				if (file_exists("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
+				if (file_exists("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
 				{
-					global.title_logo_index = sprite_add("title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo)), 1, false, false, 0, 0);
+					global.title_logo_index = sprite_add("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo)), 1, false, false, 0, 0);
 					sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) * 0.5, sprite_get_height(global.title_logo_index) * 0.5);
 				}
 				else
-				if (file_exists(working_directory + "custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo))))
+				if (file_exists(working_directory + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
 				{
-					global.title_logo_index = sprite_add(working_directory + "custom_title_logos/" + string(ds_list_find_value(global.all_loaded_title_logos, global.selected_title_logo)), 1, false, false, 0, 0);
+					global.title_logo_index = sprite_add(working_directory + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo)), 1, false, false, 0, 0);
 					sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) * 0.5, sprite_get_height(global.title_logo_index) * 0.5);
 				}
 				else
@@ -452,9 +452,9 @@ if (can_navigate == false)
 			}
 			else
 			{
-				if (file_exists(working_directory + "custom_title_logos/" + file_found))
+				if (file_exists(working_directory + "custom_title_logo/" + file_found))
 				{
-					ds_list_add(global.all_loaded_title_logos, file_found)
+					ds_list_add(global.all_loaded_title_logo, file_found)
 				}
 			
 				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
@@ -477,21 +477,21 @@ if (load_ok >= 4)
 	if (global.selected_resource_pack > ds_list_size(global.all_loaded_resource_pack) - 1)
 	{
 		global.selected_resource_pack = ds_list_size(global.all_loaded_resource_pack) - 1;
-		ini_open(working_directory + "config.ini");
+		ini_open(working_directory + "save_file/config.ini");
 		ini_write_real("config", "select_resource_pack", global.selected_resource_pack);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	if (global.selected_title_background > ds_list_size(global.all_loaded_title_backgrounds) - 1)
 	{
 		global.selected_title_background = ds_list_size(global.all_loaded_title_backgrounds) - 1;
-		ini_open(working_directory + "config.ini");
+		ini_open(working_directory + "save_file/config.ini");
 		ini_write_real("config", "select_title_background", global.selected_title_background);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
-	if (global.selected_title_logo > ds_list_size(global.all_loaded_title_logos) - 1)
+	if (global.selected_title_logo > ds_list_size(global.all_loaded_title_logo) - 1)
 	{
-		global.selected_title_logo = ds_list_size(global.all_loaded_title_logos) - 1;
-		ini_open(working_directory + "config.ini");
+		global.selected_title_logo = ds_list_size(global.all_loaded_title_logo) - 1;
+		ini_open(working_directory + "save_file/config.ini");
 		ini_write_real("config", "select_title_logo", global.selected_title_logo);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}

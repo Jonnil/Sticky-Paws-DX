@@ -16,11 +16,8 @@ if (can_break_this_block)
 	&& (!place_meeting(x + 4, y, obj_wall))
 	&& (instance_nearest(x, y, obj_player).dive)
 	{
-		with(instance_nearest(x, y, obj_player))
-		{
-			dive = false;
-			vspeed = +4;
-		}
+		instance_nearest(x, y, obj_player).dive = false;
+		instance_nearest(x, y, obj_player).vspeed = +4;
 	}
 	with(instance_create_depth(x, y - 32, 0, obj_block_break))
 	{
@@ -49,10 +46,7 @@ if (can_break_this_block)
 	score += 50;
 	if (instance_exists(obj_camera))
 	{
-		with(obj_camera)
-		{
-			hud_show_score_timer = global.hud_hide_time * 60;
-		}
+		obj_camera.hud_show_score_timer = global.hud_hide_time * 60;
 	}
 	if (show_score_up)
 	{
@@ -146,6 +140,7 @@ if (instance_exists(obj_player))
 		{
 			if (empty == false)
 			{
+				instance_nearest(x, y, obj_player).dive = false;
 				if (instance_exists(obj_player))
 				{
 					scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);

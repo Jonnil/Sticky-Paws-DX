@@ -85,7 +85,7 @@ function scr_player_move_goal()
 					
 					var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 					
-					ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+					ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 					ini_write_real(level_name, "checkpoint_x", 0);
 					ini_write_real(level_name, "checkpoint_y", 0);
 					ini_write_real(level_name, "checkpoint_millisecond", 0);
@@ -108,7 +108,7 @@ function scr_player_move_goal()
 					
 					var level_name = string(global.level_name);
 					
-					ini_open(working_directory + "save_files/custom_level_save.ini");
+					ini_open(working_directory + "save_file/custom_level_save.ini");
 					ini_write_real(level_name, "checkpoint_x", 0);
 					ini_write_real(level_name, "checkpoint_y", 0);
 					ini_write_real(level_name, "checkpoint_millisecond", 0);

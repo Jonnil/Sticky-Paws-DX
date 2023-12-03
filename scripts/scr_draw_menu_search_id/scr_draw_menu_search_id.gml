@@ -601,7 +601,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (key_a_pressed)
 				{
 					menu_delay = 3;
-					ini_open(working_directory + "config.ini");
+					ini_open(working_directory + "save_file/config.ini");
 					ini_write_real("config", "inform_about_report_feature", false);
 					ini_close();switch_save_data_commit();
 					inform_about_report_feature = false;
@@ -717,7 +717,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					{
 						directory_destroy(working_directory + "custom_levels/" + string(global.level_name));
 					}
-					ini_open(working_directory + "save_files/custom_level_save.ini");
+					ini_open(working_directory + "save_file/custom_level_save.ini");
 					ini_section_delete(string(global.level_name));
 					ini_close();
 					global.select_level_index = 0;
@@ -890,19 +890,19 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (!inform_about_report_feature)
 			{
 				menu_delay = 3;
-				if (menu == "searched_file_downloaded_delete")
+				if (menu == "searched_file_downloaded_back_to_list")
 				{
-					menu = "searched_file_downloaded_back_to_list";
+					menu = "searched_file_downloaded_delete";
 				}
 				else
-				if (menu == "searched_file_downloaded_back_to_list")
+				if (menu == "searched_file_downloaded_delete")
 				{
 					menu = "searched_file_downloaded_report";
 				}
 				else
 				if (menu == "searched_file_downloaded_report")
 				{
-					menu = "searched_file_downloaded_delete";
+					menu = "searched_file_downloaded_back_to_list";
 				}
 			}
 			else
@@ -912,19 +912,19 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (!inform_about_report_feature)
 			{
 				menu_delay = 3;
-				if (menu == "searched_file_downloaded_delete")
+				if (menu == "searched_file_downloaded_back_to_list")
 				{
 					menu = "searched_file_downloaded_report";
 				}
 				else
-				if (menu == "searched_file_downloaded_back_to_list")
+				if (menu == "searched_file_downloaded_delete")
 				{
-					menu = "searched_file_downloaded_delete";
+					menu = "searched_file_downloaded_back_to_list";
 				}
 				else
 				if (menu == "searched_file_downloaded_report")
 				{
-					menu = "searched_file_downloaded_back_to_list";
+					menu = "searched_file_downloaded_delete";
 				}
 			}
 			#endregion /* Play, Download, Make, Delete, Back Navigation END */

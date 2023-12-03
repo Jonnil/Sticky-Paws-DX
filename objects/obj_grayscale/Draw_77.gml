@@ -3,49 +3,49 @@ y = obj_camera.y;
 
 if (keyboard_check_pressed(vk_enter))
 {
-	if (whichGrayScaleMethod == "Noone")
+	if (which_grayscale_method == "Noone")
 	{
-		whichGrayScaleMethod = "Max Color";
+		which_grayscale_method = "Max Color";
 	}
 	else
-	if (whichGrayScaleMethod == "Max Color")
+	if (which_grayscale_method == "Max Color")
 	{
-		whichGrayScaleMethod = "Relative Luminance";
+		which_grayscale_method = "Relative Luminance";
 	}
 	else
-	if (whichGrayScaleMethod == "Relative Luminance")
+	if (which_grayscale_method == "Relative Luminance")
 	{
-		whichGrayScaleMethod = "Average Color";
+		which_grayscale_method = "Average Color";
 	}
 	else
-	if (whichGrayScaleMethod == "Average Color")
+	if (which_grayscale_method == "Average Color")
 	{
-		whichGrayScaleMethod = "Average of the Min and Max";
+		which_grayscale_method = "Average of the Min and Max";
 	}
 	else
-	if (whichGrayScaleMethod == "Average of the Min and Max")
+	if (which_grayscale_method == "Average of the Min and Max")
 	{
-		whichGrayScaleMethod = "Noone";
+		which_grayscale_method = "Noone";
 	}
 }
 
-if (whichGrayScaleMethod != "Noone")
+if (which_grayscale_method != "Noone")
 {
 	application_surface_draw_enable(0);
 	shader_set(shd_greyscale);
-	switch (whichGrayScaleMethod)
+	switch (which_grayscale_method)
 	{
 	    case "Max Color":
-	        shader_set_uniform_f(iwhichShaderToUse,0);
+	        shader_set_uniform_f(which_shader_to_use,0);
 	        break;
 		case "Relative Luminance":
-	        shader_set_uniform_f(iwhichShaderToUse,1);
+	        shader_set_uniform_f(which_shader_to_use,1);
 	        break;
 		case "Average Color":
-	        shader_set_uniform_f(iwhichShaderToUse,2);
+	        shader_set_uniform_f(which_shader_to_use,2);
 	        break;
 		case "Average of the Min and Max":
-	        shader_set_uniform_f(iwhichShaderToUse,3);
+	        shader_set_uniform_f(which_shader_to_use,3);
 	        break;	
     
 	}

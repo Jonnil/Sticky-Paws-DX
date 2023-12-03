@@ -4560,7 +4560,7 @@ function scr_options_control_menu()
 				&& (open_dropdown)
 				{
 					scr_config_save();
-					ini_open(working_directory + "config.ini");
+					ini_open(working_directory + "save_file/config.ini");
 					if (remapping_player == 0)
 					&& (global.player1_profile > 0)
 					{
@@ -4614,7 +4614,7 @@ function scr_options_control_menu()
 				&& (open_dropdown)
 				{
 					scr_config_save();
-					ini_open(working_directory + "config.ini");
+					ini_open(working_directory + "save_file/config.ini");
 					if (remapping_player == 0)
 					&& (global.player1_profile < 3)
 					{

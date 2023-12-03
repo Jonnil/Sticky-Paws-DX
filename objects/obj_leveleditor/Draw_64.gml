@@ -1659,7 +1659,7 @@ if (global.actually_play_edited_level == false)
 		|| (keyboard_check_pressed(ord("T")))
 		{
 			global.always_show_level_editor_buttons = not global.always_show_level_editor_buttons;
-			ini_open(working_directory + "config.ini");
+			ini_open(working_directory + "save_file/config.ini");
 			ini_write_real("config", "always_show_level_editor_buttons", global.always_show_level_editor_buttons);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}

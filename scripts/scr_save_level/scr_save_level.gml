@@ -20,7 +20,7 @@ function scr_save_level()
 	{
 		var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 		
-		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 		
 		if (global.level_clear_rate == "clear")
 		&& (global.doing_clear_check_character == false)
@@ -122,7 +122,7 @@ function scr_save_level()
 		#endregion /* Update ranking highscore to actual custom level END */
 		
 		#region /* Save to custom level save file */
-		ini_open(working_directory + "save_files/custom_level_save.ini");
+		ini_open(working_directory + "save_file/custom_level_save.ini");
 		
 		if (level_id != "") /* Update a list of downloaded levels that you have finished */
 		{
@@ -172,7 +172,7 @@ function scr_save_level()
 	global.timeattack_realmillisecond = 0;
 	score = 0;
 	
-	ini_open(working_directory + "config.ini")
+	ini_open(working_directory + "save_file/config.ini")
 	ini_write_real("config", "zoom_level", global.zoom_level);
 	ini_write_real("config", "zoom_world_map", global.zoom_world_map);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

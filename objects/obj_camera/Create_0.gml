@@ -2,8 +2,6 @@
 can_spawn_players = true;
 #endregion /* Debug toggles END */
 
-//instance_create_depth(x, y, 0, obj_grayscale);
-
 #region /* Set Backgrounds */
 layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);
 layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);
@@ -18,6 +16,7 @@ room_speed = global.max_fps; /* Room Speed is max fps */
 scr_initialize_camera();
 
 global.player_has_entered_goal = false;
+global.spikes_emerge_time = 0;
 
 prev_display_width = display_get_gui_width();
 prev_display_height = display_get_gui_height();
@@ -87,11 +86,11 @@ global.deactivate_timer = 999;
 global.appear_block_timer = 0;
 
 if (global.character_select_in_this_menu == "main_game")
-&& (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+&& (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
 {
 	var level_name = string(global.level_name);
 	
-	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 	timeattack_record_millisecond = ini_read_real(level_name, "timeattack_millisecond", 0);
 	timeattack_record_second = ini_read_real(level_name, "timeattack_second", 0);
 	timeattack_record_minute = ini_read_real(level_name, "timeattack_minute", 0);

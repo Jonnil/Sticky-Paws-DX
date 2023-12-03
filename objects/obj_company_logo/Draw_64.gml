@@ -50,7 +50,7 @@ if (can_navigate == false) /* When game is loading in assets, display a detailed
 	else
 	if (load_ok <= 4)
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_title_logos)) + " " + l10n_text("Loaded Title Logos"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, string(ds_list_size(global.all_loaded_title_logo)) + " " + l10n_text("Loaded Title Logos"), global.default_text_size, c_black, c_white, 1);
 	}
 }
 else

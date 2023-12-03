@@ -183,9 +183,9 @@ if (menu == "load_custom_level")
 			
 			#region /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch */
 			/* Check this before going to create level from scratch */
-			if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+			if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
 			{
-				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 				if (ini_section_exists("Unlock Placable Objects"))
 				{
 					can_create_level_from_scratch = true;
@@ -372,7 +372,7 @@ if (iris_xscale <= 0.01)
 		|| (global.create_level_from_template == false)
 		{
 			/* Save what characters are selected */
-			ini_open(working_directory + "config.ini");
+			ini_open(working_directory + "save_file/config.ini");
 			ini_write_real("config", "character_index_player1", global.character_index[0]);
 			ini_write_real("config", "character_index_player2", global.character_index[1]);
 			ini_write_real("config", "character_index_player3", global.character_index[2]);
@@ -417,7 +417,7 @@ if (iris_xscale <= 0.01)
 	|| (menu == "back_from_character_select")
 	{
 		/* Save what characters are selected */
-		ini_open(working_directory + "config.ini");
+		ini_open(working_directory + "save_file/config.ini");
 		ini_write_real("config", "character_index_player1", global.character_index[0]);
 		ini_write_real("config", "character_index_player2", global.character_index[1]);
 		ini_write_real("config", "character_index_player3", global.character_index[2]);
@@ -433,7 +433,7 @@ if (iris_xscale <= 0.01)
 		}
 		scr_delete_sprite_properly(title_screen_background);
 		scr_config_save();
-		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 		lives = ini_read_real("Player", "lives", 5);
 		ini_close();
 		room_goto(rm_world_map);

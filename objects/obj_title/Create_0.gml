@@ -169,36 +169,20 @@ if (!directory_exists(working_directory + "custom_title_background"))
 #endregion /* Create directory for saving custom title backgrounds END */
 
 #region /* Create directory for saving custom title logos */
-if (!directory_exists(working_directory + "custom_title_logos"))
+if (!directory_exists(working_directory + "custom_title_logo"))
 {
-	directory_create(working_directory + "custom_title_logos");
+	directory_create(working_directory + "custom_title_logo");
 }
 #endregion /* Create directory for saving custom title logos END */
 
 #region /* Create directory for saving files */
-if (!directory_exists(working_directory + "save_files"))
+if (!directory_exists(working_directory + "save_file"))
 {
-	directory_create(working_directory + "save_files");
+	directory_create(working_directory + "save_file");
 }
 #endregion /* Create directory for saving files END */
 
 #endregion /* Create directories END */
-
-#region /* Any save file outside the save_files folder should copy over to that folder and then delete the save file outside the folder */
-index_file_copy = 0;
-repeat(50)
-{
-	if (file_exists(working_directory + "file" + string(index_file_copy) + ".ini"))
-	{
-		if (!file_exists(working_directory + "save_files/file" + string(index_file_copy) + ".ini"))
-		{
-			file_copy(working_directory + "file" + string(index_file_copy) + ".ini", working_directory + "save_files/file" + string(index_file_copy) + ".ini");
-		}
-		file_delete(working_directory + "file" + string(index_file_copy) + ".ini");
-	}
-	index_file_copy ++;
-}
-#endregion /* Any save file outside the save_files folder should copy over to that folder and then delete the save file outside the folder END */
 
 #region /* Custom Title Screen Background */
 if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background))))
@@ -504,7 +488,7 @@ if (global.reset_world_map_zoom_when_going_back_to_map)
 }
 #endregion /* Reset world map zoom END */
 
-ini_open(working_directory + "config.ini");
+ini_open(working_directory + "save_file/config.ini");
 var latest_whats_new_version = ini_read_string("config", "latest_whats_new_version", "");
 var latest_whats_new_text = ini_read_string("config", "latest_whats_new_text", "");
 ini_close();

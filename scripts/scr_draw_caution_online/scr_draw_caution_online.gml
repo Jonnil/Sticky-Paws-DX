@@ -54,7 +54,7 @@ function scr_draw_caution_online()
 			global.online_enabled = true;
 			if (caution_online_do_not_show)
 			{
-				ini_open(working_directory + "config.ini");
+				ini_open(working_directory + "save_file/config.ini");
 				ini_write_string("config", "caution_online_do_not_show", true);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}

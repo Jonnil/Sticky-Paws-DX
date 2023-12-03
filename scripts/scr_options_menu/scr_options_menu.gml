@@ -2298,7 +2298,7 @@ function scr_options_menu()
 					}
 					
 					/* Save username to config file */
-					ini_open(working_directory + "config.ini");
+					ini_open(working_directory + "save_file/config.ini");
 					ini_write_string("config", "username", string(global.username));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
@@ -2337,7 +2337,7 @@ function scr_options_menu()
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						/* Save username to config file */
-						ini_open(working_directory + "config.ini");
+						ini_open(working_directory + "save_file/config.ini");
 						ini_write_string("config", "username", string(global.username));
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						
@@ -2699,28 +2699,28 @@ function scr_options_menu()
 			draw_set_valign(fa_middle);
 			if (global.enable_options_for_pc)
 			{
-				scr_draw_text_outlined(450, file_path_y, string_replace_all(string(game_save_id) + "save_files\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_dkgray, 1);
+				scr_draw_text_outlined(450, file_path_y, string_replace_all(string(game_save_id) + "save_file\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_dkgray, 1);
 			}
 			
 			#region /* Display save file data */
-			if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+			if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
 			{
-				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 				
-				if (ini_key_exists("Player", "current_month"))
+				if (ini_key_exists("Player", "current_year"))
+				&& (ini_key_exists("Player", "current_month"))
 				&& (ini_key_exists("Player", "current_day"))
-				&& (ini_key_exists("Player", "current_year"))
 				&& (ini_key_exists("Player", "current_hour"))
 				&& (ini_key_exists("Player", "current_minute"))
 				&& (ini_key_exists("Player", "current_second"))
 				{
 					scr_draw_text_outlined(file_select_x, date_modified_y,
 					l10n_text("Date modified") + ": " +
-					string(ini_read_real("Player", "current_month", 0)) + "/" +
-					string(ini_read_real("Player", "current_day", 0)) + "/" +
-					string(ini_read_real("Player", "current_year", 0)) + " " +
+					string(ini_read_real("Player", "current_year", 0)) + "-" +
+					string(ini_read_real("Player", "current_month", 0)) + "-" +
+					string(ini_read_real("Player", "current_day", 0)) + " " +
 					string(string_replace_all(string_format(ini_read_real("Player", "current_hour", 0), 2, 0), " ", "0")) + ":" +
-					string(string_replace_all(string_format(ini_read_real("Player", "current_minute", 0), 2, 0), " ", "0")) + "." +
+					string(string_replace_all(string_format(ini_read_real("Player", "current_minute", 0), 2, 0), " ", "0")) + ":" +
 					string(string_replace_all(string_format(ini_read_real("Player", "current_second", 0), 2, 0), " ", "0"))
 					,global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 					
@@ -2745,7 +2745,7 @@ function scr_options_menu()
 			if (menu != "file_delete_yes")
 			&& (menu != "file_delete_no")
 			{
-				if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+				if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
 				{
 					draw_menu_button(450, delete_file_y, l10n_text("Delete File"), "file_delete", "file_delete_no", c_red);
 					draw_sprite_ext(spr_icons_delete, 0, 450 + 16, delete_file_y + 21, 1, 1, 0, c_white, 1);
@@ -2826,6 +2826,7 @@ function scr_options_menu()
 			{
 				if (menu != "file_delete_no")
 				&& (menu != "file_delete_yes")
+				&& (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
 				{
 					draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, file_y, 0.5, 0.5, 0, c_white, 1);
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16))
@@ -2875,7 +2876,7 @@ function scr_options_menu()
 			{
 				can_navigate_settings_sidebar = false;
 				menu = "file_select";
-				file_delete(working_directory + "save_files/file" + string(global.file) + ".ini");
+				file_delete(working_directory + "save_file/file" + string(global.file) + ".ini");
 				menu_delay = 3;
 			}
 		
@@ -2905,7 +2906,7 @@ function scr_options_menu()
 				else
 				if (menu == "open_save_file_folder")
 				{
-					if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+					if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
 					{
 						menu = "file_delete";
 					}
@@ -2925,7 +2926,7 @@ function scr_options_menu()
 				menu_delay = 3;
 				if (menu == "file_select")
 				{
-					if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+					if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
 					{
 						menu = "file_delete";
 					}
@@ -2993,15 +2994,18 @@ function scr_options_menu()
 			&& (menu != "file_delete_no")
 			&& (menu != "file_delete_yes")
 			{
-				can_navigate_settings_sidebar = false;
-				menu = "file_select";
-				if (menu_delay == 0 && menu_joystick_delay == 0)
+				if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
 				{
-					if (global.how_many_files > global.file)
-					|| (global.how_many_files == -1)
+					can_navigate_settings_sidebar = false;
+					menu = "file_select";
+					if (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						global.file ++;
-						menu_delay = 3;
+						if (global.how_many_files > global.file)
+						|| (global.how_many_files == -1)
+						{
+							global.file ++;
+							menu_delay = 3;
+						}
 					}
 				}
 			}

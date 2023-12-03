@@ -31,20 +31,20 @@ function scr_unzip_all()
 	#endregion /* Unzip custom resource pack files END */
 	
 	#region /* Unzip custom title logos files */
-	var zip_file_find_first_title_logos = string(file_find_first(working_directory + "custom_title_logos/*.zip", fa_directory));
-	if (file_exists(working_directory + "custom_title_logos/" + zip_file_find_first_title_logos))
+	var zip_file_find_first_title_logo = string(file_find_first(working_directory + "custom_title_logo/*.zip", fa_directory));
+	if (file_exists(working_directory + "custom_title_logo/" + zip_file_find_first_title_logo))
 	{
-		zip_unzip(working_directory + "custom_title_logos/" + zip_file_find_first_title_logos, working_directory + "custom_title_logos/");
-		file_delete(working_directory + "custom_title_logos/" + zip_file_find_first_title_logos); /* Delete the zip file after it's been unzip */
+		zip_unzip(working_directory + "custom_title_logo/" + zip_file_find_first_title_logo, working_directory + "custom_title_logo/");
+		file_delete(working_directory + "custom_title_logo/" + zip_file_find_first_title_logo); /* Delete the zip file after it's been unzip */
 	}
 	#endregion /* Unzip custom title logos files END */
 	
 	#region /* Unzip custom save files files */
-	var zip_file_find_first_save_files = string(file_find_first(working_directory + "save_files/*.zip", fa_directory));
-	if (file_exists(working_directory + "save_files/" + zip_file_find_first_save_files))
+	var zip_file_find_first_save_files = string(file_find_first(working_directory + "save_file/*.zip", fa_directory));
+	if (file_exists(working_directory + "save_file/" + zip_file_find_first_save_files))
 	{
-		zip_unzip(working_directory + "save_files/" + zip_file_find_first_save_files, working_directory + "save_files/");
-		file_delete(working_directory + "save_files/" + zip_file_find_first_save_files); /* Delete the zip file after it's been unzip */
+		zip_unzip(working_directory + "save_file/" + zip_file_find_first_save_files, working_directory + "save_file/");
+		file_delete(working_directory + "save_file/" + zip_file_find_first_save_files); /* Delete the zip file after it's been unzip */
 	}
 	#endregion /* Unzip custom save files files END */
 	

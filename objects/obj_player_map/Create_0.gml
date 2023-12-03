@@ -134,9 +134,9 @@ yy_heart = y - 64;
 have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 
 #region /* Load Game */
-if (file_exists(working_directory + "save_files/file" + string(global.file) + ".ini"))
+if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
 {
-	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 	
 	brand_new_file = ini_read_real("Player", "brand_new_file", true);
 	
@@ -177,7 +177,7 @@ if (file_exists(working_directory + "save_files/file" + string(global.file) + ".
 }
 else
 {
-	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 	ini_write_real("Player", "brand_new_file", true);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	brand_new_file = true;
@@ -219,7 +219,7 @@ if (file_exists("localization.csv"))
 }
 
 /* Make number of level cleared 1 because of the level intro */
-ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)
 {
 	ini_write_real("Player", "number_of_levels_cleared", 1)

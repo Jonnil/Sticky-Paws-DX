@@ -578,7 +578,7 @@ function scr_draw_upload_character_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					/* Save username to config file */
-					ini_open(working_directory + "config.ini");
+					ini_open(working_directory + "save_file/config.ini");
 					ini_write_string("config", "username", string(global.username));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
@@ -613,7 +613,7 @@ function scr_draw_upload_character_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					/* Save username as blank to config file, then go back */
-					ini_open(working_directory + "config.ini");
+					ini_open(working_directory + "save_file/config.ini");
 					ini_write_string("config", "username", "");
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					global.username = "";

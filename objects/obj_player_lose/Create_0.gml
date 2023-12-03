@@ -38,7 +38,7 @@ if (global.character_select_in_this_menu == "main_game")
 {
 	var level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index));
 	
-	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 	ini_write_real(level_name, "number_of_defeats", ini_read_real(level_name, "number_of_defeats", 0) + 1);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
@@ -47,7 +47,7 @@ if (global.character_select_in_this_menu == "level_editor")
 {
 	var level_name = string(global.level_name);
 	
-	ini_open(working_directory + "save_files/custom_level_save.ini");
+	ini_open(working_directory + "save_file/custom_level_save.ini");
 	ini_write_real(level_name, "number_of_defeats", ini_read_real(level_name, "number_of_defeats", 0) + 1);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
@@ -59,7 +59,7 @@ if (lives > 0)
 {
 	if (global.character_select_in_this_menu == "main_game")
 	{
-		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "lives", lives - 1);
 		ini_close();
 	}

@@ -405,7 +405,7 @@ function scr_draw_upload_level_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					/* Save username to config file */
-					ini_open(working_directory + "config.ini");
+					ini_open(working_directory + "save_file/config.ini");
 					ini_write_string("config", "username", string(global.username));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
@@ -440,7 +440,7 @@ function scr_draw_upload_level_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					/* Save username as blank to config file, then go back */
-					ini_open(working_directory + "config.ini");
+					ini_open(working_directory + "save_file/config.ini");
 					ini_write_string("config", "username", "");
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					global.username = "";
@@ -866,7 +866,7 @@ function scr_draw_upload_level_menu()
 					{
 						can_navigate = true;
 						menu_delay = 3;
-						ini_open(working_directory + "save_files/custom_level_save.ini");
+						ini_open(working_directory + "save_file/custom_level_save.ini");
 						ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
 						ini_close();
 						scr_copy_move_files(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), upload_level_path, true);

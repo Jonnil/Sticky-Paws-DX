@@ -28,7 +28,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	{
 		scr_config_save();
 		global.player1_profile = change_to_value;
-		ini_open(working_directory + "config.ini");
+		ini_open(working_directory + "save_file/config.ini");
 		if (!ini_section_exists("player1_profile" + string(change_to_value)))
 		{
 			scr_set_default_remapping_player1_gamepad(true);
@@ -43,7 +43,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	{
 		scr_config_save();
 		global.player2_profile = change_to_value;
-		ini_open(working_directory + "config.ini");
+		ini_open(working_directory + "save_file/config.ini");
 		if (!ini_section_exists("player2_profile" + string(change_to_value)))
 		{
 			scr_set_default_remapping_player2_gamepad(true);
@@ -58,7 +58,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	{
 		scr_config_save();
 		global.player3_profile = change_to_value;
-		ini_open(working_directory + "config.ini");
+		ini_open(working_directory + "save_file/config.ini");
 		if (!ini_section_exists("player3_profile" + string(change_to_value)))
 		{
 			scr_set_default_remapping_player3_gamepad(true);
@@ -73,7 +73,7 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	{
 		scr_config_save();
 		global.player4_profile = change_to_value;
-		ini_open(working_directory + "config.ini");
+		ini_open(working_directory + "save_file/config.ini");
 		if (!ini_section_exists("player4_profile" + string(change_to_value)))
 		{
 			scr_set_default_remapping_player4_gamepad(true);

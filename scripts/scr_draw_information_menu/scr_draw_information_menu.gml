@@ -479,7 +479,7 @@ function scr_draw_information_menu()
 			if (menu_delay == 1)
 			{
 				latest_whats_new_read = true;
-				ini_open(working_directory + "config.ini");
+				ini_open(working_directory + "save_file/config.ini");
 				ini_write_string("config", "latest_whats_new_version", "v" + string(scr_get_build_date()));
 				ini_write_string("config", "latest_whats_new_text", string(global.whats_new));
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -494,24 +494,13 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(8, build_version_y, l10n_text("Build version") + ": v" + string(scr_get_build_date()) + " " + l10n_text("is here!"), global.default_text_size, c_black, c_white, 1);
 			
 			var day = date_get_day(GM_build_date);
-			var month_number = date_get_month(GM_build_date);
-			if (month_number == 1){var month = l10n_text("January");}else
-			if (month_number == 2){var month = l10n_text("February");}else
-			if (month_number == 3){var month = l10n_text("March");}else
-			if (month_number == 4){var month = l10n_text("April");}else
-			if (month_number == 5){var month = l10n_text("May");}else
-			if (month_number == 6){var month = l10n_text("June");}else
-			if (month_number == 7){var month = l10n_text("July");}else
-			if (month_number == 8){var month = l10n_text("August");}else
-			if (month_number == 9){var month = l10n_text("September");}else
-			if (month_number == 10){var month = l10n_text("October");}else
-			if (month_number == 11){var month = l10n_text("November");}else
-			if (month_number == 12){var month = l10n_text("December");}
+			var month = date_get_month(GM_build_date);
 			var year = date_get_year(GM_build_date);
 			var hour = date_get_hour(GM_build_date);
 			var minute = date_get_minute(GM_build_date);
+			var second = date_get_second(GM_build_date);
 			draw_set_halign(fa_right);
-			scr_draw_text_outlined(display_get_gui_width() - 8, whats_new_date_y, string(year) + "-" + string(month) + "-" + string(day) + " (" + string(hour) + ":" + string(minute) + ")", global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - 8, whats_new_date_y, l10n_text("Build date") + ": " + string(year) + "-" + string(month) + "-" + string(day) + " " + string(hour) + ":" + string(minute) + ":" + string(second), global.default_text_size, c_black, c_white, 1);
 			
 			if (global.link_to_changelog_history != "")
 			{
@@ -542,7 +531,7 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("Keep your levels safe!"), global.default_text_size, c_black, c_white, 1);
 			
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(32, 32 * 4, l10n_text("To prevent losing your custom levels and custom characters you should upload levels and then save\nyour level IDs and character IDs somewhere safe"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 32 * 4, l10n_text("To prevent losing your custom levels and characters you should upload content and then save\nyour level IDs and character IDs somewhere safe"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 7, l10n_text("The game includes an autosave feature that automatically saves your level every 5 minutes"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 8, l10n_text("It also saves your level every time you playtest"), global.default_text_size, c_black, c_white, 1);
 			if (global.enable_options_for_pc)

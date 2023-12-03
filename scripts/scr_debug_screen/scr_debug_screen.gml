@@ -154,7 +154,7 @@ function scr_debug_screen()
 			if (mouse_check_button_released(mb_left))
 			{
 				global.show_fps = !global.show_fps;
-				ini_open(working_directory + "config.ini");
+				ini_open(working_directory + "save_file/config.ini");
 				ini_write_real("config", "show_fps", global.show_fps);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
@@ -170,7 +170,7 @@ function scr_debug_screen()
 			if (mouse_check_button_released(mb_left))
 			{
 				global.show_fps_real = !global.show_fps_real;
-				ini_open(working_directory + "config.ini");
+				ini_open(working_directory + "save_file/config.ini");
 				ini_write_real("config", "show_fps_real", global.show_fps_real);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
@@ -186,7 +186,7 @@ function scr_debug_screen()
 			if (mouse_check_button_released(mb_left))
 			{
 				global.show_instance_count = !global.show_instance_count;
-				ini_open(working_directory + "config.ini");
+				ini_open(working_directory + "save_file/config.ini");
 				ini_write_real("config", "show_instance_count", global.show_instance_count);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}

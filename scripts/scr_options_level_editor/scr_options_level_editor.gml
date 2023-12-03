@@ -99,9 +99,9 @@ function scr_options_level_editor()
 				
 				#region /* Save config.ini */
 				if (global.character_select_in_this_menu == "level_editor")
-				&& (file_exists(working_directory + "config.ini"))
+				&& (file_exists(working_directory + "save_file/config.ini"))
 				{
-					ini_open(working_directory + "config.ini");
+					ini_open(working_directory + "save_file/config.ini");
 					ini_write_real("config", "show_new_items_notification_level_editor", global.show_new_items_notification);
 					ini_write_real("config", "select_level_editing_music", global.selected_level_editing_music);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

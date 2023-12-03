@@ -415,7 +415,7 @@ if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom
 			have_heart_balloon = false;
 			
 			#region /* Save heart balloon to be false */
-			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 			ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", false);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			#endregion /* Save heart balloon to be false END */

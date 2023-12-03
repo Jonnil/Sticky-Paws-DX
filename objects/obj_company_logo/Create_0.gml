@@ -26,8 +26,6 @@ global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for su
 
 global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle */
 
-leveleditor_readme = noone; /* Readme textfile for how to use the level editor */
-
 #region /* Change how menus look and function */
 global.skip_how_many_people_are_playing_screen = true; /* If the game should skip the "How many people are playing?" screen */
 global.enable_how_to_play_settings = false; /* Enable How to play settings */
@@ -123,6 +121,7 @@ global.http_request_info = noone;
 
 
 #region /* Things you shouldn't change, warning, don't change any of these options or you might break the game! */
+window_set_caption(string(global.game_name) + " v" + string(scr_get_build_date())); /* Set the window caption to be the game name and version number, so it's always obvious what game and version you're playing */
 
 scr_sync_saving_create();
 randomize(); /* You need to get random level ID codes when you upload a new level */
@@ -182,15 +181,6 @@ if (!directory_exists(working_directory + "\custom_levels"))
 }
 #endregion /* Create directory for saving custom levels END */
 
-#region /* Create a readme file in custom levels folder explaining how to use the level editor */
-if (leveleditor_readme > noone)
-{
-	leveleditor_readme_file = file_text_open_write(working_directory + "\custom_levels\readme.txt");
-	file_text_write_string(leveleditor_readme_file, leveleditor_readme); /* Write readme textfile */
-	file_text_close(leveleditor_readme_file);
-}
-#endregion /* Create a readme file in custom levels folder explaining how to use the level editor END */
-
 #region /* Create directory for saving custom characters */
 if (!directory_exists(working_directory + "\custom_characters"))
 {
@@ -206,7 +196,7 @@ can_save_to_character_config = false; /* Only turn true when playing as custom c
 initialized_characters = false;
 initialized_resource_pack = false;
 initialized_title_backgrounds = false;
-initialized_title_logos = false;
+initialized_title_logo = false;
 load_ok = 0;
 sprite_splash_easteregg_yoffset = +228;
 view_hview_lerp = 0;
@@ -232,14 +222,7 @@ else
 global.keyboard_virtual_timer = 0; /* Delay for when virtual keyboard can show up */
 global.selected_level_editing_music = 0;
 global.gui_scale = -1;
-if (os_type == os_android || os_type == os_ios)
-{
-	global.gui_scale_modifier = 0;
-}
-else
-{
-	global.gui_scale_modifier = 5;
-}
+global.gui_scale_modifier = 0;
 
 global.resolution_setting = 0; /* Preset resolution settings */
 /* 0 = Current Display Size,
@@ -278,7 +261,7 @@ global.all_loaded_characters = ds_list_create();
 global.all_loaded_custom_levels = ds_list_create(); /* The level editor will load every custom level folder */
 global.all_loaded_resource_pack = ds_list_create();
 global.all_loaded_title_backgrounds = ds_list_create();
-global.all_loaded_title_logos = ds_list_create();
+global.all_loaded_title_logo = ds_list_create();
 global.automatically_pause_when_window_is_unfocused = true; /* Whenever you unfocus the window by clicking off the window, the game pauses by itself */
 global.automatically_play_downloaded_level = false; /* If the player wants to immediately play the downloaded level, then set this variable to true */
 global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */

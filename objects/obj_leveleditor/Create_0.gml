@@ -155,7 +155,7 @@ if (global.actually_play_edited_level == false)
 	var debug_unlock_all = true;
 	if (debug_unlock_all == false)
 	{
-		ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 		
 		/* Read all the objects that should be unlocked */
 		
@@ -586,7 +586,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Loading selected level editing music */
 	if (file_exists("config.ini"))
 	{
-		ini_open(working_directory + "config.ini");
+		ini_open(working_directory + "save_file/config.ini");
 		if (ini_key_exists("config", "select_level_editing_music"))
 		{
 			global.selected_level_editing_music = ini_read_real("config", "select_level_editing_music", 1); /* The selected background music when editing in the level editor */

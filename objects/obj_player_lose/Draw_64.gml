@@ -135,7 +135,7 @@ if (lives <= 0)
 			
 			if (global.character_select_in_this_menu == "main_game")
 			{
-				ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 				ini_write_real("Player", "lives", lives);
 				ini_close();
 			}

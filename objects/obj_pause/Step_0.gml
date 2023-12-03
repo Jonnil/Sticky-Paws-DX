@@ -158,7 +158,7 @@ if (show_loading_icon)
 		{
 			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 			
-			ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 			ini_key_delete(level_name, "checkpoint_x");
 			ini_key_delete(level_name, "checkpoint_y");
 			ini_key_delete(level_name, "checkpoint_direction");
@@ -169,7 +169,7 @@ if (show_loading_icon)
 		{
 			var level_name = string(global.level_name);
 			
-			ini_open(working_directory + "save_files/custom_level_save.ini");
+			ini_open(working_directory + "save_file/custom_level_save.ini");
 			ini_key_delete(level_name, "checkpoint_x");
 			ini_key_delete(level_name, "checkpoint_y");
 			ini_key_delete(level_name, "checkpoint_direction");

@@ -21,7 +21,7 @@ if (room == rm_leveleditor)
 {
 	var level_name = string(global.level_name);
 					
-	ini_open(working_directory + "save_files/file" + string(global.file) + ".ini");
+	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 	checkpoint_what_player = ini_read_real(level_name, "checkpoint_what_player", 1);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
@@ -32,7 +32,7 @@ if (room == rm_leveleditor)
 {
 	var level_name = string(global.level_name);
 					
-	ini_open(working_directory + "save_files/custom_level_save.ini");
+	ini_open(working_directory + "save_file/custom_level_save.ini");
 	checkpoint_what_player = ini_read_real(level_name, "checkpoint_what_player", 1);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }

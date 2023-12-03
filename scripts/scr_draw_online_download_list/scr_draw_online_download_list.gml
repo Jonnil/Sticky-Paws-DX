@@ -11,7 +11,7 @@ function scr_draw_online_download_list()
 		#region /* Get IDs of levels you've already downloaded before */
 		//if (content_type == "level")
 		//{
-		//	ini_open(working_directory + "save_files/custom_level_save.ini");
+		//	ini_open(working_directory + "save_file/custom_level_save.ini");
 		//	ini_read_real("finished_downloaded_level", string(level_id), false);
 		//	ini_close();
 		//}
