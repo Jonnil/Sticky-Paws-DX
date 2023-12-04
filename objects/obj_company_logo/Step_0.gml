@@ -99,9 +99,9 @@ if (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
 
 if (can_navigate)
 && (sprite_index == spr_company_logo)
-&& (image_index > image_number - 12)
+&& (image_index > image_number - 15)
 {
-	made_with_gamemaker_alpha = lerp(made_with_gamemaker_alpha, 0, 0.1);
+	made_with_gamemaker_alpha = lerp(made_with_gamemaker_alpha, 0, 0.2);
 }
 else
 {
