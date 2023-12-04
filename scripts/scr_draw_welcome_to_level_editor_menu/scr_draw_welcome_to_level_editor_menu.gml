@@ -29,6 +29,7 @@ function scr_draw_welcome_to_level_editor_menu()
 		}
 		else
 		{
+			/* Middle Mouse Button */ draw_sprite_ext(spr_mouse_buttons, 2, display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, 0.5, 0, c_white, 1);
 			/* Left */ draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.left], display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, 0.5, 0, c_white, 1);
 			/* Up */ draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.up], display_get_gui_width() * 0.5 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, 0.5, 0, c_white, 1);
 			/* Right */ draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.right], display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, 0.5, 0, c_white, 1);

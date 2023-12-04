@@ -2155,7 +2155,7 @@ if (global.actually_play_edited_level == false)
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
-				selected_menu_alpha = 2;
+				show_selected_menu = true;
 				current_object_category = "terrain";
 			}
 		}
@@ -2169,7 +2169,7 @@ if (global.actually_play_edited_level == false)
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
-				selected_menu_alpha = 2;
+				show_selected_menu = true;
 				current_object_category = "decoration";
 			}
 		}
@@ -2183,7 +2183,7 @@ if (global.actually_play_edited_level == false)
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
-				selected_menu_alpha = 2;
+				show_selected_menu = true;
 				current_object_category = "item";
 			}
 		}
@@ -2197,7 +2197,7 @@ if (global.actually_play_edited_level == false)
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
-				selected_menu_alpha = 2;
+				show_selected_menu = true;
 				current_object_category = "enemy";
 			}
 		}
@@ -2211,7 +2211,7 @@ if (global.actually_play_edited_level == false)
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
-				selected_menu_alpha = 2;
+				show_selected_menu = true;
 				current_object_category = "gizmo";
 			}
 		}

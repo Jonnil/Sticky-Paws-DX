@@ -1243,15 +1243,20 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Select Object Menu */
 	if (mouse_check_button(mb_any))
-	&& (!point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 64 - 64 - 32, 0, display_get_gui_width() * 0.5 + 64 + 64 + 32, 64)) /* Can't make menu fade away quicker when clicking the object category buttons */
+	&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, display_get_gui_width(), 128 + 64)) /* Can't make menu fade away quicker when clicking the object category buttons or objects in toolbar */
 	|| (keyboard_check(vk_anykey))
 	|| (key_a_hold)
+	{
+		show_selected_menu = false;
+	}
+	
+	if (!show_selected_menu)
 	{
 		selected_menu_alpha = lerp(selected_menu_alpha, 0, 0.1);
 	}
 	else
 	{
-		selected_menu_alpha = lerp(selected_menu_alpha, 0, 0.01);
+		selected_menu_alpha = lerp(selected_menu_alpha, 1, 0.1);
 	}
 	#endregion /* Select Object Menu END */
 	
@@ -1459,7 +1464,7 @@ if (global.actually_play_edited_level == false)
 					selected_object = 9999;
 				}
 				global.part_limit_text_alpha = 0;
-				selected_menu_alpha = 2;
+				show_selected_menu = true;
 			}
 		}
 		#endregion /* Scroll Objects Left END */
@@ -1514,7 +1519,7 @@ if (global.actually_play_edited_level == false)
 					selected_object_menu_actual_x = 0;
 				}
 				global.part_limit_text_alpha = 0;
-				selected_menu_alpha = 2;
+				show_selected_menu = true;
 			}
 		}
 		#endregion /* Scroll Objects Right END */

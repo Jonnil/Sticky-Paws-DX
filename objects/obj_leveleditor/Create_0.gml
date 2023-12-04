@@ -715,6 +715,7 @@ if (global.actually_play_edited_level == false)
 	current_undo_value = 0; /* Every time you place down items, this value increases. When you undo, this value decreases. */
 	max_undo_value = 0; /* What the max redo you can do */
 	icons_at_top_y = - 100;
+	show_selected_menu = false;
 	selected_menu_alpha = 0;
 	total_number_of_objects = 9999;
 	object_help_description = "";
