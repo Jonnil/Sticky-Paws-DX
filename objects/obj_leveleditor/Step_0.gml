@@ -415,12 +415,10 @@ if (global.actually_play_edited_level == false)
 						
 						if (pressing_play_timer >= frames_until_playtest_from_start || global.full_level_map_screenshot)
 						{
-							instance_activate_object(obj_camera);
 							instance_create_depth(obj_level_player1_start.x, obj_level_player1_start.y, 0, obj_camera);
 						}
 						else
 						{
-							instance_activate_object(obj_camera);
 							instance_create_depth(view_center_x, view_center_y, 0, obj_camera);
 						}
 					}

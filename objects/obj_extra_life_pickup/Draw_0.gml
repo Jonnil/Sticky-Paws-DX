@@ -131,10 +131,7 @@ if (instance_exists(obj_player))
 		}
 		if (instance_exists(obj_camera))
 		{
-			with(obj_camera)
-			{
-				hud_show_lives_timer = global.hud_hide_time * 60;
-			}
+			obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 		#endregion /* Give Life END */
 		

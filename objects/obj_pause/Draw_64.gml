@@ -1,6 +1,20 @@
 var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
 
+if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
+{
+	var quit_to_title_name = "Quit to Online Level List";
+}
+else
+if (global.character_select_in_this_menu == "level_editor")
+{
+	var quit_to_title_name = "Quit to Level Select";
+}
+else
+{
+	var quit_to_title_name = "Quit to Title";
+}
+
 #region /* Which player is controlling the pause menu? */
 draw_set_alpha(fade_in_pause_alpha);
 draw_set_halign(fa_center);
@@ -321,7 +335,7 @@ if (hide_menu_for_clean_screenshots == false)
 		&& (menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Map"), "quit_to_map", "quit_to_map", c_lime, fade_in_pause_alpha);
-			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
+			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
 			if (global.convention_mode == false)
 			&& (global.enable_options_for_pc)
 			{
@@ -346,7 +360,7 @@ if (hide_menu_for_clean_screenshots == false)
 		&& (global.character_select_in_this_menu == "level_editor")
 		&& (menu == "quit_nevermind")
 		{
-			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
+			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
 			if (global.convention_mode == false)
 			&& (global.enable_options_for_pc)
 			{
@@ -368,7 +382,7 @@ if (hide_menu_for_clean_screenshots == false)
 		|| (global.pause_room == rm_world_map)
 		&& (menu == "quit_nevermind")
 		{
-			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Title"), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
+			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
 			if (global.convention_mode == false)
 			&& (global.enable_options_for_pc)
 			{

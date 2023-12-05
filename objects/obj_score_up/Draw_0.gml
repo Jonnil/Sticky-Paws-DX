@@ -34,10 +34,7 @@ if (above_gui == false)
 		{
 			if (instance_exists(obj_camera))
 			{
-				with(obj_camera)
-				{
-					hud_show_score_timer = global.hud_hide_time * 60;
-				}
+				obj_camera.hud_show_score_timer = global.hud_hide_time * 60;
 			}
 		}
 		scr_draw_text_outlined(x, y, string_upper(score_up), global.default_text_size * image_xscale, c_white, c_black, image_alpha);

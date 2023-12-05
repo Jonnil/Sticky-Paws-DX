@@ -4,6 +4,7 @@
 can_initialize_custom_character = true;
 can_create_speed_lines = true;
 can_create_follow_mouse = true;
+can_collide_with_wall = true; /* For debug purposes, you can disable collision with walls */
 #endregion /* Debug toggles END */
 
 room_speed = global.max_fps; /* Room Speed */
@@ -19,8 +20,6 @@ if (can_create_follow_mouse)
 
 audio_listener_orientation(0, 0, 1, 0, -1, 0);
 audio_listener_position(x, y, 0); /* Audio listener should start on top of the player */
-
-can_collide_with_wall = true; /* For debug purposes, you can disable collision with walls */
 
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
 loading_assets = false;
@@ -463,6 +462,7 @@ intro_animation_sprite = noone; /* When there is a intro animation, the sprites 
 intro_animation_image_index = 0; /* Image index of intro animation */
 #endregion /* Intro Animation Variables END */
 
+can_clamp_inside_view = 0; /* There should be a 3 frame delay before the player clamps inside view, so that the player always starts where the camera object spawns */
 assist_invincible = false;
 buffer_jump = 0; /* Jump buffer timer, set to 0 */
 can_attack_after_dive_on_ground = 0; /* When landing on ground after dive, you should be able to still kill enemies for some frames, otherwise it feels unfair if you miss your dive a pixel away */

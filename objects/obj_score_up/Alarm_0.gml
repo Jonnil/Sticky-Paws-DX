@@ -4,10 +4,7 @@ if (show_remaining_jumps == false)
 	{
 		if (instance_exists(obj_camera))
 		{
-			with(obj_camera)
-			{
-				hud_show_lives_timer = global.hud_hide_time * 60;
-			}
+			obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{
@@ -29,10 +26,7 @@ if (show_remaining_jumps == false)
 	{
 		if (instance_exists(obj_camera))
 		{
-			with(obj_camera)
-			{
-				hud_show_lives_timer = global.hud_hide_time * 60;
-			}
+			obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{
@@ -62,10 +56,7 @@ if (show_remaining_jumps == false)
 	{
 		if (instance_exists(obj_camera))
 		{
-			with(obj_camera)
-			{
-				hud_show_lives_timer = global.hud_hide_time * 60;
-			}
+			obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function()
 		{

@@ -904,10 +904,7 @@ function scr_select_official_level_menu()
 			menu_delay = 3;
 			if (instance_exists(obj_camera))
 			{
-				with(obj_camera)
-				{
-					iris_zoom = 0;
-				}
+				obj_camera.iris_zoom = 0;
 			}
 			can_input_level_name = false;
 			menu = "level_editor_play";

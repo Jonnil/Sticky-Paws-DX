@@ -14,6 +14,7 @@ menu_delay = 3;
 menu_joystick_delay = 0;
 open_dropdown = false;
 burnt = false;
+controller_connected = false;
 if (bbox_top >= room_height)
 {
 	continue_falling = true;

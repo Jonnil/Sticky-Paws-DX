@@ -473,20 +473,27 @@ if (global.actually_play_edited_level == false)
 				#endregion /* If menu is on options END */
 				
 				#region /* If menu is on level editor options */
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 -42, l10n_text("Level Options"), "level_editor_options", "back_level_editor_options");
+				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 -42, l10n_text("Level Options"), "level_editor_options", "level_editor_options");
 				
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 -42, get_window_width * 0.5 + 185, get_window_height * 0.5))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				&& (mouse_check_button_pressed(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				|| (menu == "level_editor_options")
+				&& (can_input_level_name == false)
+				&& (key_a_pressed)
+				|| (menu == "level_editor_options")
+				&& (can_input_level_name == false)
+				&& (keyboard_check_pressed(vk_enter))
 				{
+					level_editor_options_back_to_menu = ""; /* Reset this variable to nothing */
 					quit_level_editor = false;
 					can_input_level_name = false;
 					pause = true;
 					can_navigate = true;
 					in_settings = false;
 					can_navigate_settings_sidebar = false;
-					menu = "back_level_editor_options";
+					menu = "level_theme";
 					menu_delay = 3;
 				}
 				
@@ -511,21 +518,6 @@ if (global.actually_play_edited_level == false)
 						else
 						{
 							menu = "level_editor_upload";
-						}
-					}
-					if (key_a_pressed)
-					|| (keyboard_check_pressed(vk_enter))
-					{
-						if (menu_delay == 0 && menu_joystick_delay == 0)
-						{
-							quit_level_editor = false;
-							can_input_level_name = false;
-							pause = true;
-							can_navigate = true;
-							in_settings = false;
-							can_navigate_settings_sidebar = false;
-							menu = "back_level_editor_options";
-							menu_delay = 3;
 						}
 					}
 					if (key_b_pressed)
@@ -1076,6 +1068,18 @@ if (global.actually_play_edited_level == false)
 		#region /* Level Editor Icons */
 		
 		#region /* Play Level Button */
+		if (global.controls_used_for_menu_navigation == "mouse")
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+		|| (pressing_play_timer > 0)
+		{
+			draw_roundrect_color_ext(
+			play_level_icon_x - 22 - 16, display_get_gui_height() - 120 + icons_at_bottom_y - 16,
+			play_level_icon_x - 22 + 630, display_get_gui_height() - 80 + icons_at_bottom_y + 16,
+			50, 50, c_black, c_black, false);
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(play_level_icon_x - 22, display_get_gui_height() - 120 + icons_at_bottom_y, l10n_text("Press and hold to start from the beginning"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(play_level_icon_x - 22, display_get_gui_height() - 80 + icons_at_bottom_y, l10n_text("Press once to start from center of screen"), global.default_text_size, c_black, c_white, 1);
+		}
 		draw_sprite_ext(spr_menu_button_play, 0, play_level_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		
 		#region /* Draw Play Key */

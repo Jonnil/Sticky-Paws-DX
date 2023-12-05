@@ -177,16 +177,23 @@ if (goal && global.time_countdown_bonus <= 0)
 else
 if (intro_animation == "")
 {
-	var view_x = camera_get_view_x(view_camera[view_current]);
-	var view_y = camera_get_view_y(view_camera[view_current]);
-	var view_width = camera_get_view_width(view_camera[view_current]);
-	var view_height = camera_get_view_height(view_camera[view_current]);
-	var x_min = view_x;
-	var x_max = view_x + view_width;
-	var y_min = view_y - 64;
-	var y_max = view_y + view_height + 232;
-	x = clamp(x, x_min, x_max);
-	y = clamp(y, y_min, y_max);
+	if (can_clamp_inside_view > 3)
+	{
+		var view_x = camera_get_view_x(view_camera[view_current]);
+		var view_y = camera_get_view_y(view_camera[view_current]);
+		var view_width = camera_get_view_width(view_camera[view_current]);
+		var view_height = camera_get_view_height(view_camera[view_current]);
+		var x_min = view_x;
+		var x_max = view_x + view_width;
+		var y_min = view_y - 64;
+		var y_max = view_y + view_height + 232;
+		x = clamp(x, x_min, x_max);
+		y = clamp(y, y_min, y_max);
+	}
+	else
+	{
+		can_clamp_inside_view ++;
+	}
 }
 #endregion /* Winning the level and transitioning to the next area END */
 
@@ -758,10 +765,7 @@ else
 	{
 		if (instance_exists(obj_camera))
 		{
-			with(obj_camera)
-			{
-				hud_show_score_timer = global.hud_hide_time * 60;
-			}
+			obj_camera.hud_show_score_timer = global.hud_hide_time * 60;
 		}
 		if (global.time_countdown_bonus > 3)
 		{

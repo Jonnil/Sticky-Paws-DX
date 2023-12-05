@@ -21,10 +21,7 @@ if (bounce_up == false)
 		global.basic_collectibles = 0;
 		if (instance_exists(obj_camera))
 		{
-			with(obj_camera)
-			{
-				hud_show_lives_timer = global.hud_hide_time * 60;
-			}
+			obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 		if (instance_exists(obj_player))
 		{
@@ -45,11 +42,8 @@ if (bounce_up == false)
 	
 	if (instance_exists(obj_camera))
 	{
-		with(obj_camera)
-		{
-			hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
-			hud_show_score_timer = global.hud_hide_time * 60;
-		}
+		obj_camera.hud_show_basic_collectibles_timer = global.hud_hide_time * 60;
+		obj_camera.hud_show_score_timer = global.hud_hide_time * 60;
 	}
 	scr_audio_play(snd_basic_collectible, volume_source.sound);
 	instance_destroy();

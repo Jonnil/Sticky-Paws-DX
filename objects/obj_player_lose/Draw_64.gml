@@ -34,14 +34,22 @@ if (lives <= 0)
 	if (game_over_text_y >= get_window_height * 0.5 - 190)
 	{
 		draw_menu_button(get_window_width * 0.5 - 370 - game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Continue"), "continue", "continue");
+		
+		if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
+		{
+			var quit_to_title_name = "Quit to Online Level List";
+		}
+		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			draw_menu_button(get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Quit to Title"), "quit", "quit", c_red);
+			var quit_to_title_name = "Quit to Level Select";
 		}
 		else
 		{
-			draw_menu_button(get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text("Quit to Map"), "quit", "quit", c_red);
+			var quit_to_title_name = "Quit to Map";
 		}
+		
+		draw_menu_button(get_window_width * 0.5 + game_over_menu_seperation_distance, get_window_height - game_over_menu_y, l10n_text(string(quit_to_title_name)), "quit", "quit", c_red);
 		
 		if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
 		|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.left]))

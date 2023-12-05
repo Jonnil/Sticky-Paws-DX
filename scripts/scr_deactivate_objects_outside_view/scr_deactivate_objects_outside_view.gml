@@ -24,6 +24,7 @@ function scr_deactivate_objects_outside_view()
 			/* Activate objects that always should be active */
 			if (room == rm_leveleditor)
 			{
+				instance_activate_object(obj_player);
 				instance_activate_object(obj_player_lose);
 				instance_activate_object(obj_foreground1);
 				instance_activate_object(obj_foreground1_5);

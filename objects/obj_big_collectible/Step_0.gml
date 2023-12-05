@@ -33,6 +33,14 @@ if (follow_player)
 && (instance_nearest(x, y, obj_enemy_bowlingball).die == false)
 && (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
 {
+	
+	#region /* Show Big Collectible HUD */
+	if (instance_exists(obj_camera))
+	{
+		obj_camera.hud_show_big_collectibles_timer = global.hud_hide_time * 60;
+	}
+	#endregion /* Show Big Collectible HUD END */
+	
 	effect_create_above(ef_ring, x, y, 2, c_white);
 	
 	#region /* 3 Basic Collectibles */
@@ -224,10 +232,7 @@ if (follow_player)
 		#region /* Show Big Collectible HUD */
 		if (instance_exists(obj_camera))
 		{
-			with(obj_camera)
-			{
-				hud_show_big_collectibles_timer = global.hud_hide_time * 60;
-			}
+			obj_camera.hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 		}
 		#endregion /* Show Big Collectible HUD END */
 		
@@ -253,10 +258,7 @@ if (bounce_up)
 	#region /* Show Big Collectible HUD */
 	if (instance_exists(obj_camera))
 	{
-		with(obj_camera)
-		{
-			hud_show_big_collectibles_timer = global.hud_hide_time * 60;
-		}
+		obj_camera.hud_show_big_collectibles_timer = global.hud_hide_time * 60;
 	}
 	#endregion /* Show Big Collectible HUD END */
 	

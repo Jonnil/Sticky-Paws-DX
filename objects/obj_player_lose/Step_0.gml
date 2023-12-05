@@ -169,3 +169,62 @@ else
 {
 	image_speed = 0.5;
 }
+
+#region /* If controller gets disconnected during gameplay, pause the game */
+if (gamepad_is_connected(global.player_slot[player]))
+{
+	controller_connected = true;
+}
+#endregion /* If controller gets disconnected during gameplay, pause the game END */
+
+scr_player_move_pause();
+
+#region /* Restart Level */
+if (global.restart_level)
+{
+	global.restart_level = false;
+	global.quit_level = false;
+	audio_stop_all();
+	room_persistent = false; /* Turn OFF Room Persistency */
+	
+	#region /* Reset timer back to zero */
+	global.timeattack_realmillisecond = 0;
+	global.timeattack_millisecond = 0;
+	global.timeattack_second = 0;
+	global.timeattack_minute = 0;	
+	#endregion /* Reset timer back to zero END */
+	
+	score = 0;
+	
+	room_restart();
+}
+#endregion /* Restart Level END */
+
+#region /* Quit Level */
+if (global.quit_level)
+{
+	global.doing_clear_check = false; /* If you exit the level manually , you no longer are doing level clear check */
+	global.doing_clear_check_character = false; /* If you exit the level manually , you no longer are doing character clear check */
+	audio_stop_all();
+	room_persistent = false; /* Turn OFF Room Persistency */
+	
+	#region /* Reset timer back to zero */
+	global.timeattack_realmillisecond = 0;
+	global.timeattack_millisecond = 0;
+	global.timeattack_second = 0;
+	global.timeattack_minute = 0;	
+	#endregion /* Reset timer back to zero END */
+	
+	score = 0;
+	
+	scr_save_level();
+	
+	if (global.quit_to_map || global.quit_to_title)
+	{
+		global.quit_level = false;
+		room_goto(global.quit_to_map ? rm_world_map : rm_title); /* If player chose to quit to map, then go to world map, otherwise go to title screen */
+		global.quit_to_map = false;
+		global.quit_to_title = false;
+	}
+}
+#endregion /* Quit Level END */

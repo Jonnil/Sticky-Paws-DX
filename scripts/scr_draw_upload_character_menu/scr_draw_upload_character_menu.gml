@@ -164,10 +164,7 @@ function scr_draw_upload_character_menu()
 			menu_delay = 9999;
 			if (instance_exists(obj_camera))
 			{
-				with(obj_camera)
-				{
-					iris_zoom = 0;
-				}
+				obj_camera.iris_zoom = 0;
 			}
 		}
 		#endregion /* Click Character Clear Check Again END */

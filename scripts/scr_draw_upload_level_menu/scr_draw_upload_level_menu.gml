@@ -347,10 +347,7 @@ function scr_draw_upload_level_menu()
 					menu_delay = 9999;
 					if (instance_exists(obj_camera))
 					{
-						with(obj_camera)
-						{
-							iris_zoom = 0;
-						}
+						obj_camera.iris_zoom = 0;
 					}
 				}
 			}
@@ -896,10 +893,7 @@ function scr_draw_upload_level_menu()
 					menu_delay = 9999;
 					if (instance_exists(obj_camera))
 					{
-						with(obj_camera)
-						{
-							iris_zoom = 0;
-						}
+						obj_camera.iris_zoom = 0;
 					}
 				}
 				global.doing_clear_check = false;
@@ -932,10 +926,7 @@ function scr_draw_upload_level_menu()
 				menu_delay = 3;
 				if (instance_exists(obj_camera))
 				{
-					with(obj_camera)
-					{
-						iris_zoom = 0;
-					}
+					obj_camera.iris_zoom = 0;
 				}
 				can_input_level_name = false;
 				if (level_editor_edit_name)
@@ -1033,10 +1024,7 @@ function scr_draw_upload_level_menu()
 					menu_delay = 9999;
 					if (instance_exists(obj_camera))
 					{
-						with(obj_camera)
-						{
-							iris_zoom = 0;
-						}
+						obj_camera.iris_zoom = 0;
 					}
 				}
 				global.doing_clear_check = false;
@@ -1069,10 +1057,7 @@ function scr_draw_upload_level_menu()
 				menu_delay = 3;
 				if (instance_exists(obj_camera))
 				{
-					with(obj_camera)
-					{
-						iris_zoom = 0;
-					}
+					obj_camera.iris_zoom = 0;
 				}
 				can_input_level_name = false;
 				if (level_editor_edit_name)

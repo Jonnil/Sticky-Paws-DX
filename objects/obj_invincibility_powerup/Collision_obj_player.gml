@@ -4,10 +4,7 @@ if (bounce_up == false)
 	score += 1000;
 	if (instance_exists(obj_camera))
 	{
-		with(obj_camera)
-		{
-			hud_show_score_timer = global.hud_hide_time * 60;
-		}
+		obj_camera.hud_show_score_timer = global.hud_hide_time * 60;
 	}
 	with(instance_create_depth(x, y, 0, obj_score_up))
 	{
