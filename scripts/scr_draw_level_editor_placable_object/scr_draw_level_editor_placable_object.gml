@@ -25,6 +25,17 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 		{
 			scr_draw_text_outlined((display_get_gui_width() * 0.5) + selected_object_menu_x + var_scroll_x * var_selected_object, y_offset, l10n_text("New"), global.default_text_size + scr_wave(-0.1, 0, 1, 0), c_white, c_red, selected_menu_alpha * alpha_offset);
 		}
+		
+		/* Hover mouse over object icon */
+		if (global.controls_used_for_menu_navigation == "mouse")
+		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
+		(display_get_gui_width() * 0.5) + selected_object_menu_x + var_scroll_x * var_selected_object + var_x_offset - 16,
+		y_offset + var_scroll_y - 16,
+		(display_get_gui_width() * 0.5) + selected_object_menu_x + var_scroll_x * var_selected_object + var_x_offset + 16,
+		y_offset + var_scroll_y + 16))
+		{
+			
+		}
 		order_index += add_order_index; /* Add to this variable after each "scr draw level editor placable object" so whenever you add more objects to the list of placable objects, you don't have to change these numbers manually*/
 	}
 }

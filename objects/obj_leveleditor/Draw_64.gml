@@ -1006,6 +1006,10 @@ if (global.actually_play_edited_level == false)
 				}
 			}
 		}
+		else
+		{
+			show_undo_redo_icons = false;
+		}
 		#endregion /* Make undo and redo icons appear if mouse is hovering at right screen END */
 		
 		#region /* Make top row of icons appear if mouse is hovering at top screen */

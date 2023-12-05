@@ -137,6 +137,8 @@ if (global.actually_play_edited_level == false)
 	|| (welcome_to_level_editor > 0) /* Can't click on objects behind the help menu */
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 350, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 350, display_get_gui_height() * 0.5 + 200))
 	|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64)) /* Can't place objects when clicking the undo and redo buttons */
+	|| (show_selected_menu)
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, display_get_gui_width(), 192)) /* Can't place objects when clicking the object category buttons or objects in toolbar */
 	{
 		if (global.controls_used_for_menu_navigation == "mouse")
 		{
@@ -1243,7 +1245,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Select Object Menu */
 	if (mouse_check_button(mb_any))
-	&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, display_get_gui_width(), 128 + 64)) /* Can't make menu fade away quicker when clicking the object category buttons or objects in toolbar */
+	&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, display_get_gui_width(), 192)) /* Can't make menu fade away quicker when clicking the object category buttons or objects in toolbar */
 	|| (keyboard_check(vk_anykey))
 	|| (key_a_hold)
 	{
