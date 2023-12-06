@@ -10,6 +10,7 @@ layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), g
 scr_make_background_visible();
 
 #region /* Essential variables */
+content_type = "level";
 modify_object_menu = false;
 changing_level_theme_menu = false;
 

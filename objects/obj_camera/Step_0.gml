@@ -475,7 +475,7 @@ if (save_level_as_png == false)
 	#region /* Boss Battle Camera */
 	if (instance_exists(obj_boss))
 	&& (instance_exists(obj_player))
-	&& (distance_to_object(obj_boss) < 500)
+	&& (distance_to_object(obj_boss) < 400)
 	{
 		view_wview_lerp = lerp(0, 0, 0.05);
 		view_hview_lerp = lerp(0, 0, 0.05);

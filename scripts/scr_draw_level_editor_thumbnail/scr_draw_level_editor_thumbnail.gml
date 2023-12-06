@@ -49,7 +49,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			draw_set_valign(fa_middle);
 			/* Draw level name on top of level thumbnail */
 			if (load_what_levels == global.all_loaded_custom_levels)
-			&& (variable_instance_exists(self, "thumbnail_level_name"))
+			&& (is_array(thumbnail_level_name))
 			{
 				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(thumbnail_level_name[i]), global.default_text_size * 0.8, c_white, c_black, 1);
 			}
@@ -60,7 +60,8 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			}
 			
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
-			if (variable_instance_exists(self, "thumbnail_clear_check"))
+			if (is_array(thumbnail_clear_check))
+			&& (is_array(thumbnail_level_id))
 			&& (!level_editor_template_select && i >= 1)
 			{
 				var clear_check = thumbnail_clear_check[i];

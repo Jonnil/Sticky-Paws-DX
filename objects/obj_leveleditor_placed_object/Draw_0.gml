@@ -6,13 +6,22 @@ if (!global.actually_play_edited_level)
 		case LEVEL_OBJECT_ID.ID_LAVA:
 		case LEVEL_OBJECT_ID.ID_BREATHABLE_WATER:
 			if (object == LEVEL_OBJECT_ID.ID_WATER)
+			{
 				draw_set_alpha(0.5);
+			}
 			if (object == LEVEL_OBJECT_ID.ID_BREATHABLE_WATER)
+			{
 				draw_set_alpha(0.25);
+			}
 			if (object == LEVEL_OBJECT_ID.ID_LAVA)
+			{
+				draw_set_alpha(0.5);
 				var liquid_color = c_red;
+			}
 			else
+			{
 				var liquid_color = c_blue;
+			}
 			draw_rectangle_color(x - 16, y - 16, 16 + second_x, 16 + second_y, liquid_color, liquid_color, liquid_color, liquid_color, false);
 			draw_set_alpha(1);
 			break;

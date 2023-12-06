@@ -82,23 +82,25 @@ function scr_draw_online_download_list()
 					{
 						show_level_editor_corner_menu = true;
 					}
-					if (global.automatically_play_downloaded_level)
+					if (is_array(thumbnail_level_name))
+					&& (is_array(thumbnail_clear_check))
+					&& (is_array(thumbnail_level_id))
 					{
-						global.automatically_play_downloaded_level = false;
-						global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
-						menu = "level_editor";
-						select_custom_level_menu_open = false;
+						select_custom_level_menu_open = true;
+						menu = "online_level_list"; /* If all custom levels are already loaded, then go back to the level select menu */
 					}
 					else
 					{
-						menu = "online_download_list";
-						select_custom_level_menu_open = true;
+						select_custom_level_menu_open = false;
+						menu = "load_custom_level"; /* If all custom levels are not loaded, then reload all custom levels before going to the level select menu */
 					}
 				}
 				else
 				{
 					menu = "online_character_list";
 				}
+				global.automatically_play_downloaded_level = false;
+				global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
 				global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
 				data = undefined; /* Reset "data" so you can reload online download list next time you go to this menu */
 				automatically_search_for_id = false;
