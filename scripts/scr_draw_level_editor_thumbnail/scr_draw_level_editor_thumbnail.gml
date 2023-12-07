@@ -38,6 +38,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 		
 		if (i == ds_list_size(global.thumbnail_sprite) - 1)
 		{
+			draw_line_width_color(30, 226 * (column - scroll) + 500, display_get_gui_width() - 30, 226 * (column - scroll) + 500, 7, c_black, c_black);
 			draw_line_width_color(32, 226 * (column - scroll) + 500, display_get_gui_width() - 32, 226 * (column - scroll) + 500, 3, c_white, c_white);
 		}
 		

@@ -156,7 +156,7 @@ function scr_character_select_menu_step()
 				&& (can_input_player4_name == false)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					ini_open("config.ini"); /* Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame */
+					ini_open("save_file/config.ini"); /* Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame */
 					ini_write_real("config", "character_index_player1", global.character_index[0]);
 					ini_write_real("config", "character_index_player2", global.character_index[1]);
 					ini_write_real("config", "character_index_player3", global.character_index[2]);

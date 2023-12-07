@@ -585,7 +585,7 @@ if (global.actually_play_edited_level == false)
 	unlock_index = 0;
 	
 	#region /* Loading selected level editing music */
-	if (file_exists("config.ini"))
+	if (file_exists("save_file/config.ini"))
 	{
 		ini_open(working_directory + "save_file/config.ini");
 		if (ini_key_exists("config", "select_level_editing_music"))

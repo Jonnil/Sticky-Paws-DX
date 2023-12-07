@@ -195,6 +195,7 @@ function scr_draw_online_download_list()
 					
 					if (i == num_items - 1)
 					{
+						draw_line_width_color(30, menu_y_offset + download_online_y + 300, display_get_gui_width() - 30, menu_y_offset + download_online_y + 300, 7, c_black, c_black);
 						draw_line_width_color(32, menu_y_offset + download_online_y + 300, display_get_gui_width() - 32, menu_y_offset + download_online_y + 300, 3, c_white, c_white);
 					}
 					

@@ -285,7 +285,7 @@ if (global.actually_play_edited_level == false)
 			audio_stop_sound(level_editing_music);
 			level_editing_music = noone;
 		}
-		if (file_exists("config.ini"))
+		if (file_exists("save_file/config.ini"))
 		{
 			ini_open(working_directory + "save_file/config.ini");
 			ini_write_real("config", "select_level_editing_music", global.selected_level_editing_music);

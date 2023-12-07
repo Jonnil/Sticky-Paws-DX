@@ -11,7 +11,7 @@ function get_relative_timezone(datetime)
 	
 	if (diff < 60)
 	{
-		return string(diff) + " second" + (diff > 1 ? "s" : "") + " ago";
+		return string(floor(diff)) + " second" + (diff > 1 ? "s" : "") + " ago";
 	}
 	else if (diff < 3600)
 	{

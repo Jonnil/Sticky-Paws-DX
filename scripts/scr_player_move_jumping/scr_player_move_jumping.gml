@@ -36,6 +36,7 @@ function scr_player_move_jumping()
 		&& (!place_meeting(x, y + 1, obj_wall))
 		{
 			on_ground = false;
+			coyote_jump = 0; /* Reset coyote jump timer back to 0 when dropping from semisolid platform */
 			can_ground_pound = false;
 			can_mid_air_jump = 10;
 			vspeed = 0.01;

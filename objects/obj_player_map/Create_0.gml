@@ -230,7 +230,7 @@ ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 if (global.reset_level_zoom_when_going_back_to_map)
 {
 	global.zoom_level = global.default_zoom_level;
-	ini_open("config.ini");
+	ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_level", global.default_zoom_level);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
@@ -242,7 +242,7 @@ if (global.reset_world_map_zoom_when_going_back_to_map)
 	global.zoom_world_map = global.default_zoom_world_map;
 	zoom_lerp = global.default_zoom_world_map;
 	zoom_border_lerp = 0;
-	ini_open("config.ini");
+	ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_world_map", global.default_zoom_world_map);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }

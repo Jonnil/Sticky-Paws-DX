@@ -461,7 +461,7 @@ scr_audio_play(trailer_sound, volume_source.music); /* Play trailer sound */
 if (global.reset_level_zoom_when_going_back_to_map)
 {
 	global.zoom_level = global.default_zoom_level;
-	ini_open("config.ini");
+	ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_level", global.default_zoom_level);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
@@ -471,7 +471,7 @@ if (global.reset_level_zoom_when_going_back_to_map)
 if (global.reset_world_map_zoom_when_going_back_to_map)
 {
 	global.zoom_world_map = global.default_zoom_world_map;
-	ini_open("config.ini");
+	ini_open("save_file/config.ini");
 	ini_write_real("config", "zoom_world_map", global.default_zoom_world_map);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }

@@ -10,7 +10,7 @@ function scr_toggle_fullscreen()
 		{
 			window_set_fullscreen(true);
 		}
-		ini_open("config.ini");
+		ini_open("save_file/config.ini");
 		ini_write_real("config", "fullscreen_mode", window_get_fullscreen()); /* Save fullscreen settings to config.ini */
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
