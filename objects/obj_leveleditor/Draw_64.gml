@@ -2412,7 +2412,7 @@ if (global.actually_play_edited_level == false)
 			{
 				object_help_description_alpha = clamp(selected_menu_alpha, 0, 1);
 			}
-			draw_set_alpha(object_help_description_alpha * 0.5);
+			draw_set_alpha(object_help_description_alpha * 0.9);
 			draw_roundrect_color_ext(display_get_gui_width() * 0.5 - (string_width(object_help_description) * 0.41), display_get_gui_height() - 34 - string_height(l10n_text(object_help_description)), display_get_gui_width() * 0.5 + (string_width(object_help_description) * 0.41), display_get_gui_height() - 4, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
 			

@@ -191,7 +191,7 @@ function scr_draw_online_download_list()
 				for (var i = 0; i < num_items; i++;)
 				{
 					online_download_index ++;
-					var download_online_y = 80 + (250 * i);
+					var download_online_y = 80 + (320 * i); /* The distance between each thumbnail */
 					
 					if (menu == "download_online_" + string(online_download_index))
 					{
@@ -346,12 +346,13 @@ function scr_draw_online_download_list()
 					draw_set_halign(fa_right);
 					scr_draw_text_outlined(download_online_x + 90, 110 + download_online_y + menu_y_offset, string(online_download_index), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
 					
-					/* Write the ID */ draw_set_halign(fa_left);scr_draw_text_outlined(download_online_x + 108, 20 + download_online_y + menu_y_offset, string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					/* Write the ID */ draw_set_halign(fa_left);
+					scr_draw_text_outlined(download_online_x + 108, 20 + download_online_y + menu_y_offset, string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
 					
 					/* Write date of upload */
-					scr_draw_text_outlined(download_online_x + 108, 230 + download_online_y + menu_y_offset, string(get_relative_timezone(draw_download_time)), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					scr_draw_text_outlined(download_online_x + 100, 270 + download_online_y + menu_y_offset, string(get_relative_timezone(draw_download_time)), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
 					draw_set_halign(fa_right);
-					scr_draw_text_outlined(download_online_x + 480, 230 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.5, c_menu_outline, selected_download_c_menu_fill, 0.9);
+					scr_draw_text_outlined(download_online_x + 490, 270 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.6, c_menu_outline, selected_download_c_menu_fill, 0.9);
 				}
 				#endregion /* Thumbnail for each level / character END */
 				
@@ -416,10 +417,25 @@ function scr_draw_online_download_list()
 				}
 			}
 			
-			if (info_data == undefined){scr_draw_loading(1, download_online_x + 300, top_left_of_thumbnail_y + menu_y_offset + 100);}
-			/* Draw the thumbnail */ if (sprite_exists(spr_download_list_thumbnail) && info_data != undefined){draw_sprite_ext(spr_download_list_thumbnail, 0, download_online_x + 100, top_left_of_thumbnail_y + menu_y_offset + 4, 384 / sprite_get_width(spr_download_list_thumbnail), 216 / sprite_get_height(spr_download_list_thumbnail), 0, c_white, 1);}
-			/* Draw the name associated with the ID */ if (info_data != undefined){draw_set_halign(fa_center);draw_set_valign(fa_center);scr_draw_text_outlined(download_online_x + 300, top_left_of_thumbnail_y + menu_y_offset + 200, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);}
-			/* Write the ID for currently selected level */ draw_set_halign(fa_left);scr_draw_text_outlined(download_online_x + 108, 20 + top_left_of_thumbnail_y + menu_y_offset + 4, string(currently_selected_id), global.default_text_size, c_menu_outline, c_lime, 1);
+			if (info_data == undefined)
+			{
+				scr_draw_loading(1, download_online_x + 300, top_left_of_thumbnail_y + menu_y_offset + 100);
+			}
+			
+			/* Draw the thumbnail */ if (sprite_exists(spr_download_list_thumbnail) && info_data != undefined)
+			{
+				draw_sprite_ext(spr_download_list_thumbnail, 0, download_online_x + 100, top_left_of_thumbnail_y + menu_y_offset + 4, 384 / sprite_get_width(spr_download_list_thumbnail), 216 / sprite_get_height(spr_download_list_thumbnail), 0, c_white, 1);
+			}
+			
+			/* Draw the name associated with the ID */ if (info_data != undefined)
+			{
+				draw_set_halign(fa_center);
+				draw_set_valign(fa_center);
+				scr_draw_text_outlined(download_online_x + 300, top_left_of_thumbnail_y + menu_y_offset + 240, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			}
+			
+			/* Write the ID for currently selected level */ draw_set_halign(fa_left);
+			scr_draw_text_outlined(download_online_x + 108, 20 + top_left_of_thumbnail_y + menu_y_offset + 4, string(currently_selected_id), global.default_text_size, c_menu_outline, c_lime, 1);
 			
 			#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
 			

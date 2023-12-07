@@ -15,6 +15,14 @@ function scr_select_custom_level_menu()
 		var max_custom_levels_reached = false;
 	}
 	
+	if (!is_array(thumbnail_level_name))
+	|| (!is_array(thumbnail_clear_check))
+	|| (!is_array(thumbnail_level_id))
+	{
+		select_custom_level_menu_open = false;
+		menu = "load_custom_level"; /* If all custom levels are not loaded, then reload all custom levels before going to the level select menu */
+	}
+	
 	/* If there isn't any thumbnails loaded at all, then that is a mistake, so go back so you could reload the custom levels and the thumbnails should be corrected */
 	if (ds_list_size(global.thumbnail_sprite) <= 0)
 	&& (menu != "load_official_level_template")
