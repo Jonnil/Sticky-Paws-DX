@@ -191,7 +191,12 @@ function scr_draw_online_download_list()
 				for (var i = 0; i < num_items; i++;)
 				{
 					online_download_index ++;
-					var download_online_y = 80 + (320 * i); /* The distance between each thumbnail */
+					var download_online_y = 80 + (300 * i); /* The distance between each thumbnail */
+					
+					if (i == num_items - 1)
+					{
+						draw_line_width_color(32, menu_y_offset + download_online_y + 300, display_get_gui_width() - 32, menu_y_offset + download_online_y + 300, 3, c_white, c_white);
+					}
 					
 					if (menu == "download_online_" + string(online_download_index))
 					{
@@ -207,6 +212,12 @@ function scr_draw_online_download_list()
 						var triangle_size = 32 - custom_level_select_arrows_moving;
 						var thumbnail_select_blinking = scr_wave(1, 0, 2, 0);
 						
+						/* Put a white highlight underneath selected level */
+						draw_set_alpha(scr_wave(0.1, 0.2, 3, 0));
+						draw_roundrect_color_ext(top_left_of_thumbnail_x - 16, top_left_of_thumbnail_y + menu_y_offset - 16, bottom_right_of_thumbnail_x + 16, bottom_right_of_thumbnail_y + 64, 50, 50, c_white, c_white, false);
+						
+						/* Red and yellow rectangle around the selected thumbnail */
+						draw_set_alpha(1);
 						draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y + menu_y_offset, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_red, c_red, c_red, c_red, false);
 						draw_set_alpha(thumbnail_select_blinking);
 						draw_rectangle_color(top_left_of_thumbnail_x, top_left_of_thumbnail_y + menu_y_offset, bottom_right_of_thumbnail_x, bottom_right_of_thumbnail_y, c_yellow, c_yellow, c_yellow, c_yellow, false);
@@ -250,7 +261,8 @@ function scr_draw_online_download_list()
 					}
 					#endregion /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting END */
 					
-					if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x + 100, download_online_y + menu_y_offset, download_online_x + 484, download_online_y + menu_y_offset + 216))
+					if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
+					download_online_x + 100 - 16, download_online_y + menu_y_offset - 16, download_online_x + 484 + 16, download_online_y + menu_y_offset + 216 + 62))
 					&& (global.controls_used_for_menu_navigation == "mouse")
 					{
 						menu = "download_online_" + string(online_download_index);

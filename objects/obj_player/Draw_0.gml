@@ -1,6 +1,5 @@
 if (image_alpha > 0)
 {
-	
 	#region /* Draw things underneath the player */
 	
 	#region /* Heart above head */

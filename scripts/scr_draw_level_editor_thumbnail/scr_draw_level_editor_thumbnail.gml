@@ -35,6 +35,12 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 		{
 			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394 * (i - column * row) + 100 + thumbnail_x_offset, 226 * (column - scroll) + 250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);
 		}
+		
+		if (i == ds_list_size(global.thumbnail_sprite) - 1)
+		{
+			draw_line_width_color(32, 226 * (column - scroll) + 500, display_get_gui_width() - 32, 226 * (column - scroll) + 500, 3, c_white, c_white);
+		}
+		
 		if (show_first_thumbnail_name == false)
 		&& (i >= 1)
 		&& (menu != "load_custom_level")

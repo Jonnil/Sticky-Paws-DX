@@ -2,17 +2,25 @@ function scr_player_move_jumping()
 {
 	
 	#region /* Jumping */
-	if (key_jump)
-	&& (number_of_jumps >= 1)
-	|| (key_jump)
-	&& (number_of_jumps <= -1)
-	{
-		buffer_jump = 10;
-	}
-	
 	if (buffer_jump > 0)
 	{
 		buffer_jump --;
+	}
+	
+	if (key_jump)
+	&& (number_of_jumps >= 1 || number_of_jumps <= -1)
+	{
+		buffer_jump = 20; /* Set the buffer jump to be 20 frames, so player have enough time to buffer jump when landing again */
+	}
+	
+	if (coyote_jump > 0)
+	{
+		coyote_jump --;
+	}
+	
+	if (on_ground)
+	{
+		coyote_jump = 10; /* Set the coyote jump to be 10 frames. The player still has the ability to jump after walking off a ledge for a few frames */
 	}
 	
 	if (buffer_jump > 0)
@@ -22,11 +30,7 @@ function scr_player_move_jumping()
 	{
 		
 		#region /* Drop down below semisolid platform */
-		if (key_crouch_hold)
-		&& (ground_pound == 0)
-		&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-		&& (!place_meeting(x, y + 1, obj_wall))
-		|| (key_down)
+		if (key_crouch_hold || key_down)
 		&& (ground_pound == 0)
 		&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 		&& (!place_meeting(x, y + 1, obj_wall))
@@ -42,11 +46,10 @@ function scr_player_move_jumping()
 		else
 		if (ground_pound == 0)
 		{
-			if (on_ground)
-			&& (vspeed == 0)
+			if (coyote_jump > 0)
 			{
 				if (abs(hspeed) > (speed_max_run -1))
-				&& (jump = 2)
+				&& (jump == 2)
 				{
 					jump = 3; /* If running, and doing 2nd jump, do triple jump */
 				}
@@ -61,6 +64,7 @@ function scr_player_move_jumping()
 				}
 				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 				buffer_jump = 0; /* Reset jump buffer timer back to 0 when jumping */
+				coyote_jump = 0; /* Reset coyote jump timer back to 0 when jumping */
 				dive = false;
 				glide = false;
 				triplejumpdelay = 12;
@@ -112,7 +116,7 @@ function scr_player_move_jumping()
 				}
 				
 				#region /* Smoke effect under player when jumping */
-				if (on_ground)
+				if (coyote_jump > 0)
 				{
 					effect_create_above(ef_smoke, x - 16, bbox_bottom, 0, c_white);
 					effect_create_above(ef_smoke, x, bbox_bottom, 0, c_white);
@@ -139,7 +143,7 @@ function scr_player_move_jumping()
 					scr_audio_play(voice_jump3rd, volume_source.voice);
 				}
 				else
-				if (jump = 2)
+				if (jump == 2)
 				{
 					scr_audio_play(voice_jump2nd, volume_source.voice);
 				}

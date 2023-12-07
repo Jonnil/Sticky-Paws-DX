@@ -2235,7 +2235,7 @@ else
 				else
 		
 				#region /* Double Jump */
-				if (jump = 2)
+				if (jump == 2)
 				{
 					if (sprite_double_jump > noone){sprite_index = sprite_double_jump;}else
 					if (sprite_jump > noone){sprite_index = sprite_jump;}else
