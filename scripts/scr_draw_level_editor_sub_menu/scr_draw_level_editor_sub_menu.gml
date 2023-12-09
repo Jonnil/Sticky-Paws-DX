@@ -306,7 +306,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			show_level_editor_corner_menu = true;
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 - 3, xx + 8 + 370, 226 * (column - scroll) + 475 - 3 + 42))
+			if (!hovering_over_level_editor_corner_menu)
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 - 3, xx + 8 + 370, 226 * (column - scroll) + 475 - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (can_create_level_from_scratch)
@@ -327,7 +328,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			show_level_editor_corner_menu = true;
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 370, 226 * (column - scroll) + 569 - 3 + 42))
+			if (!hovering_over_level_editor_corner_menu)
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 370, 226 * (column - scroll) + 569 - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			|| (key_a_pressed)
@@ -347,7 +349,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			show_level_editor_corner_menu = true;
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (back_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (back_y) - 3 + 42))
+			if (!hovering_over_level_editor_corner_menu)
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (back_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (back_y) - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			|| (key_a_pressed)
@@ -386,6 +389,9 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				}
 			}
 			else
+			if (menu == "level_editor_create_from_scratch")
+			|| (menu == "level_editor_create_from_template")
+			|| (menu == "level_editor_create_from_back")
 			{
 				if (!point_in_rectangle(mouse_get_x, mouse_get_y, xx, 226 * (column - scroll) + 455 - 3 + 10, xx + 384, 226 * (column - scroll) + 408 + 216 + 3))
 				&& (mouse_check_button_released(mb_left))
@@ -406,7 +412,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		&& (can_input_level_name == false)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (play_y)- 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (play_y)- 3 + 42))
+			if (!hovering_over_level_editor_corner_menu)
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (play_y)- 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (play_y)- 3 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			|| (key_a_pressed)
@@ -423,7 +430,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		#region /* Pressing the Make button */
 		if (menu == "level_editor_make")
 		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (make_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (make_y) - 3 + 42))
+			if (!hovering_over_level_editor_corner_menu)
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (make_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (make_y) - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			|| (key_a_pressed)
@@ -440,7 +448,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		#region /* Pressing the Edit Name button */
 		if (menu == "level_editor_edit_name")
 		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (edit_name_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (edit_name_y) - 3 + 42))
+			if (!hovering_over_level_editor_corner_menu)
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (edit_name_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (edit_name_y) - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (level_editor_edit_name == false)
@@ -468,7 +477,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		#region /* Pressing the Edit Description button */
 		if (menu == "level_editor_enter_description")
 		{
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (edit_description_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (edit_description_y) - 3 + 42))
+			if (!hovering_over_level_editor_corner_menu)
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (edit_description_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (edit_description_y) - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (level_editor_edit_name == false)
@@ -541,7 +551,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		if (key_a_pressed)
 		&& (can_input_level_name == false)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 522 - 3, xx + 8 + 320, 226 * (column - scroll) + 522 - 3 + 42))
+		|| (!hovering_over_level_editor_corner_menu)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 522 - 3, xx + 8 + 320, 226 * (column - scroll) + 522 - 3 + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (can_input_level_name == false)
@@ -563,7 +574,8 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		if (key_a_pressed)
 		&& (can_input_level_name == false)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 320, 226 * (column - scroll) + 569 - 3 + 42))
+		|| (!hovering_over_level_editor_corner_menu)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 320, 226 * (column - scroll) + 569 - 3 + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (can_input_level_name == false)

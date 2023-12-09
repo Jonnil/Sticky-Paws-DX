@@ -15,6 +15,16 @@ function scr_select_custom_level_menu()
 		var max_custom_levels_reached = false;
 	}
 	
+	if (global.controls_used_for_menu_navigation != "mouse")
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, draw_online_level_list_y + 42))
+	{
+		hovering_over_level_editor_corner_menu = true; /* When hovering the mouse over level editor corner menu, don't let the player click on other buttons like thumbnails */
+	}
+	else
+	{
+		hovering_over_level_editor_corner_menu = false;
+	}
+	
 	/* If there isn't any thumbnails loaded at all, then that is a mistake, so go back so you could reload the custom levels and the thumbnails should be corrected */
 	if (ds_list_size(global.thumbnail_sprite) <= 0)
 	&& (menu != "load_official_level_template")
@@ -713,12 +723,17 @@ function scr_select_custom_level_menu()
 		{
 			if (keyboard_check_pressed(vk_enter))
 			&& (menu == "level_editor_enter_name_ok")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 300 - 185 + thumbnail_x_offset, draw_name_input_screen_y + 54, 394 * (global.select_level_index - column * row) + 300 - 185 + 370 + thumbnail_x_offset, draw_name_input_screen_y + 54 + 42))
+			|| (!hovering_over_level_editor_corner_menu)
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 300 - 185 + thumbnail_x_offset, draw_name_input_screen_y + 54, 394 * (global.select_level_index - column * row) + 300 - 185 + 370 + thumbnail_x_offset, draw_name_input_screen_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+			&& (menu == "level_editor_enter_name_ok")
 			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
+			&& (menu == "level_editor_enter_name_ok")
 			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
+			&& (menu == "level_editor_enter_name_ok")
 			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
+			&& (menu == "level_editor_enter_name_ok")
 			{
 				if (level_editor_edit_name)
 				&& (global.level_name != old_level_name)
@@ -778,7 +793,8 @@ function scr_select_custom_level_menu()
 		|| (keyboard_check_pressed(vk_escape))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y,
+		|| (!hovering_over_level_editor_corner_menu)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y,
 		394 * (global.select_level_index - column * row) + 300 - 185 + thumbnail_x_offset,
 		draw_name_input_screen_y + 54 + 42,
 		394 * (global.select_level_index - column * row) + 300 - 185 + 370 + thumbnail_x_offset,
@@ -855,7 +871,8 @@ function scr_select_custom_level_menu()
 		{
 			if (keyboard_check_pressed(vk_enter))
 			&& (menu == "level_editor_enter_description_ok")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_input_screen_y + 54, get_window_width * 0.5 - 185 + 370, draw_description_input_screen_y + 54 + 42))
+			|| (!hovering_over_level_editor_corner_menu)
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_input_screen_y + 54, get_window_width * 0.5 - 185 + 370, draw_description_input_screen_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
 			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
@@ -911,7 +928,8 @@ function scr_select_custom_level_menu()
 		|| (keyboard_check_pressed(vk_escape))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_input_screen_y + 54 + 42, get_window_width * 0.5 - 185 + 370, draw_description_input_screen_y + 54 + 42 + 42))
+		|| (!hovering_over_level_editor_corner_menu)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_input_screen_y + 54 + 42, get_window_width * 0.5 - 185 + 370, draw_description_input_screen_y + 54 + 42 + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)

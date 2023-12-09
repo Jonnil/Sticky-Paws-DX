@@ -19,6 +19,7 @@ draw_download_name = "";
 spr_download_list_thumbnail = noone;
 top_left_of_thumbnail_y = 0;
 load_ok = 0;
+hovering_over_level_editor_corner_menu = false;
 
 information_menu_open = false; /* If the information menu is opened or not */
 
