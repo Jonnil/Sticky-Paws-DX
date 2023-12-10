@@ -124,8 +124,15 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			search_for_id_still = false;
 			search_id = "";
 			select_custom_level_menu_open = false;
-			menu = "online_download_list_load";
 			menu_delay = 3;
+			if (automatically_search_for_id)
+			{
+				menu = "download_online_" + string(global.selected_online_download_index)
+			}
+			else
+			{
+				menu = "download_online_search_id";
+			}
 		}
 		#endregion /* Press Escape to back out from Search ID menu END */
 		
@@ -333,6 +340,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							masked_username = string(switch_mask_profanity(masked_username));
 						}
 					}
+					have_downloaded_from_server = true;
 					menu = "searched_file_downloaded_back_to_list"; /* Go to the screen where you see the file has been downloaded */
 				}
 				#endregion /* Get downloaded character info END */
@@ -381,7 +389,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			menu = "searching_for_id_back";
+			if (automatically_search_for_id)
+			{
+				menu = "download_online_" + string(global.selected_online_download_index)
+			}
+			else
+			{
+				menu = "download_online_search_id";
+			}
 		}
 		#endregion /* You can always cancel searching if game can't find file on server END */
 		
@@ -540,8 +555,19 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "searched_file_downloaded_delete", "searched_file_downloaded_delete", c_red);
 					draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
 				}
-				draw_menu_button(0, 0, back_to_list_text, "searched_file_downloaded_back_to_list", "searched_file_downloaded_back_to_list");
-				draw_sprite_ext(spr_icons_back, 0, 16, 20, 1, 1, 0, c_white, 1);
+				if (what_kind_of_id == "character")
+				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				{
+					var back_to_list_x = display_get_gui_width() * 0.5 - 185;
+					var back_to_list_y = searched_file_downloaded_delete_y - 42;
+				}
+				else
+				{
+					var back_to_list_x = 0;
+					var back_to_list_y = 0;
+				}
+				draw_menu_button(back_to_list_x, back_to_list_y, back_to_list_text, "searched_file_downloaded_back_to_list", "searched_file_downloaded_back_to_list");
+				draw_sprite_ext(spr_icons_back, 0, back_to_list_x + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
 			}
 			
 			#region /* Inform about report feature. Needs to be above all other buttons */
@@ -667,7 +693,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				|| (menu == "download_to_working_directory")
 				&& (key_a_pressed)
 				{
-					/* Download the level */
+					/* Download the level to working directory */
+					have_downloaded_from_server = true;
 					menu_delay = 3;
 					global.use_cache_or_working = working_directory;
 					scr_copy_move_files(cache_directory + "custom_" + string(what_kind_of_id) + "s/" + string(global.level_name), working_directory + "custom_" + string(what_kind_of_id) + "s/" + string(global.level_name), true);
@@ -748,7 +775,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* Click Delete END */
 			
 			#region /* Click back to online level list */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 41))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, back_to_list_x, back_to_list_y, 370, 41))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -962,7 +989,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				menu = "searching_for_id_back";
+				if (automatically_search_for_id)
+				{
+					menu = "download_online_" + string(global.selected_online_download_index)
+				}
+				else
+				{
+					menu = "download_online_search_id";
+				}
 			}
 		}
 		#endregion /* Level was not uploaded correctly END */
@@ -1153,36 +1187,16 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		{
 			file_delete(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy any leftover files in temporary folder */
 			directory_destroy(cache_directory + "\\downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
-			menu = "searching_for_id_back";
+			if (automatically_search_for_id)
+			{
+				menu = "download_online_" + string(global.selected_online_download_index)
+			}
+			else
+			{
+				menu = "download_online_search_id";
+			}
 		}
 	}
 	#endregion /* Show Download Failed message END */
 	
-	else
-	if (menu == "searching_for_id_back")
-	{
-		search_for_id_still = false;
-		search_id = ""; /* Always set this to empty string when going back to previous menu */
-		menu_delay = 3;
-		if (what_kind_of_id == "level")
-		{
-			/* Go back to select custom level menu */
-			can_navigate = false;
-			select_custom_level_menu_open = true;
-			show_level_editor_corner_menu = true;
-			scr_load_custom_level_initializing();
-			menu = "load_custom_level";
-		}
-		else
-		if (what_kind_of_id == "character")
-		{
-			player_menu[1] = "load_downloaded_character";
-			select_custom_level_menu_open = false;
-			scr_load_character_initializing();
-			player1_automatically_join = true;
-			menu = "load_characters";
-			menu_delay = 3;
-			menu_specific_joystick_delay[1] = 30;
-		}
-	}
 }

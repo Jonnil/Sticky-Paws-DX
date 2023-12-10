@@ -509,7 +509,6 @@ if (menu == "search_id_ok")
 || (menu == "searched_file_downloaded_deleted_download_again")
 || (menu == "searched_file_downloaded_deleted_back_to_list")
 || (menu == "searched_file_downloaded_deleted")
-|| (menu == "searching_for_id_back")
 || (menu == "play_from_cache_directory")
 || (menu == "download_to_working_directory")
 {

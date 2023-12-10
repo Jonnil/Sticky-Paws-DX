@@ -15,14 +15,17 @@ function scr_select_custom_level_menu()
 		var max_custom_levels_reached = false;
 	}
 	
-	if (global.controls_used_for_menu_navigation != "mouse")
-	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, draw_online_level_list_y + 42))
+	if (have_downloaded_from_server)
 	{
-		hovering_over_level_editor_corner_menu = true; /* When hovering the mouse over level editor corner menu, don't let the player click on other buttons like thumbnails */
-	}
-	else
-	{
-		hovering_over_level_editor_corner_menu = false;
+		/* If you are downloading a new level, the game needs to reload all custom levels when going back to back to level select, so you can select the new downloaded level */
+		search_for_id_still = false;
+		search_id = ""; /* Always set this to empty string when going back to previous menu */
+		can_navigate = false;
+		select_custom_level_menu_open = false;
+		show_level_editor_corner_menu = true;
+		scr_load_custom_level_initializing();
+		menu = "load_custom_level";
+		have_downloaded_from_server = false;
 	}
 	
 	/* If there isn't any thumbnails loaded at all, then that is a mistake, so go back so you could reload the custom levels and the thumbnails should be corrected */
@@ -457,7 +460,7 @@ function scr_select_custom_level_menu()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (open_sub_menu == false)
 		&& (can_input_level_name == false)
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 320, 42))
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 42))
 		&& (mouse_check_button_released(mb_left))
 		{
 			can_input_level_name = false;
@@ -652,6 +655,16 @@ function scr_select_custom_level_menu()
 			scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
 		}
 		#endregion /* Online Level List END */
+		
+		if (global.controls_used_for_menu_navigation == "mouse")
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, draw_online_level_list_y + 42))
+		{
+			hovering_over_level_editor_corner_menu = true; /* When hovering the mouse over level editor corner menu, don't let the player click on other buttons like thumbnails */
+		}
+		else
+		{
+			hovering_over_level_editor_corner_menu = false;
+		}
 		
 	}
 	#endregion /* Corner menu: Back button, Open custom levels folder, Search button END */
@@ -972,9 +985,9 @@ function scr_select_custom_level_menu()
 	}
 	#endregion /* Edit level description END */
 	
-	draw_set_halign(fa_right);
+	draw_set_halign(fa_center);
 	draw_set_valign(fa_center);
-	scr_draw_text_outlined(display_get_gui_width() * 0.5 - 32, 16, string(ds_list_size(global.all_loaded_custom_levels) - 1) + " " + l10n_text("Levels"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(display_get_gui_width() * 0.5, 16, string(ds_list_size(global.all_loaded_custom_levels) - 1) + " " + l10n_text("Levels"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	if (ds_list_size(global.all_loaded_custom_levels) - 1 >= 120)
 	{
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("There are too many levels stored"), global.default_text_size, c_menu_outline, c_menu_fill, 1);

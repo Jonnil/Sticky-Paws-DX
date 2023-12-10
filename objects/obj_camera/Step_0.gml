@@ -11,7 +11,7 @@ if (global.appear_block_timer > 60 * 5)
 	global.appear_block_timer = 0;
 }
 
-image_index = global.collectible_image_index;
+global.collectible_image_index = image_index; /* Make all the collectibles animate in sync */
 
 if (current_file != global.file)
 {

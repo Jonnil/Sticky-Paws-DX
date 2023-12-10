@@ -83,6 +83,7 @@ function scr_player_move_horizontal_rope()
 				y -= 64;
 				climb = false;
 				horizontal_rope_climb = false;
+				buffer_jump = 0;
 				spring_animation = 0;
 				spring = true;
 				
@@ -133,6 +134,7 @@ function scr_player_move_horizontal_rope()
 				y -= 64;
 				climb = false;
 				horizontal_rope_climb = false;
+				buffer_jump = 0;
 				spring_animation = 0;
 				spring = true;
 				vspeed = -normal_jump_height; /* Do the normal upward jump, no chargeup */
@@ -172,6 +174,7 @@ function scr_player_move_horizontal_rope()
 				can_ground_pound = false;
 				climb = false;
 				horizontal_rope_climb = false;
+				buffer_jump = 0;
 				stomp_spin = false;
 				midair_jumps_left = clamp(midair_jumps_left - 1, 0, number_of_jumps);
 			}

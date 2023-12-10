@@ -7,6 +7,20 @@ function scr_character_select_menu_step()
 	|| (menu == "input_name_ok")
 	|| (menu == "input_name_cancel")
 	{
+		if (have_downloaded_from_server)
+		{
+			/* If you are downloading a new character, the game needs to reload all custom characters when going back to back to character select, so you can select the new downloaded character */
+			search_for_id_still = false;
+			search_id = ""; /* Always set this to empty string when going back to previous menu */
+			player_menu[1] = "load_downloaded_character";
+			select_custom_level_menu_open = false;
+			scr_load_character_initializing();
+			player1_automatically_join = true;
+			menu = "load_characters";
+			menu_delay = 3;
+			menu_specific_joystick_delay[1] = 30;
+			have_downloaded_from_server = false;
+		}
 		
 		var get_window_height = display_get_gui_height();
 		var get_window_width = display_get_gui_width();

@@ -71,7 +71,7 @@ function scr_draw_report()
 		
 		/* Add the Content-Length header to the map */
 		ds_map_add(map, "Content-Length", string(string_length(post_data)));
-		global.http_request_id = http_request("https://" + global.base_url + "/report/" + string(content_type) + "s/" + string(search_id), "POST", map, post_data);
+		global.http_request_id = http_request("https://" + global.base_url + "/report/" + string(content_type) + "s/" + string(global.search_id), "POST", map, post_data);
 		
 		/* Cleans up! */
 		ds_map_destroy(map);
