@@ -5,6 +5,7 @@ function scr_draw_report()
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	if (menu == "report_send_to_server")
+	|| (menu == "report_complete_back")
 	|| (menu == "report_complete_delete")
 	|| (menu == "report_complete_back_to_online_list")
 	|| (menu == "report_complete_back_to_select")
@@ -80,7 +81,17 @@ function scr_draw_report()
 		if (os_is_network_connected())
 		{
 			search_for_id_still = false;
-			menu = "report_complete_delete"; /* When done sending report to server, go to the final menu */
+			if (content_type == "level")
+			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			|| (content_type == "character")
+			&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+			{
+				menu = "report_complete_delete"; /* When done sending report to server, go to the final menu */
+			}
+			else
+			{
+				menu = "report_complete_back_to_online_list"; /* When done sending report to server, go to the final menu */
+			}
 		}
 		else
 		{
@@ -97,15 +108,37 @@ function scr_draw_report()
 	#endregion /* Send report information to the server END */
 	
 	#region /* Report Complete */
-	if (menu == "report_complete_delete")
+	if (menu == "report_complete_back")
+	|| (menu == "report_complete_delete")
 	|| (menu == "report_complete_back_to_online_list")
 	{
 		var report_sent_message_y = display_get_gui_height() * 0.5;
 		
+		draw_menu_button(0, report_back_y, l10n_text("Back"), "report_complete_back", report_back_to_menu);
+		draw_sprite_ext(spr_icons_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
+		
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		|| (menu == "report_complete_back")
+		&& (key_a_pressed)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu = report_back_to_menu;
+			menu_delay = 3;
+		}
+		
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y - 64, l10n_text("Report has been sent"), global.default_text_size * 2, c_black, c_white, 1);
 		if (content_type == "level")
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y, l10n_text("You can delete the reported level if you want to"), global.default_text_size, c_black, c_white, 1);
+			if (content_type == "level")
+			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			|| (content_type == "character")
+			&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+			{
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y, l10n_text("You can delete the reported level if you want to"), global.default_text_size, c_black, c_white, 1);
+			}
 			var searched_file_downloaded_delete_y = report_sent_message_y + 50 + (42 * 2);
 			var back_to_list_y = report_sent_message_y + 50 + (42 * 3);
 			var back_to_list_text = l10n_text("Back to online level list");
@@ -114,46 +147,83 @@ function scr_draw_report()
 		}
 		else
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y, l10n_text("You can delete the reported character if you want to"), global.default_text_size, c_black, c_white, 1);
+			if (content_type == "level")
+			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			|| (content_type == "character")
+			&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+			{
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y, l10n_text("You can delete the reported character if you want to"), global.default_text_size, c_black, c_white, 1);
+			}
 			var searched_file_downloaded_delete_y = report_sent_message_y + 50 + (42 * 2);
 			var back_to_list_y = report_sent_message_y + 50 + (42 * 3);
 			var back_to_list_text = l10n_text("Back to online character list");
 			var searched_file_downloaded_back_y = report_sent_message_y + 50 + (42 * 4);
 			var searched_file_downloaded_back_text = l10n_text("Back to character select");
 		}
-		draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "report_complete_delete", "report_complete_delete", c_red);
-		draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
+		if (content_type == "level")
+		&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		|| (content_type == "character")
+		&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+		{
+			draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "report_complete_delete", "report_complete_delete", c_red);
+			draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
+		}
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, back_to_list_y, back_to_list_text, "report_complete_back_to_online_list", "report_complete_back_to_online_list");
 		draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
 		
 		#region /* Click Delete */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_delete_y + 41))
-		&& (global.controls_used_for_menu_navigation == "mouse")
-		&& (mouse_check_button_released(mb_left))
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (menu == "report_complete_delete")
-		&& (key_a_pressed)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		if (menu == "report_complete_delete")
 		{
-			if (content_type == "level")
-			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, display_get_gui_width() * 0.5 + 185, searched_file_downloaded_delete_y + 41))
+			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				directory_destroy(working_directory + "custom_levels/" + string(global.level_name));
-				ini_open(working_directory + "save_file/custom_level_save.ini");
-				ini_section_delete(string(global.level_name));
-				ini_close();
-				global.select_level_index = 0;
-				global.level_name = "";
+				menu_delay = 3;
+				if (content_type == "level")
+				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				{
+					directory_destroy(working_directory + "custom_levels/" + string(global.level_name));
+					ini_open(working_directory + "save_file/custom_level_save.ini");
+					ini_section_delete(string(global.level_name));
+					ini_close();
+					global.select_level_index = 0;
+					global.level_name = "";
+				}
+				else
+				if (content_type == "character")
+				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				{
+					directory_destroy(working_directory + "custom_characters/" + string(downloaded_character_name));
+					global.character_index[0] = 0;
+				}
+				
+				if (room == rm_title)
+				{
+					menu = "searched_file_downloaded_deleted_back_to_list";
+				}
+				else
+				if (room == rm_pause)
+				{
+					#region /* Return to Title */
+					
+					/* Reset timer back to zero */
+					global.timeattack_realmillisecond = 0;
+					global.timeattack_millisecond = 0;
+					global.timeattack_second = 0;
+					global.timeattack_minute = 0;
+					
+					global.quit_level = true;
+					global.quit_to_title = true;
+					audio_stop_all();
+					global.pause = false;
+					unpause = true;
+					#endregion /* Return to Title END */
+					
+				}
 			}
-			else
-			if (content_type == "character")
-			&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
-			{
-				directory_destroy(working_directory + "custom_characters/" + string(downloaded_character_name));
-				global.character_index[0] = 0;
-			}
-			menu = "searched_file_downloaded_deleted_back_to_list";
-			menu_delay = 3;
 		}
 		#endregion /* Click Delete END */
 		
@@ -167,8 +237,31 @@ function scr_draw_report()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			/* Don't set the "select level index" or "level name" here, because we want it saved still */
-			menu = "online_download_list_load"; /* Go back to online level list */
 			menu_delay = 3;
+			
+			if (room == rm_title)
+			{
+				menu = "online_download_list_load"; /* Go back to online level list */
+			}
+			else
+			if (room == rm_pause)
+			{
+				#region /* Return to Title */
+				
+				/* Reset timer back to zero */
+				global.timeattack_realmillisecond = 0;
+				global.timeattack_millisecond = 0;
+				global.timeattack_second = 0;
+				global.timeattack_minute = 0;
+				
+				global.quit_level = true;
+				global.quit_to_title = true;
+				audio_stop_all();
+				global.pause = false;
+				unpause = true;
+				#endregion /* Return to Title END */
+				
+			}
 		}
 		#endregion /* Click back to online level list END */
 		
@@ -176,14 +269,29 @@ function scr_draw_report()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			if (menu == "report_complete_delete")
+			if (menu == "report_complete_back")
 			{
 				menu = "report_complete_back_to_online_list";
 			}
 			else
+			if (menu == "report_complete_delete")
+			{
+				menu = "report_complete_back";
+			}
+			else
 			if (menu == "report_complete_back_to_online_list")
 			{
-				menu = "report_complete_delete";
+				if (content_type == "level")
+				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				|| (content_type == "character")
+				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				{
+					menu = "report_complete_delete";
+				}
+				else
+				{
+					menu = "report_complete_back";
+				}
 			}
 		}
 		else
@@ -191,6 +299,21 @@ function scr_draw_report()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
+			if (menu == "report_complete_back")
+			{
+				if (content_type == "level")
+				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				|| (content_type == "character")
+				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				{
+					menu = "report_complete_delete";
+				}
+				else
+				{
+					menu = "report_complete_back_to_online_list";
+				}
+			}
+			else
 			if (menu == "report_complete_delete")
 			{
 				menu = "report_complete_back_to_online_list";
@@ -198,7 +321,7 @@ function scr_draw_report()
 			else
 			if (menu == "report_complete_back_to_online_list")
 			{
-				menu = "report_complete_delete";
+				menu = "report_complete_back";
 			}
 		}
 		

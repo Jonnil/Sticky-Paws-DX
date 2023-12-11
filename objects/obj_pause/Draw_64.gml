@@ -121,27 +121,34 @@ if (hide_menu_for_clean_screenshots == false)
 && (os_type != os_ios)
 && (os_type != os_android)
 {
-	if (global.character_select_in_this_menu == "level_editor")
-	&& (global.search_id != "")
+	if (menu == "continue") /* Can only hide menu when on these buttons specifically */
+	|| (menu == "options")
+	|| (menu == "restart")
+	|| (menu == "quit")
+	|| (menu == "report")
 	{
-		var hide_menu_for_clean_screenshots_y = get_window_height - 64;
+		if (global.character_select_in_this_menu == "level_editor")
+		&& (global.search_id != "")
+		{
+			var hide_menu_for_clean_screenshots_y = get_window_height - 64;
+		}
+		else
+		{
+			var hide_menu_for_clean_screenshots_y = get_window_height - 32;
+		}
+		if (global.controls_used_for_menu_navigation == "gamepad")
+		|| (global.always_show_gamepad_buttons)
+		{
+			scr_draw_gamepad_buttons(gp_face4, 32, hide_menu_for_clean_screenshots_y, 0.75, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
+		}
+		else
+		{
+			draw_sprite_ext(spr_keyboard_keys, ord("Y"), 32, hide_menu_for_clean_screenshots_y, 0.75, 0.75, 0, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
+		}
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_middle);
+		scr_draw_text_outlined(64, hide_menu_for_clean_screenshots_y, ": " + l10n_text("Hide menu for clean screenshots"), global.default_text_size, c_black, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
 	}
-	else
-	{
-		var hide_menu_for_clean_screenshots_y = get_window_height - 32;
-	}
-	if (global.controls_used_for_menu_navigation == "gamepad")
-	|| (global.always_show_gamepad_buttons)
-	{
-		scr_draw_gamepad_buttons(gp_face4, 32, hide_menu_for_clean_screenshots_y, 0.75, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
-	}
-	else
-	{
-		draw_sprite_ext(spr_keyboard_keys, ord("Y"), 32, hide_menu_for_clean_screenshots_y, 0.75, 0.75, 0, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
-	}
-	draw_set_halign(fa_left);
-	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(64, hide_menu_for_clean_screenshots_y, ": " + l10n_text("Hide menu for clean screenshots"), global.default_text_size, c_black, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
 }
 #endregion /* Hide menu for clean screenshots text END */
 
@@ -415,6 +422,7 @@ if (hide_menu_for_clean_screenshots == false)
 		|| (menu == "report_send_back")
 		|| (menu == "report_send_confirm")
 		|| (menu == "report_send_to_server")
+		|| (menu == "report_complete_back")
 		|| (menu == "report_complete_delete")
 		|| (menu == "report_complete_back_to_online_list")
 		|| (menu == "report_complete_back_to_select")

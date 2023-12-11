@@ -28,7 +28,23 @@ if (global.narrator >= 0)
 #region /* Hide menu for clean screenshots */
 if (hide_menu_for_clean_screenshots_timer < 60 * 3)
 {
-	hide_menu_for_clean_screenshots_timer ++;
+	if (menu == "continue") /* Can only hide menu when on these buttons specifically */
+	|| (menu == "options")
+	|| (menu == "restart")
+	|| (menu == "quit")
+	|| (menu == "report")
+	{
+		hide_menu_for_clean_screenshots_timer ++;
+	}
+}
+if (menu != "continue")
+&& (menu != "options")
+&& (menu != "restart")
+&& (menu != "quit")
+&& (menu != "report")
+{
+	hide_menu_for_clean_screenshots_timer = 0;
+	hide_menu_for_clean_screenshots_alpha = lerp(hide_menu_for_clean_screenshots_alpha, 0, 0.01);
 }
 if (hide_menu_for_clean_screenshots_timer = 60 * 3)
 {
@@ -48,14 +64,21 @@ if (keyboard_check_pressed(ord("Y")))
 || (gamepad_button_check_pressed(global.player_slot[3], gp_face4))
 || (gamepad_button_check_pressed(global.player_slot[4], gp_face4))
 {
-	if (hide_menu_for_clean_screenshots == false)
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	&& (in_settings == false)
-	&& (menu != "quit_game_yes")
-	&& (menu != "quit_game_no")
+	if (menu == "continue") /* Can only hide menu when on these buttons specifically */
+	|| (menu == "options")
+	|| (menu == "restart")
+	|| (menu == "quit")
+	|| (menu == "report")
 	{
-		hide_menu_for_clean_screenshots = true;
-		menu_delay = 3;
+		if (hide_menu_for_clean_screenshots == false)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (in_settings == false)
+		&& (menu != "quit_game_yes")
+		&& (menu != "quit_game_no")
+		{
+			hide_menu_for_clean_screenshots = true;
+			menu_delay = 3;
+		}
 	}
 }
 
