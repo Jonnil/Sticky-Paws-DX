@@ -185,6 +185,7 @@ function scr_initialize_object_id_enums()
 		#endregion /* Bucket END */
 		
 		ID_BIRD = 89,
+		ID_BUSH = 891,
 		ID_SIGN_CROUCH = 90,
 		ID_SIGN_DIVE = 91,
 		ID_SIGN_GROUND_POUND = 92,

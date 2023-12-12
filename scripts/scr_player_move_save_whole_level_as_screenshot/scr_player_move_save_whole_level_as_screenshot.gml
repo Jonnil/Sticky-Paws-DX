@@ -4,28 +4,30 @@ function scr_player_move_save_whole_level_as_screenshot()
 	#region /* Save whole level as screenshot png file */
 	if (global.full_level_map_screenshot)
 	{
+		/* Check if the dimensions are valid (greater than 0 and less than 8192) In the case where dimensions are not valid, then don't resize the surface, otherwise game will crash */
+		var new_width = round(clamp(room_width, 1, 8192)); /* Clamp to a reasonable width and height, and also round the number so it's not a floating point */
+		var new_height = round(clamp(room_height, 1, 8192));
+		
 		if (full_level_map_screenshot_timer <= 0)
 		{
 			can_move = false; /* Make it so you can't move while game is generating a full level map screenshot, so you can't mess with the screenshot */
 			instance_activate_all();
-	
+			
 			#region /* Delete some objects so it doesn't show up in the screenshot */
 			if (instance_exists(obj_camera))
 			{
 				instance_destroy(obj_camera);
 			}
 			#endregion /* Delete some objects so it doesn't show up in the screenshot END */
-	
-			camera_set_view_border(view_camera[view_current], room_width, room_height); /* View Border */
+			
+			camera_set_view_border(view_camera[view_current], new_width, new_height); /* View Border */
 			camera_set_view_pos(view_camera[view_current], 0, 0); /* Set camera position in top left corner when taking full level map screenshots */
-			camera_set_view_size(view_camera[view_current], room_width, room_height);
-			display_set_gui_size(room_width, room_height);
-			if (room_width > 0) /* Check if the dimensions are valid (greater than 0) */
-			&& (room_height > 0) /* In the case where dimensions are not valid, then don't resize the surface, otherwise game will crash */
-			{
-				surface_resize(application_surface, room_width, room_height);
-			}
-			window_set_rectangle(0, 0, room_width, room_height);
+			camera_set_view_size(view_camera[view_current], new_width, new_height);
+			display_set_gui_size(new_width, new_height);
+			
+			surface_resize(application_surface, new_width, new_height);
+			
+			window_set_rectangle(0, 0, new_width, new_height);
 			full_level_map_screenshot_timer = 1;
 		}
 		if (full_level_map_screenshot_timer >= 1)
@@ -35,7 +37,7 @@ function scr_player_move_save_whole_level_as_screenshot()
 		if (full_level_map_screenshot_timer == 15)
 		{
 			var custom_level_map_sprite;
-			custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, room_width, room_height, false, false, 0, 0);
+			custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, new_width, new_height, false, false, 0, 0);
 			if (global.character_select_in_this_menu == "level_editor")
 			&& (global.select_level_index <= 0)
 			|| (global.character_select_in_this_menu == "level_editor")

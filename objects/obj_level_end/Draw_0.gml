@@ -64,25 +64,21 @@ else
 }
 
 #region /* Make sure the level end isn't outside of the level, this code has to be after the drag object code */
-if (x < 32)
+if (x < 16)
 {
-	x = 32;
+	x = 16;
 }
-if (x < 0 + sprite_width - 32)
+if (y < 16)
 {
-	x = 0 + sprite_width - 32;
+	y = 16;
 }
-if (x > room_width - sprite_width + 16)
+if (instance_exists(obj_level_width) && x > obj_level_width.x - 32)
 {
-	x = room_width - sprite_width + 16;
+	x = obj_level_width.x - 32;
 }
-if (y < 32)
+if (instance_exists(obj_level_height) && y > obj_level_height.y - 32)
 {
-	y = 32;
-}
-if (y > room_height)
-{
-	y = room_height;
+	y = obj_level_height.y - 32;
 }
 #endregion /* Make sure the level end isn't outside of the level, this code has to be after the drag object code END */
 

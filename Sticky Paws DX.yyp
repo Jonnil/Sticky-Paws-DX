@@ -45,6 +45,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprite Masks","folderPath":"folders/Sprites/Sprite Masks.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Decoration","folderPath":"folders/Objects/Level Objects/Decoration.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"character_config.ini","CopyToMask":-1,"filePath":"datafiles/characters/catlyn/data",},
@@ -3138,6 +3139,7 @@
     {"id":{"name":"scr_player_move_partner_character","path":"scripts/scr_player_move_partner_character/scr_player_move_partner_character.yy",},},
     {"id":{"name":"spr_virtual_key_right","path":"sprites/spr_virtual_key_right/spr_virtual_key_right.yy",},},
     {"id":{"name":"spr_bucket","path":"sprites/spr_bucket/spr_bucket.yy",},},
+    {"id":{"name":"spr_bush","path":"sprites/spr_bush/spr_bush.yy",},},
     {"id":{"name":"scr_draw_caution_online","path":"scripts/scr_draw_caution_online/scr_draw_caution_online.yy",},},
     {"id":{"name":"spr_effect_turnaround","path":"sprites/spr_effect_turnaround/spr_effect_turnaround.yy",},},
     {"id":{"name":"scr_buffer_async_load","path":"scripts/scr_buffer_async_load/scr_buffer_async_load.yy",},},
@@ -3230,6 +3232,7 @@
     {"id":{"name":"spr_menu_button_player_subtract","path":"sprites/spr_menu_button_player_subtract/spr_menu_button_player_subtract.yy",},},
     {"id":{"name":"scr_raycast","path":"scripts/scr_raycast/scr_raycast.yy",},},
     {"id":{"name":"scr_options_reset_controls_to_default_settings","path":"scripts/scr_options_reset_controls_to_default_settings/scr_options_reset_controls_to_default_settings.yy",},},
+    {"id":{"name":"obj_bush","path":"objects/obj_bush/obj_bush.yy",},},
     {"id":{"name":"scr_initialize_object_id_enums","path":"scripts/scr_initialize_object_id_enums/scr_initialize_object_id_enums.yy",},},
     {"id":{"name":"scr_get_1up_when_collect_basic_collectibles","path":"scripts/scr_get_1up_when_collect_basic_collectibles/scr_get_1up_when_collect_basic_collectibles.yy",},},
     {"id":{"name":"scr_initialize_virtual_button","path":"scripts/scr_initialize_virtual_button/scr_initialize_virtual_button.yy",},},

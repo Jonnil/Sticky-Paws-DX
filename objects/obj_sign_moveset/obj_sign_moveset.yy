@@ -12,8 +12,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Level Objects",
-    "path": "folders/Objects/Level Objects.yy",
+    "name": "Decoration",
+    "path": "folders/Objects/Level Objects/Decoration.yy",
   },
   "parentObjectId": null,
   "persistent": false,

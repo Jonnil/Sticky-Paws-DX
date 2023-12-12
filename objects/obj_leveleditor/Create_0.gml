@@ -158,9 +158,7 @@ if (global.actually_play_edited_level == false)
 	{
 		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 		
-		/* Read all the objects that should be unlocked */
-		
-		#region /* Terrain Objects */
+		#region /* Read all the objects that should be unlocked */
 		unlocked_object[LEVEL_OBJECT_ID.ID_WALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_DIRT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_DIRT, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GLASS] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_GLASS, false);
@@ -186,24 +184,15 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_CLOUD_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_ICE_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ICE_BLOCK, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL, false);
-		#endregion /* Terrain Objects END */
-		
-		#region /* Item Objects */
 		unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_HEART] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_HEART, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_ONE_UP] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ONE_UP, false);
-		#endregion /* Item Objects END */
-		
-		#region /* Enemy Objects */
 		unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BASIC_ENEMY, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_BOSS] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BOSS, false);
-		#endregion /* Enemy Objects END */
-		
-		#region /* Gizmo Objects */
 		unlocked_object[LEVEL_OBJECT_ID.ID_BLASTER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BLASTER, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_DOOR] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_DOOR, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_WARP_BOX] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WARP_BOX, false);
@@ -214,9 +203,6 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_CHECKPOINT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CHECKPOINT, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_ONEWAY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ONEWAY, false);
-		#endregion /* Gizmo Objects END */
-		
-		#region /* Special Items */
 		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CARDBOARD, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CARDBOARD_LONG, false);
@@ -235,6 +221,7 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_BUCKET] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BUCKET, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_BIRD] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BIRD, false);
+		unlocked_object[LEVEL_OBJECT_ID.ID_BUSH] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BUSH, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_SIGN_CROUCH] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SIGN_CROUCH, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_BOSS_BARRIER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BOSS_BARRIER, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false);
@@ -249,15 +236,14 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, false);
 		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, false);
-		#endregion /* Special Items END */
+		#region /* Read all the objects that should be unlocked */
 		
 		ini_close();
 	}
 	else
 	{
-		/* Unlock every object */
 		
-		#region /* Terrain Objects */
+		#region /* Unlock every object */
 		unlocked_object[LEVEL_OBJECT_ID.ID_WALL] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_DIRT] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GLASS] = 2;
@@ -277,24 +263,15 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_CLOUD_BLOCK] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_ICE_BLOCK] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL] = 2;
-		#endregion /* Terrain Objects END */
-		
-		#region /* Item Objects */
 		unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_HEART] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_ONE_UP] = 2;
-		#endregion /* Item Objects END */
-		
-		#region /* Enemy Objects */
 		unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_ENEMY] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_BOSS] = 2;
-		#endregion /* Enemy Objects END */
-		
-		#region /* Gizmo Objects */
 		unlocked_object[LEVEL_OBJECT_ID.ID_BLASTER] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_DOOR] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_WARP_BOX] = 2;
@@ -305,9 +282,6 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_CHECKPOINT] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_ONEWAY] = 2;
-		#endregion /* Gizmo Objects END */
-		
-		#region /* Special Items */
 		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD_LONG] = 2;
@@ -326,6 +300,7 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_BUCKET] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_BIRD] = 2;
+		unlocked_object[LEVEL_OBJECT_ID.ID_BUSH] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_SIGN_CROUCH] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_BOSS_BARRIER] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY] = 2;
@@ -340,7 +315,7 @@ if (global.actually_play_edited_level == false)
 		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4] = 2;
 		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5] = 2;
-		#endregion /* Special Items END */
+		#endregion /* Unlock every object END */
 		
 	}
 	#endregion /* Unlock placable objects END */
@@ -548,6 +523,7 @@ if (global.actually_play_edited_level == false)
 	add_object(LEVEL_OBJECT_ID.ID_BUCKET_TWO_UP, spr_bucket, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BUCKET_THREE_UP, spr_bucket, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_BIRD, spr_bird, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
+	add_object(LEVEL_OBJECT_ID.ID_BUSH, spr_bush, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	
 	#region /* Signs */
 	add_object(LEVEL_OBJECT_ID.ID_SIGN_CROUCH, spr_sign_crouch, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
