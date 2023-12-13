@@ -11,7 +11,7 @@ function scr_draw_text_outlined(x_position = x, y_position = y, string_text = ""
 	
 	/* Draw outline of text */
 	if (outline_color != noone) {
-		for (var i = 0; i < array_length_2d(outline_positions); i++) {
+		for (var i = 0; i < array_length(outline_positions); i++) {
 			var outline_offset = outline_positions[i];
 			draw_text_transformed_color(x_position + outline_offset[0] * text_size_adjusted, y_position + outline_offset[1] * text_size_adjusted, string_text, text_size_adjusted, text_size_adjusted, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
 		}
