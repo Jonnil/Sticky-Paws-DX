@@ -547,10 +547,10 @@ if (room != rm_title)
 	}
 	else
 	/* OGG small letter File */
-	if (file_exists(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/lose_melody.ogg"))
+	if (file_exists(global.use_cache_or_working + "custom_levels/" + global.level_name + "/sound/lose_melody.ogg"))
 	&& (global.character_select_in_this_menu == "level_editor")
 	{
-		player_lose_melody = audio_create_stream(global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/sound/lose_melody.ogg");
+		player_lose_melody = audio_create_stream(global.use_cache_or_working + "custom_levels/" + global.level_name + "/sound/lose_melody.ogg");
 	}
 	else
 	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/lose_melody.ogg"))
@@ -703,7 +703,7 @@ active_jump = false;
 if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "main_game")
 {
-	var level_name = string(global.level_name);
+	var level_name = global.level_name;
 	
 	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
@@ -713,7 +713,7 @@ else
 if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "level_editor")
 {
-	var level_name = string(global.level_name);
+	var level_name = global.level_name;
 	
 	ini_open(working_directory + "save_file/custom_level_save.ini");
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);

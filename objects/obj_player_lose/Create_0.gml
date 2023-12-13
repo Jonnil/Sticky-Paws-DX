@@ -46,7 +46,7 @@ if (global.character_select_in_this_menu == "main_game")
 else
 if (global.character_select_in_this_menu == "level_editor")
 {
-	var level_name = string(global.level_name);
+	var level_name = global.level_name;
 	
 	ini_open(working_directory + "save_file/custom_level_save.ini");
 	ini_write_real(level_name, "number_of_defeats", ini_read_real(level_name, "number_of_defeats", 0) + 1);

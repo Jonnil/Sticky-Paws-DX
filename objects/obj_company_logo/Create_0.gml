@@ -121,7 +121,7 @@ global.http_request_info = noone;
 
 
 #region /* Things you shouldn't change, warning, don't change any of these options or you might break the game! */
-window_set_caption(string(global.game_name) + " v" + string(scr_get_build_date())); /* Set the window caption to be the game name and version number, so it's always obvious what game and version you're playing */
+window_set_caption(string(global.game_name) + " v" + scr_get_build_date()); /* Set the window caption to be the game name and version number, so it's always obvious what game and version you're playing */
 
 scr_sync_saving_create();
 randomize(); /* You need to get random level ID codes when you upload a new level */

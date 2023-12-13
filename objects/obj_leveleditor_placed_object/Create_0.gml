@@ -4,11 +4,11 @@ normal = 1;
 hard = 1;
 object = 0;
 menu_joystick_delay = 0;
+drag_object = false;
 
 if (global.actually_play_edited_level == false)
 {
 	modify_object_menu = false;
-	drag_object = false;
 	dragged_from_original_place = false;
 	placed_for_the_first_time = false;
 	drag_xstart = x;

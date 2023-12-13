@@ -183,7 +183,7 @@ function scr_select_official_level_menu()
 			{
 				if (level_editor_options_back_to_menu == "change_entire_theme")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background1", take_from_official_level);
 					ini_write_string("info", "default_background2", take_from_official_level);
 					ini_write_string("info", "default_background3", take_from_official_level);
@@ -202,7 +202,7 @@ function scr_select_official_level_menu()
 				else
 				if (level_editor_options_back_to_menu == "change_all_background")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background1", take_from_official_level);
 					ini_write_string("info", "default_background2", take_from_official_level);
 					ini_write_string("info", "default_background3", take_from_official_level);
@@ -212,7 +212,7 @@ function scr_select_official_level_menu()
 				else
 				if (level_editor_options_back_to_menu == "change_all_foreground")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_foreground1", take_from_official_level);
 					ini_write_string("info", "default_foreground1_5", take_from_official_level);
 					ini_write_string("info", "default_foreground2", take_from_official_level);
@@ -222,63 +222,63 @@ function scr_select_official_level_menu()
 				else
 				if (level_editor_options_back_to_menu == "change_background1")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background1", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_background2")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background2", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_background3")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background3", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_background4")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background4", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_foreground1")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_foreground1", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_foreground1_5")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_foreground1_5", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_foreground2")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_foreground2", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_foreground_secret")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_foreground_secret", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_all_music")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_music_overworld", take_from_official_level);
 					ini_write_string("info", "default_music_underwater", take_from_official_level);
 					ini_write_string("info", "default_ambience_overworld", take_from_official_level);
@@ -289,35 +289,35 @@ function scr_select_official_level_menu()
 				else
 				if (level_editor_options_back_to_menu == "change_music_overworld")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_music_overworld", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_music_underwater")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_music_underwater", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_ambience_overworld")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_ambience_music", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_ambience_underwater")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_ambience_music", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				if (level_editor_options_back_to_menu == "change_clear_melody")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_clear_melody", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
@@ -604,45 +604,45 @@ function scr_select_official_level_menu()
 				
 				#region /* Create directories */
 				var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
-					if (!directory_exists(working_directory + "custom_levels/" + string(global.level_name)))
+					if (!directory_exists(working_directory + "custom_levels/" + global.level_name))
 					{
-						directory_create(working_directory + "custom_levels/" + string(global.level_name));
+						directory_create(working_directory + "custom_levels/" + global.level_name);
 					}
 					show_debug_message("Create template level directory");
 				}, [], 1);
 				time_source_start(time_source); time_source_period += 1;
 				
 				var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
-					if (!directory_exists(working_directory + "custom_levels/" + string(global.level_name) + "/background"))
+					if (!directory_exists(working_directory + "custom_levels/" + global.level_name + "/background"))
 					{
-						directory_create(working_directory + "custom_levels/" + string(global.level_name) + "/background");
+						directory_create(working_directory + "custom_levels/" + global.level_name + "/background");
 					}
 					show_debug_message("Create template level background directory");
 				}, [], 1);
 				time_source_start(time_source); time_source_period += 1;
 				
 				var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
-					if (!directory_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data"))
+					if (!directory_exists(working_directory + "custom_levels/" + global.level_name + "/data"))
 					{
-						directory_create(working_directory + "custom_levels/" + string(global.level_name) + "/data");
+						directory_create(working_directory + "custom_levels/" + global.level_name + "/data");
 					}
 					show_debug_message("Create template level data directory");
 				}, [], 1);
 				time_source_start(time_source); time_source_period += 1;
 				
 				var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
-					if (!directory_exists(working_directory + "custom_levels/" + string(global.level_name) + "/sound"))
+					if (!directory_exists(working_directory + "custom_levels/" + global.level_name + "/sound"))
 					{
-						directory_create(working_directory + "custom_levels/" + string(global.level_name) + "/sound");
+						directory_create(working_directory + "custom_levels/" + global.level_name + "/sound");
 					}
 					show_debug_message("Create template level sound directory");
 				}, [], 1);
 				time_source_start(time_source); time_source_period += 1;
 				
 				var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
-					if (!directory_exists(working_directory + "custom_levels/" + string(global.level_name) + "/tilesets"))
+					if (!directory_exists(working_directory + "custom_levels/" + global.level_name + "/tilesets"))
 					{
-						directory_create(working_directory + "custom_levels/" + string(global.level_name) + "/tilesets");
+						directory_create(working_directory + "custom_levels/" + global.level_name + "/tilesets");
 					}
 					show_debug_message("Create template level tilesets directory");
 				}, [], 1);
@@ -657,7 +657,7 @@ function scr_select_official_level_menu()
 					if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png"))
 					{
 						file_copy("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/tilesets/tileset_default.png",
-						working_directory + "custom_levels/" + string(global.level_name) + "/tilesets/tileset_default.png");
+						working_directory + "custom_levels/" + global.level_name + "/tilesets/tileset_default.png");
 						show_debug_message("Copy tileset_default.png from official level");
 					}
 				}, [], 1);
@@ -668,7 +668,7 @@ function scr_select_official_level_menu()
 					{
 						/* Copy over the "level information.ini" first, before writing to the file */
 						file_copy("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini",
-						working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+						working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						show_debug_message("Copy level_information.ini from official level");
 					}
 				}, [], 1);
@@ -678,7 +678,7 @@ function scr_select_official_level_menu()
 					if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.json"))
 					{
 						file_copy("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.json",
-						working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json");
+						working_directory + "custom_levels/" + global.level_name + "/data/object_placement_all.json");
 						show_debug_message("Copy object_placement_all.json from official level");
 					}
 				}, [], 1);
@@ -688,7 +688,7 @@ function scr_select_official_level_menu()
 					if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/automatic_thumbnail.png"))
 					{
 						file_copy("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/automatic_thumbnail.png",
-						working_directory + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png");
+						working_directory + "custom_levels/" + global.level_name + "/automatic_thumbnail.png");
 						show_debug_message("Copy automatic_thumbnail.png from official level");
 					}
 				}, [], 1);
@@ -698,7 +698,7 @@ function scr_select_official_level_menu()
 					if (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/thumbnail.png"))
 					{
 						file_copy("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/thumbnail.png",
-						working_directory + "custom_levels/" + string(global.level_name) + "/automatic_thumbnail.png"); /* Make any normal thumbnail into automatic thumbnail, so it can be automatically replaced later */
+						working_directory + "custom_levels/" + global.level_name + "/automatic_thumbnail.png"); /* Make any normal thumbnail into automatic thumbnail, so it can be automatically replaced later */
 						show_debug_message("Copy thumbnail.png from official level");
 					}
 				}, [], 1);
@@ -707,8 +707,8 @@ function scr_select_official_level_menu()
 				
 				/* After "level information.ini" has been copied, write new information to it */
 				var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-					show_debug_message("ini_open(" + string(working_directory) + "custom_levels/" + string(global.level_name) + "/data/level_information.ini);")
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+					show_debug_message("ini_open(" + string(working_directory) + "custom_levels/" + global.level_name + "/data/level_information.ini);")
 				}, [], 1);
 				time_source_start(time_source); time_source_period += 1;
 				
@@ -860,8 +860,8 @@ function scr_select_official_level_menu()
 				
 				/* Update the "first created on version" so it's the version when you create the template level */
 				var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
-					ini_write_string("info", "first_created_on_version", "v" + string(scr_get_build_date()));
-					show_debug_message("Set first_created_on_version to v" + string(scr_get_build_date()));
+					ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
+					show_debug_message("Set first_created_on_version to v" + scr_get_build_date());
 				}, [], 1);
 				time_source_start(time_source); time_source_period += 1;
 				

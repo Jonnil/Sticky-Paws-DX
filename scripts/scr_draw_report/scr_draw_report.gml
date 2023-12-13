@@ -82,7 +82,7 @@ function scr_draw_report()
 		{
 			search_for_id_still = false;
 			if (content_type == "level")
-			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 			|| (content_type == "character")
 			&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 			{
@@ -133,7 +133,7 @@ function scr_draw_report()
 		if (content_type == "level")
 		{
 			if (content_type == "level")
-			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 			|| (content_type == "character")
 			&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 			{
@@ -148,7 +148,7 @@ function scr_draw_report()
 		else
 		{
 			if (content_type == "level")
-			&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+			&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 			|| (content_type == "character")
 			&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 			{
@@ -161,7 +161,7 @@ function scr_draw_report()
 			var searched_file_downloaded_back_text = l10n_text("Back to character select");
 		}
 		if (content_type == "level")
-		&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 		|| (content_type == "character")
 		&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 		{
@@ -183,11 +183,11 @@ function scr_draw_report()
 			{
 				menu_delay = 3;
 				if (content_type == "level")
-				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				{
-					directory_destroy(working_directory + "custom_levels/" + string(global.level_name));
+					directory_destroy(working_directory + "custom_levels/" + global.level_name);
 					ini_open(working_directory + "save_file/custom_level_save.ini");
-					ini_section_delete(string(global.level_name));
+					ini_section_delete(global.level_name);
 					ini_close();
 					global.select_level_index = 0;
 					global.level_name = "";
@@ -282,7 +282,7 @@ function scr_draw_report()
 			if (menu == "report_complete_back_to_online_list")
 			{
 				if (content_type == "level")
-				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				|| (content_type == "character")
 				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{
@@ -302,7 +302,7 @@ function scr_draw_report()
 			if (menu == "report_complete_back")
 			{
 				if (content_type == "level")
-				&& (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				|| (content_type == "character")
 				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{

@@ -106,7 +106,7 @@ function scr_player_move_goal()
 					global.checkpoint_minute = 0;
 					global.checkpoint_realmillisecond = 0;
 					
-					var level_name = string(global.level_name);
+					var level_name = global.level_name;
 					
 					ini_open(working_directory + "save_file/custom_level_save.ini");
 					ini_write_real(level_name, "checkpoint_x", 0);

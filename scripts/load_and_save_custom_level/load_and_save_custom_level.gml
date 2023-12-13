@@ -14,7 +14,7 @@ function scr_load_object_placement_json()
 			var directories = ["background", "data", "sound", "tilesets"];
 			for (var i = 0; i < array_length_1d(directories); i++)
 			{
-				var dir_path = global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/" + directories[i];
+				var dir_path = global.use_cache_or_working + "custom_levels/" + global.level_name + "/" + directories[i];
 				if (!directory_exists(dir_path))
 					directory_create(dir_path);
 			}
@@ -25,7 +25,7 @@ function scr_load_object_placement_json()
 	if (load_main_game_level)
 		file_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.json";
 	else if (global.level_name != "")
-		file_path = global.use_cache_or_working + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json";
+		file_path = global.use_cache_or_working + "custom_levels/" + global.level_name + "/data/object_placement_all.json";
 	
 	if (file_exists(file_path))
 	{
@@ -123,14 +123,14 @@ function scr_save_custom_level_json()
 	{
 		
 		/* Create directory for saving custom levels */
-		if (!global.automatically_play_downloaded_level && global.level_name != "" && !file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini")) directory_create(working_directory + "custom_levels/" + string(global.level_name));
+		if (!global.automatically_play_downloaded_level && global.level_name != "" && !file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini")) directory_create(working_directory + "custom_levels/" + global.level_name);
 		
 		var file
 		
 		#region /* Save object placement */
 		if (global.level_name != "")
 		{
-			file = file_text_open_write(working_directory + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json"); /* Open file for writing */
+			file = file_text_open_write(working_directory + "custom_levels/" + global.level_name + "/data/object_placement_all.json"); /* Open file for writing */
 		}
 		
 		var data = [];
@@ -208,10 +208,10 @@ function scr_save_level_information()
 	#region /* Save Level Information */
 	if (global.level_name != "")
 	{
-		ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 		if (!ini_key_exists("info", "first_created_on_version"))
 		{
-			ini_write_string("info", "first_created_on_version", "v" + string(scr_get_build_date()));
+			ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
 		}
 		ini_write_string("info", "level_name", global.level_name);
 		ini_write_string("info", "username", global.username);

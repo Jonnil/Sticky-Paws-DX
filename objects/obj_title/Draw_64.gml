@@ -116,7 +116,7 @@ if (os_type != os_ios)
 #region /* Build Date and Version */
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
-scr_draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v" + string(scr_get_build_date()), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+scr_draw_text_outlined(0 + 16, display_get_gui_height() - 16 + version_y_pos, "v" + scr_get_build_date(), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 draw_set_halign(fa_center);
 #endregion /* Build Date and Version END */
 

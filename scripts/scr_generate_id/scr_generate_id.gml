@@ -15,7 +15,7 @@ function scr_generate_id(what_kind_of_id = "level")
 	/* Save the ID and username in the .ini file */
 	if (what_kind_of_id == "level")
 	{
-		ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+		ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 		ini_write_string("info", "level_id", string(generate_id)); /* Save the level ID in the level_information.ini file, so that it can be referenced later */
 		level_id = generate_id;
 	}

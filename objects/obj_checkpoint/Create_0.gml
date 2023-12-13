@@ -19,7 +19,7 @@ if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "main_game")
 && (global.actually_play_edited_level)
 {
-	var level_name = string(global.level_name);
+	var level_name = global.level_name;
 					
 	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 	checkpoint_what_player = ini_read_real(level_name, "checkpoint_what_player", 1);
@@ -30,7 +30,7 @@ if (room == rm_leveleditor)
 && (global.character_select_in_this_menu == "level_editor")
 && (global.actually_play_edited_level)
 {
-	var level_name = string(global.level_name);
+	var level_name = global.level_name;
 					
 	ini_open(working_directory + "save_file/custom_level_save.ini");
 	checkpoint_what_player = ini_read_real(level_name, "checkpoint_what_player", 1);

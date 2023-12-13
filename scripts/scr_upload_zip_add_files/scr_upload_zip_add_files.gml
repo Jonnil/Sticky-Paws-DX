@@ -14,10 +14,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		var files = [];
 		var folder_name = "background";
 		var file_type = "png";
-		var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
+		var file_name = file_find_first(string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/*." + string(file_type), 0);
 		if (file_name != "")
 		{
-			zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+			zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 		}
 		while (file_name != "")
 		{
@@ -27,7 +27,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		
 			if (file_name != "")
 			{
-				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+				zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
 		file_find_close();
@@ -37,10 +37,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		var files = [];
 		var folder_name = "data";
 		var file_type = "ini";
-		var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
+		var file_name = file_find_first(string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/*." + string(file_type), 0);
 		if (file_name != "")
 		{
-			zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+			zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 		}
 		while (file_name != "")
 		{
@@ -50,7 +50,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		
 			if (file_name != "")
 			{
-				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+				zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
 		file_find_close();
@@ -60,10 +60,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		var files = [];
 		var folder_name = "data";
 		var file_type = "txt";
-		var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
+		var file_name = file_find_first(string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/*." + string(file_type), 0);
 		if (file_name != "")
 		{
-			zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+			zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 		}
 		while (file_name != "")
 		{
@@ -73,7 +73,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		
 			if (file_name != "")
 			{
-				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+				zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
 		file_find_close();
@@ -83,10 +83,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		var files = [];
 		var folder_name = "data";
 		var file_type = "json";
-		var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
+		var file_name = file_find_first(string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/*." + string(file_type), 0);
 		if (file_name != "")
 		{
-			zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+			zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 		}
 		while (file_name != "")
 		{
@@ -96,7 +96,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		
 			if (file_name != "")
 			{
-				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+				zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
 		file_find_close();
@@ -106,10 +106,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		var files = [];
 		var folder_name = "sound";
 		var file_type = "ogg";
-		var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
+		var file_name = file_find_first(string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/*." + string(file_type), 0);
 		if (file_name != "")
 		{
-			zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+			zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 		}
 		while (file_name != "")
 		{
@@ -119,7 +119,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		
 			if (file_name != "")
 			{
-				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+				zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
 		file_find_close();
@@ -129,10 +129,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		var files = [];
 		var folder_name = "tilesets";
 		var file_type = "png";
-		var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/*." + string(file_type), 0);
+		var file_name = file_find_first(string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/*." + string(file_type), 0);
 		if (file_name != "")
 		{
-			zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+			zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 		}
 		while (file_name != "")
 		{
@@ -142,7 +142,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		
 			if (file_name != "")
 			{
-				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
+				zip_add_file(z, level_name + "/" + string(folder_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
 		file_find_close();
@@ -151,10 +151,10 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		#region /* Other png files */
 		var files = [];
 		var file_type = "png";
-		var file_name = file_find_first(string(working_directory) + "custom_levels/" + string(level_name) + "/*." + string(file_type), 0);
+		var file_name = file_find_first(string(working_directory) + "custom_levels/" + level_name + "/*." + string(file_type), 0);
 		if (file_name != "")
 		{
-			zip_add_file(z, string(level_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(file_name));
+			zip_add_file(z, level_name + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(file_name));
 		}
 		while (file_name != "")
 		{
@@ -164,7 +164,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		
 			if (file_name != "")
 			{
-				zip_add_file(z, string(level_name) + "/" + string(file_name), string(working_directory) + "custom_levels/" + string(level_name) + "/" + string(file_name));
+				zip_add_file(z, level_name + "/" + string(file_name), string(working_directory) + "custom_levels/" + level_name + "/" + string(file_name));
 			}
 		}
 		file_find_close();

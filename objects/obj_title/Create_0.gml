@@ -484,7 +484,7 @@ var latest_whats_new_version = ini_read_string("config", "latest_whats_new_versi
 var latest_whats_new_text = ini_read_string("config", "latest_whats_new_text", "");
 ini_close();
 
-if (latest_whats_new_version != "v" + string(scr_get_build_date()) && latest_whats_new_text != global.whats_new)
+if (latest_whats_new_version != "v" + scr_get_build_date() && latest_whats_new_text != global.whats_new)
 {
 	latest_whats_new_read = false; /* The player have not read the latest what's new tab */
 }

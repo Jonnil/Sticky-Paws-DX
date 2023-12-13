@@ -190,7 +190,7 @@ if (show_loading_icon)
 		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			var level_name = string(global.level_name);
+			var level_name = global.level_name;
 			
 			ini_open(working_directory + "save_file/custom_level_save.ini");
 			ini_key_delete(level_name, "checkpoint_x");

@@ -700,7 +700,7 @@ function scr_select_custom_level_menu()
 		{
 			var text_scale_modifier = 1;
 		}
-		scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name), "\\", "/"), global.default_text_size * text_scale_modifier, c_menu_outline, c_dkgray, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, string_replace_all(game_save_id + "\custom_levels\\" + global.level_name, "\\", "/"), global.default_text_size * text_scale_modifier, c_menu_outline, c_dkgray, 1);
 	}
 	#endregion /* Show the path of the custom level on the bottom of the screen END */
 	
@@ -759,16 +759,16 @@ function scr_select_custom_level_menu()
 						ini_open(working_directory + "save_file/custom_level_save.ini");
 						ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-						scr_copy_move_files(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "custom_levels/" + string(global.level_name), true);
+						scr_copy_move_files(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), working_directory + "custom_levels/" + global.level_name, true);
 						scr_load_custom_level_initializing();
 						menu = "load_custom_level";
 						level_editor_edit_name = false;
 						if (global.level_name != "")
 						{
-							ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+							ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 							ini_write_string("info", "level_name", global.level_name);
 							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-							thumbnail_level_name[global.select_level_index] = string(global.level_name);
+							thumbnail_level_name[global.select_level_index] = global.level_name;
 						}
 						global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name); /* After renaming a level, make sure "select level index" is updated */
 					}
@@ -899,7 +899,7 @@ function scr_select_custom_level_menu()
 					menu_delay = 3;
 					
 					/* Save description to level_information.ini */
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "level_description", string(global.level_description));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					

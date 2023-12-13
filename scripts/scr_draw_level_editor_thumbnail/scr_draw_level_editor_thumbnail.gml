@@ -93,7 +93,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 				{
 					if (global.select_level_index == i)
 					{
-						current_text = string(l10n_text("Clear Checked"));
+						current_text = l10n_text("Clear Checked");
 						if (room == rm_title)
 						{
 							global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */

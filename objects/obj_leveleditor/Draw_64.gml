@@ -206,9 +206,7 @@ if (!global.actually_play_edited_level)
 		
 		#endregion /* List of Placable Objects END */
 		
-		draw_set_halign(fa_left);
 		draw_set_alpha(1);
-		scr_draw_text_outlined(16, 32, l10n_text("View X") + ": " + string(round(camera_get_view_x(view_camera[0]))) + "\n" + l10n_text("View Y") + ": " + string(round(camera_get_view_y(view_camera[0]))), global.default_text_size, c_black, c_white, 1);
 		
 		/* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is */
 		if (!modify_object_menu)
@@ -329,28 +327,28 @@ if (!global.actually_play_edited_level)
 				/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
 				if (global.level_name != "")
 				{
-					ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 				}
 				if (ini_key_exists("info", "first_created_on_version"))
 				{
 					draw_set_halign(fa_center);
 					draw_set_valign(fa_middle);
-					if (string_digits(ini_read_string("info", "first_created_on_version", "v" + string(scr_get_build_date()))) < string_digits(scr_get_build_date()))
+					if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) < string_digits(scr_get_build_date()))
 					{
 						scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32 - 32, l10n_text("Level made in old version"), global.default_text_size * 0.75, c_black, c_white, 1);
 					}
 					else
-					if (string_digits(ini_read_string("info", "first_created_on_version", "v" + string(scr_get_build_date()))) > string_digits(scr_get_build_date()))
+					if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) > string_digits(scr_get_build_date()))
 					{
 						scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32 - 32, l10n_text("Level made in new version"), global.default_text_size * 0.75, c_black, c_white, 1);
 					}
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, l10n_text("First created on version") + ": " + ini_read_string("info", "first_created_on_version", "v" + string(scr_get_build_date())), global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, l10n_text("First created on version") + ": " + ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date()), global.default_text_size, c_black, c_white, 1);
 				}
 				ini_close();
 				#endregion /* Show what version of the game the level was first created in END */
 			
 				#region /* Draw if level have been Clear Checked on top of screen */
-				ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+				ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 				
 				var clear_check = ini_read_string("info", "clear_check", false);
 				
@@ -359,7 +357,7 @@ if (!global.actually_play_edited_level)
 				{
 					draw_set_halign(fa_left);
 					draw_set_valign(fa_middle);
-					scr_draw_text_outlined(64, 32, string(l10n_text("Clear Checked")), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
+					scr_draw_text_outlined(64, 32, l10n_text("Clear Checked"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
 					draw_sprite_ext(spr_checkpoint, 1, 32, 32, scr_wave(0.4, 0.5, 1, 0), scr_wave(0.4, 0.5, 1, 0), 0, c_white, 1);
 				}
 				ini_close();
@@ -373,7 +371,7 @@ if (!global.actually_play_edited_level)
 				
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 - 126, get_window_width * 0.5 + 185, get_window_height * 0.5 -84))
 				&& (global.controls_used_for_menu_navigation == "mouse")
-				&& (mouse_check_button_pressed(mb_left))
+				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -417,7 +415,7 @@ if (!global.actually_play_edited_level)
 			
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 -84, get_window_width * 0.5 + 185, get_window_height * 0.5 - 42))
 				&& (global.controls_used_for_menu_navigation == "mouse")
-				&& (mouse_check_button_pressed(mb_left))
+				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					quit_level_editor = false;
@@ -478,7 +476,7 @@ if (!global.actually_play_edited_level)
 				
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 -42, get_window_width * 0.5 + 185, get_window_height * 0.5))
 				&& (global.controls_used_for_menu_navigation == "mouse")
-				&& (mouse_check_button_pressed(mb_left))
+				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (menu == "level_editor_options")
 				&& (!can_input_level_name)
@@ -540,7 +538,7 @@ if (!global.actually_play_edited_level)
 					
 					if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42))
 					&& (global.controls_used_for_menu_navigation == "mouse")
-					&& (mouse_check_button_pressed(mb_left))
+					&& (mouse_check_button_released(mb_left))
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
@@ -606,7 +604,7 @@ if (!global.actually_play_edited_level)
 					{
 						if (global.level_name != "")
 						{
-							scr_open_folder(game_save_id + "\custom_levels\\" + string(global.level_name))
+							scr_open_folder(game_save_id + "\custom_levels\\" + global.level_name)
 						}
 					}
 					if (menu == "open_custom_levels_folder")
@@ -671,7 +669,7 @@ if (!global.actually_play_edited_level)
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Save and Quit"), "quit", noone);
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42 + 42))
 				&& (global.controls_used_for_menu_navigation == "mouse")
-				&& (mouse_check_button_pressed(mb_left))
+				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (key_a_pressed)
 				&& (menu == "quit")
@@ -728,7 +726,7 @@ if (!global.actually_play_edited_level)
 				{
 					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224, l10n_text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
 					var full_level_map_size = (get_window_width <= 1350) ? 0.75 : 1;
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 32, string_replace_all(string(game_save_id) + "\custom_levels\\" + string(global.level_name) + "\\full_level_map_" + string(global.level_name) + ".png", "\\", "/"), global.default_text_size * full_level_map_size, c_black, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 32, string_replace_all(game_save_id + "\custom_levels\\" + global.level_name + "\\full_level_map_" + global.level_name + ".png", "\\", "/"), global.default_text_size * full_level_map_size, c_black, c_white, 1);
 				}
 				else
 				{
@@ -766,7 +764,7 @@ if (!global.actually_play_edited_level)
 				
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42))
 				&& (global.controls_used_for_menu_navigation == "mouse")
-				&& (mouse_check_button_pressed(mb_left))
+				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -826,7 +824,7 @@ if (!global.actually_play_edited_level)
 				
 				if (point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42))
 				&& (global.controls_used_for_menu_navigation == "mouse")
-				&& (mouse_check_button_pressed(mb_left))
+				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -912,18 +910,18 @@ if (!global.actually_play_edited_level)
 				#region /* Inputed Name Text */
 				if (name_enter_blink< 1)
 				{
-					scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name) + "|", global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + level_name + "|", global.default_text_size, c_black, c_white, 1);
 				}
 				else
 				{
-					scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + string(level_name), global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + level_name, global.default_text_size, c_black, c_white, 1);
 				}
 				#endregion /* Inputed Name Text END */
 				
 				#region /* Limit Name Input Length for Level Name */
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 + 100, "Limit: " + string(string_length(level_name)) + "/32", global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5 + 100, "Limit: " + string_length(level_name) + "/32", global.default_text_size, c_black, c_white, 1);
 				level_name = keyboard_string;
 				if (string_length(level_name) > 32)
 				{
@@ -1115,7 +1113,7 @@ if (!global.actually_play_edited_level)
 			
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(display_get_gui_width() - level_name_x_offset, display_get_gui_height() - 16, string(level_name_masked), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - level_name_x_offset, display_get_gui_height() - 16, level_name_masked, global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing END */
 		
@@ -1762,6 +1760,9 @@ if (!global.actually_play_edited_level)
 		#region /* Show Grid */
 		if (show_grid)
 		{
+			draw_set_halign(fa_left);
+			scr_draw_text_outlined(16, 32, l10n_text("View X") + ": " + string(round(camera_get_view_x(view_camera[0]))) + "\n" + l10n_text("View Y") + ": " + string(round(camera_get_view_y(view_camera[0]))), global.default_text_size, c_black, c_white, 1);
+			
 			draw_sprite_ext(spr_leveleditor_icons, 13, grid_button_x, + 32 + icons_at_top_y, 1, 1, 0, c_white, 1);
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_middle);
@@ -1874,7 +1875,7 @@ if (!global.actually_play_edited_level)
 			draw_rectangle_color(cursor_x + 16, cursor_y - 16, cursor_x + 240, cursor_y + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(cursor_x + 24, cursor_y, string(tooltip), global.default_text_size, c_white, c_black, 1);
+			scr_draw_text_outlined(cursor_x + 24, cursor_y, tooltip, global.default_text_size, c_white, c_black, 1);
 		}
 		if (show_tooltip > 100)
 		{
@@ -2173,13 +2174,13 @@ if (!global.actually_play_edited_level)
 		if (autosave_timer > 18000 - (60 * 10)) /* Warn player that there will be a autosave by counting down from 10 */
 		{
 			var autosave_countdown = ceil((autosave_timer - 18000) / -60);
-			autosave_text = l10n_text("Autosave in " + string(autosave_countdown));
+			autosave_text = l10n_text("Autosave in " + autosave_countdown);
 		}
 		if (autosave_text != "")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, autosave_text, global.default_text_size * 2, c_black, autosave_text_color, 1);
 			var autosave_countdown = ceil((autosave_timer - 18000) / -60);
-			if (autosave_text == l10n_text("Autosave in " + string(autosave_countdown)))
+			if (autosave_text == l10n_text("Autosave in " + autosave_countdown))
 			{
 				if (global.controls_used_for_menu_navigation == "controller")
 				{

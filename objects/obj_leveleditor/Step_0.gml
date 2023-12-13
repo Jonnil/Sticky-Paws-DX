@@ -493,12 +493,12 @@ if (global.actually_play_edited_level == false)
 		global.checkpoint_realmillisecond = 0;
 		
 		ini_open(working_directory + "save_file/custom_level_save.ini");
-		ini_write_real(string(global.level_name), "checkpoint_x", 0);
-		ini_write_real(string(global.level_name), "checkpoint_y", 0);
-		ini_write_real(string(global.level_name), "checkpoint_millisecond", 0);
-		ini_write_real(string(global.level_name), "checkpoint_second", 0);
-		ini_write_real(string(global.level_name), "checkpoint_minute", 0);
-		ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
+		ini_write_real(global.level_name, "checkpoint_x", 0);
+		ini_write_real(global.level_name, "checkpoint_y", 0);
+		ini_write_real(global.level_name, "checkpoint_millisecond", 0);
+		ini_write_real(global.level_name, "checkpoint_second", 0);
+		ini_write_real(global.level_name, "checkpoint_minute", 0);
+		ini_write_real(global.level_name, "checkpoint_realmillisecond", 0);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		
 		menu_delay = 3; /* Disable all menu control */
@@ -1575,12 +1575,12 @@ if (global.actually_play_edited_level == false)
 			#endregion /* Limit so view and cursor can't go outside room END */
 			
 			ini_open(working_directory + "save_file/custom_level_save.ini");
-			ini_write_real(string(global.level_name), "checkpoint_x", 0);
-			ini_write_real(string(global.level_name), "checkpoint_y", 0);
-			ini_write_real(string(global.level_name), "checkpoint_millisecond", 0);
-			ini_write_real(string(global.level_name), "checkpoint_second", 0);
-			ini_write_real(string(global.level_name), "checkpoint_minute", 0);
-			ini_write_real(string(global.level_name), "checkpoint_realmillisecond", 0);
+			ini_write_real(global.level_name, "checkpoint_x", 0);
+			ini_write_real(global.level_name, "checkpoint_y", 0);
+			ini_write_real(global.level_name, "checkpoint_millisecond", 0);
+			ini_write_real(global.level_name, "checkpoint_second", 0);
+			ini_write_real(global.level_name, "checkpoint_minute", 0);
+			ini_write_real(global.level_name, "checkpoint_realmillisecond", 0);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			
 			global.checkpoint_x = 0;

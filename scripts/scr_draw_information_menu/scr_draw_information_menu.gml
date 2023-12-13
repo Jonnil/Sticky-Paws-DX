@@ -481,7 +481,7 @@ function scr_draw_information_menu()
 			{
 				latest_whats_new_read = true;
 				ini_open(working_directory + "save_file/config.ini");
-				ini_write_string("config", "latest_whats_new_version", "v" + string(scr_get_build_date()));
+				ini_write_string("config", "latest_whats_new_version", "v" + scr_get_build_date());
 				ini_write_string("config", "latest_whats_new_text", string(global.whats_new));
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
@@ -492,7 +492,7 @@ function scr_draw_information_menu()
 			var whats_new_text_y = 32 * 5;
 			
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(8, build_version_y, l10n_text("Build version") + ": v" + string(scr_get_build_date()) + " " + l10n_text("is here!"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(8, build_version_y, l10n_text("Build version") + ": v" + scr_get_build_date() + " " + l10n_text("is here!"), global.default_text_size, c_black, c_white, 1);
 			
 			var day = date_get_day(GM_build_date);
 			var month = date_get_month(GM_build_date);

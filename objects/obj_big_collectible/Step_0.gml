@@ -96,7 +96,7 @@ if (follow_player)
 		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			var level_name = string(global.level_name);
+			var level_name = global.level_name;
 			
 			ini_open(working_directory + "save_file/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible1", true);
@@ -124,7 +124,7 @@ if (follow_player)
 		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			var level_name = string(global.level_name);
+			var level_name = global.level_name;
 			
 			ini_open(working_directory + "save_file/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible2", true);
@@ -152,7 +152,7 @@ if (follow_player)
 		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			var level_name = string(global.level_name);
+			var level_name = global.level_name;
 			
 			ini_open(working_directory + "save_file/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible3", true);
@@ -180,7 +180,7 @@ if (follow_player)
 		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			var level_name = string(global.level_name);
+			var level_name = global.level_name;
 			
 			ini_open(working_directory + "save_file/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible4", true);
@@ -208,7 +208,7 @@ if (follow_player)
 		else
 		if (global.character_select_in_this_menu == "level_editor")
 		{
-			var level_name = string(global.level_name);
+			var level_name = global.level_name;
 			
 			ini_open(working_directory + "save_file/custom_level_save.ini");
 			ini_write_real(level_name, "big_collectible5", true);
@@ -328,7 +328,7 @@ if (bounce_up)
 					else
 					if (global.character_select_in_this_menu == "level_editor")
 					{
-						var level_name = string(global.level_name);
+						var level_name = global.level_name;
 						
 						ini_open(working_directory + "save_file/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible1", true);
@@ -356,7 +356,7 @@ if (bounce_up)
 					else
 					if (global.character_select_in_this_menu == "level_editor")
 					{
-						var level_name = string(global.level_name);
+						var level_name = global.level_name;
 						
 						ini_open(working_directory + "save_file/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible2", true);
@@ -384,7 +384,7 @@ if (bounce_up)
 					else
 					if (global.character_select_in_this_menu == "level_editor")
 					{
-						var level_name = string(global.level_name);
+						var level_name = global.level_name;
 						
 						ini_open(working_directory + "save_file/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible3", true);
@@ -412,7 +412,7 @@ if (bounce_up)
 					else
 					if (global.character_select_in_this_menu == "level_editor")
 					{
-						var level_name = string(global.level_name);
+						var level_name = global.level_name;
 						
 						ini_open(working_directory + "save_file/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible4", true);
@@ -440,7 +440,7 @@ if (bounce_up)
 					else
 					if (global.character_select_in_this_menu == "level_editor")
 					{
-						var level_name = string(global.level_name);
+						var level_name = global.level_name;
 						
 						ini_open(working_directory + "save_file/custom_level_save.ini");
 						ini_write_real(level_name, "big_collectible5", true);

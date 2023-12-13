@@ -1,11 +1,6 @@
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 
-if (global.play_edited_level)
-{
-	visible = false;
-}
-
 #region /* Push yourself out of other level start objects way */
 if (instance_exists(obj_level_player1_start))
 && (place_meeting(x, y, obj_level_player1_start))
@@ -144,29 +139,29 @@ if (global.play_edited_level)
 				if (global.character_select_in_this_menu == "level_editor")
 				{
 					ini_open(working_directory + "custom_level_save.ini");
-					if (ini_key_exists(string(global.level_name), "checkpoint_x"))
+					if (ini_key_exists(global.level_name, "checkpoint_x"))
 					{
-						global.checkpoint_x = ini_read_real(string(global.level_name), "checkpoint_x", 0);
+						global.checkpoint_x = ini_read_real(global.level_name, "checkpoint_x", 0);
 					}
-					if (ini_key_exists(string(global.level_name), "checkpoint_y"))
+					if (ini_key_exists(global.level_name, "checkpoint_y"))
 					{
-						global.checkpoint_y = ini_read_real(string(global.level_name), "checkpoint_y", 0);
+						global.checkpoint_y = ini_read_real(global.level_name, "checkpoint_y", 0);
 					}
-					if (ini_key_exists(string(global.level_name), "checkpoint_millisecond"))
+					if (ini_key_exists(global.level_name, "checkpoint_millisecond"))
 					{
-						global.checkpoint_millisecond = ini_read_real(string(global.level_name), "checkpoint_millisecond", 0);
+						global.checkpoint_millisecond = ini_read_real(global.level_name, "checkpoint_millisecond", 0);
 					}
-					if (ini_key_exists(string(global.level_name), "checkpoint_second"))
+					if (ini_key_exists(global.level_name, "checkpoint_second"))
 					{
-						global.checkpoint_second = ini_read_real(string(global.level_name), "checkpoint_second", 0);
+						global.checkpoint_second = ini_read_real(global.level_name, "checkpoint_second", 0);
 					}
-					if (ini_key_exists(string(global.level_name), "checkpoint_minute"))
+					if (ini_key_exists(global.level_name, "checkpoint_minute"))
 					{
-						global.checkpoint_minute = ini_read_real(string(global.level_name), "checkpoint_minute", 0);
+						global.checkpoint_minute = ini_read_real(global.level_name, "checkpoint_minute", 0);
 					}
-					if (ini_key_exists(string(global.level_name), "checkpoint_realmillisecond"))
+					if (ini_key_exists(global.level_name, "checkpoint_realmillisecond"))
 					{
-						global.checkpoint_realmillisecond = ini_read_real(string(global.level_name), "checkpoint_realmillisecond", 0);
+						global.checkpoint_realmillisecond = ini_read_real(global.level_name, "checkpoint_realmillisecond", 0);
 					}
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}

@@ -79,12 +79,12 @@ function scr_save_level()
 	if (global.character_select_in_this_menu == "level_editor")
 	&& (global.actually_play_edited_level)
 	{
-		var level_name = string(global.level_name);
+		var level_name = global.level_name;
 		
 		#region /* Update ranking highscore to actual custom level */
-		if (file_exists(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
+		if (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 		{
-			ini_open(working_directory + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
+			ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 			
 			var level_id = ini_read_string("info", "level_id", "");
 			

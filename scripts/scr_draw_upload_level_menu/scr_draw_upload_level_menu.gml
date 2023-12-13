@@ -12,7 +12,7 @@ function scr_draw_upload_level_menu()
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	var upload_level_path = working_directory + "custom_levels/" + string(global.level_name); /* Path will be used many times, and I don't want it to come up too many times in search, it will only check in working directory */
+	var upload_level_path = working_directory + "custom_levels/" + global.level_name; /* Path will be used many times, and I don't want it to come up too many times in search, it will only check in working directory */
 	
 	#region /* How many tags */
 	var how_may_tags = 0;
@@ -538,7 +538,7 @@ function scr_draw_upload_level_menu()
 				draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
 			}
 		}
-		/* Draw Level Name */ scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, string(global.level_name), global.default_text_size * 1.9, c_black, c_white, 1);
+		/* Draw Level Name */ scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, global.level_name, global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Draw Level Description */
 		if (file_exists(upload_level_path + "/data/level_information.ini"))
@@ -663,7 +663,7 @@ function scr_draw_upload_level_menu()
 				can_navigate = true;
 				global.doing_clear_check = false;
 				global.actually_play_edited_level = false;
-				global.level_description = string(global.level_name);
+				global.level_description = global.level_name;
 				
 				if (file_exists(upload_level_path + "/data/level_information.ini"))
 				{
@@ -963,7 +963,7 @@ function scr_draw_upload_level_menu()
 			/* Draw Thumbnail */
 			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
 		}
-		/* Draw Level Name above description input */ scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, string(global.level_name), global.default_text_size * 1.9, c_black, c_white, 1);
+		/* Draw Level Name above description input */ scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, global.level_name, global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		if (can_input_level_name)
 		{
@@ -1310,7 +1310,7 @@ function scr_draw_upload_level_menu()
 		draw_set_alpha(0.9);
 		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, upload_name_question_y - 32, get_window_width * 0.5 + message_x_offset, upload_name_question_y + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		scr_draw_text_outlined(get_window_width * 0.5, upload_name_question_y, l10n_text("Upload") + " " + string(global.level_name) + "?", global.default_text_size * 1.9, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, upload_name_question_y, l10n_text("Upload") + " " + global.level_name + "?", global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Upload Level No */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_level_no_y - 42, get_window_width * 0.5 + 370, upload_level_no_y + 42))
@@ -1501,7 +1501,7 @@ function scr_draw_upload_level_menu()
 		draw_set_alpha(0.9);
 		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, uploading_level_message_y - 32, get_window_width * 0.5 + message_x_offset, uploading_level_message_y + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y, l10n_text("Uploading") + " " + string(global.level_name) + "...", global.default_text_size * 1.9, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y, l10n_text("Uploading") + " " + global.level_name + "...", global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Generate Level ID */
 		if (menu_delay == 50)
@@ -1699,7 +1699,7 @@ function scr_draw_upload_level_menu()
 		draw_set_alpha(0.9);
 		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, uploaded_level_message_y - 32, get_window_width * 0.5 + message_x_offset, uploaded_level_message_y + 128, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
-		scr_draw_text_outlined(get_window_width * 0.5, uploaded_level_message_y, string(global.level_name) + " " + l10n_text("Uploaded"), global.default_text_size * 1.9, c_black, c_white, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, uploaded_level_message_y, global.level_name + " " + l10n_text("Uploaded"), global.default_text_size * 1.9, c_black, c_white, 1);
 		/* Show Level ID */ scr_draw_text_outlined(get_window_width * 0.5, uploaded_level_message_y + 84, l10n_text("Level ID") + ": " + string(level_id), global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Level Uploaded OK */

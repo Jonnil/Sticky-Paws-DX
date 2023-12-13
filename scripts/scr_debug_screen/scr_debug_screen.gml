@@ -172,7 +172,7 @@ function scr_debug_screen()
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "F3 to toggle debug screen", global.default_text_size, c_black, c_white, 1);
 		draw_set_halign(fa_left);
-		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + string(scr_get_build_date()), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + scr_get_build_date(), global.default_text_size, c_black, c_white, 1);
 		
 		#region /* X and Y position of player */
 		if (instance_exists(obj_camera))

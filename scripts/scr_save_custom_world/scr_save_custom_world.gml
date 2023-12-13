@@ -14,9 +14,9 @@ function scr_save_custom_world()
 		}
 		else
 		if (global.level_name != "")
-		&& (!directory_exists(working_directory + "custom_worlds/" + string(global.level_name)))
+		&& (!directory_exists(working_directory + "custom_worlds/" + global.level_name))
 		{
-			directory_create(working_directory + "custom_worlds/" + string(global.level_name));
+			directory_create(working_directory + "custom_worlds/" + global.level_name);
 		}
 		#endregion /* Create directory for saving custom levels END */
 	
@@ -31,7 +31,7 @@ function scr_save_custom_world()
 		else
 		if (global.level_name != "")
 		{
-			file = file_text_open_write(working_directory + "custom_worlds/" + string(global.level_name) + "/data/object_placement.txt"); /* Open file for writing */
+			file = file_text_open_write(working_directory + "custom_worlds/" + global.level_name + "/data/object_placement.txt"); /* Open file for writing */
 		}
 		str = ""; /* Reset string var */
 		
@@ -58,7 +58,7 @@ function scr_save_custom_world()
 			else
 			if (global.level_name != "")
 			{
-				ini_open(working_directory + "custom_worlds/" + string(global.level_name) + "/data/level_information.ini");
+				ini_open(working_directory + "custom_worlds/" + global.level_name + "/data/level_information.ini");
 			}
 			if (instance_exists(obj_level_player1_start))
 			{
