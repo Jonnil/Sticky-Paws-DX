@@ -540,7 +540,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			}
 			
 			draw_set_halign(fa_center);
-			draw_set_valign(fa_center);
+			draw_set_valign(fa_middle);
 			/* Draw ID */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_id_y, l10n_text(string(what_kind_of_id)) + " " + l10n_text("ID") + ": " + string(search_id), global.default_text_size * 1.25, c_black, c_white, 1);
 			/* Draw who made the level */ if (masked_username != ""){scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_author_name_y, l10n_text("By") + ": " + string(masked_username), global.default_text_size, c_black, c_white, 1);}
 			/* Draw Description */ scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_description_y, string(global.level_description), global.default_text_size, c_black, c_white, 1);

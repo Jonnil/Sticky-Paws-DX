@@ -249,7 +249,7 @@ if (global.actually_play_edited_level == false)
 		#region /* Default Cursor */
 		if (scroll_view == false)
 		&& (drag_object == false)
-		&& (fill_mode == false)
+		&& (!fill_mode)
 		&& (pause == false)
 		{
 			if (!place_meeting(x, y, obj_leveleditor_placed_object))

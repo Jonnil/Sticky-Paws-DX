@@ -434,7 +434,7 @@ function scr_draw_information_menu()
 			if (global.link_to_website_guide != "")
 			{
 				draw_set_halign(fa_left);
-				draw_set_valign(fa_center);
+				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(32, check_out_guide_y, l10n_text("Check out the guide") + ":", global.default_text_size, c_black, c_white, 1);
 				draw_menu_button_sprite(spr_menu_button, 32, check_out_guide_y + 20, 0, 0, 2, 1, 370 * 2, 42, string(global.link_to_website_guide), "about_link_to_website_guide", "about_link_to_website_guide");
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, check_out_guide_y + 20, 32 + (370 * 2), check_out_guide_y + 20 + 42))
@@ -452,7 +452,7 @@ function scr_draw_information_menu()
 			if (global.link_to_update_schedule != "")
 			{
 				draw_set_halign(fa_left);
-				draw_set_valign(fa_center);
+				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(32, check_out_update_schedule_y, l10n_text("Check out the update schedule") + ":", global.default_text_size, c_black, c_white, 1);
 				draw_menu_button_sprite(spr_menu_button, 32, check_out_update_schedule_y + 20, 0, 0, 2.1, 1, 370 * 2.1, 42, string(global.link_to_update_schedule), "about_link_to_update_schedule", "about_link_to_update_schedule");
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, check_out_update_schedule_y + 20, 32 + (370 * 2.1), check_out_update_schedule_y + 20 + 42))

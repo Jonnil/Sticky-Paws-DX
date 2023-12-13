@@ -19,6 +19,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Editor Objects","folderPath":"folders/Objects/Editor Objects.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Level Objects","folderPath":"folders/Objects/Level Objects.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Blocks","folderPath":"folders/Objects/Level Objects/Blocks.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Decoration","folderPath":"folders/Objects/Level Objects/Decoration.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Enemies","folderPath":"folders/Objects/Level Objects/Enemies.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Liquids","folderPath":"folders/Objects/Level Objects/Liquids.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Map Screen Objects","folderPath":"folders/Objects/Map Screen Objects.yy",},
@@ -45,7 +46,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprite Masks","folderPath":"folders/Sprites/Sprite Masks.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Decoration","folderPath":"folders/Objects/Level Objects/Decoration.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"character_config.ini","CopyToMask":-1,"filePath":"datafiles/characters/catlyn/data",},
@@ -3051,7 +3051,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.444",
+    "IDEVersion": "2023.1100.0.450",
   },
   "resources": [
     {"id":{"name":"spr_player_stand","path":"sprites/spr_player_stand/spr_player_stand.yy",},},

@@ -66,7 +66,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		&& (open_dropdown == false)
 		|| (key_a_pressed)
 		&& (menu == menu_index)
-		&& (input_key == false)
+		&& (!input_key)
 		&& (open_dropdown == false)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -81,12 +81,12 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		else
 		if (key_b_pressed)
 		&& (menu == menu_index)
-		&& (input_key == false)
+		&& (!input_key)
 		&& (open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_a_pressed)
 		&& (menu == menu_index)
-		&& (input_key == false)
+		&& (!input_key)
 		&& (open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{

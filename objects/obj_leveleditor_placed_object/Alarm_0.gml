@@ -1,7 +1,7 @@
 #region /* Initialize Object */
 if (global.actually_play_edited_level == false)
 {
-	if (global.world_editor == false)
+	if (!global.world_editor)
 	{
 		var grid = global.object_grid;
 		var grid_height = ds_grid_height(grid) - 1;

@@ -443,7 +443,7 @@ function scr_draw_online_download_list()
 			/* Draw the name associated with the ID */ if (info_data != undefined)
 			{
 				draw_set_halign(fa_center);
-				draw_set_valign(fa_center);
+				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(download_online_x + 300, top_left_of_thumbnail_y + menu_y_offset + 240, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			

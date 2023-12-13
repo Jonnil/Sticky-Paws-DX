@@ -31,7 +31,7 @@ function scr_select_official_level_menu()
 	if (key_up)
 	|| (mouse_wheel_up())
 	{
-		if (can_input_level_name == false)
+		if (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (menu != "back_from_level_editor")
 		{
@@ -68,7 +68,7 @@ function scr_select_official_level_menu()
 	if (key_down)
 	|| (mouse_wheel_down())
 	{
-		if (can_input_level_name == false)
+		if (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (menu != "back_from_level_editor")
 		{
@@ -103,7 +103,7 @@ function scr_select_official_level_menu()
 	
 	#region /* Key Left */
 	if (key_left)
-	&& (can_input_level_name == false)
+	&& (!can_input_level_name)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (menu != "back_from_level_editor")
 	{
@@ -125,7 +125,7 @@ function scr_select_official_level_menu()
 	
 	#region /* Key Right */
 	if (key_right)
-	&& (can_input_level_name == false)
+	&& (!can_input_level_name)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (menu != "back_from_level_editor")
 	{
@@ -150,7 +150,7 @@ function scr_select_official_level_menu()
 		
 		#region /* If pressing accept in title screen */
 		if (menu == "level_editor_play")
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			scroll_to = floor(global.select_level_index / row);
@@ -170,7 +170,7 @@ function scr_select_official_level_menu()
 		
 		#region /* If pressing accept in level editor options */
 		if (menu == "choose_official_level_to_take_from")
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			scroll_to = floor(global.select_level_index / row);
@@ -475,10 +475,10 @@ function scr_select_official_level_menu()
 	if (menu == "back_from_level_editor")
 	&& (key_a_pressed)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	&& (can_input_level_name == false)
+	&& (!can_input_level_name)
 	|| (key_b_pressed)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	&& (can_input_level_name == false)
+	&& (!can_input_level_name)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 320, 42))
 	&& (mouse_check_button_released(mb_left))
 	{

@@ -1,7 +1,7 @@
 function scr_spawn_objects_when_starting_room()
 {
 	#region /* Spawn objects when starting room */
-	if (global.world_editor == false)
+	if (!global.world_editor)
 	{
 		
 		#region /* Only spawn objects according to difficulty settings */

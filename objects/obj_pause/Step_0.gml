@@ -224,7 +224,7 @@ if (keyboard_check_pressed(vk_escape))
 || (gamepad_button_check_pressed(global.player_slot[4], gp_select))
 {
 	if (can_remap_key == false)
-	&& (input_key == false)
+	&& (!input_key)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		scr_config_save(); /* Save Config */

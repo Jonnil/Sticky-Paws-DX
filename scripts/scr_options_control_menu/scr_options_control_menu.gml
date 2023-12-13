@@ -3742,7 +3742,7 @@ function scr_options_control_menu()
 			#region /* Remap key dive */
 			if (menu == "remap_key_dive")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -3771,7 +3771,7 @@ function scr_options_control_menu()
 			#region /* Remap key jump */
 			if (menu == "remap_key_jump")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -3834,7 +3834,7 @@ function scr_options_control_menu()
 			#region /* Remap key double jump */
 			if (menu == "remap_key_double_jump")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -3856,7 +3856,7 @@ function scr_options_control_menu()
 			#region /* Remap key crouch */
 			if (menu == "remap_key_crouch")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -3900,7 +3900,7 @@ function scr_options_control_menu()
 			#region /* Remap key crouch toggle */
 			if (menu == "remap_key_crouch_toggle")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -3922,7 +3922,7 @@ function scr_options_control_menu()
 			#region /* Remap key run */
 			if (menu == "remap_key_run")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -3944,7 +3944,7 @@ function scr_options_control_menu()
 			#region /* Remap key run toggle */
 			if (menu == "remap_key_run_toggle")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -3966,7 +3966,7 @@ function scr_options_control_menu()
 			#region /* Remap key left */
 			if (menu == "remap_key_left")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -3988,7 +3988,7 @@ function scr_options_control_menu()
 			#region /* Remap key right */
 			if (menu == "remap_key_right")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -4010,7 +4010,7 @@ function scr_options_control_menu()
 			#region /* Remap key down */
 			if (menu == "remap_key_down")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -4032,7 +4032,7 @@ function scr_options_control_menu()
 			#region /* Remap key up */
 			if (menu == "remap_key_up")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -4068,7 +4068,7 @@ function scr_options_control_menu()
 			#region /* Remap Key Tongue */
 			if (menu == "remap_key_tongue")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -4090,7 +4090,7 @@ function scr_options_control_menu()
 			#region /* Remap Key Zoom In */
 			if (menu == "remap_key_zoom_in")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -4126,7 +4126,7 @@ function scr_options_control_menu()
 			#region /* Remap Key Zoom Out */
 			if (menu == "remap_key_zoom_out")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -4148,7 +4148,7 @@ function scr_options_control_menu()
 			#region /* Remap Key Accept */
 			if (menu == "remap_key_accept")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -4170,7 +4170,7 @@ function scr_options_control_menu()
 			#region /* Remap Key Back */
 			if (menu == "remap_key_back")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -4192,7 +4192,7 @@ function scr_options_control_menu()
 			#region /* Remap reset */
 			if (menu == "remap_reset")
 			&& (can_remap_key == false)
-			&& (input_key == false)
+			&& (!input_key)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (key_up)
@@ -4229,11 +4229,11 @@ function scr_options_control_menu()
 			{
 				if (key_left)
 				&& (can_remap_key == false)
-				&& (input_key == false)
+				&& (!input_key)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (key_right)
 				&& (can_remap_key == false)
-				&& (input_key == false)
+				&& (!input_key)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (menu_remap_key_number == 0)

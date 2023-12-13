@@ -100,7 +100,7 @@ function scr_select_custom_level_menu()
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	|| (mouse_wheel_up())
 	{
-		if (can_input_level_name == false)
+		if (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (open_sub_menu == false)
 		&& (menu != "back_from_level_editor")
@@ -158,7 +158,7 @@ function scr_select_custom_level_menu()
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	|| (mouse_wheel_down())
 	{
-		if (can_input_level_name == false)
+		if (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (open_sub_menu == false)
 		&& (menu != "back_from_level_editor")
@@ -201,7 +201,7 @@ function scr_select_custom_level_menu()
 	
 	#region /* Key Left */
 	if (key_left)
-	&& (can_input_level_name == false)
+	&& (!can_input_level_name)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (open_sub_menu == false)
 	&& (menu != "back_from_level_editor")
@@ -233,7 +233,7 @@ function scr_select_custom_level_menu()
 	
 	#region /* Key Right */
 	if (key_right)
-	&& (can_input_level_name == false)
+	&& (!can_input_level_name)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (open_sub_menu == false)
 	&& (menu != "back_from_level_editor")
@@ -267,7 +267,7 @@ function scr_select_custom_level_menu()
 	if (key_a_pressed)
 	|| (mouse_check_button_released(mb_left))
 	{
-		if (can_input_level_name == false)
+		if (!can_input_level_name)
 		&& (open_sub_menu == false)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (menu != "back_from_level_editor")
@@ -322,7 +322,7 @@ function scr_select_custom_level_menu()
 	
 	#region /* Key B Pressed */
 	if (key_b_pressed)
-	&& (can_input_level_name == false)
+	&& (!can_input_level_name)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (show_level_editor_corner_menu)
 	{
@@ -367,11 +367,11 @@ function scr_select_custom_level_menu()
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_sub_menu == false)
-			&& (can_input_level_name == false)
+			&& (!can_input_level_name)
 			|| (key_b_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_sub_menu == false)
-			&& (can_input_level_name == false)
+			&& (!can_input_level_name)
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5, 0, display_get_gui_width() * 0.5 + 320, 42))
 			&& (mouse_check_button_released(mb_left))
 			{
@@ -455,11 +455,11 @@ function scr_select_custom_level_menu()
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (open_sub_menu == false)
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		|| (key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (open_sub_menu == false)
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 42))
 		&& (mouse_check_button_released(mb_left))
 		{
@@ -986,7 +986,7 @@ function scr_select_custom_level_menu()
 	#endregion /* Edit level description END */
 	
 	draw_set_halign(fa_center);
-	draw_set_valign(fa_center);
+	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(display_get_gui_width() * 0.5, 16, string(ds_list_size(global.all_loaded_custom_levels) - 1) + " " + l10n_text("Levels"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	if (ds_list_size(global.all_loaded_custom_levels) - 1 >= 120)
 	{
@@ -1000,7 +1000,7 @@ function scr_select_custom_level_menu()
 	if (custom_levels_folder_megabytes > 1)
 	{
 		draw_set_halign(fa_center);
-		draw_set_valign(fa_center);
+		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Custom level folder size: " + string(custom_levels_folder_megabytes) + " MB", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
 	

@@ -7,6 +7,7 @@
     {"name":"Objects","order":10,"path":"folders/Objects.yy",},
     {"name":"Editor Objects","order":23,"path":"folders/Objects/Editor Objects.yy",},
     {"name":"Blocks","order":8,"path":"folders/Objects/Level Objects/Blocks.yy",},
+    {"name":"Decoration","order":35,"path":"folders/Objects/Level Objects/Decoration.yy",},
     {"name":"Enemies","order":24,"path":"folders/Objects/Level Objects/Enemies.yy",},
     {"name":"Liquids","order":34,"path":"folders/Objects/Level Objects/Liquids.yy",},
     {"name":"Map Screen Objects","order":21,"path":"folders/Objects/Map Screen Objects.yy",},
@@ -31,7 +32,6 @@
     {"name":"Sprite Masks","order":154,"path":"folders/Sprites/Sprite Masks.yy",},
     {"name":"Tile Sets","order":3,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":9,"path":"folders/Timelines.yy",},
-    {"name":"Decoration","order":35,"path":"folders/Objects/Level Objects/Decoration.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_boss_laugh","order":9,"path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},

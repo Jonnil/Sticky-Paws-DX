@@ -1,0 +1,1 @@
+global.debug_screen = !global.debug_screen;

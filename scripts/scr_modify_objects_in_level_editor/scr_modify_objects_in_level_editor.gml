@@ -44,7 +44,7 @@ function scr_modify_objects_in_level_editor()
 				/* Don't put a move_snap here! We don't want the object to change position when modifying it */
 				
 				#region /* Object ID's to modify */
-				if (global.world_editor == false)
+				if (!global.world_editor)
 				{
 					modify_object_menu = true;
 					

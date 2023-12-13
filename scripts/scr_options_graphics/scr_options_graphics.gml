@@ -121,7 +121,7 @@ function scr_options_graphics()
 		else
 		{
 			draw_set_halign(fa_left);
-			draw_set_valign(fa_center);
+			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(500, resolution_setting_y + menu_y_offset + 20, l10n_text("Fullscreen Resolution") + ": " + string(window_get_width()) + "x" + string(window_get_height()), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 		}
 		

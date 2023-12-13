@@ -295,7 +295,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 	
 	#region /* Mouse Navigation */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, key_x - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 32, menu_y_remap_key + menu_y_offset + 32))
-	&& (input_key == false)
+	&& (!input_key)
 	&& (open_dropdown == false)
 	&& (global.controls_used_for_menu_navigation == "mouse")
 	{
@@ -304,7 +304,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		can_navigate_settings_sidebar = false;
 	}
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, key_x + 200 - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 200 + 32, menu_y_remap_key + menu_y_offset + 32))
-	&& (input_key == false)
+	&& (!input_key)
 	&& (open_dropdown == false)
 	&& (global.controls_used_for_menu_navigation == "mouse")
 	{
@@ -318,7 +318,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		if (mouse_check_button_released(mb_left))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (input_key == false)
+		&& (!input_key)
 		&& (open_dropdown == false)
 		{
 			can_navigate_settings_sidebar = false;

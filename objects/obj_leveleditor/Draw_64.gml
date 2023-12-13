@@ -1,7 +1,7 @@
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 {
 	
-	if (quit_level_editor == false)
+	if (!quit_level_editor)
 	{
 		
 		#region /* List of Placable Objects */
@@ -11,7 +11,7 @@ if (global.actually_play_edited_level == false)
 			draw_rectangle_color(0, 0, display_get_gui_width(), 128 + 64, c_black, c_black, c_black, c_black, false);
 		}
 		
-		if (global.world_editor == false)
+		if (!global.world_editor)
 		&& (quit_level_editor <= 0)
 		&& (selected_menu_alpha > 0)
 		{
@@ -131,7 +131,7 @@ if (global.actually_play_edited_level == false)
 			}
 		}
 		else
-		if (global.world_editor == false)
+		if (!global.world_editor)
 		&& (quit_level_editor <= 0)
 		&& (selected_menu_alpha > 0)
 		{
@@ -211,7 +211,7 @@ if (global.actually_play_edited_level == false)
 		scr_draw_text_outlined(16, 32, l10n_text("View X") + ": " + string(round(camera_get_view_x(view_camera[0]))) + "\n" + l10n_text("View Y") + ": " + string(round(camera_get_view_y(view_camera[0]))), global.default_text_size, c_black, c_white, 1);
 		
 		/* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is */
-		if (modify_object_menu == false)
+		if (!modify_object_menu)
 		{
 			draw_circle_color(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, 3, c_black, c_white, false);
 		}
@@ -312,7 +312,7 @@ if (global.actually_play_edited_level == false)
 				|| (gamepad_button_check_pressed(4, gp_start))
 				|| (key_b_pressed)
 				{
-					if (input_key == false)
+					if (!input_key)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
@@ -382,7 +382,7 @@ if (global.actually_play_edited_level == false)
 					pause = false;
 				}
 				if (menu == "continue")
-				&& (can_input_level_name == false)
+				&& (!can_input_level_name)
 				{
 					if (key_up)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -431,7 +431,7 @@ if (global.actually_play_edited_level == false)
 				}
 			
 				if (menu == "options")
-				&& (can_input_level_name == false)
+				&& (!can_input_level_name)
 				{
 					if (key_up)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -481,10 +481,10 @@ if (global.actually_play_edited_level == false)
 				&& (mouse_check_button_pressed(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (menu == "level_editor_options")
-				&& (can_input_level_name == false)
+				&& (!can_input_level_name)
 				&& (key_a_pressed)
 				|| (menu == "level_editor_options")
-				&& (can_input_level_name == false)
+				&& (!can_input_level_name)
 				&& (keyboard_check_pressed(vk_enter))
 				{
 					level_editor_options_back_to_menu = ""; /* Reset this variable to nothing */
@@ -499,7 +499,7 @@ if (global.actually_play_edited_level == false)
 				}
 				
 				if (menu == "level_editor_options")
-				&& (can_input_level_name == false)
+				&& (!can_input_level_name)
 				{
 					if (key_up)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -550,7 +550,7 @@ if (global.actually_play_edited_level == false)
 						menu = "generate_level_map_yes";
 					}
 					if (menu == "generate_level_map")
-					&& (can_input_level_name == false)
+					&& (!can_input_level_name)
 					{
 						if (key_up)
 						&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -632,7 +632,7 @@ if (global.actually_play_edited_level == false)
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Upload"), "level_editor_upload", "level_editor_upload");
 				draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1);
 				if (menu == "level_editor_upload")
-				&& (can_input_level_name == false)
+				&& (!can_input_level_name)
 				{
 					if (key_up)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -675,11 +675,11 @@ if (global.actually_play_edited_level == false)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (key_a_pressed)
 				&& (menu == "quit")
-				&& (can_input_level_name == false)
+				&& (!can_input_level_name)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (keyboard_check_pressed(vk_enter))
 				&& (menu == "quit")
-				&& (can_input_level_name == false)
+				&& (!can_input_level_name)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -688,7 +688,7 @@ if (global.actually_play_edited_level == false)
 					pause = false;
 				}
 				if (menu == "quit")
-				&& (can_input_level_name == false)
+				&& (!can_input_level_name)
 				{
 					if (key_up)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -741,8 +741,8 @@ if (global.actually_play_edited_level == false)
 				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 160, l10n_text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
 				
 				#region /* Warn the player if the level is bigger than 8192 in any direction */
-				var level_width = (instance_exists(obj_level_width)) ? obj_level_width.x : 0; /* Get level dimensions */
-				var level_height = (instance_exists(obj_level_height)) ? obj_level_height.y : 0;
+				var level_width = obj_level_width.x; /* Get level dimensions */
+				var level_height = obj_level_height.y;
 				
 				if (level_width > 8192 || level_height > 8192) /* Check if level dimensions exceed 8192 pixels in any direction */
 				{
@@ -776,7 +776,7 @@ if (global.actually_play_edited_level == false)
 					global.full_level_map_screenshot = true;
 				}
 				if (menu == "generate_level_map_yes")
-				&& (can_input_level_name == false)
+				&& (!can_input_level_name)
 				{
 					if (key_up)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -836,7 +836,7 @@ if (global.actually_play_edited_level == false)
 					menu = "generate_level_map";
 				}
 				if (menu == "generate_level_map_no")
-				&& (can_input_level_name == false)
+				&& (!can_input_level_name)
 				{
 					if (key_up)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -951,23 +951,13 @@ if (global.actually_play_edited_level == false)
 		#region /* Hover over icons reveals the icons */
 		
 		#region /* Make bottom row of icons appear if mouse is hovering at bottom screen */
-		if (drag_object == false)
-		&& (instance_exists(obj_level_player1_start))
-		&& (obj_level_player1_start.drag_object == false)
-		&& (instance_exists(obj_level_player2_start))
-		&& (obj_level_player2_start.drag_object == false)
-		&& (instance_exists(obj_level_player3_start))
-		&& (obj_level_player3_start.drag_object == false)
-		&& (instance_exists(obj_level_player4_start))
-		&& (obj_level_player4_start.drag_object == false)
-		&& (instance_exists(obj_level_end))
-		&& (obj_level_end.drag_object == false)
+		if (!drag_object)
 		{
 			if (point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64))
 			|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256 - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
 			|| (global.always_show_level_editor_buttons)
 			{
-				if (show_icons_at_bottom == false)
+				if (!show_icons_at_bottom)
 				{
 					show_icons_at_bottom = true;
 				}
@@ -984,24 +974,14 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Make undo and redo icons appear if mouse is hovering at right screen */
 		if (undo_and_redo_buttons_enabled)
-		&& (drag_object == false)
-		&& (instance_exists(obj_level_player1_start))
-		&& (obj_level_player1_start.drag_object == false)
-		&& (instance_exists(obj_level_player2_start))
-		&& (obj_level_player2_start.drag_object == false)
-		&& (instance_exists(obj_level_player3_start))
-		&& (obj_level_player3_start.drag_object == false)
-		&& (instance_exists(obj_level_player4_start))
-		&& (obj_level_player4_start.drag_object == false)
-		&& (instance_exists(obj_level_end))
-		&& (obj_level_end.drag_object == false)
+		&& (!drag_object)
 		{
 			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
 			&& (!pause)
 			|| (global.always_show_level_editor_buttons)
 			&& (!pause)
 			{
-				if (show_undo_redo_icons == false)
+				if (!show_undo_redo_icons)
 				{
 					show_undo_redo_icons = true;
 				}
@@ -1021,22 +1001,12 @@ if (global.actually_play_edited_level == false)
 		#endregion /* Make undo and redo icons appear if mouse is hovering at right screen END */
 		
 		#region /* Make top row of icons appear if mouse is hovering at top screen */
-		if (drag_object == false)
-		&& (instance_exists(obj_level_player1_start))
-		&& (obj_level_player1_start.drag_object == false)
-		&& (instance_exists(obj_level_player2_start))
-		&& (obj_level_player2_start.drag_object == false)
-		&& (instance_exists(obj_level_player3_start))
-		&& (obj_level_player3_start.drag_object == false)
-		&& (instance_exists(obj_level_player4_start))
-		&& (obj_level_player4_start.drag_object == false)
-		&& (instance_exists(obj_level_end))
-		&& (obj_level_end.drag_object == false)
+		if (!drag_object)
 		{
 			if (point_in_rectangle(cursor_x, cursor_y, - 32, - 64, display_get_gui_width() + 32, + 64))
 			|| (global.always_show_level_editor_buttons)
 			{
-				if (show_icons_at_top == false)
+				if (!show_icons_at_top)
 				{
 					show_icons_at_top = true;
 				}
@@ -1056,11 +1026,11 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Show icons at bottom of screen */
 		if (show_icons_at_bottom)
-		&& (drag_object == false)
-		&& (pause == false)
+		&& (!drag_object)
+		&& (!pause)
 		|| (global.always_show_level_editor_buttons)
-		&& (drag_object == false)
-		&& (pause == false)
+		&& (!drag_object)
+		&& (!pause)
 		{
 			icons_at_bottom_y = lerp(icons_at_bottom_y, 0, 0.1);
 		}
@@ -1120,7 +1090,7 @@ if (global.actually_play_edited_level == false)
 		if (point_in_rectangle(cursor_x, cursor_y, play_level_icon_x - 32 + 1, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64 - 1))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_bottom)
-		&& (pause == false)
+		&& (!pause)
 		{
 			tooltip = l10n_text("Play level");
 			show_tooltip += 2;
@@ -1131,10 +1101,10 @@ if (global.actually_play_edited_level == false)
 		#endregion /* Play Level Button END */
 		
 		#region /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing */
-		if (set_difficulty_mode == false)
+		if (!set_difficulty_mode)
 		{
-			if (global.enable_difficulty_selection_settings == false)
-			|| (global.enable_difficutly_layers_in_level_editor == false)
+			if (!global.enable_difficulty_selection_settings)
+			|| (!global.enable_difficutly_layers_in_level_editor)
 			{
 				var level_name_x_offset = 20 + 64;
 			}
@@ -1178,43 +1148,43 @@ if (global.actually_play_edited_level == false)
 			draw_sprite_ext(spr_leveleditor_icons, 5, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 		}
 		if (place_brush_size == 0)
-		&& (erase_mode == false)
-		&& (fill_mode == false)
+		&& (!erase_mode)
+		&& (!fill_mode)
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 0, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
 		else
 		if (place_brush_size == 1)
-		&& (erase_mode == false)
-		&& (fill_mode == false)
+		&& (!erase_mode)
+		&& (!fill_mode)
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 1, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
 		else
 		if (place_brush_size == 2)
-		&& (erase_mode == false)
-		&& (fill_mode == false)
+		&& (!erase_mode)
+		&& (!fill_mode)
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 2, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
 		else
 		if (place_brush_size == 3)
-		&& (erase_mode == false)
-		&& (fill_mode == false)
+		&& (!erase_mode)
+		&& (!fill_mode)
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 3, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
 		else
 		if (place_brush_size == 4)
-		&& (erase_mode == false)
-		&& (fill_mode == false)
+		&& (!erase_mode)
+		&& (!fill_mode)
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 4, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
 		else
 		if (place_brush_size == 5)
-		&& (erase_mode == false)
-		&& (fill_mode == false)
+		&& (!erase_mode)
+		&& (!fill_mode)
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 5, place_brush_icon_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 		}
@@ -1224,8 +1194,8 @@ if (global.actually_play_edited_level == false)
 		&& (global.controls_used_for_menu_navigation == "controller")
 		|| (global.always_show_gamepad_buttons)
 		{
-			if (fill_mode == false)
-			&& (erase_mode == false)
+			if (!fill_mode)
+			&& (!erase_mode)
 			{
 				scr_draw_gamepad_buttons(button_change_draw_size, place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
 			}
@@ -1236,8 +1206,8 @@ if (global.actually_play_edited_level == false)
 		}
 		else
 		{
-			if (fill_mode == false)
-			&& (erase_mode == false)
+			if (!fill_mode)
+			&& (!erase_mode)
 			{
 				draw_sprite_ext(spr_keyboard_keys, key_change_draw_size, place_brush_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
 			}
@@ -1252,7 +1222,7 @@ if (global.actually_play_edited_level == false)
 		if (point_in_rectangle(cursor_x, cursor_y, place_brush_icon_x - 32 + 1, display_get_gui_height() - 64, place_brush_icon_x + 32, display_get_gui_height() + 64 - 1))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_bottom)
-		&& (pause == false)
+		&& (!pause)
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(place_brush_icon_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, place_brush_icon_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
@@ -1262,48 +1232,48 @@ if (global.actually_play_edited_level == false)
 			if (mouse_check_button_pressed(mb_left))
 			{
 				if (place_brush_size == 0)
-				&& (fill_mode == false)
-				&& (erase_mode == false)
+				&& (!fill_mode)
+				&& (!erase_mode)
 				{
 					place_brush_size = 1;
 					erase_brush_size = 1;
 				}
 				else
 				if (place_brush_size == 1)
-				&& (fill_mode == false)
-				&& (erase_mode == false)
+				&& (!fill_mode)
+				&& (!erase_mode)
 				{
 					place_brush_size = 2;
 					erase_brush_size = 2;
 				}
 				else
 				if (place_brush_size == 2)
-				&& (fill_mode == false)
-				&& (erase_mode == false)
+				&& (!fill_mode)
+				&& (!erase_mode)
 				{
 					place_brush_size = 3;
 					erase_brush_size = 3;
 				}
 				else
 				if (place_brush_size == 3)
-				&& (fill_mode == false)
-				&& (erase_mode == false)
+				&& (!fill_mode)
+				&& (!erase_mode)
 				{
 					place_brush_size = 4;
 					erase_brush_size = 4;
 				}
 				else
 				if (place_brush_size == 4)
-				&& (fill_mode == false)
-				&& (erase_mode == false)
+				&& (!fill_mode)
+				&& (!erase_mode)
 				{
 					place_brush_size = 5;
 					erase_brush_size = 5;
 				}
 				else
 				if (place_brush_size == 5)
-				&& (fill_mode == false)
-				&& (erase_mode == false)
+				&& (!fill_mode)
+				&& (!erase_mode)
 				{
 					place_brush_size = 0;
 					erase_brush_size = 0;
@@ -1466,7 +1436,7 @@ if (global.actually_play_edited_level == false)
 		if (point_in_rectangle(cursor_x, cursor_y, erase_icon_x - 32 + 1, display_get_gui_height() - 64, erase_icon_x + 32, display_get_gui_height() + 64 - 1))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_bottom)
-		&& (pause == false)
+		&& (!pause)
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(erase_icon_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, erase_icon_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
@@ -1475,7 +1445,7 @@ if (global.actually_play_edited_level == false)
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			{
-				if (erase_mode == false)
+				if (!erase_mode)
 				{
 					erase_mode = true;
 					fill_mode = false;
@@ -1536,7 +1506,7 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Fill icon */
 		if (fill_mode)
-		&& (erase_mode == false)
+		&& (!erase_mode)
 		&& (difficulty_layer == 0)
 		{
 			if (fill_mode_type == "fill")
@@ -1603,7 +1573,7 @@ if (global.actually_play_edited_level == false)
 		if (point_in_rectangle(cursor_x, cursor_y, fill_icon_x - 32 + 1, display_get_gui_height() - 64, fill_icon_x + 32, display_get_gui_height() + 64 - 1))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_bottom)
-		&& (pause == false)
+		&& (!pause)
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(fill_icon_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, fill_icon_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
@@ -1612,7 +1582,7 @@ if (global.actually_play_edited_level == false)
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
 			{
-				if (fill_mode == false)
+				if (!fill_mode)
 				{
 					erase_mode = false;
 					fill_mode = true;
@@ -1645,7 +1615,7 @@ if (global.actually_play_edited_level == false)
 		#endregion /* Fill icon END */
 		
 		#region /* Hide Buttons - Always show level editor buttons toggle */
-		if (global.always_show_level_editor_buttons == false)
+		if (!global.always_show_level_editor_buttons)
 		{
 			draw_sprite_ext(spr_menu_cursor, 0, always_show_level_editor_buttons_x, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 270, c_white, 1);
 		}
@@ -1661,7 +1631,7 @@ if (global.actually_play_edited_level == false)
 		if (point_in_rectangle(cursor_x, cursor_y, always_show_level_editor_buttons_x - 32 + 1, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64 - 1))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_bottom)
-		&& (pause == false)
+		&& (!pause)
 		{
 			draw_set_alpha(0.5);
 			draw_rectangle_color(always_show_level_editor_buttons_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
@@ -1671,7 +1641,7 @@ if (global.actually_play_edited_level == false)
 				tooltip = l10n_text("Hide buttons");
 			}
 			else
-			if (global.always_show_level_editor_buttons == false)
+			if (!global.always_show_level_editor_buttons)
 			{
 				tooltip = l10n_text("Lock buttons");
 			}
@@ -1774,7 +1744,7 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Show icons at top of screen */
 		if (show_icons_at_top)
-		&& (pause == false)
+		&& (!pause)
 		{
 			icons_at_top_y = lerp(icons_at_top_y, - 1, 0.1);
 		}
@@ -1910,194 +1880,13 @@ if (global.actually_play_edited_level == false)
 		{
 			show_tooltip = 100;
 		}
-		if (show_icons_at_bottom == false)
+		if (!show_icons_at_bottom)
 		|| (mouse_check_button(mb_any))
 		|| (keyboard_check(vk_anykey))
 		{
 			show_tooltip = 0;
 		}
 		#endregion /* Show Tooltip when hovering over icon, this code needs to be after the show icons code so it appears above the icons END */
-		
-		#region /* Undo and Redo icons */
-		if (show_undo_redo_icons)
-		{
-			
-			#region /* Click Undo icon */
-			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
-			&& (global.controls_used_for_menu_navigation == "mouse")
-			{
-				tooltip = "Undo";
-				show_tooltip += 2;
-				if (mouse_check_button_released(mb_left))
-				{
-					current_undo_value --;
-				}
-			}
-			#endregion /* Click Undo icon END */
-			
-			else
-			
-			#region /* Click Redo icon */
-			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
-			&& (global.controls_used_for_menu_navigation == "mouse")
-			{
-				tooltip = "Redo";
-				show_tooltip += 2;
-				if (mouse_check_button_released(mb_left))
-				&& (current_undo_value < max_undo_value)
-				{
-					current_undo_value ++;
-				}
-			}
-			#endregion /* Click Redo icon END */
-			
-		}
-		#endregion /* Undo and Redo icons END */
-		
-		if (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-		&& (global.controls_used_for_menu_navigation == "mouse")
-		{
-			show_tooltip = 0;
-		}
-		
-		#region /* Click icons at bottom of screen */
-		if (show_icons_at_bottom)
-		&& (pause == false)
-		{
-			
-			#region /* Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard */
-			if (global.enable_difficulty_selection_settings)
-			&& (global.enable_difficutly_layers_in_level_editor)
-			{
-				
-				#region /* Easy */
-				if (set_difficulty_mode)
-				&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256 - 64, display_get_gui_height() - 64, display_get_gui_width() - 192 - 64, display_get_gui_height() + 64))
-				&& (global.controls_used_for_menu_navigation == "mouse")
-				{
-					tooltip = "Show only objects in easy";
-					show_tooltip += 2;
-					if (mouse_check_button_pressed(mb_left))
-					{
-						difficulty_layer = 1;
-						fill_mode = false;
-						erase_mode = false;
-						set_difficulty_mode = true;
-						if (instance_exists(obj_leveleditor_placed_object))
-						{
-							with (obj_leveleditor_placed_object)
-							{
-								scr_make_sprite_transparent_setting_difficulty_levels();
-							}
-						}
-					}
-				}
-				#endregion /* Easy END */
-				
-				#region /* Normal */
-				if (set_difficulty_mode)
-				&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 192 - 64, display_get_gui_height() - 64, display_get_gui_width() - 128 - 64, display_get_gui_height() + 64))
-				&& (global.controls_used_for_menu_navigation == "mouse")
-				{
-					tooltip = "Show only objects in normal";
-					show_tooltip += 2;
-					if (mouse_check_button_pressed(mb_left))
-					{
-						difficulty_layer = 2;
-						fill_mode = false;
-						erase_mode = false;
-						set_difficulty_mode = true;
-						if (instance_exists(obj_leveleditor_placed_object))
-						{
-							with (obj_leveleditor_placed_object)
-							{
-								scr_make_sprite_transparent_setting_difficulty_levels();
-							}
-						}
-					}
-				}
-				#endregion /* Normal END */
-				
-				#region /* Hard */
-				if (set_difficulty_mode)
-				&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128 - 64, display_get_gui_height() - 64, display_get_gui_width() - 64 - 64, display_get_gui_height() + 64))
-				&& (global.controls_used_for_menu_navigation == "mouse")
-				{
-					tooltip = "Show only objects in hard";
-					show_tooltip += 2;
-					if (mouse_check_button_pressed(mb_left))
-					{
-						difficulty_layer = 3;
-						fill_mode = false;
-						erase_mode = false;
-						set_difficulty_mode = true;
-						if (instance_exists(obj_leveleditor_placed_object))
-						{
-							with (obj_leveleditor_placed_object)
-							{
-								scr_make_sprite_transparent_setting_difficulty_levels();
-							}
-						}
-					}
-				}
-				#endregion /* Hard END */
-				
-				#region /* Set Difficulty Mode / Back */
-				if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64 - 64, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
-				&& (global.controls_used_for_menu_navigation == "mouse")
-				{
-					tooltip = "Set what objects should appear on what difficulty";
-					show_tooltip += 2;
-					if (mouse_check_button_pressed(mb_left))
-					{
-						fill_mode = false;
-						erase_mode = false;
-						if (set_difficulty_mode)
-						{
-							set_difficulty_mode = false;
-							difficulty_layer = 0;
-						}
-						else
-						{
-							set_difficulty_mode = true;
-						}
-						var time_source = time_source_create(time_source_game, 2, time_source_units_frames, function() /*For some reason the script needs to play after a bit of delay, otherwise it doesn't do anything when clicking back*/
-						{
-							if (instance_exists(obj_leveleditor_placed_object))
-							{
-								with (obj_leveleditor_placed_object)
-								{
-									scr_make_sprite_transparent_setting_difficulty_levels();
-								}
-							}
-						}
-						, [], 1);
-						time_source_start(time_source);
-					}
-				}
-				#endregion /* Set Difficulty Mode / Back */
-				
-			}
-			#endregion /* Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard END */
-			
-			#region /* Click Delete All Objects / Wipe Button */
-			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
-			&& (global.controls_used_for_menu_navigation == "mouse")
-			{
-				tooltip = "Delete All Objects";
-				show_tooltip += 2;
-				if (mouse_check_button_pressed(mb_left))
-				{
-					menu_delay = 3;
-					level_editor_options_back_to_menu = "delete_all_objects_button";
-					menu = "delete_all_objects_no";
-					pause = true;
-				}
-			}
-			#endregion /* Click Delete All Objects / Wipe Button END */
-			
-		}
-		#endregion /* Click icons at bottom of screen END */
 		
 		#region /* Click icons at top of screen */
 		
@@ -2245,7 +2034,7 @@ if (global.actually_play_edited_level == false)
 		if (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, - 64, grid_button_x + 32, + 64))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_top)
-		&& (pause == false)
+		&& (!pause)
 		{
 			tooltip = "Toggle Grid";
 			show_tooltip += 2;
@@ -2344,11 +2133,11 @@ if (global.actually_play_edited_level == false)
 		if (point_in_rectangle(cursor_x, cursor_y, help_button_x - 32, - 64, help_button_x + 32, + 64))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (show_icons_at_top)
-		&& (pause == false)
-		&& (modify_object_menu == false)
+		&& (!pause)
+		&& (!modify_object_menu)
 		|| (keyboard_check_pressed(ord("H")))
-		&& (pause == false)
-		&& (modify_object_menu == false)
+		&& (!pause)
+		&& (!modify_object_menu)
 		{
 			modify_object_menu = false;
 			tooltip = "Help";
@@ -2442,7 +2231,7 @@ if (global.actually_play_edited_level == false)
 		
 		if (global.controls_used_for_menu_navigation != "controller")
 		&& (!navigate_camera_with_arrowkeys)
-		&& (modify_object_menu == false)
+		&& (!modify_object_menu)
 		{
 			scr_draw_mouse_cursor_sprite();
 		}

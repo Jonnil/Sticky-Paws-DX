@@ -17,7 +17,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		#region /* Navigate Sub Menu */
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		{
 			menu_delay = 3;
 			if (menu == "level_editor_play")
@@ -97,7 +97,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		else
 		if (key_down)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		{
 			menu_delay = 3;
 			if (menu == "level_editor_play")
@@ -222,7 +222,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		#endregion /* Button Y Positions END */
 		
 		#region /* Show Sub Menu Buttons */
-		if (can_input_level_name == false)
+		if (!can_input_level_name)
 		{
 			if (menu == "level_editor_play")
 			|| (menu == "level_editor_make")
@@ -302,7 +302,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Create from Scratch button */
 		if (menu == "level_editor_create_from_scratch")
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			show_level_editor_corner_menu = true;
@@ -324,7 +324,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Create from Back button */
 		if (menu == "level_editor_create_from_back")
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			show_level_editor_corner_menu = true;
@@ -345,7 +345,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Back button when selecting level */
 		if (menu == "level_editor_selected_back")
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			show_level_editor_corner_menu = true;
@@ -366,7 +366,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Clicking outside of the sub menu should close the sub menu */
 		if (open_sub_menu)
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "level_editor_play")
@@ -409,7 +409,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Play button */
 		if (menu == "level_editor_play")
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (!hovering_over_level_editor_corner_menu)
@@ -514,7 +514,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Key A pressed */
 		if (key_a_pressed)
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			
@@ -549,13 +549,13 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Create from Template button */
 		if (key_a_pressed)
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (!hovering_over_level_editor_corner_menu)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 522 - 3, xx + 8 + 320, 226 * (column - scroll) + 522 - 3 + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (global.controls_used_for_menu_navigation == "mouse")
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "level_editor_create_from_template")
@@ -572,13 +572,13 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Pressing the Yes Delete button */
 		if (key_a_pressed)
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (!hovering_over_level_editor_corner_menu)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 320, 226 * (column - scroll) + 569 - 3 + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (global.controls_used_for_menu_navigation == "mouse")
-		&& (can_input_level_name == false)
+		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "level_editor_delete_yes")

@@ -41,7 +41,7 @@ global.volume_voice = clamp(global.volume_voice, 0, 1);
 if (global.convention_mode == false)
 && (global.enable_options_for_pc)
 && (can_remap_key == false)
-&& (input_key == false)
+&& (!input_key)
 && (menu_delay == 0 && menu_joystick_delay == 0)
 {
 	if (menu == "main_game")
@@ -560,7 +560,7 @@ scr_character_select_menu_draw();
 scr_draw_online_download_list();
 
 #region /* Menu Navigation */
-if (input_key == false)
+if (!input_key)
 && (can_navigate)
 && (menu_delay == 0 && menu_joystick_delay == 0)
 {

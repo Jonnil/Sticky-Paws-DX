@@ -2,13 +2,19 @@ function scr_draw_text_outlined(x_position = x, y_position = y, string_text = ""
 {
 	var text_size_adjusted = (string_width(string_text) >= 1280 && window_get_width() <= 1280) ? text_size * 0.75 : text_size;
 	
+	var outline_positions = [
+		[-1, 0],
+		[1, 0],
+		[0, -1],
+		[0, 1]
+	];
+	
 	/* Draw outline of text */
-	if (outline_color != noone)
-	{
-		draw_text_transformed_color(x_position - text_size_adjusted, y_position, string_text, text_size_adjusted, text_size_adjusted, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
-		draw_text_transformed_color(x_position + text_size_adjusted, y_position, string_text, text_size_adjusted, text_size_adjusted, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
-		draw_text_transformed_color(x_position, y_position - text_size_adjusted, string_text, text_size_adjusted, text_size_adjusted, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
-		draw_text_transformed_color(x_position, y_position + text_size_adjusted, string_text, text_size_adjusted, text_size_adjusted, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
+	if (outline_color != noone) {
+		for (var i = 0; i < array_length_2d(outline_positions); i++) {
+			var outline_offset = outline_positions[i];
+			draw_text_transformed_color(x_position + outline_offset[0] * text_size_adjusted, y_position + outline_offset[1] * text_size_adjusted, string_text, text_size_adjusted, text_size_adjusted, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
+		}
 	}
 	
 	/* Draw filled text */

@@ -592,7 +592,7 @@ function scr_character_select_menu_draw()
 		if (ds_list_size(global.all_loaded_characters) >= 120) /* If there are more than 120 characters stored, warn player about there being too many characters */
 		{
 			draw_set_halign(fa_center);
-			draw_set_valign(fa_center);
+			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 16, l10n_text("There are too many characters stored"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 48, l10n_text("Delete some characters in Manage Characters"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 16, l10n_text("There are too many characters stored"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
