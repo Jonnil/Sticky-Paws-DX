@@ -36,7 +36,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 			if (menu == "quit_game_no")
 			&& (global.controls_used_for_menu_navigation == "keyboard")
 			|| (menu == "quit_game_no")
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, get_window_height * 0.5, 1, 1, 180, c_white, 1);
@@ -92,7 +92,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 			if (menu == "quit_game_yes")
 			&& (global.controls_used_for_menu_navigation == "keyboard")
 			|| (menu == "quit_game_yes")
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5 + 84, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, get_window_height * 0.5 + 84, 1, 1, 180, c_white, 1);

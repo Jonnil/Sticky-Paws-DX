@@ -270,7 +270,7 @@ if (can_move)
 				
 				#region /* Key Right */
 				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, c_white, 1);
@@ -336,7 +336,7 @@ if (can_move)
 				
 				#region /* Key Left */
 				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padl, x - 64, y, 0.5, c_white, 1);
@@ -405,7 +405,7 @@ if (can_move)
 				
 				#region /* Key Down */
 				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, c_white, 1);
@@ -439,7 +439,7 @@ if (can_move)
 				
 				#region /* Key Up */
 				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);

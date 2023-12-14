@@ -81,8 +81,8 @@ if (global.play_edited_level)
 }
 
 if (instance_exists(obj_level_height))
-&& (drag_object == false)
-&& (obj_level_height.drag_object == false)
+&& (!drag_object)
+&& (!obj_level_height.drag_object)
 && (obj_level_height.y = y)
 {
 	y += 32;

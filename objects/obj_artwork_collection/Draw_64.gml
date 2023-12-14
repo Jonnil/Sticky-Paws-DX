@@ -189,7 +189,7 @@ scr_draw_text_outlined(+ 32, get_window_height - 32, "< " + l10n_text("Artwork")
 #endregion /* Draw what artwork is selected END */
 
 if (gamepad_is_connected(global.player_slot[1]))
-&& (global.controls_used_for_menu_navigation == "controller")
+&& (global.controls_used_for_menu_navigation == "gamepad")
 || (global.always_show_gamepad_buttons)
 {
 	scr_draw_gamepad_buttons(gp_padl, 128, get_window_height * 0.5, 1, c_white, 1);
@@ -262,7 +262,7 @@ draw_sprite_ext(spr_icons_back, 0, get_window_width - 370 + 20, get_window_heigh
 
 #region /* Draw Back Key */
 if (gamepad_is_connected(global.player_slot[1]))
-&& (global.controls_used_for_menu_navigation == "controller")
+&& (global.controls_used_for_menu_navigation == "gamepad")
 || (global.always_show_gamepad_buttons)
 {
 	scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], get_window_width - 32, get_window_height -21, 0.5, c_white, 1);

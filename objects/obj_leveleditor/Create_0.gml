@@ -10,6 +10,10 @@ layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), g
 scr_make_background_visible();
 
 #region /* Essential variables */
+cam_x = camera_get_view_x(view_camera[view_current]);
+cam_y = camera_get_view_y(view_camera[view_current]);
+cam_width = camera_get_view_width(view_camera[view_current]);
+cam_height = camera_get_view_height(view_camera[view_current]);
 content_type = "level";
 modify_object_menu = false;
 changing_level_theme_menu = false;
@@ -69,6 +73,14 @@ instance_create_depth(0, obj_level_height.y + 32, 0, obj_water_level_height);
 #region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
 if (global.doing_clear_check)
 {
+	/* Limit view inside room when saving automatic screenshot */
+	if (instance_exists(obj_level_width) && instance_exists(obj_level_height))
+	{
+		camera_set_view_pos(view_camera[view_current],
+		max(0, min(cam_x, obj_level_width.x - cam_width)),
+		max(0, min(cam_y, obj_level_height.y - cam_height)));
+	}
+	scr_automatic_screenshot();
 	global.actually_play_edited_level = true;
 	global.play_edited_level = true;
 	instance_destroy();
@@ -117,10 +129,6 @@ if (global.actually_play_edited_level == false)
 	key_left = noone;
 	key_right = noone;
 	key_down = noone;
-	cam_x = camera_get_view_x(view_camera[view_current]);
-	cam_y = camera_get_view_y(view_camera[view_current]);
-	cam_width = camera_get_view_width(view_camera[view_current]);
-	cam_height = camera_get_view_height(view_camera[view_current]);
 	get_window_height = display_get_gui_height();
 	get_window_width = display_get_gui_width();
 	mouse_get_x = device_mouse_x_to_gui(0);

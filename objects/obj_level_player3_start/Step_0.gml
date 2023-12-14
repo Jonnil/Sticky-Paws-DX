@@ -178,12 +178,8 @@ if (global.play_edited_level)
 			
 		}
 	}
-	
-	#region /* Destroy the level player 3 start if player 3 has spawned in the level */
-	if (instance_exists(obj_camera))
-	{
-		instance_destroy();
-	}
-	#endregion /* Destroy the level player 3 start if player 3 has spawned in the level END */
-	
 }
+
+if (instance_exists(obj_camera)) {
+		instance_destroy(); /* Destroy the level player 3 start if player 3 has spawned in the level */
+	}

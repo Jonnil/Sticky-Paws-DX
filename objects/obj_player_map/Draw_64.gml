@@ -15,7 +15,7 @@ if (can_move)
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(64, get_window_height - 28, l10n_text("Play"), global.default_text_size, c_black, c_white, 1);
 	if (gamepad_is_connected(global.player_slot[1]))
-	&& (global.controls_used_for_menu_navigation == "controller")
+	&& (global.controls_used_for_menu_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
 		scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], 32, get_window_height - 28, 0.5, c_white, 1);
@@ -89,7 +89,7 @@ if (global.debug_screen)
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(clear_prompt_x + 32, get_window_height - 28, l10n_text("Clear"), global.default_text_size, c_black, c_white, 1);
 		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], clear_prompt_x, get_window_height - 28, 0.5, c_white, 1);
 		}

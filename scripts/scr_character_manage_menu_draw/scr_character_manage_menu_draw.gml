@@ -53,7 +53,7 @@ function scr_character_manage_menu_draw()
 		&& (menu != "click_delete_character_yes")
 		{
 			if (gamepad_is_connected(global.player_slot[1]))
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[1] - arrow_offset, get_window_height * 0.5, 0.5, c_white, 1);
 			}
@@ -91,7 +91,7 @@ function scr_character_manage_menu_draw()
 		&& (menu != "click_delete_character_yes")
 		{
 			if (gamepad_is_connected(global.player_slot[1]))
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[1] + arrow_offset, get_window_height * 0.5, 0.5, c_white, 1);
 			}

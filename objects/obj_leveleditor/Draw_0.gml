@@ -118,7 +118,7 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Draw Grid END */
 	
 	#region /* Zoom In and Out (Draw red rectangles around the screen when you can't zoom any more) */
-	if (pause == false)
+	if (!pause)
 	{
 		
 		#region /* Zoom Out */
@@ -186,7 +186,7 @@ if (global.actually_play_edited_level == false)
 		#region /* Fill Cursor */
 		if (fill_mode)
 		&& (erase_mode == false)
-		&& (scroll_view == false)
+		&& (!scroll_view)
 		&& (!place_meeting(x, y, obj_level_player1_start))
 		&& (!place_meeting(x, y, obj_level_player2_start))
 		&& (!place_meeting(x, y, obj_level_player3_start))
@@ -206,8 +206,8 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Erase Cursor */
 		if (erase_mode)
-		&& (scroll_view == false)
-		&& (pause == false)
+		&& (!scroll_view)
+		&& (!pause)
 		{
 			draw_set_alpha(0.5);
 			{
@@ -247,10 +247,10 @@ if (global.actually_play_edited_level == false)
 		else
 		
 		#region /* Default Cursor */
-		if (scroll_view == false)
-		&& (drag_object == false)
+		if (!scroll_view)
+		&& (!drag_object)
 		&& (!fill_mode)
-		&& (pause == false)
+		&& (!pause)
 		{
 			if (!place_meeting(x, y, obj_leveleditor_placed_object))
 			&& (sprite_index >= 0)
@@ -348,7 +348,7 @@ if (global.actually_play_edited_level == false)
 		}
 		#endregion /* Default Cursor END */
 		
-		if (global.controls_used_for_menu_navigation == "controller")
+		if (global.controls_used_for_menu_navigation == "gamepad")
 		|| (navigate_camera_with_arrowkeys)
 		{
 			scr_draw_mouse_cursor_sprite();

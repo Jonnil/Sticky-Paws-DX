@@ -13,10 +13,10 @@ var is_gamepad_connected = false;
 var is_mobile = false;
 var is_keyboard = false;
 
-if (gamepad_is_connected(global.player_slot[1]) && global.player_can_play[1] && global.controls_used_for_menu_navigation == "controller")
-    || (gamepad_is_connected(global.player_slot[2]) && global.player_can_play[2] && global.controls_used_for_menu_navigation == "controller")
-    || (gamepad_is_connected(global.player_slot[3]) && global.player_can_play[3] && global.controls_used_for_menu_navigation == "controller")
-    || (gamepad_is_connected(global.player_slot[4]) && global.player_can_play[4] && global.controls_used_for_menu_navigation == "controller")
+if (gamepad_is_connected(global.player_slot[1]) && global.player_can_play[1] && global.controls_used_for_menu_navigation == "gamepad")
+    || (gamepad_is_connected(global.player_slot[2]) && global.player_can_play[2] && global.controls_used_for_menu_navigation == "gamepad")
+    || (gamepad_is_connected(global.player_slot[3]) && global.player_can_play[3] && global.controls_used_for_menu_navigation == "gamepad")
+    || (gamepad_is_connected(global.player_slot[4]) && global.player_can_play[4] && global.controls_used_for_menu_navigation == "gamepad")
     || (global.always_show_gamepad_buttons)
 {
     is_gamepad_connected = true;

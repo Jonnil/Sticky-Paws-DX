@@ -272,6 +272,7 @@ if (!global.actually_play_edited_level)
 		#region /* Pause Menu */
 		if (pause)
 		&& (quit_level_editor <= 0)
+		&& (pressing_play_timer == 0)
 		{
 			welcome_to_level_editor = 0; /* Close the help menu when pausing the game */
 			
@@ -872,7 +873,7 @@ if (!global.actually_play_edited_level)
 					}
 				}
 				#endregion /* If menu is on generate level map no END */
-			
+				
 			}
 			#endregion /* Make the menu invisible when entering the options menu END */
 			
@@ -1068,7 +1069,7 @@ if (!global.actually_play_edited_level)
 		
 		#region /* Draw Play Key */
 		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(button_play, play_level_icon_x + 20, display_get_gui_height() - 32 + icons_at_bottom_y + 20, 0.4, c_white, 1);
@@ -1189,7 +1190,7 @@ if (!global.actually_play_edited_level)
 		
 		#region /* Draw Brush Key */
 		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			if (!fill_mode)
@@ -1405,7 +1406,7 @@ if (!global.actually_play_edited_level)
 		
 		#region /* Draw Eraser Key */
 		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			if (erase_mode)
@@ -1542,7 +1543,7 @@ if (!global.actually_play_edited_level)
 		
 		#region /* Draw Eraser Key */
 		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			if (fill_mode)
@@ -2182,7 +2183,7 @@ if (!global.actually_play_edited_level)
 			var autosave_countdown = ceil((autosave_timer - 18000) / -60);
 			if (autosave_text == l10n_text("Autosave in " + autosave_countdown))
 			{
-				if (global.controls_used_for_menu_navigation == "controller")
+				if (global.controls_used_for_menu_navigation == "gamepad")
 				{
 					scr_draw_gamepad_buttons(gp_start, display_get_gui_width() * 0.5 - 16 - (string_width(l10n_text("Cancel Autosave")) * 0.5), 164, 0.6, c_white, 1);
 				}

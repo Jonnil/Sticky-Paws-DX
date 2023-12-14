@@ -1,5 +1,11 @@
 function scr_draw_show_controls(what_player = 1)
 {
+	/* You need to show what the controls are on the screen by default, so every new player knows how to control the game */
+	/* On PC, not every new player is used to controlling a platformer on keyboard, if they don't own a gamepad */
+	/* The players that knows how to control the game, should turn off the "show controls" themselves if they want to */
+	/* This should hopefully give everyone the best opportunity to learn the controls */
+	/* Go to "scr set default remapping player" and check that "player show controls" is set to 1 by default */
+	
 	if (global.player_show_controls[what_player] >= true)
 	{
 		if (player_show_controls_alpha[what_player] > 0)
@@ -113,7 +119,7 @@ function scr_draw_show_controls(what_player = 1)
 				draw_set_valign(fa_middle);
 				
 				#region /* Show Player Dive Key */
-				if (global.controls_used_for_menu_navigation == "controller" && gamepad_player_is_connected) || (global.always_show_gamepad_buttons) {
+				if (global.controls_used_for_menu_navigation == "gamepad" && gamepad_player_is_connected) || (global.always_show_gamepad_buttons) {
 					var dive_button = max(player_gamepad_button_dive, player_gamepad_button2_dive);
 					if (dive_button != noone) {
 						draw_text_dive = true;
@@ -133,7 +139,7 @@ function scr_draw_show_controls(what_player = 1)
 				#endregion /* Show Player Dive Key END */
 				
 				#region /* Show Player Jump Key */
-				if (global.controls_used_for_menu_navigation == "controller" && gamepad_player_is_connected) || (global.always_show_gamepad_buttons) {
+				if (global.controls_used_for_menu_navigation == "gamepad" && gamepad_player_is_connected) || (global.always_show_gamepad_buttons) {
 					var jump_button = max(player_gamepad_button_jump, player_gamepad_button2_jump);
 					if (jump_button != noone) {
 						draw_text_jump = true;
@@ -154,7 +160,7 @@ function scr_draw_show_controls(what_player = 1)
 				
 				#region /* Show Player Crouch Key */
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button_crouch > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -163,7 +169,7 @@ function scr_draw_show_controls(what_player = 1)
 				}
 				else
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button2_crouch > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -172,7 +178,7 @@ function scr_draw_show_controls(what_player = 1)
 				}
 				else
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button_crouch_toggle > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -181,7 +187,7 @@ function scr_draw_show_controls(what_player = 1)
 				}
 				else
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button2_crouch_toggle > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -222,7 +228,7 @@ function scr_draw_show_controls(what_player = 1)
 				if (player_run_toggle == false)
 				{
 					if (gamepad_player_is_connected)
-					&& (global.controls_used_for_menu_navigation == "controller")
+					&& (global.controls_used_for_menu_navigation == "gamepad")
 					&& (player_gamepad_button_run > noone)
 					|| (global.always_show_gamepad_buttons)
 					{
@@ -231,7 +237,7 @@ function scr_draw_show_controls(what_player = 1)
 					}
 					else
 					if (gamepad_player_is_connected)
-					&& (global.controls_used_for_menu_navigation == "controller")
+					&& (global.controls_used_for_menu_navigation == "gamepad")
 					&& (player_gamepad_button2_run > noone)
 					|| (global.always_show_gamepad_buttons)
 					{
@@ -240,7 +246,7 @@ function scr_draw_show_controls(what_player = 1)
 					}
 					else
 					if (gamepad_player_is_connected)
-					&& (global.controls_used_for_menu_navigation == "controller")
+					&& (global.controls_used_for_menu_navigation == "gamepad")
 					&& (player_gamepad_button_run_toggle > noone)
 					|| (global.always_show_gamepad_buttons)
 					{
@@ -249,7 +255,7 @@ function scr_draw_show_controls(what_player = 1)
 					}
 					else
 					if (gamepad_player_is_connected)
-					&& (global.controls_used_for_menu_navigation == "controller")
+					&& (global.controls_used_for_menu_navigation == "gamepad")
 					&& (player_gamepad_button2_run_toggle > noone)
 					|| (global.always_show_gamepad_buttons)
 					{
@@ -289,7 +295,7 @@ function scr_draw_show_controls(what_player = 1)
 				
 				#region /* Show Player Left Key */
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button_left > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -298,7 +304,7 @@ function scr_draw_show_controls(what_player = 1)
 				}
 				else
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button2_left > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -325,7 +331,7 @@ function scr_draw_show_controls(what_player = 1)
 				
 				#region /* Show Player Right Key */
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button_right > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -334,7 +340,7 @@ function scr_draw_show_controls(what_player = 1)
 				}
 				else
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button2_right > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -361,7 +367,7 @@ function scr_draw_show_controls(what_player = 1)
 				
 				#region /* Show Player Down Key */
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button_down > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -370,7 +376,7 @@ function scr_draw_show_controls(what_player = 1)
 				}
 				else
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button2_down > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -397,7 +403,7 @@ function scr_draw_show_controls(what_player = 1)
 				
 				#region /* Show Player Up Key */
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button_up > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -406,7 +412,7 @@ function scr_draw_show_controls(what_player = 1)
 				}
 				else
 				if (gamepad_player_is_connected)
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				&& (player_gamepad_button2_up > noone)
 				|| (global.always_show_gamepad_buttons)
 				{
@@ -440,7 +446,7 @@ function scr_draw_show_controls(what_player = 1)
 				draw_set_valign(fa_middle);
 				
 				#region /* Show Player Join Game Key */
-				var show_gamepad_buttons = global.always_show_gamepad_buttons || (global.controls_used_for_menu_navigation == "controller" && gamepad_player_is_connected);
+				var show_gamepad_buttons = global.always_show_gamepad_buttons || (global.controls_used_for_menu_navigation == "gamepad" && gamepad_player_is_connected);
 				if (show_gamepad_buttons) {
 					var gamepad_button = max(player_gamepad_button_accept, player_gamepad_button2_accept);
 					if (gamepad_button != noone) {

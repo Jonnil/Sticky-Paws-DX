@@ -235,7 +235,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			if (menu != cancel_menu_string)
 			{
 				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, c_white, 1);
@@ -281,7 +281,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	if (menu != cancel_menu_string)
 	{
 		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
@@ -295,7 +295,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	if (menu == cancel_menu_string)
 	{
 		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);

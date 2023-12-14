@@ -1,7 +1,7 @@
 if (global.actually_play_edited_level == false)
 {
 	if (id > other.id)
-	&& (drag_object == false)
+	&& (!drag_object)
 	&& (other.drag_object == false)
 	&& (other.object == object)
 	&& (other.x == x)

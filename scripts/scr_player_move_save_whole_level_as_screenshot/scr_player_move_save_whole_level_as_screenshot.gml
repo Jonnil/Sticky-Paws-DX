@@ -26,12 +26,11 @@ function scr_player_move_save_whole_level_as_screenshot()
 			display_set_gui_size(new_width, new_height);
 			
 			surface_resize(application_surface, new_width, new_height);
-			
-			window_set_rectangle(0, 0, new_width, new_height);
 			full_level_map_screenshot_timer = 1;
 		}
 		if (full_level_map_screenshot_timer >= 1)
 		{
+			audio_stop_all(); /* Don't play the level music, as it will only play for a second when taking full level screenshot */
 			full_level_map_screenshot_timer ++;
 		}
 		if (full_level_map_screenshot_timer == 15)
@@ -58,7 +57,6 @@ function scr_player_move_save_whole_level_as_screenshot()
 			camera_set_view_pos(view_camera[view_current], x, y); /* Set camera position to object's x and y positions again */
 			camera_set_view_size(view_camera[view_current], 1920, 1080);
 			surface_resize(application_surface, 1920, 1080);
-			window_set_rectangle(0, 0, 1920, 1080);
 			scr_set_screen_size();
 			global.full_level_map_screenshot = false;
 			global.actually_play_edited_level = false;

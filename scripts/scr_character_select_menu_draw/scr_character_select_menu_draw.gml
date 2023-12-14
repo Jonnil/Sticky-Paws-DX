@@ -116,7 +116,7 @@ function scr_character_select_menu_draw()
 				
 				#region /* Show Key A on screen */
 				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, c_white, 1);

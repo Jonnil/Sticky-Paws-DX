@@ -82,9 +82,9 @@ function scr_draw_online_download_list()
 					{
 						show_level_editor_corner_menu = true;
 					}
-					if (is_array(thumbnail_level_name))
-					&& (is_array(thumbnail_clear_check))
-					&& (is_array(thumbnail_level_id))
+					if (array_length(thumbnail_level_name) > 1)
+					&& (array_length(thumbnail_clear_check) > 1)
+					&& (array_length(thumbnail_level_id) > 1)
 					{
 						select_custom_level_menu_open = true;
 						menu = "online_level_list"; /* If all custom levels are already loaded, then go back to the level select menu */
@@ -554,7 +554,7 @@ function scr_draw_online_download_list()
 			
 			#region /* Draw Search Key */
 			if (gamepad_is_connected(global.player_slot[1]))
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
 				scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);

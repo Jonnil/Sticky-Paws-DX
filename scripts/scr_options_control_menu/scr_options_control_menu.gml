@@ -4420,7 +4420,7 @@ function scr_options_control_menu()
 			}
 			
 			scr_draw_text_outlined(window_get_width() * 0.5 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			if (global.controls_used_for_menu_navigation == "controller")
+			if (global.controls_used_for_menu_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
 				scr_draw_gamepad_buttons(gp_start, window_get_width() * 0.5 + (string_width(l10n_text("Buttons can be disabled using")) * 0.5) - 32, 64, 0.5, c_white, 1);

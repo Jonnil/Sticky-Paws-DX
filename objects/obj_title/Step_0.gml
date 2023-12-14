@@ -222,36 +222,41 @@ if (menu == "load_custom_level")
 			#endregion /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch END */
 			
 			#region /* Get clear check and level ID information */
-			for(i = 1; i < ds_list_size(global.thumbnail_sprite); i += 1)
+			if (array_length(thumbnail_level_name) > 0)
+			&& (array_length(thumbnail_clear_check) > 0)
+			&& (array_length(thumbnail_level_id) > 0)
 			{
-				ini_open(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, i)) + "/data/level_information.ini");
-				thumbnail_clear_check[i] = ini_read_string("info", "clear_check", false);
-				thumbnail_level_id[i] = string(ini_read_string("info", "level_id", ""));
-				if (switch_check_profanity(string(ini_read_string("info", "level_name", ""))))
+				for(i = 1; i < ds_list_size(global.thumbnail_sprite); i += 1)
 				{
-					thumbnail_level_name[i] = string(switch_mask_profanity(ini_read_string("info", "level_name", "")));
+					ini_open(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, i)) + "/data/level_information.ini");
+					thumbnail_clear_check[i] = ini_read_string("info", "clear_check", false);
+					thumbnail_level_id[i] = string(ini_read_string("info", "level_id", ""));
+					if (switch_check_profanity(string(ini_read_string("info", "level_name", ""))))
+					{
+						thumbnail_level_name[i] = string(switch_mask_profanity(ini_read_string("info", "level_name", "")));
+					}
+					else
+					{
+						thumbnail_level_name[i] = string(ini_read_string("info", "level_name", ""));
+					}
+					if (switch_check_profanity(string(ini_read_string("info", "level_description", ""))))
+					{
+						thumbnail_level_description[i] = string(switch_mask_profanity(ini_read_string("info", "level_description", "")));
+					}
+					else
+					{
+						thumbnail_level_description[i] = string(ini_read_string("info", "level_description", ""));
+					}
+					if (switch_check_profanity(string(ini_read_string("info", "username", ""))))
+					{
+						thumbnail_level_username[i] = string(switch_mask_profanity(ini_read_string("info", "username", "")));
+					}
+					else
+					{
+						thumbnail_level_username[i] = string(ini_read_string("info", "username", ""));
+					}
+					ini_close();
 				}
-				else
-				{
-					thumbnail_level_name[i] = string(ini_read_string("info", "level_name", ""));
-				}
-				if (switch_check_profanity(string(ini_read_string("info", "level_description", ""))))
-				{
-					thumbnail_level_description[i] = string(switch_mask_profanity(ini_read_string("info", "level_description", "")));
-				}
-				else
-				{
-					thumbnail_level_description[i] = string(ini_read_string("info", "level_description", ""));
-				}
-				if (switch_check_profanity(string(ini_read_string("info", "username", ""))))
-				{
-					thumbnail_level_username[i] = string(switch_mask_profanity(ini_read_string("info", "username", "")));
-				}
-				else
-				{
-					thumbnail_level_username[i] = string(ini_read_string("info", "username", ""));
-				}
-				ini_close();
 			}
 			#endregion /* Get clear check and level ID information END */
 			

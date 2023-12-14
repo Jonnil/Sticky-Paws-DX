@@ -9,7 +9,7 @@ if (instance_exists(obj_player))
 	
 	#region /* Draw Enter Gallery Key */
 	if (gamepad_is_connected(global.player_slot[1]))
-	&& (global.controls_used_for_menu_navigation == "controller")
+	&& (global.controls_used_for_menu_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
 		scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);

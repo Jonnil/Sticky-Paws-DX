@@ -50,7 +50,7 @@ if (need_to_press_up_to_enter)
 	{
 		if (instance_exists(obj_player))
 		&& (gamepad_is_connected(instance_nearest(x, y, obj_player).player - 1))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		&& (player_gamepad_button_up > noone)
 		|| (global.always_show_gamepad_buttons)
 		{
@@ -59,7 +59,7 @@ if (need_to_press_up_to_enter)
 		else
 		if (instance_exists(obj_player))
 		&& (gamepad_is_connected(instance_nearest(x, y, obj_player).player - 1))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		&& (player_gamepad_button2_up > noone)
 		|| (global.always_show_gamepad_buttons)
 		{

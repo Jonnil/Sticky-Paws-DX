@@ -559,6 +559,7 @@
     {"name":"scr_menu_navigation_with_joystick_delay","order":22,"path":"scripts/scr_menu_navigation_with_joystick_delay/scr_menu_navigation_with_joystick_delay.yy",},
     {"name":"scr_player_move_pause","order":9,"path":"scripts/scr_player_move_pause/scr_player_move_pause.yy",},
     {"name":"spr_rotate_arrow","order":20,"path":"sprites/spr_rotate_arrow/spr_rotate_arrow.yy",},
+    {"name":"scr_automatic_screenshot","order":21,"path":"scripts/scr_automatic_screenshot/scr_automatic_screenshot.yy",},
     {"name":"obj_big_collectible","order":14,"path":"objects/obj_big_collectible/obj_big_collectible.yy",},
     {"name":"scr_player_move_roll_when_landing","order":13,"path":"scripts/scr_player_move_roll_when_landing/scr_player_move_roll_when_landing.yy",},
     {"name":"spr_cardboard","order":59,"path":"sprites/spr_cardboard/spr_cardboard.yy",},

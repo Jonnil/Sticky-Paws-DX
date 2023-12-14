@@ -340,7 +340,7 @@ if (global.play_edited_level) /* When playtesting the level */
 	
 	#region /* Draw Pause Key */
 	if (gamepad_is_connected(global.player_slot[1]))
-	&& (global.controls_used_for_menu_navigation == "controller")
+	&& (global.controls_used_for_menu_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
 		scr_draw_gamepad_buttons(gp_select, 32 + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1);

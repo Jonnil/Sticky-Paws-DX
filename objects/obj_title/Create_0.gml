@@ -11,7 +11,7 @@ allowed_to_load_template_level = false;
 masked_username = "";
 masked_character_name = "";
 masked_level_name = "";
-thumbnail_level_name = "";
+thumbnail_level_name[0] = "";
 thumbnail_level_description = "";
 thumbnail_level_id = "";
 thumbnail_level_username = "";
@@ -268,11 +268,8 @@ global.always_show_level_editor_buttons = true; /* If level editor buttons shoul
 
 scr_config_load(); /* Load Config */
 
-if (file_exists("localization.csv"))
-{
-	if (global.language_localization > ds_grid_width(global.language_local_data))
-	|| (global.language_localization < 0)
-	{
+if (file_exists("localization.csv")) {
+	if (global.language_localization > ds_grid_width(global.language_local_data) || global.language_localization < 0) {
 		scr_set_default_language();
 	}
 }

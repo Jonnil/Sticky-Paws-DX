@@ -58,7 +58,7 @@ function scr_draw_upload_character_menu()
 			if (menu == "upload_no_character")
 			&& (global.controls_used_for_menu_navigation == "keyboard")
 			|| (menu == "upload_no_character")
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_character_no_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_character_no_y, 1, 1, 180, c_white, 1);
@@ -96,7 +96,7 @@ function scr_draw_upload_character_menu()
 				if (menu == "upload_yes_character")
 				&& (global.controls_used_for_menu_navigation == "keyboard")
 				|| (menu == "upload_yes_character")
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				{
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_character_yes_y, 1, 1, 0, c_white, 1);
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_character_yes_y, 1, 1, 180, c_white, 1);
@@ -409,7 +409,7 @@ function scr_draw_upload_character_menu()
 				if (menu == "clear_check_character_no")
 				&& (global.controls_used_for_menu_navigation == "keyboard")
 				|| (menu == "clear_check_character_no")
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				{
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_character_no_y, 1, 1, 0, c_white, 1);
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_character_no_y, 1, 1, 180, c_white, 1);
@@ -444,7 +444,7 @@ function scr_draw_upload_character_menu()
 				if (menu == "clear_check_character_yes")
 				&& (global.controls_used_for_menu_navigation == "keyboard")
 				|| (menu == "clear_check_character_yes")
-				&& (global.controls_used_for_menu_navigation == "controller")
+				&& (global.controls_used_for_menu_navigation == "gamepad")
 				{
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_character_yes_y + 84, 1, 1, 0, c_white, 1);
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_character_yes_y + 84, 1, 1, 180, c_white, 1);
@@ -804,7 +804,7 @@ function scr_draw_upload_character_menu()
 			if (menu == "error_character_too_big")
 			&& (global.controls_used_for_menu_navigation == "keyboard")
 			|| (menu == "error_character_too_big")
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
@@ -884,7 +884,7 @@ function scr_draw_upload_character_menu()
 			if (menu == "character_uploaded")
 			&& (global.controls_used_for_menu_navigation == "keyboard")
 			|| (menu == "character_uploaded")
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
@@ -956,7 +956,7 @@ function scr_draw_upload_character_menu()
 			if (menu == "no_internet_character")
 			&& (global.controls_used_for_menu_navigation == "keyboard")
 			|| (menu == "no_internet_character")
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);

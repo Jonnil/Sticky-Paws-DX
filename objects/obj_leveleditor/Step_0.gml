@@ -161,7 +161,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Need to set the controls early in the step event */
 	scr_set_controls_used_to_navigate();
-	if (pause == false)
+	if (!pause)
 	{
 		scr_controls_for_level_editor();
 	}
@@ -316,7 +316,7 @@ if (global.actually_play_edited_level == false)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 	&& (mouse_check_button_pressed(mb_left))
 	{
-		if (pause == false)
+		if (!pause)
 		{
 			pressing_play_timer = 1;
 		}
@@ -329,7 +329,7 @@ if (global.actually_play_edited_level == false)
 	&& (mouse_check_button(mb_left))
 	|| (pressing_play_timer < 3)
 	{
-		if (pause == false)
+		if (!pause)
 		&& (pressing_play_timer >= 1)
 		&& (!key_b_hold)
 		{
@@ -358,7 +358,7 @@ if (global.actually_play_edited_level == false)
 		|| (global.full_level_map_screenshot)
 		|| (pressing_play_timer > frames_until_playtest_from_start)
 		{
-			if (pause == false)
+			if (!pause)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (global.character_select_in_this_menu == "level_editor")
 			{
@@ -542,7 +542,7 @@ if (global.actually_play_edited_level == false)
 		#region /* Controller Input Changes */
 		if (global.controls_used_for_menu_navigation == "keyboard")
 		&& (!navigate_camera_with_arrowkeys)
-		&& (pause == false)
+		&& (!pause)
 		{
 			if (keyboard_check(global.player_[inp.key][1][1][action.up]))
 			|| (keyboard_check(global.player_[inp.key][1][2][action.up]))
@@ -592,7 +592,7 @@ if (global.actually_play_edited_level == false)
 			camera_set_view_pos(view_camera[view_current], cam_x, cam_y); /* Move actual camera */
 		}
 		else
-		if (global.controls_used_for_menu_navigation == "controller")
+		if (global.controls_used_for_menu_navigation == "gamepad")
 		{
 			x = controller_x;
 			y = controller_y;
@@ -604,7 +604,7 @@ if (global.actually_play_edited_level == false)
 			controller_y = clamp(controller_y, cam_y, cam_y + cam_height);
 			#endregion /* Keep controller_x and controller_y within view END */
 			
-			if (pause == false)
+			if (!pause)
 			{
 				if (key_up)
 				&& (controller_y > cam_y)
@@ -693,16 +693,16 @@ if (global.actually_play_edited_level == false)
 		#region /* Move view with keyboard or gamepad*/
 		var view_x_direction = 0;
 		var view_y_direction = 0;
-		if (pause == false)
+		if (!pause)
 		{
 			if (gamepad_axis_value(global.player_slot[1], gp_axisrv) < 0)
 			|| (global.controls_used_for_menu_navigation != "controller")
 			&& (key_up)
 			&& (!key_down)
-			&& (pause == false)
+			&& (!pause)
 			|| (key_up)
 			&& (y <= cam_y + (controller_view_speed * 2))
-			&& (pause == false)
+			&& (!pause)
 			{
 				if (view_center_y > -cam_height)
 				{
@@ -714,10 +714,10 @@ if (global.actually_play_edited_level == false)
 			|| (global.controls_used_for_menu_navigation != "controller")
 			&& (key_down)
 			&& (!key_up)
-			&& (pause == false)
+			&& (!pause)
 			|| (key_down)
 			&& (y >= cam_y + cam_height - (controller_view_speed * 2))
-			&& (pause == false)
+			&& (!pause)
 			{
 				if (view_center_y < obj_level_height.y + cam_height)
 				{
@@ -729,10 +729,10 @@ if (global.actually_play_edited_level == false)
 			|| (global.controls_used_for_menu_navigation != "controller")
 			&& (key_left)
 			&& (!key_right)
-			&& (pause == false)
+			&& (!pause)
 			|| (key_left)
 			&& (x <= cam_x + (controller_view_speed * 2))
-			&& (pause == false)
+			&& (!pause)
 			{
 				if (view_center_x > -cam_width)
 				{
@@ -744,10 +744,10 @@ if (global.actually_play_edited_level == false)
 			|| (global.controls_used_for_menu_navigation != "controller")
 			&& (key_right)
 			&& (!key_left)
-			&& (pause == false)
+			&& (!pause)
 			|| (key_right)
 			&& (x >= cam_x + cam_width - (controller_view_speed * 2))
-			&& (pause == false)
+			&& (!pause)
 			{
 				if (view_center_x < obj_level_width.x + cam_width)
 				{
@@ -776,11 +776,11 @@ if (global.actually_play_edited_level == false)
 			&& (!mouse_check_button(mb_middle))
 			&& (!mouse_check_button(mb_right))
 			&& (pressing_play_timer == 0)
-			&& (scroll_view == false)
-			&& (drag_object == false)
+			&& (!scroll_view)
+			&& (!drag_object)
 			&& (!fill_mode)
 			&& (!erase_mode)
-			&& (pause == false)
+			&& (!pause)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!place_meeting(x, y, obj_level_player1_start))
 			&& (!place_meeting(x, y, obj_level_player2_start))
@@ -792,9 +792,9 @@ if (global.actually_play_edited_level == false)
 			&& (!hovering_over_icons)
 			&& (global.part_limit < 4000)
 			{
-				if (obj_level_width.drag_object == false)
+				if (!obj_level_width.drag_object)
 				&& (obj_level_width.drag_release_timer == 0)
-				&& (obj_level_height.drag_object == false)
+				&& (!obj_level_height.drag_object)
 				&& (obj_level_height.drag_release_timer == 0)
 				{
 					if (place_object_delay_timer < 2)
@@ -803,7 +803,7 @@ if (global.actually_play_edited_level == false)
 						place_object_delay_timer ++;
 					}
 					if (place_object_delay_timer >= 2)
-					|| (can_make_place_brush_size_bigger == false)
+					|| (!can_make_place_brush_size_bigger)
 					{
 						drag_object = false;
 								
@@ -870,8 +870,8 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Make object change difficulty layer depending on what difficulty layer is selected */
 		if (difficulty_layer > 0)
-		&& (drag_object == false)
-		&& (pause == false)
+		&& (!drag_object)
+		&& (!pause)
 		&& (!hovering_over_icons)
 		&& (!keyboard_check(vk_space))
 		&& (!mouse_check_button(mb_middle))
@@ -891,10 +891,10 @@ if (global.actually_play_edited_level == false)
 		
 		#region /* Delete / Erase Objects */
 		if (difficulty_layer == 0)
-		&& (drag_object == false)
+		&& (!drag_object)
 		&& (erase_mode)
-		&& (scroll_view == false)
-		&& (pause == false)
+		&& (!scroll_view)
+		&& (!pause)
 		&& (!hovering_over_icons)
 		&& (!keyboard_check(vk_space))
 		&& (!keyboard_check(vk_escape))
@@ -996,7 +996,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Keyboard Shortcuts */
 	
 	#region /* Press D key to change to drawing tool in level editor */
-	if (pause == false)
+	if (!pause)
 	{
 		if (keyboard_check_pressed(key_draw))
 		&& (fill_mode)
@@ -1027,7 +1027,7 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Press D key to change to drawing tool in level editor END */
 	
 	#region /* Press E key to change to erase tool in level editor */
-	if (pause == false)
+	if (!pause)
 	{
 		if (keyboard_check_pressed(key_erase))
 		&& (!erase_mode)
@@ -1052,7 +1052,7 @@ if (global.actually_play_edited_level == false)
 	#endregion /* Press E key to change to erase tool in level editor */
 	
 	#region /* Press F key to change to fill tool in level editor */
-	if (pause == false)
+	if (!pause)
 	{
 		if (keyboard_check_released(key_fill))
 		&& (!fill_mode)
@@ -1092,7 +1092,7 @@ if (global.actually_play_edited_level == false)
 	if (!fill_mode)
 	&& (!erase_mode)
 	&& (mouse_check_button(mb_left))
-	&& (pause == false)
+	&& (!pause)
 	{
 		if (mouse_wheel_down())
 		{
@@ -1116,7 +1116,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Scroll mouse wheel to change erase tool size in level editor */
 	if (erase_mode)
-	&& (pause == false)
+	&& (!pause)
 	{
 		if (mouse_wheel_down())
 		{
@@ -1170,16 +1170,16 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Show or hide grid hotkey */
 	if (keyboard_check_pressed(key_grid))
-	&& (pause == false)
+	&& (!pause)
 	|| (gamepad_button_check_pressed(global.player_slot[1], button_grid))
-	&& (pause == false)
+	&& (!pause)
 	{
 		show_grid = not show_grid;
 	}
 	#endregion /* Show or hide grid hotkey END */
 	
 	#region /* Zoom In and Out (Draw red rectangles around the screen when you can't zoom any more) */
-	if (pause == false)
+	if (!pause)
 	{
 		
 		#region /* Zoom Out */
@@ -1279,7 +1279,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Fill Cursor */
 	if (fill_mode)
 	&& (!erase_mode)
-	&& (scroll_view == false)
+	&& (!scroll_view)
 	&& (!place_meeting(x, y, obj_level_player1_start))
 	&& (!place_meeting(x, y, obj_level_player2_start))
 	&& (!place_meeting(x, y, obj_level_player3_start))
@@ -1294,8 +1294,8 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Erase Cursor */
 	if (erase_mode)
-	&& (scroll_view == false)
-	&& (pause == false)
+	&& (!scroll_view)
+	&& (!pause)
 	{
 		mouse_sprite = spr_cursor_erase;
 	}
@@ -1304,10 +1304,10 @@ if (global.actually_play_edited_level == false)
 	else
 	
 	#region /* Default Cursor */
-	if (scroll_view == false)
-	&& (drag_object == false)
+	if (!scroll_view)
+	&& (!drag_object)
 	&& (!fill_mode)
-	&& (pause == false)
+	&& (!pause)
 	{
 		mouse_sprite = spr_cursor_brush;
 	}
@@ -1319,7 +1319,7 @@ if (global.actually_play_edited_level == false)
 	#region /* Change modes */
 	if (mouse_check_button_pressed(mb_right))
 	{
-		if (pause == false)
+		if (!pause)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			erase_mode = true;
@@ -1328,7 +1328,7 @@ if (global.actually_play_edited_level == false)
 	if (mouse_check_button_released(mb_right))
 	|| (gamepad_button_check_released(global.player_slot[1], button_erase))
 	{
-		if (pause == false)
+		if (!pause)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			erase_mode = false;
@@ -1368,10 +1368,10 @@ if (global.actually_play_edited_level == false)
 				if (!keyboard_check(vk_space))
 				&& (!mouse_check_button(mb_middle))
 				&& (!mouse_check_button(mb_right))
-				&& (scroll_view == false)
-				&& (drag_object == false)
+				&& (!scroll_view)
+				&& (!drag_object)
 				&& (!erase_mode)
-				&& (pause == false)
+				&& (!pause)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (place_object_delay_timer < 2)
@@ -1421,11 +1421,11 @@ if (global.actually_play_edited_level == false)
 		&& (!key_a_pressed)
 		&& (!mouse_check_button(mb_left))
 		&& (!erase_mode)
-		&& (pause == false)
+		&& (!pause)
 		|| (gamepad_button_check_pressed(global.player_slot[1], button_scroll_object_left))
-		&& (pause == false)
+		&& (!pause)
 		|| (keyboard_check_pressed(key_scroll_object_left))
-		&& (pause == false)
+		&& (!pause)
 		{
 			if (!instance_exists(obj_leveleditor_fill))
 			{
@@ -1475,11 +1475,11 @@ if (global.actually_play_edited_level == false)
 		&& (!key_a_pressed)
 		&& (!mouse_check_button(mb_left))
 		&& (!erase_mode)
-		&& (pause == false)
+		&& (!pause)
 		|| (gamepad_button_check_pressed(global.player_slot[1], button_scroll_object_right))
-		&& (pause == false)
+		&& (!pause)
 		|| (keyboard_check_pressed(key_scroll_object_right))
-		&& (pause == false)
+		&& (!pause)
 		{
 			if (!instance_exists(obj_leveleditor_fill))
 			{
@@ -1553,16 +1553,19 @@ if (global.actually_play_edited_level == false)
 		{
 			
 			#region /* Limit so cursor and view can't go outside room */
-			if (cam_width < 1920 or cam_height < 1080)
+			if (cam_width < 1920 || cam_height < 1080)
 			{
 				camera_set_view_size(view_camera[view_current], 1920, 1080);
 			}
 			scr_set_screen_size();
 			
 			/* Limit view inside room when saving and quitting */
-			camera_set_view_pos(view_camera[view_current],
-			max(0, min(cam_x, room_width - cam_width)),
-			max(0, min(cam_y, room_height - cam_height)));
+			if (instance_exists(obj_level_width) && instance_exists(obj_level_height))
+			{
+				camera_set_view_pos(view_camera[view_current],
+				max(0, min(cam_x, obj_level_width.x - cam_width)),
+				max(0, min(cam_y, obj_level_height.y - cam_height)));
+			}
 			
 			/* Limit controller x and y inside room */
 			controller_x = clamp(controller_x, cam_x, cam_x + cam_width);
@@ -1603,7 +1606,7 @@ if (global.actually_play_edited_level == false)
 		#region /* Save Thumbnail a little bit after saving level */
 		if (quit_level_editor == 4 && global.level_name != "")
 		{
-			alarm[0] = 1;
+			scr_automatic_screenshot();
 		}
 		#endregion /* Save Thumbnail a little bit after saving level END */
 		
@@ -1617,7 +1620,7 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Press Pause Button */
 	if (quit_level_editor == false)
-	&& (pause == false)
+	&& (!pause)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		if (keyboard_check_pressed(vk_escape))
@@ -1640,26 +1643,26 @@ if (global.actually_play_edited_level == false)
 	
 	#region /* Keep view within the level */
 	if (view_center_x < -(cam_width * 0.5))
-	&& (scroll_view == false)
+	&& (!scroll_view)
 	{
 		camera_set_view_pos(view_camera[view_current], -cam_width, cam_y);
 	}
 	if (view_center_y < -(cam_height * 0.5))
-	&& (scroll_view == false)
+	&& (!scroll_view)
 	{
 		camera_set_view_pos(view_camera[view_current], cam_x, -cam_height);
 	}
-	if (obj_level_width.drag_object == false)
+	if (!obj_level_width.drag_object)
 	&& (obj_level_width.drag_release_timer == 0)
 	&& (view_center_x > obj_level_width.x +(cam_width * 0.5))
-	&& (scroll_view == false)
+	&& (!scroll_view)
 	{
 		camera_set_view_pos(view_camera[view_current], obj_level_width.x, cam_y);
 	}
-	if (obj_level_height.drag_object == false)
+	if (!obj_level_height.drag_object)
 	&& (obj_level_height.drag_release_timer == 0)
 	&& (view_center_y > obj_level_height.y +(cam_height * 0.5))
-	&& (scroll_view == false)
+	&& (!scroll_view)
 	{
 		camera_set_view_pos(view_camera[view_current], cam_x, obj_level_height.y);
 	}

@@ -65,7 +65,7 @@ if (show_skip_button)
 	}
 	else
 	if (gamepad_is_connected(global.player_slot[1]))
-	&& (global.controls_used_for_menu_navigation == "controller")
+	&& (global.controls_used_for_menu_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
 		draw_set_halign(fa_right);

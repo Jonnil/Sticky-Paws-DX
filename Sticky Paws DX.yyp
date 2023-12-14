@@ -3051,7 +3051,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.444",
+    "IDEVersion": "2023.1100.0.450",
   },
   "resources": [
     {"id":{"name":"spr_player_stand","path":"sprites/spr_player_stand/spr_player_stand.yy",},},
@@ -3604,6 +3604,7 @@
     {"id":{"name":"scr_menu_navigation_with_joystick_delay","path":"scripts/scr_menu_navigation_with_joystick_delay/scr_menu_navigation_with_joystick_delay.yy",},},
     {"id":{"name":"scr_player_move_pause","path":"scripts/scr_player_move_pause/scr_player_move_pause.yy",},},
     {"id":{"name":"spr_rotate_arrow","path":"sprites/spr_rotate_arrow/spr_rotate_arrow.yy",},},
+    {"id":{"name":"scr_automatic_screenshot","path":"scripts/scr_automatic_screenshot/scr_automatic_screenshot.yy",},},
     {"id":{"name":"obj_big_collectible","path":"objects/obj_big_collectible/obj_big_collectible.yy",},},
     {"id":{"name":"scr_player_move_roll_when_landing","path":"scripts/scr_player_move_roll_when_landing/scr_player_move_roll_when_landing.yy",},},
     {"id":{"name":"spr_cardboard","path":"sprites/spr_cardboard/spr_cardboard.yy",},},

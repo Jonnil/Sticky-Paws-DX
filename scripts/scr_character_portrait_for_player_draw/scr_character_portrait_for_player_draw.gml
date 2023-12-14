@@ -218,7 +218,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					if (global.skin_for_player[what_player] > 0)
 					{
 						if (gamepad_is_connected(global.player_slot[what_player]))
-						&& (global.controls_used_for_menu_navigation == "controller")
+						&& (global.controls_used_for_menu_navigation == "gamepad")
 						|| (global.always_show_gamepad_buttons)
 						{
 							scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset, get_window_height * 0.5 + skin_y, 0.5, c_white, 1);
@@ -251,7 +251,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					if (character_portrait_for_player_dir_exists_2[what_player])
 					{
 						if (gamepad_is_connected(global.player_slot[what_player]))
-						&& (global.controls_used_for_menu_navigation == "controller")
+						&& (global.controls_used_for_menu_navigation == "gamepad")
 						|| (global.always_show_gamepad_buttons)
 						{
 							scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset, get_window_height * 0.5 + skin_y, 0.5, c_white, 1);
@@ -315,7 +315,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					if (global.voicepack_for_player[what_player] > 0)
 					{
 						if (gamepad_is_connected(global.player_slot[what_player]))
-						&& (global.controls_used_for_menu_navigation == "controller")
+						&& (global.controls_used_for_menu_navigation == "gamepad")
 						|| (global.always_show_gamepad_buttons)
 						{
 							scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset, get_window_height * 0.5 + voicepack_y, 0.5, c_white, 1);
@@ -349,7 +349,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					if (character_portrait_for_player_dir_exists_4[what_player])
 					{
 						if (gamepad_is_connected(global.player_slot[what_player]))
-						&& (global.controls_used_for_menu_navigation == "controller")
+						&& (global.controls_used_for_menu_navigation == "gamepad")
 						|| (global.always_show_gamepad_buttons)
 						{
 							scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset, get_window_height * 0.5 + voicepack_y, 0.5, c_white, 1);
@@ -405,7 +405,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				if (global.character_index[what_player - 1] > 0)
 				{
 					if (gamepad_is_connected(global.player_slot[what_player]))
-					&& (global.controls_used_for_menu_navigation == "controller")
+					&& (global.controls_used_for_menu_navigation == "gamepad")
 					|| (global.always_show_gamepad_buttons)
 					{
 						scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset, get_window_height * 0.5, 0.5, c_white, 1);
@@ -439,7 +439,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				if (global.character_index[what_player - 1] < ds_list_size(global.all_loaded_characters) - 1)
 				{
 					if (gamepad_is_connected(global.player_slot[what_player]))
-					&& (global.controls_used_for_menu_navigation == "controller")
+					&& (global.controls_used_for_menu_navigation == "gamepad")
 					|| (global.always_show_gamepad_buttons)
 					{
 						scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset, get_window_height * 0.5, 0.5, c_white, 1);
@@ -547,7 +547,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			
 			#region /* Key A */
 			if (gamepad_is_connected(global.player_slot[what_player]))
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
 				scr_draw_gamepad_buttons(player_gamepad_button_accept, get_window_width * 0.5 + player_display_x[what_player] + 80, get_window_height * 0.5 + 150, 0.5, c_white, 1);
@@ -591,7 +591,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			
 			#region /* Key B */
 			if (gamepad_is_connected(global.player_slot[what_player]))
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
 				scr_draw_gamepad_buttons(player_gamepad_button_back, get_window_width * 0.5 + player_display_x[what_player] + 80, get_window_height * 0.5 + 150, 0.5, c_white, 1);
@@ -633,7 +633,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		
 		#region /* Key A */
 		if (gamepad_is_connected(global.player_slot[what_player]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(player_gamepad_button_accept, get_window_width * 0.5 + player_display_x[what_player] + 70, name_input_y + 35, 0.5, c_white, 1);

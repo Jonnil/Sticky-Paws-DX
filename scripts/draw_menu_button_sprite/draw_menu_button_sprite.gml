@@ -13,7 +13,7 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	&& (global.controls_used_for_menu_navigation == "keyboard")
 	&& (open_dropdown == false)
 	|| (menu == menu_index)
-	&& (global.controls_used_for_menu_navigation == "controller")
+	&& (global.controls_used_for_menu_navigation == "gamepad")
 	&& (open_dropdown == false)
 	{
 		menu = menu_index;

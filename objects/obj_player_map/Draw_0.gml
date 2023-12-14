@@ -23,7 +23,7 @@ if (can_move)
 	if (!place_meeting(x, y - 1, obj_wall))
 	{
 		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.up], x, y - 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
@@ -87,7 +87,7 @@ if (can_move)
 	if (!place_meeting(x, y + 1, obj_wall))
 	{
 		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.down], x, y + 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
@@ -151,7 +151,7 @@ if (can_move)
 	if (!place_meeting(x - 1, y, obj_wall))
 	{
 		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.left], x - 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
@@ -215,7 +215,7 @@ if (can_move)
 	if (!place_meeting(x + 1, y, obj_wall))
 	{
 		if (gamepad_is_connected(global.player_slot[1]))
-		&& (global.controls_used_for_menu_navigation == "controller")
+		&& (global.controls_used_for_menu_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.right], x + 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));

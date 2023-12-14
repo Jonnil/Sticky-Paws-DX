@@ -44,6 +44,14 @@ function scr_draw_upload_level_menu()
 		|| (room == rm_leveleditor && point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42) && mouse_check_button_released(mb_left) && global.controls_used_for_menu_navigation == "mouse")
 		|| (key_a_pressed)
 		{
+			
+			if (room == rm_leveleditor)
+			{
+				ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+				ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
+				ini_close();
+			}
+			
 			if (global.free_communication_available)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
@@ -236,7 +244,7 @@ function scr_draw_upload_level_menu()
 			else
 			{
 				if (menu == "clear_check_no" && global.controls_used_for_menu_navigation == "keyboard")
-				|| (menu == "clear_check_no" && global.controls_used_for_menu_navigation == "controller")
+				|| (menu == "clear_check_no" && global.controls_used_for_menu_navigation == "gamepad")
 				{
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_no_y, 1, 1, 0, c_white, 1);
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_no_y, 1, 1, 180, c_white, 1);
@@ -268,7 +276,7 @@ function scr_draw_upload_level_menu()
 			else
 			{
 				if (menu == "clear_check_yes" && global.controls_used_for_menu_navigation == "keyboard")
-				|| (menu == "clear_check_yes" && global.controls_used_for_menu_navigation == "controller")
+				|| (menu == "clear_check_yes" && global.controls_used_for_menu_navigation == "gamepad")
 				{
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, do_a_clear_check_yes_y + 84, 1, 1, 0, c_white, 1);
 					draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, do_a_clear_check_yes_y + 84, 1, 1, 180, c_white, 1);
@@ -381,75 +389,77 @@ function scr_draw_upload_level_menu()
 		var change_username_y = 20 + (40 * 5);
 		
 		#region /* Change username */
-		if (menu == "upload_edit_username_ok")
-		|| (menu == "upload_edit_username_cancel")
+		global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_edit_username_ok", "upload_edit_username_cancel", false);
+		
+		#region /* Pressing Change Username OK */
+		if (key_a_pressed)
+		&& (menu = "upload_edit_username_ok")
+		&& (global.username != "")
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x - 185, change_username_y + 22 + 52, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42))
+		&& (global.username != "")
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
 		{
-			global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_edit_username_ok", "upload_edit_username_cancel", false);
-			
-			#region /* Pressing Change Username OK */
-			if (key_a_pressed)
-			&& (menu = "upload_edit_username_ok")
-			&& (global.username != "")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x - 185, change_username_y + 22 + 52, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42))
-			&& (global.username != "")
-			&& (global.controls_used_for_menu_navigation == "mouse")
-			&& (mouse_check_button_released(mb_left))
+			if (!keyboard_check_pressed(ord("Z")))
+			&& (!keyboard_check_pressed(ord("X")))
+			&& (!keyboard_check_pressed(vk_backspace))
+			&& (!keyboard_check_pressed(vk_space))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				if (!keyboard_check_pressed(ord("Z")))
-				&& (!keyboard_check_pressed(ord("X")))
-				&& (!keyboard_check_pressed(vk_backspace))
-				&& (!keyboard_check_pressed(vk_space))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				/* Save username to config file */
+				ini_open(working_directory + "save_file/config.ini");
+				ini_write_string("config", "username", string(global.username));
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				
+				menu_delay = 3;
+				input_key = false;
+				if (os_is_network_connected())
 				{
-					/* Save username to config file */
-					ini_open(working_directory + "save_file/config.ini");
-					ini_write_string("config", "username", string(global.username));
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					
-					menu_delay = 3;
-					input_key = false;
-					if (os_is_network_connected())
-					{
-						menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
-					}
-					else
-					{
-						menu = "no_internet_character";
-					}
+					menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
+				}
+				else
+				if (content_type == "character")
+				{
+					menu = "no_internet_character";
+				}
+				else
+				if (content_type == "level")
+				{
+					menu = "no_internet_level";
 				}
 			}
-			#endregion /* Pressing Change Username OK END */
-			
-			else
-			
-			#region /* Pressing Change Username Cancel */
-			if (key_a_pressed)
-			&& (menu = "upload_edit_username_cancel")
-			|| (key_b_pressed)
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x - 185, change_username_y + 22 + 52 + 42, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42 + 42))
-			&& (global.controls_used_for_menu_navigation == "mouse")
-			&& (mouse_check_button_released(mb_left))
-			{
-				if (!keyboard_check_pressed(ord("Z")))
-				&& (!keyboard_check_pressed(ord("X")))
-				&& (!keyboard_check_pressed(vk_backspace))
-				&& (!keyboard_check_pressed(vk_space))
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					/* Save username as blank to config file, then go back */
-					ini_open(working_directory + "save_file/config.ini");
-					ini_write_string("config", "username", "");
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					global.username = "";
-					keyboard_string = "";
-					menu_delay = 3;
-					input_key = false;
-					menu = "level_editor_upload";
-				}
-			}
-			#endregion /* Pressing Change Username Cancel END */
-			
 		}
+		#endregion /* Pressing Change Username OK END */
+		
+		else
+		
+		#region /* Pressing Change Username Cancel */
+		if (key_a_pressed)
+		&& (menu = "upload_edit_username_cancel")
+		|| (key_b_pressed)
+		|| (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x - 185, change_username_y + 22 + 52 + 42, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42 + 42))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (mouse_check_button_released(mb_left))
+		{
+			if (!keyboard_check_pressed(ord("Z")))
+			&& (!keyboard_check_pressed(ord("X")))
+			&& (!keyboard_check_pressed(vk_backspace))
+			&& (!keyboard_check_pressed(vk_space))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				/* Save username as blank to config file, then go back */
+				ini_open(working_directory + "save_file/config.ini");
+				ini_write_string("config", "username", "");
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+				global.username = "";
+				keyboard_string = "";
+				menu_delay = 3;
+				input_key = false;
+				menu = "level_editor_upload";
+			}
+		}
+		#endregion /* Pressing Change Username Cancel END */
+		
 		#region /* Draw the username text above everything */
 		if (global.username != "")
 		{
@@ -499,6 +509,18 @@ function scr_draw_upload_level_menu()
 	|| (menu == "edit_ok")
 	|| (menu == "edit_cancel")
 	{
+		if (global.username == "") /* Check if there is no username */
+		{
+			/* You should never be able to get to this screen without having entered a username */
+			keyboard_string = "";
+			menu_delay = 3;
+			menu = "upload_edit_username_ok"; /* If there isn't an username, have the player make an username */
+			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+			{
+				show_level_editor_corner_menu = false;
+			}
+		}
+		
 		if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 		{
 			show_level_editor_corner_menu = false;
@@ -1331,7 +1353,7 @@ function scr_draw_upload_level_menu()
 			if (menu == "upload_no")
 			&& (global.controls_used_for_menu_navigation == "keyboard")
 			|| (menu == "upload_no")
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_level_no_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_level_no_y, 1, 1, 180, c_white, 1);
@@ -1375,7 +1397,7 @@ function scr_draw_upload_level_menu()
 						if (menu == "upload_yes")
 						&& (global.controls_used_for_menu_navigation == "keyboard")
 						|| (menu == "upload_yes")
-						&& (global.controls_used_for_menu_navigation == "controller")
+						&& (global.controls_used_for_menu_navigation == "gamepad")
 						{
 							draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, upload_level_yes_y, 1, 1, 0, c_white, 1);
 							draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, upload_level_yes_y, 1, 1, 180, c_white, 1);
@@ -1641,7 +1663,7 @@ function scr_draw_upload_level_menu()
 			if (menu == "error_level_too_big")
 			&& (global.controls_used_for_menu_navigation == "keyboard")
 			|| (menu == "error_level_too_big")
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
@@ -1721,7 +1743,7 @@ function scr_draw_upload_level_menu()
 			if (menu == "level_uploaded")
 			&& (global.controls_used_for_menu_navigation == "keyboard")
 			|| (menu == "level_uploaded")
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);
@@ -1794,7 +1816,7 @@ function scr_draw_upload_level_menu()
 			if (menu == "no_internet_level")
 			&& (global.controls_used_for_menu_navigation == "keyboard")
 			|| (menu == "no_internet_level")
-			&& (global.controls_used_for_menu_navigation == "controller")
+			&& (global.controls_used_for_menu_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, ok_y, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, ok_y, 1, 1, 180, c_white, 1);

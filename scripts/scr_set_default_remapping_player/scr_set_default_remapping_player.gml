@@ -60,7 +60,7 @@ function scr_set_default_remapping_player1_gamepad(save_default_controls_to_conf
 	global.player1_down_and_jump_to_groundpound = false;
 	global.player1_wall_jump_setting = 1;
 	global.player1_drop_from_rope = 1;
-	global.player_show_controls[1] = 0;
+	global.player_show_controls[1] = 1;
 	#endregion /* Player 1 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
@@ -170,7 +170,7 @@ function scr_set_default_remapping_player1_keyboard(save_default_controls_to_con
 	global.player1_down_and_jump_to_groundpound = false;
 	global.player1_wall_jump_setting = 1;
 	global.player1_drop_from_rope = 1;
-	global.player_show_controls[1] = 0;
+	global.player_show_controls[1] = 1;
 	#endregion /* Player 1 Keyboard Remapping END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
@@ -288,7 +288,7 @@ function scr_set_default_remapping_player2_gamepad(save_default_controls_to_conf
 	global.player2_down_and_jump_to_groundpound = false;
 	global.player2_wall_jump_setting = 1;
 	global.player2_drop_from_rope = 1;
-	global.player_show_controls[2] = 0;
+	global.player_show_controls[2] = 1;
 	#endregion /* Player 2 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
@@ -398,7 +398,7 @@ function scr_set_default_remapping_player2_keyboard(save_default_controls_to_con
 	global.player2_down_and_jump_to_groundpound = false;
 	global.player2_wall_jump_setting = 1;
 	global.player2_drop_from_rope = 1;
-	global.player_show_controls[2] = 0;
+	global.player_show_controls[2] = 1;
 	#endregion /* Player 2 Keyboard Remapping (everything should be set to noone) END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
@@ -516,7 +516,7 @@ function scr_set_default_remapping_player3_gamepad(save_default_controls_to_conf
 	global.player3_down_and_jump_to_groundpound = false;
 	global.player3_wall_jump_setting = 1;
 	global.player3_drop_from_rope = 1;
-	global.player_show_controls[3] = 0;
+	global.player_show_controls[3] = 1;
 	#endregion /* Player 3 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
@@ -626,7 +626,7 @@ function scr_set_default_remapping_player3_keyboard(save_default_controls_to_con
 	global.player3_down_and_jump_to_groundpound = false;
 	global.player3_wall_jump_setting = 1;
 	global.player3_drop_from_rope = 1;
-	global.player_show_controls[3] = 0;
+	global.player_show_controls[3] = 1;
 	#endregion /* Player 3 Keyboard Remapping (everything should be set to noone) END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */
@@ -744,7 +744,7 @@ function scr_set_default_remapping_player4_gamepad(save_default_controls_to_conf
 	global.player4_down_and_jump_to_groundpound = false;
 	global.player4_wall_jump_setting = 1;
 	global.player4_drop_from_rope = 1;
-	global.player_show_controls[4] = 0;
+	global.player_show_controls[4] = 1;
 	#endregion /* Player 4 Gamepad Remapping END */
 	
 	#region /* After setting the gamepad controls back to default, save these settings in config */
@@ -854,7 +854,7 @@ function scr_set_default_remapping_player4_keyboard(save_default_controls_to_con
 	global.player4_down_and_jump_to_groundpound = false;
 	global.player4_wall_jump_setting = 1;
 	global.player4_drop_from_rope = 1;
-	global.player_show_controls[4] = 0;
+	global.player_show_controls[4] = 1;
 	#endregion /* Player 4 Keyboard Remapping (everything should be set to noone) END */
 	
 	#region /* After setting the keyboard controls back to default, save these settings in config */

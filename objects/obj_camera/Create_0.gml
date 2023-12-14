@@ -188,9 +188,6 @@ view_hview_lerp = 0;
 
 checkpoint_number = 0;
 
-view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) * 0.5);
-view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) * 0.5);
-
 #region /* Hud Variables */
 hud_show_lives_y = -64;
 hud_show_lives_timer = global.hud_hide_time * 60;
