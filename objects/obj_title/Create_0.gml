@@ -120,7 +120,6 @@ level_editor_edit_name = false; /* If you are editing an already made level's na
 old_level_name = ""; /* Need to remember original name of level, so that renaming level doesn't actually happen if you haven't edited the name */
 old_level_description = ""; /* Need to remember original description of level, so that renaming level doesn't actually happen if you haven't edited the description */
 show_level_editor_corner_menu = true; /* If the top-left corner menu should be shown and navigatable or not. In some cases like uploading a level, the menu should not show up */
-thumbnail_x_offset = 0; /* Level thumbnail x offset, for when windows size is too small to fit every thumbnail, you need to shift the x position a bit to fit everything */
 show_delete_button = true; /* If delete custom level buttons should show up or not. Sometimes you don't want it to show up when the feature is unavailable */
 file_found = "";
 file_load_timer = 0;
@@ -129,61 +128,57 @@ first_level = string(file_find_first(working_directory + "custom_levels/*", fa_d
 open_sub_menu = false;
 select_custom_level_menu_open = false;
 scroll = 0;
-scroll_to = 0;
-lerp_on = false;
+if (display_get_gui_width() >= 1670)
+{
+	thumbnail_x_offset = 0; /* Level thumbnail x offset, for when windows size is too small to fit every thumbnail, you need to shift the x position a bit to fit everything */
+	row = 4;
+}
+else
+if (display_get_gui_width() >= 1276)
+{
+	thumbnail_x_offset = 0;
+	row = 3;
+}
+else
+if (display_get_gui_width() >= 882)
+{
+	thumbnail_x_offset = - 64;
+	row = 3;
+}
+else
+if (display_get_gui_width() >= 488)
+{
+	thumbnail_x_offset = - 64;
+	row = 1;
+}
+scroll_to = floor(global.select_level_index / row);
+lerp_on = true;
 level_editor_template_select = false;
 language_index = global.language_localization + 1;
 language_mouse_scroll = 0;
 title_background_scale_lerp = global.title_background_scale;
 
-#region /* Character Name */
-narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator));
-#endregion /* Character Name END */
+narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator)); /* Character Name */
 
 #region /* Create directories */
-
-#region /* Create directory for saving custom characters */
-if (!directory_exists(working_directory + "custom_characters"))
-{
-	directory_create(working_directory + "custom_characters");
+if (!directory_exists(working_directory + "custom_characters")) {
+	directory_create(working_directory + "custom_characters"); /* Create directory for saving custom characters */
 }
-#endregion /* Create directory for saving custom characters END */
-
-#region /* Create directory for saving custom levels */
-if (!directory_exists(working_directory + "custom_levels"))
-{
-	directory_create(working_directory + "custom_levels");
+if (!directory_exists(working_directory + "custom_levels")) {
+	directory_create(working_directory + "custom_levels"); /* Create directory for saving custom levels */
 }
-#endregion /* Create directory for saving custom levels END */
-
-#region /* Create directory for saving custom resource_pack */
-if (!directory_exists(working_directory + "custom_resource_pack"))
-{
-	directory_create(working_directory + "custom_resource_pack");
+if (!directory_exists(working_directory + "custom_resource_pack")) {
+	directory_create(working_directory + "custom_resource_pack"); /* Create directory for saving custom resource_pack */
 }
-#endregion /* Create directory for saving custom resource_pack END */
-
-#region /* Create directory for saving custom title backgrounds */
-if (!directory_exists(working_directory + "custom_title_background"))
-{
-	directory_create(working_directory + "custom_title_background");
+if (!directory_exists(working_directory + "custom_title_background")) {
+	directory_create(working_directory + "custom_title_background"); /* Create directory for saving custom title backgrounds */
 }
-#endregion /* Create directory for saving custom title backgrounds END */
-
-#region /* Create directory for saving custom title logos */
-if (!directory_exists(working_directory + "custom_title_logo"))
-{
-	directory_create(working_directory + "custom_title_logo");
+if (!directory_exists(working_directory + "custom_title_logo")) {
+	directory_create(working_directory + "custom_title_logo"); /* Create directory for saving custom title logos */
 }
-#endregion /* Create directory for saving custom title logos END */
-
-#region /* Create directory for saving files */
-if (!directory_exists(working_directory + "save_file"))
-{
-	directory_create(working_directory + "save_file");
+if (!directory_exists(working_directory + "save_file")) {
+	directory_create(working_directory + "save_file"); /* Create directory for saving files */
 }
-#endregion /* Create directory for saving files END */
-
 #endregion /* Create directories END */
 
 #region /* Custom Title Screen Background */
@@ -257,8 +252,7 @@ global.timeattack_second = 0;
 global.timeattack_minute = 0;
 global.timeattack_realmillisecond = 0;
 global.timeattack_realmillisecond_real = 0;
-/* Checkpoint Timer */
-global.checkpoint_millisecond = 0;
+global.checkpoint_millisecond = 0; /* Checkpoint Timer */
 global.checkpoint_second = 0;
 global.checkpoint_minute = 0;
 global.checkpoint_realmillisecond = 0; /* Checkpoint Timer END */
@@ -374,8 +368,6 @@ show_title_logo = true;
 title_xscale = 1;
 title_yscale = 1;
 voice_select_character = noone;
-show_convention_mode_enable_text = 0;
-show_arcade_mode_enable_text = 0;
 
 darken_settings_alpha = 0;
 darken_settings_sidebar_alpha = 0;
@@ -400,16 +392,12 @@ left_sidebar_x = -400;
 iris_xscale = 0;
 iris_yscale = 0;
 iris_zoom = 0;
-#region /* Customize look of Options Menu */
-c_menu_outline = c_white;
+c_menu_outline = c_white; /* Customize look of Options Menu */
 c_menu_fill = c_black;
-#endregion /* Customize look of Options Menu END */
 
-#region /* Stop certain sounds from playing on the title screen */
-audio_stop_all();
+audio_stop_all(); /* Stop certain sounds from playing on the title screen */
 audio_stop_sound(snd_skidding);
 audio_stop_sound(snd_skidding_ice);
-#endregion /* Stop certain sounds from playing on the title screen END */
 
 #region /* Update Music */
 if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/title_screen.ogg"))

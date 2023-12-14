@@ -153,171 +153,91 @@ if (global.actually_play_edited_level == false)
 	intended_level_difficulty = 1; /* Easy = 0. Normal = 1. Hard = 2. Super Hard = 3 */
 	
 	#region /* Unlock placable objects */
-	var debug_unlock_all = true;
-	if (debug_unlock_all == false)
-	{
-		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-		
-		#region /* Read all the objects that should be unlocked */
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_DIRT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_DIRT, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GLASS] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_GLASS, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GRASS] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_GRASS, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GRAVEL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_GRAVEL, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_METAL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_METAL, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_STONE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_STONE, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_WOOD] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_WOOD, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BLACK_WALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BLACK_WALL, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_SPIKES] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SPIKES, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BRICK_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BRICK_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_QUESTION_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_QUESTION_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_HARD_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_HARD_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_FALLING_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_CLOUD_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_ICE_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ICE_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_HEART] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_HEART, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_ONE_UP] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ONE_UP, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BASIC_ENEMY, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BOSS] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BOSS, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BLASTER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BLASTER, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_DOOR] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_DOOR, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WARP_BOX] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WARP_BOX, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_SPRING] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SPRING, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_LADDER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_LADDER, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_ARROW_SIGN] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ARROW_SIGN, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_CHECKPOINT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CHECKPOINT, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_ONEWAY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ONEWAY, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CARDBOARD, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CARDBOARD_LONG, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_JUMP_PANEL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_JUMP_PANEL, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_MELON_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_MELON_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WATER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WATER, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_LAVA] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_LAVA, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BREATHABLE_WATER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BREATHABLE_WATER, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BUCKET] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BUCKET, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BIRD] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BIRD, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BUSH] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BUSH, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_SIGN_CROUCH] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SIGN_CROUCH, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_BOSS_BARRIER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BOSS_BARRIER, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_EYE_BLOCK, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_SIGN_READABLE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SIGN_READABLE, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_RING] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_RING, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, false);
-		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, false);
-		#region /* Read all the objects that should be unlocked */
-		
-		ini_close();
-	}
-	else
-	{
-		
-		#region /* Unlock every object */
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_DIRT] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GLASS] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GRASS] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GRAVEL] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_METAL] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_STONE] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_WOOD] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BLACK_WALL] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_SPIKES] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BRICK_BLOCK] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_QUESTION_BLOCK] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_HARD_BLOCK] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_FALLING_BLOCK] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_CLOUD_BLOCK] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_ICE_BLOCK] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_HEART] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_ONE_UP] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_ENEMY] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BOSS] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BLASTER] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_DOOR] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WARP_BOX] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_SPRING] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_LADDER] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_ARROW_SIGN] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_CHECKPOINT] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_ONEWAY] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD_LONG] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_JUMP_PANEL] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_MELON_BLOCK] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WATER] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_LAVA] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BREATHABLE_WATER] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BUCKET] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BIRD] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BUSH] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_SIGN_CROUCH] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_BOSS_BARRIER] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_SIGN_READABLE] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_RING] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4] = 2;
-		unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5] = 2;
-		#endregion /* Unlock every object END */
-		
-	}
+	var default_unlock = false;
+	
+	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+	
+	#region /* Read all the objects that should be unlocked */
+	unlocked_object[LEVEL_OBJECT_ID.ID_WALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_DIRT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_DIRT, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GLASS] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_GLASS, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GRASS] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_GRASS, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_GRAVEL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_GRAVEL, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_METAL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_METAL, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_STONE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_STONE, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_WOOD] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_WOOD, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BLACK_WALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BLACK_WALL, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_SPIKES] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SPIKES, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SEMISOLID_PLATFORM, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BRICK_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BRICK_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_QUESTION_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_QUESTION_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_HARD_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_HARD_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_FALLING_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_FALLING_BLOCK_LONG, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_INSTANT_FALLING_BLOCK_LONG, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WOOD_FALLING_BLOCK_LONG, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_STONE_FALLING_BLOCK_LONG, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_CLOUD_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CLOUD_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_ICE_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ICE_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ENEMY_ONLY_WALL, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BASIC_COLLECTIBLE, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BIG_COLLECTIBLE, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_HEART] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_HEART, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_INVINCIBILITY_POWERUP, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_ONE_UP] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ONE_UP, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BASIC_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BASIC_ENEMY, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ENEMY_BOWLINGBALL, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BIG_STATIONARY_ENEMY, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BOSS] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BOSS, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BLASTER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BLASTER, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_DOOR] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_DOOR, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WARP_BOX] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WARP_BOX, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WARP_BOX_ONE_USE, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_SPRING] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SPRING, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_LADDER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_LADDER, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_ARROW_SIGN] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ARROW_SIGN, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_CHECKPOINT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CHECKPOINT, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_ONEWAY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ONEWAY, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CARDBOARD_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CARDBOARD, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_CARDBOARD_LONG] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CARDBOARD_LONG, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_JUMP_PANEL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_JUMP_PANEL, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WALL_CLIMB_PANEL, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_MELON_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_MELON_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_HORIZONTAL_ROPE, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WATER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WATER, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_LAVA] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_LAVA, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BREATHABLE_WATER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BREATHABLE_WATER, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BUCKET] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BUCKET, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BIRD] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BIRD, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BUSH] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BUSH, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_SIGN_CROUCH] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SIGN_CROUCH, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_BOSS_BARRIER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_BOSS_BARRIER, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_EYE_BLOCK, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_EYE_BLOCK_ENEMY_PLAYER, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_SIGN_READABLE] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_SIGN_READABLE, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_RING] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_RING, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_1, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_2, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_3, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_4, default_unlock);
+	unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, default_unlock);
+	#endregion /* Read all the objects that should be unlocked END */
+	
+	ini_close();
 	#endregion /* Unlock placable objects END */
 	
 	#region /* Load custom sprites */
