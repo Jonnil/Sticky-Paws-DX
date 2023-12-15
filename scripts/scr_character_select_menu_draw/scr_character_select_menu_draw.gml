@@ -325,7 +325,7 @@ function scr_character_select_menu_draw()
 			&& (can_input_player3_name == false)
 			&& (can_input_player4_name == false)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_sub_menu == false)
+			&& (!open_sub_menu)
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_character_list_y + 2, 370, draw_online_character_list_y + 41))
 				&& (global.controls_used_for_menu_navigation == "mouse")

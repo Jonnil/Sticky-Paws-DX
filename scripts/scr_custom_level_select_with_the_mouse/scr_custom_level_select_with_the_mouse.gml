@@ -11,7 +11,7 @@ function scr_custom_level_select_with_the_mouse(all_loaded_what = global.all_loa
 		
 		/* Don't set the "row" or "thumbnail_x_offset" variables in here, those variables are set in "scr select custom level menu" */
 		column = clamp(floor(global.select_level_index / row), 0, floor(ds_list_size(all_loaded_what)))
-		if (open_sub_menu == false)
+		if (!open_sub_menu)
 		&& (!can_input_level_name)
 		&& (can_navigate)
 		&& (file_load_timer == 0) /* You should not be able to navigate the custom level select if it's still loading the levels */

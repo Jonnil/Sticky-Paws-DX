@@ -168,7 +168,10 @@ function scr_draw_online_download_list()
 		if (data != undefined)
 		&& (menu != "search_id_ok")
 		{
-			scr_scroll_menu();
+			if (!scrolling_menu_with_mousewheel)
+			{
+				scr_scroll_menu();
+			}
 			
 			/* Check if it's an array */
 			if (is_array(data))
@@ -262,9 +265,8 @@ function scr_draw_online_download_list()
 					}
 					#endregion /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting END */
 					
-					if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
-					download_online_x + 100 - 16, download_online_y + menu_y_offset - 16, download_online_x + 484 + 16, download_online_y + menu_y_offset + 216 + 62))
-					&& (global.controls_used_for_menu_navigation == "mouse")
+					if (global.controls_used_for_menu_navigation == "mouse")
+					&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x + 100 - 16, download_online_y + menu_y_offset - 16, download_online_x + 484 + 16, download_online_y + menu_y_offset + 216 + 62))
 					{
 						menu = "download_online_" + string(online_download_index);
 					}
@@ -277,20 +279,23 @@ function scr_draw_online_download_list()
 					var draw_download_time = string_replace(item.time_created, "T", " ");
 					draw_download_time = string_replace(draw_download_time, "Z", "");
 					
-					#region /* If you are hovering on download button */
+					#region /* If you are hovering on thumbnail download button */
 					if (menu == "download_online_" + string(online_download_index))
 					{
 						currently_selected_id = draw_download_id;
 						
-						menu_cursor_y_position = 64 + download_online_y;
+						if (global.controls_used_for_menu_navigation != "mouse")
+						{
+							menu_cursor_y_position = 64 + download_online_y;
+						}
 						var selected_download_c_menu_fill = c_lime;
 						/* Highlight the text in lime green so the player knows they are selecting this download */
 						global.selected_online_download_index = online_download_index;
 						
 						#region /* Download selected file when pressing A */
 						if (key_a_pressed)
-						|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x + 100, download_online_y + menu_y_offset, download_online_x + 484, download_online_y + menu_y_offset + 216))
-						&& (mouse_check_button_released(mb_left))
+						|| (mouse_check_button_released(mb_left))
+						&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x + 100, download_online_y + menu_y_offset, download_online_x + 484, download_online_y + menu_y_offset + 216))
 						{
 							if (menu_delay == 0 && menu_joystick_delay == 0)
 							{
@@ -311,46 +316,9 @@ function scr_draw_online_download_list()
 						#endregion /* Download selected file when pressing A END */
 						
 					}
-					#endregion /* If you are hovering on download button END */
-					
-					#region /* If you are hovering on play button */
-					if (menu == "play_online_" + string(online_download_index))
-					&& (content_type == "level")
-					{
-						currently_selected_id = draw_download_id;
-						
-						menu_cursor_y_position = 64 + download_online_y;
-						var selected_download_c_menu_fill = c_lime;
-						/* Highlight the text in lime green so the player knows they are selecting this download */
-						global.selected_online_download_index = online_download_index;
-						
-						#region /* Play selected level when pressing A */
-						if (key_a_pressed)
-						|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), play_online_x, 64 + download_online_y + menu_y_offset, play_online_x + 370, 64 + download_online_y + menu_y_offset + 41))
-						&& (mouse_check_button_released(mb_left))
-						{
-							if (menu_delay == 0 && menu_joystick_delay == 0)
-							{
-								
-								#region /* Go download the level and immediately play */
-								global.automatically_play_downloaded_level = true; /* You will play the level as soon as it's been downloaded */
-								global.search_id = string_upper(draw_download_id);
-								keyboard_string = string_upper(draw_download_id);
-								search_id = string_upper(draw_download_id); /* Then need to set search ID */
-								automatically_search_for_id = true; /* Don't set this variable to false yet, it's used in "scr_draw_menu_search_id" to automatically enter the search ID. We need to do the HTTP Request in that script */
-								in_online_download_list_menu = false; /* We are not supposed to show the online download list menu when going to search ID menu */
-								menu = "search_id_ok";
-								#endregion /* Go download the level and immediately play END */
-								
-							}
-						}
-						#endregion /* Play selected level when pressing A END */
-						
-					}
-					#endregion /* If you are hovering on play button END */
+					#endregion /* If you are hovering on thumbnail download button END */
 					
 					if (menu != "download_online_" + string(online_download_index))
-					&& (menu != "play_online_" + string(online_download_index))
 					{
 						var selected_download_c_menu_fill = c_menu_fill;
 					}
@@ -457,16 +425,12 @@ function scr_draw_online_download_list()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (mouse_wheel_up())
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_search_id";
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (mouse_wheel_down())
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -485,8 +449,6 @@ function scr_draw_online_download_list()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (mouse_wheel_up())
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(global.selected_online_download_index - 1);
@@ -495,17 +457,12 @@ function scr_draw_online_download_list()
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (global.selected_online_download_index < num_items)
-				|| (mouse_wheel_down())
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (global.selected_online_download_index < num_items)
 				{
 					menu_delay = 3;
 					menu = "download_online_" + string(global.selected_online_download_index + 1);
 				}
 				else
 				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (mouse_wheel_down())
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -606,16 +563,12 @@ function scr_draw_online_download_list()
 	{
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (mouse_wheel_up())
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "download_online_" + string(num_items);
 		}
 		else
 		if (key_down)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (mouse_wheel_down())
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
@@ -627,16 +580,12 @@ function scr_draw_online_download_list()
 	{
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (mouse_wheel_up())
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "download_online_back";
 		}
 		else
 		if (key_down)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (mouse_wheel_down())
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
@@ -648,8 +597,6 @@ function scr_draw_online_download_list()
 	{
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		|| (mouse_wheel_up())
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			menu = "download_online_search_id";
@@ -657,10 +604,37 @@ function scr_draw_online_download_list()
 	}
 	#endregion /* Online download list menu navigation even when there isn't any data END */
 	
+	if (mouse_wheel_up())
+	{
+		menu_cursor_y_position += 100;
+		menu_y_offset_real += 100;
+		scrolling_menu_with_mousewheel = true;
+	}
+	else
+	if (mouse_wheel_down())
+	{
+		menu_cursor_y_position -= 100;
+		menu_y_offset_real -= 100;
+		scrolling_menu_with_mousewheel = true;
+	}
+	else
+	if (key_up)
+	|| (key_down)
+	{
+		scrolling_menu_with_mousewheel = false;
+	}
+	
+	menu_y_offset = lerp(menu_y_offset, menu_y_offset_real, 0.25);
+	menu_y_offset_real = clamp(menu_y_offset_real, - 100 + window_get_height() - (300 * array_length(data)), 0); /* Dont let "meny y offset" get above 0 */
+	
 	//draw_set_halign(fa_left);
-	//scr_draw_text_outlined(32, 320 + (32 * 2), "debug online download list info");
-	//scr_draw_text_outlined(32, 320 + (32 * 4), "data: " + string(data));
-	//scr_draw_text_outlined(32, 320 + (32 * 5), "info_data: " + string(info_data));
-	//scr_draw_text_outlined(32, 320 + (32 * 6), "global.online_download_list_info: " + string(global.online_download_list_info));
+	//scr_draw_text_outlined(32, 320 + (32 * 1), "menu_cursor_y_position: " + string(menu_cursor_y_position));
+	//scr_draw_text_outlined(32, 320 + (32 * 2), "menu_y_offset: " + string(menu_y_offset));
+	//scr_draw_text_outlined(32, 320 + (32 * 3), "menu_y_offset_real: " + string(menu_y_offset_real));
+	//scr_draw_text_outlined(32, 320 + (32 * 4), "scrolling_menu_with_mousewheel: " + string(scrolling_menu_with_mousewheel));
+	//scr_draw_text_outlined(32, 320 + (32 * 5), "debug online download list info");
+	//scr_draw_text_outlined(32, 320 + (32 * 6), "data: " + string(data));
+	//scr_draw_text_outlined(32, 320 + (32 * 7), "info_data: " + string(info_data));
+	//scr_draw_text_outlined(32, 320 + (32 * 8), "global.online_download_list_info: " + string(global.online_download_list_info));
 	
 }

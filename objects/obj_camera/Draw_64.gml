@@ -316,12 +316,12 @@ if (global.doing_clear_check)
 	draw_set_valign(fa_middle);
 	if (global.doing_clear_check)
 	{
-		scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("Clear from the start"), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("Clear from the start"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	if (global.doing_clear_check_character)
 	{
-		scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("Clear level 1 before upload"), global.default_text_size, c_white, c_black, 1);
+		scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("Clear level 1 before upload"), global.default_text_size, c_black, c_white, 1);
 	}
 	global.checkpoint_x = 0;
 	global.checkpoint_y = 0;

@@ -21,6 +21,7 @@ top_left_of_thumbnail_y = 0;
 load_ok = 0;
 hovering_over_level_editor_corner_menu = false;
 have_downloaded_from_server = false;
+scrolling_menu_with_mousewheel = false;
 
 information_menu_open = false; /* If the information menu is opened or not */
 
