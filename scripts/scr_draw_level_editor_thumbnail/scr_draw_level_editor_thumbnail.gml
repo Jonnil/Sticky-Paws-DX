@@ -54,9 +54,13 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
+			
 			/* Draw level name on top of level thumbnail */
-			if (load_what_levels == global.all_loaded_custom_levels)
+			if ((load_what_levels == global.all_loaded_custom_levels)
+			&& (is_array(thumbnail_level_name))
 			&& (array_length(thumbnail_level_name) > 0)
+			&& (i >= 0)
+			&& (i < array_length(thumbnail_level_name)))
 			{
 				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(thumbnail_level_name[i]), global.default_text_size * 0.8, c_white, c_black, 1);
 			}

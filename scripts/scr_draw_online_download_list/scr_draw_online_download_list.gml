@@ -30,6 +30,11 @@ function scr_draw_online_download_list()
 		
 		menu = "download_online_" + string(global.selected_online_download_index);
 		
+		/* Put the scroll position on the selected thumbnail immediately */
+		menu_cursor_y_position = 64 + 80 - (300 * global.selected_online_download_index);
+		menu_y_offset = - 80 - (300 * global.selected_online_download_index);
+		menu_y_offset_real = - 80 - (300 * global.selected_online_download_index);
+		
 		automatically_search_for_id = false;
 		in_online_download_list_menu = true;
 		menu_delay = 3;
@@ -169,16 +174,6 @@ function scr_draw_online_download_list()
 			/* Check if it's an array */
 			if (is_array(data))
 			{
-				var play_online_x = download_online_x + 230;
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				
 				#region /* Thumbnail for each level / character */
 				/* Get the number of items in the JSON array */
@@ -671,11 +666,11 @@ function scr_draw_online_download_list()
 	menu_y_offset = lerp(menu_y_offset, menu_y_offset_real, 0.25);
 	menu_y_offset_real = clamp(menu_y_offset_real, - 100 + window_get_height() - (300 * array_length(data)), 0); /* Dont let "meny y offset" get above 0 */
 	
-	//draw_set_halign(fa_left);
-	//scr_draw_text_outlined(32, 320 + (32 * 1), "menu_cursor_y_position: " + string(menu_cursor_y_position));
-	//scr_draw_text_outlined(32, 320 + (32 * 2), "menu_y_offset: " + string(menu_y_offset));
-	//scr_draw_text_outlined(32, 320 + (32 * 3), "menu_y_offset_real: " + string(menu_y_offset_real));
-	//scr_draw_text_outlined(32, 320 + (32 * 4), "scrolling_menu_with_mousewheel: " + string(scrolling_menu_with_mousewheel));
+	draw_set_halign(fa_left);
+	scr_draw_text_outlined(32, 320 + (32 * 1), "menu_cursor_y_position: " + string(menu_cursor_y_position));
+	scr_draw_text_outlined(32, 320 + (32 * 2), "menu_y_offset: " + string(menu_y_offset));
+	scr_draw_text_outlined(32, 320 + (32 * 3), "menu_y_offset_real: " + string(menu_y_offset_real));
+	scr_draw_text_outlined(32, 320 + (32 * 4), "scrolling_menu_with_mousewheel: " + string(scrolling_menu_with_mousewheel));
 	//scr_draw_text_outlined(32, 320 + (32 * 5), "debug online download list info");
 	//scr_draw_text_outlined(32, 320 + (32 * 6), "data: " + string(data));
 	//scr_draw_text_outlined(32, 320 + (32 * 7), "info_data: " + string(info_data));
