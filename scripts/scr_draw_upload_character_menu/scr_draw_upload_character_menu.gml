@@ -369,7 +369,7 @@ function scr_draw_upload_character_menu()
 		var do_a_clear_check_character_y = 432;
 		var do_a_clear_check_character_no_y = 532;
 		var do_a_clear_check_character_yes_y = 532;
-		if (global.doing_clear_check_character == false)
+		if (!global.doing_clear_check_character)
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);

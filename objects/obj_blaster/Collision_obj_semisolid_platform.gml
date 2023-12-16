@@ -1,4 +1,4 @@
-if (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+if (!position_meeting(x, bbox_bottom + 1, other))
 {
 	gravity = 0.5;
 }

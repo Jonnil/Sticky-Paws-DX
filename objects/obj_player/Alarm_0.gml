@@ -523,7 +523,7 @@ ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 /* Check if the save file exists and read the value for the corresponding player */
 if (global.character_select_in_this_menu == "main_game" && file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
 && (global.doing_clear_check == false)
-&& (global.doing_clear_check_character == false)
+&& (!global.doing_clear_check_character)
 {
 	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 	have_heart_balloon = ini_read_real("Player", "player" + string(player) + "_have_heart_balloon", false);

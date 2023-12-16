@@ -8,18 +8,11 @@ function scr_draw_online_download_list()
 		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
-		#region /* Get IDs of levels you've already downloaded before */
-		//if (content_type == "level")
-		//{
-		//	ini_open(working_directory + "save_file/custom_level_save.ini");
-		//	ini_read_real("finished_downloaded_level", string(level_id), false);
-		//	ini_close();
-		//}
-		#endregion /* Get IDs of levels you've already downloaded before END */
-		
 		#region /* Get Online Download List */
 		/* Don't ever change "content type" in this script, so Async - HTTP Event is running correctly */
 		in_online_download_list_load_menu = true; /* Let Async - HTTP Event know that we want to load a onload download list */
+		
+		finished_level = undefined;
 		
 		/* Create DS Map to hold the HTTP Header info */
 		map = ds_map_create();
@@ -190,6 +183,12 @@ function scr_draw_online_download_list()
 				#region /* Thumbnail for each level / character */
 				/* Get the number of items in the JSON array */
 				var num_items = array_length(data);
+				
+				if (!is_array(finished_level))
+				{
+					finished_level = array_create(num_items, undefined); /* Create finished level array */
+				}
+				
 				var online_download_index = 0;
 				for (var i = 0; i < num_items; i++;)
 				{
@@ -329,6 +328,51 @@ function scr_draw_online_download_list()
 					
 					/* Write the ID */ draw_set_halign(fa_left);
 					scr_draw_text_outlined(download_online_x + 108, 20 + download_online_y + menu_y_offset, string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					
+					#region /* Let player know when you have already beaten a downloaded level */
+					if (content_type == "level")
+					{
+						if (is_array(finished_level))
+						{
+							if (finished_level[i] == undefined)
+							{
+								if (file_exists(working_directory + "save_file/custom_level_save.ini"))
+								{
+									ini_open(working_directory + "save_file/custom_level_save.ini");
+									
+									/* See if the online level has already been beaten by you or not */
+									if (ini_key_exists("finished_downloaded_level", draw_download_id))
+									{
+										finished_level[i] = ini_read_real("finished_downloaded_level", draw_download_id, false);
+									}
+									else
+									{
+										finished_level[i] = false; /* Overwrite so it's false instead of undefined, so you don't check this level ID again */
+									}
+									
+									ini_close();
+								}
+								else
+								{
+									finished_level[i] = false; /* Overwrite so it's false instead of undefined, so you don't check this level ID again */
+								}
+							}
+						}
+					}
+					if (is_array(finished_level) && finished_level[i] > 0)
+					{
+						if (finished_level[i] == 1)
+						{
+							finished_level_text = "Only played";
+						}
+						else
+						if (finished_level[i] == 2)
+						{
+							finished_level_text = "Played and finished!";
+						}
+						scr_draw_text_outlined(download_online_x + 500, 100 + download_online_y + menu_y_offset, l10n_text(finished_level_text), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					}
+					#endregion /* Let player know when you have already beaten a downloaded level END */
 					
 					/* Write date of upload */
 					scr_draw_text_outlined(download_online_x + 100, 270 + download_online_y + menu_y_offset, string(get_relative_timezone(draw_download_time)), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);

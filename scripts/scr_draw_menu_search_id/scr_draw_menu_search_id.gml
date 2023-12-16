@@ -6,6 +6,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	var downloaded_file_name = "";
 	var content_type_add_s = string(what_kind_of_id) + "s";
 	var delete_file_after_download = true; /* Should be set to true when creating executable */
+	var back_to_list_x = 0;
+	var back_to_list_y = 0;
 	
 	#region /* Search ID menu */
 	if (menu == "search_id_ok")

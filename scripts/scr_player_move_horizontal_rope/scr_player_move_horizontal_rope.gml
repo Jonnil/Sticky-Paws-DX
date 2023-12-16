@@ -1,6 +1,19 @@
 function scr_player_move_horizontal_rope()
 {
 	
+	/* If you aren't touching horizontal rope */
+	if (!collision_rectangle(bbox_left, bbox_top, bbox_right, y, obj_horizontal_rope, false, true))
+	{
+		if (horizontal_rope_climb)
+		{
+			horizontal_rope_climb = false;
+		}
+		if (can_climb_horizontal_rope_cooldown > 0)
+		{
+			can_climb_horizontal_rope_cooldown --;
+		}
+	}
+	
 	#region /* Climb Horizontal Rope */
 	if (horizontal_rope_climb)
 	{

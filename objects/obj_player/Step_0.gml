@@ -865,22 +865,8 @@ if (climb)
 {
 	climb = false;
 }
-if (horizontal_rope_climb)
-&& (!place_meeting(x, y, obj_horizontal_rope))
-{
-	horizontal_rope_climb = false;
-}
 
-#region /* Climb Horizontal Rope */
-if (can_climb_horizontal_rope_cooldown > 0)
-{
-	if (!collision_rectangle(bbox_left, bbox_top, bbox_right, y, obj_horizontal_rope, false, true))
-	{
-		can_climb_horizontal_rope_cooldown --;
-	}
-}
-scr_player_move_horizontal_rope();
-#endregion /* Climb Horizontal Rope END */
+scr_player_move_horizontal_rope(); /* Climb Horizontal Rope */
 
 #region /* Climb Vine / Ladder */
 if (place_meeting(x, y, obj_vine))
@@ -2391,7 +2377,7 @@ if (!place_meeting(x, y + 1, obj_wall))
 #region /* Footstep sounds */
 if (on_ground && speed > 0 && !crouch)
 {
-	if ((hspeed < 0 && !key_right_hold) || (hspeed > 0 && !key_left_hold))
+	if (hspeed < 0 && !key_right_hold || hspeed > 0 && !key_left_hold)
 	{
 		if (instance_exists(obj_ground))
 		{
