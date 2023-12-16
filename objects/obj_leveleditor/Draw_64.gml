@@ -359,7 +359,7 @@ if (!global.actually_play_edited_level)
 					draw_set_halign(fa_left);
 					draw_set_valign(fa_middle);
 					scr_draw_text_outlined(64, 32, l10n_text("Clear Checked"), global.default_text_size * scr_wave(1, 1.1, 1, 0), c_white, c_black, 1);
-					draw_sprite_ext(spr_checkpoint, 1, 32, 32, scr_wave(0.4, 0.5, 1, 0), scr_wave(0.4, 0.5, 1, 0), 0, c_white, 1);
+					draw_sprite_ext(spr_icons_finished, 1, 32, 32, scr_wave(0.9, 1, 1, 0), scr_wave(0.9, 1, 1, 0), 0, c_white, 1);
 				}
 				ini_close();
 				#endregion /* Draw if level have been Clear Checked on top of screen END */

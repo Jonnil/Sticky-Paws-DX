@@ -65,70 +65,6 @@ function scr_draw_online_download_list()
 		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
 		
-		#region /* Pressing the Back button */
-		if (key_b_pressed)
-		|| (menu == "download_online_back")
-		&& (key_a_pressed)
-		|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 0, 370, 42))
-		&& (mouse_check_button_released(mb_left))
-		{
-			if (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				if (content_type == "level")
-				{
-					if (variable_instance_exists(self, "show_level_editor_corner_menu"))
-					{
-						show_level_editor_corner_menu = true;
-					}
-					if (array_length(thumbnail_level_name) > 1)
-					&& (array_length(thumbnail_clear_check) > 1)
-					&& (array_length(thumbnail_level_id) > 1)
-					{
-						select_custom_level_menu_open = true;
-						menu = "online_level_list"; /* If all custom levels are already loaded, then go back to the level select menu */
-					}
-					else
-					{
-						select_custom_level_menu_open = false;
-						menu = "load_custom_level"; /* If all custom levels are not loaded, then reload all custom levels before going to the level select menu */
-					}
-				}
-				else
-				{
-					menu = "online_character_list";
-				}
-				global.automatically_play_downloaded_level = false;
-				global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
-				global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
-				data = undefined; /* Reset "data" so you can reload online download list next time you go to this menu */
-				automatically_search_for_id = false;
-				in_online_download_list_menu = false;
-				in_online_download_list_load_menu = false;
-				keyboard_string = "";
-				menu_delay = 3;
-				search_id = "";
-			}
-		}
-		#endregion /* Pressing the Back button END*/
-		
-		#region /* Pressing the Search ID button */
-		if (menu == "download_online_search_id")
-		&& (key_a_pressed)
-		|| (menu == "download_online_search_id")
-		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42, 370, 42 + 42))
-		&& (mouse_check_button_released(mb_left))
-		|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
-		{
-			in_online_download_list_menu = false; /* Get out of the online download list menu */
-			automatically_search_for_id = false; /* Manual search ID */
-			keyboard_string = "";
-			search_id = "";
-			menu = "search_id_ok";
-			select_custom_level_menu_open = false;
-			menu_delay = 3;
-		}
-		#endregion /* Pressing the Search ID button END */
-		
 		#region /* If there is no data, then apply the retrieved download data to it */
 		if (data == undefined)
 		&& (in_online_download_list_menu)
@@ -314,15 +250,15 @@ function scr_draw_online_download_list()
 					
 					if (menu != "download_online_" + string(online_download_index))
 					{
-						var selected_download_c_menu_fill = c_menu_fill;
+						var selected_download_c_menu_fill = c_gray;
 					}
 					
 					/* Write the list index to the left of download button */
 					draw_set_halign(fa_right);
-					scr_draw_text_outlined(download_online_x + 90, 110 + download_online_y + menu_y_offset, string(online_download_index), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					scr_draw_text_outlined(download_online_x + 70, 110 + download_online_y + menu_y_offset, string(online_download_index), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 0.5);
 					
 					/* Write the ID */ draw_set_halign(fa_left);
-					scr_draw_text_outlined(download_online_x + 108, 20 + download_online_y + menu_y_offset, string(draw_download_id), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					scr_draw_text_outlined(download_online_x + 108, 20 + download_online_y + menu_y_offset, string(draw_download_id), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 1);
 					
 					#region /* Let player know when you have already beaten a downloaded level */
 					if (content_type == "level")
@@ -353,24 +289,35 @@ function scr_draw_online_download_list()
 								}
 							}
 						}
-					}
-					if (is_array(finished_level) && finished_level[i] > 0)
-					{
-						if (finished_level[i] == 1)
+						if (is_array(finished_level))
 						{
-							finished_level_text = "Only played";
+							if (finished_level[i] == 1) /* Only Played */
+							{
+								var played_level_text = "Played";
+								var played_level_icon = spr_icons_played;
+								var played_level_color = c_yellow;
+							}
+							else
+							if (finished_level[i] == 2) /* Played and finished */
+							{
+								var played_level_text = "Finished";
+								var played_level_icon = spr_icons_finished;
+								var played_level_color = c_lime;
+							}
+							else /* Not played */
+							{
+								var played_level_text = "Unplayed";
+								var played_level_icon = spr_icons_unplayed;
+								var played_level_color = c_red;
+							}
+							draw_sprite_ext(played_level_icon, 0, download_online_x + 524, 32 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+							scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + menu_y_offset, l10n_text(played_level_text), global.default_text_size, c_menu_outline, played_level_color, 1);
 						}
-						else
-						if (finished_level[i] == 2)
-						{
-							finished_level_text = "Played and finished!";
-						}
-						scr_draw_text_outlined(download_online_x + 500, 100 + download_online_y + menu_y_offset, l10n_text(finished_level_text), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
 					}
 					#endregion /* Let player know when you have already beaten a downloaded level END */
 					
 					/* Write date of upload */
-					scr_draw_text_outlined(download_online_x + 100, 270 + download_online_y + menu_y_offset, string(get_relative_timezone(draw_download_time)), global.default_text_size, c_menu_outline, selected_download_c_menu_fill, 1);
+					scr_draw_text_outlined(download_online_x + 100, 270 + download_online_y + menu_y_offset, string(get_relative_timezone(draw_download_time)), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 1);
 					draw_set_halign(fa_right);
 					scr_draw_text_outlined(download_online_x + 490, 270 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.6, c_menu_outline, selected_download_c_menu_fill, 0.9);
 				}
@@ -427,7 +374,15 @@ function scr_draw_online_download_list()
 					{
 						/* Fetch the "name" and "thumbnail" properties from the JSON object */
 						var item = info_data[i];
-						draw_download_name = item.name;
+						
+						if (switch_check_profanity(item.name))
+						{
+							draw_download_name = string(switch_mask_profanity(item.name));
+						}
+						else
+						{
+							draw_download_name = string(item.name);
+						}
 						
 						/* Get the thumbnail data */
 						var buffer = buffer_base64_decode(item.thumbnail);
@@ -451,11 +406,24 @@ function scr_draw_online_download_list()
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
-				scr_draw_text_outlined(download_online_x + 300, top_left_of_thumbnail_y + menu_y_offset + 240, string(draw_download_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				if (string_width(draw_download_name) > 640)
+				{
+					var draw_level_name_scale = global.default_text_size * 0.6;
+				}
+				else
+				if (string_width(draw_download_name) > 320)
+				{
+					var draw_level_name_scale = global.default_text_size * 0.8;
+				}
+				else
+				{
+					var draw_level_name_scale = global.default_text_size;
+				}
+				scr_draw_text_outlined(download_online_x + 300, top_left_of_thumbnail_y + menu_y_offset + 240, string(draw_download_name), draw_level_name_scale, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			/* Write the ID for currently selected level */ draw_set_halign(fa_left);
-			scr_draw_text_outlined(download_online_x + 108, 20 + top_left_of_thumbnail_y + menu_y_offset + 4, string(currently_selected_id), global.default_text_size, c_menu_outline, c_lime, 1);
+			scr_draw_text_outlined(download_online_x + 108, 20 + top_left_of_thumbnail_y + menu_y_offset + 4, string(currently_selected_id), global.default_text_size * 0.75, c_menu_outline, c_lime, 1);
 			
 			#endregion /* Get information about currently selected ID. If there is information data, then show info about currently selected ID END */
 			
@@ -531,7 +499,7 @@ function scr_draw_online_download_list()
 		}
 		
 		#region /* Draw the Back and Search ID buttons on top of everything */
-		draw_menu_button(0, 0, l10n_text("Back"), "download_online_back", "download_online_back");
+		draw_menu_button(0, 0, l10n_text("Back"), "download_online_back", "");
 		draw_sprite_ext(spr_icons_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 		
 		var draw_search_id_y = 42;
@@ -540,12 +508,12 @@ function scr_draw_online_download_list()
 		{
 			if (content_type == "character")
 			{
-				draw_menu_button(0, draw_search_id_y, l10n_text("Search Character ID"), "download_online_search_id", "download_online_search_id");
+				draw_menu_button(0, draw_search_id_y, l10n_text("Search Character ID"), "download_online_search_id", "");
 			}
 			else
 			if (content_type == "level")
 			{
-				draw_menu_button(0, draw_search_id_y, l10n_text("Search Level ID"), "download_online_search_id", "download_online_search_id");
+				draw_menu_button(0, draw_search_id_y, l10n_text("Search Level ID"), "download_online_search_id", "");
 			}
 			
 			#region /* Draw Search Key */
@@ -559,13 +527,79 @@ function scr_draw_online_download_list()
 			
 		}
 		
+		#region /* Pressing the Back button */
+		if (key_b_pressed)
+		|| (menu == "download_online_back")
+		&& (key_a_pressed)
+		|| (menu == "download_online_back")
+		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 0, 370, 42))
+		&& (mouse_check_button_released(mb_left))
+		{
+			if (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				if (content_type == "level")
+				{
+					if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+					{
+						show_level_editor_corner_menu = true;
+					}
+					if (array_length(thumbnail_level_name) > 1)
+					&& (array_length(thumbnail_clear_check) > 1)
+					&& (array_length(thumbnail_level_id) > 1)
+					{
+						select_custom_level_menu_open = true;
+						menu = "online_level_list"; /* If all custom levels are already loaded, then go back to the level select menu */
+					}
+					else
+					{
+						select_custom_level_menu_open = false;
+						menu = "load_custom_level"; /* If all custom levels are not loaded, then reload all custom levels before going to the level select menu */
+					}
+				}
+				else
+				{
+					menu = "online_character_list";
+				}
+				global.automatically_play_downloaded_level = false;
+				global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
+				global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
+				data = undefined; /* Reset "data" so you can reload online download list next time you go to this menu */
+				automatically_search_for_id = false;
+				in_online_download_list_menu = false;
+				in_online_download_list_load_menu = false;
+				keyboard_string = "";
+				search_id = "";
+			}
+		}
+		#endregion /* Pressing the Back button END*/
+		
+		#region /* Pressing the Search ID button */
+		if (menu == "download_online_search_id")
+		&& (key_a_pressed)
+		|| (menu == "download_online_search_id")
+		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 0, 42, 370, 42 + 42))
+		&& (mouse_check_button_released(mb_left))
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
+		{
+			menu_delay = 3;
+			in_online_download_list_menu = false; /* Get out of the online download list menu */
+			automatically_search_for_id = false; /* Manual search ID */
+			keyboard_string = "";
+			search_id = "";
+			menu = "search_id_ok";
+			select_custom_level_menu_open = false;
+		}
+		#endregion /* Pressing the Search ID button END */
+		
 		#endregion /* Draw the Back and Search ID buttons on top of everything END */
 		
 	}
 	else
 	
 	#region /* If you are no longer in "online download list menu", but somehow still in a menu selection only appearing in this menu, force you out of the menu */
-	if (in_online_download_list_menu == false)
+	if (!in_online_download_list_menu)
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		if (menu == "download_online_back")
 		|| (menu == "download_online_search_id")
@@ -578,7 +612,7 @@ function scr_draw_online_download_list()
 				{
 					show_level_editor_corner_menu = true;
 				}
-				menu = "online_download_list";
+				menu = "online_level_list";
 				select_custom_level_menu_open = true;
 			}
 			else
@@ -666,11 +700,11 @@ function scr_draw_online_download_list()
 	menu_y_offset = lerp(menu_y_offset, menu_y_offset_real, 0.25);
 	menu_y_offset_real = clamp(menu_y_offset_real, - 100 + window_get_height() - (300 * array_length(data)), 0); /* Dont let "meny y offset" get above 0 */
 	
-	draw_set_halign(fa_left);
-	scr_draw_text_outlined(32, 320 + (32 * 1), "menu_cursor_y_position: " + string(menu_cursor_y_position));
-	scr_draw_text_outlined(32, 320 + (32 * 2), "menu_y_offset: " + string(menu_y_offset));
-	scr_draw_text_outlined(32, 320 + (32 * 3), "menu_y_offset_real: " + string(menu_y_offset_real));
-	scr_draw_text_outlined(32, 320 + (32 * 4), "scrolling_menu_with_mousewheel: " + string(scrolling_menu_with_mousewheel));
+	//draw_set_halign(fa_left);
+	//scr_draw_text_outlined(32, 320 + (32 * 1), "menu_cursor_y_position: " + string(menu_cursor_y_position));
+	//scr_draw_text_outlined(32, 320 + (32 * 2), "menu_y_offset: " + string(menu_y_offset));
+	//scr_draw_text_outlined(32, 320 + (32 * 3), "menu_y_offset_real: " + string(menu_y_offset_real));
+	//scr_draw_text_outlined(32, 320 + (32 * 4), "scrolling_menu_with_mousewheel: " + string(scrolling_menu_with_mousewheel));
 	//scr_draw_text_outlined(32, 320 + (32 * 5), "debug online download list info");
 	//scr_draw_text_outlined(32, 320 + (32 * 6), "data: " + string(data));
 	//scr_draw_text_outlined(32, 320 + (32 * 7), "info_data: " + string(info_data));

@@ -26,8 +26,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		}
 		#endregion /* Set name input screen to always be above the virtual keyboard END */
 		
-		if (in_online_download_list_menu == false)
-		&& (automatically_search_for_id == false)
+		if (!in_online_download_list_menu)
+		&& (!automatically_search_for_id)
 		{
 			search_id = scr_draw_name_input_screen(search_id, id_max_length, c_black, 1, false, display_get_gui_width() * 0.5, draw_name_input_screen_y, "search_id_ok", "search_id_cancel", true, false, true);
 			draw_set_halign(fa_center);
@@ -127,14 +127,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			search_id = "";
 			select_custom_level_menu_open = false;
 			menu_delay = 3;
-			if (automatically_search_for_id)
-			{
-				menu = "download_online_" + string(global.selected_online_download_index)
-			}
-			else
-			{
-				menu = "download_online_search_id";
-			}
+			menu = "online_download_list_load"; /* Go back to online level list */
 		}
 		#endregion /* Press Escape to back out from Search ID menu END */
 		
@@ -388,17 +381,12 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "searching_for_id")
-		&& (key_a_pressed)
+		&& (key_a_pressed || key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			if (automatically_search_for_id)
-			{
-				menu = "download_online_" + string(global.selected_online_download_index)
-			}
-			else
-			{
-				menu = "download_online_search_id";
-			}
+			in_online_download_list_menu = true;
+			menu_delay = 3;
+			menu = "online_download_list_load";
 		}
 		#endregion /* You can always cancel searching if game can't find file on server END */
 		
@@ -991,14 +979,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				if (automatically_search_for_id)
-				{
-					menu = "download_online_" + string(global.selected_online_download_index)
-				}
-				else
-				{
-					menu = "download_online_search_id";
-				}
+				menu_delay = 3;
+				menu = "online_download_list_load"; /* Go back to online level list */
 			}
 		}
 		#endregion /* Level was not uploaded correctly END */
@@ -1187,16 +1169,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
+			menu_delay = 3;
 			file_delete(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy any leftover files in temporary folder */
 			directory_destroy(cache_directory + "\\downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
-			if (automatically_search_for_id)
-			{
-				menu = "download_online_" + string(global.selected_online_download_index)
-			}
-			else
-			{
-				menu = "download_online_search_id";
-			}
+			menu = "online_download_list_load";
 		}
 	}
 	#endregion /* Show Download Failed message END */

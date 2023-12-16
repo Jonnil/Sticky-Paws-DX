@@ -56,24 +56,55 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			draw_set_valign(fa_middle);
 			
 			/* Draw level name on top of level thumbnail */
-			if ((load_what_levels == global.all_loaded_custom_levels)
+			if (load_what_levels == global.all_loaded_custom_levels)
 			&& (is_array(thumbnail_level_name))
 			&& (array_length(thumbnail_level_name) > 0)
 			&& (i >= 0)
-			&& (i < array_length(thumbnail_level_name)))
+			&& (i < array_length(thumbnail_level_name))
 			{
-				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(thumbnail_level_name[i]), global.default_text_size * 0.8, c_white, c_black, 1);
+				if (string_width(thumbnail_level_name[i]) > 640)
+				{
+					var draw_level_name_scale = global.default_text_size * 0.6;
+				}
+				else
+				if (string_width(thumbnail_level_name[i]) > 320)
+				{
+					var draw_level_name_scale = global.default_text_size * 0.8;
+				}
+				else
+				{
+					var draw_level_name_scale = global.default_text_size;
+				}
+				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(thumbnail_level_name[i]), draw_level_name_scale, c_black, c_white, 1);
 			}
 			else
 			if (load_what_levels == global.all_loaded_main_levels)
 			{
-				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 0.8, c_white, c_black, 1);
+				if (string_width(ds_list_find_value(load_what_levels, i)) > 640)
+				{
+					var draw_level_name_scale = global.default_text_size * 0.6;
+				}
+				else
+				if (string_width(ds_list_find_value(load_what_levels, i)) > 320)
+				{
+					var draw_level_name_scale = global.default_text_size * 0.8;
+				}
+				else
+				{
+					var draw_level_name_scale = global.default_text_size;
+				}
+				scr_draw_text_outlined(394 * (i - column * row) + 100 + 192 + thumbnail_x_offset, 226 * (column - scroll) + 450, string(ds_list_find_value(load_what_levels, i)), global.default_text_size * 0.8, c_black, c_white, 1);
 			}
 			
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
-			if (array_length(thumbnail_clear_check) > 0)
+			if (is_array(thumbnail_clear_check))
+			&& (array_length(thumbnail_clear_check) > 0)
+			&& (is_array(thumbnail_level_id))
 			&& (array_length(thumbnail_level_id) > 0)
 			&& (!level_editor_template_select && i >= 1)
+			&& (i >= 0)
+			&& (i < array_length(thumbnail_clear_check))
+			&& (i < array_length(thumbnail_level_id))
 			{
 				var clear_check = thumbnail_clear_check[i];
 				var var_level_id = thumbnail_level_id[i];
@@ -104,8 +135,8 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 						}
 					}
 					
-					var current_icon = spr_checkpoint;
-					var icon_scale = scr_wave(0.4, 0.5, 1, 0);
+					var current_icon = spr_icons_finished;
+					var icon_scale = scr_wave(0.9, 1, 1, 0);
 				}
 				else
 				if (room == rm_title)

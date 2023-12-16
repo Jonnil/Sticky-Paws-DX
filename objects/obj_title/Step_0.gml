@@ -222,9 +222,16 @@ if (menu == "load_custom_level")
 			#endregion /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch END */
 			
 			#region /* Get clear check and level ID information */
-			if (array_length(thumbnail_level_name) > 0)
+			if (is_array(thumbnail_level_name))
+			&& (array_length(thumbnail_level_name) > 0)
+			&& (is_array(thumbnail_clear_check))
 			&& (array_length(thumbnail_clear_check) > 0)
+			&& (is_array(thumbnail_level_id))
 			&& (array_length(thumbnail_level_id) > 0)
+			&& (i >= 0)
+			&& (i < array_length(thumbnail_level_name))
+			&& (i < array_length(thumbnail_clear_check))
+			&& (i < array_length(thumbnail_level_id))
 			{
 				for(i = 1; i < ds_list_size(global.thumbnail_sprite); i += 1)
 				{
@@ -257,6 +264,12 @@ if (menu == "load_custom_level")
 					}
 					ini_close();
 				}
+			}
+			else
+			{
+				show_level_editor_corner_menu = true;
+				select_custom_level_menu_open = false;
+				menu = "load_custom_level"; /* If all custom levels are not loaded, then reload all custom levels before going to the level select menu */
 			}
 			#endregion /* Get clear check and level ID information END */
 			
