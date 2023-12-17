@@ -325,15 +325,13 @@ function scr_select_custom_level_menu()
 	&& (!can_input_level_name)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (show_level_editor_corner_menu)
+	&& (open_sub_menu)
 	{
-		if (open_sub_menu)
-		{
-			menu_delay = 3;
-			open_sub_menu = false;
-			show_level_editor_corner_menu = true;
-			scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
-			menu = "level_editor_play";
-		}
+		menu_delay = 3;
+		open_sub_menu = false;
+		show_level_editor_corner_menu = true;
+		scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
+		menu = "level_editor_play";
 	}
 	#endregion /* Key B Pressed END */
 	
@@ -358,96 +356,6 @@ function scr_select_custom_level_menu()
 	&& (show_level_editor_corner_menu)
 	{
 		
-		#region /* Downloaded Levels Button */
-		if (separate_created_and_downloaded_level)
-		{
-			draw_menu_button(display_get_gui_width() * 0.5, 0, l10n_text("Downloaded Levels"), "level_editor_downloaded_level", "level_editor_downloaded_level");
-			draw_sprite_ext(spr_icons_upload, 0, display_get_gui_width() * 0.5 + 20, + 21, 1, 1, 0, c_white, 1);
-			if (menu == "level_editor_downloaded_level")
-			&& (key_a_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (!open_sub_menu)
-			&& (!can_input_level_name)
-			|| (key_b_pressed)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (!open_sub_menu)
-			&& (!can_input_level_name)
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5, 0, display_get_gui_width() * 0.5 + 320, 42))
-			&& (mouse_check_button_released(mb_left))
-			{
-				can_input_level_name = false;
-				menu_delay = 3;
-				open_sub_menu = false;
-				show_level_editor_corner_menu = true;
-				scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
-				can_navigate = true;
-				select_custom_level_menu_open = true;
-				level_editor_template_select = false;
-				global.select_level_index = 0;
-				lerp_on = true;
-				menu = "level_editor_downloaded_level";
-			}
-			if (menu == "level_editor_downloaded_level")
-			&& (key_left)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				can_navigate = true;
-				select_custom_level_menu_open = true;
-				menu = "back_from_level_editor";
-				scroll_to = floor(global.select_level_index / row);
-				lerp_on = true;
-			}
-			if (menu == "back_from_level_editor")
-			|| (menu == "open_custom_levels_folder")
-			|| (menu == "online_level_list")
-			{
-				if (key_right && menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					menu_delay = 3;
-					can_navigate = true;
-					select_custom_level_menu_open = true;
-					menu = "level_editor_downloaded_level";
-					scroll_to = floor(global.select_level_index / row);
-					lerp_on = true;
-				}
-			}
-			if (menu == "level_editor_downloaded_level")
-			&& (key_up)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				can_navigate = true;
-				select_custom_level_menu_open = true;
-				menu = "level_editor_play";
-				if (global.select_level_index - row < 0)
-				{
-					global.select_level_index = ds_list_size(global.thumbnail_sprite) - 1;
-				}
-				scroll_to = floor(global.select_level_index / row);
-				lerp_on = true;
-			}
-			if (menu == "level_editor_downloaded_level")
-			&& (key_down)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (show_level_editor_corner_menu)
-			{
-				menu_delay = 3;
-				can_navigate = true;
-				select_custom_level_menu_open = true;
-				menu = "level_editor_play";
-				scroll_to = floor(global.select_level_index / row);
-				lerp_on = true;
-			}
-			if (menu == "level_editor_downloaded_level")
-			{
-				open_sub_menu = false;
-				show_level_editor_corner_menu = true;
-				scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
-			}
-		}
-		#endregion /* Downloaded Levels Button END */
-		
 		#region /* Back Button */
 		draw_menu_button(0, 0, l10n_text("Back"), "back_from_level_editor", "back_from_level_editor");
 		draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
@@ -463,6 +371,7 @@ function scr_select_custom_level_menu()
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 42))
 		&& (mouse_check_button_released(mb_left))
 		{
+			show_message("bruh 2"); /* THIS MESSAGE SHOWS UP WHEN ON THE "ONLINE_LEVEL_LIST" BLANK MENU BUG */
 			can_input_level_name = false;
 			menu_delay = 3;
 			open_sub_menu = false;
@@ -583,22 +492,16 @@ function scr_select_custom_level_menu()
 		}
 		if (global.free_communication_available)
 		{
-			draw_menu_button(0, draw_online_level_list_y, l10n_text("Online Level List"), "online_level_list", "online_level_list");
-			if (max_custom_levels_reached)
-			{
-				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, 0, draw_online_level_list_y + 21, 1, 1, 0, c_dkgray, 0.5);
-				draw_sprite_ext(spr_lock_icon, 0, 16, draw_online_level_list_y + 21, 1, 1, 0, c_white, 1);
-			}
+			draw_menu_button(0, draw_online_level_list_y, l10n_text("Online Level List"), "online_level_list", "");
 			
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_level_list_y + 2, 370, draw_online_level_list_y + 41))
+			if (menu == "online_level_list")
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (!max_custom_levels_reached)
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_level_list_y + 2, 370, draw_online_level_list_y + 41))
 			|| (menu == "online_level_list")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (!max_custom_levels_reached)
 			{
 				if (global.online_enabled)
 				{
