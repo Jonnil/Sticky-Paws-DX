@@ -9,11 +9,12 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	var not_open_dropdown = !open_dropdown;
 	var is_same_menu = (menu == menu_index);
 	
-	if ((point_in_button && using_mouse && not_open_dropdown) || (is_same_menu && !using_mouse && not_open_dropdown))
+	if ((point_in_button && using_mouse && not_open_dropdown) || (is_same_menu && !using_mouse && not_open_dropdown)
+	&& (menu_delay == 0 && menu_joystick_delay == 0) /* Only change menu when "menu delay" is 0, otherwise there could be weird menu bugs that happen when you hover over a button when game needs to load code */ )
 	{
 		menu = menu_index;
 		
-		if (mouse_check_button_released(mb_left) && menu_takes_you_to != false && menu_takes_you_to != noone && menu_takes_you_to != "" && menu_takes_you_to != menu_index && menu_delay == 0 && menu_joystick_delay == 0)
+		if (mouse_check_button_released(mb_left) && menu_takes_you_to != false && menu_takes_you_to != noone && menu_takes_you_to != "" && menu_takes_you_to != menu_index)
 		{
 			menu_delay = 3;
 			menu = menu_takes_you_to;

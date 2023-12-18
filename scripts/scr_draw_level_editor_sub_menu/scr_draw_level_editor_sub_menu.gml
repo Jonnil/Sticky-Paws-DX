@@ -223,6 +223,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		
 		#region /* Show Sub Menu Buttons */
 		if (!can_input_level_name)
+		&& (menu != "load_official_level_template")
 		{
 			if (menu == "level_editor_delete_no") /* Delete level menu */
 			|| (menu == "level_editor_delete_yes")

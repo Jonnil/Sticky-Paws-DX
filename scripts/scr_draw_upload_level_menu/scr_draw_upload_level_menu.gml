@@ -1614,6 +1614,11 @@ function scr_draw_upload_level_menu()
 					}
 					if (os_is_network_connected())
 					{
+						/* Update a list of downloaded levels that you have finished. The level you are uploading have already been finished */
+						ini_open(working_directory + "save_file/custom_level_save.ini");
+						ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished */
+						ini_close();
+						
 						search_for_id_still = false;
 						menu = "level_uploaded";
 					}

@@ -73,13 +73,27 @@ instance_create_depth(0, obj_level_height.y + 32, 0, obj_water_level_height);
 #region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
 if (global.doing_clear_check)
 {
-	/* Limit view inside room when saving automatic screenshot */
+	
+	#region /* Limit so cursor and view can't go outside room */
+	if (cam_width < 1920 || cam_height < 1080)
+	{
+		camera_set_view_size(view_camera[view_current], 1920, 1080);
+	}
+	scr_set_screen_size();
+	
+	/* Limit view inside room when saving and quitting */
 	if (instance_exists(obj_level_width) && instance_exists(obj_level_height))
 	{
 		camera_set_view_pos(view_camera[view_current],
 		max(0, min(cam_x, obj_level_width.x - cam_width)),
 		max(0, min(cam_y, obj_level_height.y - cam_height)));
 	}
+	
+	/* Limit x and y inside room */
+	x = clamp(x, cam_x, cam_x + cam_width);
+	y = clamp(y, cam_y, cam_y + cam_height);
+	#endregion /* Limit so cursor and view can't go outside room END */
+	
 	scr_automatic_screenshot();
 	global.actually_play_edited_level = true;
 	global.play_edited_level = true;
