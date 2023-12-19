@@ -12,9 +12,9 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
-			if (open_dropdown == false)
+			if (!open_dropdown)
 			{
 				menu = menu_index;
 			}
@@ -41,7 +41,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		
 		#region /* Show a menu cursor when the option is highlighted */
 		if (menu == menu_index)
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			if (variable_instance_exists(self, "menu_cursor_y_position"))
 			{
@@ -63,11 +63,11 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		&& (global.controls_used_for_menu_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		|| (key_a_pressed)
 		&& (menu == menu_index)
 		&& (!input_key)
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = menu_index;

@@ -4443,7 +4443,7 @@ function scr_options_control_menu()
 				menu_cursor_y_position = 0;
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					if (global.settings_sidebar_menu == "controller_settings")
 					&& (global.enable_options_for_pc)
@@ -4464,7 +4464,7 @@ function scr_options_control_menu()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					if (can_change_profile)
 					{
@@ -4527,7 +4527,7 @@ function scr_options_control_menu()
 				menu_cursor_y_position = 0;
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remap_select_player";
 					menu_delay = 3;
@@ -4535,7 +4535,7 @@ function scr_options_control_menu()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					if (remapping_player == 0)
 					&& (allow_player1_dive)
@@ -4910,7 +4910,7 @@ function scr_options_control_menu()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "down_and_jump_to_groundpound";
 					menu_delay = 3;
@@ -4918,7 +4918,7 @@ function scr_options_control_menu()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "drop_from_rope";
 					menu_delay = 3;
@@ -5013,7 +5013,7 @@ function scr_options_control_menu()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "wall_jump_setting";
 					menu_delay = 3;
@@ -5021,7 +5021,7 @@ function scr_options_control_menu()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "show_controls";
 					menu_delay = 3;
@@ -5116,7 +5116,7 @@ function scr_options_control_menu()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "drop_from_rope";
 					menu_delay = 3;
@@ -5124,7 +5124,7 @@ function scr_options_control_menu()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					if (global.enable_options_for_pc)
 					{
@@ -5293,7 +5293,7 @@ function scr_options_control_menu()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					if (global.settings_sidebar_menu == "controller_settings")
 					&& (global.enable_options_for_pc)
@@ -5314,7 +5314,7 @@ function scr_options_control_menu()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remap_select_player";
 					menu_delay = 3;

@@ -7,7 +7,6 @@ function scr_draw_upload_level_menu()
 	#endregion /* Debug toggles END */
 	
 	var upload_y = 42 * 2;
-	var message_x_offset = 400;
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
@@ -32,6 +31,55 @@ function scr_draw_upload_level_menu()
 	if (tag_glitch_showcase){var tag_glitch_showcase_text = "Glitch Showcase" + " ";how_may_tags ++;}else{var tag_glitch_showcase_text = "";};
 	#endregion /* How many tags END */
 	
+	if (menu == "level_editor_upload_pressed")
+	|| (menu == "clear_check_no")
+	|| (menu == "clear_check_yes")
+	|| (menu == "upload_edit_username_ok")
+	|| (menu == "upload_edit_username_cancel")
+	|| (menu == "upload_edit_name")
+	|| (menu == "upload_edit_description")
+	|| (menu == "upload_edit_tags")
+	|| (menu == "edit_ok")
+	|| (menu == "edit_cancel")
+	|| (menu == "upload_enter_name_ok")
+	|| (menu == "upload_enter_name_cancel")
+	|| (menu == "upload_enter_description_ok")
+	|| (menu == "upload_enter_description_cancel")
+	
+	|| (menu == "upload_edit_tags_ok")
+	|| (menu == "tag_art")
+	|| (menu == "tag_boss_battle")
+	|| (menu == "tag_dont_move")
+	|| (menu == "tag_kaizo")
+	|| (menu == "tag_multiplayer")
+	|| (menu == "tag_music")
+	|| (menu == "tag_puzzle_solving")
+	|| (menu == "tag_short_and_sweet")
+	|| (menu == "tag_singleplayer")
+	|| (menu == "tag_speedrun")
+	|| (menu == "tag_standard")
+	|| (menu == "tag_technical")
+	|| (menu == "tag_themed")
+	|| (menu == "tag_glitch_showcase")
+	|| (menu == "intended_level_difficulty")
+	
+	|| (menu == "upload_yes")
+	|| (menu == "upload_no")
+	|| (menu == "uploading_level")
+	|| (menu == "error_level_too_big")
+	|| (menu == "level_uploaded")
+	|| (menu == "no_internet_level")
+	{
+		open_upload_menu = true;
+		draw_set_alpha(0.9);
+		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+		draw_set_alpha(1);
+	}
+	else
+	{
+		open_upload_menu = false
+	}
+	
 	#region /* Pressing the Upload button */
 	if (menu == "level_editor_upload")
 	{
@@ -40,10 +88,22 @@ function scr_draw_upload_level_menu()
 			show_level_editor_corner_menu = true;
 		}
 		can_input_level_name = false;
-		if (room == rm_title && point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (upload_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (upload_y) - 3 + 42) && mouse_check_button_released(mb_left) && global.controls_used_for_menu_navigation == "mouse")
-		|| (room == rm_leveleditor && point_in_rectangle(cursor_x, cursor_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42) && mouse_check_button_released(mb_left) && global.controls_used_for_menu_navigation == "mouse")
+		
+		if (room == rm_title
+		&& point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (upload_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (upload_y) - 3 + 42)
+		&& mouse_check_button_released(mb_left)
+		&& global.controls_used_for_menu_navigation == "mouse")
+		|| (room == rm_leveleditor
+		&& point_in_rectangle(mouse_get_x, mouse_get_x, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42)
+		&& mouse_check_button_released(mb_left)
+		&& global.controls_used_for_menu_navigation == "mouse")
 		|| (key_a_pressed)
 		{
+			if (variable_instance_exists(self, "open_sub_menu"))
+			{
+				open_sub_menu = false; /* Close the the sub menu when uploading level, so it doesn't interfere */
+			}
+			open_upload_menu = true;
 			
 			if (room == rm_leveleditor)
 			{
@@ -98,7 +158,7 @@ function scr_draw_upload_level_menu()
 	{
 		if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 		{
-			show_level_editor_corner_menu = true;
+			show_level_editor_corner_menu = false;
 		}
 		can_input_level_name = false;
 		if (room == rm_title)
@@ -194,6 +254,14 @@ function scr_draw_upload_level_menu()
 				}
 				else
 				{
+					if (variable_instance_exists(self, "open_sub_menu"))
+					{
+						open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
+					}
+					if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+					{
+						show_level_editor_corner_menu = true;
+					}
 					menu = "level_editor_upload";
 					menu_delay = 3;
 				}
@@ -211,20 +279,17 @@ function scr_draw_upload_level_menu()
 		var do_a_clear_check_y = 432;
 		var do_a_clear_check_no_y = 532;
 		var do_a_clear_check_yes_y = 532;
-		if (global.doing_clear_check == false)
+		if (!global.doing_clear_check)
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
-			draw_set_alpha(0.9);
-			draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-			draw_set_alpha(1);
 			if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
 			{
 				/* Draw Thumbnail */
 				draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
 			}
 			draw_set_alpha(0.9);
-			draw_rectangle_color(get_window_width * 0.5 - message_x_offset, do_a_clear_check_y - 32, get_window_width * 0.5 + message_x_offset, do_a_clear_check_y + 32, c_black, c_black, c_black, c_black, false);
+			draw_roundrect_color_ext(0, do_a_clear_check_y - 32, get_window_width, do_a_clear_check_y + 32, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
 			scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_y, l10n_text("Do a clear check?"), global.default_text_size * 1.9, c_black, c_white, 1);
 			
@@ -295,11 +360,15 @@ function scr_draw_upload_level_menu()
 			if (key_b_pressed && level_editor_edit_name == false && menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "level_editor_upload"; /* Return to previous menu */
+				if (variable_instance_exists(self, "open_sub_menu"))
+				{
+					open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
+				}
 				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 				{
 					show_level_editor_corner_menu = true;
 				}
+				menu = "level_editor_upload"; /* Return to previous menu */
 			}
 			#endregion /* Return to game END */
 			
@@ -312,11 +381,15 @@ function scr_draw_upload_level_menu()
 			|| (key_a_pressed && menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "level_editor_upload"; /* Return to previous menu */
+				if (variable_instance_exists(self, "open_sub_menu"))
+				{
+					open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
+				}
 				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 				{
 					show_level_editor_corner_menu = true;
 				}
+				menu = "level_editor_upload"; /* Return to previous menu */
 			}
 		}
 		else
@@ -339,8 +412,8 @@ function scr_draw_upload_level_menu()
 				#endregion /* Set clear_check to false whenever you agree to do a clear check for the first time, just in case it's already not END */
 				
 				global.doing_clear_check = true; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
-				global.actually_play_edited_level = true;
-				global.play_edited_level = true;
+				global.actually_play_edited_level = false; /* Don't turn this variable on yet, let the level editor do this itself, so that the correct functions can run when in level editor */
+				global.play_edited_level = false;
 				can_navigate = false;
 				if (room == rm_leveleditor)
 				{
@@ -379,10 +452,6 @@ function scr_draw_upload_level_menu()
 	if (menu == "upload_edit_username_ok")
 	|| (menu == "upload_edit_username_cancel")
 	{
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
-		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		var change_username_x = display_get_gui_width() * 0.5;
@@ -455,6 +524,14 @@ function scr_draw_upload_level_menu()
 				keyboard_string = "";
 				menu_delay = 3;
 				input_key = false;
+				if (variable_instance_exists(self, "open_sub_menu"))
+				{
+					open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
+				}
+				if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+				{
+					show_level_editor_corner_menu = true;
+				}
 				menu = "level_editor_upload";
 			}
 		}
@@ -525,7 +602,7 @@ function scr_draw_upload_level_menu()
 		{
 			show_level_editor_corner_menu = false;
 		}
-		open_sub_menu = true;
+		open_sub_menu = false;
 		lerp_on = true;
 		if (room == rm_title)
 		{
@@ -541,9 +618,6 @@ function scr_draw_upload_level_menu()
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
 		if (get_window_height <= 720)
 		{
 			if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
@@ -729,7 +803,7 @@ function scr_draw_upload_level_menu()
 		#endregion /* Pressing the Edit Tags button END */
 		
 		if (key_up)
-		&& (menu_delay == 3)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			if (menu == "upload_edit_name")
@@ -758,7 +832,7 @@ function scr_draw_upload_level_menu()
 			}
 		}
 		if (key_down)
-		&& (menu_delay == 3)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
 			if (menu == "upload_edit_name")
@@ -822,11 +896,15 @@ function scr_draw_upload_level_menu()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			menu = "level_editor_upload"; /* Return to previous menu */
+			if (variable_instance_exists(self, "open_sub_menu"))
+			{
+				open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
+			}
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 			{
 				show_level_editor_corner_menu = true;
 			}
+			menu = "level_editor_upload"; /* Return to previous menu */
 		}
 	}
 	#endregion /* Edit things before uploading END */
@@ -839,9 +917,6 @@ function scr_draw_upload_level_menu()
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
 		if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
 		{
 			/* Draw Thumbnail */
@@ -977,9 +1052,6 @@ function scr_draw_upload_level_menu()
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
 		if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
 		{
 			/* Draw Thumbnail */
@@ -1120,9 +1192,10 @@ function scr_draw_upload_level_menu()
 	|| (menu == "tag_glitch_showcase")
 	|| (menu == "intended_level_difficulty")
 	{
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
+		if (variable_instance_exists(self, "show_level_editor_corner_menu"))
+		{
+			show_level_editor_corner_menu = false;
+		}
 		
 		scr_scroll_menu();
 		
@@ -1143,9 +1216,6 @@ function scr_draw_upload_level_menu()
 		draw_menu_dropdown(display_get_gui_width() * 0.5 - 185, (45 * 17) + 8 + menu_y_offset, "Intended Difficulty", "intended_level_difficulty", intended_level_difficulty, "Easy", "Normal", "Hard", "Super Hard")
 		
 		#region /* Tell player what tags are selected at top of tags */
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, 42 * 2 + 16, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
 		draw_set_halign(fa_center);
 		
 		if (tag_art_text == "")
@@ -1211,7 +1281,7 @@ function scr_draw_upload_level_menu()
 		{
 			if (how_may_tags <= 3) /* Don't save and back out if there are more than 3 tags */
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				/* Save tags to level_information.ini */
 				ini_open(upload_level_path + "/data/level_information.ini");
@@ -1242,8 +1312,24 @@ function scr_draw_upload_level_menu()
 		}
 		#endregion /* Save tags to level when going back to previous menu END */
 		
+		if (key_left)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (!open_dropdown)
+		{
+			menu = "upload_edit_tags_ok";
+		}
+		else
+		if (key_right)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (menu == "upload_edit_tags_ok")
+		&& (!open_dropdown)
+		{
+			menu = "tag_art";
+		}
+		else
 		if (key_up)
-		&& (menu_delay == 3)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (!open_dropdown)
 		{
 			menu_delay = 3;
 			if (menu == "upload_edit_tags_ok"){menu = "intended_level_difficulty";}else
@@ -1261,11 +1347,12 @@ function scr_draw_upload_level_menu()
 			if (menu == "tag_technical"){menu = "tag_standard";}else
 			if (menu == "tag_themed"){menu = "tag_technical";}else
 			if (menu == "tag_glitch_showcase"){menu = "tag_themed";}else
-			if (menu == "intended_level_difficulty")&& (open_dropdown == false){menu = "tag_glitch_showcase";}
+			if (menu == "intended_level_difficulty")&& (!open_dropdown){menu = "tag_glitch_showcase";}
 		}
 		else
 		if (key_down)
-		&& (menu_delay == 3)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (!open_dropdown)
 		{
 			menu_delay = 3;
 			if (menu == "upload_edit_tags_ok"){menu = "tag_art";}else
@@ -1283,13 +1370,13 @@ function scr_draw_upload_level_menu()
 			if (menu == "tag_technical"){menu = "tag_themed";}else
 			if (menu == "tag_themed"){menu = "tag_glitch_showcase";}else
 			if (menu == "tag_glitch_showcase"){menu = "intended_level_difficulty";}else
-			if (menu == "intended_level_difficulty")&& (open_dropdown == false){if (how_may_tags <= 3){menu = "upload_edit_tags_ok";}else{menu = "tag_art";}}
+			if (menu == "intended_level_difficulty")&& (!open_dropdown){if (how_may_tags <= 3){menu = "upload_edit_tags_ok";}else{menu = "tag_art";}}
 		}
 		
 		if (menu == "intended_level_difficulty")
 		{
 			if (key_up)
-			&& (menu_delay == 3)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown)
 			&& (intended_level_difficulty > 0)
 			{
@@ -1298,7 +1385,7 @@ function scr_draw_upload_level_menu()
 			}
 			else
 			if (key_down)
-			&& (menu_delay == 3)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (open_dropdown)
 			&& (intended_level_difficulty < 3)
 			{
@@ -1321,16 +1408,13 @@ function scr_draw_upload_level_menu()
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
 		if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
 		{
 			/* Draw Thumbnail */
 			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
 		}
 		draw_set_alpha(0.9);
-		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, upload_name_question_y - 32, get_window_width * 0.5 + message_x_offset, upload_name_question_y + 32, c_black, c_black, c_black, c_black, false);
+		draw_roundrect_color_ext(0, upload_name_question_y - 32, get_window_width, upload_name_question_y + 32, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, upload_name_question_y, l10n_text("Upload") + " " + global.level_name + "?", global.default_text_size * 1.9, c_black, c_white, 1);
 		
@@ -1512,16 +1596,13 @@ function scr_draw_upload_level_menu()
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
 		if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
 		{
 			/* Draw Thumbnail */
 			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
 		}
 		draw_set_alpha(0.9);
-		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, uploading_level_message_y - 32, get_window_width * 0.5 + message_x_offset, uploading_level_message_y + 32, c_black, c_black, c_black, c_black, false);
+		draw_roundrect_color_ext(0, uploading_level_message_y - 32, get_window_width, uploading_level_message_y + 32, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y, l10n_text("Uploading") + " " + global.level_name + "...", global.default_text_size * 1.9, c_black, c_white, 1);
 		
@@ -1639,9 +1720,6 @@ function scr_draw_upload_level_menu()
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 42, l10n_text("Level Too Big"), global.default_text_size * 2, c_black, c_white, 1);
 		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(zip_megabytes) + " MB / " + string(global.max_file_upload_megabytes) + " MB", global.default_text_size, c_black, c_white, 1);
 		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(zip_megabytes) + " MB / " + string(global.max_file_upload_megabytes) + " MB", global.default_text_size, c_black, c_red, scr_wave(0, 1, 1, 0));
@@ -1696,11 +1774,15 @@ function scr_draw_upload_level_menu()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			menu = "level_editor_upload"; /* Return to previous menu */
+			if (variable_instance_exists(self, "open_sub_menu"))
+			{
+				open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
+			}
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 			{
 				show_level_editor_corner_menu = true;
 			}
+			menu = "level_editor_upload"; /* Return to previous menu */
 		}
 		#endregion /* Return to game END */
 		
@@ -1715,16 +1797,13 @@ function scr_draw_upload_level_menu()
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
 		if (ds_list_find_value(global.thumbnail_sprite, global.select_level_index) > 0)
 		{
 			/* Draw Thumbnail */
 			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, global.select_level_index), 0, get_window_width * 0.5 - 390, 32, 384 / sprite_get_width(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 216 / sprite_get_height(ds_list_find_value(global.thumbnail_sprite, global.select_level_index)) * 2, 0, c_white, 1);
 		}
 		draw_set_alpha(0.9);
-		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, uploaded_level_message_y - 32, get_window_width * 0.5 + message_x_offset, uploaded_level_message_y + 128, c_black, c_black, c_black, c_black, false);
+		draw_roundrect_color_ext(0, uploaded_level_message_y - 32, get_window_width, uploaded_level_message_y + 128, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, uploaded_level_message_y, global.level_name + " " + l10n_text("Uploaded"), global.default_text_size * 1.9, c_black, c_white, 1);
 		/* Show Level ID */ scr_draw_text_outlined(get_window_width * 0.5, uploaded_level_message_y + 84, l10n_text("Level ID") + ": " + string(level_id), global.default_text_size * 1.9, c_black, c_white, 1);
@@ -1778,11 +1857,15 @@ function scr_draw_upload_level_menu()
 		{
 			search_for_id_still = false;
 			menu_delay = 3;
-			menu = "level_editor_upload"; /* Return to previous menu */
+			if (variable_instance_exists(self, "open_sub_menu"))
+			{
+				open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
+			}
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 			{
 				show_level_editor_corner_menu = true;
 			}
+			menu = "level_editor_upload"; /* Return to previous menu */
 		}
 		#endregion /* Return to game END */
 		
@@ -1794,9 +1877,6 @@ function scr_draw_upload_level_menu()
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_set_alpha(0.9);
-		draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
-		draw_set_alpha(1);
 		/* Don't draw a level thumbnail here, to make it more obvious that there was an error connecting to the internet, because every other screen have a level thumbnail visible usually */
 		scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("No Internet connection"), global.default_text_size * 1.9, c_black, c_white, 1);
 		
@@ -1849,11 +1929,15 @@ function scr_draw_upload_level_menu()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			menu = "level_editor_upload"; /* Return to previous menu */
+			if (variable_instance_exists(self, "open_sub_menu"))
+			{
+				open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
+			}
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 			{
 				show_level_editor_corner_menu = true;
 			}
+			menu = "level_editor_upload"; /* Return to previous menu */
 		}
 		#endregion /* Return to game END */
 		

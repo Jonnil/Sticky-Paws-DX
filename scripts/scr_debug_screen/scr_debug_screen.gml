@@ -118,7 +118,7 @@ function scr_debug_screen()
 		#region /* Click on FPS to toggle if it should stay on screen even after you close debug screen */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_y - 15, 370, fps_y + 15) && global.controls_used_for_menu_navigation == "mouse") {
 			draw_set_alpha(0.5);
-			draw_rectangle_color(0, fps_y - 16, 370, fps_y + 16, c_white, c_white, c_white, c_white, false);
+			draw_roundrect_color_ext(0, fps_y - 16, 370, fps_y + 16, 50, 50, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_released(mb_left)) {
 				global.show_fps = !global.show_fps;
@@ -132,7 +132,7 @@ function scr_debug_screen()
 		#region /* Click on FPS Real to toggle if it should stay on screen even after you close debug screen */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_real_y - 15, 370, fps_real_y + 15) && global.controls_used_for_menu_navigation == "mouse") {
 			draw_set_alpha(0.5);
-			draw_rectangle_color(0, fps_real_y - 16, 370, fps_real_y + 16, c_white, c_white, c_white, c_white, false);
+			draw_roundrect_color_ext(0, fps_real_y - 16, 370, fps_real_y + 16, 50, 50, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_released(mb_left)) {
 				global.show_fps_real = !global.show_fps_real;
@@ -146,7 +146,7 @@ function scr_debug_screen()
 		#region /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, instance_count_y - 15, 370, instance_count_y + 15) && global.controls_used_for_menu_navigation == "mouse") {
 			draw_set_alpha(0.5);
-			draw_rectangle_color(0, instance_count_y - 16, 370, instance_count_y + 16, c_white, c_white, c_white, c_white, false);
+			draw_roundrect_color_ext(0, instance_count_y - 16, 370, instance_count_y + 16, 50, 50, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_released(mb_left)) {
 				global.show_instance_count = !global.show_instance_count;
@@ -160,7 +160,7 @@ function scr_debug_screen()
 		#region /* Click on All Instance Count to toggle if it should stay on screen even after you close debug screen */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, all_instance_count_y - 15, 370, all_instance_count_y + 15) && global.controls_used_for_menu_navigation == "mouse") {
 			draw_set_alpha(0.5);
-			draw_rectangle_color(0, all_instance_count_y - 16, 370, all_instance_count_y + 16, c_white, c_white, c_white, c_white, false);
+			draw_roundrect_color_ext(0, all_instance_count_y - 16, 370, all_instance_count_y + 16, 50, 50, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_released(mb_left)) {
 				global.show_all_instance_count = !global.show_all_instance_count;
@@ -170,7 +170,7 @@ function scr_debug_screen()
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "F3 to toggle debug screen", global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 8, "F3 to toggle debug screen", global.default_text_size * 0.5, c_black, c_white, 1);
 		draw_set_halign(fa_left);
 		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + scr_get_build_date(), global.default_text_size, c_black, c_white, 1);
 		

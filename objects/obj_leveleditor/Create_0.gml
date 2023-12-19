@@ -70,40 +70,8 @@ instance_create_depth(0, obj_level_height.y + 32, 0, obj_water_level_height);
 
 #endregion /* Create essential objects so levels can function END */
 
-#region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
-if (global.doing_clear_check)
-{
-	
-	#region /* Limit so cursor and view can't go outside room */
-	if (cam_width < 1920 || cam_height < 1080)
-	{
-		camera_set_view_size(view_camera[view_current], 1920, 1080);
-	}
-	scr_set_screen_size();
-	
-	/* Limit view inside room when saving and quitting */
-	if (instance_exists(obj_level_width) && instance_exists(obj_level_height))
-	{
-		camera_set_view_pos(view_camera[view_current],
-		max(0, min(cam_x, obj_level_width.x - cam_width)),
-		max(0, min(cam_y, obj_level_height.y - cam_height)));
-	}
-	
-	/* Limit x and y inside room */
-	x = clamp(x, cam_x, cam_x + cam_width);
-	y = clamp(y, cam_y, cam_y + cam_height);
-	#endregion /* Limit so cursor and view can't go outside room END */
-	
-	scr_automatic_screenshot();
-	global.actually_play_edited_level = true;
-	global.play_edited_level = true;
-	instance_destroy();
-}
-#endregion /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" END */
-
-#region /* Load Level */
-scr_load_object_placement_json();
-#endregion /* Load Level END */
+doing_clear_check_timer = 0;
+scr_load_object_placement_json(); /* Load Level */
 
 #region /* If actually playing level, set play_edited_level to true and delete itself. Have this code after the "doing clear check = true" */
 if (global.actually_play_edited_level)
@@ -589,6 +557,7 @@ if (global.actually_play_edited_level == false)
 	scroll = 0;
 	row = 0;
 	open_sub_menu = false;
+	open_upload_menu = false;
 	thumbnail_x_offset = 0; /* Level thumbnail x offset, for when windows size is too small to fit every thumbnail, you need to shift the x position a bit to fit everything */
 	show_delete_button = true; /* If delete custom level buttons should show up or not. Sometimes you don't want it to show up when the feature is unavailable */
 	navigate_camera_with_arrowkeys = false;

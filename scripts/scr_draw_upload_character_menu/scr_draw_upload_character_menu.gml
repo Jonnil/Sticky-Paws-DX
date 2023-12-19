@@ -35,7 +35,7 @@ function scr_draw_upload_character_menu()
 		#endregion /* Draw Character Portrait END */
 		
 		draw_set_alpha(0.9);
-		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, upload_name_question_y - 32, get_window_width * 0.5 + message_x_offset, upload_name_question_y + 32, c_black, c_black, c_black, c_black, false);
+		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, upload_name_question_y - 32, get_window_width * 0.5 + message_x_offset, upload_name_question_y + 32, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, upload_name_question_y, l10n_text("Upload") + " " + string(character_name) + "?", global.default_text_size * 1.9, c_black, c_white, 1);
 		
@@ -385,7 +385,7 @@ function scr_draw_upload_character_menu()
 			#endregion /* Draw Character Portrait END */
 			
 			draw_set_alpha(0.9);
-			draw_rectangle_color(get_window_width * 0.5 - message_x_offset - 74, do_a_clear_check_character_y - 48, get_window_width * 0.5 + message_x_offset + 74, do_a_clear_check_character_y + 64, c_black, c_black, c_black, c_black, false);
+			draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset - 74, do_a_clear_check_character_y - 48, get_window_width * 0.5 + message_x_offset + 74, do_a_clear_check_character_y + 64, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
 			scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_y - 16, l10n_text("Do a clear check?"), global.default_text_size * 1.9, c_black, c_white, 1);
 			scr_draw_text_outlined(get_window_width * 0.5, do_a_clear_check_character_y + 30, l10n_text("Custom character needs to be able to clear level 1 before upload"), global.default_text_size, c_black, c_white, 1);
@@ -660,7 +660,7 @@ function scr_draw_upload_character_menu()
 		#endregion /* Draw Character Portrait END */
 		
 		draw_set_alpha(0.9);
-		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, uploading_character_message_y - 32, get_window_width * 0.5 + message_x_offset, uploading_character_message_y + 32, c_black, c_black, c_black, c_black, false);
+		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, uploading_character_message_y - 32, get_window_width * 0.5 + message_x_offset, uploading_character_message_y + 32, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y, l10n_text("Uploading") + " " + string(character_name) + "...", global.default_text_size * 1.9, c_black, c_white, 1);
 		
@@ -859,7 +859,7 @@ function scr_draw_upload_character_menu()
 		#endregion /* Draw Character Portrait END */
 		
 		draw_set_alpha(0.9);
-		draw_rectangle_color(get_window_width * 0.5 - message_x_offset, uploaded_character_message_y - 32, get_window_width * 0.5 + message_x_offset, uploaded_character_message_y + 128, c_black, c_black, c_black, c_black, false);
+		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, uploaded_character_message_y - 32, get_window_width * 0.5 + message_x_offset, uploaded_character_message_y + 128, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, uploaded_character_message_y, string(character_name) + " " + l10n_text("Uploaded"), global.default_text_size * 1.9, c_black, c_white, 1);
 		/* Show Character ID */ scr_draw_text_outlined(get_window_width * 0.5, uploaded_character_message_y + 84, l10n_text("Character ID") + ": " + string(character_id), global.default_text_size * 1.9, c_black, c_white, 1);

@@ -1,4 +1,4 @@
-function scr_draw_text_outlined(x_position = x, y_position = y, string_text = "", text_size = global.default_text_size, outline_color = c_white, text_color = c_black, img_alpha = 1)
+function scr_draw_text_outlined(x_position = x, y_position = y, string_text = "", text_size = global.default_text_size, outline_color = c_black, text_color = c_white, img_alpha = 1)
 {
 	var text_size_adjusted = (string_width(string_text) >= 1280 && window_get_width() <= 1280) ? text_size * 0.75 : text_size;
 	

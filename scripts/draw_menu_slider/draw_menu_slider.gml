@@ -7,7 +7,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position- 16, x_position + 320, y_position + 16))
 	&& (global.controls_used_for_menu_navigation == "mouse")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	&& (open_dropdown == false)
+	&& (!open_dropdown)
 	{
 		menu = menu_index;
 		can_navigate_settings_sidebar = false;

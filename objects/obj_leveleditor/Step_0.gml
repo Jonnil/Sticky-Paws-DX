@@ -1,3 +1,39 @@
+#region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
+if (global.doing_clear_check)
+{
+	if (file_exists(working_directory + "custom_levels/" + global.level_name + "/automatic_thumbnail.png"))
+	{
+		global.actually_play_edited_level = true;
+		global.play_edited_level = true;
+		with(obj_leveleditor_placed_object)
+		{
+			alarm[1] = 1;
+		}
+		instance_destroy();
+	}
+	else
+	{
+		doing_clear_check_timer += 1;
+	}
+}
+if (doing_clear_check_timer == 2)
+{
+	scr_automatic_screenshot();
+}
+else
+if (doing_clear_check_timer >= 3)
+{
+	global.actually_play_edited_level = true;
+	global.play_edited_level = true;
+	with(obj_leveleditor_placed_object)
+	{
+		alarm[1] = 1;
+	}
+	instance_destroy();
+}
+
+#endregion /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" END */
+
 if (global.actually_play_edited_level == false)
 && (modify_object_menu == false)
 {
@@ -366,31 +402,6 @@ if (global.actually_play_edited_level == false)
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32))
 				&& (!instance_exists(obj_camera))
 				{
-					
-					#region /* Limit so cursor and view can't go outside room */
-					if (cam_width < 1920)
-					|| (cam_height < 1080)
-					{
-						camera_set_view_size(view_camera[view_current], 1920, 1080);
-					}
-					scr_set_screen_size();
-					
-					#region /* Limit controller x and controller y inside room */
-					controller_x = clamp(controller_x, cam_x, cam_x + cam_width);
-					controller_y = clamp(controller_y, cam_y, cam_y + cam_height);
-					#endregion /* Limit controller x and controller y inside room END */
-					
-					#region /* Limit x and y inside room */
-					x = clamp(x, cam_x, cam_x + cam_width);
-					y = clamp(y, cam_y, cam_y + cam_height);
-					#endregion /* Limit x and y inside room END */
-					
-					#region /* Limit view inside room when playing level */
-					camera_set_view_pos(view_camera[view_current], max(0, min(cam_x, room_width - cam_width)), max(0, min(cam_y, room_height - cam_height)));
-					#endregion /* Limit view inside room when playing level END */
-					
-					#endregion /* Limit so view and cursor can't go outside room END */
-					
 					global.checkpoint_x = 0;
 					global.checkpoint_y = 0;
 					global.checkpoint_millisecond = 0;
@@ -1551,32 +1562,6 @@ if (global.actually_play_edited_level == false)
 		#region /* Save Level */
 		if (quit_level_editor == 3)
 		{
-			
-			#region /* Limit so cursor and view can't go outside room */
-			if (cam_width < 1920 || cam_height < 1080)
-			{
-				camera_set_view_size(view_camera[view_current], 1920, 1080);
-			}
-			scr_set_screen_size();
-			
-			/* Limit view inside room when saving and quitting */
-			if (instance_exists(obj_level_width) && instance_exists(obj_level_height))
-			{
-				camera_set_view_pos(view_camera[view_current],
-				max(0, min(cam_x, obj_level_width.x - cam_width)),
-				max(0, min(cam_y, obj_level_height.y - cam_height)));
-			}
-			
-			/* Limit controller x and y inside room */
-			controller_x = clamp(controller_x, cam_x, cam_x + cam_width);
-			controller_y = clamp(controller_y, cam_y, cam_y + cam_height);
-			
-			/* Limit x and y inside room */
-			x = clamp(x, cam_x, cam_x + cam_width);
-			y = clamp(y, cam_y, cam_y + cam_height);
-			
-			#endregion /* Limit so view and cursor can't go outside room END */
-			
 			ini_open(working_directory + "save_file/custom_level_save.ini");
 			ini_write_real(global.level_name, "checkpoint_x", 0);
 			ini_write_real(global.level_name, "checkpoint_y", 0);

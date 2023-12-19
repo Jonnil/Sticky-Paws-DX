@@ -241,7 +241,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						&& (global.controls_used_for_menu_navigation == "mouse")
 						{
 							draw_set_alpha(0.5);
-							draw_rectangle_color(get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16, c_white, c_white, c_white, c_white, false);
+							draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16, 50, 50, c_white, c_white, false);
 							draw_set_alpha(1);
 						}
 					}
@@ -274,7 +274,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						&& (global.controls_used_for_menu_navigation == "mouse")
 						{
 							draw_set_alpha(0.5);
-							draw_rectangle_color(get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16, c_white, c_white, c_white, c_white, false);
+							draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16, 50, 50, c_white, c_white, false);
 							draw_set_alpha(1);
 						}
 					}
@@ -339,7 +339,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						{
 							player_menu[what_player] = "select_voicepack";
 							draw_set_alpha(0.5);
-							draw_rectangle_color(get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16, c_white, c_white, c_white, c_white, false);
+							draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16, 50, 50, c_white, c_white, false);
 							draw_set_alpha(1);
 						}
 					}
@@ -373,7 +373,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						{
 							player_menu[what_player] = "select_voicepack";
 							draw_set_alpha(0.5);
-							draw_rectangle_color(get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16, c_white, c_white, c_white, c_white, false);
+							draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16, 50, 50, c_white, c_white, false);
 							draw_set_alpha(1);
 						}
 					}
@@ -429,7 +429,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					&& (global.controls_used_for_menu_navigation == "mouse")
 					{
 						draw_set_alpha(0.5);
-						draw_rectangle_color(get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + 16, c_white, c_white, c_white, c_white, false);
+						draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + 16, 50, 50, c_white, c_white, false);
 						draw_set_alpha(1);
 					}
 				}
@@ -463,7 +463,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 					&& (global.controls_used_for_menu_navigation == "mouse")
 					{
 						draw_set_alpha(0.5);
-						draw_rectangle_color(get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + 16, c_white, c_white, c_white, c_white, false);
+						draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + 16, 50, 50, c_white, c_white, false);
 						draw_set_alpha(1);
 					}
 				}
@@ -529,14 +529,14 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			{
 				menu = "select_character";
 				draw_set_alpha(0.75);
-				draw_rectangle_color(get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20, c_white, c_white, c_white, c_white, false);
+				draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20, 50, 50, c_white, c_white, false);
 				draw_set_alpha(1);
 			}
 			else
 			{
 				/* Make the Accept button blink to make it more noticable for the player */
 				draw_set_alpha(scr_wave(0, 0.75, 1, 0));
-				draw_rectangle_color(get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20, player_color, player_color, player_color, player_color, false);
+				draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20, 50, 50, player_color, player_color, false);
 				draw_set_alpha(1);
 			}
 			
@@ -578,9 +578,9 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			{
 				draw_set_alpha(0.75);
-				draw_rectangle_color(get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20, c_white, c_white, c_white, c_white, false);
+				draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20, 50, 50, c_white, c_white, false);
 				draw_set_alpha(0.5);
-				draw_rectangle_color(get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20, c_red, c_red, c_red, c_red, false);
+				draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20, 50, 50, c_red, c_red, false);
 				draw_set_alpha(1);
 			}
 			

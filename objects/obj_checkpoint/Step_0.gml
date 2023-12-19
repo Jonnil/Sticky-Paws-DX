@@ -138,7 +138,7 @@ if (instance_exists(obj_player))
 					#endregion /* Collect 10 basic collectibles END */
 					
 					
-					if (global.doing_clear_check == false) /* Don't save these things if you're doing a clear check. You need to restart from the very start if you lose, regardless if you hit checkpoints */
+					if (!global.doing_clear_check) /* Don't save these things if you're doing a clear check. You need to restart from the very start if you lose, regardless if you hit checkpoints */
 					{
 						global.checkpoint_x = xstart;
 						global.checkpoint_y = ystart;

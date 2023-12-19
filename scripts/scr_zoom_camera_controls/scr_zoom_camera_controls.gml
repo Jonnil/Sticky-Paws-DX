@@ -1,5 +1,7 @@
 function scr_zoom_camera_controls()
 {
+	
+	#region /* Initialize buttons */
 	var key_in_hold = noone;
 	var key_out_hold = noone;
 	
@@ -26,80 +28,77 @@ function scr_zoom_camera_controls()
 		var key_in_hold = scr_key_initialize(key_player4_zoom_in_hold, 0, 4, action.zoom_in);
 		var key_out_hold = scr_key_initialize(key_player4_zoom_out_hold, 0, 4, action.zoom_out);
 	}
+	#endregion /* Initialize buttons END */
 	
 	var zoom_speed = 0.015;
 	var zoom_minimum = 0.5;
-	var zoom_maximum = 1.0;
+	var base_zoom_maximum = 1.0; /* Set base maximum zoom */
 	
-	var zoom_variable = room == rm_world_map ? global.zoom_world_map : global.zoom_level;
-	
-	zoom_lerp = room == rm_title ? 1 : lerp(zoom_lerp, zoom_variable, 0.1);
-	zoom_variable = clamp(zoom_variable, zoom_minimum, zoom_maximum);
-	
-	zoom_border_lerp = lerp(zoom_border_lerp, 0, 0.1);
-	
-	var new_width = camera_get_view_width(view_camera[view_current]) * zoom_lerp;
-	var new_height = camera_get_view_height(view_camera[view_current]) * zoom_lerp;
-	if (new_width > room_width && new_height > room_height)
+	if (room_width < display_get_width() || room_height < display_get_height()) /* Check if either the room width or height is less than the screen resolution */
 	{
-		camera_set_view_size(view_camera[view_current], room_width, room_height);
-	}
-	else if (new_width > room_width)
-	{
-		camera_set_view_size(view_camera[view_current], room_width, new_height);
-	}
-	else if (new_height > room_height)
-	{
-		camera_set_view_size(view_camera[view_current], new_width, room_height);
+		/* Calculate proportional maximum zoom based on both room width and height */
+		var zoom_factor_width = room_width / display_get_width();
+		var zoom_factor_height = room_height / display_get_height();
+		
+		var zoom_factor = min(zoom_factor_width, zoom_factor_height); /* Choose the minimum zoom factor to ensure the entire room fits within the screen */
+		var dynamic_zoom_maximum = base_zoom_maximum * zoom_factor; /* Calculate dynamic maximum zoom */
+		var zoom_maximum = dynamic_zoom_maximum; /* Set the maximum zoom to the calculated value */
 	}
 	else
 	{
-		camera_set_view_size(view_camera[view_current], new_width, new_height);
+		var zoom_maximum = base_zoom_maximum; /* Use the base maximum zoom if both room width and height are equal to or greater than the screen resolution */
 	}
 	
-	if (room != rm_title)
+	var zoom_variable = room == rm_world_map ? global.zoom_world_map : global.zoom_level;
+	zoom_variable = clamp(zoom_variable, zoom_minimum, zoom_maximum);
+	
+	zoom_lerp = lerp(zoom_lerp, zoom_variable, 0.1);
+	
+	var new_width = min(camera_get_view_width(view_camera[view_current]) * zoom_lerp, room_width);
+	var new_height = min(camera_get_view_height(view_camera[view_current]) * zoom_lerp, room_height);
+	
+	camera_set_view_size(view_camera[view_current], new_width, new_height);
+	
+	#region /* Zoom in and out controls */
+	if (key_in_hold && !key_out_hold)
 	{
-		if (key_in_hold && !key_out_hold)
+		global.deactivate_timer = 999; /* Force update deactivate region */
+		if (zoom_variable > zoom_minimum)
 		{
-			global.deactivate_timer = 999; /* Force update deactivate region */
-			if (zoom_variable > zoom_minimum)
+			if (room == rm_world_map)
 			{
-				if (room == rm_world_map)
-				{
-					global.zoom_world_map -= zoom_speed;
-				}
-				else
-				{
-					global.zoom_level -= zoom_speed;
-				}
+				global.zoom_world_map -= zoom_speed;
 			}
 			else
 			{
-				zoom_border_lerp = 1;
+				global.zoom_level -= zoom_speed;
 			}
 		}
-		if (key_out_hold && !key_in_hold)
+		else
 		{
-			global.deactivate_timer = 999; /* Force update deactivate region */
-			if (
-				zoom_variable < zoom_maximum &&
-				new_width < room_width &&
-				new_height < room_height
-			)
-			{
-				if (room == rm_world_map)
-				{
-					global.zoom_world_map += zoom_speed;
-				}
-				else
-				{
-					global.zoom_level += zoom_speed;
-				}
-			}
-			else
-			{
-				zoom_border_lerp = 1;
-			}
+			zoom_border_lerp = 1;
 		}
 	}
+	else
+	if (key_out_hold && !key_in_hold)
+	{
+		global.deactivate_timer = 999; /* Force update deactivate region */
+		if (zoom_variable < zoom_maximum)
+		{
+			if (room == rm_world_map)
+			{
+				global.zoom_world_map += zoom_speed;
+			}
+			else
+			{
+				global.zoom_level += zoom_speed;
+			}
+		}
+		else
+		{
+			zoom_border_lerp = 1;
+		}
+	}
+	#endregion /* Zoom in and out controls END */
+	
 }

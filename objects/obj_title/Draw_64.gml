@@ -91,7 +91,7 @@ if (os_type != os_ios)
 	&& (global.controls_used_for_menu_navigation == "mouse")
 	{
 		draw_set_alpha(0.5);
-		draw_rectangle_color(0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42, c_white, c_white, c_white, c_white, false);
+		draw_roundrect_color_ext(0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42, 50, 50, c_white, c_white, false);
 		draw_set_alpha(1);
 	}
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))

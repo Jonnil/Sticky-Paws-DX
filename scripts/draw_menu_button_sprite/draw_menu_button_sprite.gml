@@ -8,16 +8,18 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	if ((point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
 	&& (global.controls_used_for_menu_navigation == "mouse")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	&& (open_dropdown == false)
+	&& (!open_dropdown)
 	|| (menu == menu_index)
 	&& (global.controls_used_for_menu_navigation == "keyboard")
-	&& (open_dropdown == false)
+	&& (!open_dropdown)
 	|| (menu == menu_index)
 	&& (global.controls_used_for_menu_navigation == "gamepad")
-	&& (open_dropdown == false)
-	&& (menu_delay == 0 && menu_joystick_delay == 0) /* Only change menu when "menu delay" is 0, otherwise there could be weird menu bugs that happen when you hover over a button when game needs to load code */ )
+	&& (!open_dropdown))
 	{
-		menu = menu_index;
+		if (menu_delay == 0 && menu_joystick_delay == 0) /* Only change menu when "menu delay" is 0, otherwise there could be weird menu bugs that happen when you hover over a button when game needs to load code */
+		{
+			menu = menu_index;
+		}
 		if (menu == menu_index)
 		{
 			if (sprite_exists(spr_index))
@@ -50,7 +52,7 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	}
 
 	#region /* Clicking the menu button */
-	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
+	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height) && menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		if (menu_takes_you_to != false)
 		|| (menu_takes_you_to != noone)
@@ -58,7 +60,7 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 		|| (menu_takes_you_to != menu_index)
 		{
 			if (mouse_check_button_released(mb_left))
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = menu_takes_you_to;
 			}

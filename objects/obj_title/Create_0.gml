@@ -129,6 +129,7 @@ file_load_timer = 0;
 level_find_pos = 0;
 first_level = string(file_find_first(working_directory + "custom_levels/*", fa_directory));
 open_sub_menu = false;
+open_upload_menu = false;
 select_custom_level_menu_open = false;
 scroll = 0;
 if (display_get_gui_width() >= 1670)

@@ -66,7 +66,7 @@ function scr_options_language_menu()
 		if (global.controls_used_for_menu_navigation != "mouse")
 		{
 			if (key_up)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu_delay = 3;
 				language_index = max(language_index - 1, 1)
@@ -75,7 +75,7 @@ function scr_options_language_menu()
 			}
 			else
 			if (key_down)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu_delay = 3;
 				language_index = min(language_index + 1, ds_grid_width(global.language_local_data) - 1)
@@ -84,7 +84,7 @@ function scr_options_language_menu()
 			}
 			else
 			if (key_a_pressed)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu_delay = 3;
 				global.language_localization = language_index - 1;
@@ -106,7 +106,7 @@ function scr_options_language_menu()
 		else
 		{
 			if (key_up)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu_delay = 3;
 				language_mouse_scroll = max(language_mouse_scroll - 10, 1)
@@ -114,7 +114,7 @@ function scr_options_language_menu()
 			}
 			else
 			if (key_down)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu_delay = 3;
 				language_mouse_scroll = min(language_mouse_scroll + 10, ds_grid_width(global.language_local_data) - 1)

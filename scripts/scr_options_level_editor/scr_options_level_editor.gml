@@ -124,7 +124,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "delete_all_objects";
 					menu_delay = 3;
@@ -132,7 +132,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "level_theme";
 					menu_delay = 3;
@@ -143,7 +143,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_entire_theme";
 					menu_delay = 3;
@@ -151,7 +151,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_level_editor_options";
 					menu_delay = 3;
@@ -159,7 +159,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "default_view_height";
 					menu_delay = 3;
@@ -170,7 +170,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "level_theme";
 					menu_delay = 3;
@@ -178,7 +178,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "default_view_width";
 					menu_delay = 3;
@@ -188,7 +188,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "default_view_height";
 					menu_delay = 3;
@@ -196,7 +196,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "make_every_tileset_into_default_tileset";
 					menu_delay = 3;
@@ -206,10 +206,10 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				|| (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					if (global.make_every_tileset_into_default_tileset == false)
 					{
@@ -224,7 +224,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "default_view_width";
 					menu_delay = 3;
@@ -232,7 +232,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "rain";
 					menu_delay = 3;
@@ -243,10 +243,10 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				|| (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					if (global.rain == false)
 					{
@@ -261,7 +261,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "make_every_tileset_into_default_tileset";
 					menu_delay = 3;
@@ -269,7 +269,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "enable_time_countdown";
 					menu_delay = 3;
@@ -279,10 +279,10 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				|| (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					if (global.enable_time_countdown == false)
 					{
@@ -297,7 +297,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "rain";
 					menu_delay = 3;
@@ -305,7 +305,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					if (global.enable_time_countdown)
 					{
@@ -323,7 +323,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "enable_time_countdown";
 					menu_delay = 3;
@@ -331,7 +331,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "show_new_items_notification_level_editor";
 					menu_delay = 3;
@@ -341,10 +341,10 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				|| (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					if (global.show_new_items_notification == false)
 					{
@@ -358,7 +358,7 @@ function scr_options_level_editor()
 				}
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					if (global.enable_time_countdown)
 					{
@@ -373,7 +373,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "select_level_editing_music";
 					menu_delay = 3;
@@ -383,7 +383,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "show_new_items_notification_level_editor";
 					menu_delay = 3;
@@ -391,7 +391,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "delete_all_objects";
 					menu_delay = 3;
@@ -420,7 +420,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "delete_all_objects_no"
 					menu_delay = 3;
@@ -428,7 +428,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "select_level_editing_music";
 					menu_delay = 3;
@@ -436,7 +436,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_level_editor_options";
 					menu_delay = 3;
@@ -622,11 +622,11 @@ function scr_options_level_editor()
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			|| (menu == "back_level_theme")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "level_theme";
 				menu_delay = 3;
@@ -635,7 +635,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "background_tiled";
 					menu_delay = 3;
@@ -643,7 +643,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_entire_theme";
 					menu_delay = 3;
@@ -654,7 +654,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -662,7 +662,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_level_theme";
 					menu_delay = 3;
@@ -670,7 +670,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background";
 					menu_delay = 3;
@@ -678,7 +678,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_entire_theme";
 					menu_delay = 3;
@@ -689,7 +689,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -697,7 +697,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_level_theme";
 					menu_delay = 3;
@@ -705,7 +705,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background";
 					menu_delay = 3;
@@ -713,7 +713,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_entire_theme";
 					menu_delay = 3;
@@ -724,7 +724,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_background";
 					menu_delay = 3;
@@ -732,7 +732,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_entire_theme";
 					menu_delay = 3;
@@ -740,7 +740,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_music";
 					menu_delay = 3;
@@ -751,7 +751,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_music";
 					menu_delay = 3;
@@ -759,7 +759,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background";
 					menu_delay = 3;
@@ -767,7 +767,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "background_offset";
 					menu_delay = 3;
@@ -778,7 +778,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_offset";
 					menu_delay = 3;
@@ -786,7 +786,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_music";
 					menu_delay = 3;
@@ -794,7 +794,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "background_parallax";
 					menu_delay = 3;
@@ -805,7 +805,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_parallax";
 					menu_delay = 3;
@@ -813,7 +813,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "background_offset";
 					menu_delay = 3;
@@ -821,7 +821,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "background_scale";
 					menu_delay = 3;
@@ -832,7 +832,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_scale";
 					menu_delay = 3;
@@ -840,7 +840,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "background_parallax";
 					menu_delay = 3;
@@ -848,7 +848,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "background_tiled";
 					menu_delay = 3;
@@ -859,7 +859,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_tiled";
 					menu_delay = 3;
@@ -867,7 +867,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "background_scale";
 					menu_delay = 3;
@@ -875,7 +875,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_level_theme";
 					menu_delay = 3;
@@ -949,11 +949,11 @@ function scr_options_level_editor()
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			|| (menu == "back_change_background")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "change_background";
 				menu_delay = 3;
@@ -962,7 +962,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground_secret";
 					menu_delay = 3;
@@ -970,7 +970,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_background";
 					menu_delay = 3;
@@ -983,7 +983,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -991,7 +991,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_change_background";
 					menu_delay = 3;
@@ -999,7 +999,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background1";
 					menu_delay = 3;
@@ -1007,7 +1007,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_all_background";
 					menu_delay = 3;
@@ -1018,7 +1018,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1026,7 +1026,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_background";
 					menu_delay = 3;
@@ -1034,7 +1034,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background2";
 					menu_delay = 3;
@@ -1042,7 +1042,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background1";
 					menu_delay = 3;
@@ -1053,7 +1053,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1061,7 +1061,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background1";
 					menu_delay = 3;
@@ -1069,7 +1069,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background3";
 					menu_delay = 3;
@@ -1077,7 +1077,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background2";
 					menu_delay = 3;
@@ -1088,7 +1088,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1096,7 +1096,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background2";
 					menu_delay = 3;
@@ -1104,7 +1104,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background4";
 					menu_delay = 3;
@@ -1112,7 +1112,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background3";
 					menu_delay = 3;
@@ -1123,7 +1123,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1131,7 +1131,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background3";
 					menu_delay = 3;
@@ -1139,7 +1139,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_foreground";
 					menu_delay = 3;
@@ -1147,7 +1147,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background4";
 					menu_delay = 3;
@@ -1158,7 +1158,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1166,7 +1166,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background4";
 					menu_delay = 3;
@@ -1174,7 +1174,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground1";
 					menu_delay = 3;
@@ -1182,7 +1182,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_all_foreground";
 					menu_delay = 3;
@@ -1193,7 +1193,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1201,7 +1201,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_foreground";
 					menu_delay = 3;
@@ -1209,7 +1209,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground1_5";
 					menu_delay = 3;
@@ -1217,7 +1217,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_foreground1";
 					menu_delay = 3;
@@ -1228,7 +1228,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1236,7 +1236,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground1";
 					menu_delay = 3;
@@ -1244,7 +1244,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground2";
 					menu_delay = 3;
@@ -1252,7 +1252,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_foreground1_5";
 					menu_delay = 3;
@@ -1263,7 +1263,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1271,7 +1271,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground1_5";
 					menu_delay = 3;
@@ -1279,7 +1279,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground_secret";
 					menu_delay = 3;
@@ -1287,7 +1287,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_foreground2";
 					menu_delay = 3;
@@ -1298,7 +1298,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1306,7 +1306,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground2";
 					menu_delay = 3;
@@ -1314,7 +1314,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_change_background";
 					menu_delay = 3;
@@ -1322,7 +1322,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_foreground_secret";
 					menu_delay = 3;
@@ -1337,7 +1337,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -1345,7 +1345,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_change_background";
 					menu_delay = 3;
@@ -1353,7 +1353,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background1";
 					menu_delay = 3;
@@ -1361,7 +1361,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_background";
 					menu_delay = 3;
@@ -1372,7 +1372,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -1380,7 +1380,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_all_background";
 					menu_delay = 3;
@@ -1388,7 +1388,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background2";
 					menu_delay = 3;
@@ -1396,7 +1396,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background1";
 					menu_delay = 3;
@@ -1407,7 +1407,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -1415,7 +1415,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background1";
 					menu_delay = 3;
@@ -1423,7 +1423,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background3";
 					menu_delay = 3;
@@ -1431,7 +1431,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background2";
 					menu_delay = 3;
@@ -1442,7 +1442,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -1450,7 +1450,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background2";
 					menu_delay = 3;
@@ -1458,7 +1458,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background4";
 					menu_delay = 3;
@@ -1466,7 +1466,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background3";
 					menu_delay = 3;
@@ -1477,7 +1477,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -1485,7 +1485,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background3";
 					menu_delay = 3;
@@ -1493,7 +1493,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_foreground";
 					menu_delay = 3;
@@ -1501,7 +1501,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_background4";
 					menu_delay = 3;
@@ -1512,7 +1512,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -1520,7 +1520,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_background4";
 					menu_delay = 3;
@@ -1528,7 +1528,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_foreground1";
 					menu_delay = 3;
@@ -1536,7 +1536,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_foreground";
 					menu_delay = 3;
@@ -1547,7 +1547,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -1555,7 +1555,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_foreground";
 					menu_delay = 3;
@@ -1563,7 +1563,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_foreground1_5";
 					menu_delay = 3;
@@ -1571,7 +1571,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground1";
 					menu_delay = 3;
@@ -1582,7 +1582,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -1590,7 +1590,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_foreground1";
 					menu_delay = 3;
@@ -1598,7 +1598,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_foreground2";
 					menu_delay = 3;
@@ -1606,7 +1606,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground1_5";
 					menu_delay = 3;
@@ -1617,7 +1617,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -1625,7 +1625,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_foreground1_5";
 					menu_delay = 3;
@@ -1633,7 +1633,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_foreground_secret";
 					menu_delay = 3;
@@ -1641,7 +1641,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground2";
 					menu_delay = 3;
@@ -1652,7 +1652,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -1660,7 +1660,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_foreground2";
 					menu_delay = 3;
@@ -1668,7 +1668,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_change_background";
 					menu_delay = 3;
@@ -1676,7 +1676,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_foreground_secret";
 					menu_delay = 3;
@@ -1732,11 +1732,11 @@ function scr_options_level_editor()
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			|| (menu == "back_change_music")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "change_music";
 				menu_delay = 3;
@@ -1745,7 +1745,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_clear_melody";
 					menu_delay = 3;
@@ -1753,7 +1753,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_music";
 					menu_delay = 3;
@@ -1766,7 +1766,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1774,7 +1774,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_change_music";
 					menu_delay = 3;
@@ -1782,7 +1782,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_music_overworld";
 					menu_delay = 3;
@@ -1790,7 +1790,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_all_music";
 					menu_delay = 3;
@@ -1801,7 +1801,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1809,7 +1809,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_music";
 					menu_delay = 3;
@@ -1817,7 +1817,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_music_underwater";
 					menu_delay = 3;
@@ -1825,7 +1825,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_music_overworld";
 					menu_delay = 3;
@@ -1836,7 +1836,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1844,7 +1844,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_music_overworld";
 					menu_delay = 3;
@@ -1852,7 +1852,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_ambience_overworld";
 					menu_delay = 3;
@@ -1860,7 +1860,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_music_underwater";
 					menu_delay = 3;
@@ -1871,7 +1871,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1879,7 +1879,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_music_underwater";
 					menu_delay = 3;
@@ -1887,7 +1887,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_ambience_underwater";
 					menu_delay = 3;
@@ -1895,7 +1895,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_ambience_overworld";
 					menu_delay = 3;
@@ -1906,7 +1906,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1914,7 +1914,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_ambience_overworld";
 					menu_delay = 3;
@@ -1922,7 +1922,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_clear_melody";
 					menu_delay = 3;
@@ -1930,7 +1930,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_ambience_underwater";
 					menu_delay = 3;
@@ -1941,7 +1941,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "load_official_level_to_take_from";
 					menu_delay = 3;
@@ -1949,7 +1949,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_ambience_underwater";
 					menu_delay = 3;
@@ -1957,7 +1957,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_change_music";
 					menu_delay = 3;
@@ -1965,7 +1965,7 @@ function scr_options_level_editor()
 				else
 				if (key_right)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_clear_melody";
 					menu_delay = 3;
@@ -1980,7 +1980,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -1988,7 +1988,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_change_music";
 					menu_delay = 3;
@@ -1996,7 +1996,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_music_overworld";
 					menu_delay = 3;
@@ -2004,7 +2004,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_all_music";
 					menu_delay = 3;
@@ -2015,7 +2015,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -2023,7 +2023,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_all_music";
 					menu_delay = 3;
@@ -2031,7 +2031,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_music_underwater";
 					menu_delay = 3;
@@ -2039,7 +2039,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_music_overworld";
 					menu_delay = 3;
@@ -2050,7 +2050,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -2058,7 +2058,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_music_overworld";
 					menu_delay = 3;
@@ -2066,7 +2066,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_ambience_overworld";
 					menu_delay = 3;
@@ -2074,7 +2074,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_music_underwater";
 					menu_delay = 3;
@@ -2085,7 +2085,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -2093,7 +2093,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_music_underwater";
 					menu_delay = 3;
@@ -2101,7 +2101,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_ambience_underwater";
 					menu_delay = 3;
@@ -2109,7 +2109,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_ambience_overworld";
 					menu_delay = 3;
@@ -2120,7 +2120,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -2128,7 +2128,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_ambience_overworld";
 					menu_delay = 3;
@@ -2136,7 +2136,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_clear_melody";
 					menu_delay = 3;
@@ -2144,7 +2144,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_ambience_underwater";
 					menu_delay = 3;
@@ -2155,7 +2155,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_theme_are_you_sure_no";
 					menu_delay = 3;
@@ -2163,7 +2163,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "remove_ambience_underwater";
 					menu_delay = 3;
@@ -2171,7 +2171,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_change_music";
 					menu_delay = 3;
@@ -2179,7 +2179,7 @@ function scr_options_level_editor()
 				else
 				if (key_left)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "change_clear_melody";
 					menu_delay = 3;
@@ -2219,11 +2219,11 @@ function scr_options_level_editor()
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			|| (menu == "back_background_offset")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				
 				#region /* Background Offset Save level_information.ini */
@@ -2272,7 +2272,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground_secret_y_offset";
 					menu_delay = 3;
@@ -2280,7 +2280,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_x_offset";
 					menu_delay = 3;
@@ -2291,7 +2291,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_offset";
 					menu_delay = 3;
@@ -2299,7 +2299,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_y_offset";
 					menu_delay = 3;
@@ -2309,7 +2309,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_x_offset";
 					menu_delay = 3;
@@ -2317,7 +2317,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_x_offset";
 					menu_delay = 3;
@@ -2327,7 +2327,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_y_offset";
 					menu_delay = 3;
@@ -2335,7 +2335,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_y_offset";
 					menu_delay = 3;
@@ -2345,7 +2345,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_x_offset";
 					menu_delay = 3;
@@ -2353,7 +2353,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_x_offset";
 					menu_delay = 3;
@@ -2363,7 +2363,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_y_offset";
 					menu_delay = 3;
@@ -2371,7 +2371,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_y_offset";
 					menu_delay = 3;
@@ -2381,7 +2381,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_x_offset";
 					menu_delay = 3;
@@ -2389,7 +2389,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_x_offset";
 					menu_delay = 3;
@@ -2399,7 +2399,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_y_offset";
 					menu_delay = 3;
@@ -2407,7 +2407,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_y_offset";
 					menu_delay = 3;
@@ -2417,7 +2417,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_x_offset";
 					menu_delay = 3;
@@ -2425,7 +2425,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground1_x_offset";
 					menu_delay = 3;
@@ -2435,7 +2435,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_y_offset";
 					menu_delay = 3;
@@ -2443,7 +2443,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground1_y_offset";
 					menu_delay = 3;
@@ -2453,7 +2453,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground1_x_offset";
 					menu_delay = 3;
@@ -2461,7 +2461,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground1_5_x_offset";
 					menu_delay = 3;
@@ -2471,7 +2471,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground1_y_offset";
 					menu_delay = 3;
@@ -2479,7 +2479,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground1_5_y_offset";
 					menu_delay = 3;
@@ -2489,7 +2489,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground1_5_x_offset";
 					menu_delay = 3;
@@ -2497,7 +2497,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground2_x_offset";
 					menu_delay = 3;
@@ -2507,7 +2507,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground1_5_y_offset";
 					menu_delay = 3;
@@ -2515,7 +2515,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground2_y_offset";
 					menu_delay = 3;
@@ -2525,7 +2525,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground2_x_offset";
 					menu_delay = 3;
@@ -2533,7 +2533,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground_secret_x_offset";
 					menu_delay = 3;
@@ -2543,7 +2543,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground2_y_offset";
 					menu_delay = 3;
@@ -2551,7 +2551,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground_secret_y_offset";
 					menu_delay = 3;
@@ -2561,7 +2561,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_foreground_secret_x_offset";
 					menu_delay = 3;
@@ -2569,7 +2569,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_offset";
 					menu_delay = 3;
@@ -2643,11 +2643,11 @@ function scr_options_level_editor()
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			|| (menu == "back_background_parallax")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				
 				#region /* Background Parallax Save level_information.ini */
@@ -2676,7 +2676,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_y_parallax";
 					menu_delay = 3;
@@ -2684,7 +2684,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_x_parallax";
 					menu_delay = 3;
@@ -2695,7 +2695,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_parallax";
 					menu_delay = 3;
@@ -2703,7 +2703,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_y_parallax";
 					menu_delay = 3;
@@ -2713,7 +2713,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_x_parallax";
 					menu_delay = 3;
@@ -2721,7 +2721,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_x_parallax";
 					menu_delay = 3;
@@ -2731,7 +2731,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_y_parallax";
 					menu_delay = 3;
@@ -2739,7 +2739,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_y_parallax";
 					menu_delay = 3;
@@ -2749,7 +2749,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_x_parallax";
 					menu_delay = 3;
@@ -2757,7 +2757,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_x_parallax";
 					menu_delay = 3;
@@ -2767,7 +2767,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_y_parallax";
 					menu_delay = 3;
@@ -2775,7 +2775,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_y_parallax";
 					menu_delay = 3;
@@ -2785,7 +2785,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_x_parallax";
 					menu_delay = 3;
@@ -2793,7 +2793,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_x_parallax";
 					menu_delay = 3;
@@ -2803,7 +2803,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_y_parallax";
 					menu_delay = 3;
@@ -2811,7 +2811,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_y_parallax";
 					menu_delay = 3;
@@ -2821,7 +2821,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_x_parallax";
 					menu_delay = 3;
@@ -2829,7 +2829,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_parallax";
 					menu_delay = 3;
@@ -2883,11 +2883,11 @@ function scr_options_level_editor()
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			|| (menu == "back_background_scale")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "background_scale";
 				menu_delay = 3;
@@ -2898,7 +2898,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_y_scale";
 					menu_delay = 3;
@@ -2906,7 +2906,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_x_scale";
 					menu_delay = 3;
@@ -2917,7 +2917,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_scale";
 					menu_delay = 3;
@@ -2925,7 +2925,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_y_scale";
 					menu_delay = 3;
@@ -2935,7 +2935,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_x_scale";
 					menu_delay = 3;
@@ -2943,7 +2943,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_x_scale";
 					menu_delay = 3;
@@ -2953,7 +2953,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_y_scale";
 					menu_delay = 3;
@@ -2961,7 +2961,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_y_scale";
 					menu_delay = 3;
@@ -2971,7 +2971,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_x_scale";
 					menu_delay = 3;
@@ -2979,7 +2979,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_x_scale";
 					menu_delay = 3;
@@ -2989,7 +2989,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_y_scale";
 					menu_delay = 3;
@@ -2997,7 +2997,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_y_scale";
 					menu_delay = 3;
@@ -3007,7 +3007,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_x_scale";
 					menu_delay = 3;
@@ -3015,7 +3015,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_x_scale";
 					menu_delay = 3;
@@ -3025,7 +3025,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_y_scale";
 					menu_delay = 3;
@@ -3033,7 +3033,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_y_scale";
 					menu_delay = 3;
@@ -3043,7 +3043,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_x_scale";
 					menu_delay = 3;
@@ -3051,7 +3051,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_scale";
 					menu_delay = 3;
@@ -3123,11 +3123,11 @@ function scr_options_level_editor()
 			if (key_b_pressed)
 			&& (!keyboard_check(vk_control))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			|| (menu == "back_background_tiled")
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				
 				#region /* Background Tiled Save level_information.ini */
@@ -3156,7 +3156,7 @@ function scr_options_level_editor()
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_vtiled";
 					menu_delay = 3;
@@ -3164,7 +3164,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_htiled";
 					menu_delay = 3;
@@ -3184,7 +3184,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_tiled";
 					menu_delay = 3;
@@ -3192,7 +3192,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_vtiled";
 					menu_delay = 3;
@@ -3211,7 +3211,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_htiled";
 					menu_delay = 3;
@@ -3219,7 +3219,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_htiled";
 					menu_delay = 3;
@@ -3238,7 +3238,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background1_vtiled";
 					menu_delay = 3;
@@ -3246,7 +3246,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_vtiled";
 					menu_delay = 3;
@@ -3265,7 +3265,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_htiled";
 					menu_delay = 3;
@@ -3273,7 +3273,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_htiled";
 					menu_delay = 3;
@@ -3292,7 +3292,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background2_vtiled";
 					menu_delay = 3;
@@ -3300,7 +3300,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_vtiled";
 					menu_delay = 3;
@@ -3319,7 +3319,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_htiled";
 					menu_delay = 3;
@@ -3327,7 +3327,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_htiled";
 					menu_delay = 3;
@@ -3346,7 +3346,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background3_vtiled";
 					menu_delay = 3;
@@ -3354,7 +3354,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_vtiled";
 					menu_delay = 3;
@@ -3373,7 +3373,7 @@ function scr_options_level_editor()
 				else
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "custom_background4_htiled";
 					menu_delay = 3;
@@ -3381,7 +3381,7 @@ function scr_options_level_editor()
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					menu = "back_background_tiled";
 					menu_delay = 3;
@@ -3585,7 +3585,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					
 					menu = level_editor_options_back_to_menu; /* Go back to the previous menu */
@@ -3596,7 +3596,7 @@ function scr_options_level_editor()
 				|| (key_down)
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
-					&& (open_dropdown == false)
+					&& (!open_dropdown)
 					{
 						menu = "remove_theme_are_you_sure_yes";
 						menu_delay = 3;
@@ -3608,7 +3608,7 @@ function scr_options_level_editor()
 			{
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (open_dropdown == false)
+				&& (!open_dropdown)
 				{
 					
 					#region /* Set default theme values to empty string */
@@ -3777,7 +3777,7 @@ function scr_options_level_editor()
 				|| (key_down)
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
-					&& (open_dropdown == false)
+					&& (!open_dropdown)
 					{
 						menu = "remove_theme_are_you_sure_no";
 						menu_delay = 3;

@@ -110,7 +110,7 @@ function scr_character_select_menu_draw()
 			&& (player4_accept_selection != 0)
 			{
 				draw_set_alpha(0.9);
-				draw_rectangle_color(get_window_width * 0.5 - (string_width(l10n_text("Player 1 starts the game")) * 0.5), play_the_game_text_y_lerp + 32, get_window_width * 0.5 + (string_width(l10n_text("Player 1 starts the game")) * 0.5), play_the_game_text_y_lerp + 64, c_black, c_black, c_black, c_black, false);
+				draw_roundrect_color_ext(get_window_width * 0.5 - (string_width(l10n_text("Player 1 starts the game")) * 0.5), play_the_game_text_y_lerp + 32, get_window_width * 0.5 + (string_width(l10n_text("Player 1 starts the game")) * 0.5), play_the_game_text_y_lerp + 64, 50, 50, c_black, c_black, false);
 				draw_set_alpha(1);
 				scr_draw_text_outlined(get_window_width * 0.5, play_the_game_text_y_lerp + 45, l10n_text("Player 1 starts the game"), global.default_text_size, c_black, global.player_color[1], 1);
 				
@@ -378,7 +378,7 @@ function scr_character_select_menu_draw()
 					player_menu[1] = "select_character";
 					menu = "select_character";
 					draw_set_alpha(0.5);
-					draw_rectangle_color(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, c_white, c_white, c_white, c_white, false);
+					draw_roundrect_color_ext(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, 50, 50, c_white, c_white, false);
 					draw_set_alpha(1);
 					var player_join_outline_color = c_white;
 				}
@@ -435,7 +435,7 @@ function scr_character_select_menu_draw()
 					player_menu[2] = "select_character";
 					menu = "select_character";
 					draw_set_alpha(0.5);
-					draw_rectangle_color(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, c_white, c_white, c_white, c_white, false);
+					draw_roundrect_color_ext(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, 50, 50, c_white, c_white, false);
 					draw_set_alpha(1);
 					var player_join_outline_color = c_white;
 				}
@@ -489,7 +489,7 @@ function scr_character_select_menu_draw()
 					player_menu[3] = "select_character";
 					menu = "select_character";
 					draw_set_alpha(0.5);
-					draw_rectangle_color(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, c_white, c_white, c_white, c_white, false);
+					draw_roundrect_color_ext(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, 50, 50, c_white, c_white, false);
 					draw_set_alpha(1);
 					var player_join_outline_color = c_white;
 				}
@@ -543,7 +543,7 @@ function scr_character_select_menu_draw()
 					player_menu[4] = "select_character";
 					menu = "select_character";
 					draw_set_alpha(0.5);
-					draw_rectangle_color(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, c_white, c_white, c_white, c_white, false);
+					draw_roundrect_color_ext(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, 50, 50, c_white, c_white, false);
 					draw_set_alpha(1);
 					var player_join_outline_color = c_white;
 				}

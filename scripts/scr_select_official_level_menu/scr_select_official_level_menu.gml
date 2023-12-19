@@ -354,7 +354,7 @@ function scr_select_official_level_menu()
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	draw_set_alpha(0.5);
-	draw_rectangle_color(0, 0, window_get_width(), 116, c_black, c_black, c_black, c_black, false);
+	draw_roundrect_color_ext(0, 0, window_get_width(), 116, 50, 50, c_black, c_black, false);
 	draw_set_alpha(1);
 	
 	if (room == rm_title)

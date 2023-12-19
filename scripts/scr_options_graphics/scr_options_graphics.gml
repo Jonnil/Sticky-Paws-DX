@@ -97,7 +97,7 @@ function scr_options_graphics()
 				if (global.resolution_setting == 6){display_set_gui_size(480, 270);window_set_size(480, 270);}
 			}
 		}
-		if (open_dropdown == false)
+		if (!open_dropdown)
 		{
 			if (window_get_width() == 1920 && window_get_height() == 1080){global.resolution_setting = 1;}else
 			if (window_get_width() == 1600 && window_get_height() == 900){global.resolution_setting = 2;}else
@@ -133,7 +133,7 @@ function scr_options_graphics()
 			menu_cursor_y_position = resolution_setting_y;
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "advanced_video_options";
 				menu_delay = 3;
@@ -141,7 +141,7 @@ function scr_options_graphics()
 			else
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "gui_scale_modifier";
 				menu_delay = 3;
@@ -174,7 +174,7 @@ function scr_options_graphics()
 			menu_cursor_y_position = gui_scale_modifier_y + 100;
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				if (window_get_fullscreen() == false)
 				{
@@ -189,7 +189,7 @@ function scr_options_graphics()
 			else
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "background_brightness_gameplay";
 				menu_delay = 3;
@@ -218,7 +218,7 @@ function scr_options_graphics()
 			
 		#region /* Navigate Background Brightness in Gameplay */
 		if (menu == "background_brightness_gameplay")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = background_brightness_gameplay_y;
 			if (global.background_brightness_gameplay < - 1)
@@ -265,7 +265,7 @@ function scr_options_graphics()
 			
 		#region /* Navigate Background Brightness in Menus */
 		if (menu == "background_brightness_menu")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = background_brightness_menu_y;
 			if (global.background_brightness_menu < - 1)
@@ -319,7 +319,7 @@ function scr_options_graphics()
 		
 		#region /* Navigate Fullscreen Mode */
 		if (menu == "fullscreen_mode")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = fullscreen_mode_y;
 			if (key_up)
@@ -342,7 +342,7 @@ function scr_options_graphics()
 		
 		#region /* Navigate Advanced Video Options Button */
 		if (menu == "advanced_video_options")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = advanced_video_options_y;
 			if (key_up)
@@ -384,7 +384,7 @@ function scr_options_graphics()
 		{
 			if (menu == "gui_scale_modifier")
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				open_dropdown = true;
 				menu_delay = 3;
@@ -432,7 +432,7 @@ function scr_options_graphics()
 		draw_menu_dropdown(420, 68 * 2, l10n_text("Color"), "customize_button_design_color", global.button_design_color, l10n_text("Gray"), l10n_text("Black"), l10n_text("Pink"), l10n_text("Blue"));
 		
 		if (key_b_pressed)
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = "customize_button_design";
@@ -441,7 +441,7 @@ function scr_options_graphics()
 		}
 		
 		if (key_a_pressed)
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "customize_button_design_back")
@@ -452,7 +452,7 @@ function scr_options_graphics()
 		}
 		
 		if (menu == "customize_button_design_back")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -473,7 +473,7 @@ function scr_options_graphics()
 		{
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "customize_button_design_back";
 				menu_delay = 3;
@@ -481,7 +481,7 @@ function scr_options_graphics()
 			else
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "customize_button_design_shape";
 				menu_delay = 3;
@@ -509,7 +509,7 @@ function scr_options_graphics()
 		{
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "customize_button_design_color";
 				menu_delay = 3;
@@ -517,7 +517,7 @@ function scr_options_graphics()
 			else
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "customize_button_design_transparency";
 				menu_delay = 3;
@@ -545,7 +545,7 @@ function scr_options_graphics()
 		{
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "customize_button_design_shape";
 				menu_delay = 3;
@@ -553,7 +553,7 @@ function scr_options_graphics()
 			else
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "customize_button_design_back";
 				menu_delay = 3;
@@ -707,7 +707,7 @@ function scr_options_graphics()
 		
 		#region /* Navigate Advanced Video Options Back */
 		if (menu == "advanced_video_options_back")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = advanced_video_options_back_y;
 			if (key_up)
@@ -730,7 +730,7 @@ function scr_options_graphics()
 		
 		#region /* Navigate Interpolate */
 		if (menu == "interpolate")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = interpolate_y;
 			if (key_up)
@@ -753,7 +753,7 @@ function scr_options_graphics()
 		
 		#region /* Show fps */
 		if (menu == "show_fps")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = show_fps_y;
 			if (key_up)
@@ -772,7 +772,7 @@ function scr_options_graphics()
 		
 		#region /* Show fps real */
 		if (menu == "show_fps_real")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = show_fps_real_y;
 			if (key_up)
@@ -791,7 +791,7 @@ function scr_options_graphics()
 		
 		#region /* Show instance count */
 		if (menu == "show_instance_count")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = show_instance_count_y;
 			if (key_up)
@@ -810,7 +810,7 @@ function scr_options_graphics()
 		
 		#region /* Show collision mask */
 		if (menu == "show_collision_mask")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = show_collision_mask_y;
 			if (key_up)
@@ -829,7 +829,7 @@ function scr_options_graphics()
 		
 		#region /* Navigate Enable Transitions */
 		if (menu == "enable_transitions")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = enable_transitions_y;
 			if (key_up)
@@ -852,7 +852,7 @@ function scr_options_graphics()
 		
 		#region /* Enable Backgrounds and Foregrounds */
 		if (menu == "enable_background_layer1")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = enable_background_layer1_y;
 			if (key_up)
@@ -871,7 +871,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_background_layer2")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = enable_background_layer2_y;
 			if (key_up)
@@ -890,7 +890,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_background_layer3")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = enable_background_layer3_y;
 			if (key_up)
@@ -909,7 +909,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_background_layer4")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = enable_background_layer4_y;
 			if (key_up)
@@ -928,7 +928,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_foreground_layer1")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = enable_foreground_layer1_y;
 			if (key_up)
@@ -947,7 +947,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_foreground_layer_1_5")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = enable_foreground_layer_1_5_y;
 			if (key_up)
@@ -966,7 +966,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_foreground_layer2")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = enable_foreground_layer2_y;
 			if (key_up)
@@ -985,7 +985,7 @@ function scr_options_graphics()
 		}
 		else
 		if (menu == "enable_foreground_layer_secret")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = enable_foreground_layer_secret_y;
 			if (key_up)
@@ -1008,7 +1008,7 @@ function scr_options_graphics()
 		
 		#region /* Reset level zoom when going back to map */
 		if (menu == "reset_level_zoom_when_going_back_to_map")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = reset_level_zoom_when_going_back_to_map_y;
 			if (key_up)
@@ -1031,7 +1031,7 @@ function scr_options_graphics()
 		
 		#region /* Reset world map zoom when going back to map */
 		if (menu == "reset_world_map_zoom_when_going_back_to_map")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = reset_world_map_zoom_when_going_back_to_map_y;
 			if (key_up)
@@ -1053,7 +1053,7 @@ function scr_options_graphics()
 		else
 		
 		if (menu == "customize_button_design")
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		{
 			menu_cursor_y_position = customize_button_design_y;
 			if (key_up)
@@ -1131,7 +1131,7 @@ function scr_options_graphics()
 			}
 			if (menu == "customize_button_design")
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (open_dropdown == false)
+			&& (!open_dropdown)
 			{
 				menu = "customize_button_design_color";
 				menu_delay = 3;
@@ -1140,7 +1140,7 @@ function scr_options_graphics()
 		#endregion /* Accept END */
 		
 		if (key_b_pressed)
-		&& (open_dropdown == false)
+		&& (!open_dropdown)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu = "advanced_video_options";
