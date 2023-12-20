@@ -5,7 +5,6 @@ function scr_select_custom_level_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var max_custom_levels = 180; /* You should be able to store 180 custom levels, these are both levels you have made, and levels you have downloaded */
-	var separate_created_and_downloaded_level = false;
 	if (ds_list_size(global.all_loaded_custom_levels) - 1 >= max_custom_levels)
 	{
 		var max_custom_levels_reached = true;

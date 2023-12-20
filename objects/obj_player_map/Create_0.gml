@@ -2,6 +2,8 @@
 can_enter_level_automatically = true;
 #endregion /* Debug toggles END */
 
+full_level_map_screenshot_timer = 0;
+
 room_speed = global.max_fps;
 character_folder = "";
 skin_folder = "";
@@ -87,6 +89,7 @@ else
 }
 
 alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
+alarm[1] = 3; /* Spawn cake stealing enemy on world map */
 
 #region /* Allow moves on world map */
 allow_free_movement = false; /* Turn this to true to move freely on the map instead of moving on paths, should be false by default */
@@ -260,3 +263,6 @@ if (!instance_exists(obj_camera_map))
 	instance_create_depth(x, y, 0, obj_camera_map);
 }
 #endregion /* Make sure camera map is always present on the map screen. Only run this code after doing the deactivate instances code END */
+
+audio_listener_orientation(0, 0, 1, 0, -1, 0);
+audio_listener_position(x, y, 0); /* Audio listener should start on top of the player */

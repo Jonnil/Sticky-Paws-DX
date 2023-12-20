@@ -13,7 +13,7 @@ else
 }
 
 if (global.show_tutorial_signs)
-&& (global.full_level_map_screenshot == false)
+&& (!global.full_level_map_screenshot)
 {
 	visible = true;
 }

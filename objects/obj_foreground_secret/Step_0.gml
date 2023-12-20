@@ -19,7 +19,7 @@ else
 #region /* When Foreground secret should be visible */
 if (global.custom_foreground_secret > noone)
 && (global.enable_foreground_layer_secret)
-&& (global.full_level_map_screenshot == false)
+&& (!global.full_level_map_screenshot)
 {
 	visible = true;
 }

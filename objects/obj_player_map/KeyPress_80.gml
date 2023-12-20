@@ -1,0 +1,1 @@
+global.full_level_map_screenshot = true;

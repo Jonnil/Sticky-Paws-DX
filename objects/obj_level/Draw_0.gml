@@ -1,7 +1,7 @@
 #region /* Draw level sprite */
-draw_sprite_ext(spr_level_ring, image_index, x, y, image_xscale, image_yscale, image_angle, ring_color, image_alpha);
-draw_sprite_ext(spr_level, image_index, x, y, image_xscale, image_yscale, image_angle, level_color, image_alpha);
-draw_sprite_ext(spr_level_crown, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, level_perfect);
+draw_sprite_ext(spr_level_ring, image_index, x, y, scale, scale, image_angle, ring_color, image_alpha);
+draw_sprite_ext(spr_level, image_index, x, y, scale, scale, image_angle, level_color, image_alpha);
+draw_sprite_ext(spr_level_crown, image_index, x, y, scale, scale, image_angle, image_blend, level_perfect);
 #endregion /* Draw level sprite END */
 
 draw_set_halign(fa_center);

@@ -347,6 +347,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			|| (key_a_pressed)
 			{
+				file_load_timer = 0; /* Reset the "file load timer" to 0 just in case, otherwise you can't navigate the thumbnails with mouse */
 				menu_delay = 3;
 				open_sub_menu = false;
 				show_level_editor_corner_menu = true;
@@ -373,6 +374,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				&& (mouse_check_button_released(mb_left))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				{
+					file_load_timer = 0; /* Reset the "file load timer" to 0 just in case, otherwise you can't navigate the thumbnails with mouse */
 					menu_delay = 3;
 					open_sub_menu = false;
 					show_level_editor_corner_menu = true;
@@ -389,6 +391,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				&& (mouse_check_button_released(mb_left))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				{
+					file_load_timer = 0; /* Reset the "file load timer" to 0 just in case, otherwise you can't navigate the thumbnails with mouse */
 					menu_delay = 3;
 					open_sub_menu = false;
 					show_level_editor_corner_menu = true;

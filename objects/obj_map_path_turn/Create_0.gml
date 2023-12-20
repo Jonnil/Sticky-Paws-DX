@@ -1,3 +1,4 @@
+depth = -2;
 delay = 0;
 turn = 0;
 /* 

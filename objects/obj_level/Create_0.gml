@@ -1,6 +1,7 @@
 alarm[0] = 2;
 alarm[1] = 4;
 always_open = false; /* If a level should always be open or not */
+direction_after_completion = 0; /* What direction the cake stealing enemy should run off */
 big_collectible1 = false;
 big_collectible2 = false;
 big_collectible3 = false;
@@ -23,6 +24,7 @@ lives_until_assist = 0;
 number_of_clears = 0;
 number_of_defeats = 0;
 ring_color = c_yellow;
+scale = 1;
 time = 0;
 timeattack_millisecond = 0;
 timeattack_minute = 0;

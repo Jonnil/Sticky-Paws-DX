@@ -10,6 +10,12 @@ function scr_player_move_save_whole_level_as_screenshot()
 		
 		if (full_level_map_screenshot_timer <= 0)
 		{
+			/* Disable the backgrounds when getting full level map */
+			layer_background_visible(layer_background_get_id("Background"), false);
+			layer_background_visible(layer_background_get_id("Background_2"), false);
+			layer_background_visible(layer_background_get_id("Background_3"), false);
+			layer_background_visible(layer_background_get_id("Background_4"), false);
+			
 			can_move = false; /* Make it so you can't move while game is generating a full level map screenshot, so you can't mess with the screenshot */
 			instance_activate_all();
 			
@@ -17,6 +23,10 @@ function scr_player_move_save_whole_level_as_screenshot()
 			if (instance_exists(obj_camera))
 			{
 				instance_destroy(obj_camera);
+			}
+			if (instance_exists(obj_camera_map))
+			{
+				instance_destroy(obj_camera_map);
 			}
 			#endregion /* Delete some objects so it doesn't show up in the screenshot END */
 			
@@ -37,21 +47,18 @@ function scr_player_move_save_whole_level_as_screenshot()
 		{
 			var custom_level_map_sprite;
 			custom_level_map_sprite = sprite_create_from_surface(application_surface, 0, 0, new_width, new_height, false, false, 0, 0);
-			if (global.character_select_in_this_menu == "level_editor")
-			&& (global.select_level_index <= 0)
-			|| (global.character_select_in_this_menu == "level_editor")
-			&& (global.create_level_from_template >= 2)
+			if (global.select_level_index <= 0)
+			|| (global.create_level_from_template >= 2)
 			{
 				sprite_save(custom_level_map_sprite, 0, working_directory + "custom_levels/" + global.level_name + "/full_level_map_" + global.level_name + ".png");
 			}
 			else
-			if (global.character_select_in_this_menu == "level_editor")
 			{
 				sprite_save(custom_level_map_sprite, 0, working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)) + "/full_level_map_" + global.level_name + ".png");
 			}
 			scr_delete_sprite_properly(custom_level_map_sprite);
 		}
-		if (full_level_map_screenshot_timer == 20)
+		if (full_level_map_screenshot_timer >= 20)
 		{
 			camera_set_view_border(view_camera[view_current], 1920, 1080); /* View Border */
 			camera_set_view_pos(view_camera[view_current], x, y); /* Set camera position to object's x and y positions again */

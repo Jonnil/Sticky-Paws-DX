@@ -727,7 +727,7 @@ if (!global.actually_play_edited_level)
 				{
 					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224, l10n_text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
 					var full_level_map_size = (get_window_width <= 1350) ? 0.75 : 1;
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 32, string_replace_all(game_save_id + "\custom_levels\\" + global.level_name + "\\full_level_map_" + global.level_name + ".png", "\\", "/"), global.default_text_size * full_level_map_size, c_black, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 32, string_replace_all(game_save_id + "\custom_levels\\full_level_map_" + global.level_name + ".png", "\\", "/"), global.default_text_size * full_level_map_size, c_black, c_white, 1);
 				}
 				else
 				{
@@ -795,11 +795,6 @@ if (!global.actually_play_edited_level)
 					{
 						if (menu_delay == 0 && menu_joystick_delay == 0)
 						{
-							/* Disable the backgrounds when getting full level map */
-							layer_background_visible(layer_background_get_id("Background"), false);
-							layer_background_visible(layer_background_get_id("Background_2"), false);
-							layer_background_visible(layer_background_get_id("Background_3"), false);
-							layer_background_visible(layer_background_get_id("Background_4"), false);
 							menu_delay = 3;
 							quit_level_editor = false;
 							can_input_level_name = false;
@@ -2175,13 +2170,13 @@ if (!global.actually_play_edited_level)
 		if (autosave_timer > 18000 - (60 * 10)) /* Warn player that there will be a autosave by counting down from 10 */
 		{
 			var autosave_countdown = ceil((autosave_timer - 18000) / -60);
-			autosave_text = l10n_text("Autosave in " + autosave_countdown);
+			autosave_text = l10n_text("Autosave in " + string(autosave_countdown));
 		}
 		if (autosave_text != "")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, autosave_text, global.default_text_size * 2, c_black, autosave_text_color, 1);
 			var autosave_countdown = ceil((autosave_timer - 18000) / -60);
-			if (autosave_text == l10n_text("Autosave in " + autosave_countdown))
+			if (autosave_text == l10n_text("Autosave in " + string(autosave_countdown)))
 			{
 				if (global.controls_used_for_menu_navigation == "gamepad")
 				{

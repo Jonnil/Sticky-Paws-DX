@@ -7,18 +7,19 @@ var view_y = camera_get_view_y(view_camera[view_current]);
 var view_width = camera_get_view_width(view_camera[view_current]);
 var view_height = camera_get_view_height(view_camera[view_current]);
 
+scr_player_move_save_whole_level_as_screenshot();
+
 scr_toggle_fullscreen();
 scr_set_controls_used_to_navigate();
 scr_resize_application_surface();
 
-#region /* When changing file, you should restart the room so the right save data can load */
-if (current_file != global.file)
+#region /* Only update audio listener position and velocity when the player is moving */
+if (speed > 0)
 {
-	current_file = global.file;
-	room_persistent = false; /* Turn OFF Room Persistency */
-	room_restart();
+	audio_listener_position(x, y, 0);
+	audio_listener_velocity(abs(hspeed), abs(vspeed), 0);
 }
-#endregion /* When changing file, you should restart the room so the right save data can load END */
+#endregion /* Only update audio listener position and velocity when the player is moving END */
 
 #region /* Quit Game */
 if (global.quit_level)

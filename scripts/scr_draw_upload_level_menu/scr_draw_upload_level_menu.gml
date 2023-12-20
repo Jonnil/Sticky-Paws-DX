@@ -89,14 +89,14 @@ function scr_draw_upload_level_menu()
 		}
 		can_input_level_name = false;
 		
-		if (room == rm_title
-		&& point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (upload_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (upload_y) - 3 + 42)
-		&& mouse_check_button_released(mb_left)
-		&& global.controls_used_for_menu_navigation == "mouse")
-		|| (room == rm_leveleditor
-		&& point_in_rectangle(mouse_get_x, mouse_get_x, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42)
-		&& mouse_check_button_released(mb_left)
-		&& global.controls_used_for_menu_navigation == "mouse")
+		if (room == rm_title)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 394 * (global.select_level_index - column * row) + 110 - 3, 226 * (column - scroll) + 475 + (upload_y) - 3, 394 * (global.select_level_index - column * row) + 110 - 3 + 370, 226 * (column - scroll) + 475 + (upload_y) - 3 + 42))
+		&& (mouse_check_button_released(mb_left))
+		&& (global.controls_used_for_menu_navigation == "mouse")
+		|| (room == rm_leveleditor)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 42 + 42 + 42))
+		&& (mouse_check_button_released(mb_left))
+		&& (global.controls_used_for_menu_navigation == "mouse")
 		|| (key_a_pressed)
 		{
 			if (variable_instance_exists(self, "open_sub_menu"))
