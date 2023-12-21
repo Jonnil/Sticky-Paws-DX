@@ -49,6 +49,9 @@ function scr_player_move_choose_voice_clips()
 	var sound_variations = [voice_burned_1, voice_burned_2, voice_burned_3, voice_burned_4, voice_burned_5, voice_burned_6, voice_burned_7, voice_burned_8, voice_burned_9, voice_burned_10];
 	voice_burned = scr_choose_sound_variation(sound_variations);
 	
+	var sound_variations = [voice_burned_die_1, voice_burned_die_2, voice_burned_die_3, voice_burned_die_4, voice_burned_die_5, voice_burned_die_6, voice_burned_die_7, voice_burned_die_8, voice_burned_die_9, voice_burned_die_10];
+	voice_burned_die = scr_choose_sound_variation(sound_variations);
+	
 	var sound_variations = [voice_scream_1, voice_scream_2, voice_scream_3, voice_scream_4, voice_scream_5, voice_scream_6, voice_scream_7, voice_scream_8, voice_scream_9, voice_scream_10];
 	voice_scream = scr_choose_sound_variation(sound_variations);
 	

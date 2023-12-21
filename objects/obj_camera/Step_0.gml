@@ -318,7 +318,7 @@ gamepad_set_vibration(global.player_slot[4], player4_motor_speed, player4_motor_
 #endregion /* Stop gamepad vibration for different players END */
 
 #region /* Spawn Players in multiplayer */
-if (global.pause == false)
+if (!global.pause)
 && (global.goal_active == false)
 {
 	if (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]) && gamepad_is_connected(global.player_slot[1]))

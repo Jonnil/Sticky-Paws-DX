@@ -7,6 +7,7 @@ function scr_custom_level_select_with_the_mouse(all_loaded_what = global.all_loa
 	&& (menu != "upload_rules_do_not_show")
 	&& (menu != "upload_rules")
 	&& (menu != "load_custom_level")
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		/* Don't set the "row" or "thumbnail_x_offset" variables in here, those variables are set in "scr select custom level menu" */
 		column = clamp(floor(global.select_level_index / row), 0, floor(ds_list_size(all_loaded_what)))
@@ -27,14 +28,12 @@ function scr_custom_level_select_with_the_mouse(all_loaded_what = global.all_loa
 				{
 					if (room == rm_title)
 					&& (menu != "level_editor_play")
-					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu = "level_editor_play";
 					}
 					else
 					if (room == rm_leveleditor)
-					if (menu != "choose_official_level_to_take_from")
-					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					&& (menu != "choose_official_level_to_take_from")
 					{
 						menu = "choose_official_level_to_take_from";
 					}

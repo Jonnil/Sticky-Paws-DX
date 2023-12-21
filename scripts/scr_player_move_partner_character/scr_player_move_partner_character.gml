@@ -98,7 +98,7 @@ function scr_player_move_partner_character()
 		{
 			active_right = true;
 			if (invincible_timer >= true)
-			&& (assist_invincible == false)
+			&& (!assist_invincible)
 			{
 				speed_max = lerp(speed_max, 10, 0.1);
 			}
@@ -121,7 +121,7 @@ function scr_player_move_partner_character()
 		{
 			active_left = true;
 			if (invincible_timer >= true)
-			&& (assist_invincible == false)
+			&& (!assist_invincible)
 			{
 				speed_max = lerp(speed_max, 10, 0.1);
 			}

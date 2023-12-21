@@ -98,7 +98,7 @@ if (image_alpha > 0)
 		draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + 32, 22, c_white, c_white, true);
 		draw_set_alpha(1);
 		
-		if (assist_invincible == false)
+		if (!assist_invincible)
 		&& (invincible_timer >= true)
 		{
 			if (invincible_blinking%20 == 0)
@@ -142,7 +142,7 @@ if (image_alpha > 0)
 		draw_circle_color(x, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) - 32, 22, c_white, c_white, true);
 		draw_set_alpha(1);
 		
-		if (assist_invincible == false)
+		if (!assist_invincible)
 		&& (invincible_timer >= true)
 		{
 			if (invincible_blinking%20 == 0)
@@ -241,7 +241,7 @@ if (image_alpha > 0)
 	&& (max_hp >= 2)
 	&& (sprite_exists(sprite_index))
 	&& (intro_animation == "")
-	&& (invincible_timer <= false)
+	&& (invincible_timer == false)
 	{
 		draw_sprite_ext(sprite_index, image_index, xx + random_range(- 8, + 8), yy + random_range(- 8, + 8), draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha * collision_mask_alpha);
 	}
@@ -253,7 +253,7 @@ if (image_alpha > 0)
 		draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha * collision_mask_alpha);
 		if (hp <= 1)
 		&& (max_hp >= 2)
-		&& (invincible_timer <= false)
+		&& (invincible_timer == false)
 		{
 			draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, c_red, 0.1);
 		}
@@ -296,8 +296,8 @@ if (image_alpha > 0)
 	#region /* Turnaround Effect */
 	if (effect_turnaround_subimg < 10)
 	{
-		if (climb == false)
-		&& (horizontal_rope_climb == false)
+		if (!climb)
+		&& (!horizontal_rope_climb)
 		{
 			draw_sprite_ext(spr_effect_turnaround, effect_turnaround_subimg, xx, yy, image_xscale, 1, angle, c_white, 0.5);
 		}
@@ -310,8 +310,8 @@ if (image_alpha > 0)
 	&& (hold_item_in_hands == "")
 	{
 		if (on_ground)
-		&& (climb == false)
-		&& (horizontal_rope_climb == false)
+		&& (!climb)
+		&& (!horizontal_rope_climb)
 		{
 			draw_sprite_ext(spr_speedspark, effect_speedspark_subimg, xx, bbox_bottom, image_xscale, 1, 0, c_white, 0.5);
 		}
@@ -320,7 +320,7 @@ if (image_alpha > 0)
 	#endregion /* Running Sparks Effect END */
 	
 	#region /* Invincible */
-	if (assist_invincible == false)
+	if (!assist_invincible)
 	{
 		if (invincible_timer >= true)
 		&& (sprite_exists(sprite_index))
@@ -386,8 +386,8 @@ if (image_alpha > 0)
 		#region /* Homing Enemy */
 		if (!on_ground)
 		&& (stick_to_wall == false)
-		&& (climb == false)
-		&& (horizontal_rope_climb == false)
+		&& (!climb)
+		&& (!horizontal_rope_climb)
 		&& (instance_exists(obj_enemy))
 		&& (!collision_line(x, y, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, obj_wall, false, true))
 		&& (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_enemy).x + 1, instance_nearest(x, y, obj_enemy).y + 1, obj_wall, false, true))
@@ -405,8 +405,8 @@ if (image_alpha > 0)
 		#region /* Homing Spring */
 		if (!on_ground)
 		&& (stick_to_wall == false)
-		&& (climb == false)
-		&& (horizontal_rope_climb == false)
+		&& (!climb)
+		&& (!horizontal_rope_climb)
 		&& (instance_exists(obj_spring))
 		&& (!collision_line(x, y, instance_nearest(x, y, obj_spring).x, instance_nearest(x, y, obj_spring).y, obj_wall, false, true))
 		&& (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_spring).x + 1, instance_nearest(x, y, obj_spring).y + 1, obj_wall, false, true))

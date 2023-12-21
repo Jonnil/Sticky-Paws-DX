@@ -1,5 +1,5 @@
 #region /* Draw blue rectangle representing the water level */
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 && (global.play_edited_level == false)
 {
 	draw_set_alpha(0.5);
@@ -20,7 +20,7 @@ if (drag_object)
 draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_blue, 1);
 
 #region /* Make sure the level end isn't outside of the level, this code has to be after the drag object code */
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 && (global.play_edited_level == false)
 {
 	draw_set_halign(fa_center);

@@ -37,6 +37,7 @@ function scr_player_move_run()
 			{
 				if (invincible_timer >= true)
 				&& (assist_invincible == false)
+				&& (!global.playtest_invincibility)
 				{
 					speed_max = lerp(speed_max, 10, 0.1);
 				}
@@ -55,6 +56,7 @@ function scr_player_move_run()
 			{
 				if (invincible_timer >= true)
 				&& (assist_invincible == false)
+				&& (!global.playtest_invincibility)
 				{
 					speed_max = lerp(speed_max, 6, 0.05);
 				}

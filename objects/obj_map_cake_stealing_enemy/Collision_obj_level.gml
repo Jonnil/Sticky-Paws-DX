@@ -8,7 +8,7 @@ if (distance_to_point(other.x, other.y) < move_speed + 3)
 	y = other.y;
 	speed = 0;
 	enter_level_delay = 1;
-	enter_level_y = other.y + 1;
+	enter_level_y = other.y + 2;
 }
 else
 if (distance_to_point(other.x, other.y) < move_speed + 3)

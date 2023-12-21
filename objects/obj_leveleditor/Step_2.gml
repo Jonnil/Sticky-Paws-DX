@@ -1,4 +1,4 @@
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 {
 	scr_parallax_scrolling_background();
 }

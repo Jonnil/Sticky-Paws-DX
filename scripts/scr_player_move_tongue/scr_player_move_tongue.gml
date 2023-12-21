@@ -6,7 +6,7 @@ function scr_player_move_tongue()
 		
 		#region /* Tongue */
 		if (can_move)
-		&& (global.pause == false)
+		&& (!global.pause)
 		{
 			if (!instance_exists(obj_tongue))
 			{
@@ -16,8 +16,8 @@ function scr_player_move_tongue()
 			#region /* If you are allowed to use tongue, then you are able to use your tongue END */
 			if (allow_tongue)
 			&& (can_tongue)
-			&& (climb == false)
-			&& (horizontal_rope_climb == false)
+			&& (!climb)
+			&& (!horizontal_rope_climb)
 			{
 				
 				#region /* Activate Tongue */

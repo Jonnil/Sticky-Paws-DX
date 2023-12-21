@@ -837,7 +837,7 @@ function scr_modify_objects_in_level_editor()
 					#endregion /* Readable Sign END */
 					
 					#region /* Update variables */
-					if (global.actually_play_edited_level == false)
+					if (!global.actually_play_edited_level)
 					{
 						for(i = 0; i < ds_grid_height(global.object_grid)-1; i += 1)
 						{

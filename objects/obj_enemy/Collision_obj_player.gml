@@ -176,7 +176,7 @@ if (!die)
 		}
 		else
 		if (other.taken_damage <= 0)
-		&& (other.assist_invincible == false)
+		&& (other.invincible_timer == false)
 		{
 			if (other.have_heart_balloon)
 			{

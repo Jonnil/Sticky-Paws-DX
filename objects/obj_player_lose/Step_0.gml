@@ -28,7 +28,7 @@ if (count = 50)
 	gravity = 0.5;
 	vspeed = -10;
 	image_speed = 0.3;
-	if (place_meeting(x, y, obj_lava))
+	if (burnt)
 	{
 		audio_sound_pitch(voice_burned_die, default_voice_pitch);
 		scr_audio_play(voice_burned_die, volume_source.voice);

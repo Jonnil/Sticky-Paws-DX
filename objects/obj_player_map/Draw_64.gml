@@ -9,7 +9,7 @@ if (can_move)
 && (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 && (speed == 0)
 && (instance_nearest(x, y, obj_level).clear_rate != "closed")
-&& (global.pause == false)
+&& (!global.pause)
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
@@ -83,7 +83,7 @@ if (global.debug_screen)
 	&& (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 	&& (speed == 0)
 	&& (instance_nearest(x, y, obj_level).clear_rate = "enter")
-	&& (global.pause == false)
+	&& (!global.pause)
 	{
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);

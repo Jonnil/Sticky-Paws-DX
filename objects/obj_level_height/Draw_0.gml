@@ -1,5 +1,5 @@
 #region /* Draw black rectangle outside level border */
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 && (global.play_edited_level == false)
 {
 	var cam_x = camera_get_view_x(view_camera[0]);
@@ -27,7 +27,7 @@ draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_white, 1);
 
 #region /* Make sure the level end isn't outside of the level, this code has to be after the drag object code */
 if (y < 1080 + 16)
-&& (global.actually_play_edited_level == false)
+&& (!global.actually_play_edited_level)
 && (global.play_edited_level == false)
 {
 	draw_set_halign(fa_right);
@@ -35,7 +35,7 @@ if (y < 1080 + 16)
 	scr_draw_text_outlined(x - 32, y, l10n_text("Warning! Level height shorter than normal") + ": " + string(bbox_top), global.default_text_size, c_black, c_red, 1);
 }
 else
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 && (global.play_edited_level == false)
 {
 	draw_set_halign(fa_right);

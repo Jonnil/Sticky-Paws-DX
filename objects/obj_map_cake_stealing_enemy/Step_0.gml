@@ -7,11 +7,12 @@ if (instance_exists(obj_player_map))
 	move_speed = 9; /* Move faster than player if the player is chasing */
 	speed = move_speed;
 }
-if (hspeed < 0)
+if (hspeed < -1)
 {
 	image_xscale = -1;
 }
 else
+if (hspeed > +1)
 {
 	image_xscale = +1;
 }

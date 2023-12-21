@@ -408,6 +408,19 @@ voice_burned_9 = noone; /* Voice Burned 9 */
 voice_burned_10 = noone; /* Voice Burned 10 */
 #endregion /* Voice Burned END */
 
+#region /* Voice Burned Die */
+voice_burned_die_1 = noone; /* Voice Burned Die 1 */
+voice_burned_die_2 = noone; /* Voice Burned Die 2 */
+voice_burned_die_3 = noone; /* Voice Burned Die 3 */
+voice_burned_die_4 = noone; /* Voice Burned Die 4 */
+voice_burned_die_5 = noone; /* Voice Burned Die 5 */
+voice_burned_die_6 = noone; /* Voice Burned Die 6 */
+voice_burned_die_7 = noone; /* Voice Burned Die 7 */
+voice_burned_die_8 = noone; /* Voice Burned Die 8 */
+voice_burned_die_9 = noone; /* Voice Burned Die 9 */
+voice_burned_die_10 = noone; /* Voice Burned Die 10 */
+#endregion /* Voice Burned Die END */
+
 #region /* Voice Scream */
 voice_scream_1 = noone; /* Voice Scream 1 */
 voice_scream_2 = noone; /* Voice Scream 2 */
@@ -437,6 +450,7 @@ voice_dive = noone;
 voice_damage = noone;
 voice_burned_running = noone;
 voice_burned = noone;
+voice_burned_die = noone;
 
 voice_open_mouth = noone;
 voice_notice = noone;

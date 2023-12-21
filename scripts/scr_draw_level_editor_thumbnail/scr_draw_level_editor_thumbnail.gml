@@ -98,63 +98,62 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			}
 			
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
-			if (is_array(thumbnail_clear_check))
-			&& (array_length(thumbnail_clear_check) > 0)
-			&& (is_array(thumbnail_level_id))
-			&& (array_length(thumbnail_level_id) > 0)
-			&& (!level_editor_template_select && i >= 1)
-			&& (i >= 0)
-			&& (i < array_length(thumbnail_clear_check))
-			&& (i < array_length(thumbnail_level_id))
+			if (room == rm_title)
 			{
-				var clear_check = thumbnail_clear_check[i];
-				var var_level_id = thumbnail_level_id[i];
-				var current_text = "";
-				
-				if (clear_check && var_level_id != "")
+				if (is_array(thumbnail_clear_check))
+				&& (array_length(thumbnail_clear_check) > 0)
+				&& (is_array(thumbnail_level_id))
+				&& (array_length(thumbnail_level_id) > 0)
+				&& (!level_editor_template_select && i >= 1)
+				&& (i >= 0)
+				&& (i < array_length(thumbnail_clear_check))
+				&& (i < array_length(thumbnail_level_id))
 				{
-					if (global.select_level_index == i)
+					var clear_check = thumbnail_clear_check[i];
+					var var_level_id = thumbnail_level_id[i];
+					var current_text = "";
+					if (clear_check && var_level_id != "")
 					{
-						current_text = string(var_level_id);
-						if (room == rm_title)
+						if (global.select_level_index == i)
 						{
-							global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
+							current_text = string(var_level_id);
+							if (room == rm_title)
+							{
+								global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
+							}
 						}
+						var current_icon = spr_icons_upload;
+						var icon_scale = scr_wave(0.9, 1, 1, 0);
 					}
-					
-					var current_icon = spr_icons_upload;
-					var icon_scale = scr_wave(0.9, 1, 1, 0);
-				}
-				else if (clear_check)
-				{
-					if (global.select_level_index == i)
+					else if (clear_check)
 					{
-						current_text = l10n_text("Clear Checked");
-						if (room == rm_title)
+						if (global.select_level_index == i)
 						{
-							global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
+							current_text = l10n_text("Clear Checked");
+							if (room == rm_title)
+							{
+								global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
+							}
 						}
+						var current_icon = spr_icons_finished;
+						var icon_scale = scr_wave(0.9, 1, 1, 0);
 					}
+					else
+					if (room == rm_title)
+					{
+						global.search_id = ""; /* Reset the global search id so it's blank */
+					}
+					if (clear_check)
+					{
+						var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
+						var draw_y = 226 * (column - scroll) + 274;
+						var text_size = global.default_text_size * scr_wave(1, 1.1, 1, 0);
 					
-					var current_icon = spr_icons_finished;
-					var icon_scale = scr_wave(0.9, 1, 1, 0);
-				}
-				else
-				if (room == rm_title)
-				{
-					global.search_id = ""; /* Reset the global search id so it's blank */
-				}
-				
-				if (clear_check)
-				{
-					var draw_x = 394 * (i - column * row) + 140 + thumbnail_x_offset;
-					var draw_y = 226 * (column - scroll) + 274;
-					var text_size = global.default_text_size * scr_wave(1, 1.1, 1, 0);
-					
-					draw_set_halign(fa_left);
-					draw_set_valign(fa_middle);
-					scr_draw_text_outlined(draw_x, draw_y, current_text, text_size, c_white, c_black, 1);
-					draw_sprite_ext(current_icon, 1, draw_x - 20, draw_y, icon_scale, icon_scale, 0, c_white, 1);
+						draw_set_halign(fa_left);
+						draw_set_valign(fa_middle);
+						scr_draw_text_outlined(draw_x, draw_y, current_text, text_size, c_white, c_black, 1);
+						draw_sprite_ext(current_icon, 1, draw_x - 20, draw_y, icon_scale, icon_scale, 0, c_white, 1);
+					}
 				}
 			}
 			#endregion /* Draw if level have been Clear Checked on top of level thumbnail END */

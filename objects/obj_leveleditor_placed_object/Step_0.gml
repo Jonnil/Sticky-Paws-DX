@@ -1,4 +1,4 @@
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 {
 	if (drag_object > 0 || place_object_angle)
 	{

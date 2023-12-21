@@ -98,7 +98,7 @@ if (keyboard_check_pressed(vk_escape) ||
 #region /* Movement */
 if (can_move)
 && (show_demo_over_message == false)
-&& (global.pause == false)
+&& (!global.pause)
 && (global.quit_level == false)
 {
 	if (allow_free_movement)
@@ -819,7 +819,7 @@ if (key_b_pressed)
 && (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 && (speed == 0)
 && (instance_nearest(x, y, obj_level).clear_rate = "enter")
-&& (global.pause == false)
+&& (!global.pause)
 {
 	with (instance_nearest(x, y, obj_level))
 	{

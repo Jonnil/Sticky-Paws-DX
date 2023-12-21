@@ -331,12 +331,32 @@ if (global.doing_clear_check)
 	global.checkpoint_realmillisecond = 0;
 }
 
-#region /* Pause Level Button */
+#region /* Playtest Level Buttons */
 if (global.play_edited_level) /* When playtesting the level */
-&& (global.actually_play_edited_level == false) /* But not actually playing the level */
+&& (!global.actually_play_edited_level) /* But not actually playing the level */
 && (global.character_select_in_this_menu == "level_editor")
 {
+	var playtest_invincibility_x = 96;
+	var playtest_moonjump_x = 160;
+	if (global.playtest_invincibility)
+	{
+		var playtest_invincibility_blend = c_white;
+	}
+	else
+	{
+		var playtest_invincibility_blend = c_dkgray;
+	}
+	if (global.playtest_moonjump)
+	{
+		var playtest_moonjump_blend = c_white;
+	}
+	else
+	{
+		var playtest_moonjump_blend = c_dkgray;
+	}
 	draw_sprite_ext(spr_menu_button_pause, 0, 32, display_get_gui_height() - 32, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_leveleditor_icon_invincibility, 0, playtest_invincibility_x, display_get_gui_height() - 32, 1, 1, 0, playtest_invincibility_blend, 1);
+	draw_sprite_ext(spr_leveleditor_icon_moonjump, 0, playtest_moonjump_x, display_get_gui_height() - 32, 1, 1, 0, playtest_moonjump_blend, 1);
 	
 	#region /* Draw Pause Key */
 	if (gamepad_is_connected(global.player_slot[1]))
@@ -351,6 +371,7 @@ if (global.play_edited_level) /* When playtesting the level */
 	}
 	#endregion /* Draw Pause key END */
 	
+	#region /* Press Pause button */
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_select))
 	{
@@ -396,8 +417,35 @@ if (global.play_edited_level) /* When playtesting the level */
 	{
 		can_click_on_pause_key = false;
 	}
+	#endregion /* Press Pause button END */
+	
+	/* Press Invincibility button */
+	if (mouse_check_button_released(mb_left))
+	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), playtest_invincibility_x - 32, display_get_gui_height() - 64, playtest_invincibility_x + 32, display_get_gui_height() + 64 - 1))
+	{
+		global.playtest_invincibility = not global.playtest_invincibility;
+	}
+	
+	/* Press Moonjump button */
+	if (mouse_check_button_released(mb_left))
+	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), playtest_moonjump_x - 32, display_get_gui_height() - 64, playtest_moonjump_x + 32, display_get_gui_height() + 64 - 1))
+	{
+		global.playtest_moonjump = not global.playtest_moonjump;
+	}
+	
 }
-#endregion /* Pause Level Button END */
+
+/* Prevent cheating with playtest tools when playing actual level or doing clear check */
+if (global.actually_play_edited_level)
+|| (global.doing_clear_check)
+|| (global.doing_clear_check_character)
+{
+	global.playtest_invincibility = false;
+	global.playtest_moonjump = false;
+}
+#endregion /* Playtest Level Buttons END */
 
 #region /* Defeat Counter */
 if (hud_show_defeats_y != -64)

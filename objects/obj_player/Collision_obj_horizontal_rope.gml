@@ -2,7 +2,7 @@ if (!horizontal_rope_climb)
 {
 	var nearest_horizontal_rope = instance_nearest(x, y, obj_horizontal_rope);
 	if (!on_ground)
-	&& (in_water == false)
+	&& (!in_water)
 	&& (hold_item_in_hands == "")
 	&& (place_meeting(x, y, obj_horizontal_rope))
 	&& (!collision_rectangle(nearest_horizontal_rope.x, nearest_horizontal_rope.y, nearest_horizontal_rope.x, nearest_horizontal_rope.y + 64, obj_wall, false, true)) /*If there is no wall underneath the horizontal rope, then it's safe to grab onto the horizontal rope*/

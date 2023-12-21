@@ -1,5 +1,5 @@
 #region /* Delete sprites */
-if (global.pause == false) /* Only delete sprites if you aren't pausing the game */
+if (!global.pause) /* Only delete sprites if you aren't pausing the game */
 {
 	scr_delete_sprite_properly(sprite_against_wall);
 	scr_delete_sprite_properly(sprite_against_wall_start);

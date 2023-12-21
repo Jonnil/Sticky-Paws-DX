@@ -227,6 +227,17 @@ if (assist_invincible)
 }
 #endregion /* Assist Invincible END */
 
+#region /* Playtest Invincibility */
+if (global.playtest_invincibility)
+{
+	invincible_timer = true;
+	if (random(10) == 0)
+	{
+		effect_create_above(ef_star, random_range(bbox_left - 8, bbox_right + 8), random_range(bbox_top - 8, bbox_bottom + 8), 0, c_white);
+	}
+}
+#endregion /* Playtest Invincibility END */
+
 #region /* If Assist delault hp is invincible, stay invincible */
 if (global.assist_enable)
 && (global.assist_invincible)
@@ -414,8 +425,7 @@ else
 if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes, false, true))
 {
 	if (taken_damage < 1)
-	&& (!assist_invincible)
-	&& (invincible_timer <= false)
+	&& (invincible_timer == false)
 	{
 		if (have_heart_balloon)
 		{
@@ -446,12 +456,13 @@ scr_player_move_roll_when_landing();
 #region /* Chain Reaction Reset */
 if (on_ground)
 {
-	if (invincible_timer <= false)
+	if (invincible_timer == false)
 	{
 		chain_reaction = 0;
 	}
 }
 if (assist_invincible) /* You can never get chain reactions when you have assist invincibility */
+|| (global.playtest_invincibility)
 {
 	chain_reaction = 0;
 }
@@ -526,7 +537,7 @@ else
 }
 #endregion /* Put sprite angle at right angle */
 
-if (invincible_timer <= 0)
+if (invincible_timer <= 2)
 {
 	if (in_water)
 	{
@@ -652,6 +663,7 @@ if (burnt)
 {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
 	if (on_ground)
+	&& (!die)
 	{
 		scr_audio_play(voice_burned_running, volume_source.voice);
 		burnt = 2;
@@ -676,16 +688,20 @@ if (burnt == 2)
 #region /* Invincible Music */
 if (invincible_timer >= true)
 && (!assist_invincible)
+&& (!global.playtest_invincibility)
 {
 	invincible_timer --;
-	if (!audio_is_playing(music_invincible))
+	if (invincible_timer >= 2)
 	{
-		scr_audio_play(music_invincible, volume_source.music);
+		if (!audio_is_playing(music_invincible))
+		{
+			scr_audio_play(music_invincible, volume_source.music);
+		}
 	}
 }
 else
 {
-	if (invincible_timer <= false)
+	if (invincible_timer <= 1)
 	{
 		audio_stop_sound(music_invincible);
 	}
@@ -713,8 +729,7 @@ else
 		}
 	}
 }
-if (invincible_timer > 0)
-&& (!assist_invincible)
+if (invincible_timer >= 50)
 {
 	if (invincible_timer == 60)
 	{
@@ -1987,7 +2002,7 @@ else
 			if (!have_heart_balloon)
 			&& (hp <= 1)
 			&& (max_hp >= 2)
-			&& (invincible_timer <= false)
+			&& (invincible_timer == false)
 			&& (sprite_panting > noone)
 			{
 				sprite_index = sprite_panting;
@@ -2529,8 +2544,7 @@ else
 if (can_create_speed_lines)
 && (image_alpha > 0)
 {
-	if (invincible_timer >= true)
-	&& (!assist_invincible)
+	if (invincible_timer >= 2)
 	|| (vspeed < 0)
 	|| (vspeed > 0)
 	{

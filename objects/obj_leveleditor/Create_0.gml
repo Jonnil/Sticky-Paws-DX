@@ -98,7 +98,7 @@ key_a_pressed = noone;
 key_a_released = noone;
 
 #region /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level */
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 {
 	autosave_timer = (60 * 3) + 1;
 	
@@ -549,6 +549,7 @@ if (global.actually_play_edited_level == false)
 	selected_skin = global.skin_for_player[1];
 	
 	audio_stop_all();
+	hovering_over_level_editor_corner_menu = false;
 	upload_rules_do_not_show_level = false;
 	upload_rules_do_not_show_character = false;
 	level_editor_options_back_to_menu = ""; /* Save what menu you came from, to use later */

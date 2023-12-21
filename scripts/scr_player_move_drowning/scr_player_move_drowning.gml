@@ -20,7 +20,7 @@ function scr_player_move_drowning()
 			if (frames_until_drowning <= -60)
 			&& (goal == false)
 			if (taken_damage <= 0)
-			&& (assist_invincible == false)
+			&& (invincible_timer == false)
 			{
 				if (have_heart_balloon)
 				{

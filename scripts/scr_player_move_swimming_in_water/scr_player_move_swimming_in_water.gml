@@ -7,7 +7,7 @@ function scr_player_move_swimming_in_water()
 	&& (obj_water_level.y < room_height)
 	{
 		dive = false;
-		if (in_water == false)
+		if (!in_water)
 		{
 			in_water = true;
 		}

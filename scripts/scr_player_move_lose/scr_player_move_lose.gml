@@ -28,7 +28,7 @@ function scr_player_move_lose()
 		}
 		#endregion /* Update Level Editor Checkpoint Time END */
 		
-		if (global.pause == false)
+		if (!global.pause)
 		{
 			if (instance_number(obj_player) <= 1)
 			{
@@ -79,6 +79,7 @@ function scr_player_move_lose()
 				}
 				player_lose_melody = instance_nearest_player.player_lose_melody;
 				voice_damage = instance_nearest_player.voice_damage;
+				voice_burned_die = instance_nearest_player.voice_burned_die;
 				default_voice_pitch = instance_nearest_player.default_voice_pitch;
 				default_xscale = instance_nearest_player.default_xscale;
 				default_yscale = instance_nearest_player.default_yscale;
@@ -87,7 +88,7 @@ function scr_player_move_lose()
 			#endregion /* Turn into obj_player_lose END */
 			
 			#region /* Stop invincibility music if you're the last player dying */
-			if (global.pause == false)
+			if (!global.pause)
 			&& (instance_number(obj_player) == 1)
 			{
 				audio_stop_sound(music_invincible);

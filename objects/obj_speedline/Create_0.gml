@@ -5,8 +5,7 @@ if (instance_exists(obj_player))
 {
 	var nearest_player = instance_nearest(x, y, obj_player);
 	image_alpha = nearest_player.image_alpha * 0.3;
-	if (nearest_player.invincible_timer >= true)
-	&& (nearest_player.assist_invincible == false)
+	if (nearest_player.invincible_timer >= 2)
 	{
 		image_angle = nearest_player.angle;
 		image_blend = nearest_player.invincible_blend;

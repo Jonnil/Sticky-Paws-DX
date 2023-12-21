@@ -1,5 +1,5 @@
 if (other.invincible_timer > 0)
-&& (assist_invincible == false)
+&& (!assist_invincible)
 {
 	invincible_timer = other.invincible_timer;
 }
@@ -44,7 +44,7 @@ if (global.players_can_collide)
 }
 
 #region /* Interaction with other players */
-if (in_water == false)
+if (!in_water)
 {
 			
 	#region /* Jump on other players heads */

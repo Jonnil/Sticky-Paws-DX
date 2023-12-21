@@ -1,4 +1,4 @@
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 {
 	if (place_meeting(x, y, obj_leveleditor_placed_object))
 	&& (instance_nearest(x, y, obj_leveleditor_placed_object).draw_rotate_arrow)

@@ -34,7 +34,7 @@ if (doing_clear_check_timer >= 3)
 
 #endregion /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" END */
 
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 && (modify_object_menu == false)
 {
 	

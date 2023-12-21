@@ -6,29 +6,28 @@ function scr_player_move_mid_air_jump()
 	{
 		can_mid_air_jump --;
 	}
-
+	
 	if (key_double_jump)
 	&& (can_move)
-	&& (global.pause == false)
-	&& (global.equipped_upgrade_double_jump)
+	&& (!global.pause)
 	&& (ground_pound == false)
-	&& (climb == false)
-	&& (horizontal_rope_climb == false)
+	&& (!climb)
+	&& (!horizontal_rope_climb)
 	&& (stick_to_wall == false)
-	&& (!place_meeting(x, y + 1, obj_wall))
-	&& (!position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform))
-	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
-	&& (in_water == false)
+	&& (!on_ground)
+	&& (!in_water)
 	&& (can_mid_air_jump == 0)
 	{
 		if (spring)
 		&& (vspeed > - 20)
-		|| (spring == false)
+		|| (!spring)
 		{
 			if (number_of_jumps >= 2)
 			&& (midair_jumps_left > 0)
+			&& (global.equipped_upgrade_double_jump)
 			|| (number_of_jumps <= -1)
+			&& (global.equipped_upgrade_double_jump)
+			|| (global.playtest_moonjump)
 			{
 				buffer_jump = 0;
 				dive = false;

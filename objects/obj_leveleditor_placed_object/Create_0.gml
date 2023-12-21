@@ -6,7 +6,7 @@ object = 0;
 menu_joystick_delay = 0;
 drag_object = false;
 
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 {
 	modify_object_menu = false;
 	dragged_from_original_place = false;

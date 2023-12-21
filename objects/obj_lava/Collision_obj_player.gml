@@ -13,8 +13,7 @@ with(other)
 		crouch = false;
 		speed_max = 8;
 		taken_damage = 100;
-		scr_audio_play(voice_burned, volume_source.voice);
-		if (invincible_timer <= false)
+		if (invincible_timer == false)
 		{
 			hp --;
 		}
@@ -22,6 +21,7 @@ with(other)
 		{
 			vspeed = -15;
 		}
+		scr_audio_play(voice_burned, volume_source.voice);
 	}
 	else
 	if (!global.goal_active)

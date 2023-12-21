@@ -1,5 +1,5 @@
 #region /* Initialize Object */
-if (global.actually_play_edited_level == false)
+if (!global.actually_play_edited_level)
 {
 	if (!global.world_editor)
 	{

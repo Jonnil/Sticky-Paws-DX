@@ -426,6 +426,19 @@ if (can_initialize_custom_character)
 	voice_burned_10 = getVoice(["burned_10.ogg", "burned10.ogg"]);
 	#endregion /* Get voices for burned 1 through 10 END */
 	
+	#region /* Get voices for burned die 1 through 10 */
+	voice_burned_die_1 = getVoice(["burned_die.ogg", "burned_die_1.ogg", "burned_die1.ogg"]);
+	voice_burned_die_2 = getVoice(["burned_die_2.ogg", "burned_die2.ogg"]);
+	voice_burned_die_3 = getVoice(["burned_die_3.ogg", "burned_die3.ogg"]);
+	voice_burned_die_4 = getVoice(["burned_die_4.ogg", "burned_die4.ogg"]);
+	voice_burned_die_5 = getVoice(["burned_die_5.ogg", "burned_die5.ogg"]);
+	voice_burned_die_6 = getVoice(["burned_die_6.ogg", "burned_die6.ogg"]);
+	voice_burned_die_7 = getVoice(["burned_die_7.ogg", "burned_die7.ogg"]);
+	voice_burned_die_8 = getVoice(["burned_die_8.ogg", "burned_die8.ogg"]);
+	voice_burned_die_9 = getVoice(["burned_die_9.ogg", "burned_die9.ogg"]);
+	voice_burned_die_10 = getVoice(["burned_die_10.ogg", "burned_die10.ogg"]);
+	#endregion /* Get voices for burned die 1 through 10 END */
+	
 	voice_open_mouth = getVoice("open_mouth.ogg");
 	voice_notice = getVoice("notice.ogg");
 	

@@ -16,7 +16,7 @@ if (can_move)
 && (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 && (speed == 0)
 && (instance_nearest(x, y, obj_level).clear_rate != "closed")
-&& (global.pause == false)
+&& (!global.pause)
 {
 	
 	#region /* Can go up */

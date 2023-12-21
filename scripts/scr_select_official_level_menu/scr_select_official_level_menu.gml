@@ -322,7 +322,16 @@ function scr_select_official_level_menu()
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				global.select_level_index = level_editor_options_select_level_index; /* Return "select level index" to what it was before */
-				scr_update_all_backgrounds(); /* After setting "select level index" back to what it was before, then update all backgrounds */
+				
+				if (level_editor_options_back_to_menu != "change_all_music") /* Don't reload all backgrounds if you are only changing sound related options */
+				&& (level_editor_options_back_to_menu != "change_music_overworld")
+				&& (level_editor_options_back_to_menu != "change_music_underwater")
+				&& (level_editor_options_back_to_menu != "change_ambience_overworld")
+				&& (level_editor_options_back_to_menu != "change_ambience_underwater")
+				&& (level_editor_options_back_to_menu != "change_clear_melody")
+				{
+					scr_update_all_backgrounds(); /* After setting "select level index" back to what it was before, then update all backgrounds */
+				}
 				
 				var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
 				

@@ -41,15 +41,18 @@ var check_bottom = bbox_bottom + check_margin;
 if (!collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_wall, false, true) &&
     !collision_rectangle(check_left, check_bottom, check_right, check_bottom, obj_semisolid_platform, false, true))
 {
-	var view_left = camera_get_view_x(view_camera[view_current]);
-	var view_top = camera_get_view_y(view_camera[view_current]);
-	var view_right = view_left + camera_get_view_width(view_camera[view_current]);
-	var view_bottom = view_top + camera_get_view_height(view_camera[view_current]);
+	var view_x_center = camera_get_view_x(view_camera[view_current]) + (camera_get_view_width(view_camera[view_current]) * 0.5);
+	var view_y_center = camera_get_view_y(view_camera[view_current]) + (camera_get_view_height(view_camera[view_current]) * 0.5);
+	var view_distance_from_center = 1024; /* How many pixels from view center objects should deactivate. Needs to be enought to not cause problems */
+	var view_left = view_x_center - view_distance_from_center;
+	var view_top = view_y_center - view_distance_from_center;
+	var view_right = view_x_center + view_distance_from_center;
+	var view_bottom = view_y_center + view_distance_from_center;
 	
-	if (bbox_left < view_right + sprite_width &&
-		bbox_right > view_left - sprite_width &&
-		bbox_top < view_bottom + sprite_height &&
-		bbox_bottom > view_top - sprite_height)
+	if (bbox_left < view_right)
+	&& (bbox_right > view_left)
+	&& (bbox_top < view_bottom)
+	&& (bbox_bottom > view_top)
 	&& (global.deactivate_timer % 7 == 0)
 	{
 		alarm[1] = 1; /* Break cardboard */
