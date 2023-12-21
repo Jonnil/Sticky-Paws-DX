@@ -23,6 +23,7 @@ function scr_options_global_resources()
 			var custom_title_background_open_y = 40 * 10; /* 10 */
 			var custom_title_logo_y = 40 * 12; /* 12 */
 			var custom_title_logo_open_y = 40 * 14; /* 14 */
+			var can_load_custom_level_assets_y = 40 * 15;
 		}
 		else
 		{
@@ -35,6 +36,7 @@ function scr_options_global_resources()
 			var custom_title_background_open_y = 40 * 6;
 			var custom_title_logo_y = 40 * 8;
 			var custom_title_logo_open_y = 40 * 10;
+			var can_load_custom_level_assets_y = 40 * 11;
 		}
 		
 		if (key_up)
@@ -990,6 +992,8 @@ function scr_options_global_resources()
 			menu_delay = 3;
 			scr_open_folder(game_save_id + "\custom_title_logo")
 		}
+		
+		draw_menu_checkmark(resource_pack_x, can_load_custom_level_assets_y, l10n_text("Can Load Custom Level Assets"), "can_load_custom_level_assets", global.can_load_custom_level_assets);
 		
 	}
 }

@@ -54,7 +54,10 @@ if (!global.actually_play_edited_level)
 	#endregion /* Hide/Show Backgrounds END */
 	
 	#region /* Autosave */
-	autosave_timer++;
+	if (!pause)
+	{
+		autosave_timer++;
+	}
 	if (autosave_timer > 18000 - 1) /* Activate all objects 1 frame before saving level, just to make sure everything gets saved */
 	{
 		startup_loading_timer = 0;
@@ -1615,6 +1618,61 @@ if (!global.actually_play_edited_level)
 		|| (gamepad_button_check_pressed(global.player_slot[4], gp_start))
 		|| (gamepad_button_check_pressed(4, gp_start))
 		{
+			
+			#region /* Get what custom assets are in the level */
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background1.png"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background1.gif"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background1.jpg"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background1.jpeg")) {
+				have_custom_asset_background1 = true;} else {have_custom_asset_background1 = false;}
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background2.png"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background2.gif"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background2.jpg"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background2.jpeg")) {
+				have_custom_asset_background2 = true;} else {have_custom_asset_background2 = false;}
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background3.png"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background3.gif"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background3.jpg"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background3.jpeg")) {
+				have_custom_asset_background3 = true;} else {have_custom_asset_background3 = false;}
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background4.png"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background4.gif"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background4.jpg"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "background4.jpeg")) {
+				have_custom_asset_background4 = true;} else {have_custom_asset_background4 = false;}
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground1.png"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground1.gif"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground1.jpg"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground1.jpeg")) {
+				have_custom_asset_foreground1 = true;} else {have_custom_asset_foreground1 = false;}
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground1_5.png"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground1_5.gif"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground1_5.jpg"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground1_5.jpeg")) {
+				have_custom_asset_foreground1_5 = true;} else {have_custom_asset_foreground1_5 = false;}
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground2.png"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground2.gif"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground2.jpg"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground2.jpeg")) {
+				have_custom_asset_foreground2 = true;} else {have_custom_asset_foreground2 = false;}
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground_secret.png"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground_secret.gif"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground_secret.jpg"))
+			|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/background/" + "foreground_secret.jpeg")) {
+				have_custom_asset_foreground_secret = true;} else {have_custom_asset_foreground_secret = false;}
+			
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/sound/" + "music.ogg")) {
+				have_custom_asset_music = true;} else {have_custom_asset_music = false;}
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/sound/" + "music_underwater.ogg")) {
+				have_custom_asset_music_underwater = true;} else {have_custom_asset_music_underwater = false;}
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/sound/" + "ambience.ogg")) {
+				have_custom_asset_ambience = true;} else {have_custom_asset_ambience = false;}
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/sound/" + "ambience_underwater.ogg")) {
+				have_custom_asset_ambience_underwater = true;} else {have_custom_asset_ambience_underwater = false;}
+			if (file_exists(working_directory + "custom_levels/" + global.level_name + "/sound/" + "clear_melody.ogg")) {
+				have_custom_asset_clear_melody = true;} else {have_custom_asset_clear_melody = false;}
+			#endregion /* Get what custom assets are in the level END */
+			
 			global.pause_room = rm_leveleditor;
 			quit_level_editor = false;
 			can_input_level_name = false;

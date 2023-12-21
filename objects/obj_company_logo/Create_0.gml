@@ -238,6 +238,7 @@ global.part_limit = 0; /* How many objects are currently placed in the level edi
 global.part_limit_entity = 0; /* How many enteties are currently placed in the level editor. Enteties are object that have a lot of step events, so they can lag the game the most */
 global.part_limit_entity_text_alpha = 0; /* The text showing entity limit should fade out when you aren't placing or erasing enteties */
 
+global.can_load_custom_level_assets = true; /* Should be able to turn off loading custom assets */
 global.playtest_invincibility = false;
 global.playtest_moonjump = false;
 global.save_data_size_is_sufficient = true; /* If you don't have enough save data size, then tell the player that save data is not sufficient and they should delete save data */

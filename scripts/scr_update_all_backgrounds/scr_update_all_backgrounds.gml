@@ -22,6 +22,7 @@ function scr_update_all_backgrounds()
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor")
+	&& (global.can_load_custom_level_assets)
 	{
 		global.path_to_use = global.use_cache_or_working + "custom_levels/" + global.level_name + "/background/";
 		ini_open(global.use_cache_or_working + "custom_levels/" + global.level_name + "/data/level_information.ini");
@@ -34,6 +35,21 @@ function scr_update_all_backgrounds()
 		global.default_foreground2 = ini_read_string("info", "default_foreground2", "");
 		global.default_foreground_secret = ini_read_string("info", "default_foreground_secret", "");
 		ini_close();
+	}
+	else
+	{
+		global.path_to_use = "";
+		ini_open(global.use_cache_or_working + "custom_levels/" + global.level_name + "/data/level_information.ini");
+		global.default_background1 = ini_read_string("info", "default_background1", "level1");
+		global.default_background2 = ini_read_string("info", "default_background2", "level1");
+		global.default_background3 = ini_read_string("info", "default_background3", "level1");
+		global.default_background4 = ini_read_string("info", "default_background4", "level1");
+		global.default_foreground1 = ini_read_string("info", "default_foreground1", "");
+		global.default_foreground1_5 = ini_read_string("info", "default_foreground1_5", "");
+		global.default_foreground2 = ini_read_string("info", "default_foreground2", "");
+		global.default_foreground_secret = ini_read_string("info", "default_foreground_secret", "");
+		ini_close();
+		
 	}
 	show_debug_message("Set what file path to use");
 	#region /* Update All Backgrounds */
@@ -68,6 +84,11 @@ function scr_update_all_backgrounds()
 		/* JPG small letter File */ if (file_exists(string(global.path_to_use) + "background1.jpg"))
 		{
 			global.custom_background1 = sprite_add(string(global.path_to_use) + "background1.jpg", 0, false, false, 0, 0);
+		}
+		else
+		/* JPEG small letter File */ if (file_exists(string(global.path_to_use) + "background1.jpeg"))
+		{
+			global.custom_background1 = sprite_add(string(global.path_to_use) + "background1.jpeg", 0, false, false, 0, 0);
 		}
 		else
 		if (global.default_background1 != "" && file_exists("levels/" + string(global.default_background1) + "/background/background1.png"))
@@ -105,6 +126,11 @@ function scr_update_all_backgrounds()
 			global.custom_background2 = sprite_add(string(global.path_to_use) + "background2.jpg", 0, false, false, 0, 0);
 		}
 		else
+		/* JPEG small letter File */ if (file_exists(string(global.path_to_use) + "background2.jpeg"))
+		{
+			global.custom_background2 = sprite_add(string(global.path_to_use) + "background2.jpeg", 0, false, false, 0, 0);
+		}
+		else
 		if (global.default_background2 != "" && file_exists("levels/" + string(global.default_background2) + "/background/background2.png"))
 		{
 			global.custom_background2 = sprite_add("levels/" + string(global.default_background2) + "/background/background2.png", 0, false, false, 0, 0);
@@ -138,6 +164,11 @@ function scr_update_all_backgrounds()
 		/* JPG small letter File */ if (file_exists(string(global.path_to_use) + "background3.jpg"))
 		{
 			global.custom_background3 = sprite_add(string(global.path_to_use) + "background3.jpg", 0, false, false, 0, 0);
+		}
+		else
+		/* JPEG small letter File */ if (file_exists(string(global.path_to_use) + "background3.jpeg"))
+		{
+			global.custom_background3 = sprite_add(string(global.path_to_use) + "background3.jpeg", 0, false, false, 0, 0);
 		}
 		else
 		if (global.default_background3 != "" && file_exists("levels/" + string(global.default_background3) + "/background/background3.png"))
@@ -175,6 +206,11 @@ function scr_update_all_backgrounds()
 			global.custom_background4 = sprite_add(string(global.path_to_use) + "background4.jpg", 0, false, false, 0, 0);
 		}
 		else
+		/* JPEG small letter File */ if (file_exists(string(global.path_to_use) + "background4.jpeg"))
+		{
+			global.custom_background4 = sprite_add(string(global.path_to_use) + "background4.jpeg", 0, false, false, 0, 0);
+		}
+		else
 		if (global.default_background4 != "" && file_exists("levels/" + string(global.default_background4) + "/background/background4.png"))
 		{
 			global.custom_background4 = sprite_add("levels/" + string(global.default_background4) + "/background/background4.png", 0, false, false, 0, 0);
@@ -208,6 +244,11 @@ function scr_update_all_backgrounds()
 		/* JPG small letter File */ if (file_exists(string(global.path_to_use) + "foreground1.jpg"))
 		{
 			global.custom_foreground1 = sprite_add(string(global.path_to_use) + "foreground1.jpg", 0, false, false, 0, 0);
+		}
+		else
+		/* JPEG small letter File */ if (file_exists(string(global.path_to_use) + "foreground1.jpeg"))
+		{
+			global.custom_foreground1 = sprite_add(string(global.path_to_use) + "foreground1.jpeg", 0, false, false, 0, 0);
 		}
 		else
 		if (global.default_foreground1 != "" && file_exists("levels/" + string(global.default_foreground1) + "/background/foreground1.png"))
@@ -245,6 +286,11 @@ function scr_update_all_backgrounds()
 			global.custom_foreground1_5 = sprite_add(string(global.path_to_use) + "foreground1_5.jpg", 0, false, false, 0, 0);
 		}
 		else
+		/* JPEG small letter File */ if (file_exists(string(global.path_to_use) + "foreground1_5.jpeg"))
+		{
+			global.custom_foreground1_5 = sprite_add(string(global.path_to_use) + "foreground1_5.jpeg", 0, false, false, 0, 0);
+		}
+		else
 		if (global.default_foreground1_5 != "" && file_exists("levels/" + string(global.default_foreground1_5) + "/background/foreground1_5.png"))
 		{
 			global.custom_foreground1_5 = sprite_add("levels/" + string(global.default_foreground1_5) + "/background/foreground1_5.png", 0, false, false, 0, 0);
@@ -280,6 +326,11 @@ function scr_update_all_backgrounds()
 			global.custom_foreground2 = sprite_add(string(global.path_to_use) + "foreground2.jpg", 0, false, false, 0, 0);
 		}
 		else
+		/* JPEG small letter File */ if (file_exists(string(global.path_to_use) + "foreground2.jpeg"))
+		{
+			global.custom_foreground2 = sprite_add(string(global.path_to_use) + "foreground2.jpeg", 0, false, false, 0, 0);
+		}
+		else
 		if (global.default_foreground2 != "" && file_exists("levels/" + string(global.default_foreground2) + "/background/foreground2.png"))
 		{
 			global.custom_foreground2 = sprite_add("levels/" + string(global.default_foreground2) + "/background/foreground2.png", 0, false, false, 0, 0);
@@ -313,6 +364,11 @@ function scr_update_all_backgrounds()
 		/* JPG small letter File */ if (file_exists(string(global.path_to_use) + "foreground_secret.jpg"))
 		{
 			global.custom_foreground_secret = sprite_add(string(global.path_to_use) + "foreground_secret.jpg", 0, false, false, 0, 0);
+		}
+		else
+		/* JPEG small letter File */ if (file_exists(string(global.path_to_use) + "foreground_secret.jpeg"))
+		{
+			global.custom_foreground_secret = sprite_add(string(global.path_to_use) + "foreground_secret.jpeg", 0, false, false, 0, 0);
 		}
 		else
 		if (global.default_foreground_secret != "" && file_exists("levels/" + string(global.default_foreground_secret) + "/background/foreground_secret.png"))
