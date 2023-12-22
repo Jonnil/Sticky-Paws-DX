@@ -599,7 +599,7 @@
     {"name":"spr_cursor_scroll","order":107,"path":"sprites/spr_cursor_scroll/spr_cursor_scroll.yy",},
     {"name":"spr_shirt","order":82,"path":"sprites/spr_shirt/spr_shirt.yy",},
     {"name":"spr_select_character_background","order":79,"path":"sprites/spr_select_character_background/spr_select_character_background.yy",},
-    {"name":"scr_options_global_resources","order":17,"path":"scripts/scr_options_global_resources/scr_options_global_resources.yy",},
+    {"name":"scr_options_custom_resources","order":17,"path":"scripts/scr_options_custom_resources/scr_options_custom_resources.yy",},
     {"name":"spr_sign_ground_pound","order":25,"path":"sprites/spr_sign_ground_pound/spr_sign_ground_pound.yy",},
     {"name":"rm_pause","order":4,"path":"rooms/rm_pause/rm_pause.yy",},
   ],

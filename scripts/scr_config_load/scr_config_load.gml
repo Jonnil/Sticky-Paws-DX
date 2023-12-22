@@ -85,6 +85,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "background_layer_x_scroll")){global.background_layer_x_scroll = ini_read_real("config", "background_layer_x_scroll", 1);}
 		if (ini_key_exists("config", "background_layer_y_scroll")){global.background_layer_y_scroll = ini_read_real("config", "background_layer_y_scroll", 1);}
 		if (ini_key_exists("config", "select_title_logo")){global.selected_title_logo = ini_read_real("config", "select_title_logo", 0);}
+		if (ini_key_exists("config", "can_load_custom_level_assets")){global.can_load_custom_level_assets = ini_read_real("config", "can_load_custom_level_assets", 0);}
 		if (ini_key_exists("config", "zoom_level")){global.zoom_level = ini_read_real("config", "zoom_level", 1);}
 		if (ini_key_exists("config", "zoom_world_map")){global.zoom_world_map = ini_read_real("config", "zoom_world_map", 1);}
 		if (ini_key_exists("config", "reset_level_zoom_when_going_back_to_map")){global.reset_level_zoom_when_going_back_to_map = ini_read_real("config", "reset_level_zoom_when_going_back_to_map", 0);}

@@ -54,7 +54,7 @@ function scr_player_move_goal()
 				global.level_clear_rate = "clear";
 				global.goal_active = true;
 				global.player_has_entered_goal = true;
-				/* global quit level, global quit to map, global quit to title, and global restart level, are all going to stay at false, so no need to set it to false here. You can't change these to true while winning level */
+				/* global quit level, global quit to map, global quit to title, and custom restart level, are all going to stay at false, so no need to set it to false here. You can't change these to true while winning level */
 				instance_nearest(x, y, obj_goal).image_index = 1;
 				invincible_timer = false;
 				

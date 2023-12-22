@@ -91,8 +91,8 @@ function scr_options_menu()
 			video_settings_y = general_text_y + 40;
 		}
 		audio_settings_y = video_settings_y + 40;
-		global_resources_settings_y = audio_settings_y + 40;
-		storage_settings_y = global_resources_settings_y + 40;
+		custom_resources_settings_y = audio_settings_y + 40;
+		storage_settings_y = custom_resources_settings_y + 40;
 		language_settings_y = storage_settings_y + 40;
 		if (global.enable_broadcast_settings)
 		{
@@ -413,39 +413,39 @@ function scr_options_menu()
 		}
 		#endregion /* Audio Settings END */
 		
-		#region /* Global Resources Settings */
-		if (global.enable_global_resources_settings)
+		#region /* Custom Resources Settings */
+		if (global.enable_custom_resources_settings)
 		{
-			if (global.settings_sidebar_menu == "global_resources_settings")
+			if (global.settings_sidebar_menu == "custom_resources_settings")
 			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, global_resources_settings_y, 370, global_resources_settings_y + 40 - 1))
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, custom_resources_settings_y, 370, custom_resources_settings_y + 40 - 1))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				{
-					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + global_resources_settings_y, 1, 1, 0, c_green, 1);
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + custom_resources_settings_y, 1, 1, 0, c_green, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + global_resources_settings_y, 1, 1, 0, c_gray, 1);
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + custom_resources_settings_y, 1, 1, 0, c_gray, 1);
 				}
-				draw_sprite_ext(spr_settings_icons, 10, left_sidebar_x + 20 + icon_x_offset, 20 + global_resources_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
-				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + global_resources_settings_y, l10n_text("Custom Resources"), global.default_text_size * 1.05, c_black, c_white, 1);
+				draw_sprite_ext(spr_settings_icons, 10, left_sidebar_x + 20 + icon_x_offset, 20 + custom_resources_settings_y, 1, 1, 0, c_white, 1); /* Settings Icon */
+				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + custom_resources_settings_y, l10n_text("Custom Resources"), global.default_text_size * 1.05, c_black, c_white, 1);
 			}
 			else
 			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, global_resources_settings_y, 370, global_resources_settings_y + 40 - 1))
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, custom_resources_settings_y, 370, custom_resources_settings_y + 40 - 1))
 				&& (global.controls_used_for_menu_navigation == "mouse")
 				{
-					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + global_resources_settings_y, 1, 1, 0, c_lime, 1);
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + custom_resources_settings_y, 1, 1, 0, c_lime, 1);
 				}
 				else
 				{
-					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + global_resources_settings_y, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, left_sidebar_x, 20 + custom_resources_settings_y, 1, 1, 0, c_white, 1);
 				}
-				draw_sprite_ext(spr_settings_icons, 10, left_sidebar_x + 20 + icon_x_offset, 20 + global_resources_settings_y, 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
-				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + global_resources_settings_y, l10n_text("Custom Resources"), global.default_text_size, c_white, c_black, 1);
+				draw_sprite_ext(spr_settings_icons, 10, left_sidebar_x + 20 + icon_x_offset, 20 + custom_resources_settings_y, 0.9, 0.9, 0, c_white, 1); /* Settings Icon */
+				scr_draw_text_outlined(left_sidebar_x + 40 + text_x_offset, 20 + custom_resources_settings_y, l10n_text("Custom Resources"), global.default_text_size, c_white, c_black, 1);
 			}
 		}
-		#endregion /* Global Resources Settings END */
+		#endregion /* Custom Resources Settings END */
 		
 		#region /* Storage Settings */
 		if (global.enable_storage_settings)
@@ -752,7 +752,7 @@ function scr_options_menu()
 				}
 			}
 			if (global.settings_sidebar_menu == "audio_settings"){menu = "volume_main";}
-			if (global.settings_sidebar_menu == "global_resources_settings")
+			if (global.settings_sidebar_menu == "custom_resources_settings")
 			{
 				if (ds_list_size(global.all_loaded_resource_pack) >= 2)
 				&& (global.enable_options_for_pc == false)
@@ -1132,17 +1132,17 @@ function scr_options_menu()
 		}
 		#endregion /* Audio END */
 		
-		if (global.enable_global_resources_settings)
+		if (global.enable_custom_resources_settings)
 		{
 			
-			#region /* Click Global Resources */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, global_resources_settings_y, 370, global_resources_settings_y + 40 - 1))
+			#region /* Click Custom Resources */
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, custom_resources_settings_y, 370, custom_resources_settings_y + 40 - 1))
 			&& (global.controls_used_for_menu_navigation == "mouse")
-			&& (global.settings_sidebar_menu == "global_resources_settings")
+			&& (global.settings_sidebar_menu == "custom_resources_settings")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				global.settings_sidebar_menu = "global_resources_settings";
+				global.settings_sidebar_menu = "custom_resources_settings";
 				menu_delay = 3;
 				input_key = false;
 				can_navigate_settings_sidebar = false;
@@ -1157,19 +1157,19 @@ function scr_options_menu()
 					menu = "title_background";
 				}
 			}
-			#endregion /* Click Global Resources END */
+			#endregion /* Click Custom Resources END */
 			
-			#region /* Global Resources */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, global_resources_settings_y, 370, global_resources_settings_y + 40 - 1))
+			#region /* Custom Resources */
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0 - room_width, custom_resources_settings_y, 370, custom_resources_settings_y + 40 - 1))
 			&& (global.controls_used_for_menu_navigation == "mouse")
 			&& (mouse_check_button(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				global.settings_sidebar_menu = "global_resources_settings";
+				global.settings_sidebar_menu = "custom_resources_settings";
 				input_key = false;
 				can_navigate_settings_sidebar = true;
 			}
-			#endregion /* Global Resources END */
+			#endregion /* Custom Resources END */
 			
 		}
 	
@@ -1720,9 +1720,9 @@ function scr_options_menu()
 				&& (can_navigate_settings_sidebar)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					if (global.enable_global_resources_settings)
+					if (global.enable_custom_resources_settings)
 					{
-						global.settings_sidebar_menu = "global_resources_settings";
+						global.settings_sidebar_menu = "custom_resources_settings";
 					}
 					else
 					if (global.enable_storage_settings)
@@ -1758,10 +1758,10 @@ function scr_options_menu()
 			}
 			#endregion /* Audio Settings END */
 	
-			#region /* Global Resources Settings */
-			if (global.enable_global_resources_settings)
+			#region /* Custom Resources Settings */
+			if (global.enable_custom_resources_settings)
 			{
-				if (global.settings_sidebar_menu == "global_resources_settings")
+				if (global.settings_sidebar_menu == "custom_resources_settings")
 				{
 					if (key_up)
 					&& (can_navigate_settings_sidebar)
@@ -1807,7 +1807,7 @@ function scr_options_menu()
 					}
 				}
 			}
-			#endregion /* Global Resources Settings END */
+			#endregion /* Custom Resources Settings END */
 	
 			#region /* Storage Settings */
 			if (global.enable_storage_settings)
@@ -1818,9 +1818,9 @@ function scr_options_menu()
 					&& (can_navigate_settings_sidebar)
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						if (global.enable_global_resources_settings)
+						if (global.enable_custom_resources_settings)
 						{
-							global.settings_sidebar_menu = "global_resources_settings";
+							global.settings_sidebar_menu = "custom_resources_settings";
 						}
 						else
 						{
@@ -1997,9 +1997,9 @@ function scr_options_menu()
 						global.settings_sidebar_menu = "storage_settings";
 					}
 					else
-					if (global.enable_global_resources_settings)
+					if (global.enable_custom_resources_settings)
 					{
-						global.settings_sidebar_menu = "global_resources_settings";
+						global.settings_sidebar_menu = "custom_resources_settings";
 					}
 					else
 					{
@@ -2666,9 +2666,9 @@ function scr_options_menu()
 		}
 		#endregion /* Language Options END */
 	
-		#region /* Global Resources Settings */
-		scr_options_global_resources();
-		#endregion /* Global Resources Settings END */
+		#region /* Custom Resources Settings */
+		scr_options_custom_resources();
+		#endregion /* Custom Resources Settings END */
 	
 		#region /* Storage Settings */
 		if (global.settings_sidebar_menu == "storage_settings")

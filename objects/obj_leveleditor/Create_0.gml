@@ -647,7 +647,7 @@ if (!global.actually_play_edited_level)
 	account_settings_y = 40 * 10;
 	video_settings_y = 40 * 11;
 	audio_settings_y = 40 * 12;
-	global_resources_settings_y = 40 * 13;
+	custom_resources_settings_y = 40 * 13;
 	storage_settings_y = 40 * 14;
 	language_settings_y = 40 * 15;
 	broadcast_settings_y = 40 * 16;

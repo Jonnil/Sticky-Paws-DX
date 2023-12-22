@@ -3051,7 +3051,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.450",
+    "IDEVersion": "2023.1100.0.444",
   },
   "resources": [
     {"id":{"name":"spr_player_stand","path":"sprites/spr_player_stand/spr_player_stand.yy",},},
@@ -3644,7 +3644,7 @@
     {"id":{"name":"spr_cursor_scroll","path":"sprites/spr_cursor_scroll/spr_cursor_scroll.yy",},},
     {"id":{"name":"spr_shirt","path":"sprites/spr_shirt/spr_shirt.yy",},},
     {"id":{"name":"spr_select_character_background","path":"sprites/spr_select_character_background/spr_select_character_background.yy",},},
-    {"id":{"name":"scr_options_global_resources","path":"scripts/scr_options_global_resources/scr_options_global_resources.yy",},},
+    {"id":{"name":"scr_options_custom_resources","path":"scripts/scr_options_custom_resources/scr_options_custom_resources.yy",},},
     {"id":{"name":"spr_sign_ground_pound","path":"sprites/spr_sign_ground_pound/spr_sign_ground_pound.yy",},},
     {"id":{"name":"rm_pause","path":"rooms/rm_pause/rm_pause.yy",},},
   ],

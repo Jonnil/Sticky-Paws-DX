@@ -1050,7 +1050,9 @@ if (!global.actually_play_edited_level)
 		#region /* Play Level Button */
 		if (global.controls_used_for_menu_navigation == "mouse")
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
+		&& (!pause)
 		|| (pressing_play_timer > 0)
+		&& (!pause)
 		{
 			draw_roundrect_color_ext(
 			play_level_icon_x - 22 - 16, display_get_gui_height() - 120 + icons_at_bottom_y - 16,
