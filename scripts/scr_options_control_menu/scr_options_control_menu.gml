@@ -4395,31 +4395,31 @@ function scr_options_control_menu()
 			
 			if (remapping_player == 0) /* Text saying input gamepad button now for player 1 */
 			{
-				scr_draw_text_outlined(window_get_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 1"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player == 1) /* Text saying input gamepad button now for player 2 */
 			{
-				scr_draw_text_outlined(window_get_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 2"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player == 2) /* Text saying input gamepad button now for player 3 */
 			{
-				scr_draw_text_outlined(window_get_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 3"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			else
 			
 			if (remapping_player == 3) /* Text saying input gamepad button now for player 4 */
 			{
-				scr_draw_text_outlined(window_get_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER 4"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			}
 			
-			scr_draw_text_outlined(window_get_width() * 0.5 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			if (global.controls_used_for_menu_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{

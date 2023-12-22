@@ -652,7 +652,6 @@ function scr_options_menu()
 	
 	if (in_settings)
 	{
-		
 		scr_scroll_menu();
 		
 		#region /* Go back out of setting menu */

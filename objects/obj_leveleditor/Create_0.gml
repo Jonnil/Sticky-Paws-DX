@@ -104,6 +104,9 @@ if (!global.actually_play_edited_level)
 	
 	welcome_to_level_editor = false;
 	
+	scroll = 0;
+	scroll_to = 0;
+	column = 0;
 	key_double_tap_timer = 0;
 	key_double_tap_direction = "";
 	double_tap_move_camera_faster = false;

@@ -18,10 +18,39 @@ if (global.doing_clear_check)
 }
 if (doing_clear_check_timer == 2)
 {
+	
+	#region /* Limit so cursor and view can't go outside room */
+	if (cam_width < 1920 || cam_height < 1080)
+	{
+		camera_set_view_size(view_camera[view_current], 1920, 1080);
+	}
+	scr_set_screen_size();
+	
+	/* Limit view inside room when saving screenshot */
+	if (instance_exists(obj_level_width) && instance_exists(obj_level_height))
+	{
+		camera_set_view_pos(view_camera[view_current],
+		max(0, min(cam_x, obj_level_width.x - cam_width)),
+		max(0, min(cam_y, obj_level_height.y - cam_height)));
+	}
+	
+	/* Limit controller x and y inside room */
+	controller_x = clamp(controller_x, cam_x, cam_x + cam_width);
+	controller_y = clamp(controller_y, cam_y, cam_y + cam_height);
+	
+	/* Limit x and y inside room */
+	x = clamp(x, cam_x, cam_x + cam_width);
+	y = clamp(y, cam_y, cam_y + cam_height);
+	#endregion /* Limit so view and cursor can't go outside room END */
+	
+}
+else
+if (doing_clear_check_timer == 3)
+{
 	scr_automatic_screenshot();
 }
 else
-if (doing_clear_check_timer >= 3)
+if (doing_clear_check_timer >= 4)
 {
 	global.actually_play_edited_level = true;
 	global.play_edited_level = true;
@@ -1591,8 +1620,35 @@ if (!global.actually_play_edited_level)
 		}
 		#endregion /* Save Level END */
 		
+		#region /* Limit so cursor and view can't go outside room */
+		if (quit_level_editor == 4)
+		{
+			if (cam_width < 1920 || cam_height < 1080)
+			{
+				camera_set_view_size(view_camera[view_current], 1920, 1080);
+			}
+			scr_set_screen_size();
+			
+			/* Limit view inside room when saving screenshot */
+			if (instance_exists(obj_level_width) && instance_exists(obj_level_height))
+			{
+				camera_set_view_pos(view_camera[view_current],
+				max(0, min(cam_x, obj_level_width.x - cam_width)),
+				max(0, min(cam_y, obj_level_height.y - cam_height)));
+			}
+			
+			/* Limit controller x and y inside room */
+			controller_x = clamp(controller_x, cam_x, cam_x + cam_width);
+			controller_y = clamp(controller_y, cam_y, cam_y + cam_height);
+			
+			/* Limit x and y inside room */
+			x = clamp(x, cam_x, cam_x + cam_width);
+			y = clamp(y, cam_y, cam_y + cam_height);
+		}
+		#endregion /* Limit so view and cursor can't go outside room END */
+		
 		#region /* Save Thumbnail a little bit after saving level */
-		if (quit_level_editor == 4 && global.level_name != "")
+		if (quit_level_editor == 5 && global.level_name != "")
 		{
 			scr_automatic_screenshot();
 		}

@@ -231,7 +231,7 @@ function scr_debug_screen()
 		#region /* More debug text */
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
-		var debug_text_y = 320;
+		var debug_text_y = 150;
 		
 		if (instance_exists(obj_camera)) {
 			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player1: " + string(obj_camera.player1), global.default_text_size, c_black, c_white);
@@ -270,6 +270,18 @@ function scr_debug_screen()
 		debug_text_y += 20;
 		if (variable_instance_exists(self, "menu")) {
 			scr_draw_text_outlined(32, debug_text_y, "menu: " + string(menu), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
+		if (variable_instance_exists(self, "menu_y_offset")) {
+			scr_draw_text_outlined(32, debug_text_y, "menu_y_offset: " + string(menu_y_offset), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
+		if (variable_instance_exists(self, "menu_y_offset_real")) {
+			scr_draw_text_outlined(32, debug_text_y, "menu_y_offset_real: " + string(menu_y_offset_real), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
+		if (variable_instance_exists(self, "menu_cursor_y_position")) {
+			scr_draw_text_outlined(32, debug_text_y, "menu_cursor_y_position: " + string(menu_cursor_y_position), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
 		}
 		if (variable_instance_exists(self, "player_menu")) {
@@ -349,6 +361,22 @@ function scr_debug_screen()
 		if (variable_instance_exists(self, "file_load_timer"))
 		{
 			scr_draw_text_outlined(32, debug_text_y, "file_load_timer: " + string(file_load_timer), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
+		if (variable_instance_exists(self, "scroll"))
+		{
+			scr_draw_text_outlined(32, debug_text_y, "scroll: " + string(scroll), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
+		if (variable_instance_exists(self, "column"))
+		{
+			scr_draw_text_outlined(32, debug_text_y, "column: " + string(column), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
+		if (variable_instance_exists(self, "scroll"))
+		&& (variable_instance_exists(self, "column"))
+		{
+			scr_draw_text_outlined(32, debug_text_y, "thumbnail y: " + string(226 * (column - scroll) + 250), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
 		}
 		

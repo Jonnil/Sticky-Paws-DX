@@ -75,15 +75,6 @@ if (menu_delay > 0)
 	menu_delay --;
 }
 
-if (lerp_on)
-{
-	scroll = lerp(scroll, scroll_to, 0.15)
-	if (scroll == scroll_to)
-	{
-		lerp_on = false;
-	}
-}
-
 if (menu == "load_characters")
 && (menu_delay == 0 && menu_joystick_delay == 0)
 {

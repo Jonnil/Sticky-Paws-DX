@@ -4,22 +4,24 @@ function scr_select_official_level_menu()
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var take_from_official_level = ds_list_find_value(global.all_loaded_main_levels, global.select_level_index);
 	
-	if (window_get_width() >= 1670)
+	scroll = lerp(scroll, scroll_to, 0.15)
+	
+	if (window_get_width() >= 1670 - 100)
 	{
 		row = 4;
 	}
 	else
-	if (window_get_width() >= 1276)
+	if (window_get_width() >= 1276 - 100)
 	{
 		row = 3;
 	}
 	else
-	if (window_get_width() >= 882)
+	if (window_get_width() >= 882 - 100)
 	{
 		row = 2;
 	}
 	else
-	if (window_get_width() >= 488)
+	if (window_get_width() >= 488 - 100)
 	{
 		row = 1;
 	}
@@ -56,7 +58,6 @@ function scr_select_official_level_menu()
 				{
 					scroll_to = floor(global.select_level_index / row);
 				}
-				lerp_on = true;
 			}
 		}
 	}
@@ -93,7 +94,6 @@ function scr_select_official_level_menu()
 				{
 					scroll_to = floor(global.select_level_index / row);
 				}
-				lerp_on = true;
 			}
 		}
 	}
@@ -117,7 +117,6 @@ function scr_select_official_level_menu()
 			global.select_level_index --;
 		}
 		scroll_to = floor(global.select_level_index / row);
-		lerp_on = true;
 	}
 	#endregion /* Key Left END */
 	
@@ -139,7 +138,6 @@ function scr_select_official_level_menu()
 			global.select_level_index ++;
 		}
 		scroll_to = floor(global.select_level_index / row);
-		lerp_on = true;
 	}
 	#endregion /* Key Right END */
 	
@@ -154,7 +152,6 @@ function scr_select_official_level_menu()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			scroll_to = floor(global.select_level_index / row);
-			lerp_on = true;
 			menu_delay = 3;
 			
 			if (take_from_official_level != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
@@ -174,7 +171,6 @@ function scr_select_official_level_menu()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			scroll_to = floor(global.select_level_index / row);
-			lerp_on = true;
 			menu_delay = 3;
 			
 			if (take_from_official_level != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
@@ -363,117 +359,117 @@ function scr_select_official_level_menu()
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	draw_set_alpha(0.5);
-	draw_roundrect_color_ext(0, 0, window_get_width(), 116, 50, 50, c_black, c_black, false);
+	draw_roundrect_color_ext(0, 0, display_get_gui_width(), 116, 50, 50, c_black, c_black, false);
 	draw_set_alpha(1);
 	
 	if (room == rm_title)
 	{
 		if (window_get_width() <= 1350)
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5 + 128, 50, l10n_text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 + 128, 50, l10n_text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 50, l10n_text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 50, l10n_text("Select Template Level"), global.default_text_size * 2, c_black, c_white, 1);
 		}
 		
-		scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	if (variable_instance_exists(self, "level_editor_options_back_to_menu"))
 	{
 		if (window_get_width() <= 1350)
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5 + 128, 50, l10n_text("Select Official Level"), global.default_text_size * 2, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5 + 128, 50, l10n_text("Select Official Level"), global.default_text_size * 2, c_black, c_white, 1);
 		}
 		else
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 50, l10n_text("Select Official Level"), global.default_text_size * 2, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 50, l10n_text("Select Official Level"), global.default_text_size * 2, c_black, c_white, 1);
 		}
 		
 		if (level_editor_options_back_to_menu == "change_entire_theme")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What theme should this level use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What theme should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_all_background")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What backgrounds should this level use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What backgrounds should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_all_foreground")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What foregrounds should this level use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What foregrounds should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_background1")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What background should Background 1 use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What background should Background 1 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_background2")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What background should Background 2 use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What background should Background 2 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_background3")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What background should Background 3 use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What background should Background 3 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_background4")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What background should Background 4 use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What background should Background 4 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_foreground1")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What foreground should Foreground 1 use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What foreground should Foreground 1 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_foreground1_5")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What foreground should Foreground 1.5 use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What foreground should Foreground 1.5 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_foreground2")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What foreground should Foreground 2 use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What foreground should Foreground 2 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_foreground_secret")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What foreground should Foreground Secret use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What foreground should Foreground Secret use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_all_music")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What sounds should this level use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What sounds should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_music_overworld")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What Overworld Music should this level use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What Overworld Music should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_music_underwater")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What Underwater Music should this level use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What Underwater Music should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_ambience_overworld")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What Overworld Ambience should this level use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What Overworld Ambience should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_ambience_underwater")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What Underwater Ambience should this level use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What Underwater Ambience should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
 		if (level_editor_options_back_to_menu == "change_clear_melody")
 		{
-			scr_draw_text_outlined(window_get_width() * 0.5, 100, l10n_text("What Clear Melody should this level use?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What Clear Melody should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 	}
 	
@@ -500,7 +496,6 @@ function scr_select_official_level_menu()
 		scr_load_custom_level_initializing();
 		global.select_level_index = 0;
 		scroll_to = floor(global.select_level_index / row);
-		lerp_on = true;
 		if (room == rm_title)
 		{
 			menu = "load_custom_level";
@@ -532,7 +527,6 @@ function scr_select_official_level_menu()
 			global.select_level_index = ds_list_size(global.thumbnail_sprite) - 1;
 		}
 		scroll_to = floor(global.select_level_index / row);
-		lerp_on = true;
 	}
 	if (menu == "back_from_level_editor")
 	&& (key_down)
@@ -551,7 +545,6 @@ function scr_select_official_level_menu()
 		}
 		global.select_level_index = 0;
 		scroll_to = floor(global.select_level_index / row);
-		lerp_on = true;
 	}
 	#endregion /* Back Button END */
 	

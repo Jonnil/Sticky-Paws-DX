@@ -259,7 +259,6 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			else /* Regular sub menu */
 			{
 				show_level_editor_corner_menu = true;
-				lerp_on = true;
 				if (get_window_height <= 720)
 				{
 					scroll_to = floor(global.select_level_index / row) + 0.8; /* Scroll the view to fit all the buttons */

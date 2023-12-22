@@ -603,7 +603,6 @@ function scr_draw_upload_level_menu()
 			show_level_editor_corner_menu = false;
 		}
 		open_sub_menu = false;
-		lerp_on = true;
 		if (room == rm_title)
 		{
 			if (get_window_height <= 720)

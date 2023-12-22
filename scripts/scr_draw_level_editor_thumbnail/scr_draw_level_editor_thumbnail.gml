@@ -31,7 +31,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 	#region /* Draw Thumbnail */
 	for(i = 0; i < ds_list_size(global.thumbnail_sprite); i += 1)
 	{
-		column = floor(i/ row)
+		column = floor(i / row);
 		if (ds_list_find_value(global.thumbnail_sprite, i) > 0)
 		{
 			draw_sprite_ext(ds_list_find_value(global.thumbnail_sprite, i), 0, 394 * (i - column * row) + 100 + thumbnail_x_offset, 226 * (column - scroll) + 250, 384/sprite_get_width(ds_list_find_value(global.thumbnail_sprite, i)), 216/sprite_get_height(ds_list_find_value(global.thumbnail_sprite, i)), 0, c_white, 1);

@@ -156,7 +156,6 @@ if (display_get_gui_width() >= 488)
 	row = 1;
 }
 scroll_to = floor(global.select_level_index / row);
-lerp_on = true;
 level_editor_template_select = false;
 language_index = global.language_localization + 1;
 language_mouse_scroll = 0;

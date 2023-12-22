@@ -14,6 +14,8 @@ function scr_select_custom_level_menu()
 		var max_custom_levels_reached = false;
 	}
 	
+	scroll = lerp(scroll, scroll_to, 0.15)
+	
 	if (have_downloaded_from_server)
 	{
 		/* If you are downloading a new level, the game needs to reload all custom levels when going back to back to level select, so you can select the new downloaded level */
@@ -41,7 +43,6 @@ function scr_select_custom_level_menu()
 		select_custom_level_menu_open = false;
 		level_editor_template_select = false;
 		global.select_level_index = 0;
-		lerp_on = true;
 		menu = "level_editor"; /* Go back to level editor button if there isn't any loaded thumbnails at all */
 	}
 	
@@ -147,7 +148,6 @@ function scr_select_custom_level_menu()
 				{
 					scroll_to = floor(global.select_level_index / row);
 				}
-				lerp_on = true;
 			}
 		}
 	}
@@ -194,7 +194,6 @@ function scr_select_custom_level_menu()
 				{
 					scroll_to = floor(global.select_level_index / row);
 				}
-				lerp_on = true;
 			}
 		}
 	}
@@ -229,7 +228,6 @@ function scr_select_custom_level_menu()
 			global.select_level_index --;
 		}
 		scroll_to = floor(global.select_level_index / row);
-		lerp_on = true;
 	}
 	#endregion /* Key Left END */
 	
@@ -262,7 +260,6 @@ function scr_select_custom_level_menu()
 			global.select_level_index ++;
 		}
 		scroll_to = floor(global.select_level_index / row);
-		lerp_on = true;
 	}
 	#endregion /* Key Right END */
 	
@@ -295,7 +292,6 @@ function scr_select_custom_level_menu()
 			{
 				menu_delay = 3;
 				scroll_to = floor(global.select_level_index / row);
-				lerp_on = true;
 				menu = "level_editor_create_from_scratch";
 				open_sub_menu = true;
 			}
@@ -314,7 +310,6 @@ function scr_select_custom_level_menu()
 					global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the "level name" to the selected level, so when you exit the level editor, the cursor will remember to appear on the level you selected */
 				}
 				scroll_to = floor(global.select_level_index / row);
-				lerp_on = true;
 				menu = "level_editor_play";
 				open_sub_menu = true;
 			}
@@ -346,6 +341,26 @@ function scr_select_custom_level_menu()
 	scr_draw_level_editor_thumbnail(global.all_loaded_custom_levels, false);
 	
 	column = floor(global.select_level_index / row); /* Do this code again here so the sub menu doesn't get misaligned */
+	
+	#region /* Show the path of the custom level on the bottom of the screen */
+	if (global.select_level_index >= 1)
+	&& (global.enable_options_for_pc)
+	&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only show path that isn't undefined */
+	{
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		if (get_window_width <= 1350)
+		{
+			var text_scale_modifier = 0.75;
+		}
+		else
+		{
+			var text_scale_modifier = 1;
+		}
+		draw_roundrect_color_ext(0, get_window_height - 32, get_window_width, get_window_height, 50, 50, c_black, c_black, false);
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 16, string_replace_all(game_save_id + "\custom_levels\\" + global.level_name, "\\", "/"), global.default_text_size * text_scale_modifier, c_menu_outline, c_dkgray, 1);
+	}
+	#endregion /* Show the path of the custom level on the bottom of the screen END */
 	
 	scr_draw_level_editor_sub_menu(); /* Code must be here to be above everything else */
 	
@@ -385,7 +400,6 @@ function scr_select_custom_level_menu()
 			can_navigate = true;
 			select_custom_level_menu_open = true;
 			menu = "back_from_level_editor";
-			lerp_on = true;
 		}
 		if (menu == "open_custom_levels_folder")
 		&& (key_down)
@@ -403,7 +417,6 @@ function scr_select_custom_level_menu()
 				menu = "level_editor_play";
 				scroll_to = floor(global.select_level_index / row);
 			}
-			lerp_on = true;
 		}
 		if (menu == "open_custom_levels_folder")
 		{
@@ -469,7 +482,6 @@ function scr_select_custom_level_menu()
 			{
 				menu = "back_from_level_editor";
 			}
-			lerp_on = true;
 		}
 		else
 		if (menu == "online_level_list")
@@ -481,7 +493,6 @@ function scr_select_custom_level_menu()
 			select_custom_level_menu_open = true;
 			menu = "level_editor_play";
 			scroll_to = floor(global.select_level_index / row);
-			lerp_on = true;
 		}
 		if (menu == "open_custom_levels_folder")
 		{
@@ -517,7 +528,6 @@ function scr_select_custom_level_menu()
 			select_custom_level_menu_open = false;
 			level_editor_template_select = false;
 			global.select_level_index = 0;
-			lerp_on = true;
 			menu = "level_editor";
 		}
 		if (menu == "back_from_level_editor")
@@ -533,7 +543,6 @@ function scr_select_custom_level_menu()
 				global.select_level_index = ds_list_size(global.thumbnail_sprite) - 1;
 			}
 			scroll_to = floor(global.select_level_index / row);
-			lerp_on = true;
 		}
 		if (menu == "back_from_level_editor")
 		&& (key_down)
@@ -556,7 +565,6 @@ function scr_select_custom_level_menu()
 			{
 				menu = "level_editor_play";
 			}
-			lerp_on = true;
 		}
 		if (menu == "back_from_level_editor")
 		{
@@ -601,25 +609,6 @@ function scr_select_custom_level_menu()
 		}
 	}
 	#endregion /* Draw Level Description and Creator END */
-	
-	#region /* Show the path of the custom level on the bottom of the screen */
-	if (global.select_level_index >= 1)
-	&& (global.enable_options_for_pc)
-	&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only show path that isn't undefined */
-	{
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		if (get_window_width <= 1350)
-		{
-			var text_scale_modifier = 0.75;
-		}
-		else
-		{
-			var text_scale_modifier = 1;
-		}
-		scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 32, string_replace_all(game_save_id + "\custom_levels\\" + global.level_name, "\\", "/"), global.default_text_size * text_scale_modifier, c_menu_outline, c_dkgray, 1);
-	}
-	#endregion /* Show the path of the custom level on the bottom of the screen END */
 	
 	#endregion /* Show level information at bottom of screen END */
 	
