@@ -116,6 +116,7 @@ menu_remap_gamepad_button_number = 0;
 menu_y_offset = 0; /* This is the y offset that will have lerping to make the menu scrolling smooth */
 menu_y_offset_real = 0; /* This is the real y offset for the menu, used for menu scrolling */
 menu_cursor_y_position = 0;
+scrolling_menu_with_mousewheel = false;
 background_brightness_menu_lerp = 0;
 language_index = global.language_localization + 1;
 language_mouse_scroll = 0;

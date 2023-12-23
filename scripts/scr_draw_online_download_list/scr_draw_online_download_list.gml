@@ -102,10 +102,7 @@ function scr_draw_online_download_list()
 		if (data != undefined)
 		&& (menu != "search_id_ok")
 		{
-			if (!scrolling_menu_with_mousewheel)
-			{
-				scr_scroll_menu();
-			}
+			scr_scroll_menu();
 			
 			/* Check if it's an array */
 			if (is_array(data))
@@ -594,26 +591,6 @@ function scr_draw_online_download_list()
 		
 		#endregion /* Draw the Back and Search ID buttons on top of everything END */
 		
-		if (mouse_wheel_up())
-		{
-			menu_cursor_y_position += 100;
-			menu_y_offset_real += 100;
-			scrolling_menu_with_mousewheel = true;
-		}
-		else
-		if (mouse_wheel_down())
-		{
-			menu_cursor_y_position -= 100;
-			menu_y_offset_real -= 100;
-			scrolling_menu_with_mousewheel = true;
-		}
-		else
-		if (key_up)
-		|| (key_down)
-		{
-			scrolling_menu_with_mousewheel = false;
-		}
-		menu_y_offset = lerp(menu_y_offset, menu_y_offset_real, 0.25);
 		menu_y_offset_real = clamp(menu_y_offset_real, - 100 + window_get_height() - (300 * array_length(data)), 0); /* Dont let "meny y offset" get above 0 */
 	}
 	else

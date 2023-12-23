@@ -679,6 +679,7 @@ if (!global.actually_play_edited_level)
 	can_navigate = false;
 	menu_y_offset_real = 0;
 	menu_cursor_y_position = 0;
+	scrolling_menu_with_mousewheel = false;
 	menu_remap_key_number = 0;
 	menu_remap_gamepad_button_number = 0;
 	
