@@ -90,8 +90,6 @@ global.enable_narrator = true;
 
 global.max_fps = 60; /* Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60 */
 global.default_text_size = 0.8 /* This is the default text size, but text size should be able to be changed by the player in settings. Default = 0.8 */
-global.default_view_width = 1920; /* Default = 1920 */
-global.default_view_height = 1080; /* Default = 1080 */
 
 global.demo = false; /* When making a demo version of the game, turn this to true, otherwise turn this to false for the full version */
 global.demo_max_levels = 3; /* Set how many levels the demo version have available */
@@ -243,7 +241,6 @@ global.playtest_invincibility = false;
 global.playtest_moonjump = false;
 global.save_data_size_is_sufficient = true; /* If you don't have enough save data size, then tell the player that save data is not sufficient and they should delete save data */
 global.search_id = ""; /* The online ID you are searching for */
-global.unlocked = noone; /* Save what objects are unlocked in level editor */
 global.button_design_color = 2;
 global.button_design_shape = 1;
 global.button_design_transparency = 0;

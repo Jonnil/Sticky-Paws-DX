@@ -63,8 +63,6 @@ function scr_initialize_level_information_ini()
 		intro_animation = get_custom_level_information_string("info", "intro_animation", "");
 		intro_animation_play_only_once = get_custom_level_information_real("info", "intro_animation_play_only_once", false);
 		after_goal_go_to_this_level = get_custom_level_information_real("info", "after_goal_go_to_this_level", noone);
-		global.default_view_width = get_custom_level_information_real("info", "default_view_width", 1920);
-		global.default_view_height = get_custom_level_information_real("info", "default_view_height", 1080);
 		
 		if (object_index == obj_leveleditor)
 		{

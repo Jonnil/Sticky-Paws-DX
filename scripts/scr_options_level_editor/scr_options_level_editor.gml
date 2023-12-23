@@ -55,8 +55,6 @@ function scr_options_level_editor()
 	
 		if (menu == "back_level_editor_options")
 		|| (menu == "level_theme")
-		|| (menu == "default_view_height")
-		|| (menu == "default_view_width")
 		|| (menu == "make_every_tileset_into_default_tileset")
 		|| (menu == "rain")
 		|| (menu == "enable_time_countdown")
@@ -87,8 +85,6 @@ function scr_options_level_editor()
 				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
-					ini_write_real("info", "default_view_height", global.default_view_height);
-					ini_write_real("info", "default_view_width", global.default_view_width);
 					ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
 					ini_write_real("info", "rain", global.rain);
 					ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
@@ -161,47 +157,11 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					menu = "default_view_height";
-					menu_delay = 3;
-				}
-			}
-			else
-			if (menu == "default_view_height")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "level_theme";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "default_view_width";
-					menu_delay = 3;
-				}
-			}
-			if (menu == "default_view_width")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "default_view_height";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
 					menu = "make_every_tileset_into_default_tileset";
 					menu_delay = 3;
 				}
 			}
+			else
 			if (menu == "make_every_tileset_into_default_tileset")
 			{
 				if (key_a_pressed)
@@ -226,7 +186,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					menu = "default_view_width";
+					menu = "level_theme";
 					menu_delay = 3;
 				}
 				else
@@ -462,21 +422,17 @@ function scr_options_level_editor()
 			}
 			
 			var level_theme_y = 47 * 1;
-			var default_view_height_y = 47 * 2;
-			var default_view_width_y = 47 * 3;
-			var make_every_tileset_into_default_tileset_y = 47 * 4;
-			var rain_y = 47 * 5;
-			var enable_time_countdown_y = 47 * 6;
-			var time_countdown_y = 46 * 7;
-			var show_new_items_notification_y = 46 * 8;
-			var selected_level_editing_music_y = 46 * 10 - 16;
-			var delete_all_objects_y = 46 * 11 + 20 - 16;
+			var make_every_tileset_into_default_tileset_y = 47 * 2;
+			var rain_y = 47 * 3;
+			var enable_time_countdown_y = 47 * 4;
+			var time_countdown_y = 46 * 5;
+			var show_new_items_notification_y = 46 * 6;
+			var selected_level_editing_music_y = 46 * 8 - 16;
+			var delete_all_objects_y = 46 * 9 + 20 - 16;
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(level_editor_options_x, level_theme_y, l10n_text("Level Theme"), "level_theme", "change_entire_theme");
-			global.default_view_height = draw_menu_left_right_buttons(level_editor_options_x, default_view_height_y, options_level_editor_right_arrow_x, "Default view height", global.default_view_height, "default_view_height", 1, false);
-			global.default_view_width = draw_menu_left_right_buttons(level_editor_options_x, default_view_width_y, options_level_editor_right_arrow_x, "Default view width", global.default_view_width, "default_view_width", 1, false);
 			draw_menu_checkmark(level_editor_options_x - 90, make_every_tileset_into_default_tileset_y, l10n_text("Make every tileset into default tileset"), "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
 			draw_menu_checkmark(level_editor_options_x - 90, rain_y, l10n_text("Rain"), "rain", global.rain);
 			draw_menu_checkmark(level_editor_options_x - 90, enable_time_countdown_y, l10n_text("Enable Time Countdown"), "enable_time_countdown", global.enable_time_countdown);

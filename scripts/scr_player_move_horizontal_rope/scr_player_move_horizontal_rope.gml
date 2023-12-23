@@ -321,7 +321,7 @@ function scr_player_move_horizontal_rope()
 		}
 		
 		#region /* Bump into wall on left side when climbing horizontal rope */
-		if (key_left_hold)
+		if (key_left_hold || hspeed < 0)
 		&& (!key_right_hold && taken_damage <= taken_damage_freezetime)
 		&& (place_meeting(x - 1, y, obj_wall) || place_meeting(x - 20, y, obj_spikes) || !place_meeting(x - 1, y, obj_horizontal_rope))
 		{
@@ -340,7 +340,7 @@ function scr_player_move_horizontal_rope()
 		else
 		
 		#region /* Bump into wall on right side when climbing horizontal rope */
-		if (key_right_hold)
+		if (key_right_hold || hspeed > 0)
 		&& (!key_left_hold && taken_damage <= taken_damage_freezetime)
 		&& (place_meeting(x + 1, y, obj_wall) || place_meeting(x + 20, y, obj_spikes) || !place_meeting(x + 1, y, obj_horizontal_rope))
 		{

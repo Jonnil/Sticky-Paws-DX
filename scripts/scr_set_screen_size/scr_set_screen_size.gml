@@ -50,22 +50,7 @@ function scr_set_screen_size()
 		camera_set_view_border(current_camera, camera_get_view_width(current_camera), camera_get_view_height(current_camera));
 	}
 	
-	if (window_width <= global.default_view_width && window_height <= global.default_view_height)
-	{
-		camera_set_view_size(current_camera, window_width, window_height);
-	}
-	else if (window_width > global.default_view_width && window_height <= global.default_view_height)
-	{
-		camera_set_view_size(current_camera, global.default_view_width, window_height);
-	}
-	else if (window_width <= global.default_view_width && window_height > global.default_view_height)
-	{
-		camera_set_view_size(current_camera, window_width, global.default_view_height);
-	}
-	else
-	{
-		camera_set_view_size(current_camera, global.default_view_width, global.default_view_height);
-	}
+	camera_set_view_size(current_camera, window_width, window_height);
 	
 	if (global.play_edited_level || room == rm_world_map)
 	{

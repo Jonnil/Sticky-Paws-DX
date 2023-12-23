@@ -92,7 +92,7 @@ function scr_load_object_placement_json()
 		/* Open the INI file */
 		if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini")) /* Check if the file even exists before opening, otherwise game doesn't function properly */
 		{
-			global.unlocked = ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 			
 			/* Iterate over the ds_list and write each element to the INI file */
 			for (var i = 0; i < ds_list_size(placed_objects_list); i++) {
@@ -238,8 +238,6 @@ function scr_save_level_information()
 		
 		ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
 		ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
-		ini_write_real("info", "default_view_height", global.default_view_height);
-		ini_write_real("info", "default_view_width", global.default_view_width);
 		ini_write_real("info", "rain", global.rain);
 		ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
 		ini_write_real("info", "time_countdown", global.time_countdown);

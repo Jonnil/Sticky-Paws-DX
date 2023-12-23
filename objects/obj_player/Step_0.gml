@@ -2218,6 +2218,7 @@ else
 			else
 		
 			#region /* Jump sprites */
+			if (!horizontal_rope_climb)
 			{
 			
 				#region /* Single Jump */

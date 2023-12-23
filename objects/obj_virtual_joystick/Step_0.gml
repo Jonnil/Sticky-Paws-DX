@@ -15,7 +15,7 @@ if (instance_exists(obj_finger_indicator))
 	temp_joystick = instance_nearest(x, y, obj_finger_indicator).my_touch;
 }
 
-base_size = 150 * (camera_get_view_width(view_camera[view_current]) / global.default_view_width);
+base_size = 150 * (camera_get_view_width(view_camera[view_current]));
 stick_size = base_size * 0.5;
 
 x = camera_get_view_x(view_camera[view_current]) + (base_size * 2);
