@@ -514,7 +514,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (!inform_about_report_feature)
 				{
 					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "play_from_cache_directory", "play_from_cache_directory");
-					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_make_y, l10n_text("Download to Level Select"), "download_to_working_directory", "download_to_working_directory");
+					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
+					{
+						draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_make_y, l10n_text("Download to Level Select"), "download_to_working_directory", "download_to_working_directory");
+					}
 				}
 				
 				var back_to_list_text = l10n_text("Back to online level list");
@@ -683,12 +686,15 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				|| (menu == "download_to_working_directory")
 				&& (key_a_pressed)
 				{
-					/* Download the level to working directory */
-					have_downloaded_from_server = true;
-					menu_delay = 3;
-					global.use_cache_or_working = working_directory;
-					scr_copy_move_files(cache_directory + "custom_" + string(what_kind_of_id) + "s/" + global.level_name, working_directory + "custom_" + string(what_kind_of_id) + "s/" + global.level_name, true);
-					menu = "searched_file_downloaded_play";
+					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
+					{
+						/* Download the level to working directory */
+						have_downloaded_from_server = true;
+						menu_delay = 3;
+						global.use_cache_or_working = working_directory;
+						scr_copy_move_files(cache_directory + "custom_" + string(what_kind_of_id) + "s/" + global.level_name, working_directory + "custom_" + string(what_kind_of_id) + "s/" + global.level_name, true);
+						menu = "searched_file_downloaded_play";
+					}
 				}
 			}
 			#endregion /* Click Download END */
@@ -843,7 +849,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				else
 				if (menu == "play_from_cache_directory")
 				{
-					menu = "download_to_working_directory";
+					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
+					{
+						menu = "download_to_working_directory";
+					}
+					else
+					{
+						menu = "searched_file_downloaded_report";
+					}
 				}
 				else
 				if (menu == "download_to_working_directory")
@@ -885,8 +898,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						menu = "searched_file_downloaded_delete";
 					}
 					else
+					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
 					{
 						menu = "download_to_working_directory";
+					}
+					else
+					{
+						menu = "play_from_cache_directory";
 					}
 				}
 				else

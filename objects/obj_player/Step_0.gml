@@ -231,7 +231,7 @@ if (assist_invincible)
 if (global.playtest_invincibility)
 {
 	invincible_timer = true;
-	if (random(10) == 0)
+	if (floor(random(10)) == 0)
 	{
 		effect_create_above(ef_star, random_range(bbox_left - 8, bbox_right + 8), random_range(bbox_top - 8, bbox_bottom + 8), 0, c_white);
 	}

@@ -619,7 +619,7 @@ climb = false;
 collision_mask_alpha = 1;
 controller_connected = false;
 crouch = false;
-default_invincibility_duration_in_frames = 1200; /* By default invincibility duration should last 20 seconds. 60 (fps) * 20 = 1200 */
+default_invincibility_duration_in_frames = 1200; /* By default invincibility duration should last 20 seconds. 60 (fps) * 20 */
 default_voice_pitch = 1; /* Set the default pitch for the characters voice, by default it's 1 */
 default_xscale = 1; /* Sprite default horizontal stretching, set to 1 */
 default_yscale = 1; /* Sprite default vertical stretching, set to 1 */

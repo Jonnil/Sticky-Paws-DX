@@ -1,9 +1,12 @@
-function scr_scroll_menu(offset_display_height = 300)
+function scr_scroll_menu(offset_display_height = 300, clamp_menu_y_offset_real = true)
 {
 	
 	#region /* Scroll menu */
 	menu_y_offset = lerp(menu_y_offset, menu_y_offset_real, 0.25);
-	menu_y_offset_real = clamp(menu_y_offset_real, -menu_cursor_y_position, 0); /* Dont let "meny y offset" get above 0 */
+	if (clamp_menu_y_offset_real)
+	{
+		menu_y_offset_real = clamp(menu_y_offset_real, -menu_cursor_y_position, 0); /* Dont let "meny y offset" get above 0 */
+	}
 	
 	if (!scrolling_menu_with_mousewheel) /* When not using mousewheel, scroll the menu when using keyboard or gamepad */
 	{

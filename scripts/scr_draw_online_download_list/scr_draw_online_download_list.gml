@@ -102,7 +102,7 @@ function scr_draw_online_download_list()
 		if (data != undefined)
 		&& (menu != "search_id_ok")
 		{
-			scr_scroll_menu();
+			scr_scroll_menu(300, false);
 			
 			/* Check if it's an array */
 			if (is_array(data))

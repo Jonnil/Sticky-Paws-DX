@@ -9,10 +9,6 @@ can_navigate = false;
 current_comment = "";
 xx = window_get_width() * 0.5;
 yy = y;
-if (global.demo)
-{
-	instance_destroy();
-}
 gamepad_stick = false;
 
 if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))

@@ -82,7 +82,7 @@ if (place_meeting(x, y - 1, obj_wall))
 	vspeed = +1;
 }
 
-if (floor(random(10 - 1)) == 0)
+if (floor(random(10)) == 0)
 && (x < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 && (x > camera_get_view_x(view_camera[view_current]))
 && (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))

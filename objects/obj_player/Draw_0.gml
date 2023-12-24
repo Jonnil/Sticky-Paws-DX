@@ -351,7 +351,7 @@ if (image_alpha > 0)
 	
 	if (invincible_timer >= true)
 	{
-		if (floor(random(10 - 1)) == 0)
+		if (floor(random(10)) == 0)
 		{
 			effect_create_above(ef_star, x + random_range(- 50, + 50), y+ random_range(- 50, + 50), 0, c_white);
 		}

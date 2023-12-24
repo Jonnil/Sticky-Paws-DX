@@ -2188,7 +2188,6 @@ function scr_options_menu()
 		#region /* Gameplay Settings */
 		if (menu == "players_can_collide")
 		|| (menu == "assist_settings")
-		|| (menu == "convention_mode")
 		{
 			if (menu == "show_tutorial_signs"){
 			if (global.show_tutorial_signs)
@@ -2210,31 +2209,6 @@ function scr_options_menu()
 			if (menu == "assist_settings")
 			{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 140, "> Assist Settings <", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);}
 			else{scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 140, "Assist Settings", global.default_text_size, c_menu_outline, c_menu_fill, 1);}
-		
-			if (menu == "convention_mode")
-			{
-				if (global.convention_mode)
-				{
-					scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 170, "> Convention Mode: True", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-					scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
-				}
-				else
-				{
-					scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 170, "> Convention Mode: False", global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-					scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
-				}
-			}
-			else
-			if (global.convention_mode)
-			{
-				scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 170, "Convention Mode: True", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 170, "Convention Mode: False", global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				scr_draw_text_outlined(get_window_width * 0.5, camera_get_view_height(view_camera[view_current]) * 0.5 + menu_y_offset + 190, "Puts the game in a special convention mode for event showcasing", global.default_text_size * 0.5, c_menu_outline, c_menu_fill, 1);
-			}
 		}
 		#endregion /* Gameplay Settings END */
 	
@@ -3347,23 +3321,6 @@ function scr_options_menu()
 			
 			else
 			
-			#region /* Convention Mode */
-			if (menu == "convention_mode")
-			{
-				if (key_up)
-				{
-					menu = "assist_settings";
-				}
-				else
-				if (key_down)
-				{
-					menu = "show_tutorial_signs";
-				}
-			}
-			#endregion /* Convention Mode END */
-	
-			else
-	
 			#region /* Assist Enable Navigation */
 			if (menu == "assist_enable")
 			&& (global.assist_enable)
@@ -4283,9 +4240,6 @@ function scr_options_menu()
 						break;
 					case "players_can_collide":
 						global.players_can_collide = !global.players_can_collide;
-						break;
-					case "convention_mode":
-						global.convention_mode = !global.convention_mode;
 						break;
 				}
 				menu_delay = 3;

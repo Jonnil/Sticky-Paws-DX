@@ -251,52 +251,28 @@ if (hide_menu_for_clean_screenshots == false)
 			if (room == rm_leveleditor)
 			|| (global.pause_room == rm_leveleditor)
 			{
-				if (global.convention_mode == false)
-				{
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
-					draw_sprite_ext(spr_icons_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
-					if (global.goal_active == false)
-					{
-						draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Restart"), "restart", "restart", c_lime, fade_in_pause_alpha);
-						if (holding_key_timer > 0)
-						&& (menu == "restart")
-						&& (global.checkpoint_x == 0)
-						&& (global.checkpoint_y == 0)
-						{
-							scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 42 + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
-						}
-						draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map", c_red, fade_in_pause_alpha);
-					}
-				}
-				else
+				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
+				draw_sprite_ext(spr_icons_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 				if (global.goal_active == false)
 				{
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Restart"), "restart", "restart", c_lime, fade_in_pause_alpha);
+					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Restart"), "restart", "restart", c_lime, fade_in_pause_alpha);
 					if (holding_key_timer > 0)
 					&& (menu == "restart")
 					&& (global.checkpoint_x == 0)
 					&& (global.checkpoint_y == 0)
 					{
-						scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
+						scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 42 + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
 					}
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map", c_red, fade_in_pause_alpha);
+					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map", c_red, fade_in_pause_alpha);
 				}
 			}
 			else
 			{
-				if (global.convention_mode == false)
-				{
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
-					draw_sprite_ext(spr_icons_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
-					if (global.goal_active == false)
-					{
-						draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit", c_red, fade_in_pause_alpha);
-					}
-				}
-				else
+				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
+				draw_sprite_ext(spr_icons_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 				if (global.goal_active == false)
 				{
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit"), "quit", "quit", c_red, fade_in_pause_alpha);
+					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit", c_red, fade_in_pause_alpha);
 				}
 			}
 			/* Report Button in bottom left corner */
@@ -343,8 +319,7 @@ if (hide_menu_for_clean_screenshots == false)
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Map"), "quit_to_map", "quit_to_map", c_lime, fade_in_pause_alpha);
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
-			if (global.convention_mode == false)
-			&& (global.enable_options_for_pc)
+			if (global.enable_options_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red * fade_in_pause_alpha);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
@@ -368,8 +343,7 @@ if (hide_menu_for_clean_screenshots == false)
 		&& (menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
-			if (global.convention_mode == false)
-			&& (global.enable_options_for_pc)
+			if (global.enable_options_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red * fade_in_pause_alpha);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
@@ -390,8 +364,7 @@ if (hide_menu_for_clean_screenshots == false)
 		&& (menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
-			if (global.convention_mode == false)
-			&& (global.enable_options_for_pc)
+			if (global.enable_options_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red, fade_in_pause_alpha);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);

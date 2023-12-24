@@ -1,7 +1,6 @@
 function scr_character_manage_menu_step()
 {
-	var max_custom_characters = 120; /* You should be able to only store 120 custom characters that you've made yourself, so stop the copy feature if limit is reached */
-	if (ds_list_size(global.all_loaded_characters) >= max_custom_characters)
+	if (ds_list_size(global.all_loaded_characters) >= global.max_custom_characters)
 	{
 		var max_custom_characters_reached = true;
 	}

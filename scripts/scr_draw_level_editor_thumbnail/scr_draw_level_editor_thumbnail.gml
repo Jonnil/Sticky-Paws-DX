@@ -160,9 +160,8 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			
 		}
 		
-		var max_custom_levels = 120;
 		if (i == 0)
-		&& (ds_list_size(global.all_loaded_custom_levels) - 1 >= max_custom_levels)
+		&& (ds_list_size(global.all_loaded_custom_levels) - 1 >= global.max_custom_levels)
 		{
 			var draw_x = 394 * (i - column * row) + 292 + thumbnail_x_offset;
 			var draw_y = 226 * (column - scroll) + 358;

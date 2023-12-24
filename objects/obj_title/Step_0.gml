@@ -191,27 +191,6 @@ if (menu == "load_custom_level")
 		{
 			file_find_close();
 			
-			#region /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch */
-			/* Check this before going to create level from scratch */
-			if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
-			{
-				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-				if (ini_section_exists("Unlock Placable Objects"))
-				{
-					can_create_level_from_scratch = true;
-				}
-				else
-				{
-					can_create_level_from_scratch = false;
-				}
-				ini_close();
-			}
-			else
-			{
-				can_create_level_from_scratch = false;
-			}
-			#endregion /* If you don't have any unlocked placable objects at all, then you can't create a custom level from scratch END */
-			
 			#region /* Get clear check and level ID information */
 			if (is_array(thumbnail_level_name))
 			&& (array_length(thumbnail_level_name) > 0)

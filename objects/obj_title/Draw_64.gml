@@ -1,13 +1,6 @@
 var main_game_y = display_get_gui_height() * 0.5 + 100 + 40;
 var level_editor_y = display_get_gui_height() * 0.5 + 100 + 80 + 2;
-if (global.demo == false)
-{
-	var options_and_quit_y = display_get_gui_height() * 0.5 + 100 + 120 + 1 + 4;
-}
-else
-{
-	var options_and_quit_y = display_get_gui_height() * 0.5 + 100 + 120 - 42 + 1 + 4;
-}
+var options_and_quit_y = display_get_gui_height() * 0.5 + 225;
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 
@@ -23,7 +16,10 @@ if (current_month == 12)
 && (current_day >= 24)
 && (current_day <= 26)
 {
-	effect_create_below(ef_snow, 0, 0, 2, c_white); /* Make the title screen snow when it's between 24th and 26th December */
+	if (floor(random(10)) == 0)
+	{
+		effect_create_below(ef_snow, 0, 0, 2, c_white); /* Make the title screen snow when it's between 24th and 26th December */
+	}
 }
 #endregion /* Change title screen during specific times and dates END */
 
@@ -38,8 +34,7 @@ global.volume_voice = clamp(global.volume_voice, 0, 1);
 #endregion /* Volumes stay between 0 and 1 END */
 
 #region /* Quit Game trough pause menu */
-if (global.convention_mode == false)
-&& (global.enable_options_for_pc)
+if (global.enable_options_for_pc)
 && (can_remap_key == false)
 && (!input_key)
 && (menu_delay == 0 && menu_joystick_delay == 0)
@@ -198,7 +193,7 @@ else
 #endregion /* Draw Title Screen END */
 
 #region /* Main Menu */
-if (global.arcade_mode == false && in_settings == false)
+if (in_settings == false)
 {
     if (menu == "main_game" ||
 		menu == "level_editor" ||
@@ -214,15 +209,8 @@ if (global.arcade_mode == false && in_settings == false)
 		menu == "link_wiki")
     {
 		
-		if (global.demo == false)
-		{
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, main_game_y, l10n_text("Main Game"), "main_game", "main_game");
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, level_editor_y, l10n_text("Level Editor"), "level_editor", "level_editor");
-		}
-		else
-		{
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, main_game_y, l10n_text("Play Demo"), "main_game", "main_game");
-		}
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, main_game_y, l10n_text("Main Game"), "main_game", "main_game");
+		draw_menu_button(display_get_gui_width() * 0.5 - 185, level_editor_y, l10n_text("Level Editor"), "level_editor", "level_editor");
 		
 		select_custom_level_menu_open = false;
 		can_input_level_name = false;
@@ -270,12 +258,10 @@ if (global.arcade_mode == false && in_settings == false)
 		&& (menu == "level_editor")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (in_settings == false)
-		&& (global.demo == false)
 		|| (menu == "level_editor")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (in_settings == false)
-		&& (global.demo == false)
 		{
 			if (mouse_check_button_released(mb_left))
 			{
@@ -294,7 +280,6 @@ if (global.arcade_mode == false && in_settings == false)
 			#region /* Select Level Editor */
 			if (menu == "level_editor")
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (global.demo == false)
 			{
 				menu_delay = 3;
 				scr_audio_play(menuvoice_leveleditor, volume_source.voice);
@@ -352,13 +337,11 @@ if (global.arcade_mode == false && in_settings == false)
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (in_settings == false)
-		&& (global.convention_mode == false)
 		&& (global.enable_options_for_pc)
 		|| (menu == "quit")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (in_settings == false)
-		&& (global.convention_mode == false)
 		&& (global.enable_options_for_pc)
 		{
 			in_settings = false;
@@ -366,14 +349,14 @@ if (global.arcade_mode == false && in_settings == false)
 			menu_delay = 3;
 		}
 		#endregion /* Click Quit END */
-	
+		
 		#endregion /* Click on menu buttons END */
-	
+		
 		if (menu == "main_game")
 		{
 			global.character_select_in_this_menu = "main_game";
 		}
-	
+		
 		if (menu == "level_editor")
 		{
 			if (global.level_editor_level > 0)
@@ -382,9 +365,8 @@ if (global.arcade_mode == false && in_settings == false)
 			}
 			global.character_select_in_this_menu = "level_editor"; /* No custom level is selected before you go into the level editor */
 		}
-	
-		if (global.convention_mode == false)
-		&& (global.enable_options_for_pc)
+		
+		if (global.enable_options_for_pc)
 		{
 			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 185, options_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Options"), "options", "options", true);
 			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5, options_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Quit"), "quit", "quit_game_no", true, c_red);
@@ -394,8 +376,7 @@ if (global.arcade_mode == false && in_settings == false)
 			}
 		}
 		else
-		if (global.convention_mode == false)
-		&& (global.enable_options_for_pc == false)
+		if (global.enable_options_for_pc == false)
 		{
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, options_and_quit_y, l10n_text("Options"), "options", "options");
 		}
@@ -581,24 +562,9 @@ if (!input_key)
 		}
 		else
 		if (key_down)
-		&& (global.demo == false)
 		{
 			menu_delay = 3;
 			menu = "level_editor";
-		}
-		else
-		if (key_down)
-		&& (global.convention_mode == false)
-		{
-			menu_delay = 3;
-			menu = "options";
-		}
-		else
-		if (key_down)
-		&& (global.convention_mode)
-		{
-			menu_delay = 3;
-			menu = "information";
 		}
 	}
 	else
@@ -611,17 +577,9 @@ if (!input_key)
 		}
 		else
 		if (key_down)
-		&& (global.convention_mode == false)
 		{
 			menu_delay = 3;
 			menu = "options";
-		}
-		else
-		if (key_down)
-		&& (global.convention_mode)
-		{
-			menu_delay = 3;
-			menu = "information";
 		}
 	}
 	else
@@ -631,8 +589,7 @@ if (!input_key)
 		|| (key_left)
 		{
 			menu_delay = 3;
-			if (global.convention_mode == false)
-			&& (global.enable_options_for_pc)
+			if (global.enable_options_for_pc)
 			{
 				menu = "quit";
 			}
@@ -643,16 +600,9 @@ if (!input_key)
 		}
 		else
 		if (key_up)
-		&& (global.demo == false)
 		{
 			menu_delay = 3;
 			menu = "level_editor";
-		}
-		else
-		if (key_up)
-		{
-			menu_delay = 3;
-			menu = "main_game";
 		}
 		else
 		if (key_down)
@@ -665,25 +615,16 @@ if (!input_key)
 	if (menu == "quit")
 	{
 		if (key_left)
-		&& (global.convention_mode == false)
 		|| (key_right)
-		&& (global.convention_mode == false)
 		{
 			menu_delay = 3;
 			menu = "options";
 		}
 		else
 		if (key_up)
-		&& (global.demo == false)
 		{
 			menu_delay = 3;
 			menu = "level_editor";
-		}
-		else
-		if (key_up)
-		{
-			menu_delay = 3;
-			menu = "main_game";
 		}
 		else
 		if (key_down)
@@ -698,8 +639,7 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.convention_mode == false)
-			&& (global.enable_options_for_pc)
+			if (global.enable_options_for_pc)
 			{
 				menu = "quit";
 			}
@@ -744,196 +684,12 @@ if (!input_key)
 		}
 	}
 	else
-	if (menu == "link_wiki")
-	{
-		if (key_up)
-		{
-			menu_delay = 3;
-			if (global.convention_mode == false)
-			{
-				menu = "options";
-			}
-			else
-			{
-				menu = "level_editor";
-			}
-		}
-		else
-		if (key_down)
-		{
-			menu_delay = 3;
-			menu = "main_game";
-		}
-		else
-		if (key_left)
-		{
-			menu_delay = 3;
-			menu = "link_twitter";
-		}
-		else
-		if (key_right)
-		{
-			menu_delay = 3;
-			menu = "information";
-		}
-	}
-	else
-	if (menu == "link_twitter")
-	{
-		if (key_up)
-		{
-			menu_delay = 3;
-			if (global.convention_mode == false)
-			{
-				menu = "options";
-			}
-			else
-			{
-				menu = "level_editor";
-			}
-		}
-		else
-		if (key_down)
-		{
-			menu_delay = 3;
-			menu = "main_game";
-		}
-		else
-		if (key_left)
-		{
-			menu_delay = 3;
-			menu = "link_reddit";
-		}
-		else
-		if (key_right)
-		{
-			menu_delay = 3;
-			if (global.link_to_wiki != "")
-			{
-				menu = "link_wiki";
-			}
-			else
-			{
-				menu = "information";
-			}
-		}
-	}
-	else
-	if (menu == "link_reddit")
-	{
-		if (key_up)
-		{
-			menu_delay = 3;
-			if (global.convention_mode == false)
-			{
-				menu = "options";
-			}
-			else
-			{
-				menu = "level_editor";
-			}
-		}
-		else
-		if (key_down)
-		{
-			menu_delay = 3;
-			menu = "main_game";
-		}
-		else
-		if (key_left)
-		{
-			menu_delay = 3;
-			menu = "link_instagram";
-		}
-		else
-		if (key_right)
-		{
-			menu_delay = 3;
-			menu = "link_twitter";
-		}
-	}
-	else
-	if (menu == "link_instagram")
-	{
-		if (key_up)
-		{
-			menu_delay = 3;
-			if (global.convention_mode == false)
-			{
-				menu = "options";
-			}
-			else
-			{
-				menu = "level_editor";
-			}
-		}
-		else
-		if (key_down)
-		{
-			menu_delay = 3;
-			menu = "main_game";
-		}
-		else
-		if (key_left)
-		{
-			menu_delay = 3;
-			menu = "link_gamebanana";
-		}
-		else
-		if (key_right)
-		{
-			menu_delay = 3;
-			menu = "link_reddit";
-		}
-	}
-	else
-	if (menu == "link_gamebanana")
-	{
-		if (key_up)
-		{
-			menu_delay = 3;
-			if (global.convention_mode == false)
-			{
-				menu = "options";
-			}
-			else
-			{
-				menu = "level_editor";
-			}
-		}
-		else
-		if (key_down)
-		{
-			menu_delay = 3;
-			menu = "main_game";
-		}
-		else
-		if (key_left)
-		{
-			menu_delay = 3;
-			menu = "link_discord";
-		}
-		else
-		if (key_right)
-		{
-			menu_delay = 3;
-			menu = "link_instagram";
-		}
-	}
-	else
 	if (menu == "link_discord")
 	{
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.convention_mode == false)
-			{
-				menu = "options";
-			}
-			else
-			{
-				menu = "level_editor";
-			}
+			menu = "options";
 		}
 		else
 		if (key_down)
@@ -967,14 +723,7 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.convention_mode == false)
-			{
-				menu = "options";
-			}
-			else
-			{
-				menu = "level_editor";
-			}
+			menu = "options";
 		}
 		else
 		if (key_down)
@@ -1012,7 +761,6 @@ if (!input_key)
 if (menu == "quit")
 && (key_a_pressed)
 && (menu_delay == 0 && menu_joystick_delay == 0)
-&& (global.convention_mode == false)
 && (global.enable_options_for_pc)
 {
 	menu = "quit_game_no";

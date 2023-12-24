@@ -4,8 +4,7 @@ function scr_select_custom_level_menu()
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
-	var max_custom_levels = 180; /* You should be able to store 180 custom levels, these are both levels you have made, and levels you have downloaded */
-	if (ds_list_size(global.all_loaded_custom_levels) - 1 >= max_custom_levels)
+	if (ds_list_size(global.all_loaded_custom_levels) - 1 >= global.max_custom_levels)
 	{
 		var max_custom_levels_reached = true;
 	}
@@ -288,7 +287,7 @@ function scr_select_custom_level_menu()
 			#region /* Create New Level */
 			if (global.select_level_index == 0)
 			&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only open sub menu if there actually is a level existing */
-			&& (ds_list_size(global.all_loaded_custom_levels) - 1 < 120) /* You should only be able to make 120 levels, but can still download more levels */
+			&& (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* You should only be able to make a certain amount of levels, but can still download more levels */
 			{
 				menu_delay = 3;
 				scroll_to = floor(global.select_level_index / row);
@@ -894,12 +893,10 @@ function scr_select_custom_level_menu()
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(display_get_gui_width() * 0.5, 16, string(ds_list_size(global.all_loaded_custom_levels) - 1) + " " + l10n_text("Levels"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-	if (ds_list_size(global.all_loaded_custom_levels) - 1 >= 120)
+	if (ds_list_size(global.all_loaded_custom_levels) - 1 >= global.max_custom_levels)
 	{
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("There are too many levels stored"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 3, l10n_text("Delete some levels"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("There are too many levels stored"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 3, l10n_text("Delete some levels"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("There are too many levels stored! Delete some levels"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 42, l10n_text("There are too many levels stored! Delete some levels"), global.default_text_size * 0.75, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
 	}
 	
 	/* Display the total custom level folder size in MB */

@@ -9,7 +9,7 @@ function scr_draw_welcome_to_level_editor_menu()
 		{
 			menu = "welcome_screen_close";
 		}
-		draw_set_alpha(0.5);
+		draw_set_alpha(0.9);
 		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 350, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 350, display_get_gui_height() * 0.5 + 200, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		draw_set_halign(fa_center);

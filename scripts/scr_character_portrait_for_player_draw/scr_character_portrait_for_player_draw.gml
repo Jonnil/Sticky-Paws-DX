@@ -159,7 +159,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	
 	#endregion /* Set correct variables for players END */
 	
-	#region /* Draw Character Portrait for Player */
+	#region /* Draw character portrait for player */
 	if (sprite_select_player > 0)
 	&& (player_accept_selection >= 0)
 	&& (sprite_exists(sprite_select_player))
@@ -189,7 +189,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		#endregion /* Display Character Name END */
 		
 	}
-	#endregion /* Draw Character Portrait for Player END */
+	#endregion /* Draw character portrait for player END */
 	
 	#region /* Display Selected Skin if skins are available */
 	if (can_input_player1_name == false)

@@ -327,7 +327,7 @@ if (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 		|| (instance_nearest(x, y, obj_level).big_collectible5)
 		{
 			draw_set_alpha(0.9);
-			draw_rectangle_color(x - 140, y - abs(show_big_collectibles_y) - 16, x + 140, y - 52, c_black, c_black, c_black, c_black, false);
+			draw_roundrect_color_ext(x - 140, y - abs(show_big_collectibles_y) - 16, x + 140, y - 52, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
 		}
 		

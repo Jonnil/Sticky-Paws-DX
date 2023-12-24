@@ -22,9 +22,12 @@ global.link_to_website_guide = "https://www.jonnil.games/sticky-paws-guide";
 global.link_to_changelog_history = "https://www.jonnil.games/sticky-paws-changelog"
 global.link_to_update_schedule = "https://www.jonnil.games/sticky-paws-update-schedule";
 
-global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Nintendo Switch, \n but there is still more to be done. \n This is just the latest snapshot version. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil"; /* Update this text explaining what is new in each update */
+/* Update this text explaining what is new in each update */ global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Nintendo Switch, \n but there is still more to be done. \n This is just the latest snapshot version. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil";
 
+/* There needs to be limits to the custom characters and levels. Upload and download limits are important */
 global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle */
+global.max_custom_characters = 100; /* You should be able to only store a certain amount of custom characters, these are both characters you have made, and characters you have downloaded */
+global.max_custom_levels = 100; /* You should be able to only store a certain amount of custom levels, these are both levels you have made, and levels you have downloaded */
 
 #region /* Change how menus look and function */
 global.skip_how_many_people_are_playing_screen = true; /* If the game should skip the "How many people are playing?" screen */
@@ -91,9 +94,6 @@ global.enable_narrator = true;
 global.max_fps = 60; /* Targeted fps that you want the game to run in, you never want the default to be under 60 fps, default: 60 */
 global.default_text_size = 0.8 /* This is the default text size, but text size should be able to be changed by the player in settings. Default = 0.8 */
 
-global.demo = false; /* When making a demo version of the game, turn this to true, otherwise turn this to false for the full version */
-global.demo_max_levels = 3; /* Set how many levels the demo version have available */
-
 global.number_of_chain_kills_for_1up = 8; /* How many chain reaction kills you need to get 1-ups. Default is 8 */
 
 global.all_loaded_main_levels = ds_list_create(); /* The main game will load every level folder. Don't change this variable, it just needs to be set before you can add more main levels */
@@ -159,10 +159,6 @@ global.enable_foreground_layer_secret = true;
 
 /* Equipped Upgrades. All of these should be true so you automatically equip the upgrades so don't change the variables here, but you can unequipp the upgrades in the pause menu */
 global.equipped_upgrade_double_jump = true; /* If you have equipped the Double Jump Upgrade */
-
-global.convention_mode = false; /* When showing the game on a convention, turn this to true */
-global.arcade_mode = false; /* When turning the game into an arcade machine, turn this to true */
-global.arcade_credit = 0; /* How many coins you've inserted into the arcade mode */
 
 #region /* Show HUD Global Variables */
 global.hud_hide_time = 3;
@@ -455,7 +451,6 @@ global.restart_level = false;
 global.quit_level = false;
 global.quit_to_map = false;
 global.quit_to_title = false;
-global.trigger_demo_ending = 0;
 global.full_level_map_screenshot = false;
 global.appear_block_timer = 0;
 

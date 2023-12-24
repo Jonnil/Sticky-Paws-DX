@@ -149,23 +149,6 @@ if (global.debug_screen)
 }
 #endregion /* Show Clear Level Key in debug END */
 
-if (show_demo_over_message)
-{
-	draw_set_alpha(0.5);
-	draw_rectangle_color(0, 0, get_window_width* 3, get_window_height* 3, c_black, c_black, c_black, c_black, false);
-	draw_set_alpha(1);
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, l10n_text("The demo is over"), global.default_text_size, c_black, c_white, 1);
-	scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 + 32, l10n_text("Buy the full version of") + " " + string(global.game_name), global.default_text_size, c_black, c_white, 1);
-	draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 64, l10n_text("Purchase now!"), "purchase_now", noone)
-	draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 106, l10n_text("Continue playing!"), "continue_playing", noone)
-}
-if (menu == noone)
-{
-	show_demo_over_message = false;
-}
-
 scr_draw_darken_screen_when_window_is_unfocused();
 scr_draw_cursor_mouse();
 

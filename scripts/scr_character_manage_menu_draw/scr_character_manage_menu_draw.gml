@@ -1,7 +1,6 @@
 function scr_character_manage_menu_draw()
 {
-	var max_custom_characters = 120; /* You should be able to only store 120 custom characters that you've made yourself, so stop the copy feature if limit is reached */
-	if (ds_list_size(global.all_loaded_characters) >= max_custom_characters)
+	if (ds_list_size(global.all_loaded_characters) >= global.max_custom_characters)
 	{
 		var max_custom_characters_reached = true;
 	}
@@ -37,12 +36,12 @@ function scr_character_manage_menu_draw()
 	|| (menu == "back_from_copy_character")
 	{
 		
-		#region /* Draw Character Portrait for Player 1 */
+		#region /* Draw character portrait for player 1 */
 		if (global.sprite_select_player[1] > 0)
 		{
 			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
 		}
-		#endregion /* Draw Character Portrait for Player 1 END */
+		#endregion /* Draw character portrait for player 1 END */
 		
 		#region /* Left and Right Keys */
 	
@@ -254,12 +253,10 @@ function scr_character_manage_menu_draw()
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 16, string(ds_list_size(global.all_loaded_characters)) + " " + l10n_text("Characters"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-		if (ds_list_size(global.all_loaded_characters) >= 120) /* If there are more than 120 characters stored, warn player about there being too many characters */
+		if (ds_list_size(global.all_loaded_characters) >= global.max_custom_characters) /* If there are more than a certain amount of characters stored, warn player about there being too many characters */
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("There are too many characters stored"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 3, l10n_text("Delete some characters"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("There are too many characters stored"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 3, l10n_text("Delete some characters"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 50, l10n_text("There are too many characters stored! Delete some characters"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 50, l10n_text("There are too many characters stored! Delete some characters"), global.default_text_size * 0.75, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
 		}
 		
 	}

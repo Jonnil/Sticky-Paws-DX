@@ -5,7 +5,6 @@ if (instance_exists(obj_background_brightness_gameplay))
 image_index = 0;
 image_speed = 0;
 trigger_ending = false;
-trigger_demo_ending = false;
 goal = false;
 number_of_clears = 0;
 

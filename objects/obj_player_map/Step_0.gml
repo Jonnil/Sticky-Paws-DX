@@ -97,7 +97,6 @@ if (keyboard_check_pressed(vk_escape) ||
 
 #region /* Movement */
 if (can_move)
-&& (show_demo_over_message == false)
 && (!global.pause)
 && (global.quit_level == false)
 {
@@ -539,7 +538,6 @@ if (can_move == false)
 			audio_play_sound(global.loading_music, 0, true, global.volume_melody * global.volume_main);
 		}
 	}
-	global.trigger_demo_ending = 0;
 	global.pause = false;
 	global.quit_level = false;
 	
@@ -715,23 +713,10 @@ else
 if (can_enter_level_automatically)
 && (brand_new_file)
 && (can_move)
-&& (show_demo_over_message == false)
 && (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 
 || (key_a_pressed)
-&& (global.demo == false)
 && (can_move)
-&& (show_demo_over_message == false)
-&& (can_enter_level >= 30)
-&& (instance_exists(obj_level)) /* Must check if obj_level exists or not */
-&& (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
-&& (speed == 0)
-
-|| (key_a_pressed)
-&& (global.demo)
-&& (instance_nearest(x, y, obj_level).level <= global.demo_max_levels)
-&& (can_move)
-&& (show_demo_over_message == false)
 && (can_enter_level >= 30)
 && (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 && (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
@@ -792,23 +777,6 @@ if (can_enter_level_automatically)
 		global.increase_number_of_levels_cleared = instance_nearest(x, y, obj_level).increase_number_of_levels_cleared;
 	}
 }
-else
-if (global.demo)
-&& (instance_nearest(x, y, obj_level).level > global.demo_max_levels)
-&& (key_a_pressed)
-&& (can_move)
-&& (show_demo_over_message == false)
-&& (menu_delay == 0 && menu_joystick_delay == 0)
-&& (can_enter_level >= 30)
-&& (instance_exists(obj_level))
-&& (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
-&& (speed == 0)
-&& (show_demo_over_message == false)
-{
-	menu_delay = 3;
-	menu = "purchase_now";
-	show_demo_over_message = true;
-}
 #endregion /* Enter Level END */
 
 #region /* Clear Level in debug */
@@ -859,61 +827,6 @@ if (menu_cursor_index > 4)
 if (menu_delay > 0)
 {
 	menu_delay --;
-}
-
-if (menu == "purchase_now")
-{
-	if (key_a_pressed)
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 64, get_window_width * 0.5 - 185 + 370, get_window_height * 0.5 + 64 + 42))
-	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		url_open(string(global.link_to_steam_page));
-		menu = noone;
-		show_demo_over_message = false;
-		menu_delay = 3;
-	}
-	if (key_b_pressed)
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		menu = noone;
-		show_demo_over_message = false;
-		menu_delay = 3;
-	}
-	if (key_down)
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		menu = "continue_playing";
-		menu_delay = 3;
-	}
-}
-else
-if (menu == "continue_playing")
-{
-	if (key_a_pressed)
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 106, get_window_width * 0.5 - 185 + 370, get_window_height * 0.5 + 106 + 42))
-	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		menu = noone;
-		show_demo_over_message = false;
-		menu_delay = 3;
-	}
-	if (key_b_pressed)
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		menu = noone;
-		show_demo_over_message = false;
-		menu_delay = 3;
-	}
-	if (key_up)
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	{
-		menu = "purchase_now";
-		menu_delay = 3;
-	}
 }
 
 if (global.goal_active)
