@@ -2376,25 +2376,17 @@ function scr_options_menu()
 			var default_audio_settings_y = 96 + (64 * 9);
 			
 			#region /* Make volumes stay between 0 and 1 */
-			if (global.volume_main < 0){global.volume_main = 0;}else
-			if (global.volume_main > 1){global.volume_main = 1;}
-			if (global.volume_music < 0){global.volume_music = 0;}else
-			if (global.volume_music > 1){global.volume_music = 1;}
-			if (global.volume_melody < 0){global.volume_melody = 0;}else
-			if (global.volume_melody > 1){global.volume_melody = 1;}
-			if (global.volume_sound < 0){global.volume_sound = 0;}else
-			if (global.volume_sound > 1){global.volume_sound = 1;}
-			if (global.volume_ambient < 0){global.volume_ambient = 0;}else
-			if (global.volume_ambient > 1){global.volume_ambient = 1;}
-			if (global.volume_footstep < 0){global.volume_footstep = 0;}else
-			if (global.volume_footstep > 1){global.volume_footstep = 1;}
-			if (global.volume_voice < 0){global.volume_voice = 0;}else
-			if (global.volume_voice > 1){global.volume_voice = 1;}
-			if (global.verbosity_slider < 0){global.verbosity_slider = 0;}else
-			if (global.verbosity_slider > 1){global.verbosity_slider = 1;}
+			global.volume_main = clamp(global.volume_main, 0, 1);
+			global.volume_music = clamp(global.volume_music, 0, 1);
+			global.volume_melody = clamp(global.volume_melody, 0, 1);
+			global.volume_sound = clamp(global.volume_sound, 0, 1);
+			global.volume_ambient = clamp(global.volume_ambient, 0, 1);
+			global.volume_footstep = clamp(global.volume_footstep, 0, 1);
+			global.volume_voice = clamp(global.volume_voice, 0, 1);
+			global.verbosity_slider = clamp(global.verbosity_slider, 0, 1);
 			#endregion /* Make volumes stay between 0 and 1 END */
 			
-			#region /* Draw bars that represent how much volume each channel have */
+			#region /* Draw volume slider bars that represent how much volume each channel have */
 			draw_menu_slider(410, volume_main_y, l10n_text("Main Volume"), "volume_main", global.volume_main, c_red);
 			draw_line_width_color(410, volume_main_y + 32, 820, volume_main_y + 32, 3, c_white, c_white);
 			draw_menu_slider(410, volume_music_y, l10n_text("Music Volume"), "volume_music", global.volume_music, c_red);
@@ -2411,7 +2403,7 @@ function scr_options_menu()
 			}
 			#endregion /* Verbosity Bar END */
 			
-			#endregion /* Draw bars that represent how much volume each channel have END */
+			#endregion /* Draw volume slider bars that represent how much volume each channel have END */
 			
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);

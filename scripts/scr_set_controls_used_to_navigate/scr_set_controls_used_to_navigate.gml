@@ -83,15 +83,15 @@ function scr_set_controls_used_to_navigate()
 				if (instance_exists(obj_camera))
 				{
 					obj_camera.show_keyboard_and_mouse_input_change_prompt = 0;
-					if (global.controls_used_for_menu_navigation != "controller")
+					if (global.controls_used_for_menu_navigation != "gamepad")
 					{
-						global.controls_used_for_menu_navigation = "controller";
+						global.controls_used_for_menu_navigation = "gamepad";
 						obj_camera.show_controller_input_change_prompt = 100;
 					}
 				}
 				else
 				{
-					global.controls_used_for_menu_navigation = "controller";
+					global.controls_used_for_menu_navigation = "gamepad";
 				}
 			}
 		}

@@ -13,14 +13,6 @@ if (global.appear_block_timer > 60 * 5)
 
 global.collectible_image_index = image_index; /* Make all the collectibles animate in sync */
 
-if (current_file != global.file)
-{
-	current_file = global.file;
-	room_persistent = false; /* Turn OFF Room Persistency */
-	global.quit_level = true;
-	global.quit_to_map = true;
-}
-
 var get_room_speed = 60;
 
 /* Timer Countup */

@@ -114,9 +114,18 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	#endregion /* Clicking the menu button END */
 	
 	#region /* Text above the menu button */
+	var display_number = variable_to_change * 100;
+	
+	if (display_number < round(display_number) + 0.01)
+	&& (display_number > round(display_number) - 0.01)
+	{
+		/* The number is a whole number (no decimals) */
+		display_number = round(display_number);
+	}
+	
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(x_position, y_position- 32, string(string_text) + ": " + string(variable_to_change * 100) + "%", global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(x_position, y_position- 32, string(string_text) + ": " + string(display_number) + "%", global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 	#endregion /* Text above the menu button END */
 	
 }
