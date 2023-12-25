@@ -167,8 +167,8 @@ function scr_debug_screen()
 		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + scr_get_build_date(), global.default_text_size, c_black, c_white, 1);
 		
 		#region /* X and Y position of player */
-		if (instance_exists(obj_camera))
-		{
+		var get_player = noone;
+		if (instance_exists(obj_camera)) {
 			if (instance_exists(obj_camera.player1)) {
 				var get_player = obj_camera.player1;
 			}
@@ -189,16 +189,13 @@ function scr_debug_screen()
 		if (instance_exists(obj_player_map)) {
 			var get_player = obj_player_map;
 		}
-		else {
-			var get_player = noone;
-		}
 		if (get_player != noone) {
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			scr_draw_text_outlined(32, player_xy_y, "X: " + string(get_player.x) + " Y: " + string(get_player.y), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* X and Y position of player END */
-	
+		
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
 		var _info = os_get_info();
@@ -223,7 +220,7 @@ function scr_debug_screen()
 		#region /* More debug text */
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
-		var debug_text_y = 150;
+		var debug_text_y = 170;
 		
 		if (instance_exists(obj_camera)) {
 			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player1: " + string(obj_camera.player1), global.default_text_size, c_black, c_white);
