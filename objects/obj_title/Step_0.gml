@@ -39,7 +39,7 @@ if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
 
 global.keyboard_virtual_timer = clamp(global.keyboard_virtual_timer - 0.5, 0, 4);
 
-scr_menu_navigation_initialization(1, true); /* Keyboard Controls END */
+scr_menu_navigation_initialization(0, true); /* Keyboard Controls */
 
 #region /* Play title screen music */
 if (title_music > noone)

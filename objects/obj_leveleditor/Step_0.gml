@@ -235,7 +235,7 @@ if (!global.actually_play_edited_level)
 	}
 	else
 	{
-		scr_menu_navigation_initialization(1, true);
+		scr_menu_navigation_initialization(0, true);
 	}
 	#endregion /* Need to set the controls early in the step event END */
 	

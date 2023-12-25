@@ -241,6 +241,7 @@ global.button_design_color = 2;
 global.button_design_shape = 1;
 global.button_design_transparency = 0;
 global.menu_button_subimg = 16; /* In the menu button sprites are several sub-images, each with its own design that the button can use */
+global.menu_navigation_speed = 60; /* Make the menu navigation go faster the longer you hold down a direction */
 global.collectible_image_index = 0; /* Make all collectibles animate in sync */
 global.online_enabled = false;
 global.report_reason = "";

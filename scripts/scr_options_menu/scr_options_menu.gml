@@ -2490,7 +2490,7 @@ function scr_options_menu()
 					&& (!open_dropdown)
 					{
 						menu_delay = 3;
-						menu_joystick_delay = 30;
+						//menu_joystick_delay = 30;
 						if (global.narrator > -1)
 						{
 							global.narrator --;
@@ -2554,7 +2554,7 @@ function scr_options_menu()
 					&& (!open_dropdown)
 					{
 						menu_delay = 3;
-						menu_joystick_delay = 30;
+						//menu_joystick_delay = 30;
 						global.narrator = clamp(global.narrator + 1, -1, ds_list_size(global.all_loaded_characters) - 1);
 					
 						#region /* Character Name */

@@ -5,7 +5,7 @@ var mouse_get_y = device_mouse_y_to_gui(0);
 
 scr_set_menu_font_color();
 scr_set_controls_used_to_navigate();
-scr_menu_navigation_initialization(1);
+scr_menu_navigation_initialization(0);
 
 fade_in_pause_alpha = lerp(fade_in_pause_alpha, 1, 0.1);
 

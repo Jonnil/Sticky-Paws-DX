@@ -545,13 +545,13 @@ if (!input_key)
 && (can_navigate)
 && (menu_delay == 0 && menu_joystick_delay == 0)
 {
-
+	
 	/* Level Editor Menu */
 	if (global.level_editor_level<= 0)
 	{
 		global.level_editor_level = 1;
 	}
-
+	
 	#region /* Navigate Main Menu */
 	if (menu == "main_game")
 	{
@@ -740,6 +740,7 @@ if (!input_key)
 		else
 		if (key_right)
 		{
+			menu_delay = 3;
 			if (global.link_to_discord != "")
 			{
 				menu = "link_discord";
