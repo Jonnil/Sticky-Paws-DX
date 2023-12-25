@@ -4332,7 +4332,13 @@ function scr_options_control_menu()
 		if (global.enable_options_for_pc)
 		&& (global.settings_sidebar_menu == "controller_settings")
 		{
-			draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used, l10n_text("Xbox One"), l10n_text("Xbox Series X/S"), l10n_text("Nintendo Switch"), l10n_text("Playstation 4"), l10n_text("Playstation 5"));
+			draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used[remapping_player], l10n_text("Auto Detect"), l10n_text("Xbox One"), l10n_text("Xbox Series X/S"), l10n_text("Nintendo Switch"), l10n_text("Playstation 4"), l10n_text("Playstation 5"));
+			if (global.chosen_controller_used[remapping_player] == 0)
+			{
+				draw_set_halign(fa_left);
+				scr_draw_text_outlined(1000, menu_y_chosen_controller_used + menu_y_offset + 20, string(gamepad_get_description(remapping_player - 1)), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				draw_set_halign(fa_center);
+			}
 		}
 		if (os_type != os_ios)
 		&& (os_type != os_android)
@@ -5323,18 +5329,18 @@ function scr_options_control_menu()
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
-				&& (global.chosen_controller_used > 0)
+				&& (global.chosen_controller_used[remapping_player] > 0)
 				{
-					global.chosen_controller_used --;
+					global.chosen_controller_used[remapping_player] --;
 					menu_delay = 3;
 				}
 				else
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (open_dropdown)
-				&& (global.chosen_controller_used < 4)
+				&& (global.chosen_controller_used[remapping_player] < 5)
 				{
-					global.chosen_controller_used ++;
+					global.chosen_controller_used[remapping_player] ++;
 					menu_delay = 3;
 				}
 			}

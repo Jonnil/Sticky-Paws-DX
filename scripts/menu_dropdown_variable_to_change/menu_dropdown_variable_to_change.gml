@@ -140,9 +140,9 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	}
 	else
 	if (menu == "chosen_controller_used")
-	&& (variable_to_change = global.chosen_controller_used)
+	&& (variable_to_change = global.chosen_controller_used[remapping_player])
 	{
-		global.chosen_controller_used = change_to_value;
+		global.chosen_controller_used[remapping_player] = change_to_value;
 	}
 	else
 	if (menu == "difficulty_settings")

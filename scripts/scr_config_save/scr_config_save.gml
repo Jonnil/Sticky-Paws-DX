@@ -88,7 +88,10 @@ function scr_config_save()
 	ini_write_real("config", "resolution_setting", global.resolution_setting);
 	ini_write_real("config", "gui_scale_modifier", global.gui_scale_modifier);
 	ini_write_real("config", "language_localization", global.language_localization);
-	ini_write_real("config", "chosen_controller_used", global.chosen_controller_used);
+	ini_write_real("config", "chosen_controller_used1", global.chosen_controller_used[1]);
+	ini_write_real("config", "chosen_controller_used2", global.chosen_controller_used[2]);
+	ini_write_real("config", "chosen_controller_used3", global.chosen_controller_used[3]);
+	ini_write_real("config", "chosen_controller_used4", global.chosen_controller_used[4]);
 	ini_write_real("config", "show_prompt_when_changing_to_gamepad", global.show_prompt_when_changing_to_gamepad);
 	ini_write_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", global.show_prompt_when_changing_to_keyboard_and_mouse);
 	ini_write_real("config", "always_show_gamepad_buttons", global.always_show_gamepad_buttons);

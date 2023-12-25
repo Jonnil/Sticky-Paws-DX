@@ -7,8 +7,6 @@ var view_y = camera_get_view_y(view_camera[view_current]);
 var view_width = camera_get_view_width(view_camera[view_current]);
 var view_height = camera_get_view_height(view_camera[view_current]);
 
-scr_player_move_save_whole_level_as_screenshot();
-
 scr_toggle_fullscreen();
 scr_set_controls_used_to_navigate();
 scr_resize_application_surface();
@@ -94,385 +92,6 @@ if (keyboard_check_pressed(vk_escape) ||
 	room_goto(rm_pause);
 }
 #endregion /* Pause END */
-
-#region /* Movement */
-if (can_move)
-&& (!global.pause)
-&& (global.quit_level == false)
-{
-	if (allow_free_movement)
-	{
-		
-		#region /* Free Movement */
-		if (key_up)
-		&& (point_distance(xx, yy, x, y) < 4)
-		&& (move_delay > 10)
-		{
-			if (y > view_y + 64)
-			{
-				if (!position_meeting(x, y - 32, obj_wall))
-				&& (!position_meeting(x, y - 64, obj_wall))
-				{
-					y -= 64;
-					move_delay = 0;
-					transfer_data = false;
-				}
-				else
-				{
-					if (!audio_is_playing(snd_bump))
-					{
-						draw_xscale = 1.5;
-						draw_yscale = 0.5;
-						yy -= 32;
-						scr_audio_play(snd_bump, volume_source.sound);
-					}
-				}
-			}
-		}
-		if (key_left)
-		&& (point_distance(xx, yy, x, y) < 4)
-		&& (move_delay > 10)
-		{
-			if (x > view_x + 64)
-			{
-				if (!position_meeting(x - 32, y, obj_wall))
-				&& (!position_meeting(x - 64, y, obj_wall))
-				{
-					x -= 64;
-					move_delay = 0;
-					transfer_data = false;
-				}
-				else
-				{
-					if (!audio_is_playing(snd_bump))
-					{
-						draw_xscale = 0.5;
-						draw_yscale = 1.5;
-						xx -= 32;
-						scr_audio_play(snd_bump, volume_source.sound);
-					}
-				}
-			}
-		}
-		if (key_right)
-		&& (point_distance(xx, yy, x, y) < 4)
-		&& (move_delay > 10)
-		{
-			if (x < view_x + view_width - 64)
-			{
-				if (!position_meeting(x + 32, y, obj_wall))
-				&& (!position_meeting(x + 64, y, obj_wall))
-				{
-					x += 64;
-					move_delay = 0;
-					transfer_data = false;
-				}
-				else
-				{
-					if (!audio_is_playing(snd_bump))
-					{
-						draw_xscale = 0.5;
-						draw_yscale = 1.5;
-						xx += 32;
-						scr_audio_play(snd_bump, volume_source.sound);
-					}
-				}
-			}
-		}
-		if (key_down)
-		&& (point_distance(xx, yy, x, y) < 4)
-		&& (move_delay > 10)
-		{
-			if (y < view_y + view_height - 64)
-			{
-				if (!position_meeting(x, y + 32, obj_wall))
-				&& (!position_meeting(x, y + 64, obj_wall))
-				{
-					y += 64;
-					move_delay = 0;
-					transfer_data = false;
-				}
-				else
-				{
-					if (!audio_is_playing(snd_bump))
-					{
-						draw_xscale = 1.5;
-						draw_yscale = 0.5;
-						yy += 32;
-						scr_audio_play(snd_bump, volume_source.sound);
-					}
-				}
-			}
-		}
-		#endregion /* Free Movement END */
-		
-	}
-	else
-	{
-		
-		#region /* Movement on paths */
-		if (move_delay > 10) {
-			if (key_up && speed == 0) {
-				if (y > view_y + 64 && !position_meeting(x, y - 32, obj_wall)) {
-					vspeed -= move_speed;
-					move_delay = 0;
-					transfer_data = false;
-				} else if (!audio_is_playing(snd_bump)) {
-					draw_xscale = 1.5;
-					draw_yscale = 0.5;
-					yy -= 32;
-					scr_audio_play(snd_bump, volume_source.sound);
-				}
-			} else if (key_left && speed == 0) {
-				if (x > view_x + 64 && !position_meeting(x - 32, y, obj_wall)) {
-					hspeed -= move_speed;
-					move_delay = 0;
-					transfer_data = false;
-				} else if (!audio_is_playing(snd_bump)) {
-					draw_xscale = 0.5;
-					draw_yscale = 1.5;
-					xx -= 32;
-					scr_audio_play(snd_bump, volume_source.sound);
-				}
-			} else if (key_right && speed == 0) {
-				if (x < view_x + view_width - 64 && !position_meeting(x + 32, y, obj_wall)) {
-					hspeed += move_speed;
-					move_delay = 0;
-					transfer_data = false;
-				} else if (!audio_is_playing(snd_bump)) {
-					draw_xscale = 0.5;
-					draw_yscale = 1.5;
-					xx += 32;
-					scr_audio_play(snd_bump, volume_source.sound);
-				}
-			} else if (key_down && speed == 0) {
-				if (y < view_y + view_height - 64 && !position_meeting(x, y + 32, obj_wall)) {
-					vspeed += move_speed;
-					move_delay = 0;
-					transfer_data = false;
-				} else if (!audio_is_playing(snd_bump)) {
-					draw_xscale = 1.5;
-					draw_yscale = 0.5;
-					yy += 32;
-					scr_audio_play(snd_bump, volume_source.sound);
-				}
-			}
-		}
-		#endregion /* Movement on paths END */
-
-		#region /* Show controls for where you can go */
-		if (move_delay > 10)
-		&& (speed == 0)
-		{
-			if (!place_meeting(x + 4, y, obj_wall))
-			&& (speed == 0)
-			{
-				
-				#region /* Key Right */
-				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "gamepad")
-				|| (global.always_show_gamepad_buttons)
-				{
-					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, c_white, 1);
-				}
-				else
-				if (global.player_can_play[1])
-				{
-					if (global.player_[inp.key][1][1][action.right] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player_[inp.key][1][2][action.right] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-				else
-				if (global.player_can_play[2])
-				{
-					if (global.player_[inp.key][2][1][action.right] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player_[inp.key][2][2][action.right] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-				else
-				if (global.player_can_play[3])
-				{
-					if (global.player_[inp.key][3][1][action.right] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player_[inp.key][3][2][action.right] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-				else
-				if (global.player_can_play[4])
-				{
-					if (global.player_[inp.key][4][1][action.right] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player_[inp.key][4][2][action.right] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-				#endregion /* Key Right END */
-				
-			}
-			if (!place_meeting(x - 4, y, obj_wall))
-			&& (speed == 0)
-			{
-				
-				#region /* Key Left */
-				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "gamepad")
-				|| (global.always_show_gamepad_buttons)
-				{
-					scr_draw_gamepad_buttons(gp_padl, x - 64, y, 0.5, c_white, 1);
-				}
-				else
-				
-				{
-					if (global.player_can_play[1])
-					{
-						if (global.player_[inp.key][1][1][action.left] > noone)
-						{
-							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
-						}
-						else
-						if (global.player_[inp.key][1][2][action.left] > noone)
-						{
-							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
-						}
-					}
-					else
-					if (global.player_can_play[2])
-					{
-						if (global.player_[inp.key][2][1][action.left] > noone)
-						{
-							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
-						}
-						else
-						if (global.player_[inp.key][2][2][action.left] > noone)
-						{
-							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
-						}
-					}
-					else
-					if (global.player_can_play[3])
-					{
-						if (global.player_[inp.key][3][1][action.left] > noone)
-						{
-							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
-						}
-						else
-						if (global.player_[inp.key][3][2][action.left] > noone)
-						{
-							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
-						}
-					}
-					else
-					if (global.player_can_play[4])
-					{
-						if (global.player_[inp.key][4][1][action.left] > noone)
-						{
-							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
-						}
-						else
-						if (global.player_[inp.key][4][2][action.left] > noone)
-						{
-							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
-						}
-					}
-				}
-				#endregion /* Key Left END */
-				
-			}
-			if (!place_meeting(x, y + 4, obj_wall))
-			&& (speed == 0)
-			{
-				
-				#region /* Key Down */
-				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "gamepad")
-				|| (global.always_show_gamepad_buttons)
-				{
-					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, c_white, 1);
-				}
-				else
-				if (global.player_can_play[1])
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player_can_play[2])
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player_can_play[3])
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player_can_play[4])
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
-				}
-				#endregion /* Key Down END */
-				
-			}
-			if (!place_meeting(x, y - 4, obj_wall))
-			&& (speed == 0)
-			{
-				
-				#region /* Key Up */
-				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "gamepad")
-				|| (global.always_show_gamepad_buttons)
-				{
-					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);
-				}
-				else
-				if (global.player_can_play[1])
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player_can_play[2])
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player_can_play[3])
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
-				}
-				else
-				if (global.player_can_play[4])
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
-				}
-				#endregion /* Key Up END */
-				
-			}
-		}
-		#endregion /* Show controls for where you can go END */
-		
-	}
-}
-#endregion /* Movement END */
 
 #region /* Stop player when touching level */
 if (place_meeting(x, y, obj_level))
@@ -712,109 +331,549 @@ else
 #region /* Enter Level */
 if (can_enter_level_automatically)
 && (brand_new_file)
-&& (can_move)
-&& (instance_exists(obj_level)) /* Must check if obj_level exists or not */
 
 || (key_a_pressed)
-&& (can_move)
 && (can_enter_level >= 30)
-&& (instance_exists(obj_level)) /* Must check if obj_level exists or not */
-&& (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+&& (speed == 0)
+
+|| (mouse_check_button_released(mb_left))
+&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 42, 140, display_get_gui_height()))
+&& (can_enter_level >= 30)
+&& (speed == 0)
+
+|| (mouse_check_button_released(mb_left))
+&& (point_in_rectangle(mouse_x, mouse_y, bbox_left, bbox_top, bbox_right, bbox_bottom))
+&& (can_enter_level >= 30)
 && (speed == 0)
 {
-	if (instance_nearest(x, y, obj_level).clear_rate == "enter")
-	|| (instance_nearest(x, y, obj_level).clear_rate == "clear")
+	if (can_move)
+	&& (instance_exists(obj_level)) /* Must check if obj_level exists or not */
+	&& (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
 	{
-		if (brand_new_file)
+		if (instance_nearest(x, y, obj_level).clear_rate == "enter")
+		|| (instance_nearest(x, y, obj_level).clear_rate == "clear")
 		{
-			audio_sound_gain(music_map, 0, 0);
-			audio_stop_all(); /* Stop all sound from playing whenever a brand new file is loaded, so nothing is playing at the loading screen first */
-			if (global.loading_music > 0)
+			if (brand_new_file)
 			{
-				if (!audio_is_playing(global.loading_music)) /* Then after stopping all sound, play the loading music */
+				audio_sound_gain(music_map, 0, 0);
+				audio_stop_all(); /* Stop all sound from playing whenever a brand new file is loaded, so nothing is playing at the loading screen first */
+				if (global.loading_music > 0)
 				{
-					audio_play_sound(global.loading_music, 0, true, global.volume_melody * global.volume_main);
+					if (!audio_is_playing(global.loading_music)) /* Then after stopping all sound, play the loading music */
+					{
+						audio_play_sound(global.loading_music, 0, true, global.volume_melody * global.volume_main);
+					}
 				}
 			}
-		}
-		
-		#region /* Save Player Position */
-		x = instance_nearest(x, y, obj_level).x;
-		y = instance_nearest(x, y, obj_level).y;
-		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-		
-		ini_write_real("Player", "player_x", x);
-		ini_write_real("Player", "player_y", y);
-		ini_write_real("Player", "brand_new_file", false);
-		
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		#endregion /* Save Player Position END */
-		
-		can_move = false;
-		entering_level = true;
-		delay = 0;
-		score = 0;
-		global.spikes_emerge_time = 0;
-		global.checkpoint_x = instance_nearest(x, y, obj_level).checkpoint_x;
-		global.checkpoint_y = instance_nearest(x, y, obj_level).checkpoint_y;
-		with(instance_nearest(x, y, obj_level))
-		{
-			if (checkpoint_x > 0)
-			|| (checkpoint_y > 0)
+			
+			#region /* Save Player Position */
+			x = instance_nearest(x, y, obj_level).x;
+			y = instance_nearest(x, y, obj_level).y;
+			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+			
+			ini_write_real("Player", "player_x", x);
+			ini_write_real("Player", "player_y", y);
+			ini_write_real("Player", "brand_new_file", false);
+			
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			#endregion /* Save Player Position END */
+			
+			can_move = false;
+			entering_level = true;
+			delay = 0;
+			score = 0;
+			global.spikes_emerge_time = 0;
+			global.checkpoint_x = instance_nearest(x, y, obj_level).checkpoint_x;
+			global.checkpoint_y = instance_nearest(x, y, obj_level).checkpoint_y;
+			with(instance_nearest(x, y, obj_level))
 			{
-				global.checkpoint_realmillisecond = checkpoint_realmillisecond;
-				global.checkpoint_millisecond = checkpoint_millisecond;
-				global.checkpoint_second = checkpoint_second;
-				global.checkpoint_minute = checkpoint_minute;
+				if (checkpoint_x > 0)
+				|| (checkpoint_y > 0)
+				{
+					global.checkpoint_realmillisecond = checkpoint_realmillisecond;
+					global.checkpoint_millisecond = checkpoint_millisecond;
+					global.checkpoint_second = checkpoint_second;
+					global.checkpoint_minute = checkpoint_minute;
+				}
 			}
+			global.big_collectible1 = instance_nearest(x, y, obj_level).big_collectible1;
+			global.big_collectible2 = instance_nearest(x, y, obj_level).big_collectible2;
+			global.big_collectible3 = instance_nearest(x, y, obj_level).big_collectible3;
+			global.big_collectible4 = instance_nearest(x, y, obj_level).big_collectible4;
+			global.big_collectible5 = instance_nearest(x, y, obj_level).big_collectible5;
+			global.lives_until_assist = instance_nearest(x, y, obj_level).lives_until_assist;
+			global.increase_number_of_levels_cleared = instance_nearest(x, y, obj_level).increase_number_of_levels_cleared;
 		}
-		global.big_collectible1 = instance_nearest(x, y, obj_level).big_collectible1;
-		global.big_collectible2 = instance_nearest(x, y, obj_level).big_collectible2;
-		global.big_collectible3 = instance_nearest(x, y, obj_level).big_collectible3;
-		global.big_collectible4 = instance_nearest(x, y, obj_level).big_collectible4;
-		global.big_collectible5 = instance_nearest(x, y, obj_level).big_collectible5;
-		global.lives_until_assist = instance_nearest(x, y, obj_level).lives_until_assist;
-		global.increase_number_of_levels_cleared = instance_nearest(x, y, obj_level).increase_number_of_levels_cleared;
 	}
 }
 #endregion /* Enter Level END */
 
 #region /* Clear Level in debug */
 if (key_b_pressed)
-&& (global.debug_screen)
-&& (can_move)
-&& (can_enter_level >= 30)
-&& (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
-&& (speed == 0)
-&& (instance_nearest(x, y, obj_level).clear_rate = "enter")
-&& (!global.pause)
+|| (mouse_check_button_released(mb_left))
+&& (global.controls_used_for_menu_navigation == "mouse")
+&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 141, display_get_gui_height() - 42, 140 + 140, display_get_gui_height()))
 {
-	with (instance_nearest(x, y, obj_level))
+	if (global.debug_screen)
+	&& (can_move)
+	&& (can_enter_level >= 30)
+	&& (distance_to_object(instance_nearest(x, y, obj_level)) < 4)
+	&& (speed == 0)
+	&& (instance_nearest(x, y, obj_level).clear_rate = "enter")
+	&& (!global.pause)
 	{
-		clear_rate = "clear";
-		alarm_set(1, 1)
-	}
-	
-	#region /* Save Player Position */
-	x = instance_nearest(x, y, obj_level).x;
-	y = instance_nearest(x, y, obj_level).y;
-	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-	ini_write_real("Player", "player_x", x);
-	ini_write_real("Player", "player_y", y);
-	ini_write_real("Player", "brand_new_file", false);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-	#endregion /* Save Player Position END */
-	
-	if (global.character_select_in_this_menu == "main_game")
-	{
-		var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+		with (instance_nearest(x, y, obj_level))
+		{
+			clear_rate = "clear";
+			alarm[1] = 2;
+		}
+		with (instance_nearest(x, y, obj_map_exit))
+		{
+			alarm[0] = 1;
+		}
 		
+		#region /* Save Player Position */
+		x = instance_nearest(x, y, obj_level).x;
+		y = instance_nearest(x, y, obj_level).y;
 		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-		ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
+		ini_write_real("Player", "player_x", x);
+		ini_write_real("Player", "player_y", y);
+		ini_write_real("Player", "brand_new_file", false);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		#endregion /* Save Player Position END */
+		
+		if (global.character_select_in_this_menu == "main_game")
+		{
+			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+		
+			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+			ini_write_string(level_name, "clear_rate", "clear"); /* Make the level clear after checking number of levels cleared */
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		}
 	}
 }
 #endregion /* Clear Level in debug END */
+
+#region /* Movement */
+if (can_move)
+&& (!global.pause)
+&& (global.quit_level == false)
+{
+	if (allow_free_movement)
+	{
+		
+		#region /* Free Movement */
+		if (key_up)
+		&& (point_distance(xx, yy, x, y) < 4)
+		&& (move_delay > 10)
+		{
+			if (y > view_y + 64)
+			{
+				if (!position_meeting(x, y - 32, obj_wall))
+				&& (!position_meeting(x, y - 64, obj_wall))
+				{
+					y -= 64;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (!audio_is_playing(snd_bump))
+					{
+						draw_xscale = 1.5;
+						draw_yscale = 0.5;
+						yy -= 32;
+						scr_audio_play(snd_bump, volume_source.sound);
+					}
+				}
+			}
+		}
+		if (key_left)
+		&& (point_distance(xx, yy, x, y) < 4)
+		&& (move_delay > 10)
+		{
+			if (x > view_x + 64)
+			{
+				if (!position_meeting(x - 32, y, obj_wall))
+				&& (!position_meeting(x - 64, y, obj_wall))
+				{
+					x -= 64;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (!audio_is_playing(snd_bump))
+					{
+						draw_xscale = 0.5;
+						draw_yscale = 1.5;
+						xx -= 32;
+						scr_audio_play(snd_bump, volume_source.sound);
+					}
+				}
+			}
+		}
+		if (key_right)
+		&& (point_distance(xx, yy, x, y) < 4)
+		&& (move_delay > 10)
+		{
+			if (x < view_x + view_width - 64)
+			{
+				if (!position_meeting(x + 32, y, obj_wall))
+				&& (!position_meeting(x + 64, y, obj_wall))
+				{
+					x += 64;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (!audio_is_playing(snd_bump))
+					{
+						draw_xscale = 0.5;
+						draw_yscale = 1.5;
+						xx += 32;
+						scr_audio_play(snd_bump, volume_source.sound);
+					}
+				}
+			}
+		}
+		if (key_down)
+		&& (point_distance(xx, yy, x, y) < 4)
+		&& (move_delay > 10)
+		{
+			if (y < view_y + view_height - 64)
+			{
+				if (!position_meeting(x, y + 32, obj_wall))
+				&& (!position_meeting(x, y + 64, obj_wall))
+				{
+					y += 64;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				{
+					if (!audio_is_playing(snd_bump))
+					{
+						draw_xscale = 1.5;
+						draw_yscale = 0.5;
+						yy += 32;
+						scr_audio_play(snd_bump, volume_source.sound);
+					}
+				}
+			}
+		}
+		#endregion /* Free Movement END */
+		
+	}
+	else
+	{
+		
+		#region /* Movement on paths */
+		if (move_delay > 10 && speed == 0)
+		{
+			if (key_up)
+			|| (mouse_check_button_released(mb_left))
+			&& (point_direction(x, y, mouse_x, mouse_y) > 45)
+			&& (point_direction(x, y, mouse_x, mouse_y) < 135)
+			{
+				if (y > view_y + 64 && !position_meeting(x, y - 32, obj_wall))
+				{
+					vspeed -= move_speed;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				if (!audio_is_playing(snd_bump))
+				{
+					draw_xscale = 1.5;
+					draw_yscale = 0.5;
+					yy -= 32;
+					scr_audio_play(snd_bump, volume_source.sound);
+				}
+			}
+			else
+			if (key_left)
+			|| (mouse_check_button_released(mb_left))
+			&& (point_direction(x, y, mouse_x, mouse_y) > 135)
+			&& (point_direction(x, y, mouse_x, mouse_y) < 225)
+			{
+				if (x > view_x + 64 && !position_meeting(x - 32, y, obj_wall))
+				{
+					hspeed -= move_speed;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				if (!audio_is_playing(snd_bump))
+				{
+					draw_xscale = 0.5;
+					draw_yscale = 1.5;
+					xx -= 32;
+					scr_audio_play(snd_bump, volume_source.sound);
+				}
+			}
+			else
+			if (key_right)
+			|| (mouse_check_button_released(mb_left))
+			&& (point_direction(x, y, mouse_x, mouse_y) > 0)
+			&& (point_direction(x, y, mouse_x, mouse_y) < 45)
+			|| (mouse_check_button_released(mb_left))
+			&& (point_direction(x, y, mouse_x, mouse_y) > 315)
+			&& (point_direction(x, y, mouse_x, mouse_y) < 360)
+			{
+				if (x < view_x + view_width - 64 && !position_meeting(x + 32, y, obj_wall))
+				{
+					hspeed += move_speed;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				if (!audio_is_playing(snd_bump))
+				{
+					draw_xscale = 0.5;
+					draw_yscale = 1.5;
+					xx += 32;
+					scr_audio_play(snd_bump, volume_source.sound);
+				}
+			}
+			else
+			if (key_down)
+			|| (mouse_check_button_released(mb_left))
+			&& (point_direction(x, y, mouse_x, mouse_y) > 225)
+			&& (point_direction(x, y, mouse_x, mouse_y) < 315)
+			{
+				if (y < view_y + view_height - 64 && !position_meeting(x, y + 32, obj_wall))
+				{
+					vspeed += move_speed;
+					move_delay = 0;
+					transfer_data = false;
+				}
+				else
+				if (!audio_is_playing(snd_bump))
+				{
+					draw_xscale = 1.5;
+					draw_yscale = 0.5;
+					yy += 32;
+					scr_audio_play(snd_bump, volume_source.sound);
+				}
+			}
+		}
+		#endregion /* Movement on paths END */
+		
+		#region /* Show controls for where you can go */
+		if (move_delay > 10)
+		&& (speed == 0)
+		{
+			if (!place_meeting(x + 4, y, obj_wall))
+			&& (speed == 0)
+			{
+				
+				#region /* Key Right */
+				if (gamepad_is_connected(global.player_slot[1]))
+				&& (global.controls_used_for_menu_navigation == "gamepad")
+				|| (global.always_show_gamepad_buttons)
+				{
+					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, c_white, 1);
+				}
+				else
+				if (global.player_can_play[1])
+				{
+					if (global.player_[inp.key][1][1][action.right] > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player_[inp.key][1][2][action.right] > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
+					}
+				}
+				else
+				if (global.player_can_play[2])
+				{
+					if (global.player_[inp.key][2][1][action.right] > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player_[inp.key][2][2][action.right] > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
+					}
+				}
+				else
+				if (global.player_can_play[3])
+				{
+					if (global.player_[inp.key][3][1][action.right] > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player_[inp.key][3][2][action.right] > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
+					}
+				}
+				else
+				if (global.player_can_play[4])
+				{
+					if (global.player_[inp.key][4][1][action.right] > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
+					}
+					else
+					if (global.player_[inp.key][4][2][action.right] > noone)
+					{
+						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.right], x + 64, y, 0.5, 0.5, 0, c_white, 1);
+					}
+				}
+				#endregion /* Key Right END */
+				
+			}
+			if (!place_meeting(x - 4, y, obj_wall))
+			&& (speed == 0)
+			{
+				
+				#region /* Key Left */
+				if (gamepad_is_connected(global.player_slot[1]))
+				&& (global.controls_used_for_menu_navigation == "gamepad")
+				|| (global.always_show_gamepad_buttons)
+				{
+					scr_draw_gamepad_buttons(gp_padl, x - 64, y, 0.5, c_white, 1);
+				}
+				else
+				
+				{
+					if (global.player_can_play[1])
+					{
+						if (global.player_[inp.key][1][1][action.left] > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player_[inp.key][1][2][action.left] > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
+						}
+					}
+					else
+					if (global.player_can_play[2])
+					{
+						if (global.player_[inp.key][2][1][action.left] > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player_[inp.key][2][2][action.left] > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
+						}
+					}
+					else
+					if (global.player_can_play[3])
+					{
+						if (global.player_[inp.key][3][1][action.left] > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player_[inp.key][3][2][action.left] > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
+						}
+					}
+					else
+					if (global.player_can_play[4])
+					{
+						if (global.player_[inp.key][4][1][action.left] > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
+						}
+						else
+						if (global.player_[inp.key][4][2][action.left] > noone)
+						{
+							draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.left], x - 64, y, 0.5, 0.5, 0, c_white, 1);
+						}
+					}
+				}
+				#endregion /* Key Left END */
+				
+			}
+			if (!place_meeting(x, y + 4, obj_wall))
+			&& (speed == 0)
+			{
+				
+				#region /* Key Down */
+				if (gamepad_is_connected(global.player_slot[1]))
+				&& (global.controls_used_for_menu_navigation == "gamepad")
+				|| (global.always_show_gamepad_buttons)
+				{
+					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, c_white, 1);
+				}
+				else
+				if (global.player_can_play[1])
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (global.player_can_play[2])
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (global.player_can_play[3])
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (global.player_can_play[4])
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.down], x, y + 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				#endregion /* Key Down END */
+				
+			}
+			if (!place_meeting(x, y - 4, obj_wall))
+			&& (speed == 0)
+			{
+				
+				#region /* Key Up */
+				if (gamepad_is_connected(global.player_slot[1]))
+				&& (global.controls_used_for_menu_navigation == "gamepad")
+				|| (global.always_show_gamepad_buttons)
+				{
+					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);
+				}
+				else
+				if (global.player_can_play[1])
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (global.player_can_play[2])
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (global.player_can_play[3])
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (global.player_can_play[4])
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.up], x, y - 64, 0.5, 0.5, 0, c_white, 1);
+				}
+				#endregion /* Key Up END */
+				
+			}
+		}
+		#endregion /* Show controls for where you can go END */
+		
+	}
+}
+#endregion /* Movement END */
 
 #region /* Menu cursor image speed */
 menu_cursor_index += 0.3;

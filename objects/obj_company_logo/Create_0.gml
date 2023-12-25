@@ -63,8 +63,11 @@ else
 if (os_type == os_switch)
 {
 	global.free_communication_available = switch_free_communication_available(); /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = switch_free_communication_available when done debugging */
-	global.chosen_controller_used = 2; /* What controller buttons to use for button prompts */
-	/* 0 = xboxone, 1 = xboxseriesxs, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5 */
+	global.chosen_controller_used[1] = 3; /* What controller buttons to use for button prompts */
+	global.chosen_controller_used[2] = 3;
+	global.chosen_controller_used[3] = 3;
+	global.chosen_controller_used[4] = 3;
+	/* 0 = autodetect, 1 = xboxone, 2 = xboxseriesxs, 3 = nintendoswitch, 4 = playstation4, 5 = playstation5 */
 	global.show_prompt_when_changing_to_gamepad = false;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = false;	
 	global.enable_open_custom_folder = false; /* Enable the option to open custom folders in the game */
@@ -74,8 +77,11 @@ if (os_type == os_switch)
 else
 {
 	global.free_communication_available = true; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = true when done debugging */
-	global.chosen_controller_used = 0; /* What controller buttons to use for button prompts */
-	/* 0 = xboxone, 1 = xboxseriesxs, 2 = nintendoswitch, 3 = playstation4, 4 = playstation5 */
+	global.chosen_controller_used[1] = 0; /* What controller buttons to use for button prompts */
+	global.chosen_controller_used[2] = 0;
+	global.chosen_controller_used[3] = 0;
+	global.chosen_controller_used[4] = 0;
+	/* 0 = autodetect, 1 = xboxone, 2 = xboxseriesxs, 3 = nintendoswitch, 4 = playstation4, 5 = playstation5 */
 	global.show_prompt_when_changing_to_gamepad = true;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = true;
 	global.enable_open_custom_folder = true; /* Enable the option to open custom folders in the game */
