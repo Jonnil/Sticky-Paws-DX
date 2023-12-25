@@ -5,7 +5,7 @@ function scr_draw_darken_screen_when_window_is_unfocused()
 	if (!window_has_focus()) /* First check if window is unfocused before doing any other code */
 	{
 		if (self == obj_pause)
-		&& (hide_menu_for_clean_screenshots == false)
+		&& (!hide_menu_for_clean_screenshots)
 		|| (self != obj_pause)
 		{
 			draw_set_alpha(0.5);

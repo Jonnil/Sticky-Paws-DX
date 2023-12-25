@@ -1,5 +1,5 @@
-var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
+var get_window_height = display_get_gui_height();
 
 if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
 {
@@ -15,6 +15,29 @@ else
 	var quit_to_title_name = "Quit to Title";
 }
 
+#region /* Pause Screenshot */
+if (sprite_exists(global.pause_screenshot))
+{
+	var spr_width = sprite_get_width(global.pause_screenshot);
+	var spr_height = sprite_get_height(global.pause_screenshot);
+	
+	var scale_x = get_window_width / spr_width;
+	var scale_y = get_window_height / spr_height;
+	
+	draw_sprite_ext(global.pause_screenshot, 0, 0, 0, scale_x, scale_y, 0, c_white, 1);
+}
+#endregion /* Pause Screenshot END */
+
+#region /* Darker Background */
+if (!hide_menu_for_clean_screenshots)
+{
+	draw_set_alpha(0.5 * fade_in_pause_alpha);
+	draw_rectangle_color(0, 0, get_window_width, get_window_height, c_red, c_blue, c_blue, c_red, false);
+	draw_rectangle_color(0, 0, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
+	draw_set_alpha(1);
+}
+#endregion /* Darker Background END */
+
 #region /* Which player is controlling the pause menu? */
 draw_set_alpha(fade_in_pause_alpha);
 draw_set_halign(fa_center);
@@ -24,7 +47,7 @@ hud_show_big_collectibles_y = lerp(hud_show_big_collectibles_y, 160, 0.1);
 
 #region /* Big Collectibles */
 if (global.pause_room == rm_leveleditor)
-&& (hide_menu_for_clean_screenshots == false)
+&& (!hide_menu_for_clean_screenshots)
 {
 	
 	#region /* Big Collectible 1 */
@@ -116,7 +139,7 @@ if (global.pause_room == rm_leveleditor)
 #endregion /* Big Collectibles */
 
 #region /* Hide menu for clean screenshots text */
-if (hide_menu_for_clean_screenshots == false)
+if (!hide_menu_for_clean_screenshots)
 && (in_settings == false)
 && (os_type != os_ios)
 && (os_type != os_android)
@@ -152,7 +175,7 @@ if (hide_menu_for_clean_screenshots == false)
 }
 #endregion /* Hide menu for clean screenshots text END */
 
-if (hide_menu_for_clean_screenshots == false)
+if (!hide_menu_for_clean_screenshots)
 {
 	
 	#region /* Games Logo in top left corner */

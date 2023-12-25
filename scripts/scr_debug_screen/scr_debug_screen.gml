@@ -58,7 +58,6 @@ function scr_debug_screen()
 	
 	#region /* All Instance Count */
 	if (global.show_all_instance_count) {
-		var instance_count_target = 200;
 		if (global.show_all_instance_count && global.debug_screen) {
 			draw_sprite_ext(spr_lock_icon, 0, 16, all_instance_count_y, 1, 1, 0, c_white, 1);
 		}
@@ -66,14 +65,7 @@ function scr_debug_screen()
 		#region /* Show what objects are currently in the room */
 		for (var i = 0; i < 100; ++i;) {
 			var all_instance_count_color = make_color_hsv(instance_number(i), 255, 255)
-			if (instance_exists(i) && instance_number(i) >= instance_count_target) {
-				var instance_count_wave = scr_wave(-3, +3, 0.5);
-			}
-			else
-			if (instance_exists(i)) {
-				var instance_count_wave = 0;
-			}
-			scr_draw_text_outlined(32, all_instance_count_y + (8 * i) + instance_count_wave, string(object_get_name(i)) + ": " + string(instance_number(i)),,, all_instance_count_color);
+			scr_draw_text_outlined(32, all_instance_count_y + (8 * i), string(object_get_name(i)) + ": " + string(instance_number(i)),,, all_instance_count_color);
 		}
 		#endregion /* Show what objects are currently in the room END */
 		

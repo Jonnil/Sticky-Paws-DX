@@ -70,7 +70,7 @@ if (keyboard_check_pressed(ord("Y")))
 	|| (menu == "quit")
 	|| (menu == "report")
 	{
-		if (hide_menu_for_clean_screenshots == false)
+		if (!hide_menu_for_clean_screenshots)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (in_settings == false)
 		&& (menu != "quit_game_yes")
@@ -240,7 +240,7 @@ if (keyboard_check_pressed(vk_escape))
 #endregion /* Return to game END */
 
 /* PAUSE LEVEL SELECT / LEVEL EDITOR MENU */
-if (hide_menu_for_clean_screenshots == false)
+if (!hide_menu_for_clean_screenshots)
 {
 	if (room == rm_world_map)
 	&& (show_loading_icon == false)
