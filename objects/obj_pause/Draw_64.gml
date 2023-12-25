@@ -276,7 +276,7 @@ if (!hide_menu_for_clean_screenshots)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
 				draw_sprite_ext(spr_icons_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
-				if (global.goal_active == false)
+				if (!global.goal_active)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Restart"), "restart", "restart", c_lime, fade_in_pause_alpha);
 					if (holding_key_timer > 0)
@@ -293,7 +293,7 @@ if (!hide_menu_for_clean_screenshots)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
 				draw_sprite_ext(spr_icons_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
-				if (global.goal_active == false)
+				if (!global.goal_active)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit", c_red, fade_in_pause_alpha);
 				}

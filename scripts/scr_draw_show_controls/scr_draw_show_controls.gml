@@ -113,7 +113,7 @@ function scr_draw_show_controls(what_player = 1)
 			&& (instance_exists(player_instance))
 			&& (player_instance.partner_character == false)
 			&& (player_can_play)
-			&& (global.goal_active == false)
+			&& (!global.goal_active)
 			{
 				draw_set_halign(fa_left);
 				draw_set_valign(fa_middle);
@@ -439,7 +439,7 @@ function scr_draw_show_controls(what_player = 1)
 				
 			}
 			else
-			if (global.goal_active == false)
+			if (!global.goal_active)
 			&& (lives > 0)
 			{
 				draw_set_halign(fa_left);
