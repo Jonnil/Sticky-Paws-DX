@@ -767,7 +767,6 @@
     {"name":"inst_7299AC25","path":"rooms/rm_world_map/rm_world_map.yy",},
     {"name":"inst_343A6B87","path":"rooms/rm_world_map/rm_world_map.yy",},
     {"name":"inst_3ACB7B06","path":"rooms/rm_world_map/rm_world_map.yy",},
-    {"name":"inst_1E64553","path":"rooms/rm_world_map/rm_world_map.yy",},
     {"name":"inst_67A8128","path":"rooms/rm_world_map/rm_world_map.yy",},
     {"name":"inst_156BA583","path":"rooms/rm_world_map/rm_world_map.yy",},
     {"name":"inst_34AE0C38","path":"rooms/rm_world_map/rm_world_map.yy",},
@@ -1452,6 +1451,7 @@
     {"name":"inst_7019CD3F","path":"rooms/rm_world_map/rm_world_map.yy",},
     {"name":"inst_38278712","path":"rooms/rm_world_map/rm_world_map.yy",},
     {"name":"inst_C675C07","path":"rooms/rm_world_map/rm_world_map.yy",},
+    {"name":"inst_4C48A655","path":"rooms/rm_world_map/rm_world_map.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -2216,8 +2216,8 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_7299AC25","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_map_path_turn","path":"objects/obj_map_path_turn/obj_map_path_turn.yy",},"properties":[],"rotation":180.0,"scaleX":1.0,"scaleY":1.0,"x":800.0,"y":736.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_343A6B87","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_map_exit","path":"objects/obj_map_exit/obj_map_exit.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":736.0,"y":832.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_3ACB7B06","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":800.0,"y":672.0,},
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_1E64553","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_map_exit","path":"objects/obj_map_exit/obj_map_exit.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":768.0,"y":704.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_67A8128","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_map_path_turn","path":"objects/obj_map_path_turn/obj_map_path_turn.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":640.0,"y":704.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_4C48A655","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":768.0,"y":704.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances_3","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_459113F9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_map_tree_pink_darker","path":"objects/obj_map_tree_pink_darker/obj_map_tree_pink_darker.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":960.0,"y":0.0,},

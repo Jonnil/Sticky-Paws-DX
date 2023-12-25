@@ -541,7 +541,10 @@ function scr_draw_online_download_list()
 					{
 						show_level_editor_corner_menu = true;
 					}
-					if (array_length(thumbnail_level_name) > 1)
+					if (variable_instance_exists(self, "thumbnail_level_name"))
+					&& (variable_instance_exists(self, "thumbnail_clear_check"))
+					&& (variable_instance_exists(self, "thumbnail_level_id"))
+					&& (array_length(thumbnail_level_name) > 1)
 					&& (array_length(thumbnail_clear_check) > 1)
 					&& (array_length(thumbnail_level_id) > 1)
 					{

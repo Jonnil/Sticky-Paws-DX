@@ -100,12 +100,13 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 			#region /* Draw if level have been Clear Checked on top of level thumbnail */
 			if (room == rm_title)
 			{
-				if (is_array(thumbnail_clear_check))
+				if (variable_instance_exists(self, "thumbnail_clear_check"))
+				&& (variable_instance_exists(self, "thumbnail_level_id"))
+				&& (is_array(thumbnail_clear_check))
 				&& (array_length(thumbnail_clear_check) > 0)
 				&& (is_array(thumbnail_level_id))
 				&& (array_length(thumbnail_level_id) > 0)
 				&& (!level_editor_template_select && i >= 1)
-				&& (i >= 0)
 				&& (i < array_length(thumbnail_clear_check))
 				&& (i < array_length(thumbnail_level_id))
 				{

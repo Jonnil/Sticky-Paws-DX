@@ -11,10 +11,6 @@ allowed_to_load_template_level = false;
 masked_username = "";
 masked_character_name = "";
 masked_level_name = "";
-thumbnail_level_name[0] = "";
-thumbnail_level_description = "";
-thumbnail_level_id = "";
-thumbnail_level_username = "";
 draw_download_name = "";
 spr_download_list_thumbnail = noone;
 top_left_of_thumbnail_y = 0;
@@ -38,6 +34,9 @@ key_right = noone;
 
 thumbnail_clear_check[0] = noone;
 thumbnail_level_id[0] = "";
+thumbnail_level_name[0] = "";
+thumbnail_level_description = "";
+thumbnail_level_username = "";
 
 character_portrait_for_player_update_directory[1] = false;
 character_portrait_for_player_update_directory[2] = false;

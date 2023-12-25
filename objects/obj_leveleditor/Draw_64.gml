@@ -727,7 +727,7 @@ if (!global.actually_play_edited_level)
 				{
 					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224, l10n_text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
 					var full_level_map_size = (get_window_width <= 1350) ? 0.75 : 1;
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 32, string_replace_all(game_save_id + "\custom_levels\\full_level_map_" + global.level_name + ".png", "\\", "/"), global.default_text_size * full_level_map_size, c_black, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 32, string_replace_all(game_save_id + "\custom_levels\\full_level_map_" + string(global.level_name) + ".png", "\\", "/"), global.default_text_size * full_level_map_size, c_black, c_white, 1);
 				}
 				else
 				{
@@ -755,8 +755,8 @@ if (!global.actually_play_edited_level)
 						warning_text = "height";
 					
 					/* Display the warning message */
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 160 + 32, l10n_text("Warning! Level " + warning_text + " is more than 8192 pixels, it might not screenshot the entire level"), global.default_text_size, c_black, c_white, 1);
-					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 160 + 32, l10n_text("Warning! Level " + warning_text + " is more than 8192 pixels, it might not screenshot the entire level"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 2));
+					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 160 + 32, l10n_text("Warning! Level " + string(warning_text) + " is more than 8192 pixels, it might not screenshot the entire level"), global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 160 + 32, l10n_text("Warning! Level " + string(warning_text) + " is more than 8192 pixels, it might not screenshot the entire level"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 2));
 				}
 				#endregion /* Warn the player if the level is bigger than 8192 in any direction END */
 				
@@ -904,13 +904,13 @@ if (!global.actually_play_edited_level)
 				draw_set_valign(fa_middle);
 				
 				#region /* Inputed Name Text */
-				if (name_enter_blink< 1)
+				if (name_enter_blink < 1)
 				{
-					scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + level_name + "|", global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, l10n_text("Type a name on the keyboard for level name") + "\n" + l10n_text("Level Name") + ": " + string(level_name) + "|", global.default_text_size, c_black, c_white, 1);
 				}
 				else
 				{
-					scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, "Type a name on the keyboard for level name\nPress Enter when done typing\n \nLevel Name: " + level_name, global.default_text_size, c_black, c_white, 1);
+					scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]) * 0.5 -400 - 2, camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5, l10n_text("Type a name on the keyboard for level name") + "\n" + l10n_text("Level Name") + ": " + string(level_name), global.default_text_size, c_black, c_white, 1);
 				}
 				#endregion /* Inputed Name Text END */
 				
@@ -1111,7 +1111,7 @@ if (!global.actually_play_edited_level)
 			
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(display_get_gui_width() - level_name_x_offset, display_get_gui_height() - 16, level_name_masked, global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() - level_name_x_offset, display_get_gui_height() - 16, string(level_name_masked), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Show text in bottom right of screen what the current custom level name is. This will make it less confusing what level you are editing END */
 		
@@ -1873,7 +1873,7 @@ if (!global.actually_play_edited_level)
 			draw_rectangle_color(cursor_x + 16, cursor_y - 16, cursor_x + 240, cursor_y + 16, c_white, c_white, c_white, c_white, false);
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(cursor_x + 24, cursor_y, tooltip, global.default_text_size, c_white, c_black, 1);
+			scr_draw_text_outlined(cursor_x + 24, cursor_y, string(tooltip), global.default_text_size, c_white, c_black, 1);
 		}
 		if (show_tooltip > 100)
 		{
@@ -1955,7 +1955,7 @@ if (!global.actually_play_edited_level)
 		if (selected_menu_alpha > 0)
 		{
 			draw_set_halign(fa_right);
-			scr_draw_text_outlined(icons_object_category_terrain_x - 42, 32, category_title, global.default_text_size, c_black, c_white, selected_menu_alpha);
+			scr_draw_text_outlined(icons_object_category_terrain_x - 42, 32, string(category_title), global.default_text_size, c_black, c_white, selected_menu_alpha);
 		}
 		
 		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_terrain_x - 32, 0 + icons_at_top_y, icons_object_category_terrain_x + 32, + 64 + icons_at_top_y))
@@ -2176,7 +2176,7 @@ if (!global.actually_play_edited_level)
 		}
 		if (autosave_text != "")
 		{
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, autosave_text, global.default_text_size * 2, c_black, autosave_text_color, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, string(autosave_text), global.default_text_size * 2, c_black, autosave_text_color, 1);
 			var autosave_countdown = ceil((autosave_timer - 18000) / -60);
 			if (autosave_text == l10n_text("Autosave in " + string(autosave_countdown)))
 			{

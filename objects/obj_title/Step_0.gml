@@ -192,7 +192,10 @@ if (menu == "load_custom_level")
 			file_find_close();
 			
 			#region /* Get clear check and level ID information */
-			if (is_array(thumbnail_level_name))
+			if (variable_instance_exists(self, "thumbnail_level_name"))
+			&& (variable_instance_exists(self, "thumbnail_clear_check"))
+			&& (variable_instance_exists(self, "thumbnail_level_id"))
+			&& (is_array(thumbnail_level_name))
 			&& (array_length(thumbnail_level_name) > 0)
 			&& (is_array(thumbnail_clear_check))
 			&& (array_length(thumbnail_clear_check) > 0)
