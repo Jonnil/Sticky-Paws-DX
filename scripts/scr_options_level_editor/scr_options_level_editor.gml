@@ -404,7 +404,7 @@ function scr_options_level_editor()
 			}
 			#endregion /* Menu Navigation END */
 			
-			if (global.controls_used_for_menu_navigation == "gamepad")
+			if (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1);
 			}
@@ -2666,7 +2666,7 @@ function scr_options_level_editor()
 			}
 			#endregion /* Background Offset Menu Navigation END */
 			
-			if (global.controls_used_for_menu_navigation == "gamepad")
+			if (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1);
 			}
@@ -2926,7 +2926,7 @@ function scr_options_level_editor()
 			}
 			#endregion /* Background Parallax Menu Navigation END */
 			
-			if (global.controls_used_for_menu_navigation == "gamepad")
+			if (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1);
 			}
@@ -3165,7 +3165,7 @@ function scr_options_level_editor()
 			}
 			#endregion /* Background Scale Save level_information.ini END */
 			
-			if (global.controls_used_for_menu_navigation == "gamepad")
+			if (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1);
 			}

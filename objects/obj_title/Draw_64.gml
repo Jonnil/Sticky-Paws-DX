@@ -68,7 +68,7 @@ if (global.enable_options_for_pc)
 if (os_type != os_ios)
 && (os_type != os_android)
 && (global.enable_options_for_pc)
-&& (global.controls_used_for_menu_navigation != "controller")
+&& (global.controls_used_for_navigation != "gamepad")
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
@@ -83,7 +83,7 @@ if (os_type != os_ios)
 		draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
 	}
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	{
 		draw_set_alpha(0.5);
 		draw_roundrect_color_ext(0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42, 50, 50, c_white, c_white, false);
@@ -91,7 +91,7 @@ if (os_type != os_ios)
 	}
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
 	&& (mouse_check_button_released(mb_left))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	&& (menu != "quit_game_no")
 	&& (menu != "quit_game_yes")
 	{

@@ -96,7 +96,7 @@ function scr_character_select_menu_draw()
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, play_the_game_text_y_lerp - 32, get_window_width, play_the_game_text_y_lerp + 32))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				draw_rectangle_color(0, play_the_game_text_y_lerp - 32 - 4, get_window_width, play_the_game_text_y_lerp + 32 + 4, c_red, c_yellow, c_yellow, c_red, false);
 			}
@@ -115,7 +115,7 @@ function scr_character_select_menu_draw()
 				
 				#region /* Show Key A on screen */
 				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "gamepad")
+				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, c_white, 1);
@@ -327,7 +327,7 @@ function scr_character_select_menu_draw()
 			&& (!open_sub_menu)
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_character_list_y + 2, 370, draw_online_character_list_y + 41))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!max_custom_characters_reached)
@@ -372,7 +372,7 @@ function scr_character_select_menu_draw()
 				var player_join_x = window_width_half + player_display_x[1];
 				var player_join_y = window_height_half;
 				draw_set_halign(fa_right);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_menu_navigation == "mouse")
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_navigation == "mouse")
 				{
 					player_menu[1] = "select_character";
 					menu = "select_character";
@@ -388,12 +388,11 @@ function scr_character_select_menu_draw()
 				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 1 Join"), global.default_text_size, player_join_outline_color, global.player_color[1], 1);
 				
 				#region /* Key A */
-				var controls_used_for_navigation = global.controls_used_for_menu_navigation;
 				var player1_key_accept_1 = global.player_[inp.key][1][1][action.accept];
 				var player1_key_accept_2 = global.player_[inp.key][1][2][action.accept];
-				if ((menu == "select_character" && controls_used_for_navigation != "mouse") || controls_used_for_navigation == "mouse")
+				if ((menu == "select_character" && global.controls_used_for_navigation != "mouse") || global.controls_used_for_navigation == "mouse")
 				{
-					if (gamepad_is_connected(global.player_slot[1]) && (controls_used_for_navigation == "controller" || global.always_show_gamepad_buttons))
+					if (gamepad_is_connected(global.player_slot[1]) && (global.controls_used_for_navigation == "gamepad" || global.always_show_gamepad_buttons))
 					{
 						scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], player_join_x + 90, player_join_y, 0.5, c_white, 1);
 					}
@@ -429,7 +428,7 @@ function scr_character_select_menu_draw()
 				var player_join_x = window_width_half + player_display_x[2];
 				var player_join_y = window_height_half + 32;
 				draw_set_halign(fa_right);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_menu_navigation == "mouse")
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_navigation == "mouse")
 				{
 					player_menu[2] = "select_character";
 					menu = "select_character";
@@ -445,7 +444,7 @@ function scr_character_select_menu_draw()
 				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 2 Join"), global.default_text_size, player_join_outline_color, global.player_color[2], 1);
 				
 				#region /* Key A */
-				var controls_used_for_navigation = global.controls_used_for_menu_navigation;
+				var controls_used_for_navigation = global.controls_used_for_navigation;
 				var player2_key_accept_1 = global.player_[inp.key][2][1][action.accept];
 				var player2_key_accept_2 = global.player_[inp.key][2][2][action.accept];
 				if (gamepad_is_connected(global.player_slot[2]) || global.always_show_gamepad_buttons)
@@ -483,7 +482,7 @@ function scr_character_select_menu_draw()
 				var player_join_x = window_width_half + player_display_x[3];
 				var player_join_y = window_height_half;
 				draw_set_halign(fa_right);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_menu_navigation == "mouse")
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_navigation == "mouse")
 				{
 					player_menu[3] = "select_character";
 					menu = "select_character";
@@ -499,7 +498,7 @@ function scr_character_select_menu_draw()
 				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 3 Join"), global.default_text_size, player_join_outline_color, global.player_color[3], 1);
 				
 				#region /* Key A */
-				var controls_used_for_navigation = global.controls_used_for_menu_navigation;
+				var controls_used_for_navigation = global.controls_used_for_navigation;
 				var player3_key_accept_1 = global.player_[inp.key][3][1][action.accept];
 				var player3_key_accept_2 = global.player_[inp.key][3][2][action.accept];
 				if (gamepad_is_connected(global.player_slot[3]) || global.always_show_gamepad_buttons)
@@ -537,7 +536,7 @@ function scr_character_select_menu_draw()
 				var player_join_x = window_width_half + player_display_x[4];
 				var player_join_y = window_height_half + 32;
 				draw_set_halign(fa_right);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_menu_navigation == "mouse")
+				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_navigation == "mouse")
 				{
 					player_menu[4] = "select_character";
 					menu = "select_character";
@@ -553,7 +552,7 @@ function scr_character_select_menu_draw()
 				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 4 Join"), global.default_text_size, player_join_outline_color, global.player_color[4], 1);
 				
 				#region /* Key A */
-				var controls_used_for_navigation = global.controls_used_for_menu_navigation;
+				var controls_used_for_navigation = global.controls_used_for_navigation;
 				var player4_key_accept_1 = global.player_[inp.key][4][1][action.accept];
 				var player4_key_accept_2 = global.player_[inp.key][4][2][action.accept];
 				if (gamepad_is_connected(global.player_slot[4]) || global.always_show_gamepad_buttons)

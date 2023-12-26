@@ -360,7 +360,7 @@ if (global.play_edited_level) /* When playtesting the level */
 	
 	#region /* Draw Pause Key */
 	if (gamepad_is_connected(global.player_slot[1]))
-	&& (global.controls_used_for_menu_navigation == "gamepad")
+	&& (global.controls_used_for_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
 		scr_draw_gamepad_buttons(gp_select, 32 + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1);
@@ -421,7 +421,7 @@ if (global.play_edited_level) /* When playtesting the level */
 	
 	/* Press Invincibility button */
 	if (mouse_check_button_released(mb_left))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), playtest_invincibility_x - 32, display_get_gui_height() - 64, playtest_invincibility_x + 32, display_get_gui_height() + 64 - 1))
 	{
 		global.playtest_invincibility = not global.playtest_invincibility;
@@ -429,7 +429,7 @@ if (global.play_edited_level) /* When playtesting the level */
 	
 	/* Press Moonjump button */
 	if (mouse_check_button_released(mb_left))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), playtest_moonjump_x - 32, display_get_gui_height() - 64, playtest_moonjump_x + 32, display_get_gui_height() + 64 - 1))
 	{
 		global.playtest_moonjump = not global.playtest_moonjump;

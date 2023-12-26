@@ -262,7 +262,7 @@ function scr_options_custom_resources()
 			{
 				draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (resource_pack_y), 0.5, 0.5, 0, c_white, 1);
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (resource_pack_y) - 16, resource_pack_x - 32 + 16, 20 + (resource_pack_y) + 16))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					menu = "resource_pack";
 					can_navigate_settings_sidebar = false;
@@ -279,7 +279,7 @@ function scr_options_custom_resources()
 			{
 				draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (resource_pack_y), 0.5, 0.5, 0, c_white, 1);
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (resource_pack_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (resource_pack_y) + 16))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					menu = "resource_pack";
 					can_navigate_settings_sidebar = false;
@@ -299,7 +299,7 @@ function scr_options_custom_resources()
 			&& (menu == "resource_pack")
 			|| (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (resource_pack_y) - 16, resource_pack_x - 32 + 16, 20 + (resource_pack_y) + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "resource_pack";
 				if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -320,7 +320,7 @@ function scr_options_custom_resources()
 			&& (menu == "resource_pack")
 			|| (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (resource_pack_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (resource_pack_y) + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "resource_pack";
 				if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -371,7 +371,7 @@ function scr_options_custom_resources()
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (custom_title_background_y), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_background_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_background_y) + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "title_background";
 				can_navigate_settings_sidebar = false;
@@ -389,7 +389,7 @@ function scr_options_custom_resources()
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (custom_title_background_y), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_background_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_background_y) + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "title_background";
 				can_navigate_settings_sidebar = false;
@@ -406,7 +406,7 @@ function scr_options_custom_resources()
 		&& (menu == "title_background")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_background_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_background_y) + 16))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_background";
 			if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -469,7 +469,7 @@ function scr_options_custom_resources()
 		&& (menu == "title_background")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_background_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_background_y) + 16))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_background";
 			if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -549,7 +549,7 @@ function scr_options_custom_resources()
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (custom_title_background_scale_y), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_background_scale_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_background_scale_y) + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "title_background_scale";
 				can_navigate_settings_sidebar = false;
@@ -560,7 +560,7 @@ function scr_options_custom_resources()
 		}
 		draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (custom_title_background_scale_y), 0.5, 0.5, 0, c_white, 1);
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_background_scale_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_background_scale_y) + 16))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_background_scale";
 			can_navigate_settings_sidebar = false;
@@ -576,7 +576,7 @@ function scr_options_custom_resources()
 		&& (menu == "title_background_scale")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_background_scale_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_background_scale_y) + 16))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_background_scale";
 			if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -601,7 +601,7 @@ function scr_options_custom_resources()
 		&& (menu == "title_background_scale")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_background_scale_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_background_scale_y) + 16))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_background_scale";
 			if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -637,7 +637,7 @@ function scr_options_custom_resources()
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (background_layer_x_scroll_y), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (background_layer_x_scroll_y) - 16, resource_pack_x - 32 + 16, 20 + (background_layer_x_scroll_y) + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "background_layer_x_scroll";
 				can_navigate_settings_sidebar = false;
@@ -651,7 +651,7 @@ function scr_options_custom_resources()
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (background_layer_x_scroll_y), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_x_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_x_scroll_y) + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "background_layer_x_scroll";
 				can_navigate_settings_sidebar = false;
@@ -669,7 +669,7 @@ function scr_options_custom_resources()
 		&& (menu == "background_layer_x_scroll")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (background_layer_x_scroll_y) - 16, resource_pack_x - 32 + 16, 20 + (background_layer_x_scroll_y) + 16))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "background_layer_x_scroll";
 			if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -691,7 +691,7 @@ function scr_options_custom_resources()
 		&& (menu == "background_layer_x_scroll")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_x_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_x_scroll_y) + 16))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "background_layer_x_scroll";
 			if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -721,7 +721,7 @@ function scr_options_custom_resources()
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (background_layer_y_scroll_y), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (background_layer_y_scroll_y) - 16, resource_pack_x - 32 + 16, 20 + (background_layer_y_scroll_y) + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "background_layer_y_scroll";
 				can_navigate_settings_sidebar = false;
@@ -735,7 +735,7 @@ function scr_options_custom_resources()
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (background_layer_y_scroll_y), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_y_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_y_scroll_y) + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "background_layer_y_scroll";
 				can_navigate_settings_sidebar = false;
@@ -753,7 +753,7 @@ function scr_options_custom_resources()
 		&& (menu == "background_layer_y_scroll")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (background_layer_y_scroll_y) - 16, resource_pack_x - 32 + 16, 20 + (background_layer_y_scroll_y) + 16))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "background_layer_y_scroll";
 			if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -775,7 +775,7 @@ function scr_options_custom_resources()
 		&& (menu == "background_layer_y_scroll")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (background_layer_y_scroll_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (background_layer_y_scroll_y) + 16))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "background_layer_y_scroll";
 			if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -845,7 +845,7 @@ function scr_options_custom_resources()
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_left, resource_pack_x - 32, 20 + (custom_title_logo_y), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_logo_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_logo_y) + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "title_logo";
 				can_navigate_settings_sidebar = false;
@@ -864,7 +864,7 @@ function scr_options_custom_resources()
 		{
 			draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (custom_title_logo_y), 0.5, 0.5, 0, c_white, 1);
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_logo_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_logo_y) + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				menu = "title_logo";
 				can_navigate_settings_sidebar = false;
@@ -881,7 +881,7 @@ function scr_options_custom_resources()
 		&& (menu == "title_logo")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 32 - 16, 20 + (custom_title_logo_y) - 16, resource_pack_x - 32 + 16, 20 + (custom_title_logo_y) + 16))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_logo";
 			if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -918,7 +918,7 @@ function scr_options_custom_resources()
 		&& (menu == "title_logo")
 		|| (mouse_check_button_released(mb_left))
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x +resource_pack_right_arrow_x - 16, 20 + (custom_title_logo_y) - 16, resource_pack_x +resource_pack_right_arrow_x + 16, 20 + (custom_title_logo_y) + 16))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			menu = "title_logo";
 			if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -968,7 +968,7 @@ function scr_options_custom_resources()
 		}
 		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x, 20 + (open_resource_pack_y) + 2, resource_pack_x + 371, 20 + (open_resource_pack_y) + 41))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "open_resource_pack_folder")
@@ -980,7 +980,7 @@ function scr_options_custom_resources()
 		}
 		else
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x, 20 + (custom_title_background_open_y) + 2, resource_pack_x + 371, 20 + (custom_title_background_open_y) + 41))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "open_title_background_folder")
@@ -992,7 +992,7 @@ function scr_options_custom_resources()
 		}
 		else
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x, 20 + (custom_title_logo_open_y) + 2, resource_pack_x + 371, 20 + (custom_title_logo_open_y) + 41))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "open_title_logo_folder")
@@ -1006,7 +1006,7 @@ function scr_options_custom_resources()
 		draw_menu_checkmark(resource_pack_x - 64, can_load_custom_level_assets_y, l10n_text("Load Custom Level Assets"), "can_load_custom_level_assets", global.can_load_custom_level_assets);
 		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, resource_pack_x - 64, can_load_custom_level_assets_y - 6, resource_pack_x - 64 + 646, can_load_custom_level_assets_y + 38))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "can_load_custom_level_assets")

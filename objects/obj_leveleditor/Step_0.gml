@@ -208,7 +208,7 @@ if (!global.actually_play_edited_level)
 	|| (show_selected_menu)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, display_get_gui_width(), 192)) /* Can't place objects when clicking the object category buttons or objects in toolbar */
 	{
-		if (global.controls_used_for_menu_navigation == "mouse")
+		if (global.controls_used_for_navigation == "mouse")
 		{
 			hovering_over_icons = true;
 		}
@@ -583,7 +583,7 @@ if (!global.actually_play_edited_level)
 		#endregion /* Set view speed here before setting other view speed code END */
 		
 		#region /* Controller Input Changes */
-		if (global.controls_used_for_menu_navigation == "keyboard")
+		if (global.controls_used_for_navigation == "keyboard")
 		&& (!navigate_camera_with_arrowkeys)
 		&& (!pause)
 		{
@@ -604,13 +604,13 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		else
-		if (global.controls_used_for_menu_navigation == "mouse")
+		if (global.controls_used_for_navigation == "mouse")
 		&& (navigate_camera_with_arrowkeys)
 		{
 			navigate_camera_with_arrowkeys = false;
 		}
 		
-		if (global.controls_used_for_menu_navigation != "controller")
+		if (global.controls_used_for_navigation != "gamepad")
 		&& (navigate_camera_with_arrowkeys)
 		{
 			/* If you are controlling the cursor with arrow keys, make the cursor appear in the middle of the screen */
@@ -622,7 +622,7 @@ if (!global.actually_play_edited_level)
 			controller_y = y;
 		}
 		else
-		if (global.controls_used_for_menu_navigation == "mouse")
+		if (global.controls_used_for_navigation == "mouse")
 		{
 			navigate_camera_with_arrowkeys = false;
 			x = mouse_x;
@@ -635,7 +635,7 @@ if (!global.actually_play_edited_level)
 			camera_set_view_pos(view_camera[view_current], cam_x, cam_y); /* Move actual camera */
 		}
 		else
-		if (global.controls_used_for_menu_navigation == "gamepad")
+		if (global.controls_used_for_navigation == "gamepad")
 		{
 			x = controller_x;
 			y = controller_y;
@@ -739,7 +739,7 @@ if (!global.actually_play_edited_level)
 		if (!pause)
 		{
 			if (gamepad_axis_value(global.player_slot[1], gp_axisrv) < 0)
-			|| (global.controls_used_for_menu_navigation != "controller")
+			|| (global.controls_used_for_navigation != "gamepad")
 			&& (key_up)
 			&& (!key_down)
 			&& (!pause)
@@ -754,7 +754,7 @@ if (!global.actually_play_edited_level)
 				}
 			}
 			if (gamepad_axis_value(global.player_slot[1], gp_axisrv) > +0.3)
-			|| (global.controls_used_for_menu_navigation != "controller")
+			|| (global.controls_used_for_navigation != "gamepad")
 			&& (key_down)
 			&& (!key_up)
 			&& (!pause)
@@ -769,7 +769,7 @@ if (!global.actually_play_edited_level)
 				}
 			}
 			if (gamepad_axis_value(global.player_slot[1], gp_axisrh) < -0.3)
-			|| (global.controls_used_for_menu_navigation != "controller")
+			|| (global.controls_used_for_navigation != "gamepad")
 			&& (key_left)
 			&& (!key_right)
 			&& (!pause)
@@ -784,7 +784,7 @@ if (!global.actually_play_edited_level)
 				}
 			}
 			if (gamepad_axis_value(global.player_slot[1], gp_axisrh) > +0.3)
-			|| (global.controls_used_for_menu_navigation != "controller")
+			|| (global.controls_used_for_navigation != "gamepad")
 			&& (key_right)
 			&& (!key_left)
 			&& (!pause)
@@ -1808,7 +1808,7 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 		
 		#region /* Click Undo icon */
 		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width() - 64, display_get_gui_height() - 64))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			tooltip = "Undo";
 			show_tooltip += 2;
@@ -1823,7 +1823,7 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 		
 		#region /* Click Redo icon */
 		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			tooltip = "Redo";
 			show_tooltip += 2;
@@ -1839,7 +1839,7 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 	#endregion /* Undo and Redo icons END */
 	
 	if (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	{
 		show_tooltip = 0;
 	}
@@ -1857,7 +1857,7 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 			#region /* Easy */
 			if (set_difficulty_mode)
 			&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256 - 64, display_get_gui_height() - 64, display_get_gui_width() - 192 - 64, display_get_gui_height() + 64))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				tooltip = "Show only objects in easy";
 				show_tooltip += 2;
@@ -1881,7 +1881,7 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 			#region /* Normal */
 			if (set_difficulty_mode)
 			&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 192 - 64, display_get_gui_height() - 64, display_get_gui_width() - 128 - 64, display_get_gui_height() + 64))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				tooltip = "Show only objects in normal";
 				show_tooltip += 2;
@@ -1905,7 +1905,7 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 			#region /* Hard */
 			if (set_difficulty_mode)
 			&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128 - 64, display_get_gui_height() - 64, display_get_gui_width() - 64 - 64, display_get_gui_height() + 64))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				tooltip = "Show only objects in hard";
 				show_tooltip += 2;
@@ -1928,7 +1928,7 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 			
 			#region /* Set Difficulty Mode / Back */
 			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64 - 64, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				tooltip = "Set what objects should appear on what difficulty";
 				show_tooltip += 2;
@@ -1966,7 +1966,7 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 		
 		#region /* Click Delete All Objects / Wipe Button */
 		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			tooltip = "Delete All Objects";
 			show_tooltip += 2;

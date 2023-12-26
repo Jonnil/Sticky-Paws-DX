@@ -297,7 +297,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, key_x - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 32, menu_y_remap_key + menu_y_offset + 32))
 	&& (!input_key)
 	&& (!open_dropdown)
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	{
 		menu = menu_string;
 		menu_remap_key_number = 0;
@@ -306,7 +306,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, key_x + 200 - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 200 + 32, menu_y_remap_key + menu_y_offset + 32))
 	&& (!input_key)
 	&& (!open_dropdown)
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	{
 		menu = menu_string;
 		menu_remap_key_number = 2;
@@ -316,7 +316,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, key_x + 200 - 34, menu_y_remap_key + menu_y_offset - 32, key_x + 200 + 32, menu_y_remap_key + menu_y_offset + 32))
 	{
 		if (mouse_check_button_released(mb_left))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!input_key)
 		&& (!open_dropdown)

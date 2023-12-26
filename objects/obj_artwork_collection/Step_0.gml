@@ -6,8 +6,8 @@ if (menu_cursor_index > 4)
 }
 #endregion /* Menu cursor image speed END */
 
-if (global.controls_used_for_menu_navigation == "keyboard")
-|| (global.controls_used_for_menu_navigation == "gamepad")
+if (global.controls_used_for_navigation == "keyboard")
+|| (global.controls_used_for_navigation == "gamepad")
 {
 	menu = "";
 }

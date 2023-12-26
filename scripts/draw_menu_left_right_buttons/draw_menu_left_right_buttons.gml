@@ -9,7 +9,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	#region /* Draw Left Key */
 	draw_sprite_ext(spr_keyboard_keys, vk_left, left_right_buttons_x - 32, 20 + (left_right_buttons_y), 0.5, 0.5, 0, c_white, 1);
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x - 32 + 16 + size_of_button_offset, 20 + (left_right_buttons_y) + 16))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	{
 		if (left_right_buttons_can_go_below_0)
 		&& (!open_dropdown)
@@ -30,7 +30,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	#region /* Draw Right Key */
 	draw_sprite_ext(spr_keyboard_keys, vk_right, left_right_buttons_x + left_right_buttons_right_arrow_x, 20 + (left_right_buttons_y), 0.5, 0.5, 0, c_white, 1);
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x + left_right_buttons_right_arrow_x - 16 - size_of_button_offset, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	&& (!open_dropdown)
 	{
 		menu = string(left_right_buttons_menu);
@@ -49,7 +49,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	#endregion /* Draw Text END */
 	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	&& (!open_dropdown)
 	{
 		menu = string(left_right_buttons_menu);

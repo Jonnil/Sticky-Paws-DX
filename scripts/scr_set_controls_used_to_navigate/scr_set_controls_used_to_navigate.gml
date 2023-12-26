@@ -2,27 +2,27 @@ function scr_set_controls_used_to_navigate()
 {
 	
 	#region /* Set what controls are used to navigate the game */
-	if (global.controls_used_for_menu_navigation != "keyboard")
+	if (global.controls_used_for_navigation != "keyboard")
 	{
 		if (keyboard_check(vk_anykey)) /* If pressing keyboard keys, then set "keyboard" as the navigation method */
 		{
 			if (instance_exists(obj_camera))
 			{
 				obj_camera.show_controller_input_change_prompt = 0;
-				if (global.controls_used_for_menu_navigation == "gamepad")
+				if (global.controls_used_for_navigation == "gamepad")
 				{
 					obj_camera.show_keyboard_and_mouse_input_change_prompt = 100;
 				}
-				global.controls_used_for_menu_navigation = "keyboard";
+				global.controls_used_for_navigation = "keyboard";
 			}
 			else
 			{
-				global.controls_used_for_menu_navigation = "keyboard";
+				global.controls_used_for_navigation = "keyboard";
 			}
 		}
 	}
 	
-	if (global.controls_used_for_menu_navigation != "mouse")
+	if (global.controls_used_for_navigation != "mouse")
 	{
 		var mouse_get_x = device_mouse_x_to_gui(0);
 		var mouse_get_y = device_mouse_y_to_gui(0);
@@ -38,20 +38,20 @@ function scr_set_controls_used_to_navigate()
 			if (instance_exists(obj_camera))
 			{
 				obj_camera.show_controller_input_change_prompt = 0;
-				if (global.controls_used_for_menu_navigation == "gamepad")
+				if (global.controls_used_for_navigation == "gamepad")
 				{
 					obj_camera.show_keyboard_and_mouse_input_change_prompt = 100;
 				}
-				global.controls_used_for_menu_navigation = "mouse";
+				global.controls_used_for_navigation = "mouse";
 			}
 			else
 			{
-				global.controls_used_for_menu_navigation = "mouse";
+				global.controls_used_for_navigation = "mouse";
 			}
 		}
 	}
 	
-	if (global.controls_used_for_menu_navigation != "controller")
+	if (global.controls_used_for_navigation != "gamepad")
 	{
 		if (gamepad_is_connected(global.player_slot[1]))
 		|| (gamepad_is_connected(global.player_slot[2]))
@@ -165,9 +165,9 @@ function scr_set_controls_used_to_navigate()
 					{
 						obj_camera.show_keyboard_and_mouse_input_change_prompt = 0;
 					}
-					if (global.controls_used_for_menu_navigation != "gamepad")
+					if (global.controls_used_for_navigation != "gamepad")
 					{
-						global.controls_used_for_menu_navigation = "gamepad";
+						global.controls_used_for_navigation = "gamepad";
 						if (instance_exists(obj_player))
 						&& (instance_number(obj_player) == 1)
 						{
@@ -177,7 +177,7 @@ function scr_set_controls_used_to_navigate()
 				}
 				else
 				{
-					global.controls_used_for_menu_navigation = "gamepad";
+					global.controls_used_for_navigation = "gamepad";
 				}
 			}
 		}

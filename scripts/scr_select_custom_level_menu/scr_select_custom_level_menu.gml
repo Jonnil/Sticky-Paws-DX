@@ -118,7 +118,7 @@ function scr_select_custom_level_menu()
 		{
 			menu_delay = 3;
 			if (global.select_level_index - row < 0)
-			&& (global.controls_used_for_menu_navigation != "mouse")
+			&& (global.controls_used_for_navigation != "mouse")
 			&& (show_level_editor_corner_menu)
 			{
 				if (global.free_communication_available)
@@ -176,7 +176,7 @@ function scr_select_custom_level_menu()
 		{
 			menu_delay = 3;
 			if (global.select_level_index + row > ds_list_size(global.thumbnail_sprite) - 1)
-			&& (global.controls_used_for_menu_navigation != "mouse")
+			&& (global.controls_used_for_navigation != "mouse")
 			&& (show_level_editor_corner_menu)
 			{
 				menu = "back_from_level_editor";
@@ -381,7 +381,7 @@ function scr_select_custom_level_menu()
 		draw_menu_button(0, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "");
 		draw_sprite_ext(spr_icons_folder, 0, 16, 42 + 21, 1, 1, 0, c_white, 1);
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_open_custom_levels_folder_y + 2, 370, draw_open_custom_levels_folder_y + 41))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "open_custom_levels_folder")
@@ -439,7 +439,7 @@ function scr_select_custom_level_menu()
 			draw_menu_button(0, draw_online_level_list_y, l10n_text("Online Level List"), "online_level_list", "");
 			
 			if (menu == "online_level_list")
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_level_list_y + 2, 370, draw_online_level_list_y + 41))
@@ -574,7 +574,7 @@ function scr_select_custom_level_menu()
 		#endregion /* Back Button END */
 		
 		#region /* Hovering over level editor corner menu */
-		if (global.controls_used_for_menu_navigation == "mouse")
+		if (global.controls_used_for_navigation == "mouse")
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, draw_online_level_list_y + 42))
 		{
 			hovering_over_level_editor_corner_menu = true; /* When hovering the mouse over level editor corner menu, don't let the player click on other buttons like thumbnails */

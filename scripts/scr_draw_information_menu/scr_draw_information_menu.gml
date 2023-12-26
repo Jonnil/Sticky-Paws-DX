@@ -544,7 +544,7 @@ function scr_draw_information_menu()
 				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "backup_open_custom_levels_folder", "backup_open_custom_levels_folder");
 				draw_sprite_ext(spr_icons_folder, 0, 32 + 16, draw_open_custom_levels_folder_y + 21, 1, 1, 0, c_white, 1);
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, draw_open_custom_levels_folder_y + 2, 32 + 370, draw_open_custom_levels_folder_y + 41))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (menu == "backup_open_custom_levels_folder")
@@ -563,7 +563,7 @@ function scr_draw_information_menu()
 				draw_menu_button(32, draw_open_custom_levels_folder_y, l10n_text("Open Custom Character Folder"), "backup_open_custom_character_folder", "backup_open_custom_character_folder");
 				draw_sprite_ext(spr_icons_folder, 0, 32 + 16, draw_open_custom_levels_folder_y + 21, 1, 1, 0, c_white, 1);
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 32, draw_open_custom_levels_folder_y + 2, 32 + 370, draw_open_custom_levels_folder_y + 41))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				|| (menu == "backup_open_custom_character_folder")

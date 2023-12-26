@@ -52,7 +52,7 @@ function scr_character_manage_menu_draw()
 		&& (menu != "click_delete_character_yes")
 		{
 			if (gamepad_is_connected(global.player_slot[1]))
-			&& (global.controls_used_for_menu_navigation == "gamepad")
+			&& (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[1] - arrow_offset, get_window_height * 0.5, 0.5, c_white, 1);
 			}
@@ -74,7 +74,7 @@ function scr_character_manage_menu_draw()
 			}
 		
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[1] - arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player_display_x[1] - arrow_offset + 16, get_window_height * 0.5 + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				draw_set_alpha(0.5);
 				draw_rectangle_color(get_window_width * 0.5 + player_display_x[1] - arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player_display_x[1] - arrow_offset + 16, get_window_height * 0.5 + 16, c_white, c_white, c_white, c_white, false);
@@ -90,7 +90,7 @@ function scr_character_manage_menu_draw()
 		&& (menu != "click_delete_character_yes")
 		{
 			if (gamepad_is_connected(global.player_slot[1]))
-			&& (global.controls_used_for_menu_navigation == "gamepad")
+			&& (global.controls_used_for_navigation == "gamepad")
 			{
 				scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[1] + arrow_offset, get_window_height * 0.5, 0.5, c_white, 1);
 			}
@@ -112,7 +112,7 @@ function scr_character_manage_menu_draw()
 			}
 		
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[1] + arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player_display_x[1] + arrow_offset + 16, get_window_height * 0.5 + 16))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				draw_set_alpha(0.5);
 				draw_rectangle_color(get_window_width * 0.5 + player_display_x[1] + arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player_display_x[1] + arrow_offset + 16, get_window_height * 0.5 + 16, c_white, c_white, c_white, c_white, false);

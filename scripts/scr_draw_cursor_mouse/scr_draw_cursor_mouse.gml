@@ -1,6 +1,6 @@
 function scr_draw_cursor_mouse()
 {
-	if (global.controls_used_for_menu_navigation == "mouse" 
+	if (global.controls_used_for_navigation == "mouse" 
 	&& !global.full_level_map_screenshot 
 	&& os_type != os_android 
 	&& os_type != os_ios)

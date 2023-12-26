@@ -108,7 +108,7 @@ function scr_debug_screen()
 		var d3d11_y = 64;
 		
 		#region /* Click on FPS to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_y - 15, 370, fps_y + 15) && global.controls_used_for_menu_navigation == "mouse") {
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_y - 15, 370, fps_y + 15) && global.controls_used_for_navigation == "mouse") {
 			draw_set_alpha(0.5);
 			draw_roundrect_color_ext(0, fps_y - 16, 370, fps_y + 16, 50, 50, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -122,7 +122,7 @@ function scr_debug_screen()
 		#endregion /* Click on FPS to toggle if it should stay on screen even after you close debug screen END */
 		
 		#region /* Click on FPS Real to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_real_y - 15, 370, fps_real_y + 15) && global.controls_used_for_menu_navigation == "mouse") {
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_real_y - 15, 370, fps_real_y + 15) && global.controls_used_for_navigation == "mouse") {
 			draw_set_alpha(0.5);
 			draw_roundrect_color_ext(0, fps_real_y - 16, 370, fps_real_y + 16, 50, 50, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -136,7 +136,7 @@ function scr_debug_screen()
 		#endregion /* Click on FPS Real to toggle if it should stay on screen even after you close debug screen END */
 		
 		#region /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, instance_count_y - 15, 370, instance_count_y + 15) && global.controls_used_for_menu_navigation == "mouse") {
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, instance_count_y - 15, 370, instance_count_y + 15) && global.controls_used_for_navigation == "mouse") {
 			draw_set_alpha(0.5);
 			draw_roundrect_color_ext(0, instance_count_y - 16, 370, instance_count_y + 16, 50, 50, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -150,7 +150,7 @@ function scr_debug_screen()
 		#endregion /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen END */
 		
 		#region /* Click on All Instance Count to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, all_instance_count_y - 15, 370, all_instance_count_y + 15) && global.controls_used_for_menu_navigation == "mouse") {
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, all_instance_count_y - 15, 370, all_instance_count_y + 15) && global.controls_used_for_navigation == "mouse") {
 			draw_set_alpha(0.5);
 			draw_roundrect_color_ext(0, all_instance_count_y - 16, 370, all_instance_count_y + 16, 50, 50, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -314,7 +314,7 @@ function scr_debug_screen()
 			scr_draw_text_outlined(32, debug_text_y, "obj_camera.hud_show_lives_timer: " + string(obj_camera.hud_show_lives_timer), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
 		}
-		scr_draw_text_outlined(32, debug_text_y, "controls_used_for_menu_navigation: " + string(global.controls_used_for_menu_navigation), global.default_text_size, c_black, c_white);
+		scr_draw_text_outlined(32, debug_text_y, "controls_used_for_navigation: " + string(global.controls_used_for_navigation), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "temp_directory: " + string(temp_directory), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;

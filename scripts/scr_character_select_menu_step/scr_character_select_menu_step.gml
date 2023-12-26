@@ -90,7 +90,7 @@ function scr_character_select_menu_step()
 		
 		#region /* When you are ready to start game, and you're using mouse, and you aren't hovering mouse over the other buttons, then take you to "select character" menu */
 		if (player_start_game)
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 42 * 3))
 		&& (menu_delay == 0)
 		{
@@ -405,7 +405,7 @@ function scr_character_select_menu_step()
 		#region /* Click on name to input name */
 		if (player_start_game) /* Make sure that the "start game" button isn't overlapping the "name input" buttons */
 		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, play_the_game_text_y_lerp - 32, get_window_width, play_the_game_text_y_lerp + 32))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		|| (player_start_game == false)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[1] - 150, get_window_height * 0.5 + name_y - 16, get_window_width * 0.5 + player_display_x[1] + 150, get_window_height * 0.5 + name_y + 16))
@@ -1106,7 +1106,7 @@ function scr_character_select_menu_step()
 			if (player1_accept_selection <= -1)
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[1] - 150, get_window_height * 0.5 - 32, get_window_width * 0.5 + player_display_x[1] + 150, get_window_height * 0.5 + 32))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					player_menu[1] = "select_character";
 					menu = "select_character";
@@ -1144,7 +1144,7 @@ function scr_character_select_menu_step()
 			&& (global.skip_how_many_people_are_playing_screen)
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[2] - 150, get_window_height * 0.5 + 32 - 32, get_window_width * 0.5 + player_display_x[2] + 150, get_window_height * 0.5 + 32 + 32))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					player_menu[2] = "select_character";
 					menu = "select_character";
@@ -1174,7 +1174,7 @@ function scr_character_select_menu_step()
 			&& (global.skip_how_many_people_are_playing_screen)
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[3] - 150, get_window_height * 0.5 - 32, get_window_width * 0.5 + player_display_x[3] + 150, get_window_height * 0.5 + 32))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					player_menu[3] = "select_character";
 					menu = "select_character";
@@ -1204,7 +1204,7 @@ function scr_character_select_menu_step()
 			&& (global.skip_how_many_people_are_playing_screen)
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[4] - 150, get_window_height * 0.5 + 32 - 32, get_window_width * 0.5 + player_display_x[4] + 150, get_window_height * 0.5 + 32 + 32))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					player_menu[4] = "select_character";
 					menu = "select_character";

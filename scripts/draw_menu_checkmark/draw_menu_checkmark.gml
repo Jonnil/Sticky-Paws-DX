@@ -13,7 +13,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	if (!variable_to_check)
 	{
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (!input_key)
 		&& (!open_dropdown)
 		{
@@ -32,7 +32,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	else
 	{
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (!input_key)
 		&& (!open_dropdown)
 		{
@@ -63,7 +63,7 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	#region /* Clicking the menu button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position - widen_button_offset, x_position + width_of_button, y_position + 32 + widen_button_offset))
 	&& (mouse_check_button_released(mb_left))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	&& (!input_key)
 	&& (!open_dropdown)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)

@@ -38,7 +38,7 @@ function scr_select_official_level_menu()
 		&& (menu != "back_from_level_editor")
 		{
 			if (global.select_level_index - row < 0)
-			&& (global.controls_used_for_menu_navigation != "mouse")
+			&& (global.controls_used_for_navigation != "mouse")
 			&& (show_level_editor_corner_menu)
 			{
 				menu_delay = 3;
@@ -74,7 +74,7 @@ function scr_select_official_level_menu()
 		&& (menu != "back_from_level_editor")
 		{
 			if (global.select_level_index + row > ds_list_size(global.thumbnail_sprite) - 1)
-			&& (global.controls_used_for_menu_navigation != "mouse")
+			&& (global.controls_used_for_navigation != "mouse")
 			&& (show_level_editor_corner_menu)
 			{
 				menu_delay = 3;

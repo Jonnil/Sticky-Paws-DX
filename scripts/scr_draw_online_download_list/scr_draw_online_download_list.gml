@@ -192,7 +192,7 @@ function scr_draw_online_download_list()
 					}
 					#endregion /* Draw 4 red small triangles above the level thumbnail to be even more certain what level you are selecting END */
 					
-					if (global.controls_used_for_menu_navigation == "mouse")
+					if (global.controls_used_for_navigation == "mouse")
 					&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x + 100 - 16, download_online_y + menu_y_offset - 16, download_online_x + 484 + 16, download_online_y + menu_y_offset + 216 + 62))
 					{
 						menu = "download_online_" + string(online_download_index);
@@ -211,7 +211,7 @@ function scr_draw_online_download_list()
 					{
 						currently_selected_id = draw_download_id;
 						
-						if (global.controls_used_for_menu_navigation != "mouse")
+						if (global.controls_used_for_navigation != "mouse")
 						{
 							menu_cursor_y_position = 64 + download_online_y;
 						}
@@ -515,7 +515,7 @@ function scr_draw_online_download_list()
 			
 			#region /* Draw Search Key */
 			if (gamepad_is_connected(global.player_slot[1]))
-			&& (global.controls_used_for_menu_navigation == "gamepad")
+			&& (global.controls_used_for_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
 				scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);

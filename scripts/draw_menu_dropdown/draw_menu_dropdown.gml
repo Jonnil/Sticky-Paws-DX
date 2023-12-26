@@ -10,7 +10,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		
 		#region /* Button */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!open_dropdown)
 		{
@@ -27,9 +27,9 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		else
 		{
 			if (menu == menu_index)
-			&& (global.controls_used_for_menu_navigation == "keyboard")
+			&& (global.controls_used_for_navigation == "keyboard")
 			|| (menu == menu_index)
-			&& (global.controls_used_for_menu_navigation == "gamepad")
+			&& (global.controls_used_for_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_button, global.menu_button_subimg, x_position + 32, y_position + 21, 1.5, 1, 0, c_gray, 1);
 			}
@@ -60,7 +60,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		
 		#region /* Clicking the menu button */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!open_dropdown)
@@ -185,7 +185,7 @@ function draw_menu_dropdown(x_position, y_position, string_text, menu_index, var
 		
 		#region /* Clicking outside the menu button */
 		if (!point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 555 + 32, y_position + 41))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (open_dropdown)
 		&& (menu == menu_index)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)

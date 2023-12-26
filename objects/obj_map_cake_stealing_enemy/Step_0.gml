@@ -37,9 +37,9 @@ if (move_speed == 4)
 	vspeed -= 10;
 }
 if (move_speed == 4)
-&& (enter_level_delay > 40)
+&& (enter_level_delay > 50)
 || (move_speed == 9)
-&& (enter_level_delay > 12)
+&& (enter_level_delay > 22)
 {
 	if (yy > enter_level_y)
 	{

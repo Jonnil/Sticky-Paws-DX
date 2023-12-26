@@ -5,7 +5,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position- 16, x_position + 320, y_position + 16))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	&& (!open_dropdown)
 	{
@@ -95,12 +95,12 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	
 	#region /* Clicking the menu button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	&& (mouse_check_button_released(mb_left))
 	&& (menu != "assist_enable")
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, x_position + 32, y_position + 2, x_position + 320, y_position + 41))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	&& (mouse_check_button_released(mb_left))
 	&& (global.assist_enable)
 	&& (menu == "assist_enable")

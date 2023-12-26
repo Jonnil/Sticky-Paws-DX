@@ -157,7 +157,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	&& (character_portrait_for_player_dir_exists_1[what_player])
 	{
 		if (player_menu[what_player] == "select_skin")
-		|| (global.controls_used_for_menu_navigation == "mouse")
+		|| (global.controls_used_for_navigation == "mouse")
 		{
 			if (player_accept_selection == false)
 			{
@@ -169,7 +169,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) < -0.3)
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
 				&& (mouse_check_button_released(mb_left))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
 					&& (global.skin_for_player[what_player] > 0)
@@ -199,7 +199,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) > +0.3)
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
 				&& (mouse_check_button_released(mb_left))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
 					&& (character_portrait_for_player_dir_exists_2[what_player])
@@ -224,7 +224,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				if (global.skin_for_player[what_player] > 0)
 				{
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
-					&& (global.controls_used_for_menu_navigation == "mouse")
+					&& (global.controls_used_for_navigation == "mouse")
 					{
 						player_menu[what_player] = "select_skin";
 					}
@@ -235,7 +235,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				if (character_portrait_for_player_dir_exists_2[what_player])
 				{
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
-					&& (global.controls_used_for_menu_navigation == "mouse")
+					&& (global.controls_used_for_navigation == "mouse")
 					{
 						player_menu[what_player] = "select_skin";
 					}
@@ -255,7 +255,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	&& (character_portrait_for_player_dir_exists_3[what_player])
 	{
 		if (player_menu[what_player] == "select_voicepack")
-		|| (global.controls_used_for_menu_navigation == "mouse")
+		|| (global.controls_used_for_navigation == "mouse")
 		{
 			if (player_accept_selection == false)
 			{
@@ -267,7 +267,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) < -0.3)
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
 				&& (mouse_check_button_released(mb_left))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
 					&& (global.voicepack_for_player[what_player] > 0)
@@ -291,7 +291,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				|| (gamepad_axis_value(global.player_slot[what_player], gp_axislh) > +0.3)
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
 				&& (mouse_check_button_released(mb_left))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
 					{
@@ -312,7 +312,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				if (global.voicepack_for_player[what_player] > 0)
 				{
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
-					&& (global.controls_used_for_menu_navigation == "mouse")
+					&& (global.controls_used_for_navigation == "mouse")
 					{
 						player_menu[what_player] = "select_voicepack";
 					}
@@ -323,7 +323,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				if (character_portrait_for_player_dir_exists_4[what_player])
 				{
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + voicepack_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + voicepack_y + 16))
-					&& (global.controls_used_for_menu_navigation == "mouse")
+					&& (global.controls_used_for_navigation == "mouse")
 					{
 						player_menu[what_player] = "select_voicepack";
 					}
@@ -408,7 +408,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 		
 		#region /* Player Show left and right arrows when selecting character */
 		if (player_menu[what_player] == "select_character")
-		|| (global.controls_used_for_menu_navigation == "mouse")
+		|| (global.controls_used_for_navigation == "mouse")
 		{
 			if (player_accept_selection == false)
 			{
@@ -417,7 +417,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				if (global.character_index[what_player - 1] > 0)
 				{
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + 16))
-					&& (global.controls_used_for_menu_navigation == "mouse")
+					&& (global.controls_used_for_navigation == "mouse")
 					{
 						player_menu[what_player] = "select_character";
 					}
@@ -428,7 +428,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				if (global.character_index[what_player - 1] < ds_list_size(global.all_loaded_characters) - 1)
 				{
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + 16))
-					&& (global.controls_used_for_menu_navigation == "mouse")
+					&& (global.controls_used_for_navigation == "mouse")
 					{
 						player_menu[what_player] = "select_character";
 					}
@@ -444,7 +444,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	
 	#region /* Tell the player the inputed name */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - 150, name_input_y - 16, get_window_width * 0.5 + player_display_x[what_player] + 150, name_input_y + 16))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	&& (player_accept_selection >= 0)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
@@ -464,7 +464,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	&& (can_input_player2_name == false)
 	&& (can_input_player3_name == false)
 	&& (can_input_player4_name == false)
-	|| (global.controls_used_for_menu_navigation == "mouse")
+	|| (global.controls_used_for_navigation == "mouse")
 	&& (can_input_player1_name == false)
 	&& (can_input_player2_name == false)
 	&& (can_input_player3_name == false)
@@ -473,7 +473,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 		if (player_accept_selection == false)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				player_menu[what_player] = "select_character";
 			}
@@ -482,7 +482,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 		if (player_accept_selection)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			{
 				player_menu[what_player] = "select_character";
 			}

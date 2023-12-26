@@ -159,7 +159,7 @@ if (!hide_menu_for_clean_screenshots)
 		{
 			var hide_menu_for_clean_screenshots_y = get_window_height - 32;
 		}
-		if (global.controls_used_for_menu_navigation == "gamepad")
+		if (global.controls_used_for_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
 			scr_draw_gamepad_buttons(gp_face4, 32, hide_menu_for_clean_screenshots_y, 0.75, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);

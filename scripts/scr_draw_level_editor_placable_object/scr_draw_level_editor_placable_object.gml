@@ -22,7 +22,7 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 		
 		#region /* Hover mouse over object icon and click to select */
 		var hover_offset = 49;
-		if (global.controls_used_for_menu_navigation == "mouse")
+		if (global.controls_used_for_navigation == "mouse")
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
 		(display_get_gui_width() * 0.5) + selected_object_menu_x + var_scroll_x * var_selected_object - hover_offset,
 		y_offset - hover_offset,

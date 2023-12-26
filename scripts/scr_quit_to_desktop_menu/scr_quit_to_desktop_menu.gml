@@ -18,7 +18,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 		
 		#region /* Quit No */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, get_window_height * 0.5 - 42, get_window_width * 0.5 + 370, get_window_height * 0.5 + 42))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			if (mouse_check_button(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -34,9 +34,9 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 		else
 		{
 			if (menu == "quit_game_no")
-			&& (global.controls_used_for_menu_navigation == "keyboard")
+			&& (global.controls_used_for_navigation == "keyboard")
 			|| (menu == "quit_game_no")
-			&& (global.controls_used_for_menu_navigation == "gamepad")
+			&& (global.controls_used_for_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, get_window_height * 0.5, 1, 1, 180, c_white, 1);
@@ -75,7 +75,7 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 		
 		#region /* Quit Yes */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, get_window_height * 0.5 + 84 - 42, get_window_width * 0.5 + 370, get_window_height * 0.5 + 84 + 42))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		{
 			if (mouse_check_button(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -90,9 +90,9 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 		else
 		{
 			if (menu == "quit_game_yes")
-			&& (global.controls_used_for_menu_navigation == "keyboard")
+			&& (global.controls_used_for_navigation == "keyboard")
 			|| (menu == "quit_game_yes")
-			&& (global.controls_used_for_menu_navigation == "gamepad")
+			&& (global.controls_used_for_navigation == "gamepad")
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 - 370 - 32, get_window_height * 0.5 + 84, 1, 1, 0, c_white, 1);
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, get_window_width * 0.5 + 370 + 32, get_window_height * 0.5 + 84, 1, 1, 180, c_white, 1);

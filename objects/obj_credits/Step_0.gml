@@ -6,7 +6,7 @@ var mouse_get_y = device_mouse_y_to_gui(0);
 black_background_alpha = lerp(black_background_alpha, 0.75, 0.01);
 menu_cursor_index += 0.3;
 
-if (global.controls_used_for_menu_navigation == "mouse")
+if (global.controls_used_for_navigation == "mouse")
 {
     menu = "";
 }

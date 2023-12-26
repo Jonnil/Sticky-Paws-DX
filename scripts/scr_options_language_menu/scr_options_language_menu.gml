@@ -30,7 +30,7 @@ function scr_options_language_menu()
 	
 	#region /* Clicking on language completion text enables and disables the translation debug mode */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - string_width(l10n_text("Translation completion") + ": " + string(global.language_completion) + "%"), 164 - 32, get_window_width - 32, 164 + 32))
-	&& (global.controls_used_for_menu_navigation == "mouse")
+	&& (global.controls_used_for_navigation == "mouse")
 	{
 		if (global.language_completion < 100)
 		{
@@ -63,7 +63,7 @@ function scr_options_language_menu()
 	&& (can_navigate)
 	&& (global.settings_sidebar_menu = "language_settings")
 	{
-		if (global.controls_used_for_menu_navigation != "mouse")
+		if (global.controls_used_for_navigation != "mouse")
 		{
 			if (key_up)
 			&& (!open_dropdown)

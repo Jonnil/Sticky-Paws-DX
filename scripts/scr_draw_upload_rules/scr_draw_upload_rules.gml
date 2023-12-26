@@ -64,7 +64,7 @@ function scr_draw_upload_rules()
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() - 42, l10n_text("I agree"), "upload_rules", "upload_rules");
 		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, display_get_gui_height() - 32, display_get_gui_width() * 0.5 - 185 + 370, display_get_gui_height() - 32 + 41))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "upload_rules")
@@ -124,7 +124,7 @@ function scr_draw_upload_rules()
 		}
 		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 0 + 370, 0 + 41))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (menu == "upload_rules_back")

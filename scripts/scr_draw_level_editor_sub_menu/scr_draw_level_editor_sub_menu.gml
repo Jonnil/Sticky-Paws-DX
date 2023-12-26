@@ -293,7 +293,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (!hovering_over_level_editor_corner_menu)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 - 3, xx + 8 + 370, 226 * (column - scroll) + 475 - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			|| (key_a_pressed)
 			{
 				menu = "level_editor_enter_name_ok";
@@ -313,7 +313,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (!hovering_over_level_editor_corner_menu)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 370, 226 * (column - scroll) + 569 - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			|| (key_a_pressed)
 			{
 				menu_delay = 3;
@@ -334,7 +334,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (!hovering_over_level_editor_corner_menu)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (back_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (back_y) - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			|| (key_a_pressed)
 			{
 				file_load_timer = 0; /* Reset the "file load timer" to 0 just in case, otherwise you can't navigate the thumbnails with mouse */
@@ -362,7 +362,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			{
 				if (!point_in_rectangle(mouse_get_x, mouse_get_y, xx, 226 * (column - scroll) + 455 - 3 + 10, xx + 384, 226 * (column - scroll) + 475 + back_y + 47 + 3))
 				&& (mouse_check_button_released(mb_left))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					file_load_timer = 0; /* Reset the "file load timer" to 0 just in case, otherwise you can't navigate the thumbnails with mouse */
 					menu_delay = 3;
@@ -379,7 +379,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			{
 				if (!point_in_rectangle(mouse_get_x, mouse_get_y, xx, 226 * (column - scroll) + 455 - 3 + 10, xx + 384, 226 * (column - scroll) + 408 + 216 + 3))
 				&& (mouse_check_button_released(mb_left))
-				&& (global.controls_used_for_menu_navigation == "mouse")
+				&& (global.controls_used_for_navigation == "mouse")
 				{
 					file_load_timer = 0; /* Reset the "file load timer" to 0 just in case, otherwise you can't navigate the thumbnails with mouse */
 					menu_delay = 3;
@@ -400,7 +400,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (!hovering_over_level_editor_corner_menu)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (play_y)- 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (play_y)- 3 + 42))
 			&& (mouse_check_button_released(mb_left))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			|| (key_a_pressed)
 			{
 				global.doing_clear_check = false;
@@ -418,7 +418,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (!hovering_over_level_editor_corner_menu)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (make_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (make_y) - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			|| (key_a_pressed)
 			{
 				global.doing_clear_check = false;
@@ -436,7 +436,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (!hovering_over_level_editor_corner_menu)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (edit_name_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (edit_name_y) - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			&& (level_editor_edit_name == false)
 			|| (key_a_pressed)
 			&& (level_editor_edit_name == false)
@@ -465,7 +465,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			if (!hovering_over_level_editor_corner_menu)
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 475 + (edit_description_y) - 3, xx + 8 + 370, 226 * (column - scroll) + 475 + (edit_description_y) - 3 + 42))
 			&& (mouse_check_button_released(mb_left))
-			&& (global.controls_used_for_menu_navigation == "mouse")
+			&& (global.controls_used_for_navigation == "mouse")
 			&& (level_editor_edit_name == false)
 			|| (key_a_pressed)
 			&& (level_editor_edit_name == false)
@@ -539,7 +539,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		|| (!hovering_over_level_editor_corner_menu)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 522 - 3, xx + 8 + 320, 226 * (column - scroll) + 522 - 3 + 42))
 		&& (mouse_check_button_released(mb_left))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
@@ -562,7 +562,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		|| (!hovering_over_level_editor_corner_menu)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, xx + 8, 226 * (column - scroll) + 569 - 3, xx + 8 + 320, 226 * (column - scroll) + 569 - 3 + 42))
 		&& (mouse_check_button_released(mb_left))
-		&& (global.controls_used_for_menu_navigation == "mouse")
+		&& (global.controls_used_for_navigation == "mouse")
 		&& (!can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{

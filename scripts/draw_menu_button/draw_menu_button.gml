@@ -5,7 +5,7 @@ function draw_menu_button(x_position, y_position, string_text, menu_index, menu_
 	var actual_highlight_color, outline_color, fill_color;
 	
 	var point_in_button = point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 1, x_position + 370, y_position + 41);
-	var using_mouse = (global.controls_used_for_menu_navigation == "mouse");
+	var using_mouse = (global.controls_used_for_navigation == "mouse");
 	var not_open_dropdown = !open_dropdown;
 	var is_same_menu = (menu == menu_index);
 	

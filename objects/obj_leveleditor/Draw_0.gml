@@ -348,7 +348,7 @@ if (!global.actually_play_edited_level)
 		}
 		#endregion /* Default Cursor END */
 		
-		if (global.controls_used_for_menu_navigation == "gamepad")
+		if (global.controls_used_for_navigation == "gamepad")
 		|| (navigate_camera_with_arrowkeys)
 		{
 			scr_draw_mouse_cursor_sprite();

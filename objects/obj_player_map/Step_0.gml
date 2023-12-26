@@ -1,5 +1,3 @@
-var get_window_height = display_get_gui_height();
-var get_window_width = display_get_gui_width();
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 var view_x = camera_get_view_x(view_camera[view_current]);
@@ -411,7 +409,7 @@ if (can_enter_level_automatically)
 #region /* Clear Level in debug */
 if (key_b_pressed)
 || (mouse_check_button_released(mb_left))
-&& (global.controls_used_for_menu_navigation == "mouse")
+&& (global.controls_used_for_navigation == "mouse")
 && (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 141, display_get_gui_height() - 42, 140 + 140, display_get_gui_height()))
 {
 	if (global.debug_screen)
@@ -671,7 +669,7 @@ if (can_move)
 				
 				#region /* Key Right */
 				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "gamepad")
+				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, c_white, 1);
@@ -737,7 +735,7 @@ if (can_move)
 				
 				#region /* Key Left */
 				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "gamepad")
+				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padl, x - 64, y, 0.5, c_white, 1);
@@ -806,7 +804,7 @@ if (can_move)
 				
 				#region /* Key Down */
 				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "gamepad")
+				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, c_white, 1);
@@ -840,7 +838,7 @@ if (can_move)
 				
 				#region /* Key Up */
 				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_menu_navigation == "gamepad")
+				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);

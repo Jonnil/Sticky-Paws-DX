@@ -13,10 +13,10 @@ var is_gamepad_connected = false;
 var is_mobile = false;
 var is_keyboard = false;
 
-if (gamepad_is_connected(global.player_slot[1]) && global.player_can_play[1] && global.controls_used_for_menu_navigation == "gamepad")
-    || (gamepad_is_connected(global.player_slot[2]) && global.player_can_play[2] && global.controls_used_for_menu_navigation == "gamepad")
-    || (gamepad_is_connected(global.player_slot[3]) && global.player_can_play[3] && global.controls_used_for_menu_navigation == "gamepad")
-    || (gamepad_is_connected(global.player_slot[4]) && global.player_can_play[4] && global.controls_used_for_menu_navigation == "gamepad")
+if (gamepad_is_connected(global.player_slot[1]) && global.player_can_play[1] && global.controls_used_for_navigation == "gamepad")
+    || (gamepad_is_connected(global.player_slot[2]) && global.player_can_play[2] && global.controls_used_for_navigation == "gamepad")
+    || (gamepad_is_connected(global.player_slot[3]) && global.player_can_play[3] && global.controls_used_for_navigation == "gamepad")
+    || (gamepad_is_connected(global.player_slot[4]) && global.player_can_play[4] && global.controls_used_for_navigation == "gamepad")
     || (global.always_show_gamepad_buttons)
 {
     is_gamepad_connected = true;
@@ -28,7 +28,7 @@ else if (os_type == os_ios || os_type == os_android)
     is_mobile = true;
     scr_draw_text_outlined(get_window_width - 16, 0, l10n_text("Skip") + ": " + l10n_text("Press and Hold Screen"), global.default_text_size, c_black, c_white, 1);
 }
-else if (global.controls_used_for_menu_navigation == "keyboard" || global.controls_used_for_menu_navigation == "mouse")
+else if (global.controls_used_for_navigation == "keyboard" || global.controls_used_for_navigation == "mouse")
 {
     is_keyboard = true;
     draw_menu_button(get_window_width - 370, 0, l10n_text("Skip") + ": " + l10n_text("Hold"), "skip", "skip");
