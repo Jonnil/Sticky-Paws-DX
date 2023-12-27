@@ -17,7 +17,7 @@ function scr_character_manage_copy()
 	{
 		file_load_timer ++;
 		
-		#region /* LOAD OK 0 - Create the directories first, so files can be copied into these folders */
+		#region /* LOAD OK Create the directories first, so files can be copied into these folders */
 		if (file_load_timer > 1)
 		&& (load_ok == 0)
 		{
@@ -48,7 +48,7 @@ function scr_character_manage_copy()
 				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 			}
 		}
-		#endregion /* LOAD OK 0 - Create the directories first, so files can be copied into these folders END */
+		#endregion /* LOAD OK Create the directories first, so files can be copied into these folders END */
 		
 		else
 		

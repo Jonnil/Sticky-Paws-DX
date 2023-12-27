@@ -1224,6 +1224,7 @@ if (!global.actually_play_edited_level)
 		&& (!pause)
 		|| (level_editor_menu == "pen")
 		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, place_brush_icon_x, display_get_gui_height() - 80, 1, 1, 270, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(place_brush_icon_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, place_brush_icon_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -1441,6 +1442,7 @@ if (!global.actually_play_edited_level)
 		&& (!pause)
 		|| (level_editor_menu == "erase")
 		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, erase_icon_x, display_get_gui_height() - 80, 1, 1, 270, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(erase_icon_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, erase_icon_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -1581,6 +1583,7 @@ if (!global.actually_play_edited_level)
 		&& (!pause)
 		|| (level_editor_menu == "fill")
 		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, fill_icon_x, display_get_gui_height() - 80, 1, 1, 270, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(fill_icon_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, fill_icon_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -1642,6 +1645,7 @@ if (!global.actually_play_edited_level)
 		&& (!pause)
 		|| (level_editor_menu == "hide")
 		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, always_show_level_editor_buttons_x, display_get_gui_height() - 80, 1, 1, 270, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(always_show_level_editor_buttons_x - 32 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64 - 1, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -1700,10 +1704,11 @@ if (!global.actually_play_edited_level)
 		
 		#region /* Delete All Objects / Wipe button */
 		draw_sprite_ext(spr_leveleditor_icon_wipe, 0, display_get_gui_width() - 32, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
-		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64 + icons_at_bottom_y, display_get_gui_width() - 32 + 32, display_get_gui_height() - 32 + icons_at_bottom_y + 32))
+		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64 + 1, display_get_gui_height() - 64 + icons_at_bottom_y, display_get_gui_width() - 32 + 32, display_get_gui_height() - 32 + icons_at_bottom_y + 32))
 		&& (global.controls_used_for_navigation == "mouse")
 		|| (level_editor_menu == "wipe")
 		{
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() - 32, display_get_gui_height() - 80, 1, 1, 270, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(display_get_gui_width() - 64, display_get_gui_height() - 64 + icons_at_bottom_y, display_get_gui_width() - 32 + 32, display_get_gui_height() - 32 + icons_at_bottom_y + 32, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -1724,10 +1729,11 @@ if (!global.actually_play_edited_level)
 			{
 				draw_sprite_ext(spr_leveleditor_icons, 20, display_get_gui_width() - 224 - 64, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 			}
-			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32 - 64 - 64 - 64, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32 - 64 - 64 - 64, display_get_gui_height() + 32 + icons_at_bottom_y - 32))
+			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32 - 64 - 64 - 64 + 1, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32 - 64 - 64 - 64, display_get_gui_height() + 32 + icons_at_bottom_y - 32))
 			&& (global.controls_used_for_navigation == "mouse")
 			|| (level_editor_menu == "easy")
 			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() - 224 - 64, display_get_gui_height() - 80, 1, 1, 270, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(display_get_gui_width() - 32 - 64 - 32 - 64 - 64 - 64, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32 - 64 - 64 - 64, display_get_gui_height() + 32 + icons_at_bottom_y - 32, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -1743,10 +1749,11 @@ if (!global.actually_play_edited_level)
 			{
 				draw_sprite_ext(spr_leveleditor_icons, 21, display_get_gui_width() - 160 - 64, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 			}
-			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32 - 64 - 64, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32 - 64 - 64, display_get_gui_height() + 32 + icons_at_bottom_y - 32))
+			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32 - 64 - 64 + 1, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32 - 64 - 64, display_get_gui_height() + 32 + icons_at_bottom_y - 32))
 			&& (global.controls_used_for_navigation == "mouse")
 			|| (level_editor_menu == "normal")
 			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() - 160 - 64, display_get_gui_height() - 80, 1, 1, 270, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(display_get_gui_width() - 32 - 64 - 32 - 64 - 64, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32 - 64 - 64, display_get_gui_height() + 32 + icons_at_bottom_y - 32, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -1762,10 +1769,11 @@ if (!global.actually_play_edited_level)
 			{
 				draw_sprite_ext(spr_leveleditor_icons, 22, display_get_gui_width() - 96 - 64, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_dkgray, 1);
 			}
-			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32 - 64, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32 - 64, display_get_gui_height() + 32 + icons_at_bottom_y - 32))
+			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32 - 64 + 1, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32 - 64, display_get_gui_height() + 32 + icons_at_bottom_y - 32))
 			&& (global.controls_used_for_navigation == "mouse")
 			|| (level_editor_menu == "hard")
 			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() - 96 - 64, display_get_gui_height() - 80, 1, 1, 270, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(display_get_gui_width() - 32 - 64 - 32 - 64, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32 - 64, display_get_gui_height() + 32 + icons_at_bottom_y - 32, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -1775,10 +1783,11 @@ if (!global.actually_play_edited_level)
 			#region /* Set Difficulty Mode / Back */
 			draw_sprite_ext(spr_leveleditor_icons, 24, display_get_gui_width() - 32 - 64, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 			
-			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32, display_get_gui_height() + 32 + icons_at_bottom_y - 32))
+			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32 + 1, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32, display_get_gui_height() + 32 + icons_at_bottom_y - 32))
 			&& (global.controls_used_for_navigation == "mouse")
 			|| (level_editor_menu == "difficulty_toggle")
 			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() - 32 - 64, display_get_gui_height() - 80, 1, 1, 270, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(display_get_gui_width() - 32 - 64 - 32, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32, display_get_gui_height() + 32 + icons_at_bottom_y - 32, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -1792,10 +1801,11 @@ if (!global.actually_play_edited_level)
 		{
 			draw_sprite_ext(spr_leveleditor_icons, 19, display_get_gui_width() - 32 - 64, display_get_gui_height() - 32 + icons_at_bottom_y, 1, 1, 0, c_white, 1);
 			
-			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32, display_get_gui_height() + 32 + icons_at_bottom_y - 32))
+			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 32 - 64 - 32 + 1, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32, display_get_gui_height() + 32 + icons_at_bottom_y - 32))
 			&& (global.controls_used_for_navigation == "mouse")
 			|| (level_editor_menu == "difficulty_toggle")
 			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, display_get_gui_width() - 32 - 64, display_get_gui_height() - 80, 1, 1, 270, c_white, 1);
 				draw_set_alpha(0.5);
 				draw_rectangle_color(display_get_gui_width() - 32 - 64 - 32, display_get_gui_height() - 32 + icons_at_bottom_y - 32, display_get_gui_width() + 32 - 64 - 32, display_get_gui_height() + 32 + icons_at_bottom_y - 32, c_white, c_white, c_white, c_white, false);
 				draw_set_alpha(1);
@@ -2026,12 +2036,16 @@ if (!global.actually_play_edited_level)
 		}
 		
 		#region /* Navigate Category Icons */
-		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_terrain_x - 32, 0 + icons_at_top_y, icons_object_category_terrain_x + 32, + 64 + icons_at_top_y))
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_terrain_x - 32 + 1, icons_at_top_y, icons_object_category_terrain_x + 32, + 64 + icons_at_top_y))
 		&& (global.controls_used_for_navigation == "mouse")
 		|| (level_editor_menu == "category_terrain")
 		{
+			if (!show_selected_menu)
+			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icons_object_category_terrain_x, icons_at_top_y + 80, 1, 1, 90, c_white, 1);
+			}
 			draw_set_alpha(0.5);
-			draw_rectangle_color(icons_object_category_terrain_x - 32, 0 + icons_at_top_y, icons_object_category_terrain_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color(icons_object_category_terrain_x - 32, icons_at_top_y, icons_object_category_terrain_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -2044,12 +2058,16 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_decoration_x - 32, 0 + icons_at_top_y, icons_object_category_decoration_x + 32, + 64 + icons_at_top_y))
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_decoration_x - 32 + 1, icons_at_top_y, icons_object_category_decoration_x + 32, + 64 + icons_at_top_y))
 		&& (global.controls_used_for_navigation == "mouse")
 		|| (level_editor_menu == "category_decoration")
 		{
+			if (!show_selected_menu)
+			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icons_object_category_decoration_x, icons_at_top_y + 80, 1, 1, 90, c_white, 1);
+			}
 			draw_set_alpha(0.5);
-			draw_rectangle_color(icons_object_category_decoration_x - 32, 0 + icons_at_top_y, icons_object_category_decoration_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color(icons_object_category_decoration_x - 32, icons_at_top_y, icons_object_category_decoration_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -2062,12 +2080,16 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_item_x - 32, 0 + icons_at_top_y, icons_object_category_item_x + 32, + 64 + icons_at_top_y))
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_item_x - 32 + 1, icons_at_top_y, icons_object_category_item_x + 32, + 64 + icons_at_top_y))
 		&& (global.controls_used_for_navigation == "mouse")
 		|| (level_editor_menu == "category_item")
 		{
+			if (!show_selected_menu)
+			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icons_object_category_item_x, icons_at_top_y + 80, 1, 1, 90, c_white, 1);
+			}
 			draw_set_alpha(0.5);
-			draw_rectangle_color(icons_object_category_item_x - 32, 0 + icons_at_top_y, icons_object_category_item_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color(icons_object_category_item_x - 32, icons_at_top_y, icons_object_category_item_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -2080,12 +2102,16 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_enemy_x - 32, 0 + icons_at_top_y, icons_object_category_enemy_x + 32, + 64 + icons_at_top_y))
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_enemy_x - 32 + 1, icons_at_top_y, icons_object_category_enemy_x + 32, + 64 + icons_at_top_y))
 		&& (global.controls_used_for_navigation == "mouse")
 		|| (level_editor_menu == "category_enemy")
 		{
+			if (!show_selected_menu)
+			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icons_object_category_enemy_x, icons_at_top_y + 80, 1, 1, 90, c_white, 1);
+			}
 			draw_set_alpha(0.5);
-			draw_rectangle_color(icons_object_category_enemy_x - 32, 0 + icons_at_top_y, icons_object_category_enemy_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color(icons_object_category_enemy_x - 32, icons_at_top_y, icons_object_category_enemy_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -2098,12 +2124,16 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_gizmo_x - 32, 0 + icons_at_top_y, icons_object_category_gizmo_x + 32, + 64 + icons_at_top_y))
+		if (point_in_rectangle(cursor_x, cursor_y, icons_object_category_gizmo_x - 32 + 1, icons_at_top_y, icons_object_category_gizmo_x + 32, + 64 + icons_at_top_y))
 		&& (global.controls_used_for_navigation == "mouse")
 		|| (level_editor_menu == "category_gizmo")
 		{
+			if (!show_selected_menu)
+			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, icons_object_category_gizmo_x, icons_at_top_y + 80, 1, 1, 90, c_white, 1);
+			}
 			draw_set_alpha(0.5);
-			draw_rectangle_color(icons_object_category_gizmo_x - 32, 0 + icons_at_top_y, icons_object_category_gizmo_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
+			draw_rectangle_color(icons_object_category_gizmo_x - 32, icons_at_top_y, icons_object_category_gizmo_x + 32, 64 + icons_at_top_y, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
 			if (mouse_check_button_pressed(mb_left))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -2120,7 +2150,7 @@ if (!global.actually_play_edited_level)
 		#endregion /* Object Categories Icons END */
 		
 		#region /* Click Toggle Grid */
-		if (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, - 64, grid_button_x + 32, + 64))
+		if (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, - 64 + 1, grid_button_x + 32, + 64))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (show_icons_at_top)
 		&& (!pause)
@@ -2129,6 +2159,7 @@ if (!global.actually_play_edited_level)
 			tooltip = "Toggle Grid";
 			show_tooltip += 2;
 			
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, grid_button_x, icons_at_top_y + 80, 1, 1, 90, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(grid_button_x - 32, - 64, grid_button_x + 32, + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -2163,7 +2194,7 @@ if (!global.actually_play_edited_level)
 			zoom_out = true;
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, zoom_out_button_x - 32, - 64, zoom_out_button_x + 32, + 64))
+		if (point_in_rectangle(cursor_x, cursor_y, zoom_out_button_x - 32 + 1, - 64, zoom_out_button_x + 32, + 64))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (show_icons_at_top)
 		|| (level_editor_menu == "zoom_out")
@@ -2171,6 +2202,7 @@ if (!global.actually_play_edited_level)
 			tooltip = "Zoom Out";
 			show_tooltip += 2;
 			
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, zoom_out_button_x, icons_at_top_y + 80, 1, 1, 90, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(zoom_out_button_x - 32, - 64, zoom_out_button_x + 32, + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -2201,7 +2233,7 @@ if (!global.actually_play_edited_level)
 			zoom_reset = true
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, zoom_reset_button_x - 32, - 64, zoom_reset_button_x + 32, + 64))
+		if (point_in_rectangle(cursor_x, cursor_y, zoom_reset_button_x - 32 + 1, - 64, zoom_reset_button_x + 32, + 64))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (show_icons_at_top)
 		|| (level_editor_menu == "zoom_reset")
@@ -2209,6 +2241,7 @@ if (!global.actually_play_edited_level)
 			tooltip = "Reset Zoom";
 			show_tooltip += 2;
 			
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, zoom_reset_button_x, icons_at_top_y + 80, 1, 1, 90, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(zoom_reset_button_x - 32, - 64, zoom_reset_button_x + 32, + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -2255,7 +2288,7 @@ if (!global.actually_play_edited_level)
 			zoom_in = true;
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, zoom_in_button_x - 32, - 64, zoom_in_button_x + 32, + 64))
+		if (point_in_rectangle(cursor_x, cursor_y, zoom_in_button_x - 32 + 1, - 64, zoom_in_button_x + 32, + 64))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (show_icons_at_top)
 		|| (level_editor_menu == "zoom_in")
@@ -2263,6 +2296,7 @@ if (!global.actually_play_edited_level)
 			tooltip = "Zoom In";
 			show_tooltip += 2;
 			
+			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, zoom_in_button_x, icons_at_top_y + 80, 1, 1, 90, c_white, 1);
 			draw_set_alpha(0.5);
 			draw_rectangle_color(zoom_in_button_x - 32, - 64, zoom_in_button_x + 32, + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);
@@ -2302,7 +2336,7 @@ if (!global.actually_play_edited_level)
 			}
 		}
 		else
-		if (point_in_rectangle(cursor_x, cursor_y, help_button_x - 32, - 64, help_button_x + 32, + 64))
+		if (point_in_rectangle(cursor_x, cursor_y, help_button_x - 32 + 1, - 64, help_button_x + 32, + 64))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (show_icons_at_top)
 		&& (!pause)
@@ -2316,6 +2350,10 @@ if (!global.actually_play_edited_level)
 			tooltip = "Help";
 			show_tooltip += 2;
 			
+			if (welcome_to_level_editor == 0)
+			{
+				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, help_button_x, icons_at_top_y + 80, 1, 1, 90, c_white, 1);
+			}
 			draw_set_alpha(0.5);
 			draw_rectangle_color(help_button_x - 32, - 64, help_button_x + 32, + 64, c_white, c_white, c_white, c_white, false);
 			draw_set_alpha(1);

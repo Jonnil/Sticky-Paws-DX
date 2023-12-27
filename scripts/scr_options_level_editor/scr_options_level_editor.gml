@@ -431,7 +431,7 @@ function scr_options_level_editor()
 			var delete_all_objects_y = 46 * 9 + 20 - 16;
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
-			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_icons_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(level_editor_options_x, level_theme_y, l10n_text("Level Theme"), "level_theme", "change_entire_theme");
 			draw_menu_checkmark(level_editor_options_x - 90, make_every_tileset_into_default_tileset_y, l10n_text("Make every tileset into default tileset"), "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
 			draw_menu_checkmark(level_editor_options_x - 90, rain_y, l10n_text("Rain"), "rain", global.rain);
@@ -573,7 +573,7 @@ function scr_options_level_editor()
 			}
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_theme", "level_theme");
-			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_icons_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(level_editor_options_x, change_entire_theme_y, l10n_text("Change Entire Theme"), "change_entire_theme", "load_official_level_to_take_from");
 			if (have_custom_asset_background1)
 			|| (have_custom_asset_background2)
@@ -931,7 +931,7 @@ function scr_options_level_editor()
 			}
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_change_background", "change_background");
-			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_icons_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(level_editor_options_x, change_all_background_y, l10n_text("Change All Backgrounds"), "change_all_background", "load_official_level_to_take_from");
 			if (have_custom_asset_background1)
 			|| (have_custom_asset_background2)
@@ -1776,7 +1776,7 @@ function scr_options_level_editor()
 			}
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_change_music", "change_music");
-			draw_sprite_ext(spr_icons_back, 0, 20, 0 + 21, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_icons_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(level_editor_options_x, change_all_music_y, l10n_text("Change All Music"), "change_all_music", "load_official_level_to_take_from");
 			if (have_custom_asset_music)
 			|| (have_custom_asset_music_underwater)

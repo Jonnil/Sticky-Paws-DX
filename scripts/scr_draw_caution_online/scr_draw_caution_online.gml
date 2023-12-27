@@ -79,7 +79,7 @@ function scr_draw_caution_online()
 			menu_delay = 3;
 		}
 		
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 0 + 370, 0 + 41))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)

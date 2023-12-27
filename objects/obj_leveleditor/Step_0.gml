@@ -1,96 +1,100 @@
 #region /* Navigate the level editor icons with D-Pad */
-/* UP */ if (keyboard_check_pressed(ord("I")))
-&& (menu_delay == 0 && menu_joystick_delay == 0)
+if (menu_delay == 0 && menu_joystick_delay == 0)
 {
-	menu_delay = 3;
-	if (level_editor_menu == ""){level_editor_menu = "category_terrain";}else
-	if (level_editor_menu == "play"){level_editor_menu = "category_terrain";}
-	if (level_editor_menu == "pen"){level_editor_menu = "category_terrain";}else
-	if (level_editor_menu == "erase"){level_editor_menu = "category_terrain";}else
-	if (level_editor_menu == "fill"){level_editor_menu = "category_terrain";}else
-	if (level_editor_menu == "hide"){level_editor_menu = "category_terrain";}else
-	if (level_editor_menu == "difficulty_toggle"){level_editor_menu = "help";}else
-	if (level_editor_menu == "wipe"){level_editor_menu = "help";}
-	if (level_editor_menu == "easy"){level_editor_menu = "help";}else
-	if (level_editor_menu == "normal"){level_editor_menu = "help";}else
-	if (level_editor_menu == "hard"){level_editor_menu = "help";}
-}
-/* Left */ if (keyboard_check_pressed(ord("J")))
-&& (menu_delay == 0 && menu_joystick_delay == 0)
-{
-	menu_delay = 3;
-	if (level_editor_menu == ""){level_editor_menu = "play";}else
-	if (level_editor_menu == "category_terrain"){level_editor_menu = "play";}else
-	if (level_editor_menu == "category_decoration"){level_editor_menu = "category_terrain";}else
-	if (level_editor_menu == "category_item"){level_editor_menu = "category_decoration";}else
-	if (level_editor_menu == "category_enemy"){level_editor_menu = "category_item";}else
-	if (level_editor_menu == "category_gizmo"){level_editor_menu = "category_enemy";}else
-	if (level_editor_menu == "grid"){level_editor_menu = "category_gizmo";}else
-	if (level_editor_menu == "zoom_out"){level_editor_menu = "grid";}else
-	if (level_editor_menu == "zoom_reset"){level_editor_menu = "zoom_out";}else
-	if (level_editor_menu == "zoom_in"){level_editor_menu = "zoom_reset";}else
-	if (level_editor_menu == "help"){level_editor_menu = "zoom_in";}else
-	if (level_editor_menu == "pen"){level_editor_menu = "play";}else
-	if (level_editor_menu == "erase"){level_editor_menu = "pen";}else
-	if (level_editor_menu == "fill"){level_editor_menu = "erase";}else
-	if (level_editor_menu == "hide"){level_editor_menu = "fill";}else
-	if (level_editor_menu == "difficulty_toggle"){if (set_difficulty_mode){level_editor_menu = "hard";}else{level_editor_menu = "hide";}}else
-	if (level_editor_menu == "wipe"){if (global.enable_difficutly_layers_in_level_editor){level_editor_menu = "difficulty_toggle";}else{level_editor_menu = "hide";}}else
-	if (level_editor_menu == "easy"){level_editor_menu = "hide";}else
-	if (level_editor_menu == "normal"){level_editor_menu = "easy";}else
-	if (level_editor_menu == "hard"){level_editor_menu = "normal";}
-}
-/* Down */ if (keyboard_check_pressed(ord("K")))
-&& (menu_delay == 0 && menu_joystick_delay == 0)
-{
-	menu_delay = 3;
-	if (level_editor_menu == ""){level_editor_menu = "play";}else
-	if (level_editor_menu == "category_terrain"){level_editor_menu = "play";}else
-	if (level_editor_menu == "category_decoration"){level_editor_menu = "play";}else
-	if (level_editor_menu == "category_item"){level_editor_menu = "play";}else
-	if (level_editor_menu == "category_enemy"){level_editor_menu = "play";}else
-	if (level_editor_menu == "category_gizmo"){level_editor_menu = "play";}else
-	if (level_editor_menu == "grid"){level_editor_menu = "wipe";}else
-	if (level_editor_menu == "zoom_out"){level_editor_menu = "wipe";}else
-	if (level_editor_menu == "zoom_reset"){level_editor_menu = "wipe";}else
-	if (level_editor_menu == "zoom_in"){level_editor_menu = "wipe";}else
-	if (level_editor_menu == "help"){level_editor_menu = "wipe";}
-}
-/* Right */ if (keyboard_check_pressed(ord("L")))
-&& (menu_delay == 0 && menu_joystick_delay == 0)
-{
-	menu_delay = 3;
-	if (level_editor_menu == ""){}else
-	if (level_editor_menu == "category_terrain"){level_editor_menu = "category_decoration";}else
-	if (level_editor_menu == "category_decoration"){level_editor_menu = "category_item";}else
-	if (level_editor_menu == "category_item"){level_editor_menu = "category_enemy";}else
-	if (level_editor_menu == "category_enemy"){level_editor_menu = "category_gizmo";}else
-	if (level_editor_menu == "category_gizmo"){level_editor_menu = "grid";}else
-	if (level_editor_menu == "grid"){level_editor_menu = "zoom_out";}else
-	if (level_editor_menu == "zoom_out"){level_editor_menu = "zoom_reset";}else
-	if (level_editor_menu == "zoom_reset"){level_editor_menu = "zoom_in";}else
-	if (level_editor_menu == "zoom_in"){level_editor_menu = "help";}else
-	if (level_editor_menu == "help"){level_editor_menu = "help";}else
-	if (level_editor_menu == "play"){level_editor_menu = "pen";}else
-	if (level_editor_menu == "pen"){level_editor_menu = "erase";}else
-	if (level_editor_menu == "erase"){level_editor_menu = "fill";}else
-	if (level_editor_menu == "fill"){level_editor_menu = "hide";}else
-	if (level_editor_menu == "hide"){if (set_difficulty_mode){level_editor_menu = "easy";}else if (global.enable_difficutly_layers_in_level_editor){level_editor_menu = "difficulty_toggle";}else{level_editor_menu = "wipe";}}else
-	if (level_editor_menu == "difficulty_toggle"){level_editor_menu = "wipe";}else
-	if (level_editor_menu == "easy"){level_editor_menu = "normal";}else
-	if (level_editor_menu == "normal"){level_editor_menu = "hard";}else
-	if (level_editor_menu == "hard"){level_editor_menu = "difficulty_toggle";}
-}
-/* Back */ if (level_editor_menu != "")
-{
-	if (key_b_pressed)
-	|| (key_up)
-	|| (key_left)
-	|| (key_down)
-	|| (key_right)
-	|| (global.controls_used_for_navigation == "mouse")
+	/* UP */ if (keyboard_check_pressed(ord("I")))
+	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
 	{
-		if (menu_delay == 0 && menu_joystick_delay == 0)
+		menu_delay = 3;
+		if (level_editor_menu == ""){level_editor_menu = "category_terrain";}else
+		if (level_editor_menu == "play"){level_editor_menu = "category_terrain";}
+		if (level_editor_menu == "pen"){level_editor_menu = "category_terrain";}else
+		if (level_editor_menu == "erase"){level_editor_menu = "category_terrain";}else
+		if (level_editor_menu == "fill"){level_editor_menu = "category_terrain";}else
+		if (level_editor_menu == "hide"){level_editor_menu = "category_terrain";}else
+		if (level_editor_menu == "difficulty_toggle"){level_editor_menu = "help";}else
+		if (level_editor_menu == "wipe"){level_editor_menu = "help";}else
+		if (level_editor_menu == "easy"){level_editor_menu = "help";}else
+		if (level_editor_menu == "normal"){level_editor_menu = "help";}else
+		if (level_editor_menu == "hard"){level_editor_menu = "help";}
+	}
+	/* Left */ if (keyboard_check_pressed(ord("J")))
+	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padl))
+	{
+		menu_delay = 3;
+		if (level_editor_menu == ""){level_editor_menu = "play";}else
+		if (level_editor_menu == "category_terrain"){level_editor_menu = "play";}else
+		if (level_editor_menu == "category_decoration"){level_editor_menu = "category_terrain";}else
+		if (level_editor_menu == "category_item"){level_editor_menu = "category_decoration";}else
+		if (level_editor_menu == "category_enemy"){level_editor_menu = "category_item";}else
+		if (level_editor_menu == "category_gizmo"){level_editor_menu = "category_enemy";}else
+		if (level_editor_menu == "grid"){level_editor_menu = "category_gizmo";}else
+		if (level_editor_menu == "zoom_out"){level_editor_menu = "grid";}else
+		if (level_editor_menu == "zoom_reset"){level_editor_menu = "zoom_out";}else
+		if (level_editor_menu == "zoom_in"){level_editor_menu = "zoom_reset";}else
+		if (level_editor_menu == "help"){level_editor_menu = "zoom_in";}else
+		if (level_editor_menu == "pen"){level_editor_menu = "play";}else
+		if (level_editor_menu == "erase"){level_editor_menu = "pen";}else
+		if (level_editor_menu == "fill"){level_editor_menu = "erase";}else
+		if (level_editor_menu == "hide"){level_editor_menu = "fill";}else
+		if (level_editor_menu == "difficulty_toggle"){if (set_difficulty_mode){level_editor_menu = "hard";}else{level_editor_menu = "hide";}}else
+		if (level_editor_menu == "wipe"){if (global.enable_difficutly_layers_in_level_editor){level_editor_menu = "difficulty_toggle";}else{level_editor_menu = "hide";}}else
+		if (level_editor_menu == "easy"){level_editor_menu = "hide";}else
+		if (level_editor_menu == "normal"){level_editor_menu = "easy";}else
+		if (level_editor_menu == "hard"){level_editor_menu = "normal";}
+	}
+	/* Down */ if (keyboard_check_pressed(ord("K")))
+	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
+	{
+		menu_delay = 3;
+		if (level_editor_menu == ""){level_editor_menu = "play";}else
+		if (level_editor_menu == "category_terrain"){level_editor_menu = "play";}else
+		if (level_editor_menu == "category_decoration"){level_editor_menu = "play";}else
+		if (level_editor_menu == "category_item"){level_editor_menu = "play";}else
+		if (level_editor_menu == "category_enemy"){level_editor_menu = "play";}else
+		if (level_editor_menu == "category_gizmo"){level_editor_menu = "play";}else
+		if (level_editor_menu == "grid"){level_editor_menu = "wipe";}else
+		if (level_editor_menu == "zoom_out"){level_editor_menu = "wipe";}else
+		if (level_editor_menu == "zoom_reset"){level_editor_menu = "wipe";}else
+		if (level_editor_menu == "zoom_in"){level_editor_menu = "wipe";}else
+		if (level_editor_menu == "help"){level_editor_menu = "wipe";}
+	}
+	/* Right */ if (keyboard_check_pressed(ord("L")))
+	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padr))
+	{
+		menu_delay = 3;
+		if (level_editor_menu == ""){level_editor_menu = "help";}else
+		if (level_editor_menu == "category_terrain"){level_editor_menu = "category_decoration";}else
+		if (level_editor_menu == "category_decoration"){level_editor_menu = "category_item";}else
+		if (level_editor_menu == "category_item"){level_editor_menu = "category_enemy";}else
+		if (level_editor_menu == "category_enemy"){level_editor_menu = "category_gizmo";}else
+		if (level_editor_menu == "category_gizmo"){level_editor_menu = "grid";}else
+		if (level_editor_menu == "grid"){level_editor_menu = "zoom_out";}else
+		if (level_editor_menu == "zoom_out"){level_editor_menu = "zoom_reset";}else
+		if (level_editor_menu == "zoom_reset"){level_editor_menu = "zoom_in";}else
+		if (level_editor_menu == "zoom_in"){level_editor_menu = "help";}else
+		if (level_editor_menu == "help"){level_editor_menu = "help";}else
+		if (level_editor_menu == "play"){level_editor_menu = "pen";}else
+		if (level_editor_menu == "pen"){level_editor_menu = "erase";}else
+		if (level_editor_menu == "erase"){level_editor_menu = "fill";}else
+		if (level_editor_menu == "fill"){level_editor_menu = "hide";}else
+		if (level_editor_menu == "hide"){if (set_difficulty_mode){level_editor_menu = "easy";}else if (global.enable_difficutly_layers_in_level_editor){level_editor_menu = "difficulty_toggle";}else{level_editor_menu = "wipe";}}else
+		if (level_editor_menu == "difficulty_toggle"){level_editor_menu = "wipe";}else
+		if (level_editor_menu == "easy"){level_editor_menu = "normal";}else
+		if (level_editor_menu == "normal"){level_editor_menu = "hard";}else
+		if (level_editor_menu == "hard"){level_editor_menu = "difficulty_toggle";}
+	}
+	/* Back */ if (level_editor_menu != "")
+	{
+		if (key_b_pressed)
+		|| (key_up)
+		|| (key_left)
+		|| (key_down)
+		|| (key_right)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < -0.3)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > +0.3)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
+		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
+		|| (global.controls_used_for_navigation == "mouse")
 		{
 			menu_delay = 3;
 			level_editor_menu = "";

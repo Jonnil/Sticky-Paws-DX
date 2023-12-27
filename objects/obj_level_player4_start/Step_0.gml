@@ -77,9 +77,9 @@ else
 }
 
 #region /* Make sure the level end isn't outside of the level, this code has to be after the drag object code */
-if (x < 0 + sprite_width - 32)
+if (x < sprite_width - 32)
 {
-	x = 0 + sprite_width - 32
+	x = sprite_width - 32
 }
 if (x > room_width)
 {
