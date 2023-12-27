@@ -490,11 +490,11 @@ if (load_ok >= 4)
 		ini_write_real("config", "select_resource_pack", global.selected_resource_pack);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
-	if (global.selected_title_background > ds_list_size(global.all_loaded_title_backgrounds) - 1)
+	if (global.selected_title_background[title_bg_layer] > ds_list_size(global.all_loaded_title_backgrounds) - 1)
 	{
-		global.selected_title_background = ds_list_size(global.all_loaded_title_backgrounds) - 1;
+		global.selected_title_background[title_bg_layer] = ds_list_size(global.all_loaded_title_backgrounds) - 1;
 		ini_open(working_directory + "save_file/config.ini");
-		ini_write_real("config", "select_title_background", global.selected_title_background);
+		ini_write_real("config", "select_title_background" + string(title_bg_layer), global.selected_title_background[title_bg_layer]);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	if (global.selected_title_logo > ds_list_size(global.all_loaded_title_logo) - 1)

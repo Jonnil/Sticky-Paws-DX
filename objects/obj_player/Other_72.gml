@@ -10,7 +10,7 @@ if (ident == global.saveid)
 }
 else if (ident == global.loadid)
 {
-	var buffstring = buffer_read(global.loadbuff,buffer_string);
+	var buffstring = buffer_read(global.loadbuff, buffer_string);
 	ini_open_from_string(buffstring);
 	
 	/*

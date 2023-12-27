@@ -24,7 +24,7 @@ enum localization
 	,tr_tr /* Turkish */
 	,cs_cz /* Czech */
 	,el_gr /* Greek */
-	,bg_bg /* Bulgarian */
+	, bg_bg /* Bulgarian */
 	,ru_ru /* Russian */
 	,uk_ua /* Ukrainian */
 	,ja_jp /* Japanese */

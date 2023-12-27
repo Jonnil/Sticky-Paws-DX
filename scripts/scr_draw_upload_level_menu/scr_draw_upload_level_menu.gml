@@ -1953,7 +1953,7 @@ function scr_draw_upload_level_menu()
 		{
 			audio_stop_sound(title_music);
 		}
-		scr_delete_sprite_properly(title_screen_background);
+		scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
 		scr_update_all_backgrounds();
 		global.part_limit = 0; /* How many objects are currently placed in the level editor */
 		global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */

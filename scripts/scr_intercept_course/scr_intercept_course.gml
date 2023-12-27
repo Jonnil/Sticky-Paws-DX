@@ -10,7 +10,7 @@
 	GMLscripts.com/license */
 function scr_intercept_course(origin, target, pspeed)
 {
-	var dir,alpha,phi,beta;
+	var dir,alpha,phi, beta;
 	dir = point_direction(origin.x, origin.y, target.x, target.y);
 	alpha = target.speed / pspeed;
 	phi = degtorad(target.direction - dir);

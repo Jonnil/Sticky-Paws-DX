@@ -49,13 +49,39 @@ if (title_music > noone)
 }
 #endregion /* Play title screen music END */
 
-background_layer_x += global.background_layer_x_scroll;
-background_layer_y += global.background_layer_y_scroll;
-layer_x(layer_get_id("Background"),background_layer_x);
-layer_y(layer_get_id("Background"),background_layer_y);
-title_background_scale_lerp = lerp(title_background_scale_lerp, global.title_background_scale, 0.1);
-layer_background_xscale(layer_background_get_id(layer_get_id("Background")), title_background_scale_lerp);
-layer_background_yscale(layer_background_get_id(layer_get_id("Background")), title_background_scale_lerp);
+#region /* Set Title Background Settings */
+background_layer_x[1] += global.background_layer_x_scroll[1];
+background_layer_x[2] += global.background_layer_x_scroll[2];
+background_layer_x[3] += global.background_layer_x_scroll[3];
+
+background_layer_y[1] += global.background_layer_y_scroll[1];
+background_layer_y[2] += global.background_layer_y_scroll[2];
+background_layer_y[3] += global.background_layer_y_scroll[3];
+
+layer_x(layer_get_id("Background1"), background_layer_x[1]);
+layer_x(layer_get_id("Background2"), background_layer_x[2]);
+layer_x(layer_get_id("Background3"), background_layer_x[3]);
+
+layer_y(layer_get_id("Background1"), background_layer_y[1]);
+layer_y(layer_get_id("Background2"), background_layer_y[2]);
+layer_y(layer_get_id("Background3"), background_layer_y[3]);
+
+title_background_scale_lerp[1] = lerp(title_background_scale_lerp[1], global.title_background_scale[1], 0.1);
+title_background_scale_lerp[2] = lerp(title_background_scale_lerp[2], global.title_background_scale[2], 0.1);
+title_background_scale_lerp[3] = lerp(title_background_scale_lerp[3], global.title_background_scale[3], 0.1);
+
+layer_background_xscale(layer_background_get_id(layer_get_id("Background1")), title_background_scale_lerp[1]);
+layer_background_xscale(layer_background_get_id(layer_get_id("Background2")), title_background_scale_lerp[2]);
+layer_background_xscale(layer_background_get_id(layer_get_id("Background3")), title_background_scale_lerp[3]);
+
+layer_background_yscale(layer_background_get_id(layer_get_id("Background1")), title_background_scale_lerp[1]);
+layer_background_yscale(layer_background_get_id(layer_get_id("Background2")), title_background_scale_lerp[2]);
+layer_background_yscale(layer_background_get_id(layer_get_id("Background3")), title_background_scale_lerp[3]);
+
+layer_background_alpha(layer_background_get_id(layer_get_id("Background1")), title_background_blink[1]);
+layer_background_alpha(layer_background_get_id(layer_get_id("Background2")), title_background_blink[2]);
+layer_background_alpha(layer_background_get_id(layer_get_id("Background3")), title_background_blink[3]);
+#endregion /* Set Title Background Settings END */
 
 if (global.file < 1)
 {
@@ -400,7 +426,7 @@ if (iris_xscale <= 0.01)
 					audio_stop_sound(title_music);
 				}
 			}
-			scr_delete_sprite_properly(title_screen_background);
+			scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
 			if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 			&& (global.create_level_from_template == false)
 			&& (global.select_level_index > 0) /* Don't update if you're selecting "create from scratch" */
@@ -445,7 +471,7 @@ if (iris_xscale <= 0.01)
 				audio_stop_sound(title_music);
 			}
 		}
-		scr_delete_sprite_properly(title_screen_background);
+		scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
 		scr_config_save();
 		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 		lives = ini_read_real("Player", "lives", 5);

@@ -82,7 +82,7 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 	else
 	{
 		draw_rectangle_color(x_position, y_position- 16, x_position + 320, y_position + 16, c_dkgray, c_dkgray, c_dkgray, c_dkgray, false);
-		draw_rectangle_color(x_position, y_position- 16, x_position + variable_to_change * 320, y_position + 16,bar_color,bar_color,bar_color,bar_color, false);
+		draw_rectangle_color(x_position, y_position- 16, x_position + variable_to_change * 320, y_position + 16, bar_color, bar_color, bar_color, bar_color, false);
 	}
 	#endregion /* Draw Bar END */
 	

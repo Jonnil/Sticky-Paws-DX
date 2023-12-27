@@ -192,6 +192,8 @@ if (!directory_exists(working_directory + "\custom_characters"))
 
 scr_initialize_object_id_enums(); /* Initialize the object ID enums when the game starts so you never have to initialize the object ID's ever again */
 
+title_bg_layer = 1; /* Selected Title Background Layer to change */
+
 can_save_to_character_config = false; /* Only turn true when playing as custom character */
 initialized_characters = false;
 initialized_resource_pack = false;
@@ -268,8 +270,6 @@ global.all_loaded_title_logo = ds_list_create();
 global.automatically_pause_when_window_is_unfocused = true; /* Whenever you unfocus the window by clicking off the window, the game pauses by itself */
 global.automatically_play_downloaded_level = false; /* If the player wants to immediately play the downloaded level, then set this variable to true */
 global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
-global.background_layer_x_scroll = 1;
-global.background_layer_y_scroll = 1;
 global.character_select_in_this_menu = "main_game"; /* In what menu character select is going to appear in */
 global.controls_used_for_navigation = "keyboard"; /* keyboard, mouse, or controller */
 global.create_level_from_template = false; /* If you're currently creating a level from template or not */
@@ -307,7 +307,6 @@ global.player_can_play[4] = false; /* Player 4 needs to join the game to be able
 global.player_color[4] = c_yellow; /* Player 1 Color, default:yellow */
 global.select_level_index = 0; /* What level is selected in the custom level editor */
 global.selected_resource_pack = 0; /* 0 = default */
-global.selected_title_background = 0; /* 0 = default */
 global.show_defeats_counter = false; /* Show a defeats counter or not */
 global.show_ranks = false; /* Show ranks you get at the end of the level */
 global.show_timer = false; /* Show a countup timer or not */
@@ -324,7 +323,20 @@ global.sprite_player_stand[2] = noone;
 global.sprite_player_stand[3] = noone;
 global.sprite_player_stand[4] = noone;
 global.thumbnail_sprite = ds_list_create();
-global.title_background_scale = 1;
+
+global.selected_title_background[1] = 0; /* 0 = default */
+global.selected_title_background[2] = -1; /* -1 = nothing */
+global.selected_title_background[3] = -1; /* -1 = nothing */
+global.title_background_scale[1] = 1;
+global.title_background_scale[2] = 1;
+global.title_background_scale[3] = 1;
+global.background_layer_x_scroll[1] = 1;
+global.background_layer_y_scroll[1] = 1;
+global.background_layer_x_scroll[2] = 1;
+global.background_layer_y_scroll[2] = 1;
+global.background_layer_x_scroll[3] = 1;
+global.background_layer_y_scroll[3] = 1;
+
 global.title_logo_index = spr_noone;
 global.voicepack_for_player[1] = 0; /* Player 1 Select Voicepack */
 global.voicepack_for_player[2] = 0; /* Player 2 Select Voicepack */
