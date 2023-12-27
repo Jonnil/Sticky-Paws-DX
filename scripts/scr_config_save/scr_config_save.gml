@@ -69,35 +69,23 @@ function scr_config_save()
 	ini_write_real("config", "select_resource_pack", global.selected_resource_pack);
 	
 	#region /* Save Custom Title Background */
-	if (variable_instance_exists(self, "title_bg_layer"))
-	{
-		if (global.selected_title_background[1] <= -2)
-		{
-			global.selected_title_background[1] = -1;
-		}
-		if (global.selected_title_background[2] <= -2)
-		{
-			global.selected_title_background[2] = -1;
-		}
-		if (global.selected_title_background[3] <= -2)
-		{
-			global.selected_title_background[3] = -1;
-		}
-		ini_write_real("config", "select_title_background1", global.selected_title_background[1]);
-		ini_write_real("config", "title_background_scale1", global.title_background_scale[1]);
-		ini_write_real("config", "background_layer_x_scroll1", global.background_layer_x_scroll[1]);
-		ini_write_real("config", "background_layer_y_scroll1", global.background_layer_y_scroll[1]);
-		
-		ini_write_real("config", "select_title_background2", global.selected_title_background[2]);
-		ini_write_real("config", "title_background_scale2", global.title_background_scale[2]);
-		ini_write_real("config", "background_layer_x_scroll2", global.background_layer_x_scroll[2]);
-		ini_write_real("config", "background_layer_y_scroll2", global.background_layer_y_scroll[2]);
-		
-		ini_write_real("config", "select_title_background3", global.selected_title_background[3]);
-		ini_write_real("config", "title_background_scale3", global.title_background_scale[3]);
-		ini_write_real("config", "background_layer_x_scroll3", global.background_layer_x_scroll[3]);
-		ini_write_real("config", "background_layer_y_scroll3", global.background_layer_y_scroll[3]);
-	}
+	if (global.selected_title_background[1] <= -2){global.selected_title_background[1] = -1;}
+	if (global.selected_title_background[2] <= -2){global.selected_title_background[2] = -1;}
+	if (global.selected_title_background[3] <= -2){global.selected_title_background[3] = -1;}
+	ini_write_real("config", "select_title_background1", global.selected_title_background[1]);
+	ini_write_real("config", "title_background_scale1", global.title_background_scale[1]);
+	ini_write_real("config", "background_layer_x_scroll1", global.background_layer_x_scroll[1]);
+	ini_write_real("config", "background_layer_y_scroll1", global.background_layer_y_scroll[1]);
+	
+	ini_write_real("config", "select_title_background2", global.selected_title_background[2]);
+	ini_write_real("config", "title_background_scale2", global.title_background_scale[2]);
+	ini_write_real("config", "background_layer_x_scroll2", global.background_layer_x_scroll[2]);
+	ini_write_real("config", "background_layer_y_scroll2", global.background_layer_y_scroll[2]);
+	
+	ini_write_real("config", "select_title_background3", global.selected_title_background[3]);
+	ini_write_real("config", "title_background_scale3", global.title_background_scale[3]);
+	ini_write_real("config", "background_layer_x_scroll3", global.background_layer_x_scroll[3]);
+	ini_write_real("config", "background_layer_y_scroll3", global.background_layer_y_scroll[3]);
 	#endregion /* Save Custom Title Background END */
 	
 	if (global.selected_title_logo <= -1)

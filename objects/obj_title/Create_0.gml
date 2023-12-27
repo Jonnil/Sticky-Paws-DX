@@ -418,23 +418,6 @@ scr_audio_play(title_music, volume_source.music); /* Play title screen music */
 scr_audio_play(trailer_sound, volume_source.music); /* Play trailer sound */
 
 #region /* Load Custom Title Background */
-ini_open("save_file/config.ini");
-if (ini_key_exists("config", "select_title_background1")){global.selected_title_background[1] = ini_read_real("config", "select_title_background1", 0);}
-if (ini_key_exists("config", "title_background_scale1")){global.title_background_scale[1] = ini_read_real("config", "title_background_scale1", 1);}
-if (ini_key_exists("config", "background_layer_x_scroll1")){global.background_layer_x_scroll[1] = ini_read_real("config", "background_layer_x_scroll1", 1);}
-if (ini_key_exists("config", "background_layer_y_scroll1")){global.background_layer_y_scroll[1] = ini_read_real("config", "background_layer_y_scroll1", 1);}
-
-if (ini_key_exists("config", "select_title_background2")){global.selected_title_background[2] = ini_read_real("config", "select_title_background2", -1);}
-if (ini_key_exists("config", "title_background_scale2")){global.title_background_scale[2] = ini_read_real("config", "title_background_scale2", 1);}
-if (ini_key_exists("config", "background_layer_x_scroll2")){global.background_layer_x_scroll[2] = ini_read_real("config", "background_layer_x_scroll2", 1);}
-if (ini_key_exists("config", "background_layer_y_scroll2")){global.background_layer_y_scroll[2] = ini_read_real("config", "background_layer_y_scroll2", 1);}
-
-if (ini_key_exists("config", "select_title_background3")){global.selected_title_background[3] = ini_read_real("config", "select_title_background3", -1);}
-if (ini_key_exists("config", "title_background_scale3")){global.title_background_scale[3] = ini_read_real("config", "title_background_scale3", 1);}
-if (ini_key_exists("config", "background_layer_x_scroll3")){global.background_layer_x_scroll[3] = ini_read_real("config", "background_layer_x_scroll3", 1);}
-if (ini_key_exists("config", "background_layer_y_scroll3")){global.background_layer_y_scroll[3] = ini_read_real("config", "background_layer_y_scroll3", 1);}
-ini_close();
-
 title_bg_layer = 1; /* Selected Title Background Layer to change */
 title_background_scale_lerp[1] = global.title_background_scale[1];
 title_background_scale_lerp[2] = global.title_background_scale[2];

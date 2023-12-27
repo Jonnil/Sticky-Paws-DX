@@ -80,6 +80,22 @@ function scr_config_load()
 		if (ini_key_exists("config", "menu_button_subimg")){global.menu_button_subimg = ini_read_real("config", "menu_button_subimg", 16);}
 		
 		if (ini_key_exists("config", "select_resource_pack")){global.selected_resource_pack = ini_read_real("config", "select_resource_pack", 0);}
+		
+		#region/* Load Title Background Config */
+		if (ini_key_exists("config", "select_title_background1")){global.selected_title_background[1] = ini_read_real("config", "select_title_background1", 0);}
+		if (ini_key_exists("config", "title_background_scale1")){global.title_background_scale[1] = ini_read_real("config", "title_background_scale1", 1);}
+		if (ini_key_exists("config", "background_layer_x_scroll1")){global.background_layer_x_scroll[1] = ini_read_real("config", "background_layer_x_scroll1", 1);}
+		if (ini_key_exists("config", "background_layer_y_scroll1")){global.background_layer_y_scroll[1] = ini_read_real("config", "background_layer_y_scroll1", 1);}
+		if (ini_key_exists("config", "select_title_background2")){global.selected_title_background[2] = ini_read_real("config", "select_title_background2", -1);}
+		if (ini_key_exists("config", "title_background_scale2")){global.title_background_scale[2] = ini_read_real("config", "title_background_scale2", 1);}
+		if (ini_key_exists("config", "background_layer_x_scroll2")){global.background_layer_x_scroll[2] = ini_read_real("config", "background_layer_x_scroll2", 1);}
+		if (ini_key_exists("config", "background_layer_y_scroll2")){global.background_layer_y_scroll[2] = ini_read_real("config", "background_layer_y_scroll2", 1);}
+		if (ini_key_exists("config", "select_title_background3")){global.selected_title_background[3] = ini_read_real("config", "select_title_background3", -1);}
+		if (ini_key_exists("config", "title_background_scale3")){global.title_background_scale[3] = ini_read_real("config", "title_background_scale3", 1);}
+		if (ini_key_exists("config", "background_layer_x_scroll3")){global.background_layer_x_scroll[3] = ini_read_real("config", "background_layer_x_scroll3", 1);}
+		if (ini_key_exists("config", "background_layer_y_scroll3")){global.background_layer_y_scroll[3] = ini_read_real("config", "background_layer_y_scroll3", 1);}
+		#endregion/* Load Title Background Config END */
+		
 		if (ini_key_exists("config", "select_title_logo")){global.selected_title_logo = ini_read_real("config", "select_title_logo", 0);}
 		if (ini_key_exists("config", "can_load_custom_level_assets")){global.can_load_custom_level_assets = ini_read_real("config", "can_load_custom_level_assets", 0);}
 		if (ini_key_exists("config", "zoom_level")){global.zoom_level = ini_read_real("config", "zoom_level", 1);}

@@ -540,18 +540,14 @@ function scr_options_custom_resources()
 				if (keyboard_check(vk_control))
 				{
 					global.selected_title_background[title_bg_layer] -= 10;
-					if (global.selected_title_background[title_bg_layer] <= -1)
-					{
-						global.selected_title_background[title_bg_layer] = -1;
-					}
 				}
 				else
 				{
 					global.selected_title_background[title_bg_layer] --;
-					if (global.selected_title_background[title_bg_layer] <= -1)
-					{
-						global.selected_title_background[title_bg_layer] = -1;
-					}
+				}
+				if (global.selected_title_background[title_bg_layer] <= -1)
+				{
+					global.selected_title_background[title_bg_layer] = -1;
 				}
 				ini_open(working_directory + "save_file/config.ini");
 				ini_write_real("config", "select_title_background" + string(title_bg_layer), global.selected_title_background[title_bg_layer]);
