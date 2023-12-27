@@ -1,3 +1,104 @@
+#region /* Navigate the level editor icons with D-Pad */
+/* UP */ if (keyboard_check_pressed(ord("I")))
+&& (menu_delay == 0 && menu_joystick_delay == 0)
+{
+	menu_delay = 3;
+	if (level_editor_menu == ""){level_editor_menu = "category_terrain";}else
+	if (level_editor_menu == "play"){level_editor_menu = "category_terrain";}
+	if (level_editor_menu == "pen"){level_editor_menu = "category_terrain";}else
+	if (level_editor_menu == "erase"){level_editor_menu = "category_terrain";}else
+	if (level_editor_menu == "fill"){level_editor_menu = "category_terrain";}else
+	if (level_editor_menu == "hide"){level_editor_menu = "category_terrain";}else
+	if (level_editor_menu == "difficulty_toggle"){level_editor_menu = "help";}else
+	if (level_editor_menu == "wipe"){level_editor_menu = "help";}
+	if (level_editor_menu == "easy"){level_editor_menu = "help";}else
+	if (level_editor_menu == "normal"){level_editor_menu = "help";}else
+	if (level_editor_menu == "hard"){level_editor_menu = "help";}
+}
+/* Left */ if (keyboard_check_pressed(ord("J")))
+&& (menu_delay == 0 && menu_joystick_delay == 0)
+{
+	menu_delay = 3;
+	if (level_editor_menu == ""){level_editor_menu = "play";}else
+	if (level_editor_menu == "category_terrain"){level_editor_menu = "play";}else
+	if (level_editor_menu == "category_decoration"){level_editor_menu = "category_terrain";}else
+	if (level_editor_menu == "category_item"){level_editor_menu = "category_decoration";}else
+	if (level_editor_menu == "category_enemy"){level_editor_menu = "category_item";}else
+	if (level_editor_menu == "category_gizmo"){level_editor_menu = "category_enemy";}else
+	if (level_editor_menu == "grid"){level_editor_menu = "category_gizmo";}else
+	if (level_editor_menu == "zoom_out"){level_editor_menu = "grid";}else
+	if (level_editor_menu == "zoom_reset"){level_editor_menu = "zoom_out";}else
+	if (level_editor_menu == "zoom_in"){level_editor_menu = "zoom_reset";}else
+	if (level_editor_menu == "help"){level_editor_menu = "zoom_in";}else
+	if (level_editor_menu == "pen"){level_editor_menu = "play";}else
+	if (level_editor_menu == "erase"){level_editor_menu = "pen";}else
+	if (level_editor_menu == "fill"){level_editor_menu = "erase";}else
+	if (level_editor_menu == "hide"){level_editor_menu = "fill";}else
+	if (level_editor_menu == "difficulty_toggle"){if (set_difficulty_mode){level_editor_menu = "hard";}else{level_editor_menu = "hide";}}else
+	if (level_editor_menu == "wipe"){if (global.enable_difficutly_layers_in_level_editor){level_editor_menu = "difficulty_toggle";}else{level_editor_menu = "hide";}}else
+	if (level_editor_menu == "easy"){level_editor_menu = "hide";}else
+	if (level_editor_menu == "normal"){level_editor_menu = "easy";}else
+	if (level_editor_menu == "hard"){level_editor_menu = "normal";}
+}
+/* Down */ if (keyboard_check_pressed(ord("K")))
+&& (menu_delay == 0 && menu_joystick_delay == 0)
+{
+	menu_delay = 3;
+	if (level_editor_menu == ""){level_editor_menu = "play";}else
+	if (level_editor_menu == "category_terrain"){level_editor_menu = "play";}else
+	if (level_editor_menu == "category_decoration"){level_editor_menu = "play";}else
+	if (level_editor_menu == "category_item"){level_editor_menu = "play";}else
+	if (level_editor_menu == "category_enemy"){level_editor_menu = "play";}else
+	if (level_editor_menu == "category_gizmo"){level_editor_menu = "play";}else
+	if (level_editor_menu == "grid"){level_editor_menu = "wipe";}else
+	if (level_editor_menu == "zoom_out"){level_editor_menu = "wipe";}else
+	if (level_editor_menu == "zoom_reset"){level_editor_menu = "wipe";}else
+	if (level_editor_menu == "zoom_in"){level_editor_menu = "wipe";}else
+	if (level_editor_menu == "help"){level_editor_menu = "wipe";}
+}
+/* Right */ if (keyboard_check_pressed(ord("L")))
+&& (menu_delay == 0 && menu_joystick_delay == 0)
+{
+	menu_delay = 3;
+	if (level_editor_menu == ""){}else
+	if (level_editor_menu == "category_terrain"){level_editor_menu = "category_decoration";}else
+	if (level_editor_menu == "category_decoration"){level_editor_menu = "category_item";}else
+	if (level_editor_menu == "category_item"){level_editor_menu = "category_enemy";}else
+	if (level_editor_menu == "category_enemy"){level_editor_menu = "category_gizmo";}else
+	if (level_editor_menu == "category_gizmo"){level_editor_menu = "grid";}else
+	if (level_editor_menu == "grid"){level_editor_menu = "zoom_out";}else
+	if (level_editor_menu == "zoom_out"){level_editor_menu = "zoom_reset";}else
+	if (level_editor_menu == "zoom_reset"){level_editor_menu = "zoom_in";}else
+	if (level_editor_menu == "zoom_in"){level_editor_menu = "help";}else
+	if (level_editor_menu == "help"){level_editor_menu = "help";}else
+	if (level_editor_menu == "play"){level_editor_menu = "pen";}else
+	if (level_editor_menu == "pen"){level_editor_menu = "erase";}else
+	if (level_editor_menu == "erase"){level_editor_menu = "fill";}else
+	if (level_editor_menu == "fill"){level_editor_menu = "hide";}else
+	if (level_editor_menu == "hide"){if (set_difficulty_mode){level_editor_menu = "easy";}else if (global.enable_difficutly_layers_in_level_editor){level_editor_menu = "difficulty_toggle";}else{level_editor_menu = "wipe";}}else
+	if (level_editor_menu == "difficulty_toggle"){level_editor_menu = "wipe";}else
+	if (level_editor_menu == "easy"){level_editor_menu = "normal";}else
+	if (level_editor_menu == "normal"){level_editor_menu = "hard";}else
+	if (level_editor_menu == "hard"){level_editor_menu = "difficulty_toggle";}
+}
+/* Back */ if (level_editor_menu != "")
+{
+	if (key_b_pressed)
+	|| (key_up)
+	|| (key_left)
+	|| (key_down)
+	|| (key_right)
+	|| (global.controls_used_for_navigation == "mouse")
+	{
+		if (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			level_editor_menu = "";
+		}
+	}
+}
+#endregion /* Navigate the level editor icons with D-Pad END */
+
 #region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
 if (global.doing_clear_check)
 {
@@ -379,6 +480,9 @@ if (!global.actually_play_edited_level)
 	#region /* Holding the play key down */
 	if (keyboard_check_pressed(key_play))
 	&& (welcome_to_level_editor == false)
+	|| (level_editor_menu == "play")
+	&& (key_a_pressed)
+	&& (welcome_to_level_editor == false)
 	|| (gamepad_button_check_pressed(global.player_slot[1], button_play))
 	&& (welcome_to_level_editor == false)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
@@ -390,6 +494,9 @@ if (!global.actually_play_edited_level)
 		}
 	}
 	if (keyboard_check(key_play))
+	&& (welcome_to_level_editor == false)
+	|| (level_editor_menu == "play")
+	&& (key_a_hold)
 	&& (welcome_to_level_editor == false)
 	|| (gamepad_button_check(global.player_slot[1], button_play))
 	&& (welcome_to_level_editor == false)
@@ -420,6 +527,8 @@ if (!global.actually_play_edited_level)
 	{
 		instance_activate_all(); /* Activate all instances before saving the custom level. You need this code right here otherwise the game crashes */
 		if (keyboard_check_released(key_play))
+		|| (level_editor_menu == "play")
+		&& (key_a_released)
 		|| (gamepad_button_check_released(global.player_slot[1], button_play))
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 		&& (mouse_check_button_released(mb_left))
@@ -813,7 +922,8 @@ if (!global.actually_play_edited_level)
 		|| (can_make_place_brush_size_bigger && key_a_hold)
 		|| (key_a_pressed)
 		{
-			if (!gamepad_button_check(global.player_slot[1], button_play))
+			if (level_editor_menu == "")
+			&& (!gamepad_button_check(global.player_slot[1], button_play))
 			&& (!keyboard_check(key_play))
 			&& (!keyboard_check(vk_space))
 			&& (!mouse_check_button(mb_middle))
@@ -912,7 +1022,8 @@ if (!global.actually_play_edited_level)
 		#endregion /* Place Object END */
 		
 		#region /* Make object change difficulty layer depending on what difficulty layer is selected */
-		if (difficulty_layer > 0)
+		if (level_editor_menu == "")
+		&& (difficulty_layer > 0)
 		&& (!drag_object)
 		&& (!pause)
 		&& (!hovering_over_icons)
@@ -933,7 +1044,8 @@ if (!global.actually_play_edited_level)
 		#endregion /* Make object change difficulty layer depending on what difficulty layer is selected END */
 		
 		#region /* Delete / Erase Objects */
-		if (difficulty_layer == 0)
+		if (level_editor_menu == "")
+		&& (difficulty_layer == 0)
 		&& (!drag_object)
 		&& (erase_mode)
 		&& (!scroll_view)
@@ -955,7 +1067,8 @@ if (!global.actually_play_edited_level)
 		#endregion /* Delete / Erase Objects END */
 		
 		#region /* Set to appear on difficulty level */
-		if (difficulty_layer > 0)
+		if (level_editor_menu == "")
+		&& (difficulty_layer > 0)
 		{
 			if (!mouse_check_button(mb_right))
 			&& (!hovering_over_icons)
@@ -984,7 +1097,8 @@ if (!global.actually_play_edited_level)
 		#endregion /* Set to appear on difficulty level END */
 		
 		#region /* Set to dissapear on difficulty level */
-		if (difficulty_layer > 0)
+		if (level_editor_menu == "")
+		&& (difficulty_layer > 0)
 		&& (!keyboard_check(vk_escape))
 		{
 			if (!mouse_check_button(mb_left))
@@ -1285,12 +1399,15 @@ if (!global.actually_play_edited_level)
 	#endregion /* Zoom In and Out (Draw red rectangles around the screen when you can't zoom any more) END */
 	
 	#region /* Select Object Menu */
-	if (mouse_check_button(mb_any))
+	if (mouse_check_button_pressed(mb_any))
 	&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, display_get_gui_width(), 192)) /* Can't make menu fade away quicker when clicking the object category buttons or objects in toolbar */
-	|| (keyboard_check(vk_anykey))
-	|| (key_a_hold)
+	|| (keyboard_check_pressed(vk_anykey))
+	|| (key_a_pressed)
 	{
-		show_selected_menu = false;
+		if (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			show_selected_menu = false;
+		}
 	}
 	
 	if (!show_selected_menu)
@@ -1858,10 +1975,13 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 			if (set_difficulty_mode)
 			&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256 - 64, display_get_gui_height() - 64, display_get_gui_width() - 192 - 64, display_get_gui_height() + 64))
 			&& (global.controls_used_for_navigation == "mouse")
+			|| (level_editor_menu == "easy")
 			{
 				tooltip = "Show only objects in easy";
 				show_tooltip += 2;
 				if (mouse_check_button_pressed(mb_left))
+				|| (level_editor_menu == "easy")
+				&& (key_a_pressed)
 				{
 					difficulty_layer = 1;
 					fill_mode = false;
@@ -1882,10 +2002,13 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 			if (set_difficulty_mode)
 			&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 192 - 64, display_get_gui_height() - 64, display_get_gui_width() - 128 - 64, display_get_gui_height() + 64))
 			&& (global.controls_used_for_navigation == "mouse")
+			|| (level_editor_menu == "normal")
 			{
 				tooltip = "Show only objects in normal";
 				show_tooltip += 2;
 				if (mouse_check_button_pressed(mb_left))
+				|| (level_editor_menu == "normal")
+				&& (key_a_pressed)
 				{
 					difficulty_layer = 2;
 					fill_mode = false;
@@ -1906,10 +2029,13 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 			if (set_difficulty_mode)
 			&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128 - 64, display_get_gui_height() - 64, display_get_gui_width() - 64 - 64, display_get_gui_height() + 64))
 			&& (global.controls_used_for_navigation == "mouse")
+			|| (level_editor_menu == "hard")
 			{
 				tooltip = "Show only objects in hard";
 				show_tooltip += 2;
 				if (mouse_check_button_pressed(mb_left))
+				|| (level_editor_menu == "hard")
+				&& (key_a_pressed)
 				{
 					difficulty_layer = 3;
 					fill_mode = false;
@@ -1929,10 +2055,13 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 			#region /* Set Difficulty Mode / Back */
 			if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64 - 64, display_get_gui_height() - 64, display_get_gui_width() - 64, display_get_gui_height() + 64))
 			&& (global.controls_used_for_navigation == "mouse")
+			|| (level_editor_menu == "difficulty_toggle")
 			{
 				tooltip = "Set what objects should appear on what difficulty";
 				show_tooltip += 2;
 				if (mouse_check_button_pressed(mb_left))
+				|| (level_editor_menu == "difficulty_toggle")
+				&& (key_a_pressed)
 				{
 					fill_mode = false;
 					erase_mode = false;
@@ -1967,10 +2096,13 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 		#region /* Click Delete All Objects / Wipe Button */
 		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
 		&& (global.controls_used_for_navigation == "mouse")
+		|| (level_editor_menu == "wipe")
 		{
 			tooltip = "Delete All Objects";
 			show_tooltip += 2;
 			if (mouse_check_button_pressed(mb_left))
+			|| (level_editor_menu == "wipe")
+			&& (key_a_pressed)
 			{
 				menu_delay = 3;
 				level_editor_options_back_to_menu = "delete_all_objects_button";

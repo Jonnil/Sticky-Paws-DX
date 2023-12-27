@@ -15,6 +15,7 @@ cam_y = camera_get_view_y(view_camera[view_current]);
 cam_width = camera_get_view_width(view_camera[view_current]);
 cam_height = camera_get_view_height(view_camera[view_current]);
 content_type = "level";
+level_editor_menu = ""; /* You can navigate the level editor icons with D-Pad */
 modify_object_menu = false;
 changing_level_theme_menu = false;
 

@@ -81,12 +81,15 @@ function scr_draw_welcome_to_level_editor_menu()
 			&& (mouse_check_button_pressed(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
+				if (level_editor_menu == "help_open")
+				{
+					level_editor_menu = "help";
+				}
 				menu_delay = 3;
 				place_object_delay_timer = -10;
 				welcome_to_level_editor = false;
 			}
 			if (key_left)
-			&& (global.controls_used_for_navigation != "gamepad")
 			{
 				menu = "welcome_screen_shortcuts";
 			}
@@ -95,17 +98,13 @@ function scr_draw_welcome_to_level_editor_menu()
 	else
 	if (welcome_to_level_editor == 2)
 	{
-		if (global.controls_used_for_navigation != "gamepad")
-		{
-			menu = "welcome_screen_close";
-		}
 		if (menu != "welcome_screen_shortcuts")
 		&& (menu != "welcome_screen_close")
 		{
 			menu = "welcome_screen_close";
 		}
 		var line_y = 0;
-		draw_set_alpha(0.5);
+		draw_set_alpha(0.9);
 		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 350, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 350, display_get_gui_height() * 0.5 + 200, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		draw_set_halign(fa_center);
@@ -166,6 +165,10 @@ function scr_draw_welcome_to_level_editor_menu()
 			&& (mouse_check_button_pressed(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
+				if (level_editor_menu == "help_open")
+				{
+					level_editor_menu = "help";
+				}
 				menu_delay = 3;
 				place_object_delay_timer = -10;
 				welcome_to_level_editor = false;
