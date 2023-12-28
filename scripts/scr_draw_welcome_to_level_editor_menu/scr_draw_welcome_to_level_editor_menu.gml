@@ -51,6 +51,10 @@ function scr_draw_welcome_to_level_editor_menu()
 		{
 			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 290, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Shortcuts"), "welcome_screen_shortcuts", "welcome_screen_shortcuts");
 		}
+		else
+		{
+			menu = "welcome_screen_close";
+		}
 		draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 + 90, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 + 42 + 42 - 126, 0, 0, 0.5, 1, 185, 42, l10n_text("Close"), "welcome_screen_close", "welcome_screen_close");
 		if (menu == "welcome_screen_shortcuts")
 		&& (global.controls_used_for_navigation != "gamepad")
@@ -90,6 +94,7 @@ function scr_draw_welcome_to_level_editor_menu()
 				welcome_to_level_editor = false;
 			}
 			if (key_left)
+			&& (global.controls_used_for_navigation != "gamepad")
 			{
 				menu = "welcome_screen_shortcuts";
 			}
@@ -174,6 +179,7 @@ function scr_draw_welcome_to_level_editor_menu()
 				welcome_to_level_editor = false;
 			}
 			if (key_left)
+			&& (global.controls_used_for_navigation != "gamepad")
 			{
 				menu = "welcome_screen_shortcuts";
 			}

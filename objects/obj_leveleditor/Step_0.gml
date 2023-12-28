@@ -1,5 +1,6 @@
 #region /* Navigate the level editor icons with D-Pad */
 if (menu_delay == 0 && menu_joystick_delay == 0)
+&& (!pause)
 {
 	/* UP */ if (keyboard_check_pressed(ord("I")))
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
@@ -84,6 +85,7 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 		if (level_editor_menu == "hard"){level_editor_menu = "difficulty_toggle";}
 	}
 	/* Back */ if (level_editor_menu != "")
+	&& (level_editor_menu != "help_open")
 	{
 		if (key_b_pressed)
 		|| (key_up)
@@ -95,6 +97,7 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
 		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
 		|| (global.controls_used_for_navigation == "mouse")
+		|| (pause)
 		{
 			menu_delay = 3;
 			level_editor_menu = "";
@@ -1577,7 +1580,7 @@ if (!global.actually_play_edited_level)
 		}
 		#endregion /* Fill with Objects END */
 		
-		#region /* SELECT WHAT OBJECT TO PLACe */
+		#region /* SELECT WHAT OBJECT TO PLACE */
 		
 		#region /* Scroll Objects Left */
 		if (mouse_wheel_up())
@@ -1593,6 +1596,7 @@ if (!global.actually_play_edited_level)
 		{
 			if (!instance_exists(obj_leveleditor_fill))
 			{
+				level_editor_menu = "";
 				scr_audio_play(snd_leveleditor_cycle_item_left, volume_source.sound);
 				if (selected_object > 0)
 				{
@@ -1647,6 +1651,7 @@ if (!global.actually_play_edited_level)
 		{
 			if (!instance_exists(obj_leveleditor_fill))
 			{
+				level_editor_menu = "";
 				scr_audio_play(snd_leveleditor_cycle_item_right, volume_source.sound);
 				if (selected_object < total_number_of_objects)
 				{
