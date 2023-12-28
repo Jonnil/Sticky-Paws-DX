@@ -29,6 +29,10 @@ if (global.restart_level)
 	
 	score = 0;
 	
+	gamepad_set_vibration(global.player_slot[1], 0, 0);
+	gamepad_set_vibration(global.player_slot[2], 0, 0);
+	gamepad_set_vibration(global.player_slot[3], 0, 0);
+	gamepad_set_vibration(global.player_slot[4], 0, 0);
 	room_restart();
 }
 #endregion /* Restart Level END */
@@ -68,6 +72,10 @@ if (global.quit_level)
 		#endregion /* Player availability check. These variables control player availability END */
 		
 		global.quit_level = false;
+		gamepad_set_vibration(global.player_slot[1], 0, 0);
+		gamepad_set_vibration(global.player_slot[2], 0, 0);
+		gamepad_set_vibration(global.player_slot[3], 0, 0);
+		gamepad_set_vibration(global.player_slot[4], 0, 0);
 		room_goto(global.quit_to_map ? rm_world_map : rm_title); /* If player chose to quit to map, then go to world map, otherwise go to title screen */
 		global.quit_to_map = false;
 		global.quit_to_title = false;
@@ -135,6 +143,10 @@ if (goal && global.time_countdown_bonus <= 0)
 		{
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
+			gamepad_set_vibration(global.player_slot[1], 0, 0);
+			gamepad_set_vibration(global.player_slot[2], 0, 0);
+			gamepad_set_vibration(global.player_slot[3], 0, 0);
+			gamepad_set_vibration(global.player_slot[4], 0, 0);
 			room_restart(); /* Reset the room if you complete custom level in playtest mode */
 		}
 		else if (global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
@@ -142,6 +154,10 @@ if (goal && global.time_countdown_bonus <= 0)
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
 			
+			gamepad_set_vibration(global.player_slot[1], 0, 0);
+			gamepad_set_vibration(global.player_slot[2], 0, 0);
+			gamepad_set_vibration(global.player_slot[3], 0, 0);
+			gamepad_set_vibration(global.player_slot[4], 0, 0);
 			room_goto(rm_title); /* Go back to title screen after completing a custom level normally */
 		}
 		else if (obj_camera.after_goal_go_to_this_level >= 0)
@@ -151,6 +167,11 @@ if (goal && global.time_countdown_bonus <= 0)
 			scr_update_all_backgrounds();
 			global.part_limit = 0; /* How many objects are currently placed in the level editor */
 			global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
+			
+			gamepad_set_vibration(global.player_slot[1], 0, 0);
+			gamepad_set_vibration(global.player_slot[2], 0, 0);
+			gamepad_set_vibration(global.player_slot[3], 0, 0);
+			gamepad_set_vibration(global.player_slot[4], 0, 0);
 			
 			var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
 				room_goto(rm_leveleditor); /* Go to another level if you're supposed to go to other levels after completion */
@@ -165,10 +186,18 @@ if (goal && global.time_countdown_bonus <= 0)
 			/* Go back to title screen if doing character clear check, otherwise go back to world map when playing normally */
 			if (global.doing_clear_check_character)
 			{
+				gamepad_set_vibration(global.player_slot[1], 0, 0);
+				gamepad_set_vibration(global.player_slot[2], 0, 0);
+				gamepad_set_vibration(global.player_slot[3], 0, 0);
+				gamepad_set_vibration(global.player_slot[4], 0, 0);
 				room_goto(rm_title); /* Go back to title screen if finishing the level and doing character clear check */
 			}
 			else
 			{
+				gamepad_set_vibration(global.player_slot[1], 0, 0);
+				gamepad_set_vibration(global.player_slot[2], 0, 0);
+				gamepad_set_vibration(global.player_slot[3], 0, 0);
+				gamepad_set_vibration(global.player_slot[4], 0, 0);
 				room_goto(rm_world_map); /* Go back to world map if finishing the level and playing normally */
 			}
 		}

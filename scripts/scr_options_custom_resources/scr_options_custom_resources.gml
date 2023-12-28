@@ -363,7 +363,7 @@ function scr_options_custom_resources()
 		{
 			if (title_bg_layer == 1)
 			{
-				title_background_blink[1] = scr_wave(0.1, 5, 1);
+				title_background_blink[1] = 1;
 				title_background_blink[2] = 0;
 				title_background_blink[3] = 0;
 			}
@@ -371,7 +371,7 @@ function scr_options_custom_resources()
 			if (title_bg_layer == 2)
 			{
 				title_background_blink[1] = 1;
-				title_background_blink[2] = scr_wave(0.1, 5, 1);
+				title_background_blink[2] = scr_wave(0.5, 5, 2);
 				title_background_blink[3] = 0;
 			}
 			else
@@ -379,7 +379,7 @@ function scr_options_custom_resources()
 			{
 				title_background_blink[1] = 1;
 				title_background_blink[2] = 1;
-				title_background_blink[3] = scr_wave(0.1, 5, 1);
+				title_background_blink[3] = scr_wave(0.5, 5, 2);
 			}
 		}
 		else
