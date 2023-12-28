@@ -517,13 +517,13 @@ else
 		if (key_left_hold)
 		&& (!key_right_hold)
 		{
-			angle = lerp(angle, 10, 0.1);
+			angle = lerp(angle, +10, 0.1);
 		}
 		else
 		if (key_right_hold)
 		&& (!key_left_hold)
 		{
-			angle = lerp(angle, 10, 0.1);
+			angle = lerp(angle, -10, 0.1);
 		}
 		else
 		{

@@ -379,6 +379,14 @@ if (!global.actually_play_edited_level)
 		instance_activate_object(obj_background_brightness_gameplay);
 		#endregion /* Activate objects that always should be active END */
 		
+		if (instance_exists(obj_leveleditor_placed_object))
+		{
+			with (obj_leveleditor_placed_object)
+			{
+				scr_make_sprite_transparent_setting_difficulty_levels();
+			}
+		}
+		
 		global.deactivate_timer = 0; /* Reset the deactivate timer */
 	}
 	#endregion /* Deactivate instances outside view. Run this code at start of Step Event END */

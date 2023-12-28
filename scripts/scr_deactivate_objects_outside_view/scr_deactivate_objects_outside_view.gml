@@ -31,13 +31,6 @@ function scr_deactivate_objects_outside_view()
 				instance_activate_object(obj_foreground2);
 				instance_activate_object(obj_foreground_secret);
 				instance_activate_object(obj_water_level);
-				if (instance_exists(obj_leveleditor_placed_object))
-				{
-					with (obj_leveleditor_placed_object)
-					{
-						scr_make_sprite_transparent_setting_difficulty_levels();
-					}
-				}
 			}
 			else
 			if (room == rm_world_map)
