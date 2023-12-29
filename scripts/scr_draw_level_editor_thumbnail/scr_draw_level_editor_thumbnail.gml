@@ -123,7 +123,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 								global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
 							}
 						}
-						var current_icon = spr_icons_upload;
+						var current_icon = spr_icon_upload;
 						var icon_scale = scr_wave(0.9, 1, 1, 0);
 					}
 					else if (clear_check)
@@ -136,7 +136,7 @@ function scr_draw_level_editor_thumbnail(load_what_levels = global.all_loaded_cu
 								global.search_id = string(var_level_id); /* Set the global search id for future use within the level editor */
 							}
 						}
-						var current_icon = spr_icons_finished;
+						var current_icon = spr_icon_finished;
 						var icon_scale = scr_wave(0.9, 1, 1, 0);
 					}
 					else

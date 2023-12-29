@@ -379,7 +379,7 @@ function scr_select_custom_level_menu()
 		#region /* Open Custom Levels Folder */
 		var draw_open_custom_levels_folder_y = 42;
 		draw_menu_button(0, draw_open_custom_levels_folder_y, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "");
-		draw_sprite_ext(spr_icons_folder, 0, 16, 42 + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_folder, 0, 16, 42 + 21, 1, 1, 0, c_white, 1);
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_open_custom_levels_folder_y + 2, 370, draw_open_custom_levels_folder_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")
 		&& (mouse_check_button_released(mb_left))
@@ -503,7 +503,7 @@ function scr_select_custom_level_menu()
 		
 		#region /* Back Button */
 		draw_menu_button(0, 0, l10n_text("Back"), "back_from_level_editor", "");
-		draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 		if (menu == "back_from_level_editor")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)

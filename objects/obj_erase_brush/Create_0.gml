@@ -1,34 +1,34 @@
-erase_brush_size = obj_leveleditor.erase_brush_size;
+erase_size = obj_leveleditor.erase_size;
 visible = false;
 
-if (erase_brush_size == 0)
+if (erase_size == 0)
 {
 	mask_index = spr_wall;
 }
 else
-if (erase_brush_size == 1)
+if (erase_size == 1)
 {
-	mask_index = spr_erase_brush_size_2;
+	mask_index = spr_erase_size_2;
 }
 else
-if (erase_brush_size == 2)
+if (erase_size == 2)
 {
-	mask_index = spr_erase_brush_size_3;
+	mask_index = spr_erase_size_3;
 }
 else
-if (erase_brush_size == 3)
+if (erase_size == 3)
 {
-	mask_index = spr_erase_brush_size_4;
+	mask_index = spr_erase_size_4;
 }
 else
-if (erase_brush_size == 4)
+if (erase_size == 4)
 {
-	mask_index = spr_erase_brush_size_5;
+	mask_index = spr_erase_size_5;
 }
 else
-if (erase_brush_size == 5)
+if (erase_size == 5)
 {
-	mask_index = spr_erase_brush_size_6;
+	mask_index = spr_erase_size_6;
 }
 sprite_index = mask_index;
 

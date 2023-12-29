@@ -22,7 +22,7 @@ function scr_modify_objects_in_level_editor()
 	&& (!position_meeting(x, y, obj_level_height))
 	&& (!position_meeting(x, y, obj_level_width))
 	&& (!position_meeting(x, y, obj_water_level_height))
-	&& (!obj_leveleditor.hovering_over_icons)
+	&& (!obj_leveleditor.hovering_over_icon)
 	&& (obj_leveleditor.placing_object <= 0)
 	{
 		if (mouse_check_button_released(mb_left))

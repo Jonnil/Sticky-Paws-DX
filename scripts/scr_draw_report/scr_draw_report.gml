@@ -115,7 +115,7 @@ function scr_draw_report()
 		var report_sent_message_y = display_get_gui_height() * 0.5;
 		
 		draw_menu_button(0, report_back_y, l10n_text("Back"), "report_complete_back", report_back_to_menu);
-		draw_sprite_ext(spr_icons_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
 		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -166,10 +166,10 @@ function scr_draw_report()
 		&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 		{
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "report_complete_delete", "report_complete_delete", c_red);
-			draw_sprite_ext(spr_icons_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
+			draw_sprite_ext(spr_icon_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
 		}
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, back_to_list_y, back_to_list_text, "report_complete_back_to_online_list", "report_complete_back_to_online_list");
-		draw_sprite_ext(spr_icons_back, 0, display_get_gui_width() * 0.5 - 185 + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_back, 0, display_get_gui_width() * 0.5 - 185 + 16, back_to_list_y + 20, 1, 1, 0, c_white, 1);
 		
 		#region /* Click Delete */
 		if (menu == "report_complete_delete")
@@ -337,10 +337,10 @@ function scr_draw_report()
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("This report will be sent to") + ": " + string(global.company_name), global.default_text_size, c_black, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 32, l10n_text("Not the user who posted the content"), global.default_text_size, c_black, c_white, 1);
 		draw_menu_button(0, report_back_y, l10n_text("Back"), "report_back", report_back_to_menu);
-		draw_sprite_ext(spr_icons_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
 		var report_next_y = display_get_gui_height() * 0.5 + 106;
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_next_y, l10n_text("Next"), "report_next", "report_next");
-		draw_sprite_ext(spr_icons_report, 0, display_get_gui_width() * 0.5 - 185 + 16, report_next_y + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_report, 0, display_get_gui_width() * 0.5 - 185 + 16, report_next_y + 21, 1, 1, 0, c_white, 1);
 		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")
@@ -424,7 +424,7 @@ function scr_draw_report()
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 64, l10n_text("Please select the reason for this report"), global.default_text_size, c_black, c_white, 1);
 		
 		draw_menu_button(0, report_back_y, l10n_text("Back"), "report_reason_back", report_back_to_menu);
-		draw_sprite_ext(spr_icons_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
 		
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_intrusion_of_privacy_y, l10n_text("Intrusion of Privacy"), "report_intrusion_of_privacy", "report_message_ok");
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_violence_physical_harm_y, l10n_text("Violence/Physical Harm"), "report_violence_physical_harm", "report_message_ok");
@@ -818,11 +818,11 @@ function scr_draw_report()
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, string(global.report_message), global.default_text_size, c_black, c_white, 1);
 		
 		draw_menu_button(0, report_back_y, l10n_text("Back"), "report_send_back", global.report_reason);
-		draw_sprite_ext(spr_icons_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_back, 0, 16, report_back_y + 21, 1, 1, 0, c_white, 1);
 		
 		var report_send_confirm_y = display_get_gui_height() * 0.5 + 96;
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, report_send_confirm_y, l10n_text("Report"), "report_send_confirm", "report_send_to_server");
-		draw_sprite_ext(spr_icons_report, 0, display_get_gui_width() * 0.5 - 185 + 16, report_send_confirm_y + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_report, 0, display_get_gui_width() * 0.5 - 185 + 16, report_send_confirm_y + 21, 1, 1, 0, c_white, 1);
 		
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, report_back_y, display_get_gui_width() * 0.5 - 185 + 370, report_back_y + 41))
 		&& (global.controls_used_for_navigation == "mouse")

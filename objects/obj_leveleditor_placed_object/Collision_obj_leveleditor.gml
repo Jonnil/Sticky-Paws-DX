@@ -21,7 +21,7 @@ if (other.set_difficulty_mode == false)
 		&& !other.fill_mode
 		&& !other.erase_mode
 		&& !other.pause
-		&& !other.hovering_over_icons
+		&& !other.hovering_over_icon
 		&& other.menu_delay == 0
 		&& other.level_editor_menu == ""
 		&& !place_meeting(x, y, obj_level_player1_start)

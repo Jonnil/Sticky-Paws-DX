@@ -1,4 +1,4 @@
-#region /* Navigate the level editor icons with D-Pad */
+#region /* Navigate the level editor icon with D-Pad */
 if (menu_delay == 0 && menu_joystick_delay == 0)
 && (!pause)
 {
@@ -104,7 +104,7 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 		}
 	}
 }
-#endregion /* Navigate the level editor icons with D-Pad END */
+#endregion /* Navigate the level editor icon with D-Pad END */
 
 #region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
 if (global.doing_clear_check)
@@ -300,7 +300,7 @@ if (!global.actually_play_edited_level)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, grid_button_x - 32, - 64, display_get_gui_width(), + 64)) /* Can't place objects when clicking the top buttons */
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32)) /* Can't place objects when clicking the play button */
 	|| (show_grid)
-	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32, 80 + icons_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icons_at_top_y + 16 + 32)) /* Up and down buttons when grid is on */
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32, 80 + icon_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icon_at_top_y + 16 + 32)) /* Up and down buttons when grid is on */
 	|| (global.enable_difficulty_selection_settings)
 	&& (global.enable_difficutly_layers_in_level_editor)
 	&& (set_difficulty_mode)
@@ -318,16 +318,16 @@ if (!global.actually_play_edited_level)
 	{
 		if (global.controls_used_for_navigation == "mouse")
 		{
-			hovering_over_icons = true;
+			hovering_over_icon = true;
 		}
 		else
 		{
-			hovering_over_icons = false;
+			hovering_over_icon = false;
 		}
 	}
 	else
 	{
-		hovering_over_icons = false;
+		hovering_over_icon = false;
 	}
 	
 	scr_resize_application_surface();
@@ -480,8 +480,8 @@ if (!global.actually_play_edited_level)
 	scr_toggle_fullscreen();
 	
 	#region /* Always keep the brush size within these values */
-	place_brush_size = clamp(place_brush_size, 0, 5);
-	erase_brush_size = clamp(erase_brush_size, 0, 5);
+	place_size = clamp(place_size, 0, 5);
+	erase_size = clamp(erase_size, 0, 5);
 	#endregion /* Always keep the brush size within these values END */
 	
 	if (get_window_height != old_window_get_height)
@@ -932,9 +932,9 @@ if (!global.actually_play_edited_level)
 		}
 		
 		#region /* Place Object */
-		if (can_make_place_brush_size_bigger && mouse_check_button(mb_left))
+		if (can_make_place_size_bigger && mouse_check_button(mb_left))
 		|| (mouse_check_button_pressed(mb_left))
-		|| (can_make_place_brush_size_bigger && key_a_hold)
+		|| (can_make_place_size_bigger && key_a_hold)
 		|| (key_a_pressed)
 		{
 			if (level_editor_menu == "")
@@ -957,7 +957,7 @@ if (!global.actually_play_edited_level)
 			&& (!position_meeting(x, y, obj_level_height))
 			&& (!position_meeting(x, y, obj_level_width))
 			&& (!position_meeting(x, y, obj_water_level_height))
-			&& (!hovering_over_icons)
+			&& (!hovering_over_icon)
 			&& (global.part_limit < 4000)
 			{
 				if (!obj_level_width.drag_object)
@@ -966,67 +966,67 @@ if (!global.actually_play_edited_level)
 				&& (obj_level_height.drag_release_timer == 0)
 				{
 					if (place_object_delay_timer < 2)
-					&& (can_make_place_brush_size_bigger)
+					&& (can_make_place_size_bigger)
 					{
 						place_object_delay_timer ++;
 					}
 					if (place_object_delay_timer >= 2)
-					|| (!can_make_place_brush_size_bigger)
+					|| (!can_make_place_size_bigger)
 					{
 						drag_object = false;
 								
 						#region /* Brush size 1 */
-						scr_brush_size_place_object(   0,    0, 1, true);
+						scr_size_place_object(   0,    0, 1, true);
 						#endregion /* Brush size 1 END */
 								
 						#region /* Brush size 2 */
-						scr_brush_size_place_object(   0, + 32, 2, false);
-						scr_brush_size_place_object(+ 32,    0, 2, false);
-						scr_brush_size_place_object(+ 32, + 32, 2, false);
+						scr_size_place_object(   0, + 32, 2, false);
+						scr_size_place_object(+ 32,    0, 2, false);
+						scr_size_place_object(+ 32, + 32, 2, false);
 						#endregion /* Brush size 2 END */
 								
 						#region /* Brush size 3 */
-						scr_brush_size_place_object(   0, - 32, 3, false);
-						scr_brush_size_place_object(+ 32, - 32, 3, false);
-						scr_brush_size_place_object(- 32,    0, 3, false);
-						scr_brush_size_place_object(- 32, + 32, 3, false);
-						scr_brush_size_place_object(- 32, - 32, 3, false);
+						scr_size_place_object(   0, - 32, 3, false);
+						scr_size_place_object(+ 32, - 32, 3, false);
+						scr_size_place_object(- 32,    0, 3, false);
+						scr_size_place_object(- 32, + 32, 3, false);
+						scr_size_place_object(- 32, - 32, 3, false);
 						#endregion /* Brush size 3 END */
 								
 						#region /* Brush size 4 */
-						scr_brush_size_place_object(   0, + 64, 4, false);
-						scr_brush_size_place_object(+ 32, + 64, 4, false);
-						scr_brush_size_place_object(+ 64,    0, 4, false);
-						scr_brush_size_place_object(+ 64, + 32, 4, false);
-						scr_brush_size_place_object(+ 64, + 64, 4, false);
-						scr_brush_size_place_object(+ 64, - 32, 4, false);
-						scr_brush_size_place_object(- 32, + 64, 4, false);
+						scr_size_place_object(   0, + 64, 4, false);
+						scr_size_place_object(+ 32, + 64, 4, false);
+						scr_size_place_object(+ 64,    0, 4, false);
+						scr_size_place_object(+ 64, + 32, 4, false);
+						scr_size_place_object(+ 64, + 64, 4, false);
+						scr_size_place_object(+ 64, - 32, 4, false);
+						scr_size_place_object(- 32, + 64, 4, false);
 						#endregion /* Brush size 4 END */
 								
 						#region /* Brush size 5 */
-						scr_brush_size_place_object(   0, - 64, 5, false);
-						scr_brush_size_place_object(+ 32, - 64, 5, false);
-						scr_brush_size_place_object(+ 64, - 64, 5, false);
-						scr_brush_size_place_object(- 32, - 64, 5, false);
-						scr_brush_size_place_object(- 64,    0, 5, false);
-						scr_brush_size_place_object(- 64, + 32, 5, false);
-						scr_brush_size_place_object(- 64, + 64, 5, false);
-						scr_brush_size_place_object(- 64, - 32, 5, false);
-						scr_brush_size_place_object(- 64, - 64, 5, false);
+						scr_size_place_object(   0, - 64, 5, false);
+						scr_size_place_object(+ 32, - 64, 5, false);
+						scr_size_place_object(+ 64, - 64, 5, false);
+						scr_size_place_object(- 32, - 64, 5, false);
+						scr_size_place_object(- 64,    0, 5, false);
+						scr_size_place_object(- 64, + 32, 5, false);
+						scr_size_place_object(- 64, + 64, 5, false);
+						scr_size_place_object(- 64, - 32, 5, false);
+						scr_size_place_object(- 64, - 64, 5, false);
 						#endregion /* Brush size 5 END */
 								
 						#region /* Brush size 6 */
-						scr_brush_size_place_object(   0, + 96, 6, false);
-						scr_brush_size_place_object(+ 32, + 96, 6, false);
-						scr_brush_size_place_object(+ 64, + 96, 6, false);
-						scr_brush_size_place_object(+ 96,    0, 6, false);
-						scr_brush_size_place_object(+ 96, + 32, 6, false);
-						scr_brush_size_place_object(+ 96, + 64, 6, false);
-						scr_brush_size_place_object(+ 96, + 96, 6, false);
-						scr_brush_size_place_object(+ 96, - 32, 6, false);
-						scr_brush_size_place_object(+ 96, - 64, 6, false);
-						scr_brush_size_place_object(- 32, + 96, 6, false);
-						scr_brush_size_place_object(- 64, + 96, 6, false);
+						scr_size_place_object(   0, + 96, 6, false);
+						scr_size_place_object(+ 32, + 96, 6, false);
+						scr_size_place_object(+ 64, + 96, 6, false);
+						scr_size_place_object(+ 96,    0, 6, false);
+						scr_size_place_object(+ 96, + 32, 6, false);
+						scr_size_place_object(+ 96, + 64, 6, false);
+						scr_size_place_object(+ 96, + 96, 6, false);
+						scr_size_place_object(+ 96, - 32, 6, false);
+						scr_size_place_object(+ 96, - 64, 6, false);
+						scr_size_place_object(- 32, + 96, 6, false);
+						scr_size_place_object(- 64, + 96, 6, false);
 						#endregion /* Brush size 6 END */
 								
 						ds_list_add(placed_objects_list, place_object);
@@ -1041,7 +1041,7 @@ if (!global.actually_play_edited_level)
 		&& (difficulty_layer > 0)
 		&& (!drag_object)
 		&& (!pause)
-		&& (!hovering_over_icons)
+		&& (!hovering_over_icon)
 		&& (!keyboard_check(vk_space))
 		&& (!mouse_check_button(mb_middle))
 		{
@@ -1065,7 +1065,7 @@ if (!global.actually_play_edited_level)
 		&& (erase_mode)
 		&& (!scroll_view)
 		&& (!pause)
-		&& (!hovering_over_icons)
+		&& (!hovering_over_icon)
 		&& (!keyboard_check(vk_space))
 		&& (!keyboard_check(vk_escape))
 		&& (!mouse_check_button(mb_middle))
@@ -1086,21 +1086,21 @@ if (!global.actually_play_edited_level)
 		&& (difficulty_layer > 0)
 		{
 			if (!mouse_check_button(mb_right))
-			&& (!hovering_over_icons)
+			&& (!hovering_over_icon)
 			&& (mouse_check_button(mb_left))
 			&& (obj_leveleditor.drag_object == false)
 			&& (obj_leveleditor.erase_mode == false)
 			&& (obj_leveleditor.pause == false)
 			
 			|| (!obj_leveleditor.key_b_hold)
-			&& (!hovering_over_icons)
+			&& (!hovering_over_icon)
 			&& (obj_leveleditor.drag_object == false)
 			&& (obj_leveleditor.erase_mode == false)
 			&& (obj_leveleditor.key_a_hold)
 			&& (obj_leveleditor.pause == false)
 			
 			|| (keyboard_check(obj_leveleditor.key_erase_object))
-			&& (!hovering_over_icons)
+			&& (!hovering_over_icon)
 			&& (obj_leveleditor.drag_object == false)
 			&& (obj_leveleditor.erase_mode == false)
 			&& (obj_leveleditor.key_a_hold)
@@ -1117,17 +1117,17 @@ if (!global.actually_play_edited_level)
 		&& (!keyboard_check(vk_escape))
 		{
 			if (!mouse_check_button(mb_left))
-			&& (!hovering_over_icons)
+			&& (!hovering_over_icon)
 			&& (mouse_check_button(mb_right))
 			&& (obj_leveleditor.pause == false)
 			
 			|| (!obj_leveleditor.key_a_hold)
-			&& (!hovering_over_icons)
+			&& (!hovering_over_icon)
 			&& (obj_leveleditor.key_b_hold)
 			&& (obj_leveleditor.pause == false)
 			
 			|| (!obj_leveleditor.key_a_hold)
-			&& (!hovering_over_icons)
+			&& (!hovering_over_icon)
 			&& (keyboard_check(obj_leveleditor.key_erase_object))
 			&& (obj_leveleditor.pause == false)
 			{
@@ -1192,8 +1192,8 @@ if (!global.actually_play_edited_level)
 		&& (!fill_mode)
 		&& (!erase_mode)
 		{
-			place_brush_size = (place_brush_size + 1) % 6;
-			erase_brush_size = place_brush_size;
+			place_size = (place_size + 1) % 6;
+			erase_size = place_size;
 		}
 	}
 	#endregion /* Press D key to change to drawing tool in level editor END */
@@ -1217,8 +1217,8 @@ if (!global.actually_play_edited_level)
 		|| (gamepad_button_check_pressed(global.player_slot[1], button_change_erase_size))
 		&& (erase_mode)
 		{
-			erase_brush_size = (erase_brush_size + 1) % 6;
-			place_brush_size = erase_brush_size;
+			erase_size = (erase_size + 1) % 6;
+			place_size = erase_size;
 		}
 	}
 	#endregion /* Press E key to change to erase tool in level editor */
@@ -1268,19 +1268,19 @@ if (!global.actually_play_edited_level)
 	{
 		if (mouse_wheel_down())
 		{
-			if (place_brush_size > 0)
+			if (place_size > 0)
 			{
-				place_brush_size --;
-				erase_brush_size --;
+				place_size --;
+				erase_size --;
 			}
 		}
 		else
 		if (mouse_wheel_up())
 		{
-			if (place_brush_size < 5)
+			if (place_size < 5)
 			{
-				place_brush_size ++;
-				erase_brush_size ++;
+				place_size ++;
+				erase_size ++;
 			}
 		}
 	}
@@ -1293,20 +1293,20 @@ if (!global.actually_play_edited_level)
 		if (mouse_wheel_down())
 		{
 			fill_mode = false;
-			if (erase_brush_size > 0)
+			if (erase_size > 0)
 			{
-				erase_brush_size --;
-				place_brush_size --;
+				erase_size --;
+				place_size --;
 			}
 		}
 		else
 		if (mouse_wheel_up())
 		{
 			fill_mode = false;
-			if (erase_brush_size < 5)
+			if (erase_size < 5)
 			{
-				erase_brush_size ++;
-				place_brush_size ++;
+				erase_size ++;
+				place_size ++;
 			}
 		}
 	}
@@ -1534,7 +1534,7 @@ if (!global.actually_play_edited_level)
 		if (fill_mode)
 		{
 			if (mouse_check_button(mb_left))
-			&& (!hovering_over_icons)
+			&& (!hovering_over_icon)
 			|| (keyboard_check(key_fill))
 			&& (key_fill != key_change_fill_type)
 			|| (gamepad_button_check(global.player_slot[1], button_fill))
@@ -1936,8 +1936,8 @@ if (!global.actually_play_edited_level)
 if (!global.actually_play_edited_level && !quit_level_editor)
 {
 	
-	#region /* Undo and Redo icons */
-	if (show_undo_redo_icons)
+	#region /* Undo and Redo icon */
+	if (show_undo_redo_icon)
 	{
 		
 		#region /* Click Undo icon */
@@ -1970,7 +1970,7 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 		#endregion /* Click Redo icon END */
 		
 	}
-	#endregion /* Undo and Redo icons END */
+	#endregion /* Undo and Redo icon END */
 	
 	if (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
 	&& (global.controls_used_for_navigation == "mouse")
@@ -1978,8 +1978,140 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 		show_tooltip = 0;
 	}
 	
-	#region /* Click icons at bottom of screen */
-	if (show_icons_at_bottom)
+	#region /* Hover over icon reveals the icon */
+	
+	#region /* Make bottom row of icon appear if mouse is hovering at bottom screen */
+	if (!drag_object)
+	{
+		if (point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64))
+		|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256 - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
+		|| (global.always_show_level_editor_buttons)
+		{
+			if (!show_icon_at_bottom)
+			{
+				show_icon_at_bottom = true;
+			}
+		}
+		else
+		{
+			if (show_icon_at_bottom)
+			{
+				show_icon_at_bottom = false;
+			}
+		}
+	}
+	#endregion /* Make bottom row of icon appear if mouse is hovering at bottom screen END */
+	
+	#region /* Make undo and redo icon appear if mouse is hovering at right screen */
+	if (undo_and_redo_buttons_enabled)
+	&& (!drag_object)
+	{
+		if (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64))
+		&& (!pause)
+		|| (global.always_show_level_editor_buttons)
+		&& (!pause)
+		{
+			if (!show_undo_redo_icon)
+			{
+				show_undo_redo_icon = true;
+			}
+		}
+		else
+		{
+			if (show_undo_redo_icon)
+			{
+				show_undo_redo_icon = false;
+			}
+		}
+	}
+	else
+	{
+		show_undo_redo_icon = false;
+	}
+	#endregion /* Make undo and redo icon appear if mouse is hovering at right screen END */
+	
+	#region /* Make top row of icon appear if mouse is hovering at top screen */
+	if (!drag_object)
+	{
+		if (global.always_show_level_editor_buttons
+		|| global.controls_used_for_navigation == "mouse"
+		&& point_in_rectangle(cursor_x, cursor_y, - 32, - 64, display_get_gui_width() + 32, + 64)
+		|| level_editor_menu == "category_terrain"
+		|| level_editor_menu == "category_decoration"
+		|| level_editor_menu == "category_item"
+		|| level_editor_menu == "category_enemy"
+		|| level_editor_menu == "category_gizmo"
+		|| level_editor_menu == "grid"
+		|| level_editor_menu == "zoom_out"
+		|| level_editor_menu == "zoom_reset"
+		|| level_editor_menu == "zoom_in"
+		|| level_editor_menu == "help")
+		{
+			if (!show_icon_at_top)
+			{
+				show_icon_at_top = true;
+			}
+		}
+		else
+		if (global.controls_used_for_navigation == "mouse")
+		&& (point_in_rectangle(cursor_x, cursor_y, - 32, + 64, display_get_gui_width() + 32, display_get_gui_height() + 64))
+		|| (global.controls_used_for_navigation != "mouse")
+		{
+			if (show_icon_at_top)
+			{
+				show_icon_at_top = false;
+			}
+		}
+	}
+	if (show_icon_at_top)
+	&& (!pause)
+	{
+		icon_at_top_y = lerp(icon_at_top_y, - 1, 0.1);
+	}
+	else
+	{
+		icon_at_top_y = lerp(icon_at_top_y, - 100, 0.1);
+	}
+	#endregion /* Make top row of icon appear if mouse is hovering at top screen END */
+	
+	#endregion /* Hover over icon reveals the icon END */
+	
+	#region /* Show icon at bottom of screen */
+	if (show_icon_at_bottom
+	|| global.always_show_level_editor_buttons
+	|| level_editor_menu == "play"
+	|| level_editor_menu == "pen"
+	|| level_editor_menu == "erase"
+	|| level_editor_menu == "fill"
+	|| level_editor_menu == "hide"
+	|| level_editor_menu == "easy"
+	|| level_editor_menu == "normal"
+	|| level_editor_menu == "hard"
+	|| level_editor_menu == "difficulty_toggle"
+	|| level_editor_menu == "wipe")
+	&& (!drag_object && !pause)
+	{
+		icon_at_bottom_y = lerp(icon_at_bottom_y, 0, 0.1);
+	}
+	else
+	{
+		icon_at_bottom_y = lerp(icon_at_bottom_y, + 100, 0.1);
+	}
+	#endregion /* Show icon at bottom of screen END */
+	
+	#region /* Show undo and redo icon to the right of screen */
+	if (show_undo_redo_icon)
+	{
+		undo_redo_icon_y = lerp(undo_redo_icon_y, 0, 0.1);
+	}
+	else
+	{
+		undo_redo_icon_y = lerp(undo_redo_icon_y, + 200, 0.1);
+	}
+	#endregion /* Show undo and redo icon to the right of screen END */
+	
+	#region /* Click icon at bottom of screen */
+	if (show_icon_at_bottom)
 	&& (!pause)
 	{
 		
@@ -2130,6 +2262,6 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 		#endregion /* Click Delete All Objects / Wipe Button END */
 		
 	}
-	#endregion /* Click icons at bottom of screen END */
+	#endregion /* Click icon at bottom of screen END */
 	
 }

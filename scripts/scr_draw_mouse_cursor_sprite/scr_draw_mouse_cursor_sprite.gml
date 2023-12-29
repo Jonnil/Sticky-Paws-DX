@@ -66,7 +66,7 @@ function scr_draw_mouse_cursor_sprite()
 	&& (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
 	&& (pause)
 	{
-		draw_sprite_ext(spr_cursor, erase_brush_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_cursor, erase_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Default mouse cursor END */
 	
@@ -90,13 +90,13 @@ function scr_draw_mouse_cursor_sprite()
 	&& (mouse_check_button(mb_right))
 	&& (level_editor_menu == "")
 	{
-		draw_sprite_ext(spr_cursor_erase, erase_brush_size, cursor_x + random_range(-2, +2), cursor_y + random_range(-2, +2), 1, 1, +90, c_white, 1);
+		draw_sprite_ext(spr_cursor_erase, erase_size, cursor_x + random_range(-2, +2), cursor_y + random_range(-2, +2), 1, 1, +90, c_white, 1);
 	}
 	else
 	if (erase_mode)
 	&& (!pause)
 	{
-		draw_sprite_ext(spr_cursor_erase, erase_brush_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_cursor_erase, erase_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Erase mouse cursor END */
 	
@@ -147,7 +147,7 @@ function scr_draw_mouse_cursor_sprite()
 	#region /* Brush mouse cursor */
 	if (!pause)
 	{
-		draw_sprite_ext(spr_cursor_brush, place_brush_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_cursor_brush, place_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Brush mouse cursor END */
 	

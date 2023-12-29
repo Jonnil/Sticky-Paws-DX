@@ -291,20 +291,20 @@ function scr_draw_online_download_list()
 							if (finished_level[i] == 1) /* Only Played */
 							{
 								var played_level_text = "Played";
-								var played_level_icon = spr_icons_played;
+								var played_level_icon = spr_icon_played;
 								var played_level_color = c_yellow;
 							}
 							else
 							if (finished_level[i] == 2) /* Played and finished */
 							{
 								var played_level_text = "Finished";
-								var played_level_icon = spr_icons_finished;
+								var played_level_icon = spr_icon_finished;
 								var played_level_color = c_lime;
 							}
 							else /* Not played */
 							{
 								var played_level_text = "Unplayed";
-								var played_level_icon = spr_icons_unplayed;
+								var played_level_icon = spr_icon_unplayed;
 								var played_level_color = c_red;
 							}
 							draw_sprite_ext(played_level_icon, 0, download_online_x + 524, 32 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
@@ -497,7 +497,7 @@ function scr_draw_online_download_list()
 		
 		#region /* Draw the Back and Search ID buttons on top of everything */
 		draw_menu_button(0, 0, l10n_text("Back"), "download_online_back", "");
-		draw_sprite_ext(spr_icons_back, 0, 20, 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 		
 		var draw_search_id_y = 42;
 		

@@ -380,7 +380,7 @@ if (in_settings == false)
 		{
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, options_and_quit_y, l10n_text("Options"), "options", "options");
 		}
-		draw_sprite_ext(spr_icons_cogwheel, 0, display_get_gui_width() * 0.5 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_cogwheel, 0, display_get_gui_width() * 0.5 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
 		
 		/* Information button */
 		if (!latest_whats_new_read)
@@ -391,7 +391,7 @@ if (in_settings == false)
 		{
 			var information_alpha = 1;
 		}
-		draw_menu_button_sprite(spr_icons_exclamation, display_get_gui_width() - 32, display_get_gui_height() - 35, 16, 0, 1, 1, 32, 32, "", "information", "information", false,,information_alpha);
+		draw_menu_button_sprite(spr_icon_exclamation, display_get_gui_width() - 32, display_get_gui_height() - 35, 16, 0, 1, 1, 32, 32, "", "information", "information", false,,information_alpha);
 		if (menu == "information")
 		{
 			draw_set_halign(fa_right);

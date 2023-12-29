@@ -185,11 +185,11 @@ function scr_character_manage_menu_draw()
 				if (selecting_official_character == false)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no", c_red); /* Delete Characters */
-					draw_sprite_ext(spr_icons_delete, 0, get_window_width * 0.5 - 185 + 16, delete_character_y + 21, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_icon_delete, 0, get_window_width * 0.5 - 185 + 16, delete_character_y + 21, 1, 1, 0, c_white, 1);
 					if (global.free_communication_available && enable_upload_character)
 					{
 						draw_menu_button(get_window_width * 0.5 - 185, upload_character_y, l10n_text("Upload Character"), "click_upload_character", "click_upload_character"); /* Upload Characters */
-						draw_sprite_ext(spr_icons_upload, 0, get_window_width * 0.5 - 185 + 16, upload_character_y + 21, 1, 1, 0, c_white, 1);
+						draw_sprite_ext(spr_icon_upload, 0, get_window_width * 0.5 - 185 + 16, upload_character_y + 21, 1, 1, 0, c_white, 1);
 					}
 				}
 				
@@ -197,13 +197,13 @@ function scr_character_manage_menu_draw()
 				if (global.enable_open_custom_folder)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, open_character_folder_y, l10n_text("Open Character Folder"), "open_folder_copy_character", "open_folder_copy_character");
-					draw_sprite_ext(spr_icons_folder, 0, get_window_width * 0.5 - 185 + 16, open_character_folder_y + 21, 1, 1, 0, c_white, 1);
+					draw_sprite_ext(spr_icon_folder, 0, get_window_width * 0.5 - 185 + 16, open_character_folder_y + 21, 1, 1, 0, c_white, 1);
 				}
 				#endregion /* Open Character Folder END */
 				
 				#region /* Back from Copy Characters */
 				draw_menu_button(0, 0, l10n_text("Back"), "back_from_copy_character", "manage_character");
-				draw_sprite_ext(spr_icons_back, 0, 20, 21, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 				#endregion /* Back from Copy Characters END */
 				
 				#region /* Draw who made the character */
@@ -234,9 +234,9 @@ function scr_character_manage_menu_draw()
 				draw_set_valign(fa_middle);
 				scr_draw_text_outlined(delete_x + 200, delete_character_no_y - 21, l10n_text("Delete Character") + "?", global.default_text_size * 1.2, c_white, c_black, 1);
 				draw_menu_button(delete_x + 8, delete_character_no_y, l10n_text("No"), "click_delete_character_no", "click_delete_character"); /* + 47 on y */
-				draw_sprite_ext(spr_icons_back, 0, delete_x + 8 + 20, delete_character_no_y + 21, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_icon_back, 0, delete_x + 8 + 20, delete_character_no_y + 21, 1, 1, 0, c_white, 1);
 				draw_menu_button(delete_x + 8, delete_character_yes_y, l10n_text("Yes"), "click_delete_character_yes", "click_delete_character_yes", c_red);
-				draw_sprite_ext(spr_icons_delete, 0, delete_x + 8 + 16, delete_character_yes_y + 21, 1, 1, 0, c_white, 1);
+				draw_sprite_ext(spr_icon_delete, 0, delete_x + 8 + 16, delete_character_yes_y + 21, 1, 1, 0, c_white, 1);
 			}
 			
 		}

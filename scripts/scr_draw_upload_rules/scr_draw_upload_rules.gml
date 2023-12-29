@@ -19,7 +19,7 @@ function scr_draw_upload_rules()
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 		
 		draw_menu_button(0, 0, l10n_text("Back"), "upload_rules_back", "upload_rules_back");
-		draw_sprite_ext(spr_icons_back, 0, 16, 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_back, 0, 16, 21, 1, 1, 0, c_white, 1);
 		draw_set_halign(fa_center);
 		if (content_type == "level")
 		{

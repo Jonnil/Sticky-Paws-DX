@@ -1,6 +1,6 @@
-function scr_brush_size_place_object(xx, yy, place_brush_size_number, can_place_object_angle)
+function scr_size_place_object(xx, yy, place_size_number, can_place_object_angle)
 {
-	if (obj_leveleditor.place_brush_size >= place_brush_size_number - 1)
+	if (obj_leveleditor.place_size >= place_size_number - 1)
 	&& (!place_meeting(x + xx, y + yy, obj_leveleditor_placed_object))
 	&& (global.part_limit < 4000)
 	{

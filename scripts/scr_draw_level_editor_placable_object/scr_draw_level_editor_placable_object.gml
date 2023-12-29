@@ -1,4 +1,4 @@
-function scr_draw_level_editor_placable_object(var_selected_object, var_place_object_id, var_can_make_place_brush_size_bigger, var_sprite_index, var_mask_index, var_scroll_x, var_scale, var_rotation, var_color, var_scroll_y = 0, var_x_offset = 0, alpha_offset = 1, add_order_index = 1, object_name = "", object_description = "", var_image_index = 0)
+function scr_draw_level_editor_placable_object(var_selected_object, var_place_object_id, var_can_make_place_size_bigger, var_sprite_index, var_mask_index, var_scroll_x, var_scale, var_rotation, var_color, var_scroll_y = 0, var_x_offset = 0, alpha_offset = 1, add_order_index = 1, object_name = "", object_description = "", var_image_index = 0)
 {
 	var half_gui_width = display_get_gui_width() * 0.5;
 	var menu_x_offset = selected_object_menu_x + var_scroll_x * var_selected_object;
@@ -12,7 +12,7 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 			if (is_selected) {
 				current_object_name = object_name;
 				object_help_description = object_description;
-				can_make_place_brush_size_bigger = var_can_make_place_brush_size_bigger;
+				can_make_place_size_bigger = var_can_make_place_size_bigger;
 			}
 			var y_offset = 128;
 			var hover_offset = 49;

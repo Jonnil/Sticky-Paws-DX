@@ -15,7 +15,7 @@ cam_y = camera_get_view_y(view_camera[view_current]);
 cam_width = camera_get_view_width(view_camera[view_current]);
 cam_height = camera_get_view_height(view_camera[view_current]);
 content_type = "level";
-level_editor_menu = ""; /* You can navigate the level editor icons with D-Pad */
+level_editor_menu = ""; /* You can navigate the level editor icon with D-Pad */
 modify_object_menu = false;
 changing_level_theme_menu = false;
 
@@ -95,12 +95,14 @@ if (global.actually_play_edited_level)
 
 
 
-key_a_pressed = noone;
-key_a_released = noone;
+
 
 #region /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level */
 if (!global.actually_play_edited_level)
 {
+	key_a_pressed = noone;
+	key_a_released = noone;
+	
 	autosave_timer = (60 * 3) + 1;
 	
 	welcome_to_level_editor = false;
@@ -584,15 +586,15 @@ if (!global.actually_play_edited_level)
 	drag_y = mouse_y;
 	cursor_x = x;
 	cursor_y = y;
-	place_brush_size = 0; /* The size of the brush when placeing objects */
-	erase_brush_size = 0; /* The size of the brush when erasing */
-	can_make_place_brush_size_bigger = true; /* If you can make the brush size bigger for certain objects */
+	place_size = 0; /* The size of the brush when placeing objects */
+	erase_size = 0; /* The size of the brush when erasing */
+	can_make_place_size_bigger = true; /* If you can make the brush size bigger for certain objects */
 	mouse_sprite = spr_cursor; /* Sets what cursor sprite to use */
 	undo_and_redo_buttons_enabled = false; /* If undo and redo buttons should appear or not */
 	tooltip = "";
 	show_tooltip = 0;
 	show_grid = false; /* Grid should be false when you start level editor */
-	hovering_over_icons = false; /* If your mouse cursor is */
+	hovering_over_icon = false; /* If your mouse cursor is */
 	zoom_in = false; /* When this is true, zoom in */
 	zoom_reset = false; /* When this is true, reset zoom */
 	zoom_out = false; /* When this is true, zoom out */
@@ -601,14 +603,14 @@ if (!global.actually_play_edited_level)
 	set_difficulty_mode = false; /* Toggle so you get a pen that can select what object appear in what difficulty */
 	place_object = 1;
 	placing_object = 0; /* If you are currently placing any object or not. This check is used for when modifying other objects, it shouldn't happen when currently placing any object */
-	show_icons_at_bottom = false;
-	show_icons_at_top = false;
-	icons_at_bottom_y = +100;
-	show_undo_redo_icons = true; /* If the undo and redo buttons should show */
-	undo_redo_icons_y = +200; /* Undo and redo buttons y postition */
+	show_icon_at_bottom = false;
+	show_icon_at_top = false;
+	icon_at_bottom_y = +100;
+	show_undo_redo_icon = true; /* If the undo and redo buttons should show */
+	undo_redo_icon_y = +200; /* Undo and redo buttons y postition */
 	current_undo_value = 0; /* Every time you place down items, this value increases. When you undo, this value decreases. */
 	max_undo_value = 0; /* What the max redo you can do */
-	icons_at_top_y = - 100;
+	icon_at_top_y = - 100;
 	show_selected_menu = false;
 	selected_menu_alpha = 0;
 	total_number_of_objects = 9999;
@@ -660,11 +662,17 @@ if (!global.actually_play_edited_level)
 	left_sidebar_x = -400;
 	
 	play_level_icon_x = 32;
-	place_brush_icon_x = 96;
+	place_icon_x = 96;
 	erase_icon_x = 160;
 	fill_icon_x = 224;
 	always_show_level_editor_buttons_x = 288;
+	
+	/* Top Right Icons X Positions */
 	grid_button_x = display_get_gui_width() - 288;
+	zoom_out_button_x = display_get_gui_width() - 224;
+	zoom_reset_button_x = display_get_gui_width() - 160;
+	zoom_in_button_x = display_get_gui_width() - 96;
+	help_button_x = display_get_gui_width() - 32;
 	
 	#region /* Name displayed masked if includes profanity */
 	if (switch_check_profanity(global.level_name))
@@ -771,5 +779,36 @@ if (!global.actually_play_edited_level)
 	mask_index = spr_wall;
 	alarm[1] = 2;
 	global.goal_active = false;
+	
+	#region /* Show what version of the game the level was first created in */
+	/* This should make it easier to port old levels to new game versions */
+	/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
+	if (global.level_name != "")
+	{
+		ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+		if_clear_checked = ini_read_string("info", "clear_check", false); /* Draw if level have been Clear Checked on top of screen */
+		if (ini_key_exists("info", "first_created_on_version"))
+		{
+			if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) < string_digits(scr_get_build_date()))
+			{
+				level_made_in_what_version_text = l10n_text("Level made in old version");
+			}
+			else
+			if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) > string_digits(scr_get_build_date()))
+			{
+				level_made_in_what_version_text = l10n_text("Level made in new version");
+			}
+			first_created_on_version = ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date());	
+		}
+		ini_close();
+	}
+	else
+	{
+		if_clear_checked = false;
+		level_made_in_what_version_text = "";
+		first_created_on_version = "";
+	}
+	#endregion /* Show what version of the game the level was first created in END */
+	
 }
 #endregion /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level END */

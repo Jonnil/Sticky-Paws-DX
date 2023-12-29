@@ -135,14 +135,14 @@ function scr_draw_list_of_placable_objects()
 			if (selected_object == 0)
 			{
 				place_object = WORLD_OBJECT_ID.ID_WALL;
-				can_make_place_brush_size_bigger = true;
+				can_make_place_size_bigger = true;
 				sprite_index = spr_wall;
 				mask_index = spr_wall;
 			}
 			if (selected_object == 1)
 			{
 				place_object = WORLD_OBJECT_ID.ID_LEVEL;
-				can_make_place_brush_size_bigger = false;
+				can_make_place_size_bigger = false;
 				draw_sprite_ext(spr_level_ring, 0, x, y, 1, 1, 0, c_yellow, 0.5);
 				draw_sprite_ext(spr_level, 0, x, y, 1, 1, 0, c_black, 0.5);
 				sprite_index = spr_noone; 
@@ -151,14 +151,14 @@ function scr_draw_list_of_placable_objects()
 			if (selected_object == 2)
 			{
 				place_object = WORLD_OBJECT_ID.ID_EXIT;
-				can_make_place_brush_size_bigger = false;
+				can_make_place_size_bigger = false;
 				sprite_index = spr_map_exit;
 				mask_index = spr_wall;
 			}
 			if (selected_object == 3)
 			{
 				place_object = WORLD_OBJECT_ID.ID_RIGHT_DOWN;
-				can_make_place_brush_size_bigger = false;
+				can_make_place_size_bigger = false;
 				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 0, c_white, 0.5);
 				sprite_index = spr_noone;
 				mask_index = spr_wall;
@@ -166,7 +166,7 @@ function scr_draw_list_of_placable_objects()
 			if (selected_object == 4)
 			{
 				place_object = WORLD_OBJECT_ID.ID_UP_RIGHT;
-				can_make_place_brush_size_bigger = false;
+				can_make_place_size_bigger = false;
 				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 90, c_white, 0.5);
 				sprite_index = spr_noone;
 				mask_index = spr_wall;
@@ -174,7 +174,7 @@ function scr_draw_list_of_placable_objects()
 			if (selected_object == 5)
 			{
 				place_object = WORLD_OBJECT_ID.ID_UP_LEFT;
-				can_make_place_brush_size_bigger = false;
+				can_make_place_size_bigger = false;
 				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 180, c_white, 0.5);
 				sprite_index = spr_noone;
 				mask_index = spr_wall;
@@ -182,7 +182,7 @@ function scr_draw_list_of_placable_objects()
 			if (selected_object == 6)
 			{
 				place_object = WORLD_OBJECT_ID.ID_LEFT_DOWN;
-				can_make_place_brush_size_bigger = false;
+				can_make_place_size_bigger = false;
 				draw_sprite_ext(spr_map_turn_right_down, 0, x, y, 1, 1, 270, c_white, 0.5);
 				sprite_index = spr_noone;
 				mask_index = spr_wall;

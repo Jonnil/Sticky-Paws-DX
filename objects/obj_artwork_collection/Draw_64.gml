@@ -258,7 +258,7 @@ if (key_right)
 
 #region /* Back */
 draw_menu_button(get_window_width - 370, get_window_height - 42, l10n_text("Back"), "back", "back");
-draw_sprite_ext(spr_icons_back, 0, get_window_width - 370 + 20, get_window_height - 42 + 21, 1, 1, 0, c_white, 1);
+draw_sprite_ext(spr_icon_back, 0, get_window_width - 370 + 20, get_window_height - 42 + 21, 1, 1, 0, c_white, 1);
 
 #region /* Draw Back Key */
 if (gamepad_is_connected(global.player_slot[1]))

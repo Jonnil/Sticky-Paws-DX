@@ -277,7 +277,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	draw_menu_button(xx + buttons_x, yy + buttons_cancel_y, l10n_text("Cancel"), cancel_menu_string, cancel_menu_string);
 	
-	draw_sprite_ext(spr_icons_back, 0, xx + buttons_x + 55, yy + buttons_cancel_y + 21, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_icon_back, 0, xx + buttons_x + 55, yy + buttons_cancel_y + 21, 1, 1, 0, c_white, 1);
 	if (menu != cancel_menu_string)
 	{
 		if (gamepad_is_connected(global.player_slot[1]))

@@ -282,7 +282,7 @@ function scr_character_select_menu_draw()
 		{
 			draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select", "level_editor");
 		}
-		draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 		#endregion /* Show Back key when you can go back to main menu END */
 		
 		#region /* Manage Characters */

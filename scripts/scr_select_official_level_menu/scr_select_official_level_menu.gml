@@ -475,7 +475,7 @@ function scr_select_official_level_menu()
 	
 	#region /* Back Button */
 	draw_menu_button(0, 0, l10n_text("Back"), "back_from_level_editor", "back_from_level_editor");
-	draw_sprite_ext(spr_icons_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_icon_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 	
 	if (menu == "back_from_level_editor")
 	&& (key_a_pressed)
