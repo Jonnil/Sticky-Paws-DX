@@ -12,6 +12,7 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 			if (is_selected) {
 				current_object_name = object_name;
 				object_help_description = object_description;
+				can_make_place_brush_size_bigger = var_can_make_place_brush_size_bigger;
 			}
 			var y_offset = 128;
 			var hover_offset = 49;

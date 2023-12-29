@@ -134,6 +134,7 @@
     {"name":"spr_wall_metal","order":1,"path":"sprites/spr_wall_metal/spr_wall_metal.yy",},
     {"name":"obj_appear_block_spawner","order":22,"path":"objects/obj_appear_block_spawner/obj_appear_block_spawner.yy",},
     {"name":"obj_bullet","order":5,"path":"objects/obj_bullet/obj_bullet.yy",},
+    {"name":"scr_draw_list_of_placable_objects","order":22,"path":"scripts/scr_draw_list_of_placable_objects/scr_draw_list_of_placable_objects.yy",},
     {"name":"spr_block_white","order":95,"path":"sprites/spr_block_white/spr_block_white.yy",},
     {"name":"scr_draw_gamepad_buttons","order":7,"path":"scripts/scr_draw_gamepad_buttons/scr_draw_gamepad_buttons.yy",},
     {"name":"scr_make_color_hsv_transition","order":21,"path":"scripts/scr_make_color_hsv_transition/scr_make_color_hsv_transition.yy",},

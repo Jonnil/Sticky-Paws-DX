@@ -3162,6 +3162,7 @@
     {"id":{"name":"spr_wall_metal","path":"sprites/spr_wall_metal/spr_wall_metal.yy",},},
     {"id":{"name":"obj_appear_block_spawner","path":"objects/obj_appear_block_spawner/obj_appear_block_spawner.yy",},},
     {"id":{"name":"obj_bullet","path":"objects/obj_bullet/obj_bullet.yy",},},
+    {"id":{"name":"scr_draw_list_of_placable_objects","path":"scripts/scr_draw_list_of_placable_objects/scr_draw_list_of_placable_objects.yy",},},
     {"id":{"name":"spr_block_white","path":"sprites/spr_block_white/spr_block_white.yy",},},
     {"id":{"name":"scr_draw_gamepad_buttons","path":"scripts/scr_draw_gamepad_buttons/scr_draw_gamepad_buttons.yy",},},
     {"id":{"name":"scr_make_color_hsv_transition","path":"scripts/scr_make_color_hsv_transition/scr_make_color_hsv_transition.yy",},},

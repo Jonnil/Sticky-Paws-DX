@@ -10,5 +10,5 @@ number_of_clears = 0;
 
 if (instance_exists(obj_checkpoint))
 {
-	instance_nearest(x, y, obj_checkpoint).last_checkpoint = true; /*Tell the player if the checkpoint they are activating is the last checkpoint in the level, the checkpoint cosest to the goal*/
+	instance_nearest(x, y, obj_checkpoint).last_checkpoint = true; /* Tell the player if the checkpoint they are activating is the last checkpoint in the level, the checkpoint cosest to the goal */
 }
