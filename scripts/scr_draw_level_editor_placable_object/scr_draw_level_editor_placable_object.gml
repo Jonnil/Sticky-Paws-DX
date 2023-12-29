@@ -33,7 +33,6 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 			
 			/* If you have recently unlocked a new object, indicate that to the player */
 			if (unlocked_object[var_place_object_id] == 1 && global.show_new_items_notification) {
-				//scr_draw_text_outlined(half_gui_width + menu_x_offset, y_offset, l10n_text("New"), global.default_text_size + scr_wave(-0.1, 0, 1, 0), c_white, c_red, selected_menu_alpha * alpha_offset);
 				draw_circle_color(half_gui_width + menu_x_offset + 16, y_offset - 16, 3 + scr_wave(0, 3, 1, 0), c_red, c_red, false);
 			}
 		}
