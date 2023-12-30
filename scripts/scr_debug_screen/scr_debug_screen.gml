@@ -96,6 +96,15 @@ function scr_debug_screen()
 	#endregion /* Controller ports END */
 	
 	if (global.debug_screen) {
+		
+		if (variable_instance_exists(self, "player_show_controls_alpha"))
+		{
+			player_show_controls_alpha[1] = 0;
+			player_show_controls_alpha[2] = 0;
+			player_show_controls_alpha[3] = 0;
+			player_show_controls_alpha[4] = 0;
+		}
+		
 		if (keyboard_check_pressed(vk_f2)) {
 			scr_save_os_info_ini();
 		}
@@ -160,9 +169,12 @@ function scr_debug_screen()
 		}
 		#endregion /* Click on All Instance Count to toggle if it should stay on screen even after you close debug screen END */
 		
-		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 8, "F3 to toggle debug screen", global.default_text_size * 0.5, c_black, c_white, 1);
+		if (global.controls_used_for_navigation != "gamepad")
+		{
+			draw_set_halign(fa_center);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 8, "F3 to toggle debug screen", global.default_text_size * 0.6, c_black, c_white, 1);
+		}
 		draw_set_halign(fa_left);
 		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + scr_get_build_date(), global.default_text_size, c_black, c_white, 1);
 		
@@ -278,7 +290,7 @@ function scr_debug_screen()
 			debug_text_y += 20;
 		}
 		if (variable_instance_exists(self, "menu_delay")) {
-			if (menu_delay == 0 && menu_joystick_delay == 0) {
+			if (menu_delay == 0) {
 				scr_draw_text_outlined(32, debug_text_y, "menu_delay: " + string(menu_delay), global.default_text_size, c_black, c_white);
 			}
 			else {

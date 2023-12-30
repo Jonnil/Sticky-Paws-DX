@@ -13,7 +13,7 @@ function get_1up_when_collect_basic_collectibles()
 	var basic_collectible_threshold = 99;
 	if (global.basic_collectibles >= basic_collectible_threshold)
 	{
-		global.basic_collectibles = 0;
+		global.basic_collectibles = -1;
 		obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
 		var nearest_instance = instance_nearest(x, y, obj_player);
 		if (nearest_instance != noone)

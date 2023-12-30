@@ -904,9 +904,15 @@ function scr_select_custom_level_menu()
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, "Custom level folder size: " + string(custom_levels_folder_megabytes) + " MB", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("Custom level folder size") + ": " + string(custom_levels_folder_megabytes) + " MB", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
-	
 	#endregion /* Draw above everything else END */
+	
+	/* When you first enter the level select screen, it doesn't always scroll correctly. Make sure that for several frames, the "scroll to" variable is forced to correct value */
+	if (scroll_to_timer > 0)
+	{
+		scroll_to = floor(global.select_level_index / row);
+		scroll_to_timer --;
+	}
 	
 }

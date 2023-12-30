@@ -17,10 +17,10 @@ function scr_draw_welcome_to_level_editor_menu()
 		draw_set_halign(fa_left);
 		if (global.controls_used_for_navigation == "gamepad")
 		{
-			/* Left */ scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.left], display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
-			/* Up */ scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.up], display_get_gui_width() * 0.5 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
-			/* Right */ scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.right], display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
-			/* Down */ scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.down], display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
+			/* Left */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_LEFT, display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
+			/* Up */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_UP, display_get_gui_width() * 0.5 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
+			/* Right */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_RIGHT, display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
+			/* Down */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_DOWN, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
 			/* Scroll Toolbar Up */ scr_draw_gamepad_buttons(button_scroll_object_left, display_get_gui_width() * 0.5 - 42 - 42 - 84, display_get_gui_height() * 0.5 + 42 - 126, 0.5, c_white, 1);
 			/* Scroll Toolbar Down */ scr_draw_gamepad_buttons(button_scroll_object_right, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 + 42 - 126, 0.5, c_white, 1);
 			/* Place Objects */ scr_draw_gamepad_buttons(button_draw, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 + 42 + 42 - 126, 0.5, c_white, 1);

@@ -33,12 +33,14 @@ function scr_zoom_camera_controls()
 	var zoom_speed = 0.015;
 	var zoom_minimum = 0.5;
 	var base_zoom_maximum = 1.0; /* Set base maximum zoom */
+	var display_width = display_get_gui_width();
+	var display_height = display_get_gui_height();
 	
-	if (room_width < display_get_width() || room_height < display_get_height()) /* Check if either the room width or height is less than the screen resolution */
+	if (room_width < display_width || room_height < display_height) /* Check if either the room width or height is less than the screen resolution */
 	{
 		/* Calculate proportional maximum zoom based on both room width and height */
-		var zoom_factor_width = room_width / display_get_width();
-		var zoom_factor_height = room_height / display_get_height();
+		var zoom_factor_width = room_width / display_width;
+		var zoom_factor_height = room_height / display_height;
 		
 		var zoom_factor = min(zoom_factor_width, zoom_factor_height); /* Choose the minimum zoom factor to ensure the entire room fits within the screen */
 		var dynamic_zoom_maximum = base_zoom_maximum * zoom_factor; /* Calculate dynamic maximum zoom */

@@ -64,7 +64,7 @@ function scr_initialize_level_information_ini()
 		intro_animation_play_only_once = get_custom_level_information_real("info", "intro_animation_play_only_once", false);
 		after_goal_go_to_this_level = get_custom_level_information_real("info", "after_goal_go_to_this_level", noone);
 		
-		if (object_index == obj_leveleditor)
+		if (object_index == obj_leveleditor && !global.actually_play_edited_level)
 		{
 			camera_set_view_pos(view_camera[view_current], ini_read_real("info", "view_xview", 0), ini_read_real("info", "view_yview", 0)); /* Set camera position on the last positions you had the camera when doing level editing */
 			x = ini_read_real("info", "view_xview", 0);

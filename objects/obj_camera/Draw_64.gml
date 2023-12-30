@@ -332,12 +332,16 @@ if (global.doing_clear_check)
 }
 
 #region /* Playtest Level Buttons */
-if (global.play_edited_level) /* When playtesting the level */
+if (global.character_select_in_this_menu == "level_editor")
+&& (global.play_edited_level) /* When playtesting the level */
 && (!global.actually_play_edited_level) /* But not actually playing the level */
-&& (global.character_select_in_this_menu == "level_editor")
+&& (!global.doing_clear_check)
+&& (!global.doing_clear_check_character)
+|| (global.character_select_in_this_menu == "main_game")
+&& (global.debug_screen)
+&& (!global.doing_clear_check)
+&& (!global.doing_clear_check_character)
 {
-	var playtest_invincibility_x = 96;
-	var playtest_moonjump_x = 160;
 	if (global.playtest_invincibility)
 	{
 		var playtest_invincibility_blend = c_white;
@@ -354,7 +358,19 @@ if (global.play_edited_level) /* When playtesting the level */
 	{
 		var playtest_moonjump_blend = c_dkgray;
 	}
-	draw_sprite_ext(spr_menu_button_pause, 0, 32, display_get_gui_height() - 32, 1, 1, 0, c_white, 1);
+	if (global.character_select_in_this_menu == "level_editor")
+	{
+		var pause_x = 32;
+		var playtest_invincibility_x = 96;
+		var playtest_moonjump_x = 160;
+		draw_sprite_ext(spr_menu_button_pause, 0, 32, display_get_gui_height() - 32, 1, 1, 0, c_white, 1);
+	}
+	else
+	{
+		var pause_x = -999;
+		var playtest_invincibility_x = 32;
+		var playtest_moonjump_x = 96;
+	}
 	draw_sprite_ext(spr_leveleditor_icon_invincibility, 0, playtest_invincibility_x, display_get_gui_height() - 32, 1, 1, 0, playtest_invincibility_blend, 1);
 	draw_sprite_ext(spr_leveleditor_icon_moonjump, 0, playtest_moonjump_x, display_get_gui_height() - 32, 1, 1, 0, playtest_moonjump_blend, 1);
 	
@@ -371,9 +387,40 @@ if (global.play_edited_level) /* When playtesting the level */
 	}
 	#endregion /* Draw Pause key END */
 	
+	#region /* Draw Invincibility Key */
+	var invincibility_key = ord("I");
+	var invincibility_button = gp_shoulderl;
+	if (gamepad_is_connected(global.player_slot[1]))
+	&& (global.controls_used_for_navigation == "gamepad")
+	|| (global.always_show_gamepad_buttons)
+	{
+		scr_draw_gamepad_buttons(invincibility_button, playtest_invincibility_x + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1);
+	}
+	else
+	{
+		draw_sprite_ext(spr_keyboard_keys, invincibility_key, playtest_invincibility_x + 20, display_get_gui_height() - 32 + 20, 0.4, 0.4, 0, c_white, 1);
+	}
+	#endregion /* Draw Invincibility key END */
+	
+	#region /* Draw Moonjump Key */
+	var moonjump_key = ord("M");
+	var moonjump_button = gp_shoulderlb;
+	if (gamepad_is_connected(global.player_slot[1]))
+	&& (global.controls_used_for_navigation == "gamepad")
+	|| (global.always_show_gamepad_buttons)
+	{
+		scr_draw_gamepad_buttons(moonjump_button, playtest_moonjump_x + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1);
+	}
+	else
+	{
+		draw_sprite_ext(spr_keyboard_keys, moonjump_key, playtest_moonjump_x + 20, display_get_gui_height() - 32 + 20, 0.4, 0.4, 0, c_white, 1);
+	}
+	#endregion /* Draw Moonjump key END */
+	
 	#region /* Press Pause button */
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
-	|| (gamepad_button_check_pressed(global.player_slot[1], gp_select))
+	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), pause_x - 32 + 1, display_get_gui_height() - 64, pause_x + 32, display_get_gui_height() + 64 - 1)
+	|| gamepad_button_check_pressed(global.player_slot[1], gp_select))
+	&& (pause_x > 0)
 	{
 		if (mouse_check_button_pressed(mb_left))
 		{
@@ -381,7 +428,7 @@ if (global.play_edited_level) /* When playtesting the level */
 		}
 		if (mouse_check_button_released(mb_left))
 		&& (can_click_on_pause_key)
-		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), 32 - 32 + 1, display_get_gui_height() - 64, 32 + 32, display_get_gui_height() + 64 - 1))
+		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), pause_x - 32 + 1, display_get_gui_height() - 64, pause_x + 32, display_get_gui_height() + 64 - 1))
 		|| (gamepad_button_check_pressed(global.player_slot[1], gp_select))
 		{
 			pause_playtest = true;
@@ -391,7 +438,7 @@ if (global.play_edited_level) /* When playtesting the level */
 			score = 0;
 			
 			#region /* Save Level Information when in level editor */
-			if (global.level_name != "")
+			if (global.level_name != "" && !global.actually_play_edited_level)
 			{
 				ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
@@ -423,6 +470,8 @@ if (global.play_edited_level) /* When playtesting the level */
 	if (mouse_check_button_released(mb_left))
 	&& (global.controls_used_for_navigation == "mouse")
 	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), playtest_invincibility_x - 32, display_get_gui_height() - 64, playtest_invincibility_x + 32, display_get_gui_height() + 64 - 1))
+	|| (keyboard_check_pressed(invincibility_key))
+	|| (gamepad_button_check_pressed(global.player_slot[1], invincibility_button))
 	{
 		global.playtest_invincibility = not global.playtest_invincibility;
 	}
@@ -431,14 +480,15 @@ if (global.play_edited_level) /* When playtesting the level */
 	if (mouse_check_button_released(mb_left))
 	&& (global.controls_used_for_navigation == "mouse")
 	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), playtest_moonjump_x - 32, display_get_gui_height() - 64, playtest_moonjump_x + 32, display_get_gui_height() + 64 - 1))
+	|| (keyboard_check_pressed(moonjump_key))
+	|| (gamepad_button_check_pressed(global.player_slot[1], moonjump_button))
 	{
 		global.playtest_moonjump = not global.playtest_moonjump;
 	}
-	
 }
 
 /* Prevent cheating with playtest tools when playing actual level or doing clear check */
-if (global.actually_play_edited_level)
+if (global.actually_play_edited_level && !global.debug_screen)
 || (global.doing_clear_check)
 || (global.doing_clear_check_character)
 {

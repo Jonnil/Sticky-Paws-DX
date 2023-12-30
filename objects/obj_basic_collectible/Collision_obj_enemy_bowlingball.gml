@@ -15,30 +15,7 @@ if (bounce_up == false)
 		}
 	}
 	
-	#region /* Get 1-up if you get 100 basic collectibles */
-	if (global.basic_collectibles > 99) /* After the code where you collect the basic collectible, then check if you have collected 100 basic collectibles */
-	{
-		global.basic_collectibles = 0;
-		if (instance_exists(obj_camera))
-		{
-			obj_camera.hud_show_lives_timer = global.hud_hide_time * 60;
-		}
-		if (instance_exists(obj_player))
-		{
-			with(instance_create_depth(other.x, other.y - 16, 0, obj_score_up))
-			{
-				score_up = "1-up";
-			}
-		}
-		else
-		{
-			with(instance_create_depth(x, y - 16, 0, obj_score_up))
-			{
-				score_up = "1-up";
-			}
-		}
-	}
-	#endregion /* Get 1-up if you get 100 basic collectibles END */
+	scr_get_1up_when_collect_basic_collectibles();
 	
 	if (instance_exists(obj_camera))
 	{

@@ -783,6 +783,9 @@ if (!global.actually_play_edited_level)
 	#region /* Show what version of the game the level was first created in */
 	/* This should make it easier to port old levels to new game versions */
 	/* Showing the original version number makes it easier to pinpoint what changes happened from one version to another */
+	if_clear_checked = false;
+	level_made_in_what_version_text = "";
+	first_created_on_version = "";
 	if (global.level_name != "")
 	{
 		ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
@@ -801,12 +804,6 @@ if (!global.actually_play_edited_level)
 			first_created_on_version = ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date());	
 		}
 		ini_close();
-	}
-	else
-	{
-		if_clear_checked = false;
-		level_made_in_what_version_text = "";
-		first_created_on_version = "";
 	}
 	#endregion /* Show what version of the game the level was first created in END */
 	

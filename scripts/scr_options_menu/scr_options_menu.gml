@@ -2110,23 +2110,25 @@ function scr_options_menu()
 				automatically_pause_when_window_is_unfocused_settings_y = 164;
 			}
 			automatically_pause_when_window_is_unfocused_settings_y = 164;
-			show_timer_settings_y = 164 + (48 * 3);
-			show_defeats_counter_settings_y = 164 + (48 * 4);
+			show_timer_settings_y = 164 + (48 * 1);
+			show_defeats_counter_settings_y = 164 + (48 * 2);
 			if (global.enable_ranks)
 			{
-				show_ranks_settings_y = 164 + (48 * 5);
-				show_tutorial_signs_y = 164 + (48 * 6);
-				show_new_items_notification_y = 164 + (48 * 7);
-				hud_hide_time_y = 164 + (48 * 9) - 16;
-				selected_font_y = 164 + (48 * 10);
+				show_ranks_settings_y = 164 + (48 * 3);
+				show_tutorial_signs_y = 164 + (48 * 4);
+				show_new_items_notification_y = 164 + (48 * 5);
+				hud_hide_time_y = 164 + (48 * 7) - 16;
+				selected_font_y = 164 + (48 * 8);
+				debug_screen_y = 164 + (48 * 9) + 16;
 			}
 			else
 			{
 				show_ranks_settings_y = -9999;
-				show_tutorial_signs_y = 164 + (48 * 5);
-				show_new_items_notification_y = 164 + (48 * 6);
-				hud_hide_time_y = 164 + (48 * 8) - 16;
-				selected_font_y = 164 + (48 * 9);
+				show_tutorial_signs_y = 164 + (48 * 3);
+				show_new_items_notification_y = 164 + (48 * 4);
+				hud_hide_time_y = 164 + (48 * 6) - 16;
+				selected_font_y = 164 + (48 * 7);
+				debug_screen_y = 164 + (48 * 8) + 16;
 			}
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
@@ -2140,6 +2142,7 @@ function scr_options_menu()
 			}
 			draw_menu_checkmark(380, show_tutorial_signs_y, l10n_text("Show Tutorial Signs"), "show_tutorial_signs", global.show_tutorial_signs); /* Show Tutorial Signs */
 			draw_menu_checkmark(380, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification", global.show_new_items_notification); /* Show new items notification in level editor */
+			draw_menu_checkmark(380, debug_screen_y, l10n_text("Debug Screen"), "debug_screen", global.debug_screen);
 			
 			if (global.hud_hide_time > 10)
 			{
@@ -3026,14 +3029,7 @@ function scr_options_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					if (can_select_font)
-					{
-						menu = "select_font";
-					}
-					else
-					{
-						menu = "hud_hide_time";
-					}
+					menu = "debug_screen";
 				}
 				else
 				if (key_down)
@@ -3275,6 +3271,32 @@ function scr_options_menu()
 				{
 					menu_delay = 3;
 					menu = "hud_hide_time";
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					menu = "debug_screen";
+				}
+			}
+			else
+			if (menu == "debug_screen")
+			{
+				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu_delay = 3;
+					if (can_select_font)
+					{
+						menu = "select_font";
+					}
+					else
+					{
+						menu = "hud_hide_time";
+					}
 				}
 				else
 				if (key_down)
@@ -4229,6 +4251,9 @@ function scr_options_menu()
 						break;
 					case "show_new_items_notification":
 						global.show_new_items_notification = !global.show_new_items_notification;
+						break;
+					case "debug_screen":
+						global.debug_screen = !global.debug_screen;
 						break;
 					case "players_can_collide":
 						global.players_can_collide = !global.players_can_collide;

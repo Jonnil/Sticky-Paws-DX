@@ -1,11 +1,11 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_erase_brush_size_6",
-  "bbox_bottom": 191,
-  "bbox_left": 0,
-  "bbox_right": 191,
-  "bbox_top": 0,
+  "name": "spr_erase_size_2",
+  "bbox_bottom": 127,
+  "bbox_left": 64,
+  "bbox_right": 127,
+  "bbox_top": 64,
   "bboxMode": 0,
   "collisionKind": 1,
   "collisionTolerance": 0,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"42782c5f-2827-4dda-9441-733488bacf7b",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"d54a85b8-2de9-4ab1-b79d-1d734ee7d63f",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 192,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"b29f2964-2147-4872-a304-fa82410a8da4","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"0cbe4ba1-5c3d-4203-b4e2-d876ce1dfaeb","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 9,
@@ -32,7 +32,7 @@
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "spr_erase_brush_size_6",
+    "name": "spr_erase_size_2",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"42782c5f-2827-4dda-9441-733488bacf7b","path":"sprites/spr_erase_brush_size_6/spr_erase_brush_size_6.yy",},},},"Disabled":false,"id":"c9487033-9aae-4946-b909-173e860fe827","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"d54a85b8-2de9-4ab1-b79d-1d734ee7d63f","path":"sprites/spr_erase_size_2/spr_erase_size_2.yy",},},},"Disabled":false,"id":"de3dcc5c-360e-49ad-ab2a-44ac9a94ad78","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

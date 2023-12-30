@@ -13,6 +13,8 @@ function scr_draw_level_editor_placable_object(var_selected_object, var_place_ob
 				current_object_name = object_name;
 				object_help_description = object_description;
 				can_make_place_size_bigger = var_can_make_place_size_bigger;
+				sprite_index = var_sprite_index;
+				place_object = var_place_object_id; /* Set the currently selected object ID */
 			}
 			var y_offset = 128;
 			var hover_offset = 49;
