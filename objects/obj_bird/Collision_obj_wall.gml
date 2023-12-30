@@ -1,4 +1,4 @@
-if (touch_player == false)
+if (touch_player == 0)
 {
 	while (place_meeting(x, y, other))
 	{
@@ -9,21 +9,21 @@ if (touch_player == false)
 	#region /* Change direction when hitting a wall */
 	if (speed > 0)
 	{
-		if (place_meeting(x - 1, y, obj_wall))
+		if (place_meeting(x - 1, y, other))
 		{
 			image_xscale = +1;
 			hspeed = +4;
 		}
-		if (place_meeting(x + 1, y, obj_wall))
+		if (place_meeting(x + 1, y, other))
 		{
 			image_xscale = -1;
 			hspeed = -4;
 		}
-		if (position_meeting(x, bbox_top - 1, obj_wall))
+		if (position_meeting(x, y - 1, other))
 		{
 			vspeed = +4;
 		}
-		if (place_meeting(x, y + 1, obj_wall))
+		if (place_meeting(x, y + 1, other) && !startled)
 		{
 			vspeed = -4;
 		}
@@ -31,7 +31,7 @@ if (touch_player == false)
 	#endregion /* Change direction when hitting a wall END */
 	
 	#region /* If it's inside the wall, destroy itself */
-	if (position_meeting(x, y, obj_wall))
+	if (position_meeting(x, y, other))
 	{
 		instance_destroy();
 	}

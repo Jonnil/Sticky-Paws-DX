@@ -1,4 +1,4 @@
-if (touch_player == false)
+if (touch_player == 0)
 {
 	touch_player = true;
 	if (instance_nearest(x, y, obj_player).x < x)
