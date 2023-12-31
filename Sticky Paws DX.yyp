@@ -3313,6 +3313,7 @@
     {"id":{"name":"rm_world_map","path":"rooms/rm_world_map/rm_world_map.yy",},},
     {"id":{"name":"spr_iris_dead","path":"sprites/spr_iris_dead/spr_iris_dead.yy",},},
     {"id":{"name":"snd_leveleditor_erase_left","path":"sounds/snd_leveleditor_erase_left/snd_leveleditor_erase_left.yy",},},
+    {"id":{"name":"spr_keyboard_key_command","path":"sprites/spr_keyboard_key_command/spr_keyboard_key_command.yy",},},
     {"id":{"name":"snd_running_out","path":"sounds/snd_running_out/snd_running_out.yy",},},
     {"id":{"name":"snd_spring","path":"sounds/snd_spring/snd_spring.yy",},},
     {"id":{"name":"spr_boss_fall","path":"sprites/spr_boss_fall/spr_boss_fall.yy",},},

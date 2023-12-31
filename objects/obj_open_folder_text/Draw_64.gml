@@ -25,7 +25,7 @@ if (os_type == os_macosx)
 	scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 128, l10n_text("Add custom things in Finder"), global.default_text_size * 1.1, c_black, c_white, image_alpha);
 	draw_sprite_ext(spr_keyboard_keys, vk_shift, key_open_localappdata_x, get_window_height * 0.5 - 90, 0.75, 0.75, 0, c_white, image_alpha);
 	scr_draw_text_outlined(key_open_localappdata_x + 38, get_window_height * 0.5 - 90, "+", global.default_text_size * 1.1, c_black, c_white, image_alpha);
-	draw_sprite_ext(spr_keyboard_keys, 91, key_open_localappdata_x + 74, get_window_height * 0.5 - 90, 0.75, 0.75, 0, c_white, image_alpha);
+	draw_sprite_ext(spr_keyboard_key_command, 0, key_open_localappdata_x + 74, get_window_height * 0.5 - 90, 0.75, 0.75, 0, c_white, image_alpha);
 	scr_draw_text_outlined(key_open_localappdata_x + 110, get_window_height * 0.5 - 90, "+", global.default_text_size * 1.1, c_black, c_white, image_alpha);
 	draw_sprite_ext(spr_keyboard_keys, ord("G"), key_open_localappdata_x + 146, get_window_height * 0.5 - 90, 0.75, 0.75, 0, c_white, image_alpha);
 	draw_set_halign(fa_left);
