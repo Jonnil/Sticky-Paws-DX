@@ -2733,7 +2733,7 @@ function scr_options_menu()
 				&& (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					scr_open_folder(game_save_id + "/save_files")
+					scr_open_folder(game_save_id + "save_files")
 				}
 			}
 			else

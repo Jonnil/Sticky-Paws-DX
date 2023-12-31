@@ -507,6 +507,8 @@ if (hud_show_defeats_y != -64)
 	}
 	draw_line_width_color(32 - 16, hud_show_defeats_y - 16, 32 + 16, hud_show_defeats_y + 16, 3, c_red, c_red);
 	draw_line_width_color(32 - 16, hud_show_defeats_y + 16, 32 + 16, hud_show_defeats_y - 16, 3, c_red, c_red);
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(64, hud_show_defeats_y, string(global.lives_until_assist), global.default_text_size, c_black, c_white, 1);
 }
 #endregion /* Defeat Counter END */

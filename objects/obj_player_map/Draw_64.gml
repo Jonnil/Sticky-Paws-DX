@@ -175,7 +175,7 @@ if (global.debug_screen)
 #endregion /* Show Clear Level Key in debug END */
 
 #region /* Show Level Info */
-if (iris_xscale > 10)
+if (iris_xscale > 9)
 && (move_delay > 10)
 && (point_distance(xx, yy, x, y) < 30)
 && (instance_exists(obj_level)) /* Must check if obj_level exists or not */
@@ -190,22 +190,18 @@ if (iris_xscale > 10)
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
 		
+		show_big_collectibles_y = -160;
+		best_time_y = -128;
+		best_score_y = -96;
+		times_cleared_y = -64;
 		if (global.show_defeats_counter)
 		&& (instance_nearest(x, y, obj_level).number_of_defeats > 0)
 		{
-			total_defeats_y = -64;
-			times_cleared_y = -96;
-			best_score_y = -128;
-			best_time_y = -160;
-			show_big_collectibles_y = -192;
+			total_defeats_y = -32;
 		}
 		else
 		{
-			total_defeats_y = 0;
-			times_cleared_y = -64;
-			best_score_y = -96;
-			best_time_y = -128;
-			show_big_collectibles_y = -160;
+			total_defeats_y = -64;
 		}
 		
 		if (global.show_defeats_counter)
@@ -221,7 +217,7 @@ if (iris_xscale > 10)
 		|| (instance_nearest(x, y, obj_level).big_collectible5)
 		{
 			draw_set_alpha(0.9);
-			draw_roundrect_color_ext(show_level_info_x - 140, show_level_info_y - abs(show_big_collectibles_y) - 16, show_level_info_x + 140, show_level_info_y - 52, 50, 50, c_black, c_black, false);
+			draw_roundrect_color_ext(show_level_info_x - 140, show_level_info_y - abs(show_big_collectibles_y) - 16, show_level_info_x + 140, show_level_info_y + total_defeats_y + 16, 50, 50, c_black, c_black, false);
 			draw_set_alpha(1);
 		}
 		

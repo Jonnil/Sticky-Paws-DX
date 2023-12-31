@@ -8,6 +8,7 @@ function get_custom_level_information_real(section_name, key_name, default_value
 	else
 	{
 		if (can_save_to_level_information)
+		&& (global.character_select_in_this_menu == "level_editor")
 		{
 			ini_write_real(section_name, key_name, default_value);
 		}
@@ -25,6 +26,7 @@ function get_custom_level_information_string(section_name, key_name, default_val
 	else
 	{
 		if (can_save_to_level_information)
+		&& (global.character_select_in_this_menu == "level_editor")
 		{
 			ini_write_string(section_name, key_name, default_value);
 		}

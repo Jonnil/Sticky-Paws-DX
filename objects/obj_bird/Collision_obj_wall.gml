@@ -19,11 +19,11 @@ if (touch_player == 0)
 			image_xscale = -1;
 			hspeed = -4;
 		}
-		if (position_meeting(x, y - 1, other))
+		if (place_meeting(x, y - 1, other))
 		{
 			vspeed = +4;
 		}
-		if (place_meeting(x, y + 1, other) && !startled)
+		if (place_meeting(x, y + 1, other) && startled)
 		{
 			vspeed = -4;
 		}
