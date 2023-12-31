@@ -1,8 +1,8 @@
-if (instance_exists(obj_player))
+if (touch_player == 0)
+&& (!startled)
+&& (instance_exists(obj_player))
 && (distance_to_object(obj_player) < 128)
 && (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
-&& (touch_player == 0)
-&& (!startled)
 {
 	startled = true;
 	gravity = 0;
