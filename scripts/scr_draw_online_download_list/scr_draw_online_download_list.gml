@@ -194,6 +194,8 @@ function scr_draw_online_download_list()
 					
 					if (global.controls_used_for_navigation == "mouse")
 					&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), download_online_x + 100 - 16, download_online_y + menu_y_offset - 16, download_online_x + 484 + 16, download_online_y + menu_y_offset + 216 + 62))
+					&& (is_array(data))
+					&& (array_length(data) > 0)
 					{
 						menu = "download_online_" + string(online_download_index);
 					}
@@ -389,9 +391,15 @@ function scr_draw_online_download_list()
 				}
 			}
 			
-			if (info_data == undefined)
+			if (is_array(data))
+			&& (array_length(data) > 0)
+			&& (info_data == undefined)
 			{
 				scr_draw_loading(1, download_online_x + 300, top_left_of_thumbnail_y + menu_y_offset + 100);
+			}
+			else
+			{
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("There is nothing uploaded yet!"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 			}
 			
 			/* Draw the thumbnail */ if (sprite_exists(spr_download_list_thumbnail) && info_data != undefined)
@@ -427,6 +435,11 @@ function scr_draw_online_download_list()
 			#region /* Online download list menu navigation when there is data */
 			if (menu == "download_online_1")
 			{
+				if (is_array(data))
+				&& (array_length(data) <= 0)
+				{
+					menu = "download_online_back";
+				}
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
@@ -451,6 +464,11 @@ function scr_draw_online_download_list()
 			else
 			if (menu == "download_online_" + string(global.selected_online_download_index))
 			{
+				if (is_array(data))
+				&& (array_length(data) <= 0)
+				{
+					menu = "download_online_back";
+				}
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
@@ -637,9 +655,15 @@ function scr_draw_online_download_list()
 	{
 		if (key_up)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (is_array(data))
+		&& (array_length(data) > 0)
 		{
 			menu_delay = 3;
-			menu = "download_online_" + string(num_items);
+			if (is_array(data))
+			&& (array_length(data) > 0)
+			{
+				menu = "download_online_" + string(num_items);
+			}
 		}
 		else
 		if (key_down)
@@ -663,7 +687,11 @@ function scr_draw_online_download_list()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			menu = "download_online_1";
+			if (is_array(data))
+			&& (array_length(data) > 0)
+			{
+				menu = "download_online_1";
+			}
 		}
 	}
 	else

@@ -89,15 +89,15 @@ if (!startled)
 	}
 	
 	/* Hop left or right, but never jump off ledges */
-	if (!place_meeting(x - 5, bbox_bottom + 20, obj_wall))
-	&& (!place_meeting(x - 5, bbox_bottom + 20, obj_semisolid_platform))
+	if (!place_meeting(bbox_left - 5, bbox_bottom + 20, obj_wall))
+	&& (!place_meeting(bbox_left - 5, bbox_bottom + 20, obj_semisolid_platform))
 	{
 		hspeed = +1;
 		image_xscale = +1;
 	}
 	else
-	if (!place_meeting(x + 5, bbox_bottom + 20, obj_wall))
-	&& (!place_meeting(x + 5, bbox_bottom + 20, obj_semisolid_platform))
+	if (!place_meeting(bbox_right + 5, bbox_bottom + 20, obj_wall))
+	&& (!place_meeting(bbox_right + 5, bbox_bottom + 20, obj_semisolid_platform))
 	{
 		hspeed = -1;
 		image_xscale = -1;
