@@ -119,7 +119,14 @@ if (hud_show_score_y != -64)
 #region /* Time Countdown */
 if (global.enable_time_countdown)
 {
-	time_countup_y = 94;
+	if (global.controls_used_for_navigation == "mouse")
+	{
+		time_countup_y = 94 + 42;
+	}
+	else
+	{
+		time_countup_y = 94;
+	}
 	
 	#region /* Time is running out message */
 	if (!global.player_has_entered_goal)
@@ -150,25 +157,33 @@ if (global.enable_time_countdown)
 	if (global.hud_hide_time > 0)
 	if (global.time_countdown >= 0)
 	{
+		if (global.controls_used_for_navigation == "mouse")
+		{
+			var time_countdown_y = 42 + 42;
+		}
+		else
+		{
+			var time_countdown_y = 42;
+		}
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
 		if (!global.player_has_entered_goal)
 		{
 			if (global.time_countdown == 0)
 			{
-				scr_draw_text_outlined(get_window_width - 32, 42, "TIME\n0", global.default_text_size, c_black, c_red, 1);
+				scr_draw_text_outlined(get_window_width - 32, time_countdown_y, "TIME\n0", global.default_text_size, c_black, c_red, 1);
 			}
 			else
 			{
 				if (global.time_countdown >= 100)
 				{
-					scr_draw_text_outlined(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_yellow, 1);
-					draw_text_transformed_color(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
+					scr_draw_text_outlined(get_window_width - 32, time_countdown_y, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_yellow, 1);
+					draw_text_transformed_color(get_window_width - 32, time_countdown_y, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_orange, c_orange, c_orange, c_orange, timer_blinking_alpha);
 				}
 				else
 				{
-					scr_draw_text_outlined(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_orange, 1);
-					draw_text_transformed_color(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
+					scr_draw_text_outlined(get_window_width - 32, time_countdown_y, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_orange, 1);
+					draw_text_transformed_color(get_window_width - 32, time_countdown_y, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 				}
 			}
 			if (global.timeattack_millisecond < room_speed * 0.5)
@@ -182,7 +197,7 @@ if (global.enable_time_countdown)
 		}
 		else
 		{
-			scr_draw_text_outlined(get_window_width - 32, 42, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width - 32, time_countdown_y, "TIME\n" + string(global.time_countdown), global.default_text_size, c_black, c_white, 1);
 		}
 	}
 	#endregion /* Show the Time Countdown END */
@@ -190,7 +205,14 @@ if (global.enable_time_countdown)
 }
 else
 {
-	time_countup_y = 32;
+	if (global.controls_used_for_navigation == "mouse")
+	{
+		time_countup_y = 32 + 42;
+	}
+	else
+	{
+		time_countup_y = 32;
+	}
 }
 #endregion /* Time Countdown END */
 
@@ -256,6 +278,22 @@ if (global.show_timer)
 #endregion /* Time countup in Minutes, Seconds and Milliseconds END */
 
 #endregion /* Big Collectibles, Basic Collectibles, Score and Timer END */
+
+#region /* Show a pause button on screen when using the mouse */
+if (global.controls_used_for_navigation == "mouse")
+{
+	menu_cursor_index += 0.3;
+	if (!global.actually_play_edited_level)
+	{
+		var pause_text = l10n_text("Edit Level");
+	}
+	else
+	{
+		var pause_text = l10n_text("Pause");
+	}
+	draw_menu_button(display_get_gui_width() - 370, 0, string(pause_text), "pause");
+}
+#endregion /* Show a pause button on screen when using the mouse END */
 
 scr_debug_screen();
 

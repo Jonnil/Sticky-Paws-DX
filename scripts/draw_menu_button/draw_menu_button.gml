@@ -1,4 +1,4 @@
-function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to, highlight_color = c_lime, alpha = 1)
+function draw_menu_button(x_position, y_position, string_text, menu_index, menu_takes_you_to = "", highlight_color = c_lime, alpha = 1)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);

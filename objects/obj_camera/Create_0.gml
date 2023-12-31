@@ -81,6 +81,10 @@ show_keyboard_and_mouse_input_change_prompt_y = 0;
 
 delay = 0;
 menu_delay = 0;
+menu_joystick_delay = 0;
+menu_cursor_index = 0;
+menu = "";
+open_dropdown = false;
 can_click_on_pause_key = false;
 global.deactivate_timer = 999;
 global.appear_block_timer = 0;

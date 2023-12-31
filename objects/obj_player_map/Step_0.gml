@@ -71,7 +71,8 @@ if (keyboard_check_pressed(vk_escape) ||
 	gamepad_button_check_pressed(global.player_slot[3], gp_start) ||
 	gamepad_button_check_pressed(global.player_slot[4], gp_select) ||
 	gamepad_button_check_pressed(global.player_slot[4], gp_start) ||
-	(!window_has_focus() && global.automatically_pause_when_window_is_unfocused)
+	(!window_has_focus() && global.automatically_pause_when_window_is_unfocused) ||
+	(global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Pause button appears in top right corner of screen when using mouse */
 	)
 {
 	var pause_player = 0;
@@ -574,6 +575,7 @@ if (can_move)
 			|| (mouse_check_button_released(mb_left))
 			&& (point_direction(x, y, mouse_x, mouse_y) > 45)
 			&& (point_direction(x, y, mouse_x, mouse_y) < 135)
+			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
 			{
 				if (y > view_y + 64 && !position_meeting(x, y - 32, obj_wall))
 				{
@@ -595,6 +597,7 @@ if (can_move)
 			|| (mouse_check_button_released(mb_left))
 			&& (point_direction(x, y, mouse_x, mouse_y) > 135)
 			&& (point_direction(x, y, mouse_x, mouse_y) < 225)
+			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
 			{
 				if (x > view_x + 64 && !position_meeting(x - 32, y, obj_wall))
 				{
@@ -616,9 +619,11 @@ if (can_move)
 			|| (mouse_check_button_released(mb_left))
 			&& (point_direction(x, y, mouse_x, mouse_y) > 0)
 			&& (point_direction(x, y, mouse_x, mouse_y) < 45)
+			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
 			|| (mouse_check_button_released(mb_left))
 			&& (point_direction(x, y, mouse_x, mouse_y) > 315)
 			&& (point_direction(x, y, mouse_x, mouse_y) < 360)
+			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
 			{
 				if (x < view_x + view_width - 64 && !position_meeting(x + 32, y, obj_wall))
 				{
@@ -640,6 +645,7 @@ if (can_move)
 			|| (mouse_check_button_released(mb_left))
 			&& (point_direction(x, y, mouse_x, mouse_y) > 225)
 			&& (point_direction(x, y, mouse_x, mouse_y) < 315)
+			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
 			{
 				if (y < view_y + view_height - 64 && !position_meeting(x, y + 32, obj_wall))
 				{

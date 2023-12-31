@@ -290,12 +290,9 @@ else
 }
 #endregion /* Save to variable when on ground */
 
-#region /* If controller gets disconnected during gameplay, pause the game */
-if (gamepad_is_connected(global.player_slot[player]))
-{
-	controller_connected = true;
+if (gamepad_is_connected(global.player_slot[player])) {
+	controller_connected = true; /* If controller gets disconnected during gameplay, pause the game */
 }
-#endregion /* If controller gets disconnected during gameplay, pause the game END */
 
 #region /* If player is allowed to move */
 if (can_move)

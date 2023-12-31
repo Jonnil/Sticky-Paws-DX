@@ -1133,7 +1133,14 @@ if (global.hud_hide_time > 0)
 	#region /* Show Score y position */
 	if (hud_show_score_timer > 0)
 	{
-		hud_show_score_y = lerp(hud_show_score_y, 32, 0.1);
+		if (global.controls_used_for_navigation == "mouse")
+		{
+			hud_show_score_y = lerp(hud_show_score_y, 32 + 42, 0.1);
+		}
+		else
+		{
+			hud_show_score_y = lerp(hud_show_score_y, 32, 0.1);
+		}
 	}
 	else
 	{

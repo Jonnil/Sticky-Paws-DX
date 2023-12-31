@@ -4,6 +4,12 @@
 
 scr_initialize_camera();
 
+menu_delay = 0;
+menu_joystick_delay = 0;
+menu_cursor_index = 0;
+menu = "";
+open_dropdown = false;
+
 key_player1_zoom_in_hold = noone;
 key_player2_zoom_in_hold = noone;
 key_player3_zoom_in_hold = noone;
