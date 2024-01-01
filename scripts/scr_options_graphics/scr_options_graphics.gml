@@ -59,22 +59,7 @@ function scr_options_graphics()
 		&& (os_type != os_android)
 		&& (global.enable_options_for_pc)
 		{
-			if (window_get_fullscreen())
-			{
-				draw_menu_checkmark(386, fullscreen_mode_y + menu_y_offset, l10n_text("Windowed"), "fullscreen_mode", true);
-				if (global.controls_used_for_navigation != "gamepad")
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 386 + 57, fullscreen_mode_y + 16 + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				}
-			}
-			else
-			{
-				draw_menu_checkmark(386, fullscreen_mode_y + menu_y_offset, l10n_text("Fullscreen"), "fullscreen_mode", false);
-				if (global.controls_used_for_navigation != "gamepad")
-				{
-					draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 386 + 57, fullscreen_mode_y + 16 + menu_y_offset, 0.5, 0.5, 0, c_white, 1);
-				}
-			}
+			scr_draw_fullscreen_button(386, fullscreen_mode_y + menu_y_offset, "fullscreen_mode");
 		}
 		#endregion /* Fullscreen toggle END */
 		

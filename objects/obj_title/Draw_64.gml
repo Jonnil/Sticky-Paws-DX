@@ -44,6 +44,7 @@ if (global.enable_options_for_pc)
 	|| (menu == "options")
 	|| (menu == "information")
 	|| (menu == "quit")
+	|| (menu == "fullscreen_mode_title")
 	{
 		if (keyboard_check_pressed(vk_escape))
 		{
@@ -65,35 +66,28 @@ if (global.enable_options_for_pc)
 /* Draw Event */
 
 #region /* Fullscreen toggle */
-if (os_type != os_ios)
+var can_toggle_fullscreen = (os_type != os_ios)
 && (os_type != os_android)
 && (global.enable_options_for_pc)
-&& (global.controls_used_for_navigation != "gamepad")
+&& (global.controls_used_for_navigation != "gamepad");
+
+if (can_toggle_fullscreen)
 {
-	draw_set_halign(fa_left);
-	draw_set_valign(fa_middle);
+	scr_draw_fullscreen_button(-74, display_get_gui_height() - 65 + version_y_pos, "fullscreen_mode_title");
+	
 	if (window_get_fullscreen())
 	{
-		scr_draw_text_outlined(+ 52, display_get_gui_height() - 55 + version_y_pos, l10n_text("Windowed"), global.default_text_size, c_white, c_black, 1);
-		draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
+		var fullscreen_text = l10n_text("Windowed");
 	}
 	else
 	{
-		scr_draw_text_outlined(+ 52, display_get_gui_height() - 55 + version_y_pos, l10n_text("Fullscreen"), global.default_text_size, c_white, c_black, 1);
-		draw_sprite_ext(spr_keyboard_keys, global.fullscreen_key, 25, display_get_gui_height() - 74 + version_y_pos + 16, 0.5, 0.5, 0, c_white, 1);
+		var fullscreen_text = l10n_text("Fullscreen");
 	}
-	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
-	&& (global.controls_used_for_navigation == "mouse")
-	{
-		draw_set_alpha(0.5);
-		draw_roundrect_color_ext(0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42, 50, 50, c_white, c_white, false);
-		draw_set_alpha(1);
-	}
-	if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() + version_y_pos - 85, 370, display_get_gui_height() + version_y_pos - 75 + 42))
+	
+	if (global.controls_used_for_navigation == "mouse")
 	&& (mouse_check_button_released(mb_left))
-	&& (global.controls_used_for_navigation == "mouse")
-	&& (menu != "quit_game_no")
-	&& (menu != "quit_game_yes")
+	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, display_get_gui_height() - 65 + version_y_pos - 6, -74 + string_width(fullscreen_text) + 100, display_get_gui_height() - 65 + version_y_pos + 32 + 6))
+	&& (menu == "fullscreen_mode_title")
 	{
 		if (window_get_fullscreen())
 		{
@@ -128,6 +122,7 @@ if (menu == "main_game")
 || (menu == "link_reddit")
 || (menu == "link_twitter")
 || (menu == "link_wiki")
+|| (menu == "fullscreen_mode_title")
 {
 	if (in_settings == false)
 	{
@@ -206,7 +201,8 @@ if (in_settings == false)
         menu == "link_instagram" ||
 		menu == "link_reddit" ||
 		menu == "link_twitter" ||
-		menu == "link_wiki")
+		menu == "link_wiki" ||
+		menu == "fullscreen_mode_title")
     {
 		
 		draw_menu_button(display_get_gui_width() * 0.5 - 185, main_game_y, l10n_text("Main Game"), "main_game", "main_game");
@@ -672,6 +668,11 @@ if (!input_key)
 		if (key_right)
 		{
 			menu_delay = 3;
+			if (can_toggle_fullscreen)
+			{
+				menu = "fullscreen_mode_title"
+			}
+			else
 			if (global.link_to_youtube != "")
 			{
 				menu = "link_youtube";
@@ -689,7 +690,14 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
-			menu = "options";
+			if (global.enable_options_for_pc)
+			{
+				menu = "quit";
+			}
+			else
+			{
+				menu = "options";
+			}
 		}
 		else
 		if (key_down)
@@ -723,6 +731,54 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
+			if (global.enable_options_for_pc)
+			{
+				menu = "quit";
+			}
+			else
+			{
+				menu = "options";
+			}
+		}
+		else
+		if (key_down)
+		{
+			menu_delay = 3;
+			menu = "main_game";
+		}
+		else
+		if (key_left)
+		{
+			menu_delay = 3;
+			if (can_toggle_fullscreen)
+			{
+				menu = "fullscreen_mode_title"
+			}
+			else
+			{
+				menu = "information";
+			}
+		}
+		else
+		if (key_right)
+		{
+			menu_delay = 3;
+			if (global.link_to_discord != "")
+			{
+				menu = "link_discord";
+			}
+			else
+			{
+				menu = "information";
+			}
+		}
+	}
+	else
+	if (menu == "fullscreen_mode_title")
+	{
+		if (key_up)
+		{
+			menu_delay = 3;
 			menu = "options";
 		}
 		else
@@ -741,6 +797,11 @@ if (!input_key)
 		if (key_right)
 		{
 			menu_delay = 3;
+			if (global.link_to_youtube != "")
+			{
+				menu = "link_youtube";
+			}
+			else
 			if (global.link_to_discord != "")
 			{
 				menu = "link_discord";
