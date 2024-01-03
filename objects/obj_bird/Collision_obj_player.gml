@@ -1,5 +1,6 @@
 if (touch_player == 0)
 {
+	gravity = 0;
 	touch_player = true;
 	if (instance_nearest(x, y, obj_player).x < x)
 	{

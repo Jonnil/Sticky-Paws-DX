@@ -1,4 +1,5 @@
 if (touch_player == 0)
+&& (die_volting == 0)
 {
 	while (place_meeting(x, y, other))
 	{

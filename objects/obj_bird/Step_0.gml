@@ -25,6 +25,7 @@ if (touch_player == 0)
 if (die_volting = -1)
 || (die_volting = +1)
 {
+	startled = true;
 	image_blend = c_ltgray;
 	image_speed = 0;
 	image_index = 1;

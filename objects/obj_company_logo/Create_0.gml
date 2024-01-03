@@ -22,7 +22,7 @@ global.link_to_website_guide = "https://www.jonnil.games/sticky-paws-guide";
 global.link_to_changelog_history = "https://www.jonnil.games/sticky-paws-changelog"
 global.link_to_update_schedule = "https://www.jonnil.games/sticky-paws-update-schedule";
 
-/* Update this text explaining what is new in each update */ global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Nintendo Switch, \n but there is still more to be done. \n This is just the latest snapshot version. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil";
+/* Update this text explaining what is new in each update */ global.whats_new = "Biggest Sticky Paws update yet! \n Thank you everyone for supporting my game! \n I've been working very hard on porting this game to Nintendo Switch. \n Been focusing a lot on making the level editor better, \n and there is now a level sharing feature in-game. \n Please support this game by sharing the game with friends. \n I would greatly appreciate it. \n Have a great time making and playing shared levels! \n \n -Jonnil";
 
 /* There needs to be limits to the custom characters and levels. Upload and download limits are important */
 global.max_file_upload_megabytes = 16; /* There needs to be a max file upload size (in megabytes), otherwise people can download files that are too big for their system to handle */
