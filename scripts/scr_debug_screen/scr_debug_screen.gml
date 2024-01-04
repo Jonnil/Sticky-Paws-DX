@@ -1,5 +1,6 @@
 function scr_debug_screen()
 {
+	scr_crash_error_handling(); /* Crash Error Handling should run in every room of the game */
 	
 	#region /* FPS */
 	if (global.show_fps || global.debug_screen) {

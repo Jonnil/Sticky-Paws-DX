@@ -19,6 +19,8 @@ function scr_initialize_level_information_ini()
 			can_save_to_level_information = true;
 		}
 		
+		show_message("global.create_level_from_template: " + string(global.create_level_from_template))
+		
 		custom_background4_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background4_y_offset", 0);
 		custom_background4_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background4_x_offset", 0);
 		custom_background3_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background3_y_offset", 0);

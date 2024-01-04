@@ -14,15 +14,15 @@ if (above_gui == false)
 	if (score_up == "checkpoint")
 	&& (show_remaining_jumps == false)
 	{
-		if (checkpoint_number >= checkpoint_number_max)
-		&& (checkpoint_number_max >= 2)
+		if (checkpoint_number >= checkpoint_max_number)
+		&& (checkpoint_max_number >= 2)
 		{
-			scr_draw_text_outlined(x, y - 62, string(checkpoint_number) + "/" + string(checkpoint_number_max) + " " + string_upper(l10n_text("Final")), global.default_text_size * image_xscale, c_black, c_lime, image_alpha);
+			scr_draw_text_outlined(x, y - 62, string(checkpoint_number) + "/" + string(checkpoint_max_number) + " " + string_upper(l10n_text("Final")), global.default_text_size * image_xscale, c_black, c_lime, image_alpha);
 		}
 		else
-		if (checkpoint_number_max >= 2)
+		if (checkpoint_max_number >= 2)
 		{
-			scr_draw_text_outlined(x, y - 62, string(checkpoint_number) + "/" + string(checkpoint_number_max), global.default_text_size * image_xscale, c_black, c_lime, image_alpha);
+			scr_draw_text_outlined(x, y - 62, string(checkpoint_number) + "/" + string(checkpoint_max_number), global.default_text_size * image_xscale, c_black, c_lime, image_alpha);
 		}
 		scr_draw_text_outlined(x, y - 20, string_upper(l10n_text("Checkpoint")), global.default_text_size * 2 * image_xscale, c_black, c_lime, image_alpha);
 	}

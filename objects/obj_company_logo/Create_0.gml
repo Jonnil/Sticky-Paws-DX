@@ -473,6 +473,15 @@ global.quit_to_title = false;
 global.full_level_map_screenshot = false;
 global.appear_block_timer = 0;
 
+global.level_player1_start_x = 0;
+global.level_player1_start_y = 0;
+global.level_player2_start_x = 0;
+global.level_player2_start_y = 0;
+global.level_player3_start_x = 0;
+global.level_player3_start_y = 0;
+global.level_player4_start_x = 0;
+global.level_player4_start_y = 0;
+
 global.player1_crouch_toggle = false; /* If crouch toggle for player 1 is true or false (false by default) */
 global.player2_crouch_toggle = false; /* If crouch toggle for player 2 is true or false (false by default) */
 global.player3_crouch_toggle = false; /* If crouch toggle for player 3 is true or false (false by default) */

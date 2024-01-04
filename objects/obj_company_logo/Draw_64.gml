@@ -57,7 +57,7 @@ else
 if (show_skip_button)
 {
 	if (os_type == os_ios)
-	|| (os_type = os_android)
+	|| (os_type == os_android)
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
@@ -82,5 +82,6 @@ if (show_skip_button)
 	}
 }
 
+scr_debug_screen();
 scr_draw_darken_screen_when_window_is_unfocused();
 scr_draw_cursor_mouse();

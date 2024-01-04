@@ -26,6 +26,10 @@ switch (object) {
 }
 
 draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, image_blend, image_alpha);
+if (hover_over_object_indicator)
+{
+	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_blue, scr_wave(0.25, 0.5, 1));
+}
 
 if (draw_leveleditor_arrow) {
 	draw_set_color(image_blend);

@@ -18,7 +18,7 @@ if (instance_exists(obj_level_width))
 
 #region /* Drag Object */
 if (instance_exists(obj_leveleditor))
-&& (obj_leveleditor.pause == false)
+&& (!obj_leveleditor.pause)
 {
 	if (!keyboard_check(vk_space))
 	&& (!mouse_check_button(mb_middle))

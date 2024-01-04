@@ -5,6 +5,40 @@ scr_zoom_camera_controls();
 scr_toggle_fullscreen();
 scr_resize_application_surface();
 
+if (!have_set_numbers) /* Have to set numbers in step event like this for it to work in every case */
+{
+	have_set_numbers = true;
+	
+	#region /* Set big collectible numbers for every big collectible */
+	instance_activate_object(obj_big_collectible_number);
+	for(set_all_big_collectible = 0; set_all_big_collectible < instance_number(obj_big_collectible_number) + 1; set_all_big_collectible += 1)
+	{
+		if (instance_number(obj_big_collectible_number) >= set_all_big_collectible)
+		{
+			with (instance_nth_nearest(global.level_player1_start_x, global.level_player1_start_y, obj_big_collectible_number, set_all_big_collectible))
+			{
+				big_collectible = obj_camera.set_all_big_collectible;
+			}
+		}
+	}
+	#endregion /* Set big collectible numbers for every big collectible END */
+	
+	#region /* Set checkpoint numbers for every checkpoint */
+	instance_activate_object(obj_checkpoint);
+	for(checkpoint_number = 0;checkpoint_number < instance_number(obj_checkpoint) + 1;checkpoint_number += 1)
+	{
+		if (instance_number(obj_checkpoint) >= checkpoint_number)
+		{
+			with (instance_nth_nearest(global.level_player1_start_x, global.level_player1_start_y, obj_checkpoint, checkpoint_number))
+			{
+				checkpoint_number = obj_camera.checkpoint_number;
+			}
+		}
+	}
+	#endregion /* Set checkpoint numbers for every checkpoint END */
+	
+}
+
 global.appear_block_timer ++;
 if (global.appear_block_timer > 60 * 5)
 {

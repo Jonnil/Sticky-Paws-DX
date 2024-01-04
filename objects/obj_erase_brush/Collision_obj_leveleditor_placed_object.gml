@@ -2,7 +2,7 @@
 if (instance_exists(obj_leveleditor))
 && (obj_leveleditor.difficulty_layer > 0)
 && (obj_leveleditor.drag_object == false)
-&& (obj_leveleditor.pause == false)
+&& (!obj_leveleditor.pause)
 {
 	audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
 	scr_audio_play(snd_leveleditor_erase_object, volume_source.sound);
@@ -45,7 +45,7 @@ if (instance_exists(obj_leveleditor))
 && (obj_leveleditor.drag_object == false)
 && (obj_leveleditor.erase_mode)
 && (obj_leveleditor.scroll_view == false)
-&& (obj_leveleditor.pause == false)
+&& (!obj_leveleditor.pause)
 {
 	audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
 	scr_audio_play(snd_leveleditor_erase_object, volume_source.sound);
@@ -61,14 +61,14 @@ if (instance_exists(obj_leveleditor))
 if (instance_exists(obj_leveleditor))
 && (obj_leveleditor.drag_object == false)
 && (obj_leveleditor.erase_mode == false)
-&& (obj_leveleditor.pause == false)
+&& (!obj_leveleditor.pause)
 
 || (instance_exists(obj_leveleditor))
 && (!obj_leveleditor.key_b_hold)
 && (obj_leveleditor.drag_object == false)
 && (obj_leveleditor.erase_mode == false)
 && (obj_leveleditor.key_a_hold)
-&& (obj_leveleditor.pause == false)
+&& (!obj_leveleditor.pause)
 {
 	image_blend = c_lime;
 	with(other)
@@ -115,12 +115,12 @@ if (!keyboard_check(vk_escape))
 	if (!mouse_check_button(mb_left))
 	&& (instance_exists(obj_leveleditor))
 	&& (mouse_check_button(mb_right))
-	&& (obj_leveleditor.pause == false)
+	&& (!obj_leveleditor.pause)
 	
 	|| (instance_exists(obj_leveleditor))
 	&& (!obj_leveleditor.key_a_hold)
 	&& (obj_leveleditor.key_b_hold)
-	&& (obj_leveleditor.pause == false)
+	&& (!obj_leveleditor.pause)
 	{
 		audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
 		scr_audio_play(snd_leveleditor_erase_object, volume_source.sound);

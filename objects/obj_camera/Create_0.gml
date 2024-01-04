@@ -172,6 +172,9 @@ else
 }
 
 sprite_lives_icon = spr_1up;
+
+have_set_numbers = false;
+
 alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
 #endregion /* Lives Icon END */
 
@@ -600,20 +603,6 @@ if (global.number_of_audio_channels == 7)
 
 zoom_lerp = global.zoom_level;
 zoom_border_lerp = 0;
-
-#region /* Set checkpoint numbers for every checkpoint */
-instance_activate_object(obj_checkpoint);
-for(checkpoint_number = 0;checkpoint_number < instance_number(obj_checkpoint) + 1;checkpoint_number += 1)
-{
-	if (instance_number(obj_checkpoint) >= checkpoint_number)
-	{
-		with (instance_nth_nearest(global.level_player1_start_x, global.level_player1_start_y, obj_checkpoint, checkpoint_number))
-		{
-			checkpoint_number = obj_camera.checkpoint_number;
-		}
-	}
-}
-#endregion /* Set checkpoint numbers for every checkpoint END */
 
 #region /* Show keys x positions */
 /* For some reason, code within "Show keys x positions" lags the Nintendo Switch version */

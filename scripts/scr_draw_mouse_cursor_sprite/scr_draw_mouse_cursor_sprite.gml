@@ -1,5 +1,11 @@
 function scr_draw_mouse_cursor_sprite()
 {
+	var position_meeeting_draggable_objects = (position_meeting(x, y, obj_leveleditor_placed_object)
+	|| position_meeting(x, y, obj_level_player1_start)
+	|| position_meeting(x, y, obj_level_player2_start)
+	|| position_meeting(x, y, obj_level_player3_start)
+	|| position_meeting(x, y, obj_level_player4_start)
+	|| position_meeting(x, y, obj_level_end));
 	
 	#region /* Change mouse cursor. Draw mouse cursor for menu navigation */
 	
@@ -20,33 +26,28 @@ function scr_draw_mouse_cursor_sprite()
 	else
 	
 	#region /* Grab mouse cursor */
-	if (position_meeting(x, y, obj_leveleditor_placed_object))
-	&& (!mouse_check_button(mb_left))
-	&& (!mouse_check_button(mb_right))
-	&& (!drag_object)
-	&& (obj_level_player1_start.drag_object == false)
-	&& (obj_level_player2_start.drag_object == false)
-	&& (obj_level_player3_start.drag_object == false)
-	&& (obj_level_player4_start.drag_object == false)
-	&& (obj_level_end.drag_object == false)
-	&& (!erase_mode)
-	&& (set_difficulty_mode == false)
-	&& (!pause)
-	&& (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-	&& (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-	&& (!point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
+	if (position_meeeting_draggable_objects
+	&& !mouse_check_button(mb_left)
+	&& !mouse_check_button(mb_right)
+	&& !drag_object
+	&& obj_level_player1_start.drag_object == false
+	&& obj_level_player2_start.drag_object == false
+	&& obj_level_player3_start.drag_object == false
+	&& obj_level_player4_start.drag_object == false
+	&& obj_level_end.drag_object == false
+	&& !erase_mode
+	&& set_difficulty_mode == false
+	&& !pause
+	&& !point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)
+	&& !point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)
+	&& !point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
 	{
 		draw_sprite_ext(spr_cursor_grab, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
 	}
 	else
-	if (position_meeting(x, y, obj_leveleditor_placed_object))
+	if (position_meeeting_draggable_objects)
 	&& (drag_object)
 	&& (set_difficulty_mode == false)
-	&& (!pause)
-	&& (obj_level_player1_start.drag_object == false)
-	&& (obj_level_player2_start.drag_object == false)
-	&& (obj_level_player3_start.drag_object == false)
-	&& (obj_level_player4_start.drag_object == false)
 	&& (!pause)
 	|| (obj_level_end.drag_object)
 	&& (!pause)

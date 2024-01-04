@@ -575,6 +575,7 @@ if (!global.actually_play_edited_level)
 					if (!global.world_editor)
 					{
 						scr_save_custom_level_json();
+						
 						with(obj_leveleditor_placed_object)
 						{
 							alarm[1] = 1;
@@ -1090,21 +1091,21 @@ if (!global.actually_play_edited_level)
 			&& (mouse_check_button(mb_left))
 			&& (obj_leveleditor.drag_object == false)
 			&& (obj_leveleditor.erase_mode == false)
-			&& (obj_leveleditor.pause == false)
+			&& (!obj_leveleditor.pause)
 			
 			|| (!obj_leveleditor.key_b_hold)
 			&& (!hovering_over_icon)
 			&& (obj_leveleditor.drag_object == false)
 			&& (obj_leveleditor.erase_mode == false)
 			&& (obj_leveleditor.key_a_hold)
-			&& (obj_leveleditor.pause == false)
+			&& (!obj_leveleditor.pause)
 			
 			|| (keyboard_check(obj_leveleditor.key_erase_object))
 			&& (!hovering_over_icon)
 			&& (obj_leveleditor.drag_object == false)
 			&& (obj_leveleditor.erase_mode == false)
 			&& (obj_leveleditor.key_a_hold)
-			&& (obj_leveleditor.pause == false)
+			&& (!obj_leveleditor.pause)
 			{
 				instance_create_depth(x, y, 0, obj_erase_brush);
 			}
@@ -1119,17 +1120,17 @@ if (!global.actually_play_edited_level)
 			if (!mouse_check_button(mb_left))
 			&& (!hovering_over_icon)
 			&& (mouse_check_button(mb_right))
-			&& (obj_leveleditor.pause == false)
+			&& (!obj_leveleditor.pause)
 			
 			|| (!obj_leveleditor.key_a_hold)
 			&& (!hovering_over_icon)
 			&& (obj_leveleditor.key_b_hold)
-			&& (obj_leveleditor.pause == false)
+			&& (!obj_leveleditor.pause)
 			
 			|| (!obj_leveleditor.key_a_hold)
 			&& (!hovering_over_icon)
 			&& (keyboard_check(obj_leveleditor.key_erase_object))
-			&& (obj_leveleditor.pause == false)
+			&& (!obj_leveleditor.pause)
 			{
 				instance_create_depth(x, y, 0, obj_erase_brush);
 			}

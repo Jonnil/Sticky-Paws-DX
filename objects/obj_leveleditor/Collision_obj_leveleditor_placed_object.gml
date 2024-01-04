@@ -2,6 +2,7 @@ if (!global.actually_play_edited_level)
 {
 	with (other)
 	{
+		hover_over_object_indicator = true;
 		
 		#region /* All code before initializing the object */
 		
@@ -12,7 +13,7 @@ if (!global.actually_play_edited_level)
 		
 		if (instance_exists(obj_leveleditor))
 		&& (delay == 3)
-		&& (obj_leveleditor.pause == false)
+		&& (!obj_leveleditor.pause)
 		{
 			
 			#region /* Destroy if erased */

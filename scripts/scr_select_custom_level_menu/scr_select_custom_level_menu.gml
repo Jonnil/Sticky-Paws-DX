@@ -672,6 +672,7 @@ function scr_select_custom_level_menu()
 						{
 							ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 							ini_write_string("info", "level_name", global.level_name);
+							ini_write_string("info", "level_description", ""); /* Save a blank level description */
 							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 							thumbnail_level_name[global.select_level_index] = global.level_name;
 						}

@@ -466,6 +466,7 @@
     {"name":"obj_extra_life_pickup","order":15,"path":"objects/obj_extra_life_pickup/obj_extra_life_pickup.yy",},
     {"name":"obj_ice_block","order":3,"path":"objects/obj_ice_block/obj_ice_block.yy",},
     {"name":"obj_big_collectible_outline","order":28,"path":"objects/obj_big_collectible_outline/obj_big_collectible_outline.yy",},
+    {"name":"scr_crash_error_handling","order":76,"path":"scripts/scr_crash_error_handling/scr_crash_error_handling.yy",},
     {"name":"spr_warp_box","order":142,"path":"sprites/spr_warp_box/spr_warp_box.yy",},
     {"name":"obj_blaster_reward_decrease_mask","order":3,"path":"objects/obj_blaster_reward_decrease_mask/obj_blaster_reward_decrease_mask.yy",},
     {"name":"spr_game_over_text","order":43,"path":"sprites/spr_game_over_text/spr_game_over_text.yy",},

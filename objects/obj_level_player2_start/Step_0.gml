@@ -12,7 +12,7 @@ if (instance_exists(obj_level_player1_start))
 
 #region /* Drag Object */
 if (instance_exists(obj_leveleditor))
-&& (obj_leveleditor.pause == false)
+&& (!obj_leveleditor.pause)
 {
 	if (!keyboard_check(vk_space))
 	&& (!mouse_check_button(mb_middle))
@@ -66,7 +66,7 @@ else
 	if (drag_object == 0.5)
 	{
 		drag_object = false;
-		move_snap(32, 32);
+		move_snap(global.grid_hsnap, global.grid_vsnap);
 	}
 }
 

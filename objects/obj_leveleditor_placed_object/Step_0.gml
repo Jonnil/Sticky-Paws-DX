@@ -1,5 +1,7 @@
 if (!global.actually_play_edited_level)
 {
+	hover_over_object_indicator = false;
+	
 	if (drag_object > 0 || place_object_angle)
 	{
 		switch (object)

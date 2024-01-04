@@ -288,7 +288,7 @@ function scr_spawn_objects_when_starting_room()
 			        instance_create_depth(x, y, 0, obj_big_collectible_number);
 			        if (instance_exists(obj_big_collectible_number)) {
 			            with(obj_big_collectible_number) {
-			                big_collectible_number_max = instance_number(obj_big_collectible_number);
+			                big_collectible_max_number = instance_number(obj_big_collectible_number);
 			            }
 			        }
 			        break;
@@ -313,7 +313,7 @@ function scr_spawn_objects_when_starting_room()
 					{
 						with(obj_big_collectible_number)
 						{
-							big_collectible_number_max = instance_number(obj_big_collectible_number);
+							big_collectible_max_number = instance_number(obj_big_collectible_number);
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
@@ -338,7 +338,7 @@ function scr_spawn_objects_when_starting_room()
 					{
 						with(obj_big_collectible_number)
 						{
-							big_collectible_number_max = instance_number(obj_big_collectible_number);
+							big_collectible_max_number = instance_number(obj_big_collectible_number);
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
@@ -376,7 +376,7 @@ function scr_spawn_objects_when_starting_room()
 					{
 						with(obj_checkpoint)
 						{
-							checkpoint_number_max = instance_number(obj_checkpoint);
+							checkpoint_max_number = instance_number(obj_checkpoint);
 						}
 					}
 					#endregion /* Tell the player how many checkpoints exist in the level END */
@@ -443,7 +443,7 @@ function scr_spawn_objects_when_starting_room()
 					{
 						with(obj_big_collectible_number)
 						{
-							big_collectible_number_max = instance_number(obj_big_collectible_number);
+							big_collectible_max_number = instance_number(obj_big_collectible_number);
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
