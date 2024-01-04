@@ -2,8 +2,7 @@ function scr_start_intro_animations()
 {
 	
 	#region /* Start Intro Animations */
-	if (global.checkpoint_x <= 0) /* Make sure that you aren't in the middle of a level by touching a checkpoint */
-	&& (global.checkpoint_y <= 0)
+	if (!spawned_from_checkpoint) /* Make sure that you aren't in the middle of a level by touching a checkpoint */
 	{
 		
 		#region /* This intro animation is called "cake_stolen", more intros can be added here */
@@ -94,8 +93,29 @@ function scr_start_intro_animations()
 			intro_animation_image_index += 0.4;
 			if (cutscene_time <= 1)
 			{
-				x = -16 -sprite_width;
-				hspeed = 0;
+				if (instance_exists(obj_level_player1_start))
+				&& (x <= obj_level_player1_start.x)
+				|| (instance_exists(obj_level_player2_start))
+				&& (x <= obj_level_player2_start.x)
+				|| (instance_exists(obj_level_player3_start))
+				&& (x <= obj_level_player3_start.x)
+				|| (instance_exists(obj_level_player4_start))
+				&& (x <= obj_level_player4_start.x)
+				{
+					x = -16 -sprite_width; /* Start outside the room a bit when ending is playing */
+					if (sprite_run > noone){intro_animation_sprite = sprite_run;}else
+					if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
+					hspeed = 0;
+					image_index = 0;
+					image_speed = 1;
+				}
+				else
+				{
+					can_move = true;
+					intro_animation = "";
+					visible = true;
+					image_alpha = 1;
+				}
 				instance_create_depth(1697, 745, 0, obj_catlyn_working);
 				if (instance_exists(obj_goal))
 				{
@@ -116,20 +136,16 @@ function scr_start_intro_animations()
 				{
 					with(instance_create_depth(-16, y, 0, obj_cake_stealing_enemy))
 					{
-						time = room_speed* 2;
+						time = room_speed * 2;
 					}
 				}
-				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_run;}else
-				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
-				image_index = 0;
-				image_speed = 1;
 			}
 			else
 			if (cutscene_time >= 60 * 1)
 			&& (cutscene_time < 60 * 2)
 			{
 				x += 8;
-				if (sprite_sitting_eat_closed_mouth > noone){intro_animation_sprite = sprite_run;}else
+				if (sprite_run > noone){intro_animation_sprite = sprite_run;}else
 				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
 				image_index = 0;
 				image_speed = 1;
@@ -227,6 +243,8 @@ function scr_start_intro_animations()
 	}
 	else
 	{
+		can_move = true;
+		cutscene_time = 0;
 		intro_animation = "";
 	}
 	#endregion /* Start Intro Animations END */

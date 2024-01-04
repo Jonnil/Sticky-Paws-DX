@@ -286,6 +286,7 @@
     {"name":"spr_keyboard_key_command","order":153,"path":"sprites/spr_keyboard_key_command/spr_keyboard_key_command.yy",},
     {"name":"snd_running_out","order":123,"path":"sounds/snd_running_out/snd_running_out.yy",},
     {"name":"snd_spring","order":130,"path":"sounds/snd_spring/snd_spring.yy",},
+    {"name":"spr_checkpoint_activated","order":155,"path":"sprites/spr_checkpoint_activated/spr_checkpoint_activated.yy",},
     {"name":"spr_boss_fall","order":91,"path":"sprites/spr_boss_fall/spr_boss_fall.yy",},
     {"name":"obj_foreground_secret","order":17,"path":"objects/obj_foreground_secret/obj_foreground_secret.yy",},
     {"name":"draw_language_checkmark","order":7,"path":"scripts/draw_language_checkmark/draw_language_checkmark.yy",},

@@ -15,7 +15,7 @@ if (instance_number(obj_leveleditor) > 0)
 		if (mouse_check_button_pressed(mb_left))
 		|| (obj_leveleditor.key_a_pressed)
 		{
-			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
+			if (place_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{
 				if (drag_object < true)
 				{

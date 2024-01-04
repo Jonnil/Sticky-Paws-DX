@@ -96,7 +96,7 @@ function scr_draw_list_of_placable_objects()
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WARP_BOX, false, spr_warp_box, spr_wall, + 100, 1, 0, c_white,,,,,"Warp Box", "Instantly teleports you to another area\nRegular Warp Boxes can be used many times\nBroken Warp Boxes dissapears after one use");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPRING, false, spr_spring, spr_wall, + 100, 1, 0, c_white,,,,,"Spring");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_LADDER, true, spr_ladder, spr_wall, + 100, 1, 0, c_white,,,,,"Ladder");
-				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CHECKPOINT, false, spr_checkpoint, spr_wall, + 100, 1, 0, c_white, -32,,,,"Checkpoint");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CHECKPOINT, false, spr_checkpoint_activated, spr_wall, + 100, 1, 0, c_white, -16,,,,"Checkpoint");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK, true, spr_spikes_emerge_block, spr_wall, + 100, 1, 0, c_white,,,,,"Emerging Spikes");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ONEWAY, false, spr_oneway, spr_wall, + 100, 1, 0, c_white, -16,,,,"One-Way Wall");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND, true, spr_bump_in_ground, spr_wall, + 100, 1, 0, c_white, -16,,,,"Bump in Ground");

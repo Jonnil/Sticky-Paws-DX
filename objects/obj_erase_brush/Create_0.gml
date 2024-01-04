@@ -1,4 +1,12 @@
-erase_size = obj_leveleditor.erase_size;
+erase_size = 0;
+if (instance_exists(obj_leveleditor))
+{
+	erase_size = obj_leveleditor.erase_size;
+}
+else
+{
+	instance_destroy();
+}
 visible = false;
 
 if (erase_size == 0)

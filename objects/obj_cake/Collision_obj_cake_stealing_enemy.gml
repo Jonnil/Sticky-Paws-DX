@@ -1,4 +1,4 @@
-if (taken == false)
+if (!taken)
 && (taken_intro)
 {
 	scr_audio_play(snd_dive, volume_source.sound);
@@ -6,3 +6,4 @@ if (taken == false)
 }
 x = other.x;
 y = other.y - 16;
+has_gravity = false;

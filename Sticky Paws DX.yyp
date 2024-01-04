@@ -3051,7 +3051,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.444",
+    "IDEVersion": "2023.1100.0.450",
   },
   "resources": [
     {"id":{"name":"spr_player_stand","path":"sprites/spr_player_stand/spr_player_stand.yy",},},
@@ -3317,6 +3317,7 @@
     {"id":{"name":"spr_keyboard_key_command","path":"sprites/spr_keyboard_key_command/spr_keyboard_key_command.yy",},},
     {"id":{"name":"snd_running_out","path":"sounds/snd_running_out/snd_running_out.yy",},},
     {"id":{"name":"snd_spring","path":"sounds/snd_spring/snd_spring.yy",},},
+    {"id":{"name":"spr_checkpoint_activated","path":"sprites/spr_checkpoint_activated/spr_checkpoint_activated.yy",},},
     {"id":{"name":"spr_boss_fall","path":"sprites/spr_boss_fall/spr_boss_fall.yy",},},
     {"id":{"name":"obj_foreground_secret","path":"objects/obj_foreground_secret/obj_foreground_secret.yy",},},
     {"id":{"name":"spr_spikes","path":"sprites/spr_spikes/spr_spikes.yy",},},

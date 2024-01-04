@@ -398,7 +398,7 @@ if (!global.actually_play_edited_level)
 	add_object(LEVEL_OBJECT_ID.ID_LADDER, spr_ladder, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ARROW_SIGN, spr_arrow_sign, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	add_object(LEVEL_OBJECT_ID.ID_ARROW_SIGN_SMALL, spr_arrow_sign_small, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
-	add_object(LEVEL_OBJECT_ID.ID_CHECKPOINT, spr_checkpoint, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
+	add_object(LEVEL_OBJECT_ID.ID_CHECKPOINT, spr_checkpoint_activated, 0, spr_wall, 1, 0, c_white, 1, "", noone, false, 0);
 	
 	#region /* Spikes Emerge Block */
 	add_object(LEVEL_OBJECT_ID.ID_SPIKES_EMERGE_BLOCK, spr_spikes_emerge_block, 0, spr_wall, 1, 0, c_white, 1, "", noone, true, 0);

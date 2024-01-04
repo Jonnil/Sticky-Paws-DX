@@ -974,17 +974,17 @@ if (!global.actually_play_edited_level)
 					|| (!can_make_place_size_bigger)
 					{
 						drag_object = false;
-								
+						
 						#region /* Brush size 1 */
 						scr_size_place_object(   0,    0, 1, true);
 						#endregion /* Brush size 1 END */
-								
+						
 						#region /* Brush size 2 */
 						scr_size_place_object(   0, + 32, 2, false);
 						scr_size_place_object(+ 32,    0, 2, false);
 						scr_size_place_object(+ 32, + 32, 2, false);
 						#endregion /* Brush size 2 END */
-								
+						
 						#region /* Brush size 3 */
 						scr_size_place_object(   0, - 32, 3, false);
 						scr_size_place_object(+ 32, - 32, 3, false);
@@ -992,7 +992,7 @@ if (!global.actually_play_edited_level)
 						scr_size_place_object(- 32, + 32, 3, false);
 						scr_size_place_object(- 32, - 32, 3, false);
 						#endregion /* Brush size 3 END */
-								
+						
 						#region /* Brush size 4 */
 						scr_size_place_object(   0, + 64, 4, false);
 						scr_size_place_object(+ 32, + 64, 4, false);
@@ -1002,7 +1002,7 @@ if (!global.actually_play_edited_level)
 						scr_size_place_object(+ 64, - 32, 4, false);
 						scr_size_place_object(- 32, + 64, 4, false);
 						#endregion /* Brush size 4 END */
-								
+						
 						#region /* Brush size 5 */
 						scr_size_place_object(   0, - 64, 5, false);
 						scr_size_place_object(+ 32, - 64, 5, false);
@@ -1014,7 +1014,7 @@ if (!global.actually_play_edited_level)
 						scr_size_place_object(- 64, - 32, 5, false);
 						scr_size_place_object(- 64, - 64, 5, false);
 						#endregion /* Brush size 5 END */
-								
+						
 						#region /* Brush size 6 */
 						scr_size_place_object(   0, + 96, 6, false);
 						scr_size_place_object(+ 32, + 96, 6, false);
@@ -1028,7 +1028,7 @@ if (!global.actually_play_edited_level)
 						scr_size_place_object(- 32, + 96, 6, false);
 						scr_size_place_object(- 64, + 96, 6, false);
 						#endregion /* Brush size 6 END */
-								
+						
 						ds_list_add(placed_objects_list, place_object);
 					}
 				}

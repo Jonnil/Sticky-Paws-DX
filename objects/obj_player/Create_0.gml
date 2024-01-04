@@ -714,23 +714,20 @@ active_jump = false;
 #endregion /* Initialize the controls END */
 
 #region /* Load Checkpoint Direction */
-if (room == rm_leveleditor)
-&& (global.character_select_in_this_menu == "main_game")
+spawned_from_checkpoint = false;
+var level_name = global.level_name;
+if (global.character_select_in_this_menu == "main_game")
 {
-	var level_name = global.level_name;
-	
 	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 else
-if (room == rm_leveleditor)
-&& (global.character_select_in_this_menu == "level_editor")
 {
-	var level_name = global.level_name;
-	
 	ini_open(working_directory + "save_file/custom_level_save.ini");
-	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
-	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
+if (ini_key_exists(level_name, "checkpoint_direction"))
+{
+	spawned_from_checkpoint = true;
+	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
+}
+ini_close();
 #endregion /* Load Checkpoint Direction END */
