@@ -30,6 +30,7 @@ if (!global.actually_play_edited_level)
 		}
 		
 		draw_item_on_top = noone;
+		draw_item_on_top_blend = c_white;
 		draw_item_with_spring = false;
 		
 		switch (object)
@@ -77,7 +78,15 @@ if (!global.actually_play_edited_level)
 			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_ONE_UP:
 			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_ONE_UP:
 			case LEVEL_OBJECT_ID.ID_BUCKET_ONE_UP:
-				draw_item_on_top = spr_1up;
+				if (instance_exists(obj_leveleditor))
+				{
+					draw_item_on_top_blend = c_white;
+					draw_item_on_top = obj_leveleditor.sprite_lives_icon;
+				}
+				else
+				{
+					draw_item_on_top = spr_1up;
+				}
 				break;
 				
 			case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_TWO_UP:
@@ -85,14 +94,30 @@ if (!global.actually_play_edited_level)
 			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_TWO_UP:
 			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_TWO_UP:
 			case LEVEL_OBJECT_ID.ID_BUCKET_TWO_UP:
-				draw_item_on_top = spr_2up;
+				if (instance_exists(obj_leveleditor))
+				{
+					draw_item_on_top_blend = c_lime;
+					draw_item_on_top = obj_leveleditor.sprite_lives_icon;
+				}
+				else
+				{
+					draw_item_on_top = spr_2up;
+				}
 				break;
 			case LEVEL_OBJECT_ID.ID_BRICK_BLOCK_THREE_UP:
 			case LEVEL_OBJECT_ID.ID_QUESTION_BLOCK_THREE_UP:
 			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_THREE_UP:
 			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_THREE_UP:
 			case LEVEL_OBJECT_ID.ID_BUCKET_THREE_UP:
-				draw_item_on_top = spr_3up;
+				if (instance_exists(obj_leveleditor))
+				{
+					draw_item_on_top_blend = c_blue;
+					draw_item_on_top = obj_leveleditor.sprite_lives_icon;
+				}
+				else
+				{
+					draw_item_on_top = spr_3up;
+				}
 				break;
 			case LEVEL_OBJECT_ID.ID_BUMP_IN_GROUND_BIG_COLLECTIBLE:
 			case LEVEL_OBJECT_ID.ID_INVISIBLE_BUMP_IN_GROUND_BIG_COLLECTIBLE:

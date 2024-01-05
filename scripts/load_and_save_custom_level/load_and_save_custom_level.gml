@@ -207,6 +207,7 @@ function scr_save_level_information()
 	
 	#region /* Save Level Information */
 	if (global.level_name != "")
+	&& (!global.create_level_from_template) /* Don't save when you are creating a level from template, as it will incorrectly create a "levels" folder in Local AppData */
 	{
 		ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 		if (!ini_key_exists("info", "first_created_on_version"))

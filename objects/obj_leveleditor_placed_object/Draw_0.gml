@@ -39,7 +39,7 @@ if (draw_leveleditor_arrow) {
 
 if (draw_item_on_top != noone) {
 	spring_scale = 0.5;
-	draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, image_blend, image_alpha);
+	draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, draw_item_on_top_blend, image_alpha);
 }
 else {
 	spring_scale = 1;

@@ -1,8 +1,7 @@
-depth = -40;
+depth = -120;
 drag_object = false;
 drag_release_timer = 0;
 image_speed = 0.25;
-y -= 32;
 
 if (global.character_select_in_this_menu == "main_game")
 && (file_exists("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini"))

@@ -489,6 +489,7 @@
     {"name":"scr_set_screen_size","order":33,"path":"scripts/scr_set_screen_size/scr_set_screen_size.yy",},
     {"name":"get_custom_level_information","order":19,"path":"scripts/get_custom_level_information/get_custom_level_information.yy",},
     {"name":"obj_falling_block","order":12,"path":"objects/obj_falling_block/obj_falling_block.yy",},
+    {"name":"snd_rain","order":144,"path":"sounds/snd_rain/snd_rain.yy",},
     {"name":"spr_boss_stand","order":2,"path":"sprites/spr_boss_stand/spr_boss_stand.yy",},
     {"name":"obj_level_player2_start","order":8,"path":"objects/obj_level_player2_start/obj_level_player2_start.yy",},
     {"name":"obj_credits","order":14,"path":"objects/obj_credits/obj_credits.yy",},

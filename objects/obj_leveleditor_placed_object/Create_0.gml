@@ -21,6 +21,7 @@ if (!global.actually_play_edited_level)
 	place_object_angle = false;
 	draw_rotate_arrow = false;
 	draw_item_on_top = noone;
+	draw_item_on_top_blend = c_white;
 	draw_item_with_spring = false;
 	draw_leveleditor_arrow = noone;
 	

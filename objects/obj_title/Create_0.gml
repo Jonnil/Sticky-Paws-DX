@@ -35,8 +35,8 @@ key_right = noone;
 thumbnail_clear_check[0] = noone;
 thumbnail_level_id[0] = "";
 thumbnail_level_name[0] = "";
-thumbnail_level_description = "";
-thumbnail_level_username = "";
+thumbnail_level_description[0] = "";
+thumbnail_level_username[0] = "";
 
 character_portrait_for_player_update_directory[1] = false;
 character_portrait_for_player_update_directory[2] = false;

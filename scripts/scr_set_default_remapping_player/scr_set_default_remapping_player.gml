@@ -52,6 +52,7 @@ function scr_set_default_remapping_player1_gamepad(save_default_controls_to_conf
 	#endregion /* Player 1 Gamepad 2 defaults END */
 	
 	global.player1_up_is_also_jump = false;
+	global.player1_down_is_also_crouch = true;
 	global.player1_double_tap_to_run = true;
 	global.player1_run_toggle = false;
 	global.player1_double_tap_to_dive = false;
@@ -101,6 +102,7 @@ function scr_set_default_remapping_player1_gamepad(save_default_controls_to_conf
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_gamepad_button_back", global.player_[inp.gp][1][1][action.back]);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_gamepad_button2_back", global.player_[inp.gp][1][2][action.back]);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_up_is_also_jump", global.player1_up_is_also_jump);
+		ini_write_real("player1_profile" + string(global.player1_profile), "player1_down_is_also_crouch", global.player1_down_is_also_crouch);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_double_tap_to_run", global.player1_double_tap_to_run);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_run_toggle", global.player1_run_toggle);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_double_tap_to_dive", global.player1_double_tap_to_dive);
@@ -162,6 +164,7 @@ function scr_set_default_remapping_player1_keyboard(save_default_controls_to_con
 	#endregion /* Player 1 Key 2 defaults END */
 	
 	global.player1_up_is_also_jump = false;
+	global.player1_down_is_also_crouch = true;
 	global.player1_double_tap_to_run = true;
 	global.player1_run_toggle = false;
 	global.player1_double_tap_to_dive = false;
@@ -211,6 +214,7 @@ function scr_set_default_remapping_player1_keyboard(save_default_controls_to_con
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_key_back", global.player_[inp.key][1][1][action.back]);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_key2_back", global.player_[inp.key][1][2][action.back]);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_up_is_also_jump", global.player1_up_is_also_jump);
+		ini_write_real("player1_profile" + string(global.player1_profile), "player1_down_is_also_crouch", global.player1_down_is_also_crouch);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_double_tap_to_run", global.player1_double_tap_to_run);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_run_toggle", global.player1_run_toggle);
 		ini_write_real("player1_profile" + string(global.player1_profile), "player1_double_tap_to_dive", global.player1_double_tap_to_dive);
@@ -280,6 +284,7 @@ function scr_set_default_remapping_player2_gamepad(save_default_controls_to_conf
 	#endregion /* Player 2 Gamepad 2 defaults END */
 	
 	global.player2_up_is_also_jump = false;
+	global.player2_down_is_also_crouch = true;
 	global.player2_double_tap_to_run = true;
 	global.player2_run_toggle = false;
 	global.player2_double_tap_to_dive = false;
@@ -329,6 +334,7 @@ function scr_set_default_remapping_player2_gamepad(save_default_controls_to_conf
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_gamepad_button_back", global.player_[inp.gp][2][1][action.back]);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_gamepad_button2_back", global.player_[inp.gp][2][2][action.back]);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_up_is_also_jump", global.player2_up_is_also_jump);
+		ini_write_real("player2_profile" + string(global.player2_profile), "player2_down_is_also_crouch", global.player2_down_is_also_crouch);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_double_tap_to_run", global.player2_double_tap_to_run);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_run_toggle", global.player2_run_toggle);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_double_tap_to_dive", global.player2_double_tap_to_dive);
@@ -390,6 +396,7 @@ function scr_set_default_remapping_player2_keyboard(save_default_controls_to_con
 	#endregion /* Player 2 Key 2 defaults END */
 	
 	global.player2_up_is_also_jump = false;
+	global.player2_down_is_also_crouch = true;
 	global.player2_double_tap_to_run = true;
 	global.player2_run_toggle = false;
 	global.player2_double_tap_to_dive = false;
@@ -439,6 +446,7 @@ function scr_set_default_remapping_player2_keyboard(save_default_controls_to_con
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_key_back", global.player_[inp.key][2][1][action.back]);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_key2_back", global.player_[inp.key][2][2][action.back]);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_up_is_also_jump", global.player2_up_is_also_jump);
+		ini_write_real("player2_profile" + string(global.player2_profile), "player2_down_is_also_crouch", global.player2_down_is_also_crouch);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_double_tap_to_run", global.player2_double_tap_to_run);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_run_toggle", global.player2_run_toggle);
 		ini_write_real("player2_profile" + string(global.player2_profile), "player2_double_tap_to_dive", global.player2_double_tap_to_dive);
@@ -508,6 +516,7 @@ function scr_set_default_remapping_player3_gamepad(save_default_controls_to_conf
 	#endregion /* Player 3 Gamepad 2 defaults END */
 	
 	global.player3_up_is_also_jump = false;
+	global.player3_down_is_also_crouch = true;
 	global.player3_double_tap_to_run = true;
 	global.player3_run_toggle = false;
 	global.player3_double_tap_to_dive = false;
@@ -557,6 +566,7 @@ function scr_set_default_remapping_player3_gamepad(save_default_controls_to_conf
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_gamepad_button_back", global.player_[inp.gp][3][1][action.back]);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_gamepad_button2_back", global.player_[inp.gp][3][2][action.back]);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_up_is_also_jump", global.player3_up_is_also_jump);
+		ini_write_real("player3_profile" + string(global.player3_profile), "player3_down_is_also_crouch", global.player3_down_is_also_crouch);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_double_tap_to_run", global.player3_double_tap_to_run);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_run_toggle", global.player3_run_toggle);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_double_tap_to_dive", global.player3_double_tap_to_dive);
@@ -618,6 +628,7 @@ function scr_set_default_remapping_player3_keyboard(save_default_controls_to_con
 	#endregion /* Player 3 Key 2 defaults END */
 	
 	global.player3_up_is_also_jump = false;
+	global.player3_down_is_also_crouch = true;
 	global.player3_double_tap_to_run = true;
 	global.player3_run_toggle = false;
 	global.player3_double_tap_to_dive = false;
@@ -667,6 +678,7 @@ function scr_set_default_remapping_player3_keyboard(save_default_controls_to_con
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_key_back", global.player_[inp.key][3][1][action.back]);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_key2_back", global.player_[inp.key][3][2][action.back]);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_up_is_also_jump", global.player3_up_is_also_jump);
+		ini_write_real("player3_profile" + string(global.player3_profile), "player3_down_is_also_crouch", global.player3_down_is_also_crouch);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_double_tap_to_run", global.player3_double_tap_to_run);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_run_toggle", global.player3_run_toggle);
 		ini_write_real("player3_profile" + string(global.player3_profile), "player3_double_tap_to_dive", global.player3_double_tap_to_dive);
@@ -736,6 +748,7 @@ function scr_set_default_remapping_player4_gamepad(save_default_controls_to_conf
 	#endregion /* Player 4 Gamepad 2 defaults END */
 	
 	global.player4_up_is_also_jump = false;
+	global.player4_down_is_also_crouch = true;
 	global.player4_double_tap_to_run = true;
 	global.player4_run_toggle = false;
 	global.player4_double_tap_to_dive = false;
@@ -785,6 +798,7 @@ function scr_set_default_remapping_player4_gamepad(save_default_controls_to_conf
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_gamepad_button_back", global.player_[inp.gp][4][1][action.back]);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_gamepad_button2_back", global.player_[inp.gp][4][2][action.back]);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_up_is_also_jump", global.player4_up_is_also_jump);
+		ini_write_real("player4_profile" + string(global.player4_profile), "player4_down_is_also_crouch", global.player4_down_is_also_crouch);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_double_tap_to_run", global.player4_double_tap_to_run);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_run_toggle", global.player4_run_toggle);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_double_tap_to_dive", global.player4_double_tap_to_dive);
@@ -846,6 +860,7 @@ function scr_set_default_remapping_player4_keyboard(save_default_controls_to_con
 	#endregion /* Player 4 Key 2 defaults END */
 	
 	global.player4_up_is_also_jump = false;
+	global.player4_down_is_also_crouch = true;
 	global.player4_double_tap_to_run = true;
 	global.player4_run_toggle = false;
 	global.player4_double_tap_to_dive = false;
@@ -895,6 +910,7 @@ function scr_set_default_remapping_player4_keyboard(save_default_controls_to_con
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_key_back", global.player_[inp.key][4][1][action.back]);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_key2_back", global.player_[inp.key][4][2][action.back]);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_up_is_also_jump", global.player4_up_is_also_jump);
+		ini_write_real("player4_profile" + string(global.player4_profile), "player4_down_is_also_crouch", global.player4_down_is_also_crouch);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_double_tap_to_run", global.player4_double_tap_to_run);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_run_toggle", global.player4_run_toggle);
 		ini_write_real("player4_profile" + string(global.player4_profile), "player4_double_tap_to_dive", global.player4_double_tap_to_dive);

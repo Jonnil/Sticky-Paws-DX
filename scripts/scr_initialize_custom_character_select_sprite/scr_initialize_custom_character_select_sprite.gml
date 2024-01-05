@@ -14,50 +14,50 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 	{
 		if (file_exists("characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png"))
 		{
-			sprite_variable = sprite_add("characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, what_player, what_selected_skin);
+			sprite_variable = sprite_add("characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
 			var saved_file_exists = true;
 		}
 		else
 		if (file_exists(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png"))
 		{
-			sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, what_player, what_selected_skin);
+			sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
 			var saved_file_exists = true;
 		}
 		else
 		if (file_exists("characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png"))
 		{
-			sprite_variable = sprite_add("characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, what_player, what_selected_skin);
+			sprite_variable = sprite_add("characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
 			var saved_file_exists = true;
 		}
 		else
 		if (file_exists(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png"))
 		{
-			sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, what_player, what_selected_skin);
+			sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + "_strip" + string(index) + ".png", index, false, false, 0, 0);
 			var saved_file_exists = true;
 		}
 		index ++;
 	}
 	if (file_exists("characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + ".png"))
 	{
-		sprite_variable = sprite_add("characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + ".png", 1, false, false, what_player, what_selected_skin);
+		sprite_variable = sprite_add("characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
 		var saved_file_exists = true;
 	}
 	else
 	if (file_exists(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + ".png"))
 	{
-		sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + ".png", 1, false, false, what_player, what_selected_skin);
+		sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/skin" + string(what_selected_skin) + "/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
 		var saved_file_exists = true;
 	}
 	else
 	if (file_exists("characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + ".png"))
 	{
-		sprite_variable = sprite_add("characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, what_player, what_selected_skin);
+		sprite_variable = sprite_add("characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
 		var saved_file_exists = true;
 	}
 	else
 	if (file_exists(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + ".png"))
 	{
-		sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, what_player, what_selected_skin);
+		sprite_variable = sprite_add(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/sprites/" + string(sprite_name) + ".png", 1, false, false, 0, 0);
 		var saved_file_exists = true;
 	}
 	#endregion /* Add sprite END */

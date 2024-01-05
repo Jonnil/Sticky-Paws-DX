@@ -239,6 +239,7 @@ if (!global.actually_play_edited_level)
 	
 	#region /* Load custom sprites */
 	sprite_lives_icon = spr_1up;
+	sprite_lives_icon = scr_initialize_custom_character_select_sprite("lives_icon", sprite_lives_icon, 1, 1);
 	sprite_basic_enemy = global.resource_pack_sprite_basic_enemy;
 	sprite_basic_enemy_blind = global.resource_pack_sprite_basic_enemy_blind;
 	sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;

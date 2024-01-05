@@ -595,13 +595,19 @@ function scr_select_custom_level_menu()
 	if (global.select_level_index >= 1)
 	{
 		draw_set_valign(fa_middle);
-		if (array_length(thumbnail_level_description) > 0)
+		if (is_array(thumbnail_level_description))
+		&& (array_length(thumbnail_level_description) > 0)
+		&& (global.select_level_index >= 0)
+		&& (global.select_level_index < array_length(thumbnail_level_description))
 		{
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 74, string(thumbnail_level_description[global.select_level_index]), global.default_text_size * 1.25, c_black, c_white, 1);
 		}
 		draw_set_halign(fa_right);
-		if (array_length(thumbnail_level_username) > 0)
+		if (is_array(thumbnail_level_username))
+		&& (array_length(thumbnail_level_username) > 0)
+		&& (global.select_level_index >= 0)
+		&& (global.select_level_index < array_length(thumbnail_level_username))
 		&& (thumbnail_level_username[global.select_level_index] != "")
 		{
 			scr_draw_text_outlined(display_get_gui_width() - 32, display_get_gui_height() - 32, l10n_text("By") + ": " + string(thumbnail_level_username[global.select_level_index]), global.default_text_size, c_black, c_white, 1);
@@ -809,7 +815,13 @@ function scr_select_custom_level_menu()
 					ini_write_string("info", "level_description", string(global.level_description));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
-					thumbnail_level_description[global.select_level_index] = string(global.level_description);
+					if (is_array(thumbnail_level_description))
+					&& (array_length(thumbnail_level_description) > 0)
+					&& (global.select_level_index >= 0)
+					&& (global.select_level_index < array_length(thumbnail_level_description))
+					{
+						thumbnail_level_description[global.select_level_index] = string(global.level_description);
+					}
 					
 					menu = "level_editor_enter_description";
 					level_editor_edit_name = false;

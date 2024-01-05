@@ -444,25 +444,34 @@ function scr_draw_level_editor_pause_menu()
 		if (menu == "generate_level_map_yes")
 		|| (menu == "generate_level_map_no")
 		{
+			var generate_level_map_y_1 = get_window_height * 0.5 - 256;
+			var generate_level_map_y_2 = get_window_height * 0.5 - 256 + 32;
+			var generate_level_map_y_3 = get_window_height * 0.5 - 256 + 64;
+			var generate_level_map_y_4 = get_window_height * 0.5 - 256 + 96;
+			var generate_level_map_y_5 = get_window_height * 0.5 - 256 + 160;
+			var generate_level_map_y_6 = get_window_height * 0.5 - 256 + 192;
+			var generate_level_map_y_7 = get_window_height * 0.5 - 256 + 224;
+			
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
 			
 			#region /* Draw the path for saving full level map */
 			if (global.enable_options_for_pc)
 			{
-				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224, l10n_text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_1, l10n_text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
 				var full_level_map_size = (get_window_width <= 1350) ? 0.75 : 1;
-				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 32, string_replace_all(game_save_id + "\custom_levels\\full_level_map_" + string(global.level_name) + ".png", "\\", "/"), global.default_text_size * full_level_map_size, c_black, c_white, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_2, string_replace_all(game_save_id + "\custom_levels\\full_level_map_" + string(global.level_name) + ".png", "\\", "/"), global.default_text_size * full_level_map_size, c_black, c_white, 1);
 			}
 			else
 			{
-				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224, l10n_text("A map of the whole level will be generated and saved"), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_1, l10n_text("A map of the whole level will be generated and saved"), global.default_text_size, c_black, c_white, 1);
 			}
 			#endregion /* Draw the path for saving full level map END */
 			
-			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 64, l10n_text("With this map, you can then use it in a drawing program,"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 96, l10n_text("as the base to make the background and foreground layers."), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 160, l10n_text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_3, l10n_text("With this map, you can then use it in a drawing program,"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_4, l10n_text("as the base to make the background and foreground layers."), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_5, l10n_text("Do you want to generate a level map?"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_6, l10n_text("The level will start for a split second, so a level map can be properly generated"), global.default_text_size, c_black, c_white, 1);
 			
 			#region /* Warn the player if the level is bigger than 8192 in any direction */
 			var level_width = obj_level_width.x; /* Get level dimensions */
@@ -480,8 +489,8 @@ function scr_draw_level_editor_pause_menu()
 					warning_text = "height";
 				
 				/* Display the warning message */
-				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 160 + 32, l10n_text("Warning! Level " + string(warning_text) + " is more than 8192 pixels, it might not screenshot the entire level"), global.default_text_size, c_black, c_white, 1);
-				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 224 + 160 + 32, l10n_text("Warning! Level " + string(warning_text) + " is more than 8192 pixels, it might not screenshot the entire level"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 2));
+				scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_7, l10n_text("Warning! Level " + string(warning_text) + " is more than 8192 pixels, it might not screenshot the entire level"), global.default_text_size, c_black, c_white, 1);
+				scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_7, l10n_text("Warning! Level " + string(warning_text) + " is more than 8192 pixels, it might not screenshot the entire level"), global.default_text_size, c_black, c_red, scr_wave(0, 1, 2));
 			}
 			#endregion /* Warn the player if the level is bigger than 8192 in any direction END */
 			

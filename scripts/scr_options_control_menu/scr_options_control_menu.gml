@@ -79,8 +79,9 @@ function scr_options_control_menu()
 	}
 	var menu_y_remap_reset = menu_y_remap_key_back + 64 * 1 - 16;
 	var menu_y_up_is_also_jump = menu_y_remap_key_back + 64 * 2;
-	var menu_y_double_tap_direction_to_run = menu_y_remap_key_back + 64 * 3;
-	var menu_y_always_run = menu_y_remap_key_back + 64 * 4;
+	var menu_y_down_is_also_crouch = menu_y_remap_key_back + 64 * 3;
+	var menu_y_double_tap_direction_to_run = menu_y_remap_key_back + 64 * 4;
+	var menu_y_always_run = menu_y_remap_key_back + 64 * 5;
 	if (remapping_player == 0)
 	&& (allow_player1_dive)
 	|| (remapping_player == 1)
@@ -90,17 +91,17 @@ function scr_options_control_menu()
 	|| (remapping_player == 3)
 	&& (allow_player4_dive)
 	{
-		var menu_y_double_tap_direction_to_dive = menu_y_remap_key_back + 64 * 5;
-		var menu_y_cancel_dive_by_pressing_jump_or_dive_button = menu_y_remap_key_back + 64 * 6;
-		var menu_y_cancel_dive_by_pressing_opposite_direction = menu_y_remap_key_back + 64 * 7;
-		var menu_y_down_and_jump_to_groundpound = menu_y_remap_key_back + 64 * 8;
+		var menu_y_double_tap_direction_to_dive = menu_y_remap_key_back + 64 * 6;
+		var menu_y_cancel_dive_by_pressing_jump_or_dive_button = menu_y_remap_key_back + 64 * 7;
+		var menu_y_cancel_dive_by_pressing_opposite_direction = menu_y_remap_key_back + 64 * 8;
+		var menu_y_down_and_jump_to_groundpound = menu_y_remap_key_back + 64 * 9;
 	}
 	else
 	{
 		var menu_y_double_tap_direction_to_dive = -999;
 		var menu_y_cancel_dive_by_pressing_jump_or_dive_button = -999;
 		var menu_y_cancel_dive_by_pressing_opposite_direction = -999;
-		var menu_y_down_and_jump_to_groundpound = menu_y_remap_key_back + 64 * 5;
+		var menu_y_down_and_jump_to_groundpound = menu_y_remap_key_back + 64 * 6;
 	}
 	var menu_y_wall_jump_setting = menu_y_down_and_jump_to_groundpound + 64 * 1;
 	var menu_y_drop_down_from_rope = menu_y_down_and_jump_to_groundpound + 64 * 2 + 16;
@@ -4261,6 +4262,7 @@ function scr_options_control_menu()
 		if (remapping_player == 0)
 		{
 			var global_up_is_also_jump = global.player1_up_is_also_jump;
+			var global_down_is_also_crouch = global.player1_down_is_also_crouch;
 			var global_double_tap_to_run = global.player1_double_tap_to_run;
 			var global_run_toggle = global.player1_run_toggle;
 			var global_double_tap_to_dive = global.player1_double_tap_to_dive;
@@ -4275,6 +4277,7 @@ function scr_options_control_menu()
 		if (remapping_player == 1)
 		{
 			var global_up_is_also_jump = global.player2_up_is_also_jump;
+			var global_down_is_also_crouch = global.player2_down_is_also_crouch;
 			var global_double_tap_to_run = global.player2_double_tap_to_run;
 			var global_run_toggle = global.player2_run_toggle;
 			var global_double_tap_to_dive = global.player2_double_tap_to_dive;
@@ -4289,6 +4292,7 @@ function scr_options_control_menu()
 		if (remapping_player == 2)
 		{
 			var global_up_is_also_jump = global.player3_up_is_also_jump;
+			var global_down_is_also_crouch = global.player3_down_is_also_crouch;
 			var global_double_tap_to_run = global.player3_double_tap_to_run;
 			var global_run_toggle = global.player3_run_toggle;
 			var global_double_tap_to_dive = global.player3_double_tap_to_dive;
@@ -4303,6 +4307,7 @@ function scr_options_control_menu()
 		if (remapping_player == 3)
 		{
 			var global_up_is_also_jump = global.player4_up_is_also_jump;
+			var global_down_is_also_crouch = global.player4_down_is_also_crouch;
 			var global_double_tap_to_run = global.player4_double_tap_to_run;
 			var global_run_toggle = global.player4_run_toggle;
 			var global_double_tap_to_dive = global.player4_double_tap_to_dive;
@@ -4314,6 +4319,7 @@ function scr_options_control_menu()
 			var global_wall_jump_setting = global.player4_wall_jump_setting;
 		}
 		draw_menu_checkmark(390, menu_y_up_is_also_jump + menu_y_offset, l10n_text("Up is also jump"), "up_is_also_jump", global_up_is_also_jump);
+		draw_menu_checkmark(390, menu_y_down_is_also_crouch + menu_y_offset, l10n_text("Down is also crouch"), "down_is_also_crouch", global_down_is_also_crouch);
 		draw_menu_checkmark(390, menu_y_double_tap_direction_to_run + menu_y_offset, l10n_text("Double-tap direction to run"), "double_tap_to_run", global_double_tap_to_run);
 		draw_menu_checkmark(390, menu_y_always_run + menu_y_offset, l10n_text("Always run"), "always_run", global_run_toggle);
 		draw_menu_checkmark(390, menu_y_double_tap_direction_to_dive + menu_y_offset, l10n_text("Double-tap direction to dive"), "double_tap_to_dive", global_double_tap_to_dive);
@@ -4687,6 +4693,28 @@ function scr_options_control_menu()
 				if (key_down)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
+					menu = "down_is_also_crouch";
+					menu_delay = 3;
+				}
+			}
+			#endregion /* Up Key is Jump Key Navigation END */
+			
+			else
+			
+			#region /* Down Key is Crouch Key Navigation */
+			if (menu == "down_is_also_crouch")
+			{
+				menu_cursor_y_position = menu_y_down_is_also_crouch;
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
+					menu = "up_is_also_jump";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				{
 					menu = "double_tap_to_run";
 					menu_delay = 3;
 				}
@@ -4702,7 +4730,7 @@ function scr_options_control_menu()
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					menu = "up_is_also_jump";
+					menu = "down_is_also_crouch";
 					menu_delay = 3;
 				}
 				else
@@ -5367,6 +5395,24 @@ function scr_options_control_menu()
 			}
 			else
 			if (remapping_player == 3){if (global.player4_up_is_also_jump){global.player4_up_is_also_jump = false;}else{global.player4_up_is_also_jump = true;}
+			menu_delay = 3;
+			}
+			}
+			
+			if (menu == "down_is_also_crouch") && (menu_delay == 0 && menu_joystick_delay == 0){
+			if (remapping_player == 0){if (global.player1_down_is_also_crouch){global.player1_down_is_also_crouch = false;}else{global.player1_down_is_also_crouch = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 1){if (global.player2_down_is_also_crouch){global.player2_down_is_also_crouch = false;}else{global.player2_down_is_also_crouch = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 2){if (global.player3_down_is_also_crouch){global.player3_down_is_also_crouch = false;}else{global.player3_down_is_also_crouch = true;}
+			menu_delay = 3;
+			}
+			else
+			if (remapping_player == 3){if (global.player4_down_is_also_crouch){global.player4_down_is_also_crouch = false;}else{global.player4_down_is_also_crouch = true;}
 			menu_delay = 3;
 			}
 			}

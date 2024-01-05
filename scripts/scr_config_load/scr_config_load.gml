@@ -152,6 +152,7 @@ function scr_config_load()
 		if (ini_key_exists("player1_profile" + string(global.player1_profile), "player1_key2_back")){global.player_[inp.key][1][2][action.back] = ini_read_real("player1_profile" + string(global.player1_profile), "player1_key2_back", 0);}
 		
 		if (ini_key_exists("player1_profile" + string(global.player1_profile), "player1_up_is_also_jump")){global.player1_up_is_also_jump = ini_read_real("player1_profile" + string(global.player1_profile), "player1_up_is_also_jump", 0);}
+		if (ini_key_exists("player1_profile" + string(global.player1_profile), "player1_down_is_also_crouch")){global.player1_down_is_also_crouch = ini_read_real("player1_profile" + string(global.player1_profile), "player1_down_is_also_crouch", 0);}
 		if (ini_key_exists("player1_profile" + string(global.player1_profile), "player1_double_tap_to_run")){global.player1_double_tap_to_run = ini_read_real("player1_profile" + string(global.player1_profile), "player1_double_tap_to_run", 0);}
 		if (ini_key_exists("player1_profile" + string(global.player1_profile), "player1_run_toggle")){global.player1_run_toggle = ini_read_real("player1_profile" + string(global.player1_profile), "player1_run_toggle", 0);}
 		if (ini_key_exists("player1_profile" + string(global.player1_profile), "player1_double_tap_to_dive")){global.player1_double_tap_to_dive = ini_read_real("player1_profile" + string(global.player1_profile), "player1_double_tap_to_dive", 0);}
@@ -202,6 +203,7 @@ function scr_config_load()
 		if (ini_key_exists("player2_profile" + string(global.player2_profile), "player2_key2_back")){global.player_[inp.key][2][2][action.back] = ini_read_real("player2_profile" + string(global.player2_profile), "player2_key2_back", 0);}
 		
 		if (ini_key_exists("player2_profile" + string(global.player2_profile), "player2_up_is_also_jump")){global.player2_up_is_also_jump = ini_read_real("player2_profile" + string(global.player2_profile), "player2_up_is_also_jump", 0);}
+		if (ini_key_exists("player2_profile" + string(global.player2_profile), "player1_down_is_also_crouch")){global.player2_down_is_also_crouch = ini_read_real("player2_profile" + string(global.player2_profile), "player2_down_is_also_crouch", 0);}
 		if (ini_key_exists("player2_profile" + string(global.player2_profile), "player2_double_tap_to_run")){global.player2_double_tap_to_run = ini_read_real("player2_profile" + string(global.player2_profile), "player2_double_tap_to_run", 0);}
 		if (ini_key_exists("player2_profile" + string(global.player2_profile), "player2_run_toggle")){global.player2_run_toggle = ini_read_real("player2_profile" + string(global.player2_profile), "player2_run_toggle", 0);}
 		if (ini_key_exists("player2_profile" + string(global.player2_profile), "player2_double_tap_to_dive")){global.player2_double_tap_to_dive = ini_read_real("player2_profile" + string(global.player2_profile), "player2_double_tap_to_dive", 0);}
@@ -252,6 +254,7 @@ function scr_config_load()
 		if (ini_key_exists("player3_profile" + string(global.player3_profile), "player3_key2_back")){global.player_[inp.key][3][2][action.back] = ini_read_real("player3_profile" + string(global.player3_profile), "player3_key2_back", 0);}
 		
 		if (ini_key_exists("player3_profile" + string(global.player3_profile), "player3_up_is_also_jump")){global.player3_up_is_also_jump = ini_read_real("player3_profile" + string(global.player3_profile), "player3_up_is_also_jump", 0);}
+		if (ini_key_exists("player3_profile" + string(global.player3_profile), "player3_down_is_also_crouch")){global.player3_down_is_also_crouch = ini_read_real("player3_profile" + string(global.player1_profile), "player3_down_is_also_crouch", 0);}
 		if (ini_key_exists("player3_profile" + string(global.player3_profile), "player3_double_tap_to_run")){global.player3_double_tap_to_run = ini_read_real("player3_profile" + string(global.player3_profile), "player3_double_tap_to_run", 0);}
 		if (ini_key_exists("player3_profile" + string(global.player3_profile), "player3_run_toggle")){global.player3_run_toggle = ini_read_real("player3_profile" + string(global.player3_profile), "player3_run_toggle", 0);}
 		if (ini_key_exists("player3_profile" + string(global.player3_profile), "player3_double_tap_to_dive")){global.player3_double_tap_to_dive = ini_read_real("player3_profile" + string(global.player3_profile), "player3_double_tap_to_dive", 0);}
@@ -302,6 +305,7 @@ function scr_config_load()
 		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_key2_back")){global.player_[inp.key][4][2][action.back] = ini_read_real("player4_profile" + string(global.player4_profile), "player4_key2_back", 0);}
 		
 		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_up_is_also_jump")){global.player4_up_is_also_jump = ini_read_real("player4_profile" + string(global.player4_profile), "player4_up_is_also_jump", 0);}
+		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_down_is_also_crouch")){global.player4_down_is_also_crouch = ini_read_real("player4_profile" + string(global.player4_profile), "player4_down_is_also_crouch", 0);}
 		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_double_tap_to_run")){global.player4_double_tap_to_run = ini_read_real("player4_profile" + string(global.player4_profile), "player4_double_tap_to_run", 0);}
 		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_run_toggle")){global.player4_run_toggle = ini_read_real("player4_profile" + string(global.player4_profile), "player4_run_toggle", 0);}
 		if (ini_key_exists("player4_profile" + string(global.player4_profile), "player4_double_tap_to_dive")){global.player4_double_tap_to_dive = ini_read_real("player4_profile" + string(global.player4_profile), "player4_double_tap_to_dive", 0);}

@@ -32,6 +32,7 @@ if (global.character_select_in_this_menu == "main_game")
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
+		&& (!global.create_level_from_template)
 		{
 			ini_write_real("Custom Backgrounds", "custom_foreground_secret_y_offset", 0);
 		}
@@ -47,6 +48,7 @@ if (global.character_select_in_this_menu == "main_game")
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
+		&& (!global.create_level_from_template)
 		{
 			ini_write_real("Custom Backgrounds", "custom_foreground_secret_x_offset", 0);
 		}
@@ -63,6 +65,7 @@ if (global.character_select_in_this_menu == "main_game")
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
+		&& (!global.create_level_from_template)
 		{
 			ini_write_real("Custom Backgrounds", "custom_foreground_secret_depth", -20);
 		}

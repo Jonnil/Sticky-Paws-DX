@@ -6,6 +6,7 @@ function scr_player_move_customizable_controls()
 	if (player == 1)
 	{
 		up_is_also_jump = global.player1_up_is_also_jump;
+		down_is_also_crouch = global.player1_down_is_also_crouch;
 		double_tap_to_run = global.player1_double_tap_to_run;
 		double_tap_to_dive = global.player1_double_tap_to_dive;
 		cancel_dive_by_pressing_jump_or_dive_button = global.player1_cancel_dive_by_pressing_jump_or_dive_button;
@@ -18,6 +19,7 @@ function scr_player_move_customizable_controls()
 	if (player == 2)
 	{
 		up_is_also_jump = global.player2_up_is_also_jump;
+		down_is_also_crouch = global.player2_down_is_also_crouch;
 		double_tap_to_run = global.player2_double_tap_to_run;
 		double_tap_to_dive = global.player2_double_tap_to_dive;
 		cancel_dive_by_pressing_jump_or_dive_button = global.player2_cancel_dive_by_pressing_jump_or_dive_button;
@@ -30,6 +32,7 @@ function scr_player_move_customizable_controls()
 	if (player == 3)
 	{
 		up_is_also_jump = global.player3_up_is_also_jump;
+		down_is_also_crouch = global.player3_down_is_also_crouch;
 		double_tap_to_run = global.player3_double_tap_to_run;
 		double_tap_to_dive = global.player3_double_tap_to_dive;
 		cancel_dive_by_pressing_jump_or_dive_button = global.player3_cancel_dive_by_pressing_jump_or_dive_button;
@@ -42,6 +45,7 @@ function scr_player_move_customizable_controls()
 	if (player == 4)
 	{
 		up_is_also_jump = global.player4_up_is_also_jump;
+		down_is_also_crouch = global.player4_down_is_also_crouch;
 		double_tap_to_run = global.player4_double_tap_to_run;
 		double_tap_to_dive = global.player4_double_tap_to_dive;
 		cancel_dive_by_pressing_jump_or_dive_button = global.player4_cancel_dive_by_pressing_jump_or_dive_button;
@@ -183,7 +187,9 @@ function scr_player_move_customizable_controls()
 	|| (player == 3)
 	&& (global.player3_crouch_toggle)
 	|| (player >= 4)
-	&& (global.player4_crouch_toggle);
+	&& (global.player4_crouch_toggle)
+	|| (down_is_also_crouch)
+	&& (key_down);
 	#endregion /* Key Crouch Hold END */
 	
 	#region /* Key Crouch Pressed */
@@ -191,6 +197,8 @@ function scr_player_move_customizable_controls()
 	
 	key_crouch_pressed =
 	(key_crouch_pressed_temp)
+	|| (down_is_also_crouch)
+	&& (scr_key_initialize(key_down_hold_temp, 1, player, action.down))
 	#endregion /* Key Crouch Pressed END */
 	
 	#region /* Key Run Hold */

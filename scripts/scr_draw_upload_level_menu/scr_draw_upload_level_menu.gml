@@ -1098,7 +1098,13 @@ function scr_draw_upload_level_menu()
 					ini_write_string("info", "level_description", string(global.level_description));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
-					thumbnail_level_description[global.select_level_index] = string(global.level_description);
+					if (is_array(thumbnail_level_description))
+					&& (array_length(thumbnail_level_description) > 0)
+					&& (global.select_level_index >= 0)
+					&& (global.select_level_index < array_length(thumbnail_level_description))
+					{
+						thumbnail_level_description[global.select_level_index] = string(global.level_description);
+					}
 					
 					menu = "upload_edit_description";
 					level_editor_edit_name = false;

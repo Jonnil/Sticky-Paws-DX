@@ -101,6 +101,10 @@ if (global.spikes_emerge_time >= get_room_speed * 4) {
 /* Rain Effect */
 if (global.rain)
 {
+	if (!audio_is_playing(snd_rain))
+	{
+		scr_audio_play(snd_rain, volume_source.ambient);/* Play rain sound */
+	}
 	if (irandom(9) == 0) /* Reduce the frequency of raindrops. irandom generates a random integer between 0 and 9 */
 	{
 		effect_create_above(ef_rain, x, y, 2, c_white);
