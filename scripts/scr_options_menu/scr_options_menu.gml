@@ -3223,13 +3223,8 @@ function scr_options_menu()
 						menu = "select_font";
 					}
 					else
-					if (global.enable_difficulty_selection_settings)
 					{
-						menu = "difficulty_settings";
-					}
-					else
-					{
-						menu = "automatically_pause_when_window_is_unfocused_settings";
+						menu = "debug_screen";
 					}
 				}
 			}

@@ -335,7 +335,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		menu_cursor_y_position = menu_y_remap_key;
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(410, menu_y_remap_key + menu_y_offset, l10n_text(name_string), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+		scr_draw_text_outlined(410, menu_y_remap_key + menu_y_offset, name_string, global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key)
 		&& (can_remap_key == false)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -363,7 +363,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 	{
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(410, menu_y_remap_key + menu_y_offset, l10n_text(name_string), global.default_text_size, c_menu_outline, c_menu_fill, 0.9);
+		scr_draw_text_outlined(410, menu_y_remap_key + menu_y_offset, name_string, global.default_text_size, c_menu_outline, c_menu_fill, 0.9);
 	}
 	#endregion /* Other Remap Code END */
 	

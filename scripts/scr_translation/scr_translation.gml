@@ -59,19 +59,19 @@ function initialize_translations()
 
 function l10n_text(key = "") /* The common abbreviation for localization is l10n, where the number 10 refers to the number of letters between the L and the N */
 {
-    var text = key;
-    if (global.translations[?key] != undefined && global.language_local_data[# 1 + global.language_localization, global.translations[?key]] != "")
-    {
-        text = global.language_local_data[# 1 + global.language_localization, global.translations[?key]];
-        var a = argument_count > 1 ? argument[1] : "";
-        text = string_replace_all(text, "{a}", a);
-    }
-    else if (global.translations[?key] != undefined && global.language_local_data[# 1, global.translations[?key]] != "")
-    {
-        text = global.language_local_data[# 1, global.translations[?key]];
-        var a = argument_count > 1 ? argument[1] : "";
-        text = string_replace_all(text, "{a}", a);
-    }
+	var text = key;
+	if (global.translations[?key] != undefined && global.language_local_data[# 1 + global.language_localization, global.translations[?key]] != "")
+	{
+		text = global.language_local_data[# 1 + global.language_localization, global.translations[?key]];
+		var a = argument_count > 1 ? argument[1] : "";
+		text = string_replace_all(text, "{a}", a);
+	}
+	else if (global.translations[?key] != undefined && global.language_local_data[# 1, global.translations[?key]] != "")
+	{
+		text = global.language_local_data[# 1, global.translations[?key]];
+		var a = argument_count > 1 ? argument[1] : "";
+		text = string_replace_all(text, "{a}", a);
+	}
 	if (global.translation_debug)
 	{
 		/* In debug mode, make all untranslated text flash random numbers beside the original text, to indicate easier what line is untranslated */
@@ -82,7 +82,7 @@ function l10n_text(key = "") /* The common abbreviation for localization is l10n
 		}
 		else
 		{
-			text = "A? " + key + string(round(random(9)));
+			text = "A? " + key + string(round(random(9))); /* A? means there is missing keyword */
 		}
 	}
 	
@@ -97,5 +97,5 @@ function l10n_text(key = "") /* The common abbreviation for localization is l10n
 		ini_close();
 	}
 	
-    return text;
+	return text;
 }
