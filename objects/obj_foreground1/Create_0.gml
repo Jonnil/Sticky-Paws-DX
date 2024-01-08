@@ -53,16 +53,16 @@ if (global.character_select_in_this_menu == "main_game")
 	#region /* Custom Foreground 1 depth */
 	if (ini_key_exists("Custom Backgrounds", "custom_foreground1_depth"))
 	{
-		depth = ini_read_real("Custom Backgrounds", "custom_foreground1_depth", +50);
+		depth = ini_read_real("Custom Backgrounds", "custom_foreground1_depth", +100);
 	}
 	else
 	{
 		if (global.character_select_in_this_menu == "level_editor")
 		&& (!global.create_level_from_template)
 		{
-			ini_write_real("Custom Backgrounds", "custom_foreground1_depth", +50);
+			ini_write_real("Custom Backgrounds", "custom_foreground1_depth", +100);
 		}
-		depth = +50;
+		depth = +100;
 	}
 	#endregion /* Custom Foreground 1 depth END */
 	
@@ -72,6 +72,6 @@ else
 {
 	x_offset = 0;
 	y_offset = 0;
-	depth = +50;
+	depth = +100;
 }
 #endregion /* Initialize Foreground END */

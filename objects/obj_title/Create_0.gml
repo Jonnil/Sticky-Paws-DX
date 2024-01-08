@@ -128,6 +128,7 @@ open_sub_menu = false;
 open_upload_menu = false;
 select_custom_level_menu_open = false;
 scroll = 0;
+row = 4;
 if (display_get_gui_width() >= 1670)
 {
 	thumbnail_x_offset = 0; /* Level thumbnail x offset, for when windows size is too small to fit every thumbnail, you need to shift the x position a bit to fit everything */
