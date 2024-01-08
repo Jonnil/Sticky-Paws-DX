@@ -31,6 +31,7 @@ function scr_options_language_menu()
 	#region /* Clicking on language completion text enables and disables the translation debug mode */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - string_width(l10n_text("Translation completion") + ": " + string(global.language_completion) + "%"), 164 - 32, get_window_width - 32, 164 + 32))
 	&& (global.controls_used_for_navigation == "mouse")
+	&& (global.enable_options_for_pc)
 	{
 		if (global.language_completion < 100)
 		{
@@ -53,6 +54,7 @@ function scr_options_language_menu()
 	if (global.translation_debug)
 	{
 		scr_draw_text_outlined(get_window_width - 32, 164 + 32, "Translation debug: enabled", global.default_text_size, c_menu_outline, c_menu_fill, 1);
+		scr_draw_text_outlined(get_window_width - 32, 164 + 32 + 64, "When missing keywords are found, look in\n" + string(game_save_id) + "translation_missing_keywords.ini", global.default_text_size, c_menu_outline, c_menu_fill, 1);
 	}
 	#endregion /* Clicking on language completion text enables and disables the translation debug mode END */
 	

@@ -29,10 +29,10 @@
     {"name":"enemies","order":28,"path":"folders/Sprites/enemies.yy",},
     {"name":"Falling Block Sprites","order":141,"path":"folders/Sprites/Falling Block Sprites.yy",},
     {"name":"ground","order":33,"path":"folders/Sprites/ground.yy",},
+    {"name":"Map Sprites","order":156,"path":"folders/Sprites/Map Sprites.yy",},
     {"name":"Sprite Masks","order":138,"path":"folders/Sprites/Sprite Masks.yy",},
     {"name":"Tile Sets","order":3,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":9,"path":"folders/Timelines.yy",},
-    {"name":"Map Sprites","order":156,"path":"folders/Sprites/Map Sprites.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"obj_map_palmtree","order":14,"path":"objects/obj_map_palmtree/obj_map_palmtree.yy",},
