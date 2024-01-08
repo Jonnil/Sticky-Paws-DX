@@ -318,20 +318,20 @@ if (image_index == 2){current_comment = l10n_text("Artist") + ": Jonnil - Sticky
 if (image_index == 3){current_comment = l10n_text("Artist") + ": Jonnil - Sticky the Cat crossing his arms";}
 if (image_index == 4){current_comment = l10n_text("Artist") + ": Jonnil - Sticky the Cat looking for something far away";}
 if (image_index == 5){current_comment = l10n_text("Artist") + ": Jonnil - Sticky the Cat scared";}
-if (image_index == 6){current_comment = l10n_text("Artist") + ": Pixpak - Sticky Paws Cover";}
-if (image_index == 7){current_comment = l10n_text("Artist") + ": Pixpak - Sticky the Cat Sketch";}
+if (image_index == 6){current_comment = l10n_text("Artist") + ": Benjamin Tröjer - Sticky Paws Cover";}
+if (image_index == 7){current_comment = l10n_text("Artist") + ": Benjamin Tröjer - Sticky the Cat Sketch";}
 if (image_index == 8){current_comment = l10n_text("Artist") + ": Dusky @DuskyUmbreonDA - Sticky the Cat";}
 if (image_index == 9){current_comment = l10n_text("Artist") + ": Dusky @DuskyUmbreonDA - Sticky the Cat Sketch";}
 if (image_index == 10){current_comment = l10n_text("Artist") + ": kyun @kyarokyun - Sticky the Cat";}
 if (image_index == 11){current_comment = l10n_text("Artist") + ": kyun @kyarokyun - Sticky the Cat Sketch";}
 if (image_index == 12){current_comment = l10n_text("Artist") + ": Jonnil - Sticky the Cat paint edition";}
-if (image_index == 13){current_comment = l10n_text("Artist") + ": Pixpak - Sticky the Cat anime";}
+if (image_index == 13){current_comment = l10n_text("Artist") + ": Benjamin Tröjer - Sticky the Cat anime";}
 if (image_index == 14){current_comment = l10n_text("Artist") + ": Chrythm - Sticky the Cat manly";}
 if (image_index == 15){current_comment = l10n_text("Artist") + ": Trickylady - Trickylady Approves";}
 if (image_index == 16){current_comment = l10n_text("Artist") + ": Omemega - Dark Lord Sticky";}
 if (image_index == 17){current_comment = l10n_text("Artist") + ": Omemega - Ded Sticky";}
 if (image_index == 18){current_comment = l10n_text("Artist") + ": Omemega - Skull Sticky";}
-if (image_index == 19){current_comment = l10n_text("Artist") + ": Pixpak - Sticky Adventure";}
+if (image_index == 19){current_comment = l10n_text("Artist") + ": Benjamin Tröjer - Sticky Adventure";}
 if (image_index == 20){current_comment = l10n_text("Artist") + ": Omemega - Derp Fat Sticky";}
 if (image_index == 21){current_comment = l10n_text("Artist") + ": Foxer 262 - Sticky UwU";}
 if (image_index == 22){current_comment = l10n_text("Artist") + ": NonsensicalThings - Jonnil programming Sticky Paws";}

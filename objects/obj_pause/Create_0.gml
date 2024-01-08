@@ -146,6 +146,22 @@ hide_menu_for_clean_screenshots = false;
 hide_menu_for_clean_screenshots_alpha = 0;
 hide_menu_for_clean_screenshots_timer = 0;
 
+#region /* Load Custom Title Background */
+title_bg_layer = 1; /* Selected Title Background Layer to change */
+title_background_scale_lerp[1] = global.title_background_scale[1];
+title_background_scale_lerp[2] = global.title_background_scale[2];
+title_background_scale_lerp[3] = global.title_background_scale[3];
+background_layer_x[1] = 0;
+background_layer_x[2] = 0;
+background_layer_x[3] = 0;
+background_layer_y[1] = 0;
+background_layer_y[2] = 0;
+background_layer_y[3] = 0;
+title_background_blink[1] = 1;
+title_background_blink[2] = 1;
+title_background_blink[3] = 1;
+#endregion /* Load Custom Title Background END */
+
 #region /* Character Name */
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 || (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))

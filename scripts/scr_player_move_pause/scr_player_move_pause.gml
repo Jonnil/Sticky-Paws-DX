@@ -4,7 +4,7 @@ function scr_player_move_pause() {
 		(global.automatically_pause_when_window_is_unfocused && !window_has_focus()) ||
 		(keyboard_check_pressed(vk_escape)) ||
 		(keyboard_check(vk_tab) && keyboard_check(vk_lshift)) ||
-		(global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)); /* Pause button appears in top right corner of screen when using mouse */
+		(global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 185, 0, display_get_gui_width(), 42)); /* Pause button appears in top right corner of screen when using mouse */
 	
 	if (pause_condition) {
 		if (controller_connected && !gamepad_is_connected(global.player_slot[player])) {

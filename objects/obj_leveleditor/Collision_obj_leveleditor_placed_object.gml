@@ -2,7 +2,12 @@ if (!global.actually_play_edited_level)
 {
 	with (other)
 	{
-		hover_over_object_indicator = true;
+		if (!obj_leveleditor.pause)
+		&& (obj_leveleditor.mouse_use_grab_cursor)
+		&& (!obj_leveleditor.drag_object)
+		{
+			hover_over_object_indicator = true;
+		}
 		
 		#region /* All code before initializing the object */
 		

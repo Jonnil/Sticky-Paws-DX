@@ -37,7 +37,7 @@ if (global.quit_level)
 }
 #endregion /* Quit Game END */
 
-#region /* Make sure level music and sound effects stops playing, and play the map screen music */
+#region /* Make sure level music and sound effects stops playing */
 audio_stop_sound(snd_skidding);
 audio_stop_sound(snd_skidding_ice);
 audio_stop_sound(snd_music_boss);
@@ -49,8 +49,7 @@ global.music = noone;
 global.music_underwater = noone;
 global.ambience = noone;
 global.ambience_underwater = noone;
-scr_audio_play(music_map, volume_source.music); /* Play the map screen music */
-#endregion /* Make sure level music stops playing, and play the map screen music END */
+#endregion /* Make sure level music stops playing END */
 
 scr_menu_navigation_initialization();
 
@@ -72,7 +71,7 @@ if (keyboard_check_pressed(vk_escape) ||
 	gamepad_button_check_pressed(global.player_slot[4], gp_select) ||
 	gamepad_button_check_pressed(global.player_slot[4], gp_start) ||
 	(!window_has_focus() && global.automatically_pause_when_window_is_unfocused) ||
-	(global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Pause button appears in top right corner of screen when using mouse */
+	(global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 185, 0, display_get_gui_width(), 42)) /* Pause button appears in top right corner of screen when using mouse */
 	)
 {
 	var pause_player = 0;
@@ -147,13 +146,14 @@ if (can_move == false)
 	/* Don't set entering_level to false, or can_move to true here */
 	/* Create Event will take care of that when you enter the world map again */
 	/* Doing this code here will make the iris zoom out a bit before properly entering the level */
+	audio_sound_gain(music_map, 0, 0);
 	audio_stop_sound(music_map); /* Stop any world map music when playing a level */
 	audio_stop_all(); /* Stop all sound from playing so nothing is playing at the loading screen first */
 	if (global.loading_music > 0)
 	{
 		if (!audio_is_playing(global.loading_music)) /* Then after stopping all sound, play the loading music */
 		{
-			audio_play_sound(global.loading_music, 0, true, global.volume_melody * global.volume_main);
+			scr_audio_play(global.loading_music, volume_source.music);
 		}
 	}
 	global.pause = false;
@@ -167,6 +167,7 @@ if (can_move == false)
 	global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
 	
 	var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
+		audio_sound_gain(music_map, 0, 0);
 		audio_stop_sound(music_map); /* Stop any world map music when playing a level */
 		room_goto(rm_leveleditor); /* Start the level from world map */
 	}, [], 1);
@@ -355,12 +356,13 @@ if (can_enter_level_automatically)
 			if (brand_new_file)
 			{
 				audio_sound_gain(music_map, 0, 0);
+				audio_stop_sound(music_map);
 				audio_stop_all(); /* Stop all sound from playing whenever a brand new file is loaded, so nothing is playing at the loading screen first */
 				if (global.loading_music > 0)
 				{
 					if (!audio_is_playing(global.loading_music)) /* Then after stopping all sound, play the loading music */
 					{
-						audio_play_sound(global.loading_music, 0, true, global.volume_melody * global.volume_main);
+						scr_audio_play(global.loading_music, volume_source.music);
 					}
 				}
 			}
@@ -575,7 +577,8 @@ if (can_move)
 			|| (mouse_check_button_released(mb_left))
 			&& (point_direction(x, y, mouse_x, mouse_y) > 45)
 			&& (point_direction(x, y, mouse_x, mouse_y) < 135)
-			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
+			&& (distance_to_point(mouse_x, mouse_y) < 100)
+			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 185, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
 			{
 				if (y > view_y + 64 && !position_meeting(x, y - 32, obj_wall))
 				{
@@ -597,7 +600,8 @@ if (can_move)
 			|| (mouse_check_button_released(mb_left))
 			&& (point_direction(x, y, mouse_x, mouse_y) > 135)
 			&& (point_direction(x, y, mouse_x, mouse_y) < 225)
-			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
+			&& (distance_to_point(mouse_x, mouse_y) < 100)
+			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 185, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
 			{
 				if (x > view_x + 64 && !position_meeting(x - 32, y, obj_wall))
 				{
@@ -619,11 +623,13 @@ if (can_move)
 			|| (mouse_check_button_released(mb_left))
 			&& (point_direction(x, y, mouse_x, mouse_y) > 0)
 			&& (point_direction(x, y, mouse_x, mouse_y) < 45)
-			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
+			&& (distance_to_point(mouse_x, mouse_y) < 100)
+			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 185, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
 			|| (mouse_check_button_released(mb_left))
 			&& (point_direction(x, y, mouse_x, mouse_y) > 315)
-			&& (point_direction(x, y, mouse_x, mouse_y) < 360)
-			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
+			&& (point_direction(x, y, mouse_x, mouse_y) < 361)
+			&& (distance_to_point(mouse_x, mouse_y) < 100)
+			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 185, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
 			{
 				if (x < view_x + view_width - 64 && !position_meeting(x + 32, y, obj_wall))
 				{
@@ -645,7 +651,8 @@ if (can_move)
 			|| (mouse_check_button_released(mb_left))
 			&& (point_direction(x, y, mouse_x, mouse_y) > 225)
 			&& (point_direction(x, y, mouse_x, mouse_y) < 315)
-			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 370, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
+			&& (distance_to_point(mouse_x, mouse_y) < 100)
+			&& (!point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 185, 0, display_get_gui_width(), 42)) /* Don't click on Pause button */
 			{
 				if (y < view_y + view_height - 64 && !position_meeting(x, y + 32, obj_wall))
 				{

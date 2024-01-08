@@ -1,5 +1,10 @@
 function scr_automatic_screenshot()
 {
+	if (instance_exists(obj_background_brightness_gameplay))
+	{
+		obj_background_brightness_gameplay.background_brightness_lerp = 0;
+	}
+	
 	/* Step 1: Capture the fullscreen screenshot */
 	var screenshot = surface_create(display_get_gui_width(), display_get_gui_height());
 	surface_set_target(screenshot);

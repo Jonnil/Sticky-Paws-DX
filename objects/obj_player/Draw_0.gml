@@ -177,6 +177,13 @@ if (image_alpha > 0)
 	#endregion /* Draw intro animation sprites (cutscene) if intro is playing END */
 	
 	#region /* Make it obvious if you take damage */
+	if (taken_damage == 99)
+	&& (!die)
+	&& (hp >= 1)
+	{
+		scr_audio_play(snd_lose, volume_source.sound); /* Play a sound effect when you get hit */
+		scr_audio_play(voice_damage, volume_source.voice); /* Play a voice effect when you get hit */
+	}
 	if (taken_damage >= taken_damage_freezetime)
 	{
 		dive = false;
@@ -203,13 +210,6 @@ if (image_alpha > 0)
 		{
 			image_speed = 0.5;
 		}
-	}
-	if (taken_damage >= 100)
-	&& (!die)
-	&& (hp >= 1)
-	{
-		audio_sound_pitch(voice_damage, default_voice_pitch);
-		scr_audio_play(voice_damage, volume_source.voice);
 	}
 	#endregion /* Make it obvious if you take damage END */
 	

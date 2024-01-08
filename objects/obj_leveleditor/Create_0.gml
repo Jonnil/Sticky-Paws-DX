@@ -23,6 +23,7 @@ prev_display_width = display_get_gui_width();
 prev_display_height = display_get_gui_height();
 global.time_countdown_bonus = 500;
 pause = false;
+pause_button_y = display_get_gui_height() + 100;
 if (global.player_can_play[1])
 {
 	camera_player = 0;
@@ -100,6 +101,23 @@ if (global.actually_play_edited_level)
 #region /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level */
 if (!global.actually_play_edited_level)
 {
+	
+	#region /* Load Custom Title Background */
+	title_bg_layer = 1; /* Selected Title Background Layer to change */
+	title_background_scale_lerp[1] = global.title_background_scale[1];
+	title_background_scale_lerp[2] = global.title_background_scale[2];
+	title_background_scale_lerp[3] = global.title_background_scale[3];
+	background_layer_x[1] = 0;
+	background_layer_x[2] = 0;
+	background_layer_x[3] = 0;
+	background_layer_y[1] = 0;
+	background_layer_y[2] = 0;
+	background_layer_y[3] = 0;
+	title_background_blink[1] = 1;
+	title_background_blink[2] = 1;
+	title_background_blink[3] = 1;
+	#endregion /* Load Custom Title Background END */
+	
 	key_a_pressed = noone;
 	key_a_released = noone;
 	
@@ -606,7 +624,7 @@ if (!global.actually_play_edited_level)
 	placing_object = 0; /* If you are currently placing any object or not. This check is used for when modifying other objects, it shouldn't happen when currently placing any object */
 	show_icon_at_bottom = false;
 	show_icon_at_top = false;
-	icon_at_bottom_y = +100;
+	icon_at_bottom_y = +110;
 	show_undo_redo_icon = true; /* If the undo and redo buttons should show */
 	undo_redo_icon_y = +200; /* Undo and redo buttons y postition */
 	current_undo_value = 0; /* Every time you place down items, this value increases. When you undo, this value decreases. */
@@ -617,6 +635,7 @@ if (!global.actually_play_edited_level)
 	total_number_of_objects = 9999;
 	object_help_description = "";
 	drag_object = false;
+	mouse_use_grab_cursor = false;
 	erase_mode = false; /* When erasing, this turns true */
 	fill_mode = false; /* When filling, this turns true */
 	fill_mode_type = "fill"; /* What type of filling you will do. Fill, Horizontal, Vertical */

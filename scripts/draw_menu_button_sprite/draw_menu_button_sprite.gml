@@ -1,4 +1,4 @@
-function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_offset, y_origin_offset, xscale, yscale, spr_width, spr_height, string_text, menu_index, menu_takes_you_to, show_arrows = true, highlight_color = c_lime, alpha = 1)
+function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_offset = 0, y_origin_offset = 0, xscale = 1, yscale = 1, spr_width, spr_height, string_text, menu_index, menu_takes_you_to = "", show_arrows = true, highlight_color = c_lime, alpha = 1)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);

@@ -1,5 +1,7 @@
 function scr_draw_mouse_cursor_sprite()
 {
+	mouse_use_grab_cursor = false;
+	
 	var position_meeeting_draggable_objects = (position_meeting(x, y, obj_leveleditor_placed_object)
 	|| position_meeting(x, y, obj_level_player1_start)
 	|| position_meeting(x, y, obj_level_player2_start)
@@ -42,6 +44,7 @@ function scr_draw_mouse_cursor_sprite()
 	&& !point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)
 	&& !point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
 	{
+		mouse_use_grab_cursor = true;
 		draw_sprite_ext(spr_cursor_grab, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
 	}
 	else
@@ -55,6 +58,7 @@ function scr_draw_mouse_cursor_sprite()
 	&& (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
 	&& (!point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
 	{
+		mouse_use_grab_cursor = true;
 		draw_sprite_ext(spr_cursor_grab, 1, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
 	}
 	#endregion /* Grab mouse cursor END */

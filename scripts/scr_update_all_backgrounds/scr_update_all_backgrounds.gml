@@ -52,6 +52,7 @@ function scr_update_all_backgrounds()
 		
 	}
 	show_debug_message("Set what file path to use");
+	
 	#region /* Update All Backgrounds */
 	
 	scr_delete_sprite_properly(global.custom_background1);

@@ -206,3 +206,4 @@ if (!global.actually_play_edited_level)
 #endregion /* Initialize Object END */
 
 first_created = true;
+depth = -110;

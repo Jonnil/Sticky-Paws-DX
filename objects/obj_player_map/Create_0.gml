@@ -97,6 +97,7 @@ allow_free_movement = false; /* Turn this to true to move freely on the map inst
 
 global.pause_room = noone;
 depth = -100;
+layer_depth("WindParticles", -99);
 
 mask_index = spr_wall; /* Mask index should be set to the size of a wall, only in Create Event */
 global.player_has_entered_goal = false;
@@ -265,3 +266,5 @@ if (!instance_exists(obj_camera_map))
 
 audio_listener_orientation(0, 0, 1, 0, -1, 0);
 audio_listener_position(x, y, 0); /* Audio listener should start on top of the player */
+
+scr_audio_play(music_map, volume_source.music); /* Play the map screen music */

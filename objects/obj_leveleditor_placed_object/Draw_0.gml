@@ -28,7 +28,7 @@ switch (object) {
 draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, image_blend, image_alpha);
 if (hover_over_object_indicator)
 {
-	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_blue, scr_wave(0.25, 0.5, 1));
+	draw_sprite_ext(sprite_index, image_index, x, y, draw_xscale, draw_yscale, draw_angle, c_blue, scr_wave(0.25, 0.75, 0.5));
 }
 
 if (draw_leveleditor_arrow) {
@@ -40,6 +40,10 @@ if (draw_leveleditor_arrow) {
 if (draw_item_on_top != noone) {
 	spring_scale = 0.5;
 	draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, draw_item_on_top_blend, image_alpha);
+	if (hover_over_object_indicator)
+	{
+		draw_sprite_ext(draw_item_on_top, 0, x, y, 0.5, 0.5, 0, c_blue, scr_wave(0.25, 0.75, 0.5));
+	}
 }
 else {
 	spring_scale = 1;

@@ -240,6 +240,22 @@ global.part_limit = 0; /* How many objects are currently placed in the level edi
 global.part_limit_entity = 0; /* How many enteties are currently placed in the level editor. Enteties are object that have a lot of step events, so they can lag the game the most */
 global.part_limit_entity_text_alpha = 0; /* The text showing entity limit should fade out when you aren't placing or erasing enteties */
 
+#region /* Set default backgrounds and music */
+global.default_background1 = "";
+global.default_background2 = "";
+global.default_background3 = "";
+global.default_background4 = "";
+global.default_foreground1 = "";
+global.default_foreground1_5 = "";
+global.default_foreground2 = "";
+global.default_foreground_secret = "";
+global.default_music_overworld = "";
+global.default_music_underwater = "";
+global.default_ambience_overworld = "";
+global.default_ambience_underwater = "";
+global.default_clear_melody = "";
+#endregion /* Set default backgrounds and music END */
+
 global.can_load_custom_level_assets = true; /* Should be able to turn off loading custom assets */
 global.playtest_invincibility = false;
 global.playtest_moonjump = false;

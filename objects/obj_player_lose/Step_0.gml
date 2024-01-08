@@ -30,12 +30,10 @@ if (count = 50)
 	image_speed = 0.3;
 	if (burnt)
 	{
-		audio_sound_pitch(voice_burned_die, default_voice_pitch);
 		scr_audio_play(voice_burned_die, volume_source.voice);
 	}
 	else
 	{
-		audio_sound_pitch(voice_damage, default_voice_pitch);
 		scr_audio_play(voice_damage, volume_source.voice);
 	}
 }

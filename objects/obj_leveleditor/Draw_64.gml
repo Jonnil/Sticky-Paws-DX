@@ -578,6 +578,15 @@ if (!global.actually_play_edited_level)
 		}
 		#endregion /* Object Specific Help END */
 		
+		#region /* Show a pause button on screen when using the mouse */
+		if (global.controls_used_for_navigation == "mouse")
+		&& (!pause)
+		{
+			pause_button_y = display_get_gui_height() - 64 - 42 + icon_at_bottom_y;
+			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() - 185, pause_button_y,,, 0.5, 1, 185, 42, l10n_text("Pause"), "pause", "pause");
+		}
+		#endregion /* Show a pause button on screen when using the mouse END */
+		
 		if (global.controls_used_for_navigation != "gamepad")
 		&& (!navigate_camera_with_arrowkeys)
 		&& (!modify_object_menu)

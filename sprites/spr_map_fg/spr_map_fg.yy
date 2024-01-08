@@ -4,8 +4,8 @@
   "name": "spr_map_fg",
   "bbox_bottom": 1363,
   "bbox_left": 153,
-  "bbox_right": 1125,
-  "bbox_top": 115,
+  "bbox_right": 1471,
+  "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
   "collisionTolerance": 0,
@@ -13,20 +13,20 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"75851f03-5f43-4f47-912f-9755e25e172f",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"5b6cf2f2-3588-445d-8150-34fa572bb49c",},
   ],
   "gridX": 0,
   "gridY": 0,
-  "height": 1376,
+  "height": 1768,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"256cc94a-6f8f-4b0e-8d3e-f428ed79aa99","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"a8e4360a-fa50-4473-9dd3-9af5edfe0c08","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 0,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Map Sprites",
+    "path": "folders/Sprites/Map Sprites.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"75851f03-5f43-4f47-912f-9755e25e172f","path":"sprites/spr_map_fg/spr_map_fg.yy",},},},"Disabled":false,"id":"e1a7ec59-d506-44c4-b313-fd53e9775369","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"5b6cf2f2-3588-445d-8150-34fa572bb49c","path":"sprites/spr_map_fg/spr_map_fg.yy",},},},"Disabled":false,"id":"e57ac021-48a1-4ced-beb1-784980449997","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
@@ -70,5 +70,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 1520,
+  "width": 2024,
 }

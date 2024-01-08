@@ -38,7 +38,7 @@ function scr_deactivate_objects_outside_view()
 				instance_activate_object(obj_camera_map);
 				instance_activate_object(obj_level);
 				instance_activate_object(obj_unlock_next_level);
-				instance_activate_object(obj_path);
+				instance_activate_object(obj_map_path);
 				instance_activate_object(obj_map_path_turn);
 				instance_activate_object(obj_map_exit);
 			}

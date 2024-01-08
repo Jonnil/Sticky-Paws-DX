@@ -33,7 +33,6 @@ if (!global.actually_play_edited_level)
 	draw_angle = 0;
 	hover_over_object_indicator = false;
 	
-	depth = -110;
 	mask_index = spr_wall;
 	
 	image_speed = 0;

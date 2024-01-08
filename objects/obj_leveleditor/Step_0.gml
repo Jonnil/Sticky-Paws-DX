@@ -126,6 +126,10 @@ if (global.doing_clear_check)
 }
 if (doing_clear_check_timer == 2)
 {
+	if (instance_exists(obj_background_brightness_gameplay))
+	{
+		obj_background_brightness_gameplay.background_brightness_lerp = 0;
+	}
 	
 	#region /* Limit so cursor and view can't go outside room */
 	if (cam_width < 1920 || cam_height < 1080)
@@ -315,6 +319,7 @@ if (!global.actually_play_edited_level)
 	|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 128, display_get_gui_height() - 128, display_get_gui_width(), display_get_gui_height() - 64)) /* Can't place objects when clicking the undo and redo buttons */
 	|| (show_selected_menu)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, display_get_gui_width(), 192)) /* Can't place objects when clicking the object category buttons or objects in toolbar */
+	|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, pause_button_y, display_get_gui_width(), pause_button_y + 42)) /* Hovering over pause button */
 	{
 		if (global.controls_used_for_navigation == "mouse")
 		{
@@ -1758,6 +1763,11 @@ if (!global.actually_play_edited_level)
 		#region /* Limit so cursor and view can't go outside room */
 		if (quit_level_editor == 4)
 		{
+			if (instance_exists(obj_background_brightness_gameplay))
+			{
+				obj_background_brightness_gameplay.background_brightness_lerp = 0;
+			}
+			
 			if (cam_width < 1920 || cam_height < 1080)
 			{
 				camera_set_view_size(view_camera[view_current], 1920, 1080);
@@ -1808,6 +1818,9 @@ if (!global.actually_play_edited_level)
 		|| (gamepad_button_check_pressed(global.player_slot[3], gp_start))
 		|| (gamepad_button_check_pressed(global.player_slot[4], gp_start))
 		|| (gamepad_button_check_pressed(4, gp_start))
+		|| (mouse_check_button_released(mb_left))
+		&& (menu == "pause")
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 185, pause_button_y, display_get_gui_width(), pause_button_y + 42))
 		{
 			
 			#region /* Get what custom assets are in the level */
@@ -1984,8 +1997,8 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 	#region /* Make bottom row of icon appear if mouse is hovering at bottom screen */
 	if (!drag_object)
 	{
-		if (point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64))
-		|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256 - 64, display_get_gui_height() - 64, display_get_gui_width(), display_get_gui_height() + 64))
+		if (point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, display_get_gui_height() + 64)) /* Bottom buttons on left side */
+		|| (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 256 - 64, display_get_gui_height() - 64 - 42, display_get_gui_width(), display_get_gui_height() + 64)) /* Bottom buttons on right side */
 		|| (global.always_show_level_editor_buttons)
 		{
 			if (!show_icon_at_bottom)
@@ -2096,7 +2109,7 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 	}
 	else
 	{
-		icon_at_bottom_y = lerp(icon_at_bottom_y, + 100, 0.1);
+		icon_at_bottom_y = lerp(icon_at_bottom_y, +110, 0.1);
 	}
 	#endregion /* Show icon at bottom of screen END */
 	

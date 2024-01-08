@@ -40,6 +40,10 @@ function scr_player_move_save_whole_level_as_screenshot()
 		}
 		if (full_level_map_screenshot_timer >= 1)
 		{
+			if (instance_exists(obj_background_brightness_gameplay))
+			{
+				obj_background_brightness_gameplay.background_brightness_lerp = 0;
+			}
 			audio_stop_all(); /* Don't play the level music, as it will only play for a second when taking full level screenshot */
 			full_level_map_screenshot_timer ++;
 		}
