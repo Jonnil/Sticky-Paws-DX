@@ -391,14 +391,14 @@ function scr_draw_online_download_list()
 				}
 			}
 			
-			if (is_array(data))
-			&& (array_length(data) > 0)
-			&& (info_data == undefined)
+			if (is_array(data) && array_length(data) > 0 && info_data == undefined)
 			{
 				scr_draw_loading(1, download_online_x + 300, top_left_of_thumbnail_y + menu_y_offset + 100);
 			}
 			else
+			if (is_array(data) && array_length(data) <= 0)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("There is nothing uploaded yet!"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 			}
 			

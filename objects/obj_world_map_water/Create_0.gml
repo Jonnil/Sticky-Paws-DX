@@ -1,4 +1,4 @@
-depth = (-bbox_bottom) * 0.03 + 110;
+depth = (-bbox_bottom) * 0.04 + 110;
 tile = 0;
 
 look_outward = 17;

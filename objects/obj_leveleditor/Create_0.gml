@@ -806,10 +806,15 @@ if (!global.actually_play_edited_level)
 	if_clear_checked = false;
 	level_made_in_what_version_text = "";
 	first_created_on_version = "";
+	var level_information_ini_path = working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini";
 	if (global.level_name != "")
+	&& (file_exists(level_information_ini_path))
 	{
-		ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
-		if_clear_checked = ini_read_string("info", "clear_check", false); /* Draw if level have been Clear Checked on top of screen */
+		ini_open(level_information_ini_path);
+		if (ini_key_exists("info", "clear_check"))
+		{
+			if_clear_checked = ini_read_string("info", "clear_check", false); /* Draw if level have been Clear Checked on top of screen */
+		}
 		if (ini_key_exists("info", "first_created_on_version"))
 		{
 			if (string_digits(ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date())) < string_digits(scr_get_build_date()))

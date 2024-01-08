@@ -36,7 +36,7 @@ if (other.set_difficulty_mode == false)
 		if (can_drag_object)
 		{
 			effect_create_above(ef_ring, x, y, 0, c_white);
-			depth = (-bbox_bottom) * 0.03 -300;
+			depth = (-bbox_bottom) * 0.04 -300;
 			drag_object = true;
 			drag_xstart = x;
 			drag_ystart = y;
@@ -63,16 +63,16 @@ if (mouse_check_button_released(mb_left))
 		if (object == LEVEL_OBJECT_ID.ID_WATER)
 		|| (object == LEVEL_OBJECT_ID.ID_BREATHABLE_WATER)
 		{
-			depth = (-bbox_bottom) * 0.03 -20;
+			depth = (-bbox_bottom) * 0.04 -20;
 		}
 		else
 		if (object == LEVEL_OBJECT_ID.ID_LAVA)
 		{
-			depth = (-bbox_bottom) * 0.03 -18;
+			depth = (-bbox_bottom) * 0.04 -18;
 		}
 		else
 		{
-			depth = (-bbox_bottom) * 0.03 -19;
+			depth = (-bbox_bottom) * 0.04 -19;
 		}
 		#endregion /* Reset depth to normal when releasing object END */
 		
