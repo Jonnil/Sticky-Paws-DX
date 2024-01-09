@@ -24,6 +24,7 @@ prev_display_height = display_get_gui_height();
 global.time_countdown_bonus = 500;
 pause = false;
 pause_button_y = display_get_gui_height() + 100;
+in_modify_object_menu = false;
 if (global.player_can_play[1])
 {
 	camera_player = 0;

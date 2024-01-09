@@ -52,3 +52,19 @@ else {
 if (draw_item_with_spring) {
 	draw_sprite_ext(global.resource_pack_sprite_coil_spring, 0, x, y + 16, spring_scale, spring_scale, 0, image_blend, image_alpha);
 }
+
+if (object == LEVEL_OBJECT_ID.ID_SIGN_READABLE)
+&& (position_meeting(x, y, obj_leveleditor))
+{
+	var xx = x;
+	var yy = y - 32;
+	var x_adjusted = x;
+	
+	draw_set_alpha(0.9);
+	draw_roundrect_color_ext(x_adjusted - (string_width_ext(second_x, 40, 1000) * 0.41) - 8, yy - string_height_ext(second_x, 40, 1000), x_adjusted + (string_width_ext(second_x, 40, 1000) * 0.41) + 8, yy + 8, 50, 50, c_black, c_black, false);
+	draw_triangle_color(xx - 8, yy + 8, xx + 8, yy + 8, xx, yy + 32, c_black, c_black, c_black, false);
+	draw_set_alpha(1);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_bottom);
+	draw_text_ext_transformed_color(x_adjusted, yy, string(second_x), 40, 1000, global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+}

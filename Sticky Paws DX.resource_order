@@ -601,6 +601,7 @@
     {"name":"obj_map_cake_stealing_enemy","order":10,"path":"objects/obj_map_cake_stealing_enemy/obj_map_cake_stealing_enemy.yy",},
     {"name":"spr_hard_block_2x2","order":50,"path":"sprites/spr_hard_block_2x2/spr_hard_block_2x2.yy",},
     {"name":"spr_icon_played","order":32,"path":"sprites/spr_icon_played/spr_icon_played.yy",},
+    {"name":"obj_textbox","order":36,"path":"objects/obj_textbox/obj_textbox.yy",},
     {"name":"spr_world_map_water_2","order":9,"path":"sprites/spr_world_map_water_2/spr_world_map_water_2.yy",},
     {"name":"scr_menu_navigation_with_joystick_delay","order":22,"path":"scripts/scr_menu_navigation_with_joystick_delay/scr_menu_navigation_with_joystick_delay.yy",},
     {"name":"scr_player_move_pause","order":9,"path":"scripts/scr_player_move_pause/scr_player_move_pause.yy",},

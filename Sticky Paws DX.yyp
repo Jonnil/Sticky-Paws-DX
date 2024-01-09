@@ -2957,7 +2957,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.444",
+    "IDEVersion": "2023.1100.0.450",
   },
   "resources": [
     {"id":{"name":"obj_map_palmtree","path":"objects/obj_map_palmtree/obj_map_palmtree.yy",},},
@@ -3553,6 +3553,7 @@
     {"id":{"name":"obj_map_cake_stealing_enemy","path":"objects/obj_map_cake_stealing_enemy/obj_map_cake_stealing_enemy.yy",},},
     {"id":{"name":"spr_hard_block_2x2","path":"sprites/spr_hard_block_2x2/spr_hard_block_2x2.yy",},},
     {"id":{"name":"spr_icon_played","path":"sprites/spr_icon_played/spr_icon_played.yy",},},
+    {"id":{"name":"obj_textbox","path":"objects/obj_textbox/obj_textbox.yy",},},
     {"id":{"name":"spr_world_map_water_2","path":"sprites/spr_world_map_water_2/spr_world_map_water_2.yy",},},
     {"id":{"name":"scr_menu_navigation_with_joystick_delay","path":"scripts/scr_menu_navigation_with_joystick_delay/scr_menu_navigation_with_joystick_delay.yy",},},
     {"id":{"name":"scr_player_move_pause","path":"scripts/scr_player_move_pause/scr_player_move_pause.yy",},},

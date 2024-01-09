@@ -41,13 +41,13 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	#endregion /* Never draw y too low on screen so it shows up underneath the screen END */
 	
-	if (string_width(what_string_to_edit) < 300)
+	if (string_width_ext(what_string_to_edit, 40, 1000) < 300)
 	{
 		var width = 150;
 	}
 	else
 	{
-		var width = string_width(what_string_to_edit) * 0.5;
+		var width = string_width_ext(what_string_to_edit, 40, 1000) * 0.5;
 	}
 	
 	if (global.keyboard_virtual_timer < 3)
@@ -79,19 +79,11 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	
 	#region /* Box where name is written on */
-	if (string_width(keyboard_string) > 2000)
-	{
-		var extra_height = string_height(keyboard_string) - 10;
-	}
-	else
-	{
-		var extra_height = 0;
-	}
-	draw_rectangle_color(xx - width, yy - 16 - extra_height, xx + width, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
+	draw_rectangle_color(xx - width, yy - string_height_ext(keyboard_string, 40, 1000) + 16, xx + width, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
 	draw_set_alpha(black_rectangle_alpha);
-	draw_rectangle_color(xx - width, yy - 16 - extra_height, xx + width, yy + 16, c_black, c_black, c_black, c_black, false); /* Black transparent rectangle where text is written on */
+	draw_rectangle_color(xx - width, yy - string_height_ext(keyboard_string, 40, 1000) + 16, xx + width, yy + 16, c_black, c_black, c_black, c_black, false); /* Black transparent rectangle where text is written on */
 	draw_set_alpha(1);
-	draw_rectangle_color(xx - width, yy - 16 - extra_height, xx + width, yy + 16, c_white, c_white, c_white, c_white, true); /* White outline */
+	draw_rectangle_color(xx - width, yy - string_height_ext(keyboard_string, 40, 1000) + 16, xx + width, yy + 16, c_white, c_white, c_white, c_white, true); /* White outline */
 	#endregion /* Box where name is written on END */
 	
 	#region /* Draw the inputed text */
@@ -123,14 +115,14 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_bottom);
-	draw_text_ext_transformed_color(xx, yy + 15, string_text, 40, 2000, global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
+	draw_text_ext_transformed_color(xx, yy + 15, string_text, 40, 1000, global.default_text_size, global.default_text_size, 0, c_white, c_white, c_white, c_white, 1);
 	
 	#endregion /* Draw the inputed text END */
 	
 	#region /* A file name can't contain any of these characters */
 	if (os_type != os_switch)
 	{
-		if (can_enter_illegal_charcters == false)
+		if (!can_enter_illegal_charcters)
 		{
 			if (ord(keyboard_lastchar) != ord("\\"))
 			&& (ord(keyboard_lastchar) != ord("/"))
@@ -203,7 +195,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			what_string_to_edit = remember_keyboard_string;
 			keyboard_string = remember_keyboard_string; /* Revert back to whatever was already written before entering name input screen */
 		}
-		if (can_enter_illegal_charcters == false)
+		if (!can_enter_illegal_charcters)
 		{
 			keyboard_string = string_replace_all(keyboard_string, "\\", "");
 			keyboard_string = string_replace_all(keyboard_string, "/", "");
@@ -254,7 +246,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			&& (keyboard_check_pressed(vk_enter))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				if (can_enter_illegal_charcters == false)
+				if (!can_enter_illegal_charcters)
 				{
 					keyboard_string = string_replace_all(keyboard_string, "\\", "");
 					keyboard_string = string_replace_all(keyboard_string, "/", "");

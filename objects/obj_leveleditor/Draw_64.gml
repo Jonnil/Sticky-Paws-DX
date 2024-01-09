@@ -282,6 +282,7 @@ if (!global.actually_play_edited_level)
 		&& (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, - 64 + 1, grid_button_x + 32, + 64))
 		&& (show_icon_at_top)
 		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (level_editor_menu == "grid")
 		{
 			tooltip = "Toggle Grid";
@@ -304,18 +305,32 @@ if (!global.actually_play_edited_level)
 		#region /* Click Zoom Out */
 		if (keyboard_check(global.player_[inp.key][1][1][action.zoom_out]))
 		&& (!keyboard_check(global.player_[inp.key][1][1][action.zoom_in]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][2][1][action.zoom_out]))
 		&& (!keyboard_check(global.player_[inp.key][2][1][action.zoom_in]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][3][1][action.zoom_out]))
 		&& (!keyboard_check(global.player_[inp.key][3][1][action.zoom_in]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][4][1][action.zoom_out]))
 		&& (!keyboard_check(global.player_[inp.key][4][1][action.zoom_in]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][1][2][action.zoom_out]))
 		&& (!keyboard_check(global.player_[inp.key][1][2][action.zoom_in]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][2][2][action.zoom_out]))
 		&& (!keyboard_check(global.player_[inp.key][2][2][action.zoom_in]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][3][2][action.zoom_out]))
 		&& (!keyboard_check(global.player_[inp.key][3][2][action.zoom_in]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][4][2][action.zoom_out]))
 		&& (!keyboard_check(global.player_[inp.key][4][2][action.zoom_in]))
 		{
@@ -325,7 +340,11 @@ if (!global.actually_play_edited_level)
 		if (global.controls_used_for_navigation == "mouse")
 		&& (point_in_rectangle(cursor_x, cursor_y, zoom_out_button_x - 32 + 1, - 64, zoom_out_button_x + 32, + 64))
 		&& (show_icon_at_top)
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (level_editor_menu == "zoom_out")
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		{
 			tooltip = "Zoom Out";
 			show_tooltip += 2;
@@ -357,6 +376,8 @@ if (!global.actually_play_edited_level)
 		&& (keyboard_check(vk_enter))
 		&& (!keyboard_check(187))
 		&& (!keyboard_check(189))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		{
 			zoom_reset = true
 		}
@@ -364,7 +385,11 @@ if (!global.actually_play_edited_level)
 		if (global.controls_used_for_navigation == "mouse")
 		&& (point_in_rectangle(cursor_x, cursor_y, zoom_reset_button_x - 32 + 1, - 64, zoom_reset_button_x + 32, + 64))
 		&& (show_icon_at_top)
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (level_editor_menu == "zoom_reset")
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		{
 			tooltip = "Reset Zoom";
 			show_tooltip += 2;
@@ -398,18 +423,32 @@ if (!global.actually_play_edited_level)
 		#region /* Click Zoom In */
 		if (keyboard_check(global.player_[inp.key][1][1][action.zoom_in]))
 		&& (!keyboard_check(global.player_[inp.key][1][1][action.zoom_out]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][2][1][action.zoom_in]))
 		&& (!keyboard_check(global.player_[inp.key][2][1][action.zoom_out]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][3][1][action.zoom_in]))
 		&& (!keyboard_check(global.player_[inp.key][3][1][action.zoom_out]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][4][1][action.zoom_in]))
 		&& (!keyboard_check(global.player_[inp.key][4][1][action.zoom_out]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][1][2][action.zoom_in]))
 		&& (!keyboard_check(global.player_[inp.key][1][2][action.zoom_out]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][2][2][action.zoom_in]))
 		&& (!keyboard_check(global.player_[inp.key][2][2][action.zoom_out]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][3][2][action.zoom_in]))
 		&& (!keyboard_check(global.player_[inp.key][3][2][action.zoom_out]))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (keyboard_check(global.player_[inp.key][4][2][action.zoom_in]))
 		&& (!keyboard_check(global.player_[inp.key][4][2][action.zoom_out]))
 		{
@@ -419,7 +458,11 @@ if (!global.actually_play_edited_level)
 		if (global.controls_used_for_navigation == "mouse")
 		&& (point_in_rectangle(cursor_x, cursor_y, zoom_in_button_x - 32 + 1, - 64, zoom_in_button_x + 32, + 64))
 		&& (show_icon_at_top)
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		|| (level_editor_menu == "zoom_in")
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		{
 			tooltip = "Zoom In";
 			show_tooltip += 2;
@@ -448,6 +491,8 @@ if (!global.actually_play_edited_level)
 		
 		#region /* Click Help Button */
 		if (keyboard_check_pressed(ord("H")))
+		&& (!pause)
+		&& (!in_modify_object_menu)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
@@ -468,9 +513,11 @@ if (!global.actually_play_edited_level)
 		&& (point_in_rectangle(cursor_x, cursor_y, help_button_x - 32 + 1, - 64, help_button_x + 32, + 64))
 		&& (show_icon_at_top)
 		&& (!pause)
+		&& (!in_modify_object_menu)
 		&& (!modify_object_menu)
 		|| (level_editor_menu == "help")
 		&& (!pause)
+		&& (!in_modify_object_menu)
 		&& (!modify_object_menu)
 		&& (welcome_to_level_editor == 0)
 		{
@@ -581,6 +628,7 @@ if (!global.actually_play_edited_level)
 		#region /* Show a pause button on screen when using the mouse */
 		if (global.controls_used_for_navigation == "mouse")
 		&& (!pause)
+		&& (!in_modify_object_menu)
 		{
 			pause_button_y = display_get_gui_height() - 64 - 42 + icon_at_bottom_y;
 			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() - 185, pause_button_y,,, 0.5, 1, 185, 42, l10n_text("Pause"), "pause", "pause");
@@ -614,6 +662,7 @@ scr_debug_screen();
 scr_draw_darken_screen_when_window_is_unfocused();
 
 if (pause)
+|| (in_modify_object_menu)
 {
 	scr_draw_cursor_mouse();
 }
