@@ -25,6 +25,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Map Screen Objects","folderPath":"folders/Objects/Map Screen Objects.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Other Objects","folderPath":"folders/Objects/Other Objects.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Player Objects","folderPath":"folders/Objects/Player Objects.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Particle","folderPath":"folders/Particle.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Paths","folderPath":"folders/Paths.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Rooms.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Scripts","folderPath":"folders/Scripts.yy",},
@@ -47,7 +48,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprite Masks","folderPath":"folders/Sprites/Sprite Masks.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Particle","folderPath":"folders/Particle.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"character_config.ini","CopyToMask":-1,"filePath":"datafiles/characters/catlyn/data",},
@@ -2958,7 +2958,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.444",
+    "IDEVersion": "2023.1100.0.450",
   },
   "resources": [
     {"id":{"name":"obj_map_palmtree","path":"objects/obj_map_palmtree/obj_map_palmtree.yy",},},

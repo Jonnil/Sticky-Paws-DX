@@ -13,6 +13,7 @@
     {"name":"Map Screen Objects","order":21,"path":"folders/Objects/Map Screen Objects.yy",},
     {"name":"Other Objects","order":42,"path":"folders/Objects/Other Objects.yy",},
     {"name":"Player Objects","order":43,"path":"folders/Objects/Player Objects.yy",},
+    {"name":"Particle","order":18,"path":"folders/Particle.yy",},
     {"name":"Paths","order":5,"path":"folders/Paths.yy",},
     {"name":"Rooms","order":11,"path":"folders/Rooms.yy",},
     {"name":"Scripts","order":6,"path":"folders/Scripts.yy",},
@@ -33,7 +34,6 @@
     {"name":"Sprite Masks","order":138,"path":"folders/Sprites/Sprite Masks.yy",},
     {"name":"Tile Sets","order":3,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":9,"path":"folders/Timelines.yy",},
-    {"name":"Particle","order":18,"path":"folders/Particle.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"obj_map_palmtree","order":14,"path":"objects/obj_map_palmtree/obj_map_palmtree.yy",},

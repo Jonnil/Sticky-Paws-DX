@@ -105,7 +105,7 @@ if (global.effect_rain)
 	{
 		scr_audio_play(snd_rain, volume_source.ambient); /* Play rain sound */
 	}
-	part_emitter_region(part_system_rain, 0, camera_get_view_x(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), ps_shape_rectangle, ps_distr_linear);
+	part_emitter_region(part_system_rain, 0, camera_get_view_x(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, ps_shape_rectangle, ps_distr_linear);
 }
 #endregion /* Rain Effect END */
 
