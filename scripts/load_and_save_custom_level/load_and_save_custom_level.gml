@@ -239,7 +239,9 @@ function scr_save_level_information()
 		
 		ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
 		ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
-		ini_write_real("info", "rain", global.rain);
+		ini_write_real("info", "rain", global.effect_rain);
+		ini_write_real("info", "snow", global.effect_snow);
+		ini_write_real("info", "wind", global.effect_wind);
 		ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
 		ini_write_real("info", "time_countdown", global.time_countdown);
 		

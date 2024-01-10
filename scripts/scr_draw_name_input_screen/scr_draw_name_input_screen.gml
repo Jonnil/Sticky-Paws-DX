@@ -79,11 +79,19 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	
 	#region /* Box where name is written on */
-	draw_rectangle_color(xx - width, yy - string_height_ext(keyboard_string, 40, 1000) + 16, xx + width, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
+	if (string_height_ext(keyboard_string, 40, 1000) > 0)
+	{
+		var extra_height = string_height_ext(keyboard_string, 40, 1000) - 25;
+	}
+	else
+	{
+		var extra_height = 16;
+	}
+	draw_rectangle_color(xx - width, yy - extra_height, xx + width, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
 	draw_set_alpha(black_rectangle_alpha);
-	draw_rectangle_color(xx - width, yy - string_height_ext(keyboard_string, 40, 1000) + 16, xx + width, yy + 16, c_black, c_black, c_black, c_black, false); /* Black transparent rectangle where text is written on */
+	draw_rectangle_color(xx - width, yy - extra_height, xx + width, yy + 16, c_black, c_black, c_black, c_black, false); /* Black transparent rectangle where text is written on */
 	draw_set_alpha(1);
-	draw_rectangle_color(xx - width, yy - string_height_ext(keyboard_string, 40, 1000) + 16, xx + width, yy + 16, c_white, c_white, c_white, c_white, true); /* White outline */
+	draw_rectangle_color(xx - width, yy - extra_height, xx + width, yy + 16, c_white, c_white, c_white, c_white, true); /* White outline */
 	#endregion /* Box where name is written on END */
 	
 	#region /* Draw the inputed text */
@@ -176,7 +184,9 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	#endregion /* Show how many characters a name has and what the max amount of characters is END */
 	
-	if (os_type == os_switch)
+	if (global.controls_used_for_navigation == "gamepad")
+	|| (global.always_show_gamepad_buttons)
+	|| (os_type == os_switch)
 	|| (steam_utils_is_steam_running_on_steam_deck())
 	{
 		scr_draw_gamepad_buttons(gp_face4, xx + 200, yy + 32, 0.5, c_white, 1);

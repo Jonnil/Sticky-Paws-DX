@@ -1,4 +1,5 @@
 if (textbox_alpha > 0)
+&& (string_length(textbox_text) > 0)
 {
 	var xx = x;
 	var yy = y - 64;

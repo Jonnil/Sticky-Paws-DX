@@ -2035,8 +2035,7 @@ else
 				image_speed = 0.3;
 			}
 			else
-			if (instance_exists(obj_camera))
-			&& (global.rain)
+			if (global.effect_rain || global.effect_snow)
 			&& (sprite_stand_cold > noone)
 			{
 				sprite_index = sprite_stand_cold;

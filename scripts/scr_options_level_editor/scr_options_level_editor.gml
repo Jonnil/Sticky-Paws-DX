@@ -57,6 +57,8 @@ function scr_options_level_editor()
 		|| (menu == "level_theme")
 		|| (menu == "make_every_tileset_into_default_tileset")
 		|| (menu == "rain")
+		|| (menu == "snow")
+		|| (menu == "wind")
 		|| (menu == "enable_time_countdown")
 		|| (menu == "time_countdown")
 		|| (menu == "show_new_items_notification_level_editor")
@@ -86,7 +88,9 @@ function scr_options_level_editor()
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
-					ini_write_real("info", "rain", global.rain);
+					ini_write_real("info", "rain", global.effect_rain);
+					ini_write_real("info", "snow", global.effect_snow);
+					ini_write_real("info", "wind", global.effect_wind);
 					ini_write_real("info", "enable_time_countdown", global.enable_time_countdown);
 					ini_write_real("info", "time_countdown", global.time_countdown);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -208,14 +212,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					if (global.rain == false)
-					{
-						global.rain = true;
-					}
-					else
-					{
-						global.rain = false;
-					}
+					global.effect_rain = !global.effect_rain;
 					menu_delay = 3;
 				}
 				else
@@ -224,6 +221,64 @@ function scr_options_level_editor()
 				&& (!open_dropdown)
 				{
 					menu = "make_every_tileset_into_default_tileset";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "snow";
+					menu_delay = 3;
+				}
+			}
+			if (menu == "snow")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				|| (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					global.effect_snow = !global.effect_snow;
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "rain";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "wind";
+					menu_delay = 3;
+				}
+			}
+			if (menu == "wind")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				|| (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					global.effect_wind = !global.effect_wind;
+					menu_delay = 3;
+				}
+				else
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "snow";
 					menu_delay = 3;
 				}
 				else
@@ -259,7 +314,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					menu = "rain";
+					menu = "wind";
 					menu_delay = 3;
 				}
 				else
@@ -424,17 +479,21 @@ function scr_options_level_editor()
 			var level_theme_y = 47 * 1;
 			var make_every_tileset_into_default_tileset_y = 47 * 2;
 			var rain_y = 47 * 3;
-			var enable_time_countdown_y = 47 * 4;
-			var time_countdown_y = 46 * 5;
-			var show_new_items_notification_y = 46 * 6;
-			var selected_level_editing_music_y = 46 * 8 - 16;
-			var delete_all_objects_y = 46 * 9 + 20 - 16;
+			var snow_y = 47 * 4;
+			var wind_y = 47 * 5;
+			var enable_time_countdown_y = 47 * 6;
+			var time_countdown_y = 46 * 7;
+			var show_new_items_notification_y = 46 * 8;
+			var selected_level_editing_music_y = 46 * 10 - 16;
+			var delete_all_objects_y = 46 * 11 + 20 - 16;
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 			draw_menu_button(level_editor_options_x, level_theme_y, l10n_text("Level Theme"), "level_theme", "change_entire_theme");
 			draw_menu_checkmark(level_editor_options_x - 90, make_every_tileset_into_default_tileset_y, l10n_text("Make every tileset into default tileset"), "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
-			draw_menu_checkmark(level_editor_options_x - 90, rain_y, l10n_text("Rain"), "rain", global.rain);
+			draw_menu_checkmark(level_editor_options_x - 90, rain_y, l10n_text("Rain"), "rain", global.effect_rain);
+			draw_menu_checkmark(level_editor_options_x - 90, snow_y, l10n_text("Snow"), "snow", global.effect_snow);
+			draw_menu_checkmark(level_editor_options_x - 90, wind_y, l10n_text("Wind"), "wind", global.effect_wind);
 			draw_menu_checkmark(level_editor_options_x - 90, enable_time_countdown_y, l10n_text("Enable Time Countdown"), "enable_time_countdown", global.enable_time_countdown);
 			if (global.enable_time_countdown)
 			{
@@ -589,6 +648,7 @@ function scr_options_level_editor()
 			|| (have_custom_asset_ambience_underwater)
 			|| (have_custom_asset_clear_melody)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_entire_theme_y + 24, l10n_text("Custom Assets Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_entire_theme_y, 16, 0, 1, 1, 32, 32, "", "remove_entire_theme", "remove_theme_are_you_sure_no");
@@ -602,6 +662,7 @@ function scr_options_level_editor()
 			|| (have_custom_asset_foreground2)
 			|| (have_custom_asset_foreground_secret)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_background_y + 24, l10n_text("Custom Backgrounds Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button(level_editor_options_x, change_music_y, l10n_text("Change Music"), "change_music", "change_all_music");
@@ -611,7 +672,8 @@ function scr_options_level_editor()
 			|| (have_custom_asset_ambience_underwater)
 			|| (have_custom_asset_clear_melody)
 			{
-				scr_draw_text_outlined(level_editor_options_x, change_music_y + 24, l10n_text("Custom Sounds Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
+				draw_set_halign(fa_center);
+				scr_draw_text_outlined(level_editor_options_x + 620, change_music_y + 24, l10n_text("Custom Sounds Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button(level_editor_options_x, background_offset_y, l10n_text("BG Offset"), "background_offset", "back_background_offset");
 			draw_menu_button(level_editor_options_x, background_parallax_y, l10n_text("BG Parallax"), "background_parallax", "back_background_parallax");
@@ -938,46 +1000,55 @@ function scr_options_level_editor()
 			|| (have_custom_asset_background3)
 			|| (have_custom_asset_background4)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_all_background_y + 24, l10n_text("Custom Backgrounds Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_all_background_y, 16, 0, 1, 1, 32, 32, "", "remove_all_background", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_background1_y, l10n_text("Change Background 1"), "change_background1", "load_official_level_to_take_from");
 			if (have_custom_asset_background1)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_background1_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_background1_y + 24, string(global.default_background1), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_background1_y, 16, 0, 1, 1, 32, 32, "", "remove_background1", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_background2_y, l10n_text("Change Background 2"), "change_background2", "load_official_level_to_take_from");
 			if (have_custom_asset_background2)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_background2_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_background2_y + 24, string(global.default_background2), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_background2_y, 16, 0, 1, 1, 32, 32, "", "remove_background2", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_background3_y, l10n_text("Change Background 3"), "change_background3", "load_official_level_to_take_from");
 			if (have_custom_asset_background3)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_background3_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_background3_y + 24, string(global.default_background3), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_background3_y, 16, 0, 1, 1, 32, 32, "", "remove_background3", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_background4_y, l10n_text("Change Background 4"), "change_background4", "load_official_level_to_take_from");
 			if (have_custom_asset_background4)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_background4_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_background4_y + 24, string(global.default_background4), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_background4_y, 16, 0, 1, 1, 32, 32, "", "remove_background4", "remove_theme_are_you_sure_no");
@@ -987,46 +1058,55 @@ function scr_options_level_editor()
 			|| (have_custom_asset_foreground2)
 			|| (have_custom_asset_foreground_secret)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_all_foreground_y + 24, l10n_text("Custom Foregrounds Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_all_foreground_y, 16, 0, 1, 1, 32, 32, "", "remove_all_foreground", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_foreground1_y, l10n_text("Change Foreground 1"), "change_foreground1", "load_official_level_to_take_from");
 			if (have_custom_asset_foreground1)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_foreground1_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_foreground1_y + 24, string(global.default_foreground1), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_foreground1_y, 16, 0, 1, 1, 32, 32, "", "remove_foreground1", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_foreground1_5_y, l10n_text("Change Foreground 1.5"), "change_foreground1_5", "load_official_level_to_take_from");
 			if (have_custom_asset_foreground1_5)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_foreground1_5_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_foreground1_5_y + 24, string(global.default_foreground1_5), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_foreground1_5_y, 16, 0, 1, 1, 32, 32, "", "remove_foreground1_5", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_foreground2_y, l10n_text("Change Foreground 2"), "change_foreground2", "load_official_level_to_take_from");
 			if (have_custom_asset_foreground2)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_foreground2_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_foreground2_y + 24, string(global.default_foreground2), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_foreground2_y, 16, 0, 1, 1, 32, 32, "", "remove_foreground2", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_foreground_secret_y, l10n_text("Change Foreground Secret"), "change_foreground_secret", "load_official_level_to_take_from");
 			if (have_custom_asset_foreground_secret)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_foreground_secret_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_foreground_secret_y + 24, string(global.default_foreground_secret), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_foreground_secret_y, 16, 0, 1, 1, 32, 32, "", "remove_foreground_secret", "remove_theme_are_you_sure_no");
@@ -1816,56 +1896,67 @@ function scr_options_level_editor()
 			|| (have_custom_asset_ambience_underwater)
 			|| (have_custom_asset_clear_melody)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_all_music_y + 24, l10n_text("Custom Sounds Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_all_music_y, 16, 0, 1, 1, 32, 32, "", "remove_all_music", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_music_overworld_y, l10n_text("Change Overworld Music"), "change_music_overworld", "load_official_level_to_take_from");
 			if (have_custom_asset_music)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_music_overworld_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_music_overworld_y + 24, string(global.default_music_overworld), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_music_overworld_y, 16, 0, 1, 1, 32, 32, "", "remove_music_overworld", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_music_underwater_y, l10n_text("Change Underwater Music"), "change_music_underwater", "load_official_level_to_take_from");
 			if (have_custom_asset_music_underwater)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_music_underwater_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_music_underwater_y + 24, string(global.default_music_underwater), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_music_underwater_y, 16, 0, 1, 1, 32, 32, "", "remove_music_underwater", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_ambience_overworld_y, l10n_text("Change Overworld Ambience"), "change_ambience_overworld", "load_official_level_to_take_from");
 			if (have_custom_asset_ambience)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_ambience_overworld_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_ambience_overworld_y + 24, string(global.default_ambience_overworld), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_ambience_overworld_y, 16, 0, 1, 1, 32, 32, "", "remove_ambience_overworld", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_ambience_underwater_y, l10n_text("Change Underwater Ambience"), "change_ambience_underwater", "load_official_level_to_take_from");
 			if (have_custom_asset_ambience_underwater)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_ambience_underwater_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_ambience_underwater_y + 24, string(global.default_ambience_underwater), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_ambience_underwater_y, 16, 0, 1, 1, 32, 32, "", "remove_ambience_underwater", "remove_theme_are_you_sure_no");
 			draw_menu_button(level_editor_options_x, change_clear_melody_y, l10n_text("Change Clear Melody"), "change_clear_melody", "load_official_level_to_take_from");
 			if (have_custom_asset_clear_melody)
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_clear_melody_y + 24, l10n_text("Custom Asset Loaded"), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			else
 			{
+				draw_set_halign(fa_center);
 				scr_draw_text_outlined(level_editor_options_x + 620, change_clear_melody_y + 24, string(global.default_clear_melody), global.default_text_size * 0.75, c_black, c_white, 1);
 			}
 			draw_menu_button_sprite(spr_icon_delete, level_editor_options_x + 432, change_clear_melody_y, 16, 0, 1, 1, 32, 32, "", "remove_clear_melody", "remove_theme_are_you_sure_no");

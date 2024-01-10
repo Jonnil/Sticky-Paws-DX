@@ -9,6 +9,10 @@ layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), g
 layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), global.custom_background4);
 #endregion /* Set Backgrounds END */
 
+#region /* Set Particle System */
+part_system_rain = part_system_create(par_rain);
+#endregion /* Set Particle System END */
+
 scr_make_background_visible();
 
 room_speed = global.max_fps; /* Room Speed is max fps */

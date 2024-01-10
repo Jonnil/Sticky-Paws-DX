@@ -47,6 +47,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprite Masks","folderPath":"folders/Sprites/Sprite Masks.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Particle","folderPath":"folders/Particle.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"character_config.ini","CopyToMask":-1,"filePath":"datafiles/characters/catlyn/data",},
@@ -2957,7 +2958,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.1100.0.450",
+    "IDEVersion": "2023.1100.0.444",
   },
   "resources": [
     {"id":{"name":"obj_map_palmtree","path":"objects/obj_map_palmtree/obj_map_palmtree.yy",},},
@@ -3214,6 +3215,7 @@
     {"id":{"name":"snd_enemyvoice_big_defeated3","path":"sounds/snd_enemyvoice_big_defeated3/snd_enemyvoice_big_defeated3.yy",},},
     {"id":{"name":"spr_spring","path":"sprites/spr_spring/spr_spring.yy",},},
     {"id":{"name":"scr_player_move_customizable_controls","path":"scripts/scr_player_move_customizable_controls/scr_player_move_customizable_controls.yy",},},
+    {"id":{"name":"spr_map_fg_cloudshadow","path":"sprites/spr_map_fg_cloudshadow/spr_map_fg_cloudshadow.yy",},},
     {"id":{"name":"snd_boss_voice_laugh","path":"sounds/snd_boss_voice_laugh/snd_boss_voice_laugh.yy",},},
     {"id":{"name":"spr_leveleditor_icon_invincibility","path":"sprites/spr_leveleditor_icon_invincibility/spr_leveleditor_icon_invincibility.yy",},},
     {"id":{"name":"spr_wall_glass","path":"sprites/spr_wall_glass/spr_wall_glass.yy",},},

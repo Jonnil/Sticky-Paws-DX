@@ -58,7 +58,9 @@ function scr_initialize_level_information_ini()
 		global.make_every_tileset_into_default_tileset = get_custom_level_information_real("info", "make_every_tileset_into_default_tileset", false);
 		global.enable_time_countdown = get_custom_level_information_real("info", "enable_time_countdown", false);
 		global.time_countdown = get_custom_level_information_real("info", "time_countdown", 500);
-		global.rain = get_custom_level_information_real("info", "rain", false);
+		global.effect_rain = get_custom_level_information_real("info", "rain", false);
+		global.effect_snow = get_custom_level_information_real("info", "snow", false);
+		global.effect_wind = get_custom_level_information_real("info", "wind", false);
 		
 		intro_animation = get_custom_level_information_string("info", "intro_animation", "");
 		intro_animation_play_only_once = get_custom_level_information_real("info", "intro_animation_play_only_once", false);
@@ -109,7 +111,9 @@ function scr_initialize_level_information_ini()
 		global.enable_time_countdown = false;
 		global.time_countdown = 500;
 		global.make_every_tileset_into_default_tileset = false;
-		global.rain = false;
+		global.effect_rain = false;
+		global.effect_snow = false;
+		global.effect_wind = false;
 		intro_animation = "";
 		intro_animation_play_only_once = false;
 		after_goal_go_to_this_level = "";

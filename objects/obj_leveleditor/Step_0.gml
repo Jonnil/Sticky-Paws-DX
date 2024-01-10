@@ -7,6 +7,8 @@ else
 	in_modify_object_menu = false;
 }
 
+scr_set_controls_used_to_navigate();
+
 #region /* Navigate the level editor icon with D-Pad */
 if (menu_delay == 0 && menu_joystick_delay == 0)
 && (!pause)
@@ -352,7 +354,6 @@ if (!global.actually_play_edited_level)
 	global.leveleditor_y = y;
 	
 	#region /* Need to set the controls early in the step event */
-	scr_set_controls_used_to_navigate();
 	if (!pause)
 	&& (!in_modify_object_menu)
 	{
