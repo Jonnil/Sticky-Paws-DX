@@ -101,17 +101,37 @@ if (global.spikes_emerge_time >= get_room_speed * 4) {
 #region /* Rain Effect */
 if (global.effect_rain)
 {
-	if (!audio_is_playing(snd_rain))
+	if (!part_system_exists(part_system_rain))
 	{
-		scr_audio_play(snd_rain, volume_source.ambient); /* Play rain sound */
+		part_system_rain = part_system_create(par_rain_level);
 	}
-	part_emitter_region(part_system_rain, 0, camera_get_view_x(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, ps_shape_rectangle, ps_distr_linear);
+	else
+	{
+		if (!audio_is_playing(snd_rain))
+		{
+			scr_audio_play(snd_rain, volume_source.ambient); /* Play rain sound */
+		}
+		part_emitter_region(part_system_rain, 0, camera_get_view_x(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) - 32, camera_get_view_y(view_camera[view_current]) - 32, ps_shape_rectangle, ps_distr_linear);
+	}
 }
 #endregion /* Rain Effect END */
 
 #region /* Snow Effect */
 if (global.effect_snow)
 {
+	if (!part_system_exists(part_system_snow))
+	{
+		part_system_snow = part_system_create(par_snow);
+	}
+	else
+	{
+		//if (!audio_is_playing(snd_snow))
+		//{
+		//	scr_audio_play(snd_snow, volume_source.ambient); /* Play snow sound */
+		//}
+		part_emitter_region(part_system_snow, 0, camera_get_view_x(view_camera[view_current]), camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]), camera_get_view_y(view_camera[view_current]), camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]), ps_shape_rectangle, ps_distr_linear);
+	}
+	
 	if (irandom(9) == 0) /* Reduce the frequency of snowflakes. irandom generates a random integer between 0 and 9 */
 	{
 		effect_create_above(ef_snow, x, y, 2, c_white);

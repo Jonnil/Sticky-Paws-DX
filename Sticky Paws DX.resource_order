@@ -579,6 +579,7 @@
     {"name":"obj_world_map_water","order":9,"path":"objects/obj_world_map_water/obj_world_map_water.yy",},
     {"name":"obj_pause","order":21,"path":"objects/obj_pause/obj_pause.yy",},
     {"name":"snd_enemyvoice_defeated2","order":32,"path":"sounds/snd_enemyvoice_defeated2/snd_enemyvoice_defeated2.yy",},
+    {"name":"par_rain_level","order":4,"path":"particles/par_rain_level/par_rain_level.yy",},
     {"name":"spr_menu_create_custom_level","order":109,"path":"sprites/spr_menu_create_custom_level/spr_menu_create_custom_level.yy",},
     {"name":"scr_translation","order":36,"path":"scripts/scr_translation/scr_translation.yy",},
     {"name":"obj_water_splash_particle","order":28,"path":"objects/obj_water_splash_particle/obj_water_splash_particle.yy",},

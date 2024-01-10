@@ -76,6 +76,7 @@ if (global.quit_level)
 		gamepad_set_vibration(global.player_slot[2], 0, 0);
 		gamepad_set_vibration(global.player_slot[3], 0, 0);
 		gamepad_set_vibration(global.player_slot[4], 0, 0);
+		
 		room_goto(global.quit_to_map ? rm_world_map : rm_title); /* If player chose to quit to map, then go to world map, otherwise go to title screen */
 		global.quit_to_map = false;
 		global.quit_to_title = false;
