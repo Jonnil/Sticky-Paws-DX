@@ -55,7 +55,7 @@ if (global.character_select_in_this_menu == "level_editor")
 #endregion /* Save how many times you have died END */
 
 if (lives > 0)
-&& (!global.doing_clear_check) /* If you are doing a clear check for uploading level or character, then don't lose lives, you should get infinite tries */
+&& (!global.doing_clear_check_level) /* If you are doing a clear check for uploading level or character, then don't lose lives, you should get infinite tries */
 && (!global.doing_clear_check_character)
 {
 	if (global.character_select_in_this_menu == "main_game")

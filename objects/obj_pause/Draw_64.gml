@@ -145,6 +145,7 @@ if (!hide_menu_for_clean_screenshots)
 && (os_type != os_android)
 {
 	if (menu == "continue") /* Can only hide menu when on these buttons specifically */
+	|| (menu == "edit_level")
 	|| (menu == "options")
 	|| (menu == "restart")
 	|| (menu == "quit")
@@ -263,39 +264,53 @@ if (!hide_menu_for_clean_screenshots)
 	&& (show_loading_icon == false)
 	{
 		if (menu == "continue")
+		|| (menu == "edit_level")
 		|| (menu == "options")
 		|| (menu == "restart")
 		|| (menu == "quit")
 		|| (menu == "report")
 		{
-			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Continue"), "continue", "continue", c_lime, fade_in_pause_alpha);
-			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+			draw_menu_button(get_window_width * 0.5 - 185, continue_y, l10n_text("Continue"), "continue", "continue", c_lime, fade_in_pause_alpha);
+			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, continue_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+			
+			if (global.character_select_in_this_menu == "level_editor")
+			&& (!file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+			&& (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
+			{
+				draw_menu_button(get_window_width * 0.5 - 185, edit_level_y, l10n_text("Download to Level Select"), "edit_level", "edit_level", c_lime, fade_in_pause_alpha);
+			}
+			else
+			if (global.character_select_in_this_menu == "level_editor")
+			&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+			{
+				draw_menu_button(get_window_width * 0.5 - 185, edit_level_y, l10n_text("Edit Level"), "edit_level", "edit_level", c_lime, fade_in_pause_alpha);
+			}
 			
 			if (room == rm_leveleditor)
 			|| (global.pause_room == rm_leveleditor)
 			{
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
-				draw_sprite_ext(spr_icon_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+				draw_menu_button(get_window_width * 0.5 - 185, options_y, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
+				draw_sprite_ext(spr_icon_cogwheel, 0, get_window_width * 0.5 - 185 + 20, options_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 				if (!global.goal_active)
 				{
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Restart"), "restart", "restart", c_lime, fade_in_pause_alpha);
+					draw_menu_button(get_window_width * 0.5 - 185, restart_y, l10n_text("Restart"), "restart", "restart", c_lime, fade_in_pause_alpha);
 					if (holding_key_timer > 0)
 					&& (menu == "restart")
 					&& (global.checkpoint_x == 0)
 					&& (global.checkpoint_y == 0)
 					{
-						scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 42 + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
+						scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, restart_y + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
 					}
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Quit"), "quit", "quit_to_map", c_red, fade_in_pause_alpha);
+					draw_menu_button(get_window_width * 0.5 - 185, quit_y, l10n_text("Quit"), "quit", "quit_to_map", c_red, fade_in_pause_alpha);
 				}
 			}
 			else
 			{
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
-				draw_sprite_ext(spr_icon_cogwheel, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+				draw_menu_button(get_window_width * 0.5 - 185, options_y, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
+				draw_sprite_ext(spr_icon_cogwheel, 0, get_window_width * 0.5 - 185 + 20, options_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 				if (!global.goal_active)
 				{
-					draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit"), "quit", "quit", c_red, fade_in_pause_alpha);
+					draw_menu_button(get_window_width * 0.5 - 185, quit_y, l10n_text("Quit"), "quit", "quit", c_red, fade_in_pause_alpha);
 				}
 			}
 			/* Report Button in bottom left corner */

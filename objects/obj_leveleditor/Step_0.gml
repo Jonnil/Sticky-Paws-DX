@@ -119,7 +119,7 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 #endregion /* Navigate the level editor icon with D-Pad END */
 
 #region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
-if (global.doing_clear_check)
+if (global.doing_clear_check_level)
 {
 	if (file_exists(working_directory + "custom_levels/" + global.level_name + "/automatic_thumbnail.png"))
 	{

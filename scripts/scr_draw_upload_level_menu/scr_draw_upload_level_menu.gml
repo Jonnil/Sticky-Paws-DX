@@ -279,7 +279,7 @@ function scr_draw_upload_level_menu()
 		var do_a_clear_check_y = 432;
 		var do_a_clear_check_no_y = 532;
 		var do_a_clear_check_yes_y = 532;
-		if (!global.doing_clear_check)
+		if (!global.doing_clear_check_level)
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);
@@ -411,7 +411,7 @@ function scr_draw_upload_level_menu()
 				}
 				#endregion /* Set clear_check to false whenever you agree to do a clear check for the first time, just in case it's already not END */
 				
-				global.doing_clear_check = true; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
+				global.doing_clear_check_level = true; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
 				global.actually_play_edited_level = false; /* Don't turn this variable on yet, let the level editor do this itself, so that the correct functions can run when in level editor */
 				global.play_edited_level = false;
 				can_navigate = false;
@@ -727,7 +727,7 @@ function scr_draw_upload_level_menu()
 				level_editor_edit_name = true;
 				can_input_level_name = true;
 				can_navigate = true;
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 				{
@@ -756,7 +756,7 @@ function scr_draw_upload_level_menu()
 				level_editor_edit_name = true;
 				can_input_level_name = true;
 				can_navigate = true;
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				global.level_description = global.level_name;
 				
@@ -792,7 +792,7 @@ function scr_draw_upload_level_menu()
 				level_editor_edit_name = false;
 				can_input_level_name = false;
 				can_navigate = true;
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				global.play_edited_level = false;
 				menu_delay = 3;
@@ -992,7 +992,7 @@ function scr_draw_upload_level_menu()
 						obj_camera.iris_zoom = 0;
 					}
 				}
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				global.play_edited_level = false;
 				can_input_level_name = false;
@@ -1126,7 +1126,7 @@ function scr_draw_upload_level_menu()
 						obj_camera.iris_zoom = 0;
 					}
 				}
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				global.play_edited_level = false;
 				can_input_level_name = false;

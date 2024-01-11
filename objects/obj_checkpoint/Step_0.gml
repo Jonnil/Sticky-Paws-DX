@@ -57,7 +57,7 @@ if (instance_exists(obj_player))
 						scr_audio_play(snd_1up, volume_source.sound);
 					}
 					
-					if (!global.doing_clear_check) /* Don't save these things if you're doing a clear check. You need to restart from the very start if you lose, regardless if you hit checkpoints */
+					if (!global.doing_clear_check_level) /* Don't save these things if you're doing a clear check. You need to restart from the very start if you lose, regardless if you hit checkpoints */
 					{
 						global.checkpoint_x = xstart;
 						global.checkpoint_y = ystart;

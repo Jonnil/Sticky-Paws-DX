@@ -10,6 +10,28 @@ room_speed = global.max_fps;
 
 show_loading_icon = false;
 
+var get_window_height = display_get_gui_height();
+
+continue_y = get_window_height * 0.5;
+if (global.character_select_in_this_menu == "level_editor")
+&& (!file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+&& (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
+|| (global.character_select_in_this_menu == "level_editor")
+&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+{
+	edit_level_y = get_window_height * 0.5 + (42 * 1);
+	options_y = get_window_height * 0.5 + (42 * 2);
+	restart_y = get_window_height * 0.5 + (42 * 3);
+	quit_y = get_window_height * 0.5 + (42 * 4);
+}
+else
+{
+	edit_level_y = -999;
+	options_y = get_window_height * 0.5 + (42 * 1);
+	restart_y = get_window_height * 0.5 + (42 * 2);
+	quit_y = get_window_height * 0.5 + (42 * 3);
+}
+
 #region /* Mouse x and mouse y initializing */
 mx = mouse_x;
 my = mouse_y;

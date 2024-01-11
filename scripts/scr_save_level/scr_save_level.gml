@@ -83,7 +83,7 @@ function scr_save_level()
 			
 			#region /* If doing a level clear check, and winning the level, then add in level information that you have done a clear check */
 			if (global.level_clear_rate == "clear")
-			&& (global.doing_clear_check)
+			&& (global.doing_clear_check_level)
 			{
 				ini_write_real("info", "clear_check", true);
 				global.go_to_menu_when_going_back_to_title = "upload_edit_name";

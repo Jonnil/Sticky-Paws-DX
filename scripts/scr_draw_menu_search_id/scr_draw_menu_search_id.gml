@@ -656,7 +656,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (key_a_pressed)
 				{
 					/* Play the level */
-					global.doing_clear_check = false;
+					global.doing_clear_check_level = false;
 					global.actually_play_edited_level = true; /* Even before going to the level, set this variable to true */
 					global.play_edited_level = true;
 					global.go_to_menu_when_going_back_to_title = "online_download_list_load"; /* If you are playing from Online Level List, game needs to remember this so that you go back to Online Level List after exiting level */
@@ -712,7 +712,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (key_a_pressed)
 				{
 					/* Edit the downloaded level */
-					global.doing_clear_check = false;
+					global.doing_clear_check_level = false;
 					global.actually_play_edited_level = false;
 					global.play_edited_level = false;
 					global.use_cache_or_working = working_directory;

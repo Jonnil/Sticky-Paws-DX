@@ -403,7 +403,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			&& (global.controls_used_for_navigation == "mouse")
 			|| (key_a_pressed)
 			{
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = true; /* Even before going to the level, set this variable to true */
 				global.play_edited_level = true;
 				can_navigate = false;
@@ -421,7 +421,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			&& (global.controls_used_for_navigation == "mouse")
 			|| (key_a_pressed)
 			{
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				global.play_edited_level = false;
 				can_navigate = false;
@@ -444,7 +444,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				level_editor_edit_name = true;
 				can_input_level_name = true;
 				can_navigate = true;
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 				{
@@ -473,7 +473,7 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				level_editor_edit_name = true;
 				can_input_level_name = true;
 				can_navigate = true;
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				
 				if (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))

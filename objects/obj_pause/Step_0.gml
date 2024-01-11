@@ -258,7 +258,7 @@ if (!hide_menu_for_clean_screenshots)
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (mouse_check_button_released(mb_left))
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41))
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, continue_y, get_window_width * 0.5 + 185, continue_y + 41))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				
@@ -299,10 +299,73 @@ if (!hide_menu_for_clean_screenshots)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "options";
+				if (global.character_select_in_this_menu == "level_editor")
+				{
+					menu = "edit_level";
+				}
+				else
+				{
+					menu = "options";
+				}
 			}
 		}
 		#endregion /* Continue END */
+		
+		else
+		
+		#region /* Edit Level */
+		if (menu == "edit_level")
+		{
+			if (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (global.character_select_in_this_menu == "level_editor")
+			|| (mouse_check_button_released(mb_left))
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, edit_level_y, get_window_width * 0.5 + 185, edit_level_y + 41))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (global.character_select_in_this_menu == "level_editor")
+			{
+				if (!file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				{
+					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
+					{
+						/* Download the level to working directory */
+						menu_delay = 3;
+						global.use_cache_or_working = working_directory;
+						scr_copy_move_files(cache_directory + "custom_levels/" + global.level_name, working_directory + "custom_levels/" + global.level_name, true);
+					}
+				}
+				else
+				if (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				{
+					/* Edit the downloaded level */
+					global.doing_clear_check_level = false;
+					global.actually_play_edited_level = false;
+					global.play_edited_level = false;
+					global.use_cache_or_working = working_directory;
+					can_navigate = false;
+					menu_delay = 9999;
+					global.restart_level = true;
+					global.pause = false;
+					unpause = true;
+				}
+			}
+			if (key_up)
+			&& (!key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "continue";
+			}
+			else
+			if (key_down)
+			&& (!key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "options";
+			}
+		}
+		#endregion /* Edit Level END */
 		
 		else
 		
@@ -314,7 +377,7 @@ if (!hide_menu_for_clean_screenshots)
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (mouse_check_button_released(mb_left))
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, options_y + 42, get_window_width * 0.5 + 185, options_y + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
@@ -330,7 +393,14 @@ if (!hide_menu_for_clean_screenshots)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "continue";
+				if (global.character_select_in_this_menu == "level_editor")
+				{
+					menu = "edit_level";
+				}
+				else
+				{
+					menu = "continue";
+				}
 			}
 			else
 			if (key_down)
@@ -380,14 +450,14 @@ if (!hide_menu_for_clean_screenshots)
 			&& (global.checkpoint_y == 0)
 			&& (global.pause_room == rm_leveleditor)
 			&& (mouse_check_button(mb_left))
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, restart_y, get_window_width * 0.5 + 185, restart_y + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			
 			|| (global.checkpoint_x != 0)
 			&& (global.checkpoint_y != 0)
 			&& (global.pause_room == rm_leveleditor)
 			&& (mouse_check_button_released(mb_left))
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, restart_y, get_window_width * 0.5 + 185, restart_y + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				if (global.checkpoint_x == 0)
@@ -575,11 +645,11 @@ if (!hide_menu_for_clean_screenshots)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (global.pause_room == rm_world_map)
 			&& (mouse_check_button_released(mb_left))
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, quit_y, get_window_width * 0.5 + 185, quit_y + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (global.pause_room == rm_leveleditor)
 			&& (mouse_check_button_released(mb_left))
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42 + 42))
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, quit_y, get_window_width * 0.5 + 185, quit_y + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;

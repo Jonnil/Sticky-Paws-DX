@@ -347,12 +347,12 @@ if (show_letterbox > 0)
 }
 #endregion /* Letterboxing during cutscenes (when the player object is absent) END */
 
-if (global.doing_clear_check)
+if (global.doing_clear_check_level)
 || (global.doing_clear_check_character)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	if (global.doing_clear_check)
+	if (global.doing_clear_check_level)
 	{
 		scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("Clear from the start"), global.default_text_size, c_black, c_white, 1);
 	}
@@ -373,11 +373,11 @@ if (global.doing_clear_check)
 if (global.character_select_in_this_menu == "level_editor")
 && (global.play_edited_level) /* When playtesting the level */
 && (!global.actually_play_edited_level) /* But not actually playing the level */
-&& (!global.doing_clear_check)
+&& (!global.doing_clear_check_level)
 && (!global.doing_clear_check_character)
 || (global.character_select_in_this_menu == "main_game")
 && (global.debug_screen)
-&& (!global.doing_clear_check)
+&& (!global.doing_clear_check_level)
 && (!global.doing_clear_check_character)
 {
 	if (global.playtest_invincibility)
@@ -527,7 +527,7 @@ if (global.character_select_in_this_menu == "level_editor")
 
 /* Prevent cheating with playtest tools when playing actual level or doing clear check */
 if (global.actually_play_edited_level && !global.debug_screen)
-|| (global.doing_clear_check)
+|| (global.doing_clear_check_level)
 || (global.doing_clear_check_character)
 {
 	global.playtest_invincibility = false;

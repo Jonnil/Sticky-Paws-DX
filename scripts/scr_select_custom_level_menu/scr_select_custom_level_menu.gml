@@ -702,7 +702,7 @@ function scr_select_custom_level_menu()
 						obj_camera.iris_zoom = 0;
 					}
 				}
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				global.play_edited_level = false;
 				can_input_level_name = false;
@@ -843,7 +843,7 @@ function scr_select_custom_level_menu()
 						obj_camera.iris_zoom = 0;
 					}
 				}
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				global.play_edited_level = false;
 				can_input_level_name = false;

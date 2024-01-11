@@ -40,7 +40,7 @@ if (global.restart_level)
 #region /* Quit Level */
 if (global.quit_level)
 {
-	global.doing_clear_check = false; /* If you exit the level manually , you no longer are doing level clear check */
+	global.doing_clear_check_level = false; /* If you exit the level manually , you no longer are doing level clear check */
 	global.doing_clear_check_character = false; /* If you exit the level manually , you no longer are doing character clear check */
 	audio_stop_all();
 	room_persistent = false; /* Turn OFF Room Persistency */

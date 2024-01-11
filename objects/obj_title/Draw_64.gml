@@ -238,7 +238,7 @@ if (in_settings == false)
 			player4_accept_selection = - 1;
 			global.character_select_in_this_menu = "main_game";
 			in_settings = false;
-			global.doing_clear_check = false;
+			global.doing_clear_check_level = false;
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
 			scr_load_character_initializing();
@@ -279,7 +279,7 @@ if (in_settings == false)
 			{
 				menu_delay = 3;
 				scr_audio_play(menuvoice_leveleditor, volume_source.voice);
-				global.doing_clear_check = false;
+				global.doing_clear_check_level = false;
 				global.actually_play_edited_level = false;
 				global.play_edited_level = false;
 				global.character_select_in_this_menu = "level_editor";
