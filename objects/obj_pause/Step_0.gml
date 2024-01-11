@@ -339,6 +339,7 @@ if (!hide_menu_for_clean_screenshots)
 				{
 					/* Edit the downloaded level */
 					global.doing_clear_check_level = false;
+					global.doing_clear_check_character = false;
 					global.actually_play_edited_level = false;
 					global.play_edited_level = false;
 					global.use_cache_or_working = working_directory;

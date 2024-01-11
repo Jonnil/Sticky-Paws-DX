@@ -664,6 +664,23 @@ function scr_draw_upload_character_menu()
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y, l10n_text("Uploading") + " " + string(character_name) + "...", global.default_text_size * 1.9, c_black, c_white, 1);
 		
+		if (menu_delay >= 41)
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y + 42, l10n_text("Generating Level ID"), global.default_text_size, c_black, c_dkgray, 1);
+		}
+		else
+		if (menu_delay <= 40)
+		&& (!file_exists(working_directory + string(level_id) + ".zip"))
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y + 42, l10n_text("Creating Zip File"), global.default_text_size, c_black, c_dkgray, 1);
+		}
+		else
+		if (menu_delay >= 0)
+		&& (file_exists(working_directory + string(level_id) + ".zip"))
+		{
+			scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y + 42, l10n_text("Send Zip File to the Server"), global.default_text_size, c_black, c_dkgray, 1);
+		}
+		
 		#region /* Generate Character ID */
 		if (menu_delay == 50)
 		{
@@ -672,14 +689,15 @@ function scr_draw_upload_character_menu()
 		#endregion /* Generate Character ID END */
 		
 		#region /* Create Zip File */
-		if (menu_delay == 40)
+		if (menu_delay <= 40)
+		&& (!file_exists(working_directory + string(character_id) + ".zip"))
 		{
 			file = scr_upload_zip_add_files("character"); /* Add all the character files to a new zip file */
 		}
 		#endregion /* Create Zip File END */
 		
 		#region /* Send Zip File to the Server */
-		if (menu_delay == 0 && menu_joystick_delay == 0)
+		if (menu_delay == 0)
 		&& (file_exists(working_directory + string(character_id) + ".zip"))
 		{
 			var zip_file = file_bin_open(working_directory + string(character_id) + ".zip", 0);

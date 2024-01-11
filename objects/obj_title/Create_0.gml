@@ -38,6 +38,9 @@ thumbnail_level_name[0] = "";
 thumbnail_level_description[0] = "";
 thumbnail_level_username[0] = "";
 
+level_id = "";
+character_id = "";
+
 character_portrait_for_player_update_directory[1] = false;
 character_portrait_for_player_update_directory[2] = false;
 character_portrait_for_player_update_directory[3] = false;

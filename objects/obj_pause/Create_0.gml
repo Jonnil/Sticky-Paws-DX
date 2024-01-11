@@ -21,15 +21,33 @@ if (global.character_select_in_this_menu == "level_editor")
 {
 	edit_level_y = get_window_height * 0.5 + (42 * 1);
 	options_y = get_window_height * 0.5 + (42 * 2);
-	restart_y = get_window_height * 0.5 + (42 * 3);
-	quit_y = get_window_height * 0.5 + (42 * 4);
+	if (room == rm_leveleditor)
+	|| (global.pause_room == rm_leveleditor)
+	{
+		restart_y = get_window_height * 0.5 + (42 * 3);
+		quit_y = get_window_height * 0.5 + (42 * 4);
+	}
+	else
+	{
+		restart_y = -999;
+		quit_y = get_window_height * 0.5 + (42 * 3);
+	}
 }
 else
 {
 	edit_level_y = -999;
 	options_y = get_window_height * 0.5 + (42 * 1);
-	restart_y = get_window_height * 0.5 + (42 * 2);
-	quit_y = get_window_height * 0.5 + (42 * 3);
+	if (room == rm_leveleditor)
+	|| (global.pause_room == rm_leveleditor)
+	{
+		restart_y = get_window_height * 0.5 + (42 * 2);
+		quit_y = get_window_height * 0.5 + (42 * 3);
+	}
+	else
+	{
+		restart_y = -999;
+		quit_y = get_window_height * 0.5 + (42 * 2);
+	}
 }
 
 #region /* Mouse x and mouse y initializing */

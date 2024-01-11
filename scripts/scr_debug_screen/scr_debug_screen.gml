@@ -233,7 +233,7 @@ function scr_debug_screen()
 		#region /* More debug text */
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_top);
-		var debug_text_y = 170;
+		var debug_text_y = 160;
 		
 		if (instance_exists(obj_camera)) {
 			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player1: " + string(obj_camera.player1), global.default_text_size, c_black, c_white);
@@ -247,29 +247,24 @@ function scr_debug_screen()
 		}
 		if (gamepad_get_description(0) != "") {
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(0): " + string(gamepad_get_description(0)), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
 		}
-		debug_text_y += 20;
 		if (gamepad_get_description(1) != "") {
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(1): " + string(gamepad_get_description(1)), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
 		}
-		debug_text_y += 20;
 		if (gamepad_get_description(2) != "") {
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(2): " + string(gamepad_get_description(2)), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
 		}
-		debug_text_y += 20;
 		if (gamepad_get_description(3) != "") {
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(3): " + string(gamepad_get_description(3)), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
 		}
-		debug_text_y += 20;
 		if (gamepad_get_description(4) != "") {
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(4): " + string(gamepad_get_description(4)), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
 		}
-		
-		
-		
-		
-		
-		debug_text_y += 20;
 		if (variable_instance_exists(self, "menu")) {
 			scr_draw_text_outlined(32, debug_text_y, "menu: " + string(menu), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
@@ -386,6 +381,9 @@ function scr_debug_screen()
 		
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "doing_clear_check_level: " + string(global.doing_clear_check_level), global.default_text_size, c_black, c_white);
+		
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "go_to_menu_when_going_back_to_title: " + string(global.go_to_menu_when_going_back_to_title), global.default_text_size, c_black, c_white);
 		
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "current_datetime: " + string(date_datetime_string(date_current_datetime())), global.default_text_size, c_black, c_white);
