@@ -1657,8 +1657,6 @@ function scr_draw_upload_level_menu()
 		if (menu_delay == 0)
 		&& (file_exists(working_directory + string(level_id) + ".zip"))
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y + 42, l10n_text("Send Zip File to the Server"), global.default_text_size, c_black, c_dkgray, 1);
-			
 			var zip_file = file_bin_open(working_directory + string(level_id) + ".zip", 0);
 			var zip_size = file_bin_size(zip_file);
 			file_bin_close(zip_file);
@@ -1668,7 +1666,7 @@ function scr_draw_upload_level_menu()
 			{
 				if (destroy_zip_after_uploading)
 				{
-					file_delete(file);
+					file_delete(working_directory + string(file));
 				}
 				menu = "error_level_too_big";
 			}
@@ -1682,7 +1680,7 @@ function scr_draw_upload_level_menu()
 					content_type = "level"; /* Set "content type" to be correct for what kind of files you're uploading, before uploading the files to the server */
 					
 					/* User is prompted for a file to upload */
-					file_name = filename_name(file);
+					file_name = filename_name(working_directory + string(file));
 					
 					/* Create DS Map to hold the HTTP Header info */
 					map = ds_map_create();
@@ -1696,7 +1694,7 @@ function scr_draw_upload_level_menu()
 					
 					/* Loads the file into a buffer */
 					send_buffer = buffer_create(1, buffer_grow, 1);
-					buffer_load_ext(send_buffer, file, 0);
+					buffer_load_ext(send_buffer, working_directory + string(file), 0);
 					
 					/* Encodes the data as base64 */
 					data_send = buffer_base64_encode(send_buffer, 0, buffer_get_size(send_buffer));
@@ -1725,7 +1723,7 @@ function scr_draw_upload_level_menu()
 					/* Delete some leftover files and folders */
 					if (destroy_zip_after_uploading)
 					{
-						file_delete(file);
+						file_delete(working_directory + string(file));
 					}
 					if (os_is_network_connected())
 					{

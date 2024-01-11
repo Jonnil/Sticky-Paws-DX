@@ -134,7 +134,7 @@ if (global.effect_snow)
 	
 	if (irandom(9) == 0) /* Reduce the frequency of snowflakes. irandom generates a random integer between 0 and 9 */
 	{
-		effect_create_above(ef_snow, x, y, 2, c_white);
+		effect_create_below(ef_snow, x, y, 2, c_white);
 	}
 }
 #endregion /* Snow Effect END */

@@ -5,7 +5,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 	if (what_kind_of_file == "level")
 	{
 		var z = zip_create();
-		var string(level_name) = ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index);
+		var level_name = ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index);
 		var file_name = ""; /* In case there is no file found, set the "file name" to nothing here */
 		
 		#region /* Add all the level files to a new zip file */
@@ -152,10 +152,9 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		#endregion /* Add all the level files to a new zip file END */
 		
 		#region /* Finally save the zip file */
-		
 		if (level_id != undefined) { /* Don't save zip file if it's undefined */
 			file = string(level_id) + ".zip"; /* Before closing the zip file creation, save the file to this variable. Save it as string(level_id) + ".zip" */
-			zip_save(z, string(file)); /* Save it as string(file) so it's consistent */
+			zip_save(z, working_directory + string(file)); /* Save it as string(file) so it's consistent */
 		}
 		
 		return file;
@@ -298,7 +297,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 		
 		if (character_id != undefined) { /* Don't save zip file if it's undefined */
 			file = string(character_id) + ".zip"; /* Before closing the zip file creation, save the file to this variable. Save it as string(character_id) + ".zip" */
-			zip_save(z, string(file)); /* Save it as string(file) so it's consistent */
+			zip_save(z, working_directory + string(file)); /* Save it as string(file) so it's consistent */
 		}
 		
 		return file;
