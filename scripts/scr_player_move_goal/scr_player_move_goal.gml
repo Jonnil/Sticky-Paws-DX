@@ -25,10 +25,10 @@ function scr_player_move_goal()
 			else
 			
 			#region /* Can't walk back when touched goal */
-			if (x < instance_nearest(x, y, obj_goal).bbox_left + 4)
+			if (x < instance_nearest(x, y, obj_goal).x)
 			&& (goal)
 			{
-				x = instance_nearest(x, y, obj_goal).bbox_left + 4;
+				x = instance_nearest(x, y, obj_goal).x;
 			}
 			#endregion /* Can't walk back when touched goal END */
 			

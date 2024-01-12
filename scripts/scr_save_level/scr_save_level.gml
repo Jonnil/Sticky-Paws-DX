@@ -42,7 +42,7 @@ function scr_save_level()
 			
 			#region /* Save Fastest Time */
 			if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
-			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond)) {
+			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", 999999999)) {
 				ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
 				ini_write_real(level_name, "timeattack_second", global.timeattack_second);
 				ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);
@@ -117,7 +117,7 @@ function scr_save_level()
 			
 			#region /* Save Fastest Time */
 			if (!ini_key_exists(level_name, "timeattack_realmillisecond"))
-			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", global.timeattack_realmillisecond)) {
+			|| (global.timeattack_realmillisecond < ini_read_real(level_name, "timeattack_realmillisecond", 999999999)) {
 				ini_write_real(level_name, "timeattack_millisecond", global.timeattack_millisecond);
 				ini_write_real(level_name, "timeattack_second", global.timeattack_second);
 				ini_write_real(level_name, "timeattack_minute", global.timeattack_minute);

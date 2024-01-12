@@ -3,6 +3,12 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	
+	var var_text_size = 1;
+	if (string_width(string(string_text)) > (spr_width + 173))
+	{
+		var var_text_size = 0.6;
+	}
+	
 	#region /* Button */
 	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height))
@@ -23,9 +29,8 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 			{
 				draw_sprite_ext(spr_index, global.menu_button_subimg, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, highlight_color, alpha);
 			}
-			draw_set_halign(fa_center);
-			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(x_position + (spr_width * 0.5), y_position + (spr_height * 0.5), string(string_text), global.default_text_size, c_black, c_white, 1); /* White text inside the menu button */
+			var outline_color = c_black;
+			var fill_color = c_white;
 			if (show_arrows)
 			{
 				draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position - 24, y_position + (spr_height * 0.5), 1, 1, 0, c_white, 1);
@@ -43,11 +48,14 @@ function draw_menu_button_sprite(spr_index, x_position, y_position, x_origin_off
 				draw_sprite_ext(spr_index, global.menu_button_subimg, x_position + x_origin_offset, y_position + 21 + y_origin_offset, xscale, yscale, 0, highlight_color, 0.1);
 			}
 		}
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(x_position + (spr_width * 0.5), y_position + (spr_height * 0.5), string(string_text), global.default_text_size, c_white, c_black, 1); /* Black text inside the menu button */
+		var outline_color = c_white;
+		var fill_color = c_black;
 	}
-
+	
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	scr_draw_text_outlined(x_position + (spr_width * 0.5), y_position + (spr_height * 0.5), string(string_text), global.default_text_size * var_text_size, outline_color, fill_color, 1); /* Black text inside the menu button */
+	
 	#region /* Clicking the menu button */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, x_position, y_position + 2, x_position + spr_width - 1, y_position + spr_height) && menu_delay == 0 && menu_joystick_delay == 0)
 	{

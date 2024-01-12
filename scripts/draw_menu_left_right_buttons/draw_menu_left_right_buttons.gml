@@ -45,7 +45,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	#region /* Draw Text */
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(left_right_buttons_x, 20 + (left_right_buttons_y), l10n_text(string(left_right_buttons_text)) + ": " + string(left_right_buttons_variable_to_change), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+	scr_draw_text_outlined(left_right_buttons_x, 20 + (left_right_buttons_y), string(left_right_buttons_text) + ": " + string(left_right_buttons_variable_to_change), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 	#endregion /* Draw Text END */
 	
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, left_right_buttons_x - 32 - 16, 20 + (left_right_buttons_y) - 16, left_right_buttons_x + left_right_buttons_right_arrow_x + 16, 20 + (left_right_buttons_y) + 16))

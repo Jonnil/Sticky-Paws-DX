@@ -93,7 +93,7 @@ function scr_draw_list_of_placable_objects()
 			{
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BLASTER, true, global.resource_pack_sprite_blaster, spr_wall, + 100, 1, 0, c_white, -16,,,,"Rat Blaster");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_DOOR, false, spr_door, spr_wall, + 100, 1, 0, c_white, -16,,,,"Door", "Teleports you to another area when player enters door");
-				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WARP_BOX, false, spr_warp_box, spr_wall, + 100, 1, 0, c_white,,,,,"Warp Box", "Instantly teleports you to another area\nRegular Warp Boxes can be used many times\nBroken Warp Boxes dissapears after one use");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WARP_BOX, false, spr_warp_box, spr_wall, + 100, 1, 0, c_white,,,,,"Warp Box", "Instantly teleports you to another area\nRegular Warp Boxes can be used many times\nBroken Warp Boxes disappears after one use");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SPRING, false, spr_spring, spr_wall, + 100, 1, 0, c_white,,,,,"Spring");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_LADDER, true, spr_ladder, spr_wall, + 100, 1, 0, c_white,,,,,"Ladder");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CHECKPOINT, false, spr_checkpoint_activated, spr_wall, + 100, 1, 0, c_white, -16,,,,"Checkpoint");
@@ -108,7 +108,7 @@ function scr_draw_list_of_placable_objects()
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_AIR_BUBBLES_SPAWNER, true, spr_air_bubbles_spawner, spr_wall, + 100, 1, 0, c_white,,,,,"Air Bubbles", "Some characters needs air when swimming underwater");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_SLOW, false, spr_water_level_change_slow, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water Level Slow");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FAST, false, spr_water_level_change_fast, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water Level Fast");
-				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER, false, spr_water_level_change_faster, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water LEvel Faster");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_WATER_LEVEL_CHANGE_FASTER, false, spr_water_level_change_faster, spr_wall, + 100, 1, 0, c_white,,,,,"Change Water Level Faster");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CLIPPED_SHIRT, true, spr_clipped_shirt, spr_wall, + 100, 1, 0, c_white,,,,,"Clipped Clothes");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUCKET, true, spr_bucket, spr_wall, + 100, 1, 0, c_white,,,,,"Bucket", "Let clothes drop into the bucket to get rewards");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, false, spr_artwork_collection, spr_wall, + 100, 1, 0, c_white,,,,,"Artwork Collection");
