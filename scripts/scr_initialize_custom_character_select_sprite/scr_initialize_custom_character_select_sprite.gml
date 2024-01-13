@@ -126,7 +126,7 @@ function scr_initialize_custom_character_select_sprite(sprite_name, sprite_varia
 	else
 	
 	#region /* If the sprite doesn't exist, but there are still origin points saved for that sprite, then delete those origin points from sprite_origin_point.ini, but save the unused origin points in unused_sprite_origin_point.ini */
-	if (saved_file_exists == false)
+	if (!saved_file_exists)
 	&& (file_exists(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini"))
 	{
 		ini_open(working_directory + "custom_characters/" + string(where_to_look_for_sprite) + "/data/sprite_origin_point.ini");

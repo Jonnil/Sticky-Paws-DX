@@ -25,7 +25,7 @@ if (keyboard_check_pressed(vk_escape))
 	quit_modify_object_menu = true;
 }
 
-if (quit_modify_object_menu == true)
+if (quit_modify_object_menu)
 {
 	if (instance_exists(obj_leveleditor))
 	{

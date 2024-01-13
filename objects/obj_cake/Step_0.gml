@@ -3,6 +3,11 @@ var chair_exists = instance_exists(obj_chair_and_table);
 
 if (player_exists)
 {
+	if (obj_player.intro_animation == "cake_stolen")
+	{
+		has_gravity = false;
+	}
+	else
 	if (obj_player.intro_animation == "ending_chair")
 	&& (chair_exists)
 	{

@@ -53,7 +53,7 @@ function scr_raycast(xx = x, yy = y, dir = 90, length = 380, per_pixel = 16, obj
 		cx += lengthdir_x(per_pixel, dir);
 		cy += lengthdir_y(per_pixel, dir);
 		/* For Tilemap */
-		if (no_tilemaps == false)
+		if (!no_tilemaps)
 		{
 			var col_tile = tilemap_get_at_pixel(tilemap_id, cx, cy);
 			if (col_tile > 0)

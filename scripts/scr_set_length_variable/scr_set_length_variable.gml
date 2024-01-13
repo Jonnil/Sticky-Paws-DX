@@ -8,16 +8,15 @@ function scr_set_length_variable()
 		if (mask_index == spr_wall) { /* Only objects with wall mask should be checked */
 			var can_set_length = true;
 			var inst = instance_position(x - 32, y, placed_object);
-			var inst_check = (inst.y == y
+			if (position_meeting(x - 32, y, placed_object) /* Objects to the right of the same object type should not be saved */
+			&& inst.x == x - 32
+			&& inst.y == y
 			&& inst.object == object
 			&& inst.easy == easy
 			&& inst.normal == normal
 			&& inst.hard == hard
 			&& inst.second_x == second_x
-			&& inst.second_y == second_y);
-			if (position_meeting(x - 32, y, placed_object) /* Objects to the right of the same object type should not be saved */
-			&& inst.x == x - 32
-			&& inst_check) {
+			&& inst.second_y == second_y) {
 				repeat_length = -1;
 				can_set_length = false;
 			}
@@ -25,17 +24,16 @@ function scr_set_length_variable()
 			for(var i = 1; i < (room_width / 32); i ++) {
 				var xx = x + (32 * i);
 				var inst = instance_position(xx, y, placed_object);
-				var inst_check = (inst.y == y
+				if (can_set_length /* Save how many objects to the right are repeated */
+				&& position_meeting(xx, y, placed_object)
+				&& inst.x == xx
+				&& inst.y == y
 				&& inst.object == object
 				&& inst.easy == easy
 				&& inst.normal == normal
 				&& inst.hard == hard
 				&& inst.second_x == second_x
-				&& inst.second_y == second_y);
-				if (can_set_length /* Save how many objects to the right are repeated */
-				&& position_meeting(xx, y, placed_object)
-				&& inst.x == xx
-				&& inst_check) {
+				&& inst.second_y == second_y) {
 					repeat_length = i;
 				}
 				else

@@ -36,7 +36,7 @@ function scr_draw_mouse_cursor_sprite()
 	&& !obj_level_player2_start.drag_object
 	&& !obj_level_player3_start.drag_object
 	&& !obj_level_player4_start.drag_object
-	&& obj_level_end.drag_object == false
+	&& !obj_level_end.drag_object
 	&& !erase_mode
 	&& !set_difficulty_mode
 	&& !pause

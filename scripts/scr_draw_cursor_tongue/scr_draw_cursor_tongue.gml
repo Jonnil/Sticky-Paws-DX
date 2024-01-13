@@ -5,8 +5,8 @@ function scr_draw_cursor_tongue(cursor_x = x, cursor_y = y, what_player_object =
 	&& (what_player_object.allow_tongue)
 	{
 		if (what_player_object.can_tongue) /* If you're able to use the tongue */
-		&& (what_player_object.climb == false)
-		&& (what_player_object.!horizontal_rope_climb)
+		&& (!what_player_object.climb)
+		&& (!what_player_object.horizontal_rope_climb)
 		{
 			draw_set_alpha(1); /* Don't make the cursor transparent */
 		}

@@ -13,7 +13,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	{
 		if (left_right_buttons_can_go_below_0)
 		&& (!open_dropdown)
-		|| (left_right_buttons_can_go_below_0 == false)
+		|| (!left_right_buttons_can_go_below_0)
 		&& (left_right_buttons_variable_to_change > 0)
 		&& (!open_dropdown)
 		{
@@ -67,7 +67,7 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 	{
 		if (left_right_buttons_can_go_below_0)
 		&& (!open_dropdown)
-		|| (left_right_buttons_can_go_below_0 == false)
+		|| (!left_right_buttons_can_go_below_0)
 		&& (left_right_buttons_variable_to_change > 0)
 		&& (!open_dropdown)
 		{

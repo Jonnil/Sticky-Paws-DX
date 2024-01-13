@@ -21,7 +21,7 @@ else
 {
 	/* Sets the gravity */
 	gravity = 0; /* The gravity */
-	if (flat == true)
+	if (flat)
 	{
 		/* Image_yscale = lerp(image_yscale, 0.1, 0.2); */
 		image_speed = 0.5;

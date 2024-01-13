@@ -511,7 +511,7 @@ else
 }
 
 /* If the character config file doesn't exist, create it and write the default values */
-if (can_save_to_character_config == true && character != undefined && !file_exists(character_path))
+if (can_save_to_character_config && character != undefined && !file_exists(character_path))
 {
 	ini_open(character_path);
 	ini_write_real("values", "default_xscale", 1);

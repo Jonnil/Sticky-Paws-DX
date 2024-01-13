@@ -21,7 +21,7 @@ function scr_character_manage_copy()
 		if (file_load_timer > 1)
 		&& (load_ok == 0)
 		{
-			if (initialized_copy == false)
+			if (!initialized_copy)
 			{
 				first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/*", fa_directory)
 				if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/" + string(first_copy_file)))
@@ -68,7 +68,7 @@ function scr_character_manage_copy()
 		if (file_load_timer > 1)
 		&& (load_ok == 2)
 		{
-			if (initialized_copy == false)
+			if (!initialized_copy)
 			{
 				first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/*", fa_directory)
 				if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/" + string(first_copy_file)))
@@ -115,7 +115,7 @@ function scr_character_manage_copy()
 		if (file_load_timer > 1)
 		&& (load_ok == 4)
 		{
-			if (initialized_copy == false)
+			if (!initialized_copy)
 			{
 				first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/*.ogg", 0)
 				file_copy(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/" + string(first_copy_file),
@@ -158,7 +158,7 @@ function scr_character_manage_copy()
 		if (file_load_timer > 1)
 		&& (load_ok == 6)
 		{
-			if (initialized_copy == false)
+			if (!initialized_copy)
 			{
 				first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/*.png", 0)
 				file_copy(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/" + string(first_copy_file),
@@ -201,7 +201,7 @@ function scr_character_manage_copy()
 		if (file_load_timer > 1)
 		&& (load_ok == 8)
 		{
-			if (initialized_copy == false)
+			if (!initialized_copy)
 			{
 				if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(load_specific_folder)))
 				{
@@ -253,7 +253,7 @@ function scr_character_manage_copy()
 		if (file_load_timer > 1)
 		&& (load_ok == 10)
 		{
-			if (initialized_copy == false)
+			if (!initialized_copy)
 			{
 				if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sprites/skin" + string(load_specific_folder)))
 				{

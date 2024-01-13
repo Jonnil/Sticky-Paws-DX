@@ -27,7 +27,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		    !position_meeting(x, bbox_bottom + 1, obj_semisolid_platform) &&
 		    !position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform) &&
 		    !position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform) &&
-		    climb == false &&
+		    !climb &&
 		    !horizontal_rope_climb &&
 		    vspeed >= 0)
 		{

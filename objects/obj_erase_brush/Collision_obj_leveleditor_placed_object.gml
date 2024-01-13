@@ -76,7 +76,7 @@ if (instance_exists(obj_leveleditor))
 		if (obj_leveleditor.difficulty_layer == 1)
 		&& (obj_leveleditor.set_difficulty_mode)
 		{
-			if (easy == false)
+			if (!easy)
 			{
 				easy = true;
 				placed_for_the_first_time = true;
@@ -87,7 +87,7 @@ if (instance_exists(obj_leveleditor))
 		if (obj_leveleditor.difficulty_layer == 2)
 		&& (obj_leveleditor.set_difficulty_mode)
 		{
-			if (normal == false)
+			if (!normal)
 			{
 				normal = true;
 				placed_for_the_first_time = true;
@@ -98,7 +98,7 @@ if (instance_exists(obj_leveleditor))
 		if (obj_leveleditor.difficulty_layer == 3)
 		&& (obj_leveleditor.set_difficulty_mode)
 		{
-			if (hard == false)
+			if (!hard)
 			{
 				hard = true;
 				placed_for_the_first_time = true;

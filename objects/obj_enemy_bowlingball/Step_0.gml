@@ -63,7 +63,7 @@ else
 			&& (sliding_along_ground == 0)
 			&& (instance_nearest(x, y, obj_player).hold_item_in_hands = "")
 			&& (instance_nearest(x, y, obj_player).key_dive_hold)
-			&& (instance_nearest(x, y, obj_player).!horizontal_rope_climb)
+			&& (!instance_nearest(x, y, obj_player).horizontal_rope_climb)
 			&& (instance_nearest(x, y, obj_player).ground_pound == 0)
 			{
 				if (distance_to_object(instance_nearest(x, y, obj_player)) < 16)
@@ -264,7 +264,7 @@ else
 		}
 	}
 }
-if (flat == false)
+if (!flat)
 {
 	if (image_xscale < 0)
 	{
@@ -277,12 +277,10 @@ if (flat == false)
 	
 	#region /* Turn around */
 	if (place_meeting(x - 2, y, obj_wall))
-	&& (flat == false)
 	{
 		image_xscale = +1;
 	}
 	if (place_meeting(x + 2, y, obj_wall))
-	&& (flat == false)
 	{
 		image_xscale = -1;
 	}
@@ -301,10 +299,8 @@ if (flat == false)
 	image_speed = 0.3;
 }
 
-if (blind == false)
-&& (place_meeting(x, y + 1, obj_wall))
-|| (blind == false)
-&& (position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
+if (!blind)
+&& (place_meeting(x, y + 1, obj_wall) || position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (!place_meeting(x + 5, y + 1, obj_wall))
 	&& (!position_meeting(x + 5, bbox_bottom + 1, obj_semisolid_platform))
@@ -312,8 +308,7 @@ if (blind == false)
 		image_xscale = -1;
 	}
 	else
-	if (!place_meeting(x - 5, y + 1, obj_wall))
-	&& (!position_meeting(x - 5, bbox_bottom + 1, obj_semisolid_platform))
+	if (!place_meeting(x - 5, y + 1, obj_wall) && !position_meeting(x - 5, bbox_bottom + 1, obj_semisolid_platform))
 	{
 		image_xscale = +1;
 	}

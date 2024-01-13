@@ -402,6 +402,9 @@ function scr_options_level_editor()
 					menu = "select_level_editing_music";
 					menu_delay = 3;
 				}
+				draw_rectangle_color(0, display_get_gui_height() - 32, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+				draw_set_halign(fa_center);
+				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 16, l10n_text("This function saves data size slightly, but saving takes longer. False by default"));
 			}
 			if (menu == "select_level_editing_music")
 			{
@@ -493,8 +496,9 @@ function scr_options_level_editor()
 			var enable_time_countdown_y = 47 * 6;
 			var time_countdown_y = 46 * 7;
 			var show_new_items_notification_y = 46 * 8;
-			var selected_level_editing_music_y = 46 * 10 - 16;
-			var delete_all_objects_y = 46 * 11 + 20 - 16;
+			var can_save_length_variable_y = 46 * 9;
+			var selected_level_editing_music_y = 46 * 11 - 16;
+			var delete_all_objects_y = 46 * 12 + 20 - 16;
 			
 			draw_menu_button(0, 0, l10n_text("Back"), "back_level_editor_options", "level_editor_options");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
@@ -509,6 +513,7 @@ function scr_options_level_editor()
 				global.time_countdown = draw_menu_left_right_buttons(level_editor_options_x, time_countdown_y, options_level_editor_right_arrow_x, l10n_text("Time Countdown"), global.time_countdown, "time_countdown", 1, false);
 			}
 			draw_menu_checkmark(level_editor_options_x - 90, show_new_items_notification_y, l10n_text("Show New Items Notification"), "show_new_items_notification_level_editor", global.show_new_items_notification);
+			draw_menu_checkmark(level_editor_options_x - 90, can_save_length_variable_y, l10n_text("Save Length Variable"), "can_save_length_variable", global.can_save_length_variable);
 			draw_menu_button(level_editor_options_x, delete_all_objects_y, l10n_text("Delete All Objects"), "delete_all_objects", "delete_all_objects_no", c_red);
 			draw_sprite_ext(spr_icon_delete, 0, level_editor_options_x + 16, delete_all_objects_y + 21, 1, 1, 0, c_white, 1);
 			draw_menu_dropdown(level_editor_options_x - 32, selected_level_editing_music_y, l10n_text("Level Editing Music"), "select_level_editing_music", global.selected_level_editing_music, l10n_text("None"), l10n_text("Random"), l10n_text("Music 1"), l10n_text("Music 2"), l10n_text("Music 3"), l10n_text("Music 4"));

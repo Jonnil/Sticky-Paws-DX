@@ -1,6 +1,6 @@
 #region /* If spikes are disabled, destroy this object */
 if (global.assist_enable)
-&& (global.assist_enable_spikes == false)
+&& (!global.assist_enable_spikes)
 {
 	instance_destroy();
 }
@@ -14,7 +14,7 @@ if (global.assist_enable)
 #region /* Normal timing */
 if (global.spikes_emerge_time < room_speed * 1)
 {
-	if (timer_offset == false)
+	if (!timer_offset)
 	{
 		sprite_index = spr_spikes_emerge;
 		mask_index = spr_spikes_emerge;
@@ -32,7 +32,7 @@ else
 if (global.spikes_emerge_time < room_speed * 2)
 && (global.spikes_emerge_time > room_speed * 1)
 {
-	if (timer_offset == false)
+	if (!timer_offset)
 	{
 		sprite_index = spr_spikes_emerge_in;
 		image_speed = 1;
@@ -50,7 +50,7 @@ else
 if (global.spikes_emerge_time < room_speed * 3)
 && (global.spikes_emerge_time > room_speed * 2)
 {
-	if (timer_offset == false)
+	if (!timer_offset)
 	{
 		sprite_index = spr_spikes_emerge_in;
 		image_speed = 1;
@@ -67,7 +67,7 @@ if (global.spikes_emerge_time < room_speed * 3)
 else
 if (global.spikes_emerge_time > room_speed * 3)
 {
-	if (timer_offset == false)
+	if (!timer_offset)
 	{
 		sprite_index = spr_spikes_emerge_half_out;
 		image_speed = 1;

@@ -156,7 +156,7 @@ if (hp >= 3)
 	}
 	if (place_meeting(x - 16, y, obj_wall))
 	&& (time > get_room_speed * 8)
-	&& (can_jump_on_head == false)
+	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
 		{
@@ -174,7 +174,7 @@ if (hp >= 3)
 	else
 	if (place_meeting(x + 16, y, obj_wall))
 	&& (time > get_room_speed * 8)
-	&& (can_jump_on_head == false)
+	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
 		{
@@ -285,7 +285,7 @@ if (hp >= 2)
 	}
 	if (place_meeting(x - 16, y, obj_wall))
 	&& (time > get_room_speed * 9)
-	&& (can_jump_on_head == false)
+	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
 		{
@@ -303,7 +303,7 @@ if (hp >= 2)
 	else
 	if (place_meeting(x + 16, y, obj_wall))
 	&& (time > get_room_speed * 9)
-	&& (can_jump_on_head == false)
+	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
 		{
@@ -416,7 +416,7 @@ if (has_seen_player)
 	}
 	if (place_meeting(x - 16, y, obj_wall))
 	&& (time > get_room_speed * 10)
-	&& (can_jump_on_head == false)
+	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
 		{
@@ -434,7 +434,7 @@ if (has_seen_player)
 	else
 	if (place_meeting(x + 16, y, obj_wall))
 	&& (time > get_room_speed * 10)
-	&& (can_jump_on_head == false)
+	&& (!can_jump_on_head)
 	{
 		if (instance_exists(obj_camera))
 		{

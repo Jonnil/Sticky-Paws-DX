@@ -1,4 +1,4 @@
-if (fall == false)
+if (!fall)
 {
 	fall = true;
 	

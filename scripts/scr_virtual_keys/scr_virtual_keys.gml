@@ -100,7 +100,7 @@ function scr_virtual_keys()
 				#endregion /* Joystick END */
 				
 				#region /* Virtual D-pad */
-				if (enable_joystick == false)
+				if (!enable_joystick)
 				{
 					scr_initialize_virtual_button(global.player_[inp.key][1][1][action.up], global.player_[inp.key][1][2][action.up], mobile_key_up_x, mobile_key_up_y, spr_virtual_key_direction, mobile_key_extra_deadzone, 90);
 					scr_initialize_virtual_button(global.player_[inp.key][1][1][action.down], global.player_[inp.key][1][2][action.down], mobile_key_down_x, mobile_key_down_y, spr_virtual_key_direction, mobile_key_extra_deadzone, 270);

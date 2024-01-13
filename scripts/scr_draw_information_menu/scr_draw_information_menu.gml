@@ -398,7 +398,7 @@ function scr_draw_information_menu()
 					if (!global.player_can_play[1])
 					&& (!global.player_can_play[2])
 					&& (!global.player_can_play[3])
-					&& (global.player_can_play[4] == false)
+					&& (!global.player_can_play[4])
 					{
 						global.player_can_play[1] = true;
 					}

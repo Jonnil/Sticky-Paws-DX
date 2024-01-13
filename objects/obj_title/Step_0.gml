@@ -409,7 +409,7 @@ if (iris_xscale <= 0.01)
 	&& (menu != "back_from_character_select")
 	&& (global.character_select_in_this_menu == "level_editor")
 	&& (!loading_assets)
-	|| (global.doing_clear_check_character == true)
+	|| (global.doing_clear_check_character)
 	{
 		if (global.create_level_from_template)
 		&& (allowed_to_load_template_level)

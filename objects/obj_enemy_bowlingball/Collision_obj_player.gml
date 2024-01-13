@@ -51,7 +51,7 @@ if (!die)
 	if (!die_volting)
 	{
 		if (other.vspeed > 0)
-		|| (other.climb == false)
+		|| (!other.climb)
 		&& (other.vspeed < 0)
 		|| (other.bbox_bottom < y)
 		{
@@ -274,7 +274,7 @@ if (!die)
 		
 		if (stomped_delay == 0)
 		&& (!die)
-		&& (flat == false)
+		&& (!flat)
 		|| (sliding_along_ground < 0)
 		&& (stomped_delay == 0)
 		&& (!die)

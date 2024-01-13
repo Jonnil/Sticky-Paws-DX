@@ -2,10 +2,12 @@ function scr_modify_objects_in_level_editor()
 {
 	
 	#region /* Modify Objects */
-	if (!keyboard_check(vk_space))
+	if (!dragged_from_original_place)
+	&& (placed_for_the_first_time)
+	&& (delay > 1)
+	&& (!keyboard_check(vk_space))
 	&& (!mouse_check_button(mb_middle))
 	&& (!mouse_check_button(mb_right))
-	&& (delay > 1)
 	&& (instance_exists(obj_leveleditor))
 	&& (!keyboard_check(vk_space))
 	&& (!mouse_check_button(mb_middle))
@@ -27,16 +29,10 @@ function scr_modify_objects_in_level_editor()
 	&& (obj_leveleditor.placing_object <= 0)
 	{
 		if (mouse_check_button_released(mb_left))
-		&& (!dragged_from_original_place)
-		&& (placed_for_the_first_time == false)
 		|| (instance_exists(obj_leveleditor))
 		&& (obj_leveleditor.key_a_released)
-		&& (!dragged_from_original_place)
-		&& (placed_for_the_first_time == false)
 		|| (instance_exists(obj_leveleditor))
 		&& (gamepad_button_check_released(global.player_slot[1], obj_leveleditor.button_draw))
-		&& (!dragged_from_original_place)
-		&& (placed_for_the_first_time == false)
 		{
 			if (position_meeting(obj_leveleditor.x, obj_leveleditor.y, id))
 			{

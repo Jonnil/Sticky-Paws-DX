@@ -201,7 +201,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		#region /* Player Select Skin */
 		if (character_portrait_for_player_dir_exists_1[what_player])
 		{
-			if (!player_accept_selection)
+			if (player_accept_selection == 0)
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
@@ -211,7 +211,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			if (player_menu[what_player] == "select_skin")
 			|| (global.controls_used_for_navigation == "mouse")
 			{
-				if (!player_accept_selection)
+				if (player_accept_selection == 0)
 				{
 					
 					#region /* Show left key for character skin select */
@@ -298,7 +298,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		#region /* Player Select Voice Pack */
 		if (character_portrait_for_player_dir_exists_3[what_player])
 		{
-			if (!player_accept_selection)
+			if (player_accept_selection == 0)
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
@@ -308,7 +308,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			if (player_menu[what_player] == "select_voicepack")
 			|| (global.controls_used_for_navigation == "mouse")
 			{
-				if (!player_accept_selection)
+				if (player_accept_selection == 0)
 				{
 					
 					#region /* Show left key for character voicepack select */
@@ -398,7 +398,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		if (player_menu[what_player] == "select_character")
 		|| (global.controls_used_for_navigation == "mouse")
 		{
-			if (!player_accept_selection)
+			if (player_accept_selection == 0)
 			{
 				
 				#region /* Key Left */
@@ -481,7 +481,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	draw_set_valign(fa_middle);
 	
 	if (player_accept_selection >= 0)
-	&& (can_input_player_name == false)
+	&& (!can_input_player_name)
 	{
 		if (player_name = "")
 		{
@@ -522,7 +522,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	&& (!can_input_player3_name)
 	&& (!can_input_player4_name)
 	{
-		if (!player_accept_selection)
+		if (player_accept_selection == 0)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20))
 			&& (global.controls_used_for_navigation == "mouse")

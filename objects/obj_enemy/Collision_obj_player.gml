@@ -69,12 +69,12 @@ if (!die)
 	&& (stomped_delay <= 0)
 	{
 		if (other.vspeed > 0)
-		|| (other.climb == false)
+		|| (!other.climb)
 		&& (other.vspeed < 0)
 		|| (other.bbox_bottom < y)
 		{
 			if (other.ground_pound != true)
-			&& (flat == false)
+			&& (!flat)
 			{
 				if (abs(other.hspeed) > 7)
 				{
@@ -139,7 +139,7 @@ if (!die)
 			}
 			else
 			if (other.ground_pound) /* Ground pound the enemy and kill it instantly */
-			&& (flat == false)
+			&& (!flat)
 			{
 				die = true;
 				/* If the enemy is a bullet being blasted out of a blaster, the enemy have to spawn a special object that targets the original blaster, so the blaster can count how many of its bullets have been defeated by the player */

@@ -62,7 +62,7 @@ if (instance_exists(obj_player))
 	if (place_meeting(x, y, obj_player))
 	&& (!bounce_up)
 	{
-		if (instance_nearest(x, y, obj_player).!have_heart_balloon)
+		if (instance_nearest(x, y, obj_player).have_heart_balloon == false)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{

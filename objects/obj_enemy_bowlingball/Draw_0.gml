@@ -13,7 +13,7 @@ if (coil_spring)
 	}
 }
 
-if (flat == false)
+if (!flat)
 {
 	draw_sprite_ext(global.resource_pack_sprite_bowlingball, image_index, x, y - 16, 1, draw_xscale, draw_angle, image_blend, image_alpha);
 	draw_sprite_ext(global.resource_pack_sprite_bowlingball_shine, image_index, x, y - 16, draw_xscale, draw_yscale, 0, image_blend, image_alpha);
