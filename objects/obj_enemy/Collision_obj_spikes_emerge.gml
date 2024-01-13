@@ -28,7 +28,7 @@ if (can_die_from_spikes)
 #endregion /* Enemy touching emerging spikes END */
 
 if (!die)
-&& (die_volting == false)
+&& (!die_volting)
 {
 	if (position_meeting(x, bbox_top - 1, other))
 	&& (!die)

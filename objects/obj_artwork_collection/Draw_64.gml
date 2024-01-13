@@ -31,7 +31,7 @@ xx = lerp(xx, get_window_width * 0.5, 0.1);
 yy = lerp(yy, scr_wave(y - 8, y + 8, 4.5, 0), 0.1);
 if (instance_exists(obj_player))
 && (point_distance(x, y, obj_player.x, obj_player.y) < 64)
-&& (can_navigate == false)
+&& (!can_navigate)
 && (instance_nearest(x, y, obj_player).key_up_pressed)
 && (instance_nearest(x, y, obj_player).vspeed == 0)
 {
@@ -292,7 +292,7 @@ else
 	image_speed = 0;
 }
 
-if (gamepad_stick == false)
+if (!gamepad_stick)
 {
 	if (!key_left)
 	&& (!key_right)
@@ -306,7 +306,7 @@ if (can_navigate)
 {
 	instance_nearest(x, y, obj_player).can_move = false;
 }
-if (can_navigate == false)
+if (!can_navigate)
 {
 	gamepad_stick = false;
 }

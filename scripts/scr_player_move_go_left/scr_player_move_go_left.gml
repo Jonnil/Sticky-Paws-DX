@@ -8,19 +8,19 @@ function scr_player_move_go_left()
 	&& (!global.pause)
 	{
 		if (wall_jump == 0)
-		&& (stick_to_wall == false)
+		&& (!stick_to_wall)
 		&& (!climb)
 		&& (!horizontal_rope_climb)
 		&& (taken_damage <= taken_damage_freezetime)
 		{
-			if (dive == false)
+			if (!dive)
 			{
 				if (image_xscale == +1)
 				{
 					image_xscale = -1;
 				
 					#region /* Turnaround Effect */
-					if (on_ground == false)
+					if (!on_ground)
 					{
 						effect_turnaround_subimg = 0;
 					}

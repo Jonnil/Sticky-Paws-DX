@@ -29,7 +29,7 @@ else
 	show_skip_button_alpha = 0;
 }
 
-if (can_navigate == false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
+if (!can_navigate) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
 {
 	scr_draw_loading(1, display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32 * 3));
 	scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32 - (32), string(file_found), global.default_text_size, c_black, c_white, 1);

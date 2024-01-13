@@ -60,9 +60,9 @@ if (instance_exists(obj_player))
 		hspeed = 0;
 	}
 	if (place_meeting(x, y, obj_player))
-	&& (bounce_up == false)
+	&& (!bounce_up)
 	{
-		if (instance_nearest(x, y, obj_player).have_heart_balloon == false)
+		if (instance_nearest(x, y, obj_player).!have_heart_balloon)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{

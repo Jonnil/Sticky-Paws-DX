@@ -1,5 +1,5 @@
 #region /* Collision Event with enemy */
-if (bounce_up == false)
+if (!bounce_up)
 {
 	if (instance_exists(obj_enemy))
 	&& (place_meeting(x, bbox_bottom, obj_enemy))
@@ -17,7 +17,7 @@ if (bounce_up == false)
 
 			}
 		}
-		if (empty == false)
+		if (!empty)
 		{
 			if (instance_exists(obj_player))
 			{

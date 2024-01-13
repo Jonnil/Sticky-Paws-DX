@@ -452,7 +452,7 @@ else
 if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes, false, true))
 {
 	if (taken_damage < 1)
-	&& (invincible_timer == false)
+	&& (invincible_timer == 0)
 	{
 		if (have_heart_balloon)
 		{
@@ -483,7 +483,7 @@ scr_player_move_roll_when_landing();
 #region /* Chain Reaction Reset */
 if (on_ground)
 {
-	if (invincible_timer == false)
+	if (invincible_timer == 0)
 	{
 		chain_reaction = 0;
 	}
@@ -2029,7 +2029,7 @@ else
 			if (!have_heart_balloon)
 			&& (hp <= 1)
 			&& (max_hp >= 2)
-			&& (invincible_timer == false)
+			&& (invincible_timer == 0)
 			&& (sprite_panting > noone)
 			{
 				sprite_index = sprite_panting;

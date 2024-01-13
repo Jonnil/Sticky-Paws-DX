@@ -35,7 +35,7 @@ global.volume_voice = clamp(global.volume_voice, 0, 1);
 
 #region /* Quit Game trough pause menu */
 if (global.enable_options_for_pc)
-&& (can_remap_key == false)
+&& (!can_remap_key)
 && (!input_key)
 && (menu_delay == 0 && menu_joystick_delay == 0)
 {
@@ -124,7 +124,7 @@ if (menu == "main_game")
 || (menu == "link_wiki")
 || (menu == "fullscreen_mode_title")
 {
-	if (in_settings == false)
+	if (!in_settings)
 	{
 		
 		#region /* Character select Accept Selection */
@@ -188,7 +188,7 @@ else
 #endregion /* Draw Title Screen END */
 
 #region /* Main Menu */
-if (in_settings == false)
+if (!in_settings)
 {
     if (menu == "main_game" ||
 		menu == "level_editor" ||
@@ -217,11 +217,11 @@ if (in_settings == false)
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, main_game_y, display_get_gui_width() * 0.5 + 185, main_game_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
+		&& (!in_settings)
 		|| (menu == "main_game")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
+		&& (!in_settings)
 		{
 			menu_delay = 3;
 			if (mouse_check_button_released(mb_left))
@@ -253,11 +253,11 @@ if (in_settings == false)
 		&& (mouse_check_button_released(mb_left))
 		&& (menu == "level_editor")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
+		&& (!in_settings)
 		|| (menu == "level_editor")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
+		&& (!in_settings)
 		{
 			if (mouse_check_button_released(mb_left))
 			{
@@ -299,16 +299,16 @@ if (in_settings == false)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, options_and_quit_y + 2, display_get_gui_width() * 0.5, options_and_quit_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
-		|| (global.enable_options_for_pc == false)
+		&& (!in_settings)
+		|| (!global.enable_options_for_pc)
 		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, options_and_quit_y + 2, display_get_gui_width() * 0.5 + 185, options_and_quit_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
+		&& (!in_settings)
 		|| (menu == "options")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
+		&& (!in_settings)
 		{
 		
 			#region /* Play Options Voice */
@@ -332,12 +332,12 @@ if (in_settings == false)
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5, options_and_quit_y + 2, display_get_gui_width() * 0.5 + 185, options_and_quit_y + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
+		&& (!in_settings)
 		&& (global.enable_options_for_pc)
 		|| (menu == "quit")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
+		&& (!in_settings)
 		&& (global.enable_options_for_pc)
 		{
 			in_settings = false;
@@ -372,7 +372,7 @@ if (in_settings == false)
 			}
 		}
 		else
-		if (global.enable_options_for_pc == false)
+		if (!global.enable_options_for_pc)
 		{
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, options_and_quit_y, l10n_text("Options"), "options", "options");
 		}

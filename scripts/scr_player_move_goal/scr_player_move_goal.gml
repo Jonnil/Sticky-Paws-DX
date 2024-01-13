@@ -11,11 +11,11 @@ function scr_player_move_goal()
 			if (x > instance_nearest(x, y, obj_goal).bbox_right)
 			&& (x < instance_nearest(x, y, obj_goal).bbox_right + 16)
 			&& (y < instance_nearest(x, y, obj_goal).bbox_bottom)
-			&& (goal == false)
+			&& (!goal)
 			&& (!collision_line(x, y, instance_nearest(x, y, obj_goal).x, instance_nearest(x, y, obj_goal).y, obj_wall, false, true))
 			&& (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_goal).x + 1, instance_nearest(x, y, obj_goal).y + 1, obj_wall, false, true))
 			|| (place_meeting(x, y, obj_goal))
-			&& (goal == false)
+			&& (!goal)
 			{
 				just_hit_goal = true;
 				obj_goal.goal = true;
@@ -33,7 +33,7 @@ function scr_player_move_goal()
 			#endregion /* Can't walk back when touched goal END */
 			
 			if (just_hit_goal)
-			&& (goal == false)
+			&& (!goal)
 			{
 				if (!instance_exists(obj_camera.player1))
 				{

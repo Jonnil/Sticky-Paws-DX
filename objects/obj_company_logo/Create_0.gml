@@ -146,6 +146,7 @@ display_yoffset = 0;
 #region /* Debug toggles */
 /* There are more debug toggles in different objects, so click ctrl + shift + F and search "Debug toggles" to find the other debug toggles */
 /* Most of these can be toggled on or off within the games settings, so you don't have to change these settings here */
+global.can_save_length_variable = false; /* This function saves object_placement_all.json size, but lags the game. Make this optional and false by default */
 global.can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
 global.debug_screen = false;
 global.show_fps = false; /* Show fps for optimization debug */

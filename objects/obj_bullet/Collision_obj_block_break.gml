@@ -1,7 +1,7 @@
 /* Collision Event with player object */
 if (!die)
 {
-	if (die_volting == false)
+	if (!die_volting)
 	{
 		die = true;
 		instance_create_depth(xstart, ystart, 0, obj_blaster_reward_decrease_mask);

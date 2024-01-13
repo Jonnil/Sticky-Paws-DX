@@ -19,7 +19,7 @@ if (!die)
 				other.dive = false;
 				other.vspeed = -other.triple_jump_height;
 			}
-			if (die_volting == false)
+			if (!die_volting)
 			{
 				if (coil_spring)
 				{
@@ -65,7 +65,7 @@ if (!die)
 			}
 		}
 	}
-	if (die_volting == false)
+	if (!die_volting)
 	&& (stomped_delay <= 0)
 	{
 		if (other.vspeed > 0)
@@ -176,7 +176,7 @@ if (!die)
 		}
 		else
 		if (other.taken_damage <= 0)
-		&& (other.invincible_timer == false)
+		&& (other.invincible_timer == 0)
 		{
 			if (other.have_heart_balloon)
 			{

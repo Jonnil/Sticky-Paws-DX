@@ -1,7 +1,7 @@
 /* Collision Event with player object */
 if (!die)
 {
-	if (die_volting == false)
+	if (!die_volting)
 	{
 		global.enemy_counter ++;
 		if (other.x < x)

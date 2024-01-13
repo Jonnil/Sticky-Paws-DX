@@ -115,7 +115,6 @@
     {"name":"spr_arrow","order":6,"path":"sprites/spr_arrow/spr_arrow.yy",},
     {"name":"snd_hipattack","order":58,"path":"sounds/snd_hipattack/snd_hipattack.yy",},
     {"name":"spr_map_tree_star","order":18,"path":"sprites/spr_map_tree_star/spr_map_tree_star.yy",},
-    {"name":"scr_player_move_partner_character","order":26,"path":"scripts/scr_player_move_partner_character/scr_player_move_partner_character.yy",},
     {"name":"spr_virtual_key_right","order":4,"path":"sprites/spr_virtual_key_right/spr_virtual_key_right.yy",},
     {"name":"spr_bucket","order":17,"path":"sprites/spr_bucket/spr_bucket.yy",},
     {"name":"spr_bush","order":148,"path":"sprites/spr_bush/spr_bush.yy",},

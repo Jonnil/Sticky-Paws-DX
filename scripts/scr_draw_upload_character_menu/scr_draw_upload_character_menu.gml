@@ -150,10 +150,10 @@ function scr_draw_upload_character_menu()
 			
 			global.select_level_index = 1; /* When doing clear check for character, they have to complete level 1 */
 			global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
-			if (global.player_can_play[1] == false)
-			&& (global.player_can_play[2] == false)
-			&& (global.player_can_play[3] == false)
-			&& (global.player_can_play[4] == false)
+			if (!global.player_can_play[1])
+			&& (!global.player_can_play[2])
+			&& (!global.player_can_play[3])
+			&& (!global.player_can_play[4])
 			{
 				global.player_can_play[1] = true; /* If there are no players joined, make it so player 1 is joined */
 			}
@@ -505,10 +505,10 @@ function scr_draw_upload_character_menu()
 				
 				global.select_level_index = 1; /* When doing clear check for character, they have to complete level 1 */
 				global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
-				if (global.player_can_play[1] == false)
-				&& (global.player_can_play[2] == false)
-				&& (global.player_can_play[3] == false)
-				&& (global.player_can_play[4] == false)
+				if (!global.player_can_play[1])
+				&& (!global.player_can_play[2])
+				&& (!global.player_can_play[3])
+				&& (!global.player_can_play[4])
 				{
 					global.player_can_play[1] = true; /* If there are no players joined, make it so player 1 is joined */
 				}
@@ -846,7 +846,7 @@ function scr_draw_upload_character_menu()
 		|| (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		|| (key_b_pressed)
-		&& (level_editor_edit_name == false)
+		&& (!level_editor_edit_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;

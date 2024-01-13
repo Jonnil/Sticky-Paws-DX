@@ -68,7 +68,7 @@ function scr_options_graphics()
 		draw_menu_dropdown(400, gui_scale_modifier_y + menu_y_offset, l10n_text("GUI Scale Modifier"), "gui_scale_modifier", global.gui_scale_modifier, l10n_text("Auto"), "5", "4", "3", "2", "1", "-1", "-2", "-3", "-4", "-5");
 		
 		if (menu == "resolution_setting")
-		&& (window_get_fullscreen() == false)
+		&& (!window_get_fullscreen())
 		{
 			if (key_a_pressed)
 			|| (key_b_pressed)
@@ -92,7 +92,7 @@ function scr_options_graphics()
 			if (window_get_width() == 480 && window_get_height() == 270){global.resolution_setting = 6;}else
 			{global.resolution_setting = 0;}
 		}
-		if (window_get_fullscreen() == false)
+		if (!window_get_fullscreen())
 		{
 			draw_menu_dropdown(400, resolution_setting_y + menu_y_offset, l10n_text("Resolution"), "resolution_setting", global.resolution_setting,
 			l10n_text("Current") + " " + string(window_get_width()) + " x " + string(window_get_height()),
@@ -161,7 +161,7 @@ function scr_options_graphics()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!open_dropdown)
 			{
-				if (window_get_fullscreen() == false)
+				if (!window_get_fullscreen())
 				{
 					menu = "resolution_setting";
 				}
@@ -347,7 +347,7 @@ function scr_options_graphics()
 			if (key_down)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				if (window_get_fullscreen() == false)
+				if (!window_get_fullscreen())
 				{
 					menu = "resolution_setting";
 				}

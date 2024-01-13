@@ -660,12 +660,12 @@ function scr_options_menu()
 		&& (global.settings_sidebar_menu == "settings_back")
 		&& (can_navigate_settings_sidebar)
 		&& (!input_key)
-		&& (input_gamepad_button == false)
+		&& (!input_gamepad_button)
 		|| (key_b_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate_settings_sidebar)
 		&& (!input_key)
-		&& (input_gamepad_button == false)
+		&& (!input_gamepad_button)
 		{
 			scr_config_save(); /* Save Config */
 			if (global.pause_room != rm_leveleditor)
@@ -681,10 +681,10 @@ function scr_options_menu()
 		#endregion /* Go back out of setting menu END */
 	
 		if (key_b_pressed)
-		&& (can_navigate_settings_sidebar == false)
+		&& (!can_navigate_settings_sidebar)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!input_key)
-		&& (input_gamepad_button == false)
+		&& (!input_gamepad_button)
 		{
 			if (open_dropdown)
 			{
@@ -741,7 +741,7 @@ function scr_options_menu()
 			if (global.settings_sidebar_menu == "account_settings"){menu = "change_username";}
 			if (global.settings_sidebar_menu == "video_settings")
 			{
-				if (window_get_fullscreen() == false)
+				if (!window_get_fullscreen())
 				{
 					menu = "resolution_setting";
 				}
@@ -754,7 +754,7 @@ function scr_options_menu()
 			if (global.settings_sidebar_menu == "custom_resources_settings")
 			{
 				if (ds_list_size(global.all_loaded_resource_pack) >= 2)
-				&& (global.enable_options_for_pc == false)
+				&& (!global.enable_options_for_pc)
 				|| (global.enable_options_for_pc)
 				{
 					menu = "resource_pack";
@@ -1081,7 +1081,7 @@ function scr_options_menu()
 			menu_delay = 3;
 			input_key = false;
 			can_navigate_settings_sidebar = false;
-			if (window_get_fullscreen() == false)
+			if (!window_get_fullscreen())
 			{
 				menu = "resolution_setting";
 			}
@@ -1146,7 +1146,7 @@ function scr_options_menu()
 				input_key = false;
 				can_navigate_settings_sidebar = false;
 				if (ds_list_size(global.all_loaded_resource_pack) >= 2)
-				&& (global.enable_options_for_pc == false)
+				&& (!global.enable_options_for_pc)
 				|| (global.enable_options_for_pc)
 				{
 					menu = "resource_pack";
@@ -2072,7 +2072,7 @@ function scr_options_menu()
 			#endregion /* Assist item appear END */
 			
 			#region /* Make sure you can't navigate the assist menu unless you have enabled assist mode */
-			if (global.assist_enable == false)
+			if (!global.assist_enable)
 			{
 				if (menu == "assist_invincible")
 				|| (menu == "assist_breathe_underwater")
@@ -2851,7 +2851,7 @@ function scr_options_menu()
 			if (key_up)
 			&& (menu != "file_delete_yes")
 			&& (menu != "file_delete_no")
-			&& (can_navigate_settings_sidebar == false)
+			&& (!can_navigate_settings_sidebar)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
@@ -2888,7 +2888,7 @@ function scr_options_menu()
 			if (key_down)
 			&& (menu != "file_delete_yes")
 			&& (menu != "file_delete_no")
-			&& (can_navigate_settings_sidebar == false)
+			&& (!can_navigate_settings_sidebar)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
@@ -2936,7 +2936,7 @@ function scr_options_menu()
 		
 			if (key_left)
 			&& (menu == "file_select")
-			&& (can_navigate_settings_sidebar == false)
+			&& (!can_navigate_settings_sidebar)
 			|| (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x - 32 - 16, file_y - 16, file_select_x - 32 + 16, file_y + 16))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -2955,7 +2955,7 @@ function scr_options_menu()
 			else
 			if (key_right)
 			&& (menu == "file_select")
-			&& (can_navigate_settings_sidebar == false)
+			&& (!can_navigate_settings_sidebar)
 			|| (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -4282,14 +4282,14 @@ function scr_options_menu()
 		darken_settings_sidebar_alpha = lerp(darken_settings_sidebar_alpha, 0, 0.1); /* But not the settings sidebar */
 	}
 	else
-	if (can_navigate_settings_sidebar == false)
+	if (!can_navigate_settings_sidebar)
 	&& (in_settings)
 	{
 		darken_settings_alpha = lerp(darken_settings_alpha, 0, 0.1); /* Don't darken the settings */
 		darken_settings_sidebar_alpha = lerp(darken_settings_sidebar_alpha, 0.5, 0.1); /* But darken the settings sidebar */
 	}
 	else
-	if (in_settings == false)
+	if (!in_settings)
 	{
 		darken_settings_alpha = lerp(darken_settings_alpha, 0, 0.1); /* Don't darken the settings */
 		darken_settings_sidebar_alpha = lerp(darken_settings_sidebar_alpha, 0, 0.1); /* And don't darken the settings sidebar */

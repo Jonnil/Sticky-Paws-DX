@@ -1,5 +1,5 @@
 #region /* Collect Invincibility Powerup */
-if (bounce_up == false)
+if (!bounce_up)
 {
 	score += 1000;
 	if (instance_exists(obj_camera))

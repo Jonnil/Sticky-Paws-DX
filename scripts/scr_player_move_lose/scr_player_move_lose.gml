@@ -3,7 +3,7 @@ function scr_player_move_lose()
 	
 	#region /* Die */
 	if (die)
-	&& (goal == false)
+	&& (!goal)
 	{
 		scr_gamepad_vibration(player, 1, 30);
 		

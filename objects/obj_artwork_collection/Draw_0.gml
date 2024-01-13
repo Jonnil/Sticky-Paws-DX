@@ -4,7 +4,7 @@ if (instance_exists(obj_player))
 && (instance_nearest(x, y, obj_player).vspeed == 0)
 && (instance_nearest(x, y, obj_player).can_move)
 && (instance_nearest(x, y, obj_player).intro_animation = "")
-&& (can_navigate == false)
+&& (!can_navigate)
 {
 	
 	#region /* Draw Enter Gallery Key */

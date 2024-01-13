@@ -93,7 +93,7 @@ if (keyboard_check_pressed(vk_escape) ||
 
 #region /* Stop player when touching level */
 if (place_meeting(x, y, obj_level))
-&& (stop_at_level == false)
+&& (!stop_at_level)
 {
 	hspeed = 0;
 	vspeed = 0;
@@ -131,12 +131,12 @@ if (instance_exists(obj_level))
 #endregion /* Set selected level index to the level closest to you END */
 
 #region /* After pressing enter level, the iris should shrink and then start the level */
-if (can_move == false)
+if (!can_move)
 && (entering_level)
 && (delay >= 60)
 && (iris_yscale <= 0.001)
-&& (global.quit_level == false)
-&& (loading_assets == false)
+&& (!global.quit_level)
+&& (!loading_assets)
 {
 	global.level_name = string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)); /* Set the level name to the level you're entering */
 	
@@ -458,7 +458,7 @@ if (key_b_pressed)
 #region /* Movement */
 if (can_move)
 && (!global.pause)
-&& (global.quit_level == false)
+&& (!global.quit_level)
 {
 	if (allow_free_movement)
 	{

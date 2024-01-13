@@ -1,7 +1,7 @@
 #region /* Collision with bullet */
 if (instance_exists(obj_bullet))
 && (distance_to_object(obj_bullet) < 32)
-&& (other.die == false)
+&& (!other.die)
 {
 	if (place_meeting(x, y, obj_bullet))
 	|| (place_meeting(x - 5, y, obj_bullet))

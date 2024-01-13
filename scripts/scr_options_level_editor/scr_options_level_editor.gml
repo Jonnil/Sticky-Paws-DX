@@ -62,6 +62,7 @@ function scr_options_level_editor()
 		|| (menu == "enable_time_countdown")
 		|| (menu == "time_countdown")
 		|| (menu == "show_new_items_notification_level_editor")
+		|| (menu == "can_save_length_variable")
 		|| (menu == "select_level_editing_music")
 		|| (menu == "delete_all_objects")
 		{
@@ -103,6 +104,7 @@ function scr_options_level_editor()
 				{
 					ini_open(working_directory + "save_file/config.ini");
 					ini_write_real("config", "show_new_items_notification_level_editor", global.show_new_items_notification);
+					ini_write_real("config", "can_save_length_variable", global.can_save_length_variable);
 					ini_write_real("config", "select_level_editing_music", global.selected_level_editing_music);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
@@ -175,14 +177,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					if (global.make_every_tileset_into_default_tileset == false)
-					{
-						global.make_every_tileset_into_default_tileset = true;
-					}
-					else
-					{
-						global.make_every_tileset_into_default_tileset = false;
-					}
+					global.make_every_tileset_into_default_tileset = !global.make_every_tileset_into_default_tileset;
 					menu_delay = 3;
 				}
 				else
@@ -299,14 +294,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					if (global.enable_time_countdown == false)
-					{
-						global.enable_time_countdown = true;
-					}
-					else
-					{
-						global.enable_time_countdown = false;
-					}
+					global.enable_time_countdown = !global.enable_time_countdown;
 					menu_delay = 3;
 				}
 				else
@@ -361,14 +349,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					if (global.show_new_items_notification == false)
-					{
-						global.show_new_items_notification = true;
-					}
-					else
-					{
-						global.show_new_items_notification = false;
-					}
+					global.show_new_items_notification = !global.show_new_items_notification;
 					menu_delay = 3;
 				}
 				if (key_up)
@@ -390,6 +371,34 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu = "can_save_length_variable";
+					menu_delay = 3;
+				}
+			}
+			if (menu == "can_save_length_variable")
+			{
+				if (key_a_pressed)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				|| (mouse_check_button_released(mb_left))
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					global.can_save_length_variable = !global.can_save_length_variable;
+					menu_delay = 3;
+				}
+				if (key_up)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
+					menu = "show_new_items_notification_level_editor";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				&& (!open_dropdown)
+				{
 					menu = "select_level_editing_music";
 					menu_delay = 3;
 				}
@@ -400,7 +409,7 @@ function scr_options_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					menu = "show_new_items_notification_level_editor";
+					menu = "can_save_length_variable";
 					menu_delay = 3;
 				}
 				else

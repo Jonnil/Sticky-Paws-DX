@@ -96,7 +96,7 @@ function scr_player_move_swimming_in_water()
 				else
 				if (key_down)
 				&& (!key_up)
-				&& (crouch == false)
+				&& (!crouch)
 				{
 					vspeed = -2;
 				}

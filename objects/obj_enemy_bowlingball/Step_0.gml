@@ -63,8 +63,8 @@ else
 			&& (sliding_along_ground == 0)
 			&& (instance_nearest(x, y, obj_player).hold_item_in_hands = "")
 			&& (instance_nearest(x, y, obj_player).key_dive_hold)
-			&& (instance_nearest(x, y, obj_player).horizontal_rope_climb == false)
-			&& (instance_nearest(x, y, obj_player).ground_pound == false)
+			&& (instance_nearest(x, y, obj_player).!horizontal_rope_climb)
+			&& (instance_nearest(x, y, obj_player).ground_pound == 0)
 			{
 				if (distance_to_object(instance_nearest(x, y, obj_player)) < 16)
 				{

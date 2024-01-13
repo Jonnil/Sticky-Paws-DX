@@ -188,7 +188,7 @@ if (doing_clear_check_timer >= 4)
 #endregion /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" END */
 
 if (!global.actually_play_edited_level)
-&& (modify_object_menu == false)
+&& (!modify_object_menu)
 {
 	
 	#region /* Hide/Show Backgrounds */
@@ -324,7 +324,7 @@ if (!global.actually_play_edited_level)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256 - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 	|| (global.enable_difficulty_selection_settings)
 	&& (global.enable_difficutly_layers_in_level_editor)
-	&& (set_difficulty_mode == false)
+	&& (!set_difficulty_mode)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64 - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 64 - 64 - 32, 0, display_get_gui_width() * 0.5 + 64 + 64 + 32, 64)) /* Can't place objects when clicking the object category buttons */
 	|| (welcome_to_level_editor > 0) /* Can't click on objects behind the help menu */
@@ -377,7 +377,7 @@ if (!global.actually_play_edited_level)
 		}
 		
 		if (quit_level_editor == 0)
-		&& (global.play_edited_level == false)
+		&& (!global.play_edited_level)
 		&& (startup_loading_timer >= 3)
 		{
 			instance_activate_all();
@@ -512,12 +512,12 @@ if (!global.actually_play_edited_level)
 	
 	#region /* Holding the play key down */
 	if (keyboard_check_pressed(key_play))
-	&& (welcome_to_level_editor == false)
+	&& (welcome_to_level_editor == 0)
 	|| (level_editor_menu == "play")
 	&& (key_a_pressed)
-	&& (welcome_to_level_editor == false)
+	&& (welcome_to_level_editor == 0)
 	|| (gamepad_button_check_pressed(global.player_slot[1], button_play))
-	&& (welcome_to_level_editor == false)
+	&& (welcome_to_level_editor == 0)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 	&& (mouse_check_button_pressed(mb_left))
 	{
@@ -528,12 +528,12 @@ if (!global.actually_play_edited_level)
 		}
 	}
 	if (keyboard_check(key_play))
-	&& (welcome_to_level_editor == false)
+	&& (welcome_to_level_editor == 0)
 	|| (level_editor_menu == "play")
 	&& (key_a_hold)
-	&& (welcome_to_level_editor == false)
+	&& (welcome_to_level_editor == 0)
 	|| (gamepad_button_check(global.player_slot[1], button_play))
-	&& (welcome_to_level_editor == false)
+	&& (welcome_to_level_editor == 0)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, play_level_icon_x - 32, display_get_gui_height() - 64, play_level_icon_x + 32, display_get_gui_height() + 64))
 	&& (mouse_check_button(mb_left))
 	|| (pressing_play_timer < 3)
@@ -1108,21 +1108,21 @@ if (!global.actually_play_edited_level)
 			if (!mouse_check_button(mb_right))
 			&& (!hovering_over_icon)
 			&& (mouse_check_button(mb_left))
-			&& (obj_leveleditor.drag_object == false)
-			&& (obj_leveleditor.erase_mode == false)
+			&& (!obj_leveleditor.drag_object)
+			&& (!obj_leveleditor.erase_mode)
 			&& (!obj_leveleditor.pause)
 			
 			|| (!obj_leveleditor.key_b_hold)
 			&& (!hovering_over_icon)
-			&& (obj_leveleditor.drag_object == false)
-			&& (obj_leveleditor.erase_mode == false)
+			&& (!obj_leveleditor.drag_object)
+			&& (!obj_leveleditor.erase_mode)
 			&& (obj_leveleditor.key_a_hold)
 			&& (!obj_leveleditor.pause)
 			
 			|| (keyboard_check(obj_leveleditor.key_erase_object))
 			&& (!hovering_over_icon)
-			&& (obj_leveleditor.drag_object == false)
-			&& (obj_leveleditor.erase_mode == false)
+			&& (!obj_leveleditor.drag_object)
+			&& (!obj_leveleditor.erase_mode)
 			&& (obj_leveleditor.key_a_hold)
 			&& (!obj_leveleditor.pause)
 			{
@@ -1841,7 +1841,7 @@ if (!global.actually_play_edited_level)
 	#endregion /* End Game END */
 	
 	#region /* Press Pause Button */
-	if (quit_level_editor == false)
+	if (!quit_level_editor)
 	&& (!pause)
 	&& (!in_modify_object_menu)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)

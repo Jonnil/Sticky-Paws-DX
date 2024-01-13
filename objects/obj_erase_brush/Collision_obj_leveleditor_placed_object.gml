@@ -1,7 +1,7 @@
 #region /* Make object change difficulty layer depending on what difficulty layer is selected */
 if (instance_exists(obj_leveleditor))
 && (obj_leveleditor.difficulty_layer > 0)
-&& (obj_leveleditor.drag_object == false)
+&& (!obj_leveleditor.drag_object)
 && (!obj_leveleditor.pause)
 {
 	audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
@@ -42,9 +42,9 @@ if (instance_exists(obj_leveleditor))
 #region /* Delete / Erase Objects */
 if (instance_exists(obj_leveleditor))
 && (obj_leveleditor.difficulty_layer == 0)
-&& (obj_leveleditor.drag_object == false)
+&& (!obj_leveleditor.drag_object)
 && (obj_leveleditor.erase_mode)
-&& (obj_leveleditor.scroll_view == false)
+&& (!obj_leveleditor.scroll_view)
 && (!obj_leveleditor.pause)
 {
 	audio_sound_pitch(snd_leveleditor_erase_object, random_range(0.9, 1.1));
@@ -59,14 +59,14 @@ if (instance_exists(obj_leveleditor))
 
 #region /* Set to appear on difficulty level */
 if (instance_exists(obj_leveleditor))
-&& (obj_leveleditor.drag_object == false)
-&& (obj_leveleditor.erase_mode == false)
+&& (!obj_leveleditor.drag_object)
+&& (!obj_leveleditor.erase_mode)
 && (!obj_leveleditor.pause)
 
 || (instance_exists(obj_leveleditor))
 && (!obj_leveleditor.key_b_hold)
-&& (obj_leveleditor.drag_object == false)
-&& (obj_leveleditor.erase_mode == false)
+&& (!obj_leveleditor.drag_object)
+&& (!obj_leveleditor.erase_mode)
 && (obj_leveleditor.key_a_hold)
 && (!obj_leveleditor.pause)
 {

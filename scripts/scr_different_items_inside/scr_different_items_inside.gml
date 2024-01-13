@@ -31,7 +31,7 @@ function scr_different_items_inside()
 	if (item_inside = "10_basic_collectibles")
 	{
 		if (hit <= 4)
-		&& (empty == false)
+		&& (!empty)
 		{
 			bounce_up = true;
 			hit ++;

@@ -1,10 +1,10 @@
 #region /* Collision Event with block break mask */
-if (bounce_up == false)
+if (!bounce_up)
 {
 	if (place_meeting(x, y, obj_block_break)) /* This object is a hurtbox, for blocks. So when this block comes in contact with this object, it will break */
 	&& (instance_nearest(x, y, obj_block_break).can_break_other_blocks)
 	{
-		if (empty == false)
+		if (!empty)
 		{
 			if (instance_exists(obj_player))
 			{

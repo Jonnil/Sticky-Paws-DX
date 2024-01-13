@@ -1,7 +1,7 @@
-if (bounce_up == false)
+if (!bounce_up)
 && (other.flat)
-&& (other.die == false)
-&& (other.die_volting == false)
+&& (!other.die)
+&& (!other.die_volting)
 {
 	effect_create_above(ef_ring, x, y, 0, c_white);
 	

@@ -195,7 +195,7 @@ function scr_player_move_ledge_grab()
 
 	#region /* Ledge grab jump / Get up over ledge */
 	if (ledge_grab_jump)
-	&& (stick_to_wall == false)
+	&& (!stick_to_wall)
 	{
 		if (image_xscale == -1)
 		&& (!place_meeting(x, y - 1, obj_wall))

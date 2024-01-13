@@ -1,6 +1,6 @@
 #region /* Turn around */
 if (!die)
-&& (other.die == false)
+&& (!other.die)
 {
 	if (!place_meeting(x, y, obj_bullet))
 	&& (!place_meeting(x, y, obj_arrow))
@@ -14,14 +14,14 @@ if (!die)
 	if (position_meeting(bbox_left - 1, y, other))
 	&& (!position_meeting(bbox_left - 1, y, obj_bullet))
 	&& (!position_meeting(bbox_left - 1, y, obj_arrow))
-	&& (other.die == false)
+	&& (!other.die)
 	{
 		image_xscale = +1;
 	}
 	if (position_meeting(bbox_right + 1, y, other))
 	&& (!position_meeting(bbox_right + 1, y, obj_bullet))
 	&& (!position_meeting(bbox_right + 1, y, obj_arrow))
-	&& (other.die == false)
+	&& (!other.die)
 	{
 		image_xscale = -1;
 	}

@@ -225,13 +225,13 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	#endregion /* Clicking the Cancel button END */
 	
 	#region /* OK and Cancel buttons under name input */
-	if (can_press_ok_when_input_empty == false)
+	if (!can_press_ok_when_input_empty)
 	&& (keyboard_string != "")
 	|| (can_press_ok_when_input_empty)
 	{
 		if (max_characters_needed) /* On some code input screens, you want to fill all the characters to the max before you can continue */
 		&& (string_length(what_string_to_edit) == max_characters)
-		|| (max_characters_needed == false)
+		|| (!max_characters_needed)
 		{
 			draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
 			if (menu != cancel_menu_string)

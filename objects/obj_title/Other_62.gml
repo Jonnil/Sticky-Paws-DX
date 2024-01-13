@@ -19,7 +19,7 @@ if (async_load[? "id"] == global.http_request_id)
 		{
 			case "level":
 			if (response_json != undefined)
-			&& (in_online_download_list_load_menu == false)
+			&& (!in_online_download_list_load_menu)
 			{
 				var file_save_location = cache_directory + "downloaded_level/" + string(response_json[? "name"]) + ".zip";
 				if (response_json[? "name"] == undefined)
@@ -39,7 +39,7 @@ if (async_load[? "id"] == global.http_request_id)
 			
 			case "character":
 			if (response_json != undefined)
-			&& (in_online_download_list_load_menu == false)
+			&& (!in_online_download_list_load_menu)
 			{
 				var file_save_location = cache_directory + "downloaded_character/" + string(response_json[? "name"]) + ".zip";
 				if (response_json[? "name"] == undefined)

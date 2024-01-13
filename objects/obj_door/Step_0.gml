@@ -16,7 +16,7 @@ if (open_door)
 		vspeed = 0;
 		gravity = 0;
 		x = instance_nearest(x, y, obj_door).x;
-		if (instance_nearest(x, y, obj_door).door_need_to_be_on_ground_to_enter == false)
+		if (!instance_nearest(x, y, obj_door).door_need_to_be_on_ground_to_enter)
 		{
 			y = instance_nearest(x, y, obj_door).y;
 		}

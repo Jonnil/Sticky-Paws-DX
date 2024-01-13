@@ -72,7 +72,7 @@ if (keyboard_check_pressed(ord("Y")))
 	{
 		if (!hide_menu_for_clean_screenshots)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (in_settings == false)
+		&& (!in_settings)
 		&& (menu != "quit_game_yes")
 		&& (menu != "quit_game_no")
 		{
@@ -223,7 +223,7 @@ if (keyboard_check_pressed(vk_escape))
 || (gamepad_button_check_pressed(global.player_slot[3], gp_select))
 || (gamepad_button_check_pressed(global.player_slot[4], gp_select))
 {
-	if (can_remap_key == false)
+	if (!can_remap_key)
 	&& (!input_key)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
@@ -242,14 +242,11 @@ if (keyboard_check_pressed(vk_escape))
 /* PAUSE LEVEL SELECT / LEVEL EDITOR MENU */
 if (!hide_menu_for_clean_screenshots)
 {
-	if (room == rm_world_map)
-	&& (show_loading_icon == false)
-	|| (room == rm_leveleditor)
-	&& (show_loading_icon == false)
-	|| (global.pause_room == rm_world_map)
-	&& (show_loading_icon == false)
-	|| (global.pause_room == rm_leveleditor)
-	&& (show_loading_icon == false)
+	if (!show_loading_icon)
+	&& (room == rm_world_map
+	|| room == rm_leveleditor
+	|| global.pause_room == rm_world_map
+	|| global.pause_room == rm_leveleditor)
 	{
 		
 		#region /* Continue */

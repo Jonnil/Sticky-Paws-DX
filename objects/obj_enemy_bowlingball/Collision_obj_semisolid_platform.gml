@@ -1,4 +1,4 @@
-if (die_volting == false)
+if (!die_volting)
 || (!die)
 {
 	

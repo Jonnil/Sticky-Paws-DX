@@ -51,13 +51,13 @@ if (global.pause_room == rm_leveleditor)
 {
 	
 	#region /* Big Collectible 1 */
-	if (global.big_collectible1 == false)
+	if (!global.big_collectible1)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
 	}
 	else
 	if (global.big_collectible1)
-	&& (global.big_collectible1_already_collected == false)
+	&& (!global.big_collectible1_already_collected)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
 	}
@@ -68,13 +68,13 @@ if (global.pause_room == rm_leveleditor)
 	#endregion /* Big Collectible 1 END */
 	
 	#region /* Big Collectible 2 */
-	if (global.big_collectible2 == false)
+	if (!global.big_collectible2)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
 	}
 	else
 	if (global.big_collectible2)
-	&& (global.big_collectible2_already_collected == false)
+	&& (!global.big_collectible2_already_collected)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
 	}
@@ -85,13 +85,13 @@ if (global.pause_room == rm_leveleditor)
 	#endregion /* Big Collectible 2 END */
 	
 	#region /* Big Collectible 3 */
-	if (global.big_collectible3 == false)
+	if (!global.big_collectible3)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 64, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
 	}
 	else
 	if (global.big_collectible3)
-	&& (global.big_collectible3_already_collected == false)
+	&& (!global.big_collectible3_already_collected)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
 	}
@@ -102,13 +102,13 @@ if (global.pause_room == rm_leveleditor)
 	#endregion /* Big Collectible 3 END */
 	
 	#region /* Big Collectible 4 */
-	if (global.big_collectible4 == false)
+	if (!global.big_collectible4)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 96, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
 	}
 	else
 	if (global.big_collectible4)
-	&& (global.big_collectible4_already_collected == false)
+	&& (!global.big_collectible4_already_collected)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
 	}
@@ -119,13 +119,13 @@ if (global.pause_room == rm_leveleditor)
 	#endregion /* Big Collectible 4 END */
 	
 	#region /* Big Collectible 5 */
-	if (global.big_collectible5 == false)
+	if (!global.big_collectible5)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 128, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
 	}
 	else
 	if (global.big_collectible5)
-	&& (global.big_collectible5_already_collected == false)
+	&& (!global.big_collectible5_already_collected)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5 * fade_in_pause_alpha);
 	}
@@ -140,7 +140,7 @@ if (global.pause_room == rm_leveleditor)
 
 #region /* Hide menu for clean screenshots text */
 if (!hide_menu_for_clean_screenshots)
-&& (in_settings == false)
+&& (!in_settings)
 && (os_type != os_ios)
 && (os_type != os_android)
 {
@@ -186,7 +186,7 @@ if (!hide_menu_for_clean_screenshots)
 	}
 	#endregion /* Games Logo in top left corner END */
 	
-	if (in_settings == false)
+	if (!in_settings)
 	&& (menu != "remap_key_up")
 	&& (menu != "remap_key_down")
 	&& (menu != "remap_key_left")
@@ -245,7 +245,7 @@ if (!hide_menu_for_clean_screenshots)
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 
-	if (in_settings == false)
+	if (!in_settings)
 	&& (menu != "quit_game_no")
 	&& (menu != "quit_game_yes")
 	{
@@ -254,14 +254,11 @@ if (!hide_menu_for_clean_screenshots)
 	#endregion /* Pause Text END */
 
 	/* PAUSE LEVEL SELECT / LEVEL EDITOR MENU */
-	if (room == rm_world_map)
-	&& (show_loading_icon == false)
-	|| (room == rm_leveleditor)
-	&& (show_loading_icon == false)
-	|| (global.pause_room == rm_world_map)
-	&& (show_loading_icon == false)
-	|| (global.pause_room == rm_leveleditor)
-	&& (show_loading_icon == false)
+	if (!show_loading_icon)
+	&& (room == rm_world_map
+	|| room == rm_leveleditor
+	|| global.pause_room == rm_world_map
+	|| global.pause_room == rm_leveleditor)
 	{
 		if (menu == "continue")
 		|| (menu == "edit_level")

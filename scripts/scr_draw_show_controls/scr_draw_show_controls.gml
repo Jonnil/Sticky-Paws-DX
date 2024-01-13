@@ -120,7 +120,6 @@ function scr_draw_show_controls(what_player = 1)
 			#region /* Show Controls for Player */
 			if (player_instance > 0)
 			&& (instance_exists(player_instance))
-			&& (player_instance.partner_character == false)
 			&& (player_can_play)
 			&& (!global.goal_active)
 			{
@@ -234,7 +233,7 @@ function scr_draw_show_controls(what_player = 1)
 				#endregion /* Show Player Crouch Key END */
 				
 				#region /* Show Player Run Key */
-				if (player_run_toggle == false)
+				if (!player_run_toggle)
 				{
 					if (gamepad_player_is_connected)
 					&& (global.controls_used_for_navigation == "gamepad")

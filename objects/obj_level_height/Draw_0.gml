@@ -1,6 +1,6 @@
 #region /* Draw black rectangle outside level border */
 if (!global.actually_play_edited_level)
-&& (global.play_edited_level == false)
+&& (!global.play_edited_level)
 {
 	var cam_x = camera_get_view_x(view_camera[0]);
 	var cam_y = camera_get_view_y(view_camera[0]);
@@ -26,7 +26,7 @@ if (drag_object)
 draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_white, 1);
 
 if (!global.actually_play_edited_level)
-&& (global.play_edited_level == false)
+&& (!global.play_edited_level)
 {
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);

@@ -25,7 +25,7 @@ blind = false;
 
 #region /* If enemies are disabled, destroy this object */
 if (global.assist_enable)
-&& (global.assist_enable_enemies == false)
+&& (!global.assist_enable_enemies)
 {
 	instance_destroy();
 }

@@ -1,6 +1,6 @@
 #region /* Draw black rectangle outside level border */
 if (!global.actually_play_edited_level)
-&& (global.play_edited_level == false)
+&& (!global.play_edited_level)
 {
 	draw_set_alpha(0.75); /* Make the level border transparent */
 	draw_rectangle_color(x - 16, 1, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_black, c_black, c_black, c_black, false);
@@ -20,7 +20,7 @@ if (drag_object)
 draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_white, 1);
 
 if (!global.actually_play_edited_level)
-&& (global.play_edited_level == false)
+&& (!global.play_edited_level)
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);

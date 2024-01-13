@@ -65,7 +65,7 @@ draw_xscale = lerp(draw_xscale, 1, 0.1);
 draw_yscale = lerp(draw_yscale, 1, 0.1);
 xx = lerp(xx, xstart, 0.1);
 yy = lerp(yy, ystart, 0.1);
-if (bounce_up == false)
+if (!bounce_up)
 {
 	draw_xscale -= 0.1;
 	draw_yscale -= 0.1;
@@ -110,7 +110,7 @@ if (bounce_up)
 if (instance_exists(obj_player))
 && (distance_to_object(obj_player) < 32)
 {
-	if (bounce_up == false)
+	if (!bounce_up)
 	{
 	
 		if (place_meeting(x, y - 4, obj_player)) /* If player is ground pounding this block */
@@ -138,7 +138,7 @@ if (instance_exists(obj_player))
 		&& (!place_meeting(x + 4, y, obj_wall))
 		&& (instance_nearest(x, y, obj_player).dive)
 		{
-			if (empty == false)
+			if (!empty)
 			{
 				instance_nearest(x, y, obj_player).dive = false;
 				if (instance_exists(obj_player))
@@ -161,7 +161,7 @@ if (instance_exists(obj_player))
 if (instance_exists(obj_enemy_bowlingball))
 && (distance_to_object(obj_enemy_bowlingball) < 32)
 {
-	if (bounce_up == false)
+	if (!bounce_up)
 	{
 		if (place_meeting(x - 10, y, obj_enemy_bowlingball))
 		&& (instance_nearest(x, y, obj_enemy_bowlingball).sliding_along_ground <> 0)
@@ -173,7 +173,7 @@ if (instance_exists(obj_enemy_bowlingball))
 		&& (instance_nearest(x, y, obj_enemy_bowlingball).vspeed <= 0)
 		&& (can_be_hit_from_below)
 		{
-			if (empty == false)
+			if (!empty)
 			{
 				bounce_up = true;
 			}
@@ -200,7 +200,7 @@ if (instance_exists(obj_enemy_bowlingball))
 					can_break_other_blocks = true;
 				}
 			}
-			if (empty == false)
+			if (!empty)
 			{
 				if (instance_exists(obj_player))
 				{

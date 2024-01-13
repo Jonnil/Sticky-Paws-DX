@@ -18,7 +18,7 @@ if (!die)
 				vspeed = -triple_jump_height;
 			}
 		}
-		if (die_volting == false)
+		if (!die_volting)
 		{
 			with(instance_nearest(x, y, obj_player))
 			{
@@ -48,7 +48,7 @@ if (!die)
 			
 		}
 	}
-	if (die_volting == false)
+	if (!die_volting)
 	{
 		if (other.vspeed > 0)
 		|| (other.climb == false)
@@ -285,7 +285,7 @@ if (!die)
 		&& (flat)
 		{
 			if (other.taken_damage <= 0)
-			&& (other.invincible_timer == false)
+			&& (other.invincible_timer == 0)
 			{
 				if (other.have_heart_balloon)
 				{

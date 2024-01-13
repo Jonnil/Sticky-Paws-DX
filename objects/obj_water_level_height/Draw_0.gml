@@ -1,6 +1,6 @@
 #region /* Draw blue rectangle representing the water level */
 if (!global.actually_play_edited_level)
-&& (global.play_edited_level == false)
+&& (!global.play_edited_level)
 {
 	draw_set_alpha(0.5);
 	draw_rectangle_color(camera_get_view_x(view_camera[0]), y - 16, camera_get_view_x(view_camera[0]) + camera_get_view_width(view_camera[0]), camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0]), c_blue, c_blue, c_blue, c_blue, false);
@@ -21,7 +21,7 @@ draw_sprite_ext(spr_level_height, 0, x, y, 1, 1, 0, c_blue, 1);
 
 #region /* Make sure the level end isn't outside of the level, this code has to be after the drag object code */
 if (!global.actually_play_edited_level)
-&& (global.play_edited_level == false)
+&& (!global.play_edited_level)
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);

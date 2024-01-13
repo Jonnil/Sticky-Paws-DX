@@ -6,7 +6,7 @@ function scr_make_sprite_transparent_setting_difficulty_levels()
 		image_blend = default_blend;
 	}
 	else
-	if (obj_leveleditor.quit_level_editor == false)
+	if (!obj_leveleditor.quit_level_editor)
 	{
 		image_alpha = 0.1;
 		switch (obj_leveleditor.difficulty_layer)

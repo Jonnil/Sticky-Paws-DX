@@ -182,7 +182,7 @@ function scr_character_manage_menu_draw()
 					draw_sprite_ext(spr_menu_button, global.menu_button_subimg, get_window_width * 0.5 - 185, copy_character_y + 21, 1, 1, 0, c_dkgray, 0.5);
 					draw_sprite_ext(spr_lock_icon, 0, get_window_width * 0.5 - 185 + 16, copy_character_y + 21, 1, 1, 0, c_white, 1);
 				}
-				if (selecting_official_character == false)
+				if (!selecting_official_character)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, delete_character_y, l10n_text("Delete Character"), "click_delete_character", "click_delete_character_no", c_red); /* Delete Characters */
 					draw_sprite_ext(spr_icon_delete, 0, get_window_width * 0.5 - 185 + 16, delete_character_y + 21, 1, 1, 0, c_white, 1);
@@ -241,7 +241,7 @@ function scr_character_manage_menu_draw()
 			
 		}
 		else
-		if (can_navigate == false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
+		if (!can_navigate) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
 		{
 			draw_set_halign(fa_center);
 			draw_set_valign(fa_middle);

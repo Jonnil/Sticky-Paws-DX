@@ -395,9 +395,9 @@ function scr_draw_information_menu()
 					global.selected_online_download_index = 1;
 					menu = "online_download_list_load";
 					information_menu_open = 0;
-					if (global.player_can_play[1] == false)
-					&& (global.player_can_play[2] == false)
-					&& (global.player_can_play[3] == false)
+					if (!global.player_can_play[1])
+					&& (!global.player_can_play[2])
+					&& (!global.player_can_play[3])
 					&& (global.player_can_play[4] == false)
 					{
 						global.player_can_play[1] = true;

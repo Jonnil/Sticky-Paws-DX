@@ -1,7 +1,7 @@
 #region /* Turn around */
 if (!die)
 && (sliding_along_ground == 0)
-&& (other.die == false)
+&& (!other.die)
 {
 	if (!place_meeting(x, y, obj_bullet))
 	&& (!place_meeting(x, y, obj_arrow))
@@ -28,15 +28,15 @@ if (!die)
 #endregion /* Turn around END */
 
 if (sliding_along_ground == +1)
-&& (other.die == false)
+&& (!other.die)
 && (!die)
-&& (die_volting == false)
-&& (other.die_volting == false)
+&& (!die_volting)
+&& (!other.die_volting)
 || (sliding_along_ground == -1)
-&& (other.die == false)
+&& (!other.die)
 && (!die)
-&& (die_volting == false)
-&& (other.die_volting == false)
+&& (!die_volting)
+&& (!other.die_volting)
 {
 	if (other.x < x)
 	{
@@ -69,15 +69,15 @@ if (sliding_along_ground == +1)
 }
 
 if (!die)
-&& (die_volting == false)
-&& (other.die_volting == false)
-&& (other.die == false)
+&& (!die_volting)
+&& (!other.die_volting)
+&& (!other.die)
 && (other.speed > speed)
 && (other.flat)
 && (other.sliding_along_ground == 0)
 {
-	if (die_volting == false)
-	&& (other.die_volting == false)
+	if (!die_volting)
+	&& (!other.die_volting)
 	{
 		global.enemy_counter ++;
 		if (other.x < x)

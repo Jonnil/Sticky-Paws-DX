@@ -103,7 +103,7 @@ if (instance_exists(obj_player))
 		hspeed = 0;
 	}
 	if (place_meeting(x, y, obj_player))
-	&& (bounce_up == false)
+	&& (!bounce_up)
 	{
 		
 		#region /* Give Life */

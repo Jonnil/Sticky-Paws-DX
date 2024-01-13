@@ -36,9 +36,9 @@ if (show_run_toggle_for_player1 > 0)
 	show_run_toggle_for_player3 = 0;
 	show_run_toggle_for_player4 = 0;
 	if (global.player_can_play[1])
-	&& (global.player_can_play[2] == false)
-	&& (global.player_can_play[3] == false)
-	&& (global.player_can_play[4] == false)
+	&& (!global.player_can_play[2])
+	&& (!global.player_can_play[3])
+	&& (!global.player_can_play[4])
 	{
 		scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 232, camera_get_view_y(view_camera[view_current]) + 32, l10n_text("Always run"), global.default_text_size, c_white, c_black, 1);
 	}

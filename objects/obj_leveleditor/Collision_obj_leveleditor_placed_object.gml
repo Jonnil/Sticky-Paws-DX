@@ -30,11 +30,11 @@ if (!global.actually_play_edited_level)
 			&& (place_meeting(x, y, obj_level_player3_start))
 			&& (instance_exists(obj_level_player4_start))
 			&& (place_meeting(x, y, obj_level_player4_start))
-			&& (obj_leveleditor.drag_object == false)
-			&& (obj_level_player1_start.drag_object == false)
-			&& (obj_level_player2_start.drag_object == false)
-			&& (obj_level_player3_start.drag_object == false)
-			&& (obj_level_player4_start.drag_object == false)
+			&& (!obj_leveleditor.drag_object)
+			&& (!obj_level_player1_start.drag_object)
+			&& (!obj_level_player2_start.drag_object)
+			&& (!obj_level_player3_start.drag_object)
+			&& (!obj_level_player4_start.drag_object)
 			{
 				
 				#region /* Reset Level Editor Checkpoint */

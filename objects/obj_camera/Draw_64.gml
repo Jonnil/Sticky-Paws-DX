@@ -10,13 +10,13 @@ if (hud_show_big_collectibles_y != -64)
 {
 	
 	#region /* Big Collectible 1 */
-	if (global.big_collectible1 == false)
+	if (!global.big_collectible1)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 	}
 	else
 	if (global.big_collectible1)
-	&& (global.big_collectible1_already_collected == false)
+	&& (!global.big_collectible1_already_collected)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 	}
@@ -27,13 +27,13 @@ if (hud_show_big_collectibles_y != -64)
 	#endregion /* Big Collectible 1 END */
 	
 	#region /* Big Collectible 2 */
-	if (global.big_collectible2 == false)
+	if (!global.big_collectible2)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 	}
 	else
 	if (global.big_collectible2)
-	&& (global.big_collectible2_already_collected == false)
+	&& (!global.big_collectible2_already_collected)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 32, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 	}
@@ -44,13 +44,13 @@ if (hud_show_big_collectibles_y != -64)
 	#endregion /* Big Collectible 2 END */
 	
 	#region /* Big Collectible 3 */
-	if (global.big_collectible3 == false)
+	if (!global.big_collectible3)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 64, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 	}
 	else
 	if (global.big_collectible3)
-	&& (global.big_collectible3_already_collected == false)
+	&& (!global.big_collectible3_already_collected)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 64, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 	}
@@ -61,13 +61,13 @@ if (hud_show_big_collectibles_y != -64)
 	#endregion /* Big Collectible 3 END */
 	
 	#region /* Big Collectible 4 */
-	if (global.big_collectible4 == false)
+	if (!global.big_collectible4)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 96, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 	}
 	else
 	if (global.big_collectible4)
-	&& (global.big_collectible4_already_collected == false)
+	&& (!global.big_collectible4_already_collected)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 96, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 	}
@@ -78,13 +78,13 @@ if (hud_show_big_collectibles_y != -64)
 	#endregion /* Big Collectible 4 END */
 	
 	#region /* Big Collectible 5 */
-	if (global.big_collectible5 == false)
+	if (!global.big_collectible5)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible_outline, 0, 32 + 128, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 	}
 	else
 	if (global.big_collectible5)
-	&& (global.big_collectible5_already_collected == false)
+	&& (!global.big_collectible5_already_collected)
 	{
 		draw_sprite_ext(global.resource_pack_sprite_big_collectible, 0, 32 + 128, hud_show_big_collectibles_y, 0.5, 0.5, 0, c_white, 0.5);
 	}
@@ -572,7 +572,7 @@ if (black_screen_gui_alpha > 0.2)
 || (pause_playtest)
 {
 	if (global.enable_transitions)
-	&& (pause_playtest == false)
+	&& (!pause_playtest)
 	{
 		draw_set_alpha(black_screen_gui_alpha);
 		draw_rectangle_color(0, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);

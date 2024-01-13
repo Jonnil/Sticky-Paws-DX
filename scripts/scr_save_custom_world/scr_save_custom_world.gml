@@ -7,7 +7,7 @@ function scr_save_custom_world()
 	
 		#region /* Create directory for saving custom worlds */
 		if (global.select_level_index >= 1)
-		&& (global.create_level_from_template == false)
+		&& (!global.create_level_from_template)
 		&& (!directory_exists(working_directory + "custom_worlds/" + string(ds_list_find_value(global.all_loaded_custom_worlds, global.select_level_index))))
 		{
 			directory_create(working_directory + "custom_worlds/" + string(ds_list_find_value(global.all_loaded_custom_worlds, global.select_level_index)));
@@ -24,7 +24,7 @@ function scr_save_custom_world()
 		instance_activate_all();
 		var file, str;
 		if (global.select_level_index >= 1)
-		&& (global.create_level_from_template == false)
+		&& (!global.create_level_from_template)
 		{
 			file = file_text_open_write(working_directory + "custom_worlds/" + string(ds_list_find_value(global.all_loaded_custom_worlds, global.select_level_index)) + "/data/object_placement.txt"); /* Open file for writing */
 		}
@@ -51,7 +51,7 @@ function scr_save_custom_world()
 		if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
 		{
 			if (global.select_level_index >= 1)
-			&& (global.create_level_from_template == false)
+			&& (!global.create_level_from_template)
 			{
 				ini_open(working_directory + "custom_worlds/" + string(ds_list_find_value(global.all_loaded_custom_worlds, global.select_level_index)) + "/data/level_information.ini");
 			}

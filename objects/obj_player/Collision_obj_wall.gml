@@ -32,7 +32,7 @@ if (can_collide_with_wall)
 	#region /* Landing on solid object */
 	if (place_meeting(x, y + 1, other))
 	&& (vspeed >= 0)
-	&& (stick_to_wall == false)
+	&& (!stick_to_wall)
 	{
 	
 		#region /* Smoke Landing Effect */
@@ -79,7 +79,7 @@ if (can_collide_with_wall)
 	
 	#region /* Hitting your head on ceiling */
 	if (position_meeting(x, bbox_top - 1, other))
-	&& (stick_to_wall == false)
+	&& (!stick_to_wall)
 	{
 		scr_gamepad_vibration(player, 0.1, 10);
 		vspeed += 4;

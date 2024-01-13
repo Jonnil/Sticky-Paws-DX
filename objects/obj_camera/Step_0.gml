@@ -173,7 +173,7 @@ if (player1 >= 1)
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[1] == 0)
-	|| (player1.can_move == false)
+	|| (!player1.can_move)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
@@ -222,7 +222,7 @@ if (player2 >= 1)
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[2] == 0)
-	|| (player1.can_move == false)
+	|| (!player1.can_move)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
@@ -271,7 +271,7 @@ if (player3 >= 1)
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[3] == 0)
-	|| (player1.can_move == false)
+	|| (!player1.can_move)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
@@ -320,7 +320,7 @@ if (player4 >= 1)
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[4] == 0)
-	|| (player1.can_move == false)
+	|| (!player1.can_move)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
@@ -368,7 +368,7 @@ else
 #region /* Stop gamepad vibration for different players */
 
 #region /* Stop gamepad vibration for player 1 */
-if (player1_vibration_active == false)
+if (!player1_vibration_active)
 {
 	player1_motor_speed = lerp(player1_motor_speed, 0, 0.1);
 }
@@ -376,7 +376,7 @@ gamepad_set_vibration(global.player_slot[1], player1_motor_speed, player1_motor_
 #endregion /* Stop gamepad vibration for player 1 END */
 
 #region /* Stop gamepad vibration for player 2 */
-if (player2_vibration_active == false)
+if (!player2_vibration_active)
 {
 	player2_motor_speed = lerp(player2_motor_speed, 0, 0.1);
 }
@@ -384,7 +384,7 @@ gamepad_set_vibration(global.player_slot[2], player2_motor_speed, player2_motor_
 #endregion /* Stop gamepad vibration for player 2 END */
 
 #region /* Stop gamepad vibration for player 3 */
-if (player3_vibration_active == false)
+if (!player3_vibration_active)
 {
 	player3_motor_speed = lerp(player3_motor_speed, 0, 0.1);
 }
@@ -392,7 +392,7 @@ gamepad_set_vibration(global.player_slot[3], player3_motor_speed, player3_motor_
 #endregion /* Stop gamepad vibration for player 3 END */
 
 #region /* Stop gamepad vibration for player 4 */
-if (player4_vibration_active == false)
+if (!player4_vibration_active)
 {
 	player4_motor_speed = lerp(player4_motor_speed, 0, 0.1);
 }
@@ -413,7 +413,7 @@ if (!global.pause)
 		&& (can_spawn_player1)
 		&& (lives > 0)
 		{
-			if (global.player_can_play[1] == false)
+			if (!global.player_can_play[1])
 			{
 				global.player_can_play[1] = true;
 			}
@@ -447,7 +447,7 @@ if (!global.pause)
 		&& (can_spawn_player2)
 		&& (lives > 0)
 		{
-			if (global.player_can_play[2] == false)
+			if (!global.player_can_play[2])
 			{
 				global.player_can_play[2] = true;
 			}
@@ -481,7 +481,7 @@ if (!global.pause)
 		&& (can_spawn_player3)
 		&& (lives > 0)
 		{
-			if (global.player_can_play[3] == false)
+			if (!global.player_can_play[3])
 			{
 				global.player_can_play[3] = true;
 			}
@@ -515,7 +515,7 @@ if (!global.pause)
 		&& (can_spawn_player4)
 		&& (lives > 0)
 		{
-			if (global.player_can_play[4] == false)
+			if (!global.player_can_play[4])
 			{
 				global.player_can_play[4] = true;
 			}
@@ -544,7 +544,7 @@ if (!global.pause)
 }
 #endregion /* Spawn Players in multiplayer END */
 
-if (save_level_as_png == false)
+if (!save_level_as_png)
 {
 	if (shake > 0)
 	{
@@ -976,7 +976,7 @@ if (key_player1_run_toggle_pressed)
 	show_run_toggle_for_player2 = 0;
 	show_run_toggle_for_player3 = 0;
 	show_run_toggle_for_player4 = 0;
-	if (global.player1_run_toggle == false)
+	if (!global.player1_run_toggle)
 	{
 		global.player1_run_toggle = true;
 	}
@@ -992,7 +992,7 @@ if (key_player2_run_toggle_pressed)
 	show_run_toggle_for_player2 = 100;
 	show_run_toggle_for_player3 = 0;
 	show_run_toggle_for_player4 = 0;
-	if (global.player2_run_toggle == false)
+	if (!global.player2_run_toggle)
 	{
 		global.player2_run_toggle = true;
 	}
@@ -1008,7 +1008,7 @@ if (key_player3_run_toggle_pressed)
 	show_run_toggle_for_player2 = 0;
 	show_run_toggle_for_player3 = 100;
 	show_run_toggle_for_player4 = 0;
-	if (global.player3_run_toggle == false)
+	if (!global.player3_run_toggle)
 	{
 		global.player3_run_toggle = true;
 	}
@@ -1024,7 +1024,7 @@ if (key_player4_run_toggle_pressed)
 	show_run_toggle_for_player2 = 0;
 	show_run_toggle_for_player3 = 0;
 	show_run_toggle_for_player4 = 100;
-	if (global.player4_run_toggle == false)
+	if (!global.player4_run_toggle)
 	{
 		global.player4_run_toggle = true;
 	}
@@ -1393,7 +1393,7 @@ else
 #region /* Letterboxing during cutscenes (when the player object is absent) */
 if (!instance_exists(obj_player))
 || (instance_exists(obj_player))
-&& (obj_player.can_move == false)
+&& (!obj_player.can_move)
 {
 	letterbox_top_y = lerp(letterbox_top_y, + 64, 0.1);
 	letterbox_bottom_y = lerp(letterbox_bottom_y, display_get_gui_height() - 64, 0.1);

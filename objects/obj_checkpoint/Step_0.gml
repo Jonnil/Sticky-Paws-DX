@@ -16,7 +16,7 @@ if (instance_exists(obj_player))
 			if (!collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true))
 			&& (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_player).x + 1, instance_nearest(x, y, obj_player).y + 1, obj_wall, false, true))
 			{
-				if (checkpoint_activated == false)
+				if (!checkpoint_activated)
 				{
 					checkpoint_activated = true;
 					checkpoint_what_player = instance_nearest(x, y, obj_player).player;

@@ -1,5 +1,5 @@
 if (score_up == "Copied")
-&& (show_remaining_jumps == false)
+&& (!show_remaining_jumps)
 || (above_gui)
 {
 	depth = - 15100;

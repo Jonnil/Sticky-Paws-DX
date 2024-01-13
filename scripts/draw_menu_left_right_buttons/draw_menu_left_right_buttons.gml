@@ -75,17 +75,17 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 			
 			if (keyboard_check(vk_control))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (can_navigate_settings_sidebar == false)
+			&& (!can_navigate_settings_sidebar)
 			|| (gamepad_button_check(global.player_slot[1], gp_face3))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (can_navigate_settings_sidebar == false)
+			&& (!can_navigate_settings_sidebar)
 			{
 				left_right_buttons_variable_to_change -= (scale_increment * 10);
 				menu_delay = 3;
 			}
 			else
 			if (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (can_navigate_settings_sidebar == false)
+			&& (!can_navigate_settings_sidebar)
 			{
 				left_right_buttons_variable_to_change -= scale_increment;
 				menu_delay = 3;
@@ -103,17 +103,17 @@ function draw_menu_left_right_buttons(left_right_buttons_x, left_right_buttons_y
 			
 		if (keyboard_check(vk_control))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (can_navigate_settings_sidebar == false)
+		&& (!can_navigate_settings_sidebar)
 		|| (gamepad_button_check(global.player_slot[1], gp_face3))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (can_navigate_settings_sidebar == false)
+		&& (!can_navigate_settings_sidebar)
 		{
 			left_right_buttons_variable_to_change += (scale_increment * 10);
 			menu_delay = 3;
 		}
 		else
 		if (menu_delay == 0 && menu_joystick_delay == 0)
-		&& (can_navigate_settings_sidebar == false)
+		&& (!can_navigate_settings_sidebar)
 		{
 			left_right_buttons_variable_to_change += scale_increment;
 			menu_delay = 3;

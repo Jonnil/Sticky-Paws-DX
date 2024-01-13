@@ -5,7 +5,7 @@ if (bounce_up)
 {
 	if (delay >= delay_time)
 	{
-		if (basic_collectible_sound == false)
+		if (!basic_collectible_sound)
 		{
 			scr_audio_play(snd_basic_collectible, volume_source.sound);
 			basic_collectible_sound = true;

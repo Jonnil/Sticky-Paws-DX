@@ -20,7 +20,7 @@ if (image_angle == 0)
 	{
 		with(other)
 		{
-			if (invincible_timer == false)
+			if (invincible_timer == 0)
 			{
 				if (have_heart_balloon)
 				{

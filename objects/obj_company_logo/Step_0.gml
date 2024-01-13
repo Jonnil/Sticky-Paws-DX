@@ -30,7 +30,7 @@ if (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
 && (mouse_check_button_released(mb_any))
 {
 	if (can_navigate)
-	&& (show_skip_button == false)
+	&& (!show_skip_button)
 	{
 		if (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
 		|| (gamepad_button_check_pressed(global.player_slot[2], gp_face1))
@@ -172,7 +172,7 @@ if (time == 10) /* If controller splash sound exists, and is currently not playi
 }
 #endregion /* Play company splash voice or controller splash voice if the sounds exists END */
 
-if (can_navigate == false)
+if (!can_navigate)
 {
 	file_load_timer ++;
 	
@@ -183,7 +183,7 @@ if (can_navigate == false)
 		if (file_load_timer > 1)
 		&& (load_ok == 0)
 		{
-			if (initialized_characters == false)
+			if (!initialized_characters)
 			{
 				scr_load_character_initializing();
 				initialized_characters = true;
@@ -356,7 +356,7 @@ if (can_navigate == false)
 		if (file_load_timer > 1)
 		&& (load_ok == 1)
 		{
-			if (initialized_resource_pack == false)
+			if (!initialized_resource_pack)
 			{
 				scr_load_resource_pack_initializing();
 				initialized_resource_pack = true;
@@ -404,7 +404,7 @@ if (can_navigate == false)
 		if (file_load_timer > 1)
 		&& (load_ok == 2)
 		{
-			if (initialized_title_backgrounds == false)
+			if (!initialized_title_backgrounds)
 			{
 				scr_load_title_background_initializing();
 				initialized_title_backgrounds = true;
@@ -433,7 +433,7 @@ if (can_navigate == false)
 		if (file_load_timer > 1)
 		&& (load_ok == 3)
 		{
-			if (initialized_title_logo == false)
+			if (!initialized_title_logo)
 			{
 				scr_load_title_logo_initializing();
 				initialized_title_logo = true;

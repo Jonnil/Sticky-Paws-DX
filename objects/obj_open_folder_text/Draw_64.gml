@@ -52,7 +52,7 @@ else
 	scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size, c_black, c_white, image_alpha);
 }
 
-if (close == false)
+if (!close)
 {
 	if (show_copy_to_clipboard_button)
 	{

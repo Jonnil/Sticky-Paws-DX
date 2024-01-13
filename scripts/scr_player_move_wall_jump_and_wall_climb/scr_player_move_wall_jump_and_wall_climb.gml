@@ -28,11 +28,11 @@ function scr_player_move_wall_jump_and_wall_climb()
 		    !position_meeting(bbox_left, bbox_bottom + 1, obj_semisolid_platform) &&
 		    !position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform) &&
 		    climb == false &&
-		    horizontal_rope_climb == false &&
+		    !horizontal_rope_climb &&
 		    vspeed >= 0)
 		{
 		    if ((key_left_hold && !key_right_hold && wall_jump_setting >= 1 && place_meeting(x - 1, y, obj_wall)) ||
-		        (!key_right_hold && dive == false && wall_jump_setting == 1 && place_meeting(x - 1, y, obj_wall) && image_xscale < 0) ||
+		        (!key_right_hold && !dive && wall_jump_setting == 1 && place_meeting(x - 1, y, obj_wall) && image_xscale < 0) ||
 		        (dive && wall_jump_setting == 1 && place_meeting(x - 1, y, obj_wall) && image_xscale < 0) ||
 		        (key_left_hold && !key_right_hold && wall_jump_setting <= 0 && place_meeting(x - 1, y, obj_wall) &&
 		         (place_meeting(x, y, obj_wall_climb_panel) || place_meeting(x, y, obj_wall_jump_panel))))
@@ -55,7 +55,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		        }
 		    }
 		    else if ((key_right_hold && !key_left_hold && wall_jump_setting >= 1 && place_meeting(x + 1, y, obj_wall)) ||
-		             (!key_left_hold && dive == false && wall_jump_setting == 1 && place_meeting(x + 1, y, obj_wall) && image_xscale > 0) ||
+		             (!key_left_hold && !dive && wall_jump_setting == 1 && place_meeting(x + 1, y, obj_wall) && image_xscale > 0) ||
 		             (dive && wall_jump_setting == 1 && place_meeting(x + 1, y, obj_wall) && image_xscale > 0) ||
 		             (key_right_hold && !key_left_hold && wall_jump_setting <= 0 && place_meeting(x + 1, y, obj_wall) &&
 		              (place_meeting(x, y, obj_wall_climb_panel) || place_meeting(x, y, obj_wall_jump_panel))))
@@ -364,7 +364,7 @@ function scr_player_move_wall_jump_and_wall_climb()
 		            || position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform);
 		    }
     
-		    if (crouch == false && ground_pound == false && ledge_grab == false && horizontal_rope_climb == false)
+		    if (!crouch && ground_pound == 0 && !ledge_grab && !horizontal_rope_climb)
 		    {
 		        if (wallCollision && !semisolidPlatformCollision)
 		        {

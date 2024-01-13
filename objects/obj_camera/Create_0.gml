@@ -531,7 +531,7 @@ if (global.assist_enable)
 time_second = 0;
 if (instance_exists(obj_player))
 {
-	if (global.trigger_ending == false)
+	if (!global.trigger_ending)
 	{
 		if (global.actually_play_edited_level)
 		&& (global.play_edited_level)
@@ -611,7 +611,7 @@ zoom_border_lerp = 0;
 player1_show_dive_key_x = 32;
 player1_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
 player1_show_crouch_key_x = player1_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (global.player1_run_toggle == false)
+if (!global.player1_run_toggle)
 {
 	player1_show_run_key_x = player1_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
 	player1_show_left_key_x = player1_show_run_key_x + string_width(l10n_text("Run")) + 37;
@@ -633,7 +633,7 @@ else
 player2_show_dive_key_x = 32;
 player2_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
 player2_show_crouch_key_x = player2_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (global.player2_run_toggle == false)
+if (!global.player2_run_toggle)
 {
 	player2_show_run_key_x = player2_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
 	player2_show_left_key_x = player2_show_run_key_x + string_width(l10n_text("Run")) + 37;
@@ -655,7 +655,7 @@ else
 player3_show_dive_key_x = 32;
 player3_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
 player3_show_crouch_key_x = player3_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (global.player3_run_toggle == false)
+if (!global.player3_run_toggle)
 {
 	player3_show_run_key_x = player3_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
 	player3_show_left_key_x = player3_show_run_key_x + string_width(l10n_text("Run")) + 37;
@@ -677,7 +677,7 @@ else
 player4_show_dive_key_x = 32;
 player4_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
 player4_show_crouch_key_x = player4_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (global.player4_run_toggle == false)
+if (!global.player4_run_toggle)
 {
 	player4_show_run_key_x = player4_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
 	player4_show_left_key_x = player4_show_run_key_x + string_width(l10n_text("Run")) + 37;

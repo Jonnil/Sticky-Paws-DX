@@ -30,7 +30,7 @@ if (vspeed >= 16)
 
 #region /* Stop firing if enemies are disabled, or you have finished the level */
 if (global.assist_enable)
-&& (global.assist_enable_enemies == false)
+&& (!global.assist_enable_enemies)
 || (global.goal_active)
 {
 	time = 0;

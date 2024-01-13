@@ -497,7 +497,7 @@ midair_jumps_left = ini_read_real("values", "midair_jumps_left", 1);
 midair_jump_flip_animation = ini_read_real("values", "midair_jump_flip_animation", 2);
 
 /* Starting HP and Max HP */
-if (global.assist_enable == false)
+if (!global.assist_enable)
 {
 	var default_hp = 1;
 	hp = ini_read_real("values", "hp", default_hp);

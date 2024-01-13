@@ -32,13 +32,13 @@ function scr_draw_mouse_cursor_sprite()
 	&& !mouse_check_button(mb_left)
 	&& !mouse_check_button(mb_right)
 	&& !drag_object
-	&& obj_level_player1_start.drag_object == false
-	&& obj_level_player2_start.drag_object == false
-	&& obj_level_player3_start.drag_object == false
-	&& obj_level_player4_start.drag_object == false
+	&& !obj_level_player1_start.drag_object
+	&& !obj_level_player2_start.drag_object
+	&& !obj_level_player3_start.drag_object
+	&& !obj_level_player4_start.drag_object
 	&& obj_level_end.drag_object == false
 	&& !erase_mode
-	&& set_difficulty_mode == false
+	&& !set_difficulty_mode
 	&& !pause
 	&& !point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)
 	&& !point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)
@@ -50,7 +50,7 @@ function scr_draw_mouse_cursor_sprite()
 	else
 	if (position_meeeting_draggable_objects)
 	&& (drag_object)
-	&& (set_difficulty_mode == false)
+	&& (!set_difficulty_mode)
 	&& (!pause)
 	|| (obj_level_end.drag_object)
 	&& (!pause)
@@ -112,7 +112,7 @@ function scr_draw_mouse_cursor_sprite()
 	&& (fill_mode_type == "fill")
 	&& (!drag_object)
 	&& (!erase_mode)
-	&& (set_difficulty_mode == false)
+	&& (!set_difficulty_mode)
 	&& (!pause)
 	{
 		draw_sprite_ext(spr_cursor_fill_full, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
@@ -126,7 +126,7 @@ function scr_draw_mouse_cursor_sprite()
 	&& (fill_mode_type == "horizontal")
 	&& (!drag_object)
 	&& (!erase_mode)
-	&& (set_difficulty_mode == false)
+	&& (!set_difficulty_mode)
 	&& (!pause)
 	{
 		draw_sprite_ext(spr_cursor_fill, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
@@ -140,7 +140,7 @@ function scr_draw_mouse_cursor_sprite()
 	&& (fill_mode_type == "vertical")
 	&& (!drag_object)
 	&& (!erase_mode)
-	&& (set_difficulty_mode == false)
+	&& (!set_difficulty_mode)
 	&& (!pause)
 	{
 		draw_sprite_ext(spr_cursor_fill, 0, cursor_x, cursor_y, 1, 1, 90, c_white, 1);

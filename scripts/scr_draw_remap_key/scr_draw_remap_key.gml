@@ -337,7 +337,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(410, menu_y_remap_key + menu_y_offset, name_string, global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 		if (input_key)
-		&& (can_remap_key == false)
+		&& (!can_remap_key)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (global.settings_sidebar_menu == "controller_settings")

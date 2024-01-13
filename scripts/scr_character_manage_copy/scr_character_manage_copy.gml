@@ -12,7 +12,7 @@ function scr_character_manage_copy()
 		load_from_where = working_directory + "custom_characters";
 	}
 	
-	if (can_navigate == false)
+	if (!can_navigate)
 	&& (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) != undefined)
 	{
 		file_load_timer ++;

@@ -26,7 +26,7 @@ if (image_alpha > 0)
 		}
 	}
 	
-	if (have_heart_balloon == false)
+	if (!have_heart_balloon)
 	{
 		if (instance_exists(obj_heart_balloon))
 		{
@@ -236,12 +236,12 @@ if (image_alpha > 0)
 	
 	#region /* Blink red when only having 1 HP left and no heart balloon */
 	if (red_blink_timer > 25)
-	&& (have_heart_balloon == false)
+	&& (!have_heart_balloon)
 	&& (hp <= 1)
 	&& (max_hp >= 2)
 	&& (sprite_exists(sprite_index))
 	&& (intro_animation == "")
-	&& (invincible_timer == false)
+	&& (invincible_timer == 0)
 	{
 		draw_sprite_ext(sprite_index, image_index, xx + random_range(- 8, + 8), yy + random_range(- 8, + 8), draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, c_red, image_alpha * collision_mask_alpha);
 	}
@@ -253,7 +253,7 @@ if (image_alpha > 0)
 		draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, image_blend, image_alpha * collision_mask_alpha);
 		if (hp <= 1)
 		&& (max_hp >= 2)
-		&& (invincible_timer == false)
+		&& (invincible_timer == 0)
 		{
 			draw_sprite_ext(sprite_index, image_index, xx, yy, draw_xscale * default_xscale * sign(image_xscale), draw_yscale * default_yscale, angle, c_red, 0.1);
 		}
@@ -385,7 +385,7 @@ if (image_alpha > 0)
 		
 		#region /* Homing Enemy */
 		if (!on_ground)
-		&& (stick_to_wall == false)
+		&& (!stick_to_wall)
 		&& (!climb)
 		&& (!horizontal_rope_climb)
 		&& (instance_exists(obj_enemy))
@@ -393,7 +393,7 @@ if (image_alpha > 0)
 		&& (!collision_line(x + 1, y + 1, instance_nearest(x, y, obj_enemy).x + 1, instance_nearest(x, y, obj_enemy).y + 1, obj_wall, false, true))
 		&& (distance_to_object(obj_enemy) < homing_attack_distance)
 		&& (instance_nearest(x, y, obj_enemy).bbox_bottom > y)
-		&& (instance_nearest(x, y, obj_enemy).die == false)
+		&& (!instance_nearest(x, y, obj_enemy).die)
 		{
 			aim_image_index ++;
 			draw_sprite_ext(spr_aim, aim_image_index, instance_nearest(x, y, obj_enemy).x, instance_nearest(x, y, obj_enemy).y, 1, 1, 0, c_white, 1);
@@ -404,7 +404,7 @@ if (image_alpha > 0)
 		
 		#region /* Homing Spring */
 		if (!on_ground)
-		&& (stick_to_wall == false)
+		&& (!stick_to_wall)
 		&& (!climb)
 		&& (!horizontal_rope_climb)
 		&& (instance_exists(obj_spring))
@@ -455,9 +455,9 @@ if (image_alpha > 0)
 	#region /* If player has more hp, show that */
 	if (hp > 0)
 	&& (global.assist_enable)
-	&& (global.assist_invincible == false)
+	&& (!global.assist_invincible)
 	|| (hp > 0)
-	&& (global.assist_enable == false)
+	&& (!global.assist_enable)
 	{
 		if (max_hp = 2) /* If there is only max 2 hp and there is no panting sprite, display HP */
 		&& (sprite_panting == noone)

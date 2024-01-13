@@ -1,13 +1,9 @@
 #region /* Only run this code when placed object is colliding with the level editor cursor, so that there isn't that much code running in step event */
-if (instance_exists(obj_leveleditor))
-{
-	var modify_object_menu = obj_leveleditor.modify_object_menu;
-}
 
 #region /* Drag Object */
-if (other.set_difficulty_mode == false)
+if (!other.set_difficulty_mode)
 && (delay > 1)
-&& (modify_object_menu == false)
+&& (!other.modify_object_menu)
 {
 	
 	#region /* Click on object to start drag */

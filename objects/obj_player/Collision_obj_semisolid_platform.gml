@@ -30,11 +30,11 @@ if (position_meeting(x, bbox_bottom + 1, other))
 
 #region /* Landing on solid object */
 if (position_meeting(x, bbox_bottom + 1, other))
-&& (stick_to_wall == false)
+&& (!stick_to_wall)
 || (position_meeting(bbox_left, bbox_bottom + 1, other))
-&& (stick_to_wall == false)
+&& (!stick_to_wall)
 || (position_meeting(bbox_right, bbox_bottom + 1, other))
-&& (stick_to_wall == false)
+&& (!stick_to_wall)
 {
 	
 	#region /* Smoke Landing Effect */

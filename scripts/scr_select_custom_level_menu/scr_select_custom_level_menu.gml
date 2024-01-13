@@ -693,7 +693,7 @@ function scr_select_custom_level_menu()
 					level_editor_edit_name = false;
 				}
 				else
-				if (level_editor_edit_name == false)
+				if (!level_editor_edit_name)
 				{
 					can_navigate = false;
 					menu_delay = 9999;
@@ -834,7 +834,7 @@ function scr_select_custom_level_menu()
 					level_editor_edit_name = false;
 				}
 				else
-				if (level_editor_edit_name == false)
+				if (!level_editor_edit_name)
 				{
 					can_navigate = false;
 					menu_delay = 9999;

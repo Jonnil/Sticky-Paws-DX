@@ -31,12 +31,12 @@ function scr_player_move_run()
 		&& (allow_run)
 		{
 			if (key_left_hold)
-			&& (ground_pound == false)
+			&& (ground_pound == 0)
 			|| (key_right_hold)
-			&& (ground_pound == false)
+			&& (ground_pound == 0)
 			{
 				if (invincible_timer >= true)
-				&& (assist_invincible == false)
+				&& (!assist_invincible)
 				&& (!global.playtest_invincibility)
 				{
 					speed_max = lerp(speed_max, 10, 0.1);
@@ -55,7 +55,7 @@ function scr_player_move_run()
 			if (on_ground)
 			{
 				if (invincible_timer >= true)
-				&& (assist_invincible == false)
+				&& (!assist_invincible)
 				&& (!global.playtest_invincibility)
 				{
 					speed_max = lerp(speed_max, 6, 0.05);

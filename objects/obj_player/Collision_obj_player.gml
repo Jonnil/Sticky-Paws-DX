@@ -51,8 +51,8 @@ if (!in_water)
 	if (position_meeting(x, bbox_bottom + 1, other))
 	&& (!place_meeting(x, y - 1, obj_wall))
 	&& (vspeed > 0)
-	&& (ground_pound == false)
-	&& (stick_to_wall == false)
+	&& (ground_pound == 0)
+	&& (!stick_to_wall)
 	{
 		ground_pound = false;
 		dive = false;

@@ -7,12 +7,12 @@ function scr_player_move_ground_pound()
 	&& (!global.pause)
 	&& (can_ground_pound)
 	&& (taken_damage <= taken_damage_freezetime)
-	&& (dive == false)
-	&& (burnt == false)
-	&& (crouch == false)
+	&& (!dive)
+	&& (!burnt)
+	&& (!crouch)
 	&& (!climb)
-	&& (ledge_grab == false)
-	&& (horizontal_rope_climb == false)
+	&& (!ledge_grab)
+	&& (!horizontal_rope_climb)
 	{
 		if (key_crouch_pressed)
 		&& (joystick_can_ground_pound)
@@ -179,7 +179,7 @@ function scr_player_move_ground_pound()
 			}
 		}
 	}
-	if (can_ground_pound == false)
+	if (can_ground_pound == 0)
 	&& (!key_down)
 	{
 		can_ground_pound = true;
@@ -187,7 +187,7 @@ function scr_player_move_ground_pound()
 	#endregion /* Ground Pound END */
 	
 	#region /* joystick_can_ground_pound makes sure that when ground pounding using the joystick doesn't make the cahracter ground pound on every frame */
-	if (joystick_can_ground_pound == false) /* You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true */
+	if (joystick_can_ground_pound == 0) /* You must have this code before the next code otherwise the joystick_can_ground_pound is always set to true */
 	&& (!key_crouch_hold)
 	{
 		joystick_can_ground_pound = true;

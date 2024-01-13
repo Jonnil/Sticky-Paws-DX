@@ -408,12 +408,12 @@ if (iris_xscale <= 0.01)
 	if (menu != "select_character")
 	&& (menu != "back_from_character_select")
 	&& (global.character_select_in_this_menu == "level_editor")
-	&& (loading_assets == false)
+	&& (!loading_assets)
 	|| (global.doing_clear_check_character == true)
 	{
 		if (global.create_level_from_template)
 		&& (allowed_to_load_template_level)
-		|| (global.create_level_from_template == false)
+		|| (!global.create_level_from_template)
 		{
 			/* Save what characters are selected */
 			ini_open(working_directory + "save_file/config.ini");
@@ -432,7 +432,7 @@ if (iris_xscale <= 0.01)
 			}
 			scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
 			if (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
-			&& (global.create_level_from_template == false)
+			&& (!global.create_level_from_template)
 			&& (global.select_level_index > 0) /* Don't update if you're selecting "create from scratch" */
 			{
 				/* Update the "global level name" before updating all backgrounds and going to the level editor */

@@ -4,13 +4,13 @@ var mouse_get_y = device_mouse_y_to_gui(0);
 #region /* Push yourself out of other level start objects way */
 if (instance_exists(obj_level_player1_start))
 && (place_meeting(x, y, obj_level_player1_start))
-&& (obj_level_player1_start.drag_object == false)
+&& (!obj_level_player1_start.drag_object)
 || (instance_exists(obj_level_player2_start))
 && (place_meeting(x, y, obj_level_player2_start))
-&& (obj_level_player2_start.drag_object == false)
+&& (!obj_level_player2_start.drag_object)
 || (instance_exists(obj_level_player3_start))
 && (place_meeting(x, y, obj_level_player3_start))
-&& (obj_level_player3_start.drag_object == false)
+&& (!obj_level_player3_start.drag_object)
 {
 	x -= 32;
 }

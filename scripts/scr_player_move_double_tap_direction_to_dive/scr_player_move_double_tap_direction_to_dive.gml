@@ -8,7 +8,7 @@ function scr_player_move_double_tap_direction_to_dive()
 		#region /* Double tap left direction to dive */
 		if (key_left_pressed)
 		{
-			if (double_tap_left_dive == false)
+			if (double_tap_left_!dive)
 			{
 				double_tap_left_dive = true;
 				double_tap_right_dive = false;
@@ -29,7 +29,7 @@ function scr_player_move_double_tap_direction_to_dive()
 		#region /* Double tap right direction to dive */
 		if (key_right_pressed)
 		{
-			if (double_tap_right_dive == false)
+			if (double_tap_right_!dive)
 			{
 				double_tap_right_dive = true;
 				double_tap_left_dive = false;

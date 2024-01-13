@@ -75,7 +75,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		if (menu_specific_joystick_delay[what_player] <= 0)
 		&& (!input_key)
 		&& (can_navigate)
-		&& (player_accept_selection == false)
+		&& (!player_accept_selection)
 		{
 			
 			#region /* Player change portrait when clicking left or right */

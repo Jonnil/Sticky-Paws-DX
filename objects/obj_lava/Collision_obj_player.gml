@@ -13,7 +13,7 @@ with(other)
 		crouch = false;
 		speed_max = 8;
 		taken_damage = 100;
-		if (invincible_timer == false)
+		if (invincible_timer == 0)
 		{
 			hp --;
 		}

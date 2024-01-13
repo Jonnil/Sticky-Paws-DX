@@ -1,4 +1,4 @@
-if (show_remaining_jumps == false)
+if (!show_remaining_jumps)
 {
 	if (score_up == "1-up")
 	{

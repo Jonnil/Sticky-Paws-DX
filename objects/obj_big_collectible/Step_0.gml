@@ -1,6 +1,6 @@
 image_index = global.collectible_image_index;
 
-if (bounce_up == false)
+if (!bounce_up)
 && (instance_exists(obj_player))
 {
 	if (place_meeting(bbox_left, y, obj_player))
@@ -30,8 +30,8 @@ if (follow_player)
 && (instance_nearest(x, y, obj_player).midair_jumps_left >= instance_nearest(x, y, obj_player).number_of_jumps)
 || (place_meeting(x, bbox_bottom, obj_enemy_bowlingball))
 && (instance_nearest(x, y, obj_enemy_bowlingball).flat)
-&& (instance_nearest(x, y, obj_enemy_bowlingball).die == false)
-&& (instance_nearest(x, y, obj_enemy_bowlingball).die_volting == false)
+&& (!instance_nearest(x, y, obj_enemy_bowlingball).die)
+&& (!instance_nearest(x, y, obj_enemy_bowlingball).die_volting)
 {
 	
 	#region /* Show Big Collectible HUD */
@@ -264,7 +264,7 @@ if (bounce_up)
 	
 	if (delay >= delay_time)
 	{
-		if (coinsound == false)
+		if (!coinsound)
 		{
 			scr_audio_play(snd_basic_collectible, volume_source.sound);
 			coinsound = true;

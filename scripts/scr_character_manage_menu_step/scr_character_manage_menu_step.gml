@@ -280,7 +280,7 @@ function scr_character_manage_menu_step()
 		{
 			menu_delay = 3;
 			can_navigate = true;
-			if (selecting_official_character == false)
+			if (!selecting_official_character)
 			{
 				player_menu[1] = "click_delete_character";
 				menu = "click_delete_character";
@@ -311,7 +311,7 @@ function scr_character_manage_menu_step()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
-			if (selecting_official_character == false)
+			if (!selecting_official_character)
 			{
 				menu_delay = 3;
 				menu = "click_delete_character_no";
@@ -341,7 +341,7 @@ function scr_character_manage_menu_step()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
-			if (selecting_official_character == false)
+			if (!selecting_official_character)
 			{
 				menu_delay = 3;
 				menu = "click_delete_character";
@@ -363,7 +363,7 @@ function scr_character_manage_menu_step()
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate)
 		{
-			if (selecting_official_character == false)
+			if (!selecting_official_character)
 			{
 				if (directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]))))
 				{
@@ -420,7 +420,7 @@ function scr_character_manage_menu_step()
 		{
 			menu_delay = 3;
 			can_navigate = true;
-			if (selecting_official_character == false)
+			if (!selecting_official_character)
 			&& (global.free_communication_available)
 			&& (enable_upload_character)
 			{
@@ -481,7 +481,7 @@ function scr_character_manage_menu_step()
 		&& (can_navigate)
 		&& (enable_upload_character)
 		{
-			if (selecting_official_character == false)
+			if (!selecting_official_character)
 			&& (global.free_communication_available)
 			{
 				menu_delay = 3;
@@ -536,7 +536,7 @@ function scr_character_manage_menu_step()
 			{
 				menu_delay = 3;
 				can_navigate = true;
-				if (selecting_official_character == false)
+				if (!selecting_official_character)
 				{
 					player_menu[1] = "click_delete_character";
 					menu = "click_delete_character";
@@ -610,7 +610,7 @@ function scr_character_manage_menu_step()
 			{
 				menu_delay = 3;
 				can_navigate = true;
-				if (selecting_official_character == false)
+				if (!selecting_official_character)
 				&& (global.free_communication_available)
 				&& (enable_upload_character)
 				{
@@ -618,7 +618,7 @@ function scr_character_manage_menu_step()
 					menu = "click_upload_character";
 				}
 				else
-				if (selecting_official_character == false)
+				if (!selecting_official_character)
 				{
 					player_menu[1] = "click_delete_character";
 					menu = "click_delete_character";
@@ -695,7 +695,7 @@ function scr_character_manage_menu_step()
 					menu = "click_copy_character";
 				}
 				else
-				if (selecting_official_character == false)
+				if (!selecting_official_character)
 				{
 					player_menu[1] = "click_delete_character";
 					menu = "click_delete_character";
@@ -716,7 +716,7 @@ function scr_character_manage_menu_step()
 				menu = "click_copy_character";
 			}
 			else
-			if (selecting_official_character == false)
+			if (!selecting_official_character)
 			{
 				player_menu[1] = "click_delete_character";
 				menu = "click_delete_character";
@@ -724,7 +724,7 @@ function scr_character_manage_menu_step()
 		}
 		#endregion /* Back from Copy Characters END */
 		
-		if (can_navigate == false) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
+		if (!can_navigate) /* When game is loading in assets, display a detailed loading progress, showing exactly what is being loaded in */
 		{
 			global.loading_spinning_angle -= 10;
 		}

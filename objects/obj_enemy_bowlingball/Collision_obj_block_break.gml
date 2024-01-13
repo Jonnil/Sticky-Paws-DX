@@ -1,6 +1,6 @@
 /* Collision Event with player object */
 if (!die)
-&& (die_volting == false)
+&& (!die_volting)
 && (vspeed >= 0)
 && (stomped_delay == 0)
 {
