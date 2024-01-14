@@ -286,8 +286,8 @@ if (!hide_menu_for_clean_screenshots)
 			if (room == rm_leveleditor)
 			|| (global.pause_room == rm_leveleditor)
 			{
-				draw_menu_button(get_window_width * 0.5 - 185, options_y, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
-				draw_sprite_ext(spr_icon_cogwheel, 0, get_window_width * 0.5 - 185 + 20, options_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+				draw_menu_button(get_window_width * 0.5 - 185, option_y, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
+				draw_sprite_ext(spr_icon_cogwheel, 0, get_window_width * 0.5 - 185 + 20, option_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 				if (!global.goal_active)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, restart_y, l10n_text("Restart"), "restart", "restart", c_lime, fade_in_pause_alpha);
@@ -303,8 +303,8 @@ if (!hide_menu_for_clean_screenshots)
 			}
 			else
 			{
-				draw_menu_button(get_window_width * 0.5 - 185, options_y, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
-				draw_sprite_ext(spr_icon_cogwheel, 0, get_window_width * 0.5 - 185 + 20, options_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+				draw_menu_button(get_window_width * 0.5 - 185, option_y, l10n_text("Options"), "options", "options", c_lime, fade_in_pause_alpha);
+				draw_sprite_ext(spr_icon_cogwheel, 0, get_window_width * 0.5 - 185 + 20, option_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 				if (!global.goal_active)
 				{
 					draw_menu_button(get_window_width * 0.5 - 185, quit_y, l10n_text("Quit"), "quit", "quit", c_red, fade_in_pause_alpha);
@@ -354,7 +354,7 @@ if (!hide_menu_for_clean_screenshots)
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Map"), "quit_to_map", "quit_to_map", c_lime, fade_in_pause_alpha);
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
-			if (global.enable_options_for_pc)
+			if (global.enable_option_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red * fade_in_pause_alpha);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
@@ -378,7 +378,7 @@ if (!hide_menu_for_clean_screenshots)
 		&& (menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
-			if (global.enable_options_for_pc)
+			if (global.enable_option_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red * fade_in_pause_alpha);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
@@ -399,7 +399,7 @@ if (!hide_menu_for_clean_screenshots)
 		&& (menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
-			if (global.enable_options_for_pc)
+			if (global.enable_option_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red, fade_in_pause_alpha);
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
@@ -447,7 +447,7 @@ if (!hide_menu_for_clean_screenshots)
 	}
 	#endregion /* Show loading icon and reset level END */
 	
-	scr_options_menu(); /* Options */
+	scr_option_menu(); /* Options */
 	
 	scr_quit_to_desktop_menu("quit_to_desktop");
 	scr_debug_screen();

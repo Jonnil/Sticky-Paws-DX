@@ -1,4 +1,4 @@
-function scr_options_language_menu()
+function scr_option_language_menu()
 {
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();
@@ -31,7 +31,7 @@ function scr_options_language_menu()
 	#region /* Clicking on language completion text enables and disables the translation debug mode */
 	if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 32 - string_width(l10n_text("Translation completion") + ": " + string(global.language_completion) + "%"), 164 - 32, get_window_width - 32, 164 + 32))
 	&& (global.controls_used_for_navigation == "mouse")
-	&& (global.enable_options_for_pc)
+	&& (global.enable_option_for_pc)
 	{
 		if (global.language_completion < 100)
 		{

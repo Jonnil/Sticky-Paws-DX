@@ -132,8 +132,8 @@ function scr_quit_to_desktop_menu(return_to_this_menu)
 		{
 			if (key_b_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (global.enable_options_for_pc)
-			|| (!global.enable_options_for_pc)
+			&& (global.enable_option_for_pc)
+			|| (!global.enable_option_for_pc)
 			{
 				menu_delay = 3;
 				menu = return_to_this_menu; /* Return to overall quit menu */

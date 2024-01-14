@@ -142,7 +142,7 @@ function scr_draw_information_menu()
 			&& (information_menu_open == 3)
 			{
 				menu_delay = 3;
-				if (global.enable_options_for_pc)
+				if (global.enable_option_for_pc)
 				{
 					menu = "backup_open_custom_character_folder";
 				}
@@ -161,7 +161,7 @@ function scr_draw_information_menu()
 			if (menu == "backup_open_custom_character_folder")
 			{
 				menu_delay = 3;
-				if (global.enable_options_for_pc)
+				if (global.enable_option_for_pc)
 				{
 					menu = "backup_open_custom_levels_folder";
 				}
@@ -243,7 +243,7 @@ function scr_draw_information_menu()
 			if (menu == "backups")
 			{
 				menu_delay = 3;
-				if (global.enable_options_for_pc)
+				if (global.enable_option_for_pc)
 				{
 					menu = "backup_open_custom_levels_folder";
 				}
@@ -256,7 +256,7 @@ function scr_draw_information_menu()
 			if (menu == "backup_open_custom_levels_folder")
 			{
 				menu_delay = 3;
-				if (global.enable_options_for_pc)
+				if (global.enable_option_for_pc)
 				{
 					menu = "backup_open_custom_character_folder";
 				}
@@ -535,7 +535,7 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(32, 32 * 4, l10n_text("To prevent losing your custom levels and characters you should upload content and then save\nyour level IDs and character IDs somewhere safe"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 7, l10n_text("The game includes an autosave feature that automatically saves your level every 5 minutes"), global.default_text_size, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 8, l10n_text("It also saves your level every time you playtest"), global.default_text_size, c_black, c_white, 1);
-			if (global.enable_options_for_pc)
+			if (global.enable_option_for_pc)
 			{
 				scr_draw_text_outlined(32, 32 * 10, l10n_text("Your custom levels are saved in this folder") + ":", global.default_text_size, c_black, c_white, 1);
 				

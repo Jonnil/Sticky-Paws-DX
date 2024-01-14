@@ -46,19 +46,19 @@ function scr_character_select_menu_draw()
 		#endregion /* Player positions and scale for each character display END */
 		
 		#region /* Give feedback that you have selected a character, run this before the character portrait code */
-		if (player1_accept_selection)
+		if (player1_accept_selection == 1)
 		{
 			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[1], get_window_height * 0.5, player1_scale, player1_scale, 0, global.player_color[1], 1);
 		}
-		if (player2_accept_selection)
+		if (player2_accept_selection == 1)
 		{
 			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[2], get_window_height * 0.5, player2_scale, player2_scale, 0, global.player_color[2], 1);
 		}
-		if (player3_accept_selection)
+		if (player3_accept_selection == 1)
 		{
 			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[3], get_window_height * 0.5, player3_scale, player3_scale, 0, global.player_color[3], 1);
 		}
-		if (player4_accept_selection)
+		if (player4_accept_selection == 1)
 		{
 			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[4], get_window_height * 0.5, player4_scale, player4_scale, 0, global.player_color[4], 1);
 		}
@@ -103,7 +103,7 @@ function scr_character_select_menu_draw()
 			draw_rectangle_color(0, play_the_game_text_y_lerp - 32, get_window_width, play_the_game_text_y_lerp + 32, c_black, c_black, c_black, c_black, false);
 			scr_draw_text_outlined(get_window_width * 0.5 -40, play_the_game_text_y_lerp, l10n_text("Play the game!"), global.default_text_size * 2, c_black, c_white, 1);
 			
-			if (player1_accept_selection)
+			if (player1_accept_selection == 1)
 			&& (player2_accept_selection != 0)
 			&& (player3_accept_selection != 0)
 			&& (player4_accept_selection != 0)

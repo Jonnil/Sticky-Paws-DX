@@ -1,4 +1,4 @@
-function scr_options_reset_controls_to_default_settings(xx, yy)
+function scr_option_reset_controls_to_default_settings(xx, yy)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);

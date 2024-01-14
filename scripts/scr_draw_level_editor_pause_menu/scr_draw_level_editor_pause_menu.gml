@@ -211,7 +211,7 @@ function scr_draw_level_editor_pause_menu()
 			&& (!can_input_level_name)
 			&& (keyboard_check_pressed(vk_enter))
 			{
-				level_editor_options_back_to_menu = ""; /* Reset this variable to nothing */
+				level_editor_option_back_to_menu = ""; /* Reset this variable to nothing */
 				quit_level_editor = false;
 				can_input_level_name = false;
 				pause = true;
@@ -236,7 +236,7 @@ function scr_draw_level_editor_pause_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					if (global.enable_options_for_pc)
+					if (global.enable_option_for_pc)
 					{
 						menu = "generate_level_map";
 					}
@@ -258,7 +258,7 @@ function scr_draw_level_editor_pause_menu()
 			#endregion /* If menu is on level editor options END */
 			
 			#region /* If menu is on generate level map */
-			if (global.enable_options_for_pc)
+			if (global.enable_option_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Generate Level Map"), "generate_level_map", "generate_level_map_yes");
 				
@@ -316,7 +316,7 @@ function scr_draw_level_editor_pause_menu()
 			#endregion /* If menu is on generate level map END */
 			
 			#region /* Open Custom Levels Folder */
-			if (global.enable_options_for_pc)
+			if (global.enable_option_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Open Custom Levels Folder"), "open_custom_levels_folder", "open_custom_levels_folder");
 				draw_sprite_ext(spr_icon_folder, 0, get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1);
@@ -363,7 +363,7 @@ function scr_draw_level_editor_pause_menu()
 				&& (show_level_editor_corner_menu)
 				{
 					menu_delay = 3;
-					if (global.enable_options_for_pc)
+					if (global.enable_option_for_pc)
 					{
 						menu = "open_custom_levels_folder";
 					}
@@ -456,7 +456,7 @@ function scr_draw_level_editor_pause_menu()
 			draw_set_valign(fa_middle);
 			
 			#region /* Draw the path for saving full level map */
-			if (global.enable_options_for_pc)
+			if (global.enable_option_for_pc)
 			{
 				scr_draw_text_outlined(get_window_width * 0.5, generate_level_map_y_1, l10n_text("A map of the whole level will be generated and saved in"), global.default_text_size, c_black, c_white, 1);
 				var full_level_map_size = (get_window_width <= 1350) ? 0.75 : 1;
@@ -667,8 +667,8 @@ function scr_draw_level_editor_pause_menu()
 		}
 		#endregion /* PLAYER 1 INPUT LEVEL NAME NOW END */
 		
-		scr_options_menu(); /* Options */
-		scr_options_level_editor(); /* Level Editor Options */
+		scr_option_menu(); /* Options */
+		scr_option_level_editor(); /* Level Editor Options */
 	}
 	#endregion /* Draw Level Editor Pause Menu END */
 	

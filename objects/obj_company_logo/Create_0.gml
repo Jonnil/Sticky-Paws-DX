@@ -71,7 +71,7 @@ if (os_type == os_switch)
 	global.show_prompt_when_changing_to_gamepad = false;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = false;	
 	global.enable_open_custom_folder = false; /* Enable the option to open custom folders in the game */
-	global.enable_options_for_pc = false; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
+	global.enable_option_for_pc = false; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
 	global.enable_keyboard_and_mouse_settings = false; /* Enable Keyboard and Mouse settings */
 }
 else
@@ -85,7 +85,7 @@ else
 	global.show_prompt_when_changing_to_gamepad = true;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = true;
 	global.enable_open_custom_folder = true; /* Enable the option to open custom folders in the game */
-	global.enable_options_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
+	global.enable_option_for_pc = true; /* Enable if options related to gamepad, but only intended for when playing with gamepad on PC should show up */
 	global.enable_keyboard_and_mouse_settings = true; /* Enable Keyboard and Mouse settings */
 }
 #endregion /* If you're playing on console, then some things should not show up that is for PC END */
@@ -146,6 +146,8 @@ display_yoffset = 0;
 #region /* Debug toggles */
 /* There are more debug toggles in different objects, so click ctrl + shift + F and search "Debug toggles" to find the other debug toggles */
 /* Most of these can be toggled on or off within the games settings, so you don't have to change these settings here */
+global.option_description = ""; /* Description that shows up when changing certain options. Should describe what the option does */
+global.option_default = -1; /* Show wether the current option selected have a default setting, and tell the player this */
 global.can_save_length_variable = false; /* This function saves object_placement_all.json size, but lags the game. Make this optional and false by default */
 global.can_load_official_and_custom_resources = true; /* For debug, you might not want to load included files, but by default set this to true */
 global.debug_screen = false;

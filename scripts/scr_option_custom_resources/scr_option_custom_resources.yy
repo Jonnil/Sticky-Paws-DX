@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_options_level_editor",
+  "name": "scr_option_custom_resources",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

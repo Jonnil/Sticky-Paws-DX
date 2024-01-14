@@ -343,7 +343,7 @@ function scr_select_custom_level_menu()
 	
 	#region /* Show the path of the custom level on the bottom of the screen */
 	if (global.select_level_index >= 1)
-	&& (global.enable_options_for_pc)
+	&& (global.enable_option_for_pc)
 	&& (ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index) != undefined) /* Can only show path that isn't undefined */
 	{
 		draw_set_halign(fa_center);

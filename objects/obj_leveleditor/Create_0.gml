@@ -579,8 +579,8 @@ if (!global.actually_play_edited_level)
 	hovering_over_level_editor_corner_menu = false;
 	upload_rules_do_not_show_level = false;
 	upload_rules_do_not_show_character = false;
-	level_editor_options_back_to_menu = ""; /* Save what menu you came from, to use later */
-	level_editor_options_select_level_index = global.select_level_index;
+	level_editor_option_back_to_menu = ""; /* Save what menu you came from, to use later */
+	level_editor_option_select_level_index = global.select_level_index;
 	level_editor_template_select = false;
 	scroll = 0;
 	row = 0;

@@ -20,7 +20,7 @@ if (global.character_select_in_this_menu == "level_editor")
 && (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 {
 	edit_level_y = get_window_height * 0.5 + (42 * 1);
-	options_y = get_window_height * 0.5 + (42 * 2);
+	option_y = get_window_height * 0.5 + (42 * 2);
 	if (room == rm_leveleditor)
 	|| (global.pause_room == rm_leveleditor)
 	{
@@ -36,7 +36,7 @@ if (global.character_select_in_this_menu == "level_editor")
 else
 {
 	edit_level_y = -999;
-	options_y = get_window_height * 0.5 + (42 * 1);
+	option_y = get_window_height * 0.5 + (42 * 1);
 	if (room == rm_leveleditor)
 	|| (global.pause_room == rm_leveleditor)
 	{

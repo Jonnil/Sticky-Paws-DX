@@ -1,6 +1,6 @@
 var main_game_y = display_get_gui_height() * 0.5 + 100 + 40;
 var level_editor_y = display_get_gui_height() * 0.5 + 100 + 80 + 2;
-var options_and_quit_y = display_get_gui_height() * 0.5 + 225;
+var option_and_quit_y = display_get_gui_height() * 0.5 + 225;
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
 
@@ -34,7 +34,7 @@ global.volume_voice = clamp(global.volume_voice, 0, 1);
 #endregion /* Volumes stay between 0 and 1 END */
 
 #region /* Quit Game trough pause menu */
-if (global.enable_options_for_pc)
+if (global.enable_option_for_pc)
 && (!can_remap_key)
 && (!input_key)
 && (menu_delay == 0 && menu_joystick_delay == 0)
@@ -68,7 +68,7 @@ if (global.enable_options_for_pc)
 #region /* Fullscreen toggle */
 var can_toggle_fullscreen = (os_type != os_ios)
 && (os_type != os_android)
-&& (global.enable_options_for_pc)
+&& (global.enable_option_for_pc)
 && (global.controls_used_for_navigation != "gamepad");
 
 if (can_toggle_fullscreen)
@@ -295,13 +295,13 @@ if (!in_settings)
 		else
 	
 		#region /* Click Options */
-		if (global.enable_options_for_pc)
-		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, options_and_quit_y + 2, display_get_gui_width() * 0.5, options_and_quit_y + 41))
+		if (global.enable_option_for_pc)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, option_and_quit_y + 2, display_get_gui_width() * 0.5, option_and_quit_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!in_settings)
-		|| (!global.enable_options_for_pc)
-		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, options_and_quit_y + 2, display_get_gui_width() * 0.5 + 185, options_and_quit_y + 41))
+		|| (!global.enable_option_for_pc)
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, option_and_quit_y + 2, display_get_gui_width() * 0.5 + 185, option_and_quit_y + 41))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!in_settings)
@@ -329,16 +329,16 @@ if (!in_settings)
 		else
 		
 		#region /* Click Quit */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5, options_and_quit_y + 2, display_get_gui_width() * 0.5 + 185, options_and_quit_y + 42))
+		if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5, option_and_quit_y + 2, display_get_gui_width() * 0.5 + 185, option_and_quit_y + 42))
 		&& (mouse_check_button_released(mb_left))
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!in_settings)
-		&& (global.enable_options_for_pc)
+		&& (global.enable_option_for_pc)
 		|| (menu == "quit")
 		&& (key_a_pressed)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (!in_settings)
-		&& (global.enable_options_for_pc)
+		&& (global.enable_option_for_pc)
 		{
 			in_settings = false;
 			menu = "quit_game_no";
@@ -362,21 +362,21 @@ if (!in_settings)
 			global.character_select_in_this_menu = "level_editor"; /* No custom level is selected before you go into the level editor */
 		}
 		
-		if (global.enable_options_for_pc)
+		if (global.enable_option_for_pc)
 		{
-			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 185, options_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Options"), "options", "options", true);
-			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5, options_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Quit"), "quit", "quit_game_no", true, c_red);
+			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 185, option_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Options"), "options", "options", true);
+			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5, option_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Quit"), "quit", "quit_game_no", true, c_red);
 			if (menu == "quit")
 			{
-				draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 185, options_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Options"), "options", "options", true);
+				draw_menu_button_sprite(spr_menu_button, display_get_gui_width() * 0.5 - 185, option_and_quit_y, 0, 0, 0.5, 1, 185, 42, l10n_text("Options"), "options", "options", true);
 			}
 		}
 		else
-		if (!global.enable_options_for_pc)
+		if (!global.enable_option_for_pc)
 		{
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, options_and_quit_y, l10n_text("Options"), "options", "options");
+			draw_menu_button(display_get_gui_width() * 0.5 - 185, option_and_quit_y, l10n_text("Options"), "options", "options");
 		}
-		draw_sprite_ext(spr_icon_cogwheel, 0, display_get_gui_width() * 0.5 - 185 + 8, options_and_quit_y + 21, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_icon_cogwheel, 0, display_get_gui_width() * 0.5 - 185 + 8, option_and_quit_y + 21, 1, 1, 0, c_white, 1);
 		
 		/* Information button */
 		if (!latest_whats_new_read)
@@ -447,7 +447,7 @@ if (!in_settings)
 
 scr_draw_information_menu();
 
-scr_options_menu(); /* Options */
+scr_option_menu(); /* Options */
 
 scr_quit_to_desktop_menu("quit");
 
@@ -585,7 +585,7 @@ if (!input_key)
 		|| (key_left)
 		{
 			menu_delay = 3;
-			if (global.enable_options_for_pc)
+			if (global.enable_option_for_pc)
 			{
 				menu = "quit";
 			}
@@ -635,7 +635,7 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.enable_options_for_pc)
+			if (global.enable_option_for_pc)
 			{
 				menu = "quit";
 			}
@@ -690,7 +690,7 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.enable_options_for_pc)
+			if (global.enable_option_for_pc)
 			{
 				menu = "quit";
 			}
@@ -731,7 +731,7 @@ if (!input_key)
 		if (key_up)
 		{
 			menu_delay = 3;
-			if (global.enable_options_for_pc)
+			if (global.enable_option_for_pc)
 			{
 				menu = "quit";
 			}
@@ -823,7 +823,7 @@ if (!input_key)
 if (menu == "quit")
 && (key_a_pressed)
 && (menu_delay == 0 && menu_joystick_delay == 0)
-&& (global.enable_options_for_pc)
+&& (global.enable_option_for_pc)
 {
 	menu = "quit_game_no";
 	menu_delay = 3;

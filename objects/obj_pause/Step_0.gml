@@ -29,6 +29,7 @@ if (global.narrator >= 0)
 if (hide_menu_for_clean_screenshots_timer < 60 * 3)
 {
 	if (menu == "continue") /* Can only hide menu when on these buttons specifically */
+	|| (menu == "edit_level")
 	|| (menu == "options")
 	|| (menu == "restart")
 	|| (menu == "quit")
@@ -38,6 +39,7 @@ if (hide_menu_for_clean_screenshots_timer < 60 * 3)
 	}
 }
 if (menu != "continue")
+&& (menu != "edit_level")
 && (menu != "options")
 && (menu != "restart")
 && (menu != "quit")
@@ -65,6 +67,7 @@ if (keyboard_check_pressed(ord("Y")))
 || (gamepad_button_check_pressed(global.player_slot[4], gp_face4))
 {
 	if (menu == "continue") /* Can only hide menu when on these buttons specifically */
+	|| (menu == "edit_level")
 	|| (menu == "options")
 	|| (menu == "restart")
 	|| (menu == "quit")
@@ -375,7 +378,7 @@ if (!hide_menu_for_clean_screenshots)
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (mouse_check_button_released(mb_left))
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, options_y + 42, get_window_width * 0.5 + 185, options_y + 42))
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, option_y, get_window_width * 0.5 + 185, option_y + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
@@ -853,7 +856,7 @@ if (!hide_menu_for_clean_screenshots)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				if (global.enable_options_for_pc)
+				if (global.enable_option_for_pc)
 				{
 					menu = "quit_to_desktop";
 				}
@@ -874,17 +877,17 @@ if (!hide_menu_for_clean_screenshots)
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (global.pause_room == rm_leveleditor)
-			&& (global.enable_options_for_pc)
+			&& (global.enable_option_for_pc)
 			&& (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42 + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (global.pause_room == rm_world_map)
-			&& (global.enable_options_for_pc)
+			&& (global.enable_option_for_pc)
 			&& (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (global.pause_room == rm_leveleditor)
-			&& (global.enable_options_for_pc)
+			&& (global.enable_option_for_pc)
 			&& (global.character_select_in_this_menu == "level_editor")
 			&& (mouse_check_button_released(mb_left))
 			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, get_window_height * 0.5 + 2 + 42, get_window_width * 0.5 + 185, get_window_height * 0.5 + 41 + 42))
@@ -941,7 +944,7 @@ if (!hide_menu_for_clean_screenshots)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				if (global.enable_options_for_pc)
+				if (global.enable_option_for_pc)
 				{
 					menu = "quit_to_desktop";
 				}

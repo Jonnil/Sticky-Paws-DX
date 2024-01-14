@@ -1,4 +1,4 @@
-function draw_menu_checkmark(x_position, y_position, string_text, menu_index, variable_to_check)
+function draw_menu_checkmark(x_position, y_position, string_text, menu_index, variable_to_check, option_default = -1, option_description = "")
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
@@ -63,6 +63,15 @@ function draw_menu_checkmark(x_position, y_position, string_text, menu_index, va
 	if (menu == menu_index)
 	{
 		draw_sprite_ext(spr_menu_cursor, menu_cursor_index, x_position + 16, y_position + 16, 1, 1, 0, c_white, 1);
+		global.option_default = option_default;
+		if (option_description != "")
+		{
+			global.option_description = option_description;
+		}
+		else
+		{
+			global.option_description = string_text;
+		}
 	}
 	#endregion /* Show a menu cursor when the option is highlighted END */
 	

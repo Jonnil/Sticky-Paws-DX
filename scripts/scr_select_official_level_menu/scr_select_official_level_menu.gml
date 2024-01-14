@@ -175,9 +175,9 @@ function scr_select_official_level_menu()
 			
 			if (take_from_official_level != undefined) /* Don't set "global level name" to "ds list find value" if it's undefined */
 			&& (global.level_name != undefined)
-			&& (variable_instance_exists(self, "level_editor_options_back_to_menu"))
+			&& (variable_instance_exists(self, "level_editor_option_back_to_menu"))
 			{
-				if (level_editor_options_back_to_menu == "change_entire_theme")
+				if (level_editor_option_back_to_menu == "change_entire_theme")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background1", take_from_official_level);
@@ -196,7 +196,7 @@ function scr_select_official_level_menu()
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_all_background")
+				if (level_editor_option_back_to_menu == "change_all_background")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background1", take_from_official_level);
@@ -206,7 +206,7 @@ function scr_select_official_level_menu()
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_all_foreground")
+				if (level_editor_option_back_to_menu == "change_all_foreground")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_foreground1", take_from_official_level);
@@ -216,63 +216,63 @@ function scr_select_official_level_menu()
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_background1")
+				if (level_editor_option_back_to_menu == "change_background1")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background1", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_background2")
+				if (level_editor_option_back_to_menu == "change_background2")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background2", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_background3")
+				if (level_editor_option_back_to_menu == "change_background3")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background3", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_background4")
+				if (level_editor_option_back_to_menu == "change_background4")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_background4", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_foreground1")
+				if (level_editor_option_back_to_menu == "change_foreground1")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_foreground1", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_foreground1_5")
+				if (level_editor_option_back_to_menu == "change_foreground1_5")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_foreground1_5", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_foreground2")
+				if (level_editor_option_back_to_menu == "change_foreground2")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_foreground2", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_foreground_secret")
+				if (level_editor_option_back_to_menu == "change_foreground_secret")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_foreground_secret", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_all_music")
+				if (level_editor_option_back_to_menu == "change_all_music")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_music_overworld", take_from_official_level);
@@ -283,48 +283,48 @@ function scr_select_official_level_menu()
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_music_overworld")
+				if (level_editor_option_back_to_menu == "change_music_overworld")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_music_overworld", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_music_underwater")
+				if (level_editor_option_back_to_menu == "change_music_underwater")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_music_underwater", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_ambience_overworld")
+				if (level_editor_option_back_to_menu == "change_ambience_overworld")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_ambience_music", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_ambience_underwater")
+				if (level_editor_option_back_to_menu == "change_ambience_underwater")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_ambience_music", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
-				if (level_editor_options_back_to_menu == "change_clear_melody")
+				if (level_editor_option_back_to_menu == "change_clear_melody")
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_string("info", "default_clear_melody", take_from_official_level);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
-				global.select_level_index = level_editor_options_select_level_index; /* Return "select level index" to what it was before */
+				global.select_level_index = level_editor_option_select_level_index; /* Return "select level index" to what it was before */
 				
-				if (level_editor_options_back_to_menu != "change_all_music") /* Don't reload all backgrounds if you are only changing sound related options */
-				&& (level_editor_options_back_to_menu != "change_music_overworld")
-				&& (level_editor_options_back_to_menu != "change_music_underwater")
-				&& (level_editor_options_back_to_menu != "change_ambience_overworld")
-				&& (level_editor_options_back_to_menu != "change_ambience_underwater")
-				&& (level_editor_options_back_to_menu != "change_clear_melody")
+				if (level_editor_option_back_to_menu != "change_all_music") /* Don't reload all backgrounds if you are only changing sound related options */
+				&& (level_editor_option_back_to_menu != "change_music_overworld")
+				&& (level_editor_option_back_to_menu != "change_music_underwater")
+				&& (level_editor_option_back_to_menu != "change_ambience_overworld")
+				&& (level_editor_option_back_to_menu != "change_ambience_underwater")
+				&& (level_editor_option_back_to_menu != "change_clear_melody")
 				{
 					scr_update_all_backgrounds(); /* After setting "select level index" back to what it was before, then update all backgrounds */
 				}
@@ -342,7 +342,7 @@ function scr_select_official_level_menu()
 				}, [], 1);
 				time_source_start(time_source);
 				
-				menu = level_editor_options_back_to_menu; /* Lastly, go back to previous menu */
+				menu = level_editor_option_back_to_menu; /* Lastly, go back to previous menu */
 			}
 		}
 		#endregion /* If pressing accept in level editor options END */
@@ -376,7 +376,7 @@ function scr_select_official_level_menu()
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("These are official levels from the game. Learn how these levels were made!"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
-	if (variable_instance_exists(self, "level_editor_options_back_to_menu"))
+	if (variable_instance_exists(self, "level_editor_option_back_to_menu"))
 	{
 		if (window_get_width() <= 1350)
 		{
@@ -387,87 +387,87 @@ function scr_select_official_level_menu()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 50, l10n_text("Select Official Level"), global.default_text_size * 2, c_black, c_white, 1);
 		}
 		
-		if (level_editor_options_back_to_menu == "change_entire_theme")
+		if (level_editor_option_back_to_menu == "change_entire_theme")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What theme should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_all_background")
+		if (level_editor_option_back_to_menu == "change_all_background")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What backgrounds should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_all_foreground")
+		if (level_editor_option_back_to_menu == "change_all_foreground")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What foregrounds should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_background1")
+		if (level_editor_option_back_to_menu == "change_background1")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What background should Background 1 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_background2")
+		if (level_editor_option_back_to_menu == "change_background2")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What background should Background 2 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_background3")
+		if (level_editor_option_back_to_menu == "change_background3")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What background should Background 3 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_background4")
+		if (level_editor_option_back_to_menu == "change_background4")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What background should Background 4 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_foreground1")
+		if (level_editor_option_back_to_menu == "change_foreground1")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What foreground should Foreground 1 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_foreground1_5")
+		if (level_editor_option_back_to_menu == "change_foreground1_5")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What foreground should Foreground 1.5 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_foreground2")
+		if (level_editor_option_back_to_menu == "change_foreground2")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What foreground should Foreground 2 use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_foreground_secret")
+		if (level_editor_option_back_to_menu == "change_foreground_secret")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What foreground should Foreground Secret use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_all_music")
+		if (level_editor_option_back_to_menu == "change_all_music")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What sounds should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_music_overworld")
+		if (level_editor_option_back_to_menu == "change_music_overworld")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What Overworld Music should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_music_underwater")
+		if (level_editor_option_back_to_menu == "change_music_underwater")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What Underwater Music should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_ambience_overworld")
+		if (level_editor_option_back_to_menu == "change_ambience_overworld")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What Overworld Ambience should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_ambience_underwater")
+		if (level_editor_option_back_to_menu == "change_ambience_underwater")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What Underwater Ambience should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
 		else
-		if (level_editor_options_back_to_menu == "change_clear_melody")
+		if (level_editor_option_back_to_menu == "change_clear_melody")
 		{
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 100, l10n_text("What Clear Melody should this level use?"), global.default_text_size, c_black, c_white, 1);
 		}
@@ -501,10 +501,10 @@ function scr_select_official_level_menu()
 			menu = "load_custom_level";
 		}
 		else
-		if (variable_instance_exists(self, "level_editor_options_back_to_menu"))
+		if (variable_instance_exists(self, "level_editor_option_back_to_menu"))
 		{
-			global.select_level_index = level_editor_options_select_level_index; /* Return "select level index" to what it was before */
-			menu = level_editor_options_back_to_menu;
+			global.select_level_index = level_editor_option_select_level_index; /* Return "select level index" to what it was before */
+			menu = level_editor_option_back_to_menu;
 		}
 	}
 	if (menu == "back_from_level_editor")

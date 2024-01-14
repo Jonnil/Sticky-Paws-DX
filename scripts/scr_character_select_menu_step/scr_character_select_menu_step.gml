@@ -122,7 +122,7 @@ function scr_character_select_menu_step()
 		arrow_offset = 125;
 		
 		#region /* Start Game (run this code further up so that it takes priority) */
-		if (player1_accept_selection)
+		if (player1_accept_selection == 1)
 		&& (player2_accept_selection != 0)
 		&& (player3_accept_selection != 0)
 		&& (player4_accept_selection != 0)
@@ -501,7 +501,7 @@ function scr_character_select_menu_step()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[1] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[1] + 100, get_window_height * 0.5 + 150 + 20))
 			&& (mouse_check_button_released(mb_left))
 			{
-				if (!player1_accept_selection)
+				if (player1_accept_selection == 0)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					player_menu[1] = "select_character";
@@ -577,7 +577,7 @@ function scr_character_select_menu_step()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[2] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[2] + 100, get_window_height * 0.5 + 150 + 20))
 			&& (mouse_check_button_released(mb_left))
 			{
-				if (!player2_accept_selection)
+				if (player2_accept_selection == 0)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					player_menu[2] = "select_character";
@@ -653,7 +653,7 @@ function scr_character_select_menu_step()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[3] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[3] + 100, get_window_height * 0.5 + 150 + 20))
 			&& (mouse_check_button_released(mb_left))
 			{
-				if (!player3_accept_selection)
+				if (player3_accept_selection == 0)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					player_menu[3] = "select_character";
@@ -799,7 +799,7 @@ function scr_character_select_menu_step()
 			#endregion /* Select the character END */
 			
 			#region /* If all players have selected a character, be able to start game */
-			if (player1_accept_selection)
+			if (player1_accept_selection == 1)
 			&& (player2_accept_selection != 0)
 			&& (player3_accept_selection != 0)
 			&& (player4_accept_selection != 0)
@@ -845,7 +845,7 @@ function scr_character_select_menu_step()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[1] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[1] + 100, get_window_height * 0.5 + 150 + 20))
 			&& (mouse_check_button_released(mb_left))
 			{
-				if (player1_accept_selection)
+				if (player1_accept_selection == 1)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -861,7 +861,7 @@ function scr_character_select_menu_step()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[2] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[2] + 100, get_window_height * 0.5 + 150 + 20))
 			&& (mouse_check_button_released(mb_left))
 			{
-				if (player2_accept_selection)
+				if (player2_accept_selection == 1)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -877,7 +877,7 @@ function scr_character_select_menu_step()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[3] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[3] + 100, get_window_height * 0.5 + 150 + 20))
 			&& (mouse_check_button_released(mb_left))
 			{
-				if (player3_accept_selection)
+				if (player3_accept_selection == 1)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -893,7 +893,7 @@ function scr_character_select_menu_step()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[4] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[4] + 100, get_window_height * 0.5 + 150 + 20))
 			&& (mouse_check_button_released(mb_left))
 			{
-				if (player4_accept_selection)
+				if (player4_accept_selection == 1)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
@@ -905,7 +905,7 @@ function scr_character_select_menu_step()
 			#endregion /* Player 4 Back / Cancel Selection END */
 			
 			#region /* If player 1 has selected a character, be able to start game */
-			if (player1_accept_selection)
+			if (player1_accept_selection == 1)
 			&& (player2_accept_selection != 0)
 			&& (player3_accept_selection != 0)
 			&& (player4_accept_selection != 0)

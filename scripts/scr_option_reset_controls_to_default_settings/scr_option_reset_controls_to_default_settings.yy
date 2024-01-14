@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_options_custom_resources",
+  "name": "scr_option_reset_controls_to_default_settings",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

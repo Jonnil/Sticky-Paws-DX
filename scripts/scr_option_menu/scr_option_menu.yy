@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_options_control_menu",
+  "name": "scr_option_menu",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

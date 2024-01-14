@@ -2306,7 +2306,7 @@ if (!global.actually_play_edited_level && !quit_level_editor)
 			&& (key_a_pressed)
 			{
 				menu_delay = 3;
-				level_editor_options_back_to_menu = "delete_all_objects_button";
+				level_editor_option_back_to_menu = "delete_all_objects_button";
 				menu = "delete_all_objects_no";
 				pause = true;
 			}

@@ -341,7 +341,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	&& (!can_input_player3_name)
 	&& (!can_input_player4_name)
 	{
-		if (!player1_accept_selection)
+		if (player1_accept_selection == 0)
 		{
 			if (gamepad_button_check_pressed(global.player_slot[1], player_gamepad_button_back))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -363,7 +363,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				player_menu[1] = "select_character";
 			}
 		}
-		if (!player2_accept_selection)
+		if (player2_accept_selection == 0)
 		{
 			if (gamepad_button_check_pressed(1, player_gamepad_button_back))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -377,7 +377,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 				player_menu[2] = "select_character";
 			}
 		}
-		if (!player3_accept_selection)
+		if (player3_accept_selection == 0)
 		{
 			if (gamepad_button_check_pressed(2, player_gamepad_button_back))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
