@@ -725,18 +725,18 @@ function scr_option_menu()
 			|| (global.settings_sidebar_menu == "controller_settings")
 			{
 				menu = "remap_select_player";
-				allow_player1_tongue = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
-				allow_player2_tongue = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
-				allow_player3_tongue = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
+				allow_player_tongue[1] = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
+				allow_player_tongue[2] = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
+				allow_player_tongue[3] = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
 				allow_player4_tongue = scr_initialize_custom_character_abilities(3, "allow_tongue", false);
-				allow_player1_double_jump = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
-				allow_player2_double_jump = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");
-				allow_player3_double_jump = scr_initialize_custom_character_abilities(2, "number_of_jumps", 1, "values");
-				allow_player4_double_jump = scr_initialize_custom_character_abilities(3, "number_of_jumps", 1, "values");
-				allow_player1_dive = scr_initialize_custom_character_abilities(0, "allow_dive", false);
-				allow_player2_dive = scr_initialize_custom_character_abilities(1, "allow_dive", false);
-				allow_player3_dive = scr_initialize_custom_character_abilities(2, "allow_dive", false);
-				allow_player4_dive = scr_initialize_custom_character_abilities(3, "allow_dive", false);
+				allow_player_double_jump[1] = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
+				allow_player_double_jump[2] = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");
+				allow_player_double_jump[3] = scr_initialize_custom_character_abilities(2, "number_of_jumps", 1, "values");
+				allow_player_double_jump[4] = scr_initialize_custom_character_abilities(3, "number_of_jumps", 1, "values");
+				allow_player_dive[1] = scr_initialize_custom_character_abilities(0, "allow_dive", false);
+				allow_player_dive[2] = scr_initialize_custom_character_abilities(1, "allow_dive", false);
+				allow_player_dive[3] = scr_initialize_custom_character_abilities(2, "allow_dive", false);
+				allow_player_dive[4] = scr_initialize_custom_character_abilities(3, "allow_dive", false);
 			}
 			if (global.settings_sidebar_menu == "account_settings"){menu = "change_username";}
 			if (global.settings_sidebar_menu == "video_settings")
@@ -931,18 +931,18 @@ function scr_option_menu()
 			input_key = false;
 			can_navigate_settings_sidebar = false;
 			menu = "remap_select_player";
-			allow_player1_tongue = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
-			allow_player2_tongue = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
-			allow_player3_tongue = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
+			allow_player_tongue[1] = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
+			allow_player_tongue[2] = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
+			allow_player_tongue[3] = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
 			allow_player4_tongue = scr_initialize_custom_character_abilities(3, "allow_tongue", false);
-			allow_player1_double_jump = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
-			allow_player2_double_jump = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");
-			allow_player3_double_jump = scr_initialize_custom_character_abilities(2, "number_of_jumps", 1, "values");
-			allow_player4_double_jump = scr_initialize_custom_character_abilities(3, "number_of_jumps", 1, "values");
-			allow_player1_dive = scr_initialize_custom_character_abilities(0, "allow_dive", false);
-			allow_player2_dive = scr_initialize_custom_character_abilities(1, "allow_dive", false);
-			allow_player3_dive = scr_initialize_custom_character_abilities(2, "allow_dive", false);
-			allow_player4_dive = scr_initialize_custom_character_abilities(3, "allow_dive", false);
+			allow_player_double_jump[1] = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
+			allow_player_double_jump[2] = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");
+			allow_player_double_jump[3] = scr_initialize_custom_character_abilities(2, "number_of_jumps", 1, "values");
+			allow_player_double_jump[4] = scr_initialize_custom_character_abilities(3, "number_of_jumps", 1, "values");
+			allow_player_dive[1] = scr_initialize_custom_character_abilities(0, "allow_dive", false);
+			allow_player_dive[2] = scr_initialize_custom_character_abilities(1, "allow_dive", false);
+			allow_player_dive[3] = scr_initialize_custom_character_abilities(2, "allow_dive", false);
+			allow_player_dive[4] = scr_initialize_custom_character_abilities(3, "allow_dive", false);
 		}
 		#endregion /* Click Keyboard and Mouse END */
 		
@@ -978,18 +978,18 @@ function scr_option_menu()
 				input_key = false;
 				can_navigate_settings_sidebar = false;
 				menu = "remap_select_player";
-				allow_player1_tongue = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
-				allow_player2_tongue = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
-				allow_player3_tongue = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
+				allow_player_tongue[1] = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
+				allow_player_tongue[2] = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
+				allow_player_tongue[3] = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
 				allow_player4_tongue = scr_initialize_custom_character_abilities(3, "allow_tongue", false);
-				allow_player1_double_jump = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
-				allow_player2_double_jump = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");
-				allow_player3_double_jump = scr_initialize_custom_character_abilities(2, "number_of_jumps", 1, "values");
-				allow_player4_double_jump = scr_initialize_custom_character_abilities(3, "number_of_jumps", 1, "values");
-				allow_player1_dive = scr_initialize_custom_character_abilities(0, "allow_dive", false);
-				allow_player2_dive = scr_initialize_custom_character_abilities(1, "allow_dive", false);
-				allow_player3_dive = scr_initialize_custom_character_abilities(2, "allow_dive", false);
-				allow_player4_dive = scr_initialize_custom_character_abilities(3, "allow_dive", false);
+				allow_player_double_jump[1] = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
+				allow_player_double_jump[2] = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");
+				allow_player_double_jump[3] = scr_initialize_custom_character_abilities(2, "number_of_jumps", 1, "values");
+				allow_player_double_jump[4] = scr_initialize_custom_character_abilities(3, "number_of_jumps", 1, "values");
+				allow_player_dive[1] = scr_initialize_custom_character_abilities(0, "allow_dive", false);
+				allow_player_dive[2] = scr_initialize_custom_character_abilities(1, "allow_dive", false);
+				allow_player_dive[3] = scr_initialize_custom_character_abilities(2, "allow_dive", false);
+				allow_player_dive[4] = scr_initialize_custom_character_abilities(3, "allow_dive", false);
 			}
 			#endregion /* Click Controller END */
 			

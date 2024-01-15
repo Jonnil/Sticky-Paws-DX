@@ -23,11 +23,11 @@ function scr_option_reset_controls_to_default_settings(xx, yy)
 				image_speed = 0;
 				if (global.settings_sidebar_menu == "controller_settings")
 				{
-					scr_set_default_remapping_player1_gamepad(true);
+					scr_set_default_remapping_player_gamepad(1, true);
 				}
 				else
 				{
-					scr_set_default_remapping_player1_keyboard(true);
+					scr_set_default_remapping_player_keyboard(1, true);
 				}
 			}
 			#endregion /* Reset Player 1 Keyboard Remapping END */
@@ -40,11 +40,11 @@ function scr_option_reset_controls_to_default_settings(xx, yy)
 				image_speed = 0;
 				if (global.settings_sidebar_menu == "controller_settings")
 				{
-					scr_set_default_remapping_player2_gamepad(true);
+					scr_set_default_remapping_player_gamepad(2, true);
 				}
 				else
 				{
-					scr_set_default_remapping_player2_keyboard(true);
+					scr_set_default_remapping_player_keyboard(2, true);
 				}
 			}
 			#endregion /* Reset Player 2 Keyboard Remapping END */
@@ -57,11 +57,11 @@ function scr_option_reset_controls_to_default_settings(xx, yy)
 				image_speed = 0;
 				if (global.settings_sidebar_menu == "controller_settings")
 				{
-					scr_set_default_remapping_player3_gamepad(true);
+					scr_set_default_remapping_player_gamepad(3, true);
 				}
 				else
 				{
-					scr_set_default_remapping_player3_keyboard(true);
+					scr_set_default_remapping_player_keyboard(3, true);
 				}
 			}
 			#endregion /* Reset Player 3 Keyboard Remapping END */
@@ -74,11 +74,11 @@ function scr_option_reset_controls_to_default_settings(xx, yy)
 				image_speed = 0;
 				if (global.settings_sidebar_menu == "controller_settings")
 				{
-					scr_set_default_remapping_player4_gamepad(true);
+					scr_set_default_remapping_player_gamepad(4, true);
 				}
 				else
 				{
-					scr_set_default_remapping_player4_keyboard(true);
+					scr_set_default_remapping_player_keyboard(4, true);
 				}
 			}
 			#endregion /* Reset Player 4 Keyboard Remapping END */

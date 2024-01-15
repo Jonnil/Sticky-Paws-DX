@@ -579,14 +579,14 @@ enum inp
 	gp = 1
 }
 
-scr_set_default_remapping_player1_keyboard(false);
-scr_set_default_remapping_player1_gamepad(false);
-scr_set_default_remapping_player2_keyboard(false);
-scr_set_default_remapping_player2_gamepad(false);
-scr_set_default_remapping_player3_keyboard(false);
-scr_set_default_remapping_player3_gamepad(false);
+scr_set_default_remapping_player_keyboard(1, false);
+scr_set_default_remapping_player_gamepad(1, false);
+scr_set_default_remapping_player_keyboard(2, false);
+scr_set_default_remapping_player_gamepad(2, false);
+scr_set_default_remapping_player_keyboard(3, false);
+scr_set_default_remapping_player_gamepad(3, false);
 scr_set_default_remapping_player4_keyboard(false);
-scr_set_default_remapping_player4_gamepad(false);
+scr_set_default_remapping_player_gamepad(4, false);
 #endregion /* Set controls END */
 
 #region /* Set default language */
