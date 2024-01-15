@@ -24,10 +24,10 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	}
 	else
 	if (menu == "remap_select_profile")
-	&& (variable_to_change = global.player1_profile)
+	&& (variable_to_change = global.player_profile[1])
 	{
 		scr_config_save();
-		global.player1_profile = change_to_value;
+		global.player_profile[1] = change_to_value;
 		ini_open(working_directory + "save_file/config.ini");
 		if (!ini_section_exists("player1_profile" + string(change_to_value)))
 		{
@@ -39,10 +39,10 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	}
 	else
 	if (menu == "remap_select_profile")
-	&& (variable_to_change = global.player2_profile)
+	&& (variable_to_change = global.player_profile[2])
 	{
 		scr_config_save();
-		global.player2_profile = change_to_value;
+		global.player_profile[2] = change_to_value;
 		ini_open(working_directory + "save_file/config.ini");
 		if (!ini_section_exists("player2_profile" + string(change_to_value)))
 		{
@@ -54,10 +54,10 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	}
 	else
 	if (menu == "remap_select_profile")
-	&& (variable_to_change = global.player3_profile)
+	&& (variable_to_change = global.player_profile[3])
 	{
 		scr_config_save();
-		global.player3_profile = change_to_value;
+		global.player_profile[3] = change_to_value;
 		ini_open(working_directory + "save_file/config.ini");
 		if (!ini_section_exists("player3_profile" + string(change_to_value)))
 		{
@@ -69,10 +69,10 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	}
 	else
 	if (menu == "remap_select_profile")
-	&& (variable_to_change = global.player4_profile)
+	&& (variable_to_change = global.player_profile[4])
 	{
 		scr_config_save();
-		global.player4_profile = change_to_value;
+		global.player_profile[4] = change_to_value;
 		ini_open(working_directory + "save_file/config.ini");
 		if (!ini_section_exists("player4_profile" + string(change_to_value)))
 		{
@@ -84,31 +84,31 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	}
 	else
 	if (menu == "wall_jump_setting")
-	&& (variable_to_change = global.player1_wall_jump_setting)
+	&& (variable_to_change = global.player_wall_jump_setting[1])
 	&& (remapping_player == 0)
 	{
-		global.player1_wall_jump_setting = change_to_value;
+		global.player_wall_jump_setting[1] = change_to_value;
 	}
 	else
 	if (menu == "wall_jump_setting")
-	&& (variable_to_change = global.player2_wall_jump_setting)
+	&& (variable_to_change = global.player_wall_jump_setting[2])
 	&& (remapping_player == 1)
 	{
-		global.player2_wall_jump_setting = change_to_value;
+		global.player_wall_jump_setting[2] = change_to_value;
 	}
 	else
 	if (menu == "wall_jump_setting")
-	&& (variable_to_change = global.player3_wall_jump_setting)
+	&& (variable_to_change = global.player_wall_jump_setting[3])
 	&& (remapping_player == 2)
 	{
-		global.player3_wall_jump_setting = change_to_value;
+		global.player_wall_jump_setting[3] = change_to_value;
 	}
 	else
 	if (menu == "wall_jump_setting")
-	&& (variable_to_change = global.player4_wall_jump_setting)
+	&& (variable_to_change = global.player_wall_jump_setting[4])
 	&& (remapping_player == 3)
 	{
-		global.player4_wall_jump_setting = change_to_value;
+		global.player_wall_jump_setting[4] = change_to_value;
 	}
 	else
 	if (menu == "show_controls")
@@ -133,10 +133,10 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	}
 	else
 	if (menu == "show_controls")
-	&& (variable_to_change = global.player4_show_controls)
+	&& (variable_to_change = global.player_show_controls[4])
 	&& (remapping_player == 3)
 	{
-		global.player4_show_controls = change_to_value;
+		global.player_show_controls[4] = change_to_value;
 	}
 	else
 	if (menu == "chosen_controller_used")

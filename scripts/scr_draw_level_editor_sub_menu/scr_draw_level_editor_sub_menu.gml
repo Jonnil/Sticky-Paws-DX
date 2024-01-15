@@ -577,19 +577,19 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				ini_close();
 				global.select_level_index --; /* Decrease the "select level index" so that the cursor isn't selecting a level that no longer exists */
 				scr_load_custom_level_initializing();
-				can_input_player1_name = 2;
-				can_input_player2_name = 2;
-				can_input_player3_name = 2;
+				can_input_player_name[1] = 2;
+				can_input_player_name[2] = 2;
+				can_input_player_name[3] = 2;
 				can_input_player4_name = 2;
 				can_navigate = true;
 				menu_delay = 3;
 				open_sub_menu = false;
 				show_level_editor_corner_menu = true;
 				scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
-				player1_accept_selection = false;
-				player2_accept_selection = false;
-				player3_accept_selection = false;
-				player4_accept_selection = false;
+				player_accept_selection[1] = false;
+				player_accept_selection[2] = false;
+				player_accept_selection[3] = false;
+				player_accept_selection[4] = false;
 				menu = "load_custom_level";
 			}
 		}

@@ -1,23 +1,17 @@
 function scr_remapping_keyboard()
 {
-	if (remapping_player == 0)
+	player_profile = global.player_profile[remapping_player + 1];
+	
+	if (menu_remap_key_number == 0)
 	{
-		player_profile = global.player1_profile;
+		var remap_key_number_string = "";
+		var remap_key_number = 1;
 	}
 	else
-	if (remapping_player == 1)
+	if (menu_remap_key_number == 2)
 	{
-		player_profile = global.player2_profile;
-	}
-	else
-	if (remapping_player == 2)
-	{
-		player_profile = global.player3_profile;
-	}
-	else
-	if (remapping_player == 3)
-	{
-		player_profile = global.player4_profile;
+		var remap_key_number_string = "2";
+		var remap_key_number = 2;
 	}
 	
 	if (!keyboard_check_pressed(vk_escape))
@@ -84,18 +78,6 @@ function scr_remapping_keyboard()
 	}
 	
 	#region /* Remapping Keyboard */
-	if (menu_remap_key_number == 0)
-	{
-		var remap_key_number_string = "";
-		var remap_key_number = 1;
-	}
-	else
-	if (menu_remap_key_number == 2)
-	{
-		var remap_key_number_string = "2";
-		var remap_key_number = 2;
-	}
-	
 	if (can_remap_key)
 	{
 		/* global.player_[keyboard/gamepad][player][key1/key2][action] */
@@ -272,7 +254,7 @@ function scr_remapping_keyboard()
 		}
 		can_remap_key = false;
 		input_key = false;
-		menu_delay = 3;
+		menu_delay = 6;
 	}
 	#endregion /* Remapping Keyboard END */
 	

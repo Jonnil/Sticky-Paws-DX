@@ -3,8 +3,11 @@ if (other.invincible_timer > 0 && !assist_invincible) {
 }
 
 if (global.players_can_collide)
-&& (y >= other.y) {
+&& (y >= other.y)
+&& (!stick_to_wall)
+&& (!other.stick_to_wall) {
 	if (hspeed < 0) /* If you are going left */
+	&& (x > other.x)
 	&& (other.hspeed > 0) { /* And other is going right */
 		hspeed = 0;
 		x ++; /* Push yourself right */
@@ -13,6 +16,7 @@ if (global.players_can_collide)
 	}
 	else
 	if (hspeed > 0) /* If you are going right */
+	&& (x < other.x)
 	&& (other.hspeed < 0) { /* And other is going left */
 		hspeed = 0;
 		x --; /* Push yourself left*/
@@ -21,61 +25,39 @@ if (global.players_can_collide)
 	}
 	else
 	if (hspeed < 0) /* If you are going left */
-	&& (other.hspeed == 0) { /* And other is standing still */
-		if (hspeed < -0.1) {
-			hspeed = -0.1;
+	&& (x > other.x)
+	&& (other.hspeed <= 0) { /* And other is standing still or going left */
+		if (hspeed < -1) {
+			hspeed = -1;
 		}
 		other.x --;
 	}
 	else
 	if (hspeed > 0) /* If you are going right */
-	&& (other.hspeed == 0) { /* And other is standing still */
-		if (hspeed > +0.1) {
-			hspeed = +0.1;
+	&& (x < other.x)
+	&& (other.hspeed >= 0) { /* And other is standing still or going right */
+		if (hspeed > +1) {
+			hspeed = +1;
 		}
 		other.x ++;
 	}
-	if (hspeed == 0) /* If you are standing still */
+	if (hspeed <= 0) /* If you are standing still or going left */
+	&& (x < other.x)
 	&& (other.hspeed < 0) { /* And other is going left */
-		if (other.hspeed < -0.1) {
-			other.hspeed = -0.1;
+		if (other.hspeed < -1) {
+			other.hspeed = -1;
 		}
 		x --;
 	}
 	else
-	if (hspeed == 0) /* If you are standing still */
+	if (hspeed >= 0) /* If you are standing still or going right */
+	&& (x > other.x)
 	&& (other.hspeed > 0) { /* And other is going right */
-		if (other.hspeed > +0.1) {
-			other.hspeed = +0.1;
+		if (other.hspeed > +1) {
+			other.hspeed = +1;
 		}
 		x ++;
 	}
-	
-	
-	
-	//else
-	//if (hspeed == 0) /* If you are standing still */
-	//&& (other.hspeed <> 0) /* And other is going either left or right */
-	//&& (!place_meeting(x - 1, y, obj_wall))
-	//&& (!place_meeting(x + 1, y, obj_wall))
-	//{
-	//	hspeed = 0;
-	//	x += other.hspeed;
-	//}
-	//else
-	//if (hspeed <> 0) /* If you are going either left or right */
-	//&& (other.hspeed == 0) /* And other is standing still */
-	//{
-	//	if (hspeed < -0.1)
-	//	{
-	//		hspeed = -0.1;
-	//	}
-	//	else
-	//	if (hspeed > +0.1)
-	//	{
-	//		hspeed = +0.1;
-	//	}
-	//}
 }
 
 #region /* Interaction with other players */

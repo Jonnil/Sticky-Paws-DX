@@ -5,54 +5,54 @@ function scr_player_move_customizable_controls()
 	#region /* Set values from the Input Settings */
 	if (player == 1)
 	{
-		up_is_also_jump = global.player1_up_is_also_jump;
-		down_is_also_crouch = global.player1_down_is_also_crouch;
-		double_tap_to_run = global.player1_double_tap_to_run;
-		double_tap_to_dive = global.player1_double_tap_to_dive;
-		cancel_dive_by_pressing_jump_or_dive_button = global.player1_cancel_dive_by_pressing_jump_or_dive_button;
-		cancel_dive_by_pressing_opposite_direction = global.player1_cancel_dive_by_pressing_opposite_direction;
-		down_and_jump_to_groundpound = global.player1_down_and_jump_to_groundpound;
-		wall_jump_setting = global.player1_wall_jump_setting;
-		drop_from_rope = global.player1_drop_from_rope;
+		up_is_also_jump = global.player_up_is_also_jump[1];
+		down_is_also_crouch = global.player_down_is_also_crouch[1];
+		double_tap_to_run = global.player_double_tap_to_run[1];
+		double_tap_to_dive = global.player_double_tap_to_dive[1];
+		cancel_dive_by_pressing_jump_or_dive_button = global.player_cancel_dive_by_pressing_jump_or_dive_button[1];
+		cancel_dive_by_pressing_opposite_direction = global.player_cancel_dive_by_pressing_opposite_direction[1];
+		down_and_jump_to_groundpound = global.player_down_and_jump_to_groundpound[1];
+		wall_jump_setting = global.player_wall_jump_setting[1];
+		drop_from_rope = global.player_drop_from_rope[1];
 	}
 	else
 	if (player == 2)
 	{
-		up_is_also_jump = global.player2_up_is_also_jump;
-		down_is_also_crouch = global.player2_down_is_also_crouch;
-		double_tap_to_run = global.player2_double_tap_to_run;
-		double_tap_to_dive = global.player2_double_tap_to_dive;
-		cancel_dive_by_pressing_jump_or_dive_button = global.player2_cancel_dive_by_pressing_jump_or_dive_button;
-		cancel_dive_by_pressing_opposite_direction = global.player2_cancel_dive_by_pressing_opposite_direction;
-		down_and_jump_to_groundpound = global.player2_down_and_jump_to_groundpound;
-		wall_jump_setting = global.player2_wall_jump_setting;
-		drop_from_rope = global.player2_drop_from_rope;
+		up_is_also_jump = global.player_up_is_also_jump[2];
+		down_is_also_crouch = global.player_down_is_also_crouch[2];
+		double_tap_to_run = global.player_double_tap_to_run[2];
+		double_tap_to_dive = global.player_double_tap_to_dive[2];
+		cancel_dive_by_pressing_jump_or_dive_button = global.player_cancel_dive_by_pressing_jump_or_dive_button[2];
+		cancel_dive_by_pressing_opposite_direction = global.player_cancel_dive_by_pressing_opposite_direction[2];
+		down_and_jump_to_groundpound = global.player_down_and_jump_to_groundpound[2];
+		wall_jump_setting = global.player_wall_jump_setting[2];
+		drop_from_rope = global.player_drop_from_rope[2];
 	}
 	else
 	if (player == 3)
 	{
-		up_is_also_jump = global.player3_up_is_also_jump;
-		down_is_also_crouch = global.player3_down_is_also_crouch;
-		double_tap_to_run = global.player3_double_tap_to_run;
-		double_tap_to_dive = global.player3_double_tap_to_dive;
-		cancel_dive_by_pressing_jump_or_dive_button = global.player3_cancel_dive_by_pressing_jump_or_dive_button;
-		cancel_dive_by_pressing_opposite_direction = global.player3_cancel_dive_by_pressing_opposite_direction;
-		down_and_jump_to_groundpound = global.player3_down_and_jump_to_groundpound;
-		wall_jump_setting = global.player3_wall_jump_setting;
-		drop_from_rope = global.player3_drop_from_rope;
+		up_is_also_jump = global.player_up_is_also_jump[3];
+		down_is_also_crouch = global.player_down_is_also_crouch[3];
+		double_tap_to_run = global.player_double_tap_to_run[3];
+		double_tap_to_dive = global.player_double_tap_to_dive[3];
+		cancel_dive_by_pressing_jump_or_dive_button = global.player_cancel_dive_by_pressing_jump_or_dive_button[3];
+		cancel_dive_by_pressing_opposite_direction = global.player_cancel_dive_by_pressing_opposite_direction[3];
+		down_and_jump_to_groundpound = global.player_down_and_jump_to_groundpound[3];
+		wall_jump_setting = global.player_wall_jump_setting[3];
+		drop_from_rope = global.player_drop_from_rope[3];
 	}
 	else
 	if (player == 4)
 	{
-		up_is_also_jump = global.player4_up_is_also_jump;
-		down_is_also_crouch = global.player4_down_is_also_crouch;
-		double_tap_to_run = global.player4_double_tap_to_run;
-		double_tap_to_dive = global.player4_double_tap_to_dive;
-		cancel_dive_by_pressing_jump_or_dive_button = global.player4_cancel_dive_by_pressing_jump_or_dive_button;
-		cancel_dive_by_pressing_opposite_direction = global.player4_cancel_dive_by_pressing_opposite_direction;
-		down_and_jump_to_groundpound = global.player4_down_and_jump_to_groundpound;
-		wall_jump_setting = global.player4_wall_jump_setting;
-		drop_from_rope = global.player4_drop_from_rope;
+		up_is_also_jump = global.player_up_is_also_jump[4];
+		down_is_also_crouch = global.player_down_is_also_crouch[4];
+		double_tap_to_run = global.player_double_tap_to_run[4];
+		double_tap_to_dive = global.player_double_tap_to_dive[4];
+		cancel_dive_by_pressing_jump_or_dive_button = global.player_cancel_dive_by_pressing_jump_or_dive_button[4];
+		cancel_dive_by_pressing_opposite_direction = global.player_cancel_dive_by_pressing_opposite_direction[4];
+		down_and_jump_to_groundpound = global.player_down_and_jump_to_groundpound[4];
+		wall_jump_setting = global.player_wall_jump_setting[4];
+		drop_from_rope = global.player_drop_from_rope[4];
 	}
 	#endregion /* Set values from the Input Settings END */
 	
@@ -62,17 +62,17 @@ function scr_player_move_customizable_controls()
 	{
 		if (player == 1)
 		{
-			global.player1_crouch_toggle = !global.player1_crouch_toggle;
+			global.player_crouch_toggle[1] = !global.player_crouch_toggle[1];
 		}
 		else
 		if (player == 2)
 		{
-			global.player2_crouch_toggle = !global.player2_crouch_toggle;
+			global.player_crouch_toggle[2] = !global.player_crouch_toggle[2];
 		}
 		else
 		if (player == 3)
 		{
-			global.player3_crouch_toggle = !global.player3_crouch_toggle;
+			global.player_crouch_toggle[3] = !global.player_crouch_toggle[3];
 		}
 		else
 		if (player == 4)
@@ -181,11 +181,11 @@ function scr_player_move_customizable_controls()
 	key_crouch_hold =
 	(key_crouch_hold_temp)
 	|| (player == 1)
-	&& (global.player1_crouch_toggle)
+	&& (global.player_crouch_toggle[1])
 	|| (player == 2)
-	&& (global.player2_crouch_toggle)
+	&& (global.player_crouch_toggle[2])
 	|| (player == 3)
-	&& (global.player3_crouch_toggle)
+	&& (global.player_crouch_toggle[3])
 	|| (player >= 4)
 	&& (global.player4_crouch_toggle)
 	|| (down_is_also_crouch)
@@ -207,13 +207,13 @@ function scr_player_move_customizable_controls()
 	key_run =
 	(key_run_hold_temp)
 	|| (player == 1)
-	&& (global.player1_run_toggle)
+	&& (global.player_run_toggle[1])
 	|| (player == 2)
-	&& (global.player2_run_toggle)
+	&& (global.player_run_toggle[2])
 	|| (player == 3)
-	&& (global.player3_run_toggle)
+	&& (global.player_run_toggle[3])
 	|| (player >= 4)
-	&& (global.player4_run_toggle);
+	&& (global.player_run_toggle[4]);
 	#endregion /* Key Run Hold END */
 	
 	key_run_pressed = scr_key_initialize(key_run_pressed, 1, player, action.run);

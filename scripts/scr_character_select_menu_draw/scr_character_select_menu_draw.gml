@@ -9,13 +9,19 @@ function scr_character_select_menu_draw()
 		var max_custom_characters_reached = false;
 	}
 	
-	/* Player 1 Key Accept Pressed */ player1_key_a_pressed = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.accept])) || (keyboard_check_pressed(vk_space));
+	var player_join_text_size = 1;
+	if (string_width(l10n_text("Player 1 Join")) > 300)
+	{
+		var player_join_text_size = 0.75;
+	}
+	
+	/* Player 1 Key Accept Pressed */ player_key_a_pressed[1] = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.accept])) || (keyboard_check_pressed(vk_space));
 	/* Player 1 Key Back Pressed */ player1_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.back])) || (keyboard_check_pressed(vk_escape));
-	/* Player 2 Key Accept Pressed */ player2_key_a_pressed = (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.accept]));
+	/* Player 2 Key Accept Pressed */ player_key_a_pressed[2] = (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.accept]));
 	/* Player 2 Key Back Pressed */ player2_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.back]));
-	/* Player 3 Key Accept Pressed */ player3_key_a_pressed = (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.accept]));
+	/* Player 3 Key Accept Pressed */ player_key_a_pressed[3] = (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.accept]));
 	/* Player 3 Key Back Pressed */ player3_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.back]));
-	/* Player 4 Key Accept Pressed */ player4_key_a_pressed = (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.accept]));
+	/* Player 4 Key Accept Pressed */ player_key_a_pressed[4] = (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.accept]));
 	/* Player 4 Key Back Pressed */ player4_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.back]));
 	
 	arrow_offset = 125;
@@ -46,19 +52,19 @@ function scr_character_select_menu_draw()
 		#endregion /* Player positions and scale for each character display END */
 		
 		#region /* Give feedback that you have selected a character, run this before the character portrait code */
-		if (player1_accept_selection == 1)
+		if (player_accept_selection[1] == 1)
 		{
 			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[1], get_window_height * 0.5, player1_scale, player1_scale, 0, global.player_color[1], 1);
 		}
-		if (player2_accept_selection == 1)
+		if (player_accept_selection[2] == 1)
 		{
 			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[2], get_window_height * 0.5, player2_scale, player2_scale, 0, global.player_color[2], 1);
 		}
-		if (player3_accept_selection == 1)
+		if (player_accept_selection[3] == 1)
 		{
 			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[3], get_window_height * 0.5, player3_scale, player3_scale, 0, global.player_color[3], 1);
 		}
-		if (player4_accept_selection == 1)
+		if (player_accept_selection[4] == 1)
 		{
 			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[4], get_window_height * 0.5, player4_scale, player4_scale, 0, global.player_color[4], 1);
 		}
@@ -103,10 +109,10 @@ function scr_character_select_menu_draw()
 			draw_rectangle_color(0, play_the_game_text_y_lerp - 32, get_window_width, play_the_game_text_y_lerp + 32, c_black, c_black, c_black, c_black, false);
 			scr_draw_text_outlined(get_window_width * 0.5 -40, play_the_game_text_y_lerp, l10n_text("Play the game!"), global.default_text_size * 2, c_black, c_white, 1);
 			
-			if (player1_accept_selection == 1)
-			&& (player2_accept_selection != 0)
-			&& (player3_accept_selection != 0)
-			&& (player4_accept_selection != 0)
+			if (player_accept_selection[1] == 1)
+			&& (player_accept_selection[2] != 0)
+			&& (player_accept_selection[3] != 0)
+			&& (player_accept_selection[4] != 0)
 			{
 				draw_set_alpha(0.9);
 				draw_roundrect_color_ext(get_window_width * 0.5 - (string_width(l10n_text("Player 1 starts the game")) * 0.5), play_the_game_text_y_lerp + 32, get_window_width * 0.5 + (string_width(l10n_text("Player 1 starts the game")) * 0.5), play_the_game_text_y_lerp + 64, 50, 50, c_black, c_black, false);
@@ -140,10 +146,10 @@ function scr_character_select_menu_draw()
 				
 			}
 			else
-			if (player1_accept_selection != 0)
-			&& (player2_accept_selection)
-			&& (player3_accept_selection != 0)
-			&& (player4_accept_selection != 0)
+			if (player_accept_selection[1] != 0)
+			&& (player_accept_selection[2])
+			&& (player_accept_selection[3] != 0)
+			&& (player_accept_selection[4] != 0)
 			{
 				scr_draw_text_outlined(get_window_width * 0.5, play_the_game_text_y_lerp + 45, l10n_text("Player 2 starts the game"), global.default_text_size, c_black, global.player_color[2], 1);
 				
@@ -172,10 +178,10 @@ function scr_character_select_menu_draw()
 				
 			}
 			else
-			if (player1_accept_selection != 0)
-			&& (player2_accept_selection != 0)
-			&& (player3_accept_selection)
-			&& (player4_accept_selection != 0)
+			if (player_accept_selection[1] != 0)
+			&& (player_accept_selection[2] != 0)
+			&& (player_accept_selection[3])
+			&& (player_accept_selection[4] != 0)
 			{
 				scr_draw_text_outlined(get_window_width * 0.5, play_the_game_text_y_lerp + 45, l10n_text("Player 3 starts the game"), global.default_text_size, c_black, global.player_color[3], 1);
 				
@@ -204,10 +210,10 @@ function scr_character_select_menu_draw()
 				
 			}
 			else
-			if (player1_accept_selection != 0)
-			&& (player2_accept_selection != 0)
-			&& (player3_accept_selection != 0)
-			&& (player4_accept_selection)
+			if (player_accept_selection[1] != 0)
+			&& (player_accept_selection[2] != 0)
+			&& (player_accept_selection[3] != 0)
+			&& (player_accept_selection[4])
 			{
 				scr_draw_text_outlined(get_window_width * 0.5, play_the_game_text_y_lerp + 45, l10n_text("Player 4 starts the game"), global.default_text_size, c_black, global.player_color[4], 1);
 				
@@ -319,10 +325,10 @@ function scr_character_select_menu_draw()
 				draw_sprite_ext(spr_lock_icon, 0, 16, draw_online_character_list_y + 21, 1, 1, 0, c_white, 1);
 			}
 			
-			if (!can_input_player1_name)
-			&& (!can_input_player2_name)
-			&& (!can_input_player3_name)
-			&& (!can_input_player4_name)
+			if (!can_input_player_name[1])
+			&& (!can_input_player_name[2])
+			&& (!can_input_player_name[3])
+			&& (!can_input_player_name[4])
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!open_sub_menu)
 			{
@@ -360,14 +366,14 @@ function scr_character_select_menu_draw()
 		#endregion /* All code before menu navigation code END */
 		
 		#region /* If players haven't joined the game */
-		if (!can_input_player1_name)
-		&& (!can_input_player2_name)
-		&& (!can_input_player3_name)
-		&& (!can_input_player4_name)
+		if (!can_input_player_name[1])
+		&& (!can_input_player_name[2])
+		&& (!can_input_player_name[3])
+		&& (!can_input_player_name[4])
 		{
 			
 			#region /* Player 1 Join Text */
-			if (player1_accept_selection <= -1 && !player1_automatically_join)
+			if (player_accept_selection[1] <= -1 && !player1_automatically_join)
 			{
 				var player_join_x = window_width_half + player_display_x[1];
 				var player_join_y = window_height_half;
@@ -385,7 +391,7 @@ function scr_character_select_menu_draw()
 				{
 					var player_join_outline_color = c_black;
 				}
-				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 1 Join"), global.default_text_size, player_join_outline_color, global.player_color[1], 1);
+				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 1 Join"), global.default_text_size * player_join_text_size, player_join_outline_color, global.player_color[1], 1);
 				
 				#region /* Key A */
 				var player1_key_accept_1 = global.player_[inp.key][1][1][action.accept];
@@ -423,7 +429,7 @@ function scr_character_select_menu_draw()
 			#endregion /* Player 1 Join Text END */
 			
 			#region /* Player 2 Join Text */
-			if (player2_accept_selection <= -1 && !player2_automatically_join && (global.playergame >= 1 || global.skip_how_many_people_are_playing_screen))
+			if (player_accept_selection[2] <= -1 && !player2_automatically_join && (global.playergame >= 1 || global.skip_how_many_people_are_playing_screen))
 			{
 				var player_join_x = window_width_half + player_display_x[2];
 				var player_join_y = window_height_half + 32;
@@ -441,7 +447,7 @@ function scr_character_select_menu_draw()
 				{
 					var player_join_outline_color = c_black;
 				}
-				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 2 Join"), global.default_text_size, player_join_outline_color, global.player_color[2], 1);
+				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 2 Join"), global.default_text_size * player_join_text_size, player_join_outline_color, global.player_color[2], 1);
 				
 				#region /* Key A */
 				var controls_used_for_navigation = global.controls_used_for_navigation;
@@ -477,7 +483,7 @@ function scr_character_select_menu_draw()
 			#endregion /* Player 2 Join Text END */
 			
 			#region /* Player 3 Join Text */
-			if (player3_accept_selection <= -1 && !player3_automatically_join && (global.playergame >= 2 || global.skip_how_many_people_are_playing_screen))
+			if (player_accept_selection[3] <= -1 && !player3_automatically_join && (global.playergame >= 2 || global.skip_how_many_people_are_playing_screen))
 			{
 				var player_join_x = window_width_half + player_display_x[3];
 				var player_join_y = window_height_half;
@@ -495,7 +501,7 @@ function scr_character_select_menu_draw()
 				{
 					var player_join_outline_color = c_black;
 				}
-				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 3 Join"), global.default_text_size, player_join_outline_color, global.player_color[3], 1);
+				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 3 Join"), global.default_text_size * player_join_text_size, player_join_outline_color, global.player_color[3], 1);
 				
 				#region /* Key A */
 				var controls_used_for_navigation = global.controls_used_for_navigation;
@@ -531,7 +537,7 @@ function scr_character_select_menu_draw()
 			#endregion /* Player 3 Join Text END */
 			
 			#region /* Player 4 Join Text */
-			if (player4_accept_selection <= -1 && !player4_automatically_join && (global.playergame >= 3 || global.skip_how_many_people_are_playing_screen))
+			if (player_accept_selection[4] <= -1 && !player4_automatically_join && (global.playergame >= 3 || global.skip_how_many_people_are_playing_screen))
 			{
 				var player_join_x = window_width_half + player_display_x[4];
 				var player_join_y = window_height_half + 32;
@@ -549,7 +555,7 @@ function scr_character_select_menu_draw()
 				{
 					var player_join_outline_color = c_black;
 				}
-				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 4 Join"), global.default_text_size, player_join_outline_color, global.player_color[4], 1);
+				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 4 Join"), global.default_text_size * player_join_text_size, player_join_outline_color, global.player_color[4], 1);
 				
 				#region /* Key A */
 				var controls_used_for_navigation = global.controls_used_for_navigation;

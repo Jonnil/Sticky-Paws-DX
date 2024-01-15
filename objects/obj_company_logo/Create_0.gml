@@ -503,30 +503,30 @@ global.level_player3_start_y = 0;
 global.level_player4_start_x = 0;
 global.level_player4_start_y = 0;
 
-global.player1_crouch_toggle = false; /* If crouch toggle for player 1 is true or false (false by default) */
-global.player2_crouch_toggle = false; /* If crouch toggle for player 2 is true or false (false by default) */
-global.player3_crouch_toggle = false; /* If crouch toggle for player 3 is true or false (false by default) */
+global.player_crouch_toggle[1] = false; /* If crouch toggle for player 1 is true or false (false by default) */
+global.player_crouch_toggle[2] = false; /* If crouch toggle for player 2 is true or false (false by default) */
+global.player_crouch_toggle[3] = false; /* If crouch toggle for player 3 is true or false (false by default) */
 global.player4_crouch_toggle = false; /* If crouch toggle for player 4 is true or false (false by default) */
 
-global.player1_run_toggle = false; /* If run toggle for player 1 is true or false (false by default) */
-global.player2_run_toggle = false; /* If run toggle for player 2 is true or false (false by default) */
-global.player3_run_toggle = false; /* If run toggle for player 3 is true or false (false by default) */
-global.player4_run_toggle = false; /* If run toggle for player 4 is true or false (false by default) */
+global.player_run_toggle[1] = false; /* If run toggle for player 1 is true or false (false by default) */
+global.player_run_toggle[2] = false; /* If run toggle for player 2 is true or false (false by default) */
+global.player_run_toggle[3] = false; /* If run toggle for player 3 is true or false (false by default) */
+global.player_run_toggle[4] = false; /* If run toggle for player 4 is true or false (false by default) */
 
-global.player1_cancel_dive_by_pressing_jump_or_dive_button = false;
-global.player2_cancel_dive_by_pressing_jump_or_dive_button = false;
-global.player3_cancel_dive_by_pressing_jump_or_dive_button = false;
-global.player4_cancel_dive_by_pressing_jump_or_dive_button = false;
+global.player_cancel_dive_by_pressing_jump_or_dive_button[1] = false;
+global.player_cancel_dive_by_pressing_jump_or_dive_button[2] = false;
+global.player_cancel_dive_by_pressing_jump_or_dive_button[3] = false;
+global.player_cancel_dive_by_pressing_jump_or_dive_button[4] = false;
 
-global.player1_cancel_dive_by_pressing_opposite_direction = false;
-global.player2_cancel_dive_by_pressing_opposite_direction = false;
-global.player3_cancel_dive_by_pressing_opposite_direction = false;
-global.player4_cancel_dive_by_pressing_opposite_direction = false;
+global.player_cancel_dive_by_pressing_opposite_direction[1] = false;
+global.player_cancel_dive_by_pressing_opposite_direction[2] = false;
+global.player_cancel_dive_by_pressing_opposite_direction[3] = false;
+global.player_cancel_dive_by_pressing_opposite_direction[4] = false;
 
-global.player1_down_and_jump_to_groundpound = false;
-global.player2_down_and_jump_to_groundpound = false;
-global.player3_down_and_jump_to_groundpound = false;
-global.player4_down_and_jump_to_groundpound = false;
+global.player_down_and_jump_to_groundpound[1] = false;
+global.player_down_and_jump_to_groundpound[2] = false;
+global.player_down_and_jump_to_groundpound[3] = false;
+global.player_down_and_jump_to_groundpound[4] = false;
 
 global.fullscreen_key = vk_f11;
 
@@ -547,10 +547,10 @@ global.player_slot[4] = 3;
 #endregion /* Controller ports END */
 
 #region /* Remap Profiles */
-global.player1_profile = 0;
-global.player2_profile = 0;
-global.player3_profile = 0;
-global.player4_profile = 0;
+global.player_profile[1] = 0;
+global.player_profile[2] = 0;
+global.player_profile[3] = 0;
+global.player_profile[4] = 0;
 #endregion /* Remap Profiles END */
 
 #region /* Set controls */

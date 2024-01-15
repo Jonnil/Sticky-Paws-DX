@@ -298,6 +298,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 	&& (!input_key)
 	&& (!open_dropdown)
 	&& (global.controls_used_for_navigation == "mouse")
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu = menu_string;
 		menu_remap_key_number = 0;
@@ -307,6 +308,7 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 	&& (!input_key)
 	&& (!open_dropdown)
 	&& (global.controls_used_for_navigation == "mouse")
+	&& (menu_delay == 0 && menu_joystick_delay == 0)
 	{
 		menu = menu_string;
 		menu_remap_key_number = 2;
@@ -349,7 +351,6 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			{
 				scr_remapping_keyboard();
 			}
-			menu_delay = 3; /* Set menu delay after the keyboard remapping script */
 		}
 		else
 		if (key_a_pressed)

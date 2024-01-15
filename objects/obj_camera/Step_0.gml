@@ -222,7 +222,7 @@ if (player2 >= 1)
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[2] == 0)
-	|| (!player1.can_move)
+	|| (!player2.can_move)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
@@ -243,7 +243,7 @@ if (player2 >= 1)
 		}
 	}
 	else
-	if (global.player_show_controls[2] = 10)
+	if (global.player_show_controls[2] == 10)
 	{
 		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
 	}
@@ -271,7 +271,7 @@ if (player3 >= 1)
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[3] == 0)
-	|| (!player1.can_move)
+	|| (!player3.can_move)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
@@ -292,7 +292,7 @@ if (player3 >= 1)
 		}
 	}
 	else
-	if (global.player_show_controls[3] = 10)
+	if (global.player_show_controls[3] == 10)
 	{
 		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.2);
 	}
@@ -320,7 +320,7 @@ if (player4 >= 1)
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[4] == 0)
-	|| (!player1.can_move)
+	|| (!player4.can_move)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
@@ -341,7 +341,7 @@ if (player4 >= 1)
 		}
 	}
 	else
-	if (global.player_show_controls[4] = 10)
+	if (global.player_show_controls[4] == 10)
 	{
 		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
 	}
@@ -404,13 +404,14 @@ gamepad_set_vibration(global.player_slot[4], player4_motor_speed, player4_motor_
 #region /* Spawn Players in multiplayer */
 if (!global.pause)
 && (!global.goal_active)
+&& (instance_exists(obj_player))
 {
 	if (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]) && gamepad_is_connected(global.player_slot[1]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
 	{
 		if (player1 <= 0)
-		&& (can_spawn_player1)
+		&& (can_spawn_player[1])
 		&& (lives > 0)
 		{
 			if (!global.player_can_play[1])
@@ -444,7 +445,7 @@ if (!global.pause)
 	|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
 	{
 		if (player2 <= 0)
-		&& (can_spawn_player2)
+		&& (can_spawn_player[2])
 		&& (lives > 0)
 		{
 			if (!global.player_can_play[2])
@@ -478,7 +479,7 @@ if (!global.pause)
 	|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
 	{
 		if (player3 <= 0)
-		&& (can_spawn_player3)
+		&& (can_spawn_player[3])
 		&& (lives > 0)
 		{
 			if (!global.player_can_play[3])
@@ -512,7 +513,7 @@ if (!global.pause)
 	|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
 	{
 		if (player4 <= 0)
-		&& (can_spawn_player4)
+		&& (can_spawn_player[4])
 		&& (lives > 0)
 		{
 			if (!global.player_can_play[4])
@@ -691,7 +692,8 @@ if (!save_level_as_png)
 		
 		#region /* Follow one player. In case something goes wrong, camera will always follow one player */
 		/* 1 */
-		if (player1 > 0)
+		if (player1 >= 1)
+		&& (instance_exists(player1))
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -742,7 +744,8 @@ if (!save_level_as_png)
 		else
 		
 		/* 2 */
-		if (player2 > 0)
+		if (player2 >= 1)
+		&& (instance_exists(player2))
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -793,7 +796,8 @@ if (!save_level_as_png)
 		else
 		
 		/* 3 */
-		if (player3 > 0)
+		if (player3 >= 1)
+		&& (instance_exists(player3))
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -844,7 +848,8 @@ if (!save_level_as_png)
 		else
 		
 		/* 4 */
-		if (player4 > 0)
+		if (player4 >= 1)
+		&& (instance_exists(player4))
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -976,13 +981,13 @@ if (key_player1_run_toggle_pressed)
 	show_run_toggle_for_player2 = 0;
 	show_run_toggle_for_player3 = 0;
 	show_run_toggle_for_player4 = 0;
-	if (!global.player1_run_toggle)
+	if (!global.player_run_toggle[1])
 	{
-		global.player1_run_toggle = true;
+		global.player_run_toggle[1] = true;
 	}
 	else
 	{
-		global.player1_run_toggle = false;
+		global.player_run_toggle[1] = false;
 	}
 }
 if (key_player2_run_toggle_pressed)
@@ -992,13 +997,13 @@ if (key_player2_run_toggle_pressed)
 	show_run_toggle_for_player2 = 100;
 	show_run_toggle_for_player3 = 0;
 	show_run_toggle_for_player4 = 0;
-	if (!global.player2_run_toggle)
+	if (!global.player_run_toggle[2])
 	{
-		global.player2_run_toggle = true;
+		global.player_run_toggle[2] = true;
 	}
 	else
 	{
-		global.player2_run_toggle = false;
+		global.player_run_toggle[2] = false;
 	}
 }
 if (key_player3_run_toggle_pressed)
@@ -1008,13 +1013,13 @@ if (key_player3_run_toggle_pressed)
 	show_run_toggle_for_player2 = 0;
 	show_run_toggle_for_player3 = 100;
 	show_run_toggle_for_player4 = 0;
-	if (!global.player3_run_toggle)
+	if (!global.player_run_toggle[3])
 	{
-		global.player3_run_toggle = true;
+		global.player_run_toggle[3] = true;
 	}
 	else
 	{
-		global.player3_run_toggle = false;
+		global.player_run_toggle[3] = false;
 	}
 }
 if (key_player4_run_toggle_pressed)
@@ -1024,13 +1029,13 @@ if (key_player4_run_toggle_pressed)
 	show_run_toggle_for_player2 = 0;
 	show_run_toggle_for_player3 = 0;
 	show_run_toggle_for_player4 = 100;
-	if (!global.player4_run_toggle)
+	if (!global.player_run_toggle[4])
 	{
-		global.player4_run_toggle = true;
+		global.player_run_toggle[4] = true;
 	}
 	else
 	{
-		global.player4_run_toggle = false;
+		global.player_run_toggle[4] = false;
 	}
 }
 #endregion /* Step Run Toggling END */
@@ -1259,10 +1264,10 @@ if (os_type != os_ios)
 	&& (player_show_controls_alpha[3] <= 0)
 	&& (player_show_controls_alpha[4] <= 0)
 	{
-		show_player1_controls_y = lerp(show_player1_controls_y, 32, 0.1);
-		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[1] = lerp(show_player_controls_y[1], 32, 0.1);
+		show_player_controls_y[2] = lerp(show_player_controls_y[2], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[3] = lerp(show_player_controls_y[3], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
 	}
 	else
 	if (player_show_controls_alpha[1] <= 0)
@@ -1270,10 +1275,10 @@ if (os_type != os_ios)
 	&& (player_show_controls_alpha[3] <= 0)
 	&& (player_show_controls_alpha[4] <= 0)
 	{
-		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
-		show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[1] = lerp(show_player_controls_y[1], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[2] = lerp(show_player_controls_y[2], 32, 0.1);
+		show_player_controls_y[3] = lerp(show_player_controls_y[3], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
 	}
 	else
 	if (player_show_controls_alpha[1] <= 0)
@@ -1281,10 +1286,10 @@ if (os_type != os_ios)
 	&& (player_show_controls_alpha[3] > 0)
 	&& (player_show_controls_alpha[4] <= 0)
 	{
-		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[1] = lerp(show_player_controls_y[1], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[2] = lerp(show_player_controls_y[2], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[3] = lerp(show_player_controls_y[3], 32, 0.1);
+		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
 	}
 	else
 	if (player_show_controls_alpha[1] <= 0)
@@ -1292,10 +1297,10 @@ if (os_type != os_ios)
 	&& (player_show_controls_alpha[3] <= 0)
 	&& (player_show_controls_alpha[4] > 0)
 	{
-		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
+		show_player_controls_y[1] = lerp(show_player_controls_y[1], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[2] = lerp(show_player_controls_y[2], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[3] = lerp(show_player_controls_y[3], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[4] = lerp(show_player_controls_y[4], 32, 0.1);
 	}
 	else
 	if (player_show_controls_alpha[1] > 0)
@@ -1303,10 +1308,10 @@ if (os_type != os_ios)
 	&& (player_show_controls_alpha[3] <= 0)
 	&& (player_show_controls_alpha[4] <= 0)
 	{
-		show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
-		show_player2_controls_y = lerp(show_player2_controls_y, 32, 0.1);
-		show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[1] = lerp(show_player_controls_y[1], 74, 0.1);
+		show_player_controls_y[2] = lerp(show_player_controls_y[2], 32, 0.1);
+		show_player_controls_y[3] = lerp(show_player_controls_y[3], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
 	}
 	else
 	if (player_show_controls_alpha[1] > 0)
@@ -1314,10 +1319,10 @@ if (os_type != os_ios)
 	&& (player_show_controls_alpha[3] > 0)
 	&& (player_show_controls_alpha[4] <= 0)
 	{
-		show_player1_controls_y = lerp(show_player1_controls_y, 116, 0.1);
-		show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
-		show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[1] = lerp(show_player_controls_y[1], 116, 0.1);
+		show_player_controls_y[2] = lerp(show_player_controls_y[2], 74, 0.1);
+		show_player_controls_y[3] = lerp(show_player_controls_y[3], 32, 0.1);
+		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
 	}
 	else
 	if (player_show_controls_alpha[1] > 0)
@@ -1325,10 +1330,10 @@ if (os_type != os_ios)
 	&& (player_show_controls_alpha[3] > 0)
 	&& (player_show_controls_alpha[4] <= 0)
 	{
-		show_player1_controls_y = lerp(show_player1_controls_y, 74, 0.1);
-		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[1] = lerp(show_player_controls_y[1], 74, 0.1);
+		show_player_controls_y[2] = lerp(show_player_controls_y[2], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[3] = lerp(show_player_controls_y[3], 32, 0.1);
+		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
 	}
 	else
 	if (player_show_controls_alpha[1] <= 0)
@@ -1336,10 +1341,10 @@ if (os_type != os_ios)
 	&& (player_show_controls_alpha[3] > 0)
 	&& (player_show_controls_alpha[4] <= 0)
 	{
-		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player2_controls_y = lerp(show_player2_controls_y, 74, 0.1);
-		show_player3_controls_y = lerp(show_player3_controls_y, 32, 0.1);
-		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[1] = lerp(show_player_controls_y[1], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[2] = lerp(show_player_controls_y[2], 74, 0.1);
+		show_player_controls_y[3] = lerp(show_player_controls_y[3], 32, 0.1);
+		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
 	}
 	else
 	if (player_show_controls_alpha[1] <= 0)
@@ -1347,17 +1352,17 @@ if (os_type != os_ios)
 	&& (player_show_controls_alpha[3] <= 0)
 	&& (player_show_controls_alpha[4] <= 0)
 	{
-		show_player1_controls_y = lerp(show_player1_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player2_controls_y = lerp(show_player2_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player3_controls_y = lerp(show_player3_controls_y, + 32, 0.1); /* + 32 = don't show */
-		show_player4_controls_y = lerp(show_player4_controls_y, + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[1] = lerp(show_player_controls_y[1], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[2] = lerp(show_player_controls_y[2], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[3] = lerp(show_player_controls_y[3], + 32, 0.1); /* + 32 = don't show */
+		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
 	}
 	else
 	{
-		show_player1_controls_y = lerp(show_player1_controls_y, 158, 0.1);
-		show_player2_controls_y = lerp(show_player2_controls_y, 116, 0.1);
-		show_player3_controls_y = lerp(show_player3_controls_y, 74, 0.1);
-		show_player4_controls_y = lerp(show_player4_controls_y, 32, 0.1);
+		show_player_controls_y[1] = lerp(show_player_controls_y[1], 158, 0.1);
+		show_player_controls_y[2] = lerp(show_player_controls_y[2], 116, 0.1);
+		show_player_controls_y[3] = lerp(show_player_controls_y[3], 74, 0.1);
+		show_player_controls_y[4] = lerp(show_player_controls_y[4], 32, 0.1);
 	}
 	#endregion /* Y position of show controls for each player END */
 	

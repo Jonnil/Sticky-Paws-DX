@@ -21,6 +21,8 @@ scrolling_menu_with_mousewheel = false;
 finished_level = undefined; /* This needs to be set to undefined by default */
 i = 0;
 
+name_y = 292; /* Where name input box for players are placed on screen */
+
 information_menu_open = false; /* If the information menu is opened or not */
 
 menu = "";
@@ -185,10 +187,10 @@ if (!directory_exists(working_directory + "save_file")) {
 #endregion /* Create directories END */
 
 #region /* Character select Accept Selection */
-player1_accept_selection = -1;
-player2_accept_selection = -1;
-player3_accept_selection = -1;
-player4_accept_selection = -1;
+player_accept_selection[1] = -1;
+player_accept_selection[2] = -1;
+player_accept_selection[3] = -1;
+player_accept_selection[4] = -1;
 player1_automatically_join = false;
 player2_automatically_join = false;
 player3_automatically_join = false;
@@ -204,10 +206,10 @@ player_menu[4] = "select_character";
 #endregion /* Color Select for CharacterSelect END */
 
 #region /* What player can enter a name */
-can_input_player1_name = 2;
-can_input_player2_name = 2;
-can_input_player3_name = 2;
-can_input_player4_name = false;
+can_input_player_name[1] = 2;
+can_input_player_name[2] = 2;
+can_input_player_name[3] = 2;
+can_input_player_name[4] = 2;
 can_input_level_name = false;
 #endregion /* What player can enter a name END */
 
@@ -258,16 +260,16 @@ lives = 5; /* Starting lives */
 if (global.character_select_in_this_menu == "level_editor")
 {
 	scr_load_custom_level_initializing();
-	can_input_player1_name = false;
-	can_input_player2_name = false;
-	can_input_player3_name = false;
-	can_input_player4_name = false;
+	can_input_player_name[1] = false;
+	can_input_player_name[2] = false;
+	can_input_player_name[3] = false;
+	can_input_player_name[4] = false;
 	can_navigate = true;
 	open_sub_menu = false;
-	player1_accept_selection = false;
-	player2_accept_selection = false;
-	player3_accept_selection = false;
-	player4_accept_selection = false;
+	player_accept_selection[1] = false;
+	player_accept_selection[2] = false;
+	player_accept_selection[3] = false;
+	player_accept_selection[4] = false;
 	menu = "load_custom_level";
 }
 else

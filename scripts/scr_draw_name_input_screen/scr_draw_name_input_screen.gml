@@ -5,7 +5,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	var buttons_cancel_y = buttons_ok_y + 42;
 	
 	#region /* Opaque transparent black rectangle over whole screen, but underneath name input screen */
-	draw_set_alpha(0.9);
+	draw_set_alpha(0.5);
 	draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
 	draw_set_alpha(1);
 	#endregion /* Opaque transparent black rectangle over whole screen, but underneath name input screen END */
@@ -69,6 +69,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
 	&& (global.keyboard_virtual_timer == 3)
 	{
+		menu_delay = 3;
 		if (os_type == os_switch)
 		{
 			what_string_to_edit_async = get_string_async("", "");
@@ -197,9 +198,12 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
 	&& (mouse_check_button_released(mb_left))
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	&& (!global.clicking_cancel_input_screen)
 	|| (keyboard_check_pressed(vk_escape))
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
+	&& (!global.clicking_cancel_input_screen)
 	{
+		menu_delay = 3;
 		if (variable_instance_exists(self, "remember_keyboard_string"))
 		{
 			what_string_to_edit = remember_keyboard_string;
@@ -248,14 +252,19 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 				}
 			}
 			
+			//show_message("scr_draw_name_input_screen menu_delay: " + string(menu_delay));
+			
 			#region /* Clicking the OK button */
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!global.clicking_ok_input_screen)
 			|| (menu == ok_menu_string)
 			&& (keyboard_check_pressed(vk_enter))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!global.clicking_ok_input_screen)
 			{
+				menu_delay = 3;
 				if (!can_enter_illegal_charcters)
 				{
 					keyboard_string = string_replace_all(keyboard_string, "\\", "");
@@ -325,6 +334,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
 		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
 		{
+			menu_delay = 3;
 			menu = ok_menu_string;
 		}
 		else
@@ -332,6 +342,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
 		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
 		{
+			menu_delay = 3;
 			menu = cancel_menu_string;
 		}
 	}

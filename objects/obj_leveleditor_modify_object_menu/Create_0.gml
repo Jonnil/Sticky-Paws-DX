@@ -1,6 +1,6 @@
 modify_object_text = "";
 menu = "ok";
-menu_delay = 0
+menu_delay = 3;
 menu_joystick_delay = 0;
 open_dropdown = false;
 menu_cursor_index = 0;

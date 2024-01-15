@@ -4254,11 +4254,6 @@ function scr_option_menu()
 		}
 		#endregion /* Accept END */
 		
-		if (menu_delay > 0)
-		{
-			menu_delay --;
-		}
-		
 		scr_draw_darken_screen_when_window_is_unfocused();
 		scr_draw_cursor_mouse();
 		

@@ -1,26 +1,20 @@
 function scr_remapping_gamepad()
 {
-	if (remapping_player == 0)
+	player_profile = global.player_profile[remapping_player + 1];
+	
+	if (menu_remap_key_number == 0)
 	{
-		player_profile = global.player1_profile;
+		var remap_key_number_string = "";
+		var remap_key_number = 1;
 	}
 	else
-	if (remapping_player == 1)
+	if (menu_remap_key_number == 2)
 	{
-		player_profile = global.player2_profile;
-	}
-	else
-	if (remapping_player == 2)
-	{
-		player_profile = global.player3_profile;
-	}
-	else
-	if (remapping_player == 3)
-	{
-		player_profile = global.player4_profile;
+		var remap_key_number_string = "2";
+		var remap_key_number = 2;
 	}
 	
-	#region /* Check for player 1 button presses */
+	#region /* Check for player button presses */
 	if (remapping_player == 0)
 	&& (gamepad_button_check_pressed(global.player_slot[1], gp_face1))
 	|| (remapping_player == 1)
@@ -310,7 +304,7 @@ function scr_remapping_gamepad()
 		last_key = JOYSTICK_VALUE.JOYRIGHT_RIGHT;
 		can_remap_key = true;
 	}
-	#endregion /* Check for player 1 button presses END */
+	#endregion /* Check for player button presses END */
 	
 	else
 	
@@ -327,6 +321,8 @@ function scr_remapping_gamepad()
 		last_key = noone;
 		can_remap_key = true;
 	}
+	
+	else
 	
 	if (mouse_check_button_pressed(mb_right))
 	
@@ -360,22 +356,10 @@ function scr_remapping_gamepad()
 	{
 		can_remap_key = false;
 		input_key = false;
-		menu_delay = 3;
+		menu_delay = 6;
 	}
 	
 	#region /* Remapping Gamepad */
-	if (menu_remap_key_number == 0)
-	{
-		var remap_key_number_string = "";
-		var remap_key_number = 1;
-	}
-	else
-	if (menu_remap_key_number == 2)
-	{
-		var remap_key_number_string = "2";
-		var remap_key_number = 2;
-	}
-	
 	if (can_remap_key)
 	{
 		/* global.player_[keyboard/gamepad][player][key1/key2][action] */
@@ -566,7 +550,7 @@ function scr_remapping_gamepad()
 		}
 		can_remap_key = false;
 		input_key = false;
-		menu_delay = 3;
+		menu_delay = 6;
 	}
 	#endregion /* Remapping Gamepad END */
 	

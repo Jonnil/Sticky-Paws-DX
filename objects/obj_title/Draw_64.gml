@@ -128,18 +128,18 @@ if (menu == "main_game")
 	{
 		
 		#region /* Character select Accept Selection */
-		player1_accept_selection = - 1;
-		player2_accept_selection = - 1;
-		player3_accept_selection = - 1;
-		player4_accept_selection = - 1;
+		player_accept_selection[1] = - 1;
+		player_accept_selection[2] = - 1;
+		player_accept_selection[3] = - 1;
+		player_accept_selection[4] = - 1;
 		player_start_game = false;
 		#endregion /* Character select Accept Selection END */
 
 		#region /* What player can enter a name */
-		can_input_player1_name = 2;
-		can_input_player2_name = 2;
-		can_input_player3_name = 2;
-		can_input_player4_name = false;
+		can_input_player_name[1] = 2;
+		can_input_player_name[2] = 2;
+		can_input_player_name[3] = 2;
+		can_input_player_name[4] = 2;
 		#endregion /* What player can enter a name END */
 		
 		show_title_logo = true;
@@ -232,10 +232,10 @@ if (!in_settings)
 			global.player_can_play[2] = false;
 			global.player_can_play[3] = false;
 			global.player_can_play[4] = false;
-			player1_accept_selection = - 1;
-			player2_accept_selection = - 1;
-			player3_accept_selection = - 1;
-			player4_accept_selection = - 1;
+			player_accept_selection[1] = - 1;
+			player_accept_selection[2] = - 1;
+			player_accept_selection[3] = - 1;
+			player_accept_selection[4] = - 1;
 			global.character_select_in_this_menu = "main_game";
 			in_settings = false;
 			global.doing_clear_check_level = false;
@@ -267,10 +267,10 @@ if (!in_settings)
 			global.player_can_play[2] = false;
 			global.player_can_play[3] = false;
 			global.player_can_play[4] = false;
-			player1_accept_selection = - 1;
-			player2_accept_selection = - 1;
-			player3_accept_selection = - 1;
-			player4_accept_selection = - 1;
+			player_accept_selection[1] = - 1;
+			player_accept_selection[2] = - 1;
+			player_accept_selection[3] = - 1;
+			player_accept_selection[4] = - 1;
 			in_settings = false;
 		
 			#region /* Select Level Editor */

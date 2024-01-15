@@ -96,11 +96,6 @@ if (menu_cursor_index > 4)
 }
 #endregion /* Menu cursor image speed END */
 
-if (menu_delay > 0)
-{
-	menu_delay --;
-}
-
 if (menu == "load_characters")
 && (menu_delay == 0 && menu_joystick_delay == 0)
 {

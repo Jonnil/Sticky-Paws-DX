@@ -2,7 +2,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 {
 	var skin_y = 192;
 	var voicepack_y = 234;
-	var name_y = 292;
+	
 	if (keyboard_virtual_status())
 	&& (keyboard_virtual_height() != 0)
 	{
@@ -51,7 +51,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	if (what_player == 1)
 	{
 		var sprite_select_player = global.sprite_select_player[1];
-		var player_accept_selection = player1_accept_selection;
 		var hex_color_for_player = global.hex_color_for_player1;
 		var player_key_left = global.player_[inp.key][1][1][action.left];
 		var player_key_right = global.player_[inp.key][1][1][action.right];
@@ -69,7 +68,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button2_back = global.player_[inp.gp][1][2][action.back];
 		var player_gamepad_button_accept = global.player_[inp.gp][1][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][1][2][action.accept];
-		var can_input_player_name = can_input_player1_name;
 	}
 	#endregion /* If player is player 1, set all the variables to Player variables END */
 	
@@ -79,7 +77,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	if (what_player == 2)
 	{
 		var sprite_select_player = global.sprite_select_player[2];
-		var player_accept_selection = player2_accept_selection;
 		var hex_color_for_player = global.hex_color_for_player2;
 		var player_key_left = global.player_[inp.key][2][1][action.left];
 		var player_key_right = global.player_[inp.key][2][1][action.right];
@@ -97,7 +94,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button2_back = global.player_[inp.gp][2][2][action.back];
 		var player_gamepad_button_accept = global.player_[inp.gp][2][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][2][2][action.accept];
-		var can_input_player_name = can_input_player2_name;
 	}
 	#endregion /* If player is player 2, set all the variables to player 2 variables END */
 	
@@ -107,7 +103,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	if (what_player == 3)
 	{
 		var sprite_select_player = global.sprite_select_player[3];
-		var player_accept_selection = player3_accept_selection;
 		var hex_color_for_player = global.hex_color_for_player3;
 		var player_key_left = global.player_[inp.key][3][1][action.left];
 		var player_key_right = global.player_[inp.key][3][1][action.right];
@@ -125,7 +120,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button2_back = global.player_[inp.gp][3][2][action.back];
 		var player_gamepad_button_accept = global.player_[inp.gp][3][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][3][2][action.accept];
-		var can_input_player_name = can_input_player3_name;
 	}
 	#endregion /* If player is player 3, set all the variables to player 3 variables END */
 	
@@ -135,7 +129,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	if (what_player == 4)
 	{
 		var sprite_select_player = global.sprite_select_player[4];
-		var player_accept_selection = player4_accept_selection;
 		var hex_color_for_player = global.hex_color_for_player4;
 		var player_key_left = global.player_[inp.key][4][1][action.left];
 		var player_key_right = global.player_[inp.key][4][1][action.right];
@@ -153,22 +146,42 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		var player_gamepad_button2_back = global.player_[inp.gp][4][2][action.back];
 		var player_gamepad_button_accept = global.player_[inp.gp][4][1][action.accept];
 		var player_gamepad_button2_accept = global.player_[inp.gp][4][2][action.accept];
-		var can_input_player_name = can_input_player4_name;
 	}
 	#endregion /* If player is player 4, set all the variables to player 4 variables END */
 	
 	#endregion /* Set correct variables for players END */
 	
 	#region /* Draw character portrait for player */
-	if (sprite_select_player > 0)
-	&& (player_accept_selection >= 0)
-	&& (sprite_exists(sprite_select_player))
+	if (sprite_select_player > 0
+	&& player_accept_selection[what_player] >= 0
+	&& sprite_exists(sprite_select_player))
+	
+	&& (what_player == 1
+	&& can_input_player_name[2] == 0
+	&& can_input_player_name[3] == 0
+	&& can_input_player_name[4] == 0
+	
+	|| what_player == 2
+	&& can_input_player_name[1] == 0
+	&& can_input_player_name[3] == 0
+	&& can_input_player_name[4] == 0
+	
+	|| what_player == 3
+	&& can_input_player_name[1] == 0
+	&& can_input_player_name[2] == 0
+	&& can_input_player_name[4] == 0
+	
+	|| what_player == 4
+	&& can_input_player_name[1] == 0
+	&& can_input_player_name[2] == 0
+	&& can_input_player_name[3] == 0
+	)
 	{
 		draw_sprite_ext(sprite_select_player, 0, get_window_width * 0.5 + xx[what_player] , get_window_height * 0.5, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, hex_color_for_player, 1);
-		if (can_input_player1_name)
-		|| (can_input_player2_name)
-		|| (can_input_player3_name)
-		|| (can_input_player4_name)
+		if (can_input_player_name[1])
+		|| (can_input_player_name[2])
+		|| (can_input_player_name[3])
+		|| (can_input_player_name[4])
 		{
 			draw_sprite_ext(sprite_select_player, 0, get_window_width * 0.5 + xx[what_player] , get_window_height * 0.5, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, c_black, 0.5);
 		}
@@ -178,10 +191,10 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		
 		#region /* Display Character Name */
 		if (player_menu[what_player] != "select_name")
-		&& (!can_input_player1_name)
-		&& (!can_input_player2_name)
-		&& (!can_input_player3_name)
-		&& (!can_input_player4_name)
+		&& (!can_input_player_name[1])
+		&& (!can_input_player_name[2])
+		&& (!can_input_player_name[3])
+		&& (!can_input_player_name[4])
 		|| (global.controls_used_for_navigation == "mouse")
 		{
 			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player], get_window_height * 0.5 + 324, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
@@ -192,16 +205,16 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#endregion /* Draw character portrait for player END */
 	
 	#region /* Display Selected Skin if skins are available */
-	if (!can_input_player1_name)
-	&& (!can_input_player2_name)
-	&& (!can_input_player3_name)
-	&& (!can_input_player4_name)
+	if (!can_input_player_name[1])
+	&& (!can_input_player_name[2])
+	&& (!can_input_player_name[3])
+	&& (!can_input_player_name[4])
 	{
 		
 		#region /* Player Select Skin */
 		if (character_portrait_for_player_dir_exists_1[what_player])
 		{
-			if (player_accept_selection == 0)
+			if (player_accept_selection[what_player] == 0)
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
@@ -211,7 +224,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			if (player_menu[what_player] == "select_skin")
 			|| (global.controls_used_for_navigation == "mouse")
 			{
-				if (player_accept_selection == 0)
+				if (player_accept_selection[what_player] == 0)
 				{
 					
 					#region /* Show left key for character skin select */
@@ -289,16 +302,16 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#endregion /* Display Selected Skin if skins are available END */
 	
 	#region /* Display Selected Voice Pack if voice packs are available */
-	if (!can_input_player1_name)
-	&& (!can_input_player2_name)
-	&& (!can_input_player3_name)
-	&& (!can_input_player4_name)
+	if (!can_input_player_name[1])
+	&& (!can_input_player_name[2])
+	&& (!can_input_player_name[3])
+	&& (!can_input_player_name[4])
 	{
 		
 		#region /* Player Select Voice Pack */
 		if (character_portrait_for_player_dir_exists_3[what_player])
 		{
-			if (player_accept_selection == 0)
+			if (player_accept_selection[what_player] == 0)
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
@@ -308,7 +321,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			if (player_menu[what_player] == "select_voicepack")
 			|| (global.controls_used_for_navigation == "mouse")
 			{
-				if (player_accept_selection == 0)
+				if (player_accept_selection[what_player] == 0)
 				{
 					
 					#region /* Show left key for character voicepack select */
@@ -388,17 +401,17 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#endregion /* Display Selected Voice Pack if voice packs are available END */
 	
 	#region /* Show left and right arrows when selecting character */
-	if (!can_input_player1_name)
-	&& (!can_input_player2_name)
-	&& (!can_input_player3_name)
-	&& (!can_input_player4_name)
+	if (!can_input_player_name[1])
+	&& (!can_input_player_name[2])
+	&& (!can_input_player_name[3])
+	&& (!can_input_player_name[4])
 	{
 		
 		#region /* Player Show left and right arrows when selecting character */
 		if (player_menu[what_player] == "select_character")
 		|| (global.controls_used_for_navigation == "mouse")
 		{
-			if (player_accept_selection == 0)
+			if (player_accept_selection[what_player] == 0)
 			{
 				
 				#region /* Key Left */
@@ -480,8 +493,11 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	draw_set_halign(fa_middle);
 	draw_set_valign(fa_middle);
 	
-	if (player_accept_selection >= 0)
-	&& (!can_input_player_name)
+	if (player_accept_selection[what_player] >= 0)
+	&& (can_input_player_name[1] == 0)
+	&& (can_input_player_name[2] == 0)
+	&& (can_input_player_name[3] == 0)
+	&& (can_input_player_name[4] == 0)
 	{
 		if (player_name = "")
 		{
@@ -491,12 +507,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		{
 			scr_draw_name_box(player_name, player_color, 0.5, get_window_width * 0.5 + player_display_x[what_player], name_input_y);
 		}
-	}
-	
-	if (player_accept_selection >= 0)
-	&& (can_input_player_name)
-	{
-		global.player_name[what_player] = scr_draw_name_input_screen(player_name, 32, player_color, 0.5, true, get_window_width * 0.5 + player_display_x[what_player], name_input_y, "input_name_ok", "input_name_cancel");
 	}
 	
 	#endregion /* Tell the player the inputed name END */
@@ -512,17 +522,17 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	&& (player_menu[what_player] != "open_custom_characters_folder")
 	&& (player_menu[what_player] != "manage_character")
 	&& (player_menu[what_player] != "online_character_list")
-	&& (!can_input_player1_name)
-	&& (!can_input_player2_name)
-	&& (!can_input_player3_name)
-	&& (!can_input_player4_name)
+	&& (!can_input_player_name[1])
+	&& (!can_input_player_name[2])
+	&& (!can_input_player_name[3])
+	&& (!can_input_player_name[4])
 	|| (global.controls_used_for_navigation == "mouse")
-	&& (!can_input_player1_name)
-	&& (!can_input_player2_name)
-	&& (!can_input_player3_name)
-	&& (!can_input_player4_name)
+	&& (!can_input_player_name[1])
+	&& (!can_input_player_name[2])
+	&& (!can_input_player_name[3])
+	&& (!can_input_player_name[4])
 	{
-		if (player_accept_selection == 0)
+		if (player_accept_selection[what_player] == 0)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -572,7 +582,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			
 		}
 		else
-		if (player_accept_selection)
+		if (player_accept_selection[what_player] == 1)
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[what_player] + 100, get_window_height * 0.5 + 150 + 20))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -623,10 +633,10 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	draw_set_valign(fa_middle);
 	
 	if (player_menu[what_player] == "select_name")
-	&& (!can_input_player1_name)
-	&& (!can_input_player2_name)
-	&& (!can_input_player3_name)
-	&& (!can_input_player4_name)
+	&& (!can_input_player_name[1])
+	&& (!can_input_player_name[2])
+	&& (!can_input_player_name[3])
+	&& (!can_input_player_name[4])
 	&& (global.controls_used_for_navigation != "mouse")
 	{
 		scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player] + 60, name_input_y + 35, l10n_text("Enter name") + ": ", global.default_text_size, c_black, c_white, 1); /* Accept Text */
@@ -661,4 +671,9 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	
 	#endregion /* Tell the players what buttons to push END */
 	
+	if (player_accept_selection[what_player] >= 0)
+	&& (can_input_player_name[what_player] == 1)
+	{
+		global.player_name[what_player] = scr_draw_name_input_screen(player_name, 32, player_color, 0.5, true, get_window_width * 0.5 + player_display_x[what_player], name_input_y, "input_name_ok", "input_name_cancel");
+	}
 }

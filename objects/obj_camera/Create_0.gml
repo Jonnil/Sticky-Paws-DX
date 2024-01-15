@@ -80,7 +80,7 @@ show_controller_input_change_prompt_y = 0;
 show_keyboard_and_mouse_input_change_prompt_y = 0;
 
 delay = 0;
-menu_delay = 0;
+menu_delay = 3;
 menu_joystick_delay = 0;
 menu_cursor_index = 0;
 menu = "";
@@ -179,14 +179,14 @@ alarm[0] = 1; /* Initialize custom character timer. This code needs to be initia
 #endregion /* Lives Icon END */
 
 save_level_as_png = false;
-can_spawn_player1 = true;
-can_spawn_player2 = true;
-can_spawn_player3 = true;
-can_spawn_player4 = true;
-show_player1_controls_y = +32;
-show_player2_controls_y = +32;
-show_player3_controls_y = +32;
-show_player4_controls_y = +32;
+can_spawn_player[1] = true;
+can_spawn_player[2] = true;
+can_spawn_player[3] = true;
+can_spawn_player[4] = true;
+show_player_controls_y[1] = +32;
+show_player_controls_y[2] = +32;
+show_player_controls_y[3] = +32;
+show_player_controls_y[4] = +32;
 
 #region /* Smooth the camera out even more */
 view_wview_lerp = 0;
@@ -608,90 +608,90 @@ zoom_border_lerp = 0;
 /* For some reason, code within "Show keys x positions" lags the Nintendo Switch version */
 
 #region /* Player 1 show keys x positions */
-player1_show_dive_key_x = 32;
-player1_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
-player1_show_crouch_key_x = player1_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (!global.player1_run_toggle)
+player_show_dive_key_x[1] = 32;
+player_show_jump_key_x[1] = string_width(l10n_text("Pounce")) + 75;
+player_show_crouch_key_x[1] = player_show_jump_key_x[1] + string_width(l10n_text("Jump")) + 37;
+if (!global.player_run_toggle[1])
 {
-	player1_show_run_key_x = player1_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player1_show_left_key_x = player1_show_run_key_x + string_width(l10n_text("Run")) + 37;
-	player1_show_right_key_x = player1_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player1_show_down_key_x = player1_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player1_show_up_key_x = player1_show_down_key_x + string_width(l10n_text("Down")) + 37;
+	player_show_run_key_x[1] = player_show_crouch_key_x[1] + string_width(l10n_text("Crouch")) + 37;
+	player_show_left_key_x[1] = player_show_run_key_x[1] + string_width(l10n_text("Run")) + 37;
+	player_show_right_key_x[1] = player_show_left_key_x[1] + string_width(l10n_text("Left")) + 37;
+	player_show_down_key_x[1] = player_show_right_key_x[1] + string_width(l10n_text("Right")) + 37;
+	player_show_up_key_x[1] = player_show_down_key_x[1] + string_width(l10n_text("Down")) + 37;
 }
 else
 {
-	player1_show_run_key_x = -999; /* Hide the run key if you have "Always Run" turned on */
-	player1_show_left_key_x = player1_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player1_show_right_key_x = player1_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player1_show_down_key_x = player1_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player1_show_up_key_x = player1_show_down_key_x + string_width(l10n_text("Down")) + 37;
+	player_show_run_key_x[1] = -999; /* Hide the run key if you have "Always Run" turned on */
+	player_show_left_key_x[1] = player_show_crouch_key_x[1] + string_width(l10n_text("Crouch")) + 37;
+	player_show_right_key_x[1] = player_show_left_key_x[1] + string_width(l10n_text("Left")) + 37;
+	player_show_down_key_x[1] = player_show_right_key_x[1] + string_width(l10n_text("Right")) + 37;
+	player_show_up_key_x[1] = player_show_down_key_x[1] + string_width(l10n_text("Down")) + 37;
 }
 #endregion /* Player 1 show keys x positions END */
 
 #region /* Player 2 show keys x positions */
-player2_show_dive_key_x = 32;
-player2_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
-player2_show_crouch_key_x = player2_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (!global.player2_run_toggle)
+player_show_dive_key_x[2] = 32;
+player_show_jump_key_x[2] = string_width(l10n_text("Pounce")) + 75;
+player_show_crouch_key_x[2] = player_show_jump_key_x[2] + string_width(l10n_text("Jump")) + 37;
+if (!global.player_run_toggle[2])
 {
-	player2_show_run_key_x = player2_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player2_show_left_key_x = player2_show_run_key_x + string_width(l10n_text("Run")) + 37;
-	player2_show_right_key_x = player2_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player2_show_down_key_x = player2_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player2_show_up_key_x = player2_show_down_key_x + string_width(l10n_text("Down")) + 37;
+	player_show_run_key_x[2] = player_show_crouch_key_x[2] + string_width(l10n_text("Crouch")) + 37;
+	player_show_left_key_x[2] = player_show_run_key_x[2] + string_width(l10n_text("Run")) + 37;
+	player_show_right_key_x[2] = player_show_left_key_x[2] + string_width(l10n_text("Left")) + 37;
+	player_show_down_key_x[2] = player_show_right_key_x[2] + string_width(l10n_text("Right")) + 37;
+	player_show_up_key_x[2] = player_show_down_key_x[2] + string_width(l10n_text("Down")) + 37;
 }
 else
 {
-	player2_show_run_key_x = -999; /* Hide the run key if you have "Always Run" turned on */
-	player2_show_left_key_x = player2_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player2_show_right_key_x = player2_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player2_show_down_key_x = player2_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player2_show_up_key_x = player2_show_down_key_x + string_width(l10n_text("Down")) + 37;
+	player_show_run_key_x[2] = -999; /* Hide the run key if you have "Always Run" turned on */
+	player_show_left_key_x[2] = player_show_crouch_key_x[2] + string_width(l10n_text("Crouch")) + 37;
+	player_show_right_key_x[2] = player_show_left_key_x[2] + string_width(l10n_text("Left")) + 37;
+	player_show_down_key_x[2] = player_show_right_key_x[2] + string_width(l10n_text("Right")) + 37;
+	player_show_up_key_x[2] = player_show_down_key_x[2] + string_width(l10n_text("Down")) + 37;
 }
 #endregion /* Player 2 show keys x positions END */
 
 #region /* Player 3 show keys x positions */
-player3_show_dive_key_x = 32;
-player3_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
-player3_show_crouch_key_x = player3_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (!global.player3_run_toggle)
+player_show_dive_key_x[3] = 32;
+player_show_jump_key_x[3] = string_width(l10n_text("Pounce")) + 75;
+player_show_crouch_key_x[3] = player_show_jump_key_x[3] + string_width(l10n_text("Jump")) + 37;
+if (!global.player_run_toggle[3])
 {
-	player3_show_run_key_x = player3_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player3_show_left_key_x = player3_show_run_key_x + string_width(l10n_text("Run")) + 37;
-	player3_show_right_key_x = player3_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player3_show_down_key_x = player3_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player3_show_up_key_x = player3_show_down_key_x + string_width(l10n_text("Down")) + 37;
+	player_show_run_key_x[3] = player_show_crouch_key_x[3] + string_width(l10n_text("Crouch")) + 37;
+	player_show_left_key_x[3] = player_show_run_key_x[3] + string_width(l10n_text("Run")) + 37;
+	player_show_right_key_x[3] = player_show_left_key_x[3] + string_width(l10n_text("Left")) + 37;
+	player_show_down_key_x[3] = player_show_right_key_x[3] + string_width(l10n_text("Right")) + 37;
+	player_show_up_key_x[3] = player_show_down_key_x[3] + string_width(l10n_text("Down")) + 37;
 }
 else
 {
-	player3_show_run_key_x = -999; /* Hide the run key if you have "Always Run" turned on */
-	player3_show_left_key_x = player3_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player3_show_right_key_x = player3_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player3_show_down_key_x = player3_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player3_show_up_key_x = player3_show_down_key_x + string_width(l10n_text("Down")) + 37;
+	player_show_run_key_x[3] = -999; /* Hide the run key if you have "Always Run" turned on */
+	player_show_left_key_x[3] = player_show_crouch_key_x[3] + string_width(l10n_text("Crouch")) + 37;
+	player_show_right_key_x[3] = player_show_left_key_x[3] + string_width(l10n_text("Left")) + 37;
+	player_show_down_key_x[3] = player_show_right_key_x[3] + string_width(l10n_text("Right")) + 37;
+	player_show_up_key_x[3] = player_show_down_key_x[3] + string_width(l10n_text("Down")) + 37;
 }
 #endregion /* Player 3 show keys x positions END */
 
 #region /* Player 4 show keys x positions */
-player4_show_dive_key_x = 32;
-player4_show_jump_key_x = string_width(l10n_text("Pounce")) + 75;
-player4_show_crouch_key_x = player4_show_jump_key_x + string_width(l10n_text("Jump")) + 37;
-if (!global.player4_run_toggle)
+player_show_dive_key_x[4] = 32;
+player_show_jump_key_x[4] = string_width(l10n_text("Pounce")) + 75;
+player_show_crouch_key_x[4] = player_show_jump_key_x[4] + string_width(l10n_text("Jump")) + 37;
+if (!global.player_run_toggle[4])
 {
-	player4_show_run_key_x = player4_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player4_show_left_key_x = player4_show_run_key_x + string_width(l10n_text("Run")) + 37;
-	player4_show_right_key_x = player4_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player4_show_down_key_x = player4_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player4_show_up_key_x = player4_show_down_key_x + string_width(l10n_text("Down")) + 37;
+	player_show_run_key_x[4] = player_show_crouch_key_x[4] + string_width(l10n_text("Crouch")) + 37;
+	player_show_left_key_x[4] = player_show_run_key_x[4] + string_width(l10n_text("Run")) + 37;
+	player_show_right_key_x[4] = player_show_left_key_x[4] + string_width(l10n_text("Left")) + 37;
+	player_show_down_key_x[4] = player_show_right_key_x[4] + string_width(l10n_text("Right")) + 37;
+	player_show_up_key_x[4] = player_show_down_key_x[4] + string_width(l10n_text("Down")) + 37;
 }
 else
 {
-	player4_show_run_key_x = -999; /* Hide the run key if you have "Always Run" turned on */
-	player4_show_left_key_x = player4_show_crouch_key_x + string_width(l10n_text("Crouch")) + 37;
-	player4_show_right_key_x = player4_show_left_key_x + string_width(l10n_text("Left")) + 37;
-	player4_show_down_key_x = player4_show_right_key_x + string_width(l10n_text("Right")) + 37;
-	player4_show_up_key_x = player4_show_down_key_x + string_width(l10n_text("Down")) + 37;
+	player_show_run_key_x[4] = -999; /* Hide the run key if you have "Always Run" turned on */
+	player_show_left_key_x[4] = player_show_crouch_key_x[4] + string_width(l10n_text("Crouch")) + 37;
+	player_show_right_key_x[4] = player_show_left_key_x[4] + string_width(l10n_text("Left")) + 37;
+	player_show_down_key_x[4] = player_show_right_key_x[4] + string_width(l10n_text("Right")) + 37;
+	player_show_up_key_x[4] = player_show_down_key_x[4] + string_width(l10n_text("Down")) + 37;
 }
 #endregion /* Player 4 show keys x positions END */
 

@@ -17,52 +17,36 @@ function scr_character_select_player_navigation(what_player = 1)
 	#region /* If player is player 1, set all the variables to Player variables */
 	if (what_player == 1)
 	{
-		var player_accept_selection = player1_accept_selection;
-		var can_input_player_name = can_input_player1_name;
-		var can_input_player_name2 = can_input_player2_name;
-		var can_input_player_name3 = can_input_player3_name;
-		var can_input_player_name4 = can_input_player4_name;
-		var player_name = global.player_name[1];
-		var player_key_a_pressed = player1_key_a_pressed;
+		var can_input_player_name2 = can_input_player_name[2];
+		var can_input_player_name3 = can_input_player_name[3];
+		var can_input_player_name4 = can_input_player_name[4];
 	}
 	#endregion /* If player is player 1, set all the variables to Player variables END */
 	
 	#region /* If player is player 2, set all the variables to Player variables */
 	if (what_player == 2)
 	{
-		var player_accept_selection = player2_accept_selection;
-		var can_input_player_name = can_input_player2_name;
-		var can_input_player_name2 = can_input_player1_name;
-		var can_input_player_name3 = can_input_player3_name;
-		var can_input_player_name4 = can_input_player4_name;
-		var player_name = global.player_name[2];
-		var player_key_a_pressed = player2_key_a_pressed;
+		var can_input_player_name2 = can_input_player_name[1];
+		var can_input_player_name3 = can_input_player_name[3];
+		var can_input_player_name4 = can_input_player_name[4];
 	}
 	#endregion /* If player is player 2, set all the variables to Player variables END */
 	
 	#region /* If player is player 3, set all the variables to Player variables */
 	if (what_player == 3)
 	{
-		var player_accept_selection = player3_accept_selection;
-		var can_input_player_name = can_input_player3_name;
-		var can_input_player_name2 = can_input_player1_name;
-		var can_input_player_name3 = can_input_player2_name;
-		var can_input_player_name4 = can_input_player4_name;
-		var player_name = global.player_name[3];
-		var player_key_a_pressed = player3_key_a_pressed;
+		var can_input_player_name2 = can_input_player_name[1];
+		var can_input_player_name3 = can_input_player_name[2];
+		var can_input_player_name4 = can_input_player_name[4];
 	}
 	#endregion /* If player is player 3, set all the variables to Player variables END */
 	
 	#region /* If player is player 4, set all the variables to Player variables */
 	if (what_player == 4)
 	{
-		var player_accept_selection = player4_accept_selection;
-		var can_input_player_name = can_input_player4_name;
-		var can_input_player_name2 = can_input_player1_name;
-		var can_input_player_name3 = can_input_player2_name;
-		var can_input_player_name4 = can_input_player3_name;
-		var player_name = global.player_name[4];
-		var player_key_a_pressed = player4_key_a_pressed;
+		var can_input_player_name2 = can_input_player_name[1];
+		var can_input_player_name3 = can_input_player_name[2];
+		var can_input_player_name4 = can_input_player_name[3];
 	}
 	#endregion /* If player is player 4, set all the variables to Player variables END */
 	
@@ -75,7 +59,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		if (menu_specific_joystick_delay[what_player] <= 0)
 		&& (!input_key)
 		&& (can_navigate)
-		&& (!player_accept_selection)
+		&& (!player_accept_selection[what_player])
 		{
 			
 			#region /* Player change portrait when clicking left or right */
@@ -203,18 +187,36 @@ function scr_character_select_player_navigation(what_player = 1)
 		}
 		#endregion /* Player key up END */
 		
-		if (!can_input_player_name && !can_input_player_name2 && !can_input_player_name3 && !can_input_player_name4)
+		#region /* Click on name to input name */
+		if (player_start_game /* Make sure that the "start game" button isn't overlapping the "name input" buttons */
+		&& !point_in_rectangle(mouse_get_x, mouse_get_y, 0, play_the_game_text_y_lerp - 32, get_window_width, play_the_game_text_y_lerp + 32)
+		&& global.controls_used_for_navigation == "mouse"
+		|| !player_start_game)
+		&& (menu_delay == 0 && menu_joystick_delay == 0
+		&& can_input_player_name[what_player] == 0
+		&& player_accept_selection[what_player] >= 0
+		&& !global.clicking_ok_input_screen && !global.clicking_cancel_input_screen)
 		{
-			if (player_key_a_pressed && menu_delay == 0 && menu_joystick_delay == 0)
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - 150, get_window_height * 0.5 + name_y - 16, get_window_width * 0.5 + player_display_x[what_player] + 150, get_window_height * 0.5 + name_y + 16))
+			&& (mouse_check_button_released(mb_left))
+			|| (player_menu[what_player] == "select_name")
+			&& (player_key_a_pressed[what_player])
 			{
-				menu_delay = 3;
+				menu_delay = 60;
+				//show_message("bruh");
 				keyboard_string = global.player_name[what_player];
-				can_input_player_name = true;
-				can_input_player_name2 = false;
-				can_input_player_name3 = false;
-				can_input_player_name4 = false;
+				can_input_player_name[1] = 2;
+				can_input_player_name[2] = 2;
+				can_input_player_name[3] = 2;
+				can_input_player_name[4] = 2;
+				can_input_player_name[what_player] = 1;
+				menu = "input_name_ok";
+				global.clicking_ok_input_screen = false;
+				global.clicking_cancel_input_screen = false;
 			}
 		}
+		#endregion /* Click on name to input name END */
+		
 	}
 	#endregion /* Player Menu Navigation END */
 	
