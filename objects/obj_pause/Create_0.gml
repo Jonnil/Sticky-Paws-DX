@@ -125,7 +125,7 @@ can_remap_gamepad_button = false;
 allow_player_tongue[1] = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
 allow_player_tongue[2] = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
 allow_player_tongue[3] = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
-allow_player4_tongue = scr_initialize_custom_character_abilities(3, "allow_tongue", false);
+allow_player_tongue[4] = scr_initialize_custom_character_abilities(3, "allow_tongue", false);
 
 allow_player_double_jump[1] = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
 allow_player_double_jump[2] = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");

@@ -24,119 +24,30 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	}
 	else
 	if (menu == "remap_select_profile")
-	&& (variable_to_change = global.player_profile[1])
+	&& (variable_to_change = global.player_profile[remapping_player + 1])
 	{
 		scr_config_save();
-		global.player_profile[1] = change_to_value;
+		global.player_profile[remapping_player + 1] = change_to_value;
 		ini_open(working_directory + "save_file/config.ini");
-		if (!ini_section_exists("player1_profile" + string(change_to_value)))
+		if (!ini_section_exists("player" + string(remapping_player + 1) + "_profile" + string(change_to_value)))
 		{
-			scr_set_default_remapping_player_gamepad(1, true);
-			scr_set_default_remapping_player_keyboard(1, true);
-		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		scr_config_load();
-	}
-	else
-	if (menu == "remap_select_profile")
-	&& (variable_to_change = global.player_profile[2])
-	{
-		scr_config_save();
-		global.player_profile[2] = change_to_value;
-		ini_open(working_directory + "save_file/config.ini");
-		if (!ini_section_exists("player2_profile" + string(change_to_value)))
-		{
-			scr_set_default_remapping_player_gamepad(2, true);
-			scr_set_default_remapping_player_keyboard(2, true);
-		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		scr_config_load();
-	}
-	else
-	if (menu == "remap_select_profile")
-	&& (variable_to_change = global.player_profile[3])
-	{
-		scr_config_save();
-		global.player_profile[3] = change_to_value;
-		ini_open(working_directory + "save_file/config.ini");
-		if (!ini_section_exists("player3_profile" + string(change_to_value)))
-		{
-			scr_set_default_remapping_player_gamepad(3, true);
-			scr_set_default_remapping_player_keyboard(3, true);
-		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		scr_config_load();
-	}
-	else
-	if (menu == "remap_select_profile")
-	&& (variable_to_change = global.player_profile[4])
-	{
-		scr_config_save();
-		global.player_profile[4] = change_to_value;
-		ini_open(working_directory + "save_file/config.ini");
-		if (!ini_section_exists("player4_profile" + string(change_to_value)))
-		{
-			scr_set_default_remapping_player_gamepad(4, true);
-			scr_set_default_remapping_player_keyboard(4, true);
+			scr_set_default_remapping_player_gamepad(remapping_player + 1, true);
+			scr_set_default_remapping_player_keyboard(remapping_player + 1, true);
 		}
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		scr_config_load();
 	}
 	else
 	if (menu == "wall_jump_setting")
-	&& (variable_to_change = global.player_wall_jump_setting[1])
-	&& (remapping_player == 0)
+	&& (variable_to_change = global.player_wall_jump_setting[remapping_player + 1])
 	{
-		global.player_wall_jump_setting[1] = change_to_value;
-	}
-	else
-	if (menu == "wall_jump_setting")
-	&& (variable_to_change = global.player_wall_jump_setting[2])
-	&& (remapping_player == 1)
-	{
-		global.player_wall_jump_setting[2] = change_to_value;
-	}
-	else
-	if (menu == "wall_jump_setting")
-	&& (variable_to_change = global.player_wall_jump_setting[3])
-	&& (remapping_player == 2)
-	{
-		global.player_wall_jump_setting[3] = change_to_value;
-	}
-	else
-	if (menu == "wall_jump_setting")
-	&& (variable_to_change = global.player_wall_jump_setting[4])
-	&& (remapping_player == 3)
-	{
-		global.player_wall_jump_setting[4] = change_to_value;
+		global.player_wall_jump_setting[remapping_player + 1] = change_to_value;
 	}
 	else
 	if (menu == "show_controls")
-	&& (variable_to_change = global.player_show_controls[1])
-	&& (remapping_player == 0)
+	&& (variable_to_change = global.player_show_controls[remapping_player + 1])
 	{
-		global.player_show_controls[1] = change_to_value;
-	}
-	else
-	if (menu == "show_controls")
-	&& (variable_to_change = global.player_show_controls[2])
-	&& (remapping_player == 1)
-	{
-		global.player_show_controls[2] = change_to_value;
-	}
-	else
-	if (menu == "show_controls")
-	&& (variable_to_change = global.player_show_controls[3])
-	&& (remapping_player == 2)
-	{
-		global.player_show_controls[3] = change_to_value;
-	}
-	else
-	if (menu == "show_controls")
-	&& (variable_to_change = global.player_show_controls[4])
-	&& (remapping_player == 3)
-	{
-		global.player_show_controls[4] = change_to_value;
+		global.player_show_controls[remapping_player + 1] = change_to_value;
 	}
 	else
 	if (menu == "chosen_controller_used")

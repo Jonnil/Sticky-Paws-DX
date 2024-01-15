@@ -80,7 +80,7 @@ show_controller_input_change_prompt_y = 0;
 show_keyboard_and_mouse_input_change_prompt_y = 0;
 
 delay = 0;
-menu_delay = 3;
+menu_delay = 0; /* When playing level, set menu delay to 0 */
 menu_joystick_delay = 0;
 menu_cursor_index = 0;
 menu = "";

@@ -26,40 +26,6 @@ loading_assets = false;
 
 #region /* What custom character to use, change the character sprites and voice */
 player = 1;
-if (instance_exists(obj_camera))
-{
-	if (variable_instance_exists(obj_camera, "player1"))
-	&& (instance_exists(obj_camera.player1))
-	{
-		partner_follow_player = obj_camera.player1;
-	}
-	else
-	if (variable_instance_exists(obj_camera, "player2"))
-	&& (instance_exists(obj_camera.player2))
-	{
-		partner_follow_player = obj_camera.player2;
-	}
-	else
-	if (variable_instance_exists(obj_camera, "player3"))
-	&& (instance_exists(obj_camera.player3))
-	{
-		partner_follow_player = obj_camera.player3;
-	}
-	else
-	if (variable_instance_exists(obj_camera, "player4"))
-	&& (instance_exists(obj_camera.player4))
-	{
-		partner_follow_player = obj_camera.player4;
-	}
-	else
-	{
-		partner_follow_player = obj_camera;
-	}
-}
-else
-{
-	partner_follow_player = noone;
-}
 custom_character = global.character_for_player[1];
 selected_voice_pack = global.voicepack_for_player[1];
 selected_skin = global.skin_for_player[1];

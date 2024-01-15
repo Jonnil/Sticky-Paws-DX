@@ -4,7 +4,7 @@
 
 scr_initialize_camera();
 
-menu_delay = 3;
+menu_delay = 0; /* When on world map, set menu delay to 0 */
 menu_joystick_delay = 0;
 menu_cursor_index = 0;
 menu = "";

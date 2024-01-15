@@ -4,7 +4,7 @@ function scr_option_control_menu()
 	var can_change_profile = true;
 	
 	#region /* Buttons positions */
-	if (allow_player_dive[remapping_player - 1])
+	if (allow_player_dive[remapping_player + 1])
 	{
 		var menu_y_remap_key_dive = 8 + 64 * 3;
 		var menu_y_remap_key_jump = 8 + 64 * 4;
@@ -14,8 +14,8 @@ function scr_option_control_menu()
 		var menu_y_remap_key_dive = -999;
 		var menu_y_remap_key_jump = 8 + 64 * 3;
 	}
-	if (allow_player_double_jump[remapping_player - 1] >= 2)
-	|| (allow_player_double_jump[remapping_player - 1] == -1)
+	if (allow_player_double_jump[remapping_player + 1] >= 2)
+	|| (allow_player_double_jump[remapping_player + 1] == -1)
 	{
 		var menu_y_remap_key_double_jump = menu_y_remap_key_jump + 64 * 1;
 		var menu_y_remap_key_crouch = menu_y_remap_key_jump + 64 * 2;
@@ -33,7 +33,7 @@ function scr_option_control_menu()
 	var menu_y_remap_key_down = menu_y_remap_key_crouch + 64 * 6;
 	var menu_y_remap_key_up = menu_y_remap_key_crouch + 64 * 7;
 	
-	if (allow_player_tongue[remapping_player - 1])
+	if (allow_player_tongue[remapping_player + 1])
 	{
 		var menu_y_remap_key_tongue = menu_y_remap_key_crouch + 64 * 8;
 		var menu_y_remap_key_zoom_in = menu_y_remap_key_crouch + 64 * 9;

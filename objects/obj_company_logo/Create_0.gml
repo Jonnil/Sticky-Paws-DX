@@ -1,6 +1,5 @@
 #region /* Things you could change */
-var max_players = 4; /* How many players you want to be able to play */
-
+global.max_players = 4; /* How many players you want to be able to play */
 global.company_name = "Jonnil"; /* String of what the company is called */
 global.game_name = "Sticky Paws"; /* String of what the game is called */
 global.game_name_appdata = "Sticky_Paws_DX"; /* String of what the game is called at appdata folder */
@@ -374,9 +373,8 @@ gamepad_set_axis_deadzone(4, 0.5);
 window_set_cursor(cr_none);
 
 #region /* Set Max Players */
-var max_players = 4; /* How many players you want to be able to play */
-var i = max_players - 1;
-repeat(max_players)
+var i = global.max_players - 1;
+repeat(global.max_players)
 {
 	global.character_index[i] = 0;
 	i --;
@@ -585,7 +583,7 @@ scr_set_default_remapping_player_keyboard(2, false);
 scr_set_default_remapping_player_gamepad(2, false);
 scr_set_default_remapping_player_keyboard(3, false);
 scr_set_default_remapping_player_gamepad(3, false);
-scr_set_default_remapping_player4_keyboard(false);
+scr_set_default_remapping_player_keyboard(4, false);
 scr_set_default_remapping_player_gamepad(4, false);
 #endregion /* Set controls END */
 

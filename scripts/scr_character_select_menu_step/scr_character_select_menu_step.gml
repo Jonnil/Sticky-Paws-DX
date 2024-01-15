@@ -171,18 +171,12 @@ function scr_character_select_menu_step()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					ini_open("save_file/config.ini"); /* Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame */
-					ini_write_real("config", "character_index_player1", global.character_index[0]);
-					ini_write_real("config", "character_index_player2", global.character_index[1]);
-					ini_write_real("config", "character_index_player3", global.character_index[2]);
-					ini_write_real("config", "character_index_player4", global.character_index[3]);
-					ini_write_real("config", "skin_for_player1", global.skin_for_player[1]);
-					ini_write_real("config", "skin_for_player2", global.skin_for_player[2]);
-					ini_write_real("config", "skin_for_player3", global.skin_for_player[3]);
-					ini_write_real("config", "skin_for_player4", global.skin_for_player[4]);
-					ini_write_string("config", "player1_name", global.player_name[1]);
-					ini_write_string("config", "player2_name", global.player_name[2]);
-					ini_write_string("config", "player3_name", global.player_name[3]);
-					ini_write_string("config", "player4_name", global.player_name[4]);
+					for (var i = 1; i < global.max_players; i += 1)
+					{
+						ini_write_real("config", "character_index_player" + string(i), global.character_index[i - 1]);
+						ini_write_real("config", "skin_for_player" + string(i), global.skin_for_player[i]);
+						ini_write_string("config", "player" + string(i) + "_name", global.player_name[i]);
+					}
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					if (global.character_select_in_this_menu == "main_game")
 					{
