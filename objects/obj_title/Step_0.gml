@@ -102,28 +102,13 @@ if (menu == "load_characters")
 	
 	#region /* Player Automatically Join */
 	/* When going to the character select menu, game should remember what player entered the menu, and therefore should automatically join the game, as the game should already know for certain that player is already joining the game */
-	/* Player 1 Key Accept Hold */ player1_key_a_hold = (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][1][action.accept])) || (gamepad_button_check(global.player_slot[1], global.player_[inp.gp][1][2][action.accept])) || (keyboard_check(global.player_[inp.key][1][1][action.accept])) || (keyboard_check(global.player_[inp.key][1][2][action.accept])) || (keyboard_check(vk_space));
-	/* Player 2 Key Accept Hold */ player2_key_a_hold = (gamepad_button_check(global.player_slot[2], global.player_[inp.gp][2][1][action.accept])) || (gamepad_button_check(global.player_slot[2], global.player_[inp.gp][2][2][action.accept])) || (keyboard_check(global.player_[inp.key][2][1][action.accept])) || (keyboard_check(global.player_[inp.key][2][2][action.accept]));
-	/* Player 3 Key Accept Hold */ player3_key_a_hold = (gamepad_button_check(global.player_slot[3], global.player_[inp.gp][3][1][action.accept])) || (gamepad_button_check(global.player_slot[3], global.player_[inp.gp][3][2][action.accept])) || (keyboard_check(global.player_[inp.key][3][1][action.accept])) || (keyboard_check(global.player_[inp.key][3][2][action.accept]));
-	/* Player 4 Key Accept Hold */ player4_key_a_hold = (gamepad_button_check(global.player_slot[4], global.player_[inp.gp][4][1][action.accept])) || (gamepad_button_check(global.player_slot[4], global.player_[inp.gp][4][2][action.accept])) || (keyboard_check(global.player_[inp.key][4][1][action.accept])) || (keyboard_check(global.player_[inp.key][4][2][action.accept]));
-	if (player1_key_a_hold)
+	for (var p = 1; p <= global.max_players; p += 1)
 	{
-		player1_automatically_join = true;
-	}
-	else
-	if (player2_key_a_hold)
-	{
-		player2_automatically_join = true;
-	}
-	else
-	if (player3_key_a_hold)
-	{
-		player3_automatically_join = true;
-	}
-	else
-	if (player4_key_a_hold)
-	{
-		player4_automatically_join = true;
+		/* Player Key Accept Hold */ player_key_a_hold[p] = (gamepad_button_check(global.player_slot[p], global.player_[inp.gp][p][1][action.accept])) || (gamepad_button_check(global.player_slot[p], global.player_[inp.gp][p][2][action.accept])) || (keyboard_check(global.player_[inp.key][p][1][action.accept])) || (keyboard_check(global.player_[inp.key][p][2][action.accept]));
+		if (player_key_a_hold[p])
+		{
+			player_automatically_join[p] = true;
+		}
 	}
 	#endregion /* Player Automatically Join END */
 	
@@ -412,10 +397,10 @@ if (iris_xscale <= 0.01)
 		{
 			/* Save what characters are selected */
 			ini_open(working_directory + "save_file/config.ini");
-			ini_write_real("config", "character_index_player1", global.character_index[0]);
-			ini_write_real("config", "character_index_player2", global.character_index[1]);
-			ini_write_real("config", "character_index_player3", global.character_index[2]);
-			ini_write_real("config", "character_index_player4", global.character_index[3]);
+			for (var p = 1; p <= global.max_players; p += 1)
+			{
+				ini_write_real("config", "character_index_player" + string(p), global.character_index[p - 1]);
+			}
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			
 			if (title_music > noone)
@@ -452,15 +437,14 @@ if (iris_xscale <= 0.01)
 	else
 	
 	#region /* Load File */
-	if (menu == "select_character")
-	|| (menu == "back_from_character_select")
+	if (menu == "select_character" || menu == "back_from_character_select")
 	{
 		/* Save what characters are selected */
 		ini_open(working_directory + "save_file/config.ini");
-		ini_write_real("config", "character_index_player1", global.character_index[0]);
-		ini_write_real("config", "character_index_player2", global.character_index[1]);
-		ini_write_real("config", "character_index_player3", global.character_index[2]);
-		ini_write_real("config", "character_index_player4", global.character_index[3]);
+		for(var p = 1; p <= global.max_players; p += 1)
+		{
+			ini_write_real("config", "character_index_player" + string(p), global.character_index[p - 1]);
+		}
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		
 		if (title_music > noone)

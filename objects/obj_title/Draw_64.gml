@@ -226,7 +226,7 @@ if (!in_settings)
 			menu_delay = 3;
 			if (mouse_check_button_released(mb_left))
 			{
-				player1_automatically_join = true; /* Player 1 joins if you click Main Game */
+				player_automatically_join[1] = true; /* Player 1 joins if you click Main Game */
 			}
 			global.player_can_play[1] = false;
 			global.player_can_play[2] = false;
@@ -261,7 +261,7 @@ if (!in_settings)
 		{
 			if (mouse_check_button_released(mb_left))
 			{
-				player1_automatically_join = true; /* Player 1 joins if you click Level Editor */
+				player_automatically_join[1] = true; /* Player 1 joins if you click Level Editor */
 			}
 			global.player_can_play[1] = false;
 			global.player_can_play[2] = false;

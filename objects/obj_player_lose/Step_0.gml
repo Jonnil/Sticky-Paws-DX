@@ -123,22 +123,22 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 		{
 			if (player == 1) /* Re-enable player 1 */
 			{
-				obj_camera.player1 = noone;
+				obj_camera.player[1] = noone;
 				obj_camera.can_spawn_player[1] = true;
 			}
 			if (player == 2) /* Re-enable player 2 */
 			{
-				obj_camera.player2 = noone;
+				obj_camera.player[2] = noone;
 				obj_camera.can_spawn_player[2] = true;
 			}
 			if (player == 3) /* Re-enable player 3 */
 			{
-				obj_camera.player3 = noone;
+				obj_camera.player[3] = noone;
 				obj_camera.can_spawn_player[3] = true;
 			}
 			if (player == 4) /* Re-enable player 4 */
 			{
-				obj_camera.player4 = noone;
+				obj_camera.player[4] = noone;
 				obj_camera.can_spawn_player[4] = true;
 			}
 		}

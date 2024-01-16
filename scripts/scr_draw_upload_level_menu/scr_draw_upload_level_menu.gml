@@ -1666,7 +1666,7 @@ function scr_draw_upload_level_menu()
 			{
 				if (destroy_zip_after_uploading)
 				{
-					file_delete(working_directory + string(file));
+					file_delete(file);
 				}
 				menu = "error_level_too_big";
 			}
@@ -1723,7 +1723,7 @@ function scr_draw_upload_level_menu()
 					/* Delete some leftover files and folders */
 					if (destroy_zip_after_uploading)
 					{
-						file_delete(working_directory + string(file));
+						file_delete(file);
 					}
 					if (os_is_network_connected())
 					{

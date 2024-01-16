@@ -305,10 +305,6 @@ global.selected_online_download_index = 1; /* Game should remember what file you
 global.difficulty = 1; /* Difficulty levels: 0 = easy, 1 = normal (default), 2 = hard */
 global.grid_hsnap = 32; /* Horizontal grid snapping */
 global.grid_vsnap = 32; /* Vertical grid snapping */
-global.hex_color_for_player1 = c_white; /* Player 1 Hex Value Color */
-global.hex_color_for_player2 = c_white; /* Player 1 Hex Value Color */
-global.hex_color_for_player3 = c_white; /* Player 1 Hex Value Color */
-global.hex_color_for_player4 = c_white; /* Player 1 Hex Value Color */
 global.iris_zoom_in = false; /* When you want to enable and disable iris zoom in code */
 global.player_can_go_outside_view = false; /* Let the player go outside view in specific scenarios */
 global.level_editor_level = 0; /* What level is selected in the custom level editor */
@@ -492,19 +488,19 @@ global.quit_to_title = false;
 global.full_level_map_screenshot = false;
 global.appear_block_timer = 0;
 
-global.level_player1_start_x = 0;
-global.level_player1_start_y = 0;
-global.level_player2_start_x = 0;
-global.level_player2_start_y = 0;
-global.level_player3_start_x = 0;
-global.level_player3_start_y = 0;
-global.level_player4_start_x = 0;
-global.level_player4_start_y = 0;
+global.level_player_start_x[1] = 0;
+global.level_player_start_y[1] = 0;
+global.level_player_start_x[2] = 0;
+global.level_player_start_y[2] = 0;
+global.level_player_start_x[3] = 0;
+global.level_player_start_y[3] = 0;
+global.level_player_start_x[4] = 0;
+global.level_player_start_y[4] = 0;
 
 global.player_crouch_toggle[1] = false; /* If crouch toggle for player 1 is true or false (false by default) */
 global.player_crouch_toggle[2] = false; /* If crouch toggle for player 2 is true or false (false by default) */
 global.player_crouch_toggle[3] = false; /* If crouch toggle for player 3 is true or false (false by default) */
-global.player4_crouch_toggle = false; /* If crouch toggle for player 4 is true or false (false by default) */
+global.player_crouch_toggle[4] = false; /* If crouch toggle for player 4 is true or false (false by default) */
 
 global.player_run_toggle[1] = false; /* If run toggle for player 1 is true or false (false by default) */
 global.player_run_toggle[2] = false; /* If run toggle for player 2 is true or false (false by default) */

@@ -790,7 +790,7 @@ if (!global.actually_play_edited_level)
 	#endregion /* Initialize Background END */
 	
 	/* HUD Show Controls keys that have been pressed */
-	player1_show_controls_timer = 0;
+	player_show_controls_timer[1] = 0;
 	player_show_controls_alpha[1] = 0;
 	
 	selected_object = 0;

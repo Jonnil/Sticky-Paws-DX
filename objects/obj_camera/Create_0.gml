@@ -26,36 +26,6 @@ mouse_y_position = device_mouse_y_to_gui(0);
 black_screen_gui_alpha = 1;
 pause_playtest = false;
 
-key_player1_run_toggle_pressed = noone;
-key_player2_run_toggle_pressed = noone;
-key_player3_run_toggle_pressed = noone;
-key_player4_run_toggle_pressed = noone;
-key_player1_zoom_in_hold = noone;
-key_player2_zoom_in_hold = noone;
-key_player3_zoom_in_hold = noone;
-key_player4_zoom_in_hold = noone;
-key_player1_zoom_out_hold = noone;
-key_player2_zoom_out_hold = noone;
-key_player3_zoom_out_hold = noone;
-key_player4_zoom_out_hold = noone;
-key_player1_zoom_in_release = noone;
-key_player2_zoom_in_release = noone;
-key_player3_zoom_in_release = noone;
-key_player4_zoom_in_release = noone;
-key_player1_zoom_out_release = noone;
-key_player2_zoom_out_release = noone;
-key_player3_zoom_out_release = noone;
-key_player4_zoom_out_release = noone;
-
-player1_motor_speed = 0;
-player2_motor_speed = 0;
-player3_motor_speed = 0;
-player4_motor_speed = 0;
-player1_vibration_active = false;
-player2_vibration_active = false;
-player3_vibration_active = false;
-player4_vibration_active = false;
-
 reset_game_if_no_interactivity = 0;
 reset_game_if_no_interactivity_second_countdown_timer = 0;
 reset_game_if_no_interactivity_second_countdown = 60;
@@ -142,12 +112,6 @@ else
 }
 
 #region /* Lives Icon */
-if (global.player_can_play[1])
-{
-	camera_player = 0;
-	camera_selected_skin = global.skin_for_player[1];
-}
-else
 if (global.player_can_play[2])
 {
 	camera_player = 1;
@@ -179,14 +143,6 @@ alarm[0] = 1; /* Initialize custom character timer. This code needs to be initia
 #endregion /* Lives Icon END */
 
 save_level_as_png = false;
-can_spawn_player[1] = true;
-can_spawn_player[2] = true;
-can_spawn_player[3] = true;
-can_spawn_player[4] = true;
-show_player_controls_y[1] = +32;
-show_player_controls_y[2] = +32;
-show_player_controls_y[3] = +32;
-show_player_controls_y[4] = +32;
 
 #region /* Smooth the camera out even more */
 view_wview_lerp = 0;
@@ -214,6 +170,8 @@ set_all_big_collectible = 0;
 #region /* Checkpoint */
 if (global.actually_play_edited_level)
 && (global.play_edited_level)
+&& (!global.doing_clear_check_character)
+&& (!global.doing_clear_check_level)
 {
 	if (global.checkpoint_x > 0)
 	|| (global.checkpoint_y > 0)
@@ -252,19 +210,19 @@ if (can_spawn_players)
 		|| (global.checkpoint_y > 0)
 		&& (global.actually_play_edited_level)
 		{
-			player1 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
+			player[1] = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
 		if (global.actually_play_edited_level)
 		&& (instance_exists(obj_level_player1_start))
 		{
-			player1 = instance_create_depth(obj_level_player1_start.x, obj_level_player1_start.y, 0, obj_player);
+			player[1] = instance_create_depth(obj_level_player1_start.x, obj_level_player1_start.y, 0, obj_player);
 		}
 		else
 		{
-			player1 = instance_create_depth(x, y, 0, obj_player);
+			player[1] = instance_create_depth(x, y, 0, obj_player);
 		}
-		with(player1)
+		with(player[1])
 		{
 			custom_character = global.character_for_player[1];
 			selected_voice_pack = global.voicepack_for_player[1];
@@ -275,7 +233,7 @@ if (can_spawn_players)
 	}
 	else
 	{
-		player1 = noone;
+		player[1] = noone;
 	}
 	if (global.player_can_play[2])
 	{
@@ -284,19 +242,19 @@ if (can_spawn_players)
 		|| (global.checkpoint_y > 0)
 		&& (global.actually_play_edited_level)
 		{
-			player2 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
+			player[2] = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
 		if (global.actually_play_edited_level)
 		&& (instance_exists(obj_level_player2_start))
 		{
-			player2 = instance_create_depth(obj_level_player2_start.x, obj_level_player2_start.y, 0, obj_player);
+			player[2] = instance_create_depth(obj_level_player2_start.x, obj_level_player2_start.y, 0, obj_player);
 		}
 		else
 		{
-			player2 = instance_create_depth(x, y, 0, obj_player);
+			player[2] = instance_create_depth(x, y, 0, obj_player);
 		}
-		with(player2)
+		with(player[2])
 		{
 			custom_character = global.character_for_player[2];
 			selected_voice_pack = global.voicepack_for_player[2];
@@ -307,7 +265,7 @@ if (can_spawn_players)
 	}
 	else
 	{
-		player2 = noone;
+		player[2] = noone;
 	}
 	if (global.player_can_play[3])
 	{
@@ -316,19 +274,19 @@ if (can_spawn_players)
 		|| (global.checkpoint_y > 0)
 		&& (global.actually_play_edited_level)
 		{
-			player3 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
+			player[3] = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
 		if (global.actually_play_edited_level)
 		&& (instance_exists(obj_level_player3_start))
 		{
-			player3 = instance_create_depth(obj_level_player3_start.x, obj_level_player3_start.y, 0, obj_player);
+			player[3] = instance_create_depth(obj_level_player3_start.x, obj_level_player3_start.y, 0, obj_player);
 		}
 		else
 		{
-			player3 = instance_create_depth(x, y, 0, obj_player);
+			player[3] = instance_create_depth(x, y, 0, obj_player);
 		}
-		with(player3)
+		with(player[3])
 		{
 			custom_character = global.character_for_player[3];
 			selected_voice_pack = global.voicepack_for_player[3];
@@ -339,7 +297,7 @@ if (can_spawn_players)
 	}
 	else
 	{
-		player3 = noone;
+		player[3] = noone;
 	}
 	if (global.player_can_play[4])
 	{
@@ -348,19 +306,19 @@ if (can_spawn_players)
 		|| (global.checkpoint_y > 0)
 		&& (global.actually_play_edited_level)
 		{
-			player4 = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
+			player[4] = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
 		}
 		else
 		if (global.actually_play_edited_level)
 		&& (instance_exists(obj_level_player4_start))
 		{
-			player4 = instance_create_depth(obj_level_player4_start.x, obj_level_player4_start.y, 0, obj_player);
+			player[4] = instance_create_depth(obj_level_player4_start.x, obj_level_player4_start.y, 0, obj_player);
 		}
 		else
 		{
-			player4 = instance_create_depth(x, y, 0, obj_player);
+			player[4] = instance_create_depth(x, y, 0, obj_player);
 		}
-		with(player4)
+		with(player[4])
 		{
 			custom_character = global.character_for_player[4];
 			selected_voice_pack = global.voicepack_for_player[4];
@@ -371,7 +329,7 @@ if (can_spawn_players)
 	}
 	else
 	{
-		player4 = noone;
+		player[4] = noone;
 	}
 	if (room == rm_leveleditor)
 	&& (global.actually_play_edited_level)
@@ -385,29 +343,54 @@ if (can_spawn_players)
 }
 else
 {
-	player1 = noone;
-	player2 = noone;
-	player3 = noone;
-	player4 = noone;
+	player[1] = noone;
+	player[2] = noone;
+	player[3] = noone;
+	player[4] = noone;
 	player_has_spawned = false;
 }
 #endregion /* Spawn Players END */
 
 #region /* HUD Show Controls keys that have been pressed */
-player1_show_controls_timer = 0;
-player2_show_controls_timer = 0;
-player3_show_controls_timer = 0;
-player4_show_controls_timer = 0;
-
-player_show_controls_alpha[1] = 0;
-player_show_controls_alpha[2] = 0;
-player_show_controls_alpha[3] = 0;
-player_show_controls_alpha[4] = 0;
-
-show_run_toggle_for_player1 = 0;
-show_run_toggle_for_player2 = 0;
-show_run_toggle_for_player3 = 0;
-show_run_toggle_for_player4 = 0;
+for(var i = 1; i <= global.max_players; i += 1)
+{
+	can_spawn_player[i] = true;
+	show_player_controls_y[i] = +32;
+	key_player_run_toggle_pressed[i] = noone;
+	key_player_zoom_in_hold[i] = noone;
+	key_player_zoom_out_hold[i] = noone;
+	key_player_zoom_in_release[i] = noone;
+	key_player_zoom_out_release[i] = noone;
+	player_motor_speed[i] = 0;
+	player_vibration_active[i] = false;
+	
+	#region /* Show keys x positions */
+	/* For some reason, code within "Show keys x positions" lags the Nintendo Switch version */
+	player_show_dive_key_x[i] = 32;
+	player_show_jump_key_x[i] = string_width(l10n_text("Pounce")) + 75;
+	player_show_crouch_key_x[i] = player_show_jump_key_x[i] + string_width(l10n_text("Jump")) + 37;
+	if (!global.player_run_toggle[i])
+	{
+		player_show_run_key_x[i] = player_show_crouch_key_x[i] + string_width(l10n_text("Crouch")) + 37;
+		player_show_left_key_x[i] = player_show_run_key_x[i] + string_width(l10n_text("Run")) + 37;
+		player_show_right_key_x[i] = player_show_left_key_x[i] + string_width(l10n_text("Left")) + 37;
+		player_show_down_key_x[i] = player_show_right_key_x[i] + string_width(l10n_text("Right")) + 37;
+		player_show_up_key_x[i] = player_show_down_key_x[i] + string_width(l10n_text("Down")) + 37;
+	}
+	else
+	{
+		player_show_run_key_x[i] = -999; /* Hide the run key if you have "Always Run" turned on */
+		player_show_left_key_x[i] = player_show_crouch_key_x[i] + string_width(l10n_text("Crouch")) + 37;
+		player_show_right_key_x[i] = player_show_left_key_x[i] + string_width(l10n_text("Left")) + 37;
+		player_show_down_key_x[i] = player_show_right_key_x[i] + string_width(l10n_text("Right")) + 37;
+		player_show_up_key_x[i] = player_show_down_key_x[i] + string_width(l10n_text("Down")) + 37;
+	}
+	#endregion /* Show keys x positions END */
+	
+	player_show_controls_timer[i] = 0;
+	player_show_controls_alpha[i] = 0;
+	show_run_toggle_for_player[i] = 0;
+}
 #endregion /* HUD Show Controls keys that have been pressed END */
 
 xx = x;
@@ -603,99 +586,6 @@ if (global.number_of_audio_channels == 7)
 
 zoom_lerp = global.zoom_level;
 zoom_border_lerp = 0;
-
-#region /* Show keys x positions */
-/* For some reason, code within "Show keys x positions" lags the Nintendo Switch version */
-
-#region /* Player 1 show keys x positions */
-player_show_dive_key_x[1] = 32;
-player_show_jump_key_x[1] = string_width(l10n_text("Pounce")) + 75;
-player_show_crouch_key_x[1] = player_show_jump_key_x[1] + string_width(l10n_text("Jump")) + 37;
-if (!global.player_run_toggle[1])
-{
-	player_show_run_key_x[1] = player_show_crouch_key_x[1] + string_width(l10n_text("Crouch")) + 37;
-	player_show_left_key_x[1] = player_show_run_key_x[1] + string_width(l10n_text("Run")) + 37;
-	player_show_right_key_x[1] = player_show_left_key_x[1] + string_width(l10n_text("Left")) + 37;
-	player_show_down_key_x[1] = player_show_right_key_x[1] + string_width(l10n_text("Right")) + 37;
-	player_show_up_key_x[1] = player_show_down_key_x[1] + string_width(l10n_text("Down")) + 37;
-}
-else
-{
-	player_show_run_key_x[1] = -999; /* Hide the run key if you have "Always Run" turned on */
-	player_show_left_key_x[1] = player_show_crouch_key_x[1] + string_width(l10n_text("Crouch")) + 37;
-	player_show_right_key_x[1] = player_show_left_key_x[1] + string_width(l10n_text("Left")) + 37;
-	player_show_down_key_x[1] = player_show_right_key_x[1] + string_width(l10n_text("Right")) + 37;
-	player_show_up_key_x[1] = player_show_down_key_x[1] + string_width(l10n_text("Down")) + 37;
-}
-#endregion /* Player 1 show keys x positions END */
-
-#region /* Player 2 show keys x positions */
-player_show_dive_key_x[2] = 32;
-player_show_jump_key_x[2] = string_width(l10n_text("Pounce")) + 75;
-player_show_crouch_key_x[2] = player_show_jump_key_x[2] + string_width(l10n_text("Jump")) + 37;
-if (!global.player_run_toggle[2])
-{
-	player_show_run_key_x[2] = player_show_crouch_key_x[2] + string_width(l10n_text("Crouch")) + 37;
-	player_show_left_key_x[2] = player_show_run_key_x[2] + string_width(l10n_text("Run")) + 37;
-	player_show_right_key_x[2] = player_show_left_key_x[2] + string_width(l10n_text("Left")) + 37;
-	player_show_down_key_x[2] = player_show_right_key_x[2] + string_width(l10n_text("Right")) + 37;
-	player_show_up_key_x[2] = player_show_down_key_x[2] + string_width(l10n_text("Down")) + 37;
-}
-else
-{
-	player_show_run_key_x[2] = -999; /* Hide the run key if you have "Always Run" turned on */
-	player_show_left_key_x[2] = player_show_crouch_key_x[2] + string_width(l10n_text("Crouch")) + 37;
-	player_show_right_key_x[2] = player_show_left_key_x[2] + string_width(l10n_text("Left")) + 37;
-	player_show_down_key_x[2] = player_show_right_key_x[2] + string_width(l10n_text("Right")) + 37;
-	player_show_up_key_x[2] = player_show_down_key_x[2] + string_width(l10n_text("Down")) + 37;
-}
-#endregion /* Player 2 show keys x positions END */
-
-#region /* Player 3 show keys x positions */
-player_show_dive_key_x[3] = 32;
-player_show_jump_key_x[3] = string_width(l10n_text("Pounce")) + 75;
-player_show_crouch_key_x[3] = player_show_jump_key_x[3] + string_width(l10n_text("Jump")) + 37;
-if (!global.player_run_toggle[3])
-{
-	player_show_run_key_x[3] = player_show_crouch_key_x[3] + string_width(l10n_text("Crouch")) + 37;
-	player_show_left_key_x[3] = player_show_run_key_x[3] + string_width(l10n_text("Run")) + 37;
-	player_show_right_key_x[3] = player_show_left_key_x[3] + string_width(l10n_text("Left")) + 37;
-	player_show_down_key_x[3] = player_show_right_key_x[3] + string_width(l10n_text("Right")) + 37;
-	player_show_up_key_x[3] = player_show_down_key_x[3] + string_width(l10n_text("Down")) + 37;
-}
-else
-{
-	player_show_run_key_x[3] = -999; /* Hide the run key if you have "Always Run" turned on */
-	player_show_left_key_x[3] = player_show_crouch_key_x[3] + string_width(l10n_text("Crouch")) + 37;
-	player_show_right_key_x[3] = player_show_left_key_x[3] + string_width(l10n_text("Left")) + 37;
-	player_show_down_key_x[3] = player_show_right_key_x[3] + string_width(l10n_text("Right")) + 37;
-	player_show_up_key_x[3] = player_show_down_key_x[3] + string_width(l10n_text("Down")) + 37;
-}
-#endregion /* Player 3 show keys x positions END */
-
-#region /* Player 4 show keys x positions */
-player_show_dive_key_x[4] = 32;
-player_show_jump_key_x[4] = string_width(l10n_text("Pounce")) + 75;
-player_show_crouch_key_x[4] = player_show_jump_key_x[4] + string_width(l10n_text("Jump")) + 37;
-if (!global.player_run_toggle[4])
-{
-	player_show_run_key_x[4] = player_show_crouch_key_x[4] + string_width(l10n_text("Crouch")) + 37;
-	player_show_left_key_x[4] = player_show_run_key_x[4] + string_width(l10n_text("Run")) + 37;
-	player_show_right_key_x[4] = player_show_left_key_x[4] + string_width(l10n_text("Left")) + 37;
-	player_show_down_key_x[4] = player_show_right_key_x[4] + string_width(l10n_text("Right")) + 37;
-	player_show_up_key_x[4] = player_show_down_key_x[4] + string_width(l10n_text("Down")) + 37;
-}
-else
-{
-	player_show_run_key_x[4] = -999; /* Hide the run key if you have "Always Run" turned on */
-	player_show_left_key_x[4] = player_show_crouch_key_x[4] + string_width(l10n_text("Crouch")) + 37;
-	player_show_right_key_x[4] = player_show_left_key_x[4] + string_width(l10n_text("Left")) + 37;
-	player_show_down_key_x[4] = player_show_right_key_x[4] + string_width(l10n_text("Right")) + 37;
-	player_show_up_key_x[4] = player_show_down_key_x[4] + string_width(l10n_text("Down")) + 37;
-}
-#endregion /* Player 4 show keys x positions END */
-
-#endregion /* Show keys x positions END */
 
 #region /* Set Particle System */
 part_system_rain = noone;

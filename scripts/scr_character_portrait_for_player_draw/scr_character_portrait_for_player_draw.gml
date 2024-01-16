@@ -47,107 +47,25 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	var player_name = global.player_name[what_player];
 	var player_color = global.player_color[what_player];
 	
-	#region /* If player is player 1, set all the variables to Player variables */
-	if (what_player == 1)
-	{
-		var sprite_select_player = global.sprite_select_player[1];
-		var hex_color_for_player = global.hex_color_for_player1;
-		var player_key_left = global.player_[inp.key][1][1][action.left];
-		var player_key_right = global.player_[inp.key][1][1][action.right];
-		var player_key2_left = global.player_[inp.key][1][2][action.left];
-		var player_key2_right = global.player_[inp.key][1][2][action.right];
-		var player_key_up = global.player_[inp.key][1][1][action.up];
-		var player_key_down = global.player_[inp.key][1][1][action.down];
-		var player_key2_up = global.player_[inp.key][1][2][action.up];
-		var player_key2_down = global.player_[inp.key][1][2][action.down];
-		var player_key_back = global.player_[inp.key][1][1][action.back];
-		var player_key2_back = global.player_[inp.key][1][2][action.back];
-		var player_key_accept = global.player_[inp.key][1][1][action.accept];
-		var player_key2_accept = global.player_[inp.key][1][2][action.accept];
-		var player_gamepad_button_back = global.player_[inp.gp][1][1][action.back];
-		var player_gamepad_button2_back = global.player_[inp.gp][1][2][action.back];
-		var player_gamepad_button_accept = global.player_[inp.gp][1][1][action.accept];
-		var player_gamepad_button2_accept = global.player_[inp.gp][1][2][action.accept];
-	}
-	#endregion /* If player is player 1, set all the variables to Player variables END */
-	
-	else
-	
-	#region /* If player is player 2, set all the variables to player 2 variables */
-	if (what_player == 2)
-	{
-		var sprite_select_player = global.sprite_select_player[2];
-		var hex_color_for_player = global.hex_color_for_player2;
-		var player_key_left = global.player_[inp.key][2][1][action.left];
-		var player_key_right = global.player_[inp.key][2][1][action.right];
-		var player_key2_left = global.player_[inp.key][2][2][action.left];
-		var player_key2_right = global.player_[inp.key][2][2][action.right];
-		var player_key_up = global.player_[inp.key][2][1][action.up];
-		var player_key_down = global.player_[inp.key][2][1][action.down];
-		var player_key2_up = global.player_[inp.key][2][2][action.up];
-		var player_key2_down = global.player_[inp.key][2][2][action.down];
-		var player_key_back = global.player_[inp.key][2][1][action.back];
-		var player_key2_back = global.player_[inp.key][2][2][action.back];
-		var player_key_accept = global.player_[inp.key][2][1][action.accept];
-		var player_key2_accept = global.player_[inp.key][2][2][action.accept];
-		var player_gamepad_button_back = global.player_[inp.gp][2][1][action.back];
-		var player_gamepad_button2_back = global.player_[inp.gp][2][2][action.back];
-		var player_gamepad_button_accept = global.player_[inp.gp][2][1][action.accept];
-		var player_gamepad_button2_accept = global.player_[inp.gp][2][2][action.accept];
-	}
-	#endregion /* If player is player 2, set all the variables to player 2 variables END */
-	
-	else
-	
-	#region /* If player is player 3, set all the variables to player 3 variables */
-	if (what_player == 3)
-	{
-		var sprite_select_player = global.sprite_select_player[3];
-		var hex_color_for_player = global.hex_color_for_player3;
-		var player_key_left = global.player_[inp.key][3][1][action.left];
-		var player_key_right = global.player_[inp.key][3][1][action.right];
-		var player_key2_left = global.player_[inp.key][3][2][action.left];
-		var player_key2_right = global.player_[inp.key][3][2][action.right];
-		var player_key_up = global.player_[inp.key][3][1][action.up];
-		var player_key_down = global.player_[inp.key][3][1][action.down];
-		var player_key2_up = global.player_[inp.key][3][2][action.up];
-		var player_key2_down = global.player_[inp.key][3][2][action.down];
-		var player_key_back = global.player_[inp.key][3][1][action.back];
-		var player_key2_back = global.player_[inp.key][3][2][action.back];
-		var player_key_accept = global.player_[inp.key][3][1][action.accept];
-		var player_key2_accept = global.player_[inp.key][3][2][action.accept];
-		var player_gamepad_button_back = global.player_[inp.gp][3][1][action.back];
-		var player_gamepad_button2_back = global.player_[inp.gp][3][2][action.back];
-		var player_gamepad_button_accept = global.player_[inp.gp][3][1][action.accept];
-		var player_gamepad_button2_accept = global.player_[inp.gp][3][2][action.accept];
-	}
-	#endregion /* If player is player 3, set all the variables to player 3 variables END */
-	
-	else
-	
-	#region /* If player is player 4, set all the variables to player 4 variables */
-	if (what_player == 4)
-	{
-		var sprite_select_player = global.sprite_select_player[4];
-		var hex_color_for_player = global.hex_color_for_player4;
-		var player_key_left = global.player_[inp.key][4][1][action.left];
-		var player_key_right = global.player_[inp.key][4][1][action.right];
-		var player_key2_left = global.player_[inp.key][4][2][action.left];
-		var player_key2_right = global.player_[inp.key][4][2][action.right];
-		var player_key_up = global.player_[inp.key][4][1][action.up];
-		var player_key_down = global.player_[inp.key][4][1][action.down];
-		var player_key2_up = global.player_[inp.key][4][2][action.up];
-		var player_key2_down = global.player_[inp.key][4][2][action.down];
-		var player_key_back = global.player_[inp.key][4][1][action.back];
-		var player_key2_back = global.player_[inp.key][4][2][action.back];
-		var player_key_accept = global.player_[inp.key][4][1][action.accept];
-		var player_key2_accept = global.player_[inp.key][4][2][action.accept];
-		var player_gamepad_button_back = global.player_[inp.gp][4][1][action.back];
-		var player_gamepad_button2_back = global.player_[inp.gp][4][2][action.back];
-		var player_gamepad_button_accept = global.player_[inp.gp][4][1][action.accept];
-		var player_gamepad_button2_accept = global.player_[inp.gp][4][2][action.accept];
-	}
-	#endregion /* If player is player 4, set all the variables to player 4 variables END */
+	#region /* If player is player, set all the variables to Player variables */
+	var sprite_select_player = global.sprite_select_player[what_player];
+	var player_key_left = global.player_[inp.key][what_player][1][action.left];
+	var player_key_right = global.player_[inp.key][what_player][1][action.right];
+	var player_key2_left = global.player_[inp.key][what_player][2][action.left];
+	var player_key2_right = global.player_[inp.key][what_player][2][action.right];
+	var player_key_up = global.player_[inp.key][what_player][1][action.up];
+	var player_key_down = global.player_[inp.key][what_player][1][action.down];
+	var player_key2_up = global.player_[inp.key][what_player][2][action.up];
+	var player_key2_down = global.player_[inp.key][what_player][2][action.down];
+	var player_key_back = global.player_[inp.key][what_player][1][action.back];
+	var player_key2_back = global.player_[inp.key][what_player][2][action.back];
+	var player_key_accept = global.player_[inp.key][what_player][1][action.accept];
+	var player_key2_accept = global.player_[inp.key][what_player][2][action.accept];
+	var player_gamepad_button_back = global.player_[inp.gp][what_player][1][action.back];
+	var player_gamepad_button2_back = global.player_[inp.gp][what_player][2][action.back];
+	var player_gamepad_button_accept = global.player_[inp.gp][what_player][1][action.accept];
+	var player_gamepad_button2_accept = global.player_[inp.gp][what_player][2][action.accept];
+	#endregion /* If player is player, set all the variables to Player variables END */
 	
 	#endregion /* Set correct variables for players END */
 	
@@ -177,7 +95,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	&& can_input_player_name[3] == 0
 	)
 	{
-		draw_sprite_ext(sprite_select_player, 0, get_window_width * 0.5 + xx[what_player] , get_window_height * 0.5, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, hex_color_for_player, 1);
+		draw_sprite_ext(sprite_select_player, 0, get_window_width * 0.5 + xx[what_player] , get_window_height * 0.5, (392 / sprite_get_width(sprite_select_player)) * scale_offset, (392 / sprite_get_width(sprite_select_player)) * scale_offset, 0, c_white, 1);
 		if (can_input_player_name[1])
 		|| (can_input_player_name[2])
 		|| (can_input_player_name[3])
@@ -191,10 +109,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		
 		#region /* Display Character Name */
 		if (player_menu[what_player] != "select_name")
-		&& (!can_input_player_name[1])
-		&& (!can_input_player_name[2])
-		&& (!can_input_player_name[3])
-		&& (!can_input_player_name[4])
+		&& (no_players_are_inputting_names)
 		|| (global.controls_used_for_navigation == "mouse")
 		{
 			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player], get_window_height * 0.5 + 324, string(character_name), global.default_text_size, c_menu_outline, c_menu_fill, 1);
@@ -205,10 +120,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#endregion /* Draw character portrait for player END */
 	
 	#region /* Display Selected Skin if skins are available */
-	if (!can_input_player_name[1])
-	&& (!can_input_player_name[2])
-	&& (!can_input_player_name[3])
-	&& (!can_input_player_name[4])
+	if (no_players_are_inputting_names)
 	{
 		
 		#region /* Player Select Skin */
@@ -302,10 +214,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#endregion /* Display Selected Skin if skins are available END */
 	
 	#region /* Display Selected Voice Pack if voice packs are available */
-	if (!can_input_player_name[1])
-	&& (!can_input_player_name[2])
-	&& (!can_input_player_name[3])
-	&& (!can_input_player_name[4])
+	if (no_players_are_inputting_names)
 	{
 		
 		#region /* Player Select Voice Pack */
@@ -401,10 +310,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#endregion /* Display Selected Voice Pack if voice packs are available END */
 	
 	#region /* Show left and right arrows when selecting character */
-	if (!can_input_player_name[1])
-	&& (!can_input_player_name[2])
-	&& (!can_input_player_name[3])
-	&& (!can_input_player_name[4])
+	if (no_players_are_inputting_names)
 	{
 		
 		#region /* Player Show left and right arrows when selecting character */
@@ -522,15 +428,9 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	&& (player_menu[what_player] != "open_custom_characters_folder")
 	&& (player_menu[what_player] != "manage_character")
 	&& (player_menu[what_player] != "online_character_list")
-	&& (!can_input_player_name[1])
-	&& (!can_input_player_name[2])
-	&& (!can_input_player_name[3])
-	&& (!can_input_player_name[4])
+	&& (no_players_are_inputting_names)
 	|| (global.controls_used_for_navigation == "mouse")
-	&& (!can_input_player_name[1])
-	&& (!can_input_player_name[2])
-	&& (!can_input_player_name[3])
-	&& (!can_input_player_name[4])
+	&& (no_players_are_inputting_names)
 	{
 		if (player_accept_selection[what_player] == 0)
 		{
@@ -633,10 +533,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	draw_set_valign(fa_middle);
 	
 	if (player_menu[what_player] == "select_name")
-	&& (!can_input_player_name[1])
-	&& (!can_input_player_name[2])
-	&& (!can_input_player_name[3])
-	&& (!can_input_player_name[4])
+	&& (no_players_are_inputting_names)
 	&& (global.controls_used_for_navigation != "mouse")
 	{
 		scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[what_player] + 60, name_input_y + 35, l10n_text("Enter name") + ": ", global.default_text_size, c_black, c_white, 1); /* Accept Text */

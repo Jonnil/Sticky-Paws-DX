@@ -7,32 +7,32 @@ if (global.checkpoint_x == xstart)
 	&& (instance_exists(obj_player))
 	{
 		if (checkpoint_what_player == 1)
-		&& (obj_camera.player1 > 0)
-		&& (instance_exists(obj_camera.player1))
-		&& (obj_camera.player1.sprite_checkpoint_activated > 0)
+		&& (obj_camera.player[1] > 0)
+		&& (instance_exists(obj_camera.player[1]))
+		&& (obj_camera.player[1].sprite_checkpoint_activated > 0)
 		{
-			sprite_index = obj_camera.player1.sprite_checkpoint_activated;
+			sprite_index = obj_camera.player[1].sprite_checkpoint_activated;
 		}
 		else
 		if (checkpoint_what_player = 2)
-		&& (obj_camera.player2 > 0)
-		&& (instance_exists(obj_camera.player2))
-		&& (obj_camera.player2.sprite_checkpoint_activated > 0)
+		&& (obj_camera.player[2] > 0)
+		&& (instance_exists(obj_camera.player[2]))
+		&& (obj_camera.player[2].sprite_checkpoint_activated > 0)
 		{
-			sprite_index = obj_camera.player2.sprite_checkpoint_activated;
+			sprite_index = obj_camera.player[2].sprite_checkpoint_activated;
 		}
 		else
 		if (checkpoint_what_player = 3)
-		&& (obj_camera.player3 > 0)
-		&& (instance_exists(obj_camera.player3))
-		&& (obj_camera.player3.sprite_checkpoint_activated > 0)
+		&& (obj_camera.player[3] > 0)
+		&& (instance_exists(obj_camera.player[3]))
+		&& (obj_camera.player[3].sprite_checkpoint_activated > 0)
 		{
-			sprite_index = obj_camera.player3.sprite_checkpoint_activated;
+			sprite_index = obj_camera.player[3].sprite_checkpoint_activated;
 		}
 		else
 		if (checkpoint_what_player = 4)
-		&& (obj_camera.player4 > 0)
-		&& (instance_exists(obj_camera.player4))
+		&& (obj_camera.player[4] > 0)
+		&& (instance_exists(obj_camera.player[4]))
 		&& (obj_camera.player4.sprite_checkpoint_activated > 0)
 		{
 			sprite_index = obj_camera.player4.sprite_checkpoint_activated;

@@ -61,13 +61,13 @@ if (global.quit_level)
 		
 		#region /* Player availability check. These variables control player availability */
 		/* If certain players are not playing the level anymore, make them disconnect until they join manually again */
-		if (!instance_exists(obj_camera.player1))
+		if (!instance_exists(obj_camera.player[1]))
 			global.player_can_play[1] = false;
-		if (!instance_exists(obj_camera.player2))
+		if (!instance_exists(obj_camera.player[2]))
 			global.player_can_play[2] = false;
-		if (!instance_exists(obj_camera.player3))
+		if (!instance_exists(obj_camera.player[3]))
 			global.player_can_play[3] = false;
-		if (!instance_exists(obj_camera.player4))
+		if (!instance_exists(obj_camera.player[4]))
 			global.player_can_play[4] = false;
 		#endregion /* Player availability check. These variables control player availability END */
 		
@@ -131,13 +131,13 @@ if (goal && global.time_countdown_bonus <= 0)
 		scr_save_level(); /* Important that you save all level information here, before going back to the map screen, but after setting level_clear_rate to clear */
 		
 		/* If certain player is no longer playing, make them dissapear from the game until they manually join the game again */
-		if (!instance_exists(obj_camera.player1))
+		if (!instance_exists(obj_camera.player[1]))
 			global.player_can_play[1] = false;
-		if (!instance_exists(obj_camera.player2))
+		if (!instance_exists(obj_camera.player[2]))
 			global.player_can_play[2] = false;
-		if (!instance_exists(obj_camera.player3))
+		if (!instance_exists(obj_camera.player[3]))
 			global.player_can_play[3] = false;
-		if (!instance_exists(obj_camera.player4))
+		if (!instance_exists(obj_camera.player[4]))
 			global.player_can_play[4] = false;
 		
 		if (!global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")

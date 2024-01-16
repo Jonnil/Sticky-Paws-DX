@@ -16,7 +16,7 @@ function scr_draw_option_description()
 	{
 		var option_default = "";
 	}
-	if (global.option_description != "")
+	if (global.option_description != "" && option_default != "")
 	{
 		var option_description_text = string(global.option_description) + " - " + string(option_default);
 	}

@@ -15,7 +15,7 @@ if (!have_set_numbers) /* Have to set numbers in step event like this for it to 
 	{
 		if (instance_number(obj_big_collectible_number) >= set_all_big_collectible)
 		{
-			with (instance_nth_nearest(global.level_player1_start_x, global.level_player1_start_y, obj_big_collectible_number, set_all_big_collectible))
+			with (instance_nth_nearest(global.level_player_start_x[1], global.level_player_start_y[1], obj_big_collectible_number, set_all_big_collectible))
 			{
 				big_collectible = obj_camera.set_all_big_collectible;
 			}
@@ -29,7 +29,7 @@ if (!have_set_numbers) /* Have to set numbers in step event like this for it to 
 	{
 		if (instance_number(obj_checkpoint) >= checkpoint_number)
 		{
-			with (instance_nth_nearest(global.level_player1_start_x, global.level_player1_start_y, obj_checkpoint, checkpoint_number))
+			with (instance_nth_nearest(global.level_player_start_x[1], global.level_player_start_y[1], obj_checkpoint, checkpoint_number))
 			{
 				checkpoint_number = obj_camera.checkpoint_number;
 			}
@@ -168,12 +168,12 @@ if (layer_exists("WindEffectLayer"))
 #region /* Multiplayer - Has pressed keys */
 
 #region /* Player 1 Show Controls HUD timer */
-if (player1 >= 1)
-&& (instance_exists(player1))
+if (player[1] >= 1)
+&& (instance_exists(player[1]))
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[1] == 0)
-	|| (!player1.can_move)
+	|| (!player[1].can_move)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
@@ -182,13 +182,13 @@ if (player1 >= 1)
 	if (global.player_show_controls[1] >= 1)
 	&& (global.player_show_controls[1] <= 9)
 	{
-		if (player1_show_controls_timer >= 1)
+		if (player_show_controls_timer[1] >= 1)
 		{
 			player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
-			player1_show_controls_timer --;
+			player_show_controls_timer[1] --;
 		}
-		if (player1_show_controls_timer <= 0)
-		&& (player1.speed == 0)
+		if (player_show_controls_timer[1] <= 0)
+		&& (player[1].speed == 0)
 		{
 			player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 1, 0.1);
 		}
@@ -199,9 +199,9 @@ if (player1 >= 1)
 		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 1, 0.1);
 	}
 	
-	if (player1.speed > 0)
+	if (player[1].speed > 0)
 	{
-		player1_show_controls_timer = get_room_speed * global.player_show_controls[1];
+		player_show_controls_timer[1] = get_room_speed * global.player_show_controls[1];
 	}
 }
 else
@@ -212,17 +212,17 @@ if (global.player_can_play[1])
 else
 {
 	player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
-	player1_show_controls_timer = get_room_speed * global.player_show_controls[1];
+	player_show_controls_timer[1] = get_room_speed * global.player_show_controls[1];
 }
 #endregion /* Player 1 Show Controls HUD timer */
 
 #region /* Player 2 Show Controls HUD timer */
-if (player2 >= 1)
-&& (instance_exists(player2))
+if (player[2] >= 1)
+&& (instance_exists(player[2]))
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[2] == 0)
-	|| (!player2.can_move)
+	|| (!player[2].can_move)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
@@ -231,13 +231,13 @@ if (player2 >= 1)
 	if (global.player_show_controls[2] >= 1)
 	&& (global.player_show_controls[2] <= 9)
 	{
-		if (player2_show_controls_timer >= 1)
+		if (player_show_controls_timer[2] >= 1)
 		{
 			player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
-			player2_show_controls_timer --;
+			player_show_controls_timer[2] --;
 		}
-		if (player2_show_controls_timer <= 0)
-		&& (player2.speed == 0)
+		if (player_show_controls_timer[2] <= 0)
+		&& (player[2].speed == 0)
 		{
 			player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
 		}
@@ -248,9 +248,9 @@ if (player2 >= 1)
 		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
 	}
 	
-	if (player2.speed > 0)
+	if (player[2].speed > 0)
 	{
-		player2_show_controls_timer = get_room_speed * global.player_show_controls[2];
+		player_show_controls_timer[2] = get_room_speed * global.player_show_controls[2];
 	}
 }
 else
@@ -261,17 +261,17 @@ if (global.player_can_play[2])
 else
 {
 	player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
-	player2_show_controls_timer = get_room_speed * global.player_show_controls[2];
+	player_show_controls_timer[2] = get_room_speed * global.player_show_controls[2];
 }
 #endregion /* Player 2 Show Controls HUD timer */
 
 #region /* Player 3 Show Controls HUD timer */
-if (player3 >= 1)
-&& (instance_exists(player3))
+if (player[3] >= 1)
+&& (instance_exists(player[3]))
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[3] == 0)
-	|| (!player3.can_move)
+	|| (!player[3].can_move)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
@@ -280,13 +280,13 @@ if (player3 >= 1)
 	if (global.player_show_controls[3] >= 1)
 	&& (global.player_show_controls[3] <= 9)
 	{
-		if (player3_show_controls_timer >= 1)
+		if (player_show_controls_timer[3] >= 1)
 		{
 			player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
-			player3_show_controls_timer --;
+			player_show_controls_timer[3] --;
 		}
-		if (player3_show_controls_timer <= 0)
-		&& (player3.speed == 0)
+		if (player_show_controls_timer[3] <= 0)
+		&& (player[3].speed == 0)
 		{
 			player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.1);
 		}
@@ -297,9 +297,9 @@ if (player3 >= 1)
 		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.2);
 	}
 	
-	if (player3.speed > 0)
+	if (player[3].speed > 0)
 	{
-		player3_show_controls_timer = get_room_speed * global.player_show_controls[3];
+		player_show_controls_timer[3] = get_room_speed * global.player_show_controls[3];
 	}
 }
 else
@@ -310,13 +310,13 @@ if (global.player_can_play[3])
 else
 {
 	player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
-	player3_show_controls_timer = get_room_speed * global.player_show_controls[3];
+	player_show_controls_timer[3] = get_room_speed * global.player_show_controls[3];
 }
 #endregion /* Player 3 Show Controls HUD timer */
 
 #region /* Player 4 Show Controls HUD timer */
-if (player4 >= 1)
-&& (instance_exists(player4))
+if (player[4] >= 1)
+&& (instance_exists(player[4]))
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[4] == 0)
@@ -329,12 +329,12 @@ if (player4 >= 1)
 	if (global.player_show_controls[4] >= 1)
 	&& (global.player_show_controls[4] <= 9)
 	{
-		if (player4_show_controls_timer >= 1)
+		if (player_show_controls_timer[4] >= 1)
 		{
 			player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
-			player4_show_controls_timer --;
+			player_show_controls_timer[4] --;
 		}
-		if (player4_show_controls_timer <= 0)
+		if (player_show_controls_timer[4] <= 0)
 		&& (player4.speed == 0)
 		{
 			player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
@@ -348,7 +348,7 @@ if (player4 >= 1)
 	
 	if (player4.speed > 0)
 	{
-		player4_show_controls_timer = get_room_speed * global.player_show_controls[4];
+		player_show_controls_timer[4] = get_room_speed * global.player_show_controls[4];
 	}
 }
 else
@@ -359,47 +359,22 @@ if (global.player_can_play[4])
 else
 {
 	player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
-	player4_show_controls_timer = get_room_speed * global.player_show_controls[4];
+	player_show_controls_timer[4] = get_room_speed * global.player_show_controls[4];
 }
 #endregion /* Player 4 Show Controls HUD timer */
 
 #endregion /* Multiplayer - Has pressed keys END */
 
-#region /* Stop gamepad vibration for different players */
-
-#region /* Stop gamepad vibration for player 1 */
-if (!player1_vibration_active)
+#region /* Stop gamepad vibration for player */
+for (var i = 1; i <= global.max_players; i += 1)
 {
-	player1_motor_speed = lerp(player1_motor_speed, 0, 0.1);
+	if (!player_vibration_active[i])
+	{
+		player_motor_speed[i] = lerp(player_motor_speed[i], 0, 0.1);
+	}
+	gamepad_set_vibration(global.player_slot[i], player_motor_speed[i], player_motor_speed[i]);
 }
-gamepad_set_vibration(global.player_slot[1], player1_motor_speed, player1_motor_speed);
-#endregion /* Stop gamepad vibration for player 1 END */
-
-#region /* Stop gamepad vibration for player 2 */
-if (!player2_vibration_active)
-{
-	player2_motor_speed = lerp(player2_motor_speed, 0, 0.1);
-}
-gamepad_set_vibration(global.player_slot[2], player2_motor_speed, player2_motor_speed);
-#endregion /* Stop gamepad vibration for player 2 END */
-
-#region /* Stop gamepad vibration for player 3 */
-if (!player3_vibration_active)
-{
-	player3_motor_speed = lerp(player3_motor_speed, 0, 0.1);
-}
-gamepad_set_vibration(global.player_slot[3], player3_motor_speed, player3_motor_speed);
-#endregion /* Stop gamepad vibration for player 3 END */
-
-#region /* Stop gamepad vibration for player 4 */
-if (!player4_vibration_active)
-{
-	player4_motor_speed = lerp(player4_motor_speed, 0, 0.1);
-}
-gamepad_set_vibration(global.player_slot[4], player4_motor_speed, player4_motor_speed);
-#endregion /* Stop gamepad vibration for player 4 END */
-
-#endregion /* Stop gamepad vibration for different players END */
+#endregion /* Stop gamepad vibration for player END */
 
 #region /* Spawn Players in multiplayer */
 if (!global.pause)
@@ -410,7 +385,7 @@ if (!global.pause)
 	|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
 	{
-		if (player1 <= 0)
+		if (player[1] <= 0)
 		&& (can_spawn_player[1])
 		&& (lives > 0)
 		{
@@ -420,13 +395,13 @@ if (!global.pause)
 			}
 			if (instance_exists(obj_player))
 			{
-				player1 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+				player[1] = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
 			}
 			else
 			{
-				player1 = instance_create_depth(x, y, 0, obj_player);
+				player[1] = instance_create_depth(x, y, 0, obj_player);
 			}
-			with(player1)
+			with(player[1])
 			{
 				custom_character = global.character_for_player[1];
 				selected_voice_pack = global.voicepack_for_player[1];
@@ -444,7 +419,7 @@ if (!global.pause)
 	|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
 	{
-		if (player2 <= 0)
+		if (player[2] <= 0)
 		&& (can_spawn_player[2])
 		&& (lives > 0)
 		{
@@ -454,13 +429,13 @@ if (!global.pause)
 			}
 			if (instance_exists(obj_player))
 			{
-				player2 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+				player[2] = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
 			}
 			else
 			{
-				player2 = instance_create_depth(x, y, 0, obj_player);
+				player[2] = instance_create_depth(x, y, 0, obj_player);
 			}
-			with(player2)
+			with(player[2])
 			{
 				custom_character = global.character_for_player[2];
 				selected_voice_pack = global.voicepack_for_player[2];
@@ -478,7 +453,7 @@ if (!global.pause)
 	|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
 	{
-		if (player3 <= 0)
+		if (player[3] <= 0)
 		&& (can_spawn_player[3])
 		&& (lives > 0)
 		{
@@ -488,13 +463,13 @@ if (!global.pause)
 			}
 			if (instance_exists(obj_player))
 			{
-				player3 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+				player[3] = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
 			}
 			else
 			{
-				player3 = instance_create_depth(x, y, 0, obj_player);
+				player[3] = instance_create_depth(x, y, 0, obj_player);
 			}
-			with(player3)
+			with(player[3])
 			{
 				custom_character = global.character_for_player[3];
 				selected_voice_pack = global.voicepack_for_player[3];
@@ -512,7 +487,7 @@ if (!global.pause)
 	|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.jump]))
 	|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
 	{
-		if (player4 <= 0)
+		if (player[4] <= 0)
 		&& (can_spawn_player[4])
 		&& (lives > 0)
 		{
@@ -522,13 +497,13 @@ if (!global.pause)
 			}
 			if (instance_exists(obj_player))
 			{
-				player4 = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+				player[4] = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
 			}
 			else
 			{
-				player4 = instance_create_depth(x, y, 0, obj_player);
+				player[4] = instance_create_depth(x, y, 0, obj_player);
 			}
-			with(player4)
+			with(player[4])
 			{
 				custom_character = global.character_for_player[4];
 				selected_voice_pack = global.voicepack_for_player[4];
@@ -565,25 +540,25 @@ if (!save_level_as_png)
 		view_wview_lerp = lerp(0, 0, 0.05);
 		view_hview_lerp = lerp(0, 0, 0.05);
 		
-		if (player1 > 0)
+		if (player[1] > 0)
 		{
-			xx = mean(player1.x, obj_boss.x);
-			yy = mean(player1.y, obj_boss.y);
+			xx = mean(player[1].x, obj_boss.x);
+			yy = mean(player[1].y, obj_boss.y);
 		}
 		else
-		if (player2 > 0)
+		if (player[2] > 0)
 		{
-			xx = mean(player2.x, obj_boss.x);
-			yy = mean(player2.y, obj_boss.y);
+			xx = mean(player[2].x, obj_boss.x);
+			yy = mean(player[2].y, obj_boss.y);
 		}
 		else
-		if (player3 > 0)
+		if (player[3] > 0)
 		{
-			xx = mean(player3.x, obj_boss.x);
-			yy = mean(player3.y, obj_boss.y);
+			xx = mean(player[3].x, obj_boss.x);
+			yy = mean(player[3].y, obj_boss.y);
 		}
 		else
-		if (player4 > 0)
+		if (player[4] > 0)
 		{
 			xx = mean(player4.x, obj_boss.x);
 			yy = mean(player4.y, obj_boss.y);
@@ -600,84 +575,84 @@ if (!save_level_as_png)
 		#region /* Camera should follow multiple players */
 		
 		/* 1, 2, 3, 4 */
-		if (player1 > 0)
-		&& (player2 > 0)
-		&& (player3 > 0)
-		&& (player4 > 0)
+		if (player[1] > 0)
+		&& (player[2] > 0)
+		&& (player[3] > 0)
+		&& (player[4] > 0)
 		{
-			xx = mean(player1.x, player2.x, player3.x, player4.x);
-			yy = mean(player1.y, player2.y, player3.y, player4.y);
+			xx = mean(player[1].x, player[2].x, player[3].x, player4.x);
+			yy = mean(player[1].y, player[2].y, player[3].y, player4.y);
 		}
 		
 		else
 		
 		/* 1, 2, 3 */
-		if (player1 > 0)
-		&& (player2 > 0)
-		&& (player3 > 0)
+		if (player[1] > 0)
+		&& (player[2] > 0)
+		&& (player[3] > 0)
 		{
-			xx = mean(player1.x, player2.x, player3.x);
-			yy = mean(player1.y, player2.y, player3.y);
+			xx = mean(player[1].x, player[2].x, player[3].x);
+			yy = mean(player[1].y, player[2].y, player[3].y);
 		}
 		
 		else
 		
 		/* 1, 2 */
-		if (player1 > 0)
-		&& (player2 > 0)
+		if (player[1] > 0)
+		&& (player[2] > 0)
 		{
-			xx = mean(player1.x, player2.x);
-			yy = mean(player1.y, player2.y);
+			xx = mean(player[1].x, player[2].x);
+			yy = mean(player[1].y, player[2].y);
 		}
 		
 		else
 		
 		/* 1, 3 */
-		if (player1 > 0)
-		&& (player3 > 0)
+		if (player[1] > 0)
+		&& (player[3] > 0)
 		{
-			xx = mean(player1.x, player3.x);
-			yy = mean(player1.y, player3.y);
+			xx = mean(player[1].x, player[3].x);
+			yy = mean(player[1].y, player[3].y);
 		}
 		
 		else
 		
 		/* 1, 4 */
-		if (player1 > 0)
-		&& (player4 > 0)
+		if (player[1] > 0)
+		&& (player[4] > 0)
 		{
-			xx = mean(player1.x, player4.x);
-			yy = mean(player1.y, player4.y);
+			xx = mean(player[1].x, player4.x);
+			yy = mean(player[1].y, player4.y);
 		}
 		
 		else
 		
 		/* 2, 3 */
-		if (player2 > 0)
-		&& (player3 > 0)
+		if (player[2] > 0)
+		&& (player[3] > 0)
 		{
-			xx = mean(player2.x, player3.x);
-			yy = mean(player2.y, player3.y);
+			xx = mean(player[2].x, player[3].x);
+			yy = mean(player[2].y, player[3].y);
 		}
 		
 		else
 		
 		/* 2, 4 */
-		if (player1 > 0)
-		&& (player4 > 0)
+		if (player[1] > 0)
+		&& (player[4] > 0)
 		{
-			xx = mean(player2.x, player4.x);
-			yy = mean(player2.y, player4.y);
+			xx = mean(player[2].x, player4.x);
+			yy = mean(player[2].y, player4.y);
 		}
 		
 		else
 		
 		/* 3, 4 */
-		if (player3 > 0)
-		&& (player4 > 0)
+		if (player[3] > 0)
+		&& (player[4] > 0)
 		{
-			xx = mean(player3.x, player4.x);
-			yy = mean(player3.y, player4.y);
+			xx = mean(player[3].x, player4.x);
+			yy = mean(player[3].y, player4.y);
 		}
 		#endregion /* Camera should follow multiple players END */
 		
@@ -692,45 +667,45 @@ if (!save_level_as_png)
 		
 		#region /* Follow one player. In case something goes wrong, camera will always follow one player */
 		/* 1 */
-		if (player1 >= 1)
-		&& (instance_exists(player1))
+		if (player[1] >= 1)
+		&& (instance_exists(player[1]))
 		{
 			
 			#region /* ONE PLAYER CAMERA */
 			
 			#region /* Tries to be a bit ahead of player */
-			xx = player1.x + player1.hspeed * 15;
-			if (player1.on_ground)
-			&& (player1.vspeed >= 0)
+			xx = player[1].x + player[1].hspeed * 15;
+			if (player[1].on_ground)
+			&& (player[1].vspeed >= 0)
 			{
-				yy = player1.y
+				yy = player[1].y
 			}
 			else
-			if (player1.y < camera_get_view_y(view_camera[view_current]) + 128)
+			if (player[1].y < camera_get_view_y(view_camera[view_current]) + 128)
 			{
-				yy -= abs(player1.vspeed);
+				yy -= abs(player[1].vspeed);
 			}
-			if (player1.wall_jump)
-			|| (player1.climb)
+			if (player[1].wall_jump)
+			|| (player[1].climb)
 			{
-				yy = player1.y
+				yy = player[1].y
 			}
-			if (player1.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+			if (player[1].y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 			{
-				yy = player1.y;
+				yy = player[1].y;
 			}
 			#endregion /* Tries to be a bit ahead of player END */
 			
 			#region /* Follow Player in y position when doing specific things */
-			if (player1.in_water)
-			|| (player1.stick_to_wall)
-			|| (player1.spring)
-			|| (player1.climb)
-			|| (player1.horizontal_rope_climb)
+			if (player[1].in_water)
+			|| (player[1].stick_to_wall)
+			|| (player[1].spring)
+			|| (player[1].climb)
+			|| (player[1].horizontal_rope_climb)
 			{
-				if (player1.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+				if (player[1].y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
-					yy = player1.y;
+					yy = player[1].y;
 				}
 			}
 			#endregion /* Follow Player in y position when doing specific things END */
@@ -744,45 +719,45 @@ if (!save_level_as_png)
 		else
 		
 		/* 2 */
-		if (player2 >= 1)
-		&& (instance_exists(player2))
+		if (player[2] >= 1)
+		&& (instance_exists(player[2]))
 		{
 			
 			#region /* ONE PLAYER CAMERA */
 			
 			#region /* Tries to be a bit ahead of player */
-			xx = player2.x + player2.hspeed * 15;
-			if (player2.on_ground)
-			&& (player2.vspeed >= 0)
+			xx = player[2].x + player[2].hspeed * 15;
+			if (player[2].on_ground)
+			&& (player[2].vspeed >= 0)
 			{
-				yy = player2.y
+				yy = player[2].y
 			}
 			else
-			if (player2.y < camera_get_view_y(view_camera[view_current]) + 128)
+			if (player[2].y < camera_get_view_y(view_camera[view_current]) + 128)
 			{
-				yy -= abs(player2.vspeed);
+				yy -= abs(player[2].vspeed);
 			}
-			if (player2.wall_jump)
-			|| (player2.climb)
+			if (player[2].wall_jump)
+			|| (player[2].climb)
 			{
-				yy = player2.y
+				yy = player[2].y
 			}
-			if (player2.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+			if (player[2].y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 			{
-				yy = player2.y;
+				yy = player[2].y;
 			}
 			#endregion /* Tries to be a bit ahead of player END */
 			
 			#region /* Follow Player in y position when doing specific things */
-			if (player2.in_water)
-			|| (player2.stick_to_wall)
-			|| (player2.spring)
-			|| (player2.climb)
-			|| (player2.horizontal_rope_climb)
+			if (player[2].in_water)
+			|| (player[2].stick_to_wall)
+			|| (player[2].spring)
+			|| (player[2].climb)
+			|| (player[2].horizontal_rope_climb)
 			{
-				if (player2.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+				if (player[2].y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
-					yy = player2.y;
+					yy = player[2].y;
 				}
 			}
 			#endregion /* Follow Player in y position when doing specific things END */
@@ -796,45 +771,45 @@ if (!save_level_as_png)
 		else
 		
 		/* 3 */
-		if (player3 >= 1)
-		&& (instance_exists(player3))
+		if (player[3] >= 1)
+		&& (instance_exists(player[3]))
 		{
 			
 			#region /* ONE PLAYER CAMERA */
 			
 			#region /* Tries to be a bit ahead of player */
-			xx = player3.x + player3.hspeed * 15;
-			if (player3.on_ground)
-			&& (player3.vspeed >= 0)
+			xx = player[3].x + player[3].hspeed * 15;
+			if (player[3].on_ground)
+			&& (player[3].vspeed >= 0)
 			{
-				yy = player3.y
+				yy = player[3].y
 			}
 			else
-			if (player3.y < camera_get_view_y(view_camera[view_current]) + 128)
+			if (player[3].y < camera_get_view_y(view_camera[view_current]) + 128)
 			{
-				yy -= abs(player3.vspeed);
+				yy -= abs(player[3].vspeed);
 			}
-			if (player3.wall_jump)
-			|| (player3.climb)
+			if (player[3].wall_jump)
+			|| (player[3].climb)
 			{
-				yy = player3.y
+				yy = player[3].y
 			}
-			if (player3.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+			if (player[3].y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 			{
-				yy = player3.y;
+				yy = player[3].y;
 			}
 			#endregion /* Tries to be a bit ahead of player END */
 			
 			#region /* Follow Player in y position when doing specific things */
-			if (player3.in_water)
-			|| (player3.stick_to_wall)
-			|| (player3.spring)
-			|| (player3.climb)
-			|| (player3.horizontal_rope_climb)
+			if (player[3].in_water)
+			|| (player[3].stick_to_wall)
+			|| (player[3].spring)
+			|| (player[3].climb)
+			|| (player[3].horizontal_rope_climb)
 			{
-				if (player3.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+				if (player[3].y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
-					yy = player3.y;
+					yy = player[3].y;
 				}
 			}
 			#endregion /* Follow Player in y position when doing specific things END */
@@ -848,8 +823,8 @@ if (!save_level_as_png)
 		else
 		
 		/* 4 */
-		if (player4 >= 1)
-		&& (instance_exists(player4))
+		if (player[4] >= 1)
+		&& (instance_exists(player[4]))
 		{
 			
 			#region /* ONE PLAYER CAMERA */
@@ -969,18 +944,18 @@ if (!save_level_as_png)
 }
 
 #region /* Step Run Toggling */
-key_player1_run_toggle_pressed = scr_key_initialize(key_player1_run_toggle_pressed, 1, 1, action.run_toggle);
-key_player2_run_toggle_pressed = scr_key_initialize(key_player2_run_toggle_pressed, 1, 2, action.run_toggle);
-key_player3_run_toggle_pressed = scr_key_initialize(key_player3_run_toggle_pressed, 1, 3, action.run_toggle);
-key_player4_run_toggle_pressed = scr_key_initialize(key_player4_run_toggle_pressed, 1, 4, action.run_toggle);
+key_player_run_toggle_pressed[1] = scr_key_initialize(key_player_run_toggle_pressed[1], 1, 1, action.run_toggle);
+key_player_run_toggle_pressed[2] = scr_key_initialize(key_player_run_toggle_pressed[2], 1, 2, action.run_toggle);
+key_player_run_toggle_pressed[3] = scr_key_initialize(key_player_run_toggle_pressed[3], 1, 3, action.run_toggle);
+key_player_run_toggle_pressed[4] = scr_key_initialize(key_player_run_toggle_pressed[4], 1, 4, action.run_toggle);
 
-if (key_player1_run_toggle_pressed)
+if (key_player_run_toggle_pressed[1])
 && (!instance_exists(obj_pause))
 {
-	show_run_toggle_for_player1 = 100;
-	show_run_toggle_for_player2 = 0;
-	show_run_toggle_for_player3 = 0;
-	show_run_toggle_for_player4 = 0;
+	show_run_toggle_for_player[1] = 100;
+	show_run_toggle_for_player[2] = 0;
+	show_run_toggle_for_player[3] = 0;
+	show_run_toggle_for_player[4] = 0;
 	if (!global.player_run_toggle[1])
 	{
 		global.player_run_toggle[1] = true;
@@ -990,13 +965,13 @@ if (key_player1_run_toggle_pressed)
 		global.player_run_toggle[1] = false;
 	}
 }
-if (key_player2_run_toggle_pressed)
+if (key_player_run_toggle_pressed[2])
 && (!instance_exists(obj_pause))
 {
-	show_run_toggle_for_player1 = 0;
-	show_run_toggle_for_player2 = 100;
-	show_run_toggle_for_player3 = 0;
-	show_run_toggle_for_player4 = 0;
+	show_run_toggle_for_player[1] = 0;
+	show_run_toggle_for_player[2] = 100;
+	show_run_toggle_for_player[3] = 0;
+	show_run_toggle_for_player[4] = 0;
 	if (!global.player_run_toggle[2])
 	{
 		global.player_run_toggle[2] = true;
@@ -1006,13 +981,13 @@ if (key_player2_run_toggle_pressed)
 		global.player_run_toggle[2] = false;
 	}
 }
-if (key_player3_run_toggle_pressed)
+if (key_player_run_toggle_pressed[3])
 && (!instance_exists(obj_pause))
 {
-	show_run_toggle_for_player1 = 0;
-	show_run_toggle_for_player2 = 0;
-	show_run_toggle_for_player3 = 100;
-	show_run_toggle_for_player4 = 0;
+	show_run_toggle_for_player[1] = 0;
+	show_run_toggle_for_player[2] = 0;
+	show_run_toggle_for_player[3] = 100;
+	show_run_toggle_for_player[4] = 0;
 	if (!global.player_run_toggle[3])
 	{
 		global.player_run_toggle[3] = true;
@@ -1022,13 +997,13 @@ if (key_player3_run_toggle_pressed)
 		global.player_run_toggle[3] = false;
 	}
 }
-if (key_player4_run_toggle_pressed)
+if (key_player_run_toggle_pressed[4])
 && (!instance_exists(obj_pause))
 {
-	show_run_toggle_for_player1 = 0;
-	show_run_toggle_for_player2 = 0;
-	show_run_toggle_for_player3 = 0;
-	show_run_toggle_for_player4 = 100;
+	show_run_toggle_for_player[1] = 0;
+	show_run_toggle_for_player[2] = 0;
+	show_run_toggle_for_player[3] = 0;
+	show_run_toggle_for_player[4] = 100;
 	if (!global.player_run_toggle[4])
 	{
 		global.player_run_toggle[4] = true;

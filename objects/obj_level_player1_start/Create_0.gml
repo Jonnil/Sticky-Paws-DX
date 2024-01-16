@@ -29,5 +29,5 @@ if (global.character_select_in_this_menu == "main_game")
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 
-global.level_player1_start_x = x;
-global.level_player1_start_y = y;
+global.level_player_start_x[1] = x;
+global.level_player_start_y[1] = y;

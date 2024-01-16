@@ -203,7 +203,6 @@ function scr_character_select_player_navigation(what_player = 1)
 			&& (player_key_a_pressed[what_player])
 			{
 				menu_delay = 60;
-				//show_message("bruh");
 				keyboard_string = global.player_name[what_player];
 				can_input_player_name[1] = 2;
 				can_input_player_name[2] = 2;

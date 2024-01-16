@@ -10,22 +10,13 @@ menu_cursor_index = 0;
 menu = "";
 open_dropdown = false;
 
-key_player1_zoom_in_hold = noone;
-key_player2_zoom_in_hold = noone;
-key_player3_zoom_in_hold = noone;
-key_player4_zoom_in_hold = noone;
-key_player1_zoom_out_hold = noone;
-key_player2_zoom_out_hold = noone;
-key_player3_zoom_out_hold = noone;
-key_player4_zoom_out_hold = noone;
-key_player1_zoom_in_release = noone;
-key_player2_zoom_in_release = noone;
-key_player3_zoom_in_release = noone;
-key_player4_zoom_in_release = noone;
-key_player1_zoom_out_release = noone;
-key_player2_zoom_out_release = noone;
-key_player3_zoom_out_release = noone;
-key_player4_zoom_out_release = noone;
+for(var i = 1; i <= global.max_players; i += 1)
+{
+	key_player_zoom_in_hold[i] = noone;
+	key_player_zoom_out_hold[i] = noone;
+	key_player_zoom_in_release[i] = noone;
+	key_player_zoom_out_release[i] = noone;
+}
 
 reset_game_if_no_interactivity = 0;
 reset_game_if_no_interactivity_second_countdown_timer = 0;

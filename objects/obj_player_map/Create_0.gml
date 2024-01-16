@@ -54,13 +54,6 @@ else
 }
 
 #region /* Play as custom character */
-if (global.player_can_play[1])
-{
-	player = 1;
-	selected_voice_pack = global.voicepack_for_player[1];
-	selected_skin = global.skin_for_player[1];
-}
-else
 if (global.player_can_play[2])
 {
 	player = 2;

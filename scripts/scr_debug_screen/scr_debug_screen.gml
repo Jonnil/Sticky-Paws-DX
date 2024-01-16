@@ -182,20 +182,20 @@ function scr_debug_screen()
 		#region /* X and Y position of player */
 		var get_player = noone;
 		if (instance_exists(obj_camera)) {
-			if (instance_exists(obj_camera.player1)) {
-				var get_player = obj_camera.player1;
+			if (instance_exists(obj_camera.player[1])) {
+				var get_player = obj_camera.player[1];
 			}
 			else
-			if (instance_exists(obj_camera.player2)) {
-				var get_player = obj_camera.player2;
+			if (instance_exists(obj_camera.player[2])) {
+				var get_player = obj_camera.player[2];
 			}
 			else
-			if (instance_exists(obj_camera.player3)) {
-				var get_player = obj_camera.player3;
+			if (instance_exists(obj_camera.player[3])) {
+				var get_player = obj_camera.player[3];
 			}
 			else
-			if (instance_exists(obj_camera.player4)) {
-				var get_player = obj_camera.player4;
+			if (instance_exists(obj_camera.player[4])) {
+				var get_player = obj_camera.player[4];
 			}
 		}
 		else
@@ -236,13 +236,13 @@ function scr_debug_screen()
 		var debug_text_y = 160;
 		
 		if (instance_exists(obj_camera)) {
-			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player1: " + string(obj_camera.player1), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player[1]: " + string(obj_camera.player[1]), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player2: " + string(obj_camera.player2), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player[2]: " + string(obj_camera.player[2]), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player3: " + string(obj_camera.player3), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player[3]: " + string(obj_camera.player[3]), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player4: " + string(obj_camera.player4), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player[4]: " + string(obj_camera.player[4]), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;
 		}
 		if (gamepad_get_description(0) != "") {

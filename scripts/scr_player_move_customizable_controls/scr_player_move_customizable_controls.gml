@@ -77,7 +77,7 @@ function scr_player_move_customizable_controls()
 		else
 		if (player == 4)
 		{
-			global.player4_crouch_toggle = !global.player4_crouch_toggle;
+			global.player_crouch_toggle[4] = !global.player_crouch_toggle[4];
 		}
 	}
 	#endregion /* Crouch Toggling END */
@@ -187,7 +187,7 @@ function scr_player_move_customizable_controls()
 	|| (player == 3)
 	&& (global.player_crouch_toggle[3])
 	|| (player >= 4)
-	&& (global.player4_crouch_toggle)
+	&& (global.player_crouch_toggle[4])
 	|| (down_is_also_crouch)
 	&& (key_down);
 	#endregion /* Key Crouch Hold END */

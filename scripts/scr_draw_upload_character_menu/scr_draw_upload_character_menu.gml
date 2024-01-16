@@ -30,7 +30,7 @@ function scr_draw_upload_character_menu()
 		#region /* Draw Character Portrait */
 		if (global.sprite_select_player[1] > 0)
 		{
-			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
+			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, c_white, 1);
 		}
 		#endregion /* Draw Character Portrait END */
 		
@@ -380,7 +380,7 @@ function scr_draw_upload_character_menu()
 			#region /* Draw Character Portrait */
 			if (global.sprite_select_player[1] > 0)
 			{
-				draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
+				draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, c_white, 1);
 			}
 			#endregion /* Draw Character Portrait END */
 			
@@ -655,7 +655,7 @@ function scr_draw_upload_character_menu()
 		#region /* Draw Character Portrait */
 		if (global.sprite_select_player[1] > 0)
 		{
-			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
+			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, c_white, 1);
 		}
 		#endregion /* Draw Character Portrait END */
 		
@@ -666,19 +666,19 @@ function scr_draw_upload_character_menu()
 		
 		if (menu_delay >= 41)
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y + 42, l10n_text("Generating Level ID"), global.default_text_size, c_black, c_dkgray, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 42, l10n_text("Generating Level ID"), global.default_text_size, c_black, c_dkgray, 1);
 		}
 		else
 		if (menu_delay <= 40)
-		&& (!file_exists(working_directory + string(level_id) + ".zip"))
+		&& (!file_exists(working_directory + string(character_id) + ".zip"))
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y + 42, l10n_text("Creating Zip File"), global.default_text_size, c_black, c_dkgray, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 42, l10n_text("Creating Zip File"), global.default_text_size, c_black, c_dkgray, 1);
 		}
 		else
 		if (menu_delay >= 0)
-		&& (file_exists(working_directory + string(level_id) + ".zip"))
+		&& (file_exists(working_directory + string(character_id) + ".zip"))
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, uploading_level_message_y + 42, l10n_text("Send Zip File to the Server"), global.default_text_size, c_black, c_dkgray, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 42, l10n_text("Send Zip File to the Server"), global.default_text_size, c_black, c_dkgray, 1);
 		}
 		
 		#region /* Generate Character ID */
@@ -872,7 +872,7 @@ function scr_draw_upload_character_menu()
 		#region /* Draw Character Portrait */
 		if (global.sprite_select_player[1] > 0)
 		{
-			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
+			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, c_white, 1);
 		}
 		#endregion /* Draw Character Portrait END */
 		

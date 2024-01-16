@@ -191,10 +191,10 @@ player_accept_selection[1] = -1;
 player_accept_selection[2] = -1;
 player_accept_selection[3] = -1;
 player_accept_selection[4] = -1;
-player1_automatically_join = false;
-player2_automatically_join = false;
-player3_automatically_join = false;
-player4_automatically_join = false;
+player_automatically_join[1] = false;
+player_automatically_join[2] = false;
+player_automatically_join[3] = false;
+player_automatically_join[4] = false;
 player_start_game = false;
 #endregion /* Character select Accept Selection END */
 

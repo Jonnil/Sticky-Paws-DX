@@ -33,7 +33,7 @@ function scr_draw_show_controls(what_player = 1)
 			
 			#region /* Set correct variables for players */
 			/* Create arrays for each player */
-			var players = [	player1,	player2,	player3,	player4];
+			var players = [	player[1],	player[2],	player[3],	player[4]];
 			
 			/* Use the what_player variable to index into the arrays */
 			var player_instance = players[what_player - 1];

@@ -7,26 +7,26 @@ function scr_zoom_camera_controls()
 	
 	if (global.player_can_play[1])
 	{
-		var key_in_hold = scr_key_initialize(key_player1_zoom_in_hold, 0, 1, action.zoom_in);
-		var key_out_hold = scr_key_initialize(key_player1_zoom_out_hold, 0, 1, action.zoom_out);
+		var key_in_hold = scr_key_initialize(key_player_zoom_in_hold[1], 0, 1, action.zoom_in);
+		var key_out_hold = scr_key_initialize(key_player_zoom_out_hold[1], 0, 1, action.zoom_out);
 	}
 	else
 	if (global.player_can_play[2])
 	{
-		var key_in_hold = scr_key_initialize(key_player2_zoom_in_hold, 0, 2, action.zoom_in);
-		var key_out_hold = scr_key_initialize(key_player2_zoom_out_hold, 0, 2, action.zoom_out);
+		var key_in_hold = scr_key_initialize(key_player_zoom_in_hold[2], 0, 2, action.zoom_in);
+		var key_out_hold = scr_key_initialize(key_player_zoom_out_hold[2], 0, 2, action.zoom_out);
 	}
 	else
 	if (global.player_can_play[3])
 	{
-		var key_in_hold = scr_key_initialize(key_player3_zoom_in_hold, 0, 3, action.zoom_in);
-		var key_out_hold = scr_key_initialize(key_player3_zoom_out_hold, 0, 3, action.zoom_out);
+		var key_in_hold = scr_key_initialize(key_player_zoom_in_hold[3], 0, 3, action.zoom_in);
+		var key_out_hold = scr_key_initialize(key_player_zoom_out_hold[3], 0, 3, action.zoom_out);
 	}
 	else
 	if (global.player_can_play[4])
 	{
-		var key_in_hold = scr_key_initialize(key_player4_zoom_in_hold, 0, 4, action.zoom_in);
-		var key_out_hold = scr_key_initialize(key_player4_zoom_out_hold, 0, 4, action.zoom_out);
+		var key_in_hold = scr_key_initialize(key_player_zoom_in_hold[4], 0, 4, action.zoom_in);
+		var key_out_hold = scr_key_initialize(key_player_zoom_out_hold[4], 0, 4, action.zoom_out);
 	}
 	#endregion /* Initialize buttons END */
 	

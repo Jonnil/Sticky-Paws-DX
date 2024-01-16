@@ -6,8 +6,8 @@ function scr_gamepad_vibration(what_player = 1, motor_speed = 0.5, duration = 10
 	&& (global.controls_used_for_navigation == "gamepad")
 	{
 		gamepad_set_vibration(0, motor_speed, motor_speed);
-		obj_camera.player1_motor_speed = motor_speed;
-		obj_camera.player1_motor_speed = motor_speed;
+		obj_camera.player_motor_speed[1] = motor_speed;
+		obj_camera.player_motor_speed[1] = motor_speed;
 		obj_camera.alarm[1] = duration;
 	}
 	else
@@ -17,8 +17,8 @@ function scr_gamepad_vibration(what_player = 1, motor_speed = 0.5, duration = 10
 	&& (global.controls_used_for_navigation == "gamepad")
 	{
 		gamepad_set_vibration(1, motor_speed, motor_speed);
-		obj_camera.player2_motor_speed = motor_speed;
-		obj_camera.player2_motor_speed = motor_speed;
+		obj_camera.player_motor_speed[2] = motor_speed;
+		obj_camera.player_motor_speed[2] = motor_speed;
 		obj_camera.alarm[2] = duration;
 	}
 	else
@@ -28,8 +28,8 @@ function scr_gamepad_vibration(what_player = 1, motor_speed = 0.5, duration = 10
 	&& (global.controls_used_for_navigation == "gamepad")
 	{
 		gamepad_set_vibration(2, motor_speed, motor_speed);
-		obj_camera.player3_motor_speed = motor_speed;
-		obj_camera.player3_motor_speed = motor_speed;
+		obj_camera.player_motor_speed[3] = motor_speed;
+		obj_camera.player_motor_speed[3] = motor_speed;
 		obj_camera.alarm[3] = duration;
 	}
 	else
@@ -39,8 +39,8 @@ function scr_gamepad_vibration(what_player = 1, motor_speed = 0.5, duration = 10
 	&& (global.controls_used_for_navigation == "gamepad")
 	{
 		gamepad_set_vibration(3, motor_speed, motor_speed);
-		obj_camera.player4_motor_speed = motor_speed;
-		obj_camera.player4_motor_speed = motor_speed;
+		obj_camera.player_motor_speed[4] = motor_speed;
+		obj_camera.player_motor_speed[4] = motor_speed;
 		obj_camera.alarm[4] = duration;
 	}
 }

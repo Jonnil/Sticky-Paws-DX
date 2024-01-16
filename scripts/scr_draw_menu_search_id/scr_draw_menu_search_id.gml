@@ -355,7 +355,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Downloading" + " " + l10n_text(string(what_kind_of_id)) + "..."), global.default_text_size * 2, c_black, c_white, 1);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("Downloading" + " " + string(what_kind_of_id) + "..."), global.default_text_size * 2, c_black, c_white, 1);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 + 64, string(global.search_id), global.default_text_size, c_black, c_white, 1);
 		
 		/* If we could show the player the growing http buffer, that would be great feedback that the files are downloading */
@@ -771,7 +771,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			#endregion /* Click Delete END */
 			
 			#region /* Click back to online level list */
-			if (point_in_rectangle(mouse_get_x, mouse_get_y, back_to_list_x, back_to_list_y, 370, 41))
+			if (point_in_rectangle(mouse_get_x, mouse_get_y, back_to_list_x, back_to_list_y, back_to_list_x + 370, back_to_list_y + 41))
 			&& (global.controls_used_for_navigation == "mouse")
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)

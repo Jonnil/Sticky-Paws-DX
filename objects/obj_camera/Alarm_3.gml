@@ -1,2 +1,2 @@
-/// @description player3_vibration_active = false;
-player3_vibration_active = false;
+/// @description player_vibration_active[3] = false;
+player_vibration_active[3] = false;

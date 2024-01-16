@@ -39,7 +39,7 @@ function scr_character_manage_menu_draw()
 		#region /* Draw character portrait for player 1 */
 		if (global.sprite_select_player[1] > 0)
 		{
-			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, global.hex_color_for_player1, 1);
+			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, c_white, 1);
 		}
 		#endregion /* Draw character portrait for player 1 END */
 		

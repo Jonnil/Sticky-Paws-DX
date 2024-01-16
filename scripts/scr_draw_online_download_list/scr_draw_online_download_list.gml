@@ -559,21 +559,9 @@ function scr_draw_online_download_list()
 					{
 						show_level_editor_corner_menu = true;
 					}
-					if (variable_instance_exists(self, "thumbnail_level_name"))
-					&& (variable_instance_exists(self, "thumbnail_clear_check"))
-					&& (variable_instance_exists(self, "thumbnail_level_id"))
-					&& (array_length(thumbnail_level_name) > 1)
-					&& (array_length(thumbnail_clear_check) > 1)
-					&& (array_length(thumbnail_level_id) > 1)
-					{
-						select_custom_level_menu_open = true;
-						menu = "online_level_list"; /* If all custom levels are already loaded, then go back to the level select menu */
-					}
-					else
-					{
-						select_custom_level_menu_open = false;
-						menu = "load_custom_level"; /* If all custom levels are not loaded, then reload all custom levels before going to the level select menu */
-					}
+					global.go_to_menu_when_going_back_to_title = "online_level_list";
+					select_custom_level_menu_open = false;
+					menu = "load_custom_level"; /* Always reload all custom levels before going to the level select menu, just in case */
 				}
 				else
 				{

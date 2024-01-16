@@ -16,13 +16,13 @@ function scr_character_select_menu_draw()
 	}
 	
 	/* Player 1 Key Accept Pressed */ player_key_a_pressed[1] = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.accept])) || (keyboard_check_pressed(vk_space));
-	/* Player 1 Key Back Pressed */ player1_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.back])) || (keyboard_check_pressed(vk_escape));
+	/* Player 1 Key Back Pressed */ player_key_b_pressed[1] = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.back])) || (keyboard_check_pressed(vk_escape));
 	/* Player 2 Key Accept Pressed */ player_key_a_pressed[2] = (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.accept]));
-	/* Player 2 Key Back Pressed */ player2_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.back]));
+	/* Player 2 Key Back Pressed */ player_key_b_pressed[2] = (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.back]));
 	/* Player 3 Key Accept Pressed */ player_key_a_pressed[3] = (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.accept]));
-	/* Player 3 Key Back Pressed */ player3_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.back]));
+	/* Player 3 Key Back Pressed */ player_key_b_pressed[3] = (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.back]));
 	/* Player 4 Key Accept Pressed */ player_key_a_pressed[4] = (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.accept]));
-	/* Player 4 Key Back Pressed */ player4_key_b_pressed = (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.back]));
+	/* Player 4 Key Back Pressed */ player_key_b_pressed[4] = (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.back]));
 	
 	arrow_offset = 125;
 	var get_window_height = display_get_gui_height();
@@ -45,28 +45,28 @@ function scr_character_select_menu_draw()
 		player_display_x[2] = -155;
 		player_display_x[3] = +155;
 		player_display_x[4] = +465;
-		player1_scale = 0.85;
-		player2_scale = 0.85;
-		player3_scale = 0.85;
-		player4_scale = 0.85;
+		player_scale[1] = 0.85;
+		player_scale[2] = 0.85;
+		player_scale[3] = 0.85;
+		player_scale[4] = 0.85;
 		#endregion /* Player positions and scale for each character display END */
 		
 		#region /* Give feedback that you have selected a character, run this before the character portrait code */
 		if (player_accept_selection[1] == 1)
 		{
-			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[1], get_window_height * 0.5, player1_scale, player1_scale, 0, global.player_color[1], 1);
+			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[1], get_window_height * 0.5, player_scale[1], player_scale[1], 0, global.player_color[1], 1);
 		}
 		if (player_accept_selection[2] == 1)
 		{
-			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[2], get_window_height * 0.5, player2_scale, player2_scale, 0, global.player_color[2], 1);
+			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[2], get_window_height * 0.5, player_scale[2], player_scale[2], 0, global.player_color[2], 1);
 		}
 		if (player_accept_selection[3] == 1)
 		{
-			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[3], get_window_height * 0.5, player3_scale, player3_scale, 0, global.player_color[3], 1);
+			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[3], get_window_height * 0.5, player_scale[3], player_scale[3], 0, global.player_color[3], 1);
 		}
 		if (player_accept_selection[4] == 1)
 		{
-			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[4], get_window_height * 0.5, player4_scale, player4_scale, 0, global.player_color[4], 1);
+			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[4], get_window_height * 0.5, player_scale[4], player_scale[4], 0, global.player_color[4], 1);
 		}
 		#endregion /* Give feedback that you have selected a character, run this before the character portrait code END */
 		
@@ -325,10 +325,7 @@ function scr_character_select_menu_draw()
 				draw_sprite_ext(spr_lock_icon, 0, 16, draw_online_character_list_y + 21, 1, 1, 0, c_white, 1);
 			}
 			
-			if (!can_input_player_name[1])
-			&& (!can_input_player_name[2])
-			&& (!can_input_player_name[3])
-			&& (!can_input_player_name[4])
+			if (no_players_are_inputting_names)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!open_sub_menu)
 			{
@@ -366,229 +363,77 @@ function scr_character_select_menu_draw()
 		#endregion /* All code before menu navigation code END */
 		
 		#region /* If players haven't joined the game */
-		if (!can_input_player_name[1])
-		&& (!can_input_player_name[2])
-		&& (!can_input_player_name[3])
-		&& (!can_input_player_name[4])
+		if (no_players_are_inputting_names)
 		{
 			
-			#region /* Player 1 Join Text */
-			if (player_accept_selection[1] <= -1 && !player1_automatically_join)
+			#region /* Player Join Text */
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
-				var player_join_x = window_width_half + player_display_x[1];
-				var player_join_y = window_height_half;
-				draw_set_halign(fa_right);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_navigation == "mouse")
+				if (player_accept_selection[i] <= -1 && !player_automatically_join[i])
 				{
-					player_menu[1] = "select_character";
-					menu = "select_character";
-					draw_set_alpha(0.5);
-					draw_roundrect_color_ext(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, 50, 50, c_white, c_white, false);
-					draw_set_alpha(1);
-					var player_join_outline_color = c_white;
-				}
-				else
-				{
-					var player_join_outline_color = c_black;
-				}
-				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 1 Join"), global.default_text_size * player_join_text_size, player_join_outline_color, global.player_color[1], 1);
-				
-				#region /* Key A */
-				var player1_key_accept_1 = global.player_[inp.key][1][1][action.accept];
-				var player1_key_accept_2 = global.player_[inp.key][1][2][action.accept];
-				if ((menu == "select_character" && global.controls_used_for_navigation != "mouse") || global.controls_used_for_navigation == "mouse")
-				{
-					if (gamepad_is_connected(global.player_slot[1]) && (global.controls_used_for_navigation == "gamepad" || global.always_show_gamepad_buttons))
+					var player_join_x = window_width_half + player_display_x[i];
+					if (i % 2 == 0)
 					{
-						scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], player_join_x + 90, player_join_y, 0.5, c_white, 1);
+						var player_join_y = window_height_half + 32;
 					}
 					else
 					{
-						var keyboard_sprite_index = 0;
-						if (player1_key_accept_1 > noone)
+						var player_join_y = window_height_half;
+					}
+					draw_set_halign(fa_right);
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_navigation == "mouse")
+					{
+						player_menu[i] = "select_character";
+						menu = "select_character";
+						draw_set_alpha(0.5);
+						draw_roundrect_color_ext(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, 50, 50, c_white, c_white, false);
+						draw_set_alpha(1);
+						var player_join_outline_color = c_white;
+					}
+					else
+					{
+						var player_join_outline_color = c_black;
+					}
+					scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player " + string(i) + " Join"), global.default_text_size * player_join_text_size, player_join_outline_color, global.player_color[i], 1);
+					
+					#region /* Key A */
+					var player_key_accept_1 = global.player_[inp.key][i][1][action.accept];
+					var player_key_accept_2 = global.player_[inp.key][i][2][action.accept];
+					
+					if (i == 1)
+					&& ((menu == "select_character" && global.controls_used_for_navigation != "mouse") || global.controls_used_for_navigation == "mouse")
+					|| (i >= 2)
+					{
+						if (gamepad_is_connected(global.player_slot[i]) && (global.controls_used_for_navigation == "gamepad" || global.always_show_gamepad_buttons))
 						{
-							keyboard_sprite_index = player1_key_accept_1;
-						}
-						else if (player1_key_accept_2 > noone)
-						{
-							keyboard_sprite_index = player1_key_accept_2;
-						}
-						if (keyboard_sprite_index > noone)
-						{
-							draw_sprite_ext(spr_keyboard_keys, keyboard_sprite_index, player_join_x + 90, player_join_y, 0.5, 0.5, 0, c_white, 1);
+							scr_draw_gamepad_buttons(global.player_[inp.gp][i][1][action.accept], player_join_x + 90, player_join_y, 0.5, c_white, 1);
 						}
 						else
 						{
-							draw_sprite_ext(spr_keyboard_keys_none, 0, player_join_x + 90, player_join_y, 0.5, 0.5, 0, c_white, 1);
+							var keyboard_sprite_index = 0;
+							if (player_key_accept_1 > noone)
+							{
+								keyboard_sprite_index = player_key_accept_1;
+							}
+							else if (player_key_accept_2 > noone)
+							{
+								keyboard_sprite_index = player_key_accept_2;
+							}
+							if (keyboard_sprite_index > noone)
+							{
+								draw_sprite_ext(spr_keyboard_keys, keyboard_sprite_index, player_join_x + 90, player_join_y, 0.5, 0.5, 0, c_white, 1);
+							}
+							else
+							{
+								draw_sprite_ext(spr_keyboard_keys_none, 0, player_join_x + 90, player_join_y, 0.5, 0.5, 0, c_white, 1);
+							}
 						}
 					}
+					#endregion /* Key A END */
+					
 				}
-				#endregion /* Key A END */
-				
 			}
-			#endregion /* Player 1 Join Text END */
-			
-			#region /* Player 2 Join Text */
-			if (player_accept_selection[2] <= -1 && !player2_automatically_join && (global.playergame >= 1 || global.skip_how_many_people_are_playing_screen))
-			{
-				var player_join_x = window_width_half + player_display_x[2];
-				var player_join_y = window_height_half + 32;
-				draw_set_halign(fa_right);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_navigation == "mouse")
-				{
-					player_menu[2] = "select_character";
-					menu = "select_character";
-					draw_set_alpha(0.5);
-					draw_roundrect_color_ext(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, 50, 50, c_white, c_white, false);
-					draw_set_alpha(1);
-					var player_join_outline_color = c_white;
-				}
-				else
-				{
-					var player_join_outline_color = c_black;
-				}
-				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 2 Join"), global.default_text_size * player_join_text_size, player_join_outline_color, global.player_color[2], 1);
-				
-				#region /* Key A */
-				var controls_used_for_navigation = global.controls_used_for_navigation;
-				var player2_key_accept_1 = global.player_[inp.key][2][1][action.accept];
-				var player2_key_accept_2 = global.player_[inp.key][2][2][action.accept];
-				if (gamepad_is_connected(global.player_slot[2]) || global.always_show_gamepad_buttons)
-				{
-					scr_draw_gamepad_buttons(global.player_[inp.gp][2][1][action.accept], player_join_x + 90, player_join_y, 0.5, c_white, 1);
-				}
-				else
-				{
-					var keyboard_sprite_index = 0;
-					if (player2_key_accept_1 > noone)
-					{
-						keyboard_sprite_index = player2_key_accept_1;
-					}
-					else if (player2_key_accept_2 > noone)
-					{
-						keyboard_sprite_index = player2_key_accept_2;
-					}
-					if (keyboard_sprite_index > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, keyboard_sprite_index, player_join_x + 90, player_join_y, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, player_join_x + 90, player_join_y, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-				#endregion /* Key A END */
-				
-			}
-			#endregion /* Player 2 Join Text END */
-			
-			#region /* Player 3 Join Text */
-			if (player_accept_selection[3] <= -1 && !player3_automatically_join && (global.playergame >= 2 || global.skip_how_many_people_are_playing_screen))
-			{
-				var player_join_x = window_width_half + player_display_x[3];
-				var player_join_y = window_height_half;
-				draw_set_halign(fa_right);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_navigation == "mouse")
-				{
-					player_menu[3] = "select_character";
-					menu = "select_character";
-					draw_set_alpha(0.5);
-					draw_roundrect_color_ext(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, 50, 50, c_white, c_white, false);
-					draw_set_alpha(1);
-					var player_join_outline_color = c_white;
-				}
-				else
-				{
-					var player_join_outline_color = c_black;
-				}
-				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 3 Join"), global.default_text_size * player_join_text_size, player_join_outline_color, global.player_color[3], 1);
-				
-				#region /* Key A */
-				var controls_used_for_navigation = global.controls_used_for_navigation;
-				var player3_key_accept_1 = global.player_[inp.key][3][1][action.accept];
-				var player3_key_accept_2 = global.player_[inp.key][3][2][action.accept];
-				if (gamepad_is_connected(global.player_slot[3]) || global.always_show_gamepad_buttons)
-				{
-					scr_draw_gamepad_buttons(global.player_[inp.gp][3][1][action.accept], player_join_x + 90, player_join_y, 0.5, c_white, 1);
-				}
-				else
-				{
-					var keyboard_sprite_index = 0;
-					if (player3_key_accept_1 > noone)
-					{
-						keyboard_sprite_index = player3_key_accept_1;
-					}
-					else if (player3_key_accept_2 > noone)
-					{
-						keyboard_sprite_index = player3_key_accept_2;
-					}
-					if (keyboard_sprite_index > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, keyboard_sprite_index, player_join_x + 90, player_join_y, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, player_join_x + 90, player_join_y, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-				#endregion /* Key A END */
-				
-			}
-			#endregion /* Player 3 Join Text END */
-			
-			#region /* Player 4 Join Text */
-			if (player_accept_selection[4] <= -1 && !player4_automatically_join && (global.playergame >= 3 || global.skip_how_many_people_are_playing_screen))
-			{
-				var player_join_x = window_width_half + player_display_x[4];
-				var player_join_y = window_height_half + 32;
-				draw_set_halign(fa_right);
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32) && global.controls_used_for_navigation == "mouse")
-				{
-					player_menu[4] = "select_character";
-					menu = "select_character";
-					draw_set_alpha(0.5);
-					draw_roundrect_color_ext(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, 50, 50, c_white, c_white, false);
-					draw_set_alpha(1);
-					var player_join_outline_color = c_white;
-				}
-				else
-				{
-					var player_join_outline_color = c_black;
-				}
-				scr_draw_text_outlined(player_join_x + 60, player_join_y, l10n_text("Player 4 Join"), global.default_text_size * player_join_text_size, player_join_outline_color, global.player_color[4], 1);
-				
-				#region /* Key A */
-				var controls_used_for_navigation = global.controls_used_for_navigation;
-				var player4_key_accept_1 = global.player_[inp.key][4][1][action.accept];
-				var player4_key_accept_2 = global.player_[inp.key][4][2][action.accept];
-				if (gamepad_is_connected(global.player_slot[4]) || global.always_show_gamepad_buttons)
-				{
-					scr_draw_gamepad_buttons(global.player_[inp.gp][4][1][action.accept], player_join_x + 90, player_join_y, 0.5, c_white, 1);
-				}
-				else
-				{
-					var keyboard_sprite_index = 0;
-					if (player4_key_accept_1 > noone)
-					{
-						keyboard_sprite_index = player4_key_accept_1;
-					}
-					else if (player4_key_accept_2 > noone)
-					{
-						keyboard_sprite_index = player4_key_accept_2;
-					}
-					if (keyboard_sprite_index > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, keyboard_sprite_index, player_join_x + 90, player_join_y, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, player_join_x + 90, player_join_y, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-				#endregion /* Key A END */
-				
-			}
-			#endregion /* Player 4 Join Text END */
+			#endregion /* Player Join Text END */
 			
 		}
 		#endregion /* If players haven't joined the game END */

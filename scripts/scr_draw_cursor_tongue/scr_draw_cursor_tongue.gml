@@ -1,4 +1,4 @@
-function scr_draw_cursor_tongue(cursor_x = x, cursor_y = y, what_player_object = obj_camera.player1)
+function scr_draw_cursor_tongue(cursor_x = x, cursor_y = y, what_player_object = obj_camera.player[1])
 {
 	if (instance_exists(obj_camera))
 	&& (instance_exists(what_player_object))

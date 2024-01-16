@@ -1,4 +1,4 @@
-function scr_menu_navigation_initialization(key_direction_hold_press_release = 0, only_player1_can_navigate = false)
+function scr_menu_navigation_initialization(key_direction_hold_press_release = 0, only_player_one_can_navigate = false)
 {
 	
 	#region /* Menu Navigation Controls */
@@ -15,7 +15,7 @@ function scr_menu_navigation_initialization(key_direction_hold_press_release = 0
 	#region /* Player 1 */
 	if (global.pause_player == 0)
 	|| (global.player_can_play[1])
-	|| (only_player1_can_navigate)
+	|| (only_player_one_can_navigate)
 	{
 		var what_player = 1;
 		var player_slot = global.player_slot[1];

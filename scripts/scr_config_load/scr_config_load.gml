@@ -109,7 +109,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "show_prompt_when_changing_to_keyboard_and_mouse")){global.show_prompt_when_changing_to_keyboard_and_mouse = ini_read_real("config", "show_prompt_when_changing_to_keyboard_and_mouse", 1);}
 		if (ini_key_exists("config", "always_show_gamepad_buttons")){global.always_show_gamepad_buttons = ini_read_real("config", "always_show_gamepad_buttons", 0);}
 		
-		for (var i = 1; i < global.max_players; i += 1)
+		for (var i = 1; i <= global.max_players; i += 1)
 		{
 			
 			#region /* Load Player Keyboard Remapping */
