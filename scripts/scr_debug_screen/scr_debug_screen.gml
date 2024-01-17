@@ -182,20 +182,11 @@ function scr_debug_screen()
 		#region /* X and Y position of player */
 		var get_player = noone;
 		if (instance_exists(obj_camera)) {
-			if (instance_exists(obj_camera.player[1])) {
-				var get_player = obj_camera.player[1];
-			}
-			else
-			if (instance_exists(obj_camera.player[2])) {
-				var get_player = obj_camera.player[2];
-			}
-			else
-			if (instance_exists(obj_camera.player[3])) {
-				var get_player = obj_camera.player[3];
-			}
-			else
-			if (instance_exists(obj_camera.player[4])) {
-				var get_player = obj_camera.player[4];
+			for (var i = 1; i <= global.max_players; i += 1) {
+				if (instance_exists(obj_camera.player[i])) {
+					var get_player = obj_camera.player[i];
+					break;
+				}
 			}
 		}
 		else
@@ -236,14 +227,12 @@ function scr_debug_screen()
 		var debug_text_y = 160;
 		
 		if (instance_exists(obj_camera)) {
-			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player[1]: " + string(obj_camera.player[1]), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player[2]: " + string(obj_camera.player[2]), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player[3]: " + string(obj_camera.player[3]), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "obj_camera.player[4]: " + string(obj_camera.player[4]), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
+			
+			for (var i = 1; i <= global.max_players; i += 1)
+			{
+				scr_draw_text_outlined(32, debug_text_y, "player " + string(i) + ": " + string(obj_camera.player[i]), global.default_text_size, c_black, c_white);
+				debug_text_y += 20;
+			}
 		}
 		if (gamepad_get_description(0) != "") {
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(0): " + string(gamepad_get_description(0)), global.default_text_size, c_black, c_white);

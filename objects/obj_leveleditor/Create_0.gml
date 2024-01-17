@@ -597,8 +597,6 @@ if (!global.actually_play_edited_level)
 	y = mouse_y;
 	place_object_delay_timer = 0; /* Delay for when you can place objects, when using a touch screen to place objects, the cursor doesn't have enough time to update where new position of you touching the screen is, so you accidentally place objects where cursor was last positioned */
 	show_level_editor_corner_menu = true;
-	view_hview_lerp = 0;
-	view_wview_lerp = 0;
 	controller_x = mouse_x;
 	controller_y = mouse_y;
 	controller_view_speed = 8;
@@ -771,12 +769,6 @@ if (!global.actually_play_edited_level)
 	
 	image_speed = 0;
 	image_index = 0;
-	
-	#region /* View Size */
-	view_wview = 1392;
-	view_hview = 736;
-	/* Default Views:   set_view_wview = 1024 + 400 - 32   set_view_hview = 768 - 32  */
-	#endregion /* View Size END */
 	
 	#region /* Initialize Background */
 	background_x_offset[0] = 0;background_x[0] = 0;background_y_offset[0] = 0;background_y[0] = 0;

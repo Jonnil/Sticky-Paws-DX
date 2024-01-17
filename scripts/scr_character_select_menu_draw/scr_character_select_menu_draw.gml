@@ -40,58 +40,26 @@ function scr_character_select_menu_draw()
 	|| (menu == "input_name_cancel")
 	{
 		
-		#region /* Player positions and scale for each character display */
+		/* Player positions for each character display */
 		player_display_x[1] = -465;
 		player_display_x[2] = -155;
 		player_display_x[3] = +155;
 		player_display_x[4] = +465;
-		player_scale[1] = 0.85;
-		player_scale[2] = 0.85;
-		player_scale[3] = 0.85;
-		player_scale[4] = 0.85;
-		#endregion /* Player positions and scale for each character display END */
 		
-		#region /* Give feedback that you have selected a character, run this before the character portrait code */
-		if (player_accept_selection[1] == 1)
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
-			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[1], get_window_height * 0.5, player_scale[1], player_scale[1], 0, global.player_color[1], 1);
+			player_scale[i] = 0.85; /* Player scale for each character display */
+			
+			/* Give feedback that you have selected a character, run this before the character portrait code */
+			if (player_accept_selection[i] == 1) {
+				draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[i], get_window_height * 0.5, player_scale[i], player_scale[i], 0, global.player_color[i], 1);
+			}
+			/* Display Selected Characters, run this before the "play the game" text code */
+			if (global.playergame >= i - 1)
+			|| (global.skip_how_many_people_are_playing_screen) {
+				scr_character_portrait_for_player_draw(i);
+			}
 		}
-		if (player_accept_selection[2] == 1)
-		{
-			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[2], get_window_height * 0.5, player_scale[2], player_scale[2], 0, global.player_color[2], 1);
-		}
-		if (player_accept_selection[3] == 1)
-		{
-			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[3], get_window_height * 0.5, player_scale[3], player_scale[3], 0, global.player_color[3], 1);
-		}
-		if (player_accept_selection[4] == 1)
-		{
-			draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[4], get_window_height * 0.5, player_scale[4], player_scale[4], 0, global.player_color[4], 1);
-		}
-		#endregion /* Give feedback that you have selected a character, run this before the character portrait code END */
-		
-		#region /* Display Selected Characters, run this before the "play the game" text code */
-		if (global.playergame >= 0)
-		|| (global.skip_how_many_people_are_playing_screen)
-		{
-			scr_character_portrait_for_player_draw(1);
-		}
-		if (global.playergame >= 1)
-		|| (global.skip_how_many_people_are_playing_screen)
-		{
-			scr_character_portrait_for_player_draw(2);
-		}
-		if (global.playergame >= 2)
-		|| (global.skip_how_many_people_are_playing_screen)
-		{
-			scr_character_portrait_for_player_draw(3);
-		}
-		if (global.playergame >= 3)
-		|| (global.skip_how_many_people_are_playing_screen)
-		{
-			scr_character_portrait_for_player_draw(4);
-		}
-		#endregion /* Display Selected Characters, run this before the "play the game" text code END */
 		
 		#region /* Play the game text */
 		
@@ -109,41 +77,13 @@ function scr_character_select_menu_draw()
 			draw_rectangle_color(0, play_the_game_text_y_lerp - 32, get_window_width, play_the_game_text_y_lerp + 32, c_black, c_black, c_black, c_black, false);
 			scr_draw_text_outlined(get_window_width * 0.5 -40, play_the_game_text_y_lerp, l10n_text("Play the game!"), global.default_text_size * 2, c_black, c_white, 1);
 			
+			var what_player = 1;
 			if (player_accept_selection[1] == 1)
 			&& (player_accept_selection[2] != 0)
 			&& (player_accept_selection[3] != 0)
 			&& (player_accept_selection[4] != 0)
 			{
-				draw_set_alpha(0.9);
-				draw_roundrect_color_ext(get_window_width * 0.5 - (string_width(l10n_text("Player 1 starts the game")) * 0.5), play_the_game_text_y_lerp + 32, get_window_width * 0.5 + (string_width(l10n_text("Player 1 starts the game")) * 0.5), play_the_game_text_y_lerp + 64, 50, 50, c_black, c_black, false);
-				draw_set_alpha(1);
-				scr_draw_text_outlined(get_window_width * 0.5, play_the_game_text_y_lerp + 45, l10n_text("Player 1 starts the game"), global.default_text_size, c_black, global.player_color[1], 1);
-				
-				#region /* Show Key A on screen */
-				if (gamepad_is_connected(global.player_slot[1]))
-				&& (global.controls_used_for_navigation == "gamepad")
-				|| (global.always_show_gamepad_buttons)
-				{
-					scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, c_white, 1);
-				}
-				else
-				{
-					if (global.player_[inp.key][1][1][action.accept] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.accept], get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player_[inp.key][1][2][action.accept] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.accept], get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-				#endregion /* Show Key A on screen END */
-				
+				var what_player = 1;
 			}
 			else
 			if (player_accept_selection[1] != 0)
@@ -151,31 +91,7 @@ function scr_character_select_menu_draw()
 			&& (player_accept_selection[3] != 0)
 			&& (player_accept_selection[4] != 0)
 			{
-				scr_draw_text_outlined(get_window_width * 0.5, play_the_game_text_y_lerp + 45, l10n_text("Player 2 starts the game"), global.default_text_size, c_black, global.player_color[2], 1);
-				
-				#region /* Show Key A on screen */
-				if (gamepad_is_connected(global.player_slot[2]))
-				{
-					scr_draw_gamepad_buttons(global.player_[inp.gp][2][1][action.accept], get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, c_white, 1);
-				}
-				else
-				{
-					if (global.player_[inp.key][2][1][action.accept] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.accept], get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player_[inp.key][2][2][action.accept] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.accept], get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-				#endregion /* Show Key A on screen END */
-				
+				var what_player = 2;
 			}
 			else
 			if (player_accept_selection[1] != 0)
@@ -183,31 +99,7 @@ function scr_character_select_menu_draw()
 			&& (player_accept_selection[3])
 			&& (player_accept_selection[4] != 0)
 			{
-				scr_draw_text_outlined(get_window_width * 0.5, play_the_game_text_y_lerp + 45, l10n_text("Player 3 starts the game"), global.default_text_size, c_black, global.player_color[3], 1);
-				
-				#region /* Show Key A on screen */
-				if (gamepad_is_connected(global.player_slot[3]))
-				{
-					scr_draw_gamepad_buttons(global.player_[inp.gp][3][1][action.accept], get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, c_white, 1);
-				}
-				else
-				{
-					if (global.player_[inp.key][3][1][action.accept] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.accept], get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player_[inp.key][3][2][action.accept] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.accept], get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
-				}
-				#endregion /* Show Key A on screen END */
-				
+				var what_player = 3;
 			}
 			else
 			if (player_accept_selection[1] != 0)
@@ -215,32 +107,40 @@ function scr_character_select_menu_draw()
 			&& (player_accept_selection[3] != 0)
 			&& (player_accept_selection[4])
 			{
-				scr_draw_text_outlined(get_window_width * 0.5, play_the_game_text_y_lerp + 45, l10n_text("Player 4 starts the game"), global.default_text_size, c_black, global.player_color[4], 1);
-				
-				#region /* Show Key A on screen */
-				if (gamepad_is_connected(global.player_slot[4]))
+				var what_player = 4;
+			}
+			
+			var player_starts_the_game_text = l10n_text("Player " + string(what_player) + " starts the game");
+			draw_set_alpha(0.9);
+			draw_roundrect_color_ext(get_window_width * 0.5 - (string_width(player_starts_the_game_text) * 0.5), play_the_game_text_y_lerp + 32, get_window_width * 0.5 + (string_width(player_starts_the_game_text) * 0.5), play_the_game_text_y_lerp + 64, 50, 50, c_black, c_black, false);
+			draw_set_alpha(1);
+			scr_draw_text_outlined(get_window_width * 0.5, play_the_game_text_y_lerp + 45, string(player_starts_the_game_text), global.default_text_size, c_black, global.player_color[what_player], 1);
+			
+			#region /* Show Key A on screen */
+			if (gamepad_is_connected(global.player_slot[what_player]))
+			&& (global.controls_used_for_navigation == "gamepad")
+			|| (global.always_show_gamepad_buttons)
+			{
+				scr_draw_gamepad_buttons(global.player_[inp.gp][what_player][1][action.accept], get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, c_white, 1);
+			}
+			else
+			{
+				if (global.player_[inp.key][what_player][1][action.accept] > noone)
 				{
-					scr_draw_gamepad_buttons(global.player_[inp.gp][4][1][action.accept], get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, c_white, 1);
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][what_player][1][action.accept], get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
+				}
+				else
+				if (global.player_[inp.key][what_player][2][action.accept] > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][what_player][2][action.accept], get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
 				}
 				else
 				{
-					if (global.player_[inp.key][4][1][action.accept] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.accept], get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					if (global.player_[inp.key][4][2][action.accept] > noone)
-					{
-						draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.accept], get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
-					else
-					{
-						draw_sprite_ext(spr_keyboard_keys_none, 0, get_window_width * 0.5 + 180, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
-					}
+					draw_sprite_ext(spr_keyboard_keys_none, 0, get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, 0.5, 0, c_white, 1);
 				}
-				#endregion /* Show Key A on screen END */
-				
 			}
+			#endregion /* Show Key A on screen END */
+			
 		}
 		#endregion /* Draw Play the game text END */
 		

@@ -35,11 +35,6 @@ else
 	yy = y;
 }
 
-#region /* Smooth the camera out even more */
-view_wview_lerp = 0;
-view_hview_lerp = 0;
-#endregion /* Smooth the camera out even more END */
-
 zoom_lerp = global.zoom_world_map;
 zoom_border_lerp = 0;
 

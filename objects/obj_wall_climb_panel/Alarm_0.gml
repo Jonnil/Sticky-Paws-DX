@@ -12,7 +12,7 @@ if (instance_exists(obj_camera))
 	&& (!obj_camera.player[3].allow_wall_climb)
 	|| (obj_camera.player[4] > 0)
 	&& (instance_exists(obj_camera.player[4]))
-	&& (!obj_camera.player4.allow_wall_climb)
+	&& (!obj_camera.player[4].allow_wall_climb)
 	
 	|| (obj_camera.player[1] > 0)
 	&& (instance_exists(obj_camera.player[1]))
@@ -25,7 +25,7 @@ if (instance_exists(obj_camera))
 	&& (obj_camera.player[3].wall_jump_setting <= 0)
 	|| (obj_camera.player[4] > 0)
 	&& (instance_exists(obj_camera.player[4]))
-	&& (obj_camera.player4.wall_jump_setting <= 0)
+	&& (obj_camera.player[4].wall_jump_setting <= 0)
 	{
 		image_alpha = 1;
 	}

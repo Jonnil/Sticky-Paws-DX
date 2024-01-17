@@ -52,6 +52,7 @@ function scr_set_default_remapping_player_gamepad(what_player = 1, save_default_
 	#endregion /* Player Gamepad 2 defaults END */
 	
 	global.player_up_is_also_jump[what_player] = false;
+	global.player_double_jump_uses_jump_key[what_player] = true;
 	global.player_down_is_also_crouch[what_player] = true;
 	global.player_double_tap_to_run[what_player] = true;
 	global.player_run_toggle[what_player] = false;
@@ -102,6 +103,7 @@ function scr_set_default_remapping_player_gamepad(what_player = 1, save_default_
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_gamepad_button_back", global.player_[inp.gp][what_player][1][action.back]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_gamepad_button2_back", global.player_[inp.gp][what_player][2][action.back]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_up_is_also_jump", global.player_up_is_also_jump[what_player]);
+		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_double_jump_uses_jump_key", global.player_double_jump_uses_jump_key[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_down_is_also_crouch", global.player_down_is_also_crouch[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_double_tap_to_run", global.player_double_tap_to_run[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_run_toggle", global.player_run_toggle[what_player]);
@@ -214,6 +216,7 @@ function scr_set_default_remapping_player_keyboard(what_player = 1, save_default
 	}
 	
 	global.player_up_is_also_jump[what_player] = false;
+	global.player_double_jump_uses_jump_key[what_player] = true;
 	global.player_down_is_also_crouch[what_player] = true;
 	global.player_double_tap_to_run[what_player] = true;
 	global.player_run_toggle[what_player] = false;
@@ -264,6 +267,7 @@ function scr_set_default_remapping_player_keyboard(what_player = 1, save_default
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_key_back", global.player_[inp.key][what_player][1][action.back]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_key2_back", global.player_[inp.key][what_player][2][action.back]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_up_is_also_jump", global.player_up_is_also_jump[what_player]);
+		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_double_jump_uses_jump_key", global.player_double_jump_uses_jump_key[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_down_is_also_crouch", global.player_down_is_also_crouch[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_double_tap_to_run", global.player_double_tap_to_run[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_run_toggle", global.player_run_toggle[what_player]);

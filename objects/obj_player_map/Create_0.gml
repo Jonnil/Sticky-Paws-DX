@@ -54,31 +54,23 @@ else
 }
 
 #region /* Play as custom character */
-if (global.player_can_play[2])
+
+for (var i = 1; i <= global.max_players; i += 1)
 {
-	player = 2;
-	selected_voice_pack = global.voicepack_for_player[2];
-	selected_skin = global.skin_for_player[2];
-}
-else
-if (global.player_can_play[3])
-{
-	player = 3;
-	selected_voice_pack = global.voicepack_for_player[3];
-	selected_skin = global.skin_for_player[3];
-}
-else
-if (global.player_can_play[4])
-{
-	player = 4;
-	selected_voice_pack = global.voicepack_for_player[4];
-	selected_skin = global.skin_for_player[4];
-}
-else
-{
-	player = 1;
-	selected_voice_pack = global.voicepack_for_player[1];
-	selected_skin = global.skin_for_player[1];
+	if (global.player_can_play[i])
+	{
+		player = i;
+		selected_voice_pack = global.voicepack_for_player[i];
+		selected_skin = global.skin_for_player[i];
+		break; /* Exit the loop once a valid player is found */
+	}
+	else if (i == global.max_players)
+	{
+		/* If no valid player is found, default to player 1 */
+		player = 1;
+		selected_voice_pack = global.voicepack_for_player[1];
+		selected_skin = global.skin_for_player[1];
+	}
 }
 
 alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
@@ -106,8 +98,6 @@ global.timeattack_minute = 0;
 
 image_speed = 0.3;
 current_file = global.file;
-view_hview_lerp = 0;
-view_wview_lerp = 0;
 can_move = true;
 entering_level = false;
 delay = 0;

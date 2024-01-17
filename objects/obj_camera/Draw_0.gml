@@ -126,10 +126,10 @@ if (instance_exists(obj_water))
 	if (player[4] > 0)
 	&& (instance_exists(player[4]))
 	{
-		if (player4.allow_drowning)
-		&& (player4.drawn_frames_until_drowning <= player4.seconds_until_drowning* 60)
+		if (player[4].allow_drowning)
+		&& (player[4].drawn_frames_until_drowning <= player[4].seconds_until_drowning* 60)
 		{
-			scr_draw_circular_bar(player4.x, player4.bbox_top - 56, player4.drawn_frames_until_drowning, player4.seconds_until_drowning* 60, scr_make_color_hsv_transition(player4.drawn_frames_until_drowning, player4.seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
+			scr_draw_circular_bar(player[4].x, player[4].bbox_top - 56, player[4].drawn_frames_until_drowning, player[4].seconds_until_drowning* 60, scr_make_color_hsv_transition(player[4].drawn_frames_until_drowning, player[4].seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
 		}
 	}
 	#endregion /* Show Drowning for Player 4 END */

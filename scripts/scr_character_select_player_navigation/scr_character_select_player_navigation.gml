@@ -14,16 +14,16 @@ function scr_character_select_player_navigation(what_player = 1)
 	var player_key2_up = global.player_[inp.key][what_player][2][action.up];
 	var player_key2_down = global.player_[inp.key][what_player][2][action.down];
 	
-	#region /* If player is player 1, set all the variables to Player variables */
+	#region /* If player is player 1, set all the other player variables to values beside current player */
 	if (what_player == 1)
 	{
 		var can_input_player_name2 = can_input_player_name[2];
 		var can_input_player_name3 = can_input_player_name[3];
 		var can_input_player_name4 = can_input_player_name[4];
 	}
-	#endregion /* If player is player 1, set all the variables to Player variables END */
+	#endregion /* If player is player 1, set all the other player variables to values beside current player END */
 	
-	#region /* If player is player 2, set all the variables to Player variables */
+	#region /* If player is player 2, set all the other player variables to values beside current player */
 	if (what_player == 2)
 	{
 		var can_input_player_name2 = can_input_player_name[1];
@@ -32,23 +32,23 @@ function scr_character_select_player_navigation(what_player = 1)
 	}
 	#endregion /* If player is player 2, set all the variables to Player variables END */
 	
-	#region /* If player is player 3, set all the variables to Player variables */
+	#region /* If player is player 3, set all the other player variables to values beside current player */
 	if (what_player == 3)
 	{
 		var can_input_player_name2 = can_input_player_name[1];
 		var can_input_player_name3 = can_input_player_name[2];
 		var can_input_player_name4 = can_input_player_name[4];
 	}
-	#endregion /* If player is player 3, set all the variables to Player variables END */
+	#endregion /* If player is player 3, set all the other player variables to values beside current player END */
 	
-	#region /* If player is player 4, set all the variables to Player variables */
+	#region /* If player is player 4, set all the other player variables to values beside current player */
 	if (what_player == 4)
 	{
 		var can_input_player_name2 = can_input_player_name[1];
 		var can_input_player_name3 = can_input_player_name[2];
 		var can_input_player_name4 = can_input_player_name[3];
 	}
-	#endregion /* If player is player 4, set all the variables to Player variables END */
+	#endregion /* If player is player 4, set all the other player variables to values beside current player END */
 	
 	#region /* Player Menu Navigation */
 	if (player_menu[what_player] == "select_character")

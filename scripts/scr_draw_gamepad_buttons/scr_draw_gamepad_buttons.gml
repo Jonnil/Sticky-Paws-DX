@@ -1,18 +1,18 @@
 function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale = 1, color = c_white, alpha = 1, xscale = 1, yscale = 1, what_player = global.player_slot[1])
 {
-	if (what_player == global.player_slot[2]) {
-		var controller_used_player = 2;
+	var controller_used_player;
+	for (var i = 1; i <= global.max_players; i += 1)
+	{
+		if (what_player == global.player_slot[i])
+		{
+			controller_used_player = i;
+			break; /* Exit the loop once the correct player slot is found */
+		}
 	}
-	else
-	if (what_player == global.player_slot[3]) {
-		var controller_used_player = 3;
-	}
-	else
-	if (what_player == global.player_slot[4]) {
-		var controller_used_player = 4;
-	}
-	else {
-		var controller_used_player = 1;
+	/* If no match is found, default to player 1 */
+	if (!controller_used_player)
+	{
+		controller_used_player = 1;
 	}
 	
 	switch (global.chosen_controller_used[controller_used_player]) {

@@ -320,7 +320,7 @@ if (player[4] >= 1)
 && (iris_xscale >= 10)
 {
 	if (global.player_show_controls[4] == 0)
-	|| (!player4.can_move)
+	|| (!player[4].can_move)
 	|| (global.goal_active)
 	{
 		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
@@ -335,7 +335,7 @@ if (player[4] >= 1)
 			player_show_controls_timer[4] --;
 		}
 		if (player_show_controls_timer[4] <= 0)
-		&& (player4.speed == 0)
+		&& (player[4].speed == 0)
 		{
 			player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
 		}
@@ -346,7 +346,7 @@ if (player[4] >= 1)
 		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
 	}
 	
-	if (player4.speed > 0)
+	if (player[4].speed > 0)
 	{
 		player_show_controls_timer[4] = get_room_speed * global.player_show_controls[4];
 	}
@@ -537,31 +537,32 @@ if (!save_level_as_png)
 	&& (instance_exists(obj_player))
 	&& (distance_to_object(obj_boss) < 400)
 	{
-		view_wview_lerp = lerp(0, 0, 0.05);
-		view_hview_lerp = lerp(0, 0, 0.05);
-		
 		if (player[1] > 0)
+		&& (instance_exists(player[1]))
 		{
 			xx = mean(player[1].x, obj_boss.x);
 			yy = mean(player[1].y, obj_boss.y);
 		}
 		else
 		if (player[2] > 0)
+		&& (instance_exists(player[2]))
 		{
 			xx = mean(player[2].x, obj_boss.x);
 			yy = mean(player[2].y, obj_boss.y);
 		}
 		else
 		if (player[3] > 0)
+		&& (instance_exists(player[3]))
 		{
 			xx = mean(player[3].x, obj_boss.x);
 			yy = mean(player[3].y, obj_boss.y);
 		}
 		else
 		if (player[4] > 0)
+		&& (instance_exists(player[4]))
 		{
-			xx = mean(player4.x, obj_boss.x);
-			yy = mean(player4.y, obj_boss.y);
+			xx = mean(player[4].x, obj_boss.x);
+			yy = mean(player[4].y, obj_boss.y);
 		}
 	}
 	#endregion /* Boss Battle Camera END */
@@ -569,7 +570,7 @@ if (!save_level_as_png)
 	else
 	
 	#region /* MULTIPLAYER CAMERA */
-	if (instance_number(obj_player) > 1) /* If there are 2 or more players (>1) then use multiplayer camera */
+	if (instance_number(obj_player) >= 2) /* If there are 2 or more players then use multiplayer camera */
 	{
 		
 		#region /* Camera should follow multiple players */
@@ -579,9 +580,13 @@ if (!save_level_as_png)
 		&& (player[2] > 0)
 		&& (player[3] > 0)
 		&& (player[4] > 0)
+		&& (instance_exists(player[1]))
+		&& (instance_exists(player[2]))
+		&& (instance_exists(player[3]))
+		&& (instance_exists(player[4]))
 		{
-			xx = mean(player[1].x, player[2].x, player[3].x, player4.x);
-			yy = mean(player[1].y, player[2].y, player[3].y, player4.y);
+			xx = mean(player[1].x, player[2].x, player[3].x, player[4].x);
+			yy = mean(player[1].y, player[2].y, player[3].y, player[4].y);
 		}
 		
 		else
@@ -590,6 +595,9 @@ if (!save_level_as_png)
 		if (player[1] > 0)
 		&& (player[2] > 0)
 		&& (player[3] > 0)
+		&& (instance_exists(player[1]))
+		&& (instance_exists(player[2]))
+		&& (instance_exists(player[3]))
 		{
 			xx = mean(player[1].x, player[2].x, player[3].x);
 			yy = mean(player[1].y, player[2].y, player[3].y);
@@ -600,6 +608,8 @@ if (!save_level_as_png)
 		/* 1, 2 */
 		if (player[1] > 0)
 		&& (player[2] > 0)
+		&& (instance_exists(player[1]))
+		&& (instance_exists(player[2]))
 		{
 			xx = mean(player[1].x, player[2].x);
 			yy = mean(player[1].y, player[2].y);
@@ -610,6 +620,8 @@ if (!save_level_as_png)
 		/* 1, 3 */
 		if (player[1] > 0)
 		&& (player[3] > 0)
+		&& (instance_exists(player[1]))
+		&& (instance_exists(player[3]))
 		{
 			xx = mean(player[1].x, player[3].x);
 			yy = mean(player[1].y, player[3].y);
@@ -620,9 +632,11 @@ if (!save_level_as_png)
 		/* 1, 4 */
 		if (player[1] > 0)
 		&& (player[4] > 0)
+		&& (instance_exists(player[1]))
+		&& (instance_exists(player[4]))
 		{
-			xx = mean(player[1].x, player4.x);
-			yy = mean(player[1].y, player4.y);
+			xx = mean(player[1].x, player[4].x);
+			yy = mean(player[1].y, player[4].y);
 		}
 		
 		else
@@ -630,6 +644,8 @@ if (!save_level_as_png)
 		/* 2, 3 */
 		if (player[2] > 0)
 		&& (player[3] > 0)
+		&& (instance_exists(player[2]))
+		&& (instance_exists(player[3]))
 		{
 			xx = mean(player[2].x, player[3].x);
 			yy = mean(player[2].y, player[3].y);
@@ -640,9 +656,11 @@ if (!save_level_as_png)
 		/* 2, 4 */
 		if (player[1] > 0)
 		&& (player[4] > 0)
+		&& (instance_exists(player[1]))
+		&& (instance_exists(player[4]))
 		{
-			xx = mean(player[2].x, player4.x);
-			yy = mean(player[2].y, player4.y);
+			xx = mean(player[2].x, player[4].x);
+			yy = mean(player[2].y, player[4].y);
 		}
 		
 		else
@@ -650,9 +668,11 @@ if (!save_level_as_png)
 		/* 3, 4 */
 		if (player[3] > 0)
 		&& (player[4] > 0)
+		&& (instance_exists(player[3]))
+		&& (instance_exists(player[4]))
 		{
-			xx = mean(player[3].x, player4.x);
-			yy = mean(player[3].y, player4.y);
+			xx = mean(player[3].x, player[4].x);
+			yy = mean(player[3].y, player[4].y);
 		}
 		#endregion /* Camera should follow multiple players END */
 		
@@ -666,221 +686,58 @@ if (!save_level_as_png)
 	{
 		
 		#region /* Follow one player. In case something goes wrong, camera will always follow one player */
-		/* 1 */
-		if (player[1] >= 1)
-		&& (instance_exists(player[1]))
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
-			
-			#region /* ONE PLAYER CAMERA */
-			
-			#region /* Tries to be a bit ahead of player */
-			xx = player[1].x + player[1].hspeed * 15;
-			if (player[1].on_ground)
-			&& (player[1].vspeed >= 0)
+			if (player[i] >= 1)
+			&& (instance_exists(player[i]))
 			{
-				yy = player[1].y
-			}
-			else
-			if (player[1].y < camera_get_view_y(view_camera[view_current]) + 128)
-			{
-				yy -= abs(player[1].vspeed);
-			}
-			if (player[1].wall_jump)
-			|| (player[1].climb)
-			{
-				yy = player[1].y
-			}
-			if (player[1].y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
-			{
-				yy = player[1].y;
-			}
-			#endregion /* Tries to be a bit ahead of player END */
-			
-			#region /* Follow Player in y position when doing specific things */
-			if (player[1].in_water)
-			|| (player[1].stick_to_wall)
-			|| (player[1].spring)
-			|| (player[1].climb)
-			|| (player[1].horizontal_rope_climb)
-			{
-				if (player[1].y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+				
+				#region /* Tries to be a bit ahead of player */
+				xx = player[i].x + player[i].hspeed * 15;
+				if (player[i].on_ground)
+				&& (player[i].vspeed >= 0)
 				{
-					yy = player[1].y;
+					yy = player[i].y
 				}
-			}
-			#endregion /* Follow Player in y position when doing specific things END */
-			
-			view_wview_lerp = lerp(view_wview_lerp, 0, 0.1);
-			view_hview_lerp = lerp(view_hview_lerp, 0, 0.1);
-			#endregion /* ONE PLAYER CAMERA END */
-			
-		}
-		
-		else
-		
-		/* 2 */
-		if (player[2] >= 1)
-		&& (instance_exists(player[2]))
-		{
-			
-			#region /* ONE PLAYER CAMERA */
-			
-			#region /* Tries to be a bit ahead of player */
-			xx = player[2].x + player[2].hspeed * 15;
-			if (player[2].on_ground)
-			&& (player[2].vspeed >= 0)
-			{
-				yy = player[2].y
-			}
-			else
-			if (player[2].y < camera_get_view_y(view_camera[view_current]) + 128)
-			{
-				yy -= abs(player[2].vspeed);
-			}
-			if (player[2].wall_jump)
-			|| (player[2].climb)
-			{
-				yy = player[2].y
-			}
-			if (player[2].y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
-			{
-				yy = player[2].y;
-			}
-			#endregion /* Tries to be a bit ahead of player END */
-			
-			#region /* Follow Player in y position when doing specific things */
-			if (player[2].in_water)
-			|| (player[2].stick_to_wall)
-			|| (player[2].spring)
-			|| (player[2].climb)
-			|| (player[2].horizontal_rope_climb)
-			{
-				if (player[2].y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+				else
+				if (player[i].y < camera_get_view_y(view_camera[view_current]) + 128)
 				{
-					yy = player[2].y;
+					yy -= abs(player[i].vspeed);
 				}
-			}
-			#endregion /* Follow Player in y position when doing specific things END */
-			
-			view_wview_lerp = lerp(view_wview_lerp, 0, 0.1);
-			view_hview_lerp = lerp(view_hview_lerp, 0, 0.1);
-			#endregion /* ONE PLAYER CAMERA END */
-			
-		}
-		
-		else
-		
-		/* 3 */
-		if (player[3] >= 1)
-		&& (instance_exists(player[3]))
-		{
-			
-			#region /* ONE PLAYER CAMERA */
-			
-			#region /* Tries to be a bit ahead of player */
-			xx = player[3].x + player[3].hspeed * 15;
-			if (player[3].on_ground)
-			&& (player[3].vspeed >= 0)
-			{
-				yy = player[3].y
-			}
-			else
-			if (player[3].y < camera_get_view_y(view_camera[view_current]) + 128)
-			{
-				yy -= abs(player[3].vspeed);
-			}
-			if (player[3].wall_jump)
-			|| (player[3].climb)
-			{
-				yy = player[3].y
-			}
-			if (player[3].y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
-			{
-				yy = player[3].y;
-			}
-			#endregion /* Tries to be a bit ahead of player END */
-			
-			#region /* Follow Player in y position when doing specific things */
-			if (player[3].in_water)
-			|| (player[3].stick_to_wall)
-			|| (player[3].spring)
-			|| (player[3].climb)
-			|| (player[3].horizontal_rope_climb)
-			{
-				if (player[3].y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+				if (player[i].wall_jump)
+				|| (player[i].climb)
 				{
-					yy = player[3].y;
+					yy = player[i].y
 				}
-			}
-			#endregion /* Follow Player in y position when doing specific things END */
-			
-			view_wview_lerp = lerp(view_wview_lerp, 0, 0.1);
-			view_hview_lerp = lerp(view_hview_lerp, 0, 0.1);
-			#endregion /* ONE PLAYER CAMERA END */
-			
-		}
-		
-		else
-		
-		/* 4 */
-		if (player[4] >= 1)
-		&& (instance_exists(player[4]))
-		{
-			
-			#region /* ONE PLAYER CAMERA */
-			
-			#region /* Tries to be a bit ahead of player */
-			xx = player4.x + player4.hspeed * 15;
-			if (player4.on_ground)
-			&& (player4.vspeed >= 0)
-			{
-				yy = player4.y
-			}
-			else
-			if (player4.y < camera_get_view_y(view_camera[view_current]) + 128)
-			{
-				yy -= abs(player4.vspeed);
-			}
-			if (player4.wall_jump)
-			|| (player4.climb)
-			{
-				yy = player4.y
-			}
-			if (player4.y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
-			{
-				yy = player4.y;
-			}
-			#endregion /* Tries to be a bit ahead of player END */
-			
-			#region /* Follow Player in y position when doing specific things */
-			if (player4.in_water)
-			|| (player4.stick_to_wall)
-			|| (player4.spring)
-			|| (player4.climb)
-			|| (player4.horizontal_rope_climb)
-			{
-				if (player4.y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+				if (player[i].y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
 				{
-					yy = player4.y;
+					yy = player[i].y;
 				}
+				#endregion /* Tries to be a bit ahead of player END */
+			
+				#region /* Follow Player in y position when doing specific things */
+				if (player[i].in_water)
+				|| (player[i].stick_to_wall)
+				|| (player[i].spring)
+				|| (player[i].climb)
+				|| (player[i].horizontal_rope_climb)
+				{
+					if (player[i].y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]) * 0.5)
+					{
+						yy = player[i].y;
+					}
+				}
+				#endregion /* Follow Player in y position when doing specific things END */
+				
 			}
-			#endregion /* Follow Player in y position when doing specific things END */
-			
-			view_wview_lerp = lerp(view_wview_lerp, 0, 0.1);
-			view_hview_lerp = lerp(view_hview_lerp, 0, 0.1);
-			#endregion /* ONE PLAYER CAMERA END */
-			
-		}
-		
-		else
-		
-		/* nothing */
-		{
-			xx = x;
-			yy = y;
 		}
 		#endregion /* Follow one player. In case something goes wrong, camera will always follow one player END */
 		
+	}
+	else
+	{
+		xx = x; /* Otherwise, just follow x */
+		yy = y; /* Otherwise, just follow y */
 	}
 	#endregion /* SINGLEPLAYER CAMERA */
 	

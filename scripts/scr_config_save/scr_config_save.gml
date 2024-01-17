@@ -114,6 +114,7 @@ function scr_config_save()
 		ini_write_real("config", "skin_for_player" + string(i), global.actual_skin_for_player[i]);
 		ini_write_string("config", "player" + string(i) + "_name", global.player_name[i]);
 		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_up_is_also_jump", global.player_up_is_also_jump[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_double_jump_uses_jump_key", global.player_double_jump_uses_jump_key[i]);
 		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_down_is_also_crouch", global.player_down_is_also_crouch[i]);
 		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_double_tap_to_run", global.player_double_tap_to_run[i]);
 		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_run_toggle", global.player_run_toggle[i]);

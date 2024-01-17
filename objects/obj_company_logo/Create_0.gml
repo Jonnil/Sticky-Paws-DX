@@ -3,10 +3,11 @@ global.max_players = 4; /* How many players you want to be able to play */
 global.company_name = "Jonnil"; /* String of what the company is called */
 global.game_name = "Sticky Paws"; /* String of what the game is called */
 global.game_name_appdata = "Sticky_Paws_DX"; /* String of what the game is called at appdata folder */
-global.character_for_player[1] = "sticky"; /* Player 1 Select Character 1 */
-global.character_for_player[2] = "catlyn"; /* Player 2 Select Character 2 */
-global.character_for_player[3] = "sticky"; /* Player 3 Select Character 3 */
-global.character_for_player[4] = "catlyn"; /* Player 4 Select Character 4 */
+var character_for_unassigned_player_default = "sticky"; /* Default character for unassigned players */
+var character_for_player1 = "sticky"; /* Player 1 Select Character 1 */
+var character_for_player2 = "catlyn"; /* Player 2 Select Character 2 */
+var character_for_player3 = "sticky"; /* Player 3 Select Character 3 */
+var character_for_player4 = "catlyn"; /* Player 4 Select Character 4 */
 global.link_to_steam_page = "https://store.steampowered.com/app/1129090/Sticky_Paws";
 global.link_to_discord = "https://discord.com/invite/fGCy36x";
 global.link_to_youtube = "https://www.youtube.com/Jonnilescom";
@@ -62,11 +63,6 @@ else
 if (os_type == os_switch)
 {
 	global.free_communication_available = switch_free_communication_available(); /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = switch_free_communication_available when done debugging */
-	global.chosen_controller_used[1] = 3; /* What controller buttons to use for button prompts */
-	global.chosen_controller_used[2] = 3;
-	global.chosen_controller_used[3] = 3;
-	global.chosen_controller_used[4] = 3;
-	/* 0 = autodetect, 1 = xboxone, 2 = xboxseriesxs, 3 = nintendoswitch, 4 = playstation4, 5 = playstation5 */
 	global.show_prompt_when_changing_to_gamepad = false;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = false;	
 	global.enable_open_custom_folder = false; /* Enable the option to open custom folders in the game */
@@ -76,11 +72,6 @@ if (os_type == os_switch)
 else
 {
 	global.free_communication_available = true; /* If free communication is disabled, you shouldn't be able to upload or download custom content. Set this to global.free_communication_available = true when done debugging */
-	global.chosen_controller_used[1] = 0; /* What controller buttons to use for button prompts */
-	global.chosen_controller_used[2] = 0;
-	global.chosen_controller_used[3] = 0;
-	global.chosen_controller_used[4] = 0;
-	/* 0 = autodetect, 1 = xboxone, 2 = xboxseriesxs, 3 = nintendoswitch, 4 = playstation4, 5 = playstation5 */
 	global.show_prompt_when_changing_to_gamepad = true;
 	global.show_prompt_when_changing_to_keyboard_and_mouse = true;
 	global.enable_open_custom_folder = true; /* Enable the option to open custom folders in the game */
@@ -203,8 +194,6 @@ initialized_title_backgrounds = false;
 initialized_title_logo = false;
 load_ok = 0;
 sprite_splash_easteregg_yoffset = +228;
-view_hview_lerp = 0;
-view_wview_lerp = 0;
 goto_title_screen = false; /* If game is allowed to go to title screen yet or not. Need to load everything before going to title screen */
 
 var switch_controller_style = switch_controller_handheld | switch_controller_joycon_left | switch_controller_joycon_right | switch_controller_pro_controller | switch_controller_joycon_dual;
@@ -311,31 +300,50 @@ global.level_editor_level = 0; /* What level is selected in the custom level edi
 global.narrator = 0; /* Select Narrator */
 global.pause = false; /* If game is paused or not */
 global.play_edited_level = false; /* Playtest edited level */
-global.player_can_play[1] = false; /* Player 1 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
-global.player_color[1] = c_aqua; /* Player 1 Color, default:aqua */
-global.player_can_play[2] = false; /* Player 2 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
-global.player_color[2] = c_red; /* Player 1 Color, default:red */
-global.player_can_play[3] = false; /* Player 3 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
-global.player_color[3] = c_lime; /* Player 1 Color, default:lime */
-global.player_can_play[4] = false; /* Player 4 needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
-global.player_color[4] = c_yellow; /* Player 1 Color, default:yellow */
+
+#region /* Automatic assigned player variables for every player */
+for(var i = 1; i <= global.max_players; i += 1)
+{
+	global.character_index[i] = 0;
+	global.player_can_play[i] = false; /* Player needs to join the game to be able to play, by default this is false. Don't run this code in create event of obj_title */
+	global.actual_skin_for_player[i] = i - 1; /* Player Select Skin, make default skin match the player number */
+	global.sprite_select_player[i] = noone;
+	global.sprite_player_stand[i] = noone;
+	global.voicepack_for_player[i] = 0; /* Player Select Voicepack, make default voicepack always 0 for every player */
+	global.player_color[i] = c_gray; /* Player Color, default for players without set colors should be gray */
+	global.level_player_start_x[i] = 0;
+	global.level_player_start_y[i] = 0;
+	global.player_crouch_toggle[i] = false; /* If crouch toggle for player 1 is true or false (false by default) */
+	global.player_run_toggle[i] = false; /* If run toggle for player 1 is true or false (false by default) */
+	global.player_cancel_dive_by_pressing_jump_or_dive_button[i] = false;
+	global.player_cancel_dive_by_pressing_opposite_direction[i] = false;
+	global.player_down_and_jump_to_groundpound[i] = false;
+	global.player_name[i] = "";
+	global.player_slot[i] = i - 1; /* Controller ports */
+	global.player_profile[i] = 0; /* Remap Profiles */
+	global.chosen_controller_used[i] = 0; /* What controller buttons to use for button prompts. 0 = autodetect, 1 = xboxone, 2 = xboxseriesxs, 3 = nintendoswitch, 4 = playstation4, 5 = playstation5 */
+	global.character_for_player[i] = string(character_for_unassigned_player_default); /* Player Select Character */
+	global.skin_for_player[i] = global.actual_skin_for_player[i]; /* In case the player selected a character that doesn't have skins, use this variable */
+}
+#endregion /* Automatic assigned player variables for every player END */
+
+#region /* Custom assigned player variables for each player */
+global.player_color[1] = c_aqua; /* Player 1 Color, default: aqua */
+global.player_color[2] = c_red; /* Player 2 Color, default: red */
+global.player_color[3] = c_lime; /* Player 3 Color, default: lime */
+global.player_color[4] = c_yellow; /* Player 4 Color, default: yellow */
+global.player_color[5] = c_orange; /* Player 5 Color, default: orange */
+global.character_for_player[1] = string(character_for_player1); /* Player 1 Select Character 1 */
+global.character_for_player[2] = string(character_for_player2); /* Player 2 Select Character 2 */
+global.character_for_player[3] = string(character_for_player3); /* Player 3 Select Character 3 */
+global.character_for_player[4] = string(character_for_player4); /* Player 4 Select Character 4 */
+#endregion /* Custom assigned player variables for each player END */
+
 global.select_level_index = 0; /* What level is selected in the custom level editor */
 global.selected_resource_pack = 0; /* 0 = default */
 global.show_defeats_counter = false; /* Show a defeats counter or not */
 global.show_ranks = false; /* Show ranks you get at the end of the level */
 global.show_timer = false; /* Show a countup timer or not */
-global.actual_skin_for_player[1] = 0; /* Player 1 Select Skin, make default skin 1 */
-global.actual_skin_for_player[2] = 1; /* Player 2 Select Skin, make default skin 2 */
-global.actual_skin_for_player[3] = 2; /* Player 3 Select Skin, make default skin 3 */
-global.actual_skin_for_player[4] = 3; /* Player 4 Select Skin, make default skin 4 */
-global.sprite_select_player[1] = noone;
-global.sprite_select_player[2] = noone;
-global.sprite_select_player[3] = noone;
-global.sprite_select_player[4] = noone;
-global.sprite_player_stand[1] = noone;
-global.sprite_player_stand[2] = noone;
-global.sprite_player_stand[3] = noone;
-global.sprite_player_stand[4] = noone;
 global.thumbnail_sprite = ds_list_create();
 
 global.selected_title_background[1] = 0; /* 0 = default */
@@ -352,10 +360,6 @@ global.background_layer_x_scroll[3] = 1;
 global.background_layer_y_scroll[3] = 1;
 
 global.title_logo_index = spr_noone;
-global.voicepack_for_player[1] = 0; /* Player 1 Select Voicepack */
-global.voicepack_for_player[2] = 0; /* Player 2 Select Voicepack */
-global.voicepack_for_player[3] = 0; /* Player 3 Select Voicepack */
-global.voicepack_for_player[4] = 0; /* Player 4 Select Voicepack */
 global.world_editor = false; /* If you're editing world or not */
 global.go_to_menu_when_going_back_to_title = ""; /* Sometimes you want to go to another menu after loading custom levels, instead of the default */
 device_mouse_dbclick_enable(false); /* Game should be playable on mobile without right click. Makes it harder to press the buttons in quick succession when this is enabled */
@@ -367,15 +371,6 @@ gamepad_set_axis_deadzone(2, 0.5);
 gamepad_set_axis_deadzone(3, 0.5);
 gamepad_set_axis_deadzone(4, 0.5);
 window_set_cursor(cr_none);
-
-#region /* Set Max Players */
-var i = global.max_players - 1;
-repeat(global.max_players)
-{
-	global.character_index[i] = 0;
-	i --;
-}
-#endregion /* Set Max Players END */
 
 #region /* Select title logo depending on what language the OS is set to */
 switch (os_get_language())
@@ -488,64 +483,11 @@ global.quit_to_title = false;
 global.full_level_map_screenshot = false;
 global.appear_block_timer = 0;
 
-global.level_player_start_x[1] = 0;
-global.level_player_start_y[1] = 0;
-global.level_player_start_x[2] = 0;
-global.level_player_start_y[2] = 0;
-global.level_player_start_x[3] = 0;
-global.level_player_start_y[3] = 0;
-global.level_player_start_x[4] = 0;
-global.level_player_start_y[4] = 0;
-
-global.player_crouch_toggle[1] = false; /* If crouch toggle for player 1 is true or false (false by default) */
-global.player_crouch_toggle[2] = false; /* If crouch toggle for player 2 is true or false (false by default) */
-global.player_crouch_toggle[3] = false; /* If crouch toggle for player 3 is true or false (false by default) */
-global.player_crouch_toggle[4] = false; /* If crouch toggle for player 4 is true or false (false by default) */
-
-global.player_run_toggle[1] = false; /* If run toggle for player 1 is true or false (false by default) */
-global.player_run_toggle[2] = false; /* If run toggle for player 2 is true or false (false by default) */
-global.player_run_toggle[3] = false; /* If run toggle for player 3 is true or false (false by default) */
-global.player_run_toggle[4] = false; /* If run toggle for player 4 is true or false (false by default) */
-
-global.player_cancel_dive_by_pressing_jump_or_dive_button[1] = false;
-global.player_cancel_dive_by_pressing_jump_or_dive_button[2] = false;
-global.player_cancel_dive_by_pressing_jump_or_dive_button[3] = false;
-global.player_cancel_dive_by_pressing_jump_or_dive_button[4] = false;
-
-global.player_cancel_dive_by_pressing_opposite_direction[1] = false;
-global.player_cancel_dive_by_pressing_opposite_direction[2] = false;
-global.player_cancel_dive_by_pressing_opposite_direction[3] = false;
-global.player_cancel_dive_by_pressing_opposite_direction[4] = false;
-
-global.player_down_and_jump_to_groundpound[1] = false;
-global.player_down_and_jump_to_groundpound[2] = false;
-global.player_down_and_jump_to_groundpound[3] = false;
-global.player_down_and_jump_to_groundpound[4] = false;
-
 global.fullscreen_key = vk_f11;
 
 global.level_name = ""; /* In the level editor, the name of the currently selected level will be stored here */
 global.level_name = ""; /* The actual level path name will be store here, without being censored */
 global.level_description = ""; /* In the level editor, the description of the currently selected level will be stored here */
-
-global.player_name[1] = "";
-global.player_name[2] = "";
-global.player_name[3] = "";
-global.player_name[4] = "";
-
-#region /* Controller ports */
-global.player_slot[1] = 0;
-global.player_slot[2] = 1;
-global.player_slot[3] = 2;
-global.player_slot[4] = 3;
-#endregion /* Controller ports END */
-
-#region /* Remap Profiles */
-global.player_profile[1] = 0;
-global.player_profile[2] = 0;
-global.player_profile[3] = 0;
-global.player_profile[4] = 0;
-#endregion /* Remap Profiles END */
 
 #region /* Set controls */
 enum action
@@ -721,13 +663,7 @@ enum volume_source
 
 alarm[0] = 3;
 
-#region /* Set these global variables after loading config file */
-global.skin_for_player[1] = global.actual_skin_for_player[1]; /* In case the player selected a character that doesn't have skins, use this variable */
-global.skin_for_player[2] = global.actual_skin_for_player[2]; /* In case the player selected a character that doesn't have skins, use this variable */
-global.skin_for_player[3] = global.actual_skin_for_player[3]; /* In case the player selected a character that doesn't have skins, use this variable */
-global.skin_for_player[4] = global.actual_skin_for_player[4]; /* In case the player selected a character that doesn't have skins, use this variable */
 scr_set_font();
-#endregion /* Set these global variables after loading config file END */
 
 switch_save_data_message[0] = "";
 switch_save_data_message[1] = "";

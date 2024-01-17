@@ -430,8 +430,6 @@ voice_scream = noone;
 /* ________________________________ */
 
 #region /* Don't change these variables */
-view_hview_lerp = 0;
-view_wview_lerp = 0;
 full_level_map_screenshot_timer = 0;
 
 #region /* Intro Animation Variables */

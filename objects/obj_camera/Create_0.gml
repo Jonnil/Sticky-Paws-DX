@@ -143,12 +143,6 @@ alarm[0] = 1; /* Initialize custom character timer. This code needs to be initia
 #endregion /* Lives Icon END */
 
 save_level_as_png = false;
-
-#region /* Smooth the camera out even more */
-view_wview_lerp = 0;
-view_hview_lerp = 0;
-#endregion /* Smooth the camera out even more END */
-
 checkpoint_number = 0;
 
 #region /* Hud Variables */
@@ -201,159 +195,71 @@ else
 scr_initialize_level_information_ini();
 
 #region /* Spawn Players */
-if (can_spawn_players)
-{
-	if (global.player_can_play[1])
-	{
-		if (global.checkpoint_x > 0)
-		&& (global.actually_play_edited_level)
-		|| (global.checkpoint_y > 0)
-		&& (global.actually_play_edited_level)
-		{
-			player[1] = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
+if (can_spawn_players) {
+	for (var i = 1; i <= global.max_players; i += 1) {
+		if (global.player_can_play[i]) {
+			if (i == 1) {
+				var object_level_start = obj_level_player1_start;
+			}
+			else
+			if (i == 2) {
+				var object_level_start = obj_level_player2_start;
+			}
+			else
+			if (i == 3) {
+				var object_level_start = obj_level_player3_start;
+			}
+			else
+			if (i == 4) {
+				var object_level_start = obj_level_player4_start;
+			}
+			else {
+				var object_level_start = obj_level_player1_start;
+			}
+			var start_x, start_y;
+			if (global.checkpoint_x > 0 && global.checkpoint_y > 0 && global.actually_play_edited_level) {
+				start_x = global.checkpoint_x;
+				start_y = global.checkpoint_y;
+			}
+			else if (global.actually_play_edited_level && instance_exists(object_level_start)) {
+				start_x = object_level_start.x;
+				start_y = object_level_start.y;
+			}
+			else {
+				start_x = x; /* Default start position if no specific conditions are met */
+				start_y = y;
+			}
+			player[i] = instance_create_depth(start_x, start_y, 0, obj_player);
+			with (player[i]) {
+				custom_character = global.character_for_player[i];
+				selected_voice_pack = global.voicepack_for_player[i];
+				selected_skin = global.skin_for_player[i];
+				intro_animation = instance_nearest(start_x, start_y, obj_camera).intro_animation;
+				player = i;
+			}
 		}
-		else
-		if (global.actually_play_edited_level)
-		&& (instance_exists(obj_level_player1_start))
-		{
-			player[1] = instance_create_depth(obj_level_player1_start.x, obj_level_player1_start.y, 0, obj_player);
+		else {
+			player[i] = noone;
 		}
-		else
-		{
-			player[1] = instance_create_depth(x, y, 0, obj_player);
-		}
-		with(player[1])
-		{
-			custom_character = global.character_for_player[1];
-			selected_voice_pack = global.voicepack_for_player[1];
-			selected_skin = global.skin_for_player[1];
-			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
-			player = 1;
-		}
-	}
-	else
-	{
-		player[1] = noone;
-	}
-	if (global.player_can_play[2])
-	{
-		if (global.checkpoint_x > 0)
-		&& (global.actually_play_edited_level)
-		|| (global.checkpoint_y > 0)
-		&& (global.actually_play_edited_level)
-		{
-			player[2] = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
-		}
-		else
-		if (global.actually_play_edited_level)
-		&& (instance_exists(obj_level_player2_start))
-		{
-			player[2] = instance_create_depth(obj_level_player2_start.x, obj_level_player2_start.y, 0, obj_player);
-		}
-		else
-		{
-			player[2] = instance_create_depth(x, y, 0, obj_player);
-		}
-		with(player[2])
-		{
-			custom_character = global.character_for_player[2];
-			selected_voice_pack = global.voicepack_for_player[2];
-			selected_skin = global.skin_for_player[2];
-			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
-			player = 2;
-		}
-	}
-	else
-	{
-		player[2] = noone;
-	}
-	if (global.player_can_play[3])
-	{
-		if (global.checkpoint_x > 0)
-		&& (global.actually_play_edited_level)
-		|| (global.checkpoint_y > 0)
-		&& (global.actually_play_edited_level)
-		{
-			player[3] = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
-		}
-		else
-		if (global.actually_play_edited_level)
-		&& (instance_exists(obj_level_player3_start))
-		{
-			player[3] = instance_create_depth(obj_level_player3_start.x, obj_level_player3_start.y, 0, obj_player);
-		}
-		else
-		{
-			player[3] = instance_create_depth(x, y, 0, obj_player);
-		}
-		with(player[3])
-		{
-			custom_character = global.character_for_player[3];
-			selected_voice_pack = global.voicepack_for_player[3];
-			selected_skin = global.skin_for_player[3];
-			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
-			player = 3;
-		}
-	}
-	else
-	{
-		player[3] = noone;
-	}
-	if (global.player_can_play[4])
-	{
-		if (global.checkpoint_x > 0)
-		&& (global.actually_play_edited_level)
-		|| (global.checkpoint_y > 0)
-		&& (global.actually_play_edited_level)
-		{
-			player[4] = instance_create_depth(global.checkpoint_x, global.checkpoint_y, 0, obj_player);
-		}
-		else
-		if (global.actually_play_edited_level)
-		&& (instance_exists(obj_level_player4_start))
-		{
-			player[4] = instance_create_depth(obj_level_player4_start.x, obj_level_player4_start.y, 0, obj_player);
-		}
-		else
-		{
-			player[4] = instance_create_depth(x, y, 0, obj_player);
-		}
-		with(player[4])
-		{
-			custom_character = global.character_for_player[4];
-			selected_voice_pack = global.voicepack_for_player[4];
-			selected_skin = global.skin_for_player[4];
-			intro_animation = instance_nearest(x, y, obj_camera).intro_animation;
-			player = 4;
-		}
-	}
-	else
-	{
-		player[4] = noone;
 	}
 	if (room == rm_leveleditor)
-	&& (global.actually_play_edited_level)
-	{
+	&& (global.actually_play_edited_level) {
 		player_has_spawned = true;
 	}
-	else
-	{
+	else {
 		player_has_spawned = false;
 	}
 }
-else
-{
-	player[1] = noone;
-	player[2] = noone;
-	player[3] = noone;
-	player[4] = noone;
+else {
+	for(var i = 1; i <= global.max_players; i += 1) {
+		player[i] = noone;
+	}
 	player_has_spawned = false;
 }
 #endregion /* Spawn Players END */
 
 #region /* HUD Show Controls keys that have been pressed */
-for(var i = 1; i <= global.max_players; i += 1)
-{
+for(var i = 1; i <= global.max_players; i += 1) {
 	can_spawn_player[i] = true;
 	show_player_controls_y[i] = +32;
 	key_player_run_toggle_pressed[i] = noone;
@@ -369,16 +275,14 @@ for(var i = 1; i <= global.max_players; i += 1)
 	player_show_dive_key_x[i] = 32;
 	player_show_jump_key_x[i] = string_width(l10n_text("Pounce")) + 75;
 	player_show_crouch_key_x[i] = player_show_jump_key_x[i] + string_width(l10n_text("Jump")) + 37;
-	if (!global.player_run_toggle[i])
-	{
+	if (!global.player_run_toggle[i]) {
 		player_show_run_key_x[i] = player_show_crouch_key_x[i] + string_width(l10n_text("Crouch")) + 37;
 		player_show_left_key_x[i] = player_show_run_key_x[i] + string_width(l10n_text("Run")) + 37;
 		player_show_right_key_x[i] = player_show_left_key_x[i] + string_width(l10n_text("Left")) + 37;
 		player_show_down_key_x[i] = player_show_right_key_x[i] + string_width(l10n_text("Right")) + 37;
 		player_show_up_key_x[i] = player_show_down_key_x[i] + string_width(l10n_text("Down")) + 37;
 	}
-	else
-	{
+	else {
 		player_show_run_key_x[i] = -999; /* Hide the run key if you have "Always Run" turned on */
 		player_show_left_key_x[i] = player_show_crouch_key_x[i] + string_width(l10n_text("Crouch")) + 37;
 		player_show_right_key_x[i] = player_show_left_key_x[i] + string_width(l10n_text("Left")) + 37;
@@ -404,90 +308,6 @@ allow_iris = true;
 iris_zoom = 0;
 timer_blinking_alpha = 0;
 current_file = global.file;
-
-/* Initialize the view in the create event, if you do that in any other event the HTML5 version will result in a black screen */
-#region /* Initialize View */
-
-/* View Size */
-view_wview = 1024 + 400 - 32;
-view_hview = 768 - 32;
-/* View Size END */
-
-#region /* View Size */
-if (os_type == os_ios)
-|| (os_type == os_android)
-{
-	if (view_wport > 1920)
-	{
-		view_wport = 1920;
-	}
-	if (view_wview > 1920 - 64)
-	{
-		view_wview = 1920 - 64;
-	}
-	if (view_hport > 1080)
-	{
-		view_hport = 1080;
-	}
-	if (view_hview > 1080 - 64)
-	{
-		view_hview = 1080 - 64;
-	}
-	if (view_wport < 640 - 320)
-	{
-		view_wport = 640;
-	}
-	if (view_wview < 640)
-	{
-		view_wview = 640;
-	}
-	if (view_hport < 480)
-	{
-		view_hport = 480;
-	}
-	if (view_hview < 480)
-	{
-		view_hview = 480;
-	}
-}
-else
-{
-	if (view_wport > 1920)
-	{
-		view_wport = 1920;
-	}
-	if (view_wview > 1920)
-	{
-		view_wview = 1920;
-	}
-	if (view_hport > 1080)
-	{
-		view_hport = 1080;
-	}
-	if (view_hview > 1080)
-	{
-		view_hview = 1080;
-	}
-	if (view_wport < 640)
-	{
-		view_wport = 640;
-	}
-	if (view_wview < 640)
-	{
-		view_wview = 640;
-	}
-	if (view_hport < 480)
-	{
-		view_hport = 480;
-	}
-	if (view_hview < 480)
-	{
-		view_hview = 480;
-	}
-}
-#endregion /* View Size END */
-
-#endregion /* Initialize View END */
 
 scr_update_all_music();
 

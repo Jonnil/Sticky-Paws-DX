@@ -43,107 +43,25 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	}
 	#endregion /* Make character portraits smaller if screen size is too small to fit them END */
 	
-	#region /* Set correct variables for players */
-	
-	#region /* If player is player 1, set all the variables to Player variables */
-	if (what_player == 1)
-	{
-		var sprite_select_player = global.sprite_select_player[1];
-		var player_key_left = global.player_[inp.key][1][1][action.left];
-		var player_key_right = global.player_[inp.key][1][1][action.right];
-		var player_key2_left = global.player_[inp.key][1][2][action.left];
-		var player_key2_right = global.player_[inp.key][1][2][action.right];
-		var player_key_up = global.player_[inp.key][1][1][action.up];
-		var player_key_down = global.player_[inp.key][1][1][action.down];
-		var player_key2_up = global.player_[inp.key][1][2][action.up];
-		var player_key2_down = global.player_[inp.key][1][2][action.down];
-		var player_key_back = global.player_[inp.key][1][1][action.back];
-		var player_key2_back = global.player_[inp.key][1][2][action.back];
-		var player_key_accept = global.player_[inp.key][1][1][action.accept];
-		var player_key2_accept = global.player_[inp.key][1][2][action.accept];
-		var player_gamepad_button_back = global.player_[inp.gp][1][1][action.back];
-		var player_gamepad_button2_back = global.player_[inp.gp][1][2][action.back];
-		var player_gamepad_button_accept = global.player_[inp.gp][1][1][action.accept];
-		var player_gamepad_button2_accept = global.player_[inp.gp][1][2][action.accept];
-	}
-	#endregion /* If player is player 1, set all the variables to Player variables END */
-	
-	else
-	
-	#region /* If player is player 2, set all the variables to player 2 variables */
-	if (what_player == 2)
-	{
-		var sprite_select_player = global.sprite_select_player[2];
-		var player_key_left = global.player_[inp.key][2][1][action.left];
-		var player_key_right = global.player_[inp.key][2][1][action.right];
-		var player_key2_left = global.player_[inp.key][2][2][action.left];
-		var player_key2_right = global.player_[inp.key][2][2][action.right];
-		var player_key_up = global.player_[inp.key][2][1][action.up];
-		var player_key_down = global.player_[inp.key][2][1][action.down];
-		var player_key2_up = global.player_[inp.key][2][2][action.up];
-		var player_key2_down = global.player_[inp.key][2][2][action.down];
-		var player_key_back = global.player_[inp.key][2][1][action.back];
-		var player_key2_back = global.player_[inp.key][2][2][action.back];
-		var player_key_accept = global.player_[inp.key][2][1][action.accept];
-		var player_key2_accept = global.player_[inp.key][2][2][action.accept];
-		var player_gamepad_button_back = global.player_[inp.gp][2][1][action.back];
-		var player_gamepad_button2_back = global.player_[inp.gp][2][2][action.back];
-		var player_gamepad_button_accept = global.player_[inp.gp][2][1][action.accept];
-		var player_gamepad_button2_accept = global.player_[inp.gp][2][2][action.accept];
-	}
-	#endregion /* If player is player 2, set all the variables to player 2 variables END */
-	
-	else
-	
-	#region /* If player is player 3, set all the variables to player 3 variables */
-	if (what_player == 3)
-	{
-		var sprite_select_player = global.sprite_select_player[3];
-		var player_key_left = global.player_[inp.key][3][1][action.left];
-		var player_key_right = global.player_[inp.key][3][1][action.right];
-		var player_key2_left = global.player_[inp.key][3][2][action.left];
-		var player_key2_right = global.player_[inp.key][3][2][action.right];
-		var player_key_up = global.player_[inp.key][3][1][action.up];
-		var player_key_down = global.player_[inp.key][3][1][action.down];
-		var player_key2_up = global.player_[inp.key][3][2][action.up];
-		var player_key2_down = global.player_[inp.key][3][2][action.down];
-		var player_key_back = global.player_[inp.key][3][1][action.back];
-		var player_key2_back = global.player_[inp.key][3][2][action.back];
-		var player_key_accept = global.player_[inp.key][3][1][action.accept];
-		var player_key2_accept = global.player_[inp.key][3][2][action.accept];
-		var player_gamepad_button_back = global.player_[inp.gp][3][1][action.back];
-		var player_gamepad_button2_back = global.player_[inp.gp][3][2][action.back];
-		var player_gamepad_button_accept = global.player_[inp.gp][3][1][action.accept];
-		var player_gamepad_button2_accept = global.player_[inp.gp][3][2][action.accept];
-	}
-	#endregion /* If player is player 3, set all the variables to player 3 variables END */
-	
-	else
-	
-	#region /* If player is player 4, set all the variables to player 4 variables */
-	if (what_player == 4)
-	{
-		var sprite_select_player = global.sprite_select_player[4];
-		var player_key_left = global.player_[inp.key][4][1][action.left];
-		var player_key_right = global.player_[inp.key][4][1][action.right];
-		var player_key2_left = global.player_[inp.key][4][2][action.left];
-		var player_key2_right = global.player_[inp.key][4][2][action.right];
-		var player_key_up = global.player_[inp.key][4][1][action.up];
-		var player_key_down = global.player_[inp.key][4][1][action.down];
-		var player_key2_up = global.player_[inp.key][4][2][action.up];
-		var player_key2_down = global.player_[inp.key][4][2][action.down];
-		var player_key_back = global.player_[inp.key][4][1][action.back];
-		var player_key2_back = global.player_[inp.key][4][2][action.back];
-		var player_key_accept = global.player_[inp.key][4][1][action.accept];
-		var player_key2_accept = global.player_[inp.key][4][2][action.accept];
-		var player_gamepad_button_back = global.player_[inp.gp][4][1][action.back];
-		var player_gamepad_button2_back = global.player_[inp.gp][4][2][action.back];
-		var player_gamepad_button_accept = global.player_[inp.gp][4][1][action.accept];
-		var player_gamepad_button2_accept = global.player_[inp.gp][4][2][action.accept];
-	}
-	#endregion /* If player is player 4, set all the variables to player 4 variables END */
-	
-	#endregion /* Set correct variables for players END */
+	#region /* Set all the player variables */
+	var sprite_select_player = global.sprite_select_player[what_player];
+	var player_key_left = global.player_[inp.key][what_player][1][action.left];
+	var player_key_right = global.player_[inp.key][what_player][1][action.right];
+	var player_key2_left = global.player_[inp.key][what_player][2][action.left];
+	var player_key2_right = global.player_[inp.key][what_player][2][action.right];
+	var player_key_up = global.player_[inp.key][what_player][1][action.up];
+	var player_key_down = global.player_[inp.key][what_player][1][action.down];
+	var player_key2_up = global.player_[inp.key][what_player][2][action.up];
+	var player_key2_down = global.player_[inp.key][what_player][2][action.down];
+	var player_key_back = global.player_[inp.key][what_player][1][action.back];
+	var player_key2_back = global.player_[inp.key][what_player][2][action.back];
+	var player_key_accept = global.player_[inp.key][what_player][1][action.accept];
+	var player_key2_accept = global.player_[inp.key][what_player][2][action.accept];
+	var player_gamepad_button_back = global.player_[inp.gp][what_player][1][action.back];
+	var player_gamepad_button2_back = global.player_[inp.gp][what_player][2][action.back];
+	var player_gamepad_button_accept = global.player_[inp.gp][what_player][1][action.accept];
+	var player_gamepad_button2_accept = global.player_[inp.gp][what_player][2][action.accept];
+	#endregion /* Set all the player variables END */
 	
 	#region /* Display Selected Skin if skins are available */
 	if (no_players_are_inputting_names)

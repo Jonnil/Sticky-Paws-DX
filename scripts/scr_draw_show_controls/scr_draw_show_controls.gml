@@ -32,12 +32,6 @@ function scr_draw_show_controls(what_player = 1)
 			var gamepad_player_is_connected = gamepad_is_connected(what_player - 1)
 			
 			#region /* Set correct variables for players */
-			/* Create arrays for each player */
-			var players = [	player[1],	player[2],	player[3],	player[4]];
-			
-			/* Use the what_player variable to index into the arrays */
-			var player_instance = players[what_player - 1];
-			
 			var player_gamepad_button_dive = global.player_[inp.gp][what_player][1][action.dive];
 			var player_gamepad_button2_dive = global.player_[inp.gp][what_player][2][action.dive];
 			var player_key_dive = global.player_[inp.key][what_player][1][action.dive];
@@ -96,8 +90,8 @@ function scr_draw_show_controls(what_player = 1)
 			#endregion /* Set correct variables for players END */
 			
 			#region /* Show Controls for Player */
-			if (player_instance > 0)
-			&& (instance_exists(player_instance))
+			if (player[what_player] > 0)
+			&& (instance_exists(player[what_player]))
 			&& (global.player_can_play[what_player])
 			&& (!global.goal_active)
 			{
