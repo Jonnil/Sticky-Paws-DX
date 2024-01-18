@@ -15,14 +15,18 @@ function scr_character_select_menu_draw()
 		var player_join_text_size = 0.75;
 	}
 	
-	/* Player 1 Key Accept Pressed */ player_key_a_pressed[1] = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.accept])) || (keyboard_check_pressed(vk_space));
-	/* Player 1 Key Back Pressed */ player_key_b_pressed[1] = (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][1][2][action.back])) || (keyboard_check_pressed(vk_escape));
-	/* Player 2 Key Accept Pressed */ player_key_a_pressed[2] = (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.accept]));
-	/* Player 2 Key Back Pressed */ player_key_b_pressed[2] = (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][2][2][action.back]));
-	/* Player 3 Key Accept Pressed */ player_key_a_pressed[3] = (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.accept]));
-	/* Player 3 Key Back Pressed */ player_key_b_pressed[3] = (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][3][2][action.back]));
-	/* Player 4 Key Accept Pressed */ player_key_a_pressed[4] = (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept])) || (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.accept])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.accept]));
-	/* Player 4 Key Back Pressed */ player_key_b_pressed[4] = (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back])) || (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][1][action.back])) || (keyboard_check_pressed(global.player_[inp.key][4][2][action.back]));
+	for(var i = 1; i <= global.max_players; i += 1)
+	{
+		/* Player Key Accept Pressed */ player_key_a_pressed[i] = (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][1][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][2][action.accept]))
+		|| (keyboard_check_pressed(global.player_[inp.key][i][1][action.accept]))
+		|| (keyboard_check_pressed(global.player_[inp.key][i][2][action.accept]));
+		/* Player Key Back Pressed */ player_key_b_pressed[i] = (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][2][action.back]))
+		|| (keyboard_check_pressed(global.player_[inp.key][i][1][action.back]))
+		|| (keyboard_check_pressed(global.player_[inp.key][i][2][action.back]))
+		|| (keyboard_check_pressed(vk_escape));
+	}
 	
 	arrow_offset = 125;
 	var get_window_height = display_get_gui_height();
@@ -39,17 +43,8 @@ function scr_character_select_menu_draw()
 	|| (menu == "input_name_ok")
 	|| (menu == "input_name_cancel")
 	{
-		
-		/* Player positions for each character display */
-		player_display_x[1] = -465;
-		player_display_x[2] = -155;
-		player_display_x[3] = +155;
-		player_display_x[4] = +465;
-		
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
-			player_scale[i] = 0.85; /* Player scale for each character display */
-			
 			/* Give feedback that you have selected a character, run this before the character portrait code */
 			if (player_accept_selection[i] == 1) {
 				draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[i], get_window_height * 0.5, player_scale[i], player_scale[i], 0, global.player_color[i], 1);
@@ -146,11 +141,6 @@ function scr_character_select_menu_draw()
 		
 		#endregion /* Play the game text END */
 		
-		xx[1] = lerp(xx[1], player_display_x[1], 0.1);
-		xx[2] = lerp(xx[2], player_display_x[2], 0.1);
-		xx[3] = lerp(xx[3], player_display_x[3], 0.1);
-		xx[4] = lerp(xx[4], player_display_x[4], 0.1);
-		
 		#region /* All code before menu navigation code */
 		
 		#region /* Select your character text */
@@ -201,12 +191,13 @@ function scr_character_select_menu_draw()
 			|| (key_a_pressed)
 			&& (menu == "manage_character")
 			{
-				if (global.sprite_select_player[1] < 0)
-				|| (global.sprite_select_player[1] == spr_noone)
+				var fixed_player = 1;
+				if (global.sprite_select_player[fixed_player] < 0)
+				|| (global.sprite_select_player[fixed_player] == spr_noone)
 				{
-					global.sprite_select_player[1] = spr_noone;
-					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
-					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+					global.sprite_select_player[fixed_player] = spr_noone;
+					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
+					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
 				}
 				
 				menu = "click_copy_character";

@@ -8,6 +8,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	var delete_file_after_download = true; /* Should be set to true when creating executable */
 	var back_to_list_x = 0;
 	var back_to_list_y = 0;
+	var fixed_player = 1;
 	
 	#region /* Search ID menu */
 	if (menu == "search_id_ok")
@@ -60,11 +61,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (menu == "search_id_ok")
 			{
 				if (keyboard_check_pressed(vk_up))
-				|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-				|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
+				|| (gamepad_button_check_pressed(global.player_slot[fixed_player], gp_padu))
+				|| (gamepad_axis_value(global.player_slot[fixed_player], gp_axislv) < -0.3)
 				|| (keyboard_check_pressed(vk_down))
-				|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
-				|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
+				|| (gamepad_button_check_pressed(global.player_slot[fixed_player], gp_padd))
+				|| (gamepad_axis_value(global.player_slot[fixed_player], gp_axislv) > +0.3)
 				{
 					menu_delay = 3;
 					can_navigate = true;
@@ -75,11 +76,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (menu == "search_id_cancel")
 			{
 				if (keyboard_check_pressed(vk_up))
-				|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-				|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
+				|| (gamepad_button_check_pressed(global.player_slot[fixed_player], gp_padu))
+				|| (gamepad_axis_value(global.player_slot[fixed_player], gp_axislv) < -0.3)
 				|| (keyboard_check_pressed(vk_down))
-				|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
-				|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
+				|| (gamepad_button_check_pressed(global.player_slot[fixed_player], gp_padd))
+				|| (gamepad_axis_value(global.player_slot[fixed_player], gp_axislv) > +0.3)
 				{
 					menu_delay = 3;
 					can_navigate = true;
@@ -96,8 +97,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, draw_name_input_screen_y + 54 + 42, display_get_gui_width() * 0.5 - 185 + 370, draw_name_input_screen_y + 54 + 42 + 42))
 		&& (mouse_check_button_released(mb_left))
 		|| (mouse_check_button_released(mb_right))
-		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
-		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][2][action.back]))
 		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back]))
 		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back]))
 		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back]))
@@ -105,9 +106,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back]))
 		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back]))
 		
-		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][1][action.accept]))
 		&& (menu == "search_id_cancel")
-		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
+		|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][2][action.accept]))
 		&& (menu == "search_id_cancel")
 		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
 		&& (menu == "search_id_cancel")
@@ -154,8 +155,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (menu == "search_id_ok")
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, draw_name_input_screen_y + 54, display_get_gui_width() * 0.5 - 185 + 370, draw_name_input_screen_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
-			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][2][action.accept]))
 			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
 			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept]))
 			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
@@ -754,14 +755,14 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					directory_destroy(cache_directory + "custom_characters/" + string(downloaded_character_name));
 					
 					#region /* After deleting character, go to previous character, so you don't accidentally go to a undefined character */
-					global.character_index[0] = clamp(global.character_index[0] - 1, 0, ds_list_size(global.all_loaded_characters) - 1);
-					global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0])
-					xx_delay[1] = -1;
+					global.character_index[fixed_player - 1] = clamp(global.character_index[fixed_player - 1] - 1, 0, ds_list_size(global.all_loaded_characters) - 1);
+					global.character_for_player[fixed_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])
+					xx_delay[fixed_player] = -1;
 					
 					/* Update the player sprite */
-					global.sprite_select_player[1] = spr_noone;
-					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
-					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+					global.sprite_select_player[fixed_player] = spr_noone;
+					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
+					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
 					#endregion /* After deleting character, go to previous character, so you don't accidentally go to a undefined character END */
 					
 				}
@@ -1055,21 +1056,12 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		{
 			
 			#region /* If any "character index" is set to undefined, reset it to 0 */
-			if (ds_list_find_value(global.all_loaded_characters, global.character_index[0]) == undefined)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
-				global.character_index[0] = 0;
-			}
-			if (ds_list_find_value(global.all_loaded_characters, global.character_index[1]) == undefined)
-			{
-				global.character_index[1] = 0;
-			}
-			if (ds_list_find_value(global.all_loaded_characters, global.character_index[2]) == undefined)
-			{
-				global.character_index[2] = 0;
-			}
-			if (ds_list_find_value(global.all_loaded_characters, global.character_index[3]) == undefined)
-			{
-				global.character_index[3] = 0;
+				if (ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1]) == undefined)
+				{
+					global.character_index[i - 1] = 0;
+				}
 			}
 			#endregion /* If any "character index" is set to undefined, reset it to 0 END */
 			

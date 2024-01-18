@@ -1,38 +1,27 @@
 #region /* Make wall jump panel invisible if there are only players that have wall jump ability */
 if (instance_exists(obj_camera))
 {
-	if (obj_camera.player[1] > 0)
-	&& (instance_exists(obj_camera.player[1]))
-	&& (!obj_camera.player[1].allow_wall_jump)
-	|| (obj_camera.player[2] > 0)
-	&& (instance_exists(obj_camera.player[2]))
-	&& (!obj_camera.player[2].allow_wall_jump)
-	|| (obj_camera.player[3] > 0)
-	&& (instance_exists(obj_camera.player[3]))
-	&& (!obj_camera.player[3].allow_wall_jump)
-	|| (obj_camera.player[4] > 0)
-	&& (instance_exists(obj_camera.player[4]))
-	&& (!obj_camera.player[4].allow_wall_jump)
-	
-	|| (obj_camera.player[1] > 0)
-	&& (instance_exists(obj_camera.player[1]))
-	&& (obj_camera.player[1].wall_jump_setting <= 0)
-	|| (obj_camera.player[2] > 0)
-	&& (instance_exists(obj_camera.player[2]))
-	&& (obj_camera.player[2].wall_jump_setting <= 0)
-	|| (obj_camera.player[3] > 0)
-	&& (instance_exists(obj_camera.player[3]))
-	&& (obj_camera.player[3].wall_jump_setting <= 0)
-	|| (obj_camera.player[4] > 0)
-	&& (instance_exists(obj_camera.player[4]))
-	&& (obj_camera.player[4].wall_jump_setting <= 0)
+	var set_alpha = 0;
+	for (var i = 1; i <= global.max_players; i += 1)
 	{
-		image_alpha = 1;
+		if (obj_camera.player[i] > 0 && instance_exists(obj_camera.player[i]) && obj_camera.player[i].allow_wall_jump <= 0)
+		{
+			set_alpha = 1;
+			break; /* exit the loop if the condition is met */
+		}
 	}
-	else
+	if (set_alpha == 0)
 	{
-		image_alpha = 0;
+		for (var i = 1; i <= global.max_players; i += 1)
+		{
+			if (obj_camera.player[i] > 0 && instance_exists(obj_camera.player[i]) && obj_camera.player[i].wall_jump_setting <= 0)
+			{
+				set_alpha = 1;
+				break; /* exit the loop if the condition is met */
+			}
+		}
 	}
+	image_alpha = set_alpha;
 }
 #endregion /* Make wall jump panel invisible if there are only players that have wall jump ability END */
 

@@ -67,9 +67,10 @@ for (var i = 1; i <= global.max_players; i += 1)
 	else if (i == global.max_players)
 	{
 		/* If no valid player is found, default to player 1 */
-		player = 1;
-		selected_voice_pack = global.voicepack_for_player[1];
-		selected_skin = global.skin_for_player[1];
+		var fixed_player = 1;
+		player = fixed_player;
+		selected_voice_pack = global.voicepack_for_player[fixed_player];
+		selected_skin = global.skin_for_player[fixed_player];
 	}
 }
 

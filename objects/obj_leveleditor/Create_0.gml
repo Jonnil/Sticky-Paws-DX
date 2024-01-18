@@ -25,33 +25,19 @@ global.time_countdown_bonus = 500;
 pause = false;
 pause_button_y = display_get_gui_height() + 100;
 in_modify_object_menu = false;
-if (global.player_can_play[1])
+
+var fixed_player = 1;
+camera_player = fixed_player - 1;
+camera_selected_skin = global.skin_for_player[fixed_player];
+
+for (var i = 1; i <= global.max_players; i += 1)
 {
-	camera_player = 0;
-	camera_selected_skin = global.skin_for_player[1];
-}
-else
-if (global.player_can_play[2])
-{
-	camera_player = 1;
-	camera_selected_skin = global.skin_for_player[2];
-}
-else
-if (global.player_can_play[3])
-{
-	camera_player = 2;
-	camera_selected_skin = global.skin_for_player[3];
-}
-else
-if (global.player_can_play[4])
-{
-	camera_player = 3;
-	camera_selected_skin = global.skin_for_player[4];
-}
-else
-{
-	camera_player = 0;
-	camera_selected_skin = global.skin_for_player[1];
+	if (global.player_can_play[i])
+	{
+		camera_player = i - 1; /* Adjust index to start from 0 */
+		camera_selected_skin = global.skin_for_player[i];
+		break; /* Exit the loop once a player is found */
+	}
 }
 #endregion /* Essential variables END */
 
@@ -573,7 +559,7 @@ if (!global.actually_play_edited_level)
 	mx = mouse_x;
 	my = mouse_y;
 	
-	selected_skin = global.skin_for_player[1];
+	selected_skin = global.skin_for_player[fixed_player];
 	
 	audio_stop_all();
 	hovering_over_level_editor_corner_menu = false;

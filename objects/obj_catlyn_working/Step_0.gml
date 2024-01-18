@@ -27,14 +27,18 @@ if (image_index >= 2)
 	image_speed = 0;
 }
 
-if (global.character_for_player[1] = "catlyn")
-&& (global.player_can_play[1])
-|| (global.character_for_player[2] = "catlyn")
-&& (global.player_can_play[2])
-|| (global.character_for_player[3] = "catlyn")
-&& (global.player_can_play[3])
-|| (global.character_for_player[4] = "catlyn")
-&& (global.player_can_play[4])
+var catlyn_playing = false;
+
+for (var i = 1; i <= global.max_players; i += 1)
+{
+	if (global.character_for_player[i] == "catlyn" && global.player_can_play[i])
+	{
+		catlyn_playing = true;
+		break; /* Exit the loop once the condition is met for any player */
+	}
+}
+
+if (catlyn_playing)
 {
 	image_alpha = 0; /* If anyone is playing as Catlyn, make it invisible */
 }

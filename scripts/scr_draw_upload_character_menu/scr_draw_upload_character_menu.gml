@@ -1,7 +1,8 @@
 function scr_draw_upload_character_menu()
 {
+	var fixed_player = 1;
 	var destroy_zip_after_uploading = true; /* Game should destroy the zip file once it's been uploaded to the server as a zip file. By default set this to true */
-	var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[0]));
+	var character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]));
 	var message_x_offset = 400;
 	
 	var get_window_height = display_get_gui_height();
@@ -28,9 +29,9 @@ function scr_draw_upload_character_menu()
 		draw_set_alpha(1);
 		
 		#region /* Draw Character Portrait */
-		if (global.sprite_select_player[1] > 0)
+		if (global.sprite_select_player[fixed_player] > 0)
 		{
-			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, c_white, 1);
+			draw_sprite_ext(global.sprite_select_player[fixed_player], 0, get_window_width * 0.5 + xx[fixed_player], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 0, c_white, 1);
 		}
 		#endregion /* Draw Character Portrait END */
 		
@@ -150,13 +151,21 @@ function scr_draw_upload_character_menu()
 			
 			global.select_level_index = 1; /* When doing clear check for character, they have to complete level 1 */
 			global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
-			if (!global.player_can_play[1])
-			&& (!global.player_can_play[2])
-			&& (!global.player_can_play[3])
-			&& (!global.player_can_play[4])
+			
+			var no_players_can_play = true;
+			for (var i = 1; i <= global.max_players; i += 1)
 			{
-				global.player_can_play[1] = true; /* If there are no players joined, make it so player 1 is joined */
+			    if (global.player_can_play[i])
+			    {
+			        no_players_can_play = false;
+			        break; /* Exit the loop if at least one player can play */
+			    }
 			}
+			if (no_players_can_play) /* When no player can play */
+			{
+				global.player_can_play[fixed_player] = true; /* If there are no players joined, make it so player 1 is joined */
+			}
+			
 			global.doing_clear_check_character = true; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
 			global.actually_play_edited_level = true;
 			global.play_edited_level = true;
@@ -378,9 +387,9 @@ function scr_draw_upload_character_menu()
 			draw_set_alpha(1);
 			
 			#region /* Draw Character Portrait */
-			if (global.sprite_select_player[1] > 0)
+			if (global.sprite_select_player[fixed_player] > 0)
 			{
-				draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, c_white, 1);
+				draw_sprite_ext(global.sprite_select_player[fixed_player], 0, get_window_width * 0.5 + xx[fixed_player], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 0, c_white, 1);
 			}
 			#endregion /* Draw Character Portrait END */
 			
@@ -505,13 +514,21 @@ function scr_draw_upload_character_menu()
 				
 				global.select_level_index = 1; /* When doing clear check for character, they have to complete level 1 */
 				global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
-				if (!global.player_can_play[1])
-				&& (!global.player_can_play[2])
-				&& (!global.player_can_play[3])
-				&& (!global.player_can_play[4])
+				
+				var no_players_can_play = true;
+				for (var i = 1; i <= global.max_players; i += 1)
 				{
-					global.player_can_play[1] = true; /* If there are no players joined, make it so player 1 is joined */
+				    if (global.player_can_play[i])
+				    {
+				        no_players_can_play = false;
+				        break; /* Exit the loop if at least one player can play */
+				    }
 				}
+				if (no_players_can_play) /* When no player can play */
+				{
+					global.player_can_play[fixed_player] = true; /* If there are no players joined, make it so player 1 is joined */
+				}
+				
 				global.doing_clear_check_character = true; /* You will play the level like normal, but the game will watch you to make sure that the level can be completed befre being able to upload */
 				global.actually_play_edited_level = true;
 				global.play_edited_level = true;
@@ -653,9 +670,9 @@ function scr_draw_upload_character_menu()
 		draw_set_alpha(1);
 		
 		#region /* Draw Character Portrait */
-		if (global.sprite_select_player[1] > 0)
+		if (global.sprite_select_player[fixed_player] > 0)
 		{
-			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, c_white, 1);
+			draw_sprite_ext(global.sprite_select_player[fixed_player], 0, get_window_width * 0.5 + xx[fixed_player], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 0, c_white, 1);
 		}
 		#endregion /* Draw Character Portrait END */
 		
@@ -870,9 +887,9 @@ function scr_draw_upload_character_menu()
 		draw_set_alpha(1);
 		
 		#region /* Draw Character Portrait */
-		if (global.sprite_select_player[1] > 0)
+		if (global.sprite_select_player[fixed_player] > 0)
 		{
-			draw_sprite_ext(global.sprite_select_player[1], 0, get_window_width * 0.5 + xx[1], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[1]), 392 / sprite_get_width(global.sprite_select_player[1]), 0, c_white, 1);
+			draw_sprite_ext(global.sprite_select_player[fixed_player], 0, get_window_width * 0.5 + xx[fixed_player], get_window_height * 0.5, 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 392 / sprite_get_width(global.sprite_select_player[fixed_player]), 0, c_white, 1);
 		}
 		#endregion /* Draw Character Portrait END */
 		
@@ -933,9 +950,9 @@ function scr_draw_upload_character_menu()
 			search_for_id_still = false;
 			scr_load_character_initializing();
 			menu = "load_characters";
-			player_menu[1] = "select_character"; /* Go back to this menu after reloading all characters */
+			player_menu[fixed_player] = "select_character"; /* Go back to this menu after reloading all characters */
 			menu_delay = 3;
-			menu_specific_joystick_delay[1] = 30;
+			menu_specific_joystick_delay[fixed_player] = 30;
 		}
 		#endregion /* Return to game END */
 		

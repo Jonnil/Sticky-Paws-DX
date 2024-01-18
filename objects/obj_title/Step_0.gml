@@ -4,15 +4,17 @@ scr_character_select_menu_step();
 scr_set_menu_font_color();
 scr_toggle_fullscreen();
 
+var fixed_player = 1;
+
 if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")
 && (menu_delay == 0)
 {
-	if (global.sprite_select_player[1] < 0)
-	|| (global.sprite_select_player[1] == spr_noone)
+	if (global.sprite_select_player[fixed_player] < 0)
+	|| (global.sprite_select_player[fixed_player] == spr_noone)
 	{
-		global.sprite_select_player[1] = spr_noone;
-		global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
-		global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+		global.sprite_select_player[fixed_player] = spr_noone;
+		global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
+		global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
 	}
 	select_custom_level_menu_open = false;
 	menu = "upload_yes_character";
@@ -123,51 +125,51 @@ if (menu == "load_characters")
 		{
 			file_find_close();
 			
-			if (player_menu[1] == "click_copy_character")
+			if (player_menu[fixed_player] == "click_copy_character")
 			{
 				
 				#region /* After copying character, show the copied character */
-				global.character_index[0] = ds_list_find_index(global.all_loaded_characters, copied_character_name);
-				global.character_for_player[1] = ds_list_find_index(global.all_loaded_characters, global.character_index[0]);
+				global.character_index[fixed_player - 1] = ds_list_find_index(global.all_loaded_characters, copied_character_name);
+				global.character_for_player[fixed_player] = ds_list_find_index(global.all_loaded_characters, global.character_index[fixed_player - 1]);
 				#endregion /* After copying character, show the copied character END */
 				
 				#region /* Player 1 character select portrait sprite */
-				global.skin_for_player[1] = global.actual_skin_for_player[1]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
-				global.sprite_select_player[1] = spr_noone;
-				global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1], copied_character_name);
-				global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1], copied_character_name);
+				global.skin_for_player[fixed_player] = global.actual_skin_for_player[fixed_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
+				global.sprite_select_player[fixed_player] = spr_noone;
+				global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player], copied_character_name);
+				global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player], copied_character_name);
 				#endregion /* Player 1 character select portrait sprite END */
 				
 				menu = "click_copy_character";
-				player_menu[1] = "click_copy_character";
+				player_menu[fixed_player] = "click_copy_character";
 			}
 			else
-			if (player_menu[1] == "click_delete_character")
+			if (player_menu[fixed_player] == "click_delete_character")
 			{
 				menu = "click_delete_character";
 			}
 			else
 			{
-				if (player_menu[1] == "load_downloaded_character")
+				if (player_menu[fixed_player] == "load_downloaded_character")
 				{
 					/* When you have downloaded a custom character, player 1 should be set to the downloaded custom character so that the player can play with them immediately */
 					if (downloaded_character_name != "")
 					{
-						global.character_index[0] = ds_list_find_index(global.all_loaded_characters, string(downloaded_character_name));
+						global.character_index[fixed_player - 1] = ds_list_find_index(global.all_loaded_characters, string(downloaded_character_name));
 					}
-					global.character_for_player[1] = ds_list_find_index(global.all_loaded_characters, global.character_index[0]);
+					global.character_for_player[fixed_player] = ds_list_find_index(global.all_loaded_characters, global.character_index[0]);
 					
 					#region /* Player 1 character select portrait sprite */
-					global.skin_for_player[1] = global.actual_skin_for_player[1]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
-					global.sprite_select_player[1] = spr_noone;
-					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
-					global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+					global.skin_for_player[fixed_player] = global.actual_skin_for_player[fixed_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
+					global.sprite_select_player[fixed_player] = spr_noone;
+					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
+					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
 					#endregion /* Player 1 character select portrait sprite END */
 					
 				}
 				
 				menu = "select_character"; /* Default menu to go to after loading all characters */
-				player_menu[1] = "select_character"; /* Set this to be "select character" so it's not on wrong menu unintentionally */
+				player_menu[fixed_player] = "select_character"; /* Set this to be "select character" so it's not on wrong menu unintentionally */
 			}
 		}
 		else

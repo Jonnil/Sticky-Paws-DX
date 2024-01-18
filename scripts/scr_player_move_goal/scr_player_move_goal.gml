@@ -35,21 +35,12 @@ function scr_player_move_goal()
 			if (just_hit_goal)
 			&& (!goal)
 			{
-				if (!instance_exists(obj_camera.player[1]))
+				for (var i = 1; i <= global.max_players; i += 1)
 				{
-					global.player_can_play[1] = false;
-				}
-				if (!instance_exists(obj_camera.player[2]))
-				{
-					global.player_can_play[2] = false;
-				}
-				if (!instance_exists(obj_camera.player[3]))
-				{
-					global.player_can_play[3] = false;
-				}
-				if (!instance_exists(obj_camera.player[4]))
-				{
-					global.player_can_play[4] = false;
+				    if (!instance_exists(obj_camera.player[i]))
+				    {
+				        global.player_can_play[i] = false;
+				    }
 				}
 				global.level_clear_rate = "clear";
 				global.goal_active = true;

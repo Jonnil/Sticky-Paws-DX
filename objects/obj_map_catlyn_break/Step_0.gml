@@ -1,17 +1,14 @@
-if layer_sequence_is_finished(seq)
+if (layer_sequence_is_finished(seq))
 {
 	can_click = true;
 	alarm_set(0, 60);
 	layer_sequence_destroy(seq);
 }
-if (global.character_for_player[1] = "catlyn")
-&& (global.player_can_play[1])
-|| (global.character_for_player[2] = "catlyn")
-&& (global.player_can_play[2])
-|| (global.character_for_player[3] = "catlyn")
-&& (global.player_can_play[3])
-|| (global.character_for_player[4] = "catlyn")
-&& (global.player_can_play[4])
+for (var i = 1; i <= global.max_players; i += 1)
 {
-	instance_destroy();
+	if (global.character_for_player[i] == "catlyn" && global.player_can_play[i])
+	{
+		instance_destroy();
+		break; /* Exit the loop once the condition is met for any player */
+	}
 }

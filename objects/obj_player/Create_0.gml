@@ -25,10 +25,11 @@ can_save_to_character_config = false; /* Only turn true when playing as custom c
 loading_assets = false;
 
 #region /* What custom character to use, change the character sprites and voice */
-player = 1;
-custom_character = global.character_for_player[1];
-selected_voice_pack = global.voicepack_for_player[1];
-selected_skin = global.skin_for_player[1];
+var fixed_player = 1;
+player = fixed_player;
+custom_character = global.character_for_player[fixed_player];
+selected_voice_pack = global.voicepack_for_player[fixed_player];
+selected_skin = global.skin_for_player[fixed_player];
 alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
 #endregion /* What custom character to use, change the character sprites and voice END */
 

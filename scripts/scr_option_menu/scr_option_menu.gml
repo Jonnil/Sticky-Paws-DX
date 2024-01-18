@@ -2447,9 +2447,9 @@ function scr_option_menu()
 					}
 				}
 				#endregion /* Select Narrator Left and Right Key, show underneath text END */
-			
+				
 				#region /* Player 1 change portrait when clicking left or right */
-			
+				
 				#region /* Player 1 Key Left (change portrait sprites) */
 				if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
 				&& (menu == "select_narrator")
@@ -2469,7 +2469,6 @@ function scr_option_menu()
 					&& (!open_dropdown)
 					{
 						menu_delay = 3;
-						//menu_joystick_delay = 30;
 						if (global.narrator > -1)
 						{
 							global.narrator --;
@@ -2514,7 +2513,7 @@ function scr_option_menu()
 					open_dropdown = false;
 				}
 				#endregion /* Player 1 Key Left (change portrait sprites) END */
-			
+				
 				#region /* Player 1 Key Right (change portrait sprites) */
 				if (keyboard_check_pressed(global.player_[inp.key][1][1][action.right]))
 				&& (menu == "select_narrator")
@@ -2533,7 +2532,6 @@ function scr_option_menu()
 					&& (!open_dropdown)
 					{
 						menu_delay = 3;
-						//menu_joystick_delay = 30;
 						global.narrator = clamp(global.narrator + 1, -1, ds_list_size(global.all_loaded_characters) - 1);
 					
 						#region /* Character Name */

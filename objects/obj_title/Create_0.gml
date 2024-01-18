@@ -1,3 +1,17 @@
+for (var p = 1; p <= global.max_players; p += 1) {
+	player_accept_selection[p] = -1;
+	player_automatically_join[p] = false;
+	player_menu[p] = "select_character";
+	can_input_player_name[p] = 2; /* What player can enter a name */
+	allow_player_tongue[p] = scr_initialize_custom_character_abilities(p - 1, "allow_tongue", false);
+	allow_player_double_jump[p] = scr_initialize_custom_character_abilities(p - 1, "number_of_jumps", 1, "values");
+	allow_player_dive[p] = scr_initialize_custom_character_abilities(p - 1, "allow_dive", false);
+	menu_specific_joystick_delay[p] = 3;
+	player_display_x[p] = 0;
+	xx[p] = 0;
+	xx_delay[p] = 0;
+}
+
 scr_delete_sprite_properly(global.custom_background1);
 scr_delete_sprite_properly(global.custom_background2);
 scr_delete_sprite_properly(global.custom_background3);
@@ -186,32 +200,9 @@ if (!directory_exists(working_directory + "save_file")) {
 }
 #endregion /* Create directories END */
 
-#region /* Character select Accept Selection */
-player_accept_selection[1] = -1;
-player_accept_selection[2] = -1;
-player_accept_selection[3] = -1;
-player_accept_selection[4] = -1;
-player_automatically_join[1] = false;
-player_automatically_join[2] = false;
-player_automatically_join[3] = false;
-player_automatically_join[4] = false;
-player_start_game = false;
-#endregion /* Character select Accept Selection END */
+player_start_game = false; /* Character select Accept Selection */
 
-#region /* Color Select for CharacterSelect */
-player_menu[1] = "select_character";
-player_menu[2] = "select_character";
-player_menu[3] = "select_character";
-player_menu[4] = "select_character";
-#endregion /* Color Select for CharacterSelect END */
-
-#region /* What player can enter a name */
-can_input_player_name[1] = 2;
-can_input_player_name[2] = 2;
-can_input_player_name[3] = 2;
-can_input_player_name[4] = 2;
 can_input_level_name = false;
-#endregion /* What player can enter a name END */
 
 global.playergame = 0; /* Make the game singleplayer at the start of the game */
 global.player_has_entered_goal = false;
@@ -260,16 +251,13 @@ lives = 5; /* Starting lives */
 if (global.character_select_in_this_menu == "level_editor")
 {
 	scr_load_custom_level_initializing();
-	can_input_player_name[1] = false;
-	can_input_player_name[2] = false;
-	can_input_player_name[3] = false;
-	can_input_player_name[4] = false;
+	
+	for (var p = 1; p <= global.max_players; p += 1) {
+		can_input_player_name[p] = false;
+		player_accept_selection[p] = false;
+	}
 	can_navigate = true;
 	open_sub_menu = false;
-	player_accept_selection[1] = false;
-	player_accept_selection[2] = false;
-	player_accept_selection[3] = false;
-	player_accept_selection[4] = false;
 	menu = "load_custom_level";
 }
 else
@@ -286,43 +274,13 @@ input_key = false;
 can_remap_key = false;
 input_gamepad_button = false;
 can_remap_gamepad_button = false;
-allow_player_tongue[1] = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
-allow_player_tongue[2] = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
-allow_player_tongue[3] = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
-allow_player_tongue[4] = scr_initialize_custom_character_abilities(3, "allow_tongue", false);
-
-allow_player_double_jump[1] = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
-allow_player_double_jump[2] = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");
-allow_player_double_jump[3] = scr_initialize_custom_character_abilities(2, "number_of_jumps", 1, "values");
-allow_player_double_jump[4] = scr_initialize_custom_character_abilities(3, "number_of_jumps", 1, "values");
-
-allow_player_dive[1] = scr_initialize_custom_character_abilities(0, "allow_dive", false);
-allow_player_dive[2] = scr_initialize_custom_character_abilities(1, "allow_dive", false);
-allow_player_dive[3] = scr_initialize_custom_character_abilities(2, "allow_dive", false);
-allow_player_dive[4] = scr_initialize_custom_character_abilities(3, "allow_dive", false);
 #endregion /* Remapping options variables END */
 
 custom_levels_folder_megabytes = 0; /* Display how big the custom levels folder is */
 open_dropdown = false;
 menu_delay = 3;
 menu_joystick_delay = 0;
-menu_specific_joystick_delay[1] = 3;
-menu_specific_joystick_delay[2] = 3;
-menu_specific_joystick_delay[3] = 3;
-menu_specific_joystick_delay[4] = 3;
 black_screen_at_start_delay = 0;
-player_display_x[1] = 0;
-player_display_x[2] = 0;
-player_display_x[3] = 0;
-player_display_x[4] = 0;
-xx[1] = 0;
-xx[2] = 0;
-xx[3] = 0;
-xx[4] = 0;
-xx_delay[1] = 0;
-xx_delay[2] = 0;
-xx_delay[3] = 0;
-xx_delay[4] = 0;
 remap_y_pos = 0;
 version_y_pos = 0;
 menu_cursor_index = 0;
