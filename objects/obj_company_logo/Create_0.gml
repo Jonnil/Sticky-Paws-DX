@@ -1,5 +1,5 @@
 #region /* Things you could change */
-global.max_players = 4; /* How many players you want to be able to play */
+global.max_players = 5; /* How many players you want to be able to play */
 global.company_name = "Jonnil"; /* String of what the company is called */
 global.game_name = "Sticky Paws"; /* String of what the game is called */
 global.game_name_appdata = "Sticky_Paws_DX"; /* String of what the game is called at appdata folder */
@@ -30,7 +30,6 @@ global.max_custom_characters = 100; /* You should be able to only store a certai
 global.max_custom_levels = 100; /* You should be able to only store a certain amount of custom levels, these are both levels you have made, and levels you have downloaded */
 
 #region /* Change how menus look and function */
-global.skip_how_many_people_are_playing_screen = true; /* If the game should skip the "How many people are playing?" screen */
 global.enable_how_to_play_settings = false; /* Enable How to play settings */
 global.enable_multiplayer_settings = false; /* Enable Multiplayer settings */
 global.enable_controller_settings = true; /* Enable Controller settings */
@@ -403,7 +402,7 @@ global.players_can_collide = false;
 global.player_has_entered_goal = false;
 global.pause_room = noone;
 global.pause_player = 0;
-global.playergame = 0;
+global.playergame = 0; /* This variable will match the amount of player_can_play that are set to true */ 
 global.basic_collectibles = 0;
 global.level_clear_rate = noone;
 global.current_level_clear_rate = noone;

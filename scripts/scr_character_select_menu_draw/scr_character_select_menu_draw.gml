@@ -36,11 +36,7 @@ function scr_character_select_menu_draw()
 			if (player_accept_selection[i] == 1) {
 				draw_sprite_ext(spr_select_character_background, image_index, get_window_width * 0.5 + player_display_x[i], get_window_height * 0.5, player_scale[i], player_scale[i], 0, global.player_color[i], 1);
 			}
-			/* Display Selected Characters, run this before the "play the game" text code */
-			if (global.playergame >= i - 1)
-			|| (global.skip_how_many_people_are_playing_screen) {
-				scr_character_portrait_for_player_draw(i);
-			}
+			scr_character_portrait_for_player_draw(i); /* Display Selected Characters, run this before the "play the game" text code */
 		}
 		
 		#region /* Play the game text */

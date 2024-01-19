@@ -36,55 +36,20 @@ if (sprite_exists(sprite_index))
 }
 
 #region /* Display Player Number and Name */
-if (global.playergame > 0)
+if (global.playergame >= 2)
 && (y < room_height)
 && (y < camera_get_view_y(view_camera[view_current]) + camera_get_view_height(view_camera[view_current]))
 {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	if (player == 1)
+	if (global.player_name[player] = "")
 	{
-		if (global.player_name[1] = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P1", global.default_text_size, c_black, global.player_color[1], 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player_name[1]), global.default_text_size, c_black, global.player_color[1], 1);
-		}
+		var player_name_text = "P" + string(player);
 	}
-	if (player == 2)
+	else
 	{
-		if (global.player_name[2] = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P2", global.default_text_size, c_black, global.player_color[2], 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player_name[2]), global.default_text_size, c_black, global.player_color[2], 1);
-		}
+		var player_name_text = string(global.player_name[player]);
 	}
-	if (player == 3)
-	{
-		if (global.player_name[3] = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P3", global.default_text_size, c_black, global.player_color[3], 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player_name[3]), global.default_text_size, c_black, global.player_color[3], 1);
-		}
-	}
-	if (player == 4)
-	{
-		if (global.player_name[4] = "")
-		{
-			scr_draw_text_outlined(x, y - 64, "P4", global.default_text_size, c_black, global.player_color[4], 1);
-		}
-		else
-		{
-			scr_draw_text_outlined(x, y - 64, string(global.player_name[4]), global.default_text_size, c_black, global.player_color[4], 1);
-		}
-	}
+	scr_draw_text_outlined(x, y - 64, string(player_name_text), global.default_text_size, c_black, global.player_color[player], 1);
 }
 #endregion /* Display Player Number and Name END */

@@ -74,23 +74,26 @@ function scr_debug_screen()
 	#endregion /* All Instance Count END */
 	
 	#region /* Controller ports */
+	global.playergame = 0;
+	for (var i = 1; i <= global.max_players; i += 1) { /* playergame needs to match how many of the player_can_play are set to true */
+		if (global.player_can_play[i]) {
+			global.playergame += 1;
+		}
+	}
 	if (os_type == os_switch) {
 		if (!gamepad_is_connected(0)) {
-			for (var i = 1; i <= global.max_players; i += 1)
-			{
+			for (var i = 1; i <= global.max_players; i += 1) {
 				global.player_slot[i] = i;
 			}
 		}
 		else {
-			for (var i = 1; i <= global.max_players; i += 1)
-			{
+			for (var i = 1; i <= global.max_players; i += 1) {
 				global.player_slot[i] = i - 1;
 			}
 		}
 	}
 	else {
-		for (var i = 1; i <= global.max_players; i += 1)
-		{
+		for (var i = 1; i <= global.max_players; i += 1) {
 			global.player_slot[i] = i - 1;
 		}
 	}
@@ -98,8 +101,7 @@ function scr_debug_screen()
 	
 	if (global.debug_screen) {
 		
-		if (variable_instance_exists(self, "player_show_controls_alpha"))
-		{
+		if (variable_instance_exists(self, "player_show_controls_alpha")) {
 			for (var i = 1; i <= global.max_players; i += 1)
 			{
 				player_show_controls_alpha[i] = 0;
@@ -378,7 +380,7 @@ function scr_debug_screen()
 		scr_draw_text_outlined(32, debug_text_y, "timeattack_realmillisecond: " + string(global.timeattack_realmillisecond), global.default_text_size, c_black, c_white);
 		
 		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "clicking_ok_input_screen: " + string(global.clicking_ok_input_screen), global.default_text_size, c_black, c_white);
+		scr_draw_text_outlined(32, debug_text_y, "playergame: " + string(global.playergame), global.default_text_size, c_black, c_white);
 		
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "current_datetime: " + string(date_datetime_string(date_current_datetime())), global.default_text_size, c_black, c_white);

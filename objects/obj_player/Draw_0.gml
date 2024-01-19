@@ -426,29 +426,19 @@ if (image_alpha > 0)
 	#endregion /* Homing Attack END */
 	
 	#region /* Display Player Number and Name */
-	if (global.player_can_play[1])
-	&& (global.player_can_play[2])
-	|| (global.player_can_play[1])
-	&& (global.player_can_play[3])
-	|| (global.player_can_play[1])
-	&& (global.player_can_play[4])
-	|| (global.player_can_play[2])
-	&& (global.player_can_play[3])
-	|| (global.player_can_play[2])
-	&& (global.player_can_play[4])
-	|| (global.player_can_play[3])
-	&& (global.player_can_play[4])
+	if (global.playergame >= 2)
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		if (global.player_name[1] = "")
+		if (global.player_name[player] = "")
 		{
-			scr_draw_text_outlined(x, y - 64, "P" + string(player), global.default_text_size, c_black, global.player_color[player], 1);
+			var player_name_text = "P" + string(player);
 		}
 		else
 		{
-			scr_draw_text_outlined(x, y - 64, string(global.player_name[player]), global.default_text_size, c_black, global.player_color[player], 1);
+			var player_name_text = string(global.player_name[player]);
 		}
+		scr_draw_text_outlined(x, y - 64, string(player_name_text), global.default_text_size, c_black, global.player_color[player], 1);
 	}
 	#endregion /* Display Player Number and Name END */
 	

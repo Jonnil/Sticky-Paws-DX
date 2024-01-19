@@ -121,26 +121,7 @@ if (lives <= 0)
 		{
 			
 			#region /* Click Menu */
-			if (global.playergame == 0)
-			{
-				lives = 5;
-			}
-			else
-			if (global.playergame == 1)
-			{
-				lives = 10;
-			}
-			else
-			if (global.playergame == 2)
-			{
-				lives = 15;
-			}
-			else
-			if (global.playergame == 3)
-			{
-				lives = 20;
-			}
-			
+			lives = 5 * global.playergame; /* Add 5 lives times the amount of players playing. So 2 players = 10, 3 players = 15, 4 players = 20, and so on */
 			if (global.character_select_in_this_menu == "main_game")
 			{
 				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");

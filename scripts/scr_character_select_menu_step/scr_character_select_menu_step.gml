@@ -173,25 +173,9 @@ function scr_character_select_menu_step()
 		#endregion /* Start Game (run this code further up so that it takes priority) END */
 		
 		#region /* This is running step functions of character portrait for player */
-		if (global.playergame >= 0)
-		|| (global.skip_how_many_people_are_playing_screen)
+		for (var i = 1; i <= global.max_players; i += 1)
 		{
-			scr_character_portrait_for_player_step(1);
-		}
-		if (global.playergame >= 1)
-		|| (global.skip_how_many_people_are_playing_screen)
-		{
-			scr_character_portrait_for_player_step(2);
-		}
-		if (global.playergame >= 2)
-		|| (global.skip_how_many_people_are_playing_screen)
-		{
-			scr_character_portrait_for_player_step(3);
-		}
-		if (global.playergame >= 3)
-		|| (global.skip_how_many_people_are_playing_screen)
-		{
-			scr_character_portrait_for_player_step(4);
+			scr_character_portrait_for_player_step(i);
 		}
 		#endregion /* This is running step functions of character portrait for player END */
 		
@@ -421,56 +405,29 @@ function scr_character_select_menu_step()
 			#endregion /* Select the character END */
 			
 			#region /* If all players has selected a character, be able to start game */
-			if (player_accept_selection[1] == 1)
-			&& (player_accept_selection[2] != 0)
-			&& (player_accept_selection[3] != 0)
-			&& (player_accept_selection[4] != 0)
+			var all_players_selected = true;
+			
+			for (var i = 1; i <= global.max_players; i += 1)
 			{
-				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
-				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
-				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
-				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
-				player_start_game = true;
+				if (player_accept_selection[i] == 0)
+				{
+					all_players_selected = false;
+					break;  /* Exit the loop early if any player is selected */
+				}
 			}
-			else
-			if (player_accept_selection[1] != 0)
-			&& (player_accept_selection[2] == 1)
-			&& (player_accept_selection[3] != 0)
-			&& (player_accept_selection[4] != 0)
+			
+			player_start_game = false;
+			for (var i = 1; i <= global.max_players; i += 1)
 			{
-				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
-				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
-				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
-				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
-				player_start_game = true;
-			}
-			else
-			if (player_accept_selection[1] != 0)
-			&& (player_accept_selection[2] != 0)
-			&& (player_accept_selection[3] == 1)
-			&& (player_accept_selection[4] != 0)
-			{
-				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
-				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
-				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
-				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
-				player_start_game = true;
-			}
-			else
-			if (player_accept_selection[1] != 0)
-			&& (player_accept_selection[2] != 0)
-			&& (player_accept_selection[3] != 0)
-			&& (player_accept_selection[4] == 1)
-			{
-				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
-				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
-				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
-				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
-				player_start_game = true;
-			}
-			else
-			{
-				player_start_game = false;
+				if (all_players_selected && player_accept_selection[i] == 1)
+				{
+					for(var j = 1; j <= global.max_players; j += 1)
+					{
+						global.character_for_player[j] = ds_list_find_value(global.all_loaded_characters, global.character_index[j - 1]);
+					}
+					player_start_game = true;
+					break;  /* Exit the loop early since a player is selected */
+				}
 			}
 			#endregion /* If all players has selected a character, be able to start game END */
 			

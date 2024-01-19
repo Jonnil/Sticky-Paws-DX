@@ -764,7 +764,7 @@ if (os_type != os_ios)
 	
 	for(var i = 1; i <= global.max_players; i += 1)
 	{
-		if (player_show_controls_alpha[i] > 0 && global.player_can_play[i]) {
+		if (player_show_controls_alpha[i] > 0 && global.player_show_controls[i] > 0 && global.player_can_play[i]) {
 			how_many_players_are_playing += 1;
 		}
 	}

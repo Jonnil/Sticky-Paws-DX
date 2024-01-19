@@ -198,25 +198,17 @@ if (!hide_menu_for_clean_screenshots)
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		if (global.pause_player == 0)
-		&& (global.playergame >= 1) /* Only show that player 1 is controlling the menu if it's a multiplayer game, otherwise players can assume player 1 is controlling the menu */
+		
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("PLAYER 1 IS CONTROLLING THE MENU"), global.default_text_size, c_black, c_aqua, fade_in_pause_alpha);
-		}
-		else
-		if (global.pause_player == 1) /* If it happens that player 2, 3, or 4 is controlling the menu, player needs to know this, even if it's not technically a multiplayer game */
-		{
-			scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("PLAYER 2 IS CONTROLLING THE MENU"), global.default_text_size, c_black, c_red, fade_in_pause_alpha);
-		}
-		else
-		if (global.pause_player == 2)
-		{
-			scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("PLAYER 3 IS CONTROLLING THE MENU"), global.default_text_size, c_black, c_lime, fade_in_pause_alpha);
-		}
-		else
-		if (global.pause_player == 3)
-		{
-			scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("PLAYER 4 IS CONTROLLING THE MENU"), global.default_text_size, c_black, c_yellow, fade_in_pause_alpha);
+			if (i == 1)
+			&& (global.pause_player == 0)
+			&& (global.playergame >= 2) /* Only show that player 1 is controlling the menu if it's a multiplayer game, otherwise players can assume player 1 is controlling the menu */
+			|| (i >= 2)
+			&& (global.pause_player == i - 1) /* If it happens that player 2, 3, or 4 is controlling the menu, player needs to know this, even if it's not technically a multiplayer game */
+			{
+				scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("PLAYER " + string(i) + " IS CONTROLLING THE MENU"), global.default_text_size, c_black, c_aqua, fade_in_pause_alpha);
+			}
 		}
 	}
 	#endregion /* Which player is controlling the pause menu? END */
