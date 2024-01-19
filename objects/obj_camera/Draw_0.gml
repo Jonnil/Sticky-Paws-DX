@@ -1,3 +1,5 @@
+var fixed_player = 1;
+
 #region /* Draw Iris Transitions */
 if (global.enable_transitions)
 && (global.actually_play_edited_level)
@@ -28,113 +30,45 @@ if (global.enable_transitions)
 #region /* Draw Run Toggling */
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
-if (show_run_toggle_for_player[1] > 0)
-&& (!instance_exists(obj_pause))
+
+for (var i = 1; i <= global.max_players; i += 1)
 {
-	show_run_toggle_for_player[1] --;
-	show_run_toggle_for_player[2] = 0;
-	show_run_toggle_for_player[3] = 0;
-	show_run_toggle_for_player[4] = 0;
-	if (global.player_can_play[1])
-	&& (!global.player_can_play[2])
-	&& (!global.player_can_play[3])
-	&& (!global.player_can_play[4])
-	{
-		scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 232, camera_get_view_y(view_camera[view_current]) + 32, l10n_text("Always run"), global.default_text_size, c_white, c_black, 1);
-	}
-	else
-	{
-		scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 232, camera_get_view_y(view_camera[view_current]) + 32, l10n_text("Player 1 always runs"), global.default_text_size, c_white, c_black, 1);
-	}
-	draw_sprite_ext(spr_checkbox, global.player_run_toggle[1], camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
-}
-if (show_run_toggle_for_player[2] > 0)
-&& (!instance_exists(obj_pause))
-{
-	show_run_toggle_for_player[1] = 0;
-	show_run_toggle_for_player[2] --;
-	show_run_toggle_for_player[3] = 0;
-	show_run_toggle_for_player[4] = 0;
-	scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, l10n_text("Player 2 always runs"), global.default_text_size, c_white, c_black, 1);
-	draw_sprite_ext(spr_checkbox, global.player_run_toggle[2], camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
-}
-if (show_run_toggle_for_player[3] > 0)
-&& (!instance_exists(obj_pause))
-{
-	show_run_toggle_for_player[1] = 0;
-	show_run_toggle_for_player[2] = 0;
-	show_run_toggle_for_player[3] --;
-	show_run_toggle_for_player[4] = 0;
-	scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, l10n_text("Player 3 always runs"), global.default_text_size, c_white, c_black, 1);
-	draw_sprite_ext(spr_checkbox, global.player_run_toggle[3], camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
-}
-if (show_run_toggle_for_player[4] > 0)
-&& (!instance_exists(obj_pause))
-{
-	show_run_toggle_for_player[1] = 0;
-	show_run_toggle_for_player[2] = 0;
-	show_run_toggle_for_player[3] = 0;
-	show_run_toggle_for_player[4] --;
-	scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, l10n_text("Player 4 always runs"), global.default_text_size, c_white, c_black, 1);
-	draw_sprite_ext(spr_checkbox, global.player_run_toggle[4], camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
+    if (show_run_toggle_for_player[i] > 0)
+    {
+        for (var j = 1; j <= global.max_players; j += 1)
+        {
+            show_run_toggle_for_player[j] = (i == j) ? show_run_toggle_for_player[j] - 1 : 0;
+        }
+		
+        var player_text = l10n_text("Player " + string(i) + " always runs");
+        if (instance_number(obj_player) == 1)
+        {
+            player_text = l10n_text("Always run");
+        }
+		
+        scr_draw_text_outlined(camera_get_view_x(view_camera[view_current]) + 200, camera_get_view_y(view_camera[view_current]) + 32, player_text, global.default_text_size, c_white, c_black, 1);
+        draw_sprite_ext(spr_checkbox, global.player_run_toggle[i], camera_get_view_x(view_camera[view_current]) + 180, camera_get_view_y(view_camera[view_current]) + 32, 0.5, 0.5, 0, c_white, 1);
+    }
 }
 #endregion /* Run Toggling END */
 
-#region /* Show Drowning */
-
+#region /* Show Drowning For Player */
 if (instance_exists(obj_water))
 || (instance_exists(obj_water_level))
 {
-	
-	#region /* Show Drowning for Player 1 */
-	if (player[1] > 0)
-	&& (instance_exists(player[1]))
+	for(var i = 1; i <= global.max_players; i += 1)
 	{
-		if (player[1].allow_drowning)
-		&& (player[1].drawn_frames_until_drowning <= player[1].seconds_until_drowning* 60)
+		if (player[i] > 0)
+		&& (instance_exists(player[i]))
 		{
-			scr_draw_circular_bar(player[1].x, player[1].bbox_top - 56, player[1].drawn_frames_until_drowning, player[1].seconds_until_drowning* 60, scr_make_color_hsv_transition(player[1].drawn_frames_until_drowning, player[1].seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
+			if (player[i].allow_drowning)
+			&& (player[i].drawn_frames_until_drowning <= player[i].seconds_until_drowning * 60)
+			{
+				scr_draw_circular_bar(player[i].x, player[i].bbox_top - 56, player[i].drawn_frames_until_drowning, player[i].seconds_until_drowning * 60, scr_make_color_hsv_transition(player[i].drawn_frames_until_drowning, player[i].seconds_until_drowning * 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
+			}
 		}
 	}
-	#endregion /* Show Drowning for Player 1 END */
-	
-	#region /* Show Drowning for Player 2 */
-	if (player[2] > 0)
-	&& (instance_exists(player[2]))
-	{
-		if (player[2].allow_drowning)
-		&& (player[2].drawn_frames_until_drowning <= player[2].seconds_until_drowning* 60)
-		{
-			scr_draw_circular_bar(player[2].x, player[2].bbox_top - 56, player[2].drawn_frames_until_drowning, player[2].seconds_until_drowning* 60, scr_make_color_hsv_transition(player[2].drawn_frames_until_drowning, player[2].seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
-		}
-	}
-	#endregion /* Show Drowning for Player 2 END */
-	
-	#region /* Show Drowning for Player 3 */
-	if (player[3] > 0)
-	&& (instance_exists(player[3]))
-	{
-		if (player[3].allow_drowning)
-		&& (player[3].drawn_frames_until_drowning <= player[3].seconds_until_drowning* 60)
-		{
-			scr_draw_circular_bar(player[3].x, player[3].bbox_top - 56, player[3].drawn_frames_until_drowning, player[3].seconds_until_drowning* 60, scr_make_color_hsv_transition(player[3].drawn_frames_until_drowning, player[3].seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
-		}
-	}
-	#endregion /* Show Drowning for Player 3 END */
-	
-	#region /* Show Drowning for Player 4 */
-	if (player[4] > 0)
-	&& (instance_exists(player[4]))
-	{
-		if (player[4].allow_drowning)
-		&& (player[4].drawn_frames_until_drowning <= player[4].seconds_until_drowning* 60)
-		{
-			scr_draw_circular_bar(player[4].x, player[4].bbox_top - 56, player[4].drawn_frames_until_drowning, player[4].seconds_until_drowning* 60, scr_make_color_hsv_transition(player[4].drawn_frames_until_drowning, player[4].seconds_until_drowning* 60, 0, 100, 255, 255, 255, 255), 20, 1, 6);
-		}
-	}
-	#endregion /* Show Drowning for Player 4 END */
-	
 }
-#endregion /* Show Drowning END */
+#endregion /* Show Drowning For Player END */
 
-scr_draw_cursor_tongue(mouse_x, mouse_y, obj_camera.player[1]);
+scr_draw_cursor_tongue(mouse_x, mouse_y, obj_camera.player[fixed_player]);

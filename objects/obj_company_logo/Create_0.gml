@@ -515,14 +515,11 @@ enum inp
 	gp = 1
 }
 
-scr_set_default_remapping_player_keyboard(1, false);
-scr_set_default_remapping_player_gamepad(1, false);
-scr_set_default_remapping_player_keyboard(2, false);
-scr_set_default_remapping_player_gamepad(2, false);
-scr_set_default_remapping_player_keyboard(3, false);
-scr_set_default_remapping_player_gamepad(3, false);
-scr_set_default_remapping_player_keyboard(4, false);
-scr_set_default_remapping_player_gamepad(4, false);
+for (var i = 1; i <= global.max_players; i += 1)
+{
+	scr_set_default_remapping_player_keyboard(i, false);
+	scr_set_default_remapping_player_gamepad(i, false);
+}
 #endregion /* Set controls END */
 
 #region /* Set default language */

@@ -1,10 +1,12 @@
 function scr_character_select_menu_step()
 {
-	no_players_are_inputting_names =
-	!can_input_player_name[1]
-	&& !can_input_player_name[2]
-	&& !can_input_player_name[3]
-	&& !can_input_player_name[4];
+	var fixed_player = 1;
+	
+	no_players_are_inputting_names = true;
+	for(var i = 1; i <= global.max_players; i += 1)
+	{
+		no_players_are_inputting_names = no_players_are_inputting_names && !can_input_player_name[i];
+	}
 	
 	if (menu == "select_character")
 	|| (menu == "back_from_character_select")
@@ -18,13 +20,13 @@ function scr_character_select_menu_step()
 			/* If you are downloading a new character, the game needs to reload all custom characters when going back to back to character select, so you can select the new downloaded character */
 			search_for_id_still = false;
 			search_id = ""; /* Always set this to empty string when going back to previous menu */
-			player_menu[1] = "load_downloaded_character";
+			player_menu[fixed_player] = "load_downloaded_character";
 			select_custom_level_menu_open = false;
 			scr_load_character_initializing();
-			player_automatically_join[1] = true;
+			player_automatically_join[fixed_player] = true;
 			menu = "load_characters";
 			menu_delay = 3;
-			menu_specific_joystick_delay[1] = 30;
+			menu_specific_joystick_delay[fixed_player] = 30;
 			have_downloaded_from_server = false;
 		}
 		
@@ -70,7 +72,7 @@ function scr_character_select_menu_step()
 		&& (menu_delay == 0)
 		{
 			menu = "select_character";
-			player_menu[1] = "select_character";
+			player_menu[fixed_player] = "select_character";
 		}
 		#endregion /* When you are ready to start game, and you're using mouse, and you aren't hovering mouse over the other buttons, then take you to "select character" menu END */
 		
@@ -104,7 +106,7 @@ function scr_character_select_menu_step()
 		&& (player_menu[1] != "online_character_list")
 		
 		|| (player_accept_selection[1] == -1)
-		&& (player_accept_selection[2])
+		&& (player_accept_selection[2] == 1)
 		&& (player_accept_selection[3] != 0)
 		&& (player_accept_selection[4] != 0)
 		&& (player_key_a_pressed[2])
@@ -114,7 +116,7 @@ function scr_character_select_menu_step()
 		
 		|| (player_accept_selection[1] == -1)
 		&& (player_accept_selection[2] == -1)
-		&& (player_accept_selection[3])
+		&& (player_accept_selection[3] == 1)
 		&& (player_accept_selection[4] != 0)
 		&& (player_key_a_pressed[3])
 		&& (player_menu[3] != "back_from_character_select")
@@ -124,7 +126,7 @@ function scr_character_select_menu_step()
 		|| (player_accept_selection[1] == -1)
 		&& (player_accept_selection[2] == -1)
 		&& (player_accept_selection[3] == -1)
-		&& (player_accept_selection[4])
+		&& (player_accept_selection[4] == 1)
 		&& (player_key_a_pressed[4])
 		&& (player_menu[4] != "back_from_character_select")
 		&& (player_menu[4] != "manage_character")
@@ -156,10 +158,10 @@ function scr_character_select_menu_step()
 					{
 						global.select_level_index = 0;
 						scr_load_custom_level_initializing();
-						can_input_player_name[1] = 2;
-						can_input_player_name[2] = 2;
-						can_input_player_name[3] = 2;
-						can_input_player_name[4] = 2;
+						for(var i = 1; i <= global.max_players; i += 1)
+						{
+							can_input_player_name[i] = 2;
+						}
 						can_navigate = true;
 						menu_delay = 3;
 						open_sub_menu = false;
@@ -197,33 +199,41 @@ function scr_character_select_menu_step()
 		
 		#region /* All code before menu navigation code */
 		
+		#region /* Player positions and scale for each character display */
+		player_display_x[1] = -465;
+		player_display_x[2] = -155;
+		player_display_x[3] = +155;
+		player_display_x[4] = +465;
+		#endregion /* Player positions and scale for each character display END */
+		
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			
-			#region /* Player positions and scale for each character display */
-			var normalized_position = (i - 1) / (global.max_players - 1); /* Normalized position between 0 and 1 */
-			player_display_x[i] = normalized_position * display_get_gui_width(); /* Now player_display_x array contains evenly distributed positions based on the screen width */
-			#endregion /* Player positions and scale for each character display END */
+			//#region /* Player positions and scale for each character display */
+			//var normalized_position = (i - 1) / (global.max_players - 1); /* Normalized position between 0 and 1 */
+			//player_display_x[i] = normalized_position * display_get_gui_width(); /* Now player_display_x array contains evenly distributed positions based on the screen width */
+			//#endregion /* Player positions and scale for each character display END */
 			
 			xx[i] = lerp(xx[i], player_display_x[i], 0.1);
 			player_scale[i] = 0.85; /* Player scale for each character display */
 		}
 		
 		#region /* Press enter when done typing on name input screen */
-		if (can_input_player_name[1] == 1 || can_input_player_name[2] == 1 || can_input_player_name[3] == 1 || can_input_player_name[4] == 1)
-		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		for (var i = 1; i <= global.max_players; i += 1)
 		{
 			if (global.clicking_ok_input_screen || global.clicking_cancel_input_screen)
-			{
-				menu_delay = 3;
-				can_input_player_name[1] = 2;
-				can_input_player_name[2] = 2;
-				can_input_player_name[3] = 2;
-				can_input_player_name[4] = 2;
-				global.clicking_ok_input_screen = false;
-				global.clicking_cancel_input_screen = false;
-			}
+			&& (can_input_player_name[i] == 1 && menu_delay == 0 && menu_joystick_delay == 0)
+		    {
+		        menu_delay = 3;
+		        for (var j = 1; j <= global.max_players; j += 1)
+				{
+					can_input_player_name[j] = 2;
+				}
+		        global.clicking_ok_input_screen = false;
+		        global.clicking_cancel_input_screen = false;
+		    }
 		}
+
 		#endregion /* Press enter when done typing on name input screen END */
 		
 		#endregion /* All code before menu navigation code END */
@@ -232,19 +242,16 @@ function scr_character_select_menu_step()
 		if (no_players_are_inputting_names)
 		{
 			
-			scr_character_select_player_navigation(1);
-			scr_character_select_player_navigation(2);
-			scr_character_select_player_navigation(3);
-			scr_character_select_player_navigation(4);
+			for (var i = 1; i <= global.max_players; i += 1)
+			{
+				scr_character_select_player_navigation(i);
+			}
 			
 			#region /* The buttons in the top left corner of character select screen */
 			
 			#region /* Key Up */
-			if (keyboard_check_pressed(global.player_[inp.key][1][1][action.up]))
-			|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.up]))
-			|| (gamepad_button_check_pressed(global.player_slot[1], gp_padu))
-			|| (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
-			&& (menu_specific_joystick_delay[1] <= 0)
+			if (key_up)
+			&& (menu_specific_joystick_delay[fixed_player] <= 0)
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
@@ -253,7 +260,7 @@ function scr_character_select_menu_step()
 					{
 						menu_delay = 3;
 						can_navigate = true;
-						player_menu[1] = "back_from_character_select";
+						player_menu[fixed_player] = "back_from_character_select";
 						menu = "back_from_character_select";
 					}
 					else
@@ -261,12 +268,12 @@ function scr_character_select_menu_step()
 					{
 						if (global.enable_manage_characters)
 						{
-							player_menu[1] = "manage_character";
+							player_menu[fixed_player] = "manage_character";
 							menu = "manage_character";
 						}
 						else
 						{
-							player_menu[1] = "back_from_character_select";
+							player_menu[fixed_player] = "back_from_character_select";
 							menu = "back_from_character_select";
 						}
 					}
@@ -277,11 +284,8 @@ function scr_character_select_menu_step()
 			else
 			
 			#region /* Key Down */
-			if (keyboard_check_pressed(global.player_[inp.key][1][1][action.down]))
-			|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.down]))
-			|| (gamepad_button_check_pressed(global.player_slot[1], gp_padd))
-			|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
-			&& (menu_specific_joystick_delay[1] <= 0)
+			if (key_down)
+			&& (menu_specific_joystick_delay[fixed_player] <= 0)
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
@@ -290,7 +294,7 @@ function scr_character_select_menu_step()
 						menu_delay = 3;
 						if (global.enable_manage_characters)
 						{
-							player_menu[1] = "manage_character";
+							player_menu[i] = "manage_character";
 							menu = "manage_character";
 						}
 					}
@@ -302,12 +306,12 @@ function scr_character_select_menu_step()
 						can_navigate = true;
 						if (global.free_communication_available)
 						{
-							player_menu[1] = "online_character_list";
+							player_menu[i] = "online_character_list";
 							menu = "online_character_list";
 						}
 						else
 						{
-							player_menu[1] = "select_character";
+							player_menu[i] = "select_character";
 							menu = "select_character";
 						}
 					}
@@ -316,7 +320,7 @@ function scr_character_select_menu_step()
 					{
 						menu_delay = 3;
 						can_navigate = true;
-						player_menu[1] = "select_character";
+						player_menu[i] = "select_character";
 						menu = "select_character";
 					}
 				}
@@ -335,510 +339,188 @@ function scr_character_select_menu_step()
 			#region /* Accept */
 			
 			#region /* Select the character */
-			if (player_key_a_pressed[1])
-			&& (player_menu[1] == "select_character")
-			|| (player_key_a_pressed[1])
-			&& (player_menu[1] == "select_skin")
-			|| (player_key_a_pressed[1])
-			&& (player_menu[1] == "select_voicepack")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[1] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[1] + 100, get_window_height * 0.5 + 150 + 20))
-			&& (mouse_check_button_released(mb_left))
+			for (var i = 1; i <= global.max_players; i += 1)
 			{
-				if (player_accept_selection[1] == 0)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				if (player_key_a_pressed[i])
+				&& (player_menu[i] == "select_character")
+				|| (player_key_a_pressed[i])
+				&& (player_menu[i] == "select_skin")
+				|| (player_key_a_pressed[i])
+				&& (player_menu[i] == "select_voicepack")
+				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[i] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[i] + 100, get_window_height * 0.5 + 150 + 20))
+				&& (mouse_check_button_released(mb_left))
 				{
-					player_menu[1] = "select_character";
-					menu = "select_character";
-					menu_delay = 3;
-					player_accept_selection[1] = true;
-					player_automatically_join[1] = false;
-					global.player_can_play[1] = true;
-					
-					#region /* When selecting character, make the character say their own name */
-					audio_stop_sound(voice_select_character);
-					if (global.narrator >= 0) /* Only play voice if narrator is turned on */
+					if (player_accept_selection[i] == 0)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_3.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_3.ogg");
-						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_2.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_2.ogg");
-						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_1.ogg"))
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_1.ogg");
-						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name.ogg"))
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_3.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_3.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_2.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_2.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_1.ogg"))
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name_1.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name.ogg"))
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/sound/voicepack" + string(global.voicepack_for_player[1]) + "/name.ogg");
-						}
-						else
-						{
-							voice_select_character = noone;
-						}
-						scr_audio_play(voice_select_character, volume_source.voice);
-					}
-					#endregion /* When selecting character, make the character say their own name END */
-					
-				}
-			}
-			if (player_key_a_pressed[2])
-			&& (player_menu[2] == "select_character")
-			|| (player_key_a_pressed[2])
-			&& (player_menu[2] == "select_skin")
-			|| (player_key_a_pressed[2])
-			&& (player_menu[2] == "select_voicepack")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[2] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[2] + 100, get_window_height * 0.5 + 150 + 20))
-			&& (mouse_check_button_released(mb_left))
-			{
-				if (player_accept_selection[2] == 0)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					player_menu[2] = "select_character";
-					menu = "select_character";
-					menu_delay = 3;
-					player_accept_selection[2] = true;
-					player_automatically_join[2] = false;
-					global.player_can_play[2] = true;
-					
-					#region /* When selecting character, make the character say their own name */
-					audio_stop_sound(voice_select_character);
-					if (global.narrator >= 0) /* Only play voice if narrator is turned on */
-					{
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_3.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_3.ogg");
-						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_2.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_2.ogg");
-						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_1.ogg"))
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_1.ogg");
-						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name.ogg"))
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_3.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_3.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_2.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_2.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_1.ogg"))
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name_1.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name.ogg"))
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[1])) + "/sound/voicepack" + string(global.voicepack_for_player[2]) + "/name.ogg");
-						}
-						else
-						{
-							voice_select_character = noone;
-						}
-						scr_audio_play(voice_select_character, volume_source.voice);
-					}
-					#endregion /* When selecting character, make the character say their own name END */
-					
-				}
-			}
-			if (player_key_a_pressed[3])
-			&& (player_menu[3] == "select_character")
-			|| (player_key_a_pressed[3])
-			&& (player_menu[3] == "select_skin")
-			|| (player_key_a_pressed[3])
-			&& (player_menu[3] == "select_voicepack")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[3] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[3] + 100, get_window_height * 0.5 + 150 + 20))
-			&& (mouse_check_button_released(mb_left))
-			{
-				if (player_accept_selection[3] == 0)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					player_menu[3] = "select_character";
-					menu = "select_character";
-					menu_delay = 3;
-					player_accept_selection[3] = true;
-					player_automatically_join[3] = false;
-					global.player_can_play[3] = true;
-					
-					#region /* When selecting character, make the character say their own name */
-					audio_stop_sound(voice_select_character);
-					if (global.narrator >= 0) /* Only play voice if narrator is turned on */
-					{
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_3.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_3.ogg");
-						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_2.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_2.ogg");
-						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_1.ogg"))
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_1.ogg");
-						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name.ogg"))
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_3.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_3.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_2.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_2.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_1.ogg"))
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name_1.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name.ogg"))
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[2])) + "/sound/voicepack" + string(global.voicepack_for_player[3]) + "/name.ogg");
-						}
-						else
-						{
-							voice_select_character = noone;
-						}
-						scr_audio_play(voice_select_character, volume_source.voice);
-					}
-					#endregion /* When selecting character, make the character say their own name END */
-					
-				}
-			}
-			if (player_key_a_pressed[4])
-			&& (player_menu[4] == "select_character")
-			|| (player_key_a_pressed[4])
-			&& (player_menu[4] == "select_skin")
-			|| (player_key_a_pressed[4])
-			&& (player_menu[4] == "select_voicepack")
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[4] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[4] + 100, get_window_height * 0.5 + 150 + 20))
-			&& (mouse_check_button_released(mb_left))
-			{
-				if (!player_accept_selection[4])
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					player_menu[4] = "select_character";
-					menu = "select_character";
-					menu_delay = 3;
-					player_accept_selection[4] = true;
-					player_automatically_join[4] = false;
-					global.player_can_play[4] = true;
-					
-					#region /* When selecting character, make the character say their own name */
-					if (global.narrator >= 0) /* Only play voice if narrator is turned on */
-					{
+						player_menu[i] = "select_character";
+						menu = "select_character";
+						menu_delay = 3;
+						player_accept_selection[i] = true;
+						player_automatically_join[i] = false;
+						global.player_can_play[i] = true;
+						
+						#region /* When selecting character, make the character say their own name */
 						audio_stop_sound(voice_select_character);
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_3.ogg"))
-						&& (floor(random(3 - 1)) == 0)
+						if (global.narrator >= 0) /* Only play voice if narrator is turned on */
 						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_3.ogg");
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_3.ogg"))
+							&& (floor(random(3 - 1)) == 0)
+							{
+								voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_3.ogg");
+							}
+							else
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_2.ogg"))
+							&& (floor(random(3 - 1)) == 0)
+							{
+								voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_2.ogg");
+							}
+							else
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_1.ogg"))
+							{
+								voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_1.ogg");
+							}
+							else
+							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name.ogg"))
+							{
+								voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name.ogg");
+							}
+							else
+							if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_3.ogg"))
+							&& (floor(random(3 - 1)) == 0)
+							{
+								voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_3.ogg");
+							}
+							else
+							if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_2.ogg"))
+							&& (floor(random(3 - 1)) == 0)
+							{
+								voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_2.ogg");
+							}
+							else
+							if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_1.ogg"))
+							{
+								voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_1.ogg");
+							}
+							else
+							if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name.ogg"))
+							{
+								voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name.ogg");
+							}
+							else
+							{
+								voice_select_character = noone;
+							}
+							scr_audio_play(voice_select_character, volume_source.voice);
 						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_2.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_2.ogg");
-						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_1.ogg"))
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_1.ogg");
-						}
-						else
-						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name.ogg"))
-						{
-							voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_3.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_3.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_2.ogg"))
-						&& (floor(random(3 - 1)) == 0)
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_2.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_1.ogg"))
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name_1.ogg");
-						}
-						else
-						if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name.ogg"))
-						{
-							voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[3])) + "/sound/voicepack" + string(global.voicepack_for_player[4]) + "/name.ogg");
-						}
-						else
-						{
-							voice_select_character = noone;
-						}
-						scr_audio_play(voice_select_character, volume_source.voice);
-					}
-					#endregion /* When selecting character, make the character say their own name END */
+						#endregion /* When selecting character, make the character say their own name END */
 					
+					}
 				}
 			}
 			#endregion /* Select the character END */
 			
-			#region /* If all players have selected a character, be able to start game */
+			#region /* If all players has selected a character, be able to start game */
 			if (player_accept_selection[1] == 1)
 			&& (player_accept_selection[2] != 0)
 			&& (player_accept_selection[3] != 0)
 			&& (player_accept_selection[4] != 0)
 			{
+				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
+				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
+				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
+				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
 				player_start_game = true;
 			}
 			else
 			if (player_accept_selection[1] != 0)
-			&& (player_accept_selection[2])
+			&& (player_accept_selection[2] == 1)
 			&& (player_accept_selection[3] != 0)
 			&& (player_accept_selection[4] != 0)
 			{
+				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
+				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
+				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
+				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
 				player_start_game = true;
 			}
 			else
 			if (player_accept_selection[1] != 0)
 			&& (player_accept_selection[2] != 0)
-			&& (player_accept_selection[3])
+			&& (player_accept_selection[3] == 1)
 			&& (player_accept_selection[4] != 0)
 			{
+				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
+				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
+				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
+				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
 				player_start_game = true;
 			}
 			else
 			if (player_accept_selection[1] != 0)
 			&& (player_accept_selection[2] != 0)
 			&& (player_accept_selection[3] != 0)
-			&& (player_accept_selection[4])
+			&& (player_accept_selection[4] == 1)
 			{
+				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
+				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
+				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
+				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
 				player_start_game = true;
 			}
 			else
 			{
 				player_start_game = false;
 			}
-			#endregion /* If all players have selected a character, be able to start game END */
+			#endregion /* If all players has selected a character, be able to start game END */
 			
 			#endregion /* Accept END */
 			
 			#region /* Back / Cancel Selection */
 			
-			#region /* Player 1 Back / Cancel Selection */
-			if (player_key_b_pressed[1])
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[1] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[1] + 100, get_window_height * 0.5 + 150 + 20))
-			&& (mouse_check_button_released(mb_left))
+			#region /* Player Back / Cancel Selection */
+			for (var i = 1; i <= global.max_players; i += 1)
 			{
-				if (player_accept_selection[1] == 1)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
+				if (player_key_b_pressed[i])
+				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[i] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[i] + 100, get_window_height * 0.5 + 150 + 20))
+				&& (mouse_check_button_released(mb_left))
 				{
-					menu_delay = 3;
-					player_accept_selection[1] = false;
-					global.player_can_play[1] = false;
-					can_navigate = true;
+					if (player_accept_selection[i] == 1)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu_delay = 3;
+						player_accept_selection[i] = false;
+						global.player_can_play[i] = false;
+						can_navigate = true;
+					}
 				}
 			}
-			#endregion /* Player 1 Back / Cancel Selection END */
+			#endregion /* Player Back / Cancel Selection END */
 			
-			#region /* Player 2 Back / Cancel Selection */
-			if (player_key_b_pressed[2])
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[2] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[2] + 100, get_window_height * 0.5 + 150 + 20))
-			&& (mouse_check_button_released(mb_left))
+			for (var i = 1; i <= global.max_players; i += 1)
 			{
-				if (player_accept_selection[2] == 1)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					menu_delay = 3;
-					player_accept_selection[2] = false;
-					global.player_can_play[2] = false;
-					can_navigate = true;
-				}
+				var player_key_a_pressed_back_from_character_select = player_key_a_pressed[i] && player_menu[i] == "back_from_character_select";
 			}
-			#endregion /* Player 2 Back / Cancel Selection END */
 			
-			#region /* Player 3 Back / Cancel Selection */
-			if (player_key_b_pressed[3])
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[3] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[3] + 100, get_window_height * 0.5 + 150 + 20))
-			&& (mouse_check_button_released(mb_left))
-			{
-				if (player_accept_selection[3] == 1)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					menu_delay = 3;
-					player_accept_selection[3] = false;
-					global.player_can_play[3] = false;
-					can_navigate = true;
-				}
-			}
-			#endregion /* Player 3 Back / Cancel Selection END */
-			
-			#region /* Player 4 Back / Cancel Selection */
-			if (player_key_b_pressed[4])
-			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[4] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[4] + 100, get_window_height * 0.5 + 150 + 20))
-			&& (mouse_check_button_released(mb_left))
-			{
-				if (player_accept_selection[4] == 1)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				{
-					menu_delay = 3;
-					player_accept_selection[4] = false;
-					global.player_can_play[4] = false;
-					can_navigate = true;
-				}
-			}
-			#endregion /* Player 4 Back / Cancel Selection END */
-			
-			#region /* If player 1 has selected a character, be able to start game */
-			if (player_accept_selection[1] == 1)
-			&& (player_accept_selection[2] != 0)
-			&& (player_accept_selection[3] != 0)
-			&& (player_accept_selection[4] != 0)
-			{
-				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
-				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
-				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
-				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
-				player_start_game = true;
-			}
-			else
-			if (player_accept_selection[1] != 0)
-			&& (player_accept_selection[2])
-			&& (player_accept_selection[3] != 0)
-			&& (player_accept_selection[4] != 0)
-			{
-				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
-				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
-				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
-				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
-				player_start_game = true;
-			}
-			else
-			if (player_accept_selection[1] != 0)
-			&& (player_accept_selection[2] != 0)
-			&& (player_accept_selection[3])
-			&& (player_accept_selection[4] != 0)
-			{
-				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
-				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
-				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
-				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
-				player_start_game = true;
-			}
-			else
-			if (player_accept_selection[1] != 0)
-			&& (player_accept_selection[2] != 0)
-			&& (player_accept_selection[3] != 0)
-			&& (player_accept_selection[4])
-			{
-				global.character_for_player[1] = ds_list_find_value(global.all_loaded_characters, global.character_index[0]);
-				global.character_for_player[2] = ds_list_find_value(global.all_loaded_characters, global.character_index[1]);
-				global.character_for_player[3] = ds_list_find_value(global.all_loaded_characters, global.character_index[2]);
-				global.character_for_player[4] = ds_list_find_value(global.all_loaded_characters, global.character_index[3]);
-				player_start_game = true;
-			}
-			else
-			{
-				player_start_game = false;
-			}
-			#endregion /* If player 1 has selected a character, be able to start game END */
-			
-			if (player_key_b_pressed[1])
-			&& (player_accept_selection[1] <= -1)
-			|| (player_key_a_pressed[1])
+			if (player_key_b_pressed[fixed_player])
+			&& (player_accept_selection[fixed_player] <= -1)
+			|| (player_key_a_pressed[fixed_player])
 			&& (menu == "back_from_character_select")
-			|| (player_key_a_pressed[1])
-			&& (player_menu[1] == "back_from_character_select")
-			|| (player_key_a_pressed[1])
-			&& (player_menu[2] == "back_from_character_select")
-			|| (player_key_a_pressed[1])
-			&& (player_menu[3] == "back_from_character_select")
-			|| (player_key_a_pressed[1])
-			&& (player_menu[4] == "back_from_character_select")
+			|| (player_key_a_pressed_back_from_character_select)
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
 					image_alpha = 1;
 					player_start_game = false;
-					can_input_player_name[1] = 2;
-					can_input_player_name[2] = 2;
-					can_input_player_name[3] = 2;
-					can_input_player_name[4] = 2;
-					player_accept_selection[1] = -1;
-					player_accept_selection[2] = -1;
-					player_accept_selection[3] = -1;
-					player_accept_selection[4] = -1;
-					global.player_can_play[1] = false;
-					global.player_can_play[2] = false;
-					global.player_can_play[3] = false;
-					global.player_can_play[4] = false;
-					player_menu[1] = "select_character";
-					player_menu[2] = "select_character";
-					player_menu[3] = "select_character";
-					player_menu[4] = "select_character";
-					xx[1] = player_display_x[1];
-					xx[2] = player_display_x[2];
-					xx[3] = player_display_x[3];
-					xx[4] = player_display_x[4];
+					for (var i = 1; i <= global.max_players; i += 1)
+					{
+						can_input_player_name[i] = 2;
+						player_accept_selection[i] = -1;
+						global.player_can_play[i] = false;
+						player_menu[i] = "select_character";
+						xx[i] = player_display_x[i];
+					}
 					if (global.character_select_in_this_menu == "main_game")
 					{
 						menu = "main_game";
@@ -859,83 +541,27 @@ function scr_character_select_menu_step()
 		menu_delay = clamp(menu_delay - 1, 0, +infinity);
 		
 		#region /* Menu navigation with joystick */
-		if (gamepad_axis_value(global.player_slot[1], gp_axislv) < -0.3)
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislv) > +0.3)
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < -0.3)
-		|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > +0.3)
+		for (var i = 1; i <= global.max_players; i += 1)
 		{
-			if (menu_specific_joystick_delay[1] == 0)
+			if (gamepad_axis_value(global.player_slot[i], gp_axislv) < -0.3)
+			|| (gamepad_axis_value(global.player_slot[i], gp_axislv) > +0.3)
+			|| (gamepad_axis_value(global.player_slot[i], gp_axislh) < -0.3)
+			|| (gamepad_axis_value(global.player_slot[i], gp_axislh) > +0.3)
 			{
-				menu_specific_joystick_delay[1] = 30;
+				if (menu_specific_joystick_delay[i] == 0)
+				{
+					menu_specific_joystick_delay[i] = 30;
+				}
 			}
-		}
-		if (gamepad_axis_value(global.player_slot[2], gp_axislv) < -0.3)
-		|| (gamepad_axis_value(global.player_slot[2], gp_axislv) > +0.3)
-		|| (gamepad_axis_value(global.player_slot[2], gp_axislh) < -0.3)
-		|| (gamepad_axis_value(global.player_slot[2], gp_axislh) > +0.3)
-		{
-			if (menu_specific_joystick_delay[2] == 0)
+			if (gamepad_axis_value(global.player_slot[i], gp_axislv) == 0)
+			&& (gamepad_axis_value(global.player_slot[i], gp_axislh) == 0)
 			{
-				menu_specific_joystick_delay[2] = 30;
+				menu_specific_joystick_delay[i] = 0;
+			}
+			if (menu_specific_joystick_delay[i] > 0) {
+				menu_specific_joystick_delay[i] --;
 			}
 		}
-		if (gamepad_axis_value(global.player_slot[3], gp_axislv) < -0.3)
-		|| (gamepad_axis_value(global.player_slot[3], gp_axislv) > +0.3)
-		|| (gamepad_axis_value(global.player_slot[3], gp_axislh) < -0.3)
-		|| (gamepad_axis_value(global.player_slot[3], gp_axislh) > +0.3)
-		{
-			if (menu_specific_joystick_delay[3] == 0)
-			{
-				menu_specific_joystick_delay[3] = 30;
-			}
-		}
-		if (gamepad_axis_value(global.player_slot[4], gp_axislv) < -0.3)
-		|| (gamepad_axis_value(global.player_slot[4], gp_axislv) > +0.3)
-		|| (gamepad_axis_value(global.player_slot[4], gp_axislh) < -0.3)
-		|| (gamepad_axis_value(global.player_slot[4], gp_axislh) > +0.3)
-		{
-			if (menu_specific_joystick_delay[4] == 0)
-			{
-				menu_specific_joystick_delay[4] = 30;
-			}
-		}
-		if (gamepad_axis_value(global.player_slot[1], gp_axislv) == 0)
-		&& (gamepad_axis_value(global.player_slot[1], gp_axislh)= 0)
-		{
-			menu_specific_joystick_delay[1] = 0;
-		}
-		if (gamepad_axis_value(global.player_slot[2], gp_axislv) == 0)
-		&& (gamepad_axis_value(global.player_slot[2], gp_axislh)= 0)
-		{
-			menu_specific_joystick_delay[2] = 0;
-		}
-		if (gamepad_axis_value(global.player_slot[3], gp_axislv) == 0)
-		&& (gamepad_axis_value(global.player_slot[3], gp_axislh)= 0)
-		{
-			menu_specific_joystick_delay[3] = 0;
-		}
-		if (gamepad_axis_value(global.player_slot[4], gp_axislv) == 0)
-		&& (gamepad_axis_value(global.player_slot[4], gp_axislh)= 0)
-		{
-			menu_specific_joystick_delay[4] = 0;
-		}
-		var joystick_delays = [
-			menu_specific_joystick_delay[1],
-			menu_specific_joystick_delay[2],
-			menu_specific_joystick_delay[3],
-			menu_specific_joystick_delay[4]
-		];
-		
-		for (var i = 0; i < 4; i++) {
-			if (joystick_delays[i] > 0) {
-			    joystick_delays[i] --;
-			}
-		}
-		
-		menu_specific_joystick_delay[1] = joystick_delays[0];
-		menu_specific_joystick_delay[2] = joystick_delays[1];
-		menu_specific_joystick_delay[3] = joystick_delays[2];
-		menu_specific_joystick_delay[4] = joystick_delays[3];
 		#endregion /* Menu navigation with joystick END */
 		
 		#region /* If players haven't joined the game */
@@ -943,129 +569,47 @@ function scr_character_select_menu_step()
 		{
 			
 			#region /* Player 1 Join Text */
-			if (player_accept_selection[1] <= -1)
+			for (var i = 1; i <= global.max_players; i += 1)
 			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[1] - 150, get_window_height * 0.5 - 32, get_window_width * 0.5 + player_display_x[1] + 150, get_window_height * 0.5 + 32))
-				&& (global.controls_used_for_navigation == "mouse")
+				if (player_accept_selection[i] <= -1)
 				{
-					player_menu[1] = "select_character";
-					menu = "select_character";
-				}
-				if (player_key_a_pressed[1])
-				|| (player_automatically_join[1])
-				|| (mouse_check_button_released(mb_left))
-				&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[1] - 150, get_window_height * 0.5 - 32, get_window_width * 0.5 + player_display_x[1] + 150, get_window_height * 0.5 + 32))
-				{
-					if (menu_delay == 0 && menu_joystick_delay == 0)
-					&& (menu != "back_from_character_select")
-					&& (player_menu[1] != "back_from_character_select")
-					&& (menu != "manage_character")
-					&& (player_menu[1] != "manage_character")
-					&& (menu != "online_character_list")
-					&& (player_menu[1] != "online_character_list")
+					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[i] - 150, get_window_height * 0.5 - 32, get_window_width * 0.5 + player_display_x[i] + 150, get_window_height * 0.5 + 32))
+					&& (global.controls_used_for_navigation == "mouse")
 					{
-						character_portrait_for_player_update_directory[1] = true;
-						alarm[0] = 1;
-						player_automatically_join[1] = false;
+						player_menu[i] = "select_character";
 						menu = "select_character";
-						player_menu[1] = "select_character";
-						menu_delay = 3;
-						player_accept_selection[1] = 0;
-						global.character_index[0] = clamp(global.character_index[0], 0, ds_list_size(global.all_loaded_characters) - 1);
+					}
+					if (player_key_a_pressed[i])
+					|| (player_automatically_join[i])
+					|| (mouse_check_button_released(mb_left))
+					&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[i] - 150, get_window_height * 0.5 - 32, get_window_width * 0.5 + player_display_x[i] + 150, get_window_height * 0.5 + 32))
+					{
+						if (i == fixed_player)
+						&& (menu_delay == 0 && menu_joystick_delay == 0)
+						&& (menu != "back_from_character_select")
+						&& (player_menu[fixed_player] != "back_from_character_select")
+						&& (menu != "manage_character")
+						&& (player_menu[fixed_player] != "manage_character")
+						&& (menu != "online_character_list")
+						&& (player_menu[fixed_player] != "online_character_list")
+						|| (menu_delay == 0 && menu_joystick_delay == 0)
+						{
+							character_portrait_for_player_update_directory[i] = true;
+							alarm[0] = 1;
+							player_automatically_join[i] = false;
+							if (i == 1)
+							{
+								menu = "select_character";
+							}
+							player_menu[i] = "select_character";
+							menu_delay = 3;
+							player_accept_selection[i] = 0;
+							global.character_index[i - 1] = clamp(global.character_index[i - 1], 0, ds_list_size(global.all_loaded_characters) - 1);
+						}
 					}
 				}
 			}
 			#endregion /* Player 1 Join Text END */
-			
-			#region /* Player 2 Join Text */
-			if (player_accept_selection[2] <= -1)
-			&& (global.playergame >= 1)
-			|| (player_accept_selection[2] <= -1)
-			&& (global.skip_how_many_people_are_playing_screen)
-			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[2] - 150, get_window_height * 0.5 + 32 - 32, get_window_width * 0.5 + player_display_x[2] + 150, get_window_height * 0.5 + 32 + 32))
-				&& (global.controls_used_for_navigation == "mouse")
-				{
-					player_menu[2] = "select_character";
-					menu = "select_character";
-				}
-				if (player_key_a_pressed[2])
-				|| (player_automatically_join[2])
-				|| (mouse_check_button_released(mb_left))
-				&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[2] - 150, get_window_height * 0.5 + 32 - 32, get_window_width * 0.5 + player_display_x[2] + 150, get_window_height * 0.5 + 32 + 32))
-				{
-					if (menu_delay == 0 && menu_joystick_delay == 0)
-					{
-						character_portrait_for_player_update_directory[2] = true;
-						alarm[0] = 1;
-						player_automatically_join[2] = false;
-						menu_delay = 3;
-						player_accept_selection[2] = 0;
-						global.character_index[1] = clamp(global.character_index[1], 0, ds_list_size(global.all_loaded_characters) - 1);
-					}
-				}
-			}
-			#endregion /* Player 2 Join Text END */
-			
-			#region /* Player 3 Join Text */
-			if (player_accept_selection[3] <= -1)
-			&& (global.playergame >= 2)
-			|| (player_accept_selection[3] <= -1)
-			&& (global.skip_how_many_people_are_playing_screen)
-			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[3] - 150, get_window_height * 0.5 - 32, get_window_width * 0.5 + player_display_x[3] + 150, get_window_height * 0.5 + 32))
-				&& (global.controls_used_for_navigation == "mouse")
-				{
-					player_menu[3] = "select_character";
-					menu = "select_character";
-				}
-				if (player_key_a_pressed[3])
-				|| (player_automatically_join[3])
-				|| (mouse_check_button_released(mb_left))
-				&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[3] - 150, get_window_height * 0.5 - 32, get_window_width * 0.5 + player_display_x[3] + 150, get_window_height * 0.5 + 32))
-				{
-					if (menu_delay == 0 && menu_joystick_delay == 0)
-					{
-						character_portrait_for_player_update_directory[3] = true;
-						alarm[0] = 1;
-						player_automatically_join[3] = false;
-						menu_delay = 3;
-						player_accept_selection[3] = 0;
-						global.character_index[2] = clamp(global.character_index[2], 0, ds_list_size(global.all_loaded_characters) - 1);
-					}
-				}
-			}
-			#endregion /* Player 3 Join Text END */
-			
-			#region /* Player 4 Join Text */
-			if (player_accept_selection[4] <= -1)
-			&& (global.playergame >= 3)
-			|| (player_accept_selection[4] <= -1)
-			&& (global.skip_how_many_people_are_playing_screen)
-			{
-				if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[4] - 150, get_window_height * 0.5 + 32 - 32, get_window_width * 0.5 + player_display_x[4] + 150, get_window_height * 0.5 + 32 + 32))
-				&& (global.controls_used_for_navigation == "mouse")
-				{
-					player_menu[4] = "select_character";
-					menu = "select_character";
-				}
-				if (player_key_a_pressed[4])
-				|| (player_automatically_join[4])
-				|| (mouse_check_button_released(mb_left))
-				&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[4] - 150, get_window_height * 0.5 + 32 - 32, get_window_width * 0.5 + player_display_x[4] + 150, get_window_height * 0.5 + 32 + 32))
-				{
-					if (menu_delay == 0 && menu_joystick_delay == 0)
-					{
-						character_portrait_for_player_update_directory[4] = true;
-						alarm[0] = 1;
-						player_automatically_join[4] = false;
-						menu_delay = 3;
-						player_accept_selection[4] = 0;
-						global.character_index[3] = clamp(global.character_index[3], 0, ds_list_size(global.all_loaded_characters) - 1);
-					}
-				}
-			}
-			#endregion /* Player 4 Join Text END */
 			
 		}
 		#endregion /* If players haven't joined the game END */

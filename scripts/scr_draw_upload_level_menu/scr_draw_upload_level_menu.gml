@@ -1666,7 +1666,7 @@ function scr_draw_upload_level_menu()
 			{
 				if (destroy_zip_after_uploading)
 				{
-					file_delete(file);
+					file_delete(working_directory + string(level_id) + ".zip");
 				}
 				menu = "error_level_too_big";
 			}
@@ -1723,7 +1723,7 @@ function scr_draw_upload_level_menu()
 					/* Delete some leftover files and folders */
 					if (destroy_zip_after_uploading)
 					{
-						file_delete(file);
+						file_delete(working_directory + string(level_id) + ".zip");
 					}
 					if (os_is_network_connected())
 					{
@@ -1838,7 +1838,7 @@ function scr_draw_upload_level_menu()
 		draw_roundrect_color_ext(0, uploaded_level_message_y - 32, get_window_width, uploaded_level_message_y + 128, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, uploaded_level_message_y, global.level_name + " " + l10n_text("Uploaded"), global.default_text_size * 1.9, c_black, c_white, 1);
-		/* Show Level ID */ scr_draw_text_outlined(get_window_width * 0.5, uploaded_level_message_y + 84, l10n_text("Level ID") + ": " + string(level_id), global.default_text_size * 1.9, c_black, c_white, 1);
+		/* Show Level ID */ scr_draw_text_outlined(get_window_width * 0.5, uploaded_level_message_y + 84, l10n_text("Level ID") + ": " + string_upper(level_id), global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Level Uploaded OK */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))

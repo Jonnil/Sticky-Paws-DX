@@ -15,19 +15,6 @@ function scr_character_select_menu_draw()
 		var player_join_text_size = 0.75;
 	}
 	
-	for(var i = 1; i <= global.max_players; i += 1)
-	{
-		/* Player Key Accept Pressed */ player_key_a_pressed[i] = (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][1][action.accept]))
-		|| (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][2][action.accept]))
-		|| (keyboard_check_pressed(global.player_[inp.key][i][1][action.accept]))
-		|| (keyboard_check_pressed(global.player_[inp.key][i][2][action.accept]));
-		/* Player Key Back Pressed */ player_key_b_pressed[i] = (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][1][action.back]))
-		|| (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][2][action.back]))
-		|| (keyboard_check_pressed(global.player_[inp.key][i][1][action.back]))
-		|| (keyboard_check_pressed(global.player_[inp.key][i][2][action.back]))
-		|| (keyboard_check_pressed(vk_escape));
-	}
-	
 	arrow_offset = 125;
 	var get_window_height = display_get_gui_height();
 	var get_window_width = display_get_gui_width();

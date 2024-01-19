@@ -165,356 +165,100 @@ if (layer_exists("WindEffectLayer"))
 }
 #endregion /* Wind Effect END */
 
-#region /* Multiplayer - Has pressed keys */
-
-#region /* Player 1 Show Controls HUD timer */
-if (player[1] >= 1)
-&& (instance_exists(player[1]))
-&& (iris_xscale >= 10)
+for(var i = 1; i <= global.max_players; i += 1)
 {
-	if (global.player_show_controls[1] == 0)
-	|| (!player[1].can_move)
-	|| (global.goal_active)
-	{
-		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
-	}
-	else
-	if (global.player_show_controls[1] >= 1)
-	&& (global.player_show_controls[1] <= 9)
-	{
-		if (player_show_controls_timer[1] >= 1)
-		{
-			player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
-			player_show_controls_timer[1] --;
-		}
-		if (player_show_controls_timer[1] <= 0)
-		&& (player[1].speed == 0)
-		{
-			player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 1, 0.1);
-		}
-	}
-	else
-	if (global.player_show_controls[1] == 10)
-	{
-		player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 1, 0.1);
-	}
 	
-	if (player[1].speed > 0)
+	#region /* Player Show Controls HUD timer */
+	if (player[i] >= 1)
+	&& (instance_exists(player[i]))
+	&& (iris_xscale >= 10)
 	{
-		player_show_controls_timer[1] = get_room_speed * global.player_show_controls[1];
-	}
-}
-else
-if (global.player_can_play[1])
-{
-	player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 1, 0.1);
-}
-else
-{
-	player_show_controls_alpha[1] = lerp(player_show_controls_alpha[1], 0, 0.2);
-	player_show_controls_timer[1] = get_room_speed * global.player_show_controls[1];
-}
-#endregion /* Player 1 Show Controls HUD timer */
-
-#region /* Player 2 Show Controls HUD timer */
-if (player[2] >= 1)
-&& (instance_exists(player[2]))
-&& (iris_xscale >= 10)
-{
-	if (global.player_show_controls[2] == 0)
-	|| (!player[2].can_move)
-	|| (global.goal_active)
-	{
-		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
-	}
-	else
-	if (global.player_show_controls[2] >= 1)
-	&& (global.player_show_controls[2] <= 9)
-	{
-		if (player_show_controls_timer[2] >= 1)
+		if (global.player_show_controls[i] == 0)
+		|| (!player[i].can_move)
+		|| (global.goal_active)
 		{
-			player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
-			player_show_controls_timer[2] --;
+			player_show_controls_alpha[i] = lerp(player_show_controls_alpha[i], 0, 0.2);
 		}
-		if (player_show_controls_timer[2] <= 0)
-		&& (player[2].speed == 0)
+		else
+		if (global.player_show_controls[i] >= 1)
+		&& (global.player_show_controls[i] <= 9)
 		{
-			player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
+			if (player_show_controls_timer[i] >= 1)
+			{
+				player_show_controls_alpha[i] = lerp(player_show_controls_alpha[i], 0, 0.2);
+				player_show_controls_timer[i] --;
+			}
+			if (player_show_controls_timer[i] <= 0)
+			&& (player[i].speed == 0)
+			{
+				player_show_controls_alpha[i] = lerp(player_show_controls_alpha[i], 1, 0.1);
+			}
 		}
-	}
-	else
-	if (global.player_show_controls[2] == 10)
-	{
-		player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
-	}
+		else
+		if (global.player_show_controls[i] == 10)
+		{
+			player_show_controls_alpha[i] = lerp(player_show_controls_alpha[i], 1, 0.1);
+		}
 	
-	if (player[2].speed > 0)
-	{
-		player_show_controls_timer[2] = get_room_speed * global.player_show_controls[2];
-	}
-}
-else
-if (global.player_can_play[2])
-{
-	player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 1, 0.1);
-}
-else
-{
-	player_show_controls_alpha[2] = lerp(player_show_controls_alpha[2], 0, 0.2);
-	player_show_controls_timer[2] = get_room_speed * global.player_show_controls[2];
-}
-#endregion /* Player 2 Show Controls HUD timer */
-
-#region /* Player 3 Show Controls HUD timer */
-if (player[3] >= 1)
-&& (instance_exists(player[3]))
-&& (iris_xscale >= 10)
-{
-	if (global.player_show_controls[3] == 0)
-	|| (!player[3].can_move)
-	|| (global.goal_active)
-	{
-		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
-	}
-	else
-	if (global.player_show_controls[3] >= 1)
-	&& (global.player_show_controls[3] <= 9)
-	{
-		if (player_show_controls_timer[3] >= 1)
+		if (player[i].speed > 0)
 		{
-			player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
-			player_show_controls_timer[3] --;
-		}
-		if (player_show_controls_timer[3] <= 0)
-		&& (player[3].speed == 0)
-		{
-			player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.1);
+			player_show_controls_timer[i] = get_room_speed * global.player_show_controls[i];
 		}
 	}
 	else
-	if (global.player_show_controls[3] == 10)
+	if (global.player_can_play[i])
 	{
-		player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.2);
+		player_show_controls_alpha[i] = lerp(player_show_controls_alpha[i], 1, 0.1);
 	}
+	else
+	{
+		player_show_controls_alpha[i] = lerp(player_show_controls_alpha[i], 0, 0.2);
+		player_show_controls_timer[i] = get_room_speed * global.player_show_controls[i];
+	}
+	#endregion /* Player Show Controls HUD timer */
 	
-	if (player[3].speed > 0)
-	{
-		player_show_controls_timer[3] = get_room_speed * global.player_show_controls[3];
-	}
-}
-else
-if (global.player_can_play[3])
-{
-	player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 1, 0.1);
-}
-else
-{
-	player_show_controls_alpha[3] = lerp(player_show_controls_alpha[3], 0, 0.2);
-	player_show_controls_timer[3] = get_room_speed * global.player_show_controls[3];
-}
-#endregion /* Player 3 Show Controls HUD timer */
-
-#region /* Player 4 Show Controls HUD timer */
-if (player[4] >= 1)
-&& (instance_exists(player[4]))
-&& (iris_xscale >= 10)
-{
-	if (global.player_show_controls[4] == 0)
-	|| (!player[4].can_move)
-	|| (global.goal_active)
-	{
-		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
-	}
-	else
-	if (global.player_show_controls[4] >= 1)
-	&& (global.player_show_controls[4] <= 9)
-	{
-		if (player_show_controls_timer[4] >= 1)
-		{
-			player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
-			player_show_controls_timer[4] --;
-		}
-		if (player_show_controls_timer[4] <= 0)
-		&& (player[4].speed == 0)
-		{
-			player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
-		}
-	}
-	else
-	if (global.player_show_controls[4] == 10)
-	{
-		player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
-	}
-	
-	if (player[4].speed > 0)
-	{
-		player_show_controls_timer[4] = get_room_speed * global.player_show_controls[4];
-	}
-}
-else
-if (global.player_can_play[4])
-{
-	player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 1, 0.1);
-}
-else
-{
-	player_show_controls_alpha[4] = lerp(player_show_controls_alpha[4], 0, 0.2);
-	player_show_controls_timer[4] = get_room_speed * global.player_show_controls[4];
-}
-#endregion /* Player 4 Show Controls HUD timer */
-
-#endregion /* Multiplayer - Has pressed keys END */
-
-#region /* Stop gamepad vibration for player */
-for (var i = 1; i <= global.max_players; i += 1)
-{
+	#region /* Stop gamepad vibration for player */
 	if (!player_vibration_active[i])
 	{
 		player_motor_speed[i] = lerp(player_motor_speed[i], 0, 0.1);
 	}
 	gamepad_set_vibration(global.player_slot[i], player_motor_speed[i], player_motor_speed[i]);
+	#endregion /* Stop gamepad vibration for player END */
+	
 }
-#endregion /* Stop gamepad vibration for player END */
 
 #region /* Spawn Players in multiplayer */
 if (!global.pause)
 && (!global.goal_active)
 && (instance_exists(obj_player))
 {
-	if (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]) && gamepad_is_connected(global.player_slot[1]))
-	|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.jump]))
-	|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.jump]))
+	for(var i = 1; i <= global.max_players; i += 1)
 	{
-		if (player[1] <= 0)
-		&& (can_spawn_player[1])
-		&& (lives > 0)
+		if (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][1][action.accept]) && gamepad_is_connected(global.player_slot[i]))
+		|| (keyboard_check_pressed(global.player_[inp.key][i][1][action.accept]))
+		|| (keyboard_check_pressed(global.player_[inp.key][i][2][action.accept]))
 		{
-			if (!global.player_can_play[1])
+			if (player[i] <= 0)
+			&& (can_spawn_player[i])
+			&& (lives >= 1)
 			{
-				global.player_can_play[1] = true;
-			}
-			if (instance_exists(obj_player))
-			{
-				player[1] = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
+				if (!global.player_can_play[i]) {
+					global.player_can_play[i] = true;
+				}
+				player[i] = instance_create_depth(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 0, obj_player);
+				with(player[i])
+				{
+					custom_character = global.character_for_player[i];
+					selected_voice_pack = global.voicepack_for_player[i];
+					selected_skin = global.skin_for_player[i];
+					player = i;
+				}
 			}
 			else
+			if (lives <= 0)
 			{
-				player[1] = instance_create_depth(x, y, 0, obj_player);
+				hud_show_lives_timer = global.hud_hide_time * 60;
 			}
-			with(player[1])
-			{
-				custom_character = global.character_for_player[1];
-				selected_voice_pack = global.voicepack_for_player[1];
-				selected_skin = global.skin_for_player[1];
-				player = 1;
-			}
-		}
-		else
-		if (lives <= 0)
-		{
-			hud_show_lives_timer = global.hud_hide_time * 60;
-		}
-	}
-	if (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]) && gamepad_is_connected(global.player_slot[2]))
-	|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.jump]))
-	|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.jump]))
-	{
-		if (player[2] <= 0)
-		&& (can_spawn_player[2])
-		&& (lives > 0)
-		{
-			if (!global.player_can_play[2])
-			{
-				global.player_can_play[2] = true;
-			}
-			if (instance_exists(obj_player))
-			{
-				player[2] = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
-			}
-			else
-			{
-				player[2] = instance_create_depth(x, y, 0, obj_player);
-			}
-			with(player[2])
-			{
-				custom_character = global.character_for_player[2];
-				selected_voice_pack = global.voicepack_for_player[2];
-				selected_skin = global.skin_for_player[2];
-				player = 2;
-			}
-		}
-		else
-		if (lives <= 0)
-		{
-			hud_show_lives_timer = global.hud_hide_time * 60;
-		}
-	}
-	if (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]) && gamepad_is_connected(global.player_slot[3]))
-	|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.jump]))
-	|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.jump]))
-	{
-		if (player[3] <= 0)
-		&& (can_spawn_player[3])
-		&& (lives > 0)
-		{
-			if (!global.player_can_play[3])
-			{
-				global.player_can_play[3] = true;
-			}
-			if (instance_exists(obj_player))
-			{
-				player[3] = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
-			}
-			else
-			{
-				player[3] = instance_create_depth(x, y, 0, obj_player);
-			}
-			with(player[3])
-			{
-				custom_character = global.character_for_player[3];
-				selected_voice_pack = global.voicepack_for_player[3];
-				selected_skin = global.skin_for_player[3];
-				player = 3;
-			}
-		}
-		else
-		if (lives <= 0)
-		{
-			hud_show_lives_timer = global.hud_hide_time * 60;
-		}
-	}
-	if (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]) && gamepad_is_connected(global.player_slot[4]))
-	|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.jump]))
-	|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.jump]))
-	{
-		if (player[4] <= 0)
-		&& (can_spawn_player[4])
-		&& (lives > 0)
-		{
-			if (!global.player_can_play[4])
-			{
-				global.player_can_play[4] = true;
-			}
-			if (instance_exists(obj_player))
-			{
-				player[4] = instance_create_depth(obj_player.x, obj_player.y, 0, obj_player);
-			}
-			else
-			{
-				player[4] = instance_create_depth(x, y, 0, obj_player);
-			}
-			with(player[4])
-			{
-				custom_character = global.character_for_player[4];
-				selected_voice_pack = global.voicepack_for_player[4];
-				selected_skin = global.skin_for_player[4];
-				player = 4;
-			}
-		}
-		else
-		if (lives <= 0)
-		{
-			hud_show_lives_timer = global.hud_hide_time * 60;
 		}
 	}
 }
@@ -537,32 +281,14 @@ if (!save_level_as_png)
 	&& (instance_exists(obj_player))
 	&& (distance_to_object(obj_boss) < 400)
 	{
-		if (player[1] > 0)
-		&& (instance_exists(player[1]))
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
-			xx = mean(player[1].x, obj_boss.x);
-			yy = mean(player[1].y, obj_boss.y);
-		}
-		else
-		if (player[2] > 0)
-		&& (instance_exists(player[2]))
-		{
-			xx = mean(player[2].x, obj_boss.x);
-			yy = mean(player[2].y, obj_boss.y);
-		}
-		else
-		if (player[3] > 0)
-		&& (instance_exists(player[3]))
-		{
-			xx = mean(player[3].x, obj_boss.x);
-			yy = mean(player[3].y, obj_boss.y);
-		}
-		else
-		if (player[4] > 0)
-		&& (instance_exists(player[4]))
-		{
-			xx = mean(player[4].x, obj_boss.x);
-			yy = mean(player[4].y, obj_boss.y);
+		    if (player[i] > 0 && instance_exists(player[i]))
+		    {
+		        xx = mean(player[i].x, obj_boss.x);
+		        yy = mean(player[i].y, obj_boss.y);
+		        break; /* exit the loop once a valid player is found */
+		    }
 		}
 	}
 	#endregion /* Boss Battle Camera END */
@@ -574,7 +300,6 @@ if (!save_level_as_png)
 	{
 		
 		#region /* Camera should follow multiple players */
-		
 		/* 1, 2, 3, 4 */
 		if (player[1] > 0)
 		&& (player[2] > 0)
@@ -801,73 +526,22 @@ if (!save_level_as_png)
 }
 
 #region /* Step Run Toggling */
-key_player_run_toggle_pressed[1] = scr_key_initialize(key_player_run_toggle_pressed[1], 1, 1, action.run_toggle);
-key_player_run_toggle_pressed[2] = scr_key_initialize(key_player_run_toggle_pressed[2], 1, 2, action.run_toggle);
-key_player_run_toggle_pressed[3] = scr_key_initialize(key_player_run_toggle_pressed[3], 1, 3, action.run_toggle);
-key_player_run_toggle_pressed[4] = scr_key_initialize(key_player_run_toggle_pressed[4], 1, 4, action.run_toggle);
-
-if (key_player_run_toggle_pressed[1])
-&& (!instance_exists(obj_pause))
+for(var i = 1; i <= global.max_players; i += 1)
 {
-	show_run_toggle_for_player[1] = 100;
-	show_run_toggle_for_player[2] = 0;
-	show_run_toggle_for_player[3] = 0;
-	show_run_toggle_for_player[4] = 0;
-	if (!global.player_run_toggle[1])
+	key_player_run_toggle_pressed[i] = scr_key_initialize(key_player_run_toggle_pressed[i], 1, i, action.run_toggle);
+	
+	if (key_player_run_toggle_pressed[i])
 	{
-		global.player_run_toggle[1] = true;
-	}
-	else
-	{
-		global.player_run_toggle[1] = false;
-	}
-}
-if (key_player_run_toggle_pressed[2])
-&& (!instance_exists(obj_pause))
-{
-	show_run_toggle_for_player[1] = 0;
-	show_run_toggle_for_player[2] = 100;
-	show_run_toggle_for_player[3] = 0;
-	show_run_toggle_for_player[4] = 0;
-	if (!global.player_run_toggle[2])
-	{
-		global.player_run_toggle[2] = true;
-	}
-	else
-	{
-		global.player_run_toggle[2] = false;
-	}
-}
-if (key_player_run_toggle_pressed[3])
-&& (!instance_exists(obj_pause))
-{
-	show_run_toggle_for_player[1] = 0;
-	show_run_toggle_for_player[2] = 0;
-	show_run_toggle_for_player[3] = 100;
-	show_run_toggle_for_player[4] = 0;
-	if (!global.player_run_toggle[3])
-	{
-		global.player_run_toggle[3] = true;
-	}
-	else
-	{
-		global.player_run_toggle[3] = false;
-	}
-}
-if (key_player_run_toggle_pressed[4])
-&& (!instance_exists(obj_pause))
-{
-	show_run_toggle_for_player[1] = 0;
-	show_run_toggle_for_player[2] = 0;
-	show_run_toggle_for_player[3] = 0;
-	show_run_toggle_for_player[4] = 100;
-	if (!global.player_run_toggle[4])
-	{
-		global.player_run_toggle[4] = true;
-	}
-	else
-	{
-		global.player_run_toggle[4] = false;
+		show_run_toggle_for_player[i] = 100;
+		/* Reset other player toggles */
+	    for (var j = 1; j <= global.max_players; j += 1)
+	    {
+	        if (j != i)
+	        {
+	            show_run_toggle_for_player[j] = 0;
+	        }
+	    }
+		global.player_run_toggle[i] = !global.player_run_toggle[i];
 	}
 }
 #endregion /* Step Run Toggling END */
@@ -1082,126 +756,35 @@ if (global.hud_hide_time > 0)
 
 #endregion /* Show HUD timers END */
 
-#region /* Show Controls */
+#region /* Show Multiplayer Controls. Y position of show controls for each player */
 if (os_type != os_ios)
 && (os_type != os_android)
-&& (!instance_exists(obj_pause))
 {
+	var how_many_players_are_playing = 0;
 	
-	#region /* Show Multiplayer Controls */
+	for(var i = 1; i <= global.max_players; i += 1)
+	{
+		if (player_show_controls_alpha[i] > 0 && global.player_can_play[i]) {
+			how_many_players_are_playing += 1;
+		}
+	}
+    
+	var controls_hud_y = 32 + (42 * how_many_players_are_playing); /* Initialize controls_hud_y to the maximum value, based on max amount of players */
 	
-	#region /* Y position of show controls for each player */
-	if (player_show_controls_alpha[1] > 0)
-	&& (player_show_controls_alpha[2] <= 0)
-	&& (player_show_controls_alpha[3] <= 0)
-	&& (player_show_controls_alpha[4] <= 0)
-	{
-		show_player_controls_y[1] = lerp(show_player_controls_y[1], 32, 0.1);
-		show_player_controls_y[2] = lerp(show_player_controls_y[2], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[3] = lerp(show_player_controls_y[3], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
+	for(var i = 1; i <= global.max_players; i += 1) {
+		if (player_show_controls_alpha[i] > 0) /* If player show controls alpha is more than 0, then change the y position to correct position */
+		{
+			/* Set the controls_hud_y to be decending, from first player to last player */
+			controls_hud_y -= 42; /* If player show controls alpha is more than 0, decrease controls_hud_y by 42 */
+			show_player_controls_y[i] = lerp(show_player_controls_y[i], controls_hud_y, 0.1);
+		}
+		else /* If player show controls alpha is not more than 0, then hide the hud by setting it to +34 */
+		{
+			show_player_controls_y[i] = lerp(show_player_controls_y[i], +34, 0.1); /* + 34 = don't show */
+		}
 	}
-	else
-	if (player_show_controls_alpha[1] <= 0)
-	&& (player_show_controls_alpha[2] > 0)
-	&& (player_show_controls_alpha[3] <= 0)
-	&& (player_show_controls_alpha[4] <= 0)
-	{
-		show_player_controls_y[1] = lerp(show_player_controls_y[1], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[2] = lerp(show_player_controls_y[2], 32, 0.1);
-		show_player_controls_y[3] = lerp(show_player_controls_y[3], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
-	}
-	else
-	if (player_show_controls_alpha[1] <= 0)
-	&& (player_show_controls_alpha[2] <= 0)
-	&& (player_show_controls_alpha[3] > 0)
-	&& (player_show_controls_alpha[4] <= 0)
-	{
-		show_player_controls_y[1] = lerp(show_player_controls_y[1], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[2] = lerp(show_player_controls_y[2], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[3] = lerp(show_player_controls_y[3], 32, 0.1);
-		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
-	}
-	else
-	if (player_show_controls_alpha[1] <= 0)
-	&& (player_show_controls_alpha[2] <= 0)
-	&& (player_show_controls_alpha[3] <= 0)
-	&& (player_show_controls_alpha[4] > 0)
-	{
-		show_player_controls_y[1] = lerp(show_player_controls_y[1], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[2] = lerp(show_player_controls_y[2], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[3] = lerp(show_player_controls_y[3], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[4] = lerp(show_player_controls_y[4], 32, 0.1);
-	}
-	else
-	if (player_show_controls_alpha[1] > 0)
-	&& (player_show_controls_alpha[2] > 0)
-	&& (player_show_controls_alpha[3] <= 0)
-	&& (player_show_controls_alpha[4] <= 0)
-	{
-		show_player_controls_y[1] = lerp(show_player_controls_y[1], 74, 0.1);
-		show_player_controls_y[2] = lerp(show_player_controls_y[2], 32, 0.1);
-		show_player_controls_y[3] = lerp(show_player_controls_y[3], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
-	}
-	else
-	if (player_show_controls_alpha[1] > 0)
-	&& (player_show_controls_alpha[2] > 0)
-	&& (player_show_controls_alpha[3] > 0)
-	&& (player_show_controls_alpha[4] <= 0)
-	{
-		show_player_controls_y[1] = lerp(show_player_controls_y[1], 116, 0.1);
-		show_player_controls_y[2] = lerp(show_player_controls_y[2], 74, 0.1);
-		show_player_controls_y[3] = lerp(show_player_controls_y[3], 32, 0.1);
-		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
-	}
-	else
-	if (player_show_controls_alpha[1] > 0)
-	&& (player_show_controls_alpha[2] <= 0)
-	&& (player_show_controls_alpha[3] > 0)
-	&& (player_show_controls_alpha[4] <= 0)
-	{
-		show_player_controls_y[1] = lerp(show_player_controls_y[1], 74, 0.1);
-		show_player_controls_y[2] = lerp(show_player_controls_y[2], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[3] = lerp(show_player_controls_y[3], 32, 0.1);
-		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
-	}
-	else
-	if (player_show_controls_alpha[1] <= 0)
-	&& (player_show_controls_alpha[2] > 0)
-	&& (player_show_controls_alpha[3] > 0)
-	&& (player_show_controls_alpha[4] <= 0)
-	{
-		show_player_controls_y[1] = lerp(show_player_controls_y[1], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[2] = lerp(show_player_controls_y[2], 74, 0.1);
-		show_player_controls_y[3] = lerp(show_player_controls_y[3], 32, 0.1);
-		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
-	}
-	else
-	if (player_show_controls_alpha[1] <= 0)
-	&& (player_show_controls_alpha[2] <= 0)
-	&& (player_show_controls_alpha[3] <= 0)
-	&& (player_show_controls_alpha[4] <= 0)
-	{
-		show_player_controls_y[1] = lerp(show_player_controls_y[1], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[2] = lerp(show_player_controls_y[2], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[3] = lerp(show_player_controls_y[3], + 32, 0.1); /* + 32 = don't show */
-		show_player_controls_y[4] = lerp(show_player_controls_y[4], + 32, 0.1); /* + 32 = don't show */
-	}
-	else
-	{
-		show_player_controls_y[1] = lerp(show_player_controls_y[1], 158, 0.1);
-		show_player_controls_y[2] = lerp(show_player_controls_y[2], 116, 0.1);
-		show_player_controls_y[3] = lerp(show_player_controls_y[3], 74, 0.1);
-		show_player_controls_y[4] = lerp(show_player_controls_y[4], 32, 0.1);
-	}
-	#endregion /* Y position of show controls for each player END */
-	
-	#endregion /* Show Multiplayer Controls END */
-	
 }
-#endregion /* Show Controls END */
+#endregion /* Show Multiplayer Controls. Y position of show controls for each player END */
 
 #region /* Show what input is used */
 if (show_controller_input_change_prompt > 0)

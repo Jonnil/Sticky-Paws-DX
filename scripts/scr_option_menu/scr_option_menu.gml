@@ -4,6 +4,7 @@ function scr_option_menu()
 	var get_window_width = display_get_gui_width();
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
+	var fixed_player = 1;
 	
 	#region /* Background Brightness in Menus Options */
 	if (background_brightness_menu_lerp < 0)
@@ -725,18 +726,12 @@ function scr_option_menu()
 			|| (global.settings_sidebar_menu == "controller_settings")
 			{
 				menu = "remap_select_player";
-				allow_player_tongue[1] = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
-				allow_player_tongue[2] = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
-				allow_player_tongue[3] = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
-				allow_player_tongue[4] = scr_initialize_custom_character_abilities(3, "allow_tongue", false);
-				allow_player_double_jump[1] = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
-				allow_player_double_jump[2] = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");
-				allow_player_double_jump[3] = scr_initialize_custom_character_abilities(2, "number_of_jumps", 1, "values");
-				allow_player_double_jump[4] = scr_initialize_custom_character_abilities(3, "number_of_jumps", 1, "values");
-				allow_player_dive[1] = scr_initialize_custom_character_abilities(0, "allow_dive", false);
-				allow_player_dive[2] = scr_initialize_custom_character_abilities(1, "allow_dive", false);
-				allow_player_dive[3] = scr_initialize_custom_character_abilities(2, "allow_dive", false);
-				allow_player_dive[4] = scr_initialize_custom_character_abilities(3, "allow_dive", false);
+				for(var i = 1; i <= global.max_players; i += 1)
+				{
+					allow_player_tongue[i] = scr_initialize_custom_character_abilities(i - 1, "allow_tongue", false);
+					allow_player_double_jump[i] = scr_initialize_custom_character_abilities(i - 1, "number_of_jumps", 1, "values");
+					allow_player_dive[i] = scr_initialize_custom_character_abilities(i - 1, "allow_dive", false);
+				}
 			}
 			if (global.settings_sidebar_menu == "account_settings"){menu = "change_username";}
 			if (global.settings_sidebar_menu == "video_settings")
@@ -931,18 +926,12 @@ function scr_option_menu()
 			input_key = false;
 			can_navigate_settings_sidebar = false;
 			menu = "remap_select_player";
-			allow_player_tongue[1] = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
-			allow_player_tongue[2] = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
-			allow_player_tongue[3] = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
-			allow_player_tongue[4] = scr_initialize_custom_character_abilities(3, "allow_tongue", false);
-			allow_player_double_jump[1] = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
-			allow_player_double_jump[2] = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");
-			allow_player_double_jump[3] = scr_initialize_custom_character_abilities(2, "number_of_jumps", 1, "values");
-			allow_player_double_jump[4] = scr_initialize_custom_character_abilities(3, "number_of_jumps", 1, "values");
-			allow_player_dive[1] = scr_initialize_custom_character_abilities(0, "allow_dive", false);
-			allow_player_dive[2] = scr_initialize_custom_character_abilities(1, "allow_dive", false);
-			allow_player_dive[3] = scr_initialize_custom_character_abilities(2, "allow_dive", false);
-			allow_player_dive[4] = scr_initialize_custom_character_abilities(3, "allow_dive", false);
+			for(var i = 1; i <= global.max_players; i += 1)
+			{
+				allow_player_tongue[i] = scr_initialize_custom_character_abilities(i - 1, "allow_tongue", false);
+				allow_player_double_jump[i] = scr_initialize_custom_character_abilities(i - 1, "number_of_jumps", 1, "values");
+				allow_player_dive[i] = scr_initialize_custom_character_abilities(i - 1, "allow_dive", false);
+			}
 		}
 		#endregion /* Click Keyboard and Mouse END */
 		
@@ -978,18 +967,12 @@ function scr_option_menu()
 				input_key = false;
 				can_navigate_settings_sidebar = false;
 				menu = "remap_select_player";
-				allow_player_tongue[1] = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
-				allow_player_tongue[2] = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
-				allow_player_tongue[3] = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
-				allow_player_tongue[4] = scr_initialize_custom_character_abilities(3, "allow_tongue", false);
-				allow_player_double_jump[1] = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
-				allow_player_double_jump[2] = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");
-				allow_player_double_jump[3] = scr_initialize_custom_character_abilities(2, "number_of_jumps", 1, "values");
-				allow_player_double_jump[4] = scr_initialize_custom_character_abilities(3, "number_of_jumps", 1, "values");
-				allow_player_dive[1] = scr_initialize_custom_character_abilities(0, "allow_dive", false);
-				allow_player_dive[2] = scr_initialize_custom_character_abilities(1, "allow_dive", false);
-				allow_player_dive[3] = scr_initialize_custom_character_abilities(2, "allow_dive", false);
-				allow_player_dive[4] = scr_initialize_custom_character_abilities(3, "allow_dive", false);
+				for(var i = 1; i <= global.max_players; i += 1)
+				{
+					allow_player_tongue[i] = scr_initialize_custom_character_abilities(i - 1, "allow_tongue", false);
+					allow_player_double_jump[i] = scr_initialize_custom_character_abilities(i - 1, "number_of_jumps", 1, "values");
+					allow_player_dive[i] = scr_initialize_custom_character_abilities(i - 1, "allow_dive", false);
+				}
 			}
 			#endregion /* Click Controller END */
 			
@@ -2451,13 +2434,7 @@ function scr_option_menu()
 				#region /* Player 1 change portrait when clicking left or right */
 				
 				#region /* Player 1 Key Left (change portrait sprites) */
-				if (keyboard_check_pressed(global.player_[inp.key][1][1][action.left]))
-				&& (menu == "select_narrator")
-				|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.left]))
-				&& (menu == "select_narrator")
-				|| (gamepad_button_check_pressed(global.player_slot[1], gp_padl))
-				&& (menu == "select_narrator")
-				|| (gamepad_axis_value(global.player_slot[1], gp_axislh) < -0.3)
+				if (key_left)
 				&& (menu == "select_narrator")
 				|| (mouse_check_button_released(mb_left))
 				&& (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x - 32 - 16, narrator_y - 16, file_select_x - 32 + 16, narrator_y + 16))
@@ -2504,9 +2481,9 @@ function scr_option_menu()
 						#endregion /* Character Name END */
 						
 						#region /* Player 1 character select portrait sprite */
-						global.sprite_select_player[1] = spr_noone;
-						global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
-						global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+						global.sprite_select_player[fixed_player] = spr_noone;
+						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
+						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
 						#endregion /* Player 1 character select portrait sprite END */
 						
 					}
@@ -2515,13 +2492,7 @@ function scr_option_menu()
 				#endregion /* Player 1 Key Left (change portrait sprites) END */
 				
 				#region /* Player 1 Key Right (change portrait sprites) */
-				if (keyboard_check_pressed(global.player_[inp.key][1][1][action.right]))
-				&& (menu == "select_narrator")
-				|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.right]))
-				&& (menu == "select_narrator")
-				|| (gamepad_button_check_pressed(global.player_slot[1], gp_padr))
-				&& (menu == "select_narrator")
-				|| (gamepad_axis_value(global.player_slot[1], gp_axislh) > +0.3)
+				if (key_right)
 				&& (menu == "select_narrator")
 				|| (mouse_check_button_released(mb_left))
 				&& (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x + 100 - 16, narrator_y - 16, file_select_x + file_select_right_arrow_x + 100 + 16, narrator_y + 16))
@@ -2533,7 +2504,7 @@ function scr_option_menu()
 					{
 						menu_delay = 3;
 						global.narrator = clamp(global.narrator + 1, -1, ds_list_size(global.all_loaded_characters) - 1);
-					
+						
 						#region /* Character Name */
 						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 						|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
@@ -2558,20 +2529,20 @@ function scr_option_menu()
 							narrator_name = string(global.narrator + 1);
 						}
 						#endregion /* Character Name END */
-					
+						
 						#region /* Player 1 character select portrait sprite */
-						global.sprite_select_player[1] = spr_noone;
-						global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player[1], 0, global.skin_for_player[1]);
-						global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player[1], 0, global.skin_for_player[1]);
-						global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[1], 0, global.skin_for_player[1]);
-						global.sprite_select_player[1] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[1], 0, global.skin_for_player[1]);
+						global.sprite_select_player[fixed_player] = spr_noone;
+						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
+						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
+						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
+						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
 						#endregion /* Player 1 character select portrait sprite END */
-					
+						
 					}
 					open_dropdown = false;
 				}
 				#endregion /* Player 1 Key Right (change portrait sprites) END */
-			
+				
 				#endregion /* Player 1 change portrait when clicking left or right END */
 				
 			}

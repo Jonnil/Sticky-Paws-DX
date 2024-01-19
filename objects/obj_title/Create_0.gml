@@ -10,6 +10,14 @@ for (var p = 1; p <= global.max_players; p += 1) {
 	player_display_x[p] = 0;
 	xx[p] = 0;
 	xx_delay[p] = 0;
+	/* Player Key Accept Pressed */ player_key_a_pressed[p] = noone;
+	/* Player Key Back Pressed */ player_key_b_pressed[p] = noone;
+	/* Player Key Accept Hold */ player_key_a_hold[p] = noone;
+	character_portrait_for_player_update_directory[p] = false;
+	character_portrait_for_player_dir_exists_1[p] = false;
+	character_portrait_for_player_dir_exists_2[p] = false;
+	character_portrait_for_player_dir_exists_3[p] = false;
+	character_portrait_for_player_dir_exists_4[p] = false;
 }
 
 scr_delete_sprite_properly(global.custom_background1);
@@ -56,27 +64,6 @@ thumbnail_level_username[0] = "";
 
 level_id = "";
 character_id = "";
-
-character_portrait_for_player_update_directory[1] = false;
-character_portrait_for_player_update_directory[2] = false;
-character_portrait_for_player_update_directory[3] = false;
-character_portrait_for_player_update_directory[4] = false;
-character_portrait_for_player_dir_exists_1[1] = false;
-character_portrait_for_player_dir_exists_2[1] = false;
-character_portrait_for_player_dir_exists_3[1] = false;
-character_portrait_for_player_dir_exists_4[1] = false;
-character_portrait_for_player_dir_exists_1[2] = false;
-character_portrait_for_player_dir_exists_2[2] = false;
-character_portrait_for_player_dir_exists_3[2] = false;
-character_portrait_for_player_dir_exists_4[2] = false;
-character_portrait_for_player_dir_exists_1[3] = false;
-character_portrait_for_player_dir_exists_2[3] = false;
-character_portrait_for_player_dir_exists_3[3] = false;
-character_portrait_for_player_dir_exists_4[3] = false;
-character_portrait_for_player_dir_exists_1[4] = false;
-character_portrait_for_player_dir_exists_2[4] = false;
-character_portrait_for_player_dir_exists_3[4] = false;
-character_portrait_for_player_dir_exists_4[4] = false;
 
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);

@@ -76,23 +76,23 @@ function scr_debug_screen()
 	#region /* Controller ports */
 	if (os_type == os_switch) {
 		if (!gamepad_is_connected(0)) {
-			global.player_slot[1] = 1;
-			global.player_slot[2] = 2;
-			global.player_slot[3] = 3;
-			global.player_slot[4] = 4;
+			for (var i = 1; i <= global.max_players; i += 1)
+			{
+				global.player_slot[i] = i;
+			}
 		}
 		else {
-			global.player_slot[1] = 0;
-			global.player_slot[2] = 1;
-			global.player_slot[3] = 2;
-			global.player_slot[4] = 3;
+			for (var i = 1; i <= global.max_players; i += 1)
+			{
+				global.player_slot[i] = i - 1;
+			}
 		}
 	}
 	else {
-		global.player_slot[1] = 0;
-		global.player_slot[2] = 1;
-		global.player_slot[3] = 2;
-		global.player_slot[4] = 3;
+		for (var i = 1; i <= global.max_players; i += 1)
+		{
+			global.player_slot[i] = i - 1;
+		}
 	}
 	#endregion /* Controller ports END */
 	
@@ -100,10 +100,10 @@ function scr_debug_screen()
 		
 		if (variable_instance_exists(self, "player_show_controls_alpha"))
 		{
-			player_show_controls_alpha[1] = 0;
-			player_show_controls_alpha[2] = 0;
-			player_show_controls_alpha[3] = 0;
-			player_show_controls_alpha[4] = 0;
+			for (var i = 1; i <= global.max_players; i += 1)
+			{
+				player_show_controls_alpha[i] = 0;
+			}
 		}
 		
 		if (keyboard_check_pressed(vk_f2)) {

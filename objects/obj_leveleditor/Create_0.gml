@@ -32,6 +32,8 @@ camera_selected_skin = global.skin_for_player[fixed_player];
 
 for (var i = 1; i <= global.max_players; i += 1)
 {
+	player_show_controls_timer[i] = 0;
+	player_show_controls_alpha[i] = 0;
 	if (global.player_can_play[i])
 	{
 		camera_player = i - 1; /* Adjust index to start from 0 */
@@ -766,10 +768,6 @@ if (!global.actually_play_edited_level)
 	background_x_offset[6] = 0;background_x[6] = 0;background_y_offset[6] = 0;background_y[6] = 0;
 	background_x_offset[7] = 0;background_x[7] = 0;background_y_offset[7] = 0;background_y[7] = 0;
 	#endregion /* Initialize Background END */
-	
-	/* HUD Show Controls keys that have been pressed */
-	player_show_controls_timer[1] = 0;
-	player_show_controls_alpha[1] = 0;
 	
 	selected_object = 0;
 	selected_object_menu_x = 0;

@@ -724,9 +724,9 @@ function scr_draw_upload_character_menu()
 			
 			if (zip_megabytes > global.max_file_upload_megabytes)
 			{
-				if (destroy_zip_after_uploading)
+				if (destroy_zip_after_uploading) /* Delete some leftover files and folders */
 				{
-					file_delete(file); /* Delete some leftover files and folders */
+					file_delete(working_directory + string(character_id) + ".zip");
 				}
 				menu = "error_character_too_big";
 			}
@@ -781,9 +781,9 @@ function scr_draw_upload_character_menu()
 					
 					#endregion /* Actually upload the character to the server END */
 					
-					if (destroy_zip_after_uploading)
+					if (destroy_zip_after_uploading) /* Delete some leftover files and folders */
 					{
-						file_delete(file); /* Delete some leftover files and folders */
+						file_delete(working_directory + string(character_id) + ".zip");
 					}
 					
 					if (os_is_network_connected())
@@ -897,7 +897,7 @@ function scr_draw_upload_character_menu()
 		draw_roundrect_color_ext(get_window_width * 0.5 - message_x_offset, uploaded_character_message_y - 32, get_window_width * 0.5 + message_x_offset, uploaded_character_message_y + 128, 50, 50, c_black, c_black, false);
 		draw_set_alpha(1);
 		scr_draw_text_outlined(get_window_width * 0.5, uploaded_character_message_y, string(character_name) + " " + l10n_text("Uploaded"), global.default_text_size * 1.9, c_black, c_white, 1);
-		/* Show Character ID */ scr_draw_text_outlined(get_window_width * 0.5, uploaded_character_message_y + 84, l10n_text("Character ID") + ": " + string(character_id), global.default_text_size * 1.9, c_black, c_white, 1);
+		/* Show Character ID */ scr_draw_text_outlined(get_window_width * 0.5, uploaded_character_message_y + 84, l10n_text("Character ID") + ": " + string_upper(character_id), global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		#region /* Character Uploaded OK */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, ok_y - 42, get_window_width * 0.5 + 370, ok_y + 42))
