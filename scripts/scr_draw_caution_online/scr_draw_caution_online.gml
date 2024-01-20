@@ -1,5 +1,7 @@
 function scr_draw_caution_online()
 {
+	var fixed_player = 1;
+	
 	if (menu == "caution_online_back")
 	|| (menu == "caution_online_do_not_show")
 	|| (menu == "caution_online_proceed")
@@ -58,12 +60,15 @@ function scr_draw_caution_online()
 				ini_write_string("config", "caution_online_do_not_show", true);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
-			if (!global.player_can_play[1])
-			&& (!global.player_can_play[2])
-			&& (!global.player_can_play[3])
-			&& (!global.player_can_play[4])
-			{
-				global.player_can_play[1] = true;
+			var no_players_can_play = true;
+			for (var i = 1; i <= global.max_players; i += 1) {
+			    if (global.player_can_play[i]) {
+			        no_players_can_play = false;
+			        break; /* exit the loop if any player can play */
+			    }
+			}
+			if (no_players_can_play) {
+				global.player_can_play[fixed_player] = true;
 			}
 			information_menu_open = 0;
 			

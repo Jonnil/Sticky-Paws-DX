@@ -148,7 +148,7 @@ function scr_character_select_menu_draw()
 		}
 		else
 		{
-			var draw_online_character_list_y = 42 * 1;
+			var draw_online_character_list_y = 42;
 			var draw_search_id_y = 42 * 2;
 		}
 		

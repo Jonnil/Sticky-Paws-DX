@@ -15,62 +15,23 @@ if (can_move)
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(64, get_window_height - 20, l10n_text("Play"), global.default_text_size, c_black, c_white, 1);
 	
-	if (gamepad_is_connected(global.player_slot[1]))
+	if (gamepad_is_connected(global.player_slot[player]))
 	&& (global.controls_used_for_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
-		scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], 32, get_window_height - 20, 0.5, c_white, 1);
+		scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.accept], 32, get_window_height - 20, 0.5, c_white, 1);
 	}
 	else
-	if (global.player_can_play[1])
+	if (global.player_can_play[player])
 	{
-		if (global.player_[inp.key][1][1][action.accept] > noone)
+		if (global.player_[inp.key][player][1][action.accept] > noone)
 		{
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.accept], 32, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][1][action.accept], 32, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
 		}
 		else
-		if (global.player_[inp.key][1][2][action.accept] > noone)
+		if (global.player_[inp.key][player][2][action.accept] > noone)
 		{
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.accept], 32, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-		}
-	}
-	else
-	if (global.player_can_play[2])
-	{
-		if (global.player_[inp.key][2][1][action.accept] > noone)
-		{
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.accept], 32, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-		}
-		else
-		if (global.player_[inp.key][2][2][action.accept] > noone)
-		{
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.accept], 32, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-		}
-	}
-	else
-	if (global.player_can_play[3])
-	{
-		if (global.player_[inp.key][3][1][action.accept] > noone)
-		{
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.accept], 32, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-		}
-		else
-		if (global.player_[inp.key][3][2][action.accept] > noone)
-		{
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.accept], 32, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-		}
-	}
-	else
-	if (global.player_can_play[4])
-	{
-		if (global.player_[inp.key][4][1][action.accept] > noone)
-		{
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.accept], 32, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-		}
-		else
-		if (global.player_[inp.key][4][2][action.accept] > noone)
-		{
-			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.accept], 32, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
+			draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][2][action.accept], 32, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
 		}
 	}
 	
@@ -102,61 +63,22 @@ if (global.debug_screen)
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(clear_prompt_x + 32, get_window_height - 20, l10n_text("Clear"), global.default_text_size, c_black, c_white, 1);
-		if (gamepad_is_connected(global.player_slot[1]))
+		if (gamepad_is_connected(global.player_slot[player]))
 		&& (global.controls_used_for_navigation == "gamepad")
 		{
-			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], clear_prompt_x, get_window_height - 20, 0.5, c_white, 1);
+			scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.back], clear_prompt_x, get_window_height - 20, 0.5, c_white, 1);
 		}
 		else
-		if (global.player_can_play[1])
+		if (global.player_can_play[player])
 		{
-			if (global.player_[inp.key][1][1][action.back] > noone)
+			if (global.player_[inp.key][player][1][action.back] > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][1][action.back], clear_prompt_x, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][1][action.back], clear_prompt_x, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
 			}
 			else
-			if (global.player_[inp.key][1][2][action.back] > noone)
+			if (global.player_[inp.key][player][2][action.back] > noone)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][1][2][action.back], clear_prompt_x, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-			}
-		}
-		else
-		if (global.player_can_play[2])
-		{
-			if (global.player_[inp.key][2][1][action.back] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][1][action.back], clear_prompt_x, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-			}
-			else
-			if (global.player_[inp.key][2][2][action.back] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][2][2][action.back], clear_prompt_x, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-			}
-		}
-		else
-		if (global.player_can_play[3])
-		{
-			if (global.player_[inp.key][3][1][action.back] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][1][action.back], clear_prompt_x, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-			}
-			else
-			if (global.player_[inp.key][3][2][action.back] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][3][2][action.back], clear_prompt_x, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-			}
-		}
-		else
-		if (global.player_can_play[4])
-		{
-			if (global.player_[inp.key][4][1][action.back] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][1][action.back], clear_prompt_x, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
-			}
-			else
-			if (global.player_[inp.key][4][2][action.back] > noone)
-			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][4][2][action.back], clear_prompt_x, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][2][action.back], clear_prompt_x, get_window_height - 20, 0.5, 0.5, 0, c_white, 1);
 			}
 		}
 		

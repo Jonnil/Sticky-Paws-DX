@@ -58,8 +58,8 @@ function scr_character_select_menu_step()
 			{
 				global.character_index[i - 1] = 0;
 				global.sprite_select_player[i] = spr_noone;
-				global.sprite_select_player[i] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[i], 0, global.skin_for_player[i]);
-				global.sprite_select_player[i] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[i], 0, global.skin_for_player[i]);
+				global.sprite_select_player[i] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[i], i - 1, global.skin_for_player[i]);
+				global.sprite_select_player[i] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[i], i - 1, global.skin_for_player[i]);
 			}
 			#endregion /* If any "character index" is set to -1, reset it to 0 END */
 			
@@ -100,7 +100,7 @@ function scr_character_select_menu_step()
 		&& (player_accept_selection[2] != 0)
 		&& (player_accept_selection[3] != 0)
 		&& (player_accept_selection[4] != 0)
-		&& (player_key_a_pressed[1])
+		&& (player_key_a_pressed[1] || keyboard_check_pressed(vk_space))
 		&& (player_menu[1] != "back_from_character_select")
 		&& (player_menu[1] != "manage_character")
 		&& (player_menu[1] != "online_character_list")
@@ -182,21 +182,11 @@ function scr_character_select_menu_step()
 		image_alpha = 0;
 		
 		#region /* All code before menu navigation code */
-		
-		#region /* Player positions and scale for each character display */
-		player_display_x[1] = -465;
-		player_display_x[2] = -155;
-		player_display_x[3] = +155;
-		player_display_x[4] = +465;
-		#endregion /* Player positions and scale for each character display END */
-		
 		for(var i = 1; i <= global.max_players; i += 1)
 		{
-			
-			//#region /* Player positions and scale for each character display */
-			//var normalized_position = (i - 1) / (global.max_players - 1); /* Normalized position between 0 and 1 */
-			//player_display_x[i] = normalized_position * display_get_gui_width(); /* Now player_display_x array contains evenly distributed positions based on the screen width */
-			//#endregion /* Player positions and scale for each character display END */
+			/* Player positions for each character display */
+			var normalized_position = (i - 0.5) / (global.max_players); /* Normalized position between 0 and 1 */
+			player_display_x[i] = normalized_position * display_get_gui_width() - (display_get_gui_width() * 0.5); /* Now player_display_x array contains evenly distributed positions based on the screen width */
 			
 			xx[i] = lerp(xx[i], player_display_x[i], 0.1);
 			player_scale[i] = 0.85; /* Player scale for each character display */
@@ -325,11 +315,11 @@ function scr_character_select_menu_step()
 			#region /* Select the character */
 			for (var i = 1; i <= global.max_players; i += 1)
 			{
-				if (player_key_a_pressed[i])
+				if (player_key_a_pressed[i] || i == 1 && keyboard_check_pressed(vk_space))
 				&& (player_menu[i] == "select_character")
-				|| (player_key_a_pressed[i])
+				|| (player_key_a_pressed[i] || i == 1 && keyboard_check_pressed(vk_space))
 				&& (player_menu[i] == "select_skin")
-				|| (player_key_a_pressed[i])
+				|| (player_key_a_pressed[i] || i == 1 && keyboard_check_pressed(vk_space))
 				&& (player_menu[i] == "select_voicepack")
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[i] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[i] + 100, get_window_height * 0.5 + 150 + 20))
 				&& (mouse_check_button_released(mb_left))
@@ -525,7 +515,7 @@ function scr_character_select_menu_step()
 		if (no_players_are_inputting_names)
 		{
 			
-			#region /* Player 1 Join Text */
+			#region /* Player Join */
 			for (var i = 1; i <= global.max_players; i += 1)
 			{
 				if (player_accept_selection[i] <= -1)
@@ -536,7 +526,7 @@ function scr_character_select_menu_step()
 						player_menu[i] = "select_character";
 						menu = "select_character";
 					}
-					if (player_key_a_pressed[i])
+					if (player_key_a_pressed[i] || i == 1 && keyboard_check_pressed(vk_space))
 					|| (player_automatically_join[i])
 					|| (mouse_check_button_released(mb_left))
 					&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[i] - 150, get_window_height * 0.5 - 32, get_window_width * 0.5 + player_display_x[i] + 150, get_window_height * 0.5 + 32))
@@ -566,7 +556,7 @@ function scr_character_select_menu_step()
 					}
 				}
 			}
-			#endregion /* Player 1 Join Text END */
+			#endregion /* Player Join END */
 			
 		}
 		#endregion /* If players haven't joined the game END */

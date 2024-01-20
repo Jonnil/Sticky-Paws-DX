@@ -1,5 +1,5 @@
 #region /* Things you could change */
-global.max_players = 5; /* How many players you want to be able to play */
+global.max_players = 4; /* How many players you want to be able to play */
 global.company_name = "Jonnil"; /* String of what the company is called */
 global.game_name = "Sticky Paws"; /* String of what the game is called */
 global.game_name_appdata = "Sticky_Paws_DX"; /* String of what the game is called at appdata folder */

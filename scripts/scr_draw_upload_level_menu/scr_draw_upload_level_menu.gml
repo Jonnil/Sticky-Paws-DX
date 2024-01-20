@@ -12,6 +12,7 @@ function scr_draw_upload_level_menu()
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
 	var upload_level_path = working_directory + "custom_levels/" + global.level_name; /* Path will be used many times, and I don't want it to come up too many times in search, it will only check in working directory */
+	var fixed_player = 1;
 	
 	#region /* How many tags */
 	var how_may_tags = 0;
@@ -569,7 +570,7 @@ function scr_draw_upload_level_menu()
 	}
 	else
 	{
-		var draw_description_y = get_window_height * 0.5 + 42 * 1;
+		var draw_description_y = get_window_height * 0.5 + 42;
 	}
 	var draw_tags_y = get_window_height * 0.5 + 42 * 2;
 	var edit_name_y = get_window_height * 0.5 + 42 * 3;
@@ -937,18 +938,12 @@ function scr_draw_upload_level_menu()
 			if (keyboard_check_pressed(vk_enter))
 			&& (menu != "upload_enter_name_ok")
 			&& (menu != "upload_enter_name_cancel")
-			|| (keyboard_check_pressed(vk_enter))
+			|| (key_a_pressed)
 			&& (menu == "upload_enter_name_ok")
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_name_y + 54, get_window_width * 0.5 - 185 + 370, draw_name_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
-			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][2][action.accept]))
 			{
 				if (level_editor_edit_name)
 				&& (global.level_name != old_level_name)
@@ -1009,14 +1004,8 @@ function scr_draw_upload_level_menu()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_name_y + 54 + 42, get_window_width * 0.5 - 185 + 370, draw_name_y + 54 + 42 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (mouse_check_button_released(mb_right))
-			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][2][action.back]))
 			{
 				menu_delay = 3;
 				if (instance_exists(obj_camera))
@@ -1077,14 +1066,8 @@ function scr_draw_upload_level_menu()
 			&& (menu == "upload_enter_description_ok")
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_y + 54, get_window_width * 0.5 - 185 + 370, draw_description_y + 54 + 42))
 			&& (mouse_check_button_released(mb_left))
-			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
-			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][1][action.accept]))
+			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][2][action.accept]))
 			{
 				if (level_editor_edit_name)
 				&& (global.level_description != old_level_description)
@@ -1143,14 +1126,8 @@ function scr_draw_upload_level_menu()
 			|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, draw_description_y + 54 + 42, get_window_width * 0.5 - 185 + 370, draw_description_y + 54 + 42 + 42))
 			&& (mouse_check_button_released(mb_left))
 			|| (mouse_check_button_released(mb_right))
-			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back]))
-			|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][1][action.back]))
+			|| (gamepad_button_check_pressed(global.player_slot[fixed_player], global.player_[inp.gp][fixed_player][2][action.back]))
 			{
 				menu_delay = 3;
 				if (instance_exists(obj_camera))

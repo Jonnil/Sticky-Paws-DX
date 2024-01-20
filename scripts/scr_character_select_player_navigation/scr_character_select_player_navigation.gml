@@ -204,10 +204,10 @@ function scr_character_select_player_navigation(what_player = 1)
 			{
 				menu_delay = 60;
 				keyboard_string = global.player_name[what_player];
-				can_input_player_name[1] = 2;
-				can_input_player_name[2] = 2;
-				can_input_player_name[3] = 2;
-				can_input_player_name[4] = 2;
+				for (var i = 1; i <= global.max_players; i += 1)
+				{
+					can_input_player_name[i] = 2;
+				}
 				can_input_player_name[what_player] = 1;
 				menu = "input_name_ok";
 				global.clicking_ok_input_screen = false;

@@ -122,28 +122,17 @@ input_key = false;
 can_remap_key = false;
 input_gamepad_button = false;
 can_remap_gamepad_button = false;
-allow_player_tongue[1] = scr_initialize_custom_character_abilities(0, "allow_tongue", false);
-allow_player_tongue[2] = scr_initialize_custom_character_abilities(1, "allow_tongue", false);
-allow_player_tongue[3] = scr_initialize_custom_character_abilities(2, "allow_tongue", false);
-allow_player_tongue[4] = scr_initialize_custom_character_abilities(3, "allow_tongue", false);
-
-allow_player_double_jump[1] = scr_initialize_custom_character_abilities(0, "number_of_jumps", 1, "values");
-allow_player_double_jump[2] = scr_initialize_custom_character_abilities(1, "number_of_jumps", 1, "values");
-allow_player_double_jump[3] = scr_initialize_custom_character_abilities(2, "number_of_jumps", 1, "values");
-allow_player_double_jump[4] = scr_initialize_custom_character_abilities(3, "number_of_jumps", 1, "values");
-
-allow_player_dive[1] = scr_initialize_custom_character_abilities(0, "allow_dive", false);
-allow_player_dive[2] = scr_initialize_custom_character_abilities(1, "allow_dive", false);
-allow_player_dive[3] = scr_initialize_custom_character_abilities(2, "allow_dive", false);
-allow_player_dive[4] = scr_initialize_custom_character_abilities(3, "allow_dive", false);
+for(var i = 1; i <= global.max_players; i += 1)
+{
+	allow_player_tongue[i] = scr_initialize_custom_character_abilities(i - 1, "allow_tongue", false);
+	allow_player_double_jump[i] = scr_initialize_custom_character_abilities(i - 1, "number_of_jumps", 1, "values");
+	allow_player_dive[i] = scr_initialize_custom_character_abilities(i - 1, "allow_dive", false);
+	menu_specific_joystick_delay[i] = 0; /* These variables shouldn't be used unless specific player input is needed, but they are here still as failsafe */
+}
 #endregion /* Remapping options variables END */
 
 open_dropdown = false;
 menu_joystick_delay = 0;
-menu_specific_joystick_delay[1] = 0; /* These variables shouldn't be used unless specific player input is needed, but they are here still as failsafe */
-menu_specific_joystick_delay[2] = 0;
-menu_specific_joystick_delay[3] = 0;
-menu_specific_joystick_delay[4] = 0;
 can_navigate = true;
 remap_y_pos = 0;
 menu_cursor_index = 0;

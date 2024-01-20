@@ -246,68 +246,36 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	#region /* Show left and right arrows when selecting character */
 	if (no_players_are_inputting_names)
 	{
-		if (player_accept_selection[1] == 0)
+		if (what_player == 1)
 		{
-			if (gamepad_button_check_pressed(global.player_slot[1], player_gamepad_button_back))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (keyboard_check_pressed(ord("X")))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (mouse_check_button_released(mb_right))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (mouse_check_button_released(mb_side1))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (keyboard_check_pressed(vk_escape))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (keyboard_check_pressed(global.player_[inp.key][1][1][action.back]))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (keyboard_check_pressed(global.player_[inp.key][1][2][action.back]))
+			if (player_accept_selection[what_player] == 0)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				menu_delay = 3;
-				player_accept_selection[1] = -1;
-				player_menu[1] = "select_character";
+				if (gamepad_button_check_pressed(global.player_slot[what_player], player_gamepad_button_back))
+				|| (keyboard_check_pressed(ord("X")))
+				|| (mouse_check_button_released(mb_right))
+				|| (mouse_check_button_released(mb_side1))
+				|| (keyboard_check_pressed(vk_escape))
+				|| (keyboard_check_pressed(global.player_[inp.key][what_player][1][action.back]))
+				|| (keyboard_check_pressed(global.player_[inp.key][what_player][2][action.back]))
+				{
+					menu_delay = 3;
+					player_accept_selection[what_player] = -1;
+					player_menu[what_player] = "select_character";
+				}
 			}
 		}
-		if (player_accept_selection[2] == 0)
+		else
+		if (player_accept_selection[what_player] == 0)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			if (gamepad_button_check_pressed(1, player_gamepad_button_back))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (keyboard_check_pressed(global.player_[inp.key][2][1][action.back]))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (keyboard_check_pressed(global.player_[inp.key][2][2][action.back]))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			if (gamepad_button_check_pressed(global.player_slot[what_player], player_gamepad_button_back))
+			|| (keyboard_check_pressed(global.player_[inp.key][what_player][1][action.back]))
+			|| (keyboard_check_pressed(global.player_[inp.key][what_player][2][action.back]))
 			{
 				menu_delay = 3;
-				player_accept_selection[2] = -1;
-				player_menu[2] = "select_character";
-			}
-		}
-		if (player_accept_selection[3] == 0)
-		{
-			if (gamepad_button_check_pressed(2, player_gamepad_button_back))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (keyboard_check_pressed(global.player_[inp.key][3][1][action.back]))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (keyboard_check_pressed(global.player_[inp.key][3][2][action.back]))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				player_accept_selection[3] = -1;
-				player_menu[3] = "select_character";
-			}
-		}
-		if (!player_accept_selection[4])
-		{
-			if (gamepad_button_check_pressed(3, player_gamepad_button_back))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (keyboard_check_pressed(global.player_[inp.key][4][1][action.back]))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (keyboard_check_pressed(global.player_[inp.key][4][2][action.back]))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				player_accept_selection[4] = -1;
-				player_menu[4] = "select_character";
+				player_accept_selection[what_player] = -1;
+				player_menu[what_player] = "select_character";
 			}
 		}
 		

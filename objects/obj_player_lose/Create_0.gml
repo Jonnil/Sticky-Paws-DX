@@ -66,7 +66,10 @@ if (lives > 0)
 	}
 	var time_source = time_source_create(time_source_game, 30, time_source_units_frames, function()
 	{
-		lives = clamp(lives --, 0, 99);
+		if (lives > 0)
+		{
+			lives --;
+		}
 		if (instance_exists(obj_camera))
 		{
 			obj_camera.hud_show_lives_y = 42; /* Make the lives counter in HUD shake downward when you lose */

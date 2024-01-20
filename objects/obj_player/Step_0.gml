@@ -71,10 +71,10 @@ if (global.quit_level)
 		}
 		#endregion /* Player availability check. These variables control player availability END */
 		
+		room_goto(global.quit_to_map ? rm_world_map : rm_title); /* If player chose to quit to map, then go to world map, otherwise go to title screen */
 		global.quit_level = false;
 		global.quit_to_map = false;
 		global.quit_to_title = false;
-		room_goto(global.quit_to_map ? rm_world_map : rm_title); /* If player chose to quit to map, then go to world map, otherwise go to title screen */
 	}
 }
 #endregion /* Quit Level END */

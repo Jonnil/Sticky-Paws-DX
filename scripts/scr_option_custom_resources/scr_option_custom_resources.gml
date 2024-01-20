@@ -14,7 +14,7 @@ function scr_option_custom_resources()
 		&& (!global.enable_option_for_pc)
 		|| (global.enable_option_for_pc)
 		{
-			var resource_pack_y = 40 * 1;
+			var resource_pack_y = 40;
 			var open_resource_pack_y = 40 * 3;
 			var custom_title_layer_y = 40 * 5;
 			var custom_title_background_y = 40 * 6;
@@ -30,7 +30,7 @@ function scr_option_custom_resources()
 		{
 			var resource_pack_y = -999;
 			var open_resource_pack_y = -999;
-			var custom_title_layer_y = 40 * 1;
+			var custom_title_layer_y = 40;
 			var custom_title_background_y = 40 * 2;
 			var custom_title_background_scale_y = 40 * 4;
 			var background_layer_x_scroll_y = 40 * 5;

@@ -64,14 +64,7 @@ function scr_remapping_keyboard()
 	}
 	else
 	if (keyboard_check_pressed(vk_escape))
-	|| (remapping_player == 0)
-	&& (gamepad_button_check(global.player_slot[1], gp_start))
-	|| (remapping_player == 1)
-	&& (gamepad_button_check(global.player_slot[2], gp_start))
-	|| (remapping_player == 2)
-	&& (gamepad_button_check(global.player_slot[3], gp_start))
-	|| (remapping_player == 3)
-	&& (gamepad_button_check(global.player_slot[4], gp_start))
+	|| (gamepad_button_check(global.player_slot[remapping_player + 1], gp_start))
 	{
 		last_key = noone;
 		can_remap_key = true;

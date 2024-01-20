@@ -252,8 +252,6 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 				}
 			}
 			
-			//show_message("scr_draw_name_input_screen menu_delay: " + string(menu_delay));
-			
 			#region /* Clicking the OK button */
 			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
 			&& (mouse_check_button_released(mb_left))

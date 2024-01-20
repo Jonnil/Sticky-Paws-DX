@@ -485,7 +485,7 @@ function scr_option_level_editor()
 				global.time_countdown = 0;
 			}
 			
-			var level_theme_y = 47 * 1;
+			var level_theme_y = 47;
 			var make_every_tileset_into_default_tileset_y = 47 * 2;
 			var rain_y = 47 * 3;
 			var snow_y = 47 * 4;
@@ -984,7 +984,7 @@ function scr_option_level_editor()
 			level_editor_option_back_to_menu = menu; /* Save what menu you came from, to use later */
 			level_editor_option_select_level_index = global.select_level_index;
 			
-			var change_all_background_y = 47 * 1;
+			var change_all_background_y = 47;
 			var change_background1_y = 47 * 2;
 			var change_background2_y = 47 * 3;
 			var change_background3_y = 47 * 4;
@@ -1883,7 +1883,7 @@ function scr_option_level_editor()
 			level_editor_option_back_to_menu = menu; /* Save what menu you came from, to use later */
 			level_editor_option_select_level_index = global.select_level_index;
 			
-			var change_all_music_y = 47 * 1;
+			var change_all_music_y = 47;
 			var change_music_overworld_y = 47 * 2;
 			var change_music_underwater_y = 47 * 3;
 			var change_ambience_overworld_y = 47 * 4;

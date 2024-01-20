@@ -14,7 +14,7 @@ function scr_crash_error_handling()
 		file_text_close(_f);
 		
 		/* Show the error message (for debug purposes only) */
-		show_message("Sorry, the game has crashed. Go here to view crash log: " + string(game_save_id) + "crash_logs\\" + string(save_date) + "_crash.txt" +
+		show_message("Sorry, the game has crashed. Go here to view crash log: " + string_replace(game_save_id, environment_get_variable("USERNAME"), "*") + "crash_logs\\" + string(save_date) + "_crash.txt" +
 					"\n\n" +
 					date_datetime_string(date_current_datetime()) +
 					"\n\n" +
