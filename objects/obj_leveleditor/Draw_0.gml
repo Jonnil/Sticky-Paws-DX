@@ -36,7 +36,7 @@ if (!global.actually_play_edited_level)
 			var sprite_player_stand_x = obj_level_player4_start.x;
 			var sprite_player_stand_y = obj_level_player4_start.y;
 		}
-		draw_sprite_ext(global.sprite_player_stand[4], 0, obj_level_player4_start.x, obj_level_player4_start.y, 1, 1, 0, c_white, 0.5);
+		draw_sprite_ext(global.sprite_player_stand[4], 0, sprite_player_stand_x, sprite_player_stand_y, 1, 1, 0, c_white, 0.5);
 	}
 	if (global.sprite_player_stand[3] > 0) /* Display Player 3 on top of Player 4 */
 	&& (!quit_level_editor)
@@ -52,7 +52,7 @@ if (!global.actually_play_edited_level)
 			var sprite_player_stand_x = obj_level_player3_start.x;
 			var sprite_player_stand_y = obj_level_player3_start.y;
 		}
-		draw_sprite_ext(global.sprite_player_stand[3], 0, obj_level_player3_start.x, obj_level_player3_start.y, 1, 1, 0, c_white, 0.5);
+		draw_sprite_ext(global.sprite_player_stand[3], 0, sprite_player_stand_x, sprite_player_stand_y, 1, 1, 0, c_white, 0.5);
 	}
 	if (global.sprite_player_stand[2] > 0) /* Display Player 2 on top of Player 3 */
 	&& (!quit_level_editor)
@@ -68,7 +68,7 @@ if (!global.actually_play_edited_level)
 			var sprite_player_stand_x = obj_level_player2_start.x;
 			var sprite_player_stand_y = obj_level_player2_start.y;
 		}
-		draw_sprite_ext(global.sprite_player_stand[2], 0, obj_level_player2_start.x, obj_level_player2_start.y, 1, 1, 0, c_white, 0.5);
+		draw_sprite_ext(global.sprite_player_stand[2], 0, sprite_player_stand_x, sprite_player_stand_y, 1, 1, 0, c_white, 0.5);
 	}
 	if (global.sprite_player_stand[1] > 0) /* Display Player 1 on top of Player 2 */
 	&& (!quit_level_editor)

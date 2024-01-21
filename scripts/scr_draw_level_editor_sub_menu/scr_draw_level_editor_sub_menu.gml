@@ -577,19 +577,16 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 				ini_close();
 				global.select_level_index --; /* Decrease the "select level index" so that the cursor isn't selecting a level that no longer exists */
 				scr_load_custom_level_initializing();
-				can_input_player_name[1] = 2;
-				can_input_player_name[2] = 2;
-				can_input_player_name[3] = 2;
-				can_input_player_name[4] = 2;
+				for (var i = 1; i <= global.max_players; i += 1)
+				{
+					can_input_player_name[i] = 2;
+					player_accept_selection[i] = false;
+				}
 				can_navigate = true;
 				menu_delay = 3;
 				open_sub_menu = false;
 				show_level_editor_corner_menu = true;
 				scroll_to = floor(global.select_level_index / row); /* Scroll the view back to show the thumbnails */
-				player_accept_selection[1] = false;
-				player_accept_selection[2] = false;
-				player_accept_selection[3] = false;
-				player_accept_selection[4] = false;
 				menu = "load_custom_level";
 			}
 		}

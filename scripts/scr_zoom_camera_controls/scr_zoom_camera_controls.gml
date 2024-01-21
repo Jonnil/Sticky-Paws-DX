@@ -5,28 +5,14 @@ function scr_zoom_camera_controls()
 	var key_in_hold = noone;
 	var key_out_hold = noone;
 	
-	if (global.player_can_play[1])
+	for (var i = 1; i <= global.max_players; i += 1)
 	{
-		var key_in_hold = scr_key_initialize(key_player_zoom_in_hold[1], 0, 1, action.zoom_in);
-		var key_out_hold = scr_key_initialize(key_player_zoom_out_hold[1], 0, 1, action.zoom_out);
-	}
-	else
-	if (global.player_can_play[2])
-	{
-		var key_in_hold = scr_key_initialize(key_player_zoom_in_hold[2], 0, 2, action.zoom_in);
-		var key_out_hold = scr_key_initialize(key_player_zoom_out_hold[2], 0, 2, action.zoom_out);
-	}
-	else
-	if (global.player_can_play[3])
-	{
-		var key_in_hold = scr_key_initialize(key_player_zoom_in_hold[3], 0, 3, action.zoom_in);
-		var key_out_hold = scr_key_initialize(key_player_zoom_out_hold[3], 0, 3, action.zoom_out);
-	}
-	else
-	if (global.player_can_play[4])
-	{
-		var key_in_hold = scr_key_initialize(key_player_zoom_in_hold[4], 0, 4, action.zoom_in);
-		var key_out_hold = scr_key_initialize(key_player_zoom_out_hold[4], 0, 4, action.zoom_out);
+		if (global.player_can_play[i])
+		{
+			var key_in_hold = scr_key_initialize(key_player_zoom_in_hold[i], 0, i, action.zoom_in);
+			var key_out_hold = scr_key_initialize(key_player_zoom_out_hold[i], 0, i, action.zoom_out);
+			break; /* Exit the loop if a player can play */
+		}
 	}
 	#endregion /* Initialize buttons END */
 	

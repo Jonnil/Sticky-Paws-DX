@@ -319,13 +319,7 @@ if (os_type != os_ios)
 #endregion /* Show Controls END */
 
 #region /* Show what input is used */
-if ( /* Only show controller input change if there is only one player in the game */
-	(global.player_can_play[1] == 1 && global.player_can_play[2] == 0 && global.player_can_play[3] == 0 && global.player_can_play[4] == 0) ||
-	(global.player_can_play[1] == 0 && global.player_can_play[2] == 1 && global.player_can_play[3] == 0 && global.player_can_play[4] == 0) ||
-	(global.player_can_play[1] == 0 && global.player_can_play[2] == 0 && global.player_can_play[3] == 1 && global.player_can_play[4] == 0) ||
-	(global.player_can_play[1] == 0 && global.player_can_play[2] == 0 && global.player_can_play[3] == 0 && global.player_can_play[4] == 1)
-)
-{
+if (global.playergame == 1) { /* Only show controller input change if there is only one player in the game */
 	if (global.show_prompt_when_changing_to_gamepad)
 	{
 		draw_sprite_ext(spr_change_input_to_controller, 0, 110, get_window_height + 300 + show_controller_input_change_prompt_y, 1, 1, 0, c_white, 1);
@@ -340,25 +334,20 @@ if ( /* Only show controller input change if there is only one player in the gam
 scr_virtual_keys();
 
 #region /* Letterboxing during cutscenes (when the player object is absent) */
-if (show_letterbox > 0)
-{
+if (show_letterbox > 0) {
 	draw_rectangle_color(0, 0, get_window_width, letterbox_top_y, c_black, c_black, c_black, c_black, false);
 	draw_rectangle_color(0, letterbox_bottom_y, get_window_width, get_window_height, c_black, c_black, c_black, c_black, false);
 }
 #endregion /* Letterboxing during cutscenes (when the player object is absent) END */
 
-if (global.doing_clear_check_level)
-|| (global.doing_clear_check_character)
-{
+if (global.doing_clear_check_level || global.doing_clear_check_character) {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	if (global.doing_clear_check_level)
-	{
+	if (global.doing_clear_check_level) {
 		scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("Clear from the start"), global.default_text_size, c_black, c_white, 1);
 	}
 	else
-	if (global.doing_clear_check_character)
-	{
+	if (global.doing_clear_check_character) {
 		scr_draw_text_outlined(get_window_width * 0.5, 32, l10n_text("Clear level 1 before upload"), global.default_text_size, c_black, c_white, 1);
 	}
 	global.checkpoint_x = 0;

@@ -198,7 +198,7 @@ function scr_debug_screen()
 		if (get_player != noone) {
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-			scr_draw_text_outlined(32, player_xy_y, "X: " + string(get_player.x) + " Y: " + string(get_player.y), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, player_xy_y, "X: " + string(get_player.x) + "\nY: " + string(get_player.y) +"\nSpeed: " + string(get_player.speed), global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* X and Y position of player END */
 		

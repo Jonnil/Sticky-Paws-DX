@@ -49,24 +49,15 @@ function scr_player_move_pause() {
 				global.pause_player = player - 1;
 			}
 			else
-			if (global.player_can_play[1]) /* If player 1 is playing, then always let player 1 control pause menu first */
 			{
-				global.pause_player = 0;
-			}
-			else
-			if (global.player_can_play[2])
-			{
-				global.pause_player = 1;
-			}
-			else
-			if (global.player_can_play[3])
-			{
-				global.pause_player = 2;
-			}
-			else
-			if (global.player_can_play[4])
-			{
-				global.pause_player = 3;
+				for (var i = 1; i <= global.max_players; i += 1)
+				{
+				    if (global.player_can_play[i])
+				    {
+				        global.pause_player = i - 1;
+				        break; /* exit the loop if a player can play */
+				    }
+				}
 			}
 			#endregion /* What player should control the pause menu END */
 			

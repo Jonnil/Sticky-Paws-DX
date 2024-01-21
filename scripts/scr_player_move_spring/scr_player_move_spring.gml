@@ -95,6 +95,15 @@ function scr_player_move_spring()
 				spring_endpoint_y = 0;
 			}
 		}
+		
+		if (speed <= 1) /* If player isn't moving when bouncing on spring, something wrong probably happened, cancel moving towards spring endpoint */
+		|| (y <= camera_get_view_y(view_camera[view_current]) - 64) /* If you are being sprung outside the view, cancel moving towards spring endpoint*/
+		|| (x <= camera_get_view_x(view_camera[view_current]))
+		|| (x >= camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current])) {
+			move_towards_spring_endpoint = false;
+			spring_endpoint_x = 0;
+			spring_endpoint_y = 0;
+		}
 	}
 
 	if (spring)

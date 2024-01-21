@@ -13,11 +13,7 @@ var is_gamepad_connected = false;
 var is_mobile = false;
 var is_keyboard = false;
 
-if (gamepad_is_connected(global.player_slot[1]) && global.player_can_play[1] && global.controls_used_for_navigation == "gamepad")
-    || (gamepad_is_connected(global.player_slot[2]) && global.player_can_play[2] && global.controls_used_for_navigation == "gamepad")
-    || (gamepad_is_connected(global.player_slot[3]) && global.player_can_play[3] && global.controls_used_for_navigation == "gamepad")
-    || (gamepad_is_connected(global.player_slot[4]) && global.player_can_play[4] && global.controls_used_for_navigation == "gamepad")
-    || (global.always_show_gamepad_buttons)
+if (global.controls_used_for_navigation == "gamepad" || global.always_show_gamepad_buttons)
 {
     is_gamepad_connected = true;
     scr_draw_text_outlined(get_window_width - 64, 0, l10n_text("Skip") + ": " + l10n_text("Hold"), global.default_text_size, c_black, c_white, 1);

@@ -3,6 +3,7 @@ var level_editor_y = display_get_gui_height() * 0.5 + 100 + 80 + 2;
 var option_and_quit_y = display_get_gui_height() * 0.5 + 225;
 var mouse_get_x = device_mouse_x_to_gui(0);
 var mouse_get_y = device_mouse_y_to_gui(0);
+var fixed_player = 1;
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
@@ -126,22 +127,12 @@ if (menu == "main_game")
 {
 	if (!in_settings)
 	{
-		
-		#region /* Character select Accept Selection */
-		player_accept_selection[1] = - 1;
-		player_accept_selection[2] = - 1;
-		player_accept_selection[3] = - 1;
-		player_accept_selection[4] = - 1;
+		for (var i = 1; i <= global.max_players; i += 1)
+		{
+			player_accept_selection[i] = - 1; /* Character select Accept Selection */
+			can_input_player_name[i] = 2; /* What player can enter a name */
+		}
 		player_start_game = false;
-		#endregion /* Character select Accept Selection END */
-
-		#region /* What player can enter a name */
-		can_input_player_name[1] = 2;
-		can_input_player_name[2] = 2;
-		can_input_player_name[3] = 2;
-		can_input_player_name[4] = 2;
-		#endregion /* What player can enter a name END */
-		
 		show_title_logo = true;
 		version_y_pos = lerp(version_y_pos, 0, 0.1);
 	}
@@ -226,16 +217,13 @@ if (!in_settings)
 			menu_delay = 3;
 			if (mouse_check_button_released(mb_left))
 			{
-				player_automatically_join[1] = true; /* Player 1 joins if you click Main Game */
+				player_automatically_join[fixed_player] = true; /* Player 1 joins if you click Main Game */
 			}
-			global.player_can_play[1] = false;
-			global.player_can_play[2] = false;
-			global.player_can_play[3] = false;
-			global.player_can_play[4] = false;
-			player_accept_selection[1] = - 1;
-			player_accept_selection[2] = - 1;
-			player_accept_selection[3] = - 1;
-			player_accept_selection[4] = - 1;
+			for (var i = 1; i <= global.max_players; i += 1)
+			{
+				global.player_can_play[i] = false;
+				player_accept_selection[i] = - 1;
+			}
 			global.character_select_in_this_menu = "main_game";
 			in_settings = false;
 			global.doing_clear_check_level = false;
@@ -261,16 +249,13 @@ if (!in_settings)
 		{
 			if (mouse_check_button_released(mb_left))
 			{
-				player_automatically_join[1] = true; /* Player 1 joins if you click Level Editor */
+				player_automatically_join[fixed_player] = true; /* Player 1 joins if you click Level Editor */
 			}
-			global.player_can_play[1] = false;
-			global.player_can_play[2] = false;
-			global.player_can_play[3] = false;
-			global.player_can_play[4] = false;
-			player_accept_selection[1] = - 1;
-			player_accept_selection[2] = - 1;
-			player_accept_selection[3] = - 1;
-			player_accept_selection[4] = - 1;
+			for (var i = 1; i <= global.max_players; i += 1)
+			{
+				global.player_can_play[i] = false;
+				player_accept_selection[i] = - 1;
+			}
 			in_settings = false;
 		
 			#region /* Select Level Editor */

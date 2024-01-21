@@ -2,6 +2,7 @@ function scr_draw_information_menu()
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
+	var fixed_player = 1;
 	
 	#region /* Information menu */
 	if (information_menu_open > 0)
@@ -395,12 +396,15 @@ function scr_draw_information_menu()
 					global.selected_online_download_index = 1;
 					menu = "online_download_list_load";
 					information_menu_open = 0;
-					if (!global.player_can_play[1])
-					&& (!global.player_can_play[2])
-					&& (!global.player_can_play[3])
-					&& (!global.player_can_play[4])
-					{
-						global.player_can_play[1] = true;
+					var any_player_can_play = false;
+					for (var i = 1; i <= global.max_players; i += 1) {
+						if (global.player_can_play[i]) { /* Check if any player can play */
+					        any_player_can_play = true;
+					        break; /* exit the loop if any player can play */
+					    }
+					}
+					if (!any_player_can_play) { /* If no player can play, set global.player_can_play[fixed_player] to true */
+					    global.player_can_play[fixed_player] = true;
 					}
 				}
 				else

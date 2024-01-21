@@ -70,11 +70,19 @@ if (iris_xscale <= 0.01) {
 
 /* Handle Time, Animation, and Input */
 var action_accept = global.player_[inp.gp];
-if (keyboard_check(vk_space)
-	|| gamepad_button_check(global.player_slot[1], action_accept[1][1][action.accept])
-	|| gamepad_button_check(global.player_slot[2], action_accept[2][1][action.accept])
-	|| gamepad_button_check(global.player_slot[3], action_accept[3][1][action.accept])
-	|| gamepad_button_check(global.player_slot[4], action_accept[4][1][action.accept])) {
+var gamepad_skip_hold = false;
+
+for (var i = 1; i <= global.max_players; i += 1)
+{
+	if (gamepad_button_check(global.player_slot[i], action_accept[i][1][action.accept]))
+	|| (gamepad_button_check(global.player_slot[i], action_accept[i][2][action.accept]))
+	{
+		gamepad_skip_hold = true;
+		break; /* exit the loop if a button is pressed */
+	}
+}
+
+if (keyboard_check(vk_space) || gamepad_skip_hold) {
 	time += 10;
 	y = lerp(y, yy, 0.75);
 	image_alpha = lerp(image_alpha, alpha, 0.75);
