@@ -218,7 +218,18 @@ for(var i = 1; i <= global.max_players; i += 1)
 	#endregion /* Player Show Controls HUD timer */
 	
 	#region /* Stop gamepad vibration for player */
-	if (!player_vibration_active[i])
+	if (is_array(player_vibration_active))
+	{
+		if (player_vibration_active[i] <= 0)
+		{
+			player_motor_speed[i] = lerp(player_motor_speed[i], 0, 0.1);
+		}
+		else
+		{
+			player_vibration_active[i] --;
+		}
+	}
+	else
 	{
 		player_motor_speed[i] = lerp(player_motor_speed[i], 0, 0.1);
 	}

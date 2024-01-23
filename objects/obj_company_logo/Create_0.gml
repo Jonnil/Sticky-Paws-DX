@@ -195,22 +195,18 @@ load_ok = 0;
 sprite_splash_easteregg_yoffset = +228;
 goto_title_screen = false; /* If game is allowed to go to title screen yet or not. Need to load everything before going to title screen */
 
-var switch_controller_style = switch_controller_handheld | switch_controller_joycon_left | switch_controller_joycon_right | switch_controller_pro_controller | switch_controller_joycon_dual;
-switch_controller_set_supported_styles(switch_controller_style);
-switch_controller_support_set_singleplayer_only(false);
-switch_controller_support_set_player_min(1);
-switch_controller_support_set_player_max(4);
+if (os_type == os_switch)
+{
+	var switch_controller_style = switch_controller_handheld | switch_controller_joycon_left | switch_controller_joycon_right | switch_controller_pro_controller | switch_controller_joycon_dual;
+	switch_controller_set_supported_styles(switch_controller_style);
+	switch_controller_support_set_singleplayer_only(false);
+	switch_controller_support_set_player_min(1);
+	switch_controller_support_set_player_max(4);
+}
 
 global.saveid = noone;
 global.savebuff = noone;
-if (os_type == os_switch)
-{
-	global.username = "";
-}
-else
-{
-	global.username = environment_get_variable("USERNAME"); /* Account name for when you upload levels, you enter an username in account settings, and the levels uploaded will be credited under this name */
-}
+global.username = ""; /* Account name for when you upload levels, you enter an username in account settings, and the levels uploaded will be credited under this name. Never set the username as the same as device name by default, because of security concerns */
 global.keyboard_virtual_timer = 0; /* Delay for when virtual keyboard can show up */
 global.selected_level_editing_music = 0;
 global.gui_scale = -1;

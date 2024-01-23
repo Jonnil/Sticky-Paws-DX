@@ -3575,7 +3575,6 @@
     {"id":{"name":"scr_player_move_dive_ground_boost","path":"scripts/scr_player_move_dive_ground_boost/scr_player_move_dive_ground_boost.yy",},},
     {"id":{"name":"rm_title","path":"rooms/rm_title/rm_title.yy",},},
     {"id":{"name":"scr_option_language_menu","path":"scripts/scr_option_language_menu/scr_option_language_menu.yy",},},
-    {"id":{"name":"spr_tiny_catlyn","path":"sprites/spr_tiny_catlyn/spr_tiny_catlyn.yy",},},
     {"id":{"name":"obj_erase_brush","path":"objects/obj_erase_brush/obj_erase_brush.yy",},},
     {"id":{"name":"spr_virtual_key_down","path":"sprites/spr_virtual_key_down/spr_virtual_key_down.yy",},},
     {"id":{"name":"spr_blaster","path":"sprites/spr_blaster/spr_blaster.yy",},},

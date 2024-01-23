@@ -710,7 +710,6 @@ function scr_select_official_level_menu()
 				/* After "level information.ini" has been copied, write new information to it */
 				var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
-					show_debug_message("ini_open(" + string(working_directory) + "custom_levels/" + global.level_name + "/data/level_information.ini);")
 				}, [], 1);
 				time_source_start(time_source); time_source_period += 1;
 				

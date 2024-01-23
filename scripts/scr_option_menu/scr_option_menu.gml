@@ -2013,8 +2013,8 @@ function scr_option_menu()
 		if (global.settings_sidebar_menu == "accessibility_settings")
 		{
 			draw_menu_checkmark(450, 50, l10n_text("Enable Assist Mode"), "assist_enable", global.assist_enable, false);
-			scr_draw_text_outlined(450, 100, l10n_text("The game is meant to be played without Assist Mode."), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(450, 132, l10n_text("Only if you are unable to enjoy the game without extra help should you enable this."), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(450, 100, l10n_text("The game is meant to be played without Assist Mode"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
+			scr_draw_text_outlined(450, 132, l10n_text("Only enable this if you cannot enjoy the game without extra help"), global.default_text_size * 0.75, c_menu_outline, c_menu_fill, 1);
 			
 			draw_menu_checkmark(450, 332, l10n_text("Invincible"), "assist_invincible", global.assist_invincible, false);
 			draw_menu_checkmark(450, 382, l10n_text("Breathe Underwater"), "assist_breathe_underwater", global.assist_breathe_underwater, false);
@@ -2034,8 +2034,7 @@ function scr_option_menu()
 			"+6",
 			"+7",
 			"+8",
-			"+9",
-			"");
+			"+9");
 			#endregion /* Assist Extra HP END */
 			
 			#region /* Assist item appear */
@@ -2178,33 +2177,37 @@ function scr_option_menu()
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
 			var can_get_device_username = false;
+			if (os_type == os_windows)
+			&& (environment_get_variable("USERNAME") != "")
+			|| (os_type == os_macosx)
+			&& (environment_get_variable("USERNAME") != "")
+			|| (os_type == os_linux)
+			&& (environment_get_variable("USERNAME") != "")
+			|| (os_type != os_windows)
+			&& (os_type != os_macosx)
+			&& (os_type != os_linux)
+			{
+				can_get_device_username = true;
+			}
 			var change_username_x = 410;
 			var change_username_y = 20 + (40 * 5);
-			scr_draw_text_outlined(change_username_x, 20 + (40 * 1), l10n_text("Setup your Account here"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			scr_draw_text_outlined(change_username_x, 20 + (40 * 2), l10n_text("This is used for uploading levels"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
-			if (menu != "change_username_ok")
-			&& (menu != "change_username_cancel")
+			if (menu != "get_device_name_ok")
+			&& (menu != "get_device_name_cancel")
 			{
-				draw_menu_button(change_username_x, change_username_y, l10n_text("Change Username"), "change_username", "change_username");
-				if (os_type == os_windows)
-				&& (environment_get_variable("USERNAME") != "")
-				|| (os_type == os_macosx)
-				&& (environment_get_variable("USERNAME") != "")
-				|| (os_type == os_linux)
-				&& (environment_get_variable("USERNAME") != "")
-				|| (os_type != os_windows)
-				&& (os_type != os_macosx)
-				&& (os_type != os_linux)
+				scr_draw_text_outlined(change_username_x, 20 + (40 * 1), l10n_text("Setup your Account here"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(change_username_x, 20 + (40 * 2), l10n_text("This is used for uploading levels"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				if (menu != "change_username_ok")
+				&& (menu != "change_username_cancel")
 				{
-					var can_get_device_username = true;
-					draw_menu_button(change_username_x, change_username_y + 50, l10n_text("Get Device Username"), "get_device_name", "get_device_name");
-				}
-				else
-				{
-					var can_get_device_username = false;
+					draw_menu_button(change_username_x, change_username_y, l10n_text("Change Username"), "change_username");
+					if (can_get_device_username)
+					{
+						draw_menu_button(change_username_x, change_username_y + 50, l10n_text("Get Device Username"), "get_device_name");
+					}
 				}
 			}
 			
+			#region /* Ask the player if they want to change username into device name, and make sure they understand what this means */
 			if (can_get_device_username)
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x, change_username_y + 50, change_username_x + 370, change_username_y + 50 + 40 - 1))
@@ -2216,26 +2219,94 @@ function scr_option_menu()
 				&& (menu == "get_device_name")
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					with(instance_create_depth(change_username_x + 128, change_username_y + 50, 0, obj_score_up))
+					menu_delay = 3;
+					menu = "get_device_name_cancel";
+				}
+				if (menu == "get_device_name_ok")
+				|| (menu == "get_device_name_cancel")
+				{
+					draw_set_alpha(0.9);
+					draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, false);
+					draw_set_alpha(1);
+					draw_set_halign(fa_center);
+					draw_set_valign(fa_middle);
+					scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - (32 * 3), l10n_text("Are you sure you want to set your username to device name?"));
+					if (global.enable_option_for_pc)
 					{
-						score_up = "Copied"; /* Show that you have copied the device username */
+						scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - (32 * 2), l10n_text("Your device name is the name displayed here"));
+						draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, display_get_gui_width() * 0.5 - 130, display_get_gui_height() * 0.5 - 15, 0.5, 0.5, 0, c_white, 1);
+						draw_set_halign(fa_left);
+						scr_draw_text_outlined(display_get_gui_width() * 0.5 - 285, display_get_gui_height() * 0.5 + 32, string_replace(game_save_id, environment_get_variable("USERNAME"), "*"));
 					}
-					if (os_type == os_switch)
+					var change_username_ok_x = display_get_gui_width() * 0.5 - 185;
+					var change_username_ok_y = display_get_gui_height() * 0.5 + (32 * 2);
+					var change_username_cancel_y = display_get_gui_height() * 0.5 + (32 * 3) + 11;
+					draw_menu_button(change_username_ok_x, change_username_ok_y, l10n_text("Yes"), "get_device_name_ok", "get_device_name_ok");
+					draw_menu_button(change_username_ok_x, change_username_cancel_y, l10n_text("No"), "get_device_name_cancel", "get_device_name", c_red);
+					if (key_up)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						var selected_switch_account = switch_accounts_select_account(true, false, true);
-						global.username = switch_accounts_get_nickname(selected_switch_account);
+						menu_delay = 3;
+						menu = "get_device_name_ok";
 					}
 					else
+					if (key_down)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						global.username = environment_get_variable("USERNAME");
+						menu_delay = 3;
+						menu = "get_device_name_cancel";
 					}
 					
-					/* Save username to config file */
-					ini_open(working_directory + "save_file/config.ini");
-					ini_write_string("config", "username", string(global.username));
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					if (menu == "get_device_name_ok")
+					&& (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_ok_x, change_username_ok_y, change_username_ok_x + 370, change_username_ok_y + 40 - 1))
+					&& (global.controls_used_for_navigation == "mouse")
+					&& (mouse_check_button_released(mb_left))
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					|| (key_a_pressed)
+					&& (menu == "get_device_name_ok")
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu_delay = 3;
+						with(instance_create_depth(change_username_x + 128, change_username_y + 50, 0, obj_score_up))
+						{
+							score_up = "Copied"; /* Show that you have copied the device username */
+						}
+						if (os_type == os_switch)
+						{
+							var selected_switch_account = switch_accounts_select_account(true, false, true);
+							global.username = switch_accounts_get_nickname(selected_switch_account);
+						}
+						else
+						{
+							global.username = environment_get_variable("USERNAME");
+						}
+						
+						/* Save username to config file */
+						ini_open(working_directory + "save_file/config.ini");
+						ini_write_string("config", "username", string(global.username));
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						
+						menu = "get_device_name";
+					}
+					
+					if (menu == "get_device_name_cancel")
+					&& (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_ok_x, change_username_cancel_y, change_username_ok_x + 370, change_username_cancel_y + 40 - 1))
+					&& (global.controls_used_for_navigation == "mouse")
+					&& (mouse_check_button_released(mb_left))
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					|| (key_a_pressed)
+					&& (menu == "get_device_name_cancel")
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					|| (key_b_pressed)
+					&& (menu_delay == 0 && menu_joystick_delay == 0)
+					{
+						menu_delay = 3;
+						menu = "get_device_name";
+					}
+					
 				}
 			}
+			#endregion /* Ask the player if they want to change username into device name, and make sure they understand what this means END */
 			
 			#region /* Change username */
 			if (menu == "change_username")
@@ -2283,36 +2354,40 @@ function scr_option_menu()
 			#endregion /* Change username END */
 			
 			#region /* Draw the username text above everything */
-			draw_set_halign(fa_left);
-			draw_set_valign(fa_middle);
-			if (global.username != "")
+			if (menu != "get_device_name_ok")
+			&& (menu != "get_device_name_cancel")
 			{
-				scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("Account name") + ": " + string(global.username), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			}
-			else
-			{
-				scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-				scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+				draw_set_halign(fa_left);
+				draw_set_valign(fa_middle);
+				if (global.username != "")
+				{
+					scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("Account name") + ": " + string(global.username), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+				}
+				else
+				{
+					scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
+					scr_draw_text_outlined(change_username_x, 20 + (40 * 4), l10n_text("No username!"), global.default_text_size, c_menu_outline, c_red, scr_wave(0, 1, 1, 0));
+				}
 			}
 			#endregion /* Draw the username text above everything END */
 			
 			if (key_up)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			|| (key_down)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!input_key)
 			{
 				menu_delay = 3;
-				if (menu == "change_username")
-				&& (can_get_device_username)
+				menu = "change_username";
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (!input_key)
+			{
+				menu_delay = 3;
+				if (can_get_device_username)
 				{
 					menu = "get_device_name";
 				}
-				else
-				if (menu == "get_device_name")
-				{
-					menu = "change_username";
-				}
-				
 			}
 		}
 		#endregion /* Account Settings END */
@@ -2610,7 +2685,8 @@ function scr_option_menu()
 			draw_set_valign(fa_middle);
 			if (global.enable_option_for_pc)
 			{
-				scr_draw_text_outlined(450, file_path_y, string_replace_all(game_save_id + "save_file\\file" + string(global.file) + ".ini", "\\", "/"), global.default_text_size, c_menu_outline, c_dkgray, 1);
+				var file_path_text = string_replace_all(string_replace_all(game_save_id, environment_get_variable("USERNAME"), "*") + "save_file\\file" + string(global.file) + ".ini", "\\", "/")
+				scr_draw_text_outlined(450, file_path_y, string(file_path_text), global.default_text_size, c_menu_outline, c_dkgray, 1);
 			}
 			
 			#region /* Display save file data */
@@ -2676,7 +2752,7 @@ function scr_option_menu()
 				&& (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					scr_open_folder(game_save_id + "save_files");
+					scr_open_folder(game_save_id + "save_file");
 				}
 			}
 			else
@@ -3279,12 +3355,18 @@ function scr_option_menu()
 			if (menu == "players_can_collide")
 			{
 				if (key_up)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
+					menu_delay = 3;
 					menu = "hud_hide_time";
 				}
 				else
 				if (key_down)
+				&& (!open_dropdown)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
+					menu_delay = 3;
 					menu = "assist_settings";
 				}
 			}
@@ -3364,6 +3446,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					menu = "assist_item_appear";
 				}
 				else
@@ -3371,6 +3454,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					menu = "assist_invincible";
 				}
 				else
@@ -3379,6 +3463,7 @@ function scr_option_menu()
 				&& (open_dropdown)
 				&& (global.assist_extra_hp > 0)
 				{
+					menu_delay = 3;
 					global.assist_extra_hp --;
 				}
 				else
@@ -3387,6 +3472,7 @@ function scr_option_menu()
 				&& (open_dropdown)
 				&& (global.assist_extra_hp < 9)
 				{
+					menu_delay = 3;
 					global.assist_extra_hp ++;
 				}
 			}

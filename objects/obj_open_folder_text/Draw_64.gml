@@ -43,13 +43,17 @@ if (os_type == os_linux)
 }
 
 draw_set_halign(fa_center);
+
+var open_folder_string_text = string_replace_all(string(open_folder_string), "\\", "/");
+open_folder_string_text = string_replace_all(open_folder_string_text, environment_get_variable("USERNAME"), "*");
+
 if (get_window_width <= 1350)
 {
-	scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size * 0.75, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(open_folder_string_text), global.default_text_size * 0.75, c_black, c_white, image_alpha);
 }
 else
 {
-	scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string_replace_all(string(open_folder_string), "\\", "/"), global.default_text_size, c_black, c_white, image_alpha);
+	scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5, string(open_folder_string_text), global.default_text_size, c_black, c_white, image_alpha);
 }
 
 if (!close)

@@ -357,7 +357,8 @@ function scr_select_custom_level_menu()
 			var text_scale_modifier = 1;
 		}
 		draw_roundrect_color_ext(0, get_window_height - 32, get_window_width, get_window_height, 50, 50, c_black, c_black, false);
-		scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 16, string_replace_all(game_save_id + "\custom_levels\\" + global.level_name, "\\", "/"), global.default_text_size * text_scale_modifier, c_menu_outline, c_dkgray, 1);
+		var file_path_text = string_replace_all(string_replace_all(game_save_id, environment_get_variable("USERNAME"), "*") + "\custom_levels\\" + global.level_name, "\\", "/");
+		scr_draw_text_outlined(get_window_width * 0.5, get_window_height - 16, string(file_path_text), global.default_text_size * text_scale_modifier, c_menu_outline, c_dkgray, 1);
 	}
 	#endregion /* Show the path of the custom level on the bottom of the screen END */
 	

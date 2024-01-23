@@ -259,7 +259,7 @@ for(var i = 1; i <= global.max_players; i += 1) {
 	key_player_zoom_in_release[i] = noone;
 	key_player_zoom_out_release[i] = noone;
 	player_motor_speed[i] = 0;
-	player_vibration_active[i] = false;
+	player_vibration_active[i] = 0;
 	
 	#region /* Show keys x positions */
 	/* For some reason, code within "Show keys x positions" lags the Nintendo Switch version */

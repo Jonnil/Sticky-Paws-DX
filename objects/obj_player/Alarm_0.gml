@@ -497,17 +497,14 @@ midair_jumps_left = ini_read_real("values", "midair_jumps_left", 1);
 midair_jump_flip_animation = ini_read_real("values", "midair_jump_flip_animation", 2);
 
 /* Starting HP and Max HP */
-if (!global.assist_enable)
+var default_hp = 1;
+max_hp = ini_read_real("values", "max_hp", default_hp);
+hp = ini_read_real("values", "hp", default_hp);
+
+if (global.assist_enable)
 {
-	var default_hp = 1;
-	hp = ini_read_real("values", "hp", default_hp);
-	max_hp = ini_read_real("values", "max_hp", default_hp);
-}
-else
-{
-	/* Set HP and Max HP to their default values when assist is enabled */
-	hp = 3;
-	max_hp = 3;
+	max_hp += global.assist_extra_hp; /* Starting Max HP with assist extra hp */
+	hp += global.assist_extra_hp; /* Starting HP with assist extra hp */
 }
 
 /* If the character config file doesn't exist, create it and write the default values */

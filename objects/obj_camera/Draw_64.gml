@@ -218,7 +218,9 @@ else
 
 #region /* Time countup in Minutes, Seconds and Milliseconds */
 if (global.show_timer)
+&& (!global.debug_screen)
 || (global.player_has_entered_goal)
+&& (!global.debug_screen)
 {
 	if (global.timeattack_realmillisecond < timeattack_record_realmillisecond)
 	&& (global.player_has_entered_goal)

@@ -66,8 +66,10 @@ function scr_debug_screen()
 		#region /* Show what objects are currently in the room */
 		for (var i = 0; i < 100; ++i;) {
 			if (instance_number(i) >= 1)
-			var all_instance_count_color = make_color_hsv(instance_number(i), 255, 255)
-			scr_draw_text_outlined(32, all_instance_count_y + (8 * i), string(object_get_name(i)) + ": " + string(instance_number(i)),,, all_instance_count_color);
+			{
+				var all_instance_count_color = make_color_hsv(instance_number(i), 255, 255)
+				scr_draw_text_outlined(32, all_instance_count_y + (8 * i), string(object_get_name(i)) + ": " + string(instance_number(i)),,, all_instance_count_color);
+			}
 		}
 		#endregion /* Show what objects are currently in the room END */
 		

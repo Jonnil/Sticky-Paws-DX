@@ -449,7 +449,7 @@ if (image_alpha > 0)
 	|| (hp > 0)
 	&& (!global.assist_enable)
 	{
-		if (max_hp = 2) /* If there is only max 2 hp and there is no panting sprite, display HP */
+		if (max_hp == 2) /* If there is only max 2 hp and there is no panting sprite, display HP */
 		&& (sprite_panting == noone)
 		|| (max_hp >= 3) /* If there is more than max 3 hp, always display HP */
 		{
