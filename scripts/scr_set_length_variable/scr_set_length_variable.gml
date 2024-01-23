@@ -20,38 +20,39 @@ function scr_set_length_variable()
 				repeat_length = -1;
 				can_set_length = false;
 			}
-			else
-			for(var i = 1; i < (room_width / 32); i ++) {
-				var xx = x + (32 * i);
-				var inst = instance_position(xx, y, placed_object);
-				if (can_set_length /* Save how many objects to the right are repeated */
-				&& position_meeting(xx, y, placed_object)
-				&& inst.x == xx
-				&& inst.y == y
-				&& inst.object == object
-				&& inst.easy == easy
-				&& inst.normal == normal
-				&& inst.hard == hard
-				&& inst.second_x == second_x
-				&& inst.second_y == second_y) {
-					repeat_length = i;
-				}
-				else
-				if (can_set_length) {
-					if (!position_meeting(xx, y, placed_object))
-					|| (position_meeting(xx, y, placed_object))
-					&& (
-						inst.x != xx
-						|| inst.y != y
-						|| inst.object != object
-						|| inst.easy != easy
-						|| inst.normal != normal
-						|| inst.hard != hard
-						|| inst.second_x != second_x
-						|| inst.second_y != second_y
-					) {
-						repeat_length = i - 1;
-						can_set_length = false;
+			else if (instance_exists(obj_level_width)) {
+				for(var i = 1; i < (obj_level_width.x / 32); i ++) {
+					var xx = x + (32 * i);
+					var inst = instance_position(xx, y, placed_object);
+					if (can_set_length /* Save how many objects to the right are repeated */
+					&& position_meeting(xx, y, placed_object)
+					&& inst.x == xx
+					&& inst.y == y
+					&& inst.object == object
+					&& inst.easy == easy
+					&& inst.normal == normal
+					&& inst.hard == hard
+					&& inst.second_x == second_x
+					&& inst.second_y == second_y) {
+						repeat_length = i;
+					}
+					else
+					if (can_set_length) {
+						if (!position_meeting(xx, y, placed_object))
+						|| (position_meeting(xx, y, placed_object))
+						&& (
+							inst.x != xx
+							|| inst.y != y
+							|| inst.object != object
+							|| inst.easy != easy
+							|| inst.normal != normal
+							|| inst.hard != hard
+							|| inst.second_x != second_x
+							|| inst.second_y != second_y
+						) {
+							repeat_length = i - 1;
+							can_set_length = false;
+						}
 					}
 				}
 			}
