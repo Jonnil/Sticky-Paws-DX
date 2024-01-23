@@ -2022,7 +2022,6 @@ function scr_option_menu()
 			draw_menu_checkmark(450, 482, l10n_text("Show Normal Arrows"), "assist_normal_arrows", global.assist_normal_arrows, true);
 			draw_menu_checkmark(450, 532, l10n_text("Enable Enemies"), "assist_enable_enemies", global.assist_enable_enemies, true);
 			draw_menu_checkmark(450, 582, l10n_text("Enable Spikes"), "assist_enable_spikes", global.assist_enable_spikes, true);
-			draw_menu_checkmark(450, 632, l10n_text("Show Assist Mode Text"), "assist_show_assist_mode_text", global.assist_show_assist_mode_text, true);
 			
 			#region /* Assist Extra HP */
 			draw_menu_dropdown(450, 262, l10n_text("Extra Health Points"), "assist_extra_hp", global.assist_extra_hp,
@@ -2063,7 +2062,6 @@ function scr_option_menu()
 				|| (menu == "assist_normal_arrows")
 				|| (menu == "assist_extra_hp")
 				|| (menu == "assist_item_appear")
-				|| (menu == "assist_show_assist_mode_text")
 				{
 					menu = "assist_enable";
 				}
@@ -3302,7 +3300,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					menu = "assist_show_assist_mode_text";
+					menu = "assist_enable_spikes";
 					menu_delay = 3;
 				}
 				else
@@ -3527,33 +3525,10 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "assist_show_assist_mode_text";
+					menu = "assist_enable";
 				}
 			}
 			#endregion /* Assist Enable Spikes Navigation END */
-			
-			else
-			
-			#region /* Assist Show Assist Mode Text Navigation */
-			if (menu == "assist_show_assist_mode_text")
-			{
-				if (key_up)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_enable_spikes";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (!open_dropdown)
-				{
-					menu = "assist_enable";
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Assist Show Assist Mode Text Navigation END */
 			
 			else
 			
@@ -4189,9 +4164,6 @@ function scr_option_menu()
 		                break;
 					case "assist_enable_spikes":
 		                if (global.assist_enable) global.assist_enable_spikes = !global.assist_enable_spikes;
-		                break;
-					case "assist_show_assist_mode_text":
-		                if (global.assist_enable) global.assist_show_assist_mode_text = !global.assist_show_assist_mode_text;
 		                break;
 					case "automatically_pause_when_window_is_unfocused_settings":
 						global.automatically_pause_when_window_is_unfocused = !global.automatically_pause_when_window_is_unfocused;

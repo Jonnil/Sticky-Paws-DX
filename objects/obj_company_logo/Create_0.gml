@@ -429,7 +429,6 @@ global.assist_guiding_arrows = false;
 global.assist_normal_arrows = true;
 global.assist_enable_enemies = true; /* Option to enable or disable all enemies in the game, the player can change this themselves in assist settings. Default: true */
 global.assist_enable_spikes = true; /* Option to enable or disable all enemies in the game, the player can change this themselves in assist settings. Default: true */
-global.assist_show_assist_mode_text = true;
 #endregion /* Assist Settings END */
 
 global.checkpoint_x = false;

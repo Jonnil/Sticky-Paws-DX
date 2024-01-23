@@ -402,12 +402,12 @@ function scr_draw_online_download_list()
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, l10n_text("There is nothing uploaded yet!"), global.default_text_size * 2, c_menu_outline, c_menu_fill, 1);
 			}
 			
-			/* Draw the thumbnail */ if (sprite_exists(spr_download_list_thumbnail) && info_data != undefined)
+			/* Draw the thumbnail */ if (sprite_exists(spr_download_list_thumbnail) && data != undefined && info_data != undefined)
 			{
 				draw_sprite_ext(spr_download_list_thumbnail, 0, download_online_x + 100, top_left_of_thumbnail_y + menu_y_offset + 4, 384 / sprite_get_width(spr_download_list_thumbnail), 216 / sprite_get_height(spr_download_list_thumbnail), 0, c_white, 1);
 			}
 			
-			/* Draw the name associated with the ID */ if (info_data != undefined)
+			/* Draw the name associated with the ID */ if (data != undefined && info_data != undefined)
 			{
 				draw_set_halign(fa_center);
 				draw_set_valign(fa_middle);
@@ -571,6 +571,8 @@ function scr_draw_online_download_list()
 				global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
 				global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
 				data = undefined; /* Reset "data" so you can reload online download list next time you go to this menu */
+				info_data = undefined; /* Don't forget to reset info data too */
+				spr_download_list_thumbnail = noone; /* Don't forget to reset download list thumbnail too */
 				automatically_search_for_id = false;
 				in_online_download_list_menu = false;
 				in_online_download_list_load_menu = false;
@@ -628,6 +630,8 @@ function scr_draw_online_download_list()
 			}
 			global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
 			data = undefined; /* Reset "data" so you can reload online download list next time you go to this menu */
+			info_data = undefined; /* Don't forget to reset info data too */
+			spr_download_list_thumbnail = noone; /* Don't forget to reset download list thumbnail too */
 			automatically_search_for_id = false;
 			in_online_download_list_menu = false;
 			in_online_download_list_load_menu = false;

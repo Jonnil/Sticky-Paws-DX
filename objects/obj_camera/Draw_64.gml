@@ -299,7 +299,6 @@ scr_debug_screen();
 
 #region /* Show if you have Assist mode enabled or not */
 if (global.assist_enable)
-&& (global.assist_show_assist_mode_text)
 {
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);

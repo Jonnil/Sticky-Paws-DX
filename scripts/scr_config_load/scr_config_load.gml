@@ -43,7 +43,6 @@ function scr_config_load()
 		if (ini_key_exists("config", "assist_breathe_underwater")){global.assist_breathe_underwater = ini_read_real("config", "assist_breathe_underwater", 0);}
 		if (ini_key_exists("config", "assist_guiding_arrows")){global.assist_guiding_arrows = ini_read_real("config", "assist_guiding_arrows", 0);}
 		if (ini_key_exists("config", "assist_normal_arrows")){global.assist_normal_arrows = ini_read_real("config", "assist_normal_arrows", 0);}
-		if (ini_key_exists("config", "assist_show_assist_mode_text")){global.assist_show_assist_mode_text = ini_read_real("config", "assist_show_assist_mode_text", 0);}
 		#endregion /* Assist Settings END */
 		
 		#region /* Account Settings */
