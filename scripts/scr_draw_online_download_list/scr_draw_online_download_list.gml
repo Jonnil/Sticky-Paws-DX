@@ -602,6 +602,26 @@ function scr_draw_online_download_list()
 		
 		#endregion /* Draw the Back and Search ID buttons on top of everything END */
 		
+		#region /* Draw the Load Custom Level Assets */
+		if (content_type == "level")
+		{
+			var can_load_custom_level_assets_x = 380;
+			var can_load_custom_level_assets_y = 16;
+			draw_menu_checkmark(can_load_custom_level_assets_x, can_load_custom_level_assets_y, l10n_text("Load Custom Level Assets"), "online_list_can_load_custom_level_assets", global.can_load_custom_level_assets, true);
+			
+			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), can_load_custom_level_assets_x, can_load_custom_level_assets_y - 6, can_load_custom_level_assets_x + 646, can_load_custom_level_assets_y + 38))
+			&& (global.controls_used_for_navigation == "mouse")
+			&& (mouse_check_button_released(mb_left))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (menu == "online_list_can_load_custom_level_assets")
+			&& (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				global.can_load_custom_level_assets = not global.can_load_custom_level_assets;
+			}
+		}
+		#endregion /* Draw the Load Custom Level Assets END */
+		
 		menu_y_offset_real = clamp(menu_y_offset_real, - 100 + window_get_height() - (300 * array_length(data)), 0); /* Dont let "meny y offset" get above 0 */
 	}
 	else
@@ -664,6 +684,14 @@ function scr_draw_online_download_list()
 			menu_delay = 3;
 			menu = "download_online_search_id";
 		}
+		else
+		if (key_right)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (content_type == "level")
+		{
+			menu_delay = 3;
+			menu = "online_list_can_load_custom_level_assets";
+		}
 	}
 	else
 	if (menu == "download_online_search_id")
@@ -684,6 +712,40 @@ function scr_draw_online_download_list()
 			{
 				menu = "download_online_1";
 			}
+		}
+	}
+	else
+	if (menu == "online_list_can_load_custom_level_assets")
+	{
+		if (key_up)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (is_array(data))
+		&& (array_length(data) > 0)
+		{
+			menu_delay = 3;
+			if (is_array(data))
+			&& (array_length(data) > 0)
+			{
+				menu = "download_online_" + string(num_items);
+			}
+		}
+		else
+		if (key_down)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			if (is_array(data))
+			&& (array_length(data) > 0)
+			{
+				menu = "download_online_1";
+			}
+		}
+		else
+		if (key_left)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		{
+			menu_delay = 3;
+			menu = "download_online_back";
 		}
 	}
 	else
