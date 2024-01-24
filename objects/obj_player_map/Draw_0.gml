@@ -141,5 +141,3 @@ if (global.enable_transitions)
 	}
 }
 #endregion /* Draw Iris Transitions END */
-
-scr_draw_text_outlined(x, y - 128, "delay: " + string(delay));
