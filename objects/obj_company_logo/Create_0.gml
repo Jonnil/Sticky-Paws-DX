@@ -403,16 +403,12 @@ global.basic_collectibles = 0;
 global.level_clear_rate = noone;
 global.current_level_clear_rate = noone;
 global.increase_number_of_levels_cleared = true; /* Some levels shouldn't increase the number of levels cleared, so switch this true or false for certain levels */
-global.big_collectible1 = false; /* If you have Big Collectible 1 or not */
-global.big_collectible2 = false; /* If you have Big Collectible 2 or not */
-global.big_collectible3 = false; /* If you have Big Collectible 3 or not */
-global.big_collectible4 = false; /* If you have Big Collectible 4 or not */
-global.big_collectible5 = false; /* If you have Big Collectible 5 or not */
-global.big_collectible1_already_collected = false;
-global.big_collectible2_already_collected = false;
-global.big_collectible3_already_collected = false;
-global.big_collectible4_already_collected = false;
-global.big_collectible5_already_collected = false;
+global.max_big_collectible = 5;
+for(var i = 1; i <= 99; i += 1)
+{
+	global.big_collectible[i] = false; /* If you have Big Collectible or not */
+	global.big_collectible_already_collected[i] = false;
+}
 global.lives_until_assist = 0;
 
 #region /* Assist Settings */
@@ -509,7 +505,7 @@ enum inp
 	gp = 1
 }
 
-for (var i = 1; i <= global.max_players; i += 1)
+for(var i = 1; i <= global.max_players; i += 1)
 {
 	scr_set_default_remapping_player_keyboard(i, false);
 	scr_set_default_remapping_player_gamepad(i, false);

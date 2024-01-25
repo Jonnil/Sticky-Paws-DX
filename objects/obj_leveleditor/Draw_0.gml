@@ -187,6 +187,7 @@ if (!global.actually_play_edited_level)
 		if (fill_mode)
 		&& (!erase_mode)
 		&& (!scroll_view)
+		&& (!hovering_over_icon)
 		&& (!place_meeting(x, y, obj_level_player1_start))
 		&& (!place_meeting(x, y, obj_level_player2_start))
 		&& (!place_meeting(x, y, obj_level_player3_start))
@@ -208,6 +209,7 @@ if (!global.actually_play_edited_level)
 		if (erase_mode)
 		&& (!scroll_view)
 		&& (!pause)
+		&& (!hovering_over_icon)
 		{
 			draw_set_alpha(0.5);
 			{
@@ -251,6 +253,7 @@ if (!global.actually_play_edited_level)
 		&& (!drag_object)
 		&& (!fill_mode)
 		&& (!pause)
+		&& (!hovering_over_icon)
 		{
 			if (!place_meeting(x, y, obj_leveleditor_placed_object))
 			&& (sprite_index >= 0)
@@ -356,21 +359,5 @@ if (!global.actually_play_edited_level)
 		
 	}
 	#endregion /* Position the Cursor END */
-	
-	#region /* Pause virtual key */
-	if (os_type == os_ios)
-	|| (os_type == os_android)
-	{
-		virtual_key_add(1100 - 128, 0, 400, 128, vk_escape); /* Pause virtual key */
-		if (keyboard_check(vk_escape))
-		{
-			draw_sprite_ext(spr_virtual_key_pause, 0, cam_x + 1100 - 64, cam_y + 32, 0.9, 0.9, 0, c_gray, 0.5);
-		}
-		else
-		{
-			draw_sprite_ext(spr_virtual_key_pause, 0, cam_x + 1100 - 64, cam_y + 32, 1, 1, 0, c_white, 0.5);
-		}
-	}
-	#endregion /* Pause virtual key END */
 	
 }

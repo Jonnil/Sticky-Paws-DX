@@ -67,7 +67,7 @@ if (coil_spring && !die && on_ground)
 {
     if (instance_exists(obj_camera) && obj_camera.iris_xscale > 1)
     {
-        for (var i = 0; i < 3; i++)
+        for(var i = 0; i < 3; i++)
         {
             effect_create_above(ef_smoke, x + random_range(-16, 16), bbox_bottom + random_range(-8, 0), 0, c_white);
         }

@@ -31,11 +31,11 @@ if (global.enable_transitions)
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 
-for (var i = 1; i <= global.max_players; i += 1)
+for(var i = 1; i <= global.max_players; i += 1)
 {
     if (show_run_toggle_for_player[i] > 0)
     {
-        for (var j = 1; j <= global.max_players; j += 1)
+        for(var j = 1; j <= global.max_players; j += 1)
         {
             show_run_toggle_for_player[j] = (i == j) ? show_run_toggle_for_player[j] - 1 : 0;
         }

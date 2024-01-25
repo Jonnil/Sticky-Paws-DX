@@ -118,7 +118,7 @@ function scr_draw_online_download_list()
 				}
 				
 				var online_download_index = 0;
-				for (var i = 0; i < num_items; i++;)
+				for(var i = 0; i < num_items; i++;)
 				{
 					online_download_index ++;
 					var download_online_y = 80 + (300 * i); /* The distance between each thumbnail */
@@ -369,7 +369,7 @@ function scr_draw_online_download_list()
 				{
 					/* Get the number of items in the JSON array */
 					var num_info_items = array_length(info_data);
-					for (var i = 0; i < num_info_items; i++;)
+					for(var i = 0; i < num_info_items; i++;)
 					{
 						/* Fetch the "name" and "thumbnail" properties from the JSON object */
 						var item = info_data[i];

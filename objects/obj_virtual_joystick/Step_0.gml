@@ -1,5 +1,5 @@
 /* Create an indicator for a touch */
-for (var i = 0; i < 10; i += 1)
+for(var i = 0; i < 10; i += 1)
 {
 	if (device_mouse_check_button_pressed(i, mb_any))
 	{

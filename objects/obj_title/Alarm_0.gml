@@ -1,4 +1,4 @@
-for (var i = 1; i <= global.max_players; i += 1)
+for(var i = 1; i <= global.max_players; i += 1)
 {
 	var what_player = i;
 	if (character_portrait_for_player_update_directory[i])

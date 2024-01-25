@@ -30,7 +30,7 @@ var fixed_player = 1;
 camera_player = fixed_player - 1;
 camera_selected_skin = global.skin_for_player[fixed_player];
 
-for (var i = 1; i <= global.max_players; i += 1)
+for(var i = 1; i <= global.max_players; i += 1)
 {
 	player_show_controls_timer[i] = 0;
 	player_show_controls_alpha[i] = 0;

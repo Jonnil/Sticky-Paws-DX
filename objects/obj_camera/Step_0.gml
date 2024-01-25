@@ -545,7 +545,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 	{
 		show_run_toggle_for_player[i] = 100;
 		/* Reset other player toggles */
-	    for (var j = 1; j <= global.max_players; j += 1)
+	    for(var j = 1; j <= global.max_players; j += 1)
 	    {
 	        if (j != i)
 	        {

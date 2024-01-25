@@ -9,7 +9,7 @@ function scr_line_trace( x_start, y_start, x_end, y_end, offset, object = obj_wa
 	}
 	
 	var length = point_distance( x_start, y_start, x_end, y_end);
-	for (var i = 0; i < length; i += 1)
+	for(var i = 0; i < length; i += 1)
 	{
 		var x_current = lerp( x_start, x_end, scr_value_range_map( i, 0, length, 0, 1));
 		var y_current = lerp( y_start, y_end, scr_value_range_map( i, 0, length, 0, 1));

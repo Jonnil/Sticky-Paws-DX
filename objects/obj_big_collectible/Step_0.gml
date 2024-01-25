@@ -75,144 +75,34 @@ if (follow_player)
 	#endregion /* 1000 Score END */
 	
 	#region /* What Big Collectible is this? */
-	if (big_collectible == 1)
+	for(var i = 1; i <= global.max_big_collectible; i += 1)
 	{
-		global.big_collectible1 = true;
-		if (instance_exists(obj_camera))
+		if (big_collectible == i)
 		{
-			with(instance_nearest(x, y, obj_camera))
+			global.big_collectible[i] = true;
+			if (instance_exists(obj_camera))
 			{
-				global.big_collectible1_already_collected = true;
+				with(instance_nearest(x, y, obj_camera))
+				{
+					global.big_collectible_already_collected[i] = true;
+				}
 			}
-		}
-		if (global.character_select_in_this_menu == "main_game")
-		{
-			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-			
-			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-			ini_write_real(level_name, "big_collectible1", true);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-		else
-		if (global.character_select_in_this_menu == "level_editor")
-		{
-			var level_name = global.level_name;
-			
-			ini_open(working_directory + "save_file/custom_level_save.ini");
-			ini_write_real(level_name, "big_collectible1", true);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-	}
-	if (big_collectible == 2)
-	{
-		global.big_collectible2 = true;
-		if (instance_exists(obj_camera))
-		{
-			with(instance_nearest(x, y, obj_camera))
+			if (global.character_select_in_this_menu == "main_game")
 			{
-				global.big_collectible2_already_collected = true;
+				var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+				ini_write_real(level_name, "big_collectible" + string(i), true);
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
-		}
-		if (global.character_select_in_this_menu == "main_game")
-		{
-			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-			
-			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-			ini_write_real(level_name, "big_collectible2", true);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-		else
-		if (global.character_select_in_this_menu == "level_editor")
-		{
-			var level_name = global.level_name;
-			
-			ini_open(working_directory + "save_file/custom_level_save.ini");
-			ini_write_real(level_name, "big_collectible2", true);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-	}
-	if (big_collectible == 3)
-	{
-		global.big_collectible3 = true;
-		if (instance_exists(obj_camera))
-		{
-			with(instance_nearest(x, y, obj_camera))
+			else
+			if (global.character_select_in_this_menu == "level_editor")
 			{
-				global.big_collectible3_already_collected = true;
+				var level_name = global.level_name;
+				ini_open(working_directory + "save_file/custom_level_save.ini");
+				ini_write_real(level_name, "big_collectible" + string(i), true);
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
-		}
-		if (global.character_select_in_this_menu == "main_game")
-		{
-			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-			
-			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-			ini_write_real(level_name, "big_collectible3", true);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-		else
-		if (global.character_select_in_this_menu == "level_editor")
-		{
-			var level_name = global.level_name;
-			
-			ini_open(working_directory + "save_file/custom_level_save.ini");
-			ini_write_real(level_name, "big_collectible3", true);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-	}
-	if (big_collectible == 4)
-	{
-		global.big_collectible4 = true;
-		if (instance_exists(obj_camera))
-		{
-			with(instance_nearest(x, y, obj_camera))
-			{
-				global.big_collectible4_already_collected = true;
-			}
-		}
-		if (global.character_select_in_this_menu == "main_game")
-		{
-			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-			
-			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-			ini_write_real(level_name, "big_collectible4", true);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-		else
-		if (global.character_select_in_this_menu == "level_editor")
-		{
-			var level_name = global.level_name;
-			
-			ini_open(working_directory + "save_file/custom_level_save.ini");
-			ini_write_real(level_name, "big_collectible4", true);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-	}
-	if (big_collectible >= 5)
-	{
-		global.big_collectible5 = true;
-		if (instance_exists(obj_camera))
-		{
-			with(instance_nearest(x, y, obj_camera))
-			{
-				global.big_collectible5_already_collected = true;
-			}
-		}
-		if (global.character_select_in_this_menu == "main_game")
-		{
-			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-			
-			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-			ini_write_real(level_name, "big_collectible5", true);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		}
-		else
-		if (global.character_select_in_this_menu == "level_editor")
-		{
-			var level_name = global.level_name;
-			
-			ini_open(working_directory + "save_file/custom_level_save.ini");
-			ini_write_real(level_name, "big_collectible5", true);
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			break;
 		}
 	}
 	#endregion /* What Big Collectible is this? END */
@@ -308,144 +198,34 @@ if (bounce_up)
 			#endregion /* 1000 Score END */
 			
 			#region /* What Big Collectible is this? */
-			if (big_collectible == 1)
+			for(var i = 1; i <= global.max_big_collectible; i += 1)
 			{
-				global.big_collectible1 = true;
-				if (instance_exists(obj_camera))
+				if (big_collectible == i)
 				{
-					with(instance_nearest(x, y, obj_camera))
+					global.big_collectible[i] = true;
+					if (instance_exists(obj_camera))
 					{
-						global.big_collectible1_already_collected = true;
+						with(instance_nearest(x, y, obj_camera))
+						{
+							global.big_collectible_already_collected[i] = true;
+						}
+						if (global.character_select_in_this_menu == "main_game")
+						{
+							var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
+							ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+							ini_write_real(level_name, "big_collectible" + string(i), true);
+							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						}
+						else
+						if (global.character_select_in_this_menu == "level_editor")
+						{
+							var level_name = global.level_name;
+							ini_open(working_directory + "save_file/custom_level_save.ini");
+							ini_write_real(level_name, "big_collectible" + string(i), true);
+							ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						}
 					}
-					if (global.character_select_in_this_menu == "main_game")
-					{
-						var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-						
-						ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-						ini_write_real(level_name, "big_collectible1", true);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					}
-					else
-					if (global.character_select_in_this_menu == "level_editor")
-					{
-						var level_name = global.level_name;
-						
-						ini_open(working_directory + "save_file/custom_level_save.ini");
-						ini_write_real(level_name, "big_collectible1", true);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					}
-				}
-			}
-			if (big_collectible == 2)
-			{
-				global.big_collectible2 = true;
-				if (instance_exists(obj_camera))
-				{
-					with(instance_nearest(x, y, obj_camera))
-					{
-						global.big_collectible2_already_collected = true;
-					}
-					if (global.character_select_in_this_menu == "main_game")
-					{
-						var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-						
-						ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-						ini_write_real(level_name, "big_collectible2", true);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					}
-					else
-					if (global.character_select_in_this_menu == "level_editor")
-					{
-						var level_name = global.level_name;
-						
-						ini_open(working_directory + "save_file/custom_level_save.ini");
-						ini_write_real(level_name, "big_collectible2", true);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					}
-				}
-			}
-			if (big_collectible == 3)
-			{
-				global.big_collectible3 = true;
-				if (instance_exists(obj_camera))
-				{
-					with(instance_nearest(x, y, obj_camera))
-					{
-						global.big_collectible3_already_collected = true;
-					}
-					if (global.character_select_in_this_menu == "main_game")
-					{
-						var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-						
-						ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-						ini_write_real(level_name, "big_collectible3", true);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					}
-					else
-					if (global.character_select_in_this_menu == "level_editor")
-					{
-						var level_name = global.level_name;
-						
-						ini_open(working_directory + "save_file/custom_level_save.ini");
-						ini_write_real(level_name, "big_collectible3", true);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					}
-				}
-			}
-			if (big_collectible == 4)
-			{
-				global.big_collectible4 = true;
-				if (instance_exists(obj_camera))
-				{
-					with(instance_nearest(x, y, obj_camera))
-					{
-						global.big_collectible4_already_collected = true;
-					}
-					if (global.character_select_in_this_menu == "main_game")
-					{
-						var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-						
-						ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-						ini_write_real(level_name, "big_collectible4", true);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					}
-					else
-					if (global.character_select_in_this_menu == "level_editor")
-					{
-						var level_name = global.level_name;
-						
-						ini_open(working_directory + "save_file/custom_level_save.ini");
-						ini_write_real(level_name, "big_collectible4", true);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					}
-				}
-			}
-			if (big_collectible == 5)
-			{
-				global.big_collectible5 = true;
-				if (instance_exists(obj_camera))
-				{
-					with(instance_nearest(x, y, obj_camera))
-					{
-						global.big_collectible5_already_collected = true;
-					}
-					if (global.character_select_in_this_menu == "main_game")
-					{
-						var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-						
-						ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-						ini_write_real(level_name, "big_collectible5", true);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					}
-					else
-					if (global.character_select_in_this_menu == "level_editor")
-					{
-						var level_name = global.level_name;
-						
-						ini_open(working_directory + "save_file/custom_level_save.ini");
-						ini_write_real(level_name, "big_collectible5", true);
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					}
+					break;
 				}
 			}
 			#endregion /* What Big Collectible is this? END */

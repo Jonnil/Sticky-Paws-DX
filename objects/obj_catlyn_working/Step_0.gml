@@ -29,7 +29,7 @@ if (image_index >= 2)
 
 var catlyn_playing = false;
 
-for (var i = 1; i <= global.max_players; i += 1)
+for(var i = 1; i <= global.max_players; i += 1)
 {
 	if (global.character_for_player[i] == "catlyn" && global.player_can_play[i])
 	{

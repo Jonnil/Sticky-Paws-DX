@@ -131,7 +131,7 @@ function scr_option_control_menu()
 			#region /* Show the keys for every player */
 			
 			#region /* Remapping Player 1 Key Variables */
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				if (remapping_player == i -	1)
 				{

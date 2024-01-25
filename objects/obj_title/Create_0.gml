@@ -1,4 +1,4 @@
-for (var p = 1; p <= global.max_players; p += 1) {
+for(var p = 1; p <= global.max_players; p += 1) {
 	player_accept_selection[p] = -1;
 	player_automatically_join[p] = false;
 	player_menu[p] = "select_character";
@@ -196,11 +196,10 @@ global.doing_clear_check_level = false;
 global.actually_play_edited_level = false;
 global.play_edited_level = false;
 global.basic_collectibles = 0;
-global.big_collectible1 = false;
-global.big_collectible2 = false;
-global.big_collectible3 = false;
-global.big_collectible4 = false;
-global.big_collectible5 = false;
+for(var b = 1; b <= global.max_big_collectible; b += 1)
+{
+	global.big_collectible[b] = false;
+}
 global.lives_until_assist = 0;
 global.checkpoint_x = false;
 global.checkpoint_y = false;
@@ -238,7 +237,7 @@ if (global.character_select_in_this_menu == "level_editor")
 {
 	scr_load_custom_level_initializing();
 	
-	for (var p = 1; p <= global.max_players; p += 1) {
+	for(var p = 1; p <= global.max_players; p += 1) {
 		can_input_player_name[p] = false;
 		player_accept_selection[p] = false;
 	}

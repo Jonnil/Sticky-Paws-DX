@@ -2,7 +2,7 @@ function scr_choose_sound_variation(variations)
 {
     var valid_variations = [];
     
-    for (var i = 0; i < array_length_1d(variations); i++) 
+    for(var i = 0; i < array_length_1d(variations); i++) 
     {
         if (variations[i] > noone) 
         {

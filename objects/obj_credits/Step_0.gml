@@ -72,7 +72,7 @@ if (iris_xscale <= 0.01) {
 var action_accept = global.player_[inp.gp];
 var gamepad_skip_hold = false;
 
-for (var i = 1; i <= global.max_players; i += 1)
+for(var i = 1; i <= global.max_players; i += 1)
 {
 	if (gamepad_button_check(global.player_slot[i], action_accept[i][1][action.accept]))
 	|| (gamepad_button_check(global.player_slot[i], action_accept[i][2][action.accept]))

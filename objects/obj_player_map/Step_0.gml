@@ -63,7 +63,7 @@ draw_yscale = lerp(draw_yscale, 1, 0.1);
 #region /* Pause */
 var pause_player = 0;
 var pause_condition_met = false;
-for (var i = 1; i <= global.max_players; i += 1) {
+for(var i = 1; i <= global.max_players; i += 1) {
     if (gamepad_button_check_pressed(global.player_slot[i], gp_select) ||
         gamepad_button_check_pressed(global.player_slot[i], gp_start)) {
         pause_condition_met = true;
@@ -372,11 +372,10 @@ if (can_enter_level_automatically)
 					global.checkpoint_minute = checkpoint_minute;
 				}
 			}
-			global.big_collectible1 = instance_nearest(x, y, obj_level).big_collectible1;
-			global.big_collectible2 = instance_nearest(x, y, obj_level).big_collectible2;
-			global.big_collectible3 = instance_nearest(x, y, obj_level).big_collectible3;
-			global.big_collectible4 = instance_nearest(x, y, obj_level).big_collectible4;
-			global.big_collectible5 = instance_nearest(x, y, obj_level).big_collectible5;
+			for(var i = 1; i <= global.max_big_collectible; i += 1)
+			{
+				global.big_collectible[i] = instance_nearest(x, y, obj_level).big_collectible[i];
+			}
 			global.lives_until_assist = instance_nearest(x, y, obj_level).lives_until_assist;
 			global.increase_number_of_levels_cleared = instance_nearest(x, y, obj_level).increase_number_of_levels_cleared;
 		}

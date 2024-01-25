@@ -162,7 +162,7 @@ function scr_remapping_gamepad()
 	}
 	
 	var force_back = false;
-	for (var i = 1; i <= global.max_players; i += 1) {
+	for(var i = 1; i <= global.max_players; i += 1) {
 		if (i != remapping_player && gamepad_is_connected(global.player_slot[i])) {
 			if (gamepad_button_check(global.player_slot[i], global.player_[inp.gp][i][1][action.back])) {
 				force_back = true;

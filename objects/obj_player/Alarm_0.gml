@@ -207,7 +207,7 @@ if (can_initialize_custom_character)
 		var custom_sound_dir = working_directory + "custom_characters/" + character_name + "/" + sound_dir;
 		
 		var voice = noone;
-		for (var i = 0, len = array_length(sound_names); i < len && voice == noone; i++)
+		for(var i = 0, len = array_length(sound_names); i < len && voice == noone; i++)
 		{
 			var file_path = "characters/" + character_name + "/" + sound_dir + "/" + sound_names[i];
 			if (file_exists(file_path))

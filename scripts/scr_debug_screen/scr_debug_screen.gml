@@ -64,7 +64,7 @@ function scr_debug_screen()
 		}
 		
 		#region /* Show what objects are currently in the room */
-		for (var i = 0; i < 100; ++i;) {
+		for(var i = 0; i < 100; ++i;) {
 			if (instance_number(i) >= 1)
 			{
 				var all_instance_count_color = make_color_hsv(instance_number(i), 255, 255)
@@ -78,25 +78,25 @@ function scr_debug_screen()
 	
 	#region /* Controller ports */
 	global.playergame = 0;
-	for (var i = 1; i <= global.max_players; i += 1) { /* playergame needs to match how many of the player_can_play are set to true */
+	for(var i = 1; i <= global.max_players; i += 1) { /* playergame needs to match how many of the player_can_play are set to true */
 		if (global.player_can_play[i]) {
 			global.playergame += 1;
 		}
 	}
 	if (os_type == os_switch) {
 		if (!gamepad_is_connected(0)) {
-			for (var i = 1; i <= global.max_players; i += 1) {
+			for(var i = 1; i <= global.max_players; i += 1) {
 				global.player_slot[i] = i;
 			}
 		}
 		else {
-			for (var i = 1; i <= global.max_players; i += 1) {
+			for(var i = 1; i <= global.max_players; i += 1) {
 				global.player_slot[i] = i - 1;
 			}
 		}
 	}
 	else {
-		for (var i = 1; i <= global.max_players; i += 1) {
+		for(var i = 1; i <= global.max_players; i += 1) {
 			global.player_slot[i] = i - 1;
 		}
 	}
@@ -105,7 +105,7 @@ function scr_debug_screen()
 	if (global.debug_screen) {
 		
 		if (variable_instance_exists(self, "player_show_controls_alpha")) {
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				player_show_controls_alpha[i] = 0;
 			}
@@ -187,7 +187,7 @@ function scr_debug_screen()
 		#region /* X and Y position of player */
 		var get_player = noone;
 		if (instance_exists(obj_camera)) {
-			for (var i = 1; i <= global.max_players; i += 1) {
+			for(var i = 1; i <= global.max_players; i += 1) {
 				if (instance_exists(obj_camera.player[i])) {
 					var get_player = obj_camera.player[i];
 					break;
@@ -235,7 +235,7 @@ function scr_debug_screen()
 		
 		if (instance_exists(obj_camera)) {
 			
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				if (obj_camera.player[i] != noone)
 				{

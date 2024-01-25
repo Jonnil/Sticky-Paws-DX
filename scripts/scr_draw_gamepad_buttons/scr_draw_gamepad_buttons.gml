@@ -1,7 +1,7 @@
 function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale = 1, color = c_white, alpha = 1, xscale = 1, yscale = 1, what_player = global.player_slot[1])
 {
 	var controller_used_player;
-	for (var i = 1; i <= global.max_players; i += 1)
+	for(var i = 1; i <= global.max_players; i += 1)
 	{
 		if (what_player == global.player_slot[i])
 		{

@@ -11,11 +11,10 @@ if (file_exists(working_directory + "save_file/file" + string(global.file) + ".i
 	clear_rate = ini_read_string(level_name, "clear_rate", "closed");
 	number_of_defeats = ini_read_real(level_name, "number_of_defeats", 0);
 	number_of_clears = ini_read_real(level_name, "number_of_clears", 0);
-	big_collectible1 = ini_read_real(level_name, "big_collectible1", 0);
-	big_collectible2 = ini_read_real(level_name, "big_collectible2", 0);
-	big_collectible3 = ini_read_real(level_name, "big_collectible3", 0);
-	big_collectible4 = ini_read_real(level_name, "big_collectible4", 0);
-	big_collectible5 = ini_read_real(level_name, "big_collectible5", 0);
+	for(var i = 1; i <= global.max_big_collectible; i += 1)
+	{
+		big_collectible[i] = ini_read_real(level_name, "big_collectible" + string(i), 0);
+	}
 	lives_until_assist = ini_read_real(level_name, "lives_until_assist", 0);
 	checkpoint_x = ini_read_real(level_name, "checkpoint_x", 0);
 	checkpoint_y = ini_read_real(level_name, "checkpoint_y", 0);
@@ -37,11 +36,10 @@ else
 	clear_rate = "closed";
 	number_of_defeats = 0;
 	number_of_clears = 0;
-	big_collectible1 = false;
-	big_collectible2 = false;
-	big_collectible3 = false;
-	big_collectible4 = false;
-	big_collectible5 = false;
+	for(var i = 1; i <= global.max_big_collectible; i += 1)
+	{
+		big_collectible[i] = false;
+	}
 	lives_until_assist = 0;
 	checkpoint_x = false;
 	checkpoint_y = false;
@@ -61,4 +59,33 @@ if (always_open)
 && (clear_rate = "closed")
 {
 	clear_rate = "enter";
+}
+
+var all_big_collectibles = true;
+for(var i = 1; i <= global.max_big_collectible; i += 1)
+{
+	if (!big_collectible[i])
+	{
+		all_big_collectibles = false;
+		break; /* exit the loop if any big collectible is false */
+	}
+}
+if (clear_rate == "clear")
+{
+	image_alpha = 1;
+	if (all_big_collectibles) /* If every big collectibe has been collected, recognize that */
+	{
+		level_color = c_yellow;
+		level_perfect = true;
+	}
+	else
+	{
+		level_color = c_blue;
+	}
+}
+else
+if (clear_rate = "closed")
+{
+	image_alpha = 0.1;
+	level_color = c_black; /* Closed */
 }

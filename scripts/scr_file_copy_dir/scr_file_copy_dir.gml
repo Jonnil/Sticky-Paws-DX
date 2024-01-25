@@ -7,7 +7,7 @@ function scr_file_copy_dir(source, target)
   }
 
   /* Copy all files from source directory to target directory */
-  for (var fname = file_find_first(source + "/*.*", 0); fname != ""; fname = file_find_next();)
+  for(var fname = file_find_first(source + "/*.*", 0); fname != ""; fname = file_find_next();)
   {
 	  
     /* Don't include current/parent directory "matches": */

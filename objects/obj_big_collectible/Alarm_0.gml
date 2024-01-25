@@ -1,34 +1,9 @@
-if (big_collectible == 1)
-&& (global.big_collectible1)
+for(var i = 1; i <= global.max_big_collectible; i += 1)
 {
-	image_alpha = 0.5;
-	image_blend = c_gray;
-}
-else
-if (big_collectible == 2)
-&& (global.big_collectible2)
-{
-	image_alpha = 0.5;
-	image_blend = c_gray;
-}
-else
-if (big_collectible == 3)
-&& (global.big_collectible3)
-{
-	image_alpha = 0.5;
-	image_blend = c_gray;
-}
-else
-if (big_collectible == 4)
-&& (global.big_collectible4)
-{
-	image_alpha = 0.5;
-	image_blend = c_gray;
-}
-else
-if (big_collectible == 5)
-&& (global.big_collectible5)
-{
-	image_alpha = 0.5;
-	image_blend = c_gray;
+	if (big_collectible == i && global.big_collectible[i])
+	{
+		image_alpha = 0.5;
+		image_blend = c_gray;
+		break;
+	}
 }

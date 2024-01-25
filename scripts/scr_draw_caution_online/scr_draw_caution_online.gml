@@ -61,7 +61,7 @@ function scr_draw_caution_online()
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 			var no_players_can_play = true;
-			for (var i = 1; i <= global.max_players; i += 1) {
+			for(var i = 1; i <= global.max_players; i += 1) {
 			    if (global.player_can_play[i]) {
 			        no_players_can_play = false;
 			        break; /* exit the loop if any player can play */

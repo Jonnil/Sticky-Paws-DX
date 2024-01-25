@@ -2,11 +2,10 @@ alarm[0] = 2;
 alarm[1] = 4;
 always_open = false; /* If a level should always be open or not */
 direction_after_completion = 0; /* What direction the cake stealing enemy should run off */
-big_collectible1 = false;
-big_collectible2 = false;
-big_collectible3 = false;
-big_collectible4 = false;
-big_collectible5 = false;
+for(var i = 1; i <= global.max_big_collectible; i += 1)
+{
+	big_collectible[i] = false;
+}
 checkpoint_millisecond = 0;
 checkpoint_minute = 0;
 checkpoint_realmillisecond = 0;

@@ -6,7 +6,7 @@ function scr_generate_id(what_kind_of_id = "level")
 	
 	/* Generate the ID using a loop */
 	var generate_id = "";
-	for (var i = 0; i < id_length; i++)
+	for(var i = 0; i < id_length; i++)
 	{
 		var random_index = irandom_range(0, string_length(char_set));
 		generate_id += string_char_at(char_set, random_index);

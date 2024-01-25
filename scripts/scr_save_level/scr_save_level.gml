@@ -134,11 +134,10 @@ function scr_save_level()
 		
 	}
 	
-	global.big_collectible1_already_collected = false;
-	global.big_collectible2_already_collected = false;
-	global.big_collectible3_already_collected = false;
-	global.big_collectible4_already_collected = false;
-	global.big_collectible5_already_collected = false;
+	for(var i = 1; i <= global.max_big_collectible; i += 1)
+	{
+		global.big_collectible_already_collected[i] = false;
+	}
 	global.timeattack_realmillisecond = 0;
 	global.timeattack_millisecond = 0;
 	global.timeattack_second = 0;

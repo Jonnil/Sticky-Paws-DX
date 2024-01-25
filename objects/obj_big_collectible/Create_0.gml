@@ -1,4 +1,4 @@
-alarm[0] = 2;
+alarm[0] = 5;
 depth = +10;
 sprite_index = global.resource_pack_sprite_big_collectible;
 image_index = global.collectible_image_index;

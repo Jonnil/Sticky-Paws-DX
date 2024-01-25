@@ -2,6 +2,7 @@
 can_enter_level_automatically = true;
 #endregion /* Debug toggles END */
 
+global.max_big_collectible = 5; /* Main game only have 5 big collectibles in each level */
 full_level_map_screenshot_timer = 0;
 
 room_speed = global.max_fps;
@@ -22,11 +23,10 @@ scr_delete_sprite_properly(global.custom_foreground1_5);
 scr_delete_sprite_properly(global.custom_foreground2);
 scr_delete_sprite_properly(global.custom_foreground_secret);
 
-gamepad_set_vibration(0, 0, 0);
-gamepad_set_vibration(1, 0, 0);
-gamepad_set_vibration(2, 0, 0);
-gamepad_set_vibration(3, 0, 0);
-gamepad_set_vibration(4, 0, 0);
+for(var i = 1; i <= global.max_players + 1; i += 1)
+{
+	gamepad_set_vibration(i - 1, 0, 0);
+}
 
 mouse_x_position = device_mouse_x_to_gui(0);
 mouse_y_position = device_mouse_y_to_gui(0);
@@ -55,7 +55,7 @@ else
 
 #region /* Play as custom character */
 
-for (var i = 1; i <= global.max_players; i += 1)
+for(var i = 1; i <= global.max_players; i += 1)
 {
 	if (global.player_can_play[i])
 	{

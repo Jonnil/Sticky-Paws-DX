@@ -74,7 +74,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	&& player_accept_selection[what_player] >= 0
 	&& sprite_exists(sprite_select_player)) {
 		var can_select = true;
-		for (var i = 1; i <= global.max_players; i += 1) {
+		for(var i = 1; i <= global.max_players; i += 1) {
 			if (i != what_player && can_input_player_name[i] != 0) {
 				can_select = false;
 				break;
@@ -378,7 +378,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	#region /* Tell the player the inputed name */
 	if (player_accept_selection[what_player] >= 0) {
 	    var can_select = true;
-	    for (var i = 1; i <= global.max_players; i += 1) {
+	    for(var i = 1; i <= global.max_players; i += 1) {
 	        if (can_input_player_name[i] != 0) {
 	            can_select = false;
 	            break;

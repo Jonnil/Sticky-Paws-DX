@@ -116,18 +116,6 @@ function scr_virtual_keys()
 				scr_initialize_virtual_button(global.player_[inp.key][1][1][action.dive], global.player_[inp.key][1][2][action.dive], mobile_key_run_x, mobile_key_run_y, spr_virtual_key_run, mobile_key_extra_deadzone);
 				#endregion /* Virtual key add END */
 				
-				#region /* Pause virtual key */
-				virtual_key_add(mobile_key_pause_x - 64, mobile_key_pause_y - 64, 128, 128, vk_escape); /* Virtual key add pause */
-				if (keyboard_check(vk_escape))
-				{
-					draw_sprite_ext(spr_virtual_key_pause, 0, mobile_key_pause_x, mobile_key_pause_y, 1.95, 1.95, 0, c_gray, 0.5);
-				}
-				else
-				{
-					draw_sprite_ext(spr_virtual_key_pause, 0, mobile_key_pause_x, mobile_key_pause_y, 2, 2, 0, c_white, 0.5);
-				}
-				#endregion /* Pause virtual key END */
-				
 				#region /* Zoom out virtual key */
 				virtual_key_add(mobile_key_zoom_out_x - 64, mobile_key_zoom_out_y - 64, 128, 128, vk_subtract); /* Virtual key add zoom out */
 				if (keyboard_check(vk_subtract))

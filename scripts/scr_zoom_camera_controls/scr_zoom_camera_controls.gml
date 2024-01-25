@@ -5,7 +5,7 @@ function scr_zoom_camera_controls()
 	var key_in_hold = noone;
 	var key_out_hold = noone;
 	
-	for (var i = 1; i <= global.max_players; i += 1)
+	for(var i = 1; i <= global.max_players; i += 1)
 	{
 		if (global.player_can_play[i])
 		{

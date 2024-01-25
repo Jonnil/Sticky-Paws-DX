@@ -35,7 +35,7 @@ function scr_player_move_goal()
 			if (just_hit_goal)
 			&& (!goal)
 			{
-				for (var i = 1; i <= global.max_players; i += 1)
+				for(var i = 1; i <= global.max_players; i += 1)
 				{
 				    if (!instance_exists(obj_camera.player[i]))
 				    {

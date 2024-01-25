@@ -104,7 +104,7 @@ if (menu == "load_characters")
 	
 	#region /* Player Automatically Join */
 	/* When going to the character select menu, game should remember what player entered the menu, and therefore should automatically join the game, as the game should already know for certain that player is already joining the game */
-	for (var p = 1; p <= global.max_players; p += 1)
+	for(var p = 1; p <= global.max_players; p += 1)
 	{
 		/* Player Key Accept Hold */ player_key_a_hold[p] = (gamepad_button_check(global.player_slot[p], global.player_[inp.gp][p][1][action.accept])) || (gamepad_button_check(global.player_slot[p], global.player_[inp.gp][p][2][action.accept])) || (keyboard_check(global.player_[inp.key][p][1][action.accept])) || (keyboard_check(global.player_[inp.key][p][2][action.accept]));
 		if (player_key_a_hold[p])
@@ -392,7 +392,7 @@ if (iris_xscale <= 0.01)
 		{
 			/* Save what characters are selected */
 			ini_open(working_directory + "save_file/config.ini");
-			for (var p = 1; p <= global.max_players; p += 1)
+			for(var p = 1; p <= global.max_players; p += 1)
 			{
 				ini_write_real("config", "character_index_player" + string(p), global.character_index[p - 1]);
 			}

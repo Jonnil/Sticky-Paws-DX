@@ -7,7 +7,7 @@ if (!global.actually_play_edited_level)
 		var grid_height = ds_grid_height(grid) - 1;
 		
 		var grid_object_index = -1;
-		for (var i = 0; i < grid_height; i++)
+		for(var i = 0; i < grid_height; i++)
 		{
 			if (object == grid[# 0, i])
 			{

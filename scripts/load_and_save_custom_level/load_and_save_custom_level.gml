@@ -12,7 +12,7 @@ function scr_load_object_placement_json()
 		if (global.level_name != "")
 		{
 			var directories = ["background", "data", "sound", "tilesets"];
-			for (var i = 0; i < array_length_1d(directories); i++)
+			for(var i = 0; i < array_length_1d(directories); i++)
 			{
 				var dir_path = global.use_cache_or_working + "custom_levels/" + global.level_name + "/" + directories[i];
 				if (!directory_exists(dir_path))
@@ -48,14 +48,14 @@ function scr_load_object_placement_json()
 		
 		var data = json_parse(json_string);
 		
-		for (var i = 0; i < array_length(data); i++)
+		for(var i = 0; i < array_length(data); i++)
 		{
 			var_struct = data[i];
 			ds_list_add(placed_objects_list, var_struct.O);
 			
 			if variable_struct_exists(var_struct, "L")
 			{
-				for (var j = 0; j <= var_struct.L; j += 1)
+				for(var j = 0; j <= var_struct.L; j += 1)
 				{
 					new_obj = instance_create_depth(real(var_struct.X) + real(32 * j), real(var_struct.Y), 0, obj_leveleditor_placed_object);
 					if (new_obj)
@@ -95,7 +95,7 @@ function scr_load_object_placement_json()
 			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 			
 			/* Iterate over the ds_list and write each element to the INI file */
-			for (var i = 0; i < ds_list_size(placed_objects_list); i++) {
+			for(var i = 0; i < ds_list_size(placed_objects_list); i++) {
 				var value = ds_list_find_value(placed_objects_list, i);
 				if (!ini_key_exists("Unlock Placable Objects", value))
 				{
@@ -224,7 +224,7 @@ function scr_save_level_information()
 			[obj_level_player3_start, "level_player3_start"],
 			[obj_level_player4_start, "level_player4_start"]
 		];
-		for (var i = 0; i < array_length_1d(player_starts); i++)
+		for(var i = 0; i < array_length_1d(player_starts); i++)
 		{
 			var player_start = player_starts[i];
 			ini_write_real("info", player_start[1] + "_x", player_start[0].x);
@@ -327,7 +327,7 @@ function scr_save_level_information()
 		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 		
 		/* Iterate over the ds_list and write each element to the INI file */
-		for (var i = 0; i < ds_list_size(placed_objects_list); i++) {
+		for(var i = 0; i < ds_list_size(placed_objects_list); i++) {
 			var value = ds_list_find_value(placed_objects_list, i);
 			ini_write_real("Unlock Placable Objects", value, 2);
 		}

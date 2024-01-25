@@ -50,7 +50,7 @@ function scr_player_move_pause() {
 			}
 			else
 			{
-				for (var i = 1; i <= global.max_players; i += 1)
+				for(var i = 1; i <= global.max_players; i += 1)
 				{
 				    if (global.player_can_play[i])
 				    {

@@ -2,7 +2,7 @@
 if (instance_exists(obj_camera))
 {
 	var set_alpha = 0;
-	for (var i = 1; i <= global.max_players; i += 1)
+	for(var i = 1; i <= global.max_players; i += 1)
 	{
 		if (obj_camera.player[i] > 0 && instance_exists(obj_camera.player[i]) && obj_camera.player[i].allow_wall_jump <= 0)
 		{
@@ -12,7 +12,7 @@ if (instance_exists(obj_camera))
 	}
 	if (set_alpha == 0)
 	{
-		for (var i = 1; i <= global.max_players; i += 1)
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			if (obj_camera.player[i] > 0 && instance_exists(obj_camera.player[i]) && obj_camera.player[i].wall_jump_setting <= 0)
 			{

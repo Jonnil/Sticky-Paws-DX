@@ -40,9 +40,7 @@ function scr_draw_mouse_cursor_sprite()
 	&& !erase_mode
 	&& !set_difficulty_mode
 	&& !pause
-	&& !point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2)
-	&& !point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)
-	&& !point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
+	&& !hovering_over_icon)
 	{
 		mouse_use_grab_cursor = true;
 		draw_sprite_ext(spr_cursor_grab, 0, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
@@ -54,9 +52,7 @@ function scr_draw_mouse_cursor_sprite()
 	&& (!pause)
 	|| (obj_level_end.drag_object)
 	&& (!pause)
-	&& (!point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-	&& (!point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-	&& (!point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
+	&& (!hovering_over_icon)
 	{
 		mouse_use_grab_cursor = true;
 		draw_sprite_ext(spr_cursor_grab, 1, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
@@ -66,10 +62,7 @@ function scr_draw_mouse_cursor_sprite()
 	else
 	
 	#region /* Default mouse cursor */
-	if (point_in_rectangle(cursor_x, cursor_y, 0, display_get_gui_height() - 64, always_show_level_editor_buttons_x + 32, room_height * 2))
-	&& (point_in_rectangle(cursor_x, cursor_y, display_get_gui_width() - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2))
-	&& (point_in_rectangle(cursor_x, cursor_y, grid_button_x - 32, 0, display_get_gui_width(), 64))
-	&& (pause)
+	if (hovering_over_icon || pause)
 	{
 		draw_sprite_ext(spr_cursor, erase_size, cursor_x, cursor_y, 1, 1, 0, c_white, 1);
 	}

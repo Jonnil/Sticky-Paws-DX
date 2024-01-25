@@ -153,7 +153,7 @@ function scr_draw_upload_character_menu()
 			global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
 			
 			var no_players_can_play = true;
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 			    if (global.player_can_play[i])
 			    {
@@ -516,7 +516,7 @@ function scr_draw_upload_character_menu()
 				global.character_select_in_this_menu = "main_game"; /* Play the official Level 1, always */
 				
 				var no_players_can_play = true;
-				for (var i = 1; i <= global.max_players; i += 1)
+				for(var i = 1; i <= global.max_players; i += 1)
 				{
 				    if (global.player_can_play[i])
 				    {

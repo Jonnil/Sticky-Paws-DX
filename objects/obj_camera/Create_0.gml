@@ -116,7 +116,7 @@ var fixed_player = 1;
 camera_player = fixed_player - 1;
 camera_selected_skin = global.skin_for_player[fixed_player];
 
-for (var i = 1; i <= global.max_players; i += 1)
+for(var i = 1; i <= global.max_players; i += 1)
 {
 	if (global.player_can_play[i])
 	{
@@ -187,7 +187,7 @@ scr_initialize_level_information_ini();
 
 #region /* Spawn Players */
 if (can_spawn_players) {
-	for (var i = 1; i <= global.max_players; i += 1) {
+	for(var i = 1; i <= global.max_players; i += 1) {
 		if (global.player_can_play[i]) {
 			if (i == 1) {
 				var object_level_start = obj_level_player1_start;

@@ -127,7 +127,7 @@ if (menu == "main_game")
 {
 	if (!in_settings)
 	{
-		for (var i = 1; i <= global.max_players; i += 1)
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			player_accept_selection[i] = - 1; /* Character select Accept Selection */
 			can_input_player_name[i] = 2; /* What player can enter a name */
@@ -219,7 +219,7 @@ if (!in_settings)
 			{
 				player_automatically_join[fixed_player] = true; /* Player 1 joins if you click Main Game */
 			}
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				global.player_can_play[i] = false;
 				player_accept_selection[i] = - 1;
@@ -251,7 +251,7 @@ if (!in_settings)
 			{
 				player_automatically_join[fixed_player] = true; /* Player 1 joins if you click Level Editor */
 			}
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				global.player_can_play[i] = false;
 				player_accept_selection[i] = - 1;

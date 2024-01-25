@@ -114,11 +114,10 @@ if (keyboard_check_pressed(vk_anykey))
 }
 #endregion /* Hide menu for clean screenshots END */
 
-gamepad_set_vibration(0, 0, 0);
-gamepad_set_vibration(1, 0, 0);
-gamepad_set_vibration(2, 0, 0);
-gamepad_set_vibration(3, 0, 0);
-gamepad_set_vibration(4, 0, 0);
+for(var i = 1; i <= global.max_players + 1; i += 1)
+{
+	gamepad_set_vibration(0, 0, 0);
+}
 
 #region /* Set screen size */
 camera_set_view_border(view_camera[view_current], 1920, 1080); /* View Border */

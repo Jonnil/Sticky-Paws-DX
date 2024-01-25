@@ -61,7 +61,7 @@ if (global.quit_level)
 		
 		#region /* Player availability check. These variables control player availability */
 		/* If certain players are not playing the level anymore, make them disconnect until they join manually again */
-		for (var i = 1; i <= global.max_players; i += 1)
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			if (!instance_exists(obj_camera.player[i]))
 			{
@@ -126,7 +126,7 @@ if (goal && global.time_countdown_bonus <= 0)
 		scr_save_level(); /* Important that you save all level information here, before going back to the map screen, but after setting level_clear_rate to clear */
 		
 		/* If certain player is no longer playing, make them dissapear from the game until they manually join the game again */
-		for (var i = 1; i <= global.max_players; i += 1)
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			if (!instance_exists(obj_camera.player[i]))
 			{

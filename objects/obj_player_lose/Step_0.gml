@@ -121,7 +121,7 @@ if (y > camera_get_view_y(view_camera[view_current]) + camera_get_view_height(vi
 		#region /* Re-enable the players for the camera */
 		if (instance_exists(obj_camera))
 		{
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				if (player == i)
 				{

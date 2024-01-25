@@ -35,7 +35,7 @@ function scr_character_select_menu_step()
 		var mouse_get_x = device_mouse_x_to_gui(0);
 		var mouse_get_y = device_mouse_y_to_gui(0);
 		
-		for (var i = 1; i <= global.max_players; i += 1)
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			/* Player Key Accept Pressed */ player_key_a_pressed[i] = (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][1][action.accept]))
 			|| (gamepad_button_check_pressed(global.player_slot[i], global.player_[inp.gp][i][2][action.accept]))
@@ -173,7 +173,7 @@ function scr_character_select_menu_step()
 		#endregion /* Start Game (run this code further up so that it takes priority) END */
 		
 		#region /* This is running step functions of character portrait for player */
-		for (var i = 1; i <= global.max_players; i += 1)
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			scr_character_portrait_for_player_step(i);
 		}
@@ -193,13 +193,13 @@ function scr_character_select_menu_step()
 		}
 		
 		#region /* Press enter when done typing on name input screen */
-		for (var i = 1; i <= global.max_players; i += 1)
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			if (global.clicking_ok_input_screen || global.clicking_cancel_input_screen)
 			&& (can_input_player_name[i] == 1 && menu_delay == 0 && menu_joystick_delay == 0)
 		    {
 		        menu_delay = 3;
-		        for (var j = 1; j <= global.max_players; j += 1)
+		        for(var j = 1; j <= global.max_players; j += 1)
 				{
 					can_input_player_name[j] = 2;
 				}
@@ -216,7 +216,7 @@ function scr_character_select_menu_step()
 		if (no_players_are_inputting_names)
 		{
 			
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				scr_character_select_player_navigation(i);
 			}
@@ -313,7 +313,7 @@ function scr_character_select_menu_step()
 			#region /* Accept */
 			
 			#region /* Select the character */
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				if (player_key_a_pressed[i] || i == 1 && keyboard_check_pressed(vk_space))
 				&& (player_menu[i] == "select_character")
@@ -397,7 +397,7 @@ function scr_character_select_menu_step()
 			#region /* If all players has selected a character, be able to start game */
 			var all_players_selected = true;
 			
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				if (player_accept_selection[i] == 0)
 				{
@@ -407,7 +407,7 @@ function scr_character_select_menu_step()
 			}
 			
 			player_start_game = false;
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				if (all_players_selected && player_accept_selection[i] == 1)
 				{
@@ -426,7 +426,7 @@ function scr_character_select_menu_step()
 			#region /* Back / Cancel Selection */
 			
 			#region /* Player Back / Cancel Selection */
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				if (player_key_b_pressed[i])
 				|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[i] - 100, get_window_height * 0.5 + 150 - 20, get_window_width * 0.5 + player_display_x[i] + 100, get_window_height * 0.5 + 150 + 20))
@@ -444,7 +444,7 @@ function scr_character_select_menu_step()
 			}
 			#endregion /* Player Back / Cancel Selection END */
 			
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				var player_key_a_pressed_back_from_character_select = player_key_a_pressed[i] && player_menu[i] == "back_from_character_select";
 			}
@@ -460,7 +460,7 @@ function scr_character_select_menu_step()
 					menu_delay = 3;
 					image_alpha = 1;
 					player_start_game = false;
-					for (var i = 1; i <= global.max_players; i += 1)
+					for(var i = 1; i <= global.max_players; i += 1)
 					{
 						can_input_player_name[i] = 2;
 						player_accept_selection[i] = -1;
@@ -488,7 +488,7 @@ function scr_character_select_menu_step()
 		menu_delay = clamp(menu_delay - 1, 0, +infinity);
 		
 		#region /* Menu navigation with joystick */
-		for (var i = 1; i <= global.max_players; i += 1)
+		for(var i = 1; i <= global.max_players; i += 1)
 		{
 			if (gamepad_axis_value(global.player_slot[i], gp_axislv) < -0.3)
 			|| (gamepad_axis_value(global.player_slot[i], gp_axislv) > +0.3)
@@ -516,7 +516,7 @@ function scr_character_select_menu_step()
 		{
 			
 			#region /* Player Join */
-			for (var i = 1; i <= global.max_players; i += 1)
+			for(var i = 1; i <= global.max_players; i += 1)
 			{
 				if (player_accept_selection[i] <= -1)
 				{

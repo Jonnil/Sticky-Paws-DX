@@ -397,7 +397,7 @@ function scr_draw_information_menu()
 					menu = "online_download_list_load";
 					information_menu_open = 0;
 					var any_player_can_play = false;
-					for (var i = 1; i <= global.max_players; i += 1) {
+					for(var i = 1; i <= global.max_players; i += 1) {
 						if (global.player_can_play[i]) { /* Check if any player can play */
 					        any_player_can_play = true;
 					        break; /* exit the loop if any player can play */

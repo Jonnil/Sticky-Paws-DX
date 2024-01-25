@@ -119,7 +119,7 @@ if (instance_exists(obj_player))
 					&& (instance_exists(obj_player)) {
 						sprite_index = spr_checkpoint_activated;
 						image_speed = 0;
-						for (var i = 1; i <= global.max_players; i += 1) {
+						for(var i = 1; i <= global.max_players; i += 1) {
 							if (checkpoint_what_player == i &&
 								obj_camera.player[i] > 0 &&
 								instance_exists(obj_camera.player[i]) &&
