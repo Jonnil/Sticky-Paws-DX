@@ -1,5 +1,5 @@
 if (!die_volting)
-|| (!die)
+&& (!die)
 {
 	if (sliding_along_ground == -1)
 	&& (flat)

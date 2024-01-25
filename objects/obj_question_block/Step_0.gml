@@ -161,6 +161,7 @@ if (instance_exists(obj_player))
 #region /* Collision Event with enemy bowlingball */
 if (instance_exists(obj_enemy_bowlingball))
 && (distance_to_object(obj_enemy_bowlingball) < 32)
+&& (!instance_nearest(x, y, obj_enemy_bowlingball).die)
 {
 	if (!bounce_up)
 	{

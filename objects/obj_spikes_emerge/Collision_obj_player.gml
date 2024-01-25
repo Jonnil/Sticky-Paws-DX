@@ -37,7 +37,7 @@ if (image_angle == 0)
 				{
 					hp --;
 				}
-				taken_damage = 100;
+				taken_damage = 200; /* Invincibility frames */
 			}
 		}
 	}

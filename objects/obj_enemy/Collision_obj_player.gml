@@ -193,7 +193,7 @@ if (!die)
 			{
 				other.hp --;
 			}
-			other.taken_damage = 100;
+			other.taken_damage = 200; /* Invincibility frames */
 			scr_gamepad_vibration(other.player, 1, 10);
 		}
 	}

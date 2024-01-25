@@ -12,7 +12,7 @@ with(other)
 		stick_to_wall = false;
 		crouch = false;
 		speed_max = 8;
-		taken_damage = 100;
+		taken_damage = 200; /* Invincibility frames */
 		if (invincible_timer == 0)
 		{
 			hp --;

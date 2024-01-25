@@ -442,7 +442,7 @@ if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom
 		{
 			hp --;
 		}
-		taken_damage = 100;
+		taken_damage = 200; /* Invincibility frames */
 	}
 }
 #endregion /* If you touch spikes, take damage END */
@@ -645,7 +645,7 @@ else
 #region /* Health Handeling */
 if (taken_damage > 0)
 {
-	taken_damage -= 0.5;
+	taken_damage -= 1;
 }
 
 #region /* Make the player die if you have 0 HP */

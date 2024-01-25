@@ -1,5 +1,6 @@
 #region /* Collision Event with enemy */
 if (!bounce_up)
+&& (!other.die)
 {
 	if (instance_exists(obj_enemy))
 	&& (place_meeting(x, bbox_bottom, obj_enemy))

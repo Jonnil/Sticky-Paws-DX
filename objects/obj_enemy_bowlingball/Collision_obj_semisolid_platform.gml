@@ -1,5 +1,5 @@
 if (!die_volting)
-|| (!die)
+&& (!die)
 {
 	
 	#region /* Push out of the solid object */

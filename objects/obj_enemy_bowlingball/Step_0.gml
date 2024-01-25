@@ -34,6 +34,7 @@ else
 	&& (!position_meeting(bbox_right, bbox_bottom + 1, obj_semisolid_platform))
 	&& (x - 32 < camera_get_view_x(view_camera[view_current]) + camera_get_view_width(view_camera[view_current]))
 	&& (x + 32 > camera_get_view_x(view_camera[view_current]))
+	|| (die)
 	{
 		gravity = 0.5; /* The gravity */
 	}
@@ -265,6 +266,7 @@ else
 	}
 }
 if (!flat)
+&& (!die)
 {
 	if (image_xscale < 0)
 	{
@@ -300,6 +302,7 @@ if (!flat)
 }
 
 if (!blind)
+&& (!die)
 && (place_meeting(x, y + 1, obj_wall) || position_meeting(x, bbox_bottom + 1, obj_semisolid_platform))
 {
 	if (!place_meeting(x + 5, y + 1, obj_wall))

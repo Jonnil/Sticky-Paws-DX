@@ -37,7 +37,7 @@ function scr_player_move_drowning()
 				{
 					hp --;
 				}
-				taken_damage = 100;
+				taken_damage = 200; /* Invincibility frames */
 				scr_gamepad_vibration(player, 1, 10);
 			}
 		}

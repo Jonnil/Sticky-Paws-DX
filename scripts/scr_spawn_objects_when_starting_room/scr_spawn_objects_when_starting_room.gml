@@ -288,8 +288,8 @@ function scr_spawn_objects_when_starting_room()
 			        instance_create_depth(x, y, 0, obj_big_collectible_number);
 			        if (instance_exists(obj_big_collectible_number)) {
 			            with(obj_big_collectible_number) {
-			                big_collectible_max_number = instance_number(obj_big_collectible_number);
-							global.max_big_collectible = instance_number(obj_big_collectible_number);
+			                big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
+							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
 			            }
 			        }
 			        break;
@@ -314,8 +314,8 @@ function scr_spawn_objects_when_starting_room()
 					{
 						with(obj_big_collectible_number)
 						{
-							big_collectible_max_number = instance_number(obj_big_collectible_number);
-							global.max_big_collectible = instance_number(obj_big_collectible_number);
+							big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
+							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
@@ -340,8 +340,8 @@ function scr_spawn_objects_when_starting_room()
 					{
 						with(obj_big_collectible_number)
 						{
-							big_collectible_max_number = instance_number(obj_big_collectible_number);
-							global.max_big_collectible = instance_number(obj_big_collectible_number);
+							big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
+							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
@@ -446,8 +446,8 @@ function scr_spawn_objects_when_starting_room()
 					{
 						with(obj_big_collectible_number)
 						{
-							big_collectible_max_number = instance_number(obj_big_collectible_number);
-							global.max_big_collectible = instance_number(obj_big_collectible_number);
+							big_collectible_max_number = min(instance_number(obj_big_collectible_number), 99);
+							global.max_big_collectible = min(instance_number(obj_big_collectible_number), 99);
 						}
 					}
 					#endregion /* Tell the player how many big collectibles exist in the level END */
