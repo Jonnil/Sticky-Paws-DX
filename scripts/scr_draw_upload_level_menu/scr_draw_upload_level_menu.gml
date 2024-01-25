@@ -1958,6 +1958,7 @@ function scr_draw_upload_level_menu()
 	&& (iris_xscale <= 0.01)
 	&& (global.character_select_in_this_menu == "level_editor")
 	&& (!loading_assets)
+	&& (!can_navigate)
 	{
 		if (audio_is_playing(title_music))
 		{

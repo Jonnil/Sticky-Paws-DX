@@ -5,6 +5,7 @@ if (!global.actually_play_edited_level)
 		if (!obj_leveleditor.pause)
 		&& (obj_leveleditor.mouse_use_grab_cursor)
 		&& (!obj_leveleditor.drag_object)
+		&& (obj_leveleditor.quit_level_editor == 0)
 		{
 			hover_over_object_indicator = true;
 		}

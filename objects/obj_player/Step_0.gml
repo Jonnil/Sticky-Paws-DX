@@ -154,6 +154,7 @@ if (goal && global.time_countdown_bonus <= 0)
 			scr_update_all_backgrounds();
 			global.part_limit = 0; /* How many objects are currently placed in the level editor */
 			global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
+			
 			var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
 				room_goto(rm_leveleditor); /* Go to another level if you're supposed to go to other levels after completion */
 			}, [], 1);

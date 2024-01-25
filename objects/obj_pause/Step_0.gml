@@ -144,7 +144,7 @@ if (menu_cursor_index > 4)
 if (unpause)
 {
 	scr_delete_sprite_properly(global.pause_screenshot);
-	room_goto(global.pause_room); /* Go back to room where you paused. You want to use room_goto, not room = global.pause_room, as that makes it go to incorrect rooms */
+	room_goto(global.pause_room); /* Go back to room where you paused. You want to use "room goto", not room = global.pause_room, as that makes it go to incorrect rooms */
 }
 
 #region /* Show loading icon and reset level */

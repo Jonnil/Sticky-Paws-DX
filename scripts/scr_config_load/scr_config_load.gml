@@ -6,15 +6,15 @@ function scr_config_load()
 		
 		if (variable_instance_exists(self, "inform_about_report_feature"))
 		{
-			if (ini_key_exists("config", "inform_about_report_feature")){inform_about_report_feature = ini_read_real("config", "inform_about_report_feature", true);}
+			inform_about_report_feature = ini_read_real("config", "inform_about_report_feature", true);
 		}
 		if (variable_instance_exists(self, "upload_rules_do_not_show_level"))
 		{
-			if (ini_key_exists("config", "upload_rules_do_not_show_level")){upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);}
+			upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
 		}
 		if (variable_instance_exists(self, "upload_rules_do_not_show_character"))
 		{
-			if (ini_key_exists("config", "upload_rules_do_not_show_character")){upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);}
+			upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
 		}
 		if (ini_key_exists("config", "caution_online_do_not_show")){global.online_enabled = ini_read_real("config", "caution_online_do_not_show", false);}
 		if (ini_key_exists("config", "always_show_level_editor_buttons")){global.always_show_level_editor_buttons = ini_read_real("config", "always_show_level_editor_buttons", true);}

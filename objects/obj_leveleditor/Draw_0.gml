@@ -23,7 +23,7 @@ if (!global.actually_play_edited_level)
 	
 	#region /* Draw where player will do playtesting from */
 	if (global.sprite_player_stand[4] > 0) /* Display Player 4 behind Player 3 */
-	&& (!quit_level_editor)
+	&& (quit_level_editor == 0)
 	{
 		if (pressing_play_timer > 0)
 		&& (global.player_can_play[4])
@@ -39,7 +39,7 @@ if (!global.actually_play_edited_level)
 		draw_sprite_ext(global.sprite_player_stand[4], 0, sprite_player_stand_x, sprite_player_stand_y, 1, 1, 0, c_white, 0.5);
 	}
 	if (global.sprite_player_stand[3] > 0) /* Display Player 3 on top of Player 4 */
-	&& (!quit_level_editor)
+	&& (quit_level_editor == 0)
 	{
 		if (pressing_play_timer > 0)
 		&& (global.player_can_play[3])
@@ -55,7 +55,7 @@ if (!global.actually_play_edited_level)
 		draw_sprite_ext(global.sprite_player_stand[3], 0, sprite_player_stand_x, sprite_player_stand_y, 1, 1, 0, c_white, 0.5);
 	}
 	if (global.sprite_player_stand[2] > 0) /* Display Player 2 on top of Player 3 */
-	&& (!quit_level_editor)
+	&& (quit_level_editor == 0)
 	{
 		if (pressing_play_timer > 0)
 		&& (global.player_can_play[2])
@@ -71,7 +71,7 @@ if (!global.actually_play_edited_level)
 		draw_sprite_ext(global.sprite_player_stand[2], 0, sprite_player_stand_x, sprite_player_stand_y, 1, 1, 0, c_white, 0.5);
 	}
 	if (global.sprite_player_stand[1] > 0) /* Display Player 1 on top of Player 2 */
-	&& (!quit_level_editor)
+	&& (quit_level_editor == 0)
 	{
 		if (pressing_play_timer > 0)
 		&& (global.player_can_play[1])

@@ -489,6 +489,10 @@ if (!global.actually_play_edited_level)
 	if (file_exists("save_file/config.ini"))
 	{
 		ini_open(working_directory + "save_file/config.ini");
+		
+		upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
+		upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
+		
 		if (ini_key_exists("config", "select_level_editing_music"))
 		{
 			global.selected_level_editing_music = ini_read_real("config", "select_level_editing_music", 1); /* The selected background music when editing in the level editor */
@@ -627,7 +631,7 @@ if (!global.actually_play_edited_level)
 	fill_mode = false; /* When filling, this turns true */
 	fill_mode_type = "fill"; /* What type of filling you will do. Fill, Horizontal, Vertical */
 	can_input_level_name = false;
-	quit_level_editor = false;
+	quit_level_editor = 0;
 	menu_joystick_delay = 0;
 	menu_cursor_index = 0;
 	in_settings = false;

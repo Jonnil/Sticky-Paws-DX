@@ -817,10 +817,6 @@ if (menu == "quit")
 
 #endregion /* Accept END */
 
-scr_debug_screen();
-scr_draw_darken_screen_when_window_is_unfocused();
-scr_draw_cursor_mouse();
-
 #region /* Have a black screen at the first frame so transitions look natural */
 if (black_screen_at_start_delay < 1)
 {
@@ -907,3 +903,7 @@ if (global.enable_transitions)
 	}
 }
 #endregion /* Draw Iris Transitions END */
+
+scr_debug_screen();
+scr_draw_darken_screen_when_window_is_unfocused();
+scr_draw_cursor_mouse();

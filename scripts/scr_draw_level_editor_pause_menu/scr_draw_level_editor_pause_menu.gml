@@ -47,7 +47,7 @@ function scr_draw_level_editor_pause_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					quit_level_editor = false;
+					quit_level_editor = 0;
 					can_input_level_name = false;
 					pause = false;
 					can_navigate = false;
@@ -101,7 +101,7 @@ function scr_draw_level_editor_pause_menu()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				quit_level_editor = false;
+				quit_level_editor = 0;
 				can_input_level_name = false;
 				pause = false;
 			}
@@ -127,7 +127,7 @@ function scr_draw_level_editor_pause_menu()
 					if (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
-						quit_level_editor = false;
+						quit_level_editor = 0;
 						can_input_level_name = false;
 						pause = false;
 					}
@@ -144,7 +144,7 @@ function scr_draw_level_editor_pause_menu()
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				quit_level_editor = false;
+				quit_level_editor = 0;
 				can_input_level_name = false;
 				pause = true;
 				can_navigate = true;
@@ -175,7 +175,7 @@ function scr_draw_level_editor_pause_menu()
 				{
 					if (menu_delay == 0 && menu_joystick_delay == 0)
 					{
-						quit_level_editor = false;
+						quit_level_editor = 0;
 						can_input_level_name = false;
 						pause = true;
 						can_navigate = true;
@@ -189,7 +189,7 @@ function scr_draw_level_editor_pause_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					quit_level_editor = false;
+					quit_level_editor = 0;
 					can_input_level_name = false;
 					pause = false;
 					can_navigate = false;
@@ -212,7 +212,7 @@ function scr_draw_level_editor_pause_menu()
 			&& (keyboard_check_pressed(vk_enter))
 			{
 				level_editor_option_back_to_menu = ""; /* Reset this variable to nothing */
-				quit_level_editor = false;
+				quit_level_editor = 0;
 				can_input_level_name = false;
 				pause = true;
 				can_navigate = true;
@@ -249,7 +249,7 @@ function scr_draw_level_editor_pause_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					quit_level_editor = false;
+					quit_level_editor = 0;
 					can_input_level_name = false;
 					pause = false;
 					can_navigate = false;
@@ -268,7 +268,7 @@ function scr_draw_level_editor_pause_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					quit_level_editor = false;
+					quit_level_editor = 0;
 					can_input_level_name = false;
 					pause = true;
 					menu = "generate_level_map_yes";
@@ -296,7 +296,7 @@ function scr_draw_level_editor_pause_menu()
 						if (menu_delay == 0 && menu_joystick_delay == 0)
 						{
 							menu_delay = 3;
-							quit_level_editor = false;
+							quit_level_editor = 0;
 							can_input_level_name = false;
 							pause = true;
 							menu = "generate_level_map_yes";
@@ -306,7 +306,7 @@ function scr_draw_level_editor_pause_menu()
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
-						quit_level_editor = false;
+						quit_level_editor = 0;
 						can_input_level_name = false;
 						pause = false;
 						can_navigate = false;
@@ -383,7 +383,7 @@ function scr_draw_level_editor_pause_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					quit_level_editor = false;
+					quit_level_editor = 0;
 					can_input_level_name = false;
 					pause = false;
 					can_navigate = false;
@@ -407,7 +407,7 @@ function scr_draw_level_editor_pause_menu()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				quit_level_editor = true;
+				quit_level_editor = 1;
 				can_input_level_name = false;
 				pause = false;
 			}
@@ -431,7 +431,7 @@ function scr_draw_level_editor_pause_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					quit_level_editor = false;
+					quit_level_editor = 0;
 					can_input_level_name = false;
 					pause = false;
 					can_navigate = false;
@@ -504,7 +504,7 @@ function scr_draw_level_editor_pause_menu()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				quit_level_editor = false;
+				quit_level_editor = 0;
 				can_input_level_name = false;
 				pause = false;
 				global.full_level_map_screenshot = true;
@@ -531,7 +531,7 @@ function scr_draw_level_editor_pause_menu()
 					if (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
-						quit_level_editor = false;
+						quit_level_editor = 0;
 						can_input_level_name = false;
 						pause = false;
 						global.full_level_map_screenshot = true;
@@ -541,7 +541,7 @@ function scr_draw_level_editor_pause_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					quit_level_editor = false;
+					quit_level_editor = 0;
 					can_input_level_name = false;
 					pause = true;
 					menu = "generate_level_map";
@@ -559,7 +559,7 @@ function scr_draw_level_editor_pause_menu()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				quit_level_editor = false;
+				quit_level_editor = 0;
 				can_input_level_name = false;
 				pause = true;
 				menu = "generate_level_map";
@@ -586,7 +586,7 @@ function scr_draw_level_editor_pause_menu()
 					if (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
-						quit_level_editor = false;
+						quit_level_editor = 0;
 						can_input_level_name = false;
 						pause = true;
 						menu = "generate_level_map";
@@ -596,7 +596,7 @@ function scr_draw_level_editor_pause_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					quit_level_editor = false;
+					quit_level_editor = 0;
 					can_input_level_name = false;
 					pause = true;
 					menu = "generate_level_map";
@@ -622,7 +622,7 @@ function scr_draw_level_editor_pause_menu()
 				{
 					menu_delay = 3;
 					can_input_level_name = false;
-					quit_level_editor = false;
+					quit_level_editor = 0;
 					pause = true;
 					menu = "enter_level_name";
 				}

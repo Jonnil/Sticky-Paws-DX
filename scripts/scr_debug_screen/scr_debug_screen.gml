@@ -381,16 +381,11 @@ function scr_debug_screen()
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "timeattack_realmillisecond: " + string(global.timeattack_realmillisecond), global.default_text_size, c_black, c_white);
 		
-		if (variable_instance_exists(self, "data"))
+		if (variable_instance_exists(self, "upload_rules_do_not_show_level"))
 		{
 			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "data: " + string(data), global.default_text_size, c_black, c_white);
+			scr_draw_text_outlined(32, debug_text_y, "upload_rules_do_not_show_level: " + string(upload_rules_do_not_show_level), global.default_text_size, c_black, c_white);
 		}
-		//if (variable_instance_exists(self, "info_data"))
-		//{
-		//	debug_text_y += 20;
-		//	scr_draw_text_outlined(32, debug_text_y, "info_data: " + string(info_data), global.default_text_size, c_black, c_white);
-		//}
 		
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "current_datetime: " + string(date_datetime_string(date_current_datetime())), global.default_text_size, c_black, c_white);

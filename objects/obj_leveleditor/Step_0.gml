@@ -1759,7 +1759,7 @@ if (!global.actually_play_edited_level)
 	#endregion /* Pause virtual key END */
 	
 	#region /* End Game */
-	if (quit_level_editor >= true)
+	if (quit_level_editor >= 1)
 	{
 		quit_level_editor ++;
 		instance_activate_all(); /* Activate all instances before saving the custom level */
@@ -1841,7 +1841,7 @@ if (!global.actually_play_edited_level)
 	#endregion /* End Game END */
 	
 	#region /* Press Pause Button */
-	if (!quit_level_editor)
+	if (quit_level_editor == 0)
 	&& (!pause)
 	&& (!in_modify_object_menu)
 	&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1912,7 +1912,7 @@ if (!global.actually_play_edited_level)
 			#endregion /* Get what custom assets are in the level END */
 			
 			global.pause_room = rm_leveleditor;
-			quit_level_editor = false;
+			quit_level_editor = 0;
 			can_input_level_name = false;
 			input_key = false;
 			menu = "continue";
@@ -1981,7 +1981,7 @@ if (!global.actually_play_edited_level)
 	selected_object_menu_x = lerp(selected_object_menu_x, selected_object_menu_actual_x, 0.3); /* Lerp the object selection scrolling */
 }
 
-if (!global.actually_play_edited_level && !quit_level_editor)
+if (!global.actually_play_edited_level && quit_level_editor == 0)
 {
 	
 	#region /* Undo and Redo icon */

@@ -7,14 +7,7 @@ function scr_automatic_screenshot()
 	
 	/* Step 1: Capture the fullscreen screenshot */
 	/* Try and prevent the screenshot to capture outside the level */
-	if (instance_exists(obj_level_width) && instance_exists(obj_level_height))
-	{
-		var screenshot = surface_create(min(display_get_gui_width(), obj_level_width.x), min(display_get_gui_height(), obj_level_height.y));
-	}
-	else
-	{
-		var screenshot = surface_create(display_get_gui_width(), display_get_gui_height());
-	}
+	var screenshot = surface_create(min(1920, display_get_gui_width()), min(1080, display_get_gui_height()));
 	surface_set_target(screenshot);
 	draw_surface(application_surface, 0, 0);
 	surface_reset_target();

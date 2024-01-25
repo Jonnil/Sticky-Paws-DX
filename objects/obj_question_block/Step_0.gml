@@ -141,6 +141,7 @@ if (instance_exists(obj_player))
 			if (!empty)
 			{
 				instance_nearest(x, y, obj_player).dive = false;
+				instance_nearest(x, y, obj_player).vspeed = +4;
 				if (instance_exists(obj_player))
 				{
 					scr_gamepad_vibration(instance_nearest(x, y, obj_player).player, 0.4, 10);
