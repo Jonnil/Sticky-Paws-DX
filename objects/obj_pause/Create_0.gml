@@ -1,13 +1,6 @@
 #region /* Set variables for character select in pause menu */
 for(var p = 1; p <= global.max_players; p += 1) {
-	if (global.player_can_play[p])
-	{
-		player_accept_selection[p] = 0;
-	}
-	else
-	{
-		player_accept_selection[p] = -1;
-	}
+	player_accept_selection[p] = -1;
 	player_automatically_join[p] = false;
 	player_menu[p] = "select_character";
 	can_input_player_name[p] = 2; /* What player can enter a name */
@@ -147,8 +140,6 @@ if (global.narrator >= 0)
 
 #endregion /* Narrator Voice variable handeling END */
 
-pause_text_alpha = 0;
-pause_text_lerp = 1;
 menu = "continue";
 menu_delay = 3;
 last_key = noone;

@@ -317,7 +317,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 	global.player_profile[i] = 0; /* Remap Profiles */
 	global.chosen_controller_used[i] = 0; /* What controller buttons to use for button prompts. 0 = autodetect, 1 = xboxone, 2 = xboxseriesxs, 3 = nintendoswitch, 4 = playstation4, 5 = playstation5 */
 	global.character_for_player[i] = string(character_for_unassigned_player_default); /* Player Select Character */
-	global.skin_for_player[i] = global.actual_skin_for_player[i]; /* In case the player selected a character that doesn't have skins, use this variable */
+	global.skin_for_player[i] = i - 1; /* In case the player selected a character that doesn't have skins, use this variable */
 }
 #endregion /* Automatic assigned player variables for every player END */
 

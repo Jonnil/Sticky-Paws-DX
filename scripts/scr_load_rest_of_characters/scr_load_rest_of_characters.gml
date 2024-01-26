@@ -10,6 +10,7 @@ function scr_load_rest_of_characters()
 		if (player_key_a_hold[p] || p == 1 && keyboard_check(vk_space))
 		{
 			if (player_accept_selection[p] == -1)
+			|| (global.player_can_play[p])
 			{
 				player_automatically_join[p] = true;
 			}

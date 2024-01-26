@@ -256,6 +256,24 @@ function scr_character_select_menu_draw()
 						draw_roundrect_color_ext(player_join_x - 150, player_join_y - 32, player_join_x + 150, player_join_y + 32, 50, 50, c_white, c_white, false);
 						draw_set_alpha(1);
 						var player_join_outline_color = c_white;
+						
+						#region /* Join game when clicking the join text */
+						if (mouse_check_button_released(mb_left))
+						{
+							character_portrait_for_player_update_directory[i] = true;
+							player_automatically_join[i] = false;
+							player_menu[i] = "select_character";
+							if (i == 1)
+							{
+								menu = "select_character";
+							}
+							menu_delay = 3;
+							player_accept_selection[i] = 0;
+							global.character_index[i - 1] = clamp(global.character_index[i - 1], 0, ds_list_size(global.all_loaded_characters) - 1);
+							scr_change_character_portrait();
+						}
+						#endregion /* Join game when clicking the join text END */
+						
 					}
 					else
 					{

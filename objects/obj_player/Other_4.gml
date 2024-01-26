@@ -17,6 +17,9 @@ if (global.character_for_player[player] != custom_character)
 || (global.voicepack_for_player[player] != selected_voice_pack)
 || (global.skin_for_player[player] != selected_skin)
 {
+	custom_character = global.character_for_player[player];
+	selected_voice_pack = global.voicepack_for_player[player];
+	selected_skin = global.skin_for_player[player];
 	scr_player_initialize_custom_character(); /* Reset all player variables before reloading character */
 	alarm[0] = 1;
 }

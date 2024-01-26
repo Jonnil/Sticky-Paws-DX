@@ -1,3 +1,4 @@
+show_message("bruh");
 for(var i = 1; i <= global.max_players; i += 1)
 {
 	var what_player = i;

@@ -195,7 +195,17 @@ function scr_character_select_menu_step()
 								player_accept_selection[i] = 0;
 							}
 						}
-						menu = "change_character";
+						
+						#region /* Return to game */
+						audio_resume_all();
+						audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
+						audio_sound_gain(global.music_underwater, 0, 0);
+						audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
+						audio_sound_gain(global.ambience_underwater, 0, 0);
+						global.pause = false;
+						unpause = true;
+						#endregion /* Return to game END */
+						
 					}
 				}
 			}
@@ -562,16 +572,8 @@ function scr_character_select_menu_step()
 			{
 				if (player_accept_selection[i] <= -1)
 				{
-					if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[i] - 150, get_window_height * 0.5 - 32, get_window_width * 0.5 + player_display_x[i] + 150, get_window_height * 0.5 + 32))
-					&& (global.controls_used_for_navigation == "mouse")
-					{
-						player_menu[i] = "select_character";
-						menu = "select_character";
-					}
 					if (player_key_a_pressed[i] || i == 1 && keyboard_check_pressed(vk_space))
 					|| (player_automatically_join[i])
-					|| (mouse_check_button_released(mb_left))
-					&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[i] - 150, get_window_height * 0.5 - 32, get_window_width * 0.5 + player_display_x[i] + 150, get_window_height * 0.5 + 32))
 					{
 						if (i == fixed_player)
 						&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -584,7 +586,6 @@ function scr_character_select_menu_step()
 						|| (menu_delay == 0 && menu_joystick_delay == 0)
 						{
 							character_portrait_for_player_update_directory[i] = true;
-							alarm[0] = 1;
 							player_automatically_join[i] = false;
 							player_menu[i] = "select_character";
 							if (i == 1)
@@ -594,6 +595,7 @@ function scr_character_select_menu_step()
 							menu_delay = 3;
 							player_accept_selection[i] = 0;
 							global.character_index[i - 1] = clamp(global.character_index[i - 1], 0, ds_list_size(global.all_loaded_characters) - 1);
+							scr_change_character_portrait();
 						}
 					}
 				}

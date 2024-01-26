@@ -136,10 +136,20 @@ function scr_character_manage_menu_draw()
 		var character_name_y, copy_character_y, delete_character_y, upload_character_y, open_character_folder_y;
 
 		if (global.enable_open_custom_folder) {
-		    character_name_y = get_window_height - (42 * 6);
+		    if (global.free_communication_available) {
+				character_name_y = get_window_height - (42 * 5);
+			}
+			else {
+				character_name_y = get_window_height - (42 * 4);
+			}
 		    open_character_folder_y = get_window_height - 42;
 		} else {
-		    character_name_y = get_window_height - (42 * 5);
+			if (global.free_communication_available) {
+				character_name_y = get_window_height - (42 * 4);
+			}
+			else {
+				character_name_y = get_window_height - (42 * 3);
+			}
 		    open_character_folder_y = -9999;
 		}
 
@@ -159,7 +169,9 @@ function scr_character_manage_menu_draw()
 		    upload_character_y = -9999;
 		}
 		
-		if string_ends_with(string(character_name), " - Copy")
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		if (string_ends_with(string(character_name), " - Copy"))
 		{
 			/* Show that the character is a copy */
 			scr_draw_text_outlined(get_window_width * 0.5 + player_display_x[fixed_player], character_name_y + scr_wave(0, 2, 0.5, 0), string(character_name), global.default_text_size, c_menu_outline, c_lime, 1);

@@ -40,6 +40,7 @@ if (hide_menu_for_clean_screenshots_timer < 60 * 3)
 	}
 }
 if (menu != "continue")
+&& (menu != "change_character")
 && (menu != "edit_level")
 && (menu != "options")
 && (menu != "restart")

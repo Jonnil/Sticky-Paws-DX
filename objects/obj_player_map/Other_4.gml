@@ -13,6 +13,10 @@ if (global.character_for_player[player] != custom_character)
 || (global.voicepack_for_player[player] != selected_voice_pack)
 || (global.skin_for_player[player] != selected_skin)
 {
+	custom_character = global.character_for_player[player];
+	selected_voice_pack = global.voicepack_for_player[player];
+	selected_skin = global.skin_for_player[player];
+	
 	default_xscale = 1;
 	default_yscale = 1;
 	sprite_map = noone;

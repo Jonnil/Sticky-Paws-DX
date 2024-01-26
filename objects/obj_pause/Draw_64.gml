@@ -112,9 +112,18 @@ if (!hide_menu_for_clean_screenshots)
 {
 	
 	#region /* Games Logo in top left corner */
-	if (global.title_logo_index >= 0)
+	if (menu == "continue") /* Can only hide menu when on these buttons specifically */
+	|| (menu == "change_character")
+	|| (menu == "edit_level")
+	|| (menu == "options")
+	|| (menu == "restart")
+	|| (menu == "quit")
+	|| (menu == "report")
 	{
-		draw_sprite_ext(global.title_logo_index, 0, 160, scr_wave(70, 80, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1 * fade_in_pause_alpha);
+		if (global.title_logo_index >= 0)
+		{
+			draw_sprite_ext(global.title_logo_index, 0, 160, scr_wave(70, 80, 4.5, 0), (402 / sprite_get_height(global.title_logo_index)) * 0.3, (402 / sprite_get_height(global.title_logo_index)) * 0.3, 0, c_white, 1 * fade_in_pause_alpha);
+		}
 	}
 	#endregion /* Games Logo in top left corner END */
 	
@@ -145,33 +154,17 @@ if (!hide_menu_for_clean_screenshots)
 	}
 	#endregion /* Which player is controlling the pause menu? END */
 	
-	#region /* Pause Text blink effect */
-	if (pause_text_lerp <= 0)
-	{
-		pause_text_alpha = lerp(pause_text_alpha, 1, 0.1);
-		if (pause_text_alpha >= 1)
-		{
-			pause_text_lerp = 1;
-		}
-	}
-	else
-	if (pause_text_lerp >= 1)
-	{
-		pause_text_alpha = lerp(pause_text_alpha, 0, 0.2);
-		if (pause_text_alpha <= 0)
-		{
-			pause_text_lerp = 0;
-		}
-	}
-	#endregion /* Pause Text blink effect END */
-
 	#region /* Pause Text */
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 
-	if (!in_settings)
-	&& (menu != "quit_game_no")
-	&& (menu != "quit_game_yes")
+	if (menu == "continue")
+	&& (menu == "change_character")
+	&& (menu == "edit_level")
+	&& (menu == "options")
+	&& (menu == "restart")
+	&& (menu == "quit")
+	&& (menu == "report")
 	{
 		draw_sprite_ext(spr_pause_text, image_index, get_window_width * 0.5, 200, 1, 1, 0, c_white, scr_wave(0, 1, 4.5, 0) * fade_in_pause_alpha);
 	}
