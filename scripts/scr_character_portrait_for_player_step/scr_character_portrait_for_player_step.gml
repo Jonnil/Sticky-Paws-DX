@@ -68,8 +68,12 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	&& (character_portrait_for_player_dir_exists_1[what_player])
 	{
 		if (player_menu[what_player] == "select_skin")
-		|| (global.controls_used_for_navigation == "mouse")
 		{
+			if (what_player == 1)
+			&& (menu_delay == 0)
+			{
+				menu = "select_character";
+			}
 			if (player_accept_selection[what_player] == 0)
 			{
 				
@@ -163,8 +167,12 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	&& (character_portrait_for_player_dir_exists_3[what_player])
 	{
 		if (player_menu[what_player] == "select_voicepack")
-		|| (global.controls_used_for_navigation == "mouse")
 		{
+			if (what_player == 1)
+			&& (menu_delay == 0)
+			{
+				menu = "select_character";
+			}
 			if (player_accept_selection[what_player] == 0)
 			{
 				
@@ -363,6 +371,11 @@ function scr_character_portrait_for_player_step(what_player = 1)
 	|| (player_menu[what_player] == "select_skin")
 	|| (player_menu[what_player] == "select_voicepack")
 	{
+		if (what_player == 1)
+		&& (menu_delay == 0)
+		{
+			menu = "select_character";
+		}
 		
 		#region /* Player key up Skin or Voicepack */
 		if (keyboard_check_pressed(player_key_up))
@@ -383,15 +396,9 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						menu = "online_character_list";
 					}
 					else
-					if (global.enable_manage_characters)
 					{
 						player_menu[what_player] = "manage_character";
 						menu = "manage_character";
-					}
-					else
-					{
-						player_menu[what_player] = "back_from_character_select";
-						menu = "back_from_character_select";
 					}
 				}
 				else

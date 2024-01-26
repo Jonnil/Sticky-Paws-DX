@@ -1,3 +1,30 @@
+#region /* Set variables for character select in pause menu */
+for(var p = 1; p <= global.max_players; p += 1) {
+	player_accept_selection[p] = -1;
+	player_automatically_join[p] = false;
+	player_menu[p] = "select_character";
+	can_input_player_name[p] = 2; /* What player can enter a name */
+	allow_player_tongue[p] = scr_initialize_custom_character_abilities(p - 1, "allow_tongue", false);
+	allow_player_double_jump[p] = scr_initialize_custom_character_abilities(p - 1, "number_of_jumps", 1, "values");
+	allow_player_dive[p] = scr_initialize_custom_character_abilities(p - 1, "allow_dive", false);
+	menu_specific_joystick_delay[p] = 3;
+	player_display_x[p] = 0;
+	xx[p] = 0;
+	xx_delay[p] = 0;
+	/* Player Key Accept Pressed */ player_key_a_pressed[p] = noone;
+	/* Player Key Back Pressed */ player_key_b_pressed[p] = noone;
+	/* Player Key Accept Hold */ player_key_a_hold[p] = noone;
+	character_portrait_for_player_update_directory[p] = false;
+	character_portrait_for_player_dir_exists_1[p] = false;
+	character_portrait_for_player_dir_exists_2[p] = false;
+	character_portrait_for_player_dir_exists_3[p] = false;
+	character_portrait_for_player_dir_exists_4[p] = false;
+}
+file_load_timer = 0;
+player_start_game = false;
+voice_select_character = noone;
+#endregion /* Set variables for character select in pause menu END */
+
 unpause = false;
 hud_show_big_collectibles_y = -32;
 content_type = "level";
@@ -12,7 +39,8 @@ show_loading_icon = false;
 
 var get_window_height = display_get_gui_height();
 
-continue_y = get_window_height * 0.5;
+continue_y = get_window_height * 0.5 - 42;
+change_character_y = get_window_height * 0.5;
 if (global.character_select_in_this_menu == "level_editor")
 && (!file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 && (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */

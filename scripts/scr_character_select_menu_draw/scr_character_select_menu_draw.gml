@@ -141,51 +141,45 @@ function scr_character_select_menu_draw()
 		
 		var back_y = 0;
 		var manage_characters_y = 42;
-		if (global.enable_manage_characters)
-		{
-			var draw_online_character_list_y = 42 * 2;
-			var draw_search_id_y = 42 * 3;
-		}
-		else
-		{
-			var draw_online_character_list_y = 42;
-			var draw_search_id_y = 42 * 2;
-		}
+		var draw_online_character_list_y = 42 * 2;
 		
 		#region /* Show Back key when you can go back to main menu */
-		if (global.character_select_in_this_menu == "main_game")
+		if (room == rm_title)
 		{
-			draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select", "main_game");
+			if (global.character_select_in_this_menu == "main_game")
+			{
+				draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select", "main_game");
+			}
+			else
+			{
+				draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select", "level_editor");
+			}
 		}
 		else
 		{
-			draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select", "level_editor");
+			draw_menu_button(0, back_y, l10n_text("Back"), "back_from_character_select", "change_character");
 		}
 		draw_sprite_ext(spr_icon_back, 0, + 20, + 21, 1, 1, 0, c_white, 1);
 		#endregion /* Show Back key when you can go back to main menu END */
 		
 		#region /* Manage Characters */
-		if (global.enable_manage_characters)
+		draw_menu_button(0, manage_characters_y, l10n_text("Manage Characters"), "manage_character", "manage_character");
+		if (menu == "manage_character")
+		&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, manage_characters_y + 2, 370, manage_characters_y + 41))
+		&& (mouse_check_button_released(mb_left))
+		|| (key_a_pressed)
+		&& (menu == "manage_character")
 		{
-			draw_menu_button(0, manage_characters_y, l10n_text("Manage Characters"), "manage_character", "manage_character");
-			if (menu == "manage_character")
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, manage_characters_y + 2, 370, manage_characters_y + 41))
-			&& (mouse_check_button_released(mb_left))
-			|| (key_a_pressed)
-			&& (menu == "manage_character")
+			var fixed_player = 1;
+			if (global.sprite_select_player[fixed_player] < 0)
+			|| (global.sprite_select_player[fixed_player] == spr_noone)
 			{
-				var fixed_player = 1;
-				if (global.sprite_select_player[fixed_player] < 0)
-				|| (global.sprite_select_player[fixed_player] == spr_noone)
-				{
-					global.sprite_select_player[fixed_player] = spr_noone;
-					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
-					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
-				}
-				
-				menu = "click_copy_character";
-				menu_delay = 3;
+				global.sprite_select_player[fixed_player] = spr_noone;
+				global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
+				global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
 			}
+			menu = "click_copy_character";
+			menu_delay = 3;
 		}
 		#endregion /* Manage Characters END */
 		
@@ -201,7 +195,6 @@ function scr_character_select_menu_draw()
 			
 			if (no_players_are_inputting_names)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (!open_sub_menu)
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, draw_online_character_list_y + 2, 370, draw_online_character_list_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")

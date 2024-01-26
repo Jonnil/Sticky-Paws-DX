@@ -3503,6 +3503,7 @@
     {"id":{"name":"spr_boss_vulnerable","path":"sprites/spr_boss_vulnerable/spr_boss_vulnerable.yy",},},
     {"id":{"name":"obj_water_splash","path":"objects/obj_water_splash/obj_water_splash.yy",},},
     {"id":{"name":"obj_open_folder_text","path":"objects/obj_open_folder_text/obj_open_folder_text.yy",},},
+    {"id":{"name":"scr_load_rest_of_characters","path":"scripts/scr_load_rest_of_characters/scr_load_rest_of_characters.yy",},},
     {"id":{"name":"spr_map_tree_darker","path":"sprites/spr_map_tree_darker/spr_map_tree_darker.yy",},},
     {"id":{"name":"spr_leveleditor_icon_fill_line","path":"sprites/spr_leveleditor_icon_fill_line/spr_leveleditor_icon_fill_line.yy",},},
     {"id":{"name":"spr_icon_back","path":"sprites/spr_icon_back/spr_icon_back.yy",},},

@@ -1,12 +1,7 @@
 function scr_character_select_menu_step()
 {
-	var fixed_player = 1;
-	
 	no_players_are_inputting_names = true;
-	for(var i = 1; i <= global.max_players; i += 1)
-	{
-		no_players_are_inputting_names = no_players_are_inputting_names && !can_input_player_name[i];
-	}
+	name_y = 292; /* Where name input box for players are placed on screen */
 	
 	if (menu == "select_character")
 	|| (menu == "back_from_character_select")
@@ -15,7 +10,15 @@ function scr_character_select_menu_step()
 	|| (menu == "input_name_ok")
 	|| (menu == "input_name_cancel")
 	{
-		if (have_downloaded_from_server)
+		var fixed_player = 1;
+		
+		for(var i = 1; i <= global.max_players; i += 1)
+		{
+			no_players_are_inputting_names = no_players_are_inputting_names && !can_input_player_name[i];
+		}
+		
+		if (variable_instance_exists(self, "have_downloaded_from_server"))
+		&& (have_downloaded_from_server)
 		{
 			/* If you are downloading a new character, the game needs to reload all custom characters when going back to back to character select, so you can select the new downloaded character */
 			search_for_id_still = false;
@@ -71,8 +74,8 @@ function scr_character_select_menu_step()
 		&& (!point_in_rectangle(mouse_get_x, mouse_get_y, 0, 0, 370, 42 * 3))
 		&& (menu_delay == 0)
 		{
-			menu = "select_character";
 			player_menu[fixed_player] = "select_character";
+			menu = "select_character";
 		}
 		#endregion /* When you are ready to start game, and you're using mouse, and you aren't hovering mouse over the other buttons, then take you to "select character" menu END */
 		
@@ -149,23 +152,32 @@ function scr_character_select_menu_step()
 						ini_write_string("config", "player" + string(i) + "_name", global.player_name[i]);
 					}
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					if (global.character_select_in_this_menu == "main_game")
+					if (room == rm_title)
 					{
-						can_navigate = false;
-						menu_delay = 9999;
+						if (global.character_select_in_this_menu == "main_game")
+						{
+							can_navigate = false;
+							menu_delay = 9999;
+						}
+						else
+						{
+							global.select_level_index = 0;
+							scr_load_custom_level_initializing();
+							for(var i = 1; i <= global.max_players; i += 1)
+							{
+								can_input_player_name[i] = 2;
+							}
+							can_navigate = true;
+							menu_delay = 3;
+							open_sub_menu = false;
+							menu = "load_custom_level";
+						}
 					}
 					else
 					{
-						global.select_level_index = 0;
-						scr_load_custom_level_initializing();
-						for(var i = 1; i <= global.max_players; i += 1)
-						{
-							can_input_player_name[i] = 2;
-						}
 						can_navigate = true;
 						menu_delay = 3;
-						open_sub_menu = false;
-						menu = "load_custom_level";
+						menu = "change_character";
 					}
 				}
 			}
@@ -207,7 +219,6 @@ function scr_character_select_menu_step()
 		        global.clicking_cancel_input_screen = false;
 		    }
 		}
-
 		#endregion /* Press enter when done typing on name input screen END */
 		
 		#endregion /* All code before menu navigation code END */
@@ -229,8 +240,7 @@ function scr_character_select_menu_step()
 			{
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					if (global.enable_manage_characters)
-					&& (menu == "manage_character") /* Manage Character */
+					if (menu == "manage_character") /* Manage Character */
 					{
 						menu_delay = 3;
 						can_navigate = true;
@@ -240,16 +250,9 @@ function scr_character_select_menu_step()
 					else
 					if (menu == "online_character_list") /* Online Character List */
 					{
-						if (global.enable_manage_characters)
-						{
-							player_menu[fixed_player] = "manage_character";
-							menu = "manage_character";
-						}
-						else
-						{
-							player_menu[fixed_player] = "back_from_character_select";
-							menu = "back_from_character_select";
-						}
+						menu_delay = 3;
+						player_menu[fixed_player] = "manage_character";
+						menu = "manage_character";
 					}
 				}
 			}
@@ -266,26 +269,22 @@ function scr_character_select_menu_step()
 					if (menu == "back_from_character_select")
 					{
 						menu_delay = 3;
-						if (global.enable_manage_characters)
-						{
-							player_menu[i] = "manage_character";
-							menu = "manage_character";
-						}
+						player_menu[fixed_player] = "manage_character";
+						menu = "manage_character";
 					}
 					else
-					if (global.enable_manage_characters)
-					&& (menu == "manage_character") /* Manage Characters */
+					if (menu == "manage_character") /* Manage Characters */
 					{
 						menu_delay = 3;
 						can_navigate = true;
 						if (global.free_communication_available)
 						{
-							player_menu[i] = "online_character_list";
+							player_menu[fixed_player] = "online_character_list";
 							menu = "online_character_list";
 						}
 						else
 						{
-							player_menu[i] = "select_character";
+							player_menu[fixed_player] = "select_character";
 							menu = "select_character";
 						}
 					}
@@ -294,7 +293,7 @@ function scr_character_select_menu_step()
 					{
 						menu_delay = 3;
 						can_navigate = true;
-						player_menu[i] = "select_character";
+						player_menu[fixed_player] = "select_character";
 						menu = "select_character";
 					}
 				}
@@ -468,13 +467,20 @@ function scr_character_select_menu_step()
 						player_menu[i] = "select_character";
 						xx[i] = player_display_x[i];
 					}
-					if (global.character_select_in_this_menu == "main_game")
+					if (room == rm_title)
 					{
-						menu = "main_game";
+						if (global.character_select_in_this_menu == "main_game")
+						{
+							menu = "main_game";
+						}
+						else
+						{
+							menu = "level_editor";
+						}
 					}
 					else
 					{
-						menu = "level_editor";
+						menu = "change_character";
 					}
 					can_navigate = true;
 					global.level_editor_level = 1;
@@ -544,11 +550,11 @@ function scr_character_select_menu_step()
 							character_portrait_for_player_update_directory[i] = true;
 							alarm[0] = 1;
 							player_automatically_join[i] = false;
+							player_menu[i] = "select_character";
 							if (i == 1)
 							{
 								menu = "select_character";
 							}
-							player_menu[i] = "select_character";
 							menu_delay = 3;
 							player_accept_selection[i] = 0;
 							global.character_index[i - 1] = clamp(global.character_index[i - 1], 0, ds_list_size(global.all_loaded_characters) - 1);

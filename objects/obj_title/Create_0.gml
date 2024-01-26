@@ -43,8 +43,6 @@ scrolling_menu_with_mousewheel = false;
 finished_level = undefined; /* This needs to be set to undefined by default */
 i = 0;
 
-name_y = 292; /* Where name input box for players are placed on screen */
-
 information_menu_open = false; /* If the information menu is opened or not */
 
 menu = "";

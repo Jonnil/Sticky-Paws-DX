@@ -53,6 +53,11 @@ function scr_character_select_player_navigation(what_player = 1)
 	#region /* Player Menu Navigation */
 	if (player_menu[what_player] == "select_character")
 	{
+		if (what_player == 1)
+		&& (menu_delay == 0)
+		{
+			menu = "select_character";
+		}
 		/* Navigate Character Selection */
 		
 		#region /* Player */
@@ -60,6 +65,7 @@ function scr_character_select_player_navigation(what_player = 1)
 		&& (!input_key)
 		&& (can_navigate)
 		&& (!player_accept_selection[what_player])
+		&& (ds_list_size(global.all_loaded_characters) >= 2) /* If there are more than 1 character */
 		{
 			
 			#region /* Player change portrait when clicking left or right */
@@ -78,7 +84,6 @@ function scr_character_select_player_navigation(what_player = 1)
 			{
 				
 				if (menu_delay == 0 && menu_joystick_delay == 0)
-				&& (global.character_index[what_player - 1] > 0)
 				{
 					menu_delay = 3;
 					if (gamepad_axis_value(global.player_slot[what_player], gp_axislh) < -0.3)
@@ -88,17 +93,17 @@ function scr_character_select_player_navigation(what_player = 1)
 					if (global.character_index[what_player - 1] > 0)
 					{
 						global.character_index[what_player - 1] --;
-						character_portrait_for_player_update_directory[what_player] = true;
-						alarm[0] = 1;
-						alarm[1] = 1;
-						global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
-						xx_delay[what_player] = -1;
 					}
 					else
 					{
-						global.character_index[what_player - 1] = 0;
-						global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
+						global.character_index[what_player - 1] = ds_list_size(global.all_loaded_characters) - 1;
 					}
+					
+					character_portrait_for_player_update_directory[what_player] = true;
+					alarm[0] = 1;
+					alarm[1] = 1;
+					global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
+					xx_delay[what_player] = -1;
 					
 					#region /* Player character select portrait sprite */
 					global.skin_for_player[what_player] = global.actual_skin_for_player[what_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
@@ -131,12 +136,17 @@ function scr_character_select_player_navigation(what_player = 1)
 					if (global.character_index[what_player - 1] < ds_list_size(global.all_loaded_characters) - 1)
 					{
 						global.character_index[what_player - 1] = clamp(global.character_index[what_player - 1] + 1, 0, ds_list_size(global.all_loaded_characters) - 1);
-						character_portrait_for_player_update_directory[what_player] = true;
-						alarm[0] = 1;
-						alarm[1] = 1;
-						global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
-						xx_delay[what_player] = +1;
 					}
+					else
+					{
+						global.character_index[what_player - 1] = 0;
+					}
+					
+					character_portrait_for_player_update_directory[what_player] = true;
+					alarm[0] = 1;
+					alarm[1] = 1;
+					global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
+					xx_delay[what_player] = +1;
 					
 					#region /* Player character select portrait sprite */
 					global.skin_for_player[what_player] = global.actual_skin_for_player[what_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
@@ -155,6 +165,11 @@ function scr_character_select_player_navigation(what_player = 1)
 	else
 	if (player_menu[what_player] == "select_name")
 	{
+		if (what_player == 1)
+		&& (menu_delay == 0)
+		{
+			menu = "select_character";
+		}
 		
 		#region /* Player key up */
 		if (keyboard_check_pressed(player_key_up))

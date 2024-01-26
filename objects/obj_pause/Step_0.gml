@@ -1016,4 +1016,10 @@ if (!hide_menu_for_clean_screenshots)
 		#endregion /* Return to game by pressing the back key END */
 		
 	}
+	scr_character_select_menu_step();
+	
+	if (menu == "load_characters")
+	{
+		scr_load_rest_of_characters();
+	}
 }

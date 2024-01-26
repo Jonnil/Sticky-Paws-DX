@@ -184,6 +184,7 @@ if (!hide_menu_for_clean_screenshots)
 	|| global.pause_room == rm_leveleditor)
 	{
 		if (menu == "continue")
+		|| (menu == "change_character")
 		|| (menu == "edit_level")
 		|| (menu == "options")
 		|| (menu == "restart")
@@ -192,6 +193,8 @@ if (!hide_menu_for_clean_screenshots)
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, continue_y, l10n_text("Continue"), "continue", "continue", c_lime, fade_in_pause_alpha);
 			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, continue_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+			
+			draw_menu_button(get_window_width * 0.5 - 185, change_character_y, l10n_text("Change Character"), "change_character", "load_characters", c_lime, fade_in_pause_alpha);
 			
 			if (global.character_select_in_this_menu == "level_editor")
 			&& (!file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
@@ -371,6 +374,7 @@ if (!hide_menu_for_clean_screenshots)
 	#endregion /* Show loading icon and reset level END */
 	
 	scr_option_menu(); /* Options */
+	scr_character_select_menu_draw();
 	
 	scr_quit_to_desktop_menu("quit_to_desktop");
 	scr_debug_screen();
