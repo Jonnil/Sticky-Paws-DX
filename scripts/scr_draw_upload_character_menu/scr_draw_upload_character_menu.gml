@@ -162,6 +162,7 @@ function scr_draw_upload_character_menu()
 			    }
 			}
 			if (no_players_can_play) /* When no player can play */
+			|| (global.playergame <= 0)
 			{
 				global.player_can_play[fixed_player] = true; /* If there are no players joined, make it so player 1 is joined */
 			}
@@ -525,6 +526,7 @@ function scr_draw_upload_character_menu()
 				    }
 				}
 				if (no_players_can_play) /* When no player can play */
+				|| (global.playergame <= 0)
 				{
 					global.player_can_play[fixed_player] = true; /* If there are no players joined, make it so player 1 is joined */
 				}

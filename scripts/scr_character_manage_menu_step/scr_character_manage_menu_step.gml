@@ -80,8 +80,7 @@ function scr_character_manage_menu_step()
 				#endregion /* Player 1 character select portrait sprite END */
 				
 				character_portrait_for_player_update_directory[fixed_player] = true;
-				alarm[0] = 1;
-				alarm[1] = 1;
+				scr_change_character_portrait();
 			}
 		}
 		#endregion /* Player 1 Key Left (change portrait sprites) END */
@@ -119,8 +118,7 @@ function scr_character_manage_menu_step()
 				#endregion /* Player 1 character select portrait sprite END */
 				
 				character_portrait_for_player_update_directory[fixed_player] = true;
-				alarm[0] = 1;
-				alarm[1] = 1;
+				scr_change_character_portrait();
 			}
 		}
 		#endregion /* Player 1 Key Right (change portrait sprites) END */
@@ -666,10 +664,10 @@ function scr_character_manage_menu_step()
 			&& (menu != "click_delete_character_yes")
 			{
 				character_portrait_for_player_update_directory[fixed_player] = true;
-				alarm[0] = 1;
 				menu = "manage_character";
 				player_menu[fixed_player] = "manage_character"; /* When going back to previous menu from "manage character", you have to set this to "manage character" */
 				menu_delay = 3;
+				scr_change_character_portrait();
 			}
 		}
 		if (keyboard_check_pressed(global.player_[inp.key][fixed_player][1][action.up]))

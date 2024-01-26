@@ -3,6 +3,7 @@ can_enter_level_automatically = true;
 #endregion /* Debug toggles END */
 
 global.max_big_collectible = 5; /* Main game only have 5 big collectibles in each level */
+global.free_communication_available = false; /* When in main game, you can't use the online features, as those are tied to the title screen, so disable now */
 full_level_map_screenshot_timer = 0;
 
 room_speed = global.max_fps;
@@ -60,6 +61,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 	if (global.player_can_play[i])
 	{
 		player = i;
+		custom_character = global.character_for_player[i];
 		selected_voice_pack = global.voicepack_for_player[i];
 		selected_skin = global.skin_for_player[i];
 		break; /* Exit the loop once a valid player is found */
@@ -69,6 +71,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 		/* If no valid player is found, default to player 1 */
 		var fixed_player = 1;
 		player = fixed_player;
+		custom_character = global.character_for_player[fixed_player];
 		selected_voice_pack = global.voicepack_for_player[fixed_player];
 		selected_skin = global.skin_for_player[fixed_player];
 	}

@@ -9,7 +9,10 @@ function scr_load_rest_of_characters()
 		/* Player Key Accept Hold */ player_key_a_hold[p] = (gamepad_button_check(global.player_slot[p], global.player_[inp.gp][p][1][action.accept])) || (gamepad_button_check(global.player_slot[p], global.player_[inp.gp][p][2][action.accept])) || (keyboard_check(global.player_[inp.key][p][1][action.accept])) || (keyboard_check(global.player_[inp.key][p][2][action.accept]));
 		if (player_key_a_hold[p] || p == 1 && keyboard_check(vk_space))
 		{
-			player_automatically_join[p] = true;
+			if (player_accept_selection[p] == -1)
+			{
+				player_automatically_join[p] = true;
+			}
 		}
 	}
 	#endregion /* Player Automatically Join END */

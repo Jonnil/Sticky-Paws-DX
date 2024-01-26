@@ -145,6 +145,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
 						&& (global.controls_used_for_navigation == "mouse")
 						{
+							player_menu[what_player] = "select_skin";
 							draw_set_alpha(0.5);
 							draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] - arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset + 16, get_window_height * 0.5 + skin_y + 16, 50, 50, c_white, c_white, false);
 							draw_set_alpha(1);
@@ -178,6 +179,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16))
 						&& (global.controls_used_for_navigation == "mouse")
 						{
+							player_menu[what_player] = "select_skin";
 							draw_set_alpha(0.5);
 							draw_roundrect_color_ext(get_window_width * 0.5 + player_display_x[what_player] + arrow_offset - 16, get_window_height * 0.5 + skin_y - 16, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset + 16, get_window_height * 0.5 + skin_y + 16, 50, 50, c_white, c_white, false);
 							draw_set_alpha(1);

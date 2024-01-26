@@ -1,6 +1,13 @@
 #region /* Set variables for character select in pause menu */
 for(var p = 1; p <= global.max_players; p += 1) {
-	player_accept_selection[p] = -1;
+	if (global.player_can_play[p])
+	{
+		player_accept_selection[p] = 0;
+	}
+	else
+	{
+		player_accept_selection[p] = -1;
+	}
 	player_automatically_join[p] = false;
 	player_menu[p] = "select_character";
 	can_input_player_name[p] = 2; /* What player can enter a name */
@@ -23,6 +30,8 @@ for(var p = 1; p <= global.max_players; p += 1) {
 file_load_timer = 0;
 player_start_game = false;
 voice_select_character = noone;
+initialized_copy = false;
+can_save_to_character_config = false;
 #endregion /* Set variables for character select in pause menu END */
 
 unpause = false;

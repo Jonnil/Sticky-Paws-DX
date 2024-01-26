@@ -99,8 +99,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						#endregion /* Player character select portrait sprite END */
 							
 						character_portrait_for_player_update_directory[what_player] = true;
-						alarm[0] = 1;
-						alarm[1] = 1;
+						scr_change_character_portrait();
 					}
 				}
 				#endregion /* Player key left Skin END */
@@ -129,8 +128,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						#endregion /* Player character select portrait sprite END */
 							
 						character_portrait_for_player_update_directory[what_player] = true;
-						alarm[0] = 1;
-						alarm[1] = 1;
+						scr_change_character_portrait();
 					}
 				}
 				#endregion /* Player key right Skin END */
@@ -193,7 +191,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						menu_specific_joystick_delay[what_player] = 30;
 						xx[what_player] = player_display_x[what_player] -32;
 						character_portrait_for_player_update_directory[what_player] = true;
-						alarm[0] = 1;
+						scr_change_character_portrait();
 					}
 				}
 				#endregion /* Player key left Voice Pack END */
@@ -218,7 +216,7 @@ function scr_character_portrait_for_player_step(what_player = 1)
 							menu_specific_joystick_delay[what_player] = 30;
 							xx[what_player] = player_display_x[what_player] +32;
 							character_portrait_for_player_update_directory[what_player] = true;
-							alarm[0] = 1;
+							scr_change_character_portrait();
 						}
 					}
 				}

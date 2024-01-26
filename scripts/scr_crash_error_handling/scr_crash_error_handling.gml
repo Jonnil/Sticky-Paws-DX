@@ -9,7 +9,7 @@ function scr_crash_error_handling()
 		
 		/* Write the exception struct to a file */
 		var save_date = string_replace_all(date_datetime_string(date_current_datetime()), ":", "_");
-		var save_date = string_replace_all(date_datetime_string(date_current_datetime()), "/", "_");
+		var save_date = string_replace_all(save_date, "/", "_");
 		var _f = file_text_open_write(working_directory + "crash_logs/" + string(save_date) + "_crash.txt");
 		file_text_write_string(_f, date_datetime_string(date_current_datetime()) + "\n\n" + string(ex));
 		file_text_close(_f);

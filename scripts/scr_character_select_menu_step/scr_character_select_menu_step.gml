@@ -177,6 +177,24 @@ function scr_character_select_menu_step()
 					{
 						can_navigate = true;
 						menu_delay = 3;
+						var no_players_can_play = true;
+						for(var i = 1; i <= global.max_players; i += 1) {
+						    if (global.player_can_play[i]) {
+						        no_players_can_play = false;
+						        break; /* exit the loop if any player can play */
+						    }
+						}
+						if (no_players_can_play)
+						|| (global.playergame <= 0) /* At least one player needs to be playing the game */
+						{
+							global.player_can_play[fixed_player] = true;
+						}
+						for(var i = 1; i <= global.max_players; i += 1) {
+							if (player_accept_selection[i] == 1)
+							{
+								player_accept_selection[i] = 0;
+							}
+						}
 						menu = "change_character";
 					}
 				}
@@ -480,6 +498,24 @@ function scr_character_select_menu_step()
 					}
 					else
 					{
+						var no_players_can_play = true;
+						for(var i = 1; i <= global.max_players; i += 1) {
+						    if (global.player_can_play[i]) {
+						        no_players_can_play = false;
+						        break; /* exit the loop if any player can play */
+						    }
+						}
+						if (no_players_can_play)
+						|| (global.playergame <= 0) /* At least one player needs to be playing the game */
+						{
+							global.player_can_play[fixed_player] = true;
+						}
+						for(var i = 1; i <= global.max_players; i += 1) {
+							if (player_accept_selection[i] == 1)
+							{
+								player_accept_selection[i] = 0;
+							}
+						}
 						menu = "change_character";
 					}
 					can_navigate = true;

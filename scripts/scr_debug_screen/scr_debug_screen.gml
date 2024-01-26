@@ -244,6 +244,11 @@ function scr_debug_screen()
 				}
 			}
 		}
+		for(var i = 1; i <= global.max_players; i += 1)
+		{
+			scr_draw_text_outlined(32, debug_text_y, "player_can_play[" + string(i) + "]: " + string(global.player_can_play[i]), global.default_text_size, c_black, c_white);
+			debug_text_y += 20;
+		}
 		if (gamepad_get_description(0) != "") {
 			scr_draw_text_outlined(32, debug_text_y, "gamepad(0): " + string(gamepad_get_description(0)), global.default_text_size, c_black, c_white);
 			debug_text_y += 20;

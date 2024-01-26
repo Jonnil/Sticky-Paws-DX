@@ -460,9 +460,13 @@ if (global.actually_play_edited_level && !global.debug_screen)
 if (hud_show_defeats_y != -64)
 && (global.show_defeats_counter)
 {
-	if (sprite_lives_icon > noone)
+	if (sprite_exists(sprite_lives_icon))
 	{
 		draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_defeats_y, 0.75, 0.75, 0, c_gray, 1);
+	}
+	else
+	{
+		draw_sprite_ext(spr_1up, 0, 32, hud_show_defeats_y, 0.75, 0.75, 0, c_gray, 1);
 	}
 	draw_line_width_color(32 - 16, hud_show_defeats_y - 16, 32 + 16, hud_show_defeats_y + 16, 3, c_red, c_red);
 	draw_line_width_color(32 - 16, hud_show_defeats_y + 16, 32 + 16, hud_show_defeats_y - 16, 3, c_red, c_red);
@@ -477,9 +481,13 @@ if (hud_show_lives_y != -64)
 {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
-	if (sprite_lives_icon > noone)
+	if (sprite_exists(sprite_lives_icon))
 	{
 		draw_sprite_ext(sprite_lives_icon, 0, 32, hud_show_lives_y, 1, 1, 0, c_white, 1);
+	}
+	else
+	{
+		draw_sprite_ext(spr_1up, 0, 32, hud_show_lives_y, 1, 1, 0, c_white, 1);
 	}
 	scr_draw_text_outlined(64, hud_show_lives_y, lives, global.default_text_size, c_black, c_white, 1);
 }

@@ -29,6 +29,7 @@ if (global.narrator >= 0)
 if (hide_menu_for_clean_screenshots_timer < 60 * 3)
 {
 	if (menu == "continue") /* Can only hide menu when on these buttons specifically */
+	|| (menu == "change_character")
 	|| (menu == "edit_level")
 	|| (menu == "options")
 	|| (menu == "restart")
@@ -67,6 +68,7 @@ if (keyboard_check_pressed(ord("Y")))
 || (gamepad_button_check_pressed(global.player_slot[4], gp_face4))
 {
 	if (menu == "continue") /* Can only hide menu when on these buttons specifically */
+	|| (menu == "change_character")
 	|| (menu == "edit_level")
 	|| (menu == "options")
 	|| (menu == "restart")
@@ -298,6 +300,38 @@ if (!hide_menu_for_clean_screenshots)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
+				menu = "change_character";
+			}
+		}
+		#endregion /* Continue END */
+		
+		else
+		
+		#region /* Change Character */
+		if (menu == "change_character")
+		{
+			if (key_a_pressed)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			|| (mouse_check_button_released(mb_left))
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 185, change_character_y, get_window_width * 0.5 + 185, change_character_y + 41))
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "load_characters";
+			}
+			if (key_up)
+			&& (!key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "continue";
+			}
+			else
+			if (key_down)
+			&& (!key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
 				if (global.character_select_in_this_menu == "level_editor")
 				{
 					menu = "edit_level";
@@ -308,7 +342,7 @@ if (!hide_menu_for_clean_screenshots)
 				}
 			}
 		}
-		#endregion /* Continue END */
+		#endregion /* Change Character END */
 		
 		else
 		
@@ -354,7 +388,7 @@ if (!hide_menu_for_clean_screenshots)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "continue";
+				menu = "change_character";
 			}
 			else
 			if (key_down)
@@ -399,7 +433,7 @@ if (!hide_menu_for_clean_screenshots)
 				}
 				else
 				{
-					menu = "continue";
+					menu = "change_character";
 				}
 			}
 			else
@@ -977,6 +1011,8 @@ if (!hide_menu_for_clean_screenshots)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			if (menu == "continue")
+			|| (menu == "change_character")
+			|| (menu == "edit_level")
 			|| (menu == "options")
 			|| (menu == "restart")
 			|| (menu == "quit")

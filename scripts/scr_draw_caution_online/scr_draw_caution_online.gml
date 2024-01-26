@@ -67,7 +67,8 @@ function scr_draw_caution_online()
 			        break; /* exit the loop if any player can play */
 			    }
 			}
-			if (no_players_can_play) {
+			if (no_players_can_play)
+			|| (global.playergame <= 0) {
 				global.player_can_play[fixed_player] = true;
 			}
 			information_menu_open = 0;

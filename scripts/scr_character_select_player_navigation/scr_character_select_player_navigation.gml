@@ -100,15 +100,12 @@ function scr_character_select_player_navigation(what_player = 1)
 					}
 					
 					character_portrait_for_player_update_directory[what_player] = true;
-					alarm[0] = 1;
-					alarm[1] = 1;
 					global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
 					xx_delay[what_player] = -1;
 					
-					#region /* Player character select portrait sprite */
 					global.skin_for_player[what_player] = global.actual_skin_for_player[what_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
-					#endregion /* Player character select portrait sprite END */
 					
+					scr_change_character_portrait();
 				}
 			}
 			#endregion /* Player Key Left (change portrait sprites) END */
@@ -143,15 +140,12 @@ function scr_character_select_player_navigation(what_player = 1)
 					}
 					
 					character_portrait_for_player_update_directory[what_player] = true;
-					alarm[0] = 1;
-					alarm[1] = 1;
 					global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
 					xx_delay[what_player] = +1;
 					
-					#region /* Player character select portrait sprite */
 					global.skin_for_player[what_player] = global.actual_skin_for_player[what_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
-					#endregion /* Player character select portrait sprite END */
 					
+					scr_change_character_portrait();
 				}
 			}
 			#endregion /* Player Key Right (change portrait sprites) END */

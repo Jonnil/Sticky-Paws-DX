@@ -2,20 +2,22 @@
 /* But don't run this code before the pause happens, do it when you return from pause */
 /* Otherwise when returning from pause menu, players that are still connected with new controller dissapear prematurely */
 /* You only want to run this code in a Room Start Event */
-if (player == 1 && controller_connected && !gamepad_is_connected(global.player_slot[1]))
+for(var i = 1; i <= global.max_players; i += 1)
 {
-	instance_destroy();
-}
-if (player == 2 && controller_connected && !gamepad_is_connected(global.player_slot[2]))
-{
-	instance_destroy();
-}
-if (player == 3 && controller_connected && !gamepad_is_connected(global.player_slot[3]))
-{
-	instance_destroy();
-}
-if (player == 4 && controller_connected && !gamepad_is_connected(global.player_slot[4]))
-{
-	instance_destroy();
+	if (player == i && controller_connected && !gamepad_is_connected(global.player_slot[i]))
+	|| (player == i && !global.player_can_play[i])
+	{
+		instance_destroy();
+	}
 }
 #endregion /* When you go from pause menu to level again, game should destroy players that are not connected anymore END */
+
+#region /* Reload character if it doesn't match the saved character variables */
+if (global.character_for_player[player] != custom_character)
+|| (global.voicepack_for_player[player] != selected_voice_pack)
+|| (global.skin_for_player[player] != selected_skin)
+{
+	scr_player_initialize_custom_character(); /* Reset all player variables before reloading character */
+	alarm[0] = 1;
+}
+#endregion /* Reload character if it doesn't match the saved character variables END */
