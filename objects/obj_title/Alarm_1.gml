@@ -32,9 +32,9 @@ for(var i = 1; i <= global.max_players; i += 1)
 			}
 			/* Don't update "actual skin for player" here, because it will save what skin you're supposed to have with other characters, so it doesn't change unintentinally for the player */
 			global.sprite_select_player[i] = spr_noone;
-			global.sprite_select_player[i] = scr_initialize_custom_character_sprite("stand", global.sprite_select_player[i], character_folder[i]);
+			global.sprite_select_player[i] = scr_initialize_character_sprite("stand", global.sprite_select_player[i], character_folder[i]);
 			global.sprite_player_stand[i] = global.sprite_select_player[i];
-			global.sprite_select_player[i] = scr_initialize_custom_character_sprite("character_select_portrait", global.sprite_select_player[i], character_folder[i]);
+			global.sprite_select_player[i] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[i], character_folder[i]);
 		}
 		else
 		{

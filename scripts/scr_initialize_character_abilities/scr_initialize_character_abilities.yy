@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_initialize_custom_character_sprite",
+  "name": "scr_initialize_character_abilities",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

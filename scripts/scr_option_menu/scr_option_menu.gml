@@ -728,9 +728,12 @@ function scr_option_menu()
 				menu = "remap_select_player";
 				for(var i = 1; i <= global.max_players; i += 1)
 				{
-					allow_player_tongue[i] = scr_initialize_custom_character_abilities(i - 1, "allow_tongue", false);
-					allow_player_double_jump[i] = scr_initialize_custom_character_abilities(i - 1, "number_of_jumps", 1, "values");
-					allow_player_dive[i] = scr_initialize_custom_character_abilities(i - 1, "allow_dive", false);
+					scr_set_character_folder(i);
+					ini_open(character_folder + "/data/character_config.ini"); /* First open the character folder ini before initializing custom character abilities */
+					allow_player_tongue[i] = scr_initialize_character_abilities(i - 1, "allow_tongue", false);
+					allow_player_double_jump[i] = scr_initialize_character_abilities(i - 1, "number_of_jumps", 1, "values");
+					allow_player_dive[i] = scr_initialize_character_abilities(i - 1, "allow_dive", false);
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 			}
 			if (global.settings_sidebar_menu == "account_settings"){menu = "change_username";}
@@ -928,9 +931,12 @@ function scr_option_menu()
 			menu = "remap_select_player";
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
-				allow_player_tongue[i] = scr_initialize_custom_character_abilities(i - 1, "allow_tongue", false);
-				allow_player_double_jump[i] = scr_initialize_custom_character_abilities(i - 1, "number_of_jumps", 1, "values");
-				allow_player_dive[i] = scr_initialize_custom_character_abilities(i - 1, "allow_dive", false);
+				scr_set_character_folder(i);
+				ini_open(character_folder + "/data/character_config.ini"); /* First open the character folder ini before initializing custom character abilities */
+				allow_player_tongue[i] = scr_initialize_character_abilities(i - 1, "allow_tongue", false);
+				allow_player_double_jump[i] = scr_initialize_character_abilities(i - 1, "number_of_jumps", 1, "values");
+				allow_player_dive[i] = scr_initialize_character_abilities(i - 1, "allow_dive", false);
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 		}
 		#endregion /* Click Keyboard and Mouse END */
@@ -969,9 +975,12 @@ function scr_option_menu()
 				menu = "remap_select_player";
 				for(var i = 1; i <= global.max_players; i += 1)
 				{
-					allow_player_tongue[i] = scr_initialize_custom_character_abilities(i - 1, "allow_tongue", false);
-					allow_player_double_jump[i] = scr_initialize_custom_character_abilities(i - 1, "number_of_jumps", 1, "values");
-					allow_player_dive[i] = scr_initialize_custom_character_abilities(i - 1, "allow_dive", false);
+					scr_set_character_folder(i);
+					ini_open(character_folder + "/data/character_config.ini"); /* First open the character folder ini before initializing custom character abilities */
+					allow_player_tongue[i] = scr_initialize_character_abilities(i - 1, "allow_tongue", false);
+					allow_player_double_jump[i] = scr_initialize_character_abilities(i - 1, "number_of_jumps", 1, "values");
+					allow_player_dive[i] = scr_initialize_character_abilities(i - 1, "allow_dive", false);
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 			}
 			#endregion /* Click Controller END */
@@ -2555,8 +2564,9 @@ function scr_option_menu()
 						
 						#region /* Player 1 character select portrait sprite */
 						global.sprite_select_player[fixed_player] = spr_noone;
-						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
-						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
+						scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
+						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
+						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 						#endregion /* Player 1 character select portrait sprite END */
 						
 					}
@@ -2605,10 +2615,11 @@ function scr_option_menu()
 						
 						#region /* Player 1 character select portrait sprite */
 						global.sprite_select_player[fixed_player] = spr_noone;
-						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("walk", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
-						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("idle", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
-						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
-						global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], fixed_player - 1, global.skin_for_player[fixed_player]);
+						scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
+						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("walk", global.sprite_select_player[fixed_player]);
+						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("idle", global.sprite_select_player[fixed_player]);
+						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
+						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 						#endregion /* Player 1 character select portrait sprite END */
 						
 					}

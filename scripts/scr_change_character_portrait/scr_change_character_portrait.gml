@@ -58,9 +58,9 @@ function scr_change_character_portrait()
 			
 			#region /* Player character select portrait sprite */
 			global.sprite_select_player[what_player] = spr_noone;
-			global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("stand", global.sprite_select_player[what_player], character_folder[what_player]);
+			global.sprite_select_player[what_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[what_player], character_folder[what_player]);
 			global.sprite_player_stand[what_player] = global.sprite_select_player[what_player];
-			global.sprite_select_player[what_player] = scr_initialize_custom_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
+			global.sprite_select_player[what_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[what_player], character_folder[what_player]);
 			#endregion /* Player character select portrait sprite END */
 			
 			if (xx_delay[what_player] == -1)
@@ -119,9 +119,9 @@ function scr_change_character_skin()
 				}
 				/* Don't update "actual skin for player" here, because it will save what skin you're supposed to have with other characters, so it doesn't change unintentinally for the player */
 				global.sprite_select_player[i] = spr_noone;
-				global.sprite_select_player[i] = scr_initialize_custom_character_sprite("stand", global.sprite_select_player[i], character_folder[i]);
+				global.sprite_select_player[i] = scr_initialize_character_sprite("stand", global.sprite_select_player[i], character_folder[i]);
 				global.sprite_player_stand[i] = global.sprite_select_player[i];
-				global.sprite_select_player[i] = scr_initialize_custom_character_sprite("character_select_portrait", global.sprite_select_player[i], character_folder[i]);
+				global.sprite_select_player[i] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[i], character_folder[i]);
 			}
 			else
 			{

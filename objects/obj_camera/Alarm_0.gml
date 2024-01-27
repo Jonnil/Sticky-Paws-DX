@@ -1,4 +1,5 @@
-sprite_lives_icon = scr_initialize_custom_character_select_sprite("lives_icon", sprite_lives_icon, camera_player, camera_selected_skin);
+scr_set_character_folder(camera_player, camera_selected_skin);
+sprite_lives_icon = scr_initialize_character_sprite("lives_icon", sprite_lives_icon);
 
 if (global.create_level_from_template)
 {

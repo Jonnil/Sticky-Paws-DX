@@ -61,8 +61,9 @@ function scr_character_select_menu_step()
 			{
 				global.character_index[i - 1] = 0;
 				global.sprite_select_player[i] = spr_noone;
-				global.sprite_select_player[i] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[i], i - 1, global.skin_for_player[i]);
-				global.sprite_select_player[i] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[i], i - 1, global.skin_for_player[i]);
+				scr_set_character_folder(i, global.skin_for_player[i]);
+				global.sprite_select_player[i] = scr_initialize_character_sprite("stand", global.sprite_select_player[i]);
+				global.sprite_select_player[i] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[i]);
 			}
 			#endregion /* If any "character index" is set to -1, reset it to 0 END */
 			

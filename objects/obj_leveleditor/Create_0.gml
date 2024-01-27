@@ -27,7 +27,7 @@ pause_button_y = display_get_gui_height() + 100;
 in_modify_object_menu = false;
 
 var fixed_player = 1;
-camera_player = fixed_player - 1;
+camera_player = fixed_player;
 camera_selected_skin = global.skin_for_player[fixed_player];
 
 for(var i = 1; i <= global.max_players; i += 1)
@@ -36,7 +36,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 	player_show_controls_alpha[i] = 0;
 	if (global.player_can_play[i])
 	{
-		camera_player = i - 1; /* Adjust index to start from 0 */
+		camera_player = i;
 		camera_selected_skin = global.skin_for_player[i];
 		break; /* Exit the loop once a player is found */
 	}
@@ -246,7 +246,8 @@ if (!global.actually_play_edited_level)
 	
 	#region /* Load custom sprites */
 	sprite_lives_icon = spr_1up;
-	sprite_lives_icon = scr_initialize_custom_character_select_sprite("lives_icon", sprite_lives_icon, 1, 1);
+	scr_set_character_folder(1, 0);
+	sprite_lives_icon = scr_initialize_character_sprite("lives_icon", sprite_lives_icon);
 	sprite_basic_enemy = global.resource_pack_sprite_basic_enemy;
 	sprite_basic_enemy_blind = global.resource_pack_sprite_basic_enemy_blind;
 	sprite_enemy_bowlingball = global.resource_pack_sprite_enemy_bowlingball_walk;
@@ -712,9 +713,12 @@ if (!global.actually_play_edited_level)
 	can_remap_gamepad_button = false;
 	for(var i = 1; i <= global.max_players; i += 1)
 	{
-		allow_player_tongue[i] = scr_initialize_custom_character_abilities(i - 1, "allow_tongue", false);
-		allow_player_double_jump[i] = scr_initialize_custom_character_abilities(i - 1, "number_of_jumps", 1, "values");
-		allow_player_dive[i] = scr_initialize_custom_character_abilities(i - 1, "allow_dive", false);
+		scr_set_character_folder(i);
+		ini_open(character_folder + "/data/character_config.ini"); /* First open the character folder ini before initializing custom character abilities */
+		allow_player_tongue[i] = scr_initialize_character_abilities(i - 1, "allow_tongue", false);
+		allow_player_double_jump[i] = scr_initialize_character_abilities(i - 1, "number_of_jumps", 1, "values");
+		allow_player_dive[i] = scr_initialize_character_abilities(i - 1, "allow_dive", false);
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* Remapping options variables END */
 	

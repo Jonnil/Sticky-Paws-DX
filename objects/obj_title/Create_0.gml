@@ -1,11 +1,18 @@
+player = 1;
+selected_skin = 0;
 for(var p = 1; p <= global.max_players; p += 1) {
 	player_accept_selection[p] = -1;
 	player_automatically_join[p] = false;
 	player_menu[p] = "select_character";
 	can_input_player_name[p] = 2; /* What player can enter a name */
-	allow_player_tongue[p] = scr_initialize_custom_character_abilities(p - 1, "allow_tongue", false);
-	allow_player_double_jump[p] = scr_initialize_custom_character_abilities(p - 1, "number_of_jumps", 1, "values");
-	allow_player_dive[p] = scr_initialize_custom_character_abilities(p - 1, "allow_dive", false);
+	
+	scr_set_character_folder(p);
+	ini_open(character_folder + "/data/character_config.ini"); /* First open the character folder ini before initializing custom character abilities */
+	allow_player_tongue[p] = scr_initialize_character_abilities(p - 1, "allow_tongue", false);
+	allow_player_double_jump[p] = scr_initialize_character_abilities(p - 1, "number_of_jumps", 1, "values");
+	allow_player_dive[p] = scr_initialize_character_abilities(p - 1, "allow_dive", false);
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	
 	menu_specific_joystick_delay[p] = 3;
 	player_display_x[p] = 0;
 	xx[p] = 0;
@@ -122,9 +129,6 @@ can_save_to_character_config = false; /* Only turn true when playing as custom c
 
 initialized_copy = false;
 first_copy_file = "";
-
-player = 1;
-selected_skin = 0;
 
 copied_character_name = ""; /* When you have copied a character, get the name for later use */
 downloaded_thumbnail_sprite = noone; /* When downloading a level, you want to show a thumbnail temporarely */

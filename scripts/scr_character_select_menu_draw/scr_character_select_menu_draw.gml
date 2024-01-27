@@ -175,8 +175,9 @@ function scr_character_select_menu_draw()
 			|| (global.sprite_select_player[fixed_player] == spr_noone)
 			{
 				global.sprite_select_player[fixed_player] = spr_noone;
-				global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
-				global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
+				scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
+				global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
+				global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 			}
 			menu = "click_copy_character";
 			menu_delay = 3;

@@ -295,8 +295,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					scr_delete_sprite_properly(downloaded_thumbnail_sprite);
 					downloaded_thumbnail_sprite = noone;
 					
-					downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("stand", downloaded_thumbnail_sprite, 0, 0, string(downloaded_character_name));
-					downloaded_thumbnail_sprite = scr_initialize_custom_character_select_sprite("character_select_portrait", downloaded_thumbnail_sprite, 0, 0, string(downloaded_character_name));
+					scr_set_character_folder(fixed_player, 0, string(downloaded_character_name));
+					downloaded_thumbnail_sprite = scr_initialize_character_sprite("stand", downloaded_thumbnail_sprite);
+					downloaded_thumbnail_sprite = scr_initialize_character_sprite("character_select_portrait", downloaded_thumbnail_sprite);
 					
 					if (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 					{
@@ -738,8 +739,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					
 					/* Update the player sprite */
 					global.sprite_select_player[fixed_player] = spr_noone;
-					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
-					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
+					scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
+					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
+					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 					#endregion /* After deleting character, go to previous character, so you don't accidentally go to a undefined character END */
 					
 				}

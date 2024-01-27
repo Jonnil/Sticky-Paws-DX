@@ -685,7 +685,7 @@ function scr_draw_upload_character_menu()
 		
 		if (menu_delay >= 41)
 		{
-			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 42, l10n_text("Generating Level ID"), global.default_text_size, c_black, c_dkgray, 1);
+			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 42, l10n_text("Generating Character ID"), global.default_text_size, c_black, c_dkgray, 1);
 		}
 		else
 		if (menu_delay <= 40)

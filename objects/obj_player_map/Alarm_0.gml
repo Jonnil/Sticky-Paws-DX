@@ -1,24 +1,6 @@
 #region /* Initialize Custom Character */
 
-if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1])) + "/data/character_config.ini"))
-{
-	character_folder = "characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]));
-	can_save_to_character_config = false; /* You can't save values to included files */
-}
-else
-{
-	character_folder = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[player - 1]));
-	can_save_to_character_config = true; /* You can save values to local appdata */
-}
-
-if (file_exists(string(character_folder) + "/sprites/skin" + string(selected_skin) + "/mask.png"))
-{
-	skin_folder = "/skin" + string(selected_skin) + "/";
-}
-else
-{
-	skin_folder = "/";
-}
+scr_set_character_folder();
 
 /* The order of the variables needs to be in reverse alphabetical order, so it shows up in alphabetical order in the config.ini file. This also means that x should be after y */
 
@@ -31,12 +13,12 @@ ini_close();
 
 #region /* Sprite variables */
 
-sprite_map = scr_initialize_custom_character_sprite("map", sprite_map);
-sprite_map_enter_level = scr_initialize_custom_character_sprite("map_enter_level", sprite_map_enter_level);
-sprite_map_enter_level = scr_initialize_custom_character_sprite("map_enter", sprite_map_enter_level);
-sprite_stand = scr_initialize_custom_character_sprite("idle", sprite_stand);
-sprite_stand = scr_initialize_custom_character_sprite("stand", sprite_stand);
-sprite_walk = scr_initialize_custom_character_sprite("walk", sprite_walk);
+sprite_map = scr_initialize_character_sprite("map", sprite_map);
+sprite_map_enter_level = scr_initialize_character_sprite("map_enter_level", sprite_map_enter_level);
+sprite_map_enter_level = scr_initialize_character_sprite("map_enter", sprite_map_enter_level);
+sprite_stand = scr_initialize_character_sprite("idle", sprite_stand);
+sprite_stand = scr_initialize_character_sprite("stand", sprite_stand);
+sprite_walk = scr_initialize_character_sprite("walk", sprite_walk);
 
 #endregion /* Sprite variables END */
 

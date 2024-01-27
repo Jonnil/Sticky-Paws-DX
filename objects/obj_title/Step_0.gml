@@ -13,8 +13,9 @@ if (global.go_to_menu_when_going_back_to_title == "upload_yes_character")
 	|| (global.sprite_select_player[fixed_player] == spr_noone)
 	{
 		global.sprite_select_player[fixed_player] = spr_noone;
-		global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
-		global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player]);
+		scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
+		global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
+		global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 	}
 	select_custom_level_menu_open = false;
 	menu = "upload_yes_character";

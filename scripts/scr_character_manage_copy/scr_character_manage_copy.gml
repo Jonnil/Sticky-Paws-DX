@@ -299,8 +299,9 @@ function scr_character_manage_copy()
 					#region /* Player 1 character select portrait sprite */
 					global.skin_for_player[fixed_player] = global.actual_skin_for_player[fixed_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 					global.sprite_select_player[fixed_player] = spr_noone;
-					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("stand", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player], copied_character_name);
-					global.sprite_select_player[fixed_player] = scr_initialize_custom_character_select_sprite("character_select_portrait", global.sprite_select_player[fixed_player], 0, global.skin_for_player[fixed_player], copied_character_name);
+					scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player], copied_character_name);
+					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
+					global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 					#endregion /* Player 1 character select portrait sprite END */
 					
 					menu_delay = 3;
