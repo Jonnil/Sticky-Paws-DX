@@ -3636,6 +3636,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_main > 0)
 					{
 						if (keyboard_check(vk_shift))
@@ -3654,6 +3655,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_main < +1)
 					{
 						if (keyboard_check(vk_shift))
@@ -3695,6 +3697,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_music > 0)
 					{
 						if (keyboard_check(vk_shift))
@@ -3713,6 +3716,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_music < +1)
 					{
 						if (keyboard_check(vk_shift))
@@ -3753,6 +3757,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_melody > 0)
 					{
 						if (keyboard_check(vk_shift))
@@ -3771,6 +3776,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_melody < +1)
 					{
 						if (keyboard_check(vk_shift))
@@ -3812,6 +3818,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_sound > 0)
 					{
 						if (keyboard_check(vk_shift))
@@ -3830,6 +3837,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_sound < +1)
 					{
 						if (keyboard_check(vk_shift))
@@ -3871,6 +3879,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_ambient > 0)
 					{
 						if (keyboard_check(vk_shift))
@@ -3889,6 +3898,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_ambient < +1)
 					{
 						if (keyboard_check(vk_shift))
@@ -3930,6 +3940,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_footstep > 0)
 					{
 						if (keyboard_check(vk_shift))
@@ -3948,6 +3959,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_footstep < +1)
 					{
 						if (keyboard_check(vk_shift))
@@ -3989,6 +4001,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_voice > 0)
 					{
 						if (keyboard_check(vk_shift))
@@ -4007,6 +4020,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.volume_voice < +1)
 					{
 						if (keyboard_check(vk_shift))
@@ -4103,6 +4117,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.verbosity_slider > 0)
 					{
 						if (keyboard_check(vk_shift))
@@ -4120,6 +4135,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
+					menu_delay = 3;
 					if (global.verbosity_slider < +1)
 					{
 						if (keyboard_check(vk_shift))

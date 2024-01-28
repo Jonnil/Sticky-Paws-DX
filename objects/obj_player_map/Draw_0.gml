@@ -18,107 +18,121 @@ if (can_move)
 && (instance_nearest(x, y, obj_level).clear_rate != "closed")
 && (!global.pause)
 {
-	
-	#region /* Can go up */
-	if (!place_meeting(x, y - 1, obj_wall))
+	if (can_show_arrows < 120)
 	{
-		if (gamepad_is_connected(global.player_slot[player]))
-		&& (global.controls_used_for_navigation == "gamepad")
-		|| (global.always_show_gamepad_buttons)
+		can_show_arrows ++;
+	}
+	
+	if (can_show_arrows >= 120)
+	{
+		show_arrows_alpha = lerp(show_arrows_alpha, 1, 0.05);
+		
+		#region /* Can go up */
+		if (!place_meeting(x, y - 1, obj_wall))
 		{
-			scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.up], x, y - 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
-		}
-		else
-		if (global.player_can_play[player])
-		{
-			if (global.player_[inp.key][player][1][action.up] > noone)
+			if (gamepad_is_connected(global.player_slot[player]))
+			&& (global.controls_used_for_navigation == "gamepad")
+			|| (global.always_show_gamepad_buttons)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][1][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.up], x, y - 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
 			}
 			else
-			if (global.player_[inp.key][player][2][action.up] > noone)
+			if (global.player_can_play[player])
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][2][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				if (global.player_[inp.key][player][1][action.up] > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][1][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				}
+				else
+				if (global.player_[inp.key][player][2][action.up] > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][2][action.up], x, y - 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				}
 			}
 		}
-	}
-	#endregion /* Can go up END */
-	
-	#region /* Can go down */
-	if (!place_meeting(x, y + 1, obj_wall))
-	{
-		if (gamepad_is_connected(global.player_slot[player]))
-		&& (global.controls_used_for_navigation == "gamepad")
-		|| (global.always_show_gamepad_buttons)
+		#endregion /* Can go up END */
+		
+		#region /* Can go down */
+		if (!place_meeting(x, y + 1, obj_wall))
 		{
-			scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.down], x, y + 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
-		}
-		else
-		if (global.player_can_play[player])
-		{
-			if (global.player_[inp.key][player][1][action.down] > noone)
+			if (gamepad_is_connected(global.player_slot[player]))
+			&& (global.controls_used_for_navigation == "gamepad")
+			|| (global.always_show_gamepad_buttons)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][1][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.down], x, y + 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
 			}
 			else
-			if (global.player_[inp.key][player][2][action.down] > noone)
+			if (global.player_can_play[player])
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][2][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				if (global.player_[inp.key][player][1][action.down] > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][1][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				}
+				else
+				if (global.player_[inp.key][player][2][action.down] > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][2][action.down], x, y + 48, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				}
 			}
 		}
-	}
-	#endregion /* Can go down END */
-	
-	#region /* Can go left */
-	if (!place_meeting(x - 1, y, obj_wall))
-	{
-		if (gamepad_is_connected(global.player_slot[player]))
-		&& (global.controls_used_for_navigation == "gamepad")
-		|| (global.always_show_gamepad_buttons)
+		#endregion /* Can go down END */
+		
+		#region /* Can go left */
+		if (!place_meeting(x - 1, y, obj_wall))
 		{
-			scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.left], x - 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
-		}
-		else
-		if (global.player_can_play[player])
-		{
-			if (global.player_[inp.key][player][1][action.left] > noone)
+			if (gamepad_is_connected(global.player_slot[player]))
+			&& (global.controls_used_for_navigation == "gamepad")
+			|| (global.always_show_gamepad_buttons)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][1][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.left], x - 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
 			}
 			else
-			if (global.player_[inp.key][player][2][action.left] > noone)
+			if (global.player_can_play[player])
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][2][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				if (global.player_[inp.key][player][1][action.left] > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][1][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				}
+				else
+				if (global.player_[inp.key][player][2][action.left] > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][2][action.left], x - 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				}
 			}
 		}
-	}
-	#endregion /* Can go left END */
-	
-	#region /* Can go right */
-	if (!place_meeting(x + 1, y, obj_wall))
-	{
-		if (gamepad_is_connected(global.player_slot[player]))
-		&& (global.controls_used_for_navigation == "gamepad")
-		|| (global.always_show_gamepad_buttons)
+		#endregion /* Can go left END */
+		
+		#region /* Can go right */
+		if (!place_meeting(x + 1, y, obj_wall))
 		{
-			scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.right], x + 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1));
-		}
-		else
-		if (global.player_can_play[player])
-		{
-			if (global.player_[inp.key][player][1][action.right] > noone)
+			if (gamepad_is_connected(global.player_slot[player]))
+			&& (global.controls_used_for_navigation == "gamepad")
+			|| (global.always_show_gamepad_buttons)
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][1][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.right], x + 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
 			}
 			else
-			if (global.player_[inp.key][player][2][action.right] > noone)
+			if (global.player_can_play[player])
 			{
-				draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][2][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1));
+				if (global.player_[inp.key][player][1][action.right] > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][1][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				}
+				else
+				if (global.player_[inp.key][player][2][action.right] > noone)
+				{
+					draw_sprite_ext(spr_keyboard_keys, global.player_[inp.key][player][2][action.right], x + 48, y, 0.5, 0.5, 0, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				}
 			}
 		}
+		#endregion /* Can go right END */
+		
 	}
-	#endregion /* Can go right END */
-	
+}
+else
+{
+	can_show_arrows = 0;
+	show_arrows_alpha = 0;
 }
 #endregion /* Show arrows where you can walk END*/
 
