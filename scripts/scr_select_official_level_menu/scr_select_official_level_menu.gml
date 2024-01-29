@@ -591,6 +591,7 @@ function scr_select_official_level_menu()
 		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept]))
 		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
 		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]))
+		|| (global.clicking_ok_input_screen)
 		{
 			scr_switch_expand_save_data(); /* Expand the save data before making new template level */
 			if (global.save_data_size_is_sufficient)

@@ -218,7 +218,7 @@ function scr_debug_screen()
 		
 		/* Draw the name of the current room at the bottom middle of the screen */
 		draw_set_halign(fa_center);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + string(global.select_level_index) + " " + string(room_get_name(room)) + " " + string(room_width) + "x" + string(room_height), global.default_text_size, c_black, c_white);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + "'" + string(global.level_name) + "'" + string(global.select_level_index) + " " + string(room_get_name(room)) + " " + string(room_width) + "x" + string(room_height), global.default_text_size, c_black, c_white);
 		
 		
 		
@@ -327,7 +327,8 @@ function scr_debug_screen()
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "keyboard_virtual_timer: " + string(global.keyboard_virtual_timer), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
-		
+		scr_draw_text_outlined(32, debug_text_y, "clicking_ok_input_screen: " + string(global.clicking_ok_input_screen), global.default_text_size, c_black, c_white);
+		debug_text_y += 40;
 		
 		
 		
@@ -335,9 +336,11 @@ function scr_debug_screen()
 		
 		scr_draw_text_outlined(32, debug_text_y, "working directory: " + string(working_directory), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "cache directory: " + string(cache_directory), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		//if (global.use_cache_or_working == cache_directory) { /* This crashes on Nintendo Switch */
+		//scr_draw_text_outlined(32, debug_text_y, "working directory: " + string(temp_directory), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//scr_draw_text_outlined(32, debug_text_y, "cache directory: " + string(cache_directory), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		//if (global.use_cache_or_working == cache_directory) { /* cache_directory here crashes on Nintendo Switch */
 		//	scr_draw_text_outlined(32, debug_text_y, "use_cache_or_working: cache_directory", global.default_text_size, c_black, c_white);
 		//	debug_text_y += 20;
 		//}

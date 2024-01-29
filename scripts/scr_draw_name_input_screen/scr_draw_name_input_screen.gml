@@ -41,13 +41,13 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 	}
 	#endregion /* Never draw y too low on screen so it shows up underneath the screen END */
 	
-	if (string_width_ext(what_string_to_edit, 40, 1000) < 300)
+	if (string_width_ext(keyboard_string, 40, 1000) < 300)
 	{
 		var width = 150;
 	}
 	else
 	{
-		var width = string_width_ext(what_string_to_edit, 40, 1000) * 0.5;
+		var width = string_width_ext(keyboard_string, 40, 1000) * 0.5;
 	}
 	
 	if (global.keyboard_virtual_timer < 6)
@@ -224,6 +224,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 		what_string_to_edit_async = "";
 		keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
 		global.clicking_cancel_input_screen = true;
+		global.keyboard_virtual_timer = 0;
 	}
 	#endregion /* Clicking the Cancel button END */
 	
@@ -233,7 +234,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 	|| (can_press_ok_when_input_empty)
 	{
 		if (max_characters_needed) /* On some code input screens, you want to fill all the characters to the max before you can continue */
-		&& (string_length(what_string_to_edit) == max_characters)
+		&& (string_length(keyboard_string) == max_characters)
 		|| (!max_characters_needed)
 		{
 			draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
@@ -258,8 +259,8 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 				&& (mouse_check_button_released(mb_left))
 				|| (menu == ok_menu_string)
 				&& (keyboard_check_pressed(vk_enter))
-				|| (menu == ok_menu_string)
-				&& (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+				//|| (menu == ok_menu_string)
+				//&& (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
 				{
 					menu_delay = 3;
 					if (!can_enter_illegal_charcters)
@@ -277,6 +278,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 					what_string_to_edit_async = "";
 					keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking OK */
 					global.clicking_ok_input_screen = true;
+					global.keyboard_virtual_timer = 0;
 				}
 			}
 			#endregion /* Clicking the OK button END */
@@ -345,6 +347,8 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 	{
 		keyboard_string = switch_mask_profanity(keyboard_string);
 	}
+	
+	what_string_to_edit = keyboard_string; /* Set this variable to keyboard string */
 	
 	return(keyboard_string);
 }
