@@ -27,7 +27,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), working_directory + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Background END */
 		
 		#region /* Data INI */
@@ -47,7 +47,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), working_directory + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Data INI END */
 		
 		#region /* Data TXT */
@@ -67,7 +67,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), working_directory + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Data TXT END */
 		
 		#region /* Data JSON */
@@ -87,7 +87,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), working_directory + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Data JSON END */
 		
 		#region /* Sound */
@@ -107,7 +107,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), working_directory + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Sound END */
 		
 		#region /* Tilesets */
@@ -127,7 +127,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 				zip_add_file(z, string(level_name) + "/" + string(folder_name) + "/" + string(file_name), working_directory + "custom_levels/" + string(level_name) + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Tilesets END */
 		
 		#region /* Other png files */
@@ -146,7 +146,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 				zip_add_file(z, string(level_name) + "/" + string(file_name), working_directory + "custom_levels/" + string(level_name) + "/" + string(file_name));
 			}
 		}
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Other png END */
 		
 		#endregion /* Add all the level files to a new zip file END */
@@ -192,7 +192,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 				zip_add_file(z, string(character_name) + "/" + string(folder_name) + "/" + string(file_name), working_directory + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Data END */
 		
 		#region /* Ogg files in sound folder */
@@ -212,7 +212,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 				zip_add_file(z, string(character_name) + "/" + string(folder_name) + "/" + string(file_name), working_directory + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Ogg files in sound folder END */
 		
 		#region /* Png files in sprites folder */
@@ -232,7 +232,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 				zip_add_file(z, string(character_name) + "/" + string(folder_name) + "/" + string(file_name), working_directory + "custom_characters/" + string(character_name) + "/" + string(folder_name) + "/" + string(file_name));
 			}
 		}
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Png files in sprites folder END */
 		
 		#region /* Voicepack folders in sound folder */
@@ -260,7 +260,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 			}
 		}
 		
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Voicepack folders in sound folder END */
 		
 		#region /* Skin folders in sprites folder */
@@ -288,7 +288,7 @@ function scr_upload_zip_add_files(what_kind_of_file = "level")
 			}
 		}
 		
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Skin folders in sprites folder END */
 		
 		#endregion /* Add all the character files to a new zip file END */

@@ -22,10 +22,13 @@ function scr_load_object_placement_json()
 	}
 	
 	var file_path = "";
-	if (load_main_game_level)
+	if (load_main_game_level) {
 		file_path = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/object_placement_all.json";
-	else if (global.level_name != "")
+	}
+	else
+	if (global.level_name != "") {
 		file_path = global.use_cache_or_working + "custom_levels/" + global.level_name + "/data/object_placement_all.json";
+	}
 	
 	if (file_exists(file_path))
 	{
@@ -44,7 +47,7 @@ function scr_load_object_placement_json()
 		var placed_objects_list = ds_list_create(); /* Only create a DS list if the file exists */
 		var file = file_text_open_read(file_path)
 		var json_string = file_text_read_string(file);
-		file_text_close(file);
+		file_text_close(file); switch_save_data_commit(); /* Remember to commit the save data! */
 		
 		var data = json_parse(json_string);
 		
@@ -123,7 +126,12 @@ function scr_save_custom_level_json()
 	{
 		
 		/* Create directory for saving custom levels */
-		if (!global.automatically_play_downloaded_level && global.level_name != "" && !file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini")) directory_create(working_directory + "custom_levels/" + global.level_name);
+		if (!global.automatically_play_downloaded_level
+		&& global.level_name != ""
+		&& !file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+		{
+			directory_create(working_directory + "custom_levels/" + global.level_name);
+		}
 		
 		var file
 		
@@ -134,7 +142,12 @@ function scr_save_custom_level_json()
 		}
 		
 		var data = [];
-		global.max_length_iterations = room_width div 32;
+		
+		if (global.can_save_length_variable)
+		&& (instance_exists(obj_level_width))
+		{
+			global.max_length_iterations = obj_level_width.x div 32;
+		}
 		
 		#region /* Write all objects to file */
 		with(obj_leveleditor_placed_object)
@@ -192,7 +205,7 @@ function scr_save_custom_level_json()
 		
 		var json_string = json_stringify(data);
 		file_text_write_string(file, json_string); /* Write string with wall information to file and start a new line */
-		file_text_close(file);
+		file_text_close(file); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Save object placement END */
 		
 		scr_save_level_information(); /* At the very end when saving a custom level, save the level information */
@@ -309,7 +322,7 @@ function scr_save_level_information()
 		
 		#endregion /* Save Custom Background Settings END */
 		
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		
 		/* Update custom level save data */
 		ini_open(working_directory + "save_file/custom_level_save.ini");
@@ -320,7 +333,7 @@ function scr_save_level_information()
 		ini_key_delete(global.level_name, "checkpoint_minute");
 		ini_key_delete(global.level_name, "checkpoint_realmillisecond");
 		ini_key_delete(global.level_name, "checkpoint_direction");
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		
 		#region /* Unlocked objects should be set as not recently unlocked anymore */
 		/* Open the INI file */

@@ -17,15 +17,15 @@ function scr_draw_welcome_to_level_editor_menu()
 		draw_set_halign(fa_left);
 		if (global.controls_used_for_navigation == "gamepad")
 		{
-			/* Left */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_LEFT, display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
-			/* Up */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_UP, display_get_gui_width() * 0.5 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
-			/* Right */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_RIGHT, display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
-			/* Down */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_DOWN, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1);
-			/* Scroll Toolbar Up */ scr_draw_gamepad_buttons(button_scroll_object_left, display_get_gui_width() * 0.5 - 42 - 42 - 84, display_get_gui_height() * 0.5 + 42 - 126, 0.5, c_white, 1);
-			/* Scroll Toolbar Down */ scr_draw_gamepad_buttons(button_scroll_object_right, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 + 42 - 126, 0.5, c_white, 1);
-			/* Place Objects */ scr_draw_gamepad_buttons(button_draw, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 + 42 + 42 - 126, 0.5, c_white, 1);
-			/* Delete Objects */ scr_draw_gamepad_buttons(button_erase, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 + 42 + 42 + 42 - 126, 0.5, c_white, 1);
-			/* Click on Object to Change Object Property */ scr_draw_gamepad_buttons(button_draw, display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42 - 42 + 16 - 84, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 - 126, 0.5, c_white, 1);
+			/* Left */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_LEFT, display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1, 1, 1, 1);
+			/* Up */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_UP, display_get_gui_width() * 0.5 - 42 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1, 1, 1, 1);
+			/* Right */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_RIGHT, display_get_gui_width() * 0.5 - 42 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1, 1, 1, 1);
+			/* Down */ scr_draw_gamepad_buttons(JOYSTICK_VALUE.JOYLEFT_DOWN, display_get_gui_width() * 0.5 - 42, display_get_gui_height() * 0.5 - 126, 0.5, c_white, 1, 1, 1, 1);
+			/* Scroll Toolbar Up */ scr_draw_gamepad_buttons(button_scroll_object_left, display_get_gui_width() * 0.5 - 42 - 42 - 84, display_get_gui_height() * 0.5 + 42 - 126, 0.5, c_white, 1, 1, 1, 1);
+			/* Scroll Toolbar Down */ scr_draw_gamepad_buttons(button_scroll_object_right, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 + 42 - 126, 0.5, c_white, 1, 1, 1, 1);
+			/* Place Objects */ scr_draw_gamepad_buttons(button_draw, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 + 42 + 42 - 126, 0.5, c_white, 1, 1, 1, 1);
+			/* Delete Objects */ scr_draw_gamepad_buttons(button_erase, display_get_gui_width() * 0.5 - 42 - 84, display_get_gui_height() * 0.5 + 42 + 42 + 42 - 126, 0.5, c_white, 1, 1, 1, 1);
+			/* Click on Object to Change Object Property */ scr_draw_gamepad_buttons(button_draw, display_get_gui_width() * 0.5 - 42 - 42 - 42 - 42 - 42 + 16 - 84, display_get_gui_height() * 0.5 + 42 + 42 + 42 + 42 - 126, 0.5, c_white, 1, 1, 1, 1);
 		}
 		else
 		{

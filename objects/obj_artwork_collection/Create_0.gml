@@ -1,3 +1,4 @@
+what_player_navigate = 1;
 menu = "";
 open_dropdown = false;
 menu_cursor_index = 0;

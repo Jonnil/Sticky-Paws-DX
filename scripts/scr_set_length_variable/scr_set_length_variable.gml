@@ -21,7 +21,7 @@ function scr_set_length_variable()
 				can_set_length = false;
 			}
 			else if (instance_exists(obj_level_width)) {
-				for(var i = 1; i < (obj_level_width.x / 32); i ++) {
+				for(var i = 1; i < global.max_length_iterations; i ++) {
 					var xx = x + (32 * i);
 					var inst = instance_position(xx, y, placed_object);
 					if (can_set_length /* Save how many objects to the right are repeated */

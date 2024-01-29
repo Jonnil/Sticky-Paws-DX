@@ -107,7 +107,7 @@ function scr_debug_screen()
 		if (variable_instance_exists(self, "player_show_controls_alpha")) {
 			for(var i = 1; i <= global.max_players; i += 1)
 			{
-				player_show_controls_alpha[i] = 0;
+				player_show_controls_alpha[i] = 0; /* Make the on-screen controls dissapear, as debug information is being displayed over these button graphics */
 			}
 		}
 		
@@ -182,13 +182,14 @@ function scr_debug_screen()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 8, "F3 to toggle debug screen", global.default_text_size * 0.6, c_black, c_white, 1);
 		}
 		draw_set_halign(fa_left);
-		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + scr_get_build_date(), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(32, version_y, string(global.game_name) + " v" + scr_get_build_date(), global.default_text_size, c_black, c_white, 1); /* Display the game's name and build version */
 		
-		#region /* X and Y position of player */
+		#region /* X, Y, and speed values of player */
 		var get_player = noone;
 		if (instance_exists(obj_camera)) {
 			for(var i = 1; i <= global.max_players; i += 1) {
-				if (instance_exists(obj_camera.player[i])) {
+				if (obj_camera.player[i] > 0)
+				&& (instance_exists(obj_camera.player[i])) {
 					var get_player = obj_camera.player[i];
 					break;
 				}
@@ -199,21 +200,21 @@ function scr_debug_screen()
 			var get_player = obj_player_map;
 		}
 		if (get_player != noone) {
-			draw_set_halign(fa_left);
-			draw_set_valign(fa_middle);
 			/* Show x position */ scr_draw_text_outlined(32, player_xy_y, "X: " + string(get_player.x), global.default_text_size, c_black, c_white, 1);
 			/* Show y position */ scr_draw_text_outlined(200, player_xy_y, "Y: " + string(get_player.y), global.default_text_size, c_black, c_white, 1);
 			/* Show speed value */ scr_draw_text_outlined(400, player_xy_y, "Speed: " + string(get_player.speed), global.default_text_size, c_black, c_white, 1);
 		}
-		#endregion /* X and Y position of player END */
+		#endregion /* X, Y, and speed values of player END */
 		
+		#region /* Top-right corner info */
 		draw_set_halign(fa_right);
-		draw_set_valign(fa_middle);
+		scr_draw_text_outlined(display_get_gui_width() - 32, display_y, "Display: " + string(window_get_width()) + "x" + string(window_get_height()), global.default_text_size, c_black, c_white, 1); /* Get the display dimensions */
+		
 		var _info = os_get_info();
-		scr_draw_text_outlined(display_get_gui_width() - 32, display_y, "Display: " + string(window_get_width()) + "x" + string(window_get_height()), global.default_text_size, c_black, c_white, 1);
-		if (_info[? "video_adapter_description"] != undefined) {
+		if (_info[? "video_adapter_description"] != undefined) { /* Need to check that this isn't "undefined", otherwise it will display the word "undefined" on screen */
 			scr_draw_text_outlined(display_get_gui_width() - 32, d3d11_y, string(_info[? "video_adapter_description"]), global.default_text_size, c_black, c_white, 1);
 		}
+		#endregion /* Top-right corner info END */
 		
 		/* Draw the name of the current room at the bottom middle of the screen */
 		draw_set_halign(fa_center);
@@ -324,10 +325,27 @@ function scr_debug_screen()
 		}
 		scr_draw_text_outlined(32, debug_text_y, "controls_used_for_navigation: " + string(global.controls_used_for_navigation), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
-		if (global.use_cache_or_working == cache_directory) {
-			scr_draw_text_outlined(32, debug_text_y, "use_cache_or_working: cache_directory", global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-		}
+		scr_draw_text_outlined(32, debug_text_y, "keyboard_virtual_timer: " + string(global.keyboard_virtual_timer), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		
+		
+		
+		
+		
+		
+		scr_draw_text_outlined(32, debug_text_y, "working directory: " + string(working_directory), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "cache directory: " + string(cache_directory), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
+		//if (global.use_cache_or_working == cache_directory) { /* This crashes on Nintendo Switch */
+		//	scr_draw_text_outlined(32, debug_text_y, "use_cache_or_working: cache_directory", global.default_text_size, c_black, c_white);
+		//	debug_text_y += 20;
+		//}
+		
+		
+		
+		
+		
 		if (variable_instance_exists(self, "open_sub_menu"))
 		{
 			scr_draw_text_outlined(32, debug_text_y, "open_sub_menu: " + string(open_sub_menu), global.default_text_size, c_black, c_white);

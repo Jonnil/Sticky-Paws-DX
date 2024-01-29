@@ -580,7 +580,7 @@ if (!global.actually_play_edited_level)
 			{
 				if (global.controls_used_for_navigation == "gamepad")
 				{
-					scr_draw_gamepad_buttons(gp_start, display_get_gui_width() * 0.5 - 16 - (string_width(l10n_text("Cancel Autosave")) * 0.5), 164, 0.6, c_white, 1);
+					scr_draw_gamepad_buttons(gp_start, display_get_gui_width() * 0.5 - 16 - (string_width(l10n_text("Cancel Autosave")) * 0.5), 164, 0.6, c_white, 1, 1, 1, 1);
 				}
 				else
 				{

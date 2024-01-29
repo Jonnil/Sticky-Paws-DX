@@ -79,7 +79,6 @@ function scr_character_manage_menu_step()
 				global.skin_for_player[fixed_player] = global.actual_skin_for_player[fixed_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 				#endregion /* Player 1 character select portrait sprite END */
 				
-				character_portrait_for_player_update_directory[fixed_player] = true;
 				scr_change_character_portrait();
 			}
 		}
@@ -117,7 +116,6 @@ function scr_character_manage_menu_step()
 				global.skin_for_player[fixed_player] = global.actual_skin_for_player[fixed_player]; /* Update "skin for player" to what it should actually be when selecting a new character before setting a sprite */
 				#endregion /* Player 1 character select portrait sprite END */
 				
-				character_portrait_for_player_update_directory[fixed_player] = true;
 				scr_change_character_portrait();
 			}
 		}
@@ -505,7 +503,7 @@ function scr_character_manage_menu_step()
 						{
 							menu = "clear_check_character_yes";
 						}
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					{
@@ -664,7 +662,6 @@ function scr_character_manage_menu_step()
 			if (menu != "click_delete_character_no")
 			&& (menu != "click_delete_character_yes")
 			{
-				character_portrait_for_player_update_directory[fixed_player] = true;
 				menu = "manage_character";
 				player_menu[fixed_player] = "manage_character"; /* When going back to previous menu from "manage character", you have to set this to "manage character" */
 				menu_delay = 3;

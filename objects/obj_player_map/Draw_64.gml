@@ -37,7 +37,7 @@ if (can_move)
 	&& (global.controls_used_for_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
-		scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.accept], 32, get_window_height - 20, 0.5, c_white, 1);
+		scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.accept], 32, get_window_height - 20, 0.5, c_white, 1, 1, 1, player);
 	}
 	else
 	if (global.player_can_play[player])
@@ -84,7 +84,7 @@ if (global.debug_screen)
 		if (gamepad_is_connected(global.player_slot[player]))
 		&& (global.controls_used_for_navigation == "gamepad")
 		{
-			scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.back], clear_prompt_x, get_window_height - 20, 0.5, c_white, 1);
+			scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.back], clear_prompt_x, get_window_height - 20, 0.5, c_white, 1, 1, 1, player);
 		}
 		else
 		if (global.player_can_play[player])

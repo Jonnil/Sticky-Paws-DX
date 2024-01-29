@@ -10,7 +10,7 @@ function scr_update_all_music()
 		global.default_ambience_overworld = ini_read_string("info", "default_ambience_overworld", "level1");
 		global.default_ambience_underwater = ini_read_string("info", "default_ambience_underwater", "level1");
 		global.default_clear_melody = ini_read_string("info", "default_clear_melody", "level1");
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* Get default music if they exist END */
 	

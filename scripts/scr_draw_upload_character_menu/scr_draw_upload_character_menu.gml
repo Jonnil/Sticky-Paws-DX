@@ -299,7 +299,7 @@ function scr_draw_upload_character_menu()
 					menu_delay = 3;
 					menu = "clear_check_character_yes";
 				}
-				ini_close();
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 		}
 		if (key_up)
@@ -721,7 +721,7 @@ function scr_draw_upload_character_menu()
 		{
 			var zip_file = file_bin_open(working_directory + string(character_id) + ".zip", 0);
 			var zip_size = file_bin_size(zip_file);
-			file_bin_close(zip_file);
+			file_bin_close(zip_file); switch_save_data_commit(); /* Remember to commit the save data! */
 			zip_megabytes = zip_size / 1024 / 1024;
 			
 			if (zip_megabytes > global.max_file_upload_megabytes)

@@ -41,6 +41,7 @@ function scr_player_move_pause() {
 			room_restart();
 		} else {
 			/* Handle normal pause logic */
+			global.pause = true;
 			
 			#region /* What player should control the pause menu */
 			if (controller_connected)
@@ -65,7 +66,6 @@ function scr_player_move_pause() {
 			room_persistent = true; /* Turn ON Room Persistency */
 			global.pause_room = room;
 			audio_pause_all();
-			global.pause = true;
 			room_goto(rm_pause);
 		}
 	} else {

@@ -470,7 +470,7 @@ function scr_option_level_editor()
 			
 			if (global.controls_used_for_navigation == "gamepad")
 			{
-				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1);
+				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1, 1, 1, 1);
 			}
 			else
 			{
@@ -2822,7 +2822,7 @@ function scr_option_level_editor()
 			
 			if (global.controls_used_for_navigation == "gamepad")
 			{
-				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1);
+				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1, 1, 1, 1);
 			}
 			else
 			{
@@ -3082,7 +3082,7 @@ function scr_option_level_editor()
 			
 			if (global.controls_used_for_navigation == "gamepad")
 			{
-				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1);
+				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1, 1, 1, 1);
 			}
 			else
 			{
@@ -3321,7 +3321,7 @@ function scr_option_level_editor()
 			
 			if (global.controls_used_for_navigation == "gamepad")
 			{
-				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1);
+				scr_draw_gamepad_buttons(gp_face3, 40, 80, 0.75, c_white, 1, 1, 1, 1);
 			}
 			else
 			{

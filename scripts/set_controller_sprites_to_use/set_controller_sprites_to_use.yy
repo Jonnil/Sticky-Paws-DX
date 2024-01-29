@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_draw_debug_movement_variables",
+  "name": "set_controller_sprites_to_use",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

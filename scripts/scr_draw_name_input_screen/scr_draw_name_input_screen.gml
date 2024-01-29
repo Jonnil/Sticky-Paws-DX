@@ -1,4 +1,4 @@
-function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true, only_big_letter = false, can_enter_illegal_charcters = false)
+function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /* This is max characters on Nintendo Switch */, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true, only_big_letter = false, can_enter_illegal_charcters = false)
 {
 	var buttons_x = -185;
 	var buttons_ok_y = +54;
@@ -50,7 +50,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		var width = string_width_ext(what_string_to_edit, 40, 1000) * 0.5;
 	}
 	
-	if (global.keyboard_virtual_timer < 3)
+	if (global.keyboard_virtual_timer < 6)
 	{
 		global.keyboard_virtual_timer ++;
 	}
@@ -65,9 +65,9 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	if (global.keyboard_virtual_timer == 2)
 	|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx - width, yy - 16, xx + width, yy + 16))
 	&& (mouse_check_button_released(mb_left))
-	&& (global.keyboard_virtual_timer == 3)
+	&& (global.keyboard_virtual_timer >= 5)
 	|| (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
-	&& (global.keyboard_virtual_timer == 3)
+	&& (global.keyboard_virtual_timer >= 5)
 	{
 		menu_delay = 3;
 		if (os_type == os_switch)
@@ -190,7 +190,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	|| (os_type == os_switch)
 	|| (steam_utils_is_steam_running_on_steam_deck())
 	{
-		scr_draw_gamepad_buttons(gp_face4, xx + 200, yy + 32, 0.5, c_white, 1);
+		scr_draw_gamepad_buttons(gp_face4, xx + 200, yy + 32, 0.5, c_white, 1, 1, 1, 1);
 		scr_draw_text_outlined(xx + 280, yy + 32, l10n_text("Edit"), global.default_text_size, c_black, c_ltgray, 1);
 	}
 	
@@ -222,7 +222,6 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			keyboard_string = string_replace_all(keyboard_string, "|", "");
 		}
 		what_string_to_edit_async = "";
-		global.keyboard_virtual_timer = 0;
 		keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
 		global.clicking_cancel_input_screen = true;
 	}
@@ -244,7 +243,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
-					scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, c_white, 1);
+					scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_ok_y + 21, 0.5, c_white, 1, 1, 1, 1);
 				}
 				else
 				{
@@ -253,32 +252,32 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 			}
 			
 			#region /* Clicking the OK button */
-			if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
-			&& (mouse_check_button_released(mb_left))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (!global.clicking_ok_input_screen)
-			|| (menu == ok_menu_string)
-			&& (keyboard_check_pressed(vk_enter))
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (!global.clicking_ok_input_screen)
+			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				menu_delay = 3;
-				if (!can_enter_illegal_charcters)
+				if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
+				&& (mouse_check_button_released(mb_left))
+				|| (menu == ok_menu_string)
+				&& (keyboard_check_pressed(vk_enter))
+				|| (menu == ok_menu_string)
+				&& (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
 				{
-					keyboard_string = string_replace_all(keyboard_string, "\\", "");
-					keyboard_string = string_replace_all(keyboard_string, "/", "");
-					keyboard_string = string_replace_all(keyboard_string, ":", "");
-					keyboard_string = string_replace_all(keyboard_string, "*", "");
-					keyboard_string = string_replace_all(keyboard_string, "?", "");
-					keyboard_string = string_replace_all(keyboard_string, "\"", "");
-					keyboard_string = string_replace_all(keyboard_string, "<", "");
-					keyboard_string = string_replace_all(keyboard_string, ">", "");
-					keyboard_string = string_replace_all(keyboard_string, "|", "");
+					menu_delay = 3;
+					if (!can_enter_illegal_charcters)
+					{
+						keyboard_string = string_replace_all(keyboard_string, "\\", "");
+						keyboard_string = string_replace_all(keyboard_string, "/", "");
+						keyboard_string = string_replace_all(keyboard_string, ":", "");
+						keyboard_string = string_replace_all(keyboard_string, "*", "");
+						keyboard_string = string_replace_all(keyboard_string, "?", "");
+						keyboard_string = string_replace_all(keyboard_string, "\"", "");
+						keyboard_string = string_replace_all(keyboard_string, "<", "");
+						keyboard_string = string_replace_all(keyboard_string, ">", "");
+						keyboard_string = string_replace_all(keyboard_string, "|", "");
+					}
+					what_string_to_edit_async = "";
+					keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking OK */
+					global.clicking_ok_input_screen = true;
 				}
-				what_string_to_edit_async = "";
-				global.keyboard_virtual_timer = 0;
-				keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking OK */
-				global.clicking_ok_input_screen = true;
 			}
 			#endregion /* Clicking the OK button END */
 			
@@ -293,7 +292,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		&& (global.controls_used_for_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
-			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
+			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1, 1, 1, 1);
 		}
 		else
 		{
@@ -307,7 +306,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 		&& (global.controls_used_for_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
-			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1);
+			scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.accept], xx + buttons_x + 20, yy + buttons_cancel_y + 21, 0.5, c_white, 1, 1, 1, 1);
 		}
 		else
 		{
@@ -316,13 +315,10 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters, box_col
 	}
 	#endregion /* OK and Cancel buttons under name input END */
 	
-	if (string_length(what_string_to_edit) > max_characters)
-	{
-		what_string_to_edit = string_copy(what_string_to_edit, 1, max_characters);
-	}
+	var string_previous = keyboard_string;
 	if (string_length(keyboard_string) > max_characters)
 	{
-		keyboard_string = string_copy(what_string_to_edit, 1, max_characters);
+		keyboard_string = string_copy(string_previous, 1, max_characters);
 	}
 	
 	if (menu_delay == 0 && menu_joystick_delay == 0)

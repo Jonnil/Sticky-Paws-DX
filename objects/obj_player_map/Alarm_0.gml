@@ -9,7 +9,7 @@ scr_set_character_folder();
 ini_open(string(character_folder) + "/data/character_config.ini");
 default_xscale = ini_read_real("values", "default_xscale", 1);
 default_yscale = ini_read_real("values", "default_yscale", 1);
-ini_close();
+ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 
 #region /* Sprite variables */
 

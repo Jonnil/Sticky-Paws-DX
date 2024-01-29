@@ -54,7 +54,7 @@ if (need_to_press_up_to_enter)
 		&& (player_gamepad_button_up > noone)
 		|| (global.always_show_gamepad_buttons)
 		{
-			scr_draw_gamepad_buttons(player_gamepad_button_up, x + door_x, y, 0.4, c_white, 0.5, door_xscale, 1);
+			scr_draw_gamepad_buttons(player_gamepad_button_up, x + door_x, y, 0.4, c_white, 0.5, door_xscale, 1, instance_nearest(x, y, obj_player).player);
 		}
 		else
 		if (instance_exists(obj_player))
@@ -63,7 +63,7 @@ if (need_to_press_up_to_enter)
 		&& (player_gamepad_button2_up > noone)
 		|| (global.always_show_gamepad_buttons)
 		{
-			scr_draw_gamepad_buttons(player_gamepad_button2_up, x + door_x, y, 0.4, c_white, 0.5, door_xscale, 1);
+			scr_draw_gamepad_buttons(player_gamepad_button2_up, x + door_x, y, 0.4, c_white, 0.5, door_xscale, 1, instance_nearest(x, y, obj_player).player);
 		}
 		else
 		if (player_key_up > noone)

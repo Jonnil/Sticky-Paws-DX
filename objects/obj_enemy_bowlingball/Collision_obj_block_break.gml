@@ -6,7 +6,7 @@ if (!die)
 {
 	flat = true;
 	coil_spring = false;
-	stomped_delay = 10;
+	stomped_delay = 5;
 	vspeed = -10;
 	draw_angle = 180;
 	if (other.x < x)

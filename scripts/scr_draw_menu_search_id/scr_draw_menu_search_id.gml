@@ -255,7 +255,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						global.level_description = ini_read_string("info", "level_description", "");
 						masked_username = ini_read_string("info", "username", "");
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						if (switch_check_profanity(global.level_description))
 						{
 							global.level_description = string(switch_mask_profanity(global.level_description));
@@ -271,7 +271,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					else
 					{
-						menu = "play_from_cache_directory"; /* Go to the screen where you get so choose if you want to play from cache directory, or download to working directory */
+						menu = "play_from_cache"; /* Go to the screen where you get so choose if you want to play from cache directory, or download to working directory */
 					}
 				}
 				#endregion /* Get downloaded level info END */
@@ -304,7 +304,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						ini_open(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini");
 						global.level_description = ini_read_string("info", "character_description", "");
 						masked_username = ini_read_string("info", "username", "");
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						if (switch_check_profanity(global.level_description))
 						{
 							global.level_description = string(switch_mask_profanity(global.level_description));
@@ -392,8 +392,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	else
 	
 	#region /* Searched file downloaded menu */
-	if (menu == "play_from_cache_directory") /* Play from cache directory */
-	|| (menu == "download_to_working_directory") /* Or Download to working directory */
+	if (menu == "play_from_cache") /* Play from cache directory */
+	|| (menu == "download_to_working") /* Or Download to working directory */
 	|| (menu == "searched_file_downloaded_play")
 	|| (menu == "searched_file_downloaded_make")
 	|| (menu == "searched_file_downloaded_delete")
@@ -492,10 +492,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (file_exists(cache_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				&& (!inform_about_report_feature)
 				{
-					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "play_from_cache_directory", "play_from_cache_directory");
+					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "play_from_cache", "play_from_cache");
 					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
 					{
-						draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_make_y, l10n_text("Download to Level Select"), "download_to_working_directory", "download_to_working_directory");
+						draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_make_y, l10n_text("Download to Level Select"), "download_to_working", "download_to_working");
 					}
 				}
 				
@@ -593,7 +593,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					menu_delay = 3;
 					ini_open(working_directory + "save_file/config.ini");
 					ini_write_real("config", "inform_about_report_feature", false);
-					ini_close();switch_save_data_commit();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					inform_about_report_feature = false;
 					if (what_kind_of_id == "level")
 					{
@@ -603,7 +603,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						}
 						else
 						{
-							menu = "play_from_cache_directory"; /* Go to the screen where you get so choose if you want to play from cache directory, or download to working directory */
+							menu = "play_from_cache"; /* Go to the screen where you get so choose if you want to play from cache directory, or download to working directory */
 						}
 					}
 					else
@@ -631,7 +631,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (mouse_check_button_released(mb_left))
 				|| (menu == "searched_file_downloaded_play")
 				&& (key_a_pressed)
-				|| (menu == "play_from_cache_directory")
+				|| (menu == "play_from_cache")
 				&& (key_a_pressed)
 				{
 					/* Play the level */
@@ -662,7 +662,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_make_y, display_get_gui_width() * 0.5 + 185, searched_file_make_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (mouse_check_button_released(mb_left))
-				|| (menu == "download_to_working_directory")
+				|| (menu == "download_to_working")
 				&& (key_a_pressed)
 				{
 					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
@@ -721,7 +721,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					ini_open(working_directory + "save_file/custom_level_save.ini");
 					ini_section_delete(global.level_name);
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					global.select_level_index = 0;
 					global.level_name = "";
 				}
@@ -803,7 +803,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 					else
 					{
-						menu = "play_from_cache_directory";
+						menu = "play_from_cache";
 					}
 				}
 				else
@@ -827,11 +827,11 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					menu = "searched_file_downloaded_back_to_list";
 				}
 				else
-				if (menu == "play_from_cache_directory")
+				if (menu == "play_from_cache")
 				{
 					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
 					{
-						menu = "download_to_working_directory";
+						menu = "download_to_working";
 					}
 					else
 					{
@@ -839,7 +839,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					}
 				}
 				else
-				if (menu == "download_to_working_directory")
+				if (menu == "download_to_working")
 				{
 					menu = "searched_file_downloaded_report";
 				}
@@ -880,22 +880,22 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					else
 					if (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
 					{
-						menu = "download_to_working_directory";
+						menu = "download_to_working";
 					}
 					else
 					{
-						menu = "play_from_cache_directory";
+						menu = "play_from_cache";
 					}
 				}
 				else
-				if (menu == "play_from_cache_directory")
+				if (menu == "play_from_cache")
 				{
 					menu = "searched_file_downloaded_back_to_list";
 				}
 				else
-				if (menu == "download_to_working_directory")
+				if (menu == "download_to_working")
 				{
-					menu = "play_from_cache_directory";
+					menu = "play_from_cache";
 				}
 			}
 			else

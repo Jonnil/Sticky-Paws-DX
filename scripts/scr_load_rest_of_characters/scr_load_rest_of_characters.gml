@@ -27,7 +27,7 @@ function scr_load_rest_of_characters()
 		
 		if (file_found == "")
 		{
-			file_find_close();
+			file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			
 			if (player_menu[fixed_player] == "click_copy_character")
 			{

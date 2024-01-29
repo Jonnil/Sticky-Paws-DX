@@ -99,7 +99,6 @@ function scr_character_select_player_navigation(what_player = 1)
 						global.character_index[what_player - 1] = ds_list_size(global.all_loaded_characters) - 1;
 					}
 					
-					character_portrait_for_player_update_directory[what_player] = true;
 					global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
 					xx_delay[what_player] = -1;
 					
@@ -139,7 +138,6 @@ function scr_character_select_player_navigation(what_player = 1)
 						global.character_index[what_player - 1] = 0;
 					}
 					
-					character_portrait_for_player_update_directory[what_player] = true;
 					global.character_for_player[what_player] = ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1])
 					xx_delay[what_player] = +1;
 					

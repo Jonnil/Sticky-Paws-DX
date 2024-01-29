@@ -110,7 +110,7 @@ function scr_draw_upload_level_menu()
 			{
 				ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 				ini_write_real("info", "clear_check", false); /* Set clear check to false when trying to upload within the level editor */
-				ini_close();
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 			
 			if (global.free_communication_available)
@@ -201,7 +201,7 @@ function scr_draw_upload_level_menu()
 									tag_themed = ini_read_real("tags", "tag_themed", false);
 									tag_glitch_showcase = ini_read_real("tags", "glitch_showcase", false);
 									intended_level_difficulty = ini_read_real("info", "intended_level_difficulty", 1);
-									ini_close();
+									ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 									#endregion /* loads tags from level_information.ini END */
 							
 									menu_delay = 3;
@@ -251,7 +251,7 @@ function scr_draw_upload_level_menu()
 							show_level_editor_corner_menu = false;
 						}
 					}
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				{
@@ -643,7 +643,7 @@ function scr_draw_upload_level_menu()
 			{
 				scr_draw_text_outlined(get_window_width * 0.5, draw_description_y, string(ini_read_string("info", "level_description", "")), global.default_text_size * 1.25, c_black, c_white, 1);
 			}
-			ini_close();
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		#endregion /* Draw Level Description END */
 		
@@ -764,7 +764,7 @@ function scr_draw_upload_level_menu()
 				{
 					ini_open(upload_level_path + "/data/level_information.ini");
 					keyboard_string = ini_read_string("info", "level_description", "");
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
 				{
@@ -955,7 +955,7 @@ function scr_draw_upload_level_menu()
 						menu_delay = 3;
 						ini_open(working_directory + "save_file/custom_level_save.ini");
 						ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						scr_copy_move_files(working_directory + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)), upload_level_path, true);
 						scr_load_custom_level_initializing();
 						global.go_to_menu_when_going_back_to_title = "upload_edit_name";
@@ -1636,7 +1636,7 @@ function scr_draw_upload_level_menu()
 		{
 			var zip_file = file_bin_open(working_directory + string(level_id) + ".zip", 0);
 			var zip_size = file_bin_size(zip_file);
-			file_bin_close(zip_file);
+			file_bin_close(zip_file); switch_save_data_commit(); /* Remember to commit the save data! */
 			zip_megabytes = zip_size / 1024 / 1024;
 			
 			if (zip_megabytes > global.max_file_upload_megabytes)
@@ -1707,7 +1707,7 @@ function scr_draw_upload_level_menu()
 						/* Update a list of downloaded levels that you have finished. The level you are uploading have already been finished */
 						ini_open(working_directory + "save_file/custom_level_save.ini");
 						ini_write_real("finished_downloaded_level", string(level_id), 2); /* Played and finished */
-						ini_close();
+						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						
 						search_for_id_still = false;
 						menu = "level_uploaded";

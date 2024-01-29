@@ -338,7 +338,7 @@ if (global.character_select_in_this_menu == "level_editor")
 	&& (global.controls_used_for_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
-		scr_draw_gamepad_buttons(gp_select, 32 + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1);
+		scr_draw_gamepad_buttons(gp_select, 32 + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1, 1, 1, 1);
 	}
 	else
 	{
@@ -353,7 +353,7 @@ if (global.character_select_in_this_menu == "level_editor")
 	&& (global.controls_used_for_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
-		scr_draw_gamepad_buttons(invincibility_button, playtest_invincibility_x + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1);
+		scr_draw_gamepad_buttons(invincibility_button, playtest_invincibility_x + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1, 1, 1, 1);
 	}
 	else
 	{
@@ -368,7 +368,7 @@ if (global.character_select_in_this_menu == "level_editor")
 	&& (global.controls_used_for_navigation == "gamepad")
 	|| (global.always_show_gamepad_buttons)
 	{
-		scr_draw_gamepad_buttons(moonjump_button, playtest_moonjump_x + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1);
+		scr_draw_gamepad_buttons(moonjump_button, playtest_moonjump_x + 20, display_get_gui_height() - 32 + 20, 0.4, c_white, 1, 1, 1, 1);
 	}
 	else
 	{

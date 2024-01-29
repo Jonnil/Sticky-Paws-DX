@@ -34,7 +34,7 @@ if (!die)
 				else
 				{
 					flat = true;
-					stomped_delay = 10;
+					stomped_delay = 5;
 					die = true;
 					/* If the enemy is a bullet being blasted out of a blaster, the enemy have to spawn a special object that targets the original blaster, so the blaster can count how many of its bullets have been defeated by the player */
 					if (spawn_blaster_reward_decrease_mask)
@@ -104,7 +104,7 @@ if (!die)
 				else
 				{
 					flat = true;
-					stomped_delay = 10;
+					stomped_delay = 5;
 					die = true;
 					/* If the enemy is a bullet being blasted out of a blaster, the enemy have to spawn a special object that targets the original blaster, so the blaster can count how many of its bullets have been defeated by the player */
 					if (spawn_blaster_reward_decrease_mask)
@@ -156,7 +156,7 @@ if (!die)
 				}
 				coil_spring = false;
 				flat = true;
-				stomped_delay = 10;
+				stomped_delay = 5;
 				effect_create_below(ef_ring, x, y, 0, c_white);
 				scr_gamepad_vibration(other.player, 0.5, 10);
 				scr_audio_play(choose(enemyvoice_defeated1, enemyvoice_defeated2, enemyvoice_defeated3), volume_source.voice);

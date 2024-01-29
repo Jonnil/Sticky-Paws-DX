@@ -280,7 +280,7 @@ function scr_draw_online_download_list()
 										finished_level[i] = false; /* Overwrite so it's false instead of undefined, so you don't check this level ID again */
 									}
 									
-									ini_close();
+									ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 								}
 								else
 								{
@@ -536,7 +536,7 @@ function scr_draw_online_download_list()
 			&& (global.controls_used_for_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1);
+				scr_draw_gamepad_buttons(gp_face4, 16, draw_search_id_y + 21, 0.5, c_white, 1, 1, 1, 1);
 			}
 			#endregion /* Draw Search key END */
 			

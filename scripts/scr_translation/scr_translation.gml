@@ -94,7 +94,7 @@ function l10n_text(key = "") /* The common abbreviation for localization is l10n
 		{
 			ini_write_string("Translation Missing Keywords", string(key), "");
 		}
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	
 	return text;

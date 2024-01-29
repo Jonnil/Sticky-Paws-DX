@@ -75,6 +75,7 @@ if (keyboard_check_pressed(vk_escape) ||
 (!window_has_focus() && global.automatically_pause_when_window_is_unfocused) ||
 (global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), display_get_gui_width() - 185, 0, display_get_gui_width(), 42)) /* Pause button appears in the top right corner of the screen when using mouse */ ||
 pause_condition_met) {
+	global.pause = true;
 	global.pause_player = pause_player;
 	global.pause_screenshot = sprite_create_from_surface(application_surface, 0, 0, surface_get_width(application_surface), surface_get_height(application_surface), 0, 0, 0, 0);
 	room_persistent = true; /* Turn ON Room Persistency */
@@ -247,7 +248,7 @@ if (lives <= 0)
 	{
 		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "lives", lives);
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 }
 #endregion /* Give the player lives if they get a game over END */
@@ -659,7 +660,7 @@ if (can_move)
 				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
-					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, c_white, 1);
+					scr_draw_gamepad_buttons(gp_padr, x + 64, y, 0.5, c_white, 1, 1, 1, player);
 				}
 				else
 				if (global.player_can_play[player])
@@ -686,7 +687,7 @@ if (can_move)
 				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
-					scr_draw_gamepad_buttons(gp_padl, x - 64, y, 0.5, c_white, 1);
+					scr_draw_gamepad_buttons(gp_padl, x - 64, y, 0.5, c_white, 1, 1, 1, player);
 				}
 				else
 				if (global.player_can_play[player])
@@ -713,7 +714,7 @@ if (can_move)
 				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
-					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, c_white, 1);
+					scr_draw_gamepad_buttons(gp_padd, x, y + 64, 0.5, c_white, 1, 1, 1, player);
 				}
 				else
 				if (global.player_can_play[player])
@@ -740,7 +741,7 @@ if (can_move)
 				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
-					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);
+					scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1, 1, 1, player);
 				}
 				else
 				if (global.player_can_play[player])
@@ -804,7 +805,7 @@ if (place_meeting(x, y, obj_map_path_turn))
 		y = instance_nearest(x, y, obj_map_path_turn).y + move_speed;
 		with(instance_nearest(x, y, obj_map_path_turn))
 		{
-			delay = 10;
+			delay = 5;
 		}
 	}
 	else
@@ -817,7 +818,7 @@ if (place_meeting(x, y, obj_map_path_turn))
 		y = instance_nearest(x, y, obj_map_path_turn).y;
 		with(instance_nearest(x, y, obj_map_path_turn))
 		{
-			delay = 10;
+			delay = 5;
 		}
 	}
 }
@@ -838,7 +839,7 @@ if (place_meeting(x, y, obj_map_path_turn))
 		y = instance_nearest(x, y, obj_map_path_turn).y - move_speed;
 		with(instance_nearest(x, y, obj_map_path_turn))
 		{
-			delay = 10;
+			delay = 5;
 		}
 	}
 	else
@@ -851,7 +852,7 @@ if (place_meeting(x, y, obj_map_path_turn))
 		y = instance_nearest(x, y, obj_map_path_turn).y;
 		with(instance_nearest(x, y, obj_map_path_turn))
 		{
-			delay = 10;
+			delay = 5;
 		}
 	}
 }
@@ -872,7 +873,7 @@ if (place_meeting(x, y, obj_map_path_turn))
 		y = instance_nearest(x, y, obj_map_path_turn).y - move_speed;
 		with(instance_nearest(x, y, obj_map_path_turn))
 		{
-			delay = 10;
+			delay = 5;
 		}
 	}
 	else
@@ -885,7 +886,7 @@ if (place_meeting(x, y, obj_map_path_turn))
 		y = instance_nearest(x, y, obj_map_path_turn).y;
 		with(instance_nearest(x, y, obj_map_path_turn))
 		{
-			delay = 10;
+			delay = 5;
 		}
 	}
 }
@@ -906,7 +907,7 @@ if (place_meeting(x, y, obj_map_path_turn))
 		y = instance_nearest(x, y, obj_map_path_turn).y + move_speed;
 		with(instance_nearest(x, y, obj_map_path_turn))
 		{
-			delay = 10;
+			delay = 5;
 		}
 	}
 	else
@@ -919,7 +920,7 @@ if (place_meeting(x, y, obj_map_path_turn))
 		y = instance_nearest(x, y, obj_map_path_turn).y;
 		with(instance_nearest(x, y, obj_map_path_turn))
 		{
-			delay = 10;
+			delay = 5;
 		}
 	}
 }

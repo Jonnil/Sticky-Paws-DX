@@ -57,8 +57,8 @@ function scr_set_default_remapping_player_gamepad(what_player = 1, save_default_
 	global.player_double_tap_to_run[what_player] = true;
 	global.player_run_toggle[what_player] = false;
 	global.player_double_tap_to_dive[what_player] = false;
-	global.player_cancel_dive_by_pressing_jump_or_dive_button[what_player] = false;
-	global.player_cancel_dive_by_pressing_opposite_direction[what_player] = false;
+	global.player_cancel_dive_by_jump_or_dive[what_player] = false;
+	global.player_cancel_dive_by_opposite_direction[what_player] = false;
 	global.player_down_and_jump_to_groundpound[what_player] = false;
 	global.player_wall_jump_setting[what_player] = 1;
 	global.player_drop_from_rope[what_player] = 1;
@@ -108,8 +108,8 @@ function scr_set_default_remapping_player_gamepad(what_player = 1, save_default_
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_double_tap_to_run", global.player_double_tap_to_run[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_run_toggle", global.player_run_toggle[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_double_tap_to_dive", global.player_double_tap_to_dive[what_player]);
-		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_cancel_dive_by_pressing_jump_or_dive_button", global.player_cancel_dive_by_pressing_jump_or_dive_button[what_player]);
-		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_cancel_dive_by_pressing_opposite_direction", global.player_cancel_dive_by_pressing_opposite_direction[what_player]);
+		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_cancel_dive_by_jump_or_dive", global.player_cancel_dive_by_jump_or_dive[what_player]);
+		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_cancel_dive_by_opposite_direction", global.player_cancel_dive_by_opposite_direction[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_down_and_jump_to_groundpound", global.player_down_and_jump_to_groundpound[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_wall_jump_setting", global.player_wall_jump_setting[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_drop_from_rope", global.player_drop_from_rope[what_player]);
@@ -221,8 +221,8 @@ function scr_set_default_remapping_player_keyboard(what_player = 1, save_default
 	global.player_double_tap_to_run[what_player] = true;
 	global.player_run_toggle[what_player] = false;
 	global.player_double_tap_to_dive[what_player] = false;
-	global.player_cancel_dive_by_pressing_jump_or_dive_button[what_player] = false;
-	global.player_cancel_dive_by_pressing_opposite_direction[what_player] = false;
+	global.player_cancel_dive_by_jump_or_dive[what_player] = false;
+	global.player_cancel_dive_by_opposite_direction[what_player] = false;
 	global.player_down_and_jump_to_groundpound[what_player] = false;
 	global.player_wall_jump_setting[what_player] = 1;
 	global.player_drop_from_rope[what_player] = 1;
@@ -272,8 +272,8 @@ function scr_set_default_remapping_player_keyboard(what_player = 1, save_default
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_double_tap_to_run", global.player_double_tap_to_run[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_run_toggle", global.player_run_toggle[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_double_tap_to_dive", global.player_double_tap_to_dive[what_player]);
-		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_cancel_dive_by_pressing_jump_or_dive_button", global.player_cancel_dive_by_pressing_jump_or_dive_button[what_player]);
-		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_cancel_dive_by_pressing_opposite_direction", global.player_cancel_dive_by_pressing_opposite_direction[what_player]);
+		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_cancel_dive_by_jump_or_dive", global.player_cancel_dive_by_jump_or_dive[what_player]);
+		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_cancel_dive_by_opposite_direction", global.player_cancel_dive_by_opposite_direction[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_down_and_jump_to_groundpound", global.player_down_and_jump_to_groundpound[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_wall_jump_setting", global.player_wall_jump_setting[what_player]);
 		ini_write_real("player" + string(what_player) + "_profile" + string(global.player_profile[what_player]), "player" + string(what_player) + "_drop_from_rope", global.player_drop_from_rope[what_player]);

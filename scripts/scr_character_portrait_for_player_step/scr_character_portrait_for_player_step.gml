@@ -90,15 +90,14 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					&& (global.skin_for_player[what_player] > 0)
 					{
 						menu_delay = 3;
-							
+						
 						#region /* Player character select portrait sprite */
 						global.skin_for_player[what_player] --;
 						global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 						menu_specific_joystick_delay[what_player] = 30;
 						xx_delay[what_player] = -1;
 						#endregion /* Player character select portrait sprite END */
-							
-						character_portrait_for_player_update_directory[what_player] = true;
+						
 						scr_change_character_portrait();
 					}
 				}
@@ -119,15 +118,14 @@ function scr_character_portrait_for_player_step(what_player = 1)
 					&& (character_portrait_for_player_dir_exists_2[what_player])
 					{
 						menu_delay = 3;
-							
+						
 						#region /* Player character select portrait sprite */
 						global.skin_for_player[what_player] ++;
 						global.actual_skin_for_player[what_player] = global.skin_for_player[what_player]; /* When changing skins, update "actual skin for player" to match "skin for player". Update "skin for player" first */
 						menu_specific_joystick_delay[what_player] = 30;
 						xx_delay[what_player] = +1;
 						#endregion /* Player character select portrait sprite END */
-							
-						character_portrait_for_player_update_directory[what_player] = true;
+						
 						scr_change_character_portrait();
 					}
 				}
@@ -190,7 +188,6 @@ function scr_character_portrait_for_player_step(what_player = 1)
 						global.voicepack_for_player[what_player] --;
 						menu_specific_joystick_delay[what_player] = 30;
 						xx[what_player] = player_display_x[what_player] -32;
-						character_portrait_for_player_update_directory[what_player] = true;
 						scr_change_character_portrait();
 					}
 				}
@@ -215,7 +212,6 @@ function scr_character_portrait_for_player_step(what_player = 1)
 							global.voicepack_for_player[what_player] ++;
 							menu_specific_joystick_delay[what_player] = 30;
 							xx[what_player] = player_display_x[what_player] +32;
-							character_portrait_for_player_update_directory[what_player] = true;
 							scr_change_character_portrait();
 						}
 					}

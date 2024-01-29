@@ -12,17 +12,6 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 		global.assist_extra_hp = change_to_value;
 	}
 	else
-	if (menu == "remap_select_player")
-	&& (variable_to_change = remapping_player)
-	{
-		remapping_player = change_to_value;
-		if (global.sprite_select_player[change_to_value + 1] == noone)
-		{
-			character_portrait_for_player_update_directory[change_to_value + 1] = true
-			alarm[0] = true;
-		}
-	}
-	else
 	if (menu == "remap_select_profile")
 	&& (variable_to_change = global.player_profile[remapping_player + 1])
 	{
@@ -51,9 +40,10 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	}
 	else
 	if (menu == "chosen_controller_used")
-	&& (variable_to_change = global.chosen_controller_used[remapping_player])
+	&& (variable_to_change = global.chosen_controller_used[remapping_player + 1])
 	{
-		global.chosen_controller_used[remapping_player] = change_to_value;
+		global.chosen_controller_used[remapping_player + 1] = change_to_value;
+		set_controller_sprites_to_use();
 	}
 	else
 	if (menu == "difficulty_settings")

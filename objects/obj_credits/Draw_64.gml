@@ -17,7 +17,7 @@ if (global.controls_used_for_navigation == "gamepad" || global.always_show_gamep
 {
     is_gamepad_connected = true;
     scr_draw_text_outlined(get_window_width - 64, 0, l10n_text("Skip") + ": " + l10n_text("Hold"), global.default_text_size, c_black, c_white, 1);
-    scr_draw_gamepad_buttons(gp_start, get_window_width - 32, 21, 0.5, c_white, 1);
+    scr_draw_gamepad_buttons(gp_start, get_window_width - 32, 21, 0.5, c_white, 1, 1, 1, 1);
 }
 else if (os_type == os_ios || os_type == os_android)
 {

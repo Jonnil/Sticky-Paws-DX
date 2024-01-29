@@ -27,7 +27,7 @@ function scr_draw_all_level_editor_icon()
 	&& gamepad_is_connected(global.player_slot[1])
 	|| global.always_show_gamepad_buttons)
 	{
-		scr_draw_gamepad_buttons(button_play, play_level_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1);
+		scr_draw_gamepad_buttons(button_play, play_level_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1, 1, 1, 1);
 	}
 	else
 	{
@@ -75,11 +75,11 @@ function scr_draw_all_level_editor_icon()
 		if (!fill_mode)
 		&& (!erase_mode)
 		{
-			scr_draw_gamepad_buttons(button_change_draw_size, place_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1);
+			scr_draw_gamepad_buttons(button_change_draw_size, place_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1, 1, 1, 1);
 		}
 		else
 		{
-			scr_draw_gamepad_buttons(button_draw, place_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1);
+			scr_draw_gamepad_buttons(button_draw, place_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1, 1, 1, 1);
 		}
 	}
 	else
@@ -149,11 +149,11 @@ function scr_draw_all_level_editor_icon()
 	{
 		if (erase_mode)
 		{
-			scr_draw_gamepad_buttons(button_change_erase_size, erase_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1);
+			scr_draw_gamepad_buttons(button_change_erase_size, erase_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1, 1, 1, 1);
 		}
 		else
 		{
-			scr_draw_gamepad_buttons(button_erase, erase_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1);
+			scr_draw_gamepad_buttons(button_erase, erase_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1, 1, 1, 1);
 		}
 	}
 	else
@@ -241,11 +241,11 @@ function scr_draw_all_level_editor_icon()
 	{
 		if (fill_mode)
 		{
-			scr_draw_gamepad_buttons(button_change_fill_type, fill_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1);
+			scr_draw_gamepad_buttons(button_change_fill_type, fill_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1, 1, 1, 1);
 		}
 		else
 		{
-			scr_draw_gamepad_buttons(button_fill, fill_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1);
+			scr_draw_gamepad_buttons(button_fill, fill_icon_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, c_white, 1, 1, 1, 1);
 		}
 	}
 	else

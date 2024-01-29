@@ -43,7 +43,7 @@ function scr_save_custom_world()
 		#endregion /* Write all objects to file END */
 		
 		file_text_write_string(file, str); /* Write string with wall information to file and start a new line */
-		file_text_close(file);
+		file_text_close(file); switch_save_data_commit(); /* Remember to commit the save data! */
 		
 		#endregion /* Save object placement END */
 		

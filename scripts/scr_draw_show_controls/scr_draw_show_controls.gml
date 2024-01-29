@@ -103,7 +103,7 @@ function scr_draw_show_controls(what_player = 1)
 					var dive_button = max(player_gamepad_button_dive, player_gamepad_button2_dive);
 					if (dive_button != noone) {
 						draw_text_dive = true;
-						scr_draw_gamepad_buttons(dive_button, player_show_dive_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+						scr_draw_gamepad_buttons(dive_button, player_show_dive_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 					}
 				} else {
 					var dive_key = max(player_key_dive, player_key2_dive);
@@ -123,7 +123,7 @@ function scr_draw_show_controls(what_player = 1)
 					var jump_button = max(player_gamepad_button_jump, player_gamepad_button2_jump);
 					if (jump_button != noone) {
 						draw_text_jump = true;
-						scr_draw_gamepad_buttons(jump_button, player_show_jump_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+						scr_draw_gamepad_buttons(jump_button, player_show_jump_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 					}
 				} else {
 					var jump_key = max(player_key_jump, player_key2_jump);
@@ -145,7 +145,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_crouch = true;
-					scr_draw_gamepad_buttons(player_gamepad_button_crouch, player_show_crouch_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button_crouch, player_show_crouch_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (gamepad_player_is_connected)
@@ -154,7 +154,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_crouch = true;
-					scr_draw_gamepad_buttons(player_gamepad_button2_crouch, player_show_crouch_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button2_crouch, player_show_crouch_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (gamepad_player_is_connected)
@@ -163,7 +163,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_crouch = true;
-					scr_draw_gamepad_buttons(player_gamepad_button_crouch_toggle, player_show_crouch_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button_crouch_toggle, player_show_crouch_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (gamepad_player_is_connected)
@@ -172,7 +172,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_crouch = true;
-					scr_draw_gamepad_buttons(player_gamepad_button2_crouch_toggle, player_show_crouch_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button2_crouch_toggle, player_show_crouch_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (player_key_crouch > noone)
@@ -213,7 +213,7 @@ function scr_draw_show_controls(what_player = 1)
 					|| (global.always_show_gamepad_buttons)
 					{
 						draw_text_run = true;
-						scr_draw_gamepad_buttons(player_gamepad_button_run, player_show_run_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+						scr_draw_gamepad_buttons(player_gamepad_button_run, player_show_run_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 					}
 					else
 					if (gamepad_player_is_connected)
@@ -222,7 +222,7 @@ function scr_draw_show_controls(what_player = 1)
 					|| (global.always_show_gamepad_buttons)
 					{
 						draw_text_run = true;
-						scr_draw_gamepad_buttons(player_gamepad_button2_run, player_show_run_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+						scr_draw_gamepad_buttons(player_gamepad_button2_run, player_show_run_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 					}
 					else
 					if (gamepad_player_is_connected)
@@ -231,7 +231,7 @@ function scr_draw_show_controls(what_player = 1)
 					|| (global.always_show_gamepad_buttons)
 					{
 						draw_text_run = true;
-						scr_draw_gamepad_buttons(player_gamepad_button_run_toggle, player_show_run_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+						scr_draw_gamepad_buttons(player_gamepad_button_run_toggle, player_show_run_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 					}
 					else
 					if (gamepad_player_is_connected)
@@ -240,7 +240,7 @@ function scr_draw_show_controls(what_player = 1)
 					|| (global.always_show_gamepad_buttons)
 					{
 						draw_text_run = true;
-						scr_draw_gamepad_buttons(player_gamepad_button2_run_toggle, player_show_run_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+						scr_draw_gamepad_buttons(player_gamepad_button2_run_toggle, player_show_run_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 					}
 					else
 					if (player_key_run > noone)
@@ -280,7 +280,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_left = true;
-					scr_draw_gamepad_buttons(player_gamepad_button_left, player_show_left_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button_left, player_show_left_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (gamepad_player_is_connected)
@@ -289,7 +289,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_left = true;
-					scr_draw_gamepad_buttons(player_gamepad_button2_left, player_show_left_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button2_left, player_show_left_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (player_key_left > noone)
@@ -316,7 +316,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_right = true;
-					scr_draw_gamepad_buttons(player_gamepad_button_right, player_show_right_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button_right, player_show_right_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (gamepad_player_is_connected)
@@ -325,7 +325,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_right = true;
-					scr_draw_gamepad_buttons(player_gamepad_button2_right, player_show_right_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button2_right, player_show_right_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (player_key_right > noone)
@@ -352,7 +352,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_down = true;
-					scr_draw_gamepad_buttons(player_gamepad_button_down, player_show_down_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button_down, player_show_down_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (gamepad_player_is_connected)
@@ -361,7 +361,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_down = true;
-					scr_draw_gamepad_buttons(player_gamepad_button2_down, player_show_down_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button2_down, player_show_down_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (player_key_down > noone)
@@ -388,7 +388,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_up = true;
-					scr_draw_gamepad_buttons(player_gamepad_button_up, player_show_up_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button_up, player_show_up_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (gamepad_player_is_connected)
@@ -397,7 +397,7 @@ function scr_draw_show_controls(what_player = 1)
 				|| (global.always_show_gamepad_buttons)
 				{
 					draw_text_up = true;
-					scr_draw_gamepad_buttons(player_gamepad_button2_up, player_show_up_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+					scr_draw_gamepad_buttons(player_gamepad_button2_up, player_show_up_key_x[what_player], get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 				}
 				else
 				if (player_key_up > noone)
@@ -432,7 +432,7 @@ function scr_draw_show_controls(what_player = 1)
 				if (show_gamepad_buttons) {
 					var gamepad_button = max(player_gamepad_button_accept, player_gamepad_button2_accept);
 					if (gamepad_button != noone) {
-						scr_draw_gamepad_buttons(gamepad_button, string_width(l10n_text("Join Game")) + 32, get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player]);
+						scr_draw_gamepad_buttons(gamepad_button, string_width(l10n_text("Join Game")) + 32, get_window_height - show_player_controls_y[what_player], 0.5, c_white, player_show_controls_alpha[what_player], 1, 1, what_player);
 					}
 				} else {
 					var join_key = max(player_key_accept, player_key2_accept);

@@ -99,7 +99,7 @@ function scr_character_select_menu_draw()
 			&& (global.controls_used_for_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(global.player_[inp.gp][what_player][1][action.accept], get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, c_white, 1);
+				scr_draw_gamepad_buttons(global.player_[inp.gp][what_player][1][action.accept], get_window_width * 0.5 + (string_width(l10n_text("Play the game!")) * 0.5) + 64, play_the_game_text_y_lerp, 0.5, c_white, 1, 1, 1, what_player);
 			}
 			else
 			{
@@ -261,7 +261,6 @@ function scr_character_select_menu_draw()
 						#region /* Join game when clicking the join text */
 						if (mouse_check_button_released(mb_left))
 						{
-							character_portrait_for_player_update_directory[i] = true;
 							player_automatically_join[i] = false;
 							player_menu[i] = "select_character";
 							if (i == 1)
@@ -292,7 +291,7 @@ function scr_character_select_menu_draw()
 					{
 						if (gamepad_is_connected(global.player_slot[i]) && (global.controls_used_for_navigation == "gamepad" || global.always_show_gamepad_buttons))
 						{
-							scr_draw_gamepad_buttons(global.player_[inp.gp][i][1][action.accept], player_join_x + 90, player_join_y, 0.5, c_white, 1);
+							scr_draw_gamepad_buttons(global.player_[inp.gp][i][1][action.accept], player_join_x + 90, player_join_y, 0.5, c_white, 1, 1, 1, i);
 						}
 						else
 						{

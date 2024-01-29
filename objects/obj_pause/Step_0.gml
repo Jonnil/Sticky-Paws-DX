@@ -143,12 +143,6 @@ if (menu_cursor_index > 4)
 }
 #endregion /* Menu cursor image speed END */
 
-if (unpause)
-{
-	scr_delete_sprite_properly(global.pause_screenshot);
-	room_goto(global.pause_room); /* Go back to room where you paused. You want to use "room goto", not room = global.pause_room, as that makes it go to incorrect rooms */
-}
-
 #region /* Show loading icon and reset level */
 if (show_loading_icon)
 {
@@ -162,7 +156,6 @@ if (show_loading_icon)
 		global.restart_level = true;
 		audio_stop_all();
 		global.pause = false;
-		unpause = true;
 		#endregion /* Restart Level END */
 		
 	}
@@ -210,7 +203,6 @@ if (show_loading_icon)
 		global.restart_level = true;
 		audio_stop_all();
 		global.pause = false;
-		unpause = true;
 		#endregion /* Restart Level END */
 			
 	}
@@ -239,7 +231,6 @@ if (keyboard_check_pressed(vk_escape))
 		audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
 		audio_sound_gain(global.ambience_underwater, 0, 0);
 		global.pause = false;
-		unpause = true;
 	}
 }
 #endregion /* Return to game END */
@@ -271,7 +262,6 @@ if (!hide_menu_for_clean_screenshots)
 				audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
 				audio_sound_gain(global.ambience_underwater, 0, 0);
 				global.pause = false;
-				unpause = true;
 				#endregion /* Return to game END */
 				
 			}
@@ -381,7 +371,6 @@ if (!hide_menu_for_clean_screenshots)
 					menu_delay = 9999;
 					global.restart_level = true;
 					global.pause = false;
-					unpause = true;
 				}
 			}
 			if (key_up)
@@ -808,7 +797,6 @@ if (!hide_menu_for_clean_screenshots)
 				global.quit_to_map = true;
 				audio_stop_all();
 				global.pause = false;
-				unpause = true;
 				#endregion /* Return to Map END */
 			
 			}
@@ -865,7 +853,6 @@ if (!hide_menu_for_clean_screenshots)
 				global.quit_to_title = true;
 				audio_stop_all();
 				global.pause = false;
-				unpause = true;
 				#endregion /* Return to Title END */
 				
 			}
@@ -1025,7 +1012,6 @@ if (!hide_menu_for_clean_screenshots)
 				audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
 				audio_sound_gain(global.ambience_underwater, 0, 0);
 				global.pause = false;
-				unpause = true; /* Return to game END */
 			}
 			else
 			

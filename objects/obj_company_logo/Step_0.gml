@@ -191,7 +191,7 @@ if (!can_navigate)
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close();
+				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				
 				#region /* Narrator Voice variable handeling */
 				
@@ -364,7 +364,7 @@ if (!can_navigate)
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close();
+				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			
 				if (directory_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound"))
 				&& (!directory_exists("resource_pack/" + "" + "/sound"))
@@ -412,7 +412,7 @@ if (!can_navigate)
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close();
+				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				load_ok = 3;
 			}
 			else
@@ -441,7 +441,7 @@ if (!can_navigate)
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close();
+				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				if (file_exists("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
 				{
 					global.title_logo_index = sprite_add("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo)), 1, false, false, 0, 0);

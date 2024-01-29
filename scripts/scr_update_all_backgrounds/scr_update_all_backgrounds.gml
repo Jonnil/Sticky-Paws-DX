@@ -18,7 +18,7 @@ function scr_update_all_backgrounds()
 		global.default_foreground1_5 = ini_read_string("info", "default_foreground1_5", "");
 		global.default_foreground2 = ini_read_string("info", "default_foreground2", "");
 		global.default_foreground_secret = ini_read_string("info", "default_foreground_secret", "");
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	else
 	if (global.character_select_in_this_menu == "level_editor")
@@ -34,7 +34,7 @@ function scr_update_all_backgrounds()
 		global.default_foreground1_5 = ini_read_string("info", "default_foreground1_5", "");
 		global.default_foreground2 = ini_read_string("info", "default_foreground2", "");
 		global.default_foreground_secret = ini_read_string("info", "default_foreground_secret", "");
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	else
 	{
@@ -48,7 +48,7 @@ function scr_update_all_backgrounds()
 		global.default_foreground1_5 = ini_read_string("info", "default_foreground1_5", "");
 		global.default_foreground2 = ini_read_string("info", "default_foreground2", "");
 		global.default_foreground_secret = ini_read_string("info", "default_foreground_secret", "");
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		
 	}
 	show_debug_message("Set what file path to use");

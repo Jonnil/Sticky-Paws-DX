@@ -1,74 +1,10 @@
-function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale = 1, color = c_white, alpha = 1, xscale = 1, yscale = 1, what_player = global.player_slot[1])
+function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale = 1, color = c_white, alpha = 1, xscale = 1, yscale = 1, what_player = 1)
 {
-	var controller_used_player;
-	for(var i = 1; i <= global.max_players; i += 1)
-	{
-		if (what_player == global.player_slot[i])
-		{
-			controller_used_player = i;
-			break; /* Exit the loop once the correct player slot is found */
-		}
-	}
-	/* If no match is found, default to player 1 */
-	if (!controller_used_player)
-	{
-		controller_used_player = 1;
-	}
-	
-	switch (global.chosen_controller_used[controller_used_player]) {
-		
-		#region /* Autodetect what controller player is using */
-		case 0:
-		
-		if (gamepad_get_description(controller_used_player - 1) == "PS4 Controller")
-		{
-			var what_sprites_to_use = global.resource_pack_sprite_buttons_playstation4;
-		}
-		else
-		if (gamepad_get_description(controller_used_player - 1) == "PS5 Controller")
-		{
-			var what_sprites_to_use = global.resource_pack_sprite_buttons_playstation5;
-		}
-		else
-		{
-			var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxone;
-		}
-		
-		break;
-		#endregion /* Autodetect what controller player is using END */
-		
-		#region /* Force what controller player wants to use */
-		case 1: var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxone; break;
-		case 2: var what_sprites_to_use = global.resource_pack_sprite_buttons_xboxseriesxs; break;
-		case 3:
-		if (os_type == os_switch)
-		{
-			if (switch_controller_joycon_left_connected(1))
-			&& (switch_controller_joycon_right_connected(1))
-			{
-				var what_sprites_to_use = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
-			}
-			else
-			{
-				var what_sprites_to_use = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
-			}
-		}
-		else
-		{
-			var what_sprites_to_use = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
-		}
-		break;
-		case 4: var what_sprites_to_use = global.resource_pack_sprite_buttons_playstation4; break;
-		case 5: var what_sprites_to_use = global.resource_pack_sprite_buttons_playstation5; break;
-		#endregion /* Force what controller player wants to use END */
-		
-		default: var what_sprites_to_use = spr_noone; break;
-	}
-	
 	var what_button_to_display = 0;
+	var what_sprite_to_use = global.what_controller_sprites_to_use[what_player];
 	
     switch (what_button) {
-        case noone: what_sprites_to_use = spr_keyboard_keys_none; what_button_to_display = 0; break;
+        case noone: what_sprite_to_use = spr_keyboard_keys_none; what_button_to_display = 0; break;
         case gp_face1: what_button_to_display = 0; break;
         case gp_face2: what_button_to_display = 1; break;
         case gp_face3: what_button_to_display = 2; break;
@@ -94,8 +30,8 @@ function scr_draw_gamepad_buttons(what_button = gp_face1, xx, yy, overall_scale 
         case JOYSTICK_VALUE.JOYRIGHT_DOWN: what_button_to_display = 22; break;
         case JOYSTICK_VALUE.JOYRIGHT_UP: what_button_to_display = 23; break;
     }
-	if (sprite_exists(what_sprites_to_use))
+	if (sprite_exists(what_sprite_to_use))
 	{
-		draw_sprite_ext(what_sprites_to_use, what_button_to_display, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
+		draw_sprite_ext(what_sprite_to_use, what_button_to_display, xx, yy, overall_scale * xscale, overall_scale * yscale, 0, color, alpha);
 	}
 }

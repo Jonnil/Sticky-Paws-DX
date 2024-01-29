@@ -34,7 +34,7 @@ function scr_character_manage_copy()
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close();
+				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				file_load_timer = 0;
 				initialized_copy = false;
 				load_ok ++;
@@ -81,7 +81,7 @@ function scr_character_manage_copy()
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close();
+				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				file_load_timer = 0;
 				initialized_copy = false;
 				load_ok ++;
@@ -126,7 +126,7 @@ function scr_character_manage_copy()
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close();
+				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				file_load_timer = 0;
 				initialized_copy = false;
 				load_ok ++;
@@ -169,7 +169,7 @@ function scr_character_manage_copy()
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close();
+				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				file_load_timer = 0;
 				initialized_copy = false;
 				load_ok ++;
@@ -221,7 +221,7 @@ function scr_character_manage_copy()
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close();
+				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				file_load_timer = 0;
 				initialized_copy = false;
 				load_specific_folder ++;
@@ -320,7 +320,7 @@ function scr_character_manage_copy()
 			file_found = file_find_next()
 			if (file_found == "")
 			{
-				file_find_close();
+				file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				load_specific_folder ++;
 				initialized_copy = false;
 				file_load_timer = 0;

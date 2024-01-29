@@ -148,6 +148,9 @@ function scr_character_select_menu_step()
 					ini_open("save_file/config.ini"); /* Must save character_for_player in config.ini manually here, because scr_config_save doesn't run every frame in step event, only when you exit the options menu, to prevent config.ini to get deleted and replaced every frame */
 					for(var i = 1; i <= global.max_players; i += 1)
 					{
+						if (player_accept_selection[i] != 1) {
+							global.player_can_play[i] = false; /* If players haven't joined, force the "player can play" variable to be false */
+						}
 						ini_write_real("config", "character_index_player" + string(i), global.character_index[i - 1]);
 						ini_write_real("config", "skin_for_player" + string(i), global.skin_for_player[i]);
 						ini_write_string("config", "player" + string(i) + "_name", global.player_name[i]);
@@ -204,7 +207,6 @@ function scr_character_select_menu_step()
 						audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
 						audio_sound_gain(global.ambience_underwater, 0, 0);
 						global.pause = false;
-						unpause = true;
 						#endregion /* Return to game END */
 						
 					}
@@ -358,7 +360,7 @@ function scr_character_select_menu_step()
 						player_menu[i] = "select_character";
 						menu = "select_character";
 						menu_delay = 3;
-						player_accept_selection[i] = true;
+						player_accept_selection[i] = 1;
 						player_automatically_join[i] = false;
 						global.player_can_play[i] = true;
 						
@@ -464,7 +466,7 @@ function scr_character_select_menu_step()
 					&& (menu_delay == 0 && menu_joystick_delay == 0)
 					{
 						menu_delay = 3;
-						player_accept_selection[i] = false;
+						player_accept_selection[i] = 0;
 						global.player_can_play[i] = false;
 						can_navigate = true;
 					}
@@ -586,7 +588,6 @@ function scr_character_select_menu_step()
 						&& (player_menu[fixed_player] != "online_character_list")
 						|| (menu_delay == 0 && menu_joystick_delay == 0)
 						{
-							character_portrait_for_player_update_directory[i] = true;
 							player_automatically_join[i] = false;
 							player_menu[i] = "select_character";
 							if (i == 1)

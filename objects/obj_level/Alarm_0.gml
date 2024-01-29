@@ -28,7 +28,7 @@ if (file_exists(working_directory + "save_file/file" + string(global.file) + ".i
 	timeattack_realmillisecond = ini_read_real(level_name, "timeattack_realmillisecond", 999999999);
 	level_score = ini_read_real(level_name, "level_score", 0);
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	
 }
 else

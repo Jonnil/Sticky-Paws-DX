@@ -8,8 +8,8 @@ function scr_player_move_customizable_controls()
 	down_is_also_crouch = global.player_down_is_also_crouch[player];
 	double_tap_to_run = global.player_double_tap_to_run[player];
 	double_tap_to_dive = global.player_double_tap_to_dive[player];
-	cancel_dive_by_pressing_jump_or_dive_button = global.player_cancel_dive_by_pressing_jump_or_dive_button[player];
-	cancel_dive_by_pressing_opposite_direction = global.player_cancel_dive_by_pressing_opposite_direction[player];
+	cancel_dive_by_jump_or_dive = global.player_cancel_dive_by_jump_or_dive[player];
+	cancel_dive_by_opposite_direction = global.player_cancel_dive_by_opposite_direction[player];
 	down_and_jump_to_groundpound = global.player_down_and_jump_to_groundpound[player];
 	wall_jump_setting = global.player_wall_jump_setting[player];
 	drop_from_rope = global.player_drop_from_rope[player];

@@ -95,7 +95,7 @@ if (!hide_menu_for_clean_screenshots)
 		if (global.controls_used_for_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
-			scr_draw_gamepad_buttons(gp_face4, 32, hide_menu_for_clean_screenshots_y, 0.75, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
+			scr_draw_gamepad_buttons(gp_face4, 32, hide_menu_for_clean_screenshots_y, 0.75, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha, 1, 1, global.pause_player + 1);
 		}
 		else
 		{
@@ -262,16 +262,7 @@ if (!hide_menu_for_clean_screenshots)
 		else
 		if (global.pause_room == rm_leveleditor)
 		&& (global.character_select_in_this_menu == "main_game")
-		&& (menu == "quit_to_map")
-		|| (global.pause_room == rm_leveleditor)
-		&& (global.character_select_in_this_menu == "main_game")
-		&& (menu == "quit_to_title")
-		|| (global.pause_room == rm_leveleditor)
-		&& (global.character_select_in_this_menu == "main_game")
-		&& (menu == "quit_to_desktop")
-		|| (global.pause_room == rm_leveleditor)
-		&& (global.character_select_in_this_menu == "main_game")
-		&& (menu == "quit_nevermind")
+		&& (menu == "quit_to_map" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Quit to Map"), "quit_to_map", "quit_to_map", c_lime, fade_in_pause_alpha);
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
@@ -290,13 +281,7 @@ if (!hide_menu_for_clean_screenshots)
 		else
 		if (global.pause_room == rm_leveleditor)
 		&& (global.character_select_in_this_menu == "level_editor")
-		&& (menu == "quit_to_title")
-		|| (global.pause_room == rm_leveleditor)
-		&& (global.character_select_in_this_menu == "level_editor")
-		&& (menu == "quit_to_desktop")
-		|| (global.pause_room == rm_leveleditor)
-		&& (global.character_select_in_this_menu == "level_editor")
-		&& (menu == "quit_nevermind")
+		&& (menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
 			if (global.enable_option_for_pc)
@@ -313,11 +298,7 @@ if (!hide_menu_for_clean_screenshots)
 		}
 		else
 		if (global.pause_room == rm_world_map)
-		&& (menu == "quit_to_title")
-		|| (global.pause_room == rm_world_map)
-		&& (menu == "quit_to_desktop")
-		|| (global.pause_room == rm_world_map)
-		&& (menu == "quit_nevermind")
+		&& (menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
 		{
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text(string(quit_to_title_name)), "quit_to_title", "quit_to_title", c_lime, fade_in_pause_alpha);
 			if (global.enable_option_for_pc)

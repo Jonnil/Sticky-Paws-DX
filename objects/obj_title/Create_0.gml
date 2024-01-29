@@ -20,7 +20,6 @@ for(var p = 1; p <= global.max_players; p += 1) {
 	/* Player Key Accept Pressed */ player_key_a_pressed[p] = noone;
 	/* Player Key Back Pressed */ player_key_b_pressed[p] = noone;
 	/* Player Key Accept Hold */ player_key_a_hold[p] = noone;
-	character_portrait_for_player_update_directory[p] = false;
 	character_portrait_for_player_dir_exists_1[p] = false;
 	character_portrait_for_player_dir_exists_2[p] = false;
 	character_portrait_for_player_dir_exists_3[p] = false;
@@ -485,7 +484,7 @@ if (global.reset_world_map_zoom_when_going_back_to_map)
 ini_open(working_directory + "save_file/config.ini");
 var latest_whats_new_version = ini_read_string("config", "latest_whats_new_version", "");
 var latest_whats_new_text = ini_read_string("config", "latest_whats_new_text", "");
-ini_close();
+ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 
 if (latest_whats_new_version != "v" + scr_get_build_date() && latest_whats_new_text != global.whats_new)
 {
@@ -550,3 +549,5 @@ if (global.narrator >= 0)
 #endregion /* Narrator Voice variable handeling END */
 
 scr_audio_play(voice_game_title, volume_source.voice); /* Say the games title */
+
+set_controller_sprites_to_use();

@@ -871,7 +871,6 @@ function scr_select_official_level_menu()
 				var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					allowed_to_load_template_level = true;
-					show_debug_message("ini_close();")
 				}, [], 1);
 				time_source_start(time_source); time_source_period += 1;
 				

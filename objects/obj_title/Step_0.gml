@@ -40,7 +40,7 @@ if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
 	global.automatically_play_downloaded_level = false;
 }
 
-global.keyboard_virtual_timer = clamp(global.keyboard_virtual_timer - 0.5, 0, 4);
+global.keyboard_virtual_timer = clamp(global.keyboard_virtual_timer - 0.5, 0, 8);
 
 scr_menu_navigation_initialization(0, true); /* Keyboard Controls */
 
@@ -112,7 +112,7 @@ if (menu == "load_custom_level")
 	
 	if (file_found == "")
 	{
-		file_find_close();
+		file_find_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		
 		#region /* Get clear check and level ID information */
 		if (variable_instance_exists(self, "thumbnail_level_name"))
@@ -162,7 +162,7 @@ if (menu == "load_custom_level")
 				{
 					thumbnail_level_username[i] = string(ini_read_string("info", "username", ""));
 				}
-				ini_close();
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 		}
 		else
@@ -373,7 +373,7 @@ if (iris_xscale <= 0.01)
 		scr_config_save();
 		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 		lives = ini_read_real("Player", "lives", 5);
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		room_goto(rm_world_map);
 	}
 	#endregion /* Load File END */

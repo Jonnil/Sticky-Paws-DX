@@ -21,7 +21,6 @@ for(var p = 1; p <= global.max_players; p += 1) {
 	/* Player Key Accept Pressed */ player_key_a_pressed[p] = noone;
 	/* Player Key Back Pressed */ player_key_b_pressed[p] = noone;
 	/* Player Key Accept Hold */ player_key_a_hold[p] = noone;
-	character_portrait_for_player_update_directory[p] = false;
 	character_portrait_for_player_dir_exists_1[p] = false;
 	character_portrait_for_player_dir_exists_2[p] = false;
 	character_portrait_for_player_dir_exists_3[p] = false;
@@ -34,7 +33,6 @@ initialized_copy = false;
 can_save_to_character_config = false;
 #endregion /* Set variables for character select in pause menu END */
 
-unpause = false;
 hud_show_big_collectibles_y = -32;
 content_type = "level";
 
@@ -152,7 +150,7 @@ menu_delay = 3;
 last_key = noone;
 
 #region /* Remapping options variables */
-remapping_player = 0; /* remapping_player 0 = player 1. remapping_player 1 = player 2. remapping_player 2 = player 3. remapping_player 3 = player 4 */
+remapping_player = 0;
 input_key = false;
 can_remap_key = false;
 input_gamepad_button = false;
@@ -286,3 +284,5 @@ if (room == rm_leveleditor)
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 }
 #endregion /* Save Level Editor Checkpoint END */
+
+set_controller_sprites_to_use();

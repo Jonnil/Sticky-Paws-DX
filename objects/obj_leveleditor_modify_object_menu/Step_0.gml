@@ -29,14 +29,14 @@ if (quit_modify_object_menu)
 {
 	if (instance_exists(obj_leveleditor))
 	{
-		obj_leveleditor.menu_delay = 10;
+		obj_leveleditor.menu_delay = 5;
 		obj_leveleditor.drag_object = false;
 	}
 	var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
 		if (instance_exists(obj_leveleditor))
 		{
 			obj_leveleditor.modify_object_menu = false;
-			obj_leveleditor.menu_delay = 10;
+			obj_leveleditor.menu_delay = 5;
 			obj_leveleditor.drag_object = false;
 		}
 	}, [], 1);

@@ -62,7 +62,7 @@ if (lives > 0)
 	{
 		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
 		ini_write_real("Player", "lives", lives - 1);
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	var time_source = time_source_create(time_source_game, 30, time_source_units_frames, function()
 	{

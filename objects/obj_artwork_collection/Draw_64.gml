@@ -192,8 +192,8 @@ if (gamepad_is_connected(global.player_slot[1]))
 && (global.controls_used_for_navigation == "gamepad")
 || (global.always_show_gamepad_buttons)
 {
-	scr_draw_gamepad_buttons(gp_padl, 128, get_window_height * 0.5, 1, c_white, 1);
-	scr_draw_gamepad_buttons(gp_padr, get_window_width - 128, get_window_height * 0.5, 1, c_white, 1);
+	scr_draw_gamepad_buttons(gp_padl, 128, get_window_height * 0.5, 1, c_white, 1, 1, 1, what_player_navigate);
+	scr_draw_gamepad_buttons(gp_padr, get_window_width - 128, get_window_height * 0.5, 1, c_white, 1, 1, 1, what_player_navigate);
 }
 else
 {
@@ -261,11 +261,11 @@ draw_menu_button(get_window_width - 370, get_window_height - 42, l10n_text("Back
 draw_sprite_ext(spr_icon_back, 0, get_window_width - 370 + 20, get_window_height - 42 + 21, 1, 1, 0, c_white, 1);
 
 #region /* Draw Back Key */
-if (gamepad_is_connected(global.player_slot[1]))
+if (gamepad_is_connected(global.player_slot[what_player_navigate]))
 && (global.controls_used_for_navigation == "gamepad")
 || (global.always_show_gamepad_buttons)
 {
-	scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], get_window_width - 32, get_window_height -21, 0.5, c_white, 1);
+	scr_draw_gamepad_buttons(global.player_[inp.gp][1][1][action.back], get_window_width - 32, get_window_height -21, 0.5, c_white, 1, 1, 1, what_player_navigate);
 }
 else
 {

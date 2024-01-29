@@ -11,24 +11,24 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 		&& (menu_remap_key_number == 0)
 		{
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, key_x - 54, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
-			if (remapping_player_key > noone)
+			if (remapping_player_key != noone)
 			{
-				scr_draw_gamepad_buttons(remapping_player_key, key_x, menu_y_remap_key + menu_y_offset, 1, c_white, 1);
+				scr_draw_gamepad_buttons(remapping_player_key, key_x, menu_y_remap_key + menu_y_offset, 1, c_white, 1, 1, 1, remapping_player + 1);
 			}
 			else
 			{
-				scr_draw_gamepad_buttons(noone, key_x, menu_y_remap_key + menu_y_offset, 1, c_gray, 0.5);
+				scr_draw_gamepad_buttons(noone, key_x, menu_y_remap_key + menu_y_offset, 1, c_gray, 0.5, 1, 1, remapping_player + 1);
 			}
 		}
 		else
 		{
-			if (remapping_player_key > noone)
+			if (remapping_player_key != noone)
 			{
-				scr_draw_gamepad_buttons(remapping_player_key, key_x, menu_y_remap_key + menu_y_offset, 0.9, c_white, 0.9);
+				scr_draw_gamepad_buttons(remapping_player_key, key_x, menu_y_remap_key + menu_y_offset, 0.9, c_white, 0.9, 1, 1, remapping_player + 1);
 			}
 			else
 			{
-				scr_draw_gamepad_buttons(noone, key_x, menu_y_remap_key + menu_y_offset, 0.9, c_gray, 0.45);
+				scr_draw_gamepad_buttons(noone, key_x, menu_y_remap_key + menu_y_offset, 0.9, c_gray, 0.45, 1, 1, remapping_player + 1);
 			}
 		}
 		#endregion /* Remap Gamepad Button END */
@@ -40,22 +40,22 @@ function scr_draw_remap_key(menu_string, name_string, remapping_player_key, rema
 			draw_sprite_ext(spr_menu_cursor, menu_cursor_index, key_x + 200 - 54, menu_y_remap_key + menu_y_offset, 1, 1, 0, c_white, 1);
 			if (remapping_player_key2 > noone)
 			{
-				scr_draw_gamepad_buttons(remapping_player_key2, key_x + 200, menu_y_remap_key + menu_y_offset, 1, c_white, 1);
+				scr_draw_gamepad_buttons(remapping_player_key2, key_x + 200, menu_y_remap_key + menu_y_offset, 1, c_white, 1, 1, 1, remapping_player + 1);
 			}
 			else
 			{
-				scr_draw_gamepad_buttons(noone, key_x + 200, menu_y_remap_key + menu_y_offset, 1, c_gray, 0.5);
+				scr_draw_gamepad_buttons(noone, key_x + 200, menu_y_remap_key + menu_y_offset, 1, c_gray, 0.5, 1, 1, remapping_player + 1);
 			}
 		}
 		else
 		{
 			if (remapping_player_key2 > noone)
 			{
-				scr_draw_gamepad_buttons(remapping_player_key2, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, c_white, 0.9);
+				scr_draw_gamepad_buttons(remapping_player_key2, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, c_white, 0.9, 1, 1, remapping_player + 1);
 			}
 			else
 			{
-				scr_draw_gamepad_buttons(noone, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, c_gray, 0.45);
+				scr_draw_gamepad_buttons(noone, key_x + 200, menu_y_remap_key + menu_y_offset, 0.9, c_gray, 0.45, 1, 1, remapping_player + 1);
 			}
 		}
 		#endregion /* Remap Gamepad Button 2 END */

@@ -309,7 +309,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 	global.level_player_start_y[i] = 0;
 	global.player_crouch_toggle[i] = false; /* If crouch toggle for player 1 is true or false (false by default) */
 	global.player_run_toggle[i] = false; /* If run toggle for player 1 is true or false (false by default) */
-	global.player_cancel_dive_by_pressing_jump_or_dive_button[i] = false;
+	global.player_cancel_dive_by_jump_or_dive[i] = false;
 	global.player_cancel_dive_by_pressing_opposite_direction[i] = false;
 	global.player_down_and_jump_to_groundpound[i] = false;
 	global.player_name[i] = "";
@@ -318,6 +318,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 	global.chosen_controller_used[i] = 0; /* What controller buttons to use for button prompts. 0 = autodetect, 1 = xboxone, 2 = xboxseriesxs, 3 = nintendoswitch, 4 = playstation4, 5 = playstation5 */
 	global.character_for_player[i] = string(character_for_unassigned_player_default); /* Player Select Character */
 	global.skin_for_player[i] = i - 1; /* In case the player selected a character that doesn't have skins, use this variable */
+	global.what_controller_sprites_to_use[i] = spr_noone;
 }
 #endregion /* Automatic assigned player variables for every player END */
 
@@ -651,9 +652,6 @@ alarm[0] = 3;
 
 scr_set_font();
 
-switch_save_data_message[0] = "";
-switch_save_data_message[1] = "";
-switch_save_data_message[2] = "";
-switch_save_data_message[3] = "";
-switch_save_data_message[4] = "";
 #endregion /* Things you shouldn't change, warning, don't change any of these options or you might break the game! END */
+
+set_controller_sprites_to_use();

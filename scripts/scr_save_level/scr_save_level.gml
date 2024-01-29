@@ -7,7 +7,7 @@ function scr_save_level()
 	if (global.level_clear_rate == "clear" && global.doing_clear_check_character) {
 		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 		ini_write_real("info", "clear_check_character", true);
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		global.go_to_menu_when_going_back_to_title = "upload_yes_character";
 	}
 	#endregion /* If doing a character clear check, and winning the level, then add in charcter config that you have done a clear check END */

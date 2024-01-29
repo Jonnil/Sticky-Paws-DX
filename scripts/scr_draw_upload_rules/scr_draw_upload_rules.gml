@@ -104,7 +104,7 @@ function scr_draw_upload_rules()
 				{
 					caution_online_takes_you_to = "clear_check_character_yes";
 				}
-				ini_close();
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 			ini_open(working_directory + "save_file/config.ini");
 			ini_write_string("config", "upload_rules_do_not_show_level", upload_rules_do_not_show_level);

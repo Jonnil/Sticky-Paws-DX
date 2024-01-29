@@ -17,7 +17,7 @@ if (distance_to_point(other.x, other.y) < move_speed + 3)
 && (other.clear_rate == "clear")
 && (other.level != come_from_level)
 {
-	delay = 10;
+	delay = 7;
 	x = other.x;
 	y = other.y;
 	direction = instance_nearest(x, y, obj_level).direction_after_completion;

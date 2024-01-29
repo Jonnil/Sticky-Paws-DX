@@ -86,7 +86,7 @@ else
 				instance_nearest(x, y, obj_player).dive = false;
 				sliding_along_ground = +1;
 				sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
-				stomped_delay = 10;
+				stomped_delay = 5;
 				
 				if (number_of_times_stomped < 10)
 				{
@@ -132,7 +132,7 @@ else
 			{
 				sliding_along_ground = -1;
 				sliding_along_ground_speed = instance_nearest(x, y, obj_player).speed + 1;
-				stomped_delay = 10;
+				stomped_delay = 5;
 				
 				if (number_of_times_stomped < 10)
 				{
@@ -178,7 +178,7 @@ else
 			{
 				sliding_along_ground = +1;
 				sliding_along_ground_speed = 8;
-				stomped_delay = 10;
+				stomped_delay = 5;
 				
 				if (number_of_times_stomped < 10)
 				{
@@ -224,7 +224,7 @@ else
 			{
 				sliding_along_ground = -1;
 				sliding_along_ground_speed = 8;
-				stomped_delay = 10;
+				stomped_delay = 5;
 				
 				if (number_of_times_stomped < 10)
 				{

@@ -126,7 +126,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						&& (global.controls_used_for_navigation == "gamepad")
 						|| (global.always_show_gamepad_buttons)
 						{
-							scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset, get_window_height * 0.5 + skin_y, 0.5, c_white, 1);
+							scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset, get_window_height * 0.5 + skin_y, 0.5, c_white, 1, 1, 1, what_player);
 						}
 						else
 						if (player_key_left > noone)
@@ -160,7 +160,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						&& (global.controls_used_for_navigation == "gamepad")
 						|| (global.always_show_gamepad_buttons)
 						{
-							scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset, get_window_height * 0.5 + skin_y, 0.5, c_white, 1);
+							scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset, get_window_height * 0.5 + skin_y, 0.5, c_white, 1, 1, 1, what_player);
 						}
 						else
 						if (player_key_right > noone)
@@ -222,7 +222,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						&& (global.controls_used_for_navigation == "gamepad")
 						|| (global.always_show_gamepad_buttons)
 						{
-							scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset, get_window_height * 0.5 + voicepack_y, 0.5, c_white, 1);
+							scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset, get_window_height * 0.5 + voicepack_y, 0.5, c_white, 1, 1, 1, what_player);
 						}
 						else
 						if (player_key_left > noone)
@@ -256,7 +256,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 						&& (global.controls_used_for_navigation == "gamepad")
 						|| (global.always_show_gamepad_buttons)
 						{
-							scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset, get_window_height * 0.5 + voicepack_y, 0.5, c_white, 1);
+							scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset, get_window_height * 0.5 + voicepack_y, 0.5, c_white, 1, 1, 1, what_player);
 						}
 						else
 						if (player_key_right > noone)
@@ -308,7 +308,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
-					scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset, get_window_height * 0.5, 0.5, c_white, 1);
+					scr_draw_gamepad_buttons(gp_padl, get_window_width * 0.5 + player_display_x[what_player] - arrow_offset, get_window_height * 0.5, 0.5, c_white, 1, 1, 1, what_player);
 				}
 				else
 				if (player_key_left > noone)
@@ -338,7 +338,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 				&& (global.controls_used_for_navigation == "gamepad")
 				|| (global.always_show_gamepad_buttons)
 				{
-					scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset, get_window_height * 0.5, 0.5, c_white, 1);
+					scr_draw_gamepad_buttons(gp_padr, get_window_width * 0.5 + player_display_x[what_player] + arrow_offset, get_window_height * 0.5, 0.5, c_white, 1, 1, 1, what_player);
 				}
 				else
 				if (player_key_right > noone)
@@ -431,7 +431,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			&& (global.controls_used_for_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(player_gamepad_button_accept, get_window_width * 0.5 + player_display_x[what_player] + 80, get_window_height * 0.5 + 150, 0.5, c_white, 1);
+				scr_draw_gamepad_buttons(player_gamepad_button_accept, get_window_width * 0.5 + player_display_x[what_player] + 80, get_window_height * 0.5 + 150, 0.5, c_white, 1, 1, 1, what_player);
 			}
 			else
 			{
@@ -475,7 +475,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 			&& (global.controls_used_for_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(player_gamepad_button_back, get_window_width * 0.5 + player_display_x[what_player] + 80, get_window_height * 0.5 + 150, 0.5, c_white, 1);
+				scr_draw_gamepad_buttons(player_gamepad_button_back, get_window_width * 0.5 + player_display_x[what_player] + 80, get_window_height * 0.5 + 150, 0.5, c_white, 1, 1, 1, what_player);
 			}
 			else
 			{
@@ -514,7 +514,7 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 		&& (global.controls_used_for_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
-			scr_draw_gamepad_buttons(player_gamepad_button_accept, get_window_width * 0.5 + player_display_x[what_player] + 70, name_input_y + 35, 0.5, c_white, 1);
+			scr_draw_gamepad_buttons(player_gamepad_button_accept, get_window_width * 0.5 + player_display_x[what_player] + 70, name_input_y + 35, 0.5, c_white, 1, 1, 1, what_player);
 		}
 		else
 		{

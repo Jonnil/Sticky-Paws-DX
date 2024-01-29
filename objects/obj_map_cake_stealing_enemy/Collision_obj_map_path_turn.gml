@@ -102,6 +102,6 @@ if (distance_to_point(other.x, other.y) < move_speed + 3)
 	}
 	#endregion /* Touch Map Turn Left Down END */
 	
-	delay = 10;
+	delay = 7;
 }
 #endregion /* Path Turning END */

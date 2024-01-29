@@ -6,13 +6,14 @@ if (instance_exists(obj_player))
 && (instance_nearest(x, y, obj_player).intro_animation = "")
 && (!can_navigate)
 {
+	what_player_navigate = instance_nearest(x, y, obj_player).player;
 	
 	#region /* Draw Enter Gallery Key */
-	if (gamepad_is_connected(global.player_slot[1]))
-	&& (global.controls_used_for_navigation == "gamepad")
+	if (global.controls_used_for_navigation == "gamepad")
+	&& (gamepad_is_connected(global.player_slot[what_player_navigate - 1]))
 	|| (global.always_show_gamepad_buttons)
 	{
-		scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1);
+		scr_draw_gamepad_buttons(gp_padu, x, y - 64, 0.5, c_white, 1, 1, 1, what_player_navigate);
 	}
 	else
 	{

@@ -299,5 +299,5 @@ if (ini_key_exists(level_name, "checkpoint_direction"))
 	spawned_from_checkpoint = true;
 	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
 }
-ini_close();
+ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #endregion /* Load Checkpoint Direction END */

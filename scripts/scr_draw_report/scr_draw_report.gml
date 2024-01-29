@@ -188,7 +188,7 @@ function scr_draw_report()
 					directory_destroy(working_directory + "custom_levels/" + global.level_name);
 					ini_open(working_directory + "save_file/custom_level_save.ini");
 					ini_section_delete(global.level_name);
-					ini_close();
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					global.select_level_index = 0;
 					global.level_name = "";
 				}
@@ -219,7 +219,6 @@ function scr_draw_report()
 					global.quit_to_title = true;
 					audio_stop_all();
 					global.pause = false;
-					unpause = true;
 					#endregion /* Return to Title END */
 					
 				}
@@ -258,7 +257,6 @@ function scr_draw_report()
 				global.quit_to_title = true;
 				audio_stop_all();
 				global.pause = false;
-				unpause = true;
 				#endregion /* Return to Title END */
 				
 			}

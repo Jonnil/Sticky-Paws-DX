@@ -71,7 +71,7 @@ if (show_skip_button)
 		draw_set_halign(fa_right);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(display_get_gui_width() * 0.5 + 32, display_get_gui_height() - 17, l10n_text("Skip") + ":", global.default_text_size, c_black, c_white, show_skip_button_alpha);
-		scr_draw_gamepad_buttons(skip_button, display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 17, 0.5, c_white, show_skip_button_alpha);
+		scr_draw_gamepad_buttons(skip_button, display_get_gui_width() * 0.5 + 64, display_get_gui_height() - 17, 0.5, c_white, show_skip_button_alpha, 1, 1, 1);
 	}
 	else
 	{

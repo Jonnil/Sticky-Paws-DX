@@ -921,8 +921,7 @@ function scr_option_menu()
 		{
 			if (global.sprite_select_player[remapping_player + 1] == noone)
 			{
-				character_portrait_for_player_update_directory[remapping_player + 1] = true
-				alarm[0] = true;
+				scr_change_character_portrait();
 			}
 			global.settings_sidebar_menu = "keyboard_and_mouse_settings";
 			menu_delay = 3;
@@ -949,8 +948,7 @@ function scr_option_menu()
 		{
 			if (global.sprite_select_player[remapping_player + 1] == noone)
 			{
-				character_portrait_for_player_update_directory[remapping_player + 1] = true
-				alarm[0] = true;
+				scr_change_character_portrait();
 			}
 			global.settings_sidebar_menu = "keyboard_and_mouse_settings";
 			input_key = false;
@@ -968,6 +966,10 @@ function scr_option_menu()
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
+				if (global.sprite_select_player[remapping_player + 1] == noone)
+				{
+					scr_change_character_portrait();
+				}
 				global.settings_sidebar_menu = "controller_settings";
 				menu_delay = 3;
 				input_key = false;
@@ -991,6 +993,10 @@ function scr_option_menu()
 			&& (mouse_check_button(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
+				if (global.sprite_select_player[remapping_player + 1] == noone)
+				{
+					scr_change_character_portrait();
+				}
 				global.settings_sidebar_menu = "controller_settings";
 				input_key = false;
 				can_navigate_settings_sidebar = true;
@@ -1381,14 +1387,17 @@ function scr_option_menu()
 					{
 						if (global.sprite_select_player[remapping_player + 1] == noone)
 						{
-							character_portrait_for_player_update_directory[remapping_player + 1] = true
-							alarm[0] = true;
+							scr_change_character_portrait();
 						}
 						global.settings_sidebar_menu = "keyboard_and_mouse_settings";
 					}
 					else
 					if (global.enable_controller_settings)
 					{
+						if (global.sprite_select_player[remapping_player + 1] == noone)
+						{
+							scr_change_character_portrait();
+						}
 						global.settings_sidebar_menu = "controller_settings";
 					}
 					else
@@ -1431,14 +1440,17 @@ function scr_option_menu()
 						{
 							if (global.sprite_select_player[remapping_player + 1] == noone)
 							{
-								character_portrait_for_player_update_directory[remapping_player + 1] = true
-								alarm[0] = true;
+								scr_change_character_portrait();
 							}
 							global.settings_sidebar_menu = "keyboard_and_mouse_settings";
 						}
 						else
 						if (global.enable_controller_settings)
 						{
+							if (global.sprite_select_player[remapping_player + 1] == noone)
+							{
+								scr_change_character_portrait();
+							}
 							global.settings_sidebar_menu = "controller_settings";
 						}
 						else
@@ -1489,6 +1501,10 @@ function scr_option_menu()
 				{
 					if (global.enable_controller_settings)
 					{
+						if (global.sprite_select_player[remapping_player + 1] == noone)
+						{
+							scr_change_character_portrait();
+						}
 						global.settings_sidebar_menu = "controller_settings";
 					}
 					else
@@ -1523,8 +1539,7 @@ function scr_option_menu()
 						{
 							if (global.sprite_select_player[remapping_player + 1] == noone)
 							{
-								character_portrait_for_player_update_directory[remapping_player + 1] = true
-								alarm[0] = true;
+								scr_change_character_portrait();
 							}
 							global.settings_sidebar_menu = "keyboard_and_mouse_settings";
 						}
@@ -1576,14 +1591,17 @@ function scr_option_menu()
 					{
 						if (global.enable_touch_settings)
 						{
+							if (global.sprite_select_player[remapping_player + 1] == noone)
+							{
+								scr_change_character_portrait();
+							}
 							global.settings_sidebar_menu = "controller_settings";
 						}
 						else
 						{
 							if (global.sprite_select_player[remapping_player + 1] == noone)
 							{
-								character_portrait_for_player_update_directory[remapping_player + 1] = true
-								alarm[0] = true;
+								scr_change_character_portrait();
 							}
 							global.settings_sidebar_menu = "keyboard_and_mouse_settings";
 						}
@@ -1628,14 +1646,17 @@ function scr_option_menu()
 						else
 						if (global.enable_controller_settings)
 						{
+							if (global.sprite_select_player[remapping_player + 1] == noone)
+							{
+								scr_change_character_portrait();
+							}
 							global.settings_sidebar_menu = "controller_settings";
 						}
 						else
 						{
 							if (global.sprite_select_player[remapping_player + 1] == noone)
 							{
-								character_portrait_for_player_update_directory[remapping_player + 1] = true
-								alarm[0] = true;
+								scr_change_character_portrait();
 							}
 							global.settings_sidebar_menu = "keyboard_and_mouse_settings";
 						}
@@ -1672,14 +1693,17 @@ function scr_option_menu()
 					else
 					if (global.enable_controller_settings)
 					{
+						if (global.sprite_select_player[remapping_player + 1] == noone)
+						{
+							scr_change_character_portrait();
+						}
 						global.settings_sidebar_menu = "controller_settings";
 					}
 					else
 					{
 						if (global.sprite_select_player[remapping_player + 1] == noone)
 						{
-							character_portrait_for_player_update_directory[remapping_player + 1] = true
-							alarm[0] = true;
+							scr_change_character_portrait();
 						}
 						global.settings_sidebar_menu = "keyboard_and_mouse_settings";
 					}

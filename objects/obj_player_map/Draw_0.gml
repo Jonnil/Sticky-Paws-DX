@@ -34,7 +34,7 @@ if (can_move)
 			&& (global.controls_used_for_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.up], x, y - 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.up], x, y - 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha, 1, 1, player);
 			}
 			else
 			if (global.player_can_play[player])
@@ -59,7 +59,7 @@ if (can_move)
 			&& (global.controls_used_for_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.down], x, y + 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.down], x, y + 48, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha, 1, 1, player);
 			}
 			else
 			if (global.player_can_play[player])
@@ -84,7 +84,7 @@ if (can_move)
 			&& (global.controls_used_for_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.left], x - 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.left], x - 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha, 1, 1, player);
 			}
 			else
 			if (global.player_can_play[player])
@@ -109,7 +109,7 @@ if (can_move)
 			&& (global.controls_used_for_navigation == "gamepad")
 			|| (global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.right], x + 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha);
+				scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.right], x + 48, y, 0.5, c_white, scr_sin_oscillate(0, 1, 1) * show_arrows_alpha, 1, 1, player);
 			}
 			else
 			if (global.player_can_play[player])

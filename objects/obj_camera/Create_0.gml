@@ -402,3 +402,5 @@ zoom_border_lerp = 0;
 part_system_rain = noone;
 part_system_snow = noone;
 #endregion /* Set Particle System END */
+
+set_controller_sprites_to_use();

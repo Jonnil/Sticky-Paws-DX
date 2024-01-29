@@ -241,7 +241,7 @@ if (!global.actually_play_edited_level)
 	unlocked_object[LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5] = ini_read_real("Unlock Placable Objects", LEVEL_OBJECT_ID.ID_APPEAR_BLOCK_5, default_unlock);
 	#endregion /* Read all the objects that should be unlocked END */
 	
-	ini_close();
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	#endregion /* Unlock placable objects END */
 	
 	#region /* Load custom sprites */
@@ -504,7 +504,7 @@ if (!global.actually_play_edited_level)
 			global.selected_level_editing_music = 1;
 			previous_selected_level_editing_music = 1;
 		}
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	else
 	{
@@ -739,7 +739,7 @@ if (!global.actually_play_edited_level)
 		narrator_name = string(ds_list_find_value(global.all_loaded_characters, global.narrator));
 		#endregion /* Character Name END */
 		
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	else
 	{
@@ -805,9 +805,11 @@ if (!global.actually_play_edited_level)
 			}
 			first_created_on_version = ini_read_string("info", "first_created_on_version", "v" + scr_get_build_date());	
 		}
-		ini_close();
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	#endregion /* Show what version of the game the level was first created in END */
 	
 }
 #endregion /* If you're actually playing a level, then you don't need to run a lot of the code only relevant when making a level END */
+
+set_controller_sprites_to_use();

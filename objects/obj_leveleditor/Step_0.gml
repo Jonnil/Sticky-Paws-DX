@@ -121,6 +121,7 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 #region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
 if (global.doing_clear_check_level)
 {
+	audio_stop_sound(level_editing_music); /* Stop the background music that plays during level editing when playtesting a level */
 	if (file_exists(working_directory + "custom_levels/" + global.level_name + "/automatic_thumbnail.png"))
 	{
 		global.actually_play_edited_level = true;
@@ -173,18 +174,6 @@ if (doing_clear_check_timer == 3)
 {
 	scr_automatic_screenshot();
 }
-else
-if (doing_clear_check_timer >= 4)
-{
-	global.actually_play_edited_level = true;
-	global.play_edited_level = true;
-	with(obj_leveleditor_placed_object)
-	{
-		alarm[1] = 1;
-	}
-	instance_destroy();
-}
-
 #endregion /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" END */
 
 if (!global.actually_play_edited_level)

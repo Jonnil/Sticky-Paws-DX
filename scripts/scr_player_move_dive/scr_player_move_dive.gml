@@ -180,7 +180,7 @@ function scr_player_move_dive()
 			#endregion /* If player lands in water when diving, stop diving END */
 			
 			#region /* Cancel dive (only when you have enabled dive canceling in settings) */
-			if (cancel_dive_by_pressing_jump_or_dive_button)
+			if (cancel_dive_by_jump_or_dive)
 			{
 				if (key_jump)
 				|| (key_dive_pressed)
@@ -189,7 +189,7 @@ function scr_player_move_dive()
 					can_dive = false;
 				}
 			}
-			if (cancel_dive_by_pressing_opposite_direction)
+			if (cancel_dive_by_opposite_direction)
 			{
 				if (hspeed < 0)
 				&& (key_right_hold)
