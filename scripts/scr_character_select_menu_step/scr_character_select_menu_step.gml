@@ -246,8 +246,6 @@ function scr_character_select_menu_step()
 				{
 					can_input_player_name[j] = 2;
 				}
-		        global.clicking_ok_input_screen = false;
-		        global.clicking_cancel_input_screen = false;
 		    }
 		}
 		#endregion /* Press enter when done typing on name input screen END */

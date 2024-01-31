@@ -54,7 +54,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 	{
 		global.keyboard_virtual_timer ++;
 	}
-	if (global.keyboard_virtual_timer == 1)
+	if (global.keyboard_virtual_timer == 3)
 	{
 		steam_utils_enable_callbacks();
 		if (variable_instance_exists(self, "remember_keyboard_string"))
@@ -62,7 +62,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 			remember_keyboard_string = string(what_string_to_edit); /* In case you want to click "Cancel", revert back to whatever was already written before entering name input screen */
 		}
 	}
-	if (global.keyboard_virtual_timer == 2)
+	if (global.keyboard_virtual_timer == 4)
 	|| (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx - width, yy - 16, xx + width, yy + 16))
 	&& (mouse_check_button_released(mb_left))
 	&& (global.keyboard_virtual_timer >= 5)
@@ -195,36 +195,64 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 	}
 	
 	#region /* Clicking the Cancel button */
-	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
-	&& (mouse_check_button_released(mb_left))
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	&& (!global.clicking_cancel_input_screen)
-	|| (keyboard_check_pressed(vk_escape))
-	&& (menu_delay == 0 && menu_joystick_delay == 0)
-	&& (!global.clicking_cancel_input_screen)
+	if (menu_delay == 0 && menu_joystick_delay == 0)
 	{
-		menu_delay = 3;
-		if (variable_instance_exists(self, "remember_keyboard_string"))
+		if (mouse_check_button_released(mb_left))
+		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_cancel_y, xx + buttons_x + 370, yy + buttons_cancel_y + 41))
+		&& (menu == cancel_menu_string)
+		|| (keyboard_check_pressed(vk_escape))
+		|| (keyboard_check_pressed(vk_enter) && menu == cancel_menu_string)
+		
+		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]) && menu == cancel_menu_string)
+		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]) && menu == cancel_menu_string)
+		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]) && menu == cancel_menu_string)
+		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept]) && menu == cancel_menu_string)
+		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]) && menu == cancel_menu_string)
+		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept]) && menu == cancel_menu_string)
+		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]) && menu == cancel_menu_string)
+		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]) && menu == cancel_menu_string)
+		
+		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.back]))
+		|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.back]))
 		{
-			what_string_to_edit = remember_keyboard_string;
-			keyboard_string = remember_keyboard_string; /* Revert back to whatever was already written before entering name input screen */
+			menu_delay = 3;
+			if (variable_instance_exists(self, "remember_keyboard_string"))
+			{
+				what_string_to_edit = remember_keyboard_string;
+				keyboard_string = remember_keyboard_string; /* Revert back to whatever was already written before entering name input screen */
+			}
+			if (!can_enter_illegal_charcters)
+			{
+				keyboard_string = string_replace_all(keyboard_string, "\\", "");
+				keyboard_string = string_replace_all(keyboard_string, "/", "");
+				keyboard_string = string_replace_all(keyboard_string, ":", "");
+				keyboard_string = string_replace_all(keyboard_string, "*", "");
+				keyboard_string = string_replace_all(keyboard_string, "?", "");
+				keyboard_string = string_replace_all(keyboard_string, "\"", "");
+				keyboard_string = string_replace_all(keyboard_string, "<", "");
+				keyboard_string = string_replace_all(keyboard_string, ">", "");
+				keyboard_string = string_replace_all(keyboard_string, "|", "");
+			}
+			what_string_to_edit_async = "";
+			keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
+			global.clicking_cancel_input_screen = true;
+			
+			var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
+				global.clicking_cancel_input_screen = false; /* Reset clicking cancel */
+			}, [], 1);
+			time_source_start(time_source);
+			
+			var time_source = time_source_create(time_source_game, 20, time_source_units_frames, function(){
+				global.keyboard_virtual_timer = 0; /* Reset the virtual keyboard timer */
+			}, [], 1);
+			time_source_start(time_source);
 		}
-		if (!can_enter_illegal_charcters)
-		{
-			keyboard_string = string_replace_all(keyboard_string, "\\", "");
-			keyboard_string = string_replace_all(keyboard_string, "/", "");
-			keyboard_string = string_replace_all(keyboard_string, ":", "");
-			keyboard_string = string_replace_all(keyboard_string, "*", "");
-			keyboard_string = string_replace_all(keyboard_string, "?", "");
-			keyboard_string = string_replace_all(keyboard_string, "\"", "");
-			keyboard_string = string_replace_all(keyboard_string, "<", "");
-			keyboard_string = string_replace_all(keyboard_string, ">", "");
-			keyboard_string = string_replace_all(keyboard_string, "|", "");
-		}
-		what_string_to_edit_async = "";
-		keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
-		global.clicking_cancel_input_screen = true;
-		global.keyboard_virtual_timer = 0;
 	}
 	#endregion /* Clicking the Cancel button END */
 	
@@ -254,13 +282,19 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 			
 			#region /* Clicking the OK button */
 			if (menu_delay == 0 && menu_joystick_delay == 0)
+			&& (menu == ok_menu_string)
 			{
-				if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
-				&& (mouse_check_button_released(mb_left))
-				|| (menu == ok_menu_string)
-				&& (keyboard_check_pressed(vk_enter))
-				//|| (menu == ok_menu_string)
-				//&& (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+				if (mouse_check_button_released(mb_left))
+				&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), xx + buttons_x, yy + buttons_ok_y, xx + buttons_x + 370, yy + buttons_ok_y + 41))
+				|| (keyboard_check_pressed(vk_enter))
+				|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][1][action.accept]))
+				|| (gamepad_button_check_pressed(global.player_slot[1], global.player_[inp.gp][1][2][action.accept]))
+				|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][1][action.accept]))
+				|| (gamepad_button_check_pressed(global.player_slot[2], global.player_[inp.gp][2][2][action.accept]))
+				|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][1][action.accept]))
+				|| (gamepad_button_check_pressed(global.player_slot[3], global.player_[inp.gp][3][2][action.accept]))
+				|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][1][action.accept]))
+				|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]))
 				{
 					menu_delay = 3;
 					if (!can_enter_illegal_charcters)
@@ -278,7 +312,16 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 					what_string_to_edit_async = "";
 					keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking OK */
 					global.clicking_ok_input_screen = true;
-					global.keyboard_virtual_timer = 0;
+					
+					var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
+						global.clicking_ok_input_screen = false; /* Reset clicking ok */
+					}, [], 1);
+					time_source_start(time_source);
+					
+					var time_source = time_source_create(time_source_game, 20, time_source_units_frames, function(){
+						global.keyboard_virtual_timer = 0; /* Reset the virtual keyboard timer */
+					}, [], 1);
+					time_source_start(time_source);
 				}
 			}
 			#endregion /* Clicking the OK button END */

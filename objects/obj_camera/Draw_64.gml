@@ -390,6 +390,11 @@ if (global.character_select_in_this_menu == "level_editor")
 		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), pause_x - 32 + 1, display_get_gui_height() - 64, pause_x + 32, display_get_gui_height() + 64 - 1))
 		|| (gamepad_button_check_pressed(global.player_slot[1], gp_select))
 		{
+			scr_gamepad_vibration(0, 0, 0); /* Reset gamepad vibration when exiting playtest */
+			scr_gamepad_vibration(1, 0, 0);
+			scr_gamepad_vibration(2, 0, 0);
+			scr_gamepad_vibration(3, 0, 0);
+			scr_gamepad_vibration(4, 0, 0);
 			pause_playtest = true;
 			black_screen_gui_alpha = 1;
 			global.actually_play_edited_level = false;

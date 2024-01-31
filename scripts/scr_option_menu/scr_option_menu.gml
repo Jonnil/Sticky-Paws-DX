@@ -2360,28 +2360,18 @@ function scr_option_menu()
 			if (menu == "change_username_ok")
 			|| (menu == "change_username_cancel")
 			{
-				global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x + 185, change_username_y + 21, "change_username_ok", "change_username_cancel", false);
-				if (key_a_pressed)
-				|| (key_b_pressed)
-				|| (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x, change_username_y + 22 + 52, change_username_x + 370, change_username_y + 22 + 52 + 42 + 42))
-				&& (global.controls_used_for_navigation == "mouse")
-				&& (mouse_check_button_released(mb_left))
+				global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, true, change_username_x + 185, change_username_y + 21, "change_username_ok", "change_username_cancel", false);
+				if (global.clicking_ok_input_screen || global.clicking_cancel_input_screen)
+				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
-					if (!keyboard_check_pressed(ord("Z")))
-					&& (!keyboard_check_pressed(ord("X")))
-					&& (!keyboard_check_pressed(vk_backspace))
-					&& (!keyboard_check_pressed(vk_space))
-					&& (menu_delay == 0 && menu_joystick_delay == 0)
-					{
-						/* Save username to config file */
-						ini_open(working_directory + "save_file/config.ini");
-						ini_write_string("config", "username", string(global.username));
-						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-						
-						menu_delay = 3;
-						input_key = false;
-						menu = "change_username";
-					}
+					/* Save username to config file */
+					ini_open(working_directory + "save_file/config.ini");
+					ini_write_string("config", "username", string(global.username));
+					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+					
+					menu_delay = 3;
+					input_key = false;
+					menu = "change_username";
 				}
 			}
 			#endregion /* Change username END */

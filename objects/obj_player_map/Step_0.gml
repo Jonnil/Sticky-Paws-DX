@@ -347,11 +347,9 @@ if (can_enter_level_automatically)
 			x = instance_nearest(x, y, obj_level).x;
 			y = instance_nearest(x, y, obj_level).y;
 			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-			
 			ini_write_real("Player", "player_x", x);
 			ini_write_real("Player", "player_y", y);
 			ini_write_real("Player", "brand_new_file", false);
-			
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			#endregion /* Save Player Position END */
 			

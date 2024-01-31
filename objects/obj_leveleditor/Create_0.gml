@@ -1,4 +1,9 @@
 #region /* Essential code that needs to be initialized */
+scr_gamepad_vibration(0, 0, 0); /* Reset gamepad vibration when exiting playtest */
+scr_gamepad_vibration(1, 0, 0);
+scr_gamepad_vibration(2, 0, 0);
+scr_gamepad_vibration(3, 0, 0);
+scr_gamepad_vibration(4, 0, 0);
 
 #region /* Set Backgrounds */
 layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);

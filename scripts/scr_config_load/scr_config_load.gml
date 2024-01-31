@@ -52,7 +52,6 @@ function scr_config_load()
 		if (ini_key_exists("config", "fullscreen_mode")){window_set_fullscreen(ini_read_real("config", "fullscreen_mode", 0));}
 		if (ini_key_exists("config", "interpolate")){global.interpolate = ini_read_real("config", "interpolate", 0);}
 		if (ini_key_exists("config", "show_fps")){global.show_fps = ini_read_real("config", "show_fps", 0);}
-		if (ini_key_exists("config", "show_fps_real")){global.show_fps_real = ini_read_real("config", "show_fps_real", 0);}
 		if (ini_key_exists("config", "show_instance_count")){global.show_instance_count = ini_read_real("config", "show_instance_count", 0);}
 		if (ini_key_exists("config", "show_collision_mask")){global.show_collision_mask = ini_read_real("config", "show_collision_mask", 0);}
 		if (ini_key_exists("config", "volume_main")){global.volume_main = ini_read_real("config", "volume_main", 7000) * 0.0001;}

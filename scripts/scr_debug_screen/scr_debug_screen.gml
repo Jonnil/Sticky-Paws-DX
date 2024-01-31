@@ -5,6 +5,7 @@ function scr_debug_screen()
 	#region /* FPS */
 	if (global.show_fps || global.debug_screen) {
 		var fps_y = 64;
+		
 		if (global.show_fps && global.debug_screen) {
 			draw_sprite_ext(spr_lock_icon, 0, 16, fps_y, 1, 1, 0, c_white, 1);
 		}
@@ -18,36 +19,22 @@ function scr_debug_screen()
 			var fps_color = make_color_hsv(50 / global.max_fps * fps, 255, 255);
 		}
 		scr_draw_text_outlined(32, fps_y, "FPS: " + string(fps) + "/" + string(global.max_fps),,, fps_color);
-	}
-	#endregion /* FPS END */
-	
-	#region /* FPS Real */
-	if (global.show_fps_real || global.debug_screen) {
-		var fps_real_target = (os_type == os_switch) ? 60 : 600;
-		var fps_real_y = 96;
-		if (global.show_fps_real && global.debug_screen) {
-			draw_sprite_ext(spr_lock_icon, 0, 16, fps_real_y, 1, 1, 0, c_white, 1);
-		}
-		draw_set_halign(fa_left);
-		draw_set_valign(fa_middle);
 		
-		#region /* FPS Real Rating */
+		var fps_real_target = (os_type == os_switch) ? 60 : 600;
 		if (fps_real >= fps_real_target) {
 			var fps_real_color = c_lime;
 		}
 		else {
 			var fps_real_color = make_color_hsv(50 / fps_real_target * fps_real, 255, 255);
 		}
-		scr_draw_text_outlined(32, fps_real_y, "FPS Real: " + string(fps_real),,, fps_real_color);
-		#endregion /* FPS Real Rating END */
-		
+		scr_draw_text_outlined(200, fps_y, "FPS Real: " + string(fps_real),,, fps_real_color);
 	}
-	#endregion /* FPS Real END */
+	#endregion /* FPS END */
 	
 	#region /* Instance Count */
 	if (global.show_instance_count || global.debug_screen) {
-		var instance_count_y = 128;
-		var all_instance_count_y = 160;
+		var instance_count_y = 96;
+		var all_instance_count_y = 128;
 		if (global.show_instance_count && global.debug_screen) {
 			draw_sprite_ext(spr_lock_icon, 0, 16, instance_count_y, 1, 1, 0, c_white, 1);
 		}
@@ -136,20 +123,6 @@ function scr_debug_screen()
 		}
 		#endregion /* Click on FPS to toggle if it should stay on screen even after you close debug screen END */
 		
-		#region /* Click on FPS Real to toggle if it should stay on screen even after you close debug screen */
-		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, fps_real_y - 15, 370, fps_real_y + 15) && global.controls_used_for_navigation == "mouse") {
-			draw_set_alpha(0.5);
-			draw_roundrect_color_ext(0, fps_real_y - 16, 370, fps_real_y + 16, 50, 50, c_white, c_white, false);
-			draw_set_alpha(1);
-			if (mouse_check_button_released(mb_left)) {
-				global.show_fps_real = !global.show_fps_real;
-				ini_open(working_directory + "save_file/config.ini");
-				ini_write_real("config", "show_fps_real", global.show_fps_real);
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-			}
-		}
-		#endregion /* Click on FPS Real to toggle if it should stay on screen even after you close debug screen END */
-		
 		#region /* Click on Instance Count to toggle if it should stay on screen even after you close debug screen */
 		if (point_in_rectangle(mouse_get_x, mouse_get_y, 0, instance_count_y - 15, 370, instance_count_y + 15) && global.controls_used_for_navigation == "mouse") {
 			draw_set_alpha(0.5);
@@ -218,7 +191,7 @@ function scr_debug_screen()
 		
 		/* Draw the name of the current room at the bottom middle of the screen */
 		draw_set_halign(fa_center);
-		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + "'" + string(global.level_name) + "'" + string(global.select_level_index) + " " + string(room_get_name(room)) + " " + string(room_width) + "x" + string(room_height), global.default_text_size, c_black, c_white);
+		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() - 32, "current room: " + "'" + string(global.level_name) + "'" + " " + string(global.select_level_index) + " " + string(room_get_name(room)) + " " + string(room_width) + "x" + string(room_height), global.default_text_size, c_black, c_white);
 		
 		
 		
@@ -334,12 +307,14 @@ function scr_debug_screen()
 		
 		
 		
-		scr_draw_text_outlined(32, debug_text_y, "working directory: " + string(working_directory), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		//scr_draw_text_outlined(32, debug_text_y, "working directory: " + string(temp_directory), global.default_text_size, c_black, c_white);
-		//debug_text_y += 20;
 		//scr_draw_text_outlined(32, debug_text_y, "cache directory: " + string(cache_directory), global.default_text_size, c_black, c_white);
 		//debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "game save id: " + string(game_save_id), global.default_text_size, c_black, c_white);
+		debug_text_y += 40;
+		//scr_draw_text_outlined(32, debug_text_y, "temp directory: " + string(temp_directory), global.default_text_size, c_black, c_white);
+		//debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "working directory: " + string(working_directory), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
 		//if (global.use_cache_or_working == cache_directory) { /* cache_directory here crashes on Nintendo Switch */
 		//	scr_draw_text_outlined(32, debug_text_y, "use_cache_or_working: cache_directory", global.default_text_size, c_black, c_white);
 		//	debug_text_y += 20;

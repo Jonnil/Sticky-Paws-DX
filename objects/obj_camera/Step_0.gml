@@ -201,6 +201,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 		}
 	
 		if (player[i].speed > 0)
+		|| (player[i].intro_animation != "")
 		{
 			player_show_controls_timer[i] = get_room_speed * global.player_show_controls[i];
 		}

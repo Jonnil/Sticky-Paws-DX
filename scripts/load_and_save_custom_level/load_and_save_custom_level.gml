@@ -93,9 +93,9 @@ function scr_load_object_placement_json()
 		
 		#region /* Save unlockable objects, only if the file exists */
 		/* Open the INI file */
-		if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini")) /* Check if the file even exists before opening, otherwise game doesn't function properly */
+		if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini")) /* Check if the file even exists before opening, otherwise game doesn't function properly */
 		{
-			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 			
 			/* Iterate over the ds_list and write each element to the INI file */
 			for(var i = 0; i < ds_list_size(placed_objects_list); i++) {
@@ -128,9 +128,9 @@ function scr_save_custom_level_json()
 		/* Create directory for saving custom levels */
 		if (!global.automatically_play_downloaded_level
 		&& global.level_name != ""
-		&& !file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+		&& !file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
 		{
-			directory_create(working_directory + "custom_levels/" + global.level_name);
+			directory_create(game_save_id + "custom_levels/" + string(global.level_name));
 		}
 		
 		var file
@@ -138,7 +138,7 @@ function scr_save_custom_level_json()
 		#region /* Save object placement */
 		if (global.level_name != "")
 		{
-			file = file_text_open_write(working_directory + "custom_levels/" + global.level_name + "/data/object_placement_all.json"); /* Open file for writing */
+			file = file_text_open_write(game_save_id + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json"); /* Open file for writing */
 		}
 		
 		var data = [];
@@ -222,16 +222,16 @@ function scr_save_level_information()
 	if (global.level_name != "")
 	&& (!global.create_level_from_template) /* Don't save when you are creating a level from template, as it will incorrectly create a "levels" folder in Local AppData */
 	{
-		ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
 		if (!ini_key_exists("info", "first_created_on_version"))
 		{
 			ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
 		}
-		ini_write_string("info", "level_name", global.level_name);
-		ini_write_string("info", "username", global.username);
+		ini_write_string("info", "level_name", string(global.level_name));
+		ini_write_string("info", "username", string(global.username));
 		ini_write_real("info", "clear_check", false);
 		ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
-			
+		
 		var player_starts = [		[obj_level_player1_start, "level_player1_start"],
 			[obj_level_player2_start, "level_player2_start"],
 			[obj_level_player3_start, "level_player3_start"],
@@ -325,19 +325,19 @@ function scr_save_level_information()
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		
 		/* Update custom level save data */
-		ini_open(working_directory + "save_file/custom_level_save.ini");
-		ini_key_delete(global.level_name, "checkpoint_x");
-		ini_key_delete(global.level_name, "checkpoint_y");
-		ini_key_delete(global.level_name, "checkpoint_millisecond");
-		ini_key_delete(global.level_name, "checkpoint_second");
-		ini_key_delete(global.level_name, "checkpoint_minute");
-		ini_key_delete(global.level_name, "checkpoint_realmillisecond");
-		ini_key_delete(global.level_name, "checkpoint_direction");
+		ini_open(game_save_id + "save_file/custom_level_save.ini");
+		ini_key_delete(string(global.level_name), "checkpoint_x");
+		ini_key_delete(string(global.level_name), "checkpoint_y");
+		ini_key_delete(string(global.level_name), "checkpoint_millisecond");
+		ini_key_delete(string(global.level_name), "checkpoint_second");
+		ini_key_delete(string(global.level_name), "checkpoint_minute");
+		ini_key_delete(string(global.level_name), "checkpoint_realmillisecond");
+		ini_key_delete(string(global.level_name), "checkpoint_direction");
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		
 		#region /* Unlocked objects should be set as not recently unlocked anymore */
 		/* Open the INI file */
-		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		
 		/* Iterate over the ds_list and write each element to the INI file */
 		for(var i = 0; i < ds_list_size(placed_objects_list); i++) {

@@ -205,15 +205,8 @@ function scr_option_custom_resources()
 					menu = "open_title_logo_folder";
 				}
 				else
-				if (ds_list_size(global.all_loaded_resource_pack) >= 2)
-				&& (!global.enable_option_for_pc)
-				|| (global.enable_option_for_pc)
 				{
-					menu = "resource_pack";
-				}
-				else
-				{
-					menu = "title_background";
+					menu = "can_load_custom_level_assets";
 				}
 			}
 			else
@@ -232,7 +225,7 @@ function scr_option_custom_resources()
 				}
 				else
 				{
-					menu = "title_background";
+					menu = "title_background_layer";
 				}
 			}
 		}

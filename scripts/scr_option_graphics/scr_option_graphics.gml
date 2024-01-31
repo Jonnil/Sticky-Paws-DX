@@ -6,7 +6,6 @@ function scr_option_graphics()
 	&& (menu != "advanced_video_option_back")
 	&& (menu != "interpolate")
 	&& (menu != "show_fps")
-	&& (menu != "show_fps_real")
 	&& (menu != "show_instance_count")
 	&& (menu != "show_collision_mask")
 	&& (menu != "enable_transitions")
@@ -395,7 +394,6 @@ function scr_option_graphics()
 	&& (menu != "advanced_video_option_back")
 	&& (menu != "interpolate")
 	&& (menu != "show_fps")
-	&& (menu != "show_fps_real")
 	&& (menu != "show_instance_count")
 	&& (menu != "show_collision_mask")
 	&& (menu != "enable_transitions")
@@ -633,8 +631,7 @@ function scr_option_graphics()
 		var advanced_video_option_back_y = 48;
 		var interpolate_y = advanced_video_option_back_y + 48;
 		var show_fps_y = interpolate_y + 48;
-		var show_fps_real_y = show_fps_y + 48;
-		var show_instance_count_y = show_fps_real_y + 48;
+		var show_instance_count_y = show_fps_y + 48;
 		var show_collision_mask_y = show_instance_count_y + 48;
 		var enable_transitions_y = show_collision_mask_y + 48;
 		var enable_background_layer1_y = enable_transitions_y + 48;
@@ -655,7 +652,6 @@ function scr_option_graphics()
 		draw_menu_button(420, advanced_video_option_back_y + menu_y_offset, l10n_text("Back"), "advanced_video_option_back", "advanced_video_options");
 		draw_menu_checkmark(386, interpolate_y + menu_y_offset, l10n_text("Interpolation"), "interpolate", global.interpolate, true);
 		draw_menu_checkmark(386, show_fps_y + menu_y_offset, l10n_text("Show FPS"), "show_fps", global.show_fps, false);
-		draw_menu_checkmark(386, show_fps_real_y + menu_y_offset, l10n_text("Show FPS Real"), "show_fps_real", global.show_fps_real, false);
 		draw_menu_checkmark(386, show_instance_count_y + menu_y_offset, l10n_text("Show Instance Count"), "show_instance_count", global.show_instance_count, false);
 		draw_menu_checkmark(386, show_collision_mask_y + menu_y_offset, l10n_text("Show Collision Mask"), "show_collision_mask", global.show_collision_mask, false);
 		draw_menu_checkmark(386, enable_transitions_y + menu_y_offset, l10n_text("Enable Transitions"), "enable_transitions", global.enable_transitions, true);
@@ -735,33 +731,10 @@ function scr_option_graphics()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "show_fps_real";
-			}
-		}
-		#endregion /* Show fps END */
-		
-		else
-		
-		#region /* Show fps real */
-		if (menu == "show_fps_real")
-		&& (!open_dropdown)
-		{
-			menu_cursor_y_position = show_fps_real_y;
-			if (key_up)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
-				menu = "show_fps";
-			}
-			else
-			if (key_down)
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			{
-				menu_delay = 3;
 				menu = "show_instance_count";
 			}
 		}
-		#endregion /* Show fps real END */
+		#endregion /* Show fps END */
 		
 		else
 		
@@ -774,7 +747,7 @@ function scr_option_graphics()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "show_fps_real";
+				menu = "show_fps";
 			}
 			else
 			if (key_down)
@@ -1069,9 +1042,6 @@ function scr_option_graphics()
 			menu_delay = 3;
 			}
 			if (menu == "show_fps") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.show_fps){global.show_fps = false;}else{global.show_fps = true;}
-			menu_delay = 3;
-			}
-			if (menu == "show_fps_real") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.show_fps_real){global.show_fps_real = false;}else{global.show_fps_real = true;}
 			menu_delay = 3;
 			}
 			if (menu == "show_instance_count") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.show_instance_count){global.show_instance_count = false;}else{global.show_instance_count = true;}

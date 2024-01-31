@@ -94,6 +94,6 @@
     <PlayLogQueryCapability>None</PlayLogQueryCapability>
     <PlayLogPolicy>Open</PlayLogPolicy>
     <UserAccountSaveDataSizeMax>0x0000000010000000</UserAccountSaveDataSizeMax>
-    <UserAccountSaveDataJournalSizeMax>0x0000000000400000</UserAccountSaveDataJournalSizeMax>
+    <UserAccountSaveDataJournalSizeMax>0x0000000002000000</UserAccountSaveDataJournalSizeMax>
   </Application>
 </NintendoSdkMeta>

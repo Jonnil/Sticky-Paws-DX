@@ -36,7 +36,6 @@ function scr_config_save()
 	ini_write_real("config", "fullscreen_mode", window_get_fullscreen());
 	ini_write_real("config", "interpolate", global.interpolate);
 	ini_write_real("config", "show_fps", global.show_fps);
-	ini_write_real("config", "show_fps_real", global.show_fps_real);
 	ini_write_real("config", "show_instance_count", global.show_instance_count);
 	ini_write_real("config", "show_collision_mask", global.show_collision_mask);
 	ini_write_real("config", "volume_main", global.volume_main * 10000);

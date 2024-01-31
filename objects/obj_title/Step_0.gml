@@ -40,8 +40,6 @@ if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
 	global.automatically_play_downloaded_level = false;
 }
 
-global.keyboard_virtual_timer = clamp(global.keyboard_virtual_timer - 0.5, 0, 8);
-
 scr_menu_navigation_initialization(0, true); /* Keyboard Controls */
 
 #region /* Play title screen music */
