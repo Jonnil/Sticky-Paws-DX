@@ -113,9 +113,8 @@ function scr_player_move_customizable_controls()
 	#endregion /* Key Jump Released END */
 	
 	#region /* Key Double Jump Pressed */
-	key_double_jump = scr_key_initialize(key_double_jump, 1, player, action.double_jump)
-	|| (double_jump_uses_jump_key
-	&& key_jump_pressed_temp)
+	key_double_jump = (double_jump_uses_jump_key && key_jump_pressed_temp)
+	|| (!double_jump_uses_jump_key && scr_key_initialize(key_double_jump, 1, player, action.double_jump))
 	#endregion /* Key Double Jump Pressed END */
 	
 	#region /* Key Crouch Hold */

@@ -9,7 +9,6 @@ function scr_player_move_mid_air_jump()
 	
 	if (key_double_jump)
 	&& (can_move)
-	&& (!global.pause)
 	&& (ground_pound == 0)
 	&& (!climb)
 	&& (!horizontal_rope_climb)

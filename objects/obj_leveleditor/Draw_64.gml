@@ -297,7 +297,7 @@ if (!global.actually_play_edited_level)
 			|| (level_editor_menu == "grid")
 			&& (key_a_pressed)
 			{
-				show_grid = not show_grid;
+				show_grid = !show_grid;
 			}
 		}
 		#endregion /* Click Toggle Grid END */
@@ -579,6 +579,7 @@ if (!global.actually_play_edited_level)
 			if (autosave_text == l10n_text("Autosave in " + string(autosave_countdown)))
 			{
 				if (global.controls_used_for_navigation == "gamepad")
+				|| (global.always_show_gamepad_buttons)
 				{
 					scr_draw_gamepad_buttons(gp_start, display_get_gui_width() * 0.5 - 16 - (string_width(l10n_text("Cancel Autosave")) * 0.5), 164, 0.6, c_white, 1, 1, 1, 1);
 				}

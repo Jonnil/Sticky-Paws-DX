@@ -318,6 +318,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 	global.character_for_player[i] = string(character_for_unassigned_player_default); /* Player Select Character */
 	global.skin_for_player[i] = i - 1; /* In case the player selected a character that doesn't have skins, use this variable */
 	global.what_controller_sprites_to_use[i] = spr_noone;
+	global.vibration_strength[i] = 0.7;
 }
 #endregion /* Automatic assigned player variables for every player END */
 

@@ -321,7 +321,12 @@ function scr_draw_all_level_editor_icon()
 	}
 	draw_sprite_ext(spr_menu_cursor, 0, always_show_level_editor_buttons_x, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, hide_angle, c_white, 1);
 	
-	if (global.controls_used_for_navigation != "gamepad")
+	if (global.controls_used_for_navigation == "gamepad")
+	|| (global.always_show_gamepad_buttons)
+	{
+		/* There is no toggle buttons shortcut for gamepad */
+	}
+	else
 	{
 		draw_sprite_ext(spr_keyboard_keys, ord("T"), always_show_level_editor_buttons_x + 20, display_get_gui_height() - 32 + icon_at_bottom_y + 20, 0.4, 0.4, 0, c_white, 1);
 	}
@@ -568,7 +573,12 @@ function scr_draw_all_level_editor_icon()
 	{
 		draw_sprite_ext(spr_leveleditor_icon, 13, grid_button_x, + 32 + icon_at_top_y, 1, 1, 0, c_dkgray, 1);
 	}
-	if (global.controls_used_for_navigation != "gamepad")
+	if (global.controls_used_for_navigation == "gamepad")
+	|| (global.always_show_gamepad_buttons)
+	{
+		/* There is no grid shortcut for gamepad */
+	}
+	else
 	{
 		draw_sprite_ext(spr_keyboard_keys, ord("G"), grid_button_x + 20, + 32 + icon_at_top_y + 20, 0.4, 0.4, 0, c_white, 1);
 	}
@@ -621,7 +631,12 @@ function scr_draw_all_level_editor_icon()
 		var help_blend = c_dkgray;
 	}
 	draw_sprite_ext(spr_leveleditor_icon_help, 0, help_button_x, + 32 + icon_at_top_y, 1, 1, 0, help_blend, 1);
-	if (global.controls_used_for_navigation != "gamepad")
+	if (global.controls_used_for_navigation == "gamepad")
+	|| (global.always_show_gamepad_buttons)
+	{
+		/* There is no help shortcut for gamepad */
+	}
+	else
 	{
 		draw_sprite_ext(spr_keyboard_keys, ord("H"), help_button_x + 20, + 32 + icon_at_top_y + 20, 0.4, 0.4, 0, c_white, 1);
 	}

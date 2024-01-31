@@ -2654,8 +2654,7 @@ function scr_option_menu()
 				menu_cursor_y_position = default_audio_settings_y;
 				if (key_a_pressed)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
-				|| (mouse_check_button_released(mb_left))
-				&& (mouse_get_x > 370)
+				|| (mouse_check_button_released(mb_left) && mouse_get_x > 370)
 				&& (point_in_rectangle(mouse_get_x, mouse_get_y, 430, default_audio_settings_y + 1, 430 + 370, default_audio_settings_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -4264,8 +4263,7 @@ function scr_option_menu()
 	
 		#region /* Accept */
 		if (key_a_pressed)
-		|| (mouse_check_button_released(mb_left))
-		&& (mouse_get_x > 370)
+		|| (mouse_check_button_released(mb_left) && mouse_get_x > 370)
 		{
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			{

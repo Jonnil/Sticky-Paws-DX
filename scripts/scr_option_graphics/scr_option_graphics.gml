@@ -363,8 +363,7 @@ function scr_option_graphics()
 		
 		#region /* Accept */
 		if (key_a_pressed)
-		|| (mouse_check_button_released(mb_left))
-		&& (mouse_get_x > 370)
+		|| (mouse_check_button_released(mb_left) && mouse_get_x > 370)
 		{
 			if (menu == "gui_scale_modifier")
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -1032,8 +1031,7 @@ function scr_option_graphics()
 		
 		#region /* Accept */
 		if (key_a_pressed)
-		|| (mouse_check_button_released(mb_left))
-		&& (mouse_get_x > 370)
+		|| (mouse_check_button_released(mb_left) && mouse_get_x > 370)
 		{
 			if (menu == "advanced_video_option_back") && (menu_delay == 0 && menu_joystick_delay == 0){menu = "advanced_video_options";
 			menu_delay = 3;

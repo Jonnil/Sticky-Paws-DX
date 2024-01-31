@@ -15,17 +15,7 @@ function scr_option_control_menu()
 		var menu_y_remap_key_dive = -999;
 		var menu_y_remap_key_jump = 8 + 64 * 3;
 	}
-	if (allow_player_double_jump[what_player] >= 2)
-	|| (allow_player_double_jump[what_player] == -1)
-	{
-		var menu_y_remap_key_double_jump = menu_y_remap_key_jump + 64;
-		var menu_y_remap_key_crouch = menu_y_remap_key_jump + 64 * 2;
-	}
-	else
-	{
-		var menu_y_remap_key_double_jump = -999;
-		var menu_y_remap_key_crouch = menu_y_remap_key_jump + 64;
-	}
+	var menu_y_remap_key_crouch = menu_y_remap_key_jump + 64;
 	var menu_y_remap_key_crouch_toggle = menu_y_remap_key_crouch + 64;
 	var menu_y_remap_key_run = menu_y_remap_key_crouch + 64 * 2;
 	var menu_y_remap_key_run_toggle = menu_y_remap_key_crouch + 64 * 3;
@@ -56,11 +46,21 @@ function scr_option_control_menu()
 	|| (allow_player_double_jump[what_player] == -1)
 	{
 		var menu_y_double_jump_uses_jump_key = menu_y_up_is_also_jump + 64;
-		var menu_y_down_is_also_crouch = menu_y_up_is_also_jump + 64 * 2;
+		if (!global.player_double_jump_uses_jump_key[what_player])
+		{
+			var menu_y_remap_key_double_jump = menu_y_double_jump_uses_jump_key + 74;
+			var menu_y_down_is_also_crouch = menu_y_up_is_also_jump + 64 * 3;
+		}
+		else
+		{
+			var menu_y_remap_key_double_jump = -999;
+			var menu_y_down_is_also_crouch = menu_y_up_is_also_jump + 64 * 2;
+		}
 	}
 	else
 	{
 		var menu_y_double_jump_uses_jump_key = -999;
+		var menu_y_remap_key_double_jump = -999;
 		var menu_y_down_is_also_crouch = menu_y_up_is_also_jump + 64;
 	}
 	var menu_y_double_tap_direction_to_run = menu_y_down_is_also_crouch + 64;
@@ -97,11 +97,13 @@ function scr_option_control_menu()
 	{
 		var menu_y_always_show_gamepad_buttons = menu_y_down_and_jump_to_groundpound + 64 * 5				+ 48;
 		var menu_y_chosen_controller_used = menu_y_down_and_jump_to_groundpound + 64 * 6				+ 48;
+		var menu_y_vibration_strength = menu_y_down_and_jump_to_groundpound + 64 * 7				+ 78;
 	}
 	else
 	{
 		var menu_y_always_show_gamepad_buttons = -999;
 		var menu_y_chosen_controller_used = -999;
+		var menu_y_vibration_strength = -999;
 	}
 	#endregion /* Buttons positions END */
 	
@@ -3765,40 +3767,11 @@ function scr_option_control_menu()
 				else
 				if (key_down)
 				{
-					if (allow_player_double_jump[what_player] >= 2)
-					|| (allow_player_double_jump[what_player] == -1)
-					{
-						menu = "remap_key_double_jump";
-					}
-					else
-					{
-						menu = "remap_key_crouch";
-					}
-					menu_delay = 3;
-				}
-			}
-			#endregion /* Remap key jump END */
-			
-			else
-			
-			#region /* Remap key double jump */
-			if (menu == "remap_key_double_jump")
-			&& (!can_remap_key)
-			&& (!input_key)
-			{
-				if (key_up)
-				{
-					menu = "remap_key_jump";
-					menu_delay = 3;
-				}
-				else
-				if (key_down)
-				{
 					menu = "remap_key_crouch";
 					menu_delay = 3;
 				}
 			}
-			#endregion /* Remap key double jump END */
+			#endregion /* Remap key jump END */
 			
 			else
 			
@@ -3809,15 +3782,7 @@ function scr_option_control_menu()
 			{
 				if (key_up)
 				{
-					if (allow_player_double_jump[what_player] >= 2)
-					|| (allow_player_double_jump[what_player] == -1)
-					{
-						menu = "remap_key_double_jump";
-					}
-					else
-					{
-						menu = "remap_key_jump";
-					}
+					menu = "remap_key_jump";
 					menu_delay = 3;
 				}
 				else
@@ -4187,6 +4152,8 @@ function scr_option_control_menu()
 		if (global.enable_option_for_pc)
 		&& (global.settings_sidebar_menu == "controller_settings")
 		{
+			draw_menu_slider(420, menu_y_vibration_strength + menu_y_offset, l10n_text("Vibration Strength"), "vibration_strength", global.vibration_strength[what_player]);
+			
 			draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used[what_player],
 			l10n_text("Auto Detect"),
 			l10n_text("Xbox One"),
@@ -4229,6 +4196,10 @@ function scr_option_control_menu()
 		#endregion /* Controls checkmarks and dropdown menu settings END */
 		
 		#region /* Menu cursor y position */
+		if (menu == "vibration_strength")
+		{
+			menu_cursor_y_position = menu_y_vibration_strength;
+		}
 		if (menu == "chosen_controller_used")
 		{
 			menu_cursor_y_position = menu_y_chosen_controller_used + 100;
@@ -4321,7 +4292,7 @@ function scr_option_control_menu()
 					if (global.settings_sidebar_menu == "controller_settings")
 					&& (global.enable_option_for_pc)
 					{
-						menu = "chosen_controller_used"
+						menu = "vibration_strength"
 					}
 					else
 					if (global.enable_option_for_pc)
@@ -4465,11 +4436,40 @@ function scr_option_control_menu()
 				else
 				if (key_down)
 				{
-					menu = "down_is_also_crouch";
+					if (allow_player_double_jump[what_player] >= 2 || allow_player_double_jump[what_player] == -1)
+					&& (!global.player_double_jump_uses_jump_key[what_player])
+					{
+						menu = "remap_key_double_jump";
+					}
+					else
+					{
+						menu = "down_is_also_crouch";
+					}
 					menu_delay = 3;
 				}
 			}
 			#endregion /* Double Jump Uses Jump Key Navigation END */
+			
+			else
+			
+			#region /* Remap key double jump */
+			if (menu == "remap_key_double_jump")
+			&& (!can_remap_key)
+			&& (!input_key)
+			{
+				if (key_up)
+				{
+					menu = "double_jump_uses_jump_key";
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				{
+					menu = "down_is_also_crouch";
+					menu_delay = 3;
+				}
+			}
+			#endregion /* Remap key double jump END */
 			
 			else
 			
@@ -4479,10 +4479,16 @@ function scr_option_control_menu()
 				menu_cursor_y_position = menu_y_down_is_also_crouch;
 				if (key_up)
 				{
-					if (allow_player_double_jump[what_player] >= 2)
-					|| (allow_player_double_jump[what_player] == -1)
+					if (allow_player_double_jump[what_player] >= 2 || allow_player_double_jump[what_player] == -1)
 					{
-						menu = "double_jump_uses_jump_key";
+						if (!global.player_double_jump_uses_jump_key[what_player])
+						{
+							menu = "remap_key_double_jump";
+						}
+						else
+						{
+							menu = "double_jump_uses_jump_key";
+						}
 					}
 					else
 					{
@@ -4870,7 +4876,7 @@ function scr_option_control_menu()
 				if (key_down)
 				&& (!open_dropdown)
 				{
-					menu = "remap_select_player";
+					menu = "vibration_strength";
 					menu_delay = 3;
 				}
 				else
@@ -4894,11 +4900,60 @@ function scr_option_control_menu()
 			}
 			#endregion /* Navigate Show Controls Settings END */
 			
+			else
+			
+			#region /* Navigate Vibration Strength Settings */
+			if (menu == "vibration_strength")
+			{
+				if (key_up)
+				&& (!open_dropdown)
+				{
+					if (global.settings_sidebar_menu == "controller_settings")
+					&& (global.enable_option_for_pc)
+					{
+						menu = "chosen_controller_used";
+					}
+					else
+					if (global.enable_option_for_pc)
+					{
+						menu = "show_prompt_when_changing_controller";
+					}
+					else
+					{
+						menu = "show_controls";
+					}
+					menu_delay = 3;
+				}
+				else
+				if (key_down)
+				&& (!open_dropdown)
+				{
+					menu = "remap_select_player";
+					menu_delay = 3;
+				}
+				else
+				if (key_left)
+				&& (!open_dropdown)
+				&& (global.vibration_strength[what_player] > 0)
+				{
+					global.vibration_strength[what_player] -= 0.05;
+					menu_delay = 3;
+				}
+				else
+				if (key_right)
+				&& (!open_dropdown)
+				&& (global.vibration_strength[what_player] < 1)
+				{
+					global.vibration_strength[what_player] += 0.05;
+					menu_delay = 3;
+				}
+			}
+			#endregion /* Navigate Vibration Strength Settings END */
+			
 		}
 		
 		#region /* Accept */
-		if (key_a_pressed || mouse_check_button_released(mb_left))
-		&& (mouse_get_x > 370)
+		if (key_a_pressed || mouse_check_button_released(mb_left) && mouse_get_x > 370)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
@@ -4906,7 +4961,7 @@ function scr_option_control_menu()
 				global.player_up_is_also_jump[what_player] = !global.player_up_is_also_jump[what_player];
 			}
 			if (menu == "double_jump_uses_jump_key") {
-				global.player_double_jump_uses_jump_key [what_player] = !global.player_double_jump_uses_jump_key[what_player];
+				global.player_double_jump_uses_jump_key[what_player] = !global.player_double_jump_uses_jump_key[what_player];
 			}
 			if (menu == "down_is_also_crouch") {
 				global.player_down_is_also_crouch[what_player] = !global.player_down_is_also_crouch[what_player];

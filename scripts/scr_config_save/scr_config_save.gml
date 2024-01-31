@@ -107,6 +107,7 @@ function scr_config_save()
 	{
 		
 		#region /* Save Player Keyboard Remapping */
+		ini_write_real("config", "vibration_strength" + string(i), global.vibration_strength[i]);
 		ini_write_real("config", "chosen_controller_used" + string(i), global.chosen_controller_used[i]);
 		ini_write_real("config", "character_index_player" + string(i), global.character_index[i - 1]);
 		ini_write_real("config", "skin_for_player" + string(i), global.actual_skin_for_player[i]);

@@ -1,4 +1,4 @@
-function draw_menu_slider(x_position, y_position, string_text, menu_index, variable_to_change, bar_color)
+function draw_menu_slider(x_position, y_position, string_text, menu_index, variable_to_change, bar_color = c_white)
 {
 	var length_variable = 320;
 	var mouse_get_x = device_mouse_x_to_gui(0);
@@ -41,6 +41,12 @@ function draw_menu_slider(x_position, y_position, string_text, menu_index, varia
 				{
 					global.background_brightness_menu = clamp((mouse_get_x -x_position) /(length_variable), 0, 1)*(1-(- 1)) + (- 1);
 					variable_to_change = clamp((mouse_get_x -x_position) /(length_variable), 0, 1)*(1-(- 1)) + (- 1);
+				}
+				else
+				if (menu == "vibration_strength")
+				{
+					global.vibration_strength[remapping_player + 1] = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);
+					variable_to_change = clamp((mouse_get_x -x_position) /(length_variable), 0, 1);
 				}
 				else
 				{

@@ -111,6 +111,7 @@ function scr_config_load()
 		{
 			
 			#region /* Load Player Keyboard Remapping */
+			if (ini_key_exists("config", "vibration_strength" + string(i))){global.vibration_strength[i] = ini_read_real("config", "vibration_strength" + string(i), 0);}
 			if (ini_key_exists("config", "chosen_controller_used" + string(i))){global.chosen_controller_used[i] = ini_read_real("config", "chosen_controller_used" + string(i), 0);}
 			if (ini_key_exists("config", "character_index_player" + string(i))){global.character_index[i - 1] = ini_read_real("config", "character_index_player" + string(i), 0);}
 			if (ini_key_exists("config", "skin_for_player" + string(i))){global.actual_skin_for_player[i] = ini_read_real("config", "skin_for_player" + string(i), 0);}

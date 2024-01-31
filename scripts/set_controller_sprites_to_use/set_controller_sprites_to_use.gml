@@ -5,57 +5,56 @@ function set_controller_sprites_to_use() {
 	for(var i = 1; i <= global.max_players; i += 1) {
 		switch (global.chosen_controller_used[i]) {
 			
+			
+			
 			#region /* Autodetect what controller player is using */
 			case 0:
 			
-			if (gamepad_get_description(i - 1) == "PS4 Controller")
-			{
+			if (gamepad_get_description(global.player_slot[i]) == "PS4 Controller") {
 				global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_playstation4;
 			}
 			else
-			if (gamepad_get_description(i - 1) == "PS5 Controller")
-			{
+			if (gamepad_get_description(global.player_slot[i]) == "PS5 Controller") {
 				global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_playstation5;
 			}
 			else
-			if (os_type == os_switch)
-			{
-				if (switch_controller_joycon_left_connected(i))
-				&& (switch_controller_joycon_right_connected(i))
-				{
+			if (os_type == os_switch) {
+				/* Put something here to detect when using Joy-Cons on the side */
+				//{
+					/* If you're using Nintendo Switch with Joy-Cons on the side, use horizontal button prompts */
+				//	global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_horizontal;
+				//}
+				//else {
+					/* If you're using other Nintendo Switch controllers, use vertical button prompts */
 					global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
-				}
-				else
-				{
-					global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_horizontal;
-				}
+				//}
 			}
-			else
-			{
+			else {
+				/* If there isn't any specific controller that is detected, use this one as default */
 				global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_xboxone;
 			}
 			
 			break;
 			#endregion /* Autodetect what controller player is using END */
 			
+			
+			
 			#region /* Force what controller player wants to use */
 			case 1: global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_xboxone; break;
 			case 2: global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_xboxseriesxs; break;
 			case 3:
-			if (os_type == os_switch)
-			{
-				if (switch_controller_joycon_left_connected(i))
-				&& (switch_controller_joycon_right_connected(i))
-				{
+			if (os_type == os_switch) {
+				/* Put something here to detect when using Joy-Cons on the side */
+				//{
+					/* If you're using Nintendo Switch with Joy-Cons on the side, use horizontal button prompts */
+				//	global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_horizontal;
+				//}
+				//else {
+					/* If you're using other Nintendo Switch controllers, use vertical button prompts */
 					global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
-				}
-				else
-				{
-					global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_horizontal;
-				}
+				//}
 			}
-			else
-			{
+			else {
 				global.what_controller_sprites_to_use[i] = global.resource_pack_sprite_buttons_nintendoswitch_vertical;
 			}
 			break;
