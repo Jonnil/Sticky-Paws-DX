@@ -3,7 +3,7 @@ if (instance_exists(obj_player))
 && (point_distance(x, y, obj_player.x, obj_player.y) < 64)
 && (instance_nearest(x, y, obj_player).vspeed == 0)
 && (instance_nearest(x, y, obj_player).can_move)
-&& (instance_nearest(x, y, obj_player).intro_animation = "")
+&& (instance_nearest(x, y, obj_player).intro_animation == "")
 && (!can_navigate)
 {
 	what_player_navigate = instance_nearest(x, y, obj_player).player;

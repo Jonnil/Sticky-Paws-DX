@@ -291,6 +291,7 @@
     {"name":"spr_cursor_fill_full","order":64,"path":"sprites/spr_cursor_fill_full/spr_cursor_fill_full.yy",},
     {"name":"scr_custom_level_select_with_the_mouse","order":6,"path":"scripts/scr_custom_level_select_with_the_mouse/scr_custom_level_select_with_the_mouse.yy",},
     {"name":"obj_foreground1_5","order":16,"path":"objects/obj_foreground1_5/obj_foreground1_5.yy",},
+    {"name":"scr_load_level_checkpoint","order":80,"path":"scripts/scr_load_level_checkpoint/scr_load_level_checkpoint.yy",},
     {"name":"spr_virtual_joystick_base","order":120,"path":"sprites/spr_virtual_joystick_base/spr_virtual_joystick_base.yy",},
     {"name":"scr_quit_to_desktop_menu","order":4,"path":"scripts/scr_quit_to_desktop_menu/scr_quit_to_desktop_menu.yy",},
     {"name":"rm_world_map","order":5,"path":"rooms/rm_world_map/rm_world_map.yy",},

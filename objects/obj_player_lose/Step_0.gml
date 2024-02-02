@@ -168,7 +168,30 @@ scr_player_move_pause();
 
 #region /* Restart Level */
 if (global.restart_level)
+|| (gamepad_button_check(global.player_slot[player], gp_shoulderlb))
+&& (gamepad_button_check(global.player_slot[player], gp_shoulderrb))
+&& (gamepad_button_check_pressed(global.player_slot[player], gp_select))
 {
+	if (gamepad_button_check(global.player_slot[player], gp_shoulderlb))
+	&& (gamepad_button_check(global.player_slot[player], gp_shoulderrb))
+	&& (gamepad_button_check_pressed(global.player_slot[player], gp_select))
+	{
+		if (global.character_select_in_this_menu == "main_game")
+		{
+			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+		}
+		else
+		{
+			ini_open(working_directory + "save_file/custom_level_save.ini");
+		}
+		ini_key_delete(global.level_name, "checkpoint_x");
+		ini_key_delete(global.level_name, "checkpoint_y");
+		ini_key_delete(global.level_name, "checkpoint_direction");
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		global.checkpoint_x = 0;
+		global.checkpoint_y = 0;
+	}
+	
 	global.restart_level = false;
 	global.quit_level = false;
 	audio_stop_all();

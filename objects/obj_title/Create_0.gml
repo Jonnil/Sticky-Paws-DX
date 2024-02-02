@@ -56,6 +56,7 @@ hovering_over_level_editor_corner_menu = false;
 have_downloaded_from_server = false;
 scrolling_menu_with_mousewheel = false;
 finished_level = undefined; /* This needs to be set to undefined by default */
+liked_content = undefined;
 i = 0;
 
 information_menu_open = false; /* If the information menu is opened or not */

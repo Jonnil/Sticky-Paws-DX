@@ -13,6 +13,7 @@ function scr_draw_online_download_list()
 		in_online_download_list_load_menu = true; /* Let Async - HTTP Event know that we want to load a onload download list */
 		
 		finished_level = undefined;
+		liked_content = undefined;
 		
 		/* Create DS Map to hold the HTTP Header info */
 		map = ds_map_create();
@@ -115,6 +116,10 @@ function scr_draw_online_download_list()
 				if (!is_array(finished_level))
 				{
 					finished_level = array_create(num_items, undefined); /* Create finished level array */
+				}
+				if (!is_array(liked_content))
+				{
+					liked_content = array_create(num_items, undefined); /* Create liked content array */
 				}
 				
 				var online_download_index = 0;
@@ -315,10 +320,66 @@ function scr_draw_online_download_list()
 					}
 					#endregion /* Let player know when you have already beaten a downloaded level END */
 					
+					#region /* Show if you have liked or disliked content */
+					if (is_array(liked_content))
+					{
+						if (liked_content[i] == undefined)
+						{
+							if (file_exists(working_directory + "save_file/custom_" + string(content_type) + "_save.ini"))
+							{
+								ini_open(working_directory + "save_file/custom_" + string(content_type) + "_save.ini");
+								
+								/* See if the online content has already been liked or disliked by you or not */
+								if (ini_key_exists("liked_downloaded_" + string(content_type), draw_download_id))
+								{
+									liked_content[i] = ini_read_real("liked_downloaded_" + string(content_type), draw_download_id, 0);
+								}
+								else
+								{
+									liked_content[i] = 0; /* Overwrite so it's false instead of undefined, so you don't check this variable again */
+								}
+									
+								ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+							}
+							else
+							{
+								liked_content[i] = 0; /* Overwrite so it's false instead of undefined, so you don't check this variable again */
+							}
+						}
+					}
+					if (is_array(liked_content))
+					{
+						if (liked_content[i] == +1) /* You have liked the content */
+						{
+							var liked_content_text = "Liked";
+							var liked_content_icon = spr_icon_liked;
+							var liked_content_color = c_aqua;
+						}
+						else
+						if (liked_content[i] == -1) /* You have disliked the content */
+						{
+							var liked_content_text = "Disliked";
+							var liked_content_icon = spr_icon_disliked;
+							var liked_content_color = c_red;
+						}
+						else /* Not liked or disliked content */
+						{
+							var liked_content_text = "";
+							var liked_content_icon = spr_noone;
+							var liked_content_color = c_white;
+						}
+						if (liked_content_text != "")
+						{
+							draw_sprite_ext(liked_content_icon, 0, download_online_x + 524, 32 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+							scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + menu_y_offset, l10n_text(liked_content_text), global.default_text_size, c_menu_outline, liked_content_color, 1);
+						}
+					}
+					#endregion /* Show if you have liked or disliked content END */
+					
 					/* Write date of upload */
-					scr_draw_text_outlined(download_online_x + 100, 270 + download_online_y + menu_y_offset, string(get_relative_timezone(draw_download_time)), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 1);
+					scr_draw_text_outlined(download_online_x + 100, 32 + 270 + download_online_y + menu_y_offset, string(get_relative_timezone(draw_download_time)), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 1);
 					draw_set_halign(fa_right);
-					scr_draw_text_outlined(download_online_x + 490, 270 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.6, c_menu_outline, selected_download_c_menu_fill, 0.9);
+					scr_draw_text_outlined(download_online_x + 490, 32 + 270 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.6, c_menu_outline, selected_download_c_menu_fill, 0.9);
 				}
 				#endregion /* Thumbnail for each level / character END */
 				

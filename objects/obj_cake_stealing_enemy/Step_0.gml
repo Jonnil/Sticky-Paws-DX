@@ -131,7 +131,7 @@ if (cutscene = 2)
 
 if (instance_exists(obj_player))
 && (place_meeting(x, y, obj_player))
-&& (instance_nearest(x, y, obj_player).intro_animation = "")
+&& (instance_nearest(x, y, obj_player).intro_animation == "")
 && (cutscene != 1)
 {
 	with (instance_create_depth(x, y, 0, obj_basic_enemy))

@@ -77,13 +77,13 @@ function scr_player_move_goal()
 					var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 					
 					ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-					ini_write_real(level_name, "checkpoint_x", 0);
-					ini_write_real(level_name, "checkpoint_y", 0);
 					ini_write_real(level_name, "checkpoint_millisecond", 0);
 					ini_write_real(level_name, "checkpoint_second", 0);
 					ini_write_real(level_name, "checkpoint_minute", 0);
 					ini_write_real(level_name, "checkpoint_realmillisecond", 0);
-					ini_write_real(level_name, "checkpoint_direction", +1);
+					ini_key_delete(level_name, "checkpoint_x");
+					ini_key_delete(level_name, "checkpoint_y");
+					ini_key_delete(level_name, "checkpoint_direction");
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				else
@@ -100,13 +100,13 @@ function scr_player_move_goal()
 					var level_name = global.level_name;
 					
 					ini_open(working_directory + "save_file/custom_level_save.ini");
-					ini_write_real(level_name, "checkpoint_x", 0);
-					ini_write_real(level_name, "checkpoint_y", 0);
 					ini_write_real(level_name, "checkpoint_millisecond", 0);
 					ini_write_real(level_name, "checkpoint_second", 0);
 					ini_write_real(level_name, "checkpoint_minute", 0);
 					ini_write_real(level_name, "checkpoint_realmillisecond", 0);
-					ini_write_real(level_name, "checkpoint_direction", +1);
+					ini_key_delete(level_name, "checkpoint_x");
+					ini_key_delete(level_name, "checkpoint_y");
+					ini_key_delete(level_name, "checkpoint_direction");
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				#endregion /* Save Checkpoint END */

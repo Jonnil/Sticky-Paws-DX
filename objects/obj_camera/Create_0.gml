@@ -323,32 +323,23 @@ if (global.assist_enable)
 
 #region /* Start Timer */
 time_second = 0;
-if (instance_exists(obj_player))
+if (!global.trigger_ending)
 {
-	if (!global.trigger_ending)
+	if (global.actually_play_edited_level)
+	&& (global.play_edited_level)
+	&& (global.checkpoint_x > 0 || global.checkpoint_y > 0)
 	{
-		if (global.actually_play_edited_level)
-		&& (global.play_edited_level)
-		&& (global.checkpoint_x > 0)
-		&& (global.create_level_from_template >= true)
-		
-		|| (global.actually_play_edited_level)
-		&& (global.play_edited_level)
-		&& (global.checkpoint_y > 0)
-		&& (global.create_level_from_template >= true)
-		{
-			global.timeattack_realmillisecond = global.checkpoint_realmillisecond;
-			global.timeattack_millisecond = global.checkpoint_millisecond;
-			global.timeattack_second = global.checkpoint_second;
-			global.timeattack_minute = global.checkpoint_minute;
-		}
-		else
-		{
-			global.timeattack_realmillisecond = 0;
-			global.timeattack_millisecond = 0;
-			global.timeattack_second = 0;
-			global.timeattack_minute = 0;
-		}
+		global.timeattack_realmillisecond = global.checkpoint_realmillisecond;
+		global.timeattack_millisecond = global.checkpoint_millisecond;
+		global.timeattack_second = global.checkpoint_second;
+		global.timeattack_minute = global.checkpoint_minute;
+	}
+	else
+	{
+		global.timeattack_realmillisecond = 0;
+		global.timeattack_millisecond = 0;
+		global.timeattack_second = 0;
+		global.timeattack_minute = 0;
 	}
 }
 #endregion /* Start Timer END */

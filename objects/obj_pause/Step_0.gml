@@ -26,40 +26,27 @@ if (global.narrator >= 0)
 }
 
 #region /* Hide menu for clean screenshots */
-if (hide_menu_for_clean_screenshots_timer < 60 * 3)
+if (menu == "continue") /* Can only hide menu when on these buttons specifically */
+|| (menu == "change_character")
+|| (menu == "edit_level")
+|| (menu == "options")
+|| (menu == "restart")
+|| (menu == "quit")
+|| (menu == "report")
 {
-	if (menu == "continue") /* Can only hide menu when on these buttons specifically */
-	|| (menu == "change_character")
-	|| (menu == "edit_level")
-	|| (menu == "options")
-	|| (menu == "restart")
-	|| (menu == "quit")
-	|| (menu == "report")
+	if (hide_menu_for_clean_screenshots_timer < 60 * 3)
 	{
 		hide_menu_for_clean_screenshots_timer ++;
 	}
 }
-if (menu != "continue")
-&& (menu != "change_character")
-&& (menu != "edit_level")
-&& (menu != "options")
-&& (menu != "restart")
-&& (menu != "quit")
-&& (menu != "report")
-{
-	hide_menu_for_clean_screenshots_timer = 0;
-	hide_menu_for_clean_screenshots_alpha = lerp(hide_menu_for_clean_screenshots_alpha, 0, 0.01);
-}
-if (hide_menu_for_clean_screenshots_timer = 60 * 3)
-{
-	hide_menu_for_clean_screenshots_alpha = lerp(hide_menu_for_clean_screenshots_alpha, 1, 0.01);
-}
-if (in_settings)
-|| (menu == "quit_game_yes")
-|| (menu == "quit_game_no")
+else
 {
 	hide_menu_for_clean_screenshots_alpha = 0;
 	hide_menu_for_clean_screenshots_timer = 0;
+}
+if (hide_menu_for_clean_screenshots_timer >= 60 * 3)
+{
+	hide_menu_for_clean_screenshots_alpha = lerp(hide_menu_for_clean_screenshots_alpha, 1, 0.01);
 }
 
 if (keyboard_check_pressed(ord("Y")))
@@ -119,7 +106,7 @@ if (keyboard_check_pressed(vk_anykey))
 
 for(var i = 1; i <= global.max_players + 1; i += 1)
 {
-	gamepad_set_vibration(0, 0, 0);
+	gamepad_set_vibration(i - 1, 0, 0);
 }
 
 #region /* Set screen size */
@@ -145,7 +132,11 @@ if (menu_cursor_index > 4)
 
 #region /* Show loading icon and reset level */
 if (show_loading_icon)
+|| (gamepad_button_check(global.pause_player, gp_shoulderlb))
+&& (gamepad_button_check(global.pause_player, gp_shoulderrb))
+&& (gamepad_button_check_pressed(global.pause_player, gp_select))
 {
+	show_loading_icon = true;
 	global.loading_spinning_angle -= 10;
 	
 	if (menu == "reset_from_checkpoint")
@@ -159,11 +150,14 @@ if (show_loading_icon)
 		#endregion /* Restart Level END */
 		
 	}
-	
+	else
 	if (menu == "reset_from_start")
 	&& (global.loading_spinning_angle < -20)
 	|| (menu == "restart")
 	&& (global.loading_spinning_angle < -20)
+	|| (gamepad_button_check(global.pause_player, gp_shoulderlb))
+	&& (gamepad_button_check(global.pause_player, gp_shoulderrb))
+	&& (gamepad_button_check_pressed(global.pause_player, gp_select))
 	{
 		
 		#region /* Restart Level */
@@ -177,26 +171,16 @@ if (show_loading_icon)
 		
 		if (global.character_select_in_this_menu == "main_game")
 		{
-			var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
-			
 			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-			ini_key_delete(level_name, "checkpoint_x");
-			ini_key_delete(level_name, "checkpoint_y");
-			ini_key_delete(level_name, "checkpoint_direction");
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
 		else
-		if (global.character_select_in_this_menu == "level_editor")
 		{
-			var level_name = global.level_name;
-			
 			ini_open(working_directory + "save_file/custom_level_save.ini");
-			ini_key_delete(level_name, "checkpoint_x");
-			ini_key_delete(level_name, "checkpoint_y");
-			ini_key_delete(level_name, "checkpoint_direction");
-			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
-		
+		ini_key_delete(global.level_name, "checkpoint_x");
+		ini_key_delete(global.level_name, "checkpoint_y");
+		ini_key_delete(global.level_name, "checkpoint_direction");
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		global.checkpoint_x = 0;
 		global.checkpoint_y = 0;
 		
@@ -204,7 +188,7 @@ if (show_loading_icon)
 		audio_stop_all();
 		global.pause = false;
 		#endregion /* Restart Level END */
-			
+		
 	}
 }
 #endregion /* Show loading icon and reset level END */

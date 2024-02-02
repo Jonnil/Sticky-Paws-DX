@@ -14,7 +14,30 @@ scr_start_intro_animations();
 
 #region /* Restart Level */
 if (global.restart_level)
+|| (gamepad_button_check(global.player_slot[player], gp_shoulderlb))
+&& (gamepad_button_check(global.player_slot[player], gp_shoulderrb))
+&& (gamepad_button_check_pressed(global.player_slot[player], gp_select))
 {
+	if (gamepad_button_check(global.player_slot[player], gp_shoulderlb))
+	&& (gamepad_button_check(global.player_slot[player], gp_shoulderrb))
+	&& (gamepad_button_check_pressed(global.player_slot[player], gp_select))
+	{
+		if (global.character_select_in_this_menu == "main_game")
+		{
+			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+		}
+		else
+		{
+			ini_open(working_directory + "save_file/custom_level_save.ini");
+		}
+		ini_key_delete(global.level_name, "checkpoint_x");
+		ini_key_delete(global.level_name, "checkpoint_y");
+		ini_key_delete(global.level_name, "checkpoint_direction");
+		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		global.checkpoint_x = 0;
+		global.checkpoint_y = 0;
+	}
+	
 	global.restart_level = false;
 	global.quit_level = false;
 	audio_stop_all();
@@ -29,10 +52,10 @@ if (global.restart_level)
 	
 	score = 0;
 	
-	gamepad_set_vibration(global.player_slot[1], 0, 0);
-	gamepad_set_vibration(global.player_slot[2], 0, 0);
-	gamepad_set_vibration(global.player_slot[3], 0, 0);
-	gamepad_set_vibration(global.player_slot[4], 0, 0);
+	for(var i = 1; i <= global.max_players + 1; i += 1)
+	{
+		gamepad_set_vibration(i - 1, 0, 0);
+	}
 	room_restart();
 }
 #endregion /* Restart Level END */
@@ -67,7 +90,7 @@ if (global.quit_level)
 			{
 				global.player_can_play[i] = false;
 			}
-			gamepad_set_vibration(global.player_slot[i], 0, 0);
+			gamepad_set_vibration(i - 1, 0, 0);
 		}
 		#endregion /* Player availability check. These variables control player availability END */
 		
@@ -132,7 +155,7 @@ if (goal && global.time_countdown_bonus <= 0)
 			{
 				global.player_can_play[i] = false;
 			}
-			gamepad_set_vibration(global.player_slot[i], 0, 0);
+			gamepad_set_vibration(i - 1, 0, 0);
 		}
 		
 		if (!global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")

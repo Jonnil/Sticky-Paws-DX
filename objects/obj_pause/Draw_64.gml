@@ -119,6 +119,8 @@ if (!hide_menu_for_clean_screenshots)
 	|| (menu == "restart")
 	|| (menu == "quit")
 	|| (menu == "report")
+	|| (menu == "reset_from_checkpoint" || menu == "reset_from_start" || menu == "restart_nevermind")
+	|| (menu == "quit_to_map" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
 	{
 		if (global.title_logo_index >= 0)
 		{
@@ -128,14 +130,6 @@ if (!hide_menu_for_clean_screenshots)
 	#endregion /* Games Logo in top left corner END */
 	
 	if (!in_settings)
-	&& (menu != "remap_key_up")
-	&& (menu != "remap_key_down")
-	&& (menu != "remap_key_left")
-	&& (menu != "remap_key_right")
-	&& (menu != "remap_key_run")
-	&& (menu != "remap_key_jump")
-	&& (menu != "remap_reset")
-	&& (menu != "remap_save")
 	{
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
@@ -157,19 +151,21 @@ if (!hide_menu_for_clean_screenshots)
 	#region /* Pause Text */
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-
+	
 	if (menu == "continue")
-	&& (menu == "change_character")
-	&& (menu == "edit_level")
-	&& (menu == "options")
-	&& (menu == "restart")
-	&& (menu == "quit")
-	&& (menu == "report")
+	|| (menu == "change_character")
+	|| (menu == "edit_level")
+	|| (menu == "options")
+	|| (menu == "restart")
+	|| (menu == "quit")
+	|| (menu == "report")
+	|| (menu == "reset_from_checkpoint" || menu == "reset_from_start" || menu == "restart_nevermind")
+	|| (menu == "quit_to_map" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
 	{
 		draw_sprite_ext(spr_pause_text, image_index, get_window_width * 0.5, 200, 1, 1, 0, c_white, scr_wave(0, 1, 4.5, 0) * fade_in_pause_alpha);
 	}
 	#endregion /* Pause Text END */
-
+	
 	/* PAUSE LEVEL SELECT / LEVEL EDITOR MENU */
 	if (!show_loading_icon)
 	&& (room == rm_world_map
@@ -240,10 +236,21 @@ if (!hide_menu_for_clean_screenshots)
 			}
 		}
 		else
-		if (menu == "reset_from_checkpoint")
-		|| (menu == "reset_from_start")
-		|| (menu == "restart_nevermind")
+		if (menu == "reset_from_checkpoint" || menu == "reset_from_start" || menu == "restart_nevermind")
 		{
+			
+			if (global.controls_used_for_navigation == "gamepad")
+			{
+				/* Tell the player the shortcut to quick restart */
+				draw_set_halign(fa_center);
+				scr_draw_text_outlined(get_window_width * 0.5, get_window_height * 0.5 - 74, l10n_text("To quick restart from start"), global.default_text_size, c_black, c_white, 1);
+				scr_draw_gamepad_buttons(gp_shoulderlb, get_window_width * 0.5 - 82, get_window_height * 0.5 - 32, 1, c_white, 1, 0.75, 0.75, 1);
+				scr_draw_text_outlined(get_window_width * 0.5 - 42, get_window_height * 0.5 - 32, "+", global.default_text_size, c_black, c_white, 1);
+				scr_draw_gamepad_buttons(gp_shoulderrb, get_window_width * 0.5, get_window_height * 0.5 - 32, 1, c_white, 1, 0.75, 0.75, 1);
+				scr_draw_text_outlined(get_window_width * 0.5 + 42, get_window_height * 0.5 - 32, "+", global.default_text_size, c_black, c_white, 1);
+				scr_draw_gamepad_buttons(gp_select,	get_window_width * 0.5 + 82, get_window_height * 0.5 - 32, 1, c_white, 1, 0.75, 0.75, 1);
+			}
+			
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Reset from Checkpoint"), "reset_from_checkpoint", "reset_from_checkpoint", c_lime, fade_in_pause_alpha);
 			if (holding_key_timer > 0)
 			&& (menu == "reset_from_checkpoint")

@@ -388,6 +388,12 @@ function scr_debug_screen()
 			scr_draw_text_outlined(32, debug_text_y, "upload_rules_do_not_show_level: " + string(upload_rules_do_not_show_level), global.default_text_size, c_black, c_white);
 		}
 		
+		if (variable_instance_exists(self, "intro_animation"))
+		{
+			debug_text_y += 20;
+			scr_draw_text_outlined(32, debug_text_y, "intro_animation: " + string(intro_animation), global.default_text_size, c_black, c_white);
+		}
+		
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "current_datetime: " + string(date_datetime_string(date_current_datetime())), global.default_text_size, c_black, c_white);
 		#endregion /* More debug text END */

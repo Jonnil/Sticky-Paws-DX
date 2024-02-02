@@ -9,10 +9,10 @@ function scr_start_intro_animations()
 		if (intro_animation == "cake_stolen")
 		&& (instance_exists(obj_camera))
 		&& (!obj_camera.intro_animation_play_only_once)
-		|| (intro_animation = "cake_stolen")
+		|| (intro_animation == "cake_stolen")
 		&& (instance_exists(obj_camera))
 		&& (obj_camera.intro_animation_play_only_once)
-		&& (global.current_level_clear_rate = "enter")
+		&& (global.current_level_clear_rate == "enter")
 		{
 			can_move = false;
 			crouch = false;
@@ -82,10 +82,10 @@ function scr_start_intro_animations()
 		if (intro_animation == "ending")
 		&& (instance_exists(obj_camera))
 		&& (!obj_camera.intro_animation_play_only_once)
-		|| (intro_animation = "ending")
+		|| (intro_animation == "ending")
 		&& (instance_exists(obj_camera))
 		&& (obj_camera.intro_animation_play_only_once)
-		&& (global.current_level_clear_rate = "enter")
+		&& (global.current_level_clear_rate == "enter")
 		{
 			can_move = false;
 			crouch = false;
@@ -93,29 +93,13 @@ function scr_start_intro_animations()
 			intro_animation_image_index += 0.4;
 			if (cutscene_time <= 1)
 			{
-				if (instance_exists(obj_level_player1_start))
-				&& (x <= obj_level_player1_start.x)
-				|| (instance_exists(obj_level_player2_start))
-				&& (x <= obj_level_player2_start.x)
-				|| (instance_exists(obj_level_player3_start))
-				&& (x <= obj_level_player3_start.x)
-				|| (instance_exists(obj_level_player4_start))
-				&& (x <= obj_level_player4_start.x)
-				{
-					x = -16 -sprite_width; /* Start outside the room a bit when ending is playing */
-					if (sprite_run > noone){intro_animation_sprite = sprite_run;}else
-					if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
-					hspeed = 0;
-					image_index = 0;
-					image_speed = 1;
-				}
-				else
-				{
-					can_move = true;
-					intro_animation = "";
-					visible = true;
-					image_alpha = 1;
-				}
+				x = -16 -sprite_width; /* Start outside the room a bit when ending is playing */
+				if (sprite_run > noone){intro_animation_sprite = sprite_run;}else
+				if (sprite_stand > noone){intro_animation_sprite = sprite_stand;}
+				hspeed = 0;
+				image_index = 0;
+				image_speed = 1;
+				
 				instance_create_depth(1697, 745, 0, obj_catlyn_working);
 				if (instance_exists(obj_goal))
 				{

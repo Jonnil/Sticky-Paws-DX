@@ -1,5 +1,5 @@
 if (instance_exists(obj_player))
-&& (instance_nearest(x, y, obj_player).intro_animation = "ending_chair")
+&& (instance_nearest(x, y, obj_player).intro_animation == "ending_chair")
 {
 	image_speed = 0.2;
 	if (image_index >= 7)

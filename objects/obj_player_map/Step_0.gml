@@ -221,7 +221,7 @@ else
 
 #region /* Set a bunch of global variables to default when you're not on a selected level */
 if (distance_to_object(instance_nearest(xx, yy, obj_level)) > 32)
-if (iris_xscale >= 1)
+&& (iris_xscale >= 1)
 {
 	global.checkpoint_x = 0;
 	global.checkpoint_y = 0;

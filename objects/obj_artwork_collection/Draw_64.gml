@@ -281,7 +281,7 @@ else
 	depth = +10;
 	if (instance_exists(obj_player))
 	&& (instance_nearest(x, y, obj_player).can_move)
-	&& (instance_nearest(x, y, obj_player).intro_animation = "")
+	&& (instance_nearest(x, y, obj_player).intro_animation == "")
 	{
 		image_alpha = lerp(image_alpha, 1, 0.1); /* Only show art collection enterance whenever the character can actually move, so it doesn't show up during cutscenes */
 	}
