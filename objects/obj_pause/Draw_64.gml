@@ -276,13 +276,11 @@ if (!hide_menu_for_clean_screenshots)
 			if (global.enable_option_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red * fade_in_pause_alpha);
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
-				draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 42 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+				quit_nevermind_y = get_window_height * 0.5 + 42 + 42 + 42;
 			}
 			else
 			{
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
-				draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+				quit_nevermind_y = get_window_height * 0.5 + 42 + 42;
 			}
 		}
 		else
@@ -294,13 +292,11 @@ if (!hide_menu_for_clean_screenshots)
 			if (global.enable_option_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red * fade_in_pause_alpha);
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
-				draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+				quit_nevermind_y = get_window_height * 0.5 + 42 + 42;
 			}
 			else
 			{
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
-				draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+				quit_nevermind_y = get_window_height * 0.5 + 42;
 			}
 		}
 		else
@@ -311,14 +307,17 @@ if (!hide_menu_for_clean_screenshots)
 			if (global.enable_option_for_pc)
 			{
 				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Quit to Desktop"), "quit_to_desktop", "quit_to_desktop", c_red, fade_in_pause_alpha);
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
-				draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+				quit_nevermind_y = get_window_height * 0.5 + 42 + 42;
 			}
 			else
 			{
-				draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
-				draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, get_window_height * 0.5 + 42 + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
+				quit_nevermind_y = get_window_height * 0.5 + 42;
 			}
+		}
+		if (menu == "quit_to_map" || menu == "quit_to_title" || menu == "quit_to_desktop" || menu == "quit_nevermind")
+		{
+			draw_menu_button(get_window_width * 0.5 - 185, quit_nevermind_y, l10n_text("Nevermind"), "quit_nevermind", "quit_nevermind", c_lime, fade_in_pause_alpha);
+			draw_sprite_ext(spr_icon_back, 0, get_window_width * 0.5 - 185 + 20, quit_nevermind_y + 21, 1, 1, 0, c_white, 1 * fade_in_pause_alpha);
 		}
 		if (menu == "report_back")
 		|| (menu == "report_next")

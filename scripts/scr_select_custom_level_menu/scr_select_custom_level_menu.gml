@@ -640,7 +640,7 @@ function scr_select_custom_level_menu()
 			global.level_name = scr_draw_name_input_screen(global.level_name, 32, c_black, 1, false, 394 * (global.select_level_index - column * row) + 300 + thumbnail_x_offset, draw_name_input_screen_y, "level_editor_enter_name_ok", "level_editor_enter_name_cancel");
 		}
 		
-		#region /* Press Enter to make new level from scratch */
+		#region /* Press Enter to edit level */
 		if (can_input_level_name)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (keyboard_string != "")
@@ -673,6 +673,12 @@ function scr_select_custom_level_menu()
 							thumbnail_level_name[global.select_level_index] = global.level_name;
 						}
 						global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name); /* After renaming a level, make sure "select level index" is updated */
+					}
+					else
+					{
+						menu_delay = 3;
+						can_input_level_name = false;
+						global.clicking_ok_input_screen = false;
 					}
 				}
 				else
@@ -764,9 +770,8 @@ function scr_select_custom_level_menu()
 					can_navigate = true;
 					menu_delay = 3;
 					
-					/* Save description to level_information.ini */
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
-					ini_write_string("info", "level_description", string(global.level_description));
+					ini_write_string("info", "level_description", string(global.level_description)); /* Save description */
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
 					if (is_array(thumbnail_level_description))

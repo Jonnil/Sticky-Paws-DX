@@ -285,7 +285,6 @@ active_jump = false;
 
 #region /* Load Checkpoint Direction */
 spawned_from_checkpoint = false;
-var level_name = global.level_name;
 if (global.character_select_in_this_menu == "main_game")
 {
 	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
@@ -294,10 +293,10 @@ else
 {
 	ini_open(working_directory + "save_file/custom_level_save.ini");
 }
-if (ini_key_exists(level_name, "checkpoint_direction"))
+if (ini_key_exists(global.level_name, "checkpoint_direction"))
 {
 	spawned_from_checkpoint = true;
-	image_xscale = ini_read_real(level_name, "checkpoint_direction", +1);
+	image_xscale = ini_read_real(global.level_name, "checkpoint_direction", +1);
 }
 ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #endregion /* Load Checkpoint Direction END */

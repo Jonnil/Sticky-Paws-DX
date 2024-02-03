@@ -296,10 +296,20 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 			&& (global.controls_used_for_navigation == "mouse")
 			|| (key_a_pressed)
 			{
-				menu = "level_editor_enter_name_ok";
-				menu_delay = 3;
-				keyboard_string = "";
-				can_input_level_name = true;
+				scr_switch_expand_save_data(); /* Expand the save data before editing level name */
+				if (global.save_data_size_is_sufficient)
+				{
+					menu = "level_editor_enter_name_ok";
+					menu_delay = 3;
+					keyboard_string = "";
+					can_input_level_name = true;
+				}
+				else
+				{
+					menu_delay = 3;
+					can_input_level_name = false;
+					global.clicking_ok_input_screen = false;
+				}
 			}
 		}
 		#endregion /* Pressing the Create from Scratch button END */
@@ -545,12 +555,22 @@ function scr_draw_level_editor_sub_menu(xx = 394 * (global.select_level_index - 
 		{
 			if (menu == "level_editor_create_from_template")
 			{
-				file_found = "";
-				file_load_timer = 0;
-				level_find_pos = 0;
-				ds_list_clear(global.thumbnail_sprite);
-				menu_delay = 3;
-				menu = "load_official_level_template";
+				scr_switch_expand_save_data(); /* Expand the save data before editing level name */
+				if (global.save_data_size_is_sufficient)
+				{
+					file_found = "";
+					file_load_timer = 0;
+					level_find_pos = 0;
+					ds_list_clear(global.thumbnail_sprite);
+					menu_delay = 3;
+					menu = "load_official_level_template";
+				}
+				else
+				{
+					menu_delay = 3;
+					can_input_level_name = false;
+					global.clicking_ok_input_screen = false;
+				}
 			}
 		}
 		#endregion /* Pressing the Create from Template button END */

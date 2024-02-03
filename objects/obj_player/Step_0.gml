@@ -43,6 +43,14 @@ if (global.restart_level)
 	audio_stop_all();
 	room_persistent = false; /* Turn OFF Room Persistency */
 	
+	if (global.goal_active)
+	|| (global.player_has_entered_goal)
+	{
+		scr_save_level(); /* Save timeattack record when resetting at goal */
+		global.goal_active = false;
+		global.player_has_entered_goal = false;
+	}
+	
 	#region /* Reset timer back to zero */
 	global.timeattack_realmillisecond = 0;
 	global.timeattack_millisecond = 0;

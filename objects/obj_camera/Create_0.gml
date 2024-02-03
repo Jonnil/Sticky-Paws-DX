@@ -283,7 +283,7 @@ for(var i = 1; i <= global.max_players; i += 1) {
 	#endregion /* Show keys x positions END */
 	
 	player_show_controls_timer[i] = 0;
-	player_show_controls_alpha[i] = 0;
+	player_show_controls_alpha[i] = -10;
 	show_run_toggle_for_player[i] = 0;
 }
 #endregion /* HUD Show Controls keys that have been pressed END */

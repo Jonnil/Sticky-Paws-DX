@@ -1,19 +1,14 @@
 /* THIS IS LOADING JSON FILE */
-function scr_load_object_placement_json()
-{
+function scr_load_object_placement_json() {
 	var load_main_game_level = true;
-	if (global.character_select_in_this_menu == "main_game" || global.create_level_from_template)
-	{
+	if (global.character_select_in_this_menu == "main_game" || global.create_level_from_template) {
 		load_main_game_level = true;
 	}
-	else
-	{
+	else {
 		load_main_game_level = false;
-		if (global.level_name != "")
-		{
+		if (global.level_name != "") {
 			var directories = ["background", "data", "sound", "tilesets"];
-			for(var i = 0; i < array_length_1d(directories); i++)
-			{
+			for(var i = 0; i < array_length_1d(directories); i++) {
 				var dir_path = global.use_cache_or_working + "custom_levels/" + global.level_name + "/" + directories[i];
 				if (!directory_exists(dir_path))
 					directory_create(dir_path);
@@ -30,8 +25,7 @@ function scr_load_object_placement_json()
 		file_path = global.use_cache_or_working + "custom_levels/" + global.level_name + "/data/object_placement_all.json";
 	}
 	
-	if (file_exists(file_path))
-	{
+	if (file_exists(file_path)) {
 		var var_struct = {X : 0, Y : 0, O : 0, E : 1, N : 1, H : 1, Q : 0, W : 0, L : 0};
 		/*
 			X = x position
@@ -51,18 +45,14 @@ function scr_load_object_placement_json()
 		
 		var data = json_parse(json_string);
 		
-		for(var i = 0; i < array_length(data); i++)
-		{
+		for(var i = 0; i < array_length(data); i++) {
 			var_struct = data[i];
 			ds_list_add(placed_objects_list, var_struct.O);
 			
-			if variable_struct_exists(var_struct, "L")
-			{
-				for(var j = 0; j <= var_struct.L; j += 1)
-				{
+			if variable_struct_exists(var_struct, "L") {
+				for(var j = 0; j <= var_struct.L; j += 1) {
 					new_obj = instance_create_depth(real(var_struct.X) + real(32 * j), real(var_struct.Y), 0, obj_leveleditor_placed_object);
-					if (new_obj)
-					{
+					if (new_obj) {
 						new_obj.object = var_struct.O;
 						
 						if variable_struct_exists(var_struct, "E") new_obj.easy = var_struct.E else new_obj.easy = 1;
@@ -73,13 +63,11 @@ function scr_load_object_placement_json()
 					}
 				}
 			}
-			else
-			{
+			else {
 				new_obj = instance_create_depth(real(var_struct.X), real(var_struct.Y), 0, obj_leveleditor_placed_object);
-				if (new_obj)
-				{
+				if (new_obj) {
 					new_obj.object = var_struct.O;
-						
+					
 					if variable_struct_exists(var_struct, "E") new_obj.easy = var_struct.E else new_obj.easy = 1;
 					if variable_struct_exists(var_struct, "N") new_obj.normal = var_struct.N else new_obj.normal = 1;
 					if variable_struct_exists(var_struct, "H") new_obj.hard = var_struct.H else new_obj.hard = 1;
@@ -93,15 +81,13 @@ function scr_load_object_placement_json()
 		
 		#region /* Save unlockable objects, only if the file exists */
 		/* Open the INI file */
-		if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini")) /* Check if the file even exists before opening, otherwise game doesn't function properly */
-		{
+		if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini")) { /* Check if the file even exists before opening, otherwise game doesn't function properly */
 			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 			
 			/* Iterate over the ds_list and write each element to the INI file */
 			for(var i = 0; i < ds_list_size(placed_objects_list); i++) {
 				var value = ds_list_find_value(placed_objects_list, i);
-				if (!ini_key_exists("Unlock Placable Objects", value))
-				{
+				if (!ini_key_exists("Unlock Placable Objects", value)) {
 					/* Only write to the INI file if it exists and the object is not already unlocked */
 					ini_write_real("Unlock Placable Objects", value, true);
 				}
@@ -117,44 +103,43 @@ function scr_load_object_placement_json()
 }
 
 /* THIS IS SAVING .JSON FILE */
-function scr_save_custom_level_json()
-{
+function scr_save_custom_level_json() {
 	global.create_level_from_template = false; /* Set this variable to false, so that the level can properly save and load after you have loaded a template level */
 	
 	#region /* Save Custom Level */
-	if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
-	{
+	if (global.character_select_in_this_menu == "level_editor") { /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
 		
-		/* Create directory for saving custom levels */
+		/* The path I actually want to create. Can't create this directory on Switch because there are a directory inside the directory */
+		var custom_levels_path = game_save_id + "custom_levels/" + global.level_name;
+		
 		if (!global.automatically_play_downloaded_level
 		&& global.level_name != ""
-		&& !file_exists(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini"))
-		{
-			directory_create(game_save_id + "custom_levels/" + string(global.level_name));
+		&& !directory_exists(custom_levels_path)) {
+			directory_create(custom_levels_path); /* Create directory for saving custom levels */
+		}
+		if (directory_exists(custom_levels_path)) {
+			show_debug_message(string(custom_levels_path) + " Directory Exists");
+		}
+		else {
+			show_debug_message(string(custom_levels_path) + " Directory Missing");
 		}
 		
-		var file
-		
 		#region /* Save object placement */
-		if (global.level_name != "")
-		{
-			file = file_text_open_write(game_save_id + "custom_levels/" + string(global.level_name) + "/data/object_placement_all.json"); /* Open file for writing */
+		var file
+		if (global.level_name != "") {
+			file = file_text_open_write(custom_levels_path + "/data/object_placement_all.json"); /* Open file for writing */
 		}
 		
 		var data = [];
 		
-		if (global.can_save_length_variable)
-		&& (instance_exists(obj_level_width))
-		{
+		if (global.can_save_length_variable && instance_exists(obj_level_width)) {
 			global.max_length_iterations = obj_level_width.x div 32;
 		}
 		
 		#region /* Write all objects to file */
-		with(obj_leveleditor_placed_object)
-		{
+		with(obj_leveleditor_placed_object) {
 			scr_set_length_variable();
-			if (repeat_length >= 0) /* Only save object if length variable is 0 or above */
-			{
+			if (repeat_length >= 0) { /* Only save object if length variable is 0 or above */
 				var obj_data = {
 		            X: string(x),
 		            Y: string(y),
@@ -185,16 +170,14 @@ function scr_save_custom_level_json()
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_BREATHABLE_WATER);
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_SIGN_READABLE);
 				
-				if (ds_list_find_index(obj_ids, object) != -1)
-				{
+				if (ds_list_find_index(obj_ids, object) != -1) {
 					/* Always save second x AND y for these objects no matter what, even if they are on coordinate 0 */
 					obj_data.Q = string(second_x);
 					obj_data.W = string(second_y);
 				}
 				ds_list_destroy(obj_ids);
 				
-				if (repeat_length >= 1) /* Only save "L" if length variable is 1 or above */
-				{
+				if (repeat_length >= 1) { /* Only save "L" if length variable is 1 or above */
 					obj_data.L = string(repeat_length);
 				}
 				
@@ -204,6 +187,7 @@ function scr_save_custom_level_json()
 		#endregion /* Write all objects to file END */
 		
 		var json_string = json_stringify(data);
+		show_debug_message("SAVE OBJECT PLACEMENT");
 		file_text_write_string(file, json_string); /* Write string with wall information to file and start a new line */
 		file_text_close(file); switch_save_data_commit(); /* Remember to commit the save data! */
 		#endregion /* Save object placement END */
@@ -215,19 +199,17 @@ function scr_save_custom_level_json()
 }
 
 /* THIS IS SAVING ADDITIONAL LEVEL INFORMATION IN A .INI FILE */
-function scr_save_level_information()
-{
+function scr_save_level_information() {
 	
 	#region /* Save Level Information */
 	if (global.level_name != "")
-	&& (!global.create_level_from_template) /* Don't save when you are creating a level from template, as it will incorrectly create a "levels" folder in Local AppData */
-	{
-		ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-		if (!ini_key_exists("info", "first_created_on_version"))
-		{
+	&& (!global.create_level_from_template) { /* Don't save when you are creating a level from template, as it will incorrectly create a "levels" folder in Local AppData */
+		show_debug_message("SAVE LEVEL INFORMATION");
+		ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
+		if (!ini_key_exists("info", "first_created_on_version")) {
 			ini_write_string("info", "first_created_on_version", "v" + scr_get_build_date());
 		}
-		ini_write_string("info", "level_name", string(global.level_name));
+		ini_write_string("info", "level_name", global.level_name);
 		ini_write_string("info", "username", string(global.username));
 		ini_write_real("info", "clear_check", false);
 		ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
@@ -237,8 +219,7 @@ function scr_save_level_information()
 			[obj_level_player3_start, "level_player3_start"],
 			[obj_level_player4_start, "level_player4_start"]
 		];
-		for(var i = 0; i < array_length_1d(player_starts); i++)
-		{
+		for(var i = 0; i < array_length_1d(player_starts); i++) {
 			var player_start = player_starts[i];
 			ini_write_real("info", player_start[1] + "_x", player_start[0].x);
 			ini_write_real("info", player_start[1] + "_y", player_start[0].y);
@@ -326,18 +307,17 @@ function scr_save_level_information()
 		
 		/* Update custom level save data */
 		ini_open(game_save_id + "save_file/custom_level_save.ini");
-		ini_key_delete(string(global.level_name), "checkpoint_x");
-		ini_key_delete(string(global.level_name), "checkpoint_y");
-		ini_key_delete(string(global.level_name), "checkpoint_millisecond");
-		ini_key_delete(string(global.level_name), "checkpoint_second");
-		ini_key_delete(string(global.level_name), "checkpoint_minute");
-		ini_key_delete(string(global.level_name), "checkpoint_realmillisecond");
-		ini_key_delete(string(global.level_name), "checkpoint_direction");
+		ini_key_delete(global.level_name, "checkpoint_x");
+		ini_key_delete(global.level_name, "checkpoint_y");
+		ini_key_delete(global.level_name, "checkpoint_millisecond");
+		ini_key_delete(global.level_name, "checkpoint_second");
+		ini_key_delete(global.level_name, "checkpoint_minute");
+		ini_key_delete(global.level_name, "checkpoint_realmillisecond");
+		ini_key_delete(global.level_name, "checkpoint_direction");
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		
 		#region /* Unlocked objects should be set as not recently unlocked anymore */
-		/* Open the INI file */
-		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
+		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini"); /* Open the INI file */
 		
 		/* Iterate over the ds_list and write each element to the INI file */
 		for(var i = 0; i < ds_list_size(placed_objects_list); i++) {

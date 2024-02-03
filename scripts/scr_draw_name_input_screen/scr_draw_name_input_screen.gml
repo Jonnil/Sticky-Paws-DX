@@ -1,4 +1,4 @@
-function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /* This is max characters on Nintendo Switch */, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true, only_big_letter = false, can_enter_illegal_charcters = false)
+function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /* 500 is max characters on Nintendo Switch */, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true, only_big_letter = false, can_enter_illegal_charcters = false)
 {
 	var buttons_x = -185;
 	var buttons_ok_y = +54;

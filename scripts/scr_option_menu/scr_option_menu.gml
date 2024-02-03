@@ -2123,7 +2123,7 @@ function scr_option_menu()
 				automatically_pause_when_window_is_unfocused_settings_y = 164;
 			}
 			automatically_pause_when_window_is_unfocused_settings_y = 164;
-			show_timer_settings_y = 164 + (48 * 1);
+			show_timer_settings_y = 164 + (48);
 			show_defeats_counter_settings_y = 164 + (48 * 2);
 			if (global.enable_ranks)
 			{
@@ -2227,7 +2227,7 @@ function scr_option_menu()
 			if (menu != "get_device_name_ok")
 			&& (menu != "get_device_name_cancel")
 			{
-				scr_draw_text_outlined(change_username_x, 20 + (40 * 1), l10n_text("Setup your Account here"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
+				scr_draw_text_outlined(change_username_x, 20 + (40), l10n_text("Setup your Account here"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				scr_draw_text_outlined(change_username_x, 20 + (40 * 2), l10n_text("This is used for uploading levels"), global.default_text_size * 1.1, c_menu_outline, c_menu_fill, 1);
 				if (menu != "change_username_ok")
 				&& (menu != "change_username_cancel")

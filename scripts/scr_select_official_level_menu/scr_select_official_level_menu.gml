@@ -848,6 +848,12 @@ function scr_select_official_level_menu()
 				
 				can_input_level_name = false;
 			}
+			else
+			{
+				menu_delay = 3;
+				can_input_level_name = false;
+				global.clicking_ok_input_screen = false;
+			}
 		}
 	}
 	#endregion /* Press Enter to make new level from template END */

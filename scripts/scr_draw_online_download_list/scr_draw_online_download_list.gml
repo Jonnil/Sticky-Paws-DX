@@ -822,7 +822,7 @@ function scr_draw_online_download_list()
 	#endregion /* Online download list menu navigation even when there isn't any data END */
 	
 	//draw_set_halign(fa_left);
-	//scr_draw_text_outlined(32, 320 + (32 * 1), "menu_cursor_y_position: " + string(menu_cursor_y_position));
+	//scr_draw_text_outlined(32, 320 + (32), "menu_cursor_y_position: " + string(menu_cursor_y_position));
 	//scr_draw_text_outlined(32, 320 + (32 * 2), "menu_y_offset: " + string(menu_y_offset));
 	//scr_draw_text_outlined(32, 320 + (32 * 3), "menu_y_offset_real: " + string(menu_y_offset_real));
 	//scr_draw_text_outlined(32, 320 + (32 * 4), "scrolling_menu_with_mousewheel: " + string(scrolling_menu_with_mousewheel));

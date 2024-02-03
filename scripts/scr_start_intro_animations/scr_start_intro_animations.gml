@@ -125,7 +125,7 @@ function scr_start_intro_animations()
 				}
 			}
 			else
-			if (cutscene_time >= 60 * 1)
+			if (cutscene_time >= 60)
 			&& (cutscene_time < 60 * 2)
 			{
 				x += 8;

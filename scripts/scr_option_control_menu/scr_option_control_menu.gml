@@ -103,7 +103,7 @@ function scr_option_control_menu()
 	{
 		var menu_y_always_show_gamepad_buttons = -999;
 		var menu_y_chosen_controller_used = -999;
-		var menu_y_vibration_strength = -999;
+		var menu_y_vibration_strength = menu_y_show_controls + 94;
 	}
 	#endregion /* Buttons positions END */
 	
@@ -4149,11 +4149,15 @@ function scr_option_control_menu()
 		{
 			draw_menu_checkmark(390, menu_y_always_show_gamepad_buttons + menu_y_offset, l10n_text("Always Show Gamepad Buttons"), "always_show_gamepad_buttons", global.always_show_gamepad_buttons, false);
 		}
+		
+		if (global.settings_sidebar_menu == "controller_settings")
+		{
+			draw_menu_slider(420, menu_y_vibration_strength + menu_y_offset, l10n_text("Vibration Strength"), "vibration_strength", global.vibration_strength[what_player]);
+		}
+		
 		if (global.enable_option_for_pc)
 		&& (global.settings_sidebar_menu == "controller_settings")
 		{
-			draw_menu_slider(420, menu_y_vibration_strength + menu_y_offset, l10n_text("Vibration Strength"), "vibration_strength", global.vibration_strength[what_player]);
-			
 			draw_menu_dropdown(390, menu_y_chosen_controller_used + menu_y_offset, l10n_text("Chosen Controller Used"), "chosen_controller_used", global.chosen_controller_used[what_player],
 			l10n_text("Auto Detect"),
 			l10n_text("Xbox One"),
@@ -4290,7 +4294,6 @@ function scr_option_control_menu()
 				&& (!open_dropdown)
 				{
 					if (global.settings_sidebar_menu == "controller_settings")
-					&& (global.enable_option_for_pc)
 					{
 						menu = "vibration_strength"
 					}
@@ -4761,6 +4764,11 @@ function scr_option_control_menu()
 						menu = "show_prompt_when_changing_controller";
 					}
 					else
+					if (global.settings_sidebar_menu == "controller_settings")
+					{
+						menu = "vibration_strength"
+					}
+					else
 					{
 						menu = "remap_select_player";
 					}
@@ -4805,6 +4813,11 @@ function scr_option_control_menu()
 						menu = "always_show_gamepad_buttons";
 					}
 					else
+					if (global.settings_sidebar_menu == "controller_settings")
+					{
+						menu = "vibration_strength"
+					}
+					else
 					{
 						menu = "remap_select_player";
 					}
@@ -4838,6 +4851,11 @@ function scr_option_control_menu()
 					&& (global.enable_option_for_pc)
 					{
 						menu = "chosen_controller_used"
+					}
+					else
+					if (global.settings_sidebar_menu == "controller_settings")
+					{
+						menu = "vibration_strength"
 					}
 					else
 					{
@@ -4876,7 +4894,14 @@ function scr_option_control_menu()
 				if (key_down)
 				&& (!open_dropdown)
 				{
-					menu = "vibration_strength";
+					if (global.settings_sidebar_menu == "controller_settings")
+					{
+						menu = "vibration_strength"
+					}
+					else
+					{
+						menu = "remap_select_player";
+					}
 					menu_delay = 3;
 				}
 				else

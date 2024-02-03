@@ -1,4 +1,5 @@
 selected_skin = 0;
+quit_nevermind_y = 0;
 
 #region /* Set variables for character select in pause menu */
 for(var p = 1; p <= global.max_players; p += 1) {
@@ -54,7 +55,7 @@ if (global.character_select_in_this_menu == "level_editor")
 || (global.character_select_in_this_menu == "level_editor")
 && (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 {
-	edit_level_y = get_window_height * 0.5 + (42 * 1);
+	edit_level_y = get_window_height * 0.5 + (42);
 	option_y = get_window_height * 0.5 + (42 * 2);
 	if (room == rm_leveleditor)
 	|| (global.pause_room == rm_leveleditor)
@@ -71,7 +72,7 @@ if (global.character_select_in_this_menu == "level_editor")
 else
 {
 	edit_level_y = -999;
-	option_y = get_window_height * 0.5 + (42 * 1);
+	option_y = get_window_height * 0.5 + (42);
 	if (room == rm_leveleditor)
 	|| (global.pause_room == rm_leveleditor)
 	{

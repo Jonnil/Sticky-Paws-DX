@@ -86,7 +86,7 @@ if (hp >= 3)
 			image_xscale = +1;
 		}
 	}
-	if (time == get_room_speed * 1)
+	if (time == get_room_speed)
 	{
 		if (can_jump_on_head)
 		{
@@ -212,7 +212,7 @@ if (hp >= 2)
 			image_xscale = +1;
 		}
 	}
-	if (time == get_room_speed * 1)
+	if (time == get_room_speed)
 	{
 		if (can_jump_on_head)
 		{
@@ -342,7 +342,7 @@ if (has_seen_player)
 			}
 		}
 	}
-	if (time == get_room_speed * 1)
+	if (time == get_room_speed)
 	{
 		if (can_jump_on_head)
 		{

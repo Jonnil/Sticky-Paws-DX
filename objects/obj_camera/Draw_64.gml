@@ -117,7 +117,7 @@ if (global.enable_time_countdown)
 					draw_text_transformed_color(get_window_width - 32, time_countdown_y, "TIME\n" + string(global.time_countdown), global.default_text_size, global.default_text_size, 0, c_red, c_red, c_red, c_red, timer_blinking_alpha);
 				}
 			}
-			if (global.timeattack_millisecond < room_speed * 0.5)
+			if (global.timeattack_millisecond < 60 * 0.5)
 			{
 				timer_blinking_alpha = lerp(timer_blinking_alpha, 1, 0.2);
 			}

@@ -567,7 +567,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				/* Darken background behind report button even more when giving information about the report button */
 				draw_set_alpha(inform_about_report_feature_alpha * 0.9);
 				draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
-				draw_set_alpha(inform_about_report_feature_alpha * 1);
+				draw_set_alpha(inform_about_report_feature_alpha);
 				
 				draw_sprite_ext(spr_arrow_swirly, menu_cursor_index, 164, display_get_gui_height() - 132 + scr_wave(0, 16, 1), 1, 1, 0, c_white, inform_about_report_feature_alpha);
 				draw_set_halign(fa_left);

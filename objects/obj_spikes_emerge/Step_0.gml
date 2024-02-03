@@ -12,7 +12,7 @@ if (global.assist_enable)
 
 
 #region /* Normal timing */
-if (global.spikes_emerge_time < room_speed * 1)
+if (global.spikes_emerge_time < 60)
 {
 	if (!timer_offset)
 	{
@@ -29,8 +29,8 @@ if (global.spikes_emerge_time < room_speed * 1)
 	}
 }
 else
-if (global.spikes_emerge_time < room_speed * 2)
-&& (global.spikes_emerge_time > room_speed * 1)
+if (global.spikes_emerge_time < 60 * 2)
+&& (global.spikes_emerge_time > 60)
 {
 	if (!timer_offset)
 	{
@@ -47,8 +47,8 @@ if (global.spikes_emerge_time < room_speed * 2)
 	}
 }
 else
-if (global.spikes_emerge_time < room_speed * 3)
-&& (global.spikes_emerge_time > room_speed * 2)
+if (global.spikes_emerge_time < 60 * 3)
+&& (global.spikes_emerge_time > 60 * 2)
 {
 	if (!timer_offset)
 	{
@@ -65,7 +65,7 @@ if (global.spikes_emerge_time < room_speed * 3)
 	}
 }
 else
-if (global.spikes_emerge_time > room_speed * 3)
+if (global.spikes_emerge_time > 60 * 3)
 {
 	if (!timer_offset)
 	{

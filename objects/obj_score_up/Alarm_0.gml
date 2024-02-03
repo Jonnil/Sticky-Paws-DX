@@ -1,3 +1,7 @@
+if (!show_remaining_jumps && above_gui)
+{
+	depth = -1510;
+}
 if (!show_remaining_jumps)
 {
 	if (score_up == "1-up")

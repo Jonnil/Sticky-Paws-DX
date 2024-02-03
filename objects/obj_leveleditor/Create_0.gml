@@ -38,7 +38,7 @@ camera_selected_skin = global.skin_for_player[fixed_player];
 for(var i = 1; i <= global.max_players; i += 1)
 {
 	player_show_controls_timer[i] = 0;
-	player_show_controls_alpha[i] = 0;
+	player_show_controls_alpha[i] = -10;
 	if (global.player_can_play[i])
 	{
 		camera_player = i;
