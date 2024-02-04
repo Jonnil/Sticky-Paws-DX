@@ -114,7 +114,7 @@ function scr_save_custom_level_json() {
 		
 		if (!global.automatically_play_downloaded_level
 		&& global.level_name != ""
-		&& !directory_exists(custom_levels_path)) {
+		&& !file_exists(custom_levels_path + "/data/object_placement_all.json")) {
 			directory_create(custom_levels_path); /* Create directory for saving custom levels */
 		}
 		if (directory_exists(custom_levels_path)) {
@@ -146,14 +146,9 @@ function scr_save_custom_level_json() {
 		            O: string(object),
 		        };
 				
-				/* Only add the "E" variable if easy is not true */
-			    if (!easy) obj_data.E = string(easy);
-				
-			    /* Only add the "N" variable if normal is not true */
-			    if (!normal) obj_data.N = string(normal);
-				
-			    /* Only add the "H" variable if hard is not true */
-			    if (!hard) obj_data.H = string(hard);
+				if (!easy){obj_data.E = string(easy);} /* Only add the "E" variable if easy is not true */
+				if (!normal){obj_data.N = string(normal);} /* Only add the "N" variable if normal is not true */
+				if (!hard){obj_data.H = string(hard);} /* Only add the "H" variable if hard is not true */
 				
 				var obj_ids = ds_list_create();
 				ds_list_add(obj_ids, LEVEL_OBJECT_ID.ID_SPRING);
