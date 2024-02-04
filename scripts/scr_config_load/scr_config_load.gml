@@ -100,6 +100,7 @@ function scr_config_load()
 		if (ini_key_exists("config", "zoom_world_map")){global.zoom_world_map = ini_read_real("config", "zoom_world_map", 1);}
 		if (ini_key_exists("config", "reset_level_zoom_when_going_back_to_map")){global.reset_level_zoom_when_going_back_to_map = ini_read_real("config", "reset_level_zoom_when_going_back_to_map", 0);}
 		if (ini_key_exists("config", "reset_world_map_zoom_when_going_back_to_map")){global.reset_world_map_zoom_when_going_back_to_map = ini_read_real("config", "reset_world_map_zoom_when_going_back_to_map", 0);}
+		if (ini_key_exists("config", "draw_text_outline")){global.draw_text_outline = ini_read_real("config", "draw_text_outline", true);}
 		if (ini_key_exists("config", "resolution_setting")){global.resolution_setting = ini_read_real("config", "resolution_setting", 0);}
 		if (ini_key_exists("config", "gui_scale_modifier")){global.gui_scale_modifier = ini_read_real("config", "gui_scale_modifier", 0);}
 		if (ini_key_exists("config", "language_localization")){global.language_localization = ini_read_real("config", "language_localization", 0);}

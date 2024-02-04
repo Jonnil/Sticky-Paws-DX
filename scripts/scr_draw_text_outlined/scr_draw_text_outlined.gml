@@ -3,11 +3,13 @@ function scr_draw_text_outlined(x_position = x, y_position = y, string_text = ""
 	var text_size_adjusted = (string_width(string_text) >= 1280 && window_get_width() <= 1280) ? text_size * 0.75 : text_size;
 	
 	/* Draw outline of text */
-	var outline_positions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
-	if (outline_color != noone) {
-		for(var i = 0; i < array_length(outline_positions); i++) {
-			var outline_offset = outline_positions[i];
-			draw_text_transformed_color(x_position + outline_offset[0] * text_size_adjusted, y_position + outline_offset[1] * text_size_adjusted, string_text, text_size_adjusted, text_size_adjusted, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
+	if (global.draw_text_outline) { /* Let it be an option that the player can disable text outline, because it can help improve performance */
+		if (outline_color != noone) {
+			var outline_positions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+			for(var i = 0; i < array_length(outline_positions); i++) {
+				var outline_offset = outline_positions[i];
+				draw_text_transformed_color(x_position + outline_offset[0] * text_size_adjusted, y_position + outline_offset[1] * text_size_adjusted, string_text, text_size_adjusted, text_size_adjusted, 0, outline_color, outline_color, outline_color, outline_color, img_alpha);
+			}
 		}
 	}
 	

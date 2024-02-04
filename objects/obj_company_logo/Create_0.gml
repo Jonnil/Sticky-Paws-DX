@@ -209,6 +209,7 @@ global.keyboard_virtual_timer = 0; /* Delay for when virtual keyboard can show u
 global.selected_level_editing_music = 0;
 global.gui_scale = -1;
 global.gui_scale_modifier = 0;
+global.draw_text_outline = true; /* Let it be an option that the player can disable text outline, because it can help improve performance */
 
 global.resolution_setting = 0; /* Preset resolution settings */
 /* 0 = Current Display Size,

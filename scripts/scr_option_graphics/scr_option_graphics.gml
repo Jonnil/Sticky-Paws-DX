@@ -19,6 +19,7 @@ function scr_option_graphics()
 	&& (menu != "enable_foreground_layer_secret")
 	&& (menu != "reset_level_zoom_when_going_back_to_map")
 	&& (menu != "reset_world_map_zoom_when_going_back_to_map")
+	&& (menu != "draw_text_outline")
 	&& (menu != "customize_button_design")
 	&& (menu != "customize_button_design_back")
 	&& (menu != "customize_button_design_color")
@@ -406,6 +407,7 @@ function scr_option_graphics()
 	&& (menu != "enable_foreground_layer_secret")
 	&& (menu != "reset_level_zoom_when_going_back_to_map")
 	&& (menu != "reset_world_map_zoom_when_going_back_to_map")
+	&& (menu != "draw_text_outline")
 	&& (menu != "customize_button_design")
 	{
 		draw_menu_button(450, 48, l10n_text("Back"), "customize_button_design_back", "customize_button_design");
@@ -643,7 +645,8 @@ function scr_option_graphics()
 		var enable_foreground_layer_secret_y = enable_foreground_layer2_y + 48;
 		var reset_level_zoom_when_going_back_to_map_y = enable_foreground_layer_secret_y + 48;
 		var reset_world_map_zoom_when_going_back_to_map_y = reset_level_zoom_when_going_back_to_map_y + 48;
-		var customize_button_design_y = reset_world_map_zoom_when_going_back_to_map_y + 48 + 10;
+		var draw_text_outline_y = reset_world_map_zoom_when_going_back_to_map_y + 48;
+		var customize_button_design_y = draw_text_outline_y + 48 + 10;
 		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
@@ -664,6 +667,7 @@ function scr_option_graphics()
 		draw_menu_checkmark(386, enable_foreground_layer_secret_y + menu_y_offset, l10n_text("Enable Foreground Layer Secret"), "enable_foreground_layer_secret", global.enable_foreground_layer_secret, true);
 		draw_menu_checkmark(386, reset_level_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset Level Zoom When Going Back To Map"), "reset_level_zoom_when_going_back_to_map", global.reset_level_zoom_when_going_back_to_map, false);
 		draw_menu_checkmark(386, reset_world_map_zoom_when_going_back_to_map_y + menu_y_offset, l10n_text("Reset World Map Zoom When Going Back To Map"), "reset_world_map_zoom_when_going_back_to_map", global.reset_world_map_zoom_when_going_back_to_map, false);
+		draw_menu_checkmark(386, draw_text_outline_y + menu_y_offset, l10n_text("Draw Text Outline"), "draw_text_outline", global.draw_text_outline, true, l10n_text("Disabling text outline can improve performance, but makes text harder to read"));
 		draw_menu_button(420, customize_button_design_y + menu_y_offset, l10n_text("Customize Button Design"), "customize_button_design", "customize_button_design_color");
 		
 		#region /* Navigate */
@@ -1001,10 +1005,33 @@ function scr_option_graphics()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "customize_button_design";
+				menu = "draw_text_outline";
 			}
 		}
 		#endregion /* Reset world map zoom when going back to map END */
+		
+		else
+		
+		#region /* Draw text outline */
+		if (menu == "draw_text_outline")
+		&& (!open_dropdown)
+		{
+			menu_cursor_y_position = draw_text_outline_y;
+			if (key_up)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "reset_world_map_zoom_when_going_back_to_map";
+			}
+			else
+			if (key_down)
+			&& (menu_delay == 0 && menu_joystick_delay == 0)
+			{
+				menu_delay = 3;
+				menu = "customize_button_design";
+			}
+		}
+		#endregion /* Draw text outline END */
 		
 		else
 		
@@ -1016,7 +1043,7 @@ function scr_option_graphics()
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;
-				menu = "reset_world_map_zoom_when_going_back_to_map";
+				menu = "draw_text_outline";
 			}
 			else
 			if (key_down)
@@ -1030,64 +1057,47 @@ function scr_option_graphics()
 		#endregion /* Navigate END */
 		
 		#region /* Accept */
-		if (key_a_pressed)
-		|| (mouse_check_button_released(mb_left) && mouse_get_x > 370)
+		if (key_a_pressed || mouse_check_button_released(mb_left) && mouse_get_x > 370)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			if (menu == "advanced_video_option_back") && (menu_delay == 0 && menu_joystick_delay == 0){menu = "advanced_video_options";
-			menu_delay = 3;
+			if (menu == "advanced_video_option_back"){menu = "advanced_video_options";
 			}
-			if (menu == "interpolate") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.interpolate){global.interpolate = false;gpu_set_texfilter(false);}else{global.interpolate = true;gpu_set_texfilter(true);}
-			menu_delay = 3;
+			if (menu == "interpolate"){global.interpolate = !global.interpolate;gpu_set_texfilter(global.interpolate);
 			}
-			if (menu == "show_fps") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.show_fps){global.show_fps = false;}else{global.show_fps = true;}
-			menu_delay = 3;
+			if (menu == "show_fps"){global.show_fps = !global.show_fps;
 			}
-			if (menu == "show_instance_count") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.show_instance_count){global.show_instance_count = false;}else{global.show_instance_count = true;}
-			menu_delay = 3;
+			if (menu == "show_instance_count"){global.show_instance_count = !global.show_instance_count;
 			}
-			if (menu == "show_collision_mask") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.show_collision_mask){global.show_collision_mask = false;}else{global.show_collision_mask = true;}
-			menu_delay = 3;
+			if (menu == "show_collision_mask"){global.show_collision_mask = !global.show_collision_mask;
 			}
-			if (menu == "enable_transitions") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_transitions){global.enable_transitions = false;}else{global.enable_transitions = true;}
-			menu_delay = 3;
+			if (menu == "enable_transitions"){global.enable_transitions = !global.enable_transitions;
 			}
-			if (menu == "enable_background_layer1") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_background_layer1){global.enable_background_layer1 = false;}else{global.enable_background_layer1 = true;}
-			menu_delay = 3;
+			if (menu == "enable_background_layer1"){global.enable_background_layer1 = !global.enable_background_layer1;
 			}
-			if (menu == "enable_background_layer2") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_background_layer2){global.enable_background_layer2 = false;}else{global.enable_background_layer2 = true;}
-			menu_delay = 3;
+			if (menu == "enable_background_layer2"){global.enable_background_layer2 = !global.enable_background_layer2;
 			}
-			if (menu == "enable_background_layer3") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_background_layer3){global.enable_background_layer3 = false;}else{global.enable_background_layer3 = true;}
-			menu_delay = 3;
+			if (menu == "enable_background_layer3"){global.enable_background_layer3 = !global.enable_background_layer3;
 			}
-			if (menu == "enable_background_layer4") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_background_layer4){global.enable_background_layer4 = false;}else{global.enable_background_layer4 = true;}
-			menu_delay = 3;
+			if (menu == "enable_background_layer4"){global.enable_background_layer4 = !global.enable_background_layer4;
 			}
-			if (menu == "enable_foreground_layer1") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_foreground_layer1){global.enable_foreground_layer1 = false;}else{global.enable_foreground_layer1 = true;}
-			menu_delay = 3;
+			if (menu == "enable_foreground_layer1"){global.enable_foreground_layer1 = !global.enable_foreground_layer1;
 			}
-			if (menu == "enable_foreground_layer_1_5") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_foreground_layer_1_5){global.enable_foreground_layer_1_5 = false;}else{global.enable_foreground_layer_1_5 = true;}
-			menu_delay = 3;
+			if (menu == "enable_foreground_layer_1_5"){global.enable_foreground_layer_1_5 = !global.enable_foreground_layer_1_5;
 			}
-			if (menu == "enable_foreground_layer2") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_foreground_layer2){global.enable_foreground_layer2 = false;}else{global.enable_foreground_layer2 = true;}
-			menu_delay = 3;
+			if (menu == "enable_foreground_layer2"){global.enable_foreground_layer2 = !global.enable_foreground_layer2;
 			}
-			if (menu == "enable_foreground_layer_secret") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.enable_foreground_layer_secret){global.enable_foreground_layer_secret = false;}else{global.enable_foreground_layer_secret = true;}
-			menu_delay = 3;
+			if (menu == "enable_foreground_layer_secret"){global.enable_foreground_layer_secret = !global.enable_foreground_layer_secret;
 			}
-			if (menu == "reset_level_zoom_when_going_back_to_map") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.reset_level_zoom_when_going_back_to_map){global.reset_level_zoom_when_going_back_to_map = false;}else{global.reset_level_zoom_when_going_back_to_map = true;}
-			menu_delay = 3;
+			if (menu == "reset_level_zoom_when_going_back_to_map"){global.reset_level_zoom_when_going_back_to_map = !global.reset_level_zoom_when_going_back_to_map;
 			}
-			if (menu == "reset_world_map_zoom_when_going_back_to_map") && (menu_delay == 0 && menu_joystick_delay == 0){if (global.reset_world_map_zoom_when_going_back_to_map){global.reset_world_map_zoom_when_going_back_to_map = false;}else{global.reset_world_map_zoom_when_going_back_to_map = true;}
-			menu_delay = 3;
+			if (menu == "reset_world_map_zoom_when_going_back_to_map"){global.reset_world_map_zoom_when_going_back_to_map = !global.reset_world_map_zoom_when_going_back_to_map;
 			}
-			if (menu == "customize_button_design")
-			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (!open_dropdown)
-			{
+			if (menu == "draw_text_outline"){global.draw_text_outline = !global.draw_text_outline;
+			}
+			if (menu == "customize_button_design" && !open_dropdown) {
 				menu = "customize_button_design_color";
-				menu_delay = 3;
 			}
+			menu_delay = 3;
 		}
 		#endregion /* Accept END */
 		
@@ -1099,6 +1109,5 @@ function scr_option_graphics()
 			menu_delay = 3;
 			can_navigate_settings_sidebar = false;
 		}
-		
 	}
 }
