@@ -859,4 +859,92 @@ else
 }
 #endregion /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see END */
 
+if (global.character_select_in_this_menu == "level_editor")
+&& (global.play_edited_level) /* When playtesting the level */
+&& (!global.actually_play_edited_level) /* But not actually playing the level */
+&& (!global.doing_clear_check_level)
+&& (!global.doing_clear_check_character)
+|| (global.character_select_in_this_menu == "main_game")
+&& (global.debug_screen)
+&& (!global.doing_clear_check_level)
+&& (!global.doing_clear_check_character) {
+	
+	show_playtest_buttons = true;
+	
+	#region /* Press Pause button */
+	if (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), pause_x - 32 + 1, display_get_gui_height() - 64, pause_x + 32, display_get_gui_height() + 64 - 1)
+	|| gamepad_button_check_pressed(global.player_slot[1], gp_select))
+	&& (pause_x > 0) {
+		if (mouse_check_button_pressed(mb_left)) {
+			can_click_on_pause_key = true;
+		}
+		if (mouse_check_button_released(mb_left))
+		&& (can_click_on_pause_key)
+		&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), pause_x - 32 + 1, display_get_gui_height() - 64, pause_x + 32, display_get_gui_height() + 64 - 1))
+		|| (gamepad_button_check_pressed(global.player_slot[1], gp_select)) {
+			scr_gamepad_vibration(0, 0, 0); /* Reset gamepad vibration when exiting playtest */
+			scr_gamepad_vibration(1, 0, 0);
+			scr_gamepad_vibration(2, 0, 0);
+			scr_gamepad_vibration(3, 0, 0);
+			scr_gamepad_vibration(4, 0, 0);
+			pause_playtest = true;
+			black_screen_gui_alpha = 1;
+			global.actually_play_edited_level = false;
+			global.play_edited_level = false;
+			score = 0;
+			
+			#region /* Save Level Information when in level editor */
+			if (global.level_name != "" && !global.actually_play_edited_level) {
+				ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
+				ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			}
+			#endregion /* Save Level Information when in level editor END */
+			
+			var time_source = time_source_create(time_source_game, 1, time_source_units_frames, function() {
+				room_restart();
+			}
+			, [], 1);
+			time_source_start(time_source);
+		}
+	}
+	else
+	if (mouse_check_button_released(mb_left) && can_click_on_pause_key) {
+		can_click_on_pause_key = false;
+	}
+	#endregion /* Press Pause button END */
+	
+	/* Press Invincibility button */
+	if (mouse_check_button_released(mb_left))
+	&& (global.controls_used_for_navigation == "mouse")
+	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), playtest_invincibility_x - 32, display_get_gui_height() - 64, playtest_invincibility_x + 32, display_get_gui_height() + 64 - 1))
+	|| (keyboard_check_pressed(invincibility_key))
+	|| (gamepad_button_check_pressed(global.player_slot[1], invincibility_button)) {
+		global.playtest_invincibility = !global.playtest_invincibility;
+	}
+	
+	/* Press Moonjump button */
+	if (mouse_check_button_released(mb_left))
+	&& (global.controls_used_for_navigation == "mouse")
+	&& (point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), playtest_moonjump_x - 32, display_get_gui_height() - 64, playtest_moonjump_x + 32, display_get_gui_height() + 64 - 1))
+	|| (keyboard_check_pressed(moonjump_key))
+	|| (gamepad_button_check_pressed(global.player_slot[1], moonjump_button)) {
+		global.playtest_moonjump = !global.playtest_moonjump;
+	}
+	
+}
+else
+{
+	show_playtest_buttons = false;
+}
+
+/* Prevent cheating with playtest tools when playing actual level or doing clear check */
+if (global.actually_play_edited_level && !global.debug_screen)
+|| (global.doing_clear_check_level)
+|| (global.doing_clear_check_character) {
+	global.playtest_invincibility = false;
+	global.playtest_moonjump = false;
+}
+
 scr_deactivate_objects_outside_view(); /* This function needs to be at the very end of the step event */

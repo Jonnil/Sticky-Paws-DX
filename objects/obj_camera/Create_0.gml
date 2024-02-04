@@ -18,6 +18,23 @@ scr_initialize_camera();
 global.player_has_entered_goal = false;
 global.spikes_emerge_time = 0;
 
+invincibility_key = ord("I");
+invincibility_button = gp_shoulderl;
+moonjump_key = ord("M");
+moonjump_button = gp_shoulderlb;
+show_playtest_buttons = false;
+
+if (global.character_select_in_this_menu == "level_editor") {
+	pause_x = 32;
+	playtest_invincibility_x = 96;
+	playtest_moonjump_x = 160;
+}
+else {
+	pause_x = -999;
+	playtest_invincibility_x = 32;
+	playtest_moonjump_x = 96;
+}
+
 prev_display_width = display_get_gui_width();
 prev_display_height = display_get_gui_height();
 mouse_x_position = device_mouse_x_to_gui(0);
