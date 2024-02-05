@@ -377,9 +377,9 @@ function scr_draw_online_download_list()
 					#endregion /* Show if you have liked or disliked content END */
 					
 					/* Write date of upload */
-					scr_draw_text_outlined(download_online_x + 100, 32 + 270 + download_online_y + menu_y_offset, string(get_relative_timezone(draw_download_time)), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 1);
+					scr_draw_text_outlined(download_online_x + 100, 270 + download_online_y + menu_y_offset, string(get_relative_timezone(draw_download_time)), global.default_text_size * 0.75, c_menu_outline, selected_download_c_menu_fill, 1);
 					draw_set_halign(fa_right);
-					scr_draw_text_outlined(download_online_x + 490, 32 + 270 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.6, c_menu_outline, selected_download_c_menu_fill, 0.9);
+					scr_draw_text_outlined(download_online_x + 490, 270 + download_online_y + menu_y_offset, string(draw_download_time), global.default_text_size * 0.6, c_menu_outline, selected_download_c_menu_fill, 0.9);
 				}
 				#endregion /* Thumbnail for each level / character END */
 				
@@ -666,7 +666,7 @@ function scr_draw_online_download_list()
 		#region /* Draw the Load Custom Level Assets */
 		if (content_type == "level")
 		{
-			var can_load_custom_level_assets_x = 380;
+			var can_load_custom_level_assets_x = display_get_gui_width() - string_width(l10n_text("Load Custom Level Assets")) - 32;
 			var can_load_custom_level_assets_y = 16;
 			draw_menu_checkmark(can_load_custom_level_assets_x, can_load_custom_level_assets_y, l10n_text("Load Custom Level Assets"), "online_list_can_load_custom_level_assets", global.can_load_custom_level_assets, true);
 			
@@ -678,7 +678,7 @@ function scr_draw_online_download_list()
 			&& (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
-				global.can_load_custom_level_assets = not global.can_load_custom_level_assets;
+				global.can_load_custom_level_assets = !global.can_load_custom_level_assets;
 			}
 		}
 		#endregion /* Draw the Load Custom Level Assets END */
@@ -773,6 +773,13 @@ function scr_draw_online_download_list()
 			{
 				menu = "download_online_1";
 			}
+		}
+		if (key_right)
+		&& (menu_delay == 0 && menu_joystick_delay == 0)
+		&& (content_type == "level")
+		{
+			menu_delay = 3;
+			menu = "online_list_can_load_custom_level_assets";
 		}
 	}
 	else

@@ -1060,7 +1060,7 @@ function scr_option_graphics()
 		if (key_a_pressed || mouse_check_button_released(mb_left) && mouse_get_x > 370)
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
-			if (menu == "advanced_video_option_back"){menu = "advanced_video_options";
+			if (menu == "advanced_video_option_back"){menu = "advanced_video_options";menu_y_offset = 0;
 			}
 			if (menu == "interpolate"){global.interpolate = !global.interpolate;gpu_set_texfilter(global.interpolate);
 			}
