@@ -3005,6 +3005,7 @@
     {"id":{"name":"obj_enemy_only_wall","path":"objects/obj_enemy_only_wall/obj_enemy_only_wall.yy",},},
     {"id":{"name":"scr_set_menu_font_color","path":"scripts/scr_set_menu_font_color/scr_set_menu_font_color.yy",},},
     {"id":{"name":"snd_lose","path":"sounds/snd_lose/snd_lose.yy",},},
+    {"id":{"name":"scr_draw_level_hud","path":"scripts/scr_draw_level_hud/scr_draw_level_hud.yy",},},
     {"id":{"name":"spr_falling_block_solid","path":"sprites/spr_falling_block_solid/spr_falling_block_solid.yy",},},
     {"id":{"name":"spr_map_tree_yawn","path":"sprites/spr_map_tree_yawn/spr_map_tree_yawn.yy",},},
     {"id":{"name":"scr_file_copy_dir","path":"scripts/scr_file_copy_dir/scr_file_copy_dir.yy",},},

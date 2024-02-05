@@ -362,43 +362,28 @@ if (!global.trigger_ending)
 #endregion /* Start Timer END */
 
 #region /* Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default */
-if (global.number_of_audio_channels == 0)
-{
+if (global.number_of_audio_channels == 0) {
 	audio_channel_num(32);
 }
-else
-if (global.number_of_audio_channels == 1)
-{
+else if (global.number_of_audio_channels == 1) {
 	audio_channel_num(64);
 }
-else
-if (global.number_of_audio_channels = 2)
-{
+else if (global.number_of_audio_channels == 2) {
 	audio_channel_num(96);
 }
-else
-if (global.number_of_audio_channels = 3)
-{
+else if (global.number_of_audio_channels == 3) {
 	audio_channel_num(128);
 }
-else
-if (global.number_of_audio_channels = 4)
-{
+else if (global.number_of_audio_channels == 4) {
 	audio_channel_num(160);
 }
-else
-if (global.number_of_audio_channels == 5)
-{
+else if (global.number_of_audio_channels == 5) {
 	audio_channel_num(192);
 }
-else
-if (global.number_of_audio_channels == 6)
-{
+else if (global.number_of_audio_channels == 6) {
 	audio_channel_num(224);
 }
-else
-if (global.number_of_audio_channels == 7)
-{
+else if (global.number_of_audio_channels == 7) {
 	audio_channel_num(256);
 }
 #endregion /* Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default END */
@@ -412,3 +397,15 @@ part_system_snow = noone;
 #endregion /* Set Particle System END */
 
 set_controller_sprites_to_use();
+
+if (timeattack_record_minute > 0)
+{
+	var timeattack_record_minute_text = string(timeattack_record_minute) + ":";
+}
+else
+{
+	var timeattack_record_minute_text = "";
+}
+best_time_text = l10n_text("Best") + ": " + string(timeattack_record_minute_text)
+										  + string_replace_all(string_format(timeattack_record_second, 2, 0), " ", "0") + "."
+										  + string_replace_all(string_format(timeattack_record_millisecond, 2, 0), " ", "0");

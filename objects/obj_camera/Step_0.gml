@@ -947,4 +947,53 @@ if (global.actually_play_edited_level && !global.debug_screen)
 	global.playtest_moonjump = false;
 }
 
+#region /* Time Countdown */
+if (global.enable_time_countdown) {
+	if (global.controls_used_for_navigation == "mouse") {
+		time_countup_y = 94 + 42;
+	}
+	else {
+		time_countup_y = 94;
+	}
+	
+	#region /* Show the Time Countdown */
+	if (global.hud_hide_time > 0 && global.time_countdown >= 0) {
+		if (global.controls_used_for_navigation == "mouse") {
+			time_countdown_y = 42 + 42;
+		}
+		else {
+			time_countdown_y = 42;
+		}
+		if (!global.player_has_entered_goal) {
+			if (global.time_countdown == 0) {
+				time_fill_color = c_red;
+				time_fill_color_blink = c_red;
+			}
+			else {
+				if (global.time_countdown >= 100) {
+					time_fill_color = c_yellow;
+					time_fill_color_blink = c_orange;
+				}
+				else {
+					time_fill_color = c_orange;
+					time_fill_color_blink = c_red;
+				}
+			}
+			if (global.timeattack_millisecond < 60 * 0.5) {
+				timer_blinking_alpha = lerp(timer_blinking_alpha, 1, 0.2);
+			}
+			else {
+				timer_blinking_alpha = lerp(timer_blinking_alpha, 0, 0.2);
+			}
+		}
+		else {
+			time_fill_color = c_white;
+			time_fill_color_blink = c_white;
+		}
+	}
+	#endregion /* Show the Time Countdown END */
+	
+}
+#endregion /* Time Countdown END */
+
 scr_deactivate_objects_outside_view(); /* This function needs to be at the very end of the step event */

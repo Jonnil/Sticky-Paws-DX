@@ -8,8 +8,8 @@ if (instance_exists(obj_camera))
 	{
 		if (player == i)
 		{
-			obj_camera.player[i] = noone;
 			obj_camera.can_spawn_player[i] = false;
+			obj_camera.player[i] = noone;
 			break; /* Exit the loop once the correct player is found */
 		}
 	}

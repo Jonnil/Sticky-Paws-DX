@@ -121,23 +121,21 @@ if (menu_delay == 0 && menu_joystick_delay == 0)
 #region /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" */
 if (global.doing_clear_check_level)
 {
+	menu_delay = 99;
 	audio_stop_sound(level_editing_music); /* Stop the background music that plays during level editing when playtesting a level */
 	if (file_exists(working_directory + "custom_levels/" + global.level_name + "/automatic_thumbnail.png"))
 	{
-		global.actually_play_edited_level = true;
-		global.play_edited_level = true;
-		with(obj_leveleditor_placed_object)
-		{
-			alarm[1] = 1;
-		}
-		instance_destroy();
+		instance_activate_all();
+		doing_clear_check_timer += 1;
 	}
 	else
 	{
-		doing_clear_check_timer += 1;
+		doing_clear_check_timer_thumbnail += 1;
 	}
 }
-if (doing_clear_check_timer == 2)
+
+#region /* Save automatic thumbnail before doing a clear check */
+if (doing_clear_check_timer_thumbnail == 2)
 {
 	if (instance_exists(obj_background_brightness_gameplay))
 	{
@@ -170,9 +168,29 @@ if (doing_clear_check_timer == 2)
 	
 }
 else
-if (doing_clear_check_timer == 3)
+if (doing_clear_check_timer_thumbnail == 3)
 {
 	scr_automatic_screenshot();
+}
+#endregion /* Save automatic thumbnail before doing a clear check END */
+
+if (doing_clear_check_timer == 1) { /* Save the level before starting clear check */
+	show_debug_message("Save the level before starting clear check");
+	scr_save_custom_level_json();
+}
+if (doing_clear_check_timer == 3) { /* Spawn the objects before starting clear check */
+	show_debug_message("Spawn the objects before starting clear check ");
+	with(obj_leveleditor_placed_object) {
+		alarm[1] = 1;
+	}
+}
+if (doing_clear_check_timer == 5) { /* Start the clear check */
+	show_debug_message("Start the clear check");
+	audio_stop_sound(level_editing_music);
+	global.character_select_in_this_menu = "level_editor";
+	global.actually_play_edited_level = true;
+	global.play_edited_level = true;
+	room_restart();
 }
 #endregion /* Make sure when doing a clear check, that you actually play the level. Have this code before the "actually play edited level = true" END */
 
@@ -183,14 +201,14 @@ if (!global.actually_play_edited_level)
 	#region /* Hide/Show Backgrounds */
 	if (keyboard_check_pressed(ord("B")))
 	{
-		global.enable_background_layer1 = not global.enable_background_layer1;
-		global.enable_background_layer2 = not global.enable_background_layer2;
-		global.enable_background_layer3 = not global.enable_background_layer3;
-		global.enable_background_layer4 = not global.enable_background_layer4;
-		global.enable_foreground_layer1 = not global.enable_foreground_layer1;
-		global.enable_foreground_layer_1_5 = not global.enable_foreground_layer_1_5;
-		global.enable_foreground_layer2 = not global.enable_foreground_layer2;
-		global.enable_foreground_layer_secret = not global.enable_foreground_layer_secret;
+		global.enable_background_layer1 = !global.enable_background_layer1;
+		global.enable_background_layer2 = !global.enable_background_layer2;
+		global.enable_background_layer3 = !global.enable_background_layer3;
+		global.enable_background_layer4 = !global.enable_background_layer4;
+		global.enable_foreground_layer1 = !global.enable_foreground_layer1;
+		global.enable_foreground_layer_1_5 = !global.enable_foreground_layer_1_5;
+		global.enable_foreground_layer2 = !global.enable_foreground_layer2;
+		global.enable_foreground_layer_secret = !global.enable_foreground_layer_secret;
 		scr_make_background_visible();
 	}
 	#endregion /* Hide/Show Backgrounds END */

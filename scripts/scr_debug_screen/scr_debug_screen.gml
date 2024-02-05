@@ -374,9 +374,6 @@ function scr_debug_screen()
 		}
 		
 		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "doing_clear_check_level: " + string(global.doing_clear_check_level), global.default_text_size, c_black, c_white);
-		
-		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "go_to_menu_when_going_back_to_title: " + string(global.go_to_menu_when_going_back_to_title), global.default_text_size, c_black, c_white);
 		
 		debug_text_y += 20;

@@ -66,6 +66,7 @@ instance_create_depth(0, obj_level_height.y + 32, 0, obj_water_level_height);
 
 #endregion /* Create essential objects so levels can function END */
 
+doing_clear_check_timer_thumbnail = 0;
 doing_clear_check_timer = 0;
 scr_load_object_placement_json(); /* Load Level */
 
@@ -491,32 +492,20 @@ if (!global.actually_play_edited_level)
 	order_index = 0;
 	unlock_index = 0;
 	
-	#region /* Loading selected level editing music */
-	if (file_exists("save_file/config.ini"))
-	{
-		ini_open(working_directory + "save_file/config.ini");
-		
-		upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
-		upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
-		
-		if (ini_key_exists("config", "select_level_editing_music"))
-		{
-			global.selected_level_editing_music = ini_read_real("config", "select_level_editing_music", 1); /* The selected background music when editing in the level editor */
-			previous_selected_level_editing_music = ini_read_real("config", "select_level_editing_music", 1); /* When changing the editing music, you want to compare it to this variable */
-		}
-		else
-		{
-			global.selected_level_editing_music = 1;
-			previous_selected_level_editing_music = 1;
-		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	ini_open(working_directory + "save_file/config.ini");
+	upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
+	upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
+	if (ini_key_exists("config", "select_level_editing_music")) {
+		global.selected_level_editing_music = ini_read_real("config", "select_level_editing_music", 1); /* The selected background music when editing in the level editor */
+		previous_selected_level_editing_music = ini_read_real("config", "select_level_editing_music", 1); /* When changing the editing music, you want to compare it to this variable */
 	}
-	else
-	{
+	else {
 		global.selected_level_editing_music = 1;
 		previous_selected_level_editing_music = 1;
 	}
-
+	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+	
+	#region /* Loading selected level editing music */
 	if (global.selected_level_editing_music == 0)
 	{
 		level_editing_music = noone;
@@ -575,8 +564,6 @@ if (!global.actually_play_edited_level)
 	
 	audio_stop_all();
 	hovering_over_level_editor_corner_menu = false;
-	upload_rules_do_not_show_level = false;
-	upload_rules_do_not_show_character = false;
 	level_editor_option_back_to_menu = ""; /* Save what menu you came from, to use later */
 	level_editor_option_select_level_index = global.select_level_index;
 	level_editor_template_select = false;
