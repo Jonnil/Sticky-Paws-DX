@@ -13,8 +13,8 @@ function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal
 		var success = 0;
 		var success_save_data_size = 0;
 		var success_save_data_journal_size = 0;
-		//current_sizes = switch_save_data_get_size(account_idx); /* Game crashes on other platforms, because it thinks this is a function that doesn't exist */
-		//max_sizes = switch_save_data_get_max_size(); /* Game crashes on other platforms, because it thinks this is a function that doesn't exist */
+		current_sizes = switch_save_data_get_size(account_idx); /* Game crashes on other platforms, because it thinks this is a function that doesn't exist */
+		max_sizes = switch_save_data_get_max_size(); /* Game crashes on other platforms, because it thinks this is a function that doesn't exist */
 		
 		/* Retrieve current save data size and journal size */
 		if (array_length_1d(current_sizes) == 2)
@@ -65,7 +65,7 @@ function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal
 					}
 					#endregion /* Calculate the new desired save data and journal sizes END */
 					
-					//success = switch_save_data_set_size(account_idx, success_save_data_size, success_save_data_journal_size); /* Expand save data size. Game crashes on other platforms, because it thinks this is a function that doesn't exist */
+					success = switch_save_data_set_size(account_idx, success_save_data_size, success_save_data_journal_size); /* Expand save data size. Game crashes on other platforms, because it thinks this is a function that doesn't exist */
 					
 					switch_save_data_mount(0); /* Don't forget to mount the save data again after expanding save data size */
 					if (success)

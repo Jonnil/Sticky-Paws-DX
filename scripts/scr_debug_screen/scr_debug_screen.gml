@@ -307,12 +307,10 @@ function scr_debug_screen()
 		
 		
 		
-		//scr_draw_text_outlined(32, debug_text_y, "cache directory: " + string(cache_directory), global.default_text_size, c_black, c_white);
-		//debug_text_y += 20;
+		scr_draw_text_outlined(32, debug_text_y, "cache directory: " + string(cache_directory), global.default_text_size, c_black, c_white);
+		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "game save id: " + string(game_save_id), global.default_text_size, c_black, c_white);
 		debug_text_y += 40;
-		//scr_draw_text_outlined(32, debug_text_y, "temp directory: " + string(temp_directory), global.default_text_size, c_black, c_white);
-		//debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "working directory: " + string(working_directory), global.default_text_size, c_black, c_white);
 		debug_text_y += 20;
 		//if (global.use_cache_or_working == cache_directory) { /* cache_directory here crashes on Nintendo Switch */

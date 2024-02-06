@@ -656,3 +656,6 @@ scr_set_font();
 #endregion /* Things you shouldn't change, warning, don't change any of these options or you might break the game! END */
 
 set_controller_sprites_to_use();
+
+/* Set network settings before starting game */
+network_set_config(network_config_use_non_blocking_socket, 1);

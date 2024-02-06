@@ -10,6 +10,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	var back_to_list_y = 0;
 	var fixed_player = 1;
 	
+	var download_temp_path = cache_directory; /* On Nintendo Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
+	
 	#region /* Search ID menu */
 	if (menu == "search_id_ok")
 	|| (menu == "search_id_cancel")
@@ -199,25 +201,27 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 	{
 		
 		#region /* Download file */
-		if (file_exists(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip")) /* Find if a new .zip file has been downloaded */
+		if (file_exists(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip")) /* Find if a new .zip file has been downloaded */
 		{
 			scr_switch_expand_save_data(); /* Expand the save data before unzipping file */
 			if (global.save_data_size_is_sufficient)
 			{
-				zip_unzip(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
+				zip_unzip(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip", download_temp_path + "downloaded_" + string(what_kind_of_id) + "/"); /* Unzip the downloaded file when the game finds it */
 				/* Must delete downloaded .zip file first, before game can properly recognize the unzipped folder */
-				file_delete(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
-				var downloaded_file_name = string(file_find_first(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
+				file_delete(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* When the downloaded zip file is unzipped, immediately delete the zip file that is left */
+				var downloaded_file_name = string(file_find_first(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/*", fa_directory)); /* After deleting the zip file left after unzipping, get the name of the directory that is left in the download folder */
 				
 				/* Copy the downloaded file lastly */
 				if (what_kind_of_id == "level")
 				{
-					scr_copy_move_files(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), cache_directory + "custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
+					scr_copy_move_files(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name),
+										download_temp_path + "custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
 				}
 				else
 				if (what_kind_of_id == "character")
 				{
-					scr_copy_move_files(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name), working_directory + "custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
+					scr_copy_move_files(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string(downloaded_file_name),
+										game_save_id + "custom_" + string(what_kind_of_id) + "s/" + string(downloaded_file_name), true);
 				}
 				
 				#region /* Get downloaded level info */
@@ -237,22 +241,22 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					global.select_level_index = ds_list_find_index(global.all_loaded_custom_levels, global.level_name); /* "Select level index" should be set to where the downloaded custom level is saved */
 					scr_delete_sprite_properly(downloaded_thumbnail_sprite);
 					downloaded_thumbnail_sprite = noone;
-					if (file_exists(cache_directory + "custom_levels/" + global.level_name + "/thumbnail.png"))
+					if (file_exists(download_temp_path + "custom_levels/" + global.level_name + "/thumbnail.png"))
 					{
-						downloaded_thumbnail_sprite = sprite_add(cache_directory + "custom_levels/" + global.level_name + "/thumbnail.png", 0, false, false, 0, 0);
+						downloaded_thumbnail_sprite = sprite_add(download_temp_path + "custom_levels/" + global.level_name + "/thumbnail.png", 0, false, false, 0, 0);
 					}
 					else
-					if (file_exists(cache_directory + "custom_levels/" + global.level_name + "/automatic_thumbnail.png"))
+					if (file_exists(download_temp_path + "custom_levels/" + global.level_name + "/automatic_thumbnail.png"))
 					{
-						downloaded_thumbnail_sprite = sprite_add(cache_directory + "custom_levels/" + global.level_name + "/automatic_thumbnail.png", 0, false, false, 0, 0);
+						downloaded_thumbnail_sprite = sprite_add(download_temp_path + "custom_levels/" + global.level_name + "/automatic_thumbnail.png", 0, false, false, 0, 0);
 					}
 					if (downloaded_thumbnail_sprite > 0)
 					{
 						sprite_set_offset(downloaded_thumbnail_sprite, sprite_get_width(downloaded_thumbnail_sprite) * 0.5, 0);
 					}
-					if (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+					if (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						global.level_description = ini_read_string("info", "level_description", "");
 						masked_username = ini_read_string("info", "username", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -265,7 +269,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 							masked_username = string(switch_mask_profanity(masked_username));
 						}
 					}
-					if (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+					if (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 					{
 						menu = "searched_file_downloaded_play"; /* Go to the screen where you play or make a level from the working directory */
 					}
@@ -299,9 +303,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					downloaded_thumbnail_sprite = scr_initialize_character_sprite("stand", downloaded_thumbnail_sprite);
 					downloaded_thumbnail_sprite = scr_initialize_character_sprite("character_select_portrait", downloaded_thumbnail_sprite);
 					
-					if (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+					if (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 					{
-						ini_open(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini");
+						ini_open(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini");
 						global.level_description = ini_read_string("info", "character_description", "");
 						masked_username = ini_read_string("info", "username", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -409,9 +413,9 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 		
 		#region /* If level existed and is downloaded, show this menu */
-		if (file_exists(cache_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
-		|| (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
-		|| (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+		if (file_exists(download_temp_path + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+		|| (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+		|| (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 		{
 			
 			if (what_kind_of_id == "level")
@@ -479,7 +483,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				/* Draw Level Name */ draw_set_halign(fa_center); scr_draw_text_outlined(display_get_gui_width() * 0.5, draw_name_y, string(masked_level_name), global.default_text_size * 1.9, c_black, c_white, 1);
 				
 				/* Level is downloaded, so you get a choice if you want to play, make, or go back to custom level select*/
-				if (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				if (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				&& (!inform_about_report_feature)
 				{
 					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "searched_file_downloaded_play", "searched_file_downloaded_play");
@@ -489,7 +493,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				else
 				
 				/* Level is only downloaded to cache directory, now you get to choose if you want to play from cache directory or if you want to download to working directory */
-				if (file_exists(cache_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				if (file_exists(download_temp_path + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				&& (!inform_about_report_feature)
 				{
 					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_play_y, l10n_text("Play"), "play_from_cache", "play_from_cache");
@@ -520,15 +524,15 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (!inform_about_report_feature)
 			{
 				if (what_kind_of_id == "level")
-				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				|| (what_kind_of_id == "character")
-				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{
 					draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "searched_file_downloaded_delete", "searched_file_downloaded_delete", c_red);
 					draw_sprite_ext(spr_icon_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
 				}
 				if (what_kind_of_id == "character")
-				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{
 					var back_to_list_x = display_get_gui_width() * 0.5 - 185;
 					var back_to_list_y = searched_file_downloaded_delete_y - 42;
@@ -591,13 +595,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				&& (key_a_pressed)
 				{
 					menu_delay = 3;
-					ini_open(working_directory + "save_file/config.ini");
+					ini_open(game_save_id + "save_file/config.ini");
 					ini_write_real("config", "inform_about_report_feature", false);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					inform_about_report_feature = false;
 					if (what_kind_of_id == "level")
 					{
-						if (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+						if (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 						{
 							menu = "searched_file_downloaded_play"; /* Go to the screen where you play or make a level from the working directory */
 						}
@@ -641,13 +645,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					global.go_to_menu_when_going_back_to_title = "online_download_list_load"; /* If you are playing from Online Level List, game needs to remember this so that you go back to Online Level List after exiting level */
 					can_navigate = false;
 					menu_delay = 9999;
-					if (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+					if (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 					{
-						global.use_cache_or_working = working_directory; /* If the level is saved to working directory, then play from working directory */
+						global.use_cache_or_working = game_save_id; /* If the level is saved to working directory, then play from working directory */
 					}
 					else
 					{
-						global.use_cache_or_working = cache_directory; /* If the level is saved to cache directory, then play from cache directory */
+						global.use_cache_or_working = download_temp_path; /* If the level is saved to cache directory, then play from cache directory */
 					}
 				}
 			}
@@ -657,7 +661,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "level")
 			&& (!inform_about_report_feature)
-			&& (!file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+			&& (!file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_make_y, display_get_gui_width() * 0.5 + 185, searched_file_make_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
@@ -670,8 +674,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 						/* Download the level to working directory */
 						have_downloaded_from_server = true;
 						menu_delay = 3;
-						global.use_cache_or_working = working_directory;
-						scr_copy_move_files(cache_directory + "custom_" + string(what_kind_of_id) + "s/" + global.level_name, working_directory + "custom_" + string(what_kind_of_id) + "s/" + global.level_name, true);
+						global.use_cache_or_working = game_save_id;
+						scr_copy_move_files(download_temp_path + "custom_" + string(what_kind_of_id) + "s/" + global.level_name, game_save_id + "custom_" + string(what_kind_of_id) + "s/" + global.level_name, true);
 						menu = "searched_file_downloaded_play";
 					}
 				}
@@ -682,7 +686,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			if (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (what_kind_of_id == "level")
 			&& (!inform_about_report_feature)
-			&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+			&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 			{
 				if (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 185, searched_file_make_y, display_get_gui_width() * 0.5 + 185, searched_file_make_y + 41))
 				&& (global.controls_used_for_navigation == "mouse")
@@ -694,7 +698,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					global.doing_clear_check_level = false;
 					global.actually_play_edited_level = false;
 					global.play_edited_level = false;
-					global.use_cache_or_working = working_directory;
+					global.use_cache_or_working = game_save_id;
 					can_navigate = false;
 					menu_delay = 9999;
 				}
@@ -713,13 +717,13 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (!inform_about_report_feature)
 			{
 				if (what_kind_of_id == "level")
-				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				{
 					if (delete_file_after_download)
 					{
-						directory_destroy(working_directory + "custom_levels/" + global.level_name);
+						directory_destroy(game_save_id + "custom_levels/" + global.level_name);
 					}
-					ini_open(working_directory + "save_file/custom_level_save.ini");
+					ini_open(game_save_id + "save_file/custom_level_save.ini");
 					ini_section_delete(global.level_name);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					global.select_level_index = 0;
@@ -727,10 +731,10 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				}
 				else
 				if (what_kind_of_id == "character")
-				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{
-					directory_destroy(working_directory + "custom_characters/" + string(downloaded_character_name));
-					directory_destroy(cache_directory + "custom_characters/" + string(downloaded_character_name));
+					directory_destroy(game_save_id + "custom_characters/" + string(downloaded_character_name));
+					directory_destroy(download_temp_path + "custom_characters/" + string(downloaded_character_name));
 					
 					#region /* After deleting character, go to previous character, so you don't accidentally go to a undefined character */
 					global.character_index[fixed_player - 1] = clamp(global.character_index[fixed_player - 1] - 1, 0, ds_list_size(global.all_loaded_characters) - 1);
@@ -764,7 +768,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!inform_about_report_feature)
 			{
-				global.use_cache_or_working = working_directory;
+				global.use_cache_or_working = game_save_id;
 				select_custom_level_menu_open = false;
 				/* Don't set the "select level index" or "level name" here, because we want it saved still */
 				menu = "online_download_list_load"; /* Go back to online level list */
@@ -797,7 +801,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				menu_delay = 3;
 				if (menu == "searched_file_downloaded_back_to_list")
 				{
-					if (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+					if (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 					{
 						menu = "searched_file_downloaded_play";
 					}
@@ -873,7 +877,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 				else
 				if (menu == "searched_file_downloaded_report")
 				{
-					if (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+					if (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 					{
 						menu = "searched_file_downloaded_delete";
 					}
@@ -986,8 +990,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		#region /* The level have been successfully downloaded, so delete temporary folders and zip files now */
 		if (delete_file_after_download)
 		{
-			file_delete(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy the unzipped file first */
-			directory_destroy(cache_directory + "\\downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
+			file_delete(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy the unzipped file first */
+			directory_destroy(download_temp_path + "downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
 		}
 		#endregion /* The level have been successfully downloaded, so delete temporary folders and zip files now END */
 		
@@ -1159,8 +1163,8 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		{
 			menu_delay = 3;
-			file_delete(cache_directory + "\\downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy any leftover files in temporary folder */
-			directory_destroy(cache_directory + "\\downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
+			file_delete(download_temp_path + "downloaded_" + string(what_kind_of_id) + "/" + string_upper(search_id) + ".zip"); /* Destroy any leftover files in temporary folder */
+			directory_destroy(download_temp_path + "downloaded_" + string(what_kind_of_id)); /* Destroy the now empty directory, it's only temporary */
 			menu = "online_download_list_load";
 		}
 	}

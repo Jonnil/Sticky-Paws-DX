@@ -404,9 +404,7 @@ function scr_draw_online_download_list()
 				global.http_request_info = http_request("https://" + global.base_url + "/metadata/" + string(content_type) + "s/" + string_upper(currently_selected_id), "GET", map, "");
 			}
 			
-			if (info_data == undefined)
-			&& (in_online_download_list_menu)
-			{
+			if (info_data == undefined) && (in_online_download_list_menu) {
 				/* If there is an online download list information loaded, interpret that as a struct using "json parse" */
 				if (global.online_download_list_info != "")
 				&& (global.online_download_list_info != "HTTP request exception")
@@ -425,9 +423,10 @@ function scr_draw_online_download_list()
 					}
 				}
 				
+				/* CRASH STARTS HERE */
+				
 				/* Check if it's an array */
-				if (is_array(info_data))
-				{
+				if (is_array(info_data)) {
 					/* Get the number of items in the JSON array */
 					var num_info_items = array_length(info_data);
 					for(var i = 0; i < num_info_items; i++;)
@@ -444,13 +443,16 @@ function scr_draw_online_download_list()
 							draw_download_name = string(item.name);
 						}
 						
-						/* Get the thumbnail data */
-						var buffer = buffer_base64_decode(item.thumbnail);
-						buffer_save(buffer, cache_directory + "thumbnail.png");
-						spr_download_list_thumbnail = sprite_add(cache_directory + "thumbnail.png", 0, false, true, 0, 0);
+						if (spr_download_list_thumbnail == noone) { /* Get the thumbnail data */
+							var downloaded_thumbnail_path = cache_directory + "thumbnail.png"; /* On Nintendo Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
+							var buffer = buffer_base64_decode(item.thumbnail);
+							buffer_save(buffer, downloaded_thumbnail_path);
+							spr_download_list_thumbnail = sprite_add(downloaded_thumbnail_path, 0, false, true, 0, 0);
+						}
 					}
 				}
 			}
+			/* CRASH ENDS HERE */
 			
 			if (is_array(data) && array_length(data) > 0 && info_data == undefined)
 			{

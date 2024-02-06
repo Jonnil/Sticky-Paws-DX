@@ -28,12 +28,8 @@ if (global.go_to_menu_when_going_back_to_title == "online_download_list_load")
 || (global.automatically_play_downloaded_level)
 && (menu_delay == 0)
 {
-	directory_destroy(cache_directory + "custom_levels/" + global.level_name + "/background");
-	directory_destroy(cache_directory + "custom_levels/" + global.level_name + "/data");
-	directory_destroy(cache_directory + "custom_levels/" + global.level_name + "/sound");
-	directory_destroy(cache_directory + "custom_levels/" + global.level_name + "/tilesets");
-	directory_destroy(cache_directory + "custom_levels/" + global.level_name);
-	global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
+	directory_destroy(cache_directory + "custom_levels/" + global.level_name); /* Delete the temporary downloaded level. On Nintendo Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
+	global.use_cache_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
 	select_custom_level_menu_open = false;
 	menu = "online_download_list_load";
 	global.go_to_menu_when_going_back_to_title = "";

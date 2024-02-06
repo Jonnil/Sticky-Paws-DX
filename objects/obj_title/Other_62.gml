@@ -15,13 +15,15 @@ if (async_load[? "id"] == global.http_request_id)
 		
 		/* Save the decoded data to a local file (with the .zip extension) */
 		var buffer = buffer_base64_decode(file_data_base64);
+		var download_temp_path = cache_directory; /* On Nintendo Switch if you don't enable "Cache storage data save area size" in AuthoringEditor, you can't use "cache directory" without crashing the game */
+		
 		switch (content_type)
 		{
 			case "level":
 			if (response_json != undefined)
 			&& (!in_online_download_list_load_menu)
 			{
-				var file_save_location = cache_directory + "downloaded_level/" + string(response_json[? "name"]) + ".zip";
+				var file_save_location = download_temp_path + "downloaded_level/" + string(response_json[? "name"]) + ".zip";
 				if (response_json[? "name"] == undefined)
 				&& (search_for_id_still)
 				{
@@ -41,7 +43,7 @@ if (async_load[? "id"] == global.http_request_id)
 			if (response_json != undefined)
 			&& (!in_online_download_list_load_menu)
 			{
-				var file_save_location = cache_directory + "downloaded_character/" + string(response_json[? "name"]) + ".zip";
+				var file_save_location = download_temp_path + "downloaded_character/" + string(response_json[? "name"]) + ".zip";
 				if (response_json[? "name"] == undefined)
 				&& (search_for_id_still)
 				{
