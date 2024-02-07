@@ -3446,6 +3446,7 @@
     {"id":{"name":"snd_wallkick","path":"sounds/snd_wallkick/snd_wallkick.yy",},},
     {"id":{"name":"scr_update_all_music","path":"scripts/scr_update_all_music/scr_update_all_music.yy",},},
     {"id":{"name":"obj_question_block","path":"objects/obj_question_block/obj_question_block.yy",},},
+    {"id":{"name":"scr_initialize_effects","path":"scripts/scr_initialize_effects/scr_initialize_effects.yy",},},
     {"id":{"name":"obj_hard_block","path":"objects/obj_hard_block/obj_hard_block.yy",},},
     {"id":{"name":"obj_company_logo","path":"objects/obj_company_logo/obj_company_logo.yy",},},
     {"id":{"name":"instance_nth_nearest","path":"scripts/instance_nth_nearest/instance_nth_nearest.yy",},},

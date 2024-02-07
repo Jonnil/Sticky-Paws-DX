@@ -1,0 +1,50 @@
+function scr_initialize_effects()
+{
+	
+	#region /* Rain Effect */
+	if (global.effect_rain) {
+		if (!part_system_exists(part_system_rain)) {
+			part_system_rain = part_system_create(par_rain_level);
+			if (!audio_is_playing(snd_rain)) {
+				scr_audio_play(snd_rain, volume_source.ambient); /* Play rain sound */
+			}
+		}
+	}
+	#endregion /* Rain Effect END */
+	
+	#region /* Snow Effect */
+	if (global.effect_snow) {
+		if (!part_system_exists(part_system_snow)) {
+			part_system_snow = part_system_create(par_snow);
+			//if (!audio_is_playing(snd_snow))
+			//{
+			//	scr_audio_play(snd_snow, volume_source.ambient); /* Play snow sound */
+			//}
+		}
+	}
+	#endregion /* Snow Effect END */
+	
+	#region /* Wind Effect */
+	if (global.effect_wind) {
+		if (!layer_exists("WindEffectLayer")) {
+			layer_create(-100, "WindEffectLayer");
+			var _fx_wind = fx_create("_effect_windblown_particles");
+			fx_set_parameter(_fx_wind, "param_num_particles", 15 /* 30 */);
+			fx_set_parameter(_fx_wind, "param_particle_spawn_all_at_start", false);
+			fx_set_parameter(_fx_wind, "param_particle_initial_velocity_range_x_min", -50);
+			fx_set_parameter(_fx_wind, "param_particle_initial_velocity_range_y_min", -50);
+			fx_set_parameter(_fx_wind, "param_trails_only", true);
+			fx_set_parameter(_fx_wind, "param_trail_chance", 100);
+			fx_set_parameter(_fx_wind, "param_blower_force_min", 2);
+			fx_set_parameter(_fx_wind, "param_blower_force_max", 7);
+			fx_set_parameter(_fx_wind, "param_grav_accel", 150);
+			layer_set_fx("WindEffectLayer", _fx_wind);
+		}
+	}
+	else
+	if (layer_exists("WindEffectLayer")) {
+		layer_destroy("WindEffectLayer")
+	}
+	#endregion /* Wind Effect END */
+	
+}

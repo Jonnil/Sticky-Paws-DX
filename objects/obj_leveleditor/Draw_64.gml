@@ -3,6 +3,15 @@ if (!global.actually_play_edited_level)
 	
 	if (quit_level_editor == 0)
 	{
+		
+		#region /* Show a pause button on screen when using the mouse */
+		if (!pause && !in_modify_object_menu && global.controls_used_for_navigation == "mouse")
+		{
+			pause_button_y = display_get_gui_height() - 64 - 42 + icon_at_bottom_y;
+			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() - 185, pause_button_y,,, 0.5, 1, 185, 42, l10n_text("Pause"), "pause", "pause");
+		}
+		#endregion /* Show a pause button on screen when using the mouse END */
+		
 		scr_draw_list_of_placable_objects(); /* List of Placable Objects */
 		
 		/* Draw a cursor in the center of the screen, so level designer can visually see where the center of the screen is */
@@ -625,16 +634,6 @@ if (!global.actually_play_edited_level)
 			draw_set_valign(fa_middle);
 		}
 		#endregion /* Object Specific Help END */
-		
-		#region /* Show a pause button on screen when using the mouse */
-		if (global.controls_used_for_navigation == "mouse")
-		&& (!pause)
-		&& (!in_modify_object_menu)
-		{
-			pause_button_y = display_get_gui_height() - 64 - 42 + icon_at_bottom_y;
-			draw_menu_button_sprite(spr_menu_button, display_get_gui_width() - 185, pause_button_y,,, 0.5, 1, 185, 42, l10n_text("Pause"), "pause", "pause");
-		}
-		#endregion /* Show a pause button on screen when using the mouse END */
 		
 		if (global.controls_used_for_navigation != "gamepad")
 		&& (!navigate_camera_with_arrowkeys)

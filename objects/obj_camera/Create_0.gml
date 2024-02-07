@@ -362,29 +362,16 @@ if (!global.trigger_ending)
 #endregion /* Start Timer END */
 
 #region /* Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default */
-if (global.number_of_audio_channels == 0) {
-	audio_channel_num(32);
-}
-else if (global.number_of_audio_channels == 1) {
-	audio_channel_num(64);
-}
-else if (global.number_of_audio_channels == 2) {
-	audio_channel_num(96);
-}
-else if (global.number_of_audio_channels == 3) {
-	audio_channel_num(128);
-}
-else if (global.number_of_audio_channels == 4) {
-	audio_channel_num(160);
-}
-else if (global.number_of_audio_channels == 5) {
-	audio_channel_num(192);
-}
-else if (global.number_of_audio_channels == 6) {
-	audio_channel_num(224);
-}
-else if (global.number_of_audio_channels == 7) {
-	audio_channel_num(256);
+switch(global.number_of_audio_channels)
+{
+	case 0: audio_channel_num(32);
+	case 1: audio_channel_num(64);
+	case 2: audio_channel_num(96);
+	case 3: audio_channel_num(128);
+	case 4: audio_channel_num(160);
+	case 5: audio_channel_num(192);
+	case 6: audio_channel_num(224);
+	case 7: audio_channel_num(256);
 }
 #endregion /* Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default END */
 
@@ -409,3 +396,5 @@ else
 best_time_text = l10n_text("Best") + ": " + string(timeattack_record_minute_text)
 										  + string_replace_all(string_format(timeattack_record_second, 2, 0), " ", "0") + "."
 										  + string_replace_all(string_format(timeattack_record_millisecond, 2, 0), " ", "0");
+
+scr_initialize_effects();

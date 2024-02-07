@@ -498,6 +498,7 @@
     {"name":"snd_wallkick","order":139,"path":"sounds/snd_wallkick/snd_wallkick.yy",},
     {"name":"scr_update_all_music","order":72,"path":"scripts/scr_update_all_music/scr_update_all_music.yy",},
     {"name":"obj_question_block","order":4,"path":"objects/obj_question_block/obj_question_block.yy",},
+    {"name":"scr_initialize_effects","order":82,"path":"scripts/scr_initialize_effects/scr_initialize_effects.yy",},
     {"name":"obj_hard_block","order":6,"path":"objects/obj_hard_block/obj_hard_block.yy",},
     {"name":"obj_company_logo","order":13,"path":"objects/obj_company_logo/obj_company_logo.yy",},
     {"name":"instance_nth_nearest","order":52,"path":"scripts/instance_nth_nearest/instance_nth_nearest.yy",},

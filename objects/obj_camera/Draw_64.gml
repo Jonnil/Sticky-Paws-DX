@@ -29,7 +29,12 @@ if (global.assist_enable) {
 #region /* Show Controls */
 if (os_type != os_ios && os_type != os_android) {
 	for (var i = 1; i <= global.max_players; i += 1) {
-		scr_draw_show_controls(i);
+		if (!global.goal_active)
+		&& (global.player_can_play[i])
+		&& (global.player_show_controls[i] != 0)
+		&& (player_show_controls_alpha[i] != 0) {
+			scr_draw_show_controls(i);
+		}
 	}
 }
 #endregion /* Show Controls END */
@@ -162,8 +167,7 @@ scr_draw_darken_screen_when_window_is_unfocused();
 scr_draw_cursor_mouse();
 
 #region /* Make the screen completly black in Draw GUI, so there is no chance to see something you're not supposed to see */
-if (black_screen_gui_alpha > 0.2)
-|| (pause_playtest) {
+if (black_screen_gui_alpha > 0.2 || pause_playtest) {
 	if (global.enable_transitions && !pause_playtest) {
 		draw_set_alpha(black_screen_gui_alpha);
 		draw_rectangle_color(0, 0, get_window_width * 2, get_window_height * 2, c_black, c_black, c_black, c_black, false);

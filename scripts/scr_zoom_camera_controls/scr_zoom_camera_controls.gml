@@ -5,10 +5,8 @@ function scr_zoom_camera_controls()
 	var key_in_hold = noone;
 	var key_out_hold = noone;
 	
-	for(var i = 1; i <= global.max_players; i += 1)
-	{
-		if (global.player_can_play[i])
-		{
+	for(var i = 1; i <= global.max_players; i += 1) {
+		if (global.player_can_play[i]) {
 			var key_in_hold = scr_key_initialize(key_player_zoom_in_hold[i], 0, i, action.zoom_in);
 			var key_out_hold = scr_key_initialize(key_player_zoom_out_hold[i], 0, i, action.zoom_out);
 			break; /* Exit the loop if a player can play */
@@ -22,8 +20,7 @@ function scr_zoom_camera_controls()
 	var display_width = display_get_gui_width();
 	var display_height = display_get_gui_height();
 	
-	if (room_width < display_width || room_height < display_height) /* Check if either the room width or height is less than the screen resolution */
-	{
+	if (room_width < display_width || room_height < display_height) { /* Check if either the room width or height is less than the screen resolution */
 		/* Calculate proportional maximum zoom based on both room width and height */
 		var zoom_factor_width = room_width / display_width;
 		var zoom_factor_height = room_height / display_height;
@@ -32,8 +29,7 @@ function scr_zoom_camera_controls()
 		var dynamic_zoom_maximum = base_zoom_maximum * zoom_factor; /* Calculate dynamic maximum zoom */
 		var zoom_maximum = dynamic_zoom_maximum; /* Set the maximum zoom to the calculated value */
 	}
-	else
-	{
+	else {
 		var zoom_maximum = base_zoom_maximum; /* Use the base maximum zoom if both room width and height are equal to or greater than the screen resolution */
 	}
 	
@@ -48,22 +44,17 @@ function scr_zoom_camera_controls()
 	camera_set_view_size(view_camera[view_current], new_width, new_height);
 	
 	#region /* Zoom in and out controls */
-	if (key_in_hold && !key_out_hold)
-	{
+	if (key_in_hold && !key_out_hold) {
 		global.deactivate_timer = 999; /* Force update deactivate region */
-		if (zoom_variable > zoom_minimum)
-		{
-			if (room == rm_world_map)
-			{
+		if (zoom_variable > zoom_minimum) {
+			if (room == rm_world_map) {
 				global.zoom_world_map -= zoom_speed;
 			}
-			else
-			{
+			else {
 				global.zoom_level -= zoom_speed;
 			}
 		}
-		else
-		{
+		else {
 			zoom_border_lerp = 1;
 		}
 	}
@@ -71,19 +62,15 @@ function scr_zoom_camera_controls()
 	if (key_out_hold && !key_in_hold)
 	{
 		global.deactivate_timer = 999; /* Force update deactivate region */
-		if (zoom_variable < zoom_maximum)
-		{
-			if (room == rm_world_map)
-			{
+		if (zoom_variable < zoom_maximum) {
+			if (room == rm_world_map) {
 				global.zoom_world_map += zoom_speed;
 			}
-			else
-			{
+			else {
 				global.zoom_level += zoom_speed;
 			}
 		}
-		else
-		{
+		else {
 			zoom_border_lerp = 1;
 		}
 	}
