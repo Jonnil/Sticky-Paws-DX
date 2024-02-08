@@ -83,27 +83,28 @@ if (!hide_menu_for_clean_screenshots)
 	|| (menu == "quit")
 	|| (menu == "report")
 	{
-		if (global.character_select_in_this_menu == "level_editor")
-		&& (global.search_id != "")
-		{
-			var hide_menu_for_clean_screenshots_y = get_window_height - 64;
+		/* Show Controls when pausing the game, so player can always know how to control the game at any point they pause */
+		if (os_type != os_ios && os_type != os_android) {
+		    for (var i = 1; i <= global.max_players; i++) {
+		        if (global.player_can_play[i]) {
+		            scr_draw_show_controls(i,, 1, 1);
+		        }
+		    }
 		}
-		else
-		{
-			var hide_menu_for_clean_screenshots_y = get_window_height - 32;
-		}
+		
+		var hide_menu_for_clean_screenshots_y = get_window_height - 32 - show_player_controls_y[1] - 8;
 		if (global.controls_used_for_navigation == "gamepad")
 		|| (global.always_show_gamepad_buttons)
 		{
-			scr_draw_gamepad_buttons(gp_face4, 32, hide_menu_for_clean_screenshots_y, 0.75, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha, 1, 1, global.pause_player + 1);
+			scr_draw_gamepad_buttons(gp_face4, 32, hide_menu_for_clean_screenshots_y, 0.4, c_white, fade_in_pause_alpha, 1, 1, global.pause_player + 1);
 		}
 		else
 		{
-			draw_sprite_ext(spr_keyboard_keys, ord("Y"), 32, hide_menu_for_clean_screenshots_y, 0.75, 0.75, 0, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
+			draw_sprite_ext(spr_keyboard_keys, ord("Y"), 32, hide_menu_for_clean_screenshots_y, 0.4, 0.4, 0, c_white, fade_in_pause_alpha);
 		}
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		scr_draw_text_outlined(64, hide_menu_for_clean_screenshots_y, ": " + l10n_text("Hide menu for clean screenshots"), global.default_text_size, c_black, c_white, hide_menu_for_clean_screenshots_alpha * fade_in_pause_alpha);
+		scr_draw_text_outlined(54, hide_menu_for_clean_screenshots_y, ": " + l10n_text("Hide menu for clean screenshots"), global.default_text_size * 0.75, c_black, c_white, fade_in_pause_alpha);
 	}
 }
 #endregion /* Hide menu for clean screenshots text END */
@@ -231,7 +232,7 @@ if (!hide_menu_for_clean_screenshots)
 			if (global.character_select_in_this_menu == "level_editor")
 			&& (global.search_id != "")
 			{
-				draw_menu_button(0, display_get_gui_height() - 42, l10n_text("Report"), "report", "report");
+				draw_menu_button_sprite(spr_menu_button, 0, display_get_gui_height() - 42,,, 0.5, 1, 185, 42, l10n_text("Report"), "report", "report");
 				draw_sprite_ext(spr_icon_report, 0, 16, display_get_gui_height() - 42 + 20, 1, 1, 0, c_white, 1);
 			}
 		}

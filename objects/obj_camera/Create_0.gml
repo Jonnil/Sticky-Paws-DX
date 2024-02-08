@@ -277,28 +277,7 @@ for(var i = 1; i <= global.max_players; i += 1) {
 	key_player_zoom_out_release[i] = noone;
 	player_motor_speed[i] = 0;
 	player_vibration_active[i] = 0;
-	
-	#region /* Show keys x positions */
-	/* For some reason, code within "Show keys x positions" lags the Nintendo Switch version */
-	player_show_dive_key_x[i] = 32;
-	player_show_jump_key_x[i] = string_width(l10n_text("Pounce")) + 75;
-	player_show_crouch_key_x[i] = player_show_jump_key_x[i] + string_width(l10n_text("Jump")) + 37;
-	if (!global.player_run_toggle[i]) {
-		player_show_run_key_x[i] = player_show_crouch_key_x[i] + string_width(l10n_text("Crouch")) + 37;
-		player_show_left_key_x[i] = player_show_run_key_x[i] + string_width(l10n_text("Run")) + 37;
-		player_show_right_key_x[i] = player_show_left_key_x[i] + string_width(l10n_text("Left")) + 37;
-		player_show_down_key_x[i] = player_show_right_key_x[i] + string_width(l10n_text("Right")) + 37;
-		player_show_up_key_x[i] = player_show_down_key_x[i] + string_width(l10n_text("Down")) + 37;
-	}
-	else {
-		player_show_run_key_x[i] = -999; /* Hide the run key if you have "Always Run" turned on */
-		player_show_left_key_x[i] = player_show_crouch_key_x[i] + string_width(l10n_text("Crouch")) + 37;
-		player_show_right_key_x[i] = player_show_left_key_x[i] + string_width(l10n_text("Left")) + 37;
-		player_show_down_key_x[i] = player_show_right_key_x[i] + string_width(l10n_text("Right")) + 37;
-		player_show_up_key_x[i] = player_show_down_key_x[i] + string_width(l10n_text("Down")) + 37;
-	}
-	#endregion /* Show keys x positions END */
-	
+	scr_set_show_controls_x(i);
 	player_show_controls_timer[i] = 0;
 	player_show_controls_alpha[i] = -10;
 	show_run_toggle_for_player[i] = 0;
@@ -364,14 +343,14 @@ if (!global.trigger_ending)
 #region /* Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default */
 switch(global.number_of_audio_channels)
 {
-	case 0: audio_channel_num(32);
-	case 1: audio_channel_num(64);
-	case 2: audio_channel_num(96);
-	case 3: audio_channel_num(128);
-	case 4: audio_channel_num(160);
-	case 5: audio_channel_num(192);
-	case 6: audio_channel_num(224);
-	case 7: audio_channel_num(256);
+	case 0: audio_channel_num(32);break;
+	case 1: audio_channel_num(64);break;
+	case 2: audio_channel_num(96);break;
+	case 3: audio_channel_num(128);break;
+	case 4: audio_channel_num(160);break;
+	case 5: audio_channel_num(192);break;
+	case 6: audio_channel_num(224);break;
+	case 7: audio_channel_num(256);break;
 }
 #endregion /* Limit the number of sound channels, should be on 128 for best performance as default, but let the player change this in Audio Settings. From 32 to 256, 128 is default END */
 

@@ -7,6 +7,20 @@ scr_set_menu_font_color();
 scr_set_controls_used_to_navigate();
 scr_menu_navigation_initialization(0);
 
+for(var p = 1; p <= global.max_players; p += 1) {
+	if (global.player_can_play[p])
+	{
+		player_show_controls_alpha[p] = 1;
+	}
+	else
+	{
+		player_show_controls_alpha[p] = 0;
+	}
+}
+
+set_pause_button_y_positions();
+scr_set_show_controls_y(22, true);
+
 fade_in_pause_alpha = lerp(fade_in_pause_alpha, 1, 0.1);
 
 if (menu_delay > 0)
@@ -26,29 +40,6 @@ if (global.narrator >= 0)
 }
 
 #region /* Hide menu for clean screenshots */
-if (menu == "continue") /* Can only hide menu when on these buttons specifically */
-|| (menu == "change_character")
-|| (menu == "edit_level")
-|| (menu == "options")
-|| (menu == "restart")
-|| (menu == "quit")
-|| (menu == "report")
-{
-	if (hide_menu_for_clean_screenshots_timer < 60 * 3)
-	{
-		hide_menu_for_clean_screenshots_timer ++;
-	}
-}
-else
-{
-	hide_menu_for_clean_screenshots_alpha = 0;
-	hide_menu_for_clean_screenshots_timer = 0;
-}
-if (hide_menu_for_clean_screenshots_timer >= 60 * 3)
-{
-	hide_menu_for_clean_screenshots_alpha = lerp(hide_menu_for_clean_screenshots_alpha, 1, 0.01);
-}
-
 if (keyboard_check_pressed(ord("Y")))
 || (gamepad_button_check_pressed(global.player_slot[1], gp_face4))
 || (gamepad_button_check_pressed(global.player_slot[2], gp_face4))
@@ -719,7 +710,7 @@ if (!hide_menu_for_clean_screenshots)
 			if (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			|| (mouse_check_button_released(mb_left))
-			&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 42, get_window_width + 370, get_window_height))
+			&& (point_in_rectangle(mouse_get_x, mouse_get_y, 0, get_window_height - 42, get_window_width + 185, get_window_height))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
 			{
 				menu_delay = 3;

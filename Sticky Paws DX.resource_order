@@ -37,6 +37,7 @@
   ],
   "ResourceOrderSettings": [
     {"name":"obj_map_palmtree","order":14,"path":"objects/obj_map_palmtree/obj_map_palmtree.yy",},
+    {"name":"scr_set_show_controls_y","order":83,"path":"scripts/scr_set_show_controls_y/scr_set_show_controls_y.yy",},
     {"name":"spr_boss_laugh","order":9,"path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},
     {"name":"spr_arrow_sign_small","order":53,"path":"sprites/spr_arrow_sign_small/spr_arrow_sign_small.yy",},
     {"name":"spr_hard_block_alternate","order":49,"path":"sprites/spr_hard_block_alternate/spr_hard_block_alternate.yy",},
@@ -152,7 +153,9 @@
     {"name":"scr_debug_screen","order":53,"path":"scripts/scr_debug_screen/scr_debug_screen.yy",},
     {"name":"scr_start_intro_animations","order":34,"path":"scripts/scr_start_intro_animations/scr_start_intro_animations.yy",},
     {"name":"obj_horizontal_rope","order":5,"path":"objects/obj_horizontal_rope/obj_horizontal_rope.yy",},
+    {"name":"set_pause_button_y_positions","order":85,"path":"scripts/set_pause_button_y_positions/set_pause_button_y_positions.yy",},
     {"name":"spr_clipper","order":61,"path":"sprites/spr_clipper/spr_clipper.yy",},
+    {"name":"scr_set_show_controls_x","order":84,"path":"scripts/scr_set_show_controls_x/scr_set_show_controls_x.yy",},
     {"name":"draw_menu_slider","order":6,"path":"scripts/draw_menu_slider/draw_menu_slider.yy",},
     {"name":"obj_water_level_height","order":11,"path":"objects/obj_water_level_height/obj_water_level_height.yy",},
     {"name":"spr_cracks","order":99,"path":"sprites/spr_cracks/spr_cracks.yy",},

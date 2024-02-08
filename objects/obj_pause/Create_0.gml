@@ -3,6 +3,18 @@ quit_nevermind_y = 0;
 
 #region /* Set variables for character select in pause menu */
 for(var p = 1; p <= global.max_players; p += 1) {
+	show_player_controls_y[p] = -64;
+	
+	if (global.character_select_in_this_menu == "level_editor" && global.search_id != "")
+	{
+		var show_controls_x = 128 + 74;
+	}
+	else
+	{
+		var show_controls_x = 32;
+	}
+	scr_set_show_controls_x(p, show_controls_x);
+	
 	player_accept_selection[p] = -1;
 	player_automatically_join[p] = false;
 	player_menu[p] = "select_character";
@@ -45,46 +57,7 @@ room_speed = global.max_fps;
 
 show_loading_icon = false;
 
-var get_window_height = display_get_gui_height();
-
-continue_y = get_window_height * 0.5 - 42;
-change_character_y = get_window_height * 0.5;
-if (global.character_select_in_this_menu == "level_editor")
-&& (!file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
-&& (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
-|| (global.character_select_in_this_menu == "level_editor")
-&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
-{
-	edit_level_y = get_window_height * 0.5 + (42);
-	option_y = get_window_height * 0.5 + (42 * 2);
-	if (room == rm_leveleditor)
-	|| (global.pause_room == rm_leveleditor)
-	{
-		restart_y = get_window_height * 0.5 + (42 * 3);
-		quit_y = get_window_height * 0.5 + (42 * 4);
-	}
-	else
-	{
-		restart_y = -999;
-		quit_y = get_window_height * 0.5 + (42 * 3);
-	}
-}
-else
-{
-	edit_level_y = -999;
-	option_y = get_window_height * 0.5 + (42);
-	if (room == rm_leveleditor)
-	|| (global.pause_room == rm_leveleditor)
-	{
-		restart_y = get_window_height * 0.5 + (42 * 2);
-		quit_y = get_window_height * 0.5 + (42 * 3);
-	}
-	else
-	{
-		restart_y = -999;
-		quit_y = get_window_height * 0.5 + (42 * 2);
-	}
-}
+set_pause_button_y_positions();
 
 #region /* Mouse x and mouse y initializing */
 mx = mouse_x;
@@ -199,8 +172,6 @@ broadcast_settings_y = 40 * 16;
 how_to_play_y = 40 * 17;
 left_sidebar_x =-400;
 hide_menu_for_clean_screenshots = false;
-hide_menu_for_clean_screenshots_alpha = 0;
-hide_menu_for_clean_screenshots_timer = 0;
 
 #region /* Load Custom Title Background */
 title_bg_layer = 1; /* Selected Title Background Layer to change */

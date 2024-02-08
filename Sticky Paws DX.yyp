@@ -2963,6 +2963,7 @@
   "resources": [
     {"id":{"name":"obj_map_palmtree","path":"objects/obj_map_palmtree/obj_map_palmtree.yy",},},
     {"id":{"name":"spr_player_stand","path":"sprites/spr_player_stand/spr_player_stand.yy",},},
+    {"id":{"name":"scr_set_show_controls_y","path":"scripts/scr_set_show_controls_y/scr_set_show_controls_y.yy",},},
     {"id":{"name":"spr_boss_laugh","path":"sprites/spr_boss_laugh/spr_boss_laugh.yy",},},
     {"id":{"name":"spr_arrow_sign_small","path":"sprites/spr_arrow_sign_small/spr_arrow_sign_small.yy",},},
     {"id":{"name":"spr_hard_block_alternate","path":"sprites/spr_hard_block_alternate/spr_hard_block_alternate.yy",},},
@@ -3086,7 +3087,9 @@
     {"id":{"name":"scr_debug_screen","path":"scripts/scr_debug_screen/scr_debug_screen.yy",},},
     {"id":{"name":"scr_start_intro_animations","path":"scripts/scr_start_intro_animations/scr_start_intro_animations.yy",},},
     {"id":{"name":"obj_horizontal_rope","path":"objects/obj_horizontal_rope/obj_horizontal_rope.yy",},},
+    {"id":{"name":"set_pause_button_y_positions","path":"scripts/set_pause_button_y_positions/set_pause_button_y_positions.yy",},},
     {"id":{"name":"spr_clipper","path":"sprites/spr_clipper/spr_clipper.yy",},},
+    {"id":{"name":"scr_set_show_controls_x","path":"scripts/scr_set_show_controls_x/scr_set_show_controls_x.yy",},},
     {"id":{"name":"draw_menu_slider","path":"scripts/draw_menu_slider/draw_menu_slider.yy",},},
     {"id":{"name":"obj_water_level_height","path":"objects/obj_water_level_height/obj_water_level_height.yy",},},
     {"id":{"name":"spr_cracks","path":"sprites/spr_cracks/spr_cracks.yy",},},

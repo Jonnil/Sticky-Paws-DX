@@ -1,4 +1,4 @@
-if (distance_to_point(other.x, other.y) < move_speed + 3)
+if (distance_to_point(other.x, other.y) < move_speed + 4)
 && (delay == 0)
 && (enter_level_delay == 0)
 && (other.clear_rate != "clear")
@@ -11,7 +11,7 @@ if (distance_to_point(other.x, other.y) < move_speed + 3)
 	enter_level_y = other.y + 5;
 }
 else
-if (distance_to_point(other.x, other.y) < move_speed + 3)
+if (distance_to_point(other.x, other.y) < move_speed + 4)
 && (delay == 0)
 && (enter_level_delay == 0)
 && (other.clear_rate == "clear")
