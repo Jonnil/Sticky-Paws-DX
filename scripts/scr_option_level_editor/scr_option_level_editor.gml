@@ -5,8 +5,8 @@ function scr_option_level_editor()
 	
 	if (pause)
 	{
-		var level_editor_option_x = 500;
-		var option_level_editor_right_arrow_x = 550;
+		var level_editor_option_x = (get_window_width * 0.5) - 200;
+		var option_level_editor_right_arrow_x = (get_window_width * 0.5) - 200 + 50;
 		var custom_background1_x_offset_y = (40 * 3);
 		var custom_background1_y_offset_y = (40 * 4);
 		var custom_background2_x_offset_y = (40 * 5);
@@ -632,7 +632,7 @@ function scr_option_level_editor()
 			var background_tiled_y = 47 * 9;
 			
 			draw_set_halign(fa_center);
-			scr_draw_text_outlined(display_get_gui_width() * 0.5, 47 * 2, "Changing the theme from this menu will set the default theme, taken from official levels", global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(display_get_gui_width() * 0.5, 47 * 2, "Changing the theme from this menu will set the default theme, taken from official levels", global.default_text_size * 0.9, c_black, c_white, 1);
 			
 			if (!global.can_load_custom_level_assets)
 			{
@@ -3818,11 +3818,13 @@ function scr_option_level_editor()
 			{
 				var remove_text_question = "Remove clear melody?";
 			}
+			var remove_theme_are_you_sure_no_y = display_get_gui_height() * 0.5;
+			var remove_theme_are_you_sure_yes_y = display_get_gui_height() * 0.5 + 47;
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 47, l10n_text(remove_text_question), global.default_text_size, c_black, c_white, 1);
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() * 0.5, l10n_text("No"), "remove_theme_are_you_sure_no", level_editor_option_back_to_menu);
-			draw_menu_button(display_get_gui_width() * 0.5 - 185, display_get_gui_height() * 0.5 + 47, l10n_text("Yes"), "remove_theme_are_you_sure_yes", "remove_theme_are_you_sure_yes", c_red, 1);
-			draw_sprite_ext(spr_icon_delete, 0, display_get_gui_width() * 0.5 - 185 + 20, display_get_gui_height() * 0.5 + 47 + 21, 1, 1, 0, c_white, 1);
+			draw_menu_button(display_get_gui_width() * 0.5 - 185, remove_theme_are_you_sure_no_y, l10n_text("No"), "remove_theme_are_you_sure_no", level_editor_option_back_to_menu);
+			draw_menu_button(display_get_gui_width() * 0.5 - 185, remove_theme_are_you_sure_yes_y, l10n_text("Yes"), "remove_theme_are_you_sure_yes", "remove_theme_are_you_sure_yes", c_red, 1);
+			draw_sprite_ext(spr_icon_delete, 0, display_get_gui_width() * 0.5 - 185 + 20, remove_theme_are_you_sure_yes_y + 21, 1, 1, 0, c_white, 1);
 			
 			if (menu == "remove_theme_are_you_sure_no")
 			{
@@ -3849,7 +3851,9 @@ function scr_option_level_editor()
 			else
 			if (menu == "remove_theme_are_you_sure_yes")
 			{
-				if (key_a_pressed)
+				if (key_a_pressed
+				|| (global.controls_used_for_navigation == "mouse" && mouse_check_button_released(mb_left) && point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0),
+				display_get_gui_width() * 0.5 - 185, remove_theme_are_you_sure_yes_y, display_get_gui_width() * 0.5 + 185, remove_theme_are_you_sure_yes_y + 42)))
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{

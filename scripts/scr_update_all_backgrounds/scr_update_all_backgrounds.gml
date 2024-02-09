@@ -5,9 +5,18 @@ function scr_update_all_backgrounds()
 	/* If your game is doing many memory-intensive operations simultaneously (such as loading multiple large resources at the same time) */
 	/* try to stagger these operations so that they don't all happen at once */
 	
+	scr_delete_sprite_properly(global.custom_background1);
+	scr_delete_sprite_properly(global.custom_background2);
+	scr_delete_sprite_properly(global.custom_background3);
+	scr_delete_sprite_properly(global.custom_background4);
+	scr_delete_sprite_properly(global.custom_foreground1);
+	scr_delete_sprite_properly(global.custom_foreground1_5);
+	scr_delete_sprite_properly(global.custom_foreground2);
+	scr_delete_sprite_properly(global.custom_foreground_secret);
+	scr_delete_sprite_properly(global.custom_tileset);
+	
 	/* Set what file path to use */
-	if (global.character_select_in_this_menu == "main_game")
-	{
+	if (global.character_select_in_this_menu == "main_game") {
 		global.path_to_use = "levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/background/";
 		ini_open("levels/" + string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)) + "/data/level_information.ini");
 		global.default_background1 = ini_read_string("info", "default_background1", "");
@@ -21,9 +30,7 @@ function scr_update_all_backgrounds()
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
 	else
-	if (global.character_select_in_this_menu == "level_editor")
-	&& (global.can_load_custom_level_assets)
-	{
+	if (global.character_select_in_this_menu == "level_editor" && global.can_load_custom_level_assets) {
 		global.path_to_use = global.use_cache_or_working + "custom_levels/" + global.level_name + "/background/";
 		ini_open(global.use_cache_or_working + "custom_levels/" + global.level_name + "/data/level_information.ini");
 		global.default_background1 = ini_read_string("info", "default_background1", "level1");
@@ -36,8 +43,7 @@ function scr_update_all_backgrounds()
 		global.default_foreground_secret = ini_read_string("info", "default_foreground_secret", "");
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}
-	else
-	{
+	else {
 		global.path_to_use = "";
 		ini_open(global.use_cache_or_working + "custom_levels/" + global.level_name + "/data/level_information.ini");
 		global.default_background1 = ini_read_string("info", "default_background1", "level1");
@@ -49,21 +55,10 @@ function scr_update_all_backgrounds()
 		global.default_foreground2 = ini_read_string("info", "default_foreground2", "");
 		global.default_foreground_secret = ini_read_string("info", "default_foreground_secret", "");
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		
 	}
-	show_debug_message("Set what file path to use");
+	show_debug_message("global.path_to_use = " + string(global.path_to_use));
 	
 	#region /* Update All Backgrounds */
-	
-	scr_delete_sprite_properly(global.custom_background1);
-	scr_delete_sprite_properly(global.custom_background2);
-	scr_delete_sprite_properly(global.custom_background3);
-	scr_delete_sprite_properly(global.custom_background4);
-	scr_delete_sprite_properly(global.custom_foreground1);
-	scr_delete_sprite_properly(global.custom_foreground1_5);
-	scr_delete_sprite_properly(global.custom_foreground2);
-	scr_delete_sprite_properly(global.custom_foreground_secret);
-	scr_delete_sprite_properly(global.custom_tileset);
 	
 	#region /* Update Background1 */
 	var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
@@ -406,5 +401,24 @@ function scr_update_all_backgrounds()
 	}, [], 1);
 	time_source_start(time_source); time_source_period += 1;
 	#endregion /* Update Level Tileset END */
+	
+	#region /* Set Backgrounds */
+	var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
+		if (global.custom_background1 > noone) {
+			layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);
+		}
+		if (global.custom_background2 > noone) {
+			layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);
+		}
+		if (global.custom_background3 > noone) {
+			layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), global.custom_background3);
+		}
+		if (global.custom_background4 > noone) {
+			layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), global.custom_background4);
+		}
+		scr_make_background_visible();
+	}, [], 1);
+	time_source_start(time_source);
+	#endregion /* Set Backgrounds END */
 	
 }

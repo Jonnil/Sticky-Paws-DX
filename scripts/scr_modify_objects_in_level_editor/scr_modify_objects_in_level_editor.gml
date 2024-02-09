@@ -3,7 +3,7 @@ function scr_modify_objects_in_level_editor()
 	
 	#region /* Modify Objects */
 	if (!dragged_from_original_place)
-	&& (placed_for_the_first_time)
+	&& (!placed_for_the_first_time)
 	&& (delay > 1)
 	&& (!keyboard_check(vk_space))
 	&& (!mouse_check_button(mb_middle))
