@@ -134,7 +134,6 @@ function scr_save_level()
 	global.timeattack_millisecond = 0;
 	global.timeattack_second = 0;
 	global.timeattack_minute = 0;
-	global.timeattack_realmillisecond = 0;
 	global.level_clear_rate = noone;
 	score = 0;
 	

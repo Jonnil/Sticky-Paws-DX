@@ -1,9 +1,26 @@
 function scr_player_move_throw_items_in_hands()
 {
 	
-	#region /* Throw items in hands */
 	if (hold_item_in_hands != "")
 	{
+		
+		#region /* Holding items in hands x position */
+		angle = 0;
+		if (sprite_index != sprite_vine_climb && sprite_index != sprite_vine_stay) {
+			if (image_xscale < 0) {
+				hold_item_in_hands_x = -32;
+			}
+			else
+			{
+				hold_item_in_hands_x = +32;
+			}
+		}
+		else {
+			hold_item_in_hands_x = 0;
+		}
+		#endregion /* Holding items in hands x position END */
+		
+		#region /* Throw items in hands */
 		if (key_dive_pressed)
 		{
 			if (key_up)
@@ -234,6 +251,7 @@ function scr_player_move_throw_items_in_hands()
 			hold_item_in_hands = "";
 			dive = false;
 		}
+		
 		if (key_left_hold)
 		|| (image_xscale < 0)
 		{
@@ -282,7 +300,9 @@ function scr_player_move_throw_items_in_hands()
 				hold_item_in_hands = "";
 			}
 		}
+		
 		else
+		
 		if (key_right_hold)
 		|| (image_xscale > 0)
 		{
@@ -327,7 +347,8 @@ function scr_player_move_throw_items_in_hands()
 				hold_item_in_hands = "";
 			}
 		}
+		#endregion /* Throw items in hands END */
+		
 	}
-	#endregion /* Throw items in hands END */
 	
 }

@@ -7,6 +7,7 @@ global.free_communication_available = false; /* When in main game, you can't use
 full_level_map_screenshot_timer = 0;
 can_show_arrows = 0;
 show_arrows_alpha = 0;
+at_least_one_big_collectible = false;
 
 room_speed = global.max_fps;
 character_folder = "";

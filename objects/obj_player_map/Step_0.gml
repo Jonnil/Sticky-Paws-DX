@@ -17,6 +17,24 @@ if (speed > 0)
 }
 #endregion /* Only update audio listener position and velocity when the player is moving END */
 
+if (instance_exists(obj_level))
+{
+	var level_instance = instance_nearest(x, y, obj_level);
+	at_least_one_big_collectible = false;
+	for(var i = 1; i <= global.max_big_collectible; i += 1)
+	{
+		if (level_instance.big_collectible[i])
+		{
+			at_least_one_big_collectible = true;
+			break; /* exit the loop if any big collectible is false */
+		}
+	}
+}
+else
+{
+	at_least_one_big_collectible = false;
+}
+
 #region /* Quit Game */
 if (global.quit_level)
 {

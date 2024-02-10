@@ -89,8 +89,7 @@ glide = false;
 can_glide = 0;
 idle_animtaion = 0; /* If player should play blinking animation or not */
 against_wall_animation = 0; /* First play sprite_against_wall_start, then transition into sprite_against_wall */
-draw_arrow_outside_view_up_alpha = 0;
-draw_arrow_outside_view_down_alpha = 0;
+draw_arrow_outside_view_alpha = 0;
 #endregion /* Don't change these variables END */
 
 #region /* Rope Swing Variables */

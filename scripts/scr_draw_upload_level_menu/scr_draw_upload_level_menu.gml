@@ -1686,13 +1686,8 @@ function scr_draw_upload_level_menu() {
 		scr_update_all_backgrounds();
 		global.part_limit = 0; /* How many objects are currently placed in the level editor */
 		global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
-		
-		var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function() {
-			room_goto(rm_leveleditor); /* Enter level editor from upload level menu */
-		}, [], 1);
-		time_source_start(time_source);
-		
 		loading_assets = true;
+		room_goto(rm_leveleditor); /* Enter level editor from upload level menu */
 	}
 	#endregion /* Enter Custom Level END */
 	

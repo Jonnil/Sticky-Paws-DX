@@ -185,13 +185,8 @@ if (goal && global.time_countdown_bonus <= 0)
 			scr_update_all_backgrounds();
 			global.part_limit = 0; /* How many objects are currently placed in the level editor */
 			global.part_limit_entity = 0; /* How many entities are currently placed in the level editor */
-			
-			var time_source = time_source_create(time_source_game, 10, time_source_units_frames, function(){
-				room_goto(rm_leveleditor); /* Go to another level if you're supposed to go to other levels after completion */
-			}, [], 1);
-			time_source_start(time_source);
-			
 			loading_assets = true;
+			room_goto(rm_leveleditor); /* Go to another level if you're supposed to go to other levels after completion */
 		}
 		else
 		if (!loading_assets)
@@ -852,6 +847,26 @@ if (vspeed > 0)
 }
 
 scr_player_move_spring();
+
+#region /* Heart above head */
+if (have_heart_balloon) {
+	if (horizontal_rope_climb && key_up && !key_down) {
+		xx_heart = lerp(xx_heart, x, 0.1);
+		yy_heart = lerp(yy_heart, y + 32, 0.1);
+	}
+}
+
+if (!have_heart_balloon) {
+	if (instance_exists(obj_heart_balloon)) {
+		xx_heart = instance_nearest(x, y, obj_heart_balloon).x;
+		yy_heart = instance_nearest(x, y, obj_heart_balloon).y;
+	}
+}
+else {
+	xx_heart = lerp(xx_heart, x, 0.1);
+	yy_heart = lerp(yy_heart, y - 64, 0.1);
+}
+#endregion /* Heart above head END */
 
 #endregion /* ________________________________MORE MOVES________________________________ */
 
