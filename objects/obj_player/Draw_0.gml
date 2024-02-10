@@ -14,12 +14,13 @@ if (have_heart_balloon) {
 	draw_line_width_color(xx, yy, xx_heart, yy_heart, 6, c_black, c_black);
 	draw_line_width_color(xx, yy, xx_heart, yy_heart, 3, c_white, c_white);
 	if (taken_damage % 2 == 0) {
-		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, point_direction(xx_heart, yy_heart, xx, yy) + 90, c_white, image_alpha);
+		var heart_alpha = image_alpha;
 	}
 	else {
-		draw_set_alpha(image_alpha * 0.3);
-		draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, point_direction(xx_heart, yy_heart, xx, yy) + 90, c_white, image_alpha * 0.3);
+		var heart_alpha = image_alpha * 0.3;
 	}
+	draw_set_alpha(heart_alpha);
+	draw_sprite_ext(spr_heart, 0, xx_heart, yy_heart, 1, 1, point_direction(xx_heart, yy_heart, xx, yy) + 90, c_white, heart_alpha);
 }
 #endregion /* Heart above head END */
 
