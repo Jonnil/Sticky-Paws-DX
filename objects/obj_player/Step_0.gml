@@ -1,151 +1,31 @@
 /* Platformer Player Part 1 */
 
 #region /* Only update audio listener position and velocity when the player is moving */
-if (speed > 0)
-{
+if (speed > 0) {
 	audio_listener_position(x, y, 0);
 	audio_listener_velocity(abs(hspeed), abs(vspeed), 0);
 }
 #endregion /* Only update audio listener position and velocity when the player is moving END */
 
 scr_player_move_save_whole_level_as_screenshot();
-
 scr_start_intro_animations();
-
-#region /* Restart Level */
-if (global.restart_level)
-|| (gamepad_button_check(global.player_slot[player], gp_shoulderlb))
-&& (gamepad_button_check(global.player_slot[player], gp_shoulderrb))
-&& (gamepad_button_check_pressed(global.player_slot[player], gp_select))
-{
-	if (gamepad_button_check(global.player_slot[player], gp_shoulderlb))
-	&& (gamepad_button_check(global.player_slot[player], gp_shoulderrb))
-	&& (gamepad_button_check_pressed(global.player_slot[player], gp_select))
-	{
-		if (global.character_select_in_this_menu == "main_game")
-		{
-			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
-		}
-		else
-		{
-			ini_open(working_directory + "save_file/custom_level_save.ini");
-		}
-		ini_key_delete(global.level_name, "checkpoint_x");
-		ini_key_delete(global.level_name, "checkpoint_y");
-		ini_key_delete(global.level_name, "checkpoint_direction");
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-		global.checkpoint_x = 0;
-		global.checkpoint_y = 0;
-	}
-	
-	global.restart_level = false;
-	global.quit_level = false;
-	audio_stop_all();
-	room_persistent = false; /* Turn OFF Room Persistency */
-	
-	if (global.goal_active)
-	|| (global.player_has_entered_goal)
-	{
-		scr_save_level(); /* Save timeattack record when resetting at goal */
-		global.goal_active = false;
-		global.player_has_entered_goal = false;
-	}
-	
-	#region /* Reset timer back to zero */
-	global.timeattack_realmillisecond = 0;
-	global.timeattack_millisecond = 0;
-	global.timeattack_second = 0;
-	global.timeattack_minute = 0;	
-	#endregion /* Reset timer back to zero END */
-	
-	score = 0;
-	
-	for(var i = 1; i <= global.max_players + 1; i += 1)
-	{
-		gamepad_set_vibration(i - 1, 0, 0);
-	}
-	room_restart();
-}
-#endregion /* Restart Level END */
-
-#region /* Quit Level */
-if (global.quit_level)
-{
-	global.doing_clear_check_level = false; /* If you exit the level manually , you no longer are doing level clear check */
-	global.doing_clear_check_character = false; /* If you exit the level manually , you no longer are doing character clear check */
-	audio_stop_all();
-	room_persistent = false; /* Turn OFF Room Persistency */
-	
-	#region /* Reset timer back to zero */
-	global.timeattack_realmillisecond = 0;
-	global.timeattack_millisecond = 0;
-	global.timeattack_second = 0;
-	global.timeattack_minute = 0;	
-	#endregion /* Reset timer back to zero END */
-	
-	score = 0;
-	
-	scr_save_level();
-	
-	if (global.quit_to_map || global.quit_to_title)
-	{
-		
-		#region /* Player availability check. These variables control player availability */
-		/* If certain players are not playing the level anymore, make them disconnect until they join manually again */
-		for(var i = 1; i <= global.max_players; i += 1)
-		{
-			if (!instance_exists(obj_camera.player[i]))
-			{
-				global.player_can_play[i] = false;
-			}
-			gamepad_set_vibration(i - 1, 0, 0);
-		}
-		#endregion /* Player availability check. These variables control player availability END */
-		
-		room_goto(global.quit_to_map ? rm_world_map : rm_title); /* If player chose to quit to map, then go to world map, otherwise go to title screen */
-		global.quit_level = false;
-		global.quit_to_map = false;
-		global.quit_to_title = false;
-	}
-}
-#endregion /* Quit Level END */
-
-#region /* Play Ambience */
-if (!audio_is_playing(global.ambience))
-{
-	scr_audio_play(global.ambience, volume_source.ambient);
-	audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
-}
-#endregion /* Play Ambience END */
-
-#region /* Play Underwater Ambience */
-if (!audio_is_playing(global.ambience_underwater))
-{
-	scr_audio_play(global.ambience_underwater, volume_source.ambient);
-	audio_sound_gain(global.ambience_underwater, 0, 0);
-}
-#endregion /* Play Underwater Ambience END */
+scr_player_move_restart();
+scr_player_move_quit();
 
 #region /* Music Pitch */
-if (global.time_countdown < 100 && global.enable_time_countdown)
-{
+if (global.time_countdown < 100 && global.enable_time_countdown) {
 	audio_sound_pitch(global.music, music_pitch + 0.3);
 	audio_sound_pitch(global.music_underwater, music_pitch + 0.3);
 }
-else
-{
+else {
 	audio_sound_pitch(global.music, music_pitch);
 	audio_sound_pitch(global.music_underwater, music_pitch);
 }
 #endregion /* Music Pitch END */
 
 #region /* Winning the level and transitioning to the next area */
-if (goal && global.time_countdown_bonus <= 0)
-&& (instance_exists(obj_camera))
-&& (obj_camera.iris_xscale < 3)
-{
-	if (obj_camera.iris_xscale <= 0.01 && obj_camera.iris_yscale <= 0.001)
-	{
+if (goal && global.time_countdown_bonus <= 0 && instance_exists(obj_camera) && obj_camera.iris_xscale < 3) {
+	if (obj_camera.iris_xscale <= 0.01 && obj_camera.iris_yscale <= 0.001) {
 		audio_stop_all();
 		global.checkpoint_x = 0;
 		global.checkpoint_y = 0;
@@ -157,30 +37,24 @@ if (goal && global.time_countdown_bonus <= 0)
 		scr_save_level(); /* Important that you save all level information here, before going back to the map screen, but after setting level_clear_rate to clear */
 		
 		/* If certain player is no longer playing, make them dissapear from the game until they manually join the game again */
-		for(var i = 1; i <= global.max_players; i += 1)
-		{
-			if (!instance_exists(obj_camera.player[i]))
-			{
+		for(var i = 1; i <= global.max_players; i += 1) {
+			if (!instance_exists(obj_camera.player[i])) {
 				global.player_can_play[i] = false;
 			}
 			gamepad_set_vibration(i - 1, 0, 0);
 		}
 		
-		if (!global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
-		{
+		if (!global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor") {
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
 			room_restart(); /* Reset the room if you complete custom level in playtest mode */
 		}
-		else if (global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor")
-		{
+		else if (global.actually_play_edited_level && global.play_edited_level && global.character_select_in_this_menu == "level_editor") {
 			global.actually_play_edited_level = false;
 			global.play_edited_level = false;
 			room_goto(rm_title); /* Go back to title screen after completing a custom level normally */
 		}
-		else if (obj_camera.after_goal_go_to_this_level >= 0)
-		&& (!loading_assets)
-		{
+		else if (obj_camera.after_goal_go_to_this_level >= 0 && !loading_assets) {
 			global.select_level_index = obj_camera.after_goal_go_to_this_level;
 			scr_update_all_backgrounds();
 			global.part_limit = 0; /* How many objects are currently placed in the level editor */
@@ -189,25 +63,20 @@ if (goal && global.time_countdown_bonus <= 0)
 			room_goto(rm_leveleditor); /* Go to another level if you're supposed to go to other levels after completion */
 		}
 		else
-		if (!loading_assets)
-		{
+		if (!loading_assets) {
 			/* Go back to title screen if doing character clear check, otherwise go back to world map when playing normally */
-			if (global.doing_clear_check_character)
-			{
+			if (global.doing_clear_check_character) {
 				room_goto(rm_title); /* Go back to title screen if finishing the level and doing character clear check */
 			}
-			else
-			{
+			else {
 				room_goto(rm_world_map); /* Go back to world map if finishing the level and playing normally */
 			}
 		}
 	}
 }
 else
-if (intro_animation == "")
-{
-	if (can_clamp_inside_view > 3)
-	{
+if (intro_animation == "") {
+	if (can_clamp_inside_view > 3) {
 		var view_x = camera_get_view_x(view_camera[view_current]);
 		var view_y = camera_get_view_y(view_camera[view_current]);
 		var view_width = camera_get_view_width(view_camera[view_current]);
@@ -219,35 +88,29 @@ if (intro_animation == "")
 		x = clamp(x, x_min, x_max);
 		y = clamp(y, y_min, y_max);
 	}
-	else
-	{
+	else {
 		can_clamp_inside_view ++;
 	}
 }
 #endregion /* Winning the level and transitioning to the next area END */
 
-if (hspeed != 0)
-{
+if (hspeed != 0) {
 	hspeed_dir = sign(hspeed);
 }
 
 #region /* Assist Invincible */
-if (assist_invincible)
-{
-	if (hp <= 0)
-	{
+if (assist_invincible) {
+	if (hp <= 0) {
 		hp = 1;
 	}
 	invincible_timer = true;
 	audio_stop_sound(music_invincible);
-	if (key_jump_hold)
-	{
+	if (key_jump_hold) {
 		if (!on_ground)
 		&& (!dive)
 		&& (!ground_pound)
 		&& (!crouch)
-		&& (vspeed > 1)
-		{
+		&& (vspeed > 1) {
 			vspeed = +1;
 			crouch = false;
 			can_ground_pound = false;
@@ -257,21 +120,16 @@ if (assist_invincible)
 #endregion /* Assist Invincible END */
 
 #region /* Playtest Invincibility */
-if (global.playtest_invincibility)
-{
+if (global.playtest_invincibility) {
 	invincible_timer = true;
-	if (floor(random(10)) == 0)
-	{
+	if (floor(random(10)) == 0) {
 		effect_create_above(ef_star, random_range(bbox_left - 8, bbox_right + 8), random_range(bbox_top - 8, bbox_bottom + 8), 0, c_white);
 	}
 }
 #endregion /* Playtest Invincibility END */
 
 #region /* If Assist delault hp is invincible, stay invincible */
-if (global.assist_enable)
-&& (global.assist_invincible)
-&& (hp < max_hp)
-{
+if (global.assist_enable && global.assist_invincible && hp < max_hp) {
 	hp = max_hp;
 }
 #endregion /* If Assist delault hp is invincible, stay invincible END */
@@ -280,12 +138,10 @@ scr_player_move_customizable_controls(); /* Sets up what the buttons do */
 
 #region /* Save to variable when on ground */
 if (place_meeting(x, y + 1, obj_wall)) /* If there is wall underneath */
-|| (collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 1, obj_semisolid_platform, false, true)) /* If there is semisolid platform underneath */
-{
+|| (collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 1, obj_semisolid_platform, false, true)) { /* If there is semisolid platform underneath */
 	on_ground = true;
 }
-else
-{
+else {
 	on_ground = false;
 }
 #endregion /* Save to variable when on ground */
@@ -295,25 +151,17 @@ if (gamepad_is_connected(global.player_slot[player])) {
 }
 
 #region /* If player is allowed to move */
-if (can_move)
-{
-	
+if (can_move) {
 	scr_player_move_pause();
-	
 	scr_player_move_go_left();
-	
 	scr_player_move_go_right();
-	
 }
 #endregion /* If player is allowed to move END */
 
 #region /* If player has finished the level, make the player run off to the right off screen, and disable player control */
-if (goal)
-&& (global.time_countdown_bonus <= 0)
-{
+if (goal && global.time_countdown_bonus <= 0) {
 	hspeed += 0.3;
-	if (hspeed > 0)
-	{
+	if (hspeed > 0) {
 		image_xscale = +1;
 	}
 }
@@ -326,42 +174,31 @@ scr_player_move_double_tap_direction_to_run();
 scr_player_move_double_tap_direction_to_dive();
 
 #region /* Set the friction */
-if (on_ground)
-&& (!horizontal_rope_climb)
-{
-	if (speed > 0)
-	{
-		if (place_meeting(x, y + 1, obj_ice_block))
-		{
+if (on_ground && !horizontal_rope_climb) {
+	if (speed > 0) {
+		if (place_meeting(x, y + 1, obj_ice_block)) {
 			if (key_left_hold)
 			|| (key_right_hold)
-			|| (goal)
-			{
+			|| (goal) {
 				friction = 0.01;
 			}
-			else
-			{
+			else {
 				friction = 0.02;
 			}
 		}
-		else
-		{
+		else {
 			if (key_left_hold)
 			|| (key_right_hold)
-			|| (goal)
-			{
+			|| (goal) {
 				friction = 0.1;
 			}
-			else
-			{
+			else {
 				friction = 0.2;
 			}
 		}
 	}
 }
-else
-if (!horizontal_rope_climb)
-{
+else if (!horizontal_rope_climb) {
 	friction = 0;
 }
 #endregion /* Set the friction END */
@@ -373,19 +210,15 @@ scr_player_move_triple_jump();
 scr_player_move_mid_air_jump();
 
 #region /* Do a small jump when releasing the jump button */
-if (key_jump_released)
-&& (!spring)
-{
-	if (vspeed < 0) /* When still traveling up */
-	{
+if (key_jump_released && !spring) {
+	if (vspeed < 0) { /* When still traveling up */
 		vspeed /= 2; /* Divide the vertical speed by half */
 	}
 }
 #endregion /* Do a small jump when releasing the jump button END */
 
 #region /* Fall faster */
-if (vspeed > 0)
-{
+if (vspeed > 0) {
 	vspeed += 0.4;
 }
 #endregion /* Fall faster END */
@@ -394,53 +227,40 @@ if (vspeed > 0)
 gravity_direction = 270; /* Direction of the gravity */
 if (!on_ground)
 && (!climb)
-&& (!horizontal_rope_climb)
-{
+&& (!horizontal_rope_climb) {
 	gravity = 0.5; /* The gravity */
 }
-else
-{
+else {
 	gravity = 0;
 }
 #endregion /* Set the gravity END */
 
 #region /* Limits the horizontal speed */
-if (abs(hspeed) > speed_max)
-{
+if (abs(hspeed) > speed_max) {
 	hspeed -= 0.4 * sign(hspeed);
 }
 #endregion /* Limits the horizontal speed END */
 
 #region /* Limits the vertical speed */
-if (vspeed > 8)
-&& (collision_rectangle(x, bbox_bottom + 1, x, bbox_bottom + 32, obj_semisolid_platform, false, true))
-{
-	if (vspeed > 8)
-	{
+if (vspeed > 8 && collision_rectangle(x, bbox_bottom + 1, x, bbox_bottom + 32, obj_semisolid_platform, false, true)) {
+	if (vspeed > 8) {
 		vspeed = +8;
 	}
 }
-else
-{
-	if (ground_pound == 1)
-	{
-		if (vspeed > 30)
-		{
+else {
+	if (ground_pound == 1) {
+		if (vspeed > 30) {
 			vspeed = +30;
 		}
 	}
 	else
-	if (key_jump_hold)
-	{
-		if (vspeed > 17)
-		{
+	if (key_jump_hold) {
+		if (vspeed > 17) {
 			vspeed = +17;
 		}
 	}
-	else
-	{
-		if (vspeed > 20)
-		{
+	else {
+		if (vspeed > 20) {
 			vspeed = +20;
 		}
 	}
@@ -448,13 +268,9 @@ else
 #endregion /* Limits the vertical speed END */
 
 #region /* If you touch spikes, take damage */
-if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes, false, true))
-{
-	if (taken_damage < 1)
-	&& (invincible_timer == 0)
-	{
-		if (have_heart_balloon)
-		{
+if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, obj_spikes, false, true)) {
+	if (taken_damage < 1 && invincible_timer == 0) {
+		if (have_heart_balloon) {
 			have_heart_balloon = false;
 			
 			#region /* Save heart balloon to be false */
@@ -464,8 +280,7 @@ if (collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom
 			#endregion /* Save heart balloon to be false END */
 			
 		}
-		else
-		{
+		else {
 			hp --;
 		}
 		taken_damage = 200; /* Invincibility frames */
@@ -480,16 +295,12 @@ scr_player_move_tongue();
 scr_player_move_roll_when_landing();
 
 #region /* Chain Reaction Reset */
-if (on_ground)
-{
-	if (invincible_timer == 0)
-	{
+if (on_ground) {
+	if (invincible_timer == 0) {
 		chain_reaction = 0;
 	}
 }
-if (assist_invincible) /* You can never get chain reactions when you have assist invincibility */
-|| (global.playtest_invincibility)
-{
+if (assist_invincible || global.playtest_invincibility) { /* You can never get chain reactions when you have assist invincibility */
 	chain_reaction = 0;
 }
 #endregion /* Chain Reaction Reset END */
@@ -503,15 +314,10 @@ scr_player_move_dive();
 scr_player_move_throw_items_in_hands();
 
 #region /* Can Attack After Dive On Ground */
-if (on_ground)
-{
-	if (can_attack_after_dive_on_ground > 0)
-	{
-		can_attack_after_dive_on_ground --;
-		if (key_jump)
-		{
-			can_attack_after_dive_on_ground = false;
-		}
+if (on_ground && can_attack_after_dive_on_ground > 0) {
+	can_attack_after_dive_on_ground --;
+	if (key_jump) {
+		can_attack_after_dive_on_ground = false;
 	}
 }
 #endregion /* Can Attack After Dive On Ground END */
@@ -521,84 +327,60 @@ scr_player_move_dive_ground_boost();
 scr_player_move_ledge_grab();
 
 #region /* Put sprite angle at right angle */
-if (angle <- 360)
-{
+if (angle <- 360) {
 	angle += 16;
 }
 else
-if (angle >+ 360)
-{
+if (angle >+ 360) {
 	angle -= 16;
 }
 else
-if (ground_pound == 1)
-{
+if (ground_pound == 1) {
 	angle = lerp(angle, 0, 0.2);
 }
-else
-{
-	if (!on_ground)
-	&& (vspeed > 0)
-	{
-		if (key_left_hold)
-		&& (!key_right_hold)
-		{
+else {
+	if (!on_ground && vspeed > 0) {
+		if (key_left_hold && !key_right_hold) {
 			angle = lerp(angle, +10, 0.1);
 		}
-		else
-		if (key_right_hold)
-		&& (!key_left_hold)
-		{
+		else if (key_right_hold && !key_left_hold) {
 			angle = lerp(angle, -10, 0.1);
 		}
-		else
-		{
+		else {
 			angle = lerp(angle, 0, 0.1);
 		}
 	}
-	else
-	{
+	else {
 		angle = lerp(angle, 0, 0.1);
 	}
 }
 #endregion /* Put sprite angle at right angle */
 
-if (invincible_timer <= 2)
-{
-	if (in_water)
-	{
-		if (global.music_underwater > 0)
-		{
+if (invincible_timer <= 2) {
+	if (in_water) {
+		if (global.music_underwater > 0) {
 			audio_sound_gain(global.music, 0, 0);
 			audio_sound_gain(global.music_underwater, global.volume_music * global.volume_main, 0);
 		}
-		else
-		if (global.music > 0)
-		{
+		else if (global.music > 0) {
 			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
 			audio_sound_gain(global.music_underwater, 0, 0);
 		}
-		if (global.ambience_underwater > 0)
-		{
+		if (global.ambience_underwater > 0) {
 			audio_sound_gain(global.ambience, 0, 0);
 			audio_sound_gain(global.ambience_underwater, global.volume_ambient * global.volume_main, 0);
 		}
-		else
-		if (global.ambience > 0)
-		{
+		else if (global.ambience > 0) {
 			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
 			audio_sound_gain(global.ambience_underwater, 0, 0);
 		}
 	}
-	else
-	{
-		if (global.music > 0)
-		{
+	else {
+		if (global.music > 0) {
 			audio_sound_gain(global.music, global.volume_music * global.volume_main, 0);
 			audio_sound_gain(global.music_underwater, 0, 0);
 		}
-		if (global.ambience > 0)
-		{
+		if (global.ambience > 0) {
 			audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
 			audio_sound_gain(global.ambience_underwater, 0, 0);
 		}
@@ -610,31 +392,21 @@ scr_player_move_swimming_in_water();
 scr_player_move_drowning();
 
 #region /* Water Splash Effect */
-if (in_water != old_in_water)
-{
+if (in_water != old_in_water) {
 	
 	#region /* Jump out of water */
-	if (key_jump_hold)
-	&& (!in_water)
-	&& (vspeed > -normal_jump_height)
-	{
+	if (key_jump_hold && !in_water && vspeed > -normal_jump_height) {
 		vspeed = -normal_jump_height;
-		
-		#region /* Jump sound effect */
-		scr_audio_play(snd_jump, volume_source.sound);
-		scr_audio_play(snd_swim, volume_source.sound);
-		#endregion /* Jump sound effect END */
-		
+		scr_audio_play(snd_jump, volume_source.sound); /* Jump sound effect */
+		scr_audio_play(snd_swim, volume_source.sound); /* Swim sound effect */
 	}
 	#endregion /* Jump out of water END */
 	
 	old_in_water = in_water;
 	
 	instance_create_depth(x, y, 0, obj_water_splash);
-	repeat(10)
-	{
-		with(instance_create_depth(x, bbox_top, 0, obj_water_splash_particle))
-		{
+	repeat(10) {
+		with(instance_create_depth(x, bbox_top, 0, obj_water_splash_particle)) {
 			direction = random_range(0, 180);
 			speed = random_range(2, 10);
 		}
@@ -643,25 +415,18 @@ if (in_water != old_in_water)
 #endregion /* Water Splash Effect END */
 
 #region /* Speedup to Dashspeed */
-if (abs(hspeed) > 7)
-&& (invincible_timer >= true)
-&& (power_meter_running_sound)
-{
+if (power_meter_running_sound && invincible_timer >= 1 && abs(hspeed) > 7) {
 	speedunit += 2;
-	if (speedunit > 100)
-	{
+	if (speedunit > 100) {
 		speedunit = 100;
-		if (on_ground)
-		{
+		if (on_ground) {
 			speed_dash = true;
 		}
 	}
 }
-else
-{
+else {
 	speedunit --;
-	if (speedunit < 0)
-	{
+	if (speedunit < 0) {
 		speedunit = 0;
 	}
 	speed_dash = false;
@@ -669,15 +434,12 @@ else
 #endregion /* Speedup to Dashspeed END */
 
 #region /* Health Handeling */
-if (taken_damage > 0)
-{
+if (taken_damage > 0) {
 	taken_damage -= 1;
 }
 
 #region /* Make the player die if you have 0 HP */
-if (hp <= 0)
-&& (!global.goal_active)
-{
+if (hp <= 0 && !global.goal_active) {
 	die = true;
 }
 #endregion /* Make the player die if you have 0 HP END */
@@ -685,12 +447,9 @@ if (hp <= 0)
 #endregion /* Health Handeling END */
 
 #region /* Burnt */
-if (burnt)
-{
+if (burnt) {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
-	if (on_ground)
-	&& (!die)
-	{
+	if (on_ground && !die) {
 		scr_audio_play(voice_burned_running, volume_source.voice);
 		burnt = 2;
 		dive = false;
@@ -701,72 +460,54 @@ if (burnt)
 	}
 }
 else
-if (burnt == 2)
-{
+if (burnt == 2) {
 	effect_create_above(ef_smoke, x, bbox_bottom, 0, c_black);
-	if (on_ground)
-	{
+	if (on_ground) {
 		burnt = false;
 	}
 }
 #endregion /* Burnt END */
 
 #region /* Invincible Music */
-if (invincible_timer >= true)
-&& (!assist_invincible)
-&& (!global.playtest_invincibility)
-{
+if (!assist_invincible)
+&& (invincible_timer >= 1)
+&& (!global.playtest_invincibility) {
 	invincible_timer --;
-	if (invincible_timer >= 2)
-	{
-		if (!audio_is_playing(music_invincible))
-		{
+	if (invincible_timer >= 2) {
+		if (!audio_is_playing(music_invincible)) {
 			scr_audio_play(music_invincible, volume_source.music);
 		}
 	}
 }
-else
-{
-	if (invincible_timer <= 1)
-	{
+else {
+	if (invincible_timer <= 1) {
 		audio_stop_sound(music_invincible);
 	}
-	
-	if (!audio_is_playing(global.music))
-	{
-		if (!audio_is_playing(snd_hurry_up))
-		{
+	if (!audio_is_playing(global.music)) {
+		if (!audio_is_playing(snd_hurry_up)) {
 			scr_audio_play(global.music, volume_source.music);
-			if (audio_is_playing(global.loading_music))
-			{
+			if (audio_is_playing(global.loading_music)) {
 				audio_stop_sound(global.loading_music);
 			}
 		}
 	}
-	if (!audio_is_playing(global.music_underwater))
-	{
-		if (!audio_is_playing(snd_hurry_up))
-		{
+	if (!audio_is_playing(global.music_underwater)) {
+		if (!audio_is_playing(snd_hurry_up)) {
 			scr_audio_play(global.music_underwater, volume_source.music);
-			if (audio_is_playing(global.loading_music))
-			{
+			if (audio_is_playing(global.loading_music)) {
 				audio_stop_sound(global.loading_music);
 			}
 		}
 	}
 }
-if (invincible_timer >= 50)
-{
-	if (invincible_timer == 60)
-	{
+if (invincible_timer >= 50) {
+	if (invincible_timer == 60) {
 		scr_audio_play(snd_star_bound, volume_source.sound, 3);
 	}
-	if (invincible_timer == 70)
-	{
+	if (invincible_timer == 70) {
 		scr_audio_play(snd_star_bound, volume_source.sound, 2);
 	}
-	if (invincible_timer == 80)
-	{
+	if (invincible_timer == 80) {
 		scr_audio_play(snd_star_bound, volume_source.sound);
 	}
 	/* Stop the main music so it can restart from beginning when invincibility wears off */
@@ -776,62 +517,46 @@ if (invincible_timer >= 50)
 #endregion /* Invincible Music END */
 
 #region /* Time */
-if (!goal)
-{
+if (!goal) {
 	if (global.time_countdown == 0)
 	&& (global.enable_time_countdown)
 	&& (!global.player_has_entered_goal)
-	&& (!global.goal_active)
-	{
+	&& (!global.goal_active) {
 		die = true;
 	}
-	if (instance_exists(obj_camera))
-	&& (obj_camera.hurry_up_message_timer == 1)
-	&& (global.enable_time_countdown)
-	{
-		if (!audio_is_playing(snd_hurry_up))
-		{
+	if (global.enable_time_countdown && instance_exists(obj_camera) && obj_camera.hurry_up_message_timer == 1) {
+		if (!audio_is_playing(snd_hurry_up)) {
 			scr_audio_play(snd_hurry_up, volume_source.sound);
 		}
-		if (audio_is_playing(snd_hurry_up))
-		{
+		if (audio_is_playing(snd_hurry_up)) {
 			audio_stop_sound(global.music);
 			audio_stop_sound(global.music_underwater);
 		}
 	}
 }
-else
-{
-	if (global.time_countdown_bonus > 0)
-	{
-		if (instance_exists(obj_camera))
-		{
+else {
+	if (global.time_countdown_bonus > 0) {
+		if (instance_exists(obj_camera)) {
 			obj_camera.hud_show_score_timer = global.hud_hide_time * 60;
 		}
-		if (global.time_countdown_bonus > 3)
-		{
+		if (global.time_countdown_bonus > 3) {
 			global.time_countdown_bonus -= 3;
 			score += 150;
 		}
-		else
-		{
+		else {
 			global.time_countdown_bonus --;
 			score += 50;
 		}
-		if (!audio_is_playing(snd_beep))
-		{
+		if (!audio_is_playing(snd_beep)) {
 			scr_audio_play(snd_beep, volume_source.sound);
 		}
 	}
-	if (global.time_countdown_bonus == 0)
-	{
-		if (audio_is_playing(snd_beep))
-		{
+	if (global.time_countdown_bonus == 0) {
+		if (audio_is_playing(snd_beep)) {
 			audio_stop_sound(snd_beep);
 		}
 	}
-	with(obj_enemy)
-	{
+	with(obj_enemy) {
 		instance_destroy();
 	}
 }
@@ -841,8 +566,7 @@ scr_player_move_goal();
 
 scr_player_move_homing_attack();
 
-if (vspeed > 0)
-{
+if (vspeed > 0) {
 	stomp_spin = false;
 }
 
@@ -870,6 +594,26 @@ else {
 
 #endregion /* ________________________________MORE MOVES________________________________ */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Platformer Player Part 2 */
 #region /* ________________________________ Handling the sprites and sounds in the step event ________________________________ */
 draw_xscale = lerp(draw_xscale, 1, 0.2); /* Make horizontal stretching slowly reset back to 1 */
@@ -880,8 +624,7 @@ if (sprite_index == sprite_jump)
 || (sprite_index == sprite_run)
 || (sprite_index == sprite_run2)
 || (sprite_index == sprite_run3)
-|| (sprite_index == sprite_run4)
-{
+|| (sprite_index == sprite_run4) {
 	jump_transition_to_fall_animation = 0;
 }
 
@@ -1166,8 +909,7 @@ if (place_meeting(x, y, obj_vine))
 #endregion /* Climb Vine / Ladder END */
 
 #region /* In Water Animations */
-if (in_water)
-&& (!climb)
+if (in_water && !climb)
 {
 	can_ground_pound = false;
 	chain_reaction = 0;
@@ -2036,6 +1778,7 @@ else
 		&& (!key_left_hold)
 		&& (!key_right_hold)
 		&& (!climb)
+		&& (intro_animation == "")
 		{
 			look_up_start_animation = true;
 			against_wall_animation = 0;

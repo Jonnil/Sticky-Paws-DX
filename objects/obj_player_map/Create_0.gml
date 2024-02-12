@@ -258,3 +258,7 @@ audio_listener_orientation(0, 0, 1, 0, -1, 0);
 audio_listener_position(x, y, 0); /* Audio listener should start on top of the player */
 
 scr_audio_play(music_map, volume_source.music); /* Play the map screen music */
+
+nearest_level = 0;
+distance_to_level = 0;
+best_time_text = "";

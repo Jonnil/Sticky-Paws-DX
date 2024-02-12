@@ -17,14 +17,12 @@ if (speed > 0)
 }
 #endregion /* Only update audio listener position and velocity when the player is moving END */
 
-if (instance_exists(obj_level))
-{
-	var level_instance = instance_nearest(x, y, obj_level);
+if (instance_exists(obj_level)) { /* Must check if obj_level exists or not */
+	nearest_level = instance_nearest(x, y, obj_level);
+	distance_to_level = distance_to_object(nearest_level);
 	at_least_one_big_collectible = false;
-	for(var i = 1; i <= global.max_big_collectible; i += 1)
-	{
-		if (level_instance.big_collectible[i])
-		{
+	for(var i = 1; i <= global.max_big_collectible; i += 1) {
+		if (nearest_level.big_collectible[i]) {
 			at_least_one_big_collectible = true;
 			break; /* exit the loop if any big collectible is false */
 		}
@@ -34,6 +32,10 @@ else
 {
 	at_least_one_big_collectible = false;
 }
+
+best_time_text = l10n_text("Best Time") + ": " + string(nearest_level.timeattack_minute) + ":" +
+string(string_replace_all(string_format(nearest_level.timeattack_second, 2, 0), " ", "0")) + "." +
+string(string_replace_all(string_format(nearest_level.timeattack_millisecond, 2, 0), " ", "0"))
 
 #region /* Quit Game */
 if (global.quit_level)

@@ -8,7 +8,7 @@ function scr_resize_application_surface() {
 			prev_display_width = display_width;
 			prev_display_height = display_height;
 			surface_resize(application_surface, prev_display_width, prev_display_height);
-			global.deactivate_timer = 110;
+			global.deactivate_timer = 999; /* Force update deactivate region */
 		}
 	}
 }

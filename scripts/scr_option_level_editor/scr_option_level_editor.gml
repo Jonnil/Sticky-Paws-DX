@@ -7,14 +7,14 @@ function scr_option_level_editor()
 	{
 		var level_editor_option_x = (get_window_width * 0.5) - 200;
 		var option_level_editor_right_arrow_x = (get_window_width * 0.5) - 200 + 50;
-		var custom_background1_x_offset_y = (40 * 3);
-		var custom_background1_y_offset_y = (40 * 4);
-		var custom_background2_x_offset_y = (40 * 5);
-		var custom_background2_y_offset_y = (40 * 6);
-		var custom_background3_x_offset_y = (40 * 7);
-		var custom_background3_y_offset_y = (40 * 8);
-		var custom_background4_x_offset_y = (40 * 9);
-		var custom_background4_y_offset_y = (40 * 10);
+		var custom_background_x_offset1_y = (40 * 3);
+		var custom_background_y_offset1_y = (40 * 4);
+		var custom_background_x_offset2_y = (40 * 5);
+		var custom_background_y_offset2_y = (40 * 6);
+		var custom_background_x_offset3_y = (40 * 7);
+		var custom_background_y_offset3_y = (40 * 8);
+		var custom_background_x_offset4_y = (40 * 9);
+		var custom_background_y_offset4_y = (40 * 10);
 		var custom_foreground1_x_offset_y = (40 * 11);
 		var custom_foreground1_y_offset_y = (40 * 12);
 		var custom_foreground1_5_x_offset_y = (40 * 13);
@@ -24,14 +24,14 @@ function scr_option_level_editor()
 		var custom_foreground_secret_x_offset_y = (40 * 17);
 		var custom_foreground_secret_y_offset_y = (40 * 18);
 		
-		var custom_background1_x_parallax_y = (40 * 3);
-		var custom_background1_y_parallax_y = (40 * 4);
-		var custom_background2_x_parallax_y = (40 * 5);
-		var custom_background2_y_parallax_y = (40 * 6);
-		var custom_background3_x_parallax_y = (40 * 7);
-		var custom_background3_y_parallax_y = (40 * 8);
-		var custom_background4_x_parallax_y = (40 * 9);
-		var custom_background4_y_parallax_y = (40 * 10);
+		var custom_background_x_parallax1_y = (40 * 3);
+		var custom_background_y_parallax1_y = (40 * 4);
+		var custom_background_x_parallax2_y = (40 * 5);
+		var custom_background_y_parallax2_y = (40 * 6);
+		var custom_background_x_parallax3_y = (40 * 7);
+		var custom_background_y_parallax3_y = (40 * 8);
+		var custom_background_x_parallax4_y = (40 * 9);
+		var custom_background_y_parallax4_y = (40 * 10);
 		
 		var custom_background1_x_scale_y = (40 * 3);
 		var custom_background1_y_scale_y = (40 * 4);
@@ -2444,7 +2444,7 @@ function scr_option_level_editor()
 		|| (menu == "custom_background2_y_offset")
 		|| (menu == "custom_background3_x_offset")
 		|| (menu == "custom_background3_y_offset")
-		|| (menu == "custom_background4_x_offset")
+		|| (menu == "custom_background_x_offset[4]")
 		|| (menu == "custom_background4_y_offset")
 		|| (menu == "custom_foreground1_x_offset")
 		|| (menu == "custom_foreground1_y_offset")
@@ -2474,14 +2474,14 @@ function scr_option_level_editor()
 				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
-					ini_write_real("Custom Backgrounds", "custom_background1_x_offset", custom_background1_x_offset);
-					ini_write_real("Custom Backgrounds", "custom_background1_y_offset", custom_background1_y_offset);
-					ini_write_real("Custom Backgrounds", "custom_background2_x_offset", custom_background2_x_offset);
-					ini_write_real("Custom Backgrounds", "custom_background2_y_offset", custom_background2_y_offset);
-					ini_write_real("Custom Backgrounds", "custom_background3_x_offset", custom_background3_x_offset);
-					ini_write_real("Custom Backgrounds", "custom_background3_y_offset", custom_background3_y_offset);
-					ini_write_real("Custom Backgrounds", "custom_background4_x_offset", custom_background4_x_offset);
-					ini_write_real("Custom Backgrounds", "custom_background4_y_offset", custom_background4_y_offset);
+					ini_write_real("Custom Backgrounds", "custom_background1_x_offset", custom_background_x_offset[1]);
+					ini_write_real("Custom Backgrounds", "custom_background1_y_offset", custom_background_y_offset[1]);
+					ini_write_real("Custom Backgrounds", "custom_background2_x_offset", custom_background_x_offset[2]);
+					ini_write_real("Custom Backgrounds", "custom_background2_y_offset", custom_background_y_offset[2]);
+					ini_write_real("Custom Backgrounds", "custom_background3_x_offset", custom_background_x_offset[3]);
+					ini_write_real("Custom Backgrounds", "custom_background3_y_offset", custom_background_y_offset[3]);
+					ini_write_real("Custom Backgrounds", "custom_background_x_offset[4]", custom_background_x_offset[4]);
+					ini_write_real("Custom Backgrounds", "custom_background4_y_offset", custom_background_y_offset[4]);
 					if (instance_exists(obj_foreground1))
 					{
 						ini_write_real("Custom Backgrounds", "custom_foreground1_x_offset", obj_foreground1.x_offset);
@@ -2634,11 +2634,11 @@ function scr_option_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					menu = "custom_background4_x_offset";
+					menu = "custom_background_x_offset[4]";
 					menu_delay = 3;
 				}
 			}
-			if (menu == "custom_background4_x_offset")
+			if (menu == "custom_background_x_offset[4]")
 			{
 				if (key_up)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
@@ -2662,7 +2662,7 @@ function scr_option_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!open_dropdown)
 				{
-					menu = "custom_background4_x_offset";
+					menu = "custom_background_x_offset[4]";
 					menu_delay = 3;
 				}
 				else
@@ -2835,14 +2835,14 @@ function scr_option_level_editor()
 			draw_menu_button(0, 0, l10n_text("Back"), "back_background_offset", "background_offset");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 			
-			custom_background1_x_offset = draw_menu_left_right_buttons(level_editor_option_x, custom_background1_x_offset_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 x offset", custom_background1_x_offset, "custom_background1_x_offset", 1, true);
-			custom_background1_y_offset = draw_menu_left_right_buttons(level_editor_option_x, custom_background1_y_offset_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 y offset", custom_background1_y_offset, "custom_background1_y_offset", 1, true);
-			custom_background2_x_offset = draw_menu_left_right_buttons(level_editor_option_x, custom_background2_x_offset_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 x offset", custom_background2_x_offset, "custom_background2_x_offset", 1, true);
-			custom_background2_y_offset = draw_menu_left_right_buttons(level_editor_option_x, custom_background2_y_offset_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 y offset", custom_background2_y_offset, "custom_background2_y_offset", 1, true);
-			custom_background3_x_offset = draw_menu_left_right_buttons(level_editor_option_x, custom_background3_x_offset_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 3 x offset", custom_background3_x_offset, "custom_background3_x_offset", 1, true);
-			custom_background3_y_offset = draw_menu_left_right_buttons(level_editor_option_x, custom_background3_y_offset_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 3 y offset", custom_background3_y_offset, "custom_background3_y_offset", 1, true);
-			custom_background4_x_offset = draw_menu_left_right_buttons(level_editor_option_x, custom_background4_x_offset_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 x offset", custom_background4_x_offset, "custom_background4_x_offset", 1, true);
-			custom_background4_y_offset = draw_menu_left_right_buttons(level_editor_option_x, custom_background4_y_offset_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 y offset", custom_background4_y_offset, "custom_background4_y_offset", 1, true);
+			custom_background_x_offset[1] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_offset1_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 x offset", custom_background_x_offset[1], "custom_background1_x_offset", 1, true);
+			custom_background_y_offset[1] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_offset1_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 y offset", custom_background_y_offset[1], "custom_background1_y_offset", 1, true);
+			custom_background_x_offset[2] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_offset2_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 x offset", custom_background_x_offset[2], "custom_background2_x_offset", 1, true);
+			custom_background_y_offset[2] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_offset2_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 y offset", custom_background_y_offset[2], "custom_background2_y_offset", 1, true);
+			custom_background_x_offset[3] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_offset3_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 3 x offset", custom_background_x_offset[3], "custom_background3_x_offset", 1, true);
+			custom_background_y_offset[3] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_offset3_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 3 y offset", custom_background_y_offset[3], "custom_background3_y_offset", 1, true);
+			custom_background_x_offset[4] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_offset4_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 x offset", custom_background_x_offset[4], "custom_background_x_offset[4]", 1, true);
+			custom_background_y_offset[4] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_offset4_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 y offset", custom_background_y_offset[4], "custom_background4_y_offset", 1, true);
 			if (instance_exists(obj_foreground1))
 			{
 				obj_foreground1.x_offset = draw_menu_left_right_buttons(level_editor_option_x, custom_foreground1_x_offset_y + menu_y_offset, option_level_editor_right_arrow_x, "Foreground 1 x offset", obj_foreground1.x_offset, "custom_foreground1_x_offset", 1, true);
@@ -2898,14 +2898,10 @@ function scr_option_level_editor()
 				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				{
 					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
-					ini_write_real("Custom Backgrounds", "custom_background1_x_parallax", custom_background1_x_parallax);
-					ini_write_real("Custom Backgrounds", "custom_background1_y_parallax", custom_background1_y_parallax);
-					ini_write_real("Custom Backgrounds", "custom_background2_x_parallax", custom_background2_x_parallax);
-					ini_write_real("Custom Backgrounds", "custom_background2_y_parallax", custom_background2_y_parallax);
-					ini_write_real("Custom Backgrounds", "custom_background3_x_parallax", custom_background3_x_parallax);
-					ini_write_real("Custom Backgrounds", "custom_background3_y_parallax", custom_background3_y_parallax);
-					ini_write_real("Custom Backgrounds", "custom_background4_x_parallax", custom_background4_x_parallax);
-					ini_write_real("Custom Backgrounds", "custom_background4_y_parallax", custom_background4_y_parallax);
+					for (var i = 1; i <= 4; i++) {
+						ini_write_real("Custom Backgrounds", "custom_background" + string(i) + "_x_parallax", custom_background_x_parallax[i]);
+						ini_write_real("Custom Backgrounds", "custom_background" + string(i) + "_y_parallax", custom_background_y_parallax[i]);
+					}
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
 				#endregion /* Background Parallax Save level_information.ini END */
@@ -3095,14 +3091,14 @@ function scr_option_level_editor()
 			draw_menu_button(0, 0, l10n_text("Back"), "back_background_parallax", "background_parallax");
 			draw_sprite_ext(spr_icon_back, 0, 20, 21, 1, 1, 0, c_white, 1);
 			
-			custom_background1_x_parallax = draw_menu_left_right_buttons(level_editor_option_x, custom_background1_x_parallax_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 x parallax", custom_background1_x_parallax, "custom_background1_x_parallax", 0.1, true);
-			custom_background1_y_parallax = draw_menu_left_right_buttons(level_editor_option_x, custom_background1_y_parallax_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 y parallax", custom_background1_y_parallax, "custom_background1_y_parallax", 0.1, true);
-			custom_background2_x_parallax = draw_menu_left_right_buttons(level_editor_option_x, custom_background2_x_parallax_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 x parallax", custom_background2_x_parallax, "custom_background2_x_parallax", 0.1, true);
-			custom_background2_y_parallax = draw_menu_left_right_buttons(level_editor_option_x, custom_background2_y_parallax_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 y parallax", custom_background2_y_parallax, "custom_background2_y_parallax", 0.1, true);
-			custom_background3_x_parallax = draw_menu_left_right_buttons(level_editor_option_x, custom_background3_x_parallax_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 3 x parallax", custom_background3_x_parallax, "custom_background3_x_parallax", 0.1, true);
-			custom_background3_y_parallax = draw_menu_left_right_buttons(level_editor_option_x, custom_background3_y_parallax_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 3 y parallax", custom_background3_y_parallax, "custom_background3_y_parallax", 0.1, true);
-			custom_background4_x_parallax = draw_menu_left_right_buttons(level_editor_option_x, custom_background4_x_parallax_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 x parallax", custom_background4_x_parallax, "custom_background4_x_parallax", 0.1, true);
-			custom_background4_y_parallax = draw_menu_left_right_buttons(level_editor_option_x, custom_background4_y_parallax_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 y parallax", custom_background4_y_parallax, "custom_background4_y_parallax", 0.1, true);
+			custom_background_x_parallax[1] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_parallax1_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 x parallax", custom_background_x_parallax[1], "custom_background1_x_parallax", 0.1, true);
+			custom_background_y_parallax[1] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax1_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 1 y parallax", custom_background_y_parallax[1], "custom_background1_y_parallax", 0.1, true);
+			custom_background_x_parallax[2] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_parallax2_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 x parallax", custom_background_x_parallax[2], "custom_background2_x_parallax", 0.1, true);
+			custom_background_y_parallax[2] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax2_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 2 y parallax", custom_background_y_parallax[2], "custom_background2_y_parallax", 0.1, true);
+			custom_background_x_parallax[3] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_parallax3_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 3 x parallax", custom_background_x_parallax[3], "custom_background3_x_parallax", 0.1, true);
+			custom_background_y_parallax[3] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax3_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 3 y parallax", custom_background_y_parallax[3], "custom_background3_y_parallax", 0.1, true);
+			custom_background_x_parallax[4] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_x_parallax4_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 x parallax", custom_background_x_parallax[4], "custom_background4_x_parallax", 0.1, true);
+			custom_background_y_parallax[4] = draw_menu_left_right_buttons(level_editor_option_x, custom_background_y_parallax4_y + menu_y_offset, option_level_editor_right_arrow_x, "Background 4 y parallax", custom_background_y_parallax[4], "custom_background4_y_parallax", 0.1, true);
 		}
 		#endregion /* Background Parallax END */
 		
@@ -3422,7 +3418,7 @@ function scr_option_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (custom_background1_htiled){custom_background1_htiled = false;}else{custom_background1_htiled = true;}menu_delay = 3;
-					layer_background_htiled(layer_background_get_id(layer_get_id("Background")), custom_background1_htiled);
+					layer_background_htiled(layer_background_get_id(layer_get_id("Background_1")), custom_background1_htiled);
 				}
 				else
 				if (key_up)
@@ -3449,7 +3445,7 @@ function scr_option_level_editor()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					if (custom_background1_vtiled){custom_background1_vtiled = false;}else{custom_background1_vtiled = true;}menu_delay = 3;
-					layer_background_vtiled(layer_background_get_id(layer_get_id("Background")), custom_background1_vtiled);
+					layer_background_vtiled(layer_background_get_id(layer_get_id("Background_1")), custom_background1_vtiled);
 				}
 				else
 				if (key_up)
@@ -3863,7 +3859,7 @@ function scr_option_level_editor()
 					{
 						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", "");
-						layer_background_sprite(layer_background_get_id(layer_get_id("Background")), spr_noone);
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_1")), spr_noone);
 						ini_write_string("info", "default_background2", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), spr_noone);
 						ini_write_string("info", "default_background3", "");
@@ -3886,7 +3882,7 @@ function scr_option_level_editor()
 					{
 						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", "");
-						layer_background_sprite(layer_background_get_id(layer_get_id("Background")), spr_noone);
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_1")), spr_noone);
 						ini_write_string("info", "default_background2", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), spr_noone);
 						ini_write_string("info", "default_background3", "");
@@ -3910,7 +3906,7 @@ function scr_option_level_editor()
 					{
 						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", "");
-						layer_background_sprite(layer_background_get_id(layer_get_id("Background")), spr_noone);
+						layer_background_sprite(layer_background_get_id(layer_get_id("Background_1")), spr_noone);
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else

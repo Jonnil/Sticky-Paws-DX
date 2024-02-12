@@ -18,24 +18,19 @@ function scr_initialize_level_information_ini()
 			ini_open(global.use_cache_or_working + "custom_levels/" + global.level_name + "/data/level_information.ini");
 			can_save_to_level_information = true;
 		}
+		for (var i = 1; i <= 4; i++) {
+			custom_background_y_offset[i] = get_custom_level_information_real("Custom Backgrounds", "custom_background" + string(i) + "_y_offset", 0);
+			custom_background_x_offset[i] = get_custom_level_information_real("Custom Backgrounds", "custom_background" + string(i) + "_x_offset", 0);
+		}
 		
-		custom_background4_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background4_y_offset", 0);
-		custom_background4_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background4_x_offset", 0);
-		custom_background3_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background3_y_offset", 0);
-		custom_background3_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background3_x_offset", 0);
-		custom_background2_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background2_y_offset", 0);
-		custom_background2_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background2_x_offset", 0);
-		custom_background1_y_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background1_y_offset", 0);
-		custom_background1_x_offset = get_custom_level_information_real("Custom Backgrounds", "custom_background1_x_offset", 0);
-		
-		custom_background4_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background4_y_parallax", 9);
-		custom_background4_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background4_x_parallax", 9);
-		custom_background3_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background3_y_parallax", 7);
-		custom_background3_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background3_x_parallax", 7);
-		custom_background2_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background2_y_parallax", 5);
-		custom_background2_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background2_x_parallax", 5);
-		custom_background1_y_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background1_y_parallax", 3);
-		custom_background1_x_parallax = get_custom_level_information_real("Custom Backgrounds", "custom_background1_x_parallax", 3);
+		custom_background_y_parallax[4] = get_custom_level_information_real("Custom Backgrounds", "custom_background4_y_parallax", 9);
+		custom_background_x_parallax[4] = get_custom_level_information_real("Custom Backgrounds", "custom_background4_x_parallax", 9);
+		custom_background_y_parallax[3] = get_custom_level_information_real("Custom Backgrounds", "custom_background3_y_parallax", 7);
+		custom_background_x_parallax[3] = get_custom_level_information_real("Custom Backgrounds", "custom_background3_x_parallax", 7);
+		custom_background_y_parallax[2] = get_custom_level_information_real("Custom Backgrounds", "custom_background2_y_parallax", 5);
+		custom_background_x_parallax[2] = get_custom_level_information_real("Custom Backgrounds", "custom_background2_x_parallax", 5);
+		custom_background_y_parallax[1] = get_custom_level_information_real("Custom Backgrounds", "custom_background1_y_parallax", 3);
+		custom_background_x_parallax[1] = get_custom_level_information_real("Custom Backgrounds", "custom_background1_x_parallax", 3);
 		
 		custom_background4_y_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background4_y_scale", 1);
 		custom_background4_x_scale = get_custom_level_information_real("Custom Backgrounds", "custom_background4_x_scale", 1);
@@ -76,22 +71,18 @@ function scr_initialize_level_information_ini()
 	}
 	else
 	{
-		custom_background1_x_offset = 0;
-		custom_background1_y_offset = 0;
-		custom_background2_x_offset = 0;
-		custom_background2_y_offset = 0;
-		custom_background3_x_offset = 0;
-		custom_background3_y_offset = 0;
-		custom_background4_x_offset = 0;
-		custom_background4_y_offset = 0;
-		custom_background1_x_parallax = 3;
-		custom_background1_y_parallax = 3;
-		custom_background2_x_parallax = 5;
-		custom_background2_y_parallax = 5;
-		custom_background3_x_parallax = 7;
-		custom_background3_y_parallax = 7;
-		custom_background4_x_parallax = 9;
-		custom_background4_y_parallax = 9;
+		for (var i = 1; i <= 4; i++) {
+			custom_background_x_offset[i] = 0;
+			custom_background_y_offset[i] = 0;
+		}
+		custom_background_x_parallax[1] = 3;
+		custom_background_y_parallax[1] = 3;
+		custom_background_x_parallax[2] = 5;
+		custom_background_y_parallax[2] = 5;
+		custom_background_x_parallax[3] = 7;
+		custom_background_y_parallax[3] = 7;
+		custom_background_x_parallax[4] = 9;
+		custom_background_y_parallax[4] = 9;
 		custom_background1_x_scale = 1;
 		custom_background1_y_scale = 1;
 		custom_background2_x_scale = 1;
@@ -121,8 +112,8 @@ function scr_initialize_level_information_ini()
 	#endregion /* Initialize level_information.ini END */
 	
 	#region /* Set if background is horizontally or vertically tiled */
-	layer_background_htiled(layer_background_get_id(layer_get_id("Background")), custom_background1_htiled);
-	layer_background_vtiled(layer_background_get_id(layer_get_id("Background")), custom_background1_vtiled);
+	layer_background_htiled(layer_background_get_id(layer_get_id("Background_1")), custom_background1_htiled);
+	layer_background_vtiled(layer_background_get_id(layer_get_id("Background_1")), custom_background1_vtiled);
 	layer_background_htiled(layer_background_get_id(layer_get_id("Background_2")), custom_background2_htiled);
 	layer_background_vtiled(layer_background_get_id(layer_get_id("Background_2")), custom_background2_vtiled);
 	layer_background_htiled(layer_background_get_id(layer_get_id("Background_3")), custom_background3_htiled);

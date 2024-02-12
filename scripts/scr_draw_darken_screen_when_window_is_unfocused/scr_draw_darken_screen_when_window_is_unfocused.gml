@@ -13,7 +13,7 @@ function scr_draw_darken_screen_when_window_is_unfocused()
 		    draw_rectangle_color(0, 0, gui_width, gui_height, c_black, c_black, c_black, c_black, false);
 			
 			var wave_alpha = scr_wave(0.5, 2, 1);
-	        var text_width = string_width(l10n_text("Click to Focus")) * 0.5;
+	        var text_width = 125;
 			
 	        draw_set_alpha(wave_alpha);
 	        draw_set_halign(fa_center);

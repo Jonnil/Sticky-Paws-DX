@@ -20,3 +20,5 @@ sprite_lives_icon = scr_initialize_character_sprite("lives_icon", sprite_lives_i
 set_controller_sprites_to_use();
 
 scr_initialize_effects();
+
+global.deactivate_timer = 999; /* Force update deactivate region */

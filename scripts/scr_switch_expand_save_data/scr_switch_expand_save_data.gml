@@ -67,6 +67,7 @@ function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal
 					
 					//success = switch_save_data_set_size(account_idx, success_save_data_size, success_save_data_journal_size); /* Expand save data size. Game crashes on other platforms, because it thinks this is a function that doesn't exist */
 					
+					#region /* Rest of success code */
 					switch_save_data_mount(0); /* Don't forget to mount the save data again after expanding save data size */
 					if (success)
 					{
@@ -83,6 +84,8 @@ function scr_switch_expand_save_data(desired_save_size_mib = 16, desired_journal
 						}
 						global.save_data_size_is_sufficient = false; /* Tell player that save data is full */
 					}
+					#endregion /* Rest of success code END */
+					
 				}
 				else
 				{

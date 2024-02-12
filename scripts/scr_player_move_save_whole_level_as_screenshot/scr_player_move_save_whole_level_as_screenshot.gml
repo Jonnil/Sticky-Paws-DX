@@ -11,7 +11,7 @@ function scr_player_move_save_whole_level_as_screenshot()
 		if (full_level_map_screenshot_timer <= 0)
 		{
 			/* Disable the backgrounds when getting full level map */
-			layer_background_visible(layer_background_get_id("Background"), false);
+			layer_background_visible(layer_background_get_id("Background_1"), false);
 			layer_background_visible(layer_background_get_id("Background_2"), false);
 			layer_background_visible(layer_background_get_id("Background_3"), false);
 			layer_background_visible(layer_background_get_id("Background_4"), false);

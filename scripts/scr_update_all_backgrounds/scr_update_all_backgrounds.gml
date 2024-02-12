@@ -405,7 +405,7 @@ function scr_update_all_backgrounds()
 	#region /* Set Backgrounds */
 	var time_source = time_source_create(time_source_game, time_source_period, time_source_units_frames, function(){
 		if (global.custom_background1 > noone) {
-			layer_background_sprite(layer_background_get_id(layer_get_id("Background")), global.custom_background1);
+			layer_background_sprite(layer_background_get_id(layer_get_id("Background_1")), global.custom_background1);
 		}
 		if (global.custom_background2 > noone) {
 			layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);

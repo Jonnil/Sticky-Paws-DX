@@ -43,7 +43,6 @@ full_level_map_screenshot_timer = 0;
 intro_animation = ""; /* This determines the intro animation to play when you first enter a level */
 cutscene_time = 0; /* Timer that determines what will happen in the intro animation */
 intro_animation_sprite = noone; /* When there is a intro animation, the sprites for the into animation gets stored here, and the normal sprites for gameplay are hidden so the into sprites can play out correctly */
-intro_animation_image_index = 0; /* Image index of intro animation */
 #endregion /* Intro Animation Variables END */
 
 can_clamp_inside_view = 0; /* There should be a 3 frame delay before the player clamps inside view, so that the player always starts where the camera object spawns */
@@ -299,3 +298,17 @@ if (ini_key_exists(global.level_name, "checkpoint_direction"))
 }
 ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #endregion /* Load Checkpoint Direction END */
+
+#region /* Play Ambience */
+if (!audio_is_playing(global.ambience)) {
+	scr_audio_play(global.ambience, volume_source.ambient);
+	audio_sound_gain(global.ambience, global.volume_ambient * global.volume_main, 0);
+}
+#endregion /* Play Ambience END */
+
+#region /* Play Underwater Ambience */
+if (!audio_is_playing(global.ambience_underwater)) {
+	scr_audio_play(global.ambience_underwater, volume_source.ambient);
+	audio_sound_gain(global.ambience_underwater, 0, 0);
+}
+#endregion /* Play Underwater Ambience END */

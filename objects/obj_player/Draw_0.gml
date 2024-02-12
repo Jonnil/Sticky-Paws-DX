@@ -81,7 +81,6 @@ if (draw_arrow_outside_view_alpha > 0.01)
 #region /* Draw intro animation sprites (cutscene) if intro is playing */
 if (intro_animation != "" && intro_animation_sprite > 0) {
 	sprite_index = intro_animation_sprite;
-	image_index = intro_animation_image_index;
 }
 #endregion /* Draw intro animation sprites (cutscene) if intro is playing END */
 

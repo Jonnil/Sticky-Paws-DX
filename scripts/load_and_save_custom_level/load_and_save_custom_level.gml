@@ -245,14 +245,14 @@ function scr_save_level_information() {
 		#region /* Save Custom Background Settings */
 		
 		#region /* Save Custom Backgrounds Offset */
-		ini_write_real("Custom Backgrounds", "custom_background1_x_offset", custom_background1_x_offset);
-		ini_write_real("Custom Backgrounds", "custom_background1_y_offset", custom_background1_y_offset);
-		ini_write_real("Custom Backgrounds", "custom_background2_x_offset", custom_background2_x_offset);
-		ini_write_real("Custom Backgrounds", "custom_background2_y_offset", custom_background2_y_offset);
-		ini_write_real("Custom Backgrounds", "custom_background3_x_offset", custom_background3_x_offset);
-		ini_write_real("Custom Backgrounds", "custom_background3_y_offset", custom_background3_y_offset);
-		ini_write_real("Custom Backgrounds", "custom_background4_x_offset", custom_background4_x_offset);
-		ini_write_real("Custom Backgrounds", "custom_background4_y_offset", custom_background4_y_offset);
+		ini_write_real("Custom Backgrounds", "custom_background1_x_offset", custom_background_x_offset[1]);
+		ini_write_real("Custom Backgrounds", "custom_background1_y_offset", custom_background_y_offset[1]);
+		ini_write_real("Custom Backgrounds", "custom_background2_x_offset", custom_background_x_offset[2]);
+		ini_write_real("Custom Backgrounds", "custom_background2_y_offset", custom_background_y_offset[2]);
+		ini_write_real("Custom Backgrounds", "custom_background3_x_offset", custom_background_x_offset[3]);
+		ini_write_real("Custom Backgrounds", "custom_background3_y_offset", custom_background_y_offset[3]);
+		ini_write_real("Custom Backgrounds", "custom_background_x_offset[4]", custom_background_x_offset[4]);
+		ini_write_real("Custom Backgrounds", "custom_background4_y_offset", custom_background_y_offset[4]);
 		ini_write_real("Custom Backgrounds", "custom_foreground1_x_offset", obj_foreground1.x_offset);
 		ini_write_real("Custom Backgrounds", "custom_foreground1_y_offset", obj_foreground1.y_offset);
 		ini_write_real("Custom Backgrounds", "custom_foreground1_5_x_offset", obj_foreground1_5.x_offset);
@@ -264,14 +264,10 @@ function scr_save_level_information() {
 		#endregion /* Save Custom Backgrounds Offset END */
 		
 		#region /* Save Custom Backgrounds Parallax */
-		ini_write_real("Custom Backgrounds", "custom_background1_x_parallax", custom_background1_x_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background1_y_parallax", custom_background1_y_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background2_x_parallax", custom_background2_x_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background2_y_parallax", custom_background2_y_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background3_x_parallax", custom_background3_x_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background3_y_parallax", custom_background3_y_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background4_x_parallax", custom_background4_x_parallax);
-		ini_write_real("Custom Backgrounds", "custom_background4_y_parallax", custom_background4_y_parallax);
+		for (var i = 1; i <= 4; i++) {
+			ini_write_real("Custom Backgrounds", "custom_background" + string(i) + "_x_parallax", custom_background_x_parallax[i]);
+			ini_write_real("Custom Backgrounds", "custom_background" + string(i) + "_y_parallax", custom_background_y_parallax[i]);
+		}
 		#endregion /* Save Custom Backgrounds Parallax END */
 		
 		#region /* Save Custom Backgrounds Scale */

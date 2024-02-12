@@ -1,31 +1,19 @@
 var get_window_height = display_get_gui_height();
 var get_window_width = display_get_gui_width();
 var clear_prompt_x = 164;
-if (instance_exists(obj_level)) /* Must check if obj_level exists or not */
-{
-	var nearest_level = instance_nearest(x, y, obj_level);
-	var distance_to_level = distance_to_object(nearest_level);
-}
-else
-{
-	var nearest_level = 0;
-	var distance_to_level = 0;
-}
 
 #region /* Show Enter Level Key */
 if (can_move)
 && (can_enter_level >= 30)
-&& (point_distance(xx, yy, x, y) < 30)
 && (distance_to_level < 4)
-&& (speed == 0)
 && (nearest_level.clear_rate != "closed")
-&& (!global.pause) {
+&& (speed == 0)
+&& (point_distance(xx, yy, x, y) < 30) {
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_middle);
 	scr_draw_text_outlined(64, get_window_height - 20, l10n_text("Play"), global.default_text_size, c_black, c_white, 1);
 	
-	if (global.controls_used_for_navigation == "gamepad")
-	&& (gamepad_is_connected(global.player_slot[player]))
+	if (global.controls_used_for_navigation == "gamepad" && gamepad_is_connected(global.player_slot[player]))
 	|| (global.always_show_gamepad_buttons) {
 		scr_draw_gamepad_buttons(global.player_[inp.gp][player][1][action.accept], 32, get_window_height - 20, 0.5, c_white, 1, 1, 1, player);
 	}
@@ -58,9 +46,8 @@ if (global.debug_screen) {
 	if (can_move)
 	&& (can_enter_level >= 30)
 	&& (distance_to_level < 4)
-	&& (speed == 0)
 	&& (nearest_level.clear_rate = "enter")
-	&& (!global.pause) {
+	&& (speed == 0) {
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
 		scr_draw_text_outlined(clear_prompt_x + 32, get_window_height - 20, l10n_text("Clear"), global.default_text_size, c_black, c_white, 1);
@@ -95,11 +82,10 @@ if (global.debug_screen) {
 #region /* Show Level Info */
 if (iris_xscale > 9)
 && (move_delay > 10)
-&& (point_distance(xx, yy, x, y) < 30)
 && (distance_to_level < 4)
-&& (nearest_level.level_number != 0) {
-	if (nearest_level.clear_rate == "enter")
-	|| (nearest_level.clear_rate == "clear") {
+&& (nearest_level.level_number != 0)
+&& (point_distance(xx, yy, x, y) < 30) {
+	if (nearest_level.clear_rate == "enter" || nearest_level.clear_rate == "clear") {
 		var show_level_info_x = 180;
 		var show_level_info_y = 200;
 		draw_set_halign(fa_center);
@@ -109,8 +95,7 @@ if (iris_xscale > 9)
 		best_time_y = -128;
 		best_score_y = -96;
 		times_cleared_y = -64;
-		if (global.show_defeats_counter)
-		&& (nearest_level.number_of_defeats > 0) {
+		if (global.show_defeats_counter && nearest_level.number_of_defeats > 0) {
 			total_defeats_y = -32;
 		}
 		else {
@@ -148,11 +133,8 @@ if (iris_xscale > 9)
 		#endregion /* Show High Score END */
 		
 		#region /* Show Fastest Time */
-		if (nearest_level.timeattack_realmillisecond < 999999999)
-		&& (nearest_level.timeattack_realmillisecond > 0) {
-			scr_draw_text_outlined(show_level_info_x, show_level_info_y + best_time_y, l10n_text("Best Time") + ": " + string(nearest_level.timeattack_minute) + ":" +
-			string(string_replace_all(string_format(nearest_level.timeattack_second, 2, 0), " ", "0")) + "." +
-			string(string_replace_all(string_format(nearest_level.timeattack_millisecond, 2, 0), " ", "0")), global.default_text_size, c_black, c_white, 1);
+		if (nearest_level.timeattack_realmillisecond < 999999999 && nearest_level.timeattack_realmillisecond > 0) {
+			scr_draw_text_outlined(show_level_info_x, show_level_info_y + best_time_y, best_time_text, global.default_text_size, c_black, c_white, 1);
 		}
 		#endregion /* Show Fastest Time END */
 		
