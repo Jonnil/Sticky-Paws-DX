@@ -29,7 +29,7 @@ function scr_initialize_effects()
 		if (!layer_exists("WindEffectLayer")) {
 			layer_create(-100, "WindEffectLayer");
 			var _fx_wind = fx_create("_effect_windblown_particles");
-			fx_set_parameter(_fx_wind, "param_num_particles", 15 /* 30 */);
+			fx_set_parameter(_fx_wind, "param_num_particles", 9); /* No more than 9 particles for better performance */
 			fx_set_parameter(_fx_wind, "param_particle_spawn_all_at_start", false);
 			fx_set_parameter(_fx_wind, "param_particle_initial_velocity_range_x_min", -50);
 			fx_set_parameter(_fx_wind, "param_particle_initial_velocity_range_y_min", -50);
@@ -41,8 +41,7 @@ function scr_initialize_effects()
 			layer_set_fx("WindEffectLayer", _fx_wind);
 		}
 	}
-	else
-	if (layer_exists("WindEffectLayer")) {
+	else if (layer_exists("WindEffectLayer")) {
 		layer_destroy("WindEffectLayer")
 	}
 	#endregion /* Wind Effect END */

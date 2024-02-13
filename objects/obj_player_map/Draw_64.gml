@@ -55,24 +55,22 @@ if (iris_xscale > 9 && move_delay > 10 && distance_to_level < 4 && nearest_level
 		
         if (show_info) {
             draw_set_halign(fa_center);
-            draw_set_valign(fa_middle);
+            draw_set_valign(fa_top);
             draw_set_alpha(0.9);
             draw_roundrect_color_ext(show_level_info_x - 140, show_level_info_y - abs(show_big_collectibles_y) - 16, show_level_info_x + 140, show_level_info_y + total_defeats_y + 16, 50, 50, c_black, c_black, false);
             draw_set_alpha(1);
 			
             /* Draw level info */
-            if (global.show_defeats_counter && nearest_level.number_of_defeats > 0) {
-                scr_draw_text_outlined(show_level_info_x, show_level_info_y + total_defeats_y, l10n_text("Total Defeats") + ": " + string(nearest_level.number_of_defeats), global.default_text_size, c_black, c_white, 1);
+            var total_defeats_text = "";
+			if (global.show_defeats_counter && nearest_level.number_of_defeats > 0) {
+				var total_defeats_text = l10n_text("Total Defeats") + ": " + string(nearest_level.number_of_defeats);
             }
-            if (nearest_level.number_of_clears > 0) {
-                scr_draw_text_outlined(show_level_info_x, show_level_info_y - 64, l10n_text("Times Passed") + ": " + string(nearest_level.number_of_clears), global.default_text_size, c_black, c_white, 1);
-            }
-            if (nearest_level.level_score > 0) {
-                scr_draw_text_outlined(show_level_info_x, show_level_info_y - 96, l10n_text("Best Score") + ": " + string(nearest_level.level_score), global.default_text_size, c_black, c_white, 1);
-            }
-            if (nearest_level.timeattack_realmillisecond < 999999999 && nearest_level.timeattack_realmillisecond > 0) {
-                scr_draw_text_outlined(show_level_info_x, show_level_info_y - 128, best_time_text, global.default_text_size, c_black, c_white, 1);
-            }
+			scr_draw_text_outlined(show_level_info_x, show_level_info_y - 150,
+			best_time_text + "\n" +
+			l10n_text("Best Score") + ": " + string(nearest_level.level_score) + "\n" +
+			l10n_text("Times Passed") + ": " + string(nearest_level.number_of_clears) + "\n" +
+			total_defeats_text,
+			global.default_text_size, c_black, c_white, 1);
             if (at_least_one_big_collectible) {
                 for (var i = 1; i <= global.max_big_collectible; i++) {
                     var sprite_to_draw = global.resource_pack_sprite_big_collectible_outline;

@@ -1524,7 +1524,7 @@
       ],"depth":0,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"WindParticles","animationFPS":15.0,"animationSpeedType":0,"colour":1579032,"depth":100,"effectEnabled":true,"effectType":"_effect_windblown_particles","gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[
         {"name":"param_sprite","type":2,"value":"_effect_windblown_particles_leaf_sprite",},
-        {"name":"param_num_particles","type":0,"value":"30",},
+        {"name":"param_num_particles","type":0,"value":"9",},
         {"name":"param_particle_spawn_time","type":0,"value":"100",},
         {"name":"param_particle_spawn_all_at_start","type":0,"value":"0",},
         {"name":"param_warmup_frames","type":0,"value":"0",},
