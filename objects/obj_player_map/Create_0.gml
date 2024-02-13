@@ -83,10 +83,6 @@ for(var i = 1; i <= global.max_players; i += 1)
 alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
 alarm[1] = 3; /* Spawn cake stealing enemy on world map */
 
-#region /* Allow moves on world map */
-allow_free_movement = false; /* Turn this to true to move freely on the map instead of moving on paths, should be false by default */
-#endregion /* Allow moves on world map END */
-
 global.pause_room = noone;
 depth = -100;
 layer_depth("WindParticles", -99);
@@ -262,3 +258,28 @@ scr_audio_play(music_map, volume_source.music); /* Play the map screen music */
 nearest_level = 0;
 distance_to_level = 0;
 best_time_text = "";
+
+/* Stop audio */
+audio_stop_sound(snd_skidding);
+audio_stop_sound(snd_skidding_ice);
+audio_stop_sound(snd_music_boss);
+audio_stop_sound(global.music);
+audio_stop_sound(global.music_underwater);
+audio_stop_sound(global.ambience);
+audio_stop_sound(global.ambience_underwater);
+global.music = noone;
+global.music_underwater = noone;
+global.ambience = noone;
+global.ambience_underwater = noone;
+
+global.goal_active = false;
+
+/* Give player lives if they get a game over */
+if (lives <= 0) {
+    lives = 5 * global.playergame;
+    if (global.character_select_in_this_menu == "main_game") {
+        ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+        ini_write_real("Player", "lives", lives);
+        ini_close(); switch_save_data_commit();
+    }
+}

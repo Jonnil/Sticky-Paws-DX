@@ -2999,6 +2999,7 @@
     {"id":{"name":"spr_change_input_to_keyboard","path":"sprites/spr_change_input_to_keyboard/spr_change_input_to_keyboard.yy",},},
     {"id":{"name":"spr_map_tree_pink","path":"sprites/spr_map_tree_pink/spr_map_tree_pink.yy",},},
     {"id":{"name":"scr_player_move_sprint","path":"scripts/scr_player_move_sprint/scr_player_move_sprint.yy",},},
+    {"id":{"name":"scr_draw_show_controls_map","path":"scripts/scr_draw_show_controls_map/scr_draw_show_controls_map.yy",},},
     {"id":{"name":"spr_iris","path":"sprites/spr_iris/spr_iris.yy",},},
     {"id":{"name":"spr_map_bg","path":"sprites/spr_map_bg/spr_map_bg.yy",},},
     {"id":{"name":"spr_water_surface","path":"sprites/spr_water_surface/spr_water_surface.yy",},},
