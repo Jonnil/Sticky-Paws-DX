@@ -65,7 +65,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 	{
 		player = i;
 		custom_character = global.character_for_player[i];
-		selected_voice_pack = global.voicepack_for_player[i];
+		selected_voicepack = global.voicepack_for_player[i];
 		selected_skin = global.skin_for_player[i];
 		break; /* Exit the loop once a valid player is found */
 	}
@@ -75,7 +75,7 @@ for(var i = 1; i <= global.max_players; i += 1)
 		var fixed_player = 1;
 		player = fixed_player;
 		custom_character = global.character_for_player[fixed_player];
-		selected_voice_pack = global.voicepack_for_player[fixed_player];
+		selected_voicepack = global.voicepack_for_player[fixed_player];
 		selected_skin = global.skin_for_player[fixed_player];
 	}
 }
@@ -192,7 +192,7 @@ iris_zoom = 0;
 index = 0;
 sprite_map = noone;
 sprite_map_enter_level = noone;
-sprite_stand = noone;
+sprite_idle = noone;
 sprite_walk = noone;
 #endregion /* Play as custom character END */
 

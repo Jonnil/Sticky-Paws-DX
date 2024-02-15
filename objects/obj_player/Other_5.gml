@@ -45,8 +45,8 @@ if (!global.pause) /* Only delete sprites if you aren't pausing the game */
 	scr_delete_sprite_properly(sprite_spring_down);
 	scr_delete_sprite_properly(sprite_spring_transition);
 	scr_delete_sprite_properly(sprite_spring_up);
-	scr_delete_sprite_properly(sprite_stand);
-	scr_delete_sprite_properly(sprite_stand_blink);
+	scr_delete_sprite_properly(sprite_idle);
+	scr_delete_sprite_properly(sprite_idle_blink);
 	scr_delete_sprite_properly(sprite_idle_animation1);
 	scr_delete_sprite_properly(sprite_idle_animation2);
 	scr_delete_sprite_properly(sprite_idle_animation3);
@@ -56,9 +56,9 @@ if (!global.pause) /* Only delete sprites if you aren't pausing the game */
 	scr_delete_sprite_properly(sprite_idle_animation7);
 	scr_delete_sprite_properly(sprite_idle_animation8);
 	scr_delete_sprite_properly(sprite_idle_animation9);
-	scr_delete_sprite_properly(sprite_stand_cold);
-	scr_delete_sprite_properly(sprite_standing_on_something);
-	scr_delete_sprite_properly(sprite_standing_with_item_in_front);
+	scr_delete_sprite_properly(sprite_idle_cold);
+	scr_delete_sprite_properly(sprite_idleing_on_something);
+	scr_delete_sprite_properly(sprite_idleing_with_item_in_front);
 	scr_delete_sprite_properly(sprite_stomp_spin);
 	scr_delete_sprite_properly(sprite_swim);
 	scr_delete_sprite_properly(sprite_swim_fall);

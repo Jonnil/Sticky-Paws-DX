@@ -10,9 +10,7 @@ room_speed = global.max_fps; /* Room Speed */
 /*direction = point_direction(scr_x_to_gui(x), scr_y_to_gui(y), device_mouse_x_to_gui(0), device_mouse_y_to_gui(0));*/
 
 #region /* Create object that always follows mouse */
-if (can_create_follow_mouse)
-&& (!instance_exists(obj_follow_mouse))
-{
+if (can_create_follow_mouse && !instance_exists(obj_follow_mouse)) {
 	instance_create_depth(mouse_x, mouse_y, 0, obj_follow_mouse);
 }
 #endregion /* Create object that always follows mouse END */
@@ -27,7 +25,7 @@ loading_assets = false;
 var fixed_player = 1;
 player = fixed_player;
 custom_character = global.character_for_player[fixed_player];
-selected_voice_pack = global.voicepack_for_player[fixed_player];
+selected_voicepack = global.voicepack_for_player[fixed_player];
 selected_skin = global.skin_for_player[fixed_player];
 alarm[0] = 1; /* Initialize custom character timer. This code needs to be initialized later than create event, but not in step event, so only initialize in alarm */
 #endregion /* What custom character to use, change the character sprites and voice END */

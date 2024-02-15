@@ -61,7 +61,7 @@ function scr_player_move_horizontal_rope()
 			{
 				if (sprite_climb_under_spin > noone){sprite_index = sprite_climb_under_spin;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 			else
@@ -69,7 +69,7 @@ function scr_player_move_horizontal_rope()
 				if (sprite_climb_under_spin_fast> noone){sprite_index = sprite_climb_under_spin_fast;}else
 				if (sprite_climb_under_spin > noone){sprite_index = sprite_climb_under_spin;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 			if (image_index >= image_number - 1)
@@ -208,7 +208,7 @@ function scr_player_move_horizontal_rope()
 			{
 				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 				if (key_run)
 				|| (double_tap_left == 3)
@@ -249,7 +249,7 @@ function scr_player_move_horizontal_rope()
 			{
 				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 				if (key_run)
 				|| (double_tap_right == 3)
@@ -285,14 +285,14 @@ function scr_player_move_horizontal_rope()
 			{
 				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 			else
 			{
 				if (sprite_climb_under_look_up > noone){sprite_index = sprite_climb_under_look_up;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 			image_speed = 0.5;
@@ -305,7 +305,7 @@ function scr_player_move_horizontal_rope()
 			{
 				if (sprite_climb_under > noone){sprite_index = sprite_climb_under;}else
 				if (sprite_climb_under_still > noone){sprite_index = sprite_climb_under_still;}else
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 			else
@@ -315,7 +315,7 @@ function scr_player_move_horizontal_rope()
 			}
 			else
 			{
-				if (sprite_stand > noone) && (typeof(sprite_stand) != "undefined"){sprite_index = sprite_stand;}else
+				if (sprite_idle > noone) && (typeof(sprite_idle) != "undefined"){sprite_index = sprite_idle;}else
 				if (sprite_walk > noone){sprite_index = sprite_walk;}
 			}
 		}

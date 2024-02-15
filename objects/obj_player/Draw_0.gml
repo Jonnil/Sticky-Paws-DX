@@ -99,7 +99,7 @@ if (taken_damage >= taken_damage_freezetime) {
 		sprite_index = sprite_die;
 	}
 	else {
-		if (sprite_stand > noone){sprite_index = sprite_stand;}else
+		if (sprite_idle > noone){sprite_index = sprite_idle;}else
 		if (sprite_walk > noone){sprite_index = sprite_walk;}
 	}
 	if (image_index > image_number - 1) {

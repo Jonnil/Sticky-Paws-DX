@@ -15,7 +15,9 @@ if (sprite_lives_icon != spr_1up)
 }
 sprite_lives_icon = spr_1up;
 scr_set_character_folder(camera_player, camera_selected_skin);
+ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 sprite_lives_icon = scr_initialize_character_sprite("lives_icon", sprite_lives_icon);
+ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 
 set_controller_sprites_to_use();
 

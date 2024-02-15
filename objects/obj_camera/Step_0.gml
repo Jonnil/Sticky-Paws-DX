@@ -176,7 +176,7 @@ if (!global.pause)
 				player[i] = instance_create_depth(instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, 0, obj_player);
 				with(player[i]) {
 					custom_character = global.character_for_player[i];
-					selected_voice_pack = global.voicepack_for_player[i];
+					selected_voicepack = global.voicepack_for_player[i];
 					selected_skin = global.skin_for_player[i];
 					player = i;
 				}

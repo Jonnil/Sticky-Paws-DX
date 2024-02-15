@@ -64,9 +64,9 @@ function scr_player_move_lose()
 					sprite_index = instance_nearest_player.sprite_die;
 				}
 				else
-				if (instance_nearest_player.sprite_stand > noone)
+				if (instance_nearest_player.sprite_idle > noone)
 				{
-					sprite_index = instance_nearest_player.sprite_stand;
+					sprite_index = instance_nearest_player.sprite_idle;
 				}
 				else
 				if (instance_nearest_player.sprite_walk > noone)

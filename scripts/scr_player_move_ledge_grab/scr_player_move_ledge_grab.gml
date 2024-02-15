@@ -94,9 +94,9 @@ function scr_player_move_ledge_grab()
 					sprite_index = sprite_wall_slide;
 				}
 				else
-				if (sprite_stand > noone)
+				if (sprite_idle > noone)
 				{
-					sprite_index = sprite_stand;
+					sprite_index = sprite_idle;
 				}
 				if (key_left_hold)
 				&& (image_xscale == -1)

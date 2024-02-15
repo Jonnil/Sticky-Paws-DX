@@ -1,5 +1,6 @@
 player = 1;
 selected_skin = 0;
+selected_voicepack = 0;
 for(var p = 1; p <= global.max_players; p += 1) {
 	player_accept_selection[p] = -1;
 	player_automatically_join[p] = false;

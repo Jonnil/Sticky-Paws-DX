@@ -62,8 +62,10 @@ function scr_character_select_menu_step()
 				global.character_index[i - 1] = 0;
 				global.sprite_select_player[i] = spr_noone;
 				scr_set_character_folder(i, global.skin_for_player[i]);
+				ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 				global.sprite_select_player[i] = scr_initialize_character_sprite("stand", global.sprite_select_player[i]);
 				global.sprite_select_player[i] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[i]);
+				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 			#endregion /* If any "character index" is set to -1, reset it to 0 END */
 			

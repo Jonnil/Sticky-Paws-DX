@@ -97,8 +97,8 @@ function scr_player_initialize_custom_character()
 	sprite_spring_down = noone;
 	sprite_spring_transition = noone;
 	sprite_spring_up = noone;
-	sprite_stand = noone;
-	sprite_stand_blink = noone;
+	sprite_idle = noone;
+	sprite_idle_blink = noone;
 	sprite_idle_animation1 = noone;
 	sprite_idle_animation2 = noone;
 	sprite_idle_animation3 = noone;
@@ -108,9 +108,9 @@ function scr_player_initialize_custom_character()
 	sprite_idle_animation7 = noone;
 	sprite_idle_animation8 = noone;
 	sprite_idle_animation9 = noone;
-	sprite_stand_cold = noone;
-	sprite_standing_on_something = noone;
-	sprite_standing_with_item_in_front = noone;
+	sprite_idle_cold = noone;
+	sprite_idleing_on_something = noone;
+	sprite_idleing_with_item_in_front = noone;
 	sprite_stomp_spin = noone;
 	sprite_swim = noone;
 	sprite_swim_fall = noone;

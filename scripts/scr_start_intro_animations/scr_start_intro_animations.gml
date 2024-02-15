@@ -20,7 +20,7 @@ function scr_start_intro_animations() {
 	                    break;
 	            }
 				if (intro_animation_sprite == noone) {
-					intro_animation_sprite = sprite_stand;
+					intro_animation_sprite = sprite_idle;
 				}
 	        }
 	    } else if (intro_animation == "ending_chair" || intro_animation == "ending_chair_eating") {

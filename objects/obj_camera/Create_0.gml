@@ -2,6 +2,8 @@
 can_spawn_players = true;
 #endregion /* Debug toggles END */
 
+selected_voicepack = noone;
+
 #region /* Set Backgrounds */
 layer_background_sprite(layer_background_get_id(layer_get_id("Background_1")), global.custom_background1);
 layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), global.custom_background2);
@@ -240,7 +242,7 @@ if (can_spawn_players) {
 			player[i] = instance_create_depth(start_x, start_y, 0, obj_player);
 			with (player[i]) {
 				custom_character = global.character_for_player[i];
-				selected_voice_pack = global.voicepack_for_player[i];
+				selected_voicepack = global.voicepack_for_player[i];
 				selected_skin = global.skin_for_player[i];
 				intro_animation = instance_nearest(start_x, start_y, obj_camera).intro_animation;
 				player = i;
