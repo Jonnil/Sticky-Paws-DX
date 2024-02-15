@@ -713,12 +713,10 @@ function scr_option_menu()
 			if (global.settings_sidebar_menu == "accessibility_settings"){menu = "assist_enable";}
 			if (global.settings_sidebar_menu == "game_settings")
 			{
-				if (global.enable_difficulty_selection_settings)
-				{
+				if (global.enable_difficulty_selection_settings) {
 					menu = "difficulty_settings";
 				}
-				else
-				{
+				else if (global.enable_option_for_pc) {
 					menu = "automatically_pause_when_window_is_unfocused_settings";
 				}
 			}
@@ -863,6 +861,7 @@ function scr_option_menu()
 				menu = "difficulty_settings";
 			}
 			else
+			if (global.enable_option_for_pc)
 			{
 				menu = "automatically_pause_when_window_is_unfocused_settings";
 			}
@@ -2147,8 +2146,10 @@ function scr_option_menu()
 			}
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
-		
-			draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, l10n_text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused, true); /* Automatically Pause When Window Is Unfocused */
+			
+			if (global.enable_option_for_pc) {
+				draw_menu_checkmark(380, automatically_pause_when_window_is_unfocused_settings_y, l10n_text("Automatically pause when the game is unfocused"), "automatically_pause_when_window_is_unfocused_settings", global.automatically_pause_when_window_is_unfocused, true); /* Automatically Pause When Window Is Unfocused */
+			}
 			draw_menu_checkmark(380, show_timer_settings_y, l10n_text("Show Timer"), "show_timer_settings", global.show_timer, false); /* Show Timer */
 			draw_menu_checkmark(380, show_defeats_counter_settings_y, l10n_text("Show Defeats Counter"), "show_defeats_counter_settings", global.show_defeats_counter, false); /* Show Defeats Counter */
 			if (global.enable_ranks)
@@ -3080,7 +3081,12 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "automatically_pause_when_window_is_unfocused_settings";
+					if (global.enable_option_for_pc) {
+						menu = "automatically_pause_when_window_is_unfocused_settings";
+					}
+					else {
+						menu = "show_timer_settings";
+					}
 				}
 			}
 			#endregion /* Difficulty Settings Navigation END */
@@ -3126,7 +3132,18 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					menu = "automatically_pause_when_window_is_unfocused_settings";
+					if (global.enable_option_for_pc) {
+						menu = "automatically_pause_when_window_is_unfocused_settings";
+					}
+					else if (global.enable_difficulty_selection_settings) {
+						menu = "difficulty_settings";
+					}
+					else if (can_select_font) {
+						menu = "select_font";
+					}
+					else {
+						menu = "hud_hide_time";
+					}
 				}
 				else
 				if (key_down)
@@ -3361,12 +3378,10 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					if (global.enable_difficulty_selection_settings)
-					{
+					if (global.enable_difficulty_selection_settings) {
 						menu = "difficulty_settings";
 					}
-					else
-					{
+					else if (global.enable_option_for_pc) {
 						menu = "automatically_pause_when_window_is_unfocused_settings";
 					}
 				}

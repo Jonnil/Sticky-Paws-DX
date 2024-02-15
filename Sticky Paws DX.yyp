@@ -3398,6 +3398,7 @@
     {"id":{"name":"obj_sign_readable","path":"objects/obj_sign_readable/obj_sign_readable.yy",},},
     {"id":{"name":"snd_bump","path":"sounds/snd_bump/snd_bump.yy",},},
     {"id":{"name":"obj_level_player3_start","path":"objects/obj_level_player3_start/obj_level_player3_start.yy",},},
+    {"id":{"name":"scr_save_player_control_profile","path":"scripts/scr_save_player_control_profile/scr_save_player_control_profile.yy",},},
     {"id":{"name":"snd_smalljump","path":"sounds/snd_smalljump/snd_smalljump.yy",},},
     {"id":{"name":"scr_draw_name_input_screen","path":"scripts/scr_draw_name_input_screen/scr_draw_name_input_screen.yy",},},
     {"id":{"name":"scr_load_character_initializing","path":"scripts/scr_load_character_initializing/scr_load_character_initializing.yy",},},

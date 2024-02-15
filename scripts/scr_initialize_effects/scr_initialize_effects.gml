@@ -1,5 +1,4 @@
-function scr_initialize_effects()
-{
+function scr_initialize_effects() {
 	
 	#region /* Rain Effect */
 	if (global.effect_rain) {

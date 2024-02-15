@@ -113,18 +113,18 @@ function scr_config_save()
 		ini_write_real("config", "character_index_player" + string(i), global.character_index[i - 1]);
 		ini_write_real("config", "skin_for_player" + string(i), global.actual_skin_for_player[i]);
 		ini_write_string("config", "player" + string(i) + "_name", global.player_name[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_up_is_also_jump", global.player_up_is_also_jump[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_double_jump_uses_jump_key", global.player_double_jump_uses_jump_key[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_down_is_also_crouch", global.player_down_is_also_crouch[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_double_tap_to_run", global.player_double_tap_to_run[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_run_toggle", global.player_run_toggle[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_double_tap_to_dive", global.player_double_tap_to_dive[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_cancel_dive_by_jump_or_dive", global.player_cancel_dive_by_jump_or_dive[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_cancel_dive_by_pressing_opposite_direction", global.player_cancel_dive_by_pressing_opposite_direction[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_down_and_jump_to_groundpound", global.player_down_and_jump_to_groundpound[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_wall_jump_setting", global.player_wall_jump_setting[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_drop_from_rope", global.player_drop_from_rope[i]);
-		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i]), "player" + string(i) + "_show_controls", global.player_show_controls[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_up_is_also_jump", global.player_up_is_also_jump[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_double_jump_uses_jump_key", global.player_double_jump_uses_jump_key[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_down_is_also_crouch", global.player_down_is_also_crouch[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_double_tap_to_run", global.player_double_tap_to_run[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_run_toggle", global.player_run_toggle[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_double_tap_to_dive", global.player_double_tap_to_dive[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_cancel_dive_by_jump_or_dive", global.player_cancel_dive_by_jump_or_dive[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_cancel_dive_by_pressing_opposite_direction", global.player_cancel_dive_by_pressing_opposite_direction[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_down_and_jump_to_groundpound", global.player_down_and_jump_to_groundpound[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_wall_jump_setting", global.player_wall_jump_setting[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_drop_from_rope", global.player_drop_from_rope[i]);
+		ini_write_real("player" + string(i) + "_profile" + string(global.player_profile[i] + 1), "player" + string(i) + "_show_controls", global.player_show_controls[i]);
 		#endregion /* Save Player Keyboard Remapping END */
 		
 	}

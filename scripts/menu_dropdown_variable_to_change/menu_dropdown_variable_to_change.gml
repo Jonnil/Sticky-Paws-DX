@@ -15,15 +15,16 @@ function menu_dropdown_variable_to_change(variable_to_change, change_to_value)
 	if (menu == "remap_select_profile")
 	&& (variable_to_change = global.player_profile[remapping_player + 1])
 	{
-		scr_config_save();
-		global.player_profile[remapping_player + 1] = change_to_value;
-		ini_open(working_directory + "save_file/config.ini");
-		if (!ini_section_exists("player" + string(remapping_player + 1) + "_profile" + string(change_to_value)))
-		{
-			scr_set_default_remapping_player_gamepad(remapping_player + 1, true);
-			scr_set_default_remapping_player_keyboard(remapping_player + 1, true);
+		if (global.settings_sidebar_menu == "controller_settings") {
+			var key_or_gamepad = 1;
 		}
-		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+		else {
+			var key_or_gamepad = 0;
+		}
+		scr_save_player_control_profile(remapping_player + 1, key_or_gamepad);
+		global.player_profile[remapping_player + 1] = change_to_value;
+		scr_set_default_remapping_player_gamepad(remapping_player + 1, false);
+		scr_set_default_remapping_player_keyboard(remapping_player + 1, false);
 		scr_config_load();
 	}
 	else

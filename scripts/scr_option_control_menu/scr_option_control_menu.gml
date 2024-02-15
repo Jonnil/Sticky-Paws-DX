@@ -1,7 +1,6 @@
 function scr_option_control_menu()
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
-	var can_change_profile = true;
 	var what_player = remapping_player + 1;
 	
 	#region /* Buttons positions */
@@ -3721,14 +3720,7 @@ function scr_option_control_menu()
 			{
 				if (key_up)
 				{
-					if (can_change_profile)
-					{
-						menu = "remap_select_profile";
-					}
-					else
-					{
-						menu = "remap_select_player";
-					}
+					menu = "remap_select_profile";
 					menu_delay = 3;
 				}
 				else
@@ -3754,13 +3746,8 @@ function scr_option_control_menu()
 						menu = "remap_key_dive";
 					}
 					else
-					if (can_change_profile)
 					{
 						menu = "remap_select_profile";
-					}
-					else
-					{
-						menu = "remap_select_player";
 					}
 					menu_delay = 3;
 				}
@@ -4262,21 +4249,20 @@ function scr_option_control_menu()
 		if (input_key)
 		{
 			draw_set_alpha(1);
-			draw_roundrect_color_ext(window_get_width() * 0.5 - 250, 12, window_get_width() * 0.5 + 350, 84, 50, 50, c_black, c_black, false);
+			draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 350, 12, display_get_gui_width() * 0.5 + 350, 84, 50, 50, c_black, c_black, false);
 			
 			/* Text saying input gamepad button now for player */
 			draw_set_halign(fa_center);
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32, l10n_text("INPUT BUTTON NOW FOR PLAYER " + string(what_player)), global.default_text_size, c_menu_outline, c_menu_fill, 1);
 			
 			scr_draw_text_outlined(display_get_gui_width() * 0.5 - 10, 64, l10n_text("Buttons can be disabled using"), global.default_text_size, c_menu_outline, c_menu_fill, 1);
-			if (global.controls_used_for_navigation == "gamepad")
-			|| (global.always_show_gamepad_buttons)
+			if (global.controls_used_for_navigation == "gamepad" || global.always_show_gamepad_buttons)
 			{
-				scr_draw_gamepad_buttons(gp_start, window_get_width() * 0.5 + (string_width(l10n_text("Buttons can be disabled using")) * 0.5) + 32, 64, 0.5, c_white, 1, 1, 1, what_player);
+				scr_draw_gamepad_buttons(gp_start, display_get_gui_width() * 0.5 + (string_width(l10n_text("Buttons can be disabled using")) * 0.5), 64, 0.5, c_white, 1, 1, 1, what_player);
 			}
 			else
 			{
-				draw_sprite_ext(spr_keyboard_keys, vk_escape, window_get_width() * 0.5 + (string_width(l10n_text("Buttons can be disabled using")) * 0.5) + 32, 64, 0.5, 0.5, 0, c_white, 1);
+				draw_sprite_ext(spr_keyboard_keys, vk_escape, display_get_gui_width() * 0.5 + (string_width(l10n_text("Buttons can be disabled using")) * 0.5) + 32, 64, 0.5, 0.5, 0, c_white, 1);
 			}
 		}
 		#endregion /* Show the player when they can input a gamepad button to remap controls END */
@@ -4312,19 +4298,7 @@ function scr_option_control_menu()
 				if (key_down)
 				&& (!open_dropdown)
 				{
-					if (can_change_profile)
-					{
-						menu = "remap_select_profile";
-					}
-					else
-					if (allow_player_dive[what_player])
-					{
-						menu = "remap_key_dive";
-					}
-					else
-					{
-						menu = "remap_key_jump";
-					}
+					menu = "remap_select_profile";
 					menu_delay = 3;
 				}
 			}
@@ -4336,62 +4310,37 @@ function scr_option_control_menu()
 			if (menu == "remap_select_profile")
 			{
 				menu_cursor_y_position = 0;
-				if (key_up)
-				&& (!open_dropdown)
-				{
+				if (key_up && !open_dropdown) {
 					menu = "remap_select_player";
 					menu_delay = 3;
 				}
-				else
-				if (key_down)
-				&& (!open_dropdown)
-				{
-					if (allow_player_dive[what_player])
-					{
+				else if (key_down && !open_dropdown) {
+					if (allow_player_dive[what_player]) {
 						menu = "remap_key_dive";
 					}
-					else
-					{
+					else {
 						menu = "remap_key_jump";
 					}
 					menu_delay = 3;
 				}
-				else
-				if (key_up)
-				&& (open_dropdown)
-				{
-					scr_config_save();
-					ini_open(working_directory + "save_file/config.ini");
-					if (global.player_profile[what_player] > 0)
-					{
+				else if ((key_up || key_down) && open_dropdown) {
+					menu_delay = 3;
+					if (global.settings_sidebar_menu == "controller_settings") {
+						var key_or_gamepad = 1;
+					}
+					else {
+						var key_or_gamepad = 0;
+					}
+					scr_save_player_control_profile(remapping_player + 1, key_or_gamepad);
+					
+					if (key_up && global.player_profile[what_player] > 0) {
 						global.player_profile[what_player] --;
-						if (!ini_section_exists("player" + string(what_player) + "_profile" + string(remapping_profile)))
-						{
-							scr_set_default_remapping_player_gamepad(what_player, true);
-							scr_set_default_remapping_player_keyboard(what_player, true);
-						}
 					}
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					menu_delay = 3;
-					scr_config_load();
-				}
-				else
-				if (key_down)
-				&& (open_dropdown)
-				{
-					scr_config_save();
-					ini_open(working_directory + "save_file/config.ini");
-					if (global.player_profile[what_player] < 3)
-					{
+					else if (key_down && global.player_profile[what_player] < 3) {
 						global.player_profile[what_player] ++;
-						if (!ini_section_exists("player" + string(what_player) + "_profile" + string(remapping_profile)))
-						{
-							scr_set_default_remapping_player_gamepad(what_player, true);
-							scr_set_default_remapping_player_keyboard(what_player, true);
-						}
 					}
-					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-					menu_delay = 3;
+					scr_set_default_remapping_player_gamepad(what_player, false);
+					scr_set_default_remapping_player_keyboard(what_player, false);
 					scr_config_load();
 				}
 			}

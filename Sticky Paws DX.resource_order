@@ -453,6 +453,7 @@
     {"name":"obj_sign_readable","order":32,"path":"objects/obj_sign_readable/obj_sign_readable.yy",},
     {"name":"snd_bump","order":16,"path":"sounds/snd_bump/snd_bump.yy",},
     {"name":"obj_level_player3_start","order":9,"path":"objects/obj_level_player3_start/obj_level_player3_start.yy",},
+    {"name":"scr_save_player_control_profile","order":87,"path":"scripts/scr_save_player_control_profile/scr_save_player_control_profile.yy",},
     {"name":"snd_smalljump","order":128,"path":"sounds/snd_smalljump/snd_smalljump.yy",},
     {"name":"scr_draw_name_input_screen","order":13,"path":"scripts/scr_draw_name_input_screen/scr_draw_name_input_screen.yy",},
     {"name":"scr_load_character_initializing","order":5,"path":"scripts/scr_load_character_initializing/scr_load_character_initializing.yy",},
