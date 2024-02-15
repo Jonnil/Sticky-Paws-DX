@@ -15,25 +15,27 @@ if (speed > 0) {
 }
 
 /* Check if obj_level exists */
-if (instance_exists(obj_level)) {
-    nearest_level = instance_nearest(x, y, obj_level);
-    distance_to_level = distance_to_object(nearest_level);
-    at_least_one_big_collectible = false;
-	for(var i = 1; i <= global.max_big_collectible; i += 1) {
-		if (nearest_level.big_collectible[i]) {
-			at_least_one_big_collectible = true;
-			break; /* exit the loop if any big collectible is false */
+if (stop_at_level && nearest_level == noone) { /* Only get info from levels when you stop at a level and nothing is stored in "nearest level" variable, so this code isn't running every frame */
+	if (instance_exists(obj_level)) {
+	    nearest_level = instance_nearest(x, y, obj_level);
+	    distance_to_level = distance_to_object(nearest_level);
+	    at_least_one_big_collectible = false;
+		for(var i = 1; i <= global.max_big_collectible; i += 1) {
+			if (nearest_level.big_collectible[i]) {
+				at_least_one_big_collectible = true;
+				break; /* exit the loop if any big collectible is false */
+			}
 		}
+		/* Best time text */
+		var time_minute = nearest_level.timeattack_minute;
+		var time_second = string_replace_all(string_format(nearest_level.timeattack_second, 2, 0), " ", "0");
+		var time_millisecond = string_replace_all(string_format(nearest_level.timeattack_millisecond, 2, 0), " ", "0");
+		best_time_text = l10n_text("Best Time") + ": " + string(time_minute) + ":" + time_second + "." + time_millisecond;
+		
+	} else {
+	    at_least_one_big_collectible = false;
 	}
-} else {
-    at_least_one_big_collectible = false;
 }
-
-/* Best time text */
-var time_minute = nearest_level.timeattack_minute;
-var time_second = string_replace_all(string_format(nearest_level.timeattack_second, 2, 0), " ", "0");
-var time_millisecond = string_replace_all(string_format(nearest_level.timeattack_millisecond, 2, 0), " ", "0");
-best_time_text = l10n_text("Best Time") + ": " + string(time_minute) + ":" + time_second + "." + time_millisecond;
 
 /* Quit Game */
 if (global.quit_level) {
@@ -80,6 +82,7 @@ if (pause_condition_met) {
 #region /* Stop player when touching level */
 if (!place_meeting(x, y, obj_level)) {
 	stop_at_level = false;
+	nearest_level = noone; /* Reset nearest level when */
 }
 #endregion /* Stop player when touching level END */
 
@@ -123,7 +126,7 @@ if (entering_level) {
     else if (sprite_walk > noone) sprite_index = sprite_walk;
 } else {
     if (sprite_map > noone) sprite_index = sprite_map;
-    else if (sprite_walk > noone && point_distance(xx, yy, x, y) > 2) sprite_index = sprite_walk;
+    else if (sprite_walk > noone && speed > 0) sprite_index = sprite_walk;
     else if (sprite_stand > noone) sprite_index = sprite_stand;
     else if (sprite_walk > noone) sprite_index = sprite_walk;
 }

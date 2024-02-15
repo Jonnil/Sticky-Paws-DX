@@ -255,7 +255,7 @@ audio_listener_position(x, y, 0); /* Audio listener should start on top of the p
 
 scr_audio_play(music_map, volume_source.music); /* Play the map screen music */
 
-nearest_level = 0;
+nearest_level = noone;
 distance_to_level = 0;
 best_time_text = "";
 

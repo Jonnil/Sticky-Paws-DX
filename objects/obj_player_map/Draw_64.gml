@@ -4,10 +4,10 @@ var window_width = display_get_gui_width();
 var clear_prompt_x = 164;
 
 /* Common conditions for multiple sections */
-var common_conditions_met = (can_move && can_enter_level >= 30 && distance_to_level < 4 && speed == 0);
+var common_conditions_met = (nearest_level != noone && can_move && can_enter_level >= 30 && distance_to_level < 4 && speed == 0);
 
 /* Show Enter Level Key */
-if (common_conditions_met && nearest_level.clear_rate != "closed" && point_distance(xx, yy, x, y) < 30) {
+if (common_conditions_met && nearest_level.clear_rate != "closed") {
     draw_set_halign(fa_left);
     draw_set_valign(fa_middle);
     scr_draw_text_outlined(64, window_height - 20, l10n_text("Play"), global.default_text_size, c_black, c_white, 1);
@@ -40,7 +40,7 @@ if (global.debug_screen && common_conditions_met && nearest_level.clear_rate == 
 
 #region /* Show Level Info */
 /* Check if conditions are met to show level info */
-if (iris_xscale > 9 && move_delay > 10 && distance_to_level < 4 && nearest_level.level_number != 0 && point_distance(xx, yy, x, y) < 30) {
+if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_level < 4 && nearest_level.level_number != 0) {
     if (nearest_level.clear_rate == "enter" || nearest_level.clear_rate == "clear") {
         var show_level_info_x = 180;
         var show_level_info_y = 200;
