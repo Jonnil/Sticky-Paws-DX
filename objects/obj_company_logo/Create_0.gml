@@ -659,3 +659,17 @@ set_controller_sprites_to_use();
 
 /* Set network settings before starting game */
 network_set_config(network_config_use_non_blocking_socket, 1);
+
+/* Enable Steam API */
+global.steam_api = false;
+if (steam_initialised()) {
+	show_message("steam_initialised");
+	if (steam_stats_ready()) {
+		show_message("steam_stats_ready");
+		if (steam_is_overlay_enabled()) {
+			show_message("steam_is_overlay_enabled");
+			global.steam_api = true;
+			show_message("global.steam_api = true;");
+		}
+	}
+}

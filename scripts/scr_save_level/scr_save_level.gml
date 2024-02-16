@@ -5,7 +5,7 @@ function scr_save_level()
 	
 	#region /* If doing a character clear check, and winning the level, then add in character config that you have done a clear check */
 	if (global.level_clear_rate == "clear" && global.doing_clear_check_character) {
-		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
+		ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 		ini_write_real("info", "clear_check_character", true);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		global.go_to_menu_when_going_back_to_title = "upload_yes_character";
@@ -13,7 +13,7 @@ function scr_save_level()
 	#endregion /* If doing a character clear check, and winning the level, then add in charcter config that you have done a clear check END */
 	
 	if (global.character_select_in_this_menu == "main_game" && global.actually_play_edited_level) {
-		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		
 		if (global.level_clear_rate == "clear" && !global.doing_clear_check_character) {
 			ini_write_real(global.level_name, "number_of_clears", ini_read_real(global.level_name, "number_of_clears", 0) + 1); /* Increase how many times you've played this specific level */
@@ -86,7 +86,7 @@ function scr_save_level()
 		#endregion /* Update ranking highscore to actual custom level END */
 		
 		#region /* Save to custom level save file */
-		ini_open(working_directory + "save_file/custom_level_save.ini");
+		ini_open(game_save_id + "save_file/custom_level_save.ini");
 		
 		/* Update a list of downloaded levels that you have finished */
 		if (level_id != "" && ini_read_real("finished_downloaded_level", string(level_id), 0) < 2 && !global.doing_clear_check_character) {
@@ -137,7 +137,7 @@ function scr_save_level()
 	global.level_clear_rate = noone;
 	score = 0;
 	
-	ini_open(working_directory + "save_file/config.ini")
+	ini_open(game_save_id + "save_file/config.ini")
 	ini_write_real("config", "zoom_level", global.zoom_level);
 	ini_write_real("config", "zoom_world_map", global.zoom_world_map);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

@@ -2,10 +2,8 @@ function scr_player_move_goal()
 {
 	
 	#region /* Goal */
-	if (instance_exists(obj_goal))
-	{
-		if (distance_to_object(obj_goal) < 1920)
-		{
+	if (instance_exists(obj_goal)) {
+		if (distance_to_object(obj_goal) < 1920) {
 			
 			#region /* Touching goal */
 			if (x > instance_nearest(x, y, obj_goal).bbox_right)
@@ -35,6 +33,14 @@ function scr_player_move_goal()
 			if (just_hit_goal)
 			&& (!goal)
 			{
+				/* Get clear level achievement */
+				if (global.character_select_in_this_menu == "main_game" && global.actually_play_edited_level && !global.doing_clear_check_character) {
+					if (!steam_get_achievement("CLEAR_LEVEL_LEVELONE")) {
+						steam_set_achievement("CLEAR_LEVEL_LEVELONE");
+						show_message("CLEAR_LEVEL_LEVELONE");
+					}
+				}
+				
 				for(var i = 1; i <= global.max_players; i += 1)
 				{
 				    if (!instance_exists(obj_camera.player[i]))
