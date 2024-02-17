@@ -35,10 +35,7 @@ function scr_player_move_goal()
 			{
 				/* Get clear level achievement */
 				if (global.character_select_in_this_menu == "main_game" && global.actually_play_edited_level && !global.doing_clear_check_character) {
-					if (!steam_get_achievement("CLEAR_LEVEL_LEVELONE")) {
-						steam_set_achievement("CLEAR_LEVEL_LEVELONE");
-						show_message("CLEAR_LEVEL_LEVELONE");
-					}
+					scr_set_achievement("CLEAR_LEVEL_" + string_upper(global.level_name));
 				}
 				
 				for(var i = 1; i <= global.max_players; i += 1)

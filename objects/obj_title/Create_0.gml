@@ -553,3 +553,5 @@ if (global.narrator >= 0)
 scr_audio_play(voice_game_title, volume_source.voice); /* Say the games title */
 
 set_controller_sprites_to_use();
+
+scr_enable_steam_api();
