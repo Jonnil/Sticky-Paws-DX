@@ -55,8 +55,10 @@ if (cutscene == 0) {
 }
 else
 if (cutscene == 1) { /* When placed in level, use this cutscene value */
-	if (instance_exists(obj_player)) && (distance_to_object(obj_player) < 256) || (instance_nearest(x, y, obj_player).bbox_right >= bbox_left && !collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true)) {
-		time += 30;
+	if (instance_exists(obj_player)) {
+		if (distance_to_object(obj_player) < 256) || (instance_nearest(x, y, obj_player).bbox_right >= bbox_left && !collision_line(x, y, instance_nearest(x, y, obj_player).x, instance_nearest(x, y, obj_player).y, obj_wall, false, true)) {
+			time += 30;
+		}
 	}
 	if (place_meeting(x + 1, y, obj_wall)) {
 		sprite_index = global.resource_pack_sprite_basic_enemy;

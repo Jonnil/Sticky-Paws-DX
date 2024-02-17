@@ -319,3 +319,5 @@ if (global.assist_enable) && (hp > 0 && !global.assist_invincible || hp > 0) {
 #endregion /* If player has more hp, show that END */
 
 #endregion /* Draw things on top of the player END */
+
+scr_draw_text_outlined(x, y - 64, "intro_animation: " + string(intro_animation));

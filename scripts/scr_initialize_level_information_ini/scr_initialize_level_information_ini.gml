@@ -57,8 +57,13 @@ function scr_initialize_level_information_ini()
 		global.effect_snow = get_custom_level_information_real("info", "snow", false);
 		global.effect_wind = get_custom_level_information_real("info", "wind", false);
 		
-		intro_animation = get_custom_level_information_string("info", "intro_animation", "");
 		intro_animation_play_only_once = get_custom_level_information_real("info", "intro_animation_play_only_once", false);
+		if (intro_animation_play_only_once && global.current_level_clear_rate == "clear") {
+			intro_animation = "";
+		}
+		else {
+			intro_animation = get_custom_level_information_string("info", "intro_animation", "");
+		}
 		after_goal_go_to_this_level = get_custom_level_information_real("info", "after_goal_go_to_this_level", noone);
 		
 		if (object_index == obj_leveleditor && !global.actually_play_edited_level)
@@ -105,8 +110,8 @@ function scr_initialize_level_information_ini()
 		global.effect_rain = false;
 		global.effect_snow = false;
 		global.effect_wind = false;
-		intro_animation = "";
 		intro_animation_play_only_once = false;
+		intro_animation = "";
 		after_goal_go_to_this_level = "";
 	}
 	#endregion /* Initialize level_information.ini END */

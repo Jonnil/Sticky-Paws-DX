@@ -303,25 +303,6 @@ function scr_debug_screen()
 		scr_draw_text_outlined(32, debug_text_y, "clicking_ok_input_screen: " + string(global.clicking_ok_input_screen), global.default_text_size, c_black, c_white);
 		debug_text_y += 40;
 		
-		
-		
-		
-		
-		scr_draw_text_outlined(32, debug_text_y, "cache directory: " + string(cache_directory), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "game save id: " + string(game_save_id), global.default_text_size, c_black, c_white);
-		debug_text_y += 40;
-		scr_draw_text_outlined(32, debug_text_y, "working directory: " + string(working_directory), global.default_text_size, c_black, c_white);
-		debug_text_y += 20;
-		//if (global.use_cache_or_working == cache_directory) { /* cache_directory here crashes on Nintendo Switch */
-		//	scr_draw_text_outlined(32, debug_text_y, "use_cache_or_working: cache_directory", global.default_text_size, c_black, c_white);
-		//	debug_text_y += 20;
-		//}
-		
-		
-		
-		
-		
 		if (variable_instance_exists(self, "open_sub_menu"))
 		{
 			scr_draw_text_outlined(32, debug_text_y, "open_sub_menu: " + string(open_sub_menu), global.default_text_size, c_black, c_white);
@@ -354,40 +335,9 @@ function scr_debug_screen()
 			}
 			debug_text_y += 20;
 		}
-		if (variable_instance_exists(self, "scroll"))
-		{
-			scr_draw_text_outlined(32, debug_text_y, "scroll: " + string(scroll), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-		}
-		if (variable_instance_exists(self, "column"))
-		{
-			scr_draw_text_outlined(32, debug_text_y, "column: " + string(column), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-		}
-		if (variable_instance_exists(self, "scroll"))
-		&& (variable_instance_exists(self, "column"))
-		{
-			scr_draw_text_outlined(32, debug_text_y, "thumbnail y: " + string(226 * (column - scroll) + 250), global.default_text_size, c_black, c_white);
-			debug_text_y += 20;
-		}
 		
 		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "go_to_menu_when_going_back_to_title: " + string(global.go_to_menu_when_going_back_to_title), global.default_text_size, c_black, c_white);
-		
-		debug_text_y += 20;
-		scr_draw_text_outlined(32, debug_text_y, "timeattack_realmillisecond: " + string(global.timeattack_realmillisecond), global.default_text_size, c_black, c_white);
-		
-		if (variable_instance_exists(self, "upload_rules_do_not_show_level"))
-		{
-			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "upload_rules_do_not_show_level: " + string(upload_rules_do_not_show_level), global.default_text_size, c_black, c_white);
-		}
-		
-		if (variable_instance_exists(self, "intro_animation"))
-		{
-			debug_text_y += 20;
-			scr_draw_text_outlined(32, debug_text_y, "intro_animation: " + string(intro_animation), global.default_text_size, c_black, c_white);
-		}
+		scr_draw_text_outlined(32, debug_text_y, "current_level_clear_rate: " + string(global.current_level_clear_rate), global.default_text_size, c_black, c_white);
 		
 		debug_text_y += 20;
 		scr_draw_text_outlined(32, debug_text_y, "current_datetime: " + string(date_datetime_string(date_current_datetime())), global.default_text_size, c_black, c_white);

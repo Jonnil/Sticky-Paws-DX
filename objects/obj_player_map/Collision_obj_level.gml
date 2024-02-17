@@ -11,7 +11,6 @@ if (!stop_at_level) {
 	stop_at_level = true;
 	x = other.x;
 	y = other.y;
-	global.current_level_clear_rate = other.clear_rate; /* Set the level clear rate to global current clear rate variable for use inside levels, like if a into animation should play or not. Put this code as the last step before closing bracket */
 }
 #endregion /* Stop player when touching level END */
 
@@ -26,6 +25,7 @@ if (can_enter_level_automatically)
 || point_in_rectangle(mouse_x, mouse_y, bbox_left, bbox_top, bbox_right, bbox_bottom))) {
 	if (can_move) {
 		if (other.clear_rate == "enter" || other.clear_rate == "clear") {
+			
 			if (brand_new_file) {
 				audio_sound_gain(music_map, 0, 0);
 				audio_stop_sound(music_map);
@@ -48,12 +48,16 @@ if (can_enter_level_automatically)
 			#endregion /* Save Player Position END */
 			
 			can_move = false;
-			entering_level = true;
 			delay = 0;
-			score = 0;
-			global.spikes_emerge_time = 0;
+			entering_level = true;
 			global.checkpoint_x = other.checkpoint_x;
 			global.checkpoint_y = other.checkpoint_y;
+			global.current_level_clear_rate = other.clear_rate; /* Set the level clear rate to global current clear rate variable for use inside levels, like if a into animation should play or not. Put this code as the last step before closing bracket */
+			global.increase_number_of_levels_cleared = other.increase_number_of_levels_cleared;
+			global.lives_until_assist = other.lives_until_assist;
+			global.spikes_emerge_time = 0;
+			score = 0;
+			
 			with(other) {
 				if (checkpoint_x > 0 || checkpoint_y > 0) {
 					global.checkpoint_realmillisecond = checkpoint_realmillisecond;
@@ -65,8 +69,6 @@ if (can_enter_level_automatically)
 			for(var i = 1; i <= global.max_big_collectible; i += 1) {
 				global.big_collectible[i] = other.big_collectible[i];
 			}
-			global.lives_until_assist = other.lives_until_assist;
-			global.increase_number_of_levels_cleared = other.increase_number_of_levels_cleared;
 		}
 	}
 }

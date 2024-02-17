@@ -50,13 +50,11 @@ else
     }
     else
     {
-        if (distance_to_object(obj_player) < 256)
-        {
+        if (instance_exists(obj_player) && distance_to_object(obj_player) < 256) {
             sprite_used = "angry";
             sprite_index = blind ? global.resource_pack_sprite_basic_enemy_blind : global.resource_pack_sprite_basic_enemy_angry;
         }
-        else
-        {
+        else {
             sprite_used = "stand";
             sprite_index = blind ? global.resource_pack_sprite_basic_enemy_blind : global.resource_pack_sprite_basic_enemy;
         }

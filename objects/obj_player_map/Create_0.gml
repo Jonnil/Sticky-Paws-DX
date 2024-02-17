@@ -48,9 +48,9 @@ if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_r
 	music_map = audio_create_stream("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_map.ogg");
 }
 else
-if (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_map.ogg"))
+if (file_exists(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_map.ogg"))
 {
-	music_map = audio_create_stream(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_map.ogg");
+	music_map = audio_create_stream(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/sound/music_map.ogg");
 }
 else
 {
@@ -123,11 +123,11 @@ yy_heart = y - 64;
 have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
 
 #region /* Load Game */
-if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
-{
-	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini")) {
+	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	
 	brand_new_file = ini_read_real("Player", "brand_new_file", true);
+	total_big_collectibles = ini_read_real("Player", "total_big_collectibles", 0);
 	
 	#region /* Load Player Position */
 	if (ini_read_real("Player", "player_x", 0) > 0)
@@ -166,10 +166,11 @@ if (file_exists(working_directory + "save_file/file" + string(global.file) + ".i
 }
 else
 {
-	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	ini_write_real("Player", "brand_new_file", true);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	brand_new_file = true;
+	total_big_collectibles = 0;
 	xx_heart = x;
 	yy_heart = y - 64;
 	have_heart_balloon = false; /* If you have the heart balloon upgrade or not. You start without it */
@@ -208,7 +209,7 @@ if (file_exists("localization.csv"))
 }
 
 /* Make number of level cleared 1 because of the level intro */
-ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 if (ini_read_real("Player", "number_of_levels_cleared", 1) < 1)
 {
 	ini_write_real("Player", "number_of_levels_cleared", 1)
@@ -278,7 +279,7 @@ global.goal_active = false;
 if (lives <= 0) {
     lives = 5 * global.playergame;
     if (global.character_select_in_this_menu == "main_game") {
-        ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+        ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
         ini_write_real("Player", "lives", lives);
         ini_close(); switch_save_data_commit();
     }
