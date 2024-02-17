@@ -3,26 +3,23 @@ function scr_start_intro_animations() {
 	if (!spawned_from_checkpoint) { /* Ensure not in the middle of a level by touching a checkpoint */
 		
 	    /* Check intro animations */
-	    if ((intro_animation == "cake_stolen" || intro_animation == "ending") && instance_exists(obj_camera)) {
-	        if ((!obj_camera.intro_animation_play_only_once || global.current_level_clear_rate == "enter") &&
-	            (!obj_camera.intro_animation_play_only_once || global.current_level_clear_rate == "enter")) {
-	            can_move = false;
-	            crouch = false;
-	            cutscene_time++;
-				
-	            /* Handle different intro animations */
-	            switch (intro_animation) {
-	                case "cake_stolen":
-	                    intro_animation_cake_stolen();
-	                    break;
-	                case "ending":
-	                    intro_animation_ending();
-	                    break;
-	            }
-				if (intro_animation_sprite == noone) {
-					intro_animation_sprite = sprite_idle;
-				}
+	    if ((intro_animation == "cake_stolen" || intro_animation == "ending")) {
+	        can_move = false;
+	        crouch = false;
+	        cutscene_time++;
+			
+	        /* Handle different intro animations */
+	        switch (intro_animation) {
+	            case "cake_stolen":
+	                intro_animation_cake_stolen();
+	                break;
+	            case "ending":
+	                intro_animation_ending();
+	                break;
 	        }
+			if (intro_animation_sprite == noone) {
+				intro_animation_sprite = sprite_idle;
+			}
 	    } else if (intro_animation == "ending_chair" || intro_animation == "ending_chair_eating") {
 	        /* Handle ending chair animations */
 	        intro_animation_ending_chair();
