@@ -57,3 +57,10 @@ if (delay > 0)
 }
 xx = lerp(xx, x, 0.2);
 yy = lerp(yy, y, 0.2);
+
+if (move_speed == 4) {
+	delay_amount = 10;
+}
+else {
+	delay_amount = 5;
+}
