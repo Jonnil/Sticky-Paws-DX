@@ -323,7 +323,6 @@
     {"name":"snd_rise","order":120,"path":"sounds/snd_rise/snd_rise.yy",},
     {"name":"spr_virtual_key_groundpound","order":122,"path":"sprites/spr_virtual_key_groundpound/spr_virtual_key_groundpound.yy",},
     {"name":"scr_player_move_restart_or_quit","order":29,"path":"scripts/scr_player_move_restart_or_quit/scr_player_move_restart_or_quit.yy",},
-    {"name":"scr_enable_steam_api","order":88,"path":"scripts/scr_enable_steam_api/scr_enable_steam_api.yy",},
     {"name":"spr_question_block","order":1,"path":"sprites/spr_question_block/spr_question_block.yy",},
     {"name":"scr_player_move_goal","order":23,"path":"scripts/scr_player_move_goal/scr_player_move_goal.yy",},
     {"name":"spr_hard_block","order":65,"path":"sprites/spr_hard_block/spr_hard_block.yy",},

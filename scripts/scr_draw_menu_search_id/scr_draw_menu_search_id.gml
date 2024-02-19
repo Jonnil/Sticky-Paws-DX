@@ -158,7 +158,7 @@ function scr_draw_menu_search_id(what_kind_of_id = "level")
 					
 					/* Send the HTTP GET request to the /download endpoint */
 					global.search_id = string_upper(search_id);
-					global.http_request_id = http_request("https://" + global.base_url + global.download_endpoint + string(content_type_add_s) + "/" + global.search_id, "GET", map, "")
+					global.http_request_id = http_request("https://" + global.base_url + "/download/" + string(content_type_add_s) + "/" + global.search_id, "GET", map, "")
 					ds_map_destroy(map);
 					
 					automatically_search_for_id = false;
