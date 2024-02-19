@@ -135,6 +135,7 @@ if (collect_big_collectible) {
 			/* Increase total big collectibe, so player can know how many big collectibles they have collected in total */
 			if (!ini_read_real(global.level_name, "big_collectible" + string(i), false)) { /* If you have never collected this big collectible before, then increase total big collectibles */
 				ini_write_real("Player", "total_big_collectibles", ini_read_real("Player", "total_big_collectibles", 0) + 1);
+				scr_set_stat_achievement("TOTAL_BIG_COLLECTIBLE", ini_read_real("Player", "total_big_collectibles", 0));
 			}
 			
 			ini_write_real(global.level_name, "big_collectible" + string(i), true); /* After increasing total big collectibles, then set this big collectible to be collected */

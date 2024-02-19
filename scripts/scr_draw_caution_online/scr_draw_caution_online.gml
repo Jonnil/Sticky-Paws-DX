@@ -18,6 +18,7 @@ function scr_draw_caution_online()
 		draw_set_alpha(0.9);
 		draw_rectangle_color(- 32, - 32, display_get_gui_width() + 32, display_get_gui_height() + 32, c_black, c_black, c_black, c_black, false);
 		draw_set_alpha(1);
+		draw_roundrect_color_ext(display_get_gui_width() * 0.5 - 600, display_get_gui_height() * 0.5 - 200, display_get_gui_width() * 0.5 + 600, display_get_gui_height() * 0.5 + 200, 50, 50, c_black, c_black, false);
 		#endregion /* Opaque transparent black rectangle over whole screen, but underneath text END */
 		
 		draw_menu_button(0, 0, l10n_text("Back"), "caution_online_back", "caution_online_back");
@@ -98,6 +99,9 @@ function scr_draw_caution_online()
 			if (variable_instance_exists(self, "show_level_editor_corner_menu"))
 			{
 				show_level_editor_corner_menu = true;
+			}
+			if (caution_online_takes_you_back_to == "about_online_level_list") {
+				information_menu_open = 1; /* Go back to the about page on information menu when going back from online caution menu */
 			}
 			menu_delay = 3;
 			menu = caution_online_takes_you_back_to;

@@ -403,12 +403,13 @@ function scr_draw_information_menu()
 					        break; /* exit the loop if any player can play */
 					    }
 					}
-					if (!any_player_can_play) { /* If no player can play, set global.player_can_play[fixed_player] to true */
+					if (!any_player_can_play) { /* If no player can play, set "player can play" to true */
 					    global.player_can_play[fixed_player] = true;
 					}
 				}
 				else
 				{
+					information_menu_open = 0; /* Disable information menu so you can't accidentally navigate information menu when navigating online caution menu */
 					content_type = "level"; /* Need to set the "content type" to "level", so Async - HTTP Event is running correctly */
 					caution_online_takes_you_to = "online_download_list_load";
 					caution_online_takes_you_back_to = "about_online_level_list";
@@ -536,8 +537,8 @@ function scr_draw_information_menu()
 			scr_draw_text_outlined(display_get_gui_width() * 0.5, 32 * 2, l10n_text("Keep your levels safe!"), global.default_text_size, c_black, c_white, 1);
 			
 			draw_set_halign(fa_left);
-			scr_draw_text_outlined(32, 32 * 4, l10n_text("To prevent losing your custom levels and characters you should upload content and then save\nyour level IDs and character IDs somewhere safe"), global.default_text_size, c_black, c_white, 1);
-			scr_draw_text_outlined(32, 32 * 7, l10n_text("The game includes an autosave feature that automatically saves your level every 5 minutes"), global.default_text_size, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 32 * 4, l10n_text("To prevent losing your custom levels and characters you should upload content and then save\nyour level IDs and character IDs somewhere safe"), global.default_text_size * 0.9, c_black, c_white, 1);
+			scr_draw_text_outlined(32, 32 * 7, l10n_text("The game includes an autosave feature that automatically saves your level every 5 minutes"), global.default_text_size * 0.9, c_black, c_white, 1);
 			scr_draw_text_outlined(32, 32 * 8, l10n_text("It also saves your level every time you playtest"), global.default_text_size, c_black, c_white, 1);
 			if (global.enable_option_for_pc)
 			{
