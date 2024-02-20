@@ -6,15 +6,12 @@ var controls_used_for_navigation = global.controls_used_for_navigation;
 var always_show_gamepad_buttons = global.always_show_gamepad_buttons;
 var assist_enable = global.assist_enable;
 var playergame = global.playergame;
-var show_defeats_counter = global.show_defeats_counter;
-var lives_until_assist = global.lives_until_assist;
 var doing_clear_check_level = global.doing_clear_check_level;
 var doing_clear_check_character = global.doing_clear_check_character;
 var enable_transitions = global.enable_transitions;
 
 /* Draw GUI elements */
 scr_zoom_camera_draw_gui(10);
-scr_draw_level_hud();
 
 /* Show pause button if using mouse controls */
 if (global.controls_used_for_navigation == "mouse") {
@@ -55,6 +52,8 @@ if (show_letterbox > 0) {
     draw_rectangle_color(0, letterbox_bottom_y, window_width, window_height, c_black, c_black, c_black, c_black, false);
 }
 
+scr_draw_level_hud();
+
 /* Clear check indicators */
 if (doing_clear_check_level || doing_clear_check_character) {
     draw_set_halign(fa_center);
@@ -90,24 +89,6 @@ if (show_playtest_buttons) {
 	    draw_sprite_ext(spr_keyboard_keys, invincibility_key, playtest_invincibility_x + 20, window_height - 32 + 20, 0.4, 0.4, 0, c_white, 1);
 		draw_sprite_ext(spr_keyboard_keys, moonjump_key, playtest_moonjump_x + 20, window_height - 32 + 20, 0.4, 0.4, 0, c_white, 1);
 	}
-}
-
-/* Defeat Counter */
-if (hud_show_defeats_y != -64 && show_defeats_counter) {
-    draw_sprite_ext(sprite_exists(sprite_lives_icon) ? sprite_lives_icon : spr_1up, 0, 32, hud_show_defeats_y, 0.75, 0.75, 0, c_gray, 1);
-    draw_line_width_color(32 - 16, hud_show_defeats_y - 16, 32 + 16, hud_show_defeats_y + 16, 3, c_red, c_red);
-    draw_line_width_color(32 - 16, hud_show_defeats_y + 16, 32 + 16, hud_show_defeats_y - 16, 3, c_red, c_red);
-    draw_set_halign(fa_left);
-    draw_set_valign(fa_middle);
-    scr_draw_text_outlined(64, hud_show_defeats_y, string(lives_until_assist), global.default_text_size, c_black, c_white, 1);
-}
-
-/* Lives Counter */
-if (hud_show_lives_y != -64) {
-    draw_set_halign(fa_left);
-    draw_set_valign(fa_middle);
-    draw_sprite_ext(sprite_exists(sprite_lives_icon) ? sprite_lives_icon : spr_1up, 0, 32, hud_show_lives_y, 1, 1, 0, c_white, 1);
-    scr_draw_text_outlined(64, hud_show_lives_y, string(lives), global.default_text_size, c_black, c_white, 1);
 }
 
 /* Darken screen when window is unfocused or during transitions */

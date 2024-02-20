@@ -37,6 +37,33 @@ function scr_save_level()
 		ini_write_real(global.level_name, "checkpoint_minute", global.checkpoint_minute);
 		ini_write_real(global.level_name, "checkpoint_realmillisecond", global.checkpoint_realmillisecond);
 		
+		#region /* Zero Defeats */
+		if (global.lives_until_assist == 0 && global.player_has_entered_goal) {
+			if (global.zero_hits && ini_read_real(global.level_name, "zero_defeats", 0) <= 1) {
+				
+				/* Update zero defeats stat achievement */
+				if (ini_read_real(global.level_name, "zero_defeats", 0) <= 0) {
+					ini_write_real("Player", "total_zero_defeats", ini_read_real("Player", "total_zero_defeats", 0) + 1);
+					scr_set_stat_achievement("ZERO_DEFEATS", ini_read_real("Player", "total_zero_defeats", 0));
+				}
+				
+				/* Update zero hits stat achievement */
+				ini_write_real("Player", "total_zero_hits", ini_read_real("Player", "total_zero_hits", 0) + 1);
+				scr_set_stat_achievement("ZERO_HITS", ini_read_real("Player", "total_zero_hits", 0));
+				
+				ini_write_real(global.level_name, "zero_defeats", 2); /* Write Zero Hits value last */
+			}
+			else if (ini_read_real(global.level_name, "zero_defeats", 0) <= 0) {
+				
+				/* Update zero defeats stat achievement */
+				ini_write_real("Player", "total_zero_defeats", ini_read_real("Player", "total_zero_defeats", 0) + 1);
+				scr_set_stat_achievement("ZERO_DEFEATS", ini_read_real("Player", "total_zero_defeats", 0));
+				
+				ini_write_real(global.level_name, "zero_defeats", 1); /* Write Zero Defeats value last */
+			}
+		}
+		#endregion /* Zero Defeats END */
+		
 		#region /* Save Fastest Time */
 		if (global.timeattack_realmillisecond > 2) {
 			if (!ini_key_exists(global.level_name, "timeattack_realmillisecond"))
@@ -88,6 +115,7 @@ function scr_save_level()
 		#region /* Save to custom level save file */
 		ini_open(game_save_id + "save_file/custom_level_save.ini");
 		
+		#region /* Downloaded Level Progression */
 		/* Update a list of downloaded levels that you have finished */
 		if (level_id != "" && ini_read_real("finished_downloaded_level", string(level_id), 0) < 2 && !global.doing_clear_check_character) {
 			if (global.level_clear_rate == "clear") {
@@ -97,6 +125,18 @@ function scr_save_level()
 				ini_write_real("finished_downloaded_level", string(level_id), 1); /* Only played, but not finished */
 			}
 		}
+		/* Update a list of downloaded levels that you have completed with zero defeats or zero hits */
+		if (level_id != "" && ini_read_real("zero_defeats_downloaded_level", string(level_id), 0) < 2 && !global.doing_clear_check_character) {
+			if (global.lives_until_assist == 0 && global.player_has_entered_goal) {
+				if (global.zero_hits && ini_read_real("zero_defeats_downloaded_level", string(level_id), 0) <= 1) {
+					ini_write_real("zero_defeats_downloaded_level", string(level_id), 2); /* Zero Hits */
+				}
+				else if (ini_read_real("zero_defeats_downloaded_level", string(level_id), 0) <= 0) {
+					ini_write_real("zero_defeats_downloaded_level", string(level_id), 1); /* Zero Defeats */
+				}
+			}
+		}
+		#endregion /* Downloaded Level Progression END */
 		
 		ini_write_real(global.level_name, "lives_until_assist", global.lives_until_assist);
 		ini_write_real(global.level_name, "checkpoint_x", global.checkpoint_x);
@@ -105,6 +145,31 @@ function scr_save_level()
 		ini_write_real(global.level_name, "checkpoint_second", global.checkpoint_second);
 		ini_write_real(global.level_name, "checkpoint_minute", global.checkpoint_minute);
 		ini_write_real(global.level_name, "checkpoint_realmillisecond", global.checkpoint_realmillisecond);
+		
+		#region /* Zero Defeats */
+		if (global.lives_until_assist == 0 && global.player_has_entered_goal) {
+			if (global.zero_hits && ini_read_real(global.level_name, "zero_defeats", 0) <= 1) {
+				
+				/* Update zero defeats stat achievement */
+				if (ini_read_real(global.level_name, "zero_defeats", 0) == 0) {
+					ini_write_real("Player", "total_zero_defeats", ini_read_real("Player", "total_zero_defeats", 0) + 1);
+				}
+				
+				/* Update zero hits stat achievement */
+				ini_write_real("Player", "total_zero_hits", ini_read_real("Player", "total_zero_hits", 0) + 1);
+				
+				ini_write_real(global.level_name, "zero_defeats", 2); /* Write Zero Hits value last */
+			}
+			else if (ini_read_real(global.level_name, "zero_defeats", 0) == 0) {
+				
+				/* Update zero defeats stat achievement */
+				ini_write_real("Player", "total_zero_defeats", ini_read_real("Player", "total_zero_defeats", 0) + 1);
+				
+				ini_write_real(global.level_name, "zero_defeats", 1); /* Write Zero Defeats value last */
+			}
+		}
+		#endregion /* Zero Defeats END */
+		
 		if (global.timeattack_realmillisecond > 2) {
 			
 			#region /* Save Fastest Time */

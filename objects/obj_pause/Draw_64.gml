@@ -253,15 +253,11 @@ if (!hide_menu_for_clean_screenshots)
 			}
 			
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5, l10n_text("Reset from Checkpoint"), "reset_from_checkpoint", "reset_from_checkpoint", c_lime, fade_in_pause_alpha);
-			if (holding_key_timer > 0)
-			&& (menu == "reset_from_checkpoint")
-			{
+			if (holding_key_timer > 0 && menu == "reset_from_checkpoint") {
 				scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
 			}
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42, l10n_text("Reset from Start"), "reset_from_start", "reset_from_start", c_lime, fade_in_pause_alpha);
-			if (holding_key_timer > 0)
-			&& (menu == "reset_from_start")
-			{
+			if (holding_key_timer > 0 && menu == "reset_from_start") {
 				scr_draw_circular_bar(get_window_width * 0.5 - 185 + 16, get_window_height * 0.5 + 42 + 21, holding_key_timer, 60, c_red, 20, 1, 6); /* Draw a circular bar that fills when holding reset from checkpoint key */
 			}
 			draw_menu_button(get_window_width * 0.5 - 185, get_window_height * 0.5 + 42 + 42, l10n_text("Nevermind"), "restart_nevermind", "restart_nevermind", c_lime, fade_in_pause_alpha);

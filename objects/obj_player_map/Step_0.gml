@@ -14,7 +14,7 @@ if (speed > 0) {
     audio_listener_velocity(abs(hspeed), abs(vspeed), 0);
 }
 
-/* Check if obj_level exists */
+/* Check if "obj level" exists */
 if (stop_at_level && nearest_level == noone) { /* Only get info from levels when you stop at a level and nothing is stored in "nearest level" variable, so this code isn't running every frame */
 	if (instance_exists(obj_level)) {
 	    nearest_level = instance_nearest(x, y, obj_level);

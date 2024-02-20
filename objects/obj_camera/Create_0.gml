@@ -19,6 +19,7 @@ scr_initialize_camera();
 
 global.player_has_entered_goal = false;
 global.spikes_emerge_time = 0;
+global.zero_hits = true; /* Save if player has gotten hit during the level or not */
 
 invincibility_key = ord("I");
 invincibility_button = gp_shoulderl;

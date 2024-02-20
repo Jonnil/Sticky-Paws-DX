@@ -27,6 +27,7 @@ if (file_exists(working_directory + "save_file/file" + string(global.file) + ".i
 	timeattack_minute = ini_read_real(level_name, "timeattack_minute", 0);
 	timeattack_realmillisecond = ini_read_real(level_name, "timeattack_realmillisecond", 999999999);
 	level_score = ini_read_real(level_name, "level_score", 0);
+	zero_defeats = ini_read_real(level_name, "zero_defeats", 0);
 	
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	
@@ -52,12 +53,11 @@ else
 	timeattack_minute = 0;
 	timeattack_realmillisecond = 999999999;
 	level_score = 0;
+	zero_defeats = 0;
 }
 #endregion /* Level Load END */
 
-if (always_open)
-&& (clear_rate = "closed")
-{
+if (always_open && clear_rate = "closed") {
 	clear_rate = "enter";
 }
 

@@ -130,9 +130,7 @@ if (show_loading_icon)
 	show_loading_icon = true;
 	global.loading_spinning_angle -= 10;
 	
-	if (menu == "reset_from_checkpoint")
-	&& (global.loading_spinning_angle < -20)
-	{
+	if (menu == "reset_from_checkpoint" && global.loading_spinning_angle < -20) {
 		
 		#region /* Restart Level */
 		global.restart_level = true;
@@ -160,12 +158,10 @@ if (show_loading_icon)
 		global.timeattack_minute = 0;
 		#endregion /* Reset timer back to zero END */
 		
-		if (global.character_select_in_this_menu == "main_game")
-		{
+		if (global.character_select_in_this_menu == "main_game") {
 			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		}
-		else
-		{
+		else {
 			ini_open(game_save_id + "save_file/custom_level_save.ini");
 		}
 		ini_key_delete(global.level_name, "checkpoint_x");
@@ -174,6 +170,7 @@ if (show_loading_icon)
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		global.checkpoint_x = 0;
 		global.checkpoint_y = 0;
+		global.lives_until_assist = 0; /* Reset the lives until assist counter if you manually restart a level. This is so you can do a zero defeats */
 		
 		global.restart_level = true;
 		audio_stop_all();

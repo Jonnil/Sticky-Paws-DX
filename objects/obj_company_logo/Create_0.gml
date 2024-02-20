@@ -334,7 +334,7 @@ global.character_for_player[4] = string(character_for_player4); /* Player 4 Sele
 
 global.select_level_index = 0; /* What level is selected in the custom level editor */
 global.selected_resource_pack = 0; /* 0 = default */
-global.show_defeats_counter = false; /* Show a defeats counter or not */
+global.show_defeats_counter = true; /* Show a defeats counter or not */
 global.show_ranks = false; /* Show ranks you get at the end of the level */
 global.show_timer = false; /* Show a countup timer or not */
 global.thumbnail_sprite = ds_list_create();

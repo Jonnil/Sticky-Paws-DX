@@ -435,6 +435,7 @@ else {
 
 #region /* Health Handeling */
 if (taken_damage > 0) {
+	global.zero_hits = false;
 	taken_damage -= 1;
 }
 

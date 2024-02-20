@@ -73,15 +73,18 @@ if (nearest_level != noone && iris_xscale > 9 && move_delay > 10 && distance_to_
 			l10n_text("Total Big Fish") + ": " + string(total_big_collectibles) + "/" + string(max_total_big_collectibles),
 			global.default_text_size, c_black, c_white, 1);
             
-			if (at_least_one_big_collectible) {
-                for (var i = 1; i <= global.max_big_collectible; i++) {
-                    var sprite_to_draw = global.resource_pack_sprite_big_collectible_outline;
-                    if (global.resource_pack_sprite_big_collectible > 0 && nearest_level.big_collectible[i]) {
-                        sprite_to_draw = global.resource_pack_sprite_big_collectible;
-                    }
-                    draw_sprite_ext(sprite_to_draw, 0, show_level_info_x - 72 + (24 * i), show_level_info_y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
-                }
-            }
+			for (var i = 1; i <= global.max_big_collectible; i++) {
+				var sprite_to_draw = global.resource_pack_sprite_big_collectible_outline;
+				if (global.resource_pack_sprite_big_collectible > 0 && nearest_level.big_collectible[i]) {
+					sprite_to_draw = global.resource_pack_sprite_big_collectible;
+				}
+				draw_sprite_ext(sprite_to_draw, 0, show_level_info_x - 72 + (24 * i), show_level_info_y + show_big_collectibles_y, 0.3, 0.3, 0, c_white, 1);
+			}
+			if (nearest_level.zero_defeats != 0) {
+				if (nearest_level.zero_defeats == 1) {var sprite_zero_defeats = spr_icon_zero_defeats;}
+				else {var sprite_zero_defeats = spr_icon_zero_hits;}
+				draw_sprite_ext(sprite_zero_defeats, 0, show_level_info_x + 100, show_level_info_y + show_big_collectibles_y, 1, 1, 0, c_white, 1);
+			}
         }
     }
 }

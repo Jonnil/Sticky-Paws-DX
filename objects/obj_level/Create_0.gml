@@ -31,4 +31,5 @@ timeattack_realmillisecond = 999999999;
 timeattack_second = 0;
 checkpoint_x = 0;
 checkpoint_y = 0;
+zero_defeats = 0;
 depth = -2;

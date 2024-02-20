@@ -13,6 +13,7 @@ function scr_draw_online_download_list()
 		in_online_download_list_load_menu = true; /* Let Async - HTTP Event know that we want to load a onload download list */
 		
 		finished_level = undefined;
+		zero_defeats_level = undefined;
 		liked_content = undefined;
 		
 		/* Create DS Map to hold the HTTP Header info */
@@ -113,12 +114,13 @@ function scr_draw_online_download_list()
 				/* Get the number of items in the JSON array */
 				var num_items = array_length(data);
 				
-				if (!is_array(finished_level))
-				{
+				if (!is_array(finished_level)) {
 					finished_level = array_create(num_items, undefined); /* Create finished level array */
 				}
-				if (!is_array(liked_content))
-				{
+				if (!is_array(zero_defeats_level)) {
+					zero_defeats_level = array_create(num_items, undefined); /* Create zero defeats level array */
+				}
+				if (!is_array(liked_content)) {
 					liked_content = array_create(num_items, undefined); /* Create liked content array */
 				}
 				
@@ -278,38 +280,46 @@ function scr_draw_online_download_list()
 									/* See if the online level has already been beaten by you or not */
 									if (ini_key_exists("finished_downloaded_level", draw_download_id))
 									{
-										finished_level[i] = ini_read_real("finished_downloaded_level", draw_download_id, false);
+										finished_level[i] = ini_read_real("finished_downloaded_level", draw_download_id, 0);
 									}
 									else
 									{
-										finished_level[i] = false; /* Overwrite so it's false instead of undefined, so you don't check this level ID again */
+										finished_level[i] = 0; /* Overwrite so it's 0 instead of undefined, so you don't check this level ID again */
+									}
+									
+									/* See if the online level has been completed with zero defeats or zero hits */
+									if (ini_key_exists("zero_defeats_downloaded_level", draw_download_id))
+									{
+										zero_defeats_level[i] = ini_read_real("zero_defeats_downloaded_level", draw_download_id, 0);
+									}
+									else
+									{
+										zero_defeats_level[i] = 0; /* Overwrite so it's 0 instead of undefined, so you don't check this level ID again */
 									}
 									
 									ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 								}
 								else
 								{
-									finished_level[i] = false; /* Overwrite so it's false instead of undefined, so you don't check this level ID again */
+									finished_level[i] = 0; /* Overwrite so it's 0 instead of undefined, so you don't check this level ID again */
+									zero_defeats_level[i] = 0; /* Overwrite so it's 0 instead of undefined, so you don't check this level ID again */
 								}
 							}
 						}
-						if (is_array(finished_level))
-						{
-							if (finished_level[i] == 1) /* Only Played */
-							{
+						
+						#region /* Display finished icon */
+						if (is_array(finished_level)) {
+							if (finished_level[i] == 1) { /* Only Played */
 								var played_level_text = "Played";
 								var played_level_icon = spr_icon_played;
 								var played_level_color = c_yellow;
 							}
-							else
-							if (finished_level[i] == 2) /* Played and finished */
-							{
+							else if (finished_level[i] == 2) { /* Played and finished */
 								var played_level_text = "Finished";
 								var played_level_icon = spr_icon_finished;
 								var played_level_color = c_lime;
 							}
-							else /* Not played */
-							{
+							else { /* Not played */
 								var played_level_text = "Unplayed";
 								var played_level_icon = spr_icon_unplayed;
 								var played_level_color = c_red;
@@ -317,6 +327,32 @@ function scr_draw_online_download_list()
 							draw_sprite_ext(played_level_icon, 0, download_online_x + 524, 32 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
 							scr_draw_text_outlined(download_online_x + 548, 32 + download_online_y + menu_y_offset, l10n_text(played_level_text), global.default_text_size, c_menu_outline, played_level_color, 1);
 						}
+						#endregion /* Display finished icon END */
+						
+						#region /* Display zero defeats icon */
+						if (is_array(zero_defeats_level)) {
+							if (zero_defeats_level[i] == 1) { /* Zero Defeats */
+								var zero_defeats_level_text = "Zero Defeats";
+								var zero_defeats_level_icon = spr_icon_zero_defeats;
+								var zero_defeats_level_color = c_red;
+							}
+							else if (zero_defeats_level[i] == 2) { /* Zero Hits */
+								var zero_defeats_level_text = "Zero Hits";
+								var zero_defeats_level_icon = spr_icon_zero_hits;
+								var zero_defeats_level_color = c_lime;
+							}
+							else { /* No Zero Defeats */
+								var zero_defeats_level_text = "";
+								var zero_defeats_level_icon = spr_noone;
+								var zero_defeats_level_color = c_red;
+							}
+							if (zero_defeats_level_text != "") {
+								draw_sprite_ext(zero_defeats_level_icon, 0, download_online_x + 524, 64 + download_online_y + menu_y_offset, 1, 1, 0, c_white, 1);
+								scr_draw_text_outlined(download_online_x + 548, 64 + download_online_y + menu_y_offset, l10n_text(zero_defeats_level_text), global.default_text_size, c_menu_outline, zero_defeats_level_color, 1);
+							}
+						}
+						#endregion /* Display finished icon END */
+						
 					}
 					#endregion /* Let player know when you have already beaten a downloaded level END */
 					
