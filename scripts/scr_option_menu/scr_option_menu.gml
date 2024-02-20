@@ -713,12 +713,7 @@ function scr_option_menu()
 			if (global.settings_sidebar_menu == "accessibility_settings"){menu = "assist_enable";}
 			if (global.settings_sidebar_menu == "game_settings")
 			{
-				if (global.enable_difficulty_selection_settings) {
-					menu = "difficulty_settings";
-				}
-				else if (global.enable_option_for_pc) {
-					menu = "automatically_pause_when_window_is_unfocused_settings";
-				}
+				menu = "difficulty_settings";
 			}
 			if (global.settings_sidebar_menu == "keyboard_and_mouse_settings")
 			|| (global.settings_sidebar_menu == "controller_settings")
@@ -856,15 +851,7 @@ function scr_option_menu()
 			menu_delay = 3;
 			input_key = false;
 			can_navigate_settings_sidebar = false;
-			if (global.enable_difficulty_selection_settings)
-			{
-				menu = "difficulty_settings";
-			}
-			else
-			if (global.enable_option_for_pc)
-			{
-				menu = "automatically_pause_when_window_is_unfocused_settings";
-			}
+			menu = "difficulty_settings";
 		}
 		#endregion /* Click Game END */
 		
@@ -2109,40 +2096,28 @@ function scr_option_menu()
 		#region /* My Game Settings */
 	
 		#region /* Game Settings */
-		if (global.settings_sidebar_menu == "game_settings")
-		{
-			if (global.enable_difficulty_selection_settings)
-			{
-				difficulty_settings_y = 98;
-				automatically_pause_when_window_is_unfocused_settings_y = 164;
+		if (global.settings_sidebar_menu == "game_settings") {
+			difficulty_settings_y = 48;
+			automatically_pause_when_window_is_unfocused_settings_y = 48 * 2;
+			show_timer_settings_y = 48 * 3;
+			show_defeats_counter_settings_y = 48 * 4;
+			if (global.enable_ranks) {
+				show_ranks_settings_y = 48 * 5;
+				show_tutorial_signs_y = 48 * 6;
+				players_can_collide_y = 48 * 7;
+				show_new_items_notification_y = 48 * 8;
+				hud_hide_time_y = 48 * 9 + 16;
+				selected_font_y = 48 * 10 + 32;
+				debug_screen_y = 48 * 11 + 32;
 			}
-			else
-			{
-				difficulty_settings_y = -999;
-				automatically_pause_when_window_is_unfocused_settings_y = 164;
-			}
-			automatically_pause_when_window_is_unfocused_settings_y = 164;
-			show_timer_settings_y = 164 + (48);
-			show_defeats_counter_settings_y = 164 + (48 * 2);
-			if (global.enable_ranks)
-			{
-				show_ranks_settings_y = 164 + (48 * 3);
-				show_tutorial_signs_y = 164 + (48 * 4);
-				players_can_collide_y = 164 + (48 * 5);
-				show_new_items_notification_y = 164 + (48 * 6);
-				hud_hide_time_y = 164 + (48 * 8) - 16;
-				selected_font_y = 164 + (48 * 9);
-				debug_screen_y = 164 + (48 * 10) + 16;
-			}
-			else
-			{
+			else {
 				show_ranks_settings_y = -9999;
-				show_tutorial_signs_y = 164 + (48 * 3);
-				players_can_collide_y = 164 + (48 * 4);
-				show_new_items_notification_y = 164 + (48 * 5);
-				hud_hide_time_y = 164 + (48 * 7) - 16;
-				selected_font_y = 164 + (48 * 8);
-				debug_screen_y = 164 + (48 * 9) + 16;
+				show_tutorial_signs_y = 48 * 5;
+				players_can_collide_y = 48 * 6;
+				show_new_items_notification_y = 48 * 7;
+				hud_hide_time_y = 48 * 8 + 16;
+				selected_font_y = 48 * 9 + 32;
+				debug_screen_y = 48 * 10 + 32;
 			}
 			draw_set_halign(fa_left);
 			draw_set_valign(fa_middle);
@@ -2179,11 +2154,8 @@ function scr_option_menu()
 			}
 			draw_menu_dropdown(380, hud_hide_time_y, l10n_text("HUD hide timer"), "hud_hide_time", global.hud_hide_time, l10n_text("Never Show"), l10n_text("After 1 Second"), l10n_text("After 2 Seconds"), l10n_text("After 3 Seconds"), l10n_text("After 4 Seconds"), l10n_text("After 5 Seconds"), l10n_text("After 6 Seconds"), l10n_text("After 7 Seconds"), l10n_text("After 8 Seconds"), l10n_text("After 9 Seconds"), l10n_text("Always Show"));
 			
-			if (global.enable_difficulty_selection_settings)
-			{
-				draw_menu_dropdown(380, difficulty_settings_y, l10n_text("Level Layout Difficulty"), "difficulty_settings", global.difficulty, l10n_text("Easy"), l10n_text("Normal"), l10n_text("Hard")); /* Difficulty Settings */
-			}
-		
+			draw_menu_dropdown(380, difficulty_settings_y, l10n_text("Level Layout Difficulty"), "difficulty_settings", global.difficulty, l10n_text("Easy"), l10n_text("Normal"), l10n_text("Hard")); /* Difficulty Settings */
+			
 		}
 		#endregion /* Game Settings END */
 	
@@ -3105,19 +3077,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					if (global.enable_difficulty_selection_settings)
-					{
-						menu = "difficulty_settings";
-					}
-					else
-					if (can_select_font)
-					{
-						menu = "select_font";
-					}
-					else
-					{
-						menu = "hud_hide_time";
-					}
+					menu = "difficulty_settings";
 				}
 				else
 				if (key_down)
@@ -3139,14 +3099,8 @@ function scr_option_menu()
 					if (global.enable_option_for_pc) {
 						menu = "automatically_pause_when_window_is_unfocused_settings";
 					}
-					else if (global.enable_difficulty_selection_settings) {
-						menu = "difficulty_settings";
-					}
-					else if (can_select_font) {
-						menu = "select_font";
-					}
 					else {
-						menu = "hud_hide_time";
+						menu = "difficulty_settings";
 					}
 				}
 				else
@@ -3382,12 +3336,7 @@ function scr_option_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					menu_delay = 3;
-					if (global.enable_difficulty_selection_settings) {
-						menu = "difficulty_settings";
-					}
-					else if (global.enable_option_for_pc) {
-						menu = "automatically_pause_when_window_is_unfocused_settings";
-					}
+					menu = "difficulty_settings";
 				}
 			}
 			#endregion /* Navigate Game Settings END */

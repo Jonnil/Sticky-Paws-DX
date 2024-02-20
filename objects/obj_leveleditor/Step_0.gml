@@ -325,12 +325,10 @@ if (!global.actually_play_edited_level)
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width - 64, get_window_height * 0.5 - 32, get_window_width, get_window_height * 0.5 + 32)) /* Can't place objects when clicking the play button */
 	|| (show_grid)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 32 - 32, 80 + icon_at_top_y + 16 - 32, display_get_gui_width() + 64, 80 + icon_at_top_y + 16 + 32)) /* Up and down buttons when grid is on */
-	|| (global.enable_difficulty_selection_settings)
-	&& (global.enable_difficutly_layers_in_level_editor)
+	|| (global.enable_difficutly_layers_in_level_editor)
 	&& (set_difficulty_mode)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 256 - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
-	|| (global.enable_difficulty_selection_settings)
-	&& (global.enable_difficutly_layers_in_level_editor)
+	|| (global.enable_difficutly_layers_in_level_editor)
 	&& (!set_difficulty_mode)
 	&& (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() - 64 - 64, display_get_gui_height() - 64, display_get_gui_width(), room_height * 2)) /* Can't place objects when clicking the bottom right buttons */
 	|| (point_in_rectangle(mouse_get_x, mouse_get_y, display_get_gui_width() * 0.5 - 64 - 64 - 32, 0, display_get_gui_width() * 0.5 + 64 + 64 + 32, 64)) /* Can't place objects when clicking the object category buttons */
@@ -2175,9 +2173,7 @@ if (!global.actually_play_edited_level && quit_level_editor == 0)
 	{
 		
 		#region /* Difficulty settings, 0 = All, 1 = Easy, 2 = Normal, 3 = Hard */
-		if (global.enable_difficulty_selection_settings)
-		&& (global.enable_difficutly_layers_in_level_editor)
-		{
+		if (global.enable_difficutly_layers_in_level_editor) {
 			
 			#region /* Easy */
 			if (set_difficulty_mode)

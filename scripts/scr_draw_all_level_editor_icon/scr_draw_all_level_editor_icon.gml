@@ -413,10 +413,8 @@ function scr_draw_all_level_editor_icon()
 	#endregion /* Delete All Objects / Wipe button END */
 	
 	#region /* Set difficulty layer */
-	if (global.enable_difficulty_selection_settings)
-	&& (global.enable_difficutly_layers_in_level_editor)
-	&& (set_difficulty_mode)
-	{
+	if (global.enable_difficutly_layers_in_level_editor)
+	&& (set_difficulty_mode) {
 		
 		#region /* Easy */
 		if (difficulty_layer == 1)
@@ -494,9 +492,7 @@ function scr_draw_all_level_editor_icon()
 		
 	}
 	else
-	if (global.enable_difficulty_selection_settings)
-	&& (global.enable_difficutly_layers_in_level_editor)
-	{
+	if (global.enable_difficutly_layers_in_level_editor) {
 		draw_sprite_ext(spr_leveleditor_icon, 19, display_get_gui_width() - 32 - 64, display_get_gui_height() - 32 + icon_at_bottom_y, 1, 1, 0, c_white, 1);
 		
 		if (global.controls_used_for_navigation == "mouse")
