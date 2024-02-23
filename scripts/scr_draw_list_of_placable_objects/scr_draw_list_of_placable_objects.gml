@@ -64,6 +64,7 @@ function scr_draw_list_of_placable_objects()
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BIRD, true, spr_bird, spr_wall, + 100, 1, 0, c_white,,,,,"Bird");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_BUSH, true, spr_bush, spr_wall, + 100, 1, 0, c_white,,,,,"Bush");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SIGN_CROUCH, true, spr_sign_crouch, spr_wall, + 100, 0.5, 0, c_white,,,,,"Tutorial Signs", "Teach the player what abilities they have");
+				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false, global.resource_pack_sprite_cake, spr_wall, + 100, 1, 0, c_white,,,,, "Cake Rat", "This rat stole your cake! Let the player try to catch them before the end of the level\nThe player will chase this rat until the very end of the game");
 			}
 			#endregion /* Decoration Objects END */
 			
@@ -114,7 +115,6 @@ function scr_draw_list_of_placable_objects()
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_ARTWORK_COLLECTION, false, spr_artwork_collection, spr_wall, + 100, 1, 0, c_white,,,,,"Artwork Collection");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_SIGN_READABLE, false, spr_sign_readable, spr_wall, + 100, 1, 0, c_white,,,,,"Readable Sign", "Click on the placed sign in the editor to edit what it should say!");
 				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_RING, false, spr_ring, spr_wall, + 100, 1, 0, c_white,,,,,"Ring", "Swing with long tongue on this ring");
-				scr_draw_level_editor_placable_object(order_index, LEVEL_OBJECT_ID.ID_CAKE_STEALING_ENEMY, false, global.resource_pack_sprite_cake, spr_wall, + 100, 1, 0, c_white,,,,, "Cake Rat", "This rat stole your cake! Let the player try to catch them before the end of the level\nThe player will chase this rat until the very end of the game");
 			}
 			#endregion /* Gizmo Objects END */
 			
