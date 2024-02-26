@@ -6,9 +6,9 @@ function scr_unlock_placable_objects(variable_to_check /* var_struct.O */)
 	/* { */
 	
 	/* Check if the object is unlocked before trying to write to the INI file */
-	if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini")) /* Check if the file even exists before opening, otherwise game doesn't function properly */
+	if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini")) /* Check if the file even exists before opening, otherwise game doesn't function properly */
 	{
-		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		if (!ini_key_exists("Unlock Placable Objects", variable_to_check))
 		{
 			/* Only write to the INI file if it exists and the object is not already unlocked */

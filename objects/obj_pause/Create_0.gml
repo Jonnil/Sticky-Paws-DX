@@ -93,9 +93,9 @@ if (global.narrator >= 0)
 		voice_game_title = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/game_title.ogg");
 	}
 	else
-	if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/game_title.ogg"))
+	if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/game_title.ogg"))
 	{
-		voice_game_title = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/game_title.ogg");
+		voice_game_title = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/game_title.ogg");
 	}
 	else
 	{
@@ -106,9 +106,9 @@ if (global.narrator >= 0)
 		voice_options = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/options.ogg");
 	}
 	else
-	if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/options.ogg"))
+	if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/options.ogg"))
 	{
-		voice_options = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/options.ogg");
+		voice_options = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/sound/voicepack0/options.ogg");
 	}
 	else
 	{
@@ -191,7 +191,7 @@ title_background_blink[3] = 1;
 
 #region /* Character Name */
 if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
-|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+|| (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 {
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 	{
@@ -199,7 +199,7 @@ if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_char
 	}
 	else
 	{
-		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
+		ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
 	}
 						
 	#region /* Character Name */
@@ -227,7 +227,7 @@ if (room == rm_leveleditor)
 {
 	var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 	
-	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	
 	ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
 	ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);
@@ -244,7 +244,7 @@ if (room == rm_leveleditor)
 {
 	var level_name = global.level_name;
 	
-	ini_open(working_directory + "save_file/custom_level_save.ini");
+	ini_open(game_save_id + "save_file/custom_level_save.ini");
 	
 	ini_write_real(level_name, "checkpoint_x", global.checkpoint_x);
 	ini_write_real(level_name, "checkpoint_y", global.checkpoint_y);

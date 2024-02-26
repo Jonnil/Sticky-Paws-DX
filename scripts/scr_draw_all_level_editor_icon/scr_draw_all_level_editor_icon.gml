@@ -359,7 +359,7 @@ function scr_draw_all_level_editor_icon()
 	&& (key_a_pressed)
 	{
 		global.always_show_level_editor_buttons = not global.always_show_level_editor_buttons;
-		ini_open(working_directory + "save_file/config.ini");
+		ini_open(game_save_id + "save_file/config.ini");
 		ini_write_real("config", "always_show_level_editor_buttons", global.always_show_level_editor_buttons);
 		ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	}

@@ -238,7 +238,7 @@ function scr_draw_online_download_list()
 								
 								#region /* Go to download menu */
 								global.automatically_play_downloaded_level = false; /* You will be taken to a menu showing you different options what you want to do with the downloaded file */
-								global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
+								global.use_cache_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
 								global.search_id = string_upper(draw_download_id);
 								keyboard_string = string_upper(draw_download_id);
 								search_id = string_upper(draw_download_id); /* Then need to set search ID */
@@ -273,9 +273,9 @@ function scr_draw_online_download_list()
 						{
 							if (finished_level[i] == undefined)
 							{
-								if (file_exists(working_directory + "save_file/custom_level_save.ini"))
+								if (file_exists(game_save_id + "save_file/custom_level_save.ini"))
 								{
-									ini_open(working_directory + "save_file/custom_level_save.ini");
+									ini_open(game_save_id + "save_file/custom_level_save.ini");
 									
 									/* See if the online level has already been beaten by you or not */
 									if (ini_key_exists("finished_downloaded_level", draw_download_id))
@@ -361,9 +361,9 @@ function scr_draw_online_download_list()
 					{
 						if (liked_content[i] == undefined)
 						{
-							if (file_exists(working_directory + "save_file/custom_" + string(content_type) + "_save.ini"))
+							if (file_exists(game_save_id + "save_file/custom_" + string(content_type) + "_save.ini"))
 							{
-								ini_open(working_directory + "save_file/custom_" + string(content_type) + "_save.ini");
+								ini_open(game_save_id + "save_file/custom_" + string(content_type) + "_save.ini");
 								
 								/* See if the online content has already been liked or disliked by you or not */
 								if (ini_key_exists("liked_downloaded_" + string(content_type), draw_download_id))
@@ -667,7 +667,7 @@ function scr_draw_online_download_list()
 					menu = "online_character_list";
 				}
 				global.automatically_play_downloaded_level = false;
-				global.use_cache_or_working = working_directory; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
+				global.use_cache_or_working = game_save_id; /* When downloading levels from online and temporarily playing the level, you have to use the "cache directory", but normally you need to use the "working directory" */
 				global.online_download_list = ""; /* Reset "global online download list" so you can reload online download list next time you go to this menu */
 				data = undefined; /* Reset "data" so you can reload online download list next time you go to this menu */
 				info_data = undefined; /* Don't forget to reset info data too */
@@ -704,7 +704,7 @@ function scr_draw_online_download_list()
 		#region /* Draw the Load Custom Level Assets */
 		if (content_type == "level")
 		{
-			var can_load_custom_level_assets_x = display_get_gui_width() - string_width(l10n_text("Load Custom Level Assets")) - 32;
+			var can_load_custom_level_assets_x = display_get_gui_width() - string_width(l10n_text("Load Custom Level Assets")) - 16;
 			var can_load_custom_level_assets_y = 16;
 			draw_menu_checkmark(can_load_custom_level_assets_x, can_load_custom_level_assets_y, l10n_text("Load Custom Level Assets"), "online_list_can_load_custom_level_assets", global.can_load_custom_level_assets, true);
 			

@@ -2288,7 +2288,7 @@ function scr_option_menu()
 						}
 						
 						/* Save username to config file */
-						ini_open(working_directory + "save_file/config.ini");
+						ini_open(game_save_id + "save_file/config.ini");
 						ini_write_string("config", "username", string(global.username));
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						
@@ -2333,12 +2333,12 @@ function scr_option_menu()
 			if (menu == "change_username_ok")
 			|| (menu == "change_username_cancel")
 			{
-				global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, true, change_username_x + 185, change_username_y + 21, "change_username_ok", "change_username_cancel", false);
+				global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, true, change_username_x + 185, change_username_y + 21, "change_username_ok", "change_username_cancel", false, true, false);
 				if (global.clicking_ok_input_screen || global.clicking_cancel_input_screen)
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					/* Save username to config file */
-					ini_open(working_directory + "save_file/config.ini");
+					ini_open(game_save_id + "save_file/config.ini");
 					ini_write_string("config", "username", string(global.username));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
@@ -2526,7 +2526,7 @@ function scr_option_menu()
 					
 						#region /* Character Name */
 						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
-						|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+						|| (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 						{
 							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 							{
@@ -2534,7 +2534,7 @@ function scr_option_menu()
 							}
 							else
 							{
-								ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
+								ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
 							}
 						
 							#region /* Character Name */
@@ -2579,7 +2579,7 @@ function scr_option_menu()
 						
 						#region /* Character Name */
 						if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
-						|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+						|| (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 						{
 							if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 							{
@@ -2587,7 +2587,7 @@ function scr_option_menu()
 							}
 							else
 							{
-								ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
+								ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
 							}
 						
 							#region /* Character Name */
@@ -2691,9 +2691,9 @@ function scr_option_menu()
 			}
 			
 			#region /* Display save file data */
-			if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
+			if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 			{
-				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 				
 				if (ini_key_exists("Player", "current_year"))
 				&& (ini_key_exists("Player", "current_month"))
@@ -2733,7 +2733,7 @@ function scr_option_menu()
 			if (menu != "file_delete_yes")
 			&& (menu != "file_delete_no")
 			{
-				if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
+				if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 				{
 					draw_menu_button(450, delete_file_y, l10n_text("Delete File"), "file_delete", "file_delete_no", c_red);
 					draw_sprite_ext(spr_icon_delete, 0, 450 + 16, delete_file_y + 21, 1, 1, 0, c_white, 1);
@@ -2814,7 +2814,7 @@ function scr_option_menu()
 			{
 				if (menu != "file_delete_no")
 				&& (menu != "file_delete_yes")
-				&& (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
+				&& (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 				{
 					draw_sprite_ext(spr_keyboard_keys, vk_right, file_select_x + file_select_right_arrow_x, file_y, 0.5, 0.5, 0, c_white, 1);
 					if (point_in_rectangle(mouse_get_x, mouse_get_y, file_select_x + file_select_right_arrow_x - 16, file_y - 16, file_select_x + file_select_right_arrow_x + 16, file_y + 16))
@@ -2864,7 +2864,7 @@ function scr_option_menu()
 			{
 				can_navigate_settings_sidebar = false;
 				menu = "file_select";
-				file_delete(working_directory + "save_file/file" + string(global.file) + ".ini");
+				file_delete(game_save_id + "save_file/file" + string(global.file) + ".ini");
 				menu_delay = 3;
 			}
 		
@@ -2894,7 +2894,7 @@ function scr_option_menu()
 				else
 				if (menu == "open_save_file_folder")
 				{
-					if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
+					if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 					{
 						menu = "file_delete";
 					}
@@ -2914,7 +2914,7 @@ function scr_option_menu()
 				menu_delay = 3;
 				if (menu == "file_select")
 				{
-					if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
+					if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 					{
 						menu = "file_delete";
 					}
@@ -2982,7 +2982,7 @@ function scr_option_menu()
 			&& (menu != "file_delete_no")
 			&& (menu != "file_delete_yes")
 			{
-				if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
+				if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 				{
 					can_navigate_settings_sidebar = false;
 					menu = "file_select";

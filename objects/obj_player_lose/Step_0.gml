@@ -178,11 +178,11 @@ if (global.restart_level)
 	{
 		if (global.character_select_in_this_menu == "main_game")
 		{
-			ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+			ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		}
 		else
 		{
-			ini_open(working_directory + "save_file/custom_level_save.ini");
+			ini_open(game_save_id + "save_file/custom_level_save.ini");
 		}
 		ini_key_delete(global.level_name, "checkpoint_x");
 		ini_key_delete(global.level_name, "checkpoint_y");

@@ -184,35 +184,35 @@ function scr_character_manage_menu_step() {
 				first_copy_file = "";
 				
 				#region /* Copy character files to new character folder */
-				if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy")) {
-					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy")
+				if (!directory_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy")) {
+					directory_create(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy")
 				}
-				if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data")) {
-					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data")
+				if (!directory_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data")) {
+					directory_create(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data")
 				}
-				if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound")) {
-					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound")
+				if (!directory_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound")) {
+					directory_create(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound")
 				}
-				if (!directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites")) {
-					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites")
+				if (!directory_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites")) {
+					directory_create(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites")
 				}
 				
 				#region /* Copy files from selected character to custom character copy */
 				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini")) {
 					file_copy("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini",
-					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/character_config.ini");
+					game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/character_config.ini");
 				}
 				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini")) {
 					file_copy("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini",
-					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/sprite_origin_point.ini");
+					game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/sprite_origin_point.ini");
 				}
-				if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini")) {
-					file_copy(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini",
-					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/character_config.ini");
+				if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini")) {
+					file_copy(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini",
+					game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/character_config.ini");
 				}
-				if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini")) {
-					file_copy(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini",
-					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/sprite_origin_point.ini");
+				if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini")) {
+					file_copy(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini",
+					game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/sprite_origin_point.ini");
 				}
 				#endregion /* Copy files from selected character to custom character copy END */
 				
@@ -306,8 +306,8 @@ function scr_character_manage_menu_step() {
 		&& (menu_delay == 0 && menu_joystick_delay == 0)
 		&& (can_navigate) {
 			if (!selecting_official_character) {
-				if (directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])))) {
-					directory_destroy(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])));
+				if (directory_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])))) {
+					directory_destroy(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])));
 				}
 				
 				#region /* After deleting character, go to previous character, so you don't accidentally go to a undefined character */
@@ -417,7 +417,7 @@ function scr_character_manage_menu_step() {
 				menu_delay = 3;
 				if (global.online_enabled) {
 					if (upload_rules_do_not_show_character) {
-						ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini");
+						ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini");
 						if (ini_key_exists("info", "clear_check_character")) {
 							if (ini_read_real("info", "clear_check_character", false)) {
 								menu = "upload_yes_character";

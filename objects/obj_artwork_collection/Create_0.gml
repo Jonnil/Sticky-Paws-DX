@@ -12,9 +12,9 @@ xx = window_get_width() * 0.5;
 yy = y;
 gamepad_stick = false;
 
-if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
+if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 {
-	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	
 	level_number = 1;
 	level_name = string(ds_list_find_value(global.all_loaded_main_levels, level_number));

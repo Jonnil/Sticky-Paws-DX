@@ -8,9 +8,9 @@ function scr_character_manage_copy()
 		load_from_where = "characters";
 	}
 	else
-	if (directory_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]))))
+	if (directory_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1]))))
 	{
-		load_from_where = working_directory + "custom_characters";
+		load_from_where = game_save_id + "custom_characters";
 	}
 	
 	if (!can_navigate)
@@ -27,7 +27,7 @@ function scr_character_manage_copy()
 				first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sound/*", fa_directory)
 				if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sound/" + string(first_copy_file)))
 				{
-					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/" + string(first_copy_file))
+					directory_create(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/" + string(first_copy_file))
 				}
 				initialized_copy = true;
 			}
@@ -43,7 +43,7 @@ function scr_character_manage_copy()
 			{
 				if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sound/" + string(file_found)))
 				{
-					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/" + string(file_found))
+					directory_create(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/" + string(file_found))
 				}
 				
 				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
@@ -74,7 +74,7 @@ function scr_character_manage_copy()
 				first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sprites/*", fa_directory)
 				if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sprites/" + string(first_copy_file)))
 				{
-					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/" + string(first_copy_file))
+					directory_create(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/" + string(first_copy_file))
 				}
 				initialized_copy = true;
 			}
@@ -90,7 +90,7 @@ function scr_character_manage_copy()
 			{
 				if (directory_exists(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sprites/" + string(file_found)))
 				{
-					directory_create(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/" + string(file_found))
+					directory_create(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/" + string(file_found))
 				}
 				
 				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
@@ -120,7 +120,7 @@ function scr_character_manage_copy()
 			{
 				first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sound/*.ogg", 0)
 				file_copy(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sound/" + string(first_copy_file),
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/" + string(first_copy_file))
+				game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/" + string(first_copy_file))
 				initialized_copy = true;
 			}
 			file_found = file_find_next()
@@ -134,7 +134,7 @@ function scr_character_manage_copy()
 			else
 			{
 				file_copy(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sound/" + string(file_found),
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/" + string(file_found))
+				game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/" + string(file_found))
 				
 				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 			}
@@ -163,7 +163,7 @@ function scr_character_manage_copy()
 			{
 				first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sprites/*.png", 0)
 				file_copy(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sprites/" + string(first_copy_file),
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/" + string(first_copy_file))
+				game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/" + string(first_copy_file))
 				initialized_copy = true;
 			}
 			file_found = file_find_next()
@@ -177,7 +177,7 @@ function scr_character_manage_copy()
 			else
 			{
 				file_copy(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sprites/" + string(file_found),
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/" + string(file_found))
+				game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/" + string(file_found))
 				
 				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 			}
@@ -208,7 +208,7 @@ function scr_character_manage_copy()
 				{
 					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sound/voicepack" + string(load_specific_folder) + "/*.ogg", 0)
 					file_copy(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sound/voicepack" + string(load_specific_folder) + "/" + string(first_copy_file),
-					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/voicepack" + string(load_specific_folder) + "/" + string(first_copy_file))
+					game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/voicepack" + string(load_specific_folder) + "/" + string(first_copy_file))
 					initialized_copy = true;
 				}
 				else
@@ -229,7 +229,7 @@ function scr_character_manage_copy()
 			else
 			{
 				file_copy(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sound/voicepack" + string(load_specific_folder) + "/" + string(file_found),
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/voicepack" + string(load_specific_folder) + "/" + string(file_found))
+				game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sound/voicepack" + string(load_specific_folder) + "/" + string(file_found))
 				
 				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 			}
@@ -260,7 +260,7 @@ function scr_character_manage_copy()
 				{
 					first_copy_file = file_find_first(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sprites/skin" + string(load_specific_folder) + "/*.png", 0)
 					file_copy(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sprites/skin" + string(load_specific_folder) + "/" + string(first_copy_file),
-					working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/skin" + string(load_specific_folder) + "/" + string(first_copy_file))
+					game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/skin" + string(load_specific_folder) + "/" + string(first_copy_file))
 					initialized_copy = true;
 				}
 				else
@@ -269,8 +269,8 @@ function scr_character_manage_copy()
 					#region /* Copying character is finished! */
 					copied_character_name = string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy"; /* Get the name of the copied character first */
 					
-					var file_find_copied_character = string(file_find_first(working_directory + "custom_characters/" + string(copied_character_name), fa_directory))
-					if (file_exists(working_directory + "custom_characters/" + file_find_copied_character + "/data/character_config.ini"))
+					var file_find_copied_character = string(file_find_first(game_save_id + "custom_characters/" + string(copied_character_name), fa_directory))
+					if (file_exists(game_save_id + "custom_characters/" + file_find_copied_character + "/data/character_config.ini"))
 					{
 						/* We need to add the coptied character to the ds list, but we also need to sort it correctly */
 						repeat(2) /* We have 2 official characters */
@@ -330,7 +330,7 @@ function scr_character_manage_copy()
 			else
 			{
 				file_copy(string(load_from_where) + "/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/sprites/skin" + string(load_specific_folder) + "/" + string(file_found),
-				working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/skin" + string(load_specific_folder) + "/" + string(file_found));
+				game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/sprites/skin" + string(load_specific_folder) + "/" + string(file_found));
 				
 				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 			}

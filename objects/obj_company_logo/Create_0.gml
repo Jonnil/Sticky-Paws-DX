@@ -162,16 +162,16 @@ global.hud_hide_time = 3;
 #region /* File Handeling */
 
 #region /* Create directory for saving custom levels */
-if (!directory_exists(working_directory + "\custom_levels"))
+if (!directory_exists(game_save_id + "\custom_levels"))
 {
-	directory_create(working_directory + "\custom_levels");
+	directory_create(game_save_id + "\custom_levels");
 }
 #endregion /* Create directory for saving custom levels END */
 
 #region /* Create directory for saving custom characters */
-if (!directory_exists(working_directory + "\custom_characters"))
+if (!directory_exists(game_save_id + "\custom_characters"))
 {
-	directory_create(working_directory + "\custom_characters");
+	directory_create(game_save_id + "\custom_characters");
 }
 #endregion /* Create directory for saving custom characters END */
 

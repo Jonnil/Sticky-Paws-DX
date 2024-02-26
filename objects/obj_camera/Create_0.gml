@@ -80,11 +80,11 @@ global.deactivate_timer = 999;
 global.appear_block_timer = 0;
 
 if (global.character_select_in_this_menu == "main_game")
-&& (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
+&& (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 {
 	var level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index));
 	
-	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	timeattack_record_millisecond = ini_read_real(level_name, "timeattack_millisecond", 0);
 	timeattack_record_second = ini_read_real(level_name, "timeattack_second", 0);
 	timeattack_record_minute = ini_read_real(level_name, "timeattack_minute", 0);

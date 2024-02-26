@@ -390,26 +390,26 @@ function scr_character_select_menu_step()
 								voice_select_character = audio_create_stream("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name.ogg");
 							}
 							else
-							if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_3.ogg"))
+							if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_3.ogg"))
 							&& (floor(random(3 - 1)) == 0)
 							{
-								voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_3.ogg");
+								voice_select_character = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_3.ogg");
 							}
 							else
-							if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_2.ogg"))
+							if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_2.ogg"))
 							&& (floor(random(3 - 1)) == 0)
 							{
-								voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_2.ogg");
+								voice_select_character = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_2.ogg");
 							}
 							else
-							if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_1.ogg"))
+							if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_1.ogg"))
 							{
-								voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_1.ogg");
+								voice_select_character = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name_1.ogg");
 							}
 							else
-							if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name.ogg"))
+							if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name.ogg"))
 							{
-								voice_select_character = audio_create_stream(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name.ogg");
+								voice_select_character = audio_create_stream(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/name.ogg");
 							}
 							else
 							{

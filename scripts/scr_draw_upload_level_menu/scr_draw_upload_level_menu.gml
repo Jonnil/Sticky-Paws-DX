@@ -381,39 +381,26 @@ function scr_draw_upload_level_menu() {
 		var change_username_y = 20 + (40 * 5);
 		
 		#region /* Change username */
-		global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_edit_username_ok", "upload_edit_username_cancel", false);
+		global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_edit_username_ok", "upload_edit_username_cancel", false, true, false);
 		
 		#region /* Pressing Change Username OK */
-		if (key_a_pressed)
-		&& (menu = "upload_edit_username_ok")
-		&& (global.username != "")
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x - 185, change_username_y + 22 + 52, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42))
-		&& (global.username != "")
-		&& (global.controls_used_for_navigation == "mouse")
-		&& (mouse_check_button_released(mb_left)) {
-			if (!keyboard_check_pressed(ord("Z")))
-			&& (!keyboard_check_pressed(ord("X")))
-			&& (!keyboard_check_pressed(vk_backspace))
-			&& (!keyboard_check_pressed(vk_space))
-			&& (menu_delay == 0 && menu_joystick_delay == 0) {
-				/* Save username to config file */
-				ini_open(game_save_id + "save_file/config.ini");
-				ini_write_string("config", "username", string(global.username));
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-				
-				menu_delay = 3;
-				input_key = false;
-				if (os_is_network_connected()) {
-					menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
-				}
-				else
-				if (content_type == "character") {
-					menu = "no_internet_character";
-				}
-				else
-				if (content_type == "level") {
-					menu = "no_internet_level";
-				}
+		if (global.clicking_ok_input_screen && global.username != "") {
+			ini_open(game_save_id + "save_file/config.ini");
+			ini_write_string("config", "username", string(global.username)); /* Save username to config file */
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			
+			menu_delay = 3;
+			input_key = false;
+			if (os_is_network_connected()) {
+				menu = "upload_edit_name"; /* Go to edit name, description, and tags menu */
+			}
+			else
+			if (content_type == "character") {
+				menu = "no_internet_character";
+			}
+			else
+			if (content_type == "level") {
+				menu = "no_internet_level";
 			}
 		}
 		#endregion /* Pressing Change Username OK END */
@@ -421,33 +408,21 @@ function scr_draw_upload_level_menu() {
 		else
 		
 		#region /* Pressing Change Username Cancel */
-		if (key_a_pressed)
-		&& (menu = "upload_edit_username_cancel")
-		|| (key_b_pressed)
-		|| (point_in_rectangle(mouse_get_x, mouse_get_y, change_username_x - 185, change_username_y + 22 + 52 + 42, change_username_x - 185 + 370, change_username_y + 22 + 52 + 42 + 42))
-		&& (global.controls_used_for_navigation == "mouse")
-		&& (mouse_check_button_released(mb_left)) {
-			if (!keyboard_check_pressed(ord("Z")))
-			&& (!keyboard_check_pressed(ord("X")))
-			&& (!keyboard_check_pressed(vk_backspace))
-			&& (!keyboard_check_pressed(vk_space))
-			&& (menu_delay == 0 && menu_joystick_delay == 0) {
-				/* Save username as blank to config file, then go back */
-				ini_open(game_save_id + "save_file/config.ini");
-				ini_write_string("config", "username", "");
-				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
-				global.username = "";
-				keyboard_string = "";
-				menu_delay = 3;
-				input_key = false;
-				if (variable_instance_exists(self, "open_sub_menu")) {
-					open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
-				}
-				if (variable_instance_exists(self, "show_level_editor_corner_menu")) {
-					show_level_editor_corner_menu = true;
-				}
-				menu = "level_editor_upload";
+		if (global.clicking_cancel_input_screen) {
+			ini_open(game_save_id + "save_file/config.ini");
+			ini_write_string("config", "username", ""); /* Save username as blank to config file, then go back */
+			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+			global.username = "";
+			keyboard_string = "";
+			menu_delay = 3;
+			input_key = false;
+			if (variable_instance_exists(self, "open_sub_menu")) {
+				open_sub_menu = true; /* Open the sub menu when not in uploading level menu */
 			}
+			if (variable_instance_exists(self, "show_level_editor_corner_menu")) {
+				show_level_editor_corner_menu = true;
+			}
+			menu = "level_editor_upload";
 		}
 		#endregion /* Pressing Change Username Cancel END */
 		
@@ -782,7 +757,7 @@ function scr_draw_upload_level_menu() {
 		}
 		
 		if (can_input_level_name) {
-			global.level_name = scr_draw_name_input_screen(global.level_name, 32, c_black, 1, false, get_window_width * 0.5, draw_name_y, "upload_enter_name_ok", "upload_enter_name_cancel");
+			global.level_name = scr_draw_name_input_screen(global.level_name, 32, c_black, 1, false, get_window_width * 0.5, draw_name_y, "upload_enter_name_ok", "upload_enter_name_cancel", false, true, false);
 		}
 		
 		#region /* Input Level Name */
@@ -802,14 +777,20 @@ function scr_draw_upload_level_menu() {
 						ini_section_delete(string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)));
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 						
+						/* For actual folder name, replace illegal characters with underscore only for naming folder */
+						var folder_name = global.level_name;
+						folder_name = scr_replace_illegal_characters(folder_name);
+						
 						/* To rename the level, need to copy level files into new named folder */
 						scr_copy_move_files(
 						game_save_id + "custom_levels/" + string(ds_list_find_value(global.all_loaded_custom_levels, global.select_level_index)),
-						game_save_id + "custom_levels/" + string(global.level_name), true); /* Need to write the entire path here instead of using variable, because the level name changes mid-code */
+						game_save_id + "custom_levels/" + string(folder_name), true); /* Need to write the entire path here instead of using variable, because the level name changes mid-code */
 						
-						ini_open(game_save_id + "custom_levels/" + string(global.level_name) + "/data/level_information.ini");
-						ini_write_string("info", "level_name", global.level_name);
+						ini_open(game_save_id + "custom_levels/" + string(folder_name) + "/data/level_information.ini");
+						ini_write_string("info", "level_name", global.level_name); /* Write the actual unfiltered level name you typed */
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
+						
+						global.level_name = folder_name; /* Set the global level name to the filtered level name, because it will be reading filtered folder names */
 						
 						global.go_to_menu_when_going_back_to_title = "upload_edit_name";
 						menu = "load_custom_level";
@@ -875,7 +856,7 @@ function scr_draw_upload_level_menu() {
 		/* Draw Level Name above description input */ scr_draw_text_outlined(get_window_width * 0.5, draw_name_y, global.level_name, global.default_text_size * 1.9, c_black, c_white, 1);
 		
 		if (can_input_level_name) {
-			global.level_description = scr_draw_name_input_screen(global.level_description, 75, c_black, 1, false, get_window_width * 0.5, draw_description_y, "upload_enter_description_ok", "upload_enter_description_cancel");
+			global.level_description = scr_draw_name_input_screen(global.level_description, 75, c_black, 1, false, get_window_width * 0.5, draw_description_y, "upload_enter_description_ok", "upload_enter_description_cancel", false, true, false);
 		}
 		
 		#region /* Input Level Description */

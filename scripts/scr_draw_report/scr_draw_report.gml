@@ -82,9 +82,9 @@ function scr_draw_report()
 		{
 			search_for_id_still = false;
 			if (content_type == "level")
-			&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+			&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 			|| (content_type == "character")
-			&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+			&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 			{
 				menu = "report_complete_delete"; /* When done sending report to server, go to the final menu */
 			}
@@ -133,9 +133,9 @@ function scr_draw_report()
 		if (content_type == "level")
 		{
 			if (content_type == "level")
-			&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+			&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 			|| (content_type == "character")
-			&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+			&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 			{
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y, l10n_text("You can delete the reported level if you want to"), global.default_text_size, c_black, c_white, 1);
 			}
@@ -148,9 +148,9 @@ function scr_draw_report()
 		else
 		{
 			if (content_type == "level")
-			&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+			&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 			|| (content_type == "character")
-			&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+			&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 			{
 				scr_draw_text_outlined(display_get_gui_width() * 0.5, report_sent_message_y, l10n_text("You can delete the reported character if you want to"), global.default_text_size, c_black, c_white, 1);
 			}
@@ -161,9 +161,9 @@ function scr_draw_report()
 			var searched_file_downloaded_back_text = l10n_text("Back to character select");
 		}
 		if (content_type == "level")
-		&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+		&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 		|| (content_type == "character")
-		&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+		&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 		{
 			draw_menu_button(display_get_gui_width() * 0.5 - 185, searched_file_downloaded_delete_y, l10n_text("Delete"), "report_complete_delete", "report_complete_delete", c_red);
 			draw_sprite_ext(spr_icon_delete, 0, display_get_gui_width() * 0.5 - 185 + 16, searched_file_downloaded_delete_y + 20, 1, 1, 0, c_white, 1);
@@ -183,10 +183,10 @@ function scr_draw_report()
 			{
 				menu_delay = 3;
 				if (content_type == "level")
-				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				{
-					directory_destroy(working_directory + "custom_levels/" + global.level_name);
-					ini_open(working_directory + "save_file/custom_level_save.ini");
+					directory_destroy(game_save_id + "custom_levels/" + global.level_name);
+					ini_open(game_save_id + "save_file/custom_level_save.ini");
 					ini_section_delete(global.level_name);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					global.select_level_index = 0;
@@ -194,9 +194,9 @@ function scr_draw_report()
 				}
 				else
 				if (content_type == "character")
-				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{
-					directory_destroy(working_directory + "custom_characters/" + string(downloaded_character_name));
+					directory_destroy(game_save_id + "custom_characters/" + string(downloaded_character_name));
 					global.character_index[0] = 0;
 				}
 				
@@ -280,9 +280,9 @@ function scr_draw_report()
 			if (menu == "report_complete_back_to_online_list")
 			{
 				if (content_type == "level")
-				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				|| (content_type == "character")
-				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{
 					menu = "report_complete_delete";
 				}
@@ -300,9 +300,9 @@ function scr_draw_report()
 			if (menu == "report_complete_back")
 			{
 				if (content_type == "level")
-				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				|| (content_type == "character")
-				&& (file_exists(working_directory + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
+				&& (file_exists(game_save_id + "custom_characters/" + string(downloaded_character_name) + "/data/character_config.ini"))
 				{
 					menu = "report_complete_delete";
 				}
@@ -738,7 +738,7 @@ function scr_draw_report()
 		var report_message_x = display_get_gui_width() * 0.5;
 		var report_message_y = display_get_gui_height() * 0.5;
 		
-		global.report_message = scr_draw_name_input_screen(global.report_message, 100, c_white, 0.9, false, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, "report_message_ok", "report_message_back");
+		global.report_message = scr_draw_name_input_screen(global.report_message, 100, c_white, 0.9, false, display_get_gui_width() * 0.5, display_get_gui_height() * 0.5, "report_message_ok", "report_message_back", false, true, false);
 		
 		scr_draw_text_outlined(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5 - 96, l10n_text("Please provide a reason for this report"), global.default_text_size, c_black, c_white, 1);
 		

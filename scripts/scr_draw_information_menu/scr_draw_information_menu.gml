@@ -485,7 +485,7 @@ function scr_draw_information_menu()
 			if (menu_delay == 1)
 			{
 				latest_whats_new_read = true;
-				ini_open(working_directory + "save_file/config.ini");
+				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_string("config", "latest_whats_new_version", "v" + scr_get_build_date());
 				ini_write_string("config", "latest_whats_new_text", string(global.whats_new));
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

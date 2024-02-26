@@ -77,7 +77,7 @@ function scr_draw_upload_character_menu()
 		#endregion /* Upload Character No END */
 		
 		#region /* Upload Character Yes */
-		if (file_exists(working_directory + "custom_characters/" + character_name + "/data/character_config.ini"))
+		if (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
 		{
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_yes_y - 42, get_window_width * 0.5 + 370, upload_character_yes_y + 42))
 			&& (global.controls_used_for_navigation == "mouse")
@@ -143,7 +143,7 @@ function scr_draw_upload_character_menu()
 			if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
 			&& (character_name != "")
 			{
-				ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+				ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 				ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false when you click on "clear check yes" just in case it isn't already false when doing a "clear check" */
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
@@ -214,7 +214,7 @@ function scr_draw_upload_character_menu()
 			#region /* Set clear_check_character to false whenever you back out from uploading custom character, in case you edit the custom character later */
 			if (character_name != "")
 			{
-				ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+				ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 				ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false */
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
@@ -238,7 +238,7 @@ function scr_draw_upload_character_menu()
 				#region /* Set clear_check_character to false whenever you back out from uploading custom character, in case you edit the custom character later */
 				if (character_name != "")
 				{
-					ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+					ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 					ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false */
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
@@ -254,12 +254,12 @@ function scr_draw_upload_character_menu()
 			if (point_in_rectangle(mouse_get_x, mouse_get_y, get_window_width * 0.5 - 370, upload_character_yes_y - 42, get_window_width * 0.5 + 370, upload_character_yes_y + 42))
 			&& (mouse_check_button_released(mb_left))
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (file_exists(working_directory + "custom_characters/" + character_name + "/data/character_config.ini"))
+			&& (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
 			|| (key_a_pressed)
 			&& (menu_delay == 0 && menu_joystick_delay == 0)
-			&& (file_exists(working_directory + "custom_characters/" + character_name + "/data/character_config.ini"))
+			&& (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
 			{
-				ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+				ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 				if (ini_key_exists("info", "clear_check_character"))
 				{
 					if (ini_read_real("info", "clear_check_character", false))
@@ -268,7 +268,7 @@ function scr_draw_upload_character_menu()
 						{
 							if (os_is_network_connected())
 							{
-								if (file_exists(working_directory + "custom_characters/" + character_name + "/data/character_config.ini"))
+								if (file_exists(game_save_id + "custom_characters/" + character_name + "/data/character_config.ini"))
 								{
 									/* Essential files does exist, so upload now */
 									menu = "uploading_character"; /* Go to uploading character loading screen */
@@ -507,7 +507,7 @@ function scr_draw_upload_character_menu()
 				if (global.character_select_in_this_menu == "level_editor") /* Only save this if you're in the level editor, otherwise level folders for main game will be created in AppData */
 				&& (character_name != "")
 				{
-					ini_open(working_directory + "custom_characters/" + string(character_name) + "/data/character_config.ini");
+					ini_open(game_save_id + "custom_characters/" + string(character_name) + "/data/character_config.ini");
 					ini_write_real("info", "clear_check_character", false); /* Set "clear check" to false when you click on "clear check yes" just in case it isn't already false when doing a "clear check" */
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
@@ -576,7 +576,7 @@ function scr_draw_upload_character_menu()
 		if (menu == "upload_character_edit_username_ok")
 		|| (menu == "upload_character_edit_username_cancel")
 		{
-			global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_character_edit_username_ok", "upload_character_edit_username_cancel", false);
+			global.username = scr_draw_name_input_screen(global.username, 32, c_white, 0.9, false, change_username_x - 185 + 185, change_username_y + 21, "upload_character_edit_username_ok", "upload_character_edit_username_cancel", false, true, false);
 			
 			#region /* Pressing Change Username OK */
 			if (key_a_pressed)
@@ -594,7 +594,7 @@ function scr_draw_upload_character_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					/* Save username to config file */
-					ini_open(working_directory + "save_file/config.ini");
+					ini_open(game_save_id + "save_file/config.ini");
 					ini_write_string("config", "username", string(global.username));
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					
@@ -629,7 +629,7 @@ function scr_draw_upload_character_menu()
 				&& (menu_delay == 0 && menu_joystick_delay == 0)
 				{
 					/* Save username as blank to config file, then go back */
-					ini_open(working_directory + "save_file/config.ini");
+					ini_open(game_save_id + "save_file/config.ini");
 					ini_write_string("config", "username", "");
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					global.username = "";
@@ -689,13 +689,13 @@ function scr_draw_upload_character_menu()
 		}
 		else
 		if (menu_delay <= 40)
-		&& (!file_exists(working_directory + string(character_id) + ".zip"))
+		&& (!file_exists(game_save_id + string(character_id) + ".zip"))
 		{
 			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 42, l10n_text("Creating Zip File"), global.default_text_size, c_black, c_dkgray, 1);
 		}
 		else
 		if (menu_delay >= 0)
-		&& (file_exists(working_directory + string(character_id) + ".zip"))
+		&& (file_exists(game_save_id + string(character_id) + ".zip"))
 		{
 			scr_draw_text_outlined(get_window_width * 0.5, uploading_character_message_y + 42, l10n_text("Send Zip File to the Server"), global.default_text_size, c_black, c_dkgray, 1);
 		}
@@ -709,7 +709,7 @@ function scr_draw_upload_character_menu()
 		
 		#region /* Create Zip File */
 		if (menu_delay <= 40)
-		&& (!file_exists(working_directory + string(character_id) + ".zip"))
+		&& (!file_exists(game_save_id + string(character_id) + ".zip"))
 		{
 			file = scr_upload_zip_add_files("character"); /* Add all the character files to a new zip file */
 		}
@@ -717,9 +717,9 @@ function scr_draw_upload_character_menu()
 		
 		#region /* Send Zip File to the Server */
 		if (menu_delay == 0)
-		&& (file_exists(working_directory + string(character_id) + ".zip"))
+		&& (file_exists(game_save_id + string(character_id) + ".zip"))
 		{
-			var zip_file = file_bin_open(working_directory + string(character_id) + ".zip", 0);
+			var zip_file = file_bin_open(game_save_id + string(character_id) + ".zip", 0);
 			var zip_size = file_bin_size(zip_file);
 			file_bin_close(zip_file); switch_save_data_commit(); /* Remember to commit the save data! */
 			zip_megabytes = zip_size / 1024 / 1024;
@@ -728,7 +728,7 @@ function scr_draw_upload_character_menu()
 			{
 				if (destroy_zip_after_uploading) /* Delete some leftover files and folders */
 				{
-					file_delete(working_directory + string(character_id) + ".zip");
+					file_delete(game_save_id + string(character_id) + ".zip");
 				}
 				menu = "error_character_too_big";
 			}
@@ -785,7 +785,7 @@ function scr_draw_upload_character_menu()
 					
 					if (destroy_zip_after_uploading) /* Delete some leftover files and folders */
 					{
-						file_delete(working_directory + string(character_id) + ".zip");
+						file_delete(game_save_id + string(character_id) + ".zip");
 					}
 					
 					if (os_is_network_connected())

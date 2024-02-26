@@ -1,4 +1,4 @@
-function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /* 500 is max characters on Nintendo Switch */, box_color, black_rectangle_alpha, can_press_ok_when_input_empty, xx, yy, ok_menu_string, cancel_menu_string, max_characters_needed = false, use_script_navigation_code = true, only_big_letter = false, can_enter_illegal_charcters = false)
+function scr_draw_name_input_screen(what_string /* What string to edit */, max_char = 500 /* 500 is max characters on Nintendo Switch */, box_color, black_rec_alpha /* Black Rectangle Alpha */, can_ok_when_empty /* Can press ok when input is empty */, xx, yy, ok_menu_string, cancel_menu_string, max_char_needed = false, use_script_navigation_code = true, only_big_letter = false)
 {
 	var buttons_x = -185;
 	var buttons_ok_y = +54;
@@ -59,7 +59,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 		steam_utils_enable_callbacks();
 		if (variable_instance_exists(self, "remember_keyboard_string"))
 		{
-			remember_keyboard_string = string(what_string_to_edit); /* In case you want to click "Cancel", revert back to whatever was already written before entering name input screen */
+			remember_keyboard_string = string(what_string); /* In case you want to click "Cancel", revert back to whatever was already written before entering name input screen */
 		}
 	}
 	if (global.keyboard_virtual_timer == 4)
@@ -72,7 +72,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 		menu_delay = 3;
 		if (os_type == os_switch)
 		{
-			what_string_to_edit_async = get_string_async("", "");
+			what_string_async = get_string_async("", "");
 		}
 		keyboard_virtual_show(kbv_type_default, kbv_returnkey_default, kbv_autocapitalize_characters, false);
 		
@@ -89,7 +89,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 		var extra_height = 16;
 	}
 	draw_rectangle_color(xx - width, yy - extra_height, xx + width, yy + 16, box_color, box_color, box_color, box_color, false); /* Rectangle where text is written on */
-	draw_set_alpha(black_rectangle_alpha);
+	draw_set_alpha(black_rec_alpha);
 	draw_rectangle_color(xx - width, yy - extra_height, xx + width, yy + 16, c_black, c_black, c_black, c_black, false); /* Black transparent rectangle where text is written on */
 	draw_set_alpha(1);
 	draw_rectangle_color(xx - width, yy - extra_height, xx + width, yy + 16, c_white, c_white, c_white, c_white, true); /* White outline */
@@ -128,37 +128,12 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 	
 	#endregion /* Draw the inputed text END */
 	
-	#region /* A file name can't contain any of these characters */
-	if (os_type != os_switch)
-	{
-		if (!can_enter_illegal_charcters)
-		{
-			if (ord(keyboard_lastchar) != ord("\\"))
-			&& (ord(keyboard_lastchar) != ord("/"))
-			&& (ord(keyboard_lastchar) != ord(":"))
-			&& (ord(keyboard_lastchar) != ord("*"))
-			&& (ord(keyboard_lastchar) != ord("?"))
-			&& (ord(keyboard_lastchar) != ord("\""))
-			&& (ord(keyboard_lastchar) != ord("<"))
-			&& (ord(keyboard_lastchar) != ord(">"))
-			&& (ord(keyboard_lastchar) != ord("|"))
-			{
-				what_string_to_edit = keyboard_string;
-			}
-			else
-			{
-				keyboard_string = string_copy(what_string_to_edit, 1, max_characters);
-			}
-		}
-	}
-	#endregion /* A file name can't contain any of these characters END */
-	
 	#region /* When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that */
 	if (keyboard_string = "\u007f") /* This is the unicode for DEL character */
 	&& (string_length(keyboard_string) <= 1)
 	{
 		keyboard_string = "";
-		what_string_to_edit = "";
+		what_string = "";
 	}
 	#endregion /* When pressing backspace with nothing in keyboard_string, a DEL character gets typed. Do code like this to prevent that END */
 	
@@ -168,20 +143,20 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 	&& (clipboard_has_text())
 	{
 		keyboard_string = clipboard_get_text();
-	    what_string_to_edit = clipboard_get_text();
+	    what_string = clipboard_get_text();
 	}
 	#endregion /* Can paste text from clipboard END */
 	
 	#region /* Show how many characters a name has and what the max amount of characters is */
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_middle);
-	if (string_length(what_string_to_edit) >= max_characters)
+	if (string_length(what_string) >= max_char)
 	{
-		scr_draw_text_outlined(xx + 150, yy + 32, string(max_characters) + "/" + string(max_characters), global.default_text_size, c_black, c_white, 1);
+		scr_draw_text_outlined(xx + 150, yy + 32, string(max_char) + "/" + string(max_char), global.default_text_size, c_black, c_white, 1);
 	}
 	else
 	{
-		scr_draw_text_outlined(xx + 150, yy + 32, string(string_length(what_string_to_edit)) + "/" + string(max_characters), global.default_text_size, c_black, c_ltgray, 1);
+		scr_draw_text_outlined(xx + 150, yy + 32, string(string_length(what_string)) + "/" + string(max_char), global.default_text_size, c_black, c_ltgray, 1);
 	}
 	#endregion /* Show how many characters a name has and what the max amount of characters is END */
 	
@@ -224,22 +199,11 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 			menu_delay = 3;
 			if (variable_instance_exists(self, "remember_keyboard_string"))
 			{
-				what_string_to_edit = remember_keyboard_string;
+				what_string = remember_keyboard_string;
 				keyboard_string = remember_keyboard_string; /* Revert back to whatever was already written before entering name input screen */
 			}
-			if (!can_enter_illegal_charcters)
-			{
-				keyboard_string = string_replace_all(keyboard_string, "\\", "");
-				keyboard_string = string_replace_all(keyboard_string, "/", "");
-				keyboard_string = string_replace_all(keyboard_string, ":", "");
-				keyboard_string = string_replace_all(keyboard_string, "*", "");
-				keyboard_string = string_replace_all(keyboard_string, "?", "");
-				keyboard_string = string_replace_all(keyboard_string, "\"", "");
-				keyboard_string = string_replace_all(keyboard_string, "<", "");
-				keyboard_string = string_replace_all(keyboard_string, ">", "");
-				keyboard_string = string_replace_all(keyboard_string, "|", "");
-			}
-			what_string_to_edit_async = "";
+			
+			what_string_async = "";
 			keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking Cancel */
 			global.clicking_cancel_input_screen = true;
 			
@@ -257,13 +221,13 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 	#endregion /* Clicking the Cancel button END */
 	
 	#region /* OK and Cancel buttons under name input */
-	if (!can_press_ok_when_input_empty)
+	if (!can_ok_when_empty)
 	&& (keyboard_string != "")
-	|| (can_press_ok_when_input_empty)
+	|| (can_ok_when_empty)
 	{
-		if (max_characters_needed) /* On some code input screens, you want to fill all the characters to the max before you can continue */
-		&& (string_length(keyboard_string) == max_characters)
-		|| (!max_characters_needed)
+		if (max_char_needed) /* On some code input screens, you want to fill all the characters to the max before you can continue */
+		&& (string_length(keyboard_string) == max_char)
+		|| (!max_char_needed)
 		{
 			draw_menu_button(xx + buttons_x, yy + buttons_ok_y, l10n_text("OK"), ok_menu_string, ok_menu_string);
 			if (menu != cancel_menu_string)
@@ -297,19 +261,8 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 				|| (gamepad_button_check_pressed(global.player_slot[4], global.player_[inp.gp][4][2][action.accept]))
 				{
 					menu_delay = 3;
-					if (!can_enter_illegal_charcters)
-					{
-						keyboard_string = string_replace_all(keyboard_string, "\\", "");
-						keyboard_string = string_replace_all(keyboard_string, "/", "");
-						keyboard_string = string_replace_all(keyboard_string, ":", "");
-						keyboard_string = string_replace_all(keyboard_string, "*", "");
-						keyboard_string = string_replace_all(keyboard_string, "?", "");
-						keyboard_string = string_replace_all(keyboard_string, "\"", "");
-						keyboard_string = string_replace_all(keyboard_string, "<", "");
-						keyboard_string = string_replace_all(keyboard_string, ">", "");
-						keyboard_string = string_replace_all(keyboard_string, "|", "");
-					}
-					what_string_to_edit_async = "";
+					
+					what_string_async = "";
 					keyboard_virtual_hide(); /* Hide the virtual keyboard when clicking OK */
 					global.clicking_ok_input_screen = true;
 					
@@ -361,9 +314,9 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 	#endregion /* OK and Cancel buttons under name input END */
 	
 	var string_previous = keyboard_string;
-	if (string_length(keyboard_string) > max_characters)
+	if (string_length(keyboard_string) > max_char)
 	{
-		keyboard_string = string_copy(string_previous, 1, max_characters);
+		keyboard_string = string_copy(string_previous, 1, max_char);
 	}
 	
 	if (menu_delay == 0 && menu_joystick_delay == 0)
@@ -391,7 +344,7 @@ function scr_draw_name_input_screen(what_string_to_edit, max_characters = 500 /*
 		keyboard_string = switch_mask_profanity(keyboard_string);
 	}
 	
-	what_string_to_edit = keyboard_string; /* Set this variable to keyboard string */
+	what_string = keyboard_string; /* Set this variable to keyboard string */
 	
 	return(keyboard_string);
 }

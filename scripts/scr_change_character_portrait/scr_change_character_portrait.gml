@@ -11,7 +11,7 @@ function scr_change_character_portrait()
 		}
 		else
 		{
-			character_folder[what_player] = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
+			character_folder[what_player] = game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[what_player - 1]));
 		}
 		if (file_exists(string(character_folder[what_player]) + "/sprites/skin" + string(global.skin_for_player[what_player]) + "/mask.png"))
 		{
@@ -88,7 +88,7 @@ function scr_change_character_skin()
 		
 		#region /* If a unavailable skin is selected, then go to the last selectable skin for each player */
 		if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
-		&& (!file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
+		&& (!file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
 		&& (global.skin_for_player[i] > 0)
 		{
 			menu_delay = 3;
@@ -96,7 +96,7 @@ function scr_change_character_skin()
 			
 			#region /* Player character select portrait sprite */
 			if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
-			|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
+			|| (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
 			{
 				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/data/character_config.ini"))
 				{
@@ -104,7 +104,7 @@ function scr_change_character_skin()
 				}
 				else
 				{
-					character_folder[i] = working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1]));
+					character_folder[i] = game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1]));
 				}
 				
 				if (file_exists(string(character_folder[i]) + "/sprites/skin" + string(global.skin_for_player[i]) + "/mask.png"))
@@ -134,7 +134,7 @@ function scr_change_character_skin()
 		
 		#region /* If a unavailable voice pack is selected, then go to the last selectable voice pack for each player */
 		if (!file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/jump.ogg")
-		&& !file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/jump.ogg")
+		&& !file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[i - 1])) + "/sound/voicepack" + string(global.voicepack_for_player[i]) + "/jump.ogg")
 		&& global.voicepack_for_player[i] > 0)
 		{
 			menu_delay = 3;

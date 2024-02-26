@@ -5,10 +5,10 @@ function set_pause_button_y_positions()
 	continue_y = display_get_gui_height() * 0.5 - 84;
 	change_character_y = continue_y + 42;
 	if (global.character_select_in_this_menu == "level_editor")
-	&& (!file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+	&& (!file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 	&& (ds_list_size(global.all_loaded_custom_levels) - 1 < global.max_custom_levels) /* Don't let player download levels if they have reached the max amount of levels stored */
 	|| (global.character_select_in_this_menu == "level_editor")
-	&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+	&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 	{
 		edit_level_y = change_character_y + 42;
 		option_y = edit_level_y + 42;

@@ -15,14 +15,14 @@ function scr_generate_id(what_kind_of_id = "level")
 	/* Save the ID and username in the .ini file */
 	if (what_kind_of_id == "level")
 	{
-		ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+		ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 		ini_write_string("info", "level_id", string(generate_id)); /* Save the level ID in the level_information.ini file, so that it can be referenced later */
 		level_id = generate_id;
 	}
 	else
 	if (what_kind_of_id == "character")
 	{
-		ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
+		ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 		ini_write_string("info", "character_id", string(generate_id)); /* Save the character ID in the character_config.ini file, so that it can be referenced later */
 		character_id = generate_id;
 	}

@@ -85,9 +85,9 @@ function scr_option_level_editor()
 				
 				#region /* Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
-				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				{
-					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+					ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_real("info", "make_every_tileset_into_default_tileset", global.make_every_tileset_into_default_tileset);
 					ini_write_real("info", "rain", global.effect_rain);
 					ini_write_real("info", "snow", global.effect_snow);
@@ -100,9 +100,9 @@ function scr_option_level_editor()
 				
 				#region /* Save config.ini */
 				if (global.character_select_in_this_menu == "level_editor")
-				&& (file_exists(working_directory + "save_file/config.ini"))
+				&& (file_exists(game_save_id + "save_file/config.ini"))
 				{
-					ini_open(working_directory + "save_file/config.ini");
+					ini_open(game_save_id + "save_file/config.ini");
 					ini_write_real("config", "show_new_items_notification_level_editor", global.show_new_items_notification);
 					ini_write_real("config", "can_save_length_variable", global.can_save_length_variable);
 					ini_write_real("config", "select_level_editing_music", global.selected_level_editing_music);
@@ -2471,9 +2471,9 @@ function scr_option_level_editor()
 				
 				#region /* Background Offset Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
-				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				{
-					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+					ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_real("Custom Backgrounds", "custom_background1_x_offset", custom_background_x_offset[1]);
 					ini_write_real("Custom Backgrounds", "custom_background1_y_offset", custom_background_y_offset[1]);
 					ini_write_real("Custom Backgrounds", "custom_background2_x_offset", custom_background_x_offset[2]);
@@ -2895,9 +2895,9 @@ function scr_option_level_editor()
 				
 				#region /* Background Parallax Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
-				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				{
-					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+					ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					for (var i = 1; i <= 4; i++) {
 						ini_write_real("Custom Backgrounds", "custom_background" + string(i) + "_x_parallax", custom_background_x_parallax[i]);
 						ini_write_real("Custom Backgrounds", "custom_background" + string(i) + "_y_parallax", custom_background_y_parallax[i]);
@@ -3300,9 +3300,9 @@ function scr_option_level_editor()
 			
 			#region /* Background Scale Save level_information.ini */
 			if (global.character_select_in_this_menu == "level_editor")
-			&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+			&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 			{
-				ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+				ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 				ini_write_real("Custom Backgrounds", "custom_background1_x_scale", custom_background1_x_scale);
 				ini_write_real("Custom Backgrounds", "custom_background1_y_scale", custom_background1_y_scale);
 				ini_write_real("Custom Backgrounds", "custom_background2_x_scale", custom_background2_x_scale);
@@ -3371,9 +3371,9 @@ function scr_option_level_editor()
 				
 				#region /* Background Tiled Save level_information.ini */
 				if (global.character_select_in_this_menu == "level_editor")
-				&& (file_exists(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini"))
+				&& (file_exists(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini"))
 				{
-					ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+					ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 					ini_write_real("Custom Backgrounds", "custom_background1_htiled", custom_background1_htiled);
 					ini_write_real("Custom Backgrounds", "custom_background1_vtiled", custom_background1_vtiled);
 					ini_write_real("Custom Backgrounds", "custom_background2_htiled", custom_background2_htiled);
@@ -3857,7 +3857,7 @@ function scr_option_level_editor()
 					#region /* Set default theme values to empty string */
 					if (level_editor_option_back_to_menu == "remove_entire_theme")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_1")), spr_noone);
 						ini_write_string("info", "default_background2", "");
@@ -3880,7 +3880,7 @@ function scr_option_level_editor()
 					else
 					if (level_editor_option_back_to_menu == "remove_all_background")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_1")), spr_noone);
 						ini_write_string("info", "default_background2", "");
@@ -3894,7 +3894,7 @@ function scr_option_level_editor()
 					else
 					if (level_editor_option_back_to_menu == "remove_all_foreground")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground1", "");
 						ini_write_string("info", "default_foreground1_5", "");
 						ini_write_string("info", "default_foreground2", "");
@@ -3904,7 +3904,7 @@ function scr_option_level_editor()
 					else
 					if (level_editor_option_back_to_menu == "remove_background1")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_background1", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_1")), spr_noone);
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -3912,7 +3912,7 @@ function scr_option_level_editor()
 					else
 					if (level_editor_option_back_to_menu == "remove_background2")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_background2", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_2")), spr_noone);
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -3920,7 +3920,7 @@ function scr_option_level_editor()
 					else
 					if (level_editor_option_back_to_menu == "remove_background3")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_background3", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_3")), spr_noone);
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -3928,7 +3928,7 @@ function scr_option_level_editor()
 					else
 					if (level_editor_option_back_to_menu == "remove_background4")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_background4", "");
 						layer_background_sprite(layer_background_get_id(layer_get_id("Background_4")), spr_noone);
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -3936,35 +3936,35 @@ function scr_option_level_editor()
 					else
 					if (level_editor_option_back_to_menu == "remove_foreground1")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground1", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_foreground1_5")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground1_5", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_foreground2")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground2", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_foreground_secret")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_foreground_secret", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_all_music")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_music_overworld", "");
 						ini_write_string("info", "default_music_underwater", "");
 						ini_write_string("info", "default_ambience_overworld", "");
@@ -3975,35 +3975,35 @@ function scr_option_level_editor()
 					else
 					if (level_editor_option_back_to_menu == "remove_music_overworld")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_music_overworld", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_music_underwater")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_music_underwater", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_ambience_overworld")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_ambience_music", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_ambience_underwater")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_ambience_music", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}
 					else
 					if (level_editor_option_back_to_menu == "remove_clear_melody")
 					{
-						ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+						ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 						ini_write_string("info", "default_clear_melody", "");
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 					}

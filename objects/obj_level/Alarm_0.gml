@@ -2,11 +2,11 @@
 /* Loading the level data in Alarm Event works better than loading in Create Event */
 /* Create Event isn't sure what level is set as */
 /* So it doesn't know what level data to load there */
-if (file_exists(working_directory + "save_file/file" + string(global.file) + ".ini"))
+if (file_exists(game_save_id + "save_file/file" + string(global.file) + ".ini"))
 {
 	var level_name = string(ds_list_find_value(global.all_loaded_main_levels, level));
 	
-	ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+	ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 	
 	clear_rate = ini_read_string(level_name, "clear_rate", "closed");
 	number_of_defeats = ini_read_real(level_name, "number_of_defeats", 0);

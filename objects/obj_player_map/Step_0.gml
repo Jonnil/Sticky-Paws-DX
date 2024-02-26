@@ -40,7 +40,7 @@ if (stop_at_level && nearest_level == noone) { /* Only get info from levels when
 /* Quit Game */
 if (global.quit_level) {
     if (speed == 0) {
-        ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+        ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
         ini_write_real("Player", "player_x", x);
         ini_write_real("Player", "player_y", y);
         ini_close();

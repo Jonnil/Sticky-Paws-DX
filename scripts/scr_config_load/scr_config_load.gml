@@ -1,8 +1,8 @@
 function scr_config_load()
 {
-	if (file_exists(working_directory + "save_file/config.ini")) /* Check if config.ini exists before loading any settings */
+	if (file_exists(game_save_id + "save_file/config.ini")) /* Check if config.ini exists before loading any settings */
 	{
-		ini_open(working_directory + "save_file/config.ini");
+		ini_open(game_save_id + "save_file/config.ini");
 		
 		if (variable_instance_exists(self, "inform_about_report_feature"))
 		{

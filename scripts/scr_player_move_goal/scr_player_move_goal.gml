@@ -69,7 +69,7 @@ function scr_player_move_goal()
 				
 				var level_name = global.level_name;
 				
-				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 				ini_write_real(level_name, "checkpoint_millisecond", 0);
 				ini_write_real(level_name, "checkpoint_second", 0);
 				ini_write_real(level_name, "checkpoint_minute", 0);
@@ -89,7 +89,7 @@ function scr_player_move_goal()
 				
 				var level_name = global.level_name;
 				
-				ini_open(working_directory + "save_file/custom_level_save.ini");
+				ini_open(game_save_id + "save_file/custom_level_save.ini");
 				ini_write_real(level_name, "checkpoint_millisecond", 0);
 				ini_write_real(level_name, "checkpoint_second", 0);
 				ini_write_real(level_name, "checkpoint_minute", 0);

@@ -1,4 +1,4 @@
-function scr_draw_name_box(what_string_to_edit, box_color, white_rectangle_alpha, xx, yy)
+function scr_draw_name_box(what_string, box_color, white_rectangle_alpha, xx, yy)
 {
 	var mouse_get_x = device_mouse_x_to_gui(0);
 	var mouse_get_y = device_mouse_y_to_gui(0);
@@ -21,7 +21,7 @@ function scr_draw_name_box(what_string_to_edit, box_color, white_rectangle_alpha
 	#region /* Draw the inputed text */
 	draw_set_halign(fa_middle);
 	draw_set_valign(fa_middle);
-	scr_draw_text_outlined(xx, yy, string(what_string_to_edit), global.default_text_size, c_white, c_black, 1);
+	scr_draw_text_outlined(xx, yy, string(what_string), global.default_text_size, c_white, c_black, 1);
 	#endregion /* Draw the inputed text END */
 	
 }

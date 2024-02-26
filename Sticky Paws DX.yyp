@@ -3035,6 +3035,7 @@
     {"id":{"name":"scr_player_move_homing_attack","path":"scripts/scr_player_move_homing_attack/scr_player_move_homing_attack.yy",},},
     {"id":{"name":"spr_spring_strong","path":"sprites/spr_spring_strong/spr_spring_strong.yy",},},
     {"id":{"name":"obj_background_brightness_gameplay","path":"objects/obj_background_brightness_gameplay/obj_background_brightness_gameplay.yy",},},
+    {"id":{"name":"scr_replace_illegal_characters","path":"scripts/scr_replace_illegal_characters/scr_replace_illegal_characters.yy",},},
     {"id":{"name":"obj_chair_and_table","path":"objects/obj_chair_and_table/obj_chair_and_table.yy",},},
     {"id":{"name":"spr_icon_folder","path":"sprites/spr_icon_folder/spr_icon_folder.yy",},},
     {"id":{"name":"set_controller_sprites_to_use","path":"scripts/set_controller_sprites_to_use/set_controller_sprites_to_use.yy",},},

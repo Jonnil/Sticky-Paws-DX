@@ -72,7 +72,7 @@ if (instance_exists(obj_player))
 				yy_heart = y;
 				
 				#region /* Save heart balloon to be true */
-				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 				ini_write_real("Player", "player" + string(player) + "_have_heart_balloon", true);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				#endregion /* Save heart balloon to be true END */

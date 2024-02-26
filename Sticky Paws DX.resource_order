@@ -375,6 +375,7 @@
     {"name":"scr_player_move_homing_attack","order":24,"path":"scripts/scr_player_move_homing_attack/scr_player_move_homing_attack.yy",},
     {"name":"spr_spring_strong","order":38,"path":"sprites/spr_spring_strong/spr_spring_strong.yy",},
     {"name":"obj_background_brightness_gameplay","order":1,"path":"objects/obj_background_brightness_gameplay/obj_background_brightness_gameplay.yy",},
+    {"name":"scr_replace_illegal_characters","order":90,"path":"scripts/scr_replace_illegal_characters/scr_replace_illegal_characters.yy",},
     {"name":"obj_chair_and_table","order":11,"path":"objects/obj_chair_and_table/obj_chair_and_table.yy",},
     {"name":"spr_icon_folder","order":22,"path":"sprites/spr_icon_folder/spr_icon_folder.yy",},
     {"name":"set_controller_sprites_to_use","order":79,"path":"scripts/set_controller_sprites_to_use/set_controller_sprites_to_use.yy",},

@@ -241,7 +241,7 @@ function scr_option_custom_resources()
 			if (global.selected_resource_pack > ds_list_size(global.all_loaded_resource_pack) - 1)
 			{
 				global.selected_resource_pack = ds_list_size(global.all_loaded_resource_pack) - 1;
-				ini_open(working_directory + "save_file/config.ini");
+				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "select_resource_pack", global.selected_resource_pack);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
@@ -269,7 +269,7 @@ function scr_option_custom_resources()
 			
 			if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack + 1)) + "/data/sprite_origin_point.ini"))
 			&& (global.pause_room != rm_leveleditor)
-			|| (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack + 1)) + "/data/sprite_origin_point.ini"))
+			|| (file_exists(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack + 1)) + "/data/sprite_origin_point.ini"))
 			&& (global.pause_room != rm_leveleditor)
 			{
 				draw_sprite_ext(spr_keyboard_keys, vk_right, resource_pack_x +resource_pack_right_arrow_x, 20 + (resource_pack_y), 0.5, 0.5, 0, c_white, 1);
@@ -304,7 +304,7 @@ function scr_option_custom_resources()
 				{
 					menu_delay = 3;
 					global.selected_resource_pack --;
-					ini_open(working_directory + "save_file/config.ini");
+					ini_open(game_save_id + "save_file/config.ini");
 					ini_write_real("config", "select_resource_pack", global.selected_resource_pack);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
@@ -320,12 +320,12 @@ function scr_option_custom_resources()
 				menu = "resource_pack";
 				if (menu_delay == 0 && menu_joystick_delay == 0)
 				&& (!can_navigate_settings_sidebar)
-				&& (file_exists(working_directory + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack + 1)) + "/data/sprite_origin_point.ini"))
+				&& (file_exists(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack + 1)) + "/data/sprite_origin_point.ini"))
 				&& (global.pause_room != rm_leveleditor)
 				{
 					menu_delay = 3;
 					global.selected_resource_pack ++;
-					ini_open(working_directory + "save_file/config.ini");
+					ini_open(game_save_id + "save_file/config.ini");
 					ini_write_real("config", "select_resource_pack", global.selected_resource_pack);
 					ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				}
@@ -473,7 +473,7 @@ function scr_option_custom_resources()
 		if (global.selected_title_background[title_bg_layer] > ds_list_size(global.all_loaded_title_backgrounds) - 1)
 		{
 			global.selected_title_background[title_bg_layer] = ds_list_size(global.all_loaded_title_backgrounds) - 1;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("config", "select_title_background" + string(title_bg_layer), global.selected_title_background[title_bg_layer]);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -499,7 +499,7 @@ function scr_option_custom_resources()
 		if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1))))
 		&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != undefined)
 		&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != "")
-		|| (file_exists(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1))))
+		|| (file_exists(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1))))
 		&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != undefined)
 		&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != "")
 		{
@@ -542,7 +542,7 @@ function scr_option_custom_resources()
 				{
 					global.selected_title_background[title_bg_layer] = -1;
 				}
-				ini_open(working_directory + "save_file/config.ini");
+				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "select_title_background" + string(title_bg_layer), global.selected_title_background[title_bg_layer]);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
@@ -552,10 +552,10 @@ function scr_option_custom_resources()
 					layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
 				}
 				else
-				if (file_exists(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
+				if (file_exists(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
 				{
 					scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
-					title_screen_background[title_bg_layer] = sprite_add(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
+					title_screen_background[title_bg_layer] = sprite_add(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
 					layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
 				}
 				else
@@ -584,7 +584,7 @@ function scr_option_custom_resources()
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != "")
 			|| (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
-			&& (file_exists(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1))))
+			&& (file_exists(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != undefined)
 			&& (ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer] + 1) != "")
 			{
@@ -607,7 +607,7 @@ function scr_option_custom_resources()
 						global.selected_title_background[title_bg_layer] --;
 					}
 				}
-				ini_open(working_directory + "save_file/config.ini");
+				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "select_title_background" + string(title_bg_layer), global.selected_title_background[title_bg_layer]);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				if (file_exists("title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
@@ -617,10 +617,10 @@ function scr_option_custom_resources()
 					layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
 				}
 				else
-				if (file_exists(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
+				if (file_exists(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer]))))
 				{
 					scr_delete_sprite_properly(title_screen_background[title_bg_layer]);
-					title_screen_background[title_bg_layer] = sprite_add(working_directory + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
+					title_screen_background[title_bg_layer] = sprite_add(game_save_id + "custom_title_background/" + string(ds_list_find_value(global.all_loaded_title_backgrounds, global.selected_title_background[title_bg_layer])), 0, false, false, 0, 0);
 					layer_background_visible(layer_background_get_id(layer_get_id("Background" + string(title_bg_layer))), true);
 				}
 				else
@@ -691,7 +691,7 @@ function scr_option_custom_resources()
 				{
 					global.title_background_scale[title_bg_layer] -= scale_increment;
 				}
-				ini_open(working_directory + "save_file/config.ini");
+				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "title_background_scale", global.title_background_scale[title_bg_layer]);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
@@ -715,7 +715,7 @@ function scr_option_custom_resources()
 				{
 					global.title_background_scale[title_bg_layer] += scale_increment;
 				}
-				ini_open(working_directory + "save_file/config.ini");
+				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "title_background_scale", global.title_background_scale[title_bg_layer]);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
@@ -924,7 +924,7 @@ function scr_option_custom_resources()
 		if (global.selected_title_logo > ds_list_size(global.all_loaded_title_logo) - 1)
 		{
 			global.selected_title_logo = ds_list_size(global.all_loaded_title_logo) - 1;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("config", "select_title_logo", global.selected_title_logo);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -956,7 +956,7 @@ function scr_option_custom_resources()
 		if (file_exists("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1))))
 		&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != undefined)
 		&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != "")
-		|| (file_exists(working_directory + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1))))
+		|| (file_exists(game_save_id + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1))))
 		&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != undefined)
 		&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != "")
 		|| (global.selected_title_logo <= -1)
@@ -989,7 +989,7 @@ function scr_option_custom_resources()
 			{
 				menu_delay = 3;
 				global.selected_title_logo --;
-				ini_open(working_directory + "save_file/config.ini");
+				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "select_title_logo", global.selected_title_logo);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				if (file_exists("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
@@ -1000,11 +1000,11 @@ function scr_option_custom_resources()
 					sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) * 0.5, sprite_get_height(global.title_logo_index) * 0.5);
 				}
 				else
-				if (file_exists(working_directory + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
+				if (file_exists(game_save_id + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
 				&& (global.selected_title_logo >= 0)
 				{
 					scr_delete_sprite_properly(global.title_logo_index);
-					global.title_logo_index = sprite_add(working_directory + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo)), 1, false, false, 0, 0);
+					global.title_logo_index = sprite_add(game_save_id + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo)), 1, false, false, 0, 0);
 					sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) * 0.5, sprite_get_height(global.title_logo_index) * 0.5);
 				}
 				else
@@ -1027,14 +1027,14 @@ function scr_option_custom_resources()
 			&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != "")
 			|| (menu_delay == 0 && menu_joystick_delay == 0)
 			&& (!can_navigate_settings_sidebar)
-			&& (file_exists(working_directory + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1))))
+			&& (file_exists(game_save_id + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1))))
 			&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != undefined)
 			&& (ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo + 1) != "")
 			|| (global.selected_title_logo <= -1)
 			{
 				menu_delay = 3;
 				global.selected_title_logo ++;
-				ini_open(working_directory + "save_file/config.ini");
+				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("config", "select_title_logo", global.selected_title_logo);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 				if (file_exists("title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
@@ -1045,11 +1045,11 @@ function scr_option_custom_resources()
 					sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) * 0.5, sprite_get_height(global.title_logo_index) * 0.5);
 				}
 				else
-				if (file_exists(working_directory + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
+				if (file_exists(game_save_id + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo))))
 				&& (global.selected_title_logo >= 0)
 				{
 					scr_delete_sprite_properly(global.title_logo_index);
-					global.title_logo_index = sprite_add(working_directory + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo)), 1, false, false, 0, 0);
+					global.title_logo_index = sprite_add(game_save_id + "custom_title_logo/" + string(ds_list_find_value(global.all_loaded_title_logo, global.selected_title_logo)), 1, false, false, 0, 0);
 					sprite_set_offset(global.title_logo_index, sprite_get_width(global.title_logo_index) * 0.5, sprite_get_height(global.title_logo_index) * 0.5);
 				}
 				else

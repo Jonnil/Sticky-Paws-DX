@@ -88,7 +88,7 @@ function scr_draw_upload_rules()
 			}
 			if (caution_online_takes_you_to == "upload_yes_character")
 			{
-				ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
+				ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 				if (ini_key_exists("info", "clear_check_character"))
 				{
 					if (ini_read_real("info", "clear_check_character", false))
@@ -106,7 +106,7 @@ function scr_draw_upload_rules()
 				}
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_string("config", "upload_rules_do_not_show_level", upload_rules_do_not_show_level);
 			ini_write_string("config", "upload_rules_do_not_show_character", upload_rules_do_not_show_character);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

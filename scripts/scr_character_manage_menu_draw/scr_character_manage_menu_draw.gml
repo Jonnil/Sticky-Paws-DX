@@ -221,9 +221,9 @@ function scr_character_manage_menu_draw()
 				
 				#region /* Draw who made the character */
 				draw_set_halign(fa_right);
-				if (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
+				if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini"))
 				{
-					ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
+					ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[0])) + "/data/character_config.ini");
 					if (ini_key_exists("info", "username"))
 					&& (ini_read_string("info", "username", "") != "")
 					{

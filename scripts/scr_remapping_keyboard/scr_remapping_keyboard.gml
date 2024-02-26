@@ -77,7 +77,7 @@ function scr_remapping_keyboard()
 		if (menu == "remap_key_dive")
 		{
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.dive] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_dive", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -85,7 +85,7 @@ function scr_remapping_keyboard()
 		if (menu == "remap_key_jump")
 		{
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.jump] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_jump", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -93,7 +93,7 @@ function scr_remapping_keyboard()
 		if (menu == "remap_key_double_jump")
 		{
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.double_jump] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_double_jump", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -101,7 +101,7 @@ function scr_remapping_keyboard()
 		if (menu == "remap_key_crouch")
 		{
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.crouch] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_crouch", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -109,7 +109,7 @@ function scr_remapping_keyboard()
 		if (menu == "remap_key_crouch_toggle")
 		{
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.crouch_toggle] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_crouch_toggle", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -117,7 +117,7 @@ function scr_remapping_keyboard()
 		if (menu == "remap_key_run")
 		{
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.run] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_run", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -125,7 +125,7 @@ function scr_remapping_keyboard()
 		if (menu == "remap_key_run_toggle")
 		{
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.run_toggle] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_run_toggle", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -138,7 +138,7 @@ function scr_remapping_keyboard()
 				last_key = vk_left;
 			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.left] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_left", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -151,7 +151,7 @@ function scr_remapping_keyboard()
 				last_key = vk_right;
 			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.right] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_right", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -164,7 +164,7 @@ function scr_remapping_keyboard()
 				last_key = vk_down;
 			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.down] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_down", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -177,7 +177,7 @@ function scr_remapping_keyboard()
 				last_key = vk_up;
 			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.up] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_up", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -185,7 +185,7 @@ function scr_remapping_keyboard()
 		if (menu == "remap_key_tongue")
 		{
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.tongue] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_tongue", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -193,7 +193,7 @@ function scr_remapping_keyboard()
 		if (menu == "remap_key_zoom_in")
 		{
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.zoom_in] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_zoom_in", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -201,7 +201,7 @@ function scr_remapping_keyboard()
 		if (menu == "remap_key_zoom_out")
 		{
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.zoom_out] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_zoom_out", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -216,12 +216,12 @@ function scr_remapping_keyboard()
 			if (global.player_[inp.key][remapping_player + 1][remap_key_number][action.back] == last_key)
 			{
 				global.player_[inp.key][remapping_player + 1][remap_key_number][action.back] = global.player_[inp.key][remapping_player + 1][remap_key_number][action.accept];
-				ini_open(working_directory + "save_file/config.ini");
+				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_back", global.player_[inp.key][remapping_player + 1][remap_key_number][action.accept]);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.accept] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_accept", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}
@@ -236,12 +236,12 @@ function scr_remapping_keyboard()
 			if (global.player_[inp.key][remapping_player + 1][remap_key_number][action.accept] == last_key)
 			{
 				global.player_[inp.key][remapping_player + 1][remap_key_number][action.accept] = global.player_[inp.key][remapping_player + 1][remap_key_number][action.back];
-				ini_open(working_directory + "save_file/config.ini");
+				ini_open(game_save_id + "save_file/config.ini");
 				ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_accept", global.player_[inp.key][remapping_player + 1][remap_key_number][action.back]);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
 			global.player_[inp.key][remapping_player + 1][remap_key_number][action.back] = last_key;
-			ini_open(working_directory + "save_file/config.ini");
+			ini_open(game_save_id + "save_file/config.ini");
 			ini_write_real("player" + string(remapping_player + 1) + "_profile" + string(player_profile + 1), "player" + string(remapping_player + 1) + "_key" + string(remap_key_number_string) + "_back", last_key);
 			ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 		}

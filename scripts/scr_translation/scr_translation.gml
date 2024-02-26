@@ -89,7 +89,7 @@ function l10n_text(key = "") /* The common abbreviation for localization is l10n
 	/* Find missing translation keywords and log them in .ini file */
 	if (global.translation_debug && global.translations[?key] == undefined)
 	{
-		ini_open(working_directory + "translation_missing_keywords.ini");
+		ini_open(game_save_id + "translation_missing_keywords.ini");
 		if (!ini_key_exists("Translation Missing Keywords", string(key)))
 		{
 			ini_write_string("Translation Missing Keywords", string(key), "");

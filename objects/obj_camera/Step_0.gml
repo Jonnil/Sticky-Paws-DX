@@ -688,7 +688,7 @@ if (global.character_select_in_this_menu == "level_editor")
 			
 			#region /* Save Level Information when in level editor */
 			if (global.level_name != "" && !global.actually_play_edited_level) {
-				ini_open(working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini");
+				ini_open(game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini");
 				ini_write_real("info", "view_xview", camera_get_view_x(view_camera[view_current]));
 				ini_write_real("info", "view_yview", camera_get_view_y(view_camera[view_current]));
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

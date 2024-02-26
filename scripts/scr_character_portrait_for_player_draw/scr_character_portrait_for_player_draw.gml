@@ -542,6 +542,6 @@ function scr_character_portrait_for_player_draw(what_player = 1)
 	if (player_accept_selection[what_player] >= 0)
 	&& (can_input_player_name[what_player] == 1)
 	{
-		global.player_name[what_player] = scr_draw_name_input_screen(player_name, 32, player_color, 0.5, true, get_window_width * 0.5 + player_display_x[what_player], name_input_y, "input_name_ok", "input_name_cancel");
+		global.player_name[what_player] = scr_draw_name_input_screen(player_name, 32, player_color, 0.5, true, get_window_width * 0.5 + player_display_x[what_player], name_input_y, "input_name_ok", "input_name_cancel", false, true, false);
 	}
 }

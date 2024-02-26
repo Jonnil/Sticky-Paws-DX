@@ -20,7 +20,7 @@ if (!show_remaining_jumps)
 			scr_audio_play(snd_1up, volume_source.sound);
 			if (global.character_select_in_this_menu == "main_game")
 			{
-				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 				ini_write_real("Player", "lives", lives);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
@@ -56,7 +56,7 @@ if (!show_remaining_jumps)
 			scr_audio_play(snd_1up, volume_source.sound);
 			if (global.character_select_in_this_menu == "main_game")
 			{
-				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 				ini_write_real("Player", "lives", lives);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}
@@ -103,7 +103,7 @@ if (!show_remaining_jumps)
 			scr_audio_play(snd_1up, volume_source.sound);
 			if (global.character_select_in_this_menu == "main_game")
 			{
-				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 				ini_write_real("Player", "lives", lives);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}

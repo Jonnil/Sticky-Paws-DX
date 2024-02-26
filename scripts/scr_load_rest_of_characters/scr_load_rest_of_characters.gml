@@ -84,7 +84,7 @@ function scr_load_rest_of_characters()
 		}
 		else
 		{
-			if (file_exists(working_directory + "custom_characters/" + file_found + "/data/character_config.ini"))
+			if (file_exists(game_save_id + "custom_characters/" + file_found + "/data/character_config.ini"))
 			{
 				ds_list_add(global.all_loaded_characters, file_found);
 			}

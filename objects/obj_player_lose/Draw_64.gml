@@ -124,7 +124,7 @@ if (lives <= 0)
 			lives = 5 * global.playergame; /* Add 5 lives times the amount of players playing. So 2 players = 10, 3 players = 15, 4 players = 20, and so on */
 			if (global.character_select_in_this_menu == "main_game")
 			{
-				ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+				ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 				ini_write_real("Player", "lives", lives);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 			}

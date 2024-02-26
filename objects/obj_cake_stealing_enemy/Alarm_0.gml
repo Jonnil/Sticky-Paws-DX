@@ -7,7 +7,7 @@ if (instance_exists(obj_player)) {
 }
 if (cutscene == 1) { /* When placed in level, use this cutscene value */
 	if (global.character_select_in_this_menu == "main_game") {
-		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		if (ini_read_real("Player", "beat_last_level", false)) {
 			if (instance_exists(obj_cake)) {
 				with(instance_nearest(x, y, obj_cake)) {

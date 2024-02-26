@@ -494,7 +494,7 @@ if (!global.actually_play_edited_level)
 	order_index = 0;
 	unlock_index = 0;
 	
-	ini_open(working_directory + "save_file/config.ini");
+	ini_open(game_save_id + "save_file/config.ini");
 	upload_rules_do_not_show_level = ini_read_real("config", "upload_rules_do_not_show_level", false);
 	upload_rules_do_not_show_character = ini_read_real("config", "upload_rules_do_not_show_character", false);
 	if (ini_key_exists("config", "select_level_editing_music")) {
@@ -718,7 +718,7 @@ if (!global.actually_play_edited_level)
 	
 	#region /* Character Name */
 	if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
-	|| (file_exists(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
+	|| (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 	{
 		if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini"))
 		{
@@ -726,7 +726,7 @@ if (!global.actually_play_edited_level)
 		}
 		else
 		{
-			ini_open(working_directory + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
+			ini_open(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.narrator)) + "/data/character_config.ini");
 		}
 		
 		#region /* Character Name */
@@ -777,7 +777,7 @@ if (!global.actually_play_edited_level)
 	if_clear_checked = false;
 	level_made_in_what_version_text = "";
 	first_created_on_version = "";
-	var level_information_ini_path = working_directory + "custom_levels/" + global.level_name + "/data/level_information.ini";
+	var level_information_ini_path = game_save_id + "custom_levels/" + global.level_name + "/data/level_information.ini";
 	if (global.level_name != "")
 	&& (file_exists(level_information_ini_path))
 	{

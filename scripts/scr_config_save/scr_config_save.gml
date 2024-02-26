@@ -1,6 +1,6 @@
 function scr_config_save()
 {
-	ini_open(working_directory + "save_file/config.ini");
+	ini_open(game_save_id + "save_file/config.ini");
 	
 	ini_write_real("config", "current_file", global.file);
 	ini_write_real("config", "difficulty", global.difficulty);

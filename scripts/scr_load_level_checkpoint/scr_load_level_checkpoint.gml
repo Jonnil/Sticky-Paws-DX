@@ -4,12 +4,12 @@ function scr_load_level_checkpoint()
 	#region /* Load Level Checkpoint */
 	if (global.character_select_in_this_menu == "main_game")
 	{
-		ini_open(working_directory + "save_file/file" + string(global.file) + ".ini");
+		ini_open(game_save_id + "save_file/file" + string(global.file) + ".ini");
 		global.level_name = string(ds_list_find_value(global.all_loaded_main_levels, global.select_level_index)); /* Set the global level name variable to take from loaded main level */
 	}
 	if (global.character_select_in_this_menu == "level_editor")
 	{
-		ini_open(working_directory + "custom_level_save.ini");
+		ini_open(game_save_id + "custom_level_save.ini");
 	}
 	global.checkpoint_x = ini_read_real(global.level_name, "checkpoint_x", 0);
 	global.checkpoint_y = ini_read_real(global.level_name, "checkpoint_y", 0);
