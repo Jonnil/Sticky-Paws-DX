@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_upload_zip_add_files",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Server Scripts",
-    "path": "folders/Scripts/Server Scripts.yy",
+  "$GMScript":"",
+  "%Name":"scr_upload_zip_add_files",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_upload_zip_add_files",
+  "parent":{
+    "name":"Server Scripts",
+    "path":"folders/Scripts/Server Scripts.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

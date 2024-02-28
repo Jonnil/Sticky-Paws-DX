@@ -1,6 +1,6 @@
 function scr_load_resource_pack_sprite()
 {
-	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
+	show_message("Bruh 18");if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 	{
 		resource_pack_folder = "resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack));
 	}
@@ -72,17 +72,17 @@ function scr_load_resource_pack_sprite()
 	}
 	#endregion /* Delete sprites before loading new sprites END */
 	
-	if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
+	show_message("Bruh 19");if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 	|| (file_exists(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 	{
-		if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
+		show_message("Bruh 20");if (file_exists("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 		{
-			ini_open("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
+			show_message("Bruh 21");ini_open("resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
 		}
 		else
-		if (file_exists(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
+		show_message("Bruh 22");if (file_exists(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini"))
 		{
-			ini_open(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
+			show_message("Bruh 23");ini_open(game_save_id + "custom_resource_pack/" + string(ds_list_find_value(global.all_loaded_resource_pack, global.selected_resource_pack)) + "/data/sprite_origin_point.ini");
 		}
 		global.resource_pack_sprite_logo_youtube = scr_initialize_resource_pack_sprite("logo_youtube", global.resource_pack_sprite_logo_youtube);
 		global.resource_pack_sprite_logo_discord = scr_initialize_resource_pack_sprite("logo_discord", global.resource_pack_sprite_logo_discord);

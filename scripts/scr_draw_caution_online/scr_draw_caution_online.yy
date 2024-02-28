@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_draw_caution_online",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Server Scripts",
-    "path": "folders/Scripts/Server Scripts.yy",
+  "$GMScript":"",
+  "%Name":"scr_draw_caution_online",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_draw_caution_online",
+  "parent":{
+    "name":"Server Scripts",
+    "path":"folders/Scripts/Server Scripts.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

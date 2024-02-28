@@ -253,7 +253,7 @@ if (!global.actually_play_edited_level)
 	#region /* Load custom sprites */
 	sprite_lives_icon = spr_1up;
 	scr_set_character_folder(1, 0);
-	ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+	show_message("Bruh 31");ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 	sprite_lives_icon = scr_initialize_character_sprite("lives_icon", sprite_lives_icon);
 	ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 	sprite_basic_enemy = global.resource_pack_sprite_basic_enemy;

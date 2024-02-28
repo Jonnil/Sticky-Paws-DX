@@ -202,16 +202,16 @@ function scr_character_manage_menu_step() {
 					file_copy("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini",
 					game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/character_config.ini");
 				}
-				if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini")) {
-					file_copy("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini",
+				show_message("Bruh 4");if (file_exists("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini")) {
+					show_message("Bruh 5");file_copy("characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini",
 					game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/sprite_origin_point.ini");
 				}
 				if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini")) {
 					file_copy(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/character_config.ini",
 					game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/character_config.ini");
 				}
-				if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini")) {
-					file_copy(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini",
+				show_message("Bruh 6");if (file_exists(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini")) {
+					show_message("Bruh 7");file_copy(game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + "/data/sprite_origin_point.ini",
 					game_save_id + "custom_characters/" + string(ds_list_find_value(global.all_loaded_characters, global.character_index[fixed_player - 1])) + " - Copy/data/sprite_origin_point.ini");
 				}
 				#endregion /* Copy files from selected character to custom character copy END */
@@ -318,7 +318,7 @@ function scr_character_manage_menu_step() {
 				/* Update the player sprite */
 				global.sprite_select_player[fixed_player] = spr_noone;
 				scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
-				ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+				show_message("Bruh 8");ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 				global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
 				global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 				ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */

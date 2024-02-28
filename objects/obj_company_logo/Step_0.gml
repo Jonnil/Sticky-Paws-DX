@@ -388,11 +388,10 @@ if (!can_navigate)
 			}
 			else
 			{
-				if (file_exists(game_save_id + "custom_resource_pack/" + file_found + "/data/sprite_origin_point.ini"))
-				{
-					ds_list_add(global.all_loaded_resource_pack, file_found)
+				show_message("Bruh 27");if (file_exists(game_save_id + "custom_resource_pack/" + file_found + "/data/sprite_origin_point.ini")) {
+					ds_list_add(global.all_loaded_resource_pack, file_found);
 				}
-			
+				
 				file_load_timer = 0; /* 0 not 1. So it doesn't do the "file find first" code which it does at 1 */
 			}
 		}

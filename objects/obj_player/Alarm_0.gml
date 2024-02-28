@@ -64,7 +64,7 @@ ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #region /* Play as Custom character */
 
 #region /* Climb under y offset origin points */
-ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+show_message("Bruh 25");ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 if (ini_key_exists("sprite origin points", "climb_under_y_offset")) {
 	climb_under_y_offset = ini_read_real("sprite origin points", "climb_under_y_offset", 10);
 }
@@ -78,7 +78,7 @@ ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 #endregion /* Climb under y offset origin points END */
 
 #region /* Sprite variables */
-ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+show_message("Bruh 26");ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 sprite_idle = scr_initialize_character_sprite("idle", sprite_idle); /* If sprites aren't found, it will usually default to idle sprite */
 
 sprite_against_wall = scr_initialize_character_sprite("against_wall", sprite_against_wall);

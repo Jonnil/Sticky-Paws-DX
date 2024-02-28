@@ -2552,7 +2552,7 @@ function scr_option_menu()
 						#region /* Player 1 character select portrait sprite */
 						global.sprite_select_player[fixed_player] = spr_noone;
 						scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
-						ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+						show_message("Bruh 16");ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("character_select_portrait", global.sprite_select_player[fixed_player]);
 						ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
@@ -2605,7 +2605,7 @@ function scr_option_menu()
 						#region /* Player 1 character select portrait sprite */
 						global.sprite_select_player[fixed_player] = spr_noone;
 						scr_set_character_folder(fixed_player, global.skin_for_player[fixed_player]);
-						ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+						show_message("Bruh 17");ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("walk", global.sprite_select_player[fixed_player]);
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("idle", global.sprite_select_player[fixed_player]);
 						global.sprite_select_player[fixed_player] = scr_initialize_character_sprite("stand", global.sprite_select_player[fixed_player]);

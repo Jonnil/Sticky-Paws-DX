@@ -12,7 +12,7 @@ default_yscale = ini_read_real("values", "default_yscale", 1);
 ini_close(); switch_save_data_commit(); /* Remember to commit the save data! */
 
 #region /* Sprite variables */
-ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
+show_message("Bruh 1");ini_open(string(character_folder) + "/data/sprite_origin_point.ini");
 sprite_map = scr_initialize_character_sprite("map", sprite_map);
 sprite_map_enter_level = scr_initialize_character_sprite("map_enter_level", sprite_map_enter_level);
 sprite_map_enter_level = scr_initialize_character_sprite("map_enter", sprite_map_enter_level);

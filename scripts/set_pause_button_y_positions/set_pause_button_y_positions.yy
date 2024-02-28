@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "set_pause_button_y_positions",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Other",
-    "path": "folders/Scripts/Other.yy",
+  "$GMScript":"",
+  "%Name":"set_pause_button_y_positions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"set_pause_button_y_positions",
+  "parent":{
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
